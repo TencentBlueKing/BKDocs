@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-183.5 -617 955.8936 415" width="955.8936pt" height="415pt" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata> Produced by OmniGraffle 7.5 
+    <dc:date>2018-02-24 03:08:16 +0000</dc:date>
+  </metadata>
+  <defs>
+    <font-face font-family="PingFang SC" font-size="16" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="500">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="StickArrow_Marker" viewBox="-1 -6 14 12" markerWidth="14" markerHeight="12" color="black">
+      <g>
+        <path d="M 11.428568 0 L 0 0 M 0 -4.285713 L 11.428568 0 L 0 4.285713" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" viewBox="-5 -3 6 6" markerWidth="6" markerHeight="6" color="black">
+      <g>
+        <path d="M -4 0 L 0 1.5 L 0 -1.5 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="PingFang SC" font-size="12" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="500">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="500">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" viewBox="-8 -4 9 8" markerWidth="9" markerHeight="8" color="black">
+      <g>
+        <path d="M -6.857143 0 L 0 2.5714288 L 0 -2.5714288 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>组件监控时序图</title>
+    <rect fill="white" width="955.8936" height="415"/>
+    <g>
+      <title>图层 1</title>
+      <rect x="154.03548" y="-615.5" width="108" height="23" fill="white"/>
+      <rect x="154.03548" y="-615.5" width="108" height="23" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(159.03548 -615)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="9" y="17" textLength="80">蓝鲸采集器</tspan>
+      </text>
+      <line x1="208.03548" y1="-592" x2="208.03548" y2="-246.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="-76.1" y1="-493" x2="191.3381" y2="-493" marker-end="url(#StickArrow_Marker)" marker-start="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-49.793984 -512.4091)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="0" y="13" textLength="133.86">2. 周期抓取Exporter数据</tspan>
+      </text>
+      <rect x="-180" y="-615.5" width="191" height="23" fill="white"/>
+      <rect x="-180" y="-615.5" width="191" height="23" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-175 -615)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="11.9" y="17" textLength="157.2">Prometheus Exporter</tspan>
+      </text>
+      <line x1="-84.5" y1="-592" x2="-84.5" y2="-246.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <rect x="405.07096" y="-615.5" width="108" height="23" fill="white"/>
+      <rect x="405.07096" y="-615.5" width="108" height="23" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(410.07096 -613.224)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="18.328" y="15" textLength="61.344">DataBus</tspan>
+      </text>
+      <path d="M 459.05804 -592 L 459.028 -564.08594 L 459.028 -246.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <rect x="-92.24826" y="-571.5" width="17" height="51.5" fill="white"/>
+      <rect x="-92.24826" y="-571.5" width="17" height="51.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M -66.12606 -549.1973 C -57.596917 -550.47726 -48.188953 -551.70467 -48.24826 -553.5 C -48.32967 -555.9644 -70.74871 -561.00015 -75.24826 -562.5 L -75.24826 -562.5" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-53.74826" y="-580" width="164.5" height="24" fill="white"/>
+      <text transform="translate(-48.74826 -576.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="0" y="13" textLength="59.976">1. 采集数据</tspan>
+      </text>
+      <line x1="212" y1="-445" x2="438.67143" y2="-445" marker-end="url(#StickArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(254.8909 -464.4091)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="0" y="13" textLength="62.364">3. 上报数据</tspan>
+      </text>
+      <rect x="648" y="-615.5" width="120.89356" height="25.74585" fill="white"/>
+      <rect x="648" y="-615.5" width="120.89356" height="25.74585" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(653 -613.6271)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="34.37478" y="17" textLength="42.144">TSDB</tspan>
+      </text>
+      <path d="M 708.4468 -589.25415 L 708.4468 -453.33333 L 708.4468 -246.5" stroke="black" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="463" y1="-320" x2="688.6714" y2="-320" marker-end="url(#StickArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(509.5462 -339.4091)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="0" y="13" textLength="62.364">5. 数据入库</tspan>
+      </text>
+      <rect x="449" y="-413.45455" width="17" height="51.5" fill="white"/>
+      <rect x="449" y="-413.45455" width="17" height="51.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 475.1222 -391.1518 C 483.65134 -392.4318 493.0593 -393.6592 493 -395.45455 C 492.9186 -397.9189 470.49955 -402.9547 466 -404.45455 L 466 -404.45455" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="502.3032" y="-421.95455" width="114.5" height="30" fill="white"/>
+      <text transform="translate(507.3032 -415.45455)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="0" y="13" textLength="38.364">4. 清洗</tspan>
+      </text>
+      <text transform="translate(252 -229.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x=".008" y="17" textLength="159.984">组件导入时序图 (简易)</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

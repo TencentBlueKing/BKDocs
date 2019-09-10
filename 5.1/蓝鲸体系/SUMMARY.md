@@ -1,0 +1,18 @@
+# Summary
+## 蓝鲸智云体系介绍
+* [品牌简介](品牌简介/intro.md)
+* [核心优势](核心优势/advantages.md)
+* [解决方案]()
+    * [体系架构](解决方案/solution.md)
+    * [CI领域](解决方案/ci_intro.md)
+    * [CD领域](解决方案/cd_intro.md)
+    * [CO领域](解决方案/co_intro.md)
+* [软件信息]()
+    * [版本类别](软件信息/版本类别/version_cate.md)
+    * [版本差异](软件信息/版本差异/version_diff.md)
+* [技术支持](技术支持/support.md)
+* [生态合作]()
+    * [合作伙伴](生态合作/cooperation_partner.md)
+    * [培训认证](生态合作/training_exam.md)
+* [客户案例](客户案例/client_case.md)
+* [结语](结语/epilog.md)
