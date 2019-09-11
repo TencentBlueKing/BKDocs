@@ -3,7 +3,7 @@
 ## 蓝鲸故障自愈白皮书
 * [产品简介](Intro/README.md)
 * [名词解释](Concepts_Terminology/Concepts_Terminology.md)
-* [产品架构](Architecture/Product_Architecture.md)
+* [产品架构图](Architecture/Product_Architecture.md)
 * [产品功能]()
     * [特点及优势](Function_Introduction/Advantage.md)
     * [告警自动处理](Function_Introduction/Alarm_Automatic_Processing.md)

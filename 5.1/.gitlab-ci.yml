@@ -1,0 +1,97 @@
+# This file is a template, and might need editing before it works on your project.
+# include: 'https://can.o.qcloud.com/triggers/templates/raw/master/bkdocs-ci.yml'
+
+.build_page: &build_page |
+  [[ "$IS_TRACE" ]] && set -x
+
+  log () {
+    local timestamp=$(date +%Y%m%d%H%M%S)
+    echo -e "\033[32;1m [$timestamp] $@ \033[0m"
+  }
+
+  build_page () {
+    local tmp_path="${WEB_HOME}/bkdocs_test/${TEMP_PATH}"
+    local uls_page_path="./node_modules/gitbook-plugin-theme-uls/_layouts/website/page.html"
+
+    if [ -f book.json ]; then
+      rm -rf _book/*
+      log "--- start to install docs for ${CI_PROJECT_NAME} - ${CI_PROJECT_NAME}"
+      gitbook install
+      pwd
+      ls -lh
+      cp ${uls_page_path} ${uls_page_path}.bak -a
+      ls -lh ${uls_page_path} ${uls_page_path}.bak
+      sed -i -e '\#<h1>{{ page.title }}</h1>#d' -e '\#page.updateAt#d' ${uls_page_path}
+      cat ${uls_page_path}
+      diff ${uls_page_path} ${uls_page_path}.bak
+
+      log "--- start to build docs for ${CI_PROJECT_NAME} - ${CI_PROJECT_NAME}"
+      gitbook build .
+    else
+      log "--- can not found book.json, exit!"
+      exit 1
+    fi
+
+    log "--- sync page 4 ${CI_PROJECT_NAME} - ${CI_PROJECT_NAME}"
+    mkdir -p ${tmp_path}
+    rsync -a $CI_PROJECT_DIR/_book/ ${tmp_path}/
+
+    log "--- update favicon"
+    rsync -a /data/docsrepo/apple-touch-icon-precomposed-152.png ${tmp_path}/gitbook/images/
+    rsync -a /data/docsrepo/favicon.ico ${tmp_path}/gitbook/images/
+
+    export PROJECT_PATH="${tmp_path}"
+  }
+
+.alarm_xxx: &alarm_xxx |
+  alarm_xxx () {
+    local _msg=$@
+    _data="{\"msgtype\":\"text\",\"text\":{\"mentioned_list\":[\"${GITLAB_USER_NAME}\"],\"content\":\"${_msg}\"}}"
+    curl https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${BOT_KEY} \
+      -H 'Content-Type: application/json' \
+      -d "${_data}"
+  }
+
+# ----------------------------------------------------------------------
+stages:
+  - build
+  - sync
+
+variables:
+  #CI_DEBUG_TRACE: "true"
+  GIT_STRATEGY: clone
+  WEB_HOME: "/data/docweb"
+  TEST_FQDN: "http://123.207.78.198:8080"
+  PROD_FQDN: "https://docs.bk.tencent.com"
+  TEMP_PATH: "${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}_${CI_PIPELINE_ID}"
+  BOT_KEY: "c9b91aab-6e7a-4a11-b76f-89b5673aaac4"
+
+cache:
+  paths:
+    - node_modules
+
+page_builder:
+  stage: build
+  script:
+    - *build_page
+    - *alarm_xxx
+    - build_page
+    - alarm_xxx "仓库：${CI_PROJECT_URL}\n分支：${CI_COMMIT_REF_NAME}\n提交信息：${CI_COMMIT_MESSAGE}\n已构建成功，请访问测试环境进行验证：${TEST_FQDN}/${TEMP_PATH}/\n请在验证无误后更新至外网"
+  only:
+    - master
+    - /^update-.*$/
+    - web
+
+sync_2prod:
+  stage: sync
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - rsync -a --delete ${WEB_HOME}/bkdocs_test/${TEMP_PATH}/ ${WEB_HOME}/bkdocs/${CI_PROJECT_NAME}/
+    - rm -rf ${WEB_HOME}/bkdocs_test/${CI_PROJECT_NAME}_*
+    - *alarm_xxx
+    - alarm_xxx "仓库：${CI_PROJECT_URL}\n分支：${CI_COMMIT_REF_NAME}\n提交信息：${CI_COMMIT_MESSAGE}\n已推送至正式环境：${PROD_FQDN}/${CI_PROJECT_NAME}/"
+  when: manual
+  only:
+    - master
+

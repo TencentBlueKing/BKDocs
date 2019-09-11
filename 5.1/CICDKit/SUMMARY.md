@@ -1,10 +1,10 @@
 # Summary
 
-## 蓝鲸智云CICDKit产品白皮书
-* [产品简介](产品简介/README.md)
+## 蓝鲸智云 CICDKit 产品白皮书
+
+* [产品简介](README.md)
 * [术语解释](术语解释/term.md)
-* [产品架构图](产品架构图/chapter1.md)
-* [安装部署](安装部署/install.md)
+* [产品架构图](产品架构/chapter1.md)
 * [产品功能]()
     * [首页总览](产品功能/page.md)
     * [流水线](产品功能/pipeline.md)

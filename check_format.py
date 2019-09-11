@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import sys
 import os
 import re
@@ -32,7 +30,7 @@ def get_catalog_list(summary_list):
     catalog_list = []
     for summary in summary_list:
         catalog = []
-        with open(summary, 'r') as f:
+        with open(summary, 'r', encoding='utf-8') as f:
             for line in f:
                 if re.match(r'.*\*', line):
                    catalog.append(line.strip('\n'))
@@ -79,7 +77,7 @@ def get_catalog_json(catalog_list):
             except IndexError as e:
                 print(e)
                 print('{}SUMMARY.md format error, check the [] and (), error code 11'.format(name))
-                sys.exit(11)
+                sys.exit(1)
             if chapter.startswith('*'):
                 yaml_str += '- name: {}\n'.format(chapter_name)
                 yaml_str += '  have_children: {}\n'.format('True' if chapter_path == '' else 'False')
@@ -121,7 +119,7 @@ def get_catalog_json(catalog_list):
         except yaml.parser.ParserError as e:
             print(e)
             print('{}SUMMARY.md format error, error code 22'.format(name))
-            sys.exit(22)
+            sys.exit(1)
         f = open(
             './bookcatalog/{}.json'.format(name.split('/')[-2]),
             'w'
@@ -154,7 +152,7 @@ def check_md():
                 except TypeError as e:
                     print(e)
                     print('in {0}, Some section don\'t assign md, pls check the \'()\' in the SUMMARY of {0} '.format(filename))
-                    sys.exit(33)
+                    sys.exit(1)
 
                 for md in md_list:
                     try:
@@ -162,7 +160,7 @@ def check_md():
                     except FileNotFoundError as e:
                         print(e)
                         print('pls check the file or directory.')
-                        sys.exit(44)
+                        sys.exit(1)
                     f.close()
 
 

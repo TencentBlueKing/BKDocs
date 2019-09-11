@@ -1,3 +1,3 @@
 ## 3.产品架构
 
-![](../assets/1.png)
+![](../assets/bk-cicdkit-1.png)

@@ -1,5 +1,5 @@
-### 修改settings配置 {#settings}
+### 修改 settings 配置 {#settings}
 
-打开 conf/settings_custom.py 文件，找到I NSTALL_APPS_CUSTOM，加入步骤1）中创建的 custom_atoms。
+打开 conf/settings_custom.py 文件，找到 I NSTALL_APPS_CUSTOM，加入步骤 1）中创建的 custom_atoms。
 
 ![](../assets/32.png)

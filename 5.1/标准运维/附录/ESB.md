@@ -1,4 +1,4 @@
-### 接入ESB API {#ESB}
+### 接入 ESB API {#ESB}
 
 如果需要调用自定义的 API，请在完成 ESB 接入后，更新标准运维 bluking/component 下的文件。
 

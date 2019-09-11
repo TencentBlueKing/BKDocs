@@ -1,7 +1,8 @@
 before_script:
   - yum install epel-release -y
-  - yum install  python2-pip -y
-  - pip install pyyaml
+  - yum install python36 -y
+  - yum install python36-pip -y
+  - pip3 install pyyaml
 #  - pip install hint
 
 .alarm_auther: &alarm_auther |
@@ -48,6 +49,6 @@ job1:
 #    - *checkHint
     - valid
 #    - Hint bcs ${BCS_DOC_AUTHOR}
-    - python check_format.py
+    - python3 check_format.py
   only:
     - master
