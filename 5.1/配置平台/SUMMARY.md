@@ -1,0 +1,23 @@
+# Summary
+
+## 蓝鲸配置平台白皮书
+* [产品简介](README.md)
+* [术语解释](术语解释/glossary.md)
+* [产品构架图](产品架构图/Architecture.md)
+* [产品功能]()
+    * [功能列表](产品功能/Function_list.md)
+    * [首页](产品功能/Home.md)
+    * [基础资源](产品功能/Resource.md)
+    * [业务资源](产品功能/BuzResource.md)
+    * [审计与分析](产品功能/OperationAnalysis.md)
+    * [权限控制](产品功能/PermissionsControl.md)
+    * [模型管理](产品功能/ModelManagement.md)  
+    * [我的收藏](产品功能/Collection.md)
+* [快速入门]()
+    * [如何创建业务并导入主机到业务中](快速入门/case1.md)
+    * [主机由A业务模块转移到B业务模块](快速入门/case2.md)
+    * [快速入门模型和模型拓扑管理](快速入门/case3.md)
+* [场景案例]()
+    * [企业主机&资源设备的管理应用落地](场景案例/Case1.md)
+    * [实现配置信息变更自动推送实战](场景案例/Case2.md)
+* [常见问题](FAQ.md)
