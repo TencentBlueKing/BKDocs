@@ -55,7 +55,7 @@ server {
 }
 ```
 
-### open_paas 的部署{#open_paas}
+### open_paas 的部署
 
 open_paas 的项目 paas/esb/login/console/appengine，增加了一个环境变量 `PAAS_INNER_DOMAIN`。
 

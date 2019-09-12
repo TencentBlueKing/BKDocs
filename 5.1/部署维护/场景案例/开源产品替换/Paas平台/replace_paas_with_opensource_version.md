@@ -62,7 +62,7 @@
   ./bkcec activate appt
   ```
 
-### 蓝鲸官方 SaaS 应用组件的维护{#SaaS}
+### 蓝鲸官方 SaaS 应用组件的维护
 
 1.以标准运维 `bk_sops` 为例进行说明
 

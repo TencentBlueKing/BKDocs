@@ -1,6 +1,6 @@
 ## SaaS 通用部署
 
-### SaaS 说明{#saas}
+### SaaS 说明
 
 SaaS（Software as a Service）：软件即服务，是当前非常流行的一种软件交付模式，蓝鲸官方基于蓝鲸体系自研设计出底层通用的 PaaS，在此基础上可以开发成不同类型的 SaaS。
 
@@ -87,7 +87,7 @@ SaaS 安装说明：
 
 
 
-### SaaS 升级{#saas_update}
+### SaaS 升级
 
 1. 获取到最新版本的 SaaS 包后，按照 SaaS 部署的步骤到 PaaS 平台中部署上线即可。
 

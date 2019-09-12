@@ -179,7 +179,7 @@ mv frontend/desktop/static/open static/
 mv frontend/desktop/static/images static/
 ```
 
-### 三. 正式环境源码部署 {#source_code_deploy}
+### 三. 正式环境源码部署
 
 #### Fork 源代码到自己的仓库  
 通过 Fork 源代码到自己的仓库，可以进行二次开发和定制。建议公共特性开发和 bug 修复通过 Pull requests 及时提交到官方仓库。如果不需要进行二次开发，请直接在 releases 中获取打包好的版本，上传部署升级官方标准运维 SaaS。
@@ -270,7 +270,7 @@ DATABASES = {
 2) 由于标准运维接入了蓝鲸 PaaS 平台 API 网关，你需要修改标准运维网关配置
 请参考 [API 网关替换方式](https://github.com/Tencent/bk-PaaS/blob/master/docs/install/replace_ce_with_opensource.md#open_PaaS) 文档，把标准运维 API 转发到你的定制版本的接口。
 
-### 正式环境上传部署 {#upload_pack_deploy}
+### 正式环境上传部署
 
 #### Fork 源代码到自己的仓库  
 通过 Fork 源代码到自己的仓库，可以进行二次开发和定制。建议公共特性开发和 bug 修复通过 Pull requests 及时提交到官方仓库。如果不需要进行二次开发，请直接在 releases 中获取打包好的版本，上传部署升级官方标准运维 SaaS。
