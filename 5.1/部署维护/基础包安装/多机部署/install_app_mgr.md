@@ -3,7 +3,7 @@
 SaaS 部署环境分为测试环境 (APPT) 和正式环境 (APPO)，**注意测试环境与正式环境不能安装在同一台主机中**。对应的后台模块叫 `PaaS_Agent` ，正式环境和测试环境的区分主要是启动时环境变量的差异。
 
 
-![Paas-Agent依赖简图](../../assets/paaS_agent_depends.png)
+![Paas-Agent依赖简图](../../assets/paas_agent_depends.png)
 
 PaaS_Agent 使用 Python 的 `virtualenv` 工具来隔离不同的 SaaS 环境。有一些 SaaS 需要使用 `Celery` 框架，故依赖 `RabbitMQ` 。这些依赖前述步骤已经安装完成。
 
