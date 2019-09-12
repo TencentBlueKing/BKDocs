@@ -75,7 +75,7 @@
     * [补丁包部署指引]()
         * [社区版 V4.1.x 升级补丁包部署指引](升级指引/update_patch/patch_update.md)
         * [社区版 V4.0 升级至 v5.0 JobLog 日志迁移指引](升级指引/update_patch/JobLog.md)
-* [社区版补丁包通用部署指南](升级指引/update_patch/upgrade.md)
+        * [补丁包通用部署指南](升级指引/update_patch/upgrade.md)
 * [卸载指引](卸载指引/uninstall.md)
 
 ### 附录
