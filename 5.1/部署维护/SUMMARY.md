@@ -58,7 +58,7 @@
         * [迁移服务](维护手册/日常维护/migrate_module.md)
         * [单机部署增加一台 APPT](维护手册/日常维护/add_appt.md)
         * [健康检查](维护手册/日常维护/health_check.md)
-    * [机器重启](维护手册/日常维护/host_reboot.md)
+        * [机器重启](维护手册/日常维护/host_reboot.md)
 
 ### 升级卸载
 
