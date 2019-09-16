@@ -1,0 +1,1314 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>CMDB 部署详解 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="install_job.html" />
+    
+    
+    <link rel="prev" href="install_paas.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">蓝鲸部署维护文档中心</li>
+        
+        
+    
+
+    
+        
+        <li class="header">部署指引</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    部署方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../术语解释/GLOSSARY.html">
+            
+                <a href="../../术语解释/GLOSSARY.html">
+            
+                    
+                    术语解释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../部署脚本/architecture.html">
+            
+                <a href="../../部署脚本/architecture.html">
+            
+                    
+                    架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../../部署脚本/intro.html">
+            
+                <a href="../../部署脚本/intro.html">
+            
+                    
+                    部署脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    基础包安装
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../机器评估/evaluate.html">
+            
+                <a href="../机器评估/evaluate.html">
+            
+                    
+                    机器评估
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.2" data-path="../环境准备/get_ready.html">
+            
+                <a href="../环境准备/get_ready.html">
+            
+                    
+                    环境准备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.3" data-path="../软件包简介/src_overview.html">
+            
+                <a href="../软件包简介/src_overview.html">
+            
+                    
+                    软件包简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="../单机部署/install_on_single_host.html">
+            
+                <a href="../单机部署/install_on_single_host.html">
+            
+                    
+                    单机部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5" >
+            
+                <span>
+            
+                    
+                    多机部署
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.5.1" data-path="quick_install.html">
+            
+                <a href="quick_install.html">
+            
+                    
+                    标准部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5.2" data-path="install_paas.html">
+            
+                <a href="install_paas.html">
+            
+                    
+                    PaaS 部署详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.5.5.3" data-path="install_cmdb.html">
+            
+                <a href="install_cmdb.html">
+            
+                    
+                    CMDB 部署详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5.4" data-path="install_job.html">
+            
+                <a href="install_job.html">
+            
+                    
+                    JOB 部署详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5.5" data-path="install_app_mgr.html">
+            
+                <a href="install_app_mgr.html">
+            
+                    
+                    SaaS 部署详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5.6" data-path="install_bkdata.html">
+            
+                <a href="install_bkdata.html">
+            
+                    
+                    BKDATA 部署详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.6" data-path="../环境验证/check.html">
+            
+                <a href="../环境验证/check.html">
+            
+                    
+                    环境验证
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <span>
+            
+                    
+                    增加包安装
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" >
+            
+                <span>
+            
+                    
+                    容器管理平台安装
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1.1" data-path="../../增强包安装/机器评估/bcs_evaluate.html">
+            
+                <a href="../../增强包安装/机器评估/bcs_evaluate.html">
+            
+                    
+                    机器评估
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.1.2" data-path="../../增强包安装/环境准备/bcs_envprepare.html">
+            
+                <a href="../../增强包安装/环境准备/bcs_envprepare.html">
+            
+                    
+                    环境准备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.1.3" data-path="../../增强包安装/部署安装/bcs_install.html">
+            
+                <a href="../../增强包安装/部署安装/bcs_install.html">
+            
+                    
+                    安装部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <span>
+            
+                    
+                    SaaS 部署
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.7.1" data-path="../../SaaS部署/通用部署/saasdeploy.html">
+            
+                <a href="../../SaaS部署/通用部署/saasdeploy.html">
+            
+                    
+                    通用部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2" data-path="../../SaaS部署/标准运维/sops_install.html">
+            
+                <a href="../../SaaS部署/标准运维/sops_install.html">
+            
+                    
+                    标准运维
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" >
+            
+                <span>
+            
+                    
+                    合作商软件包安装
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.8.1" data-path="../../合作方软件包安装/网络管理/net_man.html">
+            
+                <a href="../../合作方软件包安装/网络管理/net_man.html">
+            
+                    
+                    网络管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.2" data-path="../../合作方软件包安装/CICDKit/CICDKit.html">
+            
+                <a href="../../合作方软件包安装/CICDKit/CICDKit.html">
+            
+                    
+                    CICDKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" >
+            
+                <span>
+            
+                    
+                    场景案例
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.9.1" data-path="../../场景案例/离线部署/offline_setup.html">
+            
+                <a href="../../场景案例/离线部署/offline_setup.html">
+            
+                    
+                    离线部署安装的配置方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.2" data-path="../../场景案例/https改造方案/guide_converting_site_http_https.html">
+            
+                <a href="../../场景案例/https改造方案/guide_converting_site_http_https.html">
+            
+                    
+                    HTTPS 改造方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.3" >
+            
+                <span>
+            
+                    
+                    开源产品替换指南
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.9.3.1" data-path="../../场景案例/开源产品替换/opensource_readme.html">
+            
+                <a href="../../场景案例/开源产品替换/opensource_readme.html">
+            
+                    
+                    开源版本替换说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.3.2" data-path="../../场景案例/开源产品替换/Paas平台/replace_paas_with_opensource_version.html">
+            
+                <a href="../../场景案例/开源产品替换/Paas平台/replace_paas_with_opensource_version.html">
+            
+                    
+                    PaaS 平台
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.3.3" data-path="../../场景案例/开源产品替换/配置平台/replace_cmdb_with_opensource_version.html">
+            
+                <a href="../../场景案例/开源产品替换/配置平台/replace_cmdb_with_opensource_version.html">
+            
+                    
+                    配置平台
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.3.4" data-path="../../场景案例/开源产品替换/标准运维/replace_sops_with_opensource_version.html">
+            
+                <a href="../../场景案例/开源产品替换/标准运维/replace_sops_with_opensource_version.html">
+            
+                    
+                    标准运维
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.3.5" data-path="../../场景案例/开源产品替换/容器平台/bcs_opensource.html">
+            
+                <a href="../../场景案例/开源产品替换/容器平台/bcs_opensource.html">
+            
+                    
+                    容器管理平台
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">日常维护</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    维护手册
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../维护手册/配置维护/configuration.html">
+            
+                <a href="../../维护手册/配置维护/configuration.html">
+            
+                    
+                    配置调整
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" >
+            
+                <span>
+            
+                    
+                    日常维护
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.2.1" data-path="../../维护手册/日常维护/maintain.html">
+            
+                <a href="../../维护手册/日常维护/maintain.html">
+            
+                    
+                    统一术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.2" data-path="../../维护手册/日常维护/login_srv.html">
+            
+                <a href="../../维护手册/日常维护/login_srv.html">
+            
+                    
+                    登陆指定服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.3" data-path="../../维护手册/日常维护/logs.html">
+            
+                <a href="../../维护手册/日常维护/logs.html">
+            
+                    
+                    查看日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.4" data-path="../../维护手册/日常维护/start_stop.html">
+            
+                <a href="../../维护手册/日常维护/start_stop.html">
+            
+                    
+                    组件启停
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.5" data-path="../../维护手册/日常维护/disk_clean.html">
+            
+                <a href="../../维护手册/日常维护/disk_clean.html">
+            
+                    
+                    磁盘清理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.6" data-path="../../维护手册/日常维护/change_domain.html">
+            
+                <a href="../../维护手册/日常维护/change_domain.html">
+            
+                    
+                    变更域名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.7" data-path="../../维护手册/日常维护/convert_https.html">
+            
+                <a href="../../维护手册/日常维护/convert_https.html">
+            
+                    
+                    HTTP 切换 HTTPS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.8" data-path="../../维护手册/日常维护/change_http_port.html">
+            
+                <a href="../../维护手册/日常维护/change_http_port.html">
+            
+                    
+                    变更默认 HTTP 端口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.9" data-path="../../维护手册/日常维护/update_cert.html">
+            
+                <a href="../../维护手册/日常维护/update_cert.html">
+            
+                    
+                    更新证书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.10" data-path="../../维护手册/日常维护/migrate_module.html">
+            
+                <a href="../../维护手册/日常维护/migrate_module.html">
+            
+                    
+                    迁移服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.11" data-path="../../维护手册/日常维护/add_appt.html">
+            
+                <a href="../../维护手册/日常维护/add_appt.html">
+            
+                    
+                    单机部署增加一台 APPT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.12" data-path="../../维护手册/日常维护/health_check.html">
+            
+                <a href="../../维护手册/日常维护/health_check.html">
+            
+                    
+                    健康检查
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../维护手册/日常维护/host_reboot.html">
+            
+                <a href="../../维护手册/日常维护/host_reboot.html">
+            
+                    
+                    机器重启
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">升级卸载</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    升级指引
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" >
+            
+                <span>
+            
+                    
+                    社区版升级至 V4.1
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1.1" data-path="../../升级指引/update2V4.1/cev31_v41.html">
+            
+                <a href="../../升级指引/update2V4.1/cev31_v41.html">
+            
+                    
+                    社区版 V3.1 升级至 V4.1 指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.2" data-path="../../升级指引/update2V4.1/cev40_v41.html">
+            
+                <a href="../../升级指引/update2V4.1/cev40_v41.html">
+            
+                    
+                    社区版 V4.0 升级至 V4.1 指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3" data-path="../../升级指引/update2V4.1/cev41_v41.x.html">
+            
+                <a href="../../升级指引/update2V4.1/cev41_v41.x.html">
+            
+                    
+                    社区版 V4.1 升级至 V4.1.16 指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" >
+            
+                <span>
+            
+                    
+                    社区版升级至 V5.0
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.1" data-path="../../升级指引/update2V5.0/cev416_v50.html">
+            
+                <a href="../../升级指引/update2V5.0/cev416_v50.html">
+            
+                    
+                    社区版 V4.1.16 升级至 v5.0 升级指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" >
+            
+                <span>
+            
+                    
+                    社区版升级至 V5.1
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1" data-path="../../升级指引/update2V5.1/cev416_v51.html">
+            
+                <a href="../../升级指引/update2V5.1/cev416_v51.html">
+            
+                    
+                    社区版 V4.1.16 升级至 v5.1 升级指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2" data-path="../../升级指引/update2V5.1/ce5.0update5.1.html">
+            
+                <a href="../../升级指引/update2V5.1/ce5.0update5.1.html">
+            
+                    
+                    社区版 V5.0 升级至 v5.1 升级指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" >
+            
+                <span>
+            
+                    
+                    补丁包部署指引
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.4.1" data-path="../../升级指引/update_patch/patch_update.html">
+            
+                <a href="../../升级指引/update_patch/patch_update.html">
+            
+                    
+                    社区版 V4.1.x 升级补丁包部署指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4.2" data-path="../../升级指引/update_patch/JobLog.html">
+            
+                <a href="../../升级指引/update_patch/JobLog.html">
+            
+                    
+                    社区版 V4.0 升级至 v5.0 JobLog 日志迁移指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4.3" data-path="../../升级指引/update_patch/upgrade.html">
+            
+                <a href="../../升级指引/update_patch/upgrade.html">
+            
+                    
+                    补丁包通用部署指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../卸载指引/uninstall.html">
+            
+                <a href="../../卸载指引/uninstall.html">
+            
+                    
+                    卸载指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">附录</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../附录/开源组件版本/version.html">
+            
+                <a href="../../附录/开源组件版本/version.html">
+            
+                    
+                    蓝鲸产品及开源组件版本
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >CMDB 部署详解</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x5B89;&#x88C5;-cmdb">&#x5B89;&#x88C5; CMDB</h2>
+<p>CMDB &#x662F;&#x84DD;&#x9CB8;&#x7684;&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x91C7;&#x7528; MongoDB &#xFF0C;&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x548C;&#x914D;&#x7F6E;&#x7BA1;&#x7406;&#x4F7F;&#x7528; ZooKeeper &#xFF0C;&#x5FEB;&#x7167;&#x6570;&#x636E;&#x4F7F;&#x7528; Redis &#x5B58;&#x50A8;&#xFF0C;&#x5FEB;&#x7167;&#x91C7;&#x96C6;&#x4F9D;&#x8D56; GSE&#x3002;</p>
+<p>CMDB &#x7684;&#x67B6;&#x6784;&#x53EF;&#x4EE5;&#x53C2;&#x8003; GitHub &#x4E0A;&#x7684; <a href="https://github.com/Tencent/bk-cmdb/blob/master/docs/overview/architecture.md" target="_blank">&#x84DD;&#x9CB8;&#x667A;&#x4E91;&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x7684;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;</a></p>
+<p>CMDB &#x4F9D;&#x8D56;&#x7684;&#x7EC4;&#x4EF6;&#x548C;&#x670D;&#x52A1;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="../../assets/cmdb_depends.png" alt="CMDB&#x4F9D;&#x8D56;&#x7B80;&#x56FE;"></p>
+<p>Github &#x4E0A;&#x4E5F;&#x6709; CMDB &#x7684;&#x5B89;&#x88C5;&#x8BF4;&#x660E;&#xFF0C;&#x84DD;&#x9CB8;&#x793E;&#x533A;&#x7248;&#x96C6;&#x6210;&#x65F6;&#x7A0D;&#x5FAE;&#x505A;&#x4E86;&#x4E9B;&#x89C4;&#x8303;&#x6539;&#x9020;&#x548C;&#x5B89;&#x88C5;&#x81EA;&#x52A8;&#x5316;&#xFF0C;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x4E3A;&#x4EC0;&#x4E48;&#x8FD9;&#x6837;&#x5B89;&#x88C5; MongoDB &#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x9605;&#x8BFB; <a href="https://github.com/Tencent/bk-cmdb/blob/master/docs/overview/installation.md" target="_blank">CMDB &#x90E8;&#x7F72;&#x6587;&#x6863;</a>&#x3002;</p>
+<h3 id="&#x5B89;&#x88C5;-mongodb">&#x5B89;&#x88C5; MongoDB</h3>
+<p>&#x5B89;&#x88C5; CMDB &#x7684;&#x4F9D;&#x8D56;&#x4E2D;&#xFF0C; MongoDB &#x662F;&#x6700;&#x91CD;&#x8981;&#x7684;&#x5B58;&#x50A8;&#x4F9D;&#x8D56;&#xFF0C;&#x4E14;&#x76EE;&#x524D;&#x53EA;&#x6709; CMDB &#x72EC;&#x4EAB;&#xFF0C;&#x6545;&#x5148;&#x4ECB;&#x7ECD; MongoDB &#x7684;&#x5B89;&#x88C5;&#xFF1A;</p>
+<pre><code class="lang-bash">./bkcec install mongodb
+./bkcec initdata mongodb
+./bkcec start mongodb
+</code></pre>
+<p>&#x8BE6;&#x89E3;&#xFF1A;</p>
+<ol>
+<li><p>MongoDB &#x4E8C;&#x8FDB;&#x5236;&#x5728;&#x84DD;&#x9CB8;&#x7684; <code>service/</code> &#x76EE;&#x5F55;&#x4E0B;&#x5DF2;&#x7ECF;&#x81EA;&#x5305;&#x542B;&#xFF0C;&#x6240;&#x4EE5;&#x5B89;&#x88C5;&#x65F6;&#x76F4;&#x63A5;&#x7528; rsync &#x5C06; <code>src/service/mongodb</code> &#x76EE;&#x5F55;&#x540C;&#x6B65;&#x5230; <code>bkce/service/</code> &#x4E0B;&#x5373;&#x53EF;&#x3002;</p>
+</li>
+<li><p>MongoDB &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6A21;&#x677F;&#x53EA;&#x6709;&#x4E00;&#x4E2A; mongodb.yaml &#xFF0C;&#x91CC;&#x9762;&#x5177;&#x4F53;&#x914D;&#x7F6E;&#x7684;&#x542B;&#x4E49;&#xFF0C;&#x8BF7;&#x53C2;&#x8003; <a href="https://docs.mongodb.com/manual/reference/configuration-options/" target="_blank">MongoDB &#x5B98;&#x65B9;&#x7684;&#x914D;&#x7F6E;&#x8BF4;&#x660E;&#x6587;&#x6863;</a></p>
+</li>
+<li><p>&#x521D;&#x59CB;&#x5316; MongoDB &#xFF1A;</p>
+<ul>
+<li><p>&#x9996;&#x5148;&#x4EE5;&#x4E0D;&#x5F00;&#x542F;&#x9274;&#x6743;&#x7684;&#x65B9;&#x5F0F;&#x542F;&#x52A8; MongoDB &#xFF0C;&#x5E76;&#x521B;&#x5EFA;&#x7BA1;&#x7406;&#x5458; <code>sysadmin</code> &#x7684;&#x89D2;&#x8272;&#xFF0C;&#x548C; &#xB7; &#x91CC;&#x5B9A;&#x4E49;&#x7684; <code>$MONGODB_USER</code> &#x7528;&#x6237;&#xFF0C;&#x5E76;&#x914D;&#x7F6E;&#x4E3A; <code>sysadmin</code> &#x89D2;&#x8272;&#x3002;</p>
+</li>
+<li><p>&#x521B;&#x5EFA; <code>bk_cmdb</code> &#x7528;&#x6237;&#xFF0C;&#x521B;&#x5EFA; CMDB &#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5E76;&#x6388;&#x4E88; <code>bk_cmdb</code> &#x7528;&#x6237;&#x8BFB;&#x5199;&#x5B83;&#x7684;&#x6743;&#x9650;&#x3002;</p>
+</li>
+<li><p>&#x5173;&#x95ED; MongoDB &#x8FDB;&#x7A0B;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x8C03;&#x7528; <code>$INSTALL_PATH/service/mongodb/bin/mongodb.sh start</code> &#x542F;&#x52A8; MongoDB&#x3002;</p>
+</li>
+</ol>
+<h3 id="&#x5B89;&#x88C5;-zookeeper">&#x5B89;&#x88C5; ZooKeeper</h3>
+<p>ZooKeeper &#x5728;&#x8FD9;&#x91CC;&#x7684;&#x7528;&#x9014;&#x662F;&#x4F5C;&#x4E3A; CMDB &#x7684;&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x7EC4;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-bash">./bkcec install zk
+./bkcec start zk
+</code></pre>
+<p>&#x8BE6;&#x89E3;:</p>
+<ol>
+<li><p>&#x62F7;&#x8D1D; Java &#x548C; ZooKeeper &#x4EE3;&#x7801;&#x76EE;&#x5F55;&#x5230; <code>$INSTALL_PATH/service/</code> &#x4E0B;&#x3002;</p>
+</li>
+<li><p>&#x6E32;&#x67D3;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6A21;&#x677F;&#xFF0C;&#x4E3B;&#x8981;&#x662F; <code>zoo.cfg</code> &#xFF0C;&#x5E76;&#x521B;&#x5EFA;&#x8F6F;&#x8FDE;&#x63A5;&#x5230; <code>$INSTALL_PATH/etc/zoo.cfg</code>&#x3002;</p>
+</li>
+<li><p>&#x542F;&#x52A8; ZooKeeper&#x3002;</p>
+</li>
+</ol>
+<h3 id="&#x5B89;&#x88C5;&#x914D;&#x7F6E;&#x5E73;&#x53F0;">&#x5B89;&#x88C5;&#x914D;&#x7F6E;&#x5E73;&#x53F0;</h3>
+<p>&#x9700;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#x7684;&#x662F; <code>CMDB</code> &#x5148;&#x542F;&#x52A8;&#xFF0C;&#x518D;&#x521D;&#x59CB;&#x5316;&#x6570;&#x636E;&#xFF1A;</p>
+<pre><code class="lang-bash">./bkcec install cmdb
+./bkcec start cmdb
+./bkcec initdata cmdb
+</code></pre>
+<p>&#x8BE6;&#x89E3;&#xFF1A;</p>
+<ol>
+<li><p>&#x5B89;&#x88C5;&#x914D;&#x7F6E;&#x5E73;&#x53F0;</p>
+<ul>
+<li><p>&#x5B89;&#x88C5;&#x4F9D;&#x8D56;&#xFF0C;&#x4ECE; <code>dependences.env</code> &#x91CC;&#x8BFB;&#x53D6;&#x5230; CMDB &#x4F9D;&#x8D56; Nginx&#x3002;&#x9700;&#x8981;&#x5148; Yum &#x5B89;&#x88C5; nginx&#x3002;</p>
+</li>
+<li><p>rsync &#x5C06; <code>src/cmdb</code>  &#x62F7;&#x8D1D;&#x5230; <code>bkcec/</code> &#x4E0B;&#x3002;</p>
+</li>
+<li><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; CMDB &#x7684;&#x865A;&#x62DF;&#x73AF;&#x5883;&#xFF0C;&#x7ED9; <code>Supervisord</code> &#x4F7F;&#x7528;&#x3002;</p>
+</li>
+<li><p>&#x6E32;&#x67D3; CMDB &#x6A21;&#x677F;&#x6587;&#x4EF6;&#x3002;</p>
+</li>
+<li><p>&#x8F6F;&#x8FDE;&#x63A5; <code>bkcec/etc/nginx.conf</code> &#x5230; <code>/etc/nginx/nginx.conf</code> &#x8986;&#x76D6; Nginx &#x9ED8;&#x8BA4;&#x7684;&#x914D;&#x7F6E;&#x3002;</p>
+</li>
+<li><p>&#x5C06; <code>globals.env</code> &#x91CC;&#x914D;&#x7F6E;&#x7684; <code>CMDB_FQDN</code> &#x57DF;&#x540D;&#x5199;&#x5165; <code>/etc/hosts</code>&#x3002;</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>&#x542F;&#x52A8;&#x914D;&#x7F6E;&#x5E73;&#x53F0;</p>
+<ul>
+<li><p>&#x9700;&#x8981;&#x7B49;&#x5F85; ZK &#x670D;&#x52A1;&#x53EF;&#x7528;&#xFF0C;&#x901A;&#x8FC7; <code>dig +short zk.service.consul</code> &#x662F;&#x5426;&#x89E3;&#x6790;&#x6210;&#x529F;&#x6765;&#x5224;&#x65AD;&#x3002;</p>
+</li>
+<li><p>&#x542F;&#x52A8; Nginx &#xFF0C;&#x5982;&#x679C; Nginx &#x8FDB;&#x7A0B;&#x5DF2;&#x7ECF;&#x542F;&#x52A8;&#xFF0C;&#x5219;&#x6267;&#x884C; <code>reload</code>&#x3002;</p>
+</li>
+<li><p><code>workon cmdb; supervisord -c $INSTALL_PATH/etc/supervisor-cmdb-server.conf</code> &#x542F;&#x52A8; CMDB &#x540E;&#x53F0;&#x8FDB;&#x7A0B;&#x3002;</p>
+</li>
+<li><p>&#x542F;&#x52A8; CMDB &#x540E;&#xFF0C;cmdb_adminserver &#x4F1A;&#x5C06;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5199;&#x5165; ZK &#x8282;&#x70B9;&#x5185;&#xFF0C;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x65F6;&#x4ECE; ZK &#x8BFB;&#x53D6;&#x914D;&#x7F6E;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;&#x5E73;&#x53F0;</p>
+<ul>
+<li><p>&#x521D;&#x59CB;&#x5316; CMDB &#x524D;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x6240;&#x6709; CMDB &#x540E;&#x53F0;&#x8FDB;&#x7A0B;&#x7684;&#x7AEF;&#x53E3;&#x5747;&#x53EF;&#x7528;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x53EF;&#x7528;&#x8BF4;&#x660E;&#x542F;&#x52A8; CMDB &#x867D;&#x7136;&#x8FDB;&#x7A0B; <code>RUNNING</code> &#xFF0C;&#x4F46;&#x662F;&#x7AEF;&#x53E3;&#x672A;&#x76D1;&#x542C;&#xFF0C;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x91CD;&#x542F; CMDB &#x3002;</p>
+</li>
+<li><p>&#x8C03;&#x7528; cmdb_adminserver &#x7684; http &#x63A5;&#x53E3;&#xFF08;/migrate/v3/migrate/community/0&#xFF09;&#xFF0C;&#x6765;&#x521D;&#x59CB;&#x5316; CMDB &#x3002;</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="&#x5B89;&#x88C5;&#x7BA1;&#x63A7;&#x5E73;&#x53F0;">&#x5B89;&#x88C5;&#x7BA1;&#x63A7;&#x5E73;&#x53F0;</h3>
+<p>&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x7684;&#x5FEB;&#x7167;&#x6570;&#x636E;&#xFF0C;&#x4F9D;&#x8D56;&#x84DD;&#x9CB8;&#x7EC4;&#x4EF6; <code>GSE</code> &#x540E;&#x53F0;&#xFF1A;</p>
+<pre><code class="lang-bash">./bkcec install gse
+./bkcec initdata gse
+./bkcec start gse
+</code></pre>
+<p>&#x8BE6;&#x89E3;&#xFF1A;</p>
+<ol>
+<li><p>&#x5B89;&#x88C5; GSE</p>
+<ul>
+<li><p>&#x62F7;&#x8D1D; GSE &#x540E;&#x53F0;&#xFF0C; cert &#x76EE;&#x5F55; &#x5230; <code>$INSTALL_PATH/</code> &#x4E0B;&#x3002;</p>
+</li>
+<li><p>&#x6839;&#x636E; <code>globals.env</code> &#x91CC;&#x662F;&#x5426;&#x81EA;&#x52A8;&#x83B7;&#x53D6;&#x5916;&#x7F51; IP &#x914D;&#x7F6E;&#xFF0C;&#x6765;&#x8BBE;&#x5B9A; GSE &#x9700;&#x8981;&#x76D1;&#x542C;&#x7684; IP &#x5730;&#x5740;&#x3002;</p>
+</li>
+<li><p>&#x6E32;&#x67D3;&#x914D;&#x7F6E;&#x6A21;&#x677F;&#x3002;</p>
+</li>
+<li><p>&#x5C06; Agent &#xFF0C; Proxy &#xFF0C;&#x548C;&#x8BC1;&#x4E66;&#x6253;&#x5305;&#xFF0C;&#x5E76;&#x4F20;&#x5230; Nginx &#x7684; <code>miniweb</code> &#x4E0B;&#xFF0C;&#x4F9B;&#x5B89;&#x88C5; Agent &#x65F6;&#x4F7F;&#x7528;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x521D;&#x59CB;&#x5316; GSE &#x7684; ZK &#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x3002;</p>
+</li>
+<li>&#x542F;&#x52A8; GSE &#x540E;&#x53F0;&#x8FDB;&#x7A0B;&#x3002;</li>
+</ol>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="install_paas.html" class="navigation navigation-prev " aria-label="Previous page: PaaS 部署详解">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="install_job.html" class="navigation navigation-next " aria-label="Next page: JOB 部署详解">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"CMDB 部署详解","level":"2.5.5.3","depth":3,"next":{"title":"JOB 部署详解","level":"2.5.5.4","depth":3,"path":"基础包安装/多机部署/install_job.md","ref":"基础包安装/多机部署/install_job.md","articles":[]},"previous":{"title":"PaaS 部署详解","level":"2.5.5.2","depth":3,"path":"基础包安装/多机部署/install_paas.md","ref":"基础包安装/多机部署/install_paas.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"基础包安装/多机部署/install_cmdb.md","mtime":"2019-09-09T03:21:08.863Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-12T09:09:04.084Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

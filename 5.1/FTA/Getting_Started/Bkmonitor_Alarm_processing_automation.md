@@ -1,5 +1,4 @@
-蓝鲸监控告警自动处理
----
+## 蓝鲸监控告警自动处理
 
 #### 情景 {#Situation}
 故障处理是运维的职能之一，人工登录服务器处理告警，存在 2 个问题：`故障处理效率低` 和 `操作疏忽时可能影响生产环境`，例如删除文件输入绝对路径时，在根目录和日志目录间误敲空格，导致根目录删除。
@@ -8,9 +7,9 @@
 
 #### 前提条件 {#Prerequisites}
 
-- [蓝鲸配置平台纳管了主机](/CD/CMDB_management_hosts.md)
-- [蓝鲸配置平台纳管了进程](/CD/CMDB_management_process.md)
-- [作业平台新建一个作业](/CD/Massive_host_control.md#New_job)
+- [蓝鲸配置平台纳管了主机](/bk_solutions/CD/CMDB/CMDB_management_hosts.html)
+- [蓝鲸配置平台纳管了进程](/bk_solutions/CD/CMDB/CMDB_management_process.html)
+- [作业平台新建一个作业](/bk_solutions/CD/CMDB/Massive_host_control.html#New_job)
 
 **术语解释**
  - **自愈套餐** : 告警的处理动作，如拉起进程的作业；
@@ -47,7 +46,7 @@
 
 ![-w1639](media/15645571501689.jpg)
 
-```
+```plain
 ## Check
 ps -ef | grep -i mysqld
 netstat -ntlp | grep -i 3306
@@ -74,9 +73,9 @@ job_success "start mariadb succ"
 
 ## 3. 自愈测试 {#Test_fta}
 
-接下来将停止 MariaDB 进程，来验证是否可以自动启动进程，以恢复DB服务。
+接下来将停止 MariaDB 进程，来验证是否可以自动启动进程，以恢复 DB 服务。
 
-```
+```plain
 # ps -ef | grep -i mysqld
 mysql      926     1  0 10:47 ?        00:00:00 /bin/sh /usr/bin/mysqld_safe --basedir=/usr
 mysql     1159   926  0 10:47 ?        00:00:09 /usr/libexec/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib64/mysql/plugin --log-error=/var/log/mariadb/mariadb.log --pid-file=/var/run/mariadb/mariadb.pid --socket=/var/lib/mysql/mysql.sock
@@ -92,7 +91,7 @@ root     16763  7429  0 19:40 pts/1    00:00:00 grep --color=auto -i mysqld
 
 ![-w1635](media/15645579997854.jpg)
 
-跳转到作业平台的执行历史，可以看到MariaDB已经启动成功。
+跳转到作业平台的执行历史，可以看到 MariaDB 已经启动成功。
 
 ![-w1635](media/15645580172760.jpg)
 
@@ -105,7 +104,7 @@ root     16763  7429  0 19:40 pts/1    00:00:00 grep --color=auto -i mysqld
 
 以上为主机监控的告警自动化处理，其他类型告警请参考对应文档：[组件监控的告警自动化处理](https://docs.bk.tencent.com/product_white_paper/bk_monitor/Component_Monitor_Fault_Auto-recovery.html)、[自定义采集的告警自动化处理](https://docs.bk.tencent.com/product_white_paper/bk_monitor/Custom_Monitor_Auto-recovery.html)。
 
-故障自动处理是把双刃剑，需要考虑因为网络波动等场景导致的假告警，这时可以用到故障自愈的`异常防御需审批`功能。具体请参照 [故障自愈的收敛防护](/CO/REST_API_PUSH_Alarm_processing_automation.html#Safe) 。
+故障自动处理是把双刃剑，需要考虑因为网络波动等场景导致的假告警，这时可以用到故障自愈的`异常防御需审批`功能。具体请参照 [故障自愈的收敛防护](../Function_Introduction/Alarm_Convergence.md) 。
 
 故障自愈，在**安全的前提下完成告警的自动化处理**。
 

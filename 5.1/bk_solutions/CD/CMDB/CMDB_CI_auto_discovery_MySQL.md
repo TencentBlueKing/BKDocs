@@ -1,6 +1,5 @@
-自动发现数据库实例：以 MySQL 为例
----
-> 感谢[嘉为科技](http://www.canwayit.com/tech/index.html)贡献该文档.
+## 自动发现数据库实例：以 MySQL 为例
+> 感谢 [嘉为科技](http://www.canwayit.com/tech/index.html) 贡献该文档.
 
 #### 情景 {#Situation}
 业务存储层是 MySQL，通过蓝鲸 CMDB 已管理 MySQL 实例，然而却是手工维护，难以长期维护。需要通过自动化的方式实现，自动发现 MySQL 实例、 MySQL CI 属性以及关联关系。

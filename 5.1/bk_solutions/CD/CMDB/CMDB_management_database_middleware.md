@@ -1,5 +1,4 @@
-管理数据库/中间件实例：以 MySQL 为例
----
+## 管理数据库/中间件实例：以 MySQL 为例
 
 #### 情景 {#Situation}
 应用使用的存储是 MySQL，为了便于 MySQL 的日常维护（如 SQL 变更），需要在 CMDB 中创建 MySQL CI 对象，录入 MySQL 实例。

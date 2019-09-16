@@ -2,6 +2,8 @@
 
 ![](media/15290519660825.jpg)
 
+此外，场景案例中的 [如何构建 Nginx 集群](../Scenes/Bcs_deploy_nginx_cluster.md) 也可以实现快速上手 BCS。
+
 ## 1. 登录蓝鲸容器服务控制台
 
 登录蓝鲸容器服务控制台。

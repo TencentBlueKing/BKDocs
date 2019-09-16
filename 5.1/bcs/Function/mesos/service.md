@@ -28,7 +28,7 @@ service 主要用**服务发现**，**DNS 基础数据**，**loadbalance 服务�
         "ports": [
             {
                 "name": "http_8080",
-                "domainName": "pre.kpgs.qq.com",
+                "domainName": "demo.bcs.com",
                 "path": "/local/path",
                 "protocol": "http",
                 "servicePort": 80,
@@ -37,7 +37,7 @@ service 主要用**服务发现**，**DNS 基础数据**，**loadbalance 服务�
             },
             {
                 "name": "tcp-28800",
-                "domainName": "tcp.pre.kpgs.qq.com",
+                "domainName": "demo.bcs.com",
                 "path": "/local/path",
                 "protocol": "tcp",
                 "servicePort": 28800,

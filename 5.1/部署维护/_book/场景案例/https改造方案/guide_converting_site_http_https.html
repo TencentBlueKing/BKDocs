@@ -1,0 +1,1335 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>HTTPS 改造方案 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../离线部署/offline_setup.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">蓝鲸部署维护文档中心</li>
+        
+        
+    
+
+    
+        
+        <li class="header">部署指引</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    部署方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../术语解释/GLOSSARY.html">
+            
+                <a href="../../术语解释/GLOSSARY.html">
+            
+                    
+                    术语解释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../部署脚本/architecture.html">
+            
+                <a href="../../部署脚本/architecture.html">
+            
+                    
+                    架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../../部署脚本/intro.html">
+            
+                <a href="../../部署脚本/intro.html">
+            
+                    
+                    部署脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    基础包安装
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../../基础包安装/机器评估/evaluate.html">
+            
+                <a href="../../基础包安装/机器评估/evaluate.html">
+            
+                    
+                    机器评估
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.2" data-path="../../基础包安装/环境准备/get_ready.html">
+            
+                <a href="../../基础包安装/环境准备/get_ready.html">
+            
+                    
+                    环境准备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.3" data-path="../../基础包安装/软件包简介/src_overview.html">
+            
+                <a href="../../基础包安装/软件包简介/src_overview.html">
+            
+                    
+                    软件包简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="../../基础包安装/单机部署/install_on_single_host.html">
+            
+                <a href="../../基础包安装/单机部署/install_on_single_host.html">
+            
+                    
+                    单机部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5" >
+            
+                <span>
+            
+                    
+                    多机部署
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.5.1" data-path="../../基础包安装/多机部署/quick_install.html">
+            
+                <a href="../../基础包安装/多机部署/quick_install.html">
+            
+                    
+                    标准部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5.2" data-path="../../基础包安装/多机部署/install_paas.html">
+            
+                <a href="../../基础包安装/多机部署/install_paas.html">
+            
+                    
+                    PaaS 部署详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5.3" data-path="../../基础包安装/多机部署/install_cmdb.html">
+            
+                <a href="../../基础包安装/多机部署/install_cmdb.html">
+            
+                    
+                    CMDB 部署详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5.4" data-path="../../基础包安装/多机部署/install_job.html">
+            
+                <a href="../../基础包安装/多机部署/install_job.html">
+            
+                    
+                    JOB 部署详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5.5" data-path="../../基础包安装/多机部署/install_app_mgr.html">
+            
+                <a href="../../基础包安装/多机部署/install_app_mgr.html">
+            
+                    
+                    SaaS 部署详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5.6" data-path="../../基础包安装/多机部署/install_bkdata.html">
+            
+                <a href="../../基础包安装/多机部署/install_bkdata.html">
+            
+                    
+                    BKDATA 部署详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.6" data-path="../../基础包安装/环境验证/check.html">
+            
+                <a href="../../基础包安装/环境验证/check.html">
+            
+                    
+                    环境验证
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <span>
+            
+                    
+                    增加包安装
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" >
+            
+                <span>
+            
+                    
+                    容器管理平台安装
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1.1" data-path="../../增强包安装/机器评估/bcs_evaluate.html">
+            
+                <a href="../../增强包安装/机器评估/bcs_evaluate.html">
+            
+                    
+                    机器评估
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.1.2" data-path="../../增强包安装/环境准备/bcs_envprepare.html">
+            
+                <a href="../../增强包安装/环境准备/bcs_envprepare.html">
+            
+                    
+                    环境准备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.1.3" data-path="../../增强包安装/部署安装/bcs_install.html">
+            
+                <a href="../../增强包安装/部署安装/bcs_install.html">
+            
+                    
+                    安装部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <span>
+            
+                    
+                    SaaS 部署
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.7.1" data-path="../../SaaS部署/通用部署/saasdeploy.html">
+            
+                <a href="../../SaaS部署/通用部署/saasdeploy.html">
+            
+                    
+                    通用部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2" data-path="../../SaaS部署/标准运维/sops_install.html">
+            
+                <a href="../../SaaS部署/标准运维/sops_install.html">
+            
+                    
+                    标准运维
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" >
+            
+                <span>
+            
+                    
+                    合作商软件包安装
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.8.1" data-path="../../合作方软件包安装/网络管理/net_man.html">
+            
+                <a href="../../合作方软件包安装/网络管理/net_man.html">
+            
+                    
+                    网络管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.2" data-path="../../合作方软件包安装/CICDKit/CICDKit.html">
+            
+                <a href="../../合作方软件包安装/CICDKit/CICDKit.html">
+            
+                    
+                    CICDKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" >
+            
+                <span>
+            
+                    
+                    场景案例
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.9.1" data-path="../离线部署/offline_setup.html">
+            
+                <a href="../离线部署/offline_setup.html">
+            
+                    
+                    离线部署安装的配置方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.9.2" data-path="guide_converting_site_http_https.html">
+            
+                <a href="guide_converting_site_http_https.html">
+            
+                    
+                    HTTPS 改造方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.3" >
+            
+                <span>
+            
+                    
+                    开源产品替换指南
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.9.3.1" data-path="../开源产品替换/opensource_readme.html">
+            
+                <a href="../开源产品替换/opensource_readme.html">
+            
+                    
+                    开源版本替换说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.3.2" data-path="../开源产品替换/Paas平台/replace_paas_with_opensource_version.html">
+            
+                <a href="../开源产品替换/Paas平台/replace_paas_with_opensource_version.html">
+            
+                    
+                    PaaS 平台
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.3.3" data-path="../开源产品替换/配置平台/replace_cmdb_with_opensource_version.html">
+            
+                <a href="../开源产品替换/配置平台/replace_cmdb_with_opensource_version.html">
+            
+                    
+                    配置平台
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.3.4" data-path="../开源产品替换/标准运维/replace_sops_with_opensource_version.html">
+            
+                <a href="../开源产品替换/标准运维/replace_sops_with_opensource_version.html">
+            
+                    
+                    标准运维
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.3.5" data-path="../开源产品替换/容器平台/bcs_opensource.html">
+            
+                <a href="../开源产品替换/容器平台/bcs_opensource.html">
+            
+                    
+                    容器管理平台
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">日常维护</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    维护手册
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../维护手册/配置维护/configuration.html">
+            
+                <a href="../../维护手册/配置维护/configuration.html">
+            
+                    
+                    配置调整
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" >
+            
+                <span>
+            
+                    
+                    日常维护
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.2.1" data-path="../../维护手册/日常维护/maintain.html">
+            
+                <a href="../../维护手册/日常维护/maintain.html">
+            
+                    
+                    统一术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.2" data-path="../../维护手册/日常维护/login_srv.html">
+            
+                <a href="../../维护手册/日常维护/login_srv.html">
+            
+                    
+                    登陆指定服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.3" data-path="../../维护手册/日常维护/logs.html">
+            
+                <a href="../../维护手册/日常维护/logs.html">
+            
+                    
+                    查看日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.4" data-path="../../维护手册/日常维护/start_stop.html">
+            
+                <a href="../../维护手册/日常维护/start_stop.html">
+            
+                    
+                    组件启停
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.5" data-path="../../维护手册/日常维护/disk_clean.html">
+            
+                <a href="../../维护手册/日常维护/disk_clean.html">
+            
+                    
+                    磁盘清理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.6" data-path="../../维护手册/日常维护/change_domain.html">
+            
+                <a href="../../维护手册/日常维护/change_domain.html">
+            
+                    
+                    变更域名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.7" data-path="../../维护手册/日常维护/convert_https.html">
+            
+                <a href="../../维护手册/日常维护/convert_https.html">
+            
+                    
+                    HTTP 切换 HTTPS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.8" data-path="../../维护手册/日常维护/change_http_port.html">
+            
+                <a href="../../维护手册/日常维护/change_http_port.html">
+            
+                    
+                    变更默认 HTTP 端口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.9" data-path="../../维护手册/日常维护/update_cert.html">
+            
+                <a href="../../维护手册/日常维护/update_cert.html">
+            
+                    
+                    更新证书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.10" data-path="../../维护手册/日常维护/migrate_module.html">
+            
+                <a href="../../维护手册/日常维护/migrate_module.html">
+            
+                    
+                    迁移服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.11" data-path="../../维护手册/日常维护/add_appt.html">
+            
+                <a href="../../维护手册/日常维护/add_appt.html">
+            
+                    
+                    单机部署增加一台 APPT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.12" data-path="../../维护手册/日常维护/health_check.html">
+            
+                <a href="../../维护手册/日常维护/health_check.html">
+            
+                    
+                    健康检查
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../维护手册/日常维护/host_reboot.html">
+            
+                <a href="../../维护手册/日常维护/host_reboot.html">
+            
+                    
+                    机器重启
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">升级卸载</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    升级指引
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" >
+            
+                <span>
+            
+                    
+                    社区版升级至 V4.1
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1.1" data-path="../../升级指引/update2V4.1/cev31_v41.html">
+            
+                <a href="../../升级指引/update2V4.1/cev31_v41.html">
+            
+                    
+                    社区版 V3.1 升级至 V4.1 指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.2" data-path="../../升级指引/update2V4.1/cev40_v41.html">
+            
+                <a href="../../升级指引/update2V4.1/cev40_v41.html">
+            
+                    
+                    社区版 V4.0 升级至 V4.1 指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.1.3" data-path="../../升级指引/update2V4.1/cev41_v41.x.html">
+            
+                <a href="../../升级指引/update2V4.1/cev41_v41.x.html">
+            
+                    
+                    社区版 V4.1 升级至 V4.1.16 指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" >
+            
+                <span>
+            
+                    
+                    社区版升级至 V5.0
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.1" data-path="../../升级指引/update2V5.0/cev416_v50.html">
+            
+                <a href="../../升级指引/update2V5.0/cev416_v50.html">
+            
+                    
+                    社区版 V4.1.16 升级至 v5.0 升级指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" >
+            
+                <span>
+            
+                    
+                    社区版升级至 V5.1
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1" data-path="../../升级指引/update2V5.1/cev416_v51.html">
+            
+                <a href="../../升级指引/update2V5.1/cev416_v51.html">
+            
+                    
+                    社区版 V4.1.16 升级至 v5.1 升级指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2" data-path="../../升级指引/update2V5.1/ce5.0update5.1.html">
+            
+                <a href="../../升级指引/update2V5.1/ce5.0update5.1.html">
+            
+                    
+                    社区版 V5.0 升级至 v5.1 升级指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" >
+            
+                <span>
+            
+                    
+                    补丁包部署指引
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.4.1" data-path="../../升级指引/update_patch/patch_update.html">
+            
+                <a href="../../升级指引/update_patch/patch_update.html">
+            
+                    
+                    社区版 V4.1.x 升级补丁包部署指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4.2" data-path="../../升级指引/update_patch/JobLog.html">
+            
+                <a href="../../升级指引/update_patch/JobLog.html">
+            
+                    
+                    社区版 V4.0 升级至 v5.0 JobLog 日志迁移指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4.3" data-path="../../升级指引/update_patch/upgrade.html">
+            
+                <a href="../../升级指引/update_patch/upgrade.html">
+            
+                    
+                    补丁包通用部署指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../卸载指引/uninstall.html">
+            
+                <a href="../../卸载指引/uninstall.html">
+            
+                    
+                    卸载指引
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">附录</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../附录/开源组件版本/version.html">
+            
+                <a href="../../附录/开源组件版本/version.html">
+            
+                    
+                    蓝鲸产品及开源组件版本
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >HTTPS 改造方案</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x84DD;&#x9CB8;&#x5168;&#x7AD9;-https-&#x6539;&#x9020;&#x65B9;&#x6848;">&#x84DD;&#x9CB8;&#x5168;&#x7AD9; HTTPS &#x6539;&#x9020;&#x65B9;&#x6848;</h2>
+<p><strong>&#x601D;&#x8DEF;</strong></p>
+<ol>
+<li><p><code>open_paas</code> nginx &#x914D;&#x7F6E; HTTPS&#x3002;</p>
+</li>
+<li><p>&#x5185;&#x90E8;&#x63A5;&#x53E3;     &#x7EDF;&#x4E00;&#x8D70; HTTP&#x3002;</p>
+</li>
+<li><p>&#x6D89;&#x53CA;&#x524D;&#x7AEF;&#x8DF3;&#x8F6C;  &#x7EDF;&#x4E00;&#x8D70; HTTPS&#x3002;</p>
+</li>
+</ol>
+<p><strong>&#x8FD0;&#x7EF4;&#x540C;&#x5B66;&#x5173;&#x6CE8; open_paas &#x90E8;&#x7F72;&#x76F8;&#x5173;</strong></p>
+<h3 id="nginx">Nginx</h3>
+<p>&#x7533;&#x8BF7;&#x5F97;&#x5230; HTTPS &#x8BC1;&#x4E66;&#xFF0C;&#x5E76;&#x914D;&#x7F6E;</p>
+<p>&#x4EE5;&#x4E0B;&#x5B9E;&#x4F8B;&#x4EC5;&#x4F9B;&#x53C2;&#x8003;(&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x4F7F;&#x7528;)&#xFF0C;&#x5177;&#x4F53;&#x751F;&#x4EA7;&#x914D;&#x7F6E;&#x8BF7;&#x91CD;&#x65B0;&#x786E;&#x8BA4;</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># http &#x81EA;&#x52A8;&#x8DF3;&#x8F6C; https</span>
+server {
+        listen       xxxx:80;
+        server_name  paas.bk.com;
+        <span class="hljs-built_in">return</span> 301 https://<span class="hljs-variable">$server_name</span><span class="hljs-variable">$request_uri</span>;
+}
+
+server {
+    listen       xxxx:443 ssl;
+    server_name  paas.bk.com;
+
+    access_log /data/bkce/logs/nginx/openpaas_access.log;
+    error_log /data/bkce/logs/nginx/openpaas_error.log;
+
+    client_max_body_size    512m;
+
+    ssl on;
+    ssl_certificate     /data/bkce/cert/bk_domain.cert;
+    ssl_certificate_key /data/bkce/cert/bk_domain.key;
+    ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
+
+    <span class="hljs-comment"># ============================ paas ============================</span>
+    <span class="hljs-comment"># PAAS_SERVICE HOST/PORT</span>
+    location / {
+        proxy_pass http://SSL_OPEN_PAAS;
+        proxy_pass_header Server;
+        proxy_set_header X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
+        proxy_set_header X-Real-IP <span class="hljs-variable">$remote_addr</span>;
+        proxy_set_header X-Scheme <span class="hljs-variable">$scheme</span>;
+        proxy_set_header Host <span class="hljs-variable">$http_host</span>;
+        proxy_redirect off;
+        proxy_read_timeout 600;
+    }
+    .........
+}
+</code></pre>
+<h3 id="openpaas-&#x7684;&#x90E8;&#x7F72;">open_paas &#x7684;&#x90E8;&#x7F72;</h3>
+<p>open_paas &#x7684;&#x9879;&#x76EE; paas/esb/login/console/appengine&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x73AF;&#x5883;&#x53D8;&#x91CF; <code>PAAS_INNER_DOMAIN</code>&#x3002;</p>
+<pre><code class="lang-python">PAAS_DOMAIN = <span class="hljs-string">&apos;__PAAS_FQDN__:__PAAS_HTTPS_PORT__&apos;</span>
+PAAS_INNER_DOMAIN = <span class="hljs-string">&apos;__PAAS_HOST__:__PAAS_HTTP_PORT__&apos;</span>
+</code></pre>
+<p>&#x9700;&#x8981;&#x786E;&#x4FDD;</p>
+<ol>
+<li><p><code>PAAS_DOMAIN</code> &#x662F;&#x5916;&#x7F51;&#x5730;&#x5740;&#xFF0C;&#x5373;&#x5230; <code>nginx</code> &#x7684;&#x5730;&#x5740;&#x3002;</p>
+</li>
+<li><p><code>PAAS_INNER_DOMAIN</code> &#x662F;&#x5185;&#x7F51;&#x5730;&#x5740;&#xFF0C;&#x5373;&#x5230; <code>consul</code> &#x7684;&#x5730;&#x5740;&#x3002;</p>
+</li>
+</ol>
+<p>&#x6B64;&#x65F6;&#xFF0C;&#x7ED9;&#x5230; <code>saas</code> &#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x90FD;&#x662F;<code>https</code>&#x3002;</p>
+<pre><code class="lang-python">BK_PAAS_HOST = <span class="hljs-string">&quot;https://%s&quot;</span> % settings.PAAS_DOMAIN
+BK_CC_HOST = <span class="hljs-string">&quot;https://%s&quot;</span> % settings.HOST_CC
+BK_JOB_HOST = <span class="hljs-string">&apos;https://%s&apos;</span> % settings.HOST_JOB
+
+BK_PAAS_INNER_HOST = <span class="hljs-string">&quot;http://%s&quot;</span> % settings.PAAS_INNER_DOMAIN
+</code></pre>
+<h3 id="&#x5176;&#x4ED6;&#x5E73;&#x53F0;&#x90E8;&#x7F72;">&#x5176;&#x4ED6;&#x5E73;&#x53F0;&#x90E8;&#x7F72;</h3>
+<p>&#x9700;&#x8981;&#x63D0;&#x4F9B;&#xFF0C;&#x662F;&#x7684;&#x4F9D;&#x8D56;&#x65B9;&#x81EA;&#x884C;&#x51B3;&#x5B9A;&#x4F7F;&#x7528;&#x5185;&#x90E8; or &#x5916;&#x90E8;&#x57DF;&#x540D;&#x3002;</p>
+<ul>
+<li><p><code>PAAS_DOMAIN</code>  &#x5916;&#x90E8; https&#xFF0C;nginx&#x3002;</p>
+</li>
+<li><p><code>PAAS_INNER_DOMAIN</code> &#x5185;&#x90E8; http&#xFF0C;consul&#x3002;</p>
+</li>
+</ul>
+<p><strong>SaaS &#x5F00;&#x53D1;&#x8005;&#x5173;&#x6CE8; <a href="https://docs.bk.tencent.com/blueapps/" target="_blank">&#x5F00;&#x53D1;&#x6846;&#x67B6;</a> &#x6539;&#x9020;</strong></p>
+<h4 id="confdefaultpy">conf/default.py</h4>
+<p>&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x914D;&#x7F6E;&#xFF1A;conf/default.py &#x6587;&#x4EF6;&#x4E2D;&#x5927;&#x6982; 50 &#x884C;&#x5904; <code>BK_PAAS_HOST = os.environ.get(&apos;BK_PAAS_HOST&apos;&#xFF0C;BK_PAAS_HOST)</code> &#x7684;&#x540E;&#x9762;&#x6DFB;&#x52A0;</p>
+<pre><code class="lang-python">BK_PAAS_INNER_HOST = os.environ.get(<span class="hljs-string">&apos;BK_PAAS_INNER_HOST&apos;</span>,BK_PAAS_HOST)
+</code></pre>
+<p>&#x6B64;&#x65F6;&#xFF0C;&#x672C;&#x5730;&#x5F00;&#x53D1;&#xFF0C;&#x6CA1;&#x6709; <code>BK_PAAS_INNER_HOST</code> &#x4F1A;&#x8D70; <code>BK_PAAS_HOST</code>&#xFF0C;&#x8D70; <code>https</code> ; &#x5728; PaaS &#x4E2D;&#x90E8;&#x7F72;&#xFF0C;&#x6709;&#x8FD9;&#x4E2A;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x4F1A;&#x8D70;&#x5185;&#x7F51; <code>http</code>&#x3002;</p>
+<p><img src="../../assets/15353433877928.png" alt=""></p>
+<h4 id="bluekingcomponentconfpy">blueking/component/conf.py</h4>
+<p>blueking/component/conf.py &#x6587;&#x4EF6;&#x4E2D;&#x5927;&#x6982; 11 &#x884C;&#x5904;&#x4FEE;&#x6539;&#x53D8;&#x91CF;</p>
+<p>&#x7EC4;&#x4EF6;&#x8C03;&#x7528;&#xFF0C; &#x5C06; <code>COMPONENT_SYSTEM_HOST</code> &#x4FEE;&#x6539;&#x4E3A; <code>INNER_HOST</code></p>
+<pre><code class="lang-python">COMPONENT_SYSTEM_HOST = getattr(settings<span class="hljs-string">&apos;BK_PAAS_INNER_HOST&apos;</span>settings.BK_PAAS_HOST)
+</code></pre>
+<p><img src="../assets/15353434175842.png" alt=""></p>
+<h4 id="accountaccountspy">account/accounts.py</h4>
+<p>account/accounts.py &#x6587;&#x4EF6;&#x4E2D;&#x5927;&#x6982; 34 &#x884C;&#x5904;&#x4FEE;&#x6539;&#x53D8;&#x91CF;&#xFF0C;&#x4FEE;&#x6539;&#x767B;&#x5F55;&#x8BBF;&#x95EE;&#x5730;&#x5740;&#x4F9D;&#x8D56;  <code>BK_PAAS_INNER_HOST</code></p>
+<pre><code class="lang-python">BK_LOGIN_VERIFY_URL = <span class="hljs-string">&quot;%s/login/accounts/is_login/&quot;</span> % getattr(settings,<span class="hljs-string">&apos;BK_PAAS_INNER_HOST&apos;</span>,settings.BK_PAAS_HOST)
+BK_GET_USER_INFO_URL = <span class="hljs-string">&quot;%s/login/accounts/get_user/&quot;</span> % getattr(settings,<span class="hljs-string">&apos;BK_PAAS_INNER_HOST&apos;</span>,settings.BK_PAAS_HOST)
+</code></pre>
+<p><img src="../../assets/15353433993101.png" alt=""></p>
+<h3 id="esb-&#x8C03;&#x7528;&#x65B9;&#x5173;&#x6CE8;-api-&#x7F51;&#x5173;&#x7528;&#x6237;-https-&#x6539;&#x9020;&#x65B9;&#x6848;">[ESB &#x8C03;&#x7528;&#x65B9;&#x5173;&#x6CE8;] API &#x7F51;&#x5173;&#x7528;&#x6237; HTTPS &#x6539;&#x9020;&#x65B9;&#x6848;</h3>
+<p>API &#x7F51;&#x5173; API &#x63D0;&#x4F9B;&#x5916;&#x90E8; HTTPS&#x3001;&#x5185;&#x90E8; HTTP &#x4E24;&#x4E2A;&#x534F;&#x8BAE;&#xFF0C;&#xFF08;&#x5185;&#x90E8;&#x8868;&#x793A;&#x4E0E; API &#x7F51;&#x5173;&#x90E8;&#x7F72;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x73AF;&#x5883;&#xFF0C;&#x53EF;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x5185;&#x90E8;&#x57DF;&#x540D;&#x89E3;&#x6790;&#x670D;&#x52A1;&#xFF09;&#x3002;</p>
+<h4 id="&#x76F4;&#x63A5;&#x901A;&#x8FC7;-url-&#x8BBF;&#x95EE;&#x7EC4;&#x4EF6;&#x7684;&#x60C5;&#x51B5;">&#x76F4;&#x63A5;&#x901A;&#x8FC7; URL &#x8BBF;&#x95EE;&#x7EC4;&#x4EF6;&#x7684;&#x60C5;&#x51B5;</h4>
+<ol>
+<li><p>&#x901A;&#x8FC7; HTTPS &#x534F;&#x8BAE;&#x8BBF;&#x95EE;&#xFF0C;&#x4F7F;&#x7528; HTTPS &#x5916;&#x90E8;&#x57DF;&#x540D;&#xFF0C;Python &#x7A0B;&#x5E8F;&#x4F7F;&#x7528; reqeusts &#x5305;&#x65F6;&#xFF0C;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x9700;&#x6DFB;&#x52A0; verify=False&#x3002;</p>
+</li>
+<li><p>&#x901A;&#x8FC7; HTTP &#x534F;&#x8BAE;&#x8BBF;&#x95EE;&#xFF0C;&#x670D;&#x52A1;&#x9700;&#x8981;&#x4E0E; API &#x7F51;&#x5173;&#x90E8;&#x7F72;&#x5728;&#x540C;&#x4E00;&#x73AF;&#x5883;&#xFF0C;&#x4F7F;&#x7528;&#x5185;&#x90E8;&#x65B0;&#x57DF;&#x540D;&#x5373;&#x53EF;&#xFF0C;&#x5176;&#x4ED6;&#x4E0D;&#x9700;&#x8981;&#x53D8;&#x52A8;&#x3002;</p>
+</li>
+</ol>
+<p>&#x6CE8;&#x610F;&#xFF1A;</p>
+<ol>
+<li><p>&#x672C;&#x5730;&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;&#xFF0C;&#x9700;&#x4F7F;&#x7528; HTTPS &#x534F;&#x8BAE;&#x3002;</p>
+</li>
+<li><p>&#x811A;&#x672C;&#x7B49;&#x4E0D;&#x786E;&#x5B9A;&#x670D;&#x52A1;&#x5668;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x9700;&#x4F7F;&#x7528; HTTPS &#x534F;&#x8BAE;&#x3002;</p>
+</li>
+<li><p>JOB&#x3001;CC &#x7B49;&#x7B2C;&#x4E09;&#x65B9;&#x7CFB;&#x7EDF;&#xFF0C;&#x5982;&#x679C;&#x6B63;&#x5F0F;&#x73AF;&#x5883;&#x4E0E; ESB &#x90E8;&#x7F72;&#x5728;&#x540C;&#x4E00;&#x73AF;&#x5883;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x89E3;&#x6790;&#x5185;&#x90E8;&#x57DF;&#x540D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; HTTP &#x534F;&#x8BAE;&#x3002;</p>
+</li>
+</ol>
+<h4 id="saas-&#x4F7F;&#x7528;&#x7EC4;&#x4EF6;-sdk-&#x7684;&#x60C5;&#x51B5;">SaaS &#x4F7F;&#x7528;&#x7EC4;&#x4EF6; SDK &#x7684;&#x60C5;&#x51B5;</h4>
+<ol>
+<li>&#x68C0;&#x67E5; blueking/component/client.py BaseComponentClient.request &#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;requests.request &#x5305;&#x542B; verify=False &#x53C2;&#x6570;&#x3002;</li>
+</ol>
+<pre><code class="lang-python"><span class="hljs-keyword">return</span> requests.request(method,url,params=params,data=data,verify=<span class="hljs-keyword">False</span>,headers=headers,**kwargs)
+</code></pre>
+<ol>
+<li>&#x914D;&#x7F6E;&#x66F4;&#x65B0;(&#x53EF;&#x9009;&#xFF0C;&#x4EE5;&#x4E0B;&#x914D;&#x7F6E;&#xFF0C;SaaS &#x6B63;&#x5F0F;&#x73AF;&#x5883;&#x4F1A;&#x4F7F;&#x7528;&#x5185;&#x90E8;&#x57DF;&#x540D;&#x8BBF;&#x95EE;&#x7EC4;&#x4EF6;)&#x3002;</li>
+</ol>
+<pre><code class="lang-python">conf/default.py
+BK_PAAS_INNER_HOST = os.environ.get(<span class="hljs-string">&apos;BK_PAAS_INNER_HOST&apos;</span>,BK_PAAS_HOST)
+
+blueking/component/conf.py
+COMPONENT_SYSTEM_HOST = getatrr(settings,<span class="hljs-string">&apos;BK_PAAS_INNER_HOST&apos;</span>,settings.BK_PAAS_HOST)
+</code></pre>
+<ol>
+<li>&#x672C;&#x5730;&#x5F00;&#x53D1;: &#x4F8B;&#x5982; saas/ &#x811A;&#x672C;&#xFF0C;&#x4F9D;&#x8D56;&#x7EBF;&#x4E0A;&#x670D;&#x52A1;&#x5730;&#x5740;&#xFF0C;&#x52A1;&#x5FC5;&#x5C06;&#x4F9D;&#x8D56;&#x5730;&#x5740;&#x6539;&#x6210; <code>https</code>&#xFF0C;&#x5426;&#x5219; <code>nginx</code> &#x4F1A;&#x81EA;&#x52A8;&#x5C06; <code>http</code> &#x8F6C; 301 &#x81F3; <code>https</code>&#xFF0C;&#x53C2;&#x6570;&#x4FE1;&#x606F;&#x4F1A;&#x4E22;&#x5931;&#xFF0C;&#x5BFC;&#x81F4;&#x8BF7;&#x6C42;&#x5F02;&#x5E38;&#x3002;</li>
+</ol>
+<h3 id="&#x4F9D;&#x8D56;&#x767B;&#x5F55;&#x5173;&#x6CE8;-&#x5176;&#x4ED6;&#x767B;&#x5F55;&#x7CFB;&#x7EDF;">[&#x4F9D;&#x8D56;&#x767B;&#x5F55;&#x5173;&#x6CE8;] &#x5176;&#x4ED6;&#x767B;&#x5F55;&#x7CFB;&#x7EDF;</h3>
+<p>&#x5185;&#x90E8;&#x8C03;&#x7528;&#x8D70; <code>PAAS_INNER_DOMAIN</code>(&#x5185;&#x90E8; consul &#x5730;&#x5740;)&#xFF0C;&#x9700;&#x8981;&#x8DF3;&#x8F6C;(&#x4F8B;&#x5982;&#x767B;&#x5F55;&#x8DF3;&#x8F6C;)&#x8D70;<code>PAAS_DOMAIN</code>(&#x56E0;&#x4E3A;&#x662F;&#x5728;&#x7528;&#x6237;&#x6D4F;&#x89C8;&#x5668;&#x4E0A;&#x8DF3;&#x8F6C;&#x7684;)&#x3002;</p>
+<ul>
+<li><p>&#x914D;&#x7F6E;  <code>PAAS_DOMAIN</code> &#x53CA; <code>PAAS_INNER_DOMAIN</code> &#x4E24;&#x4E2A;&#x5730;&#x5740;(&#x9700;&#x8FD0;&#x8425;&#x7EC4;&#x7ED9;&#x5230;&#x66FF;&#x6362;&#x53D8;&#x91CF;)&#x3002;</p>
+</li>
+<li><p>&#x8BBF;&#x95EE;  <code>/login/accounts/is_login/</code>&#x53CA;<code>/login/accounts/get_user</code>&#x53CA; ESB &#x7B49;&#xFF0C;&#x8D70; <code>PAAS_INNER_DOMAIN</code>&#x3002;</p>
+</li>
+<li><p>&#x767B;&#x5F55;&#x8DF3;&#x8F6C;&#x8D70;  <code>PAAS_DOMAIN</code>&#x3002;</p>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../离线部署/offline_setup.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 离线部署安装的配置方法">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"HTTPS 改造方案","level":"2.9.2","depth":2,"next":{"title":"开源产品替换指南","level":"2.9.3","depth":2,"ref":"","articles":[{"title":"开源版本替换说明","level":"2.9.3.1","depth":3,"path":"场景案例/开源产品替换/opensource_readme.md","ref":"场景案例/开源产品替换/opensource_readme.md","articles":[]},{"title":"PaaS 平台","level":"2.9.3.2","depth":3,"path":"场景案例/开源产品替换/Paas平台/replace_paas_with_opensource_version.md","ref":"场景案例/开源产品替换/Paas平台/replace_paas_with_opensource_version.md","articles":[]},{"title":"配置平台","level":"2.9.3.3","depth":3,"path":"场景案例/开源产品替换/配置平台/replace_cmdb_with_opensource_version.md","ref":"场景案例/开源产品替换/配置平台/replace_cmdb_with_opensource_version.md","articles":[]},{"title":"标准运维","level":"2.9.3.4","depth":3,"path":"场景案例/开源产品替换/标准运维/replace_sops_with_opensource_version.md","ref":"场景案例/开源产品替换/标准运维/replace_sops_with_opensource_version.md","articles":[]},{"title":"容器管理平台","level":"2.9.3.5","depth":3,"path":"场景案例/开源产品替换/容器平台/bcs_opensource.md","ref":"场景案例/开源产品替换/容器平台/bcs_opensource.md","articles":[]}]},"previous":{"title":"离线部署安装的配置方法","level":"2.9.1","depth":2,"path":"场景案例/离线部署/offline_setup.md","ref":"场景案例/离线部署/offline_setup.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"场景案例/https改造方案/guide_converting_site_http_https.md","mtime":"2019-09-12T02:52:23.027Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-12T09:09:04.084Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,656 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>GSE 与 Proxy 网络策略 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="network_policy_pagent.html" />
+    
+    
+    <link rel="prev" href="network_policy.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">蓝鲸节点管理白皮书</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    产品简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../术语解释/glossary.html">
+            
+                <a href="../术语解释/glossary.html">
+            
+                    
+                    术语解释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../产品架构图/architecture.html">
+            
+                <a href="../产品架构图/architecture.html">
+            
+                    
+                    产品架构图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    产品功能
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../产品功能/agent.html">
+            
+                <a href="../产品功能/agent.html">
+            
+                    
+                    Agent管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../产品功能/cloud_mgr.html">
+            
+                <a href="../产品功能/cloud_mgr.html">
+            
+                    
+                    云区域管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../产品功能/plugin_mg.html">
+            
+                <a href="../产品功能/plugin_mg.html">
+            
+                    
+                    插件管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    快速入门
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    安装直连区域的Agent
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../快速入门/agent0.html">
+            
+                <a href="../快速入门/agent0.html">
+            
+                    
+                    前置步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../快速入门/quick_setup.html">
+            
+                <a href="../快速入门/quick_setup.html">
+            
+                    
+                    快速安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../快速入门/from_cmdb.html">
+            
+                <a href="../快速入门/from_cmdb.html">
+            
+                    
+                    从 CMDB 导入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.4" data-path="../快速入门/from_excel.html">
+            
+                <a href="../快速入门/from_excel.html">
+            
+                    
+                    从 EXCEL 导入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.5" data-path="../快速入门/advance_setup.html">
+            
+                <a href="../快速入门/advance_setup.html">
+            
+                    
+                    高级安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../快速入门/pagent.html">
+            
+                <a href="../快速入门/pagent.html">
+            
+                    
+                    云区域安装P-Agent
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" >
+            
+                <span>
+            
+                    
+                    云区域管理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../快速入门/cloud_manage.html">
+            
+                <a href="../快速入门/cloud_manage.html">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="../快速入门/create_cloud.html">
+            
+                <a href="../快速入门/create_cloud.html">
+            
+                    
+                    创建云区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.3" data-path="../快速入门/add_proxy.html">
+            
+                <a href="../快速入门/add_proxy.html">
+            
+                    
+                    添加Proxy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.4" data-path="../快速入门/cloud_mgr.html">
+            
+                <a href="../快速入门/cloud_mgr.html">
+            
+                    
+                    管理云区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" >
+            
+                <span>
+            
+                    
+                    插件管理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../快速入门/plugins0.html">
+            
+                <a href="../快速入门/plugins0.html">
+            
+                    
+                    前置步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" data-path="../快速入门/process_mgr.html">
+            
+                <a href="../快速入门/process_mgr.html">
+            
+                    
+                    进程管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.3" data-path="../快速入门/upgrade_plugins.html">
+            
+                <a href="../快速入门/upgrade_plugins.html">
+            
+                    
+                    插件更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    常见问题
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    附录
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" >
+            
+                <span>
+            
+                    
+                    开通网络策略
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="network_policy.html">
+            
+                <a href="network_policy.html">
+            
+                    
+                    GSE 与直连 Agent 网络策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.1.2" data-path="network_policy_proxy.html">
+            
+                <a href="network_policy_proxy.html">
+            
+                    
+                    GSE 与 Proxy 网络策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="network_policy_pagent.html">
+            
+                <a href="network_policy_pagent.html">
+            
+                    
+                    Proxy 与 P-Agent 网络策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="smb.html">
+            
+                <a href="smb.html">
+            
+                    
+                    Windows 开 139,445 端口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="multiple_interface.html">
+            
+                <a href="multiple_interface.html">
+            
+                    
+                    多网卡配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="Agent_Status.html">
+            
+                <a href="Agent_Status.html">
+            
+                    
+                    GSE 定时任务查看
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >GSE 与 Proxy 网络策略</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="proxy-&#x548C;-gse-&#x540E;&#x53F0;&#x4E4B;&#x95F4;&#x7684;&#x7F51;&#x7EDC;&#x7B56;&#x7565;">Proxy &#x548C; GSE &#x540E;&#x53F0;&#x4E4B;&#x95F4;&#x7684;&#x7F51;&#x7EDC;&#x7B56;&#x7565;</h2>
+<p><a href="&#x9644;&#x5F55;/bkce_proxy_gse.csv" target="_blank">bkce_proxy_gse.csv</a> <table><tr><th>&#x6E90;&#x5730;&#x5740;</th><th>&#x76EE;&#x6807;&#x5730;&#x5740;</th><th>&#x534F;&#x8BAE;</th><th>&#x7AEF;&#x53E3;</th><th>&#x7528;&#x9014;</th></tr><tr><td>proxy(gse_agent)</td><td>gse_task</td><td>TCP</td><td>48533</td><td>&#x4EFB;&#x52A1;&#x670D;&#x52A1;&#x7AEF;&#x53E3;</td></tr><tr><td>proxy(gse_transit)</td><td>gse_data</td><td>TCP</td><td>58625</td><td>&#x6570;&#x636E;&#x4E0A;&#x62A5;&#x7AEF;&#x53E3;</td></tr><tr><td>proxy(gse_btsvr)</td><td>gse_btsvr</td><td>TCP</td><td>58930</td><td>bt&#x4F20;&#x8F93;</td></tr><tr><td>proxy(gse_btsvr)</td><td>gse_btsvr</td><td>TCP,UDP</td><td>10020</td><td>bt&#x4F20;&#x8F93;</td></tr><tr><td>proxy(gse_btsvr)</td><td>gse_btsvr</td><td>UDP</td><td>10030</td><td>bt&#x4F20;&#x8F93;</td></tr><tr><td>gse_btsvr</td><td>proxy(gse_btsvr)</td><td>TCP</td><td>58930</td><td>bt&#x4F20;&#x8F93;</td></tr><tr><td>gse_btsvr</td><td>proxy(gse_btsvr)</td><td>TCP,UDP</td><td>10020</td><td>bt&#x4F20;&#x8F93;</td></tr><tr><td>gse_btsvr</td><td>proxy(gse_btsvr)</td><td>UDP</td><td>10030</td><td>bt&#x4F20;&#x8F93;</td></tr><tr><td>proxy(gse_btsvr)</td><td>proxy(gse_btsvr)</td><td>TCP</td><td>58930</td><td>bt&#x4F20;&#x8F93;&#xFF08;&#x540C;&#x4E00;&#x5B50;&#x7F51;&#xFF09;</td></tr><tr><td>proxy(gse_btsvr)</td><td>proxy(gse_btsvr)</td><td>TCP,UDP</td><td>10020</td><td>bt&#x4F20;&#x8F93;&#xFF08;&#x540C;&#x4E00;&#x5B50;&#x7F51;&#xFF09;</td></tr><tr><td>proxy(gse_btsvr)</td><td>proxy(gse_btsvr)</td><td>UDP</td><td>10030</td><td>bt&#x4F20;&#x8F93;&#xFF08;&#x540C;&#x4E00;&#x5B50;&#x7F51;&#xFF09;</td></tr><tr><td>proxy(gse_opts)</td><td>gse_ops</td><td>TCP</td><td>58725</td><td>ping&#x544A;&#x8B66;&#x6570;&#x636E;&#x4E0A;&#x62A5;&#x7AEF;&#x53E3;</td></tr><tr><td>proxy(gse_agent)</td><td></td><td></td><td>&#x76D1;&#x542C;&#x968F;&#x673A;&#x7AEF;&#x53E3;</td><td>bt&#x4F20;&#x8F93;&#xFF0C;&#x53EF;&#x4E0D;&#x5F00;&#x901A;</td></tr><tr><td>proxy(gse_btsvr)</td><td></td><td></td><td>&#x76D1;&#x542C;&#x968F;&#x673A;&#x7AEF;&#x53E3;</td><td>bt&#x4F20;&#x8F93;&#xFF0C;&#x53EF;&#x4E0D;&#x5F00;&#x901A;</td></tr></table></p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="network_policy.html" class="navigation navigation-prev " aria-label="Previous page: GSE 与直连 Agent 网络策略">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="network_policy_pagent.html" class="navigation navigation-next " aria-label="Next page: Proxy 与 P-Agent 网络策略">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"GSE 与 Proxy 网络策略","level":"1.7.1.2","depth":3,"next":{"title":"Proxy 与 P-Agent 网络策略","level":"1.7.1.3","depth":3,"path":"附录/network_policy_pagent.md","ref":"附录/network_policy_pagent.md","articles":[]},"previous":{"title":"GSE 与直连 Agent 网络策略","level":"1.7.1.1","depth":3,"path":"附录/network_policy.md","ref":"附录/network_policy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","include-csv","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"include-csv":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"附录/network_policy_proxy.md","mtime":"2019-09-16T03:27:18.975Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-16T03:27:57.563Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

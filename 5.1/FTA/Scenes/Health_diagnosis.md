@@ -6,13 +6,4 @@
 ![](media/14955238707264.jpg)
 图 1. 健康诊断
 
-## 社区版可在 Django 后台调整健康诊断策略
-
-用 PaaS 管理员访问${PaaS_URL}/o/bk_fta_solutions/admin/，进入后台
-![-w515](media/15365852927672.jpg)
-图 2. 故障自愈 Django 后台
-
-点击`Advice_defs`进入健康诊断策略配置页面
-![](media/15365853180059.jpg)
-图 3. 故障自愈 Django 后台设置健康诊断建议
 

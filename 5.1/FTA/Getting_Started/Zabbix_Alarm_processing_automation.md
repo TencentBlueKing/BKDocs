@@ -1,23 +1,23 @@
-## Zabbix告警自动处理
+## Zabbix 告警自动处理
 
 #### 情景 {#Situation}
-故障处理是运维的职能之一，`Zabbix` 自带 `ActionScript`虽然可以实现告警自动处理，但存在2个问题：`无法集中管理自动处理的脚本`、`没有收敛防护，安全性无法保障`。
+故障处理是运维的职能之一，`Zabbix` 自带 `ActionScript`虽然可以实现告警自动处理，但存在 2 个问题：`无法集中管理自动处理的脚本`、`没有收敛防护，安全性无法保障`。
 
-接下来我们通过将 “**Zabbix 中磁盘使用率（vfs.fs.*）告警接入故障自愈**”这个案例 ，来了解故障自愈是如何解决这2个痛点。
+接下来我们通过将 “**Zabbix 中磁盘使用率（vfs.fs.*）告警接入故障自愈**”这个案例 ，来了解故障自愈是如何解决这 2 个痛点。
 
 #### 前提条件 {#Prerequisites}
 
-- [蓝鲸配置平台纳管了Zabbix监控的对象](/CD/CMDB_management_hosts.md)
-- 拥有Zabbix管理员账号，用于注册Zabbix Action
+- [蓝鲸配置平台纳管了 Zabbix 监控的对象](/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
+- 拥有 Zabbix 管理员账号，用于注册 Zabbix Action
 
 **术语解释**
- - **自愈套餐** : 告警的处理动作，等同于Zabbix 的 Action；
+ - **自愈套餐** : 告警的处理动作，等同于 Zabbix 的 Action；
  - **自愈方案** : 关联 告警 和 处理动作的一个组合；
 
 
 #### 操作步骤 {#Steps}
 
-- [1. 接入Zabbix 告警源](#Integration_zabbix)
+- [1. 接入 Zabbix 告警源](#Integration_zabbix)
 - [2. 接入自愈方案](#New_fta_solutions)
 - [3. 自愈测试](#Test_fta)
 
@@ -26,7 +26,7 @@
 {% video %}media/zabbix_fta.mp4{% endvideo %}
 
 
-## 1. 接入Zabbix 告警源 {#Integration_zabbix}
+## 1. 接入 Zabbix 告警源 {#Integration_zabbix}
 
 在菜单 [接入自愈] -> [管理告警源] 中，点击 **启用** Zabbix。
 
@@ -37,14 +37,14 @@
 ![-w1487](media/15644555486013.jpg)
 
 
-Zabbix接入故障自愈的逻辑是，告警产生时，执行`Action`，将告警推送至故障自愈接收告警的回调接口。
+Zabbix 接入故障自愈的逻辑是，告警产生时，执行`Action`，将告警推送至故障自愈接收告警的回调接口。
 
 接下来，我们下载并初始化该`Action`。
 
 
 ### 1.1 下载初始化脚本
 
-参照上图，进入Zabbix Action 的目录 `/usr/lib/zabbix/alertscripts`，下载初始化脚本 `zabbix_fta_alarm.py`。
+参照上图，进入 Zabbix Action 的目录 `/usr/lib/zabbix/alertscripts`，下载初始化脚本 `zabbix_fta_alarm.py`。
 
 
 
@@ -52,13 +52,13 @@ Zabbix接入故障自愈的逻辑是，告警产生时，执行`Action`，将告
 [root@37ae504b6646 alertscripts]# wget 'http://${PaaS_Host}/o/bk_fta_solutions/0/alarm_source/scripts/zabbix_fta_alarm.py?fta_application_id=66fdfe50-3075-49bf-8101-d97386030c9b&fta_application_secret=EfgBbXD25N6870j9nkgf3ns8eOEsH2Sk' -O /usr/lib/zabbix/alertscripts/zabbix_fta_alarm.py --no-check-certificate
 ```
 
-> 注：请直接复制故障自愈页面的命令，其中包含故障自愈的页面URL以及账号信息。
+> 注：请直接复制故障自愈页面的命令，其中包含故障自愈的页面 URL 以及账号信息。
 
 
 
-### 1.2 初始化Zabbix告警配置
+### 1.2 初始化 Zabbix 告警配置
 
-执行初始化Zabbix告警配置脚本 `zabbix_fta_alarm.py`，参数依次为 `--init`、`Zabbiz API URL`、`Zabbix账号`、`Zabbix密码`
+执行初始化 Zabbix 告警配置脚本 `zabbix_fta_alarm.py`，参数依次为 `--init`、`Zabbiz API URL`、`Zabbix账号`、`Zabbix密码`
 
 ```bash
 [root@37ae504b6646 alertscripts]# chmod  +x zabbix_fta_alarm.py
@@ -75,7 +75,7 @@ Zabbix接入故障自愈的逻辑是，告警产生时，执行`Action`，将告
 [2019-07-30 10:51:46,274] INFO fta: action_create success: {u'jsonrpc': u'2.0', u'result': {u'actionids': [9]}, u'id': 1}
 ```
 
-该脚本会创建一个名为`FTA_Event_Handler`的 Media Type，名为 `FTA_Act` 的Action，名为 `FTA_Mgr` 的用户。
+该脚本会创建一个名为`FTA_Event_Handler`的 Media Type，名为 `FTA_Act` 的 Action，名为 `FTA_Mgr` 的用户。
 
 ![-w1475](media/15643875269373.jpg)
 
@@ -83,9 +83,9 @@ Zabbix接入故障自愈的逻辑是，告警产生时，执行`Action`，将告
 
 ## 2. 接入自愈方案 {#New_fta_solutions}
 
-Zabbix告警源 接入成功后，接下来关联告警 和 告警的处理动作。
+Zabbix 告警源 接入成功后，接下来关联告警 和 告警的处理动作。
 
-将Zabbix 中磁盘容量告警**关联**一个磁盘清理的**处理动作**。
+将 Zabbix 中磁盘容量告警**关联**一个磁盘清理的**处理动作**。
 
 选择菜单 [接入自愈] -> [接入自愈]，点击**接入自愈**
 
@@ -106,7 +106,7 @@ Zabbix告警源 接入成功后，接下来关联告警 和 告警的处理动�
 
 ## 3. 自愈测试 {#Test_fta}
 
-生成一个大文件，使磁盘剩余空间低于20%（ Zabbix 中默认设定的 Trigger 是<20% ）
+生成一个大文件，使磁盘剩余空间低于 20%（ Zabbix 中默认设定的 Trigger 是<20% ）
 
 
 ```bash
@@ -126,7 +126,7 @@ Zabbix告警源 接入成功后，接下来关联告警 和 告警的处理动�
 4000000000字节(4.0 GB)已复制，34.0365 秒，118 MB/秒
 ```
 
-稍等片刻，收到Zabbix邮件告警，以及故障自愈的处理通知。
+稍等片刻，收到 Zabbix 邮件告警，以及故障自愈的处理通知。
 
 ![-w1306](media/15644582323388.jpg)
 
@@ -140,7 +140,7 @@ Zabbix告警源 接入成功后，接下来关联告警 和 告警的处理动�
 
 ![-w1251](media/15644580199172.jpg)
 
-从告警产生到处理结束，耗时30秒。
+从告警产生到处理结束，耗时 30 秒。
 
 **告警自动处理，如此简单**，不要再手动登录到服务器上处理告警了。
 
@@ -148,9 +148,9 @@ Zabbix告警源 接入成功后，接下来关联告警 和 告警的处理动�
 
 ### 1. 告警收敛确保安全的告警自动处理  {#Safe}
 
-选择菜单 `[高级配置]` -> `[告警收敛]`，新增高危告警的收敛规则，比如Ping告警。
+选择菜单 `[高级配置]` -> `[告警收敛]`，新增高危告警的收敛规则，比如 Ping 告警。
 
-一般网络波动时，可能触发假的Ping告警，这时不能直接重启服务器，可以通过告警收敛，让运维审批。
+一般网络波动时，可能触发假的 Ping 告警，这时不能直接重启服务器，可以通过告警收敛，让运维审批。
 
 ![-w1501](media/15644585231679.jpg)
 
@@ -162,7 +162,7 @@ Zabbix告警源 接入成功后，接下来关联告警 和 告警的处理动�
 
 这时可以使用 预警功能。
 
-我们在做该教程的时候，在同一天触发了2条磁盘使用率的自愈记录，所以产生了一条健康诊断记录。
+我们在做该教程的时候，在同一天触发了 2 条磁盘使用率的自愈记录，所以产生了一条健康诊断记录。
 
 ![-w1645](media/15644587787256.jpg)
 

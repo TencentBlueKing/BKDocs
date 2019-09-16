@@ -112,3 +112,15 @@ spec:
             fieldRef:
               fieldPath: status.podIP
 ```
+
+
+## 4. BCS 模板集操作
+
+关于 StatefulSet 在 BCS 界面的用法，请参照 [在 K8S 中部署 WordPress](../../../Scenes/Deploy_wordpress.md)。
+
+Helm 实例化 WordPress 资源描述文件如下：
+
+![](media/15684300467698.jpg)
+
+部署成功后的实例如下：
+![-w1677](media/15684299788323.jpg)

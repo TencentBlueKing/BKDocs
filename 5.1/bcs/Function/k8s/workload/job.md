@@ -36,9 +36,9 @@ spec:
   backoffLimit: 4
 ```
 ## 2.  配置项介绍
-`.spec.template`: 这里不再介绍(具体参考 Deployment 说明中的配置项介绍)
-`.spec.completions`:  标志 Job 结束需要成功运行的 Pod 个数，默认为 1
-`.spec.parallelism`:  标志并行运行的 Pod 的个数，默认为 1
-`.spec.template.spec.containers.restartPolicy`: 只能是"Never"或者"OnFailure"
-`.spec.backoffLimit`: 确定为失败前的重试次数
-`.spec.activeDeadlineSeconds`: 失败 Pod 的重试最大时间，超过这个时间不会继续重试 (No more pods will be created, and existing pods will be deleted)
+- `.spec.template`: 这里不再介绍(具体参考 Deployment 说明中的配置项介绍)
+- `.spec.completions`:  标志 Job 结束需要成功运行的 Pod 个数，默认为 1
+- `.spec.parallelism`:  标志并行运行的 Pod 的个数，默认为 1
+- `.spec.template.spec.containers.restartPolicy`: 只能是"Never"或者"OnFailure"
+- `.spec.backoffLimit`: 确定为失败前的重试次数
+- `.spec.activeDeadlineSeconds`: 失败 Pod 的重试最大时间，超过这个时间不会继续重试 (No more pods will be created, and existing pods will be deleted)

@@ -1,7 +1,5 @@
-企业原有 CMDB 同步至蓝鲸 CMDB
----
-
-> 感谢社区用户[Kevin](https://bk.tencent.com/s-mart/personal/10966/)提供该文档.
+## 企业原有 CMDB 同步至蓝鲸 CMDB
+> 感谢社区用户 [Kevin](https://bk.tencent.com/s-mart/personal/10966/) 提供该文档.
 
 #### 情景 {#Situation}
 

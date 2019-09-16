@@ -1,0 +1,869 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>操作员做应用交付，让运维更专注 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="intergration_itil.html" />
+    
+    
+    <link rel="prev" href="application_deployment.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">蓝鲸最佳实践</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    快速入门
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../Getting_started/Getting_started.html">
+            
+                <a href="../../Getting_started/Getting_started.html">
+            
+                    
+                    新手之旅
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../Getting_started/FAQ.html">
+            
+                <a href="../../Getting_started/FAQ.html">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    CI：持续集成
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../CI/Pipeline_git_commit_to_stag.html">
+            
+                <a href="../../CI/Pipeline_git_commit_to_stag.html">
+            
+                    
+                    测试环境自动更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    CD：持续交付/部署 
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    配置管理标准化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../CMDB/Configuration_management_standardization.html">
+            
+                <a href="../CMDB/Configuration_management_standardization.html">
+            
+                    
+                    概述 1 : 待审核 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../CMDB/CMDB_management_hosts.html">
+            
+                <a href="../CMDB/CMDB_management_hosts.html">
+            
+                    
+                    业务上线时管理主机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="../CMDB/CMDB_management_process.html">
+            
+                <a href="../CMDB/CMDB_management_process.html">
+            
+                    
+                    管理进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="../CMDB/CMDB_management_database_middleware.html">
+            
+                <a href="../CMDB/CMDB_management_database_middleware.html">
+            
+                    
+                    管理数据库实例：以 MySQL 为例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" data-path="../CMDB/CMDB_CI_auto_discovery_MySQL.html">
+            
+                <a href="../CMDB/CMDB_CI_auto_discovery_MySQL.html">
+            
+                    
+                    自动发现数据库实例：以 MySQL 为例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.6" data-path="../CMDB/CMDB_integration.html">
+            
+                <a href="../CMDB/CMDB_integration.html">
+            
+                    
+                    对接企业原有 CMDB，实现数据同步
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.7" data-path="../CMDB/Openfalcon_cmdb_topo_tree.html">
+            
+                <a href="../CMDB/Openfalcon_cmdb_topo_tree.html">
+            
+                    
+                    Open-Falcon 集成蓝鲸 CMDB 业务拓扑树
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    应用交付自动化 理论篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="Application_delivery_deployment_automation.html">
+            
+                <a href="Application_delivery_deployment_automation.html">
+            
+                    
+                    概述 1 : 待审核 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="Hybrid_cloud_management.html">
+            
+                <a href="Hybrid_cloud_management.html">
+            
+                    
+                    管控混合云架构下的基础设施
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="Massive_host_control.html">
+            
+                <a href="Massive_host_control.html">
+            
+                    
+                    37 秒完成万台服务器的目录标准化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="application_deployment.html">
+            
+                <a href="application_deployment.html">
+            
+                    
+                    一次标准的应用交付自动化案例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2.5" data-path="ops_half_automation.html">
+            
+                <a href="ops_half_automation.html">
+            
+                    
+                    操作员做应用交付，让运维更专注
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="intergration_itil.html">
+            
+                <a href="intergration_itil.html">
+            
+                    
+                    集成企业内部 ITIL 系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../Demand_self_service.html">
+            
+                <a href="../Demand_self_service.html">
+            
+                    
+                    需求自助化:测试自助调整验收环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" >
+            
+                <span>
+            
+                    
+                    容器编排
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="../BCS/Bcs_deploy_nginx_cluster.html">
+            
+                <a href="../BCS/Bcs_deploy_nginx_cluster.html">
+            
+                    
+                    快速构建 Nginx 集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2" data-path="../BCS/Bcs_app_Rolling_Update_Deployment.html">
+            
+                <a href="../BCS/Bcs_app_Rolling_Update_Deployment.html">
+            
+                    
+                    应用的滚动升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.3" data-path="../BCS/Bcs_blue_green_deployment.html">
+            
+                <a href="../BCS/Bcs_blue_green_deployment.html">
+            
+                    
+                    应用的蓝绿发布
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    CO ：持续运营
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    IT 基础监控
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../../CO/Monitor_Base/Send_voice_msg.html">
+            
+                <a href="../../CO/Monitor_Base/Send_voice_msg.html">
+            
+                    
+                    集成内部语音网关实现电话告警
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    业务指标监控
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../../CO/Monitor_KPI/">
+            
+                <a href="../../CO/Monitor_KPI/">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" >
+            
+                <span>
+            
+                    
+                    日志查询与监控
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../../CO/Monitor_LogSearch/">
+            
+                <a href="../../CO/Monitor_LogSearch/">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" >
+            
+                <span>
+            
+                    
+                    故障自愈
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../../CO/FTA/Alarm_processing_automation.html">
+            
+                <a href="../../CO/FTA/Alarm_processing_automation.html">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" data-path="../../CO/FTA/Bkmonitor_Alarm_processing_automation.html">
+            
+                <a href="../../CO/FTA/Bkmonitor_Alarm_processing_automation.html">
+            
+                    
+                    蓝鲸监控告警自动处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.3" data-path="../../CO/FTA/Zabbix_Alarm_processing_automation.html">
+            
+                <a href="../../CO/FTA/Zabbix_Alarm_processing_automation.html">
+            
+                    
+                    Zabbix 告警自动处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.4" data-path="../../CO/FTA/REST_API_PUSH_Alarm_processing_automation.html">
+            
+                <a href="../../CO/FTA/REST_API_PUSH_Alarm_processing_automation.html">
+            
+                    
+                    第 3 方监控系统告警自动处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" >
+            
+                <span>
+            
+                    
+                    服务流程管理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.5.1" data-path="../../CO/ITSM/Service_Request.html">
+            
+                <a href="../../CO/ITSM/Service_Request.html">
+            
+                    
+                    服务器资源申请流程线上化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.2" data-path="../../CO/ITSM/Release_Management.html">
+            
+                <a href="../../CO/ITSM/Release_Management.html">
+            
+                    
+                    应用发布流程线上化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.3" data-path="../../CO/ITSM/Change_Management.html">
+            
+                <a href="../../CO/ITSM/Change_Management.html">
+            
+                    
+                    环境变更流程线上化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.4" data-path="../../CO/ITSM/Incident_Management.html">
+            
+                <a href="../../CO/ITSM/Incident_Management.html">
+            
+                    
+                    故障提报流程线上化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >操作员做应用交付，让运维更专注</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x64CD;&#x4F5C;&#x5458;&#x505A;&#x5E94;&#x7528;&#x4EA4;&#x4ED8;&#xFF0C;&#x8BA9;&#x8FD0;&#x7EF4;&#x66F4;&#x4E13;&#x6CE8;">&#x64CD;&#x4F5C;&#x5458;&#x505A;&#x5E94;&#x7528;&#x4EA4;&#x4ED8;&#xFF0C;&#x8BA9;&#x8FD0;&#x7EF4;&#x66F4;&#x4E13;&#x6CE8;</h2>
+<h4 id="Situation">&#x60C5;&#x666F; </h4>
+<p>&#x5E94;&#x7528;&#x4EA4;&#x4ED8;&#x867D;&#x7136;&#x505A;&#x5230;&#x4E86;&#x81EA;&#x52A8;&#x5316;&#xFF0C;&#x4F46;&#x8FD0;&#x7EF4;&#x4ECD;&#x9700;&#x548C;&#x5468;&#x8FB9;&#x56E2;&#x961F;&#x8DDF;&#x8FDB;&#x6D41;&#x7A0B;&#xFF0C;&#x8017;&#x8D39;&#x5927;&#x91CF;&#x65F6;&#x95F4;&#xFF0C;&#x6B64;&#x65F6;&#x901A;&#x8FC7; <a href="https://docs.bk.tencent.com/gcloud/product.html" target="_blank">&#x6807;&#x51C6;&#x8FD0;&#x7EF4;</a> <code>&#x804C;&#x80FD;&#x5316;</code> &#x7684;&#x80FD;&#x529B;&#x5C06;&#x5E94;&#x7528;&#x4EA4;&#x4ED8;&#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x8F6C;&#x79FB;&#x7ED9;&#x64CD;&#x4F5C;&#x5458;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x8FD0;&#x7EF4; <code>blueking</code> &#x63D0;&#x4EA4;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x53D1;&#x5E03;&#x7684;&#x804C;&#x80FD;&#x5316;&#x4EFB;&#x52A1;&#x7ED9;&#x5230; <code>caozuo(&#x64CD;&#x4F5C;&#x5458;A&#xFF09;</code>&#xFF0C;<code>caozuo(&#x64CD;&#x4F5C;&#x5458;A)</code> &#x6267;&#x884C;&#x4EFB;&#x52A1;&#xFF0C;&#x8DDF;&#x8FDB;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7684;&#x8FDB;&#x5C55;&#x3002;</p>
+<h4 id="Prerequisites">&#x524D;&#x63D0;&#x6761;&#x4EF6; </h4>
+<ul>
+<li>&#x5728;&#x6807;&#x51C6;&#x8FD0;&#x7EF4;&#x4E2D; <a href="https://docs.bk.tencent.com/gcloud/function.html#flow" target="_blank">&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x6D41;&#x7A0B;</a></li>
+<li>&#x51C6;&#x5907;&#x4E24;&#x4E2A;&#x89D2;&#x8272;&#xFF1A;<code>&#x8FD0;&#x7EF4;</code> &#x548C;  <a href="https://docs.bk.tencent.com/paas/FunctionIntroduced.html#RoleManagement" target="_blank">&#x804C;&#x80FD;&#x5316;(&#x64CD;&#x4F5C;&#x5458;)</a></li>
+</ul>
+<h4 id="Steps">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4; </h4>
+<ul>
+<li><a href="#Prepare_ops_account">1. &#x51C6;&#x5907;&#x804C;&#x80FD;&#x5316;&#x89D2;&#x8272;</a></li>
+<li><a href="#Ops_create_task">2. &#x8FD0;&#x7EF4;&#x53D1;&#x8D77;&#x804C;&#x80FD;&#x5316;&#x4EFB;&#x52A1;&#x6D41;&#x7A0B;</a></li>
+<li><a href="#Ops_accept_task">3. &#x804C;&#x80FD;&#x5316;&#x8BA4;&#x9886;&#x4EFB;&#x52A1;</a></li>
+</ul>
+<h2 id="Prepare_ops_account">1. &#x51C6;&#x5907;&#x804C;&#x80FD;&#x5316;&#x89D2;&#x8272;  </h2>
+<p>&#x5728;<code>&#x7528;&#x6237;&#x7BA1;&#x7406;</code>&#x4E2D;&#x65B0;&#x589E;<code>&#x804C;&#x80FD;&#x5316;&#x8D26;&#x6237;</code>&#xFF0C;&#x5982;<code>&#x64CD;&#x4F5C;&#x5458;A</code></p>
+<p><img src="media/15626758602537.jpg" alt="-w1226"></p>
+<p>&#x5C06;&#x5176;&#x6DFB;&#x52A0;&#x81F3;&#x4E1A;&#x52A1;&#x7684;<code>&#x64CD;&#x4F5C;&#x4EBA;&#x5458;</code>&#x89D2;&#x8272;&#x4E2D;</p>
+<p><img src="media/15626757873636.jpg" alt="-w1358"></p>
+<p>&#x5728;&#x6807;&#x51C6;&#x8FD0;&#x7EF4;&#x7684;<code>&#x4E1A;&#x52A1;&#x6D41;&#x7A0B;</code>&#x4E2D;&#x7ED9;<code>&#x804C;&#x80FD;&#x5316;</code>&#x6388;&#x6743;</p>
+<p><img src="media/15626655943347.jpg" alt="-w1678"></p>
+<h2 id="Ops_create_task">2. &#x8FD0;&#x7EF4;&#x53D1;&#x8D77;&#x804C;&#x80FD;&#x5316;&#x4EFB;&#x52A1;&#x6D41;&#x7A0B; </h2>
+<p>&#x8FD0;&#x7EF4;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x53D1;&#x5E03;&#x6D41;&#x7A0B;&#xFF0C;&#x70B9;&#x51FB;<code>&#x65B0;&#x5EFA;&#x4EFB;&#x52A1;</code>&#xFF0C;&#x9009;&#x62E9;<code>&#x804C;&#x80FD;&#x5316;&#x4EFB;&#x52A1;&#x6D41;&#x7A0B;</code></p>
+<p><img src="media/15626651187357.jpg" alt="-w1673"></p>
+<h2 id="Ops_accept_task">3. &#x804C;&#x80FD;&#x5316;&#x8BA4;&#x9886;&#x4EFB;&#x52A1; </h2>
+<p>&#x7528;<code>&#x64CD;&#x4F5C;&#x5458;A</code>&#x7684;&#x89D2;&#x8272;&#x8BBF;&#x95EE;&#x6807;&#x51C6;&#x8FD0;&#x7EF4;&#xFF0C;&#x5728;<code>&#x804C;&#x80FD;&#x5316;&#x4E2D;&#x5FC3;</code>&#x4E2D;&#x8BA4;&#x9886;&#x521A;&#x624D;&#x65B0;&#x5EFA;&#x7684;<code>&#x804C;&#x80FD;&#x5316;&#x4EFB;&#x52A1;</code></p>
+<p><img src="media/15626652375328.jpg" alt="-w1484"></p>
+<p>&#x5982;&#x679C;&#x4E0D;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x53C2;&#x6570;&#xFF0C;&#x70B9;&#x51FB;<code>&#x8BA4;&#x9886;</code>&#x5373;&#x53EF;</p>
+<p><img src="media/15626653433243.jpg" alt=""></p>
+<p>&#x70B9;&#x51FB;<code>&#x6267;&#x884C;</code>&#x6309;&#x94AE;</p>
+<p><img src="media/15626726352252.jpg" alt="-w1666"></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7684;&#x72B6;&#x6001;
+<video src="media/stag_delivery.mp4" width="100%" height="100%" controls loop></video></p>
+<p>&#x5728;<code>&#x804C;&#x80FD;&#x5316;&#x4E2D;&#x5FC3;</code>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4EFB;&#x52A1;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x3002;</p>
+<p><img src="media/15627514845867.jpg" alt="-w1433"></p>
+<p>&#x5BF9;&#x5E94;&#x8FD0;&#x7EF4;&#x89C6;&#x89D2;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4EFB;&#x52A1;&#x5DF2;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x3002;</p>
+<p><img src="media/15627516202535.jpg" alt="-w1589"></p>
+<p>&#x5982;&#x6B64;&#xFF0C;&#x8FD0;&#x7EF4;&#x53EF;&#x4EE5;&#x628A;&#x65E5;&#x5E38;&#x7684;&#x5E94;&#x7528;&#x53D1;&#x5E03;&#x9700;&#x6C42;&#x63D0;&#x4EA4;&#x7ED9;&#x64CD;&#x4F5C;&#x5458;&#x6267;&#x884C;&#xFF0C;&#x91CA;&#x653E;&#x81EA;&#x5DF1;&#xFF0C;&#x628A;&#x7CBE;&#x529B;&#x591A;&#x653E;&#x5728;<code>&#x8FD0;&#x7EF4;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x8F93;&#x51FA;</code>&#x4EE5;&#x53CA;<code>&#x4E1A;&#x52A1;&#x4F18;&#x5316;</code>&#x4E0A;&#x3002;</p>
+<h2 id="Extended_reading">&#x6269;&#x5C55;&#x9605;&#x8BFB;: &#x8BBE;&#x7F6E;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x8005; </h2>
+<p>&#x64CD;&#x4F5C;&#x5458;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x6D41;&#x7A0B;&#x65F6;&#xFF0C;&#x6807;&#x51C6;&#x8FD0;&#x7EF4;&#x4ECE;<code>&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x8005;</code>&#x5B57;&#x6BB5;&#x83B7;&#x53D6;&#x8FD0;&#x7EF4;&#x4EBA;&#x5458;&#x5217;&#x8868;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x586B;&#xFF0C;&#x5219;&#x4E3A;&#x8BE5;&#x4E1A;&#x52A1;&#x7684;&#x968F;&#x673A;&#x8FD0;&#x7EF4;&#x4EBA;&#x5458;&#x3002;</p>
+<p><img src="media/15626743700020.jpg" alt="-w1349"></p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="application_deployment.html" class="navigation navigation-prev " aria-label="Previous page: 一次标准的应用交付自动化案例">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="intergration_itil.html" class="navigation navigation-next " aria-label="Next page: 集成企业内部 ITIL 系统">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"操作员做应用交付，让运维更专注","level":"1.4.2.5","depth":3,"next":{"title":"集成企业内部 ITIL 系统","level":"1.4.2.6","depth":3,"path":"CD/Automation/intergration_itil.md","ref":"CD/Automation/intergration_itil.md","articles":[]},"previous":{"title":"一次标准的应用交付自动化案例","level":"1.4.2.4","depth":3,"path":"CD/Automation/application_deployment.md","ref":"CD/Automation/application_deployment.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"CD/Automation/ops_half_automation.md","mtime":"2019-09-10T12:13:33.660Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-11T08:56:03.369Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -236,3 +236,11 @@ spec:
 `hostAliases`:  通过`hostAliases`向 hosts 文件添加额外的条目, 即本例中的
 ```127.0.0.1   game2-got.o.qcloud.com```
 
+## 4. BCS 模板集操作
+
+关于 Deployment 的实战演练，请参照 [快速构建 Nginx 集群](../../../Scenes/Bcs_deploy_nginx_cluster.md)。
+
+![-w1465](media/15684296480794.jpg)
+
+![-w1462](media/15684296585366.jpg)
+

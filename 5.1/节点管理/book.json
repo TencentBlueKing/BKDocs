@@ -1,0 +1,12 @@
+{
+    "language" : "zh-hans",
+    "plugins": [
+     "-search",
+     "-lunr",
+     "-sharing",
+     "highlight",
+     "html5-video",
+     "splitter",
+     "include-csv"
+    ]
+}

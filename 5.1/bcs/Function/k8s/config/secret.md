@@ -49,3 +49,26 @@ type: kubernetes.io/dockerconfigjson
 ## 2. 配置项介绍
 `type`字段用于指定 Secret 的类型，`data`字段存储数据信息(value 需要 base64 编码)
 
+## 3. BCS 模板集操作
+关于 Secret 的使用，请参照 [在 K8S 中部署 WordPress](../../../Scenes/Deploy_wordpress.md)：
+
+如果没有在 Chart 参数中没有设置密码，可以通过命令获取 WordPress 的 Secret。
+
+```yaml
+# kubectl  get secret -n dev
+NAME                                                TYPE                                  DATA   AGE
+wordpress-1909130255                                Opaque                                1      4h37m
+
+# kubectl  get secret/wordpress-1909130255 -n dev -o yaml
+apiVersion: v1
+data:
+  wordpress-password: bFgzTmZvSHJIVg==
+kind: Secret
+  creationTimestamp: 2019-09-13T07:01:33Z
+  name: wordpress-1909130255
+  namespace: dev
+type: Opaque
+
+# echo "bFgzTmZvSHJIVg==" | base64 --decode
+lX3NfoHrHV
+```

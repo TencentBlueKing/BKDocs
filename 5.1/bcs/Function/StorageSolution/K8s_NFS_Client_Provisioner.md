@@ -112,7 +112,6 @@ Done.
 ## 3. 创建 PVC 测试 {#createPVC}
 
 - 检查 StorageClass 是否设置成功
-
 ```bash
 # kubectl get storageclass
 NAME                   PROVISIONER   AGE
@@ -121,7 +120,7 @@ nfs-client (default)   nfs           12d
 
 - 创建 PVC
 
-```yaml
+    ```yaml
 # cat auto-clain.yaml
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -136,23 +135,51 @@ spec:
       storage: 1Gi
 ```
 
-```bash
+    ```bash
 # kubectl apply -f auto-clain.yaml
 persistentvolumeclaim/auto-claim created
+```
 
-
+    ```bash
 # kubectl get pvc
 NAME         STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 auto-claim   Bound    pvc-9803c5c5-d2f8-11e9-86f7-525400673e62   1Gi        RWX            nfs-client     13s
 ```
 
-可以看到  PVC 创建成功。
+    可以看到  PVC 创建成功。
 
 
 - 在 NFS 的挂载目录中，可以看到自动创建对应的目录。
 
-```bash
+    ```bash
 # ll
 总用量 32
 drwxrwxrwx 2 root root 4096 9月   9 19:54 default-auto-claim-pvc-9803c5c5-d2f8-11e9-86f7-525400673e62
 ```
+
+
+## 附录 1 : 默认 StorageClass 不生效
+
+指定了默认的 StorageClass，申请 PVC 不指定 StorageClass 时无法自动创建 PVC。
+
+### 1.1 问题原因
+在 [PersistentVolumeClaims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) 中提到如果想实现上述功能，除了指定了默认的 StorageClass 外，还需要开启 [DefaultStorageClass](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#defaultstorageclass)。
+
+下图是解决问题之后的截图，和出问题是配置的差异是 kube-system 命名空间下的 kube-apiserver Pod 的启动参数中多了 `DefaultStorageClass`。
+
+![](media/15682537115267.jpg)
+
+> `--admission-control` was deprecated in `1.10` and replaced with `--enable-admission-plugins`.
+
+
+### 1.2 如何解决
+
+[kube-apiserver](https://kubernetes.io/zh/docs/reference/command-line-tools-reference/kube-apiserver/) 是 [Static Pod](https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/)，修改对应配置文件即可。
+
+登录 K8S Master， 在 `/etc/kubernetes/manifests/kube-apiserver.manifest` 文件的 `admission-control` 参数后追加 `DefaultStorageClass`。
+
+将该文件移出、移入当前目录来创建 kube-apiserver POD 。
+
+重新创建 PVC，即可生效。
+
+

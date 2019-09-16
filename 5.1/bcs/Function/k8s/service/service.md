@@ -69,3 +69,9 @@ spec:
     targetPort: 6379
 ```
 
+## 4. BCS 模板集操作
+关于 Service 的实战演练，请参照 [快速构建 Nginx 集群](../../../Scenes/Bcs_deploy_nginx_cluster.md)。
+
+![-w1458](media/15684298606765.jpg)
+
+

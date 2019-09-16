@@ -13,8 +13,8 @@ kind: ConfigMap
 metadata:
   name: external-config
 data:
-    AUX_CONNECTION_STRING: jdbc:mysql://gamedb.wx-core.ffm.db:10000/db_ffm_aux
-    PUBLIC_ASSETS_URL: https://assets.ffm.qq.com/wxlive
+    AUX_CONNECTION_STRING: jdbc:mysql://demo.bcs.com:10000/db_ffm_aux
+    PUBLIC_ASSETS_URL: https://demo.bcs.com/wxlive
 ```
 全导入用法
 ```yml
@@ -64,4 +64,9 @@ data:
 ConfigMap 的配置数据存储在`data`字段中，具体参考示例模板
 
 
+## 3. BCS 模板集操作
+
+关于 ConfigMap 的实战演练，请参照 [应用的蓝绿发布](../../../Scenes/Bcs_blue_green_deployment.md)。
+
+![](media/15684304092327.jpg)
 

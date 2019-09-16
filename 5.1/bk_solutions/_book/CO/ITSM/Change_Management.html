@@ -1,0 +1,908 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>环境变更流程线上化 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Incident_Management.html" />
+    
+    
+    <link rel="prev" href="Release_Management.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">蓝鲸最佳实践</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    快速入门
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../Getting_started/Getting_started.html">
+            
+                <a href="../../Getting_started/Getting_started.html">
+            
+                    
+                    新手之旅
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../Getting_started/FAQ.html">
+            
+                <a href="../../Getting_started/FAQ.html">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    CI：持续集成
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../CI/Pipeline_git_commit_to_stag.html">
+            
+                <a href="../../CI/Pipeline_git_commit_to_stag.html">
+            
+                    
+                    测试环境自动更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    CD：持续交付/部署 
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    配置管理标准化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../../CD/CMDB/Configuration_management_standardization.html">
+            
+                <a href="../../CD/CMDB/Configuration_management_standardization.html">
+            
+                    
+                    概述 1 : 待审核 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../../CD/CMDB/CMDB_management_hosts.html">
+            
+                <a href="../../CD/CMDB/CMDB_management_hosts.html">
+            
+                    
+                    业务上线时管理主机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="../../CD/CMDB/CMDB_management_process.html">
+            
+                <a href="../../CD/CMDB/CMDB_management_process.html">
+            
+                    
+                    管理进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="../../CD/CMDB/CMDB_management_database_middleware.html">
+            
+                <a href="../../CD/CMDB/CMDB_management_database_middleware.html">
+            
+                    
+                    管理数据库实例：以 MySQL 为例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" data-path="../../CD/CMDB/CMDB_CI_auto_discovery_MySQL.html">
+            
+                <a href="../../CD/CMDB/CMDB_CI_auto_discovery_MySQL.html">
+            
+                    
+                    自动发现数据库实例：以 MySQL 为例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.6" data-path="../../CD/CMDB/CMDB_integration.html">
+            
+                <a href="../../CD/CMDB/CMDB_integration.html">
+            
+                    
+                    对接企业原有 CMDB，实现数据同步
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.7" data-path="../../CD/CMDB/Openfalcon_cmdb_topo_tree.html">
+            
+                <a href="../../CD/CMDB/Openfalcon_cmdb_topo_tree.html">
+            
+                    
+                    Open-Falcon 集成蓝鲸 CMDB 业务拓扑树
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    应用交付自动化 理论篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../CD/Automation/Application_delivery_deployment_automation.html">
+            
+                <a href="../../CD/Automation/Application_delivery_deployment_automation.html">
+            
+                    
+                    概述 1 : 待审核 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../../CD/Automation/Hybrid_cloud_management.html">
+            
+                <a href="../../CD/Automation/Hybrid_cloud_management.html">
+            
+                    
+                    管控混合云架构下的基础设施
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="../../CD/Automation/Massive_host_control.html">
+            
+                <a href="../../CD/Automation/Massive_host_control.html">
+            
+                    
+                    37 秒完成万台服务器的目录标准化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="../../CD/Automation/application_deployment.html">
+            
+                <a href="../../CD/Automation/application_deployment.html">
+            
+                    
+                    一次标准的应用交付自动化案例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.5" data-path="../../CD/Automation/ops_half_automation.html">
+            
+                <a href="../../CD/Automation/ops_half_automation.html">
+            
+                    
+                    操作员做应用交付，让运维更专注
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="../../CD/Automation/intergration_itil.html">
+            
+                <a href="../../CD/Automation/intergration_itil.html">
+            
+                    
+                    集成企业内部 ITIL 系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../CD/Demand_self_service.html">
+            
+                <a href="../../CD/Demand_self_service.html">
+            
+                    
+                    需求自助化:测试自助调整验收环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" >
+            
+                <span>
+            
+                    
+                    容器编排
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="../../CD/BCS/Bcs_deploy_nginx_cluster.html">
+            
+                <a href="../../CD/BCS/Bcs_deploy_nginx_cluster.html">
+            
+                    
+                    快速构建 Nginx 集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2" data-path="../../CD/BCS/Bcs_app_Rolling_Update_Deployment.html">
+            
+                <a href="../../CD/BCS/Bcs_app_Rolling_Update_Deployment.html">
+            
+                    
+                    应用的滚动升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.3" data-path="../../CD/BCS/Bcs_blue_green_deployment.html">
+            
+                <a href="../../CD/BCS/Bcs_blue_green_deployment.html">
+            
+                    
+                    应用的蓝绿发布
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    CO ：持续运营
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    IT 基础监控
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../Monitor_Base/Send_voice_msg.html">
+            
+                <a href="../Monitor_Base/Send_voice_msg.html">
+            
+                    
+                    集成内部语音网关实现电话告警
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    业务指标监控
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../Monitor_KPI/">
+            
+                <a href="../Monitor_KPI/">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" >
+            
+                <span>
+            
+                    
+                    日志查询与监控
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../Monitor_LogSearch/">
+            
+                <a href="../Monitor_LogSearch/">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" >
+            
+                <span>
+            
+                    
+                    故障自愈
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../FTA/Alarm_processing_automation.html">
+            
+                <a href="../FTA/Alarm_processing_automation.html">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" data-path="../FTA/Bkmonitor_Alarm_processing_automation.html">
+            
+                <a href="../FTA/Bkmonitor_Alarm_processing_automation.html">
+            
+                    
+                    蓝鲸监控告警自动处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.3" data-path="../FTA/Zabbix_Alarm_processing_automation.html">
+            
+                <a href="../FTA/Zabbix_Alarm_processing_automation.html">
+            
+                    
+                    Zabbix 告警自动处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.4" data-path="../FTA/REST_API_PUSH_Alarm_processing_automation.html">
+            
+                <a href="../FTA/REST_API_PUSH_Alarm_processing_automation.html">
+            
+                    
+                    第 3 方监控系统告警自动处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" >
+            
+                <span>
+            
+                    
+                    服务流程管理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.5.1" data-path="Service_Request.html">
+            
+                <a href="Service_Request.html">
+            
+                    
+                    服务器资源申请流程线上化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.2" data-path="Release_Management.html">
+            
+                <a href="Release_Management.html">
+            
+                    
+                    应用发布流程线上化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.5.3" data-path="Change_Management.html">
+            
+                <a href="Change_Management.html">
+            
+                    
+                    环境变更流程线上化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.4" data-path="Incident_Management.html">
+            
+                <a href="Incident_Management.html">
+            
+                    
+                    故障提报流程线上化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >环境变更流程线上化</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7A0B;&#x7EBF;&#x4E0A;&#x5316;">&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7A0B;&#x7EBF;&#x4E0A;&#x5316;</h2>
+<h4 id="Situation">&#x60C5;&#x666F; </h4>
+<p>&#x53D8;&#x66F4;&#x662F;&#x8FD0;&#x7EF4;&#x7684;&#x804C;&#x80FD;&#x4E4B;&#x4E00;&#xFF0C;&#x5305;&#x542B;&#x5E94;&#x7528;&#x7684;&#x914D;&#x7F6E;&#x3001;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#x7684;&#x73AF;&#x5883;&#x7B49;&#x53D8;&#x66F4;&#x3002;</p>
+<p>&#x5E94;&#x7528;&#x6240;&#x4F9D;&#x8D56;&#x7684;&#x670D;&#x52A1;&#x5668;&#x5DF2;&#x7ECF;&#x670D;&#x5F79; 5 &#x5E74;&#xFF0C;&#x4E0D;&#x5728;&#x7EF4;&#x4FDD;&#x671F;&#x9650;&#xFF0C;&#x6545;&#x969C;&#x7387;&#x6296;&#x5347;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x969C;&#x5E94;&#x7528;&#x7684;&#x7A33;&#x5B9A;&#x6027;&#xFF0C;&#x8FD0;&#x7EF4;&#x56E2;&#x961F;&#x8BA1;&#x5212;&#x5728;&#x4E1A;&#x52A1;&#x4F4E;&#x5CF0;&#x671F;&#xFF0C;&#x5B8C;&#x6210;&#x670D;&#x52A1;&#x5668;&#x7684;&#x4EE5;&#x65E7;&#x6362;&#x65B0;&#x3002;</p>
+<p>ITSM &#x4E2D;&#x7684;&#x53D8;&#x66F4;&#x7BA1;&#x7406;&#xFF08;Change Managent&#xFF09;&#x89C4;&#x8303;&#x4E86;&#x53D8;&#x66F4;&#x73AF;&#x8282;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x786E;&#x4FDD;<strong>&#x9AD8;&#x6548;&#x6709;&#x5E8F;&#x7684;&#x5B8C;&#x6210;&#x73AF;&#x5883;&#x53D8;&#x66F4;</strong>&#xFF0C;&#x5BF9;&#x5E94;&#x7528;&#x7684;&#x53EF;&#x7528;&#x6027;&#x8D1F;&#x8D23;&#xFF0C;&#x5E76;&#x5BF9;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x7684;&#x53D8;&#x66F4;&#x6EE1;&#x8DB3;<strong>&#x5408;&#x89C4;&#x6027;&#x68C0;&#x67E5;</strong>&#x3002;</p>
+<p>&#x53D8;&#x66F4;&#x7BA1;&#x7406;&#x662F;&#x84DD;&#x9CB8; ITSM &#x7684;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4ECB;&#x7ECD;&#x5728;&#x84DD;&#x9CB8; ITSM &#x5982;&#x4F55;<strong>&#x5B8C;&#x6210;&#x8FD9;&#x6B21;&#x670D;&#x52A1;&#x5668;&#x7684;&#x66FF;&#x6362;&#x5347;&#x7EA7;</strong>&#x3002;</p>
+<h4 id="Prerequisites">&#x524D;&#x63D0;&#x6761;&#x4EF6; </h4>
+<ul>
+<li><a href="https://docs.bk.tencent.com/bkce_install_guide/" target="_blank">&#x90E8;&#x7F72;&#x5B8C;&#x84DD;&#x9CB8;</a>&#xFF0C;&#x81EA;&#x5E26; ITSM SaaS&#x3002;</li>
+<li>&#x51C6;&#x5907;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7A0B;&#x4E2D; <a href="https://docs.bk.tencent.com/paas/FunctionIntroduced.html#RoleManagement" target="_blank">&#x591A;&#x4E2A;&#x89D2;&#x8272;</a>&#x7684;&#x8D26;&#x53F7;&#xFF0C;&#x5305;&#x542B;<code>&#x8FD0;&#x7EF4;</code>&#x3001;<code>QC</code>&#x3001;<code>&#x4EA7;&#x54C1;</code>&#xFF0C;&#x4EE5;&#x53CA;&#x6D41;&#x7A0B;&#x8BBE;&#x8BA1;&#x7684;<code>&#x7BA1;&#x7406;&#x5458;</code>&#x3002;</li>
+</ul>
+<h4 id="Steps">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4; </h4>
+<ul>
+<li><a href="#Carding_flow">1. &#x68B3;&#x7406;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7A0B;</a></li>
+<li><a href="#Create_service_directory">2. &#x521B;&#x5EFA;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x53CA;&#x6D41;&#x7A0B;</a></li>
+<li><a href="#Demo">3. &#x4E00;&#x6B21;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x793A;&#x4F8B;</a></li>
+</ul>
+<h2 id="Carding_flow">1. &#x68B3;&#x7406;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7A0B; </h2>
+<p>&#x4ECE; ITSM &#x7406;&#x8BBA;&#x51FA;&#x53D1;&#xFF0C;&#x68B3;&#x7406;<strong>&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7A0B;&#x56FE;</strong>&#xFF0C;&#x5305;&#x542B;&#x8FD0;&#x7EF4;<strong>&#x53D8;&#x66F4;&#x7533;&#x8BF7;</strong>&#x3001;<strong>&#x53D7;&#x7406;&#x53D8;&#x66F4;</strong>&#x3001;<strong>&#x53D8;&#x66F4;&#x64CD;&#x4F5C;&#x548C;&#x603B;&#x7ED3;</strong>&#xFF0C;&#x4EE5;&#x53CA;&#x6700;&#x540E;&#x8D28;&#x91CF;&#x4FDD;&#x8BC1;&#xFF08;QC&#xFF09;&#x5BF9;&#x53D8;&#x66F4;&#x7684;<strong>&#x8BC4;&#x4F30;&#x7BA1;&#x7406;</strong>&#x3002;</p>
+<p><img src="media/15659272273490.jpg" alt="-w1274"></p>
+<blockquote>
+<p>&#x6D41;&#x7A0B;&#x56FE;&#x4E2D;&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x8DF5;&#x6848;&#x4F8B;&#xFF0C;&#x90E8;&#x5206;&#x6570;&#x636E;&#x9700;&#x8981;&#x4ECE;&#x5468;&#x8FB9;&#x7CFB;&#x7EDF;&#x83B7;&#x53D6;&#xFF0C;&#x6B64;&#x5904;&#x529F;&#x80FD;&#x9700;&#x8981;&#x505A;&#x4E8C;&#x6B21;&#x5F00;&#x53D1;&#xFF0C;&#x672C;&#x6559;&#x7A0B;&#x4E13;&#x6CE8;&#x6D41;&#x7A0B;&#x672C;&#x8EAB;&#x3002;</p>
+</blockquote>
+<h2 id="Create_service_directory">2. &#x521B;&#x5EFA;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x53CA;&#x6D41;&#x7A0B; </h2>
+<p>&#x5148;&#x8BBE;&#x8BA1;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x7684;<strong>&#x6D41;&#x7A0B;</strong>&#xFF0C;<strong>&#x6D41;&#x7A0B;&#x4F9D;&#x9644;&#x5728;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x4E0A;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x670D;&#x52A1;</strong>&#x3002;</p>
+<h3 id="Authorization">2.1 &#x89D2;&#x8272;&#x8BBE;&#x7F6E; </h3>
+<p>&#x53C2;&#x7167; <a href="Release_Management.html#Authorization" target="_blank">&#x89D2;&#x8272;&#x8BBE;&#x7F6E;</a> &#x5B8C;&#x6210;&#x5BF9;<code>&#x8FD0;&#x7EF4;</code>&#x3001;<code>&#x4EA7;&#x54C1;</code>&#x548C;<code>QC</code>&#x7684;&#x6388;&#x6743;&#x3002;</p>
+<h3 id="22-&#x8BBE;&#x8BA1;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7A0B;">2.2 &#x8BBE;&#x8BA1;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7A0B;</h3>
+<h4 id="221-&#x586B;&#x5199;&#x6D41;&#x7A0B;&#x4FE1;&#x606F;">2.2.1 &#x586B;&#x5199;&#x6D41;&#x7A0B;&#x4FE1;&#x606F;</h4>
+<p>&#x9009;&#x62E9;&#x83DC;&#x5355;&#x3010;&#x6D41;&#x7A0B;&#x8BBE;&#x8BA1;&#x3011; &#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x65B0;&#x589E;&#x3011;&#x6309;&#x94AE;&#xFF0C;&#x6309;&#x63D0;&#x793A;&#x586B;&#x5199;&#x6D41;&#x7A0B;&#x4FE1;&#x606F;&#x3002;</p>
+<p><img src="media/15658666453759.jpg" alt="-w1338"></p>
+<p>&#x6D41;&#x7A0B;&#x7C7B;&#x578B;&#x9009;&#x62E9;&#x3010;&#x53D8;&#x66F4;&#x3011;&#xFF0C;&#x9700;&#x8981;&#x3010;&#x5173;&#x8054;&#x4E1A;&#x52A1;&#x3011;&#xFF0C;&#x56E0;&#x4E3A;<strong>&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x548C;&#x4E1A;&#x52A1;&#x76F8;&#x5173;</strong>&#xFF0C;&#x540C;&#x65F6;&#x5173;&#x8054;&#x4E1A;&#x52A1;&#x5BF9;&#x5E94;&#x7684;&#x89D2;&#x8272;&#xFF1A;&#x4EA7;&#x54C1;&#x3001;&#x8FD0;&#x7EF4;&#x3002;</p>
+<p>&#x70B9;&#x51FB;&#x3010;&#x4E0B;&#x4E00;&#x6B65;&#x3011;&#xFF0C;&#x8FDB;&#x5165;&#x3010;&#x5B9A;&#x4E49;&#x4E0E;&#x914D;&#x7F6E;&#x6D41;&#x7A0B;&#x3011;&#x73AF;&#x8282;&#x3002;</p>
+<h4 id="222-&#x5B9A;&#x4E49;&#x4E0E;&#x914D;&#x7F6E;&#x6D41;&#x7A0B;">2.2.2 &#x5B9A;&#x4E49;&#x4E0E;&#x914D;&#x7F6E;&#x6D41;&#x7A0B;</h4>
+<p><img src="media/15658667483286.jpg" alt="-w1337"></p>
+<p>&#x70B9;&#x51FB;&#x4E0A;&#x56FE;&#x3010;&#x6D41;&#x7A0B;&#x753B;&#x5E03;&#x3011;&#x4E2D;&#x7684;&#x3010;&#x9F7F;&#x8F6E;&#x3011;&#xFF0C;&#x914D;&#x7F6E;&#x3010;&#x63D0;&#x5355;&#x3011;&#x6D41;&#x7A0B;&#x8282;&#x70B9;&#x7684;&#x5B57;&#x6BB5;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x662F;<strong>&#x8FD0;&#x7EF4;</strong>&#x63D0;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x5355;&#x636E;&#xFF0C;&#x6240;&#x4EE5;&#x64CD;&#x4F5C;&#x89D2;&#x8272;&#x9009;&#x62E9;&#x3010;CMDB &#x4E1A;&#x52A1;&#x516C;&#x7528;&#x89D2;&#x8272;&#x3011;-&gt; &#x3010;&#x8FD0;&#x7EF4;&#x4EBA;&#x5458;&#x3011;(&#x89D2;&#x8272;&#x6388;&#x6743;&#x8BE6;&#x89C1; <a href="#Authorization">&#x7ED9;&#x89D2;&#x8272;&#x5206;&#x914D;&#x6743;&#x9650;</a> &#xFF09;&#x3002;</p>
+<p><img src="media/15658668218721.jpg" alt="-w1335"></p>
+<p>&#x70B9;&#x51FB;&#x3010;&#x65B0;&#x589E;&#x5B57;&#x6BB5;&#x3011;&#xFF0C;&#x53C2;&#x7167; <a href="#Carding_flow">&#x68B3;&#x7406;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7A0B;</a>&#xFF0C;&#x65B0;&#x589E;&#x6BCF;&#x4E2A;&#x73AF;&#x8282;&#x4E2D;&#x9700;&#x8981;&#x7684;&#x5B57;&#x6BB5;&#x3002;</p>
+<p><img src="media/15658670592201.jpg" alt="-w1285"></p>
+<p>&#x53C2;&#x7167; <a href="#Carding_flow">&#x68B3;&#x7406;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7A0B;</a>&#xFF0C;&#xFF0C;&#x5B8C;&#x6210;&#x6574;&#x4E2A;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7A0B;&#x7684;&#x914D;&#x7F6E;&#x3002;</p>
+<p><img src="media/15658682086636.jpg" alt="-w1517"></p>
+<h4 id="223-&#x542F;&#x7528;&#x6D41;&#x7A0B;">2.2.3 &#x542F;&#x7528;&#x6D41;&#x7A0B;</h4>
+<p>&#x3010;&#x542F;&#x7528;&#x6D41;&#x7A0B;&#x3011;&#xFF0C;&#x9009;&#x62E9;&#x9002;&#x5408;&#x7684;&#x901A;&#x77E5;&#x7B56;&#x7565;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x63D0;&#x4EA4;&#x3011;&#x5B8C;&#x6210;&#x6D41;&#x7A0B;&#x8BBE;&#x8BA1;&#x3002;</p>
+<p><img src="media/15658682459451.jpg" alt="-w1522"></p>
+<h4 id="224-&#x6D41;&#x7A0B;&#x6A21;&#x677F;&#x5B9E;&#x4F8B;&#x5316;">2.2.4 &#x6D41;&#x7A0B;&#x6A21;&#x677F;&#x5B9E;&#x4F8B;&#x5316;</h4>
+<p>&#x9009;&#x62E9;&#x83DC;&#x5355;&#x3010;&#x6D41;&#x7A0B;&#x8BBE;&#x8BA1;&#x3011;&#xFF0C;&#x627E;&#x5230;&#x521A;&#x7F16;&#x8F91;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7A0B;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x90E8;&#x7F72;&#x3011;&#xFF0C;&#x751F;&#x6210;&#x6D41;&#x7A0B;&#x5B9E;&#x4F8B;&#x3002;</p>
+<p><img src="media/15658682863006.jpg" alt="-w1522"></p>
+<h3 id="23-&#x5728;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x4E2D;&#x65B0;&#x589E;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x670D;&#x52A1;&#xFF0C;&#x5E76;&#x7ED1;&#x5B9A;&#x6D41;&#x7A0B;">2.3 &#x5728;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x4E2D;&#x65B0;&#x589E;&quot;&#x73AF;&#x5883;&#x53D8;&#x66F4;&quot;&#x670D;&#x52A1;&#xFF0C;&#x5E76;&#x7ED1;&#x5B9A;&#x6D41;&#x7A0B;</h3>
+<p>&#x9009;&#x62E9;&#x83DC;&#x5355;&#x3010;&#x670D;&#x52A1;&#x3011;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x65B0;&#x589E;&#x3011;&#x6309;&#x94AE;&#xFF0C;&#x65B0;&#x589E;&quot;&#x73AF;&#x5883;&#x53D8;&#x66F4;&quot;&#x670D;&#x52A1;&#xFF0C;&#x5E76;<strong>&#x5173;&#x8054;</strong>&#x521A;&#x751F;&#x6210;&#x7684;&#x6D41;&#x7A0B;&#x5B9E;&#x4F8B;&#x3002;</p>
+<p><img src="media/15658687042752.jpg" alt="-w1522"></p>
+<p>&#x9009;&#x62E9;&#x83DC;&#x5355;&#x3010;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x3011;&#xFF0C;&#x9009;&#x4E2D;&#x3010;&#x6839;&#x76EE;&#x5F55;&#x3011;&#xFF0C;&#x70B9;&#x51FB;&#x53F3;&#x4FA7;&#x3010; <strong>&#x22EE;</strong> &#x3011;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x65B0;&#x589E;&#x3011;&#xFF0C;&#x6309;&#x63D0;&#x793A;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<strong>&#x73AF;&#x5883;&#x53D8;&#x66F4;</strong>&#x7684;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x3002;</p>
+<p><img src="media/15658688170167.jpg" alt="-w1523"></p>
+<p>&#x9009;&#x4E2D;&#x521A;&#x521A;&#x521B;&#x5EFA;&#x7684;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x3010;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x3011;&#xFF0C;&#x53F3;&#x4FA7;&#x4F1A;&#x663E;&#x793A;&#x3010;&#x6DFB;&#x52A0;&#x3011;&#x6309;&#x94AE;&#xFF0C;&#x70B9;&#x51FB;&#x8BE5;&#x6309;&#x94AE;&#x6DFB;&#x52A0;<strong>&#x73AF;&#x5883;&#x53D8;&#x66F4;</strong>&#x670D;&#x52A1;&#x3002;</p>
+<p><img src="media/15658688910183.jpg" alt="-w1522"></p>
+<p>&#x81F3;&#x6B64;&#xFF0C;<strong>&#x6D41;&#x7A0B;&#x8BBE;&#x8BA1;&#x548C;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x5DF2;&#x65B0;&#x5EFA;&#x597D;</strong>&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x505A;&#x4E00;&#x6B21;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6F14;&#x793A;&#x3002;</p>
+<h2 id="Demo">3. &#x4E00;&#x6B21;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x793A;&#x4F8B; </h2>
+<p><img src="media/15658720001516.jpg" alt="-w776"></p>
+<h3 id="31-&#x8FD0;&#x7EF4;&#xFF1A;&#x53D8;&#x66F4;&#x7533;&#x8BF7;">3.1 &#x8FD0;&#x7EF4;&#xFF1A;&#x53D8;&#x66F4;&#x7533;&#x8BF7;</h3>
+<p>&#x7528;<code>&#x8FD0;&#x7EF4;</code>&#x8D26;&#x53F7;&#x767B;&#x5F55; ITSM &#xFF0C;&#x9009;&#x62E9;&#x3010;&#x53D8;&#x66F4;&#x7BA1;&#x7406;&#x3011;&#x83DC;&#x5355;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x65B0;&#x589E;&#x53D8;&#x66F4;&#x3011;&#xFF0C;&#x9009;&#x62E9;&#x3010;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x3011;&#x670D;&#x52A1;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x63D0;&#x4EA4;&#x3011;&#x3002;</p>
+<p><img src="media/15658690314017.jpg" alt="-w1574"></p>
+<p>&#x5728;&#x3010;&#x65B0;&#x589E;&#x53D8;&#x66F4;&#x3011;&#x754C;&#x9762;&#xFF0C;&#x586B;&#x5199;<strong>&#x672C;&#x6B21;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x7684;&#x5173;&#x952E;&#x4FE1;&#x606F;</strong>&#xFF0C;&#x5305;&#x62EC;&#x53D8;&#x66F4;&#x539F;&#x56E0;&#x3001;&#x8303;&#x56F4;&#x4EE5;&#x53CA;&#x65F6;&#x95F4;&#x7B49;&#x3002;</p>
+<p>&#x70B9;&#x51FB;&#x3010;&#x63D0;&#x4EA4;&#x3011;&#xFF0C;&#x5B8C;&#x6210;&#x53D8;&#x66F4;&#x7533;&#x8BF7;&#x3002;</p>
+<p><img src="media/15658696903972.jpg" alt="-w1510"></p>
+<h3 id="32-&#x8FD0;&#x7EF4;&#x7EC4;&#x957F;&#xFF1A;&#x53D8;&#x66F4;&#x5BA1;&#x6838;">3.2 &#x8FD0;&#x7EF4;&#x7EC4;&#x957F;&#xFF1A;&#x53D8;&#x66F4;&#x5BA1;&#x6838;</h3>
+<p>&#x8FD0;&#x7EF4;&#x7EC4;&#x957F;&#x6536;&#x5230;&#x4E00;&#x5C01;<strong>&#x5F85;&#x5904;&#x7406;</strong>&#x7684;<strong>&#x53D8;&#x66F4;&#x5BA1;&#x6838;</strong>&#x90AE;&#x4EF6;&#x3002;</p>
+<p><img src="media/15658700619796.jpg" alt="-w997"></p>
+<p>&#x4F7F;&#x7528;<strong>&#x8FD0;&#x7EF4;</strong>&#x8D26;&#x53F7;&#x767B;&#x5F55; ITSM &#xFF0C;&#x5728;&#x5F85;&#x529E;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x627E;&#x5230;&#x5F85;&#x5904;&#x7406;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x5355;&#x3002;</p>
+<p><img src="media/15658697525323.jpg" alt="-w1510"></p>
+<p>&#x70B9;&#x51FB;&#x94FE;&#x63A5;&#xFF0C;&#x5BA1;&#x6838;&#x672C;&#x6B21;&#x53D8;&#x66F4;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x901A;&#x8FC7;&#x3011;&#xFF0C;&#x5B8C;&#x6210;&#x672C;&#x73AF;&#x8282;&#x6D41;&#x7A0B;&#x3002;</p>
+<p><img src="media/15658697806146.jpg" alt="-w1502"></p>
+<h3 id="33-&#x8FD0;&#x7EF4;&#xFF1A;&#x53D8;&#x66F4;&#x64CD;&#x4F5C;&#x53CA;&#x603B;&#x7ED3;">3.3 &#x8FD0;&#x7EF4;&#xFF1A;&#x53D8;&#x66F4;&#x64CD;&#x4F5C;&#x53CA;&#x603B;&#x7ED3;</h3>
+<p>&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;&#x586B;&#x5199;&#x53D8;&#x66F4;&#x603B;&#x7ED3;&#x3002;</p>
+<p><img src="media/15658698294902.jpg" alt="-w1502"></p>
+<h3 id="34-qc&#xFF1A;&#x53D8;&#x66F4;&#x8BC4;&#x4F30;">3.4 QC&#xFF1A;&#x53D8;&#x66F4;&#x8BC4;&#x4F30;</h3>
+<p>QC&#xFF08;&#x8D28;&#x91CF;&#x4FDD;&#x969C;&#xFF09;&#x4EBA;&#x5458;&#x5728;&#x5DE5;&#x4F5C;&#x53F0;&#x7684;&#x5F85;&#x529E;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x627E;&#x5230;&#x672C;&#x6B21;&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x7684;&#x5355;&#x636E;&#x3002;</p>
+<p><img src="media/15658698912944.jpg" alt="-w1512"></p>
+<p>QC &#x4F9D;&#x636E;&#x8BE5;&#x4E1A;&#x52A1;&#x7684;&#x4E1A;&#x52A1;&#x5173;&#x952E;&#x6307;&#x6807;&#x6570;&#x636E;&#x3001;&#x6295;&#x8BC9;&#x60C5;&#x51B5;&#xFF0C;&#x505A;&#x51FA;<strong>&#x53D8;&#x66F4;&#x8BC4;&#x4F30;</strong>&#x3002;</p>
+<p><img src="media/15658699278776.jpg" alt="-w1522"></p>
+<p>&#x81F3;&#x6B64;&#xFF0C;&#x4E00;&#x6B21;<strong>&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x7684;&#x6D41;&#x7A0B;&#x7ED3;&#x675F;</strong>&#x3002;</p>
+<p><img src="media/15658699768290.jpg" alt="-w1666"></p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Release_Management.html" class="navigation navigation-prev " aria-label="Previous page: 应用发布流程线上化">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Incident_Management.html" class="navigation navigation-next " aria-label="Next page: 故障提报流程线上化">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"环境变更流程线上化","level":"1.5.5.3","depth":3,"next":{"title":"故障提报流程线上化","level":"1.5.5.4","depth":3,"path":"CO/ITSM/Incident_Management.md","ref":"CO/ITSM/Incident_Management.md","articles":[]},"previous":{"title":"应用发布流程线上化","level":"1.5.5.2","depth":3,"path":"CO/ITSM/Release_Management.md","ref":"CO/ITSM/Release_Management.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"CO/ITSM/Change_Management.md","mtime":"2019-09-10T12:13:39.689Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-11T08:56:03.369Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,16 +1,14 @@
-第3方监控系统告警自动处理
----
-
+## 集成 REST API 推送
 
 #### 情景 {#Situation}
 故障处理是运维的职能之一，人工登录服务器处理告警，存在 2 个问题：`故障处理效率低` 和 `操作疏忽时可能影响生产环境`，例如删除文件输入绝对路径时，在根目录和日志目录间误敲空格，导致根目录删除。
 
-前面介绍了 [蓝鲸监控](CO/Bkmonitor_Alarm_processing_automation.md)、[Zabbix](CO/Zabbix_Alarm_processing_automation.md) 告警的自动处理，接下来通过 “**REST API告警接入故障自愈**”这个案例 ，来了解故障自愈如何集成第3方监控系统。
+前面介绍了 [蓝鲸监控](Bkmonitor_Alarm_processing_automation.md)、[Zabbix](Zabbix_Alarm_processing_automation.md) 告警的自动处理，接下来通过 “**REST API 告警接入故障自愈**”这个案例 ，来了解故障自愈如何集成第 3 方监控系统。
 
 #### 前提条件 {#Prerequisites}
 
-- [蓝鲸配置平台纳管了主机](/CD/CMDB_management_hosts.md)
-- [作业平台新建一个作业](/CD/Massive_host_control.md#New_job)
+- [蓝鲸配置平台纳管了主机](/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
+- [作业平台新建一个作业](/bk_solutions/CD/Automation/Massive_host_control.md#New_job)
 
 **术语解释**
  - **自愈套餐** : 告警的处理动作，比如清理日志的作业
@@ -19,15 +17,14 @@
 
 #### 操作步骤 {#Steps}
 
-- [1. 启用REST API(推送)告警源](#Enable_restapi)
+- [1. 启用 REST API(推送)告警源](#Enable_restapi)
 - [2. 接入自愈方案](#New_fta_solutions)
 - [3. 自愈测试](#Test_fta)
-- [4. 故障自愈的收敛防护](#Safe)
 
 
-## 1. 启用REST API(推送)告警源 {#Enable_restapi}
+## 1. 启用 REST API(推送)告警源 {#Enable_restapi}
 
-第3方监控系统调用 REST API(推送)接口，故障自愈收到告警后立即做自动化处理。
+第 3 方监控系统调用 REST API(推送)接口，故障自愈收到告警后立即做自动化处理。
 
 ![告警自动处理RESTAPI](media/%E5%91%8A%E8%AD%A6%E8%87%AA%E5%8A%A8%E5%A4%84%E7%90%86RESTAPI.png)
 
@@ -67,7 +64,7 @@
 
 ![-w1463](media/15645498508783.jpg)
 
-将示例中的IP替换给该业务下任意一个IP，然后贴到终端下执行。
+将示例中的 IP 替换给该业务下任意一个 IP，然后贴到终端下执行。
 
 ![-w1677](media/15645500000862.jpg)
 
@@ -81,32 +78,15 @@
 
 ![-w1096](media/15645537350395.jpg)
 
-点击`详情`中的作业执行ID，可查看执行的作业。
+点击`详情`中的作业执行 ID，可查看执行的作业。
 
 ![-w1469](media/15645537631995.jpg)
 
 至此，一次模拟告警的故障自愈演示完毕。
 
-REST API(推动) 的场景在于，如果你使用的监控系统故障自愈默认未集成，则可以通过回调 REST API的方式，将告警推送至故障自愈，故障自愈执行对应的处理动作，完成告警的自动处理。
+REST API(推动) 的场景在于，如果你使用的监控系统故障自愈默认未集成，则可以通过回调 REST API 的方式，将告警推送至故障自愈，故障自愈执行对应的处理动作，完成告警的自动处理。
+
+故障自愈，如此简单。
 
 
-## 4. 故障自愈的收敛防护 {#Safe}
-
-故障自动处理是把双刃剑，需要考虑因为网络波动等场景导致的假告警，这时可以用到故障自愈的`异常防御需审批`功能。
-
-在菜单 `高级配置` -> `告警收敛`，新建1条收敛规则。
-
-告警类型选择`REST默认分类`，条件为`相同业务`，触发频次为`5分钟2次以上`，收敛方式为`异常防御需审批`，备注填写`疑似网络波动，请审批`。 
-
-![-w1647](media/15645549056435.jpg)
-
-执行4次告警推送后，可以看到多条告警收敛为1条告警，需要运维审批。
-
-![-w1647](media/15645548545230.jpg)
-
-![-w1640](media/15645549476173.jpg)
-
-故障自愈，在安全的前提下完成告警的自动化处理。
-
-> 收敛审批是通过企业微信实现，请参考 [微信审批接入流程](https://docs.bk.tencent.com/product_white_paper/fta/Advanced_Features/WeChat_approval_access_process.html)。
 

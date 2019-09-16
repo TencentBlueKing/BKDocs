@@ -1,0 +1,662 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>插件管理 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="cloud_mgr.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">蓝鲸节点管理白皮书</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    产品简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../术语解释/glossary.html">
+            
+                <a href="../术语解释/glossary.html">
+            
+                    
+                    术语解释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../产品架构图/architecture.html">
+            
+                <a href="../产品架构图/architecture.html">
+            
+                    
+                    产品架构图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    产品功能
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="agent.html">
+            
+                <a href="agent.html">
+            
+                    
+                    Agent管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="cloud_mgr.html">
+            
+                <a href="cloud_mgr.html">
+            
+                    
+                    云区域管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.3" data-path="plugin_mg.html">
+            
+                <a href="plugin_mg.html">
+            
+                    
+                    插件管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    快速入门
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    安装直连区域的Agent
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../快速入门/agent0.html">
+            
+                <a href="../快速入门/agent0.html">
+            
+                    
+                    前置步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../快速入门/quick_setup.html">
+            
+                <a href="../快速入门/quick_setup.html">
+            
+                    
+                    快速安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../快速入门/from_cmdb.html">
+            
+                <a href="../快速入门/from_cmdb.html">
+            
+                    
+                    从 CMDB 导入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.4" data-path="../快速入门/from_excel.html">
+            
+                <a href="../快速入门/from_excel.html">
+            
+                    
+                    从 EXCEL 导入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.5" data-path="../快速入门/advance_setup.html">
+            
+                <a href="../快速入门/advance_setup.html">
+            
+                    
+                    高级安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../快速入门/pagent.html">
+            
+                <a href="../快速入门/pagent.html">
+            
+                    
+                    云区域安装P-Agent
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" >
+            
+                <span>
+            
+                    
+                    云区域管理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../快速入门/cloud_manage.html">
+            
+                <a href="../快速入门/cloud_manage.html">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="../快速入门/create_cloud.html">
+            
+                <a href="../快速入门/create_cloud.html">
+            
+                    
+                    创建云区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.3" data-path="../快速入门/add_proxy.html">
+            
+                <a href="../快速入门/add_proxy.html">
+            
+                    
+                    添加Proxy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.4" data-path="../快速入门/cloud_mgr.html">
+            
+                <a href="../快速入门/cloud_mgr.html">
+            
+                    
+                    管理云区域
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" >
+            
+                <span>
+            
+                    
+                    插件管理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../快速入门/plugins0.html">
+            
+                <a href="../快速入门/plugins0.html">
+            
+                    
+                    前置步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" data-path="../快速入门/process_mgr.html">
+            
+                <a href="../快速入门/process_mgr.html">
+            
+                    
+                    进程管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.3" data-path="../快速入门/upgrade_plugins.html">
+            
+                <a href="../快速入门/upgrade_plugins.html">
+            
+                    
+                    插件更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    常见问题
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    附录
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" >
+            
+                <span>
+            
+                    
+                    开通网络策略
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="../附录/network_policy.html">
+            
+                <a href="../附录/network_policy.html">
+            
+                    
+                    GSE 与直连 Agent 网络策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="../附录/network_policy_proxy.html">
+            
+                <a href="../附录/network_policy_proxy.html">
+            
+                    
+                    GSE 与 Proxy 网络策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="../附录/network_policy_pagent.html">
+            
+                <a href="../附录/network_policy_pagent.html">
+            
+                    
+                    Proxy 与 P-Agent 网络策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../附录/smb.html">
+            
+                <a href="../附录/smb.html">
+            
+                    
+                    Windows 开 139,445 端口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../附录/multiple_interface.html">
+            
+                <a href="../附录/multiple_interface.html">
+            
+                    
+                    多网卡配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../附录/Agent_Status.html">
+            
+                <a href="../附录/Agent_Status.html">
+            
+                    
+                    GSE 定时任务查看
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >插件管理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x63D2;&#x4EF6;&#x7BA1;&#x7406;">&#x63D2;&#x4EF6;&#x7BA1;&#x7406;</h2>
+<p>&#x8FD0;&#x884C;&#x5728;&#x5BA2;&#x6237;&#x673A;&#x4E0A;&#xFF0C;&#x7B26;&#x5408; GSE &#x63D2;&#x4EF6;&#x7BA1;&#x7406;&#x89C4;&#x8303;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x53EF;&#x4EE5;&#x89C6;&#x4E3A;&#x63D2;&#x4EF6;&#xFF0C;&#x4E5F;&#x80FD;&#x5728;&#x8282;&#x70B9;&#x7BA1;&#x7406;&#x4E2D;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#x3002;</p>
+<p>&#x5BF9;&#x63D2;&#x4EF6;&#x7684;&#x64CD;&#x4F5C;&#x76EE;&#x524D;&#x652F;&#x6301;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li><p>&#x72B6;&#x6001;&#x67E5;&#x770B;</p>
+</li>
+<li><p>&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;(&#x542F;&#x52A8;&#xFF0C;&#x505C;&#x6B62;&#xFF0C;&#x91CD;&#x542F;&#xFF0C;&#x6258;&#x7BA1;&#xFF0C;&#x53D6;&#x6D88;&#x6258;&#x7BA1;&#x7B49;)</p>
+</li>
+<li><p>&#x66F4;&#x65B0;&#x7248;&#x672C;</p>
+</li>
+</ol>
+<p><img src="../assets/agent/image-20190916001112188.png" alt="image-20190916001112188"></p>
+<p><img src="../assets/agent/image-20190916001157470.png" alt="image-20190916001157470"></p>
+<p><img src="../assets/agent/image-20190916001239926.png" alt="image-20190916001239926"></p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="cloud_mgr.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 云区域管理">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"插件管理","level":"1.4.3","depth":2,"next":{"title":"快速入门","level":"1.5","depth":1,"ref":"","articles":[{"title":"安装直连区域的Agent","level":"1.5.1","depth":2,"ref":"","articles":[{"title":"前置步骤","level":"1.5.1.1","depth":3,"path":"快速入门/agent0.md","ref":"快速入门/agent0.md","articles":[]},{"title":"快速安装","level":"1.5.1.2","depth":3,"path":"快速入门/quick_setup.md","ref":"快速入门/quick_setup.md","articles":[]},{"title":"从 CMDB 导入","level":"1.5.1.3","depth":3,"path":"快速入门/from_cmdb.md","ref":"快速入门/from_cmdb.md","articles":[]},{"title":"从 EXCEL 导入","level":"1.5.1.4","depth":3,"path":"快速入门/from_excel.md","ref":"快速入门/from_excel.md","articles":[]},{"title":"高级安装","level":"1.5.1.5","depth":3,"path":"快速入门/advance_setup.md","ref":"快速入门/advance_setup.md","articles":[]}]},{"title":"云区域安装P-Agent","level":"1.5.2","depth":2,"path":"快速入门/pagent.md","ref":"快速入门/pagent.md","articles":[]},{"title":"云区域管理","level":"1.5.3","depth":2,"ref":"","articles":[{"title":"简介","level":"1.5.3.1","depth":3,"path":"快速入门/cloud_manage.md","ref":"快速入门/cloud_manage.md","articles":[]},{"title":"创建云区域","level":"1.5.3.2","depth":3,"path":"快速入门/create_cloud.md","ref":"快速入门/create_cloud.md","articles":[]},{"title":"添加Proxy","level":"1.5.3.3","depth":3,"path":"快速入门/add_proxy.md","ref":"快速入门/add_proxy.md","articles":[]},{"title":"管理云区域","level":"1.5.3.4","depth":3,"path":"快速入门/cloud_mgr.md","ref":"快速入门/cloud_mgr.md","articles":[]}]},{"title":"插件管理","level":"1.5.4","depth":2,"ref":"","articles":[{"title":"前置步骤","level":"1.5.4.1","depth":3,"path":"快速入门/plugins0.md","ref":"快速入门/plugins0.md","articles":[]},{"title":"进程管理","level":"1.5.4.2","depth":3,"path":"快速入门/process_mgr.md","ref":"快速入门/process_mgr.md","articles":[]},{"title":"插件更新","level":"1.5.4.3","depth":3,"path":"快速入门/upgrade_plugins.md","ref":"快速入门/upgrade_plugins.md","articles":[]}]}]},"previous":{"title":"云区域管理","level":"1.4.2","depth":2,"path":"产品功能/cloud_mgr.md","ref":"产品功能/cloud_mgr.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","include-csv","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"include-csv":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"产品功能/plugin_mg.md","mtime":"2019-09-16T03:05:49.968Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-16T03:27:57.563Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

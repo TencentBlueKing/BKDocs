@@ -1,5 +1,4 @@
-CMDB 如何管理进程
----
+## CMDB 如何管理进程
 
 #### 情景 {#Situation}
 应用的存储是 MariaDB，在 CMDB 中注册 MariaDB，以便在监控系统做进程监控。

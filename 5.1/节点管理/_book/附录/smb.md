@@ -1,0 +1,25 @@
+### Windows 开 139,445 端口
+
+远程操作 Windows 是通过 Netbios 实现。也就是网上邻居功能.
+
+开启端口的操作步骤如下：
+
+1. 网卡属性设置。
+    ![](../assets/15316340927055.jpg)
+    ![](../assets/15316343891793.jpg)
+    ![](../assets/15316345084109.jpg)
+    ![](../assets/15316345475886.jpg)
+
+  
+
+2. 打开 services.msc 启动服务。
+     ![](../assets/15316450202626.jpg)
+
+  
+
+3. 检查端口是否在监听状态。
+
+    
+
+    ![](../assets/15316347734408.jpg)plainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
+
