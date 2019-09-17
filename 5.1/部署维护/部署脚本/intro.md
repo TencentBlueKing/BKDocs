@@ -58,7 +58,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **monitor：** 容器监控后台-用于产生告警。
 
-- **thanos(rule)：**
+- **thanos(rule)：** 全局监控告警策略。
 
 - **devops(navigator)：** 提供产品导航统一框架。
 
@@ -66,11 +66,11 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **devops(pm)：** 项目管理后台模块。
 
-- **harbor(api)：**
+- **harbor(api)：** 是蓝盾 BCS 容器服务查询 docker 镜像信息的中间件，目前只支持harbor镜像查询 ，后面有计划支持其他 docker 仓库( jfrog /腾讯云等）。
 
-- **harbor(server)：**
+- **harbor(server)：** Harbor 是 Vmware 公司开源的企业级 Docker Registry 管理项目。
 
-- **bcs(api)：** apiserver是 bcs 容器管理平台的总接入口，是 bcs 对外暴露的唯一入口。主要功能包括：路由，服务发现，负载均衡，熔断，限流，鉴权等功能。
+- **bcs(api)：** apiserver 是 bcs 容器管理平台的总接入口，是 bcs 对外暴露的唯一入口。主要功能包括：路由，服务发现，负载均衡，熔断，限流，鉴权等功能。
 
 - **bcs(storage)：** bcs-storage 作为 bcs 的动态数据管理，负责存储来自 mesos 和 k8s 集群上报的资源动态数据，并提供相应的查询 API 接口。
 
@@ -80,7 +80,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **bcs(health-slave)：** health-slave 负责：任务获取-> 执行 -> 上报执行结果。
 
-- **bcs(ops)：**
+- **bcs(ops)：** 容器服务调用标准运维作业。
 
 
 #### 蓝鲸自研产品
@@ -181,6 +181,8 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
   - **upgrade.rc：** 各模块的升级操作封装。
 
   - **utils.fc：** 安装、初始化主要函数都在这里先找。
+
+  - **bcs/：** 存放 bcs 构建所需的脚本。
 
   - **install.config.3ip.sample** 部署基础不含bcs时使用。
 
