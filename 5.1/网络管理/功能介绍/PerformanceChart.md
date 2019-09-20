@@ -25,9 +25,3 @@
 ![图12](../assets/image013.png)
 
 ![图13](../assets/image014.png)
-
-Top-N 则展现了同一 KPI，不同设备或不同端口的性能值比较：
-
-![图14](../assets/image015.png)
-
-![图15](../assets/image016.png)

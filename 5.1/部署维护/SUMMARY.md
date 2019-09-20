@@ -7,6 +7,7 @@
 * [部署方案](README.md)
 * [术语解释](术语解释/GLOSSARY.md)
 * [架构设计](部署脚本/architecture.md)
+* [软件下载](基础包安装/软件下载/download.md)
 * [部署脚本](部署脚本/intro.md)
 * [基础包安装]()
     * [机器评估](基础包安装/机器评估/evaluate.md)

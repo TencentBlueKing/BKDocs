@@ -6,9 +6,6 @@
 
   - Centos7.x.iso
 
-  - Centos7.x-epel.iso
-
-
 2. 挂载到每台机器上：
 
     ```bash
