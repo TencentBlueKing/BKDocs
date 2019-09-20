@@ -11,7 +11,7 @@
     - Windows: `Ctrl+Shift+P` 选择 `Configure Display Language`   
 
 - 记住git账号
-```
+```bash
 git config --global credential.helper store
 ```
 
@@ -26,6 +26,6 @@ git config --global credential.helper store
 
     例如新增如下一行，可以使用 `ll` 查看文件列表.
 
-    ```
+    ```bash
     alias ll="ls -lh"
     ```

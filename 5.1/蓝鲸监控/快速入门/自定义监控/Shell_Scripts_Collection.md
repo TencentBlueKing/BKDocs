@@ -1,6 +1,6 @@
 ### 脚本采集
 
-运维在蓝鲸监控SaaS上编写Shell脚本，集中下发并周期调度，实现数据采集、入库蓝鲸数据平台influxdb、出图、监控。
+运维在蓝鲸监控 SaaS 上编写 Shell 脚本，集中下发并周期调度，实现数据采集、入库蓝鲸数据平台 influxdb、出图、监控。
 
 ![脚本采集时序图](../../media/Shell_Scripts_Collection_Sequece_Diagram.svg)
 
@@ -11,15 +11,15 @@
 
 请提前了解 [指标和维度的含义](./Concepts_Terminology.html)
 ![table_schema_definition](../../media/table_schema_definition.png)
-注：默认有一个维度为IP.
+注：默认有一个维度为 IP.
 
 ####2. 编写采集脚本
 
-请使用BASH脚本对维度和指标赋值，脚本解释器默认为 `/bin/bash`
+请使用 BASH 脚本对维度和指标赋值，脚本解释器默认为 `/bin/bash`
 
-> 提示：由于解析指标和维度存在Json序列化过程，采集所在服务器上需要提前部署jq （后续版本会优化）
+> 提示：由于解析指标和维度存在 Json 序列化过程，采集所在服务器上需要提前部署 jq （后续版本会优化）
 
-```
+```plain
  yum install jq -y  // CentOS部署jq参考方法
 ```
 
@@ -40,7 +40,7 @@
 
 - 采集周期：脚本周期调度的频率
 - 原始数据保存周期：原始数据所有采集点的保存周期
-- 趋势数据保存周期（功能开发中）：为节省存储空间和加快监控指标出图速度，当时间接近 `原始数据保存周期` 时，会自动完成数据聚合（每小时的采集点聚合为3个点，最大值、最小值、平均值）
+- 趋势数据保存周期（功能开发中）：为节省存储空间和加快监控指标出图速度，当时间接近 `原始数据保存周期` 时，会自动完成数据聚合（每小时的采集点聚合为 3 个点，最大值、最小值、平均值）
 
 #### 5. 仪表盘出图
 
@@ -73,9 +73,9 @@
 #### 9. FAQ
 - 问：如何一次插入多条数据？
 
-    答：你可以使用Shell的循环语句for、while等来一次上报多条数据，只要符合Shell语法即可。
+    答：你可以使用Shell的循环语句for、while等来一次上报多条数据，只要符合Shell语法即可。plainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
 ![edit_shellscript_while](../../media/edit_shellscript_while.png)
 
 - 问：脚本下发到服务器上后，存放在哪里？
 答：脚本位于：/data/MapleLeaf/plugins/shell/目录
-注册在GseAgent的进程调度配置中：/usr/local/gse/gseagent/conf/base/procinfo.json
+注册在 GseAgent 的进程调度配置中：/usr/local/gse/gseagent/conf/base/procinfo.json

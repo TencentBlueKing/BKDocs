@@ -8,7 +8,7 @@
 > 操作系统：`macOS`
 
 
-### 1. 环境准备 {#mac_prepare_dev_env}
+### 1. 环境准备 
 
 安装 Python 3.7.3、准备数据库、创建应用和准备代码仓库地址、虚拟环境（可选）
 
@@ -16,16 +16,17 @@
 
 下载并安装 [Python 3.7.3](https://www.python.org/downloads/release/python-373/)
 
-#### 1.2 部署 MySQL {#mac_install_mysql}
+#### 1.2 部署 MySQL 
 
 - [官网下载 MySQL 5.7](https://dev.mysql.com/downloads/mysql/5.7.html#downloads)
 - 修改用户环境变量和 MySQL 密码
-```
+
+```bash
 export PATH=$PATH:/Users/{YOUR_USERNAME}/Library/Python/3.7/bin:/usr/local/mysql/bin/
 mysqladmin -uroot -p password {new_password}
 ```
 
-#### 1.3 创建应用 {#mac_create_saas_and_prepare_git_warehouse}
+#### 1.3 创建应用 
 
 创建应用前，需提前准备代码仓库 (Git/SVN) ，推荐 `Git`
 
@@ -37,37 +38,42 @@ mysqladmin -uroot -p password {new_password}
 
     进入 `开发者中心` - `应用创建` ，填写上一步获取的 `git` 仓库地址和账号，创建成功后会获取 `应用 ID:{APP_CODE}`、`应用 TOKEN:{SECRET_KEY}` ，这两个变量后续会用到。
 
-#### 1.4 准备虚拟环境 (可选：只有一个开发项目的可忽略) {#mac_prepare_virtual_dev_env}
+#### 1.4 准备虚拟环境 (可选：只有一个开发项目的可忽略) 
 
 - [修改 pip 源](https://pip.pypa.io/en/stable/user_guide/#config-file) (国内镜像)
 
-    ```vim ~/.pip/pip.conf```
+    ```bash
+	vim ~/.pip/pip.conf
+	```
 
-    ```
-[global]
-trusted-host = pypi.tuna.tsinghua.edu.cn
-index-url = https://pypi.tuna.tsinghua.edu.cn/simple/
+    ```bash
+    [global]
+    trusted-host = pypi.tuna.tsinghua.edu.cn
+    index-url = https://pypi.tuna.tsinghua.edu.cn/simple/
     ```
 
 - 安装 [pipenv](https://zhuanlan.zhihu.com/p/37581807)
-```
+
+```bash
 pip3 install pipenv
 ```
 
 - 创建虚拟环境
-```
+
+```bash
 pipenv install
 ```
 
 - 激活虚拟环境
-```
+
+```bash
 pipenv shell
 ```
 
 
-### 2. 初始化开发框架 {#mac_init_dev_framework}
+### 2. 初始化开发框架 
 
-#### 2.1 下载开发框架 {#mac_download_dev_framework}
+#### 2.1 下载开发框架 
 
 - 下载开发框架 `http://{PAAS_URL}/guide/newbie/#step3`
 
@@ -78,12 +84,13 @@ pipenv shell
     - 修改 Django 版本为 1.11.17，因为 Python 3.7.3 依赖 Django 1.11.17，不兼容框架中的 1.11.2，否则会提示`SyntaxError: Generator expression must be parenthesized`
 
 - 安装框架依赖包
-```
+
+```bash
 pip3 install -r requirements.txt
 ```
 
 
-#### 2.2 修改配置  {#mac_modify_config}
+#### 2.2 修改配置  
 
 - 修改应用 (SaaS) 配置 (此处内部版已直接填充到开发框架中)
 修改 config/\_\_init\_\_.py 中的 `APP_CODE` 和 `SECRET_KEY`
@@ -91,7 +98,7 @@ pip3 install -r requirements.txt
 - 修改 PaaS 地址
 修改 config/\_\_init\_\_.py 中的`BK_URL`为`{PAAS_URL}`
 
-#### 2.3 创建和初始化数据库 {#mac_create_and_init_db}
+#### 2.3 创建和初始化数据库 
 
 ```
 CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
@@ -105,33 +112,42 @@ CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
 并修改 `config/dev.py` 中 `DATABASES` 配置项
 
 - 初始化本地数据库(在工程根目录下)
-```
+
+```bash
 python manage.py migrate
 ```
 
-#### 2.4 启动本地项目 {#mac_start_local_project}
+#### 2.4 启动本地项目 
 
 - 先修改本地 hosts
+
 ```127.0.0.1 appdev.{PAAS_URL}```
 
 - 启动项目
-```python manage.py runserver appdev.{PAAS_URL}:8000```
+
+```bash
+python manage.py runserver appdev.{PAAS_URL}:8000
+```
 
 - 本地访问
+
 用浏览器访问 `http://appdev.{PAAS_URL}:8000` , 就可以看到开发框架
+
 ![开发框架首页](media/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E9%A6%96%E9%A1%B5.png)
 
-### 3. Hello,World {#mac_hello_world}
+### 3. Hello,World 
 
 - 修改`视图`home_application/views.py
-```
+
+```python
 from django.http import HttpResponse
 def hello(request):
     return HttpResponse('Hello World!')
 ```
 
 - 添加`路由`home_application/urls.py
-```
+
+```python
 url(r'^$', views.hello),
 ```
 

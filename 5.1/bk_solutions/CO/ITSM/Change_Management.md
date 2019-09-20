@@ -1,6 +1,6 @@
 ## 环境变更流程线上化
 
-#### 情景 {#Situation}
+#### 情景 
 
 变更是运维的职能之一，包含应用的配置、基础设施的环境等变更。
 
@@ -11,17 +11,17 @@ ITSM 中的变更管理（Change Managent）规范了变更环节的操作，确
 变更管理是蓝鲸 ITSM 的一个模块，接下来介绍在蓝鲸 ITSM 如何**完成这次服务器的替换升级**。
 
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 - [部署完蓝鲸](https://docs.bk.tencent.com/bkce_install_guide/)，自带 ITSM SaaS。
 - 准备环境变更流程中 [多个角色](https://docs.bk.tencent.com/paas/FunctionIntroduced.html#RoleManagement)的账号，包含`运维`、`QC`、`产品`，以及流程设计的`管理员`。
 
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 
 - [1. 梳理环境变更流程](#Carding_flow)
 - [2. 创建环境变更服务目录及流程](#Create_service_directory)
 - [3. 一次环境变更示例](#Demo)
 
-## 1. 梳理环境变更流程 {#Carding_flow}
+## 1. 梳理环境变更流程 
 
 从 ITSM 理论出发，梳理**环境变更流程图**，包含运维**变更申请**、**受理变更**、**变更操作和总结**，以及最后质量保证（QC）对变更的**评估管理**。
 
@@ -29,11 +29,11 @@ ITSM 中的变更管理（Change Managent）规范了变更环节的操作，确
 
 > 流程图中是一个实践案例，部分数据需要从周边系统获取，此处功能需要做二次开发，本教程专注流程本身。
 
-## 2. 创建环境变更服务目录及流程 {#Create_service_directory}
+## 2. 创建环境变更服务目录及流程 
 
 先设计环境变更的**流程**，**流程依附在服务目录上对外提供服务**。
 
-### 2.1 角色设置 {#Authorization}
+### 2.1 角色设置 
 
 参照 <a href="Release_Management.md#Authorization" target="_blank">角色设置</a> 完成对`运维`、`产品`和`QC`的授权。
 
@@ -93,7 +93,7 @@ ITSM 中的变更管理（Change Managent）规范了变更环节的操作，确
 
 至此，**流程设计和服务目录已新建好**，接下来做一次环境变更演示。
 
-## 3. 一次环境变更示例 {#Demo}
+## 3. 一次环境变更示例 
 ![-w776](media/15658720001516.jpg)
 
 ### 3.1 运维：变更申请

@@ -1,6 +1,6 @@
 ## 快速入门
 
-#### 情景 {#Situation}
+#### 情景 
 
 运维的职能为 **应用发布** 、 **变更** 、 **故障处理** 以及 **日常需求** ，覆盖研发运营生命周期的 **持续集成** （CI）、 **持续部署** （CD）、 **持续运营** （CO）三个阶段，从测试包交付到测试环境，到将验证通过的版本部署到生产环境，以及提供业务上线后的运维基础和增值服务。
 
@@ -10,7 +10,7 @@
 
 接下来，我们通过 **一个传统单体应用的发布（将版本部署至生产环境）** 、 **故障处理（磁盘告警自动化处理）** 以及 **日常需求（测试同学自助调整应用配置）** 等几大场景，看蓝鲸是如何高效的交付运维服务。
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 
 - [了解蓝鲸的体系架构](https://docs.bk.tencent.com/introduction/introduction.html#introduction)
 
@@ -18,14 +18,14 @@
 
 - [完成蓝鲸的部署](https://docs.bk.tencent.com/bkce_install_guide/)
 
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 
 - [1. 准备环境](#Prepare_environment)
 - [2. 应用交付](#Application_delivery)
 - [3. 故障处理](#Fault_auto_recovery)
 - [4. 日常需求](#Request)
 
-## 1. 准备环境 {#Prepare_environment}
+## 1. 准备环境 
 完成蓝鲸部署后，接下来开始初始化环境。
 
 在蓝鲸 CMDB 中 新建业务、划分业务拓扑，以及 安装 Agent，完成蓝鲸对业务主机的纳管。
@@ -52,7 +52,7 @@
 
 接下来，我们尝试做一次单体应用的版本发布。
 
-## 2. 应用交付 {#Application_delivery}
+## 2. 应用交付 
 
 参照 [一次标准的应用交付自动化案例](CD/application_deployment.md)，完成一次自动化的应用交付，效果如下：
 
@@ -60,7 +60,7 @@
 
 完成应用交付后，接下来了解在蓝鲸中如何实现告警的自动化处理。
 
-## 3. 故障处理 {#Fault_auto_recovery}
+## 3. 故障处理 
 
 根据企业内部正在使用的监控系统，参照 [Zabbix 告警自动处理](CO/Zabbix_Alarm_processing_automation.md) 或 [第 3 方监控系统告警自动处理](REST_API_PUSH_Alarm_processing_automation.md) 或[蓝鲸监控告警自动处理](CO/Bkmonitor_Alarm_processing_automation.md)，实现 **磁盘告警自动化处理**。
 
@@ -68,7 +68,7 @@
 
 接下来，了解来自产品、运营、测试等团队，对运维的日常需求，是如何释放运维，做到 **需求自助化** 的。
 
-## 4. 日常需求 {#Request}
+## 4. 日常需求 
 
 参照 [需求自助化:测试自助调整验收环境](CD/Demand_self-service.md)，完成测试自助修改测试环境配置，从此再也不会骚扰运维了。
 

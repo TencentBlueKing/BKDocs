@@ -8,4 +8,4 @@
 
 - 标准运维：https://github.com/Tencent/bk-sops
 
-- 容器管理平台：https://github.com/Tencent/bk-bcs
+- 容器管理平台：https://github.com/Tencent/bk-bcs , https://github.com/Tencent/bk-bcs-saas

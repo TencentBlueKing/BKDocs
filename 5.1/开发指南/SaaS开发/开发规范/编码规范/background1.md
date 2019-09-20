@@ -1,4 +1,4 @@
-## 第一章 代码规范{#background1}
+## 第一章 代码规范
 
 ### 1. 【必须】PEP 8 规范
 
@@ -26,21 +26,24 @@ Code Analysis > pep8.py` 设置即可
 1. 国际惯例，文件编码和 python 编码格式全部为 utf-8，例如：在 python 代码的开头，要统一加上  `#-*- coding: utf-8 -*-`，或者其他符合正则表达式 `^[\t\v]*#.*?coding[:=][\t]*([-_.a-zA-Z0-9]+)` 的编码声明方式。详情参考：<https://www.python.org/dev/peps/pep-0263/#defining-the-encoding>
 
 2. python 代码中，非 ascii 字符的字符串，请需添加u前缀
-
-		# -*- coding: utf-8 -*-
-		a = u"中国"
-
+	```python
+	# -*- coding: utf-8 -*-
+	a = u"中国"
+	```
 3. 若出现 python 编码问题，可按照以下操作尝试解决
 
     在 python 的安装路径中下的 /Lib/site-packages 下面创建文件 sitecustomize.py，内容如下：
 
-		import sys
+	```python
+	import sys
 		sys.setdefaultencoding('utf-8')
+	```
 
     如果没有加入该文件，则在有编码问题的 py 代码中，加入以下代码：
-
-		import sys
-		reload(sys)
+    ```python
+	import sys
+	reload(sys)
+    ```
 
 #### 2.2 Python 编码规范
 
@@ -250,12 +253,13 @@ template_name = kwargs.get('template_name', '')
 
 4. 【必须】import 过长，要放在多行的时候，使用括号，不要用 \\ 换行
 
-		from xxx import (
-			a,
-			b,
-			c
-		)
-
+    ```python
+	from xxx import (
+		a,
+		b,
+		c
+	)
+    ```
 5. Django Model 定义的 choices 直接在定义在类里面
 
 6. 【必须】参考蓝鲸应用开发框架，把 Models 的初始化代码放到 migrations 里面 
@@ -430,22 +434,50 @@ API 的 Method，要符合实际请求的类型。
 
 2. 对返回列表数据的接口，当数据集为空时，应返回空列表，而不是 None
 
-		{
-			"result": true,
-			"message": "",
-			"code": 200,
-			"data": []
-		}
+	```json
+	{
+		"result": true,
+		"message": "",
+		"code": 200,
+		"data": []
+	}
+	```
 
 3. 对于支持分页的列表数据接口，必须提供关于数据集总数信息的字段。
 
     输出样例（仅供参考）
 
-		{
-			"result": true,
-			"message": "",
-			"code": 200,
-			"data": [
+	```json
+	{
+		"result": true,
+		"message": "",
+		"code": 200,
+		"data": [
+			{
+				"id": 1,
+				"name": "test1"
+			},
+			{
+				"id": 2,
+				"name": "test2"
+			}
+		],
+		"meta": {
+			"total": 100,
+		}
+	}
+	```
+
+    或者
+
+	```json
+	{
+		"result": true,
+		"message": "",
+		"code": 200,
+		"data": {
+			"total": 10,
+			"results": [
 				{
 					"id": 1,
 					"name": "test1"
@@ -455,31 +487,9 @@ API 的 Method，要符合实际请求的类型。
 					"name": "test2"
 				}
 			],
-			"meta": {
-				"total": 100,
-			}
 		}
-
-    或者
-
-		{
-			"result": true,
-			"message": "",
-			"code": 200,
-			"data": {
-				"total": 10,
-				"results": [
-					{
-						"id": 1,
-						"name": "test1"
-					},
-					{
-						"id": 2,
-						"name": "test2"
-					}
-				],
-			}
-		}
+	}
+	```
 
 
 4. 不允许使用变量作为 JSON key
@@ -487,7 +497,7 @@ API 的 Method，要符合实际请求的类型。
     根据 JSON 规范 http://www.json.org/json-zh.html ，JSON 的 key 仅用于解释其对应的 value 的含义，而不应该用于存放数据本身。
 
     错误的写法
-
+		```json
 		{
 			"result": true,
 			"message": "",
@@ -497,9 +507,9 @@ API 的 Method，要符合实际请求的类型。
 				"120000": "天津市"
 			}
 		}
-
+		```
     应改为
-
+		```json
 		{
 			"result": true,
 			"message": "",
@@ -515,7 +525,7 @@ API 的 Method，要符合实际请求的类型。
 				}
 			]
 		}    
-
+		```
 
 
 ##### 5.2.3 合适的状态码
@@ -654,7 +664,7 @@ apidoc 是通过源码中的注释来生成 Web API 文档。因此，apidoc 对
 
 ###### 格式
 
-```
+```python
 @api {method} path [title]
 ```
 
@@ -679,7 +689,7 @@ apidoc 是通过源码中的注释来生成 Web API 文档。因此，apidoc 对
 
 ###### 格式
 
-```
+```python
 @apiDescription text
 ```
 
@@ -704,7 +714,7 @@ apidoc 是通过源码中的注释来生成 Web API 文档。因此，apidoc 对
 
 ###### 格式
 
-```
+```python
 @apiGroup name
 ```
 
@@ -728,7 +738,7 @@ API 接口标识名称。需要注意的是，在同一个 `@apiGroup` 下，具
 
 ###### 格式
 
-```
+```python
 @apiGroup name
 ```
 
@@ -752,7 +762,7 @@ API 接口标识名称。需要注意的是，在同一个 `@apiGroup` 下，具
 
 ###### 格式
 
-```
+```python
 @apiParam [(group)] [{type}] [field=defaultValue] [description]
 ```
 
@@ -820,7 +830,7 @@ API 接口标识名称。需要注意的是，在同一个 `@apiGroup` 下，具
 
 ###### 格式
 
-```
+```python
 @apiSuccess [(group)] [{type}] field [description]
 ```
 

@@ -1,4 +1,4 @@
-### 如何将蓝鲸S-mart上的SaaS部署起来？{#SaaSDeployment}
+### 如何将蓝鲸S-mart上的SaaS部署起来？
 
 (1)以管理员的身份进入“开发者中心”
 

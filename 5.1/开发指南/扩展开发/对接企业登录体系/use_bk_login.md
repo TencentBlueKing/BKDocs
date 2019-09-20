@@ -1,6 +1,6 @@
 ## 企业内部系统接入蓝鲸登录
 
-### 登录态共享 {#status}
+### 登录态共享 
 
 蓝鲸登录态: 基于一级域名共享 cookie 的方式
 
@@ -10,11 +10,11 @@
     - 如果没有取到, 则主动跳转蓝鲸统一登录服务
     - 如果取到了, 需要调用登录服务接口, 校验 `bk_token` 的有效性, 如果有效, 可以调用登录接口获取相关的用户信息; 用户信息中 `username` 为唯一标识
 
-### 登录相关逻辑和接口 {#logical}
+### 登录相关逻辑和接口 
 
 假设蓝鲸智云部署后, PaaS 平台的访问地址是 `http://paas.bking.com`
 
-#### 1. 从 cookie 中获取 `bk_token` {#bk_token}
+#### 1. 从 cookie 中获取 `bk_token` 
 
 应用从 http 请求 cookie 中可以获取 `bk_token`
 
@@ -24,14 +24,14 @@ django 为例
 bk_token = request.COOKIES.get('bk_token', '')
 ```
 
-#### 2. 跳转登录页面 {#redirect}
+#### 2. 跳转登录页面 
 
 前端直接跳转到登录页面: `http://paas.bking.com/login?c_url={login_success_redirect_url}`
 
 - `c_url` 用于登录成功后, 跳往的目标页面
 - `{login_success_redirect_url}` 是一个 `urlencode` 后的地址, 假设期望的目标地址是 `http://mysystem.bking.com/index.html`, `c_url` 值需要经过 `urlencode`即 `http%3a%2f%2fmysystem.bking.com%2findex.html`
 
-#### 3. 校验 `bk_token` 是否合法 {#is_login}
+#### 3. 校验 `bk_token` 是否合法 
 
 即校验登录态
 
@@ -65,7 +65,7 @@ bk_token = request.COOKIES.get('bk_token', '')
 }
 ```
 
-#### 4. 获取用户信息 {#get_user}
+#### 4. 获取用户信息 
 
 - url: `http://paas.bking.com/login/accounts/get_user/`
 - method: `GET`

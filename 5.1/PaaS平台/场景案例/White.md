@@ -1,4 +1,4 @@
-### 如何给某一个SaaS开组件“免用户认证”的白名单？{#White}
+### 如何给某一个SaaS开组件“免用户认证”的白名单？
 
 1)以管理员身份进入PaaS平台的后台“{domain}/admin”，进入“Function controllers”目录
 

@@ -3,7 +3,7 @@
 基于 `蓝鲸开发框架 2.0` 上输出 `Hello,World!`
 
 > 开发语言：`Python 3.7.3`
->
+
 > 操作系统：`Windows 10`
 
 ### 1. 环境准备
@@ -45,24 +45,28 @@
 - [修改 pip 源](https://pip.pypa.io/en/stable/user_guide/#config-file) (国内镜像)
 
     在 `C:\Users\{YOUR_USERNAME}\AppData\Roaming` (Windows 10 默认隐藏 `AppData` 目录，需先去掉隐藏)目录中创建 `pip` 文件夹，在 pip 文件夹下创建 `pip.ini`
-    ```
-[global]
-trusted-host = pypi.tuna.tsinghua.edu.cn
-index-url = https://pypi.tuna.tsinghua.edu.cn/simple/
+	
+    ```bash
+    [global]
+    trusted-host = pypi.tuna.tsinghua.edu.cn
+    index-url = https://pypi.tuna.tsinghua.edu.cn/simple/
     ```
 
 - 安装 [pipenv](https://zhuanlan.zhihu.com/p/37581807)
-```
+
+```bash
 pip3 install pipenv
 ```
 
 - 创建虚拟环境
-```
+
+```bash
 pipenv install
 ```
 
 - 激活虚拟环境
-```
+
+```bash
 pipenv shell
 ```
 
@@ -80,23 +84,25 @@ pipenv shell
     - 修改 Django 版本为1.11.17，因为 Python 3.7.3 依赖Django 1.11.17，不兼容框架中的 1.11.2，否则会提示 `SyntaxError: Generator expression must be parenthesized`
 
 - 安装框架依赖包
-```
+```bash
 pip3 install -r requirements.txt
 ```
 
 
 #### 2.2 修改配置
 
-- 修改应用 (SaaS) 配置 (此处内部版已直接填充到开发框架中)
+
 修改 config/\_\_init\_\_.py 中的 `APP_CODE` 和 `SECRET_KEY`
 
 - 修改 PaaS 地址
+
 修改 config/\_\_init\_\_.py 中的 `BK_URL` 为 `{PAAS_URL}`
 
 #### 2.3 创建和初始化数据库
 
 打开 `MySQL 5.7 Command Line Client` 执行
-```
+
+```bash
 CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
 ```
 
@@ -107,17 +113,22 @@ CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
 并修改 `config/dev.py` 中 `DATABASES` 配置项
 
 - 初始化本地数据库(在工程根目录下)
-```
+
+```bash
 python manage.py migrate
 ```
 
 #### 2.4 启动本地项目
 
 - 先修改本地 hosts
+
 ```127.0.0.1 appdev.{PAAS_URL}```
 
 - 启动项目
-```python manage.py runserver appdev.{PAAS_URL}:8000```
+
+```bash
+python manage.py runserver appdev.{PAAS_URL}:8000
+```
 
 - 本地访问
 用浏览器访问 ```http://appdev.{PAAS_URL}:8000``` , 就可以看到开发框架
@@ -127,7 +138,8 @@ python manage.py migrate
 ### 3. Hello,World
 
 - 修改 `视图` home_application/views.py
-```
+
+```python
 from django.http import HttpResponse
 def hello(request):
     return HttpResponse('Hello World!')

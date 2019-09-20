@@ -1,4 +1,4 @@
-### 标准插件后台开发 {#atomic}
+### 标准插件后台开发 
 
 在 custom_atoms/components/collections 目录下创建 test.py 文件，其中需要定义的属性和类如下所示。
 

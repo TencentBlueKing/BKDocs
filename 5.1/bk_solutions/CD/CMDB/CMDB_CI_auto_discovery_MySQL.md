@@ -1,10 +1,10 @@
 ## 自动发现数据库实例：以 MySQL 为例
 > 感谢 [嘉为科技](http://www.canwayit.com/tech/index.html) 贡献该文档.
 
-#### 情景 {#Situation}
+#### 情景 
 业务存储层是 MySQL，通过蓝鲸 CMDB 已管理 MySQL 实例，然而却是手工维护，难以长期维护。需要通过自动化的方式实现，自动发现 MySQL 实例、 MySQL CI 属性以及关联关系。
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 
 1. 提前导入或录入 MySQL CI 、创建模型（不是实例）的关联关系，详见：[如何管理数据库实例:以 MySQL 为例](CMDB_management_database_middleware.md)
 2. 在蓝鲸开发者中心 [新建一个应用](https://docs.bk.tencent.com/guide/application.html)，用于调用 [CMDB 的 API](https://bk.tencent.com/document/bkapi/ce/system/cc/)
@@ -17,22 +17,22 @@
      sudo mysql -e "GRANT SELECT ON performance_schema.* TO 'bk'@'{YOUR_MYSQL_IP}';"
 ```
 
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 - [1. 梳理自动发现逻辑](#Carding_logic)
 - [2. 代码解读（含样例脚本）](#Code_interpretation)
 - [3. 测试效果](#Preview)
 
-#### 视频教程 {#Video_tutorial}
+#### 视频教程 
 
 {% video %}media/cmdb_mysql_autodiscovery.mp4{% endvideo %}
 
-## 1.梳理自动发现逻辑 {#Carding_logic}
+## 1.梳理自动发现逻辑 
 - **自动发现 MySQL 实例**：调用作业平台的快速脚本执行 API，在 MySQL 所在的主机上执行 ps 命令发现 MySQL 实例，调用 CMDB 的 API 创建实例。
 - **自动发现  MySQL CI  属性**：调用 CMDB 获取实例的 API，获取 MySQL 实例所在的主机，调用作业平台的快速脚本执行 API，执行 SQL 语句查询 MySQL 属性，并调用 CMDB API 更新实例。
 - **自动发现 MySQL 与所在主机的关联关系**：调用 CMDB 查询实例 API 找出 MySQL 实例对应主机，创建关联关系。
 
-## 2. 代码解读（含样例脚本）{#Code_interpretation}
-### 2.1 自动发现 MySQL 实例 {#Autodiscovery_instance}
+## 2. 代码解读（含样例脚本）
+### 2.1 自动发现 MySQL 实例 
 
 - 通过`ps`命令获取`mysql`的`进程ID`
 - 通过`netstat`命令，根据`进程ID`获得`mysql端口`号
@@ -217,7 +217,7 @@ Cover_Mysql
         return base64.b64encode(script)
 ```
 
-### 2.2 自动采集 MySQL CI 属性 {#Autodiscovery_ci_attribute}
+### 2.2 自动采集 MySQL CI 属性 
 - 获取 CMDB 中 MySQL 的实例
 - 根据 MySQL 中的 IP，调用作业平台执行脚本，采集配置信息
 - 调用 CMDB 更新实例接口, 将采集到的配置信息保存到 CMDB 中
@@ -426,7 +426,7 @@ exit
         return base64.b64encode(mysql_script)
 ```
 
-### 2.3 自动发现关联信息  {#Autodiscovery_ci_association_relationship}
+### 2.3 自动发现关联信息  
 - 通过 MySQL 实例中 IP 地址，找到与之对应的主机
 - 调用 CMDB 创建关联的接口，添加主机和 MySQL 直接的关联关系
 
@@ -489,7 +489,7 @@ exit
         return False
 ```
 
-### 2.4 封装作业平台执行类 {#Package_job_execution_class}
+### 2.4 封装作业平台执行类 
 封装好调用作业平台快速执行脚本接口的类
 
 ```python
@@ -554,7 +554,7 @@ class JobMan(object):
                 }
 ```
 
-### 2.5 调用执行 {#Call_execution}
+### 2.5 调用执行 
 
 ```python
 if __name__ == '__main__':
@@ -566,7 +566,7 @@ if __name__ == '__main__':
     collect.start_collect()
 ```
 
-### 3. 测试效果 {#Preview}
+### 3. 测试效果 
 
 - 自动发现 MySQL 实例
 
@@ -582,11 +582,11 @@ if __name__ == '__main__':
 
 > 注：关联关系中，主机与机架、机房管理单元、机房等关联需要单独添加对应的关联关系，此处不做展开。
 
-### MySQL 自动发现采集器 Demo {#Demo}
+### MySQL 自动发现采集器 Demo 
 
 请[下载 demo](media/cmdb_autodiscovery_mysql_instance.py.tgz)后，在一台有  Python 环境的主机（可访问蓝鲸）或 SaaS 中运行。
 
-### 其他说明 {#etc}
+### 其他说明 
 
 要实现周期性自动发现，可用`Celery`的周期任务实现
 

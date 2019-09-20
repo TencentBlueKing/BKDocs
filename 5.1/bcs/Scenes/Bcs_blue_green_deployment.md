@@ -1,17 +1,17 @@
 ## 应用的蓝绿发布
 
 
-#### 情景 {#Situation}
+#### 情景 
 传统的应用更新方式是**停服更新**，用户在更新期间**无法使用服务**。
 
 接下来，将以 Nginx 从 `1.12.2` 升级 `1.17.0` + 程序代码（index.html 的内容从 Nginx 默认页 更新为 1.17.0）为例，看 BCS 中的**蓝绿发布能力**是如何实现**不停机更新**，**用户无感知**。
 
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含 [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)；本节教程新增概念：[ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)、[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)、[Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。
 - [完成 BCS 部署](https://docs.bk.tencent.com/bkce_install_guide/setup/quick_install_bcs.html)
 
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 
 - [1. 应用的蓝绿发布逻辑介绍](#Blue_green_deployment_logic)
 - [2. 使用 K8S 资源准备版本](#BCS_blue_deployment)
@@ -20,7 +20,7 @@
 
 
 
-## 1. 蓝绿发布逻辑介绍 {#Blue_green_deployment_logic}
+## 1. 蓝绿发布逻辑介绍 
 
 ### 1.1 发布逻辑示意图
 
@@ -39,7 +39,7 @@
 其中 Deployment、Service 不再赘述。
 
 
-## 2. 使用 K8S 资源准备版本 {#BCS_blue_deployment}
+## 2. 使用 K8S 资源准备版本 
 
 ### 2.1 新增 LoadBalancer
 
@@ -111,7 +111,7 @@ Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用�
 
 以上作为线上环境运行的版本，接下来部署新版本。
 
-## 3. 使用 K8S 资源准备新版本 {#BCS_green_deployment}
+## 3. 使用 K8S 资源准备新版本 
 
 本次新版本参照微服务更新的最佳实践：将应用程序打入 Docker Image，**更新 Deployment 中的镜像即更新版本**。
 
@@ -201,7 +201,7 @@ cf5b3c6798f7: Mounted from joyfulgame/nginx
 
 
 
-## 4. 切换流量并观察 {#BCS_deployment}
+## 4. 切换流量并观察 
 
 如果是客户端业务，将请求的后端地址指向为新版本的主机名即可，如果客户端不方便更新配置，可以使用 CNAME 将域名指向到新的版本的主机名。
 

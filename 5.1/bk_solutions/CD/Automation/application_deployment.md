@@ -2,12 +2,12 @@
 
 
 
-#### 情景 {#Situation}
+#### 情景 
 应用发布是运维这个岗位的职能之一，发布关联多个 ITIL 系统的功能模块，比如发布单、监控的告警屏蔽、DB 变更、业务内公告、统一登录入口等，频繁在多个系统间切换，不但影响效率而且容易出错，同时无法可视化查看发布进度以及事后的回溯。
 
 接下来，一起看下标准运维是如何解决这些痛点。
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 
 - [主机在蓝鲸 CMDB 中管理](../CMDB/CMDB_management_hosts.md)
 
@@ -17,13 +17,13 @@
 
 更多详见[术语定义](https://docs.bk.tencent.com/product_white_paper/gcloud/term.html)
 
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 
 - [1. 梳理：梳理标准化模板](#Carding_standard_template)
 - [2. 建模：新建流程模板](#New_pipeline)
 - [3. 执行：执行流程](#Run_pipeline)
 
-## 1. 梳理标准化模板 {#Carding_standard_template}
+## 1. 梳理标准化模板 
 
 [配置管理标准化](Configuration_management_standardization.md)中提到，运维服务“四化建设”的标准化包含配置管理、发布、变更、故障处理、监控告警等场景的流程制定。以发布为例，通过流程图梳理应用交付的流程。
 
@@ -31,7 +31,7 @@
 
 ![应用交付自动化](media/%E5%BA%94%E7%94%A8%E4%BA%A4%E4%BB%98%E8%87%AA%E5%8A%A8%E5%8C%96-1.png)
 
-## 2. 创建流程模板 {#New_pipeline}
+## 2. 创建流程模板 
 
 为了简化演示，将流程图中的关键节点在标准运维的业务流程模板中体验出来。
 
@@ -73,7 +73,7 @@
 ![-w1127](media/15644782523637.jpg)
 
 
-## 3. 执行流程 {#Run_pipeline}
+## 3. 执行流程 
 
 在业务流程列表中，点击`新建任务`
 

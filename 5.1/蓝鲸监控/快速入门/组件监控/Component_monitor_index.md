@@ -14,12 +14,12 @@
 | jvm_threads_started_total       |       | 已经启动的线程计数              |
 | jvm_threads_deadlocked          |       | 等待获取对象监视器或自己的同步器的死锁线程数 |
 | jvm_threads_deadlocked_monitor  |       | 等待获取对象监视器的死锁线程数        |
-| jmx_scrape_duration_seconds     | 秒 | scrape的时间              |
-| jmx_scrape_error                |       | scrape失败次数             |
+| jmx_scrape_duration_seconds     | 秒 | scrape 的时间              |
+| jmx_scrape_error                |       | scrape 失败次数             |
 | jvm_classes_loaded              |       | 当前加载的类数量               |
-| jvm_classes_loaded_total        |       | 从JVM开始执行以来已经加载的类的总数    |
-| jvm_classes_unloaded_total      |       | 从JVM开始执行以来未加载的类的总数     |
-| jvm_info                        |        | JVM版本信息                |
+| jvm_classes_loaded_total        |       | 从 JVM 开始执行以来已经加载的类的总数    |
+| jvm_classes_unloaded_total      |       | 从 JVM 开始执行以来未加载的类的总数     |
+| jvm_info                        |        | JVM 版本信息                |
 | jvm_memory_bytes_used           | MB   | 已经使用的内存                |
 | jvm_memory_bytes_committed      | MB   | 已经提交的内存                |
 | jvm_memory_bytes_max            | MB   | 最大内存                   |
@@ -28,8 +28,8 @@
 | jvm_memory_pool_bytes_committed | MB   | 内存池中已经提交的内存            |
 | jvm_memory_pool_bytes_max       | MB   | 内存池中最大内存               |
 | jvm_memory_pool_bytes_init      | MB   | 内存池中初始化内存              |
-| jmx_config_reload_failure_total |       | 配置reload失败的次数          |
-| jvm_gc_collection_seconds_count | 秒 | gc时间                   |
+| jmx_config_reload_failure_total |       | 配置 reload 失败的次数          |
+| jvm_gc_collection_seconds_count | 秒 | gc 时间                   |
 
 ### Apache 组件指标说明
 
@@ -88,7 +88,7 @@
 | nginx.upstream.keepalive | connections | 当前空闲的 keepalive 连接数 |
 | nginx.upstream.peers.active | connections | 当前活动连接数 |
 | nginx.upstream.peers.backup |  | 指示服务器是否为备份服务器的布尔值 |
-| nginx.upstream.peers.downstart | milliseconds | 服务器变成 “unavail” 或 “unhealthy” 的时间（自Epoch开始） |
+| nginx.upstream.peers.downstart | milliseconds | 服务器变成 “unavail” 或 “unhealthy” 的时间（自 Epoch 开始） |
 | nginx.upstream.peers.downtime | milliseconds | 服务器处于 “unavail” 或 “unhealthy” 状态的总时间 |
 | nginx.upstream.peers.fails |  | 与服务器通信失败的总次数 |
 | nginx.upstream.peers.health_checks.checks |  | health check 请求总数 |
@@ -104,7 +104,7 @@
 | nginx.upstream.peers.responses.4xx | responses | 具有 4xx 状态码的响应数 |
 | nginx.upstream.peers.responses.5xx | responses | 具有 5xx 状态码的响应数 |
 | nginx.upstream.peers.responses.total | responses | 从此服务器获取的响应总数 |
-| nginx.upstream.peers.selected | milliseconds | 上次选择服务器以处理请求（1.7.5）的时间（自Epoch开始） |
+| nginx.upstream.peers.selected | milliseconds | 上次选择服务器以处理请求（1.7.5）的时间（自 Epoch 开始） |
 | nginx.upstream.peers.sent | bytes | 发送到此服务器的数据总量 |
 | nginx.upstream.peers.unavail |  | 由于失败尝试次数达到 max_fails 阈值，服务器对客户端请求不可用 (state “unavail”) 的次数 |
 | nginx.upstream.peers.weight |  | Weight of the server |
@@ -119,8 +119,8 @@
 | tomcat.cache.access_count | gets/second | 每秒访问缓存的次数 |
 | tomcat.cache.hits_count | hits/second | 每秒缓冲命中的次数 |
 | tomcat.error_count | errors/second | 发生错误的请求数 |
-| tomcat.jsp.count | pages/second | web 模块中加载的JSP数量 |
-| tomcat.jsp.reload_count | pages/second | web 模块中重新加载的JSP数量 |
+| tomcat.jsp.count | pages/second | web 模块中加载的 JSP 数量 |
+| tomcat.jsp.reload_count | pages/second | web 模块中重新加载的 JSP 数量 |
 | tomcat.max_time | milliseconds | 最长的请求处理时间 (milliseconds) |
 | tomcat.processing_time |  | 每秒所有请求的处理时间之和 |
 | tomcat.request_count | requests/second | 每秒总请求数 |
@@ -242,30 +242,30 @@
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
-| oracle.RWParse.oracledb_Executions |  | SQL执行速率 |
-| oracle.RWParse.oracledb_HardParse |  | SQL硬解析率 |
+| oracle.RWParse.oracledb_Executions |  | SQL 执行速率 |
+| oracle.RWParse.oracledb_HardParse |  | SQL 硬解析率 |
 | oracle.RWParse.oracledb_LogicalReads |  | 逻辑块读速率 |
 | oracle.RWParse.oracledb_PhysicalReads |  | 物理块读速率 |
 | oracle.RWParse.oracledb_PhysicalWrites |  | 物理块写速率 |
-| oracle.RWParse.oracledb_TotalParse |  | SQL解析速率 |
+| oracle.RWParse.oracledb_TotalParse |  | SQL 解析速率 |
 | oracle.RWParse.oracledb_Transaction |  | 每秒事务数 |
-| oracle.RWParse.oracledb_insstatus |  | 实例状态(1代表ONLINE，0代表OFFLINE) |
+| oracle.RWParse.oracledb_insstatus |  | 实例状态(1 代表 ONLINE，0 代表 OFFLINE) |
 | oracle.RWParse.oracledb_runhealthtime | s | 数据库健康运行时长 |
-| oracle.MemoryInfo.oracledb_PGAFreeSize | MB | PGA空闲大小 |
-| oracle.MemoryInfo.oracledb_PGATotalSize | MB | PGA分配大小 |
-| oracle.MemoryInfo.oracledb_PGAUsedRate | % | PGA使用率 |
-| oracle.MemoryInfo.oracledb_PGAlUsedSize | MB | PGA使用大小 |
-| oracle.MemoryInfo.oracledb_SGAFreeSize | MB | SGA空闲大小 |
-| oracle.MemoryInfo.oracledb_SGATotalSize | MB | SGA分配大小 |
-| oracle.MemoryInfo.oracledb_SGAUsedRate | % | SGA使用率 |
-| oracle.MemoryInfo.oracledb_SGAUsedSize | MB | SGA使用大小 |
-| oracle.MemoryInfo.oracledb_SharePoolFreeSize | MB | SharePool空闲大小 |
-| oracle.MemoryInfo.oracledb_SharePoolTotalSize | MB | SharePool分配大小 |
-| oracle.MemoryInfo.oracledb_SharePoolUsedRate | % | SharePool使用率 |
-| oracle.MemoryInfo.oracledb_SharePoolUsedSize | MB | SharePool使用大小 |
+| oracle.MemoryInfo.oracledb_PGAFreeSize | MB | PGA 空闲大小 |
+| oracle.MemoryInfo.oracledb_PGATotalSize | MB | PGA 分配大小 |
+| oracle.MemoryInfo.oracledb_PGAUsedRate | % | PGA 使用率 |
+| oracle.MemoryInfo.oracledb_PGAlUsedSize | MB | PGA 使用大小 |
+| oracle.MemoryInfo.oracledb_SGAFreeSize | MB | SGA 空闲大小 |
+| oracle.MemoryInfo.oracledb_SGATotalSize | MB | SGA 分配大小 |
+| oracle.MemoryInfo.oracledb_SGAUsedRate | % | SGA 使用率 |
+| oracle.MemoryInfo.oracledb_SGAUsedSize | MB | SGA 使用大小 |
+| oracle.MemoryInfo.oracledb_SharePoolFreeSize | MB | SharePool 空闲大小 |
+| oracle.MemoryInfo.oracledb_SharePoolTotalSize | MB | SharePool 分配大小 |
+| oracle.MemoryInfo.oracledb_SharePoolUsedRate | % | SharePool 使用率 |
+| oracle.MemoryInfo.oracledb_SharePoolUsedSize | MB | SharePool 使用大小 |
 | oracle.Table_space.oracledb_TablespaceFree | MB | 表空间空闲大小 |
 | oracle.Table_space.oracledb_TablespaceRate | % | 表空间使用率 |
-| oracle.Table_space.oracledb_TablespaceStatus |  | 表空间状态(1代表ONLINE，0代表OFFLINE) |
+| oracle.Table_space.oracledb_TablespaceStatus |  | 表空间状态(1 代表 ONLINE，0 代表 OFFLINE) |
 | oracle.Table_space.oracledb_TablespaceTotal | MB | 表空间分配大小 |
 | oracle.Table_space.oracledb_TablespaceUsed | MB | 表空间使用大小 |
 | oracle.sys_param.oracledb_ActiveSession |  | 活跃用户会话数 |
@@ -278,16 +278,16 @@
 | oracle.sys_param.oracledb_DeadLockNum |  | 死锁数量 |
 | oracle.sys_param.oracledb_ProcessMax |  | 进程分配数 |
 | oracle.sys_param.oracledb_ProcessTotal |  | 进程总数 |
-| oracle.sys_param.oracledb_RedoNum |  | Redo日志文件组数 |
-| oracle.sys_param.oracledb_RedoSize | MB | Redo日志文件总大小 |
+| oracle.sys_param.oracledb_RedoNum |  | Redo 日志文件组数 |
+| oracle.sys_param.oracledb_RedoSize | MB | Redo 日志文件总大小 |
 | oracle.sys_param.oracledb_SortMemory | % | 内存排序率 |
 | oracle.sys_param.oracledb_sharepoolhit | % | 共享池命中率 |
-| oracle.ASMInfo.oracledb_ASMDisk_total | MB | ASM总磁盘大小 |
-| oracle.ASMInfo.oracledb_ASMDisk_free | MB | ASM空闲磁盘大小 |
-| oracle.ASMInfo.oracledb_ASMDisk_state |  | ASM磁盘状态(1代表MOUNT，0代表其他非正常状态) |
-| oracle.scanIpInfo.oracledb_ScanIPStatus |  | scanIP监听状态(1代表端口连通，0代表端口不通) |
-| oracle.InsIpInfo.oracledb_InsIpStatus |  | 实例IP监听状态(1代表端口连通，0代表端口不通) |
-| oracle.VIPInfo.oracledb_VIPStatus |  | VIP监听状态(1代表端口连通，0代表端口不通) |
+| oracle.ASMInfo.oracledb_ASMDisk_total | MB | ASM 总磁盘大小 |
+| oracle.ASMInfo.oracledb_ASMDisk_free | MB | ASM 空闲磁盘大小 |
+| oracle.ASMInfo.oracledb_ASMDisk_state |  | ASM 磁盘状态(1 代表 MOUNT，0 代表其他非正常状态) |
+| oracle.scanIpInfo.oracledb_ScanIPStatus |  | scanIP 监听状态(1 代表端口连通，0 代表端口不通) |
+| oracle.InsIpInfo.oracledb_InsIpStatus |  | 实例 IP 监听状态(1 代表端口连通，0 代表端口不通) |
+| oracle.VIPInfo.oracledb_VIPStatus |  | VIP 监听状态(1 代表端口连通，0 代表端口不通) |
 
 ### Weblogic 组件指标说明
 
@@ -296,22 +296,22 @@
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
 | weblogic.config.webapp_config_deployment_state |  | 部署状态，当前应用的部署状态，如正在部署、部署失败、部署成功等 |
-| weblogic.config.webapp_config_jsppage_check_secs |  | 检查JSP文件是否发生更改并需要重新编译的频率 |
+| weblogic.config.webapp_config_jsppage_check_secs |  | 检查 JSP 文件是否发生更改并需要重新编译的频率 |
 | weblogic.config.webapp_config_open_sessions_current_count |  | 应用程序当前会话数 |
 | weblogic.config.webapp_config_open_sessions_high_count |  | 应用程序最高会话数 |
-| weblogic.config.webapp_config_servlet_reload_check_secs |  | 检查servlet是否已被修改的频率 |
+| weblogic.config.webapp_config_servlet_reload_check_secs |  | 检查 servlet 是否已被修改的频率 |
 | weblogic.config.webapp_config_session_cookie_max_age_secs | s | 会话缓存保留时长 |
-| weblogic.config.webapp_config_session_idlength |  | 会话id长度（数字位数） |
+| weblogic.config.webapp_config_session_idlength |  | 会话 id 长度（数字位数） |
 | weblogic.config.webapp_config_session_invalidation_interval_secs | s | 将超时和无效会话释放前等待的时间 |
 | weblogic.config.webapp_config_session_timeout_secs | s | 会话超时设置 |
 | weblogic.config.webapp_config_sessions_opened_total_count |  | 应用程序会话打开数/周期，周期指设置的数据采集周期 |
-| weblogic.wls_servlet.weblogic_servlet_execution_time_average | s | 执行各个servlet调用的平均时长 |
-| weblogic.wls_servlet.weblogic_servlet_execution_time_high | s | 执行最长servlet调用的时长 |
-| weblogic.wls_servlet.weblogic_servlet_execution_time_low | s | 执行最短servlet调用的时长 |
-| weblogic.wls_servlet.weblogic_servlet_execution_time_total | s | 执行完所有servlet调用的时长 |
-| weblogic.wls_servlet.weblogic_servlet_invocation_total_count |  | servlet调用总次数/周期，周期指设置的数据采集周期 |
-| weblogic.wls_servlet.weblogic_servlet_pool_max_capacity |  | servlet池的线程最大容量 |
-| weblogic.wls_servlet.weblogic_servlet_reload_total_count |  | servlet重载的次数/周期，周期指设置的数据采集周期 |
+| weblogic.wls_servlet.weblogic_servlet_execution_time_average | s | 执行各个 servlet 调用的平均时长 |
+| weblogic.wls_servlet.weblogic_servlet_execution_time_high | s | 执行最长 servlet 调用的时长 |
+| weblogic.wls_servlet.weblogic_servlet_execution_time_low | s | 执行最短 servlet 调用的时长 |
+| weblogic.wls_servlet.weblogic_servlet_execution_time_total | s | 执行完所有 servlet 调用的时长 |
+| weblogic.wls_servlet.weblogic_servlet_invocation_total_count |  | servlet 调用总次数/周期，周期指设置的数据采集周期 |
+| weblogic.wls_servlet.weblogic_servlet_pool_max_capacity |  | servlet 池的线程最大容量 |
+| weblogic.wls_servlet.weblogic_servlet_reload_total_count |  | servlet 重载的次数/周期，周期指设置的数据采集周期 |
 | weblogic.workmanager.workmanager_completed_daemon_requests |  | 已处理的守护请求数/周期，周期指设置的数据采集周期 |
 | weblogic.workmanager.workmanager_completed_requests |  | 已处理的请求数/周期，周期指设置的数据采集周期 |
 | weblogic.workmanager.workmanager_pending_daemon_requests |  | 挂起的守护请求数/周期，周期指设置的数据采集周期 |
@@ -321,8 +321,8 @@
 | weblogic.jvm.jvm_heap_free_percent | % | 堆内存使用百分比 |
 | weblogic.jvm.jvm_heap_size_current | MB | 堆内存使用量 |
 | weblogic.jvm.jvm_heap_size_max | MB | 堆内存最大允许值 |
-| weblogic.jvm.jvm_process_cpu_load |  | jvm的cpu负载 |
-| weblogic.jvm.jvm_uptime | s | jvm运行时长 |
+| weblogic.jvm.jvm_process_cpu_load |  | jvm 的 cpu 负载 |
+| weblogic.jvm.jvm_uptime | s | jvm 运行时长 |
 
 ### SQL Server 组件指标说明
 
@@ -331,21 +331,21 @@
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
 | mssql.instance_Lock.mssqldb_LockWaits_sec |  | 每秒锁等待次数 |
-| mssql.db_status.mssqldb_database_status |  | 数据库状态 0代表offline 1代表online|
+| mssql.db_status.mssqldb_database_status |  | 数据库状态 0 代表 offline 1 代表 online|
 | mssql.db_status.mssqldb_used_data_size | MB | 数据库数据大小 |
 | mssql.db_status.mssqldb_max_data_size | MB | 数据库数据最大值 |
 | mssql.db_status.mssqldb_log_size | MB | 日志大小 |
 | mssql.db_status.mssqldb_LogGrowths | MB | 日志增长量 |
-| mssql.db_status.mssqldb_io_stall_total_ms | s | 用户等待IO总时间 |
+| mssql.db_status.mssqldb_io_stall_total_ms | s | 用户等待 IO 总时间 |
 | mssql.db_status.mssqldb_io_stall_read_ms | s | 用户等待读取总时间 |
 | mssql.db_status.mssqldb_io_stall_write_ms | s | 用户等待写入总时间 |
 | mssql.db_status.mssqldb_connections |  | 数据库连接数 |
 | mssql.db_status.mssqldb_log_space_used | % | 日志空间使用率 |
-| mssql.db_perform.mssqldb_up |  | 实例状态 0代表offline 1代表online|
+| mssql.db_perform.mssqldb_up |  | 实例状态 0 代表 offline 1 代表 online|
 | mssql.db_perform.mssqldb_PageSplits_sec |  | 每秒产生的页拆分数/周期，周期指设置的数据采集周期 |
 | mssql.db_perform.mssqldb_ProcessesBlocked |  | 当前堵塞进程数 |
-| mssql.db_perform.mssqldb_SqlCompilations_sec |  | SQL每秒编译次数/周期，周期指设置的数据采集周期 |
-| mssql.db_perform.mssqldb_SqlReCompilations_sec |  | SQL每秒重编译次数/周期，周期指设置的数据采集周期 |
+| mssql.db_perform.mssqldb_SqlCompilations_sec |  | SQL 每秒编译次数/周期，周期指设置的数据采集周期 |
+| mssql.db_perform.mssqldb_SqlReCompilations_sec |  | SQL 每秒重编译次数/周期，周期指设置的数据采集周期 |
 | mssql.db_perform.mssqldb_UserConnections |  | 用户连接数 |
 | mssql.db_perform.mssqldb_deadlocks_sec |  | 导致死锁的每秒锁定请求数 |
 | mssql.db_perform.mssqldb_kill_conn_errors_sec |  | 连接错误数 |
@@ -368,7 +368,7 @@
 | mssql.db_perform.mssqldb_sessions |  | 用户会话数 |
 | mssql.db_perform.mssqldb_active_sessions |  | 活跃用户会话数 |
 | mssql.db_perform.mssqldb_inactive_sessions |  | 非活跃用户会话数 |
-| mssql.cip.mssqldb_ha_ip_status |  | ip监听状态 0代表监听端口不通 1代表监听端口通畅|
+| mssql.cip.mssqldb_ha_ip_status |  | ip 监听状态 0 代表监听端口不通 1 代表监听端口通畅|
 
 ### HAProxy 组件指标说明
 
@@ -383,12 +383,12 @@
 | haproxy_backend_current_server |  | 后端服务数 |
 | haproxy_backend_current_sessions |  | 活跃后端会话数 |
 | haproxy_backend_up |  | 后端服务状态 |
-| haproxy_backend_http_responses_total |  | 后端HTTP响应码 |
+| haproxy_backend_http_responses_total |  | 后端 HTTP 响应码 |
 | haproxy_frontend_bytes_in_total |  | 前端主机传入字节速率/分 |
 | haproxy_frontend_bytes_out_total |  | 前端主机发送字节速率/分 |
 | haproxy_frontend_current_session |  | 前端会话数 |
-| haproxy_frontend_http_requests_total |  | 前端HTTP请求码 |
-| haproxy_frontend_http_responses_total |  | 前端HTTP响应码 |
+| haproxy_frontend_http_requests_total |  | 前端 HTTP 请求码 |
+| haproxy_frontend_http_responses_total |  | 前端 HTTP 响应码 |
 
 ### Zookeeper 组件指标说明
 
@@ -402,17 +402,17 @@
 | zk_max_latency |  | 响应客户端请求的最大时间 |
 | zk_min_latency |  | 响应客户端请求的最小时间 |
 | zk_outstanding_requests |  | 排队请求数 |
-| zk_pending_syncs |  | 等待同步的follower数 |
-| zk_synced_followers |  | 同步的follower数 |
+| zk_pending_syncs |  | 等待同步的 follower 数 |
+| zk_synced_followers |  | 同步的 follower 数 |
 | zk_num_alive_connections |  | 客户端连接总数 |
 | zk_approximate_data_size |  | 数据集近似值 |
 | zk_ephemerals_count |  | 短暂节点数 |
-| zk_followers |  | followers数 |
+| zk_followers |  | followers 数 |
 | zk_max_file_descriptor_count |  | 文件句柄上限 |
 | zk_open_file_descriptor_count |  | 文件句柄数 |
-| zk_watch_count |  | watches数 |
+| zk_watch_count |  | watches 数 |
 | zk_znode_count |  | 节点数 |
-| zk_up |  | ZooKeeper存活状态 |
+| zk_up |  | ZooKeeper 存活状态 |
 | zk_server_state |  | 服务身份 |
 
 ### RabbitMQ 组件指标说明
@@ -421,10 +421,10 @@
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
-| rabbitmq_channelsTotal |  | channels开启总数 |
+| rabbitmq_channelsTotal |  | channels 开启总数 |
 | rabbitmq_connectionsTotal |  | 连接开启总数 |
 | rabbitmq_consumersTotal |  | 消费者数量 |
-| rabbitmq_exchangesTotal |  | 使用中的exchanges总数 |
+| rabbitmq_exchangesTotal |  | 使用中的 exchanges 总数 |
 | rabbitmq_queue_messages_ready_total |  | 准备发送给客户端的消息数量 |
 | rabbitmq_queue_messages_total |  | 集群中的消息总数 |
 | rabbitmq_queue_messages_unacknowledged_total |  | 发送后未被确认的消息数 |
@@ -434,7 +434,7 @@
 | rabbitmq_fd_used |  | 已用文件句柄数 |
 | rabbitmq_node_mem_used | MB | 内存使用量 |
 | rabbitmq_partitions |  | 此节点可见的网络分区数量 |
-| rabbitmq_running |  | 运行nodes数 |  
+| rabbitmq_running |  | 运行 nodes 数 |  
 
 ### Memcached 组件指标说明
 
@@ -444,13 +444,13 @@
 | --- | --- | --- |
 | memcached_commands_total |  | 请求状态/分 |
 | memcached_connections_total |  | 连接速率/分 |
-| memcached_current_bytes | MB | 当前存储item的大小 |
+| memcached_current_bytes | MB | 当前存储 item 的大小 |
 | memcached_current_connections |  | 当前服务器打开的连接数 |
-| memcached_current_items |  | 实例当前item数 |
-| memcached_items_evicted_total |  | 从缓存中给新item的速率/分 |
-| memcached_items_total |  | 服务启动后存储item总数 |
+| memcached_current_items |  | 实例当前 item 数 |
+| memcached_items_evicted_total |  | 从缓存中给新 item 的速率/分 |
+| memcached_items_total |  | 服务启动后存储 item 总数 |
 | memcached_limit_bytes | MB | 内存使用上限 |
-| memcached_malloced_bytes | MB | 分配slab page内存量 |
+| memcached_malloced_bytes | MB | 分配 slab page 内存量 |
 | memcached_max_connections |  | 连接数上限 |
 | memcached_read_bytes_total | bytes | 服务器从网络读取字节的速率/分 |
 | memcached_written_bytes_total | bytes | 服务器向网络发送字节的速率/分 |
@@ -464,12 +464,12 @@
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
 | consul_net_node_latency_max | ms | 从该节点到其他节点的最大延迟 |
-| consul_net_node_latency_p25 | ms | 从该节点到其他节点的p25延迟 |
-| consul_net_node_latency_p95 | ms | 从该节点到其他节点的p95延迟 |
-| consul_net_node_latency_p90 | ms | 从该节点到其他节点的p90延迟 |
-| consul_net_node_latency_p99 | ms | 从该节点到其他节点的p99延迟 |
+| consul_net_node_latency_p25 | ms | 从该节点到其他节点的 p25 延迟 |
+| consul_net_node_latency_p95 | ms | 从该节点到其他节点的 p95 延迟 |
+| consul_net_node_latency_p90 | ms | 从该节点到其他节点的 p90 延迟 |
+| consul_net_node_latency_p99 | ms | 从该节点到其他节点的 p99 延迟 |
 | consul_net_node_latency_min | ms | 从该节点到其他节点的最小延迟 |
-| consul_net_node_latency_p75 | ms | 从该节点到其他节点的p75延迟 |
+| consul_net_node_latency_p75 | ms | 从该节点到其他节点的 p75 延迟 |
 | consul_net_node_latency_median | ms | 从该节点到其他节点的中等延迟 |
 | consul_peers |  | 对等体的数量 |
 | consul_catalog_nodes_warning |  | 警告节点数量 |
@@ -488,88 +488,88 @@
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
 | elasticsearch_docs_deleted |  | 集群中所有分片的删除的文档 |
-| elasticsearch_indexing_delete_total |  | 从index中删除的文档数量 |
-| elasticsearch_thread_pool_generic_queue |  | generic线程池排队线程数 |
-| elasticsearch_thread_pool_management_active |  | mgt线程池活跃线程数 |
-| elasticsearch_thread_pool_refresh_active |  | refresh线程池活跃线程数 |
-| elasticsearch_indexing_index_current |  | index中被索引的文档数量 |
-| elasticsearch_indexing_delete_time | s | 从index中删除文档花费时间 |
-| elasticsearch_indexing_index_time | s | 从index索引文档花费时间 |
+| elasticsearch_indexing_delete_total |  | 从 index 中删除的文档数量 |
+| elasticsearch_thread_pool_generic_queue |  | generic 线程池排队线程数 |
+| elasticsearch_thread_pool_management_active |  | mgt 线程池活跃线程数 |
+| elasticsearch_thread_pool_refresh_active |  | refresh 线程池活跃线程数 |
+| elasticsearch_indexing_index_current |  | index 中被索引的文档数量 |
+| elasticsearch_indexing_delete_time | s | 从 index 中删除文档花费时间 |
+| elasticsearch_indexing_index_time | s | 从 index 索引文档花费时间 |
 | elasticsearch_process_open_fd |  | 打开和当前进程相关的文件数据 |
-| elasticsearch_indexing_delete_current |  | 从index中删除的文档数量 |
-| elasticsearch_thread_pool_flush_queue |  | bulk线程池排队线程数 |
-| elasticsearch_thread_pool_force_merge_queue |  | merge线程池活跃线程数 |
-| elasticsearch_get_total |  | 文档存在时get请求次数 |
-| elasticsearch_thread_pool_refresh_queue |  | refresh线程池排队线程数 |
-| elasticsearch_thread_pool_index_queue |  | index线程池排队线程数 |
-| elasticsearch_thread_pool_search_threads |  | search线程池线程总数 |
+| elasticsearch_indexing_delete_current |  | 从 index 中删除的文档数量 |
+| elasticsearch_thread_pool_flush_queue |  | bulk 线程池排队线程数 |
+| elasticsearch_thread_pool_force_merge_queue |  | merge 线程池活跃线程数 |
+| elasticsearch_get_total |  | 文档存在时 get 请求次数 |
+| elasticsearch_thread_pool_refresh_queue |  | refresh 线程池排队线程数 |
+| elasticsearch_thread_pool_index_queue |  | index 线程池排队线程数 |
+| elasticsearch_thread_pool_search_threads |  | search 线程池线程总数 |
 | elasticsearch_transport_tx_size | MB | 集群通信中发送的数据大小 |
-| elasticsearch_indexing_index_total |  | index中被索引的文档数量 |
+| elasticsearch_indexing_index_total |  | index 中被索引的文档数量 |
 | elasticsearch_search_fetch_open_contexts |  | 活跃查询次数 |
 | elasticsearch_docs_count |  | 集群中所有分片的文档 |
-| elasticsearch_thread_pool_management_queue |  | mgt线程池排队的线程数 |
-| elasticsearch_thread_pool_bulk_active |  | bulk线程池活跃线程数 |
-| elasticsearch_thread_pool_search_queue |  | search线程池排队线程数 |
-| elasticsearch_get_time | s | get请求上的总时间 |
+| elasticsearch_thread_pool_management_queue |  | mgt 线程池排队的线程数 |
+| elasticsearch_thread_pool_bulk_active |  | bulk 线程池活跃线程数 |
+| elasticsearch_thread_pool_search_queue |  | search 线程池排队线程数 |
+| elasticsearch_get_time | s | get 请求上的总时间 |
 | elasticsearch_merges_current |  | 当前的活跃段合并数量 |
-| elasticsearch_thread_pool_flush_threads |  | bulk线程池线程总数 |
+| elasticsearch_thread_pool_flush_threads |  | bulk 线程池线程总数 |
 | elasticsearch_merges_current_size | MB | 当前被合并的段的大小 |
-| elasticsearch_thread_pool_snapshot_active |  | snap线程池活跃线程数 |
+| elasticsearch_thread_pool_snapshot_active |  | snap 线程池活跃线程数 |
 | elasticsearch_search_fetch_current |  | 当前运行的查询取回操作的数量 |
-| elasticsearch_flush_total |  | index刷新到磁盘次数 |
-| elasticsearch_flush_total_time | s | index刷新到磁盘花费时间 |
-| elasticsearch_thread_pool_generic_threads |  | generic线程池线程总数 |
+| elasticsearch_flush_total |  | index 刷新到磁盘次数 |
+| elasticsearch_flush_total_time | s | index 刷新到磁盘花费时间 |
+| elasticsearch_thread_pool_generic_threads |  | generic 线程池线程总数 |
 | elasticsearch_store_size | MB | 总的存储大小 |
 | elasticsearch_transport_tx_count |  | 在集群通信中发送的包的总数量 |
 | elasticsearch_merges_total |  | 所有段的合并数量 |
-| elasticsearch_thread_pool_snapshot_queue |  | snap线程池排队线程数 |
+| elasticsearch_thread_pool_snapshot_queue |  | snap 线程池排队线程数 |
 | elasticsearch_search_fetch_time | s | 查询取回操作的总时间 |
-| elasticsearch_thread_pool_search_active |  | search线程池活跃线程数 |
-| elasticsearch_thread_pool_get_queue |  | get线程池排队线程数 |
-| elasticsearch_fielddata_evictions |  | field缓存被驱逐的数据量 |
-| elasticsearch_thread_pool_index_threads |  | index线程池线程总数 |
-| elasticsearch_thread_pool_flush_active |  | flush队列中活跃线程数 |
+| elasticsearch_thread_pool_search_active |  | search 线程池活跃线程数 |
+| elasticsearch_thread_pool_get_queue |  | get 线程池排队线程数 |
+| elasticsearch_fielddata_evictions |  | field 缓存被驱逐的数据量 |
+| elasticsearch_thread_pool_index_threads |  | index 线程池线程总数 |
+| elasticsearch_thread_pool_flush_active |  | flush 队列中活跃线程数 |
 | elasticsearch_search_query_time | s | 查询操作的总时间 |
-| elasticsearch_get_exists_time | s | 文档存在时get请求时间 |
-| elasticsearch_get_missing_total |  | 文档丢失时get请求次数 |
+| elasticsearch_get_exists_time | s | 文档存在时 get 请求时间 |
+| elasticsearch_get_missing_total |  | 文档丢失时 get 请求次数 |
 | elasticsearch_transport_rx_count |  | 集群通信接受包的总数量 |
-| elasticsearch_thread_pool_bulk_threads |  | bulk线程池线程总数 |
+| elasticsearch_thread_pool_bulk_threads |  | bulk 线程池线程总数 |
 | elasticsearch_transport_rx_size | MB | 集群通信接受的数据大小 |
-| elasticsearch_thread_pool_force_merge_threads |  | merge线程池线程总数 |
-| elasticsearch_refresh_total |  | 总的index刷新次数 |
-| elasticsearch_thread_pool_snapshot_threads |  | snap线程池线程总数 |
-| elasticsearch_fielddata_size | MB | field缓存区大小 |
+| elasticsearch_thread_pool_force_merge_threads |  | merge 线程池线程总数 |
+| elasticsearch_refresh_total |  | 总的 index 刷新次数 |
+| elasticsearch_thread_pool_snapshot_threads |  | snap 线程池线程总数 |
+| elasticsearch_fielddata_size | MB | field 缓存区大小 |
 | elasticsearch_transport_server_open |  | 为集群通信打开的连接数 |
 | elasticsearch_search_query_total |  | 查询操作的数量 |
-| elasticsearch_thread_pool_bulk_queue |  | bulk线程池排队的线程数 |
-| elasticsearch_thread_pool_get_threads |  | get线程池的线程总数 |
-| elasticsearch_get_current |  | 正在运行的get请求数 |
-| elasticsearch_http_current_open |  | 当前打开的http连接数 |
-| elasticsearch_get_missing_time | s | 文档丢失花费get请求时间 |
-| elasticsearch_thread_pool_index_active |  | index线程池活跃线程数 |
-| elasticsearch_refresh_total_time | s | index刷新花费总时间 |
-| elasticsearch_http_total_opened |  | 打开http的总连接数 |
-| elasticsearch_thread_pool_generic_active |  | generic线程池活跃线程数 |
-| elasticsearch_thread_pool_force_merge_active |  | merge线程池活跃线程数 |
-| elasticsearch_thread_pool_refresh_threads |  | refresh线程池线程总数 |
+| elasticsearch_thread_pool_bulk_queue |  | bulk 线程池排队的线程数 |
+| elasticsearch_thread_pool_get_threads |  | get 线程池的线程总数 |
+| elasticsearch_get_current |  | 正在运行的 get 请求数 |
+| elasticsearch_http_current_open |  | 当前打开的 http 连接数 |
+| elasticsearch_get_missing_time | s | 文档丢失花费 get 请求时间 |
+| elasticsearch_thread_pool_index_active |  | index 线程池活跃线程数 |
+| elasticsearch_refresh_total_time | s | index 刷新花费总时间 |
+| elasticsearch_http_total_opened |  | 打开 http 的总连接数 |
+| elasticsearch_thread_pool_generic_active |  | generic 线程池活跃线程数 |
+| elasticsearch_thread_pool_force_merge_active |  | merge 线程池活跃线程数 |
+| elasticsearch_thread_pool_refresh_threads |  | refresh 线程池线程总数 |
 | elasticsearch_search_fetch_total |  | 查询取回操作的数量 |
-| elasticsearch_get_exists_total |  | 文档存在时get请求数 |
+| elasticsearch_get_exists_total |  | 文档存在时 get 请求数 |
 | elasticsearch_merges_total_size | MB | 所有合并段的大小 |
 | elasticsearch_merges_current_docs |  | 当前跨段合并的文档数量 |
 | elasticsearch_merges_total_docs |  | 跨所有合并段的文档数量 |
-| elasticsearch_thread_pool_get_active |  | get线程池活跃线程数 |
+| elasticsearch_thread_pool_get_active |  | get 线程池活跃线程数 |
 | elasticsearch_search_query_current |  | 当前运行查询操作的数量 |
-| elasticsearch_thread_pool_management_threads |  | mgt线程池线程总数 |
+| elasticsearch_thread_pool_management_threads |  | mgt 线程池线程总数 |
 | elasticsearch_merges_total_time | s | 花在合并段上的时间 |
 | elasticsearch_active_primary_shards |  | 集群中活跃的主分片数量 |
-| elasticsearch_pending_tasks_total |  | 总的未完成的task数量 |
+| elasticsearch_pending_tasks_total |  | 总的未完成的 task 数量 |
 | elasticsearch_unassigned_shards |  | 未分配节点的分片数量 |
-| elasticsearch_pending_tasks_priority_urgent |  | 紧急优先未完成的task数量 |
-| elasticsearch_pending_tasks_priority_high |  | 高优先级的未完成的task数量 |
-| elasticsearch_cluster_status |  | 集群健康数字红=0黄=1绿=2 |
+| elasticsearch_pending_tasks_priority_urgent |  | 紧急优先未完成的 task 数量 |
+| elasticsearch_pending_tasks_priority_high |  | 高优先级的未完成的 task 数量 |
+| elasticsearch_cluster_status |  | 集群健康数字红=0 黄=1 绿=2 |
 | elasticsearch_relocating_shards |  | 节点搬到另一个节点的分片数量 |
-| elasticsearch_number_of_data_nodes |  | 集群中node数据总数 |
-| elasticsearch_number_of_nodes |  | 集群中node总数 |
+| elasticsearch_number_of_data_nodes |  | 集群中 node 数据总数 |
+| elasticsearch_number_of_nodes |  | 集群中 node 总数 |
 | elasticsearch_active_shards |  | 集群中活跃分片数量 |
 | elasticsearch_initializing_shards |  | 当前初始化碎片数量 |
 
@@ -579,23 +579,23 @@
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
-| kafka_replication_leader_elections_rate |  | leader选举频率 |
-| kafka_replication_isr_shrinks_rate | nodes/s | 副本离开ISR池的速率 |
+| kafka_replication_leader_elections_rate |  | leader 选举频率 |
+| kafka_replication_isr_shrinks_rate | nodes/s | 副本离开 ISR 池的速率 |
 | kafka_request_handler_avg_idle_pct_rate |  | 处理请求线程时间百分比 |
 | kafka_net_bytes_out_rate | bytes/s | 传出字节速率 |
 | kafka_net_bytes_rejected_rate | bytes/s | 被拒绝的字节速率 |
 | kafka_messages_in_rate |  | 传入消息速率 |
 | kafka_net_bytes_in_rate | bytes/s | 传入字节速率 |
 | kafka_request_fetch_failed_rate |  | 客户端请求失败次数 |
-| kafka_replication_unclean_leader_elections_rate |  | unleader选举频率 |
-| kafka_replication_isr_expands_rate | nodes/s | 副本加入ISR池的速率 |
-| kafka_request_produce_failed_rate |  | 失败的produce请求数 |
-| kafka_request_produce_time_99percentile | ms | 99%produce请求时间 |
+| kafka_replication_unclean_leader_elections_rate |  | unleader 选举频率 |
+| kafka_replication_isr_expands_rate | nodes/s | 副本加入 ISR 池的速率 |
+| kafka_request_produce_failed_rate |  | 失败的 produce 请求数 |
+| kafka_request_produce_time_99percentile | ms | 99%produce 请求时间 |
 | kafka_request_metadata_time_99percentile | ms | 99%元数据请求时间 |
-| kafka_request_update_metadata_time_99percentile | ms | 更新99%元数据请求的时间 |
-| kafka_request_produce_time_avg | ms | produce请求数的时间 |
+| kafka_request_update_metadata_time_99percentile | ms | 更新 99%元数据请求的时间 |
+| kafka_request_produce_time_avg | ms | produce 请求数的时间 |
 | kafka_request_update_metadata_time_avg | ms | 更新元数据请求的时间  |
-| kafka_request_produce_rate |  | produce请求数 |
+| kafka_request_produce_rate |  | produce 请求数 |
 | kafka_request_metadata_time_avg | ms | 元数据平均请求时间 |
 
 ### Mongodb 组件指标说明
@@ -605,12 +605,12 @@
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
 | mongodb_replset_health |  | 副本集状态 |
-| mongodb_metrics_repl_network_readerscreated |  | oplog查询进程创建的个数 |
+| mongodb_metrics_repl_network_readerscreated |  | oplog 查询进程创建的个数 |
 | mongodb_opcounters_insert |  | 插入操作的次数 |
-| mongodb_metrics_repl_network_getmores_totalmillis | ms/s | getmore操作收集数据时间 |
-| mongodb_metrics_repl_buffer_count |  | oplog缓存中的操作数 |
+| mongodb_metrics_repl_network_getmores_totalmillis | ms/s | getmore 操作收集数据时间 |
+| mongodb_metrics_repl_buffer_count |  | oplog 缓存中的操作数 |
 | mongodb_metrics_getlasterror_wtime_totalmillis | ms/s | 执行获取最后错误操作的时间 |
-| mongodb_metrics_repl_network_getmores_num |  | getmore操作的个数 |
+| mongodb_metrics_repl_network_getmores_num |  | getmore 操作的个数 |
 | mongodb_connections_available |  | 未使用的可用连接数 |
 | mongodb_opcountersrepl_delete |  | 副本集删除操作的次数 |
 | mongodb_asserts_regular |  | 常规断言数 |
@@ -620,7 +620,7 @@
 | mongodb_metrics_repl_network_bytes | MB | 从服务器同步源读取的数据总量 |
 | mongodb_metrics_record_moves |  | 文档在磁盘上移动的次数 |
 | mongodb_opcounters_query |  | 查询操作的次数 |
-| mongodb_uptime | s | mongo进程启动时长 |
+| mongodb_uptime | s | mongo 进程启动时长 |
 | mongodb_opcounters_delete |  | 删除操作的次数 |
 | mongodb_metrics_getlasterror_wtime_num |  | 写操作获取最后错误操作的次数 |
 | mongodb_metrics_operation_fastmod |  | 不导致更新操作的次数 |
@@ -628,32 +628,32 @@
 | mongodb_mem_resident | MB | 数据库进程在使用的内存总数 |
 | mongodb_mem_virtual | MB | 数据库进程使用的虚拟内存总数 |
 | mongodb_asserts_user |  | 用户断言数 |
-| mongodb_metrics_repl_apply_batches_totalmillis | ms/s | 执行来自oplog的操作的时间 |
+| mongodb_metrics_repl_apply_batches_totalmillis | ms/s | 执行来自 oplog 的操作的时间 |
 | mongodb_metrics_document_inserted |  | 文档增加数 |
 | mongodb_globallock_currentqueue_writers |  | 当前在队列中等待写锁的操作数 |
 | mongodb_opcountersrepl_query |  | 副本集查询操作的次数 |
 | mongodb_metrics_operation_scanandorder |  | 返回不能索引排序数字请求次数 |
 | mongodb_connections_totalcreated |  | 所有连接数 |
-| mongodb_metrics_operation_idhack |  | 包含_id字段的请求次数 |
-| mongodb_metrics_repl_buffer_sizebytes | MB | oplog缓存的大小 |
+| mongodb_metrics_operation_idhack |  | 包含_id 字段的请求次数 |
+| mongodb_metrics_repl_buffer_sizebytes | MB | oplog 缓存的大小 |
 | mongodb_opcountersrepl_command |  | 命令的总数 |
 | mongodb_metrics_repl_buffer_maxsizebytes | MB | 缓存的最大值 |
 | mongodb_metrics_document_returned |  | 文档被请求返回数 |
-| mongodb_metrics_ttl_deleteddocuments |  | 有ttl索引删除的文档数 |
+| mongodb_metrics_ttl_deleteddocuments |  | 有 ttl 索引删除的文档数 |
 | mongodb_metrics_repl_network_ops |  | 读取操作的个数 |
 | mongodb_metrics_document_deleted |  | 文档删除数 |
 | mongodb_metrics_repl_apply_batches_num |  | 批处理的个数 |
-| mongodb_asserts_rollovers |  | 计数器rollover次数 |
+| mongodb_asserts_rollovers |  | 计数器 rollover 次数 |
 | mongodb_opcounters_command |  | 传给数据库的命令的总数 |
 | mongodb_globallock_totaltime | μs | 全局锁启动时长 |
 | mongodb_opcountersrepl_insert |  | 副本集插入操作的次数 |
-| mongodb_opcountersrepl_getmore |  | 副本集getmore操作的次数 |
+| mongodb_opcountersrepl_getmore |  | 副本集 getmore 操作的次数 |
 | mongodb_opcountersrepl_update |  | 副本集更新操作的次数 |
 | mongodb_opcounters_update |  | 更新操作的次数 |
 | mongodb_asserts_warning |  | 警告断言数 |
-| mongodb_opcounters_getmore |  | getmore操作的次数 |
+| mongodb_opcounters_getmore |  | getmore 操作的次数 |
 | mongodb_globallock_currentqueue_total |  | 当前在队列中等待锁的操作数 |
-| mongodb_metrics_repl_apply_ops |  | 执行的oplog操作的个数 |
+| mongodb_metrics_repl_apply_ops |  | 执行的 oplog 操作的个数 |
 | mongodb_metrics_ttl_passes |  | 删除文档次数 |
 | mongodb_connections_current |  | 从客户端到数据库服务端的连接数 |
 | mongodb_metrics_getlasterror_wtimeouts |  | 超时导致操作数 |
@@ -661,7 +661,7 @@
 | mongodb_stats_indexsize |  | 库中所有创建的索引总数 |
 | mongodb_stats_objects |  | 库中所有的文档数 |
 | mongodb_stats_indexes |  | 库中总索引数 |
-| mongodb_stats_storagesize | MB | collections存储空间 |
+| mongodb_stats_storagesize | MB | collections 存储空间 |
 | mongodb_stats_datasize | MB | 库中的数据量 |
 
 ### Ceph 组件指标说明
@@ -677,17 +677,17 @@
 | ceph_num_pools |  | 存储池的数量 |
 | ceph_pgstate_active_clean |  | 活动归置组数量 |
 | ceph_num_pgs |  | 可用归置组的数量 |
-| ceph_num_near_full_osds |  | 几乎完整的osd数量 |
-| ceph_num_full_osds |  | 完整osd数量 |
+| ceph_num_near_full_osds |  | 几乎完整的 osd 数量 |
+| ceph_num_full_osds |  | 完整 osd 数量 |
 | ceph_total_objects |  | 对象总数 |
 | ceph_num_osds |  | 已知存储守护进程的数量 |
 | ceph_read_op_per_sec | MB/s | 存储池每秒读字节数 |
 | ceph_num_objects |  | 对象个数 |
 | ceph_write_op_per_sec | MB/s | 存储池每秒写字节数 |
-| ceph_write_bytes_sec | MB/s | ceph每秒写字节数 |
-| ceph_read_bytes_sec | MB/s | ceph每秒读字节数 |
+| ceph_write_bytes_sec | MB/s | ceph 每秒写字节数 |
+| ceph_read_bytes_sec | MB/s | ceph 每秒读字节数 |
 | ceph_pct_used | % | 使用量 |
-| ceph_op_per_sec |  | 池每秒IO操作 |
+| ceph_op_per_sec |  | 池每秒 IO 操作 |
 | ceph_apply_latency_ms | s | 磁盘更新所需时间 |
 | ceph_commit_latency_ms | s | 日志操作所需时间 |
 
@@ -697,15 +697,15 @@
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
-| iis_httpd_request_method_options |  | options方法请求数 |
-| iis_httpd_request_method_head |  | head方法请求数 |
-| iis_httpd_request_method_del |  | del方法请求数 |
-| iis_requests_cgi |  | cgi请求执行数 |
-| iis_requests_isapi |  | isapi请求执行数 |
+| iis_httpd_request_method_options |  | options 方法请求数 |
+| iis_httpd_request_method_head |  | head 方法请求数 |
+| iis_httpd_request_method_del |  | del 方法请求数 |
+| iis_requests_cgi |  | cgi 请求执行数 |
+| iis_requests_isapi |  | isapi 请求执行数 |
 | iis_errors_not_found |  | 文档未找到导致错误的速数 |
 | iis_net_files_rcvd |  | 每秒接收的文件数 |
-| iis_httpd_request_method_put |  | put方法请求数 |
-| iis_httpd_request_method_trace |  | trace方法请求数 |
+| iis_httpd_request_method_put |  | put 方法请求数 |
+| iis_httpd_request_method_trace |  | trace 方法请求数 |
 | iis_net_connection_attempts |  | 每秒尝试连接数 |
 | iis_users_nonanon |  | 每秒非匿名用户的请求数 |
 | iis_net_bytes_total |  | 每秒传输的字节总数 |
@@ -715,9 +715,9 @@
 | iis_errors_locked |  | 文档锁定导致的错误数 |
 | iis_users_anon |  | 每秒匿名用户的请求数 |
 | iis_net_files_sent |  | 每秒发送的文件数 |
-| iis_httpd_request_method_post |  | post方法请求数 |
-| iis_httpd_request_method_get |  | get方法请求数 |
-| iis_uptime |  | iis服务器运行时间 |
+| iis_httpd_request_method_post |  | post 方法请求数 |
+| iis_httpd_request_method_get |  | get 方法请求数 |
+| iis_uptime |  | iis 服务器运行时间 |
 
 ### Active_Directory 组件指标说明
 
@@ -725,10 +725,10 @@
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
-| active_directory_dra_outbound_values_dns_persec |  | 发到复制伙伴DN属性值数量/s |
+| active_directory_dra_outbound_values_dns_persec |  | 发到复制伙伴 DN 属性值数量/s |
 | active_directory_dra_outbound_bytes_total |  | 发送到复制伙伴的总字节数 |
-| active_directory_ldap_searches_persec |  | LDAP客户端执行搜索操作速率 |
-| active_directory_dra_inbound_values_dns_persec |  | 从复制伙伴接收DN属性值数/s |
+| active_directory_ldap_searches_persec |  | LDAP 客户端执行搜索操作速率 |
+| active_directory_dra_inbound_values_dns_persec |  | 从复制伙伴接收 DN 属性值数/s |
 | active_directory_dra_inbound_bytes_total |  | 从复制伙伴接收的总字节数 |
 | active_directory_dra_outbound_values_total_persec |  | 发送到复制伙伴对象属性值数/s |
 | active_directory_dra_inbound_objects_remaining |  | 未完成同步的对象数量 |
@@ -742,19 +742,19 @@
 | active_directory_dra_inbound_bytes_after_compressi | Byte | 从其他站点（每秒）的目录系统代理（DSA）入站的压缩复制数据的压缩大小（以字节为单位） |
 | active_directory_dra_inbound_properties_applied_pe |  | 入站复制应用对象属性更改数/s |
 | active_directory_dra_inbound_values_total_persec |  | 从复制伙伴接收对象属性值数/s |
-| active_directory_ldap_successful_binds_persec |  | 成功发生的LDAP绑定数/s |
-| active_directory_dra_outbound_bytes_after_compress | Byte | 压缩复制数据的压缩大小（以字节为单位），其出站到其他站点中的DSA（每秒） |
+| active_directory_ldap_successful_binds_persec |  | 成功发生的 LDAP 绑定数/s |
+| active_directory_dra_outbound_bytes_after_compress | Byte | 压缩复制数据的压缩大小（以字节为单位），其出站到其他站点中的 DSA（每秒） |
 | active_directory_dra_replication_pending_synchroni |  | 等待此服务器未处理目录同步数 |
 | active_directory_dra_outbound_objects_filtered_per |  | 出站复制伙伴确认的对象数/s |
-| active_directory_dra_outbound_bytes_before_compres | Byte | 出站到其他站点的DSA数据/s |
+| active_directory_dra_outbound_bytes_before_compres | Byte | 出站到其他站点的 DSA 数据/s |
 | active_directory_dra_inbound_objects_persec |  | 复制伙伴入站复制接收对象数/s |
-| active_directory_dra_inbound_bytes_not_compressed | KB | 同一站点其他DSA入站数据/s |
+| active_directory_dra_inbound_bytes_not_compressed | KB | 同一站点其他 DSA 入站数据/s |
 | active_directory_dra_sync_requests_made |  | 启动后向复制伙伴发出同步请求数 |
-| active_directory_ldap_bind_time | ms | 上次成功LDAP绑定所需时间 |
+| active_directory_ldap_bind_time | ms | 上次成功 LDAP 绑定所需时间 |
 | active_directory_dra_inbound_objects_filtered_pers |  | 从复制伙伴接收的对象数/s |
-| active_directory_dra_outbound_bytes_not_compressed | Byte | 向同一站点中DSA出站数据大小 |
-| active_directory_ldap_client_sessions |  | 已连接LDAP客户端的会话数 |
-| active_directory_dra_inbound_bytes_before_compress | Byte | 其他站点DSA入站数据大小/s |
+| active_directory_dra_outbound_bytes_not_compressed | Byte | 向同一站点中 DSA 出站数据大小 |
+| active_directory_ldap_client_sessions |  | 已连接 LDAP 客户端的会话数 |
+| active_directory_dra_inbound_bytes_before_compress | Byte | 其他站点 DSA 入站数据大小/s |
 
 ### Exchange 组件指标说明
 
@@ -765,10 +765,10 @@
 | exchange_database_io_reads_avg_latency | ms | 数据库读取操作的平均时间 |
 | exchange_database_io_db_reads_attached_persec |  | 附加数据库每秒数据库读取操作数 |
 | exchange_netlogon_semaphore_waiters |  | 正在等待获取信号的线程数量 |
-| exchange_adaccess_processes_ldap_search | ms | 发送LDAP搜索请求响应的时间 |
+| exchange_adaccess_processes_ldap_search | ms | 发送 LDAP 搜索请求响应的时间 |
 | exchange_netlogon_semaphore_hold_time | s | 在上个示例中信号停留的平均时间 |
 | exchange_network_outbound_errors |  | 因错误而无法传输的出站数据包数 |
-| exchange_adaccess_domain_controllers_ldap_search | ms | 将LDAP读请求发送至域控制器接收响应的时间 |
+| exchange_adaccess_domain_controllers_ldap_search | ms | 将 LDAP 读请求发送至域控制器接收响应的时间 |
 | exchange_database_io_db_writes_attached_persec |  | 显示每个附加数据库实例的每秒数据库写入操作数量 |
 | exchange_netlogon_semaphore_acquires |  | 在安全通道连接的整个生命周期或自系统为 _Total 启动以来，获取信号的总次数 |
 | exchange_ws_current_connections_default_website |  | 显示对默认网站建立的当前连接数，此数目对应于命中前端 CAS 服务器角色的连接数 |
@@ -790,7 +790,7 @@
 | exchange_ws_requests_persec |  | 显示服务器上活动数据库副本的数量 |
 | exchange_network_tcpv6_connection_failures |  | 显示当前状态为 ESTABLISHED 或 CLOSE-WAIT 的 TCP 连接的数目 |
 | exchange_memory_available | MB | 显示可立即分配给进程或供系统使用的物理内存量 (MB) |
-| exchange_ws_current_connections_total |  | 当前与Web服务建立连接的数量 |
+| exchange_ws_current_connections_total |  | 当前与 Web 服务建立连接的数量 |
 | exchange_rpc_ops_persec |  | 显示 RPC 操作发生的速率（每秒） |
 | exchange_autodiscover_requests_persec |  | 每秒处理自动发现服务请求数 |
 | exchange_memory_committed | % | 显示 Memory\Committed Bytes 与 Memory\Commit Limit 的比率 |
@@ -808,16 +808,16 @@
 | exchange_rpc_active_user_count |  | 显示最近 2 分钟之内进行过某些活动的唯一用户数 |
 | exchange_processor_cpu_privileged |  | 显示花在特权模式上的处理器时间的百分比 |
 | exchange_owa_unique_users |  | 显示当前登录到 Outlook Web App 的唯一用户数 |
-| exchange_owa_requests_persec |  | 显示每秒由Outlook Web App 处理的请求数 |
-| exchange_network_tcpv6_conns_reset |  | TCP连接直接从 ESTABLISHED 状态或 CLOSE-WAIT 状态转换为 CLOSED 状态的次数 |
+| exchange_owa_requests_persec |  | 显示每秒由 Outlook Web App 处理的请求数 |
+| exchange_network_tcpv6_conns_reset |  | TCP 连接直接从 ESTABLISHED 状态或 CLOSE-WAIT 状态转换为 CLOSED 状态的次数 |
 | exchange_processor_cpu_user | % | 在用户模式上处理器时间的百分比 |
 | exchange_rpc_user_count |  | 显示连接到服务的用户数 |
 | exchange_ab_nspi_rpc_browse_requests_avg_latency | ms | 采样完成浏览请求平均时间 |
-| exchange_ab_nspi_rpc_requests_avg_latency | ms | 采样完成NSPI请求平均时间 |
+| exchange_ab_nspi_rpc_requests_avg_latency | ms | 采样完成 NSPI 请求平均时间 |
 | exchange_ab_referral_rpc_requests_avg_latency | ms | 采样完成引用请求平均时间 |
-| exchange_ab_nspi_connections_current |  | 当前连接服务器NSPI客户端数 |
-| exchange_ab_nspi_connections_per |  | 每秒连接服务器NSPI客户端数 |
-| exchange_ab_nspi_rpc_requests_per |  | NSPI请求发生的速率/s |
+| exchange_ab_nspi_connections_current |  | 当前连接服务器 NSPI 客户端数 |
+| exchange_ab_nspi_connections_per |  | 每秒连接服务器 NSPI 客户端数 |
+| exchange_ab_nspi_rpc_requests_per |  | NSPI 请求发生的速率/s |
 | exchange_ab_referral_rpc_requests_per |  | 引用请求发生的速率/s |
 | exchange_is_store_rpc_client_backoff_per |  | 指示发生客户端回退的速率 |
 | exchange_availability_service_avg_time_to_Process | s | 处理忙/闲请求的平均时间 |
@@ -844,10 +844,10 @@
 | exchange_database_io_reads_avg_latency | ms | 数据库读取操作的平均时间 |
 | exchange_database_io_db_reads_attached_persec |  | 附加数据库每秒数据库读取操作数 |
 | exchange_netlogon_semaphore_waiters |  | 正在等待获取信号的线程数量 |
-| exchange_adaccess_processes_ldap_search | ms | 发送LDAP搜索请求响应的时间 |
+| exchange_adaccess_processes_ldap_search | ms | 发送 LDAP 搜索请求响应的时间 |
 | exchange_netlogon_semaphore_hold_time | s | 在上个示例中信号停留的平均时间 |
 | exchange_network_outbound_errors |  | 因错误而无法传输的出站数据包数 |
-| exchange_adaccess_domain_controllers_ldap_search | ms | 将LDAP读请求发送至域控制器接收响应的时间 |
+| exchange_adaccess_domain_controllers_ldap_search | ms | 将 LDAP 读请求发送至域控制器接收响应的时间 |
 | exchange_database_io_db_writes_attached_persec |  | 显示每个附加数据库实例的每秒数据库写入操作数量 |
 | exchange_netlogon_semaphore_acquires |  | 在安全通道连接的整个生命周期或自系统为 _Total 启动以来，获取信号的总次数 |
 | exchange_ws_current_connections_default_website |  | 显示对默认网站建立的当前连接数，此数目对应于命中前端 CAS 服务器角色的连接数 |
@@ -879,7 +879,7 @@
 | exchange_ws_requests_persec |  | 显示服务器上活动数据库副本的数量 |
 | exchange_network_tcpv6_connection_failures |  | 显示当前状态为 ESTABLISHED 或 CLOSE-WAIT 的 TCP 连接的数目 |
 | exchange_memory_available | MB | 显示可立即分配给进程或供系统使用的物理内存量 (MB) |
-| exchange_ws_current_connections_total |  | 当前与Web服务建立连接的数量 |
+| exchange_ws_current_connections_total |  | 当前与 Web 服务建立连接的数量 |
 | exchange_rpc_ops_persec |  | 显示 RPC 操作发生的速率（每秒） |
 | exchange_autodiscover_requests_persec |  | 每秒处理自动发现服务请求数 |
 | exchange_memory_committed | % | 显示 Memory\Committed Bytes 与 Memory\Commit Limit 的比率 |
@@ -897,7 +897,7 @@
 | exchange_rpc_active_user_count |  | 显示最近 2 分钟之内进行过某些活动的唯一用户数 |
 | exchange_processor_cpu_privileged |  | 显示花在特权模式上的处理器时间的百分比 |
 | exchange_owa_unique_users |  | 显示当前登录到 Outlook Web App 的唯一用户数 |
-| exchange_owa_requests_persec |  | 显示每秒由Outlook Web App 处理的请求数 |
-| exchange_network_tcpv6_conns_reset |  | TCP连接直接从 ESTABLISHED 状态或 CLOSE-WAIT 状态转换为 CLOSED 状态的次数 |
+| exchange_owa_requests_persec |  | 显示每秒由 Outlook Web App 处理的请求数 |
+| exchange_network_tcpv6_conns_reset |  | TCP 连接直接从 ESTABLISHED 状态或 CLOSE-WAIT 状态转换为 CLOSED 状态的次数 |
 | exchange_processor_cpu_user | % | 在用户模式上处理器时间的百分比 |
 | exchange_rpc_user_count |  | 显示连接到服务的用户数 |

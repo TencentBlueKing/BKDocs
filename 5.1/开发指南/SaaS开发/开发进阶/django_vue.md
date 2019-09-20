@@ -27,31 +27,31 @@
 
 设置 node.js prefix（全局）和 cache（缓存）路径，新版的 node.js 集成了 npm 所以直接在命令行中使用 npm 来进行设置，设置缓存文件夹。
 
-```
+```bash
 npm config set cache "F:\nodejs\node_cache"
 ```
 
 设置全局模块存放路径。
 
-```
+```bash
 npm config set prefix "F:\nodejs\node_global"
 ```
 
 使用 npm 工具安装 vue。
 
-```
+```bash
 npm install --global vue
 ```
 
 安装全局 vue-cli 脚手架。
 
-```
+```bash
 npm install --global vue-cli
 ```
 
 安装完成后，使用 pycharm 打开蓝鲸 Django 开发框架在开发框架根目录下新建 vue 工程， 在项目根目录执行如下命令：
 
-```
+```bash
 vue init webpack projectname
 ```
 
@@ -69,7 +69,7 @@ vue init webpack projectname
 
 这里根据提示分别执行：
 
-```
+```bash
 npm audit fix
 
 npm audit fix --force
@@ -83,7 +83,7 @@ npm audit
 
 至此，准备工作完成， 尝试运行 vue 前端工程
 
-```
+```bash
 npm run dev
 ```
 
@@ -112,13 +112,13 @@ npm run dev
 
 安装 Django REST framework
 
-```
+```bash
 pip install djangorestframework==3.0.0
 ```
 
 在 config/default.py 的 INSTALLED_APPS 中加上 `rest_framework`
 
-```
+```python
 INSTALLED_APPS += (
     'home_application',
     'mako_application',
@@ -128,7 +128,7 @@ INSTALLED_APPS += (
 
 新建项目 app，在 Django 项目根目录执行：
 
-```
+```bash
 python manage startapp appname
 ```
 > 注：appname 为新建 app 名字，请自行设置。
@@ -141,7 +141,7 @@ python manage startapp appname
 
 在 INSTALLED_APPS 添加自己新建的 app
 
-```
+```python
 INSTALLED_APPS += (
     'home_application',
     'mako_application',
@@ -288,13 +288,13 @@ axios 写好后在浏览器中测试看能否正常请求 api。
 
 第一种方案：在后端解决，在 django 开发框架中安装 django-cors-middleware 中间件，但是如果部署到线上是不允许后台可以跨域的，所以这种方案必须配置在本地开发环境的配置文件中。
 
-```
+```bash
 pip install django-cors-middleware
 ```
 
 在 config/default.py 配置文件中添加 APP,不添加的话无法生效。
 
-```
+```python
 INSTALLED_APPS += (
     'home_application',
     'mako_application',
@@ -306,7 +306,7 @@ INSTALLED_APPS += (
 
 在 config/default.py 中添加中间件。
 
-```
+```python
 MIDDLEWARE_CLASSES = (
     ...
     'corsheaders.middleware.CorsMiddleware',
@@ -317,7 +317,7 @@ MIDDLEWARE_CLASSES = (
 
 最后在 config/default.py 最下方添加：
 
-```
+```python
 #在本地开发环境下开启跨域允许  
 if RUN_MODE == 'DEVELOP':  
     # 跨域增加忽略  
@@ -360,7 +360,7 @@ if RUN_MODE == 'DEVELOP':
 
 由于蓝鲸开发框架在本地访问的域名是 http://{domain_url}}:8080，那么要使得 vue 前端可以获得后端返回的 cookies 中的 csrftoken，vue 前端工程本地访问域名也要和 Django 的本地访问域名保持一致。修改 build 目录下的 webpack.dev.conf.js 文件中的 HOST 参数。
 
-```
+```js
 const HOST = '{domain_url}'
 ```
 
@@ -372,7 +372,7 @@ const HOST = '{domain_url}'
 第一种方案：
 
 main.js 代码：
-```
+```js
 import Vue from 'vue'  
 import App from './App'  
 import router from './router'  
@@ -402,7 +402,7 @@ template: '<App/>'
 
 main.js 代码
 
-```
+```js
 import Vue from 'vue'  
 import App from './App'  
 import router from './router'  
@@ -461,7 +461,7 @@ template: '<App/>'
 
 执行打包命令：
 
-```
+```bash
 npm run build
 ```
 

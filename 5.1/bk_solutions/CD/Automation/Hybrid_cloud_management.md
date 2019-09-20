@@ -1,12 +1,12 @@
 管控混合云架构下的基础设施
 ---
 
-#### 情景 {#Situation}
+#### 情景 
 随着云计算浪潮的推进，多云管控逐渐成为趋势，多云间网络无法互通。
 
 接下来看下蓝鲸是如何管控多云主机。
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 
 - [部署完蓝鲸](https://docs.bk.tencent.com/bkce_install_guide/)
 
@@ -19,13 +19,13 @@
  - **云区域** : 标识 VPC 网络，蓝鲸多云管控的关键字段，通过 租户 ID( bk_supplier_id )、云区域、IP 三者唯一标识主机。
  - **直连网络** : 蓝鲸后台服务所在的网络，该网络下管控的主机与蓝鲸后台互通。
  
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 
 - [1. 梳理网络拓扑](#Carding_net_topologic)
 - [2. 管理直连网络区域的主机](#Direct_network_management)
 - [3. 管理跨云网络区域的主机](#Multi_cloud_management)
 
-## 1. 梳理网络拓扑 {#Carding_net_topologic}
+## 1. 梳理网络拓扑 
 
 以下是一个经典的多云管控网络拓扑图。
 
@@ -38,7 +38,7 @@
 > 在跨云管控的场景下，在蓝鲸所在 VPC 1 网络下发安装 Agent 的行为，还需要蓝鲸后台的 [Nginx 模块](https://docs.bk.tencent.com/bkce_install_guide/setup/get_ready.html#installconfig) 具备外网 IP，供 VPC 2 和 VPC 3 网络的 GSE Proxy 下载 Proxy 和 Agent 安装包。 
 
 
-## 2. 管理直连网络区域的主机 {#Direct_network_management}
+## 2. 管理直连网络区域的主机 
 先介绍如何管控蓝鲸后台服务所在网络（也称直连网络）的主机。
 ### 2.1 安装 Agent
 打开 [节点管理](https://docs.bk.tencent.com/bk_nodeman/) ，选择`直连区域`，按提示填写`IP地址`、`操作系统`、`端口`、`账号`、`密码`。
@@ -71,7 +71,7 @@
 
 {% video %}media/blueking_execute_push_file.mp4{% endvideo %}
 
-## 3. 管理跨云网络区域的主机 {#Multi_cloud_management}
+## 3. 管理跨云网络区域的主机 
 接下来介绍，如何管控跨云网络（例如 VPC 2 和 VPC 3）的主机。
 
 ### 3.1 策略开通
@@ -130,7 +130,7 @@
 {% video %}media/bk_nodeman.mp4{% endvideo %}
  
 
-## 扩展阅读 {#Extended_reading}
+## 扩展阅读 
 ### 多级级联：管理隔离网络的主机
 
 在部分企业网络环境中，存在 `VPC 1（蓝鲸所处网络）` 和 `VPC 3` 不互通，但需要管控 VPC 3 网络主机的场景，如下图：

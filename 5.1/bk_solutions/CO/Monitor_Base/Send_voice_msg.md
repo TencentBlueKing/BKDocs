@@ -4,25 +4,25 @@
 
 > 特别感谢社区用户 [Kevin](https://bk.tencent.com/s-mart/personal/10966/) 提供该文档.
 
-#### 情景 {#Situation}
+#### 情景 
 故障处理是运维的几大职能之一，重要告警不能漏告，通过微信、邮件、短信等通知方式无法触达，所以需要使用电话告警。
 
 蓝鲸监控默认已支持腾讯云的语音网关，实现电话告警通知，但如果公司已有第三方(非腾讯云)的电话告警服务，该如何接入呢？
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 
 - 开通好企业内部语音网关
 - 掌握 [蓝鲸 SaaS 开发](https://docs.bk.tencent.com/dev_saas/)，打开 [腾讯运维开发实战课](https://bk.tencent.com/s-mart/community/question/440) 马上学习
 - 掌握 [蓝鲸 API 网关开发](https://docs.bk.tencent.com/esb/)
 
 
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 
 - [1. 梳理逻辑](#Logic)
 - [2. 代码解读](#Code_interpretation)
 - [3. 电话告警测试](#Test)
 
-## 1. 梳理逻辑 {#Logic}
+## 1. 梳理逻辑 
 
 对企业内部语音网关封装一个接口，改造蓝鲸 ESB 中语音通知 API 即可。
 
@@ -31,7 +31,7 @@
 ![](media/15644704218616.jpg)
 
 
-## 2. 代码解读 {#Code_interpretation}
+## 2. 代码解读 
 
 ### 2.1 封装企业内部语音网关接口
 
@@ -118,7 +118,7 @@ cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
 
 
 
-## 3. 电话告警测试 {#Test}
+## 3. 电话告警测试 
 
  配置电话告警策略，触发告警，验证结果。
  

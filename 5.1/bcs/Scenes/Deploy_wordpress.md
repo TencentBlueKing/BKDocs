@@ -1,21 +1,21 @@
 ## 在 K8S 中部署 WordPress
 
-#### 情景 {#Situation}
+#### 情景 
 WordPress 是流行的开源博客程序，Helm 官方维护了 WorePress 的 Chart，接下来看在 BCS 中如何部署 WordPress，开始你的博客之旅。
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 - [了解 Helm 的使用方法](../Function/helm/ServiceAccess.md)
 - [集成 K8S 存储](../Function/StorageSolution/kubernetes.md)，例如 [将 NFS 作为 K8S PV Provisioner](../Function/StorageSolution/K8s_NFS_Client_Provisioner.md)
 - Git Clone [Helm Charts](https://github.com/helm/charts/)
 - 新增 [LoadBalancer](../Function/NetworkSolution/k8s/LoadBalancer.md)
 
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 
 - [1. 上传 WordPress Chart 到仓库](#Upload_Charts)
 - [2. 部署 WordPress](#Deploy)
 - [3. 访问测试](#Test)
 
-## 1. 上传 WordPress Chart 到仓库 {#Upload_Charts}
+## 1. 上传 WordPress Chart 到仓库 
 
 进入 [Charts](https://github.com/helm/charts/) 本地仓库的 wordpress 目录。
 
@@ -70,7 +70,7 @@ Done.
 
 在 BCS 【Chart 仓库】菜单中，点击【同步仓库】，将刚刚上传的 Chart 从仓库同步到 BCS 的界面中。
 
-## 2. 部署 WordPress {#Deploy}
+## 2. 部署 WordPress 
 
 在 BCS 【Chart 仓库】菜单中，找到刚刚上传的 WordPress Chart ，点击【部署】。
 
@@ -107,7 +107,7 @@ service:
 
 部署成功，接下来测试访问。
 
-## 3. 访问测试 {#Test}
+## 3. 访问测试 
 
 修改域名解析或 PC 上 hosts 文件（Mac 下路径为 /etc/hosts），将 Ingress 中配置的主机名指向到 LoadBalancer 中节点的外网 IP，然后打开浏览器访问，可以看到 WordPress 首页。
 

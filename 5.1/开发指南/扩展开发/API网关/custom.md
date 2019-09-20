@@ -1,27 +1,31 @@
 ## 自定义配置管理
 
-用户开发组件或自助接入API时，都需要将配置信息，同步到数据库中； 通过管理端管理配置的方式，不方便对数据进行迁移，因此，API网关提供一种通过配置文件管理配置的方式。
+用户开发组件或自助接入 API 时，都需要将配置信息，同步到数据库中； 通过管理端管理配置的方式，不方便对数据进行迁移，因此，API 网关提供一种通过配置文件管理配置的方式。
 
-### 配置文件地址 {#address}
+### 配置文件地址
 
-在配置文件中，管理自定义的系统及API配置
+在配置文件中，管理自定义的系统及 API 配置
+
+```bash
+[install_path] /open_paas/esb/components/generic/apis/conf.py
 ```
-[install_path]/open_paas/esb/components/generic/apis/conf.py
-```
 
-### 配置文件内容 {#content}
+### 配置文件内容
 
 配置文件 conf.py 是一个普通的 python 模块，其中包含以下变量
 
-- SYSTEM_DOC_CATEGORY: 文档分类，指定系统在API文档中所属的文档分类
+- SYSTEM_DOC_CATEGORY: 文档分类，指定系统在 API 文档中所属的文档分类
+
 - SYSTEMS: 系统信息，对应管理端的系统管理
+
 - CHANNELS: 组件通道信息，对应管理端的通道管理
-- BUFFET_COMPONENTS: 自助接入API信息，对应管理端的自助接入
+
+- BUFFET_COMPONENTS: 自助接入 API 信息，对应管理端的自助接入
 
 #### SYSTEM_DOC_CATEGORY{SYSTEM_DOC_CATEGORY}
 
 文档分类
-```
+```python
 SYSTEM_DOC_CATEGORY = [
     {
         # 文档分类标签
@@ -34,10 +38,10 @@ SYSTEM_DOC_CATEGORY = [
 ]
 ```
 
-#### SYSTEMS{#SYSTEMS}
+#### SYSTEMS
 
 系统
-```
+```python
 SYSTEMS = [
     {
         # 系统名称
@@ -56,10 +60,10 @@ SYSTEMS = [
 ]
 ```
 
-#### CHANNELS{#CHANNELS}
+#### CHANNELS
 
 组件通道
-```
+```python
 CHANNELS = [
     # 通道名称，所属系统，API类型通过组件模块自动获取
 
@@ -71,10 +75,10 @@ CHANNELS = [
 ]
 ```
 
-#### BUFFET_COMPONENTS{#BUFFET_COMPONENTS}
+#### BUFFET_COMPONENTS
 
 自助接入API
-```
+```python
 BUFFET_COMPONENTS = [
     {
         # 注册配置
@@ -108,8 +112,8 @@ BUFFET_COMPONENTS = [
 ]
 ```
 
-### 同步配置到数据库 {#synchronous}
-```
+### 同步配置到数据库
+```bash
 workon esb
 # 默认情况，当部分配置与数据库中数据不一致时，显示差别信息；
 # --force，配置与数据库中数据不一致时，强制将配置更新到数据库

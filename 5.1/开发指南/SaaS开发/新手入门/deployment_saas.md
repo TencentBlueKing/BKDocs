@@ -19,7 +19,7 @@
 
 
 - 提交项目到仓库
-```
+```bash
 git init
 git remote add origin {GIT_Repository_URL}
 git add .

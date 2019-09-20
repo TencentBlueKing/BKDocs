@@ -9,7 +9,7 @@ BCS 是统一的容器部署管理解决方案，为了适应不同业务场景�
 
 BCS 由 **BCS SaaS** 和 **BCS 后台** 组成，以下为对应的架构图。
 
-## 2. BCS SaaS 架构图 {#bk-bcs-saas}
+## 2. BCS SaaS 架构图 
 
 ### 2.1 BCS SaaS 功能结构图
 BCS SaaS 作为 BCS 的上层产品，包含已开源的项目管理系统（bcs-projmgr）、容器服务产品层主体功能模块（bcs-app）、底层的配置中心模块（bcs-cc）以及未开源的监控中心，同时它依赖蓝鲸体系下的其他产品服务（如 PaaS、CMDB 等）。
@@ -32,7 +32,7 @@ SaaS 依赖的后端服务 bk-bcs-services 也已开源，bk-iam 等灰色标注
 
 
 
-## 3. BCS 后台架构图 {#bk-bcs}
+## 3. BCS 后台架构图 
 
 下图为 BCS 以及 Mesos 集群的整体架构图：BCS Client 或者业务 SaaS 服务通过 API 接入，API 根据访问的集群将请求路由到 BCS 下的 Mesos 集群或者 K8S 集群。
 

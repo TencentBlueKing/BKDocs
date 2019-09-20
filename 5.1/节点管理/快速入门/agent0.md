@@ -19,7 +19,7 @@
 - GSE Server 信息：
   Agent/Proxy 启动后，会尝试连接 GSE, 直连区域通常内网 IP，非直连区域使用外网 IP，这里的内外网不是严格意义上的私有地址或公网地址，只要能让 Agent 连上的 IP 都可以。通常在 NAT 网络环境中需要注意使用 NAT 地址。
 
-### 直连区域安装 Agent{#direct}
+### 直连区域安装 Agent
 
 当安装 Agent 的受控主机与蓝鲸系统中的 GSE Server，在同一局域网内（非跨云），受控主机能通过局域网建立与 GSE Server 的 TCP/UDP 链接。这种情况下，选择直连区域安装 Agent 。
 

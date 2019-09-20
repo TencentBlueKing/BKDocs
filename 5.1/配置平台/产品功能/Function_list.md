@@ -1,5 +1,5 @@
 
-### 功能列表 {#function_list}
+### 功能列表 
 
 <table><tbody>
 <tr><td>	特性	</td><td>	子特性	</td><td>	功能描述	</td></tr>

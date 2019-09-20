@@ -1,17 +1,17 @@
 ## 应用的滚动升级
 
 
-#### 情景 {#Situation}
+#### 情景 
 传统的应用更新方式是停服更新，用户在更新期间**无法使用服务**。
 
 接下来，将以 Nginx 从`1.12.2`升级`1.17.0`为例，看 BCS 中的**滚动更新能力**是如何实现**不停机更新**，**用户无感知**。
 
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含 [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
 - [完成 BCS 部署](https://docs.bk.tencent.com/bkce_install_guide/setup/quick_install_bcs.html)
 
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 
 - [1. 滚动更新逻辑介绍](#RollingUpdate)
 - [2. BCS 滚动更新操作指引](#BCS_RollingUpdate)
@@ -50,7 +50,7 @@ hub-d.o.******.com:443
 
 ![-w1478](media/15652567813655.jpg)
 
-#### 2.1.2 推送 Nginx:1.17.0 至镜像仓库 {#Push_images}
+#### 2.1.2 推送 Nginx:1.17.0 至镜像仓库 
 
 使用`docker pull` 从`hub.docker.com`拉取镜像`nginx:1.17.0`。
 

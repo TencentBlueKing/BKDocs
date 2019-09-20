@@ -1,18 +1,18 @@
 ## 业务上线时 CMDB 如何管理主机
 
-#### 情景 {#Situation}
+#### 情景 
 新业务（常见的三层架构：接入层、逻辑层、存储层）上线，需要用 CMDB 管理业务上线依赖的主机资源，便于后续实现发布、变更、故障处理等场景的自动化流程。
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 在 [配置平台](https://docs.bk.tencent.com/cmdb/) 中 [新建完业务](https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%881%EF%BC%89%E6%96%B0%E5%BB%BA%E4%B8%9A%E5%8A%A1)，并 [导入主机](https://docs.bk.tencent.com/cmdb/Introduction.html#%E4%B8%BB%E6%9C%BA%E5%AF%BC%E5%85%A5) 及将 [主机分配到业务](https://docs.bk.tencent.com/cmdb/Introduction.html#%E4%B8%BB%E6%9C%BA%E5%88%86%E9%85%8D%E5%88%B0%E4%B8%9A%E5%8A%A1) 中。
 
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 * [1. 梳理业务架构](#Combing_business_architecture)
 * [2. 新建集群](#New_set)
 * [3. 新建模块](#New_module)
 * [4. 使用场景：在作业平台中查询接入层的磁盘使用率](#consume_job)
 
-## 1. 梳理业务架构 {#Combing_business_architecture}
+## 1. 梳理业务架构 
 业务的架构设计最终要体现在 CMDB 的业务拓扑树上，所以我们先梳理业务的架构。
 
 以业务“欢乐游戏( demo )"为例，其架构是常见的三层架构：`接入层` -> `逻辑层` -> `存储层` 
@@ -21,7 +21,7 @@
 
 ![-w758](media/15625775986620.jpg)
 
-## 2. 新建集群 {#New_set}
+## 2. 新建集群 
 
 按照上述业务架构，可将做如下对应：
 
@@ -42,7 +42,7 @@
 
 接下来，在集群下创建模块。
 
-## 3. 新建模块 {#New_module}
+## 3. 新建模块 
 
 选中`集群`节点，新建模块
 
@@ -55,15 +55,15 @@
 
 ![-w1447](media/15625859972786.jpg)
 
-## 4. 使用场景：在作业平台中查询接入层的磁盘使用率  {#consume_job}
+## 4. 使用场景：在作业平台中查询接入层的磁盘使用率  
 
 通过一个简单的场景，体验 [作业平台](https://docs.bk.tencent.com/job/) 如何消费主机实例
 {% video %}media/cmdb_job_consume.mp4{% endvideo %}
 
 
-## 扩展阅读 {#Extended_reading}
-### 1. 蓝鲸内置 SaaS 的 CMDB 消费场景 {#Blueking_built-in_consumption scenario}
-#### 1.1 应用发布、变更：资源编排工具 标准运维 {#Deployment_sops}
+## 扩展阅读 
+### 1. 蓝鲸内置 SaaS 的 CMDB 消费场景 
+#### 1.1 应用发布、变更：资源编排工具 标准运维 
 
 应用发布、变更流程包含版本在多台主机上的文件分发、命令执行等操作，如何优雅的选择这批主机，需要使用 CMDB 的查询主机实例功能。
 
@@ -74,7 +74,7 @@
 在参数中使用`动态IP`变量，**运维无需关心主机扩缩容、故障替换等场景带来的主机变更**，无需担心漏更新主机或更新错主机。
 ![标准运维传参-CMDB](media/%E6%A0%87%E5%87%86%E8%BF%90%E7%BB%B4%E4%BC%A0%E5%8F%82-CMDB.png)
 
-#### 1.2 故障处理：监控、故障自愈 {#Alarm_process_fta}
+#### 1.2 故障处理：监控、故障自愈 
 
 针对业务架构中的某一层级模块（如接入层）设置一个 [告警检测策略](https://docs.bk.tencent.com/bk_monitor/)，无需关心实例的新增、删除及修改。
 
@@ -87,7 +87,7 @@
 在 [故障自愈](https://docs.bk.tencent.com/fta/) 中的消费场景也是如此，一个或多个模块的某一个告警，关联对应的处理动作。
 ![故障自愈的CMDB消费场景](media/%E6%95%85%E9%9A%9C%E8%87%AA%E6%84%88%E7%9A%84CMDB%E6%B6%88%E8%B4%B9%E5%9C%BA%E6%99%AF.png)
 
-#### 1.3 平台团队对资源的管控，例如全业务 DBA、AIX SA {#Platform_manage_resource}
+#### 1.3 平台团队对资源的管控，例如全业务 DBA、AIX SA 
 
 以 DBA 为例，需要管控所有 DB，可将运行数据库的主机所属模块的类型设置为`数据库`，然后通过`动态分组`功能查询模块类型为`数据库`的主机。
 
@@ -98,7 +98,7 @@
 ![-w1234](media/15625757452328.jpg)
 
 
-### 2. 三级拓扑不够用，怎么办？新建多级拓扑节点 {#New_topology_layer}
+### 2. 三级拓扑不够用，怎么办？新建多级拓扑节点 
 
 如果业务架构在大区（`集群`）之上还有一级（平台：如`Android_Weixin`、`Android_QQ`等）
 
@@ -116,7 +116,7 @@
 > 蓝鲸体系在未来的某一个迭代中，将重点弱化业务和细化权限
 
 
-### 3. Master DB 和 Slave DB 如何实现物理架构的高可用？  {#High_availability}
+### 3. Master DB 和 Slave DB 如何实现物理架构的高可用？  
 两者一定不要放在同一个机架或交换机下，否则机架或交换机掉电，亦或是交换机故障，Master DB 和 Slave DB 都宕机，无法正常切换，导致业务无法对外提供服务。
 
 操作方法：[模型管理] -> [模型] -> [主机] -> [模型字段]，新增`存放机架 ID`、`网络设备 ID`。

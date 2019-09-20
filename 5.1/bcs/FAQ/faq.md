@@ -47,7 +47,7 @@ No nodes are available that match all of the predicates: MatchInterPodAffinity (
 
 ## 2. 问题排查
 
-### 2.1 拉取镜像失败 {#imagePullFail}
+### 2.1 拉取镜像失败 
 
 出现镜像拉取失败的问题，可能有如下两种可能导致：
 

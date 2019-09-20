@@ -9,47 +9,47 @@ Python 开发框架是集成了蓝鲸系统功能，方便开发者可以快速�
 
 #### 1.1 项目目录结构
 
-```
+```bash
 - blueapps                    # Python开发框架模块
 - blueking                    # ESB调用模块
 - config                      # 应用配置目录
-  - __init__.py               # 应用 RUN_VER（ieod/clouds/qcloud）、APP_CODE 和 SECRET_KEY 等配置
-  - dev.py                    # 本地开发配置（开发团队共享）
-  - default.py                # 全局配置
-  - prod.py                   # 生产环境配置
-  - stag.py                   # 预发布环境配置
+  |- __init__.py               # 应用 RUN_VER（ieod/clouds/qcloud）、APP_CODE 和 SECRET_KEY 等配置
+  |- dev.py                    # 本地开发配置（开发团队共享）
+  |- default.py                # 全局配置
+  |- prod.py                   # 生产环境配置
+  |- stag.py                   # 预发布环境配置
 - home_application            # Django 模板应用样例
-  - __init__.py
-  - admin.py
-  - urls.py
-  - models.py
-  - tests.py
-  - views.py
-  - templates                 # Django 模板
-    - home_application
-      - contact.html          # 联系我们页面
-      - home.html             # 首页
+  |- __init__.py
+  |- admin.py
+  |- urls.py
+  |- models.py
+  |- tests.py
+  |- views.py
+  |- templates                 # Django 模板
+    |- home_application
+      |- contact.html          # 联系我们页面
+      |- home.html             # 首页
 - mako_templates              # mako 公共模板文件
-  - base.mako                 # mako 模板基础文件，其他的页面可以从这里继承
+  |- base.mako                 # mako 模板基础文件，其他的页面可以从这里继承
 - mako_application            # mako 模板应用样例
-  - __init__.py
-  - admin.py
-  - urls.py
-  - models.py
-  - tests.py
-  - views.py
-  - mako_templates            # 模板
-    - mako_application
-      - contact.mako          # 联系我们页面
-      - home.mako             # 首页
+  |- __init__.py
+  |- admin.py
+  |- urls.py
+  |- models.py
+  |- tests.py
+  |- views.py
+  |- mako_templates            # 模板
+    |- mako_application
+      |- contact.mako          # 联系我们页面
+      |- home.mako             # 首页
 - static                      # 公共静态文件
-  - js                        # 公共 js
-    - csrftoken.js            # CSRFTOKEN
-    - settings.js             # 异常处理
+  |- js                        # 公共 js
+    |- csrftoken.js            # CSRFTOKEN
+    |- settings.js             # 异常处理
 - templates                   # 公共模板文件
-  - admin                     # admin模板文件
-    - base_site.html
-    - login.html
+  |- admin                     # admin模板文件
+    |- base_site.html
+    |- login.html
   - base.html                 # Django 模板基础文件，其他的页面可以从这里继承
 - manage.py                   # Django 工程 manage
 - requirements.txt            # 依赖的 python 包列表
@@ -131,7 +131,7 @@ BROKER_URL = 'redis://localhost:6379/0'
 
 > **注意**： domain_name应该修改为PaaS平台的域名
 
-```
+```bash
 127.0.0.1 appdev.`{domain_name}`
 ```
 
@@ -324,14 +324,15 @@ logger.error('log your info here.')
 - 日志输出路径：
 
 本地输出路径在和项目根目录平级的 logs 目录下。
-```
-- PROJCET_ROOT
-- logs
-    - APP_CODE
-        - APP_CODE-celery.log
-        - APP_CODE-component.log
-        - APP_CODE-django.log
-        - APP_CODE-mysql.log
+```bash
+.
+|- PROJCET_ROOT
+|- logs
+    |- APP_CODE
+        |- APP_CODE-celery.log
+        |- APP_CODE-component.log
+        |- APP_CODE-django.log
+        |- APP_CODE-mysql.log
 ```
 
 - 日志级别配置：

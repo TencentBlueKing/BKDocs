@@ -1,11 +1,11 @@
 ## 基础性能数据未上报
-### 1. 检测CMDB是否有快照数据显示
+### 1. 检测 CMDB 是否有快照数据显示
 若没有数据，则进入下列步骤检测
-若有数据，先检查bkdata所在机器crontab里是否有update_cc_cache.sh的项目。若无则先运行`bkeec install cron`。若有联系蓝鲸技术支持同学。
+若有数据，先检查 bkdata 所在机器 crontab 里是否有 update_cc_cache.sh 的项目。若无则先运行`bkeec install cron`。若有联系蓝鲸技术支持同学。
 
 -----
 ### 2. 检查进程
-agent机器：有进程则ok
+agent 机器：有进程则 ok
 
 #### 2.1 Linux
 >ps -ef | grep basereport
@@ -25,7 +25,7 @@ agent机器：有进程则ok
 
 -----
 ### 4. 检查连接
-agent机器：有正常连接ESTABLISHED则ok
+agent 机器：有正常连接 ESTABLISHED 则 ok
 
 #### 4.1 Linux
 >netstat -tnp | grep 58625
@@ -33,9 +33,9 @@ agent机器：有正常连接ESTABLISHED则ok
 #### 4.2 Windows
 >netstat -ano | grep 58625
 
-若存在proxy，proxy机器：检测58625端口同上。并检查gse_transit进程是否正常（成对出现）
+若存在 proxy，proxy 机器：检测 58625 端口同上。并检查 gse_transit 进程是否正常（成对出现）
 
-GSE_IP和GSE_IP1机器：检测9092端口
+GSE_IP 和 GSE_IP1 机器：检测 9092 端口
 
 #### 4.3 Linux
 >netstat -tnp | grep 9092
@@ -45,22 +45,22 @@ GSE_IP和GSE_IP1机器：检测9092端口
 
 -----
 ### 5. 检查配置
-ZK_IP机器：查看ZK节点
-		>/data/bkee/service/zk/bin/zkCli.sh -server ip:2181 (ip通常为zk本机内网IP)
+ZK_IP 机器：查看 ZK 节点
+		>/data/bkee/service/zk/bin/zkCli.sh -server ip:2181 (ip通常为zk本机内网IP)plainplainplainplainplain
 	get /gse/config/etc/dataserver/data/1001
 
 	正常会出现类似下面的数据结构
-```
+```plain
 	{"server_id": -1, "data_set": "snapshot", "partition": 1, "cluster_ind	ex": 0, "biz_id": 2, "msg_system": 1}
 ```
 
-topic为data_set和biz_id组成，则
+topic 为 data_set 和 biz_id 组成，则
 topic=snapshot2
-能获取到topic则OK
+能获取到 topic 则 OK
 
 -----
 ### 6. 检查数据
-KAFKA_IP机器上：查看KAFKA最新数据，等待1分钟查看是否有数据，有数据则OK
+KAFKA_IP 机器上：查看 KAFKA 最新数据，等待 1 分钟查看是否有数据，有数据则 OK
 
 ```json
 cd /data/bkee/service/kafka/
@@ -71,12 +71,12 @@ sh bin/kafka-console-consumer.sh --bootstrap-server $LAN_IP:9092--topic $topic�
 
 -----
 ### 7. 检查日志
-GSE_IP和GSE_IP1机器：
+GSE_IP 和 GSE_IP1 机器：
 > ps -ef | grep gse_data
 cd /data/bkee/public/gse/data
 ls -l
 
-看有没有gse_datapid开头命名的日志
-若有，tail查看日志内容
+看有没有 gse_datapid 开头命名的日志
+若有，tail 查看日志内容
 
 

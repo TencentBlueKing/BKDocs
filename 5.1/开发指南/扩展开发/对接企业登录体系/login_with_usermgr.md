@@ -5,7 +5,7 @@
 蓝鲸统一登录: 由 `open_paas/login` 提供 `统一登录服务`; 由 `用户管理` App `维护用户数据`
 
 
-### MockBackend接入示例 {#mockbackend}
+### MockBackend接入示例 
 
 #### 1. 获取参考代码
 
@@ -201,7 +201,7 @@ class MockBackend(ModelBackend):
 ```
 
 
-### Google OAuth 接入示例 {#googleoauth}
+### Google OAuth 接入示例 
 
 
 #### 1. 获取参考代码
@@ -279,11 +279,11 @@ CUSTOM_AUTHENTICATION_BACKEND = 'ee_official_login.oauth.google.backends.OauthBa
 
 > 对于自定义登录模块，我们需要编写一个企业内部统一登录认证票据的类和一个登录跳转等逻辑处理函数，可参考 open_paas/login/ee_official_login/oauth/google 模块
 
-### 1. 获取参考代码 {#consult}
+### 1. 获取参考代码 
 
 参考代码在蓝鲸版本包里的 open_paas/login/ee_official_login，包含了google oauth 对接蓝鲸登录样例
 
-### 2. 编写企业内部统一登录认证票据的类 {#kind}
+### 2. 编写企业内部统一登录认证票据的类 
 
 > 该类主要是对企业内部统一登录认证票据进行认证，并获取相关用户信息，生成和设置蓝鲸用户
 > 该类需继承于 Django 内置的 ModelBackend，并实现自定义认证方法 authenticate
@@ -347,7 +347,7 @@ class OauthBackend(ModelBackend):
         return None
 ```
 
-### 3. 编写登录跳转等登录处理逻辑函数 {#function}
+### 3. 编写登录跳转等登录处理逻辑函数 
 
 > 该函数需要处理 5 种情况：
 >     1. 企业登录票据不存在
@@ -429,7 +429,7 @@ def login(request):
     return account.login_success_response(request, user, redirect_to, app_id)
 ```
 
-### 4. 设置自定义登录 {#custom}
+### 4. 设置自定义登录 
 
 ##### 4.1 检查是否有自定义接入企业登录模块 ee_login
 

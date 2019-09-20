@@ -1,22 +1,22 @@
 ## 故障提报流程线上化
 
-#### 情景 {#Situation}
+#### 情景 
 
 ITSM 中的故障管理(Incident Management)帮企业构建了一套**应对故障的处理机制**，确保故障来临之时可以**高效有序的响应、处理以及回溯故障的表面和本质**，并将根源问题通过转单到**问题管理模块**，实现**故障的闭环**。
 
 故障管理是蓝鲸 ITSM 内置的模块之一，接下来介绍在蓝鲸 ITSM 是如何应对**部分地区用户集中无法访问网站的投诉**。
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 - [部署完蓝鲸](https://docs.bk.tencent.com/bkce_install_guide/)，自带 ITSM SaaS。
 - 准备故障提报流程中 [多个角色](https://docs.bk.tencent.com/paas/FunctionIntroduced.html#RoleManagement) 的账号，包含`运维`、`QC`、`产品`，以及流程设计的`管理员`。
 
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 
 - [1. 梳理故障提报流程](#Carding_flow)
 - [2. 创建故障提报服务目录及流程](#Create_service_directory)
 - [3. 一次故障提报示例](#Demo)
 
-## 1. 梳理故障提报流程 {#Carding_flow}
+## 1. 梳理故障提报流程 
 
 从 ITSM 理论出发，梳理故障提报的流程图，包含客服 **提单**、运维 **故障跟进**、运维 **回溯总结故障**，以及最后质量保证(QC)对故障的 **评估管理**。
 
@@ -24,11 +24,11 @@ ITSM 中的故障管理(Incident Management)帮企业构建了一套**应对故�
 
 > 流程图中是一个实践案例，部分数据需要从周边系统获取，此处功能需要做二次开发，本教程专注流程本身。
 
-## 2. 创建故障提报服务目录及流程 {#Create_service_directory}
+## 2. 创建故障提报服务目录及流程 
 
 先设计故障提报的**流程**，**流程依附在服务目录上对外提供服务**。
 
-### 2.1 角色设置 {#Authorization}
+### 2.1 角色设置 
 
 参照 <a href="Release_Management.md#Authorization" target="_blank">角色设置</a> 完成对`运维`、`产品`和`QC`的授权。
 
@@ -88,7 +88,7 @@ ITSM 中的故障管理(Incident Management)帮企业构建了一套**应对故�
 
 至此，流程设计和服务目录已新建好，接下来做一次故障提报演示。
 
-## 3. 一次故障提报示例 {#Demo}
+## 3. 一次故障提报示例 
 ![-w768](media/15658720727110.jpg)
 
 ### 3.1 客服提报故障单

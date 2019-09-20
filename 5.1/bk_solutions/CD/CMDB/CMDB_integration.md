@@ -1,7 +1,7 @@
 ## 企业原有 CMDB 同步至蓝鲸 CMDB
 > 感谢社区用户 [Kevin](https://bk.tencent.com/s-mart/personal/10966/) 提供该文档.
 
-#### 情景 {#Situation}
+#### 情景 
 
 公司基础部门维护公司统一的一套 CMDB，资源主要以服务器为主，资源交付后会直接进入公司的 CMDB，需要手动导出列表，修改成蓝鲸 CMDB 的导入格式，导入蓝鲸 CMDB。存在如下问题：
 
@@ -9,18 +9,18 @@
 - 公司 CMDB 与蓝鲸 CMDB 字段不统一，需要手动复制、编辑字段属性，再导入蓝鲸，非常繁琐
 
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 - 在 [配置平台](https://docs.bk.tencent.com/cmdb/)中 [新建好业务](https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%881%EF%BC%89%E6%96%B0%E5%BB%BA%E4%B8%9A%E5%8A%A1)。
 - 熟悉一门脚本语言，如`Python`，本教程以`Python`为例
 - 了解 [蓝鲸 CMDB API](https://bk.tencent.com/document/bkapi/ce/system/cc/)
 
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 - [1. 梳理同步逻辑](#Carding_sync_logic)
 - [2. 代码实践及解读](#Code_interpretation)
 - [3. 定时同步](#Sync)
 
 
-## 1. 梳理同步逻辑 {#Carding_sync_logic}
+## 1. 梳理同步逻辑 
 
 查询公司 CMDB 与蓝鲸 CMDB 服务器属性的对应关系，生成属性映射 MAP 表，MAP 表中只记录需要关注的属性，并确认相关属性都已在蓝鲸 CMDB 中创建。
 
@@ -32,9 +32,9 @@
 **更新资源**
 - 分别获取两个 CMDB 的数据，遍历两组数据，对比属性 MAP 表中的属性字段，找出数据不同的服务器，汇总成列表，再统一更新到蓝鲸 CMDB
 
-## 2. 代码实践及解读 {#Code_interpretation}
+## 2. 代码实践及解读 
 
-### 2.1 新建应用 {#New_blueking_saas}
+### 2.1 新建应用 
 
 在蓝鲸开发者中心 [新建一个应用](https://docs.bk.tencent.com/guide/application.html)，用于调用 [CMDB 的 API](https://bk.tencent.com/document/bkapi/ce/system/cc/)。
 
@@ -63,7 +63,7 @@ BASE_ARGS = {
     }
 ```
 
-### 2.2 获取蓝鲸 CMDB 主机列表  {#getBkCmdbHost}
+### 2.2 获取蓝鲸 CMDB 主机列表  
 查询蓝鲸 CMDB 的获取主机 `search_host` API ，返回主机列表
 
 ```python
@@ -92,7 +92,7 @@ def getBkCmdbHost():
     return bkList
 ```
 
-### 2.3 获取 公司 CMDB 主机列表 {#getCmdbHost}
+### 2.3 获取 公司 CMDB 主机列表 
 调用公司 CMDB 获取主机列表 API，返回主机列表
 
 ```python
@@ -111,7 +111,7 @@ def getCmdbHost():
     '''
 ```
 
-### 2.4 生成新增 IP 列表、更新 IP 列表、更新信息列表  {#getCmdbHost}
+### 2.4 生成新增 IP 列表、更新 IP 列表、更新信息列表  
 
 根据 [步骤 2.2](#getBkCmdbHost) 和 [步骤 2.3](#getCmdbHost) 获取到的两个主机列表，对比生成所需的新增列表和更新列表。
 
@@ -174,7 +174,7 @@ addInfoList = genInfoList(cmdbList, bkList, addList, attributeMAP)
 updateInfoList = genInfoList(cmdbList, bkList, addList, attributeMAP)
 ```
 
-### 2.5 录入、更新主机数据到蓝鲸 CMDB {#add_updateBkCmdbHost}
+### 2.5 录入、更新主机数据到蓝鲸 CMDB 
 
 - 录入新增主机信息：使用 [步骤 2.4](#getCmdbHost)中生成的新增主机信息列表，录入蓝鲸 CMDB
 
@@ -246,7 +246,7 @@ updateBkCmdbHost(updateInfoList)
 ```
 
 
-## 3. 定时同步 {#Sync}
+## 3. 定时同步 
 
 - CMDB 同步脚本使用**[JOB](https://docs.bk.tencent.com/job/)**的定时作业或**[标准运维](https://docs.bk.tencent.com/gcloud/)**的定时任务进行周期托管，方便迁移或者修改维护
 

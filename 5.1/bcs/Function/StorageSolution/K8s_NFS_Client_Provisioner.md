@@ -1,22 +1,22 @@
 ## 将 NFS 作为 K8S PV Provisioner
 
-#### 情景 {#Situation}
+#### 情景 
 互联网应用常见的三层架构：接入层、逻辑层、存储层，在操作系统中 **文件系统** 提供存储层的存储介质，在 K8S 中是 **Persistent Volumes**（持久卷，简称 PV），而 PV 背后需要对接存储介质，比如 NFS、CephFS 以及公有云的云硬盘[1]。
 
 接下来以 NFS 作为 K8S PV 的存储介质（Provisioner）为例，介绍在 K8S 中如何申请以及使用存储空间。
 
-#### 前提条件 {#Prerequisites}
+#### 前提条件 
 - 了解 K8S 中 [存储](kubernetes.md) 的基础的概念。
 - 了解 [K8S 的包管理工具 Helm](helm/ServiceAccess.md)
 
-#### 操作步骤 {#Steps}
+#### 操作步骤 
 
 - [1. 部署 NFS Server](#install_NFS_Server)
 - [2. 部署 NFS-Client-Provisioner](#deployNFS-Client-Provisioner)
 - [3. 创建 PVC 测试](#createPVC)
 
 
-## 1. 部署 NFS Server {#install_NFS_Server}
+## 1. 部署 NFS Server 
 
 > 以下为测试环境在 CentOS 7 下搭建 NFS 的示例，生产环境请咨询公司系统管理员。
 
@@ -55,7 +55,7 @@ Export list for localhost:
  Flags: rw,relatime,vers=4.1,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=<NFS_SERVER_IP>,local_lock=none,addr=<NFS_SERVER_IP>
 ```
 
-## 2. 部署 NFS-Client-Provisioner {#deployNFS-Client-Provisioner}
+## 2. 部署 NFS-Client-Provisioner 
 
 K8S 使用 NFS 资源，需要能挂载 NFS 以及配套的 K8S 资源（StorageClass、ServerAccout、PersistentVolume、PersistentVolumeClaim 等）。
 
@@ -109,7 +109,7 @@ Done.
 
 完成部署后，接下来创建 PVC 测试。
 
-## 3. 创建 PVC 测试 {#createPVC}
+## 3. 创建 PVC 测试 
 
 - 检查 StorageClass 是否设置成功
 ```bash

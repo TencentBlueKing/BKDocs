@@ -13,7 +13,7 @@ celery 是一个简单、灵活且可靠的，处理大量消息的分布式系�
 
 在 config/default.py 中修改配置：
 
-```
+```python
 IS_USE_CELERY = True
 ```
 
@@ -21,7 +21,7 @@ IS_USE_CELERY = True
 
 在 app 底下创建 task.py 文件， 添加 @task 任务：
 
-```
+```python
 from celery import task
 
 @task
@@ -31,7 +31,7 @@ def mul(x, y):
 
 如果 @task 任务函数不在 app/tasks.py 文件中， 需要在 config/default.py 中添加配置：
 
-```
+```python
 CELERY_IMPORTS = (
     'testapp.tasks2'  
 )
@@ -41,14 +41,14 @@ CELERY_IMPORTS = (
 
 在根目录执行：
 
-```
+```bash
 python manage.py celery woker -l info
 ```
 
 #### 4. 启动周期性任务服务 celery beat
 
 在根目录执行：
-```
+```bash
 python manage.py celery beat -l info
 ```
 

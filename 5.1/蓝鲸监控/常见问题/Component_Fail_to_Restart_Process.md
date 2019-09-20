@@ -1,4 +1,4 @@
-## 组件监控启动exporter失败,fail to restart process
+## 组件监控启动 exporter 失败,fail to restart process
 
 ## 1. 问题描述
 ![](../media/15366475980839.png)
@@ -12,9 +12,9 @@
 
 ![图片描述](/tfl/captures/2018-09/tapd_20365752_base64_1536201059_26.png)
 
-3.使用job或登录目标机器，执行脚本
+3.使用 job 或登录目标机器，执行脚本
 
-	假设组件名称为`oracle_exporter`，脚本参数为`--port=1521 --host=127.0.0.1`
+	假设组件名称为`oracle_exporter`，脚本参数为`--port=1521 --host=127.0.0.1`plainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
 
 ```sh
 cd /usr/local/gse/external_collector/oracle_exporter
@@ -23,5 +23,5 @@ cd /usr/local/gse/external_collector/oracle_exporter
 
 然后根据具体的错误信息解决问题
 
-- 端口被占用：exporter已经启动过，kill掉进程重新下发即可
-- 对于oracle组件，一般是因为缺少`libclntsh.so`库
+- 端口被占用：exporter 已经启动过，kill 掉进程重新下发即可
+- 对于 oracle 组件，一般是因为缺少`libclntsh.so`库
