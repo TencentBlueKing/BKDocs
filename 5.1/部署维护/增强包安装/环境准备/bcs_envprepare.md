@@ -12,9 +12,9 @@ tar xf bkce_bcs-x.x.x.tgz  # 跟 src 保持同级目录
 
 
 
-使用 sampl 文件 ( **install.config.new.sample** )，将下面的 bcs 相关配置追加到原 install.config 里面。
+使用 sample 文件 ( **install.config.new.sample** )，将下面的 bcs 相关配置追加到原 install.config 里面。
 
->  **注意：** 部署 `BCS 蓝鲸平台机器不能与业务机器（k8s，mesos）混用`。
+>**注意：** 部署 `BCS 蓝鲸平台机器不能与业务机器（k8s，mesos）混用`
 
 **如下示例：**
 
@@ -46,6 +46,7 @@ export BCS_MONITOR_IFACE="eth0"
 > Note:
 >
 > 1. 登陆 install.config 中的 bcs(monitor) 模块所在的机器，查看该机器实际网卡名称并替换 BCS_MONITOR_IFACE 该变量的值。
+
 
 ### 修改 install/bcs/globals.env 配置
 

@@ -4,8 +4,11 @@
 
 1. 登录到中控机，通过脚本自带的命令查询蓝鲸后台模块的运行状态
 ```bash
-source /data/install/utils.fc # 加载环境变量和蓝鲸安装维护的函数
-./bkcec status all # 查看运行状态
+# 加载环境变量和蓝鲸安装维护的函数
+source /data/install/utils.fc 
+
+# 查看运行状态
+./bkcec status all 
 ```
 ![后台状态图1](../../assets/check1.png)
 ![后台状态图2](../../assets/check2.png)
@@ -16,14 +19,17 @@ source /data/install/utils.fc # 加载环境变量和蓝鲸安装维护的函数
   - 社区版 V5.0 及更早版本，在部署 BKDATA 的主机上执行:
 
   ```bash
-  crontab -e  # 检查是否有包含 databus_etl 的任务
+  # 检查是否有包含 databus_etl 的任务
+  crontab -l  
   ```
 
   - 社区版 V5.1 及之后版本，在部署完 BKDATA 后，检查进程  `run_cron` 是否存活:
 
 3. 检查 BKDATA 运行状态
   ```bash
-  ssh $BKDATA_IP # 从中控机中跳转到 BKDATA Svr，执行检查脚本检查接口，无报错即正常
+  # 从中控机中跳转到 BKDATA Svr，执行检查脚本检查接口，无报错即正常
+
+  ssh $BKDATA_IP
   ./data/bkce/bkdata/dataapi/bin/check_xxx.sh
   ```
 ![bkdata检查脚本执行结果](../../assets/check3.png)
@@ -34,6 +40,7 @@ source /data/install/utils.fc # 加载环境变量和蓝鲸安装维护的函数
 
   ```bash
   ./bkcec status gse_agent
+
   # 返回 “Running” 说明 Agent 状态正常
   # 如果返回 "Exit" 则需要手动安装或者启动
   # 手动安装
@@ -82,45 +89,3 @@ http://$PAAS_FQDN:$PAAS_HTTP_PORT/o/bk_monitor/healthz/
 
 > 产品功能介绍&使用手册请参考各 [产品白皮书](https://bk.tencent.com/docs/)
 
-**节点管理：**
-
-  - 直连区域安装 Linux Agent，Windows Agent 正常。
-
-  - 创建云区域，安装 Proxy，Linux P-Agent，Windows P-Agent 正常。
-
-**配置平台：**
-
-  - 创建一个业务并分配运维人员。
-
-  - 为步骤 1 中创建的业务创建一个集群，一个模块。
-
-  - 在节点管理中为步骤 1 中的业务安装主机，随后分配到步骤 2 中创建的模块。
-
-**作业平台:**
-
-  - 快速执行脚本可用。
-
-  - 快速分发文件可用。
-
-  - 定时作业可用。
-
-  - 获取拓扑信息可用。
-
-**标准运维：**
-
-  - 创建一个流程，开始节点-定时节点（时长 1 秒），结束节点。
-
-  - 使用步骤 1 中创建的流程新建任务并执行，需能执行通过。
-
-
-**故障自愈:**
-
-  - 验证蓝鲸监控，Zabbix，REST API 告警源可用。
-
-**蓝鲸监控：**
-
-  - 首页展示正常。
-
-  - 主机监控，主机状态，主机信息，主机详情，装机服务状态图正常。
-
-  - 监控配置正常。

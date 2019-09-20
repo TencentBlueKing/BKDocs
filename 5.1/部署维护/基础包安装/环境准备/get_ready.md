@@ -8,7 +8,7 @@
 
 蓝鲸社区版包含部署脚本、产品软件和开源组件。蓝鲸提供完整包与分包的下载通道，请自行到下载地址按需获取。新装环境及新用户建议下载完整包使用。
 
-下载地址：https://bk.tencent.com/download/
+下载地址：[https://bk.tencent.com/download/](https://bk.tencent.com/download/)
 
 下载完成后，请核对 MD5 码。
 
@@ -62,7 +62,14 @@
     systemctl stop firewalld    # 停止 firewalld
     systemctl disable firewalld # 禁用 firewall 开机启动
     ```
-4. 调整最大文件打开数
+   
+4. 停止并禁用 NetWorkManager
+    ```bash
+    systemctl stop NetworkManager 
+    systemctl disable NetworkManager
+    ```
+    
+5. 调整最大文件打开数
 
     ```bash
     # 检查当前 root 账号下的 max open files 值
@@ -82,7 +89,7 @@
 
     修改后，重新使用 root 登录检查是否生效。
 
-5. 确认服务器时间同步
+6. 确认服务器时间同步
 
     服务器后台时间不同步会对时间敏感的服务带来不可预见的后果。务必在安装和使用蓝鲸时保证时间同步。
 
@@ -102,7 +109,7 @@
 
     更可靠的方式包括通过运行 ntpd 或者 chrony 等服务在后台保持时间同步。具体请参考官方文档 [使用 ntpd 配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd) 或 [使用 chrony 配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-Configuring_NTP_Using_the_chrony_Suite)。
 
-6. 检查是否存在全局 HTTP 代理
+7. 检查是否存在全局 HTTP 代理
 
     蓝鲸服务器之间会有的 HTTP 请求，如果存在 HTTP 代理，且未能正确代理这些请求，会发生不可预见的错误。
 
@@ -160,9 +167,9 @@ tar xf bkce_src-5.0.3.tar.gz  -C /data
 
 ```bash
 [bkce-basic]
-10.0.0.1 nginx，rabbitmq，kafka(config)，zk(config)，es，appt，fta，consul，bkdata(databus)
-10.0.0.2 mongodb，appo，kafka(config)，zk(config)，es，mysql，consul，bkdata(dataapi)，beanstalk
-10.0.0.3 paas，cmdb，job，gse，license，kafka(config)，zk(config)，es，redis，influxdb，consul，bkdata(monitor)
+10.0.0.1 nginx,rabbitmq,kafka(config),zk(config),es,appt,fta,consul,bkdata(databus)
+10.0.0.2 mongodb,appo,kafka(config),zk(config),es,mysql,consul,bkdata(dataapi),beanstalk
+10.0.0.3 paas,cmdb,job,gse,license,kafka(config),zk(config),es,redis,influxdb,consul,bkdata(monitor)
 ```
 
 > 说明:

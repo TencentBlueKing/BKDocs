@@ -6,7 +6,7 @@
 
 下面分三类来介绍不同组件的启停命令
 
-#### Supervisor 托管 {#supervisor}
+#### Supervisor 托管 
 
 supervisord 和 supervisorctl 都会使用 Python 虚拟环境 (virtualenv) 来单独安装隔离。每个模块对应的虚拟环境名称，可以在机器上输入 `workon` 命令查看。
 
@@ -52,7 +52,7 @@ supervisorctl -c /data/bkce/etc/supervisor-bkdata-dataapi.conf shutdown
 ```
 其他模块依此类推
 
-#### GSE 启停方法{#Gse_stop_start}
+#### GSE 启停方法
 
 GSE 组件分为 GSE 后台，GSE 客户端，GSE 插件，分别对应三个不同的启停进程：
 
@@ -62,7 +62,7 @@ GSE 组件分为 GSE 后台，GSE 客户端，GSE 插件，分别对应三个不
 
 - GSE 插件进程（plugin）： `/usr/local/gse/plugins/bin/{stop,start,restart}.sh <module>`
 
-#### 开源组件{#openplugins}
+#### 开源组件
 
 ##### Java
 
@@ -86,7 +86,7 @@ GSE 组件分为 GSE 后台，GSE 客户端，GSE 插件，分别对应三个不
 
 - RabbitMQ: `systemctl start rabbitmq-server`
 
-#### 蓝鲸组件{#bk_plugins}
+#### 蓝鲸组件
 
 - License: `/data/bkce/license/license/bin/license.sh start`
 
@@ -94,6 +94,6 @@ GSE 组件分为 GSE 后台，GSE 客户端，GSE 插件，分别对应三个不
 
 - APPO / APPT : 从 `/data/bkce/paas_agent/apps/Envs/*` 下遍历 workon home ，然后使用 `apps` 用户调用 supervisord 拉起进程。
 
-#### 第三方组件{#thirdplugins}
+#### 第三方组件
 
 - bk_network: `/data/bkce/bknetwork/bknetwork/bin/nms.sh start >/dev/null 2>&1`

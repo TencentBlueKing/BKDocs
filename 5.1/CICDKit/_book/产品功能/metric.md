@@ -1,4 +1,4 @@
-### 5.7 度量数据 {#metric}
+### 度量数据 {#metric}
 
 全流水线度量数据：
 ![](/assets/bk-cicdkit-28.png)
