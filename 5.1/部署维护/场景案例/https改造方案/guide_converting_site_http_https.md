@@ -103,7 +103,6 @@ BK_PAAS_INNER_HOST = os.environ.get('BK_PAAS_INNER_HOST',BK_PAAS_HOST)
 ![](../../assets/15353433877928.png)
 
 
-
 #### blueking/component/conf.py
 
 blueking/component/conf.py 文件中大概 11 行处修改变量
@@ -116,7 +115,6 @@ COMPONENT_SYSTEM_HOST = getattr(settings'BK_PAAS_INNER_HOST'settings.BK_PAAS_HOS
 
 ![](../..../../assets/15353434175842.png)
 
-
 #### account/accounts.py
 
 account/accounts.py 文件中大概 34 行处修改变量，修改登录访问地址依赖  `BK_PAAS_INNER_HOST`
@@ -127,9 +125,6 @@ BK_GET_USER_INFO_URL = "%s/login/accounts/get_user/" % getattr(settings,'BK_PAAS
 ```
 
 ![](../../assets/15353433993101.png)
-
-
-
 
 ### [ESB 调用方关注] API 网关用户 HTTPS 改造方案
 
