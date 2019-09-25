@@ -7,8 +7,9 @@
 
 #### 前提条件 
 
-- [蓝鲸配置平台纳管了主机](/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
-- [作业平台新建一个作业](/bk_solutions/CD/Automation/Massive_host_control.md#New_job)
+- [蓝鲸配置平台纳管了主机](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
+
+- [作业平台新建一个作业](5.1/bk_solutions/CD/Automation/Massive_host_control.md)
 
 **术语解释**
  - **自愈套餐** : 告警的处理动作，比如清理日志的作业
@@ -17,9 +18,9 @@
 
 #### 操作步骤 
 
-- [1. 启用 REST API(推送)告警源](#Enable_restapi)
-- [2. 接入自愈方案](#New_fta_solutions)
-- [3. 自愈测试](#Test_fta)
+1. 启用 REST API(推送)告警源
+2. 接入自愈方案
+3. 自愈测试
 
 
 ## 1. 启用 REST API(推送)告警源 

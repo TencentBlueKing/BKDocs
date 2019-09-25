@@ -1,7 +1,7 @@
 # Summary
 
 ## 蓝鲸配置平台白皮书
-* [产品简介](README.md)
+* [产品简介](产品简介/README.md)
 * [术语解释](术语解释/glossary.md)
 * [产品构架图](产品架构图/Architecture.md)
 * [产品功能]()

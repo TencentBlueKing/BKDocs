@@ -1,13 +1,14 @@
 ## 带审批 Ping 告警组合套餐接入流程
+
 #### 情景 
 
 产生 Ping 告警，服务器故障，首先要做故障检查（再次 Ping 一次，或者调用一次），发送审核通知（包含故障检查的内容），用户审核即可重启。 （适用保守的传统企业）
 
 #### 前提条件 
 
-- 需要先配置企业微信,注册链接：https://work.weixin.qq.com/ ，
-注意：开启微信端口 80443
-- 蓝鲸故障自愈 APP 已经正常运行 创建故障自愈 APP 请参照[微信审批接入流程](https://docs.bk.tencent.com/product_white_paper/fta/Advanced_Features/WeChat_approval_access_process.html)。
+- 需要先配置企业微信，注册链接：[企业微信首页](https://work.weixin.qq.com/) ，注意：开启微信端口 80443
+
+- 蓝鲸故障自愈 APP 已经正常运行 创建故障自愈 APP 请参照 [微信审批接入流程](5.1/FTA/Scenes/WeChat_approval_access_process.md)。
 
 ## 1. 准备好组合套餐中每个原子（节点）的套餐
 
@@ -34,7 +35,7 @@
 ## 2. 配置组合套餐，并接入故障自愈
 
 接入故障自愈这里选择 REST 默认分类是为了方便触发告警，实际应用选择 Ping 不可达告警类型。
-![Alt text](./20190109195936.png)
+![Alt text](media/20190109195936.png)
 (Ping 告警组合套餐)
 
 ![Alt text](media/20190109212223.png)
@@ -43,7 +44,7 @@
 ## 3. 触发告警，完成自愈
 
 ### 3.1 触发告警
-由于这里是做测试，就不拿生产环境了，用 REST API 可以更方便的产生告警，完整流程请参照[REST API 推送](https://docs.bk.tencent.com/product_white_paper/fta/Getting_Started/Integrated_RestAPI_Push.html)。
+由于这里是做测试，就不拿生产环境了，用 REST API 可以更方便的产生告警，完整流程请参照 [REST API 推送](5.1/FTA/Getting_Started/REST_API_PUSH_Alarm_processing_automation.md)。
 
 ### 3.2 审核
 

@@ -105,9 +105,10 @@ echo "FTAARGV return_mem:${return_mem}"
 
 ### 测试
 
-如果故障自愈不是很方便获取监控的告警，可以使用 [REST API 推送](../Getting_Started/Integrated_RestAPI_Push.html) 方式，来验证故障自愈的执行。
+如果故障自愈不是很方便获取监控的告警，可以使用 [REST API 推送](5.1/FTA/Getting_Started/REST_API_PUSH_Alarm_processing_automation.md) 方式，来验证故障自愈的执行。
 
 #### 作业间传参效果
+
 ![](media/15361183999000.jpg)
 图 7. 模拟自愈，执行上一步创建的组合套餐（包含上下文传参特性）
 
@@ -135,5 +136,5 @@ echo "FTAARGV return_mem:${return_mem}"
 图 11. 作业+通知 组合套餐的输出结果
 
 
-注：如果参数仅在作业平台中传递，可以使用[作业平台的上下文传参功能](http://docs.bk.tencent.com/product_white_paper/job/?q=%E4%B8%8A%E4%B8%8B%E6%96%87)。
+注：如果参数仅在作业平台中传递，可以使用 [作业平台的上下文传参功能]()。
 

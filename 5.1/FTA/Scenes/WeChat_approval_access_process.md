@@ -6,16 +6,21 @@
 
 #### 前提条件 
 
-- 微信企业号一个，注册链接：https://work.weixin.qq.com/wework_admin/register_wx?from=wxqy_register
-- 蓝鲸故障自愈 APP 已经正常运行
-- 外网域名一个，能代理访问到故障自愈 APP weixin api（可通过 nginx,apache 等），下面以 mycompany.com 做示例
+- 微信企业号一个，[点击注册](https://work.weixin.qq.com/wework_admin/register_wx?from=wxqy_register)。
 
+- 蓝鲸故障自愈 APP 已经正常运行。
+
+- 外网域名一个，能代理访问到故障自愈 APP weixin api（可通过 nginx,apache 等），下面以 mycompany.com 做示例。
+
+- 若是已有企业微信，注意需要企业微信管理员才能进入企业微信后台。 
 
 #### 操作步骤 
 
-- [1. 配置企业微信](#Wechat_work)
-- [2. 配置故障自愈](#FTA_solutions)
-- [3. 自愈测试](#Test)
+- 1. 配置企业微信
+
+- 2. 配置故障自愈
+
+- 3. 自愈测试
 
 微信审批分两种，一种是回复指令审批，适合组合套装中的【通知或审批】套餐，还有一种需要在微信页面审批（通过菜单进入），适合告警收敛的【异常防御需审批】。这些都需要一个企业号应用为载体，下面以故障自愈应用为例，指引接入审批流程，相关参数可按照配置自行修改。
 

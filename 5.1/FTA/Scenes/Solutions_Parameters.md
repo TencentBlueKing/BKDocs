@@ -29,8 +29,11 @@ B 机器是 VMM 的管理端，A 机器是 VMM 中的应用服务器。当 A 机
 具体属性名请在 CMDB 上查询。
 
 ### 3. CMDB 变量支持五个参数
+
 - all、set、custom、alarm_ci_name、ip_bak
+
 - all：当有多个参数的时候，将返回通过逗号间隔的字符串。如有多个主机名称的时候
+
 - ${cc|HostName|all}：返回"hostname1,hostname2,hostnameN"，不添加默认返回第一个
 set：查询 Set 属性。如
 
@@ -88,6 +91,6 @@ custom：查询自定义属性。如查询一个名为 IDC 的 Set 属性
 
 ### 6. 注意事项
 
-- 1. 注意大小写
+- 注意大小写
 
 

@@ -7,7 +7,8 @@
 
 #### 前提条件 
 
-- [蓝鲸配置平台纳管了 Zabbix 监控的对象](/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
+- [蓝鲸配置平台纳管了 Zabbix 监控的对象](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
+
 - 拥有 Zabbix 管理员账号，用于注册 Zabbix Action
 
 **术语解释**
@@ -17,9 +18,9 @@
 
 #### 操作步骤 
 
-- [1. 接入 Zabbix 告警源](#Integration_zabbix)
-- [2. 接入自愈方案](#New_fta_solutions)
-- [3. 自愈测试](#Test_fta)
+1. 接入 Zabbix 告警源
+2. 接入自愈方案
+3. 自愈测试
 
 #### 视频教程 
 
@@ -154,7 +155,7 @@ Zabbix 告警源 接入成功后，接下来关联告警 和 告警的处理动�
 
 ![-w1501](media/15644585231679.jpg)
 
-具体执行记录，请参照[故障自愈的收敛防护](/CO/REST_API_PUSH_Alarm_processing_automation.html#Safe)
+具体执行记录，请参照 [故障自愈的收敛防护]()
 
 ### 2. 健康度日报  
 
