@@ -2,7 +2,7 @@
 
 创建云区域成功后，会进入到该云区域管理页面，新创建的云区域下，没有任何节点，因此，会看到如下的空列表
 
-![image-20190915225052262](../assets/cloud_manage/image-20190915225052262.png)
+![052262](../assets/cloud_manage/image-20190915225052262.png)
 
 
 
@@ -30,7 +30,7 @@
 
 ​		
 
- 点击右上角的 `+ 添加 Proxy` 按钮，进入快速 Proxy 添加页面，如图所示![image-20190915225627042](../assets/cloud_manage/image-20190915225627042.png)
+ 点击右上角的 `+ 添加 Proxy` 按钮，进入快速 Proxy 添加页面，如图所示![627042](../assets/cloud_manage/image-20190915225627042.png)
 
 	GSE Proxy节点共有至少 4 个服务(gse_agent, gse_transit, gse_opts, gse_btsvr) , 这些服务都需要与 GSE Server 通信，为了保证服务可用，需要开通这些[网络策略](../附录/network_policy.md)plainplainplainplainplainplainplainplainplain
 
@@ -54,7 +54,7 @@
 
 在快速添加 Proxy 的页面右侧可以找到高级添加按钮，进入到高级添加 Proxy 页面，如下：
 
-![image-20190915232825314](../assets/cloud_manage/image-20190915232825314.png)
+![825314](../assets/cloud_manage/image-20190915232825314.png)
 
 与高级添加 Agent 页面类型，多了一个级联 IP。
 

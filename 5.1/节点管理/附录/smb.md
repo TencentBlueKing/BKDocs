@@ -21,5 +21,4 @@
 
     
 
-    ![](../assets/15316347734408.jpg)plainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
-
+    ![](../assets/15316347734408.jpg)
