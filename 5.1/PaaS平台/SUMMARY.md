@@ -23,8 +23,8 @@
     * [如何配置通知渠道，如邮件、微信、短信等？](场景案例/noticeWay.md)
     * [部署应用过程中，状态一直在“正在提测”中，如何处理？](场景案例/Loading.md)
     * [如何给某一个SaaS开组件“免用户认证”的白名单？](场景案例/White.md)
-* [SaaS开发](SaaS开发/SaaSDev.md)
+* [SaaS 开发](SaaS开发/SaaSDev.md)
 * [二次开发](二次开发/Extend.md)
-* [API文档](API文档/APIdoc.md)
+* [API 文档](API文档/APIdoc.md)
 * [常见问题](常见问题/FAQ.md)
 

@@ -1,6 +1,6 @@
 ## 术语解释
 
-**GSE**:	蓝鲸管控平台系统简称。
+**GSE**:	蓝鲸管控平台系统简称(General Service Engine)。
 
 **BK Agent**: 	蓝鲸智能 Agent，部署在业务服务器上的代理程序。
 
