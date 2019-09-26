@@ -1,4 +1,4 @@
-## bcs application 配置说明
+# bcs application 配置说明
 
 bcs application 实现 Pod 的含义，并与 k8s 的 RC，Mesos 的 app 概念等价。
 

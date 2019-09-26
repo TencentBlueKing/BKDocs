@@ -1,4 +1,4 @@
-## bcs Ingress 配置说明
+# bcs Ingress 配置说明
 
 
 bcs ingress 基于 bcs-service 抽象出将流量导入 bcs 集群的基本规则，满足应用多场景下的负载均衡需求。

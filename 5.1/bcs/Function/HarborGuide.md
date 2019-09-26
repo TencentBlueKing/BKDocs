@@ -1,4 +1,4 @@
-## 镜像仓库使用指南
+# 镜像仓库使用指南
 蓝鲸容器服务采用 Harbor 做镜像存储，用户除了可以使用 Harbor 的管理页面对项目、用户和镜像做管理外，还提供与容器服务配套的 API，方便容器服务和仓库使用。
 
 ## 1. Harbor 镜像仓库简介
@@ -15,7 +15,7 @@ Harbor 项目类型分为公共仓库和私有仓库两种类型，其中
 
 ## 2 BCS 中的 Harbor 仓库
 
-### 2.1 获取项目仓库账号 
+### 2.1 获取项目仓库账号
 
 选中【Helm】菜单中的【Charts 仓库】，点击右上角【如何推送 Helm Chart 到项目仓库】帮助，可以获取仓库账号。
 
@@ -66,18 +66,18 @@ docker pull <Registry_URL>/<Project_ID>/nginx:1.17.0
 
 - 获取项目仓库账号
 
-在 [获取项目仓库账号](#get_harbor_accout) 中可以获取 Harbor 的项目账号，可以访问项目（BCS 中新建的项目）仓库。
+在 *获取项目仓库账号* 中可以获取 Harbor 的项目账号，可以访问项目（BCS 中新建的项目）仓库。
 
 
 - 获取 Harbor 管理员账号
 
-在[部署 BCS 的文档](https://docs.bk.tencent.com/bkce_install_guide/setup/quick_install_bcs.html#%E4%BF%AE%E6%94%B9installbcsglobalsenv) 中有一个环境变量文件 `globals.env` ，其中可以找到 Harbor 的用户名（`HARBOR_SERVER_ADMIN_USER`）以及密码（`HARBOR_SERVER_ADMIN_PASS`）。
+在[部署 BCS 的文档](5.1/部署维护/增强包安装/机器评估/bcs_evaluate.md) 中有一个环境变量文件 `globals.env` ，其中可以找到 Harbor 的用户名（`HARBOR_SERVER_ADMIN_USER`）以及密码（`HARBOR_SERVER_ADMIN_PASS`）。
 
 ### 3.2 访问 Harbor Web 端
 
 - 项目仓库账号 Web 端
 
-在 [获取项目仓库账号](#get_harbor_accout) 中可以获取 Harbor 的 Web 端访问 URL，进来可以看到项目列表，包含 **公共项目** 和 **私有项目**。
+在 *获取项目仓库账号* 中可以获取 Harbor 的 Web 端访问 URL，进来可以看到项目列表，包含 **公共项目** 和 **私有项目**。
 
 ![-w1565](media/15675973703087.jpg)
 
@@ -85,7 +85,7 @@ docker pull <Registry_URL>/<Project_ID>/nginx:1.17.0
 
 ![-w1570](media/15675973839581.jpg)
 
-点击 【Helm Charts】页面，可以看到仓库中上传的 [Charts](helm/ServiceAccess.md)。 
+点击 【Helm Charts】页面，可以看到仓库中上传的 [Charts](helm/ServiceAccess.md)。
 
 ![-w1566](media/15675973941768.jpg)
 

@@ -1,4 +1,4 @@
-## ConfigMap 数据定义
+# ConfigMap 数据定义
 
 ## 1. 配置模板说明
 

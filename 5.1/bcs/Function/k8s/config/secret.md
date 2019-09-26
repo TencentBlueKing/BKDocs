@@ -1,4 +1,4 @@
-## kubernetes Secret 说明
+# kubernetes Secret 说明
 
 
 kubernetes(简称 k8s)中的 Secret 资源可以用来存储密码、Token、秘钥等敏感数据。 将这些敏感信息保存在 Secret 中，相对于暴露到 Pod、镜像中更加的安全和灵活。k8s 内置了三种类型的 Secret

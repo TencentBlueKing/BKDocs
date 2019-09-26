@@ -1,4 +1,4 @@
-## 模板集使用介绍
+# 模板集使用介绍
 
 在 BCS 中，模板集合是 Kubernetes/Mesos 配置文件模板的集合。您可以通过将多个应用的配置构成一个模板集，来简化服务管理的复杂度；您还可以将模板里面需要频繁修改的数据设置成变量，以方便维护。
 
@@ -16,7 +16,7 @@
 
 ### 2.1 推送镜像到仓库
 
-在创建模板前，先通过以下几个步骤将 **Nginx 应用的的镜像推送到蓝鲸容器服务的镜像仓**库中。
+在创建模板前，先通过以下几个步骤将 **Nginx 应用的的镜像推送到蓝鲸容器服务的镜像仓** 库中。
 
 #### 2.1.1 获取镜像的压缩包
 
@@ -28,13 +28,13 @@ docker save nginx > nginx.tar
 ```
 
 #### 2.1.2 上传镜像
-选中【仓库】菜单的【项目镜像】页面，参考 [Harbor 仓库使用指南](HarborGuide.md)，通过命令行工具来推送镜像。
+选中【仓库】菜单的【项目镜像】页面，参考 [Harbor 仓库使用指南](./HarborGuide.md)，通过命令行工具来推送镜像。
 
 
 ### 2.2 创建项目模板集
 选中【模板集】菜单，点击【添加模板集】。
 
-进入创建模板集页面后，可以在模板集定义 Deployment、Service 等资源，这些资源的详情介绍可以参考 [Deployment 说明文档](KubernetesSolution/deployment.md)。本文的案例中我只需要创建一个 Deployment。
+进入创建模板集页面后，可以在模板集定义 Deployment、Service 等资源，这些资源的详情介绍可以参考 [Deployment 说明文档](5.1/bcs/Function/k8s/workload/deployment.md)。本文的案例中我只需要创建一个 Deployment。
 
 首先填入一些基本信息，包括名称、描述，实例数量指最终拉起的实例数。Kubernetes 使用选择器（spec.selector.matchLabels）关联资源，实例化后选择器的值不可变，所以在创建模板的时候需要给应用打一个固定的标签，并且把这个标签添加到选择器中。
 
@@ -119,4 +119,3 @@ docker save nginx > nginx.tar
 - Mesos
 
 节点标签主要是 Mesos 一组 key/value 对，允许以更灵活、多样的形式进行资源分配。
-

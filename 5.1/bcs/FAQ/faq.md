@@ -1,11 +1,11 @@
-## FAQ
+# FAQ
 
 
 ## 1. 产品使用
 
 ### 1.1 BCS 与 K8S、Mesos 的关系和区别是什么
 
-K8S、Mesos 为容器编排引擎，BCS 是容器管理平台，兼容 K8S、Mesos 两种容器编排引擎，提供便捷的容器管理服务，更多介绍详见 [产品架构](Architecture/Architecture.md)。
+K8S、Mesos 为容器编排引擎，BCS 是容器管理平台，兼容 K8S、Mesos 两种容器编排引擎，提供便捷的容器管理服务，更多介绍详见 [产品架构](5.1/bcs/Architecture/Architecture.md)。
 
 
 
@@ -47,7 +47,7 @@ No nodes are available that match all of the predicates: MatchInterPodAffinity (
 
 ## 2. 问题排查
 
-### 2.1 拉取镜像失败 
+### 2.1 拉取镜像失败
 
 出现镜像拉取失败的问题，可能有如下两种可能导致：
 
@@ -102,4 +102,4 @@ to start sandbox container for pod ... Error response from daemon: OCI runtime c
 ![应用资源限制](media/res_limit.jpg)
 
 - 2.3.2 镜像问题
-参考 查看 [镜像拉取失败](#imagePullFail) 处理流程
+参考 查看 *镜像拉取失败* 处理流程

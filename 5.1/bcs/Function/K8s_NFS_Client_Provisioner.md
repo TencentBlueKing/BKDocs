@@ -1,4 +1,4 @@
-## 将 NFS 作为 K8S PV Provisioner
+# 将 NFS 作为 K8S PV Provisioner
 
 #### 情景 {#Situation}
 互联网应用常见的三层架构：接入层、逻辑层、存储层，在操作系统中 **文件系统** 提供存储层的存储介质，在 K8S 中是 **Persistent Volumes**（持久卷，简称 PV），而 PV 背后需要对接存储介质，比如 NFS、CephFS 以及公有云的云硬盘[1]。

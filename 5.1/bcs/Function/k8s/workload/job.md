@@ -1,4 +1,4 @@
-## Kubernetes Job 说明
+# Kubernetes Job 说明
 
 
 Job 负责批量处理短暂的一次性任务，即仅执行一次的任务，它保证批处理任务的一个或多个 Pod 成功结束。kubernetes(简称 k8s)支持以下几种 Job：

@@ -1,4 +1,4 @@
-## Mesos Service 定义
+# Mesos Service 定义
 
 ## 1. Service 数据结构说明
 
@@ -216,4 +216,3 @@ datawatch 构建 ExportService 时需要按照新结构进行。构建 ExportSer
   * 如果 TaskGroup 网络模式 host，取 NodeIP 和 ContainerPort，组成 backend
   * 网络模式为 bridge，如果有 HostPort：NodeIP + HostPort；如果没有，则 ContainerIP + ContainerPort
   * 其他模式：ContainerIP + ContainerPort
-

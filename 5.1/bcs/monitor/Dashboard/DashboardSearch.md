@@ -1,4 +1,5 @@
-## Dashboard - Metric 数据查看和配置
+# Dashboard - Metric 数据查看和配置
+
 容器的基础性能数据、容器的日志（标准输出日志采集、非标准输出日志采集）、容器内运行的应用程序的自定义 Metric 在采集，清洗完成，且在数据平台生成相应结果表后，即可在 Dashboard 中查询。
 
 入口地址： 【监控中心】 -> 【Dashboard】
@@ -14,8 +15,11 @@ Dashboard 含默认 和 自定义 2 种。
 ## 1. 视图
 
 默认 Dashboard 包含
+
 - `BCS Cluster`, 集群视图
+
 - `BCS Node`, 集群节点视图
+
 - `BCS Pods`, 容器 Pod 视图
 
 
@@ -26,7 +30,7 @@ Dashboard 含默认 和 自定义 2 种。
 ![-w1676](media/15683767505889.jpg)
 
 
-    
+
 ### 1.2 BCS Node
 
 呈现节点的平均负载以及 CPU、内存使用率。

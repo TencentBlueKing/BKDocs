@@ -1,4 +1,4 @@
-## LoadBalancer
+# LoadBalancer
 
 [Ingress](../../../Function/k8s/service/ingress.md) 一节中提到 Ingress 描述资源对外的访问方式，背后需要 Ingress Controller 支撑，本节介绍 BCS 中的使用的 Ingress Controller。
 
@@ -119,5 +119,3 @@ blueking-nginx-ingress-default-backend   1         1         1            1     
 可以通过 节点 **亲和性约束** 实现。
 
 ![-w1678](media/15683681052985.jpg)
-
-

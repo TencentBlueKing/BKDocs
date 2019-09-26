@@ -1,21 +1,23 @@
-## 在 K8S 中部署 GitLab
+# 在 K8S 中部署 GitLab
 
-#### 情景 
+#### 情景
 GitLab，不仅仅一个独立部署的流行 Git 代码托管仓库，通过其 Pipeline 具备部分 CI 环节的能力，接下来看 BCS 如何快速部署 GitLab。
 
-#### 前提条件 
+#### 前提条件
 - [了解 Helm 的使用方法](../Function/helm/ServiceAccess.md)
 - [集成 K8S 存储](../Function/StorageSolution/kubernetes.md)，例如 [将 NFS 作为 K8S PV Provisioner](../Function/StorageSolution/K8s_NFS_Client_Provisioner.md)
 - Git Clone [Helm Charts](https://github.com/helm/charts/)
 - 新增 [LoadBalancer](../Function/NetworkSolution/k8s/LoadBalancer.md)
 
-#### 操作步骤 
+#### 操作步骤
 
-- [1. 上传 GitLab Chart 到仓库](#Upload_Charts)
-- [2. 部署 GitLab](#Deploy)
-- [3. 访问测试](#Test)
+1. 上传 GitLab Chart 到仓库
 
-## 1. 上传 GitLab Chart 到仓库 
+2. 部署 GitLab
+
+3. 访问测试
+
+## 1. 上传 GitLab Chart 到仓库
 
 进入 [Charts](https://github.com/helm/charts/) 本地仓库的 gitlab-ce 目录。
 
@@ -56,7 +58,8 @@ Update Complete. ⎈Happy Helming!⎈
 Saving 2 charts
 Downloading redis from repo https://kubernetes-charts.storage.googleapis.com/
 Downloading postgresql from repo https://kubernetes-charts.storage.googleapis.com/
-Deleting outdated charts```
+Deleting outdated charts
+```
 
 推送 Chart 到仓库
 
@@ -68,7 +71,7 @@ Done.
 
 在 BCS 【Chart 仓库】菜单中，点击【同步仓库】，将刚刚上传的 Chart 从仓库同步到 BCS 的界面中。
 
-## 2. 部署 GitLab 
+## 2. 部署 GitLab
 
 在 BCS 【Chart 仓库】菜单中，找到刚刚上传的 GitLab Chart ，点击【部署】。
 
@@ -91,9 +94,9 @@ Done.
 ```yaml
 serviceType: ClusterIP
 ```
- 
- - Ingress
-  
+
+  - Ingress
+
   此处启用 Ingress，并填写 URL。
 
 ```yaml
@@ -121,7 +124,7 @@ ingress:
 
 部署成功，接下来测试访问。
 
-## 3. 访问测试 
+## 3. 访问测试
 
 修改域名解析或 PC 上 hosts 文件（Mac 下路径为 /etc/hosts），将 Ingress 中配置的主机名指向到 LoadBalancer 中节点的外网 IP，然后打开浏览器访问，可以看到 GitLab 首次登陆密码设置界面。
 
@@ -134,5 +137,3 @@ ingress:
 ![-w1676](media/15683763495121.jpg)
 
 BCS 部署应用，如此简单。
-
-

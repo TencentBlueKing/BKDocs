@@ -27,4 +27,4 @@
 
 至此，进程告警的自愈处理方案配置完毕。
 
-更多进程告警的配置细节请参考 [蓝鲸监控告警自动处理](../Getting_Started/Bkmonitor_Alarm_processing_automation.html)。
+更多进程告警的配置细节请参考 [蓝鲸监控告警自动处理](5.1/FTA/Function_Introduction/Alarm_Automatic_Processing.md)。

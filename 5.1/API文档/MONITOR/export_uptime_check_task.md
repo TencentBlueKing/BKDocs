@@ -35,7 +35,7 @@ GET
 
 ### 请求参数示例
 
-```
+```json
 {
      biz_id: 2,
      task_ids: "60",
@@ -44,7 +44,8 @@ GET
 ```
 
 ### 返回参数示例
-```
+
+```json
 {
     "message": "OK",
     "code": 200,
@@ -180,7 +181,7 @@ GET
 | bk_biz_id | int | 业务ID |
 | conf_list | list | 配置列表 |
 
-### 1.1 配置列表--conf_list
+#### 1.1 配置列表--conf_list
 | 字段           | 类型 | 描述           |
 | -------------- | ---- | -------------- |
 | collector_conf | dict | 拨测任务基础配置 |
@@ -208,8 +209,8 @@ GET
 | response | str | 期望响应内容 |
 | response_code | str | 期望响应码 |
 
-### http任务返回的config示例
-```
+#### http任务返回的config示例
+```json
 {
     "config": {
         "insecure_skip_verify": true,
@@ -304,14 +305,14 @@ GET
 | check_window | int | 检测窗口 |
 | count | int | 数量 |
 
-## 1.1.3.2 监控触发条件配置--data.conf_list.monitor_conf.alarm_level_config
+#### 1.1.3.2 监控触发条件配置--data.conf_list.monitor_conf.alarm_level_config
 字段  | 类型  |描述  |
 ------|-------|-------|
 1 | dict |告警级别对应的告警触发配置,表示为致命告警 |
 2 | dict |告警级别对应的告警触发配置，表现为预警告警 |
 3 | dict |告警级别对应的告警触发配置，表现为提醒告警 |
 
-## 1.1.3.2.1 告警级别对应的告警触发配置--data.conf_list.monitor_conf.alarm_level_config.1
+#### 1.1.3.2.1 告警级别对应的告警触发配置--data.conf_list.monitor_conf.alarm_level_config.1
 字段  | 类型  | 描述  |
 ------|-------|-------|
 alarm_start_time | str |  当日开始告警时间 |
@@ -324,20 +325,20 @@ phone_receiver | list | 电话通知对象，账号名 |
 responsible | list | 其他通知人列表 |
 role_list | list |  通知人分组，在业务管理中配置 |
 
-## 1.1.3.2.1.1 检测算法配置--data.conf_list.monitor_conf.alarm_level_config.1.detect_algorithm
+#### 1.1.3.2.1.1 检测算法配置--data.conf_list.monitor_conf.alarm_level_config.1.detect_algorithm
 |字段  | 类型  |描述  |
 |------|-------|-------|
 | config | dict |检测算法详细配置 |
 | algorithm_id | int | 检测算法ID，静态阈值 1000、同比策略(简易) 1001、环比策略(简易)1002 |
 
-## 1.1.3.2.1.1.1 检测算法详细配置(静态阈值)--data.conf_list.monitor_conf.alarm_level_config.1.detect_algorithm.config
+#### 1.1.3.2.1.1.1 检测算法详细配置(静态阈值)--data.conf_list.monitor_conf.alarm_level_config.1.detect_algorithm.config
 |字段  | 类型  | 描述  |
 |------|-------|-------|
 threshold | int | 比较值 |
 method | str | 比较方式 |
 message | str | 说明 |
 
-## 1.1.3.2.1.1.2 检测算法详细配置(同比、环比)--data.conf_list.monitor_conf.alarm_level_config.1.detect_algorithm.config
+#### 1.1.3.2.1.1.2 检测算法详细配置(同比、环比)--data.conf_list.monitor_conf.alarm_level_config.1.detect_algorithm.config
 |字段  | 类型  | 描述  |
 |------|-------|-------|
 ceil | int | 大于设定值告警 |

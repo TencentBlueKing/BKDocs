@@ -1,4 +1,4 @@
-## BCS Deployment 说明
+# BCS Deployment 说明
 
 ## 1. bcs-deployment 简介
 bcs-deployment 是基于 bcs-application 抽象出的顶层概念、主要满足应用的滚动升级，回滚，暂停，扩、缩容等需求。
@@ -151,7 +151,7 @@ bcs-deployment 是基于 bcs-application 抽象出的顶层概念、主要满足
                 "maxSurge": 1,
                 "upgradeDuration": 60,
                 "rollingOrder": "CreateFirst",
-                 "rollingManually":false 
+                 "rollingManually":false
             }
         }
     }
@@ -163,7 +163,7 @@ bcs-deployment 是基于 bcs-application 抽象出的顶层概念、主要满足
 - application 选择器
 相关参数为 spec.selector（第 3 行），用于配置 deployment 所需要管理的 bcs-appliction,默认这些 bcs-application 是由 bcs-deployment 自动创建的。
 
-## 2. deployment 升级策略
+## 3. deployment 升级策略
 相关配置项为 spec.strategy（第 6-15 行），用于配置 deployment 执行 rolling 操作时所需要的策略：
 - type: 定义 deployment 进行 rolling 时要选择的策略，目前只支持 RollingUpdate：
   - `RollingUpdate`:  
@@ -182,7 +182,7 @@ bcs-deployment 是基于 bcs-application 抽象出的顶层概念、主要满足
   - `rollingManually`:
   配置每次滚动是否需要手动触发，默认为 false，即一次滚动完成之后在时间间隔结束之后自动进行下一次滚动，如果配置为 true，则在每次滚动后自动 pause，需输入 resume 命令才会在时间间隔结束之后进行下一次滚动
 
-## 3. rolling update 的策略示例
+## 4. rolling update 的策略示例
 我们假设 rolling 前 deployment 的 instances 为 oldInstances, rolling 的 deployment instances 为 newInstances。可以预见在 rolling 过程中会有以下三种场景：
 - oldInstances < newInstances
 对 application 进行一次 rolling update，并且达到扩容的效果
@@ -191,7 +191,7 @@ bcs-deployment 是基于 bcs-application 抽象出的顶层概念、主要满足
 - oldInstances > newInstances  
 对 application 进行一次 rolling update，并且达到缩容的效果
 
-## 4. 支持的 deployment 操作
+## 5. 支持的 deployment 操作
 - create
 创建一个 deployment：如果已有绑定的 application，则 delete 当前 application 并创建新的 application；如果不存在绑定的 application，则创建 application。也可以创建一个空的 deployment 绑定到当前已有的 application。
 - udpate

@@ -1,4 +1,4 @@
-## Kubernetes Deployment 说明
+# Kubernetes Deployment 说明
 
 Deployment 是 kubernetes(简称 k8s)中用于管理 Pod 的对象，从 1.2 版本开始引入，与 Replication Controller 相比，它提供了更加完善的功能，集成了上线部署、滚动升级、创建副本、暂停/恢复上线任务，回滚等功能，使用起来也更加方便
 
@@ -243,4 +243,3 @@ spec:
 ![-w1465](media/15684296480794.jpg)
 
 ![-w1462](media/15684296585366.jpg)
-

@@ -12,6 +12,8 @@
 2. 安装 CICDKit 的机器可用配置不能低于 4C8G，系统版本不能低于 Centos 7.0，建议单独一台机器部署。
 
 3. 修改配置：
+
+    - **注意：** 请勿将 MySQL 57 同蓝鲸的 MySQL 部署在同一台机器上。
     - 中控机 install/third/globals_cicdkit.env 域名信息 (CICDKIT_FQDN)。
 
     - install.config 新增 cicdkit 及其依赖的 mysql 5.7 的配置。

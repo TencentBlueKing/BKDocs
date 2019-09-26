@@ -1,4 +1,4 @@
-## BCS 自研 Mesos 容器方案网络集成
+# BCS 自研 Mesos 容器方案网络集成
 
 BCS 在设计 Mesos 方案之初已经考虑多种网络的集成问题。在容器 json 文件中有相关参数进行
 网络参数详细设定。原始 json 文档可以参考
@@ -23,7 +23,7 @@ BCS 在设计 Mesos 方案之初已经考虑多种网络的集成问题。在容
 networkMode 的值则为 docker 已生效的网络模式，docker 网络模式查看：
 
 ```shell
-$ docker network ls 
+$ docker network ls
 NETWORK ID          NAME                DRIVER              SCOPE
 437f2816be0a        bridge              bridge              local               
 1093cd0625ed        host                host                local               

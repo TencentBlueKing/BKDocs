@@ -1,4 +1,4 @@
-## Kubernetes StatefulSet 说明
+# Kubernetes StatefulSet 说明
 
 StatefulSet 是为了解决有状态服务的问题而设计的，它是一个给 Pod 提供唯一标志的控制器，可以保证部署和扩展的顺序。StatefulSet 适用于有以下某个或多个需求的应用：
 - 稳定的、唯一的网络标识

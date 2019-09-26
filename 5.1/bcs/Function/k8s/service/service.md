@@ -1,4 +1,4 @@
-## Kubernetes Service 说明
+# Kubernetes Service 说明
 
 
 Service 是 kubernetes(简称 k8s)的一种抽象：一个 Pod 的逻辑分组，一种可以访问它们的策略 —— 通常称为微服务。这一组 Pod 能够被 Service 访问到，通常是通过 Label Selector 实现。
@@ -32,7 +32,7 @@ ServiceTypes 允许指定一个需要的类型的 Service，默认是`ClusterIP`
 ### 2.2 Selector
 通过`.spec.selector`， 将 Service 对象与指定的 Pods 进行关联。如示例中，`servergame`这一 Service 对象，会将请求代理到使用了 TCP 端口 8080，并且具有 label `app=servergame`的 Pods 上。
 ### 2.3 Ports
-`.spec.ports[]`用来描述 Service 的接收端口与后端 Pod 端口之间的映射关系。Service 能够将一个接收端口映射到任意的 targetPort。 默认情况下，targetPort 将被设置为与 port 字段相同的值。 targetPort 可以是 Pod 的端口号，也可以是一个字符串(引用了 backend Pod 的一个端口的名称)。 
+`.spec.ports[]`用来描述 Service 的接收端口与后端 Pod 端口之间的映射关系。Service 能够将一个接收端口映射到任意的 targetPort。 默认情况下，targetPort 将被设置为与 port 字段相同的值。 targetPort 可以是 Pod 的端口号，也可以是一个字符串(引用了 backend Pod 的一个端口的名称)。
 `.spec.ports[i].protocol`能够支持 TCP 和 UDP 协议，默认 TCP 协议
 
 ## 3. Service 之“吃豆小游戏”实践
@@ -73,5 +73,3 @@ spec:
 关于 Service 的实战演练，请参照 [快速构建 Nginx 集群](../../../Scenes/Bcs_deploy_nginx_cluster.md)。
 
 ![-w1458](media/15684298606765.jpg)
-
-

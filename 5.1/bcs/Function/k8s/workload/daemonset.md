@@ -1,6 +1,6 @@
-## Kubernetes DaemonSet 说明
+# Kubernetes DaemonSet 说明
 
-DaemonSet 能够让所有（或者一些特定）的 Node 节点运行同一个 Pod。当有节点加入集群时，也会为他们新增一个 Pod。 
+DaemonSet 能够让所有（或者一些特定）的 Node 节点运行同一个 Pod。当有节点加入集群时，也会为他们新增一个 Pod。
 
 当有节点从集群移除时，这些 Pod 也会被回收。
 

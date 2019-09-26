@@ -1,21 +1,21 @@
-## 在 K8S 中部署 WordPress
+# 在 K8S 中部署 WordPress
 
-#### 情景 
+#### 情景
 WordPress 是流行的开源博客程序，Helm 官方维护了 WorePress 的 Chart，接下来看在 BCS 中如何部署 WordPress，开始你的博客之旅。
 
-#### 前提条件 
+#### 前提条件
 - [了解 Helm 的使用方法](../Function/helm/ServiceAccess.md)
 - [集成 K8S 存储](../Function/StorageSolution/kubernetes.md)，例如 [将 NFS 作为 K8S PV Provisioner](../Function/StorageSolution/K8s_NFS_Client_Provisioner.md)
 - Git Clone [Helm Charts](https://github.com/helm/charts/)
 - 新增 [LoadBalancer](../Function/NetworkSolution/k8s/LoadBalancer.md)
 
-#### 操作步骤 
+#### 操作步骤
 
-- [1. 上传 WordPress Chart 到仓库](#Upload_Charts)
-- [2. 部署 WordPress](#Deploy)
-- [3. 访问测试](#Test)
+1. 上传 WordPress Chart 到仓库
+2. 部署 WordPress
+3. 访问测试
 
-## 1. 上传 WordPress Chart 到仓库 
+## 1. 上传 WordPress Chart 到仓库
 
 进入 [Charts](https://github.com/helm/charts/) 本地仓库的 wordpress 目录。
 
@@ -70,11 +70,11 @@ Done.
 
 在 BCS 【Chart 仓库】菜单中，点击【同步仓库】，将刚刚上传的 Chart 从仓库同步到 BCS 的界面中。
 
-## 2. 部署 WordPress 
+## 2. 部署 WordPress
 
 在 BCS 【Chart 仓库】菜单中，找到刚刚上传的 WordPress Chart ，点击【部署】。
 
-![-w1645](media/15682579071348.jpg)
+![w1645](media/15682579071348.jpg)
 
 可以修改 Helm 参数，例如 WordPress 管理员账号、密码等，这里重点提一下用户访问用到的 Service 和 Ingress：
 
@@ -88,34 +88,34 @@ service:
   # HTTP Port
   port: 80
 ```
- 
+
  - Ingress
-  
+
   此处启用 Ingress，并填写绑定的 **主机名** 和 **路径**。类似 Nginx 配置文件中 Server Section 部分的 server_name。
-  
-  ![-w1678](media/15682642857653.jpg)
+
+  ![w1678](media/15682642857653.jpg)
 
 点击【预览】，可以看到 BCS 将 Charts 通过 `helm template` 命令渲染为 K8S 的对象描述文件。
 
-![-w1657](media/15682582162576.jpg)
+![w1657](media/15682582162576.jpg)
 
 点击 【部署】即可。
 
 在【Release 列表】菜单中可以查看部署状态。
 
-![-w1652](media/15683730410624.jpg)
+![w1652](media/15683730410624.jpg)
 
 部署成功，接下来测试访问。
 
-## 3. 访问测试 
+## 3. 访问测试
 
 修改域名解析或 PC 上 hosts 文件（Mac 下路径为 /etc/hosts），将 Ingress 中配置的主机名指向到 LoadBalancer 中节点的外网 IP，然后打开浏览器访问，可以看到 WordPress 首页。
 
-![-w1648](media/15683743074917.jpg)
+![w1648](media/15683743074917.jpg)
 
 输入用户名（默认为 user）和密码登录 Wordpress 后台。
 
-![-w1676](media/15683744779001.jpg)
+![w1676](media/15683744779001.jpg)
 
 
 如果没有在 Chart 参数中没有设置密码，可以通过命令获取 WordPress 的 Secret。
@@ -140,4 +140,3 @@ lX3NfoHrHV
 ```
 
 BCS 部署应用，如此简单。
-

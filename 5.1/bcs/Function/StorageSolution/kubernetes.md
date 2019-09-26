@@ -1,4 +1,4 @@
-## K8S 存储
+# K8S 存储
 
 BCS 支持 K8S 原生的多种存储能力。在存储类型上，支持本地存储 hostpath、emptyDir、local 等；在存储方式上，支持 Volume、静态 PV、动态 PV； 在存储插件方案上，支持 K8S 内置的 In-tree 存储驱动、FlexVolume 存储驱动，以及 CSI 存储驱动的方案。  
 
@@ -113,10 +113,10 @@ metadata:
 data:
   # Base64 encoded and comma separated Ceph cluster monitor list
   #   - Typically output of: `echo -n "mon1:port,mon2:port,..." | base64`
-  monitors: 
+  monitors:
   # Base64 encoded and comma separated list of pool names from which volumes
   # can be provisioned
-  pools: 
+  pools:
   # Base64 encoded admin ID to use for provisioning
   #   - Typically output of: `echo -n "<admin-id>" | base64`
   # Substitute the entire string including angle braces, with the base64 value
@@ -124,17 +124,17 @@ data:
   # Base64 encoded key of the provisioner admin ID
   #   - Output of: `ceph auth get-key client.<admin-id> | base64`
   # Substitute the entire string including angle braces, with the base64 value
-  adminkey: 
+  adminkey:
   # Base64 encoded user ID to use for publishing
   #   - Typically output of: `echo -n "<admin-id>" | base64`
   # Substitute the entire string including angle braces, with the base64 value
-  userid: 
+  userid:
   # Base64 encoded key of the publisher user ID
   #   - Output of: `ceph auth get-key client.<admin-id> | base64`
   # Substitute the entire string including angle braces, with the base64 value
-  userkey: 
+  userkey:
 ```
-  
+
 - StorageClass:
 
 ```yaml
@@ -145,7 +145,7 @@ metadata:
 provisioner: rbd.csi.ceph.com
 parameters:
   clusterID: {ceph_cluster_id}
-  pool: 
+  pool:
   # RBD image format. Defaults to "2".
   imageFormat: "2"
 
@@ -157,7 +157,7 @@ reclaimPolicy: Delete
 
 #### 5.2.2 创建 PVC
 
-用户在模板集中创建 PVC, 或者使用 kubectl 通过 bcs-api 操作 K8S 集群创建 PVC 
+用户在模板集中创建 PVC, 或者使用 kubectl 通过 bcs-api 操作 K8S 集群创建 PVC
 
 - PVC:
 
@@ -211,5 +211,3 @@ spec:
           claimName: rbd-pvc
           readOnly: true
 ```
-
-

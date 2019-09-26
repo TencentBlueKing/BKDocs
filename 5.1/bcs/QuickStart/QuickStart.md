@@ -1,4 +1,4 @@
-## 快速入门
+# 快速入门
 
 ![](media/15290519660825.jpg)
 
@@ -136,8 +136,3 @@ curl -X GET 'http://{domain}/rumpetroll/api/gold/?token={token}&num={num}'
 ```bash
 redis-cli flushall
 ```
-
-
-
-
-

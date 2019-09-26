@@ -1,4 +1,4 @@
-## kubernetes ConfigMap 说明
+# kubernetes ConfigMap 说明
 
 
 ConfigMap 是用来存储配置文件的 kubernetes(简称 k8s)资源对象，它的作用是将配置文件从容器镜像中解耦，从而增强容器应用的可移植性。在一个 Pod 里面使用 ConfigMap 主要有两种方式：
@@ -69,4 +69,3 @@ ConfigMap 的配置数据存储在`data`字段中，具体参考示例模板
 关于 ConfigMap 的实战演练，请参照 [应用的蓝绿发布](../../../Scenes/Bcs_blue_green_deployment.md)。
 
 ![](media/15684304092327.jpg)
-

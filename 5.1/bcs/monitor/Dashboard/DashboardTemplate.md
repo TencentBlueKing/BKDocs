@@ -1,4 +1,4 @@
-## Dashboard - 模板(Templating)
+# Dashboard - 模板(Templating)
 
 模板允许更多交互式,动态的仪表板。您可以在度量标准查询中使用变量代替硬编码 cluster_id，namespace 和 container_id 名称等内容。变量显示为仪表板顶部的下拉选择框。通过这些下拉菜单，您可以轻松更改仪表板中显示的数据。
 
@@ -67,8 +67,8 @@
 
 每个数据源的查询表达式都不同。
 
-- [Elasticsearch templating queries](/monitor/Dashboard/DashboardSearch.md#EsTempalte)
-- [InfluxDB templating queries](/monitor/Dashboard/DashboardSearch.md#Tempalte)
+- [Elasticsearch templating queries](./DashboardSearch.md)
+- [InfluxDB templating queries](./DashboardSearch.md)
 
 
 需要注意的一点是，查询表达式可以包含对其他变量的引用，实际上可以创建链接变量。Grafana 将检测到这一点并在其中一个变量包含变量时自动刷新变量。
@@ -140,11 +140,11 @@ InfluxDB 和 Elasticsearch 数据源具有 Group by time interval 用于对间�
 
 ### 4.3 $timeFilter or $__timeFilter 变量
 
-的$timeFilter 变量返回当前选定的时间范围作为表达。例如，时间范围间隔`Last 7 days`表达式为`time > now() - 7d`。
+$timeFilter 变量返回当前选定的时间范围作为表达。例如，时间范围间隔`Last 7 days`表达式为`time > now() - 7d`。
 
 这在 InfluxDB 数据源的 WHERE 子句中使用。在查询编辑器模式下，Grafana 会自动将其添加到 InfluxDB 查询中。必须在文本编辑器模式下手动添加：`WHERE $timeFilter`。
 
-### 4.4 $__name 变量
+### 4.4  $__name 变量
 
 此变量仅在 Singlestat 面板中可用，可以在“选项”选项卡上的前缀或后缀字段中使用。变量将替换为系列名称或别名。
 

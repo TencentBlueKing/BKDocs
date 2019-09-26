@@ -9,6 +9,7 @@ Elasticsearch 日志支持自定义查询，可用选项如下所述。
 根据指定字段名进行查询
 
 - 查询 bcs_cluster 为 BCS-K8S-10000 的请求: **bcs_cluster: BCS-K8S-10000**
+
 - 查询嵌套字段 pin.status 为 complete 的请求: **pin.status: complete**
 
 ### 通配符
@@ -47,4 +48,3 @@ Elasticsearch 日志支持自定义查询，可用选项如下所述。
 
 
 更多查询语法说明请参考 [elasticsearch query string 语法说明](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax)。
-

@@ -1,6 +1,7 @@
 # Summary
 
-## 蓝鲸配置平台白皮书
+## 配置平台
+
 * [产品简介](产品简介/README.md)
 * [术语解释](术语解释/glossary.md)
 * [产品构架图](产品架构图/Architecture.md)
@@ -15,10 +16,10 @@
     * [我的收藏](产品功能/Collection.md)
 * [快速入门]()
     * [如何创建业务并导入主机到业务中](快速入门/case1.md)
-    * [主机由A业务模块转移到B业务模块](快速入门/case2.md)
+    * [主机由 A 业务模块转移到 B 业务模块](快速入门/case2.md)
     * [快速入门模型和模型拓扑管理](快速入门/case3.md)
 * [场景案例]()
     * [业务上线时 CMDB 如何管理主机](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
     * [CMDB 如何管理进程](5.1/bk_solutions/CD/CMDB/CMDB_management_process.md)
     * [企业原有 CMDB 同步至蓝鲸 CMDB](5.1/bk_solutions/CD/CMDB/CMDB_integration.md)
-* [常见问题](FAQ.md)
+* [常见问题](常见问题/FAQ.md)

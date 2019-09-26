@@ -1,8 +1,8 @@
-## Kubernetes 网络设置
+# Kubernetes 网络设置
 
 如果针对容器网络，没有额外设计需求，BCS 建议采用 Kubernetes 社区建议的网络方案。
 
-Kubernetes 与 BCS 集成可以参考 [这里](https://github.com/Tencent/bk-bcs/blob/master/docs/install/Deploy_BCS_in_K8S_HA_Cluster.md)
+Kubernetes 与 BCS 集成可以参考 [BCS 高可用 Kubernetes 集群部署](https://github.com/Tencent/bk-bcs/blob/master/docs/install/Deploy_BCS_in_K8S_HA_Cluster.md)
 
 ## 1. CNI 扩展
 
@@ -53,5 +53,3 @@ kubelet 在 /etc/cni/net.d 目录下读取 CNI 的配置文件时，是按文件
 > 如下图：
 
 ![multus-CNI](./media/multus-cni.png)
-
-

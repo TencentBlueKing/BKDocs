@@ -1,30 +1,32 @@
-## 快速构建 Nginx 集群
+# 快速构建 Nginx 集群
 
-#### 情景 
+#### 情景
 传统的 Nginx 集群要先部署多个 Nginx 节点，然后通过 `upstream` 统一一个入口提供给用户访问。
 
 该过程操作繁琐，接下来看 BCS（容器管理平台） 如何通过 **容器调度 (以 K8S 编排为例，BCS 同时还支持 Mesos)** 快速构建 Nginx 集群。
 
 
-#### 前提条件 
+#### 前提条件
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含  [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
-- [完成 BCS 部署](https://docs.bk.tencent.com/bkce_install_guide/setup/quick_install_bcs.html)
+
+- [完成 BCS 部署](5.1/部署维护/增强包安装/机器评估/bcs_evaluate.md)
 - 准备 2 台云主机：4 核 8 G，不低于 CentOS 7，K8s Master 和 Node 各 1 台
-- 完成上述 2 台云主机的 [Agent 安装](Hybrid_cloud_management.md) ，并分配至  [CMDB 业务下](https://docs.bk.tencent.com/cmdb/Introduction.html#BusinessResource)
+- 完成上述 2 台云主机的 [Agent 安装](5.1/节点管理/快速入门/agent0.md) ，并分配至  [CMDB 业务下](5.1/配置平台/产品功能/Resource.md)
 
-#### 操作步骤 
+#### 操作步骤
 
-- [1. 新建集群](#New_Cluster)
-- [2. BCS 快速构建 Nginx 集群](#BCS_op)
+1. 新建集群
 
-## 1. 新建集群 
+2. BCS 快速构建 Nginx 集群
+
+## 1. 新建集群
 ### 1.1 启用容器服务
 
 在 BCS 首页，点击`新建项目`，如`欢乐游戏(demo)`。
 
 ![-w1378](media/15648362836651.jpg)
 
-然后选择容器编排类型为 `Kubernetes` ，关联 [前提条件](#Prerequisites)中提到的 CMDB 业务，点击`启用容器服务`。
+然后选择容器编排类型为 `Kubernetes` ，关联 *前提条件* 中提到的 CMDB 业务，点击`启用容器服务`。
 
 ![-w1304](media/15648364147641.jpg)
 
@@ -66,7 +68,7 @@
 ![-w1488](media/15648861821783.jpg)
 
 
-## 2. BCS 快速构建 Nginx 集群 
+## 2. BCS 快速构建 Nginx 集群
 
 ### 2.1 新建命名空间
 新建命名空间`dev`
@@ -76,7 +78,7 @@
 
 ### 2.2 新建模板集
 
-模板集，可以类比为 K8S 中 **[Helm](https://helm.sh/)** 的`Charts`，在 K8S 编排中，是 K8S 对象的集合：`Deployment（无状态）`、`StatefulSet（有状态）`、`DaemonSet（守护进程集）`、`Job（定时任务）`、`Configmap（配置项）`、`Secret（保密字典）`，具体参见 [模板集使用介绍](https://docs.bk.tencent.com/bcs/Container/TemplateIntroduce.html) 。
+模板集，可以类比为 K8S 中 **[Helm](https://helm.sh/)** 的`Charts`，在 K8S 编排中，是 K8S 对象的集合：`Deployment（无状态）`、`StatefulSet（有状态）`、`DaemonSet（守护进程集）`、`Job（定时任务）`、`Configmap（配置项）`、`Secret（保密字典）`，具体参见 [模板集使用介绍](5.1/bcs/Function/TemplateIntroduce.md) 。
 
 打开菜单`[模板集]`，新建模板集`web-nginx`。
 
@@ -135,8 +137,3 @@ Connection: keep-alive
 ETag: "5964d2ae-264"
 Accept-Ranges: bytes
 ```
-
-
-
-
-

@@ -1,4 +1,4 @@
-## 业务接入 Helm
+# 业务接入 Helm
 
 本文先简单介绍什么是 Helm，以及蓝鲸容器服务（BCS）提供的 Helm 与标准 Helm 的差异，然后以蓝鲸小游戏为例，介绍如何使用蓝鲸容器服务部署您的 Helm Release。
 
@@ -33,4 +33,3 @@ Helm 是 Kubernetes 的一个包管理工具，用来简化 Kubernetes 应用的
 建议参照指引完成 Helm Chart 的推送。
 
 ![-w1632](media/15680227175027.jpg)
-

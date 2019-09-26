@@ -1,4 +1,4 @@
-## Kubernetes CronJob 说明
+# Kubernetes CronJob 说明
 
 K8S 集群使用 Cron Job 管理基于时间的作业，可以在指定的时间点执行一次或在指定时间点执行多次任务。 一个 Cron Job 就好像 Linux crontab 中的一行，可以按照 Cron 定时运行任务。
 
@@ -56,5 +56,3 @@ spec:
 
 ### 2.3 挂起
 `.spec.suspend` 字段是可选的。如果设置为 true，后续所有执行都将被挂起。它对已经开始执行的 Job 不起作用。默认值为 false
-
-

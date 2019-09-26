@@ -1,4 +1,4 @@
-## BCS K8S / Mesos 方案功能对比
+# BCS K8S / Mesos 方案功能对比
 
 BCS 支持 K8S 和 Mesos 两种容器编排方案，以下是两种编排方案的功能对比：
 

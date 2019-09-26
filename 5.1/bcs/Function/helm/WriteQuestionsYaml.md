@@ -1,4 +1,4 @@
-## 如何编写 Helm `questions.yaml`
+# 如何编写 Helm `questions.yaml`
 
 ## 1. Helm questions.yaml 是什么
 Helm 是一个软件包管理器，提供了一种简单的方法来查找、共享和使用为 Kubernetes 而构建的软件。它提供 key-value 或者 `values.yaml` 用于设置 Helm 应用的实例化参数。
@@ -71,4 +71,4 @@ Helm 是一个软件包管理器，提供了一种简单的方法来查找、共
 | 	show_if           | string      | false  | 控制是否显示当前输入项, 比如 `show_if: "serviceType=Nodeport"` |
 | 	show\_subquestion_if |  string  | false     | 如果当前值为 `true` 或者可选项的值，则该子问题会被显示出来. 比如 `show_subquestion_if: "true"`|
 
-**subquestions**: `subquestions[]` 除了不能包含 `subquestions` 或者 `show_subquestions_if` 字段, 上表中的其它字断均支持. 
+**subquestions**: `subquestions[]` 除了不能包含 `subquestions` 或者 `show_subquestions_if` 字段, 上表中的其它字断均支持.

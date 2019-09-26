@@ -1,22 +1,22 @@
-## 将 NFS 作为 K8S PV Provisioner
+# 将 NFS 作为 K8S PV Provisioner
 
-#### 情景 
+#### 情景
 互联网应用常见的三层架构：接入层、逻辑层、存储层，在操作系统中 **文件系统** 提供存储层的存储介质，在 K8S 中是 **Persistent Volumes**（持久卷，简称 PV），而 PV 背后需要对接存储介质，比如 NFS、CephFS 以及公有云的云硬盘[1]。
 
 接下来以 NFS 作为 K8S PV 的存储介质（Provisioner）为例，介绍在 K8S 中如何申请以及使用存储空间。
 
-#### 前提条件 
+#### 前提条件
 - 了解 K8S 中 [存储](kubernetes.md) 的基础的概念。
-- 了解 [K8S 的包管理工具 Helm](helm/ServiceAccess.md)
+- 了解 [K8S 的包管理工具 Helm](../helm/ServiceAccess.md)
 
-#### 操作步骤 
+#### 操作步骤
 
-- [1. 部署 NFS Server](#install_NFS_Server)
-- [2. 部署 NFS-Client-Provisioner](#deployNFS-Client-Provisioner)
-- [3. 创建 PVC 测试](#createPVC)
+1. 部署 NFS Server
+2. 部署 NFS-Client-Provisioner
+3. 创建 PVC 测试
 
 
-## 1. 部署 NFS Server 
+## 1. 部署 NFS Server
 
 > 以下为测试环境在 CentOS 7 下搭建 NFS 的示例，生产环境请咨询公司系统管理员。
 
@@ -55,11 +55,11 @@ Export list for localhost:
  Flags: rw,relatime,vers=4.1,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=<NFS_SERVER_IP>,local_lock=none,addr=<NFS_SERVER_IP>
 ```
 
-## 2. 部署 NFS-Client-Provisioner 
+## 2. 部署 NFS-Client-Provisioner
 
 K8S 使用 NFS 资源，需要能挂载 NFS 以及配套的 K8S 资源（StorageClass、ServerAccout、PersistentVolume、PersistentVolumeClaim 等）。
 
-为了简化部署，以及为了使用 K8S 中的包管理器 [Helm](helm/ServiceAccess.md)（类比 yum ） 来部署 [NFS-Client-Provisioner](https://github.com/kubernetes-incubator/external-storage/tree/master/nfs-client) 的 [Chart](https://github.com/helm/charts/tree/master/stable/nfs-client-provisioner)（类比 rpm）。
+为了简化部署，以及为了使用 K8S 中的包管理器 [Helm](../helm/ServiceAccess.md)（类比 yum ） 来部署 [NFS-Client-Provisioner](https://github.com/kubernetes-incubator/external-storage/tree/master/nfs-client) 的 [Chart](https://github.com/helm/charts/tree/master/stable/nfs-client-provisioner)（类比 rpm）。
 
 ### 2.1 将 Chart 推到仓库
 
@@ -101,7 +101,7 @@ Done.
 
 填写 Helm 参数： NFS Server 的 IP（nfs.server）、 开放挂载的目录（nfs.path）。
 
-如果集群中没有 StorageClass ，建议将其设置为默认（StorageClass.defaultClass）。 
+如果集群中没有 StorageClass ，建议将其设置为默认（StorageClass.defaultClass）。
 
 然后点击 【部署】。
 
@@ -109,9 +109,10 @@ Done.
 
 完成部署后，接下来创建 PVC 测试。
 
-## 3. 创建 PVC 测试 
+## 3. 创建 PVC 测试
 
 - 检查 StorageClass 是否设置成功
+
 ```bash
 # kubectl get storageclass
 NAME                   PROVISIONER   AGE
@@ -120,7 +121,7 @@ nfs-client (default)   nfs           12d
 
 - 创建 PVC
 
-    ```yaml
+```yaml
 # cat auto-clain.yaml
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -133,25 +134,29 @@ spec:
   resources:
     requests:
       storage: 1Gi
+
 ```
 
-    ```bash
+
+```bash
 # kubectl apply -f auto-clain.yaml
 persistentvolumeclaim/auto-claim created
 ```
 
-    ```bash
+
+```bash
 # kubectl get pvc
 NAME         STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 auto-claim   Bound    pvc-9803c5c5-d2f8-11e9-86f7-525400673e62   1Gi        RWX            nfs-client     13s
 ```
 
-    可以看到  PVC 创建成功。
+可以看到  PVC 创建成功。
 
 
 - 在 NFS 的挂载目录中，可以看到自动创建对应的目录。
 
-    ```bash
+
+```bash
 # ll
 总用量 32
 drwxrwxrwx 2 root root 4096 9月   9 19:54 default-auto-claim-pvc-9803c5c5-d2f8-11e9-86f7-525400673e62
@@ -181,5 +186,3 @@ drwxrwxrwx 2 root root 4096 9月   9 19:54 default-auto-claim-pvc-9803c5c5-d2f8-
 将该文件移出、移入当前目录来创建 kube-apiserver POD 。
 
 重新创建 PVC，即可生效。
-
-
