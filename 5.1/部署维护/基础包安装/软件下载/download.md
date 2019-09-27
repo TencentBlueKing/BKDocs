@@ -1,4 +1,4 @@
-## 软件下载
+# 软件下载
 
 安装软件需要 [下载](https://bk.tencent.com/download/) 2 个文件：软件包、证书。
 

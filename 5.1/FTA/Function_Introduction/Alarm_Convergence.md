@@ -16,4 +16,4 @@
 
 
 
-> 收敛审批是通过企业微信实现，请参考 [微信审批接入流程](https://docs.bk.tencent.com/product_white_paper/fta/Advanced_Features/WeChat_approval_access_process.html)。
+> 收敛审批是通过企业微信实现，请参考 [微信审批接入流程](5.1/FTA/Scenes/WeChat_approval_access_process.md)。

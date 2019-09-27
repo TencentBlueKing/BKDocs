@@ -1,10 +1,10 @@
-## 安装环境准备
+# 安装环境准备
 
 开始安装蓝鲸社区版前，需按以下文档指南，做好准备工作。
 
 **注意：所有待安装蓝鲸的机器均需要按以下清单检查和操作。**
 
-### 获取安装包
+## 获取安装包
 
 蓝鲸社区版包含部署脚本、产品软件和开源组件。蓝鲸提供完整包与分包的下载通道，请自行到下载地址按需获取。新装环境及新用户建议下载完整包使用。
 
@@ -13,7 +13,7 @@
 下载完成后，请核对 MD5 码。
 
 
-### CentOS 系统设置
+## CentOS 系统设置
 
 准备好硬件，安装完原生 CentOS 系统后。我们需要对初始系统做一些配置，保证后续安装过程的顺畅和蓝鲸平台的运行。
 
@@ -134,24 +134,24 @@ tar xf bkce_src-5.0.3.tar.gz  -C /data
 
 - install：存放安装部署脚本、安装时的参数配置、日常运维脚本等
 
-### 配置 YUM 源
+## 配置 YUM 源
 
 在所有蓝鲸服务器上配置好 YUM 源，要求该 YUM  源包含 EPEL。
 
 不能连外网 YUM 源的环境，可以配置一个内部的 YUM  源 或者本地 YUM 源。
 
-### 本地 YUM 源
+## 本地 YUM 源
 
 参考附录中的 [离线安装的配置方法](../../场景案例/离线部署/offline_setup.md)。
 
-### 在线 YUM 源
+## 在线 YUM 源
 
 推荐使用以下 YUM 源：
 
 - [腾讯云 CentOS](https://mirrors.cloud.tencent.com/help/centos.html)
 - [腾讯云 EPEL](https://mirrors.cloud.tencent.com/help/epel.html)
 
-### 配置文件
+## 配置文件
 
 在 install 目录下，共有三个配置：
 
@@ -159,7 +159,7 @@ tar xf bkce_src-5.0.3.tar.gz  -C /data
 - globals.env
 - ports.env
 
-#### install.config
+### install.config
 
 `install.config` 是模块和服务器对应关系的配置文件，描述在哪些机器上安装哪些模块。
 每行两列，第一列是 IP 地址；第二列是以英文逗号分隔的模块名称。
@@ -178,7 +178,7 @@ tar xf bkce_src-5.0.3.tar.gz  -C /data
 - gse 与 redis 需要部署在同一台机器上。
 - 增加机器数量时， 可以将以上配置中的服务挪到新的机器上，分担负载。 要保证：kafka， es， zk 的每个组件的总数量为 3。
 
-#### globals.env
+### globals.env
 
 该文件定义了各类组件的账号密码信息。 功能开关控制选项等。可根据实际情况进行修改。
 配置项含义，请查看文件中的注释。
@@ -204,11 +204,11 @@ tar xf bkce_src-5.0.3.tar.gz  -C /data
 2. FQDN 的选择需要遵循 DNS 的命名规范，可选的字符集是 [A-Za-z0-9.] 以及 "-"，特别要注意，下划线 (_) 是不允许的。
 3. PAAS_FQDN CMDB_FQDN JOB_FQDN 的值都必须在 BK_DOMAIN 定义的根域名之下，保证登陆鉴权的 cookie 文件有效。
 
-#### ports.env
+### ports.env
 
 端口定义。 默认情况下，不用修改。特殊场景下，若有端口冲突，可以自行定义。
 
-### 非标准私有地址处理方法
+## 非标准私有地址处理方法
 
 蓝鲸社区版部署脚本中(install 目录)下有以下文件中有获取 ip 的函数 get_lan_ip，非标准地址，均需要在安装部署前完成修改。
 
@@ -254,7 +254,7 @@ get_lan_ip  () {
 }
 ```
 
-### pip.conf
+## pip.conf
 
 在线安装时，依赖 pip，需要配置可用的 pip 源。
 
@@ -271,7 +271,7 @@ trusted-host = mirrors.cloud.tencent.com
 
 - 在每台机器上对 `pip.conf` 中配置的 url 进行操作：`curl http://xxxxxxx`，若能正常返回列表信息则为成功。
 
-### 获取证书
+## 获取证书
 
 1. 通过 `ifconfig` 或者 `ip addr` 命令获取 install.config 文件中，license 和 gse 模块所在服务器的第一个内网网卡的 MAC 地址。如果分别属于两台服务器，那么两个的 MAC 地址以英文;分隔。
 
@@ -283,7 +283,7 @@ trusted-host = mirrors.cloud.tencent.com
     tar xf ssl_certificates.tar.gz -C /data/src/cert/
     ```
 
-### 配置 SSH 免密登陆
+## 配置 SSH 免密登陆
 
 登录到中控机，执行以下操作：
 

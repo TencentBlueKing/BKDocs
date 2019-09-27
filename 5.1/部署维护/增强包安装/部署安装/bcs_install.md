@@ -51,4 +51,4 @@ yum -y install docker-ce
 
 > 在启动 etcd 的步骤，可能卡住，出现这种情况时，按一次 `CTRL+C`。跳过
 
-- 打开 PaaS，点击容器管理平台 SaaS，开始使用容器管理平台，请参考 [指引文档](http://docs.bk.tencent.com/bcs)
+- 打开 PaaS，点击容器管理平台，开始使用容器管理平台，请参考 [容器管理平台白皮书](5.1/bcs/Introduction/README.md)

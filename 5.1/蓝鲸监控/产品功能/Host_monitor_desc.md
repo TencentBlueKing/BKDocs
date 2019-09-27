@@ -7,7 +7,7 @@
 
 ### 主机基础性能采集方式 
 
-[部署蓝鲸 Gse_Agent](http://docs.bk.tencent.com/product_white_paper/bk_nodeman/installation/agent.html)后，默认会拉起 `basereport` 进程自动上报主机性能指标（CPU、内存、网络、磁盘、TCP 连接数等指标），关于采集器详情可参考附录文档[采集器概述](../二次开发/plugins.md)
+[部署蓝鲸 Agent](5.1/节点管理/快速入门/agent0.md) 后，默认会拉起 `basereport` 进程自动上报主机性能指标（CPU、内存、网络、磁盘、TCP 连接数等指标），关于采集器详情可参考附录文档 [采集器概述](../二次开发/plugins.md)
 
 ![](../media/15367250851552.jpg)
 图 2. 基础性能采集器工作状态示意图

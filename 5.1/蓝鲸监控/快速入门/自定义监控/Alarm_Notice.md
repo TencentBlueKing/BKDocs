@@ -13,7 +13,7 @@
 
 详细设置请访问蓝鲸 PaaS 提供的设置文档
 
-- [如何配置通知渠道，如邮件、微信、短信等?](http://docs.bk.tencent.com/product_white_paper/paas/CaseScenario.html#noticeWay)
+- [如何配置通知渠道，如邮件、微信、短信等?](5.1/PaaS平台/场景案例/noticeWay.md)
 - [经验分享] 测试邮件服务是否正常](http://bk.tencent.com/s-mart/community/question/95#/)
 
 
