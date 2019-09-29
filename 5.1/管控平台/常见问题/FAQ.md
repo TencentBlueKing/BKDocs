@@ -1,6 +1,6 @@
-## 常见问题
+# 常见问题
 
-### 通过 JOB 执行任务报错“GSE SERVER FAILED”
+## 通过 JOB 执行任务报错 “GSE SERVER FAILED”
 
 （1）检查 gse_task 进程状态是否正常
 
@@ -12,7 +12,7 @@
 
 （5）检查 gse.service.consul 是否解析正常
 
-### 通过作业平台执行任务报错“can not find agent by ip …”
+## 通过作业平台执行任务报错 “can not find agent by ip …”
 
 （1）检查对应 ip 机器上的 gse_agent 是否正常
 
@@ -22,13 +22,13 @@
 
 （4）检查该 ip 在配置平台上的业务及云区域 id 是否正确
 
-### 文件传输任务超时失败
+## 文件传输任务超时失败
 
 （1）根据作业平台打屏信息，判断是上载还是下载超时
 
 （2）检查 bt 传输的端口策略是否开通
 
-### 点管理 SaaS 或作业平台显示 Agent 异常
+## 点管理 SaaS 或作业平台显示 Agent 异常
 
 （1）检查对应 ip 机器上的 gse_agent 是否正常
 
@@ -36,11 +36,11 @@
 
 （3）检查 gse_agent 与 gse_task 的证书是否匹配
 
-（4）检查该ip在配置平台上的业务及云区域id是否正确
+（4）检查该 ip 在配置平台上的业务及云区域 id 是否正确
 
 （5）若以上检查结果均正常，检查 gse_api 日志是否有 “no db proxy server addr found” 报错，若有则重启 gse_api
 
-### 通过作业平台重启 gse_agent 环境变量不生效
+## 通过作业平台重启 gse_agent 环境变量不生效
 
 - 问题现象
 
@@ -50,11 +50,11 @@
 
   通过作业平台执行 Agent，环境变量是不会生效的，因为环境变量是基于当前上下文环境的，通过 Agent 重启时，Agent 上本身没有最新的环境变量信息，所以也不会生效。
 
-- 解决方案  
+- 解决方案
 
   需要在能获取到最新环境变量的状态下重启 gseagent，比如登录到机器重启 gse_agent 进程。
 
-### PA 机器上的 Agent 显示未安装
+## PA 机器上的 Agent 显示未安装
 
 - 问题现象
 
@@ -66,6 +66,6 @@
 
 - 解决方案
 
-  1.在 cmdb 上导入 agentip 中配置的 ip.
+  1. 在 cmdb 上导入 agentip 中配置的 ip。
 
-  2.两台 proxy 情况，建议这种网络情况下，交叉配置另一台 proxy 的 ip，这种就可以统一用 identifyip 在 cmdb 中导入
+  2. 两台 proxy 情况，建议这种网络情况下，交叉配置另一台 proxy 的 ip，这种就可以统一用 identifyip 在 cmdb 中导入。

@@ -40,7 +40,7 @@
 
 ![-w1368](media/15648366557109.jpg)
 
-> 容器服务的集群划分和[传统单体应用在 CMDB 中的集群划分](CMDB_management_hosts.html#Combing_business_architecture)很类似，可以按照`地域（如华北区）`或者`完全独立的应用集合（微信区）`来划分。
+> 容器服务的集群划分和[传统单体应用在 CMDB 中的集群划分](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)很类似，可以按照`地域（如华北区）`或者`完全独立的应用集合（微信区）`来划分。
 
 
 选择 1 台云主机作为 Master。

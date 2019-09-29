@@ -38,7 +38,7 @@ SaaS（Software as a Service）：软件即服务，是当前非常流行的一�
 
 - 到 [官方 S-mart 市场](https://bk.tencent.com/s-mart/market?best_type=1) 选择下载：蓝鲸智云搭建的企业级应用生态市场。
 
-- 蓝鲸用户自主开发：基于蓝鲸开发框架，用户可低成本自主开发 SaaS 满足企业需求，蓝鲸应用开发可参考文档中心的 [开发指南](https://docs.bk.tencent.com/guide/)。
+- 蓝鲸用户自主开发：基于蓝鲸开发框架，用户可低成本自主开发 SaaS 满足企业需求，蓝鲸应用开发可参考文档中心的 [开发指南](5.1/开发指南/开发简介/README.md)。
 
 ### SaaS 安装
 
@@ -50,7 +50,7 @@ SaaS 安装说明：
 
 #### SaaS 通用部署方式
 
->**注意：** SaaS 安装部署成功后，必须给 [SaaS 开组件 "免用户认证"的白名单](https://docs.bk.tencent.com/paas/CaseScenario.html#White)。
+>**注意：** SaaS 安装部署成功后，必须给 [SaaS 开组件 "免用户认证"的白名单](5.1/PaaS平台/场景案例/White.md)。
 
 【蓝鲸工作台】 - 【开发者中心】 - 【S-mart 应用】。
 

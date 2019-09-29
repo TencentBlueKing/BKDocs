@@ -88,7 +88,7 @@ BK_PAAS_INNER_HOST = "http://%s" % settings.PAAS_INNER_DOMAIN
 
 - `PAAS_INNER_DOMAIN` 内部 http，consul。
 
-**SaaS 开发者关注 [开发框架](https://docs.bk.tencent.com/blueapps/) 改造**
+**SaaS 开发者关注 [开发框架](5.1/开发指南/SaaS开发/开发基础/README.md) 改造**
 
 #### conf/default.py
 

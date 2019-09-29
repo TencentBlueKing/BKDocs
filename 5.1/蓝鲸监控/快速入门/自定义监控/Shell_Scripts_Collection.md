@@ -11,9 +11,9 @@
 
 请提前了解 [指标和维度的含义](5.1/蓝鲸监控/术语解释/Concepts_Terminology.md)
 ![table_schema_definition](../../media/table_schema_definition.png)
-注：默认有一个维度为 IP.
+注：默认有一个维度为 IP。
 
-####2. 编写采集脚本
+#### 2. 编写采集脚本
 
 请使用 BASH 脚本对维度和指标赋值，脚本解释器默认为 `/bin/bash`
 

@@ -268,7 +268,7 @@ DATABASES = {
 ```
 
 2) 由于标准运维接入了蓝鲸 PaaS 平台 API 网关，你需要修改标准运维网关配置
-请参考 [API 网关替换方式](https://github.com/Tencent/bk-PaaS/blob/master/docs/install/replace_ce_with_opensource.md#open_PaaS) 文档，把标准运维 API 转发到你的定制版本的接口。
+请参考 [API 网关替换方式](5.1/部署维护/场景案例/开源产品替换/Paas平台/replace_paas_with_opensource_version.md) 文档，把标准运维 API 转发到你的定制版本的接口。
 
 ### 正式环境上传部署
 

@@ -1,13 +1,20 @@
-### 如何给某一个SaaS开组件“免用户认证”的白名单？
+### 如何给某一个SaaS开组件 “免用户认证” 的白名单？
 
-1)以管理员身份进入PaaS平台的后台“{domain}/admin”，进入“Function controllers”目录
 
-![](../assets/17601.png)
 
-白名单组件目录图
+**S-mart 市场和自己开发的 SaaS 需要开通白名单免登录验证才能正常使用。**
 
-2)如下图，添加“test”这个SaaS，保存即可
+- 获取应用 ID，需先在 S-mart 应用部署 SaaS。
+- 获取 `应用 Id`,登陆` PaaS 平台`—> `开发中心` — `S-mart 应用`（自己开发的应用在 `我的应用`）。
+![image.png](../assets/id.png)
 
-![](../assets/17602.png)
+- 以管理员身份进入 PaaS 平台的后台 `{paas_domain}/admin`，进 `Function controllers` 目录。
+![image.png](../assets/paas-admin.png)
 
-添加“test”SaaS免用户认证图
+- 点击 【user_auth::skip_user_auth】进入白名单组件目录。
+![image.png](../assets/user-auth.png)
+
+- 根据格式要求填写 `应用 ID`（`支持两种格式数据，以逗号、分号分隔的字符串，及 JSON 格式字符串`）。
+![image.png](../assets/func-controller.png)
+
+
