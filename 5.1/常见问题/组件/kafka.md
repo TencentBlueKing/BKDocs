@@ -1,34 +1,34 @@
-# Kafka
+# Kafka 常见问题
 
 ## kafka 常用操作
 
-Kakfa查询topic
+Kakfa 查询 topic
 
 ```bash
 $ /data/bkce/service/kafka/bin/kafka-topics.sh --zookeeper zk.service.consul:2181/common_kafka --describe | grep Topic
 ```
 
-查看topic状态 
+查看 topic 状态
 
 ```bash
 $ /data/bkce/service/kafka/bin/kafka-topics.sh --zookeeper zk.service.consul:2181/common_kafka --describe --topic connect-configs.tsdb
 ```
 
-查看topic能否读
+查看 topic 能否读
 
 ```bash
 $ /data/bkce/service/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafka.service.consul:9092 --topic connect-configs.tsdb --from-beginning | head
 ```
 
-确认实时的topic能否读
+确认实时的 topic 能否读
 
 ```bash
 $ /data/bkce/service/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafka.service.consul:9092 --topic connect-configs.etl --from-beginning | head
 ```
 
-## kafka broker节点缺失
+## kafka broker 节点缺失
 
-若社区版为3台部署的，必须返回[1, 2, 3]才正常，示例如下
+若社区版为 3 台部署的，必须返回[1, 2, 3]才正常，示例如下
 若brokers ids不为[1, 2, 3]，可能存在`/data/bkce/public/kafka/.lock`文件，有的话，删除此文件，再重新使用`./bkcec stop kafka`和`./bkcec start kafka`重启kafka，重启完再次确认状态
 
 ```bash
@@ -45,11 +45,11 @@ WatchedEvent state:SyncConnected type:None path:null
 
 ## kafka 数据或日志清理
 
-> Kafka将数据持久化到了硬盘上，允许配置一定的策略对数据清理，清理的策略有两个，删除和压缩
+> Kafka 将数据持久化到了硬盘上，允许配置一定的策略对数据清理，清理的策略有两个，删除和压缩
 >
 > 严格注意：下面清理策略，请根据实际业务，服务器状况，及需求来定制
 
-有如下2种方式进行设置
+有如下 2 种方式进行设置
 
 方式一：通过调整配置文件
 
@@ -68,7 +68,7 @@ log.retention.bytes=10737418240（超过指定大小10G后，删除旧的消息�
 
 设置完毕，重启服务来生效
 
-方式二：Kakfa设置Topic过期时间
+方式二：Kakfa 设置 Topic 过期时间
 
 ```bash
 # 设置过期时间，只能用毫秒（retention.ms），或者bytes（retention.bytes）
@@ -78,9 +78,9 @@ $ WARNING: Altering topic configuration from this script has been deprecated and
 $ updated config for topic "snapshot2"
 ```
 
-## kafka gse_data报错
+## kafka gse_data 报错
 
-在gse的模块gse_data的日志中，会出现有如下报错，这种是kafka消息机制的正常行为，只要确定快照数据OK，就可确认`gse_data->kafka->bkdata_>cmdb`的链路正常
+在 gse 的模块 gse_data 的日志中，会出现有如下报错，这种是 kafka 消息机制的正常行为，只要确定快照数据 OK，就可确认`gse_data->kafka->bkdata_>cmdb`的链路正常
 
 ```bash
      52 [2018-08-23 16:47:05.109] <11297--805308672>[ERROR][kafka_producer:18]KAFKA-3-ERROR: rdkafka#producer-15 10.X.X.X:9092/1: Receive failed: Disconnected

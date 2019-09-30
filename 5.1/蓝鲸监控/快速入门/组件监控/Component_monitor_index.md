@@ -1,6 +1,6 @@
-## 组件监控 - 各组件指标说明
+# 组件监控 - 各组件指标说明
 
-### JMX 组件指标说明
+## JMX 组件指标说明
 
 | 指标                              | 单位     | 具体含义                   |
 | ------------------------------- | ------ | ---------------------- |
@@ -31,7 +31,7 @@
 | jmx_config_reload_failure_total |       | 配置 reload 失败的次数          |
 | jvm_gc_collection_seconds_count | 秒 | gc 时间                   |
 
-### Apache 组件指标说明
+## Apache 组件指标说明
 
 ![Apache_metrics](../../media/Apache_metrics.gif)
 
@@ -47,7 +47,7 @@
 | apache.performance.uptime | seconds | Apache 运行时间 |
 
 
-### Nginx 组件指标说明
+## Nginx 组件指标说明
 
 ![Nginx_metrics](../../media/Nginx_metrics.gif)
 
@@ -110,7 +110,7 @@
 | nginx.upstream.peers.weight |  | Weight of the server |
 | nginx.version |  | nginx 的版本 |
 
-### Tomcat 组件指标说明
+## Tomcat 组件指标说明
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -131,7 +131,7 @@
 | tomcat.threads.count | threads | 当前线程池的线程数 |
 | tomcat.threads.max | threads | 线程池最大可以产生的线程数 |
 
-### MySQL 组件指标说明
+## MySQL 组件指标说明
 
 ![MySQL_metrics](../../media/MySQL_metrics.gif)
 
@@ -179,7 +179,7 @@
 | mysql.replication.seconds_behind_master | seconds | 主服务器（master）和从服务器（slave）之间的滞后时间 |
 | mysql.replication.slave_running |  | 一个布尔值，判断该服务器是否为连接到主服务器（master）的从服务器（slave） |
 
-### Redis 组件指标说明
+## Redis 组件指标说明
 
 ![Redis_metrics](../../media/Redis_metrics.gif)
 
@@ -236,7 +236,7 @@
 | redis.stats.keyspace_hits | keys | 在数据库中查找 key 成功的次数 |
 | redis.stats.keyspace_misses | keys | 在数据库中查找 key 失败的次数 |
 
-### Oracle 组件指标说明
+## Oracle 组件指标说明
 
 ![Oracle_metrics](../../media/Oracle_metrics.gif)
 
@@ -289,7 +289,7 @@
 | oracle.InsIpInfo.oracledb_InsIpStatus |  | 实例 IP 监听状态(1 代表端口连通，0 代表端口不通) |
 | oracle.VIPInfo.oracledb_VIPStatus |  | VIP 监听状态(1 代表端口连通，0 代表端口不通) |
 
-### Weblogic 组件指标说明
+## Weblogic 组件指标说明
 
 ![Weblogic_metrics](../../media/Weblogic_metrics.gif)
 
@@ -324,7 +324,7 @@
 | weblogic.jvm.jvm_process_cpu_load |  | jvm 的 cpu 负载 |
 | weblogic.jvm.jvm_uptime | s | jvm 运行时长 |
 
-### SQL Server 组件指标说明
+## SQL Server 组件指标说明
 
 ![SQLServer_metrics](../../media/SQLServer_metrics.gif)
 
@@ -370,7 +370,7 @@
 | mssql.db_perform.mssqldb_inactive_sessions |  | 非活跃用户会话数 |
 | mssql.cip.mssqldb_ha_ip_status |  | ip 监听状态 0 代表监听端口不通 1 代表监听端口通畅|
 
-### HAProxy 组件指标说明
+## HAProxy 组件指标说明
 
 ![HAProxy_metrics](../../media/HAProxy_metrics.gif)
 
@@ -390,7 +390,7 @@
 | haproxy_frontend_http_requests_total |  | 前端 HTTP 请求码 |
 | haproxy_frontend_http_responses_total |  | 前端 HTTP 响应码 |
 
-### Zookeeper 组件指标说明
+## Zookeeper 组件指标说明
 
 ![Zookeeper_metrics](../../media/Zookeeper_metrics.gif)
 
@@ -415,7 +415,7 @@
 | zk_up |  | ZooKeeper 存活状态 |
 | zk_server_state |  | 服务身份 |
 
-### RabbitMQ 组件指标说明
+## RabbitMQ 组件指标说明
 
 ![RabbitMQ_metrics](../../media/RabbitMQ_metrics.gif)
 
@@ -436,7 +436,7 @@
 | rabbitmq_partitions |  | 此节点可见的网络分区数量 |
 | rabbitmq_running |  | 运行 nodes 数 |  
 
-### Memcached 组件指标说明
+## Memcached 组件指标说明
 
 ![Memcached_metrics](../../media/Memcached_metrics.gif)
 
@@ -457,7 +457,7 @@
 | memcached_uptime_seconds | s | 服务运行时长 |
 | memcached_up |  | 存活状态 |
 
-### Consul 组件指标说明
+## Consul 组件指标说明
 
 ![Consul_metrics](../../media/Consul_metrics.gif)
 
@@ -481,7 +481,7 @@
 | consul_catalog_services_up |  | 服务总量 |
 | consul_catalog_services_warning |  | 警告服务总数 |
 
-### ElasticSearch 组件指标说明
+## ElasticSearch 组件指标说明
 
 ![Elasticsearch_metrics](../../media/Elasticsearch_metrics.gif)
 
@@ -573,7 +573,7 @@
 | elasticsearch_active_shards |  | 集群中活跃分片数量 |
 | elasticsearch_initializing_shards |  | 当前初始化碎片数量 |
 
-### Kafka 组件指标说明
+## Kafka 组件指标说明
 
 ![Kafka_metrics](../../media/Kafka_metrics.gif)
 
@@ -598,7 +598,7 @@
 | kafka_request_produce_rate |  | produce 请求数 |
 | kafka_request_metadata_time_avg | ms | 元数据平均请求时间 |
 
-### Mongodb 组件指标说明
+## Mongodb 组件指标说明
 
 ![Mongodb_metrics](../../media/Mongodb_metrics.gif)
 
@@ -664,7 +664,7 @@
 | mongodb_stats_storagesize | MB | collections 存储空间 |
 | mongodb_stats_datasize | MB | 库中的数据量 |
 
-### Ceph 组件指标说明
+## Ceph 组件指标说明
 
 ![Ceph_metrics](../../media/Ceph_metrics.gif)
 
@@ -691,7 +691,7 @@
 | ceph_apply_latency_ms | s | 磁盘更新所需时间 |
 | ceph_commit_latency_ms | s | 日志操作所需时间 |
 
-### IIS 组件指标说明
+## IIS 组件指标说明
 
 ![IIS_metrics](../../media/IIS_metrics.gif)
 
@@ -719,7 +719,7 @@
 | iis_httpd_request_method_get |  | get 方法请求数 |
 | iis_uptime |  | iis 服务器运行时间 |
 
-### Active_Directory 组件指标说明
+## Active_Directory 组件指标说明
 
 ![AD_metrics](../../media/AD_metrics.gif)
 
@@ -756,7 +756,7 @@
 | active_directory_ldap_client_sessions |  | 已连接 LDAP 客户端的会话数 |
 | active_directory_dra_inbound_bytes_before_compress | Byte | 其他站点 DSA 入站数据大小/s |
 
-### Exchange 组件指标说明
+## Exchange 组件指标说明
 
 ![Exchange_metrics](../../media/Exchange_metrics.gif)
 
@@ -837,7 +837,7 @@
 | exchange_panel_requests_activations_per |  | 显示在 Exchange 控制面板中每秒激活的请求数。 |
 | exchange_panel_requests_avg_response_time |  | 期间 Exchange 控制面板响应请求所花费的平均时间（毫秒）。
 
-##### Exchange 2013
+### Exchange 2013
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |

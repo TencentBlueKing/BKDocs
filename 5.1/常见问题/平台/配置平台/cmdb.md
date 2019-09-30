@@ -1,26 +1,26 @@
-# 配置平台FAQ
+# 配置平台常见问题
 
-## CMDB无快照数据
+## CMDB 无快照数据
 
-> 此文档描述4.0及以上的社区版的问题排查
+> 此文档描述 4.0 及以上的社区版的问题排查
 >
-> Windows主机暂不支持快照数据
+> Windows 主机暂不支持快照数据
 
 **表象**：配置管理系统的实时状态显示`当前主机没有安装Agent或者Agent已经离线`
 
 **原因**
 
-1. gse及gse_agent状态不正常
-2. bkdata的快照数据任务不存在
-3. kafka内节点或topic数据异常
+1. gse 及 gse_agent 状态不正常
+2. bkdata 的快照数据任务不存在
+3. kafka 内节点或 topic 数据异常
 
 **思路方法**
 
 - **检查模块状态**
-  - 确定cmdb，gse，gse_agent，zk，kafka模块的状态是否正常，可以使用`./bkcec status XXX模块`来确认
-- **检查cmdb日志**
+  - 确定 cmdb，gse，gse_agent，zk，kafka 模块的状态是否正常，可以使用`./bkcec status XXX模块`来确认
+- **检查 cmdb 日志**
 
-```
+```plain
 检查/data/bkce/log/cmdb/cmdb_datacollection.INFO文件
 出现ccapi.go93] fail to get configure, will get again，表示不正常
 返回hostsnap.go:xxx] master check : iam still master，表示正常
@@ -29,7 +29,7 @@
 如果上述条都正常，但没有”handle xx num mesg, routines xx“，说明通道里没数据，请到redis里 subscribe ${biz}_snapshot 确认通道是否没数据，参考如下检查redis数据方法
 ```
 
-- **gse agent采集端排查**
+- **gse agent 采集端排查**
 
 ```bash
 # 检查进程是否存在，basereport进程存在且唯一
@@ -47,7 +47,7 @@ Linux netstat -antp | grep 58625 | grep ESTABLISHED
 Windows netstat -ano | grep 58625
 ```
 
-- **gse服务端排查**
+- **gse 服务端排查**
 
 ```bash
 # 登陆 GSE后台服务器，检测 gse_data 是否连上9092端口:
@@ -59,8 +59,8 @@ datapid=$(pgrep -x dataWorker)
 ls -l /data/bkce/public/gse/data/${datapid}*
 ```
 
-- **检查kafka**
-	- 登陆任意 KAFKA 机器：查看KAFKA最新数据，等待1分钟查看是否有数据。 如果有数据，在最后一行命令后加上`| grep $ip` $ip用无快照数据的ip替换， 再次查看是否有数据
+- **检查 kafka**
+	- 登陆任意 KAFKA 机器：查看 KAFKA 最新数据，等待 1 分钟查看是否有数据。 如果有数据，在最后一行命令后加上`| grep $ip` $ip 用无快照数据的 ip 替换， 再次查看是否有数据
 
 ```bash
 # 登录到kafka所在的机器上
@@ -75,7 +75,7 @@ bash /data/bkce/service/kafka/bin/kafka-console-consumer.sh --zookeeper $zkaddr 
 # 每隔一分钟会上报数据，有数据上报侧表示正常
 ```
 
-- **检查bkdata**
+- **检查 bkdata**
 
 ```bash
 # 快照数据对应bkdata，databus的redis任务，需确认databus状态下的redis任务是否存在
@@ -98,7 +98,7 @@ $ init_bkdata_snapshot
 # 再根据上面的重新确认是否有redis任务
 ```
 
-- **检查redis通道**
+- **检查 redis 通道**
 
 ```bash
 # 此步主要检查redis内是否有快照数据，在redis服务器上
@@ -116,17 +116,17 @@ Reading messages... (press Ctrl-C to quit)
 3) "{\"localTime\": \"2018-08-15 11:18:00\", \"data\": \"{\\\"beat\\\":{\\\"address\\\":
 ```
 
-## CMDB无主机信息
+## CMDB 无主机信息
 
-**表象**：CMDB内主机信息为空
+**表象**：CMDB 内主机信息为空
 
 **原因**
 
-1. gse安装异常或gse数据初始化不对
-2. gse_agent安装异常
+1. gse 安装异常或 gse 数据初始化不对
+2. gse_agent 安装异常
 
 **思路办法**
 
-原因1：参考GSE数据初始化失败解决方法，需要更新GSE版本中的初始化程序文件on_migrate和parse_bizid，路径`/data/bkce/gse/server/bin`
+原因 1：参考 GSE 数据初始化失败解决方法，需要更新 GSE 版本中的初始化程序文件 on_migrate 和 parse_bizid，路径`/data/bkce/gse/server/bin`
 
-原因2：重装gse_agent
+原因 2：重装 gse_agent

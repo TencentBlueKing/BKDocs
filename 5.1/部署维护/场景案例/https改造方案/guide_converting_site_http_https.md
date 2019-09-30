@@ -1,4 +1,4 @@
-## 蓝鲸全站 HTTPS 改造方案
+# 蓝鲸全站 HTTPS 改造方案
 
 **思路**
 
@@ -10,7 +10,7 @@
 
 **运维同学关注 open_paas 部署相关**
 
-### Nginx
+## Nginx
 
 申请得到 HTTPS 证书，并配置
 
@@ -55,7 +55,7 @@ server {
 }
 ```
 
-### open_paas 的部署
+## open_paas 的部署
 
 open_paas 的项目 paas/esb/login/console/appengine，增加了一个环境变量 `PAAS_INNER_DOMAIN`。
 
@@ -80,7 +80,7 @@ BK_JOB_HOST = 'https://%s' % settings.HOST_JOB
 BK_PAAS_INNER_HOST = "http://%s" % settings.PAAS_INNER_DOMAIN
 ```
 
-### 其他平台部署
+## 其他平台部署
 
 需要提供，是的依赖方自行决定使用内部 or 外部域名。
 
@@ -90,7 +90,7 @@ BK_PAAS_INNER_HOST = "http://%s" % settings.PAAS_INNER_DOMAIN
 
 **SaaS 开发者关注 [开发框架](5.1/开发指南/SaaS开发/开发基础/README.md) 改造**
 
-#### conf/default.py
+## conf/default.py
 
 新增一个配置：conf/default.py 文件中大概 50 行处 `BK_PAAS_HOST = os.environ.get('BK_PAAS_HOST'，BK_PAAS_HOST)` 的后面添加
 
@@ -103,7 +103,7 @@ BK_PAAS_INNER_HOST = os.environ.get('BK_PAAS_INNER_HOST',BK_PAAS_HOST)
 ![](../../assets/15353433877928.png)
 
 
-#### blueking/component/conf.py
+## blueking/component/conf.py
 
 blueking/component/conf.py 文件中大概 11 行处修改变量
 
@@ -115,7 +115,7 @@ COMPONENT_SYSTEM_HOST = getattr(settings'BK_PAAS_INNER_HOST'settings.BK_PAAS_HOS
 
 ![](../..../../assets/15353434175842.png)
 
-#### account/accounts.py
+## account/accounts.py
 
 account/accounts.py 文件中大概 34 行处修改变量，修改登录访问地址依赖  `BK_PAAS_INNER_HOST`
 
@@ -126,11 +126,11 @@ BK_GET_USER_INFO_URL = "%s/login/accounts/get_user/" % getattr(settings,'BK_PAAS
 
 ![](../../assets/15353433993101.png)
 
-### [ESB 调用方关注] API 网关用户 HTTPS 改造方案
+## [ESB 调用方关注] API 网关用户 HTTPS 改造方案
 
 API 网关 API 提供外部 HTTPS、内部 HTTP 两个协议，（内部表示与 API 网关部署在同一个环境，可使用同一个内部域名解析服务）。
 
-#### 直接通过 URL 访问组件的情况
+## 直接通过 URL 访问组件的情况
 
 1. 通过 HTTPS 协议访问，使用 HTTPS 外部域名，Python 程序使用 reqeusts 包时，请求参数需添加 verify=False。
 
@@ -144,7 +144,7 @@ API 网关 API 提供外部 HTTPS、内部 HTTP 两个协议，（内部表示�
 3. JOB、CC 等第三方系统，如果正式环境与 ESB 部署在同一环境，服务器可以解析内部域名，可以使用 HTTP 协议。
 
 
-#### SaaS 使用组件 SDK 的情况
+## SaaS 使用组件 SDK 的情况
 
 1. 检查 blueking/component/client.py BaseComponentClient.request 方法中，requests.request 包含 verify=False 参数。
 
@@ -168,7 +168,7 @@ COMPONENT_SYSTEM_HOST = getatrr(settings,'BK_PAAS_INNER_HOST',settings.BK_PAAS_H
 
 
 
-### [依赖登录关注] 其他登录系统
+## [依赖登录关注] 其他登录系统
 
 内部调用走 `PAAS_INNER_DOMAIN`(内部 consul 地址)，需要跳转(例如登录跳转)走`PAAS_DOMAIN`(因为是在用户浏览器上跳转的)。
 

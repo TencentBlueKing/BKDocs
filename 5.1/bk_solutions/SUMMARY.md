@@ -1,19 +1,19 @@
 # Summary
-## 蓝鲸最佳实践
+
+## 场景案例
 
 * [快速入门]()
     * [新手之旅](Getting_started/Getting_started.md)
-    * [FAQ](Getting_started/FAQ.md)
 * [CI：持续集成]()
     * [测试环境自动更新](CI/Pipeline_git_commit_to_stag.md)
 * [CD：持续交付/部署 ]()
     * [配置管理标准化]()
         * [概述: 待审核 ](CD/CMDB/Configuration_management_standardization.md)
-        * [业务上线时管理主机](CD/CMDB/CMDB_management_hosts.md)
-        * [管理进程](CD/CMDB/CMDB_management_process.md)
+        * [业务上线时 CMDB 如何管理主机](CD/CMDB/CMDB_management_hosts.md)
+        * [CMDB 如何管理进程](CD/CMDB/CMDB_management_process.md)
         * [管理数据库实例：以 MySQL 为例](CD/CMDB/CMDB_management_database_middleware.md)
         * [自动发现数据库实例：以 MySQL 为例](CD/CMDB/CMDB_CI_auto_discovery_MySQL.md)
-        * [对接企业原有 CMDB，实现数据同步](CD/CMDB/CMDB_integration.md)
+        * [企业原有 CMDB 同步至蓝鲸 CMDB](CD/CMDB/CMDB_intapplication_deployment.mdegration.md)
         * [Open-Falcon 集成蓝鲸 CMDB 业务拓扑树](CD/CMDB/Openfalcon_cmdb_topo_tree.md)
     * [应用交付自动化]()
         * [概述 : 待审核 ](CD/Automation/Application_delivery_deployment_automation.md)
@@ -44,4 +44,4 @@
         * [应用发布流程线上化](CO/ITSM/Release_Management.md)
         * [环境变更流程线上化](CO/ITSM/Change_Management.md)
         * [故障提报流程线上化](CO/ITSM/Incident_Management.md)
-
+* [常见问题](Getting_started/FAQ.md)

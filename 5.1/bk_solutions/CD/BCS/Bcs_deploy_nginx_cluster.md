@@ -1,24 +1,24 @@
-## 快速构建 Nginx 集群
+# 快速构建 Nginx 集群
 
-#### 情景 
+## 情景
 传统的 Nginx 集群要先部署多个 Nginx 节点，然后通过 `upstream` 统一一个入口提供给用户访问。
 
 该过程操作繁琐，接下来看 BCS（容器管理平台） 如何通过 **容器调度 (以 K8S 编排为例，BCS 同时还支持 Mesos)** 快速构建 Nginx 集群。
 
 
-#### 前提条件 
+## 前提条件
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含  [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
 - [完成 BCS 部署](https://docs.bk.tencent.com/bkce_install_guide/setup/quick_install_bcs.html)
 - 准备 2 台云主机：4 核 8 G，不低于 CentOS 7，K8s Master 和 Node 各 1 台
 - 完成上述 2 台云主机的 [Agent 安装](Hybrid_cloud_management.md) ，并分配至  [CMDB 业务下](https://docs.bk.tencent.com/cmdb/Introduction.html#BusinessResource)
 
-#### 操作步骤 
+## 操作步骤
 
-- [1. 新建集群](#New_Cluster)
-- [2. BCS 快速构建 Nginx 集群](#BCS_op)
+- 1. 新建集群
+- 2. BCS 快速构建 Nginx 集群
 
-## 1. 新建集群 
-### 1.1 启用容器服务
+### 1. 新建集群
+#### 1.1 启用容器服务
 
 在 BCS 首页，点击`新建项目`，如`欢乐游戏(demo)`。
 
@@ -28,7 +28,7 @@
 
 ![-w1304](media/15648364147641.jpg)
 
-### 1.2 新建集群
+#### 1.2 新建集群
 
 `启用容器服务`后，进入容器服务欢迎页，点击`创建容器集群`。
 
@@ -66,15 +66,15 @@
 ![-w1488](media/15648861821783.jpg)
 
 
-## 2. BCS 快速构建 Nginx 集群 
+### 2. BCS 快速构建 Nginx 集群
 
-### 2.1 新建命名空间
+#### 2.1 新建命名空间
 新建命名空间`dev`
 
 ![-w1462](media/15652519427953.jpg)
 
 
-### 2.2 新建模板集
+#### 2.2 新建模板集
 
 模板集，可以类比为 K8S 中 **[Helm](https://helm.sh/)** 的`Charts`，在 K8S 编排中，是 K8S 对象的集合：`Deployment（无状态）`、`StatefulSet（有状态）`、`DaemonSet（守护进程集）`、`Job（定时任务）`、`Configmap（配置项）`、`Secret（保密字典）`，具体参见 [模板集使用介绍](https://docs.bk.tencent.com/bcs/Container/TemplateIntroduce.html) 。
 
@@ -92,13 +92,13 @@
 
 ![-w1458](media/15652542476126.jpg)
 
-### 2.3 实例化
+#### 2.3 实例化
 
 ![-w1470](media/15652543011285.jpg)
 ![-w1466](media/15652545088426.jpg)
 
 
-### 2.4 检查部署效果
+#### 2.4 检查部署效果
 
 在菜单`网络` -> `Services`中，找到刚实例化的 Service `web-nginx`
 
@@ -135,8 +135,3 @@ Connection: keep-alive
 ETag: "5964d2ae-264"
 Accept-Ranges: bytes
 ```
-
-
-
-
-

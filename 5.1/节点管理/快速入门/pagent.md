@@ -1,4 +1,4 @@
-## 安装 P-Agent
+# 安装 P-Agent
 
 在安装好 Proxy，Proxy 节点的状态正常后，才能开始安装 P-Agent。
 

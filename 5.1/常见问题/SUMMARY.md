@@ -1,14 +1,15 @@
 # Summary
 
 ## 常见问题
-* [FAQ说明](README.md)
+
+* [常见问题说明](README.md)
 * [部署类常见问题]()
-    * [部署FAQ](部署/deploy.md)
+    * [部署常见问题](部署/deploy.md)
 * [平台类常见问题]()
-    * [PaaS平台]()
-        * [PaaS登陆无响应](平台/PaaS平台/faq1.md)
-        * [PaaS启动提示FATAL Exited too quickly](平台/PaaS平台/faq2.md)
-        * [PaaS重置访问密码](平台/PaaS平台/faq3.md)
+    * [PaaS 平台]()
+        * [PaaS 登陆无响应](平台/PaaS平台/faq1.md)
+        * [PaaS 启动提示 FATAL Exited too quickly](平台/PaaS平台/faq2.md)
+        * [PaaS 重置访问密码](平台/PaaS平台/faq3.md)
         * [其他问题](平台/PaaS平台/other.md)
     * [配置平台](平台/配置平台/cmdb.md)
     * [作业平台](平台/作业平台/job.md)
@@ -17,7 +18,7 @@
     * [平台其他](平台/平台其他/platform_other.md)
 * [应用类常见问题]()
     * [CICDKit](SaaS/bk_cicdkit.md)
-    * [SaaS部署](SaaS/bk_saas_deploy.md)
+    * [SaaS 部署](SaaS/bk_saas_deploy.md)
     * [标准运维](SaaS/bk_gcloud.md)
     * [故障自愈](SaaS/bk_fta_solutions.md)
     * [蓝鲸监控](SaaS/bk_monitor.md)
@@ -33,4 +34,4 @@
     * [redis](组件/redis.md)
     * [zk](组件/zk.md)
 * [开发类常见问题]()
-    * [开发FAQ](开发/dev.md)
+    * [开发常见问题](开发/dev.md)

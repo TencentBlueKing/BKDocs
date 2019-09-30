@@ -1,6 +1,6 @@
-## 企业版社区版 SaaS 独立域名配置
+# 企业版社区版 SaaS 独立域名配置
 
-### 说明
+## 说明
 
 - 假设 PaaS 平台的域名 `PAAS_DOMAIN` 是: `paas.bking.com`。
 - SaaS 通过 PaaS 平台部署到正式环境, 可以通过 `http:/paas.bking.com/o/{app_code}/` 正常访问到。
@@ -12,7 +12,7 @@
 
 切入点在: `PaaS 一级 Nginx 服务器` 这里, 增加一个独立域名配置, 使得 `独立域名 一级 Nginx 服务器 -> APPO 二级 Nginx 服务器 -> {app_code}.sock`
 
-### Nginx 配置
+## Nginx 配置
 
 到 `PaaS 一级 Nginx 服务器` (PaaS 域名配置的 Nginx 服务器), 新增 `独立域名配置`
 
@@ -20,7 +20,7 @@
 
 增加 Nginx 配置文件 `bk_framework.conf`, `reload` 生效后, 可以通过 `http://bk-framework.bking.com/` 独立域名访问
 
-#### HTTP 配置
+## HTTP 配置
 
 ```nginx
 server {
@@ -29,7 +29,7 @@ server {
 
     client_max_body_size    512m;
     access_log  /data/bkee/logs/nginx/bk_framework_access_fqdn.log;
-    
+
     # route to the /o/{app_code}/
     location / {
         proxy_pass http://PAAS_AGENT_PROD/o/bk_framework/;
@@ -60,7 +60,7 @@ server {
 ```
 
 
-#### HTTPS 配置
+## HTTPS 配置
 
 HTTPS 配置(除了 `server_name`, `access_log` 和 `location`, 其他 SSL 相关配置需要同 `PaaS` 域名配置)
 

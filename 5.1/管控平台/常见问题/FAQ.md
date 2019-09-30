@@ -69,3 +69,5 @@
   1. 在 cmdb 上导入 agentip 中配置的 ip。
 
   2. 两台 proxy 情况，建议这种网络情况下，交叉配置另一台 proxy 的 ip，这种就可以统一用 identifyip 在 cmdb 中导入。
+
+

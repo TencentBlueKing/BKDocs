@@ -1,14 +1,14 @@
-## 环境验证
+# 环境验证
 
-### 从后台验证环境是否安装正常
+## 从后台验证环境是否安装正常
 
 1. 登录到中控机，通过脚本自带的命令查询蓝鲸后台模块的运行状态
 ```bash
 # 加载环境变量和蓝鲸安装维护的函数
-source /data/install/utils.fc 
+source /data/install/utils.fc
 
 # 查看运行状态
-./bkcec status all 
+./bkcec status all
 ```
 ![后台状态图1](../../assets/check1.png)
 ![后台状态图2](../../assets/check2.png)
@@ -71,7 +71,7 @@ source /data/install/utils.fc
 http://$PAAS_FQDN:$PAAS_HTTP_PORT/o/bk_monitor/healthz/
 ```
 
-### 从页面验证功能是否运行正常
+## 从页面验证功能是否运行正常
 
 请先 **配置 host 或者 DNS** 解析后，确认访问社区版域名（部署完成后提示的域名）是否正常。
 
@@ -88,4 +88,3 @@ http://$PAAS_FQDN:$PAAS_HTTP_PORT/o/bk_monitor/healthz/
 登录蓝鲸，从各 SaaS 验证环境功能是否运行正常。
 
 > 产品功能介绍&使用手册请参考各 [产品白皮书](https://bk.tencent.com/docs/)
-

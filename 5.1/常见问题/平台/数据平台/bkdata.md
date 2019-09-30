@@ -1,6 +1,6 @@
-# 数据平台FAQ
+# 数据平台常见问题
 
-## initdata bkdata失败
+## initdata bkdata 失败
 
 **表象**：在`./bkcec initdata bkdata`时，会出现类似如下报错
 
@@ -12,11 +12,11 @@ ConnectionError:HTTPConnectionPool(host='databus.service.consul', port=10052):Ma
 
 **思路方法**
 
-> 升级用户：确认在升级前，若需要初始化bkdata数据，先删除bkdata服务器`/data/bkce/.dataapi_snaphost`和`/data/bkce/.init_bkdata_snapshot`文件
+> 升级用户：确认在升级前，若需要初始化 bkdata 数据，先删除 bkdata 服务器`/data/bkce/.dataapi_snaphost`和`/data/bkce/.init_bkdata_snapshot`文件
 
 > 注意：如下操作，要求安装路径为/data/bkce，源路径为`/data/install`
 
-1. 确认databus日志是否有Exception的错误，示例如下
+1. 确认 databus 日志是否有 Exception 的错误，示例如下
 
   ```bash
 grep -nE "Exception" /data/bkce/logs/bkdata/databus_etl.log /data/bkce/logs/bkdata/databus_tsdb.log
@@ -24,7 +24,7 @@ grep -nE "Exception" /data/bkce/logs/bkdata/databus_etl.log /data/bkce/logs/bkda
 12:Exception in thread "main" org.apache.kafka.common.config.configException: Invalid value for configuration rest.port: Not a number of type INT
   ```
 
-2. 若有1的错误存在，确认端口配置，10054端口是否返回，若为空需要添加上
+2. 若有 1 的错误存在，确认端口配置，10054 端口是否返回，若为空需要添加上
 
   ```bash
 grep -nE port /data/bkce/bkdata/databus/conf/tsdb.cluster.properties
@@ -33,9 +33,9 @@ grep -nE port /data/bkce/bkdata/databus/conf/tsdb.cluster.properties
 
 3. 确认`/data/bkce/bkdata/dataapi/bin/check_databus_status.sh`状态，不能出现有`Failed connect to databus.service.consul:10054; connection refused`或者`JSON object could be decoded`错误输出
 
-4. 确认kafka，若社区版为3台部署的，必须返回[1, 2, 3]才正常，示例如下
+4. 确认 kafka，若社区版为 3 台部署的，必须返回[1, 2, 3]才正常，示例如下
 
-	若brokers ids不为[1, 2, 3]，可能存在`/data/bkce/public/kafka/.lock`文件，有的话，删除此文件，再重新使用`./bkcec stop kafka`和`./bkcec start kafka`重启kafka，重启完再次确认状态
+	若 brokers ids 不为[1, 2, 3]，可能存在`/data/bkce/public/kafka/.lock`文件，有的话，删除此文件，再重新使用`./bkcec stop kafka`和`./bkcec start kafka`重启kafka，重启完再次确认状态
 
 	```bash
 	[root@rbtnode1 /data/install]# /data/bkce/service/zk/bin/zkCli.sh -server zk.service.consul:2181 ls /common_kafka/brokers/ids
@@ -50,7 +50,7 @@ grep -nE port /data/bkce/bkdata/databus/conf/tsdb.cluster.properties
 	[1, 2, 3]
 	```
 
-5. 若上述1，2，3，4均OK，采用如下方法重新进行初始化数据
+5. 若上述 1，2，3，4 均 OK，采用如下方法重新进行初始化数据
 	```bash
 	# 在bkdata机器：
 	rm -rf /data/bkce/.dataapi_snaphost /data/bkce/.init_bkdata_snapshot
@@ -106,7 +106,7 @@ grep -nE port /data/bkce/bkdata/databus/conf/tsdb.cluster.properties
   OK
   ```
 
-2. 确认在bkdata服务器上，`check_databus_status.sh`，不能出现有`Failed connect to databus.service.consul:10054; connection refused`或者`JSON object could be decoded`错误输出。正常的输出示例如下
+2. 确认在 bkdata 服务器上，`check_databus_status.sh`，不能出现有`Failed connect to databus.service.consul:10054; connection refused`或者`JSON object could be decoded`错误输出。正常的输出示例如下
 
   ```bash
   [root@rbtnode1 /data/install]# /data/bkce/bkdata/dataapi/bin/check_databus_status.sh
@@ -132,13 +132,13 @@ grep -nE port /data/bkce/bkdata/databus/conf/tsdb.cluster.properties
   {"name":"etl_1001_2_system_cpu_summary","connector":{"state":"RUNNING","worker_id":"10.X.X.X:10052"},"tasks":[{"state":"RUNNING","id":0,"worker_id":"10.X.X.X:10052"}]}
   ```
 
-## bkdata常见问题排查
+## bkdata 常见问题排查
 
-- ZK配置错误，数据无法发送
-- agent制定IP有误，和CMDB无法管理
-- crontab未设置，未启动定时同步IP到业务映射，导致监控无数据
-- consul服务异常，导致kafka及其他consul模块无法解析
-- tsdb-proxy未启动
-- RabbitMQ密码错误，celery启动失败
-- kafka broker启动失败，或者节点缺失
-- cmdb未启动，初始化databpi失败
+- ZK 配置错误，数据无法发送
+- agent 制定 IP 有误，和 CMDB 无法管理
+- crontab 未设置，未启动定时同步 IP 到业务映射，导致监控无数据
+- consul 服务异常，导致 kafka 及其他 consul 模块无法解析
+- tsdb-proxy 未启动
+- RabbitMQ 密码错误，celery 启动失败
+- kafka broker 启动失败，或者节点缺失
+- cmdb 未启动，初始化 databpi 失败

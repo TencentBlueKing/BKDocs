@@ -1,6 +1,7 @@
 # Summary
 
-## 蓝鲸标准运维白皮书
+## 标准运维
+
 * [产品简介](产品简介/README.md)
 * [术语解释](术语解释/glossary.md)
 * [产品架构图](产品架构图/framework.md)
@@ -19,20 +20,20 @@
 * [场景案例]()
     * [业务发布操作](场景案例/case.md)
 * [常见问题](常见问题/FAQ.md)
-## 附录
-* [附录 1：术语定义](附录/term.md)
-* [附录 2：分支表达式]()
-    * [定义](附录/define.md)
-    * [语法](附录/grammar.md)
-    * [分支执行逻辑](附录/logic.md)
-* [附录 3：标准插件开发]()
-    * [创建 Django APP 和目录结构](附录/Django.md)
-    * [修改 settings 配置](附录/settings.md)
-    * [接入 ESB API](附录/ESB.md)
-    * [标准插件后台开发](附录/atomic.md)
-    * [标准插件前端开发](附录/front.md)
-    * [标准插件测试](附录/test.md)
-    * [提交代码](附录/submit.md)
-    * [标准插件开发规范](附录/specification.md)
-* [附录 4：安装指南](附录/term4.md)
 
+* [附录]()
+    * [附录 1：术语定义](附录/term.md)
+    * [附录 2：分支表达式]()
+        * [定义](附录/define.md)
+        * [语法](附录/grammar.md)
+        * [分支执行逻辑](附录/logic.md)
+    * [附录 3：标准插件开发]()
+        * [创建 Django APP 和目录结构](附录/Django.md)
+        * [修改 settings 配置](附录/settings.md)
+        * [接入 ESB API](附录/ESB.md)
+        * [标准插件后台开发](附录/atomic.md)
+        * [标准插件前端开发](附录/front.md)
+        * [标准插件测试](附录/test.md)
+        * [提交代码](附录/submit.md)
+        * [标准插件开发规范](附录/specification.md)
+    * [附录 4：安装指南](附录/term4.md)

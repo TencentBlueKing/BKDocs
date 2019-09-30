@@ -1,4 +1,4 @@
-## 社区版 CICDKit 部署指南{#install_cicdkit}
+# 社区版 CICDKit 部署指南
 
 1. 官网下载 **V1.0.0 CICDKit 软件包** 和 **bkce_install_cicdkit-1.0 脚本安装包**
 

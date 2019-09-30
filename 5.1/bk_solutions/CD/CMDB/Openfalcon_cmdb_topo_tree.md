@@ -1,29 +1,29 @@
-## Open-Falcon 集成蓝鲸 CMDB 业务拓扑树
+# Open-Falcon 集成蓝鲸 CMDB 业务拓扑树
 > 感谢社区用户 [StephenWang](https://bk.tencent.com/s-mart/personal/10116/) 贡献该文档.
 
-#### 情景 
+## 情景
 `Open-Falcon` 是一款开源监控产品， 默认通过 `Endpoint`（一般为主机名） 查找服务器，体验不够友好。
 
 集成蓝鲸配置平台的业务拓扑树，将首页左侧栏改造为服务树，通过选择业务模块快速选择机器，提高监控查看效率。
 
-#### 前提条件 
-- [主机纳管在蓝鲸配置平台中](CMDB_management_hosts.md)
-- 在蓝鲸开发者中心 [新建一个应用](https://docs.bk.tencent.com/guide/application.html)，用于调用 [CMDB 的 API](https://bk.tencent.com/document/bkapi/ce/system/cc/)
+## 前提条件
+- [主机纳管在蓝鲸配置平台中](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
+- 在蓝鲸开发者中心 [新建一个应用](5.1/开发指南/SaaS开发/新手入门/Windows.md)，用于调用 [CMDB 的 API](5.1/API文档/CC/README.md)
 - 熟悉 `Python`、`JavaScript`
 
-#### 操作步骤 
-- [1. 配置平台中建立业务拓扑](#New_topo)
-- [2. 查询主机及拓扑，写入 Redis](#Search_host)
-- [3. 封装后台接口](#Package_interface)
-- [4. Open-Falcon 前端调用](#Frontend_style)
-- [5. 预览效果](#Preview)
+## 操作步骤
+- 配置平台中建立业务拓扑
+- 查询主机及拓扑，写入 Redis
+- 封装后台接口
+- Open-Falcon 前端调用
+- 预览效果
 
-## 1. 配置平台中建立业务拓扑 
-参照 [主机纳管在蓝鲸配置平台中](CMDB_management_hosts.md)，根据应用的部署分层架构，建立业务拓扑如下：
+### 1. 配置平台中建立业务拓扑
+参照 [主机纳管在蓝鲸配置平台中](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)，根据应用的部署分层架构，建立业务拓扑如下：
 
 ![](media/15642787521397.jpg)
 
-## 2. 查询主机及拓扑，写入 Redis 
+### 2. 查询主机及拓扑，写入 Redis
 - 定时调用配置平台`查询主机:search_host`接口
 - 将结果转化为 `ztree` 的数据格式，并写入 Redis
 
@@ -74,7 +74,7 @@ result = requests.post(url=url, json=data).json()
 for res in result['data']['info']:
     ip = res['host']['bk_host_innerip']
     for module in res['module']:
-        topo2 = module['TopModuleName'].split('##')
+        topo2 = module['TopModuleName'].split('#')
         sett = topo2[1]
         modd = topo2[1] + '_' + topo2[2]
         if {'id': sett, 'pid': 0, 'name': sett} not in topo:
@@ -92,7 +92,7 @@ rdc.set('cmdb',str({'value':topo}))
 ```
 
 
-## 3. 封装后台接口 
+### 3. 封装后台接口
 - 用 `flask` 开发接口，用于 Openfalcon 前端调用
 - 跨域访问处理 : 调用外部接口，需要解决跨域问题
 
@@ -126,7 +126,7 @@ def search_new_ztree():
         return response
 ```
 
-## 4. 前端样式调整 
+### 4. 前端样式调整
 
 修改 Open-Falcon 前端页面`dashboard/rrd/templates/index.html`
 
@@ -169,7 +169,7 @@ function createTree(post_url){
 }
 ```
 
-## 5. 预览效果 
+### 5. 预览效果 
 
 可直接通过左侧的服务树选择资源，十分方便。
 
@@ -180,4 +180,4 @@ function createTree(post_url){
 ![](media/15643014658046.jpg)
 
 
-> 注: CMDB 中的资源经常变动，建议使用事件驱动的[消息推送](https://docs.bk.tencent.com/cmdb/Introduction.html#EventPush)来监听资源变化，而不是周期获取。
+> 注: CMDB 中的资源经常变动，建议使用事件驱动的[消息推送](5.1/配置平台/产品功能/ModelManagement.md)来监听资源变化，而不是周期获取。

@@ -1,6 +1,6 @@
-## 开源 bk-bcs-saas 替换社区版部署指南[基础版]
+# 开源 bk-bcs-saas 替换社区版部署指南[基础版]
 
-### 一、替换 bcs-cc
+## 替换 bcs-cc
 
 - 备份原社区版 `bcs` 目录，将开源 `bcs` 代码解压到中控机的 `/tmp` 目录下。
 
@@ -18,7 +18,7 @@
     cp -a bcs-cc/bin/bcs_cc /data/src/bcs/cc/bin/  # 替换编译后生成的 bcs_cc 二进制文件
     ```
 
-### 二、替换 bcs_web_console
+## 替换 bcs_web_console
 
 - 替换 `bcs/web_console` 目录
 
@@ -28,7 +28,7 @@
   tar xf bcs-app/build/bcs_web_console-ce-20190619173651.tar.gz -C /data/src/  # 将开源构建的 backend 目录同步到 src下
   ```
 
-### 三、替换 devops
+## 替换 devops
 
 - 备份原社区版 `devops` 目录，将开源 `devops` 代码解压到中控机的 `/tmp` 目录下。
 
@@ -55,7 +55,7 @@
   rsync -a bcs-projmgr/pm/release/service-project-1.0.0.jar /data/src/devops/pm/project-admin.jar
   ```
 
-### 四、安装 bcs，devops
+## 安装 bcs，devops
 
 - 未安装 bcs
   - 安装 bcs
@@ -105,6 +105,6 @@
     ./bkcec status bcs
     ```
 
-### 五、验证
+## 验证
 
 - 登陆 PaaS 平台，能否正常打开容器管理平台应用，各页面显示是否正常，数据上报是否正常。

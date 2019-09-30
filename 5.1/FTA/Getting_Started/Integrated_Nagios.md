@@ -1,4 +1,4 @@
-## 集成 Nagios
+# 集成 Nagios
 
 两步完成 Nagios 接入自愈。
 
@@ -16,6 +16,3 @@
 ## 2. 创建自愈方案
 
 参照 [对接 Open-falcon](Integrated_Openfalcon.md#Add_FTA)，完成自愈的接入。
-
-
-

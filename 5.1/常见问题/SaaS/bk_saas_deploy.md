@@ -1,8 +1,8 @@
-# SAAS部署FAQ
+# SAAS 部署常见问题
 
 ## SaaS 部署提示超时
 
-可修改paas_agent的paas_agent_config.yaml，将EXECUTE_TIME_LIMIT调大，重启paas_agent即可
+可修改 paas_agent 的 paas_agent_config.yaml，将 EXECUTE_TIME_LIMIT 调大，重启 paas_agent 即可
 
 ```bash
 $ /data/bkce/paas_agent/paas_agent/etc/paas_agent_config.yaml
@@ -27,9 +27,9 @@ Error: rpmdb open failed
 ------yum gcc python-devel openssl-devel libffi libffi-devel fail------
 ```
 
-出现这种问题，原因为rpm数据库损坏
+出现这种问题，原因为 rpm 数据库损坏
 
-可以尝试重启机器，再使用`yum list all`，若能够列出软件包则OK。还有问题参考下面的解决方法
+可以尝试重启机器，再使用`yum list all`，若能够列出软件包则 OK。还有问题参考下面的解决方法
 
 ```bash
 $ yum list all
@@ -38,7 +38,7 @@ Loading mirror speeds from cached hostfile
 ......
 ```
 
-解决方法（重新构建rpm数据库）
+解决方法（重新构建 rpm 数据库）
 
 ```bash
 $ cd /var/lib/rpm

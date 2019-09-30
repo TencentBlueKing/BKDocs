@@ -1,4 +1,4 @@
-## 添加 Proxy
+# 添加 Proxy
 
 创建云区域成功后，会进入到该云区域管理页面，新创建的云区域下，没有任何节点，因此，会看到如下的空列表
 
@@ -12,7 +12,7 @@
 >
 > 若此时进入到 Agent 管理页面，将能这个新建的云区域标签, (若标签过多，可以在云区域管理下的列表中进行隐藏)
 
-### 快速添加 Proxy
+## 快速添加 Proxy
 
 通常 Proxy，会有内网 IP 和外网 IP：
 
@@ -30,9 +30,9 @@
 
 ​		
 
- 点击右上角的 `+ 添加 Proxy` 按钮，进入快速 Proxy 添加页面，如图所示![627042](../assets/cloud_manage/image-20190915225627042.png)
+点击右上角的 `+ 添加 Proxy` 按钮，进入快速 Proxy 添加页面，如图所示![627042](../assets/cloud_manage/image-20190915225627042.png)
 
-	GSE Proxy节点共有至少 4 个服务(gse_agent, gse_transit, gse_opts, gse_btsvr) , 这些服务都需要与 GSE Server 通信，为了保证服务可用，需要开通这些[网络策略](../附录/network_policy.md)plainplainplainplainplainplainplainplainplain
+GSE Proxy节点共有至少 4 个服务(gse_agent, gse_transit, gse_opts, gse_btsvr) , 这些服务都需要与 GSE Server 通信，为了保证服务可用，需要开通这些 [网络策略](../附录/network_policy.md)
 
 点击【安装】后，进入安装状态，界面信息与安装直连区域的 Agent 一致，不再详述
 
@@ -48,7 +48,7 @@
 > - 在 `Proxy` 节点上安装 `Python`，及用于远程管理 `Windows` 的 python 包 `impacket。`
 > - `Linux、Window、AIX` 的 Agent 安装包下载到 `Proxy` 机器上的 `/tmp/byproxy`目录下。
 
-### 高级添加 Proxy
+## 高级添加 Proxy
 
 高级添加 Proxy 用于 Proxy 位于一个特殊的网络下时，比如有主机处于多张独立的网络中或者 NAT 网络中。可以使用这种模式
 

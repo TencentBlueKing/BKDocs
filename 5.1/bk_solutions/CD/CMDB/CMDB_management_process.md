@@ -1,23 +1,23 @@
-## CMDB 如何管理进程
+# CMDB 如何管理进程
 
-#### 情景 
+## 情景
 应用的存储是 MariaDB，在 CMDB 中注册 MariaDB，以便在监控系统做进程监控。
 
-#### 前提条件 
-在 [配置平台](https://docs.bk.tencent.com/cmdb/) 中新建好 [业务](https://docs.bk.tencent.com/cmdb/Introduction.html#BizManagement) 及 [业务拓扑](https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%882%EF%BC%89%E4%B8%9A%E5%8A%A1%E6%8B%93%E6%89%91%E6%9F%A5%E7%9C%8B)。
+## 前提条件
+在配置平台中[新建业务](5.1/配置平台/快速入门/case1.md) 及业务拓扑。
 
-#### 步骤 
-- [1. CMDB 中注册进程和端口](#CMDB_add_process)
-- [2. 将进程绑定模块](#add_process_bind_module)
-- [3. 监控系统自动实现进程端口监控](#process_monitor)
+## 步骤
+- CMDB 中注册进程和端口
+- 将进程绑定模块
+- 监控系统自动实现进程端口监控
 
-## 1. CMDB 中注册进程 
+### 1. CMDB 中注册进程
 
 在菜单`业务资源`-`进程管理`中`新建进程`
 
 ![-w1300](media/15625715311134.jpg)
 
-### 1.1 注册进程 
+#### 1.1 注册进程
 
 - 进程名称：对外显示的服务名：`MariaDB`；
 - 功能名称：程序的二进制名称：`mysqld`；
@@ -32,8 +32,7 @@ mysql     7980  7800  0 7月08 ?       00:01:55 /usr/libexec/mysqld --basedir=/u
 > 注：监控系统一般`完全匹配`二进制名称。
 >    获取二进制名称的方法：`basename $(readlink -f /proc/7980/exe)`
 
-
-### 1.2 注册端口 
+#### 1.2 注册端口
 
 查询 mysqld 监听的 IP 和端口
 
@@ -46,36 +45,34 @@ tcp        0      0 10.0.4.29:3306          0.0.0.0:*               LISTEN      
 - 端口：进程监听的端口，`3306`
 - 协议：`TCP`
 
-
-
-## 2. 将进程绑定模块 
-[如何管理主机](CMDB_management_hosts.md) 提到依据业务架构来划分业务拓扑，业务拓扑中模块代表服务，而服务将由一个或多个进程监听的端口来对用户或其他模块提供服务。
+### 2. 将进程绑定模块
+[如何管理主机](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md) 提到依据业务架构来划分业务拓扑，业务拓扑中模块代表服务，而服务将由一个或多个进程监听的端口来对用户或其他模块提供服务。
 
 所以，需要将`进程`绑定至对应的`模块`上。
 
 这里将`MariaDB`进程绑定至存储层模块上。
 
-![-w1273](media/15625579982411.jpg)
+![-w1273](./media/15625579982411.jpg)
 
 
-## 3. 监控系统自动实现进程端口监控 
+### 3. 监控系统自动实现进程端口监控
 
-给模块 [分配主机](https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%884%EF%BC%89%E4%B8%BB%E6%9C%BA%E8%BD%AC%E7%A7%BB)
+给模块 [分配主机](5.1/配置平台/快速入门/case1.md)
 
-![-w1541](media/15625580245427.jpg)
+![-w1541](./media/15625580245427.jpg)
 
-等候一分钟，在蓝鲸自带的监控系统 [蓝鲸监控](https://docs.bk.tencent.com/bk_monitor/) 中可以看到 [进程的运行情况](https://docs.bk.tencent.com/bk_monitor/Process_and_Port_Monitor_Nice.html)。
+等候一分钟，在蓝鲸自带的监控系统 [蓝鲸监控](5.1/蓝鲸监控/产品简介/README.md) 中可以看到 [进程的运行情况](5.1/蓝鲸监控/产品功能/Process_monitor_desc.md)。
 
-![-w1570](media/15632804527438.jpg)
+![-w1570](./media/15632804527438.jpg)
 
 点击 MariaDB 图标，可以查看其占用的 CPU、内存使用率以及文件句柄数等进程占用的资源指标。
 
-![-w1249](media/15626645050893.jpg)
+![-w1249](./media/15626645050893.jpg)
 
 
 
-### 扩展阅读 
-#### 1. 监控系统消费 CMDB 中进程配置背后的逻辑 
+## 扩展阅读
+### 1. 监控系统消费 CMDB 中进程配置背后的逻辑
 
 当给模块分配完主机后，该主机的大部分 CI 属性将被自动推送至`/var/lib/gse/host/hostid`
 
@@ -113,7 +110,7 @@ processbeat.processes:
   bindip: 10.0.4.29
 ```
 
-#### 2. 二进制名称均为 java，该如何配置 
+### 2. 二进制名称均为 java，该如何配置 
 
 如 ZooKeeper、Hadoop 的二进制均为`java`，可用进程启动参数区分
 

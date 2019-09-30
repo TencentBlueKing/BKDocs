@@ -1,6 +1,6 @@
-## 蓝鲸日常维护
+# 蓝鲸日常维护
 
-### 机器重启后
+## 机器重启后
 
 - 确认 /etc/resolv.conf 里第一个 nameserver 是 `127.0.0.1`， `option` 选项不能有 `rotate`
 - 检查重启机器的 crontab ，是否有自动拉起进程的配置 `crontab -l | grep process_watch` ，重启后的自动拉起主要靠 crontab

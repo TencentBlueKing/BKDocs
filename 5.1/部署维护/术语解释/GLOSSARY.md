@@ -15,3 +15,5 @@
 **FTA：** 故障自愈后台。
 
 **GSE (General Service Engine)：** 管控平台。
+
+**中控机：** 执行命令安装的所属机器。（查看中控机方式：cat /data/install/.controller_ip）

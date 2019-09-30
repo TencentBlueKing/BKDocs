@@ -1,4 +1,4 @@
-## 集成 REST API 拉取
+# 集成 REST API 拉取
 
 如果企业使用的监控产品故障自愈未集成，可以把监控产品的告警使用 [REST API 推送](REST_API_PUSH_Alarm_processing_automation.md) 推送至故障自愈，或故障自愈定期从监控产品通过 **REST API 拉取** 的方式获取告警。
 

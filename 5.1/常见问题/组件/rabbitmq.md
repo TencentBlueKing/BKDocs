@@ -1,12 +1,12 @@
-# RabbitMQ
+# RabbitMQ 常见问题
 
 ## rabbitmq 启动失败
 
-4.1社区版本rabbitmq启动失败问题处理
+4.1 社区版本 rabbitmq 启动失败问题处理
 
-**表象**：在部署蓝鲸JOB过程中需要进行RabbitMQ的安装，数据初始化，激活步骤，此问题多发生在此过程
+**表象**：在部署蓝鲸 JOB 过程中需要进行 RabbitMQ 的安装，数据初始化，激活步骤，此问题多发生在此过程
 
-**思路方法**：如果是在添加用户和vhost时报错，那么说明启动rabbitmq-server没有成功，通过以下方式确认
+**思路方法**：如果是在添加用户和 vhost 时报错，那么说明启动 rabbitmq-server 没有成功，通过以下方式确认
 
 ```bash
 # 查看进程是否存在
@@ -16,15 +16,15 @@ $ ps -ef | grep beam
 $ netstat -tnlpu | grep 5672  
 ```
 
-若没有启动，通过`systemctl start rabbitmq-server`启动。若系统没有systemctl命令，通过`service rabbitmq start`启动
+若没有启动，通过 `systemctl start rabbitmq-server` 启动。若系统没有 systemctl 命令，通过 `service rabbitmq start`启动
 
-首先排查`/data/bkce/etc/rabbitmq`目录，对rabbitmq用户是否有读权限，`/data/bkce/public/rabbitmq`目录对rabbitmq用户是否有写权限
+首先排查 `/data/bkce/etc/rabbitmq` 目录，对 rabbitmq 用户是否有读权限，`/data/bkce/public/rabbitmq`目录对 rabbitmq 用户是否有写权限
 
 自己处理好目录的权限问题后，再尝试重启 `rabbitmq-server`
 
-## rabbitmq activate失败
+## rabbitmq activate 失败
 
-**表象**：此问题发生在`./bk_install app_mgr`，会发生如下报错
+**表象**：此问题发生在 `./bk_install app_mgr`，会发生如下报错
 
 ```bash
 $ [X.X.X.X] register and activate rabbitmq failed. requrest env: .
@@ -33,19 +33,19 @@ $ [X.X.X.X] api reponse: {"msg": "HTTPConnectionPool(host='X.X.X.X', port=15672)
 
 **思路方法**：
 
-1. 确认umask，若不是022，修改`/etc/profile`，然后`source /etc/profile`，再卸载rabbitmq，重新安装
+1. 确认 umask，若不是 022，修改 `/etc/profile`，然后 `source /etc/profile`，再卸载 rabbitmq，重新安装
 2. 确认在安装过程，或在 `rabbitmq activate` 前主机域名是否做过调整修改
 
 ## rabbitmq initdata 失败
 
-**表象**：在部署蓝鲸JOB过程中需要进行RabbitMQ的安装，数据初始化，激活步骤，此问题多发生在此过程
+**表象**：在部署蓝鲸 JOB 过程中需要进行 RabbitMQ 的安装，数据初始化，激活步骤，此问题多发生在此过程
 
 ```bash
 [ root@rbtnodel install)# ．/bkcec initdata rabbitmq
 Warning： Permanently added '10.x.x.x' (RSA) to the list Of known hosts.
 bash： line 5： systemctl： command not found
 
-Creating u se r " admin "
+Creating u se r "admin"
 Error: unable to connect to node rabbit@rbtnode1 ： nodedown
 DIAGNOSTICS
 ============
@@ -64,7 +64,7 @@ add rabbitmq u se r admin failed ．
 
 **思路方法**：通过以下方式来尝试解决
 
-> 注意：若系统没有systemctl命令，注意修改下`/data/install/utils.fc`文件，查找到`init_rabbitmq_cluster ()`函数，把`systemctl start rabbitmq-server`修改为`service rabbitmq-server start`
+> 注意：若系统没有 systemctl 命令，注意修改下`/data/install/utils.fc`文件，查找到`init_rabbitmq_cluster ()`函数，把`systemctl start rabbitmq-server`修改为`service rabbitmq-server start`
 
 ```bash
 # rabbitmq现在是运行状态？是的话。
@@ -91,11 +91,11 @@ ps -ef | grep rabbitmq | awk '{print $2}' | xargs -n 1 kill -9
 initdata rabbitmq
 ```
 
-## rabbitmq 15672不存在
+## rabbitmq 15672 不存在
 
-如果是在激活rabbitmq时报错**15672** 端口拒绝链接，那说明 `rabbitmq-server`没有成功加载`rabbitmq_management`插件
+如果是在激活 rabbitmq 时报错**15672** 端口拒绝链接，那说明 `rabbitmq-server`没有成功加载`rabbitmq_management`插件
 
-原因可能有2种：
+原因可能有 2 种：
 
-1. umask不正确，导致无法访问对应目录
+1. umask 不正确，导致无法访问对应目录
 2. 主机名发生变更，导致节点发现异常

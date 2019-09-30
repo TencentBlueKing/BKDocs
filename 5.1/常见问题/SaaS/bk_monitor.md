@@ -1,6 +1,6 @@
 # 蓝鲸监控常见问题
 
-> 蓝鲸监控问题，多见用户cmdb及快照正常，而监控无基础数据上报，或者点击数据上报报错误提示，或者提示正常但实际仍无数据
+> 蓝鲸监控问题，多见用户 cmdb 及快照正常，而监控无基础数据上报，或者点击数据上报报错误提示，或者提示正常但实际仍无数据
 >
 
 ## 蓝鲸监控无数据上报
@@ -8,27 +8,27 @@
 **此问题常见表象**
 
 1. 启动入库任务失败【模块：data】接口结果返回超时
-2. 进程端口下发失败: 0:x.x.x.x 进程协议错误，支持TCP、UDP, 参数传递协议为, 请检查输入参数和CMDB配置
-3. 基础性能接入失败：缺少[bk_biz_id]参数，解析RT信息失败：13
-4. 模块：data 接口返回结果错误：参数错误 无Linux机器（机器多IP，CMDB IP匹配，）
+2. 进程端口下发失败: 0:x.x.x.x 进程协议错误，支持 TCP、UDP, 参数传递协议为, 请检查输入参数和 CMDB 配置
+3. 基础性能接入失败：缺少[bk_biz_id]参数，解析 RT 信息失败：13
+4. 模块：data 接口返回结果错误：参数错误 无 Linux 机器（机器多 IP，CMDB IP 匹配，）
 5. 数据入库失败【模块：data】接口返回结果错误：All Servers failed to process request: [(‘kafka.service.consul’,9092,0)]
-6. 模块：data 接口返回结果错误：调用接口失败 创建tsdb库失败（Dataapi没升级好，把saas升级。）
-7. 【模块：data】接口返回结果错误：组件请求第三方系统DATA接口data_component出错：状态码：404，错误消息：第三方系统不存在此接口（Dataapi没升级好，确认下版本
-8. 请求agent状态数据失败（job接口，）
-9. 查询失败，原因：【模块：data】接口返回结果错误：SQL语法错误，请检查语法：06（进程资源无数据bug，没入库）
+6. 模块：data 接口返回结果错误：调用接口失败 创建 tsdb 库失败（Dataapi 没升级好，把 saas 升级。）
+7. 【模块：data】接口返回结果错误：组件请求第三方系统 DATA 接口 data_component 出错：状态码：404，错误消息：第三方系统不存在此接口（Dataapi 没升级好，确认下版本
+8. 请求 agent 状态数据失败（job 接口，）
+9. 查询失败，原因：【模块：data】接口返回结果错误：SQL 语法错误，请检查语法：06（进程资源无数据 bug，没入库）
 10. \_exporter_url\_参数不能为空（自定义组件导入）
 11. 系统信息可上报，组件信息不上报
 12. 启动入库任务失败【模块：data】接口返回结果错误：添加总线任务失败，添加etl任务失败 6_ja_gse_proc_port（）
 13. config_schema：必须提供\_exporter_url\_参数的配置
-14. 基础性能接入失败：2：x.x.x.x下发配置失败
-15. 【模块：data】接口返回结果错误：调用接口失败 gse_push_file：该业务{0}下没有IP
+14. 基础性能接入失败：2：x.x.x.x 下发配置失败
+15. 【模块：data】接口返回结果错误：调用接口失败 gse_push_file：该业务{0}下没有 IP
 
 **可能原因**
 
 1. nginx未更新安装，`install nginx 1`后解决
 2. gse_agent在节点管理，重新安装
-3. bk_monitor在supervisor缺少celery和beat配置，重新安装1.4.63版本
-4. bk_monitor的服务使用错误使用root启动，停掉进程，删掉原启动对应root的文件，用apps用户启动
+3. bk_monitor 在 supervisor 缺少 celery 和 beat 配置，重新安装 1.4.63 版本
+4. bk_monitor 的服务使用错误使用 root 启动，停掉进程，删掉原启动对应 root 的文件，用 apps 用户启动
 5. influxdb表结构为空，所有`system_*`的库，`show measurements`为空
 6. `/data/bkce/bkdata/dataapi/bin/check_databus_status.sh`检查结果，`=====ETL=====`发现未更新的，结果类似`etl_1004_2_ja_gse_net`老的结构，
 7. databus的`tsdb.cluster.properties`配置中`cluster.rest.port=__CONNECTOR_TSDB_PORT__`未替换，为空
@@ -39,7 +39,7 @@
 
 - **检查进程是否正常**
 
-若为4.1.X的版本，bk_monitor有对应celery进行异步任务处理，需在APPO模块对应机器上，确认bk_monitor的进程是否包含`uwsgi`，`celery beat`，`celery worker`3部分，示例如下
+若为 4.1.X 的版本，bk_monitor 有对应 celery 进行异步任务处理，需在 APPO 模块对应机器上，确认 bk_monitor 的进程是否包含`uwsgi`，`celery beat`，`celery worker`3部分，示例如下
 
 ```bash
 [root@rbtnode1 /data/install]# ps -ef | grep bk_monitor
@@ -61,7 +61,7 @@ apps     31588  1960  0 18:01 ?        00:00:00 /data/bkce/paas_agent/apps/Envs/
 
 - **检查bkdata日志**
 
-确认databus日志`/data/bkce/logs/bkdata/databus_etl.log`以及`/data/bkce/logs/bkdata/databus_tsdb.log`是否有Exception或者Error的错误，示例如下
+确认 databus 日志`/data/bkce/logs/bkdata/databus_etl.log`以及`/data/bkce/logs/bkdata/databus_tsdb.log`是否有 Exception 或者 Error 的错误，示例如下
 
   ```bash
 grep -nE "Exception|Error" /data/bkce/logs/bkdata/databus_etl.log /data/bkce/logs/bkdata/databus_tsdb.log
@@ -69,13 +69,13 @@ grep -nE "Exception|Error" /data/bkce/logs/bkdata/databus_etl.log /data/bkce/log
 12:Exception in thread "main" org.apache.kafka.common.config.configException: Invalid value for configuration rest.port: Not a number of type INT
   ```
 
-- **检查bkdata databus任务**
+- **检查 bkdata databus 任务**
 
 确认在bkdata服务器上，`check_databus_status.sh`，不能出现有`Failed connect to databus.service.consul:10054; connection refused`或者`JSON object could be decoded`错误输出。正常的输出示例如下（若此处有错误，参考`initdata bkdata`失败的处理方法）
 
 异常举例
 
-<left><img src="../assets/1535617300196.png" style="zoom:80%" /></left>
+![](../assets/1535617300196.png)
 
 ```bash
 [root@rbtnode1 /data/install]# /data/bkce/bkdata/dataapi/bin/check_databus_status.sh
@@ -101,18 +101,18 @@ etl_1001_2_system_cpu_summary
 {"name":"etl_1001_2_system_cpu_summary","connector":{"state":"RUNNING","worker_id":"10.X.X.X:10052"},"tasks":[{"state":"RUNNING","id":0,"worker_id":"10.X.X.X:10052"}]}
 ```
 
-- **检查kafka**
+- **检查 kafka**
 
-1. kafka节点确认
+1. kafka 节点确认
 
-若社区版为3台部署的，必须返回[1, 2, 3]才正常，示例如下
-若brokers ids不为[1, 2, 3]，存在`/data/bkce/public/kafka/.lock`文件，有的话，删除此文件，再重新使用`./bkcec stop kafka`和`./bkcec start kafka`重启kafka，重启完再次确认状态
+若社区版为 3 台部署的，必须返回[1, 2, 3]才正常，示例如下
+若 brokers ids 不为[1, 2, 3]，存在`/data/bkce/public/kafka/.lock`文件，有的话，删除此文件，再重新使用`./bkcec stop kafka`和`./bkcec start kafka`重启 kafka，重启完再次确认状态
 
-<left><img src="../assets/1535617328640.png" style="zoom:80%" /></left>
+![](../assets/1535617328640.png)
 
-<left><img src="../assets/1535617771404.png" style="zoom:70%" /></left>
+![](../assets/1535617771404.png)
 
-<left><img src="../assets/1535617356225.png" style="zoom:80%" /></left>
+![](../assets/1535617356225.png)
 
 ```bash
 [root@rbtnode1 /data/install]# /data/bkce/service/zk/bin/zkCli.sh -server zk.service.consul:2181 ls /common_kafka/brokers/ids
@@ -126,9 +126,9 @@ WatchedEvent state:SyncConnected type:None path:null
 [1, 2, 3]
 ```
 
-2. kafka僵死
+2. kafka 僵死
 
-此种情况，确认上面第一点，若节点缺失，可以用`./bkcec stop kafka`停掉kafka，再到各台机器上使用`jps -l`确认是否还存在`kafka.kafka`没有关闭掉的，这种就是僵死的，可以杀掉僵死进程`jps -l | grep kafka | xarge kill -9`，再重新在中控机上启动kafka
+此种情况，确认上面第一点，若节点缺失，可以用`./bkcec stop kafka`停掉 kafka，再到各台机器上使用`jps -l`确认是否还存在`kafka.kafka`没有关闭掉的，这种就是僵死的，可以杀掉僵死进程`jps -l | grep kafka | xarge kill -9`，再重新在中控机上启动 kafka
 
 2. kafka数据确认
 
@@ -205,15 +205,15 @@ root     27979     1  0 7月26 ?       00:01:23 /usr/sbin/crond -n
 tail /var/log/cron
 ```
 
-如果CMDB有快照数据，监控没有，或者部分没有时，检查下bkdata所在机器的crontab是否包含 update_cc_cache.sh 的定时任务：
+如果 CMDB 有快照数据，监控没有，或者部分没有时，检查下 bkdata 所在机器的 crontab 是否包含 update_cc_cache.sh 的定时任务：
 
 如果没有，应该安装时漏执行，或者执行过`./bkcec clean cron`后忘记加回来。可在中控机执行 `./bkcec install cron` 重新安装上 cron 任务检查 bkdata 的 cron 任务
 
 ## 部分有监控数据，部分没有
 
-若蓝鲸平台的监控OK，而新增加的Agent监控没有，点击数据上报，提示10-20分钟会有新数据，实际一直没有数据，可能为crontab的updata_cc_cache未正常运行，导致cache未更新，新的机器未添加进来
+若蓝鲸平台的监控 OK，而新增加的 Agent 监控没有，点击数据上报，提示 10-20 分钟会有新数据，实际一直没有数据，可能为 crontab 的 updata_cc_cache 未正常运行，导致 cache 未更新，新的机器未添加进来
 
-- **检查cron任务**
+- **检查 cron 任务**
 
 ```bash
 # 确认是否存在update_cc_cache crontab任务
@@ -228,7 +228,7 @@ root     27979     1  0 7月26 ?       00:01:23 /usr/sbin/crond -n
 tail /var/log/cron
 ```
 
-如果CMDB有快照数据，监控没有，或者部分没有时，检查下bkdata所在机器的crontab是否包含 update_cc_cache.sh 的定时任务：
+如果 CMDB 有快照数据，监控没有，或者部分没有时，检查下 bkdata 所在机器的 crontab 是否包含 update_cc_cache.sh 的定时任务：
 
 如果没有，应该安装时漏执行，或者执行过`./bkcec clean cron`后忘记加回来。可在中控机执行 `./bkcec install cron` 重新安装上 cron 任务检查 bkdata 的 cron 任务
 
@@ -238,27 +238,33 @@ tail /var/log/cron
 $ /data/bkce/bkdata/dataapi/bin/update_cc_cache.sh
 ```
 
+- 确认无数据上报机器的时间和部署蓝鲸server机器的时间是否同步。
+- 确认无数据的机器上是否有basereport进程采集器
+    - 若无可尝试手动拉起  `/usr/local/gse/plugins/bin/start.sh  basereport`
+    - 若采集器进程存在则查看采集器日志 `/var/log/gse/basereport` (日志为 error 级别，有进程无日志说明采集器进程正常)。
+
+
 ## 组件没有监控数据
 
-- 到cmdb里面，主机管理->进程管理，搜索组件名称，类似搜索nginx，然后把common_nginx改名为nginx
-- 到蓝鲸监控里面，勾选这个nginx对应的主机，批量采集上报
+- 到 cmdb 里面，主机管理->进程管理，搜索组件名称，类似搜索 nginx，然后把 common_nginx 改名为 nginx
+- 到蓝鲸监控里面，勾选这个 nginx 对应的主机，批量采集上报
 
 ## 缺少操作系统类型
 
-在cc上，确认所选主机操作系统类型是否为空
+在 cc 上，确认所选主机操作系统类型是否为空
 
 ## 后台：Exited too quickly (process log may have detail)
 
 **问题表象**：
 
 ```bash
-[root@rbtnode1 ]# supervisorctl -c /data/bkce/etc/supervicor-bkdata-monitor.conf status common:scheduler
+[root@rbtnode1 ]# supervisorctl -c /data/bkce/etc/supervisor-bkdata-monitor.conf status common:scheduler
 common:scheduler      FATAL     Exited too quickly (process log may have details)
 ```
 **思路方法**：
 - 确认有问题的进程名
 ```bash
-supervisorctl  -c /data/bkee/etc/supervisor-bkdata-monitor.conf
+supervisorctl  -c /data/bkee/etc/supervisor-bkdata-monitor.conf status all
 ```
 
 - 找到有问题的进程名。例如上图中显示为：common:scheduler，其中common是group， scheduler是进程名
@@ -283,51 +289,51 @@ export C_FORCE_ROOT=true DJANGO_CONF_MODULE=conf.worker.production.enterprise DJ
 ```
 查看报错信息以确认具体错误日志
 
-## 主机百分比指标超过100
+## 主机百分比指标超过 100
 
-出现此问题，优先去对应机器上看下是否有2个basereport进程在运行
+出现此问题，优先去对应机器上看下是否有 2 个 basereport 进程在运行
 
-<left><img src="../assets/tapd_10158081_base64_1529380070_63.png" style="zoom:70%" /></left>
+![](../assets/tapd_10158081_base64_1529380070_63.png)
 
-## exporter采集下发时，模块data接口返回结果错误，但没有详细的错误信息
+## exporter 采集下发时，模块 data 接口返回结果错误，但没有详细的错误信息
 
-<left><img src="../assets/tapd_10158081_base64_1531108539_85.png" style="zoom:70%" /></left>
+![](../assets/tapd_10158081_base64_1531108539_85.png)
 
-可能是 bk_bkdata_api.collector_exporter表没有创建，可查看dataapi的sys.log查看更准确错误信息
+可能是 bk_bkdata_api.collector_exporter 表没有创建，可查看 dataapi 的 sys.log 查看更准确错误信息
 
 ```bash
-mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PASS" bk_bkdata_api
+source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PASS" bk_bkdata_api
 ```
 
 ## 自定义字符型未收到告警问题排查
 
 在蓝鲸监控配置好监控项
 
-<left><img src="../assets/tapd_10158081_base64_1532314076_68.png" style="zoom:70%" /></left>
+![](../assets/tapd_10158081_base64_1532314076_68.png)
 
 按配置时的页面提示，去到主机上执行命令
 
-<left><img src="../assets/tapd_10158081_base64_1532314258_30.png" style="zoom:70%" /></left>
+![](../assets/tapd_10158081_base64_1532314258_30.png)
 
 在机器上执行命令  /usr/local/gse/plugins/bin/gsecmdline -d 2001 -l "This service is offline."
 
-<left><img src="../assets/tapd_10158081_base64_1532314377_78.png" style="zoom:70%" /></left>
+![](../assets/tapd_10158081_base64_1532314377_78.png)
 
 正常情况下，在事件中心可以看到有告警产生，如下图所示
 
-<left><img src="../assets/tapd_10158081_base64_1532314420_46.png" style="zoom:70%" /></left>
+![](../assets/tapd_10158081_base64_1532314420_46.png)
 
 **排查方法**
 
-1. 先检查下机器上的agent是否正常，数据是否有正确上报
+1. 先检查下机器上的 agent 是否正常，数据是否有正确上报
 
 2. 第一步正常的情况下，执行下面的步骤
 
 	- 去到bkdata机器tailf一下日志
 
-		```bash
-		workon monitor
-		tail -f ../../logs/bkdata/kernel.log| grep "gse_custom_out_str_"
+		```bashplain
+		workon monitor  # （社区版5.1用 workon bkdata-monitor）
+		tail -f ../../logs/bkdata/kernel.log | grep "gse_custom_out_str_"  
 		```
 
 	- 去到业务下任意一台机器，触发一条自定义字符告警
@@ -338,7 +344,7 @@ mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PASS" bk_bkdata_api
 
 	- 回到bkdata机器，看下日志，正常会输出如下的日志
 
-		<left><img src="../assets/tapd_10158081_base64_1532316099_62.png" style="zoom:70%" /></left>
+		![](../assets/tapd_10158081_base64_1532316099_62.png)
 
 3. 如果第二步正常，可以看到日志输出
 
@@ -352,7 +358,7 @@ mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PASS" bk_bkdata_api
 ```
 **思路方法**：
 - 进入下发机器
-- 进入datadog安装目录，尝试启动datadog server，查看是否有报错
+- 进入 datadog 安装目录，尝试启动 datadog server，查看是否有报错
   ```bash
   $ cd /usr/local/gse/external_plugins/datadog
   $ source ./env.sh
@@ -362,7 +368,7 @@ mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PASS" bk_bkdata_api
 - 常见问题
 
   - env.sh文件不存在，在页面点击“重试”即可
-  - python版本过低，安装python2.7版本，并指定正确的python程序路径
+  - python 版本过低，安装 python2.7 版本，并指定正确的 python 程序路径
   - socket.error: [Errno 98] Address already in use
     ```bash
     ps -ef | grep datadog

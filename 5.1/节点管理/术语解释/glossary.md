@@ -1,5 +1,4 @@
-
-## 术语解释
+# 术语解释
 
 - **Proxy**：Proxy Server 常被用来建立不同的局域网之间的联系。Proxy Server 与不同云区域下的 GSE Server 和 P-Agent 同时连接，相当于 P-Agent 与 GSE Server 之间的桥梁，可以间接实现 P-Agent 与 GSE Server 之间的通信。
 

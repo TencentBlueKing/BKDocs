@@ -1,4 +1,4 @@
-## 注册主机到 CMDB
+# 注册主机到 CMDB
 
 成功的进行手动安装 agent/proxy/pagent 后，需要手动将客户端节点注册到 CMDB 中，方法如下：
 

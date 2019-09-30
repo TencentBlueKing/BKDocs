@@ -44,7 +44,7 @@
         * [标准运维](场景案例/开源产品替换/标准运维/replace_sops_with_opensource_version.md)
         * [容器管理平台](场景案例/开源产品替换/容器平台/bcs_opensource.md)
     * [企业版社区版 SaaS 独立域名配置](场景案例/SaaS独立域名配置/independent-domain.md)
-    
+
 ### 日常维护
 * [维护手册]()
     * [配置调整](维护手册/配置维护/configuration.md)
@@ -81,5 +81,5 @@
         * [补丁包通用部署指南](升级指引/update_patch/upgrade.md)
 * [卸载指引](卸载指引/uninstall.md)
 
-### 附录
-* [蓝鲸产品及开源组件版本](附录/开源组件版本/version.md)
+* [附录]()
+    * [蓝鲸产品及开源组件版本](附录/开源组件版本/version.md)

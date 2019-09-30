@@ -1,4 +1,4 @@
-## 安装 SaaS
+# 安装 SaaS
 
 SaaS 部署环境分为测试环境 (APPT) 和正式环境 (APPO)，**注意测试环境与正式环境不能安装在同一台主机中**。对应的后台模块叫 `PaaS_Agent` ，正式环境和测试环境的区分主要是启动时环境变量的差异。
 
@@ -9,7 +9,7 @@ PaaS_Agent 使用 Python 的 `virtualenv` 工具来隔离不同的 SaaS 环境�
 
 集成安装这个模块的命令在快速部署文档里提到： `./bk_install app_mgr` 。
 
-### 激活 RabbitMQ
+## 激活 RabbitMQ
 
 由于 RabbitMQ 的安装和初始化在前面步骤已经完成，此时会跳过这两步，到激活 RabbitMQ ：
 
@@ -20,7 +20,7 @@ PaaS_Agent 使用 Python 的 `virtualenv` 工具来隔离不同的 SaaS 环境�
 激活 RabbitMQ 是调用 PaaS 的接口，传递 RabbitMQ 的用户名和密码，供 PaaS 验证 RabbitMQ 的部署是否成功。
 验证成功后，PaaS 会把这个 RabbitMQ 示例标记为激活可用状态，才能继续后面的 SaaS 安装部署操作。
 
-### 安装 APPO 环境
+## 安装 APPO 环境
 
 ```bash
 ./bkcec install appo
@@ -61,7 +61,7 @@ PaaS_Agent 使用 Python 的 `virtualenv` 工具来隔离不同的 SaaS 环境�
 
 4. 激活 PaaS_Agent 。启用这个已经注册的 PaaS_Agent 主机。在做 SaaS 上下架时，只会操作激活过的 PaaS_Agent 服务器。
 
-### 安装 APPT 环境
+## 安装 APPT 环境
 
 ```bash
 ./bkcec install appt

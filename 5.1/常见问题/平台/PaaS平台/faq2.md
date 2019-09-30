@@ -1,6 +1,6 @@
-## PaaS启动提示FATAL Exited too quickly
+# PaaS 启动提示 FATAL Exited too quickly
 
-**表象**：此问题多为正常状态情况下，supervisord.sock被清理，用stop paas提示可以停掉，status paas时也显示EXIT，实际的进程还是异常的
+**表象**：此问题多为正常状态情况下，supervisord.sock 被清理，用 stop paas 提示可以停掉，status paas 时也显示 EXIT，实际的进程还是异常的
 
 ```bash
 [10.X.X.X] open_paas    appengine                        FATAL     Exited too quickly (process log may have details)
@@ -19,7 +19,7 @@ root     28606  0.0  0.6 534188 54916 ?        Sl   Jul27   0:42 /data/bkce/.env
 root     28676  0.0  0.4 534188 37572 ?        S    Jul27   0:00  \_ /data/bkce/.envs/paas/bin/uwsgi --ini /data/bkce/etc/uwsgi-open_paas-paas.ini
 ```
 
-**思路方法**：解决办法，杀掉已经不正常的进程（此情况rabbitmq在异常时，也可以杀掉epmd及beam）
+**思路方法**：解决办法，杀掉已经不正常的进程（此情况 rabbitmq 在异常时，也可以杀掉 epmd 及 beam）
 
 ```bash
 # 可选

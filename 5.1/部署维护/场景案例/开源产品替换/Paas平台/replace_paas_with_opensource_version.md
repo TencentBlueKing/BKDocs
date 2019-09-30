@@ -1,10 +1,10 @@
-## 开源版 PaaS 平台替换社区版部署指南
+# 开源版 PaaS 平台替换社区版部署指南
 
 - 本方案目前仅适用于社区版 `V5.0.4` 以后的版本
 
 - 替换前请务必手动备份 DB 数据 `MySQL`
 
-### Open_Paas 替换指南
+## Open_Paas 替换指南
 
 - 备份原社区版 `open_paas` 目录,将开源的 PaaS 代码解压到中控机的 `/tmp` 目录下
 
@@ -34,7 +34,7 @@
   ./bk_install paas
   ```
 
-### paas_agent 替换指南
+## paas_agent 替换指南
 
 - 将开源版编译后生成的二进制：paasagent/bin/paas_agent 拷贝替换社区版 /data/src/paas_agent/paas_agent/bin/paas_agent
 
@@ -62,7 +62,7 @@
   ./bkcec activate appt
   ```
 
-### 蓝鲸官方 SaaS 应用组件的维护
+## 蓝鲸官方 SaaS 应用组件的维护
 
 1.以标准运维 `bk_sops` 为例进行说明
 

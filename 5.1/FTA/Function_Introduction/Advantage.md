@@ -1,4 +1,4 @@
-## 特点及优势
+# 特点及优势
 
 ![core-function](media/core-function.png)
 

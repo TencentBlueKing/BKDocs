@@ -1,6 +1,6 @@
 # Summary
 
-## 蓝鲸监控产品白皮书
+## 蓝鲸监控
 * [产品简介](产品简介/README.md)
 * [术语解释](术语解释/Concepts_Terminology.md)
 * [产品架构图](产品结构图/Product_Architecture.md)

@@ -1,10 +1,10 @@
-# Influxdb FAQ
+# Influxdb 常见问题
 
 ## influxdb 查询
 
-influxdb为蓝鲸监控数据存储载体，在发生蓝鲸监控没有数据时，有个check点，确认influxdb是否正常
+influxdb 为蓝鲸监控数据存储载体，在发生蓝鲸监控没有数据时，有个 check 点，确认 influxdb 是否正常
 
-检查influxdb的数据库
+检查 influxdb 的数据库
 
 ```bash
 $ influx -host $INFLUXDB_HOST -port $INFLUXDB_PORT -execute 'show databases'
@@ -15,7 +15,7 @@ _internal
 system_2
 ```
 
-检查influxdb的结构
+检查 influxdb 的结构
 
 ```bash
 $ influx -host $INFLUXDB_HOST -port $INFLUXDB_PORT -database system_2 -execute 'show measurements'
@@ -36,7 +36,7 @@ system_proc_2
 system_swap_2
 ```
 
-检查influxdb的数据
+检查 influxdb 的数据
 
 ```bash
 > select * from system_cpu_detail_2 limit 10;
@@ -54,4 +54,3 @@ time                company_id device_name hostname idle               iowait   
 1535440027000000000 0          cpu4        rbtnode1 0.7345565004723897 0.05588967150219944  10.x.x.x 0       0      0.03126793860725039  28.370927318295703 0.1777816774563495
 1535440027000000000 0          cpu3        rbtnode1 0.6710074762738196 0.00793005575830115  10.x.x.x 0       0      0.03980792783012481  35.225375626044226 0.2807265704162614
 ```
-

@@ -1,4 +1,4 @@
-### 2.3.1 当 Zabbix 遇见故障自愈
+# 当 Zabbix 遇见故障自愈
 
 Zabbix 用户的福音来了，通过对接蓝鲸智云的故障自愈，实现故障的无人值守。
 ![](media/15060385121293.jpg)
@@ -42,7 +42,7 @@ Zabbix 用户的福音来了，通过对接蓝鲸智云的故障自愈，实现�
 ![](media/15060398388668.jpg)
 
 
-### 2.3 万能的作业平台
+## 2.3 万能的作业平台
 在作业平台里可以发挥你技高一筹的脚本编写能力，支持 Shell、bat、Perl、Python、Powershell.
 ![](media/15060120685247.jpg)
 
@@ -66,13 +66,13 @@ Zabbix 用户的福音来了，通过对接蓝鲸智云的故障自愈，实现�
 
 以下是原理，剖析给大家听听。
 
-## 4.2 Zabbix 是如何发送消息给故障自愈的
+### 4.2 Zabbix 是如何发送消息给故障自愈的
 执行了 4.1 中的初始化脚本后，自愈会自动创建如下操作。
 
 自动创建名为 FTA_Act 的 Action
 ![](media/15060403626099.jpg)
 
-FTA_Act 这个 Action 的 Operation 会通知 FTA_Mgr 用户，FTA_Mgr 的通知媒介就是调用/usr/lib/zabbix/alertscripts/zabbix_fta_alarm.py 
+FTA_Act 这个 Action 的 Operation 会通知 FTA_Mgr 用户，FTA_Mgr 的通知媒介就是调用/usr/lib/zabbix/alertscripts/zabbix_fta_alarm.py
 ![](media/15060409949390.jpg)
 
 告警产生后在 Action log 中可以看到发给 FTA_Act 的 Message
@@ -94,4 +94,3 @@ FTA_Act 这个 Action 的 Operation 会通知 FTA_Mgr 用户，FTA_Mgr 的通知
 
 
 作为运维的你，还在等什么？释放双手的时候到了！
-

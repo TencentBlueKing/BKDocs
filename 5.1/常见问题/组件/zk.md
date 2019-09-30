@@ -1,20 +1,20 @@
-#  ZK FAQ
+#  ZK 常见问题
 
 ## zk 无法启动
 
 **表象**
 
-使用`./bkcec start zk`提示started，但很快EXIT退出
+使用`./bkcec start zk`提示 started，但很快 EXIT 退出
 
 **原因**
 
-1. java是否安装正常
-2. 2181端口被占用
-3. 上述1.2均正常，仍无法启动的异常
+1. java 是否安装正常
+2. 2181 端口被占用
+3. 上述 1.2 均正常，仍无法启动的异常
 
 **解决方法**
 
-原因1
+原因 1
 
 ```bash
 # 使用java或者java -version命令来验证
@@ -22,7 +22,7 @@ $ java
 $ java -version
 ```
 
-原因2
+原因 2
 
 ```bash
 # 检查端口
@@ -34,7 +34,7 @@ $
 # 重新启动
 ```
 
-原因3
+原因 3
 
 ```bash
 # 进入到zk data目录，找到zoo.conf中配置的dataDir和dataLogDir路径。然后删除两个文件夹下的version -2文件夹
@@ -47,4 +47,4 @@ $ rm -rf version-1 zookeeper_server.pid
 $ ./bkcec start zk
 ```
 
-上述3条确认后，仍无法启动的，可能zk.sh版本不对，请和蓝鲸运营人员联系
+上述 3 条确认后，仍无法启动的，可能 zk.sh 版本不对，请和蓝鲸运营人员联系

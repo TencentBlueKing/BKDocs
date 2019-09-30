@@ -1,6 +1,7 @@
 # Summary
 
-## 蓝鲸作业平台白皮书
+## 作业平台
+
 * [产品介绍](产品介绍/产品介绍.md)
 * [核心优势](核心优势/Advantage.md)
 * [术语解释](术语解释/glossary.md)
@@ -30,3 +31,21 @@
         * [服务器之间的文件传输](快速入门/服务器之间的文件传输.md)
     * [常用作业执行]()
         * [创建一个作业任务](快速入门/创建一个作业任务.md)
+* [API 文档]()
+    * [简介](5.1/API文档/JOB/README.md)
+    * [作业类回调报文描述](5.1/API文档/JOB/callback_protocol.md)
+    * [启动作业](5.1/API文档/JOB/execute_job.md)
+    * [快速执行脚本](5.1/API文档/JOB/fast_execute_script.md)
+    * [快速分发文件](5.1/API文档/JOB/fast_push_file.md)
+    * [查询业务下定时作业信息](5.1/API文档/JOB/get_cron_list.md)
+    * [查询作业模板详情](5.1/API文档/JOB/get_job_detail.md)
+    * [根据作业实例ID查询作业执行日志](5.1/API文档/JOB/get_job_instance_log.md)
+    * [查询作业执行状态](5.1/API文档/JOB/get_job_instance_status.md)
+    * [查询作业模板](5.1/API文档/JOB/get_job_list.md)
+    * [查询业务下的执行账号](5.1/API文档/JOB/get_os_account.md)
+    * [查询用户有权限的DB帐号列表](5.1/API文档/JOB/get_own_db_account_list.md)
+    * [查询脚本详情](5.1/API文档/JOB/get_script_detail.md)
+    * [查询脚本列表](5.1/API文档/JOB/get_script_list.md)
+    * [查询作业步骤的执行状态](5.1/API文档/JOB/get_step_instance_status.md)
+    * [新建或保存定时作业](5.1/API文档/JOB/save_cron.md)
+    * [更新定时作业状态](5.1/API文档/JOB/update_cron_status.md)

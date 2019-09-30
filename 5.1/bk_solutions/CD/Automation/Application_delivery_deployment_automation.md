@@ -1,14 +1,14 @@
-## 应用交付，从人工到自动化的转变
+# 应用交付，从人工到自动化的转变
 
 > 在提升企业应用交付效率的同时，输出运维价值
 
-[配置管理标准化](Configuration_management_standardization.md) 提到，运维服务“四化建设”的标准化是如何规范运维在配置管理、发布、变更、故障处理、监控告警等场景的运维能力，重点阐述企业如何建设 **配置管理标准化**。
+[配置管理标准化](5.1/bk_solutions/CD/CMDB/Configuration_management_standardization.md) 提到，运维服务“四化建设”的标准化是如何规范运维在配置管理、发布、变更、故障处理、监控告警等场景的运维能力，重点阐述企业如何建设 **配置管理标准化**。
 
-接下来，我们通过理论配合实践（以 [蓝鲸](https://docs.bk.tencent.com/introduction/) [标准运维](https://docs.bk.tencent.com/gcloud/product.html)为例），分析"四化建设"第 2 个阶段 : **自动化** ，如何 **让应用交付从人工到自动化的转变，在提升企业应用交付效率的同时，输出运维价值**。
+接下来，我们通过理论配合实践（以 [蓝鲸标准运维](5.1/标准运维/产品简介/README.md)为例），分析"四化建设"第 2 个阶段 : **自动化** ，如何 **让应用交付从人工到自动化的转变，在提升企业应用交付效率的同时，输出运维价值**。
 
 首先，我们看下应用交付遇到的痛点。
 
-### 应用交付痛点 
+## 应用交付痛点
 管理者觉得在 **质量、效率、成本、安全上你做得都很差**，而作为执行者的你，**心累、身体累的同时还担心哪天不小心背锅而走**。
 
 - 应用部署至生产环境周期长，无法快速迭代
@@ -19,7 +19,7 @@
 - 运维操作零散，不可审计，无法满足合规性要求
 - ...
 
-## 1. 项目目标 
+## 1. 项目目标
 
 ### 1.1 术语解释
 - **资源编排** : (Resource Orchestration)，用户定义资源的编排流程，工具执行编排流程，执行时只关注输入，提升重复性应用/资源交付的运维效率。
@@ -41,14 +41,14 @@
 ![应用交付自动化的目标](media/%E5%BA%94%E7%94%A8%E4%BA%A4%E4%BB%98%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9A%84%E7%9B%AE%E6%A0%87-1.png)
 
 
-## 2. 技术选型 
+## 2. 技术选型
 
 需要一套资源编排工具，**串接应用交付过程中的各个原子节点**。如执行类：文件分发、命令执行、DB 提单等，周边类：告警屏蔽、任务通知、审批等，流程类：认领 ITSM 单据，结单等）。
 
 放眼行业，资源编排在公有云中早有对应的成熟工具[2]
 
-| 行业应用 | AWS | Azure | 谷歌云 | 阿里云 | 青云 | 
-| --- | --- | --- | --- | --- | --- | 
+| 行业应用 | AWS | Azure | 谷歌云 | 阿里云 | 青云 |
+| --- | --- | --- | --- | --- | --- |
 | 对应产品 | [Cloud Formation](https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/Welcome.html) | [Azure-RM](https://docs.microsoft.com/zh-cn/azure/azure-resource-manager/resource-group-overview)  | [Cloud Deployment Manager](https://cloud.google.com/deployment-manager/docs/quickstart) | [ROS](https://help.aliyun.com/document_detail/28852.html) | [RO](https://docs.qingcloud.com/product/operation/topology) |
 
 ![内网负载均衡器](media/%E5%86%85%E7%BD%91%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8.png)
@@ -69,9 +69,9 @@
 
 确立了技术方案后，接下来介绍如何在企业内部实施标准运维，实现应用交付自动化。
 
-如何实施标准运维，请参考场景案例：[应用如何自动化部署至生产环境](application_deployment.md)、[应用交付人力转移，让运维更专注业务优化](ops_half_automation.md)。
+如何实施标准运维，请参考场景案例：[应用如何自动化部署至生产环境](5.1/bk_solutions/CD/CMDB/CMDB_intapplication_deployment.mdegration.md)、[应用交付人力转移，让运维更专注业务优化](ops_half_automation.md)。
 
-## 3. 技术发展方向 
+## 3. 技术发展方向
 
 蓝鲸体系内覆盖更多的场景，如告警屏蔽、解屏蔽，关联 ITSM 工单等，**单一来源使其自成体系**，体验更流畅。
 
@@ -95,9 +95,9 @@
 
 （开源共建标准运维）
 
-## 扩展阅读 
-- [1] 阮一峰. [持续集成是什么？](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) [EB/OL]，2015-9-23 
-- [2] 唐盛军. [全球公有云编排服务大比拼](https://bbs.huaweicloud.com/blogs/50719c3767c411e89fc57ca23e93a89f) [EB/OL]，2018-6-4 
+## 扩展阅读
+- [1] 阮一峰. [持续集成是什么？](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) [EB/OL]，2015-9-23
+- [2] 唐盛军. [全球公有云编排服务大比拼](https://bbs.huaweicloud.com/blogs/50719c3767c411e89fc57ca23e93a89f) [EB/OL]，2018-6-4
 - [3] 中国信息通信研究院. [《混合云白皮书（2019 年）》](https://mp.weixin.qq.com/s/efqSLdrKu0OtWiUsCullyg) [EB/OL]，2019-6-17
 - [4] Terraform. [Terraform vs. CloudFormation, Heat, etc.](https://www.terraform.io/intro/vs/cloudformation.html) [EB/OL]
 - [5] 叶光芳. [赣州银行利用蓝鲸标准运维实现容灾一键切换](https://mp.weixin.qq.com/s/rCPDpxDG5v_BFo1gPRNq3w) [EB/OL]，2019-5-28

@@ -1,8 +1,8 @@
-## 蓝鲸卸载文档
+# 蓝鲸卸载文档
 
 如果您确认需要卸载蓝鲸，请注意先清理被蓝鲸管控的主机上安装的 Agent 和下发的采集器后。再卸载蓝鲸后台服务器上安装的服务，也就是 install.config 里配置 IP 地址上的蓝鲸后台服务。
 
-### 卸载管控机器上的 Agent 和采集器
+## 卸载管控机器上的 Agent 和采集器
 
 卸载 Agent 和采集器
 
@@ -19,7 +19,7 @@
   - 删除 GSE 相关目录 ，`rm -rf /usr/local/gse /var/log/gse /var/run/gse /var/lib/gse` 。
 
 
-### 脚本卸载蓝鲸后台服务
+## 脚本卸载蓝鲸后台服务
 
 **注意：** 该卸载操作不可逆，也不会备份任何数据，最终会删除 $INSTALL_PATH，$PKG_SRC_PATH，$CTRL_DIR 这三个目录。默认情况下分别是：/data/bce，/data/src，/data/install。请在运行脚本、输入 yes 之前，请三思！
 
@@ -30,7 +30,7 @@ cd /data/install/ && cp uninstall/uninstall.sh .
 bash uninstall.sh
 ```
 
-### 手动卸载蓝鲸后台服务
+## 手动卸载蓝鲸后台服务
 
 - 手动卸载蓝鲸后台
 

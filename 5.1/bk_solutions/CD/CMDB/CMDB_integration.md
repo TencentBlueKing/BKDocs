@@ -1,7 +1,7 @@
-## 企业原有 CMDB 同步至蓝鲸 CMDB
+# 企业原有 CMDB 同步至蓝鲸 CMDB
 > 感谢社区用户 [Kevin](https://bk.tencent.com/s-mart/personal/10966/) 提供该文档.
 
-#### 情景 
+## 情景
 
 公司基础部门维护公司统一的一套 CMDB，资源主要以服务器为主，资源交付后会直接进入公司的 CMDB，需要手动导出列表，修改成蓝鲸 CMDB 的导入格式，导入蓝鲸 CMDB。存在如下问题：
 
@@ -9,18 +9,18 @@
 - 公司 CMDB 与蓝鲸 CMDB 字段不统一，需要手动复制、编辑字段属性，再导入蓝鲸，非常繁琐
 
 
-#### 前提条件 
-- 在 [配置平台](https://docs.bk.tencent.com/cmdb/)中 [新建好业务](https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%881%EF%BC%89%E6%96%B0%E5%BB%BA%E4%B8%9A%E5%8A%A1)。
+## 前提条件
+- 在配置平台中 [新建好业务](5.1/配置平台/快速入门/case1.md)。
 - 熟悉一门脚本语言，如`Python`，本教程以`Python`为例
-- 了解 [蓝鲸 CMDB API](https://bk.tencent.com/document/bkapi/ce/system/cc/)
+- 了解 [蓝鲸 CMDB API](5.1/API文档/CC/README.md/)
 
-#### 操作步骤 
-- [1. 梳理同步逻辑](#Carding_sync_logic)
-- [2. 代码实践及解读](#Code_interpretation)
-- [3. 定时同步](#Sync)
+## 操作步骤
+- 梳理同步逻辑
+- 代码实践及解读
+- 定时同步
 
 
-## 1. 梳理同步逻辑 
+### 1. 梳理同步逻辑
 
 查询公司 CMDB 与蓝鲸 CMDB 服务器属性的对应关系，生成属性映射 MAP 表，MAP 表中只记录需要关注的属性，并确认相关属性都已在蓝鲸 CMDB 中创建。
 
@@ -32,11 +32,11 @@
 **更新资源**
 - 分别获取两个 CMDB 的数据，遍历两组数据，对比属性 MAP 表中的属性字段，找出数据不同的服务器，汇总成列表，再统一更新到蓝鲸 CMDB
 
-## 2. 代码实践及解读 
+### 2. 代码实践及解读
 
-### 2.1 新建应用 
+#### 2.1 新建应用
 
-在蓝鲸开发者中心 [新建一个应用](https://docs.bk.tencent.com/guide/application.html)，用于调用 [CMDB 的 API](https://bk.tencent.com/document/bkapi/ce/system/cc/)。
+在蓝鲸开发者中心 [新建一个应用](5.1/开发指南/SaaS开发/新手入门/Windows.md)，用于调用 [CMDB 的 API](5.1/API文档/CC/README.md/)。
 
 ```python
 import urllib2
@@ -63,7 +63,7 @@ BASE_ARGS = {
     }
 ```
 
-### 2.2 获取蓝鲸 CMDB 主机列表  
+#### 2.2 获取蓝鲸 CMDB 主机列表  
 查询蓝鲸 CMDB 的获取主机 `search_host` API ，返回主机列表
 
 ```python
@@ -92,7 +92,7 @@ def getBkCmdbHost():
     return bkList
 ```
 
-### 2.3 获取 公司 CMDB 主机列表 
+#### 2.3 获取 公司 CMDB 主机列表
 调用公司 CMDB 获取主机列表 API，返回主机列表
 
 ```python
@@ -111,9 +111,9 @@ def getCmdbHost():
     '''
 ```
 
-### 2.4 生成新增 IP 列表、更新 IP 列表、更新信息列表  
+#### 2.4 生成新增 IP 列表、更新 IP 列表、更新信息列表  
 
-根据 [步骤 2.2](#getBkCmdbHost) 和 [步骤 2.3](#getCmdbHost) 获取到的两个主机列表，对比生成所需的新增列表和更新列表。
+根据步骤 2.2 和 步骤 2.3 获取到的两个主机列表，对比生成所需的新增列表和更新列表。
 
 ```python
 def genAddList(cmdbList, bkList):
@@ -137,7 +137,7 @@ def genUpdateList(cmdbList, bkList):
             if cmdbAttr in cmdbHost.keys() and bkAttr in bkHost.keys() and cmdbHost[cmdbAttr] != bkHost[bkAttr]:
                 ipList.append(ip)
     return ipList
-    
+
 def genInfoList(cmdbList, bkList, ipList, attributeMAP):
     # 根据IP列表生成主机详细信息列表
     infoList = {}
@@ -174,9 +174,9 @@ addInfoList = genInfoList(cmdbList, bkList, addList, attributeMAP)
 updateInfoList = genInfoList(cmdbList, bkList, addList, attributeMAP)
 ```
 
-### 2.5 录入、更新主机数据到蓝鲸 CMDB 
+#### 2.5 录入、更新主机数据到蓝鲸 CMDB
 
-- 录入新增主机信息：使用 [步骤 2.4](#getCmdbHost)中生成的新增主机信息列表，录入蓝鲸 CMDB
+- 录入新增主机信息：使用 步骤 2.4 中生成的新增主机信息列表，录入蓝鲸 CMDB
 
 ```python
 def addBkCmdbHost(infoList):
@@ -214,11 +214,11 @@ def addBkCmdbHost(infoList):
     response = urllib2.urlopen(request)
     content = response.read()
     print content
-    
+
 addBkCmdbHost(addInfoList)
 ```
 
-- 更新主机数据：使用 [步骤 2.4](#getCmdbHost) 中生成的更新主机信息列表，更新蓝鲸 CMDB
+- 更新主机数据：使用步骤 2.4 中生成的更新主机信息列表，更新蓝鲸 CMDB
 
 ```python
 def updateBkCmdbHost(infoList):
@@ -241,16 +241,16 @@ def updateBkCmdbHost(infoList):
         content = response.read()
         logging.debug('bk_host_id: ' + str(bk_host_id) + content)
         print json.loads(content)
-        
+
 updateBkCmdbHost(updateInfoList)
 ```
 
 
-## 3. 定时同步 
+### 3. 定时同步
 
-- CMDB 同步脚本使用**[JOB](https://docs.bk.tencent.com/job/)**的定时作业或**[标准运维](https://docs.bk.tencent.com/gcloud/)**的定时任务进行周期托管，方便迁移或者修改维护
+- CMDB 同步脚本使用 [JOB](5.1/作业平台/产品功能/定时作业.md) 的定时作业或 [标准运维](5.1/标准运维/产品功能/flow.md) 的定时任务进行周期托管，方便迁移或者修改维护
 
-![1562225679643](media/1562225679643.png)
+![1562225679643](./media/1562225679643.png)
 
 
-注：上述教程是企业 CMDB `单向`、`定期`同步主机实例至蓝鲸 CMDB 的实践，如果需要实时同步，一般推荐[消息推动](https://docs.bk.tencent.com/cmdb/Introduction.html#EventPush)的方式。
+注：上述教程是企业 CMDB `单向`、`定期`同步主机实例至蓝鲸 CMDB 的实践，如果需要实时同步，一般推荐 [消息推动](5.1/配置平台/产品功能/ModelManagement.md)的方式。

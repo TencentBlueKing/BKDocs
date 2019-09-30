@@ -1,10 +1,10 @@
-# MySQL FAQ
+# MySQL 常见问题
 
-## MySQL密码更新流程
+## MySQL 密码更新流程
 
 > 如下指引，若无特殊说明，全部在中控机`/data/install`目录进行
 
-### 停止MySQL
+### 停止 MySQL
 
 ```bash
 ./bkcec stop mysql
@@ -16,15 +16,15 @@
 ps -ef | grep mysql | grep -v grep
 ```
 
-### 修改mysql密码
+### 修改 mysql 密码
 
-修改globals.env里的mysql_PASS值，密码不要包含 `[ ] / : @ ?` 等特殊字符
+修改 globals.env 里的 mysql_PASS 值，密码不要包含 `[ ] / : @ ?` 等特殊字符
 
-```
+```plain
 export MYSQL_PASS='新密码'
 ```
 
-### 同步install目录
+### 同步 install 目录
 
 ```bash
 ./bkcec sync common
@@ -38,9 +38,9 @@ echo bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec stop
 echo bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec status
 ```
 
-### 关闭saas应用
+### 关闭 saas 应用
 
-在appo服务器上执行
+在 appo 服务器上执行
 
 ```bash
 # 若为单机部署，请使用如下指令
@@ -56,13 +56,13 @@ for x in `ls /data/bkce/paas_agent/apps/projects | awk '{print $1}' | sed 's/.$/
 
 ### 重新生成配置
 
-和mysql相关的模块为mysql，paas，job，bkdata，saas
+和 mysql 相关的模块为 mysql，paas，job，bkdata，saas
 
 ```bash
 echo mysql paas job bkdata | xargs -n 1 ./bkcec render
 ```
 
-**bkdata**特别注意，有3个地方
+**bkdata**特别注意，有 3 个地方
 
 ```bash
 配置1：
@@ -75,7 +75,7 @@ echo mysql paas job bkdata | xargs -n 1 ./bkcec render
 /data/bkce/bkdata/databus/conf/etl.cluster.properties  确认  cc.cache.passwd=mysql密码
 ```
 
-### 更改saas-o应用的密码
+### 更改 saas-o 应用的密码
 
 ```bash
 # 在appo服务器上，先测试一下，确认打印出来的是新密码，注意有*的话，注意转义
@@ -85,19 +85,19 @@ find /data/bkce/paas_agent/apps/projects/bk_*/conf -name "*.conf" | grep "bk" | 
 find /data/bkce/paas_agent/apps/projects/bk_*/conf -name "*.conf" | grep "bk" | xargs grep "老密码" -l | xargs sed -i "s/老密码/新密码/g"
 ```
 
-### 启动MySQL
+### 启动 MySQL
 
 ```bash
 ./bkcec start mysql
 ```
 
-### 重新初始化MySQL
+### 重新初始化 MySQL
 
-```
+```plain
 ./bkcec initdata mysql
 ```
 
-### 重新初始化PaaS
+### 重新初始化 PaaS
 
 ```bash
 ./bkcec initdata paas
@@ -109,7 +109,7 @@ find /data/bkce/paas_agent/apps/projects/bk_*/conf -name "*.conf" | grep "bk" | 
 echo paas gse cmdb kafka job bkdata | xargs -n 1 ./bkcec start
 ```
 
-### 重新初始化APPO
+### 重新初始化 APPO
 
 ```bash
 # 在中控机
@@ -131,7 +131,7 @@ rcmd root@$APPO_IP "ls /data/bkce/paas_agent/apps/projects" | xargs -n 1 ./bkcec
 
 ### 检查
 
-确保CMDB，JOB，蓝鲸监控等模块功能全部OK
+确保 CMDB，JOB，蓝鲸监控等模块功能全部 OK
 
 ```bash
 # 1.确认bkdata任务
@@ -178,65 +178,64 @@ Reading messages... (press Ctrl-C to quit)
 3) "{\"localTime\": \"2018-08-15 11:18:00\", \"data\": \"{\\\"beat\\\":{\\\"address\\\":
 ```
 
-## MySQL 清理binlog日志方法
+## MySQL 清理 binlog 日志方法
 
-> MySQL中的binlog日志记录了数据库中数据的变动，便于对数据的基于时间点和基于位置的恢复，但是binlog也会日渐增大，占用很大的磁盘空间，因此，要对binlog使用正确安全的方法清理掉一部分没用的日志
+> MySQL 中的 binlog 日志记录了数据库中数据的变动，便于对数据的基于时间点和基于位置的恢复，但是 binlog 也会日渐增大，占用很大的磁盘空间，因此，要对 binlog 使用正确安全的方法清理掉一部分没用的日志
 
 **注意：如下提供的方法仅供用户参考，具体操作请务必按照自己的实际情况设置**
 
-### 手动清理binlog
+### 手动清理 binlog
 
-若社区版设置了多台mysql，需查看主库和从库正在使用的binlog是哪个文件
+若社区版设置了多台 mysql，需查看主库和从库正在使用的 binlog 是哪个文件
 
 ```mysql
 MySQL [(none)]> show master status\G
 *************************** 1. row ***************************
             File: mysql-bin.000006
         Position: 97013298
-    Binlog_Do_DB: 
-Binlog_Ignore_DB: 
+    Binlog_Do_DB:
+Binlog_Ignore_DB:
 1 row in set (0.00 sec)
 
 MySQL [(none)]> show slave status\G
 Empty set (0.00 sec)
 ```
 
-在删除binlog日志之前，首先对binlog日志备份，以防万一
+在删除 binlog 日志之前，首先对 binlog 日志备份，以防万一
 
-清理方法一：删除指定日期以前的日志索引中binlog日志文件
+清理方法一：删除指定日期以前的日志索引中 binlog 日志文件
 
 ```mysql
 purge master logs before '2018-08-01 17:20:00';
 ```
 
-清理方法二：删除指定日志文件的日志索引中binlog日志文件
+清理方法二：删除指定日志文件的日志索引中 binlog 日志文件
 
 ```mysql
-purge master logs to'mysql-bin.000006'; 
+purge master logs to'mysql-bin.000006';
 ```
 
 **注意**
 
-- 时间和文件名一定不可以写错，尤其是时间中的年和文件名中的序号，以防不小心将正在使用的binlog删除！！！
-- 切勿删除正在使用的binlog！！！
-- 使用该语法，会将对应的文件和mysql-bin.index中的对应路径删除！！！
+- 时间和文件名一定不可以写错，尤其是时间中的年和文件名中的序号，以防不小心将正在使用的 binlog 删除！！！
+- 切勿删除正在使用的 binlog！！！
+- 使用该语法，会将对应的文件和 mysql-bin.index 中的对应路径删除！！！
 
-### 自动清理binlog
+### 自动清理 binlog
 
-使用如下方法查询当前binlog的过期时间，若为0表示不过期
+使用如下方法查询当前 binlog 的过期时间，若为 0 表示不过期
 
 ```bash
-mysql> show variables like 'expire_logs_days'; 
-+------------------+-------+ 
-| Variable_name    | Value | 
-+------------------+-------+ 
-| expire_logs_days |   0   | 
-+------------------+-------+ 
+mysql> show variables like 'expire_logs_days';
++------------------+-------+
+| Variable_name    | Value |
++------------------+-------+
+| expire_logs_days |   0   |
++------------------+-------+
 ```
 
-使用如下方法设置binlog过期时间，设置30表示30天后自动清理之前的过期日志
+使用如下方法设置 binlog 过期时间，设置 30 表示 30 天后自动清理之前的过期日志
 
 ```bash
 mysql> set global expire_logs_days = 30;
 ```
-

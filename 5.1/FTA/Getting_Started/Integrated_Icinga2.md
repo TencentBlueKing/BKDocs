@@ -1,4 +1,4 @@
-## 集成 Icinga 2
+# 集成 Icinga 2
 
 两步完成 Icinga 2 接入自愈。
 
@@ -15,4 +15,3 @@
 ## 2. 创建自愈方案
 
 参照 [对接 Open-falcon](Integrated_Openfalcon.md#Add_FTA)，完成自愈的接入。
-

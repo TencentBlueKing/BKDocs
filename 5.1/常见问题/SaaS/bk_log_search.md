@@ -1,4 +1,4 @@
-# 日志检索FAQ
+# 日志检索常见问题
 
 ## 通用问题
 
@@ -17,15 +17,15 @@
 
 ## 环境问题
 
-如果用户的蓝鲸后台机器上也部署了zabbix agent时，在使用日志检索时，可能会遇到如下截图的错误：
+如果用户的蓝鲸后台机器上也部署了 zabbix agent 时，在使用日志检索时，可能会遇到如下截图的错误：
 
 ![failed create es](../assets/bk_log_search_failed_create_es.png)
 
-这个问题一般是bkdata模块的databus_es进程监听的10050端口和该机器上zabbix agent的端口冲突。
+这个问题一般是 bkdata 模块的 databus_es 进程监听的 10050 端口和该机器上 zabbix agent 的端口冲突。
 
 解决方法如下：
 
-1. 修改中控机的/data/install/ports.env中下面两行配置的10050端口为10049，避开冲突
+1. 修改中控机的/data/install/ports.env 中下面两行配置的 10050 端口为 10049，避开冲突
     ```bash
     export DATABUS_ES_PORT=10050
     export CONNECTOR_ES_PORT=10050

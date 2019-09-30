@@ -1,6 +1,6 @@
 # Summary
 
-## 蓝鲸智云 CICDKit 产品白皮书
+## CICDKit
 
 * [产品简介](README.md)
 * [术语解释](术语解释/term.md)

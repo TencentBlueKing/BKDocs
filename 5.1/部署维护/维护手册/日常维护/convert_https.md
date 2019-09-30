@@ -1,6 +1,6 @@
-## 蓝鲸日常维护
+# 蓝鲸日常维护
 
-### 全站 HTTP 切换 HTTPS
+## 全站 HTTP 切换 HTTPS
 
 - 修改 globale.env 中的 HTTP_SCHEMA='https'。
 

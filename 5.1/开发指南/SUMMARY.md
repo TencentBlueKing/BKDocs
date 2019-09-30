@@ -8,7 +8,7 @@
         * [macOS下输出Hello,World!](SaaS开发/新手入门/macOS.md)
         * [Windows下输出Hello,World!](SaaS开发/新手入门/Windows.md)
         * [部署SaaS到测试/正式环境](SaaS开发/新手入门/deployment_saas.md)
-        * [FAQ](SaaS开发/新手入门/faq.md)
+        * [常见问题](SaaS开发/新手入门/faq.md)
     * [开发基础]()
         * [开发框架 2.0](SaaS开发/开发基础/README.md)
         * [MagicBox](SaaS开发/开发基础/MagicBox.md)

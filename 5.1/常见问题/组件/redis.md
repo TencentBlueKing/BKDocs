@@ -1,20 +1,20 @@
-# Redis FAQ
+# Redis 常见问题
 
-## Redis密码修改
+## Redis 密码修改
 
 > 如下指引，若无特殊说明，全部在中控机`/data/install`目录进行
 
-### 停止redis
+### 停止 redis
 
 ```bash
 ./bkcec stop redis
 ```
 
-### 修改redis密码
+### 修改 redis 密码
 
-修改globals.env里的REDIS_PASS值，密码不要包含 [ ] / : @ ? 等特殊字符
+修改 globals.env 里的 REDIS_PASS 值，密码不要包含 [ ] / : @ ? 等特殊字符
 
-### 同步install目录
+### 同步 install 目录
 
 ```bash
 ./bkcec sync common
@@ -32,19 +32,19 @@ echo bkdata fta gse job cmdb paas redis | xargs -n 1 ./bkcec render
 echo bkdata fta gse job cmdb paas | xargs -n 1 ./bkcec stop
 ```
 
-### 更新zk内redis密码
+### 更新 zk 内 redis 密码
 
-此步有2种方式，推荐方式1
+此步有 2 种方式，推荐方式 1
 
-方式1：通过命令修改zk内redis密码
+方式 1：通过命令修改 zk 内 redis 密码
 
 ```bash
 # 修改方法，注意把引号内新密码调整为redis的新密码，密码不要包含 [ ] / : @ ? 等特殊字符
-$ /data/bkce/service/zk/bin/zkCli.sh -server zk.service.consul:2181 
+$ /data/bkce/service/zk/bin/zkCli.sh -server zk.service.consul:2181
 Connecting to zk.service.consul:2181
 Welcome to ZooKeeper!
 JLine support is enabled
-[zk: zk.service.consul:2181(CONNECTED) 0] 
+[zk: zk.service.consul:2181(CONNECTED) 0]
 WATCHER::
 
 WatchedEvent state:SyncConnected type:None path:null
@@ -71,7 +71,7 @@ numChildren = 0
 [zk: zk.service.consul:2181(CONNECTED) 1] get /gse/config/etc/dataserver/storage/all/0_1
 ```
 
-方式2：可以通过重新安装gse来实现
+方式 2：可以通过重新安装 gse 来实现
 
 ```bash
 ./bkcec stop gse
@@ -79,9 +79,9 @@ numChildren = 0
 ./bkcec start gse
 ```
 
-### 修改bkdata databus的配置
+### 修改 bkdata databus 的配置
 
-在bkdata服务器上修改`/data/bkce/bkdata/databus/conf/redis.cluster.properties`配置，新增`connector.redis.auth=新密码`配置
+在 bkdata 服务器上修改`/data/bkce/bkdata/databus/conf/redis.cluster.properties`配置，新增`connector.redis.auth=新密码`配置
 
 注意新密码不要用任何符号引起来，类似单引号，双引号
 
@@ -95,4 +95,4 @@ connector.redis.auth=新密码
 echo redis paas cmdb gse job bkdata fta | xargs -n 1 ./bkcec start
 ```
 
-确保JOB，CMDB，蓝鲸监控等模块功能全部OK
+确保 JOB，CMDB，蓝鲸监控等模块功能全部 OK

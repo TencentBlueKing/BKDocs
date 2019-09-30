@@ -1,6 +1,6 @@
-## 蓝鲸日常维护
+# 蓝鲸日常维护
 
-### 磁盘清理
+## 磁盘清理
 
 可能产生比较大数据量的目录有：
 
@@ -20,7 +20,7 @@ public 目录一般不能手动删除，一般比较大的组件可能有
 
 - Elasticsearch 数据
 
-#### MySQL 日志清理
+## MySQL 日志清理
 > MySQL中的 binlog 日志记录了数据库中数据的变动，便于对数据的基于时间点和基于位置的恢复，但是 binlog 也会日渐增大，占用很大的磁盘空间，因此，要对 binlog 使用正确安全的方法清理掉一部分没用的日志。
 
 **注意：** 下述方法仅供参考，具体以实际生产环境情况进行调整。
@@ -28,16 +28,16 @@ public 目录一般不能手动删除，一般比较大的组件可能有
 **手动清理 binlog**
 
 若社区版设置了多台 MySQL，需查看主库和从库正在使用的 binlog 是哪个文件
-    
+
     ```bash
         MySQL [(none)]> show master status\G
     *************************** 1. row ***************************
                 File: mysql-bin.000006
             Position: 97013298
-        Binlog_Do_DB: 
-    Binlog_Ignore_DB: 
+        Binlog_Do_DB:
+    Binlog_Ignore_DB:
     1 row in set (0.00 sec)
-    
+
     MySQL [(none)]> show slave status\G
     Empty set (0.00 sec)
     ```
@@ -47,7 +47,7 @@ public 目录一般不能手动删除，一般比较大的组件可能有
     ```bash
     purge master logs before '201x-xx-xx 17:20:00';
     ```
-    
+
 清理方法二：删除指定日志文件的日志索引中binlog日志文件
     ```bash
     purge master logs to'mysql-bin.00000x';
@@ -66,11 +66,11 @@ public 目录一般不能手动删除，一般比较大的组件可能有
 使用如下方法查询当前 binlog 的过期时间，若为 0 表示不过期。
 
 ```bash
-mysql> show variables like 'expire_logs_days'; 
-+------------------+-------+ 
-| Variable_name    | Value | 
-+------------------+-------+ 
-| expire_logs_days |   0   | 
+mysql> show variables like 'expire_logs_days';
++------------------+-------+
+| Variable_name    | Value |
++------------------+-------+
+| expire_logs_days |   0   |
 +------------------+-------+
 ```
 使用如下方法设置 binlog 过期时间，设置 30 表示 30 天后自动清理之前的过期日志。该方法只是临时启用，重启 MySQL 服务之后则失效。永久生效则需将参数添加至 MySQL 配置文件。
@@ -78,7 +78,7 @@ mysql> show variables like 'expire_logs_days';
 ```bash
 mysql> set global expire_logs_days = 30;
 ```
-#### Kafka 日志清理
+## Kafka 日志清理
 > Kafka 将数据持久化到了硬盘上，允许配置一定的策略对数据清理，清理的策略有两个，删除和压缩。
 **注意：** 下面清理策略，请根据实际业务，服务器状况，及需求来定制。
 
@@ -110,7 +110,7 @@ $ updated config for topic "snapshot2"
 
 ```
 
-#### Elasticsearch 日志清理
+## Elasticsearch 日志清理
 - 查看目前所有的索引
     ```bash
     source /data/install/utils.fc  

@@ -1,6 +1,6 @@
 # Summary
 
-## 蓝鲸故障自愈白皮书
+## 故障自愈
 
 * [产品简介](Intro/README.md)
 * [术语解释](Concepts_Terminology/Concepts_Terminology.md)
@@ -45,4 +45,3 @@
     * [故障自愈是监控系统吗](FAQ/Wheather_bk_fta_solutions_Monitor.md)
     * [故障自愈依赖哪些周边系统](FAQ/Fta_Need_Etc.md)
     * [故障自愈首页指标计算方法](FAQ/HomePage_Metrics.md)
-
