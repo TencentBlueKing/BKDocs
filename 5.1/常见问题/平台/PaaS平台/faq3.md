@@ -94,7 +94,7 @@ tcp        0      0 0.0.0.0:8010            0.0.0.0:*               LISTEN      
 
 如果要变更超时时间:
 
-## 1. PaaSAgent 变更
+## 1. PaaS Agent 变更
 
 - 登录 PaaSAgent 服务器(APPO/APPT)
 - 编辑`paas_agent_config.yaml`, 修改 `EXECUTE_TIME_LIMIT` 字段值
@@ -131,17 +131,3 @@ healthz 接口会检查服务本身及其所有外部依赖, 若服务不可用�
 - 确认所有机器的时区及时间一致(**重要**)
 
 
-### 登录页面无限跳转
-
-- 确保两台 PaaS 机器上, login/conf/settings_production.py 配置一致
-- 两台 PaaS 机器的机器时间一致(需设置时间同步保证绝对一致)
-- 确认网络: 即 PaaSAgent 服务器能访问到 PaaS 域名 / cc 和 job 部署所在服务器能访问到 PaaS 域名
-
-逻辑:
-- 到 login 登录
-- 签名 token 到 cookie
-- 到 SaaS 应用, 例如开发框架/作业平台/配置平台, 此时, 该平台会发起 post 请求到 PaaS 服务, 访问 login 校验, 校验失败, 又跳转回登录页面
-
-极大可能:
-- 两台 PaaS 所在机器时间不一致
-- 应用机器到 PaaS 域名网络不通

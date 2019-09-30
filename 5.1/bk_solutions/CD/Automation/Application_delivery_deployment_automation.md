@@ -69,7 +69,7 @@
 
 确立了技术方案后，接下来介绍如何在企业内部实施标准运维，实现应用交付自动化。
 
-如何实施标准运维，请参考场景案例：[应用如何自动化部署至生产环境](5.1/bk_solutions/CD/CMDB/CMDB_intapplication_deployment.mdegration.md)、[应用交付人力转移，让运维更专注业务优化](ops_half_automation.md)。
+如何实施标准运维，请参考场景案例：[应用如何自动化部署至生产环境](5.1/bk_solutions/CD/CMDB/CMDB_integration.md)、[应用交付人力转移，让运维更专注业务优化](ops_half_automation.md)。
 
 ## 3. 技术发展方向
 

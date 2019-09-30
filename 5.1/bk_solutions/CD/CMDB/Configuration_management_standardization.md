@@ -47,7 +47,7 @@
 
 确立了技术方案后，接下来介绍如何在企业内部实施 CMDB，使其成为自动化等 IT 系统的基石。
 
-如何实施 CMDB，请参考场景案例： [业务上线时 CMDB 如何管理主机](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)、[CMDB 如何管理进程](5.1/bk_solutions/CD/CMDB/CMDB_management_process.md)、[CMDB 如何管理 MySQL 实例](5.1/bk_solutions/CD/CMDB/CMDB_management_database_middleware.md)、[企业 CMDB 主机实例同步至蓝鲸 CMDB](5.1/bk_solutions/CD\CMDB/CMDB_integration.md)、[自动发现 MySQL 实例](5.1/bk_solutions/CD/CMDB/CMDB_CI_auto_discovery_MySQL.md)。
+如何实施 CMDB，请参考场景案例： [业务上线时 CMDB 如何管理主机](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)、[CMDB 如何管理进程](5.1/bk_solutions/CD/CMDB/CMDB_management_process.md)、[CMDB 如何管理 MySQL 实例](5.1/bk_solutions/CD/CMDB/CMDB_management_database_middleware.md)、[企业 CMDB 主机实例同步至蓝鲸 CMDB](5.1/bk_solutions/CD/CMDB/CMDB_integration.md)、[自动发现 MySQL 实例](5.1/bk_solutions/CD/CMDB/CMDB_CI_auto_discovery_MySQL.md)。
 
 
 ## 3. 技术发展方向
