@@ -27,12 +27,12 @@
 
   - 从 [官网下载](http://bk.tencent.com/download/) 完整包，并解压到 /data/ 下。
 
-    ```plain
+    ```bash
     $ tar xf bkce_src-5.0.3.tar.gz  -C /data
     ```
 
   - 获取机器的 MAC 地址后，下载 [证书文件](https://bk.tencent.com/download_ssl/)，解压到 src/cert 目录下
-    ```plain
+    ```bash
     $ tar xf ssl_certificates.tar.gz -C /data/src/cert
     ```
 * 配置参数

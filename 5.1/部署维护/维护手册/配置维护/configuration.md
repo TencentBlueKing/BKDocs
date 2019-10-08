@@ -224,7 +224,7 @@ monitor 的配置：
 
 插入一行，比如限制最大使用 4GB 内存：
 
-```plain
+```bash
 maxmemory 4G
 ```
 
@@ -241,7 +241,7 @@ maxmemory 4G
 
 databus 目前有五个进程，对应的配置文件分别是：
 
-```plain
+```bash
 /data/src/bkdata/support-files/templates/databus#conf#es.cluster.properties
 /data/src/bkdata/support-files/templates/databus#conf#etl.cluster.properties
 /data/src/bkdata/support-files/templates/databus#conf#jdbc.cluster.properties
@@ -255,7 +255,7 @@ databus 目前有五个进程，对应的配置文件分别是：
 
 修改 `/data/bkce/service/es/config/jvm.options` 里的
 
-```plain
+```bash
 -Xms1G
 -Xmx1G
 ```

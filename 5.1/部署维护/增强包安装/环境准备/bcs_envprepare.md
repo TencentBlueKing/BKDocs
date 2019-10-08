@@ -18,7 +18,7 @@ tar xf bkce_bcs-x.x.x.tgz  # 跟 src 保持同级目录
 
 **如下示例：**
 
-```ini
+```bash
 [bcs-web]
 10.0.0.4    bcs(web_console),bcs(cc),bcs(monitor),mysql01(bcs),thanos(query),devops(navigator)
 10.0.0.5    bcs(grafana),devops(pm),harbor(api),harbor(server),thanos(rule)

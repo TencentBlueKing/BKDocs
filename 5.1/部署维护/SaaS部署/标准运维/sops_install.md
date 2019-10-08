@@ -16,7 +16,7 @@
 
 如果是全新版本部署蓝鲸，可以跳过这一步，直接进入第三步。
 如果升级安装的蓝鲸，需要手动在中控机执行如下命令，开通标准运维访问 ESB 的白名单，以便标准运维原子可以正常调用 ESB 接口。
-```plain
+```bash
 source /data/install/utils.fc
 add_app_token bk_sops "$(_app_token bk_sops)" "标准运维"
 ```

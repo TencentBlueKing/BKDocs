@@ -58,21 +58,21 @@ source scripts/develop/sites/community/env.sh
 
 第三种方式，你可以直接修改项目的 settings 配置，先修改 `config/__init__.py` ，设置项目的基础信息
 
-```Python
+```python
 APP_ID = 'bk_sops'
 APP_TOKEN = '{APP_TOKEN}'
 BK_PaaS_HOST = '{BK_PaaS_HOST}'
 ```
 
 然后修改 config/dev.py ，追加配置平台域名、作业平台域名配置
-```Python
+```python
 BK_CC_HOST = '{BK_CC_HOST}'
 BK_JOB_HOST = '{BK_JOB_HOST}'
 ```
 
 2) 修改 config/dev.py，设置本地开发用的数据库信息，添加 Redis 本地信息
 
-```Python
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.MySQL',  # 默认用MySQL
@@ -93,7 +93,7 @@ Redis = {
 ### 创建并初始化数据库  
 
 1) 在 MySQL 中创建名为 bk_sops 的数据库
-```sql
+```bash
 CREATE DATABASE `bk_sops` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 ```
 
@@ -253,7 +253,7 @@ add_app_token bk-sops-ce "$(_app_token bk-sops-ce)" "标准运维定制版"
 
 1) 如果需要保留官方标准运维应用的所有数据，你需要修改数据库配置  
 获取你部署的蓝鲸社区版平台的数据库账号密码，以及官方标准运维应用的数据库名，默认测试环境是 bk_sops_bkt，正式环境是 bk_sops。修改代码的 config/stag.py 和 config/prod.py，分别修改为上面获取的官方标准运维应用的数据库信息。
-```Python
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.MySQL',  # 默认用MySQL

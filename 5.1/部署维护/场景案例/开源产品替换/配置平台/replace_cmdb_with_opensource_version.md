@@ -210,7 +210,7 @@ curl -X POST -H 'Content-Type:application/json' -H 'BK_USER:migrate' -H 'HTTP_BL
 
 现象：
 
-```plain
+```bash
 go build -i -ldflags "-X configcenter/src/common/version.CCVersion= -X configcenter/src/common/version.CCBuildTime=2019-05-09T14:35:01+0800 -X configcenter/src/common/version.CCGitHash= -X configcenter/src/common/version.CCTag=" -o tmp/src/configcenter/src/bin/build/cmdb_proccontroller/cmdb_proccontroller
 fatal: not a git repository (or any of the parent directories): .git
 fatal: not a git repository (or any of the parent directories): .git
@@ -249,7 +249,7 @@ make: *** [default] Error 1
 
 - 方法一: 切换到 python 2 环境后重新编译: 通过 virtualenv
 
-```plain
+```bash
 mkvirtualenv bk-cmdb -p /usr/local/bin/python2
 ```
 

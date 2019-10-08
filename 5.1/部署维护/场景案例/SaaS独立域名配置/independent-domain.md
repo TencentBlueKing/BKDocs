@@ -22,7 +22,7 @@
 
 ## HTTP 配置
 
-```nginx
+```bash
 server {
     listen 80;
     server_name  bk-frameowrk.bking.com;
@@ -64,7 +64,7 @@ server {
 
 HTTPS 配置(除了 `server_name`, `access_log` 和 `location`, 其他 SSL 相关配置需要同 `PaaS` 域名配置)
 
-```nginx
+```bash
 server {
     listen 443 ssl;
     listen 80;

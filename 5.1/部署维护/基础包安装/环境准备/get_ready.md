@@ -35,7 +35,7 @@
     sed -i 's/^SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
     ```
     接着，重启机器：
-    ```plain
+    ```bash
     reboot
     ```
 2. 安装 rsync 命令
@@ -303,7 +303,7 @@ bash precheck.sh
 
 正常输出如下图所示：
 
-```plain
+```bash
 start <<check_ssh_nopass>> ... [OK]
 start <<check_password>> ... [OK]
 start <<check_cert_mac>> ... [OK]
