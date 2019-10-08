@@ -36,3 +36,21 @@
 5. ./bkcec start bkdata databus
 6. ./bkcec stop bkdata dataapi
 7. ./bkcec start bkdata dataapi
+
+### 内存问题
+
+/data/bkce/logs/bkdata/databus_es.log 日志报错 memory is low  提示内存不足，但是分配了足够的内存
+
+![](../assets/logseach.png)
+
+```bash
+ vim /data/bkce/bkdata/databus/conf/es.cluster.properties
+#  启动jvm是最大分配内存
+deploy.cluster.memory.max=2G
+```
+![](../assets/logseach2.png)
+
+重启 databus_es
+```bash
+supervisorctl -c /data/bkce/etc/supervisor-bkdata-databus.conf restart databus_es
+```

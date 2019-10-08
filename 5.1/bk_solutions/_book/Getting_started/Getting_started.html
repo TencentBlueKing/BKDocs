@@ -57,8 +57,6 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="FAQ.html" />
-    
     
 
     </head>
@@ -81,7 +79,7 @@
 
     
         
-        <li class="header">蓝鲸最佳实践</li>
+        <li class="header">场景案例</li>
         
         
     
@@ -118,19 +116,6 @@
             
                     
                     新手之旅
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="FAQ.html">
-            
-                <a href="FAQ.html">
-            
-                    
-                    FAQ
             
                 </a>
             
@@ -208,7 +193,7 @@
                 <a href="../CD/CMDB/Configuration_management_standardization.html">
             
                     
-                    概述 1 : 待审核 
+                    概述: 待审核 
             
                 </a>
             
@@ -221,7 +206,7 @@
                 <a href="../CD/CMDB/CMDB_management_hosts.html">
             
                     
-                    业务上线时管理主机
+                    业务上线时 CMDB 如何管理主机
             
                 </a>
             
@@ -234,7 +219,7 @@
                 <a href="../CD/CMDB/CMDB_management_process.html">
             
                     
-                    管理进程
+                    CMDB 如何管理进程
             
                 </a>
             
@@ -268,12 +253,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.6" data-path="../CD/CMDB/CMDB_integration.html">
+        <li class="chapter " data-level="1.4.1.6" data-path="../CD/CMDB/CMDB_intapplication_deployment.mdegration.md">
             
-                <a href="../CD/CMDB/CMDB_integration.html">
+                <span>
             
                     
-                    对接企业原有 CMDB，实现数据同步
+                    企业原有 CMDB 同步至蓝鲸 CMDB
             
                 </a>
             
@@ -304,7 +289,7 @@
                 <span>
             
                     
-                    应用交付自动化 理论篇
+                    应用交付自动化
             
                 </span>
             
@@ -318,7 +303,7 @@
                 <a href="../CD/Automation/Application_delivery_deployment_automation.html">
             
                     
-                    概述 1 : 待审核 
+                    概述 : 待审核 
             
                 </a>
             
@@ -729,6 +714,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6" data-path="FAQ.html">
+            
+                <a href="FAQ.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -771,63 +769,63 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x5FEB;&#x901F;&#x5165;&#x95E8;">&#x5FEB;&#x901F;&#x5165;&#x95E8;</h2>
-<h4 id="Situation">&#x60C5;&#x666F; </h4>
+                                <h1 id="&#x5FEB;&#x901F;&#x5165;&#x95E8;">&#x5FEB;&#x901F;&#x5165;&#x95E8;</h1>
+<h2 id="&#x60C5;&#x666F;">&#x60C5;&#x666F;</h2>
 <p>&#x8FD0;&#x7EF4;&#x7684;&#x804C;&#x80FD;&#x4E3A; <strong>&#x5E94;&#x7528;&#x53D1;&#x5E03;</strong> &#x3001; <strong>&#x53D8;&#x66F4;</strong> &#x3001; <strong>&#x6545;&#x969C;&#x5904;&#x7406;</strong> &#x4EE5;&#x53CA; <strong>&#x65E5;&#x5E38;&#x9700;&#x6C42;</strong> &#xFF0C;&#x8986;&#x76D6;&#x7814;&#x53D1;&#x8FD0;&#x8425;&#x751F;&#x547D;&#x5468;&#x671F;&#x7684; <strong>&#x6301;&#x7EED;&#x96C6;&#x6210;</strong> &#xFF08;CI&#xFF09;&#x3001; <strong>&#x6301;&#x7EED;&#x90E8;&#x7F72;</strong> &#xFF08;CD&#xFF09;&#x3001; <strong>&#x6301;&#x7EED;&#x8FD0;&#x8425;</strong> &#xFF08;CO&#xFF09;&#x4E09;&#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x4ECE;&#x6D4B;&#x8BD5;&#x5305;&#x4EA4;&#x4ED8;&#x5230;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#xFF0C;&#x5230;&#x5C06;&#x9A8C;&#x8BC1;&#x901A;&#x8FC7;&#x7684;&#x7248;&#x672C;&#x90E8;&#x7F72;&#x5230;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#xFF0C;&#x4EE5;&#x53CA;&#x63D0;&#x4F9B;&#x4E1A;&#x52A1;&#x4E0A;&#x7EBF;&#x540E;&#x7684;&#x8FD0;&#x7EF4;&#x57FA;&#x7840;&#x548C;&#x589E;&#x503C;&#x670D;&#x52A1;&#x3002;</p>
 <p>&#x4F20;&#x7EDF;&#x4EBA;&#x5DE5;&#x3001;&#x811A;&#x672C;&#x7684;&#x8FD0;&#x7EF4;&#x6A21;&#x5F0F;&#x4F1A;&#x9762;&#x4E34; <strong>&#x6548;&#x7387;&#x4F4E;&#x4E0B;</strong> &#x3001; <strong>&#x9891;&#x7E41;&#x51FA;&#x9519;&#x80CC;&#x9505;</strong> &#x7B49;&#x7B49;&#x6311;&#x6218;&#xFF0C;&#x5728;&#x8D28;&#x91CF;&#x3001;&#x6548;&#x7387;&#x3001;&#x6210;&#x672C;&#x3001;&#x5B89;&#x5168;&#x56DB;&#x4E2A;&#x7EF4;&#x5EA6;&#x4E0A;&#xFF0C;&#x65E0;&#x6CD5;&#x8DDF;&#x968F;&#x4E1A;&#x52A1;&#x5FEB;&#x901F;&#x589E;&#x957F;&#x7684;&#x6B65;&#x4F10;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x7531;&#x4E8E;&#x8FD9;&#x79CD;&#x56F0;&#x5883;&#xFF0C;&#x8FD0;&#x7EF4;&#x4EA4;&#x4ED8;&#x57FA;&#x7840;&#x8FD0;&#x7EF4;&#x670D;&#x52A1;&#x5DF2;&#x7ECF;&#x75B2;&#x4E8E;&#x5954;&#x547D;&#xFF0C;&#x65E0;&#x6CD5;&#x5411;&#x4E0A;&#x4EA4;&#x4ED8;&#x8FD0;&#x7EF4;&#x7684;&#x589E;&#x503C;&#x670D;&#x52A1;&#xFF0C;&#x96BE;&#x4EE5;&#x4F53;&#x73B0;&#x81EA;&#x8EAB;&#x4EF7;&#x503C;&#x3002;</p>
 <p>&#x84DD;&#x9CB8;&#x662F;&#x817E;&#x8BAF;&#x6E38;&#x620F;&#x57FA;&#x4E8E; PaaS &#x7406;&#x5FF5;&#x8BBE;&#x8BA1;&#x7684;&#x4E00;&#x5957; <strong>&#x7814;&#x53D1;&#x8FD0;&#x8425;&#x4E00;&#x4F53;&#x5316;&#x89E3;&#x51B3;&#x65B9;&#x6848;</strong> &#xFF0C;&#x670D;&#x52A1;&#x4E8E;&#x4E1A;&#x52A1;&#x5168;&#x751F;&#x547D;&#x5468;&#x671F;&#x3002;&#x5C06;&#x670D;&#x52A1;&#x4EE5;&#x539F;&#x5B50;&#x80FD;&#x529B;&#x96C6;&#x6210;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x4E86;&#x81EA;&#x4E3B;&#x7814;&#x53D1; SaaS &#x7684; DevOps &#x5DE5;&#x5177;&#x94FE;&#xFF0C;&#x901A;&#x8FC7;&#x79C1;&#x6709;&#x5316;&#x90E8;&#x7F72;&#x7684;&#x6A21;&#x5F0F;&#xFF0C;&#x5E2E;&#x52A9;&#x4F01;&#x4E1A;&#x6574;&#x5408;&#x53CA;&#x843D;&#x5730;&#x7814;&#x53D1;&#x8FD0;&#x8425;&#x4F53;&#x7CFB;&#xFF0C;&#x63D0;&#x5347;&#x4F01;&#x4E1A;&#x7814;&#x53D1;&#x8FD0;&#x8425;&#x6548;&#x7387;&#xFF0C;&#x5E2E;&#x52A9;&#x4F01;&#x4E1A;&#x8FD0;&#x7EF4;&#x56E2;&#x961F;&#x8F6C;&#x578B;&#xFF0C;&#x63D0;&#x4F9B;&#x66F4;&#x591A;&#x589E;&#x503C;&#x670D;&#x52A1;&#x3002;</p>
 <p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7; <strong>&#x4E00;&#x4E2A;&#x4F20;&#x7EDF;&#x5355;&#x4F53;&#x5E94;&#x7528;&#x7684;&#x53D1;&#x5E03;&#xFF08;&#x5C06;&#x7248;&#x672C;&#x90E8;&#x7F72;&#x81F3;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#xFF09;</strong> &#x3001; <strong>&#x6545;&#x969C;&#x5904;&#x7406;&#xFF08;&#x78C1;&#x76D8;&#x544A;&#x8B66;&#x81EA;&#x52A8;&#x5316;&#x5904;&#x7406;&#xFF09;</strong> &#x4EE5;&#x53CA; <strong>&#x65E5;&#x5E38;&#x9700;&#x6C42;&#xFF08;&#x6D4B;&#x8BD5;&#x540C;&#x5B66;&#x81EA;&#x52A9;&#x8C03;&#x6574;&#x5E94;&#x7528;&#x914D;&#x7F6E;&#xFF09;</strong> &#x7B49;&#x51E0;&#x5927;&#x573A;&#x666F;&#xFF0C;&#x770B;&#x84DD;&#x9CB8;&#x662F;&#x5982;&#x4F55;&#x9AD8;&#x6548;&#x7684;&#x4EA4;&#x4ED8;&#x8FD0;&#x7EF4;&#x670D;&#x52A1;&#x3002;</p>
-<h4 id="Prerequisites">&#x524D;&#x63D0;&#x6761;&#x4EF6; </h4>
+<h2 id="&#x524D;&#x63D0;&#x6761;&#x4EF6;">&#x524D;&#x63D0;&#x6761;&#x4EF6;</h2>
 <ul>
-<li><a href="https://docs.bk.tencent.com/introduction/introduction.html#introduction" target="_blank">&#x4E86;&#x89E3;&#x84DD;&#x9CB8;&#x7684;&#x4F53;&#x7CFB;&#x67B6;&#x6784;</a></li>
+<li><a href="5.1/&#x84DD;&#x9CB8;&#x4F53;&#x7CFB;/&#x54C1;&#x724C;&#x7B80;&#x4ECB;/intro.md">&#x4E86;&#x89E3;&#x84DD;&#x9CB8;&#x7684;&#x4F53;&#x7CFB;&#x67B6;&#x6784;</a></li>
 </ul>
 <p><video src="http://bkopen-10032816.file.myqcloud.com/grayscale_test/BkVideo/bk_AdVideo_cn.mp4" width="100%" height="100%" controls loop></video></p>
 <ul>
-<li><a href="https://docs.bk.tencent.com/bkce_install_guide/" target="_blank">&#x5B8C;&#x6210;&#x84DD;&#x9CB8;&#x7684;&#x90E8;&#x7F72;</a></li>
+<li><a href="5.1/&#x90E8;&#x7F72;&#x7EF4;&#x62A4;/README.md">&#x5B8C;&#x6210;&#x84DD;&#x9CB8;&#x7684;&#x90E8;&#x7F72;</a></li>
 </ul>
-<h4 id="Steps">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4; </h4>
+<h2 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h2>
 <ul>
-<li><a href="#Prepare_environment">1. &#x51C6;&#x5907;&#x73AF;&#x5883;</a></li>
-<li><a href="#Application_delivery">2. &#x5E94;&#x7528;&#x4EA4;&#x4ED8;</a></li>
-<li><a href="#Fault_auto_recovery">3. &#x6545;&#x969C;&#x5904;&#x7406;</a></li>
-<li><a href="#Request">4. &#x65E5;&#x5E38;&#x9700;&#x6C42;</a></li>
+<li>&#x51C6;&#x5907;&#x73AF;&#x5883;</li>
+<li>&#x5E94;&#x7528;&#x4EA4;&#x4ED8;</li>
+<li>&#x6545;&#x969C;&#x5904;&#x7406;</li>
+<li>&#x65E5;&#x5E38;&#x9700;&#x6C42;</li>
 </ul>
-<h2 id="Prepare_environment">1. &#x51C6;&#x5907;&#x73AF;&#x5883; </h2>
+<h2 id="1-&#x51C6;&#x5907;&#x73AF;&#x5883;">1. &#x51C6;&#x5907;&#x73AF;&#x5883;</h2>
 <p>&#x5B8C;&#x6210;&#x84DD;&#x9CB8;&#x90E8;&#x7F72;&#x540E;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5F00;&#x59CB;&#x521D;&#x59CB;&#x5316;&#x73AF;&#x5883;&#x3002;</p>
 <p>&#x5728;&#x84DD;&#x9CB8; CMDB &#x4E2D; &#x65B0;&#x5EFA;&#x4E1A;&#x52A1;&#x3001;&#x5212;&#x5206;&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#xFF0C;&#x4EE5;&#x53CA; &#x5B89;&#x88C5; Agent&#xFF0C;&#x5B8C;&#x6210;&#x84DD;&#x9CB8;&#x5BF9;&#x4E1A;&#x52A1;&#x4E3B;&#x673A;&#x7684;&#x7EB3;&#x7BA1;&#x3002;</p>
 <h3 id="11-cmdb-&#x65B0;&#x5EFA;&#x4E1A;&#x52A1;&#x53CA;&#x5212;&#x5206;&#x4E1A;&#x52A1;&#x62D3;&#x6251;">1.1 CMDB &#x65B0;&#x5EFA;&#x4E1A;&#x52A1;&#x53CA;&#x5212;&#x5206;&#x4E1A;&#x52A1;&#x62D3;&#x6251;</h3>
 <p>&#x5728;&#x84DD;&#x9CB8;&#x4E2D;&#xFF0C;&#x84DD;&#x9CB8; CMDB &#x4F4D;&#x4E8E;&#x539F;&#x5B50;&#x5E73;&#x53F0;&#x5C42;&#xFF0C;&#x901A;&#x8FC7;&#x84DD;&#x9CB8; PaaS &#x7684; ESB &#x6A21;&#x5757;&#xFF0C;&#x4E3A;&#x4E0A;&#x5C42; SaaS &#x63D0;&#x4F9B;&#x7EDF;&#x4E00;&#x7684;&#x8D44;&#x6E90;&#x7BA1;&#x7406;&#x3002;</p>
 <p>&#x6240;&#x4EE5;&#xFF0C;&#x9488;&#x5BF9;&#x4E1A;&#x52A1;&#x6216;&#x8005;&#x4E3B;&#x673A;&#x7B49;&#x8D44;&#x6E90;&#x7684;&#x7BA1;&#x7406;&#x4E4B;&#x524D;&#xFF0C;&#x8981;&#x5148;&#x5C06;&#x5176;&#x5728; CMDB &#x4E2D;&#x7EB3;&#x7BA1;&#x3002;</p>
-<p>&#x9996;&#x5148;&#xFF0C;&#x5728; <a href="https://docs.bk.tencent.com/cmdb/" target="_blank">&#x914D;&#x7F6E;&#x5E73;&#x53F0;</a> &#x4E2D; <a href="https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%881%EF%BC%89%E6%96%B0%E5%BB%BA%E4%B8%9A%E5%8A%A1" target="_blank">&#x65B0;&#x5EFA;&#x5B8C;&#x4E1A;&#x52A1;</a>&#xFF0C;&#x7136;&#x540E;&#x53C2;&#x7167; <a href="CD/CMDB_management_hosts.md">&#x4E1A;&#x52A1;&#x4E0A;&#x7EBF;&#x65F6; CMDB &#x5982;&#x4F55;&#x7BA1;&#x7406;&#x4E3B;&#x673A;</a> &#x5B8C;&#x6210;&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x7684;&#x5212;&#x5206;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x5728;&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x4E2D; <a href="5.1/&#x914D;&#x7F6E;&#x5E73;&#x53F0;/&#x5FEB;&#x901F;&#x5165;&#x95E8;/case1.md">&#x65B0;&#x5EFA;&#x4E1A;&#x52A1;</a>&#xFF0C;&#x7136;&#x540E;&#x53C2;&#x7167; <a href="5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md">&#x4E1A;&#x52A1;&#x4E0A;&#x7EBF;&#x65F6; CMDB &#x5982;&#x4F55;&#x7BA1;&#x7406;&#x4E3B;&#x673A;</a> &#x5B8C;&#x6210;&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x7684;&#x5212;&#x5206;&#x3002;</p>
 <p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x5B89;&#x88C5; Agent&#xFF0C;&#x84DD;&#x9CB8;&#x7684;&#x7BA1;&#x63A7;&#x5E73;&#x53F0;&#x53EF;&#x4EE5;&#x5BF9;&#x4E3B;&#x673A;&#x5B9E;&#x73B0;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x5206;&#x53D1;&#x3001;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x3001;&#x6570;&#x636E;&#x4E0A;&#x62A5;&#x7684;&#x7BA1;&#x63A7;&#xFF0C;&#x540C;&#x65F6;&#x4E3B;&#x673A;&#x4F1A;&#x81EA;&#x52A8;&#x5F55;&#x5165;&#x5230;&#x84DD;&#x9CB8; CMDB &#x5BF9;&#x5E94;&#x7684;&#x4E1A;&#x52A1;&#x3002;</p>
 <h3 id="12-&#x5B89;&#x88C5;-agent">1.2 &#x5B89;&#x88C5; Agent</h3>
-<p>&#x53C2;&#x7167; <a href="CD/Hybrid_cloud_management.md#Direct_network_management">&#x7BA1;&#x7406;&#x76F4;&#x8FDE;&#x7F51;&#x7EDC;&#x533A;&#x57DF;&#x7684;&#x4E3B;&#x673A;</a>&#xFF0C;&#x5B8C;&#x6210; Agent &#x5B89;&#x88C5;&#x3002;</p>
+<p>&#x53C2;&#x7167; <a href="5.1/bk_solutions/CD/Automation/Hybrid_cloud_management.md">&#x7BA1;&#x7406;&#x76F4;&#x8FDE;&#x7F51;&#x7EDC;&#x533A;&#x57DF;&#x7684;&#x4E3B;&#x673A;</a>&#xFF0C;&#x5B8C;&#x6210; Agent &#x5B89;&#x88C5;&#x3002;</p>
 <h3 id="13-&#x6267;&#x884C;&#x811A;&#x672C;&#x548C;&#x5206;&#x53D1;&#x6587;&#x4EF6;">1.3 &#x6267;&#x884C;&#x811A;&#x672C;&#x548C;&#x5206;&#x53D1;&#x6587;&#x4EF6;</h3>
 <p>&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x811A;&#x672C;&#x548C;&#x6587;&#x4EF6;&#x5206;&#x53D1;&#xFF0C;&#x9A8C;&#x8BC1;&#x73AF;&#x5883;&#x662F;&#x5426;&#x5DF2;&#x51C6;&#x5907;&#x59A5;&#x5F53;&#x3002;</p>
 <p><video src="../CD/Automation/media/blueking_execute_push_file.mp4" width="100%" height="100%" controls loop></video></p>
 <p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x5C1D;&#x8BD5;&#x505A;&#x4E00;&#x6B21;&#x5355;&#x4F53;&#x5E94;&#x7528;&#x7684;&#x7248;&#x672C;&#x53D1;&#x5E03;&#x3002;</p>
-<h2 id="Application_delivery">2. &#x5E94;&#x7528;&#x4EA4;&#x4ED8; </h2>
-<p>&#x53C2;&#x7167; <a href="CD/application_deployment.md">&#x4E00;&#x6B21;&#x6807;&#x51C6;&#x7684;&#x5E94;&#x7528;&#x4EA4;&#x4ED8;&#x81EA;&#x52A8;&#x5316;&#x6848;&#x4F8B;</a>&#xFF0C;&#x5B8C;&#x6210;&#x4E00;&#x6B21;&#x81EA;&#x52A8;&#x5316;&#x7684;&#x5E94;&#x7528;&#x4EA4;&#x4ED8;&#xFF0C;&#x6548;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<h2 id="2-&#x5E94;&#x7528;&#x4EA4;&#x4ED8;">2. &#x5E94;&#x7528;&#x4EA4;&#x4ED8;</h2>
+<p>&#x53C2;&#x7167; <a href="5.1/bk_solutions/CD/Automation/application_deployment.md">&#x4E00;&#x6B21;&#x6807;&#x51C6;&#x7684;&#x5E94;&#x7528;&#x4EA4;&#x4ED8;&#x81EA;&#x52A8;&#x5316;&#x6848;&#x4F8B;</a>&#xFF0C;&#x5B8C;&#x6210;&#x4E00;&#x6B21;&#x81EA;&#x52A8;&#x5316;&#x7684;&#x5E94;&#x7528;&#x4EA4;&#x4ED8;&#xFF0C;&#x6548;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
 <p><video src="../CD/Automation/media/sops_execution.mp4" width="100%" height="100%" controls loop></video></p>
 <p>&#x5B8C;&#x6210;&#x5E94;&#x7528;&#x4EA4;&#x4ED8;&#x540E;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4E86;&#x89E3;&#x5728;&#x84DD;&#x9CB8;&#x4E2D;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x544A;&#x8B66;&#x7684;&#x81EA;&#x52A8;&#x5316;&#x5904;&#x7406;&#x3002;</p>
-<h2 id="Fault_auto_recovery">3. &#x6545;&#x969C;&#x5904;&#x7406; </h2>
-<p>&#x6839;&#x636E;&#x4F01;&#x4E1A;&#x5185;&#x90E8;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#xFF0C;&#x53C2;&#x7167; <a href="CO/Zabbix_Alarm_processing_automation.md">Zabbix &#x544A;&#x8B66;&#x81EA;&#x52A8;&#x5904;&#x7406;</a> &#x6216; <a href="REST_API_PUSH_Alarm_processing_automation.md">&#x7B2C; 3 &#x65B9;&#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x544A;&#x8B66;&#x81EA;&#x52A8;&#x5904;&#x7406;</a> &#x6216;<a href="CO/Bkmonitor_Alarm_processing_automation.md">&#x84DD;&#x9CB8;&#x76D1;&#x63A7;&#x544A;&#x8B66;&#x81EA;&#x52A8;&#x5904;&#x7406;</a>&#xFF0C;&#x5B9E;&#x73B0; <strong>&#x78C1;&#x76D8;&#x544A;&#x8B66;&#x81EA;&#x52A8;&#x5316;&#x5904;&#x7406;</strong>&#x3002;</p>
+<h2 id="3-&#x6545;&#x969C;&#x5904;&#x7406;">3. &#x6545;&#x969C;&#x5904;&#x7406;</h2>
+<p>&#x6839;&#x636E;&#x4F01;&#x4E1A;&#x5185;&#x90E8;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#xFF0C;&#x53C2;&#x7167; <a href="5.1/bk_solutions/CO/FTA/Zabbix_Alarm_processing_automation.md">Zabbix &#x544A;&#x8B66;&#x81EA;&#x52A8;&#x5904;&#x7406;</a> &#x6216; <a href="5.1/bk_solutions/CO/FTA/REST_API_PUSH_Alarm_processing_automation.md">&#x7B2C; 3 &#x65B9;&#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x544A;&#x8B66;&#x81EA;&#x52A8;&#x5904;&#x7406;</a> &#x6216;<a href="5.1/bk_solutions/CO/FTA/Bkmonitor_Alarm_processing_automation.md">&#x84DD;&#x9CB8;&#x76D1;&#x63A7;&#x544A;&#x8B66;&#x81EA;&#x52A8;&#x5904;&#x7406;</a>&#xFF0C;&#x5B9E;&#x73B0; <strong>&#x78C1;&#x76D8;&#x544A;&#x8B66;&#x81EA;&#x52A8;&#x5316;&#x5904;&#x7406;</strong>&#x3002;</p>
 <p><video src="../CO/FTA/media/zabbix_fta.mp4" width="100%" height="100%" controls loop></video></p>
 <p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x4E86;&#x89E3;&#x6765;&#x81EA;&#x4EA7;&#x54C1;&#x3001;&#x8FD0;&#x8425;&#x3001;&#x6D4B;&#x8BD5;&#x7B49;&#x56E2;&#x961F;&#xFF0C;&#x5BF9;&#x8FD0;&#x7EF4;&#x7684;&#x65E5;&#x5E38;&#x9700;&#x6C42;&#xFF0C;&#x662F;&#x5982;&#x4F55;&#x91CA;&#x653E;&#x8FD0;&#x7EF4;&#xFF0C;&#x505A;&#x5230; <strong>&#x9700;&#x6C42;&#x81EA;&#x52A9;&#x5316;</strong> &#x7684;&#x3002;</p>
-<h2 id="Request">4. &#x65E5;&#x5E38;&#x9700;&#x6C42; </h2>
-<p>&#x53C2;&#x7167; <a href="CD/Demand_self-service.md">&#x9700;&#x6C42;&#x81EA;&#x52A9;&#x5316;:&#x6D4B;&#x8BD5;&#x81EA;&#x52A9;&#x8C03;&#x6574;&#x9A8C;&#x6536;&#x73AF;&#x5883;</a>&#xFF0C;&#x5B8C;&#x6210;&#x6D4B;&#x8BD5;&#x81EA;&#x52A9;&#x4FEE;&#x6539;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x914D;&#x7F6E;&#xFF0C;&#x4ECE;&#x6B64;&#x518D;&#x4E5F;&#x4E0D;&#x4F1A;&#x9A9A;&#x6270;&#x8FD0;&#x7EF4;&#x4E86;&#x3002;</p>
+<h2 id="4-&#x65E5;&#x5E38;&#x9700;&#x6C42;">4. &#x65E5;&#x5E38;&#x9700;&#x6C42;</h2>
+<p>&#x53C2;&#x7167; <a href="5.1/bk_solutions/CD/Demand_self-service.md">&#x9700;&#x6C42;&#x81EA;&#x52A9;&#x5316;:&#x6D4B;&#x8BD5;&#x81EA;&#x52A9;&#x8C03;&#x6574;&#x9A8C;&#x6536;&#x73AF;&#x5883;</a>&#xFF0C;&#x5B8C;&#x6210;&#x6D4B;&#x8BD5;&#x81EA;&#x52A9;&#x4FEE;&#x6539;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x914D;&#x7F6E;&#xFF0C;&#x4ECE;&#x6B64;&#x518D;&#x4E5F;&#x4E0D;&#x4F1A;&#x9A9A;&#x6270;&#x8FD0;&#x7EF4;&#x4E86;&#x3002;</p>
 <p><img src="../CD/media/15638726755169.jpg" alt="-w1336"></p>
 <p>&#x4EE5;&#x4E0A;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x8FD0;&#x7EF4;&#x7684;&#x65E5;&#x5E38;&#xFF0C;&#x5728;&#x84DD;&#x9CB8;&#x4E2D;&#x5982;&#x4F55;&#x505A;&#x5230; <strong>&#x6807;&#x51C6;&#x5316;</strong> &#x3001; <strong>&#x81EA;&#x52A8;&#x5316;</strong> &#x548C; <strong>&#x81EA;&#x52A9;&#x5316;</strong>&#x3002;</p>
 <hr>
-<p>&#x5F53;&#x7136;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x505A;&#x6DF1;&#xFF0C;&#x4F60;&#x8FD8;&#x9700;&#x8981;&#x5B9E;&#x73B0; <a href="CD/CMDB_CI_auto_discovery_MySQL.md">CMDB &#x4E2D;&#x8D44;&#x6E90;&#x5B9E;&#x4F8B;&#x7684;&#x81EA;&#x52A8;&#x53D1;&#x73B0;</a>&#xFF0C;&#x9760;&#x81EA;&#x52A8;&#x5316;&#x53BB;&#x7EF4;&#x62A4; CMDB &#x5B9E;&#x4F8B;&#x3002;</p>
-<p>&#x5728;&#x81EA;&#x52A8;&#x5316;&#x7684;&#x5E94;&#x7528;&#x53D1;&#x5E03;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E0D;&#x514D;&#x8FD8;&#x662F;&#x9700;&#x8981;&#x548C;&#x4E0A;&#x4E0B;&#x6E38;&#x6C9F;&#x901A;&#x7248;&#x672C;&#x53D1;&#x5E03;&#x7EC6;&#x8282;&#xFF0C;&#x5982;&#x6B64;&#x9AD8;&#x7684;&#x6C9F;&#x901A;&#x6210;&#x672C;&#xFF0C;&#x6211;&#x4EEC;&#x5EFA;&#x8BAE;&#x8FD0;&#x7EF4;&#x5728;&#x6807;&#x51C6;&#x8FD0;&#x7EF4;&#x56FA;&#x5316;&#x53D1;&#x5E03;&#x6D41;&#x7A0B;&#xFF0C;&#x5E76; <a href="CD/ops_half_automation.md">&#x542F;&#x7528;&#x64CD;&#x4F5C;&#x5458;&#x7684;&#x53D1;&#x5E03;&#x529F;&#x80FD;</a>&#xFF0C;&#x8BA9;&#x8FD0;&#x7EF4;&#x66F4;&#x5173;&#x6CE8;&#x589E;&#x503C;&#x670D;&#x52A1;&#x3002;</p>
-<p>&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C;&#x84DD;&#x9CB8; ITSM &#x5B9E;&#x73B0; <a href="CO/Service_Request.md">&#x670D;&#x52A1;&#x5668;&#x8D44;&#x6E90;&#x7533;&#x8BF7;&#x6D41;&#x7A0B;&#x7EBF;&#x4E0A;&#x5316;</a>&#x3001;<a href="CO/Release_Management.md">&#x5E94;&#x7528;&#x53D1;&#x5E03;&#x6D41;&#x7A0B;&#x7EBF;&#x4E0A;&#x5316;</a>&#x3001;<a href="CO/Change_Management.md">&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7EBF;&#x4E0A;&#x5316;</a>&#x3001;<a href="CO/Incident_Management.md">&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B;&#x7EBF;&#x4E0A;&#x5316;</a>&#xFF0C;&#x901A;&#x8FC7;&#x7EBF;&#x4E0A;&#x6D41;&#x7A0B;&#x5B8C;&#x6210;&#x4F01;&#x4E1A; IT &#x7684;&#x8FD0;&#x8425;&#x7EF4;&#x62A4;&#xFF0C;&#x544A;&#x522B;&#x90AE;&#x4EF6;&#x7684;&#x4F4E;&#x6548;&#x7387;&#x548C;&#x4E0D;&#x53EF;&#x56DE;&#x6EAF;&#x7684;&#x4EA4;&#x4ED8;&#x6A21;&#x5F0F;&#x3002;</p>
-<p>&#x6301;&#x7EED;&#x90E8;&#x7F72;(Continuous Deployment)&#x4E4B;&#x524D;&#x662F;&#x6301;&#x7EED;&#x96C6;&#x6210;(Continuous Integration)&#x548C; <a href="CI/Pipeline_git_commit_to_stag.md">&#x6301;&#x7EED;&#x4EA4;&#x4ED8;(Continuous Delivery)</a>&#xFF0C;&#x84DD;&#x76FE;&#x4F1A;&#x9010;&#x6E10;&#x8986;&#x76D6;&#xFF0C;&#x5C3D;&#x8BF7;&#x671F;&#x5F85;&#x3002;</p>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x505A;&#x6DF1;&#xFF0C;&#x4F60;&#x8FD8;&#x9700;&#x8981;&#x5B9E;&#x73B0; <a href="5.1/bk_solutions/CD/CMDB/CMDB_CI_auto_discovery_MySQL.md">CMDB &#x4E2D;&#x8D44;&#x6E90;&#x5B9E;&#x4F8B;&#x7684;&#x81EA;&#x52A8;&#x53D1;&#x73B0;</a>&#xFF0C;&#x9760;&#x81EA;&#x52A8;&#x5316;&#x53BB;&#x7EF4;&#x62A4; CMDB &#x5B9E;&#x4F8B;&#x3002;</p>
+<p>&#x5728;&#x81EA;&#x52A8;&#x5316;&#x7684;&#x5E94;&#x7528;&#x53D1;&#x5E03;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E0D;&#x514D;&#x8FD8;&#x662F;&#x9700;&#x8981;&#x548C;&#x4E0A;&#x4E0B;&#x6E38;&#x6C9F;&#x901A;&#x7248;&#x672C;&#x53D1;&#x5E03;&#x7EC6;&#x8282;&#xFF0C;&#x5982;&#x6B64;&#x9AD8;&#x7684;&#x6C9F;&#x901A;&#x6210;&#x672C;&#xFF0C;&#x6211;&#x4EEC;&#x5EFA;&#x8BAE;&#x8FD0;&#x7EF4;&#x5728;&#x6807;&#x51C6;&#x8FD0;&#x7EF4;&#x56FA;&#x5316;&#x53D1;&#x5E03;&#x6D41;&#x7A0B;&#xFF0C;&#x5E76; <a href="5.1/bk_solutions/CD/Automation/ops_half_automation.md">&#x542F;&#x7528;&#x64CD;&#x4F5C;&#x5458;&#x7684;&#x53D1;&#x5E03;&#x529F;&#x80FD;</a>&#xFF0C;&#x8BA9;&#x8FD0;&#x7EF4;&#x66F4;&#x5173;&#x6CE8;&#x589E;&#x503C;&#x670D;&#x52A1;&#x3002;</p>
+<p>&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C;&#x84DD;&#x9CB8; ITSM &#x5B9E;&#x73B0; <a href="5.1/bk_solutions/CO/ITSM/Service_Request.md">&#x670D;&#x52A1;&#x5668;&#x8D44;&#x6E90;&#x7533;&#x8BF7;&#x6D41;&#x7A0B;&#x7EBF;&#x4E0A;&#x5316;</a>&#x3001;<a href="5.1/bk_solutions/CO/ITSM/Release_Management.md">&#x5E94;&#x7528;&#x53D1;&#x5E03;&#x6D41;&#x7A0B;&#x7EBF;&#x4E0A;&#x5316;</a>&#x3001;<a href="5.1/bk_solutions/CO/ITSM/Change_Management.md">&#x73AF;&#x5883;&#x53D8;&#x66F4;&#x6D41;&#x7EBF;&#x4E0A;&#x5316;</a>&#x3001;<a href="5.1/bk_solutions/CO/ITSM/Incident_Management.md">&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B;&#x7EBF;&#x4E0A;&#x5316;</a>&#xFF0C;&#x901A;&#x8FC7;&#x7EBF;&#x4E0A;&#x6D41;&#x7A0B;&#x5B8C;&#x6210;&#x4F01;&#x4E1A; IT &#x7684;&#x8FD0;&#x8425;&#x7EF4;&#x62A4;&#xFF0C;&#x544A;&#x522B;&#x90AE;&#x4EF6;&#x7684;&#x4F4E;&#x6548;&#x7387;&#x548C;&#x4E0D;&#x53EF;&#x56DE;&#x6EAF;&#x7684;&#x4EA4;&#x4ED8;&#x6A21;&#x5F0F;&#x3002;</p>
+<p>&#x6301;&#x7EED;&#x90E8;&#x7F72;(Continuous Deployment)&#x4E4B;&#x524D;&#x662F;&#x6301;&#x7EED;&#x96C6;&#x6210;(Continuous Integration)&#x548C; <a href="5.1/bk_solutions/CI/Pipeline_git_commit_to_stag.md">&#x6301;&#x7EED;&#x4EA4;&#x4ED8;(Continuous Delivery)</a>&#xFF0C;&#x84DD;&#x76FE;&#x4F1A;&#x9010;&#x6E10;&#x8986;&#x76D6;&#xFF0C;&#x5C3D;&#x8BF7;&#x671F;&#x5F85;&#x3002;</p>
 <hr>
 <p>&#x89E3;&#x51B3;&#x4E86;&#x8FD0;&#x7EF4;&#x5F53;&#x524D;&#x7684;&#x4E3B;&#x8981;&#x77DB;&#x76FE;&#x540E;&#xFF0C;&#x84DD;&#x9CB8;&#x66F4;&#x5173;&#x6CE8; <strong>&#x7814;&#x53D1;&#x8FD0;&#x8425;&#x8FD9;&#x4E2A;&#x9886;&#x57DF;&#x7684;&#x884C;&#x4E1A;&#x6280;&#x672F;&#x53D8;&#x5316;</strong>&#x3002;</p>
-<p>&#x901A;&#x8FC7;&#x652F;&#x6301; Kubernetes &#x548C; Mesos &#x5BB9;&#x5668;&#x7F16;&#x6392;&#x7684;&#x84DD;&#x9CB8;&#x5BB9;&#x5668;&#x7BA1;&#x7406;&#x5E73;&#x53F0;&#xFF0C;&#x5B9E;&#x73B0; <a href="CD/Bcs_deploy_nginx_cluster.md">&#x5FEB;&#x901F;&#x6784;&#x5EFA; Nginx &#x96C6;&#x7FA4;</a> &#x3001;<a href="CD/Bcs_app_Rolling_Update_Deployment.html">&#x5E94;&#x7528;&#x7684;&#x6EDA;&#x52A8;&#x5347;&#x7EA7;</a> &#x3001;<a href="CD/Bcs_blue_green_deployment.md">&#x84DD;&#x7EFF;&#x53D1;&#x5E03;</a> &#x4EE5;&#x53CA; <a href="CD/Bcs_HPA.md">&#x81EA;&#x52A8;&#x6269;&#x7F29;&#x5BB9;</a> &#x7B49;&#x5FAE;&#x670D;&#x52A1;&#x5316;&#x5E26;&#x6765;&#x7684;&#x6280;&#x672F;&#x7EA2;&#x5229;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x652F;&#x6301; Kubernetes &#x548C; Mesos &#x5BB9;&#x5668;&#x7F16;&#x6392;&#x7684;&#x84DD;&#x9CB8;&#x5BB9;&#x5668;&#x7BA1;&#x7406;&#x5E73;&#x53F0;&#xFF0C;&#x5B9E;&#x73B0; <a href="5.1/bk_solutions/CD/BCS/Bcs_deploy_nginx_cluster.md">&#x5FEB;&#x901F;&#x6784;&#x5EFA; Nginx &#x96C6;&#x7FA4;</a> &#x3001;<a href="5.1/bk_solutions/CD/BCS/Bcs_app_Rolling_Update_Deployment.html">&#x5E94;&#x7528;&#x7684;&#x6EDA;&#x52A8;&#x5347;&#x7EA7;</a> &#x3001;<a href="5.1/bk_solutions/CD/BCS/Bcs_blue_green_deployment.md">&#x84DD;&#x7EFF;&#x53D1;&#x5E03;</a> &#x4EE5;&#x53CA;&#x81EA;&#x52A8;&#x6269;&#x7F29;&#x5BB9;&#x7B49;&#x5FAE;&#x670D;&#x52A1;&#x5316;&#x5E26;&#x6765;&#x7684;&#x6280;&#x672F;&#x7EA2;&#x5229;&#x3002;</p>
 <p>&#x84DD;&#x9CB8;&#xFF0C;&#x4E0D;&#x6B62;&#x5982;&#x6B64;&#xFF0C;&#x66F4;&#x591A;&#x5C3D;&#x60C5;&#x5173;&#x6CE8;&#x84DD;&#x9CB8;&#x516C;&#x4F17;&#x53F7;&#x3002;</p>
-<p><img src="media/15659324878049.jpg" width="25%" height="25%"></p>
+<p><img src="media/15659324878049.jpg" alt=""></p>
 
                                 
                                 </section>
@@ -840,10 +838,6 @@
             
                 
                 
-                <a href="FAQ.html" class="navigation navigation-next navigation-unique" aria-label="Next page: FAQ">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
             
         
     </div>
@@ -851,7 +845,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"新手之旅","level":"1.2.1","depth":2,"next":{"title":"FAQ","level":"1.2.2","depth":2,"path":"Getting_started/FAQ.md","ref":"Getting_started/FAQ.md","articles":[]},"previous":{"title":"快速入门","level":"1.2","depth":1,"ref":"","articles":[{"title":"新手之旅","level":"1.2.1","depth":2,"path":"Getting_started/Getting_started.md","ref":"Getting_started/Getting_started.md","articles":[]},{"title":"FAQ","level":"1.2.2","depth":2,"path":"Getting_started/FAQ.md","ref":"Getting_started/FAQ.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"Getting_started/Getting_started.md","mtime":"2019-09-10T12:13:40.131Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-11T08:56:03.369Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"新手之旅","level":"1.2.1","depth":2,"next":{"title":"CI：持续集成","level":"1.3","depth":1,"ref":"","articles":[{"title":"测试环境自动更新","level":"1.3.1","depth":2,"path":"CI/Pipeline_git_commit_to_stag.md","ref":"CI/Pipeline_git_commit_to_stag.md","articles":[]}]},"previous":{"title":"快速入门","level":"1.2","depth":1,"ref":"","articles":[{"title":"新手之旅","level":"1.2.1","depth":2,"path":"Getting_started/Getting_started.md","ref":"Getting_started/Getting_started.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"Getting_started/Getting_started.md","mtime":"2019-09-30T07:14:29.617Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-08T01:54:19.412Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

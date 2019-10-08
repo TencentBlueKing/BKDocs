@@ -1,5 +1,6 @@
-## 标准插件开发
-标准插件是标准运维任务执行的最小单元，对应于内部某项服务（如定时）或者第三方系统API的调用（如JOB-快速执行脚本），通过将API参数前端表单
+# 标准运维插件开发
+
+标准运维插件是标准运维任务执行的最小单元，对应于内部某项服务（如定时）或者第三方系统 API 的调用（如 JOB-快速执行脚本），通过将 API 参数前端表单
 化，加上参数校验、逻辑封装等功能，以图形化的方式提供给用户使用。
 
 标准插件功能主要包括输入、执行、输出三部分。
@@ -14,7 +15,8 @@
 ### 1. 初始化插件模块
 在项目根目录下执行 `python manage.py create_atoms_app {CUSTOM PLUGINS NAME}`，其中 `{CUSTOM PLUGINS NAME}` 为你定制开发的标准插件
 集合包名，注意不要和项目中已有的模块和插件集合名字重复，名字最好能体现插件包的作用。执行命令后会生成如下目录结构：
-```
+
+```bash
 {CUSTOM PLUGINS NAME}
 ├── __init__.py
 ├── apps.py
@@ -41,8 +43,8 @@
 插件对应的系统名简称，如 job、cmdb 等。
 
 
-### 2. 修改项目settings配置
-打开 `config/default.py` 文件，找到INSTALLED_APPS变量，加入步骤1中创建的 `{CUSTOM PLUGINS NAME}`。
+### 2. 修改项目 settings 配置
+打开 `config/default.py` 文件，找到 INSTALLED_APPS 变量，加入步骤1中创建的 `{CUSTOM PLUGINS NAME}`。
 
 
 ### 3. 加入新的 API 网关
@@ -58,7 +60,7 @@ class CollectionsMySystem(object):
 
     def __init__(self, client):
         self.client = client
-    
+
         self.get_status = ComponentAPI(
             client=self.client, method='GET',
             path='/api/c/compapi{bk_api_ver}/my_system/status/',
@@ -295,7 +297,7 @@ class TestCustomComponent(Component):
     bound_service = TestCustomService
     embedded_form = True  # 内嵌式表单声明
     # 表单定义
-    form = """ 
+    form = """
     (function(){
         $.atoms.test_custom = [
             {

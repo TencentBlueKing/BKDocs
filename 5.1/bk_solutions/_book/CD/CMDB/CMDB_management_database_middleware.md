@@ -1,25 +1,24 @@
-管理数据库/中间件实例：以 MySQL 为例
----
+# 管理数据库/中间件实例：以 MySQL 为例
 
-#### 情景 {#Situation}
+## 情景
 应用使用的存储是 MySQL，为了便于 MySQL 的日常维护（如 SQL 变更），需要在 CMDB 中创建 MySQL CI 对象，录入 MySQL 实例。
 
 > 蓝鲸 CMDB 拥有灵活的 CI 能力，掌握该教程后，可以管理数据库、中间件、硬件等 CI 对象
 
-#### 前提条件 {#Prerequisites}
-在 [配置平台](https://docs.bk.tencent.com/cmdb/) 中 [新建好业务](https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%881%EF%BC%89%E6%96%B0%E5%BB%BA%E4%B8%9A%E5%8A%A1)，并 [定义拓扑](https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%883%EF%BC%89%E5%AE%9A%E4%B9%89%E4%B8%9A%E5%8A%A1%E6%8B%93%E6%89%91) 及 [分配主机](https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%884%EF%BC%89%E4%B8%BB%E6%9C%BA%E8%BD%AC%E7%A7%BB)。
+## 前提条件
+在配置平台中 [新建好业务](5.1/配置平台/快速入门/case1.md)，并 定义拓扑及分配主机。
 
 **术语解释**
- - **CI** : (Configuration Items)，资源对象，如`MySQL`、主机、交易系统、交换机、路由器等
+ - **CI** : (Configuration Items)，资源对象，如 `MySQL`、主机、交易系统、交换机、路由器等
  - **CI 属性** : (Configuration Items Attribute)，资源对象的配置属性，如 MySQL CI 属性为实例名、IP、端口、存储引擎、数据库版本等
  - **CI 实例** : CI 的实例化，唯一识别一个资源对象，如 MySQL CI 实例为`gd_area_master_01`
 
-#### 操作步骤 {#Steps}
-- [1. 梳理 : 梳理 MySQL CI 属性](#Carding_ci_attribute)
-- [2. 建模 : 创建 MySQL CI 对象](#Create_ci)
-- [3. 实例化 : 添加 MySQL 实例](#Add_MySQL_instance)
+## 操作步骤
+- 梳理 : 梳理 MySQL CI 属性
+- 建模 : 创建 MySQL CI 对象
+- 实例化 : 添加 MySQL 实例
 
-## 1. 梳理 MySQL CI 属性 {#Carding_ci_attribute}
+### 1. 梳理 MySQL CI 属性
 
 根据消费 MySQL 的场景，梳理 MySQL 常见的 CI 属性。
 
@@ -173,65 +172,63 @@
    </tr>
 </table>
 
-其中，CI 属性自动录入参考[自动发现 MySQL 实例](CMDB_CI_auto_discovery_MySQL.md)。
+其中，CI 属性自动录入参考[自动发现 MySQL 实例](5.1/bk_solutions/CD/CMDB/CMDB_CI_auto_discovery_MySQL.md)。
 
 通过`实例名`可以唯一标识一个 MySQL 实例，具体是`IP`和`端口`的组合。
 
-## 2. 创建 MySQL CI 对象 {#Create_ci}
+### 2. 创建 MySQL CI 对象
 第一步梳理完 MySQL CI 属性后，接下来开始建模：创建 MySQL CI。
 
-### 2.1 创建 CI {#Create_ci_mysql}
+#### 2.1 创建 CI
 选择`模型管理`中选择`模型`，创建 MySQL 模型。
 
-![-w992](media/15632800013005.jpg)
+![-w992](./media/15632800013005.jpg)
 
-### 2.2 新增 CI 属性 {#Add_attribute}
-按照[1. 梳理 MySQL CI 属性](#Carding_ci_attribute) 中梳理的结果来添加 CI 属性。
+#### 2.2 新增 CI 属性
+按照梳理 MySQL CI 属性 中梳理的结果来添加 CI 属性。
 
-![-w1676](media/15637992522730.jpg)
+![-w1676](./media/15637992522730.jpg)
 
-如果手工操作繁琐，也可以导入一个 [MySQL 模型示例](media/bk_inst_mysql.xlsx.tgz)。
+如果手工操作繁琐，也可以导入一个 MySQL 模型示例。
 
 
-### 2.3 设立 CI 关联 {#Create_ci_relationship}
+#### 2.3 设立 CI 关联
 
 针对 MySQL 的管理，除了 CI 属性外，我们同时还关心 MySQL 运行在哪台主机上，所以需要在模型中新建一个“主机上运行 MySQL”的关联。
 
 1 个主机可以运行多个 MySQL 实例，所以`源到目标的约束条件`为“ 1-N ”
 
-![-w1239](media/15633674736247.jpg)
+![-w1239](./media/15633674736247.jpg)
 
-### 2.4 新增唯一校验 {#New unique check}
+#### 2.4 新增唯一校验
 
 通过`实例名`可以唯一标识一个 MySQL 实例，具体是`IP`和`端口`的组合，所以将 IP 和端口作为一个组合校验。
 
-![-w1220](media/15633674062813.jpg)
+![-w1220](./media/15633674062813.jpg)
 
 
-## 3. 添加 MySQL 实例 {#Add_MySQL_instance}
+### 3. 添加 MySQL 实例
 完成 MySQL CI 的建模之后，接下来添加 MySQL 实例
-### 3.1 新增或导入 CI 实例 {#Add_ci_instance}
+#### 3.1 新增或导入 CI 实例
 从首页进入 MySQL 实例列表页
 
-![-w1580](media/15643140385105.jpg)
+![-w1580](./media/15643140385105.jpg)
 
 点击`新建`按钮，按提示添加 MySQL 实例，也可以批量导入 MySQL 实例。
 
-![-w1399](media/15637993409385.jpg)
+![-w1399](./media/15637993409385.jpg)
 
 
-### 3.2 创建 CI 实例的关联关系 {#Add_ci_relationship}
+#### 3.2 创建 CI 实例的关联关系 
 
 打开一个 MySQL 实例的详情页，点击`关联` TAB 中的`关联管理`，`关联`当前实例运行在哪台主机上。
 
-![-w1398](media/15637993763312.jpg)
+![-w1398](./media/15637993763312.jpg)
 
 再次点击`关联管理`，可预览 MySQL 实例与主机的关联关系。
 
-![-w1320](media/15643143202999.jpg)
+![-w1320](./media/15643143202999.jpg)
 
 如果参照本篇教程将`机架`、`交换机`、`机房管理单元`、`数据中心`等 IT 基础设施均录入 CMDB 中，将可以查询一个 MySQL 实例完整的关联关系。
 
-![-w1397](media/15637996905990.jpg)
-
-
+![-w1397](./media/15637996905990.jpg)

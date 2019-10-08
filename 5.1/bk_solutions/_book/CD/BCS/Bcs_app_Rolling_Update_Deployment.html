@@ -83,7 +83,7 @@
 
     
         
-        <li class="header">蓝鲸最佳实践</li>
+        <li class="header">场景案例</li>
         
         
     
@@ -120,19 +120,6 @@
             
                     
                     新手之旅
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../../Getting_started/FAQ.html">
-            
-                <a href="../../Getting_started/FAQ.html">
-            
-                    
-                    FAQ
             
                 </a>
             
@@ -210,7 +197,7 @@
                 <a href="../CMDB/Configuration_management_standardization.html">
             
                     
-                    概述 1 : 待审核 
+                    概述: 待审核 
             
                 </a>
             
@@ -223,7 +210,7 @@
                 <a href="../CMDB/CMDB_management_hosts.html">
             
                     
-                    业务上线时管理主机
+                    业务上线时 CMDB 如何管理主机
             
                 </a>
             
@@ -236,7 +223,7 @@
                 <a href="../CMDB/CMDB_management_process.html">
             
                     
-                    管理进程
+                    CMDB 如何管理进程
             
                 </a>
             
@@ -270,12 +257,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.6" data-path="../CMDB/CMDB_integration.html">
+        <li class="chapter " data-level="1.4.1.6" data-path="../CMDB/CMDB_intapplication_deployment.mdegration.md">
             
-                <a href="../CMDB/CMDB_integration.html">
+                <span>
             
                     
-                    对接企业原有 CMDB，实现数据同步
+                    企业原有 CMDB 同步至蓝鲸 CMDB
             
                 </a>
             
@@ -306,7 +293,7 @@
                 <span>
             
                     
-                    应用交付自动化 理论篇
+                    应用交付自动化
             
                 </span>
             
@@ -320,7 +307,7 @@
                 <a href="../Automation/Application_delivery_deployment_automation.html">
             
                     
-                    概述 1 : 待审核 
+                    概述 : 待审核 
             
                 </a>
             
@@ -731,6 +718,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6" data-path="../../Getting_started/FAQ.html">
+            
+                <a href="../../Getting_started/FAQ.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -773,26 +773,26 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x5E94;&#x7528;&#x7684;&#x6EDA;&#x52A8;&#x5347;&#x7EA7;">&#x5E94;&#x7528;&#x7684;&#x6EDA;&#x52A8;&#x5347;&#x7EA7;</h2>
-<h4 id="Situation">&#x60C5;&#x666F; </h4>
-<p>&#x4F20;&#x7EDF;&#x7684;&#x5E94;&#x7528;&#x66F4;&#x65B0;&#x65B9;&#x5F0F;&#x662F;&#x505C;&#x670D;&#x66F4;&#x65B0;&#xFF0C;&#x7528;&#x6237;&#x5728;&#x66F4;&#x65B0;&#x671F;&#x95F4;<strong>&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x670D;&#x52A1;</strong>&#x3002;</p>
-<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x5C06;&#x4EE5; Nginx &#x4ECE;<code>1.12.2</code>&#x5347;&#x7EA7;<code>1.17.0</code>&#x4E3A;&#x4F8B;&#xFF0C;&#x770B; BCS &#x4E2D;&#x7684;<strong>&#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x80FD;&#x529B;</strong>&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;<strong>&#x4E0D;&#x505C;&#x673A;&#x66F4;&#x65B0;</strong>&#xFF0C;<strong>&#x7528;&#x6237;&#x65E0;&#x611F;&#x77E5;</strong>&#x3002;</p>
-<h4 id="Prerequisites">&#x524D;&#x63D0;&#x6761;&#x4EF6; </h4>
+                                <h1 id="&#x5E94;&#x7528;&#x7684;&#x6EDA;&#x52A8;&#x5347;&#x7EA7;">&#x5E94;&#x7528;&#x7684;&#x6EDA;&#x52A8;&#x5347;&#x7EA7;</h1>
+<h2 id="&#x60C5;&#x666F;">&#x60C5;&#x666F;</h2>
+<p>&#x4F20;&#x7EDF;&#x7684;&#x5E94;&#x7528;&#x66F4;&#x65B0;&#x65B9;&#x5F0F;&#x662F;&#x505C;&#x670D;&#x66F4;&#x65B0;&#xFF0C;&#x7528;&#x6237;&#x5728;&#x66F4;&#x65B0;&#x671F;&#x95F4; <strong>&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x670D;&#x52A1;</strong> &#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x5C06;&#x4EE5; Nginx &#x4ECE; <code>1.12.2</code> &#x5347;&#x7EA7; <code>1.17.0</code> &#x4E3A;&#x4F8B;&#xFF0C;&#x770B; BCS &#x4E2D;&#x7684; <strong>&#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x80FD;&#x529B;</strong> &#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0; <strong>&#x4E0D;&#x505C;&#x673A;&#x66F4;&#x65B0;</strong> &#xFF0C;<strong>&#x7528;&#x6237;&#x65E0;&#x611F;&#x77E5;</strong>&#x3002;</p>
+<h2 id="&#x524D;&#x63D0;&#x6761;&#x4EF6;">&#x524D;&#x63D0;&#x6761;&#x4EF6;</h2>
 <ul>
 <li><a href="https://kubernetes.io/zh/docs/concepts/" target="_blank">K8S &#x57FA;&#x672C;&#x6982;&#x5FF5;</a>&#xFF0C;&#x5305;&#x542B; <a href="https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/" target="_blank">Deployment</a>&#x3001;<a href="https://kubernetes.io/docs/concepts/services-networking/service/" target="_blank">Services</a>&#x3002;</li>
-<li><a href="https://docs.bk.tencent.com/bkce_install_guide/setup/quick_install_bcs.html" target="_blank">&#x5B8C;&#x6210; BCS &#x90E8;&#x7F72;</a></li>
+<li><a href="5.1/&#x90E8;&#x7F72;&#x7EF4;&#x62A4;/&#x589E;&#x5F3A;&#x5305;&#x5B89;&#x88C5;/&#x90E8;&#x7F72;&#x5B89;&#x88C5;/bcs_install.md">&#x5B8C;&#x6210; BCS &#x90E8;&#x7F72;</a></li>
 </ul>
-<h4 id="Steps">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4; </h4>
+<h2 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h2>
 <ul>
-<li><a href="#RollingUpdate">1. &#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x903B;&#x8F91;&#x4ECB;&#x7ECD;</a></li>
-<li><a href="#BCS_RollingUpdate">2. BCS &#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x6307;&#x5F15;</a></li>
+<li>&#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x903B;&#x8F91;&#x4ECB;&#x7ECD;</li>
+<li>BCS &#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x6307;&#x5F15;</li>
 </ul>
-<h2 id="1-&#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x903B;&#x8F91;&#x4ECB;&#x7ECD;">1. &#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x903B;&#x8F91;&#x4ECB;&#x7ECD;</h2>
+<h3 id="1-&#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x903B;&#x8F91;&#x4ECB;&#x7ECD;">1. &#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x903B;&#x8F91;&#x4ECB;&#x7ECD;</h3>
 <p>&#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x7684;&#x903B;&#x8F91;&#x5982;&#x4E0B;&#x56FE;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7248;&#x672C;&#x7684;&#x5B9E;&#x4F8B;&#xFF08; POD&#xFF09;&#xFF0C;&#x9500;&#x6BC1;&#x4E00;&#x4E2A;&#x65E7;&#x7248;&#x672C;&#x5B9E;&#x4F8B;&#xFF08;POD&#xFF09;&#xFF0C;&#x5982;&#x6B64;&#x6EDA;&#x52A8;&#xFF0C;&#x76F4;&#x81F3;&#x7EBF;&#x4E0A;&#x90FD;&#x662F;&#x65B0;&#x7248;&#x672C;&#xFF0C;&#x65E7;&#x7248;&#x672C;&#x5DF2;&#x5168;&#x90E8;&#x9500;&#x6BC1;&#x3002;</p>
 <p>&#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x5BF9;&#x7528;&#x6237;&#x65E0;&#x611F;&#x77E5;&#x3002;</p>
 <p><img src="media/15652581859764.jpg" alt="-w1549"></p>
-<h2 id="2-bcs-&#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x6307;&#x5F15;">2. BCS &#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x6307;&#x5F15;</h2>
-<h3 id="21-&#x63A8;&#x9001;-nginx1170-&#x81F3;&#x955C;&#x50CF;&#x4ED3;&#x5E93;">2.1 &#x63A8;&#x9001; Nginx:1.17.0 &#x81F3;&#x955C;&#x50CF;&#x4ED3;&#x5E93;</h3>
+<h3 id="2-bcs-&#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x6307;&#x5F15;">2. BCS &#x6EDA;&#x52A8;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x6307;&#x5F15;</h3>
+<h4 id="21-&#x63A8;&#x9001;-nginx1170-&#x81F3;&#x955C;&#x50CF;&#x4ED3;&#x5E93;">2.1 &#x63A8;&#x9001; Nginx:1.17.0 &#x81F3;&#x955C;&#x50CF;&#x4ED3;&#x5E93;</h4>
 <p>&#x53C2;&#x7167;<a href="https://docs.bk.tencent.com/bcs/Container/HarborGuide.html#2-%E8%93%9D%E9%B2%B8%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%E4%BC%81%E4%B8%9A%E7%89%88%E4%B8%AD%E7%9A%84harbor%E4%BB%93%E5%BA%93" target="_blank">Harbor &#x4ED3;&#x5E93;&#x4F7F;&#x7528;&#x6307;&#x5357;</a>&#xFF0C;&#x5C06;&#x955C;&#x50CF; Nginx:1.17.0 &#x63A8;&#x9001;&#x81F3; BCS &#x516C;&#x5171;&#x955C;&#x50CF;&#x4ED3;&#x5E93;&#x3002;</p>
 <h4 id="211-&#x6CE8;&#x518C;&#x955C;&#x50CF;&#x4ED3;&#x5E93;&#x8D26;&#x53F7;">2.1.1 &#x6CE8;&#x518C;&#x955C;&#x50CF;&#x4ED3;&#x5E93;&#x8D26;&#x53F7;</h4>
 <p>&#x5728;<a href="https://docs.bk.tencent.com/bkce_install_guide/setup/quick_install_bcs.html" target="_blank">&#x90E8;&#x7F72; BCS</a> &#x7684;&#x4E2D;&#x63A7;&#x673A;&#x4E0A;&#x83B7;&#x53D6;&#x955C;&#x50CF;&#x4ED3;&#x5E93;&#x7684;&#x8BBF;&#x95EE;&#x5730;&#x5740;&#x3002;</p>
@@ -803,7 +803,7 @@ hub-d.o.******.com:443
 <p><img src="media/15652566855628.jpg" alt="-w1051"></p>
 <p>&#x6CE8;&#x518C;&#x5B8C;&#xFF0C;&#x767B;&#x5F55;&#x540E;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x516C;&#x5171;&#x4ED3;&#x5E93;&#x3002;</p>
 <p><img src="media/15652567813655.jpg" alt="-w1478"></p>
-<h4 id="Push_images">2.1.2 &#x63A8;&#x9001; Nginx:1.17.0 &#x81F3;&#x955C;&#x50CF;&#x4ED3;&#x5E93; </h4>
+<h4 id="212-&#x63A8;&#x9001;-nginx1170-&#x81F3;&#x955C;&#x50CF;&#x4ED3;&#x5E93;">2.1.2 &#x63A8;&#x9001; Nginx:1.17.0 &#x81F3;&#x955C;&#x50CF;&#x4ED3;&#x5E93;</h4>
 <p>&#x4F7F;&#x7528;<code>docker pull</code> &#x4ECE;<code>hub.docker.com</code>&#x62C9;&#x53D6;&#x955C;&#x50CF;<code>nginx:1.17.0</code>&#x3002;</p>
 <pre><code class="lang-bash"><span class="hljs-comment"># docker pull nginx:1.17.0</span>
 1.17.0: Pulling from library/nginx
@@ -833,7 +833,7 @@ cf5b3c6798f7: Pushed
 <p><img src="media/15652572564612.jpg" alt="-w1465"></p>
 <p>&#x5728; BCS &#x7684;<code>[&#x4ED3;&#x5E93;&#x83DC;&#x5355;]</code>&#x4E2D;&#x4E5F;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x3002;</p>
 <p><img src="media/15652575817580.jpg" alt="-w1462"></p>
-<h3 id="22-&#x6EDA;&#x52A8;&#x5347;&#x7EA7;-nginx-&#xFF1A;&#x4ECE;-1122-&#x5230;-1170">2.2 &#x6EDA;&#x52A8;&#x5347;&#x7EA7; Nginx &#xFF1A;&#x4ECE; 1.12.2 &#x5230; 1.17.0</h3>
+<h4 id="22-&#x6EDA;&#x52A8;&#x5347;&#x7EA7;-nginx-&#xFF1A;&#x4ECE;-1122-&#x5230;-1170">2.2 &#x6EDA;&#x52A8;&#x5347;&#x7EA7; Nginx &#xFF1A;&#x4ECE; 1.12.2 &#x5230; 1.17.0</h4>
 <p>&#x786E;&#x8BA4;&#x5F53;&#x524D;&#x7248;&#x672C;&#x53F7;&#x4E3A;<code>nginx/1.12.2</code></p>
 <pre><code class="lang-bash">[root@ip-10-0-5-94-n-bcs-k8s-40015 ~]<span class="hljs-comment"># curl 10.0.5.94:30008 -I</span>
 HTTP/1.1 200 OK
@@ -903,7 +903,7 @@ Server: nginx/1.17.0
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"应用的滚动升级","level":"1.4.4.2","depth":3,"next":{"title":"应用的蓝绿发布","level":"1.4.4.3","depth":3,"path":"CD/BCS/Bcs_blue_green_deployment.md","ref":"CD/BCS/Bcs_blue_green_deployment.md","articles":[]},"previous":{"title":"快速构建 Nginx 集群","level":"1.4.4.1","depth":3,"path":"CD/BCS/Bcs_deploy_nginx_cluster.md","ref":"CD/BCS/Bcs_deploy_nginx_cluster.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"CD/BCS/Bcs_app_Rolling_Update_Deployment.md","mtime":"2019-09-10T12:13:33.661Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-11T08:56:03.369Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"应用的滚动升级","level":"1.4.4.2","depth":3,"next":{"title":"应用的蓝绿发布","level":"1.4.4.3","depth":3,"path":"CD/BCS/Bcs_blue_green_deployment.md","ref":"CD/BCS/Bcs_blue_green_deployment.md","articles":[]},"previous":{"title":"快速构建 Nginx 集群","level":"1.4.4.1","depth":3,"path":"CD/BCS/Bcs_deploy_nginx_cluster.md","ref":"CD/BCS/Bcs_deploy_nginx_cluster.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"CD/BCS/Bcs_app_Rolling_Update_Deployment.md","mtime":"2019-10-08T01:53:53.282Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-08T01:54:19.412Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

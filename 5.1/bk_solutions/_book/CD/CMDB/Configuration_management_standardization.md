@@ -1,4 +1,4 @@
-## 运维"四化建设"之标准化：配置管理标准化（理论篇）
+# 运维 "四化建设" 之标准化：配置管理标准化
 
 > 自动化前，先做好标准化。
 
@@ -8,7 +8,7 @@
 
 首先，我们看下 IT 基础资源、应用在配置管理方面遇到的痛点。
 
-##  配置管理的痛点 {#Pain_points}
+##  配置管理的痛点
 
 - 手工录入 CMDB 数据
 - 日常的发布、变更、故障处理、日常需求处理等运维自动化系统没有消费 CMDB ，而是在 CMDB 和自动化系统中通过键盘复制粘贴主机 IP...
@@ -19,21 +19,21 @@
 
 接下来，我们尝试以项目的方式，解决运维在配置管理上遇到的痛点。
 
-## 1. 项目目标 {#Project_objectives}
+## 1. 项目目标
 
 建立一个权威统一的 CMDB 配置主数据，作为自动化运维平台、监控平台、运维流程平台等一系列 IT 系统的基石。
 
-![](media/15602199321821.jpg)
+![](./media/15602199321821.jpg)
 
 （ CMDB 是 ITIL 的基石）
 
 确立了项目目标，接下来做技术选型。
 
-## 2. 技术选型 {#Technology_selection}
+## 2. 技术选型
 
 在蓝鲸体系架构中，配置平台位于原子平台层，通过蓝鲸 PaaS 的 ESB 为上层 SaaS 提供覆盖研发运营 CI（持续集成）、CD（持续交付和持续部署）、CO（持续运营）领域的配置管理能力。
 
-![CMDB在蓝鲸架构中的位置](media/CMDB%E5%9C%A8%E8%93%9D%E9%B2%B8%E6%9E%B6%E6%9E%84%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE-1.png)
+![CMDB在蓝鲸架构中的位置](./media/CMDB%E5%9C%A8%E8%93%9D%E9%B2%B8%E6%9E%B6%E6%9E%84%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE-1.png)
 
 （ **配置平台** 在蓝鲸体系架构中的位置）
 
@@ -47,10 +47,10 @@
 
 确立了技术方案后，接下来介绍如何在企业内部实施 CMDB，使其成为自动化等 IT 系统的基石。
 
-如何实施 CMDB，请参考场景案例： [业务上线时 CMDB 如何管理主机](CMDB_management_hosts.md)、[CMDB 如何管理进程](CMDB_management_process.md)、[CMDB 如何管理 MySQL 实例](CMDB_management_database_middleware.md)、[企业 CMDB 主机实例同步至蓝鲸 CMDB](CMDB_integration.md)、[自动发现 MySQL 实例](CMDB_CI_auto_discovery_MySQL)、[扩展主机的 CI 属性](CMDB_CI_auto_discovery_VMware.md)。
+如何实施 CMDB，请参考场景案例： [业务上线时 CMDB 如何管理主机](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)、[CMDB 如何管理进程](5.1/bk_solutions/CD/CMDB/CMDB_management_process.md)、[CMDB 如何管理 MySQL 实例](5.1/bk_solutions/CD/CMDB/CMDB_management_database_middleware.md)、[企业 CMDB 主机实例同步至蓝鲸 CMDB](5.1/bk_solutions/CD/CMDB/CMDB_integration.md)、[自动发现 MySQL 实例](5.1/bk_solutions/CD/CMDB/CMDB_CI_auto_discovery_MySQL.md)。
 
 
-### 3. 技术发展方向 {#Future_prospect}
+## 3. 技术发展方向
 
 当自动化等 IT 系统越来越依赖于 CMDB，如何保证 **CMDB 数据的准确性** 呢？我们认为 CMDB 需要具备配置数据的审计和校验能力，并关联 ITSM 系统，完善 CMDB 中配置数据的变更流程。
 
@@ -64,14 +64,13 @@
 
 来吧，一起共建属于大家的 [开源的 CMDB 项目](https://github.com/Tencent/bk-cmdb)！
 
-![](media/15605114938006.jpg)
+![](./media/15605114938006.jpg)
 
 （开源共建 CMDB ）
 
 
 
-## 扩展阅读 {#reference}
+## 扩展阅读
 - [论运维的四化建设 腾讯游戏的实践分享](http://www.kokojia.com/article/9133.html)
 - [Configuration Management Database](https://en.wikipedia.org/wiki/Configuration_management_database)
 - [Github Tencent/bk-cmdb](https://github.com/Tencent/bk-cmdb)
-

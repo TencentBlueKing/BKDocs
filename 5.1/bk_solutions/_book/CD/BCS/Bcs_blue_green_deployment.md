@@ -1,47 +1,45 @@
-## 应用的蓝绿发布（原：研发测试环境管理）
+# 应用的蓝绿发布（原：研发测试环境管理）
 
 
-#### 情景 {#Situation}
+## 情景
 传统的应用更新方式是**停服更新**，用户在更新期间**无法使用服务**。
 
 接下来，将以 Nginx 从 `1.12.2` 升级 `1.17.0` + 程序代码（index.html 的内容从 Nginx 默认页 更新为 1.17.0）为例，看 BCS 中的**蓝绿发布能力**是如何实现**不停机更新**，**用户无感知**。
 
 
-#### 前提条件 {#Prerequisites}
+## 前提条件
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含 [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)；本节教程新增概念：[ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)、[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)、[Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。
 - [完成 BCS 部署](https://docs.bk.tencent.com/bkce_install_guide/setup/quick_install_bcs.html)
 
-#### 操作步骤 {#Steps}
+## 操作步骤
 
-- [1. 应用的蓝绿发布逻辑介绍](#Blue_green_deployment_logic)
-- [2. 使用 K8S 资源准备版本](#BCS_blue_deployment)
-- [3. 使用 K8S 资源准备新版本](#BCS_green_deployment)
-- [4. 切换流量并观察](#BCS_deployment)
+- 1. 应用的蓝绿发布逻辑介绍
+- 2. 使用 K8S 资源准备版本
+- 3. 使用 K8S 资源准备新版本
+- 4. 切换流量并观察
 
+### 1. 蓝绿发布逻辑介绍
 
-
-## 1. 蓝绿发布逻辑介绍 {#Blue_green_deployment_logic}
-
-### 1.1 发布逻辑示意图
+#### 1.1 发布逻辑示意图
 
 蓝绿发布，即准备当前运行版本 和 新版本 两组实例，正式发布的时候，修改服务的域名的 DNS 记录将，将其指向新版本的 Ingress 指向的地址 。
 
 ![-w1303](media/15680799749131.jpg)
 
-### 1.2 版本更新流程中引入的对象
+#### 1.2 版本更新流程中引入的对象
 
 以 Nginx 从 `1.12.2` 升级 `1.17.0` + 程序代码（index.html 的内容从 Nginx 默认页 更新为 1.17.0）为例，使用以下几个 新的对象：
 
 - 程序代码或可执行文件（index.html） ：Docker 镜像
-- 程序或运行环境配置（nginx.conf） ：ConfigMap 
+- 程序或运行环境配置（nginx.conf） ：ConfigMap
 - 负载均衡器 （LoadBalancer）+ Ingress ： 用户接入和负载均衡
 
 其中 Deployment、Service 不再赘述。
 
 
-## 2. 使用 K8S 资源准备版本 {#BCS_blue_deployment}
+### 2. 使用 K8S 资源准备版本
 
-### 2.1 新增 LoadBalancer
+#### 2.1 新增 LoadBalancer
 
 Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用才能对外提供访问。
 
@@ -53,15 +51,14 @@ Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用�
 
 > 建议业务 Pod 不调度至 LB 所在的节点，可使用 节点亲和性（nodeAffinity）实现。
 
-### 2.2 Configmap ： 存放 nginx.conf
+#### 2.2 Configmap ： 存放 nginx.conf
 
 在【模板集】菜单中，选择【Configmap】，新建 nginx.conf 和 default.conf 两个 configmap，实现**应用程序和配置的解耦**。
 
 ![-w1674](media/15659435399613.jpg)
 
 
-
-### 2.3 创建 K8S 对象 Deployment 、Service、Ingress
+#### 2.3 创建 K8S 对象 Deployment 、Service、Ingress
 
 - 创建 Deployment
 
@@ -84,7 +81,7 @@ Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用�
 
 ![-w1629](media/15680920723966.jpg)
 
-### 2.4 实例化模板集
+#### 2.4 实例化模板集
 
 保存模板集后，实例化模板集。
 
@@ -111,11 +108,11 @@ Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用�
 
 以上作为线上环境运行的版本，接下来部署新版本。
 
-## 3. 使用 K8S 资源准备新版本 {#BCS_green_deployment}
+### 3. 使用 K8S 资源准备新版本
 
 本次新版本参照微服务更新的最佳实践：将应用程序打入 Docker Image，**更新 Deployment 中的镜像即更新版本**。
 
-### 3.1 制作新版本的 Docker Image
+#### 3.1 制作新版本的 Docker Image
 
 以 index.html 为应用程序，将其打入镜像，由于新版本的运行时是 Ningx 1.17.0，故以  Nginx 1.17.0 为基础镜像。
 
@@ -173,7 +170,7 @@ cf5b3c6798f7: Mounted from joyfulgame/nginx
 > 更多 Docker Image 的构建方法可以参考 [docker-nginx](https://github.com/nginxinc/docker-nginx/blob/master/stable/alpine/Dockerfile)。
 
 
-### 3.2 克隆模板集为新版本
+#### 3.2 克隆模板集为新版本
 
 由于新版本主要在 Deployment 的镜像版本、Ingress 绑定的主机名，以及这几个 K8S 对象的命名差别（同一个命名空间不允许重名），所以克隆模板集，然后修改即可。
 
@@ -200,8 +197,7 @@ cf5b3c6798f7: Mounted from joyfulgame/nginx
 ![-w513](media/15681005088734.jpg)
 
 
-
-## 4. 切换流量并观察 {#BCS_deployment}
+### 4. 切换流量并观察
 
 如果是客户端业务，将请求的后端地址指向为新版本的主机名即可，如果客户端不方便更新配置，可以使用 CNAME 将域名指向到新的版本的主机名。
 

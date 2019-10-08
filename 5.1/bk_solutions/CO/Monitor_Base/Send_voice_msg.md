@@ -1,6 +1,4 @@
 # 集成内部语音网关实现电话告警
----
-
 
 > 特别感谢社区用户 [Kevin](https://bk.tencent.com/s-mart/personal/10966/) 提供该文档.
 
@@ -12,15 +10,15 @@
 ## 前提条件
 
 - 开通好企业内部语音网关
-- 掌握 [蓝鲸 SaaS 开发](https://docs.bk.tencent.com/dev_saas/)，打开 [腾讯运维开发实战课](https://bk.tencent.com/s-mart/community/question/440) 马上学习
-- 掌握 [蓝鲸 API 网关开发](https://docs.bk.tencent.com/esb/)
+- 掌握 [蓝鲸 SaaS 开发](5.1/开发指南/SaaS开发/新手入门/macOS.md)，打开 [腾讯运维开发实战课](https://bk.tencent.com/s-mart/community/question/440) 马上学习
+- 掌握 [蓝鲸 API 网关开发](5.1/开发指南/扩展开发/API网关/README.md)
 
 
 ## 操作步骤
 
-- 1. 梳理逻辑
-- 2. 代码解读
-- 3. 电话告警测试
+- 梳理逻辑
+- 代码解读
+- 电话告警测试
 
 ### 1. 梳理逻辑
 
@@ -105,7 +103,7 @@ cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
     self.response.payload = result
 ```
 
-完成代码，[点击下载](/CO/media/send_voice_msg.py.tgz)。
+
 
 #### 2.3 重启 PaaS
 

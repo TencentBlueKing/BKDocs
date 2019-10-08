@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="../../Getting_started/FAQ.html" />
+    
     
     <link rel="prev" href="Change_Management.html" />
     
@@ -81,7 +83,7 @@
 
     
         
-        <li class="header">蓝鲸最佳实践</li>
+        <li class="header">场景案例</li>
         
         
     
@@ -118,19 +120,6 @@
             
                     
                     新手之旅
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../../Getting_started/FAQ.html">
-            
-                <a href="../../Getting_started/FAQ.html">
-            
-                    
-                    FAQ
             
                 </a>
             
@@ -208,7 +197,7 @@
                 <a href="../../CD/CMDB/Configuration_management_standardization.html">
             
                     
-                    概述 1 : 待审核 
+                    概述: 待审核 
             
                 </a>
             
@@ -221,7 +210,7 @@
                 <a href="../../CD/CMDB/CMDB_management_hosts.html">
             
                     
-                    业务上线时管理主机
+                    业务上线时 CMDB 如何管理主机
             
                 </a>
             
@@ -234,7 +223,7 @@
                 <a href="../../CD/CMDB/CMDB_management_process.html">
             
                     
-                    管理进程
+                    CMDB 如何管理进程
             
                 </a>
             
@@ -268,12 +257,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.6" data-path="../../CD/CMDB/CMDB_integration.html">
+        <li class="chapter " data-level="1.4.1.6" data-path="../../CD/CMDB/CMDB_intapplication_deployment.mdegration.md">
             
-                <a href="../../CD/CMDB/CMDB_integration.html">
+                <span>
             
                     
-                    对接企业原有 CMDB，实现数据同步
+                    企业原有 CMDB 同步至蓝鲸 CMDB
             
                 </a>
             
@@ -304,7 +293,7 @@
                 <span>
             
                     
-                    应用交付自动化 理论篇
+                    应用交付自动化
             
                 </span>
             
@@ -318,7 +307,7 @@
                 <a href="../../CD/Automation/Application_delivery_deployment_automation.html">
             
                     
-                    概述 1 : 待审核 
+                    概述 : 待审核 
             
                 </a>
             
@@ -729,6 +718,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6" data-path="../../Getting_started/FAQ.html">
+            
+                <a href="../../Getting_started/FAQ.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -771,38 +773,47 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B;&#x7EBF;&#x4E0A;&#x5316;">&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B;&#x7EBF;&#x4E0A;&#x5316;</h2>
-<h4 id="Situation">&#x60C5;&#x666F; </h4>
+                                <h1 id="&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B;&#x7EBF;&#x4E0A;&#x5316;">&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B;&#x7EBF;&#x4E0A;&#x5316;</h1>
+<h2 id="&#x60C5;&#x666F;">&#x60C5;&#x666F;</h2>
 <p>ITSM &#x4E2D;&#x7684;&#x6545;&#x969C;&#x7BA1;&#x7406;(Incident Management)&#x5E2E;&#x4F01;&#x4E1A;&#x6784;&#x5EFA;&#x4E86;&#x4E00;&#x5957;<strong>&#x5E94;&#x5BF9;&#x6545;&#x969C;&#x7684;&#x5904;&#x7406;&#x673A;&#x5236;</strong>&#xFF0C;&#x786E;&#x4FDD;&#x6545;&#x969C;&#x6765;&#x4E34;&#x4E4B;&#x65F6;&#x53EF;&#x4EE5;<strong>&#x9AD8;&#x6548;&#x6709;&#x5E8F;&#x7684;&#x54CD;&#x5E94;&#x3001;&#x5904;&#x7406;&#x4EE5;&#x53CA;&#x56DE;&#x6EAF;&#x6545;&#x969C;&#x7684;&#x8868;&#x9762;&#x548C;&#x672C;&#x8D28;</strong>&#xFF0C;&#x5E76;&#x5C06;&#x6839;&#x6E90;&#x95EE;&#x9898;&#x901A;&#x8FC7;&#x8F6C;&#x5355;&#x5230;<strong>&#x95EE;&#x9898;&#x7BA1;&#x7406;&#x6A21;&#x5757;</strong>&#xFF0C;&#x5B9E;&#x73B0;<strong>&#x6545;&#x969C;&#x7684;&#x95ED;&#x73AF;</strong>&#x3002;</p>
 <p>&#x6545;&#x969C;&#x7BA1;&#x7406;&#x662F;&#x84DD;&#x9CB8; ITSM &#x5185;&#x7F6E;&#x7684;&#x6A21;&#x5757;&#x4E4B;&#x4E00;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4ECB;&#x7ECD;&#x5728;&#x84DD;&#x9CB8; ITSM &#x662F;&#x5982;&#x4F55;&#x5E94;&#x5BF9;<strong>&#x90E8;&#x5206;&#x5730;&#x533A;&#x7528;&#x6237;&#x96C6;&#x4E2D;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#x7F51;&#x7AD9;&#x7684;&#x6295;&#x8BC9;</strong>&#x3002;</p>
-<h4 id="Prerequisites">&#x524D;&#x63D0;&#x6761;&#x4EF6; </h4>
+<h2 id="&#x524D;&#x63D0;&#x6761;&#x4EF6;">&#x524D;&#x63D0;&#x6761;&#x4EF6;</h2>
 <ul>
 <li><a href="https://docs.bk.tencent.com/bkce_install_guide/" target="_blank">&#x90E8;&#x7F72;&#x5B8C;&#x84DD;&#x9CB8;</a>&#xFF0C;&#x81EA;&#x5E26; ITSM SaaS&#x3002;</li>
 <li>&#x51C6;&#x5907;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B;&#x4E2D; <a href="https://docs.bk.tencent.com/paas/FunctionIntroduced.html#RoleManagement" target="_blank">&#x591A;&#x4E2A;&#x89D2;&#x8272;</a> &#x7684;&#x8D26;&#x53F7;&#xFF0C;&#x5305;&#x542B;<code>&#x8FD0;&#x7EF4;</code>&#x3001;<code>QC</code>&#x3001;<code>&#x4EA7;&#x54C1;</code>&#xFF0C;&#x4EE5;&#x53CA;&#x6D41;&#x7A0B;&#x8BBE;&#x8BA1;&#x7684;<code>&#x7BA1;&#x7406;&#x5458;</code>&#x3002;</li>
 </ul>
-<h4 id="Steps">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4; </h4>
+<h2 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h2>
 <ul>
-<li><a href="#Carding_flow">1. &#x68B3;&#x7406;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B;</a></li>
-<li><a href="#Create_service_directory">2. &#x521B;&#x5EFA;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x53CA;&#x6D41;&#x7A0B;</a></li>
-<li><a href="#Demo">3. &#x4E00;&#x6B21;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x793A;&#x4F8B;</a></li>
+<li><ol>
+<li>&#x68B3;&#x7406;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B;</li>
+</ol>
+</li>
+<li><ol>
+<li>&#x521B;&#x5EFA;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x53CA;&#x6D41;&#x7A0B;</li>
+</ol>
+</li>
+<li><ol>
+<li>&#x4E00;&#x6B21;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x793A;&#x4F8B;</li>
+</ol>
+</li>
 </ul>
-<h2 id="Carding_flow">1. &#x68B3;&#x7406;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B; </h2>
+<h3 id="1-&#x68B3;&#x7406;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B;">1. &#x68B3;&#x7406;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B;</h3>
 <p>&#x4ECE; ITSM &#x7406;&#x8BBA;&#x51FA;&#x53D1;&#xFF0C;&#x68B3;&#x7406;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x7684;&#x6D41;&#x7A0B;&#x56FE;&#xFF0C;&#x5305;&#x542B;&#x5BA2;&#x670D; <strong>&#x63D0;&#x5355;</strong>&#x3001;&#x8FD0;&#x7EF4; <strong>&#x6545;&#x969C;&#x8DDF;&#x8FDB;</strong>&#x3001;&#x8FD0;&#x7EF4; <strong>&#x56DE;&#x6EAF;&#x603B;&#x7ED3;&#x6545;&#x969C;</strong>&#xFF0C;&#x4EE5;&#x53CA;&#x6700;&#x540E;&#x8D28;&#x91CF;&#x4FDD;&#x8BC1;(QC)&#x5BF9;&#x6545;&#x969C;&#x7684; <strong>&#x8BC4;&#x4F30;&#x7BA1;&#x7406;</strong>&#x3002;</p>
 <p><img src="media/15658530577275.jpg" alt="-w1458"></p>
 <blockquote>
 <p>&#x6D41;&#x7A0B;&#x56FE;&#x4E2D;&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x8DF5;&#x6848;&#x4F8B;&#xFF0C;&#x90E8;&#x5206;&#x6570;&#x636E;&#x9700;&#x8981;&#x4ECE;&#x5468;&#x8FB9;&#x7CFB;&#x7EDF;&#x83B7;&#x53D6;&#xFF0C;&#x6B64;&#x5904;&#x529F;&#x80FD;&#x9700;&#x8981;&#x505A;&#x4E8C;&#x6B21;&#x5F00;&#x53D1;&#xFF0C;&#x672C;&#x6559;&#x7A0B;&#x4E13;&#x6CE8;&#x6D41;&#x7A0B;&#x672C;&#x8EAB;&#x3002;</p>
 </blockquote>
-<h2 id="Create_service_directory">2. &#x521B;&#x5EFA;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x53CA;&#x6D41;&#x7A0B; </h2>
+<h3 id="2-&#x521B;&#x5EFA;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x53CA;&#x6D41;&#x7A0B;">2. &#x521B;&#x5EFA;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x53CA;&#x6D41;&#x7A0B;</h3>
 <p>&#x5148;&#x8BBE;&#x8BA1;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x7684;<strong>&#x6D41;&#x7A0B;</strong>&#xFF0C;<strong>&#x6D41;&#x7A0B;&#x4F9D;&#x9644;&#x5728;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x4E0A;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x670D;&#x52A1;</strong>&#x3002;</p>
-<h3 id="Authorization">2.1 &#x89D2;&#x8272;&#x8BBE;&#x7F6E; </h3>
+<h4 id="21-&#x89D2;&#x8272;&#x8BBE;&#x7F6E;">2.1 &#x89D2;&#x8272;&#x8BBE;&#x7F6E;</h4>
 <p>&#x53C2;&#x7167; <a href="Release_Management.html#Authorization" target="_blank">&#x89D2;&#x8272;&#x8BBE;&#x7F6E;</a> &#x5B8C;&#x6210;&#x5BF9;<code>&#x8FD0;&#x7EF4;</code>&#x3001;<code>&#x4EA7;&#x54C1;</code>&#x548C;<code>QC</code>&#x7684;&#x6388;&#x6743;&#x3002;</p>
-<h3 id="22-&#x8BBE;&#x8BA1;&#x6545;&#x969C;&#x53D7;&#x7406;&#x6D41;&#x7A0B;">2.2 &#x8BBE;&#x8BA1;&#x6545;&#x969C;&#x53D7;&#x7406;&#x6D41;&#x7A0B;</h3>
-<h4 id="221-&#x586B;&#x5199;&#x6D41;&#x7A0B;&#x4FE1;&#x606F;">2.2.1 &#x586B;&#x5199;&#x6D41;&#x7A0B;&#x4FE1;&#x606F;</h4>
+<h4 id="22-&#x8BBE;&#x8BA1;&#x6545;&#x969C;&#x53D7;&#x7406;&#x6D41;&#x7A0B;">2.2 &#x8BBE;&#x8BA1;&#x6545;&#x969C;&#x53D7;&#x7406;&#x6D41;&#x7A0B;</h4>
+<h5 id="221-&#x586B;&#x5199;&#x6D41;&#x7A0B;&#x4FE1;&#x606F;">2.2.1 &#x586B;&#x5199;&#x6D41;&#x7A0B;&#x4FE1;&#x606F;</h5>
 <p>&#x9009;&#x62E9;&#x83DC;&#x5355;&#x3010;&#x6D41;&#x7A0B;&#x8BBE;&#x8BA1;&#x3011; &#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x65B0;&#x589E;&#x3011;&#x6309;&#x94AE;&#xFF0C;&#x6309;&#x63D0;&#x793A;&#x586B;&#x5199;&#x6D41;&#x7A0B;&#x4FE1;&#x606F;&#x3002;</p>
 <p><img src="media/15658545362420.jpg" alt="-w1362"></p>
 <p>&#x6D41;&#x7A0B;&#x7C7B;&#x578B;&#x9009;&#x62E9;&#x3010;&#x4E8B;&#x4EF6;&#x3011;&#xFF0C;&#x9700;&#x8981;&#x3010;&#x5173;&#x8054;&#x4E1A;&#x52A1;&#x3011;&#xFF0C;&#x56E0;&#x4E3A;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x548C;&#x4E1A;&#x52A1;&#x76F8;&#x5173;&#xFF0C;&#x540C;&#x65F6;&#x5173;&#x8054;&#x4E1A;&#x52A1;&#x5BF9;&#x5E94;&#x7684;&#x89D2;&#x8272;&#xFF1A;&#x4EA7;&#x54C1;&#x3001;&#x8FD0;&#x7EF4;&#x3002;</p>
 <p>&#x70B9;&#x51FB;&#x3010;&#x4E0B;&#x4E00;&#x6B65;&#x3011;&#xFF0C;&#x8FDB;&#x5165;&#x3010;&#x5B9A;&#x4E49;&#x4E0E;&#x914D;&#x7F6E;&#x6D41;&#x7A0B;&#x3011;&#x73AF;&#x8282;&#x3002;</p>
-<h4 id="222-&#x5B9A;&#x4E49;&#x4E0E;&#x914D;&#x7F6E;&#x6D41;&#x7A0B;">2.2.2 &#x5B9A;&#x4E49;&#x4E0E;&#x914D;&#x7F6E;&#x6D41;&#x7A0B;</h4>
+<h5 id="222-&#x5B9A;&#x4E49;&#x4E0E;&#x914D;&#x7F6E;&#x6D41;&#x7A0B;">2.2.2 &#x5B9A;&#x4E49;&#x4E0E;&#x914D;&#x7F6E;&#x6D41;&#x7A0B;</h5>
 <p><img src="media/15658547862596.jpg" alt="-w1352"></p>
 <p>&#x70B9;&#x51FB;&#x4E0A;&#x56FE;&#x3010;&#x6D41;&#x7A0B;&#x753B;&#x5E03;&#x3011;&#x4E2D;&#x7684;&#x3010;&#x9F7F;&#x8F6E;&#x3011;&#xFF0C;&#x914D;&#x7F6E;&#x3010;&#x63D0;&#x5355;&#x3011;&#x6D41;&#x7A0B;&#x8282;&#x70B9;&#x7684;&#x5B57;&#x6BB5;&#x3002;</p>
 <p>&#x4E00;&#x822C;&#x662F;<strong>&#x5BA2;&#x670D;</strong>&#x63D0;&#x6545;&#x969C;&#x5355;&#x636E;&#xFF0C;&#x6240;&#x4EE5;&#x64CD;&#x4F5C;&#x89D2;&#x8272;&#x9009;&#x62E9;&#x3010;&#x901A;&#x7528;&#x89D2;&#x8272;&#x8868;&#x3011;-&gt; &#x3010;&#x5BA2;&#x670D;&#x3011;(&#x5BA2;&#x670D;&#x89D2;&#x8272;&#x6388;&#x6743;&#x8BE6;&#x89C1;  <a href="#Authorization">&#x7ED9;&#x89D2;&#x8272;&#x5206;&#x914D;&#x6743;&#x9650;</a> &#xFF09;&#x3002;</p>
@@ -811,13 +822,13 @@
 <p><img src="media/15658592435245.jpg" alt="-w1408"></p>
 <p>&#x53C2;&#x7167; <a href="#Carding_flow">&#x68B3;&#x7406;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6D41;&#x7A0B;</a>&#xFF0C;&#x5B8C;&#x6210;&#x6574;&#x4E2A;&#x6545;&#x969C;&#x53D7;&#x7406;&#x6D41;&#x7A0B;&#x7684;&#x914D;&#x7F6E;&#x3002;</p>
 <p><img src="media/15658592876789.jpg" alt="-w1397"></p>
-<h4 id="223-&#x542F;&#x7528;&#x6D41;&#x7A0B;">2.2.3 &#x542F;&#x7528;&#x6D41;&#x7A0B;</h4>
+<h5 id="223-&#x542F;&#x7528;&#x6D41;&#x7A0B;">2.2.3 &#x542F;&#x7528;&#x6D41;&#x7A0B;</h5>
 <p>&#x3010;&#x542F;&#x7528;&#x6D41;&#x7A0B;&#x3011;&#xFF0C;&#x9009;&#x62E9;&#x9002;&#x5408;&#x7684;&#x901A;&#x77E5;&#x7B56;&#x7565;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x63D0;&#x4EA4;&#x3011;&#x5B8C;&#x6210;&#x6D41;&#x7A0B;&#x8BBE;&#x8BA1;&#x3002;</p>
 <p><img src="media/15658593359980.jpg" alt="-w1404"></p>
-<h4 id="224-&#x6D41;&#x7A0B;&#x6A21;&#x677F;&#x5B9E;&#x4F8B;&#x5316;">2.2.4 &#x6D41;&#x7A0B;&#x6A21;&#x677F;&#x5B9E;&#x4F8B;&#x5316;</h4>
+<h5 id="224-&#x6D41;&#x7A0B;&#x6A21;&#x677F;&#x5B9E;&#x4F8B;&#x5316;">2.2.4 &#x6D41;&#x7A0B;&#x6A21;&#x677F;&#x5B9E;&#x4F8B;&#x5316;</h5>
 <p>&#x9009;&#x62E9;&#x83DC;&#x5355;&#x3010;&#x6D41;&#x7A0B;&#x8BBE;&#x8BA1;&#x3011;&#xFF0C;&#x627E;&#x5230;&#x521A;&#x7F16;&#x8F91;&#x7684;&#x6545;&#x969C;&#x53D7;&#x7406;&#x6D41;&#x7A0B;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x90E8;&#x7F72;&#x3011;&#xFF0C;&#x751F;&#x6210;&#x6D41;&#x7A0B;&#x5B9E;&#x4F8B;&#x3002;</p>
 <p><img src="media/15658593653122.jpg" alt="-w1403"></p>
-<h3 id="23-&#x5728;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x4E2D;&#x65B0;&#x589E;&#x6545;&#x969C;&#x53D7;&#x7406;&#x670D;&#x52A1;&#xFF0C;&#x5E76;&#x7ED1;&#x5B9A;&#x6D41;&#x7A0B;">2.3 &#x5728;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x4E2D;&#x65B0;&#x589E;&quot;&#x6545;&#x969C;&#x53D7;&#x7406;&quot;&#x670D;&#x52A1;&#xFF0C;&#x5E76;&#x7ED1;&#x5B9A;&#x6D41;&#x7A0B;</h3>
+<h4 id="23-&#x5728;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x4E2D;&#x65B0;&#x589E;&#x6545;&#x969C;&#x53D7;&#x7406;&#x670D;&#x52A1;&#xFF0C;&#x5E76;&#x7ED1;&#x5B9A;&#x6D41;&#x7A0B;">2.3 &#x5728;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x4E2D;&#x65B0;&#x589E;&quot;&#x6545;&#x969C;&#x53D7;&#x7406;&quot;&#x670D;&#x52A1;&#xFF0C;&#x5E76;&#x7ED1;&#x5B9A;&#x6D41;&#x7A0B;</h4>
 <p>&#x9009;&#x62E9;&#x83DC;&#x5355;&#x3010;&#x670D;&#x52A1;&#x3011;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x65B0;&#x589E;&#x3011;&#x6309;&#x94AE;&#xFF0C;&#x65B0;&#x589E;&quot;&#x6545;&#x969C;&#x53D7;&#x7406;&quot;&#x670D;&#x52A1;&#xFF0C;&#x5E76;<strong>&#x5173;&#x8054;</strong>&#x521A;&#x751F;&#x6210;&#x7684;&#x6D41;&#x7A0B;&#x5B9E;&#x4F8B;&#x3002;</p>
 <p><img src="media/15658595078266.jpg" alt="-w1403"></p>
 <p>&#x9009;&#x62E9;&#x83DC;&#x5355;&#x3010;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x3011;&#xFF0C;&#x9009;&#x4E2D;&#x3010;&#x6839;&#x76EE;&#x5F55;&#x3011;&#xFF0C;&#x70B9;&#x51FB;&#x53F3;&#x4FA7;&#x3010; <strong>&#x22EE;</strong> &#x3011;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x65B0;&#x589E;&#x3011;&#xFF0C;&#x6309;&#x63D0;&#x793A;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<strong>&#x6545;&#x969C;&#x53D7;&#x7406;</strong>&#x7684;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x3002;</p>
@@ -825,25 +836,25 @@
 <p>&#x9009;&#x4E2D;&#x521A;&#x521A;&#x521B;&#x5EFA;&#x7684;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x3010;&#x6545;&#x969C;&#x53D7;&#x7406;&#x3011;&#xFF0C;&#x53F3;&#x4FA7;&#x4F1A;&#x663E;&#x793A;&#x3010;&#x6DFB;&#x52A0;&#x3011;&#x6309;&#x94AE;&#xFF0C;&#x70B9;&#x51FB;&#x8BE5;&#x6309;&#x94AE;&#x6DFB;&#x52A0;<strong>&#x6545;&#x969C;&#x53D7;&#x7406;</strong>&#x670D;&#x52A1;&#x3002;</p>
 <p><img src="media/15658596158089.jpg" alt="-w1404"></p>
 <p>&#x81F3;&#x6B64;&#xFF0C;&#x6D41;&#x7A0B;&#x8BBE;&#x8BA1;&#x548C;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x5DF2;&#x65B0;&#x5EFA;&#x597D;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x505A;&#x4E00;&#x6B21;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x6F14;&#x793A;&#x3002;</p>
-<h2 id="Demo">3. &#x4E00;&#x6B21;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x793A;&#x4F8B; </h2>
+<h3 id="3-&#x4E00;&#x6B21;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x793A;&#x4F8B;">3. &#x4E00;&#x6B21;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x793A;&#x4F8B;</h3>
 <p><img src="media/15658720727110.jpg" alt="-w768"></p>
-<h3 id="31-&#x5BA2;&#x670D;&#x63D0;&#x62A5;&#x6545;&#x969C;&#x5355;">3.1 &#x5BA2;&#x670D;&#x63D0;&#x62A5;&#x6545;&#x969C;&#x5355;</h3>
+<h4 id="31-&#x5BA2;&#x670D;&#x63D0;&#x62A5;&#x6545;&#x969C;&#x5355;">3.1 &#x5BA2;&#x670D;&#x63D0;&#x62A5;&#x6545;&#x969C;&#x5355;</h4>
 <p>&#x7528;<code>&#x5BA2;&#x670D;</code>&#x8D26;&#x53F7;&#x767B;&#x5F55; ITSM &#xFF0C;&#x9009;&#x62E9;&#x3010;&#x4E8B;&#x4EF6;&#x7BA1;&#x7406;&#x3011;&#x83DC;&#x5355;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x65B0;&#x589E;&#x4E8B;&#x4EF6;&#x3011;&#xFF0C;&#x9009;&#x62E9;&#x3010;&#x6545;&#x969C;&#x53D7;&#x7406;&#x3011;&#x670D;&#x52A1;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x63D0;&#x4EA4;&#x3011;&#x3002;</p>
 <p><img src="media/15658597438200.jpg" alt="-w1332"></p>
 <p>&#x5728;&#x3010;&#x65B0;&#x589E;&#x4E8B;&#x4EF6;&#x3011;&#x754C;&#x9762;&#xFF0C;&#x586B;&#x5199;<strong>&#x672C;&#x6B21;&#x6545;&#x969C;&#x63D0;&#x62A5;&#x7684;&#x5173;&#x952E;&#x4FE1;&#x606F;</strong>&#xFF0C;&#x5305;&#x62EC;&#x6545;&#x969C;&#x6807;&#x9898;&#x3001;&#x622A;&#x56FE;&#x4EE5;&#x53CA;&#x6545;&#x969C;&#x5904;&#x7406;&#x56E2;&#x961F;&#x7B49;&#x3002;</p>
 <p>&#x70B9;&#x51FB;&#x3010;&#x63D0;&#x4EA4;&#x3011;&#xFF0C;&#x63D0;&#x62A5;&#x6545;&#x969C;&#x3002;</p>
 <p><img src="media/15658604949447.jpg" alt="-w1331"></p>
-<h3 id="32-&#x8FD0;&#x7EF4;&#x8DDF;&#x8FDB;&#x6545;&#x969C;&#x5904;&#x7406;">3.2 &#x8FD0;&#x7EF4;&#x8DDF;&#x8FDB;&#x6545;&#x969C;&#x5904;&#x7406;</h3>
+<h4 id="32-&#x8FD0;&#x7EF4;&#x8DDF;&#x8FDB;&#x6545;&#x969C;&#x5904;&#x7406;">3.2 &#x8FD0;&#x7EF4;&#x8DDF;&#x8FDB;&#x6545;&#x969C;&#x5904;&#x7406;</h4>
 <p>&#x8FD0;&#x7EF4;&#x6536;&#x5230;&#x4E00;&#x5C01;<strong>&#x5F85;&#x5904;&#x7406;</strong>&#x7684;<strong>&#x6545;&#x969C;&#x53D7;&#x7406;</strong>&#x90AE;&#x4EF6;&#x3002;</p>
 <p><img src="media/15658606919760.jpg" alt="-w619"></p>
 <p>&#x4F7F;&#x7528;<strong>&#x8FD0;&#x7EF4;</strong>&#x8D26;&#x53F7;&#x767B;&#x5F55; ITSM &#xFF0C;&#x5728;&#x5F85;&#x529E;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x627E;&#x5230;&#x5F85;&#x5904;&#x7406;&#x7684;&#x6545;&#x969C;&#x5355;&#x3002;</p>
 <p><img src="media/15658608778520.jpg" alt="-w1499"></p>
 <p>&#x70B9;&#x51FB;&#x94FE;&#x63A5;&#xFF0C;&#x586B;&#x5199;&#x6545;&#x969C;&#x5904;&#x7406;&#x8BB0;&#x5F55;&#xFF0C;&#x70B9;&#x51FB;&#x3010;&#x901A;&#x8FC7;&#x3011;&#xFF0C;&#x5B8C;&#x6210;&#x672C;&#x73AF;&#x8282;&#x6D41;&#x7A0B;&#x3002;</p>
 <p><img src="media/15658613447194.jpg" alt="-w1491"></p>
-<h3 id="33-&#x6545;&#x969C;&#x603B;&#x7ED3;">3.3 &#x6545;&#x969C;&#x603B;&#x7ED3;</h3>
+<h4 id="33-&#x6545;&#x969C;&#x603B;&#x7ED3;">3.3 &#x6545;&#x969C;&#x603B;&#x7ED3;</h4>
 <p>&#x5904;&#x7406;&#x5B8C;&#x6545;&#x969C;&#x540E;&#xFF0C;&#x8FD0;&#x7EF4;<strong>&#x590D;&#x76D8;&#x672C;&#x6B21;&#x6545;&#x969C;</strong>&#xFF0C;&#x505A;&#x6545;&#x969C;&#x603B;&#x7ED3;&#x3002;</p>
 <p><img src="media/15658620538481.jpg" alt="-w1662"></p>
-<h3 id="34-qc-&#x505A;&#x6545;&#x969C;&#x8BC4;&#x4F30;">3.4 QC &#x505A;&#x6545;&#x969C;&#x8BC4;&#x4F30;</h3>
+<h4 id="34-qc-&#x505A;&#x6545;&#x969C;&#x8BC4;&#x4F30;">3.4 QC &#x505A;&#x6545;&#x969C;&#x8BC4;&#x4F30;</h4>
 <p>QC&#xFF08;&#x8D28;&#x91CF;&#x4FDD;&#x969C;&#xFF09;&#x4EBA;&#x5458;&#x5728;&#x5DE5;&#x4F5C;&#x53F0;&#x7684;&#x5F85;&#x529E;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x627E;&#x5230;&#x672C;&#x6B21;&#x6545;&#x969C;&#x7684;&#x5355;&#x636E;&#x3002;</p>
 <p><img src="media/15658621496239.jpg" alt="-w1497"></p>
 <p>QC &#x4F9D;&#x636E;&#x672C;&#x6B21;&#x6545;&#x969C;&#x7684;&#x5F71;&#x54CD;&#x8303;&#x56F4;&#x3001;&#x539F;&#x56E0;&#x4EE5;&#x53CA;&#x5904;&#x7406;&#x60C5;&#x51B5;&#xFF0C;&#x505A;&#x51FA;&#x6545;&#x969C;&#x8BC4;&#x4F30;&#x3002;</p>
@@ -861,10 +872,14 @@
 
             
                 
-                <a href="Change_Management.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 环境变更流程线上化">
+                <a href="Change_Management.html" class="navigation navigation-prev " aria-label="Previous page: 环境变更流程线上化">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="../../Getting_started/FAQ.html" class="navigation navigation-next " aria-label="Next page: 常见问题">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -873,7 +888,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"故障提报流程线上化","level":"1.5.5.4","depth":3,"previous":{"title":"环境变更流程线上化","level":"1.5.5.3","depth":3,"path":"CO/ITSM/Change_Management.md","ref":"CO/ITSM/Change_Management.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"CO/ITSM/Incident_Management.md","mtime":"2019-09-10T12:13:39.690Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-11T08:56:03.369Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"故障提报流程线上化","level":"1.5.5.4","depth":3,"next":{"title":"常见问题","level":"1.6","depth":1,"path":"Getting_started/FAQ.md","ref":"Getting_started/FAQ.md","articles":[]},"previous":{"title":"环境变更流程线上化","level":"1.5.5.3","depth":3,"path":"CO/ITSM/Change_Management.md","ref":"CO/ITSM/Change_Management.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"CO/ITSM/Incident_Management.md","mtime":"2019-09-29T09:53:44.101Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-08T01:54:19.412Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>业务上线时管理主机 · GitBook</title>
+        <title>业务上线时 CMDB 如何管理主机 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -83,7 +83,7 @@
 
     
         
-        <li class="header">蓝鲸最佳实践</li>
+        <li class="header">场景案例</li>
         
         
     
@@ -120,19 +120,6 @@
             
                     
                     新手之旅
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../../Getting_started/FAQ.html">
-            
-                <a href="../../Getting_started/FAQ.html">
-            
-                    
-                    FAQ
             
                 </a>
             
@@ -210,7 +197,7 @@
                 <a href="Configuration_management_standardization.html">
             
                     
-                    概述 1 : 待审核 
+                    概述: 待审核 
             
                 </a>
             
@@ -223,7 +210,7 @@
                 <a href="CMDB_management_hosts.html">
             
                     
-                    业务上线时管理主机
+                    业务上线时 CMDB 如何管理主机
             
                 </a>
             
@@ -236,7 +223,7 @@
                 <a href="CMDB_management_process.html">
             
                     
-                    管理进程
+                    CMDB 如何管理进程
             
                 </a>
             
@@ -270,12 +257,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.6" data-path="CMDB_integration.html">
+        <li class="chapter " data-level="1.4.1.6" data-path="CMDB_intapplication_deployment.mdegration.md">
             
-                <a href="CMDB_integration.html">
+                <span>
             
                     
-                    对接企业原有 CMDB，实现数据同步
+                    企业原有 CMDB 同步至蓝鲸 CMDB
             
                 </a>
             
@@ -306,7 +293,7 @@
                 <span>
             
                     
-                    应用交付自动化 理论篇
+                    应用交付自动化
             
                 </span>
             
@@ -320,7 +307,7 @@
                 <a href="../Automation/Application_delivery_deployment_automation.html">
             
                     
-                    概述 1 : 待审核 
+                    概述 : 待审核 
             
                 </a>
             
@@ -731,6 +718,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6" data-path="../../Getting_started/FAQ.html">
+            
+                <a href="../../Getting_started/FAQ.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -761,7 +761,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >业务上线时管理主机</a>
+        <a href="../.." >业务上线时 CMDB 如何管理主机</a>
     </h1>
 </div>
 
@@ -773,24 +773,24 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x4E1A;&#x52A1;&#x4E0A;&#x7EBF;&#x65F6;-cmdb-&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x4E3B;&#x673A;">&#x4E1A;&#x52A1;&#x4E0A;&#x7EBF;&#x65F6; CMDB &#x5982;&#x4F55;&#x7BA1;&#x7406;&#x4E3B;&#x673A;</h2>
-<h4 id="Situation">&#x60C5;&#x666F; </h4>
+                                <h1 id="&#x4E1A;&#x52A1;&#x4E0A;&#x7EBF;&#x65F6;-cmdb-&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x4E3B;&#x673A;">&#x4E1A;&#x52A1;&#x4E0A;&#x7EBF;&#x65F6; CMDB &#x5982;&#x4F55;&#x7BA1;&#x7406;&#x4E3B;&#x673A;</h1>
+<h2 id="&#x60C5;&#x666F;">&#x60C5;&#x666F;</h2>
 <p>&#x65B0;&#x4E1A;&#x52A1;&#xFF08;&#x5E38;&#x89C1;&#x7684;&#x4E09;&#x5C42;&#x67B6;&#x6784;&#xFF1A;&#x63A5;&#x5165;&#x5C42;&#x3001;&#x903B;&#x8F91;&#x5C42;&#x3001;&#x5B58;&#x50A8;&#x5C42;&#xFF09;&#x4E0A;&#x7EBF;&#xFF0C;&#x9700;&#x8981;&#x7528; CMDB &#x7BA1;&#x7406;&#x4E1A;&#x52A1;&#x4E0A;&#x7EBF;&#x4F9D;&#x8D56;&#x7684;&#x4E3B;&#x673A;&#x8D44;&#x6E90;&#xFF0C;&#x4FBF;&#x4E8E;&#x540E;&#x7EED;&#x5B9E;&#x73B0;&#x53D1;&#x5E03;&#x3001;&#x53D8;&#x66F4;&#x3001;&#x6545;&#x969C;&#x5904;&#x7406;&#x7B49;&#x573A;&#x666F;&#x7684;&#x81EA;&#x52A8;&#x5316;&#x6D41;&#x7A0B;&#x3002;</p>
-<h4 id="Prerequisites">&#x524D;&#x63D0;&#x6761;&#x4EF6; </h4>
-<p>&#x5728; <a href="https://docs.bk.tencent.com/cmdb/" target="_blank">&#x914D;&#x7F6E;&#x5E73;&#x53F0;</a> &#x4E2D; <a href="https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%881%EF%BC%89%E6%96%B0%E5%BB%BA%E4%B8%9A%E5%8A%A1" target="_blank">&#x65B0;&#x5EFA;&#x5B8C;&#x4E1A;&#x52A1;</a>&#xFF0C;&#x5E76; <a href="https://docs.bk.tencent.com/cmdb/Introduction.html#%E4%B8%BB%E6%9C%BA%E5%AF%BC%E5%85%A5" target="_blank">&#x5BFC;&#x5165;&#x4E3B;&#x673A;</a> &#x53CA;&#x5C06; <a href="https://docs.bk.tencent.com/cmdb/Introduction.html#%E4%B8%BB%E6%9C%BA%E5%88%86%E9%85%8D%E5%88%B0%E4%B8%9A%E5%8A%A1" target="_blank">&#x4E3B;&#x673A;&#x5206;&#x914D;&#x5230;&#x4E1A;&#x52A1;</a> &#x4E2D;&#x3002;</p>
-<h4 id="Steps">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4; </h4>
+<h2 id="&#x524D;&#x63D0;&#x6761;&#x4EF6;">&#x524D;&#x63D0;&#x6761;&#x4EF6;</h2>
+<p>&#x5728;&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x4E2D; <a href="5.1/&#x914D;&#x7F6E;&#x5E73;&#x53F0;/&#x5FEB;&#x901F;&#x5165;&#x95E8;/case1.md">&#x65B0;&#x5EFA;&#x5B8C;&#x4E1A;&#x52A1;</a>&#xFF0C;&#x5E76;&#x5BFC;&#x5165;&#x4E3B;&#x673A;&#x53CA;&#x5C06;&#x4E3B;&#x673A;&#x5206;&#x914D;&#x5230;&#x4E1A;&#x52A1;&#x4E2D;&#x3002;</p>
+<h2 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h2>
 <ul>
-<li><a href="#Combing_business_architecture">1. &#x68B3;&#x7406;&#x4E1A;&#x52A1;&#x67B6;&#x6784;</a></li>
-<li><a href="#New_set">2. &#x65B0;&#x5EFA;&#x96C6;&#x7FA4;</a></li>
-<li><a href="#New_module">3. &#x65B0;&#x5EFA;&#x6A21;&#x5757;</a></li>
-<li><a href="#consume_job">4. &#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5728;&#x4F5C;&#x4E1A;&#x5E73;&#x53F0;&#x4E2D;&#x67E5;&#x8BE2;&#x63A5;&#x5165;&#x5C42;&#x7684;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x7387;</a></li>
+<li>&#x68B3;&#x7406;&#x4E1A;&#x52A1;&#x67B6;&#x6784;</li>
+<li>&#x65B0;&#x5EFA;&#x96C6;&#x7FA4;</li>
+<li>&#x65B0;&#x5EFA;&#x6A21;&#x5757;</li>
+<li>&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5728;&#x4F5C;&#x4E1A;&#x5E73;&#x53F0;&#x4E2D;&#x67E5;&#x8BE2;&#x63A5;&#x5165;&#x5C42;&#x7684;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x7387;</li>
 </ul>
-<h2 id="Combing_business_architecture">1. &#x68B3;&#x7406;&#x4E1A;&#x52A1;&#x67B6;&#x6784; </h2>
+<h3 id="1-&#x68B3;&#x7406;&#x4E1A;&#x52A1;&#x67B6;&#x6784;">1. &#x68B3;&#x7406;&#x4E1A;&#x52A1;&#x67B6;&#x6784;</h3>
 <p>&#x4E1A;&#x52A1;&#x7684;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;&#x6700;&#x7EC8;&#x8981;&#x4F53;&#x73B0;&#x5728; CMDB &#x7684;&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x6811;&#x4E0A;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5148;&#x68B3;&#x7406;&#x4E1A;&#x52A1;&#x7684;&#x67B6;&#x6784;&#x3002;</p>
-<p>&#x4EE5;&#x4E1A;&#x52A1;&#x201C;&#x6B22;&#x4E50;&#x6E38;&#x620F;( demo )&quot;&#x4E3A;&#x4F8B;&#xFF0C;&#x5176;&#x67B6;&#x6784;&#x662F;&#x5E38;&#x89C1;&#x7684;&#x4E09;&#x5C42;&#x67B6;&#x6784;&#xFF1A;<code>&#x63A5;&#x5165;&#x5C42;</code> -&gt; <code>&#x903B;&#x8F91;&#x5C42;</code> -&gt; <code>&#x5B58;&#x50A8;&#x5C42;</code> </p>
+<p>&#x4EE5;&#x4E1A;&#x52A1;&#x201C;&#x6B22;&#x4E50;&#x6E38;&#x620F;( demo )&quot;&#x4E3A;&#x4F8B;&#xFF0C;&#x5176;&#x67B6;&#x6784;&#x662F;&#x5E38;&#x89C1;&#x7684;&#x4E09;&#x5C42;&#x67B6;&#x6784;&#xFF1A;<code>&#x63A5;&#x5165;&#x5C42;</code> -&gt; <code>&#x903B;&#x8F91;&#x5C42;</code> -&gt; <code>&#x5B58;&#x50A8;&#x5C42;</code></p>
 <p>&#x4E3A;&#x4E86;&#x6EE1;&#x8DB3;&#x5168;&#x56FD;&#x5404;&#x5730;&#x7528;&#x6237;&#x5C31;&#x8FD1;&#x63A5;&#x5165;&#xFF0C;&#x6309;&#x7167;&#x5730;&#x57DF;&#x5212;&#x5206;&#x4E86;&#x4E0D;&#x540C;&#x7684;&#x533A;&#xFF0C;&#x4F46;&#x67B6;&#x6784;&#x4E00;&#x81F4;&#x3002;</p>
 <p><img src="media/15625775986620.jpg" alt="-w758"></p>
-<h2 id="New_set">2. &#x65B0;&#x5EFA;&#x96C6;&#x7FA4; </h2>
+<h3 id="2-&#x65B0;&#x5EFA;&#x96C6;&#x7FA4;">2. &#x65B0;&#x5EFA;&#x96C6;&#x7FA4;</h3>
 <p>&#x6309;&#x7167;&#x4E0A;&#x8FF0;&#x4E1A;&#x52A1;&#x67B6;&#x6784;&#xFF0C;&#x53EF;&#x5C06;&#x505A;&#x5982;&#x4E0B;&#x5BF9;&#x5E94;&#xFF1A;</p>
 <ul>
 <li>&#x4E1A;&#x52A1;&#x4E2D;&#x7684;&#x533A; &lt;-&gt; CMDB &#x4E2D;&#x7684;&#x96C6;&#x7FA4;</li>
@@ -805,39 +805,39 @@
 <p>&#x65B0;&#x5EFA;&#x5B8C;&#x96C6;&#x7FA4;<code>&#x4E00;&#x533A;</code>&#x3001;<code>&#x4E8C;&#x533A;</code>&#x540E;&#xFF0C;&#x53EF;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x4E1A;&#x52A1;&#x62D3;&#x6251;</p>
 <p><img src="media/15625845771786.jpg" alt="-w1391"></p>
 <p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x5728;&#x96C6;&#x7FA4;&#x4E0B;&#x521B;&#x5EFA;&#x6A21;&#x5757;&#x3002;</p>
-<h2 id="New_module">3. &#x65B0;&#x5EFA;&#x6A21;&#x5757; </h2>
+<h3 id="3-&#x65B0;&#x5EFA;&#x6A21;&#x5757;">3. &#x65B0;&#x5EFA;&#x6A21;&#x5757;</h3>
 <p>&#x9009;&#x4E2D;<code>&#x96C6;&#x7FA4;</code>&#x8282;&#x70B9;&#xFF0C;&#x65B0;&#x5EFA;&#x6A21;&#x5757;</p>
 <p><img src="media/15625851392280.jpg" alt="-w1503"></p>
 <blockquote>
 <p>&#x6A21;&#x5757;&#x7C7B;&#x578B;&#xFF1A;&#x4E00;&#x822C;&#x4E3A;<code>&#x666E;&#x901A;</code>&#xFF0C;&#x5F53;&#x6A21;&#x5757;&#x7C7B;&#x578B;&#x4E3A;&#x6570;&#x636E;&#x5E93;&#x7C7B;&#x65F6;&#xFF0C;&#x9009;&#x62E9;<code>&#x6570;&#x636E;&#x5E93;</code>
 &#x4E3B;&#x8981;&#x7EF4;&#x62A4;&#x4EBA;&#x3001;&#x5907;&#x4EFD;&#x7EF4;&#x62A4;&#x4EBA;&#xFF1A;&#x8BE5;&#x6A21;&#x5757;&#x7EF4;&#x62A4;&#x4EBA;&#xFF0C;&#x4E00;&#x822C;&#x5728;&#x544A;&#x8B66;&#x63A8;&#x9001;&#x65F6;&#x4F1A;&#x7528;&#x5230;&#xFF1B;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x7535;&#x8BDD;&#x901A;&#x77E5;&#x65F6;&#x4F18;&#x5148;<code>&#x4E3B;&#x8981;&#x7EF4;&#x62A4;&#x4EBA;</code>&#xFF0C;&#x5982;&#x679C;<code>&#x4E3B;&#x8981;&#x7EF4;&#x62A4;&#x4EBA;</code>&#x672A;&#x63A5;&#x542C;&#xFF0C;&#x81EA;&#x52A8;&#x8F6C;<code>&#x5907;&#x4EFD;&#x7EF4;&#x62A4;&#x4EBA;</code>&#xFF0C;&#x6B64;&#x5904;&#x903B;&#x8F91;&#x9700;&#x8981;&#x81EA;&#x884C;&#x5B9E;&#x73B0;&#xFF1B;</p>
 </blockquote>
-<p>&#x6A21;&#x5757;&#x521B;&#x5EFA;&#x597D;&#x4E86;&#xFF0C;&#x63A5;&#x4E0B;&#x6765; <a href="https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%884%EF%BC%89%E4%B8%BB%E6%9C%BA%E8%BD%AC%E7%A7%BB" target="_blank">&#x5206;&#x914D;&#x4E3B;&#x673A;</a>&#xFF0C;&#x5C06;<code>&#x57FA;&#x7840;&#x8D44;&#x6E90;</code> -&gt; <code>&#x4E3B;&#x673A;</code>&#x4E2D;&#x7684;&#x8D44;&#x6E90;&#x6309;&#x7167;&#x4E1A;&#x52A1;&#x67B6;&#x6784;&#x5206;&#x914D;&#x81F3;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x5757;&#xFF1B;</p>
+<p>&#x6A21;&#x5757;&#x521B;&#x5EFA;&#x597D;&#x4E86;&#xFF0C;&#x63A5;&#x4E0B;&#x6765; <a href="5.1/&#x914D;&#x7F6E;&#x5E73;&#x53F0;/&#x4EA7;&#x54C1;&#x529F;&#x80FD;/BuzResource.md">&#x5206;&#x914D;&#x4E3B;&#x673A;</a>&#xFF0C;&#x5C06; <code>&#x57FA;&#x7840;&#x8D44;&#x6E90;</code> -&gt; <code>&#x4E3B;&#x673A;</code> &#x4E2D;&#x7684;&#x8D44;&#x6E90;&#x6309;&#x7167;&#x4E1A;&#x52A1;&#x67B6;&#x6784;&#x5206;&#x914D;&#x81F3;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x5757;&#xFF1B;</p>
 <p><img src="media/15625859972786.jpg" alt="-w1447"></p>
-<h2 id="consume_job">4. &#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5728;&#x4F5C;&#x4E1A;&#x5E73;&#x53F0;&#x4E2D;&#x67E5;&#x8BE2;&#x63A5;&#x5165;&#x5C42;&#x7684;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x7387;  </h2>
-<p>&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x4F53;&#x9A8C; <a href="https://docs.bk.tencent.com/job/" target="_blank">&#x4F5C;&#x4E1A;&#x5E73;&#x53F0;</a> &#x5982;&#x4F55;&#x6D88;&#x8D39;&#x4E3B;&#x673A;&#x5B9E;&#x4F8B;
+<h3 id="4-&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5728;&#x4F5C;&#x4E1A;&#x5E73;&#x53F0;&#x4E2D;&#x67E5;&#x8BE2;&#x63A5;&#x5165;&#x5C42;&#x7684;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x7387;">4. &#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5728;&#x4F5C;&#x4E1A;&#x5E73;&#x53F0;&#x4E2D;&#x67E5;&#x8BE2;&#x63A5;&#x5165;&#x5C42;&#x7684;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x7387;</h3>
+<p>&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x4F53;&#x9A8C; <a href="5.1/&#x4F5C;&#x4E1A;&#x5E73;&#x53F0;/&#x4EA7;&#x54C1;&#x4ECB;&#x7ECD;/&#x4EA7;&#x54C1;&#x4ECB;&#x7ECD;.md">&#x4F5C;&#x4E1A;&#x5E73;&#x53F0;</a> &#x5982;&#x4F55;&#x6D88;&#x8D39;&#x4E3B;&#x673A;&#x5B9E;&#x4F8B;
 <video src="media/cmdb_job_consume.mp4" width="100%" height="100%" controls loop></video></p>
-<h2 id="Extended_reading">&#x6269;&#x5C55;&#x9605;&#x8BFB; </h2>
-<h3 id="Blueking_built-in_consumption scenario">1. &#x84DD;&#x9CB8;&#x5185;&#x7F6E; SaaS &#x7684; CMDB &#x6D88;&#x8D39;&#x573A;&#x666F; </h3>
-<h4 id="Deployment_sops">1.1 &#x5E94;&#x7528;&#x53D1;&#x5E03;&#x3001;&#x53D8;&#x66F4;&#xFF1A;&#x8D44;&#x6E90;&#x7F16;&#x6392;&#x5DE5;&#x5177; &#x6807;&#x51C6;&#x8FD0;&#x7EF4; </h4>
+<h2 id="&#x6269;&#x5C55;&#x9605;&#x8BFB;">&#x6269;&#x5C55;&#x9605;&#x8BFB;</h2>
+<h3 id="1-&#x84DD;&#x9CB8;&#x5185;&#x7F6E;-saas-&#x7684;-cmdb-&#x6D88;&#x8D39;&#x573A;&#x666F;">1. &#x84DD;&#x9CB8;&#x5185;&#x7F6E; SaaS &#x7684; CMDB &#x6D88;&#x8D39;&#x573A;&#x666F;</h3>
+<h4 id="11-&#x5E94;&#x7528;&#x53D1;&#x5E03;&#x3001;&#x53D8;&#x66F4;&#xFF1A;&#x8D44;&#x6E90;&#x7F16;&#x6392;&#x5DE5;&#x5177;-&#x6807;&#x51C6;&#x8FD0;&#x7EF4;">1.1 &#x5E94;&#x7528;&#x53D1;&#x5E03;&#x3001;&#x53D8;&#x66F4;&#xFF1A;&#x8D44;&#x6E90;&#x7F16;&#x6392;&#x5DE5;&#x5177; &#x6807;&#x51C6;&#x8FD0;&#x7EF4;</h4>
 <p>&#x5E94;&#x7528;&#x53D1;&#x5E03;&#x3001;&#x53D8;&#x66F4;&#x6D41;&#x7A0B;&#x5305;&#x542B;&#x7248;&#x672C;&#x5728;&#x591A;&#x53F0;&#x4E3B;&#x673A;&#x4E0A;&#x7684;&#x6587;&#x4EF6;&#x5206;&#x53D1;&#x3001;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x7B49;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x4F55;&#x4F18;&#x96C5;&#x7684;&#x9009;&#x62E9;&#x8FD9;&#x6279;&#x4E3B;&#x673A;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528; CMDB &#x7684;&#x67E5;&#x8BE2;&#x4E3B;&#x673A;&#x5B9E;&#x4F8B;&#x529F;&#x80FD;&#x3002;</p>
 <p><img src="media/CMDB%E5%9C%BA%E6%99%AF-%E6%A0%87%E5%87%86%E8%BF%90%E7%BB%B4-01.png" alt="CMDB&#x573A;&#x666F;-&#x6807;&#x51C6;&#x8FD0;&#x7EF4;-01"></p>
-<p>&#xFF08;&#x5728; <a href="https://docs.bk.tencent.com/gcloud/product.html" target="_blank">&#x6807;&#x51C6;&#x8FD0;&#x7EF4;</a> &#x4E2D;&#x4E00;&#x6B21;&#x5E94;&#x7528;&#x4EA4;&#x4ED8;&#x7684;&#x6267;&#x884C;&#x5386;&#x53F2;&#xFF09;</p>
+<p>&#xFF08;&#x5728; <a href="5.1/&#x6807;&#x51C6;&#x8FD0;&#x7EF4;/README.md">&#x6807;&#x51C6;&#x8FD0;&#x7EF4;</a> &#x4E2D;&#x4E00;&#x6B21;&#x5E94;&#x7528;&#x4EA4;&#x4ED8;&#x7684;&#x6267;&#x884C;&#x5386;&#x53F2;&#xFF09;</p>
 <p>&#x5728;&#x53C2;&#x6570;&#x4E2D;&#x4F7F;&#x7528;<code>&#x52A8;&#x6001;IP</code>&#x53D8;&#x91CF;&#xFF0C;<strong>&#x8FD0;&#x7EF4;&#x65E0;&#x9700;&#x5173;&#x5FC3;&#x4E3B;&#x673A;&#x6269;&#x7F29;&#x5BB9;&#x3001;&#x6545;&#x969C;&#x66FF;&#x6362;&#x7B49;&#x573A;&#x666F;&#x5E26;&#x6765;&#x7684;&#x4E3B;&#x673A;&#x53D8;&#x66F4;</strong>&#xFF0C;&#x65E0;&#x9700;&#x62C5;&#x5FC3;&#x6F0F;&#x66F4;&#x65B0;&#x4E3B;&#x673A;&#x6216;&#x66F4;&#x65B0;&#x9519;&#x4E3B;&#x673A;&#x3002;
 <img src="media/%E6%A0%87%E5%87%86%E8%BF%90%E7%BB%B4%E4%BC%A0%E5%8F%82-CMDB.png" alt="&#x6807;&#x51C6;&#x8FD0;&#x7EF4;&#x4F20;&#x53C2;-CMDB"></p>
-<h4 id="Alarm_process_fta">1.2 &#x6545;&#x969C;&#x5904;&#x7406;&#xFF1A;&#x76D1;&#x63A7;&#x3001;&#x6545;&#x969C;&#x81EA;&#x6108; </h4>
-<p>&#x9488;&#x5BF9;&#x4E1A;&#x52A1;&#x67B6;&#x6784;&#x4E2D;&#x7684;&#x67D0;&#x4E00;&#x5C42;&#x7EA7;&#x6A21;&#x5757;&#xFF08;&#x5982;&#x63A5;&#x5165;&#x5C42;&#xFF09;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A; <a href="https://docs.bk.tencent.com/bk_monitor/" target="_blank">&#x544A;&#x8B66;&#x68C0;&#x6D4B;&#x7B56;&#x7565;</a>&#xFF0C;&#x65E0;&#x9700;&#x5173;&#x5FC3;&#x5B9E;&#x4F8B;&#x7684;&#x65B0;&#x589E;&#x3001;&#x5220;&#x9664;&#x53CA;&#x4FEE;&#x6539;&#x3002;</p>
+<h4 id="12-&#x6545;&#x969C;&#x5904;&#x7406;&#xFF1A;&#x76D1;&#x63A7;&#x3001;&#x6545;&#x969C;&#x81EA;&#x6108;">1.2 &#x6545;&#x969C;&#x5904;&#x7406;&#xFF1A;&#x76D1;&#x63A7;&#x3001;&#x6545;&#x969C;&#x81EA;&#x6108;</h4>
+<p>&#x9488;&#x5BF9;&#x4E1A;&#x52A1;&#x67B6;&#x6784;&#x4E2D;&#x7684;&#x67D0;&#x4E00;&#x5C42;&#x7EA7;&#x6A21;&#x5757;&#xFF08;&#x5982;&#x63A5;&#x5165;&#x5C42;&#xFF09;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A; <a href="5.1/&#x84DD;&#x9CB8;&#x76D1;&#x63A7;/&#x5FEB;&#x901F;&#x5165;&#x95E8;/&#x670D;&#x52A1;&#x62E8;&#x6D4B;/uptime_config.md">&#x544A;&#x8B66;&#x68C0;&#x6D4B;&#x7B56;&#x7565;</a>&#xFF0C;&#x65E0;&#x9700;&#x5173;&#x5FC3;&#x5B9E;&#x4F8B;&#x7684;&#x65B0;&#x589E;&#x3001;&#x5220;&#x9664;&#x53CA;&#x4FEE;&#x6539;&#x3002;</p>
 <p><img src="media/%E8%93%9D%E9%B2%B8%E7%9B%91%E6%8E%A7%E7%9A%84CMDB%E6%B6%88%E8%B4%B9%E5%9C%BA%E6%99%AF.png" alt="&#x84DD;&#x9CB8;&#x76D1;&#x63A7;&#x7684;CMDB&#x6D88;&#x8D39;&#x573A;&#x666F;"></p>
 <p>&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x5B9E;&#x65F6;&#x611F;&#x77E5;&#xFF0C;&#x80CC;&#x540E;&#x7684;&#x903B;&#x8F91;&#x662F;&#x901A;&#x8FC7; CMDB &#x7684;&#x4E8B;&#x4EF6;&#x63A8;&#x9001;&#x529F;&#x80FD;&#xFF0C;&#x5B9E;&#x65F6;&#x611F;&#x77E5;&#x5B9E;&#x4F8B;&#x7684;&#x65B0;&#x589E;&#x3001;&#x4FEE;&#x6539;&#x3001;&#x5220;&#x9664;&#x7B49;&#x52A8;&#x4F5C;&#x3002;</p>
 <p><img src="media/%E4%BA%8B%E4%BB%B6%E6%8E%A8%E9%80%81.png" alt="&#x4E8B;&#x4EF6;&#x63A8;&#x9001;"></p>
-<p>&#x5728; <a href="https://docs.bk.tencent.com/fta/" target="_blank">&#x6545;&#x969C;&#x81EA;&#x6108;</a> &#x4E2D;&#x7684;&#x6D88;&#x8D39;&#x573A;&#x666F;&#x4E5F;&#x662F;&#x5982;&#x6B64;&#xFF0C;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x6A21;&#x5757;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x544A;&#x8B66;&#xFF0C;&#x5173;&#x8054;&#x5BF9;&#x5E94;&#x7684;&#x5904;&#x7406;&#x52A8;&#x4F5C;&#x3002;
+<p>&#x5728; <a href="5.1/FTA/Intro/README.md">&#x6545;&#x969C;&#x81EA;&#x6108;</a> &#x4E2D;&#x7684;&#x6D88;&#x8D39;&#x573A;&#x666F;&#x4E5F;&#x662F;&#x5982;&#x6B64;&#xFF0C;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x6A21;&#x5757;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x544A;&#x8B66;&#xFF0C;&#x5173;&#x8054;&#x5BF9;&#x5E94;&#x7684;&#x5904;&#x7406;&#x52A8;&#x4F5C;&#x3002;
 <img src="media/%E6%95%85%E9%9A%9C%E8%87%AA%E6%84%88%E7%9A%84CMDB%E6%B6%88%E8%B4%B9%E5%9C%BA%E6%99%AF.png" alt="&#x6545;&#x969C;&#x81EA;&#x6108;&#x7684;CMDB&#x6D88;&#x8D39;&#x573A;&#x666F;"></p>
-<h4 id="Platform_manage_resource">1.3 &#x5E73;&#x53F0;&#x56E2;&#x961F;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x7BA1;&#x63A7;&#xFF0C;&#x4F8B;&#x5982;&#x5168;&#x4E1A;&#x52A1; DBA&#x3001;AIX SA </h4>
+<h4 id="13-&#x5E73;&#x53F0;&#x56E2;&#x961F;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x7BA1;&#x63A7;&#xFF0C;&#x4F8B;&#x5982;&#x5168;&#x4E1A;&#x52A1;-dba&#x3001;aix-sa">1.3 &#x5E73;&#x53F0;&#x56E2;&#x961F;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x7BA1;&#x63A7;&#xFF0C;&#x4F8B;&#x5982;&#x5168;&#x4E1A;&#x52A1; DBA&#x3001;AIX SA</h4>
 <p>&#x4EE5; DBA &#x4E3A;&#x4F8B;&#xFF0C;&#x9700;&#x8981;&#x7BA1;&#x63A7;&#x6240;&#x6709; DB&#xFF0C;&#x53EF;&#x5C06;&#x8FD0;&#x884C;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4E3B;&#x673A;&#x6240;&#x5C5E;&#x6A21;&#x5757;&#x7684;&#x7C7B;&#x578B;&#x8BBE;&#x7F6E;&#x4E3A;<code>&#x6570;&#x636E;&#x5E93;</code>&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;<code>&#x52A8;&#x6001;&#x5206;&#x7EC4;</code>&#x529F;&#x80FD;&#x67E5;&#x8BE2;&#x6A21;&#x5757;&#x7C7B;&#x578B;&#x4E3A;<code>&#x6570;&#x636E;&#x5E93;</code>&#x7684;&#x4E3B;&#x673A;&#x3002;</p>
 <p><img src="media/15625888898060.jpg" alt="-w1502"></p>
-<p>&#x5728; <a href="https://docs.bk.tencent.com/job/" target="_blank">&#x84DD;&#x9CB8;&#x4F5C;&#x4E1A;&#x5E73;&#x53F0;</a> &#x4E2D;&#x53EF;&#x4F7F;&#x7528;&#x8BE5;&#x52A8;&#x6001;&#x5206;&#x7EC4;&#x6765;&#x9009;&#x62E9; DB &#x4E3B;&#x673A;&#x3002;</p>
+<p>&#x5728; <a href="5.1/&#x4F5C;&#x4E1A;&#x5E73;&#x53F0;/&#x4EA7;&#x54C1;&#x4ECB;&#x7ECD;/&#x4EA7;&#x54C1;&#x4ECB;&#x7ECD;.md">&#x84DD;&#x9CB8;&#x4F5C;&#x4E1A;&#x5E73;&#x53F0;</a> &#x4E2D;&#x53EF;&#x4F7F;&#x7528;&#x8BE5;&#x52A8;&#x6001;&#x5206;&#x7EC4;&#x6765;&#x9009;&#x62E9; DB &#x4E3B;&#x673A;&#x3002;</p>
 <p><img src="media/15625757452328.jpg" alt="-w1234"></p>
-<h3 id="New_topology_layer">2. &#x4E09;&#x7EA7;&#x62D3;&#x6251;&#x4E0D;&#x591F;&#x7528;&#xFF0C;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x65B0;&#x5EFA;&#x591A;&#x7EA7;&#x62D3;&#x6251;&#x8282;&#x70B9; </h3>
+<h3 id="2-&#x4E09;&#x7EA7;&#x62D3;&#x6251;&#x4E0D;&#x591F;&#x7528;&#xFF0C;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x65B0;&#x5EFA;&#x591A;&#x7EA7;&#x62D3;&#x6251;&#x8282;&#x70B9;">2. &#x4E09;&#x7EA7;&#x62D3;&#x6251;&#x4E0D;&#x591F;&#x7528;&#xFF0C;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x65B0;&#x5EFA;&#x591A;&#x7EA7;&#x62D3;&#x6251;&#x8282;&#x70B9;</h3>
 <p>&#x5982;&#x679C;&#x4E1A;&#x52A1;&#x67B6;&#x6784;&#x5728;&#x5927;&#x533A;&#xFF08;<code>&#x96C6;&#x7FA4;</code>&#xFF09;&#x4E4B;&#x4E0A;&#x8FD8;&#x6709;&#x4E00;&#x7EA7;&#xFF08;&#x5E73;&#x53F0;&#xFF1A;&#x5982;<code>Android_Weixin</code>&#x3001;<code>Android_QQ</code>&#x7B49;&#xFF09;</p>
 <p><img src="media/15625862638485.jpg" alt="-w814"></p>
 <p>&#x53EF;&#x5728;<code>&#x4E1A;&#x52A1;&#x6A21;&#x578B;</code>&#x4E2D;&#xFF0C;<code>&#x4E1A;&#x52A1;</code>&#x4E0E;<code>&#x96C6;&#x7FA4;</code>&#x95F4;&#x65B0;&#x5EFA;&#x4E00;&#x7EA7;&#x6216;&#x591A;&#x7EA7;&#x62D3;&#x6251;</p>
@@ -848,7 +848,7 @@
 <p>&#x6CE8;&#xFF1A;&#x5F53;&#x524D;&#x7248;&#x672C;&#x65B0;&#x589E;&#x5C42;&#x7EA7;&#x62D3;&#x6251;&#x7684;&#x751F;&#x6548;&#x8303;&#x56F4;&#x662F;&#x6240;&#x6709;&#x4E1A;&#x52A1;&#xFF0C;&#x5728;&#x672A;&#x6765;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x4E2D;&#x53EF;&#x8C03;&#x6574;&#x751F;&#x6548;&#x8303;&#x56F4;&#xFF1B;
 &#x84DD;&#x9CB8;&#x4F53;&#x7CFB;&#x5728;&#x672A;&#x6765;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x4E2D;&#xFF0C;&#x5C06;&#x91CD;&#x70B9;&#x5F31;&#x5316;&#x4E1A;&#x52A1;&#x548C;&#x7EC6;&#x5316;&#x6743;&#x9650;</p>
 </blockquote>
-<h3 id="High_availability">3. Master DB &#x548C; Slave DB &#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7269;&#x7406;&#x67B6;&#x6784;&#x7684;&#x9AD8;&#x53EF;&#x7528;&#xFF1F;  </h3>
+<h3 id="3-master-db-&#x548C;-slave-db-&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7269;&#x7406;&#x67B6;&#x6784;&#x7684;&#x9AD8;&#x53EF;&#x7528;&#xFF1F;">3. Master DB &#x548C; Slave DB &#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7269;&#x7406;&#x67B6;&#x6784;&#x7684;&#x9AD8;&#x53EF;&#x7528;&#xFF1F;</h3>
 <p>&#x4E24;&#x8005;&#x4E00;&#x5B9A;&#x4E0D;&#x8981;&#x653E;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x673A;&#x67B6;&#x6216;&#x4EA4;&#x6362;&#x673A;&#x4E0B;&#xFF0C;&#x5426;&#x5219;&#x673A;&#x67B6;&#x6216;&#x4EA4;&#x6362;&#x673A;&#x6389;&#x7535;&#xFF0C;&#x4EA6;&#x6216;&#x662F;&#x4EA4;&#x6362;&#x673A;&#x6545;&#x969C;&#xFF0C;Master DB &#x548C; Slave DB &#x90FD;&#x5B95;&#x673A;&#xFF0C;&#x65E0;&#x6CD5;&#x6B63;&#x5E38;&#x5207;&#x6362;&#xFF0C;&#x5BFC;&#x81F4;&#x4E1A;&#x52A1;&#x65E0;&#x6CD5;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x3002;</p>
 <p>&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;&#xFF1A;[&#x6A21;&#x578B;&#x7BA1;&#x7406;] -&gt; [&#x6A21;&#x578B;] -&gt; [&#x4E3B;&#x673A;] -&gt; [&#x6A21;&#x578B;&#x5B57;&#x6BB5;]&#xFF0C;&#x65B0;&#x589E;<code>&#x5B58;&#x653E;&#x673A;&#x67B6; ID</code>&#x3001;<code>&#x7F51;&#x7EDC;&#x8BBE;&#x5907; ID</code>&#x3002;</p>
 <p>&#x6B64;&#x5916;&#xFF0C;&#x914D;&#x7F6E;&#x4E3B;&#x673A;&#x4E0E;&#x673A;&#x67B6;&#x6216;&#x4E0A;&#x8054;&#x4EA4;&#x6362;&#x673A;&#x7684;&#x5173;&#x8054;&#x53EF;&#x4F7F;&#x7528;<code>&#x6A21;&#x578B;&#x5173;&#x8054;</code>&#xFF0C;&#x786E;&#x4FDD;&#x6570;&#x636E;&#x7684;&#x552F;&#x4E00;&#x6027;&#x53EF;&#x8BBE;&#x7F6E;<code>&#x552F;&#x4E00;&#x6821;&#x9A8C;</code>&#xFF0C;&#x53E6;&#x5916;<code>&#x5B57;&#x6BB5;&#x5206;&#x7EC4;</code>&#x53EF;&#x8C03;&#x6574; CI &#x5C5E;&#x6027;&#x7684;&#x5448;&#x73B0;&#x65B9;&#x5F0F;&#x3002;</p>
@@ -864,12 +864,12 @@
 
             
                 
-                <a href="Configuration_management_standardization.html" class="navigation navigation-prev " aria-label="Previous page: 概述 1 : 待审核 ">
+                <a href="Configuration_management_standardization.html" class="navigation navigation-prev " aria-label="Previous page: 概述: 待审核 ">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="CMDB_management_process.html" class="navigation navigation-next " aria-label="Next page: 管理进程">
+                <a href="CMDB_management_process.html" class="navigation navigation-next " aria-label="Next page: CMDB 如何管理进程">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -880,7 +880,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"业务上线时管理主机","level":"1.4.1.2","depth":3,"next":{"title":"管理进程","level":"1.4.1.3","depth":3,"path":"CD/CMDB/CMDB_management_process.md","ref":"CD/CMDB/CMDB_management_process.md","articles":[]},"previous":{"title":"概述 1 : 待审核 ","level":"1.4.1.1","depth":3,"path":"CD/CMDB/Configuration_management_standardization.md","ref":"CD/CMDB/Configuration_management_standardization.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"CD/CMDB/CMDB_management_hosts.md","mtime":"2019-09-10T12:13:34.224Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-11T08:56:03.369Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"业务上线时 CMDB 如何管理主机","level":"1.4.1.2","depth":3,"next":{"title":"CMDB 如何管理进程","level":"1.4.1.3","depth":3,"path":"CD/CMDB/CMDB_management_process.md","ref":"CD/CMDB/CMDB_management_process.md","articles":[]},"previous":{"title":"概述: 待审核 ","level":"1.4.1.1","depth":3,"path":"CD/CMDB/Configuration_management_standardization.md","ref":"CD/CMDB/Configuration_management_standardization.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"CD/CMDB/CMDB_management_hosts.md","mtime":"2019-09-30T07:30:58.630Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-08T01:54:19.412Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1,28 +1,28 @@
-集成内部语音网关实现电话告警
+# 集成内部语音网关实现电话告警
 ---
 
 
 > 特别感谢社区用户 [Kevin](https://bk.tencent.com/s-mart/personal/10966/) 提供该文档.
 
-#### 情景 {#Situation}
+## 情景
 故障处理是运维的几大职能之一，重要告警不能漏告，通过微信、邮件、短信等通知方式无法触达，所以需要使用电话告警。
 
 蓝鲸监控默认已支持腾讯云的语音网关，实现电话告警通知，但如果公司已有第三方(非腾讯云)的电话告警服务，该如何接入呢？
 
-#### 前提条件 {#Prerequisites}
+## 前提条件
 
 - 开通好企业内部语音网关
 - 掌握 [蓝鲸 SaaS 开发](https://docs.bk.tencent.com/dev_saas/)，打开 [腾讯运维开发实战课](https://bk.tencent.com/s-mart/community/question/440) 马上学习
 - 掌握 [蓝鲸 API 网关开发](https://docs.bk.tencent.com/esb/)
 
 
-#### 操作步骤 {#Steps}
+## 操作步骤
 
-- [1. 梳理逻辑](#Logic)
-- [2. 代码解读](#Code_interpretation)
-- [3. 电话告警测试](#Test)
+- 1. 梳理逻辑
+- 2. 代码解读
+- 3. 电话告警测试
 
-## 1. 梳理逻辑 {#Logic}
+### 1. 梳理逻辑
 
 对企业内部语音网关封装一个接口，改造蓝鲸 ESB 中语音通知 API 即可。
 
@@ -31,9 +31,9 @@
 ![](media/15644704218616.jpg)
 
 
-## 2. 代码解读 {#Code_interpretation}
+### 2. 代码解读
 
-### 2.1 封装企业内部语音网关接口
+#### 2.1 封装企业内部语音网关接口
 
 实现内部电话告警接口，并放到 send_voice_msg.py 同一层目录下。
 
@@ -42,7 +42,7 @@
 参数为电话电码列表、告警内容，返回值为调用结果(`True` / `False`)和接口的返回消息
 
 
-### 2.2 改造蓝鲸 ESB 中语音通知 API
+#### 2.2 改造蓝鲸 ESB 中语音通知 API
 
 
 在蓝鲸 PaaS 所在机器的消息通知代码目录下，修改 `send_voice_msg.py`
@@ -55,7 +55,7 @@ cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
 > 注：企业版请将 `bkce` 改成 `bkee`
 
 
-#### 2.2.1 获取请求接口的数据
+##### 2.2.1 获取请求接口的数据
 
 原有 `send_voice_msg.py` 文件已经实现了大部分内容，关键在于 Form 类中的 handle(self) 函数，这个函数已实现从请求接口的数据中获取`告警接收人列表data['user_list_information']`，另外只需要使用`data['auto_read_message']`获取告警信息即可。
 
@@ -75,7 +75,7 @@ cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
 
 
 
-#### 2.2.2 调用企业内部语音告警接口
+##### 2.2.2 调用企业内部语音告警接口
 
 修改 `#TODO: can be updated` 之后的部分，全部注释掉。
 
@@ -83,7 +83,7 @@ cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
 
 ```python
     # TODO: can be updated
-    ## -----------------实现下面的代码-----------------
+    # -----------------实现下面的代码-----------------
     # 取告警内容
     v_content = data['auto_read_message']
     # 获取用户手机列表
@@ -107,7 +107,7 @@ cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
 
 完成代码，[点击下载](/CO/media/send_voice_msg.py.tgz)。
 
-## 2.3 重启 PaaS
+#### 2.3 重启 PaaS
 
 蓝鲸中控机上重启 PaaS ，使代码生效
 
@@ -118,14 +118,14 @@ cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
 
 
 
-## 3. 电话告警测试 {#Test}
+### 3. 电话告警测试
 
  配置电话告警策略，触发告警，验证结果。
- 
+
  ![1564473737697](media/1564473737697.png)
 
 告警产生后，手机将收到语音告警电话。
- 
+
  {% video %}media/send_voice_msg.mp3{% endvideo %}
 
 不漏掉任何一个重要的告警。

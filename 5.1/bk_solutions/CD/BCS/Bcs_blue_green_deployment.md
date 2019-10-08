@@ -1,6 +1,5 @@
 # 应用的蓝绿发布（原：研发测试环境管理）
 
-
 ## 情景
 传统的应用更新方式是**停服更新**，用户在更新期间**无法使用服务**。
 
@@ -9,14 +8,14 @@
 
 ## 前提条件
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含 [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)；本节教程新增概念：[ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)、[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)、[Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。
-- [完成 BCS 部署](https://docs.bk.tencent.com/bkce_install_guide/setup/quick_install_bcs.html)
+- [完成 BCS 部署](5.1/部署维护/增强包安装/部署安装/bcs_install.md)
 
 ## 操作步骤
 
-- 1. 应用的蓝绿发布逻辑介绍
-- 2. 使用 K8S 资源准备版本
-- 3. 使用 K8S 资源准备新版本
-- 4. 切换流量并观察
+- 应用的蓝绿发布逻辑介绍
+- 使用 K8S 资源准备版本
+- 使用 K8S 资源准备新版本
+- 切换流量并观察
 
 ### 1. 蓝绿发布逻辑介绍
 

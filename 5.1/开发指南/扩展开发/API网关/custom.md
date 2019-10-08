@@ -1,8 +1,8 @@
-## 自定义配置管理
+# 自定义配置管理
 
 用户开发组件或自助接入 API 时，都需要将配置信息，同步到数据库中； 通过管理端管理配置的方式，不方便对数据进行迁移，因此，API 网关提供一种通过配置文件管理配置的方式。
 
-### 配置文件地址
+## 配置文件地址
 
 在配置文件中，管理自定义的系统及 API 配置
 
@@ -10,7 +10,7 @@
 [install_path] /open_paas/esb/components/generic/apis/conf.py
 ```
 
-### 配置文件内容
+## 配置文件内容
 
 配置文件 conf.py 是一个普通的 python 模块，其中包含以下变量
 
@@ -22,7 +22,7 @@
 
 - BUFFET_COMPONENTS: 自助接入 API 信息，对应管理端的自助接入
 
-#### SYSTEM_DOC_CATEGORY{SYSTEM_DOC_CATEGORY}
+### SYSTEM_DOC_CATEGORY{SYSTEM_DOC_CATEGORY}
 
 文档分类
 ```python
@@ -38,7 +38,7 @@ SYSTEM_DOC_CATEGORY = [
 ]
 ```
 
-#### SYSTEMS
+### SYSTEMS
 
 系统
 ```python
@@ -60,7 +60,7 @@ SYSTEMS = [
 ]
 ```
 
-#### CHANNELS
+### CHANNELS
 
 组件通道
 ```python
@@ -75,7 +75,7 @@ CHANNELS = [
 ]
 ```
 
-#### BUFFET_COMPONENTS
+### BUFFET_COMPONENTS
 
 自助接入API
 ```python
@@ -112,7 +112,7 @@ BUFFET_COMPONENTS = [
 ]
 ```
 
-### 同步配置到数据库
+## 同步配置到数据库
 ```bash
 workon esb
 # 默认情况，当部分配置与数据库中数据不一致时，显示差别信息；

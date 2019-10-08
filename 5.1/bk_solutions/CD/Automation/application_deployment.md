@@ -9,23 +9,23 @@
 
 ## 前提条件
 
-- [主机在蓝鲸 CMDB 中管理](../CMDB/CMDB_management_hosts.md)
+- [主机在蓝鲸 CMDB 中管理](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
 
 **术语解释**
  - **流程模板** : 标准化的资源和应用交付模式，通过资源编排引擎，实现对资源的创建、配置，实现自动化交付资源或应用，行业中一般称之为`pipeline`、`资源编排模板`，比如一次发布任务可以编排为一个流程模板。
  - **标准插件** : 多个执行节点通过编排规则实现流程模板，其中的执行节点称之为 标准插件，比如`执行脚本`为一个标准插件
 
-更多详见[术语定义](https://docs.bk.tencent.com/product_white_paper/gcloud/term.html)
+更多详见 [术语定义](5.1/标准运维/术语解释/glossary.md)
 
 ## 操作步骤
 
-- [1. 梳理：梳理标准化模板](#Carding_standard_template)
-- [2. 建模：新建流程模板](#New_pipeline)
-- [3. 执行：执行流程](#Run_pipeline)
+- 梳理：梳理标准化模板
+- 建模：新建流程模板
+- 执行：执行流程
 
 ### 1. 梳理标准化模板
 
-[配置管理标准化](Configuration_management_standardization.md)中提到，运维服务“四化建设”的标准化包含配置管理、发布、变更、故障处理、监控告警等场景的流程制定。以发布为例，通过流程图梳理应用交付的流程。
+[配置管理标准化](5.1/bk_solutions/CD/CMDB/Configuration_management_standardization.md)中提到，运维服务“四化建设”的标准化包含配置管理、发布、变更、故障处理、监控告警等场景的流程制定。以发布为例，通过流程图梳理应用交付的流程。
 
 分为发布前准备、发布中、发布后检查三部分。
 
@@ -49,7 +49,7 @@
 
 ![-w1606](media/15644773728491.jpg)
 
-> 标准运维内置了 CMDB、作业平台、通知等标准组件，如果不在此列的，需要开发标准运维插件来[集成企业内部 ITIL 系统](/CD/intergration_itil.md)。
+> 标准运维内置了 CMDB、作业平台、通知等标准组件，如果不在此列的，需要开发标准运维插件来 [集成企业内部 ITIL 系统](5.1/bk_solutions/CD/Automation/intergration_itil.md)。
 
 这里重点说明 `全局参数` 和 `流程分支`。
 
@@ -95,7 +95,7 @@
 
 ![-w1486](media/15616298718559.jpg)
 
-主要用到标准运维流程节点中的**引用输出参数**，引用第 1 步中的`release_md5`变量。
+主要用到标准运维流程节点中的 **引用输出参数**，引用第 1 步中的 `release_md5` 变量。
 
 ![-w1641](media/15616299242595.jpg)
 

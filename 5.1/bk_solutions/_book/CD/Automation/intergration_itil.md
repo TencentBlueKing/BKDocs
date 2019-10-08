@@ -1,24 +1,23 @@
 开发标准运维插件，集成内部 IT 系统
----
 
-#### 情景 {#Situation}
-标准运维内置了蓝鲸体系内 [作业平台](https://docs.bk.tencent.com/job/)、[配置平台](https://docs.bk.tencent.com/cmdb/) 等系统的原子，但应用交付过程中还包含了部分企业内部的 ITIL 系统，例如`DB变更`、`监控`、`工单`，需要开发标准运维的标准插件，将应用交付过程中，使用到的能力或接口集成到标准运维中。
+# 情景
+标准运维内置了蓝鲸体系内作业平台、配置平台等系统的原子，但应用交付过程中还包含了部分企业内部的 ITIL 系统，例如`DB变更`、`监控`、`工单`，需要开发标准运维的标准插件，将应用交付过程中，使用到的能力或接口集成到标准运维中。
 
-#### 前提条件 {#Prerequisites}
+# 前提条件
 
-- 掌握 [蓝鲸 SaaS 开发](https://docs.bk.tencent.com/dev_saas/)，打开 [腾讯运维开发实战课](https://bk.tencent.com/s-mart/community/question/440) 马上学习
-- 掌握 [蓝鲸 API 网关开发](https://docs.bk.tencent.com/esb/)
+- 掌握 [蓝鲸 SaaS 开发](5.1/开发指南/SaaS开发/新手入门/macOS.md)，打开 [腾讯运维开发实战课](https://bk.tencent.com/s-mart/community/question/440) 马上学习
+- 掌握 [蓝鲸 API 网关开发](5.1/开发指南/扩展开发/API网关/README.md)
 
-#### 步骤 {#Step}
-- [1. 梳理逻辑](#Logic)
-- [2. 开发环境初始化](#Django)
-- [3. 蓝鲸 API 网关开发](#ESB)
-- [4. 标准插件后台开发](#atomic)
-- [5. 标准插件前端开发](#front)
-- [6. 标准插件测试](#test)
+# 步骤
+- 梳理逻辑
+- 开发环境初始化
+- 蓝鲸 API 网关开发
+- 标准插件后台开发
+- 标准插件前端开发
+- 标准插件测试
 
 
-## 1. 梳理逻辑 {#Logic}
+## 1. 梳理逻辑
 
 标准运维要调用 IT 系统的功能特性，比如`执行 DB 变更`或`告警屏蔽`，需要将对应 API 对接至蓝鲸 ESB 中，然后再开发标准运维的标准插件。
 
@@ -28,7 +27,7 @@
 
 > 注：建议 IT 系统的功能特性和标准运维解耦，标准运维不包含功能逻辑，仅负责转发。
 
-## 2. 开发环境初始化 {#Django}
+## 2. 开发环境初始化
 
 在开始开发之前，先把 [蓝鲸 SaaS 的开发环境](https://docs.bk.tencent.com/dev_saas/)准备好。
 
@@ -40,13 +39,13 @@
 
 ![](./media/32.png)
 
-## 3. 接入 ESB API {#ESB}
+## 3. 接入 ESB API
 
 参照 [蓝鲸 API 网关开发指南](https://docs.bk.tencent.com/esb/)完成 ESB 接入，然后更新标准运维`bluking/component`下的文件。
 
 ![](./media/33.png)
 
-## 4. 标准插件后台开发 {#atomic}
+## 4. 标准插件后台开发
 
 在`custom_atoms/components/collections`目录下创建 `test.py` 文件，其中需要定义的属性和类如下所示。
 
@@ -87,7 +86,7 @@
 
 ![](./media/37.png)
 
-## 5. 标准插件前端开发 {#front}
+## 5. 标准插件前端开发
 
 在 `custom_atoms/static/custom_atoms` 目录下创建 `test` 目录，并创建 `test_custom.js` 文件，注意文件路径和标准插件后台定义的 form 保持一致。通过 `$.atoms` 注册标准插件前端配置，其中各项含义是：
 - `test_custom` ：标准插件后台定义的 code。
@@ -97,7 +96,7 @@
 
 ![](./media/38.png)
 
-## 6. 标准插件测试 {#test}
+## 6. 标准插件测试
 
 创建流程模板，新增标准插件节点，标准插件类型选择新开发的标准插件，展示的输入参数和前端配置项一致，输出参数和后台 `outputs_format` 一致，其中执行结果是系统默认，值是`True` 或 `False` ，表示节点执行结果是成功还是失败。
 
@@ -115,17 +114,14 @@
 
 ![](./media/42.png)
 
-## 提交代码 {#submit}
+## 提交代码
 
 执行 `python manage.py collectstatic –noinput`，然后就可以提交代码并打包发布了。
 
-## 标准插件开发规范 {#specification}
+# 标准插件开发规范 
 
 - 分组命名规则是“系统名(系统英文缩写)”，如“作业平台(JOB)”。
 - 标准插件编码(code)使用下划线方式，规则是“系统名_接口名”，如 job_execute_task。
 - 后台类名使用驼峰式，规则是“标准插件编码+继承类名”，如 JobExecuteTaskService。
 - 前端 JS 文件目录保持和系统名缩写一致，JS 文件名保持和标准插件编码一致。
 - 参数 `tag_code` 命名规则是“系统名_参数名”，这样可以保证全局唯一；长度不要超过 20 个字符。
-
-
-

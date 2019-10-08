@@ -1,13 +1,13 @@
-## 说明 
+# 说明
 
 本文档对应版本: 企业版 2.5
 
 蓝鲸统一登录: 由 `open_paas/login` 提供 `统一登录服务`; 由 `用户管理` App `维护用户数据`
 
 
-### MockBackend接入示例 
+## MockBackend接入示例
 
-#### 1. 获取参考代码
+### 1. 获取参考代码
 
 蓝鲸版本包中 `open_paas/login/ee_official_login/mock`, 包含了 MockBackend 接入示例
 
@@ -16,7 +16,7 @@
 使用固定的用户名密码才能登录成功:  `admin/blueking`
 
 
-#### 2. 目录结构及配置说明
+### 2. 目录结构及配置说明
 
 `open_paas/login` 下涉及的文件
 
@@ -67,9 +67,9 @@ CUSTOM_AUTHENTICATION_BACKEND = 'ee_official_login.mock.backends.MockBackend'
 登录过程中会打 debug 日志, 本地开发环境: `../logs/login.log` 使用蓝鲸部署脚本部署环境: `{INSTALL_ROOT}/logs/open_paas/login.log`
 
 
-#### 3. 登录代码简要说明
+### 3. 登录代码简要说明
 
-##### 3.1 `ee_login/settings_login_mock.py`
+#### 3.1 `ee_login/settings_login_mock.py`
 
 ```python
 # 表示是自定义登录
@@ -81,7 +81,7 @@ CUSTOM_LOGIN_VIEW = 'ee_official_login.mock.views.login'
 CUSTOM_AUTHENTICATION_BACKEND = 'ee_official_login.mock.backends.MockBackend'
 ```
 
-##### 3.2 `ee_official_login/mock/views.py`
+#### 3.2 `ee_official_login/mock/views.py`
 
 主要处理
 
@@ -150,7 +150,7 @@ def login(request):
         return response
 ```
 
-##### 3.3 `ee_official_login/mock/backends.py`
+#### 3.3 `ee_official_login/mock/backends.py`
 
 基于 django authentication backend, 具体可以参考 [官方文档](https://docs.djangoproject.com/en/1.8/topics/auth/customizing/)
 
@@ -201,10 +201,10 @@ class MockBackend(ModelBackend):
 ```
 
 
-### Google OAuth 接入示例 
+## Google OAuth 接入示例
 
 
-#### 1. 获取参考代码
+### 1. 获取参考代码
 
 蓝鲸版本包中 `ee_official_login/oauth/google`, 包含了 Google OAuth 接入示例
 
@@ -212,7 +212,7 @@ class MockBackend(ModelBackend):
 
 调试过程中, 可以查看日志中的 debug 信息
 
-#### 2. 目录结构及配置说明
+### 2. 目录结构及配置说明
 
 `open_paas/login` 下涉及的文件
 
@@ -268,34 +268,34 @@ CUSTOM_AUTHENTICATION_BACKEND = 'ee_official_login.oauth.google.backends.OauthBa
 
 
 
-## 说明
+# 说明
 
 本文档对应版本: 企业版 2.4 及社区版
 
 蓝鲸统一登录: 由 `open_paas/login` 提供 `统一登录服务` 并且 `维护用户数据`
 
 
-### 开发步骤
+## 开发步骤
 
 > 对于自定义登录模块，我们需要编写一个企业内部统一登录认证票据的类和一个登录跳转等逻辑处理函数，可参考 open_paas/login/ee_official_login/oauth/google 模块
 
-### 1. 获取参考代码 
+## 1. 获取参考代码
 
 参考代码在蓝鲸版本包里的 open_paas/login/ee_official_login，包含了google oauth 对接蓝鲸登录样例
 
-### 2. 编写企业内部统一登录认证票据的类 
+## 2. 编写企业内部统一登录认证票据的类
 
 > 该类主要是对企业内部统一登录认证票据进行认证，并获取相关用户信息，生成和设置蓝鲸用户
 > 该类需继承于 Django 内置的 ModelBackend，并实现自定义认证方法 authenticate
 
-##### 2.1 自定义认证方法 authenticate 实现逻辑
+#### 2.1 自定义认证方法 authenticate 实现逻辑
 
 1. 输入参数为企业认证票据（可自定义，可多个参数）
 2. 根据企业认证票据，调用企业内部登录 API 进行认证，并获取用户信息
 3. 根据用户信息，获取或生成蓝鲸用户类的对象，并根据需要设置蓝鲸用户相关信息和角色
 4. 返回参数为蓝鲸用户类的对象
 
-##### 2.2 接入 Google 登录
+#### 2.2 接入 Google 登录
 
 - 参考代码【open_paas/login/ee_official_login/oauth/google/backends.py】
 
@@ -347,7 +347,7 @@ class OauthBackend(ModelBackend):
         return None
 ```
 
-### 3. 编写登录跳转等登录处理逻辑函数 
+## 3. 编写登录跳转等登录处理逻辑函数
 
 > 该函数需要处理 5 种情况：
 >     1. 企业登录票据不存在
@@ -356,7 +356,7 @@ class OauthBackend(ModelBackend):
 >     4. 企业登录票据无效
 >     5. 企业登录票据认证成功
 
-##### 3.1 登录处理逻辑函数 login 实现逻辑
+#### 3.1 登录处理逻辑函数 login 实现逻辑
 
 1. 输出参数：request, 为 Django 内置的 http 请求对象
 2. 获取用户初始请求的 URL 和用户初始请求的应用，以及蓝鲸登录请求的来源
@@ -366,7 +366,7 @@ class OauthBackend(ModelBackend):
 6. 若企业登录票据无效，则清除企业登录票据（cookies 则需要清除），并重定向蓝鲸登录
 7. 若企业登录票据有效，则重定向到用户初始请求
 
-##### 3.2 接入 Google 登录
+#### 3.2 接入 Google 登录
 
 - 参考代码【open_paas/login/ee_official_login/oauth/google/views.py】
 
@@ -429,9 +429,9 @@ def login(request):
     return account.login_success_response(request, user, redirect_to, app_id)
 ```
 
-### 4. 设置自定义登录 
+## 4. 设置自定义登录
 
-##### 4.1 检查是否有自定义接入企业登录模块 ee_login
+#### 4.1 检查是否有自定义接入企业登录模块 ee_login
 
 1. 检查 open_paas/login/ 是否有 ee_login 模块
 2. 若无，则添加 ee_login 模块
@@ -470,15 +470,14 @@ CUSTOM_LOGIN_VIEW = ''
 CUSTOM_AUTHENTICATION_BACKEND = ''
 ```
 
-##### 4.2 添加已开发完成的接入企业登录模块 xxxx（包含企业内部统一登录认证票据的类和登录等逻辑处理函数）
+#### 4.2 添加已开发完成的接入企业登录模块 xxxx（包含企业内部统一登录认证票据的类和登录等逻辑处理函数）
 将已开发完成的接入企业登录模块 xxxx 添加到 open_paas/login/ee_login 下
 
-##### 4.3 修改自定义企业登录配置文件
+#### 4.3 修改自定义企业登录配置文件
 修改 open_pass/login/ee_login/settings_login.py
 1. 将 LOGIN_TYPE 改为 custom_login
 2. 将 CUSTOM_LOGIN_VIEW 修改为 登录等逻辑处理函数路径，如：ee_login.xxxx.views.login
 3. 将 CUSTOM_AUTHENTICATION_BACKEND 修改为 企业内部统一登录认证票据的类路径，如：ee_login.xxxx.backends.XxxBackend
 
-##### 4.4 重启服务
+#### 4.4 重启服务
 更新或添加 ee_login，重启 open_paas 服务
-

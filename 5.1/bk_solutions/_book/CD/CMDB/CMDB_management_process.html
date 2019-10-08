@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>管理进程 · GitBook</title>
+        <title>CMDB 如何管理进程 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -83,7 +83,7 @@
 
     
         
-        <li class="header">蓝鲸最佳实践</li>
+        <li class="header">场景案例</li>
         
         
     
@@ -120,19 +120,6 @@
             
                     
                     新手之旅
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../../Getting_started/FAQ.html">
-            
-                <a href="../../Getting_started/FAQ.html">
-            
-                    
-                    FAQ
             
                 </a>
             
@@ -210,7 +197,7 @@
                 <a href="Configuration_management_standardization.html">
             
                     
-                    概述 1 : 待审核 
+                    概述: 待审核 
             
                 </a>
             
@@ -223,7 +210,7 @@
                 <a href="CMDB_management_hosts.html">
             
                     
-                    业务上线时管理主机
+                    业务上线时 CMDB 如何管理主机
             
                 </a>
             
@@ -236,7 +223,7 @@
                 <a href="CMDB_management_process.html">
             
                     
-                    管理进程
+                    CMDB 如何管理进程
             
                 </a>
             
@@ -270,12 +257,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.6" data-path="CMDB_integration.html">
+        <li class="chapter " data-level="1.4.1.6" data-path="CMDB_intapplication_deployment.mdegration.md">
             
-                <a href="CMDB_integration.html">
+                <span>
             
                     
-                    对接企业原有 CMDB，实现数据同步
+                    企业原有 CMDB 同步至蓝鲸 CMDB
             
                 </a>
             
@@ -306,7 +293,7 @@
                 <span>
             
                     
-                    应用交付自动化 理论篇
+                    应用交付自动化
             
                 </span>
             
@@ -320,7 +307,7 @@
                 <a href="../Automation/Application_delivery_deployment_automation.html">
             
                     
-                    概述 1 : 待审核 
+                    概述 : 待审核 
             
                 </a>
             
@@ -731,6 +718,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6" data-path="../../Getting_started/FAQ.html">
+            
+                <a href="../../Getting_started/FAQ.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -761,7 +761,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >管理进程</a>
+        <a href="../.." >CMDB 如何管理进程</a>
     </h1>
 </div>
 
@@ -773,21 +773,21 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="cmdb-&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x8FDB;&#x7A0B;">CMDB &#x5982;&#x4F55;&#x7BA1;&#x7406;&#x8FDB;&#x7A0B;</h2>
-<h4 id="Situation">&#x60C5;&#x666F; </h4>
+                                <h1 id="cmdb-&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x8FDB;&#x7A0B;">CMDB &#x5982;&#x4F55;&#x7BA1;&#x7406;&#x8FDB;&#x7A0B;</h1>
+<h2 id="&#x60C5;&#x666F;">&#x60C5;&#x666F;</h2>
 <p>&#x5E94;&#x7528;&#x7684;&#x5B58;&#x50A8;&#x662F; MariaDB&#xFF0C;&#x5728; CMDB &#x4E2D;&#x6CE8;&#x518C; MariaDB&#xFF0C;&#x4EE5;&#x4FBF;&#x5728;&#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x505A;&#x8FDB;&#x7A0B;&#x76D1;&#x63A7;&#x3002;</p>
-<h4 id="Prerequisites">&#x524D;&#x63D0;&#x6761;&#x4EF6; </h4>
-<p>&#x5728; <a href="https://docs.bk.tencent.com/cmdb/" target="_blank">&#x914D;&#x7F6E;&#x5E73;&#x53F0;</a> &#x4E2D;&#x65B0;&#x5EFA;&#x597D; <a href="https://docs.bk.tencent.com/cmdb/Introduction.html#BizManagement" target="_blank">&#x4E1A;&#x52A1;</a> &#x53CA; <a href="https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%882%EF%BC%89%E4%B8%9A%E5%8A%A1%E6%8B%93%E6%89%91%E6%9F%A5%E7%9C%8B" target="_blank">&#x4E1A;&#x52A1;&#x62D3;&#x6251;</a>&#x3002;</p>
-<h4 id="Step">&#x6B65;&#x9AA4; </h4>
+<h2 id="&#x524D;&#x63D0;&#x6761;&#x4EF6;">&#x524D;&#x63D0;&#x6761;&#x4EF6;</h2>
+<p>&#x5728;&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x4E2D;<a href="5.1/&#x914D;&#x7F6E;&#x5E73;&#x53F0;/&#x5FEB;&#x901F;&#x5165;&#x95E8;/case1.md">&#x65B0;&#x5EFA;&#x4E1A;&#x52A1;</a> &#x53CA;&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x3002;</p>
+<h2 id="&#x6B65;&#x9AA4;">&#x6B65;&#x9AA4;</h2>
 <ul>
-<li><a href="#CMDB_add_process">1. CMDB &#x4E2D;&#x6CE8;&#x518C;&#x8FDB;&#x7A0B;&#x548C;&#x7AEF;&#x53E3;</a></li>
-<li><a href="#add_process_bind_module">2. &#x5C06;&#x8FDB;&#x7A0B;&#x7ED1;&#x5B9A;&#x6A21;&#x5757;</a></li>
-<li><a href="#process_monitor">3. &#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x7AEF;&#x53E3;&#x76D1;&#x63A7;</a></li>
+<li>CMDB &#x4E2D;&#x6CE8;&#x518C;&#x8FDB;&#x7A0B;&#x548C;&#x7AEF;&#x53E3;</li>
+<li>&#x5C06;&#x8FDB;&#x7A0B;&#x7ED1;&#x5B9A;&#x6A21;&#x5757;</li>
+<li>&#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x7AEF;&#x53E3;&#x76D1;&#x63A7;</li>
 </ul>
-<h2 id="CMDB_add_process">1. CMDB &#x4E2D;&#x6CE8;&#x518C;&#x8FDB;&#x7A0B; </h2>
+<h3 id="1-cmdb-&#x4E2D;&#x6CE8;&#x518C;&#x8FDB;&#x7A0B;">1. CMDB &#x4E2D;&#x6CE8;&#x518C;&#x8FDB;&#x7A0B;</h3>
 <p>&#x5728;&#x83DC;&#x5355;<code>&#x4E1A;&#x52A1;&#x8D44;&#x6E90;</code>-<code>&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;</code>&#x4E2D;<code>&#x65B0;&#x5EFA;&#x8FDB;&#x7A0B;</code></p>
 <p><img src="media/15625715311134.jpg" alt="-w1300"></p>
-<h3 id="add_process">1.1 &#x6CE8;&#x518C;&#x8FDB;&#x7A0B; </h3>
+<h4 id="11-&#x6CE8;&#x518C;&#x8FDB;&#x7A0B;">1.1 &#x6CE8;&#x518C;&#x8FDB;&#x7A0B;</h4>
 <ul>
 <li>&#x8FDB;&#x7A0B;&#x540D;&#x79F0;&#xFF1A;&#x5BF9;&#x5916;&#x663E;&#x793A;&#x7684;&#x670D;&#x52A1;&#x540D;&#xFF1A;<code>MariaDB</code>&#xFF1B;</li>
 <li>&#x529F;&#x80FD;&#x540D;&#x79F0;&#xFF1A;&#x7A0B;&#x5E8F;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x540D;&#x79F0;&#xFF1A;<code>mysqld</code>&#xFF1B;</li>
@@ -801,7 +801,7 @@ mysql     7980  7800  0 7&#x6708;08 ?       00:01:55 /usr/libexec/mysqld --based
 <p>&#x6CE8;&#xFF1A;&#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x4E00;&#x822C;<code>&#x5B8C;&#x5168;&#x5339;&#x914D;</code>&#x4E8C;&#x8FDB;&#x5236;&#x540D;&#x79F0;&#x3002;
    &#x83B7;&#x53D6;&#x4E8C;&#x8FDB;&#x5236;&#x540D;&#x79F0;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;<code>basename $(readlink -f /proc/7980/exe)</code></p>
 </blockquote>
-<h3 id="add_port">1.2 &#x6CE8;&#x518C;&#x7AEF;&#x53E3; </h3>
+<h4 id="12-&#x6CE8;&#x518C;&#x7AEF;&#x53E3;">1.2 &#x6CE8;&#x518C;&#x7AEF;&#x53E3;</h4>
 <p>&#x67E5;&#x8BE2; mysqld &#x76D1;&#x542C;&#x7684; IP &#x548C;&#x7AEF;&#x53E3;</p>
 <pre><code class="lang-bash">$ netstat -antp | grep mysqld
 tcp        0      0 10.0.4.29:3306          0.0.0.0:*               LISTEN      7980/mysqld
@@ -811,20 +811,20 @@ tcp        0      0 10.0.4.29:3306          0.0.0.0:*               LISTEN      
 <li>&#x7AEF;&#x53E3;&#xFF1A;&#x8FDB;&#x7A0B;&#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;<code>3306</code></li>
 <li>&#x534F;&#x8BAE;&#xFF1A;<code>TCP</code></li>
 </ul>
-<h2 id="add_process_bind_module">2. &#x5C06;&#x8FDB;&#x7A0B;&#x7ED1;&#x5B9A;&#x6A21;&#x5757; </h2>
-<p><a href="CMDB_management_hosts.html">&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x4E3B;&#x673A;</a> &#x63D0;&#x5230;&#x4F9D;&#x636E;&#x4E1A;&#x52A1;&#x67B6;&#x6784;&#x6765;&#x5212;&#x5206;&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#xFF0C;&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x4E2D;&#x6A21;&#x5757;&#x4EE3;&#x8868;&#x670D;&#x52A1;&#xFF0C;&#x800C;&#x670D;&#x52A1;&#x5C06;&#x7531;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;&#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;&#x6765;&#x5BF9;&#x7528;&#x6237;&#x6216;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x3002;</p>
+<h3 id="2-&#x5C06;&#x8FDB;&#x7A0B;&#x7ED1;&#x5B9A;&#x6A21;&#x5757;">2. &#x5C06;&#x8FDB;&#x7A0B;&#x7ED1;&#x5B9A;&#x6A21;&#x5757;</h3>
+<p><a href="5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md">&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x4E3B;&#x673A;</a> &#x63D0;&#x5230;&#x4F9D;&#x636E;&#x4E1A;&#x52A1;&#x67B6;&#x6784;&#x6765;&#x5212;&#x5206;&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#xFF0C;&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x4E2D;&#x6A21;&#x5757;&#x4EE3;&#x8868;&#x670D;&#x52A1;&#xFF0C;&#x800C;&#x670D;&#x52A1;&#x5C06;&#x7531;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;&#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;&#x6765;&#x5BF9;&#x7528;&#x6237;&#x6216;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x3002;</p>
 <p>&#x6240;&#x4EE5;&#xFF0C;&#x9700;&#x8981;&#x5C06;<code>&#x8FDB;&#x7A0B;</code>&#x7ED1;&#x5B9A;&#x81F3;&#x5BF9;&#x5E94;&#x7684;<code>&#x6A21;&#x5757;</code>&#x4E0A;&#x3002;</p>
 <p>&#x8FD9;&#x91CC;&#x5C06;<code>MariaDB</code>&#x8FDB;&#x7A0B;&#x7ED1;&#x5B9A;&#x81F3;&#x5B58;&#x50A8;&#x5C42;&#x6A21;&#x5757;&#x4E0A;&#x3002;</p>
 <p><img src="media/15625579982411.jpg" alt="-w1273"></p>
-<h2 id="process_monitor">3. &#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x7AEF;&#x53E3;&#x76D1;&#x63A7; </h2>
-<p>&#x7ED9;&#x6A21;&#x5757; <a href="https://docs.bk.tencent.com/cmdb/Introduction.html#%EF%BC%884%EF%BC%89%E4%B8%BB%E6%9C%BA%E8%BD%AC%E7%A7%BB" target="_blank">&#x5206;&#x914D;&#x4E3B;&#x673A;</a></p>
+<h3 id="3-&#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x7AEF;&#x53E3;&#x76D1;&#x63A7;">3. &#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x7AEF;&#x53E3;&#x76D1;&#x63A7;</h3>
+<p>&#x7ED9;&#x6A21;&#x5757; <a href="5.1/&#x914D;&#x7F6E;&#x5E73;&#x53F0;/&#x5FEB;&#x901F;&#x5165;&#x95E8;/case1.md">&#x5206;&#x914D;&#x4E3B;&#x673A;</a></p>
 <p><img src="media/15625580245427.jpg" alt="-w1541"></p>
-<p>&#x7B49;&#x5019;&#x4E00;&#x5206;&#x949F;&#xFF0C;&#x5728;&#x84DD;&#x9CB8;&#x81EA;&#x5E26;&#x7684;&#x76D1;&#x63A7;&#x7CFB;&#x7EDF; <a href="https://docs.bk.tencent.com/bk_monitor/" target="_blank">&#x84DD;&#x9CB8;&#x76D1;&#x63A7;</a> &#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230; <a href="https://docs.bk.tencent.com/bk_monitor/Process_and_Port_Monitor_Nice.html" target="_blank">&#x8FDB;&#x7A0B;&#x7684;&#x8FD0;&#x884C;&#x60C5;&#x51B5;</a>&#x3002;</p>
+<p>&#x7B49;&#x5019;&#x4E00;&#x5206;&#x949F;&#xFF0C;&#x5728;&#x84DD;&#x9CB8;&#x81EA;&#x5E26;&#x7684;&#x76D1;&#x63A7;&#x7CFB;&#x7EDF; <a href="5.1/&#x84DD;&#x9CB8;&#x76D1;&#x63A7;/&#x4EA7;&#x54C1;&#x7B80;&#x4ECB;/README.md">&#x84DD;&#x9CB8;&#x76D1;&#x63A7;</a> &#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230; <a href="5.1/&#x84DD;&#x9CB8;&#x76D1;&#x63A7;/&#x4EA7;&#x54C1;&#x529F;&#x80FD;/Process_monitor_desc.md">&#x8FDB;&#x7A0B;&#x7684;&#x8FD0;&#x884C;&#x60C5;&#x51B5;</a>&#x3002;</p>
 <p><img src="media/15632804527438.jpg" alt="-w1570"></p>
 <p>&#x70B9;&#x51FB; MariaDB &#x56FE;&#x6807;&#xFF0C;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x5176;&#x5360;&#x7528;&#x7684; CPU&#x3001;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x7387;&#x4EE5;&#x53CA;&#x6587;&#x4EF6;&#x53E5;&#x67C4;&#x6570;&#x7B49;&#x8FDB;&#x7A0B;&#x5360;&#x7528;&#x7684;&#x8D44;&#x6E90;&#x6307;&#x6807;&#x3002;</p>
 <p><img src="media/15626645050893.jpg" alt="-w1249"></p>
-<h3 id="Extended_reading">&#x6269;&#x5C55;&#x9605;&#x8BFB; </h3>
-<h4 id="monitor_consume_cmdb_process_ci">1. &#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x6D88;&#x8D39; CMDB &#x4E2D;&#x8FDB;&#x7A0B;&#x914D;&#x7F6E;&#x80CC;&#x540E;&#x7684;&#x903B;&#x8F91; </h4>
+<h2 id="&#x6269;&#x5C55;&#x9605;&#x8BFB;">&#x6269;&#x5C55;&#x9605;&#x8BFB;</h2>
+<h3 id="1-&#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x6D88;&#x8D39;-cmdb-&#x4E2D;&#x8FDB;&#x7A0B;&#x914D;&#x7F6E;&#x80CC;&#x540E;&#x7684;&#x903B;&#x8F91;">1. &#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x6D88;&#x8D39; CMDB &#x4E2D;&#x8FDB;&#x7A0B;&#x914D;&#x7F6E;&#x80CC;&#x540E;&#x7684;&#x903B;&#x8F91;</h3>
 <p>&#x5F53;&#x7ED9;&#x6A21;&#x5757;&#x5206;&#x914D;&#x5B8C;&#x4E3B;&#x673A;&#x540E;&#xFF0C;&#x8BE5;&#x4E3B;&#x673A;&#x7684;&#x5927;&#x90E8;&#x5206; CI &#x5C5E;&#x6027;&#x5C06;&#x88AB;&#x81EA;&#x52A8;&#x63A8;&#x9001;&#x81F3;<code>/var/lib/gse/host/hostid</code></p>
 <pre><code class="lang-json">{
   .....
@@ -854,7 +854,7 @@ processbeat.processes:
 <span class="hljs-attr">  paramregex:</span> <span class="hljs-string">&quot;&quot;</span>
 <span class="hljs-attr">  bindip:</span> <span class="hljs-number">10.0</span><span class="hljs-number">.4</span><span class="hljs-number">.29</span>
 </code></pre>
-<h4 id="same_binary_process_monitor">2. &#x4E8C;&#x8FDB;&#x5236;&#x540D;&#x79F0;&#x5747;&#x4E3A; java&#xFF0C;&#x8BE5;&#x5982;&#x4F55;&#x914D;&#x7F6E; </h4>
+<h3 id="2-&#x4E8C;&#x8FDB;&#x5236;&#x540D;&#x79F0;&#x5747;&#x4E3A;-java&#xFF0C;&#x8BE5;&#x5982;&#x4F55;&#x914D;&#x7F6E;">2. &#x4E8C;&#x8FDB;&#x5236;&#x540D;&#x79F0;&#x5747;&#x4E3A; java&#xFF0C;&#x8BE5;&#x5982;&#x4F55;&#x914D;&#x7F6E;</h3>
 <p>&#x5982; ZooKeeper&#x3001;Hadoop &#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x5747;&#x4E3A;<code>java</code>&#xFF0C;&#x53EF;&#x7528;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x533A;&#x5206;</p>
 <pre><code class="lang-bash">$ ps -ef | grep -i zookeeper
 
@@ -876,7 +876,7 @@ root      5707     1  3 May11 ?        1-22:34:50 /data/bkee/service/java/bin/ja
 
             
                 
-                <a href="CMDB_management_hosts.html" class="navigation navigation-prev " aria-label="Previous page: 业务上线时管理主机">
+                <a href="CMDB_management_hosts.html" class="navigation navigation-prev " aria-label="Previous page: 业务上线时 CMDB 如何管理主机">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -892,7 +892,7 @@ root      5707     1  3 May11 ?        1-22:34:50 /data/bkee/service/java/bin/ja
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"管理进程","level":"1.4.1.3","depth":3,"next":{"title":"管理数据库实例：以 MySQL 为例","level":"1.4.1.4","depth":3,"path":"CD/CMDB/CMDB_management_database_middleware.md","ref":"CD/CMDB/CMDB_management_database_middleware.md","articles":[]},"previous":{"title":"业务上线时管理主机","level":"1.4.1.2","depth":3,"path":"CD/CMDB/CMDB_management_hosts.md","ref":"CD/CMDB/CMDB_management_hosts.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"CD/CMDB/CMDB_management_process.md","mtime":"2019-09-10T12:13:34.225Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-11T08:56:03.369Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CMDB 如何管理进程","level":"1.4.1.3","depth":3,"next":{"title":"管理数据库实例：以 MySQL 为例","level":"1.4.1.4","depth":3,"path":"CD/CMDB/CMDB_management_database_middleware.md","ref":"CD/CMDB/CMDB_management_database_middleware.md","articles":[]},"previous":{"title":"业务上线时 CMDB 如何管理主机","level":"1.4.1.2","depth":3,"path":"CD/CMDB/CMDB_management_hosts.md","ref":"CD/CMDB/CMDB_management_hosts.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"CD/CMDB/CMDB_management_process.md","mtime":"2019-09-30T07:37:24.263Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-08T01:54:19.412Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

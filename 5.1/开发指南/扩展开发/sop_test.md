@@ -1,4 +1,4 @@
-## 组件单元测试
+# 组件单元测试
 
 在我们完成自定义组件的开发后，我们需要测试组件是否能够按照我们预期的那样运行。最简单的方式就是构造一个包含该节点的流程然后把流程跑起来观察其行为和输出是否符合预期。但是这种测试方式十分耗时而且是一次性的，下次若是修改了节点后需要再进行一遍相同的操作。
 
@@ -148,7 +148,7 @@ class TheScheduleService(Service):
     interval = StaticIntervalGenerator(1)
 
     def execute(self, data, parent_data):
-        
+
         # make execute failed if receive fail signal
         if data.inputs.get('fail', False):
             return False

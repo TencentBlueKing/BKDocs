@@ -8,14 +8,14 @@
 
 ## 前提条件
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含  [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
-- [完成 BCS 部署](https://docs.bk.tencent.com/bkce_install_guide/setup/quick_install_bcs.html)
+- [完成 BCS 部署](5.1/部署维护/增强包安装/部署安装/bcs_install.md)
 - 准备 2 台云主机：4 核 8 G，不低于 CentOS 7，K8s Master 和 Node 各 1 台
-- 完成上述 2 台云主机的 [Agent 安装](Hybrid_cloud_management.md) ，并分配至  [CMDB 业务下](https://docs.bk.tencent.com/cmdb/Introduction.html#BusinessResource)
+- 完成上述 2 台云主机的 Agent 安装 ，并分配至 CMDB 业务下
 
 ## 操作步骤
 
-- 1. 新建集群
-- 2. BCS 快速构建 Nginx 集群
+- 新建集群
+- BCS 快速构建 Nginx 集群
 
 ### 1. 新建集群
 #### 1.1 启用容器服务
@@ -24,7 +24,7 @@
 
 ![-w1378](media/15648362836651.jpg)
 
-然后选择容器编排类型为 `Kubernetes` ，关联 [前提条件](#Prerequisites)中提到的 CMDB 业务，点击`启用容器服务`。
+然后选择容器编排类型为 `Kubernetes` ，关联前提条件中提到的 CMDB 业务，点击`启用容器服务`。
 
 ![-w1304](media/15648364147641.jpg)
 
@@ -38,7 +38,7 @@
 
 ![-w1368](media/15648366557109.jpg)
 
-> 容器服务的集群划分和[传统单体应用在 CMDB 中的集群划分](CMDB_management_hosts.html#Combing_business_architecture)很类似，可以按照`地域（如华北区）`或者`完全独立的应用集合（微信区）`来划分。
+> 容器服务的集群划分和 [传统单体应用在 CMDB 中的集群划分](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md) 很类似，可以按照`地域（如华北区）`或者`完全独立的应用集合（微信区）`来划分。
 
 
 选择 1 台云主机作为 Master。
@@ -78,7 +78,7 @@
 
 模板集，可以类比为 K8S 中 **[Helm](https://helm.sh/)** 的`Charts`，在 K8S 编排中，是 K8S 对象的集合：`Deployment（无状态）`、`StatefulSet（有状态）`、`DaemonSet（守护进程集）`、`Job（定时任务）`、`Configmap（配置项）`、`Secret（保密字典）`，具体参见 [模板集使用介绍](https://docs.bk.tencent.com/bcs/Container/TemplateIntroduce.html) 。
 
-打开菜单`[模板集]`，新建模板集`web-nginx`。
+打开菜单 `[模板集]`，新建模板集 `web-nginx`。
 
 ![-w1466](media/15652520004880.jpg)
 
@@ -100,11 +100,11 @@
 
 #### 2.4 检查部署效果
 
-在菜单`网络` -> `Services`中，找到刚实例化的 Service `web-nginx`
+在菜单 `网络` -> `Services` 中，找到刚实例化的 Service `web-nginx`
 
 ![-w1465](media/15652551496895.jpg)
 
-在菜单`[应用]` -> `[Deployment]`中可以找到 `web-nginx`
+在菜单 `[应用]` -> `[Deployment]` 中可以找到 `web-nginx`
 
 ![-w1464](media/15652552229901.jpg)
 
@@ -121,7 +121,7 @@ Server: nginx/1.12.2
 Date: Thu, 08 Aug 2019 09:11:42 GMT
 ```
 
-通过访问`Service IP + Port`，也可以查看刚部署 Nginx 的版本号。
+通过访问 `Service IP + Port` ，也可以查看刚部署 Nginx 的版本号。
 
 ```bash
 [root@ip-10-0-5-94-n-bcs-k8s-40015 ~]# curl 10.254.11.4:8088 -I

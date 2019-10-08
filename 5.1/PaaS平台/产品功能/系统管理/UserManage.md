@@ -17,7 +17,7 @@
 
 ![](../../assets/userenter.png)
 
-![](../assets/image005.png)
+![](../../assets/image005.png)
 
 支持以下操作：
 

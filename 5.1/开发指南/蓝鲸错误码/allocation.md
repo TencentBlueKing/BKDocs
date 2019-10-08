@@ -1,6 +1,6 @@
-## 配置平台错误码
+# 配置平台错误码
 
-### code description
+## code description
 
 1. 错误码由 7 位数字组成
 2. 错误码左起两位固定为 11，格式为：11XXXXX
@@ -19,7 +19,7 @@
 13. web 进程错误码左侧四位固定位 1111，格式为：1111XXX
 14. api server v2  接口错误码左侧四位固定位 1170，格式为：1170XXX
 
-### common
+## common
 
 ```json
 {
@@ -146,7 +146,7 @@
 
 ```
 
-### migrate
+## migrate
 
 ```json
 {
@@ -155,7 +155,7 @@
 }
 ```
 
-### object_controller
+## object_controller
 
 ```json
 {
@@ -173,7 +173,7 @@
 
 ```
 
-### proc_controller
+## proc_controller
 
 ```json
 {
@@ -186,7 +186,7 @@
 
 ```
 
-### proc_server
+## proc_server
 
 ```json
 {
@@ -203,7 +203,7 @@
 
 ```
 
-### topo_server
+## topo_server
 
 ``` json
 {
@@ -267,7 +267,7 @@
 
 ```
 
-### api_v2
+## api_v2
 
 ``` json
 {

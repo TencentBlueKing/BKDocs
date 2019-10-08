@@ -1,4 +1,4 @@
-## 术语解释
+# 术语解释
 
 
 - [蓝鲸开发框架2.0](https://docs.bk.tencent.com/blueapps/USAGE.html) : 快速在蓝鲸 PaaS 平台上开发 SaaS 的 `Python 框架`。该开发框架基于 `Django 框架` 架构，并在此基础上进行扩展，增加蓝鲸系统的特有功能，例如：`身份验证`、`ESB 调用` 及 `模板渲染` 等功能，以便开发者可以更专注于 SaaS 的`逻辑开发`。

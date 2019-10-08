@@ -5,12 +5,12 @@
 ## 情景
 故障处理是运维的职能之一，人工登录服务器处理告警，存在 2 个问题：`故障处理效率低` 和 `操作疏忽时可能影响生产环境`，例如删除文件输入绝对路径时，在根目录和日志目录间误敲空格，导致根目录删除。
 
-前面介绍了 [蓝鲸监控](Bkmonitor_Alarm_processing_automation.md)、[Zabbix](Zabbix_Alarm_processing_automation.md) 告警的自动处理，接下来通过 “**REST API 告警接入故障自愈**”这个案例 ，来了解故障自愈如何集成第 3 方监控系统。
+前面介绍了 [蓝鲸监控](./Bkmonitor_Alarm_processing_automation.md)、[Zabbix](./Zabbix_Alarm_processing_automation.md) 告警的自动处理，接下来通过 “**REST API 告警接入故障自愈**”这个案例 ，来了解故障自愈如何集成第 3 方监控系统。
 
 ## 前提条件
 
 - [蓝鲸配置平台纳管了主机](../../CD/CMDB/CMDB_management_hosts.md)
-- [作业平台新建一个作业](../../CD/Automation/Massive_host_control.md#New_job)
+- [作业平台新建一个作业](../../CD/Automation/Massive_host_control.md)
 
 **术语解释**
  - **自愈套餐** : 告警的处理动作，比如清理日志的作业
@@ -19,10 +19,10 @@
 
 ## 操作步骤
 
-- 1. 启用 REST API(推送)告警源
-- 2. 接入自愈方案
-- 3. 自愈测试
-- 4. 故障自愈的收敛防护
+- 启用 REST API(推送)告警源
+- 接入自愈方案
+- 自愈测试
+- 故障自愈的收敛防护
 
 
 ### 1. 启用 REST API(推送)告警源
@@ -108,4 +108,4 @@ REST API(推动) 的场景在于，如果你使用的监控系统故障自愈默
 
 故障自愈，在安全的前提下完成告警的自动化处理。
 
-> 收敛审批是通过企业微信实现，请参考 [微信审批接入流程](https://docs.bk.tencent.com/product_white_paper/fta/Advanced_Features/WeChat_approval_access_process.html)。
+> 收敛审批是通过企业微信实现，请参考 [微信审批接入流程](5.1/FTA/Scenes/WeChat_approval_access_process.md)。

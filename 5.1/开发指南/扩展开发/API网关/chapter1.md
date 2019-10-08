@@ -1,4 +1,4 @@
-## 组件编码
+# 组件编码
 
 组件编码，通过编写组件代码，添加组件通道配置，提供 API 服务。以如下接口为例，详细介绍如何开发新组件。
 
@@ -10,7 +10,7 @@
 
 - 接口地址：http://hcp.domain.com/hcp/get_host_list/
 
-### 添加系统
+## 添加系统
 
 添加一个新的系统，系统信息中填入以下内容：
 
@@ -18,7 +18,7 @@
 
 - 系统标签：主机配置平台
 
-### 创建系统及组件文件
+## 创建系统及组件文件
 
 在项目的 components/generic/apis/下，按照下面结构创建目录及文件(模版下载)：
 
@@ -43,7 +43,7 @@ components/generic/apis/
 
 - hcp/get_host_list.py 为"查询主机列表"组件模块。
 
-### 组件配置中添加系统信息
+## 组件配置中添加系统信息
 
 在"components/generic/apis/hcp/toolkit/configs.py"中添加系统配置，样例如下：
 
@@ -61,7 +61,7 @@ host = SmartHost(
 )
 ```
 
-### 开发组件模块
+## 开发组件模块
 
 在"components/generic/apis/hcp/get_host_list.py"中添加组件代码，样例如下：
 
@@ -135,7 +135,7 @@ workon esb
 python manage.py sync_api_docs
 ```
 
-### 注册组件通道
+## 注册组件通道
 
 组件模块开发完成后，注册组件通道，通道信息中填入内容如下：
 
@@ -147,7 +147,7 @@ python manage.py sync_api_docs
 
 - 对应组件代号：generic.hcp.get_host_list
 
-### 重启服务
+## 重启服务
 
 组件添加完成后，重启服务，重启步骤如下:
 
@@ -163,11 +163,11 @@ supervisorctl -c $proj_etc_dir/supervisor-open_paas.conf restart esb
 http://xxx.domain.com/api/c/compapi/hcp/get_host_list/
 ```
 
-### 附录
+## 附录
 
 开发新组件时，在组件模块中，可根据组件基类 Component 或公用模块获取一些有用数据，帮助开发。
 
-#### Component 基类中可用数据
+### Component 基类中可用数据
 
 - request: 请求数据，其中常用的属性参考下文描述
 
@@ -178,7 +178,7 @@ http://xxx.domain.com/api/c/compapi/hcp/get_host_list/
 - outgoing.http_client: 请求接口 Client，可用其请求其他接口，具体参数参考下面描述
 
 
-#### Component中request的常用属性
+### Component中request的常用属性
 
 - request_id: 一次请求的唯一 ID，一个 uuid 字符串
 
@@ -186,7 +186,7 @@ http://xxx.domain.com/api/c/compapi/hcp/get_host_list/
 
 - kwargs: 当前的请求参数，GET 请求中的 QueryString 数据 或 POST 请求中 Request Body 数据，已转换为 dict
 
-#### Component中outgoing.http_client 支持方法
+### Component中outgoing.http_client 支持方法
 
 ```python
 # response_type: json，接口数据是否需要转换为JSON字典，其他不转换
@@ -203,7 +203,7 @@ outgoing.http_client.get # 表示 request('GET', *args, **kwargs)
 outgoing.http_client.post # 表示 request('POST', *args, **kwargs)
 ```
 
-#### common.forms模块中自定义 Field
+### common.forms模块中自定义 Field
 
 - ListField: 列表Field，可将逗号，分号、换行、空格分隔的字符串，转换为列表，如可将"123;456;789"转换为["123", "456", "789"]
 
@@ -211,7 +211,7 @@ outgoing.http_client.post # 表示 request('POST', *args, **kwargs)
 
 - DefaultBooleanField: 默认布尔 Field，布尔数据可通过 default 参数设置默认值
 
-#### 组件内调用其他组件的方式
+### 组件内调用其他组件的方式
 
 - invoke_other 方式，当前用户 current_user 会传递到被调用组件
 
@@ -219,7 +219,7 @@ outgoing.http_client.post # 表示 request('POST', *args, **kwargs)
 result = self.invoke_other('generic.auth.get_user', kwargs={'username': 'xxx'})
 ```
 
-#### 直接调用方式
+### 直接调用方式
 
 ```python
 from esb.components.generic.apis.auth.get_user import GetUser

@@ -1,12 +1,12 @@
-蓝鲸监控告警自动处理
+# 蓝鲸监控告警自动处理
 ---
 
-#### 情景 {#Situation}
+## 情景
 故障处理是运维的职能之一，人工登录服务器处理告警，存在 2 个问题：`故障处理效率低` 和 `操作疏忽时可能影响生产环境`，例如删除文件输入绝对路径时，在根目录和日志目录间误敲空格，导致根目录删除。
 
 接下来通过 “**蓝鲸监控的进程告警接入故障自愈**”这个案例 ，来了解故障自愈是如何解决这 2 个痛点。
 
-#### 前提条件 {#Prerequisites}
+## 前提条件
 
 - [蓝鲸配置平台纳管了主机](../../CD/CMDB/CMDB_management_hosts.md)
 - [蓝鲸配置平台纳管了进程](../../CD/CMDB/CMDB_management_process.md)
@@ -17,21 +17,21 @@
  - **自愈方案** : 关联 告警 和 处理动作的一个组合；
 
 
-#### 操作步骤 {#Steps}
+## 操作步骤
 
-- [1. 启用蓝鲸监控告警源](#Enable_restapi)
-- [2. 接入自愈方案](#New_fta_solutions)
-- [3. 自愈测试](#Test_fta)
+- 1. 启用蓝鲸监控告警源
+- 2. 接入自愈方案
+- 3. 自愈测试
 
 
-## 1. 启用蓝鲸监控告警源 {#Enable_bk_monitor}
+### 1. 启用蓝鲸监控告警源
 
 在菜单 `[接入自愈]` -> `[管理告警源]`中，启用`蓝鲸监控`。
 
 ![-w1678](media/15644862864407.jpg)
 
 
-## 2. 接入自愈方案 {#New_fta_solutions}
+### 2. 接入自愈方案
 
 在菜单 [接入自愈] 中，点击 `接入自愈` , 告警类型选择 `[主机监控]进程端口`，模块选择`存储层`，因为不同类型服务器拉起进程的作业不一样。
 
@@ -48,15 +48,15 @@
 ![-w1639](media/15645571501689.jpg)
 
 ```plain
-## Check
+# Check
 ps -ef | grep -i mysqld
 netstat -ntlp | grep -i 3306
 
-## Start MariaDB
+# Start MariaDB
 systemctl start mariadb   || job_fail "start mariadb fail"
 
 
-## Check 
+# Check
 ps -ef | grep -i mysqld
 netstat -ntlp | grep -i 3306
 netstat -ntlp | grep -i 3306 || job_fail "mariadb not listen 3306"
@@ -72,7 +72,7 @@ job_success "start mariadb succ"
 
 ![-w1678](media/15644865413991.jpg)
 
-## 3. 自愈测试 {#Test_fta}
+### 3. 自愈测试 
 
 接下来将停止 MariaDB 进程，来验证是否可以自动启动进程，以恢复 DB 服务。
 
@@ -108,4 +108,3 @@ root     16763  7429  0 19:40 pts/1    00:00:00 grep --color=auto -i mysqld
 故障自动处理是把双刃剑，需要考虑因为网络波动等场景导致的假告警，这时可以用到故障自愈的`异常防御需审批`功能。具体请参照 [故障自愈的收敛防护](/CO/REST_API_PUSH_Alarm_processing_automation.html#Safe) 。
 
 故障自愈，在**安全的前提下完成告警的自动化处理**。
-

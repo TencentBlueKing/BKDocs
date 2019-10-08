@@ -9,12 +9,12 @@
 
 ## 前提条件
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含 [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
-- [完成 BCS 部署](https://docs.bk.tencent.com/bkce_install_guide/setup/quick_install_bcs.html)
+- [完成 BCS 部署](5.1/部署维护/增强包安装/部署安装/bcs_install.md)
 
 ## 操作步骤
 
-- 1. 滚动更新逻辑介绍
-- 2. BCS 滚动更新操作指引
+- 滚动更新逻辑介绍
+- BCS 滚动更新操作指引
 
 
 ### 1. 滚动更新逻辑介绍
@@ -30,12 +30,12 @@
 
 #### 2.1 推送 Nginx:1.17.0 至镜像仓库
 
-参照[Harbor 仓库使用指南](https://docs.bk.tencent.com/bcs/Container/HarborGuide.html#2-%E8%93%9D%E9%B2%B8%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%E4%BC%81%E4%B8%9A%E7%89%88%E4%B8%AD%E7%9A%84harbor%E4%BB%93%E5%BA%93)，将镜像 Nginx:1.17.0 推送至 BCS 公共镜像仓库。
+参照 [Harbor 仓库使用指南](5.1/bcs/Function/HarborGuide.md)，将镜像 Nginx:1.17.0 推送至 BCS 公共镜像仓库。
 
 
 #### 2.1.1 注册镜像仓库账号
 
-在[部署 BCS](https://docs.bk.tencent.com/bkce_install_guide/setup/quick_install_bcs.html) 的中控机上获取镜像仓库的访问地址。
+在 [部署 BCS](5.1/部署维护/增强包安装/环境准备/bcs_envprepare.md) 的中控机上获取镜像仓库的访问地址。
 
 ```bash
 # source /data/install/utils.fc && echo ${HARBOR_SERVER_FQDN}:${HARBOR_SERVER_HTTPS_PORT}
@@ -52,7 +52,7 @@ hub-d.o.******.com:443
 
 #### 2.1.2 推送 Nginx:1.17.0 至镜像仓库
 
-使用`docker pull` 从`hub.docker.com`拉取镜像`nginx:1.17.0`。
+使用 `docker pull` 从 `hub.docker.com` 拉取镜像 `nginx:1.17.0`。
 
 ```bash
 # docker pull nginx:1.17.0
@@ -64,7 +64,7 @@ Digest: sha256:bdbf36b7f1f77ffe7bd2a32e59235dff6ecf131e3b6b5b96061c652f30685f3a
 Status: Downloaded newer image for nginx:1.17.0
 ```
 
-规范镜像`tag`为仓库要求的格式。
+规范镜像 `tag` 为仓库要求的格式。
 
 ```bash
 # docker tag nginx:1.17.0 hub-d.******.com/public/nginx:1.17.0
@@ -86,7 +86,7 @@ cf5b3c6798f7: Pushed
 1.17.0: digest: sha256:079aa93463d2566b7a81cbdf856afc6d4d2a6f9100ca3bcbecf24ade92c9a7fe size: 948
 ```
 
-在镜像仓库中，可以找到刚推送的`Nginx:1.17.0`镜像。
+在镜像仓库中，可以找到刚推送的 `Nginx:1.17.0` 镜像。
 
 ![-w1465](media/15652572564612.jpg)
 
@@ -105,7 +105,7 @@ Server: nginx/1.12.2
 Date: Thu, 08 Aug 2019 09:11:42 GMT
 ```
 
-在【模板集】的【Deployment】页面中，修改【镜像及版本】，将版本从`1.12.2`修改为在 [推送 Nginx:1.17.0 至镜像仓库](#Push_images) 中上传的 Nginx 新镜像 `1.17.0`。
+在【模板集】的【Deployment】页面中，修改【镜像及版本】，将版本从 `1.12.2` 修改为在推送 Nginx:1.17.0 至镜像仓库中上传的 Nginx 新镜像 `1.17.0`。
 
 ![-w1633](media/15652627456802.jpg)
 

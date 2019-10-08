@@ -4,7 +4,7 @@
 
 无论你是刚了解蓝鲸，还是想找最佳实践的运维，亦或是想通过方法论提升运维服务能力的运维主管，在这里都能找到答案。
 
-### 快速入门 : 蓝鲸是什么，能解决什么问题
+# 快速入门 : 蓝鲸是什么，能解决什么问题
 
 <div class="doc-nav-link">
   <a href="https://docs.bk.tencent.com/introduction/introduction.html#introduction">
@@ -31,7 +31,7 @@
 
 ---
 
-### CI - CD - CO : 覆盖研发运营全生命周期的最佳实践
+# CI - CD - CO : 覆盖研发运营全生命周期的最佳实践
 
 <div class="doc-nav-link">
   <a href="CI/Pipeline_git_commit_to_stag.md">
@@ -57,7 +57,7 @@
 
 ---
 
-### 运维“四化建设”方法论 : 交付运维价值，助力业务增长
+# 运维“四化建设”方法论 : 交付运维价值，助力业务增长
 
 通过“运维四化建设”，交付运维价值，助力业务增长。
 
@@ -82,4 +82,3 @@
     <p>需求方自助服务，提升满意度</p>
   </a>
 </div>
-

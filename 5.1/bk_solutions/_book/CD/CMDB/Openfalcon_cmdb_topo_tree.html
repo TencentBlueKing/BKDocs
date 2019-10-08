@@ -58,7 +58,7 @@
 
     
     
-    <link rel="prev" href="CMDB_integration.html" />
+    <link rel="prev" href="CMDB_intapplication_deployment.mdegration.md" />
     
 
     </head>
@@ -81,7 +81,7 @@
 
     
         
-        <li class="header">蓝鲸最佳实践</li>
+        <li class="header">场景案例</li>
         
         
     
@@ -118,19 +118,6 @@
             
                     
                     新手之旅
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../../Getting_started/FAQ.html">
-            
-                <a href="../../Getting_started/FAQ.html">
-            
-                    
-                    FAQ
             
                 </a>
             
@@ -208,7 +195,7 @@
                 <a href="Configuration_management_standardization.html">
             
                     
-                    概述 1 : 待审核 
+                    概述: 待审核 
             
                 </a>
             
@@ -221,7 +208,7 @@
                 <a href="CMDB_management_hosts.html">
             
                     
-                    业务上线时管理主机
+                    业务上线时 CMDB 如何管理主机
             
                 </a>
             
@@ -234,7 +221,7 @@
                 <a href="CMDB_management_process.html">
             
                     
-                    管理进程
+                    CMDB 如何管理进程
             
                 </a>
             
@@ -268,12 +255,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.6" data-path="CMDB_integration.html">
+        <li class="chapter " data-level="1.4.1.6" data-path="CMDB_intapplication_deployment.mdegration.md">
             
-                <a href="CMDB_integration.html">
+                <span>
             
                     
-                    对接企业原有 CMDB，实现数据同步
+                    企业原有 CMDB 同步至蓝鲸 CMDB
             
                 </a>
             
@@ -304,7 +291,7 @@
                 <span>
             
                     
-                    应用交付自动化 理论篇
+                    应用交付自动化
             
                 </span>
             
@@ -318,7 +305,7 @@
                 <a href="../Automation/Application_delivery_deployment_automation.html">
             
                     
-                    概述 1 : 待审核 
+                    概述 : 待审核 
             
                 </a>
             
@@ -729,6 +716,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6" data-path="../../Getting_started/FAQ.html">
+            
+                <a href="../../Getting_started/FAQ.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -771,31 +771,31 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="open-falcon-&#x96C6;&#x6210;&#x84DD;&#x9CB8;-cmdb-&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x6811;">Open-Falcon &#x96C6;&#x6210;&#x84DD;&#x9CB8; CMDB &#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x6811;</h2>
+                                <h1 id="open-falcon-&#x96C6;&#x6210;&#x84DD;&#x9CB8;-cmdb-&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x6811;">Open-Falcon &#x96C6;&#x6210;&#x84DD;&#x9CB8; CMDB &#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x6811;</h1>
 <blockquote>
 <p>&#x611F;&#x8C22;&#x793E;&#x533A;&#x7528;&#x6237; <a href="https://bk.tencent.com/s-mart/personal/10116/" target="_blank">StephenWang</a> &#x8D21;&#x732E;&#x8BE5;&#x6587;&#x6863;.</p>
 </blockquote>
-<h4 id="Situation">&#x60C5;&#x666F; </h4>
+<h2 id="&#x60C5;&#x666F;">&#x60C5;&#x666F;</h2>
 <p><code>Open-Falcon</code> &#x662F;&#x4E00;&#x6B3E;&#x5F00;&#x6E90;&#x76D1;&#x63A7;&#x4EA7;&#x54C1;&#xFF0C; &#x9ED8;&#x8BA4;&#x901A;&#x8FC7; <code>Endpoint</code>&#xFF08;&#x4E00;&#x822C;&#x4E3A;&#x4E3B;&#x673A;&#x540D;&#xFF09; &#x67E5;&#x627E;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4F53;&#x9A8C;&#x4E0D;&#x591F;&#x53CB;&#x597D;&#x3002;</p>
 <p>&#x96C6;&#x6210;&#x84DD;&#x9CB8;&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x7684;&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x6811;&#xFF0C;&#x5C06;&#x9996;&#x9875;&#x5DE6;&#x4FA7;&#x680F;&#x6539;&#x9020;&#x4E3A;&#x670D;&#x52A1;&#x6811;&#xFF0C;&#x901A;&#x8FC7;&#x9009;&#x62E9;&#x4E1A;&#x52A1;&#x6A21;&#x5757;&#x5FEB;&#x901F;&#x9009;&#x62E9;&#x673A;&#x5668;&#xFF0C;&#x63D0;&#x9AD8;&#x76D1;&#x63A7;&#x67E5;&#x770B;&#x6548;&#x7387;&#x3002;</p>
-<h4 id="Prerequisites">&#x524D;&#x63D0;&#x6761;&#x4EF6; </h4>
+<h2 id="&#x524D;&#x63D0;&#x6761;&#x4EF6;">&#x524D;&#x63D0;&#x6761;&#x4EF6;</h2>
 <ul>
-<li><a href="CMDB_management_hosts.html">&#x4E3B;&#x673A;&#x7EB3;&#x7BA1;&#x5728;&#x84DD;&#x9CB8;&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x4E2D;</a></li>
-<li>&#x5728;&#x84DD;&#x9CB8;&#x5F00;&#x53D1;&#x8005;&#x4E2D;&#x5FC3; <a href="https://docs.bk.tencent.com/guide/application.html" target="_blank">&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x5E94;&#x7528;</a>&#xFF0C;&#x7528;&#x4E8E;&#x8C03;&#x7528; <a href="https://bk.tencent.com/document/bkapi/ce/system/cc/" target="_blank">CMDB &#x7684; API</a></li>
+<li><a href="5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md">&#x4E3B;&#x673A;&#x7EB3;&#x7BA1;&#x5728;&#x84DD;&#x9CB8;&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x4E2D;</a></li>
+<li>&#x5728;&#x84DD;&#x9CB8;&#x5F00;&#x53D1;&#x8005;&#x4E2D;&#x5FC3; <a href="5.1/&#x5F00;&#x53D1;&#x6307;&#x5357;/SaaS&#x5F00;&#x53D1;/&#x65B0;&#x624B;&#x5165;&#x95E8;/Windows.md">&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x5E94;&#x7528;</a>&#xFF0C;&#x7528;&#x4E8E;&#x8C03;&#x7528; <a href="5.1/API&#x6587;&#x6863;/CC/README.md">CMDB &#x7684; API</a></li>
 <li>&#x719F;&#x6089; <code>Python</code>&#x3001;<code>JavaScript</code></li>
 </ul>
-<h4 id="Step">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4; </h4>
+<h2 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h2>
 <ul>
-<li><a href="#New_topo">1. &#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x4E2D;&#x5EFA;&#x7ACB;&#x4E1A;&#x52A1;&#x62D3;&#x6251;</a></li>
-<li><a href="#Search_host">2. &#x67E5;&#x8BE2;&#x4E3B;&#x673A;&#x53CA;&#x62D3;&#x6251;&#xFF0C;&#x5199;&#x5165; Redis</a></li>
-<li><a href="#Package_interface">3. &#x5C01;&#x88C5;&#x540E;&#x53F0;&#x63A5;&#x53E3;</a></li>
-<li><a href="#Frontend_style">4. Open-Falcon &#x524D;&#x7AEF;&#x8C03;&#x7528;</a></li>
-<li><a href="#Preview">5. &#x9884;&#x89C8;&#x6548;&#x679C;</a></li>
+<li>&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x4E2D;&#x5EFA;&#x7ACB;&#x4E1A;&#x52A1;&#x62D3;&#x6251;</li>
+<li>&#x67E5;&#x8BE2;&#x4E3B;&#x673A;&#x53CA;&#x62D3;&#x6251;&#xFF0C;&#x5199;&#x5165; Redis</li>
+<li>&#x5C01;&#x88C5;&#x540E;&#x53F0;&#x63A5;&#x53E3;</li>
+<li>Open-Falcon &#x524D;&#x7AEF;&#x8C03;&#x7528;</li>
+<li>&#x9884;&#x89C8;&#x6548;&#x679C;</li>
 </ul>
-<h2 id="New_topo">1. &#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x4E2D;&#x5EFA;&#x7ACB;&#x4E1A;&#x52A1;&#x62D3;&#x6251; </h2>
-<p>&#x53C2;&#x7167; <a href="CMDB_management_hosts.html">&#x4E3B;&#x673A;&#x7EB3;&#x7BA1;&#x5728;&#x84DD;&#x9CB8;&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x4E2D;</a>&#xFF0C;&#x6839;&#x636E;&#x5E94;&#x7528;&#x7684;&#x90E8;&#x7F72;&#x5206;&#x5C42;&#x67B6;&#x6784;&#xFF0C;&#x5EFA;&#x7ACB;&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x5982;&#x4E0B;&#xFF1A;</p>
+<h3 id="1-&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x4E2D;&#x5EFA;&#x7ACB;&#x4E1A;&#x52A1;&#x62D3;&#x6251;">1. &#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x4E2D;&#x5EFA;&#x7ACB;&#x4E1A;&#x52A1;&#x62D3;&#x6251;</h3>
+<p>&#x53C2;&#x7167; <a href="5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md">&#x4E3B;&#x673A;&#x7EB3;&#x7BA1;&#x5728;&#x84DD;&#x9CB8;&#x914D;&#x7F6E;&#x5E73;&#x53F0;&#x4E2D;</a>&#xFF0C;&#x6839;&#x636E;&#x5E94;&#x7528;&#x7684;&#x90E8;&#x7F72;&#x5206;&#x5C42;&#x67B6;&#x6784;&#xFF0C;&#x5EFA;&#x7ACB;&#x4E1A;&#x52A1;&#x62D3;&#x6251;&#x5982;&#x4E0B;&#xFF1A;</p>
 <p><img src="media/15642787521397.jpg" alt=""></p>
-<h2 id="Search_host">2. &#x67E5;&#x8BE2;&#x4E3B;&#x673A;&#x53CA;&#x62D3;&#x6251;&#xFF0C;&#x5199;&#x5165; Redis </h2>
+<h3 id="2-&#x67E5;&#x8BE2;&#x4E3B;&#x673A;&#x53CA;&#x62D3;&#x6251;&#xFF0C;&#x5199;&#x5165;-redis">2. &#x67E5;&#x8BE2;&#x4E3B;&#x673A;&#x53CA;&#x62D3;&#x6251;&#xFF0C;&#x5199;&#x5165; Redis</h3>
 <ul>
 <li>&#x5B9A;&#x65F6;&#x8C03;&#x7528;&#x914D;&#x7F6E;&#x5E73;&#x53F0;<code>&#x67E5;&#x8BE2;&#x4E3B;&#x673A;:search_host</code>&#x63A5;&#x53E3;</li>
 <li>&#x5C06;&#x7ED3;&#x679C;&#x8F6C;&#x5316;&#x4E3A; <code>ztree</code> &#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF0C;&#x5E76;&#x5199;&#x5165; Redis</li>
@@ -846,7 +846,7 @@ result = requests.post(url=url, json=data).json()
 <span class="hljs-keyword">for</span> res <span class="hljs-keyword">in</span> result[<span class="hljs-string">&apos;data&apos;</span>][<span class="hljs-string">&apos;info&apos;</span>]:
     ip = res[<span class="hljs-string">&apos;host&apos;</span>][<span class="hljs-string">&apos;bk_host_innerip&apos;</span>]
     <span class="hljs-keyword">for</span> module <span class="hljs-keyword">in</span> res[<span class="hljs-string">&apos;module&apos;</span>]:
-        topo2 = module[<span class="hljs-string">&apos;TopModuleName&apos;</span>].split(<span class="hljs-string">&apos;##&apos;</span>)
+        topo2 = module[<span class="hljs-string">&apos;TopModuleName&apos;</span>].split(<span class="hljs-string">&apos;#&apos;</span>)
         sett = topo2[<span class="hljs-number">1</span>]
         modd = topo2[<span class="hljs-number">1</span>] + <span class="hljs-string">&apos;_&apos;</span> + topo2[<span class="hljs-number">2</span>]
         <span class="hljs-keyword">if</span> {<span class="hljs-string">&apos;id&apos;</span>: sett, <span class="hljs-string">&apos;pid&apos;</span>: <span class="hljs-number">0</span>, <span class="hljs-string">&apos;name&apos;</span>: sett} <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> topo:
@@ -862,7 +862,7 @@ rdc = redis.StrictRedis(connection_pool=rdp)
 topo = sorted(topo, key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-string">&apos;name&apos;</span>])
 rdc.set(<span class="hljs-string">&apos;cmdb&apos;</span>,str({<span class="hljs-string">&apos;value&apos;</span>:topo}))
 </code></pre>
-<h2 id="Package_interface">3. &#x5C01;&#x88C5;&#x540E;&#x53F0;&#x63A5;&#x53E3; </h2>
+<h3 id="3-&#x5C01;&#x88C5;&#x540E;&#x53F0;&#x63A5;&#x53E3;">3. &#x5C01;&#x88C5;&#x540E;&#x53F0;&#x63A5;&#x53E3;</h3>
 <ul>
 <li>&#x7528; <code>flask</code> &#x5F00;&#x53D1;&#x63A5;&#x53E3;&#xFF0C;&#x7528;&#x4E8E; Openfalcon &#x524D;&#x7AEF;&#x8C03;&#x7528;</li>
 <li>&#x8DE8;&#x57DF;&#x8BBF;&#x95EE;&#x5904;&#x7406; : &#x8C03;&#x7528;&#x5916;&#x90E8;&#x63A5;&#x53E3;&#xFF0C;&#x9700;&#x8981;&#x89E3;&#x51B3;&#x8DE8;&#x57DF;&#x95EE;&#x9898;</li>
@@ -895,7 +895,7 @@ server = flask.Flask(__name__)
         response.headers[<span class="hljs-string">&apos;Access-Control-Allow-Headers&apos;</span>] = <span class="hljs-string">&apos;x-requested-with,content-type&apos;</span>
         <span class="hljs-keyword">return</span> response
 </code></pre>
-<h2 id="Frontend_style">4. &#x524D;&#x7AEF;&#x6837;&#x5F0F;&#x8C03;&#x6574; </h2>
+<h3 id="4-&#x524D;&#x7AEF;&#x6837;&#x5F0F;&#x8C03;&#x6574;">4. &#x524D;&#x7AEF;&#x6837;&#x5F0F;&#x8C03;&#x6574;</h3>
 <p>&#x4FEE;&#x6539; Open-Falcon &#x524D;&#x7AEF;&#x9875;&#x9762;<code>dashboard/rrd/templates/index.html</code></p>
 <p>&#x524D;&#x7AEF;&#x62D3;&#x6251;&#x6811;&#x9009;&#x62E9; <code>ztree</code> &#x63D2;&#x4EF6;&#xFF1A;&#x652F;&#x6301;&#x6A21;&#x7CCA;&#x67E5;&#x8BE2;&#xFF0C;&#x52FE;&#x9009;&#x4E8B;&#x4EF6;&#x7B49;&#xFF0C;&#x5177;&#x4F53;&#x529F;&#x80FD;&#x53EF;&#x67E5;&#x8BE2; <a href="http://www.treejs.cn/v3/api.php" title="ztree" target="_blank">&#x5B98;&#x65B9; API</a></p>
 <ul>
@@ -934,13 +934,13 @@ server = flask.Flask(__name__)
   });
 }
 </code></pre>
-<h2 id="Preview">5. &#x9884;&#x89C8;&#x6548;&#x679C; </h2>
+<h3 id="5-&#x9884;&#x89C8;&#x6548;&#x679C;">5. &#x9884;&#x89C8;&#x6548;&#x679C;</h3>
 <p>&#x53EF;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x5DE6;&#x4FA7;&#x7684;&#x670D;&#x52A1;&#x6811;&#x9009;&#x62E9;&#x8D44;&#x6E90;&#xFF0C;&#x5341;&#x5206;&#x65B9;&#x4FBF;&#x3002;</p>
 <p><img src="media/15642788068769.jpg" alt=""></p>
 <p>&#x6539;&#x9020;&#x524D;&#xFF0C;&#x67E5;&#x627E;&#x8D44;&#x6E90;&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x68C0;&#x7D22;&#xFF0C;&#x5341;&#x5206;&#x4E0D;&#x4FBF;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
 <p><img src="media/15643014658046.jpg" alt=""></p>
 <blockquote>
-<p>&#x6CE8;: CMDB &#x4E2D;&#x7684;&#x8D44;&#x6E90;&#x7ECF;&#x5E38;&#x53D8;&#x52A8;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x7684;<a href="https://docs.bk.tencent.com/cmdb/Introduction.html#EventPush" target="_blank">&#x6D88;&#x606F;&#x63A8;&#x9001;</a>&#x6765;&#x76D1;&#x542C;&#x8D44;&#x6E90;&#x53D8;&#x5316;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5468;&#x671F;&#x83B7;&#x53D6;&#x3002;</p>
+<p>&#x6CE8;: CMDB &#x4E2D;&#x7684;&#x8D44;&#x6E90;&#x7ECF;&#x5E38;&#x53D8;&#x52A8;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x7684;<a href="5.1/&#x914D;&#x7F6E;&#x5E73;&#x53F0;/&#x4EA7;&#x54C1;&#x529F;&#x80FD;/ModelManagement.md">&#x6D88;&#x606F;&#x63A8;&#x9001;</a>&#x6765;&#x76D1;&#x542C;&#x8D44;&#x6E90;&#x53D8;&#x5316;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5468;&#x671F;&#x83B7;&#x53D6;&#x3002;</p>
 </blockquote>
 
                                 
@@ -953,7 +953,7 @@ server = flask.Flask(__name__)
 
             
                 
-                <a href="CMDB_integration.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 对接企业原有 CMDB，实现数据同步">
+                <a href="CMDB_intapplication_deployment.mdegration.md" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 企业原有 CMDB 同步至蓝鲸 CMDB">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -965,7 +965,7 @@ server = flask.Flask(__name__)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Open-Falcon 集成蓝鲸 CMDB 业务拓扑树","level":"1.4.1.7","depth":3,"next":{"title":"应用交付自动化 理论篇","level":"1.4.2","depth":2,"ref":"","articles":[{"title":"概述 1 : 待审核 ","level":"1.4.2.1","depth":3,"path":"CD/Automation/Application_delivery_deployment_automation.md","ref":"CD/Automation/Application_delivery_deployment_automation.md","articles":[]},{"title":"管控混合云架构下的基础设施","level":"1.4.2.2","depth":3,"path":"CD/Automation/Hybrid_cloud_management.md","ref":"CD/Automation/Hybrid_cloud_management.md","articles":[]},{"title":"37 秒完成万台服务器的目录标准化","level":"1.4.2.3","depth":3,"path":"CD/Automation/Massive_host_control.md","ref":"CD/Automation/Massive_host_control.md","articles":[]},{"title":"一次标准的应用交付自动化案例","level":"1.4.2.4","depth":3,"path":"CD/Automation/application_deployment.md","ref":"CD/Automation/application_deployment.md","articles":[]},{"title":"操作员做应用交付，让运维更专注","level":"1.4.2.5","depth":3,"path":"CD/Automation/ops_half_automation.md","ref":"CD/Automation/ops_half_automation.md","articles":[]},{"title":"集成企业内部 ITIL 系统","level":"1.4.2.6","depth":3,"path":"CD/Automation/intergration_itil.md","ref":"CD/Automation/intergration_itil.md","articles":[]}]},"previous":{"title":"对接企业原有 CMDB，实现数据同步","level":"1.4.1.6","depth":3,"path":"CD/CMDB/CMDB_integration.md","ref":"CD/CMDB/CMDB_integration.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"CD/CMDB/Openfalcon_cmdb_topo_tree.md","mtime":"2019-09-10T12:13:34.225Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-11T08:56:03.369Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Open-Falcon 集成蓝鲸 CMDB 业务拓扑树","level":"1.4.1.7","depth":3,"next":{"title":"应用交付自动化","level":"1.4.2","depth":2,"ref":"","articles":[{"title":"概述 : 待审核 ","level":"1.4.2.1","depth":3,"path":"CD/Automation/Application_delivery_deployment_automation.md","ref":"CD/Automation/Application_delivery_deployment_automation.md","articles":[]},{"title":"管控混合云架构下的基础设施","level":"1.4.2.2","depth":3,"path":"CD/Automation/Hybrid_cloud_management.md","ref":"CD/Automation/Hybrid_cloud_management.md","articles":[]},{"title":"37 秒完成万台服务器的目录标准化","level":"1.4.2.3","depth":3,"path":"CD/Automation/Massive_host_control.md","ref":"CD/Automation/Massive_host_control.md","articles":[]},{"title":"一次标准的应用交付自动化案例","level":"1.4.2.4","depth":3,"path":"CD/Automation/application_deployment.md","ref":"CD/Automation/application_deployment.md","articles":[]},{"title":"操作员做应用交付，让运维更专注","level":"1.4.2.5","depth":3,"path":"CD/Automation/ops_half_automation.md","ref":"CD/Automation/ops_half_automation.md","articles":[]},{"title":"集成企业内部 ITIL 系统","level":"1.4.2.6","depth":3,"path":"CD/Automation/intergration_itil.md","ref":"CD/Automation/intergration_itil.md","articles":[]}]},"previous":{"title":"企业原有 CMDB 同步至蓝鲸 CMDB","level":"1.4.1.6","depth":3,"path":"CD/CMDB/CMDB_intapplication_deployment.mdegration.md","ref":"CD/CMDB/CMDB_intapplication_deployment.mdegration.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","highlight","html5-video","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"html5-video":{},"splitter":{},"livereload":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*"},"file":{"path":"CD/CMDB/Openfalcon_cmdb_topo_tree.md","mtime":"2019-09-30T08:04:21.195Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-08T01:54:19.412Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
