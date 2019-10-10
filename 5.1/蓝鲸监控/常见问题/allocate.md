@@ -7,21 +7,21 @@
 1. 在蓝鲸监控 -> “主机监控”中，检查该台机器的基础性能数据是否展示正常，若基础性能数据没有显示，可判定该机器数据上报链路有问题。
 2. 登录采集器所在的机器，查看采集器进程是否已正常工作
 
-    ```plainplainplainplainplain
+    ```bash
     ps aux | grep uptimecheckbeat
     ```
 ![15456208356084](../media/15456208356084.jpg)
 3. 若采集器进程未启动，请到`/usr/local/gse/plugins/bin`目录下，查看是否存在 uptimecheckbeat 这个二进制文件（拨测采集器），如果不存在，请联系技术人员提供 gse 版本号，确认此版本是否已内置拨测采集器。
 4. 若步骤 2 没问题，且采集器进程未启动，请到`/usr/local/gse/plugins/etc`目录下，检查 uptimecheckbeat.conf 文件是否存在。若不存在，请到 job 作业平台查看 api 调用的历史任务，是否有执行失败的记录，给出截图；若 uptimecheckbeat.conf 存在，请执行以下命令手动启动采集器，将输出结果截图提供
 
-    ```plain
+    ```bash
     cd /usr/local/gse/plugins/bin
     ./uptimecheckbeat -c ../etc/uptimecheckbeat.conf
     ```
 5. 若采集器进程正常启动，但前端仍显示拨测节点不可用，请尝试在前端重新部署节点，等待并观察是否有报错提示，提供截图。
 
 6. 检查采集器是否已正确上报心跳信息。切换到采集器日志路径，找到最新的日志文件：
-    ```plainplainplain
+    ```bash
     cd /var/log/gse
     ls -rlt uptime* | tail -n1
     ```
@@ -35,7 +35,7 @@
 
 7. 检查异常节点系统时间是否同步。
 8. 若以上检查点均正常，请打包以下文件并提供：
-```plain
+```bash
 # 配置文件
 /usr/local/gse/plugins/etc/uptimecheckbeat.conf
 # 日志文件

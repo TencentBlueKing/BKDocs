@@ -79,7 +79,7 @@ $ dig xxx.service.consul @127.0.0.1
 
 正常情况下，可以看到类似下图的记录。如果命令换成`dig 域名` 没出现正确的记录，说明 `/etc/resolv.conf`里没有配置上 127.0.0.1 的 namserver，确认 `/etc/resolv.conf` 里第一行是`nameserver 127.0.0.1`
 
-```plain
+```bash
 ;; ANSWER SECTION:
 zk.service.consul.    0    IN    A    10.x.x.x
 zk.service.consul.    0    IN    A    10.x.x.x

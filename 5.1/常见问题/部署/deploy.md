@@ -13,7 +13,8 @@
  1.2、检查 consul 服务是否正常
  1.3、检查三台服务器 resolv.conf  首行是否有配置 nameserver 127.0.0.1，如无，请添加
  1.4、重启或重装 consul 服务
-```plain
+ 
+```bash
 ./bkcec stop consul  #(或在consul服务所在的三台主机，ps -ef |grep consul | awk '{print $2}'  |xargs kill -9)
 ./bkcec install consul 1
 ./bkcec start consul
@@ -35,7 +36,7 @@
  3.2.查看 cmdb-adminserver 日志（/data/bkce/logs/cmdb/）
 
 ### 检查 cmd b 服务进程，参照下图
-```plain
+```bash
 ./bkcec status cmdb
 
 ```
@@ -46,7 +47,7 @@
  5.1 检查 yum info nginx 
  5.2 安装 epel yum 源, 重装 cmdb
 
-```plain
+```bash
 ./bkcec stop cmdb 
 ./bkcec install cmdb 1 
 ./bkcec start cmdb 
@@ -123,7 +124,7 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 - 解决方案
     登陆到 bkdata 机器（社区版 5.1 登陆到 databus 所在机器）查看 consul 配置是否生成 databus.json 配置。
     
-    ```plain
+    ```bash
     /data/bkce/etc/consul.d/bkdata.json 
   
     # 若无则重装consul

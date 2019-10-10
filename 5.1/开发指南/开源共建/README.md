@@ -9,3 +9,8 @@
 - 标准运维：[https://github.com/Tencent/bk-sops](https://github.com/Tencent/bk-sops)
 
 - 容器管理平台：[https://github.com/Tencent/bk-bcs](https://github.com/Tencent/bk-bcs) , [https://github.com/Tencent/bk-bcs-saas](https://github.com/Tencent/bk-bcs-saas)
+
+- 蓝鲸DevOps： [https://github.com/Tencent/bk-ci](https://github.com/Tencent/bk-ci) 
+
+腾讯蓝鲸智云开源项目入驻码云，也可以从码云获取[https://gitee.com/Tencent-BlueKing](https://gitee.com/Tencent-BlueKing) 
+

@@ -1,6 +1,6 @@
-## 蓝鲸统一登录提供的基本函数接口说明
+# 蓝鲸统一登录提供的基本函数接口说明
 
-### 用户信息相关 {#message}
+## 用户信息相关
 ```python
 # 获取用户类Model（即对应用户表）
 from django.contrib.auth import get_user_model
@@ -25,7 +25,7 @@ result, message = user_model.objects.modify_user_role(role_code)
 # 返回元组(result, message)； result为boolean类型，True/False , 即表示修改成功/修改失败；message为string 类型, 表示修改失败后的错误信息
 ```
 
-### 登录相关 {#register}
+## 登录相关
 ```python
 # 蓝鲸登录的网址链接，如：http://{paas_domain}/login/
 from django.conf import settings as bk_settings
@@ -68,7 +68,7 @@ response = account.login_success_response(request, user, redirect_to, app_id)
 # 返回， 类型： django.http.HttpResponse
 ```
 
-### 通用方法 {#method}
+## 通用方法
 
 ```python
 # 日志

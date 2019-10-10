@@ -76,7 +76,7 @@
 
 #### 2.2 新建模板集
 
-模板集，可以类比为 K8S 中 **[Helm](https://helm.sh/)** 的`Charts`，在 K8S 编排中，是 K8S 对象的集合：`Deployment（无状态）`、`StatefulSet（有状态）`、`DaemonSet（守护进程集）`、`Job（定时任务）`、`Configmap（配置项）`、`Secret（保密字典）`，具体参见 [模板集使用介绍](https://docs.bk.tencent.com/bcs/Container/TemplateIntroduce.html) 。
+模板集，可以类比为 K8S 中 **[Helm](https://helm.sh/)** 的`Charts`，在 K8S 编排中，是 K8S 对象的集合：`Deployment（无状态）`、`StatefulSet（有状态）`、`DaemonSet（守护进程集）`、`Job（定时任务）`、`Configmap（配置项）`、`Secret（保密字典）`，具体参见 [模板集使用介绍](5.1/bcs/Function/TemplateIntroduce.md) 。
 
 打开菜单 `[模板集]`，新建模板集 `web-nginx`。
 

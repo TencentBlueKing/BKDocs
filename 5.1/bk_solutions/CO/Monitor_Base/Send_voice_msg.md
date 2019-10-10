@@ -45,7 +45,7 @@
 
 在蓝鲸 PaaS 所在机器的消息通知代码目录下，修改 `send_voice_msg.py`
 
-```plain
+```bash
 source /data/install/utils.fc
 ssh $APPO_IP
 cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
@@ -109,7 +109,7 @@ cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
 
 蓝鲸中控机上重启 PaaS ，使代码生效
 
-```plain
+```bash
 /data/install/bkcec stop paas
 /data/install/bkcec start paas
 ```

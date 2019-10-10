@@ -16,11 +16,11 @@
 ps -ef | grep mysql | grep -v grep
 ```
 
-### 修改 mysql 密码
+### 修改 MySQL 密码
 
 修改 globals.env 里的 mysql_PASS 值，密码不要包含 `[ ] / : @ ?` 等特殊字符
 
-```plain
+```bash
 export MYSQL_PASS='新密码'
 ```
 
@@ -56,13 +56,13 @@ for x in `ls /data/bkce/paas_agent/apps/projects | awk '{print $1}' | sed 's/.$/
 
 ### 重新生成配置
 
-和 mysql 相关的模块为 mysql，paas，job，bkdata，saas
+和 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS
 
 ```bash
 echo mysql paas job bkdata | xargs -n 1 ./bkcec render
 ```
 
-**bkdata**特别注意，有 3 个地方
+**bkdata** 特别注意，有 3 个地方
 
 ```bash
 配置1：
@@ -93,7 +93,7 @@ find /data/bkce/paas_agent/apps/projects/bk_*/conf -name "*.conf" | grep "bk" | 
 
 ### 重新初始化 MySQL
 
-```plain
+```bash
 ./bkcec initdata mysql
 ```
 
@@ -188,7 +188,7 @@ Reading messages... (press Ctrl-C to quit)
 
 若社区版设置了多台 mysql，需查看主库和从库正在使用的 binlog 是哪个文件
 
-```mysql
+```bash
 MySQL [(none)]> show master status\G
 *************************** 1. row ***************************
             File: mysql-bin.000006
@@ -205,13 +205,13 @@ Empty set (0.00 sec)
 
 清理方法一：删除指定日期以前的日志索引中 binlog 日志文件
 
-```mysql
+```bash
 purge master logs before '2018-08-01 17:20:00';
 ```
 
 清理方法二：删除指定日志文件的日志索引中 binlog 日志文件
 
-```mysql
+```bash
 purge master logs to'mysql-bin.000006';
 ```
 

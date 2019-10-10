@@ -13,7 +13,7 @@ ITSM 中的变更管理（Change Managent）规范了变更环节的操作，确
 
 ## 前提条件
 - [部署完蓝鲸](5.1/部署维护/基础包安装/环境准备/get_ready.md)，自带 ITSM SaaS。
-- 准备环境变更流程中 [多个角色](5.1/PaaS平台/产品功能/系统管理/UserManage.mdt)的账号，包含`运维`、`QC`、`产品`，以及流程设计的`管理员`。
+- 准备环境变更流程中 [多个角色](5.1/PaaS平台/产品功能/系统管理/UserManage.md) 的账号，包含`运维`、`QC`、`产品`，以及流程设计的`管理员`。
 
 ## 操作步骤
 
@@ -35,7 +35,7 @@ ITSM 中的变更管理（Change Managent）规范了变更环节的操作，确
 
 #### 2.1 角色设置
 
-参照 <a href="Release_Management.md#Authorization" target="_blank">角色设置</a> 完成对`运维`、`产品`和`QC`的授权。
+参照 [角色设置](5.1/bk_solutions/CO/ITSM/Release_Management.md) 完成对`运维`、`产品`和`QC`的授权。
 
 #### 2.2 设计环境变更流程
 ##### 2.2.1 填写流程信息

@@ -13,6 +13,7 @@ agent 机器：有进程则 ok
 #### 2.2 Windows
 >tasklist | findstr basereport
 
+
 -----
 ### 3. 若进程检测失败
 查看进程启动失败原因
@@ -46,11 +47,11 @@ GSE_IP 和 GSE_IP1 机器：检测 9092 端口
 -----
 ### 5. 检查配置
 ZK_IP 机器：查看 ZK 节点
-		>/data/bkee/service/zk/bin/zkCli.sh -server ip:2181 (ip通常为zk本机内网IP)plainplainplainplainplain
+		>/data/bkee/service/zk/bin/zkCli.sh -server ip:2181 (ip通常为zk本机内网IP)
 	get /gse/config/etc/dataserver/data/1001
 
 	正常会出现类似下面的数据结构
-```plain
+```bash
 	{"server_id": -1, "data_set": "snapshot", "partition": 1, "cluster_ind	ex": 0, "biz_id": 2, "msg_system": 1}
 ```
 

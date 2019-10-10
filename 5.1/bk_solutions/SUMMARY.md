@@ -13,7 +13,7 @@
         * [CMDB 如何管理进程](CD/CMDB/CMDB_management_process.md)
         * [管理数据库实例：以 MySQL 为例](CD/CMDB/CMDB_management_database_middleware.md)
         * [自动发现数据库实例：以 MySQL 为例](CD/CMDB/CMDB_CI_auto_discovery_MySQL.md)
-        * [企业原有 CMDB 同步至蓝鲸 CMDB](CD/CMDB/CMDB_intapplication_deployment.mdegration.md)
+        * [企业原有 CMDB 同步至蓝鲸 CMDB](CD/CMDB/CMDB_integration.md)
         * [Open-Falcon 集成蓝鲸 CMDB 业务拓扑树](CD/CMDB/Openfalcon_cmdb_topo_tree.md)
     * [应用交付自动化]()
         * [概述](CD/Automation/Application_delivery_deployment_automation.md)

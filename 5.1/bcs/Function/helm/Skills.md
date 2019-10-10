@@ -20,7 +20,7 @@
 #### 1.1.1 方式 1 ：直接在 Chart 中使用
 
 
-```plain
+```
 {{ default "127.0.0.1" $.Values.global.__BCS__.SYS_JFROG_DOMAIN }}
 ```
 
@@ -28,7 +28,7 @@
 
 #### 1.1.2 方式 2 ：通过模板的方式使用
 
-```plain
+```
 {{/*
 domain template
 */}}
@@ -65,7 +65,7 @@ domain template
 
 在 Chart 中使用方式如下：
 
-```plain
+```
 {{ template "bcsDomain" $ }}
 ```
 

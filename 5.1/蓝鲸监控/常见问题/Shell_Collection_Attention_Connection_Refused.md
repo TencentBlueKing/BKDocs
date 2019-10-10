@@ -14,7 +14,7 @@ bkeec status rabbitmq
 `add_app_token bk_monitor "$(_app_token bk_monitor)" "蓝鲸监控- new"`
 2. `./bkeec sync common`
 3. rabbitmq 机器上：
-```plain
+```bash
 source utils.fc
 rabbitmqctl add_user "bk_monitor" "$(_app_token bk_monitor)"`
 rabbitmqctl set_user_tags bk_monitor  management

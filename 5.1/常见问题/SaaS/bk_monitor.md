@@ -331,7 +331,7 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
 
 	- 去到bkdata机器tailf一下日志
 
-		```bashplain
+		```bash
 		workon monitor  # （社区版5.1用 workon bkdata-monitor）
 		tail -f ../../logs/bkdata/kernel.log | grep "gse_custom_out_str_"  
 		```

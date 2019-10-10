@@ -24,7 +24,7 @@ kubectl 是 K8S 官方的命令行工具，用于管理 K8S 集群，用户添�
 
 ### 3.1 查询集群信息
 
-```plain
+```bash
 kubectl cluster-info
 ```
 
@@ -72,7 +72,7 @@ kubectl describe pod <podname>
 
 ### 3.3 Help 查看帮助
 
-```plain
+```bash
 kubectl --help
 ```
 kubectl 的帮助信息、示例相当详细，而且简单易懂。

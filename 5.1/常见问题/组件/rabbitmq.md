@@ -1,8 +1,8 @@
 # RabbitMQ 常见问题
 
-## rabbitmq 启动失败
+## RabbitMQ 启动失败
 
-4.1 社区版本 rabbitmq 启动失败问题处理
+4.1 社区版本 RabbitMQ 启动失败问题处理
 
 **表象**：在部署蓝鲸 JOB 过程中需要进行 RabbitMQ 的安装，数据初始化，激活步骤，此问题多发生在此过程
 
@@ -18,7 +18,7 @@ $ netstat -tnlpu | grep 5672
 
 若没有启动，通过 `systemctl start rabbitmq-server` 启动。若系统没有 systemctl 命令，通过 `service rabbitmq start`启动
 
-首先排查 `/data/bkce/etc/rabbitmq` 目录，对 rabbitmq 用户是否有读权限，`/data/bkce/public/rabbitmq`目录对 rabbitmq 用户是否有写权限
+首先排查 `/data/bkce/etc/rabbitmq` 目录，对 RabbitMQ 用户是否有读权限，`/data/bkce/public/rabbitmq`目录对 RabbitMQ 用户是否有写权限
 
 自己处理好目录的权限问题后，再尝试重启 `rabbitmq-server`
 
@@ -33,12 +33,13 @@ $ [X.X.X.X] api reponse: {"msg": "HTTPConnectionPool(host='X.X.X.X', port=15672)
 
 **思路方法**：
 
-1. 确认 umask，若不是 022，修改 `/etc/profile`，然后 `source /etc/profile`，再卸载 rabbitmq，重新安装
+1. 确认 umask，若不是 022，修改 `/etc/profile`，然后 `source /etc/profile`，再卸载 RabbitMQ，重新安装
 2. 确认在安装过程，或在 `rabbitmq activate` 前主机域名是否做过调整修改
 
 ## rabbitmq initdata 失败
 
 **表象**：在部署蓝鲸 JOB 过程中需要进行 RabbitMQ 的安装，数据初始化，激活步骤，此问题多发生在此过程
+
 
 ```bash
 [ root@rbtnodel install)# ．/bkcec initdata rabbitmq
@@ -93,7 +94,7 @@ initdata rabbitmq
 
 ## rabbitmq 15672 不存在
 
-如果是在激活 rabbitmq 时报错**15672** 端口拒绝链接，那说明 `rabbitmq-server`没有成功加载`rabbitmq_management`插件
+如果是在激活 RabbitMQ 时报错**15672** 端口拒绝链接，那说明 `rabbitmq-server`没有成功加载`rabbitmq_management`插件
 
 原因可能有 2 种：
 

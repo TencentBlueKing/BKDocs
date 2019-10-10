@@ -6,7 +6,7 @@
 
 以下是本次教程的数据示例.（每分钟会自动更新）
 
-```plain
+```bash
 # cat /data/bk.monitor.breaking_test2.log
 2018-09-16 21:46:16|aqq|20020
 2018-09-16 21:46:16|awx|30020

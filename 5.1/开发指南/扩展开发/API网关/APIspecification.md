@@ -23,7 +23,7 @@
 
 调用 API 主要有两种方式，一种是使用 APP 开发框架中提供的SDK包，一种是根据 API 地址直接访问。
 
-### 利用 AP 开发框架中的 SDK 包
+### 利用 APP 开发框架中的 SDK 包
 
 使用 SDK 包访问 API 有两种方式，shortcuts 或 ComponentClient。使用示例如下：
 

@@ -52,7 +52,7 @@
 
 ![-w1639](media/15645571501689.jpg)
 
-```plain
+```bash
 # Check
 ps -ef | grep -i mysqld
 netstat -ntlp | grep -i 3306
@@ -81,7 +81,7 @@ job_success "start mariadb succ"
 
 接下来将停止 MariaDB 进程，来验证是否可以自动启动进程，以恢复 DB 服务。
 
-```plain
+```bash
 # ps -ef | grep -i mysqld
 mysql      926     1  0 10:47 ?        00:00:00 /bin/sh /usr/bin/mysqld_safe --basedir=/usr
 mysql     1159   926  0 10:47 ?        00:00:09 /usr/libexec/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib64/mysql/plugin --log-error=/var/log/mariadb/mariadb.log --pid-file=/var/run/mariadb/mariadb.pid --socket=/var/lib/mysql/mysql.sock

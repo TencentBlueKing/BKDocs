@@ -16,7 +16,7 @@
 
 	假设组件名称为`oracle_exporter`，脚本参数为`--port=1521 --host=127.0.0.1`plainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
 
-```sh
+```bash
 cd /usr/local/gse/external_collector/oracle_exporter
 ./oracle_exporter --port=1521 --host=127.0.0.1
 ```

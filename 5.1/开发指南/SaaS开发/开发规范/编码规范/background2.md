@@ -54,7 +54,7 @@
 #### 2.2.1 示例
 
 对于用户的输入，我们有时并不是像场景1那样简单地显示在标签里，比如自动填充表单时，会用到
-```javascript
+```js
 $("#my_input").val("some_message");
 ```
 
@@ -69,7 +69,7 @@ $("#my_input").val("some_message");
 ```
 
 经过后端传到前端之后，前端代码变为
-```javascript
+```js
 $("#my_input").val('"><img src=x onerror=alert(1);>');
 ```
 
@@ -151,7 +151,7 @@ onerror=alert(1);/>` 查看展示部分是否被弹窗，以及业务功能是�
 #### 2.5.1 示例
 
 如下简单的三段代码就可以导致 script 提前闭合，user_variable 的渲染正式使用 mako 渲染的常见场景：
-```javascript
+```js
 <script>
     var user_variable = "</script>";
 </script>
@@ -343,7 +343,7 @@ mako 渲染时，将用户输入的信息在 python 中以 base64 的形式输�
 3. 域名务必限制在 `blueking.com`
 
 检测命令（仅供参考）
-```sh
+```bash
 ack "\\d+\\.\\d+\\.\\d+\\.\\d+" # 查找全部 IP
 
 ack "username"  # 查找指定用户名

@@ -365,7 +365,7 @@ class TestCustomComponent(Component):
 应该在 `{CUSTOM PLUGINS NAME}/tests/components/collections/plugins_test` 目录下为每个插件创建对应的文件并编写单元测试。
 另外，测试文件名应该为 `test_{code}.py`，`{code}` 为插件的唯一编码。
 
-单元测试编写指引请参考：[标准插件单元测试编写](./sops_test.md)。
+单元测试编写指引请参考：[标准插件单元测试编写](https://github.com/Tencent/bk-sops/blob/master/pipeline/docs/user_guide_component_unit_test.md)。
 
 
 ### 8. 标准插件功能测试

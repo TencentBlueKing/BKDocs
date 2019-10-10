@@ -19,7 +19,7 @@
 
 > 提示：由于解析指标和维度存在 Json 序列化过程，采集所在服务器上需要提前部署 jq （后续版本会优化）
 
-```plain
+```bash
  yum install jq -y  // CentOS部署jq参考方法
 ```
 
@@ -73,7 +73,7 @@
 ## 9. 常见问题
 - 问：如何一次插入多条数据？
 
-    答：你可以使用Shell的循环语句for、while等来一次上报多条数据，只要符合Shell语法即可。plainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
+    答：你可以使用Shell的循环语句for、while等来一次上报多条数据，只要符合Shell语法即可。
 ![edit_shellscript_while](../../media/edit_shellscript_while.png)
 
 - 问：脚本下发到服务器上后，存放在哪里？

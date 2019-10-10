@@ -1,6 +1,6 @@
 # Kafka 常见问题
 
-## kafka 常用操作
+## Kafka 常用操作
 
 Kakfa 查询 topic
 
@@ -26,7 +26,7 @@ $ /data/bkce/service/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafk
 $ /data/bkce/service/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafka.service.consul:9092 --topic connect-configs.etl --from-beginning | head
 ```
 
-## kafka broker 节点缺失
+## Kafka broker 节点缺失
 
 若社区版为 3 台部署的，必须返回[1, 2, 3]才正常，示例如下
 若brokers ids不为[1, 2, 3]，可能存在`/data/bkce/public/kafka/.lock`文件，有的话，删除此文件，再重新使用`./bkcec stop kafka`和`./bkcec start kafka`重启kafka，重启完再次确认状态
@@ -78,9 +78,9 @@ $ WARNING: Altering topic configuration from this script has been deprecated and
 $ updated config for topic "snapshot2"
 ```
 
-## kafka gse_data 报错
+## Kafka gse_data 报错
 
-在 gse 的模块 gse_data 的日志中，会出现有如下报错，这种是 kafka 消息机制的正常行为，只要确定快照数据 OK，就可确认`gse_data->kafka->bkdata_>cmdb`的链路正常
+在 gse 的模块 gse_data 的日志中，会出现有如下报错，这种是 Kafka 消息机制的正常行为，只要确定快照数据 OK，就可确认`gse_data->kafka->bkdata_>cmdb`的链路正常
 
 ```bash
      52 [2018-08-23 16:47:05.109] <11297--805308672>[ERROR][kafka_producer:18]KAFKA-3-ERROR: rdkafka#producer-15 10.X.X.X:9092/1: Receive failed: Disconnected

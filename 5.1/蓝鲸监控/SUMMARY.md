@@ -34,7 +34,7 @@
         * [配置采集上报](快速入门/组件监控/component_collect.md)
         * [视图查看](快速入门/组件监控/component_monitor_view.md)
         * [策略配置](快速入门/组件监控/component_monitor_config.md)
-        * [告警自动化处理](快速入门/组件监控/Component_Monitor_Fault_Auto-recovery.m)
+        * [告警自动化处理](快速入门/组件监控/Component_Monitor_Fault_Auto-recovery.md)
         * [附录：组件导入]()
             * [常规组件导入](快速入门/组件监控/Import_Component.md)
             * [自定义组件采集导入教程](快速入门/组件监控/Write_Component.md)

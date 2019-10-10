@@ -20,7 +20,7 @@
   - 确定 cmdb，gse，gse_agent，zk，kafka 模块的状态是否正常，可以使用`./bkcec status XXX模块`来确认
 - **检查 cmdb 日志**
 
-```plain
+```
 检查/data/bkce/log/cmdb/cmdb_datacollection.INFO文件
 出现ccapi.go93] fail to get configure, will get again，表示不正常
 返回hostsnap.go:xxx] master check : iam still master，表示正常

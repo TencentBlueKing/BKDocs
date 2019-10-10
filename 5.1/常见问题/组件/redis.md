@@ -4,13 +4,13 @@
 
 > 如下指引，若无特殊说明，全部在中控机`/data/install`目录进行
 
-### 停止 redis
+### 停止 Redis
 
 ```bash
 ./bkcec stop redis
 ```
 
-### 修改 redis 密码
+### 修改 Redis 密码
 
 修改 globals.env 里的 REDIS_PASS 值，密码不要包含 [ ] / : @ ? 等特殊字符
 
@@ -32,7 +32,7 @@ echo bkdata fta gse job cmdb paas redis | xargs -n 1 ./bkcec render
 echo bkdata fta gse job cmdb paas | xargs -n 1 ./bkcec stop
 ```
 
-### 更新 zk 内 redis 密码
+### 更新 ZooKeeper 内 Redis 密码
 
 此步有 2 种方式，推荐方式 1
 

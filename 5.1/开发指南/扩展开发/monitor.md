@@ -1,6 +1,6 @@
-# 蓝鲸监控-Exporter开发
+# 蓝鲸监控 - Exporter 开发
 
-## 任务⼀： 开发⼀个⾃⼰的exporter
+## 任务⼀： 开发⼀个⾃⼰的 exporter
 
 ### 数据链路
 
@@ -56,22 +56,22 @@
 ```bash
 # metric:
 sample_metric1 12.47
-sample_metric2{partition="c:"} 0.44
+sample_metric2 {partition="c:"} 0.44
 ```
 
   其中：
 
   \#: 表示注释 sample_metric1 和 sample_metric2 表示指标名称
 
-  partition: 表示指标的作⽤维度，例如磁盘分区使⽤率,维度就是磁盘分区，即每个磁盘分区都有⼀个磁盘分区使⽤率的值
+  partition: 表示指标的作⽤维度，例如磁盘分区使⽤率，维度就是磁盘分区，即每个磁盘分区都有⼀个磁盘分区使⽤率的值
 
-  c: 表示维度的值，例如磁盘分区的C盘/D盘等 12.47 和 0.44 表示对应指标的值
+  c: 表示维度的值，例如磁盘分区的 C 盘 / D 盘等 12.47 和 0.44 表示对应指标的值
 
-##### Exporter开发
+##### Exporter 开发
 
 - 环境搭建：
 
-  - Golang安装
+  - Golang 安装
 
   - apt-get install git
 
@@ -84,10 +84,9 @@ sample_metric2{partition="c:"} 0.44
   - export GOPATH=`你的代码目录`
 
 
-  >不同系统安装介绍：https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/01.1.md
+  > 不同系统安装介绍：https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/01.1.md
 
 - Prometheus exporter 开发依赖库 ⾸先引⼊ Prometheus 的依赖库
-
 ```bash
 go get -v github.com/prometheus/client_golang/prometheus
 ```
@@ -96,185 +95,170 @@ go get -v github.com/prometheus/client_golang/prometheus
 
 1. 导⼊依赖模块 本例计划采集主机的内存和磁盘信息，因此引⼊以下依赖库
 
-```bash
-go get -v github.com/shirou/gopsutil
-go get -v github.com/go-ole/go-ole
-go get -v github.com/StackExchange/wmi
-go get -v github.com/golang/protobuf/proto
-go get -v golang.org/x/sys/unix
-```
-
+  ```bash
+  go get -v github.com/shirou/gopsutil
+  go get -v github.com/go-ole/go-ole
+  go get -v github.com/StackExchange/wmi
+  go get -v github.com/golang/protobuf/proto
+  go get -v golang.org/x/sys/unix
+  ```
 2. 新建⼀个 exporter 项⽬： ⼀个 exporter 只需要⼀个⽂件即可；在 GOPATH 下 src ⽬录下新建⼀个 test_exporter ⽬录和⼀个 test_exporter.go ⽂件: test_exporter.go ⽂件第⼀⾏必须写上 package main 可执⾏的命令必须始终使⽤ package main。
 
-```go
-package main
+  ```go
+  package main
 
-import (
-  "flag"
-  "github.com/prometheus/client_golang/prometheus"
-  "github.com/prometheus/client_golang/prometheus/promhttp"
-  "github.com/shirou/gopsutil/disk"
-  "github.com/shirou/gopsutil/mem"
-  "log"
-  "net/http"
-)
-```
+  import (
+    "flag"
+    "github.com/prometheus/client_golang/prometheus"
+    "github.com/prometheus/client_golang/prometheus/promhttp"
+    "github.com/shirou/gopsutil/disk"
+    "github.com/shirou/gopsutil/mem"
+    "log"
+    "net/http"
+  )
+  ```
 
 3. 定义 exporter 的版本（Version）、监听地址（listenAddress）、采集 url（metricPath）以及⾸⻚（landingPage）
 
-```go
-var (
-  Version = "1.0.0.dev"
-  listenAddress = flag.String("web.listen-address", ":9601", "Address to
-listen on for web interface and telemetry.")
-  metricPath = flag.String("web.telemetry-path", "/metrics", "Path under
-which to expose metrics.")
-  landingPage = []byte("<html><head><title>Example Exporter " + Version +
-  "</title></head><body><h1>Example Exporter " + Version + "</h1><p><a
-href='" + *metricPath + "'>Metrics</a></p></body></html>")
-)
-```    
+  ```go
+  var (
+    Version = "1.0.0.dev"
+    listenAddress = flag.String ("web.listen-address", ":9601", "Address to
+  listen on for web interface and telemetry.")
+    metricPath = flag.String ("web.telemetry-path", "/metrics", "Path under
+  which to expose metrics.")
+    landingPage = [] byte ("<html><head><title>Example Exporter" + Version +
+    "</title></head><body><h1>Example Exporter" + Version + "</h1><p><a
+  href='"+ *metricPath +"'>Metrics</a></p></body></html>")
+  )
+  ```
 
 4. 定义 Exporter 结构体
 
-```go
-type Exporter struct {
-  error prometheus.Gauge
-  scrapeErrors *prometheus.CounterVec
-}
-```
-
+  ```go
+  type Exporter struct {
+    error prometheus.Gauge
+    scrapeErrors *prometheus.CounterVec
+  }
+  ```
 5. 定义结构体实例化的函数 NewExporter
 
-```go
-func NewExporter() *Exporter {
-  return &Exporter{
- }
-}
-```
+  ```go
+  func NewExporter () *Exporter {return &Exporter {}
+  }
+  ```
 
 6. Describe 函数，传递指标描述符到 channel，这个函数不⽤动，直接使⽤即可，⽤来⽣成采集指标的描述信息。
 
-```go
-func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
-  metricCh := make(chan prometheus.Metric)
-  doneCh := make(chan struct{})
-  go func() {
-    for m := range metricCh {
-      ch <- m.Desc()
-    }
-    close(doneCh)
-  }()
-  e.Collect(metricCh)
-  close(metricCh)
-  <-doneCh
-}
-```
+  ```go
+  func (e *Exporter) Describe (ch chan<- *prometheus.Desc) {metricCh := make (chan prometheus.Metric)
+    doneCh := make (chan struct {})
+    go func () {
+      for m := range metricCh {ch <- m.Desc ()
+      }
+      close (doneCh)
+    }()
+    e.Collect (metricCh)
+    close (metricCh)
+    <-doneCh}
+  ```
 
 7. Collect 函数将执⾏抓取函数并返回数据，返回的数据传递到 channel 中，并且传递的同时绑定原先的指标描述符，以及指标的类型（Guage）；需要将所有的指标获取函数在这⾥写⼊。
 
-```go
-//collect函数，采集数据的⼊⼝
-func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
-  var err error
-  //每个指标值的采集逻辑，在对应的采集函数中
-  if err = ScrapeMem(ch); err != nil {
-    e.scrapeErrors.WithLabelValues("mem").Inc()
+  ```go
+  //collect 函数，采集数据的⼊⼝
+  func (e *Exporter) Collect (ch chan<- prometheus.Metric) {
+    var err error
+    // 每个指标值的采集逻辑，在对应的采集函数中
+    if err = ScrapeMem (ch); err != nil {e.scrapeErrors.WithLabelValues ("mem").Inc ()}
+    if err = ScrapeDisk (ch); err != nil {e.scrapeErrors.WithLabelValues ("disk").Inc ()}
   }
-  if err = ScrapeDisk(ch); err != nil {
-    e.scrapeErrors.WithLabelValues("disk").Inc()
-  }
-}
-```
+  ```
 
 8. 指标仅有单条数据，不带维度信息示例如下：
 
-```go
-func ScrapeMem(ch chan<- prometheus.Metric) error {
-  //指标获取逻辑，此处不做具体操作，仅仅赋值进⾏示例
-  mem_info, _ := mem.VirtualMemory()
-  //⽣成采集的指标名
-  metric_name := prometheus.BuildFQName("sys", "", "mem_usage")
-  //⽣成NewDesc类型的数据格式，该指标⽆维度，[]string{}为空
-  new_desc := prometheus.NewDesc(metric_name, "Gauge metric with
-    mem_usage", []string{}, nil)
-  //⽣成具体的采集信息并写⼊ch通道
-  metric_mes := prometheus.MustNewConstMetric(new_desc,
-    prometheus.GaugeValue, mem_info.UsedPercent)
-  ch <- metric_mes
-  return nil
-}
-```
+  ```go
+  func ScrapeMem (ch chan<- prometheus.Metric) error {
+    // 指标获取逻辑，此处不做具体操作，仅仅赋值进⾏示例
+    mem_info, _ := mem.VirtualMemory ()
+    // ⽣成采集的指标名
+    metric_name := prometheus.BuildFQName ("sys", "","mem_usage")
+    // ⽣成 NewDesc 类型的数据格式，该指标⽆维度，[] string {} 为空
+    new_desc := prometheus.NewDesc (metric_name, "Gauge metric with
+      mem_usage", [] string {}, nil)
+    // ⽣成具体的采集信息并写⼊ ch 通道
+    metric_mes := prometheus.MustNewConstMetric (new_desc,
+      prometheus.GaugeValue, mem_info.UsedPercent)
+    ch <- metric_mes
+    return nil
+  }
+  ```
 
 9. 指标有多条数据，带维度信息示例如下：
 
-```go
-func ScrapeDisk(ch chan<- prometheus.Metric) error {
-  fs, _ := disk.Partitions(false)
-  for _, val := range fs {
-    d, _ := disk.Usage(val.Mountpoint)
-    metric_name := prometheus.BuildFQName("sys", "", "disk_size")
-    new_desc := prometheus.NewDesc(metric_name, "Gauge metric with
-      disk_usage", []string{"mountpoint"}, nil)
-    metric_mes := prometheus.MustNewConstMetric(new_desc,
-      prometheus.GaugeValue, float64(d.UsedPercent), val.Mountpoint)
-    ch <- metric_mes
+  ```go
+  func ScrapeDisk (ch chan<- prometheus.Metric) error {fs, _ := disk.Partitions (false)
+    for _, val := range fs {d, _ := disk.Usage (val.Mountpoint)
+      metric_name := prometheus.BuildFQName ("sys", "","disk_size")
+      new_desc := prometheus.NewDesc (metric_name, "Gauge metric with
+        disk_usage", [] string {"mountpoint"}, nil)
+      metric_mes := prometheus.MustNewConstMetric (new_desc,
+        prometheus.GaugeValue, float64 (d.UsedPercent), val.Mountpoint)
+      ch <- metric_mes}
+    return nil
   }
-  return nil
-}
-```
+  ```
 
 10. 主函数
 
-```go
-func main() {
-  //解析定义的监听端⼝等信息
-  flag.Parse()
-  //⽣成⼀个Exporter类型的对象，该exporter需具有collect和Describe⽅法
-  exporter := NewExporter()
-  //将exporter注册⼊prometheus，prometheus将定期从exporter拉取数据
-  prometheus.MustRegister(exporter)
-  //接收http请求时，触发collect函数，采集数据
-  http.Handle(*metricPath, promhttp.Handler())
-  http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-    w.Write(landingPage)
-  })
-  log.Fatal(http.ListenAndServe(*listenAddress, nil))
-}
-```
+  ```go
+  func main () {
+    // 解析定义的监听端⼝等信息
+    flag.Parse ()
+    // ⽣成⼀个 Exporter 类型的对象，该 exporter 需具有 collect 和 Describe ⽅法
+    exporter := NewExporter ()
+    // 将 exporter 注册⼊ prometheus，prometheus 将定期从 exporter 拉取数据
+    prometheus.MustRegister (exporter)
+    // 接收 http 请求时，触发 collect 函数，采集数据
+    http.Handle (*metricPath, promhttp.Handler ())
+    http.HandleFunc ("/", func (w http.ResponseWriter, r *http.Request) {w.Write (landingPage)
+    })
+    log.Fatal (http.ListenAndServe (*listenAddress, nil))
+  }
+  ```
 
 11. 编译 Exporter
 
-```bash
-go build test_exporter.go
-./test_exporter
-```
+  ```bash
+  go build test_exporter.go
+  ./test_exporter
+  ```
 
-12. 运⾏起来后，访问http://127.0.0.1:9601/metrics即可验证
+12. 运⾏起来后，访问 http://127.0.0.1:9601/metrics 即可验证
 
   ⾄此 Exporter 开发完成，其中 8，9 两步中的函数是重点，⽬前仅仅写了⼀些数据进⾏示例，其中的监控指标获取数据就是该部分的主要功能，需要编写对应逻辑获取指标的值。
 
 
 ## 任务⼆： 制作⼀键导⼊包
 
-### exporter编译
+### exporter 编译
 
-蓝鲸监控 exporter 默认只⽀持64位机器运⾏ exporter。
+蓝鲸监控 exporter 默认只⽀持 64 位机器运⾏ exporter。
 
 #### linux 系统
 
 ```bash
 # 编译 windows exporter
 env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ./exporterwindows.exe test_exporter
-# test_exporter 为GOPATH下我们创建的⽬录名
+# test_exporter 为 GOPATH 下我们创建的⽬录名
 # 编译 linux exporter
 env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./exporter-linux
 test_exporter
 ```
 
-#### windows系统
+#### windows 系统
 
-```sh
+```bash
 # 编译 windows exporter
 SET CGO_ENABLED=0
 SET GOOS=windows
@@ -287,7 +271,7 @@ SET GOARCH=amd64
 go build -o ./exporter-linux test_exporter
 ```
 
-### exporter打包
+### exporter 打包
 
 - 上传的 exporter ⽂件限定为 zip 压缩包
 
@@ -306,7 +290,7 @@ go build -o ./exporter-linux test_exporter
 
 #### 指标项
 
-- 通常，Exporter上报的指标(metric)种类⾮常多，⽽⽤户只会关⼼其中⼀部分重要指标。因此⽤户需
+- 通常，Exporter 上报的指标 (metric) 种类⾮常多，⽽⽤户只会关⼼其中⼀部分重要指标。因此⽤户需
 要通过编写指标配置⽂件来配置⾃⼰关注的指标。同时，配置⽂件也决定了结果表的格式。
 
   `指标配置⽂件是 JSON 格式的⽂件`。
@@ -330,8 +314,7 @@ go build -o ./exporter-linux test_exporter
                 "monitor_type": "dimension",
                 "type": "string",
                 "name": "mountpoint",
-                "unit": "",
-                "description": "挂载点"
+                "unit": "","description":" 挂载点 "
             }
         ],
         "table_name": "disk",
@@ -355,19 +338,19 @@ go build -o ./exporter-linux test_exporter
 
 - 数据结构说明 ⾸先，最外层为列表，列表的每个元素为 Object，每个元素均代表⼀个结果表。 每个元素的字段说明和取值⻅下表：
 
-|字段名      |解释        |是否必填|取值                  |最⼤⻓度|
+| 字段名      | 解释        | 是否必填 | 取值                  | 最⼤⻓度 |
 |---         |---        |---    |---                   |---     |
-|table_name |结果表英⽂名 |是      | \^[a-zA-Z][a-zA-Z0-9_]*$ |15 |
-|table_desc| 结果表中⽂描述| 是|                           |15|
-|fields[].monitor_type| 字段类型 |是| 可选"metric"和"dimension"||
-|fields[].type |字段数据类型 |是| 可选"long","double"和"string"||
-|fields[].name |字段名称，不能超过50个字符 |是| \^[a-zA-Z][a-zA-Z0-9_]*$| 50|
-|fields[].unit| 字段单位，可空| 是|||
-|fields[].description| 字段描述| 是|| 15|
-|fields[].is_diff_metric| 是否为差值指标 |否| true 或 false||
+|table_name | 结果表英⽂名 | 是      | \^[a-zA-Z][a-zA-Z0-9_]*$ |15 |
+|table_desc| 结果表中⽂描述 | 是 |                           |15|
+|fields [].monitor_type| 字段类型 | 是 | 可选 "metric" 和 "dimension"||
+|fields [].type | 字段数据类型 | 是 | 可选 "long","double" 和 "string"||
+|fields [].name | 字段名称，不能超过 50 个字符 | 是 | \^[a-zA-Z][a-zA-Z0-9_]*$| 50|
+|fields [].unit| 字段单位，可空 | 是 |||
+|fields [].description| 字段描述 | 是 || 15|
+|fields [].is_diff_metric| 是否为差值指标 | 否 | true 或 false||
 
 
-#### 配置项（exporter启动参数配置）
+#### 配置项（exporter 启动参数配置）
 
 - ⼤多数 exporter 在启动时，需要提供额外的参数，如服务地址等。因此⽤户需要对启动所需参数项进⾏配置，在 exporter 启动时才能提供对应参数值。 参数配置⽂件是 JSON 格式的⽂件 。 配置项将直接体现在配置表单中。
 
@@ -380,7 +363,7 @@ go build -o ./exporter-linux test_exporter
         "mode": "collector",
         "type": "text",
         "name": "_exporter_url_",
-        "description": "采集URL",
+        "description": "采集 URL",
         "visible": false
     },
     {
@@ -396,11 +379,11 @@ go build -o ./exporter-linux test_exporter
 
 - 数据结构说明，⾸先，最外层为列表，列表的每个元素为 Object，每个元素均代表⼀个配置项。 每个元素的字段说明和取值⻅下表：
 
-|字段名|解释|是否必填| 取值 | 最大长度|
+| 字段名 | 解释 | 是否必填 | 取值 | 最大长度 |
 |---   |---|---    |---   |---     |
 |name| 配置名称，可空，为空时必须将该项置于首位 | 是 |  | 50 |
-|mode| 传参方式 | 是 | 可选"cmd"(命令行参数)，"env"(环境变量)或"collector"(_exporter_url_字段专用) | |
-|type | 数据类型 | 是 | 可选"text"，"password"或"file"(需要上传文件) |  |
+|mode| 传参方式 | 是 | 可选 "cmd"(命令行参数)，"env"(环境变量) 或 "collector"(_exporter_url_字段专用) | |
+|type | 数据类型 | 是 | 可选 "text"，"password" 或 "file"(需要上传文件) |  |
 |description| 配置描述 | 是 | | 50 |
 |default| 配置默认值，可空 | 是 | | |
 
@@ -463,15 +446,15 @@ go build -o ./exporter-linux test_exporter
 2. 不得出现相同文件名的文件，否则会报错
 
 
-|文件名|解释|
+| 文件名 | 解释 |
 |---  |--- |
 |exporter-linux | linux exporter 的二进制文件 （至少提供一种 exporter） |
 |exporter-windows.exe | windows exporter 的二进制文件 （至少提供一种 exporter）|
-|logo.png |组件 Logo，限定 PNG 格式|
-|description.md |组件描述，限定 Markdown 格式|
-|metrics.json |指标项配置文件，配置格式参见 [[指标配置文件]]  |
-|config_schema.json |配置项配置文件，配置格式参见 [[exporter 启动参数配置文件]] |
-|info.json |exporter 包信息，需要提供 name (必须)和 display_name (可选)|
+|logo.png | 组件 Logo，限定 PNG 格式 |
+|description.md | 组件描述，限定 Markdown 格式 |
+|metrics.json | 指标项配置文件，配置格式参见 [[指标配置文件]]  |
+|config_schema.json | 配置项配置文件，配置格式参见 [[exporter 启动参数配置文件]] |
+|info.json |exporter 包信息，需要提供 name (必须) 和 display_name (可选)|
 
 ### info.json
 
@@ -487,7 +470,7 @@ info.json 文件示例
 }
 ```
 
-字段名|含义
+字段名 | 含义
 ---|---
 name | 组件名称，唯一标识符，只能由字母和数字组成
 display_name | 组件显示名称
