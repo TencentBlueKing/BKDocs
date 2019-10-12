@@ -23,7 +23,9 @@
   (4)上传配置文件。
 
 ### 2.1 蓝鲸监控 Exporter 开发指引
+
 #### 2.1.1 Exporter 简介
+
 **Exporter 本质上就是将收集的数据，转化为对应的文本格式，并提供 http 接口，供蓝鲸监控采集器定期采集数据**
 
 #### 2.1.2 Exporter 基础
@@ -49,7 +51,7 @@ Counter 一个累加指标数据，这个值随着时间只会逐渐的增加，
 
 以下面得输出为例：
 
-```plain
+```bash
 # metric:
 sample_metric1 12.47
 sample_metric2{partition="c:"} 0.44
@@ -66,7 +68,7 @@ sample_metric2{partition="c:"} 0.44
 #### 2.2.1 依赖
 首先引入 Prometheus 的依赖库
 
-```plain
+```bash
 go get github.com/prometheus/client_golang/prometheus
 
 ```
@@ -78,7 +80,7 @@ go get github.com/prometheus/client_golang/prometheus
 
 
 (2)导入依赖模块
-```plain
+```go
 import (
 	"flag"
 	"log"
@@ -90,7 +92,7 @@ import (
 
 (3)定义 exporter 的版本（Version）、监听地址（listenAddress）、采集 url（metricPath）以及首页（landingPage）
 
-```plain
+```go
 var (
 	Version       = "1.0.0.dev"
 	listenAddress = flag.String("web.listen-address", ":9601", "Address to listen on for web interface and telemetry.")
@@ -102,7 +104,7 @@ var (
 
 (4)定义 Exporter 结构体
 
-```plain
+```go
 type Exporter struct {
 	error        prometheus.Gauge
 	scrapeErrors *prometheus.CounterVec
@@ -111,7 +113,7 @@ type Exporter struct {
 
 (5)定义结构体实例化的函数 NewExporter
 
-```plain
+```go
 func NewExporter() *Exporter {
 	return &Exporter{
 	}
@@ -120,7 +122,7 @@ func NewExporter() *Exporter {
 
 (6)Describe 函数，传递指标描述符到 channel，这个函数不用动，直接使用即可，用来生成采集指标的描述信息
 
-```plain
+```go
 func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 	metricCh := make(chan prometheus.Metric)
 	doneCh := make(chan struct{})
@@ -141,7 +143,7 @@ func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 
 (7)Collect 函数将执行抓取函数并返回数据，返回的数据传递到 channel 中，并且传递的同时绑定原先的指标描述符，以及指标的类型（Guage）；需要将所有的指标获取函数在这里写入。
 
-```plain
+```go
 //collect函数，采集数据的入口
 func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 	var err error
@@ -156,7 +158,7 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 ```
 
 (8)指标仅有单条数据，不带维度信息示例如下：
-```plain
+```go
 func ScrapeMem(ch chan<- prometheus.Metric) error {
 	//指标获取逻辑，此处不做具体操作，仅仅赋值进行示例
 	mem_usage := float64(60)
@@ -172,7 +174,7 @@ func ScrapeMem(ch chan<- prometheus.Metric) error {
 ```
 
 (9)指标有多条数据，带维度信息示例如下：
-```plain
+```go
 func ScrapeDisk(ch chan<- prometheus.Metric) error {
 	disks_mes := []interface{}{
 		map[string]interface{}{
@@ -200,7 +202,7 @@ func ScrapeDisk(ch chan<- prometheus.Metric) error {
 
 
 (10)主函数
-```plain
+```go
 func main() {
 	//解析定义的监听端口等信息
 	flag.Parse()
@@ -218,7 +220,7 @@ func main() {
 ```
 (11)编译 Exporter
 
-```plain
+```go
 go build test_exporter.go
 ```
 
@@ -261,7 +263,7 @@ go build test_exporter.go
 
 ![s1](../../media/s4.png)
 - 配置文件样例
-```plain
+```go
 [{
     "fields": [{
         "monitor_type": "metric",
@@ -315,7 +317,7 @@ go build test_exporter.go
 配置项将直接体现在配置表单中
 ![s1](../../media/s6.png)
 - 配置文件样例
-```plain
+```go
 [{
     "default": "http://localhost:9601/metrics",
     "mode": "collector",
@@ -418,7 +420,7 @@ go build test_exporter.go
 
 以上文件列表，有一个新的文件```info.json```
 info.json 文件示例
-```plain
+```go
 {
     "name":"example",
     "display_name":"example",

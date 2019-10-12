@@ -13,7 +13,7 @@
 
 - **QQ**：[800802001](http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDgwMjAwMV80NDMwOTZfODAwODAyMDAxXzJf)
 
-- **邮件**：contactus_bk#tencent.com
+- **邮件**：contactus_bk@tencent.com
 
 - **[我给故障自愈提需求](http://bk.tencent.com/s-mart/community/ask)**
 
