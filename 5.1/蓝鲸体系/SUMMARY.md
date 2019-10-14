@@ -9,6 +9,7 @@
     * [CO 领域](解决方案/co_intro.md)
 * [软件信息]()
     * [版本类别](软件信息/版本类别/version_cate.md)
+    * [产品简介](软件信息/版本类别/intro.md)
     * [版本差异](软件信息/版本差异/version_diff.md)
 * [技术支持](技术支持/support.md)
 * [生态合作]()
