@@ -15,7 +15,7 @@
 
 ### 1. 配置自动构建流水线
 
-![bk-ci-demo](media/bk-ci-demo.png)
+![bk-ci-demo](./media/bk-ci-demo.png)
 
 ### 2. 提交代码（Git Commit）验证
 
