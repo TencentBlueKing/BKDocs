@@ -220,6 +220,10 @@
 - 更新 PaaS
 
   ```bash
+  # 登录PaaS机器
+  mv /data/bkce/open_paas /data/bkce/open_paas_bak
+  
+  # 中控机执行
   ./bkcec install paas
   ./bkcec upgrade paas
   ./bkcec start paas
