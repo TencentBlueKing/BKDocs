@@ -209,7 +209,7 @@
   # MySQL机器执行
   cd /data/dbbak
   # 导入数据库
-  mysql --default-character-set=utf8mb4<bk_mysql_alldata.sql 2>err.log
+  mysql --default-character-set=utf8mb4<bk_mysql_alldata.sql
   # 中控机重新初始化MySQL
   ./bkcec initdata mysql
   ```
