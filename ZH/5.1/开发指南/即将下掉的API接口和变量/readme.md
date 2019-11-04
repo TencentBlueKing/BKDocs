@@ -72,6 +72,46 @@
 
 
 
+<table>
+    <tr>
+        <th>GSE接口</th>
+        <th>任务结果协议格式规范化</th>
+        <th>描述</th>
+    </tr>
+    <tr>
+        <td>getTaskRst</td>
+        <td rowspan="7">"规范化前  --> 规范化后 <br>
+			errcode  -> error_code<br>
+			errmsg -> error_msg<br>
+			starttime -> start_time<br>
+			endtime  -> end_time<br>
+			screenkey -> screen_key <br>
+			screenctx -> screen_all"
+		</td>
+        <td rowspan="7">
+            "GSE任务结果的协议字段中，<br>
+            将规范化前的key，转化为规范后的key
+        </td>
+    </tr>
+    <tr>
+        <td>getTaskDetailRst</td>
+    </tr>
+    <tr>
+        <td>getTaskInfo</td>
+    </tr>
+    <tr>
+        <td>getPushFileRst</td>
+    </tr>
+    <tr>
+        <td>getCopyFileRst</td>
+    </tr>
+    <tr>
+        <td>getProcStatus</td>
+    </tr>
+</table>
+
+
+
 ### JOB
 
 
