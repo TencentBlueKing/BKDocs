@@ -15,7 +15,7 @@
 
 - 熟悉一门脚本语言，如`Python`，本教程以`Python`为例
 
-- 了解 [蓝鲸 CMDB API](5.1/API文档/CC/README.md/)
+- 了解 [蓝鲸 CMDB API](5.1/API文档/CC/README.md)
 
 ## 操作步骤
 
