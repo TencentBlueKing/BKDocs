@@ -220,3 +220,4 @@
         * [查询任务分类统计总数](5.1/API文档/SOPS/query_task_count.md)
         * [设置周期任务是否激活](5.1/API文档/SOPS/set_periodic_task_enabled.md)
         * [开始执行任务](5.1/API文档/SOPS/start_task.md)
+* [即将下掉的 API 接口和变量](即将下掉的API接口和变量/readme.md)
