@@ -175,11 +175,11 @@ ajax 请求地址前缀，我们通过这个配置来拼接出 ajax 请求的前
 
 - 蓝鲸 SaaS 应用
   - 此配置默认值为 `account/get_user_info/`
-  - 通过 index.html（线上）或 index-dev.html（本地开发） 中的 [SITE_URL](config-explain.md#siteurl) 拼出完整的获取用户信息异步接口。
-  - 示例工程中，这个配置使用的是本地的 mock 接口，如需在本地开发时从后端获取异步数据，只需要把 index-dev.html 中的 [SITE_URL](config-explain.md#siteurl) 改成后端提供的地址即可。
+  - 通过 index.html（线上）或 index-dev.html（本地开发） 中的 `SITE_URL` 拼出完整的获取用户信息异步接口。
+  - 示例工程中，这个配置使用的是本地的 mock 接口，如需在本地开发时从后端获取异步数据，只需要把 index-dev.html 中的 `SITE_URL` 改成后端提供的地址即可。
 - 非蓝鲸 SaaS 应用
   - 此配置默认值为 `user`
-  - 本地开发时，通过 [AJAX_URL_PREFIX](#13-ajaxurlprefix) 拼出完整的获取用户信息异步接口。
+  - 本地开发时，通过 `AJAX_URL_PREFIX` 拼出完整的获取用户信息异步接口。
   - 示例工程中，这个配置使用的是本地的 mock 接口，如需在本地开发时从后端获取异步数据，修改 `${ROOT}/build/dev.env.js` 中的 `AJAX_URL_PREFIX` 值，然后重启本地 devserver 即可。
 - 如需修改此配置的值，修改 `${ROOT}/build/dev.env.js` 和 `${ROOT}/build/prod.env.js` 中的 `USER_INFO_URL` 值，然后重启本地 devserver 即可。
 
