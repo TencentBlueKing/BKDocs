@@ -1,8 +1,9 @@
-## 即将下线的 API 和变量
+# 即将下线的 API 和变量
+
+以下部分 API 预计于下一个版本下线（2020 年 6 月之后）。 
 
 
-
-### CMDB
+## CMDB
 
 | 要下线的 API                                   | 要下线 API 对应的地址                               | 替换使用地址                                                 |
 | ---------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
@@ -58,19 +59,7 @@
 
 
 
-### GSE
-
-| GSE接口          | 任务结果协议格式规范化                                       |
-| ---------------- | :----------------------------------------------------------- |
-| getTaskRst       | 规范化前 --> 规范化后     errcode -> error_code     errmsg -> error_msg     starttime -> start_time     endtime -> end_time     screenkey -> screen_key      screenctx -> screen_all |
-| getTaskDetailRst |                                                              |
-| getTaskInfo      |                                                              |
-| getPushFileRst   |                                                              |
-| getGetFileRst    |                                                              |
-| getCopyFileRst   |                                                              |
-| getProcStatus    |                                                              |
-
-
+## GSE
 
 <table>
     <tr>
@@ -112,7 +101,7 @@
 
 
 
-### JOB
+## JOB
 
 
 
