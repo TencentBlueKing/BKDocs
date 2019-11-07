@@ -104,135 +104,140 @@ go get -v github.com/prometheus/client_golang/prometheus
   ```
 2. 新建⼀个 exporter 项⽬： ⼀个 exporter 只需要⼀个⽂件即可；在 GOPATH 下 src ⽬录下新建⼀个 test_exporter ⽬录和⼀个 test_exporter.go ⽂件: test_exporter.go ⽂件第⼀⾏必须写上 package main 可执⾏的命令必须始终使⽤ package main。
 
-  ```go
-  package main
+```go
+import (
+	"flag"
+	"log"
+	"net/http"
 
-  import (
-    "flag"
-    "github.com/prometheus/client_golang/prometheus"
-    "github.com/prometheus/client_golang/prometheus/promhttp"
-    "github.com/shirou/gopsutil/disk"
-    "github.com/shirou/gopsutil/mem"
-    "log"
-    "net/http"
-  )
-  ```
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/shirou/gopsutil/disk"
+	"github.com/shirou/gopsutil/mem"
+)
+```
 
 3. 定义 exporter 的版本（Version）、监听地址（listenAddress）、采集 url（metricPath）以及⾸⻚（landingPage）
 
-  ```go
-  var (
-    Version = "1.0.0.dev"
-    listenAddress = flag.String ("web.listen-address", ":9601", "Address to
-  listen on for web interface and telemetry.")
-    metricPath = flag.String ("web.telemetry-path", "/metrics", "Path under
-  which to expose metrics.")
-    landingPage = [] byte ("<html><head><title>Example Exporter" + Version +
-    "</title></head><body><h1>Example Exporter" + Version + "</h1><p><a
-  href='"+ *metricPath +"'>Metrics</a></p></body></html>")
-  )
-  ```
+```go
+var (
+	Version       = "1.0.0.dev"
+	listenAddress = flag.String("web.listen-address", ":9601", "Address to listen on for web interface and telemetry.")
+	metricPath    = flag.String("web.telemetry-path", "/metrics", "Path under which to expose metrics.")
+	landingPage   = []byte("<html><head><title>Example Exporter" + Version + "</title></head><body><h1>Example Exporter" + Version + "</h1><p><ahref='" + *metricPath + "'>Metrics</a></p></body></html>")
+)
+```
 
 4. 定义 Exporter 结构体
 
-  ```go
-  type Exporter struct {
-    error prometheus.Gauge
-    scrapeErrors *prometheus.CounterVec
-  }
-  ```
+```go
+type Exporter struct {
+	error        prometheus.Gauge
+	scrapeErrors *prometheus.CounterVec
+}
+```
 5. 定义结构体实例化的函数 NewExporter
 
-  ```go
-  func NewExporter () *Exporter {return &Exporter {}
-  }
-  ```
+```go
+func NewExporter() *Exporter {
+	return &Exporter{}
+}
+```
 
 6. Describe 函数，传递指标描述符到 channel，这个函数不⽤动，直接使⽤即可，⽤来⽣成采集指标的描述信息。
 
-  ```go
-  func (e *Exporter) Describe (ch chan<- *prometheus.Desc) {metricCh := make (chan prometheus.Metric)
-    doneCh := make (chan struct {})
-    go func () {
-      for m := range metricCh {ch <- m.Desc ()
-      }
-      close (doneCh)
-    }()
-    e.Collect (metricCh)
-    close (metricCh)
-    <-doneCh}
-  ```
+```go
+func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
+	metricCh := make(chan prometheus.Metric)
+	doneCh := make(chan struct{})
+	go func() {
+		for m := range metricCh {
+			ch <- m.Desc()
+		}
+		close(doneCh)
+	}()
+	e.Collect(metricCh)
+	close(metricCh)
+	<-doneCh
+}
+```
 
 7. Collect 函数将执⾏抓取函数并返回数据，返回的数据传递到 channel 中，并且传递的同时绑定原先的指标描述符，以及指标的类型（Guage）；需要将所有的指标获取函数在这⾥写⼊。
 
-  ```go
-  //collect 函数，采集数据的⼊⼝
-  func (e *Exporter) Collect (ch chan<- prometheus.Metric) {
-    var err error
-    // 每个指标值的采集逻辑，在对应的采集函数中
-    if err = ScrapeMem (ch); err != nil {e.scrapeErrors.WithLabelValues ("mem").Inc ()}
-    if err = ScrapeDisk (ch); err != nil {e.scrapeErrors.WithLabelValues ("disk").Inc ()}
-  }
-  ```
+```go
+//collect 函数，采集数据的⼊⼝
+func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
+	var err error
+	// 每个指标值的采集逻辑，在对应的采集函数中
+	if err = ScrapeMem(ch); err != nil {
+		e.scrapeErrors.WithLabelValues("mem").Inc()
+	}
+	if err = ScrapeDisk(ch); err != nil {
+		e.scrapeErrors.WithLabelValues("disk").Inc()
+	}
+}
+```
 
 8. 指标仅有单条数据，不带维度信息示例如下：
 
-  ```go
-  func ScrapeMem (ch chan<- prometheus.Metric) error {
-    // 指标获取逻辑，此处不做具体操作，仅仅赋值进⾏示例
-    mem_info, _ := mem.VirtualMemory ()
-    // ⽣成采集的指标名
-    metric_name := prometheus.BuildFQName ("sys", "","mem_usage")
-    // ⽣成 NewDesc 类型的数据格式，该指标⽆维度，[] string {} 为空
-    new_desc := prometheus.NewDesc (metric_name, "Gauge metric with
-      mem_usage", [] string {}, nil)
-    // ⽣成具体的采集信息并写⼊ ch 通道
-    metric_mes := prometheus.MustNewConstMetric (new_desc,
-      prometheus.GaugeValue, mem_info.UsedPercent)
-    ch <- metric_mes
-    return nil
-  }
-  ```
+```go
+func ScrapeMem(ch chan<- prometheus.Metric) error {
+	// 指标获取逻辑，此处不做具体操作，仅仅赋值进⾏示例
+	mem_info, _ := mem.VirtualMemory()
+	// ⽣成采集的指标名
+	metric_name := prometheus.BuildFQName("sys", "", "mem_usage")
+	// ⽣成 NewDesc 类型的数据格式，该指标⽆维度，[] string {} 为空
+	new_desc := prometheus.NewDesc(metric_name, "Gauge metric with mem_usage", []string{}, nil)
+	// ⽣成具体的采集信息并写⼊ ch 通道
+	metric_mes := prometheus.MustNewConstMetric(new_desc,
+		prometheus.GaugeValue, mem_info.UsedPercent)
+	ch <- metric_mes
+	return nil
+}
+```
 
 9. 指标有多条数据，带维度信息示例如下：
 
-  ```go
-  func ScrapeDisk (ch chan<- prometheus.Metric) error {fs, _ := disk.Partitions (false)
-    for _, val := range fs {d, _ := disk.Usage (val.Mountpoint)
-      metric_name := prometheus.BuildFQName ("sys", "","disk_size")
-      new_desc := prometheus.NewDesc (metric_name, "Gauge metric with
-        disk_usage", [] string {"mountpoint"}, nil)
-      metric_mes := prometheus.MustNewConstMetric (new_desc,
-        prometheus.GaugeValue, float64 (d.UsedPercent), val.Mountpoint)
-      ch <- metric_mes}
-    return nil
-  }
-  ```
+```go
+func ScrapeDisk(ch chan<- prometheus.Metric) error {
+	fs, _ := disk.Partitions(false)
+	for _, val := range fs {
+		d, _ := disk.Usage(val.Mountpoint)
+		metric_name := prometheus.BuildFQName("sys", "", "disk_size")
+		new_desc := prometheus.NewDesc(metric_name, "Gauge metric with disk_usage", []string{"mountpoint"}, nil)
+		metric_mes := prometheus.MustNewConstMetric(new_desc,
+			prometheus.GaugeValue, float64(d.UsedPercent), val.Mountpoint)
+		ch <- metric_mes
+	}
+	return nil
+}
+```
 
 10. 主函数
 
-  ```go
-  func main () {
-    // 解析定义的监听端⼝等信息
-    flag.Parse ()
-    // ⽣成⼀个 Exporter 类型的对象，该 exporter 需具有 collect 和 Describe ⽅法
-    exporter := NewExporter ()
-    // 将 exporter 注册⼊ prometheus，prometheus 将定期从 exporter 拉取数据
-    prometheus.MustRegister (exporter)
-    // 接收 http 请求时，触发 collect 函数，采集数据
-    http.Handle (*metricPath, promhttp.Handler ())
-    http.HandleFunc ("/", func (w http.ResponseWriter, r *http.Request) {w.Write (landingPage)
-    })
-    log.Fatal (http.ListenAndServe (*listenAddress, nil))
-  }
-  ```
+```go
+func main() {
+	// 解析定义的监听端⼝等信息
+	flag.Parse()
+	// ⽣成⼀个 Exporter 类型的对象，该 exporter 需具有 collect 和 Describe ⽅法
+	exporter := NewExporter()
+	// 将 exporter 注册⼊ prometheus，prometheus 将定期从 exporter 拉取数据
+	prometheus.MustRegister(exporter)
+	// 接收 http 请求时，触发 collect 函数，采集数据
+	http.Handle(*metricPath, promhttp.Handler())
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write(landingPage)
+	})
+	log.Fatal(http.ListenAndServe(*listenAddress, nil))
+}
+```
 
 11. 编译 Exporter
 
-  ```bash
-  go build test_exporter.go
-  ./test_exporter
-  ```
+```bash
+go build test_exporter.go
+./test_exporter
+```
 
 12. 运⾏起来后，访问 http://127.0.0.1:9601/metrics 即可验证
 
