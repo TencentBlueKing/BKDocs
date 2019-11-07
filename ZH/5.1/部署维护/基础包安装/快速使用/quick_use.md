@@ -9,6 +9,7 @@
 ![添加业务](../../assets/add_business.png)
 
 - 在业务下新建集群以及模块。(蓝鲸业务不支持集群及模块操作)
+
 ![添加模块](../../assets/add_modul.png)
 
 **下述步骤需在节点管理完成后操作。**
@@ -24,10 +25,13 @@
 ## 安装 Agent
 
 - 在对应业务下安装主机 Agent。
+
 ![安装agent](../../assets/agent.png)
+
 ![成功安装agent](../../assets/success_agent.png)
 
 - Agent 安装成功后查看下采集器是否正常。
+
 ![](../../assets/agent_status.png)
 
 ## 执行作业
@@ -63,6 +67,7 @@
 ![新建定时作业](../../assets/job_Timeing.png)
 
     左侧导航栏选择【执行历史】查看定时作业执行情况。
+    
 ![定制作业执行情况](../../assets/Timejobsuccess.png)
 
 
@@ -74,6 +79,7 @@
 ![新建流程模版](../../assets/add_sops.png)
 
 - 新建并认领流程任务。
+
 ![新建](../../assets/add_sops_task.png)
 
 ![认领任务](../../assets/select_sops_task.png)
