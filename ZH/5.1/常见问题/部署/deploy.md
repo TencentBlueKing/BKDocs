@@ -35,7 +35,7 @@
  3.1.检查依赖服务是否正常 redis mongodb nginx gse zk 
  3.2.查看 cmdb-adminserver 日志（/data/bkce/logs/cmdb/）
 
-### 检查 cmd b 服务进程，参照下图
+### 检查 cmdb 服务进程，参照下图
 ```bash
 ./bkcec status cmdb
 
