@@ -16,7 +16,7 @@
     * [管控平台](平台/管控平台/gse.md)
     * [数据平台](平台/数据平台/bkdata.md)
     * [平台其他](平台/平台其他/platform_other.md)
-* [应用类常见问题]()
+* [SaaS 类常见问题]()
     * [CICDKit](SaaS/bk_cicdkit.md)
     * [SaaS 部署](SaaS/bk_saas_deploy.md)
     * [标准运维](SaaS/bk_gcloud.md)
