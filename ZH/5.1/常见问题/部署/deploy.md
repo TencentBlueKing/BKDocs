@@ -6,6 +6,7 @@
 
 ![](../assets/cmdb-31001.png)
 
+
 ```bash
 # 若服务装状态都是 RUNNING 则 
 ./bkcec status cmdb 
@@ -17,7 +18,7 @@ dig zk.service.consul
  
 - 检查 consul 服务是否正常
  
-- 检查三台服务器 resolv.conf  首行是否有配置 nameserver 127.0.0.1，如无，请添加
+- 检查三台服务器 resolv.conf  首行是否有配置 `nameserver 127.0.0.1`，如无，请添加
  
 - 重启或重装 consul 服务
  
@@ -28,12 +29,11 @@ dig zk.service.consul
 
 ```
 
-
 ### 若安装 consul 报错
  
-检查/data/src/service/consul/是否有这两个文件夹 bin ，conf；bin 文件夹下是否有文件
+检查`/data/src/service/consul/`是否有这两个文件夹 `bin ，conf`；`bin` 文件夹下是否有文件
 
-- 备份一下 src 下的.pip/pip.conf 文件，然后重新解压一下 bkce_src 安装包，继续检查是否有文件，如果还没有
+- 备份一下 src 下的`.pip/pip.conf` 文件，然后重新解压一下`bkce_src` 安装包，继续检查是否有文件，如果还没有
  
 - 解压时直接用 tar xf 包名，不要加-C，还没有文件去官网下载新包重新解压
  
@@ -41,27 +41,29 @@ dig zk.service.consul
  
 - 检查防火墙端口是否有开（8300，8301，8302）
  
-- 查看日志，登录所在机器的路径：/data/bkce/logs
+- 查看日志，登录所在机器的路径：`/data/bkce/logs`
 
-### cmdb-adminserver 服务状态 failed 
+### `cmdb-adminserver` 服务状态 failed 
 
- 检查依赖服务是否正常 redis mongodb nginx gse zk 
+ 检查依赖服务是否正常 `redis mongodb nginx gse zk` 
  
- 3.2.查看 cmdb-adminserver 日志（/data/bkce/logs/cmdb/）
+ 3.2.查看`cmdb-adminserver` 日志（/data/bkce/logs/cmdb/）
  
 
 ### 检查 cmdb 服务进程，参照下图
+
 ```bash
 ./bkcec status cmdb
 
 ```
+
 ![](../assets/cmdb-faq.png)
 
 
 
 ### cmdb-nginx 服务状态 failed 
 
-检查 yum info nginx 
+检查 `yum info nginx` 
  
  安装 epel yum 源, 重装 cmdb
 
@@ -77,7 +79,7 @@ dig zk.service.consul
 
 其他进程状态 EXIT，请前往 cmdb 所在服务器
 
-/data/bkce/logs/cmdb/目录下查看相应的日志
+`/data/bkce/logs/cmdb/`目录下查看相应的日志
 
 
 
@@ -93,7 +95,7 @@ dig zk.service.consul
 ./bkcec status appt 
 ```
 
-若是异常重启进程，启动失败需要查看日志详情/data/bkce/logs/paas_agent/
+若是异常重启进程，启动失败需要查看日志详情`/data/bkce/logs/paas_agent/`
 
 进程正常启动后再激活
 
@@ -147,23 +149,23 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 
 ### 启动报 "dataapi.service.consul start failed ERROR： init_snapshot_config"  
 
-启动 bkdata 报错：dataapi.service.consul start failed ERROR： init_snapshot_config (databus.tests.DatabusHealthTestCase) 
+启动 bkdata 报错：`dataapi.service.consul start failed ERROR： init_snapshot_config (databus.tests.DatabusHealthTestCase)`
+
 ![](../assets/bkdata-faq4.png)
 
 - 解决方案
 
-  登陆到 bkdata 机器（社区版 5.1 登陆到 databus 所在机器）查看 consul 配置是否生成 databus.json 配置。
+  登陆到`bkdata`机器（社区版 5.1 登陆到`databus`所在机器）查看`consul`配置是否生成`databus.json`配置。
     
     ```bash
-    /data/bkce/etc/consul.d/bkdata.json 
-  
+    ls /data/bkce/etc/consul.d/bkdata.json
     # 若无则重装consul
     ./bkcec stop consul
     ./bkcec install consul 1
     ./bkcec start consul
     ./bkcec status consul
   
-    # 登陆到databus所在机器查看
+    # 登陆到databus所在机器查看是否生成bkdata.json（社区版5.1为bkdata-databus.json，bkdata-dataapi.jsonbkdata-monitor.json）
     ls /data/bkce/etc/consul.d/bkdata.json
   
     # 启动 bkdata
@@ -173,10 +175,13 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 ## 部署 SaaS 常见问题
 
 **安装 saas-o 报错 KeyError: "name='bk_csrftoken', domain=None, path=None"**
+
 ![](../assets/saas-key.png)
 
 - 解决方案
+
 确认是否是在 PaaS 页面个人信息重置了密码后，但是 `globals.env` 文件没同步更新。 请在 `globals.env` 文件中更新重置后的密码后确认是否恢复正常。
+
 ```bash
 ./bkcec sync common
 ```
