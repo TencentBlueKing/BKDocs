@@ -33,11 +33,11 @@
 
 当用户将代码在本地运行，或者打开线上的 “开发框架” SaaS ，将会看到下图的界面。
 
-![](../../assets/framework.png)
+![](../../assets/framwork.png)
 
 为了最大程度降低开发难度，基于 “开发框架” 研发了 “开发样例”，即就是做了部分通过的功能。
 
-![](../../assets/frameexample.png)
+![](../../assets/framexample.png)
 
 - 统一登录鉴权模块：统一使用 PaaS 平台的 “用户管理” 和登录逻辑
 
