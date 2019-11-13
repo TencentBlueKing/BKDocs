@@ -271,7 +271,6 @@ Copy
 Copy
 ```
 
-示例 dataid=123
 
 ### 在 ZK_IP 上查看 dataid 对应的 topic
 
@@ -316,7 +315,6 @@ ls -l /data/bkce/public/gse/data/${datapid}*
 Copy
 ```
 
-Copyright © 腾讯蓝鲸 2012-2018 all right reserved，powered by 
 
 ## GSE 端口列表
 
