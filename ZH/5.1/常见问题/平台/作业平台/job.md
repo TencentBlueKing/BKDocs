@@ -85,11 +85,19 @@ JOB 对日志数据库表进行表分区， 并且要求 MYSQL 中启动事件�
 
     1.gse 或者 redis 进程状态异常。
     
-     gse redis 异常查看相应日志文件。/data/bkce/logs/gse/、/data/bkce/logs/redis。
+     gse或者redis 异常查看相应日志文件。/data/bkce/logs/gse/、/data/bkce/logs/redis。
        
     2.登陆至 gse server 模块所在机器上，`ps -ef |grep gse_agent` 确认该机器上成对出现 gse_agent 进程。如无，执行 `/usr/local/gse/agent/bin/gsectl start` 手动拉起 gse_agent。
 
     3.gse 和 redis 需要同在一台机器上部署。
+    
+    4.蓝鲸server端agent需确保正常
+      `ps -ef |grep gse_agent` 进程成对出现（gse所在机器）
+     ```bash
+     root     19467     1  0 Nov04 ?        00:00:00 ./gse_agent -f /usr/local/gse/agent/etc/agent.conf
+     root     19469 19467  0 Nov04 ?        00:08:05 ./gse_agent -f /usr/local/gse/agent/etc/agent.conf
+     ```
+
 
 ## JOB 平台错误代码
 
