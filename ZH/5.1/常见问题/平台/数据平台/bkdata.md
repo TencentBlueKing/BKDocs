@@ -134,11 +134,12 @@ grep -nE port /data/bkce/bkdata/databus/conf/tsdb.cluster.properties
 
 ## bkdata 常见问题排查
 
-- ZK 配置错误，数据无法发送
+- zookeeper 配置错误，数据无法发送
 - agent 制定 IP 有误，和 CMDB 无法管理
 - crontab 未设置，未启动定时同步 IP 到业务映射，导致监控无数据
 - consul 服务异常，导致 kafka 及其他 consul 模块无法解析
 - tsdb-proxy 未启动
 - RabbitMQ 密码错误，celery 启动失败
 - kafka broker 启动失败，或者节点缺失
-- cmdb 未启动，初始化 databpi 失败
+- cmdb 未启动，初始化 dataapi 失败
+- agent机器时间需要和蓝鲸server机器时间同步
