@@ -66,7 +66,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **devops(pm)：** 项目管理后台模块。
 
-- **harbor(api)：** 是蓝盾 BCS 容器服务查询 docker 镜像信息的中间件，目前只支持harbor镜像查询 ，后面有计划支持其他 docker 仓库( jfrog /腾讯云等）。
+- **harbor(api)：** 是蓝盾 bcs 容器服务查询 docker 镜像信息的中间件，目前只支持harbor镜像查询 ，后面有计划支持其他 docker 仓库( jfrog /腾讯云等）。
 
 - **harbor(server)：** Harbor 是 Vmware 公司开源的企业级 Docker Registry 管理项目。
 
@@ -188,7 +188,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
   - **install.config.bcs.sample** 完整的基础平台+bcs方案分布。
 
-  - **install.config.bcs.single.sample** 单机部署BCS模块分布示例。
+  - **install.config.bcs.single.sample** 单机部署bcs模块分布示例。
 
   - **install.config.new.sample**：部署 bcs 时使用。
 
