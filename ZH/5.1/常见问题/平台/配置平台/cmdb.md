@@ -2,7 +2,7 @@
 
 ## CMDB 无快照数据
 
-> 此文档描述 4.0 及以上的社区版的问题排查
+> 此文档描述 4.0至5.0的社区版的问题排查
 >
 > Windows 主机暂不支持快照数据
 
@@ -26,7 +26,7 @@
 返回hostsnap.go:xxx] master check : iam still master，表示正常
 检查cmdb_datacollection.ERROR文件，确认是否出现err:fail to connect zookeeper. err：lookup zk.service.consul等
 如果日志出现“subcribing channel 2_snapshot”后没有subChan Close，那么表明收数据协程正常工作
-如果上述条都正常，但没有”handle xx num mesg, routines xx“，说明通道里没数据，请到redis里 subscribe ${biz}_snapshot 确认通道是否没数据，参考如下检查redis数据方法
+如果上述条都正常，但没有“handle xx num mesg, routines xx”，说明通道里没数据，请到redis里 subscribe ${biz}_snapshot 确认通道是否没数据，参考如下检查redis数据方法
 ```
 
 - **gse agent 采集端排查**
@@ -118,7 +118,7 @@ Reading messages... (press Ctrl-C to quit)
 
 ## CMDB 无主机信息
 
-**表象**：CMDB 内主机信息为空
+**表象**：CMDB 内主机自动发现信息为空
 
 **原因**
 
@@ -127,6 +127,6 @@ Reading messages... (press Ctrl-C to quit)
 
 **思路办法**
 
-原因 1：参考 GSE 数据初始化失败解决方法，需要更新 GSE 版本中的初始化程序文件 on_migrate 和 parse_bizid，路径`/data/bkce/gse/server/bin`
+1：参考 GSE 数据初始化失败解决方法，需要更新 GSE 版本中的初始化程序文件 on_migrate 和 parse_bizid，路径`/data/bkce/gse/server/bin/`
 
-原因 2：重装 gse_agent
+2：重装 gse_agent
