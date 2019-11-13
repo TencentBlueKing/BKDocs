@@ -47,7 +47,7 @@ dig zk.service.consul
 
  检查依赖服务是否正常 `redis mongodb nginx gse zk` 
  
- 3.2.查看`cmdb-adminserver` 日志（/data/bkce/logs/cmdb/）
+ 3.2.查看`cmdb_adminserver` 日志（/data/bkce/logs/cmdb/）
  
 
 ### 检查 cmdb 服务进程，参照下图
@@ -181,7 +181,7 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 - 解决方案
 
 确认是否是在 PaaS 页面个人信息重置了密码后，但是 `globals.env` 文件没同步更新。 请在 `globals.env` 文件中更新重置后的密码后确认是否恢复正常。
-
+同步配置信息
 ```bash
 ./bkcec sync common
 ```
