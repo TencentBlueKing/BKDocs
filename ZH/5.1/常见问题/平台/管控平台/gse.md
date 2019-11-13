@@ -51,7 +51,7 @@ migrate failed for gse (server)
 
 - 需确认 cmdb 的状态，包括 cmdb-nginx，确定`./bkcec status cmdb`结果里面`cmdb-nginx`的状态不是 EXIT
 
-- 测试`curl http://cmdb.service.consul`，是否有`502 Bad Gateway`错误返回
+- 测试`curl -v http://cmdb.service.consul`，是否有`502 Bad Gateway`错误返回
 
 - 检查失败时，生成在`/tmp/gse.tmp`的文件， 不能出现有`502 bad gateway`的错误提示，若出现，注意检查 cmdb 的 8029 端口是否 OK
 
@@ -105,7 +105,7 @@ Copy
 
 ## GSE agent 状态异常
 
-节点管理 app 或 Job 显示 agent 状态异常:
+节点管理 SaaS 或 Job 显示 agent 状态异常:
 
 1. 检查对应 ip 机器上的 gse_agent 进程是否正常 `ps -ef |grep gse_agent`
 2. 检查 gse_agent 的 48533 连接是否正常
