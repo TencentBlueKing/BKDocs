@@ -22,7 +22,7 @@
 
 用户的业务主机和蓝鲸系统所在的局域网或相同或不同，安装 Agent 程序的情况因此分为两种：
 
-## 直连区域安装 Agent
+### 直连区域安装 Agent
 
 当安装 Agent 的目标主机（操作系统可以为：Linux/Windows/Windows(Cygwin)/AIX）与蓝鲸系统中的 GSE Server，在同一局域网内（非跨云），受控主机能通过局域网建立与 GSE Server 的 TCP/UDP 链接，这种情况下，选择直连区域安装 Agent 。
 
@@ -43,7 +43,7 @@
 
 >**Note**：仅节点管理企业版支持 AIX 操作系统。
 
-## 非直连方式区域安装 Agent
+### 非直连方式区域安装 Agent
 
 当安装 Agent 的受控主机与 GSE Server 不在同一局域网，或网络上无法直连，需要通过 Proxy 建立网络联系时，这种情况下，需要先安装好 Proxy（数量为 1-2 台） , 然后执行安装 P-Agent 。
 
