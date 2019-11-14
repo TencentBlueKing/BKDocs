@@ -52,7 +52,8 @@
 ![](./media/34.png)
 
 **test.py 属性详解**：
-- `__group_name__` ：标准插件所属分类（一般是对应 API 的系统简称，如配置平台(CC)）
+
+- `__group_name__` ：标准插件所属分类（一般是对应 API 的系统简称，如配置平台(CMDB)）
 - `class TestCustomService(Service)` ：标准插件后台执行逻辑
 - `__need_schedule__` = True：是否是异步执行，默认为 False
 - `interval = StaticIntervalGenerator(5)` ：异步标准插件的轮询策略
