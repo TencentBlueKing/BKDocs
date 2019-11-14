@@ -68,7 +68,7 @@
     - 点击右边+号按钮，输入名称后，事件类型为调整到网页，输入跳转地址完成，
     - 点下右下方保存按钮后，发布即可，菜单会在 5 分钟内生效。
     - 菜单名称：审批列表
-    - 跳转链接: http://mycompany.com/o/bk_fta_solution/wechat/todo/
+    - 跳转链接: http://mycompany.com/o/bk_fta_solutions/wechat/todo/
 
 截图示例如下：
 ![Alt text](media/1495508805368.png)
@@ -79,7 +79,7 @@
 
 配置完 APP 后，才能发送审批消息，对于一些特殊处理的静态资源路径，API 路径，也需要在这里配置。
 
-- 入口：admin 页面：http://mycompany.com/o/bk_fta_solution/doc/wechat_config/。也可以通过后台 admin 页面右上角->微信审批配置进入。
+- 入口：admin 页面：http://mycompany.com/o/bk_fta_solutions/doc/wechat_config/。也可以通过后台 admin 页面右上角->微信审批配置进入。
 
 - 配置页面示例如下：
 
@@ -89,12 +89,12 @@
 
 - 微信端地址（外网可访问）：
 填写外网能访问的域名，url 到 wechat/结束，如上面的域名应该填写：
-> http://mycompany.com/o/bk_fta_solution/wechat/
+> http://mycompany.com/o/bk_fta_solutions/wechat/
 
 - 微信端静态资源地址（外网可访问）：
 默认即可，如果 nginx 做了路径映射，或者使用 CDN，需要填写绝对路径，如：
 > /static/wechat/ （默认）
-> http://mycompany.com/o/bk_fta_solution/static/wechat/ （绝对路径，适合 nginx 做了路径映射，或者 CDN 场景）
+> http://mycompany.com/o/bk_fta_solutions/static/wechat/ （绝对路径，适合 nginx 做了路径映射，或者 CDN 场景）
 
 - TOKEN 和 EncodingAESKey：
 TOKEN 对应第二步中，配置回调参数中的 Token。注意，如果这里修改，在上面配置也需要同步修改
