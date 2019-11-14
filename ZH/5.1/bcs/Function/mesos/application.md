@@ -288,10 +288,14 @@ bcs application 实现 Pod 的含义，并与 k8s 的 RC，Mesos 的 app 概念�
 gracePeriod：宽限期描述在强制 kill container 之前等待多久，单位秒。 默认为 1
 
 ### 1.2 RestartPolicy 机制
-    - policy：支持Never Always OnFailure三种配置(默认为OnFailure),OnFailure表示在失败的情况下重新调度,Always表示在失败和Lost情况下重新调度, Never表示任何情况下不重新调度plainplainplainplainplainplainplainplainplainplainplainplain
-    - interval: 失败后到执行重启的间隔(秒),默认为0
-    - backoff：多次失败时,每次重启间隔增加秒,默认为0.如果interval为5,backoff为10,则首次失败时5秒后重新调度,第二次失败时15秒后重新调度,第三次失败时25秒后重新调度
-    - maxtimes: 最多重新调度次数,默认为0表示不受次数限制.容器正常运行30分钟后重启次数清零重新计算
+
+- policy：支持Never Always OnFailure三种配置(默认为OnFailure),OnFailure表示在失败的情况下重新调度,Always表示在失败和Lost情况下重新调度, Never表示任何情况下不重新调度plainplainplainplainplainplainplainplainplainplainplainplain
+
+- interval: 失败后到执行重启的间隔(秒),默认为0
+    
+- backoff：多次失败时,每次重启间隔增加秒,默认为0.如果interval为5,backoff为10,则首次失败时5秒后重新调度,第二次失败时15秒后重新调度,第三次失败时25秒后重新调度
+    
+- maxtimes: 最多重新调度次数,默认为0表示不受次数限制.容器正常运行30分钟后重启次数清零重新计算
 
 ### 1.3 constraint 调度约束
 
