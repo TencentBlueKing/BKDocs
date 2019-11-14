@@ -30,5 +30,5 @@
 > - 若为 Linux：
 >   - 开通网络策略，允许从 APPO 所在机器 SSH 到目标机器(Linux/AIX)
 >   - 需要安装好 wget，curl 工具。或者可以使用 yum 或 apt 工具安装 wget，curl
-> 3. 若为 Windows：开通网络策略，允许 APPO 访问服务器的 139，445 端口
-> 4. Windows 必须使用 Administrator 账号，Linux 可以使用 root，或者可以免密 sudo 执行命令的用户
+> - 若为 Windows：开通网络策略，允许 APPO 访问服务器的 139，445 端口
+> - Windows 必须使用 Administrator 账号，Linux 可以使用 root，或者可以免密 sudo 执行命令的用户
