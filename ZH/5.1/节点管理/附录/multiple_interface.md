@@ -4,7 +4,7 @@
 
 ## 操作步骤
 
-1. 修改 `agent_setup.sh` (如果是通过 proxy 进行安装的则修改 `agent_setup_pro.sh` 方法同下)。
+1. 修改 `agent_setup.sh` (如果是通过 Proxy 进行安装的则修改 `agent_setup_pro.sh` 方法同下)。
 
 ```shell
 vim /data/install/agent_setup/download#agent_setup_pro.sh	# 使用 vim 搜索功能搜索 "get_lan_ip" 修改成如下
@@ -27,7 +27,7 @@ get_lan_ip () {
 
 
 
-3. 重新同步文件并安装 nginx。
+3. 重新同步文件并安装 Nginx。
 
    ```shell
    cd /data/install
