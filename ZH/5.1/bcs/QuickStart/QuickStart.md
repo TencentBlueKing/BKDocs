@@ -71,7 +71,7 @@
 - 在`deploy-nginx`应用详情页面查看`Host IP`，也就是接入层的 IP
 - 将链接 `http://HOST_IP/rumpetroll/?openid=is__superuser&token=tPp5GwAmMPIrzXhyyA8X` 中的 `HOST_IP`替换为接入层 IP(如下图红框部分)，访问即可体验
 
-![](assets/rumpetroll_game/nginx_app.jpg)
+![](../Function/assets/rumpetroll_game/nginx_app.jpg)
 
 您可以尝试：
 - 在线滚动升级小游戏
