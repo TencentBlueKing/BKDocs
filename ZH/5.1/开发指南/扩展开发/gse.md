@@ -533,7 +533,7 @@ output.console:
 
 有关采集器的目录配置
 
-**path**
+**Path**
 
 配置详情
 
