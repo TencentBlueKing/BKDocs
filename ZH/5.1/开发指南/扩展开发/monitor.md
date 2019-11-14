@@ -27,7 +27,7 @@
 
   4. 上传配置文件。
 
-#### exporter 开发
+#### Exporter 开发
 
 ##### Exporter 简介
 
