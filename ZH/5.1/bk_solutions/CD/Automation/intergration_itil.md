@@ -29,7 +29,7 @@
 
 ## 2. 开发环境初始化
 
-在开始开发之前，先把 [蓝鲸 SaaS 的开发环境](https://docs.bk.tencent.com/dev_saas/)准备好。
+在开始开发之前，先把 [蓝鲸 SaaS 的开发环境](5.1/开发指南/SaaS开发/新手入门/macOS.md)准备好。
 
 然后在 **标准运维项目根目录** 下执行 `Django-admin startapp custom_atoms` ，接着新建`components/collections` 和 `static/custom_atoms` 目录。
 
@@ -41,7 +41,7 @@
 
 ## 3. 接入 ESB API
 
-参照 [蓝鲸 API 网关开发指南](https://docs.bk.tencent.com/esb/)完成 ESB 接入，然后更新标准运维`bluking/component`下的文件。
+参照 [蓝鲸 API 网关开发指南](5.1/开发指南/扩展开发/API网关/README.md)完成 ESB 接入，然后更新标准运维`bluking/component`下的文件。
 
 ![](./media/33.png)
 
