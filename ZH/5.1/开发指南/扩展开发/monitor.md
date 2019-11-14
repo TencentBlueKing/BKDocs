@@ -12,7 +12,7 @@
 
 ![图片描述](./media/004.png)
 
-- 蓝鲸监控通过 job 部署 prometheus 社区的 exporter，对目标组件进行性能数据采集。接着 bkmetricbeat 从 exporter 上周期拉取性能数据并通过数据通道上报。
+- 蓝鲸监控通过 job 部署 prometheus 社区的 Exporter，对目标组件进行性能数据采集。接着 bkmetricbeat 从 Exporter 上周期拉取性能数据并通过数据通道上报。
 
 
 ### 自定义组件采集导入流程
@@ -86,7 +86,7 @@ sample_metric2 {partition="c:"} 0.44
 
   > 不同系统安装介绍：https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/01.1.md
 
-- Prometheus exporter 开发依赖库 ⾸先引⼊ Prometheus 的依赖库
+- Prometheus Exporter 开发依赖库 ⾸先引⼊ Prometheus 的依赖库
 ```bash
 go get -v github.com/prometheus/client_golang/prometheus
 ```
@@ -453,13 +453,13 @@ go build -o ./exporter-linux test_exporter
 
 | 文件名 | 解释 |
 |---  |--- |
-|exporter-linux | linux exporter 的二进制文件 （至少提供一种 exporter） |
-|exporter-windows.exe | windows exporter 的二进制文件 （至少提供一种 exporter）|
+|exporter-linux | Linux Exporter 的二进制文件 （至少提供一种 Exporter） |
+|exporter-windows.exe | Windows Exporter 的二进制文件 （至少提供一种 Exporter）|
 |logo.png | 组件 Logo，限定 PNG 格式 |
 |description.md | 组件描述，限定 Markdown 格式 |
 |metrics.json | 指标项配置文件，配置格式参见 [[指标配置文件]]  |
-|config_schema.json | 配置项配置文件，配置格式参见 [[exporter 启动参数配置文件]] |
-|info.json |exporter 包信息，需要提供 name (必须) 和 display_name (可选)|
+|config_schema.json | 配置项配置文件，配置格式参见 [[Exporter 启动参数配置文件]] |
+|info.json |Exporter 包信息，需要提供 name (必须) 和 display_name (可选)|
 
 ### info.json
 
