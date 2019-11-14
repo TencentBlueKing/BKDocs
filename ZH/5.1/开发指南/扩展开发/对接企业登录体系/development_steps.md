@@ -77,7 +77,7 @@ class OauthBackend(ModelBackend):
         return None
 ```
 
-### 3. 编写登录跳转等登录处理逻辑函数 {#function}
+### 3. 编写登录跳转等登录处理逻辑函数
 
 > 该函数需要处理 5 种情况：
 >     1. 企业登录票据不存在
