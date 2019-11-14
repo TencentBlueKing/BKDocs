@@ -1,7 +1,7 @@
-# 蓝鲸 Django 开发框结合 vue.js 框架项目
+# 蓝鲸 Django 开发框结合 Vue.js 框架项目
 
 
-## 1. 在蓝鲸 Django 开发框架新建一个 vue.js 前端工程项目
+## 1. 在蓝鲸 Django 开发框架新建一个 Vue.js 前端工程项目
 
 安装 node.js
 
@@ -487,7 +487,7 @@ npm run build
 
 这样直接访问 Django 项目就会返回这个 vue 单页应用入口文件。
 
-到这基本已经配置完成将代码提交到 gitlab 然后使用蓝鲸 paas 平台进行部署
+到这基本已经配置完成将代码提交到 gitlab 然后使用蓝鲸 PaaS 平台进行部署
 部署成功后打开 app 访问，并没有成功打开应用，显示的是一个空白页。
 
 ![](./pictures/056.png)
