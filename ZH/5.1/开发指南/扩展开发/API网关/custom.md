@@ -22,7 +22,7 @@
 
 - BUFFET_COMPONENTS: 自助接入 API 信息，对应管理端的自助接入
 
-### SYSTEM_DOC_CATEGORY{SYSTEM_DOC_CATEGORY}
+### SYSTEM_DOC_CATEGORY
 
 文档分类
 ```python
