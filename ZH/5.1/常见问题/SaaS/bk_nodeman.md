@@ -74,7 +74,7 @@ source utils.fc
 _add_app_token bk_nodeman $(app_token bk_nodeman)
 ```
 
-## 注册主机到 CMDB 失败: 0 行[[import_from]' 数据校验参数不通过
+## 注册主机到 CMDB 失败: 0 行[[import_from]' 数据校验参数不通过(社区版4.1及其之前版本)
 
 ![](../assets/15318845967497.jpg)
 
