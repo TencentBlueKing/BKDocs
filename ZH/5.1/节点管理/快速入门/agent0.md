@@ -8,14 +8,14 @@
 
 ![配置Nginx](../assets/配置Nginx-1.png)
 
-**Note：**
-
-- 配置包来源：
-  URL 用于在 Agent/Proxy 所在机器上下载对应的 Agent/Proxy/P-Agent 安装包。填写不含包名的 URL。 对于社区版/企业版， URL 通常是: `http://<NGINX_IP>:<NGINX_PORT>/download`。内网 URL 用于下载直连区域的包，外网 URL 用于下载云区域 ( Proxy 及 P-Agent 节点)的安装包。
-- 任务安装项目：
-  安装 Proxy 时，需要从 Nginx 所在机器下载 Linux、Windows、AIX 所需要的 Agent 安装包，约 150 - 180 M 大小, 若 Proxy 到 Nginx 之 间的网络带宽较小，容易超时。可以通过增大超时时间进行设置。
-- GSE Server 信息：
-  Agent/Proxy 启动后，会尝试连接 GSE, 直连区域通常内网 IP，非直连区域使用外网 IP，这里的内外网不是严格意义上的私有地址或公网地址，只要能让 Agent 连上的 IP 都可以。通常在 NAT 网络环境中需要注意使用 NAT 地址。
+> Note：
+>
+> - 配置包来源：
+>   URL 用于在 Agent/Proxy 所在机器上下载对应的 Agent/Proxy/P-Agent 安装包。填写不含包名的 URL。 对于社区版/企业版， URL 通常是: > >`http://<NGINX_IP>:<NGINX_PORT>/download`。内网 URL 用于下载直连区域的包，外网 URL 用于下载云区域 ( Proxy 及 P-Agent 节点)的安装包。
+> - 任务安装项目：
+>   安装 Proxy 时，需要从 Nginx 所在机器下载 Linux、Windows、AIX 所需要的 Agent 安装包，约 150 - 180 M 大小, 若 Proxy 到 Nginx 之 间的网络带宽较小，容易超时。可以通过增大超时时间进行设置。
+> - GSE Server 信息：
+>   Agent/Proxy 启动后，会尝试连接 GSE, 直连区域通常内网 IP，非直连区域使用外网 IP，这里的内外网不是严格意义上的私有地址或公网地址，只要能让 Agent 连上的 IP 都可以。通常在 NAT 网络环境中需要注意使用 NAT 地址。
 
 ## 直连区域安装 Agent
 
