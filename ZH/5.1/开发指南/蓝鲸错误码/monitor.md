@@ -5,33 +5,33 @@
 
 ## 自身服务出错
 ```
-1.#告警配置
-2.E01000 = ErrorCode("01000", u"告警配置异常：排查告警配置表")
-3.E01001 = ErrorCode("01001", u"告警配置异常，排查告警配置表 alarm_source")
-4.E01002 = ErrorCode("01002", u"告警配置异常，排查通知配置表 notice_config")
-5.E01003 = ErrorCode("01003", u"告警配置异常，排查收敛配置表 shield_config")
-6.E01004 = ErrorCode("01004", u"告警配置异常，排查自动处理配置表 solution_config")
-7.# collect
-8.E01010 = ErrorCode("01010", u"告警汇总模块异常，排查 collect 模块")
-9.# data_access
-10.E01020 = ErrorCode("01020", u"数据接入模块异常，排查 data_access 模块")
-11.# detect
-12.E01030 = ErrorCode("01030", u"异常检测模块异常，排查 detect 模块")
-13.# converge
-14.E01040 = ErrorCode("01040", u"告警收敛模块出错，排查 converge 模块")
+#告警配置
+E01000 = ErrorCode("01000", u"告警配置异常：排查告警配置表")
+E01001 = ErrorCode("01001", u"告警配置异常，排查告警配置表 alarm_source")
+E01002 = ErrorCode("01002", u"告警配置异常，排查通知配置表 notice_config")
+E01003 = ErrorCode("01003", u"告警配置异常，排查收敛配置表 shield_config")
+E01004 = ErrorCode("01004", u"告警配置异常，排查自动处理配置表 solution_config")
+# collect
+E01010 = ErrorCode("01010", u"告警汇总模块异常，排查 collect 模块")
+# data_access
+E01020 = ErrorCode("01020", u"数据接入模块异常，排查 data_access 模块")
+# detect
+E01030 = ErrorCode("01030", u"异常检测模块异常，排查 detect 模块")
+# converge
+E01040 = ErrorCode("01040", u"告警收敛模块出错，排查 converge 模块")
 ```
 ## 依赖第三服务出错
 ```
-1.E02010 = ErrorCode("02010", u"调用ESB出错，排查ESB服务")
-2.E02020 = ErrorCode("02020", u"数据模块查询异常，排查数据模块数据查询服务")
-3.E02030 = ErrorCode("02030", u"Ping告警格式错误，排查GSE SERVER服务")
+E02010 = ErrorCode("02010", u"调用ESB出错，排查ESB服务")
+E02020 = ErrorCode("02020", u"数据模块查询异常，排查数据模块数据查询服务")
+E02030 = ErrorCode("02030", u"Ping告警格式错误，排查GSE SERVER服务")
 ```
 
 ## 依赖基础服务出错
 ```
-1.E03010 = ErrorCode("03010", u"redis 服务出错，排查 redis 服务")
-2.E03020 = ErrorCode("03020", u"beanstalk 服务出错，排查 beanstalk 服务")
-3.E03030 = ErrorCode("03020", u"kafka  服务出错，排查 kafka 服务")
+E03010 = ErrorCode("03010", u"redis 服务出错，排查 redis 服务")
+E03020 = ErrorCode("03020", u"beanstalk 服务出错，排查 beanstalk 服务")
+E03030 = ErrorCode("03020", u"kafka  服务出错，排查 kafka 服务")
 ```
 
 >参考 PaaS 的做法
