@@ -665,13 +665,13 @@ ports 字段说明：
   
   * 检测方式:
   
-        *  Sends a GET request to scheme://<host>:port/path.
-        
-        *  Note that host is not configurable and is resolved automatically, in most cases to 127.0.0.1.
-        
-        *  Default executors treat return codes between 200 and 399 as success; custom executors may employ a different strategy, e.g. leveraging the `statuses` field.
-        
-        *  bcs executor 需要根据网络模式等情况再具体确认规则
+    *  Sends a GET request to scheme://<host>:port/path.
+
+    *  Note that host is not configurable and is resolved automatically, in most cases to 127.0.0.1.
+
+    *  Default executors treat return codes between 200 and 399 as success; custom executors may employ a different strategy, e.g. leveraging the `statuses` field.
+
+    *  bcs executor 需要根据网络模式等情况再具体确认规则
         
 * tcp： type 为 TCP 和 REMOTE_TCP 的情况下有效：
 
