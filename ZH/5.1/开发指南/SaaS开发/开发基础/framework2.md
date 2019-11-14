@@ -62,7 +62,7 @@
 在 config/\__init\__.py 可以查看 App 基本信息，请修改： APP_CODE 、SECRET_KEY （用于 App 认证）和 BK_URL (蓝鲸 SaaS 平台的 URL)。RUN_VER 是当前 App 运行的 PaaS 版本，请不要修改。
 
 - App 运行环境
-在 config/dev.py、config/stag.py、config/prod.py 中都有一个 RUN_MODE 的变量，用来标记 App 运营环境（DEVELOP：本地环境，STAGING：预发布环境，PRODUCT：正式环境），请不要修改。
+在 config/dev.py、config/stag.py、config/prod.py 中都有一个 RUN_MODE 的变量，用来标记 App 运行环境（DEVELOP：本地环境，STAGING：预发布环境，PRODUCT：正式环境），请不要修改。
 
 - 日志级别和路径
 开发框架默认配置的日志级别是 INFO，你可以在 config/default.py 修改 LOG_LEVEL 变量，会对所有运行环境生效，你也可以单独修改 config/dev.py、config/stag.py、config/prod.py 文件，详情请参考 “8. 日志使用”。
