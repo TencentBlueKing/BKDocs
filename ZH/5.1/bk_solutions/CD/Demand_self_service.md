@@ -61,7 +61,6 @@
 
 ![-w967](media/15642119684271.jpg)
 
-![qinyingyong_desktop](media/qinyingyong_desktop.png)
 
 点击`自助调角色`SaaS
 
