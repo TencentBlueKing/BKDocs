@@ -411,10 +411,11 @@ constraint 字段用于定义调度策略
 
 当容器指定 Ip 时，不同的 taskgroup 需要调度到特定的宿主机上面，宿主机的制定方式与 constraint 调度约束一致，如下是使用 InnerIp：
 
-io.tencent.bcs.netsvc.requestip.[i]: "10.168.1.1|InnerIp=10.158.49.13;10.158.49.12"
+* io.tencent.bcs.netsvc.requestip.[i]: "10.168.1.1|InnerIp=10.158.49.13;10.158.49.12"
 
 使用分隔符"|"分隔，"|"前面为容器 Ip，后面为需要调度到的宿主机 Ip，多个宿主机之间使用分隔符";"分隔，宿主机 Ip 支持正则表示式，方式如下：
-io.tencent.bcs.netsvc.requestip.[i]: "10.168.1.1|InnerIp=10.158.49.[12-25];10.158.48.[11-13]"
+
+* io.tencent.bcs.netsvc.requestip.[i]: "10.168.1.1|InnerIp=10.158.49.[12-25];10.158.48.[11-13]"
 
 ### 1.6 容器字段信息
 
