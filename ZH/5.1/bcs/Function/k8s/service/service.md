@@ -1,7 +1,7 @@
 # Kubernetes Service 说明
 
 
-Service 是 kubernetes(简称 k8s)的一种抽象：一个 Pod 的逻辑分组，一种可以访问它们的策略 —— 通常称为微服务。这一组 Pod 能够被 Service 访问到，通常是通过 Label Selector 实现。
+Service 是 kubernetes(简称 K8S)的一种抽象：一个 Pod 的逻辑分组，一种可以访问它们的策略 —— 通常称为微服务。这一组 Pod 能够被 Service 访问到，通常是通过 Label Selector 实现。
 
 ## 1. 模板示例
 ```yml
