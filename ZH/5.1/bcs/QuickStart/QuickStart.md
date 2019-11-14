@@ -30,7 +30,7 @@
     - 安装蓝鲸容器服务初始化包
     - 安装蓝鲸容器服务基础组件
 - Master 要求：
-    - 机器配置：至少 Cpu/内存为 4 核/8G
+    - 机器配置：至少 CPU/内存为 4 核/8G
     - 系统版本：CentOS 7 及以上系统（内核版本 3.10.0-693 及以上），推荐 CentOS 7.4
 
 
@@ -71,7 +71,7 @@
 - 在`deploy-nginx`应用详情页面查看`Host IP`，也就是接入层的 IP
 - 将链接 `http://HOST_IP/rumpetroll/?openid=is__superuser&token=tPp5GwAmMPIrzXhyyA8X` 中的 `HOST_IP`替换为接入层 IP(如下图红框部分)，访问即可体验
 
-![](../Function/assets/rumpetroll_game/nginx_app.jpg)
+![](assets/rumpetroll_game/nginx_app.jpg)
 
 您可以尝试：
 - 在线滚动升级小游戏
