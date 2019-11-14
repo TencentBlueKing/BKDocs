@@ -5,7 +5,7 @@
 
 # 前提条件
 
-- 掌握 [蓝鲸 SaaS 开发](5.1/开发指南/SaaS开发/新手入门/macOS.md)，打开 [腾讯运维开发实战课](https://bk.tencent.com/s-mart/community/question/440) 马上学习
+- 掌握 [蓝鲸 SaaS 开发](5.1/开发指南/SaaS开发/新手入门/macOS.md)，打开 [腾讯运维开发实战课](https://cloud.tencent.com/edu/learning/major-100008) 马上学习
 - 掌握 [蓝鲸 API 网关开发](5.1/开发指南/扩展开发/API网关/README.md)
 
 # 步骤
