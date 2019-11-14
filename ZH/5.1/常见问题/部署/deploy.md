@@ -43,7 +43,7 @@ dig zk.service.consul
  
 - 查看日志，登录所在机器的路径：`/data/bkce/logs`
 
-### `cmdb-adminserver` 服务状态 failed 
+`cmdb-adminserver` 服务状态 failed 
 
  检查依赖服务是否正常 `redis mongodb nginx gse zk` 
  
