@@ -1,6 +1,6 @@
 # 蓝鲸监控 - Exporter 开发
 
-## 任务⼀： 开发⼀个⾃⼰的 exporter
+## 任务一： 开发⼀个自己的 Exporter
 
 ### 数据链路
 
@@ -17,13 +17,13 @@
 
 ### 自定义组件采集导入流程
 
-- 蓝鲸监控当前支持使用 go 编写 exporter。
+- 蓝鲸监控当前支持使用 go 编写 Exporter。
 
-  1. 在社区找到适合自己的 exporter 或者编写新的 exporter。
+  1. 在社区找到适合自己的 Exporter 或者编写新的 Exporter。
 
   2. 将源码编译成二进制文件。
 
-  3. 将编译的 exporter 打成 zip 包
+  3. 将编译的 Exporter 打成 zip 包
 
   4. 上传配置文件。
 
@@ -102,7 +102,7 @@ go get -v github.com/prometheus/client_golang/prometheus
   go get -v github.com/golang/protobuf/proto
   go get -v golang.org/x/sys/unix
   ```
-2. 新建⼀个 exporter 项⽬： ⼀个 exporter 只需要⼀个⽂件即可；在 GOPATH 下 src ⽬录下新建⼀个 test_exporter ⽬录和⼀个 test_exporter.go ⽂件: test_exporter.go ⽂件第⼀⾏必须写上 package main 可执⾏的命令必须始终使⽤ package main。
+2. 新建⼀个 Exporter 项⽬： ⼀个 Exporter 只需要⼀个⽂件即可；在 GOPATH 下 src ⽬录下新建⼀个 test_exporter ⽬录和⼀个 test_exporter.go ⽂件: test_exporter.go ⽂件第⼀⾏必须写上 package main 可执⾏的命令必须始终使⽤ package main。
 
 ```go
 import (
@@ -117,7 +117,7 @@ import (
 )
 ```
 
-3. 定义 exporter 的版本（Version）、监听地址（listenAddress）、采集 url（metricPath）以及⾸⻚（landingPage）
+3. 定义 Exporter 的版本（Version）、监听地址（listenAddress）、采集 url（metricPath）以及⾸⻚（landingPage）
 
 ```go
 var (
@@ -246,9 +246,9 @@ go build test_exporter.go
 
 ## 任务⼆： 制作⼀键导⼊包
 
-### exporter 编译
+### Exporter 编译
 
-蓝鲸监控 exporter 默认只⽀持 64 位机器运⾏ exporter。
+蓝鲸监控 Exporter 默认只⽀持 64 位机器运⾏ Exporter。
 
 #### linux 系统
 
@@ -276,9 +276,9 @@ SET GOARCH=amd64
 go build -o ./exporter-linux test_exporter
 ```
 
-### exporter 打包
+### Exporter 打包
 
-- 上传的 exporter ⽂件限定为 zip 压缩包
+- 上传的 Exporter ⽂件限定为 zip 压缩包
 
 - 上传后，后台会读取相应的压缩包特定名称的⽂件，因此必须保证命名的准确性。读取的⽂件如
 下： exporter-linux : linux 采集器 exporter-windows.exe : windows 采集器
@@ -355,9 +355,9 @@ go build -o ./exporter-linux test_exporter
 |fields [].is_diff_metric| 是否为差值指标 | 否 | true 或 false||
 
 
-#### 配置项（exporter 启动参数配置）
+#### 配置项（Exporter 启动参数配置）
 
-- ⼤多数 exporter 在启动时，需要提供额外的参数，如服务地址等。因此⽤户需要对启动所需参数项进⾏配置，在 exporter 启动时才能提供对应参数值。 参数配置⽂件是 JSON 格式的⽂件 。 配置项将直接体现在配置表单中。
+- ⼤多数 Exporter 在启动时，需要提供额外的参数，如服务地址等。因此⽤户需要对启动所需参数项进⾏配置，在 Exporter 启动时才能提供对应参数值。 参数配置⽂件是 JSON 格式的⽂件 。 配置项将直接体现在配置表单中。
 
 - 配置文件样例
 
@@ -417,7 +417,7 @@ go build -o ./exporter-linux test_exporter
 
 - 填写组件名
 
-  1. 上传 exporter
+  1. 上传 Exporter
 
   2. 上传 metrics.json
 
@@ -443,7 +443,7 @@ go build -o ./exporter-linux test_exporter
 
 ## 自定义组件一键导入
 
-为了方便自己开发的组件采集 exporter 可以共享给更多的用户，蓝鲸监控支持一键导入。
+为了方便自己开发的组件采集 Exporter 可以共享给更多的用户，蓝鲸监控支持一键导入。
 已经添加成功的自定义组件，可以按照以下格式打成 zip 压缩包：
 
 1. 后台解析文件时，无视文件目录结构，直接扫描符合命名规则的文件
@@ -495,7 +495,7 @@ supported_version | 采集器支持版本，版本信息会显示在配置页面
 
 
 
-附件是一个样例 exporter 一键导入包，另外包含了打包好的 exporter 以及源码
+附件是一个样例 Exporter 一键导入包，另外包含了打包好的 Exporter 以及源码
 
 使用附件导入后，选择主机下发后，效果如下：
 
