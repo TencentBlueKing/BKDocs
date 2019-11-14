@@ -10,7 +10,7 @@
 ```bash
 # 若服务装状态都是 RUNNING 则 
 ./bkcec status cmdb 
-# 查看能否解析（非单机部署） dig 服务名.service.consul 解析异常处理方法：
+# 查看能否解析（非单机部署） dig 服务名 .service.consul 解析异常处理方法：
 dig zk.service.consul 
 ```
 
@@ -23,7 +23,7 @@ dig zk.service.consul
 - 重启或重装 consul 服务
  
 ```bash
-./bkcec stop consul  #(或在consul服务所在的三台主机，ps -ef |grep consul | awk '{print $2}'  |xargs kill -9)
+./bkcec stop consul  #(或在 consul 服务所在的三台主机，ps -ef |grep consul | awk '{print $2}'  |xargs kill -9)
 ./bkcec install consul 1
 ./bkcec start consul
 
@@ -31,11 +31,11 @@ dig zk.service.consul
 
 ### 若安装 consul 报错
  
-检查`/data/src/service/consul/`是否有这两个文件夹 `bin ，conf`；`bin` 文件夹下是否有文件
+检查 `/data/src/service/consul/` 是否有这两个文件夹 `bin ，conf`；`bin` 文件夹下是否有文件
 
 - 备份一下 src 下的`.pip/pip.conf` 文件，然后重新解压一下`bkce_src` 安装包，继续检查是否有文件，如果还没有
  
-- 解压时直接用 tar xf 包名，不要加-C，还没有文件去官网下载新包重新解压
+- 解压时直接用 tar xf 包名，不要加 -C，还没有文件去官网下载新包重新解压
  
 - 对比包的 md5 是否和官网一致
  
@@ -79,7 +79,7 @@ dig zk.service.consul
 
 其他进程状态 EXIT，请前往 cmdb 所在服务器
 
-`/data/bkce/logs/cmdb/`目录下查看相应的日志
+`/data/bkce/logs/cmdb/` 目录下查看相应的日志
 
 
 
@@ -88,14 +88,14 @@ dig zk.service.consul
 ![](../assets/saas-faq.png)
 
 
-该报错是激活 paas_agent 失败，需要查看的是 appo服务还是 appt服务
+该报错是激活 paas_agent 失败，需要查看的是 appo 服务还是 appt 服务
 
 ```bash
 ./bkcec status appo
 ./bkcec status appt 
 ```
 
-若是异常重启进程，启动失败需要查看日志详情`/data/bkce/logs/paas_agent/`
+若是异常重启进程，启动失败需要查看日志详情 `/data/bkce/logs/paas_agent/`
 
 进程正常启动后再激活
 
@@ -155,17 +155,17 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 
 - 解决方案
 
-  登陆到`bkdata`机器（社区版 5.1 登陆到`databus`所在机器）查看`consul`配置是否生成`databus.json`配置。
+  登陆到`bkdata`机器（社区版 5.1 登陆到 `databus` 所在机器）查看 `consul` 配置是否生成 `databus.json` 配置。
     
     ```bash
     ls /data/bkce/etc/consul.d/bkdata.json
-    # 若无则重装consul
+    # 若无则重装 consul
     ./bkcec stop consul
     ./bkcec install consul 1
     ./bkcec start consul
     ./bkcec status consul
   
-    # 登陆到databus所在机器查看是否生成bkdata.json（社区版5.1为bkdata-databus.json，bkdata-dataapi.jsonbkdata-monitor.json）
+    # 登陆到 databus 所在机器查看是否生成 bkdata.json（社区版 5.1 为 bkdata-databus.json，bkdata-dataapi.jsonbkdata-monitor.json）
     ls /data/bkce/etc/consul.d/bkdata.json
   
     # 启动 bkdata
