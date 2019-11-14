@@ -51,7 +51,7 @@ Kubenetes 容器编排的说明：
 
 Mesos 编排的具体说明：
 * Mesos 自身包括 Mesos Master 和 Mesos Slave 两大部分，其中 Master 为中心管理节点，负责集群资源调度管理和任务管理；Slave 运行在业务主机上，负责宿主机资源和任务管理。
-* Mesos 为二级调度机制，Mesos 本身只负责资源的调度，业务服务的调度需要通过实现调度器（图中 Scheduler）来支持，同时需实现执行器 Executor（Mesos 自身也自带有 executor）来负责容器或者进程的起停和状态检测上报等工作。
+* Mesos 为二级调度机制，Mesos 本身只负责资源的调度，业务服务的调度需要通过实现调度器（图中 Scheduler）来支持，同时需实现执行器 Executor（Mesos 自身也自带有 Executor）来负责容器或者进程的起停和状态检测上报等工作。
 * Mesos（Master 和 Slave）将集群当前可以的资源以 offer（包括可用 CPU、MEMORY、DISK、端口以及定义的属性键值对）的方式上报给 Scheduler，Scheduler 根据当前部署任务来决定是否接受 Offer，如果接受 Offer，则下发指令给 Mesos，Mesos 调用 Executor 来运行容器。
 * Mesos 集群数据存储在 ZooKeeper，通过 Datawatch 负责将集群动态数据同步到 BCS 数据中心。
 * Mesos Driver 负责集群接口转换。
