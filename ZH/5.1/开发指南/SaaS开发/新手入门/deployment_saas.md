@@ -1,13 +1,13 @@
 # 部署SaaS到测试/正式环境
 
-## 1 创建测试环境和正式环境数据库
+## 1. 创建测试环境和正式环境数据库
 
 准备 MySQL Server，创建测试环境和正式环境数据库，确保 `install.config` 中配置的 `appt` 和 `appt` 服务器可访问该 DB
 
 并修改 `config/prod.py` 和 `stag.py`
 
 
-## 2 提交代码到仓库
+## 2. 提交代码到仓库
 
 - 安装 [Git](https://www.git-scm.com/download/win)
 
@@ -27,7 +27,7 @@ git commit -m "add blueking framework2.0"
 git push -u origin master
 ```
 
-## 3 在开发者中心部署至测试环境和正式环境
+## 3. 在开发者中心部署至测试环境和正式环境
 
 - 测试环境部署
 
