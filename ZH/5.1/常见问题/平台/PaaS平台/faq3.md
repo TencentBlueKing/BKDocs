@@ -29,7 +29,7 @@ unset BK_ENV
 
 # appt 访问报 502 bad gateway
 
-- `http://paas.blueking.com/t/bk_framework/`访问报 502 错误，确认实际访问路径
+- `http://{PAAS_DOMAIN}/t/bk_framework/`访问报 502 错误，确认实际访问路径
 
 ```bash
 # 在paas.conf查到对应访问请求路径
@@ -42,7 +42,7 @@ upstream PAAS_AGENT_TEST {
 }
 ```
 
-- 在 paas 服务器上进行测试`curl http://10.178.181.35:8010`
+- 在 paas 服务器上进行测试`curl http://10.x.x.x:8010`
 
 ```bash
 [root@nginx-1 /data/bkee/etc/nginx]# curl http://10.x.x.x:8010
@@ -68,7 +68,7 @@ root     20934     1  0 Jul18 ?        00:00:00 nginx: master process nginx
 tcp        0      0 0.0.0.0:8010            0.0.0.0:*               LISTEN      20934/nginx: master
 ```
 
-- 重新测试，`http://paas.blueking.com/t/bk_framework/`访问 OK
+- 重新测试，`http://{PAAS_DOMAIN}/t/bk_framework/`访问 OK
 
 ```bash
 [root@nginx-1 ~]# curl http://10.X.X.X:8010
@@ -103,7 +103,7 @@ tcp        0      0 0.0.0.0:8010            0.0.0.0:*               LISTEN      
 ## 2. PaaS 变更
 
 - 登录 PaaS 服务器
-- 编辑 `open_paas/paas/conf/default.py` 中的`EVENT_STATE_EXPIRE_SECONDS`值
+- 编辑 `/data/bkce/open_paas/paas/conf/default.py` 中的`EVENT_STATE_EXPIRE_SECONDS`值
 - 重启 PaaS
 
 ### 如何确认 PaaS 部署正常
