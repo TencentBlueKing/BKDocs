@@ -4,7 +4,7 @@
 
 | 名字 | 版本号 | 大小 | 简介 | 操作 |
 |---|---|---|---|---|
-|Python开发框架 V2	| 2.2.1.18	| 1.1M	|蓝鲸 SaaS 统一 Python 开发框架 V2|	[下载](http://bkopen-1252002024.file.myqcloud.com/open/framework.tar.gz)
+|Python开发框架 V2	| 3.1.0.75	| 1.1M	|蓝鲸 SaaS 统一 Python 开发框架 V2|	[下载](http://bkopen-1252002024.file.myqcloud.com/open/framework.tar.gz)
 |组件模板	           | 1.0.0     |	2KB	|蓝鲸 ESB 服务编码模板	|[下载](http://bkdocument-1252002024.costj.myqcloud.com/hcp.tar.gz)
 |API网关	          | 1.0.0	    | 14KB|	API 网关组件开发模板	|[下载](http://bkopen-1252002024.file.myqcloud.com/paas/api_dev_template.tar.gz)
 |微信公众号H5	      | 1.0.0	    | 15KB	|微信公众号H5模板	|[下载](http://bkopen-1252002024.file.myqcloud.com/paas/framework_weixin_package.tar.gz)
