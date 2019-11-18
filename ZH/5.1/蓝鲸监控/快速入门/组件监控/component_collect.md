@@ -3,6 +3,7 @@
 组件采集流程分为四步：
 
 ![](../../media/component_collect.png)
+
 图 2. 采集流程
 
 以下以 Nginx 的性能指标采集为例：
