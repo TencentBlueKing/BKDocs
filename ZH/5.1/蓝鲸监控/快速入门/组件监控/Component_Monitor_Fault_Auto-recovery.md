@@ -32,10 +32,11 @@
 
 ## 3.1 蓝鲸监控传递执行IP
 
-> 在指标配置时维度必须包含IP、bk_cloud_id，如此监控才能传递执行IP
+> 在指标配置时维度必须包含IP、bk_cloud_id，如此监控才能传递[执行IP](5.1/FTA/Scenes/Solutions_Parameters.md)
 
 在仪表盘配置视图时，group by 添加 `IP`、`bk_cloud_id`
-![](../../media/15371902227574.jpg)F:\BlueKingDocsTest\5.1\FTA\Scenes\Solutions_Parameters.md
+![](../../media/15371902227574.jpg)
+
 图6.仪表盘配置视图添加维度
 
 在作业平台套餐中，默认勾选用`用告警IP替代作业执行IP`
