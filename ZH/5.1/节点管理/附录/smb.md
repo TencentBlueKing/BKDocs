@@ -1,4 +1,4 @@
-# Windows 开 139,445 端口
+# Windows 开 135,139,445 端口
 
 远程操作 Windows 是通过 Netbios 实现。也就是网上邻居功能.
 
