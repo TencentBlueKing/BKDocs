@@ -14,7 +14,7 @@
 
 **蓝鲸监控当前支持使用 go 编写 exporter。**
 
-  (1)在[ 社区 ](https://promet heus.io/docs/instrumenting/exporters/)找到适合自己的 exporter 或者编写新的 exporter。
+  (1)在[社区](https://prometheus.io/docs/instrumenting/exporters/)找到适合自己的 exporter 或者编写新的 exporter。
 
   (2)将源码编译成二进制文件。
 
