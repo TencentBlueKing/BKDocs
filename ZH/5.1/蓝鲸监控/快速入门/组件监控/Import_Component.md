@@ -13,7 +13,7 @@
 
 ## 2. 填写配置项
 
-填写蓝鲸采集器获取 prometheus exporter metrics 的访问地址的参数（下图中 1、2、3） 和 exporter 启动的运行参数（下图中 4、5）
+填写蓝鲸采集器获取 prometheus exporter metrics 的访问地址的参数（下图中步骤 1、2、3） 和 exporter 启动的运行参数（下图中步骤 4、5）
 ![](../../media/config_schema.jpg)
 上述参数请在组件采集器对应的 [S-mart](http://bk.tencent.com/s-mart/market)说明中获取。
 
