@@ -32,6 +32,6 @@
         * [GSE 与直连 Agent 之间需要的网络策略](附录/network_policy.md)
         * [Proxy 与 GSE 后台之间的网络策略](附录/network_policy_proxy.md)
         * [Proxy 与 P-Agent 之间需要的网络策略](附录/network_policy_pagent.md)
-    * [Windows 开 139,445 端口](附录/smb.md)
+    * [Windows 开 135,139,445 端口](附录/smb.md)
     * [多网卡配置](附录/multiple_interface.md)
     * [GSE 定时任务查看](附录/Agent_Status.md)
