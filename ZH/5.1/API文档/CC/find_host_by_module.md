@@ -175,6 +175,6 @@ info 字段说明:
 | 名称  | 类型  | 说明 |
 |---|---|---|---| 
 | biz | object array| 主机所属的业务信息 |
-| set| object array | 主机所属的集群信息 |
-| module| object array| 主机所属的模块信息 |
 | host| object | 主机自身属性|
+| module| object array| 主机所属的模块信息 |
+| set| object array | 主机所属的集群信息 |
