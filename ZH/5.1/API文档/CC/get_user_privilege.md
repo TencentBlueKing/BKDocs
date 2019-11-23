@@ -50,7 +50,7 @@ POST
     "result": true,
     "code": 0,
     "message": "",
-     "data": {
+    "data": {
         "bk_group_id":1,
         "sys_config":{
             "global_busi":[
@@ -75,6 +75,13 @@ POST
 ```
 
 ### 返回结果参数说明
+
+| 字段      | 类型      | 描述      |
+|-----------|-----------|-----------|
+| result    | bool      | 请求成功与否，true:请求成功，false:请求失败 |
+| code      | string    | 组件返回错误编码，0表示success，>0表示失败错误 |
+| message   | string    | 请求失败返回的错误消息 |
+| data      | object    | 请求返回的数据 |
 
 #### data
 
