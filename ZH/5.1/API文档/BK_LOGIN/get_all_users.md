@@ -55,7 +55,7 @@ GET
             "bk_username": "admin",
             "qq": "12345",
             "bk_role": 0,
-            "language": ""zh-cn,
+            "language": "zh-cn",
             "phone": "12345678911",
             "wx_userid": "",
             "email": "11@qq.com",
