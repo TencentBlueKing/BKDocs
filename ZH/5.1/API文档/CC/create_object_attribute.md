@@ -97,9 +97,9 @@ POST
     "result": true,
     "code": 0,
     "message": "",
-	"data": {
-		"id": 11142
-	}
+    "data": {
+	     "id": 11142
+    }
 }
 ```
 
