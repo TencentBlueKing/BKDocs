@@ -67,6 +67,13 @@ GET
 
 ### 返回结果参数说明
 
+| 字段      | 类型      | 描述      |
+|-----------|-----------|-----------|
+| result        | bool   | 请求成功与否，true:请求成功，false:请求失败 |
+| bk_error_code | string | 组件返回错误编码。0表示success，>0表示失败错误 |
+| bk_error_msg  | string | 请求失败返回的错误消息 |
+| data          | object | 请求返回的数据 |
+
 #### data
 
 | 名称  | 类型  | 描述 |
@@ -79,7 +86,7 @@ GET
 #### data 字段说明：
 
 | 名称  | 类型  | 描述 |
-|---|---|---|---|
+|---|---|------|
 | bk_module_name| string| 模块名 |
 | set_num| int | 所属集群个数 |
 | is_bind| int | 是否绑定 |
