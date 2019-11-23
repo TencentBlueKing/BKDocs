@@ -150,14 +150,14 @@ POST
 #### data 字段说明：
 
 | 名称  | 类型  | 描述 |
-|---|---|---|---|
+|---|---|------|
 | count| int| 请求记录条数 |
 | info| object array | record information |
 
 #### info 字段说明：
 
 | 名称  | 类型  | 描述 |
-|---|---|---|---|
+|---|---|------|
 | bk_supplier_account| string| 开发商ID |
 | bk_biz_id| int | 业务ID |
 | op_type| string | 操作类型 |
