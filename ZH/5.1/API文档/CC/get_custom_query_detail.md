@@ -93,7 +93,7 @@ GET
 #### data.info
 
 | 字段      |  类型     |  描述      |
-|-----------|------------|--------|------------|
+|-----------|------------|--------------------|
 | bk_obj_id |  string   | 对象名,可以为biz,set,module,host,object |
 | fields    |  array    | 查询输出字段 |
 | condition |  array    | 查询条件 |
