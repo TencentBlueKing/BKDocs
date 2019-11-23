@@ -111,7 +111,7 @@ POST
 #### data.info.info
 
 | 字段      |  类型     |  描述      |
-|-----------|------------|--------|------------|
+|-----------|------------|--------------------|
 | bk_obj_id |  string   | 对象名,可以为biz,set,module,host,object |
 | fields    |  array    | 查询输出字段 |
 | condition |  array    | 查询条件 |
@@ -119,7 +119,7 @@ POST
 #### data.info.info.condition
 
 | 字段      |  类型     |  描述      |
-|-----------|------------|--------|------------|
+|-----------|------------|--------------------|
 | field     |  string    | 对象的字段 |
 | operator  |  string    | 操作符, $eq为相等，$neq为不等，$in为属于，$nin为不属于 |
 | value     |  string    | 字段对应的值 |
