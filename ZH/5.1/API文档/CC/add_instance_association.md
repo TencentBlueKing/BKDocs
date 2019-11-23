@@ -3,19 +3,15 @@
 
 /api/c/compapi/v2/cc/add_instance_association/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
 新增模型实例之间的关联关系.
 
 ### 请求参数
-
 
 #### 通用参数
 
@@ -33,20 +29,17 @@ POST
 | metadata           | object     | Yes    | meta data             |
 | condition | string map     | Yes   | 查询条件 |
 
-
 metadata params
 
 | 字段                 |  类型      | 是否必填	   |  描述         |
 |---------------------|------------|--------|-----------------------------|
 | label           | string map     | Yes     |标签信息 |
 
-
 label params
 
 | 字段                 |  类型      | 是否必填	   |  描述         |
 |---------------------|------------|--------|-----------------------------|
 | bk_biz_id           | string      | Yes     | 业务id |
-
 
 condition params
 
