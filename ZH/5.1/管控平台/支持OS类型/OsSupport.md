@@ -20,4 +20,6 @@
 <tr><td>Win 7</td></tr>
 <tr><td rowspan="2">AIX (企业版)</td><td>AIX 6</td></tr>
 <tr><td>AIX 7</td></tr>
+<tr><td>linuxone</td><td>IBM Linuxone 64 位 </td></tr>
+<tr><td>linux-arm</td><td>华为arm服务器linux 64 位 </td></tr>
 </tbody></table>
