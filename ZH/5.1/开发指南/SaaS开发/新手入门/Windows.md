@@ -92,7 +92,7 @@ pip3 install -r requirements.txt
 #### 2.2 修改配置
 
 
-修改 config/\_\_init\_\_.py 中的 `APP_CODE` 和 `SECRET_KEY`
+修改 config/\_\_init\_\_.py 中的 `APP_CODE` 和 `SECRET_KEY`(应用TOKEN)
 
 - 修改 PaaS 地址
 
