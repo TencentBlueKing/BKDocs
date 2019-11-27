@@ -184,11 +184,11 @@ class MockBackend(ModelBackend):
         # 获取 User 类
         UserModel = get_user_model()
         # 初始化User对象 -> bkauth/models.py:User -> 从userinfo获取对应字段进行初始化
-        user = UserModel(username,
-                         display_name="mockadmin",
-                         email="mockadmin@mock.com",
-                         )
-
+        user = UserModel()
+        user.username = username
+        user.display_name = "mockadmin"
+        user.email = "mockadmin@mock.com"
+        
         # 同步用户到用户管理 sync to usermgr
         # 这里不做调用
         # ok, message = user.sync_to_usermgr()
