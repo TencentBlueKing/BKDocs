@@ -1,6 +1,5 @@
 # 产品架构
 
-是否需要添加产品后台逻辑说明
 
 ![Architecture](../media/product_Architecture_new.png)
 
