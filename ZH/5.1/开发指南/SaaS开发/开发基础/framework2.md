@@ -163,7 +163,7 @@ python manage.py runserver
 ```
 接着在浏览器访问 appdev.`{domain_name}` 就可以访问到项目首页了。
 
-![image-20190505204958140](../ 开发进阶 /pictures/usage-index.png)
+![image-20190505204958140](../开发进阶/pictures/usage-index.png)
 
 
 ## 3. 新建 application
