@@ -1,13 +1,15 @@
 # Summary
 
-## PaaS平台白皮书
+## PaaS平台
 * [产品简介](产品简介/README.md)
 * [术语解释](术语解释/Term.md)
 * [产品架构](产品架构图/Architecture.md)
 * [产品功能]()
     * [个人工作台](产品功能/PersonalWorkbench.md)
     * [个人中心](产品功能/PersonalCenter.md)
-    * [开发者服务](产品功能/开发者服务/DevServices.md)
+    * [开发者服务]()
+        * [服务概述](产品功能/开发者服务/DevServicesInfoCE.md)
+        * [基础功能](产品功能/开发者服务/DevServicesBaseCE.md)
     * [系统管理]()
         * [用户管理](产品功能/系统管理/UserManage.md)
         * [应用管理](产品功能/系统管理/SaaSManage.md)
