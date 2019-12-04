@@ -1,6 +1,6 @@
 # Summary
 
-## 蓝鲸容器管理平台白皮书
+## 蓝鲸容器管理平台
 * [产品简介](Introduction/README.md)
 * [术语解释](Concepts/Concepts_Terminology.md)
  * [产品特性](Function/features.md)
