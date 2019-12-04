@@ -1,0 +1,77 @@
+{
+	"title" : "",
+	"author" : "蓝鲸智云",
+	"description" : "",
+    "language" : "zh-hans",
+    "plugins": [
+     "-search",
+     "-lunr",
+     "search-plus",
+     "-sharing",
+     "sharing-plus",
+     "expandable-chapters-small",
+     "emphasize",
+     "tbfed-pagefooter",
+
+     "splitter",
+     "anchor-navigation-ex",
+     "copy-code-button",
+		 "anchors",
+     "baidu-tongji",
+     "highlight"
+    ],
+    "links" : {
+        "sidebar" : {
+            "蓝鲸文档中心" : "https://bk.tencent.com/docs/"
+        }
+    },
+    "pluginsConfig": {
+        "theme-default": {
+            "showLevel": true
+        },
+				
+				
+        "tbfed-pagefooter": {
+            "copyright": "Copyright © 腾讯蓝鲸 2012-2019",
+            "modify_label": "最后修订日期：",
+            "modify_format": "YYYY-MM-DD"
+        },
+        "anchor-navigation-ex": {
+            "showLevel": false,
+            "isRewritePageTitle": false,
+            "float": {
+                "showLevelIcon": false,
+                "level1Icon": "fa fa-hand-o-right",
+                "level2Icon": "fa fa-hand-o-right",
+                "level3Icon": "fa fa-hand-o-right"
+            }
+        },
+        "baidu-tongji": {
+            "token": "14c5bd7984f5b42602149d6faa02eeda"
+        },
+        "sharing": {
+            "douban": false,
+            "facebook": false,
+            "google": false,
+            "hatenaBookmark": false,
+            "instapaper": false,
+            "line": false,
+            "linkedin": false,
+            "messenger": false,
+            "pocket": false,
+            "qq": true,
+            "qzone": true,
+            "stumbleupon": false,
+            "twitter": false,
+            "viber": false,
+            "vk": false,
+            "weibo": true,
+            "whatsapp": false,
+            "all": [
+                "facebook", "google", "twitter",
+                "weibo", "qq", "linkedin",
+                "qzone", "douban"
+            ]
+        }
+    }
+}

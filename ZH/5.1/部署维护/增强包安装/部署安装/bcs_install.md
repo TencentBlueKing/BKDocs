@@ -28,7 +28,7 @@ yum -y install docker-ce
 
 ```bash
   ./bk_install bcs
-
+```
   步骤说明：
   1. 该步骤首先初始化容器环境，添加 docker yum 源并安装启动 docker。
 
@@ -47,7 +47,7 @@ yum -y install docker-ce
   8. 启动各服务进程。
 
   9. 安装 SaaS。
-```
+
 
 > 在启动 etcd 的步骤，可能卡住，出现这种情况时，按一次 `CTRL+C`。跳过
 

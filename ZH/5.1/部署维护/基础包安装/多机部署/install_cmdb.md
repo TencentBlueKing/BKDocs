@@ -66,7 +66,7 @@ ZooKeeper 在这里的用途是作为 CMDB 的服务发现组件：
 详解：
 
 1. 安装配置平台
-    - 安装依赖，从 `dependences.env` 里读取到 CMDB 依赖 Nginx。需要先 Yum 安装 nginx。
+    - 安装依赖，从 `dependences.env` 里读取到 CMDB 依赖 Nginx。需要先 Yum 安装 Nginx。
 
     - rsync 将 `src/cmdb`  拷贝到 `bkcec/` 下。
 

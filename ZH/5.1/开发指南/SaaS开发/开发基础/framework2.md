@@ -59,36 +59,42 @@
 ### 1.2 常用配置说明
 
 - App 基本信息
-在 config/\__init\__.py 可以查看 App 基本信息，请修改： APP_CODE 、SECRET_KEY （用于 App 认证）和 BK_URL (蓝鲸 SaaS 平台的 URL)。RUN_VER 是当前 App 运行的 PaaS 版本，请不要修改。
+
+在 config/_\_init__.py 可以查看 App 基本信息，请修改： APP_CODE 、SECRET_KEY （用于 App 认证）和 BK_URL (蓝鲸 SaaS 平台的 URL)。RUN_VER 是当前 App 运行的 PaaS 版本，请不要修改。
 
 - App 运行环境
+
 在 config/dev.py、config/stag.py、config/prod.py 中都有一个 RUN_MODE 的变量，用来标记 App 运行环境（DEVELOP：本地环境，STAGING：预发布环境，PRODUCT：正式环境），请不要修改。
 
 - 日志级别和路径
-开发框架默认配置的日志级别是 INFO，你可以在 config/default.py 修改 LOG_LEVEL 变量，会对所有运行环境生效，你也可以单独修改 config/dev.py、config/stag.py、config/prod.py 文件，详情请参考 “8. 日志使用”。
-你不需要关心线上运行环境的日志路径，这些开发框架已经自动帮你配置了；本地的日志放在和项目根目录同一级的 logs 目录下，以 APP_CODE 命名的文件夹中，其中 {APP_CODE}-django.log 是应用日志，{APP_CODE}-celery.log 是 celery 日志，{APP_CODE}-component.log 是组件日志，{APP_CODE}-mysql.log 是数据库日志。
+
+开发框架默认配置的日志级别是 INFO，你可以在 config/default.py 修改 LOG_LEVEL 变量，会对所有运行环境生效，你也可以单独修改 config/dev.py、config/stag.py、config/prod.py 文件，详情请参考 “ [7. 日志使用](#日志使用)”。
+开发框架已经自动帮你配置了线上运行环境的日志路径；
+本地的日志放在和项目根目录同一级的 logs 目录下，以 APP_CODE 命名的文件夹中，其中 {APP_CODE}-django.log 是应用日志，{APP_CODE}-celery.log 是 celery 日志，{APP_CODE}-component.log 是组件日志，{APP_CODE}-mysql.log 是数据库日志。
 
 - 数据库配置
+
 本地数据库配置请在 config/dev.py 修改 DATABASES 变量；多人合作开发建议在根目录下新建 local_settings.py 文件，并配置 DATABASES 变量，并且在版本控制中忽略 local_settings.py，这样的好处是防止多人合作开发时本地配置不一致导致代码冲突。
-你不需要关心线上线上运行环境的数据库配置，不过你可以线上运行环境通过 django.settings.DATABASES 获取数据库配置。
+线上运行环境的数据库配置不用自己配置，不过你可以线上运行环境通过 django.settings.DATABASES 获取数据库配置。
 
 
-## 2. 开发环境搭建（python）
+## 2. 开发环境搭建（Python）
 
-### 2.1 安装 python（3.6）
+### 2.1 安装 Python（3.6 以上）
 
-如果系统中已经安装有 Python2 版本，可以参考 Python 版本切换了解 Python3 与 Python2 并存的处理方案
+如果系统中已经安装有 Python2 版本，可以了解 Python3 与 Python2 并存的处理方案
 
 
-### 2.2 安装 Mysql（5.5 以上）
+### 2.2 安装 MySQL（5.5 以上）
 
+官方下载： [MySQL下载](https://dev.mysql.com/downloads/mysql/)
 
 ### 2.3 安装 setuptools、pip 和项目依赖
 
 > __注意__：安装 blueapps 需要使用蓝鲸 pypi 源，可以在 pip 配置文件中设置，也可以使用如下命令安装
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 
@@ -99,7 +105,7 @@ pip install -r requirements.txt
 
 ### 2.5 安装 celery（需要使用后台任务的项目）
 
-安装项目依赖时会自动安装 celery==3.1.25 和 django-celery==3.2.1。目前 celery 支持 redis、rabbitmq 作为任务的消息队列，推荐使用 redis。
+安装项目依赖时会自动安装 celery == 3.1.25 和 django-celery == 3.2.1。目前 celery 支持 redis、rabbitmq 作为任务的消息队列，推荐使用 redis。
 
 - mac 系统 redis 使用指南：
 安装指令 `brew install redis`；
@@ -163,22 +169,18 @@ python manage.py runserver
 ```
 接着在浏览器访问 appdev.`{domain_name}` 就可以访问到项目首页了。
 
-![image-20190505204958140](../ 开发进阶 /pictures/usage-index.png)
+![](../开发进阶/pictures/usage-index.png)
 
 
 ## 3. 新建 application
 
+- 在根目录下执行 django-admin startapp yourappname
 
-- 3.1 在根目录下执行 django-admin startapp yourappname
+- 进入 yourappname 目录，新增 urls.py
 
+- 编写逻辑代码和路由配置代码
 
-- 3.2 进入 yourappname 目录，新增 urls.py
-
-
-- 3.3 编写逻辑代码和路由配置代码
-
-
-- 3.4 把 yourappname 加入 config/default.py 的 INSTALLED_APPS 中
+- 把 yourappname 加入 config/default.py 的 INSTALLED_APPS 中
 
 
 ## 4. 定义 model
@@ -186,7 +188,7 @@ python manage.py runserver
 
 ### 4.1 在新建的 application 中 models.py 定义 model
 
-官方文档： [Django Models](https://docs.djangoproject.com/en/1.11/topics/db/models/)
+官方文档： [Django Models](https://docs.djangoproject.com/en/2.2/topics/db/models/)
 
 ### 4.2 生成数据库变更文件
 
@@ -215,7 +217,7 @@ __注意__：在把 yourappname 加入 config/default.py 的 INSTALLED_APPS 中�
 开发框架支持 Django、 Mako 两种模板渲染引擎，在 Django 工程下每个 App 维护自身的模板文件，以下以 APP_NAME 代表 Django APP 名称。
 
 
-### 5.1 Django 模板文件使用方式（这里不讨论具体的语法）
+### 5.1 Django 模板文件使用方式
 
 请将你的 Django 模板文件 xxx.html 放在 `PROJECT_ROOT/APP_NAME/templates/` 目录底下，建议在 templates 底下在加上一层目录，取名为 APP_NAME，即最终模板文件存放路径为 `PROJECT_ROOT/APP_NAME/templates/APP_NAME`，这是为了避免在寻找模板文件的时候，出现覆盖的情况。
 使用 Django 原生支持的 render 方法进行模板渲染。
@@ -286,6 +288,7 @@ context = {
 
 ```python
 STATIC_ROOT = os.path.join (BASE_DIR, 'staticfiles')
+```
 
 - 框架已配置全局有效的静态目录，可以将所有公共使用的静态资源放置于此。
 
@@ -298,13 +301,12 @@ STATICFILES_DIRS = (os.path.join (BASE_DIR, 'static'),
 
 ## 7. 日志使用
 
-- 日志相关配置方式复用 Django 的配置方式
-
-   https://docs.djangoproject.com/en/1.11/topics/logging/#using-logging
+- 日志相关配置方式复用 Django 的[配置方式](https://docs.djangoproject.com/en/2.2/topics/logging/#using-logging)
 
 ```python
+# 第一种方式
 import logging
-logger = logging.getLogger ('app')       # 普通日志
+logger = logging.getLogger ('app')             # 普通日志
 logger_celery = logging.getLogger ('celery')   # celery 日志
 logger.error ('log your info here.')
 
