@@ -68,7 +68,7 @@
 
 - 日志级别和路径
 
-开发框架默认配置的日志级别是 INFO，你可以在 config/default.py 修改 LOG_LEVEL 变量，会对所有运行环境生效，你也可以单独修改 config/dev.py、config/stag.py、config/prod.py 文件，详情请参考 “ [7. 日志使用](#日志使用)”。
+开发框架默认配置的日志级别是 INFO，你可以在 config/default.py 修改 LOG_LEVEL 变量，会对所有运行环境生效，你也可以单独修改 config/dev.py、config/stag.py、config/prod.py 文件，详情请参考本文 “7. 日志使用”。
 开发框架已经自动帮你配置了线上运行环境的日志路径；
 本地的日志放在和项目根目录同一级的 logs 目录下，以 APP_CODE 命名的文件夹中，其中 {APP_CODE}-django.log 是应用日志，{APP_CODE}-celery.log 是 celery 日志，{APP_CODE}-component.log 是组件日志，{APP_CODE}-mysql.log 是数据库日志。
 
@@ -113,7 +113,7 @@ pip3 install -r requirements.txt
 测试 redis 服务是否正常启动，`redis-cli` 尝试连接本地的 redis 服务。
 
 - windows 系统 redis 使用指南
-下载安装地址： https://github.com/MicrosoftArchive/redis/releases。
+下载安装地址： [https://github.com/MicrosoftArchive/redis/releases](https://github.com/MicrosoftArchive/redis/releases)。
 点击安装目录下的 redis-server.exe 启动 redis 服务。
 
 - 配置项（在 config/dev.py 文件中修改消息队列配置）
