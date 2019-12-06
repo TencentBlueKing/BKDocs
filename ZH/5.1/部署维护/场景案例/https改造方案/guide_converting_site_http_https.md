@@ -2,7 +2,7 @@
 
 **思路**
 
-1. `open_paas` nginx 配置 HTTPS。
+1. `open_paas` Nginx 配置 HTTPS。
 
 2. 内部接口     统一走 HTTP。
 
@@ -164,7 +164,7 @@ blueking/component/conf.py
 COMPONENT_SYSTEM_HOST = getatrr(settings,'BK_PAAS_INNER_HOST',settings.BK_PAAS_HOST)
 ```
 
-3. 本地开发: 例如 saas/ 脚本，依赖线上服务地址，务必将依赖地址改成 `https`，否则 `nginx` 会自动将 `http` 转 301 至 `https`，参数信息会丢失，导致请求异常。
+3. 本地开发: 例如 SaaS/ 脚本，依赖线上服务地址，务必将依赖地址改成 `https`，否则 `nginx` 会自动将 `http` 转 301 至 `https`，参数信息会丢失，导致请求异常。
 
 
 

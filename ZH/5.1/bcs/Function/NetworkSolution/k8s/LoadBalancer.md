@@ -17,7 +17,7 @@
 
 ### 2.1 Nginx Ingress Controller
 
-实际是创建了 2 个 Deploymengt
+实际是创建了 2 个 Deployment
 
 ```bash
 # kubectl get deploy -n dev

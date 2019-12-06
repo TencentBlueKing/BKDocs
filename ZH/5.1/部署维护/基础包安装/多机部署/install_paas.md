@@ -17,7 +17,7 @@ PaaS 平台依赖的组件和服务如下：
 蓝鲸整个平台的内部通信基础是 Consul，所以最先安装的开源组件是 Consul。
 
 ```bash
-./bkcec install consul   
+./bkcec install consul
 ./bkcec start consul
 ```
 

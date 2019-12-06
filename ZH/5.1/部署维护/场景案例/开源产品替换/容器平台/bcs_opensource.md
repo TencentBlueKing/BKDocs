@@ -1,4 +1,4 @@
-# 开源 bk-bcs-saas 替换社区版部署指南[基础版]
+# 开源 容器管理平台 替换社区版部署指南[基础版]
 
 ## 替换 bcs-cc
 
@@ -78,11 +78,11 @@
     ssh $DEVOPS_NAVIGATOR_IP
     mv /data/bkce/devops /data/bkce/devops_bak
     ssh $DEVOPS_PM_IP
-    mv /data/bkce/devops/pm /data/bkce/devops/pm_bak  
+    mv /data/bkce/devops/pm /data/bkce/devops/pm_bak
     ssh $BCS_CC_IP
     mv /data/bkce/bcs/cc /data/bkce/bcs/cc_bak
     ssh $BCS_WEB_CONSOLE_IP
-    mv /data/bkce/bcs/web_console /data/bkce/bcs/web_console_bak    
+    mv /data/bkce/bcs/web_console /data/bkce/bcs/web_console_bak
     ```
 
   - 更新 devops
@@ -100,7 +100,7 @@
     ```bash
     ./bkcec sync bcs
     ./bkcec install bcs
-    ./bkcec upgrade bcs  
+    ./bkcec upgrade bcs
     ./bkcec start bcs
     ./bkcec status bcs
     ```
