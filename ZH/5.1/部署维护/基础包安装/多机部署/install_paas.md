@@ -107,9 +107,9 @@ Nginx 通过 yum 命令从 epel 源里安装。
 
 详解：
 
-1.  yum 安装 nginx。
+1.  yum 安装 Nginx。
 
-2. 渲染 nginx 模板，并将 `/etc/nginx/nginx.conf` 软链到 `$INSTALL_PATH/etc/nginx.conf`。
+2. 渲染 Nginx 模板，并将 `/etc/nginx/nginx.conf` 软链到 `$INSTALL_PATH/etc/nginx.conf`。
 
 3. 创建 `$INSTALL_PATH/miniweb/download` 目录，并将 `/data/src/miniweb` 目录和 `/data/install/functions` 文件同步过去。供 Agent 安装时可以 HTTP 远程下载用。
 
