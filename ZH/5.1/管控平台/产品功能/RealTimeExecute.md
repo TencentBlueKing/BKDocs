@@ -4,9 +4,9 @@
 
 ## 支持的任务类型
 
-**命令类型**：支持 Linux 的 bash 命令、Windows 的 cmd 命令，支持各种自定义可执行文件格式程序的启动，支持各种解释性语言程序的执行。
+**命令类型**：支持 Linux 的 Bash 命令、Windows 的 CMD 命令，支持各种自定义可执行文件格式程序的启动，支持各种解释性语言程序的执行。
 
-**脚本类型**：支持 shell、python、powershell、perl、bat 等解释性语言脚本。
+**脚本类型**：支持 Shell、Python、PowerShell、Perl、Bat 等解释性语言脚本。
 
 ## 任务控制方式
 
