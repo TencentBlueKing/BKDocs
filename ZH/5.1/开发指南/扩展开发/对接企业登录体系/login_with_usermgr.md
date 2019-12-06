@@ -152,7 +152,7 @@ def login(request):
 
 #### 3.3 `ee_official_login/mock/backends.py`
 
-基于 django authentication backend, 具体可以参考 [官方文档](https://docs.djangoproject.com/en/1.8/topics/auth/customizing/)
+基于 django authentication backend, 具体可以参考 [官方文档](https://docs.djangoproject.com/en/2.2/topics/auth/customizing/)
 
 MockBakcned 中的逻辑是, 只用使用固定用户名密码才能登录成功
 
