@@ -10,4 +10,4 @@
 | 运维开发群 |  878501914 | SaaS 开发、标准运维、PaaS 平台等开源项目交流群 |
 | CMDB 开源群 |  305496802 | 蓝鲸配置平台开源项目交流群 |
 
-- 问答交流论坛: [https://bk.tencent.com/s-mart/](https://bk.tencent.com/s-mart/)
+- 问答交流论坛: [https://bk.tencent.com/s-mart/community](https://bk.tencent.com/s-mart/community)
