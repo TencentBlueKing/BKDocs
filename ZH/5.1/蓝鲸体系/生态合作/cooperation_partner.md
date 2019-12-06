@@ -43,5 +43,5 @@
 
   4）  每个季度腾讯蓝鲸会对认证工程师人数进行随机确认，发现欺瞒行为，视为违约。
 
-[蓝鲸企业版在线体验申请信息](http://bk.tencent.com/applyinfo/ee/)
-[蓝鲸智云合作伙伴申请]https://bk.tencent.com/cooperation_partner/
+### 合作伙伴申请
+[蓝鲸智云合作伙伴申请](https://bk.tencent.com/cooperation_partner/)
