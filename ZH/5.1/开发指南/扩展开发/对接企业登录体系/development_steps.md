@@ -166,7 +166,7 @@ def login(request):
 1. 检查 open_paas/login/ 是否有 ee_login 模块
 2. 若无，则添加 ee_login 模块
     - 创建 ee_login 目录
-    - 在 ee_login 目录下添加空文件 \__init__.py
+    - 在 ee_login 目录下添加空文件 \_\_init\_\_.py
     - 在 ee_login 目录下添加文件 settings_login.py，文件内容如下
 
 ```python
