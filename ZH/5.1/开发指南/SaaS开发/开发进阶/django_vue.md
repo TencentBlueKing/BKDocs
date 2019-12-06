@@ -7,7 +7,7 @@
 
 官方下载地址：
 
-> https://nodejs.org/en/download/
+> [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 
 根据自己的操作系统选择下载，演示机器为 Windows 系统，所有选择 Windows Installer 即可：
 
