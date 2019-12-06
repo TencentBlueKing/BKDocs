@@ -79,7 +79,7 @@ npm audit
 
 关于 npm audit 的介绍可以参考官方文档：
 
->https://docs.npmjs.com/cli/audit
+>[https://docs.npmjs.com/cli/audit](https://docs.npmjs.com/cli/audit)
 
 至此，准备工作完成， 尝试运行 vue 前端工程
 
@@ -97,7 +97,7 @@ npm run dev
 
 至于为什么这样修改，可以参考 vue-router 的官方文档:
 
-> https://router.vuejs.org/zh/guide/essentials/history-mode.html
+> [https://router.vuejs.org/zh/guide/essentials/history-mode.html](https://router.vuejs.org/zh/guide/essentials/history-mode.html)
 
 修改后再重新访问
 
@@ -164,7 +164,7 @@ INSTALLED_APPS += (
 
 这里的 api 为了做一个简单的演示没有做用户鉴权的处理，rest_framework 提供了对 api 视图做用户权限认证的某块具体用法可以参考：
 
-> https://q1mi.github.io/Django-REST-framework-documentation/tutorial/4-authentication-and-permissions_zh/
+> [https://q1mi.github.io/Django-REST-framework-documentation/tutorial/4-authentication-and-permissions_zh/](https://q1mi.github.io/Django-REST-framework-documentation/tutorial/4-authentication-and-permissions_zh/)
 
 视图层写好后需要配置 url 路由
 首先在 app 目录下新建 urls.py,并配置该 api 视图的路由  
@@ -227,7 +227,7 @@ HelloWolrd组件代码
 如果这个过程完全搞懂了那么就可以开始开发自己的 vue 组件，然后在 App.vue 入口组件中使用自己开发的组件来完成单页应用的开发。蓝鲸 magicbox 也提供了一套非常好用的 vue 组件库利用蓝鲸的 vue 组件库非常的方便，可以省去很多的开发前端的时间。
 
 蓝鲸magicbox地址：
-> https://magicbox.bk.tencent.com/
+> [https://magicbox.bk.tencent.com/](https://magicbox.bk.tencent.com/)
 
 ![](./pictures/027.png)
 
@@ -266,7 +266,7 @@ HelloWolrd组件代码
 
 需要学习 axios 的更多用法可以去看官方文档:
 
-> https://www.npmjs.com/package/axios
+> [https://www.npmjs.com/package/axios](https://www.npmjs.com/package/axios)
 
 安装 axios 。
 
