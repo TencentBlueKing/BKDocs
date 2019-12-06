@@ -31,7 +31,8 @@ bkui
 
 ### 帮助
 
-在 `BKUI-CLI` 的每条命令 `<command>` 后面加上 `-h` 或者 `--help` 参数 `[options]`，会显示当前命令的帮助。**接下来我们详细介绍 `BKUI-CLI` 的每条命令以及参数**。
+在 `BKUI-CLI` 的每条命令 `<command>` 后面加上 `-h` 或者 `--help` 参数 `[options]`，会显示当前命令的帮助。
+**接下来我们详细介绍 `BKUI-CLI` 的每条命令以及参数**。
 
 ## bkui -h 命令
 
