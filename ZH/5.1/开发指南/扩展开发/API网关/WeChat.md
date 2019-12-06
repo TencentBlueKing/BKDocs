@@ -61,9 +61,9 @@ js.aq.qq.com
 
 ## 入口说明
 
-- 微信公众号： https://mp.weixin.qq.com/
+- 微信公众号： [https://mp.weixin.qq.com/](https://mp.weixin.qq.com/)
 
-- 微信企业号/企业微信：https://work.weixin.qq.com/
+- 微信企业号/企业微信：[https://work.weixin.qq.com/](https://work.weixin.qq.com/)
 
 - 蓝鲸微信组件配置入口： http://{paas_domain}/esb/manager/index/ , 通道管理 → 找到通道名称为“发送微信消息”的组件 → 组件配置
 
