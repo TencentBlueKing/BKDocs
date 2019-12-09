@@ -11,7 +11,7 @@
  - Agent 所在机器可以访问到 Proxy 的端口。
  - 仅支持 ``Linux / Windows/ AIX（企业版）`` 操作系统。
  - 仅支持 `root/Administrator` 账户。
- - 若为 `Windows`，需要开通 SMB 服务（网上邻居）的 `139、445` 端口，参考 [Windows 开 139,445 端口](../附录/smb.md) 。
+ - 若为 `Windows`，需要开通 SMB 服务（网上邻居）的 `139、445` 端口，参考 [Windows 开 135,139,445 端口](../附录/smb.md) 。
 
 >**Note**：目前只有节点管理（企业版）支持 AIX 操作系统。
 
