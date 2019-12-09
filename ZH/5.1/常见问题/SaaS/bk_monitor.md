@@ -130,7 +130,7 @@ WatchedEvent state:SyncConnected type:None path:null
 
 此种情况，确认上面第一点，若节点缺失，可以用`./bkcec stop kafka`停掉 kafka，再到各台机器上使用`jps -l`确认是否还存在`kafka.kafka`没有关闭掉的，这种就是僵死的，可以杀掉僵死进程`jps -l | grep kafka | xarge kill -9`，再重新在中控机上启动 kafka
 
-2. kafka数据确认
+3. kafka 数据确认
 
 ```bash
 # 正常可以显示数据，异常会卡住
