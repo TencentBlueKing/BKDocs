@@ -38,7 +38,7 @@ echo bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec stop
 echo bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec status
 ```
 
-### 关闭 saas 应用
+### 关闭 SaaS 应用
 
 在 appo 服务器上执行
 
