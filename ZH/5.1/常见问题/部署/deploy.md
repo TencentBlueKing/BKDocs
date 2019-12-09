@@ -65,7 +65,7 @@ dig zk.service.consul
 
 检查 `yum info nginx` 
  
- 安装 epel yum 源, 重装 cmdb
+ 安装 epel YUM 源, 重装 CMDB
 
 ```bash
 ./bkcec stop cmdb 
@@ -75,9 +75,9 @@ dig zk.service.consul
 
 ```
 
-三台机器的 yum 源都更新一致，确保 yum 源能安装 nginx
+三台机器的 YUM 源都更新一致，确保 YUM 源能安装 Nginx
 
-其他进程状态 EXIT，请前往 cmdb 所在服务器
+其他进程状态 EXIT，请前往 CMDB 所在服务器
 
 `/data/bkce/logs/cmdb/` 目录下查看相应的日志
 
