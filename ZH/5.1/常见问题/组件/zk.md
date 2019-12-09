@@ -61,4 +61,4 @@ $ rm -rf version-1 zookeeper_server.pid
 $ ./bkcec start zk
 ```
 
-上述 3 条确认后，仍无法启动的，可能 zk.sh 版本不对，请和蓝鲸运营人员联系
+上述 3 条确认后，仍无法启动的，可能 zk.sh 版本不对，请和蓝鲸运营人员联系,联系蓝鲸助手 QQ: [800802001](http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDgwMjAwMV80NDMwOTZfODAwODAyMDAxXzJf)
