@@ -11,4 +11,4 @@
 - 已验证版本：已验证的组件版本，若组件版本不一致，可能会导致采集异常或部分数据上报异常
 - 组件接入指引：蓝鲸监控根据每个组件不同的数据和采集方式提供的接入说明
 
-如果你使用的组件不在此列，或者是组件提供的接入提示说明不清晰/按说明无法成功接入，请联系蓝鲸助手 QQ: [800802001](http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDgwMjAwMV80NDMwOTZfODAwODAyMDAxXzJf) 反馈给蓝鲸监控团队。（文档中心反馈功能也可以接入这个反馈）
+如果你使用的组件不在此列，或者是组件提供的接入提示说明不清晰/按说明无法成功接入，请联系蓝鲸助手 QQ: [800802001](http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDgwMjAwMV80NDMwOTZfODAwODAyMDAxXzJf) 反馈给蓝鲸监控团队。
