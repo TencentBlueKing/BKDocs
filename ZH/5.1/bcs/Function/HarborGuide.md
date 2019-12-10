@@ -13,7 +13,7 @@ Harbor 项目类型分为公共仓库和私有仓库两种类型，其中
 
 更多关于 Harbor 项目和用户的使用指引，请参考 [Harbor 的用户手册](https://github.com/goharbor/harbor/blob/master/docs/user_guide.md)。
 
-## 2 BCS 中的 Harbor 仓库
+## 2. BCS 中的 Harbor 仓库
 
 ### 2.1 获取项目仓库账号
 
