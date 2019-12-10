@@ -84,7 +84,7 @@
 
 另一方面，蓝鲸 ITSM 实现 [服务器资源申请流程线上化](5.1/bk_solutions/CO/ITSM/Service_Request.md)、[应用发布流程线上化](5.1/bk_solutions/CO/ITSM/Release_Management.md)、[环境变更流线上化](5.1/bk_solutions/CO/ITSM/Change_Management.md)、[故障提报流程线上化](5.1/bk_solutions/CO/ITSM/Incident_Management.md)，通过线上流程完成企业 IT 的运营维护，告别邮件的低效率和不可回溯的交付模式。
 
-持续部署(Continuous Deployment)之前是持续集成(Continuous Integration)和 [持续交付(Continuous Delivery)](5.1/bk_solutions/CI/Pipeline_git_commit_to_stag.md)，蓝盾会逐渐覆盖，尽请期待。
+持续部署(Continuous Deployment)之前是持续集成(Continuous Integration)和 [持续交付(Continuous Delivery)](5.1/bk_solutions/Getting_started/Getting_started.md)，蓝盾会逐渐覆盖，尽请期待。
 
 ---
 
