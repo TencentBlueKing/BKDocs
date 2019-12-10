@@ -1,4 +1,4 @@
-# Kubernetes 网络设置
+# Kubernetes 网络方案
 
 如果针对容器网络，没有额外设计需求，BCS 建议采用 Kubernetes 社区建议的网络方案。
 
