@@ -101,8 +101,8 @@ service 主要用**服务发现**，**DNS 基础数据**，**loadbalance 服务�
 
 如果要启动 loadbalance 的功能，需要：
 
-* label 中增加特殊字段**"BCSGROUP"**:**"external"**：external 代表 bcs-loadbalance 模块的集群 ID，默认值 external
-* label 中增加特殊字段**"BCSBALANCE"**:**"roundrobin"**：负载均衡算法，默认值为 roundrobin，其他值为 source（ip_hash），leastconn
+* label 中增加特殊字段 **"BCSGROUP":"external"** ：external 代表 bcs-loadbalance 模块的集群 ID，默认值 external
+* label 中增加特殊字段 **"BCSBALANCE":"roundrobin"** ：负载均衡算法，默认值为 roundrobin，其他值为 source（ip_hash），leastconn
 * application 有定义 ports 信息，并和 service 对应
 
 ports 信息在 loadbalance 中的含义说明：
