@@ -26,7 +26,7 @@ blueking-nginx-ingress-controller        1         1         1            1     
 blueking-nginx-ingress-default-backend   1         1         1            1           32h
 ```
 
-查看 nginx-ingress-controller 的配置文件，可以看到我们在场景案例 [应用的蓝绿发布](../../..//Scenes/Bcs_blue_green_deployment.md) 中定义的 Ingress 。
+查看 nginx-ingress-controller 的配置文件，可以看到我们在场景案例 [应用的蓝绿发布](../../../Scenes/Bcs_blue_green_deployment.md) 中定义的 Ingress 。
 
 ```bash
 # kubectl  exec blueking-nginx-ingress-controller-79c687dc95-c4k5b -n dev -- cat /etc/nginx/nginx.conf
