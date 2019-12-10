@@ -92,7 +92,9 @@ service 主要用**服务发现**，**DNS 基础数据**，**loadbalance 服务�
 * targetPort：用于指向 taskgroup 中 ports 字段中目标端口，默认目标端口为 containerPort，如果有 hostPort，则指向 hostPort
 
 **BCSGROUP**: 用于 service 导出标识
+
 **BCSBALANCE**：用于服务导出负载均衡算法，默认值为 roundrobin
+
 **BCS-WEIGHT-**: 当使用 selector 匹配多个 application 时，用于表达多个 application 之间的权重，该值为大于等于 0 的整数，类型为 string。如果等于 0，则该 application 没有流量导入。
 
 ## 4. **bcs-loadbalance 功能使用**
