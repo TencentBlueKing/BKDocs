@@ -90,7 +90,7 @@
 
 解决了运维当前的主要矛盾后，蓝鲸更关注 **研发运营这个领域的行业技术变化**。
 
-通过支持 Kubernetes 和 Mesos 容器编排的蓝鲸容器管理平台，实现 [快速构建 Nginx 集群](5.1/bk_solutions/CD/BCS/Bcs_deploy_nginx_cluster.md) 、[应用的滚动升级](5.1/bk_solutions/CD/BCS/Bcs_app_Rolling_Update_Deployment.html) 、[蓝绿发布](5.1/bk_solutions/CD/BCS/Bcs_blue_green_deployment.md) 以及自动扩缩容等微服务化带来的技术红利。
+通过支持 Kubernetes 和 Mesos 容器编排的蓝鲸容器管理平台，实现 [快速构建 Nginx 集群](5.1/bk_solutions/CD/BCS/Bcs_deploy_nginx_cluster.md) 、[应用的滚动升级](5.1/bk_solutions/CD/BCS/Bcs_app_Rolling_Update_Deployment.md) 、[蓝绿发布](5.1/bk_solutions/CD/BCS/Bcs_blue_green_deployment.md) 以及自动扩缩容等微服务化带来的技术红利。
 
 蓝鲸，不止如此，更多尽情关注蓝鲸公众号。
 
