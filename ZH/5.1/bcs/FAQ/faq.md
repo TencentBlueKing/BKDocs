@@ -102,4 +102,5 @@ to start sandbox container for pod ... Error response from daemon: OCI runtime c
 ![应用资源限制](media/res_limit.jpg)
 
 - 2.3.2 镜像问题
-参考 查看 [拉取镜像失败] 处理流程
+
+请参考 查看本文上面的 [拉取镜像失败] 处理流程
