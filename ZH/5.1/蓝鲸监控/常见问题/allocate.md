@@ -11,7 +11,9 @@
 ps aux | grep uptimecheckbeat
 ```
 ![15456208356084](../media/15456208356084.jpg)
+
 3. 若采集器进程未启动，请到`/usr/local/gse/plugins/bin`目录下，查看是否存在 uptimecheckbeat 这个二进制文件（拨测采集器），如果不存在，请联系技术人员提供 gse 版本号，确认此版本是否已内置拨测采集器。
+
 4. 若步骤 2 没问题，且采集器进程未启动，请到`/usr/local/gse/plugins/etc`目录下，检查 uptimecheckbeat.conf 文件是否存在。若不存在，请到 job 作业平台查看 api 调用的历史任务，是否有执行失败的记录，给出截图；若 uptimecheckbeat.conf 存在，请执行以下命令手动启动采集器，将输出结果截图提供
 
 ```bash
