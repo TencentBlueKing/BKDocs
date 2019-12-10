@@ -189,7 +189,7 @@ type ExportService struct {
 字段信息：
 
 * SSLCert：是否使用 https，当前默认不开启，忽略
-* Balance：负载均衡的算法，默认是 source，忽略；
+* Balance：负载均衡的算法，默认是 source，忽略
 * MaxConn：最大连接数，默认是 20000
 
 调整 ServicePort 和 Backends 字段，对其进行合并
