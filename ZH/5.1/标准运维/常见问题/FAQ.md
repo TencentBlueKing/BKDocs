@@ -2,7 +2,7 @@
 
 1.标准运维标准插件支持用户接入企业内 IT 系统吗？
 
-支持，接入方式请参考 [附录 3：标准插件开发](5.1/标准运维/附录/Django.md)。
+支持，接入方式请参考 [附录 2：标准插件开发](5.1/标准运维/附录/Django.md)。
 
 2.标准运维点击开始执行任务后报错：`taskflow[id=1] get status error: node(nodee37e20…c7fb131) does not exist, may have not by executed`，并且在任务列表中查看任务状态是 `未知`，可能是什么原因？
 
