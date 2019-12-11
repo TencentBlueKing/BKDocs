@@ -108,7 +108,7 @@ root     16763  7429  0 19:40 pts/1    00:00:00 grep --color=auto -i mysqld
 
 **告警自动处理，如此简单**。
 
-以上为主机监控的告警自动化处理，其他类型告警请参考对应文档：[组件监控的告警自动化处理](5.1/蓝鲸监控/快速入门/自定义监控/Custom_Monitor_Auto-recovery.md)、[自定义采集的告警自动化处理](5.1/蓝鲸监控/快速入门/自定义监控/Custom_Monitor_Auto-recovery.md)。
+以上为主机监控的告警自动化处理，其他类型告警请参考对应文档：[组件监控的告警自动化处理](5.1/蓝鲸监控/快速入门/组件监控/Component_Monitor_Fault_Auto-recovery.md)、[自定义采集的告警自动化处理](5.1/蓝鲸监控/快速入门/自定义监控/Custom_Monitor_Auto-recovery.md)。
 
 故障自动处理是把双刃剑，需要考虑因为网络波动等场景导致的假告警，这时可以用到故障自愈的`异常防御需审批`功能。具体请参照 [故障自愈的收敛防护](../Function_Introduction/Alarm_Convergence.md) 。
 
