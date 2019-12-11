@@ -3,7 +3,7 @@
 蓝鲸监控目前覆盖 （Apache 、 Nginx 、Tomcat 、MySQL） 等开源组件、中间件服务的性能指标监控，具体配置请参照以下接入指引。
 
  ![](../../media/component_acesess_tips.png)
- 图 1. 接入指引
+ <center>图 1. 接入指引</center>
 
 - 组件名称：
 - 采集类型：说明该组件由什么采集器上报，采集器说明参考 [文档](5.1/蓝鲸监控/二次开发/Plugins.md)
