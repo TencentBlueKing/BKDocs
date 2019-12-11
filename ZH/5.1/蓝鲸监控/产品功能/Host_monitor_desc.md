@@ -4,56 +4,330 @@
 
 ![主机监控](../media/host_monitor.gif)
 
-图 1. 主机监控视图
+<center>图 1. 主机监控视图</center>
 
 ## 主机基础性能采集方式
 
 [部署蓝鲸 Agent](5.1/节点管理/快速入门/agent0.md) 后，默认会拉起 `basereport` 进程自动上报主机性能指标（CPU、内存、网络、磁盘、TCP 连接数等指标），关于采集器详情可参考附录文档 [采集器概述](../二次开发/plugins.md)
 
 ![](../media/15367250851552.jpg)
-图 2. 基础性能采集器工作状态示意图
+<center>图 2. 基础性能采集器工作状态示意图</center>
 
 主机性能指标默认采集周期为 1 分钟。
 
 ## 主机基础性能指标定义
 
-| 指标               | 类型 | 单位 | 含义                                                | 采集方法(Linux)                                                                                                                                                   | 采集方法(Windows)                                                                                                                                                                                                    |
-| ------------------ | ---- | ---- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 5 分钟平均负载      | CPU  | %    | 五分钟内同时处于就绪状态的平均进程数                | awk ‘{print $2}’ /proc/loadavg                                                                                                                                    | N/A                                                                                                                                                                                                                  |
-| cpu 总使用率        | CPU  | %    | 当前消耗的总 CPU 百分比                               | delta(busy) / delta(total) * 100 busy = user + sys + nice + iowait + irq + softirq + steal + guest + guestnice + stolen total = busy + idle                       | for /f “tokens=1,2,* delims==” %i in (‘wmic path Win32_PerfFormattedData_Counters_ProcessorInformation where "Name=’_Total’" get PercentIdleTime/value &#124; findstr PercentIdleTime’) do (set /a 100-%j)           |
-| cpu 单核使用率      | CPU  | %    | 当前单个 CPU 消耗的百分比                             | delta(busy) / delta(total) * 100 busy = user + sys + nice + iowait + irq + softirq + steal + guest + guestnice + stolen total = busy + idle                       | for /f “tokens=1,2,* delims==” %i in (‘wmic path Win32_PerfFormattedData_Counters_ProcessorInformation where “not name like ‘%Total%’” get PercentIdleTime/value &#124; findstr PercentIdleTime’) do (set /a 100-%j) |
-| 接收字节流量       | 网络 | KB/s | 网卡每秒接收的比特数，即网卡的上行带宽              | 读取/proc/net/dev 文件 第 1 项 SpeedRecv = delta(new.BytesRecv, old.BytesRecv) / interval                                                                             | wmic path Win32_PerfRawData_Tcpip_NetworkInterface get BytesReceivedPersec/value &#124; findstr BytesReceivedPersec                                                                                                  |
-| 发送字节流量       | 网络 | KB/s | 网卡每秒发送的比特数，即网卡的下行带宽              | 读取/proc/net/dev 文件第 9 项 SpeedSent = delta(new.BytesSent, old.BytesSent) / interval                                                                              | wmic path Win32_PerfRawData_Tcpip_NetworkInterface get BytesSentPersec/value &#124; findstr BytesSentPersec                                                                                                          |
-| 发送包速率         | 网络 | 个/s | 网卡每秒接收的数据包数                              | 读取/proc/net/dev 文件 第 10 项 SpeedPacketsSent = (counterDiff(once.Stat[i].PacketsSent, val.PacketsSent, NetCoutnerMaxSize)) / interval                            | wmic path Win32_PerfRawData_Tcpip_NetworkInterface get PacketsSentPersec/value &#124; findstr PacketsSentPersec                                                                                                      |
-| 接收包速率         | 网络 | 个/s | 网卡每秒发送的数据包数                              | 读取/proc/net/dev 文件 第 2 项 SpeedPacketsRecv = delta(new.PacketsRecv, old.PacketsRecv) / interval                                                                 | wmic path Win32_PerfRawData_Tcpip_NetworkInterface get PacketsReceivedPersec/value &#124; findstr PacketsReceivedPersec                                                                                              |
-| established 连接数  | 网络 | 个   | 当前服务器下 TCP 链接处于 ESTABLISHED 状态的连接数      | 系统 netlink 实现 验证方法 netstat -pant&#124;grep ESTABLISHED                                                                                                       | netstat -ano -p tcp &#124; more +4 &#124; find " ESTABLISHED "                                                                                                                                                       |
-| time_wait 连接数    | 网络 | 个   | 当前服务器下 TCP 链接处于 TIME_WAIT 状态的连接数        | 系统 netlink 实现 验证方法 netstat -pant&#124;grep TIME_WAIT                                                                                                         | netstat -ano -p tcp &#124; more +4 &#124; find " TIME_WAIT "                                                                                                                                                         |
-| listen 连接数       | 网络 | 个   | 当前服务器下 TCP 链接处于 LISTEN 状态的连接数           | 系统 netlink 实现 验证方法 netstat -pant&#124;grep LISTEN                                                                                                            | netstat -ano -p tcp &#124; more +4 &#124; find " LISTENING "                                                                                                                                                         |
-| last_ack 连接数     | 网络 | 个   | 当前服务器下 TCP 链接处于 LAST_ACK 状态的连接数         | 系统 netlink 实现 验证方法 netstat -pant&#124;grep LAST_ACK                                                                                                          | netstat -ano -p tcp &#124; more +4 &#124; find " LAST_ACK "                                                                                                                                                          |
-| syn_recv 连接数     | 网络 | 个   | 当前服务器下 TCP 链接处于 SYN_RECV 状态的连接数         | 系统 netlink 实现 验证方法 netstat -pant&#124;grep SYNC_RECV                                                                                                         | netstat -ano -p tcp &#124; more +4 &#124; find " SYN_RECV "                                                                                                                                                          |
-| syn_sent 连接数     | 网络 | 个   | 当前服务器下 TCP 链接处于 SYN_SENT 状态的连接数         | 系统 netlink 实现 验证方法 netstat -pant&#124;grep SYNC_SENT                                                                                                         | netstat -ano -p tcp &#124; more +4 &#124; find " SYN_SENT "                                                                                                                                                          |
-| fin_wait1 连接数    | 网络 | 个   | 当前服务器下 TCP 链接处于 FIN_WAIT1 状态的连接数        | 系统 netlink 实现 验证方法 netstat -pant&#124;grep FIN_WAIT1                                                                                                         | netstat -ano -p tcp &#124; more +4 &#124; find " FIN_WAIT_1 "                                                                                                                                                        |
-| fin_wait2 连接数    | 网络 | 个   | 当前服务器下 TCP 链接处于 FIN_WAIT2 状态的连接数        | 系统 netlink 实现 验证方法 netstat -pant&#124;grep FIN_WAIT2                                                                                                         | netstat -ano -p tcp &#124; more +4 &#124; find " FIN_WAIT_2 "                                                                                                                                                        |
-| closing 连接数      | 网络 | 个   | 当前服务器下 TCP 链接处于 CLOSING 状态的连接数          | 系统 netlink 实现 验证方法 netstat -pant&#124;grep CLOSING                                                                                                           | netstat -ano -p tcp &#124; more +4 &#124; find " CLOSING "                                                                                                                                                           |
-| closed 状态连接数   | 网络 | 个   | 当前服务器下 TCP 链接处于 CLOSED 状态的连接数           | 系统 netlink 实现 验证方法 netstat -pant&#124;grep CLOSED                                                                                                            | netstat -ano -p tcp &#124; more +4 &#124; find " CLOSE "                                                                                                                                                             |
-| UDP 接收包量        | 网络 | 个   | UDP 包接受数                                         | 读取 /proc/net/snmp 文件 InDatagrams 项 cat /proc/net/snmp&#124;grep Udp:&#124;grep -v ‘InDatagrams’&#124;awk ‘{print $2}’                                         | wmic path Win32_PerfFormattedData_Tcpip_UDPv4 get DatagramsReceivedPersec/value                                                                                                                                      |
-| UDP 发送包量        | 网络 | 个   | UDP 包发送数                                         | 读取 /proc/net/snmp 文件 OutDatagrams 项 cat /proc/net/snmp&#124;grep Udp:&#124;grep -v ‘InDatagrams’&#124;awk ‘{print $5}’                                        | 读取/proc/net/dev 文件 第 2 项 SpeedPacketsRecv = delta(new.PacketsRecv, old.PacketsRecv) / interval                                                                                                                    |
-| 可用物理内存       | 内存 | MB   | 可用内存容量                                        | 读取 /proc/meminfo 文件 MemTotal 字段*1024 cat /proc/meminfo &#124;grep ‘MemTotal’&#124;awk -F ‘:’ ‘{print $2}’&#124;awk ‘{print $1}’&#124;awk ‘{print $1 * 1024}’ | for /f “tokens=1,2,* delims==” %i in (‘wmic OS get FreePhysicalMemory/value&#124; findstr FreePhysicalMemory’) do (set /a %j/1024)                                                                                   |
-| 交换分区已用量     | 内存 | MB   | 交换分区使用容量                                    | 读取 /proc/meminfo 文件 golang 系统调用 syscall.Sysinfo sysinfo.Totalswap - sysinfo.Freeswap 验证方法 free -m                                                        | wmic os get TotalSwapSpaceSize/value                                                                                                                                                                                 |
-| 物理内存使用率     | 内存 | %    | 内存使用百分比                                      | 读取 /proc/meminfo 文件[MemTotal-MemFree]/MemTotal*100.0                                                                                                          | wmic os get FreePhysicalMemory,TotalVisibleMemorySize/value                                                                                                                                                          |
-| 物理内存使用量     | 内存 | MB   | 已经使用的内存容量                                  | 读取 /proc/meminfo 文件[MemTotal-MemFree]*1024                                                                                                                    | wmic os get FreePhysicalMemory,TotalVisibleMemorySize/value &#124; findstr “FreePhysicalMemory TotalVisibleMemorySize”                                                                                               |
-| 应用内存使用量     | 内存 | MB   | 应用进程使用的内存量                                | 读取 /proc/meminfo 文件 如果有 MemAvailable 字段（不同系统版本有差异）(MemTotal-MemAvailable)/1024,如果没有该字段，MemAvailable=MemFree+Buffers+Cached              | N/A                                                                                                                                                                                                                  |
-| 应用内存使用率     | 内存 | %    | 应用进程内存量占总内存的百分比                      | 读取 /proc/meminfo 文件 (MemTotal-MemAvailable)/（MemTotal*100.0），如果没有 MemAvailable 字段，则 MemAvailable=MemFree+Buffers+Cached                               | N/A                                                                                                                                                                                                                  |
-| 磁盘使用率         | 磁盘 | %    | 磁盘已用空间的百分占比                              | golang 系统调用 syscall.Statfs 相当于 df                                                                                                                            | for /f “tokens=1,2,* delims==” %i in (‘wmic path Win32_PerfFormattedData_PerfDisk_LogicalDisk where “name like ‘%:%’” get PercentFreeSpace/value &#124; findstr PercentFreeSpace’) do (set /a 100-%j)                |
-| 读速率             | 磁盘 | 次/s | 磁盘每秒输出次数                                    | 读取 /proc/diskstats 每一行的第四项 float64((new_stat.ReadCount - stat.ReadCount)) / 60 只上报逻辑分区                                                            | wmic path Win32_PerfFormattedData_PerfDisk_LogicalDisk get DiskReadsPersec/value                                                                                                                                     |
-| 写速率             | 磁盘 | 次/s | 磁盘每秒写入次数                                    | 读取 /proc/diskstats 第 8 项 float64((new_stat.WriteCount - stat.WriteCount)) / 60 只上报逻辑分区                                                                    | wmic path Win32_PerfFormattedData_PerfDisk_LogicalDisk get DiskWritesPersec/value                                                                                                                                    |
-| 磁盘 IO 使用率       | 磁盘 | %    | 磁盘处于活动时间的百分比                            | 读取 /proc/diskstats 文件读取 /proc/diskstats 第 13 项 （new_stat.IoTime - stat.IoTime）/60.0 / 1000.0                                                               | for /f “tokens=1,2,* delims==” %i in (‘wmic path Win32_PerfFormattedData_PerfDisk_LogicalDisk where "Name=’_Total’" get PercentIdleTime/value &#124; findstr PercentIdleTime’) do (set /a 100-%j)                    |
-| 系统进程数         | 进程 | 个   | 系统已启动进程数量                                  | 抓取/proc 目录下所有子目录数量                                                                                                                                    | wmic path win32_process get ProcessId/value                                                                                                                                                                          |
-| Agent 心跳丢失-GSE  | 事件 | /    | 监测 GSE 的 Agent 是否正常                              | N/A                                                                                                                                                               | N/A                                                                                                                                                                                                                  |
-| 磁盘只读-GSE       | 事件 | /    | 监测磁盘状态                                        | N/A                                                                                                                                                               | N/A                                                                                                                                                                                                                  |
-| 磁盘写满-GSE       | 事件 | /    | 监测磁盘状态                                        | N/A                                                                                                                                                               | N/A                                                                                                                                                                                                                  |
-| Corefile 产生-GSE   | 事件 | /    | 监测/proc/sys/kernel/core_pattern 中目录内文件的变化 | N/A                                                                                                                                                               | N/A                                                                                                                                                                                                                  |
-| PING 不可达告警-GSE | 事件 | /    | 监测 PING 不可达事件告警                              | N/A                                                                                                                                                               | N/A                                                                                                                                                                                                                  |
-| 进程端口           | 事件 | /    | 进程对应端口                                        | N/A                                                                                                                                                               | wmic path win32_process get */value 和 netstat -ano                                                                                                                                                                  |
-| 自定义字符型       | 事件 | /    | N/A                                                 | N/A                                                                                                                                                               | N/A                                                                                                                                                                                                                  |
-| 系统启动时间异常   | 事件 | /    | 监测系统启动异常告警                                | N/A                                                                                                                                                               | N/A                                                                                                                                                                                                                  |
+<table>
+  <tr>
+    <th width="100">指标</th>
+    <th width="50">类型</th>
+    <th width="60">单位</th>
+    <th width="80">含义</th>
+    <th>采集方法(Linux)</th>
+    <th>采集方法(Windows)</th>
+
+  </tr>
+  <tr>
+    <td>5 分钟平均负载</td>
+    <td>CPU</td>
+    <td>%</td>
+    <td>五分钟内同时处于就绪状态的平均进程数</td>
+    <td>awk ‘{print $2}’ /proc/loadavg</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>cpu 总使用率</td>
+    <td>CPU</td>
+    <td>%</td>
+    <td>当前消耗的总 CPU 百分比  </td>
+    <td>delta(busy) / delta(total) * 100 busy = user + sys + nice + iowait + irq + softirq + steal + guest + guestnice + stolen total = busy + idle</td>
+    <td>for /f “tokens=1,2,* delims==” %i in (‘wmic path Win32_PerfFormattedData_Counters_ProcessorInformation where "Name=’_Total’" get PercentIdleTime/value | findstr PercentIdleTime’) do (set /a 100-%j)</td>
+    </tr>
+    <tr>
+      <td>cpu 单核使用率</td>
+      <td>CPU</td>
+      <td>%</td>
+      <td>当前单个 CPU 消耗的百分比</td>
+      <td>delta(busy) / delta(total) * 100 busy = user + sys + nice + iowait + irq + softirq + steal + guest + guestnice + stolen total = busy + idle</td>
+      <td>for /f “tokens=1,2,* delims==” %i in (‘wmic path Win32_PerfFormattedData_Counters_ProcessorInformation where “not name like ‘%Total%’” get PercentIdleTime/value | findstr PercentIdleTime’) do (set /a 100-%j)</td>
+      </tr>
+      <tr>
+      <td>接收字节流量</td>
+      <td>网络</td>
+      <td>KB/s</td>
+      <td>网卡每秒接收的比特数，即网卡的上行带宽</td>
+      <td>读取/proc/net/dev 文件 第 1 项 SpeedRecv = delta(new.BytesRecv, old.BytesRecv) / interval</td>
+      <td>wmic path Win32_PerfRawData_Tcpip_NetworkInterface get BytesReceivedPersec/value | findstr BytesReceivedPersec</td>
+    </tr>
+    <tr>
+      <td>发送字节流量</td>
+      <td>网络</td>
+      <td>KB/s</td>
+      <td>网卡每秒发送的比特数，即网卡的下行带宽</td>
+      <td>读取/proc/net/dev 文件第 9 项 SpeedSent = delta(new.BytesSent, old.BytesSent) / interval</td>
+      <td>wmic path Win32_PerfRawData_Tcpip_NetworkInterface get BytesSentPersec/value | findstr BytesSentPersec</td>
+    </tr>
+    <tr>
+      <td>发送包速率</td>
+      <td>网络</td>
+      <td>个/s</td>
+      <td>网卡每秒接收的数据包数</td>
+      <td>读取/proc/net/dev 文件 第 10 项 SpeedPacketsSent = (counterDiff(once.Stat[i].PacketsSent, val.PacketsSent, NetCoutnerMaxSize)) / interval</td>
+      <td>wmic path Win32_PerfRawData_Tcpip_NetworkInterface get PacketsSentPersec/value | findstr PacketsSentPersec</td>
+    </tr>
+    <tr>
+      <td>接收包速率</td>
+      <td>网络</td>
+      <td>个/s</td>
+      <td>网卡每秒接收的数据包数</td>
+      <td>读取/proc/net/dev 文件 第 2 项 SpeedPacketsRecv = delta(new.PacketsRecv, old.PacketsRecv) / interval</td>
+      <td>wmic path Win32_PerfRawData_Tcpip_NetworkInterface get PacketsReceivedPersec/value | findstr PacketsReceivedPersec</td>
+    </tr>
+    <tr>
+      <td>established 连接数</td>
+      <td>网络</td>
+      <td>个</td>
+      <td>当前服务器下 TCP 链接处于 ESTABLISHED 状态的连接数</td>
+      <td>系统 netlink 实现 验证方法 netstat -pant|grep ESTABLISHED</td>
+      <td>netstat -ano -p tcp | more +4 | find " ESTABLISHED "</td>
+    </tr>
+    <tr>
+      <td>time_wait 连接数</td>
+      <td>网络</td>
+      <td>个</td>
+      <td>当前服务器下 TCP 链接处于 TIME_WAIT 状态的连接数</td>
+      <td>系统 netlink 实现 验证方法 netstat -pant|grep TIME_WAIT</td>
+      <td>netstat -ano -p tcp | more +4 | find " TIME_WAIT "</td>
+    </tr>
+    <tr>
+      <td>listen 连接数</td>
+      <td>网络</td>
+      <td>个</td>
+      <td>当前服务器下 TCP 链接处于 LISTEN 状态的连接数</td>
+      <td>系统 netlink 实现 验证方法 netstat -pant|grep LISTEN</td>
+      <td>netstat -ano -p tcp | more +4 | find " LISTENING "</td>
+    </tr>
+    <tr>
+      <td>last_ack 连接数</td>
+      <td>网络</td>
+      <td>个</td>
+      <td>当前服务器下 TCP 链接处于 LAST_ACK 状态的连接数</td>
+      <td>系统 netlink 实现 验证方法 netstat -pant|grep LAST_ACK</td>
+      <td>netstat -ano -p tcp | more +4 | find " LAST_ACK "</td>
+    </tr>
+    <tr>
+      <td>syn_recv 连接数</td>
+      <td>网络</td>
+      <td>个</td>
+      <td>当前服务器下 TCP 链接处于 SYN_RECV 状态的连接数</td>
+      <td>系统 netlink 实现 验证方法 netstat -pant|grep SYNC_RECV</td>
+      <td>netstat -ano -p tcp | more +4 | find " SYN_RECV "</td>
+    </tr>
+    <tr>
+      <td>syn_sent 连接数</td>
+      <td>网络</td>
+      <td>个</td>
+      <td>当前服务器下 TCP 链接处于 SYN_SENT 状态的连接数</td>
+      <td>系统 netlink 实现 验证方法 netstat -pant|grep SYNC_SENT</td>
+      <td>netstat -ano -p tcp | more +4 | find " SYN_SENT "</td>
+    </tr>
+    <tr>
+      <td>fin_wait1 连接数</td>
+      <td>网络</td>
+      <td>个</td>
+      <td>当前服务器下 TCP 链接处于 FIN_WAIT1 状态的连接数</td>
+      <td>系统 netlink 实现 验证方法 netstat -pant|grep FIN_WAIT1</td>
+      <td>netstat -ano -p tcp | more +4 | find " FIN_WAIT_1 "</td>
+    </tr>
+    <tr>
+      <td>fin_wait2 连接数</td>
+      <td>网络</td>
+      <td>个</td>
+      <td>当前服务器下 TCP 链接处于 FIN_WAIT2 状态的连接数</td>
+      <td>系统 netlink 实现 验证方法 netstat -pant|grep FIN_WAIT2</td>
+      <td>netstat -ano -p tcp | more +4 | find " FIN_WAIT_2 "</td>
+    </tr>
+    <tr>
+      <td>closing 连接数</td>
+      <td>网络</td>
+      <td>个</td>
+      <td>当前服务器下 TCP 链接处于 CLOSING 状态的连接数</td>
+      <td>系统 netlink 实现 验证方法 netstat -pant|grep CLOSING</td>
+      <td>netstat -ano -p tcp | more +4 | find " CLOSING "</td>
+    </tr>
+    <tr>
+      <td>closed 状态连接数</td>
+      <td>网络</td>
+      <td>个</td>
+      <td>当前服务器下 TCP 链接处于 CLOSED 状态的连接数</td>
+      <td>系统 netlink 实现 验证方法 netstat -pant|grep CLOSED</td>
+      <td>netstat -ano -p tcp | more +4 | find " CLOSE "</td>
+    </tr>
+    <tr>
+      <td>UDP 接收包量</td>
+      <td>网络</td>
+      <td>个</td>
+      <td>UDP 包接受数</td>
+      <td>读取 /proc/net/snmp 文件 InDatagrams 项 cat /proc/net/snmp|grep Udp:|grep -v ‘InDatagrams’|awk ‘{print $2}’</td>
+      <td>wmic path Win32_PerfFormattedData_Tcpip_UDPv4 get DatagramsReceivedPersec/value</td>
+    </tr>
+    <tr>
+      <td>UDP 发送包量</td>
+      <td>网络</td>
+      <td>个</td>
+      <td>	UDP 包发送数</td>
+      <td>读取 /proc/net/snmp 文件 OutDatagrams 项 cat /proc/net/snmp|grep Udp:|grep -v ‘InDatagrams’|awk ‘{print $5}’</td>
+      <td>读取/proc/net/dev 文件 第 2 项 SpeedPacketsRecv = delta(new.PacketsRecv, old.PacketsRecv) / interval</td>
+    </tr>
+    <tr>
+      <td>可用物理内存</td>
+      <td>内存</td>
+      <td>MB</td>
+      <td>可用内存容量</td>
+      <td>读取 /proc/meminfo 文件 MemTotal 字段*1024 cat /proc/meminfo |grep ‘MemTotal’|awk -F ‘:’ ‘{print $2}’|awk ‘{print $1}’|awk ‘{print $1 * 1024}’</td>
+      <td>for /f “tokens=1,2,* delims==” %i in (‘wmic OS get FreePhysicalMemory/value| findstr FreePhysicalMemory’) do (set /a %j/1024)</td>
+    </tr>
+    <tr>
+      <td>交换分区已用量</td>
+      <td>内存</td>
+      <td>MB</td>
+      <td>交换分区使用容量</td>
+      <td>读取 /proc/meminfo 文件 golang 系统调用 syscall.Sysinfo sysinfo.Totalswap - sysinfo.Freeswap 验证方法 free -m</td>
+      <td>wmic os get TotalSwapSpaceSize/value</td>
+    </tr>
+    <tr>
+      <td>物理内存使用率</td>
+      <td>内存</td>
+      <td>%</td>
+      <td>内存使用百分比</td>
+      <td>读取 /proc/meminfo 文件[MemTotal-MemFree]/MemTotal*100.0</td>
+      <td>wmic os get FreePhysicalMemory,TotalVisibleMemorySize/value</td>
+    </tr>
+    <tr>
+      <td>物理内存使用率</td>
+      <td>内存</td>
+      <td>MB</td>
+      <td>已经使用的内存容量</td>
+      <td>读取 /proc/meminfo 文件[MemTotal-MemFree]*1024</td>
+      <td>wmic os get FreePhysicalMemory,TotalVisibleMemorySize/value | findstr “FreePhysicalMemory TotalVisibleMemorySize”</td>
+    </tr>
+    <tr>
+      <td>应用内存使用量</td>
+      <td>内存</td>
+      <td>MB</td>
+      <td>应用进程使用的内存量</td>
+      <td>读取 /proc/meminfo 文件 如果有 MemAvailable 字段（不同系统版本有差异）(MemTotal-MemAvailable)/1024,如果没有该字段，MemAvailable=MemFree+Buffers+Cached</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>应用内存使用率</td>
+      <td>内存</td>
+      <td>%</td>
+      <td>应用进程内存量占总内存的百分比</td>
+      <td>读取 /proc/meminfo 文件 (MemTotal-MemAvailable)/（MemTotal*100.0），如果没有 MemAvailable 字段，则 MemAvailable=MemFree+Buffers+Cached</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>磁盘使用率</td>
+      <td>磁盘</td>
+      <td>%</td>
+      <td>磁盘已用空间的百分占比</td>
+      <td>golang 系统调用 syscall.Statfs 相当于 df</td>
+      <td>for /f “tokens=1,2,* delims==” %i in (‘wmic path Win32_PerfFormattedData_PerfDisk_LogicalDisk where “name like ‘%:%’” get PercentFreeSpace/value | findstr PercentFreeSpace’) do (set /a 100-%j)</td>
+    </tr>
+    <tr>
+      <td>读速率</td>
+      <td>磁盘</td>
+      <td>次/s</td>
+      <td>磁盘每秒输出次数</td>
+      <td>	读取 /proc/diskstats 每一行的第四项 float64((new_stat.ReadCount - stat.ReadCount)) / 60 只上报逻辑分区</td>
+      <td>wmic path Win32_PerfFormattedData_PerfDisk_LogicalDisk get DiskReadsPersec/value</td>
+    </tr>
+    <tr>
+      <td>写速率</td>
+      <td>磁盘</td>
+      <td>次/s</td>
+      <td>磁盘每秒写入次数</td>
+      <td>读取 /proc/diskstats 第 8 项 float64((new_stat.WriteCount - stat.WriteCount)) / 60 只上报逻辑分区</td>
+      <td>wmic path Win32_PerfFormattedData_PerfDisk_LogicalDisk get DiskWritesPersec/value</td>
+    </tr>
+    <tr>
+      <td>磁盘 IO 使用率</td>
+      <td>磁盘</td>
+      <td>%</td>
+      <td>磁盘处于活动时间的百分比</td>
+      <td>读取 /proc/diskstats 文件读取 /proc/diskstats 第 13 项 （new_stat.IoTime - stat.IoTime）/60.0 / 1000.0</td>
+      <td>for /f “tokens=1,2,* delims==” %i in (‘wmic path Win32_PerfFormattedData_PerfDisk_LogicalDisk where "Name=’_Total’" get PercentIdleTime/value | findstr PercentIdleTime’) do (set /a 100-%j)</td>
+    </tr>
+    <tr>
+      <td>系统进程数</td>
+      <td>进程</td>
+      <td>个</td>
+      <td>系统已启动进程数量</td>
+      <td>抓取/proc 目录下所有子目录数量</td>
+      <td>wmic path win32_process get ProcessId/value</td>
+    </tr>
+    <tr>
+      <td>Agent 心跳丢失-GSE</td>
+      <td>事件</td>
+      <td>/</td>
+      <td>监测 GSE 的 Agent 是否正常</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>磁盘只读-GSE</td>
+      <td>事件</td>
+      <td>/</td>
+      <td>监测磁盘状态</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>磁盘写满-GSE</td>
+      <td>事件</td>
+      <td>/</td>
+      <td>监测磁盘状态</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>Corefile 产生-GSE</td>
+      <td>事件</td>
+      <td>/</td>
+      <td>监测/proc/sys/kernel/core_pattern 中目录内文件的变化</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>PING 不可达告警-GSE</td>
+      <td>事件</td>
+      <td>/</td>
+      <td>监测 PING 不可达事件告警</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>进程端口</td>
+      <td>事件</td>
+      <td>/</td>
+      <td>进程对应端口</td>
+      <td>N/A</td>
+      <td>wmic path win32_process get */value 和 netstat -ano</td>
+    </tr>
+    <tr>
+      <td>自定义字符型</td>
+      <td>事件</td>
+      <td>/</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>系统启动时间异常</td>
+      <td>事件</td>
+      <td>/</td>
+      <td>监测系统启动异常告警</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
