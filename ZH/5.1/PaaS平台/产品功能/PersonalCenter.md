@@ -4,11 +4,11 @@
 
 ![](../assets/personalcenter.png)
 
-管理员个人中心
+<center>管理员个人中心</center>
 
 ![](../assets/personalcenteroption.png)
 
-普通用户个人中心
+<center>普通用户个人中心</center>
 
 ![](../assets/putongyonghu.png)
 
