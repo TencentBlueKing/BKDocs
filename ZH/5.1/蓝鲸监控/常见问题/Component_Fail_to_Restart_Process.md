@@ -1,4 +1,4 @@
-## 组件监控启动 exporter 失败,fail to restart process
+# 组件监控启动 exporter 失败,fail to restart process
 
 ## 1. 问题描述
 ![](../media/15366475980839.png)
