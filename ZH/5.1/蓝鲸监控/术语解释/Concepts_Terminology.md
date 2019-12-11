@@ -2,9 +2,9 @@
 
 指标与维度：
 
-  - 指标：行业里一般称为 Metric(s)、Item 或度量，即监控的内容，一般是坐标系中的纵坐标，比如 CPU 使用率、在线人数等，在 SQL 语句中一般是 `select 指标`
+  - **指标**：行业里一般称为 Metric(s)、Item 或度量，即监控的内容，一般是坐标系中的纵坐标，比如 CPU 使用率、在线人数等，在 SQL 语句中一般是 `select 指标`
 
-  - 维度：行业里一般称为 Dimension，区分指标的条件，比如 IP、主机名或平台（IOS、Andriod），在 SQL 语句中一般是 `Group by 维度`
+  - **维度**：行业里一般称为 Dimension，区分指标的条件，比如 IP、主机名或平台（IOS、Andriod），在 SQL 语句中一般是 `Group by 维度`
 
     - 示例：在仪表盘配置出图前设置
     ![](../media/dashboard_panel_set.jpg)
