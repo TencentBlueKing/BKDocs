@@ -5,7 +5,7 @@
 > 同时适用于 `Linux` 和 `Windows`
 
 ![进程资源监控_Linux](../media/Process_Resource_Monitor.gif)
-图 1. 进程监控视图
+<center>（图 1. 进程监控视图）</center>
 
 ## 监控指标说明
 
