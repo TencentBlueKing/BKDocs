@@ -1,4 +1,4 @@
-## 脚本采集下发提示 connection refused
+# 脚本采集下发提示 connection refused
 
 ## 判断 rabbitmq 服务是否正常
 bkeec status rabbitmq
