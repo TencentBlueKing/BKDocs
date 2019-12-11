@@ -251,7 +251,7 @@ go build test_exporter.go
 - 至少提供以上任意一种采集器，否则会报错；如果只上传了一种采集器，那视为该组件不支持其他系统。
 
 - 上传成功后如下图：
-![s1](../../media/s3.png)
+![](../../media/s3.png)
 
 ### 2.5 配置文件开发
 
@@ -397,7 +397,7 @@ go build test_exporter.go
 
 ![s1](../../media/s8.png)
 
-### 3 自定义组件一键导入
+## 3 自定义组件一键导入
 
 为了方便自己开发的组件采集 exporter 可以共享给更多的用户，蓝鲸监控支持一键导入。
 已经添加成功的自定义组件，可以按照以下格式打成 zip 压缩包：
@@ -416,7 +416,7 @@ go build test_exporter.go
 | config_schema.json   | 配置项配置文件，配置格式参见 exporter 启动参数配置文件  |
 | info.json            | exporter 包信息，需要提供 name(必须)和 display_name(可选) |
 
-####  info.json
+###  info.json
 
 以上文件列表，有一个新的文件```info.json```
 info.json 文件示例
@@ -436,7 +436,7 @@ info.json 文件示例
 
 ![s1](../../media/s10.png)
 
-### 4 自定义组件更新
+## 4 自定义组件更新
 如果需要更新组件，进入编辑模式，选择相应文件进行更新即可
 
 ![s1](../../media/s9.png)
