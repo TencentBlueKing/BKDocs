@@ -36,10 +36,10 @@
 
 接入故障自愈这里选择 REST 默认分类是为了方便触发告警，实际应用选择 Ping 不可达告警类型。
 ![Alt text](media/20190109195936.png)
-(Ping 告警组合套餐)
+<center>(Ping 告警组合套餐)</center>
 
 ![Alt text](media/20190109212223.png)
-(接入自愈)
+<center>(接入自愈)</center>
 
 ## 3. 触发告警，完成自愈
 
