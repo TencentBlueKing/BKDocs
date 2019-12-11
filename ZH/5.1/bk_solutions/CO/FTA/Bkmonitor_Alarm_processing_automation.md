@@ -9,7 +9,7 @@
 
 - [蓝鲸配置平台纳管了主机](../../CD/CMDB/CMDB_management_hosts.md)
 - [蓝鲸配置平台纳管了进程](../../CD/CMDB/CMDB_management_process.md)
-- [作业平台新建一个作业](../../CD/Automation/Massive_host_control.md#New_job)
+- [作业平台新建一个作业](5.1/作业平台/产品功能/新建作业.md)
 
 **术语解释**
  - **自愈套餐** : 告警的处理动作，如拉起进程的作业；
