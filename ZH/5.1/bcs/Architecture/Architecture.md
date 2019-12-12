@@ -3,9 +3,8 @@
 BCS 是统一的容器部署管理解决方案，为了适应不同业务场景的需要，BCS 内部同时支持基于 Mesos 和基于 K8S 的两种不同的实现。
 
 
-BCS 在蓝鲸中的位置
-
 ![BCS 在蓝鲸中的位置](media/BCS%20%E5%9C%A8%E8%93%9D%E9%B2%B8%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE.png)
+<center>BCS 在蓝鲸中的位置</center>
 
 ## 1. BCS（容器管理平台）架构图
 
