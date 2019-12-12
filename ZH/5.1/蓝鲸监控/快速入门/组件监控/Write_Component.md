@@ -233,10 +233,10 @@ go build test_exporter.go
 
 ### 2.3 exporter 编译
 **蓝鲸监控 exporter 默认只支持 64 位机器运行 exporter。**
-- windows
+- Windows
 
  ```env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ./exporter-windows.exe test_exporter.go```
-- linux
+- Linux
 
  ```env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./exporter-linux test_exporter.go```
 
