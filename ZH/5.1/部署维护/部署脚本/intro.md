@@ -108,7 +108,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **fta：** 故障自愈后台。
 
-**启动蓝鲸监控后台服务示例： `./bkece start bkdata monitor`**。
+**启动蓝鲸监控后台服务示例： `./bkcec start bkdata monitor`**。
 
 ### 文件用途
 
