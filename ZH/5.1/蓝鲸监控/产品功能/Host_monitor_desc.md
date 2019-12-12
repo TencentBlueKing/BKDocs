@@ -19,10 +19,10 @@
 
 <table>
   <tr>
-    <th width="50">指标</th>
+    <th width="100">指标</th>
     <th width="50">类型</th>
     <th width="50">单位</th>
-    <th width="50">含义</th>
+    <th width="150">含义</th>
     <th>采集方法(Linux)</th>
     <th>采集方法(Windows)</th>
 
