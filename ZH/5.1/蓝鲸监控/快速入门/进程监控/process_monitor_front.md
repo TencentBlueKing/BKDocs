@@ -15,5 +15,5 @@
 
 ```bash
 # 通过作业平台或者在 Agent 端后台执行手动拉起操作
-./usr/local/gse/plugins/bin/start.sh  processbeat
+/usr/local/gse/plugins/bin/start.sh  processbeat
 ```
