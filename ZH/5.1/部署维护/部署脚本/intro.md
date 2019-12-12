@@ -50,7 +50,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **redis：** 键值对存储数据库。
 
-#### BCS 部分：
+#### BCS (容器管理平台)部分：
 
 - **web_console：** 是容器服务提供快捷查看集群状态的命令行服务。
 
