@@ -202,7 +202,7 @@ tar xf bkce_src-5.0.3.tar.gz  -C /data
 > 说明：
 1. BK_DOMAIN 的值不能为 "com" "net" 这种顶级域名，至少二级域名开始。
 2. FQDN 的选择需要遵循 DNS 的命名规范，可选的字符集是 [A-Za-z0-9.] 以及 "-"，特别要注意，下划线 (_) 是不允许的。
-3. PAAS_FQDN CMDB_FQDN JOB_FQDN 的值都必须在 BK_DOMAIN 定义的根域名之下，保证登陆鉴权的 cookie 文件有效。
+3. PAAS_FQDN、CMDB_FQDN、JOB_FQDN 的值都必须在 BK_DOMAIN 定义的根域名之下，保证登陆鉴权的 cookie 文件有效。
 
 ### ports.env
 
