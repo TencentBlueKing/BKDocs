@@ -1,4 +1,4 @@
-# 安装 CMDB
+# 安装 CMDB 详细步骤
 
 CMDB 是蓝鲸的配置平台，数据库采用 MongoDB ，服务发现和配置管理使用 ZooKeeper ，快照数据使用 Redis 存储，快照采集依赖 GSE。
 
