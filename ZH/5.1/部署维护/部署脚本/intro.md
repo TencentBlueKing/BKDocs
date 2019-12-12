@@ -184,13 +184,13 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
   - **bcs/：** 存放 bcs 构建所需的脚本。
 
-  - **install.config.3ip.sample** 部署基础不含bcs时使用。
+  - **install.config.3ip.sample：** 部署基础不含bcs时使用。
 
-  - **install.config.bcs.sample** 完整的基础平台+bcs方案分布。
+  - **install.config.bcs.sample：** 完整的基础平台+bcs方案分布。
 
-  - **install.config.bcs.single.sample** 单机部署bcs模块分布示例。
+  - **install.config.bcs.single.sample：** 单机部署bcs模块分布示例。
 
-  - **install.config.new.sample**：部署 bcs 时使用。
+  - **install.config.new.sample：** 部署 bcs 时使用。
 
 ### 完成安装或日常升级后生成的文件
 
