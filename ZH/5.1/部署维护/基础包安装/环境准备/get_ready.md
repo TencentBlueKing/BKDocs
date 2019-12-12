@@ -12,6 +12,22 @@
 
 下载完成后，请核对 MD5 码。
 
+## 配置 YUM 源
+
+在所有蓝鲸服务器上配置好 YUM 源，要求该 YUM  源包含 EPEL。
+
+不能连外网 YUM 源的环境，可以配置一个内部的 YUM  源 或者本地 YUM 源。
+
+## 本地 YUM 源
+
+参考附录中的 [离线安装的配置方法](../../场景案例/离线部署/offline_setup.md)。
+
+## 在线 YUM 源
+
+推荐使用以下 YUM 源：
+
+- [腾讯云 CentOS](https://mirrors.cloud.tencent.com/help/centos.html)
+- [腾讯云 EPEL](https://mirrors.cloud.tencent.com/help/epel.html)
 
 ## CentOS 系统设置
 
@@ -133,23 +149,6 @@ tar xf bkce_src-5.0.3.tar.gz  -C /data
 - src：存放蓝鲸产品软件，以及依赖的开源组件
 
 - install：存放安装部署脚本、安装时的参数配置、日常运维脚本等
-
-## 配置 YUM 源
-
-在所有蓝鲸服务器上配置好 YUM 源，要求该 YUM  源包含 EPEL。
-
-不能连外网 YUM 源的环境，可以配置一个内部的 YUM  源 或者本地 YUM 源。
-
-## 本地 YUM 源
-
-参考附录中的 [离线安装的配置方法](../../场景案例/离线部署/offline_setup.md)。
-
-## 在线 YUM 源
-
-推荐使用以下 YUM 源：
-
-- [腾讯云 CentOS](https://mirrors.cloud.tencent.com/help/centos.html)
-- [腾讯云 EPEL](https://mirrors.cloud.tencent.com/help/epel.html)
 
 ## 配置文件
 
