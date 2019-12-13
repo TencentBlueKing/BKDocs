@@ -29,7 +29,7 @@ public 目录一般不能手动删除，一般比较大的组件可能有
 
 若社区版设置了多台 MySQL，需查看主库和从库正在使用的 binlog 是哪个文件
 
-    ```bash
+```bash
         MySQL [(none)]> show master status\G
     *************************** 1. row ***************************
                 File: mysql-bin.000006
@@ -40,7 +40,7 @@ public 目录一般不能手动删除，一般比较大的组件可能有
 
     MySQL [(none)]> show slave status\G
     Empty set (0.00 sec)
-    ```
+```
 删除 binlog 日志之前，对 binlog 进行备份。
 
 清理方法一：删除指定日期以前的日志索引中binlog日志文件
