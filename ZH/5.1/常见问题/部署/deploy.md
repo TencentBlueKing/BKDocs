@@ -2,43 +2,10 @@
 
 ## 部署 CMDB 常见问题
 
-### prot 31001 start failed，please check 先检查 cmdb 服务状态
+### prot 31001 start failed，please check 
 
 ![](../assets/cmdb-31001.png)
 
-
-```bash
-# 若服务装状态都是 RUNNING 则 
-./bkcec status cmdb 
-# 查看能否解析（非单机部署） dig 服务名 .service.consul 解析异常处理方法：
-dig zk.service.consul 
-```
-
-- 检查内部域名解析，运行 dig 域名 @127.0.0.1 看是否能解析，如果不能解析，说明 consul 有问题 
- 
-- 检查 consul 服务是否正常
- 
-- 检查三台服务器 resolv.conf  首行是否有配置 `nameserver 127.0.0.1`，如无，请添加
- 
-- 重启或重装 consul 服务
- 
-```bash
-./bkcec stop consul  #(或在 consul 服务所在的三台主机，ps -ef |grep consul | awk '{print $2}'  |xargs kill -9)
-./bkcec install consul 1
-./bkcec start consul
-
-```
-
-### 若安装 consul 报错
- 
-检查 `/data/src/service/consul/` 是否有这两个文件夹 `bin ，conf`；`bin` 文件夹下是否有文件
-
-- 备份一下 src 下的`.pip/pip.conf` 文件，然后重新解压一下`bkce_src` 安装包，继续检查是否有文件，如果还没有
- 
-- 解压时直接用 tar xf 包名，不要加 -C，还没有文件去官网下载新包重新解压
- 
-- 对比包的 md5 是否和官网一致
- 
 - 检查防火墙端口是否有开（8300，8301，8302）
  
 - 查看日志，登录所在机器的路径：`/data/bkce/logs`
@@ -49,8 +16,8 @@ dig zk.service.consul
  
  3.2.查看`cmdb_adminserver` 日志（/data/bkce/logs/cmdb/）
  
-
-### 检查 cmdb 服务进程，参照下图
+ 
+### 检查 cmdb 服务状态，参照下图
 
 ```bash
 ./bkcec status cmdb
@@ -59,11 +26,50 @@ dig zk.service.consul
 
 ![](../assets/cmdb-faq.png)
 
+# 若服务装状态都是 RUNNING 则查看能否解析
 
+```bash
+dig zk.service.consul 
+DiG 9.11.4-P2-RedHat-9.11.4-9.P2.el7 <<>> zk.service.consul
+global options: +cmd
+Got answer:
+->>HEADER<<- opcode: QUERY, status: NOERROR, id: 15784
+flags: qr aa rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 0
+QUESTION SECTION:
+zk.service.consul.                IN        A
+ANSWER SECTION:
+zk.service.consul.        0        IN        A        10.0.0.1
+zk.service.consul.        0        IN        A        10.0.0.2
+zk.service.consul.        0        IN        A        10.0.0.3
+Query time: 0 msec
+SERVER: 127.0.0.1#53(127.0.0.1)   
+WHEN: Thu Nov 14 11:27:12 CST 2019
+MSG SIZE  rcvd: 83
+```
+解析异常处理方法：
+
+- 检查三台服务器 `/etc/resolv.conf`配置  首行是否有配置 `nameserver 127.0.0.1`，如无，请添加
+- 检查consul配置中是否有`ls /data/bkce/etc/consul.d/zk-config.json`,如无，则重装consul服务
+```bash
+./bkcec stop consul  #(或在consul服务所在的三台主机，ps -ef |grep consul | awk '{print $2}'  |xargs kill -9)
+./bkcec install consul 1
+./bkcec start consul
+```
+
+### 若安装 consul 报错
+ 
+检查 `/data/src/service/consul/` 是否有这两个文件夹 `bin ，conf`；`bin` 文件夹下是否有文件
+
+- 备份一下 src 下的`.pip/pip.conf` 文件，然后重新解压一下`bkce_src` 安装包，继续检查是否有文件，如果还没有
+ 
+- 解压时直接用 tar xf 包名，不要加 -C，若还是没有文件则去官网下载新包重新解压
+ 
+- 对比包的 md5 是否和官网一致
+ 
 
 ### cmdb-nginx 服务状态 failed 
 
-检查 `yum info nginx` 
+检查cmdb模块所在机器上是否能 YUM 安装 Nginx `yum info nginx` 
  
  安装 epel YUM 源, 重装 CMDB
 
@@ -135,7 +141,7 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 ```
 
 
-重新执行命令部署 bkdata 即可恢复
+重新执行命令部署 BKDATA 即可恢复
 
 ### 安装 python-snappy 包失败
 
@@ -185,8 +191,12 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 ```bash
 ./bkcec sync common
 ```
-
-
-
-
+![](../assets/saas.png)
+```bash
+./bkcec stop paas
+./bkcec upgrade paas
+./bkcec start paas
+再次执行部署saas
+./bkcec install saas-o
+```
  
