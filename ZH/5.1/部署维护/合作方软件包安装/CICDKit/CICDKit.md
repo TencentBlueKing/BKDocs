@@ -4,10 +4,10 @@
 1. 官网下载 [CICDKit 软件包](https://bk.tencent.com/download_sdk/) 和  [CICDKit 脚本安装包](https://bk.tencent.com/download_sdk/)
 >注意：部署 CICDKit 属于增值部署，需提前部署好蓝鲸基础社区版环境，脚本需基于 V1.4.13 版本之上部署。
 
-    ```bash
+```bash
     tar -xf bkce_cicdkit-1.0.0.tgz -C /data
     tar -xf install_ce-cicdkit_fix-1.0.2.tar -C /data
-    ```
+```
 
 2. 安装 CICDKit 的机器可用配置不能低于 4C8G，系统版本不能低于 Centos 7.0，建议单独一台机器部署。
 
