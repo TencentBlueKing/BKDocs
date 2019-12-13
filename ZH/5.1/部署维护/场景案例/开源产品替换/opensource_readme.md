@@ -8,10 +8,10 @@
 
 | 开源产品     | 替换已有社区版限制| 开源产品地址  |
 | --------- | -------- | ------- |
-| 配置平台     | 社区版 V5.0 或以上版本(配置平台版本 3.2.2 或以上) | https://github.com/Tencent/bk-cmdb |
-| PaaS 平台     | 社区版 V5.0.4 及以下版本                        | https://github.com/Tencent/bk-paas |
-| 标准运维     | 不限制替换版本，按照替换文档操作即可          | https://github.com/Tencent/bk-sops |
-| 容器管理平台 | 社区版 V5.1 或以上版本                          | https://github.com/Tencent/bk-bcs  |
+| 配置平台     | 社区版 V5.0 或以上版本(配置平台版本 3.2.2 或以上) | [https://github.com/Tencent/bk-cmdb](https://github.com/Tencent/bk-cmdb) |
+| PaaS 平台     | 社区版 V5.0.4 及以下版本                        | [https://github.com/Tencent/bk-paas](https://github.com/Tencent/bk-paas) |
+| 标准运维     | 不限制替换版本，按照替换文档操作即可          | [https://github.com/Tencent/bk-sops](https://github.com/Tencent/bk-sops) |
+| 容器管理平台 | 社区版 V5.1 或以上版本                          | [https://github.com/Tencent/bk-bcs](https://github.com/Tencent/bk-bcs)  |
 | 故障自愈    | 敬请期待  | 敬请期待  |
 
 2. 产品升级：
