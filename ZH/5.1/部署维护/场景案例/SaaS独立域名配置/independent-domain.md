@@ -6,7 +6,9 @@
 - SaaS 通过 PaaS 平台部署到正式环境, 可以通过 `http:/paas.bking.com/o/{app_code}/` 正常访问到。
 - 此时, 通过配置独立域名, 可以通过 `http://{app_code}.bking.com/` 访问到。
 - 注意: 独立域名必须同 `PAAS_DOMAIN`处于同一个一级域名下, 因为要使用 Cookie 进行登录态同步( PaaS 项目配置 `BK_COOKIE_DOMAIN`)。
-- 该文档支持配置使用独立域名访问 SaaS 应用, 但是保持 `/o/{app_code}/` 路径, 这样做的好处: 1) 应用代码不需要做修改 。2) 同时独立域名及在桌面访问该应用。
+- 该文档支持配置使用独立域名访问 SaaS 应用, 但是保持 `/o/{app_code}/` 路径, 这样做的好处: 
+     -  1) 应用代码不需要做修改。
+     -  2) 同时独立域名及在桌面访问该应用。
 
 目前的流量链路: `PaaS 一级 Nginx 服务器 -> APPO 二级 Nginx 服务器 -> {app_code}.sock`。
 
