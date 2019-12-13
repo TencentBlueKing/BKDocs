@@ -70,7 +70,7 @@ PAAS_INNER_DOMAIN = '__PAAS_HOST__:__PAAS_HTTP_PORT__'
 
 2. `PAAS_INNER_DOMAIN` 是内网地址，即到 `consul` 的地址。
 
-此时，给到 `saas` 的环境变量都是`https`。
+此时，给到 `SaaS` 的环境变量都是`https`。
 
 ```python
 BK_PAAS_HOST = "https://%s" % settings.PAAS_DOMAIN
