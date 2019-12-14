@@ -4,6 +4,13 @@
 
 ![](../media/15365875823211.jpg)
 <center>图 1. 组件监控</center>
+<<<<<<< HEAD
+
+![Nginx_metrics](../media/Nginx_metrics.gif)
+<center>图 2. Nginx 关键性能指标监控</center>
+
+![Oracle_metrics](../media/Oracle_metrics.gif)
+=======
 
 
 ![Nginx_metrics](../media/Nginx_metrics.gif)
@@ -12,6 +19,7 @@
 
 ![Oracle_metrics](../media/Oracle_metrics.gif)
 
+>>>>>>> 9744d76a07437b92b4f56094daf34a15463857e6
 <center>图 3. Oracle 关键性能指标监控</center>
 
 蓝鲸监控除内置组件性能指标的采集能力，同时兼容 Prometheus Exporter 的导入及开发能力，用户通过自主开发采集器对接蓝鲸监控，可全面覆盖组件的采集能力。

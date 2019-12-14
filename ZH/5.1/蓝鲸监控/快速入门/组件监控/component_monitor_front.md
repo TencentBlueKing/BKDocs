@@ -3,7 +3,11 @@
 如何使用蓝鲸监控快速对开源组件、中间件服务进行监控，保障业务的应用服务运行正常。
 
 ![](../../media/component_monitor_homepage.png)
+<<<<<<< HEAD
+<center>图例: 组件监控页面</center>
+=======
 <center>图1. 组件监控页面</center>
+>>>>>>> 9744d76a07437b92b4f56094daf34a15463857e6
 
 ## 前置步骤
 
