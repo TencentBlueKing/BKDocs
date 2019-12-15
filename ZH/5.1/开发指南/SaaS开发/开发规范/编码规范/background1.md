@@ -459,7 +459,7 @@ API 的 Method，要符合实际请求的类型。
 	```
   或者
 
-  ```json
+```json
 	{
 		"result": true,
 		"message": "","code": 200,"data": {"total": 10,"results": [
@@ -474,7 +474,7 @@ API 的 Method，要符合实际请求的类型。
 			],
 		}
 	}
-	```
+```
 
 
 4. 不允许使用变量作为 JSON key
@@ -482,15 +482,15 @@ API 的 Method，要符合实际请求的类型。
     根据 JSON 规范 http://www.json.org/json-zh.html ，JSON 的 key 仅用于解释其对应的 value 的含义，而不应该用于存放数据本身。
 
     错误的写法
-	```json
+```json
 {
 	"result": true,
 	"message": "","code": 200,"data": {"110000":" 北京市 ","120000":" 天津市 "}
 }
-	```
+```
     应改为
 
-  ```json
+```json
 {
 	"result": true,
 	"message": "","code": 200,"data": [
@@ -504,7 +504,7 @@ API 的 Method，要符合实际请求的类型。
 		}
 	]
 }
-	```
+```
 
 
 #### 5.2.3 合适的状态码
