@@ -457,9 +457,9 @@ API 的 Method，要符合实际请求的类型。
 		"meta": {"total": 100,}
 	}
 	```
-  或者
+    或者
 
-```json
+        ```json
 	{
 		"result": true,
 		"message": "","code": 200,"data": {"total": 10,"results": [
@@ -474,7 +474,7 @@ API 的 Method，要符合实际请求的类型。
 			],
 		}
 	}
-```
+        ```
 
 
 4. 不允许使用变量作为 JSON key
@@ -482,29 +482,29 @@ API 的 Method，要符合实际请求的类型。
     根据 JSON 规范 http://www.json.org/json-zh.html ，JSON 的 key 仅用于解释其对应的 value 的含义，而不应该用于存放数据本身。
 
     错误的写法
-```json
-{
-	"result": true,
-	"message": "","code": 200,"data": {"110000":" 北京市 ","120000":" 天津市 "}
-}
-```
+       ```json
+	{
+		"result": true,
+		"message": "","code": 200,"data": {"110000":" 北京市 ","120000":" 天津市 "}
+	}
+       ```
     应改为
 
-```json
-{
-	"result": true,
-	"message": "","code": 200,"data": [
-		{
-			"code": "110000",
-			"name": "北京市"
-		},
-		{
-			"code": "120000",
-			"name": "天津市"
-		}
-	]
-}
-```
+       ```json
+	{
+		"result": true,
+		"message": "","code": 200,"data": [
+			{
+				"code": "110000",
+				"name": "北京市"
+			},
+			{
+				"code": "120000",
+				"name": "天津市"
+			}
+		]
+	}
+	```
 
 
 #### 5.2.3 合适的状态码
@@ -526,9 +526,11 @@ status，再用响应中 "约定" 的 code 进行补充。
 #### 5.2.4 参数获取方式
 
 1. 使用 Django URL 的正则匹配获取参数
+
   ```python
-url (r'\^area/(?P\<cityID\>\\d {6})/\$', 'get_area')
+  url (r'\^area/(?P\<cityID\>\\d {6})/\$', 'get_area')
   ```
+  
 2. 使用 Django Forms 获取参数
   ```python
 	class FilterForm (forms.Form):
