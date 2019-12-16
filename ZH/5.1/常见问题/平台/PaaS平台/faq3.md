@@ -98,8 +98,13 @@ tcp        0      0 0.0.0.0:8010            0.0.0.0:*               LISTEN      
 
 - 登录 PaaSAgent 服务器(APPO/APPT)
 - 编辑`paas_agent_config.yaml`, 修改 `EXECUTE_TIME_LIMIT` 字段值
+```bash
+/data/bkce/paas_agent/paas_agent/etc/paas_agent_config.yaml
+```
 - 重启 PaaSAgent
-
+```bash
+supervisorctl -c /data/bkce/etc/supervisor-paas_agent.conf restart all
+```
 ## 2. PaaS 变更
 
 - 登录 PaaS 服务器
