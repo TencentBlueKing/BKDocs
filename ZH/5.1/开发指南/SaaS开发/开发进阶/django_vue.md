@@ -231,7 +231,7 @@ HelloWolrd组件代码
 
 ![](./pictures/027.png)
 
-这个实战项目把 vu e前端页面分为三个部分，分别是“导航栏 Header.vue 组件“、“中间切换组件(包括 SubmitInfo.vue 和 ScoreManage.vue)”、“底部栏 Footer.vue 组件”。直接使用的蓝鲸 magicbox 上面的组件来构建的，所以就不展示前端 vue 组件的代码。
+这个实战项目把 vue 前端页面分为三个部分，分别是“导航栏 Header.vue 组件“、“中间切换组件(包括 SubmitInfo.vue 和 ScoreManage.vue)”、“底部栏 Footer.vue 组件”。直接使用的蓝鲸 magicbox 上面的组件来构建的，所以就不展示前端 vue 组件的代码。
 
 ![](./pictures/028.png)
 
