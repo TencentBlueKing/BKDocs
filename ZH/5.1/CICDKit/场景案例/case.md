@@ -67,4 +67,4 @@
 
 保存后再次执行流水线，即可完成一个项目的简单 CI、CD 过程，更多功能节点可按需进行配置和使用：
 
-![](../assets/bk-cicdkit-69.png)
+![](../assets/bk-cicdkit-59.png)
