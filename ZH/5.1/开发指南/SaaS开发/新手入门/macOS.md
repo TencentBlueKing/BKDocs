@@ -42,15 +42,15 @@ mysqladmin -uroot -p password {new_password}
 
 - [修改 pip 源](https://pip.pypa.io/en/stable/user_guide/#config-file) (国内镜像)
 
-    ```bash
-	vim ~/.pip/pip.conf
-	```
+```bash
+vim ~/.pip/pip.conf
+```
 
-    ```bash
-    [global]
-    trusted-host = pypi.tuna.tsinghua.edu.cn
-    index-url = https://pypi.tuna.tsinghua.edu.cn/simple/
-    ```
+```bash
+[global]
+trusted-host = pypi.tuna.tsinghua.edu.cn
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple/
+ ```
 
 - 安装 [pipenv](https://zhuanlan.zhihu.com/p/37581807)
 
