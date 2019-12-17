@@ -27,7 +27,7 @@
 
 ![](../assets/17403.png)
 
-邮件渠道配置参数图
+<center>邮件渠道配置参数图</center>
 
 - dest_url: 若用户不擅长用 Python，可以提供一个其他语言的接口，填到 dest_url，ESB 仅作请求转发即可打通邮件配置
 - smtp_host: SMTP 服务器地址（注意区分企业邮箱还是个人邮箱）
