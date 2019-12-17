@@ -529,7 +529,7 @@ status，再用响应中 "约定" 的 code 进行补充。
 | 429 | Too Many Requests : 因为访问频繁，你已经被限制访问，稍后重试                     |
 | 500 | Internal Server Error : 服务器错误，确认状态并报告问题                           |
 
-> http 状态码详细说明请参考：https://zh.wikipedia.org/wiki/HTTP% E7%8A% B6% E6%80%81% E7% A0%81
+> http 状态码详细说明请参考：[https://zh.wikipedia.org/wiki/HTTP%](https://zh.wikipedia.org/wiki/HTTP%)
 
 #### 5.2.4 参数获取方式
 
