@@ -100,5 +100,5 @@ POST
 | bk_supplier_account  | string             | 开发商账号                                                                                     |
 | bk_ispaused          | bool               | 是否停用, true or false                                                                        |
 | ispre                | bool               | 是否预定义, true or false                                                                      |
-| bk_obj_icon          | string             | 对象模型的ICON信息，用于前端显示，取值可参考[(modleIcon.json)](/static/esb/api_docs/res/cc/modleIcon.json)|
+| bk_obj_icon          | string             | 对象模型的ICON信息，用于前端显示，取值可参考[(modleIcon.json)](./modleIcon.json)|
 | position             | json object string | 用于前端展示的坐标                                                                             |
