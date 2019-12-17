@@ -41,7 +41,7 @@
 
 ## 3. 接入 ESB API
 
-参照 [蓝鲸 API 网关开发指南](5.1/开发指南/扩展开发/API网关/README.md)完成 ESB 接入，然后更新标准运维`bluking/component`下的文件。
+参照 [蓝鲸 API 网关开发指南](5.1/开发指南/扩展开发/API网关/README.md)完成 ESB 接入，然后更新标准运维`blueking/component`下的文件。
 
 ![](./media/33.png)
 
