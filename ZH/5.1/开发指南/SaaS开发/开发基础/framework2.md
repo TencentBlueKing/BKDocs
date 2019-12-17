@@ -60,7 +60,7 @@
 
 - App 基本信息
 
-在 config/_\_init__.py 可以查看 App 基本信息，请修改： APP_CODE 、SECRET_KEY （用于 App 认证）和 BK_URL (蓝鲸 SaaS 应用的 URL)。RUN_VER 是当前 App 运行的 PaaS 版本，请不要修改。
+在 config/_\_init__.py 可以查看 App 基本信息，请修改： APP_CODE 、SECRET_KEY （用于 App 认证）和 BK_URL (蓝鲸 PaaS 应用的 URL)。RUN_VER 是当前 App 运行的 PaaS 版本，请不要修改。
 
 - App 运行环境
 
