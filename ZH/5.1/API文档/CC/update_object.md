@@ -35,7 +35,7 @@ POST
 | bk_classification_id| string             | 是     | 对象模型的分类ID，只能用英文字母序列命名|
 | bk_obj_name         | string             | 否     | 对象模型的名字                          |
 | bk_supplier_account | string             | 是     | 开发商账号                              |
-| bk_obj_icon         | string             | 否     | 对象模型的ICON信息，用于前端显示，取值可参考[(modleIcon.json)](/static/esb/api_docs/res/cc/modleIcon.json)|
+| bk_obj_icon         | string             | 否     | 对象模型的ICON信息，用于前端显示，取值可参考[(modleIcon.json)](./modleIcon.json)|
 | position            | json object string | 否     | 用于前端展示的坐标                      |
 
 
