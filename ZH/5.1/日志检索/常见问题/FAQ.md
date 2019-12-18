@@ -10,4 +10,4 @@
 
 3. Q: 如何查看索引及数据量
 
-   A: 在中控机上 `source /data/install/utils.fc`, `curl ${ES_IP}:${ES_REST_PORT}/_cat/indices | sort | less -N`
+   A: 在中控机上 `source /data/install/utils.fc` && `curl ${ES_IP}:${ES_REST_PORT}/_cat/indices | sort | less -N`
