@@ -25,7 +25,7 @@
 
 ### 利用 APP 开发框架中的 SDK 包
 
-使用 SDK 包访问 API 有两种方式，shortcuts 或 ComponentClient。使用示例如下：
+使用 SDK 包访问 API 有两种方式 shortcuts 或 ComponentClient。使用示例如下：
 
 - shortcuts -- get_client_by_request
 ```python
