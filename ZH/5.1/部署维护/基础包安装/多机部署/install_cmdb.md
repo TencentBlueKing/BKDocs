@@ -1,4 +1,4 @@
-# 安装 CMDB 详细步骤
+## 安装 CMDB 详细步骤
 
 CMDB 是蓝鲸的配置平台，数据库采用 MongoDB ，服务发现和配置管理使用 ZooKeeper ，快照数据使用 Redis 存储，快照采集依赖 GSE。
 
@@ -10,7 +10,7 @@ CMDB 依赖的组件和服务如下：
 
 Github 上也有 CMDB 的安装说明，蓝鲸社区版集成时稍微做了些规范改造和安装自动化，需要了解为什么这样安装 MongoDB 的，可以阅读 [CMDB 部署文档](https://github.com/Tencent/bk-cmdb/blob/master/docs/overview/installation.md)。
 
-## 安装 MongoDB
+### 安装 MongoDB
 
 安装 CMDB 的依赖中， MongoDB 是最重要的存储依赖，且目前只有 CMDB 独享，故先介绍 MongoDB 的安装：
 
@@ -36,7 +36,7 @@ Github 上也有 CMDB 的安装说明，蓝鲸社区版集成时稍微做了些�
 
 4. 调用 `$INSTALL_PATH/service/mongodb/bin/mongodb.sh start` 启动 MongoDB。
 
-## 安装 ZooKeeper
+### 安装 ZooKeeper
 
 ZooKeeper 在这里的用途是作为 CMDB 的服务发现组件：
 
@@ -78,7 +78,6 @@ ZooKeeper 在这里的用途是作为 CMDB 的服务发现组件：
 
     - 将 `globals.env` 里配置的 `CMDB_FQDN` 域名写入 `/etc/hosts`。
 
-
 2. 启动配置平台
 
     - 需要等待 ZK 服务可用，通过 `dig +short zk.service.consul` 是否解析成功来判断。
@@ -94,7 +93,7 @@ ZooKeeper 在这里的用途是作为 CMDB 的服务发现组件：
 
     - 调用 cmdb_adminserver 的 http 接口（/migrate/v3/migrate/community/0），来初始化 CMDB 。
 
-## 安装管控平台
+### 安装管控平台
 
 配置平台的快照数据，依赖蓝鲸组件 `GSE` 后台：
 
@@ -107,9 +106,11 @@ ZooKeeper 在这里的用途是作为 CMDB 的服务发现组件：
 详解：
 
 1. 安装 GSE
+
     - 拷贝 GSE 后台， cert 目录 到 `$INSTALL_PATH/` 下。
 
     - 根据 `globals.env` 里是否自动获取外网 IP 配置，来设定 GSE 需要监听的 IP 地址。
+    
     - 渲染配置模板。
 
     - 将 Agent ， Proxy ，和证书打包，并传到 Nginx 的 `miniweb` 下，供安装 Agent 时使用。
