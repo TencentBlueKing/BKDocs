@@ -1,8 +1,9 @@
-# 环境验证
+## 环境验证
 
-## 从后台验证环境是否安装正常
+### 从后台验证环境是否安装正常
 
 1. 登录到中控机，通过脚本自带的命令查询蓝鲸后台模块的运行状态
+
 ```bash
 # 加载环境变量和蓝鲸安装维护的函数
 source /data/install/utils.fc
@@ -10,8 +11,10 @@ source /data/install/utils.fc
 # 查看运行状态
 ./bkcec status all
 ```
+
 ![后台状态图1](../../assets/check1.png)
 ![后台状态图2](../../assets/check2.png)
+
 如上图所示，所有模块状态都是 `RUNNING` 则说明蓝鲸社区版后台模块部署正常。
 
 2. 检查 BKDATA 清洗数据的任务是否正常启动
@@ -26,6 +29,7 @@ source /data/install/utils.fc
   - 社区版 V5.1 及之后版本，在部署完 BKDATA 后，检查进程  `run_cron` 是否存活:
 
 3. 检查 BKDATA 运行状态
+
   ```bash
   # 从中控机中跳转到 BKDATA Svr，执行检查脚本检查接口，无报错即正常
 
@@ -67,11 +71,12 @@ source /data/install/utils.fc
   ```
 
 - 蓝鲸监控 SaaS 的监控检查接口，可以用浏览器直接访问:
+
 ```bash
 http://$PAAS_FQDN:$PAAS_HTTP_PORT/o/bk_monitor/healthz/
 ```
 
-## 从页面验证功能是否运行正常
+### 从页面验证功能是否运行正常
 
 请先 **配置 host 或者 DNS** 解析后，确认访问社区版域名（部署完成后提示的域名）是否正常。
 
