@@ -127,14 +127,16 @@ install python package for bdata(monitor) failed pip optin: --no-index --find-li
 
 1. 确保 mysql-devel 已经安装
 
-可用 which mysql-devel 来确认
+yum install mysql-devel
+
+rpm -qa | grep mariadb-devel 
 
 2. 建立软连接
 
 ![](../assets/bkdata-faq2.png)
 
 ```bash
-ln -s /usr/lib64/mysql/libmysqlclient_r.so /usr/lib/libmysqlclient_r
+ln -s /usr/lib64/mysql/libmysqlclient_r.so /usr/lib/libmysqlclient_r.so
 ln -s /usr/lib64/mysql/libmysqlclient.so /usr/lib/libmysqlclient.so
 ln -s /usr/lib64/mysql/libmysqlclient.so.18 /usr/lib/libmysqlclient.so.18
 ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.0
