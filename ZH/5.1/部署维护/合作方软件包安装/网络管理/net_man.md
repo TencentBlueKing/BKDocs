@@ -1,8 +1,10 @@
 ## 网络管理平台
 
 ### 环境准备
-1. 下载 [网络管理平台](http://bk.tencent.com/download/) :
+
+1. 下载 [网络管理平台](https://bk.tencent.com/download_sdk/) :
   - 解压后目录结构如下：
+  
     ```bash
     bknetwork
     |-- bknetwork-3.6.1.tgz
