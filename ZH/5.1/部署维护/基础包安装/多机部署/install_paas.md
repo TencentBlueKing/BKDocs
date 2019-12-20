@@ -1,4 +1,4 @@
-# 安装 PaaS 平台 详细步骤
+## 安装 PaaS 平台 详细步骤
 
 PaaS 平台是蓝鲸产品的门户入口，所以安装蓝鲸先安装 PaaS 平台。
 
@@ -12,7 +12,7 @@ PaaS 平台依赖的组件和服务如下：
 ./bkcec sync all
 ```
 
-## 安装 Consul
+### 安装 Consul
 
 蓝鲸整个平台的内部通信基础是 Consul，所以最先安装的开源组件是 Consul。
 
@@ -35,7 +35,7 @@ PaaS 平台依赖的组件和服务如下：
 
 启动 Consul ，正常启动后，可以用 `consul members` 确认是否三台主机，其余机器为 client （如果机器数量大于 3）。
 
-## 安装 License 服务
+### 安装 License 服务
 
 证书服务 License 也是所有蓝鲸产品的全局依赖，第二个安装。
 
@@ -52,7 +52,7 @@ PaaS 平台依赖的组件和服务如下：
 3. 启动 License。
 
 
-## 安装 MySQL
+### 安装 MySQL
 
 开始安装 MySQL 数据库，并初始化设置。
 
@@ -75,7 +75,7 @@ PaaS 平台依赖的组件和服务如下：
 5. 对所有 install.config 里的 IP 在 MySQL 上授权。
 
 
-## 安装 Redis
+### 安装 Redis
 
 ```bash
 ./bkcec install redis
@@ -90,15 +90,15 @@ PaaS 平台依赖的组件和服务如下：
 
 3. 修改系统内核参数。
 
-    -  `net.core.somaxconn = 512`
+    - `net.core.somaxconn = 512`
 
     - `vm.overcommit_memory = 1`
 
 4. 启动 Redis。
 
-## 安装 Nginx
+### 安装 Nginx
 
-Nginx 通过 yum 命令从 epel 源里安装。
+Nginx 通过 yum 命令从 EPEL 源里安装。
 
 ```bash
 ./bkcec install nginx
@@ -107,7 +107,7 @@ Nginx 通过 yum 命令从 epel 源里安装。
 
 详解：
 
-1.  yum 安装 Nginx。
+1. yum 安装 Nginx。
 
 2. 渲染 Nginx 模板，并将 `/etc/nginx/nginx.conf` 软链到 `$INSTALL_PATH/etc/nginx.conf`。
 
@@ -115,11 +115,11 @@ Nginx 通过 yum 命令从 epel 源里安装。
 
 4. 启动 Nginx。
 
-## 安装 PaaS
+### 安装 PaaS
 
 最后安装 PaaS 模块。
 
-```bash
+ ```bash
  ./bkcec install paas
  ./bkcec initdata paas
  ./bkcec start paas
