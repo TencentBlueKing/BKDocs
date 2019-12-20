@@ -46,6 +46,6 @@ for ip in ${ALL_IP[@]};do
 ```bash
 ./bkcec stop cicdkit self
 ./bkcec start cicdkit self
- ```
+```
 
 - 从 S-mart 市场下载 [CICDKit-SaaS](http://bk.tencent.com/s-mart) 部署，CICDKit 的持续部署功能依赖 [标准运维 V3](http://bk.tencent.com/s-mart) 版本
