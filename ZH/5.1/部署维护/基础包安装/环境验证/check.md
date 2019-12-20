@@ -59,7 +59,7 @@ source /data/install/utils.fc
   # PaaS 注意 URL 末尾带上/
   curl http://$PAAS_FQDN:$PAAS_HTTP_PORT/healthz/
 
-  # CMDB(beta)，目前版本不够准确
+  # CMDB
   curl http://$CMDB_IP:$CMDB_API_PORT/healthz
 
   # JOB
