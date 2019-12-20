@@ -14,7 +14,7 @@
 
  检查依赖服务是否正常 `redis mongodb nginx gse zk` 
  
- 3.2.查看`cmdb_adminserver` 日志（/data/bkce/logs/cmdb/）
+ - 查看`cmdb_adminserver` 日志（/data/bkce/logs/cmdb/）
  
  
 ### 检查 cmdb 服务状态，参照下图
@@ -49,7 +49,7 @@ MSG SIZE  rcvd: 83
 解析异常处理方法：
 
 - 检查三台服务器 `/etc/resolv.conf`配置  首行是否有配置 `nameserver 127.0.0.1`，如无，请添加
-- 检查consul配置中是否有`ls /data/bkce/etc/consul.d/zk-config.json`,如无，则重装consul服务
+- 检查 consul 配置中是否有`ls /data/bkce/etc/consul.d/zk-config.json`,如无，则重装consul服务
 ```bash
 ./bkcec stop consul  #(或在consul服务所在的三台主机，ps -ef |grep consul | awk '{print $2}'  |xargs kill -9)
 ./bkcec install consul 1
@@ -69,7 +69,7 @@ MSG SIZE  rcvd: 83
 
 ### cmdb-nginx 服务状态 failed 
 
-检查cmdb模块所在机器上是否能 YUM 安装 Nginx `yum info nginx` 
+检查 cmdb 模块所在机器上是否能 YUM 安装 Nginx `yum info nginx` 
  
  安装 epel YUM 源, 重装 CMDB
 
