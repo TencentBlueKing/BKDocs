@@ -180,7 +180,7 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 
 ## 部署 SaaS 常见问题
 
-**安装 saas-o 报错 KeyError: "name='bk_csrftoken', domain=None, path=None"**
+1、**安装 saas-o 报错 KeyError: "name='bk_csrftoken', domain=None, path=None"**
 
 ![](../assets/saas-key.png)
 
@@ -188,10 +188,14 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 
 确认是否是在 PaaS 页面个人信息重置了密码后，但是 `globals.env` 文件没同步更新。 请在 `globals.env` 文件中更新重置后的密码后确认是否恢复正常。
 同步配置信息
+
+2、**NameError: global name 'loggin' is not defined**
 ```bash
 ./bkcec sync common
 ```
 ![](../assets/saas.png)
+
+- 解决方案
 ```bash
 ./bkcec stop paas
 ./bkcec upgrade paas
