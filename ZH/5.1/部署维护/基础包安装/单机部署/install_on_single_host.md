@@ -1,4 +1,4 @@
-# 单机部署
+## 单机部署
 
 单机部署方案是针对新老用户快速低成本的搭建一套精简版的蓝鲸社区版推出的。
 
@@ -7,14 +7,13 @@
 
 精简版蓝鲸平台满足简单的运维场景需求，包含：PaaS 平台，配置平台，作业平台，以及安装  Agent 用的 节点管理 SaaS。
 
-## 部署方式
+### 部署方式
 
 - [腾讯云实验室](https://cloud.tencent.com/developer/labs/lab/10386)
 
 - 自行提供主机
 
-
-## 自行提供主机
+### 自行提供主机
 
 按照安装 [环境准备](../../基础包安装/环境准备/get_ready.md) 章节中，主机和系统环境的要求做好相应设置。
 
@@ -32,9 +31,11 @@
     ```
 
   - 获取机器的 MAC 地址后，下载 [证书文件](https://bk.tencent.com/download_ssl/)，解压到 src/cert 目录下
+  
     ```bash
     $ tar xf ssl_certificates.tar.gz -C /data/src/cert
     ```
+    
 * 配置参数
 
   - install.config 这个文件安装脚本会自动生成，无需自行配置。
@@ -46,12 +47,14 @@
 * 执行安装
 
   如果部署全部组件，请执行：
+  
   ```bash
   $ cd /data/install
   $ ./install_minibk -y
   ```
 
   如果按需部署，假设只需要 PaaS，CMDB，JOB 平台，请执行：
+  
   ```bash
   $ cd /data/install
   $ ./install_minibk
@@ -60,7 +63,7 @@
 
   安装过程中遇到失败的情况，请先定位排查解决后，再重新运行失败时的安装指令。
 
-## 访问蓝鲸
+### 访问蓝鲸
 
 根据 `install/globals.env` 里配置的 PaaS 域名(PAAS_FQDN)、账号 (PAAS_ADMIN_USER)、密码(PAAS_ADMIN_PASS)信息，登录访问(若域名没设置 DNS 解析，需配置本机 hosts)。
 
@@ -82,6 +85,6 @@
 
 日常维护和运维，单机部署和多机是一致的，请参考 [维护文档](../../维护手册/日常维护/maintain.md)。
 
-## 使用蓝鲸
+### 使用蓝鲸
 
 请参考蓝鲸各 [产品白皮书](https://bk.tencent.com/docs/)。
