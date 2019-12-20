@@ -36,7 +36,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **kafka：** 分布式数据流处理服务。
 
-- **zk：** zookeeper 分布式配置服务。
+- **zk：** ZooKeeper 分布式配置服务。
 
 - **es：** elasticsearch 分布式搜索和数据分析引擎。
 
