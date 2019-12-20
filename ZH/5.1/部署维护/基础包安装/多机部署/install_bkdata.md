@@ -1,4 +1,4 @@
-# 安装 BKDATA 详细步骤
+## 安装 BKDATA 详细步骤
 
 BKDATA（蓝鲸数据平台基础服务）包含三个子工程
 
@@ -10,9 +10,9 @@ BKDATA（蓝鲸数据平台基础服务）包含三个子工程
 
 新增的依赖有 `Kafka` 、 `ES` 、 `Beanstalk` 、 `InfluxDB` 。其中 Kafka 用来做数据流处理； ES(Elasticsearch) 用来存储日志文本数据； Beanstalk 是监控后台依赖的队列服务， InfluxDB 是存储信息的时序数据库。
 
-## 安装依赖
+### 安装依赖
 
-### 安装 Elasticasearch
+#### 安装 Elasticasearch
 
 ```bash
 ./bkcec install es
@@ -36,7 +36,7 @@ BKDATA（蓝鲸数据平台基础服务）包含三个子工程
 
 2. 启动 ES
 
-### 安装 Kafka
+#### 安装 Kafka
 
 ```bash
 ./bkcec install kafka
@@ -57,7 +57,7 @@ BKDATA（蓝鲸数据平台基础服务）包含三个子工程
 
 2. 启动 Kafka
 
-### 安装 Beanstalk
+#### 安装 Beanstalk
 
 ```bash
 ./bkcec install beanstalk
@@ -69,7 +69,7 @@ BKDATA（蓝鲸数据平台基础服务）包含三个子工程
 1. 安装 Beanstalkd(install_beanstalk) ，使用 Yum 安装。
 2. 启动 Beanstalk。
 
-### 安装 InfluxDB
+#### 安装 InfluxDB
 
 ```bash
 ./bkcec install influxdb
@@ -88,7 +88,7 @@ BKDATA（蓝鲸数据平台基础服务）包含三个子工程
 
 2. 启动 InfluxDB
 
-### 安装 BKDATA
+#### 安装 BKDATA
 
 ```bash
 ./bkcec install bkdata
@@ -129,7 +129,7 @@ BKDATA（蓝鲸数据平台基础服务）包含三个子工程
     - 如果是第一次启动 BKDATA ，那么运行 init_bkdata_snapshot 函数，因为这个初始化需要 dataapi 启动后才能运行。运行成功后，设置一个标记文件，$INSTALL_PATH/.init_bkdata_snapshot。防止重复执行。
 
 
-### 安装 FTA
+#### 安装 FTA
 
 FTA 是蓝鲸故障自愈的后台进程
 
