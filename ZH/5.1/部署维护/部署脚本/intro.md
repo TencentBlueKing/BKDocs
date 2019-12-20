@@ -38,7 +38,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **zk：** ZooKeeper 分布式配置服务。
 
-- **es：** elasticsearch 分布式搜索和数据分析引擎。
+- **es：** Elasticsearch 分布式搜索和数据分析引擎。
 
 - **consul：** 分布式服务发现和域名服务。
 
