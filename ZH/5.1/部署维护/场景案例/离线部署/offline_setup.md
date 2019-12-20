@@ -1,6 +1,6 @@
-## 离线部署
+# 离线部署
 
-### YUM 源有 ISO 镜像文件时
+## YUM 源有 ISO 镜像文件时
 
 1. 下载相关镜像文件。相关镜像下载链接请看文章末尾。
 
@@ -13,7 +13,7 @@
     mount -t iso9660 xxxx.iso /mnt/centos7
     mount -t iso9660 xxx.iso /mnt/centos7-epel
     ```
-    
+
 3. 配置离线 repo。
 
     - /etc/yum.repos.d/offline-centos7.repo
@@ -39,7 +39,7 @@
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
         ```
 
-### PIP 包准备
+## PIP 包准备
 
 PIP 包蓝鲸自带了离线包，所以无需单独下载。
 **注意：** bkdata 和 fta 自带的包可能会和安装时的操作系统不匹配，导致安装失败。

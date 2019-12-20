@@ -1,8 +1,8 @@
-## 部署常见问题
+# 部署常见问题
 
-### 部署 CMDB 常见问题
+## 部署 CMDB 常见问题
 
-#### prot 31001 start failed，please check
+### prot 31001 start failed，please check
 
 ![](../assets/cmdb-31001.png)
 
@@ -51,7 +51,7 @@
 - 对比包的 md5 是否和官网一致
 
 
-#### cmdb-nginx 服务状态 failed
+### cmdb-nginx 服务状态 failed
 
 检查 cmdb 模块所在机器上是否能 YUM 安装 Nginx `yum info nginx`
 
@@ -71,7 +71,7 @@
 `/data/bkce/logs/cmdb/` 目录下查看相应的日志
 
 
-#### 部署 App_mgr 常见问题
+### 部署 App_mgr 常见问题
 
 ![](../assets/saas-faq.png)
 
@@ -92,7 +92,7 @@
 ./bkcec activate appt
 ```
 
-#### 部署 BKDATA 常见问题
+### 部署 BKDATA 常见问题
 
 `./bk_install bkdata` 报错
 
@@ -164,7 +164,7 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
     ./bkcec start bkdata
    ```
 
-#### 部署 SaaS 常见问题
+### 部署 SaaS 常见问题
 
 1、**安装 saas-o 报错 KeyError: "name='bk_csrftoken', domain=None, path=None"**
 

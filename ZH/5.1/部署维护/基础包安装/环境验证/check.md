@@ -1,6 +1,6 @@
-## 环境验证
+# 环境验证
 
-### 从后台验证环境是否安装正常
+## 从后台验证环境是否安装正常
 
 1. 登录到中控机，通过脚本自带的命令查询蓝鲸后台模块的运行状态
 
@@ -23,7 +23,7 @@ source /data/install/utils.fc
 
   ```bash
   # 检查是否有包含 databus_etl 的任务
-  crontab -l  
+  crontab -l
   ```
 
   - 社区版 V5.1 及之后版本，在部署完 BKDATA 后，检查进程  `run_cron` 是否存活:
@@ -76,7 +76,7 @@ source /data/install/utils.fc
 http://$PAAS_FQDN:$PAAS_HTTP_PORT/o/bk_monitor/healthz/
 ```
 
-### 从页面验证功能是否运行正常
+## 从页面验证功能是否运行正常
 
 请先 **配置 host 或者 DNS** 解析后，确认访问社区版域名（部署完成后提示的域名）是否正常。
 

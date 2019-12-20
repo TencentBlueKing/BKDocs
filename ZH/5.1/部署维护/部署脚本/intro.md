@@ -1,6 +1,6 @@
-## 部署脚本
+# 部署脚本
 
-### bkcec 说明
+## bkcec 说明
 
 bkcec 是蓝鲸社区版的安装维护主脚本。
 
@@ -26,7 +26,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - 蓝鲸自研产品。
 
-#### 开源外部组件
+### 开源外部组件
 
 **基础部分：**
 
@@ -82,7 +82,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **bcs(ops)：** 容器服务调用标准运维作业。
 
-#### 蓝鲸自研产品
+### 蓝鲸自研产品
 
 - **paas：** 蓝鲸 PaaS 平台。
 
@@ -110,9 +110,9 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 **启动蓝鲸监控后台服务示例： `./bkcec start bkdata monitor`**。
 
-### 文件用途
+## 文件用途
 
-#### 脚本包的文件说明
+### 脚本包的文件说明
 
   - **RELEASE.md：** 版本日志。
 
@@ -192,7 +192,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
   - **install.config.new.sample：** 部署 bcs 时使用。
 
-### 完成安装或日常升级后生成的文件
+## 完成安装或日常升级后生成的文件
 
 - **.agreed：** 同意安装协议后的标记文件。
 

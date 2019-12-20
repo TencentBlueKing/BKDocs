@@ -1,10 +1,10 @@
-## 安装脚本功能概述
+# 安装脚本功能概述
 
-### bkcec 脚本原理
+## bkcec 脚本原理
 
 ![bkcec脚本原理](/assets/bkcec_flow.png)
 
-### bkcec 说明
+## bkcec 说明
 
 bkcec 是蓝鲸社区版的安装维护主脚本；bk_install 是封装了 bkcec 的集成安装脚本
 
@@ -12,23 +12,23 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 其中可用的 command 有：
 
-* `sync`  
+* `sync`
 从中控机的 src/同步安装`<module>`依赖的文件和目录到对应机器的 src/下
-* `install`  
+* `install`
 安装`<module>`到$INSTALL_PATH（默认/data/bkce）下
-* `install <module> 1`  
+* `install <module> 1`
 等同于先执行 `sync <module>`，再执行`install <module>`，合二为一
-* `initdata`  
+* `initdata`
 安装后初始化，常用于模块的用户创建，sql 导入，权限设置等操作
-* `render`  
+* `render`
 渲染模块的模板文件，install 过程中会调用它，做模板变量替换。
-* `status`  
+* `status`
 检查模块的进程是否运行
-* `start`  
+* `start`
 启动模块的进程
-* `stop`  
+* `stop`
 停止模块的进程
-* `upgrade`  
+* `upgrade`
 升级更新模块
 
 其中模块名，对应 install.config 里的名称，当前社区版包含以下模块，按模块特点分为两类，一是开源外部组件，二是蓝鲸自研产品
@@ -61,101 +61,101 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 **启动蓝鲸监控后台服务示例： `./bkece start bkdata monitor`**
 
-### 文件用途
+## 文件用途
 
-#### 脚本包的文件说明
+### 脚本包的文件说明
 
-* RELEASE.md  
+* RELEASE.md
 版本日志
-* VERSION  
+* VERSION
 版本号
-* agent_setup/  
+* agent_setup/
 存放安装 Agent 相关的脚本以及脚本模版
-* appmgr/  
+* appmgr/
 存放构建 SaaS 和运行 SaaS 所需的脚本，社区版采用 virtualenv 方式
-* bk_install  
+* bk_install
 封装 bkcec 用来做集成安装部署
-* bkcec  
+* bkcec
 安装和维护的主脚本
-* bkco.env bkco.fc bkco_install  
+* bkco.env bkco.fc bkco_install
 网络管理模块所用的安装部署相关环境变量和函数定义
-* clean.fc  
+* clean.fc
 卸载清理相关函数
-* configure_ssh_without_pass  
+* configure_ssh_without_pass
 一键配置免密 ssh 登陆用的脚本
-* control.rc  
+* control.rc
 定义进程启停的函数库
-* crontab.rc  
+* crontab.rc
 crontab 新增和删除相关的函数定义
-* deck/saas.py  
+* deck/saas.py
 命令行部署 SaaS 应用的工具
-* deliver.rc  
+* deliver.rc
 定义从中控机同步文件目录到对应模块机器的函数
-* dependences.env  
+* dependences.env
 各模块依赖的命令和 rpm 包定义
-* errors.env  
+* errors.env
 错误码定义
-* functions  
+* functions
 通用的 bash 函数
-* globals.env  
+* globals.env
 定义蓝鲸组件用到的全局变量配置
-* health_check/check_proc_exists  
+* health_check/check_proc_exists
 Consul 使用的健康检查脚本
-* install.config  
+* install.config
 定义模块在主机的分布部署方式
-* install_minibk  
+* install_minibk
 最小化单机部署的封装脚本
-* migrate/  
+* migrate/
 蓝鲸套件迁移升级的脚本，目前没有用
-* parse_config  
+* parse_config
 解析 install.config 并生成 Consul l 主配置和服务定义的配置， `config.env` 等文件
-* pip/  
+* pip/
 存放安装脚本所需的 pip 依赖包
-* ports.env  
+* ports.env
 定义所有组件需要设定的端口信息
-* process_watch + watch.rc  
+* process_watch + watch.rc
 进程监控脚本
-* register.rc  
+* register.rc
 自动注册主机到 CMDB 的函数
-* scripts/  
+* scripts/
 gse_agent 和 gse_proxy 安装所需要启停脚本，在安装 GSE 时会自动打包进去
-* status.rc  
+* status.rc
 检查进程状态相关的函数
-* summary.rc  
+* summary.rc
 打印相关模块和所有模块的版本信息
-* templates/  
+* templates/
 安装脚本初始依赖的配置模版，目前只是 Consul 的 Supervisor 配置
-* templates_render.rc  
+* templates_render.rc
 渲染配置模版，根据读取配置文件和动态生成的变量去替换模版里的占位符。
-* update.rc  
+* update.rc
 一些更新配置或者证书的操作定义
-* upgrade.rc  
+* upgrade.rc
 各模块的升级操作封装
-* utils.fc  
+* utils.fc
 安装、初始化主要函数都在这里先找。
 
-#### 完成安装或日常升级后会生成的文件
+### 完成安装或日常升级后会生成的文件
 
-* .agreed  
+* .agreed
 同意安装协议后的标记文件
 
-* .app.token  
+* .app.token
 后台程序和 SaaS ，访问 ESB 接口时需要使用的 `app_code` 和 `app_token` 的键值对。
 
-* .bk_install.step  
+* .bk_install.step
 集成安装的步骤进度标记文件
 
-* .controller_ip  
+* .controller_ip
 中控机的 IP 地址
 
-* .migrate/   
+* .migrate/
 成功导入的 SQL 文件的标记文件。使用了 chattr +i ，具有不可删除属性。
 
 * .path  
 蓝鲸的安装路径。
 
-* .rcmdrc  
+* .rcmdrc
 使用 rcmd() 函数远程执行命令时，会加载的 rc 文件
 
-* /tmp/bkc.log  
+* /tmp/bkc.log
 bkeec 等脚本输出的日志

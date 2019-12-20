@@ -1,17 +1,17 @@
-## 教你一步步安装蓝鲸社区版
+# 教你一步步安装蓝鲸社区版
 
-### 导言
+## 导言
 
 本文档主要目的是阐述如何不依赖官方脚本，通过手动运行 Linux 命令，一步步安装单机蓝鲸社区版的步骤，学习了解每个组件的依赖关系，配置文件，启停方法。供有一定 Linux 系统基础，对蓝鲸本身不了解的运维阅读。实际安装使用，请使用官方安装脚本和文档进行。
 
-### 环境准备
+## 环境准备
 
 - 一台 Centos 7.x 系统的服务器，虚拟机，物理机均可
 - 建议最低配置 4 核 16G
 - 下载官方蓝鲸产品软件包：bkce_product-5.0.4.tgz
 - 生成证书文件：ssl_certificates.tar
 
-### 安装方法论
+## 安装方法论
 
 蓝鲸组件及其依赖的开源组件安装部署方法不外乎四个步骤：
 
@@ -36,7 +36,7 @@
 
 文档涉及的命令均以 root 用户运行。
 
-### 系统初始化
+## 系统初始化
 
 开始正式安装之前，我们需要对系统进行一些操作，准备好安装环境。
 
@@ -76,14 +76,14 @@ yum install zip unzip sysvinit-tools procps-ng rsync gawk curl lsof tar sed ipro
 
 系统准备工作完毕。
 
-### 安装 PaaS
+## 安装 PaaS
 
 蓝鲸社区版PaaS已经开源，具体介绍参见：https://github.com/tencent/bk-paas
 开源版的部署文档可以作为本章节的参考：https://github.com/Tencent/bk-PaaS/blob/master/docs/install/ce_paas_install.md
 
 首先安装PaaS依赖的第三方开源组件: MySQL、Redis、Nginx
 
-#### 安装 MySQL
+### 安装 MySQL
 
 MariaDB 是 MySQL 的开源社区版本，蓝鲸社区版使用 MariaDB 5.5.x 系列。其他版本可能会有兼容性问题。（为了方便起见，下文用 mysql 指代 mariadb）
 
@@ -91,7 +91,7 @@ MariaDB 是 MySQL 的开源社区版本，蓝鲸社区版使用 MariaDB 5.5.x �
 yum install mariadb-server mariadb
 ```
 
-#### 配置 MySQL
+### 配置 MySQL
 
 编辑系统安装的 mysql 配置文件。
 
@@ -118,7 +118,7 @@ MYSQL_PORT=3306
 
 > 注：mysql 用户名和密码请自行修改，文档仅为范例。
 
-#### 启动 MySQL
+### 启动 MySQL
 
 由于使用 yum 安装，可以直接使用 systemctl 启动 mysqld 服务，并确认启动成功：
 
@@ -127,7 +127,7 @@ systemctl start mariadb
 systemctl status mariadb
 ```
 
-#### 初始化 MySQL
+### 初始化 MySQL
 
 成功启动 mysqld 后，需要创建$MYSQL_USER 用户，且密码为$MYSQL_PASS，为了简单起见，赋予这个账户所有数据库的所有权限。运行以下命令进行授权：
 
@@ -139,7 +139,7 @@ mysql -u root -e "GRANT ALL ON *.* TO $MYSQL_USER@localhost IDENTIFIED BY '$MYSQ
 
 若有需要访问这个 mysql 的实例，均可以用类似的命令授权，注意替换掉$LAN_IP 为实际的访问 IP 即可。
 
-#### 安装 Redis
+### 安装 Redis
 
 Redis 也通过 yum 安装，使用 3.x，4.x 版本均可。
 
@@ -147,7 +147,7 @@ Redis 也通过 yum 安装，使用 3.x，4.x 版本均可。
 yum install redis
 ```
 
-#### 配置 Redis
+### 配置 Redis
 
 修改默认配置文件中 /etc/redis.conf 添加如下选项：
 
@@ -168,14 +168,14 @@ REDIS_PASS='Foo_bar1d'
 REDIS_PORT=6379
 ```
 
-#### 启动 Redis
+### 启动 Redis
 
 ```bash
 systemctl start redis  # 启动redis-server服务
 systemctl status redis # 查看redis的状态
 ```
 
-#### 安装 Nginx
+### 安装 Nginx
 
 Nginx 通过 yum 安装，使用 1.10.x 以上版本均可。
 
@@ -183,7 +183,7 @@ Nginx 通过 yum 安装，使用 1.10.x 以上版本均可。
 yum install nginx
 ```
 
-#### 配置 Nginx（上）
+### 配置 Nginx（上）
 
 在 CentOS 上通过 yum 安装的 nginx，使用 /etc/nginx/nginx.conf 作为主配置。/etc/nginx/conf.d/ 放置用户自定义的 server 配置，该目录下的配置通过主配置文件 include 指令而生效。对于 PaaS 需要的 nginx 配置，编辑/etc/nginx/conf.d/paas.conf 即可。蓝鲸其他依赖 Nginx 做反向代理的组件同理。
 
@@ -323,7 +323,7 @@ server {
 
 为了方便后面的叙述，以及了解社区版安装脚本使用的模版渲染原理。先插入一节模版渲染原理。
 
-#### 模版渲染原理
+### 模版渲染原理
 
 先引入一个概念，配置文件**占位符**，我们约定软件配置文件中需要在部署时动态替换的地方，使用占位符，而不写死值(hardcode)。在部署时根据用户的自定义配置文件（比如本文中的/data/blueking.env)，和安装环境自动获取这些**占位符**真实对应的值，然后调用 sed 命令进行替换。这就叫做模版渲染。
 
@@ -397,7 +397,7 @@ done
 sed -i -f /tmp/paas.sed /etc/nginx/conf.d/paas.conf
 ```
 
-#### 配置 Nginx（下）
+### 配置 Nginx（下）
 
 接上上节，配置 Nginx（上）
 
@@ -435,7 +435,7 @@ echo "$LAN_IP $PAAS_FQDN $PAAS_HOST" >> /etc/hosts
 
 这时大家应该能明白环境变量的一种功用了吧，写脚本或者写文档时能屏蔽掉环境的差异。这也是环境变量之所以叫环境变量的来由吧。微服务，容器盛行的今天，它们也不过是用环境变量来屏蔽差异。所以深刻理解和活用环境变量，对于运维来说至关重要。
 
-#### 启动 Nginx
+### 启动 Nginx
 
 启动前先确认 nginx 配置语法正确。
 
@@ -460,7 +460,7 @@ $  curl paas.service.consul
 
 这是符合预期的，502，表示 nginx 转发请求到后端服务，后端服务不可用，正因为我们的 PaaS 还没部署呢。
 
-#### 安装 open_paas
+### 安装 open_paas
 
 先安装 "安装 PaaS 的 pip 模块" 时依赖的系统包：
 
@@ -546,7 +546,7 @@ mkvirtualenv -a $INSTALL_PATH/open_paas/esb esb && pip install --no-index --find
 mkvirtualenv -a $INSTALL_PATH/open_paas/appengine appengine && pip install --no-index --find-links=$PKG_SRC_PATH/open_paas/support-files/pkgs -r requirements.txt
 ```
 
-#### 配置 PaaS
+### 配置 PaaS
 
 从上节知道，paas 的工程代码目录在 open_paas/paas 下。它启动需要读取的配置文件是$INSTALL_PATH/open_paas/paas/conf/settings_production.py。大家会发现包里并没有这个文件，这是因为如果配置文件需要编辑才能使用的，都会在打包时以某个约定的规则放到该模块目录下的 support-files/templates/目录下。比如/$INSTALL_PATH/open_paas/paas/conf/settings_production.py 就对应$PKG_SRC_PATH/open_paas/support-files/templates/paas#conf#settings_production.py.tpl
 
@@ -850,7 +850,7 @@ done
     python manage.py migrate
     ```
 
-3. 初始化 esb:  
+3. 初始化 esb:
 
     ```bash
     workon esb
@@ -1020,7 +1020,7 @@ systemctl stop paas.*
 systemctl enable paas.target
 ```
 
-### 安装 CMDB
+## 安装 CMDB
 
 cmdb 本身运行的依赖有 zookeeper，mongodb，redis，nginx。
 
@@ -1028,7 +1028,7 @@ cmdb 本身运行的依赖有 zookeeper，mongodb，redis，nginx。
 
 redis 和 nginx 前面已经安装，我们先部署 zookeeper 和 mongodb
 
-#### 安装 Zookeeper
+### 安装 Zookeeper
 
 安装 Zookeeper 可以手动下载 zookeeper 的官方包，然后解压运行。也可以通过 apache 的[bigtop 仓库](https://www.apache.org/dist/bigtop/stable/repos/centos7/bigtop.repo)进行，本文档选择前者，因为更灵活。
 
@@ -1114,7 +1114,7 @@ redis 和 nginx 前面已经安装，我们先部署 zookeeper 和 mongodb
     ~/render_tpl.sh zoo.cfg.tpl > /opt/zk/conf/zoo.cfg
     ```
 
-#### 启动 Zookeeper
+### 启动 Zookeeper
 
 手动启动 Zookeeper:
 
@@ -1159,7 +1159,7 @@ WantedBy=multi-user.target
 - 启动 ZK: `systemctl start zk`
 - 设置开机启动：`systemctl enable zk`
 
-#### 安装 MongoDB
+### 安装 MongoDB
 
 mongodb 官方提供了 rpm 包下载，分别下载以下几个 rpm：
 
@@ -1176,7 +1176,7 @@ wget https://repo.mongodb.org/yum/redhat/7/mongodb-org/3.6/x86_64/RPMS/mongodb-o
 rpm -ivh mongodb-org-*.rpm
 ```
 
-#### 配置 MongoDB
+### 配置 MongoDB
 
 编辑配置文件模板：mongod.conf.tpl
 
@@ -1221,7 +1221,7 @@ chown mongod.mongod /var/lib/mongo/mongod.key
 Chmod 400 /var/lib/mongo/mongod.key
 ```
 
-#### 启动 MongoDB
+### 启动 MongoDB
 
 配置好/etc/mongod.conf，生成 key 文件后，可以启动 MongoDB 实例。
 
@@ -1242,7 +1242,7 @@ systemctl daemon-reload # 重新加载
 systemctl start mongod  # 启动进程
 ```
 
-#### 初始化 MongoDB
+### 初始化 MongoDB
 
 1. 默认 mongodb 运行单实例模式，我们将它设置为 ReplicaSet 模式，方便今后扩展和高可用：
 
@@ -1296,7 +1296,7 @@ systemctl start mongod  # 启动进程
     END
     ```
 
-#### 安装 cmdb
+### 安装 cmdb
 
 将 cmdb 的目录从 PKG_SRC_PATH 拷贝到 INSTALL_PATH 下：
 
@@ -1310,7 +1310,7 @@ rsync -a --exclude=support-files $PKG_SRC_PATH/cmdb $INSTALL_PATH/
 mkdir -p $INSTALL_PATH/logs/cmdb
 ```
 
-#### 配置 cmdb
+### 配置 cmdb
 
 查看 cmdb 的配置文件模板的占位符，有哪些是空值的。这里我们继续优化之前的 render_tpl.sh 脚本，加入一个-c 参数，表示检查模板里的占位符渲染后为空的并打印出来。
 
@@ -1627,13 +1627,13 @@ curl  -X POST \
 
 通过浏览器打开 cmdb.bk.com 测试是否正常（本机的 hosts 文件需要配置）
 
-### 安装 GSE
+## 安装 GSE
 
 安装 cmdb 之后，安装 job 之前，我们需要安装 gse 后台服务，这样 job 平台才能有管控服务的接口。
 
 GSE 的依赖有 zk, mongodb, redis，这几个组件都已经安装启动，但是还有一些配置需要调整。我们先安装 gse，然后观察它们的配置文件占位符有哪些需要替换。
 
-#### 安装 gse
+### 安装 gse
 
 将 gse 的目录从 PKG_SRC_PATH 拷贝到 INSTALL_PATH 下：
 
@@ -1647,7 +1647,7 @@ rsync -a --exclude=support-files $PKG_SRC_PATH/gse $INSTALL_PATH/
 rsync -a $PKG_SRC_PATH/cert $INSTALL_PATH/
 ```
 
-#### 配置 gse
+### 配置 gse
 
 首先生成 APP_CODE 和 APP_TOKEN：
 
@@ -1726,7 +1726,7 @@ db.createUser( {user: "$APP_CODE",pwd: "$APP_TOKEN",roles: [ { role: "readWrite"
 END
 ```
 
-#### 初始化 gse
+### 初始化 gse
 
 启动 gse 进程之前，还需要在 zookeeper 中初始化一些配置信息。这些信息由 gse 包中的一个 shell 脚本提供：
 `$INSTALL_PATH/gse/server/bin/on_migrate`
@@ -1741,7 +1741,7 @@ END
 
 该初始化脚本主要是写入 gse 集群的一些配置信息，和后面 bkdata 模块会用到的相关配置信息。
 
-#### 启动 gse
+### 启动 gse
 
 启动 gse 的服务, 我们使用 systemd 托管：
 首先生成 gse 的 service 服务定义：
@@ -1789,7 +1789,7 @@ systemctl start gse.*
 
 gse.dba 服务比较特殊，需要先启动起来。然后启动其他 gse 后台进程。
 
-#### 生成 gse_agent 的安装包
+### 生成 gse_agent 的安装包
 
 上面部署启动 gse 的服务端后台进程后，可以安装 gse 的客户端，也就是 gse agent
 首先我们要打包生成 gse 的客户端包，方便后续分发安装需要管控的节点。
@@ -1833,11 +1833,11 @@ rm -rf $tmpdir #删除临时目录
 
 我们得到的 $HOME/gse_client*.tgz 先放在这。后面用到的时候再提到如何安装它们。
 
-### 安装 Job
+## 安装 Job
 
 我们开始安装作业平台 Job，Job 新增了一个开源组件依赖 rabbitmq。
 
-#### 安装 RabbitMQ
+### 安装 RabbitMQ
 
 rabbitmq 组件通过 yum 可以直接安装：
 
@@ -1883,7 +1883,7 @@ rabbitmqctl set_user_tags $MQ_USER administrator
 rabbitmqctl delete_user guest
 ```
 
-#### 安装 job
+### 安装 job
 
 将 job 的目录从 PKG_SRC_PATH 拷贝到 INSTALL_PATH 下：
 
@@ -1897,7 +1897,7 @@ rsync -a --exclude=support-files $PKG_SRC_PATH/job $INSTALL_PATH/
 rsync -a $PKG_SRC_PATH/cert $INSTALL_PATH/
 ```
 
-#### 配置 job
+### 配置 job
 
 给 job 生成 APP_CODE APP_TOKEN 用于调用 esb 接口:
 
@@ -2054,7 +2054,7 @@ keytool -keystore gse_job_api_client.truststore -alias ca -import -trustcacerts 
 keytool -keystore job_server.truststore -alias ca -import -trustcacerts -file job_ca.crt -storepass "$JOB_KEYTOOL_PASS" -noprompt;
 ```
 
-#### 初始化 job
+### 初始化 job
 
 导入 job 的 sql 文件，初始化数据库:
 
@@ -2068,7 +2068,7 @@ done
 
 > 注：job在启动时还会自己根据记录初始化一些库表结构。
 
-#### 启动 job
+### 启动 job
 
 配置 job 的 service unit 定义： /etc/systemd/system/job.service
 
@@ -2214,9 +2214,9 @@ mysql -h$LAN_IP -u$MYSQL_USER -p$MYSQL_PASS open_paas -e "insert into esb_app_ac
 mysql -h$LAN_IP -u$MYSQL_USER -p$MYSQL_PASS open_paas -e "update esb_function_controller set wlist=concat(wlist, ',$app_code')"
 ```
 
-### 安装 PaaS Agent
+## 安装 PaaS Agent
 
-#### 安装 paas_agent
+### 安装 paas_agent
 
 paas_agent 是，蓝鲸应用引擎 Agent，golang 编写。现已开源：[bk-paas](https://github.com/tencent/bk-paas)
 
@@ -2250,7 +2250,7 @@ pip install -r requirements.txt \
             --find-links=$INSTALL_PATH/paas_agent/support-files/pkgs
 ```
 
-#### 配置 paas_agent
+### 配置 paas_agent
 
 渲染模板：
 
@@ -2297,7 +2297,7 @@ curl --connect-timeout 10 -s \
 
 如果注册成功返回的日志里 token 和 sid 的值，将这两个值填入$INSTALL_PATH/etc/paas_agent_config.yaml 中
 
-#### 启动 paas agent
+### 启动 paas agent
 
 编辑启动 service 文件： /etc/systemd/system/paasagent.service
 
@@ -2346,7 +2346,7 @@ curl -s -X GET -H "Host: $PAAS_HOST" "http://$NGINX_IP:$PAAS_HTTP_PORT/v1/agent/
 
 paas agent 分正式环境和测试环境，上文以正式环境为例。测试环境除了注册 paas_agent 的接口时 mode=test，其他安装，启动方法并没有任何区别。
 
-### 安装 BKDATA
+## 安装 BKDATA
 
 bkdata 分为 dataapi，databus 和 monitor（蓝鲸监控后台）三个模块
 
@@ -2355,7 +2355,7 @@ bkdata 分为 dataapi，databus 和 monitor（蓝鲸监控后台）三个模块
 
 所以我们先安装这些基础依赖
 
-#### 安装 Kafka
+### 安装 Kafka
 
 1. 下载安装包（蓝鲸目前使用 0.10.2.x 系列）：
 
@@ -2423,7 +2423,7 @@ bkdata 分为 dataapi，databus 和 monitor（蓝鲸监控后台）三个模块
     systemctl start kafka
     ```
 
-#### 安装 elasticsearch
+### 安装 elasticsearch
 
 1. 下载安装包：
 
@@ -2507,7 +2507,7 @@ bkdata 分为 dataapi，databus 和 monitor（蓝鲸监控后台）三个模块
     systemctl start es
     ```
 
-### 安装 beanstalkd
+## 安装 beanstalkd
 
 beanstalkd 在 EPEL 源里存在，可以直接 yum 安装启动：
 
@@ -2516,7 +2516,7 @@ yum install beanstalkd
 systemctl start beanstalkd
 ```
 
-### 安装 influxdb
+## 安装 influxdb
 
 官方给的文档通过添加仓库后:
 
@@ -2540,7 +2540,7 @@ systemctl start influxdb
 
 也可以直接根据仓库地址，找到对应的 influxdb rpm 包后，通过 rpm 安装。
 
-#### 安装 bkdata
+### 安装 bkdata
 
 将 bkdata 的目录从 PKG_SRC_PATH 拷贝到 INSTALL_PATH 下：
 
@@ -2673,7 +2673,7 @@ mysql -h$LAN_IP -u$MYSQL_USER -p$MYSQL_PASS open_paas -e "update esb_function_co
 
 去掉 ~/render_tpl.sh 的 **-c** 参数将文件渲染。
 
-#### 初始化 bkdata
+### 初始化 bkdata
 
 接下来初始化数据库和表结构：
 
@@ -2682,7 +2682,7 @@ mysql -h$LAN_IP -u$MYSQL_USER -p$MYSQL_PASS open_paas -e "update esb_function_co
     ```bash
     source /data/blueking.env
     for sql in $PKG_SRC_PATH/bkdata/support-files/sql/*.sql
-    do  
+    do
         mysql -u$MYSQL_USER -p$MYSQL_PASS <$sql
     done
     ```
@@ -2768,7 +2768,7 @@ workon monitor
 supervisord -c /data/bkce/etc/supervisor-bkdata-monitor.conf
 ```
 
-### 安装 FTA
+## 安装 FTA
 
 fta 是故障自愈 SaaS 的后台程序
 

@@ -1,6 +1,6 @@
-## CICDKit
+# CICDKit
 
-### 环境准备
+## 环境准备
 1. 官网下载 [CICDKit 软件包](https://bk.tencent.com/download_sdk/) 和  [CICDKit 脚本安装包](https://bk.tencent.com/download_sdk/)
 >注意：部署 CICDKit 属于增值部署，需提前部署好蓝鲸基础社区版环境，脚本需基于 V1.4.13 版本之上部署。
 
@@ -19,10 +19,10 @@
     - install.config 新增 cicdkit 及其依赖的 mysql 5.7 的配置。
 
       ```bash
-      10.0.0.0 mysql57,cicdkit  
+      10.0.0.0 mysql57,cicdkit
       ```
 
-### 安装 CICDKit 后台
+## 安装 CICDKit 后台
 
 1. 开始安装
 
