@@ -1,6 +1,6 @@
-# 部署脚本
+## 部署脚本
 
-## bkcec 说明
+### bkcec 说明
 
 bkcec 是蓝鲸社区版的安装维护主脚本。
 
@@ -26,9 +26,9 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - 蓝鲸自研产品。
 
-### 开源外部组件
+#### 开源外部组件
 
-#### 基础部分：
+**基础部分：**
 
 - **nginx：** web 服务器和反向代理。
 
@@ -50,7 +50,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **redis：** 键值对存储数据库。
 
-#### BCS (容器管理平台)部分：
+**BCS (容器管理平台)部分：**
 
 - **web_console：** 是容器服务提供快捷查看集群状态的命令行服务。
 
@@ -82,8 +82,8 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **bcs(ops)：** 容器服务调用标准运维作业。
 
+#### 蓝鲸自研产品
 
-### 蓝鲸自研产品
 - **paas：** 蓝鲸 PaaS 平台。
 
 - **cmdb：** 蓝鲸配置平台。
