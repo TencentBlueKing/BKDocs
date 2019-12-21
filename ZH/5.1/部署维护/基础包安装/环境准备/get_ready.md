@@ -43,18 +43,36 @@ sestatus
 ```
 
 可以使用以下命令禁用 SELinux，或者修改配置文件。
+
 ```bash
-# 通过命令禁用 SELinux
+# 通过命令临时禁用 SELinux
 setenforce 0
 
 # 或者修改配置文件
 sed -i 's/^SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 ```
+
 接着，重启机器：
+
 ```bash
 reboot
 ```
-2. 安装 rsync 命令
+2. 关闭默认防火墙（firewalld）
+
+安装和运行蓝鲸时，模块之间互相访问的端口策略较多，建议对蓝鲸后台服务器之间关闭防火墙。
+
+```bash
+# 检查默认防火墙状态，如果返回 not running，可以跳过后面的命令
+firewall-cmd --state
+```
+
+停止并禁用 firewalld
+```bash
+systemctl stop firewalld    # 停止 firewalld
+systemctl disable firewalld # 禁用 firewall 开机启动
+```
+
+3. 安装 rsync 命令
 
 安装脚本依赖 rsync 分发同步文件。
 
@@ -65,19 +83,7 @@ which rsync
 # 安装 rsync
 yum -y install rsync
 ```
-3. 关闭默认防火墙（firewalld）
 
-安装和运行蓝鲸时，模块之间互相访问的端口策略较多，建议对蓝鲸后台服务器之间关闭防火墙。
-
-```bash
-# 检查默认防火墙状态，如果返回 not running，可以跳过后面的命令
-firewall-cmd --state
-```
-停止并禁用 firewalld
-```bash
-systemctl stop firewalld    # 停止 firewalld
-systemctl disable firewalld # 禁用 firewall 开机启动
-```
 
 4. 停止并禁用 NetWorkManager
 ```bash
