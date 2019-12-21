@@ -32,6 +32,7 @@ bkui
 ### 帮助
 
 在 `BKUI-CLI` 的每条命令 `<command>` 后面加上 `-h` 或者 `--help` 参数 `[options]`，会显示当前命令的帮助。
+
 **接下来我们详细介绍 `BKUI-CLI` 的每条命令以及参数**。
 
 ## bkui -h 命令
@@ -364,7 +365,8 @@ html 文件中有几个变量（`SITE_URL`, `BK_STATIC_URL`, `REMOTE_STATIC_URL`
 - 命令行问答 `AJAX_MOCK_PARAM` 设置为默认值 `mock-file`，如果初始化工程后需要改动，修改 `${ROOT}/build/dev.env.js` 中的 `AJAX_MOCK_PARAM` 值即可
 - 同时在 `${ROOT}/mock/ajax` 目录下创建 app 文件夹，文件夹中创建 index 文件，参照文件中已存在内容的写法，判断 invoke 为 getUserInfo 时，返回对应的 mock 数据即可
 - mock `http://www.bking.com/api/user` 这个请求，只需在这个请求后加上这段参数即可 `?mock-file=/index&invoke=getUserInfo`；去掉这段参数，就会真正请求后端数据
-:::info 如何修改本配置？
+
+::: info 如何修改本配置？
 本配置是 `${ROOT}/build/dev.env.js` 中的 `AJAX_MOCK_PARAM` 字段，可根据自己的需求修改。
 
 在 `${ROOT}/build/prod.env.js` 也有一个 `AJAX_MOCK_PARAM` 字段，正常来说，生产环境中不会使用 mock 的字段，不过为了防止在打包构建后的文件中直接出现 `AJAX_MOCK_PARAM` 变量，因此在 `${ROOT}/build/prod.env.js` 文件中我们也设置了 `AJAX_MOCK_PARAM` 字段。

@@ -66,6 +66,6 @@ python manage.py celery beat -l info
 
 - 目前开发框架设置的 celery 并发数是 2，如需调整，有 2 种方法：
 
-  - 1.在蓝鲸平台的 APP 环境变量新增 KEY 为 CELERYD_CONCURRENCY 的变量，并设置对应的值（调大前建议咨询平台维护同事。
+  - 1.在蓝鲸平台的 APP 环境变量新增 KEY 为 CELERYD_CONCURRENCY 的变量，并设置对应的值（调大前建议咨询平台维护同事）。
 
   - 2.直接修改 APP 中的配置，即修改 config/default.py 文件中如下配置的默认值 2 为你想要设置的值。 `CELERYD_CONCURRENCY = os.getenv('BK_CELERYD_CONCURRENCY', 2)`
