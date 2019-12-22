@@ -81,7 +81,7 @@ pipenv shell
 
 - 修改 requirements.txt 文件
     - 注释 uwsgi 所在行（本地开发环境搭建不需要），否则会提示 `An error occurred while installing uwsgi==2.0.13.1 `
-    - 修改 Django 版本为 1.11.17，因为 Python 3.7.3 依赖 Django 1.11.17，不兼容框架中的 1.11.2，否则会提示`SyntaxError: Generator expression must be parenthesized`
+    - 修改 Django 版本为 1.11.17，因为 Python 3.7.3 依赖 Django 1.11.17，不兼容框架中的 1.11.2，否则会提示 `SyntaxError: Generator expression must be parenthesized`
 
 - 安装框架依赖包
 
@@ -93,10 +93,12 @@ pip3 install -r requirements.txt
 #### 2.2 修改配置  
 
 - 修改应用 (SaaS) 配置 (此处内部版已直接填充到开发框架中)
-修改 config/\_\_init\_\_.py 中的 `APP_CODE` 和 `SECRET_KEY`
+
+    修改 config/\_\_init\_\_.py 中的 `APP_CODE` 和 `SECRET_KEY`
 
 - 修改 PaaS 地址
-修改 config/\_\_init\_\_.py 中的`BK_URL`为`{PAAS_URL}`
+
+    修改 config/\_\_init\_\_.py 中的 `BK_URL` 为 `{PAAS_URL}`
 
 #### 2.3 创建和初始化数据库 
 
@@ -137,7 +139,7 @@ python manage.py runserver appdev.{PAAS_URL}:8000
 
 ### 3. Hello,World 
 
-- 修改`视图`home_application/views.py
+- 修改 `视图` home_application/views.py
 
 ```python
 from django.http import HttpResponse
@@ -145,7 +147,7 @@ def hello(request):
     return HttpResponse('Hello World!')
 ```
 
-- 添加`路由`home_application/urls.py
+- 添加 `路由` home_application/urls.py
 
 ```python
 url(r'^$', views.hello),

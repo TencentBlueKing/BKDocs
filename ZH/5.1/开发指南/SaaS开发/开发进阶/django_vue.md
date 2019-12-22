@@ -150,7 +150,7 @@ INSTALLED_APPS += (
 )
 ```
 
-编写 models.py 的数据模型代码 api 接口的功能是 GET 请求时查询所有的考生信息 POST请 求时新增考生信息，所以需要设计一个考生信息的数据模型。
+编写 models.py 的数据模型代码 api 接口的功能是 GET 请求时查询所有的考生信息 POST 请求时新增考生信息，所以需要设计一个考生信息的数据模型。
 
 ![](./pictures/012.png)
 
@@ -175,7 +175,7 @@ INSTALLED_APPS += (
 
 ![](./pictures/016.png)
 
-测试一下 api 是否可以正常工作,打开浏览器访问刚刚配置的 api 的 url 地址：
+测试一下 api 是否可以正常工作，打开浏览器访问刚刚配置的 api 的 url 地址：
 
 > http://{ domain_url }:8000/ies/students/
 
@@ -185,7 +185,7 @@ INSTALLED_APPS += (
 
 ![](./pictures/018.png)
 
-点击POST按钮，发送post请求.
+点击 POST 按钮，发送 post 请求。
 
 ![](./pictures/019.png)
 
@@ -202,7 +202,7 @@ Http 返回的是 200 OK 而且返回展示出刚刚 POST 成功的 json 格式�
 
 ![](./pictures/021.png)
 
-这里的 main.js 像是 index.html 和 App.vue 的一个桥梁为什么这么说，因为 main.js 文件给 index.html 中的 id=”app” 的 div 节点 new 了一个 Vue 实例，该实例中有一个名叫 “App” 的组件，该组件通过 vue-router 将 HelloWorld.vue 中的模板注入到 App.vue 的模板中所以 App.vue 是作为一个所有组件的入口组件的作用，最终在访问浏览器时才能展现出这个欢迎界面，下面看一下其中的代码。
+这里的 main.js 像是 index.html 和 App.vue 的一个桥梁。为什么这么说，因为 main.js 文件给 index.html 中的 id=”app” 的 div 节点 new 了一个 Vue 实例，该实例中有一个名叫 “App” 的组件，该组件通过 vue-router 将 HelloWorld.vue 中的模板注入到 App.vue 的模板中，所以 App.vue 是作为一个所有组件的入口组件的作用，最终在访问浏览器时才能展现出这个欢迎界面，下面看一下其中的代码。
 
 index.html
 
@@ -226,7 +226,7 @@ HelloWolrd组件代码
 
 如果这个过程完全搞懂了那么就可以开始开发自己的 vue 组件，然后在 App.vue 入口组件中使用自己开发的组件来完成单页应用的开发。蓝鲸 magicbox 也提供了一套非常好用的 vue 组件库利用蓝鲸的 vue 组件库非常的方便，可以省去很多的开发前端的时间。
 
-蓝鲸magicbox地址：
+蓝鲸 magicbox 地址：
 > [https://magicbox.bk.tencent.com/](https://magicbox.bk.tencent.com/)
 
 ![](./pictures/027.png)
@@ -262,7 +262,7 @@ HelloWolrd组件代码
 
 ![](./pictures/035.png)
 
-现在通过前后端分离开发,构建了 api 接口和 vue 前端界面，下一步需要在 vue 中通过 axios 发送异步请求调用后端 api 完成前后端交互。
+现在通过前后端分离开发，构建了 api 接口和 vue 前端界面，下一步需要在 vue 中通过 axios 发送异步请求调用后端 api 完成前后端交互。
 
 需要学习 axios 的更多用法可以去看官方文档:
 
@@ -272,7 +272,7 @@ HelloWolrd组件代码
 
 ![](./pictures/036.png)
 
-安装完成后需要在main.js中全局引用。
+安装完成后需要在 main.js 中全局引用。
 
 ![](./pictures/037.png)
 
@@ -292,7 +292,7 @@ axios 写好后在浏览器中测试看能否正常请求 api。
 pip install django-cors-middleware
 ```
 
-在 config/default.py 配置文件中添加 APP,不添加的话无法生效。
+在 config/default.py 配置文件中添加 APP，不添加的话无法生效。
 
 ```python
 INSTALLED_APPS += (
@@ -348,7 +348,7 @@ if RUN_MODE == 'DEVELOP':
     )
 ```
 
-第二种方案：在 vue 前端工程中配置在 config/index.js 里配置proxyTable内容，使用 proxy 代理。
+第二种方案：在 vue 前端工程中配置在 config/index.js 里配置 proxyTable 内容，使用 proxy 代理。
 
 ![](./pictures/040.png)
 
@@ -356,7 +356,7 @@ if RUN_MODE == 'DEVELOP':
 
 ![](./pictures/041.png)
 
-还是没有请求成功，但是跨域的问题是解决了，又出现了一个 403 问题。这个问题是 Django 有个验证 csrftoken 的中间件，每次 post 请求必须带上这个 csrftoken 才能通过验证,而且在POST之前至少要有一次GET请求才能获得 cookies，这个 GET请求自己写。
+还是没有请求成功，但是跨域的问题是解决了，又出现了一个 403 问题。这个问题是 Django 有个验证 csrftoken 的中间件，每次 post 请求必须带上这个 csrftoken 才能通过验证,而且在 POST 之前至少要有一次GET请求才能获得 cookies，这个 GET请求自己写。
 
 由于蓝鲸开发框架在本地访问的域名是 http://{domain_url}}:8080，那么要使得 vue 前端可以获得后端返回的 cookies 中的 csrftoken，vue 前端工程本地访问域名也要和 Django 的本地访问域名保持一致。修改 build 目录下的 webpack.dev.conf.js 文件中的 HOST 参数。
 
@@ -437,7 +437,7 @@ template: '<App/>'
 
 ![](./pictures/045.png)
 
-这样的写法很明显是不能直接打包的，如果直接打包部署上线所有的请求就会出现失败因为根本找不到这个本地开发的时候所设置的域名。将请求 url 修改成线上环境的域名,如果是在 axios 的请求中一个一个手动去改的话也比较麻烦,而且还存在后端开发环境域名变更的情况下又得在每个请求 url 中修改地址。那么可以直接把 url 中的域名这一部分抽离出来使用全局变量代替然后在配置文件中根据环境不同给全局变量赋不同的值，如何解决这个问题呢？
+这样的写法很明显是不能直接打包的，如果直接打包部署上线所有的请求就会出现失败因为根本找不到这个本地开发的时候所设置的域名。将请求 url 修改成线上环境的域名，如果是在 axios 的请求中一个一个手动去改的话也比较麻烦，而且还存在后端开发环境域名变更的情况下又得在每个请求 url 中修改地址。那么可以直接把 url 中的域名这一部分抽离出来使用全局变量代替然后在配置文件中根据环境不同给全局变量赋不同的值，如何解决这个问题呢？
 
 解决办法：利用蓝鲸 Django 开发框架的配置文件中的全局变量 SITE_URL 来解决
 
@@ -451,11 +451,11 @@ template: '<App/>'
 
 ![](./pictures/048.png)
 
-按照同样的方法修改Header.vue中的路由。
+按照同样的方法修改 Header.vue 中的路由。
 
 ![](./pictures/049.png)
 
-同时修改 router目录下的index.js。
+同时修改 router 目录下的index.js。
 
 ![](./pictures/050.png)
 
@@ -473,11 +473,11 @@ npm run build
 
 ![](./pictures/052.png)
 
-将index.html放在templates/home_application/目录下。
+将 index.html 放在 templates/home_application/ 目录下。
 
 ![](./pictures/053.png)
 
-配置home_application/index.html的访问路由。
+配置 home_application/index.html 的访问路由。
 
 ![](./pictures/054.png)
 
@@ -506,7 +506,7 @@ npm run build
 
 由于在蓝鲸平台部署应用后每个应用的访问地址都是在蓝鲸平台的域名上然后加上在创建应用时设置的 app_code 等相关后缀来识别每一个应用。所以在使用绝对路径模式时静态文件路径是不会自动加上这些相应的后缀的所以会出现静态文件404问题。这个问题有两个解决方案。
 
-第一种方案:利用Django模板或者mako模板语法在静态文件上加上一个STATIC_URL变量如下图所示：
+第一种方案：利用 Django 模板或者 Mako 模板语法在静态文件上加上一个 STATIC_URL 变量如下图所示：
 
 ![](./pictures/060.png)
 

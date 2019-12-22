@@ -68,7 +68,7 @@
 
 - 日志级别和路径
 
-开发框架默认配置的日志级别是 INFO，你可以在 config/default.py 修改 LOG_LEVEL 变量，会对所有运行环境生效，你也可以单独修改 config/dev.py、config/stag.py、config/prod.py 文件，详情请参考本文 “7. 日志使用”。
+开发框架默认配置的日志级别是 INFO，你可以在 config/default.py 修改 LOG_LEVEL 变量，会对所有运行环境生效，你也可以单独修改 config/dev.py、config/stag.py、config/prod.py 文件，详情请参考本文“7. 日志使用”。
 开发框架已经自动帮你配置了线上运行环境的日志路径；
 本地的日志放在和项目根目录同一级的 logs 目录下，以 APP_CODE 命名的文件夹中，其中 {APP_CODE}-django.log 是应用日志，{APP_CODE}-celery.log 是 celery 日志，{APP_CODE}-component.log 是组件日志，{APP_CODE}-mysql.log 是数据库日志。
 
@@ -100,7 +100,7 @@ pip3 install -r requirements.txt
 
 ### 2.4 安装本地开发工具
 
-推荐使用 pycharm 进行代码开发，使用 TortoiseSVN 管理 SVN，使用 SourceTree 管理 GIT。
+推荐使用 pycharm 进行代码开发，使用 TortoiseSVN 管理 SVN，使用 SourceTree 管理 Git。
 
 
 ### 2.5 安装 celery（需要使用后台任务的项目）
@@ -108,13 +108,19 @@ pip3 install -r requirements.txt
 安装项目依赖时会自动安装 celery == 3.1.25 和 django-celery == 3.2.1。目前 celery 支持 redis、rabbitmq 作为任务的消息队列，推荐使用 redis。
 
 - mac 系统 redis 使用指南：
-安装指令 `brew install redis`；
-启动指令 `redis-server`；
-测试 redis 服务是否正常启动，`redis-cli` 尝试连接本地的 redis 服务。
+
+  安装指令 `brew install redis`；
+  
+  启动指令 `redis-server`；
+  
+  测试 redis 服务是否正常启动，`redis-cli` 尝试连接本地的 redis 服务。
 
 - windows 系统 redis 使用指南
-下载安装地址： [https://github.com/MicrosoftArchive/redis/releases](https://github.com/MicrosoftArchive/redis/releases)。
-点击安装目录下的 redis-server.exe 启动 redis 服务。
+
+  下载安装地址： 
+  [https://github.com/MicrosoftArchive/redis/releases](https://github.com/MicrosoftArchive/redis/releases)。
+  
+  点击安装目录下的 redis-server.exe 启动 redis 服务。
 
 - 配置项（在 config/dev.py 文件中修改消息队列配置）
 
@@ -280,7 +286,8 @@ context = {
 ## 6. 静态资源使用规范
 
 - 静态文件按模块划分，分别放在 Django 工程中每个对应 APP 的 static 目录下
-请将你的 Django 静态文件 xxx.js 和 xxx.css 放在 PROJECT_ROOT/APP_NAME/static/ 目录底下，建议在 static 底下在加上一层目录，取名为 APP_NAME，即最终模板文件存放路径为 PROJECT_ROOT/APP_NAME/static/APP_NAME [/js 或者 /css]，这是为了避免在寻找静态文件的时候，出现覆盖的情况。
+
+  请将你的 Django 静态文件 xxx.js 和 xxx.css 放在 PROJECT_ROOT/APP_NAME/static/ 目录底下，建议在 static 底下在加上一层目录，取名为 APP_NAME，即最终模板文件存放路径为 PROJECT_ROOT/APP_NAME/static/APP_NAME [/js 或者 /css]，这是为了避免在寻找静态文件的时候，出现覆盖的情况。
 
 - 修改静态文件后要手动运行 python manage.py collectstatic 命令来收集静态文件到根目录的 static 文件夹中。
 

@@ -33,6 +33,6 @@
 
 4. 【必须】使用正确的字段类型，避免 `TextField` 代替 `CharField`，`IntegerField` 代替 `BooleanField` 等
 
-5. 强烈不建议在迭代循环中执行`查询`或者`更新`等会触发DB动作的函数任务，防止在数据量变大的时候产生大量重复链接导致请求变慢
+5. 强烈不建议在迭代循环中执行 `查询` 或者 `更新` 等会触发DB动作的函数任务，防止在数据量变大的时候产生大量重复链接导致请求变慢
 	- 对于查询动作，可以考虑使用 `Model.objects.filter(field__in=condition_list)` 的方法批量获得查询结果
 	- 对于更新动作，可以考虑使用 `bulk_create`或者`QuerySet.update(filed=new_value)` 批量更新
