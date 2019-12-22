@@ -19,27 +19,27 @@ GET
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段                    | 类型   | 必选 | 描述                                                         |
 | ----------------------- | ------ | ---- | ------------------------------------------------------------ |
-| bk_biz_id               | int    | 是   | 业务ID                                                       |
+| bk_biz_id               | int    | 是   | 业务 ID                                                       |
 | source_time             | string | 是   | 告警源时间，"YYYY-MM-DD hh:mm:ss"                            |
-| id                      | int    | 否   | 告警事件ID                                                   |
-| alarm_type              | string | 否   | 监控类型，可选base、cpu、men等，详情见下alarm_type           |
+| id                      | int    | 否   | 告警事件 ID                                                   |
+| alarm_type              | string | 否   | 监控类型，可选 base、cpu、men 等，详情见下 alarm_type           |
 | level                   | int    | 否   | 告警级别，1为致命，2为预警，3为提醒                          |
-| alarm_content__contains | string | 否   | 包含的告警内容，从alarm_content字段中匹配                    |
-| user_status             | string | 否   | 通知状态，默认为user_status__in="notified,unnotified"        |
+| alarm_content__contains | string | 否   | 包含的告警内容，从 alarm_content 字段中匹配                    |
+| user_status             | string | 否   | 通知状态，默认为 user_status__in="notified,unnotified"        |
 | status                  | string | 否   | 告警状态，可选（待定）                                       |
-| extend_fields           | string | 否   | 用户自定义显示的额外字段,可选begin_time(告警开始处理时间)，end_time(告警结束处理时间)，finish_time(告警恢复时间)，original_alarm(原始告警)等，多个字段使用半角逗号分隔" |
-| ordering                | string | 否   | 排序方式，默认为id(升序)，可选source_time,begin_time,end_time，加上"-"前缀为降序 |
-| page                    | int    | 否   | 当前页码数，默认为1                                          |
-| page_size               | int    | 否   | 每页最大显示数，默认为5                                      |
+| extend_fields           | string | 否   | 用户自定义显示的额外字段,可选 begin_time(告警开始处理时间)，end_time(告警结束处理时间)，finish_time(告警恢复时间)，original_alarm(原始告警)等，多个字段使用半角逗号分隔" |
+| ordering                | string | 否   | 排序方式，默认为 id(升序)，可选 source_time,begin_time,end_time，加上"-"前缀为降序 |
+| page                    | int    | 否   | 当前页码数，默认为 1                                          |
+| page_size               | int    | 否   | 每页最大显示数，默认为 5                                      |
 
 
 注：以上字段除`extend_fields`、`ordering`、`page`、`page_size`外，均支持Django的ORM操作
@@ -61,15 +61,15 @@ mongodb、mssql、oracle、rabbitmq、weblogic、zookeeper 等
 ```
 
 ### 请求参数示例
-(注意时区,不输入时区信息默认为零时区)获取告警接入时间在2018-10-01
-00:00:01+0800和2018-11-08
-23:59:59+0800之间，业务ID为2，监控类型为cpu，额外字段为end_time的告警事件，且当前页码为1，单页最大显示数为10，排序方式为按begin_time字段降序：
+(注意时区,不输入时区信息默认为零时区)获取告警接入时间在 2018-10-01
+00:00:01+0800 和 2018-11-08
+23:59:59+0800 之间，业务 ID 为 2，监控类型为 cpu，额外字段为 end_time 的告警事件，且当前页码为 1，单页最大显示数为 10，排序方式为按 begin_time 字段降序：
 
 ```
 bk_biz_id=2&extend_fields=end_time&source_time__gte=2018-10-01 00:00:01%2b0800&source_time__lte=2018-11-08 23:59:59%2b0800&page=1&page_size=10&ordering=-begin_time&alarm_type=cpu
 ```
-(零时区)获取告警接入时间在2019-01-01 00:00:00和2019-01-08
-23:59:59之间，业务ID为2，告警级别为严重，监控类型为内存，告警内容包含“PING”的告警事件：
+(零时区)获取告警接入时间在 2019-01-01 00:00:00 和 2019-01-08
+23:59:59 之间，业务 ID 为 2，告警级别为严重，监控类型为内存，告警内容包含“PING”的告警事件：
 
 ```
 bk_biz_id=2&source_time__gte=2019-01-01 00:00:00&source_time__lte=2019-01-08 23:59:59&level=1&alarm_type=men&alarm_content__contains=PING
@@ -127,25 +127,25 @@ bk_biz_id=2&source_time__gte=2019-01-01 00:00:00&source_time__lte=2019-01-08 23:
 
 | 字段    | 类型   | 描述                                  |
 | ------- | ------ | ------------------------------------- |
-| result  | bool   | 返回结果，true为成功，false为失败     |
-| code    | int    | 返回码，0表示成功，其他值表示失败     |
+| result  | bool   | 返回结果，true 为成功，false 为失败     |
+| code    | int    | 返回码，0 表示成功，其他值表示失败     |
 | message | string | 错误信息                              |
-| data    | dict   | 结果，其中total为数据总数，result如下 |
+| data    | dict   | 结果，其中 total 为数据总数，result 如下 |
 
 #### data.result
 
 | 字段            | 类型   | 描述                                |
 | --------------- | ------ | ----------------------------------- |
-| id              | int    | 告警事件ID                          |
-| bk_biz_id       | int    | 业务ID                              |
-| bk_cloud_id     | int    | 云平台ID，主机相关字段              |
-| bk_supplier_id  | int    | 开发商ID，主机相关字段              |
+| id              | int    | 告警事件 ID                          |
+| bk_biz_id       | int    | 业务 ID                              |
+| bk_cloud_id     | int    | 云平台 ID，主机相关字段              |
+| bk_supplier_id  | int    | 开发商 ID，主机相关字段              |
 | ip              | string | IP地址，主机相关字段                |
 | comment         | string | 备注                                |
 | status          | string | 状态                                |
 | user_status     | string | 通知状态(已通知，通知失败)        |
 | alarm_type      | string | 告警类型                            |
-| level           | int    | 告警等级，1为严重，2为普通，3为轻微 |
+| level           | int    | 告警等级，1 为严重，2 为普通，3 为轻微 |
 | match_dimension | dict   | 告警后台内部匹配的维度              |
 | alarm_content   | dict   | 告警内容                            |
 | source_time     | string | 告警源时间                          |

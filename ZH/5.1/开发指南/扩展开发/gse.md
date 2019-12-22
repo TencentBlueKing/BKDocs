@@ -29,7 +29,7 @@
 | libbeat/publisher        | 封装了 output，提供 Client 接口进行数据传输                     |
 | libbeat/logp             | 日志打印模块，可以在配置文件中更改日志打印级别，默认打印 info 及以上等级的日志（debug，info，warning，error，critical error） |
 | libbeat/config           | 提供了通用的配置格式以及配置的解析方法                       |
-| libbeat/common   | libbeat封装的基础库                                          |
+| libbeat/common   | libbeat 封装的基础库                                          |
 | bkdatalib/gselib           | 提供与向 gse agent 传输信息有关的功能                          |
 | bkdatalib/monitor          | 埋点数据，提供数据质量监控使用                               |
 | bkdatalib/reloader         | 通过监听管道消息，提供配置热加载的功能                       |
@@ -249,7 +249,7 @@ var DefaultConfig = Config{
 |  变量名  |      变量类型      |                       功能描述                       |
 | :------: | :----------------: | :--------------------------------------------------: |
 |  dataid  |      `int32`       |              用来唯一识别所创建的采集器              |
-|  client  | `publisher.Client` |    `Client`提供了向给定的输出端发送采集信息的方法    |
+|  client  | `publisher.Client` |    `Client` 提供了向给定的输出端发送采集信息的方法    |
 |  timer   |   `*time.Timer`    |                     提供计时方法                     |
 | interval |  `time.Duration`   |           表示两次相邻的采集之间的时间间隔           |
 |   done   |    `chan bool`     | 当通道被关闭时则代表采集器被关闭，停止采集和发送信息 |
@@ -574,7 +574,7 @@ logging.files:
 
 #### Processors
 
-Processors用于在发送采集信息前对采集信息进行预处理。Processors 的配置方法如下：
+Processors 用于在发送采集信息前对采集信息进行预处理。Processors 的配置方法如下：
 
 ```yaml
 # - <processor_name>:

@@ -21,21 +21,21 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段          |  类型       | 必选   |  描述             |
 |---------------|------------|--------|------------------|
-|   template_id    |   string     |   是   |  用于创建任务的模板ID |
-|   bk_biz_id    |   string     |   是   |  任务所属业务ID |
+|   template_id    |   string     |   是   |  用于创建任务的模板 ID |
+|   bk_biz_id    |   string     |   是   |  任务所属业务 ID |
 |   name    |   string     |   是   |  要创建的周期任务名称 |
 |   cron    |   dict     |   是   |  要创建的周期任务调度策略 |
 |   constants    |   dict     |   否   | 任务全局参数，详细信息见下面说明 |
-|   exclude_task_nodes_id    |   list     |   否   |  跳过执行的节点ID列表 |
+|   exclude_task_nodes_id    |   list     |   否   |  跳过执行的节点 ID列表 |
 
 #### constants.KEY
 

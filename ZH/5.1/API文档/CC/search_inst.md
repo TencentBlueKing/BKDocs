@@ -21,16 +21,16 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段                |  类型      | 必选   |  描述                       |
 |---------------------|------------|--------|-----------------------------|
-| bk_obj_id           | string     | 是     | 模型ID                      |
+| bk_obj_id           | string     | 是     | 模型 ID                      |
 | bk_supplier_account | string     | 是     | 开发商账号,独立部署请填"0"  |
 | page                | object     | 是     | 分页参数                    |
 | condition           | object     | 否     | 查询条件                    |
@@ -41,7 +41,7 @@ POST
 | 字段      |  类型      | 必选   |  描述                |
 |-----------|------------|--------|----------------------|
 | start     |  int       | 是     | 记录开始位置         |
-| limit     |  int       | 是     | 每页限制条数,最大200 |
+| limit     |  int       | 是     | 每页限制条数,最大 200 |
 | sort      |  string    | 否     | 排序字段             |
 
 #### condition
@@ -51,7 +51,7 @@ POST
 | bk_weblogic  |string      |是      | 此处仅为示例数据，需要被设置为模型的标识符，在页面上配置的英文名 |
 | field     |string      |是      | 取值为模型的字段名                                               |
 | operator  |string      |是      | 取值为：$regex $eq $ne                                           |
-| value     |string      |是      | field配置的模型字段名所对应的值                                  |          
+| value     |string      |是      | field 配置的模型字段名所对应的值                                  |          
 
 
 ### 请求参数示例
@@ -111,7 +111,7 @@ POST
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result    | bool      | 请求成功与否，true:请求成功，false:请求失败 |
-| code      | string    | 组件返回错误编码，0表示success，>0表示失败错误 |
+| code      | string    | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
 | message   | string    | 请求失败返回的错误消息 |
 | data      | object    | 请求返回的数据 |
 
@@ -126,10 +126,10 @@ POST
 
 | 字段                | 类型      | 描述                                                 |
 |---------------------|-----------|------------------------------------------------------|
-| id                  | string    | 已存储的关联实例的id                                 |
-| bk_inst_id          | int       | 新增数据记录的ID                                     |
+| id                  | string    | 已存储的关联实例的 id                                 |
+| bk_inst_id          | int       | 新增数据记录的 ID                                     |
 | bk_supplier_account | string    | 开发商账号                                           |
-| bk_obj_id           | string    | 模型ID                                               |
+| bk_obj_id           | string    | 模型 ID                                               |
 | create_time         | string    | 数据创建的时间                                       |
 | last_time           | string    | 最后修改时间                                         |
-| test_asst           | string    | test_asst为此实例的关联字段，返回关联模型对应的实例。|
+| test_asst           | string    | test_asst 为此实例的关联字段，返回关联模型对应的实例。|

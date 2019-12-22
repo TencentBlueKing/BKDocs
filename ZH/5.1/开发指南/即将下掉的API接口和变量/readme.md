@@ -63,7 +63,7 @@
 
 <table>
     <tr>
-        <th>GSE接口</th>
+        <th> GSE 接口</th>
         <th>任务结果协议格式规范化</th>
         <th>描述</th>
     </tr>
@@ -78,8 +78,8 @@
 			screenctx -> screen_all"
 		</td>
         <td rowspan="7">
-            "GSE任务结果的协议字段中，<br>
-            将规范化前的key，转化为规范后的key
+            " GSE 任务结果的协议字段中，<br>
+            将规范化前的 key，转化为规范后的 key
         </td>
     </tr>
     <tr>
@@ -105,7 +105,7 @@
 
 
 
-| 要下线job api对应的esb api 地址           | 替换使用esb api 地址            |
+| 要下线 job api 对应的 esb api 地址           | 替换使用 esb api 地址            |
 | ----------------------------------------- | ------------------------------- |
 | /api/c/compapi/job/execute_task/          | /api/v2/execute_job             |
 | /api/c/compapi/job/change_cron_status/    | /api/v2/update_cron_status      |

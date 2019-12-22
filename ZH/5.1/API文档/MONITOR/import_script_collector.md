@@ -19,9 +19,9 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 
@@ -35,7 +35,7 @@ POST
 
 | 字段                  | 类型   | 必选 | 描述                                                         |
 | --------------------- | ------ | ---- | ------------------------------------------------------------ |
-| bk_biz_id             | int    | 是   | 业务id                                                       |
+| bk_biz_id             | int    | 是   | 业务 id                                                       |
 | name                  | string | 是   | 数据表名，必须唯一                                           |
 | description           | string | 是   | 数据表中文含义                                               |
 | charset               | string | 否   | 字符集；默认值：UTF8，可选值（UTF8,GBK）                     |
@@ -124,15 +124,15 @@ POST
 
 | 字段    | 类型   | 描述                                            |
 | ------- | ------ | ----------------------------------------------- |
-| result  | bool   | 返回结果，true为成功，false为失败               |
-| code    | int    | 返回码，200表示成功，其他值表示失败             |
+| result  | bool   | 返回结果，true 为成功，false 为失败               |
+| code    | int    | 返回码，200 表示成功，其他值表示失败             |
 | message | string | 错误信息                                        |
-| data    | dict   | 结果，data.success成功结果，data.failed失败结果 |
+| data    | dict   | 结果，data.success 成功结果，data.failed 失败结果 |
 
 #### data.success & data.failed
 
 | 字段    | 类型   | 描述                           |
 | ------- | ------ | ------------------------------ |
 | name    | string | 数据表名                       |
-| id      | int    | 配置id；若无id，则表示创建失败 |
+| id      | int    | 配置 id；若无 id，则表示创建失败 |
 | message | string | 记录错误信息                   |

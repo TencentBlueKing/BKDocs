@@ -15,9 +15,9 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 ### 请求参数示例
@@ -72,17 +72,17 @@ POST
 | 字段  | 类型  | 必选  | 描述  |
 | ------|-------|-------|-------|
 | ip | str | 是 | IP |
-| bk_cloud_id | int | 是 | 云区域ID |
-| bk_biz_id | int | 是 | 业务id |
+| bk_cloud_id | int | 是 | 云区域 ID |
+| bk_biz_id | int | 是 | 业务 id |
 
 
 ### 1.2 节点基本配置--node_conf
 | 字段  | 类型  | 必选  | 描述  |
 | ------|-------|-------|-------|
-| is_common | bool | 否 | 是否为通用节点，默认false |
+| is_common | bool | 否 | 是否为通用节点，默认 false |
 | name | str | 是 | 节点名称 |
 | location | dict | 是 | 节点所在地区 |
-| carrieroperator | str | 是 | 运营商，最大长度50(内网、联通、移动、其他) |
+| carrieroperator | str | 是 | 运营商，最大长度 50(内网、联通、移动、其他) |
 
 #### 1.2.1 节点所在地区--node_conf.location
 | 字段  | 类型  | 必选  | 描述  |
@@ -137,8 +137,8 @@ POST
 ## 返回结果参数说明
 | 字段    | 类型   | 描述 |
 | ------- | ------ | ----------------------------------- |
-| result  | bool   | 返回结果，true为成功，false为失败   |
-| code    | int    | 返回码，200表示成功，其他值表示失败 |
+| result  | bool   | 返回结果，true 为成功，false 为失败   |
+| code    | int    | 返回码，200 表示成功，其他值表示失败 |
 | message | string | 错误信息                            |
 | data    | list   | 结果                                |
 
@@ -170,4 +170,4 @@ POST
 | 字段    | 类型   | 描述 |
 | ------- | ------ | ----------------------------------- |
 | target_conf | dict | 节点下发配置 |
-| node_id | int | 导入成功的节点id |
+| node_id | int | 导入成功的节点 id |

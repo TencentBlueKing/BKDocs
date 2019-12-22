@@ -20,7 +20,7 @@
 
 ## 创建系统及组件文件
 
-在项目的 components/generic/apis/下，按照下面结构创建目录及文件(模版下载)：
+在项目的 components/generic/apis/ 下，按照下面结构创建目录及文件(模版下载)：
 
 ```bash
 components/generic/apis/
@@ -178,7 +178,7 @@ http://xxx.domain.com/api/c/compapi/hcp/get_host_list/
 - outgoing.http_client: 请求接口 Client，可用其请求其他接口，具体参数参考下面描述
 
 
-### Component中request的常用属性
+### Component 中 request 的常用属性
 
 - request_id: 一次请求的唯一 ID，一个 uuid 字符串
 
@@ -186,7 +186,7 @@ http://xxx.domain.com/api/c/compapi/hcp/get_host_list/
 
 - kwargs: 当前的请求参数，GET 请求中的 QueryString 数据 或 POST 请求中 Request Body 数据，已转换为 dict
 
-### Component中outgoing.http_client 支持方法
+### Component 中 outgoing.http_client 支持方法
 
 ```python
 # response_type: json，接口数据是否需要转换为JSON字典，其他不转换
@@ -203,7 +203,7 @@ outgoing.http_client.get # 表示 request('GET', *args, **kwargs)
 outgoing.http_client.post # 表示 request('POST', *args, **kwargs)
 ```
 
-### common.forms模块中自定义 Field
+### common.forms 模块中自定义 Field
 
 - ListField: 列表Field，可将逗号，分号、换行、空格分隔的字符串，转换为列表，如可将"123;456;789"转换为["123", "456", "789"]
 

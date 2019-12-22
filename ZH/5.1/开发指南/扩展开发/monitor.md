@@ -86,14 +86,17 @@ sample_metric2 {partition="c:"} 0.44
 
   > 不同系统安装介绍：https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/01.1.md
 
-- Prometheus Exporter 开发依赖库 ⾸先引⼊ Prometheus 的依赖库
+- Prometheus Exporter 开发依赖库 
+
+  ⾸先引⼊ Prometheus 的依赖库
+  
 ```bash
 go get -v github.com/prometheus/client_golang/prometheus
 ```
 
 - 开发示例
 
-1. 导⼊依赖模块 本例计划采集主机的内存和磁盘信息，因此引⼊以下依赖库
+1. 导⼊依赖模块: 本例计划采集主机的内存和磁盘信息，因此引⼊以下依赖库
 
   ```bash
   go get -v github.com/shirou/gopsutil

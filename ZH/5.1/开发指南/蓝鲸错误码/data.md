@@ -234,10 +234,10 @@
 | 09000 | ILLEGAL_ARGUMENT   | 缺少必要参数，或者参数值格式不正确，具体错误信息请查看错误描述 message 字段。 |      
 | 09101 | NO_INPUT_DATA | 无输入数据                      |      
 | 09111 | NO_OUTPUT_DATA | 无输出数据                      |      
-| 09200 | API_UNAVALIABLE | API不可用                      |      
+| 09200 | API_UNAVALIABLE | API 不可用                      |      
 | 09201 | BATCH_JOB_ERROR | 离线作业异常                      |      
-| 09202 | BATCH_SPARK_ERROR | Spark异常                     |      
-| 09203 | BATCH_SPARK_UNCATCH_ERROR | 没有正常捕获处理的Spark异常                     |      
+| 09202 | BATCH_SPARK_ERROR | Spark 异常                     |      
+| 09203 | BATCH_SPARK_UNCATCH_ERROR | 没有正常捕获处理的 Spark 异常                     |      
 | 09321 | NULL_VALUE | 空值异常                     |      
 
 ------------------------
@@ -245,11 +245,11 @@
 | 错误码| 错误码名称    | 含义                                       |  
 | ----- | -------- | ---------------------------------------- |
 | 08001 | AGGREGATE_NOT_FOUNDT_EX | 聚合函数未找到                     |      
-| 08002 | CHECKPOINT_SAVE_EX | checkpoint存储失败                     |      
+| 08002 | CHECKPOINT_SAVE_EX | checkpoint 存储失败                     |      
 | 08003 | FIELD_ANALYTICAL_EX | 字段解析失败                    |      
 | 08004 | FIELD_NOT_FOUND_EX | 字段未找到                     |      
 | 08005 | FIELD_CAST_EX | 字段函数转换异常                     |      
 | 08006 | FILTER_CREATE_EX | 过滤创建异常                    |      
-| 08007 | TRANSFORM_CREATE_EX | transform函数创建异常                    |      
+| 08007 | TRANSFORM_CREATE_EX | transform 函数创建异常                    |      
 | 08011 | KAFKA_SAVE_EX | 保存至消息队列异常                     |      
-| 08022 | TRANSFORM_EXECUTE_EX | transform函数执行异常                     |      
+| 08022 | TRANSFORM_EXECUTE_EX | transform 函数执行异常                     |      

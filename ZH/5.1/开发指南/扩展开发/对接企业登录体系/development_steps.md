@@ -11,7 +11,7 @@
 
 ### 1. 获取参考代码
 
-参考代码在蓝鲸版本包里的 open_paas/login/ee_official_login，包含了google oauth 对接蓝鲸登录样例
+参考代码在蓝鲸版本包里的 open_paas/login/ee_official_login，包含了 google oauth 对接蓝鲸登录样例
 
 ### 2. 编写企业内部统一登录认证票据的类
 
@@ -59,7 +59,7 @@ class OauthBackend(ModelBackend):
             try:
                 user = user_model.objects.get(username=username)
             except user_model.DoesNotExist:
-                # 创建User对象
+                # 创建 User 对象
                 user = user_model.objects.create_user(username)
                 # 获取用户信息，只在第一次创建时设置，已经存在不更新
                 chname = userinfo.get('chname', '')
@@ -125,7 +125,7 @@ def login(request):
 
     # google 登录回调后会自动添加 code 参数
     code = request.GET.get('code')
-    # 若没有code参数，则表示需要跳转到 google 登录
+    # 若没有 code 参数，则表示需要跳转到 google 登录
     if code is None or is_from_logout:
         # 生成跳转到 google 登录的链接
         google_oauth_login_url, state = gen_oauth_login_url({

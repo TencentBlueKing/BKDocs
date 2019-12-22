@@ -21,16 +21,16 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效， bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 |             字段   |     类型   |必选    |  描述    |
 |--------------------|------------|--------|------------|
-| msg_type           |  string    | 是     | 发送信息的类型，可通过get_msg_type组件获取 |
+| msg_type           |  string    | 是     | 发送信息的类型，可通过 get_msg_type 组件获取 |
 | receiver__username |  string    | 是     | 接收者，包含用户名，用户需在蓝鲸平台注册，多个以逗号分隔 |
 | title              |  string    | 是     | 主题 |
 | content            |  string    | 是     | 内容  |
@@ -40,9 +40,9 @@ POST
 | attachments        |  list      | 否     | 邮件附件， msg_type 为 mail 时有效 |
 | date               |  string    | 否     | 通知发送时间，默认为当前时间 "YYYY-mm-dd HH:MM"，msg_type 为 weixin 时有效 |
 | remark             |  string    | 否     | 通知尾部文字，msg_type 为 weixin 时有效|
-| wx_qy_agentid      |  string    | 否     | 企业微信AgentId，msg_type 为 weixin 时有效 |
-| wx_qy_corpsecret   |  string    | 否     | 企业微信CorpSecret，msg_type 为 weixin 时有效 |
-| is_content_base64  |  bool      | 否     | 通知文字content是否base64编码，默认False，不编码，若编码请使用base64.b64encode方法 |
+| wx_qy_agentid      |  string    | 否     | 企业微信 AgentId，msg_type 为 weixin 时有效 |
+| wx_qy_corpsecret   |  string    | 否     | 企业微信 CorpSecret，msg_type 为 weixin 时有效 |
+| is_content_base64  |  bool      | 否     | 通知文字 content 是否 base64 编码，默认 False，不编码，若编码请使用 base64.b64encode 方法 |
 
 
 ##### attachments
@@ -86,7 +86,7 @@ POST
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result    | bool      | 请求成功与否，true:请求成功，false:请求失败 |
-| code      | string    | 组件返回错误编码，0表示success，>0表示失败错误 |
+| code      | string    | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
 | message   | string    | 请求返回的消息 |
 | data      | object    | 请求返回的数据 |
 | request_id| string    | 请求返回的ID |

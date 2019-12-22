@@ -5,7 +5,7 @@
 蓝鲸统一登录: 由 `open_paas/login` 提供 `统一登录服务`; 由 `用户管理` App `维护用户数据`
 
 
-## MockBackend接入示例
+## MockBackend 接入示例
 
 ### 1. 获取参考代码
 
@@ -152,11 +152,11 @@ def login(request):
 
 #### 3.3 `ee_official_login/mock/backends.py`
 
-基于 django authentication backend, 具体可以参考 [官方文档](https://docs.djangoproject.com/en/2.2/topics/auth/customizing/)
+基于 Django authentication backend, 具体可以参考 [官方文档](https://docs.djangoproject.com/en/2.2/topics/auth/customizing/)
 
-MockBakcned 中的逻辑是, 只用使用固定用户名密码才能登录成功
+MockBackend 中的逻辑是, 只用使用固定用户名密码才能登录成功
 
-在backend中, 拿到表单的数据之后, 可以自行定义登录逻辑, 例如请求企业的第三方登录进行校验, 校验成功后获取用户数据, 构建蓝鲸用户, 并同步给 `用户管理`
+在 backend 中, 拿到表单的数据之后, 可以自行定义登录逻辑, 例如请求企业的第三方登录进行校验, 校验成功后获取用户数据, 构建蓝鲸用户, 并同步给 `用户管理`
 
 需要自定义的逻辑
 
@@ -226,7 +226,7 @@ ee_login/                  自定义登录配置
 ee_official_login/oauth/google  自定义登录实现, 完成了校验逻辑
 ├── __init__.py
 ├── backends.py
-├── settings.py                 google OAuth配置
+├── settings.py                 Google OAuth配置
 ├── utils.py
 └── views.py
 ```
@@ -260,6 +260,6 @@ CUSTOM_LOGIN_VIEW = 'ee_official_login.oauth.google.views.login'
 CUSTOM_AUTHENTICATION_BACKEND = 'ee_official_login.oauth.google.backends.OauthBackend'
 ```
 
-配置变更完毕后, 重启登录服务, 访问登录页, 此时将只用使用`admin/blueking`才能登录成功
+配置变更完毕后, 重启登录服务, 访问登录页, 此时将只用使用 `admin/blueking` 才能登录成功
 
 登录过程中会打 debug 日志, 本地开发环境: `../logs/login.log` 使用蓝鲸部署脚本部署环境: `{INSTALL_ROOT}/logs/open_paas/login.log`
