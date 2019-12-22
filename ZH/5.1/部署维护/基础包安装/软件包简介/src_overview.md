@@ -82,15 +82,19 @@
 上面这层目录称为模块，模块下面会有子工程，称为 `project` ，比如 BKDATA 模块下：
 
 ```bash
+[root@nginx-1 bkdata]# pwd
+/data/src/bkdata
 [root@nginx-1 bkdata]# tree -F -L 1 . support-files/
 .
 ├── dataapi/
 ├── databus/
 ├── monitor/
-└── support-files/
+├── projects.yaml
+├── support-files/
+└── VERSION
 support-files/
 ├── pkgs/
-├── README.md
+├── README.md*
 ├── scripts/
 ├── sql/
 └── templates/
