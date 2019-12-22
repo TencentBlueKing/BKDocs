@@ -3,6 +3,8 @@
 解压 `bkce_src-xx.tar.gz` 安装包后，`src` 即为软件包目录，存放了蓝鲸基础平台、官方 SaaS 包、开源组件等内容。
 
 ```bash
+[root@nginx-1 src]# pwd
+/data/src
 [root@nginx-1 src]# tree -F -L 1
 .
 ├── bkdata/
@@ -28,27 +30,26 @@
 
 蓝鲸基础平台及 SaaS 详细说明请参考 [产品白皮书](https://bk.tencent.com/docs/)，开源组件版本和配置方式可参考 [附录](../../附录/开源组件版本/version.md)。
 
-- **VERSION**：社区版版本号文件。
-- **ENTERPRISE**：代号文件，社区版默认都是 **blueking**。
-- **MD5**：MD5 校验文件。
+- **bkdata**：数据平台基础模块存放路径，包含 dataapi，databus，monitor 三个子工程。
+  - **dataapi/**：数据平台 API 接口服务。
+  - **databus/**：数据平台总线服务。
+  - **monitor/**：蓝鲸监控后台服务。
+- **bknetwork**：网络管理 SaaS 的后台模块。
 - **blueking.env**：证书环境变量。
 - **cert/**：放置证书文件的目录。
+- **cmdb/**：配置平台后台。
+- **ENTERPRISE**：代号文件，社区版默认都是 **blueking**。
+- **fta**：故障自愈后台。
+- **gse/**：管控平台后台。
+- **job/**：作业平台后台。
 - **license/**：鉴权服务器。
+- **MD5**：MD5 校验文件。
 - **miniweb/**：空目录，安装时会动态生成一些脚本和配置文件到这里。
-- **service/**：开源组件存放目录。
+- **official_saas/**：官方 SaaS 包，可以在后台一键部署蓝鲸官方 SaaS。
 - **open_paas/**：PaaS 后台。
 - **paas_agent/**：SaaS 部署后台。
-- **official_saas/**：官方 SaaS 包，可以在后台一键部署蓝鲸官方 SaaS。
-- **cmdb/**：配置平台后台。
-- **job/**：作业平台后台。
-- **gse/**：管控平台后台。
-- **bkdata**：数据平台基础模块存放路径，包含 dataapi，databus，monitor 三个子工程。
-- **dataapi/**：数据平台 API 接口服务。
-- **databus/**：数据平台总线服务。
-- **monitor/**：蓝鲸监控后台服务。
-- **fta**：故障自愈后台。
-- **bknetwork**：网络管理 SaaS 的后台模块。
-
+- **service/**：开源组件存放目录。
+- **VERSION**：社区版版本号文件。
 
 ## 软件包目录结构
 
