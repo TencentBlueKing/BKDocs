@@ -12,7 +12,7 @@ POST
 
 ### 功能描述
 
-根据作业模板ID启动作业。支持全局变量，如果全局变量的类型为IP，参数值必须包含custom_query_id或ip_list。没有设置的参数将使用作业模版中的默认值。
+根据作业模板 ID 启动作业。支持全局变量，如果全局变量的类型为 IP，参数值必须包含 custom_query_id 或 ip_list。没有设置的参数将使用作业模版中的默认值。
 
 ### 请求参数
 
@@ -21,20 +21,20 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
-| bk_biz_id   |  int       | 是     | 业务ID |
-| bk_job_id   |  int       | 是     | 作业模板ID |
-| steps       |  array     | 否     | 指定要执行或自定义参数的步骤数组，要执行全部步骤可不传此参数，见下面steps结构定义 |
+| bk_biz_id   |  int       | 是     | 业务 ID |
+| bk_job_id   |  int       | 是     | 作业模板 ID |
+| steps       |  array     | 否     | 指定要执行或自定义参数的步骤数组，要执行全部步骤可不传此参数，见下面 steps 结构定义 |
 | global_vars |  array     | 否     | 全局变量信息，作业包含的全局变量和类型，可以通过接口“查询作业模板详情” (get_job_detail)获取。对于作业中的全局变量值，如果global_vars包含该变量信息，那么会使用api指定的值；否则使用全局变量默认值 |
-| bk_callback_url |  string  | 否     | 回调URL，当任务执行完成后，JOB会调用该URL告知任务执行结果。回调协议参考callback_protocol组件文档 |
+| bk_callback_url |  string  | 否     | 回调 URL，当任务执行完成后，JOB 会调用该 URL 告知任务执行结果。回调协议参考 callback_protocol 组件文档 |
 
 #### global_vars
 

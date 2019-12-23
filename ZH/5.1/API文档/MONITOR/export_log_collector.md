@@ -19,21 +19,21 @@ GET
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段      | 类型   | 必选 | 描述                                                         |
 | --------- | ------ | ---- | ------------------------------------------------------------ |
-| bk_biz_id | int    | 是   | 业务id                                                       |
-| ids       | string | 否   | 需要导出的配置id，多个id之间用英文逗号隔开；若不传，导出该业务和类型下的所有配置 |
+| bk_biz_id | int    | 是   | 业务 id                                                       |
+| ids       | string | 否   | 需要导出的配置 id，多个 id 之间用英文逗号隔开；若不传，导出该业务和类型下的所有配置 |
 
 ### 请求参数示例
 
-导出业务id等于2的业务下日志采集器配置id为2的配置
+导出业务 id 等于 2 的业务下日志采集器配置 id 为 2 的配置
 
 ```
 {
@@ -94,8 +94,8 @@ GET
 
 | 字段    | 类型   | 描述                                |
 | ------- | ------ | ----------------------------------- |
-| result  | bool   | 返回结果，true为成功，false为失败   |
-| code    | int    | 返回码，200表示成功，其他值表示失败 |
+| result  | bool   | 返回结果，true 为成功，false 为失败   |
+| code    | int    | 返回码，200 表示成功，其他值表示失败 |
 | message | string | 错误信息                            |
 | data    | list   | 日志采集器配置列表                                |
 
@@ -112,7 +112,7 @@ GET
 
 | 字段        | 类型   | 描述         |
 | ----------- | ------ | ------------ |
-| data_set    | string | data_set名称 |
+| data_set    | string | data_set 名称 |
 | data_desc   | string | 中文描述     |
 | data_encode | string | 编码         |
 | sep         | string | 分隔符       |
@@ -135,5 +135,5 @@ GET
 
 | 字段      | 类型 | 描述           |
 | --------- | ---- | -------------- |
-| bk_biz_id | int  | 业务id         |
-| ips       | list | 下发机器ip列表 |
+| bk_biz_id | int  | 业务 id         |
+| ips       | list | 下发机器 ip 列表 |

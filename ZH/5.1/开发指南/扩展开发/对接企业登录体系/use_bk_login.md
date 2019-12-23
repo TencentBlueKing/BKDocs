@@ -23,7 +23,7 @@
 
 应用从 http 请求 cookie 中可以获取 `bk_token`
 
-django 为例
+Django 为例
 
 ```python
 bk_token = request.COOKIES.get('bk_token', '')
@@ -35,7 +35,7 @@ bk_token = request.COOKIES.get('bk_token', '')
 
 - `c_url` 用于登录成功后, 跳往的目标页面
 
-- `{login_success_redirect_url}` 是一个 `urlencode` 后的地址, 假设期望的目标地址是 `http://mysystem.bking.com/index.html`, `c_url` 值需要经过 `urlencode`即 `http%3a%2f%2fmysystem.bking.com%2findex.html`
+- `{login_success_redirect_url}` 是一个 `urlencode` 后的地址, 假设期望的目标地址是 `http://mysystem.bking.com/index.html`, `c_url` 值需要经过 `urlencode` 即 `http%3a%2f%2fmysystem.bking.com%2findex.html`
 
 ### 3. 校验 `bk_token` 是否合法
 

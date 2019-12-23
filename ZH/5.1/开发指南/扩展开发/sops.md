@@ -6,7 +6,7 @@
 标准插件功能主要包括输入、执行、输出三部分。
 ![](./media/001.png)
 
-标准插件架构包含插件定义Component、后台执行逻辑Service、以及前端表单配置Forms。
+标准插件架构包含插件定义 Component、后台执行逻辑 Service、以及前端表单配置 Forms。
 ![](./media/002.png)
 
 
@@ -48,7 +48,7 @@
 
 
 ### 3. 加入新的 API 网关
-如果你开发的标准插件依赖自定义接入的 API 网关，那么在你将接口接入蓝鲸API网关后，需要手动将 API 添加到 Client SDK 中。
+如果你开发的标准插件依赖自定义接入的 API 网关，那么在你将接口接入蓝鲸 API 网关后，需要手动将 API 添加到 Client SDK 中。
 在 `{CUSTOM PLUGINS NAME}/__init__.py` 文件下编写相应的代码即可向 Client 中添加对应的接口：
 
 ```python
@@ -82,7 +82,7 @@ ComponentClient.setup_components(collections.AVAILABLE_COLLECTIONS)
 
 ```
 
-上面面的例子中为 Client 添加了一个名为 `my_system` 的系统，并且为该系统中添加了 `get_status` 和 `set_status` 两个接口。
+上面的例子中为 Client 添加了一个名为 `my_system` 的系统，并且为该系统中添加了 `get_status` 和 `set_status` 两个接口。
 
 
 ### 4. 标准插件后台开发
@@ -165,7 +165,7 @@ TestCustomService 类详解：
 
 execute 函数详解：
 
-- 可以是任何 python 代码，如果需要调用蓝鲸API网关接口，一般分为参数组装、API 调用、结果解析。
+- 可以是任何 python 代码，如果需要调用蓝鲸 API 网关接口，一般分为参数组装、API 调用、结果解析。
 - data 是标准插件输入输出参数数据对象，输入参数对应于前端的表单，可以用 `data.inputs.xxx` 或者 `data.get_one_of_inputs('xxx')` 获取
 某一个参数；执行完成可以使用 `data.set_outputs` 写入输出参数，异常信息请赋值给 `ex_data`。
 - `parent_data` 是任务的公共参数，包括 executor（执行者），operator（操作员），biz_cc_id（所属业务 ID）等。详细信息请查看
@@ -255,7 +255,7 @@ TestCustomComponent 类详解：
 
 - `test_custom`：标准插件后台定义的 code。
 - `tag_code`：参数 code，请保持全局唯一，命名规范为"系统名_参数名"。
-- `type`：前端表单类型，可选 input、textarea、radio、checkbox、select、datetime、datatable、upload、combine等。
+- `type`：前端表单类型，可选 input、textarea、radio、checkbox、select、datetime、datatable、upload、combine 等。
 - `attrs`：对应type的属性设置，如 name、validation等。
 
 

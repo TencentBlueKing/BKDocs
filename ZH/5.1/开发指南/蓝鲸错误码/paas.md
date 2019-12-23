@@ -34,7 +34,7 @@
 |1303102|E1303102_MARKET_APP_DETAIL_QUERY_FAIL|应用市场应用详情查询失败|请查看日志中异常堆栈信息处理|
 |1303200|E1303200_WEIXIN_HTTP_GET_REQUEST_ERROR|请求微信 GET 接口出错|请检查微信组件配置是否正确以及 console 模块所在服务器是否有外网能正确请求微信提供的 API|
 |1303201|E1303201_WEIXIN_HTTP_POST_REQUEST_ERROR|请求微信 POST 接口出错|请检查微信组件配置是否正确以及 console 模块所在服务器是否有外网能正确请求微信提供的 API|
-|1303202|E1303202_WEIXIN_MP_EVENT_PUSH_RESPONSE_ERROR|微信公众号推送事件响应出错|请检查公网上的微信服务器能请求到console模块所在服务器，同时检查微信公众号上服务器配置是否正确，以及查看日志中异常堆栈信息来处理|
+|1303202|E1303202_WEIXIN_MP_EVENT_PUSH_RESPONSE_ERROR|微信公众号推送事件响应出错|请检查公网上的微信服务器能请求到 console 模块所在服务器，同时检查微信公众号上服务器配置是否正确，以及查看日志中异常堆栈信息来处理|
 |1304000|E1304000_DEFAULT_CODE|默认错误码|-|
 |1304001|E1304001_DATABASE_ERROR|数据库访问异常|检查数据连接是否正常|
 |1304101|E1304101_PAASAGENT_ERROR|paasagent 通用错误|根据日志中异常堆栈信息处理|

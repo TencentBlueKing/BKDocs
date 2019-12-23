@@ -79,17 +79,17 @@ GET
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result        | bool   | 请求成功与否，true:请求成功，false:请求失败 |
-| bk_error_code | string | 组件返回错误编码。0表示success，>0表示失败错误 |
+| bk_error_code | string | 组件返回错误编码。0 表示 success，>0 表示失败错误 |
 | bk_error_msg  | string | 请求失败返回的错误消息 |
 | data          | object | 请求返回的数据 |
 
 #### data
 | 字段      |  类型      |  描述      |
 |-----------|------------|------------|
-|bk_obj_id | string | 模型的唯一ID |
+|bk_obj_id | string | 模型的唯一 ID |
 |bk_obj_name | string |模型名称|
 |bk_supplier_account | string |开发商帐户名称|
-|bk_next_obj | string |当前模型的下一个模型唯一ID|
+|bk_next_obj | string |当前模型的下一个模型唯一 ID|
 |bk_next_name | string |当前模型的下一个模型名称|
-|bk_pre_obj_id | string |当前模型的前一个模型的唯一ID|
+|bk_pre_obj_id | string |当前模型的前一个模型的唯一 ID|
 |bk_pre_obj_name | string |当前模型的前一个模型的名称|

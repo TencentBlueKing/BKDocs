@@ -16,7 +16,7 @@
 |[clone_host_property](5.1/API文档/CC/clone_host_property.md)| 克隆主机属性|
 |[create_business](5.1/API文档/CC/create_business.md)| 新建业务|
 |[create_classification](5.1/API文档/CC/create_classification.md)| 添加模型分类|
-|[create_custom_query](5.1/API文档/CC/create_custom_query.md)| 添加自定义API|
+|[create_custom_query](5.1/API文档/CC/create_custom_query.md)| 添加自定义 API|
 |[create_inst](5.1/API文档/CC/create_inst.md)| 创建实例|
 |[create_module](5.1/API文档/CC/create_module.md)| 创建模块|
 |[create_object](5.1/API文档/CC/create_object.md)| 创建模型|
@@ -25,7 +25,7 @@
 |[create_user_group](5.1/API文档/CC/create_user_group.md)| 新建用户分组|
 |[delete_business](5.1/API文档/CC/delete_business.md)| 删除业务|
 |[delete_classification](5.1/API文档/CC/delete_classification.md)| 删除模型分类|
-|[delete_custom_query](5.1/API文档/CC/delete_custom_query.md)| 删除自定义API|
+|[delete_custom_query](5.1/API文档/CC/delete_custom_query.md)| 删除自定义 API|
 |[delete_host](5.1/API文档/CC/delete_host.md)| 删除主机|
 |[delete_host_lock](5.1/API文档/CC/delete_host_lock.md)| 删除主机锁|
 |[delete_inst](5.1/API文档/CC/delete_inst.md)| 删除实例|
@@ -40,8 +40,8 @@
 |[find_instance_association](5.1/API文档/CC/find_instance_association.md)| 查询模型实例之间的关联关系|
 |[find_object_association](5.1/API文档/CC/find_object_association.md)| 查询模型之间的关联关系|
 |[get_biz_internal_module](5.1/API文档/CC/get_biz_internal_module.md)| 查询业务的空闲机和故障机模块|
-|[get_custom_query_data](5.1/API文档/CC/get_custom_query_data.md)| 根据自定义api获取数据|
-|[get_custom_query_detail](5.1/API文档/CC/get_custom_query_detail.md)| 获取自定义API详情|
+|[get_custom_query_data](5.1/API文档/CC/get_custom_query_data.md)| 根据自定义 api 获取数据|
+|[get_custom_query_detail](5.1/API文档/CC/get_custom_query_detail.md)| 获取自定义 API 详情|
 |[get_host_base_info](5.1/API文档/CC/get_host_base_info.md)| 获取主机详情|
 |[get_mainline_object_topo](5.1/API文档/CC/get_mainline_object_topo.md)| 查询主线模型的业务拓扑|
 |[get_operation_log](5.1/API文档/CC/get_operation_log.md)| 获取操作日志|
@@ -78,7 +78,7 @@
 |[update_business](5.1/API文档/CC/update_business.md)| 修改业务|
 |[update_business_enable_status](5.1/API文档/CC/update_business_enable_status.md)| 修改业务启用状态|
 |[update_classification](5.1/API文档/CC/update_classification.md)| 更新模型分类|
-|[update_custom_query](5.1/API文档/CC/update_custom_query.md)| 更新自定义API|
+|[update_custom_query](5.1/API文档/CC/update_custom_query.md)| 更新自定义 API|
 |[update_event_subscribe](5.1/API文档/CC/update_event_subscribe.md)| 修改订阅|
 |[update_host](5.1/API文档/CC/update_host.md)| 更新主机属性|
 |[update_inst](5.1/API文档/CC/update_inst.md)| 更新对象实例|

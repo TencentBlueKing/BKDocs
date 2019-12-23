@@ -21,24 +21,24 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段               |  类型      | 必选   |  描述      |
 |--------------------|------------|--------|------------|
-| receiver           |  string    | 否     | 邮件接收者，包含邮件完整地址，多个以逗号分隔，若receiver、receiver__username同时存在，以receiver为准 |
-| receiver__username |  string    | 否     | 邮件接收者，包含用户名，用户需在蓝鲸平台注册，多个以逗号分隔，若receiver、receiver__username同时存在，以receiver为准 |
+| receiver           |  string    | 否     | 邮件接收者，包含邮件完整地址，多个以逗号分隔，若 receiver、receiver__username 同时存在，以 receiver 为准 |
+| receiver__username |  string    | 否     | 邮件接收者，包含用户名，用户需在蓝鲸平台注册，多个以逗号分隔，若 receiver、receiver__username 同时存在，以 receiver 为准 |
 | sender             |  string    | 否     | 发件人 |
 | title              |  string    | 是     | 邮件主题 |
 | content            |  string    | 是     | 邮件内容 |
 | cc                 |  string    | 否     | 抄送人，包含邮件完整地址，多个以逗号分隔 |
-| cc__username       |  string    | 否     | 抄送人，包含用户名，用户需在蓝鲸平台注册，多个以逗号分隔，若cc、cc__username同时存在，以cc为准 |
+| cc__username       |  string    | 否     | 抄送人，包含用户名，用户需在蓝鲸平台注册，多个以逗号分隔，若 cc、cc__username 同时存在，以 cc 为准 |
 | body_format        |  string    | 否     | 邮件格式，包含&#39;Html&#39;, &#39;Text&#39;，默认为&#39;Html&#39; |
-| is_content_base64  |  bool      | 否     | 邮件内容是否base64编码，默认False，不编码，请使用base64.b64encode方法编码 |
+| is_content_base64  |  bool      | 否     | 邮件内容是否 base64 编码，默认 False，不编码，请使用 base64.b64encode 方法编码 |
 | attachments        |  bool      | 否     | 邮件附件 |
 
 ##### attachments
@@ -80,5 +80,5 @@ POST
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result    | bool      | 请求成功与否，true:请求成功，false:请求失败 |
-| code      | string    | 组件返回错误编码，0表示success，>0表示失败错误 |
+| code      | string    | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
 | message   | string    | 请求返回的消息 |
