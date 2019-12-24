@@ -108,9 +108,11 @@ install python package for bdata(monitor) failed pip optin: --no-index --find-li
 1. 确保 mysql-devel 已经安装
 
 yum install mysql-devel
+
 ![](../assets/1.png)
 
 rpm -qa | grep mariadb-devel
+
 ![](../assets/2.png)
 
 2. 建立软连接
