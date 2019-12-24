@@ -1,6 +1,7 @@
 # 蓝鲸统一登录提供的基本函数接口说明
 
 ## 用户信息相关
+
 ```python
 # 获取用户类 Model（即对应用户表）
 from django.contrib.auth import get_user_model
@@ -26,6 +27,7 @@ result, message = user_model.objects.modify_user_role(role_code)
 ```
 
 ## 登录相关
+
 ```python
 # 蓝鲸登录的网址链接，如：http://{paas_domain}/login/
 from django.conf import settings as bk_settings

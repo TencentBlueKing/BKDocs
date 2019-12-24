@@ -9,7 +9,7 @@ celery 是一个简单、灵活且可靠的，处理大量消息的分布式系�
 
 ## 使用帮助
 
-### 1. 打开 celery 配置
+### 打开 celery 配置
 
 在 config/default.py 中修改配置：
 
@@ -17,7 +17,7 @@ celery 是一个简单、灵活且可靠的，处理大量消息的分布式系�
 IS_USE_CELERY = True
 ```
 
-### 2. 添加 celery 任务
+### 添加 celery 任务
 
 在 app 底下创建 task.py 文件， 添加 @task 任务：
 
@@ -33,11 +33,11 @@ def mul(x, y):
 
 ```python
 CELERY_IMPORTS = (
-    'testapp.tasks2'  
+    'testapp.tasks2'
 )
 ```
 
-### 3. 启动异步任务服务 celery worker
+### 启动异步任务服务 celery worker
 
 在根目录执行：
 
@@ -45,22 +45,22 @@ CELERY_IMPORTS = (
 python manage.py celery woker -l info
 ```
 
-### 4. 启动周期性任务服务 celery beat
+### 启动周期性任务服务 celery beat
 
 在根目录执行：
 ```bash
 python manage.py celery beat -l info
 ```
 
-### 5. 添加周期任务
+### 添加周期任务
 
 进入后台 admin，在 DJCELERY -> Periodic_tasks表中添加一条记录。
 
-### 6. 如何在平台部署时，自动启动 celery 进程
+### 如何在平台部署时，自动启动 celery 进程
 
 确认 IS_USE_CELERY = True，并在提测发布 SaaS 的时候，勾选使用 celery 任务。
 
-### 7. 调整 celery worker 并发数
+### 调整 celery worker 并发数
 
 - CELERYD_CONCURRENCY 参数官方说明：[celery 官方文档](http://docs.celeryproject.org/en/v2.2.4/configuration.html#celeryd-prefetch-multiplier)
 

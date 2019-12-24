@@ -129,8 +129,8 @@ class CoverMysql(object):
                         {
                             'operator': '$in',
                             'field': 'bk_host_innerip',
-                            'value': self.cover_ips  
-                        }                 
+                            'value': self.cover_ips
+                        }
                     ]
                 },
             ],
@@ -379,8 +379,8 @@ or variable_name LIKE "basedir"
 OR variable_name LIKE "version"
 or variable_name LIKE "log_bin" '''
 sql2='SHOW VARIABLES WHERE variable_name ="default_storage_engine"'
-# 大小  
-sql3="select concat(round((sum(data_length)+sum(index_length))/1024/1024,2),'MB') as data from information_schema.tables"  
+# 大小
+sql3="select concat(round((sum(data_length)+sum(index_length))/1024/1024,2),'MB') as data from information_schema.tables"
 # 数据库名
 base_info=$(mysql -u$username -h$ip -p$password -s -e "${sql1}" 2>/dev/null)
 sql10='''SHOW VARIABLES WHERE variable_name LIKE "innodb_buffer_pool_size" OR variable_name LIKE "innodb_log_buffer_size" OR variable_name LIKE "innodb_flush_log_at_trx_commit" OR variable_name LIKE "thread_cache_size" OR variable_name LIKE "query_cache_size" OR variable_name LIKE "max_connections"'''
@@ -426,12 +426,12 @@ exit
         return base64.b64encode(mysql_script)
 ```
 
-#### 自动发现关联信息  
+#### 自动发现关联信息
 - 通过 MySQL 实例中 IP 地址，找到与之对应的主机
 - 调用 CMDB 创建关联的接口，添加主机和 MySQL 直接的关联关系
 
 ```python
-# 3. 发现 MySQL 实例与所在主机的关联关系
+    # 发现 MySQL 实例与所在主机的关联关系
     # 创建关联: CMDB_HOST + '/api/v3/inst/association/action/create'
     # 目前暂未开放ESB接口，接口地址和参数通过抓包获取
     # params:

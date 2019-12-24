@@ -1,6 +1,6 @@
-## 环境准备
+# 环境准备
 
-### 下载容器平台安装包
+## 下载容器平台安装包
 
 - [从官网下载容器平台安装包](https://bk.tencent.com/download_sdk/)
 
@@ -8,7 +8,7 @@
 tar xf bkce_bcs-x.x.x.tgz  # 跟 src 保持同级目录
 ```
 
-### 修改 install.config 配置
+## 修改 install.config 配置
 
 使用 sample 文件 ( **install.config.new.sample** )，将下面的 bcs 相关配置追加到原 install.config 里面。
 
@@ -34,7 +34,7 @@ tar xf bkce_bcs-x.x.x.tgz  # 跟 src 保持同级目录
 4. 检查 globals.env 内的 redis 密码是否含有特殊字符，如果有需要去掉特殊字符，详情参考 [Redis 密码修改](5.1/常见问题/组件/redis.md)
 5. harbor，devops 不能与 nginx 相关部署在同一台。
 
-### 修改 install/bcs/ports.env 配置
+## 修改 install/bcs/ports.env 配置
 
 ```bash
 export BCS_MONITOR_IFACE="eth0"
@@ -45,7 +45,7 @@ export BCS_MONITOR_IFACE="eth0"
 > 1. 登陆 install.config 中的 bcs(monitor) 模块所在的机器，查看该机器实际网卡名称并替换 BCS_MONITOR_IFACE 该变量的值。
 
 
-### 修改 install/bcs/globals.env 配置
+## 修改 install/bcs/globals.env 配置
 
 ```bash
 # 根据业务需求设置访问域名
@@ -53,13 +53,13 @@ export BCS_MONITOR_IFACE="eth0"
 export HARBOR_SERVER_FQDN=hub.$BK_DOMAIN
 export DEVOPS_NAVIGATOR_FQDN=devops.$BK_DOMAIN
 ```
-### 配置免密
+## 配置免密
 
 ```bash
 bash  install/configure_ssh_without_pass  # 新增机器配置免密
 ```
 
-### 配置本地 hosts
+## 配置本地 hosts
 
 ```bash
 devops.<BK_DOMAIN>    devops(navigotr)所在IP

@@ -117,13 +117,12 @@ Copy
 
 - 查看 agent 机器上的 gse_agent 进程是否成对出现
 
-~~~bash
-* 查看是否和gse_task的48533端口建立链接：`netstat -antp | grep :48533`
+- 查看是否和gse_task的48533端口建立链接：`netstat -antp | grep :48533`
 
 ```bash
 [root@nginx-1 ~]# netstat -antp |grep :48533
 tcp        0      0 10.0.1.2:35544          10.0.1.226:48533        ESTABLISHED 26714/./gse_agent
-~~~
+```
 
 - 登陆到第一步显示链接的 gse_task 的 IP(10.X.X.X)，继续查看链接：`netstat -antp | grep :48533 | grep 10.0.1.2` 确认 gse_task 上看到的 ip 和 agent 的 ip 一致。若不一致，可能 agent->gse_task 时发生了 NAT 转换
 
@@ -367,6 +366,3 @@ Copy
 | proxy(gse_btsvr) | agent              | TCP,UDP | 60020-60030  | bt 传输           |
 | agent            | agent              | TCP,UDP | 60020-60030  | bt 传输(同一子网) |
 | agent            |                    |         | 监听随机端口 | bt 传输，可不开通 |
-
-
-

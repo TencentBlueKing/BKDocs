@@ -4,7 +4,7 @@
 
 Kubernetes 与 BCS 集成可以参考 [BCS 高可用 Kubernetes 集群部署](https://github.com/Tencent/bk-bcs/blob/master/docs/install/Deploy_BCS_in_K8S_HA_Cluster.md)
 
-## 1. CNI 扩展
+## CNI 扩展
 
 Kubernetes node 节点默认安装 CNI 工具的目录
 
@@ -26,7 +26,7 @@ Kubernetes node 节点默认安装 CNI 工具的目录
 
 kubelet 在 /etc/cni/net.d 目录下读取 CNI 的配置文件时，是按文件名的字母顺序来的。在这个目录下可以放多个配置文件，kubelet 会读取字母顺序排第一的配置文件。
 
-## 2. 多网络集成
+## 多网络集成
 
 针对部分复杂的场景，容器可能需要多网络设置与集成，由于 Kubernetes 默认不支持 CNI 链式
 调用，BCS 建议在以下场景，可以采用链式 CNI 插件实现多 CNI 插件集成。
@@ -44,7 +44,7 @@ kubelet 在 /etc/cni/net.d 目录下读取 CNI 的配置文件时，是按文件
 
 插件安装方式请参照上述链接。
 
-## 3. SaaS 插件使用
+## SaaS 插件使用
 
 完成 multus-CNI 安装之后，multus-CNI 在 bcs-saas 相关页面设置：
 

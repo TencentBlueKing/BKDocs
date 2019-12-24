@@ -5,7 +5,7 @@
 
 ## 蓝鲸监控无数据上报
 
-**此问题常见表象**
+### 此问题常见表象
 
 1. 启动入库任务失败【模块：data】接口结果返回超时
 2. 进程端口下发失败: 0:x.x.x.x 进程协议错误，支持 TCP、UDP, 参数传递协议为, 请检查输入参数和 CMDB 配置
@@ -23,7 +23,7 @@
 14. 基础性能接入失败：2：x.x.x.x 下发配置失败
 15. 【模块：data】接口返回结果错误：调用接口失败 gse_push_file：该业务{0}下没有 IP
 
-**可能原因**
+### 可能原因
 
 1. nginx未更新安装，`install nginx 1`后解决
 2. gse_agent在节点管理，重新安装
@@ -35,9 +35,9 @@
 8. `./kafka-console-consumer.sh --bootstrap-server kafka.service.consul:9092 --topic snapshot3|grep -P '"ip":".*?"' -o `出现`"ip":"__EXTERNAL_IP__"`
 9. CMDB里面配置进程的时候需要配置网络协议
 
-**排查方法**
+### 排查方法
 
-- **检查进程是否正常**
+#### 检查进程是否正常
 
 若为 4.1.X 的版本，bk_monitor 有对应 celery 进行异步任务处理，需在 APPO 模块对应机器上，确认 bk_monitor 的进程是否包含`uwsgi`，`celery beat`，`celery worker`3部分，示例如下
 
@@ -59,7 +59,7 @@ apps     31588  1960  0 18:01 ?        00:00:00 /data/bkce/paas_agent/apps/Envs/
 
 ```
 
-- **检查bkdata日志**
+#### 检查bkdata日志
 
 确认 databus 日志`/data/bkce/logs/bkdata/databus_etl.log`以及`/data/bkce/logs/bkdata/databus_tsdb.log`是否有 Exception 或者 Error 的错误，示例如下
 
@@ -69,7 +69,7 @@ grep -nE "Exception|Error" /data/bkce/logs/bkdata/databus_etl.log /data/bkce/log
 12:Exception in thread "main" org.apache.kafka.common.config.configException: Invalid value for configuration rest.port: Not a number of type INT
   ```
 
-- **检查 bkdata databus 任务**
+#### 检查 bkdata databus 任务
 
 确认在bkdata服务器上，`check_databus_status.sh`，不能出现有`Failed connect to databus.service.consul:10054; connection refused`或者`JSON object could be decoded`错误输出。正常的输出示例如下（若此处有错误，参考`initdata bkdata`失败的处理方法）
 
@@ -101,7 +101,7 @@ etl_1001_2_system_cpu_summary
 {"name":"etl_1001_2_system_cpu_summary","connector":{"state":"RUNNING","worker_id":"10.X.X.X:10052"},"tasks":[{"state":"RUNNING","id":0,"worker_id":"10.X.X.X:10052"}]}
 ```
 
-- **检查 kafka**
+#### 检查 kafka
 
 1. kafka 节点确认
 
@@ -157,7 +157,7 @@ $ [root@rbtnode1 install]# /data/bkce/service/kafka/bin/kafka-console-consumer.s
 
 ```
 
-- **检查influxdb**
+#### 检查influxdb
 
 确认influxdb内的数据库和结构，正常返回如下
 
@@ -187,7 +187,7 @@ system_proc_2
 system_swap_2
 ```
 
-- **检查cron任务**
+#### 检查cron任务
 
 ```bash
 # 确认是否存在update_cc_cache crontab任务
@@ -213,7 +213,7 @@ tail /var/log/cron
 
 若蓝鲸平台的监控 OK，而新增加的 Agent 监控没有，点击数据上报，提示 10-20 分钟会有新数据，实际一直没有数据，可能为 crontab 的 updata_cc_cache 未正常运行，导致 cache 未更新，新的机器未添加进来
 
-- **检查 cron 任务**
+### 检查 cron 任务
 
 ```bash
 # 确认是否存在update_cc_cache crontab任务
@@ -232,7 +232,7 @@ tail /var/log/cron
 
 如果没有，应该安装时漏执行，或者执行过`./bkcec clean cron`后忘记加回来。可在中控机执行 `./bkcec install cron` 重新安装上 cron 任务检查 bkdata 的 cron 任务
 
-- **手动运行update_cc_cache.sh**
+### 手动运行update_cc_cache.sh
 
 ```bash
 $ /data/bkce/bkdata/dataapi/bin/update_cc_cache.sh
@@ -333,7 +333,7 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
 
 		```bash
 		workon monitor  # （社区版5.1用 workon bkdata-monitor）
-		tail -f ../../logs/bkdata/kernel.log | grep "gse_custom_out_str_"  
+		tail -f ../../logs/bkdata/kernel.log | grep "gse_custom_out_str_"
 		```
 
 	- 去到业务下任意一台机器，触发一条自定义字符告警

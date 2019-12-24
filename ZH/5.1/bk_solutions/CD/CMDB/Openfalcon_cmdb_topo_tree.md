@@ -18,12 +18,12 @@
 - Open-Falcon 前端调用
 - 预览效果
 
-### 1. 配置平台中建立业务拓扑
+### 配置平台中建立业务拓扑
 参照 [主机纳管在蓝鲸配置平台中](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)，根据应用的部署分层架构，建立业务拓扑如下：
 
 ![](media/15642787521397.jpg)
 
-### 2. 查询主机及拓扑，写入 Redis
+### 查询主机及拓扑，写入 Redis
 - 定时调用配置平台`查询主机:search_host`接口
 - 将结果转化为 `ztree` 的数据格式，并写入 Redis
 
@@ -92,7 +92,7 @@ rdc.set('cmdb',str({'value':topo}))
 ```
 
 
-### 3. 封装后台接口
+### 封装后台接口
 - 用 `flask` 开发接口，用于 Openfalcon 前端调用
 - 跨域访问处理 : 调用外部接口，需要解决跨域问题
 
@@ -126,7 +126,7 @@ def search_new_ztree():
         return response
 ```
 
-### 4. 前端样式调整
+### 前端样式调整
 
 修改 Open-Falcon 前端页面`dashboard/rrd/templates/index.html`
 
@@ -169,7 +169,7 @@ function createTree(post_url){
 }
 ```
 
-### 5. 预览效果 
+### 预览效果
 
 可直接通过左侧的服务树选择资源，十分方便。
 
@@ -178,6 +178,5 @@ function createTree(post_url){
 改造前，查找资源只能通过检索，十分不便，如下图：
 
 ![](media/15643014658046.jpg)
-
 
 > 注: CMDB 中的资源经常变动，建议使用事件驱动的[消息推送](5.1/配置平台/产品功能/ModelManagement.md)来监听资源变化，而不是周期获取。

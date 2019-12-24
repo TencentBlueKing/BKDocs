@@ -11,7 +11,7 @@ B 机器是 VMM 的管理端，A 机器是 VMM 中的应用服务器。当 A 机
 ![-w753](media/15361199878029.jpg)
 <center>图 1. 套餐中引用变量</center>
 
-## 1. 目前可选的变量有(可能为空)
+## 目前可选的变量有(可能为空)
 
 - ${ip}：告警的 IP
 - ${raw}：告警的字符内容
@@ -20,7 +20,7 @@ B 机器是 VMM 的管理端，A 机器是 VMM 中的应用服务器。当 A 机
 - ${cc_biz_id}：CMDB 的业务 ID
 - ${operator}：业务负责人的第一个
 
-## 2. CMDB 主机属性和 SET 属性的变量
+## CMDB 主机属性和 SET 属性的变量
 
 格式为：${cc|属性名字}，如：
 
@@ -28,7 +28,7 @@ B 机器是 VMM 的管理端，A 机器是 VMM 中的应用服务器。当 A 机
 - ${cc|AssetID}：故障主机的固资编号
 具体属性名请在 CMDB 上查询。
 
-## 3. CMDB 变量支持五个参数
+## CMDB 变量支持五个参数
 
 - all、set、custom、alarm_ci_name、ip_bak
 
@@ -51,7 +51,7 @@ custom：查询自定义属性。如查询一个名为 IDC 的 Set 属性
 - ${cc|IDC|set|custom|all}
 - ${cc|IDC|all|set|custom}
 
-## 4. 故障机替换时备机
+## 故障机替换时备机
 
 故障自愈现在有两种获取备机的 IP，通过获取备机套餐在 CC 中寻找符合要求的机器或者通过作业平台脚本来获取。获取到的备机参数为：${bpm_context|ip_bak}
 
@@ -63,7 +63,7 @@ custom：查询自定义属性。如查询一个名为 IDC 的 Set 属性
 
 - ${bpm_context|alarm_ci_name} 故障机 IP
 
-## 5. 常见案例
+## 常见案例
 
 - 1.根据告警传入告警 IP
 
@@ -89,6 +89,6 @@ custom：查询自定义属性。如查询一个名为 IDC 的 Set 属性
 
     - ${cc|SetWorldID|set}_\${cc|SetChnName|set}
 
-## 6. 注意事项
+## 注意事项
 
 - 注意大小写

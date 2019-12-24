@@ -17,15 +17,15 @@
 - 使用 K8S 资源准备新版本
 - 切换流量并观察
 
-### 1. 蓝绿发布逻辑介绍
+### 蓝绿发布逻辑介绍
 
-#### 1.1 发布逻辑示意图
+#### 发布逻辑示意图
 
 蓝绿发布，即准备当前运行版本 和 新版本 两组实例，正式发布的时候，修改服务的域名的 DNS 记录将，将其指向新版本的 Ingress 指向的地址 。
 
 ![-w1303](media/15680799749131.jpg)
 
-#### 1.2 版本更新流程中引入的对象
+#### 版本更新流程中引入的对象
 
 以 Nginx 从 `1.12.2` 升级 `1.17.0` + 程序代码（index.html 的内容从 Nginx 默认页 更新为 1.17.0）为例，使用以下几个 新的对象：
 
@@ -35,10 +35,9 @@
 
 其中 Deployment、Service 不再赘述。
 
+### 使用 K8S 资源准备版本
 
-### 2. 使用 K8S 资源准备版本
-
-#### 2.1 新增 LoadBalancer
+#### 新增 LoadBalancer
 
 Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用才能对外提供访问。
 
@@ -50,14 +49,13 @@ Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用�
 
 > 建议业务 Pod 不调度至 LB 所在的节点，可使用 节点亲和性（nodeAffinity）实现。
 
-#### 2.2 Configmap ： 存放 nginx.conf
+#### Configmap ： 存放 nginx.conf
 
 在【模板集】菜单中，选择【Configmap】，新建 nginx.conf 和 default.conf 两个 configmap，实现**应用程序和配置的解耦**。
 
 ![-w1674](media/15659435399613.jpg)
 
-
-#### 2.3 创建 K8S 对象 Deployment 、Service、Ingress
+#### 创建 K8S 对象 Deployment 、Service、Ingress
 
 - 创建 Deployment
 
@@ -66,13 +64,11 @@ Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用�
 ![-w1675](media/15659437982262.jpg)
 ![-w1672](media/15659438850899.jpg)
 
-
 - 创建 Service
 
 在【Service】中关联 Deployment 以及服务名称、暴露的端口。
 
 ![-w1629](media/15680918349969.jpg)
-
 
 - 新建 Ingress
 
@@ -80,7 +76,7 @@ Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用�
 
 ![-w1629](media/15680920723966.jpg)
 
-#### 2.4 实例化模板集
+#### 实例化模板集
 
 保存模板集后，实例化模板集。
 
@@ -100,18 +96,17 @@ Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用�
 
 ![-w1677](media/15659450818610.jpg)
 
-
 修改域名解析或修改 PC 上 hosts 文件（Mac 下路径为 /etc/hosts），将 Ingress 中配置的主机名解析到 LoadBalancer 中节点的外网 IP，然后打开浏览器访问。
 
 ![-w1115](media/15680984160424.jpg)
 
 以上作为线上环境运行的版本，接下来部署新版本。
 
-### 3. 使用 K8S 资源准备新版本
+### 使用 K8S 资源准备新版本
 
 本次新版本参照微服务更新的最佳实践：将应用程序打入 Docker Image，**更新 Deployment 中的镜像即更新版本**。
 
-#### 3.1 制作新版本的 Docker Image
+#### 制作新版本的 Docker Image
 
 以 index.html 为应用程序，将其打入镜像，由于新版本的运行时是 Ningx 1.17.0，故以  Nginx 1.17.0 为基础镜像。
 
@@ -168,8 +163,7 @@ cf5b3c6798f7: Mounted from joyfulgame/nginx
 
 > 更多 Docker Image 的构建方法可以参考 [docker-nginx](https://github.com/nginxinc/docker-nginx/blob/master/stable/alpine/Dockerfile)。
 
-
-#### 3.2 克隆模板集为新版本
+#### 克隆模板集为新版本
 
 由于新版本主要在 Deployment 的镜像版本、Ingress 绑定的主机名，以及这几个 K8S 对象的命名差别（同一个命名空间不允许重名），所以克隆模板集，然后修改即可。
 
@@ -195,8 +189,7 @@ cf5b3c6798f7: Mounted from joyfulgame/nginx
 
 ![-w513](media/15681005088734.jpg)
 
-
-### 4. 切换流量并观察
+### 切换流量并观察
 
 如果是客户端业务，将请求的后端地址指向为新版本的主机名即可，如果客户端不方便更新配置，可以使用 CNAME 将域名指向到新的版本的主机名。
 

@@ -20,7 +20,7 @@
 - 代码解读
 - 电话告警测试
 
-### 1. 梳理逻辑
+### 梳理逻辑
 
 对企业内部语音网关封装一个接口，改造蓝鲸 ESB 中语音通知 API 即可。
 
@@ -29,9 +29,9 @@
 ![](media/15644704218616.jpg)
 
 
-### 2. 代码解读
+### 代码解读
 
-#### 2.1 封装企业内部语音网关接口
+#### 封装企业内部语音网关接口
 
 实现内部电话告警接口，并放到 send_voice_msg.py 同一层目录下。
 
@@ -40,7 +40,7 @@
 参数为电话电码列表、告警内容，返回值为调用结果(`True` / `False`)和接口的返回消息
 
 
-#### 2.2 改造蓝鲸 ESB 中语音通知 API
+#### 改造蓝鲸 ESB 中语音通知 API
 
 
 在蓝鲸 PaaS 所在机器的消息通知代码目录下，修改 `send_voice_msg.py`
@@ -53,7 +53,7 @@ cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
 > 注：企业版请将 `bkce` 改成 `bkee`
 
 
-##### 2.2.1 获取请求接口的数据
+##### 获取请求接口的数据
 
 原有 `send_voice_msg.py` 文件已经实现了大部分内容，关键在于 Form 类中的 handle(self) 函数，这个函数已实现从请求接口的数据中获取`告警接收人列表data['user_list_information']`，另外只需要使用`data['auto_read_message']`获取告警信息即可。
 
@@ -73,7 +73,7 @@ cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
 
 
 
-##### 2.2.2 调用企业内部语音告警接口
+##### 调用企业内部语音告警接口
 
 修改 `#TODO: can be updated` 之后的部分，全部注释掉。
 
@@ -103,9 +103,7 @@ cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
     self.response.payload = result
 ```
 
-
-
-#### 2.3 重启 PaaS
+#### 重启 PaaS
 
 蓝鲸中控机上重启 PaaS ，使代码生效
 
@@ -114,13 +112,11 @@ cd /data/bkce/open_paas/esb/components/generic/templates/cmsi/
 /data/install/bkcec start paas
 ```
 
+### 电话告警测试
 
+配置电话告警策略，触发告警，验证结果。
 
-### 3. 电话告警测试
-
- 配置电话告警策略，触发告警，验证结果。
-
- ![1564473737697](media/1564473737697.png)
+![1564473737697](media/1564473737697.png)
 
 告警产生后，手机将收到语音告警电话。
 

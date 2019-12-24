@@ -24,7 +24,6 @@
      > from django.http import JsonResponse # 对应 render_json 使用
      > ```
 
-
 4. Q: 如何打印日志？
 
    - A：对于日志打印，开发框架使用 Django 推荐的日志打印方式，具体请参考 [使用说明](./framework2.md) 中的 **日志使用** 章节。
@@ -43,8 +42,6 @@
      > logger = logging.getLogger ('app')
      > logger.info ('log something')
      > ```
-
-
 
 5. Q: 为何异常都没有被打印出来？
 

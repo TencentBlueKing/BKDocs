@@ -1,6 +1,5 @@
 # macOS 下输出 Hello,World!
 
-
 基于 `蓝鲸开发框架 2.0` 上输出 `Hello,World!`
 
 > 开发语言：`Python 3.7.3`
@@ -8,15 +7,15 @@
 > 操作系统：`macOS`
 
 
-### 1. 环境准备 
+### 环境准备
 
 安装 Python 3.7.3、准备数据库、创建应用和准备代码仓库地址、虚拟环境（可选）
 
-#### 1.1 安装 Python 3.7.3
+#### 安装 Python 3.7.3
 
 下载并安装 [Python 3.7.3](https://www.python.org/downloads/release/python-373/)
 
-#### 1.2 部署 MySQL 
+#### 部署 MySQL
 
 - [官网下载 MySQL 5.7](https://dev.mysql.com/downloads/mysql/5.7.html#downloads)
 - 修改用户环境变量和 MySQL 密码
@@ -26,7 +25,7 @@ export PATH=$PATH:/Users/{YOUR_USERNAME}/Library/Python/3.7/bin:/usr/local/mysql
 mysqladmin -uroot -p password {new_password}
 ```
 
-#### 1.3 创建应用 
+#### 创建应用
 
 创建应用前，需提前准备代码仓库 (Git/SVN) ，推荐 `Git`
 
@@ -38,7 +37,7 @@ mysqladmin -uroot -p password {new_password}
 
     进入 `开发者中心` - `应用创建` ，填写上一步获取的 `git` 仓库地址和账号，创建成功后会获取 `应用 ID:{APP_CODE}`、`应用 TOKEN:{SECRET_KEY}` ，这两个变量后续会用到。
 
-#### 1.4 准备虚拟环境 (可选：只有一个开发项目的可忽略) 
+#### 准备虚拟环境 (可选：只有一个开发项目的可忽略)
 
 - [修改 pip 源](https://pip.pypa.io/en/stable/user_guide/#config-file) (国内镜像)
 
@@ -71,9 +70,9 @@ pipenv shell
 ```
 
 
-### 2. 初始化开发框架 
+### 初始化开发框架
 
-#### 2.1 下载开发框架 
+#### 下载开发框架
 
 - 下载开发框架 `http://{PAAS_URL}/guide/newbie/#step3`
 
@@ -90,7 +89,7 @@ pip3 install -r requirements.txt
 ```
 
 
-#### 2.2 修改配置  
+#### 修改配置
 
 - 修改应用 (SaaS) 配置 (此处内部版已直接填充到开发框架中)
 
@@ -100,7 +99,7 @@ pip3 install -r requirements.txt
 
     修改 config/\_\_init\_\_.py 中的 `BK_URL` 为 `{PAAS_URL}`
 
-#### 2.3 创建和初始化数据库 
+#### 创建和初始化数据库
 
 ```
 CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
@@ -119,7 +118,7 @@ CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
 python manage.py migrate
 ```
 
-#### 2.4 启动本地项目 
+#### 启动本地项目
 
 - 先修改本地 hosts
 
@@ -137,7 +136,7 @@ python manage.py runserver appdev.{PAAS_URL}:8000
 
 ![开发框架首页](media/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E9%A6%96%E9%A1%B5.png)
 
-### 3. Hello,World 
+### Hello,World
 
 - 修改 `视图` home_application/views.py
 

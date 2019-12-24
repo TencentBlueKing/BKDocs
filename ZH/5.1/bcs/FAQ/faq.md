@@ -1,15 +1,11 @@
 # FAQ
+## 产品使用
 
-
-## 1. 产品使用
-
-### 1.1 BCS 与 K8S、Mesos 的关系和区别是什么
+### BCS 与 K8S、Mesos 的关系和区别是什么
 
 K8S、Mesos 为容器编排引擎，BCS 是容器管理平台，兼容 K8S、Mesos 两种容器编排引擎，提供便捷的容器管理服务，更多介绍详见 [产品架构](5.1/bcs/Architecture/Architecture.md)。
 
-
-
-### 1.2 一个集群需要至少需要几台机器
+### 一个集群需要至少需要几台机器
 
 集群由 Master 和 Node 组成，其中 Master 主要用来部署集群的基础组件，Slave 主要用来承载业务容器。
 
@@ -22,7 +18,7 @@ K8S、Mesos 为容器编排引擎，BCS 是容器管理平台，兼容 K8S、Mes
 - 平台建议 Node 配置
    配置和数量视业务需求而定(至少需要 1 台)；操作系统：CentOS 7.4 +
 
-### 1.3 调度约束
+### 调度约束
 
 用户通过调度约束可以自动的为 POD 选择指定节点，而且可以通过 **亲和性** 和 **反亲和性** 实现个性化的调度能力。
 
@@ -44,10 +40,9 @@ No nodes are available that match all of the predicates: MatchInterPodAffinity (
     - 当前节点是否有设置亲和性，比如设置了亲和性，那么必须满足亲和性条件
     - 其他服务是否有设置反亲和性，比如别的节点设置了反亲和性，那么设置的节点就不允许其他服务调度
 
+## 问题排查
 
-## 2. 问题排查
-
-### 2.1 拉取镜像失败
+### 拉取镜像失败
 
 出现镜像拉取失败的问题，可能有如下两种可能导致：
 
@@ -57,15 +52,13 @@ No nodes are available that match all of the predicates: MatchInterPodAffinity (
 - 节点没有权限拉取镜像
 这种情况，一般是由于平台侧创建`imagePullSecrets`失败导致。
 
-
-## 2.2 启动容器失败
+## 启动容器失败
 
 这种情况一般是用户镜像有问题，用户可以通过如下两种方式查看日志:
 - 使用 Webconsole，kubectl logs `pod name` -n `namespace name`
 - 登录节点机器，通过 docker logs `container id`查看相应日志信息
 
-
-### 2.2.1 使用 Webconsole 查看日志
+### 使用 Webconsole 查看日志
 
 - 登录 Webcosole
 点击容器服务的右下角“WebConsole”，点击相应的集群，弹出 Webcosole 页面
@@ -74,7 +67,7 @@ No nodes are available that match all of the predicates: MatchInterPodAffinity (
 
 然后，输入 kubectl logs `pod name` -n `namespace name`，查看指定命名空间下的应用日志
 
-### 2.2.2 登录节点查看日志
+### 登录节点查看日志
 
 - 通过点击应用详情，跳转到应用详情页
 
@@ -86,12 +79,9 @@ No nodes are available that match all of the predicates: MatchInterPodAffinity (
 
 - 登录节点查看相应的容器日志
 
+### 关于 POD 创建后一直处于 Waiting 或 ContainerCreating 状态
 
-
-
-### 2.3 关于 POD 创建后一直处于 Waiting 或 ContainerCreating 状态
-
-- 2.3.1 检查应用配置的资源设置
+#### 检查应用配置的资源设置
 首先，通过查看事件日志，如果此时出现下面这种错误，可以认为启动容器的资源不能满足需求
 ```
 to start sandbox container for pod ... Error response from daemon: OCI runtime create failed: container_linux.go:348: starting container process caused "process_linux.go:301: running exec setns process for init caused "signal: killed"": unknown
@@ -101,6 +91,6 @@ to start sandbox container for pod ... Error response from daemon: OCI runtime c
 
 ![应用资源限制](media/res_limit.jpg)
 
-- 2.3.2 镜像问题
+#### 镜像问题
 
 请参考 查看本文上面的 [拉取镜像失败] 处理流程

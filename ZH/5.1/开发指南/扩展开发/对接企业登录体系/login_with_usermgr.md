@@ -4,10 +4,9 @@
 
 蓝鲸统一登录: 由 `open_paas/login` 提供 `统一登录服务`; 由 `用户管理` App `维护用户数据`
 
-
 ## MockBackend 接入示例
 
-### 1. 获取参考代码
+### 获取参考代码
 
 蓝鲸版本包中 `open_paas/login/ee_official_login/mock`, 包含了 MockBackend 接入示例
 
@@ -15,8 +14,7 @@
 
 使用固定的用户名密码才能登录成功:  `admin/blueking`
 
-
-### 2. 目录结构及配置说明
+### 目录结构及配置说明
 
 `open_paas/login` 下涉及的文件
 
@@ -67,9 +65,9 @@ CUSTOM_AUTHENTICATION_BACKEND = 'ee_official_login.mock.backends.MockBackend'
 登录过程中会打 debug 日志, 本地开发环境: `../logs/login.log` 使用蓝鲸部署脚本部署环境: `{INSTALL_ROOT}/logs/open_paas/login.log`
 
 
-### 3. 登录代码简要说明
+### 登录代码简要说明
 
-#### 3.1 `ee_login/settings_login_mock.py`
+#### `ee_login/settings_login_mock.py`
 
 ```python
 # 表示是自定义登录
@@ -81,7 +79,7 @@ CUSTOM_LOGIN_VIEW = 'ee_official_login.mock.views.login'
 CUSTOM_AUTHENTICATION_BACKEND = 'ee_official_login.mock.backends.MockBackend'
 ```
 
-#### 3.2 `ee_official_login/mock/views.py`
+#### `ee_official_login/mock/views.py`
 
 主要处理
 
@@ -150,7 +148,7 @@ def login(request):
         return response
 ```
 
-#### 3.3 `ee_official_login/mock/backends.py`
+#### `ee_official_login/mock/backends.py`
 
 基于 Django authentication backend, 具体可以参考 [官方文档](https://docs.djangoproject.com/en/2.2/topics/auth/customizing/)
 
@@ -188,7 +186,7 @@ class MockBackend(ModelBackend):
         user.username = username
         user.display_name = "mockadmin"
         user.email = "mockadmin@mock.com"
-        
+
         # 同步用户到用户管理 sync to usermgr
         # 这里不做调用
         # ok, message = user.sync_to_usermgr()
@@ -200,11 +198,9 @@ class MockBackend(ModelBackend):
         return user
 ```
 
-
 ## Google OAuth 接入示例
 
-
-### 1. 获取参考代码
+### 获取参考代码
 
 蓝鲸版本包中 `ee_official_login/oauth/google`, 包含了 Google OAuth 接入示例
 
@@ -212,7 +208,7 @@ class MockBackend(ModelBackend):
 
 调试过程中, 可以查看日志中的 debug 信息
 
-### 2. 目录结构及配置说明
+### 目录结构及配置说明
 
 `open_paas/login` 下涉及的文件
 

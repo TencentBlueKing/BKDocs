@@ -19,6 +19,7 @@
 - functioncontroller: 通用白名单管理，通过指定不同的功能 code，维护不同的白名单
 
 - user_auth::skip_user_auth: "应用免登录态验证白名单" 功能 code，添加此功能 code，然后将应用ID添加到"功能测试白名单"中
+
 ### API 调用
 
 调用 API 主要有两种方式，一种是使用 APP 开发框架中提供的 SDK 包，一种是根据 API 地址直接访问。

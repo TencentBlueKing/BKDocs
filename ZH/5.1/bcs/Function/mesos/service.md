@@ -1,6 +1,6 @@
 # Mesos Service 定义
 
-## 1. Service 数据结构说明
+## Service 数据结构说明
 
 service 主要用**服务发现**，**DNS 基础数据**，**loadbalance 服务导出**。
 
@@ -49,7 +49,7 @@ service 主要用**服务发现**，**DNS 基础数据**，**loadbalance 服务�
 }
 ```
 
-## 2. endpoints
+## endpoints
 
 如果存在 endpoints，DNS 直接 watch 并直接关联 DNS 解析记录。
 如果没有，自行关联 service 和 taskgroup 信息，解析 status 信息提取 IP。
@@ -80,7 +80,7 @@ service 主要用**服务发现**，**DNS 基础数据**，**loadbalance 服务�
 }
 ```
 
-## 3. 特别字段说明
+## 特别字段说明
 
 **clusterIP**：考虑未来需要做外部域名访问和服务发现，clusterIP 暂留用于指向 proxyIP 信息
 
@@ -97,7 +97,7 @@ service 主要用**服务发现**，**DNS 基础数据**，**loadbalance 服务�
 
 **BCS-WEIGHT-**: 当使用 selector 匹配多个 application 时，用于表达多个 application 之间的权重，该值为大于等于 0 的整数，类型为 string。如果等于 0，则该 application 没有流量导入。
 
-## 4. **bcs-loadbalance 功能使用**
+## **bcs-loadbalance 功能使用**
 
 如果要启动 loadbalance 的功能，需要：
 
@@ -117,7 +117,7 @@ bcs-loadbalance 可以工作两种环境下：
 * overlay 方式，默认使用 servicePort 作为服务端口，流量转发至 containerPort
 * underlay 方式，使用 servicePort 作为服务端口，流量转发至 hostPort（限于 host/bridge 模式）
 
-## 5. taskgroup 服务端口机制
+## taskgroup 服务端口机制
 
 服务端口数据来源于镜像字段 ports，主要包含：
 
@@ -158,7 +158,7 @@ docker 存在网络模式：None，Host，Bridge，User（CNM/CNI），端口映
   * hostPort 不填写默认补齐为-1，仅有 containerPort
   * hostPort 为 0，默认随机端口，使用 offer 端口资源，port 端口根据序号导入环境变量 PORT0 ~ PORTn
 
-### 5.1 服务端口代码调整说明
+### 服务端口代码调整说明
 
 * executor
 

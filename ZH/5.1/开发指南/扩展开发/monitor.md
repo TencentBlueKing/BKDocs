@@ -4,11 +4,11 @@
 
 ### 数据链路
 
-#### 1. 蓝鲸监控整体数据链路图
+#### 蓝鲸监控整体数据链路图
 
 ![图片描述](./media/003.png)
 
-#### 2. 自定义组件采集流程
+#### 自定义组件采集流程
 
 ![图片描述](./media/004.png)
 
@@ -86,10 +86,10 @@ sample_metric2 {partition="c:"} 0.44
 
   > 不同系统安装介绍：https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/01.1.md
 
-- Prometheus Exporter 开发依赖库 
+- Prometheus Exporter 开发依赖库
 
   ⾸先引⼊ Prometheus 的依赖库
-  
+
 ```bash
 go get -v github.com/prometheus/client_golang/prometheus
 ```
@@ -488,15 +488,11 @@ supported_version | 采集器支持版本，版本信息会显示在配置页面
 
 ![](./media/009.png)
 
-
-
 ## 自定义组件更新
 
 如果需要更新组件，进入编辑模式，选择相应文件进行更新即可
 
 ![](./media/010.png)
-
-
 
 附件是一个样例 Exporter 一键导入包，另外包含了打包好的 Exporter 以及源码
 

@@ -1,6 +1,6 @@
 # Summary
 
-## 蓝鲸智云ITSM白皮书
+## 蓝鲸智云ITSM
 * [产品简介](产品简介/README.md)
 * [术语解释](术语解释/term.md)
 * [产品架构图](产品架构/architecture.md)

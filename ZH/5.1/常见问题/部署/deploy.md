@@ -50,7 +50,6 @@
 
 - 对比包的 md5 是否和官网一致
 
-
 ### cmdb-nginx 服务状态 failed
 
 检查 cmdb 模块所在机器上是否能 YUM 安装 Nginx `yum info nginx`
@@ -69,7 +68,6 @@
 其他进程状态 EXIT，请前往 CMDB 所在服务器
 
 `/data/bkce/logs/cmdb/` 目录下查看相应的日志
-
 
 ### 部署 App_mgr 常见问题
 

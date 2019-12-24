@@ -9,10 +9,9 @@
 标准插件架构包含插件定义 Component、后台执行逻辑 Service、以及前端表单配置 Forms。
 ![](./media/002.png)
 
-
 ## 标准插件开发步骤
 
-### 1. 初始化插件模块
+### 初始化插件模块
 在项目根目录下执行 `python manage.py create_atoms_app {CUSTOM PLUGINS NAME}`，其中 `{CUSTOM PLUGINS NAME}` 为你定制开发的标准插件
 集合包名，注意不要和项目中已有的模块和插件集合名字重复，名字最好能体现插件包的作用。执行命令后会生成如下目录结构：
 
@@ -42,12 +41,10 @@
 其中，components 放置标准插件集合后台代码文件，static 放置标准插件集合前端静态代码文件，`plugin.py` 和 `plugin.js` 可以改为你开发的标准
 插件对应的系统名简称，如 job、cmdb 等。
 
-
-### 2. 修改项目 settings 配置
+### 修改项目 settings 配置
 打开 `config/default.py` 文件，找到 INSTALLED_APPS 变量，加入步骤1中创建的 `{CUSTOM PLUGINS NAME}`。
 
-
-### 3. 加入新的 API 网关
+### 加入新的 API 网关
 如果你开发的标准插件依赖自定义接入的 API 网关，那么在你将接口接入蓝鲸 API 网关后，需要手动将 API 添加到 Client SDK 中。
 在 `{CUSTOM PLUGINS NAME}/__init__.py` 文件下编写相应的代码即可向 Client 中添加对应的接口：
 
@@ -85,7 +82,7 @@ ComponentClient.setup_components(collections.AVAILABLE_COLLECTIONS)
 上面的例子中为 Client 添加了一个名为 `my_system` 的系统，并且为该系统中添加了 `get_status` 和 `set_status` 两个接口。
 
 
-### 4. 标准插件后台开发
+### 标准插件后台开发
 
 在 `plugin.py` 文件中编写插件后台逻辑，主要包括标准插件定义和后台执行逻辑，下面是示例代码
 
@@ -192,8 +189,7 @@ TestCustomComponent 类详解：
 - `bound_service`：绑定后台服务 `TestCustomService`。
 - `form`：前端表单文件路径，请加上 `settings.STATIC_URL` 前缀。
 
-
-### 5. 标准插件前端开发
+### 标准插件前端开发
 
 在 `plugin.js` 文件中编写前端逻辑，利用标准运维的前端插件框架，只需要配置就能生成前端表单，下面是示例代码
 ```js
@@ -258,8 +254,7 @@ TestCustomComponent 类详解：
 - `type`：前端表单类型，可选 input、textarea、radio、checkbox、select、datetime、datatable、upload、combine 等。
 - `attrs`：对应type的属性设置，如 name、validation等。
 
-
-### 6. 标准插件远程加载
+### 标准插件远程加载
 
 标准运维支持从系统外部加载标准插件，但是，对于编写的插件有以下要求（如果你编写的插件不需要进行远程加载，可以跳过此章节）：
 
@@ -352,7 +347,7 @@ class TestCustomComponent(Component):
     """
 ```
 
-### 7. 标准插件单元测试
+### 标准插件单元测试
 
 在我们完成自定义组件的开发后，我们需要测试组件是否能够按照我们预期的那样运行。最简单的方式就是构造一个包含该节点的流程然后把流程跑起来
 观察其行为和输出是否符合预期。但是这种测试方式十分耗时而且是一次性的，下次若是修改了节点后需要再进行一遍相同的操作。
@@ -367,8 +362,7 @@ class TestCustomComponent(Component):
 
 单元测试编写指引请参考：[标准插件单元测试编写](https://github.com/Tencent/bk-sops/blob/master/pipeline/docs/user_guide_component_unit_test.md)。
 
-
-### 8. 标准插件功能测试
+### 标准插件功能测试
 
 开发完成后，先在根目录下执行 `python manage.py collectstatic –noinput` 收集静态资源。
 
@@ -376,7 +370,6 @@ class TestCustomComponent(Component):
 outputs_format 一致，其中执行结果是系统默认，值是 `True` 或 `False`，表示节点执行结果是成功还是失败。
 
 然后使用新建的流程创建任务，填写参数并执行，执行后查看结果是否符合预期，可以结合日志更准确的评估执行结果。
-
 
 ## 标准插件开发规范
 
@@ -387,10 +380,7 @@ outputs_format 一致，其中执行结果是系统默认，值是 `True` 或 `F
 - 参数 tag_code 命名规则是“系统名_参数名”，这样可以保证全局唯一；长度不要超过 20 个字符。
 - 后台和前端中的中文都要使用翻译函数，以便可以国际化。
 
-
 ## 官方标准插件库
-
-
 ### 蓝鲸服务系列
 
 - 蓝鲸服务(BK)-定时

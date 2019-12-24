@@ -6,7 +6,6 @@
 
 ![admin](../assets/admin-1560507964987.png)
 
-
 - 可以看到第 3 条，就是 GSE 获取 Agent 状态的定时任务。
 
 ![task](../assets/task.png)

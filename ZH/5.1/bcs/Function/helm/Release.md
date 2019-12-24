@@ -1,6 +1,6 @@
 # 使用 Helm 发布应用
 
-## 1. 使用蓝鲸容器服务 Helm 部署 Chart
+## 使用蓝鲸容器服务 Helm 部署 Chart
 参考上一步推送完 Chart 之后，您就可以在`项目仓库`栏目中看到新推送的 Chart，如果没有可以点击`同步仓库`进行同步。
 
 - 创建入口
@@ -60,7 +60,7 @@
 
 <center>图 9.Helm Release回滚对比预览页面</center>
 
-## 2. 检查 Helm Release 状态
+## 检查 Helm Release 状态
 - 通过 Helm Release 列表页面查看
     + 在`容器服务`/`Helm`/`Release列表`页面中，选中`查看状态`即可查看资源的状态信息。
 
@@ -83,7 +83,7 @@
 
 <center>图 13.WebConsole 使用效果图</center>
 
-## 3. Helm Release 的升级的版本
+## Helm Release 的升级的版本
 通过蓝鲸容器服务对 Helm Release 做升级时，有个默认选中的版本，也就是当前版本，在当前版本的版本号左边有个备注，备注的作用用于说明，Release 所使用的版本，是否发生过变化，或者已经被删除。如下图所示，蓝鲸小游戏 rumpetroll 当前版本是 1.0.0，标记的是 `unchanged` , 表示当前版本自上一次被当前 Helm Release 使用之后未发生过变化。
 
 ![](imgs/release_unchange.jpg)

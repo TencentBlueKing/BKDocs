@@ -1,6 +1,6 @@
 # 性能优化
 
-## 1. Python 性能优化
+## Python 性能优化
 
 1. 尽量使用 generator（生成器），如 `xrange`, `yield`, `dict.iteritems()`, `itertools`
 
@@ -14,7 +14,7 @@
 
 6. 使用 dequeue 来做双端队列
 
-## 2. Django QuerySet 性能优化
+## Django QuerySet 性能优化
 
 1. 【必须】尽量避免读取全部数据，优先使用 `exists`, `count`, `only`, `defer`,
 切片 `[]` 等。如：

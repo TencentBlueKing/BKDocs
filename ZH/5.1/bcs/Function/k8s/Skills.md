@@ -1,11 +1,11 @@
 # K8S 使用技巧
 
-## 1. 如何与集群中的资源进行比较
+## 如何与集群中的资源进行比较
 - 场景
     + 已有 K8S 集群，并部署有业务容器，并希望尽量降低变更风险
     + 怀疑手动改了集群的一些资源配置
 
-在 K8S 1.14 中新增了 [kubectl diff](https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/#declarative-object-configuration) 命令，支持将线下 YAML 文件与线上环境做比对。  
+在 K8S 1.14 中新增了 [kubectl diff](https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/#declarative-object-configuration) 命令，支持将线下 YAML 文件与线上环境做比对。
 
 情景：将本地 deployment.yaml 中的 Nginx 的镜像从 1.17.0 修改为 1.17.1，与线上环境比对，结果如下：
 

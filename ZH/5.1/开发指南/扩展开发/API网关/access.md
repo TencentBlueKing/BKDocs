@@ -51,7 +51,6 @@ http://xxx.domain.com/api/c/self-service-api/hcp/get_host_list/
 
 编码POST参数方式：json 目标接口请求方式为 POST 时，才需要指定
 
-
 ## API 访问信息
 
 通过上面的配置，即可接入 API，访问 API 同样会进行应用和用户的认证。API 的访问地址为：

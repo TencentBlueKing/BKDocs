@@ -95,6 +95,7 @@ zk.service.consul.    0    IN    A    10.x.x.x
 ; <<>> DiG 9.9.4-RedHat-9.9.4-29.el7_2.2 <<>> zk.service.consul @127.0.0.1
 ;; global options: +cmd
 ;; connection timed out; no servers could be reached
+
 ```
 
 如果出现以下信息 "IN A" 后面没有 ip 地址，说明 consul 启动了，但是无法解析域名
@@ -117,4 +118,3 @@ consul.            0    IN    SOA    ns.consul. postmaster.consul. 1530849644 36
 - 检查 consul server 节点是否都 running
 - 在任意一台 consul 上输入 `consul join <另外一个consul节点>`
 - 查看节点状态：`consul operator raft list-peers`
-

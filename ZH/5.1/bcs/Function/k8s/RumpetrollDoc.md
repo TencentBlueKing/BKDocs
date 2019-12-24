@@ -1,12 +1,12 @@
 # 吃豆小游戏案例
 
-## 1. 小游戏介绍
+## 小游戏介绍
 
 ![](../assets/15290364195112/2018-06-19-15-49-27.jpg)
 
 分为 3 个模块， openresty、rumpetroll 和 redis。其中 openresty 作为游戏的接入模块，rumpetroll 是游戏房间(游戏后台)，redis 是数据存储与服务发现模块。
 
-## 2. 模块示例
+## 模块示例
 ### 基于 Deployment 部署 openresty
 ```yml
 apiVersion: extensions/v1beta1

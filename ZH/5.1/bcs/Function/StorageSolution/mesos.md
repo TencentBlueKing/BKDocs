@@ -3,11 +3,11 @@
 
 以 Ceph rbd 为使用示例来说明：
 
-## 1. 准备存储卷
+## 准备存储卷
 
 管理员创建 ceph rbd 块，把 rbd 块设备 map 到集群 node 节点上，格式化并挂载至某个目录中，如 /mnt/testvolume
 
-## 2. 挂载进容器
+## 挂载进容器
 
 用户在模板集中创建 Mesos 应用，在容器配置中指定挂载源为 /mnt/testvolume
 

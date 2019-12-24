@@ -6,7 +6,6 @@
 
 与蓝鲸 SaaS 开发框架结合使用，请参阅 [结合 BKUI 使用指南](../BKUI.md)。
 
-
 ## 安装与使用
 
 ### 安装
@@ -66,33 +65,33 @@ $ bkui --help
 
 > 为了让前后端分离协作模式可行，这几个设置默认均为本地模拟地址（即 `http://localhost`），这么做一来可以使前端页面功能开发可以相对独立完成，二来当后端接口准备好之后，前端仅需要修改代码中对应的配置，即可进行功能联调。
 
-### 1. Generate project in current directory?
+### Generate project in current directory?
 是否在当前目录下初始化项目，**直接在当前目录下运行 `bkui init` 并且当前目录为空时会出现这个问题**。
 
-### 2. The current directory is not empty. Continue?
+### The current directory is not empty. Continue?
 是否在当前目录下初始化项目，**直接在当前目录下运行 `bkui init` 并且当前目录不为空时会出现这个问题**。
 
-### 3. Target directory exists. Will create a new directory and add the `.bak` suffix to the existing directory. Continue?
+### Target directory exists. Will create a new directory and add the `.bak` suffix to the existing directory. Continue?
 是否在已存在的目录里初始化项目，**运行 `bkui init DIRECTORY_NAME` 并且 `DIRECTORY_NAME` 已经存在时会出现这个问题**，继续之后，会给已存在的目录添加一个时间戳后缀，同时新建 `DIRECTORY_NAME` 目录，并在 `DIRECTORY_NAME` 新目录里初始化项目。
 
-### 4. Is it a SaaS Application?
+### Is it a SaaS Application?
 是否是蓝鲸 SaaS 应用，默认为是。**蓝鲸前端开发脚手架除了可以构建蓝鲸 SaaS 应用，也支持构建 Web 单页应用**。
 
-### 5. Project name
+### Project name
 项目名称，默认为 `bkui init` 中设置的 `DIRECTORY_NAME`，如果没有 `DIRECTORY_NAME` 参数，那么就是当前目录的名称。
 
-### 6. Project description
+### Project description
 项目描述，默认为 `Project description` 字符串。
 
-### 7. Author
+### Author
 作者，默认会取你工程下的 `git config --get user.name` 以及 `git config --get user.email` 以 `name <email>` 显示。如果当前工程下没有，那么会取全局 `git` 的配置。如果全局 `git` 没有获取到，那么 `name` 会被设置为 `os.hostname()` 即操作系统的主机名，`email` 会被设置为 `''`。
 
-### 8. PostCSS or Scss
+### PostCSS or Scss
 css 的处理引擎，目前仅支持 `postcss`。
 
 > [postcss](https://postcss.org/) 是一个用 js 工具和插件转换 css 代码的工具，这些插件可以支持使用变量，混入(mixin)，转换未来的 css 语法，内联图片等操作。相对于 scss，我们更推荐使用 postcss，因为 postcss 是利用 js 来转换 css 代码，基于 js 写的插件理论上来说可以完成任何操作，没有限制，只要能够想到，基本上都可以利用 js 来实现，而且 postcss 不会对 css 代码做任何修改，它只是为插件提供接口，方便他们完成各自的功能。如果需要结合 webpack 使用 scss，参见 [postcss-loader](https://webpack.js.org/loaders/postcss-loader/)。
 
-### 9. LOCAL_DOC_URL
+### LOCAL_DOC_URL
 `bkui init` 初始化项目时，会在项目中自带一个文档示例工程，这个参数就是设置文档示例工程的本地访问 URL，默认为 `http://localhost`，如果需要自己设置，请输入绝对地址。**（文档示例工程不会对实际的工程产生任何影响，打包构建时也不会把文档示例工程的内容打入到实际工程中）**。
 > 文档示例工程只是本地运行，因此不会涉及到线上部署，通常使用默认设置 `http://localhost` 即可。如果需要把文档部署到线上，可运行 `npm run build:doc` 打包构建文档示例工程，然后自行部署。
 
@@ -100,14 +99,14 @@ css 的处理引擎，目前仅支持 `postcss`。
 
 - **本配置是 `${ROOT}/doc/build/config.js` 中的 `localDocUrl` 字段，可根据自己的需求修改。**
 
-### 10. LOCAL_DOC_PORT
+### LOCAL_DOC_PORT
 文档示例工程的本地访问端口，默认为 `8081`。
 
 ##### 如何修改本配置
 
 - **本配置是 `${ROOT}/doc/build/config.js` 中的 `localDocPort` 字段，可根据自己的需求修改。**
 
-### 11. LOCAL_DEV_URL
+### LOCAL_DEV_URL
 本地开发的地址，默认值为 `http://localhost`，如果需要自己设置，请输入绝对地址（本配置与线上部署无关）。
 > 我们推荐将 `LOCAL_DEV_URL` 设置为与您部署的蓝鲸社区版/企业版或非蓝鲸 SaaS 应用的线上域名一致，只是加上一个 `local-dev` 的子级前缀。
 
@@ -117,14 +116,14 @@ css 的处理引擎，目前仅支持 `postcss`。
 
 - **本配置是 `${ROOT}/build/dev.env.js` 中的 `LOCAL_DEV_URL` 字段，可根据自己的需求修改。**
 
-### 12. LOCAL_DEV_PORT
+### LOCAL_DEV_PORT
 本地开发的端口，默认值为 `8080`。
 
 ##### 如何修改本配置
 
 - **本配置是 `${ROOT}/build/dev.env.js` 中的 `LOCAL_DEV_PORT` 字段，可根据自己的需求修改。**
 
-### 13. AJAX_URL_PREFIX
+### AJAX_URL_PREFIX
 ajax 请求地址前缀，我们通过这个配置来拼接出 ajax 请求的前缀，设置为 `axios` 的 `baseURL`，如果需要自己设置，请输入绝对地址。通常情况下，这个值需要与后端协商指定。
 
 **蓝鲸 SaaS 应用和非蓝鲸 SaaS 应用 ajax 请求前缀：**
@@ -141,7 +140,7 @@ ajax 请求地址前缀，我们通过这个配置来拼接出 ajax 请求的前
 - **本地开发中，本配置是 `${ROOT}/build/dev.env.js` 中的 `AJAX_URL_PREFIX` 字段，可根据自己的需求修改。**
 - **生产环境中，本配置是 `${ROOT}/build/prod.env.js` 中的 `AJAX_URL_PREFIX` 字段，可根据自己的需求修改。打包构建时，我们通常会把 `${ROOT}/build/prod.env.js` 中的 `AJAX_URL_PREFIX` 字段设置为 `''`，这么做的原因是，让 ajax 异步请求地址前缀直接和浏览器访问路径的域名信息一致。**
 
-### 14. AJAX_MOCK_PARAM
+### AJAX_MOCK_PARAM
 我们集成了简单方便的 `mock` 功能，任何请求，只要在 url 参数中带有 `AJAX_MOCK_PARAM` 的值表示的 url 参数，那么就会进入 `mock` 的逻辑。这个 url 参数的值为 `/a/b/c` 这样的路径，对应的就是 `${ROOT}/mock/ajax` 文件夹下的文件，同时还有一个 `invoke` 参数，表示这个文件里的方法名。`AJAX_MOCK_PARAM` 的默认值为 `mock-file`。
 
 示例如下：
@@ -156,7 +155,7 @@ ajax 请求地址前缀，我们通过这个配置来拼接出 ajax 请求的前
 - **本配置是 `${ROOT}/build/dev.env.js` 中的 `AJAX_MOCK_PARAM` 字段，可根据自己的需求修改。**
 - **在 `${ROOT}/build/prod.env.js` 也有一个 `AJAX_MOCK_PARAM` 字段，正常来说，生产环境中不会使用 mock 的字段，不过为了防止在打包构建后的文件中直接出现 `AJAX_MOCK_PARAM` 变量，因此在 `${ROOT}/build/prod.env.js` 文件中我们也设置了 `AJAX_MOCK_PARAM` 字段。**
 
-### 15. LOGIN_URL（构建非蓝鲸 SaaS 应用时才会有此配置）
+### LOGIN_URL（构建非蓝鲸 SaaS 应用时才会有此配置）
 登录的地址，默认值为 `${LOCAL_DEV_URL}:${LOCAL_DEV_PORT}/login`，如果需要自己设置，请输入绝对地址。在有登录逻辑的应用中，当**刷新页面**检测到未登录时，页面会自动跳转到这个值所表示的登录页面去。通常情况下，这个值需要与后端协商指定。
 
 示例如下（**假设您本地开发的地址为 http://local-dev.bking.com**）：
@@ -172,7 +171,7 @@ ajax 请求地址前缀，我们通过这个配置来拼接出 ajax 请求的前
 
 - **本配置是 `${ROOT}/build/dev.env.js` 中的 `LOGIN_URL` 字段，可根据自己的需求修改。**
 
-### 16. USER_INFO_URL
+### USER_INFO_URL
 这个配置表示获取用户信息的接口，我们通过这个接口来判断当前用户是否登录，如果需要自己设置，请输入绝对地址。通常情况下，这个值需要与后端协商指定。
 
 - 蓝鲸 SaaS 应用
@@ -292,7 +291,7 @@ ajax 请求地址前缀，我们通过这个配置来拼接出 ajax 请求的前
 
 这里给大家介绍一下初始化的工程中几个需要注意的地方
 
-### 1. index.html 配置说明
+### index.html 配置说明
 
 蓝鲸前端开发脚手架是用来帮助我们构建蓝鲸社区版/企业版 SaaS 应用的，同时它也支持我们构建一般的 web 单页应用。
 
@@ -321,7 +320,6 @@ html 文件中有几个变量（`SITE_URL`, `BK_STATIC_URL`, `REMOTE_STATIC_URL`
 - **生产环境中，本配置是 `${ROOT}/index.html` 中的 `SITE_URL` 的值，可根据自己的需求修改。**
 
 **蓝鲸 SaaS 应用中，我们建议不要修改 `${ROOT}/index.html` 中 `SITE_URL` 的值，生产环境应该由后端注入到页面中。**
-
 
 #### BK_STATIC_URL
 
@@ -352,13 +350,13 @@ html 文件中有几个变量（`SITE_URL`, `BK_STATIC_URL`, `REMOTE_STATIC_URL`
 
 **蓝鲸 SaaS 应用中，我们建议不要修改 `${ROOT}/index.html` 中 `REMOTE_STATIC_URL` 的值，生产环境应该由后端注入到页面中。**
 
-### 2. 组件库按需和全量加载的切换
+### 组件库按需和全量加载的切换
 
 蓝鲸前端开发脚手架集成了我们的 [bk-magic-vue](https://magicbox.bk.tencent.com/components_vue/2.0/example/index.html#/) 组件库。组件库支持按需加载和全量加载，两种方式的写法不同，参见 `${ROOT}/src/common/demand-import.js`（按需加载）和 `${ROOT}/src/common/fully-import.js`（全量加载）。
 
 我们是在 `${ROOT}/src/common/bkmagic.js` 中切换的，需要全量加载，就引入 `fully-import`，需要按需加载就引入 `demand-import`。
 
-### 3. mock 的使用说明
+### mock 的使用说明
 
 蓝鲸前端开发脚手架提供简单方便的异步请求 mock 功能，通过简单的配置（仅仅只需要添加 url 的参数）来模拟后端的数据返回，有助于前后端分离协作。简单的示例如下（**假设您部署的蓝鲸社区版/企业版对应域名是：http://www.bking.com ，线上 ajax 异步请求的根路径为: http://www.bking.com/api ，获取用户信息的请求为 http://www.bking.com/api/user**）：
 
@@ -372,7 +370,7 @@ html 文件中有几个变量（`SITE_URL`, `BK_STATIC_URL`, `REMOTE_STATIC_URL`
 在 `${ROOT}/build/prod.env.js` 也有一个 `AJAX_MOCK_PARAM` 字段，正常来说，生产环境中不会使用 mock 的字段，不过为了防止在打包构建后的文件中直接出现 `AJAX_MOCK_PARAM` 变量，因此在 `${ROOT}/build/prod.env.js` 文件中我们也设置了 `AJAX_MOCK_PARAM` 字段。
 :::
 
-### 4. 修改打包构建最终产物的生成目录
+### 修改打包构建最终产物的生成目录
 通过修改 `${ROOT}/build/config.js` 中的 `build.assetsRoot` 字段，可以更改打包构建最终产物的生成目录。
 
 |             | 默认值 |

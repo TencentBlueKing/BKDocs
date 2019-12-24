@@ -25,12 +25,12 @@
 - 故障处理
 - 日常需求
 
-## 1. 准备环境
+## 准备环境
 完成蓝鲸部署后，接下来开始初始化环境。
 
 在蓝鲸 CMDB 中 新建业务、划分业务拓扑，以及 安装 Agent，完成蓝鲸对业务主机的纳管。
 
-### 1.1 CMDB 新建业务及划分业务拓扑
+### CMDB 新建业务及划分业务拓扑
 在蓝鲸中，蓝鲸 CMDB 位于原子平台层，通过蓝鲸 PaaS 的 ESB 模块，为上层 SaaS 提供统一的资源管理。
 
 所以，针对业务或者主机等资源的管理之前，要先将其在 CMDB 中纳管。
@@ -39,11 +39,11 @@
 
 接下来，安装 Agent，蓝鲸的管控平台可以对主机实现包含文件分发、命令执行、数据上报的管控，同时主机会自动录入到蓝鲸 CMDB 对应的业务。
 
-### 1.2 安装 Agent
+### 安装 Agent
 
 参照 [管理直连网络区域的主机](5.1/bk_solutions/CD/Automation/Hybrid_cloud_management.md)，完成 Agent 安装。
 
-### 1.3 执行脚本和分发文件
+### 执行脚本和分发文件
 
 执行一个脚本和文件分发，验证环境是否已准备妥当。
 
@@ -52,7 +52,7 @@
 
 接下来，我们尝试做一次单体应用的版本发布。
 
-## 2. 应用交付
+## 应用交付
 
 参照 [一次标准的应用交付自动化案例](5.1/bk_solutions/CD/Automation/application_deployment.md)，完成一次自动化的应用交付，效果如下：
 
@@ -60,7 +60,7 @@
 
 完成应用交付后，接下来了解在蓝鲸中如何实现告警的自动化处理。
 
-## 3. 故障处理
+## 故障处理
 
 根据企业内部正在使用的监控系统，参照 [Zabbix 告警自动处理](5.1/bk_solutions/CO/FTA/Zabbix_Alarm_processing_automation.md) 或 [第 3 方监控系统告警自动处理](5.1/bk_solutions/CO/FTA/REST_API_PUSH_Alarm_processing_automation.md) 或[蓝鲸监控告警自动处理](5.1/bk_solutions/CO/FTA/Bkmonitor_Alarm_processing_automation.md)，实现 **磁盘告警自动化处理**。
 
@@ -68,7 +68,7 @@
 
 接下来，了解来自产品、运营、测试等团队，对运维的日常需求，是如何释放运维，做到 **需求自助化** 的。
 
-## 4. 日常需求
+## 日常需求
 
 参照 [需求自助化:测试自助调整验收环境](5.1/bk_solutions/CD/Demand_self_service.md)，完成测试自助修改测试环境配置，从此再也不会骚扰运维了。
 

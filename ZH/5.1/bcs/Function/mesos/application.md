@@ -2,7 +2,7 @@
 
 bcs application 实现 Pod 的含义，并与 k8s 的 RC，Mesos 的 app 概念等价。
 
-## 1. 配置模板说明
+## 配置模板说明
 
 ```json
 {
@@ -283,11 +283,11 @@ bcs application 实现 Pod 的含义，并与 k8s 的 RC，Mesos 的 app 概念�
 }
 ```
 
-### 1.1 KillPolicy 机制
+### KillPolicy 机制
 
 gracePeriod：宽限期描述在强制 kill container 之前等待多久，单位秒。 默认为 1
 
-### 1.2 RestartPolicy 机制
+### RestartPolicy 机制
 
 - policy：支持Never Always OnFailure三种配置(默认为OnFailure),OnFailure表示在失败的情况下重新调度,Always表示在失败和Lost情况下重新调度, Never表示任何情况下不重新调度
 
@@ -297,7 +297,7 @@ gracePeriod：宽限期描述在强制 kill container 之前等待多久，单�
 
 - maxtimes: 最多重新调度次数,默认为0表示不受次数限制.容器正常运行30分钟后重启次数清零重新计算
 
-### 1.3 constraint 调度约束
+### constraint 调度约束
 
 constraint 字段用于定义调度策略
 
@@ -307,7 +307,7 @@ constraint 字段用于定义调度策略
 
 每个 IntersectionItem 中支持多个 UnionData 为规则细节字段，用于填写调度匹配规则，也为数组，该数组含义为：所有元素只需要满足一个即可。使用 UnionData 可以实现多个条件满足其一即可。
 
-### 1.4 UnionData 字段说明
+### UnionData 字段说明
 
 ```json
 {
@@ -328,27 +328,27 @@ constraint 字段用于定义调度策略
 * operator：调度算法，当前支持以下 5 种调度算法（大写）：
 
   * UNIQUE: 每个实例的 name 的取值唯一：如果 name 为主机名则表示每台主机只能部署一个实例，如果 name 为 IDC 则表示每个 IDC 只能部署一个实例。UNIQUE 算法无需参数。
-  
+
   * MAXPER: name 同一取值下最多可运行的实例数，为 UNIQUE 的增强版（数量可配置），MAXPER 算法需通过参数 text(type 为 3)指定最多运行的实例数。
-  
+
   * CLUSTER: 配合 set 字段（type 为 4），要求 name 的取值必须是 set 中一个，可以限定实例部署在 name 的取值在指定 set 范围。
-  
+
   * LIKE: 配合 text 字段（type 为 3）或者 set 字段（type 为 4），name 与 text（或者 set）中的内容进行简单的正则匹配，可以限定实例部署时 name 的取值。如果是参数是 set（type 为 4），只要和 set 中某一个匹配即可。
-  
+
   * UNLIKE: LIKE 取反。如果是参数为 set（type 为 4），必须和 set 中所有项都不匹配。
-  
+
   * GROUPBY: 根据 name 的目标个数，实例被均匀调度在目标上，与 set 一起使用，如果实例个数不能被 set 的元素个数整除，则会存在差 1 的情况，例如：name 为 IDC，实例数为 3,set 为["idc1","idc2"],则会在其中一个 idc 部署两个实例。
-  
+
   * EXCLUDE: 和具有指定标签的 application 不部署在相同的机器上，即：如果该主机上已经部署有这些标签（符合一个即可）的 application 的实例，则不能部署该 application 的实例。目前 name 只支持"label",label 的 k:v 在 set 数组中指定。
-  
+
   * GREATER: 配合 scaler 字段（type 为 1），要求 name 的取值必须大于 scalar 的值。
-  
+
 * type: 参数的数据类型，决定 operator 所操作 key 为 name 的值的范围
 
   1: scaler: float64
-  
+
   2：text：字符串。
-  
+
   3：set：字符串集合。
 
 案例说明：
@@ -389,7 +389,7 @@ constraint 字段用于定义调度策略
 
 ```
 
-### 1.5 meta 元数据
+### meta 元数据
 
 * name: Application 名字，小写字母与数字构成，但不能完全由数字构成，不能数字开头
 
@@ -398,11 +398,11 @@ constraint 字段用于定义调度策略
 * label：app 的 lable 信息，对应 k8s RC label
 
     * io.tencent.bcs.cluster：用于标识集群 Id 信息
-    
+
     * io.tencent.bcs.app.appid：业务 ccID
-    
+
     * io.tencent.bcs.app.setid：业务 cc 大区 ID
-    
+
     * io.tencent.bcs.app.moduleid：业务 cc 模块 ID
 
 当容器网络使用 bcs-cni 方案的时，如果想针对容器指定 IP，可以使用以下 label
@@ -417,7 +417,7 @@ constraint 字段用于定义调度策略
 
 * io.tencent.bcs.netsvc.requestip.[i]: "10.168.1.1|InnerIp=10.158.49.[12-25];10.158.48.[11-13]"
 
-### 1.6 容器字段信息
+### 容器字段信息
 
 * instance：运行实例个数
 
@@ -438,11 +438,11 @@ constraint 字段用于定义调度策略
 * parameters：docker 参数，当前以下 docker 参数已支持
 
   * oom-kill-disable：有效值 true，设置为 true 后，如果容器资源超限会进行强杀
-  
+
   * ulimit：可以设置 ulimit 参数，例如 core=-1
-  
+
   * rm：有效值为 true，容器退出后，是否直接删除容器
-  
+
 * image：镜像链接
 
 * imagePullSecrets：存储仓库鉴权信息的 secret 名字
@@ -450,45 +450,45 @@ constraint 字段用于定义调度策略
 * imagePullPolicy：拉取容器策略
 
   * Always：每次都重新从仓库拉取
-  
+
   * IfNotPresent：如果本地没有，则尝试拉取（默认值）
-  
+
 * privileged：容器特权参数，默认为 false
 
 * resources：容器使用资源
 
   * limits.cpu:字符串，可以填写小数，1 为使用 1 核
-  
+
   * limits.memory：内存使用，字符串，单位默认为 M. 注意：当 memory >= 4Mb, 使用 memory 的值限制内存；否则，不对 memory 做 limits
-  
+
   * limits.storage：磁盘使用大小，默认单位 M
-  
+
   * request 仅对 k8s 生效
-  
+
 * networkMode：网络模式
 
   * HOST: docker 原生网络模式，与宿主机共用一个 Network Namespace，此模式下需要自行解决网络端口冲突问题
-  
+
   * BRIDGE: docker 原生网络模式，此模式会为每一个容器分配 Network Namespace、设置 IP 等，并将一个主机上的 Docker 容器连接到一个虚拟网桥上，通过端口映射的方式对外提供服务
-  
+
   * NONE: 除了 lo 网络之外，不配置任何网络
-  
+
   * USER: 用户深度定制的网络模式，支持 macvlan、calico 等网络方案
-  
+
 * networkType：只有在 networkMode 为 USER 模式下，该字段才有效
 
   * cni(小写): 使用 bcs 提供的 cni 来构建网络，具体 cni 的类型是由配置决定
-  
+
   * 空或其它值：使用 docker 原生或用户自定义的方式来构建网络
 
-### 1.7 netLimit 说明
+### netLimit 说明
 
 对容器的网络流量进行限制，包括 ingress(进流量)和 egress(出流量)，默认情况下不限制。
 暂时只支持对 egress 的限制。
 
 * egressLimit: 容器出流量的限制，value 为大于 0 的整数，单位为 Mbps。
 
-### 1.8 Volume 说明
+### Volume 说明
 
 支持主机磁盘挂载
 
@@ -497,14 +497,14 @@ constraint 字段用于定义调度策略
 * volume.hostPath: 主机目录
 
   * 当目录没填写时，默认为创建一个随机目录，该目录 Pod 唯一
-  
+
   * 该目录路径可以支持变量$BCS_POD_ID
-  
+
 * volume.mountPath: 需要挂载的容器目录，需要其父目录存在，否则报错
 
 * readOnly: true/false, 是否只读，默认 false
 
-### 1.9 ConfigMap 说明
+### ConfigMap 说明
 
 主要功能是引用 configmap 数据，并作为环境变量/文件注入容器中。
 
@@ -532,7 +532,7 @@ constraint 字段用于定义调度策略
 
 * items[x].user: 文件用户设置，默认 root，k8s 不生效
 
-### 1.10 Secrets 机制
+###0 Secrets 机制
 
 secret 在 k8s 和 mesos 中实现存在差异。在 k8s 中，即为默认支持的 secret 数据，并存储在 etcd 中；在 mesos 中，secret 为 bcs-scheduler 增加
 的数据结构，数据默认存储在 vault 中，读写控制需要通过 bcs-authserver。secrets 的数据默认可以注入环境变量/文件。
@@ -563,7 +563,7 @@ secret 在 k8s 和 mesos 中实现存在差异。在 k8s 中，即为默认支�
 
 * items[x].user：user00，文件属主，mesos 有效
 
-### 1.11 容器 Ports 机制说明
+###1 容器 Ports 机制说明
 
 ports 字段说明：
 
@@ -580,20 +580,20 @@ ports 字段说明：
 * host 模式下，containerPort 即代表 hostPort
 
   * 填写固定端口，需要业务自行确认是否产生冲突
-  
+
   * 填写 0，意味着 scheduler 进行随机选择
-  
+
 * bridge 模式下，hostPort 代表物理主机上的端口
 
   * hostPort 填写固定端口，业务自行解决冲突的问题
-  
+
   * 填写 0，scheduler 默认进行端口随机
 
 **端口随机**的状态下，scheduler 会根据 ports 字段序号，生成 PORT0 ~ n 的环境变量，以便业务读取该随机端口。不支持 PORT_NAME 的方式
 
-## 2. **容器 Health Check 机制说明**
+## **容器 Health Check 机制说明**
 
-### 2.1 通过 mesos 协议下发检测机制到 executor，通过 executor 执行检测
+### 通过 mesos 协议下发检测机制到 executor，通过 executor 执行检测
 
 * 支持的类型为 HTTP,TCP 和 COMMAND 三种
 
@@ -606,14 +606,14 @@ ports 字段说明：
 * scheduler 根据 healthy 的值以及进程的其他数据(配置数据和动态数据)来确定后续行为：
 
   * 状态修改，数据记录，触发告警等
-  
+
   * 重新调度
 
-### 2.2 mesos scheduler 根据检测机制直接远程执行检测
+### mesos scheduler 根据检测机制直接远程执行检测
 
 * 支持的类型为 REMOTE_HTTP,REMOTE_TCP
 
-### 2.3 health check Type 说明
+### health check Type 说明
 
 * health check 可以同时支持多种类型的 check，目前最多为三种
 
@@ -621,7 +621,7 @@ ports 字段说明：
 
 * REMOTE_HTTP,REMOTE_TCP 两种类型可以同时支持
 
-### 2.4 healthChecks 字段说明
+### healthChecks 字段说明
 
 * type: 检测方式，目前支持 HTTP,TCP,COMMAND,REMOTE_TCP 和 REMOTE_HTTP  五种
 
@@ -638,33 +638,33 @@ ports 字段说明：
 * command: type 为 COMMAND 时有效
 
   * value: 需要执行的命令,value 中支持环境变量.mesos 协议中区分是否 shell,这里不做区分,如果为 shell 命令,需要包括"/bin/bash ‐c",系统不会自动添加(参考 marathon)
-  
+
   * 后续可能需要补充其他参数如 USER
-  
+
 * http: type 为 HTTP 和 REMOTE_HTTP 时有效
 
   * port: 检测的端口,如果配置为 0,则该字段无效
-  
+
   * portName: 检测端口名字(替换 marathon 协议中的 portIndex)
-  
+
     * portName 在 port 配置大于 0 的情况下,该字段无效
 
     * portName 在 port 配置不大于 0 的情况下,检测的端口通过 portName 从 ports 配置中获取（scheduler 处理）
 
     * 根据 portName 获取端口的时候,需要根据不同的网络模型获取不同的端口，目前规则(和 exportservice 保持一致)如下：
-    
+
       * BRIDGE 模式下如果 HostPort 大于零则为 HostPort,否则为 ContainerPort
-      
+
       * 其他模式为 ContainerPort
-      
+
   * scheme： http 和 https(https 不会做认证的处理)
-  
+
   * path：请求路径
-  
+
   * headers: http 消息头，为了支持 health check 时，需要认证的方式，例如：Host: www.xxxx.com。NOTE:目前只支持 REMOTE_HTTP。
-  
+
   * 检测方式:
-  
+
     *  Sends a GET request to scheme://<host>:port/path.
 
     *  Note that host is not configurable and is resolved automatically, in most cases to 127.0.0.1.
@@ -672,21 +672,21 @@ ports 字段说明：
     *  Default executors treat return codes between 200 and 399 as success; custom executors may employ a different strategy, e.g. leveraging the `statuses` field.
 
     *  bcs executor 需要根据网络模式等情况再具体确认规则
-        
+
 * tcp： type 为 TCP 和 REMOTE_TCP 的情况下有效：
 
   * port: 检测的端口,如果配置为 0,则该字段无效
-  
+
   * portName: 检测端口名字(替换 marathon 协议中的 portIndex)
-  
+
     * protName 在 port 配置大于 0 的情况下,该字段无效
-    
+
     * portName 在 port 配置不大于 0 的情况下,检测的端口通过 portName 从 ports 配置中获取（scheduler 处理）
-    
+
     * 根据 portName 获取端口的时候,需要根据不同的网络模型获取不同的端口，目前规则(和 exportservice 保持一致)如下：
-    
+
       * BRIDGE 模式下如果 HostPort 大于零则为 HostPort,否则为 ContainerPort
-      
+
       * 其他模式为 ContainerPort
-      
+
   * 检测方式： tcp 连接成功即表示健康，需根据不同网络模型获取不同的地址

@@ -5,7 +5,7 @@
 - 应用类型
 application/deployment
 
-## 1. 查询展示
+## 查询展示
 
 - 模板及应用展示
 
@@ -19,7 +19,7 @@ application/deployment
 
 ![](../assets/application/container_detail.jpg)
 
-## 2. 操作相关
+## 操作相关
 
 - 滚动升级
 

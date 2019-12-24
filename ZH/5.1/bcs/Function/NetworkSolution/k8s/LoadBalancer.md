@@ -4,18 +4,16 @@
 
 [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) 有很多种实现，比如 Traefik、Nginx Ingress Controller、 HAProxy Ingress Controller 等，在 BCS 中定义 LoadBalancer， 采用 K8S 官方维护的 Nginx Ingress Controller。
 
-
-
-## 1. 如何创建 LoadBalancer
+## 如何创建 LoadBalancer
 
 在【LoadBalancer】菜单中，点击【新建 LoadBalancer】，添加一台或多台节点作为 LoadBalancer，点击【保存】即可。
 
 ![-w1653](media/15683668713785.jpg)
 
 
-## 2. LoadBalancer 的背后技术
+## LoadBalancer 的背后技术
 
-### 2.1 Nginx Ingress Controller
+### Nginx Ingress Controller
 
 实际是创建了 2 个 Deployment
 
@@ -112,8 +110,7 @@ blueking-nginx-ingress-default-backend   1         1         1            1     
     ## end server blue.bk.tencent.com
 ```
 
-
-### 2.2 使用建议
+### 使用建议
 一般我们建议选择多台专属节点作为 LoadBalancer，不要分配其他 Pod 到该节点。
 
 可以通过 节点 **亲和性约束** 实现。

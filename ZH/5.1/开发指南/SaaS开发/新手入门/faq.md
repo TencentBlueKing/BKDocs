@@ -1,21 +1,19 @@
-## 常见问题
-
-
-### 1. IDE 有哪些推荐
+# 常见问题
+## IDE 有哪些推荐
 
 比如 `Visio Studio Code`
 ![Visio_Studio_Code](./media/Visio_Studio_Code.png)
 
 - 语言设置为中文
-    - macOS: `Command+Shift+P` 选择 `Configure Display Language`   
-    - Windows: `Ctrl+Shift+P` 选择 `Configure Display Language`   
+    - macOS: `Command+Shift+P` 选择 `Configure Display Language`
+    - Windows: `Ctrl+Shift+P` 选择 `Configure Display Language`
 
 - 记住git账号
 ```bash
 git config --global credential.helper store
 ```
 
-### 2. 如何隔离多套开发环境
+## 如何隔离多套开发环境
 
 通过 [pipenv](https://zhuanlan.zhihu.com/p/37581807)，在本地隔离多套开发环境
 ![pipenv](./media/pipenv.png)

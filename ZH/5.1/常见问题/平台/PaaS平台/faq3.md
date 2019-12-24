@@ -1,7 +1,7 @@
 # PaaS 重置访问密码
 
 ```bash
-# admin密码修改错误后，无法登陆。如何后台重置密码？  
+# admin密码修改错误后，无法登陆。如何后台重置密码？
 source /data/install/utils.fc
 
 ssh $PAAS_IP
@@ -17,6 +17,7 @@ for user in all_user:
 	user.save()
 # 然后退出终端
 unset BK_ENV
+
 ```
 
 # PaaS 登陆提示 502 Bad GateWay
@@ -94,18 +95,21 @@ tcp        0      0 0.0.0.0:8010            0.0.0.0:*               LISTEN      
 
 如果要变更超时时间:
 
-## 1. PaaS Agent 变更
+##  PaaS Agent 变更
 
 - 登录 PaaSAgent 服务器(APPO/APPT)
 - 编辑`paas_agent_config.yaml`, 修改 `EXECUTE_TIME_LIMIT` 字段值
+
 ```bash
 /data/bkce/paas_agent/paas_agent/etc/paas_agent_config.yaml
 ```
 - 重启 PaaSAgent
+
 ```bash
 supervisorctl -c /data/bkce/etc/supervisor-paas_agent.conf restart all
 ```
-## 2. PaaS 变更
+
+##  PaaS 变更
 
 - 登录 PaaS 服务器
 - 编辑 `/data/bkce/open_paas/paas/conf/default.py` 中的`EVENT_STATE_EXPIRE_SECONDS`值
@@ -125,7 +129,7 @@ supervisorctl -c /data/bkce/etc/supervisor-paas_agent.conf restart all
 
 healthz 接口会检查服务本身及其所有外部依赖, 若服务不可用或依赖有问题则非 200 并提示错误
 
-如果有问题, 根据相应错误处理  
+如果有问题, 根据相应错误处理
 
 ### 在开发者中心无法查看日志
 
@@ -134,5 +138,3 @@ healthz 接口会检查服务本身及其所有外部依赖, 若服务不可用�
 - 确认部署了 `paas_plugins/log_parser`
 - 确认 `log_agent`及`log_parser`的 redis 配置一致
 - 确认所有机器的时区及时间一致(**重要**)
-
-

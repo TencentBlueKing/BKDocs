@@ -1,6 +1,4 @@
 # 蓝鲸采集器框架使用文档
-
-
 ## 蓝鲸采集器框架简介
 
 ### 功能简介
@@ -48,7 +46,6 @@
 - Publisher 收到采集器的数据，按照配置将数据进行预处理，然后将数据发送给指定输出端
 
 ## 功能特性
-
 
 ### 支持蓝鲸数据链路上报
 
@@ -98,7 +95,6 @@ output.gse:
 
 **作用**
 
-
 周期性发送运营数据，包含采集器名称、版本、时间以及附属信息，附属信息需要用户实现 GetStat 函数。
 
 **使用方法**
@@ -146,24 +142,24 @@ type Beater interface {
 	** 根据设定的间隔反复收集信息，
 	** 并向指定的输出端发送信息。
 	*/
-    Run(b *Beat) error		
+    Run(b *Beat) error
 
 	/* Beater.Stop()
     ** 该函数被调用时，应安全地停止正在进行的
 	** 数据采集工作（关闭beater.doen通道），
 	** 并且与所有输出端口断开连接。
 	*/
-	Stop()					
+	Stop()
 
 	/* Beater.Reload()
     ** 该函数被调用时，应重新加载采集器的配置。
 	*/
-	Reload(*common.Config)	
+	Reload(*common.Config)
 }
 ```
 
 **Creator函数**
-```go 
+```go
 //定义
 type Creator func(*Beat, *common.Config) (Beater, error)
 
@@ -197,7 +193,7 @@ type Creator func(*Beat, *common.Config) (Beater, error)
 
 #### 编译及调试
 
-##### Linux
+- **Linux**
 
 1. 设置环境变量 %BEAT_NAME% 为采集器项目的名称
 2. 设置环境变量 %BEAT_VERSION%
@@ -205,7 +201,7 @@ type Creator func(*Beat, *common.Config) (Beater, error)
    - 自定义的采集器目录 $\in$ %GO_PATH%\src\github.com\elastic\bkbeats\\%BEAT_NAME%
 4. 执行 %GO_PATH%\src\github.com\elastic\bkbeats\bkdev_tools\bkbuild_linux.sh
 
-##### Windows
+- **Windows**
 
 1. 设置环境变量 %BEAT_NAME% 为采集器项目的名称
 2. 设置环境变量 %BEAT_VERSION%
@@ -216,7 +212,7 @@ type Creator func(*Beat, *common.Config) (Beater, error)
 
 #### 开发示例
 
-##### 实现配置类
+1. 实现配置类
 
 ```go
 package config
@@ -242,7 +238,7 @@ var DefaultConfig = Config{
 
 ```
 
-##### 实现ExampleBeat类
+2. 实现ExampleBeat类
 
 **成员变量**
 
@@ -310,7 +306,7 @@ func (bt *ExampleBeat) Reload(localConfig *common.Config) {
 }
 ```
 
-##### 实现 Creator 工厂函数
+3. 实现 Creator 工厂函数
 
 ```go
 // New create ExampleBeat
@@ -335,7 +331,7 @@ func New(b *beat.Beat, localConfig *common.Config) (beat.Beater, error) {
 }
 ```
 
-##### 配置
+4. 配置
 
 ```yaml
 #============================== examplebeat ===========================
@@ -350,7 +346,7 @@ examplebeat:
 output.console:
 ```
 
-##### 构建
+5. 构建
 
 将 src/github.com/bkbeats/examplebeat 的父目录加入 %GO_PATH%，转到 example beat 项目文件夹，执行命令
 

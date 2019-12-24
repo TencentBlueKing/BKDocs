@@ -1,5 +1,4 @@
 # 基础功能
-
 ## 开发环境
 
 按照开发者的习惯，为每个开发者自己创建的 SaaS 提供了 3 个环境，最大限度保证自研 SaaS 的可用性。
@@ -51,12 +50,12 @@
 
 ## 免运维托管
 
-- 社区版
+- **社区版**
 
 该功能是 PaaS 模式最核心的功能，基于 Virtualenv 的应用部署模式，在
 SaaS 部署时，平台为会它们创建独立的 Virtualenv，保证每个 SaaS 拥有一套 “隔离” 的 Python 运行环境。SaaS 的服务进程则是以 uWSGI 的 cheaper 模式托管，由于采用了 Busyness 算法，uWSGI 能够根据繁忙度，动态的调配 worker 个数，从而达到合理利用系统资源的目的
 
-- 企业版
+- **企业版**
 
 SaaS 应用部署时，平台为会它们创建独立的容器，保证每个应用拥有一套“隔离”的运行环境。SaaS 的服务进程则是以 uwsgi 的 cheaper 模式托管，由于采用了 busyness
 cheaper 算法，uwsgi 能够根据繁忙度，动态的调配 worker 个数，从而达到合理利用系统资源的目的。
@@ -74,7 +73,6 @@ cheaper 算法，uwsgi 能够根据繁忙度，动态的调配 worker 个数，�
 
 ![](../../assets/图片38.png)
 
-
 ## API 网关
 
 PaaS 平台是基于 SOA 理念设计的，其中最重要的就是企业服务总线，即“ API 网关”。它有两个作用：
@@ -86,12 +84,11 @@ PaaS 平台是基于 SOA 理念设计的，其中最重要的就是企业服务�
 
 ![API网关架构图](../../assets/图片27.png)
 
-
 ![API维护](../../assets/图片28.png)
 
 特别说明：
 
-1）APIGateway 是企业服务总线（ESB）功能的一部分。经常用“ESB”指代通过编码方式接入的API，该模式接入后，需要根据指引，需要重启服务模块才能生效；“APIGateway”指代通过 RESTful 
+1）APIGateway 是企业服务总线（ESB）功能的一部分。经常用“ESB”指代通过编码方式接入的API，该模式接入后，需要根据指引，需要重启服务模块才能生效；“APIGateway”指代通过 RESTful
 API 的模式接入的 API ，该模式接入后，无需重启服务模块。
 
 2）根据当前的组件目录结构，组件加载顺序为：先查找“apis
@@ -119,16 +116,13 @@ API 的模式接入的 API ，该模式接入后，无需重启服务模块。
 
 > 注：[蓝鲸组件在线 API 文档](5.1/API文档/BK_LOGIN/README.md)。
 
-
 ## MagicBox
-
 
 [MagicBox](http://magicbox.bk.tencent.com/)（链接：http://magicbox.bk.tencent.com/ ），又称为前端魔盒。是一个前端资源 PaaS 平台，为蓝鲸应用开发者提供丰富的前端资源，包括常用的 UI 组件、JS 插件及基础模版，开发者可以通过蓝鲸 MagicBox 快速构建页面。它还提供完整的套餐样例供开发者选择，开发者也可以在线拖拽组件组装页面，让前端布局可视化。
 
 ![](../../assets/image011.png)
 
 ## 开发培训
-
 
 蓝鲸为开发者提供了详细的线上 [视频教程](https://cloud.tencent.com/developer/edu/major-100008)。
 

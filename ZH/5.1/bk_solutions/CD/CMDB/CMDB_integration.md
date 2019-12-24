@@ -26,7 +26,7 @@
 - 定时同步
 
 
-### 1. 梳理同步逻辑
+### 梳理同步逻辑
 
 查询公司 CMDB 与蓝鲸 CMDB 服务器属性的对应关系，生成属性映射 MAP 表，MAP 表中只记录需要关注的属性，并确认相关属性都已在蓝鲸 CMDB 中创建。
 
@@ -42,9 +42,9 @@
 
 - 分别获取两个 CMDB 的数据，遍历两组数据，对比属性 MAP 表中的属性字段，找出数据不同的服务器，汇总成列表，再统一更新到蓝鲸 CMDB
 
-### 2. 代码实践及解读
+### 代码实践及解读
 
-#### 2.1 新建应用
+#### 新建应用
 
 在蓝鲸开发者中心 [新建一个应用](5.1/开发指南/SaaS开发/新手入门/Windows.md)，用于调用 [CMDB 的 API](5.1/API文档/CC/README.md)。
 
@@ -73,7 +73,7 @@ BASE_ARGS = {
     }
 ```
 
-#### 2.2 获取蓝鲸 CMDB 主机列表  
+#### 获取蓝鲸 CMDB 主机列表
 
 查询蓝鲸 CMDB 的获取主机 `search_host` API ，返回主机列表
 
@@ -103,7 +103,7 @@ def getBkCmdbHost():
     return bkList
 ```
 
-#### 2.3 获取 公司 CMDB 主机列表
+#### 获取 公司 CMDB 主机列表
 
 调用公司 CMDB 获取主机列表 API，返回主机列表
 
@@ -123,7 +123,7 @@ def getCmdbHost():
     '''
 ```
 
-#### 2.4 生成新增 IP 列表、更新 IP 列表、更新信息列表  
+#### 生成新增 IP 列表、更新 IP 列表、更新信息列表
 
 根据步骤 2.2 和 步骤 2.3 获取到的两个主机列表，对比生成所需的新增列表和更新列表。
 
@@ -186,7 +186,7 @@ addInfoList = genInfoList(cmdbList, bkList, addList, attributeMAP)
 updateInfoList = genInfoList(cmdbList, bkList, addList, attributeMAP)
 ```
 
-#### 2.5 录入、更新主机数据到蓝鲸 CMDB
+#### 录入、更新主机数据到蓝鲸 CMDB
 
 - 录入新增主机信息：使用 步骤 2.4 中生成的新增主机信息列表，录入蓝鲸 CMDB
 
@@ -257,12 +257,10 @@ def updateBkCmdbHost(infoList):
 updateBkCmdbHost(updateInfoList)
 ```
 
-
-### 3. 定时同步
+### 定时同步
 
 - CMDB 同步脚本使用 [JOB](5.1/作业平台/产品功能/定时作业.md) 的定时作业或 [标准运维](5.1/标准运维/产品功能/flow.md) 的定时任务进行周期托管，方便迁移或者修改维护
 
 ![1562225679643](./media/1562225679643.png)
-
 
 注：上述教程是企业 CMDB `单向`、`定期`同步主机实例至蓝鲸 CMDB 的实践，如果需要实时同步，一般推荐 [消息推动](5.1/配置平台/产品功能/ModelManagement.md)的方式。

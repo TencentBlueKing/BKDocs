@@ -1,4 +1,4 @@
-#  ZooKeeper 常见问题
+# ZooKeeper 常见问题
 
 ## ZooKeeper 无法启动
 

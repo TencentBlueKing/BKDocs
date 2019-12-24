@@ -1,7 +1,6 @@
 # Summary
 
 ## 配置平台
-
 * [产品简介](产品简介/README.md)
 * [术语解释](术语解释/glossary.md)
 * [产品构架图](产品架构图/Architecture.md)
@@ -12,7 +11,7 @@
     * [业务资源](产品功能/BuzResource.md)
     * [审计与分析](产品功能/OperationAnalysis.md)
     * [权限控制](产品功能/PermissionsControl.md)
-    * [模型管理](产品功能/ModelManagement.md)  
+    * [模型管理](产品功能/ModelManagement.md)
     * [我的收藏](产品功能/Collection.md)
 * [快速入门]()
     * [如何创建业务并导入主机到业务中](快速入门/case1.md)

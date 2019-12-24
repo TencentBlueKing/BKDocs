@@ -114,6 +114,7 @@ Reading messages... (press Ctrl-C to quit)
 1) "message"
 2) "2_snapshot"
 3) "{\"localTime\": \"2018-08-15 11:18:00\", \"data\": \"{\\\"beat\\\":{\\\"address\\\":
+
 ```
 
 ## CMDB 无主机信息

@@ -5,7 +5,7 @@
 - 应用类型
 deployment/daemonset/job/statefuleset
 
-## 1. 查询展示
+## 查询展示
 
 - 模板及应用展示
 
@@ -19,7 +19,7 @@ deployment/daemonset/job/statefuleset
 
 ![](../assets/application/container_detail.jpg)
 
-## 2. 操作相关
+## 操作相关
 - 滚动升级
 
 `注: 允许应用类型包含 deployment/daemonset/job/statefulset`

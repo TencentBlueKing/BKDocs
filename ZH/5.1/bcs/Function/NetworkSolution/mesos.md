@@ -15,8 +15,7 @@ BCS 在设计 Mesos 方案之初已经考虑多种网络的集成问题。在容
   * BRIDGE：网桥模式，cnm/cni 标准皆可以支持
   * 自定义方式：docker 支持的其他网络模式、CNI 支持的插件皆可
 
-
-## 1. 与 docker 集成
+## 与 docker 集成
 
 与 docker 网络集成时，application 的 json 配置 networkType 需要填写 cnm，默认即为该模式。
 
@@ -25,8 +24,8 @@ networkMode 的值则为 docker 已生效的网络模式，docker 网络模式�
 ```shell
 $ docker network ls
 NETWORK ID          NAME                DRIVER              SCOPE
-437f2816be0a        bridge              bridge              local               
-1093cd0625ed        host                host                local               
+437f2816be0a        bridge              bridge              local
+1093cd0625ed        host                host                local
 a1a0f9fbd969        none                null                local
 ```
 
@@ -62,7 +61,7 @@ $ docker network create -d macvlan \
   * 填写 0，BCS 默认进行端口随机
   * 小于 0，不进行端口映射
 
-## 2. CNI 集成
+## CNI 集成
 
 BCS Mesos 方案默认支持 CNI 插件，使用 CNI 方案需要配置：
 
@@ -96,7 +95,7 @@ macvlan 插件配置：
 }
 ```
 
-## 3. 多网络集成
+## 多网络集成
 
 BCS Mesos 方案下的容器实现默认支持 CNI 链式调用方案。如要启动 CNI 链式调用，需要：
 
@@ -139,7 +138,7 @@ BCS Mesos 方案下的容器实现默认支持 CNI 链式调用方案。如要�
 "networkMode": "dbnet",
 ```
 
-## 4. SaaS 页面插件使用
+## SaaS 页面插件使用
 
 完成插件配置后之后，在 bcs-saas 相关页面设置：
 

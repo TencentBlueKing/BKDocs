@@ -14,12 +14,11 @@
 
     - 如果取到了, 需要调用登录服务接口, 校验 `bk_token` 的有效性, 如果有效, 可以调用登录接口获取相关的用户信息; 用户信息中 `username` 为唯一标识
 
-
 ## 登录相关逻辑和接口
 
 假设蓝鲸智云部署后, PaaS 平台的访问地址是 `http://paas.bking.com`
 
-### 1. 从 cookie 中获取 `bk_token`
+### 从 cookie 中获取 `bk_token`
 
 应用从 http 请求 cookie 中可以获取 `bk_token`
 
@@ -29,7 +28,7 @@ Django 为例
 bk_token = request.COOKIES.get('bk_token', '')
 ```
 
-### 2. 跳转登录页面
+### 跳转登录页面
 
 前端直接跳转到登录页面: `http://paas.bking.com/login?c_url={login_success_redirect_url}`
 
@@ -37,7 +36,7 @@ bk_token = request.COOKIES.get('bk_token', '')
 
 - `{login_success_redirect_url}` 是一个 `urlencode` 后的地址, 假设期望的目标地址是 `http://mysystem.bking.com/index.html`, `c_url` 值需要经过 `urlencode` 即 `http%3a%2f%2fmysystem.bking.com%2findex.html`
 
-### 3. 校验 `bk_token` 是否合法
+### 校验 `bk_token` 是否合法
 
 即校验登录态
 
@@ -74,7 +73,7 @@ bk_token = request.COOKIES.get('bk_token', '')
 }
 ```
 
-### 4. 获取用户信息
+### 获取用户信息
 
 - url: `http://paas.bking.com/login/accounts/get_user/`
 

@@ -1,7 +1,7 @@
 # 蓝鲸 Django 开发框结合 Vue.js 框架项目
 
 
-## 1. 在蓝鲸 Django 开发框架新建一个 Vue.js 前端工程项目
+## 在蓝鲸 Django 开发框架新建一个 Vue.js 前端工程项目
 
 安装 node.js
 
@@ -106,7 +106,7 @@ npm run dev
 发现‘#’已经没有了
 
 
-## 2. 在蓝鲸 Django 开发框架设计 API 接口
+## 在蓝鲸 Django 开发框架设计 API 接口
 
 以一个考试管理系统为例，开始我们的教程
 
@@ -167,7 +167,7 @@ INSTALLED_APPS += (
 > [https://q1mi.github.io/Django-REST-framework-documentation/tutorial/4-authentication-and-permissions_zh/](https://q1mi.github.io/Django-REST-framework-documentation/tutorial/4-authentication-and-permissions_zh/)
 
 视图层写好后需要配置 url 路由
-首先在 app 目录下新建 urls.py,并配置该 api 视图的路由  
+首先在 app 目录下新建 urls.py,并配置该 api 视图的路由
 
 ![](./pictures/015.png)
 
@@ -192,7 +192,7 @@ INSTALLED_APPS += (
 Http 返回的是 200 OK 而且返回展示出刚刚 POST 成功的 json 格式数据。
 
 
-## 3. 开发 VUE 单页应用并调用 Django 后台 API
+## 开发 VUE 单页应用并调用 Django 后台 API
 
 这里介绍一下之前新建的 vue 工程项目在浏览器打开 vue 默认首页面 HelloWorld 的加载流程。
 
@@ -318,9 +318,9 @@ MIDDLEWARE_CLASSES = (
 最后在 config/default.py 最下方添加：
 
 ```python
-#在本地开发环境下开启跨域允许  
-if RUN_MODE == 'DEVELOP':  
-    # 跨域增加忽略  
+#在本地开发环境下开启跨域允许
+if RUN_MODE == 'DEVELOP':
+    # 跨域增加忽略
     CORS_ALLOW_CREDENTIALS = True
     CORS_ORIGIN_ALLOW_ALL = True
     CORS_ORIGIN_WHITELIST = ()
@@ -373,27 +373,27 @@ const HOST = '{domain_url}'
 
 main.js 代码：
 ```js
-import Vue from 'vue'  
-import App from './App'  
-import router from './router'  
-import axios from 'axios'  
-axios.defaults.withCredentials = true  
-Vue.prototype.$axios = axios  
-Vue.config.productionTip = false  
-new Vue({  
-el: '#app',  
-router,  
-components: { App },  
-created () {  
-this.$axios.interceptors.request.use((config) => {  
-1config.headers['X-Requested-With'] = 'XMLHttpRequest'  
-let regex = /csrftoken=([^;.]*).*$/  
-config.headers['X-CSRFToken'] = document.cookie.match(regex) === null ? null : document.cookie.match(regex)[1]  
-return config  
-})  
-},  
-template: '<App/>'  
-})  
+import Vue from 'vue'
+import App from './App'
+import router from './router'
+import axios from 'axios'
+axios.defaults.withCredentials = true
+Vue.prototype.$axios = axios
+Vue.config.productionTip = false
+new Vue({
+el: '#app',
+router,
+components: { App },
+created () {
+this.$axios.interceptors.request.use((config) => {
+1config.headers['X-Requested-With'] = 'XMLHttpRequest'
+let regex = /csrftoken=([^;.]*).*$/
+config.headers['X-CSRFToken'] = document.cookie.match(regex) === null ? null : document.cookie.match(regex)[1]
+return config
+})
+},
+template: '<App/>'
+})
 ```
 
 ![](./pictures/043.png)
@@ -403,26 +403,26 @@ template: '<App/>'
 main.js 代码
 
 ```js
-import Vue from 'vue'  
-import App from './App'  
-import router from './router'  
-import axios from 'axios'  
+import Vue from 'vue'
+import App from './App'
+import router from './router'
+import axios from 'axios'
 
-const instance = axios.create({  
-headers: {'X-Requested-With': 'XMLHttpRequest'},  
-xsrfCookieName: 'csrftoken',  	xsrfHeaderName: 'X-CSRFToken',  
-withCredentials: true  
-})  
+const instance = axios.create({
+headers: {'X-Requested-With': 'XMLHttpRequest'},
+xsrfCookieName: 'csrftoken',  	xsrfHeaderName: 'X-CSRFToken',
+withCredentials: true
+})
 
-Vue.config.productionTip = false  
-Vue.prototype.$axios = instance  
+Vue.config.productionTip = false
+Vue.prototype.$axios = instance
 
-/* eslint-disable no-new */  
-new Vue({  
-el: '#app',  
-router,  
-components: { App },  
-template: '<App/>'  
+/* eslint-disable no-new */
+new Vue({
+el: '#app',
+router,
+components: { App },
+template: '<App/>'
 })
 ```
 
@@ -431,7 +431,7 @@ template: '<App/>'
 再次测试打开前端进行 axios 异步请求看能否请求成功
 在调试工具中可以看到请求成功了，说明配置已经生效，已经解决 403 问题。
 
-## 4. 打包开发完成后 Vue 前端工程整合到蓝鲸开发框架中后部署 PaaS 平台
+## 打包开发完成后 Vue 前端工程整合到蓝鲸开发框架中后部署 PaaS 平台
 
 打包前需要修改一些配置，大多数人第一次开发 vue 前端项目的人在写 axios 请求的时候都是直接把 url 这个参数写成固定的字符串形式如下图所示：
 

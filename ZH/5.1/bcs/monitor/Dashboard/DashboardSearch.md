@@ -12,7 +12,7 @@ Dashboard 含默认 和 自定义 2 种。
 
 点击 `New Dashboard` 可以添加自定义数据仪表盘，点击 `Import Dashboard` 可以导入自定义数据仪表盘。
 
-## 1. 视图
+## 视图
 
 默认 Dashboard 包含
 
@@ -23,7 +23,7 @@ Dashboard 含默认 和 自定义 2 种。
 - `BCS Pods`, 容器 Pod 视图
 
 
-### 1.1 BCS Cluster
+### BCS Cluster
 
 呈现集群的 CPU、内存资源的容量以及使用率。
 
@@ -31,7 +31,7 @@ Dashboard 含默认 和 自定义 2 种。
 
 
 
-### 1.2 BCS Node
+### BCS Node
 
 呈现节点的平均负载以及 CPU、内存使用率。
 
@@ -39,13 +39,13 @@ Dashboard 含默认 和 自定义 2 种。
 ![-w1671](media/15683768658574.jpg)
 
 
-### 1.3 BCS Pods
+### BCS Pods
 
 呈现 Pod 的 CPU、内存、网络资源的使用情况。
 ![-w1679](media/15683774087127.jpg)
 
 
-## 2. 告警策略配置
+## 告警策略配置
 
 选择 【告警策略】菜单，可以容器、主机等维度的告警策略，如下图：
 

@@ -19,7 +19,7 @@
 
 接下来，我们尝试以项目的方式，解决运维在配置管理上遇到的痛点。
 
-## 1. 项目目标
+## 项目目标
 
 建立一个权威统一的 CMDB 配置主数据，作为自动化运维平台、监控平台、运维流程平台等一系列 IT 系统的基石。
 
@@ -29,7 +29,7 @@
 
 确立了项目目标，接下来做技术选型。
 
-## 2. 技术选型
+## 技术选型
 
 在蓝鲸体系架构中，配置平台位于原子平台层，通过蓝鲸 PaaS 的 ESB 为上层 SaaS 提供覆盖研发运营 CI（持续集成）、CD（持续交付和持续部署）、CO（持续运营）领域的配置管理能力。
 
@@ -49,8 +49,7 @@
 
 如何实施 CMDB，请参考场景案例： [业务上线时 CMDB 如何管理主机](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)、[CMDB 如何管理进程](5.1/bk_solutions/CD/CMDB/CMDB_management_process.md)、[CMDB 如何管理 MySQL 实例](5.1/bk_solutions/CD/CMDB/CMDB_management_database_middleware.md)、[企业 CMDB 主机实例同步至蓝鲸 CMDB](5.1/bk_solutions/CD/CMDB/CMDB_integration.md)、[自动发现 MySQL 实例](5.1/bk_solutions/CD/CMDB/CMDB_CI_auto_discovery_MySQL.md)。
 
-
-## 3. 技术发展方向
+## 技术发展方向
 
 当自动化等 IT 系统越来越依赖于 CMDB，如何保证 **CMDB 数据的准确性** 呢？我们认为 CMDB 需要具备配置数据的审计和校验能力，并关联 ITSM 系统，完善 CMDB 中配置数据的变更流程。
 
@@ -67,8 +66,6 @@
 ![](./media/15605114938006.jpg)
 
 <center> 开源共建 CMDB </center>
-
-
 
 ## 扩展阅读
 - [论运维的四化建设 腾讯游戏的实践分享](http://www.kokojia.com/article/9133.html)

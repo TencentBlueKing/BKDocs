@@ -1,8 +1,8 @@
 # 开发框架 2.0 使用说明
 
-## 1. 目录结构说明
+## 目录结构说明
 
-### 1.1 项目目录结构
+### 项目目录结构
 
 ```bash
 .
@@ -55,8 +55,7 @@
 |-- runtime.txt                 # Python 版本配置文件，默认指向 Python 3.6.2 版本
 ```
 
-
-### 1.2 常用配置说明
+### 常用配置说明
 
 - App 基本信息
 
@@ -78,18 +77,18 @@
 线上运行环境的数据库配置不用自己配置，不过你可以线上运行环境通过 django.settings.DATABASES 获取数据库配置。
 
 
-## 2. 开发环境搭建（Python）
+## 开发环境搭建（Python）
 
-### 2.1 安装 Python（3.6 以上）
+### 安装 Python（3.6 以上）
 
 如果系统中已经安装有 Python2 版本，可以了解 Python3 与 Python2 并存的处理方案
 
 
-### 2.2 安装 MySQL（5.5 以上）
+### 安装 MySQL（5.5 以上）
 
 官方下载： [MySQL下载](https://dev.mysql.com/downloads/mysql/)
 
-### 2.3 安装 setuptools、pip 和项目依赖
+### 安装 setuptools、pip 和项目依赖
 
 > __注意__：安装 blueapps 需要使用蓝鲸 pypi 源，可以在 pip 配置文件中设置，也可以使用如下命令安装
 
@@ -97,29 +96,27 @@
 pip3 install -r requirements.txt
 ```
 
-
-### 2.4 安装本地开发工具
+### 安装本地开发工具
 
 推荐使用 pycharm 进行代码开发，使用 TortoiseSVN 管理 SVN，使用 SourceTree 管理 Git。
 
-
-### 2.5 安装 celery（需要使用后台任务的项目）
+### 安装 celery（需要使用后台任务的项目）
 
 安装项目依赖时会自动安装 celery == 3.1.25 和 django-celery == 3.2.1。目前 celery 支持 redis、rabbitmq 作为任务的消息队列，推荐使用 redis。
 
 - mac 系统 redis 使用指南：
 
   安装指令 `brew install redis`；
-  
+
   启动指令 `redis-server`；
-  
+
   测试 redis 服务是否正常启动，`redis-cli` 尝试连接本地的 redis 服务。
 
 - windows 系统 redis 使用指南
 
-  下载安装地址： 
+  下载安装地址：
   [https://github.com/MicrosoftArchive/redis/releases](https://github.com/MicrosoftArchive/redis/releases)。
-  
+
   点击安装目录下的 redis-server.exe 启动 redis 服务。
 
 - 配置项（在 config/dev.py 文件中修改消息队列配置）
@@ -132,8 +129,7 @@ pip3 install -r requirements.txt
 BROKER_URL = 'redis://localhost:6379/0'
 ```
 
-
-### 2.6 配置 hosts
+### 配置 hosts
 
 本地需要修改 hosts 文件，添加如下内容：
 
@@ -143,8 +139,7 @@ BROKER_URL = 'redis://localhost:6379/0'
 127.0.0.1 appdev.`{domain_name}`
 ```
 
-
-### 2.7 配置本地数据库
+### 配置本地数据库
 
 首先在 MySQL 命令行下创建数据库：
 
@@ -154,8 +149,7 @@ CREATE DATABASE  `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
 
 然后配置本地数据库账号密码，需要找到 config/dev.py 中的 DATABASES 配置项，修改 USER 和 PASSWORD。
 
-
-### 2.8 初始化本地数据库
+### 初始化本地数据库
 
 在项目根目录下执行如下命令初始化本地数据库：
 
@@ -165,8 +159,7 @@ python manage.py migrate
 
 如果遇到错误，请先注释掉 config/default.py 的 INSTALLED_APPS 中的 APP 列表，执行命令后再去掉注释。
 
-
-### 2.9 启动项目
+### 启动项目
 
 在项目根目录下执行如下命令启动项目：
 
@@ -177,8 +170,7 @@ python manage.py runserver
 
 ![](../开发进阶/pictures/usage-index.png)
 
-
-## 3. 新建 application
+## 新建 application
 
 - 在根目录下执行 django-admin startapp yourappname
 
@@ -188,15 +180,13 @@ python manage.py runserver
 
 - 把 yourappname 加入 config/default.py 的 INSTALLED_APPS 中
 
+## 定义 model
 
-## 4. 定义 model
-
-
-### 4.1 在新建的 application 中 models.py 定义 model
+### 在新建的 application 中 models.py 定义 model
 
 官方文档： [Django Models](https://docs.djangoproject.com/en/2.2/topics/db/models/)
 
-### 4.2 生成数据库变更文件
+### 生成数据库变更文件
 
 在项目根目录下执行如下命令：
 
@@ -206,8 +196,7 @@ python manage.py makemigrations yourappname
 
 执行成功后就会生成数据库变更文件，文件位于新建 APP 的 migrations 目录中。
 
-
-### 4.3 生效数据库变更
+### 生效数据库变更
 
 在项目根目录下执行如下命令：
 
@@ -217,13 +206,11 @@ python manage.py migrate yourappname
 
 __注意__：在把 yourappname 加入 config/default.py 的 INSTALLED_APPS 中之前，请先执行 python manage.py migrate 初始化数据库。
 
-
-## 5. 使用模板
+## 使用模板
 
 开发框架支持 Django、 Mako 两种模板渲染引擎，在 Django 工程下每个 App 维护自身的模板文件，以下以 APP_NAME 代表 Django APP 名称。
 
-
-### 5.1 Django 模板文件使用方式
+### Django 模板文件使用方式
 
 请将你的 Django 模板文件 xxx.html 放在 `PROJECT_ROOT/APP_NAME/templates/` 目录底下，建议在 templates 底下在加上一层目录，取名为 APP_NAME，即最终模板文件存放路径为 `PROJECT_ROOT/APP_NAME/templates/APP_NAME`，这是为了避免在寻找模板文件的时候，出现覆盖的情况。
 使用 Django 原生支持的 render 方法进行模板渲染。
@@ -256,14 +243,13 @@ render 函数接受三个参数：
 > 当我们在 app2.views 里使用 `render (request, 'index.html', {})` 语句进行渲染时，Django 框架默认以 INSTALLED_APPS 安装次序进行模板文件查找，这时候会匹配到 `app1/templates/index.html` 文件进行渲染，导致得到非预期的结果。所以推荐  `PROJECT_ROOT/APP_NAME/templates/APP_NAME` 这样的目录设计
 >
 
-
-### 5.2  Mako 模板文件使用方式
+###  Mako 模板文件使用方式
 
 Mako 模板文件使用方式大致与 Django 模板文件相同，唯一的区别就是是 Mako 模板文件放在 PROJECT_ROOT/APP_NAME/mako_templates/ 目录底下，同样建议在 mako 底下在加上一层目录，取名为 APP_NAME，最终模板文件存放路径为 PROJECT_ROOT/APP_NAME/mako_templates/APP_NAME。
 
 __注意__：出于安全原因，强烈建议用户使用 Django 模板替代 Mako 进行渲染，防止 XSS 攻击。
 
-### 5.3 Template-Context 平台框架提供的模板变量
+### Template-Context 平台框架提供的模板变量
 
 这里列举的模板变量，不需要用户在 render 模板时传入，可直接在模板文件中访问到，直接使用。
 
@@ -283,7 +269,7 @@ context = {
 }
 ```
 
-## 6. 静态资源使用规范
+## 静态资源使用规范
 
 - 静态文件按模块划分，分别放在 Django 工程中每个对应 APP 的 static 目录下
 
@@ -306,7 +292,7 @@ STATICFILES_DIRS = (os.path.join (BASE_DIR, 'static'),
 
 其中 BASE_DIR 是工程根目录路径。
 
-## 7. 日志使用
+## 日志使用
 
 - 日志相关配置方式复用 Django 的[配置方式](https://docs.djangoproject.com/en/2.2/topics/logging/#using-logging)
 
@@ -357,13 +343,11 @@ logger_celery.setsetLevel ('ERROR')
 logger_celery.setsetLevel ('CRITICAL')
 ```
 
-
-## 8. 异常处理
+## 异常处理
 
 为了减少代码中判断函数调用的判断逻辑，蓝鲸开发框架提出，开发者应该在异常处直接抛出异常，通过 Django 中间件特性来处理该异常。
 
-
-### 8.1 使用样例
+### 使用样例
 
 ```python
 from blueapps.core.exceptions import ArgsMissing
@@ -376,8 +360,7 @@ def your_view_func (request):
 
 __注意__：此处只是一个简单的示例。我们强烈的建议开发者应该在任何有错误的地方直接抛出异常，而非返回错误，由上层逻辑处理。
 
-
-### 8.2 异常类型介绍
+### 异常类型介绍
 
 蓝鲸开发框架异常类主要分为两类：客户端异常及服务端异常，分别对应由于客户端请求引起的错误和后台服务引起的错误。开发者可以根据引起错误的场景来选择需要抛出的异常。
 

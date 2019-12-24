@@ -6,29 +6,24 @@
 
 > 操作系统：`Windows 10`
 
-### 1. 环境准备
+### 环境准备
 
 安装 Python 3.7.3、准备数据库、创建应用和准备代码仓库地址、虚拟环境（可选）
 
-#### 1.1 安装 Python 3.7.3
+#### 安装 Python 3.7.3
 下载 Python 3.7.3 的 [Windows x86-64 executable installer](https://www.python.org/downloads/release/python-373/)（现在一般都是 64 位系统）
 ![安装Python3.7.3](./media/%E5%AE%89%E8%A3%85Python3.7.3.png)
-
-
-
 
 勾选 `Add Python 3.7 to PATH`，按提示安装即可。
 
 安装包会自动安装 `pip`
 ![Python3.7.3安装完校验](./media/Python3.7.3%E5%AE%89%E8%A3%85%E5%AE%8C%E6%A0%A1%E9%AA%8C.png)
 
-
-#### 1.2 部署 MySQL
+#### 部署 MySQL
 
 - [官网下载MySQL5.7](https://dev.mysql.com/downloads/windows/installer/5.7.html) ,选择  `mysql-installer-community-5.7.26.0.msi` ，按提示安装即可。
 
-
-#### 1.3 创建应用和准备 git 仓库地址
+#### 创建应用和准备 git 仓库地址
 
 创建应用前，需提前准备代码仓库(Git/SVN)，推荐 `Git`
 
@@ -40,12 +35,12 @@
 
     进入 `开发者中心` - `应用创建` ，填写上一步获取的 `git` 仓库地址和账号，创建成功后会获取 `应用 ID:{APP_CODE}`、`应用 TOKEN:{SECRET_KEY}` ，这两个变量后续会用到。
 
-#### 1.4 准备虚拟环境 (可选：只有一个开发项目的可忽略)
+#### 准备虚拟环境 (可选：只有一个开发项目的可忽略)
 
 - [修改 pip 源](https://pip.pypa.io/en/stable/user_guide/#config-file) (国内镜像)
 
     在 `C:\Users\{YOUR_USERNAME}\AppData\Roaming` (Windows 10 默认隐藏 `AppData` 目录，需先去掉隐藏)目录中创建 `pip` 文件夹，在 pip 文件夹下创建 `pip.ini`
-	
+
     ```bash
     [global]
     trusted-host = pypi.tuna.tsinghua.edu.cn
@@ -70,10 +65,9 @@ pipenv install
 pipenv shell
 ```
 
+### 初始化开发框架
 
-### 2. 初始化开发框架
-
-#### 2.1 下载开发框架
+#### 下载开发框架
 
 - 下载开发框架 `http://{PAAS_URL}/guide/newbie/#step3`
 
@@ -88,9 +82,7 @@ pipenv shell
 pip3 install -r requirements.txt
 ```
 
-
-#### 2.2 修改配置
-
+#### 修改配置
 
 修改 config/\_\_init\_\_.py 中的 `APP_CODE` 和 `SECRET_KEY`(应用TOKEN)
 
@@ -98,7 +90,7 @@ pip3 install -r requirements.txt
 
 修改 config/\_\_init\_\_.py 中的 `BK_URL` 为 `{PAAS_URL}`
 
-#### 2.3 创建和初始化数据库
+#### 创建和初始化数据库
 
 打开 `MySQL 5.7 Command Line Client` 执行
 
@@ -118,7 +110,7 @@ CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
 python manage.py migrate
 ```
 
-#### 2.4 启动本地项目
+#### 启动本地项目
 
 - 先修改本地 hosts
 
@@ -134,8 +126,7 @@ python manage.py runserver appdev.{PAAS_URL}:8000
 用浏览器访问 ```http://appdev.{PAAS_URL}:8000``` , 就可以看到开发框架
 ![开发框架首页](media/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E9%A6%96%E9%A1%B5.png)
 
-
-### 3. Hello,World
+### Hello,World
 
 - 修改 `视图` home_application/views.py
 

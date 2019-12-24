@@ -1,16 +1,16 @@
 # 自定义组件采集导入教程
 
-## 1 数据链路
+## 数据链路
 
-### 1.1 监控整体链路图
+### 监控整体链路图
 ![s1](../../media/s1.png)
 
-### 1.2 自定义组件采集流程
+### 自定义组件采集流程
 ![s1](../../media/s2.png)
 
 **蓝鲸监控通过 job 部署 prometheus 社区的 exporter，对目标组件进行性能数据采集。接着 bkmetricbeat 从 exporter 上周期拉取性能数据并通过数据通道上报。**
 
-## 2 自定义组件采集导入流程
+##自定义组件采集导入流程
 
 **蓝鲸监控当前支持使用 go 编写 exporter。**
 
@@ -22,16 +22,15 @@
 
   (4)上传配置文件。
 
-### 2.1 蓝鲸监控 Exporter 开发指引
+### 蓝鲸监控 Exporter 开发指引
 
-#### 2.1.1 Exporter 简介
+#### Exporter 简介
 
 **Exporter 本质上就是将收集的数据，转化为对应的文本格式，并提供 http 接口，供蓝鲸监控采集器定期采集数据**
 
-#### 2.1.2 Exporter 基础
+#### Exporter 基础
 
  **指标介绍**
-
 
 Prometheus 中主要使用的四类指标类型，如下所示
 - Counter (累加指标)
@@ -42,8 +41,6 @@ Prometheus 中主要使用的四类指标类型，如下所示
 最常使用的是 Gauge，Gauge 代表了采集的一个单一数据，这个数据可以增加也可以减少，比如 CPU 使用情况，内存使用量，硬盘当前的空间容量等。
 
 Counter 一个累加指标数据，这个值随着时间只会逐渐的增加，比如程序完成的总任务数量，运行错误发生的总次数等，代表了持续增加的数据包或者传输字节累加值。
-
-
 
 【**注**】：所有指标的值仅支持 float64 类型
 
@@ -64,15 +61,15 @@ sample_metric2{partition="c:"} 0.44
 - ```xxx```表示维度的值，例如磁盘分区的 C 盘/D 盘等
 - ```12.47```和```0.44```表示对应指标的值
 
-### 2.2 蓝鲸监控 Exporter 开发
-#### 2.2.1 依赖
+### 蓝鲸监控 Exporter 开发
+#### 依赖
 首先引入 Prometheus 的依赖库
 
 ```bash
 go get github.com/prometheus/client_golang/prometheus
 
 ```
-#### 2.2.2 开发实例
+#### 开发实例
 (1)新建一个 exporter 项目：
 一个 exporter 只需要一个文件即可；新建一个 test_exporter 目录和一个 test_exporter.go 文件:
 
@@ -174,6 +171,7 @@ func ScrapeMem(ch chan<- prometheus.Metric) error {
 ```
 
 (9)指标有多条数据，带维度信息示例如下：
+
 ```go
 func ScrapeDisk(ch chan<- prometheus.Metric) error {
 	disks_mes := []interface{}{
@@ -231,7 +229,8 @@ go build test_exporter.go
 
 至此 Exporter 开发完成，其中 8，9 两步中的函数是重点，目前仅仅写了一些数据进行示例，其中的监控指标获取数据就是该部分的主要功能，需要编写对应逻辑获取指标的值。
 
-### 2.3 exporter 编译
+### exporter 编译
+
 **蓝鲸监控 exporter 默认只支持 64 位机器运行 exporter。**
 - Windows
 
@@ -240,7 +239,8 @@ go build test_exporter.go
 
  ```env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./exporter-linux test_exporter.go```
 
-### 2.4 exporter 打包
+### exporter 打包
+
 - 上传的 exporter 文件限定为 zip 压缩包
 
 - 上传后，后台会读取相应的压缩包特定名称的文件，因此必须保证命名的准确性。读取的文件如下：
@@ -254,9 +254,9 @@ go build test_exporter.go
 
 ![](../../media/s3.png)
 
-### 2.5 配置文件开发
+### 配置文件开发
 
-#### 2.5.1 指标项
+#### 指标项
 
 - 通常，Exporter 上报的指标(metric)种类非常多，而用户只会关心其中一部分重要指标。因此用户需要通过编写指标配置文件来配置自己关注的指标。同时，配置文件也决定了结果表的格式。
 
@@ -264,6 +264,7 @@ go build test_exporter.go
 
 ![s1](../../media/s4.png)
 - 配置文件样例
+
 ```go
 [{
     "fields": [{
@@ -294,6 +295,7 @@ go build test_exporter.go
     "table_desc": "内存"
 }]
 ```
+
 - 数据结构说明
 首先，最外层为列表，列表的每个元素为 Object，每个元素均代表一个结果表。
 
@@ -310,14 +312,16 @@ go build test_exporter.go
 | fields[].description    | 字段描述                   | 是       |                                | 15       |
 | fields[].is_diff_metric | 是否为差值指标             | 否       | true 或 false                  | |        |
 
-#### 2.5.2 配置项（exporter 启动参数配置）
+#### 配置项（exporter 启动参数配置）
 - 大多数 exporter 在启动时，需要提供额外的参数，如服务地址等。因此用户需要对启动所需参数项进行配置，在 exporter 启动时才能提供对应参数值。
 `参数配置文件是**JSON格式**的文件。`
 
 ![s1](../../media/s5.png)
 配置项将直接体现在配置表单中
+
 ![s1](../../media/s6.png)
 - 配置文件样例
+
 ```go
 [{
     "default": "http://localhost:9601/metrics",
@@ -360,15 +364,15 @@ go build test_exporter.go
 
   配置文件中，必须提供```_exporter_url_```参数。该参数为获取 metric 的完整 url。且该参数必须设置默认值。出于安全考虑，监听地址的 IP 只能设置为```127.0.0.1```或```localhost```，配置方式参见上述样例。
 
-#### 2.5.3 logo
+#### logo
 
   155*65 的图片即可
-#### 2.5.4 描述
+#### 描述
   使用 Markdown 语法编写组件描述，在用户组件接入时提供指导。
 
 ![s1](../../media/s7.png)
 
-#### 2.5.5 保存自定义组件采集
+#### 保存自定义组件采集
 
 - 填写组件名
 
@@ -398,7 +402,7 @@ go build test_exporter.go
 
 ![s1](../../media/s8.png)
 
-## 3 自定义组件一键导入
+## 自定义组件一键导入
 
 为了方便自己开发的组件采集 exporter 可以共享给更多的用户，蓝鲸监控支持一键导入。
 已经添加成功的自定义组件，可以按照以下格式打成 zip 压缩包：
@@ -417,7 +421,7 @@ go build test_exporter.go
 | config_schema.json   | 配置项配置文件，配置格式参见 exporter 启动参数配置文件  |
 | info.json            | exporter 包信息，需要提供 name(必须)和 display_name(可选) |
 
-###  info.json
+### info.json
 
 以上文件列表，有一个新的文件```info.json```
 info.json 文件示例
@@ -437,7 +441,7 @@ info.json 文件示例
 
 ![s1](../../media/s10.png)
 
-## 4 自定义组件更新
+## 自定义组件更新
 如果需要更新组件，进入编辑模式，选择相应文件进行更新即可
 
 ![s1](../../media/s9.png)

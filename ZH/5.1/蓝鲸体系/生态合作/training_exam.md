@@ -14,8 +14,6 @@
   Tencent Blueking Development Specialist（BKDS）
   具备依托蓝鲸 PaaS 云平台提供的服务，快速构建企业运维 / 运营 WEB 系统的运维开发能力。
 
-
-
 - 腾讯蓝鲸智云 - 售前架构师
 
   Tencent Blueking Pre-sale Architect（BKPA）
