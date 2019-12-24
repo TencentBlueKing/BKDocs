@@ -38,6 +38,13 @@ echo bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec stop
 echo bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec status
 ```
 
+社区版5.1+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS,iam
+```bash
+# 关闭平台服务
+echo iam bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec stop
+echo iam bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec status
+```
+
 ### 关闭 SaaS 应用
 
 在 appo 服务器上执行
@@ -59,7 +66,12 @@ for x in `ls /data/bkce/paas_agent/apps/projects | awk '{print $1}' | sed 's/.$/
 和 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS
 
 ```bash
-echo mysql paas job bkdata | xargs -n 1 ./bkcec render
+echo mysql paas job bkdata  | xargs -n 1 ./bkcec render
+```
+社区版5.1+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS,iam
+
+```bash
+echo mysql paas job bkdata iam  | xargs -n 1 ./bkcec render
 ```
 
 **bkdata** 特别注意，有 3 个地方
@@ -107,6 +119,11 @@ find /data/bkce/paas_agent/apps/projects/bk_*/conf -name "*.conf" | grep "bk" | 
 
 ```bash
 echo paas gse cmdb kafka job bkdata | xargs -n 1 ./bkcec start
+```
+社区版5.1+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS,iam
+
+```bash
+echo paas gse cmdb kafka job bkdata iam | xargs -n 1 ./bkcec start
 ```
 
 ### 重新初始化 APPO
