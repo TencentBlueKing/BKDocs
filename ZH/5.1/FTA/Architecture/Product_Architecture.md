@@ -1,5 +1,5 @@
 # 产品架构图
-故障自愈集成行业主流开源监控产品或以 REST API 方式获取企业监控产品的告警，**匹配告警设置的执行套餐**，同时通过 **收敛防御** 实现 **在安全的前提下完成告警处理的无人值守**。
+故障自愈集成行业主流开源监控产品或以 REST API 方式获取企业监控产品的告警，**匹配告警设置的[自愈套餐](/ZH/5.1/FTA/Getting_Started/Many_Solutions.md)**，同时通过 **[收敛防御](/ZH/5.1/FTA/Scenes/Alarm_Convergence.md)** 实现 **在安全的前提下完成告警处理的[无人值守](https://mp.weixin.qq.com/s/MX74-vDEOkFA0Om6WDrwYQ)**。
 
 ## 故障自愈在蓝鲸中的位置
 
