@@ -40,7 +40,7 @@
 
   - install.config 这个文件安装脚本会自动生成，无需自行配置。
 
-  - globals.env 重点关注域名和 GSE 外网 IP 相关的配置，详情参考 [环境准备-配置文件](../../基础包安装/环境准备/get_ready.md#configs) 一节。
+  - globals.env 重点关注域名和 GSE 外网 IP 相关的配置，详情参考 [环境准备-配置文件](../环境准备/get_ready.md#配置文件) 一节。
 
   - ports.env 一般不用修改。
 
