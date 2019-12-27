@@ -10,7 +10,6 @@
 
 ![-w1653](media/15683668713785.jpg)
 
-
 ## LoadBalancer 的背后技术
 
 ### Nginx Ingress Controller

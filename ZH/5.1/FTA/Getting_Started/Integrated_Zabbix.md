@@ -3,7 +3,7 @@
 Zabbix 通过推送的方式，将告警推动至故障自愈的告警接收 API 中。
 ![-w228](media/15060385121293.jpg)
 
-<center>图 1. 集成 Zabbix 统计数据展示<center>
+<center>图 1. 集成 Zabbix 统计数据展示</center>
 
 
 ## 运行初始化脚本

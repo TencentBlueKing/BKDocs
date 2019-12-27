@@ -11,7 +11,6 @@ K8S、Mesos 为容器编排引擎，BCS 是容器管理平台，兼容 K8S、Mes
 
 > 注: master 不允许调度，因此，至少需要一台 slave 运行业务容器
 
-
 - 平台建议 Master 配置
   建议至少 4 核 / 8 G / 3 台 / CentOS 7.4 +
 

@@ -40,7 +40,6 @@ metadata:
 type: Opaque
 ```
 
-
 ## 3. BCS 模板集操作
 
 关于 Ingress 的实战演练，请参照 [应用的蓝绿发布](../../../Scenes/Bcs_blue_green_deployment.md)。

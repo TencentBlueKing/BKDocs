@@ -12,13 +12,11 @@ kubectl 是 K8S 官方的命令行工具，用于管理 K8S 集群，用户添�
 
 ![-w1560](media/15675992084889.jpg)
 
-
 大概 1 秒钟打开 WebConsole ，背后实际是启动了一个 WebConsole 的 Pod。
 
 在 WebConsole 中可以使用 kubectl 命令操作集群。
 
 ![-w1157](media/15675996254116.jpg)
-
 
 ## kubectl 常用命令介绍
 
