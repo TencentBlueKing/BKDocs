@@ -1,20 +1,25 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/bind_process_module/
-
-
 
 ### 请求方法
 
 POST
 
-
 ### 功能描述
 
 绑定进程到模块
+
 ### 请求参数
 
+```python
+{
+    "bk_supplier_account":"0",
+    "bk_biz_id":3,
+    "bk_process_id":14,
+    "bk_module_name":"db"
+}
+```
 
 #### 通用参数
 
