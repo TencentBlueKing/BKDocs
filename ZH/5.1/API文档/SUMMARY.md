@@ -2,7 +2,7 @@
 
 ## API文档
 
-* [API文档简介](readme.md)
+* [API文档简介](README.md)
 * [蓝鲸统一登录]()
     * [简介](BK_LOGIN/README.md)
     * [获取所有用户信息](BK_LOGIN/get_all_users.md)
