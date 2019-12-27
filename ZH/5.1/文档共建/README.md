@@ -6,14 +6,13 @@
 
 - 腾讯蓝鲸智云产品文档开源在[GitHub]( https://github.com/TencentBlueKing/BKDocs )上，您需要登录GitHub账号后才能编辑和提交内容。如果您还没有GitHub账号，请访问[Join GitHub](https://github.com/join)注册账号。
 
-
 ## 简单文字修改操作步骤
 
 1.当您需要编辑文档内容是，只需要在单击文档页面右上角的**编辑**按钮，打开 GitHub 上对应文档。
 
 ![1577071893871](./typora-user-images/1577071893871.png)
 
- <center>图 1. 编辑开源文档  <center>
+ <center>图 1. 编辑开源文档 </center>
 
 2.在GitHub页面，单击![1577072206465](./typora-user-images/1577072206465.png)进入编辑状态。
 
@@ -21,11 +20,11 @@
 
 ![1577072392942](./typora-user-images/1577072392942.png)
 
- <center> 图 2. 编辑内容  <center>
+ <center> 图 2. 编辑内容 </center>
 
 4.在预览框 **Preview changes** 中确认修改结果。![1577072459036](./typora-user-images/1577072459036.png)
 
- <center> 图 3. 预览结果  <center>
+ <center> 图 3. 预览结果 </center>
 
 
 5. 确认无误后，在**Propose file change**框中填写修改意见后，单击**Propose file change**提交修改建议
@@ -42,7 +41,6 @@
 ![1577172576685](./typora-user-images/1577172576685.png)
 
 
-
 ## 上传新的图片、文件操作步骤
 
 如果修改文档需要上传新的图片，或者新的 md 文档，那么 GitHub 自带的页面编辑器就不再适用了。这时候我们需要把项目 pull 到本地进行修改。
@@ -53,19 +51,19 @@
 
 ![1577173283172](./typora-user-images/1577173283172.png)
 
- <center> 图 1. Fork 文档  <center>
+ <center> 图 1. Fork 文档 </center>
 
 2. Fork  后，在你的账号下也会出现一个蓝鲸文档中心的项目。再将你自己账号下的蓝鲸文档中心项目 **Clone** 到本地。
 
 ![1577173461391](./typora-user-images/1577173461391.png)
 
- <center> 图 2. Clone 到本地  <center>
+ <center> 图 2. Clone 到本地 </center>
 
 3. 在本地项目你就可以修改了，再修改之后再将项目 **push** 到自己账号下的文档仓库。之后便是关键的一步了，创建 **Pull requests** 。
 
 ![1577173519595](./typora-user-images/1577173519595.png)
 
- <center> 图 3. 创建 Pull requests  <center>
+ <center> 图 3. 创建 Pull requests </center>
 
 4.之后提交 **pull requests** 的操作与前面一样。
 
