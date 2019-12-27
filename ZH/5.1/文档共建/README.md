@@ -1,86 +1,139 @@
-# 编辑文档
+# 技术文档编辑规范
 
- 如果您在浏览腾讯蓝鲸官方文档的时候发现任何需要修正或者改进的内容，请根据本文的操作步骤，提交变更内容到GitHub上。
+## 标题/列表规范
 
-## 前提条件
+文档标题有形如下的格式规范，目录从一级开始，最多可到第三级。（三级以上的标题不符合常规阅读需求，请拆分或使用标题内的列表进行相应处理） **注意**：标题中不要有空格，不要有1. 1、一、这种顺序示例。
 
-- 腾讯蓝鲸智云产品文档开源在[GitHub]( https://github.com/TencentBlueKing/BKDocs )上，您需要登录GitHub账号后才能编辑和提交内容。如果您还没有GitHub账号，请访问[Join GitHub](https://github.com/join)注册账号。
+| 标题层级   | 显示样式       | Markdown 语法                                         |
+| --------- | -------------- | ----------------------------------------------------- |
+| 第一级标题 | # 第一级标题   | Markdown 请注意采用一级‘#’语法，对应 HTML 标签为 h1   |
+| 第二级标题 | ## 第二级标题  | Markdown 请注意采用二级‘##’语法，对应 HTML 标签为 h2  |
+| 第三级标题 | ### 第三级标题 | Markdown 请注意采用三级‘###’语法，对应 HTML 标签为 h3 |
 
-## 简单文字修改操作步骤
+内容列表有形如下的格式规范：
 
-1.当您需要编辑文档内容是，只需要在单击文档页面右上角的**编辑**按钮，打开 GitHub 上对应文档。
+<table>
+  <tbody>
+  <tr>
+    <th> 列表层级</th>
+    <th> 显示样式</th>
+  </tr>
+  <tr>
+    <td> 正文第一级列表</td>
+    <td> 1. 列表项一<br>2. 列表项二	</td>
+  </tr>
+  <tr>
+    <td> 列表中的第二级列表</td>
+    <td> 1. 列表项一<br><br>这是一段说明<br><br>1) 二级列表项一<br>  2) 二级列表项二	</td>
+  </tr>
+  <tr>
+    <td> 二级列表中的第三级列表</td>
+    <td> 1. 列表项一<br><br>这是一段说明<br><br>1) 二级列表项一<br><br>这是另一段说明<br><br>A. 三级列表项1<br>B.  三级列表项2<br><br>2) 二级列表项二</td>
+  </tr>
+  </tbody>
+</table>
 
-![1577071893871](./typora-user-images/1577071893871.png)
+## 特殊表达规范
 
- <center>图 1. 编辑开源文档 </center>
+​
+<table>
+  <tbody>
+  <tr>
+    <th>特殊表达</th>
+    <th>表达方式</th>
+    <th>说明</th>
+  </tr>
+  <tr>
+    <td>强调</td>
+    <td>粗体+前后**</td>
+    <td>非普通文字和短语或重要文字和短语的特殊标记。<br/>Markdown语法为 ** <b>强调词</b> ** 使用强调。</td>
+  </tr>
+  <tr>
+    <td>括号</td>
+    <td>(英文括号)</td>
+    <td>文档中需要使用括号，统一使用英文括号<br>
+    </td>
+  </tr>
+  <tr>
+    <td>正文中的参数、<br/>表达式或代码</td>
+    <td>内联代码</td>
+    <td>必须使用内联代码标识正文中的参数、表达式或代码。<br/>Markdown语法为 ` 命令 `<br/><img src="https://mccdn.qcloud.com/static/img/f9dbb700441f7a407727eb9c6d20a4e8/image.png"></td>
+  </tr>
+  <tr>
+    <td>代码块</td>
+    <td>文档中出现的<br>完整代码	</td>
+    <td>代码与正文分开，使用代码块标识。<br/>Markdown 语法为 ``` 代码块 ```<br><br><img src="https://mccdn.qcloud.com/static/img/05b2ea78c32e165af2922b3a9da54464/image.png"></td>
+  </tr>
+  <tr>
+    <td>互斥参数</td>
+    <td>(a | b | c | d)</td>
+    <td>代码中，分割线表示必须从中选择一个选项<br>的选项集。<br><br>% data = hdfread (start | stride | edge)</td>
+  </tr>
+  <tr>
+    <td>可选参数</td>
+    <td>[英文方括号]</td>
+    <td>代码中，方括号表示完全可选的命令或参数。<br><br>ssh [-l, -q] root@10.10.10.10</td>
+  </tr>
+  <tr>
+    <td>变量</td>
+    <td>	<箭头括号></td>
+    <td>代码中，箭头括号表示必须替换为有效值的<br>变量。<br><br>mount /dev/vdb1 %<%your-mountpoint></td>
+  </tr>
+  <tr>
+    <td>界面标志</td>
+    <td>【中文方括号】</td>
+    <td>标识 UI 上的指定内容以便识别。<br><br>在【作业执行】下拉菜单中，点击【快速脚<br>本执行】按钮。</td>
+  </tr>
+  <tr>
+    <td>交叉引用/外链</td>
+    <td>超链接</td>
+    <td>多使用超链接进行文档间关系的建立。<br><br>产品文档中引用的链接地址请直接使用绝对<br>路径，并设置为在新窗口中打开链接。<br><br>[link](url){:target="_blank"}</td>
+  </tr>
+</tbody>
+</table>
 
-2.在GitHub页面，单击![1577072206465](./typora-user-images/1577072206465.png)进入编辑状态。
+## 文档风格规范
 
-3.在编辑框 **Edit file** 中修改文档内容，可以在单击上方或底部的  **Cancel** 取消保存 。
+### 文案风格
 
-![1577072392942](./typora-user-images/1577072392942.png)
+1. 一定多检查，确保没有错别字。即使是流行语中的谐音错别字也不要使用，比如”墙裂”、”童鞋”、“程序猿”等。
+2. 段落之间使用一个空行隔开。段落开头 **不要留出空白字符** 。
+3. 请把对表达意思没有明显作用的字、词、句删除，在不影响表达效果的前提下把文案长度减到最短。
+4. 避免口语，使用规范的书面语。例子：避免使用“么”、“喔”、“挂掉”等口语词汇。
+5. 尽量避免中英文混杂。
+6. 请一定注意“的”、“地”、“得”的用法。
+7. 第一人称：推荐使用“蓝鲸”、“我们”，不推荐使用“小编”、“笔者”。
+8. 避免多介词的复合长句。注意句子成分要齐全。
+9. 产品名称一致性，产品名称要跟官网首页导航保持一致，不可随意书写。
+10. 内容顺序，各类列表中的排序，需要符合惯例，不可随意排列，应跟官网首页导航顺序保持一致。
+11. 命名合理性，概念命名，要通俗易懂，最好不要有歧义。
 
- <center> 图 2. 编辑内容 </center>
+### 中文、英文、数字混排时空格的使用
 
-4.在预览框 **Preview changes** 中确认修改结果。![1577072459036](./typora-user-images/1577072459036.png)
+1. **中英文之间需要增加空格**，如：包管理 SaaS，它采用了类似 Git 的版本管理理念。
+2. **中文与数字之间需要增加空格**，如：企业标准版拥有 7*24 小时的专属服务。
+3. **数字与单位之间需要增加空格**，如：0-100 台服务需要的系统配置至少是 4 核 8 G，/data 盘至少 50 G。
+4. **中文符号与其他字符之间不加空格**，如：蓝鲸智云日志检索产品是为了解决运维场景中查询日志难的问题而推出的一款 SaaS，基于业界主流的……
+5. **链接之间需要增加空格**，如：蓝鲸文档书写语法为 Markdown，更多请参考 [Google](https://github.com/TencentBlueKing/BKDocs/blob/master/新文档中心格式要求)。
 
- <center> 图 3. 预览结果 </center>
+### 标点符号相关
 
+1. 只有中文或中英文混排中，一律使用中文 / 全角标点。
+2. 中英文混排中如果出现整句英文，则在这句英文中使用英文 / 半角标点。
+3. 省略号：请使用”……“标准用法，请勿使用”。。。“。
+4. 感叹号：请勿使用”！！“。尽量避免使用”！“。请先冷静下来再坐电脑前敲键盘。
+5. 波浪号：请勿在文章内使用“~”，活泼地卖萌有很多其他的表达方式。
 
-5. 确认无误后，在**Propose file change**框中填写修改意见后，单击**Propose file change**提交修改建议
+### 名词的正确用法
 
-   ![1577172276823](./typora-user-images/1577172276823.png)
+1. 专有名词大小写，如：GitHub，而不是 github、Github 或者 GITHUB。
+2. 使用正确的缩写，如：JavaScript、HTML5，而不是Js、h5。
 
-6.确认是从自己的库 master 到 **Tencent BlueKing** 的库，之后但单击 **Create pull request** 。
+## 示例
 
-![1577172537578](./typora-user-images/1577172537578.png)
+*本示例仅供参考此规范中部分条款的使用说明，不保证其对客观事实的描述正确性。* [![img](https://raw.githubusercontent.com/shpdnkti/bkFramework/master/example.png)](https://raw.githubusercontent.com/shpdnkti/bkFramework/master/example.png)
 
+## 注意事项
 
-7.最终再点击一次 **Create pull request** ，即完成意见提交。
-
-![1577172576685](./typora-user-images/1577172576685.png)
-
-
-## 上传新的图片、文件操作步骤
-
-如果修改文档需要上传新的图片，或者新的 md 文档，那么 GitHub 自带的页面编辑器就不再适用了。这时候我们需要把项目 pull 到本地进行修改。
-
-下面是具体步骤：
-
-1.如果没有 Fork 蓝鲸文档中心的仓库，首先 Fork 该 Git 仓库。[蓝鲸文档中心 GitHub](https://github.com/TencentBlueKing/BKDocTest)
-
-![1577173283172](./typora-user-images/1577173283172.png)
-
- <center> 图 1. Fork 文档 </center>
-
-2. Fork  后，在你的账号下也会出现一个蓝鲸文档中心的项目。再将你自己账号下的蓝鲸文档中心项目 **Clone** 到本地。
-
-![1577173461391](./typora-user-images/1577173461391.png)
-
- <center> 图 2. Clone 到本地 </center>
-
-3. 在本地项目你就可以修改了，再修改之后再将项目 **push** 到自己账号下的文档仓库。之后便是关键的一步了，创建 **Pull requests** 。
-
-![1577173519595](./typora-user-images/1577173519595.png)
-
- <center> 图 3. 创建 Pull requests </center>
-
-4.之后提交 **pull requests** 的操作与前面一样。
-
-审核通过后会将你修改的内容展示到官网文档中心。
-
-
-
-**注意：**
-
-如果是再次在本地更新文档，需要在更新前同步官方文档中心仓库的内容。否则提交 **pull request** 容易发生冲突，导致不能  **merge ** 。
-
-同步官方库内容步骤 （以下步骤在本地文档项目下操作 ）：
-
-```
-# gitbash
-# 第一步，添加远程仓库。
-git remote add blueking https://github.com/TencentBlueKing/BKDocTest.git
-# 第二部，同步仓库内容。
-git pull blueking master
-```
+1. 内容编辑/审核请遵循 [文档规范](https://github.com/TencentBlueKing/BKDocs/blob/master/新文档中心格式要求/蓝鲸官网文档管理系统准则.md#doc) 及 [语法]( https://www.runoob.com/markdown/md-tutorial.html )
+2. 已发布的文章不能删除，以免文章删除引起相关页面链接无法访问。
