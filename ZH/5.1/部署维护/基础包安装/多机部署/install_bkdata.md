@@ -141,7 +141,7 @@ FTA 是蓝鲸故障自愈的后台进程
 
 详解：
 
-1. 安装 FTA  (install_fta)
+1. 安装 FTA (install_fta)
 
     - 安装 dependents.env 里定义依赖的 Yum 包
 
