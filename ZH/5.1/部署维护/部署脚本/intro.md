@@ -28,7 +28,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 ### 开源外部组件
 
-**基础部分：**
+#### 基础部分：
 
 - **nginx：** web 服务器和反向代理。
 
@@ -50,7 +50,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **redis：** 键值对存储数据库。
 
-**BCS (容器管理平台)部分：**
+#### BCS (容器管理平台)部分：
 
 - **web_console：** 是容器服务提供快捷查看集群状态的命令行服务。
 
@@ -66,7 +66,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **devops(pm)：** 项目管理后台模块。
 
-- **harbor(api)：** 是蓝盾 bcs 容器服务查询 docker 镜像信息的中间件，目前只支持harbor镜像查询 ，后面有计划支持其他 docker 仓库( jfrog /腾讯云等）。
+- **harbor(api)：** 是蓝盾 bcs 容器服务查询 docker 镜像信息的中间件，目前只支持 harbor 镜像查询 ，后面有计划支持其他 docker 仓库( jfrog /腾讯云等）。
 
 - **harbor(server)：** Harbor 是 Vmware 公司开源的企业级 Docker Registry 管理项目。
 
