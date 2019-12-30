@@ -6,7 +6,7 @@
 
 - 安装社区版 5.1， 并部署好标准运维等 SaaS
 
-    > 1. 安全前注意调整 globals.env 中的各类密码，不能带有特殊字符。详情查看 [环境准备-globals.env](../../基础包安装/环境准备/get_ready.md#globals)。
+    > 1. 安全前注意调整 globals.env 中的各类密码，不能带有特殊字符。详情查看 [环境准备-globals.env](../../基础包安装/环境准备/get_ready.md#配置文件)。
     > 2. Nginx 需要 1.10 + 以上。
     > 3. openssl 需要 1.0.2 以上版本。
 
