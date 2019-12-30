@@ -30,25 +30,25 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 #### 基础部分：
 
-- **nginx：** web 服务器和反向代理。
-
-- **rabbitmq：** 消息队列服务。
-
-- **kafka：** 分布式数据流处理服务。
-
-- **zk：** ZooKeeper 分布式配置服务。
-
-- **es：** ElasticSearch 分布式搜索和数据分析引擎。
-
 - **consul：** 分布式服务发现和域名服务。
-
-- **mongodb：** 面向文档的数据库管理系统。
 
 - **mysql：** 关系数据库管理系统。
 
-- **beanstalk：** 消息队列服务。
-
 - **redis：** 键值对存储数据库。
+
+- **nginx：** web 服务器和反向代理。
+
+- **mongodb：** 面向文档的数据库管理系统。
+
+- **zk：** ZooKeeper 分布式配置服务。
+
+- **rabbitmq：** 消息队列服务。
+
+- **es：** ElasticSearch 分布式搜索和数据分析引擎。
+
+- **kafka：** 分布式数据流处理服务。
+
+- **beanstalk：** 消息队列服务。
 
 #### BCS (容器管理平台)部分：
 
