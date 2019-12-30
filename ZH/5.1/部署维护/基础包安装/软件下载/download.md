@@ -18,4 +18,4 @@
 
 - **证书**
 
-软件安装过程中，需要提供[证书文件](https://bk.tencent.com/download_ssl/)，才能确保软件的正常启动，最多输入 3 个 MAC 地址。
+软件安装过程中，需要提供 [证书文件](https://bk.tencent.com/download_ssl/)，才能确保软件的正常启动，最多输入 3 个 MAC 地址。
