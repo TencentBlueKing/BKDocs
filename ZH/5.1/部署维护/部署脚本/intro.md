@@ -114,14 +114,12 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 ### 脚本包的文件说明
 
-  - **RELEASE.md：** 版本日志。
-
-  - **VERSION：** 版本号。
-
   - **agent_setup/：** 存放安装 Agent 相关的脚本以及脚本模版。
 
   - **appmgr/：** 存放构建 SaaS 和运行 SaaS 所需的脚本，社区版采用 virtualenv 方式。
 
+  - **bcs/：** 存放 bcs 构建所需的脚本。
+  
   - **bk_install：** 封装 bkcec 用来做集成安装部署。
 
   - **bkcec：** 安装和维护的主脚本。
@@ -152,6 +150,14 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
   - **install.config：** 定义模块在主机的分布部署方式。
 
+  - **install.config.3ip.sample：** 部署基础不含bcs时使用。
+
+  - **install.config.bcs.sample：** 完整的基础平台+bcs方案分布。
+
+  - **install.config.bcs.single.sample：** 单机部署bcs模块分布示例。
+
+  - **install.config.new.sample：** 部署 bcs 时使用。
+  
   - **install_minibk：** 最小化单机部署的封装脚本。
 
   - **migrate/：** 蓝鲸套件迁移升级的脚本，目前没有用。
@@ -182,15 +188,9 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
   - **utils.fc：** 安装、初始化主要函数都在这里先找。
 
-  - **bcs/：** 存放 bcs 构建所需的脚本。
+  - **RELEASE.md：** 版本日志。
 
-  - **install.config.3ip.sample：** 部署基础不含bcs时使用。
-
-  - **install.config.bcs.sample：** 完整的基础平台+bcs方案分布。
-
-  - **install.config.bcs.single.sample：** 单机部署bcs模块分布示例。
-
-  - **install.config.new.sample：** 部署 bcs 时使用。
+  - **VERSION：** 版本号。
 
 ## 完成安装或日常升级后生成的文件
 
