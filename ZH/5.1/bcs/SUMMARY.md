@@ -1,11 +1,11 @@
 # Summary
 
-## 蓝鲸容器管理平台
+## 容器管理平台
 * [产品简介](Introduction/README.md)
 * [术语解释](Concepts/Concepts_Terminology.md)
- * [产品特性](Function/features.md)
- * [产品优势](Function/superiority.md)
- * [产品开源](Function/opensource.md)
+* [产品特性](Function/features.md)
+* [产品优势](Function/superiority.md)
+* [产品开源](Function/opensource.md)
 * [产品架构图](Architecture/Architecture.md)
 * [产品功能]()
     * [模板集使用指南](Function/TemplateIntroduce.md)
