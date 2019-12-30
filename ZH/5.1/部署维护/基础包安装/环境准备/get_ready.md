@@ -179,7 +179,7 @@ tar xf bkce_src-5.0.3.tar.gz  -C /data
 
 说明:
 - 该配置文件，ip 后面使用空格与服务名称隔开，含有多个内网 ip 的机器，默认使用 /sbin/ifconfig 输出中的第一个内网 ip，在 ip 后面写上该机器要安装的服务列表即可，部署过程中默认使用标准私有地址，若企业环境使用非标准私有地址，请参考 **本章后续内容 - 非标准私有地址处理方法** 的处理方法。
-- zk 表示 zookeeper， es 表示 elasticsearch。
+- zk 表示 ZooKeeper， es 表示 ElasticSearch。
 - gse 与 redis 需要部署在同一台机器上。
 - 增加机器数量时， 可以将以上配置中的服务挪到新的机器上，分担负载。 要保证：kafka， es， zk 的每个组件的总数量为 3。
 
