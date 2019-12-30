@@ -11,15 +11,15 @@
   - 清理的方式：只用链接到 MySQL 数据库后使用 truncate 或 delete 的方式。
 
 
-- 解压 src
+- **通过【开发者中心】->【S-mart应用】下架所有蓝鲸官方 `SaaS`，如：蓝鲸监控，标准运维，节点管理，故障自愈，日志检索。**
 
 - 停进程
 
   ```bash
   cd /data/install
-  echo fta bkdata appo appt gse  job cmdb paas redis nginx consul  | xargs -n1 ./bkcec stop
+  echo fta bkdata appo appt gse  job cmdb paas redis nginx consul license  | xargs -n1 ./bkcec stop
   # 观察进程是否为EXIT
-  echo fta bkdata appo appt gse job cmdb paas redis nginx consul  | xargs -n1 ./bkcec status
+  echo fta bkdata appo appt gse job cmdb paas redis nginx consul license  | xargs -n1 ./bkcec status
   ```
 
 - 备份 src 目录
@@ -63,13 +63,15 @@
 - 还原部署配置 `(globals.env  ports.env)`
 
   - 恢复 `globals.env` 相关配置信息
-    - 自行比对新老文件的差异，将旧的 `globals.env` 文件的 `#域名信息` `#DB信息` `#账户信息` `GSE\NGINX_WAN_IP` `#设置HTTP/HTTPS模式`同步修改到新的 `globals.env` 配置文件内，务必谨慎对比，账户密码信息至关重要，新配置文件的新增内容不可删除。
+    
+    - *自行比对新老文件的差异，将旧的 `globals.env` 文件的 `#域名信息` `#DB信息` `#账户信息` `GSE\NGINX_WAN_IP` `#设置HTTP/HTTPS模式`同步修改到新的 `globals.env` 配置文件内，务必谨慎对比，账户密码信息至关重要，新配置文件的新增内容不可删除。*
     ![](../../assets/globals.env.sample2.png)
-    ![](../../assets/globals.env.sample3.png)
-
+![](../../assets/globals.env.sample3.png)
+    
   - 恢复 `ports.env` 相关配置信息
-    - 自行比对新老文件的差异，将旧的 `ports.env` 文件的差异信息同步修改到新的 `ports.env` 文件内，如果您未修改过 `ports.env` 文件内的端口，可忽略本步骤。
-
+  
+  - *自行比对新老文件的差异，将旧的 `ports.env` 文件的差异信息同步修改到新的 `ports.env` 文件内，如果您未修改过 `ports.env` 文件内的端口，可忽略本步骤。*
+    
   - 更新 `install.config`
     - 根据 `install.config.new.sample` 文件的 `[bkce-basic]` 格式更新 `install.config` 文件。
     - 示例：
@@ -81,9 +83,9 @@
       # 变更后的格式
       [bkce-basic]
       10.0.0.1 nginx，appt，rabbitmq，kafka(config)，zk(config)，es，bkdata(databus)，bkdata(dataapi)，bkdata(monitor)，consul，fta
-      10.0.0.2 mongodb，appo，kafka(config)，zk(config)，es，mysql，beanstalk，consul
+    10.0.0.2 mongodb，appo，kafka(config)，zk(config)，es，mysql，beanstalk，consul
       10.0.0.3 paas，cmdb，job，gse，license，kafka(config)，zk(config)，es，redis，consul，influxdb
-
+  
       >> Note:原则是不改变原模块所在IP的机器，只新增格式zk(config)，kaka(config)，bkdata(databus)，\
               bkdata(dataapi)，bkdata(monitor)。\
               另：install.config.new.sample内的其他bcs相关模块如需要安装请下载相关安装包解压并新增机器部署bcs\
@@ -143,7 +145,8 @@
   # 更新nginx paas、cmdb、job启用https。脚本自动部署使用自签名证书\
   # 路径在：/data/src/cert/bk_domain.crt、 /data/src/cert/bk_domain.key
   # 升级Nginx版本，如果你系统是Centos7.0以下的版本需要自行编译nginx1.11.9版本安装，或者下载nginx-1.11.9-1.el6.ngx.x86_64.rpm 版本替换src/nginx/nginx-1.11.9-1.el7.ngx.x86_64.rpm 包
-  ./bkcec install nginx 1
+
+  ./bkcec install nginx
   ./bkcec start nginx
   ./bkcec status nginx
   ```
@@ -151,7 +154,7 @@
 
   ```bash
   # 升级Redis版本
-  ./bkcec install redis 1  # 升级Redis版本，另Cnetos6不用升级
+  ./bkcec install redis  # 升级Redis版本，另Cnetos6不用升级
   ./bkcec start redis
   ./bkcec status redis
   ```
@@ -173,10 +176,10 @@
   mysqldump -u$MYSQL_USER -p$MYSQL_PASS -h$MYSQL_IP -P$MYSQL_PORT  --skip-opt --create-options --default-character-set=utf8mb4 -R  -E -q --single-transaction --no-autocommit --master-data=2 --max-allowed-packet=1G  --hex-blob  -B  \$dblist > /data/dbbak/bk_mysql_alldata.sql
   EOF
 
-  #执行备份操作
+  # 执行备份操作
   sh dbbackup_mysql.sh
 
-  #查看导出是否正确
+  # 查看导出是否正确
   grep 'CREATE DATABASE' bk_mysql_alldata.sql
 
   ```
@@ -191,7 +194,7 @@
 
 - 备份 MySQL5.5 软件和数据目录，配置文件等。
   ```bash
-  #备份，MySQL机器执行
+  # 备份，MySQL机器执行
   mv /data/bkce/service/mysql /data/bkce/service/mysql55
   mv /data/bkce/public/mysql /data/bkce/public/mysql55
   mv /data/bkce/etc/my.cnf /data/bkce/etc/my.cnf.55
@@ -200,7 +203,7 @@
 - 安装 MySQL
   ```bash
   # 中控机执行，升级 MySQL 版本
-  ./bkcec install mysql 1
+  ./bkcec install mysql
   ./bkcec start mysql
   ./bkcec status mysql
   ```
@@ -209,6 +212,7 @@
   # MySQL机器执行
   cd /data/dbbak
   # 导入数据库
+  yum -y install mysql
   mysql --default-character-set=utf8mb4<bk_mysql_alldata.sql
   # 中控机重新初始化MySQL
   ./bkcec initdata mysql
@@ -216,13 +220,20 @@
 
 ### 升级蓝鲸组件
 
+- 更新 license
+
+```bash
+./bkcec install license
+./bkcec stop license
+./bkcec start license
+```
 
 - 更新 PaaS
 
   ```bash
   # 登录PaaS机器
-  mv /data/bkce/open_paas /data/bkce/open_paas_bak
-  
+  mv /data/bkce/open_paas /data/bkce/open_paas_416_bak
+
   # 中控机执行
   ./bkcec install paas
   ./bkcec upgrade paas
@@ -245,7 +256,7 @@
   ./bkcec install gse
   ./bkcec upgrade gse # No JSON object could be decode报错属于正常
   ./bkcec start gse
-  ./bkcec status gse  #如果有个别进程显示ERROR status状态，是启动时间比较慢，可尝试多刷新几次
+  ./bkcec status gse  # 如果有个别进程显示ERROR status状态，是启动时间比较慢，可尝试多刷新几次
   ./bkcec pack gse_plugin
   ```
 
@@ -296,7 +307,7 @@
 - 升级 SaaS
 
   ```bash
-   ./bkcec install  saas-o  #安装 saas
+   ./bkcec install  saas-o  # 安装 saas
   ```
 
 ### 升级 agent
