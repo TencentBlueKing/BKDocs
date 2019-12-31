@@ -6,8 +6,8 @@
 
   ```bash
   cd /data/
-  cp -a src src.bak #备份src目录
-  cp -a install install.bak   #备份install目录
+  cp -a src src.bak           # 备份 src 目录
+  cp -a install install.bak   # 备份 install 目录
   ```
 - 下载部署脚本 `install_ce-master-1.4.13.tgz` 上传到中控机并解压
 
@@ -20,31 +20,32 @@
 
   ```bash
   cd /data/
-  #解压到src同级目录
-  tar xf bkce_patch-4.1.16.tgz /data/   #补丁包
-  tar xf bkce_common-1.0.0.tgz /data/   #公共组件包
+  # 解压到 src 同级目录
+  tar xf bkce_patch-4.1.16.tgz /data/   # 补丁包
+  tar xf bkce_common-1.0.0.tgz /data/   # 公共组件包
   ```
+  
 - 更新脚本
 
   ```bash
   cd /data/install.bak
-  # ports.env文件有更新，自行对比并更新
-  cp -a globals.env /data/install/   #恢复配置文件
+  # ports.env 文件有更新，自行对比并更新
+  cp -a globals.env /data/install/   # 恢复配置文件
 
   cd /data/install
-  #编辑globals.env，填写gse,nginx外网IP到括号内
+  # 编辑globals.env，填写gse,nginx外网IP到括号内
   export GSE_WAN_IP=()
   export NGINX_WAN_IP=()
 
   # 同步脚本
   cd /data/install
-  ./bkcec sync common #同步最新脚本
+  ./bkcec sync common # 同步最新脚本
   ```
 
 - 更新 RabbitMQ
 
   ```bash
-  # 执行下面操作需要看到有done返回才算成功
+  # 执行下面操作需要看到有 done 返回才算成功
   source $CTRL_DIR/utils.fc
 
   rcmd root@$RABBITMQ_IP "rabbitmqctl add_user "bk_monitor" "$(_app_token bk_monitor)""
@@ -75,7 +76,7 @@
 - 更新 PaaS
 
   ```bash
-  #进入脚本目录
+  # 进入脚本目录
   cd /data/install/
   ./bkcec stop paas
   ./bkcec status paas
@@ -87,7 +88,7 @@
 - 更新 GSE
 
   ```bash
-  #进入脚本目录
+  # 进入脚本目录
   cd /data/install/
   ./bkcec stop gse
   ./bkcec status gse
@@ -99,7 +100,7 @@
 - 更新 BKDATA
 
   ```bash
-  #进入脚本目录
+  # 进入脚本目录
   cd /data/install/
   ./bkcec stop bkdata
   ./bkcec status bkdata
@@ -111,7 +112,7 @@
 - 更新 FTA
 
   ```bash
-  #进入脚本目录
+  # 进入脚本目录
   cd /data/install/
   ./bkcec stop fta
   ./bkcec status fta  
