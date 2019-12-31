@@ -10,7 +10,6 @@
 
   - 清理的方式：只用链接到 MySQL 数据库后使用 truncate 或 delete 的方式。
 
-
 - **通过【开发者中心】->【S-mart应用】下架所有蓝鲸官方 `SaaS`，如：蓝鲸监控，标准运维，节点管理，故障自愈，日志检索。**
 
 - 停进程
@@ -18,7 +17,7 @@
   ```bash
   cd /data/install
   echo fta bkdata appo appt gse  job cmdb paas redis nginx consul license  | xargs -n1 ./bkcec stop
-  # 观察进程是否为EXIT
+  # 观察进程是否为 EXIT
   echo fta bkdata appo appt gse job cmdb paas redis nginx consul license  | xargs -n1 ./bkcec status
   ```
 
@@ -26,7 +25,7 @@
 
   ```bash
   # 中控机执行
-  # （必须）请一定用 mv 备份 src 目录。
+  # (必须)请一定用 mv 备份 src 目录。
   cd /data
   mv src src.bak
   ```
@@ -34,14 +33,14 @@
 - 备份 install 目录
 
   ```bash
-  #请不要使用mv命令备份，一定使用cp备份install目录，不然会导致 install/.app.token发生改变
+  # 请不要使用 mv 命令备份，一定使用 cp 备份 install 目录，不然会导致 install/.app.token发生改变
   cp -a install install.bak
   ```
 
 - 解压包
 
   ```bash
-  tar xf bkce_src-5.x.x.tgz -C /data/  #整包(含src，install目录)
+  tar xf bkce_src-5.x.x.tgz -C /data/  # 整包(含src，install目录)
   ```
 
 - 恢复证书
@@ -64,17 +63,20 @@
 
   - 恢复 `globals.env` 相关配置信息
     
-    - *自行比对新老文件的差异，将旧的 `globals.env` 文件的 `#域名信息` `#DB信息` `#账户信息` `GSE\NGINX_WAN_IP` `#设置HTTP/HTTPS模式`同步修改到新的 `globals.env` 配置文件内，务必谨慎对比，账户密码信息至关重要，新配置文件的新增内容不可删除。*
+    - 自行比对新老文件的差异，将旧的 `globals.env` 文件的 `#域名信息` `#DB信息` `#账户信息` `GSE\NGINX_WAN_IP` `#设置HTTP/HTTPS模式`同步修改到新的 `globals.env` 配置文件内，务必谨慎对比，账户密码信息至关重要，新配置文件的新增内容不可删除。
+    
     ![](../../assets/globals.env.sample2.png)
-![](../../assets/globals.env.sample3.png)
+    
+    ![](../../assets/globals.env.sample3.png)
     
   - 恢复 `ports.env` 相关配置信息
   
-  - *自行比对新老文件的差异，将旧的 `ports.env` 文件的差异信息同步修改到新的 `ports.env` 文件内，如果您未修改过 `ports.env` 文件内的端口，可忽略本步骤。*
+  - 自行比对新老文件的差异，将旧的 `ports.env` 文件的差异信息同步修改到新的 `ports.env` 文件内，如果您未修改过 `ports.env` 文件内的端口，可忽略本步骤。
     
   - 更新 `install.config`
     - 根据 `install.config.new.sample` 文件的 `[bkce-basic]` 格式更新 `install.config` 文件。
     - 示例：
+    
       ```bash
       # 原 install.config格式
       10.0.0.1 nginx，appt，rabbitmq，kafka，zk，es，bkdata，consul，fta
@@ -94,6 +96,7 @@
 
 
 - 恢复 CICDKit 安装包
+
   ```bash
   #如果你已经部署 CICDKit 请执行，若没有请忽略
   cp -a /data/src.bak/cicdkit src/
@@ -108,7 +111,9 @@
   cp -a install.bak/parse_config  install/   
   cp -a install.bak/third/*  install/third/
   ```
+  
 - 升级前检查
+
   ```bash
   # 中控机查看
   cat /data/install/.path #查看安装路径是否为空
@@ -120,8 +125,10 @@
   ```bash
   ./bkcec sync all  #同步新的软件包，在同步过程中
   ```
+  
   > Note: 执行同步过程中，可能有文件不存在的报错，报错文件是点号开头的隐藏文件，可以忽略，是因为并发
 分发文件引起的，属于正常现象。
+
   ![](../../assets/sync1.png)
 
 ## 开始升级
@@ -131,9 +138,11 @@
 - 安装依赖
 
   ```bash
-   ./bkcec install global_pypkg  #安装依赖
+   ./bkcec install global_pypkg  # 安装依赖
   ```
+  
 - 更新 Consul
+
   ```bash
   ./bkcec install consul
   ./bkcec start consul
@@ -142,9 +151,9 @@
 - 更新 Nginx
 
   ```bash
-  # 更新nginx paas、cmdb、job启用https。脚本自动部署使用自签名证书\
+  # 更新 nginx paas、cmdb、job启用 https。脚本自动部署使用自签名证书\
   # 路径在：/data/src/cert/bk_domain.crt、 /data/src/cert/bk_domain.key
-  # 升级Nginx版本，如果你系统是Centos7.0以下的版本需要自行编译nginx1.11.9版本安装，或者下载nginx-1.11.9-1.el6.ngx.x86_64.rpm 版本替换src/nginx/nginx-1.11.9-1.el7.ngx.x86_64.rpm 包
+  # 升级 Nginx 版本，如果你系统是 Centos7.0 以下的版本需要自行编译 nginx1.11.9 版本安装，或者下载 nginx-1.11.9-1.el6.ngx.x86_64.rpm 版本替换 src/nginx/nginx-1.11.9-1.el7.ngx.x86_64.rpm 包
 
   ./bkcec install nginx
   ./bkcec start nginx
@@ -153,11 +162,12 @@
 - 更新 Redis
 
   ```bash
-  # 升级Redis版本
-  ./bkcec install redis  # 升级Redis版本，另Cnetos6不用升级
+  # 升级 Redis 版本
+  ./bkcec install redis  # 升级 Redis 版本，另 Cnetos6 不用升级
   ./bkcec start redis
   ./bkcec status redis
   ```
+  
 - 更新 MySQL
 
   - 备份数据库，也可自行选择其他方式备份数据库。
@@ -181,7 +191,6 @@
 
   # 查看导出是否正确
   grep 'CREATE DATABASE' bk_mysql_alldata.sql
-
   ```
 
 - 停 MySQL 进程
@@ -193,6 +202,7 @@
   ```
 
 - 备份 MySQL5.5 软件和数据目录，配置文件等。
+
   ```bash
   # 备份，MySQL机器执行
   mv /data/bkce/service/mysql /data/bkce/service/mysql55
@@ -200,21 +210,25 @@
   mv /data/bkce/etc/my.cnf /data/bkce/etc/my.cnf.55
   mv /etc/my.cnf /etc/my.cnf.55
   ```
+  
 - 安装 MySQL
+
   ```bash
   # 中控机执行，升级 MySQL 版本
   ./bkcec install mysql
   ./bkcec start mysql
   ./bkcec status mysql
   ```
+  
 - 恢复备份数据
+
   ```bash
-  # MySQL机器执行
+  # MySQL 机器执行
   cd /data/dbbak
   # 导入数据库
   yum -y install mysql
   mysql --default-character-set=utf8mb4<bk_mysql_alldata.sql
-  # 中控机重新初始化MySQL
+  # 中控机重新初始化 MySQL
   ./bkcec initdata mysql
   ```
 
@@ -222,16 +236,16 @@
 
 - 更新 license
 
-```bash
-./bkcec install license
-./bkcec stop license
-./bkcec start license
-```
+  ```bash
+  ./bkcec install license
+  ./bkcec stop license
+  ./bkcec start license
+  ```
 
 - 更新 PaaS
 
   ```bash
-  # 登录PaaS机器
+  # 登录 PaaS 机器
   mv /data/bkce/open_paas /data/bkce/open_paas_416_bak
 
   # 中控机执行
@@ -254,9 +268,9 @@
 
   ```bash
   ./bkcec install gse
-  ./bkcec upgrade gse # No JSON object could be decode报错属于正常
+  ./bkcec upgrade gse # No JSON object could be decode 报错属于正常
   ./bkcec start gse
-  ./bkcec status gse  # 如果有个别进程显示ERROR status状态，是启动时间比较慢，可尝试多刷新几次
+  ./bkcec status gse  # 如果有个别进程显示 ERROR status 状态，是启动时间比较慢，可尝试多刷新几次
   ./bkcec pack gse_plugin
   ```
 
@@ -271,13 +285,13 @@
 - 更新 PaaS_Agent
 
   ```bash
-  # 更新appo
+  # 更新 appo
   ./bkcec upgrade appo
   ./bkcec start appo
   ./bkcec status appo
   ./bkcec activate appo
 
-  # 更新 APPT
+  # 更新 appt
   ./bkcec upgrade appt
   ./bkcec start appt
   ./bkcec status appt  
@@ -307,7 +321,7 @@
 - 升级 SaaS
 
   ```bash
-   ./bkcec install  saas-o  # 安装 saas
+  ./bkcec install  saas-o  # 安装 saas
   ```
 
 ### 升级 agent
