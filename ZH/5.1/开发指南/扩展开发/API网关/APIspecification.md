@@ -20,7 +20,7 @@
 
 - user_auth::skip_user_auth: "应用免登录态验证白名单" 功能 code，添加此功能 code，然后将应用ID添加到"功能测试白名单"中
 
-### API 调用
+## API 调用
 
 调用 API 主要有两种方式，一种是使用 APP 开发框架中提供的 SDK 包，一种是根据 API 地址直接访问。
 
@@ -29,6 +29,7 @@
 使用 SDK 包访问 API 有两种方式 shortcuts 或 ComponentClient。使用示例如下：
 
 - shortcuts -- get_client_by_request
+
 ```python
     from blueking.component.shortcuts import get_client_by_request
     # 默认从django settings中获取APP认证信息：应用ID和安全密钥
@@ -40,6 +41,7 @@
 ```
 
 - shortcuts -- get_client_by_user
+
 ```python
     from blueking.component.shortcuts import get_client_by_user
     # 默认从django settings中获取APP认证信息：应用ID和安全密钥
@@ -52,6 +54,7 @@
 ```
 
 - ComponentClient
+
 ```python
      from blueking.component.client import ComponentClient
      # APP应用ID
