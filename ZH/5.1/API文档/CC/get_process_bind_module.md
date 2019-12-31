@@ -38,7 +38,11 @@ GET
 ### 请求参数示例
 
 ```python
-
+{
+    "bk_supplier_account": "0",
+    "bk_biz_id": 3,
+    "bk_process_id": 1
+}
 
 ```
 
