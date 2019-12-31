@@ -14,27 +14,26 @@
 
 - 蓝鲸监控通过 job 部署 prometheus 社区的 Exporter，对目标组件进行性能数据采集。接着 bkmetricbeat 从 Exporter 上周期拉取性能数据并通过数据通道上报。
 
-
 ### 自定义组件采集导入流程
 
-- 蓝鲸监控当前支持使用 go 编写 Exporter。
+- 蓝鲸监控当前支持使用 go 编写 Exporter
 
-  1. 在社区找到适合自己的 Exporter 或者编写新的 Exporter。
+  1. 在社区找到适合自己的 Exporter 或者编写新的 Exporter
 
-  2. 将源码编译成二进制文件。
+  2. 将源码编译成二进制文件
 
   3. 将编译的 Exporter 打成 zip 包
 
-  4. 上传配置文件。
+  4. 上传配置文件
 
-#### Exporter 开发
+## Exporter 开发
 
-##### Exporter 简介
+### Exporter 简介
 
 - Exporter 本质上就是将收集的数据，转化为对应的⽂本格式，并提供 http 接口，供蓝鲸监控采集器
 定期采集数据。
 
-##### Exporter 基础
+### Exporter 基础
 
 - 指标介绍 Prometheus 中主要使⽤的四类指标类型，如下所示：
 
@@ -67,7 +66,7 @@ sample_metric2 {partition="c:"} 0.44
 
   c: 表示维度的值，例如磁盘分区的 C 盘 / D 盘等 12.47 和 0.44 表示对应指标的值
 
-##### Exporter 开发
+### Exporter 开发
 
 - 环境搭建：
 
@@ -405,7 +404,6 @@ go build -o ./exporter-linux test_exporter
 
     - 配置文件中，必须提供 `_exporter_url_` 参数。该参数为获取 metric 的完整 url。且该参数必须设置默认值。出于安全考虑，监听地址的 IP 只能设置为 `127.0.0.1` 或 `localhost`，配置方式参见上述样例。
 
-
 #### logo
 
 155 * 65 的图片即可。
@@ -452,7 +450,6 @@ go build -o ./exporter-linux test_exporter
 1. 后台解析文件时，无视文件目录结构，直接扫描符合命名规则的文件
 
 2. 不得出现相同文件名的文件，否则会报错
-
 
 | 文件名 | 解释 |
 |---  |--- |
