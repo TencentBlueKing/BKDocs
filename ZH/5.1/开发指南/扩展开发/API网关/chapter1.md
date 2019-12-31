@@ -152,7 +152,7 @@ python manage.py sync_api_docs
 组件添加完成后，重启服务，重启步骤如下:
 
 ```bash
-# proj_etc_dir 表示项目配置文件路径，比如：/data/bkee/etc
+# proj_etc_dir 表示项目配置文件路径，比如：/data/bkce/etc
 # 重启指令
 workon open_paas
 supervisorctl -c $proj_etc_dir/supervisor-open_paas.conf restart esb
