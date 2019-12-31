@@ -33,6 +33,7 @@
 - 注册到的请求类型：GET
 
 - 注册到的 API 路径：/hcp/get_host_list/ 通过"注册到的路径"，加上统一前缀，即是 API 的接口地址：
+
 ```
 http://xxx.domain.com/api/c/self-service-api/hcp/get_host_list/
 ```
@@ -49,11 +50,12 @@ http://xxx.domain.com/api/c/self-service-api/hcp/get_host_list/
 
 目标接口请求类型：POST
 
-编码POST参数方式：json 目标接口请求方式为 POST 时，才需要指定
+编码 POST 参数方式：json 目标接口请求方式为 POST 时，才需要指定
 
 ## API 访问信息
 
 通过上面的配置，即可接入 API，访问 API 同样会进行应用和用户的认证。API 的访问地址为：
+
 ```
 http://xxx.domain.com/api/c/self-service-api/hcp/get_host_list/
 ```
