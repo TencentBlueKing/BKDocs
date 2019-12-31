@@ -92,4 +92,4 @@ to start sandbox container for pod ... Error response from daemon: OCI runtime c
 
 #### 镜像问题
 
-请参考 查看本文上面的 [拉取镜像失败] 处理流程
+请参考 查看本文上面的 [拉取镜像失败](5.1/bcs/FAQ/faq.md#拉取镜像失败)处理流程
