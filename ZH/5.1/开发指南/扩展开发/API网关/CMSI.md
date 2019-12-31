@@ -10,7 +10,11 @@
 
 - 发送短信: /cmsi/send_sms/
 
-API 网关定义了这些消息通知组件的接口协议，给出了组件样例（参考项目下的 components/generic/templates/cmsi/），但是，并没有完全实现组件内容，用户可根据接口协议，重写此部分组件。API 网关为降低实现消息通知组件的难度，提供了在线更新组件配置，不需编写组件代码的方案。
+API 网关定义了这些消息通知组件的接口协议，给出了组件样例（参考项目下的 components/generic/templates/cmsi/），
+
+但是，并没有完全实现组件内容，用户可根据接口协议，重写此部分组件。
+
+API 网关为降低实现消息通知组件的难度，提供了在线更新组件配置，不需编写组件代码的方案。
 
 >注意：若要更改组件样例，需将样例代码 copy 到 components/generic/apis/cmsi/下修改，components/generic/templates/cmsi 中内容，每次发布都会被覆盖。
 
@@ -21,7 +25,7 @@ API 网关定义了这些消息通知组件的接口协议，给出了组件样�
 - 在通道管理中找到对应的组件通道，打开编辑页面
 - 在组件配置下，将接口地址配置到变量 dest_url 下
 
-注意：
+**注意：**
 
 1. send_voice_msg 组件，若 receiver__username 参数有效，将会根据平台用户数据，生成参数 user_list_information
 
