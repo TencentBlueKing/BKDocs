@@ -2,11 +2,11 @@
 
 **思路**
 
-1. `open_paas` Nginx 配置 HTTPS。
+1. `open_paas` Nginx 配置 HTTPS
 
-2. 内部接口 统一走 HTTP。
+2. 内部接口 统一走 HTTP
 
-3. 前端跳转 统一走 HTTPS。
+3. 前端跳转 统一走 HTTPS
 
 **运维同学关注 open_paas 部署相关**
 
