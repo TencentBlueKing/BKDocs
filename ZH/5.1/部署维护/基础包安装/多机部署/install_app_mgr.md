@@ -33,37 +33,37 @@ PaaS_Agent 使用 Python 的 `virtualenv` 工具来隔离不同的 SaaS 环境�
 
 1. 安装 APPO  (install_PaaS_Agent 函数)
 
-    - 创建 APPS 用户，该用户用来启停 SaaS 的后台 Python 工程。
+  - 创建 APPS 用户，该用户用来启停 SaaS 的后台 Python 工程
 
-    - 拷贝 PaaS_Agent 二进制和证书目录。
+  - 拷贝 PaaS_Agent 二进制和证书目录
 
-    - 安装专属 Python 解释器。
+  - 安装专属 Python 解释器
 
-    - 使用专属 Python 创建 PaaS_Agent 的 `virtualenv` 。
+  - 使用专属 Python 创建 PaaS_Agent 的 `virtualenv` 
 
-    - 创建 `$INSTALL_PATH/.appenvs` 目录作为 `WORKON_HOME` 。
+  - 创建 `$INSTALL_PATH/.appenvs` 目录作为 `WORKON_HOME` 
 
-    - 安装 PaaS_Agent 部署 SaaS 时的 Python 包依赖。
+  - 安装 PaaS_Agent 部署 SaaS 时的 Python 包依赖
 
-    - 安装 Nginx 做 SaaS 的反向代理。
+  - 安装 Nginx 做 SaaS 的反向代理
 
-    - 渲染 PaaS_Agent 模板，生成配置。
+  - 渲染 PaaS_Agent 模板，生成配置
 
-    - 添加 `/etc/hosts` 记录。
+  - 添加 `/etc/hosts` 记录
 
 2. 初始化 APPO (initdata_PaaS_Agent)
 
-    - 初始化 PaaS_Agent MySQL 数据库
+  - 初始化 PaaS_Agent MySQL 数据库
 
-    - 注册 PaaS_Agent 到 PaaS 平台，成功后获取到 `sid` 和 `Token`
+  - 注册 PaaS_Agent 到 PaaS 平台，成功后获取到 `sid` 和 `Token`。
 
-    - 根据 `sid` 和 `Token` ，修改 PaaS_Agent 的配置文件。
+  - 根据 `sid` 和 `Token` ，修改 PaaS_Agent 的配置文件
 
-3. 启动 PaaS_Agent。
+3. 启动 PaaS_Agent
 
-4. 激活 PaaS_Agent。
+4. 激活 PaaS_Agent
 
-   启用这个已经注册的 PaaS_Agent 主机。在做 SaaS 上下架时，只会操作激活过的 PaaS_Agent 服务器。
+启用这个已经注册的 PaaS_Agent 主机。在做 SaaS 上下架时，只会操作激活过的 PaaS_Agent 服务器。
 
 ## 安装 APPT 环境
 
@@ -72,4 +72,4 @@ PaaS_Agent 使用 Python 的 `virtualenv` 工具来隔离不同的 SaaS 环境�
 ./bkcec initdata appt
 ./bkcec start appt
 ./bkcec activate appt
- ```
+```
