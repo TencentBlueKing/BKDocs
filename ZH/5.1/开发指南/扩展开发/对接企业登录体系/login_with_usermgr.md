@@ -45,7 +45,7 @@ touch ee_login/settings_login.py
 ```python
 # -*- coding: utf-8 -*-
 # 蓝鲸登录方式：bk_login
-# 企业内部Username-password登录方式：enterprise_ldap
+# 企业内部 Username-password 登录方式：enterprise_ldap
 # 自定义登录方式：custom_login
 LOGIN_TYPE = 'custom_login'
 
