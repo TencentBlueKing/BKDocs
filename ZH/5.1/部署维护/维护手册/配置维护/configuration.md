@@ -26,6 +26,20 @@
 
 以下列举当前所有的开源组件配置文件路径：
 
+### Consul
+
+Consul 的配置文件比较特殊，因为它是全局依赖， Consul 的配置文件会存放在 `/data/bkce/etc/consul.conf` ，它没有对应的模板文件，是由 `/data/install/parse_config` 这个脚本来生成。不过 Consul 启动的 supervisor 配置文件模板在：
+
+- \#etc#supervisor-consul.conf
+
+### MySQL
+
+- \#etc#my.cnf.tpl
+
+### Redis
+
+- \#etc#redis.conf
+
 ### Nginx
 
 - \#etc#nginx.conf  
@@ -43,33 +57,19 @@ PaaS 平台的 Nginx server 配置
 - \#etc#nginx#miniweb.conf  
 存放 Agent 安装时所需要下载的脚本和依赖软件包
 
+###  MongoDB
+
+- \#etc#mongodb.yaml
+
+### ZooKeeper
+
+- \#etc#zoo.cfg
+
 ### RabbitMQ
 
 - \#etc#rabbitmq#rabbitmq-env.conf
 - \#etc#rabbitmq#rabbitmq.config
 - \#etc#rabbitmq#enabled_plugins
-
-###  MongoDB
-
-- \#etc#mongodb.yaml
-
-### MySQL
-
-- \#etc#my.cnf.tpl
-
-### Redis
-
-- \#etc#redis.conf
-
-### Consul
-
-Consul 的配置文件比较特殊，因为它是全局依赖， Consul 的配置文件会存放在 `/data/bkce/etc/consul.conf` ，它没有对应的模板文件，是由 `/data/install/parse_config` 这个脚本来生成。不过 Consul 启动的 supervisor 配置文件模板在：
-
-- \#etc#supervisor-consul.conf
-
-### ZooKeeper
-
-- \#etc#zoo.cfg
 
 ### Elasticsearch
 
@@ -79,13 +79,13 @@ Consul 的配置文件比较特殊，因为它是全局依赖， Consul 的配�
 
 - kafka#config#server.properties
 
-### InfluxDB
-
--  \#etc#influxdb.conf
-
 ### Beanstalk
 
 - \#etc#beanstalkd
+
+### InfluxDB
+
+-  \#etc#influxdb.conf
 
 ## 蓝鲸组件
 
