@@ -20,7 +20,7 @@
      > from common.mymako import render_json, render_mako
      >
      > # 框架 2.0 代码
-     > from django.shortcut import render # 对应 render_mako 使用
+     > from django.shortcut import render   # 对应 render_mako 使用
      > from django.http import JsonResponse # 对应 render_json 使用
      > ```
 
