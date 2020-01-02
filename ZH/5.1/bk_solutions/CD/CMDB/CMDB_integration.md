@@ -263,4 +263,4 @@ updateBkCmdbHost(updateInfoList)
 
 ![1562225679643](./media/1562225679643.png)
 
-注：上述教程是企业 CMDB `单向`、`定期`同步主机实例至蓝鲸 CMDB 的实践，如果需要实时同步，一般推荐 [消息推动](5.1/配置平台/产品功能/ModelManagement.md)的方式。
+注：上述教程是企业 CMDB `单向`、`定期`同步主机实例至蓝鲸 CMDB 的实践，如果需要实时同步，一般推荐 [消息推动](5.1/配置平台/产品功能/ModelManagement.md#事件推送)的方式。
