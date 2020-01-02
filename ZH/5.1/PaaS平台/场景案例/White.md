@@ -2,9 +2,9 @@
 
 **S-mart 市场和自己开发的 SaaS 需要开通白名单免登录验证才能正常使用**
 
-- 获取 `应用 ID`,登陆 `PaaS 平台`—>`开发中心`— `S-mart应用`(自己开发的应用在`我的应用`)
+- 获取 `应用 ID`,登陆 `PaaS 平台`—>`开发者中心`— `S-mart应用`(自己开发的应用在`我的应用`)
 
-  ![image.png](../assets/id4.png)
+![image.png](../assets/id4.png)
 
 - 以管理员身份进入 PaaS 平台的后台 `{paas_domain}/admin`，进`Function controllers`目录
 
