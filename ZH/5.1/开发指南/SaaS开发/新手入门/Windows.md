@@ -2,22 +2,24 @@
 
 基于 `蓝鲸开发框架 2.0` 上输出 `Hello,World!`
 
-> 开发语言：`Python 3.7.3`
-
+> 开发语言：`Python 3.6.X`
+>
 > 操作系统：`Windows 10`
 
 ### 环境准备
 
-安装 Python 3.7.3、准备数据库、创建应用和准备代码仓库地址、虚拟环境（可选）
+安装 Python 3.6.X、准备数据库、创建应用和准备代码仓库地址、虚拟环境（可选）
 
-#### 安装 Python 3.7.3
-下载 Python 3.7.3 的 [Windows x86-64 executable installer](https://www.python.org/downloads/release/python-373/)（现在一般都是 64 位系统）
-![安装Python3.7.3](./media/%E5%AE%89%E8%A3%85Python3.7.3.png)
+#### 安装 Python 3.6.X
 
-勾选 `Add Python 3.7 to PATH`，按提示安装即可。
+下载 Python 3.6.X 的 [Windows x86-64 executable installer](https://www.python.org/downloads/)（现在一般都是 64 位系统）
+
+![安装Python3.6.X](./media/%E5%AE%89%E8%A3%85Python3.7.3.png)
+
+勾选 `Add Python 3.6 to PATH`，按提示安装即可。
 
 安装包会自动安装 `pip`
-![Python3.7.3安装完校验](./media/Python3.7.3%E5%AE%89%E8%A3%85%E5%AE%8C%E6%A0%A1%E9%AA%8C.png)
+![Python3.6.3安装完校验](./media/Python3.7.3%E5%AE%89%E8%A3%85%E5%AE%8C%E6%A0%A1%E9%AA%8C.png)
 
 #### 部署 MySQL
 
