@@ -36,7 +36,7 @@ mysqladmin -uroot -p password {new_password}
 
     进入 `开发者中心` - `应用创建` ，填写上一步获取的 `git` 仓库地址和账号，创建成功后会获取 `应用 ID:{APP_CODE}`、`应用 TOKEN:{SECRET_KEY}` ，这两个变量后续会用到。
 
-#### 准备虚拟环境 (可选：只有一个开发项目的可忽略)
+#### 准备虚拟环境
 
 - [修改 pip 源](https://pip.pypa.io/en/stable/user_guide/#config-file) (国内镜像)
 
@@ -76,10 +76,6 @@ pipenv shell
 
 > `{PAAS_URL}` 为蓝鲸 PaaS 访问地址，例如 `paas.blueking.com`
 
-- 修改 requirements.txt 文件
-    - 注释 uwsgi 所在行（本地开发环境搭建不需要），否则会提示 `An error occurred while installing uwsgi==2.0.13.1 `
-    - 修改 Django 版本为 1.11.17，因为 Python 3.7.3 依赖 Django 1.11.17，不兼容框架中的 1.11.2，否则会提示 `SyntaxError: Generator expression must be parenthesized`
-
 - 安装框架依赖包
 
 ```bash
@@ -88,7 +84,7 @@ pip3 install -r requirements.txt
 
 #### 修改配置
 
-- 修改应用 (SaaS) 配置 (此处内部版已直接填充到开发框架中)
+- 修改应用(SaaS)配置
 
     修改 config/\_\_init\_\_.py 中的 `APP_CODE` 和 `SECRET_KEY`
 
