@@ -63,15 +63,15 @@
 - 还原部署配置 `(globals.env  ports.env)`
 
   - 恢复 `globals.env` 相关配置信息
-    
+
     - *自行比对新老文件的差异，将旧的 `globals.env` 文件的 `#域名信息` `#DB信息` `#账户信息` `GSE\NGINX_WAN_IP` `#设置HTTP/HTTPS模式`同步修改到新的 `globals.env` 配置文件内，务必谨慎对比，账户密码信息至关重要，新配置文件的新增内容不可删除。*
     ![](../../assets/globals.env.sample2.png)
 ![](../../assets/globals.env.sample3.png)
-    
+
   - 恢复 `ports.env` 相关配置信息
-  
+
   - *自行比对新老文件的差异，将旧的 `ports.env` 文件的差异信息同步修改到新的 `ports.env` 文件内，如果您未修改过 `ports.env` 文件内的端口，可忽略本步骤。*
-    
+
   - 更新 `install.config`
     - 根据 `install.config.new.sample` 文件的 `[bkce-basic]` 格式更新 `install.config` 文件。
     - 示例：
@@ -83,9 +83,9 @@
       # 变更后的格式
       [bkce-basic]
       10.0.0.1 nginx，appt，rabbitmq，kafka(config)，zk(config)，es，bkdata(databus)，bkdata(dataapi)，bkdata(monitor)，consul，fta
-    10.0.0.2 mongodb，appo，kafka(config)，zk(config)，es，mysql，beanstalk，consul
+      10.0.0.2 mongodb，appo，kafka(config)，zk(config)，es，mysql，beanstalk，consul
       10.0.0.3 paas，cmdb，job，gse，license，kafka(config)，zk(config)，es，redis，consul，influxdb
-  
+
       >> Note:原则是不改变原模块所在IP的机器，只新增格式zk(config)，kaka(config)，bkdata(databus)，\
               bkdata(dataapi)，bkdata(monitor)。\
               另：install.config.new.sample内的其他bcs相关模块如需要安装请下载相关安装包解压并新增机器部署bcs\
@@ -164,7 +164,7 @@
 
   ```bash
   # 登陆 MySQL 机器执行
-
+  ssh $MYSQL_IP
   source /data/install/utils.fc
   mkdir -p /data/dbbak
   cd /data/dbbak
@@ -195,6 +195,7 @@
 - 备份 MySQL5.5 软件和数据目录，配置文件等。
   ```bash
   # 备份，MySQL机器执行
+  ssh $MYSQL_IP
   mv /data/bkce/service/mysql /data/bkce/service/mysql55
   mv /data/bkce/public/mysql /data/bkce/public/mysql55
   mv /data/bkce/etc/my.cnf /data/bkce/etc/my.cnf.55
@@ -210,6 +211,7 @@
 - 恢复备份数据
   ```bash
   # MySQL机器执行
+  ssh $MYSQL_IP
   cd /data/dbbak
   # 导入数据库
   yum -y install mysql
@@ -220,19 +222,20 @@
 
 ### 升级蓝鲸组件
 
-- 更新 license
+- 更新 License
 
 ```bash
 ./bkcec install license
-./bkcec stop license
 ./bkcec start license
+./bkcec status license
 ```
 
 - 更新 PaaS
 
   ```bash
   # 登录PaaS机器
-  mv /data/bkce/open_paas /data/bkce/open_paas_416_bak
+  ssh $PAAS_IP
+  mv /data/bkce/open_paas /data/bkce/open_paas_50_bak
 
   # 中控机执行
   ./bkcec install paas
@@ -310,7 +313,7 @@
    ./bkcec install  saas-o  # 安装 saas
   ```
 
-### 升级 agent
+### 升级 Agent
 
 - 升级蓝鲸所在机器的 gse_agent
   在中控机执行
