@@ -1,3 +1,5 @@
+# 其他问题
+
 (1)蓝鲸 DevOps 技能有培训教程吗？
 
 答：蓝鲸为社区用户准备了在线视频教程，可以免费观看。（链接：[https://cloud.tencent.com/developer/edu/major-100008](https://cloud.tencent.com/developer/edu/major-100008)）
