@@ -12,7 +12,7 @@
 
 #### 安装 Python 3.6.X
 
-下载并安装 [Python 3.6.10](https://www.python.org/downloads/)
+下载并安装 [Python 3.6.X](https://www.python.org/downloads/)
 
 #### 部署 MySQL
 
