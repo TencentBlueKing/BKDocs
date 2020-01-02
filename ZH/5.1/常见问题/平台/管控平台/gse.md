@@ -7,7 +7,7 @@
 1. `parse cc response error`
 2. `parse dataid error`
 ```bash
-# 提示解析CC响应失败，或者解析dataid失败
+# 提示解析 CC 响应失败，或者解析 dataid 失败
 $ parse dataid failed, [{"server_id": -1, "data_set": "snapshot", "partition": 1, "cluster_index": 0, "biz_id": 2, "msg_system": 1}, {"server_id": -1, "data_set": "snapshot", "partition": 0, "cluster_index": 1, "biz_id": 2, "msg_system": 4}]
 migrate failed for gse (server)
 ```
@@ -194,7 +194,9 @@ proxy 的配置文件在 /usr/local/gse/proxy/etc/ 下，修改配置后使用 `
 
 ### 查看源日志是否有更新
 
-确保采集的数据源有日志持续输出 注意：文件内容不可直接清空，文件轮转可采用删除或者移动 MV。
+确保采集的数据源有日志持续输出 
+
+注意：文件内容不可直接清空，文件轮转可采用删除或者移动 MV。
 
 ### 检测日志采集器进程
 
