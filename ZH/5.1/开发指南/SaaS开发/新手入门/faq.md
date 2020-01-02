@@ -8,7 +8,8 @@
     - macOS: `Command+Shift+P` 选择 `Configure Display Language`
     - Windows: `Ctrl+Shift+P` 选择 `Configure Display Language`
 
-- 记住git账号
+- 记住 git 账号
+
 ```bash
 git config --global credential.helper store
 ```
