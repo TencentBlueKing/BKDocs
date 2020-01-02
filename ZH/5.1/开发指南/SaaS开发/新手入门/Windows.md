@@ -75,11 +75,8 @@ pipenv shell
 
 > `{PAAS_URL}`为蓝鲸 PaaS访问地址，例如 `paas.blueking.com`
 
-- 修改 requirements.txt 文件
-    - 注释 uwsgi 所在行（本地开发环境搭建不需要），否则会提示 `An error occurred while installing uwsgi==2.0.13.1 `
-    - 修改 Django 版本为1.11.17，因为 Python 3.7.3 依赖Django 1.11.17，不兼容框架中的 1.11.2，否则会提示 `SyntaxError: Generator expression must be parenthesized`
-
 - 安装框架依赖包
+
 ```bash
 pip3 install -r requirements.txt
 ```
@@ -126,11 +123,12 @@ python manage.py runserver appdev.{PAAS_URL}:8000
 
 - 本地访问
 用浏览器访问 ```http://appdev.{PAAS_URL}:8000``` , 就可以看到开发框架
+
 ![开发框架首页](media/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E9%A6%96%E9%A1%B5.png)
 
 ### Hello,World
 
-- 修改 `视图` home_application/views.py
+- 修改视图 home_application/views.py
 
 ```python
 from django.http import HttpResponse
@@ -138,7 +136,7 @@ def hello(request):
     return HttpResponse('Hello World!')
 ```
 
-- 添加 `路由` home_application/urls.py
+- 添加路由 home_application/urls.py
 ```
 url(r'^$', views.hello),
 ```
