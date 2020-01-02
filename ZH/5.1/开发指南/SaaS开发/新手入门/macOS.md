@@ -2,18 +2,17 @@
 
 基于 `蓝鲸开发框架 2.0` 上输出 `Hello,World!`
 
-> 开发语言：`Python 3.7.3`
+> 开发语言：`Python 3.6.X`
 >
 > 操作系统：`macOS`
 
-
 ### 环境准备
 
-安装 Python 3.7.3、准备数据库、创建应用和准备代码仓库地址、虚拟环境（可选）
+安装 Python 3.6.X、准备数据库、创建应用和准备代码仓库地址、虚拟环境（可选）
 
-#### 安装 Python 3.7.3
+#### 安装 Python 3.6.X
 
-下载并安装 [Python 3.7.3](https://www.python.org/downloads/release/python-373/)
+下载并安装 [Python 3.6.10](https://www.python.org/downloads/)
 
 #### 部署 MySQL
 
