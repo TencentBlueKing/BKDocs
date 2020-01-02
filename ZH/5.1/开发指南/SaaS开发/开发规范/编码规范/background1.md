@@ -21,7 +21,7 @@ Code Analysis > pep8.py` 设置即可
 
 ## 编码规范
 
-###【必须】代码编码
+### 【必须】代码编码
 
 1. 国际惯例，文件编码和 python 编码格式全部为 utf-8，例如：在 python 代码的开头，要统一加上  `#-*- coding: utf-8 -*-`，或者其他符合正则表达式 `^[\t\v]*#.*?coding [:=][\t]*([-_.a-zA-Z0-9]+)` 的编码声明方式。详情参考：<https://www.python.org/dev/peps/pep-0263/#defining-the-encoding>
 
