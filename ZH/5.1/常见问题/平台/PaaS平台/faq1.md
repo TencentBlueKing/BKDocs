@@ -28,7 +28,7 @@
     ```bash
     vim /data/install/globals.env
     # 域名信息
-    export BK_DOMAIN="bk.com"            # 蓝鲸根域名(不含主机名)
+    export BK_DOMAIN="bk.com"                # 蓝鲸根域名(不含主机名)
     export PAAS_FQDN="paas.$BK_DOMAIN"       # PAAS 完整域名
     export CMDB_FQDN="cmdb.$BK_DOMAIN"       # CMDB 完整域名
     export JOB_FQDN="job.$BK_DOMAIN"         # JOB 完整域名
