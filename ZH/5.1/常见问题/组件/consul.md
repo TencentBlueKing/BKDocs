@@ -95,7 +95,6 @@ zk.service.consul.    0    IN    A    10.x.x.x
 ; <<>> DiG 9.9.4-RedHat-9.9.4-29.el7_2.2 <<>> zk.service.consul @127.0.0.1
 ;; global options: +cmd
 ;; connection timed out; no servers could be reached
-
 ```
 
 如果出现以下信息 "IN A" 后面没有 ip 地址，说明 consul 启动了，但是无法解析域名
