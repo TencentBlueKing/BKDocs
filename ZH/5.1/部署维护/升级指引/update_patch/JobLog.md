@@ -54,7 +54,9 @@
 - 导入操作说明
 
   - 同步导出的 sql 文件到社区版中控机上（比如路径为/ tmp/job/export_data/log/
+  
   - cd 到 /tmp/job/export_data/log/ 目录下(确保 MYSQL 命令行能够执行到当前路径下的 sql 文件)。然后登陆 MYSQL:
+  
   - ![JobLog6](../../assets/JobLog6.png)
 
 - 使用 MYSQL 命令行，切换到名称为 jobLog 的 schema 下:
@@ -68,9 +70,11 @@
     ```
 
 - 导入数据，通过 MYSQL 命令行执行。
+
     ```bash
     source batch_import.sql
     ```
+    
   >注意，必须保证执行过程中没有任何错误；如果出现错误，那么本次数据导入失败，需要分析原因再次清理数据后进行导入。
 
 - 验证:

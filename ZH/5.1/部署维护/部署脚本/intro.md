@@ -28,29 +28,29 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 ### 开源外部组件
 
-**基础部分：**
-
-- **nginx：** web 服务器和反向代理。
-
-- **rabbitmq：** 消息队列服务。
-
-- **kafka：** 分布式数据流处理服务。
-
-- **zk：** ZooKeeper 分布式配置服务。
-
-- **es：** ElasticSearch 分布式搜索和数据分析引擎。
+#### 基础部分：
 
 - **consul：** 分布式服务发现和域名服务。
 
-- **mongodb：** 面向文档的数据库管理系统。
-
 - **mysql：** 关系数据库管理系统。
-
-- **beanstalk：** 消息队列服务。
 
 - **redis：** 键值对存储数据库。
 
-**BCS (容器管理平台)部分：**
+- **nginx：** web 服务器和反向代理。
+
+- **mongodb：** 面向文档的数据库管理系统。
+
+- **zk：** ZooKeeper 分布式配置服务。
+
+- **rabbitmq：** 消息队列服务。
+
+- **es：** ElasticSearch 分布式搜索和数据分析引擎。
+
+- **kafka：** 分布式数据流处理服务。
+
+- **beanstalk：** 消息队列服务。
+
+#### BCS (容器管理平台)部分：
 
 - **web_console：** 是容器服务提供快捷查看集群状态的命令行服务。
 
@@ -66,7 +66,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **devops(pm)：** 项目管理后台模块。
 
-- **harbor(api)：** 是蓝盾 bcs 容器服务查询 docker 镜像信息的中间件，目前只支持harbor镜像查询 ，后面有计划支持其他 docker 仓库( jfrog /腾讯云等）。
+- **harbor(api)：** 是蓝盾 bcs 容器服务查询 docker 镜像信息的中间件，目前只支持 harbor 镜像查询 ，后面有计划支持其他 docker 仓库( jfrog /腾讯云等）。
 
 - **harbor(server)：** Harbor 是 Vmware 公司开源的企业级 Docker Registry 管理项目。
 
@@ -114,83 +114,83 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 ### 脚本包的文件说明
 
-  - **RELEASE.md：** 版本日志。
+- **agent_setup/：** 存放安装 Agent 相关的脚本以及脚本模版。
 
-  - **VERSION：** 版本号。
+- **appmgr/：** 存放构建 SaaS 和运行 SaaS 所需的脚本，社区版采用 virtualenv 方式。
 
-  - **agent_setup/：** 存放安装 Agent 相关的脚本以及脚本模版。
+- **bcs/：** 存放 bcs 构建所需的脚本。
 
-  - **appmgr/：** 存放构建 SaaS 和运行 SaaS 所需的脚本，社区版采用 virtualenv 方式。
+- **bk_install：** 封装 bkcec 用来做集成安装部署。
 
-  - **bk_install：** 封装 bkcec 用来做集成安装部署。
+- **bkcec：** 安装和维护的主脚本。
 
-  - **bkcec：** 安装和维护的主脚本。
+- **bkco.env bkco.fc bkco_install：** 网络管理模块所用的安装部署相关环境变量和函数定义。
 
-  - **bkco.env bkco.fc bkco_install：** 网络管理模块所用的安装部署相关环境变量和函数定义。
+- **clean.fc：** 卸载清理相关函数。
 
-  - **clean.fc：** 卸载清理相关函数。
+- **configure_ssh_without_pass：** 一键配置免密 ssh 登陆用的脚本。
 
-  - **configure_ssh_without_pass：** 一键配置免密 ssh 登陆用的脚本。
+- **control.rc：** 定义进程启停的函数库。
 
-  - **control.rc：** 定义进程启停的函数库。
+- **crontab.rc：** crontab 新增和删除相关的函数定义。
 
-  - **crontab.rc：** crontab 新增和删除相关的函数定义。
+- **deck/saas.py：** 命令行部署 SaaS 应用的工具。
 
-  - **deck/saas.py：** 命令行部署 SaaS 应用的工具。
+- **deliver.rc：** 定义从中控机同步文件目录到对应模块机器的函数。
 
-  - **deliver.rc：** 定义从中控机同步文件目录到对应模块机器的函数。
+- **dependences.env：** 各模块依赖的命令和 rpm 包定义。
 
-  - **dependences.env：** 各模块依赖的命令和 rpm 包定义。
+- **errors.env：** 错误码定义。
 
-  - **errors.env：** 错误码定义。
+- **functions：** 通用的 bash 函数。
 
-  - **functions：** 通用的 bash 函数。
+- **globals.env：** 定义蓝鲸组件用到的全局变量配置。
 
-  - **globals.env：** 定义蓝鲸组件用到的全局变量配置。
+- **health_check/check_proc_exists：** Consul 使用的健康检查脚本。
 
-  - **health_check/check_proc_exists：** Consul 使用的健康检查脚本。
+- **install.config：** 定义模块在主机的分布部署方式。
 
-  - **install.config：** 定义模块在主机的分布部署方式。
+- **install.config.3ip.sample：** 部署基础不含bcs时使用。
 
-  - **install_minibk：** 最小化单机部署的封装脚本。
+- **install.config.bcs.sample：** 完整的基础平台+bcs方案分布。
 
-  - **migrate/：** 蓝鲸套件迁移升级的脚本，目前没有用。
+- **install.config.bcs.single.sample：** 单机部署bcs模块分布示例。
 
-  - **parse_config：** 解析 install.config 并生成 Consul 主配置和服务定义的配置， `config.env` 等文件。
+- **install.config.new.sample：** 部署 bcs 时使用。
 
-  - **pip/：** 存放安装脚本所需的 pip 依赖包。
+- **install_minibk：** 最小化单机部署的封装脚本。
 
-  - **ports.env：** 定义所有组件需要设定的端口信息。
+- **migrate/：** 蓝鲸套件迁移升级的脚本，目前没有用。
 
-  - **process_watch + watch.rc：** 进程监控脚本。
+- **parse_config：** 解析 install.config 并生成 Consul 主配置和服务定义的配置， `config.env` 等文件。
 
-  - **register.rc：** 自动注册主机到 CMDB 的函数。
+- **pip/：** 存放安装脚本所需的 pip 依赖包。
 
-  - **scripts/：** gse_agent 和 gse_proxy 安装所需要启停脚本，在安装 GSE 时会自动打包进去。
+- **ports.env：** 定义所有组件需要设定的端口信息。
 
-  - **status.rc：** 检查进程状态相关的函数。
+- **process_watch + watch.rc：** 进程监控脚本。
 
-  - **summary.rc：** 打印相关模块和所有模块的版本信息。
+- **register.rc：** 自动注册主机到 CMDB 的函数。
 
-  - **templates/：** 安装脚本初始依赖的配置模版，目前只是 Consul 的 Supervisor 配置。
+- **scripts/：** gse_agent 和 gse_proxy 安装所需要启停脚本，在安装 GSE 时会自动打包进去。
 
-  - **templates_render.rc：** 渲染配置模版，根据读取配置文件和动态生成的变量去替换模版里的占位符。
+- **status.rc：** 检查进程状态相关的函数。
 
-  - **update.rc：** 一些更新配置或者证书的操作定义。
+- **summary.rc：** 打印相关模块和所有模块的版本信息。
 
-  - **upgrade.rc：** 各模块的升级操作封装。
+- **templates/：** 安装脚本初始依赖的配置模版，目前只是 Consul 的 Supervisor 配置。
 
-  - **utils.fc：** 安装、初始化主要函数都在这里先找。
+- **templates_render.rc：** 渲染配置模版，根据读取配置文件和动态生成的变量去替换模版里的占位符。
 
-  - **bcs/：** 存放 bcs 构建所需的脚本。
+- **update.rc：** 一些更新配置或者证书的操作定义。
 
-  - **install.config.3ip.sample：** 部署基础不含bcs时使用。
+- **upgrade.rc：** 各模块的升级操作封装。
 
-  - **install.config.bcs.sample：** 完整的基础平台+bcs方案分布。
+- **utils.fc：** 安装、初始化主要函数都在这里先找。
 
-  - **install.config.bcs.single.sample：** 单机部署bcs模块分布示例。
+- **RELEASE.md：** 版本日志。
 
-  - **install.config.new.sample：** 部署 bcs 时使用。
+- **VERSION：** 版本号。
 
 ## 完成安装或日常升级后生成的文件
 

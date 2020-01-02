@@ -51,14 +51,15 @@ grep -nE port /data/bkce/bkdata/databus/conf/tsdb.cluster.properties
 	```
 
 5. 若上述 1，2，3，4 均 OK，采用如下方法重新进行初始化数据
+
 	```bash
-	# 在bkdata机器：
+	# 在 bkdata 机器：
 	rm -rf /data/bkce/.dataapi_snaphost /data/bkce/.init_bkdata_snapshot
 
-	# 在中控机停掉bkdata
+	# 在中控机停掉 bkdata
 	./bkcec stop bkdata
 
-	# 在中控机重新初始化bkdata，此处正常会等很久，出现很多add xxx connector的输出，若出现的话，等它全部正常结束
+	# 在中控机重新初始化 bkdata，此处正常会等很久，出现很多 add xxx connector的输出，若出现的话，等它全部正常结束
 	./bkcec initdata bkdata
 	[10.X.X.X]20180821-095319 120   migrate bkdata(dataapi) done
 	[10.X.X.X]20180821-095320 78   starting bkdata(ALL) on host: 10.X.X.X
@@ -74,7 +75,7 @@ grep -nE port /data/bkce/bkdata/databus/conf/tsdb.cluster.properties
 	add tsdb connector of 2_mysql_performance
 	add tsdb connector of 2_mysql_rep
 
-	# 等待上述完成，再启动bkdata
+	# 等待上述完成，再启动 bkdata
 	./bkcec start bkdata
 	```
 
@@ -142,4 +143,4 @@ grep -nE port /data/bkce/bkdata/databus/conf/tsdb.cluster.properties
 - RabbitMQ 密码错误，celery 启动失败
 - kafka broker 启动失败，或者节点缺失
 - cmdb 未启动，初始化 dataapi 失败
-- agent机器时间需要和蓝鲸server机器时间同步
+- agent 机器时间需要和蓝鲸server机器时间同步

@@ -2,18 +2,17 @@
 
 基于 `蓝鲸开发框架 2.0` 上输出 `Hello,World!`
 
-> 开发语言：`Python 3.7.3`
+> 开发语言：`Python 3.6.X`
 >
 > 操作系统：`macOS`
 
-
 ### 环境准备
 
-安装 Python 3.7.3、准备数据库、创建应用和准备代码仓库地址、虚拟环境（可选）
+安装 Python 3.6.X、准备数据库、创建应用和准备代码仓库地址、虚拟环境（可选）
 
-#### 安装 Python 3.7.3
+#### 安装 Python 3.6.X
 
-下载并安装 [Python 3.7.3](https://www.python.org/downloads/release/python-373/)
+下载并安装 [Python 3.6.X](https://www.python.org/downloads/)
 
 #### 部署 MySQL
 
@@ -69,7 +68,6 @@ pipenv install
 pipenv shell
 ```
 
-
 ### 初始化开发框架
 
 #### 下载开发框架
@@ -87,7 +85,6 @@ pipenv shell
 ```bash
 pip3 install -r requirements.txt
 ```
-
 
 #### 修改配置
 
@@ -108,7 +105,6 @@ CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
 > 如果{APP_CODE}中包含连接符(-)，需要使用反引号( ` )转译，否则会报错
 
 > `ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-blueking' at line 1`
-
 
 并修改 `config/dev.py` 中 `DATABASES` 配置项
 
@@ -138,7 +134,7 @@ python manage.py runserver appdev.{PAAS_URL}:8000
 
 ### Hello,World
 
-- 修改 `视图` home_application/views.py
+- 修改视图 home_application/views.py
 
 ```python
 from django.http import HttpResponse
@@ -146,11 +142,12 @@ def hello(request):
     return HttpResponse('Hello World!')
 ```
 
-- 添加 `路由` home_application/urls.py
+- 添加路由 home_application/urls.py
 
 ```python
 url(r'^$', views.hello),
 ```
 
 - 重新 `runserver` ,或在 `Visio Studio Code` 中保存会自动重新运行
+
 ![-w964](./media/15585122671345.jpg)

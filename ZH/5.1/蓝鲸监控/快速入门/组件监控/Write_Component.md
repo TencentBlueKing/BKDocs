@@ -10,7 +10,7 @@
 
 **蓝鲸监控通过 job 部署 prometheus 社区的 exporter，对目标组件进行性能数据采集。接着 bkmetricbeat 从 exporter 上周期拉取性能数据并通过数据通道上报。**
 
-##自定义组件采集导入流程
+## 自定义组件采集导入流程
 
 **蓝鲸监控当前支持使用 go 编写 exporter。**
 

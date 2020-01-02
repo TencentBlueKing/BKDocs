@@ -3,6 +3,7 @@
 ## 环境准备
 
 1. 下载 [网络管理平台](https://bk.tencent.com/download_sdk/) :
+
   - 解压后目录结构如下：
 
     ```bash
@@ -39,7 +40,7 @@
 
 4. 根据实际情况修改中控机 `/data/install/third/globals_bknetwork.env` 网络管理域名等信息。
 
-### 安装部署
+## 安装部署
 
   ```bash
   # 假设现 install 目录在 /data/ 下。

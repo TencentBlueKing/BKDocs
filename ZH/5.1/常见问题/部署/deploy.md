@@ -176,6 +176,7 @@ ls /data/bkce/etc/consul.d/bkdata.json
 同步配置信息
 
 2、**NameError: global name 'loggin' is not defined**
+
 ```bash
 ./bkcec sync common
 ```
@@ -188,6 +189,6 @@ ls /data/bkce/etc/consul.d/bkdata.json
 ./bkcec stop paas
 ./bkcec upgrade paas
 ./bkcec start paas
-再次执行部署saas
+再次执行部署 saas
 ./bkcec install saas-o
 ```

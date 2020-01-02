@@ -3,11 +3,11 @@
 ## 变更域名
 
 - 修改 globale.env 中的域名配置信息。
-- 修改 每台机器上的/etc/hosts 匹配上新的域名
+- 修改 每台机器上的 /etc/hosts 匹配上新的域名
 - 修改完成后按如下命令顺序执行：
 
 ```bash
-# V4.0版本及以前的需要执行，V4.1以后的无需执行
+# V4.0 版本及以前的需要执行，V4.1 以后的无需执行
 ./bkcec clean cron
 
 ./bkcec sync common
@@ -15,7 +15,7 @@ echo fta bkdata job cmdb paas nginx | xargs -n 1 ./bkcec stop
 echo fta bkdata job cmdb paas nginx | xargs -n 1 ./bkcec render
 echo nginx paas cmdb job bkdata fta | xargs -n 1 ./bkcec start
 
-# V4.0版本及以前的需要执行，V4.1以后的无需执行
+# V4.0 版本及以前的需要执行，V4.1 以后的无需执行
 ./bkcec install cron
 ```
 
@@ -23,7 +23,7 @@ echo nginx paas cmdb job bkdata fta | xargs -n 1 ./bkcec start
 
 ##  装蓝鲸后主机名被自动修改了可以改回去吗
 
-主机名可以改回去，但是要注意/etc/hosts 里自动添加的 rbtnode1 的映射不能去掉，rabbitmq 组件依赖它解析 NODENAME
+主机名可以改回去，但是要注意 /etc/hosts 里自动添加的 rbtnode1 的映射不能去掉，rabbitmq 组件依赖它解析 NODENAME
 
 ## root 邮箱每分钟都收到 mail 告警
 

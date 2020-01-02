@@ -44,15 +44,14 @@ export BCS_MONITOR_IFACE="eth0"
 >
 > 1. 登陆 install.config 中的 bcs(monitor) 模块所在的机器，查看该机器实际网卡名称并替换 BCS_MONITOR_IFACE 该变量的值。
 
-
 ## 修改 install/bcs/globals.env 配置
 
 ```bash
 # 根据业务需求设置访问域名
-
 export HARBOR_SERVER_FQDN=hub.$BK_DOMAIN
 export DEVOPS_NAVIGATOR_FQDN=devops.$BK_DOMAIN
 ```
+
 ## 配置免密
 
 ```bash

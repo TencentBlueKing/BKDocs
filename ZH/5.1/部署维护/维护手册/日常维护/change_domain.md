@@ -16,4 +16,4 @@ echo nginx paas cmdb job bkdata fta | xargs -n 1 ./bkcec start
 
 ```
 
-如果有安装 SaaS ，到 **开发者中心-Smart 应用-已上线** 的 SaaS 操作栏里的【部署 】按钮，重新【一键部署】 SaaS。
+如果有安装 SaaS ，到 **开发者中心**->**Smart 应用**->**已上线** 的 SaaS 操作栏里的【部署 】按钮，重新【一键部署】 SaaS。

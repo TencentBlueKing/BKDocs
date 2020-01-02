@@ -25,6 +25,7 @@
 ### SYSTEM_DOC_CATEGORY
 
 文档分类
+
 ```python
 SYSTEM_DOC_CATEGORY = [
     {
@@ -41,6 +42,7 @@ SYSTEM_DOC_CATEGORY = [
 ### SYSTEMS
 
 系统
+
 ```python
 SYSTEMS = [
     {
@@ -63,6 +65,7 @@ SYSTEMS = [
 ### CHANNELS
 
 组件通道
+
 ```python
 CHANNELS = [
     # 通道名称，所属系统，API类型通过组件模块自动获取
@@ -78,6 +81,7 @@ CHANNELS = [
 ### BUFFET_COMPONENTS
 
 自助接入 API
+
 ```python
 BUFFET_COMPONENTS = [
     {
@@ -113,6 +117,7 @@ BUFFET_COMPONENTS = [
 ```
 
 ## 同步配置到数据库
+
 ```bash
 workon esb
 # 默认情况，当部分配置与数据库中数据不一致时，显示差别信息；

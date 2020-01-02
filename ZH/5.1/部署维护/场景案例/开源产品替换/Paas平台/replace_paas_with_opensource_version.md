@@ -62,7 +62,7 @@
   ./bkcec activate appt
   ```
 
-## 蓝鲸官方 SaaS 应用组件的维护
+## 蓝鲸官方SaaS应用组件的维护
 
 1.以标准运维 `bk_sops` 为例进行说明
 
@@ -72,9 +72,9 @@
 
 - 打开 `$INSTALL_PATH/paas/esb/components/confapis/sops/sops.yaml`，将每个组件配置中 `dest_path` 替换为新应用 `bk-sops-ce` 提供的 API 地址比如，将 `dest_path` 改为 `/o/bk-sops-ce/apigw/get_template_list/{bk_biz_id}/`
 
-- 更新配置参考：API 网关服务常用指令/更新配置
+- 更新配置参考：[API 网关服务常用指令/更新配置](5.1/开发指南/扩展开发/API网关/chapter1.md#组件配置中添加系统信息)
 
-- 重启服务参考：API 网关服务常用指令/重启 API 网关服务
+- 重启服务参考：[API 网关服务常用指令/重启 API 网关服务](5.1/开发指南/扩展开发/API网关/chapter1.md#重启服务)
 
 **（2）场景二：**
 
@@ -96,9 +96,9 @@
 
 - 在 API 网关管理端->系统管理中，添加一个新的系统，系统名称为：`BK_SOPS_CE`（同步骤 1  中的 `SYSTEM_NAME`）
 
-- 更新配置参考：API 网关服务常用指令/更新配置
+- 更新配置参考：[API 网关服务常用指令/更新配置](5.1/开发指南/扩展开发/API网关/chapter1.md#组件配置中添加系统信息)
 
-- 重启服务参考：API 网关服务常用指令/重启 API 网关服务
+- 重启服务参考：[API 网关服务常用指令/重启 API 网关服务](5.1/开发指南/扩展开发/API网关/chapter1.md#重启服务)
 
 - 新组件访问路径
   `/api/c/compapi/ + {path}（bk_sops_ce/bk_sops_ce.yaml 中的配置项 path）`

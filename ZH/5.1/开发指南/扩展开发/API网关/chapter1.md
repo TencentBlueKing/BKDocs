@@ -33,6 +33,7 @@ components/generic/apis/
 |   |   |-- tools.py
 |   |-- get_host_list.py
 ```
+
 - hcp 为系统包，包名为系统名称小写。
 
 - hcp/toolkit 为系统工具包，存储系统配置及共用方法。
@@ -50,7 +51,6 @@ components/generic/apis/
 ```python
 # -*- coding: utf-8 -*-
 from esb.utils import SmartHost
-
 
 # 系统名的小写形式要与系统包名保持一致
 SYSTEM_NAME = 'HCP'
@@ -77,9 +77,7 @@ from .toolkit import configs
 
 class GetHostList(Component):
     """
-
     """
-
     # 组件所属系统的系统名
     sys_name = configs.SYSTEM_NAME
 
@@ -119,7 +117,6 @@ class GetHostList(Component):
                 'result': False,
                 'message': result['message']
             }
-
         # 设置组件返回结果，payload为组件实际返回结果
         self.response.payload = result
 ```
@@ -152,7 +149,7 @@ python manage.py sync_api_docs
 组件添加完成后，重启服务，重启步骤如下:
 
 ```bash
-# proj_etc_dir 表示项目配置文件路径，比如：/data/bkee/etc
+# proj_etc_dir 表示项目配置文件路径，比如：/data/bkce/etc
 # 重启指令
 workon open_paas
 supervisorctl -c $proj_etc_dir/supervisor-open_paas.conf restart esb
@@ -205,9 +202,9 @@ outgoing.http_client.post # 表示 request('POST', *args, **kwargs)
 
 ### common.forms 模块中自定义 Field
 
-- ListField: 列表Field，可将逗号，分号、换行、空格分隔的字符串，转换为列表，如可将"123;456;789"转换为["123", "456", "789"]
+- ListField: 列表 Field，可将逗号，分号、换行、空格分隔的字符串，转换为列表，如可将"123;456;789"转换为["123", "456", "789"]
 
-- TypeCheckField: 类型检测Field, 通过设置 promise_type 参数，检测数据的类型，若参数类型不符，抛出异常
+- TypeCheckField: 类型检测 Field, 通过设置 promise_type 参数，检测数据的类型，若参数类型不符，抛出异常
 
 - DefaultBooleanField: 默认布尔 Field，布尔数据可通过 default 参数设置默认值
 

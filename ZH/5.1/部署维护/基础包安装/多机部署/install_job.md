@@ -18,29 +18,29 @@ RabbitMQ 除了 JOB 使用，在蓝鲸社区版中，用到了 Celery 组件的 
 详解：
 
 1. 安装 RabbitMQ-Server
-    - `yum install rabbitmq-server` 安装 RabbitMQ 前需要安装 Erlang，如果配置好 YUM 源，可以自动安装依赖。
+- `yum install rabbitmq-server` 安装 RabbitMQ 前需要安装 Erlang，如果配置好 YUM 源，可以自动安装依赖。
 
-    - 安装 RabbitMQ 后，系统会自动创建 RabbitMQ 用户，蓝鲸社区版里会将 RabbitMQ 默认的目录配置到 $INSTALL_PATH 下，所以需要创建这些目录，并授权：
+- 安装 RabbitMQ 后，系统会自动创建 RabbitMQ 用户，蓝鲸社区版里会将 RabbitMQ 默认的目录配置到 $INSTALL_PATH 下，所以需要创建这些目录，并授权：
 
-    ```bash
-    install -d -o rabbitmq -g rabbitmq $INSTALL_PATH/etc/rabbitmq
-    install -d -o rabbitmq -g rabbitmq $INSTALL_PATH/public/rabbitmq
-    install -d -o rabbitmq -g rabbitmq $INSTALL_PATH/public/rabbitmq/mnesia
-    install -d -o rabbitmq -g rabbitmq $INSTALL_PATH/logs/rabbitmq
-    ```
+```bash
+install -d -o rabbitmq -g rabbitmq $INSTALL_PATH/etc/rabbitmq
+install -d -o rabbitmq -g rabbitmq $INSTALL_PATH/public/rabbitmq
+install -d -o rabbitmq -g rabbitmq $INSTALL_PATH/public/rabbitmq/mnesia
+install -d -o rabbitmq -g rabbitmq $INSTALL_PATH/logs/rabbitmq
+```
 
-    - 生成 RabbitMQ 的配置
+- 生成 RabbitMQ 的配置
 
-    ```bash
-    render_cfg_templates service "*#rabbitmq#*"
-    echo '[rabbitmq_management，rabbitmq_management_agent].' >$INSTALL_PATH/etc/rabbitmq/enabled_plugins
-    ```
+```bash
+render_cfg_templates service "*#rabbitmq#*"
+echo '[rabbitmq_management，rabbitmq_management_agent].' >$INSTALL_PATH/etc/rabbitmq/enabled_plugins
+```
 
 2. 启动 RabbitMQ
 
-  ```bash
-  systemdctl start rabbitmq-server
-  ```
+```bash
+systemdctl start rabbitmq-server
+```
 
 3. 初始化 RabbitMQ，会添加账户，vhost，设置权限，具体内容，请参考 `initdata_rabbitmq` 函数
 
@@ -58,21 +58,21 @@ RabbitMQ 除了 JOB 使用，在蓝鲸社区版中，用到了 Celery 组件的 
 
 1. 安装作业平台（install_job 函数）
 
-    - 安装 Java 依赖。
+- 安装 Java 依赖
 
-    - 拷贝 JOB 工程代码。
+- 拷贝 JOB 工程代码
 
-    - 添加 hosts。
+- 添加 hosts
 
-    - 渲染配置模板。
+- 渲染配置模板
 
-    - 转换 JOB 和 GSE 通信用的公钥和密钥格式（gen_job_cert）。
+- 转换 JOB 和 GSE 通信用的公钥和密钥格式（gen_job_cert）
 
 2. 启动作业平台
 
-  ```bash
-  $INSTALL_PATH/job/job/bin/job.sh start
-  ```
+```bash
+$INSTALL_PATH/job/job/bin/job.sh start
+```
 
 3. 初始化作业平台，导入 SQL 文件
 

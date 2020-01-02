@@ -18,7 +18,9 @@
 
 到 `PaaS 一级 Nginx 服务器` (PaaS 域名配置的 Nginx 服务器), 新增 `独立域名配置`
 
-以开发框架为例: app_code = `bk_framework`; 由于域名不支持下划线, 配置实例中独立域名使用 `bk-framework.bking.com`
+以开发框架为例: app_code = `bk_framework`; 
+
+由于域名不支持下划线, 配置实例中独立域名使用 `bk-framework.bking.com`
 
 增加 Nginx 配置文件 `bk_framework.conf`, `reload` 生效后, 可以通过 `http://bk-framework.bking.com/` 独立域名访问
 
@@ -60,7 +62,6 @@ server {
     }
 }
 ```
-
 
 ## HTTPS 配置
 

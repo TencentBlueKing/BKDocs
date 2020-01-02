@@ -79,11 +79,11 @@ class OauthBackend(ModelBackend):
 ### 编写登录跳转等登录处理逻辑函数
 
 > 该函数需要处理 5 种情况：
->     1. 企业登录票据不存在
->     2. 登录请求来自注销
->     3. 企业登录票据存在（企业登录成功后回调或票据本身已存在）
->     4. 企业登录票据无效
->     5. 企业登录票据认证成功
+1. 企业登录票据不存在
+2. 登录请求来自注销
+3. 企业登录票据存在（企业登录成功后回调或票据本身已存在）
+4. 企业登录票据无效
+5. 企业登录票据认证成功
 
 #### 登录处理逻辑函数 login 实现逻辑
 
@@ -200,13 +200,16 @@ CUSTOM_AUTHENTICATION_BACKEND = ''
 ```
 
 #### 添加已开发完成的接入企业登录模块 xxxx（包含企业内部统一登录认证票据的类和登录等逻辑处理函数）
+
 将已开发完成的接入企业登录模块 xxxx 添加到 open_paas/login/ee_login 下
 
 #### 修改自定义企业登录配置文件
+
 修改 open_pass/login/ee_login/settings_login.py
 1. 将 LOGIN_TYPE 改为 custom_login
 2. 将 CUSTOM_LOGIN_VIEW 修改为 登录等逻辑处理函数路径，如：ee_login.xxxx.views.login
 3. 将 CUSTOM_AUTHENTICATION_BACKEND 修改为 企业内部统一登录认证票据的类路径，如：ee_login.xxxx.backends.XxxBackend
 
 #### 重启服务
+
 更新或添加 ee_login，重启 open_paas 服务

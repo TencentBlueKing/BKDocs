@@ -36,12 +36,14 @@
    mkdir -p /data/devops_bak
    cp -a /data/src/devops /data/devops_bak  # 备份为开源目录
   ```
+  
 - 替换 `frontend/console` 目录
 
   ```bash
   rm -rf /data/src/devops/navigator/frontend/console/* # 删除原文件
   rsync -a bcs-projmgr/frontend/dist/*  /data/src/devops/navigator/frontend/console/ # 更新开源文件
   ```
+  
 - 替换 `gateway/lua` 目录
 
   ```bash

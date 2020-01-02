@@ -2,11 +2,11 @@
 
 ## CMDB 无快照数据
 
-> 此文档描述 4.0至5.0的社区版的问题排查
+> 此文档描述 4.0 至5.0 的社区版的问题排查
 >
 > Windows 主机暂不支持快照数据
 
-**表象**：配置管理系统的实时状态显示`当前主机没有安装Agent或者Agent已经离线`
+**表象**：配置管理系统的实时状态显示`当前主机没有安装 Agent 或者 Agent 已经离线`
 
 **原因**
 
@@ -21,18 +21,18 @@
 - **检查 cmdb 日志**
 
 ```
-检查/data/bkce/log/cmdb/cmdb_datacollection.INFO文件
-出现ccapi.go93] fail to get configure, will get again，表示不正常
-返回hostsnap.go:xxx] master check : iam still master，表示正常
-检查cmdb_datacollection.ERROR文件，确认是否出现err:fail to connect zookeeper. err：lookup zk.service.consul等
+检查 /data/bkce/log/cmdb/cmdb_datacollection.INFO文件
+出现 ccapi.go93] fail to get configure, will get again，表示不正常
+返回 hostsnap.go:xxx] master check : iam still master，表示正常
+检查 cmdb_datacollection.ERROR文件，确认是否出现err:fail to connect zookeeper. err：lookup zk.service.consul等
 如果日志出现“subcribing channel 2_snapshot”后没有subChan Close，那么表明收数据协程正常工作
-如果上述条都正常，但没有“handle xx num mesg, routines xx”，说明通道里没数据，请到redis里 subscribe ${biz}_snapshot 确认通道是否没数据，参考如下检查redis数据方法
+如果上述条都正常，但没有“handle xx num mesg, routines xx”，说明通道里没数据，请到redis里 subscribe ${biz}_snapshot 确认通道是否没数据，参考如下检查 redis 数据方法
 ```
 
 - **gse agent 采集端排查**
 
 ```bash
-# 检查进程是否存在，basereport进程存在且唯一
+# 检查进程是否存在，basereport 进程存在且唯一
 Linux： ps -ef | grep basereport
 Windows: tasklist | findstr basereport
 
@@ -41,8 +41,8 @@ Linux: cd /usr/local/gse/plugins/bin && ./basereport -c ../etc/basereport.conf
 Windows(cygwin): cd /cygdrive/c/gse/plugins/bin/ && ./basereport -c ../etc/basereport.conf
 Windows(无cygwin) : cd C:/gse/plugins/bin/ && start.bat basereport
 
-# 检查数据上报连接，有正常ESTABLISHED的链接则ok
-# 若存在proxy，登陆proxy机器：检测58625端口同上
+# 检查数据上报连接，有正常 ESTABLISHED 的链接则 ok
+# 若存在 proxy，登陆 proxy 机器：检测58625端口同上
 Linux netstat -antp | grep 58625 | grep ESTABLISHED
 Windows netstat -ano | grep 58625
 ```
@@ -50,7 +50,7 @@ Windows netstat -ano | grep 58625
 - **gse 服务端排查**
 
 ```bash
-# 登陆 GSE后台服务器，检测 gse_data 是否连上9092端口:
+# 登陆 GSE 后台服务器，检测 gse_data 是否连上9092端口:
 Linux: lsof -nP -c dataWorker | grep :9092
 Windows: netstat -ano | grep 9092
 
@@ -63,14 +63,14 @@ ls -l /data/bkce/public/gse/data/${datapid}*
 	- 登陆任意 KAFKA 机器：查看 KAFKA 最新数据，等待 1 分钟查看是否有数据。 如果有数据，在最后一行命令后加上`| grep $ip` $ip 用无快照数据的 ip 替换， 再次查看是否有数据
 
 ```bash
-# 登录到kafka所在的机器上
+# 登录到 kafka 所在的机器上
 $ source /data/install/utils.fc
 /data/bkce/service/zk/bin/zkCli.sh -server zk.service.consul:2181 get /gse/config/etc/dataserver/data/1001
-# 确认存在topic
+# 确认存在 topic
 zkaddr=`cat /data/bkce/service/kafka/config/server.properties | grep common_kafka | cut -d '=' -f 2`
 topic=`bash /data/bkce/service/kafka/bin/kafka-topics.sh --list --zookeeper $zkaddr|grep ^snap`
 
-# 查看topic中的最新数据
+# 查看 topic 中的最新数据
 bash /data/bkce/service/kafka/bin/kafka-console-consumer.sh --zookeeper $zkaddr --topic $topic
 # 每隔一分钟会上报数据，有数据上报侧表示正常
 ```
@@ -78,9 +78,9 @@ bash /data/bkce/service/kafka/bin/kafka-console-consumer.sh --zookeeper $zkaddr 
 - **检查 bkdata**
 
 ```bash
-# 快照数据对应bkdata，databus的redis任务，需确认databus状态下的redis任务是否存在
+# 快照数据对应 bkdata，databus的 redis 任务，需确认 databus 状态下的 redis 任务是否存在
 $ bash /data/bkce/bkdata/dataapi/bin/check_databus_status.sh
-# 检查是否存在如下redis任务
+# 检查是否存在如下 redis 任务
 ===========REDIS===============
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -89,19 +89,19 @@ redis_1001_2_snapshot
 {"name":"redis_1001_2_snapshot","connector":{"state":"RUNNING","worker_id":"x.x.x.x:10053"},"tasks":[{"state":"RUNNING","id":0,"worker_id":"x.x.x.x:10053"}]}
 ==========================
 
-# 若上述任务不存在，可能在初始化bkdata数据时异常，可以采用如下方法重新创建，先确认init_bkdata_snapshot是否存在
+# 若上述任务不存在，可能在初始化 bkdata 数据时异常，可以采用如下方法重新创建，先确认 init_bkdata_snapshot 是否存在
 $ ll /data/bkce/.init_bkdata_snapshot
 $ rm -f /data/bkce/.init_bkdata_snapshot
 $ deactivate
 $ source /data/install/utils.fc
 $ init_bkdata_snapshot
-# 再根据上面的重新确认是否有redis任务
+# 再根据上面的重新确认是否有 redis 任务
 ```
 
 - **检查 redis 通道**
 
 ```bash
-# 此步主要检查redis内是否有快照数据，在redis服务器上
+# 此步主要检查 redis 内是否有快照数据，在 redis 服务器上
 source /data/install/utils.fc
 $ redis-cli -h $REDIS_IP -p $REDIS_PORT -a $REDIS_PASS
 10.X.X.X:6379> AUTH "REDIS密码"

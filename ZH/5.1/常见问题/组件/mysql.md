@@ -9,10 +9,10 @@
 ```bash
 ./bkcec stop mysql
 
-# 确认mysql真正停掉
+# 确认 mysql 真正停掉
 ./bkcec status mysql
 
-# 在mysql机器确认
+# 在 mysql 机器确认
 ps -ef | grep mysql | grep -v grep
 ```
 
@@ -38,7 +38,8 @@ echo bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec stop
 echo bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec status
 ```
 
-社区版5.1+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS,iam
+社区版 5.1+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS, iam
+
 ```bash
 # 关闭平台服务
 echo iam bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec stop
@@ -56,7 +57,7 @@ ls /data/bkce/paas_agent/apps/projects | awk '{print $1}' | sed 's/.$//' | xargs
 # 若为多台部署，请在中控机/data/install目录下使用如下指令
 rcmd root@$APPO_IP "ls /data/bkce/paas_agent/apps/projects" | xargs -n 1 ./bkcec stop saas-o
 
-# 不论单机还是多台部署，建议在appo的服务器上确认应用的进程真正停掉，若存在未停掉进程，可以采用强杀方法
+# 不论单机还是多台部署，建议在 appo 的服务器上确认应用的进程真正停掉，若存在未停掉进程，可以采用强杀方法
 ps -ef|grep bk_
 for x in `ls /data/bkce/paas_agent/apps/projects | awk '{print $1}' | sed 's/.$//'` ; do ps -ef | grep $x | grep -v grep | awk '{print $2}' | xargs -n 1 kill -9 ; done
 ```
@@ -68,7 +69,7 @@ for x in `ls /data/bkce/paas_agent/apps/projects | awk '{print $1}' | sed 's/.$/
 ```bash
 echo mysql paas job bkdata  | xargs -n 1 ./bkcec render
 ```
-社区版5.1+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS,iam
+社区版 5.1+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS, iam
 
 ```bash
 echo mysql paas job bkdata iam  | xargs -n 1 ./bkcec render
@@ -90,7 +91,7 @@ echo mysql paas job bkdata iam  | xargs -n 1 ./bkcec render
 ### 更改 saas-o 应用的密码
 
 ```bash
-# 在appo服务器上，先测试一下，确认打印出来的是新密码，注意有*的话，注意转义
+# 在 appo 服务器上，先测试一下，确认打印出来的是新密码，注意有*的话，注意转义
 find /data/bkce/paas_agent/apps/projects/bk_*/conf -name "*.conf" | grep "bk" | xargs grep "老密码" -l | xargs sed "s/老密码/新密码/g"
 
 # 测试没问题，加-i，修改文件
@@ -120,7 +121,7 @@ find /data/bkce/paas_agent/apps/projects/bk_*/conf -name "*.conf" | grep "bk" | 
 ```bash
 echo paas gse cmdb kafka job bkdata | xargs -n 1 ./bkcec start
 ```
-社区版5.1+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS,iam
+社区版 5.1+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS, iam
 
 ```bash
 echo paas gse cmdb kafka job bkdata iam | xargs -n 1 ./bkcec start
@@ -151,7 +152,7 @@ rcmd root@$APPO_IP "ls /data/bkce/paas_agent/apps/projects" | xargs -n 1 ./bkcec
 确保 CMDB，JOB，蓝鲸监控等模块功能全部 OK
 
 ```bash
-# 1.确认bkdata任务
+# 1.确认 bkdata 任务
 $ /data/bkce/bkdata/dataapi/bin/check_databus_status.sh
 ===========TSDB===============
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -174,13 +175,13 @@ jdbc_2_ja_gse_proc_port
 etl_1001_2_system_cpu_summary
 {"name":"etl_1001_2_system_cpu_summary","connector":{"state":"RUNNING","worker_id":"10.X.X.X:10052"},"tasks":[{"state":"RUNNING","id":0,"worker_id":"10.X.X.X:10052"}]}
 
-# 2.确认kafka节点数量
+# 2.确认 kafka 节点数量
 $ /data/bkce/service/zk/bin/zkCli.sh -server zk.service.consul:2181 ls /common_kafka/brokers/ids
 ......
 WatchedEvent state:SyncConnected type:None path:null
 [1, 2, 3]
 
-# 此步主要检查redis内是否有快照数据，在redis服务器上
+# 此步主要检查 redis 内是否有快照数据，在 redis 服务器上
 source /data/install/utils.fc
 $ redis-cli -h $REDIS_IP -p $REDIS_PORT -a $REDIS_PASS
 10.X.X.X:6379> AUTH "REDIS密码"

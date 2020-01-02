@@ -4,7 +4,7 @@
 
 1. 下载相关镜像文件。相关镜像下载链接请看文章末尾。
 
-  - Centos7.x.iso
+    - Centos7.x.iso
 
 2. 挂载到每台机器上：
 
@@ -89,6 +89,6 @@ src\paas_agent\support-files\pkgs
 
   - [CentOS7.3.1611_minimal_x86_64](http://bkopen-1252002024.file.myqcloud.com/dl/bk_offline_repo-7.3.1611.iso)
 
-  - [CentOS7.4.1708_minimal_x86_64](http://bkopen-1252002024.file.myqcloud.com/dl/bk_offline_repo-7.4.1708.iso	)
+  - [CentOS7.4.1708_minimal_x86_64](http://bkopen-1252002024.file.myqcloud.com/dl/bk_offline_repo-7.4.1708.iso)
 
   - [CentOS7.5.1804_minimal_x86_64](http://bkopen-1252002024.file.myqcloud.com/dl/bk_offline_repo-7.5.1804.iso)

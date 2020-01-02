@@ -24,7 +24,7 @@ root     28676  0.0  0.4 534188 37572 ?        S    Jul27   0:00  \_ /data/bkce/
 ```bash
 # 可选
 [root@paas-1 /root]# /data/bkce/.envs/open_paas/bin/python /data/bkce/.envs/open_paas/bin/supervisorctl -c /data/bkce/etc/supervisor-open_paas.conf shutdown
-# 可尝试删掉supervisor.sock文件，再重新创建，但需注意赋权，设置为srwx------
+# 可尝试删掉 supervisor.sock 文件，再重新创建，但需注意赋权，设置为 srwx------
 [root@paas-1 /data/bkce/logs/open_paas]# chown o+s supervisor.sock
 # 可选
 [root@paas-1 /root]# /data/bkce/.envs/open_paas/bin/python /data/bkce/.envs/open_paas/bin/supervisord -c /data/bkce/etc/supervisor-open_paas.conf

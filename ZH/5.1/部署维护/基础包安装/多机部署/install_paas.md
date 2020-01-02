@@ -119,11 +119,11 @@ Nginx 通过 yum 命令从 EPEL 源里安装。
 
 最后安装 PaaS 模块。
 
- ```bash
- ./bkcec install paas
- ./bkcec initdata paas
- ./bkcec start paas
- ```
+```bash
+./bkcec install paas
+./bkcec initdata paas
+./bkcec start paas
+```
 
 详解：
 

@@ -1,14 +1,14 @@
 # PaaS 重置访问密码
 
 ```bash
-# admin密码修改错误后，无法登陆。如何后台重置密码？
+# admin 密码修改错误后，无法登陆。如何后台重置密码？
 source /data/install/utils.fc
 
 ssh $PAAS_IP
 workon login
 export BK_ENV='production'
 python manage.py shell
-# 看到python终端后输入, 密码'xxxxxx'改为自己要重置的内容
+# 看到 Python 终端后输入, 密码'xxxxxx'改为自己要重置的内容
 from bkaccount.models import BkUser
 password = 'xxxxx'
 all_user = BkUser.objects.filter(username='admin')
@@ -33,7 +33,7 @@ unset BK_ENV
 - `http://{PAAS_DOMAIN}/t/bk_framework/`访问报 502 错误，确认实际访问路径
 
 ```bash
-# 在paas.conf查到对应访问请求路径
+# 在 paas.conf 查到对应访问请求路径
     location ~ ^/t/ {
         proxy_pass http://PAAS_AGENT_TEST;
 
@@ -53,17 +53,17 @@ curl: (7) Failed connect to 10.x.x.x:8010; 拒绝连接
 - 在 appt 上进行确认
 
 ```bash
-# 8010未监听起来
+# 8010 未监听起来
 [root@rbtnode2 /data/bkee/etc/nginx]# netstat -lnpt|grep 8010
 [root@rbtnode2 /data/bkee/etc/nginx]#
 
-# 确认nginx的路径
+# 确认 nginx 的路径
 [root@rbtnode2 /data/bkee/etc/nginx]# ps -ef|grep nginx
 root     17847 26444  0 12:12 pts/1    00:00:00 grep --color=auto nginx
 root     20934     1  0 Jul18 ?        00:00:00 nginx: master process nginx
 [root@rbtnode2 /data/bkee/etc/nginx]# ll /proc/20934/|grep exe
 
-# 重新reloadnginx，8010起来
+# 重新 reloadnginx，8010起来
 [root@rbtnode2 /data/bkee/etc/nginx]# /usr/sbin/nginx -s reload
 [root@rbtnode2 /data/bkee/etc/nginx]# netstat -lnpt|grep 8010
 tcp        0      0 0.0.0.0:8010            0.0.0.0:*               LISTEN      20934/nginx: master

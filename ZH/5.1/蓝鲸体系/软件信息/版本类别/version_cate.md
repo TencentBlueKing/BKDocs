@@ -16,6 +16,6 @@
 | 合作商软件包 | 插件包是由腾讯蓝鲸合作伙伴提供的运维解决方案场景类的产品，如 Wman、OSKit、网络管理、CICDKit 等，该类产品可在已有基础包的前提下，以 “插件” 的方式，面向用户提供更多功能场景。由于开发者 / 技术服务提供方均非腾讯蓝鲸团队，涉及到合作、销售、推广等事宜需要与软件提供方商榷。|
 
 
-- 社区版中的部分产品已开源（如：[配置平台](https://github.com/Tencent/bk-cmdb)、[PaaS 平台](https://github.com/Tencent/bk-PaaS)、[标准运维](https://github.com/Tencent/bk-sops)，其 GitHub 项目的 release 包与社区版最新的版本包保持一致，使用过程中，请遵循《蓝鲸智云软件用户服务协议》和开源项目协议。
+- 社区版中的部分产品已开源（如：[配置平台](https://github.com/Tencent/bk-cmdb)、[PaaS 平台](https://github.com/Tencent/bk-PaaS)、[标准运维](https://github.com/Tencent/bk-sops)等)，其 GitHub 项目的 release 包与社区版最新的版本包保持一致，使用过程中，请遵循《蓝鲸智云软件用户服务协议》和开源项目协议。
 
 - [蓝鲸企业版在线体验申请信息](http://bk.tencent.com/applyinfo/ee/) |   蓝鲸智云团队面向企业出售技术解决方案，将由腾讯蓝鲸的技术合作伙伴提供专属的企业服务。请填写在线体验申请信息，工作人员将在 3-5 个工作日内与您取得联系。

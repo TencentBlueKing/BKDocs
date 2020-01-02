@@ -41,7 +41,7 @@
 
 ### 安装 Agent
 
-参照 [管理直连网络区域的主机](5.1/bk_solutions/CD/Automation/Hybrid_cloud_management.md)，完成 Agent 安装。
+参照 [管理直连网络区域的主机](5.1/bk_solutions/CD/Automation/Hybrid_cloud_management.md#管理直连网络区域的主机)，完成 Agent 安装。
 
 ### 执行脚本和分发文件
 

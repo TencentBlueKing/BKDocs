@@ -12,7 +12,7 @@ job 启动失败常见原因：
 	- 确定 IP/密码/用户名是否存在及正确
 - consul 是否路由正确
 - 端口问题`/data/bkce/etc/job.conf`配置项内的端口是否有冲突
-- 环境问题导致没有日志，打开`/data/bkce/job/job/bin/jo.sh`的`NOHUPLOG=job_jvm_console.log`配置，再重启确认 job 的日志目录下的日志文件 job_jvm_console.log 进行确认
+- 环境问题导致没有日志，打开`/data/bkce/job/job/bin/jo.sh`的`NOHUPLOG=job_jvm_console.log`配置，再重启确认 JOB 的日志目录下的日志文件 job_jvm_console.log 进行确认
 - 确认 License 合法及可以连接
 
 ## JOB 作业一直等待执行
@@ -31,7 +31,9 @@ job 启动失败常见原因：
 
 ## JOB 无执行日志
 
-在排除用户的脚本本身就不输出日志的正常情况，JOB 出现无日志的情况有很多种，第一种是 Job 本身问题，与 GSE 无关，当 error.log 出现 Table has no partition for value xxxx  这种错，就是 Job 本身的问题，原因：
+在排除用户的脚本本身就不输出日志的正常情况，JOB 出现无日志的情况有很多种，
+
+第一种是 JOB 本身问题，与 GSE 无关，当 error.log 出现 Table has no partition for value xxxx  这种错，就是 JOB 本身的问题，原因：
 
 JOB 对日志数据库表进行表分区， 并且要求 MYSQL 中启动事件调度功能，JOB 默认会在版本升级时自动启用这个功能，在 JOB 的版本 1.2.49 之前，蓝鲸出厂默认的 MySQL 配置中没有开启这个功能，所以在 MySQL 被重启后，这个事件功能被关闭，随着时间流转，分区不够用了，会出现这个错误 。
 
@@ -39,9 +41,9 @@ JOB 对日志数据库表进行表分区， 并且要求 MYSQL 中启动事件�
 
 1.不想升级蓝鲸版本
 
-•在 Mysql 配置文件 my.cnf 中的[mysqld]部分添加以下内容 event_scheduler=ON   并重启 MySQL
+•在 MySQL 配置文件 my.cnf 中的[mysqld]部分添加以下内容 event_scheduler=ON 并重启 MySQL
 
-•请联系蓝鲸人员提供一个 Job 的临时启用 event 的 SQL
+•请联系蓝鲸人员提供一个 JOB 的临时启用 event 的 SQL
 
 2.升级蓝鲸到最新版本。
 
@@ -56,20 +58,20 @@ JOB 对日志数据库表进行表分区， 并且要求 MYSQL 中启动事件�
 
 出现此问题可能两种原因：
 
-- 用户业务脚本问题：执行过于耗时的脚本，并且超过了设置的脚本超时时间，一般默认是 1000 秒，在此时间基础上多 1-10%以内是正常的。若因为此原因，解决方法：修改耗时脚本或者修改脚本超时时间
-- GSE Agent 的问题：作业最终超时时间是在用户设置的超时时间再+20%，若用户设置了 1000 秒超时，但脚本最终在 1200 秒以上出现超时，则表示这个任务是因为 Agent 原因导致长时间无响应，最终 JOB 容错了 20%的时间（1000+200 秒）而强行触发终止。解决方法：重启 GSE Agent 再重试
+- 用户业务脚本问题：执行过于耗时的脚本，并且超过了设置的脚本超时时间，一般默认是 1000 秒，在此时间基础上多 1-10% 以内是正常的。若因为此原因，解决方法：修改耗时脚本或者修改脚本超时时间
+- GSE Agent 的问题：作业最终超时时间是在用户设置的超时时间再 +20%，若用户设置了 1000 秒超时，但脚本最终在 1200 秒以上出现超时，则表示这个任务是因为 Agent 原因导致长时间无响应，最终 JOB 容错了 20% 的时间（1000+200 秒）而强行触发终止。解决方法：重启 GSE Agent 再重试
 
 ## JOB 连接 GSE 失败
 
-这种报错，说明 job 连接 gse_task 异常 可能的原因如下：
+这种报错，说明 JOB 连接 gse_task 异常 可能的原因如下：
 
-- gse_task 进程异常，48669 端口（task 提供给 job 通信的端口）未监听
-- job 配置文件`etc/job.conf`里配置的 gse.taskserver.ip 的值无法连通
+- gse_task 进程异常，48669 端口（task 提供给 JOB 通信的端口）未监听
+- JOB 配置文件`etc/job.conf`里配置的 gse.taskserver.ip 的值无法连通
 - 证书问题，会爆出 ssl 字样的错误信息
 
 ## JOB 无法发现 Agent
 
-这类报错说明 job 连接 task 是正常，但是 agent 状态异常
+这类报错说明 JOB 连接 task 是正常，但是 agent 状态异常
 
 - agent 安装问题，失败，进程未正常启动
 - agent 到 gse_task 的 48533 端口未建立 tcp 连接
@@ -85,13 +87,13 @@ JOB 对日志数据库表进行表分区， 并且要求 MYSQL 中启动事件�
 
     1.gse 或者 redis 进程状态异常。
     
-     gse或者redis 异常查看相应日志文件。/data/bkce/logs/gse/、/data/bkce/logs/redis。
+     gse 或者 redis 异常查看相应日志文件。/data/bkce/logs/gse/、/data/bkce/logs/redis。
        
     2.登陆至 gse server 模块所在机器上，`ps -ef |grep gse_agent` 确认该机器上成对出现 gse_agent 进程。如无，执行 `/usr/local/gse/agent/bin/gsectl start` 手动拉起 gse_agent。
 
     3.gse 和 redis 需要同在一台机器上部署。
     
-    4.蓝鲸server端agent需确保正常
+    4.蓝鲸 server 端 agent 需确保正常
       `ps -ef |grep gse_agent` 进程成对出现（gse所在机器）
      ```bash
      root     19467     1  0 Nov04 ?        00:00:00 ./gse_agent -f /usr/local/gse/agent/etc/agent.conf

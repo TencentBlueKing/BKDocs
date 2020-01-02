@@ -1,7 +1,8 @@
 # 标准运维插件开发
 
-标准运维插件是标准运维任务执行的最小单元，对应于内部某项服务（如定时）或者第三方系统 API 的调用（如 JOB-快速执行脚本），通过将 API 参数前端表单
-化，加上参数校验、逻辑封装等功能，以图形化的方式提供给用户使用。
+标准运维插件是标准运维任务执行的最小单元，对应于内部某项服务（如定时）或者第三方系统 API 的调用（如 JOB-快速执行脚本），
+
+通过将 API 参数前端表单化，加上参数校验、逻辑封装等功能，以图形化的方式提供给用户使用。
 
 标准插件功能主要包括输入、执行、输出三部分。
 ![](./media/001.png)
@@ -12,8 +13,14 @@
 ## 标准插件开发步骤
 
 ### 初始化插件模块
-在项目根目录下执行 `python manage.py create_atoms_app {CUSTOM PLUGINS NAME}`，其中 `{CUSTOM PLUGINS NAME}` 为你定制开发的标准插件
-集合包名，注意不要和项目中已有的模块和插件集合名字重复，名字最好能体现插件包的作用。执行命令后会生成如下目录结构：
+
+在项目根目录下执行 `python manage.py create_atoms_app {CUSTOM PLUGINS NAME}`，
+
+其中 `{CUSTOM PLUGINS NAME}` 为你定制开发的标准插件集合包名，
+
+注意不要和项目中已有的模块和插件集合名字重复，名字最好能体现插件包的作用。
+
+执行命令后会生成如下目录结构：
 
 ```bash
 {CUSTOM PLUGINS NAME}
@@ -38,14 +45,19 @@
             └── plugins_test
                 └── __init__.py
 ```
-其中，components 放置标准插件集合后台代码文件，static 放置标准插件集合前端静态代码文件，`plugin.py` 和 `plugin.js` 可以改为你开发的标准
-插件对应的系统名简称，如 job、cmdb 等。
+
+其中，components 放置标准插件集合后台代码文件，static 放置标准插件集合前端静态代码文件，
+
+`plugin.py` 和 `plugin.js` 可以改为你开发的标准插件对应的系统名简称，如 job、cmdb 等。
 
 ### 修改项目 settings 配置
+
 打开 `config/default.py` 文件，找到 INSTALLED_APPS 变量，加入步骤1中创建的 `{CUSTOM PLUGINS NAME}`。
 
 ### 加入新的 API 网关
+
 如果你开发的标准插件依赖自定义接入的 API 网关，那么在你将接口接入蓝鲸 API 网关后，需要手动将 API 添加到 Client SDK 中。
+
 在 `{CUSTOM PLUGINS NAME}/__init__.py` 文件下编写相应的代码即可向 Client 中添加对应的接口：
 
 ```python
@@ -76,15 +88,15 @@ collections.AVAILABLE_COLLECTIONS.update({
 })
 
 ComponentClient.setup_components(collections.AVAILABLE_COLLECTIONS)
-
 ```
 
 上面的例子中为 Client 添加了一个名为 `my_system` 的系统，并且为该系统中添加了 `get_status` 和 `set_status` 两个接口。
 
-
 ### 标准插件后台开发
 
-在 `plugin.py` 文件中编写插件后台逻辑，主要包括标准插件定义和后台执行逻辑，下面是示例代码
+在 `plugin.py` 文件中编写插件后台逻辑，主要包括标准插件定义和后台执行逻辑，
+
+下面是示例代码
 
 ```python
 # -*- coding: utf-8 -*-
@@ -101,7 +113,6 @@ logger = logging.getLogger('celery')
 get_client_by_user = settings.ESB_GET_CLIENT_BY_USER
 
 __group_name__ = _(u"自定义插件(CUSTOM)")
-
 
 class TestCustomService(Service):
     __need_schedule__ = False
@@ -137,7 +148,6 @@ class TestCustomService(Service):
             self.OutputItem(name=_(u'结果数据1'), key='data1', type='string')
         ]
 
-
 class TestCustomComponent(Component):
     name = _(u"自定义插件测试")
     code = 'test_custom'
@@ -167,8 +177,7 @@ execute 函数详解：
 某一个参数；执行完成可以使用 `data.set_outputs` 写入输出参数，异常信息请赋值给 `ex_data`。
 - `parent_data` 是任务的公共参数，包括 executor（执行者），operator（操作员），biz_cc_id（所属业务 ID）等。详细信息请查看
 `gcloud/taskflow3/utils.py`。
-- 返回 `False` 表示执行失败，同步标准插件返回 `True` 表示标准插件执行成功，异步标准插件返回 `True` 会进入休眠，等待第一次异步轮询或者外部
-回调，执行 `schedule` 函数。
+- 返回 `False` 表示执行失败，同步标准插件返回 `True` 表示标准插件执行成功，异步标准插件返回 `True` 会进入休眠，等待第一次异步轮询或者外部回调，执行 `schedule` 函数。
 
 outputs_format 函数详解：
 
@@ -191,7 +200,10 @@ TestCustomComponent 类详解：
 
 ### 标准插件前端开发
 
-在 `plugin.js` 文件中编写前端逻辑，利用标准运维的前端插件框架，只需要配置就能生成前端表单，下面是示例代码
+在 `plugin.js` 文件中编写前端逻辑，利用标准运维的前端插件框架，只需要配置就能生成前端表单，
+
+下面是示例代码
+
 ```js
 (function(){
     $.atoms.test_custom = [
@@ -244,7 +256,6 @@ TestCustomComponent 类详解：
         }
     ]
 })();
-
 ```
 
 通过 $.atoms 注册标准插件前端配置，其中各项含义是：
@@ -263,8 +274,7 @@ TestCustomComponent 类详解：
 
 #### 组件库依赖声明
 
-若你编写的插件需要依赖标准运维运行时不存在的 python 第三方插件，则需要在 `{CUSTOM PLUGINS NAME}/__init__.py` 中
-添加 `__requirements__` 变量并声明所需要的组件及版本号：
+若你编写的插件需要依赖标准运维运行时不存在的 python 第三方插件，则需要在 `{CUSTOM PLUGINS NAME}/__init__.py` 中添加 `__requirements__` 变量并声明所需要的组件及版本号：
 
 ```python
 
@@ -349,15 +359,22 @@ class TestCustomComponent(Component):
 
 ### 标准插件单元测试
 
-在我们完成自定义组件的开发后，我们需要测试组件是否能够按照我们预期的那样运行。最简单的方式就是构造一个包含该节点的流程然后把流程跑起来
-观察其行为和输出是否符合预期。但是这种测试方式十分耗时而且是一次性的，下次若是修改了节点后需要再进行一遍相同的操作。
+在我们完成自定义组件的开发后，我们需要测试组件是否能够按照我们预期的那样运行。
 
-为了解决这个问题，框架内部提供了组件测试单元测试框架，框架会模拟组件在流程中执行的场景，并根据开发者编写的测试用例来执行组件并检测组件
-的行为是否符合预期。借助组件单元测试框架能够节省我们测试组件的时间，并且保证组件实现在发生变化后能够快速确认改动是否影响了组件的功能。
+最简单的方式就是构造一个包含该节点的流程然后把流程跑起来观察其行为和输出是否符合预期。
 
-标准插件的单元测试需要在 `{CUSTOM PLUGINS NAME}/tests` 下根据插件后台定义文件创建子目录路径一致的测试文件并编写测试代码。例如
-针对 `{CUSTOM PLUGINS NAME}/components/collections/plugins.py` 中编写的插件，
+但是这种测试方式十分耗时而且是一次性的，下次若是修改了节点后需要再进行一遍相同的操作。
+
+为了解决这个问题，框架内部提供了组件测试单元测试框架，框架会模拟组件在流程中执行的场景，
+并根据开发者编写的测试用例来执行组件并检测组件的行为是否符合预期。
+
+借助组件单元测试框架能够节省我们测试组件的时间，并且保证组件实现在发生变化后能够快速确认改动是否影响了组件的功能。
+
+标准插件的单元测试需要在 `{CUSTOM PLUGINS NAME}/tests` 下根据插件后台定义文件创建子目录路径一致的测试文件并编写测试代码。
+例如针对 `{CUSTOM PLUGINS NAME}/components/collections/plugins.py` 中编写的插件，
+
 应该在 `{CUSTOM PLUGINS NAME}/tests/components/collections/plugins_test` 目录下为每个插件创建对应的文件并编写单元测试。
+
 另外，测试文件名应该为 `test_{code}.py`，`{code}` 为插件的唯一编码。
 
 单元测试编写指引请参考：[标准插件单元测试编写](https://github.com/Tencent/bk-sops/blob/master/pipeline/docs/user_guide_component_unit_test.md)。
@@ -402,7 +419,6 @@ outputs_format 一致，其中执行结果是系统默认，值是 `True` 或 `F
 - 配置平台(CMDB)-转移主机到业务的故障机模块
 - 配置平台(CMDB)-转移主机至资源池
 - 配置平台(CMDB)-故障机替换
-
 
 ### 作业平台系列
 

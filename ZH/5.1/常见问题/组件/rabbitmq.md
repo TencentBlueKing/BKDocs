@@ -40,7 +40,6 @@ $ [X.X.X.X] api reponse: {"msg": "HTTPConnectionPool(host='X.X.X.X', port=15672)
 
 **表象**：在部署蓝鲸 JOB 过程中需要进行 RabbitMQ 的安装，数据初始化，激活步骤，此问题多发生在此过程
 
-
 ```bash
 [ root@rbtnodel install)# ．/bkcec initdata rabbitmq
 Warning： Permanently added '10.x.x.x' (RSA) to the list Of known hosts.

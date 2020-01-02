@@ -73,11 +73,9 @@ output.gse:
 
 **作用**
 
-
 对采集数据的发送情况进行统计监控，并上报。上报时间间隔是 1 分钟。
 
 **使用方法**
-
 
 使用 gse 作为输出，默认开启该功能，dataid 为 295，也可以在 gse 的配置中指定 monitorid。
 
@@ -100,14 +98,19 @@ output.gse:
 **使用方法**
 
 1. 实现 GetStat 函数
+
   ```
   type GetStat func() beat.MapStr
   ```
+  
 2. 实例化运营数据上报模块
+
   ```
   stat, err := stat.NewCycleStat(beatName, GetStat, beat.Send)
   ```
+  
 3. 开启运营数据上报模块
+
   ```
   stat.Run()
   ```
@@ -123,10 +126,10 @@ output.gse:
 	└─<mybeat>
 		├─examplebeat.yml	采集器的配置文件
 		├─main.go			采集器主体（需实现 Beater 的 Start，Stop，Reload 函数
-		│					，并提供一个创建 Beater 实例的 Creator 工厂函数）
+		│				，并提供一个创建 Beater 实例的 Creator 工厂函数）
 		└─<config>
 			└─config.go		自定义的配置类，后续通过 unpack 方法，
-							将配置文件中对应的配置加载进 Config 实例中
+						将配置文件中对应的配置加载进 Config 实例中
 ```
 
 #### 接口及类的实现
@@ -160,7 +163,7 @@ type Beater interface {
 
 **Creator函数**
 ```go
-//定义
+// 定义
 type Creator func(*Beat, *common.Config) (Beater, error)
 
 /*
@@ -170,7 +173,7 @@ type Creator func(*Beat, *common.Config) (Beater, error)
 ** Creator应解析这个子配置，
 ** 利用子配置中的项初始化Beater
 */
-//引用
+// 引用
 ......
 	// load the beats config section
 	var sub *common.Config
@@ -434,7 +437,7 @@ processors:
 Example：
 
 ```go
-examplebeat:    //必须以采集器的名称命名
+examplebeat:    // 必须以采集器的名称命名
   dataid: 1430
   interval: 1s
 ```

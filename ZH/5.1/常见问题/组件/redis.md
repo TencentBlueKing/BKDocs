@@ -36,10 +36,10 @@ echo bkdata fta gse job cmdb paas | xargs -n 1 ./bkcec stop
 
 此步有 2 种方式，推荐方式 1
 
-方式 1：通过命令修改 zk 内 redis 密码
+- 方式 1 ：通过命令修改 zk 内 redis 密码
 
 ```bash
-# 修改方法，注意把引号内新密码调整为redis的新密码，密码不要包含 [ ] / : @ ? 等特殊字符
+# 修改方法，注意把引号内新密码调整为 redis 的新密码，密码不要包含 [ ] / : @ ? 等特殊字符
 $ /data/bkce/service/zk/bin/zkCli.sh -server zk.service.consul:2181
 Connecting to zk.service.consul:2181
 Welcome to ZooKeeper!
@@ -64,14 +64,14 @@ ephemeralOwner = 0x0
 dataLength = 79
 numChildren = 0
 
-# 此处使用set命令，设置新密码，严格按照上面获取的串，仅修改密码位置
+# 此处使用 set 命令，设置新密码，严格按照上面获取的串，仅修改密码位置
 [zk: zk.service.consul:2181(CONNECTED) 1] set /gse/config/etc/dataserver/storage/all/0_1 [{"host":"redis.service.consul","port":6379,"type":4,"passwd":"新密码"}]
 
 # 可以再查询是否为新的密码，为新的密码表示OK
 [zk: zk.service.consul:2181(CONNECTED) 1] get /gse/config/etc/dataserver/storage/all/0_1
 ```
 
-方式 2：可以通过重新安装 gse 来实现
+- 方式 2 ：可以通过重新安装 gse 来实现
 
 ```bash
 ./bkcec stop gse
