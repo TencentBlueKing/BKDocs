@@ -33,7 +33,7 @@
 
 ## Apache 组件指标说明
 
-![Apache_metrics](../../media/Apache_metrics.gif)
+![Apache_metrics](../../assets/Apache_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -49,7 +49,7 @@
 
 ## Nginx 组件指标说明
 
-![Nginx_metrics](../../media/Nginx_metrics.gif)
+![Nginx_metrics](../../assets/Nginx_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -133,7 +133,7 @@
 
 ## MySQL 组件指标说明
 
-![MySQL_metrics](../../media/MySQL_metrics.gif)
+![MySQL_metrics](../../assets/MySQL_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -181,7 +181,7 @@
 
 ## Redis 组件指标说明
 
-![Redis_metrics](../../media/Redis_metrics.gif)
+![Redis_metrics](../../assets/Redis_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -238,7 +238,7 @@
 
 ## Oracle 组件指标说明
 
-![Oracle_metrics](../../media/Oracle_metrics.gif)
+![Oracle_metrics](../../assets/Oracle_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -291,7 +291,7 @@
 
 ## Weblogic 组件指标说明
 
-![Weblogic_metrics](../../media/Weblogic_metrics.gif)
+![Weblogic_metrics](../../assets/Weblogic_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -326,7 +326,7 @@
 
 ## SQL Server 组件指标说明
 
-![SQLServer_metrics](../../media/SQLServer_metrics.gif)
+![SQLServer_metrics](../../assets/SQLServer_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -372,7 +372,7 @@
 
 ## HAProxy 组件指标说明
 
-![HAProxy_metrics](../../media/HAProxy_metrics.gif)
+![HAProxy_metrics](../../assets/HAProxy_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -392,7 +392,7 @@
 
 ## Zookeeper 组件指标说明
 
-![Zookeeper_metrics](../../media/Zookeeper_metrics.gif)
+![Zookeeper_metrics](../../assets/Zookeeper_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -417,7 +417,7 @@
 
 ## RabbitMQ 组件指标说明
 
-![RabbitMQ_metrics](../../media/RabbitMQ_metrics.gif)
+![RabbitMQ_metrics](../../assets/RabbitMQ_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -434,11 +434,11 @@
 | rabbitmq_fd_used |  | 已用文件句柄数 |
 | rabbitmq_node_mem_used | MB | 内存使用量 |
 | rabbitmq_partitions |  | 此节点可见的网络分区数量 |
-| rabbitmq_running |  | 运行 nodes 数 |  
+| rabbitmq_running |  | 运行 nodes 数 |
 
 ## Memcached 组件指标说明
 
-![Memcached_metrics](../../media/Memcached_metrics.gif)
+![Memcached_metrics](../../assets/Memcached_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -459,7 +459,7 @@
 
 ## Consul 组件指标说明
 
-![Consul_metrics](../../media/Consul_metrics.gif)
+![Consul_metrics](../../assets/Consul_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -483,7 +483,7 @@
 
 ## ElasticSearch 组件指标说明
 
-![Elasticsearch_metrics](../../media/Elasticsearch_metrics.gif)
+![Elasticsearch_metrics](../../assets/Elasticsearch_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -575,7 +575,7 @@
 
 ## Kafka 组件指标说明
 
-![Kafka_metrics](../../media/Kafka_metrics.gif)
+![Kafka_metrics](../../assets/Kafka_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -600,7 +600,7 @@
 
 ## Mongodb 组件指标说明
 
-![Mongodb_metrics](../../media/Mongodb_metrics.gif)
+![Mongodb_metrics](../../assets/Mongodb_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -666,7 +666,7 @@
 
 ## Ceph 组件指标说明
 
-![Ceph_metrics](../../media/Ceph_metrics.gif)
+![Ceph_metrics](../../assets/Ceph_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -693,7 +693,7 @@
 
 ## IIS 组件指标说明
 
-![IIS_metrics](../../media/IIS_metrics.gif)
+![IIS_metrics](../../assets/IIS_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -721,7 +721,7 @@
 
 ## Active_Directory 组件指标说明
 
-![AD_metrics](../../media/AD_metrics.gif)
+![AD_metrics](../../assets/AD_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -758,7 +758,7 @@
 
 ## Exchange 组件指标说明
 
-![Exchange_metrics](../../media/Exchange_metrics.gif)
+![Exchange_metrics](../../assets/Exchange_metrics.gif)
 
 | 指标 | 单位 | 具体含义 |
 | --- | --- | --- |
@@ -780,7 +780,7 @@
 | exchange_database_io_log_writes_persec |  | 显示每个数据库实例每秒写入的日志数量 |
 | exchange_netlogon_semaphore_holders |  | 存放信号的线程数量 |
 | exchange_database_io_db_reads_recovery_avg_latency | ms | 显示每个被动数据库读取操作的平均时间长度 |
-| exchange_database_io_writes_avg_latency | ms | 显示每个数据库写入操作的平均时间长度（毫秒） |  
+| exchange_database_io_writes_avg_latency | ms | 显示每个数据库写入操作的平均时间长度（毫秒） |
 | exchange_is_store_rpc_latency | ms | RPC Latency average (msec) 是每个数据库的 RPC 请求的平均延迟（毫秒） |
 | exchange_is_clienttype_rpc_latency | ms | 显示针对某个特定客户端协议，过去 1,024 个数据包的平均服务器 RPC 延迟（毫秒） |
 | exchange_is_clienttype_rpc_ops_persec | ms | 显示每个客户端类型连接每秒的 RPC 操作数 |

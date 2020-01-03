@@ -2,7 +2,7 @@
 
 蓝鲸监控目前覆盖 （Apache 、 Nginx 、Tomcat 、MySQL） 等开源组件、中间件服务的性能指标监控，具体配置请参照以下接入指引。
 
- ![](../../media/component_acesess_tips.png)
+ ![](../../assets/component_acesess_tips.png)
  <center>图 1. 接入指引</center>
 
 - 组件名称：

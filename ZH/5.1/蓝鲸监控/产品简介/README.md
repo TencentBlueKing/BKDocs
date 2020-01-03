@@ -8,6 +8,6 @@
 
 - 产品特点及优势：
 
-![Advantage](../media/Advantage.png)
+![Advantage](../assets/Advantage.png)
 
 > 由于产品在进一步优化中，**操作审计功能暂时下线**，其余功能皆可正常使用！

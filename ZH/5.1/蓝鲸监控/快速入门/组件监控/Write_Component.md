@@ -3,10 +3,10 @@
 ## 数据链路
 
 ### 监控整体链路图
-![s1](../../media/s1.png)
+![s1](../../assets/s1.png)
 
 ### 自定义组件采集流程
-![s1](../../media/s2.png)
+![s1](../../assets/s2.png)
 
 **蓝鲸监控通过 job 部署 prometheus 社区的 exporter，对目标组件进行性能数据采集。接着 bkmetricbeat 从 exporter 上周期拉取性能数据并通过数据通道上报。**
 
@@ -73,7 +73,7 @@ go get github.com/prometheus/client_golang/prometheus
 (1)新建一个 exporter 项目：
 一个 exporter 只需要一个文件即可；新建一个 test_exporter 目录和一个 test_exporter.go 文件:
 
-![e1](../../media/e1-1.png)
+![e1](../../assets/e1-1.png)
 
 
 (2)导入依赖模块
@@ -224,7 +224,7 @@ go build test_exporter.go
 
 (12)cmd/shell 中运行即可，访问http://127.0.0.1:9601/metrics 即可验证
 
-![e2](../../media/e2-1.png)
+![e2](../../assets/e2-1.png)
 
 
 至此 Exporter 开发完成，其中 8，9 两步中的函数是重点，目前仅仅写了一些数据进行示例，其中的监控指标获取数据就是该部分的主要功能，需要编写对应逻辑获取指标的值。
@@ -252,7 +252,7 @@ go build test_exporter.go
 
 - 上传成功后如下图：
 
-![](../../media/s3.png)
+![](../../assets/s3.png)
 
 ### 配置文件开发
 
@@ -262,7 +262,7 @@ go build test_exporter.go
 
  `指标配置文件是 JSON 格式的文件。
 
-![s1](../../media/s4.png)
+![s1](../../assets/s4.png)
 - 配置文件样例
 
 ```go
@@ -316,10 +316,10 @@ go build test_exporter.go
 - 大多数 exporter 在启动时，需要提供额外的参数，如服务地址等。因此用户需要对启动所需参数项进行配置，在 exporter 启动时才能提供对应参数值。
 `参数配置文件是**JSON格式**的文件。`
 
-![s1](../../media/s5.png)
+![s1](../../assets/s5.png)
 配置项将直接体现在配置表单中
 
-![s1](../../media/s6.png)
+![s1](../../assets/s6.png)
 - 配置文件样例
 
 ```go
@@ -370,7 +370,7 @@ go build test_exporter.go
 #### 描述
   使用 Markdown 语法编写组件描述，在用户组件接入时提供指导。
 
-![s1](../../media/s7.png)
+![s1](../../assets/s7.png)
 
 #### 保存自定义组件采集
 
@@ -400,7 +400,7 @@ go build test_exporter.go
 
 以上动作完成后，在组件监控页面，将会多一个组件。选择自定义分类，可以看到所有自定义采集的组件。
 
-![s1](../../media/s8.png)
+![s1](../../assets/s8.png)
 
 ## 自定义组件一键导入
 
@@ -439,15 +439,15 @@ info.json 文件示例
 | supported_version | 采集器支持版本，版本信息会显示在配置页面上 |
 显示效果如下
 
-![s1](../../media/s10.png)
+![s1](../../assets/s10.png)
 
 ## 自定义组件更新
 如果需要更新组件，进入编辑模式，选择相应文件进行更新即可
 
-![s1](../../media/s9.png)
+![s1](../../assets/s9.png)
 
 [附件](http://bkopen-1252002024.file.myqcloud.com/public/exporter_example.zip)是一个样例 exporter 一键导入包，另外包含了打包好的 exporter 以及源码
 
 使用附件导入后，选择主机下发后，效果如下：
 
-![s1](../../media/s11.png)
+![s1](../../assets/s11.png)
