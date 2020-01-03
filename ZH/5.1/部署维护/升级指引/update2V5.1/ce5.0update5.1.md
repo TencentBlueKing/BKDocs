@@ -62,7 +62,7 @@
 - 还原部署配置 `(globals.env  ports.env)`
 
   - 恢复 `globals.env` 相关配置信息
-    - *自行比对新老文件的差异，将旧的 `globals.env` 文件的 `#域名信息` `#DB信息` `#账户信息` `GSE\NGINX_WAN_IP` `#设置HTTP/HTTPS模式`同步修改到新的 `globals.env` 配置文件内，务必谨慎对比，账户密码信息至关重要，新配置文件的新增内容不可删除。*
+    - **自行比对新老文件的差异，将旧的 `globals.env` 文件的 `#域名信息` `#DB信息` `#账户信息` `GSE\NGINX_WAN_IP` `#设置HTTP/HTTPS模式`同步修改到新的 `globals.env` 配置文件内，务必谨慎对比，账户密码信息至关重要，新配置文件的新增内容不可删除。**
     ![](../../assets/globals.env.sample2.png)
     ![](../../assets/globals.env.sample3.png)
   - 更新 `install.config`
@@ -155,7 +155,7 @@
 
   ```bash
   # 升级 Redis 版本
-  ./bkcec install redis  # 升级 Redis 版本，另 Centos6 不支持升级
+  ./bkcec install redis  # 升级 Redis 版本，另 Centos6 不支持升级，但可自行编译升级
   ./bkcec start redis
   ./bkcec status redis
   ```
