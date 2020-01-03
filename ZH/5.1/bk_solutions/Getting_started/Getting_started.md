@@ -49,7 +49,6 @@
 
 {% video %}../CD/Automation/media/blueking_execute_push_file.mp4{% endvideo %}
 
-
 接下来，我们尝试做一次单体应用的版本发布。
 
 ## 应用交付
@@ -72,11 +71,9 @@
 
 参照 [需求自助化:测试自助调整验收环境](5.1/bk_solutions/CD/Demand_self_service.md)，完成测试自助修改测试环境配置，从此再也不会骚扰运维了。
 
-![-w1336](../CD/media/15638726755169.jpg)
+![-w1336](../CD/assets/15638726755169.jpg)
 
 以上就是一个运维的日常，在蓝鲸中如何做到 **标准化** 、 **自动化** 和 **自助化**。
-
----
 
 当然，如果想做深，你还需要实现 [CMDB 中资源实例的自动发现](5.1/bk_solutions/CD/CMDB/CMDB_CI_auto_discovery_MySQL.md)，靠自动化去维护 CMDB 实例。
 
@@ -86,8 +83,6 @@
 
 从持续集成(Continuous Integration)、持续交付(Continuous Delivery)再到持续部署(Continuous Deployment)，蓝盾会逐渐完善覆盖，尽请期待
 
----
-
 解决了运维当前的主要矛盾后，蓝鲸更关注 **研发运营这个领域的行业技术变化**。
 
 通过支持 Kubernetes 和 Mesos 容器编排的蓝鲸容器管理平台，实现 [快速构建 Nginx 集群](5.1/bk_solutions/CD/BCS/Bcs_deploy_nginx_cluster.md) 、[应用的滚动升级](5.1/bk_solutions/CD/BCS/Bcs_app_Rolling_Update_Deployment.md) 、[应用的蓝绿发布](5.1/bk_solutions/CD/BCS/Bcs_blue_green_deployment.md) 以及自动扩缩容等微服务化带来的技术红利。
@@ -95,4 +90,4 @@
 蓝鲸，不止如此，更多尽情关注蓝鲸公众号。
 
 
-<img src="./media/15659324878049.jpg" height="200" width="200"/>
+<img src="./assets/15659324878049.jpg" height="200" width="200"/>

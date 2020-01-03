@@ -38,7 +38,7 @@
     - 成本：认领工单后，只需关注交付结果，让运维更聚焦增值服务
     - 安全：满足安全合规要求，实现应用交付过程可视化，交付历史归档可查
 
-![应用交付自动化的目标](media/%E5%BA%94%E7%94%A8%E4%BA%A4%E4%BB%98%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9A%84%E7%9B%AE%E6%A0%87-1.png)
+![应用交付自动化的目标](../assets/%E5%BA%94%E7%94%A8%E4%BA%A4%E4%BB%98%E8%87%AA%E5%8A%A8%E5%8C%96%E7%9A%84%E7%9B%AE%E6%A0%87-1.png)
 
 
 ## 技术选型
@@ -51,7 +51,7 @@
 | --- | --- | --- | --- | --- | --- |
 | 对应产品 | [Cloud Formation](https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/Welcome.html) | [Azure-RM](https://docs.microsoft.com/zh-cn/azure/azure-resource-manager/resource-group-overview)  | [Cloud Deployment Manager](https://cloud.google.com/deployment-manager/docs/quickstart) | [ROS](https://help.aliyun.com/document_detail/28852.html) | [RO](https://docs.qingcloud.com/product/operation/topology) |
 
-![内网负载均衡器](media/%E5%86%85%E7%BD%91%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8.png)
+![内网负载均衡器](../assets/%E5%86%85%E7%BD%91%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8.png)
 
 <center>（青云的资源编排工具）</center>
 
@@ -61,11 +61,11 @@
 
 蓝鲸标准运维，正是解决上述行业痛点。
 
-![](media/15617076684346.jpg)
+![](../assets/15617076684346.jpg)
 
 标准运维在蓝鲸体系中位于 SaaS 场景层，通过 PaaS 层的 ESB 或 API Gateway 与原子平台层的 CMDB、作业平台等平台交互。
 
-![标准运维在蓝鲸体系中的定位](media/%E6%A0%87%E5%87%86%E8%BF%90%E7%BB%B4%E5%9C%A8%E8%93%9D%E9%B2%B8%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E5%AE%9A%E4%BD%8D-1.png)
+![标准运维在蓝鲸体系中的定位](../assets/%E6%A0%87%E5%87%86%E8%BF%90%E7%BB%B4%E5%9C%A8%E8%93%9D%E9%B2%B8%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E5%AE%9A%E4%BD%8D-1.png)
 
 确立了技术方案后，接下来介绍如何在企业内部实施标准运维，实现应用交付自动化。
 
@@ -91,8 +91,7 @@
 
 来吧，一起共建属于大家的开源自动化运维项目：[标准运维](https://github.com/Tencent/bk-sops)！
 
-![](media/15617132080186.jpg)
-
+![](../assets/15617132080186.jpg)
 <center>（开源共建标准运维）</center>
 
 ## 扩展阅读

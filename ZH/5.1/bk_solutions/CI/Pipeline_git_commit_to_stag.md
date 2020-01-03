@@ -15,10 +15,10 @@
 
 ### 配置自动构建流水线
 
-![bk-ci-demo](./media/bk-ci-demo.png)
+![bk-ci-demo](assets/bk-ci-demo.png)
 
 ### 提交代码（Git Commit）验证
 
 下面为一次自动更新记录，从 **提交代码到更新测试环境**，**不到 1 分钟**。
 
-{% video %}media/bk-ci-demo-HD.mp4{% endvideo %}
+{% video %}assets/bk-ci-demo-HD.mp4{% endvideo %}

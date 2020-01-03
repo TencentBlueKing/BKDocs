@@ -23,7 +23,7 @@
 
 建立一个权威统一的 CMDB 配置主数据，作为自动化运维平台、监控平台、运维流程平台等一系列 IT 系统的基石。
 
-![](./media/15602199321821.jpg)
+![](../assets/15602199321821.jpg)
 
 <center> CMDB 是 ITIL 的基石 </center>
 
@@ -33,7 +33,7 @@
 
 在蓝鲸体系架构中，配置平台位于原子平台层，通过蓝鲸 PaaS 的 ESB 为上层 SaaS 提供覆盖研发运营 CI（持续集成）、CD（持续交付和持续部署）、CO（持续运营）领域的配置管理能力。
 
-![CMDB在蓝鲸架构中的位置](./media/CMDB%E5%9C%A8%E8%93%9D%E9%B2%B8%E6%9E%B6%E6%9E%84%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE-1.png)
+![CMDB在蓝鲸架构中的位置](../assets/CMDB%E5%9C%A8%E8%93%9D%E9%B2%B8%E6%9E%B6%E6%9E%84%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE-1.png)
 
 <center> 配置平台 在蓝鲸体系架构中的位置 </center>
 
@@ -41,7 +41,7 @@
 
 以下是蓝鲸配置平台（[已开源](https://github.com/Tencent/bk-cmdb)）相当于传统 CMDB 的优势，正好切中运维在配置管理上遇到的痛点，同时在产品设计和架构上具有很强的扩展能力。
 
-![](media/15602199513502.jpg)
+![](../assets/15602199513502.jpg)
 
 <center> 配置平台 的核心能力 </center>
 
@@ -63,7 +63,7 @@
 
 来吧，一起共建属于大家的 [开源的 CMDB 项目](https://github.com/Tencent/bk-cmdb)！
 
-![](./media/15605114938006.jpg)
+![](../assets/15605114938006.jpg)
 
 <center> 开源共建 CMDB </center>
 

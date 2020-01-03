@@ -9,7 +9,7 @@
 
 目前蓝鲸开源了 [PaaS](https://github.com/Tencent/bk-paas) 、[CMDB](https://github.com/Tencent/bk-cmdb) 、[标准运维](https://github.com/Tencent/bk-sops) 、 [BCS](https://github.com/Tencent/bk-bcs/)、[蓝鲸 CI](https://github.com/Tencent/bk-ci)，更多开源计划请关注蓝鲸公众号。
 
-![](./media/15659324878049.jpg)
+![](assets/15659324878049.jpg)
 
 
 ## 蓝鲸的 PaaS 是真 PaaS 吗
