@@ -15,30 +15,30 @@
 ### 配置 Ping 检测的原子套餐
 在作业平台写个简单的 Ping 检测脚本，再去故障自愈中配置 Ping 检测的自愈套餐。
 
-![Alt text](media/20190115071752.png)
+![Alt text](../assets/20190115071752.png)
 
-![Alt text](media/20190115070423.png)
+![Alt text](../assets/20190115070423.png)
 
 ### Ping 检测没有异常，则发送正常通知
 
 如 Ping 检测异常，则发送审批通知，用户审批通过即可重启，审批如果不通过，则发送审批失败通知。
 
 - 配置 Ping 检测正常通知
-![Alt text](media/20190109203901.png)
+![Alt text](../assets/20190109203901.png)
 
 - 配置审批套餐
-![Alt text](media/20190109204839.png)
+![Alt text](../assets/20190109204839.png)
 
 - 配置重启套餐，因为是简单模拟，所以只是 echo 了一下重启成功，实际应用时要调用在 ESB 上注册重启服务器接口（物理机），如果是虚拟机，需要自己写脚本来调用虚拟机的接口
-![Alt text](media/20190115065634.png)
+![Alt text](../assets/20190115065634.png)
 
 ## 配置组合套餐，并接入故障自愈
 
 接入故障自愈这里选择 REST 默认分类是为了方便触发告警，实际应用选择 Ping 不可达告警类型。
-![Alt text](media/20190109195936.png)
+![Alt text](../assets/20190109195936.png)
 <center>(Ping 告警组合套餐)</center>
 
-![Alt text](media/20190109212223.png)
+![Alt text](../assets/20190109212223.png)
 <center>(接入自愈)</center>
 
 ## 触发告警，完成自愈
@@ -52,9 +52,9 @@ Ping 检测没有异常，则发送正常通知。如 Ping 检测异常，则发
 
 - Ping 检测异常，发送审批通知，用户审批通过即可重启
 
-![Alt text](media/20190115064522.png)
-![Alt text](media/20190115065951.png)
-![Alt text](media/20190115072527.png)
+![Alt text](../assets/20190115064522.png)
+![Alt text](../assets/20190115065951.png)
+![Alt text](../assets/20190115072527.png)
 
 - 回到故障自愈中，查看自愈详情
-![Alt text](media/20190109215717.png)
+![Alt text](../assets/20190109215717.png)
