@@ -6,14 +6,22 @@
 
 接下来以 `上报CPU Loadavg` 为例实现脚本采集以及指标监控
 
-## 定义表结构
-点击`数据源接入` 菜单 的 `接入数据源` ，定义表结构。
+## 新建脚本采集
+
+功能位置: 采集中心 -> 脚本 -> 接入数据源
+
+![](media/15779670217412.jpg)
+
+
+### 1) 定义表结构
+
 
 请提前了解 [指标和维度的含义](5.1/蓝鲸监控/术语解释/Concepts_Terminology.md)
-![table_schema_definition](../../media/table_schema_definition.png)
-注：默认有一个维度为 IP。
+![](media/15779703055595.jpg)
 
-## 编写采集脚本
+注：默认有一个维度为 IP和云区域ID。
+
+### 2) 编写采集脚本
 
 请使用 BASH 脚本对维度和指标赋值，脚本解释器默认为 `/bin/bash`
 
@@ -23,36 +31,61 @@
  yum install jq -y  // CentOS部署jq参考方法
 ```
 
-![edit_shellscript](../../media/edit_shellscript.png)
+```
+#!/bin/bash
 
-## 选择服务器 和 下发采集器测试
+#获取磁盘使用率
+disk_name="$1"
+diskUsage=`df -h | grep ${disk_name} | awk -F '[ %]+' '{print $5}'`
 
-`选择服务器` 后，进行 `下发采集器测试`
+echo "disk_usage{disk_name=\"${disk_name}\"} ${diskUsage}"
+```
 
-![](../../media/test_shell_collection.jpg)
-## 设置采集周期
+添加参数: 参数为位置参数 如shell的 `$1`
 
-设置 `脚本采集周期` 、`原始数据保存周期`、`趋势数据保存周期`
-![](../../media/Collection_Schedule.png)
+![](media/15779703450815.jpg)
 
-- 采集周期：脚本周期调度的频率
-- 原始数据保存周期：原始数据所有采集点的保存周期
-- 趋势数据保存周期（功能开发中）：为节省存储空间和加快监控指标出图速度，当时间接近 `原始数据保存周期` 时，会自动完成数据聚合（每小时的采集点聚合为 3 个点，最大值、最小值、平均值）
+### 3) 选择服务器并填写参数
+
+>> 注意: 这里的服务和下发都是测试联调
+
+![](media/15779704092715.jpg)
+
+### 4) 确认联调结果
+
+![](media/15779704838872.jpg)
+
+### 5) 设置采集和保存周期 完成调试
+
+![](media/15779705328648.jpg)
+
+>> 注意: 到这个阶段还只是完成是联调阶段,需要添加监控实例前是真正的采集.
+
+### 6) 添加监控实例
+
+![添加实例](media/%E6%B7%BB%E5%8A%A0%E5%AE%9E%E4%BE%8B.jpg)
+
 
 ## 仪表盘出图
 
 在 `仪表盘` 菜单中 `新建视图`，在 `脚本采集` 服务名称中选择 [定义表结构](5.1/蓝鲸监控/快速入门/自定义监控/Shell_Scripts_Collection.md#定义表结构) 中定义的 `中文含义`
 
-![](../../media/dashboard_panel_set_0.jpg)
+![](media/15779706727506.jpg)
+
 
 - 然后设置出图
-![](../../media/dashboard_panel_set.jpg)
+
+![](media/15779708030143.jpg)
+
 
 ## 配置告警策略
-![](../../media/monitor_policy_set.jpg)
+
+![](media/15779708664702.jpg)
+
 
 ## 效果
-![](../../media/dashboard.jpg)
+
+![](media/15779711299659.jpg)
 
 ## 告警自动化处理
 
@@ -68,6 +101,7 @@
 
 
 ## 常见问题
+
 - 问：如何一次插入多条数据？
 
     答：你可以使用Shell的循环语句for、while等来一次上报多条数据，只要符合Shell语法即可。
@@ -77,3 +111,5 @@
 
     答：脚本位于：/data/MapleLeaf/plugins/shell/目录
     注册在 GseAgent 的进程调度配置中：/usr/local/gse/gseagent/conf/base/procinfo.json
+
+
