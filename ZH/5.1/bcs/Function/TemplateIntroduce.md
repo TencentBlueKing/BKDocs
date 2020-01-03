@@ -2,7 +2,7 @@
 
 在 BCS 中，模板集合是 Kubernetes/Mesos 配置文件模板的集合。您可以通过将多个应用的配置构成一个模板集，来简化服务管理的复杂度；您还可以将模板里面需要频繁修改的数据设置成变量，以方便维护。
 
-![](media/image00.png)
+![](../assets/image00.png)
 
 通过『模板集』+『变量』来管理您的业务将非常方便。
 
@@ -40,15 +40,15 @@ docker save nginx > nginx.tar
 
 点击下方的 Pod 模板设置，将网络策略设置为 Host 模式，可以直接用主机网络，将 Nginx 容器端口对外暴露。
 
-![](media/image02.png)
+![](../assets/image0211.png)
 
 接下来定义 Nginx 容器，需要填写名称、描述，选择 Nginx  镜像。同时将容器端口以变量的形式填写，这样可以将应用以不同的端口部署到不同的命名空间中。
 
-![](media/image03.png)
+![](../assets/image0311.png)
 
 这样我们的模板集就创建好了，点击上方的保存按钮，将模板集的保存到一个版本中。
 
-![](media/image04.png)
+![](../assets/image0411.png)
 
 ## 设置变量
 选中【变量管理菜单】，统一管理所有的变量，变量分为三类：
@@ -59,29 +59,29 @@ docker save nginx > nginx.tar
 
 点击引用处，可以查看所有引用了这个变量的模板的详情。
 
-![](media/image05.png)
+![](../assets/image0511.png)
 
 点击批量更新，可以同时对不同的集群、命名空间赋值。
 
-![](media/image06.png)
+![](../assets/image0611.png)
 
 ## 模板集中引用变量
 模板集中可采用`{{变量名}}`的方式引入变量
 
-![](media/image13.png)
+![](../assets/image13.png)
 
-![](media/image14.png)
+![](../assets/image14.png)
 
 
 ## 创建服务示例
 选中【模板集】菜单，点击实例化按钮进入实例化页面，选择模板集、命名空间。变量默认值为在上一步设置的值，您也可以在实例化页面修改这个值。最后点击创建就完成了实例化操作。
 
-![](media/image07.png)
+![](../assets/image07.png)
 
 ## 确认完成
 应用部署完成后，您可以在容器服务左侧导航中点击“应用”，查看 Nginx 服务应用实例，并可以通过 Host IP 和配置的容器端口访问服务。
 
-![](media/image08.png)
+![](../assets/image08.png)
 
 ### 滚动升级
 您可以通过配置不同的模板集版本来实现滚动升级的功能。
@@ -90,23 +90,23 @@ docker save nginx > nginx.tar
 
 通过节点设置标签，可以在调度的时候将应用调度到固定的主机上。本例中将集群节点中的一台主机添加`app:nginx`的标签。
 
-![](media/image09.png)
+![](../assets/image09.png)
 
 #### 新增模板集版本
 
 在模板集的调度约束中，将 `NodeSelector` 设置为`app:nginx`，并保存到一个新的版本中。
 
-![](media/image10.png)
+![](../assets/image10.png)
 
 #### 滚动升级
 
 在应用页面，点击滚动升级并选择最新的版本，可以页面上查看滚动升级前后的配置文件差异，点击确定将应用滚动升级到新版本。
 
-![](media/image11.png)
+![](../assets/image11.png)
 
 进入应用的详情页面，可以发现 Nginx 应用已经被重新调度到了设置了`app:nginx`标签的主机上，并可以通过新的 Host IP 和配置的容器端口访问 Nginx 服务。
 
-![](media/image12.png)
+![](../assets/image12.png)
 
 ## 附录
 

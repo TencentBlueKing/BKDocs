@@ -1,6 +1,6 @@
 # 特点及优势
 
-![core-function](media/core-function.png)
+![core-function](../assets/core-function.png)
 
 1. **集成主流监控产品** ：告警源集成蓝鲸监控、4 款主流开源监控产品 Zabbix、Open-Falcon、Nagios、Icinga，及 AWS、邮件的告警接入，更能通过 REST API 拉取、推送告警。
 2. **丰富的处理套餐** ：除支持作业平台、标准运维外，还支持快捷套餐类（磁盘清理、汇总、检测 CPU 使用率 TOP10 等）、组合套餐类（获取故障机备机、通知、审批等）。
@@ -14,13 +14,13 @@
 
 **故障自愈重新定义故障处理流程**，在运维领域系较早提出故障自动化理念并落地为产品。
 
-![lead-trend](media/lead-trend.png)
+![lead-trend](../assets/lead-trend.png)
 
 ## 事件处理流程引擎，实现无人值守自愈
 
 获取监控告警发现异常，预诊断分析，调用预定义的处理流程，实现 **故障无干预自动处理**。
 
-![enginee](media/enginee.png)
+![enginee](../assets/enginee.png)
 
 ## 为企业节省人力及降低 MTTR
 
@@ -28,4 +28,4 @@
 
 自动化的故障处理流程，减少人工处理环节耗费的时间，降低故障处理时长。实现故障的无人值守，让故障处理不再依赖于人，**提升企业 IT 服务的可用性** 。
 
-![reduce_mtt](media/reduce_mttr.png)
+![reduce_mtt](../assets/reduce_mttr.png)

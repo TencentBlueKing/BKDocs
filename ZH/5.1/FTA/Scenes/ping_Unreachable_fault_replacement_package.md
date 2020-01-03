@@ -16,21 +16,21 @@
 
 在作业平台写个简单的 Ping 检测脚本，再去故障自愈中配置 Ping 检测的自愈套餐。
 
-![Alt text](media/20190115071752.png)
+![Alt text](../assets/20190115071752.png)
 
-![Alt text](media/20190115070423.png)
+![Alt text](../assets/20190115070423.png)
 
-### 通知 和 获取备机
+### 通知和获取备机
 
 Ping 检测没有异常，则发送正常通知。如 Ping 检测异常，则使用获取备机套餐，自动获取备机，前提是空闲机池中有空闲机。
 
 - 配置 Ping 检测正常通知
 
-![Alt text](media/20190109203901.png)
+![Alt text](../assets/20190109203901.png)
 
 -  配置自动获取备机套餐
 
-![Alt text](media/20190115143958.png)
+![Alt text](../assets/20190115143958.png)
 
 ### 拷贝故障机属性到备机
 
@@ -41,15 +41,15 @@ Ping 检测没有异常，则发送正常通知。如 Ping 检测异常，则使
 ## 配置组合套餐，并接入故障自愈
 
 接入故障自愈这里选择 REST 默认分类是为了方便触发告警，实际应用选择 Ping 不可达告警类型。
-![Alt text](media/20190115150414.png)
+![Alt text](../assets/20190115150414.png)
 
-![Alt text](media/20190115150843.png)
+![Alt text](../assets/20190115150843.png)
 
 ## 触发告警，完成自愈
 
 - 触发告警，由于这里是做测试，就不拿生产环境了，用 REST API 可以更方便的产生告警，完整流程请参照[REST API 推送](5.1/FTA/Getting_Started/REST_API_PUSH_Alarm_processing_automation.md)。
 
 - 回到故障自愈中，查看自愈详情，也可以点击状态，查看执行详情
-![Alt text](media/20190115152554.png)
+![Alt text](../assets/20190115152554.png)
 
-![Alt text](media/20190115153047.png)
+![Alt text](../assets/20190115153047.png)

@@ -89,14 +89,13 @@ Done.
 
 选择菜单 【Chart 仓库】，点击【同步仓库】可以看到刚刚推送上来的 Chart。
 
-![-w1676](media/15680230226584.jpg)
-
+![-w1676](../../assets/15680230226584.jpg)
 
 ### 部署 Chart
 
 点击 【部署】，准备部署 Chart
 
-![-w1629](media/15680231028519.jpg)
+![-w1629](../../assets/15680231028519.jpg)
 
 填写 Helm 参数： NFS Server 的 IP（nfs.server）、 开放挂载的目录（nfs.path）。
 
@@ -104,7 +103,7 @@ Done.
 
 然后点击 【部署】。
 
-![-w1674](media/15680277372426.jpg)
+![-w1674](../../assets/15680277372426.jpg)
 
 完成部署后，接下来创建 PVC 测试。
 
@@ -133,15 +132,12 @@ spec:
   resources:
     requests:
       storage: 1Gi
-
 ```
-
 
 ```bash
 # kubectl apply -f auto-clain.yaml
 persistentvolumeclaim/auto-claim created
 ```
-
 
 ```bash
 # kubectl get pvc
@@ -151,9 +147,7 @@ auto-claim   Bound    pvc-9803c5c5-d2f8-11e9-86f7-525400673e62   1Gi        RWX 
 
 可以看到  PVC 创建成功。
 
-
 - 在 NFS 的挂载目录中，可以看到自动创建对应的目录。
-
 
 ```bash
 # ll
@@ -170,7 +164,7 @@ drwxrwxrwx 2 root root 4096 9月   9 19:54 default-auto-claim-pvc-9803c5c5-d2f8-
 
 下图是解决问题之后的截图，和出问题是配置的差异是 kube-system 命名空间下的 kube-apiserver Pod 的启动参数中多了 `DefaultStorageClass`。
 
-![](media/15682537115267.jpg)
+![](../../assets/15682537115267.jpg)
 
 > `--admission-control` was deprecated in `1.10` and replaced with `--enable-admission-plugins`.
 

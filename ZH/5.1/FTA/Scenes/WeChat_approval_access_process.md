@@ -36,7 +36,7 @@
     - 功能介绍：一套帮助业务全自动的发现告警、分析告警、自动恢复故障的服务。
 
 截图示例如下：
-![Alt text](media/1494574167873.png)
+![Alt text](../assets/1494574167873.png)
 
 注意：可见范围，请务必保证审批管理员，业务管理员可见。
 
@@ -53,7 +53,7 @@
     - EncodingAESKey：FTAEncodingAESKeyFTAEncodingAESKey923456781
 
 截图示例如下：
-![Alt text](media/1495508733324.png)
+![Alt text](../assets/1495508733324.png)
 
 > 注意：上面 TOKEN 和 EncodingAESKey 都是默认参数，请在 APP 配置后，务必修改 Token 和 EncodingAESKey
 
@@ -71,7 +71,7 @@
     - 跳转链接: http://mycompany.com/o/bk_fta_solutions/wechat/todo/
 
 截图示例如下：
-![Alt text](media/1495508805368.png)
+![Alt text](../assets/1495508805368.png)
 
 完成后，企业微信接入就完成了， 下一步需要把生成的 token 等配置到自愈 APP 中。
 
@@ -84,7 +84,7 @@
 
 - 配置页面示例如下：
 
-![Alt text](media/1495527861556.png)
+![Alt text](../assets/1495527861556.png)
 
 下面对每个配置项详解。
 
@@ -103,12 +103,12 @@ EncodingAESKey 对应第二步中，配置回调参数中的 EncodingAESKey，�
 
 - CorpID 和 Secret 需要在企业号中获取，入口在设置->权限管理中，如果没有，新建一个管理组即可。
 
-![Alt text](media/1495527151654.png)
+![Alt text](../assets/1495527151654.png)
 
 - 微信消息的 Agent_ID:
 Agent_ID 在创建完企业号应用就可以获取到，在应用中心->故障自愈，进入即可看到
 
-![Alt text](media/1495527228622.png)
+![Alt text](../assets/1495527228622.png)
 
 - 审批管理员
 审批管理员是一个组超级用户，可以接受到任意审批消息，也可以审批任意的收敛审批。填写对应的名称，以逗号分隔即可。
@@ -119,11 +119,11 @@ Agent_ID 在创建完企业号应用就可以获取到，在应用中心->故障
 
 - 创建审批套餐
 
-![Alt text](media/20181211121143.png)
+![Alt text](../assets/20181211121143.png)
 
 - 在接入自愈流程中，告警类型选择 REST 默认分类，这里选择 REST 默认分类是为了方便触发告警，实际使用过程中，请根据自己实际需求选择告警类型。
 
-![Alt text](media/20181211123915.png)
+![Alt text](../assets/20181211123915.png)
 
 -	触发告警
 
@@ -131,6 +131,6 @@ Agent_ID 在创建完企业号应用就可以获取到，在应用中心->故障
 
 - 审批套餐执行详情
 
-![Alt text](media/201812112115.png)
+![Alt text](../assets/201812112115.png)
 
 微信审批，降低高危告警处理的风险。

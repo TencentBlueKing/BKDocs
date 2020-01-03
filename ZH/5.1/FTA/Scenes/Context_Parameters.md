@@ -69,13 +69,13 @@ echo "FTAARGV return_mem:${return_mem}"
 
 > 上面示例中，return_mem 为传递给下一个原子节点的变量，${return_mem}为变量的值.
 
-![fta_give_argu](media/fta_give_argu.png)
+![fta_give_argu](../assets/fta_give_argu.png)
 <center>图 1. 创建输出传参（传递给下一个步骤的参数）的作业</center>
 
 ## 创建作业平台套餐
 
 创建自愈套餐，套餐类型选择作业平台，选择上一步创建的作，并勾选`从作业中获取参数`
-![-w757](media/15361165262752.jpg)
+![-w757](../assets/15361165262752.jpg)
 <center>图 2. 创建输出传参（传递给下一个步骤的参数）的套餐</center>
 
 ## 创建使用上一步输出参数的套餐
@@ -84,20 +84,20 @@ echo "FTAARGV return_mem:${return_mem}"
 
 > 如果你没配置通知套餐，也可以通过作业平台套餐来测试.
 
-![](media/15361169576206.jpg)
+![](../assets/15361169576206.jpg)
 <center>图 3. 创建通知套餐，引用上一步输出的参数</center>
 
-![](media/15361180934431.jpg)
+![](../assets/15361180934431.jpg)
 <center>图 4. 创建作业，引用作业平台套餐传递的参数</center>
 
-![-w754](media/15361168485235.jpg)
+![-w754](../assets/15361168485235.jpg)
 <center>图 5. 创建作业平台套餐，引用上一步输出的参数</center>
 
 ## 创建组合套餐
 
 通过组合套餐，将输出参数 和 使用参数 的原子套餐串起来。
 
-![](media/15361170784129.jpg)
+![](../assets/15361170784129.jpg)
 <center>图 6. 创建组合套餐</center>
 
 ## 测试
@@ -106,23 +106,23 @@ echo "FTAARGV return_mem:${return_mem}"
 
 ## 作业间传参效果
 
-![](media/15361183999000.jpg)
+![](../assets/15361183999000.jpg)
 <center>图 7. 模拟自愈，执行上一步创建的组合套餐（包含上下文传参特性）</center>
 
-![](media/15361183753395.jpg)
+![](../assets/15361183753395.jpg)
 <center>图 8. 该自愈的执行详情</center>
 
-![](media/15361184242911.jpg)
+![](../assets/15361184242911.jpg)
 <center>图 9. #0 步 输出参数</center>
 
-![](media/15361186282518.jpg)
+![](../assets/15361186282518.jpg)
 <center>图 9. #1 步 获取参数</center>
 
-![](media/15361187273160.jpg)
+![](../assets/15361187273160.jpg)
 <center>图 10. #1 步 作业执行时传递参数内容</center>
 
 ## 作业 + 通知 组合套餐的输出结果
-![-w398](media/15361193219458.jpg)
+![-w398](../assets/15361193219458.jpg)
 <center>图 11. 作业+通知 组合套餐的输出结果</center>
 
 

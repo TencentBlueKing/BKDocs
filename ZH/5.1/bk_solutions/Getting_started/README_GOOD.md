@@ -1,6 +1,5 @@
 # 了解蓝鲸的三种途径
 
-
 无论你是刚了解蓝鲸，还是想找最佳实践的运维，亦或是想通过方法论提升运维服务能力的运维主管，在这里都能找到答案。
 
 # 快速入门 : 蓝鲸是什么，能解决什么问题
@@ -27,9 +26,6 @@
   </a>
 </div>
 
-
----
-
 # CI - CD - CO : 覆盖研发运营全生命周期的最佳实践
 
 <div class="doc-nav-link">
@@ -38,7 +34,6 @@
     <p>从第一行代码到交付版本包</p>
   </a>
 </div>
-
 
 <div class="doc-nav-link">
   <a href="CD/application_deployment.md">
@@ -54,8 +49,6 @@
   </a>
 </div>
 
----
-
 # 运维“四化建设”方法论 : 交付运维价值，助力业务增长
 
 通过“运维四化建设”，交付运维价值，助力业务增长。
@@ -66,7 +59,6 @@
     <p>自动化前，先完成标准化</p>
   </a>
 </div>
-
 
 <div class="doc-nav-link">
   <a href="CD/Application_delivery_deployment_automation.md">

@@ -52,4 +52,4 @@ kubelet 在 /etc/cni/net.d 目录下读取 CNI 的配置文件时，是按文件
 
 > 如下图：
 
-![multus-CNI](./media/multus-cni.png)
+![multus-CNI](../../../assets/multus-cni.png)

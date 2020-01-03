@@ -240,6 +240,6 @@ spec:
 
 关于 Deployment 的实战演练，请参照 [快速构建 Nginx 集群](../../../Scenes/Bcs_deploy_nginx_cluster.md)。
 
-![-w1465](media/15684296480794.jpg)
+![-w1465](../../../assets/15684296480794.jpg)
 
-![-w1462](media/15684296585366.jpg)
+![-w1462](../../../assets/15684296585366.jpg)

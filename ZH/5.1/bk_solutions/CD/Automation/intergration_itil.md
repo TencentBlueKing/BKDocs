@@ -16,14 +16,13 @@
 - 标准插件前端开发
 - 标准插件测试
 
-
 ## 梳理逻辑
 
 标准运维要调用 IT 系统的功能特性，比如`执行 DB 变更`或`告警屏蔽`，需要将对应 API 对接至蓝鲸 ESB 中，然后再开发标准运维的标准插件。
 
 以下为标准插件的调用逻辑图。
 
-![](media/15643115225611.jpg)
+![](../assets/15643115225611.jpg)
 
 > 注：建议 IT 系统的功能特性和标准运维解耦，标准运维不包含功能逻辑，仅负责转发。
 
@@ -33,23 +32,23 @@
 
 然后在 **标准运维项目根目录** 下执行 `Django-admin startapp custom_atoms` ，接着新建`components/collections` 和 `static/custom_atoms` 目录。
 
-![](./media/31.png)
+![](../assets/31.png)
 
 打开`conf/settings_custom.py`文件，找到`INSTALL_APPS_CUSTOM`，加入`custom_atoms`。
 
-![](./media/32.png)
+![](../assets/32.png)
 
 ## 接入 ESB API
 
 参照 [蓝鲸 API 网关开发指南](5.1/开发指南/扩展开发/API网关/README.md)完成 ESB 接入，然后更新标准运维`blueking/component`下的文件。
 
-![](./media/33.png)
+![](../assets/33.png)
 
 ## 标准插件后台开发
 
 在`custom_atoms/components/collections`目录下创建 `test.py` 文件，其中需要定义的属性和类如下所示。
 
-![](./media/34.png)
+![](../assets/34.png)
 
 **test.py 属性详解**：
 
@@ -72,20 +71,20 @@
 - `parent_data` 是任务的公共参数，包括 excutor—执行者，operator—操作员，biz_cc_id—所属业务 ID。详细请查看 gcloud/taskflow3/utils.py。
 - 返回 True 表示标准插件执行成功，False 表示执行失败
 
-![](./media/35.png)
+![](../assets/35.png)
 
 `TestCustomService` 中 `execute` 函数详解：
 - 返回列表格式。
 - 列表格式的每一项定义一个返回字段，是 execute 函数中的 set_outputs 输出的字段的子集；key—输出字段标识，name—输出字段含义，type—输出字段类型（str、int 等 python 数据结构）。
 
-![](./media/36.png)
+![](../assets/36.png)
 
 `TestCustomService` 中 `shedule` 函数详解：
 - 由 `interval` 控制调用策略，如 pipeline.core.flow.activity.StaticIntervalGenerator（每隔多少秒轮询一次）、DefaultIntervalGenerator（每次轮询间隔时间是上一次的两倍）。
 - 使用 `self.finish_schedule` 结束轮询。
 - 返回 `True` 表示标准插件执行成功，`False` 表示执行失败。
 
-![](./media/37.png)
+![](../assets/37.png)
 
 ## 标准插件前端开发
 
@@ -95,25 +94,25 @@
 - `type` ：前端表单类型，可选 input、textarea、radio、checkbox、select、datetime、datatable、upload、combine 等
 - `attrs` ：对应 type 的属性设置，如 name、validation
 
-![](./media/38.png)
+![](../assets/38.png)
 
 ## 标准插件测试
 
 创建流程模板，新增标准插件节点，标准插件类型选择新开发的标准插件，展示的输入参数和前端配置项一致，输出参数和后台 `outputs_format` 一致，其中执行结果是系统默认，值是`True` 或 `False` ，表示节点执行结果是成功还是失败。
 
-![标准插件开发](media/%E6%A0%87%E5%87%86%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.png)
+![标准插件开发](../assets/%E6%A0%87%E5%87%86%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91.png)
 
 根据上一步创建的流程模板，新建任务执行后查看结果。
 
-![](./media/40.png)
+![](../assets/40.png)
 
 如果标准插件执行出错，请先查看节点执行详情，确定是否是代码逻辑异常。
 
-![](./media/41.png)
+![](../assets/41.png)
 
 接着查看 APP 组件类型日志，确定是都是 ESB API 调用异常。
 
-![](./media/42.png)
+![](../assets/42.png)
 
 ## 提交代码
 

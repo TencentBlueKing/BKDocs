@@ -74,7 +74,7 @@ spec:
 使用 hostpath 和 emptyDir 等本地存储时，建议用 volume 方式来做存储管理。
 在 "模板集 》Deployment 》Pod 模板设置 》卷" 中，可以配置使用 hostpath 或 emptyDir 本地存储。
 
-![](media/localStorage.png)
+![](../../assets/localStorage.png)
 
 ## 存储插件方案
 

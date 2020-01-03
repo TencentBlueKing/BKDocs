@@ -146,4 +146,4 @@ BCS Mesos 方案下的容器实现默认支持 CNI 链式调用方案。如要�
 
 > 如下图：
 
-![mesos-CNI](./resource/mesos-cni.png)
+![mesos-CNI](../../assets/mesos-cni.png)

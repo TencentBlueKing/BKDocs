@@ -20,7 +20,7 @@
 
 非标准输出日志采集是指从指定的日志路径采集日志，蓝鲸容器服务会给每个接入的项目申请一个非标准日志采集的 dataid。用户只需要在容器的配置模板中指定`自定义采集的日志绝对路径`，如下图所示：
 
-<img src='assets/data_collect/image01.png' alt='image01.png' width='750'>
+<img src='../assets/image0101.png' alt='image0101.png' width='750'>
 
 应用实例化时，会进行以下操作（`整个过程用户无需任何操作`）：
 
@@ -77,25 +77,25 @@ spec:
 
 用户还可以在应用上设置一些附加数据，这些数据会追加到容器的日志数据中，一起上报到数据平台，标准日志和非标准日志都会追加上这些数据。
 
-<img src='assets/data_collect/image02.png' alt='image02.png' width='750'>
+<img src='../assets/image0202.png' alt='image0202.png' width='750'>
 
 日志效果如下图：
 
-<img src='assets/data_collect/image03.png' alt='image03.png' width='750'>
+<img src='../assets/image03.png' alt='image03.png' width='750'>
 
 ## Metric 采集
 
 首先，在容器服务->Metric 管理中添加 Metric；
 
-<img src='assets/data_collect/image04.png' alt='image04.png' width='750'>
+<img src='../assets/image04.png' alt='image04.png' width='750'>
 
 然后，在应用模板中->更多设置中，勾选启用 Metric 数据采集，并选择相应上一步设置的 Metric;
 
-<img src='assets/data_collect/image05.png' alt='image.png' width='750'>
+<img src='../assets/image05.png' alt='image.png' width='750'>
 
 最后，实例化应用时，会将相关的 Metric 配置文件一起下发。
 
-<img src='assets/data_collect/image06.png' alt='image.png' width='750'>
+<img src='../assets/image06.png' alt='image.png' width='750'>
 
 说明：
 - Metric 配置中，勾选了**Prometheus 格式设置**，会在数据平台申请 dataid，并根据 Prometheus 的数据格式在数据平台配置好默认的字段清洗规则，同时将清洗好的字段入库到 ES 中。
