@@ -155,7 +155,7 @@
 
   ```bash
   # 升级 Redis 版本
-  ./bkcec install redis  # 升级 Redis 版本，另 Cnetos6 不用升级
+  ./bkcec install redis  # 升级 Redis 版本，另 Centos6 不支持升级
   ./bkcec start redis
   ./bkcec status redis
   ```
