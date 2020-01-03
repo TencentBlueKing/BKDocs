@@ -7,7 +7,7 @@
 
 ```bash
     tar -xf bkce_cicdkit-1.0.0.tgz -C /data
-    tar -xf install_ce-cicdkit_fix-1.0.2.tar -C /data
+    tar -xf install_ce-cicdkit_fix-1.0.2.tgz -C /data
 ```
 
 2. 安装 CICDKit 的机器可用配置不能低于 4C 8G，系统版本不能低于 CentOS 7.0，建议单独一台机器部署。
