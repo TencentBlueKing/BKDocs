@@ -62,7 +62,7 @@ No nodes are available that match all of the predicates: MatchInterPodAffinity (
 - 登录 Webcosole
 点击容器服务的右下角“WebConsole”，点击相应的集群，弹出 Webcosole 页面
 
-![webconsole](media/web-console.png)
+![webconsole](../assets/web-console.png)
 
 然后，输入 kubectl logs `pod name` -n `namespace name`，查看指定命名空间下的应用日志
 
@@ -70,11 +70,11 @@ No nodes are available that match all of the predicates: MatchInterPodAffinity (
 
 - 通过点击应用详情，跳转到应用详情页
 
-![点击查看详情](media/app.jpg)
+![点击查看详情](../assets/app.jpg)
 
 - 查找 Pod / Taskgroup 管理项，查看到部署的节点
 
-![应用详情](media/taskgroup_pod.jpg)
+![应用详情](../assets/taskgroup_pod.jpg)
 
 - 登录节点查看相应的容器日志
 
@@ -88,7 +88,7 @@ to start sandbox container for pod ... Error response from daemon: OCI runtime c
 
 其次，检查下应用下面容器的配置，类似下图；然后根据需求设置 request 和 limit 数量
 
-![应用资源限制](media/res_limit.jpg)
+![应用资源限制](../assets/res_limit.jpg)
 
 #### 镜像问题
 

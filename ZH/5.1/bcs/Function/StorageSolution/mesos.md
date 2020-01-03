@@ -11,4 +11,4 @@
 
 用户在模板集中创建 Mesos 应用，在容器配置中指定挂载源为 /mnt/testvolume
 
-![](../assets/storage/mesosStorage.png)
+![](../../assets/mesosStorage.png)

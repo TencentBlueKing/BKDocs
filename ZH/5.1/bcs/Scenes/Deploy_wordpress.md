@@ -74,7 +74,7 @@ Done.
 
 在 BCS 【Chart 仓库】菜单中，找到刚刚上传的 WordPress Chart ，点击【部署】。
 
-![w1645](media/15682579071348.jpg)
+![w1645](../assets/15682579071348.jpg)
 
 可以修改 Helm 参数，例如 WordPress 管理员账号、密码等，这里重点提一下用户访问用到的 Service 和 Ingress：
 
@@ -93,17 +93,17 @@ service:
 
   此处启用 Ingress，并填写绑定的 **主机名** 和 **路径**。类似 Nginx 配置文件中 Server Section 部分的 server_name。
 
-  ![w1678](media/15682642857653.jpg)
+  ![w1678](../assets/15682642857653.jpg)
 
 点击【预览】，可以看到 BCS 将 Charts 通过 `helm template` 命令渲染为 K8S 的对象描述文件。
 
-![w1657](media/15682582162576.jpg)
+![w1657](../assets/15682582162576.jpg)
 
 点击 【部署】即可。
 
 在【Release 列表】菜单中可以查看部署状态。
 
-![w1652](media/15683730410624.jpg)
+![w1652](../assets/15683730410624.jpg)
 
 部署成功，接下来测试访问。
 
@@ -111,11 +111,11 @@ service:
 
 修改域名解析或 PC 上 hosts 文件（Mac 下路径为 /etc/hosts），将 Ingress 中配置的主机名指向到 LoadBalancer 中节点的外网 IP，然后打开浏览器访问，可以看到 WordPress 首页。
 
-![w1648](media/15683743074917.jpg)
+![w1648](../assets/15683743074917.jpg)
 
 输入用户名（默认为 user）和密码登录 Wordpress 后台。
 
-![w1676](media/15683744779001.jpg)
+![w1676](../assets/15683744779001.jpg)
 
 
 如果没有在 Chart 参数中没有设置密码，可以通过命令获取 WordPress 的 Secret。

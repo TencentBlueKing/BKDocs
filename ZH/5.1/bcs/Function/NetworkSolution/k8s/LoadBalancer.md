@@ -8,7 +8,7 @@
 
 在【LoadBalancer】菜单中，点击【新建 LoadBalancer】，添加一台或多台节点作为 LoadBalancer，点击【保存】即可。
 
-![-w1653](media/15683668713785.jpg)
+![-w1653](../../../assets/15683668713785.jpg)
 
 ## LoadBalancer 的背后技术
 
@@ -114,4 +114,4 @@ blueking-nginx-ingress-default-backend   1         1         1            1     
 
 可以通过 节点 **亲和性约束** 实现。
 
-![-w1678](media/15683681052985.jpg)
+![-w1678](../../../assets/15683681052985.jpg)

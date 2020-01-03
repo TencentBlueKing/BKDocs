@@ -1,6 +1,6 @@
 # 快速入门
 
-![](media/15290519660825.jpg)
+![-w1997](../assets/15290519660825.jpg)
 
 此外，场景案例中的 [如何构建 Nginx 集群](../Scenes/Bcs_deploy_nginx_cluster.md) 也可以实现快速上手 BCS。
 
@@ -19,8 +19,8 @@
 **项目管理：**
 您可以在项目管理页面管理您的项目基础信息。
 
-
 ## 创建集群
+
 在容器服务左侧导航中点击“集群”进入集群管理页面，点击“创建集群”按钮。
 
 **关键项说明：**
@@ -32,7 +32,6 @@
 - Master 要求：
     - 机器配置：至少 CPU/内存为 4 核/8G
     - 系统版本：CentOS 7 及以上系统（内核版本 3.10.0-693 及以上），推荐 CentOS 7.4
-
 
 ## 添加集群节点
 
@@ -65,14 +64,14 @@
 
 《吃豆小游戏》已经部署完成，您可以在容器服务左侧导航中点击“应用”，查看小游戏服务应用实例。
 
-![](../Function/assets/rumpetroll_game/nginx_app.jpg)
+![](../assets/nginx_app.jpg)
 
 接下来，您可以体验吃豆小游戏：
 
 - 在`deploy-nginx`应用详情页面查看`Host IP`，也就是接入层的 IP
 - 将链接 `http://HOST_IP/rumpetroll/?openid=is__superuser&token=tPp5GwAmMPIrzXhyyA8X` 中的 `HOST_IP`替换为接入层 IP(如下图红框部分)，访问即可体验
 
-![](../Function/assets/rumpetroll_game/game_app.jpg)
+![](../assets/game_app.jpg)
 
 您可以尝试：
 - 在线滚动升级小游戏

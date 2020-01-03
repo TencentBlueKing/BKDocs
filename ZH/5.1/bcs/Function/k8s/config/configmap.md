@@ -68,4 +68,4 @@ ConfigMap 的配置数据存储在`data`字段中，具体参考示例模板
 
 关于 ConfigMap 的实战演练，请参照 [应用的蓝绿发布](../../../Scenes/Bcs_blue_green_deployment.md)。
 
-![](media/15684304092327.jpg)
+![-w1997](../../../assets/15684304092327.jpg)

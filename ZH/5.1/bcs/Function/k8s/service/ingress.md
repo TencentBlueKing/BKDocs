@@ -1,6 +1,5 @@
 # kubernetes Ingress 说明
 
-
 Ingress 是管理外部访问集群内服务(典型的如 HTTP)的 API 对象。Ingress 可配置提供外部可访问的 URL、负载均衡、SSL、基于名称的虚拟主机等。用户通过 POST Ingress 资源到 API server 的方式来请求 Ingress。 Ingress controller 负责实现 Ingress，通常使用负载均衡器(如常用的 nginx-controller)。
 
 ## 1. 模板示例
@@ -44,4 +43,4 @@ type: Opaque
 
 关于 Ingress 的实战演练，请参照 [应用的蓝绿发布](../../../Scenes/Bcs_blue_green_deployment.md)。
 
-![](media/15684302423813.jpg)
+![](../../../assets/15684302423813.jpg)

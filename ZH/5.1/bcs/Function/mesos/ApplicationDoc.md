@@ -9,15 +9,15 @@ application/deployment
 
 - 模板及应用展示
 
-![](../assets/application/template_instance.jpg)
+![](../../assets/template_instance.jpg)
 
 - 应用详情
 
-![](../assets/application/instance_detail.jpg)
+![](../../assets/instance_detail.jpg)
 
 - 容器详情
 
-![](../assets/application/container_detail.jpg)
+![](../../assets/container_detail.jpg)
 
 ## 操作相关
 
@@ -25,24 +25,24 @@ application/deployment
 
 `注: 允许应用类型包含 deployment/daemonset/job/statefulset`
 
-![](../assets/application/rollingupdate.jpg)
+![](../../assets/rollingupdate.jpg)
 
 - 扩缩容
 
 实例数量增加或减少
 
-![](../assets/application/scale.jpg)
+![](../../assets/scale.jpg)
 
 -  重建应用
 
 重建包含两个步骤: 删除当前应用，然后以现有配置再创建应用(类似进程重启)
 
-![](../assets/application/recreate.jpg)
+![](../../assets/recreate.jpg)
 
 - 删除应用
 
-![](../assets/application/delete.jpg)
+![](../../assets/delete.jpg)
 
 - 重新调度
 
-![](../assets/application/reschedule.jpg)
+![](../../assets/reschedule.jpg)

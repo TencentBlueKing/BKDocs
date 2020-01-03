@@ -2,7 +2,7 @@
 
 模板允许更多交互式,动态的仪表板。您可以在度量标准查询中使用变量代替硬编码 cluster_id，namespace 和 container_id 名称等内容。变量显示为仪表板顶部的下拉选择框。通过这些下拉菜单，您可以轻松更改仪表板中显示的数据。
 
-![](../assets/images/templating.png)
+![](../../assets/templating.png)
 
 ## 什么是变量
 
@@ -25,7 +25,7 @@
 
 ## 添加变量
 
-![](../assets/images/templating_var_list.png)
+![](../../assets/templating_var_list.png)
 
 您可以通过 Dashboard > Templating 添加变量。这将打开一个变量列表和一个 New 用于创建新变量的按钮。
 
@@ -100,7 +100,7 @@
 *Tags query* | 应返回标记列表的数据源查询
 *Tag values query* | 应返回指定标记键值的列表的数据源查询。`$tag`在查询中使用以引用当前选定的标记。
 
-![](../assets/images/variable_dropdown_tags.png)
+![](../../assets/variable_dropdown_tags.png)
 
 ### 区间变量
 
