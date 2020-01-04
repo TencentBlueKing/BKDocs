@@ -13,7 +13,7 @@
 
 - 使用 `Git Bash` 右键打开项目根目录
 
-    ![使用git打开目录](./media/%E4%BD%BF%E7%94%A8git%E6%89%93%E5%BC%80%E7%9B%AE%E5%BD%95.png)
+    ![使用git打开目录](../assets/%E4%BD%BF%E7%94%A8git%E6%89%93%E5%BC%80%E7%9B%AE%E5%BD%95.png)
 
 - 提交项目到仓库
 ```bash

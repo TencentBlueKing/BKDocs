@@ -4,6 +4,6 @@
 
 开发语言: `Python 3.7.3`
 
-![](./media/15585142272756.jpg)
+![](./assets/15585142272756.jpg)
 
 > 注：请确保已 [部署蓝鲸私有化版本](https://docs.bk.tencent.com/bkce_install_guide/)

@@ -7,7 +7,7 @@
 
 ### 框架结构
 
-![采集器框架结构](./img/collector_framework_structure.png)
+![采集器框架结构](./assets/collector_framework_structure.png)
 
 蓝鲸采集器框架设计，整体分为以下三层：
 
@@ -38,7 +38,7 @@
 
 ### 工作原理
 
-![采集器框架工作原理](./img/collector_framework_process.png)
+![采集器框架工作原理](./assets/collector_framework_process.png)
 
 - 采集器调用 b.Publisher.Connect() 连接到输出，Connect 函数返回 Client 实例
 - 采集器初始化周期采集定时器Timer或采集事件监听Event
@@ -102,13 +102,13 @@ output.gse:
   ```
   type GetStat func() beat.MapStr
   ```
-  
+
 2. 实例化运营数据上报模块
 
   ```
   stat, err := stat.NewCycleStat(beatName, GetStat, beat.Send)
   ```
-  
+
 3. 开启运营数据上报模块
 
   ```

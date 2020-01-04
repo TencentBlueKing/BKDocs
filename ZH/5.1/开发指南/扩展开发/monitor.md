@@ -6,11 +6,11 @@
 
 #### 蓝鲸监控整体数据链路图
 
-![图片描述](./media/003.png)
+![图片描述](./assets/003.png)
 
 #### 自定义组件采集流程
 
-![图片描述](./media/004.png)
+![图片描述](./assets/004.png)
 
 - 蓝鲸监控通过 job 部署 prometheus 社区的 Exporter，对目标组件进行性能数据采集。接着 bkmetricbeat 从 Exporter 上周期拉取性能数据并通过数据通道上报。
 
@@ -290,7 +290,7 @@ go build -o ./exporter-linux test_exporter
 
 - 上传成功后如下图：
 
-![](./media/005.png)
+![](./assets/005.png)
 
 
 ### 配置⽂件开发
@@ -302,7 +302,7 @@ go build -o ./exporter-linux test_exporter
 
   `指标配置⽂件是 JSON 格式的⽂件`。
 
-![](./media/006.png)
+![](./assets/006.png)
 
 - 配置⽂件样例
 
@@ -412,7 +412,7 @@ go build -o ./exporter-linux test_exporter
 
 使用 Markdown 语法编写组件描述描述，在用户组件接入时提供指导。
 
-![](./media/007.png)
+![](./assets/007.png)
 
 #### 保存自定义组件采集
 
@@ -440,7 +440,7 @@ go build -o ./exporter-linux test_exporter
 
 以上动作完成后，在组件监控页面，将会多一个组件。选择自定义分类，可以看到所有自定义采集的组件。
 
-![](./media/008.png)
+![](./assets/008.png)
 
 ## 自定义组件一键导入
 
@@ -483,16 +483,16 @@ supported_version | 采集器支持版本，版本信息会显示在配置页面
 
 显示效果如下
 
-![](./media/009.png)
+![](./assets/009.png)
 
 ## 自定义组件更新
 
 如果需要更新组件，进入编辑模式，选择相应文件进行更新即可
 
-![](./media/010.png)
+![](./assets/010.png)
 
 附件是一个样例 Exporter 一键导入包，另外包含了打包好的 Exporter 以及源码
 
 使用附件导入后，选择主机下发后，效果如下：
 
-![](./media/011.png)
+![](./assets/011.png)

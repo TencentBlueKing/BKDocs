@@ -31,7 +31,7 @@
 用户输入内容直接显示在前端标签里，例如 `<h1> some_user_input</h1>` 或者
 `<input type="text" name="address1" value=${"address"}>`
 
-![](media/326ababcfc69fdc10cabfd39796676a7.png)
+![](../../assets/326ababcfc69fdc10cabfd39796676a7.png)
 
 #### 解决
 
@@ -96,13 +96,13 @@ onerror=alert(1);/>` 查看展示部分是否被弹窗，以及业务功能是�
 
 比如，Excel 导入用户数据并生成表格
 
-![](media/a55041cc4b3ab7976c34e358ac8b3b41.png)
+![](../../assets/a55041cc4b3ab7976c34e358ac8b3b41.png)
 
 信息导入后传至前端表格，造成场景 1 中的标签内 XSS
 
 又比如，文件上传并展示
 
-![](media/e08be04c348f9250c3d24c679a617f89.png)
+![](../../assets/e08be04c348f9250c3d24c679a617f89.png)
 
 在非 windows 的操作系统（如Lunix、OSX）中，文件名可以被命名为任意格式，可以包含 JS 代码，在上传完成后在前端显示时造成 XSS 攻击
 
@@ -133,7 +133,7 @@ onerror=alert(1);/>` 查看展示部分是否被弹窗，以及业务功能是�
 上传文件的路径写了 `<script>alert(/xss/)</script>`,
 执行的时候，路径出错，前端提示信息中有显示用户填写内容，未做过滤，导致 XSS 攻击
 
-![](media/87edf0c87e3db5cf3097615c54809f5e.png)
+![](../../assets/87edf0c87e3db5cf3097615c54809f5e.png)
 
 #### 解决
 
@@ -156,7 +156,7 @@ onerror=alert(1);/>` 查看展示部分是否被弹窗，以及业务功能是�
 </script>
 ```
 
-![](media/ebbe6350da894c8e42735fb17611553f.png)
+![](../../assets/ebbe6350da894c8e42735fb17611553f.png)
 
 #### 解决
 
@@ -164,7 +164,7 @@ Mako 渲染时，将用户输入的信息在 python 中以 base64 的形式输�
 
 最后运用用户变量之前使用 js 的 base64 解码转换一次
 
-![](media/72511672873780806cc69d64b8b0eb65.png)
+![](../../assets/72511672873780806cc69d64b8b0eb65.png)
 
 ## 常用 XSS 测试 payload
 
@@ -214,7 +214,7 @@ Mako 渲染时，将用户输入的信息在 python 中以 base64 的形式输�
 
 一些固定的 post 参数，如 hidden 属性的 input，或 ajax 的 data 中在页面返回时就确定的信息，都是可能被修改的
 
-![](media/615861de178d2a0ab7587fb96a28a9eb.png)
+![](../../assets/615861de178d2a0ab7587fb96a28a9eb.png)
 
 如图，页面在后端渲染时确定了一个 report_id，用户点击按钮时就会拿这个 id 去下载相应的文件。如果在下载逻辑中没有进行权限控制，则可能被修改 id 来下载任意文件，造成越权。
 

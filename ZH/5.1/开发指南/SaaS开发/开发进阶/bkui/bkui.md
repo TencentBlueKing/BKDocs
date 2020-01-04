@@ -26,7 +26,7 @@ bkui
 
 会看到如下输出：
 
-![bkui-help](../pictures/bkui-help.png)
+![bkui-help](../../assets/bkui-help.png)
 
 ### 帮助
 
@@ -43,13 +43,13 @@ $ bkui -h
 $ bkui --help
 ```
 
-![bkui-help](../pictures/bkui-help.png)
+![bkui-help](../../assets/bkui-help.png)
 
 ## bkui init 命令
 
 `bkui init` 是 `BKUI-CLI` 的重要命令之一。通过前面的章节我们知道，任何命令带 `-h` 或 `--help` 参数时，都会输出当前命令的帮助信息。命令行输入 `bkui init -h`，`bkui init` 命令的帮助信息如下图：
 
-![help-init](../pictures/bkui-help-init.png)
+![help-init](../../assets/bkui-help-init.png)
 
 `bkui init` 命令支持一个可选参数 `DIRECTORY_NAME`，表示要创建项目的名称。
 

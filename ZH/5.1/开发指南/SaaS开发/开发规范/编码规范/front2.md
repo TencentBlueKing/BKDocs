@@ -6,27 +6,27 @@
 
 2. 【必须】页面内容必须保证对齐（最少要有一条参考线），这样能保证页面整齐
 
-    ![](media/90b55c3f452bf90dd7a839a1f4ce73eb.png)
+    ![](../../assets/90b55c3f452bf90dd7a839a1f4ce73eb.png)
 
 3. 整站所有按钮的风格一致（圆角或直角），颜色按功能区分，尽量不要形同个颜色按钮放一起
 
-    ![](media/e9dda9da85176df3e32f84d1c3b0fe28.png)
+    ![](../../assets/e9dda9da85176df3e32f84d1c3b0fe28.png)
 
 4. 整站不能出现横向滚动条
 
 5. 表格样式：默认左对齐，可根据表格内容适当调整，如下图最后一列操作列可居中对齐
 
-    ![](media/b9adbfeb7481c21d63f82f3f93833e4c.png)
+    ![](../../assets/b9adbfeb7481c21d63f82f3f93833e4c.png)
 
 6.  异步加载时，尽量先显示页面的元素，然后再异步导入数据，如下图的下拉框在异步导入的时候有一段时间显示空白，不大友好
 
-    ![](media/3df026f5151d22a7090b10cebeee62e2.png)
+    ![](../../assets/3df026f5151d22a7090b10cebeee62e2.png)
 
-    ![](media/e248b6a6d7a0103cc189eb7f7f4eb7a2.png)
+    ![](../../assets/e248b6a6d7a0103cc189eb7f7f4eb7a2.png)
 
 7. 页面提示信息，弹窗风格一致，例如都使用 bootstrap 模态框
 
-    ![](media/661eebeb2145d4ddbd81bcec2515933a.png)
+    ![](../../assets/661eebeb2145d4ddbd81bcec2515933a.png)
 
 8.  【必须】出现错误的时候，错误提示信息明确，不要出现源码，错误码等非有好提示
 

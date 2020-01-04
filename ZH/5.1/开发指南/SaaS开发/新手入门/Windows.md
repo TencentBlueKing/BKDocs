@@ -1,4 +1,4 @@
-## Windows 下输出 Hello,World!
+# Windows 下输出 Hello,World!
 
 基于 `蓝鲸开发框架 2.0` 上输出 `Hello,World!`
 
@@ -6,26 +6,26 @@
 >
 > 操作系统：`Windows 10`
 
-### 环境准备
+## 环境准备
 
 安装 Python 3.6.X、准备数据库、创建应用和准备代码仓库地址、虚拟环境（可选）
 
-#### 安装 Python 3.6.X
+### 安装 Python 3.6.X
 
 下载 Python 3.6.X 的 [Windows x86-64 executable installer](https://www.python.org/downloads/)（现在一般都是 64 位系统）
 
-![安装Python3.6.X](./media/%E5%AE%89%E8%A3%85Python3.7.3.png)
+![安装Python3.6.X](../assets/%E5%AE%89%E8%A3%85Python3.7.3.png)
 
 勾选 `Add Python 3.6 to PATH`，按提示安装即可。
 
 安装包会自动安装 `pip`
-![Python3.6.3安装完校验](./media/Python3.7.3%E5%AE%89%E8%A3%85%E5%AE%8C%E6%A0%A1%E9%AA%8C.png)
+![Python3.6.X安装完校验](../assets/Python3.7.3%E5%AE%89%E8%A3%85%E5%AE%8C%E6%A0%A1%E9%AA%8C.png)
 
-#### 部署 MySQL
+### 部署 MySQL
 
 - [官网下载MySQL5.7](https://dev.mysql.com/downloads/windows/installer/5.7.html) ,选择  `mysql-installer-community-5.7.26.0.msi` ，按提示安装即可。
 
-#### 创建应用和准备 git 仓库地址
+### 创建应用和准备 git 仓库地址
 
 创建应用前，需提前准备代码仓库(Git/SVN)，推荐 `Git`
 
@@ -37,7 +37,7 @@
 
     进入 `开发者中心` - `应用创建` ，填写上一步获取的 `git` 仓库地址和账号，创建成功后会获取 `应用 ID:{APP_CODE}`、`应用 TOKEN:{SECRET_KEY}` ，这两个变量后续会用到。
 
-#### 准备虚拟环境 (可选：只有一个开发项目的可忽略)
+### 准备虚拟环境 (可选：只有一个开发项目的可忽略)
 
 - [修改 pip 源](https://pip.pypa.io/en/stable/user_guide/#config-file) (国内镜像)
 
@@ -67,9 +67,9 @@ pipenv install
 pipenv shell
 ```
 
-### 初始化开发框架
+## 初始化开发框架
 
-#### 下载开发框架
+### 下载开发框架
 
 - 下载开发框架 `http://{PAAS_URL}/guide/newbie/#step3`
 
@@ -81,7 +81,7 @@ pipenv shell
 pip3 install -r requirements.txt
 ```
 
-#### 修改配置
+### 修改配置
 
 修改 config/\_\_init\_\_.py 中的 `APP_CODE` 和 `SECRET_KEY`(应用TOKEN)
 
@@ -89,7 +89,7 @@ pip3 install -r requirements.txt
 
 修改 config/\_\_init\_\_.py 中的 `BK_URL` 为 `{PAAS_URL}`
 
-#### 创建和初始化数据库
+### 创建和初始化数据库
 
 打开 `MySQL 5.7 Command Line Client` 执行
 
@@ -109,7 +109,7 @@ CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
 python manage.py migrate
 ```
 
-#### 启动本地项目
+### 启动本地项目
 
 - 先修改本地 hosts
 
@@ -126,7 +126,7 @@ python manage.py runserver appdev.{PAAS_URL}:8000
 
 ![开发框架首页](media/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E9%A6%96%E9%A1%B5.png)
 
-### Hello,World
+## Hello,World
 
 - 修改视图 home_application/views.py
 
@@ -142,4 +142,4 @@ url(r'^$', views.hello),
 ```
 
 - 重新 `runserver` ,或在 `Visio Studio Code` 中保存会自动重新运行
-![-w964](./media/15585122671345.jpg)
+![-w964](../assets/15585122671345.jpg)
