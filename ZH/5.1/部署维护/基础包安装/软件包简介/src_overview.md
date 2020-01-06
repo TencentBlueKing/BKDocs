@@ -28,7 +28,7 @@
 
 ## 软件包内容说明
 
-蓝鲸基础平台及 SaaS 详细说明请参考 [产品白皮书](https://bk.tencent.com/docs/)，开源组件版本和配置方式可参考 [附录](../../附录/开源组件版本/version.md)。
+蓝鲸基础平台及 SaaS 详细说明请参考 [产品白皮书](https://bk.tencent.com/docs_new/)，开源组件版本和配置方式可参考 [附录](../../附录/开源组件版本/version.md)。
 
 - **bkdata**：数据平台基础模块存放路径，包含 dataapi，databus，monitor 三个子工程。
   - **dataapi/**：数据平台 API 接口服务。
