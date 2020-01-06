@@ -1,3 +1,3 @@
 # 登录流程图
 
-![](../assets/enterprise_login_to_bklogin.png)
+![-w2020](../assets/enterprise_login_to_bklogin.png)

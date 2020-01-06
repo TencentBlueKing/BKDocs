@@ -6,7 +6,6 @@
 
 并修改 `config/prod.py` 和 `stag.py`
 
-
 ## 提交代码到仓库
 
 - 安装 [Git](https://www.git-scm.com/download/win)
@@ -16,6 +15,7 @@
     ![使用git打开目录](../assets/%E4%BD%BF%E7%94%A8git%E6%89%93%E5%BC%80%E7%9B%AE%E5%BD%95.png)
 
 - 提交项目到仓库
+
 ```bash
 git init
 git remote add origin {GIT_Repository_URL}

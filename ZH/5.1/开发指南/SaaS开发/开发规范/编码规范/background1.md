@@ -13,7 +13,7 @@ Code Analysis > pep8.py` 设置即可
 
     直接在右下角调整 Highlighting Level 为 Inspections 就能自动 PEP 8 提示
 
-    ![](../../assets/d1aeaac81c790a1692ba66c6367cdaa1.png)
+    ![-w2020](../../assets/d1aeaac81c790a1692ba66c6367cdaa1.png)
 
 -   建议修改在使用的 IDE 中修改 PEP8 的每行字数不超 79 字符规范，可修改为 Django 建议的 119 字符
 
@@ -207,7 +207,7 @@ for i in clubs:
 
 5. 异常忽略，一般情况下异常需要被捕获并处理，但有些情况下异常可被忽略，只需要用 log 记录即可，可参考一下代码：
 
-    ![](../../assets/ae0d9a23f02553d1900a365c8816e169.png)
+    ![-w2020](../../assets/ae0d9a23f02553d1900a365c8816e169.png)
 
 #### return early 原则
 
@@ -217,11 +217,11 @@ for i in clubs:
 
 逻辑代码和业务代码解耦分离，功能性函数以及对数据库的操作定义写在 models 里面，业务逻辑写在 view 里面。
 
-![](../../assets/e8129ad4763eb93966a5d643ee036252.png)
+![-w2020](../../assets/e8129ad4763eb93966a5d643ee036252.png)
 
 改为
 
-![](../../assets/49ddec57d5c8b79284d228814091e8ce.png)
+![-w2020](../../assets/49ddec57d5c8b79284d228814091e8ce.png)
 
 #### 权限校验装饰器异常抛出问题
 
@@ -618,11 +618,11 @@ status，再用响应中 "约定" 的 code 进行补充。
 
 1. 方法必须使用标注注释，如果是公有方法或对外提供的 API 相关方法，则最好给出使用样例。如：
 
-    ![](../../assets/6f8ea2c09a095aa588af61bb1f460433.png)
+    ![-w2020](../../assets/6f8ea2c09a095aa588af61bb1f460433.png)
 
 2. Module 注释：在开头要加入对该模块的注释。如：
 
-    ![](../../assets/1ec433a5c7dc3d1b65934337e41c299f.png)
+    ![-w2020](../../assets/1ec433a5c7dc3d1b65934337e41c299f.png)
 
 3. 普通代码注释应该以 `#` 和单个空格开始。
 

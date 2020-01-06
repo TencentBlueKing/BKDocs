@@ -290,7 +290,7 @@ go build -o ./exporter-linux test_exporter
 
 - 上传成功后如下图：
 
-![](./assets/005.png)
+![-w2020](./assets/005.png)
 
 
 ### 配置⽂件开发
@@ -302,7 +302,7 @@ go build -o ./exporter-linux test_exporter
 
   `指标配置⽂件是 JSON 格式的⽂件`。
 
-![](./assets/006.png)
+![-w2020](./assets/006.png)
 
 - 配置⽂件样例
 
@@ -412,7 +412,7 @@ go build -o ./exporter-linux test_exporter
 
 使用 Markdown 语法编写组件描述描述，在用户组件接入时提供指导。
 
-![](./assets/007.png)
+![-w2020](./assets/007.png)
 
 #### 保存自定义组件采集
 
@@ -440,7 +440,7 @@ go build -o ./exporter-linux test_exporter
 
 以上动作完成后，在组件监控页面，将会多一个组件。选择自定义分类，可以看到所有自定义采集的组件。
 
-![](./assets/008.png)
+![-w2020](./assets/008.png)
 
 ## 自定义组件一键导入
 
@@ -483,16 +483,16 @@ supported_version | 采集器支持版本，版本信息会显示在配置页面
 
 显示效果如下
 
-![](./assets/009.png)
+![-w2020](./assets/009.png)
 
 ## 自定义组件更新
 
 如果需要更新组件，进入编辑模式，选择相应文件进行更新即可
 
-![](./assets/010.png)
+![-w2020](./assets/010.png)
 
 附件是一个样例 Exporter 一键导入包，另外包含了打包好的 Exporter 以及源码
 
 使用附件导入后，选择主机下发后，效果如下：
 
-![](./assets/011.png)
+![-w2020](./assets/011.png)

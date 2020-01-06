@@ -14,12 +14,13 @@
 
 下载 Python 3.6.X 的 [Windows x86-64 executable installer](https://www.python.org/downloads/)（现在一般都是 64 位系统）
 
-![安装Python3.6.X](../assets/%E5%AE%89%E8%A3%85Python3.7.3.png)
-
 勾选 `Add Python 3.6 to PATH`，按提示安装即可。
 
+![安装Python3.6.X](../assets/installPyhton3.6.x.png)
+
 安装包会自动安装 `pip`
-![Python3.6.X安装完校验](../assets/Python3.7.3%E5%AE%89%E8%A3%85%E5%AE%8C%E6%A0%A1%E9%AA%8C.png)
+
+![Python3.6.X安装完校验](../assets/Python3.6.x校验.png)
 
 ### 部署 MySQL
 
@@ -142,4 +143,4 @@ url(r'^$', views.hello),
 ```
 
 - 重新 `runserver` ,或在 `Visio Studio Code` 中保存会自动重新运行
-![-w964](../assets/15585122671345.jpg)
+![-w2020](../assets/15585122671345.jpg)
