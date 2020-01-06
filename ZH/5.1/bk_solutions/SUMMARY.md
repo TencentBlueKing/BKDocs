@@ -1,7 +1,6 @@
 # Summary
 
 ## 场景案例
-
 * [快速入门]()
     * [新手之旅](Getting_started/Getting_started.md)
 * [CI：持续集成]()
@@ -27,7 +26,7 @@
         * [快速构建 Nginx 集群](CD/BCS/Bcs_deploy_nginx_cluster.md)
         * [应用的滚动升级](CD/BCS/Bcs_app_Rolling_Update_Deployment.md)
         * [应用的蓝绿发布](CD/BCS/Bcs_blue_green_deployment.md)
-* [CO ：持续运营]()
+* [CO：持续运营]()
     * [IT 基础监控]()
         * [集成内部语音网关实现电话告警](CO/Monitor_Base/Send_voice_msg.md)
     * [业务指标监控]()

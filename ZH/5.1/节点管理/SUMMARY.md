@@ -1,7 +1,6 @@
 # Summary
 
 ## 节点管理
-
 * [产品简介](README.md)
 * [术语解释](术语解释/glossary.md)
 * [产品架构图](产品架构图/architecture.md)
