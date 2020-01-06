@@ -49,14 +49,6 @@
   cp src.bak/cert/* src/cert/
   ```
 
-- 恢复 CICDKit 安装包
-
-  ```bash
-  # 如果你安装了 cicdkit 请执行下面操作，该版本目前只支持 http 部署，若你没有安装则跳过
-  cp -a src.bak/cicdkit src/
-  cp -a src.bak/service/mysql57   src/service/
-  ```
-
 ## 升级部署脚本
 
 - 还原部署配置 `(globals.env  ports.env)`
@@ -80,7 +72,7 @@
       10.0.0.2 mongodb，appo，kafka(config)，zk(config)，es，mysql，beanstalk，consul
       10.0.0.3 paas，cmdb，job，gse，license，kafka(config)，zk(config)，es，redis，consul，influxdb
 
-      > Note:原则是不改变原模块所在IP的机器，只新增格式zk(config)，kaka(config)，bkdata(databus)，\
+      > Note:原则是不改变原模块所在IP的机器，只新增格式zk(config)，kafka(config)，bkdata(databus)，\
               bkdata(dataapi)，bkdata(monitor)。\
               另：install.config.new.sample内的其他bcs相关模块如需要安装请下载相关安装包解压并新增机器部署bcs\
               bcs部署机器不能复用[bkce-basic]的机器。
@@ -220,7 +212,6 @@
   ssh $MYSQL_IP
   cd /data/dbbak
   # 导入数据库
-  yum -y install mysql
   mysql --default-character-set=utf8mb4<bk_mysql_alldata.sql
   # 中控机重新初始化 MySQL
   ./bkcec initdata mysql
