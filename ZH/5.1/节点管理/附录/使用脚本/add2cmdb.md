@@ -4,7 +4,7 @@
 
 - 找一台安装了 curl 命令同时能访问到 Nginx 的机器。
 - 登陆机器执行以下命令。
-获取 CLOUD_ID（云区域 ID ）。详情参考 [新增云区域](4.产品功能/agent.md#Cloudarea) 。
+获取 CLOUD_ID（云区域 ID ）。详情参考 [新增云区域](../../快速入门/create_cloud.md) 。
 
 ```plain
 **[terminal]
