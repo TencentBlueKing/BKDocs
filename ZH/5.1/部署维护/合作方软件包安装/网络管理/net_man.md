@@ -38,7 +38,7 @@
     rsync -a /data/src/bknetwork/install/  /data/install/
     ```
 
-4. 根据实际情况修改中控机 `/data/install/third/globals_bknetwork.env` 网络管理域名等信息。
+4. 在install.conf配置文件中加入bknetwork，根据实际情况修改中控机 `/data/install/third/globals_bknetwork.env` 网络管理域名等信息。
 
 ## 安装部署
 
