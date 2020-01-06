@@ -123,8 +123,6 @@ when BRIDGE MODE enabled
        **[prompt foo@bar ]**[path ~]**[delimiter # ]**[command ./agent_setup_pro.sh -m client -e 10.0.0.2 ]
        ```
 
-<hr>
-
 ## 直连区域Windows
 
 这节描述的是，Windows 服务器的 Agent安装方法(有 Cygwin的 Windows 也适用)。
