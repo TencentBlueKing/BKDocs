@@ -8,24 +8,24 @@
 
 （1）管理员身份->“开发者中心”->“外链应用”
 
-![](../assets/image068.png)
+![-w2020](../assets/image068.png)
 
 （2）“桌面”—>“应用市场”
 
-![](../assets/image069.png)
+![-w2020](../assets/image069.png)
 
 ## 社区版
 
 (1) 进入 PaaS 平台管理端：domain/admin，选中“常用链接”
 
-![](../assets/image065.png)
+![-w2020](../assets/image065.png)
 
 (2) 添加“常用链接”，会发现有 2 种类型
 
-![](../assets/image066.png)
+![-w2020](../assets/image066.png)
 
 “普通链接”将会显示在面板的“常用链接”。
 
 “SaaS 链接”将会显示在工作面板中，所以需要上传一个 logo。
 
-![](../assets/image067.png)
+![-w2020](../assets/image067.png)

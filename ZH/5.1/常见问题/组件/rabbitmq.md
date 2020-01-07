@@ -1,5 +1,4 @@
 # RabbitMQ 常见问题
-
 ## RabbitMQ 启动失败
 
 4.1 社区版本 RabbitMQ 启动失败问题处理
@@ -13,7 +12,7 @@
 $ ps -ef | grep beam
 
 # 查看监听端口是否存在(5672, 15672, 25672 三个端口必须都在）
-$ netstat -tnlpu | grep 5672  
+$ netstat -tnlpu | grep 5672
 ```
 
 若没有启动，通过 `systemctl start rabbitmq-server` 启动。若系统没有 systemctl 命令，通过 `service rabbitmq start`启动

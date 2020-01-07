@@ -75,7 +75,7 @@ grep -nE "Exception|Error" /data/bkce/logs/bkdata/databus_etl.log /data/bkce/log
 
 异常举例
 
-![](../assets/1535617300196.png)
+![-w2020](../assets/1535617300196.png)
 
 ```bash
 [root@rbtnode1 /data/install]# /data/bkce/bkdata/dataapi/bin/check_databus_status.sh
@@ -108,11 +108,11 @@ etl_1001_2_system_cpu_summary
 若社区版为 3 台部署的，必须返回[1, 2, 3]才正常，示例如下
 若 brokers ids 不为[1, 2, 3]，存在`/data/bkce/public/kafka/.lock`文件，有的话，删除此文件，再重新使用`./bkcec stop kafka`和`./bkcec start kafka`重启 kafka，重启完再次确认状态
 
-![](../assets/1535617328640.png)
+![-w2020](../assets/1535617328640.png)
 
-![](../assets/1535617771404.png)
+![-w2020](../assets/1535617771404.png)
 
-![](../assets/1535617356225.png)
+![-w2020](../assets/1535617356225.png)
 
 ```bash
 [root@rbtnode1 /data/install]# /data/bkce/service/zk/bin/zkCli.sh -server zk.service.consul:2181 ls /common_kafka/brokers/ids
@@ -293,11 +293,11 @@ export C_FORCE_ROOT=true DJANGO_CONF_MODULE=conf.worker.production.enterprise DJ
 
 出现此问题，优先去对应机器上看下是否有 2 个 basereport 进程在运行
 
-![](../assets/tapd_10158081_base64_1529380070_63.png)
+![-w2020](../assets/tapd_10158081_base64_1529380070_63.png)
 
 ## exporter 采集下发时，模块 data 接口返回结果错误，但没有详细的错误信息
 
-![](../assets/tapd_10158081_base64_1531108539_85.png)
+![-w2020](../assets/tapd_10158081_base64_1531108539_85.png)
 
 可能是 bk_bkdata_api.collector_exporter 表没有创建，可查看 dataapi 的 sys.log 查看更准确错误信息
 
@@ -309,19 +309,19 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
 
 在蓝鲸监控配置好监控项
 
-![](../assets/tapd_10158081_base64_1532314076_68.png)
+![-w2020](../assets/tapd_10158081_base64_1532314076_68.png)
 
 按配置时的页面提示，去到主机上执行命令
 
-![](../assets/tapd_10158081_base64_1532314258_30.png)
+![-w2020](../assets/tapd_10158081_base64_1532314258_30.png)
 
 在机器上执行命令  /usr/local/gse/plugins/bin/gsecmdline -d 2001 -l "This service is offline."
 
-![](../assets/tapd_10158081_base64_1532314377_78.png)
+![-w2020](../assets/tapd_10158081_base64_1532314377_78.png)
 
 正常情况下，在事件中心可以看到有告警产生，如下图所示
 
-![](../assets/tapd_10158081_base64_1532314420_46.png)
+![-w2020](../assets/tapd_10158081_base64_1532314420_46.png)
 
 **排查方法**
 
@@ -344,7 +344,7 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
 
 	- 回到bkdata机器，看下日志，正常会输出如下的日志
 
-		![](../assets/tapd_10158081_base64_1532316099_62.png)
+		![-w2020](../assets/tapd_10158081_base64_1532316099_62.png)
 
 3. 如果第二步正常，可以看到日志输出
 

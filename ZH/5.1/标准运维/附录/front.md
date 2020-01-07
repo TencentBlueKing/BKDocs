@@ -6,4 +6,4 @@
 - type：前端表单类型，可选 input、textarea、radio、checkbox、select、datetime、datatable、upload、combine 等
 - attrs：对应 type 的属性设置，如 name、validation
 
-![](../assets/38.png)
+![-w2020](../assets/38.png)

@@ -12,4 +12,4 @@
 
 - 设备信息保存情况。
 
-![](../assets/image005.png)
+![-w2020](../assets/image005.png)

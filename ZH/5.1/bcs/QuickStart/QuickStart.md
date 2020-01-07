@@ -64,14 +64,14 @@
 
 《吃豆小游戏》已经部署完成，您可以在容器服务左侧导航中点击“应用”，查看小游戏服务应用实例。
 
-![](../assets/nginx_app.jpg)
+![-w2020](../assets/nginx_app.jpg)
 
 接下来，您可以体验吃豆小游戏：
 
 - 在`deploy-nginx`应用详情页面查看`Host IP`，也就是接入层的 IP
 - 将链接 `http://HOST_IP/rumpetroll/?openid=is__superuser&token=tPp5GwAmMPIrzXhyyA8X` 中的 `HOST_IP`替换为接入层 IP(如下图红框部分)，访问即可体验
 
-![](../assets/game_app.jpg)
+![-w2020](../assets/game_app.jpg)
 
 您可以尝试：
 - 在线滚动升级小游戏

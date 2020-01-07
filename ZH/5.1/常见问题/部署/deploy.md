@@ -4,7 +4,7 @@
 
 ### prot 31001 start failed，please check
 
-![](../assets/cmdb-31001.png)
+![-w2020](../assets/cmdb-31001.png)
 
 - 检查 cmdb 服务状态，参照下图
 
@@ -12,7 +12,7 @@
     ./bkcec status cmdb
 ```
 
-![](../assets/cmdb-faq.png)
+![-w2020](../assets/cmdb-faq.png)
 
 - 检查防火墙端口是否有开（8300，8301，8302）
 
@@ -27,7 +27,7 @@
 ```bash
     dig zk.service.consul
 ```
-![](../assets/3.png)
+![-w2020](../assets/3.png)
 
 解析异常处理方法：
 
@@ -71,7 +71,7 @@
 
 ### 部署 App_mgr 常见问题
 
-![](../assets/saas-faq.png)
+![-w2020](../assets/saas-faq.png)
 
 
 该报错是激活 paas_agent 失败，需要查看的是 appo 服务还是 appt 服务
@@ -101,7 +101,7 @@ install python package for bdata(monitor) failed pip optin: --no-index --find-li
 
 -  **MySQL-python 安装失败**
 
-![](../assets/bkdata-faq1.png)
+![-w2020](../assets/bkdata-faq1.png)
 
 - 解决方案：
 
@@ -109,15 +109,15 @@ install python package for bdata(monitor) failed pip optin: --no-index --find-li
 
 yum install mysql-devel
 
-![](../assets/1.png)
+![-w2020](../assets/1.png)
 
 rpm -qa | grep mariadb-devel
 
-![](../assets/2.png)
+![-w2020](../assets/2.png)
 
 2. 建立软连接
 
-![](../assets/bkdata-faq2.png)
+![-w2020](../assets/bkdata-faq2.png)
 
 ```bash
 ln -s /usr/lib64/mysql/libmysqlclient_r.so /usr/lib/libmysqlclient_r.so
@@ -133,7 +133,7 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 
 原因是缺少 snappy-c.h 导致 pip 安装 python-snappy 包失败
 
-![](../assets/bkdata-faq3.png)
+![-w2020](../assets/bkdata-faq3.png)
 
 - 解决方案：
 
@@ -143,7 +143,7 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 
 启动 bkdata 报错：`dataapi.service.consul start failed ERROR： init_snapshot_config (databus.tests.DatabusHealthTestCase)`
 
-![](../assets/bkdata-faq4.png)
+![-w2020](../assets/bkdata-faq4.png)
 
 - 解决方案：
 
@@ -168,7 +168,7 @@ ls /data/bkce/etc/consul.d/bkdata.json
 
 1、**安装 saas-o 报错 KeyError: "name='bk_csrftoken', domain=None, path=None"**
 
-![](../assets/saas-key.png)
+![-w2020](../assets/saas-key.png)
 
 - 解决方案
 
@@ -181,7 +181,7 @@ ls /data/bkce/etc/consul.d/bkdata.json
 ./bkcec sync common
 ```
 
-![](../assets/saas.png)
+![-w2020](../assets/saas.png)
 
 - 解决方案
 

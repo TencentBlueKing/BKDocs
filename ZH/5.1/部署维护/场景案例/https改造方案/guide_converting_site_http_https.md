@@ -100,7 +100,7 @@ BK_PAAS_INNER_HOST = os.environ.get('BK_PAAS_INNER_HOST',BK_PAAS_HOST)
 
 此时，本地开发，没有 `BK_PAAS_INNER_HOST` 会走 `BK_PAAS_HOST`，走 `https` ; 在 PaaS 中部署，有这个环境变量，会走内网 `http`。
 
-![](../../assets/15353433877928.png)
+![-w2020](../../assets/15353433877928.png)
 
 ## blueking/component/conf.py
 
@@ -112,7 +112,7 @@ blueking/component/conf.py 文件中大概 11 行处修改变量
 COMPONENT_SYSTEM_HOST = getattr(settings'BK_PAAS_INNER_HOST'settings.BK_PAAS_HOST)
 ```
 
-![](../..../../assets/15353434175842.png)
+![-w2020](../../assets/15353434175842.png)
 
 ## account/accounts.py
 
@@ -123,7 +123,7 @@ BK_LOGIN_VERIFY_URL = "%s/login/accounts/is_login/" % getattr(settings,'BK_PAAS_
 BK_GET_USER_INFO_URL = "%s/login/accounts/get_user/" % getattr(settings,'BK_PAAS_INNER_HOST',settings.BK_PAAS_HOST)
 ```
 
-![](../../assets/15353433993101.png)
+![-w2020](../../assets/15353433993101.png)
 
 ## [ESB 调用方关注] API 网关用户 HTTPS 改造方案
 

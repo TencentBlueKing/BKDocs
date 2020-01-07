@@ -7,7 +7,7 @@
     + `容器服务`/`Helm`/`Release列表`菜单，点击`部署Helm Chart`
     + `容器服务`/`Helm`/`Chart仓库`菜单，选择目标 Chart 点击`部署`
 
-![](../../assets/release_deploy.jpg)
+![-w2020](../../assets/release_deploy.jpg)
 
 <center>图 1.Helm Release 创建人口 - 从`Helm`/`Release列表`菜单进入</center>
 
@@ -86,7 +86,7 @@
 ## Helm Release 的升级的版本
 通过蓝鲸容器服务对 Helm Release 做升级时，有个默认选中的版本，也就是当前版本，在当前版本的版本号左边有个备注，备注的作用用于说明，Release 所使用的版本，是否发生过变化，或者已经被删除。如下图所示，蓝鲸小游戏 rumpetroll 当前版本是 1.0.0，标记的是 `unchanged` , 表示当前版本自上一次被当前 Helm Release 使用之后未发生过变化。
 
-![](../../assets/release_unchange.jpg)
+![-w2020](../../assets/release_unchange.jpg)
 
 
 - [开源 Helm Chart](https://github.com/helm/charts)

@@ -1,5 +1,4 @@
 # InfluxDB 常见问题
-
 ## InfluxDB 查询
 
 Influxdb 为蓝鲸监控数据存储载体，在发生蓝鲸监控没有数据时，有个 check 点，确认 InfluxDB 是否正常

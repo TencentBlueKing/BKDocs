@@ -6,11 +6,11 @@
 
 假设你的蓝鲸桌面地址是 {BK_PAAS_HOST}/console/，那么请打开 "蓝鲸智云后台管理" 链接 {BK_PAAS_HOST}/admin/。
 
-![](../../assets/11.png)
+![-w2020](../../assets/11.png)
 
 点击 【应用基本信息】 ，找到应用编码为 "gcloud" 的一行数据，点击应用名称 【标准运维】 进入编辑页面。修改应用名称为 "标准运维(旧版)" 后【保存】并退出 admin 页面。
 
-![](../../assets/22.png)
+![-w2020](../../assets/22.png)
 
 ## 开通 ESB 白名单
 
@@ -38,7 +38,7 @@ add_app_token bk_sops "$(_app_token bk_sops)" "标准运维"
 
 修改浏览器链接为 {BK_PAAS_HOST}/o/bk_sops/admin/，打开标准运维管理后台页面。
 
-![](../../assets/33.png)
+![-w2020](../../assets/33.png)
 
 找到【环境变量 EnvironmentVariables】并单击进入编辑页面。将第二步中准备的 redis 信息填写到环境变量配置中。即增加 3 条数据 `BKAPP_REDIS_HOST、BKAPP_REDIS_PORT、BKAPP_REDIS_PASSWORD`。
 
@@ -49,7 +49,7 @@ add_app_token bk_sops "$(_app_token bk_sops)" "标准运维"
 
 - BKAPP_REDIS_PORT=6379
 
-![](../../assets/44.png)
+![-w2020](../../assets/44.png)
 
 ## 重新部署标准运维 APP
 

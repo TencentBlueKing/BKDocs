@@ -41,14 +41,14 @@
 
 /data/bkce/logs/bkdata/databus_es.log 日志报错 memory is low  提示内存不足，但是分配了足够的内存
 
-![](../assets/logseach.png)
+![-w2020](../assets/logseach.png)
 
 ```bash
  vim /data/bkce/bkdata/databus/conf/es.cluster.properties
 #  启动jvm是最大分配内存
 deploy.cluster.memory.max=2G
 ```
-![](../assets/logseach2.png)
+![-w2020](../assets/logseach2.png)
 
 重启 databus_es
 ```bash

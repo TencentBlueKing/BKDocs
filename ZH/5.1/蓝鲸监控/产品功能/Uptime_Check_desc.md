@@ -4,20 +4,20 @@
 
 服务拨测通过模拟用户的登陆/查询，实现**从被动投诉到主动发现的运维方式转变**，当前支持的拨测协议有 HTTP (包含 HTTPS ， GET 和 POST 方法）、 TCP 、 UDP 。
 
-![](../assets/uptime_check_monitor_desc.png)
+![-w2020](../assets/uptime_check_monitor_desc.png)
 <center>图 1. 服务拨测界面</center>
 
-![](../assets/15300012217288.jpg)
+![-w2020](../assets/15300012217288.jpg)
 <center>图 2. 服务拨测可用率视图</center>
 
-![](../assets/15300011945142.jpg)
+![-w2020](../assets/15300011945142.jpg)
 <center>图 3. 服务拨测响应时间视图</center>
 
 ## 支持自助管理节点
 
 支持将部署了蓝鲸 Gse_Agent 的主机作为拨测节点，也可以在拨测节点管理对中节点进行删改。
 
-![](../assets/monitor001.jpg)
+![-w2020](../assets/monitor001.jpg)
 <center>图 4. 新增拨测节点</center>
 
 ## 支持内网服务探测
@@ -36,9 +36,9 @@
 
 关联配置平台，主机变动，自动维护拨测策略。
 
-![](../assets/monitor013.png)
+![-w2020](../assets/monitor013.png)
 
-![](../assets/monitor014.png)
+![-w2020](../assets/monitor014.png)
 
 <center>图 6. 关联配置平台新增拨测任务</center>
 
@@ -46,5 +46,5 @@
 
 可适配大屏，满足展示需求。
 
-![](../assets/15300002084642.jpg)
+![-w2020](../assets/15300002084642.jpg)
 <center>图 7. 拨测可用率 大屏展示</center>

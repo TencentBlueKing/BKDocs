@@ -2,7 +2,7 @@
 
 ## 小游戏介绍
 
-![](../../assets/2018-06-19-15-49-27.jpg)
+![-w2020](../../assets/2018-06-19-15-49-27.jpg)
 
 分为 3 个模块， openresty、rumpetroll 和 redis。其中 openresty 作为游戏的接入模块，rumpetroll 是游戏房间(游戏后台)，redis 是数据存储与服务发现模块。
 

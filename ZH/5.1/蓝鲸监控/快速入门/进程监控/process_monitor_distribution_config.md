@@ -6,7 +6,7 @@
 
   - 检查推送：gse_agentID 是否存在（推送人应为：migrate）
 
-  ![](../../assets/process_monitor_cmdb_gse_push.png)
+  ![-w2020](../../assets/process_monitor_cmdb_gse_push.png)
 
   - 修改进程管理信息后，该推送会在 1 分钟内将修改的配置推送到 Agent 端，因此每次修改完进程管理信息后，可到此处确认推送数是否有新增。
 

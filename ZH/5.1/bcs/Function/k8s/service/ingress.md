@@ -43,4 +43,4 @@ type: Opaque
 
 关于 Ingress 的实战演练，请参照 [应用的蓝绿发布](../../../Scenes/Bcs_blue_green_deployment.md)。
 
-![](../../../assets/15684302423813.jpg)
+![-w2020](../../../assets/15684302423813.jpg)

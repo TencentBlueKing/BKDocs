@@ -23,7 +23,7 @@ Helm 是 Kubernetes 的一个包管理工具，用来简化 Kubernetes 应用的
 
 如果您有 Chart 需要推送到公共仓库，可以在 Harbor 的页面的 `public` 项目下的 `Helm Charts` 上传。
 
-![](../../assets/img02.png)
+![-w2020](../../assets/img02.png)
 
 ## 推送业务 Helm Chart 到仓库
 推送 Chart 到项目仓库请移步到蓝鲸容器服务的，`容器服务`/`Helm`/`Chart 仓库` 页面，点击右上角 `如何推送 Helm Chart 到项目仓库` 指引，系统为您的项目生成了对应的 Chart 推送命令，可直接复制使用。

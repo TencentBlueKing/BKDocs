@@ -7,7 +7,7 @@ Zabbix 通过推送的方式，将告警推动至故障自愈的告警接收 API
 
 ## 运行初始化脚本
 
-![](../assets/15060403024197.png)
+![-w2020](../assets/15060403024197.png)
 
 就这么简单！
 
@@ -17,15 +17,15 @@ Zabbix 通过推送的方式，将告警推动至故障自愈的告警接收 API
 
 自动创建名为 FTA_Act 的 Action
 
-![](../assets/15060403626099.jpg)
+![-w2020](../assets/15060403626099.jpg)
 
 FTA_Act 这个 Action 的 Operation 会通知 FTA_Mgr 用户，FTA_Mgr 的通知媒介就是调用/usr/lib/zabbix/alertscripts/zabbix_fta_alarm.py
 
-![](../assets/15060409949390.jpg)
+![-w2020](../assets/15060409949390.jpg)
 
 告警产生后在 Action log 中可以看到发给 FTA_Act 的 Message
 
-![](../assets/15060403778865.jpg)
+![-w2020](../assets/15060403778865.jpg)
 
 ## 自愈集成 Zabbix 告警注意事项
 
@@ -33,14 +33,14 @@ FTA_Act 这个 Action 的 Operation 会通知 FTA_Mgr 用户，FTA_Mgr 的通知
 
 上图的 ITEM.KEY 为 system.swap.size[,pfree]被下图的 Swap 使用量(system.swap.\*)的规则所匹配。
 
-![](../assets/15060407047244.jpg)
+![-w2020](../assets/15060407047244.jpg)
 
-![](../assets/15060408193567.jpg)
+![-w2020](../assets/15060408193567.jpg)
 
 在/tmp/zabbix_fta_alarm.log 中可以查看到日志信息
 
-![](../assets/15060409189531.jpg)
+![-w2020](../assets/15060409189531.jpg)
 
 ## Zabbix 告警自愈历史
 
-![](../assets/15060131567224.jpg)
+![-w2020](../assets/15060131567224.jpg)

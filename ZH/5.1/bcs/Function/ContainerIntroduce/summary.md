@@ -18,4 +18,4 @@
 2. 创建配置模板集
 3. 实例化配置模板集
 
-![](../../assets/bcsusage.jpg)
+![-w2020](../../assets/bcsusage.jpg)

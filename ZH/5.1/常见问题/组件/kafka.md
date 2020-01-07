@@ -1,5 +1,4 @@
 # Kafka 常见问题
-
 ## Kafka 常用操作
 
 - Kakfa 查询 topic

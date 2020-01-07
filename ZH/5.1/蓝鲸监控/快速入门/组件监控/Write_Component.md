@@ -252,7 +252,7 @@ go build test_exporter.go
 
 - 上传成功后如下图：
 
-![](../../assets/s3.png)
+![-w2020](../../assets/s3.png)
 
 ### 配置文件开发
 

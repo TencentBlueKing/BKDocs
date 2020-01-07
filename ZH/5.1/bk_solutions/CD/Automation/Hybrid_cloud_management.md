@@ -67,7 +67,7 @@
 
 使用作业平台`执行脚本`和`分发文件`做测试。
 
-![](../assets/blueking_execute_push_file.gif)
+![-w2020](../assets/blueking_execute_push_file.gif)
 
 ### 管理跨云网络区域的主机
 接下来介绍，如何管控跨云网络（例如 VPC 2 和 VPC 3）的主机。

@@ -4,4 +4,4 @@
 
 (2) 点击感兴趣的 SaaS 即可使用（若 SaaS 使用过程中有什么疑问，请联系 SaaS 开发者/运营负责人）
 
-![](../assets/image060.png)
+![-w2020](../assets/image060.png)

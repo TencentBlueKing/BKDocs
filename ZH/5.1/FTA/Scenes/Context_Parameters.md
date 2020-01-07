@@ -84,10 +84,10 @@ echo "FTAARGV return_mem:${return_mem}"
 
 > 如果你没配置通知套餐，也可以通过作业平台套餐来测试.
 
-![](../assets/15361169576206.jpg)
+![-w2020](../assets/15361169576206.jpg)
 <center>图 3. 创建通知套餐，引用上一步输出的参数</center>
 
-![](../assets/15361180934431.jpg)
+![-w2020](../assets/15361180934431.jpg)
 <center>图 4. 创建作业，引用作业平台套餐传递的参数</center>
 
 ![-w754](../assets/15361168485235.jpg)
@@ -97,7 +97,7 @@ echo "FTAARGV return_mem:${return_mem}"
 
 通过组合套餐，将输出参数 和 使用参数 的原子套餐串起来。
 
-![](../assets/15361170784129.jpg)
+![-w2020](../assets/15361170784129.jpg)
 <center>图 6. 创建组合套餐</center>
 
 ## 测试
@@ -106,19 +106,19 @@ echo "FTAARGV return_mem:${return_mem}"
 
 ## 作业间传参效果
 
-![](../assets/15361183999000.jpg)
+![-w2020](../assets/15361183999000.jpg)
 <center>图 7. 模拟自愈，执行上一步创建的组合套餐（包含上下文传参特性）</center>
 
-![](../assets/15361183753395.jpg)
+![-w2020](../assets/15361183753395.jpg)
 <center>图 8. 该自愈的执行详情</center>
 
-![](../assets/15361184242911.jpg)
+![-w2020](../assets/15361184242911.jpg)
 <center>图 9. #0 步 输出参数</center>
 
-![](../assets/15361186282518.jpg)
+![-w2020](../assets/15361186282518.jpg)
 <center>图 9. #1 步 获取参数</center>
 
-![](../assets/15361187273160.jpg)
+![-w2020](../assets/15361187273160.jpg)
 <center>图 10. #1 步 作业执行时传递参数内容</center>
 
 ## 作业 + 通知 组合套餐的输出结果

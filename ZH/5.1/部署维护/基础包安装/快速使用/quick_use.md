@@ -32,7 +32,7 @@
 
 - Agent 安装成功后查看下采集器是否正常。
 
-![](../../assets/agent_status.png)
+![-w2020](../../assets/agent_status.png)
 
 ## 执行作业
 
@@ -90,24 +90,24 @@
 
 - 任务执行完成后，点击步骤可以查看执行的详细信息。点击对应链接可以跳转至作业平台查看作业执行情况及信息。
 
-![](../../assets/sops_task_situation.png)
+![-w2020](../../assets/sops_task_situation.png)
 
-![](../../assets/sops_task_situation2.png)
+![-w2020](../../assets/sops_task_situation2.png)
 
 ## 主机监控
 
 - 查看蓝鲸获取主机信息，主机状态，主机监控，服务状态图情况。
 
-![](../../assets/bk_monitor.png)
+![-w2020](../../assets/bk_monitor.png)
 
 ## 故障自愈
 
 - 创建自愈套餐(如果不创建也可以自行使用默认套餐)。
 
-![](../../assets/fta.png)
+![-w2020](../../assets/fta.png)
 
 - 接入自愈，蓝鲸监控模拟告警，看故障自愈是否能够获取到告警并实现自愈。
 
-![](../../assets/add_fta.png)
+![-w2020](../../assets/add_fta.png)
 
-![](../../assets/fta_source.png)
+![-w2020](../../assets/fta_source.png)

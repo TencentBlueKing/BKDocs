@@ -15,4 +15,4 @@
 ![image.png](../assets/id2.png)
 
 - 根据格式要求填写`应用 ID`（`支持两种格式数据，以逗号、分号分隔的字符串，及 JSON 格式字符串`）
-  ![image.png](../assets/id3.png)
+![image.png](../assets/id3.png)

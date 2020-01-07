@@ -9,39 +9,39 @@ deployment/daemonset/job/statefuleset
 
 - 模板及应用展示
 
-![](../../assets/template_instance.jpg)
+![-w2020](../../assets/template_instance.jpg)
 
 - 应用详情
 
-![](../../assets/instance_detail.jpg)
+![-w2020](../../assets/instance_detail.jpg)
 
 - 容器详情
 
-![](../../assets/container_detail.jpg)
+![-w2020](../../assets/container_detail.jpg)
 
 ## 操作相关
 - 滚动升级
 
 `注: 允许应用类型包含 deployment/daemonset/job/statefulset`
 
-![](../../assets/rollingupdate.jpg)
+![-w2020](../../assets/rollingupdate.jpg)
 
 - 扩缩容
 
 实例数量增加或减少
 
-![](../../assets/scale.jpg)
+![-w2020](../../assets/scale.jpg)
 
 - 重建应用
 
 重建包含两个步骤: 删除当前应用，然后以现有配置再创建应用(类似进程重启)
 
-![](../../assets/recreate.jpg)
+![-w2020](../../assets/recreate.jpg)
 
 - 删除应用
 
-![](../../assets/delete.jpg)
+![-w2020](../../assets/delete.jpg)
 
 - 重新调度
 
-![](../../assets/reschedule.jpg)
+![-w2020](../../assets/reschedule.jpg)

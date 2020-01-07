@@ -15,21 +15,21 @@
 ## 填写配置项
 
 填写蓝鲸采集器获取 prometheus exporter metrics 的访问地址的参数（下图中步骤 1、2、3） 和 exporter 启动的运行参数（下图中步骤 4、5）
-![](../../assets/config_schema.jpg)
+![-w2020](../../assets/config_schema.jpg)
 上述参数请在组件采集器对应的 [S-mart](http://bk.tencent.com/s-mart/market)说明中获取。
 
 ## 采集测试
 
-![](../../assets/collection_test.jpg)
+![-w2020](../../assets/collection_test.jpg)
 
 ## 设置采集周期
 
-![](../../assets/collection_policy_set.jpg)
+![-w2020](../../assets/collection_policy_set.jpg)
 注： 趋势数据保存周期正在开发中.
 
 ## 自动出图
 
-![](../../assets/component_graph.jpg)
+![-w2020](../../assets/component_graph.jpg)
 
 ## 设定策略
 

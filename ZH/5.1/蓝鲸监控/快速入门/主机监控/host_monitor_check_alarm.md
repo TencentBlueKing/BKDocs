@@ -4,8 +4,8 @@
 
   - 1. 列表模式：通过列表形式展示历史告警数据，提供多种维度让用户可以精确过滤展示相应的告警
 
-    ![](../../assets/monitor_check_alarm.png)
+    ![-w2020](../../assets/monitor_check_alarm.png)
 
   - 2. 日历模式：通过日历形式展示历史告警数据，方便用户通过时间维度展示历史告警数据
 
-    ![](../../assets/monitor_check_alarm2.png)
+    ![-w2020](../../assets/monitor_check_alarm2.png)

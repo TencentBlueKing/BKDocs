@@ -24,7 +24,7 @@
 
 - 可以集成蓝鲸平台的 CMDB
 
-![](../assets/image001.png)
+![-w2020](../assets/image001.png)
 
 # 自动发现
 

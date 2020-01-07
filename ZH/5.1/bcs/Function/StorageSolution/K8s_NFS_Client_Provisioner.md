@@ -164,7 +164,7 @@ drwxrwxrwx 2 root root 4096 9月   9 19:54 default-auto-claim-pvc-9803c5c5-d2f8-
 
 下图是解决问题之后的截图，和出问题是配置的差异是 kube-system 命名空间下的 kube-apiserver Pod 的启动参数中多了 `DefaultStorageClass`。
 
-![](../../assets/15682537115267.jpg)
+![-w2020](../../assets/15682537115267.jpg)
 
 > `--admission-control` was deprecated in `1.10` and replaced with `--enable-admission-plugins`.
 

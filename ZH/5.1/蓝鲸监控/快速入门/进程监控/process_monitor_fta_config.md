@@ -2,5 +2,5 @@
 
 在 [故障自愈](5.1/FTA/Intro/README.md) SaaS 中选择 `接入自愈`，告警类型选择 `进程端口`，模块选择该进程所属模块（不同进程的处理方式不一样）
 
-![](../../assets/monitor003.png)
+![-w2020](../../assets/monitor003.png)
 <center>图 1. 接入自愈</center>

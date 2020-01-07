@@ -2,7 +2,7 @@
 
 蓝鲸监控支持对常见开源组件及商业中间件的性能指标监控，比如 Nginx 的每分钟客户端请求数(req_per_min)、等待中的连接数(waiting)等，或 Oracle 的并发等待时间(CONCURRENCY_WAIT_TIME)等，通过监控这些指标，防止出现进程状态存活，工作状态已经异常的情况。
 
-![](../assets/15365875823211.jpg)
+![-w2020](../assets/15365875823211.jpg)
 <center>图 1. 组件监控</center>
 
 ![Nginx_metrics](../assets/Nginx_metrics.gif)

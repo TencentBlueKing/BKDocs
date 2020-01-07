@@ -81,18 +81,18 @@ JOB 对日志数据库表进行表分区， 并且要求 MYSQL 中启动事件�
 ## 分发文件，执行历史报 "redis no result found"
 - 问题现象
 
-  ![](../../assets/file.jpg)
-  
+  ![-w2020](../../assets/file.jpg)
+
 - 解决方案
 
     1.gse 或者 redis 进程状态异常。
-    
+
      gse 或者 redis 异常查看相应日志文件。/data/bkce/logs/gse/、/data/bkce/logs/redis。
-       
+
     2.登陆至 gse server 模块所在机器上，`ps -ef |grep gse_agent` 确认该机器上成对出现 gse_agent 进程。如无，执行 `/usr/local/gse/agent/bin/gsectl start` 手动拉起 gse_agent。
 
     3.gse 和 redis 需要同在一台机器上部署。
-    
+
     4.蓝鲸 server 端 agent 需确保正常
       `ps -ef |grep gse_agent` 进程成对出现（gse所在机器）
      ```bash
@@ -117,4 +117,3 @@ JOB 对日志数据库表进行表分区， 并且要求 MYSQL 中启动事件�
 | 1211121 | JOB  | CMDB  | 蓝鲸业务下的 Git 模块没有 IP（包管理）                          |
 | 1213001 | JOB  | PAAS  | PAAS 服务不可达 - 地址配置错误或者地址无法正确解析            |
 | 1213002 | JOB  | PAAS  | PaaS 接口返回数据结构异常。一般是被网关防火墙重定向返回非 JSON 协议内容 |
-

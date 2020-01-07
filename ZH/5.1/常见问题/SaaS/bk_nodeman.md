@@ -2,7 +2,7 @@
 
 ## 部署的时候报 Unknown column
 
-![](../assets/15318834424275.png)
+![-w2020](../assets/15318834424275.png)
 
 - 原因: 因为升级数据初始化是根据 3.0 以上版本的 DB 结构做数据迁移的，低于 3.0 的 agent 版本原有的机器表中不存在对应的字段，所以会报错
 
@@ -28,7 +28,7 @@
 
 ## 安装 Proxy 报错
 
-![](../assets/1535613920390.png)
+![-w2020](../assets/1535613920390.png)
 
 **解决方法**：
 
@@ -63,7 +63,7 @@ server_name x.x.x.x（内网ip） x.x.x.x（外网ip）;
 
 ## 节点管理中部署 agent 失败, 详情日志中报错: 组件调用异常: unkown component's error: the response is None(code=UNKOWN ERROR)
 
-![](../assets/1535613594508.png)
+![-w2020](../assets/1535613594508.png)
 
 可能原因: bk_nodeman 没有添加到 paas 白名单
 
@@ -76,7 +76,7 @@ _add_app_token bk_nodeman $(app_token bk_nodeman)
 
 ## 注册主机到 CMDB 失败: 0 行[[import_from]' 数据校验参数不通过(社区版4.1及其之前版本)
 
-![](../assets/15318845967497.jpg)
+![-w2020](../assets/15318845967497.jpg)
 
 原因: CMDB 中主机属性配置信息错误
 
@@ -87,13 +87,13 @@ _add_app_token bk_nodeman $(app_token bk_nodeman)
 
 在字段列表中找到 字段名 为 录入方式(import_from)的行, 并点击展开如下
 
-![](../assets/15318847114893.jpg)
+![-w2020](../assets/15318847114893.jpg)
 
 编辑上图中 api 类型的枚举值为 3 并保存. 然后回到节点管理重新安装
 
 ## 注册主机到 CMDB 失败: 0 行"xxxxx"未赋值
 
-![](../assets/15318848260214.png)
+![-w2020](../assets/15318848260214.png)
 
 原因: 在 CMDB 导入主机的字段中增加了一个自定义的必填字段
 
@@ -101,7 +101,7 @@ _add_app_token bk_nodeman $(app_token bk_nodeman)
 
 ## 检查 Agent 状态报错: 组件调用异常 exec redis_pipe_line_cmd failed
 
-![](../assets/15318862302643.png)
+![-w2020](../assets/15318862302643.png)
 
 原因: gse_api 查询 redis 状态失败
 
@@ -110,7 +110,7 @@ _add_app_token bk_nodeman $(app_token bk_nodeman)
 
 ## 检查 agent 状态超时
 
-![](../assets/15318864938300.jpg)
+![-w2020](../assets/15318864938300.jpg)
 
 原因: 通过 esb 查询 agent 状态, 太长时间获取不到 agent 状态信息. 可能原因如下
 
@@ -122,7 +122,7 @@ _add_app_token bk_nodeman $(app_token bk_nodeman)
 
 ## 安装 windows 在第一步卡住
 
-![](../assets/15318885055901.jpg)
+![-w2020](../assets/15318885055901.jpg)
 
 原因: 检测 Windows 系统版本需要通过 SMB 协议向待安装主机发送命令时可能阻塞
 
@@ -130,13 +130,13 @@ _add_app_token bk_nodeman $(app_token bk_nodeman)
 
 ## 启动进程失败
 
-![](../assets/15315097172270.jpg)
+![-w2020](../assets/15315097172270.jpg)
 
 解决办法: 联系蓝鲸的同学
 
 ## 密码错误: Authentication failed
 
-![](../assets/1535612961429.png)
+![-w2020](../assets/1535612961429.png)
 
 解决办法: 检查密码并修正后重试
 Note
@@ -145,7 +145,7 @@ Note
 
 ## 检查 Agent 状态结果提示: failed to connect GSE service
 
-![](../assets/1535612853368.png)
+![-w2020](../assets/1535612853368.png)
 
 若为 proxy
 

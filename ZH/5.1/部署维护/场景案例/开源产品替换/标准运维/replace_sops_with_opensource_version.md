@@ -266,7 +266,7 @@ add_app_token bk-sops-ce "$(_app_token bk-sops-ce)" "标准运维定制版"
 打开蓝鲸桌面 `http://{BK_PaaS_HOST}/console/`，在应用市场找到名字为“标准运维” (APP_CODE: bk_sops) 的应用，添加到桌面并打开。
 修改浏览器链接为 `http://{BK_PaaS_HOST}/o/bk-sops-ce/admin/`，打开标准运维管理后台页面。
 
-![](../../../assets/11.png)
+![-w2020](../../../assets/11.png)
 
 找到环境变量 "EnvironmentVariables" 表并单击进入编辑页面。将第二步中准备好的 Redis 信息填写到环境变量配置中，即增加 3 条数据 BKAPP_Redis_HOST、BKAPP_Redis_PORT、BKAPP_Redis_PASSWORD。
 如果直接复用蓝鲸已经部署好的 Redis 服务，环境变量可以分别配置为：
@@ -277,7 +277,7 @@ add_app_token bk-sops-ce "$(_app_token bk-sops-ce)" "标准运维定制版"
 
 - BKAPP_Redis_PORT=6379
 
-![](../../../assets/44.png)
+![-w2020](../../../assets/44.png)
 
 ### 重新部署应用
 

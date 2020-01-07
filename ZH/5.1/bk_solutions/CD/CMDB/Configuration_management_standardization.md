@@ -23,7 +23,7 @@
 
 建立一个权威统一的 CMDB 配置主数据，作为自动化运维平台、监控平台、运维流程平台等一系列 IT 系统的基石。
 
-![](../assets/15602199321821.jpg)
+![-w2020](../assets/15602199321821.jpg)
 
 <center> CMDB 是 ITIL 的基石 </center>
 
@@ -41,7 +41,7 @@
 
 以下是蓝鲸配置平台（[已开源](https://github.com/Tencent/bk-cmdb)）相当于传统 CMDB 的优势，正好切中运维在配置管理上遇到的痛点，同时在产品设计和架构上具有很强的扩展能力。
 
-![](../assets/15602199513502.jpg)
+![-w2020](../assets/15602199513502.jpg)
 
 <center> 配置平台 的核心能力 </center>
 
@@ -63,7 +63,7 @@
 
 来吧，一起共建属于大家的 [开源的 CMDB 项目](https://github.com/Tencent/bk-cmdb)！
 
-![](../assets/15605114938006.jpg)
+![-w2020](../assets/15605114938006.jpg)
 
 <center> 开源共建 CMDB </center>
 

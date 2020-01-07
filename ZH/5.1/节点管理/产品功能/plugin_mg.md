@@ -10,8 +10,8 @@
 
 3. 更新版本
 
-![112188](../assets/agent/image-20190916001112188.png)
+![-w2020](../assets/agent/image-20190916001112188.png)
 
-![157470](../assets/agent/image-20190916001157470.png)
+![-w2020](../assets/agent/image-20190916001157470.png)
 
-![239926](../assets/agent/image-20190916001239926.png)
+![-w2020](../assets/agent/image-20190916001239926.png)

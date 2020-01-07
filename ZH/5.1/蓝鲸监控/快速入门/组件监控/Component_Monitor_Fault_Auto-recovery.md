@@ -10,19 +10,19 @@
 ![-w1219](../../assets/monitor011.png)
 <center>图1. 组件监控（MySQL:线程数）接入自愈示例</center>
 
-![](../../assets/monitor012.png)
+![-w2020](../../assets/monitor012.png)
 <center>图2. 组件监控（MySQL:每分钟删行数）接入自愈示例</center>
 
 > 自愈场景的`按内容筛选`填写监控名称，从这里获取
-![](../../assets/15371908871438.jpg)
+![-w2020](../../assets/15371908871438.jpg)
 <center>图3. 获取组件监控的监控名称方法</center>
 
 ## 自愈详情
 可以看到，不同的监控项执行了对应的自愈套餐
-![](../../assets/15371873424765.jpg)
+![-w2020](../../assets/15371873424765.jpg)
 <center>图4. 组件监控（MySQL:线程数）接入自愈详情</center>
 
-![](../../assets/15371916430164.jpg)
+![-w2020](../../assets/15371916430164.jpg)
 <center>图5. 组件监控（MySQL:每分钟删行数）接入自愈详情</center>
 
 
@@ -35,7 +35,7 @@
 > 在指标配置时维度必须包含IP、bk_cloud_id，如此监控才能传递[执行IP](5.1/FTA/Scenes/Solutions_Parameters.md)
 
 在仪表盘配置视图时，group by 添加 `IP`、`bk_cloud_id`
-![](../../assets/15371902227574.jpg)
+![-w2020](../../assets/15371902227574.jpg)
 
 <center>图6.仪表盘配置视图添加维度</center>
 
@@ -48,7 +48,7 @@
 另一种场景是，求大盘均值，而不是单台服务器，则无法传递IP，则直接在套餐中固定IP。
 
 在仪表盘中未指定group by
-![](../../assets/15371902911352.jpg)
+![-w2020](../../assets/15371902911352.jpg)
 <center>图8. 在仪表盘中未指定group by</center>
 
 在作业平台套餐中，取消勾选`用告警IP替代作业执行IP`
@@ -56,7 +56,7 @@
 <center>图9. 取消勾选作业平台套餐的`用告警IP替代作业执行IP`</center>
 
 在作业中固定执行主机
-![](../../assets/15371906331344.jpg)
+![-w2020](../../assets/15371906331344.jpg)
 <center>图10. 在作业中固定执行主机</center>
 
 
