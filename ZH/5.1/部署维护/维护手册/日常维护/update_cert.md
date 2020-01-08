@@ -21,7 +21,7 @@ for ip in ${ALL_IP[@]}; do
 done
 
  for ip in ${JOB_IP[@]}; do
-     rcmd root@$ip "gen_job_cert"
+     rcmd root@$ip "source $CTRL_DIR/install.rc; gen_job_cert"
  done
 
 ./bkcec stop license
