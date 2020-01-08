@@ -5,14 +5,12 @@
 1. P-Agent 节点无法连接到 Nginx 进行文件的下载。
 2. 节点管理所在机器 (APPO) 也无法连接到 P-Agent。
 
-
 在安装 Proxy 时，提前把 P-Agent 的安装包下载到 Proxy 节点上。因此 P-Agent 的安装在 Proxy 上操作即可完成。
 
 安装云区域下的 P-Agent 使用的脚本仍然是：`agent_setup_pro.sh`，使用 -o 参数将要安装机器列表填写在配置文件中。
 脚本将自动识别并完成 Agent 的安装。
 
-
-在 {% em type=red %} **任意一台** {% endem %} Proxy 机器上执行安装即可。
+在 **任意一台** Proxy 机器上执行安装即可。
 
 ## P-Agent 主机列表配置文件
 
