@@ -50,7 +50,7 @@ root@rbtnode1 ~#
 root@rbtnode1 ~# agent_setup_pros.h -b -m client -o /tmp/pagent.list -i CLOUD_ID -l PROXY_LAN_IP
 ```
 
-> **[info] Note:**
+> **Note:**
 >
 > 1. 注意替换上述命令中的 CLOUD_ID，PROXY_LAN_IP 为实际值。
 > 2. 若有两台 Proxy，-l 选项参数中把两个 Proxy 的内网 IP 用逗号分隔即可。
