@@ -23,8 +23,11 @@ root@rbtnode1 ~# curl -s -X POST \
 
 若脚本返回如下信息表示注册成功：`{"code":0,"data":""}` 。
 
-> **[info] Note:**
+> **Note:**
 >
 > 1. 注意替换上述命令中的 CLOUD_ID, IP_ADDR, CMDB_HOST,NGINX_PORT 为实际值。
-> 2. 若一台机器上有多个 IP，则需要填写 get_lan_ip 函数中获得的第一个 IP。
-> 3. 若执行安装过程中，使用了 -e 选项输入 IP，则注册时填写 -e 选项后面的 IP 。
+> 2. IP_ADDR 表示要注册到CMDB中的主机IP
+> 3. CLOUD_ID 为云区域ID，可以在节点管理的云区域管理界面查看
+> 4. CMDB_HOST 要求填写域名, cmdb.service.consul 或 浏览器访问的FQDN域名
+> 5. 若一台机器上有多个 IP，则需要填写 get_lan_ip 函数中获得的第一个 IP。
+> 6. 若执行安装过程中，使用了 -e 选项输入 IP，则注册时填写 -e 选项后面的 IP 。
