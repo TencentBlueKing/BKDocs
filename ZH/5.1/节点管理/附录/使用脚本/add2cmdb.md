@@ -6,11 +6,10 @@
 - 登陆机器执行以下命令。
 获取 CLOUD_ID（云区域 ID ）。详情参考 [新增云区域](../../快速入门/create_cloud.md) 。
 
-```plain
-**[terminal]
-**[prompt root@rbtnode1 ]**[path ~]**[delimiter # ]
-**[prompt root@rbtnode1 ]**[path ~]**[delimiter # ]
-**[prompt root@rbtnode1 ]**[path ~]**[delimiter # ]**[command curl -s -X POST \
+```bash
+root@rbtnode1 ~#
+root@rbtnode1 ~#
+root@rbtnode1 ~# curl -s -X POST \
         -H 'cache-control: no-cache' \
         -H 'content-type: application/x-www-form-urlencoded' \
         -H 'BK_USER: admin' \
@@ -19,7 +18,7 @@
         -d ip=<IP_ADDR> \
         -d appName=<想注册到CMDB中的业务名称> \
         -d platId=<CLOUD_ID> \
-        $post_args http://<CMDB_HOST>:<NGINX_PORT>/api/host/addhost]
+        $post_args http://<CMDB_HOST>:<NGINX_PORT>/api/host/addhost
 ```
 
 若脚本返回如下信息表示注册成功：`{"code":0,"data":""}` 。

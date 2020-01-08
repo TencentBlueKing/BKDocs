@@ -18,7 +18,7 @@
 
 配置文件格式如下
 
-```plain
+```bash
 IP  SSH 端口 登陆账号 密码/密钥文件路径 操作系统名称  是否有 Cygwin
 ```
 - SSH 端口：Windows 无 Cygwin 时，SSH 端口任意填写即可。但不是空。
@@ -29,7 +29,7 @@ IP  SSH 端口 登陆账号 密码/密钥文件路径 操作系统名称  是否
 
 配置文件示例：
 
-```plain
+```bash
 10.0.0.1    22  root            mypassword01        linux   0
 10.0.0.2    22  root            /root/.ssh/id_rsa   linux   0
 10.0.0.3    22  Administrator   mypassword02        windows 1
@@ -46,11 +46,10 @@ IP  SSH 端口 登陆账号 密码/密钥文件路径 操作系统名称  是否
 
 在 {% em type=red %} **任意一台** {% endem %} Proxy 机器上执行一下命令即可。
 
-```plain
-**[terminal]
-**[prompt root@rbtnode1 ]**[path ~]**[delimiter # ]
-**[prompt root@rbtnode1 ]**[path ~]**[delimiter # ]
-**[prompt root@rbtnode1 ]**[path ~]**[delimiter # ]**[command agent_setup_pros.h -b -m client -o /tmp/pagent.list -i CLOUD_ID -l PROXY_LAN_IP]
+```bash
+root@rbtnode1 ~#
+root@rbtnode1 ~#
+root@rbtnode1 ~# agent_setup_pros.h -b -m client -o /tmp/pagent.list -i CLOUD_ID -l PROXY_LAN_IP
 ```
 
 > **[info] Note:**
