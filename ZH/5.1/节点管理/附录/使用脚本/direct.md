@@ -94,7 +94,7 @@ when BRIDGE MODE enabled
     IP 端口 用户名 密码/密钥文件绝对路径 操作系统类型 是否有 Cygwin
 ```
 
-> **[info] Note:**
+> **Note:**
 >
 > 1. -i 指定的云区域 ID，需要先在页面上创建好云区域才能获得. 详情请参考 [非直连区域的Proxy安装](../../快速入门/add_proxy.md) 。
 > 2. 要卸载 Agent，使用所提供的脚本(包括后续 AIX、Windows 安装的脚本) 带上  -r 参数即可完成卸载。
