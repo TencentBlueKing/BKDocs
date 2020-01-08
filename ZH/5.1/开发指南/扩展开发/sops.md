@@ -293,7 +293,7 @@ __requirements__ = [
 - 在 Component 类中添加 `embedded_form` 属性并设置为 `True`
 - 在 Component 类中添加 `form` 属性并将其值设置为表单的定义
 
-下面的例子展示了在 4，5 小节中定义的插件的内嵌式表单声明的方式：
+下面代码 展示了插件的内嵌式表单声明的方式：
 
 ```python
 class TestCustomComponent(Component):
