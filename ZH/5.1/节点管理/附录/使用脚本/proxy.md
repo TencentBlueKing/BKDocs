@@ -17,7 +17,7 @@ root@rbtnode1 download#
 root@rbtnode1 download# bash agent_setup_pro.sh -m proxy -i CLOUD_ID
 ```
 
-> **[info] Note:**
+> **Note:**
 >
 > 1. 注意替换上述命令中的 CLOUD_ID 为实际的云区域 ID。
 > 2. 若使用了错误的云区域 ID，平台将无法识别或查找到上报的数据。
