@@ -86,7 +86,7 @@ root@rbtnode1 download#
 第三个参数: Proxy 外网 IP, 多个 Proxy 用短横线分隔
 ```
 
-> **[info]**
+> **Note**
 >
 > 若第一个参数为  -r，则其忽略其余参数，直接卸载 Agent。
 
