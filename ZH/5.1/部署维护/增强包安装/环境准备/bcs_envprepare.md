@@ -42,7 +42,7 @@ export BCS_MONITOR_IFACE="eth0"
 
 > Note:
 >
-> 1. 登陆 install.config 中的 bcs(monitor) 模块所在的机器，查看该机器实际网卡名称并替换 BCS_MONITOR_IFACE 该变量的值。
+> 登陆 install.config 中的 bcs(monitor) 模块所在的机器，查看该机器实际网卡名称并替换 BCS_MONITOR_IFACE 该变量的值。
 
 ## 修改 install/bcs/globals.env 配置
 

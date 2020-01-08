@@ -96,17 +96,18 @@ yum install mariadb-server mariadb
 编辑系统安装的 mysql 配置文件。
 
 1. 配置 mysql server：编辑/etc/my.cnf.d/server.cnf (如果不存在，则直接编辑/etc/my.cnf）。在 `[mysqld]` 段下新增如下配置：
-
+    ```
         character-set-server = utf8plainplain
         bind-address = 10.0.0.1
         max_connections = 3000
         event_scheduler=ON
         innodb_file_per_table=1
         expire_logs_days=7
+    ```
     > 注：bind-address 中的 10.0.0.1 请替换为实际的 LAN_IP
 2. 配置 mysql 客户端：编辑/etc/my.cnf.d/client.cnf（如果不存在，则直接编辑/etc/my.cnf）。在 `[client]` 段下新增如下配置：
 
-        default-character-set = utf8plain
+        `default-character-set = utf8plain`
 
 往 /data/blueking.env 文件中追加以下配置，依次为蓝鲸连接 mysql 使用的用户名、密码、mysqld 的监听端口：
 
@@ -171,8 +172,8 @@ REDIS_PORT=6379
 ### 启动 Redis
 
 ```bash
-systemctl start redis  # 启动redis-server服务
-systemctl status redis # 查看redis的状态
+systemctl start redis  # 启动 redis-server 服务
+systemctl status redis # 查看 redis 的状态
 ```
 
 ### 安装 Nginx
@@ -374,7 +375,7 @@ echo $MYSQL_USER
 ```bash
 $  set -a
 $  source /data/blueking.env
-$  set +a # 关闭开关，防止之后的定义不小心被export
+$  set +a # 关闭开关，防止之后的定义不小心被 export
 $  bash
 $  echo $MYSQL_USER
 blueking

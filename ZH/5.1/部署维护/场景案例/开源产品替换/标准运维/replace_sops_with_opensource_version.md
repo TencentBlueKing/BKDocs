@@ -81,11 +81,11 @@ BK_JOB_HOST = '{BK_JOB_HOST}'
 ```python
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.MySQL',  # 默认用MySQL
-        'NAME': APP_ID,       # 数据库名 (默认与APP_ID相同)
-        'USER': 'root',       # 你的数据库user
-        'PASSWORD': '',       # 你的数据库password
-        'HOST': 'localhost',  # 数据库HOST
+        'ENGINE': 'django.db.backends.MySQL',  # 默认用 MySQL
+        'NAME': APP_ID,       # 数据库名 (默认与 APP_ID 相同)
+        'USER': 'root',       # 你的数据库 user
+        'PASSWORD': '',       # 你的数据库 password
+        'HOST': 'localhost',  # 数据库 HOST
         'PORT': '3306',       # 默认3306
     },
 }
@@ -292,12 +292,12 @@ add_app_token bk-sops-ce "$(_app_token bk-sops-ce)" "标准运维定制版"
 ```python
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.MySQL',  # 默认用MySQL
+        'ENGINE': 'django.db.backends.MySQL',  # 默认用 MySQL
         'NAME': 'bk_sops',                     # 数据库名 (测试环境写 bk_sops_bkt)
-        'USER': '',                            # 官方标准运维应用数据库user
-        'PASSWORD': '',                        # 官方标准运维应用数据库password
-        'HOST': '',                   		   # 官方标准运维应用数据库HOST
-        'PORT': '',                            # 官方标准运维应用数据库PORT
+        'USER': '',                            # 官方标准运维应用数据库 user
+        'PASSWORD': '',                        # 官方标准运维应用数据库 password
+        'HOST': '',                   		   # 官方标准运维应用数据库 HOST
+        'PORT': '',                            # 官方标准运维应用数据库 PORT
     },
 }
 

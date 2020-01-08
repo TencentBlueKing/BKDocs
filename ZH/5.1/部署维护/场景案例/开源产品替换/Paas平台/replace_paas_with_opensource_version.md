@@ -9,9 +9,9 @@
 - 备份原社区版 `open_paas` 目录,将开源的 PaaS 代码解压到中控机的 `/tmp` 目录下
 
   ```bash
-  mv /data/src/open_paas /data/open_paas-bak  #备份原 PaaS 工程
-  cp -a /tmp/bk-PaaS-master/paas-ce/paas /data/src/open_paas #拷贝开源代码到 src 目录
-  cp -a /data/open_paas-bak/support-files  /data/src/open_paas/ #拷贝原配置模版文件
+  mv /data/src/open_paas /data/open_paas-bak  # 备份原 PaaS 工程
+  cp -a /tmp/bk-PaaS-master/paas-ce/paas /data/src/open_paas # 拷贝开源代码到 src 目录
+  cp -a /data/open_paas-bak/support-files  /data/src/open_paas/ # 拷贝原配置模版文件
   rsync -a /data/open_paas-bak/esb/components/*  /data/src/open_paas/esb/components/
   cp -a /data/open_paas-bak/esb/lib/gse /data/src/open_paas/esb/lib/
   ```
@@ -66,7 +66,7 @@
 
 1.以标准运维 `bk_sops` 为例进行说明
 
-**（1）场景一：**
+### 场景一：
 
 复制 SaaS 为新应用，访问 SaaS 应用组件时，请求转发到新的 SaaS 应用。假定新标准运维应用为 `bk-sops-ce`。
 
@@ -76,7 +76,7 @@
 
 - 重启服务参考：[API 网关服务常用指令/重启 API 网关服务](5.1/开发指南/扩展开发/API网关/chapter1.md#重启服务)
 
-**（2）场景二：**
+### 场景二：
 
 复制 SaaS 为新应用，并为新应用提供新的组件。假定新标准运维应用为 `bk-sops-ce`。
 

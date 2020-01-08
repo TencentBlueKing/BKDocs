@@ -26,7 +26,7 @@ public 目录一般不能手动删除，一般比较大的组件可能有
 
 **注意：** 下述方法仅供参考，具体以实际生产环境情况进行调整。
 
-**手动清理 binlog**
+### 手动清理 binlog
 
 若社区版设置了多台 MySQL，需查看主库和从库正在使用的 binlog 是哪个文件
 
@@ -64,7 +64,7 @@ purge master logs to'mysql-bin.00000x';
 
 - 使用该语法，会将对应的文件和 mysql-bin.index 中的对应路径删除。
 
-**自动清理 binlog 日志**
+### 自动清理 binlog 日志
 
 使用如下方法查询当前 binlog 的过期时间，若为 0 表示不过期。
 
@@ -88,7 +88,7 @@ mysql> set global expire_logs_days = 30;
 > Kafka 将数据持久化到了硬盘上，允许配置一定的策略对数据清理，清理的策略有两个，删除和压缩。
 **注意：** 下面清理策略，请根据实际业务，服务器状况，及需求来定制。
 
-**方法一：** 调整配置文件
+### 方法一：调整配置文件
 
 ```bash
 # 配置文件位置
@@ -105,7 +105,7 @@ log.retention.bytes=10737418240（超过指定大小 10G 后，删除旧的消�
 ```
 设置完毕后，重启服务来生效。
 
-**方法二：** Kafka 设置 Topic 过期时间
+### 方法二：Kafka 设置 Topic 过期时间
 
 ```bash
 # 设置过期时间，只能用毫秒（retention.ms），或者 bytes（retention.bytes）
@@ -121,7 +121,7 @@ $ updated config for topic "snapshot2"
 - 查看目前所有的索引
 
 ```bash
-source /data/install/utils.fc  
+source /data/install/utils.fc
 curl -s "http://$ES_IP:$ES_REST_PORT/_cat/indices"
 ```
 

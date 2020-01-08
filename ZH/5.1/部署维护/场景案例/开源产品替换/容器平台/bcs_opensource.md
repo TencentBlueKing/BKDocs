@@ -14,7 +14,7 @@
   - 将编译生成的 `bcs_cc` 二进制文件替换到原 `/data/src/bcs/cc/bin/` 目录下
 
     ```bash
-    rm -f /data/src/bcs/cc/bin/bcs_cc  # 删除原 bcs_cc二进制文件
+    rm -f /data/src/bcs/cc/bin/bcs_cc              # 删除原 bcs_cc二进制文件
     cp -a bcs-cc/bin/bcs_cc /data/src/bcs/cc/bin/  # 替换编译后生成的 bcs_cc 二进制文件
     ```
 
@@ -24,7 +24,7 @@
 
   ```bash
   rm -rf /data/src/bcs/web_console/manage.py # 删除原文件
-  rm -rf /data/src/bcs/web_console/backend # 删除原文件
+  rm -rf /data/src/bcs/web_console/backend   # 删除原文件
   tar xf bcs-app/build/bcs_web_console-ce-20190619173651.tar.gz -C /data/src/  # 将开源构建的 backend 目录同步到 src下
   ```
 
@@ -36,14 +36,14 @@
    mkdir -p /data/devops_bak
    cp -a /data/src/devops /data/devops_bak  # 备份为开源目录
   ```
-  
+
 - 替换 `frontend/console` 目录
 
   ```bash
   rm -rf /data/src/devops/navigator/frontend/console/* # 删除原文件
   rsync -a bcs-projmgr/frontend/dist/*  /data/src/devops/navigator/frontend/console/ # 更新开源文件
   ```
-  
+
 - 替换 `gateway/lua` 目录
 
   ```bash

@@ -55,8 +55,8 @@
 
   - 恢复 `globals.env` 相关配置信息
     - **自行比对新老文件的差异，将旧的 `globals.env` 文件的 `#域名信息` `#DB信息` `#账户信息` `GSE\NGINX_WAN_IP` `#设置HTTP/HTTPS模式`同步修改到新的 `globals.env` 配置文件内，务必谨慎对比，账户密码信息至关重要，新配置文件的新增内容不可删除。**
-    ![](../../assets/globals.env.sample2.png)
-    ![](../../assets/globals.env.sample3.png)
+    ![-w2020](../../assets/globals.env.sample2.png)
+    ![-w2020](../../assets/globals.env.sample3.png)
   - 更新 `install.config`
     - 根据 `install.config.new.sample` 文件的 `[bkce-basic]` 格式更新 `install.config` 文件。
     - 示例：
@@ -82,7 +82,7 @@
 - 恢复 CICDKit 安装包
 
   ```bash
-  #如果你已经部署 CICDKit 请执行，若没有请忽略
+  # 如果你已经部署 CICDKit 请执行，若没有请忽略
   cp -a /data/src.bak/cicdkit src/
   cp -a /data/src.bak/service/mysql57 src/service
 
@@ -91,8 +91,8 @@
 - 恢复 CICDKit 脚本包
 
   ```bash
-  #如果你已经部署 CICDKit 请执行，若没有请忽略
-  cp -a install.bak/parse_config  install/   
+  # 如果你已经部署 CICDKit 请执行，若没有请忽略
+  cp -a install.bak/parse_config  install/
   cp -a install.bak/third/*  install/third/
   ```
 
@@ -100,20 +100,20 @@
 
   ```bash
   # 中控机查看
-  cat /data/install/.path #查看安装路径是否为空
-  ll /data/install/.migrate/ # 查看目录下sql标记文件是否存在
+  cat /data/install/.path    # 查看安装路径是否为空
+  ll /data/install/.migrate/ # 查看目录下 sql 标记文件是否存在
   ```
 
 - 同步数据
 
   ```bash
-  ./bkcec sync all  #同步新的软件包，在同步过程中
+  ./bkcec sync all  # 同步新的软件包，在同步过程中
   ```
 
   > Note: 执行同步过程中，可能有文件不存在的报错，报错文件是点号开头的隐藏文件，可以忽略，是因为并发
 分发文件引起的，属于正常现象。
 
-  ![](../../assets/sync1.png)
+  ![-w2020](../../assets/sync1.png)
 
 ## 开始升级
 
@@ -182,13 +182,13 @@
   ```bash
   # 中控机执行
   ./bkcec stop mysql
-  ./bkcec status mysql  
+  ./bkcec status mysql
   ```
 
 - 备份 MySQL5.5 软件和数据目录，配置文件等。
 
   ```bash
-  # 备份，MySQL机器执行
+  # 备份，MySQL 机器执行
   ssh $MYSQL_IP
   mv /data/bkce/service/mysql /data/bkce/service/mysql55
   mv /data/bkce/public/mysql /data/bkce/public/mysql55
@@ -230,7 +230,7 @@
 - 更新 PaaS
 
   ```bash
-  # 登录PaaS机器
+  # 登录 PaaS 机器
   ssh $PAAS_IP
   mv /data/bkce/open_paas /data/bkce/open_paas_50_bak
   # 中控机执行
@@ -243,7 +243,7 @@
 - 更新 CMDB
 
   ```bash
-  ./bkcec install cmdb  
+  ./bkcec install cmdb
   ./bkcec start cmdb
   ./bkcec status cmdb
   ./bkcec upgrade cmdb
@@ -279,7 +279,7 @@
   # 更新 appt
   ./bkcec upgrade appt
   ./bkcec start appt
-  ./bkcec status appt  
+  ./bkcec status appt
   ./bkcec activate appt
   ```
 
@@ -298,7 +298,7 @@
   ./bkcec install fta
   ./bkcec upgrade fta
   ./bkcec start fta
-  ./bkcec status fta  
+  ./bkcec status fta
   ```
 
 ### 升级 SaaS

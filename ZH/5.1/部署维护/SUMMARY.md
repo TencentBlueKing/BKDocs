@@ -77,6 +77,5 @@
         * [社区版 V4.0 升级至 V5.0 JobLog 日志迁移指引](升级指引/update_patch/JobLog.md)
         * [补丁包通用部署指南](升级指引/update_patch/upgrade.md)
 * [卸载指引](卸载指引/uninstall.md)
-
 * [附录]()
     * [蓝鲸产品及开源组件版本](附录/开源组件版本/version.md)
