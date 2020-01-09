@@ -125,7 +125,7 @@ def getCmdbHost():
 
 #### 生成新增 IP 列表、更新 IP 列表、更新信息列表
 
-根据步骤 2.2 和 步骤 2.3 获取到的两个主机列表，对比生成所需的新增列表和更新列表。
+根据 **获取蓝鲸 CMDB 主机列表**操作步骤 和  **获取 公司 CMDB 主机列表**操作步骤 获取到的两个主机列表，对比生成所需的新增列表和更新列表。
 
 ```python
 def genAddList(cmdbList, bkList):
@@ -188,7 +188,7 @@ updateInfoList = genInfoList(cmdbList, bkList, addList, attributeMAP)
 
 #### 录入、更新主机数据到蓝鲸 CMDB
 
-- 录入新增主机信息：使用 步骤 2.4 中生成的新增主机信息列表，录入蓝鲸 CMDB
+- 录入新增主机信息：使用  **生成新增 IP 列表、更新 IP 列表、更新信息列表**操作步骤 中生成的新增主机信息列表，录入蓝鲸 CMDB
 
 ```python
 def addBkCmdbHost(infoList):
@@ -230,7 +230,7 @@ def addBkCmdbHost(infoList):
 addBkCmdbHost(addInfoList)
 ```
 
-- 更新主机数据：使用步骤 2.4 中生成的更新主机信息列表，更新蓝鲸 CMDB
+- 更新主机数据：使用 **生成新增 IP 列表、更新 IP 列表、更新信息列表**操作步骤 中生成的更新主机信息列表，更新蓝鲸 CMDB
 
 ```python
 def updateBkCmdbHost(infoList):
