@@ -14,4 +14,5 @@
 
 `Trackback…TypeError:int() argument must be a string or a number,not ‘NoneType’`，可能是什么原因？
 
-标准运维任务流程的执行状态和原子输入、输出等信息缓存依赖 Redis 服务，所以首次部署请务必按照“标准运维部署文档”，配置 Redis 环境变量后重新部署。
+标准运维任务流程的执行状态和原子输入、输出等信息缓存依赖 Redis 服务，所以首次部署请务必按照“ [标准运维部署安装](https://bk.tencent.com/docs/document/5.1/20/620?r=1)”，配置 Redis 环境变量后重新部署。
+
