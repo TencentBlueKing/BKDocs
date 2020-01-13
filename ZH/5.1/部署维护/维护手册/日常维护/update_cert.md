@@ -33,4 +33,5 @@ Proxy 和 Agent 的更新，需要把新的 cert 目录传到对应机器的路�
 然后重启进程：
 
 - 重启agent: `/usr/local/gse/agent/bin/gsectl restart`
+- 重启windows_agent：`C:\gse\agent\bin>gsectl.bat restart`
 - 重启proxy: `/usr/local/gse/proxy/bin/gsectl restart`
