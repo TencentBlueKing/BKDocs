@@ -50,9 +50,6 @@ cd /data/install
 
   [网络管理](../../合作方软件包安装/网络管理/net_man.md)
 
-  [CICDKit](../../合作方软件包安装/CICDKit/CICDKit.md)
-
-
 ## bk_install 安装命令解析
 
 - bk_install 其实是调用一连串的 bkcec 命令来执行安装过程。
