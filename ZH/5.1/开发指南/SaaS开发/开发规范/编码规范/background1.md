@@ -139,18 +139,22 @@ for i in clubs:
 一条用户输入的注释，需要转义后才能用于显示 | comment | unescaped_comment
 已转换成 UTF-8 格式的 html | html | html_utf8
 
-#### 决定名字的长
+#### 决定名字的长度
 
 - 在小的作用域使用短的名字
+
 如 `if cond: ...print (m)...`
 
 - “不方便输入” 不应该作为避免使用长名字的理由
+
 各种编辑器已经能支持自动补全和快速导入。
 
 - 首字母缩略词和缩写应该是通用的
+
 如 `doc` 可以代替 `document`，但是 `BEManager` 没法替换 `BackendManager`，新成员会很难理解。
 
 - 丢掉没用的词
+
 如果名字中的某些单词拿掉后不会损失任何消息，可以直接去掉。如 `convert_to_string` 不如 `to_string` 简短。
 
 #### 利用名字的格式来表达含义
