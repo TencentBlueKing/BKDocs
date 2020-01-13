@@ -14,20 +14,7 @@ tar -xvf /data/ssl_certificates.tar.gz -C /data/src/cert/
 操作更新相关组件
 
 ```bash
-source /data/install/utils.fc
-for ip in ${ALL_IP[@]}; do
-    _rsync -a $PKG_SRC_PATH/cert/ root@$ip:$PKG_SRC_PATH/cert/
-    _rsync -a $PKG_SRC_PATH/cert/ root@$ip:$INSTALL_PATH/cert/
-done
-
- for ip in ${JOB_IP[@]}; do
-     rcmd root@$ip "source $CTRL_DIR/install.rc; gen_job_cert"
- done
-
-./bkcec stop license
-./bkcec start license
-./bkcec stop job
-./bkcec start job
+./bkcec update cert
 ./bkcec install gse 1
 ./bkcec stop gse
 ./bkcec start gse
@@ -40,8 +27,10 @@ done
 Proxy 和 Agent 的更新，需要把新的 cert 目录传到对应机器的路径：
 
 - agent: `/usr/local/gse/agent/cert/`
+- windows: `C:\gse\agent\cert\`
 - proxy: `/usr/local/gse/proxy/cert/`
 
 然后重启进程：
 
-- Proxy 和 Agent 均为：`/usr/local/gse/agent/bin/gsectl restart`
+- 重启agent: `/usr/local/gse/agent/bin/gsectl restart`
+- 重启proxy: `/usr/local/gse/proxy/bin/gsectl restart`
