@@ -28,11 +28,12 @@ tar xf bkce_bcs-x.x.x.tgz  # 跟 src 保持同级目录
 ```
 
 > Note:
-1. zk(config)，zk01(bcs) 属于两个不同的集群实例，用 01，02 等数字区域，生成的环境变量则统一通过标签区分。
-2. devops(navigator) 和 harbor(server) 不能配置到相同的主机上。
-3. bcs-server 部分的 etcd， zk， mongodb 都需要加上 bcs 标签识别。写法为：服务名(标识名)，如：etcd(bcs)。
-4. 检查 globals.env 内的 redis 密码是否含有特殊字符，如果有需要去掉特殊字符，详情参考 [Redis 密码修改](5.1/常见问题/组件/redis.md)
-5. harbor，devops 不能与 nginx 相关部署在同一台。
+> 
+> 1. zk(config)，zk01(bcs) 属于两个不同的集群实例，用 01，02 等数字区域，生成的环境变量则统一通过标签区分。
+> 2. devops(navigator) 和 harbor(server) 不能配置到相同的主机上。
+> 3. bcs-server 部分的 etcd， zk， mongodb 都需要加上 bcs 标签识别。写法为：服务名(标识名)，如：etcd(bcs)。
+> 4. 检查 globals.env 内的 redis 密码是否含有特殊字符，如果有需要去掉特殊字符，详情参考 [Redis 密码修改](5.1/常见问题/组件/redis.md)
+> 5. harbor，devops 不能与 nginx 相关部署在同一台。
 
 ## 修改 install/bcs/ports.env 配置
 
