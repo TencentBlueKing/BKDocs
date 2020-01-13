@@ -78,6 +78,22 @@
     > 
     > 另：install.config.new.sample内的其他bcs相关模块如需要安装请下载相关安装包解压并新增机器部署bcs，bcs部署机器不能复用[bkce-basic]的机器。
 
+- 恢复 CICDKit 安装包
+
+  ```bash
+  # 如果你已经部署 CICDKit 请执行，若没有请忽略
+  cp -a /data/src.bak/cicdkit src/
+  cp -a /data/src.bak/service/mysql57 src/service
+  ```
+
+- 恢复 CICDKit 脚本包
+
+  ```bash
+  # 如果你已经部署 CICDKit 请执行，若没有请忽略
+  cp -a install.bak/parse_config  install/
+  cp -a install.bak/third/*  install/third/
+  ```
+  
 - 升级前检查
 
   ```bash
