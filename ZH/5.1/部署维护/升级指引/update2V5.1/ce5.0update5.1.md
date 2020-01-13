@@ -71,30 +71,12 @@
       10.0.0.1 nginx，appt，rabbitmq，kafka(config)，zk(config)，es，bkdata(databus)，bkdata(dataapi)，bkdata(monitor)，consul，fta
       10.0.0.2 mongodb，appo，kafka(config)，zk(config)，es，mysql，beanstalk，consul
       10.0.0.3 paas，cmdb，job，gse，license，kafka(config)，zk(config)，es，redis，consul，influxdb
-
-      > Note:原则是不改变原模块所在IP的机器，只新增格式zk(config)，kafka(config)，bkdata(databus)，\
-              bkdata(dataapi)，bkdata(monitor)。\
-              另：install.config.new.sample内的其他bcs相关模块如需要安装请下载相关安装包解压并新增机器部署bcs\
-              bcs部署机器不能复用[bkce-basic]的机器。
       ```
-
-
-- 恢复 CICDKit 安装包
-
-  ```bash
-  # 如果你已经部署 CICDKit 请执行，若没有请忽略
-  cp -a /data/src.bak/cicdkit src/
-  cp -a /data/src.bak/service/mysql57 src/service
-
-  ```
-
-- 恢复 CICDKit 脚本包
-
-  ```bash
-  # 如果你已经部署 CICDKit 请执行，若没有请忽略
-  cp -a install.bak/parse_config  install/
-  cp -a install.bak/third/*  install/third/
-  ```
+    > Note: 
+    >
+    > 原则是不改变原模块所在IP的机器，只新增格式zk(config)，kafka(config)，bkdata(databus)，bkdata(dataapi)，bkdata(monitor)。
+    > 
+    > 另：install.config.new.sample内的其他bcs相关模块如需要安装请下载相关安装包解压并新增机器部署bcs，bcs部署机器不能复用[bkce-basic]的机器。
 
 - 升级前检查
 
@@ -208,7 +190,7 @@
 - 恢复备份数据
 
   ```bash
-  # MySQL机器执行
+  # MySQL 机器执行
   ssh $MYSQL_IP
   cd /data/dbbak
   # 导入数据库
