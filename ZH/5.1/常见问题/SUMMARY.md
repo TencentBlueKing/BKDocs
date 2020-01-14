@@ -22,7 +22,6 @@
     * [蓝鲸监控](SaaS/bk_monitor.md)
     * [故障自愈](SaaS/bk_fta_solutions.md)
     * [日志检索](SaaS/bk_log_search.md)
-    * [CICDKit](SaaS/bk_cicdkit.md)
     * [网络管理](SaaS/bk_network.md)
 * [组件类常见问题]()
     * [Consul](组件/consul.md)
