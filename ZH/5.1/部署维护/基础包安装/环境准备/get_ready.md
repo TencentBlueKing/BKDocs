@@ -148,7 +148,7 @@ echo "$http_proxy" "$https_proxy"
 将下载的蓝鲸社区版完整包上传到中控机，并解压到 **同级** 目录下。以解压到 `/data` 目录为例：
 
 ```bash
-tar xf bkce_src-5.0.3.tar.gz  -C /data
+tar xf bkce_src-5.1.26.tar.gz  -C /data
 ```
 
 解压之后，得到两个目录：src，install
