@@ -90,6 +90,7 @@ yum -y install rsync
 systemctl stop NetworkManager
 systemctl disable NetworkManager
 ```
+备注说明：该操作前提需确保主机为静态IP，若为DHCP获取的IP，则无法直接disable NetworkManager，否则会出现主机重启后，或者主机运行一段时间IP租约地址到期后，网卡无法从网络重新正常获取IP地址的情况。
 
 5. 调整最大文件打开数
 
@@ -155,6 +156,27 @@ tar xf bkce_src-5.0.3.tar.gz  -C /data
 - src：存放蓝鲸产品软件，以及依赖的开源组件
 
 - install：存放安装部署脚本、安装时的参数配置、日常运维脚本等
+
+8. 检查resolv.conf是否有修改权限
+
+检查/etc/resolv.conf是否被加密无法修改（即便是root），执行如下命令，检查是否有“i”加密字样：
+```bash
+lsattr /etc/resolv.conf
+----i--------e-- /etc/resolv.conf
+```
+
+如果有则执行命令，临时解密处理，执行如下命令：
+```bash
+chattr -i /etc/resolv.conf
+```
+
+需要注意，在resolv.conf配置文件的首行，即第一个DNS地址需为127.0.0.1，如下所示：
+```bash
+nameserver 127.0.0.1
+nameserver 192.168.1.100
+nameserver 192.168.2.100
+```
+备注说明：resolv配置文件无需人工修改内容，后续安装脚本会自动为主机进行配置127.0.0.1，因此只需检查是否允许修改即可。关于首行需要127.0.0.1，这是由于后面蓝鲸内部组件的调用所需，域名通过consul解析，会探测服务运行状态，然后返回IP地址，例如访问es，那么内部需要解析es.service.consul等，若首行不是127.0.0.1，否则这些域名就通过外网去解析，无法返回正确的响应，导致服务运行异常，或者saas无法正常打开等情况。
 
 ## 配置文件
 
