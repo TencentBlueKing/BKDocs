@@ -1,4 +1,4 @@
-# 产品概述
+# 产品简介
 
 蓝鲸容器服务（BCS，Blueking Container Service）是 **高度可扩展、灵活易用的容器管理服务**。
 
