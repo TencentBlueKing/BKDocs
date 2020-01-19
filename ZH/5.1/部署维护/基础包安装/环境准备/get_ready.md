@@ -348,4 +348,6 @@ start <<check_networkmanager>> ... [OK]
 start <<check_firewalld>> ... [OK]
 ```
 
-如果发现有 [FAIL] 的报错，按照错误提示和本文档修复。修复后，可继续跑 precheck.sh 脚本，直到不再出现 [FAIL]。如果需要从头开始检查，请使用 `precheck.sh -r` 参数。
+如果发现有 [FAIL] 的报错，按照错误提示和本文档修复。修复后，可继续跑 precheck.sh 脚本，直到不再出现 [FAIL]。
+
+如果需要从头开始检查，请使用 `precheck.sh -r` 参数。
