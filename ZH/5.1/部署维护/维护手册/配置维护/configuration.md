@@ -2,24 +2,27 @@
 
 ## 开源组件
 
-开源组件的实际配置均在 `/data/bkce/etc` 目录下，而这些配置文件其实是通过变量替换
-`/data/src/service/support-files/templates/` (模板目录路径随用户解压至的目录而不同) 下的预设模板文件生成的，所以要从源头修改配置应该修改 `/data/src` 下的，然后通过以下命令同步，并渲染模板文件：
+开源组件的实际配置均在 `/data/bkce/etc` 目录下，而这些配置文件其实是通过变量替换 `/data/src/service/support-files/templates/` (模板目录路径随用户解压至的目录而不同) 下的预设模板文件生成的，所以要从源头修改配置应该修改 `/data/src` 下的，然后通过以下命令同步，并渲染模板文件：
 
 - ./bkcec sync 模块
 - ./bkcec render 模块
 
 渲染模板时，bkcec 脚本通过调用 templates_render.rc 里定义的函数 `render_cfg_templates` 来实现
+
 举例说明，假设 `/data/src/service/support-files/templates/` 目录下有如下文件：
 
-- \#etc#nginx#job.conf  
-那么当模板渲染时，它里面的占位符诸如 `__BK_HOME__` 会被对应的 `$BK_HOME` 变量的值替换掉
-然后生成 `/data/bkce/etc/nginx/job.conf` 这个文件。可以发现，脚本将文件名中的 `#` 替换成 `/` ，然后放到 `$INSTALL_PATH` 目录下，也就是默认的 `/data/bkce`
+- \#etc#nginx#job.conf
 
-- kafka#config#server.properties  
+那么当模板渲染时，它里面的占位符诸如 `__BK_HOME__` 会被对应的 `$BK_HOME` 变量的值替换掉然后生成 `/data/bkce/etc/nginx/job.conf` 这个文件。
+可以发现，脚本将文件名中的 `#` 替换成 `/` ，然后放到 `$INSTALL_PATH` 目录下，也就是默认的 `/data/bkce`
+
+- kafka#config#server.properties
+
 这个形式的模板文件和上述的不同之处时没有以 `#` 开头，那么它表示一个相对模块安装路径的配置，也就是
 对于 `/data/src/service/` 来说，它会被安装到 `/data/bkce/service` ，那么 `kafka#config#server.properties` 就会生成到 `/data/bkce/service/kafka/config/server.properties`
 
-- \#etc#my.cnf.tpl  
+- \#etc#my.cnf.tpl
+
 这类文件名和第一个不同之处在于多了 `.tpl` 的后缀名，生成时 tpl 后缀会被去掉。
 
 其他模块文件，以此类推。
@@ -28,7 +31,9 @@
 
 ### Consul
 
-Consul 的配置文件比较特殊，因为它是全局依赖， Consul 的配置文件会存放在 `/data/bkce/etc/consul.conf` ，它没有对应的模板文件，是由 `/data/install/parse_config` 这个脚本来生成。不过 Consul 启动的 supervisor 配置文件模板在：
+Consul 的配置文件比较特殊，因为它是全局依赖， Consul 的配置文件会存放在 `/data/bkce/etc/consul.conf` ，它没有对应的模板文件，是由 `/data/install/parse_config` 这个脚本来生成。
+
+不过 Consul 启动的 supervisor 配置文件模板在：
 
 - \#etc#supervisor-consul.conf
 
@@ -42,22 +47,27 @@ Consul 的配置文件比较特殊，因为它是全局依赖， Consul 的配�
 
 ### Nginx
 
-- \#etc#nginx.conf  
+- \#etc#nginx.conf
+
 Nginx 主配置文件，安装时会 `ln -s /data/bkce/etc/nginx.conf /etc/nginx/nginx.conf`
 
-- \#etc#nginx#paas.conf  
+- \#etc#nginx#paas.conf
+
 PaaS 平台的 Nginx server 配置
 
-- \#etc#nginx#cmdb.conf  
+- \#etc#nginx#cmdb.conf
+
 配置平台的 Nginx server 配置，主配置会 include `/data/bkce/etc/nginx/` 下的配置文件
 
 - \#etc#nginx#job.conf
+
 作业平台的 Nginx server 配置
 
-- \#etc#nginx#miniweb.conf  
+- \#etc#nginx#miniweb.conf
+
 存放 Agent 安装时所需要下载的脚本和依赖软件包
 
-###  MongoDB
+### MongoDB
 
 - \#etc#mongodb.yaml
 
@@ -90,7 +100,10 @@ PaaS 平台的 Nginx server 配置
 ## 蓝鲸组件
 
 蓝鲸组件除了作业平台和管控平台，其他均用 supervisor 来做进程启停，所以都会存在一个对应的 supervisor 进程配置文件
-它的标准规范是：\#etc#supervisor-模块名-工程名.conf，如果没有子工程，则工程名等于模块名。例如 bkdata 存在三个子工程，所以各自的 supervisor 配置为：
+
+它的标准规范是：\#etc#supervisor-模块名-工程名.conf，如果没有子工程，则工程名等于模块名。
+
+例如 bkdata 存在三个子工程，所以各自的 supervisor 配置为：
 
 - \#etc#supervisor-bkdata-dataapi.conf
 - \#etc#supervisor-bkdata-databus.conf
@@ -123,7 +136,7 @@ CMDB 进程对应的 Nginx 配置，里面会通过 url rewrite 兼容 v2 的接
 
 主配置文件，里面的中文注释非常详尽，这里不再赘述。
 
-- job#bin#job.sh  
+- job#bin#job.sh
 
 Job 进程的启停脚本，里面可以设置一些调试参数，Java 虚拟机内存分配大小等
 
@@ -131,7 +144,7 @@ Job 进程的启停脚本，里面可以设置一些调试参数，Java 虚拟�
 
 PaaS 平台 在 src 目录下叫 open_paas 它实际上由 appengine login esb paas 四个子工程组成。
 
-- \#etc#uwsgi-open_paas-工程名.ini  
+- \#etc#uwsgi-open_paas-工程名.ini
 
 这里工程名用上面四个工程分别替换可得到，是这四个 Python 工程 uwsgi 的配置文件
 
@@ -177,17 +190,19 @@ GSE agent plugins 的配置模板
 
 paas_agent 是 appo、和 appt 模块对应的后台代码目录，它的配置文件由两部分构成：
 
-- \#etc#nginx.conf  #etc#nginx#paasagent.conf  
+- \#etc#nginx.conf  #etc#nginx#paasagent.conf
 
 paas_agent 依赖一个 Nginx 做路由转发，这里是它的 Nginx 配置
 
-- \#etc#paas_agent_config.yaml.tpl  
+- \#etc#paas_agent_config.yaml.tpl
 
 paas_agent 的主配置，需要特别注意的是，这里的 `sid` 和 `token` 是激活 paas_agent 成功后，获取返回的字符串自动填充的，里面的配置应该和开发者中心，服务器信息页面看到的一致
 
 ### BKDATA
 
-BKDATA 分为`dataapi` 、 `databus` 、 `monitor` 三个工程，dataapi 是 Python 工程，databus 是 Java 工程，monitor 是 Python 工程。
+BKDATA 分为`dataapi` 、 `databus` 、 `monitor` 三个工程，
+
+dataapi 是 Python 工程，databus 是 Java 工程，monitor 是 Python 工程。
 
 dataapi 的配置：
 
@@ -216,7 +231,9 @@ monitor 的配置：
 
 ## 常用配置调整
 
-调整后的配置模板文件请自行备份好，如果遇到升级，需要手工对比后再覆盖，如果升级后的文件没有新增配置，可以直接覆盖，但如果升级后的配置文件有新增，需要自行处理合并。
+调整后的配置模板文件请自行备份好，如果遇到升级，需要手工对比后再覆盖，
+
+如果升级后的文件没有新增配置，可以直接覆盖，但如果升级后的配置文件有新增，需要自行处理合并。
 
 ### 调整 Redis 使用的最大内存大小
 
@@ -249,7 +266,9 @@ databus 目前有五个进程，对应的配置文件分别是：
 /data/src/bkdata/support-files/templates/databus#conf#tsdb.cluster.properties
 ```
 
-分别修改这五个文件里的 "deploy.cluster.memory.max" 的值，根据实际情况调大小。原则：如果内存够用，但 CPU 占用很高，适当调大；如果内存不够用，CPU 占用正常，可以适当调小。
+分别修改这五个文件里的 "deploy.cluster.memory.max" 的值，根据实际情况调大小。
+
+原则：如果内存够用，但 CPU 占用很高，适当调大；如果内存不够用，CPU 占用正常，可以适当调小。
 
 ### 调整 ES 的内存使用大小
 

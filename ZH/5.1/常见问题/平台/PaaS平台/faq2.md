@@ -19,7 +19,7 @@ root     28606  0.0  0.6 534188 54916 ?        Sl   Jul27   0:42 /data/bkce/.env
 root     28676  0.0  0.4 534188 37572 ?        S    Jul27   0:00  \_ /data/bkce/.envs/paas/bin/uwsgi --ini /data/bkce/etc/uwsgi-open_paas-paas.ini
 ```
 
-**思路方法**：解决办法，杀掉已经不正常的进程（此情况 rabbitmq 在异常时，也可以杀掉 epmd 及 beam）
+**思路方法**：解决办法，杀掉已经不正常的进程(此情况 rabbitmq 在异常时，也可以杀掉 epmd 及 beam)
 
 ```bash
 # 可选

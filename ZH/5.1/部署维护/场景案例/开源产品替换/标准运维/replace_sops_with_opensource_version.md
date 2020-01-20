@@ -16,15 +16,15 @@
 
 ### 准备本地 RabbitMQ 资源
 
-在本地安装 RabbitMQ，并启动 RabbitMQ-Server，服务监听的端口保持默认（5672）。
+在本地安装 RabbitMQ，并启动 RabbitMQ-Server，服务监听的端口保持默认(5672)。
 
 ### 准备本地 Redis 资源
 
-在本地安装 Redis，并启动 Redis-Server，服务监听的端口保持默认（6379）。
+在本地安装 Redis，并启动 Redis-Server，服务监听的端口保持默认(6379)。
 
 ### 准备本地 MySQL
 
-在本地安装 MySQL，并启动 MySQL-Server，服务监听的端口保持默认（3306）。
+在本地安装 MySQL，并启动 MySQL-Server，服务监听的端口保持默认(3306)。
 
 ### 本地 Python 包安装
 
@@ -36,14 +36,17 @@ pip install -r requirements.txt
 
 ### 配置本地环境变量和数据库
 
-1) 设置环境变量
+1\. 设置环境变量
 
 设置环境变量的目的是让项目运行时能正确获取以下变量的值：
-BK_PaaS_HOST、BK_CC_HOST、BK_JOB_HOST 分别改为你部署的蓝鲸社区版域名、配置平台域名、作业平台域名（需要加上 http 前缀。如果是 https 域名，请改为 https 前缀）。
 
-APP_ID 设置为你的社区版标准运维应用 ID，默认设置为 bk_sops。APP_TOKEN 设置为你的社区版标准运维应用 TOKEN，默认可以访问 `http://{BK_PaaS_HOST}/admin/app/app/`，找到名为"标准运维"的应用，查看详情获取 Token 字段值。
+BK_PaaS_HOST、BK_CC_HOST、BK_JOB_HOST 分别改为你部署的蓝鲸社区版域名、配置平台域名、作业平台域名(需要加上 http 前缀。如果是 https 域名，请改为 https 前缀)。
 
-有三种方式设置本地开发需要的环境变量。
+APP_ID 设置为你的社区版标准运维应用 ID，默认设置为 bk_sops。
+
+APP_TOKEN 设置为你的社区版标准运维应用 TOKEN，默认可以访问 `http://{BK_PaaS_HOST}/admin/app/app/`，找到名为"标准运维"的应用，查看详情获取 Token 字段值。
+
+有三种方式**设置本地开发需要的环境变量**。
 
 一是手动设置，即执行如下命令
 
@@ -55,7 +58,7 @@ export BK_CC_HOST="{BK_CC_HOST}"
 export BK_JOB_HOST="{BK_JOB_HOST}"
 ```
 
-二是直接修改 scripts/develop/sites/community/env.sh，然后执行
+二是直接修改 `scripts/develop/sites/community/env.sh`，然后执行
 
 ```bash
 source scripts/develop/sites/community/env.sh
@@ -69,14 +72,14 @@ APP_TOKEN = '{APP_TOKEN}'
 BK_PaaS_HOST = '{BK_PaaS_HOST}'
 ```
 
-然后修改 config/dev.py ，追加配置平台域名、作业平台域名配置
+然后修改 `config/dev.py` ，追加配置平台域名、作业平台域名配置
 
 ```python
 BK_CC_HOST = '{BK_CC_HOST}'
 BK_JOB_HOST = '{BK_JOB_HOST}'
 ```
 
-2) 修改 config/dev.py，设置本地开发用的数据库信息，添加 Redis 本地信息
+2\. 修改 `config/dev.py`，设置本地开发用的数据库信息，添加 Redis 本地信息
 
 ```python
 DATABASES = {
@@ -86,7 +89,7 @@ DATABASES = {
         'USER': 'root',       # 你的数据库 user
         'PASSWORD': '',       # 你的数据库 password
         'HOST': 'localhost',  # 数据库 HOST
-        'PORT': '3306',       # 默认3306
+        'PORT': '3306',       # 默认 3306
     },
 }
 
@@ -98,13 +101,13 @@ Redis = {
 
 ### 创建并初始化数据库
 
-1) 在 MySQL 中创建名为 bk_sops 的数据库
+1\. 在 MySQL 中创建名为 bk_sops 的数据库
 
 ```bash
 CREATE DATABASE `bk_sops` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 ```
 
-2) 在工程目录下执行以下命令初始化数据库
+2\. 在工程目录下执行以下命令初始化数据库
 
 ```bash
 Python manage.py migrate
@@ -113,21 +116,24 @@ Python manage.py createcachetable django_cache
 
 ### 打包并收集前端静态资源
 
-1）安装依赖包
+1\. 安装依赖包
+
 进入 frontend/desktop/，执行以下命令安装
 
 ```bash
 npm install
 ```
 
-2）本地打包
+2\. 本地打包
+
 在 frontend/desktop/ 目录下，继续执行以下命令打包前端静态资源
 
 ```bash
 npm run build -- --STATIC_ENV=dev
 ```
 
-3）收集静态资源
+3\. 收集静态资源
+
 回到项目根目录，执行以下命令收集前端静态资源到 static 目录下
 
 ```bash
@@ -207,25 +213,30 @@ mv frontend/desktop/static/images static/
 
 ### Fork 源代码到自己的仓库
 
-通过 Fork 源代码到自己的仓库，可以进行二次开发和定制。建议公共特性开发和 bug 修复通过 Pull requests 及时提交到官方仓库。如果不需要进行二次开发，请直接在 releases 中获取打包好的版本，上传部署升级官方标准运维 SaaS。
+通过 Fork 源代码到自己的仓库，可以进行二次开发和定制。建议公共特性开发和 bug 修复通过 Pull requests 及时提交到官方仓库。
+
+如果不需要进行二次开发，请直接在 releases 中获取打包好的版本，上传部署升级官方标准运维 SaaS。
 
 ### 打包并收集前端静态资源
 
-1）安装依赖包
+1\. 安装依赖包
+
 进入 frontend/desktop/，执行以下命令安装
 
 ```bash
 npm install
 ```
 
-2）本地打包
+2\. 本地打包
+
 在 frontend/desktop/ 目录下，继续执行以下命令打包前端静态资源
 
 ```bash
 npm run build -- --STATIC_ENV=dev
 ```
 
-3）收集静态资源
+3\. 收集静态资源
+
 回到项目根目录，执行以下命令收集前端静态资源到 static 目录下
 
 ```bash
@@ -234,7 +245,9 @@ Python manage.py collectstatic --noinput
 
 ### 创建应用
 
-前往你部署的蓝鲸社区版平台，在"开发者中心"点击"应用创建"，填写需要的参数，注意代码仓库填写你的 Github 仓库地址，账号和密码。注意，由于官方已经存在一个名为"标准运维"的应用，你只能填写不一样的应用名称和应用 ID，如"标准运维定制版"、bk-sops-ce。
+前往你部署的蓝鲸社区版平台，在"开发者中心"点击"应用创建"，填写需要的参数，注意代码仓库填写你的 Github 仓库地址，账号和密码。
+
+> 注意，由于官方已经存在一个名为"标准运维"的应用，你只能填写不一样的应用名称和应用 ID，如"标准运维定制版"、bk-sops-ce。
 
 ### 修改配置
 
@@ -253,7 +266,7 @@ add_app_token bk-sops-ce "$(_app_token bk-sops-ce)" "标准运维定制版"
 
 ### 准备 Redis 资源
 
-在你部署的蓝鲸社区版的运行环境找一台机器，新建一个 Redis 服务账号和密码。也可以公用部署蓝鲸社区版时已经有的 Redis 服务。
+在你部署的蓝鲸社区版的运行环境找一台机器，新建一个 Redis 服务账号和密码。也可以共用部署蓝鲸社区版时已经有的 Redis 服务。
 
 ### 部署应用
 
@@ -268,7 +281,8 @@ add_app_token bk-sops-ce "$(_app_token bk-sops-ce)" "标准运维定制版"
 
 ![-w2020](../../../assets/11.png)
 
-找到环境变量 "EnvironmentVariables" 表并单击进入编辑页面。将第二步中准备好的 Redis 信息填写到环境变量配置中，即增加 3 条数据 BKAPP_Redis_HOST、BKAPP_Redis_PORT、BKAPP_Redis_PASSWORD。
+找到环境变量 "EnvironmentVariables" 表并单击进入编辑页面。
+将第二步中准备好的 Redis 信息填写到环境变量配置中，即增加 3 条数据 BKAPP_Redis_HOST、BKAPP_Redis_PORT、BKAPP_Redis_PASSWORD。
 如果直接复用蓝鲸已经部署好的 Redis 服务，环境变量可以分别配置为：
 
 - BKAPP_Redis_HOST=在中控机执行 `source /data/install/utils.fc && echo $Redis_IP` 获取
@@ -285,9 +299,10 @@ add_app_token bk-sops-ce "$(_app_token bk-sops-ce)" "标准运维定制版"
 
 ### 替换官方标准运维 SaaS
 
-按照前面的步骤操作后，你已经在蓝鲸社区版 PaaS 上创建了一个标准运维的定制版本，如果功能测试正常（请主要测试流程模板创建、任务执行、任务操作等核心功能），那么你可以选择下架官方标准运维应用，并用定制版本替换。
+按照前面的步骤操作后，你已经在蓝鲸社区版 PaaS 上创建了一个标准运维的定制版本，如果功能测试正常(请主要测试流程模板创建、任务执行、任务操作等核心功能)，那么你可以选择下架官方标准运维应用，并用定制版本替换。
 
-1) 如果需要保留官方标准运维应用的所有数据，你需要修改数据库配置
+1\. 如果需要保留官方标准运维应用的所有数据，你需要修改数据库配置
+
 获取你部署的蓝鲸社区版平台的数据库账号密码，以及官方标准运维应用的数据库名，默认测试环境是 bk_sops_bkt，正式环境是 bk_sops。修改代码的 config/stag.py 和 config/prod.py，分别修改为上面获取的官方标准运维应用的数据库信息。
 ```python
 DATABASES = {
@@ -303,14 +318,17 @@ DATABASES = {
 
 ```
 
-2) 由于标准运维接入了蓝鲸 PaaS 平台 API 网关，你需要修改标准运维网关配置
+2\. 由于标准运维接入了蓝鲸 PaaS 平台 API 网关，你需要修改标准运维网关配置
+
 请参考 [API 网关替换方式](5.1/部署维护/场景案例/开源产品替换/Paas平台/replace_paas_with_opensource_version.md#蓝鲸官方SaaS应用组件的维护)文档，把标准运维 API 转发到你的定制版本的接口。
 
 ## 正式环境上传部署
 
 ### Fork 源代码到自己的仓库
 
-通过 Fork 源代码到自己的仓库，可以进行二次开发和定制。建议公共特性开发和 bug 修复通过 Pull requests 及时提交到官方仓库。如果不需要进行二次开发，请直接在 releases 中获取打包好的版本，上传部署升级官方标准运维 SaaS。
+通过 Fork 源代码到自己的仓库，可以进行二次开发和定制。建议公共特性开发和 bug 修复通过 Pull requests 及时提交到官方仓库。
+
+> 如果不需要进行二次开发，请直接在 releases 中获取打包好的版本，上传部署升级官方标准运维 SaaS。
 
 ### 修改版本号
 
@@ -318,21 +336,24 @@ DATABASES = {
 
 ### 打包并收集前端静态资源
 
-1）安装依赖包
+1\. 安装依赖包
+
 进入 frontend/desktop/，执行以下命令安装
 
 ```bash
 npm install
 ```
 
-2）本地打包
+2\. 本地打包
+
 在 frontend/desktop/ 目录下，继续执行以下命令打包前端静态资源
 
 ```bash
 npm run build -- --STATIC_ENV=dev
 ```
 
-3）收集静态资源
+3\. 收集静态资源
+
 回到项目根目录，执行以下命令收集前端静态资源到 static 目录下
 
 ```bash
@@ -341,7 +362,9 @@ Python manage.py collectstatic --noinput
 
 ### 准备环境
 
-由于上传部署只支持从本地安装 Python 依赖包，而 Python 安装包是和部署的机器架构相关的，所以你需要在和蓝鲸社区版部署的机器一样的环境执行打包脚本。即准备 CentOS 7 以上操作系统的机器，可以使用 docker。
+由于上传部署只支持从本地安装 Python 依赖包，而 Python 安装包是和部署的机器架构相关的，所以你需要在和蓝鲸社区版部署的机器一样的环境执行打包脚本。
+
+即准备 CentOS 7 以上操作系统的机器，可以使用 docker。
 
 ### 应用打包
 
@@ -349,8 +372,13 @@ Python manage.py collectstatic --noinput
 ```bash
 bash scripts/publish/build.sh
 ```
-注意，该脚本会把项目依赖的 Python 包都下载到生成的版本包中，请务必保证把项目依赖的 Python 包都加入到 requirements.txt 文件中。打包完成后会在当前目录下生成一个名为 "bk_sops-当前时间串.tar,gz" 格式的文件，即版本包。
+> 注意，该脚本会把项目依赖的 Python 包都下载到生成的版本包中，请务必保证把项目依赖的 Python 包都加入到 requirements.txt 文件中。
+> 打包完成后会在当前目录下生成一个名为 "bk_sops-当前时间串.tar,gz" 格式的文件，即版本包。
 
 ### 上传版本并部署
 
-前往你部署的蓝鲸社区版平台，在【开发者中心】点击【S-mart 应用】，找到官方标准运维应用并进入详情。在 "上传版本" 中，点击【上传文件】后选中上一步打包生成的版本包，等待上传完成。然后点击【发布部署】，你就可以在测试环境或者正式环境部署你最新的版本包了。
+前往你部署的蓝鲸社区版平台，在【开发者中心】点击【S-mart 应用】，找到官方标准运维应用并进入详情。
+
+在 "上传版本" 中，点击【上传文件】后选中上一步打包生成的版本包，等待上传完成。
+
+然后点击【发布部署】，你就可以在测试环境或者正式环境部署你最新的版本包了。

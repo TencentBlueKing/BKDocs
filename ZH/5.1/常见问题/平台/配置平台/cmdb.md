@@ -2,7 +2,7 @@
 
 ## CMDB 无快照数据
 
-> 此文档描述 4.0 至5.0 的社区版的问题排查
+> 此文档描述 4.0 至 5.0 的社区版的问题排查
 >
 > Windows 主机暂不支持快照数据
 
@@ -24,9 +24,9 @@
 检查 /data/bkce/log/cmdb/cmdb_datacollection.INFO文件
 出现 ccapi.go93] fail to get configure, will get again，表示不正常
 返回 hostsnap.go:xxx] master check : iam still master，表示正常
-检查 cmdb_datacollection.ERROR文件，确认是否出现err:fail to connect zookeeper. err：lookup zk.service.consul等
-如果日志出现“subcribing channel 2_snapshot”后没有subChan Close，那么表明收数据协程正常工作
-如果上述条都正常，但没有“handle xx num mesg, routines xx”，说明通道里没数据，请到redis里 subscribe ${biz}_snapshot 确认通道是否没数据，参考如下检查 redis 数据方法
+检查 cmdb_datacollection.ERROR 文件，确认是否出现 err:fail to connect zookeeper. err：lookup zk.service.consul等
+如果日志出现“subcribing channel 2_snapshot”后没有 subChan Close，那么表明收数据协程正常工作
+如果上述条都正常，但没有“handle xx num mesg, routines xx”，说明通道里没数据，请到 redis 里 subscribe ${biz}_snapshot 确认通道是否没数据，参考如下检查 redis 数据方法
 ```
 
 - **gse agent 采集端排查**
@@ -42,7 +42,7 @@ Windows(cygwin): cd /cygdrive/c/gse/plugins/bin/ && ./basereport -c ../etc/baser
 Windows(无cygwin) : cd C:/gse/plugins/bin/ && start.bat basereport
 
 # 检查数据上报连接，有正常 ESTABLISHED 的链接则 ok
-# 若存在 proxy，登陆 proxy 机器：检测58625端口同上
+# 若存在 proxy，登陆 proxy 机器：检测 58625 端口同上
 Linux netstat -antp | grep 58625 | grep ESTABLISHED
 Windows netstat -ano | grep 58625
 ```
@@ -50,11 +50,11 @@ Windows netstat -ano | grep 58625
 - **gse 服务端排查**
 
 ```bash
-# 登陆 GSE 后台服务器，检测 gse_data 是否连上9092端口:
+# 登陆 GSE 后台服务器，检测 gse_data 是否连上 9092 端口:
 Linux: lsof -nP -c dataWorker | grep :9092
 Windows: netstat -ano | grep 9092
 
-# 看有没有 gse_data 的pid 开头命名的日志。 若有，tail查看日志内容
+# 看有没有 gse_data 的 pid 开头命名的日志。若有，tail 查看日志内容
 datapid=$(pgrep -x dataWorker)
 ls -l /data/bkce/public/gse/data/${datapid}*
 ```

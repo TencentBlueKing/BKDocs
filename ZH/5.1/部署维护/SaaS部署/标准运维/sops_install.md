@@ -4,7 +4,7 @@
 
 如果之前未安装过标准运维(APP_CODE: gcloud)，可以直接跳过第一步，直接进入第二步。
 
-假设你的蓝鲸桌面地址是 {BK_PAAS_HOST}/console/，那么请打开 "蓝鲸智云后台管理" 链接 {BK_PAAS_HOST}/admin/。
+假设你的蓝鲸桌面地址是 `{BK_PAAS_HOST}/console/`，那么请打开 "蓝鲸智云后台管理" 链接 `{BK_PAAS_HOST}/admin/`。
 
 ![-w2020](../../assets/11.png)
 
@@ -15,6 +15,7 @@
 ## 开通 ESB 白名单
 
 如果是全新版本部署蓝鲸，可以跳过这一步，直接进入第三步。
+
 如果升级安装的蓝鲸，需要手动在中控机执行如下命令，开通标准运维访问 ESB 的白名单，以便标准运维原子可以正常调用 ESB 接口。
 
 ```bash
@@ -24,7 +25,9 @@ add_app_token bk_sops "$(_app_token bk_sops)" "标准运维"
 
 ## 准备 Redis 资源
 
-联系部署同事在当前蓝鲸的运行环境找一台机器，新建一个 redis 服务账号和密码。也可以公用部署了蓝鲸已经部署的 redis 服务，需要注意多个应用公用一个 redis 服务可能存在 KEY 值冲突，并且无法保障标准运维服务的独立和可靠。
+联系部署同事在当前蓝鲸的运行环境找一台机器，新建一个 redis 服务账号和密码。也可以公用部署了蓝鲸已经部署的 redis 服务，
+
+需要注意多个应用公用一个 redis 服务可能存在 KEY 值冲突，并且无法保障标准运维服务的独立和可靠。
 
 ## 上传部署标准运维 APP
 
@@ -40,9 +43,12 @@ add_app_token bk_sops "$(_app_token bk_sops)" "标准运维"
 
 ![-w2020](../../assets/33.png)
 
-找到【环境变量 EnvironmentVariables】并单击进入编辑页面。将第二步中准备的 redis 信息填写到环境变量配置中。即增加 3 条数据 `BKAPP_REDIS_HOST、BKAPP_REDIS_PORT、BKAPP_REDIS_PASSWORD`。
+找到【环境变量 EnvironmentVariables】并单击进入编辑页面。
+
+将第二步中准备的 redis 信息填写到环境变量配置中。即增加 3 条数据 `BKAPP_REDIS_HOST、BKAPP_REDIS_PORT、BKAPP_REDIS_PASSWORD`。
 
 如果直接复用蓝鲸已经部署好的 redis 服务，环境变量可以分别配置为：
+
 - BKAPP_REDIS_HOST=在中控机执行 source /data/install/utils.fc && echo $REDIS_IP 获取
 
 - BKAPP_REDIS_PASSWORD=在中控机执行 source /data/install/utils.fc && echo $REDIS_PASS 获取

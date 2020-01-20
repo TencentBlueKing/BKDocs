@@ -53,7 +53,7 @@ echo iam bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec status
 # 若为单机部署，请使用如下指令
 ls /data/bkce/paas_agent/apps/projects | awk '{print $1}' | sed 's/.$//' | xargs -n 1 ./bkcec stop saas-o
 
-# 若为多台部署，请在中控机/data/install目录下使用如下指令
+# 若为多台部署，请在中控机 /data/install 目录下使用如下指令
 rcmd root@$APPO_IP "ls /data/bkce/paas_agent/apps/projects" | xargs -n 1 ./bkcec stop saas-o
 
 # 不论单机还是多台部署，建议在 appo 的服务器上确认应用的进程真正停掉，若存在未停掉进程，可以采用强杀方法
@@ -142,7 +142,7 @@ echo paas gse cmdb kafka job bkdata iam | xargs -n 1 ./bkcec start
 # 若为单机部署，请使用如下指令
 ls /data/bkce/paas_agent/apps/projects | awk '{print $1}' | sed 's/.$//' | xargs -n 1 ./bkcec start saas-o
 
-# 若为多台部署，请在中控机/data/install目录下使用如下指令
+# 若为多台部署，请在中控机 /data/install 目录下使用如下指令
 rcmd root@$APPO_IP "ls /data/bkce/paas_agent/apps/projects" | xargs -n 1 ./bkcec start saas-o
 ```
 

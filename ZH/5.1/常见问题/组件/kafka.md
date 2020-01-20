@@ -57,13 +57,13 @@ WatchedEvent state:SyncConnected type:None path:null
 # 配置文件位置
 /data/bkce/service/kafka/config/server.properties
 
-# 可以增加log.cleanup.policy这个数据清理方式设置，此行为为删除动作
+# 可以增加 log.cleanup.policy 这个数据清理方式设置，此行为为删除动作
 log.cleanup.policy=delete
 
-# 下面有2种方式，保留时间或大小，请自行根据实际情况调整此处设置，1G为1073741824。具体保留大小根据实际情况设置
+# 下面有 2 种方式，保留时间或大小，请自行根据实际情况调整此处设置，1G 为 1073741824。具体保留大小根据实际情况设置
 # 注意：下面为直接删除，删除后的消息不可恢复
-log.retention.hours=168（超过指定时间168小时后，删除旧的消息）
-log.retention.bytes=10737418240（超过指定大小10G后，删除旧的消息）
+log.retention.hours=168(超过指定时间168小时后，删除旧的消息)
+log.retention.bytes=10737418240(超过指定大小10G后，删除旧的消息)
 ```
 
 设置完毕，重启服务来生效
@@ -71,7 +71,7 @@ log.retention.bytes=10737418240（超过指定大小10G后，删除旧的消息�
 - 方式二：Kakfa 设置 Topic 过期时间
 
 ```bash
-# 设置过期时间，只能用毫秒（retention.ms），或者bytes（retention.bytes）
+# 设置过期时间，只能用毫秒(retention.ms)，或者 bytes(retention.bytes)
 $ /data/bkce/service/kafka/bin/kafka-topics.sh --zookeeper zk.service.consul:2181/common_kafka --topic snapshot2 --alter --config retention.ms=17280000
 $ WARNING: Altering topic configuration from this script has been deprecated and may be removed in future releases.
 		  Going forward, please use kafka-configs.sh for this functionality

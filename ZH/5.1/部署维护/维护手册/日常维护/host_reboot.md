@@ -1,6 +1,4 @@
-# 蓝鲸日常维护
-
-## 机器重启后
+# 机器重启后
 
 - 确认 /etc/resolv.conf 里第一个 nameserver 是 `127.0.0.1`， `option` 选项不能有 `rotate`
 

@@ -14,7 +14,7 @@
 
 ![-w2020](../assets/cmdb-faq.png)
 
-- 检查防火墙端口是否有开（8300，8301，8302）
+- 检查防火墙端口是否有开(8300，8301，8302)
 
 - 查看日志，登录所在机器的路径：`/data/bkce/logs/cmdb/`
 
@@ -73,7 +73,6 @@
 
 ![-w2020](../assets/saas-faq.png)
 
-
 该报错是激活 paas_agent 失败，需要查看的是 appo 服务还是 appt 服务
 
 ```bash
@@ -92,20 +91,20 @@
 
 ## 部署 BKDATA 常见问题
 
-`./bk_install bkdata` 报错
+### `./bk_install bkdata` 报错
 
 ```bash
 failed with error code 1 in /tmp/pip-build-8g97ci/MySQL-python/
 install python package for bdata(monitor) failed pip optin: --no-index --find-links=/data/src/bkdata/support-fileds/pkgs
 ```
 
--  **MySQL-python 安装失败**
+#### MySQL-python 安装失败
 
 ![-w2020](../assets/bkdata-faq1.png)
 
 - 解决方案：
 
-1. 确保 mysql-devel 已经安装
+1\. 确保 mysql-devel 已经安装
 
 `yum install mysql-devel`
 
@@ -115,7 +114,7 @@ install python package for bdata(monitor) failed pip optin: --no-index --find-li
 
 ![-w2020](../assets/2.png)
 
-2. 建立软连接
+2\. 建立软连接
 
 ![-w2020](../assets/bkdata-faq2.png)
 
@@ -126,10 +125,9 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18 /usr/lib/libmysqlclient.so.18
 ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.0
 ```
 
-
 重新执行命令部署 BKDATA 即可恢复
 
-- **安装 python-snappy 包失败**
+#### 安装 python-snappy 包失败
 
 原因是缺少 snappy-c.h 导致 pip 安装 python-snappy 包失败
 
@@ -139,7 +137,7 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 
 通过安装 snappy-devel 解决,`yum install -y snappy-devel `
 
-**启动报 "dataapi.service.consul start failed ERROR： init_snapshot_config"**
+#### 启动报 "dataapi.service.consul start failed ERROR： init_snapshot_config"
 
 启动 bkdata 报错：`dataapi.service.consul start failed ERROR： init_snapshot_config (databus.tests.DatabusHealthTestCase)`
 
@@ -147,7 +145,7 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 
 - 解决方案：
 
-登陆到`bkdata`机器（社区版 5.1 登陆到 `databus` 所在机器）查看 `consul` 配置是否生成 `databus.json` 配置。
+登陆到`bkdata`机器(社区版 5.1 登陆到 `databus` 所在机器)查看 `consul` 配置是否生成 `databus.json` 配置。
 
 ```bash
 ls /data/bkce/etc/consul.d/bkdata.json
@@ -157,7 +155,7 @@ ls /data/bkce/etc/consul.d/bkdata.json
 ./bkcec start consul
 ./bkcec status consul
 
-# 登陆到 databus 所在机器查看是否生成 bkdata.json（社区版 5.1 为 bkdata-databus.json，bkdata-dataapi.jsonbkdata-monitor.json）
+# 登陆到 databus 所在机器查看是否生成 bkdata.json(社区版 5.1 为 bkdata-databus.json，bkdata-dataapi.jsonbkdata-monitor.json)
 ls /data/bkce/etc/consul.d/bkdata.json
 
 # 启动 bkdata
@@ -166,7 +164,7 @@ ls /data/bkce/etc/consul.d/bkdata.json
 
 ## 部署 SaaS 常见问题
 
-1、**安装 saas-o 报错 KeyError: "name='bk_csrftoken', domain=None, path=None"**
+### 安装 saas-o 报错 KeyError: "name='bk_csrftoken', domain=None, path=None"
 
 ![-w2020](../assets/saas-key.png)
 
@@ -175,7 +173,7 @@ ls /data/bkce/etc/consul.d/bkdata.json
 确认是否是在 PaaS 页面个人信息重置了密码后，但是 `globals.env` 文件没同步更新。 请在 `globals.env` 文件中更新重置后的密码后确认是否恢复正常。
 同步配置信息
 
-2、**NameError: global name 'loggin' is not defined**
+### NameError: global name 'loggin' is not defined
 
 ```bash
 ./bkcec sync common

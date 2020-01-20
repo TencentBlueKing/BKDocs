@@ -42,4 +42,3 @@ echo nginx paas cmdb job bkdata fta | xargs -n 1 ./bkcec start
 ```bash
 * * * * * export INSTALL_PATH=/data/bkce; /data/bkce/bin/process_watch mysql &>/dev/null
 ```
-

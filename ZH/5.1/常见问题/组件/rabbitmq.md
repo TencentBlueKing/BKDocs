@@ -66,13 +66,13 @@ add rabbitmq u se r admin failed ．
 > 注意：若系统没有 systemctl 命令，注意修改下`/data/install/utils.fc`文件，查找到`init_rabbitmq_cluster ()`函数，把`systemctl start rabbitmq-server`修改为`service rabbitmq-server start`
 
 ```bash
-# rabbitmq现在是运行状态？是的话。
+# rabbitmq 现在是运行状态？是的话。
 ./bkcec stop rabbitmq
 rm -rf /root/.erlang.cookie /var/lib/rabbitmq/* /data/bkce/public/rabbitmq/*
-# 确认rabbitmq进程真正停掉，若存在未停掉的，使用如下强制停掉
+# 确认 rabbitmq 进程真正停掉，若存在未停掉的，使用如下强制停掉
 ps -ef | grep rabbitmq | awk '{print $2}' | xargs -n 1 kill -9
 
-# 若系统没有systemctl命令，注意修改下/data/install/utils.fc文件，查找到init_rabbitmq_cluster ()函数，把systemctl start rabbitmq-server修改为service rabbitmq-server start
+# 若系统没有 systemctl 命令，注意修改下/data/install/utils.fc文件，查找到init_rabbitmq_cluster ()函数，把 systemctl start rabbitmq-server修改为service rabbitmq-server start
 1773 init_rabbitmq_cluster () {
 1774     ckv=$(uuid -v4)
 1775     cookie=/var/lib/rabbitmq/.erlang.cookie
@@ -86,13 +86,13 @@ ps -ef | grep rabbitmq | awk '{print $2}' | xargs -n 1 kill -9
 # 再手动重新进行数据初始化
 ./bkcec initdata rabbitmq
 
-# 初始化成功后，在/data/install/.bk_install.step文件里面，把下面的加进去，防止安装时再报错
+# 初始化成功后，在 /data/install/.bk_install.step 文件里面，把下面的加进去，防止安装时再报错
 initdata rabbitmq
 ```
 
 ## rabbitmq 15672 不存在
 
-如果是在激活 RabbitMQ 时报错**15672** 端口拒绝链接，那说明 `rabbitmq-server`没有成功加载`rabbitmq_management`插件
+如果是在激活 RabbitMQ 时报错**15672** 端口拒绝链接，那说明 `rabbitmq-server`没有成功加载 `rabbitmq_management`插件
 
 原因可能有 2 种：
 

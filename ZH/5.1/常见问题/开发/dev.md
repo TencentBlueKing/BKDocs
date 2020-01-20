@@ -13,7 +13,7 @@
 ## SaaS 开发框架相关
 
 ### 如何判断开发框架当前加载的是那个配置文件？能否自己指定？
-1\. 三种配置文件分别对应：本地开发时，加载dev；预发布环境下，加载stag；正式环境下，加载prod。
+1\. 三种配置文件分别对应：本地开发时，加载 dev；预发布环境下，加载 stag；正式环境下，加载 prod。
 
 2\. 不能指定，因为框架写死通过运行环境加载。
 
@@ -25,7 +25,7 @@ settings.RUN_MODE
 ```
 
 ### 蓝鲸框架在哪里添加全局配置？
-可以在`conf`目录下的`default.py`文件里添加自定义全局配置。
+可以在 `conf` 目录下的 `default.py` 文件里添加自定义全局配置。
 
 ## SaaS 开发相关
 
@@ -47,11 +47,11 @@ def get_client_ip(request):
 ```
 
 ### django 如何对通过接口请求的数据进行gzip压缩？
-1\. 添加`django.middleware.gzip.GZipMiddleware`中间件。
+1\. 添加 `django.middleware.gzip.GZipMiddleware` 中间件。
 
-2\. 在视图文件中添加`from django.views.decorators.gzip import gzip_page`。
+2\. 在视图文件中添加 `from django.views.decorators.gzip import gzip_page`。
 
-3\. 给视图函数添加上`@gzip_page`装饰器，返回的数据将会被压缩。
+3\. 给视图函数添加上 `@gzip_page` 装饰器，返回的数据将会被压缩。
 
 ### 本地访问前端，{{ SITE_URL }} Django 模版语法未生效
-查检本地环境 dev.py 内是否有`SITE_URL='xxx'`的定义，如没有，请在本地环境 dev.py 里添加`SITE_URL='xxx'`变量即可。
+查检本地环境 dev.py 内是否有 `SITE_URL='xxx'` 的定义，如没有，请在本地环境 dev.py 里添加 `SITE_URL='xxx'` 变量即可。

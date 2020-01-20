@@ -22,9 +22,9 @@ unset BK_ENV
 
 # PaaS 登陆提示 502 Bad GateWay
 
-访问`集成平台`（open_paas）容易出现 502，原因比较多
+访问`集成平台`(open_paas)容易出现 502，原因比较多
 
-- 确认 open_paas 4 个 web 服务启动正常，且可以访问（最可能的原因），注意如果端口被占用，web 访问将启动失败；
+- 确认 open_paas 4 个 web 服务启动正常，且可以访问(最可能的原因)，注意如果端口被占用，web 访问将启动失败；
 - 确认防火墙策略，即 nginx 所在服务器能够请求到`open_paas`所在机器的对应服务`curl http://{open_paas_ip}:8000`
 - 确认 nginx 中 paas.conf-server{listen 80;}，如果此时 502，可能是 nginx 部署机器多块网卡，而 listen 使用的网卡和访问域名配置的网卡不同导致的，变更 server{listen{网卡}:80}
 

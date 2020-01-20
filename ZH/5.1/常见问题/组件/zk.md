@@ -16,7 +16,7 @@
 - 原因 1 ：检查 java 版本及 java 环境是否正常
 
 ```bash
-# 使用java或者java -version命令来验证
+# 使用 java 或者 java -version 命令来验证
 $ java
 $ java -version
 ```
@@ -50,13 +50,13 @@ java.io.FileNotFoundException: /data/bkce/public/zk/data/version-2/snapshot.1003
 ```
 
 ```bash
-# 进入到zk data目录，找到zoo.conf中配置的dataDir和dataLogDir路径。然后删除两个文件夹下的version -2文件夹
+# 进入到zk data目录，找到 zoo.conf 中配置的 dataDir 和 dataLogDir 路径。然后删除两个文件夹下的 version -2文件夹
 $ cd /data/bkce/public/zk/data
 
-# 把有zookeeper_server.pid以及version-X开头的文件和文件夹删掉
+# 把有 zookeeper_server.pid 以及 version-X 开头的文件和文件夹删掉
 $ rm -rf version-1 zookeeper_server.pid
 
-# 重新启动zk，即可解决
+# 重新启动 zk，即可解决
 $ ./bkcec start zk
 ```
 

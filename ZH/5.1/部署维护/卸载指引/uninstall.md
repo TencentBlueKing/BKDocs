@@ -21,7 +21,7 @@
 
 ## 脚本卸载蓝鲸后台服务
 
-**注意：** 该卸载操作不可逆，也不会备份任何数据，最终会删除 $INSTALL_PATH，$PKG_SRC_PATH，$CTRL_DIR 这三个目录。默认情况下分别是：/data/bce，/data/src，/data/install。请在运行脚本、输入 yes 之前，请三思！
+> **注意：** 该卸载操作不可逆，也不会备份任何数据，最终会删除 $INSTALL_PATH，$PKG_SRC_PATH，$CTRL_DIR 这三个目录。默认情况下分别是：/data/bce，/data/src，/data/install。请在运行脚本、输入 yes 之前，请三思！
 
 在每台蓝鲸后台服务器上运行：
 

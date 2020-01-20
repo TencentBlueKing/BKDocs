@@ -2,11 +2,11 @@
 
 **思路**
 
-1. `open_paas` Nginx 配置 HTTPS
+1\. `open_paas` Nginx 配置 HTTPS
 
-2. 内部接口 统一走 HTTP
+2\. 内部接口 统一走 HTTP
 
-3. 前端跳转 统一走 HTTPS
+3\. 前端跳转 统一走 HTTPS
 
 **运维同学关注 open_paas 部署相关**
 
@@ -70,7 +70,7 @@ PAAS_INNER_DOMAIN = '__PAAS_HOST__:__PAAS_HTTP_PORT__'
 
 2. `PAAS_INNER_DOMAIN` 是内网地址，即到 `consul` 的地址。
 
-此时，给到 `SaaS` 的环境变量都是`https`。
+此时，给到 `SaaS` 的环境变量都是 `https`。
 
 ```python
 BK_PAAS_HOST = "https://%s" % settings.PAAS_DOMAIN
@@ -127,31 +127,31 @@ BK_GET_USER_INFO_URL = "%s/login/accounts/get_user/" % getattr(settings,'BK_PAAS
 
 ## [ESB 调用方关注] API 网关用户 HTTPS 改造方案
 
-API 网关 API 提供外部 HTTPS、内部 HTTP 两个协议，（内部表示与 API 网关部署在同一个环境，可使用同一个内部域名解析服务）。
+API 网关 API 提供外部 HTTPS、内部 HTTP 两个协议，(内部表示与 API 网关部署在同一个环境，可使用同一个内部域名解析服务)。
 
 ## 直接通过 URL 访问组件的情况
 
-1. 通过 HTTPS 协议访问，使用 HTTPS 外部域名，Python 程序使用 reqeusts 包时，请求参数需添加 verify=False。
+1\. 通过 HTTPS 协议访问，使用 HTTPS 外部域名，Python 程序使用 reqeusts 包时，请求参数需添加 verify=False。
 
-2. 通过 HTTP 协议访问，服务需要与 API 网关部署在同一环境，使用内部新域名即可，其他不需要变动。
+2\. 通过 HTTP 协议访问，服务需要与 API 网关部署在同一环境，使用内部新域名即可，其他不需要变动。
 
-注意：
-
-1. 本地开发测试，需使用 HTTPS 协议。
-
-2. 脚本等不确定服务器的场景，需使用 HTTPS 协议。
-
-3. JOB、CC 等第三方系统，如果正式环境与 ESB 部署在同一环境，服务器可以解析内部域名，可以使用 HTTP 协议。
+> 注意：
+>
+> 1. 本地开发测试，需使用 HTTPS 协议。
+>
+> 2. 脚本等不确定服务器的场景，需使用 HTTPS 协议。
+>
+> 3. JOB、CC 等第三方系统，如果正式环境与 ESB 部署在同一环境，服务器可以解析内部域名，可以使用 HTTP 协议。
 
 ## SaaS 使用组件 SDK 的情况
 
-1. 检查 blueking/component/client.py BaseComponentClient.request 方法中，requests.request 包含 verify=False 参数。
+1\. 检查 blueking/component/client.py BaseComponentClient.request 方法中，requests.request 包含 verify=False 参数。
 
 ```python
 return requests.request(method,url,params=params,data=data,verify=False,headers=headers,**kwargs)
 ```
 
-2. 配置更新(可选，以下配置，SaaS 正式环境会使用内部域名访问组件)。
+2\. 配置更新(可选，以下配置，SaaS 正式环境会使用内部域名访问组件)。
 
 ```python
 conf/default.py
@@ -161,7 +161,7 @@ blueking/component/conf.py
 COMPONENT_SYSTEM_HOST = getatrr(settings,'BK_PAAS_INNER_HOST',settings.BK_PAAS_HOST)
 ```
 
-3. 本地开发: 例如 SaaS/ 脚本，依赖线上服务地址，务必将依赖地址改成 `https`，否则 `nginx` 会自动将 `http` 转 301 至 `https`，参数信息会丢失，导致请求异常。
+3\. 本地开发: 例如 SaaS/脚本，依赖线上服务地址，务必将依赖地址改成 `https`，否则 `nginx` 会自动将 `http` 转 301 至 `https`，参数信息会丢失，导致请求异常。
 
 ## [依赖登录关注]其他登录系统
 

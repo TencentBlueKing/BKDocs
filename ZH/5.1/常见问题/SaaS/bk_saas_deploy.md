@@ -38,7 +38,7 @@ Loading mirror speeds from cached hostfile
 ......
 ```
 
-解决方法（重新构建 rpm 数据库）
+解决方法(重新构建 rpm 数据库)
 
 ```bash
 $ cd /var/lib/rpm
