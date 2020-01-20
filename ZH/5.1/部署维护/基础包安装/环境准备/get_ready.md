@@ -91,7 +91,7 @@ yum -y install rsync
 systemctl stop NetworkManager
 systemctl disable NetworkManager
 ```
-备注说明：该操作前提需确保主机为静态IP，若为DHCP获取的IP，则无法直接disable NetworkManager，否则会出现主机重启后，或者主机运行一段时间IP租约地址到期后，网卡无法从网络重新正常获取IP地址的情况。
+> 备注说明：该操作前提需确保主机为静态 IP，若为 DHCP 获取的 IP，则无法直接 disable NetworkManager，否则会出现主机重启后，或者主机运行一段时间 IP 租约地址到期后，网卡无法从网络重新正常获取 IP 地址的情况。
 
 5\. 调整最大文件打开数
 
@@ -160,7 +160,7 @@ tar xf bkce_src-5.1.26.tar.gz  -C /data
 
 8\. 检查resolv.conf是否有修改权限
 
-检查/etc/resolv.conf是否被加密无法修改(即便是root)，执行如下命令，检查是否有“i”加密字样：
+检查 /etc/resolv.conf 是否被加密无法修改(即便是 root)，执行如下命令，检查是否有“i”加密字样：
 
 ```bash
 lsattr /etc/resolv.conf
@@ -173,7 +173,7 @@ lsattr /etc/resolv.conf
 chattr -i /etc/resolv.conf
 ```
 
-需要注意，在resolv.conf配置文件的首行，即第一个DNS地址需为127.0.0.1，如下所示：
+需要注意，在 resolv.conf 配置文件的首行，即第一个DNS地址需为 127.0.0.1，如下所示：
 
 ```bash
 nameserver 127.0.0.1
@@ -181,7 +181,8 @@ nameserver 192.168.1.100
 nameserver 192.168.2.100
 ```
 
-> 备注说明：resolv 配置文件无需人工修改内容，后续安装脚本会自动为主机进行配置 127.0.0.1，因此只需检查是否允许修改即可。关于首行需要 127.0.0.1，这是由于后面蓝鲸内部组件的调用所需，域名通过 consul 解析，会探测服务运行状态，然后返回IP地址，例如访问 es，那么内部需要解析 es.service.consul 等，若首行不是 127.0.0.1，否则这些域名就通过外网去解析，无法返回正确的响应，导致服务运行异常，或者 SaaS 无法正常打开等情况。
+> 备注说明：resolv 配置文件无需人工修改内容，后续安装脚本会自动为主机进行配置 127.0.0.1，因此只需检查是否允许修改即可。关于首行需要 127.0.0.1，这是由于后面蓝鲸内部组件的调用所需，域名通过 consul 解析，会探测服务运行状态，然后返回IP地址，
+> 例如访问 es，那么内部需要解析 es.service.consul 等，若首行不是 127.0.0.1，否则这些域名就通过外网去解析，无法返回正确的响应，导致服务运行异常，或者 SaaS 无法正常打开等情况。
 
 ## 配置文件
 
@@ -194,7 +195,9 @@ nameserver 192.168.2.100
 ### install.config
 
 `install.config` 是模块和服务器对应关系的配置文件，描述在哪些机器上安装哪些模块。
+
 每行两列，第一列是 IP 地址；第二列是以英文逗号分隔的模块名称。
+
 详情参考`install.config.3IP.sample`文件(可将 install.config.3IP.sample 复制为 install.config)。
 
 ```bash
@@ -206,11 +209,8 @@ nameserver 192.168.2.100
 
 说明:
 - 该配置文件，ip 后面使用空格与服务名称隔开，含有多个内网 ip 的机器，默认使用 /sbin/ifconfig 输出中的第一个内网 ip，在 ip 后面写上该机器要安装的服务列表即可，部署过程中默认使用标准私有地址，若企业环境使用非标准私有地址，请参考 [本章后续内容-非标准私有地址处理方法](./get_ready.md#非标准私有地址处理方法) 的处理方法。
-
 - zk 表示 ZooKeeper， es 表示 ElasticSearch。
-
 - gse 与 redis 需要部署在同一台机器上。
-
 - 增加机器数量时，可以将以上配置中的服务挪到新的机器上，分担负载。要保证：kafka，es，zk 的每个组件的总数量为 3。
 
 ### globals.env

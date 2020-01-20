@@ -2,7 +2,7 @@
 
 ## 开发环境与配置类
 
-## pip install 安装某个包时，提示包未找到
+### pip install 安装某个包时，提示包未找到
 可能是仓库源配置问题。建议使用腾讯云提供的 PYPI 源: `mirrors.cloud.tencent.com/pypi/simple/`
 
 ## 用户与鉴权相关
