@@ -3,7 +3,7 @@
 ## ITSM
 * [产品简介](产品简介/README.md)
 * [术语解释](术语解释/term.md)
-* [产品架构图](产品架构/architecture.md)
+* [产品架构](产品架构/architecture.md)
 * [产品功能]()
     * [模块说明](产品功能/modular.md)
     * [工作台](产品功能/workbench.md)
