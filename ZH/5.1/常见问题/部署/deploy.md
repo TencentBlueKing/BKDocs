@@ -32,7 +32,7 @@
 解析异常处理方法：
 
 - 检查三台服务器 `/etc/resolv.conf`配置，首行是否有配置 `nameserver 127.0.0.1`，如无，请添加
-- 检查 consul 配置中是否有`ls /data/bkce/etc/consul.d/zk-config.json`,如无，则重装consul服务
+- 检查 consul 配置中是否有`ls /data/bkce/etc/consul.d/zk-config.json`,如无，则重装 consul 服务
 
 ```bash
 ./bkcec stop consul  #(或在consul服务所在的三台主机，ps -ef |grep consul | awk '{print $2}'  |xargs kill -9)
@@ -52,7 +52,7 @@
 
 ### cmdb-nginx 服务状态 failed
 
-检查 cmdb 模块所在机器上是否能 YUM 安装 Nginx `yum info nginx`
+检查 CMDB 模块所在机器上是否能 YUM 安装 Nginx `yum info nginx`
 
  安装 epel YUM 源, 重装 CMDB
 
@@ -69,7 +69,7 @@
 
 `/data/bkce/logs/cmdb/` 目录下查看相应的日志
 
-### 部署 App_mgr 常见问题
+## 部署 App_mgr 常见问题
 
 ![-w2020](../assets/saas-faq.png)
 
@@ -90,7 +90,7 @@
 ./bkcec activate appt
 ```
 
-### 部署 BKDATA 常见问题
+## 部署 BKDATA 常见问题
 
 `./bk_install bkdata` 报错
 
@@ -107,11 +107,11 @@ install python package for bdata(monitor) failed pip optin: --no-index --find-li
 
 1. 确保 mysql-devel 已经安装
 
-yum install mysql-devel
+`yum install mysql-devel`
 
 ![-w2020](../assets/1.png)
 
-rpm -qa | grep mariadb-devel
+`rpm -qa | grep mariadb-devel`
 
 ![-w2020](../assets/2.png)
 
