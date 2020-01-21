@@ -5,6 +5,7 @@
 可修改 paas_agent 的 paas_agent_config.yaml，将 EXECUTE_TIME_LIMIT 调大，重启 paas_agent 即可
 
 ```bash
+$ /data/bkce/etc/paas_agent_config.yaml
 $ /data/bkce/paas_agent/paas_agent/etc/paas_agent_config.yaml
 EXECUTE_TIME_LIMIT: 300
 ```
