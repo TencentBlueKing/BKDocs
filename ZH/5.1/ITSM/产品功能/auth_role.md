@@ -16,7 +16,7 @@
 ![-w2020](../media/ed07cd83c9e0b8ddcc01752d1f1a1e5c.png)
 <center>图6. ITSM 管理员角色列表</center>
 
-##  ITSM的权限体系
+## ITSM的权限体系
 
 权限体系主要表现在两方面：
 
