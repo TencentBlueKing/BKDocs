@@ -2,6 +2,7 @@
 
 ## ITSM
 * [产品简介](产品简介/Overview.md)
+* [术语解释](术语解释/Term.md)
 * [产品架构](产品架构/Architecture.md)
 * [特点及优势](特点及优势/Advantages.md)
 * [产品功能]()
