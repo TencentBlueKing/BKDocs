@@ -4,6 +4,7 @@
 
 | 名字             | 版本号    | 大小   | 简介          | 操作                      |
 | ---------------- | -------- | ------ | ------------ | ------------------------- |
+| Python开发框架 V2 | 3.2.0.83 | 1.4M | 蓝鲸 SaaS 统一 Python 开发框架 V2 | [下载](http://bktencent-1252002024.file.myqcloud.com/framework_3.2.0.83.tar.gz) |
 | Python开发框架 V2 | 3.1.0.75 | 1.1M | 蓝鲸 SaaS 统一 Python 开发框架 V2 | [下载](http://bkopen-1252002024.file.myqcloud.com/open/framework.tar.gz) |
 | Python开发框架 V1 | 无 | 740KB  | 蓝鲸 SaaS 统一 Python 开发框架 V1 | [下载](http://bkdocument-1252002024.costj.myqcloud.com/framework.tar.gz) |
 | 组件模板 | 1.0.0 | 2KB  | 蓝鲸 ESB 服务编码模板 | [下载](http://bkdocument-1252002024.costj.myqcloud.com/hcp.tar.gz) |
