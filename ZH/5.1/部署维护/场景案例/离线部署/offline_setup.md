@@ -86,10 +86,10 @@ src\paas_agent\support-files\pkgs
 
 附： 相关镜像下载链接：
 
-  - [CentOS7.2.1511_minimal_x86_64](http://bkopen-1252002024.file.myqcloud.com/dl/bk_offline_repo-7.2.1511.iso)
+  - [CentOS7.2.1511_minimal_x86_64](http://bktencent-1252002024.file.myqcloud.com/bk_offline_repo-7.2.1511.iso)
 
-  - [CentOS7.3.1611_minimal_x86_64](http://bkopen-1252002024.file.myqcloud.com/dl/bk_offline_repo-7.3.1611.iso)
+  - [CentOS7.3.1611_minimal_x86_64](http://bktencent-1252002024.file.myqcloud.com/bk_offline_repo-7.3.1611.iso)
 
-  - [CentOS7.4.1708_minimal_x86_64](http://bkopen-1252002024.file.myqcloud.com/dl/bk_offline_repo-7.4.1708.iso)
+  - [CentOS7.4.1708_minimal_x86_64](http://bktencent-1252002024.file.myqcloud.com/bk_offline_repo-7.4.1708.iso)
 
-  - [CentOS7.5.1804_minimal_x86_64](http://bkopen-1252002024.file.myqcloud.com/dl/bk_offline_repo-7.5.1804.iso)
+  - [CentOS7.5.1804_minimal_x86_64](http://bktencent-1252002024.file.myqcloud.com/bk_offline_repo-7.5.1804.iso)
