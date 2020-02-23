@@ -17,4 +17,7 @@
     * [合作伙伴](生态合作/cooperation_partner.md)
     * [培训认证](生态合作/training_exam.md)
 * [客户案例](客户案例/client_case.md)
+* [企业专属]()
+    * [软件说明](企业专属/software.md)
+    * [客户服务](企业专属/itservices.md) 
 * [结语](结语/epilog.md)
