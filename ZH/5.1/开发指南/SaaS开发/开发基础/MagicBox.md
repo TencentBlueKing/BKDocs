@@ -1,7 +1,8 @@
-# [MagicBox](https://magicbox.bk.tencent.com/static_api/v3/main/index.html)
+# MagicBox
+
+- [MagicBox](https://magicbox.bk.tencent.com/static_api/v3/main/index.html)
 
 - [前端可视化布局](https://magicbox.bk.tencent.com/static_api/v3/index.html#build/show)：支持在线拖拽，使用MagicBox提供的组件，自由布局页面。 
-
 
 - [前端UI组件库](https://magicbox.bk.tencent.com/static_api/v3/index.html#index?isPro=1)：提供表单、表格、富文本、按钮等丰富的UI组件，包括PC版、移动版。  
 
