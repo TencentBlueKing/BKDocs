@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/create_object/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
 创建模型
 
 ### 请求参数
-
 
 #### 通用参数
 
@@ -37,7 +32,6 @@ POST
 | bk_supplier_account  | string     | 是     | 开发商账号                                               |
 | bk_obj_icon          | string     | 否     | 对象模型的 ICON 信息，用于前端显示，取值可参考[(modleIcon.json)](/static/esb/api_docs/res/cc/modleIcon.json)|
 
-
 ### 请求参数示例
 
 ```python
@@ -50,7 +44,6 @@ POST
     "bk_obj_id": "test"
 }
 ```
-
 
 ### 返回结果示例
 

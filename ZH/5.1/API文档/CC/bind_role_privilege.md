@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/bind_role_privilege/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
 绑定角色权限
 
 ### 请求参数
-
 
 #### 通用参数
 

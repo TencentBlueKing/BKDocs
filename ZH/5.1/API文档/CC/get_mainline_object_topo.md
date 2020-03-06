@@ -1,14 +1,10 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/get_mainline_object_topo/
 
-
-
 ### 请求方法
 
 GET
-
 
 ### 功能描述
 
@@ -21,8 +17,8 @@ GET
 #### 接口参数
 
 | 字段      |  类型      | 必选   |  描述      |
-|-----------|------------|--------|------------|
-| bk_supplier_account | string        | 是     | 开发商账号    |
+|-----------|----------|--------|------------|
+| bk_supplier_account | string  | 是  | 开发商账号    |
 
 ### 请求参数示例
 
@@ -92,10 +88,10 @@ GET
 #### data
 | 字段      |  类型      |  描述      |
 |-----------|------------|------------|
-|bk_obj_id | string | 模型的唯一 ID |
-|bk_obj_name | string |模型名称|
-|bk_supplier_account | string |开发商帐户名称|
-|bk_next_obj | string |当前模型的下一个模型唯一 ID|
-|bk_next_name | string |当前模型的下一个模型名称|
-|bk_pre_obj_id | string |当前模型的前一个模型的唯一 ID|
-|bk_pre_obj_name | string |当前模型的前一个模型的名称|
+| bk_obj_id | string | 模型的唯一 ID |
+| bk_obj_name | string |模型名称|
+| bk_supplier_account | string |开发商帐户名称|
+| bk_next_obj | string |当前模型的下一个模型唯一 ID|
+| bk_next_name | string |当前模型的下一个模型名称|
+| bk_pre_obj_id | string |当前模型的前一个模型的唯一 ID|
+| bk_pre_obj_name | string |当前模型的前一个模型的名称|

@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/find_instance_association/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
 查询模型的实例关联关系。
 
 ### 请求参数
-
 
 #### 通用参数
 
@@ -33,22 +28,19 @@ POST
 | metadata           | object     | Yes    | meta data             |
 | condition | string map     | Yes   | 查询条件 |
 
-
-metadata params
+##### metadata params
 
 | 字段                 |  类型      | 是否必填	   |  描述         |
 |---------------------|------------|--------|-----------------------------|
 | label           | string map     | Yes     | 标签信息 |
 
-
-label params
+##### label params
 
 | 字段                 |  类型      | 是否必填	   |  描述         |
 |---------------------|------------|--------|-----------------------------|
 | bk_biz_id           | string      | Yes     | 业务 ID |
 
-
-condition params
+##### condition params
 
 | 字段                 |  类型      | 是否必填	   |  描述         |
 |---------------------|------------|--------|-----------------------------|
@@ -56,7 +48,6 @@ condition params
 | bk_asst_id           | string     | NO     | 关联类型的唯一 id|
 | bk_obj_id           | string     | NO     | 源模型 id|
 | bk_asst_id           | string     | NO     | 目标模型 id|
-
 
 ### 请求参数示例
 
@@ -94,7 +85,6 @@ condition params
 
 ```
 
-
 ### 返回结果参数说明
 
 | 字段      | 类型      | 描述      |
@@ -108,7 +98,7 @@ condition params
 
 | 字段       | 类型     | 描述         |
 |------------|----------|--------------|
-|id|int64|the association's unique id|
+| id|int64|the association's unique id|
 | bk_obj_asst_id| string|  自动生成的模型关联关系 id.|
 | bk_obj_id| string| 关联关系源模型 id |
 | bk_asst_obj_id| string| 关联关系目标模型 id|

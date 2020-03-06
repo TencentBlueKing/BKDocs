@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/delete_process_module_bind/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
 解绑进程模块
 
 ### 请求参数
-
 
 #### 通用参数
 
@@ -47,11 +42,9 @@ POST
 }
 ```
 
-
 ### 返回结果示例
 
 ```python
-
 {
     "result": true,
     "code": 0,

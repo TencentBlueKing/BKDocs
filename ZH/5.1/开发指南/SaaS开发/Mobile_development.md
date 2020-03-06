@@ -153,8 +153,8 @@ server {
 
 ## 小程序开发入门
 
-* 教程地址：[https://developers.weixin.qq.com/miniprogram/dev/index.htmla](https://developers.weixin.qq.com/miniprogram/dev/index.htmla)
-* 测试号： [https://developers.weixin.qq.com/sandbox](https://developers.weixin.qq.com/sandbox)
+* 教程地址：[https://developers.weixin.qq.com/miniprogram/dev/index.html](https://developers.weixin.qq.com/miniprogram/dev/index.html)
+* 测试号： [https://developers.weixin.qq.com/weloginpage](https://developers.weixin.qq.com/weloginpage)
 
 ## 小程序开发
 

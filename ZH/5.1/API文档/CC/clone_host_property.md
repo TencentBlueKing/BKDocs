@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/clone_host_property/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
 克隆主机属性
 
 ### 请求参数
-
 
 #### 通用参数
 
@@ -45,7 +40,6 @@ POST
     "bk_cloud_id":0
 }
 ```
-
 
 ### 返回结果示例
 

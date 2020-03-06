@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/create_classification/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
 添加模型分类
 
 ### 请求参数
-
 
 #### 通用参数
 
@@ -33,8 +28,6 @@ POST
 | bk_classification_id       | string     | 是     | 分类 ID，英文描述用于系统内部使用           |
 | bk_classification_name     | string     | 是     | 分类名     |
 | bk_classification_icon     | string     | 否     | 模型分类的图标,取值可参考，取值可参考[(classIcon.json)](resource_define/classIcon.json)|
-
-
 
 ### 请求参数示例
 

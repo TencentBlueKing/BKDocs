@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/delete_user_group/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
 删除用户分组
 
 ### 请求参数
-
 
 #### 通用参数
 
@@ -33,7 +28,6 @@ POST
 | bk_supplier_account | string      | 是     | 开发商账号  |
 | group_id            | string      | 是     | 分组 ID      |
 
-
 ### 请求参数示例
 
 ```python
@@ -41,7 +35,7 @@ POST
 {
     "bk_supplier_account": "0",
     "delete":{
-        "group_id": "test"    
+        "group_id": "test"
     }
 }
 ```

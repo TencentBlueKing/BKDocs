@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/get_custom_query_data/
 
-
-
 ### 请求方法
 
 GET
-
 
 ### 功能描述
 
 根据自定义api获取数据
 
 ### 请求参数
-
 
 #### 通用参数
 
