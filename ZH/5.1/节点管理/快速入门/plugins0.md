@@ -23,7 +23,7 @@
 >```shell
 >./bkcec pack gse_plugin
 >./bkcec install gse 			# 因为该步骤包含了 pack gse_plugin，所以也可以实现)
->./bkcec pack gse_plugin -u. 	# -u 参数会自动调用节点管理接口写入插件信息
+>./bkcec pack gse_plugin -u 	# -u 参数会自动调用节点管理接口写入插件信息
 >```
 >
 >
