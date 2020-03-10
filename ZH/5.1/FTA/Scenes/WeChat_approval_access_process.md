@@ -10,7 +10,7 @@
 
 - 蓝鲸故障自愈 APP 已经正常运行。
 
-- 外网域名一个，能代理访问到故障自愈 APP weixin api（可通过 nginx,apache 等），下面以 mycompany.com 做示例。
+- 外网域名一个，能代理访问到故障自愈 APP weixin api(可通过 nginx,apache 等)，下面以 mycompany.com 做示例。
 
 - 若是已有企业微信，注意需要企业微信管理员才能进入企业微信后台。
 
@@ -22,7 +22,7 @@
 
 - 3. 自愈测试
 
-微信审批分两种，一种是回复指令审批，适合组合套装中的【通知或审批】套餐，还有一种需要在微信页面审批（通过菜单进入），适合告警收敛的【异常防御需审批】。这些都需要一个企业微信应用为载体，下面以故障自愈应用为例，指引接入审批流程，相关参数可按照配置自行修改。
+微信审批分两种，一种是回复指令审批，适合组合套装中的【通知或审批】套餐，还有一种需要在微信页面审批(通过菜单进入)，适合告警收敛的【异常防御需审批】。这些都需要一个企业微信应用为载体，下面以故障自愈应用为例，指引接入审批流程，相关参数可按照配置自行修改。
 
 ## 配置企业微信
 
@@ -53,10 +53,10 @@
     - EncodingAESKey：FTAEncodingAESKeyFTAEncodingAESKey923456781
 
 截图示例如下：
+
 ![Alt text](../assets/1495508733324.png)
 
 > 注意：上面 TOKEN 和 EncodingAESKey 都是默认参数，请在 APP 配置后，务必修改 Token 和 EncodingAESKey
-
 
 ### 配置审批菜单
 
@@ -71,6 +71,7 @@
     - 跳转链接: http://mycompany.com/o/bk_fta_solutions/wechat/todo/
 
 截图示例如下：
+
 ![Alt text](../assets/1495508805368.png)
 
 完成后，企业微信接入就完成了， 下一步需要把生成的 token 等配置到自愈 APP 中。
@@ -88,14 +89,14 @@
 
 下面对每个配置项详解。
 
-- 微信端地址（外网可访问）：
+- 微信端地址(外网可访问)：
 填写外网能访问的域名，url 到 wechat/结束，如上面的域名应该填写：
 > http://mycompany.com/o/bk_fta_solutions/wechat/
 
-- 微信端静态资源地址（外网可访问）：
+- 微信端静态资源地址(外网可访问)：
 默认即可，如果 nginx 做了路径映射，或者使用 CDN，需要填写绝对路径，如：
-> /static/wechat/ （默认）
-> http://mycompany.com/o/bk_fta_solutions/static/wechat/ （绝对路径，适合 nginx 做了路径映射，或者 CDN 场景）
+> /static/wechat/ (默认)
+> http://mycompany.com/o/bk_fta_solutions/static/wechat/ (绝对路径，适合 nginx 做了路径映射，或者 CDN 场景)
 
 - TOKEN 和 EncodingAESKey：
 TOKEN 对应第二步中，配置回调参数中的 Token。注意，如果这里修改，在上面配置也需要同步修改
@@ -113,7 +114,7 @@ Agent_ID 在创建完企业号应用就可以获取到，在应用中心->故障
 - 审批管理员
 审批管理员是一个组超级用户，可以接受到任意审批消息，也可以审批任意的收敛审批。填写对应的名称，以逗号分隔即可。
 
-注意，名称是已经在企业微信注册的用户。
+> 注意，名称是已经在企业微信注册的用户。
 
 ## 自愈测试
 
@@ -125,7 +126,7 @@ Agent_ID 在创建完企业号应用就可以获取到，在应用中心->故障
 
 ![Alt text](../assets/20181211123915.png)
 
--	触发告警
+- 触发告警
 
 完整流程请参照 [REST API 推送](../Getting_Started/REST_API_PUSH_Alarm_processing_automation.md)。
 
