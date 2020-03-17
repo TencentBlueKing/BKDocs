@@ -4,7 +4,7 @@
 
 ## 创建业务
 
-- 首先在配置平台(CMDB) 上新建一个任务，将 admin 添加至运维人员。
+- 首先在配置平台(CMDB) 上新建一个业务，将 admin 添加至运维人员。
 
 ![添加业务](../../assets/add_business.png)
 
@@ -70,11 +70,11 @@
 
 ![定制作业执行情况](../../assets/Timejobsuccess.png)
 
-
 ## 创建流程
+
 - 新建一个业务流程模板。
 
-    选择【快速执行脚本】，输入脚本内容，目标 IP 通过变量进行传入，类型选择【IP 选择器】，[IP 选择器（简单版）跟 IP 选择器的区别](https://github.com/Tencent/bk-sops/blob/V3.3.X/docs/features/variables_engine.md#ip%E9%80%89%E6%8B%A9%E5%99%A8%E7%AE%80%E5%8D%95%E7%89%88) 。
+    选择【快速执行脚本】，输入脚本内容，目标 IP 通过变量进行传入，类型选择【IP 选择器】，[IP 选择器(简单版)跟 IP 选择器的区别](https://github.com/Tencent/bk-sops/blob/V3.3.X/docs/features/variables_engine.md#ip%E9%80%89%E6%8B%A9%E5%99%A8%E7%AE%80%E5%8D%95%E7%89%88) 。
 
 ![新建流程模版](../../assets/add_sops.png)
 

@@ -7,4 +7,4 @@
 
 启用推荐的套餐后，可以在接入自愈页面的方案来源列找到系统推荐的套餐.
 ![Package_recommendation_02](../assets/Package_recommendation_02.png)
-<center>图 2. 接入自愈列表（方案来源）</center>
+<center>图 2. 接入自愈列表(方案来源)</center>

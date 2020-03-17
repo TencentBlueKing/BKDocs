@@ -11,7 +11,7 @@
 
 ### 修改 Redis 密码
 
-修改 globals.env 里的 REDIS_PASS 值，密码不要包含 [ ] / : @ ? 等特殊字符
+修改 globals.env 里的 REDIS_PASS 值，密码不要包含 `[ ] / : @ ?` 等特殊字符
 
 ### 同步 install 目录
 
@@ -66,7 +66,7 @@ numChildren = 0
 # 此处使用 set 命令，设置新密码，严格按照上面获取的串，仅修改密码位置
 [zk: zk.service.consul:2181(CONNECTED) 1] set /gse/config/etc/dataserver/storage/all/0_1 [{"host":"redis.service.consul","port":6379,"type":4,"passwd":"新密码"}]
 
-# 可以再查询是否为新的密码，为新的密码表示OK
+# 可以再查询是否为新的密码，为新的密码表示 OK
 [zk: zk.service.consul:2181(CONNECTED) 1] get /gse/config/etc/dataserver/storage/all/0_1
 ```
 

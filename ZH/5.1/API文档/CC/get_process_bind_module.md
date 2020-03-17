@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/get_process_bind_module/
 
-
-
 ### 请求方法
 
 GET
-
 
 ### 功能描述
 
 获取进程绑定模块
 
 ### 请求参数
-
 
 #### 通用参数
 
@@ -33,7 +28,6 @@ GET
 | bk_supplier_account  | string     |是     | 开发商 ID       |
 | bk_biz_id            | int     | 是     |    业务 ID   |
 | bk_process_id       | int     | 是     | 进程 ID |
-
 
 ### 请求参数示例
 

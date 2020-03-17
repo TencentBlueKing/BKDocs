@@ -21,7 +21,7 @@ migrate failed for gse (server)
 
 **解决办法**
 
-原因 1
+**原因 1**
 
 * 需要更新 GSE 版本中的初始化程序文件 on_migrate 和 parse_bizid，路径`/data/bkce/gse/server/bin`
 
@@ -45,7 +45,7 @@ migrate failed for gse (server)
      ./bkcec initdata gse
      ```
 
-原因 2
+**原因 2**
 
 - 确定 cmdb 上 nginx 是否安装，若没安装，根据用户的设置源，让用户安装 nginx，同时需确认`/etc/nginx/nginx.conf`配置文件是否包含`/data/bkce/etc/nginx/*.conf`
 
@@ -117,7 +117,7 @@ Copy
 
 - 查看 agent 机器上的 gse_agent 进程是否成对出现
 
-- 查看是否和gse_task的48533端口建立链接：`netstat -antp | grep :48533`
+- 查看是否和 gse_task 的48533端口建立链接：`netstat -antp | grep :48533`
 
 ```bash
 [root@nginx-1 ~]# netstat -antp |grep :48533
@@ -194,7 +194,7 @@ proxy 的配置文件在 /usr/local/gse/proxy/etc/ 下，修改配置后使用 `
 
 ### 查看源日志是否有更新
 
-确保采集的数据源有日志持续输出 
+确保采集的数据源有日志持续输出
 
 注意：文件内容不可直接清空，文件轮转可采用删除或者移动 MV。
 
@@ -339,32 +339,32 @@ Copy
 
 - proxy 和 GSE 之间的互通策略
 
-| 源地址             | 目标地址         | 协议    | 端口         | 用途                 |
-| ------------------ | ---------------- | ------- | ------------ | -------------------- |
+| 源地址              | 目标地址         | 协议    | 端口         | 用途                 |
+| ------------------ | ---------------- | ------- | ------------ | -------------------|
 | proxy(gse_agent)   | gse_task         | TCP     | 48533        | 任务服务端口         |
 | proxy(gse_transit) | gse_data         | TCP     | 58625        | 数据上报端口         |
-| proxy(gse_btsvr)   | gse_btsvr        | TCP     | 58930        | bt 传输               |
-| proxy(gse_btsvr)   | gse_btsvr        | TCP,UDP | 10020        | bt 传输               |
-| proxy(gse_btsvr)   | gse_btsvr        | UDP     | 10030        | bt 传输               |
-| gse_btsvr          | proxy(gse_btsvr) | TCP     | 58930        | bt 传输               |
-| gse_btsvr          | proxy(gse_btsvr) | TCP,UDP | 10020        | bt 传输               |
-| gse_btsvr          | proxy(gse_btsvr) | UDP     | 10030        | bt 传输               |
-| proxy(gse_btsvr)   | proxy(gse_btsvr) | TCP     | 58930        | bt 传输（同一子网）   |
-| proxy(gse_btsvr)   | proxy(gse_btsvr) | TCP,UDP | 10020        | bt 传输（同一子网）   |
-| proxy(gse_btsvr)   | proxy(gse_btsvr) | UDP     | 10030        | bt 传输（同一子网）   |
+| proxy(gse_btsvr)   | gse_btsvr        | TCP     | 58930        | bt 传输             |
+| proxy(gse_btsvr)   | gse_btsvr        | TCP,UDP | 10020        | bt 传输             |
+| proxy(gse_btsvr)   | gse_btsvr        | UDP     | 10030        | bt 传输             |
+| gse_btsvr          | proxy(gse_btsvr) | TCP     | 58930        | bt 传输             |
+| gse_btsvr          | proxy(gse_btsvr) | TCP,UDP | 10020        | bt 传输             |
+| gse_btsvr          | proxy(gse_btsvr) | UDP     | 10030        | bt 传输             |
+| proxy(gse_btsvr)   | proxy(gse_btsvr) | TCP     | 58930        | bt 传输(同一子网)    |
+| proxy(gse_btsvr)   | proxy(gse_btsvr) | TCP,UDP | 10020        | bt 传输(同一子网)    |
+| proxy(gse_btsvr)   | proxy(gse_btsvr) | UDP     | 10030        | bt 传输(同一子网)    |
 | proxy(gse_opts)    | gse_ops          | TCP     | 58725        | ping告警数据上报端口 |
 | proxy(gse_agent)   |                  |         | 监听随机端口 | bt 传输，可不开通     |
 | proxy(gse_btsvr)   |                  |         | 监听随机端口 | bt 传输，可不开通     |
 
 - proxy 下 agent 和 proxy 之间的互通策略
 
-| 源地址           | 目标地址           | 协议    | 端口         | 用途             |
-| ---------------- | ------------------ | ------- | ------------ | ---------------- |
+| 源地址            | 目标地址           | 协议    | 端口         | 用途             |
+| ---------------- | ------------------ | ------- | ------------ | ----------------|
 | agent            | proxy(gse_agent)   | TCP     | 48533        | 任务服务端口     |
 | agent            | proxy(gse_transit) | TCP     | 58625        | 数据上报端口     |
-| agent            | proxy(gse_btsvr)   | TCP     | 59173        | bt 传输           |
-| agent            | proxy(gse_btsvr)   | TCP,UDP | 10020        | bt 传输           |
-| agent            | proxy(gse_btsvr)   | UDP     | 10030        | bt 传输           |
-| proxy(gse_btsvr) | agent              | TCP,UDP | 60020-60030  | bt 传输           |
+| agent            | proxy(gse_btsvr)   | TCP     | 59173        | bt 传输          |
+| agent            | proxy(gse_btsvr)   | TCP,UDP | 10020        | bt 传输          |
+| agent            | proxy(gse_btsvr)   | UDP     | 10030        | bt 传输          |
+| proxy(gse_btsvr) | agent              | TCP,UDP | 60020-60030  | bt 传输          |
 | agent            | agent              | TCP,UDP | 60020-60030  | bt 传输(同一子网) |
-| agent            |                    |         | 监听随机端口 | bt 传输，可不开通 |
+| agent            |                    |         | 监听随机端口  | bt 传输，可不开通 |

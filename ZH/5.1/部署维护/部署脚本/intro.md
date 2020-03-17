@@ -4,14 +4,14 @@
 
 bkcec 是蓝鲸社区版的安装维护主脚本。
 
-bk_install 是封装了 bkcec 的集成安装脚本。
+> bk_install 是封装了 bkcec 的集成安装脚本。
 
 bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 其中可用的 command 有：
 
 - **sync：** 从中控机的 src/ 同步安装 `<module>` 依赖的文件和目录到对应机器的 src/ 下。
-- **install：** 安装 `<module>` 到 $INSTALL_PATH（默认 /data/bkce）下。
+- **install：** 安装 `<module>` 到 $INSTALL_PATH(默认 /data/bkce)下。
 - **install <module> 1：** 等同于先执行 `sync <module>`，再执行`install <module>`，合二为一。
 - **initdata：** 安装后初始化，常用于模块的用户创建，sql 导入，权限设置等操作。
 - **render：** 渲染模块的模板文件，install 过程中会调用它，做模板变量替换。
@@ -94,7 +94,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **license：** 证书服务。
 
-- **appo：**  SaaS 部署的正式环境。
+- **appo：** SaaS 部署的正式环境。
 
 - **appt：** SaaS 部署的测试环境。
 
@@ -152,9 +152,9 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **install.config.3ip.sample：** 部署基础不含bcs时使用。
 
-- **install.config.bcs.sample：** 完整的基础平台+bcs方案分布。
+- **install.config.bcs.sample：** 完整的基础平台+bcs 方案分布。
 
-- **install.config.bcs.single.sample：** 单机部署bcs模块分布示例。
+- **install.config.bcs.single.sample：** 单机部署 bcs 模块分布示例。
 
 - **install.config.new.sample：** 部署 bcs 时使用。
 

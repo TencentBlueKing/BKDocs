@@ -4,7 +4,7 @@
 
 ## 蓝鲸产品版本
 
-1. 软件包后台版本号，可在部署环境中用命令来查询：
+1\. 软件包后台版本号，可在部署环境中用命令来查询：
 
 ```bash
 # 登录到中控机，切换到软件包目录
@@ -30,14 +30,14 @@ grep . */VERSION */*/VERSION
   bkdata/monitor/VERSION:0.1.7
   ```
 
-2. 部署维护脚本包版本号：
+2\. 部署维护脚本包版本号：
 
 ```bash
 # 登录到中控机，获取部署脚本包的版本号
 cat /data/install/VERSION
 ```
 
-3. SaaS 包版本号，在 **蓝鲸工作台 - 开发者中心 - S-mart 应用** 可以看到。
+3\. SaaS 包版本号，在 **蓝鲸工作台 - 开发者中心 - S-mart 应用** 可以看到。
 
 ## 蓝鲸自带的开源组件版本
 
@@ -48,6 +48,7 @@ cat /data/install/VERSION
 * Java：`java -version` 1.8.0_131。
 
 * Python:
+
   * `/opt/py27/bin/python --version` 非 PaaS 用的版本：2.7.10。
 
   * `/usr/local/bin/python --version` PaaS 专用版本：2.7.9。
@@ -66,8 +67,7 @@ cat /data/install/VERSION
 
 * Elasticsearch：登陆到 ES 运行机器执行 `source /data/install/utils.fc; curl $LAN_IP:$ES_REST_PORT` v5.4.0。
 
-还有一部分开源组件，是安装脚本使用 `yum` 来安装的，这些组件版本号取决于安装蓝鲸的
-操作系统上配置的 Yum 源中软件仓库的版本。请使用 `yum info 包名` 来确认。
+还有一部分开源组件，是安装脚本使用 `yum` 来安装的，这些组件版本号取决于安装蓝鲸的操作系统上配置的 Yum 源中软件仓库的版本。请使用 `yum info 包名` 来确认。
 
 * Nginx
 

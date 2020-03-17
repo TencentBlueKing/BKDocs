@@ -2,8 +2,7 @@
 
 ## 常见问题
 * [常见问题说明](README.md)
-* [部署类常见问题]()
-    * [部署常见问题](部署/deploy.md)
+* [部署类常见问题](部署/deploy.md)
 * [平台类常见问题]()
     * [PaaS 平台]()
         * [PaaS 登陆无响应](平台/PaaS平台/faq1.md)
@@ -31,5 +30,4 @@
     * [RabbitMQ](组件/rabbitmq.md)
     * [Kafka](组件/kafka.md)
     * [InfluxDB](组件/influxdb.md)
-* [开发类常见问题]()
-    * [开发常见问题](开发/dev.md)
+* [开发类常见问题](开发/dev.md)

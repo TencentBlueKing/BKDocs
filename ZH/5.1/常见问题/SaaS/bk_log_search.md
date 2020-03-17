@@ -8,11 +8,11 @@
 - 日志占满磁盘空间
 
 ```bash
-检查用户kafka的机器是不是磁盘满了 df -lh
-如果是的话，检查是否是kafka的数据日志满了 du -sh /data/bkce/public/kafka
-如果是的话，看下用户的/data/bkce/service/kafka/config/server.properties里面是否有log.retention.bytes配置，如果没有的话加上log.retention.bytes=21474836480
-停掉kafka
-启动kafka，去磁盘满的机器看是否磁盘空间释放了（这里可能要等Kafka启动后一段时间才启动，刚才操作大约10分钟）
+检查用户 kafka 的机器是不是磁盘满了 df -lh
+如果是的话，检查是否是 kafka 的数据日志满了 du -sh /data/bkce/public/kafka
+如果是的话，看下用户的 /data/bkce/service/kafka/config/server.properties 里面是否有 log.retention.bytes 配置，如果没有的话加上 log.retention.bytes=21474836480
+停掉 kafka
+启动 kafka，去磁盘满的机器看是否磁盘空间释放了(这里可能要等 Kafka 启动后一段时间才启动，刚才操作大约10分钟)
 ```
 
 ## 环境问题
@@ -25,7 +25,7 @@
 
 解决方法如下：
 
-1. 修改中控机的/data/install/ports.env 中下面两行配置的 10050 端口为 10049，避开冲突
+1. 修改中控机的 /data/install/ports.env 中下面两行配置的 10050 端口为 10049，避开冲突
     ```bash
     export DATABUS_ES_PORT=10050
     export CONNECTOR_ES_PORT=10050
@@ -45,7 +45,7 @@
 
 ```bash
  vim /data/bkce/bkdata/databus/conf/es.cluster.properties
-#  启动jvm是最大分配内存
+#  启动 jvm 是最大分配内存
 deploy.cluster.memory.max=2G
 ```
 ![-w2020](../assets/logseach2.png)

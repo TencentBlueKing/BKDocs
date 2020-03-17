@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/create_object_attribute/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
 创建模型属性
 
 ### 请求参数
-
 
 #### 通用参数
 

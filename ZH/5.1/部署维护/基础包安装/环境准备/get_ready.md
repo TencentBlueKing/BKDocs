@@ -27,6 +27,7 @@
 推荐使用以下 YUM 源：
 
 - [腾讯云 CentOS](https://mirrors.cloud.tencent.com/help/centos.html)
+
 - [腾讯云 EPEL](https://mirrors.cloud.tencent.com/help/epel.html)
 
 ## CentOS 系统设置
@@ -35,7 +36,7 @@
 
 **系统版本：** 要求 CentOS-7.0 以上版本，推荐 CentOS-7.5。
 
-1. 关闭 SELinux
+1\. 关闭 SELinux
 
 ```bash
 # 检查 SELinux 的状态，如果它已经禁用，可以跳过后面的命令
@@ -57,7 +58,7 @@ sed -i 's/^SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 ```bash
 reboot
 ```
-2. 关闭默认防火墙（firewalld）
+2\. 关闭默认防火墙(firewalld)
 
 安装和运行蓝鲸时，模块之间互相访问的端口策略较多，建议对蓝鲸后台服务器之间关闭防火墙。
 
@@ -72,7 +73,7 @@ systemctl stop firewalld    # 停止 firewalld
 systemctl disable firewalld # 禁用 firewall 开机启动
 ```
 
-3. 安装 rsync 命令
+3\. 安装 rsync 命令
 
 安装脚本依赖 rsync 分发同步文件。
 
@@ -85,14 +86,14 @@ yum -y install rsync
 ```
 
 
-4. 停止并禁用 NetWorkManager
+4\. 停止并禁用 NetWorkManager
 ```bash
 systemctl stop NetworkManager
 systemctl disable NetworkManager
 ```
-备注说明：该操作前提需确保主机为静态IP，若为DHCP获取的IP，则无法直接disable NetworkManager，否则会出现主机重启后，或者主机运行一段时间IP租约地址到期后，网卡无法从网络重新正常获取IP地址的情况。
+> 备注说明：该操作前提需确保主机为静态 IP，若为 DHCP 获取的 IP，则无法直接 disable NetworkManager，否则会出现主机重启后，或者主机运行一段时间 IP 租约地址到期后，网卡无法从网络重新正常获取 IP 地址的情况。
 
-5. 调整最大文件打开数
+5\. 调整最大文件打开数
 
 ```bash
 # 检查当前 root 账号下的 max open files 值
@@ -111,12 +112,12 @@ EOF
 
 修改后，重新使用 root 登录检查是否生效。
 
-6. 确认服务器时间同步
+6\. 确认服务器时间同步
 
 服务器后台时间不同步会对时间敏感的服务带来不可预见的后果。务必在安装和使用蓝鲸时保证时间同步。
 
 ```bash
-# 检查每台机器当前时间和时区是否一致，若相互之间差别大于3s（考虑批量执行时的时差），建议校时。
+# 检查每台机器当前时间和时区是否一致，若相互之间差别大于3s(考虑批量执行时的时差)，建议校时。
 date -R
 
 # 查看和ntp server的时间差异(需要外网访问，如果内网有ntpd服务器，自行替换域名为该服务的地址)
@@ -132,7 +133,7 @@ ntpdate cn.pool.ntp.org
 更可靠的方式包括通过运行 ntpd 或者 chrony 等服务在后台保持时间同步。
 具体请参考官方文档 [使用 ntpd 配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd) 或 [使用 chrony 配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-Configuring_NTP_Using_the_chrony_Suite)。
 
-7. 检查是否存在全局 HTTP 代理
+7\. 检查是否存在全局 HTTP 代理
 
 蓝鲸服务器之间会有的 HTTP 请求，如果存在 HTTP 代理，且未能正确代理这些请求，会发生不可预见的错误。
 
@@ -157,26 +158,31 @@ tar xf bkce_src-5.1.26.tar.gz  -C /data
 
 - install：存放安装部署脚本、安装时的参数配置、日常运维脚本等
 
-8. 检查resolv.conf是否有修改权限
+8\. 检查resolv.conf是否有修改权限
 
-检查/etc/resolv.conf是否被加密无法修改（即便是root），执行如下命令，检查是否有“i”加密字样：
+检查 /etc/resolv.conf 是否被加密无法修改(即便是 root)，执行如下命令，检查是否有“i”加密字样：
+
 ```bash
 lsattr /etc/resolv.conf
 ----i--------e-- /etc/resolv.conf
 ```
 
 如果有则执行命令，临时解密处理，执行如下命令：
+
 ```bash
 chattr -i /etc/resolv.conf
 ```
 
-需要注意，在resolv.conf配置文件的首行，即第一个DNS地址需为127.0.0.1，如下所示：
+需要注意，在 resolv.conf 配置文件的首行，即第一个DNS地址需为 127.0.0.1，如下所示：
+
 ```bash
 nameserver 127.0.0.1
 nameserver 192.168.1.100
 nameserver 192.168.2.100
 ```
-备注说明：resolv配置文件无需人工修改内容，后续安装脚本会自动为主机进行配置127.0.0.1，因此只需检查是否允许修改即可。关于首行需要127.0.0.1，这是由于后面蓝鲸内部组件的调用所需，域名通过consul解析，会探测服务运行状态，然后返回IP地址，例如访问es，那么内部需要解析es.service.consul等，若首行不是127.0.0.1，否则这些域名就通过外网去解析，无法返回正确的响应，导致服务运行异常，或者saas无法正常打开等情况。
+
+> 备注说明：resolv 配置文件无需人工修改内容，后续安装脚本会自动为主机进行配置 127.0.0.1，因此只需检查是否允许修改即可。关于首行需要 127.0.0.1，这是由于后面蓝鲸内部组件的调用所需，域名通过 consul 解析，会探测服务运行状态，然后返回IP地址，
+> 例如访问 es，那么内部需要解析 es.service.consul 等，若首行不是 127.0.0.1，否则这些域名就通过外网去解析，无法返回正确的响应，导致服务运行异常，或者 SaaS 无法正常打开等情况。
 
 ## 配置文件
 
@@ -189,8 +195,10 @@ nameserver 192.168.2.100
 ### install.config
 
 `install.config` 是模块和服务器对应关系的配置文件，描述在哪些机器上安装哪些模块。
+
 每行两列，第一列是 IP 地址；第二列是以英文逗号分隔的模块名称。
-详情参考`install.config.3IP.sample`文件（可将 install.config.3IP.sample 复制为 install.config）。
+
+详情参考`install.config.3IP.sample`文件(可将 install.config.3IP.sample 复制为 install.config)。
 
 ```bash
 [bkce-basic]
@@ -200,10 +208,10 @@ nameserver 192.168.2.100
 ```
 
 说明:
-- 该配置文件，ip 后面使用空格与服务名称隔开，含有多个内网 ip 的机器，默认使用 /sbin/ifconfig 输出中的第一个内网 ip，在 ip 后面写上该机器要安装的服务列表即可，部署过程中默认使用标准私有地址，若企业环境使用非标准私有地址，请参考 [本章后续内容 - 非标准私有地址处理方法](./get_ready.md#非标准私有地址处理方法) 的处理方法。
+- 该配置文件，ip 后面使用空格与服务名称隔开，含有多个内网 ip 的机器，默认使用 /sbin/ifconfig 输出中的第一个内网 ip，在 ip 后面写上该机器要安装的服务列表即可，部署过程中默认使用标准私有地址，若企业环境使用非标准私有地址，请参考 [本章后续内容-非标准私有地址处理方法](./get_ready.md#非标准私有地址处理方法) 的处理方法。
 - zk 表示 ZooKeeper， es 表示 ElasticSearch。
 - gse 与 redis 需要部署在同一台机器上。
-- 增加机器数量时， 可以将以上配置中的服务挪到新的机器上，分担负载。 要保证：kafka， es， zk 的每个组件的总数量为 3。
+- 增加机器数量时，可以将以上配置中的服务挪到新的机器上，分担负载。要保证：kafka，es，zk 的每个组件的总数量为 3。
 
 ### globals.env
 
@@ -227,18 +235,17 @@ export JOB_FQDN="job.$BK_DOMAIN"         # JOB 完整域名
 ```
 
 > 说明：
-1. BK_DOMAIN 的值不能为 "com" "net" 这种顶级域名，至少二级域名开始。
-2. FQDN 的选择需要遵循 DNS 的命名规范，可选的字符集是 [A-Za-z0-9.] 以及 "-"，特别要注意，下划线 (_) 是不允许的。
-3. PAAS_FQDN、CMDB_FQDN、JOB_FQDN 的值都必须在 BK_DOMAIN 定义的根域名之下，保证登陆鉴权的 cookie 文件有效。
+> 1. BK_DOMAIN 的值不能为 "com" "net" 这种顶级域名，至少二级域名开始。
+> 2. FQDN 的选择需要遵循 DNS 的命名规范，可选的字符集是 [A-Za-z0-9.] 以及 "-"，特别要注意，下划线 (_) 是不允许的。
+> 3. PAAS_FQDN、CMDB_FQDN、JOB_FQDN 的值都必须在 BK_DOMAIN 定义的根域名之下，保证登陆鉴权的 cookie 文件有效。
 
 ### ports.env
 
-端口定义。 默认情况下，不用修改。特殊场景下，若有端口冲突，可以自行定义。
+端口定义。默认情况下，不用修改。特殊场景下，若有端口冲突，可以自行定义。
 
-## 非标准私有地址处理方法
+### 非标准私有地址处理方法
 
 蓝鲸社区版部署脚本中(install 目录)下有以下文件中有获取 ip 的函数 get_lan_ip，非标准地址，均需要在安装部署前完成修改。
-
 
 ```bash
 ./appmgr/docker/saas/buildsaas
@@ -281,7 +288,7 @@ return $?
 }
 ```
 
-## pip.conf
+### pip.conf
 
 在线安装时，依赖 pip，需要配置可用的 pip 源。
 
@@ -291,7 +298,6 @@ vim /data/src/.pip/pip.conf
 [global]
 index-url = https://mirrors.cloud.tencent.com/pypi/simple
 trusted-host = mirrors.cloud.tencent.com
-
 ```
 
 - 设置为能连上的 pip 源，以腾讯云镜像源加速 pip 为例。默认的 pip 源配置通常无法使用，验证方式如下。
@@ -300,11 +306,11 @@ trusted-host = mirrors.cloud.tencent.com
 
 ## 获取证书
 
-1. 通过 `ifconfig` 或者 `ip addr` 命令获取 install.config 文件中，license 和 gse 模块所在服务器的第一个内网网卡的 MAC 地址。如果分别属于两台服务器，那么两个的 MAC 地址以英文;分隔。
+1\. 通过 `ifconfig` 或者 `ip addr` 命令获取 install.config 文件中，license 和 gse 模块所在服务器的第一个内网网卡的 MAC 地址。如果分别属于两台服务器，那么两个的 MAC 地址以英文;分隔。
 
-2. 在官网 [证书生成页面](https://bk.tencent.com/download_ssl/) 根据输入框提示填入 MAC 地址，生成并下载证书。
+2\. 在官网 [证书生成页面](https://bk.tencent.com/download_ssl/) 根据输入框提示填入 MAC 地址，生成并下载证书。
 
-3. 上传证书到中控机，并解压到 `src/cert` 目录下。
+3\. 上传证书到中控机，并解压到 `src/cert` 目录下。
 
 ```bash
 tar xf ssl_certificates.tar.gz -C /data/src/cert/
@@ -348,4 +354,6 @@ start <<check_networkmanager>> ... [OK]
 start <<check_firewalld>> ... [OK]
 ```
 
-如果发现有 [FAIL] 的报错，按照错误提示和本文档修复。修复后，可继续跑 precheck.sh 脚本，直到不再出现 [FAIL]。如果需要从头开始检查，请使用 `precheck.sh -r` 参数。
+如果发现有 [FAIL] 的报错，按照错误提示和本文档修复。修复后，可继续跑 precheck.sh 脚本，直到不再出现 [FAIL]。
+
+如果需要从头开始检查，请使用 `precheck.sh -r` 参数。

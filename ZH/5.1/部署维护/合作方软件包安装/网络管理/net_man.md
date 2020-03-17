@@ -2,7 +2,7 @@
 
 ## 环境准备
 
-1. 下载 [网络管理平台](https://bk.tencent.com/download_sdk/) :
+1\. 下载 [网络管理平台](https://bk.tencent.com/download_sdk/) :
 
   - 解压后目录结构如下：
 
@@ -21,12 +21,12 @@
     |       |-- render_bknetwork.rc
     |       |-- status_bknetwork.rc
     |       `-- upgrade_bknetwork.rc
-    `-- MD5
+    |-- MD5
     ```
 
-2. 确认蓝鲸社区版的 PaaS，CMDB，JOB 已经部署完成。如无，请参考 [标准部署](../../基础包安装/多机部署/quick_install.md) 进行安装部署。
+2\. 确认蓝鲸社区版的 PaaS，CMDB，JOB 已经部署完成。如无，请参考 [标准部署](../../基础包安装/多机部署/quick_install.md) 进行安装部署。
 
-3. 解压插件包
+3\. 解压插件包
 
     ```bash
     tar xf bknetwork.tgz -C /data/src/
@@ -38,7 +38,7 @@
     rsync -a /data/src/bknetwork/install/  /data/install/
     ```
 
-4. 在install.conf配置文件中加入bknetwork，根据实际情况修改中控机 `/data/install/third/globals_bknetwork.env` 网络管理域名等信息。
+4\. 在 install.conf 配置文件中加入 bknetwork，根据实际情况修改中控机 `/data/install/third/globals_bknetwork.env` 网络管理域名等信息。
 
 ## 安装部署
 

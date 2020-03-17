@@ -27,7 +27,7 @@
 
 1. nginx未更新安装，`install nginx 1`后解决
 2. gse_agent在节点管理，重新安装
-3. bk_monitor 在 supervisor 缺少 celery 和 beat 配置，重新安装 1.4.63 版本
+3. bk_monitor 在 supervisor 缺少 celery 和 beat 配置，重新安装部署相对应的最新版本
 4. bk_monitor 的服务使用错误使用 root 启动，停掉进程，删掉原启动对应 root 的文件，用 apps 用户启动
 5. influxdb表结构为空，所有`system_*`的库，`show measurements`为空
 6. `/data/bkce/bkdata/dataapi/bin/check_databus_status.sh`检查结果，`=====ETL=====`发现未更新的，结果类似`etl_1004_2_ja_gse_net`老的结构，

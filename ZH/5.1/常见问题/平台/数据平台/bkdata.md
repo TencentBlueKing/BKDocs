@@ -14,7 +14,7 @@ ConnectionError:HTTPConnectionPool(host='databus.service.consul', port=10052):Ma
 
 > 升级用户：确认在升级前，若需要初始化 bkdata 数据，先删除 bkdata 服务器`/data/bkce/.dataapi_snaphost`和`/data/bkce/.init_bkdata_snapshot`文件
 
-> 注意：如下操作，要求安装路径为/data/bkce，源路径为`/data/install`
+> 注意：如下操作，要求安装路径为 /data/bkce，源路径为`/data/install`
 
 1. 确认 databus 日志是否有 Exception 的错误，示例如下
 
@@ -35,7 +35,7 @@ grep -nE port /data/bkce/bkdata/databus/conf/tsdb.cluster.properties
 
 4. 确认 kafka，若社区版为 3 台部署的，必须返回[1, 2, 3]才正常，示例如下
 
-	若 brokers ids 不为[1, 2, 3]，可能存在`/data/bkce/public/kafka/.lock`文件，有的话，删除此文件，再重新使用`./bkcec stop kafka`和`./bkcec start kafka`重启kafka，重启完再次确认状态
+	若 brokers ids 不为[1, 2, 3]，可能存在`/data/bkce/public/kafka/.lock`文件，有的话，删除此文件，再重新使用`./bkcec stop kafka`和`./bkcec start kafka`重启 kafka，重启完再次确认状态
 
 	```bash
 	[root@rbtnode1 /data/install]# /data/bkce/service/zk/bin/zkCli.sh -server zk.service.consul:2181 ls /common_kafka/brokers/ids
@@ -143,4 +143,4 @@ grep -nE port /data/bkce/bkdata/databus/conf/tsdb.cluster.properties
 - RabbitMQ 密码错误，celery 启动失败
 - kafka broker 启动失败，或者节点缺失
 - cmdb 未启动，初始化 dataapi 失败
-- agent 机器时间需要和蓝鲸server机器时间同步
+- agent 机器时间需要和蓝鲸 server 机器时间同步

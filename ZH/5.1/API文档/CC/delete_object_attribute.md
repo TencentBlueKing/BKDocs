@@ -1,9 +1,6 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/delete_object_attribute/
-
-
 
 ### 请求方法
 
@@ -40,7 +37,7 @@ POST
 {
     "delete":{
     "id" : 0
-    }    
+    }
 }
 ```
 

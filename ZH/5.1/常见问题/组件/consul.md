@@ -108,11 +108,11 @@ consul.            0    IN    SOA    ns.consul. postmaster.consul. 1530849644 36
 
 此时按照以下步骤:
 
-- 运行 `consul monitor` 看看日志，主要确认 consul 集群状态是否正常。观察是否有"no cluster leader" 的输出。
-- 针对具体的域名，譬如 zk.service.consul，那么登陆到 zk 所在机器，查看`/data/bkce/etc/consul.d/zk.json`文件 运行里面的 check 脚本，看返回的输出。
+- 运行 `consul monitor` 看看日志，主要确认 consul 集群状态是否正常。观察是否有"no cluster leader"的输出。
+- 针对具体的域名，譬如 zk.service.consul，那么登陆到 zk 所在机器，查看 `/data/bkce/etc/consul.d/zk.json` 文件 运行里面的 check 脚本，看返回的输出。
 
 对于出现"no cluster leader"的输出时，说明 consul 之间没有成功组成集群，选举出 leader：
 
 - 检查 consul server 节点是否都 running
-- 在任意一台 consul 上输入 `consul join <另外一个consul节点>`
+- 在任意一台 consul 上输入 `consul join <另外一个 consul 节点>`
 - 查看节点状态：`consul operator raft list-peers`

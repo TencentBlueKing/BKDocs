@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/create_user_group/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
 新建用户分组
 
 ### 请求参数
-
 
 #### 通用参数
 

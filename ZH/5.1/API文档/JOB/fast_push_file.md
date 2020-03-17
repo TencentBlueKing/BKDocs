@@ -3,12 +3,9 @@
 
 /api/c/compapi/v2/job/fast_push_file/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
@@ -97,7 +94,7 @@ POST
     "custom_query_id": [
         "3"
     ],
-    "account": "root",
+    "account": "root"
 }
 ```
 

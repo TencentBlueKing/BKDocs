@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/get_operation_log/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
 获取操作日志
 
 ### 请求参数
-
 
 #### 通用参数
 
@@ -34,7 +29,6 @@ POST
 | start            | int     | 否     | 查询起始记录               |
 | limit       | int     | 否     | 查询限制条数 |
 | sort       | string     | 否     | 排序字段 |
-
 
 ### 请求参数示例
 

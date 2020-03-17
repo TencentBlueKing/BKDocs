@@ -20,7 +20,7 @@
 
 #### 获取镜像的压缩包
 
-在本地执行 `docker save` 获取镜像压缩包，您也可以直接点击下载 [nginx.tar](http://bkopen-1252002024.file.myqcloud.com/bcs/nginx.tar)。
+在本地执行 `docker save` 获取镜像压缩包，您也可以直接点击下载 [nginx.tar](http://bktencent-1252002024.file.myqcloud.com/nginx.tar)。
 
 ```bash
 docker pull nginx

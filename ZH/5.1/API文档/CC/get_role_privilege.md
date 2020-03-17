@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/get_role_privilege/
 
-
-
 ### 请求方法
 
 GET
-
 
 ### 功能描述
 
 获取角色绑定权限
 
 ### 请求参数
-
 
 #### 通用参数
 
@@ -78,5 +73,5 @@ GET
 | hostupdate | string   | 主机编辑     |
 | hosttrans  | string   | 主机转移     |
 | topoupdate | string   | 主机拓扑编辑 |
-| customapi  | string   | 自定义 api    |
+| customapi  | string   | 自定义 api   |
 | proconfig  | string   | 进程管理     |

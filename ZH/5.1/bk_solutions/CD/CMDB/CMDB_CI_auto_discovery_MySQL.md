@@ -584,7 +584,7 @@ if __name__ == '__main__':
 
 ## MySQL 自动发现采集器 Demo
 
-请 [下载 demo](https://bkdocs-1252002024.file.myqcloud.com/5.1/bk_solutions/CD/CMDB/media/cmdb_autodiscovery_mysql_instance.py.tgz) 后，在一台有  Python 环境的主机（可访问蓝鲸）或 SaaS 中运行。
+请 [下载 demo](http://bktencent-1252002024.file.myqcloud.com/cmdb_autodiscovery_mysql_instance.py.tgz) 后，在一台有  Python 环境的主机（可访问蓝鲸）或 SaaS 中运行。
 
 ## 其他说明
 

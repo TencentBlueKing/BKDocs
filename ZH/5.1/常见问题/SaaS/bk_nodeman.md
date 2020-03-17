@@ -37,7 +37,7 @@
 
 ```bash
 vi /data/bkce/etc/nginx/miniweb.conf
-server_name x.x.x.x（内网ip） x.x.x.x（外网ip）;
+server_name x.x.x.x(内网ip) x.x.x.x(外网ip);
 ```
 
 3. 退出到中控机,重启 nginx：

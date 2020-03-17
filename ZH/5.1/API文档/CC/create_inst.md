@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/create_inst/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
 创建实例
 
 ### 请求参数
-
 
 #### 通用参数
 
@@ -34,8 +29,6 @@ POST
 | bk_supplier_account        | string     | 是     | 开发商账号,独立部署请填"0"                 |
 | bk_inst_name/bk_cloud_name | string     | 是     | 实例名,当创建对象为云区域时为 bk_cloud_name |
 | bk_biz_id                  | int        | 否     | 业务 ID                                     |
-
-
 
 ### 请求参数示例
 
@@ -63,7 +56,7 @@ POST
 
 ### 返回结果参数说明
 
- 字段      | 类型      | 描述      |
+| 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result    | bool      | 请求成功与否，true:请求成功，false:请求失败 |
 | code      | string    | 组件返回错误编码 |

@@ -2,11 +2,11 @@
 
 ## YUM 源有 ISO 镜像文件时
 
-1. 下载相关镜像文件。相关镜像下载链接请看文章末尾。
+1\. 下载相关镜像文件。相关镜像下载链接请看文章末尾。
 
     - Centos7.x.iso
 
-2. 挂载到每台机器上：
+2\. 挂载到每台机器上：
 
     ```bash
     mkdir -p /mnt/centos7 /mnt/centos7-epel
@@ -14,7 +14,7 @@
     mount -t iso9660 xxx.iso /mnt/centos7-epel
     ```
 
-3. 配置离线 repo。
+3\. 配置离线 repo。
 
     - /etc/yum.repos.d/offline-centos7.repo
 
@@ -42,7 +42,8 @@
 ## PIP 包准备
 
 PIP 包蓝鲸自带了离线包，所以无需单独下载。
-**注意：** bkdata 和 fta 自带的包可能会和安装时的操作系统不匹配，导致安装失败。
+
+> **注意：** bkdata 和 fta 自带的包可能会和安装时的操作系统不匹配，导致安装失败。
 
 在有网络环境下，可以用以下方式下载 pip 包：
 
@@ -76,7 +77,7 @@ src\open_paas\paas\requirements.txt
 # 需要放到以下路径
 src\open_paas\support-files\pkgs
 
-# paas_agent下的 pip 包其实时给 SaaS 部署用的。
+# paas_agent 下的 pip 包其实时给 SaaS 部署用的。
 src\paas_agent\paas_agent\requirements.txt
 
 # 需要放到以下路径
@@ -85,10 +86,10 @@ src\paas_agent\support-files\pkgs
 
 附： 相关镜像下载链接：
 
-  - [CentOS7.2.1511_minimal_x86_64](http://bkopen-1252002024.file.myqcloud.com/dl/bk_offline_repo-7.2.1511.iso)
+  - [CentOS7.2.1511_minimal_x86_64](http://bktencent-1252002024.file.myqcloud.com/bk_offline_repo-7.2.1511.iso)
 
-  - [CentOS7.3.1611_minimal_x86_64](http://bkopen-1252002024.file.myqcloud.com/dl/bk_offline_repo-7.3.1611.iso)
+  - [CentOS7.3.1611_minimal_x86_64](http://bktencent-1252002024.file.myqcloud.com/bk_offline_repo-7.3.1611.iso)
 
-  - [CentOS7.4.1708_minimal_x86_64](http://bkopen-1252002024.file.myqcloud.com/dl/bk_offline_repo-7.4.1708.iso)
+  - [CentOS7.4.1708_minimal_x86_64](http://bktencent-1252002024.file.myqcloud.com/bk_offline_repo-7.4.1708.iso)
 
-  - [CentOS7.5.1804_minimal_x86_64](http://bkopen-1252002024.file.myqcloud.com/dl/bk_offline_repo-7.5.1804.iso)
+  - [CentOS7.5.1804_minimal_x86_64](http://bktencent-1252002024.file.myqcloud.com/bk_offline_repo-7.5.1804.iso)

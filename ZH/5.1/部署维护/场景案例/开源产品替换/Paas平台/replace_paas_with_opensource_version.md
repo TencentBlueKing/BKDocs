@@ -1,6 +1,6 @@
 # 开源版 PaaS 平台替换社区版部署指南
 
-- 本方案目前仅适用于社区版 `V5.0.4` 以后的版本
+- 本方案目前仅适用于社区版 V5.0.4 以后的版本
 
 - 替换前请务必手动备份 DB 数据 `MySQL`
 
@@ -64,7 +64,7 @@
 
 ## 蓝鲸官方SaaS应用组件的维护
 
-1.以标准运维 `bk_sops` 为例进行说明
+1\. 以标准运维 `bk_sops` 为例进行说明
 
 ### 场景一：
 
@@ -82,7 +82,7 @@
 
 - 将 `$INSTALL_PATH/paas/esb/components/bk/apisv2/sops` 复制为 `$INSTALL_PATH/paas/esb/components/bk/apisv2/bk_sops_ce`；
 
-  并将 `bk_sops_ce/toolkit/configs.py 中的 SYSTEM_NAME` 改为 `BK_SOPS_CE`（新应用 ID 的大写形式）。
+  并将 `bk_sops_ce/toolkit/configs.py 中的 SYSTEM_NAME` 改为 `BK_SOPS_CE`(新应用 ID 的大写形式)。
 
 - 将 `$INSTALL_PATH/paas/esb/components/confapis/sops` 复制为 `$INSTALL_PATH/paas/esb/components/confapis/bk_sops_ce`；
 
@@ -94,11 +94,11 @@
 
   将 `bk_sops_ce/bk_sops_ce.yaml` 每个组件配置中 `dest_path` 替换为新应用 `bk_sops_ce` 提供的 API 地址，比如：`/o/bk-sops-ce/apigw/get_template_list/{bk_biz_id}/`。
 
-- 在 API 网关管理端->系统管理中，添加一个新的系统，系统名称为：`BK_SOPS_CE`（同步骤 1  中的 `SYSTEM_NAME`）
+- 在 API 网关管理端->系统管理中，添加一个新的系统，系统名称为：`BK_SOPS_CE`(同步骤 1  中的 `SYSTEM_NAME`)
 
 - 更新配置参考：[API 网关服务常用指令/更新配置](5.1/开发指南/扩展开发/API网关/chapter1.md#组件配置中添加系统信息)
 
 - 重启服务参考：[API 网关服务常用指令/重启 API 网关服务](5.1/开发指南/扩展开发/API网关/chapter1.md#重启服务)
 
 - 新组件访问路径
-  `/api/c/compapi/ + {path}（bk_sops_ce/bk_sops_ce.yaml 中的配置项 path）`
+  `/api/c/compapi/ + {path}(bk_sops_ce/bk_sops_ce.yaml 中的配置项 path)`
