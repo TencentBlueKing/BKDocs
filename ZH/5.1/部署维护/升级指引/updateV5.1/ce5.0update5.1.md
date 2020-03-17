@@ -227,11 +227,11 @@
 
 - 更新 License
 
-```bash
-./bkcec install license
-./bkcec start license
-./bkcec status license
-```
+ ```bash
+ ./bkcec install license
+ ./bkcec start license
+ ./bkcec status license
+ ```
 
 - 更新 PaaS
 
@@ -323,6 +323,7 @@
   ```bash
   cd /data/install
   ./bk_install gse_agent
+  ./bkcec pack gse_plugin -u
   ```
 
 - 升级 业务机器 的 gse agent
