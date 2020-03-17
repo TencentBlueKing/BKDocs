@@ -1,14 +1,10 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/monitor/export_alarm_strategy/
 
-
-
 ### 请求方法
 
 GET
-
 
 ### 功能描述
 
@@ -16,26 +12,25 @@ GET
 
 可以导出主机监控及自定义监控策略配置，包含策略依赖的监控源数据。
 
-
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  | string    | 是 | 应用 ID     |
+| bk_app_secret| string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     | string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username  | string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段       | 类型 | 必选 | 描述                   |
 | ---------- | ---- | ---- | ---------------------- |
 | monitor_ids | string | 是   | 需要导出的监控项 ID 列表，多个 id 使用半角逗号连接 |
-| bk_biz_id  | string  | 是   | 通用业务 ID| 
+| bk_biz_id  | string  | 是   | 通用业务 ID|
 
 #### 请求参数
 
-```
+```json
 {
     "bk_biz_id": "2",
     "monitor_ids": "136,405"
@@ -43,8 +38,6 @@ GET
 ```
 
 导出监控源 ID 为 136 及 405 的监控策略
-
-
 
 #### 返回结果
 
@@ -74,15 +67,13 @@ GET
 | monitor_id | int    | 导出失败的监控源 |
 | message    | string | 失败信息         |
 
-
-
 #### 返回结果示例
 
 id 为 136 的监控源不存在，导出 id 为 405 的监控源。
 
 返回结果中，fai 为导出错误的监控源 ID，及错误信息
 
-```
+```json
 {
    "message":"OK",
    "code":200,

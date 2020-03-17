@@ -1,28 +1,23 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/monitor/get_alarms/
-
-
 
 ### 请求方法
 
 GET
 
-
 ### 功能描述
 
 通过筛选条件获取指定告警事件
 
-
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  | string    | 是 | 应用 ID     |
+| bk_app_secret| string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     | string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username  | string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
@@ -42,7 +37,7 @@ GET
 | page_size               | int    | 否   | 每页最大显示数，默认为 5                                      |
 
 
-注：以上字段除`extend_fields`、`ordering`、`page`、`page_size`外，均支持Django的ORM操作
+> 注：以上字段除`extend_fields`、`ordering`、`page`、`page_size`外，均支持Django的ORM操作
 
 ```
 如source_time__gte、source_time__lte、alarm_type__in等。
@@ -77,7 +72,7 @@ bk_biz_id=2&source_time__gte=2019-01-01 00:00:00&source_time__lte=2019-01-08 23:
 
 ### 返回结果示例
 
-```
+```json
 {
     "message": "OK",
     "code": "0",

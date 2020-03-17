@@ -14,36 +14,36 @@ POST
 
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code | string | 是 | 应用 ID |
+| bk_app_secret| string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username | string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段      |  类型      | 必选   |  描述      |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_supplier_account | string     | 否     | 开发商账号 |
-| data           | dict    | 是     | 业务数据 |
+| bk_supplier_account | string | 否 | 开发商账号 |
+| data | dict | 是 | 业务数据 |
 
 #### data
 
-| 字段      |  类型      | 必选   |  描述      |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_biz_name       |  string  | 是     | 业务名 |
-| bk_biz_maintainer |  string  | 是     | 运维人员 |
-| bk_biz_productor  |  string  | 是     | 产品人员 |
-| bk_biz_developer  |  string  | 是     | 开发人员 |
-| bk_biz_tester     |  string  | 是     | 测试人员 |
-| time_zone         |  string  | 是     | 时区 |
+| bk_biz_name | string | 是 | 业务名 |
+| bk_biz_maintainer | string | 是 | 运维人员 |
+| bk_biz_productor | string | 是 | 产品人员 |
+| bk_biz_developer | string | 是 | 开发人员 |
+| bk_biz_tester | string | 是 | 测试人员 |
+| time_zone | string | 是 | 时区 |
 
-**注意：此处的输入参数仅对必填以及系统内置的参数做了说明，其余需要填写的参数取决于用户自己定义的属性字段**
+> **注意：此处的输入参数仅对必填以及系统内置的参数做了说明，其余需要填写的参数取决于用户自己定义的属性字段**
 
 ### 请求参数示例
 
-```python
+```json
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -62,8 +62,7 @@ POST
 
 ### 返回结果示例
 
-```python
-
+```json
 {
     "result": true,
     "code": 0,
@@ -76,15 +75,15 @@ POST
 
 ### 返回结果参数说明
 
-| 字段      | 类型      | 描述      |
+| 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| result    | bool      | 请求成功与否，true:请求成功，false:请求失败 |
-| code      | string    | 组件返回错误编码 |
-| message   | string    | 请求失败返回的错误消息 |
-| data      | object    | 请求成功返回的数据 |
+| result | bool | 请求成功与否，true:请求成功，false:请求失败 |
+| code | string | 组件返回错误编码 |
+| message | string | 请求失败返回的错误消息 |
+| data | object | 请求成功返回的数据 |
 
 #### data
 
-| 字段       | 类型 | 描述         |
+| 字段 | 类型 | 描述 |
 |------------|-----|--------------|
-| bk_biz_id  | int | 新增的业务 id|
+| bk_biz_id | int | 新增的业务 id|

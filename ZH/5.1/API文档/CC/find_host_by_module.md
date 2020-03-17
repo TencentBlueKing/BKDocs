@@ -14,37 +14,37 @@ POST
 
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code | string | 是 | 应用 ID |
+| bk_app_secret| string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username | string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段                |  类型      | 必选   |  描述                       |
+| 字段 | 类型 | 必选 | 描述 |
 |---------------------|------------|--------|-----------------------------|
-| metadata           | object     | 是     | 请求元数据                      |
-| bk_module_ids | int array     | 是     | 模块 ID 数组 |
-| page                | object     | 是     | 分页参数                    |
+| metadata | object | 是 | 请求元数据 |
+| bk_module_ids | int array | 是 | 模块 ID 数组 |
+| page | object | 是 | 分页参数 |
 
 ##### metadata参数
 
-| 字段                |  类型      | 必选   |  描述                       |
+| 字段 | 类型 | 必选 | 描述 |
 |---------------------|------------|--------|-----------------------------|
-| label           | string map     | 是     | 请求中需要携带的信息，例如业务 ID |
+| label | string map | 是 | 请求中需要携带的信息，例如业务 ID |
 
 ##### label参数
 
-| 字段                |  类型      | 必选   |  描述                       |
+| 字段 | 类型 | 必选 | 描述 |
 |---------------------|------------|--------|-----------------------------|
-| bk_biz_id           | string      | 是     | 业务ID |
+| bk_biz_id | string | 是 | 业务ID |
 
 
 ### 请求参数示例
 
-```python
+```json
 {
     "metadata":{
         "label":{
@@ -63,7 +63,7 @@ POST
 
 ### 返回结果示例
 
-```python
+```json
 {
     "result":true,
     "bk_error_code":0,
@@ -150,7 +150,7 @@ POST
 
 ### 返回结果参数说明
 
-| 名称  | 类型  | 说明 |
+| 名称 | 类型 | 说明 |
 |---|---|---|---|
 | result | bool | 请求成功与否。true:请求成功；false:请求失败 |
 | bk_error_code | int | 错误编码。 0 表示 success，>0 表示失败错误 |
@@ -159,14 +159,14 @@ POST
 
 #### data 字段说明：
 
-| 名称  | 类型  | 说明 |
+| 名称 | 类型 | 说明 |
 |---|---|---|---|
 | count| int| 记录条数 |
 | info| object array | 主机实际数据 |
 
 #### info 字段说明:
 
-| 名称  | 类型  | 说明 |
+| 名称 | 类型 | 说明 |
 |---|---|---|---|
 | biz | object array| 主机所属的业务信息 |
 | host| object | 主机自身属性|

@@ -1,21 +1,16 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/sops/get_periodic_task_info/
 
-
-
 ### 请求方法
 
 GET
-
 
 ### 功能描述
 
 查询某个周期任务的详情
 
 ### 请求参数
-
 
 #### 通用参数
 
@@ -35,7 +30,7 @@ GET
 
 ### 请求参数示例
 
-```
+```json
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -47,7 +42,7 @@ GET
 
 ### 返回结果示例
 
-```
+```json
 {
     "message": "",
     "data": {
