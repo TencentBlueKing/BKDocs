@@ -1,14 +1,10 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/search_custom_query/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
@@ -19,26 +15,26 @@ POST
 
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code | string | 是 | 应用 ID |
+| bk_app_secret| string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username | string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段      |  类型      | 必选   |  描述      |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_supplier_account | string     | 否     | 开发商账号 |
-| bk_biz_id |  int     | 是     | 业务ID |
-| condition |  dict    | 否     | 查询条件，condition 字段为自定义 api 的属性字段, 可以是 create_user,modify_user, name |
-| start     |  int     | 是     | 记录开始位置 |
-| limit     |  int     | 是     | 每页限制条数,最大 200 |
+| bk_supplier_account | string | 否 | 开发商账号 |
+| bk_biz_id | int | 是 | 业务ID |
+| condition | dict | 否 | 查询条件，condition 字段为自定义 api 的属性字段, 可以是 create_user,modify_user, name |
+| start | int | 是 | 记录开始位置 |
+| limit | int | 是 | 每页限制条数,最大 200 |
 
 ### 请求参数示例
 
-```python
+```json
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -55,8 +51,7 @@ POST
 
 ### 返回结果示例
 
-```python
-
+```json
 {
     "result": true,
     "code": 0,
@@ -81,45 +76,45 @@ POST
 
 ### 返回结果参数说明
 
-| 字段      | 类型      | 描述      |
+| 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| result    | bool      | 请求成功与否，true:请求成功，false:请求失败 |
-| code      | string    | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
-| message   | string    | 请求失败返回的错误消息 |
-| data      | object    | 请求返回的数据 |
+| result | bool | 请求成功与否，true:请求成功，false:请求失败 |
+| code | string | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
+| message | string | 请求失败返回的错误消息 |
+| data | object | 请求返回的数据 |
 
 #### data
 
-| 字段      | 类型      | 描述      |
+| 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| count     | int          | 记录条数 |
-| info      | array        | 自定义 api 数据 |
+| count | int | 记录条数 |
+| info | array | 自定义 api 数据 |
 
 #### data.info
 
-| 字段      | 类型      | 描述      |
+| 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| bk_biz_id    | int          | 业务 ID |
-| create_time  | string       | 创建时间 |
-| create_user  | string       | 创建者 |
-| id           | string       | 自定义 api 主键 ID |
-| info         | string       | 自定义 api 信息 |
-| last_time    | string       | 更新时间 |
-| modify_user  | string       | 修改者 |
-| name         | string       | 自定义 api 命名 |
+| bk_biz_id | int | 业务 ID |
+| create_time | string | 创建时间 |
+| create_user | string | 创建者 |
+| id | string | 自定义 api 主键 ID |
+| info | string | 自定义 api 信息 |
+| last_time | string | 更新时间 |
+| modify_user | string | 修改者 |
+| name | string | 自定义 api 命名 |
 
 #### data.info.info
 
-| 字段      |  类型     |  描述      |
+| 字段 | 类型 | 描述 |
 |-----------|------------|--------------------|
-| bk_obj_id |  string   | 对象名,可以为 biz,set,module,host,object |
-| fields    |  array    | 查询输出字段 |
-| condition |  array    | 查询条件 |
+| bk_obj_id | string | 对象名,可以为 biz,set,module,host,object |
+| fields | array | 查询输出字段 |
+| condition | array | 查询条件 |
 
 #### data.info.info.condition
 
-| 字段      |  类型     |  描述      |
+| 字段 | 类型 | 描述 |
 |-----------|------------|--------------------|
-| field     |  string    | 对象的字段 |
-| operator  |  string    | 操作符, $eq 为相等，$neq 为不等，$in 为属于，$nin 为不属于 |
-| value     |  string    | 字段对应的值 |
+| field | string | 对象的字段 |
+| operator | string | 操作符, $eq 为相等，$neq 为不等，$in 为属于，$nin 为不属于 |
+| value | string | 字段对应的值 |

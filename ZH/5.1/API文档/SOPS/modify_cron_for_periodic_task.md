@@ -1,14 +1,10 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/sops/modify_cron_for_periodic_task/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
@@ -16,37 +12,36 @@ POST
 
 ### 请求参数
 
-
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  | string    | 是 | 应用 ID     |
+| bk_app_secret| string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     | string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username  | string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段          |  类型       | 必选   |  描述             |
+| 字段          | 类型       | 必选   | 描述             |
 |---------------|------------|--------|------------------|
-|   task_id    |   string     |   是   |  周期任务 ID |
-|   bk_biz_id    |   string     |   是   |  模板所属业务 ID |
-|   cron    |   dict     |   否   | 调度策略对象 |
+| task_id    | string     | 是   | 周期任务 ID |
+| bk_biz_id    | string     | 是   | 模板所属业务 ID |
+| cron    | dict     | 否   | 调度策略对象 |
 
 #### cron
 
- |   参数名称   |    参数类型  |  必须  |     参数说明     |
+| 参数名称   | 参数类型  | 必须  | 参数说明     |
 | ------------ | ------------ | ------ | ---------------- |
-|   minute    |   string     |   否   |  分，默认为 * |
-|   hour    |   string     |   否   |  时，默认为 * |
-|   day_of_week    |   string     |   否   |  一周内的某些天，默认为 * |
-|   day_of_month    |   string     |   否   |  一个月中的某些天，默认为 * |
-|   month_of_year    |   string     |   否   |  一年中的某些月份，默认为 * |
+| minute    | string     | 否   | 分，默认为 * |
+| hour    | string     | 否   | 时，默认为 * |
+| day_of_week    | string     | 否   | 一周内的某些天，默认为 * |
+| day_of_month    | string     | 否   | 一个月中的某些天，默认为 * |
+| month_of_year    | string     | 否   | 一年中的某些月份，默认为 * |
 
 ### 请求参数示例
 
-```
+```json
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -59,7 +54,7 @@ POST
 
 ### 返回结果示例
 
-```
+```json
 {
     "data": {
         "cron": "*/1 15 * * * (m/h/d/dM/MY)"
@@ -70,14 +65,14 @@ POST
 
 ### 返回结果参数说明
 
-|   名称   |  类型  |           说明             |
+| 名称   | 类型  | 说明             |
 | ------------ | ---------- | ------------------------------ |
-|  result      |    bool    |      true/false 操作是否成功     |
-|  data        |    dict      |      result=true 时成功数据，详细信息请见下面说明     |
-|  message        |    string      |      result=false 时错误信息     |
+| result      | bool    | true/false 操作是否成功     |
+| data        | dict      | result=true 时成功数据，详细信息请见下面说明     |
+| message        | string      | result=false 时错误信息     |
 
 #### data
 
-|   名称   |  类型  |           说明             |
+| 名称   | 类型  | 说明             |
 | ------------ | ---------- | ------------------------------ |
-|  cron      |    string    |      调度策略表达式    |
+| cron      | string    | 调度策略表达式    |

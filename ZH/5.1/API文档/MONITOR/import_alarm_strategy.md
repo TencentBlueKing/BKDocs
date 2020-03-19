@@ -1,14 +1,10 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/monitor/import_alarm_strategy/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
@@ -20,15 +16,14 @@ POST
 
 如果导入主机，则会判断是否存在对应的主机监控源，如果有则不创建。
 
-
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  | string    | 是 | 应用 ID     |
+| bk_app_secret| string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     | string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username  | string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
@@ -41,7 +36,7 @@ POST
 
 使用监控策略导出接口返回的数据结构即可。
 
-```
+```json
 {
     bk_biz_id: 2,
     conf_list: [
@@ -114,8 +109,6 @@ POST
 }
 ```
 
-
-
 #### 返回结果
 
 | 字段    | 类型 | 描述             |
@@ -138,37 +131,34 @@ POST
 | config  | dict   | 失败的监控源配置 |
 | message | string | 失败信息         |
 
-
-
 #### 返回结果示例
 
-
-```
-{  
+```json
+{
    "message":"OK",
    "code":200,
-   "data":{  
-      "fail":[  
+   "data":{
+      "fail":[
 
       ],
-      "success":[  
-         {  
+      "success":[
+         {
             "monitor_id":431,
-            "alarm_strategy":[  
-               {  
+            "alarm_strategy":[
+               {
                   "is_enabled":true,
                   "bk_biz_id":2,
-                  "alarm_level_config":{  
-                     "2":{  
+                  "alarm_level_config":{
+                     "2":{
                         "monitor_level":"2",
-                        "responsible":[  
+                        "responsible":[
                            "laymanmlai"
                         ],
                         "notice_start_time":"00:00",
-                        "detect_algorithm":[  
-                           {  
+                        "detect_algorithm":[
+                           {
                               "display":"当前值≥阈值:32",
-                              "config":{  
+                              "config":{
                                  "threshold":32,
                                  "message":"",
                                  "method":"gte"
@@ -178,14 +168,14 @@ POST
                            }
                         ],
                         "notice_end_time":"23:59",
-                        "phone_receiver":[  
+                        "phone_receiver":[
 
                         ],
                         "is_recovery":false,
-                        "notify_way":[  
+                        "notify_way":[
                            "wechat"
                         ],
-                        "role_list":[  
+                        "role_list":[
                            "other"
                         ]
                      }
@@ -193,7 +183,7 @@ POST
                   "display_name":"答复",
                   "scenario":"custom",
                   "is_classify_notice":false,
-                  "rules":{  
+                  "rules":{
                      "count":1,
                      "alarm_window":60,
                      "check_window":5
@@ -202,8 +192,8 @@ POST
                   "monitor_id":431,
                   "converge_display":"5个周期内，满足1次检测算法, 且告警产生后未恢复，1小时内不再告警",
                   "cc_biz_id":2,
-                  "condition":[  
-                     [  
+                  "condition":[
+                     [
 
                      ]
                   ],

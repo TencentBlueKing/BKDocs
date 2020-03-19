@@ -1,14 +1,10 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/job/get_job_instance_status/
 
-
-
 ### 请求方法
 
 GET
-
 
 ### 功能描述
 
@@ -16,26 +12,25 @@ GET
 
 ### 请求参数
 
-
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code | string | 是 | 应用 ID |
+| bk_app_secret| string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username | string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段             |  类型      | 必选   |  描述      |
+| 字段 | 类型 | 必选 | 描述 |
 |------------------|------------|--------|------------|
-| bk_biz_id        |  int       | 是     | 业务 ID |
-| job_instance_id  |  int       | 是     | 作业实例 ID |
+| bk_biz_id | int | 是 | 业务 ID |
+| job_instance_id | int | 是 | 作业实例 ID |
 
 ### 请求参数示例
 
-```python
+```json
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -47,7 +42,7 @@ GET
 
 ### 返回结果示例
 
-```python
+```json
 {
     "result": true,
     "code": 0,
@@ -114,78 +109,78 @@ GET
 ```
 ### 返回结果参数说明
 
-| 字段      | 类型      | 描述      |
+| 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| result    | bool      | 请求成功与否，true:请求成功，false:请求失败 |
-| code      | string    | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
-| message   | string    | 请求失败返回的错误消息 |
-| data      | object    | 请求返回的数据 |
+| result | bool | 请求成功与否，true:请求成功，false:请求失败 |
+| code | string | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
+| message | string | 请求失败返回的错误消息 |
+| data | object | 请求返回的数据 |
 
 #### data
 
-| 字段      | 类型      | 描述      |
+| 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| is_finished    | bool       | 作业是否结束 |
-| job_instance   | dict       | 作业实例基本信息 |
-| blocks         | array      | 作业步骤块数组 |
+| is_finished | bool | 作业是否结束 |
+| job_instance | dict | 作业实例基本信息 |
+| blocks | array | 作业步骤块数组 |
 
 #### job_instance
 
-| 字段      | 类型      | 描述      |
+| 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| name         | string       | 作业实例名称 |
-| status       | int          | 作业状态码: 1.未执行; 2.正在执行; 3.执行成功; 4.执行失败; 5.跳过; 6.忽略错误; 7.等待用户; 8.手动结束; 9.状态异常; 10.步骤强制终止中; 11.步骤强制终止成功; 12.步骤强制终止失败 |
-| operator     | string       | 作业执行人帐号 |
-| create_time  | string       | 创建时间，YYYY-MM-DD HH:mm:ss格式 |
-| start_time   | string       | 开始执行时间，YYYY-MM-DD HH:mm:ss格式 |
-| end_time     | string       | 执行结束时间，YYYY-MM-DD HH:mm:ss格式 |
-| total_time   | float        | 总耗时，秒 |
-| start_way    | int          | 作业启动方式: 1.页面启动; 2.API 调用; 3.定时任务 |
-| bk_biz_id    | int          | 业务 ID |
-| bk_job_id    | int          | 作业模板 ID，如果不是从作业模板启动的则为-1 |
-| job_instance_id    | int    | 作业实例 ID |
-| current_step_instance_id  | int    | 当前执行的步骤实例 ID |
+| name | string | 作业实例名称 |
+| status | int | 作业状态码: 1.未执行; 2.正在执行; 3.执行成功; 4.执行失败; 5.跳过; 6.忽略错误; 7.等待用户; 8.手动结束; 9.状态异常; 10.步骤强制终止中; 11.步骤强制终止成功; 12.步骤强制终止失败 |
+| operator | string | 作业执行人帐号 |
+| create_time | string | 创建时间，YYYY-MM-DD HH:mm:ss格式 |
+| start_time | string | 开始执行时间，YYYY-MM-DD HH:mm:ss格式 |
+| end_time | string | 执行结束时间，YYYY-MM-DD HH:mm:ss格式 |
+| total_time | float | 总耗时，秒 |
+| start_way | int | 作业启动方式: 1.页面启动; 2.API 调用; 3.定时任务 |
+| bk_biz_id | int | 业务 ID |
+| bk_job_id | int | 作业模板 ID，如果不是从作业模板启动的则为-1 |
+| job_instance_id | int | 作业实例 ID |
+| current_step_instance_id | int | 当前执行的步骤实例 ID |
 
 #### blocks
 
-| 字段      | 类型      | 描述      |
+| 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| type           | int       | 步骤块类型：1.脚本步骤; 2.文件步骤; 4.SQL步骤 |
-| block_order    | int       | 步骤块顺序 |
-| block_name     | string    | 步骤块名称 |
-| step_instances | array     | 步骤块中包含的各个步骤对象 |
+| type | int | 步骤块类型：1.脚本步骤; 2.文件步骤; 4.SQL步骤 |
+| block_order | int | 步骤块顺序 |
+| block_name | string | 步骤块名称 |
+| step_instances | array | 步骤块中包含的各个步骤对象 |
 
 #### step_instances
 
-| 字段      | 类型      | 描述      |
+| 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| step_id          | int       | 作业模板步骤 ID，如果不是从作业模板启动的则为-1 |
-| step_instance_id | int       | 作业步骤实例 ID |
-| type             | int       | 步骤类型：1.脚本步骤; 2.文件步骤; 4.SQL 步骤 |
-| name             | string    | 作业实例名称 |
-| status           | int       | 作业步骤状态码: 1.未执行; 2.正在执行; 3.执行成功; 4.执行失败; 5.跳过; 6.忽略错误; 7.等待用户; 8.手动结束; 9.状态异常; 10.步骤强制终止中; 11.步骤强制终止成功; 12.步骤强制终止失败 |
-| operator         | string    | 作业执行人帐号 |
-| pause            | int       | 0.执行完成后不暂停(默认); 1.执行完成后暂停 |
-| create_time      | string    | 创建时间，YYYY-MM-DD HH:mm:ss格式 |
-| start_time       | string    | 开始执行时间，YYYY-MM-DD HH:mm:ss格式 |
-| end_time         | string    | 执行结束时间，YYYY-MM-DD HH:mm:ss格式 |
-| total_time       | float     | 总耗时，秒 |
-| order            | int       | 当前步骤在步骤块中的顺序 |
-| retry_count      | int       | 步骤重试次数 |
-| operation_list   | array     | 当前步骤可操作的指令 |
-| step_ip_status   | array     | 每个服务器的作业执行状态 |
+| step_id | int | 作业模板步骤 ID，如果不是从作业模板启动的则为-1 |
+| step_instance_id | int | 作业步骤实例 ID |
+| type | int | 步骤类型：1.脚本步骤; 2.文件步骤; 4.SQL 步骤 |
+| name | string | 作业实例名称 |
+| status | int | 作业步骤状态码: 1.未执行; 2.正在执行; 3.执行成功; 4.执行失败; 5.跳过; 6.忽略错误; 7.等待用户; 8.手动结束; 9.状态异常; 10.步骤强制终止中; 11.步骤强制终止成功; 12.步骤强制终止失败 |
+| operator | string | 作业执行人帐号 |
+| pause | int | 0.执行完成后不暂停(默认); 1.执行完成后暂停 |
+| create_time | string | 创建时间，YYYY-MM-DD HH:mm:ss格式 |
+| start_time | string | 开始执行时间，YYYY-MM-DD HH:mm:ss格式 |
+| end_time | string | 执行结束时间，YYYY-MM-DD HH:mm:ss格式 |
+| total_time | float | 总耗时，秒 |
+| order | int | 当前步骤在步骤块中的顺序 |
+| retry_count | int | 步骤重试次数 |
+| operation_list | array | 当前步骤可操作的指令 |
+| step_ip_status | array | 每个服务器的作业执行状态 |
 
 #### operation_list Description
 
-| 字段      | 类型      | 描述      |
+| 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| operation_code        | int       | 操作命令编码，命令标识 |
-| operation_name        | string    | 操作命令名称, 比如&#39;强制终止&#39; |
+| operation_code | int | 操作命令编码，命令标识 |
+| operation_name | string | 操作命令名称, 比如&#39;强制终止&#39; |
 
 #### step_ip_status Description
 
-| 字段      | 类型      | 描述      |
+| 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| ip          | string    | IP |
-| bk_cloud_id | int       | 云区域 ID |
-| status      | int       | 作业执行状态:1.Agent 异常; 5.等待执行; 7.正在执行; 9.执行成功; 11.执行失败; 12.任务下发失败; 403.任务强制终止成功; 404.任务强制终止失败 |
+| ip | string | IP |
+| bk_cloud_id | int | 云区域 ID |
+| status | int | 作业执行状态:1.Agent 异常; 5.等待执行; 7.正在执行; 9.执行成功; 11.执行失败; 12.任务下发失败; 403.任务强制终止成功; 404.任务强制终止失败 |
