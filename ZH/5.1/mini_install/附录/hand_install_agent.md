@@ -1,9 +1,6 @@
 # 手动安装 Agent
 
-- 下载 GSE 安装包到需要管控的服务器，目前只支持 64 位的 Linux 操作系统：
-```shell
-wget https://xxx.xxx.xxx.xxx/bkce_mini_gse_agent-5.1.26.tar.gz
-```
+- 下载 [GSE 安装包](https://bk.tencent.com/download_sdk/)到需要管控的服务器，目前只支持 64 位的 Linux 操作系统：
 
 - 解压 GSE 安装包并安装
 ```shell
@@ -56,5 +53,5 @@ systemctl restart gse_agent
 ```
 - 添加 gse_agent 定时任务：
 ```shell
-crontab-- * * * * * /usr/local/gse/agent/bin/gsectl watch
+* * * * * /usr/local/gse/agent/bin/gsectl watch
 ```
