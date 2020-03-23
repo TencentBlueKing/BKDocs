@@ -18,6 +18,8 @@
 
 > 更多使用详情请前往 [蓝鲸文档中心-节点管理](https://bk.tencent.com/docs/document/5.1/21/682)
 
+**注意：** 安装 agent 时，宿主机不需要重复安装，以免产生冲突。
+
 - 在对应业务下安装主机 Agent。
 ![安装agent](./../images/agent.png)
 ![成功安装agent](./../images/success_agent.png)
