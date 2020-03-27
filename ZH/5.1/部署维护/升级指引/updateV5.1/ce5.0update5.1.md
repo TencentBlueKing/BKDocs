@@ -16,6 +16,8 @@
 
   - 当 MySQL 数据量超过 50G 以上的，可根据自身情况考虑是否清理部分日志表。
 
+  - **库名： bkdata_monitor_alert 表名：ja_alarm_alarminstance 可以使用 truncate 清理数据，该表记录了监控告警数据**
+
   - 清理的方式：只用链接到 MySQL 数据库后使用 truncate 或 delete 的方式。
 
 - **通过【开发者中心】->【S-mart应用】下架所有蓝鲸官方 `SaaS`，如：蓝鲸监控，标准运维，节点管理，故障自愈，日志检索。**
@@ -218,10 +220,51 @@
   ssh $MYSQL_IP
   cd /data/dbbak
   # 导入数据库
-  mysql --default-character-set=utf8mb4<bk_mysql_alldata.sql
+  mysql --default-character-set=utf8mb4<bk_mysql_alldata.sql #如果没有mysql命令，可以使用yum instal mysql 或者带上mysql命令的绝对路径即可
   # 中控机重新初始化 MySQL
   ./bkcec initdata mysql
   ```
+
+- Check步骤： 确认当前 Job 库编码是否为 UTF8。
+ - Job 库的字符集变更为 UTF8，此步骤适用于从低于 V4.1.16 升级上来的老用户,由于早期 Job 库是 latin 1 字符集
+
+    ```bash
+    source /data/install/utils.fc
+    # 登陆 MySQL
+    mysql -h$MYSQL_IP -u$MYSQL_USER -p$MYSQL_PASS
+    # 查看 Job 库字符集是否为 UTF8
+    > SHOW CREATE DATABASE job;
+    # 变更 Job 库字符集编码为 UTF8
+    > alter database job character set utf8;
+    # 重新查看 Job 库字符集是否为 UTF8
+    > SHOW CREATE DATABASE job;
+    ```
+-  Check步骤：确认 MongoDB是否为 rs0 模式，通过配置文件（mongodb.yaml）和 rs.status () 确认，如已经是 rs0 模式请忽略本步骤。
+  - 将 MongoDB 节点手动切换至 rs 模式,此步骤适用于从低版本升级到 V4.1.16 的用户，由于 V4.1.16 早期版本是单实列模式。
+
+    确认 `bkce/etc/mongodb.yaml` 配置文件是否支持 rs 模式
+
+    ![-w2020](../../assets/mongodb_config.png)
+
+     节点切换 rs 模式
+    ```bash
+    # 登陆到 mongodb 机器
+     source /data/install/utils.fc
+    # 连接到 mongodb
+     mongo -u $MONGODB_USER -p $MONGODB_PASS --port $MONGODB_PORT --authenticationDatabase admin
+    # 查看 rs 状态
+    > rs.status ()  # 确认该节点是否是 rs 模式
+    # 初始化 Replica Set(RS)
+    > rs.initiate()
+    # 确认RS配置
+    > rs.conf()
+    # 确认状态
+    > rs.status()
+    > exit
+    # 重新启动 mongodb 中控机器执行
+    ./bkcec stop mongodb
+    ./bkcec start mongodb
+    ```
 
 ### 升级蓝鲸组件
 
