@@ -28,7 +28,7 @@
 
 3\. 解压插件包
 
-    ```bash
+```bash
     tar xf bknetwork.tgz -C /data/src/
 
     # 假设现 src 目录在 /data/ 下
@@ -36,7 +36,7 @@
 
     # 假设现 install 目录在 /data/ 下
     rsync -a /data/src/bknetwork/install/  /data/install/
-    ```
+```
 
 4\. 在 install.conf 配置文件中加入 bknetwork，根据实际情况修改中控机 `/data/install/third/globals_bknetwork.env` 网络管理域名等信息。
 
