@@ -34,6 +34,7 @@
 
 ```bash
 tar xvf bknetwork_ce-3.6.2.tgz -C /data/src/
+rsync -a /data/src/install/ /data/install/
 ```
 
 4\. 修改网络管理相关文件
@@ -46,7 +47,6 @@ tar xvf bknetwork_ce-3.6.2.tgz -C /data/src/
   ```bash
   # 假设现 install 目录在 /data/ 下。
   cd /data/install
-  cp -a /data/src/install/  /data/install
   # 开始安装
   ./bkco_install bknetwork
   ```
