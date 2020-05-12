@@ -1,12 +1,22 @@
 # 社区版 V5.0 升级至 V5.1 指引
-
+- **[升级常见问题 FAQ ](#ce_update_51_faq.md)**
+- **【风险提示】**
+  - 熟读升级文档，避免造成文档不熟悉而误操作
+  - 本升级指引仅适用于未做过任何改造的用户，若有定制化调整（如接入企业登陆，新增API以及接入其他企业内部系统），或部分产品为开源产品不适用本升级指引，需自行维护特殊化部分功能。
+  - 原蓝鲸官方 SaaS 必须提前下架，否则将影响 SaaS 升级部署
+  - MySQL/MongoDB 备份务必保证 MySQL/MongoDB 机器磁盘空间可用，否则将导致备份失败
+  - 新 globals.env 文件的账户密码必须同备份的 globals.env 保持一致，否则将导致蓝鲸服务因为账户密码不一致异常
+  - 确保升级前提前有使用蓝鲸监控创建主机告警策略，否则将导致升级 bkdata 失败 【针对从未使用过蓝鲸监控用户】
+  - 非标准私有IP用户需在解压新的脚本后，需要按照以前修改非标准私有IP的方式重新修改
 ## 升级前准备
 
 - 查看 MySQL 占用磁盘空间大小
 
-  - 由于社区版 5.1 的 MySQL 版本从 5.5 升级到 5.7，且蓝鲸组件已经适配 MySQL5.7，所以本次升级的开源组件有 `MySQL`、`Redis` 、`Nginx`、`consul`。
+  - 本次升级的开源组件有 `MySQL`、`Redis` 、`Nginx`、`consul`。
 
   - 当 MySQL 数据量超过 50G 以上的，可根据自身情况考虑是否清理部分日志表。
+
+  - **库名： bkdata_monitor_alert 表名：ja_alarm_alarminstance 可以使用 truncate 清理数据，该表记录了监控告警数据**
 
   - 清理的方式：只用链接到 MySQL 数据库后使用 truncate 或 delete 的方式。
 
@@ -72,10 +82,10 @@
       10.0.0.2 mongodb，appo，kafka(config)，zk(config)，es，mysql，beanstalk，consul
       10.0.0.3 paas，cmdb，job，gse，license，kafka(config)，zk(config)，es，redis，consul，influxdb
       ```
-    > Note: 
+    > Note:
     >
     > 原则是不改变原模块所在IP的机器，只新增格式zk(config)，kafka(config)，bkdata(databus)，bkdata(dataapi)，bkdata(monitor)。
-    > 
+    >
     > 另：install.config.new.sample内的其他bcs相关模块如需要安装请下载相关安装包解压并新增机器部署bcs，bcs部署机器不能复用[bkce-basic]的机器。
 
 - 恢复 CICDKit 安装包
@@ -93,7 +103,7 @@
   cp -a install.bak/parse_config  install/
   cp -a install.bak/third/*  install/third/
   ```
-  
+
 - 升级前检查
 
   ```bash
@@ -210,20 +220,61 @@
   ssh $MYSQL_IP
   cd /data/dbbak
   # 导入数据库
-  mysql --default-character-set=utf8mb4<bk_mysql_alldata.sql
+  mysql --default-character-set=utf8mb4<bk_mysql_alldata.sql #如果没有mysql命令，可以使用yum instal mysql 或者带上mysql命令的绝对路径即可
   # 中控机重新初始化 MySQL
   ./bkcec initdata mysql
   ```
+
+- Check步骤： 确认当前 Job 库编码是否为 UTF8。
+ - Job 库的字符集变更为 UTF8，此步骤适用于从低于 V4.1.16 升级上来的老用户,由于早期 Job 库是 latin 1 字符集
+
+    ```bash
+    source /data/install/utils.fc
+    # 登陆 MySQL
+    mysql -h$MYSQL_IP -u$MYSQL_USER -p$MYSQL_PASS
+    # 查看 Job 库字符集是否为 UTF8
+    > SHOW CREATE DATABASE job;
+    # 变更 Job 库字符集编码为 UTF8
+    > alter database job character set utf8;
+    # 重新查看 Job 库字符集是否为 UTF8
+    > SHOW CREATE DATABASE job;
+    ```
+-  Check步骤：确认 MongoDB是否为 rs0 模式，通过配置文件（mongodb.yaml）和 rs.status () 确认，如已经是 rs0 模式请忽略本步骤。
+  - 将 MongoDB 节点手动切换至 rs 模式,此步骤适用于从低版本升级到 V4.1.16 的用户，由于 V4.1.16 早期版本是单实列模式。
+
+    确认 `bkce/etc/mongodb.yaml` 配置文件是否支持 rs 模式
+
+    ![-w2020](../../assets/mongodb_config.png)
+
+     节点切换 rs 模式
+    ```bash
+    # 登陆到 mongodb 机器
+     source /data/install/utils.fc
+    # 连接到 mongodb
+     mongo -u $MONGODB_USER -p $MONGODB_PASS --port $MONGODB_PORT --authenticationDatabase admin
+    # 查看 rs 状态
+    > rs.status ()  # 确认该节点是否是 rs 模式
+    # 初始化 Replica Set(RS)
+    > rs.initiate()
+    # 确认RS配置
+    > rs.conf()
+    # 确认状态
+    > rs.status()
+    > exit
+    # 重新启动 mongodb 中控机器执行
+    ./bkcec stop mongodb
+    ./bkcec start mongodb
+    ```
 
 ### 升级蓝鲸组件
 
 - 更新 License
 
-```bash
-./bkcec install license
-./bkcec start license
-./bkcec status license
-```
+ ```bash
+ ./bkcec install license
+ ./bkcec start license
+ ./bkcec status license
+ ```
 
 - 更新 PaaS
 
@@ -254,7 +305,7 @@
   ./bkcec upgrade gse # No JSON object could be decode 报错属于正常
   ./bkcec start gse
   ./bkcec status gse  # 如果有个别进程显示 ERROR status 状态，是启动时间比较慢，可尝试多刷新几次
-  ./bkcec pack gse_plugin
+  ./bkcec pack gse_plugin # 登陆 Nginx 服务器查看 /data/bkce/miniweb/download/init_nodeman.json 是否生成，若没有在执行多一次。可加 参数 -u  
   ```
 
 - 更新 JOB
@@ -315,6 +366,7 @@
   ```bash
   cd /data/install
   ./bk_install gse_agent
+  ./bkcec pack gse_plugin -u
   ```
 
 - 升级 业务机器 的 gse agent

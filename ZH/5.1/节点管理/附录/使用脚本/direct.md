@@ -33,28 +33,18 @@
 **1. 登录到目标机器, 然后下载脚本**
 
 ```bash
-foo@agent-01 ~$
-foo@agent-01 ~$
-foo@agent-01 ~$ ssh root@10.0.0.1
-... 此处省略登陆提示
-
-foo@bar ~# wget http://$NGINX_IP:$NGINX_PORT/download/agent_setup_pro.sh
---2018-07-15 12:03:07--  http://X.X.X.X/download/agent_setup_pro.sh
-Connecting to X.X.X.X:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 35618 (35K) [application/octet-stream]
-Saving to: ‘agent_setup_pro.sh’
-
-100%[============================================================>]35,618      --.-K/s   in 0s
-
-2018-07-15 12:03:07 (566 MB/s) - ‘agent_setup_pro.sh’ saved [35618/35618]
-foo@bar ~# chmod +x agent_setup_pro.sh
+ssh 10.0.0.1
+wget http://$NGINX_IP:$NGINX_PORT/download/agent_setup_pro.sh
+# 省略下载信息 ......
+chmod +x agent_setup_pro.sh
+```
 
 
 # 我们先看看用法
-foo@bar-01 ~# ./agent_setup_pro.sh -h
-usage: agent_setup_pro.sh -m { proxy | client } OPTIONS
+```bash
+./agent_setup_pro.sh -h
 
+usage: agent_setup_pro.sh -m { proxy | client } OPTIONS
 OPTIONS list:
   -h    print this help page
   -r    uninstall
@@ -95,19 +85,21 @@ when BRIDGE MODE enabled
 ```
 
 > **Note:**
->
-> 1. -i 指定的云区域 ID，需要先在页面上创建好云区域才能获得. 详情请参考 [非直连区域的Proxy安装](../../快速入门/add_proxy.md) 。
-> 2. 要卸载 Agent，使用所提供的脚本(包括后续 AIX、Windows 安装的脚本) 带上  -r 参数即可完成卸载。
+> 
+> -i 指定的云区域 ID，需要先在页面上创建好云区域才能获得. 详情请参考 [非直连区域的Proxy安装](../../快速入门/add_proxy.md) 。
+> 
+>  要卸载 Agent，使用所提供的脚本(包括后续 AIX、Windows 安装的脚本) 带上  -r 参数即可完成卸载。
 
 **2. 执行安装**
 
 ```bash
-foo@bar ~#
-foo@bar ~# ./agent_setup_pro.sh -m client
+ ./agent_setup_pro.sh -m client -g $NGINX_IP/download
 ```
 
 输出如图所示:
-![-w2020](../../assets/15316280387200.jpg)
+
+![安装过程](../../assets/15316280387200.png)
+
 
 > 1. TIPS：执行该命令前，设置环境变量 HASTTY=1，可以显示上图中的绿色字体。
 > 2. 脚本执行过程中，需要使用到 wget 命令下载 Agent 安装包，所以先确保 wget 命令可用。
@@ -116,7 +108,3 @@ foo@bar ~# ./agent_setup_pro.sh -m client
 - Note
     1. 需要以 root 用户执行，或者 sudo 执行。
     2. 输出中的第一列是自动获取的本机内网 IP。若为空，说明在部署蓝鲸后台时，没有针对非标准私有 IP进行处理。
-    3. 出现 2 的情况时，可以有另一种方法处理： 带上 -e 参数指定内网 IP，此时上报的数据也将关联该 IP。如图：
-       ```bash
-       foo@bar ~# ./agent_setup_pro.sh -m client -e 10.0.0.2
-       ```

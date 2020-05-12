@@ -1,28 +1,23 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/monitor/export_uptime_check_task/
-
-
 
 ### 请求方法
 
 GET
 
-
 ### 功能描述
 
 拨测任务配置导出
 
-
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  | string    | 是 | 应用 ID     |
+| bk_app_secret| string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     | string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username  | string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 ### 请求参数
 
@@ -282,7 +277,7 @@ GET
 | 字段        | 类型   | 描述         |
 | ----------- | ------ | ------------ |
 | alarm_level_config | dict | 监控触发条件配置 |
-| monitor_target | str |  监控目标字段|
+| monitor_target | str | 监控目标字段|
 | unit | str | 单位 |
 | display_name | str | 监控名称 |
 | node_count | int | 节点数 |
@@ -315,15 +310,15 @@ GET
 #### 1.1.3.2.1 告警级别对应的告警触发配置--data.conf_list.monitor_conf.alarm_level_config.1
 字段  | 类型  | 描述  |
 ------|-------|-------|
-alarm_start_time | str |  当日开始告警时间 |
-alarm_end_time | str |  当日结束告警时间 |
+alarm_start_time | str | 当日开始告警时间 |
+alarm_end_time | str | 当日结束告警时间 |
 detect_algorithm | list | 检测算法配置 |
 is_recovery | str | 自动恢复 |
 monitor_level | int | 告警级别，1致命、2预警、3提醒 |
 notify_way | list |通知方式，mail邮件、wechat微信、sms短信、phone电话 |
 phone_receiver | list | 电话通知对象，账号名 |
 responsible | list | 其他通知人列表 |
-role_list | list |  通知人分组，在业务管理中配置 |
+role_list | list | 通知人分组，在业务管理中配置 |
 
 #### 1.1.3.2.1.1 检测算法配置--data.conf_list.monitor_conf.alarm_level_config.1.detect_algorithm
 |字段  | 类型  |描述  |

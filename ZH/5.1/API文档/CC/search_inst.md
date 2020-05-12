@@ -1,14 +1,10 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/cc/search_inst/
 
-
-
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
@@ -16,19 +12,18 @@ POST
 
 ### 请求参数
 
-
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  | string    | 是 | 应用 ID     |
+| bk_app_secret| string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     | string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username  | string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段                |  类型      | 必选   |  描述                       |
+| 字段                | 类型      | 必选   | 描述                       |
 |---------------------|------------|--------|-----------------------------|
 | bk_obj_id           | string     | 是     | 模型 ID                      |
 | bk_supplier_account | string     | 是     | 开发商账号,独立部署请填"0"  |
@@ -38,25 +33,25 @@ POST
 
 #### page
 
-| 字段      |  类型      | 必选   |  描述                |
+| 字段      | 类型      | 必选   | 描述                |
 |-----------|------------|--------|----------------------|
-| start     |  int       | 是     | 记录开始位置         |
-| limit     |  int       | 是     | 每页限制条数,最大 200 |
-| sort      |  string    | 否     | 排序字段             |
+| start     | int       | 是     | 记录开始位置         |
+| limit     | int       | 是     | 每页限制条数,最大 200 |
+| sort      | string    | 否     | 排序字段             |
 
 #### condition
 
-| 字段      |  类型      | 必选   |  描述      |
+| 字段      | 类型      | 必选   | 描述      |
 |-----------|------------|--------|------------|
 | bk_weblogic  |string      |是      | 此处仅为示例数据，需要被设置为模型的标识符，在页面上配置的英文名 |
 | field     |string      |是      | 取值为模型的字段名                                               |
 | operator  |string      |是      | 取值为：$regex $eq $ne                                           |
-| value     |string      |是      | field 配置的模型字段名所对应的值                                  |          
+| value     |string      |是      | field 配置的模型字段名所对应的值                                  |
 
 
 ### 请求参数示例
 
-```python
+```json
 {
     "bk_obj_id":"test",
     "bk_supplier_account":"0",
@@ -80,8 +75,7 @@ POST
 
 ### 返回结果示例
 
-```python
-
+```json
 {
     "result": true,
     "code": 0,

@@ -3,7 +3,7 @@
 **作业平台（Job）是一套基于蓝鲸智云管控平台 Agent 管道之上的基础操作平台，具备大并发处理能力；除了支持脚本执行、文件拉取/分发、定时任务等一系列可实现的基础运维场景以外，还运用流程化的理念很好的将零碎的单个任务组装成一个作业流程；而每个任务都可做为一个原子节点，提供给其它系统和平台调度，实现调度自动化。**
 
 
-|资源名称	|资源描述|
+|资源名称|资源描述|
 |---|---|
 |[callback_protocol](5.1/API文档/JOB/callback_protocol.md)| 作业类回调报文描述|
 |[execute_job](5.1/API文档/JOB/execute_job.md)| 启动作业|
@@ -21,4 +21,3 @@
 |[get_step_instance_status](5.1/API文档/JOB/get_step_instance_status.md)| 查询作业步骤的执行状态|
 |[save_cron](5.1/API文档/JOB/save_cron.md)| 新建或保存定时作业|
 |[update_cron_status](5.1/API文档/JOB/update_cron_status.md)| 更新定时作业状态|
-

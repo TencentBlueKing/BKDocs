@@ -16,7 +16,6 @@
 
 ![-w1676](../assets/15681930877100.jpg)
 
-
 ## 创建自愈方案
 
 参照 [对接 Open-falcon](Integrated_Openfalcon.md#Add_FTA)，完成自愈的接入。

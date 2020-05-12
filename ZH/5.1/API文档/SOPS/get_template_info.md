@@ -1,14 +1,10 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/sops/get_template_info/
 
-
-
 ### 请求方法
 
 GET
-
 
 ### 功能描述
 
@@ -16,27 +12,26 @@ GET
 
 ### 请求参数
 
-
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  | string    | 是 | 应用 ID     |
+| bk_app_secret| string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     | string    | 否 | 当前用户登录态，bk_token 与 bk_username必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username  | string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段          |  类型       | 必选   |  描述          |
+| 字段          | 类型       | 必选   | 描述          |
 |---------------|------------|--------|---------------|
-| bk_biz_id     | string     |   是   |  模板所属业务 ID |
-| template_id   | string     |   是   |  模板 ID        |
-|   template_source | string   | 否         | 流程模板来源，business:默认值，业务流程，common：公共流程 |
+| bk_biz_id     | string     | 是   | 模板所属业务 ID |
+| template_id   | string     | 是   | 模板 ID        |
+| template_source | string   | 否         | 流程模板来源，business:默认值，业务流程，common：公共流程 |
 
 ### 请求参数示例
 
-```
+```json
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -49,7 +44,7 @@ GET
 
 ### 返回结果示例
 
-```
+```json
 {
     "result": true,
     "data": {
@@ -211,16 +206,16 @@ GET
 
 | 字段      | 类型      | 描述      |
 |-----------|----------|-----------|
-|  bk_biz_id     |    string    |      模板所属业务 ID      |
-|  bk_biz_name   |    string    |      模板所属业务名称    |
-|  id            |    int       |      模板 ID             |
-|  name          |    string    |      模板名称            |
-|  category      |    string    |      模板分类，分类信息见下面说明    |
-|  creator       |    string    |      模板创建人             |
-|  create_time   |    string    |      模板创建时间           |
-|  editor        |    string 或者 null    |      模板编辑人   |
-|  edit_time     |    string    |      模板最新编辑时间        |
-|  pipeline_tree |    dict      |      模板任务树信息，详细信息见下面说明   |
+| bk_biz_id     | string    | 模板所属业务 ID      |
+| bk_biz_name   | string    | 模板所属业务名称    |
+| id            | int       | 模板 ID             |
+| name          | string    | 模板名称            |
+| category      | string    | 模板分类，分类信息见下面说明    |
+| creator       | string    | 模板创建人             |
+| create_time   | string    | 模板创建时间           |
+| editor        | string 或者 null    | 模板编辑人   |
+| edit_time     | string    | 模板最新编辑时间        |
+| pipeline_tree | dict      | 模板任务树信息，详细信息见下面说明   |
 
 #### data.category
 
@@ -238,13 +233,13 @@ GET
 
 | 字段      | 类型      | 描述      |
 |-----------|----------|-----------|
-|  start_event      |    dict    |      开始节点信息     |
-|  end_event      |    dict    |      结束节点信息    |
-|  activities      |    dict    |      任务节点（原子和子流程）信息    |
-|  gateways      |    dict    |      网关节点（并行网关、分支网关和汇聚网关）信息    |
-|  flows      |    dict    |     顺序流（节点连线）信息    |
-|  constants      |    dict    |  全局变量信息，详情见下面    |
-|  outputs      |    list    |  模板输出信息，标记 constants 中的输出字段    |
+| start_event      | dict    | 开始节点信息     |
+| end_event      | dict    | 结束节点信息    |
+| activities      | dict    | 任务节点（原子和子流程）信息    |
+| gateways      | dict    | 网关节点（并行网关、分支网关和汇聚网关）信息    |
+| flows      | dict    | 顺序流（节点连线）信息    |
+| constants      | dict    | 全局变量信息，详情见下面    |
+| outputs      | list    | 模板输出信息，标记 constants 中的输出字段    |
 
 #### data.pipeline_tree.constants.KEY
 
@@ -254,11 +249,11 @@ GET
 
 | 字段      | 类型      | 描述      |
 |-----------|----------|-----------|
-|  key      |    string    |      同 KEY     |
-|  name      |    string    |      变量名字    |
-|  index      |    int    |      变量在模板中的显示顺序    |
-|  desc      |    string    |      变量说明   |
-|  source_type  | string   |      变量来源, 取值范围 custom: 自定义变量，component_inputs: 从原子输入参数勾选，component_outputs：从原子输出结果中勾选   |
-|  custom_type  | string   |      source_type=custom 时有效，自定义变量类型， 取值范围 input: 输入框，textarea: 文本框，datetime: 日期时间，int: 整数|
-|  source_tag   | string   |      source_type=component_inputs或component_outputs 时有效，变量的来源原子   |
-|   source_info | dict    |  source_type=component_inputs或component_outputs 时有效，变量的来源节点信息  |
+| key      | string    | 同 KEY     |
+| name      | string    | 变量名字    |
+| index      | int    | 变量在模板中的显示顺序    |
+| desc      | string    | 变量说明   |
+| source_type  | string   | 变量来源, 取值范围 custom: 自定义变量，component_inputs: 从原子输入参数勾选，component_outputs：从原子输出结果中勾选   |
+| custom_type  | string   | source_type=custom 时有效，自定义变量类型， 取值范围 input: 输入框，textarea: 文本框，datetime: 日期时间，int: 整数|
+| source_tag   | string   | source_type=component_inputs或component_outputs 时有效，变量的来源原子   |
+| source_info | dict    | source_type=component_inputs或component_outputs 时有效，变量的来源节点信息  |

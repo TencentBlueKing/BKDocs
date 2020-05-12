@@ -21,3 +21,5 @@
 3. 实例化模板集
 
 ![-w1678](../assets/15679996186125.jpg)
+
+目前，蓝鲸容器管理平台已正式对外开源，GitHub 地址： [https://github.com/Tencent/bk-bcs](https://github.com/Tencent/bk-bcs) , [https://github.com/Tencent/bk-bcs-saas](https://github.com/Tencent/bk-bcs-saas)

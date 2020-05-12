@@ -1,4 +1,3 @@
-
 ### 请求地址
 
 /api/c/compapi/v2/monitor/import_uptime_check_task/
@@ -13,15 +12,16 @@ POST
 
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
+| 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  | string    | 是 | 应用 ID     |
+| bk_app_secret| string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     | string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username  | string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 ### 请求参数示例
-```
+
+```json
 {   "bk_biz_id": 2,
     "conf_list": [
         {
@@ -198,14 +198,15 @@ POST
 ### 1.2 拨测任务基本配置--conf_list.collector_conf
 | 字段  | 类型  | 必选  | 描述  |
 |------|-------|-------|-------|
-| location | dict | 是 |  拨测目标所在地址 |
+| location | dict | 是 | 拨测目标所在地址 |
 | groups | str | 是 |拨测任务所属分组 |
 | name | str | 是 | 拨测任务名称 |
 | protocol | str | 是 |拨测任务协议类型 |
 | config | dict | 是 | 拨测任务详细配置 |
 
 ### TCP任务config示例
-```
+
+```json
 "config": {
             "ip_list": ["10.0.2.13"],
             "port": 3306,
@@ -215,6 +216,7 @@ POST
             "response": null
         }
 ```
+
 #### 1.2.1 拨测任务详细配置(TCP、UDP)--conf_list.collector_conf.config
 | 字段        | 类型   | 必选 | 描述         |
 | ----------- | ------ | ----- | ------------ |
@@ -227,7 +229,8 @@ POST
 | response_code | str | 否 | 期望响应码 |
 
 ### HTTP任务config示例
-```
+
+```json
 "config": {
         "insecure_skip_verify": true,
         "urls": "http://baidu.com",
@@ -269,7 +272,7 @@ POST
 | monitor_target | str| 是 | 监控目标字段 |
 | nodata_alarm | int | 是 | 无数据告警次数 |
 | node_count | int | 是 | 节点平均值 / 部分节点数 |
-| rules |  dict | 是 | 收敛规则 |
+| rules | dict | 是 | 收敛规则 |
 | scenario| str | 是 | 监控场景 |
 | unit| str | 是 | 监控字段单位 |
 | where_sql| str | 是 | 可用于前置条件过滤 部分直接使用数据库作为源的监控支持 |
@@ -324,7 +327,7 @@ POST
 
 ### 返回结果示例
 
-```
+```json
 {
     "message": "OK",
     "code": "0",
