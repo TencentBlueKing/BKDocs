@@ -29,8 +29,6 @@
 * [SaaS 部署]()
     * [通用部署](SaaS部署/通用部署/saasdeploy.md)
     * [标准运维](SaaS部署/标准运维/sops_install.md)
-* [合作商软件包安装]()
-    * [网络管理](合作方软件包安装/网络管理/net_man.md)
 * [场景案例]()
     * [离线部署](场景案例/离线部署/offline_setup.md)
     * [HTTPS 改造方案](场景案例/https改造方案/guide_converting_site_http_https.md)
