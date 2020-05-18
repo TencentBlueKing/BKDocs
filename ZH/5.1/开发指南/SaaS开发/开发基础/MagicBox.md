@@ -1,4 +1,4 @@
-# [MagicBox]
+# MagicBox
 
 - [MagicBox](https://magicbox.bk.tencent.com/static_api/v3/main/index.html)
 
