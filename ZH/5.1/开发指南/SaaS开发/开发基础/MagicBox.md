@@ -1,4 +1,6 @@
-# [MagicBox](https://magicbox.bk.tencent.com/static_api/v3/main/index.html)
+# [MagicBox]
+
+- [MagicBox](https://magicbox.bk.tencent.com/static_api/v3/main/index.html)
 
 - [可视化开发平台](https://magicbox.bk.tencent.com/static_api/v3/index.html#build/show)：支持在线拖拽，使用MagicBox提供的组件，自由布局页面进行二次开发。 
 
