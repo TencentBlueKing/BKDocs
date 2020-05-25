@@ -26,6 +26,8 @@
         * [机器评估](增强包安装/机器评估/bcs_evaluate.md)
         * [环境准备](增强包安装/环境准备/bcs_envprepare.md)
         * [安装部署](增强包安装/部署安装/bcs_install.md)
+* [合作商软件包安装]()
+    * [网络管理](合作方软件包安装/网络管理/net_man.md)
 * [SaaS 部署]()
     * [通用部署](SaaS部署/通用部署/saasdeploy.md)
     * [标准运维](SaaS部署/标准运维/sops_install.md)
