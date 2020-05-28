@@ -18,9 +18,8 @@
 
 **2. 安装 所需的 python 包**
 解压 pypkgs.tgz，并使用 /opt/py27/bin/pip 安装包。
+
 ```bash
-foo@nginx-1 ~#
-foo@nginx-1 ~#
 foo@nginx-1 download# tar xf pypkgs.tgz
 foo@nginx-1 download# /opt/py27/bin/pip install --no-index --find-links=./pypkgs -r pypkgs/requirements.txt
 ...
@@ -36,35 +35,47 @@ Successfully installed Naked-0.1.31 PyYAML-3.12 appnope-0.1.0 certifi-2017.11.5 
 步骤安装完成后， 可以使用 wmiexec.py 命令了， 使用方法可以`执行 wmiexec.py -h` 查看帮助
 
 ```bash
-root@nginx-1 download#
-root@nginx-1 download#
-root@nginx-1 download# wmiexec.py Administrator:密码@IP地址 "put gse_client-windows-x86_64.tgz"
+root@nginx-1 download# wmiexec.py Administrator:'密码'@IP地址 "put gse_client-windows-x86_64.tgz"
 Impacket v0.9.15 - Copyright 2002-2016 Core Security Technologies
 
 [*] SMBv2.1 dialect used
 [*] Uploading gse_client-windows-x86_64.tgz to C:\gse_client-windows-x86_64.tgz
-root@rbtnode1 download# wmiexec.py Administrator:密码@IP地址 "put gse_client-windows-x86.tgz"
+```
+
+```bash
+root@rbtnode1 download# wmiexec.py Administrator:'密码'@IP地址 "put gse_client-windows-x86.tgz"
 Impacket v0.9.15 - Copyright 2002-2016 Core Security Technologies
 
 [*] SMBv2.1 dialect used
 [*] Uploading gse_client-windows-x86.tgz to C:\gse_client-windows-x86.tgz
-root@rbtnode1 download# wmiexec.py Administrator:密码@IP地址 "put winagent_install.zip"
+```
+
+```bash
+root@rbtnode1 download# wmiexec.py Administrator:'密码'@IP地址 "put winagent_install.zip"
 Impacket v0.9.15 - Copyright 2002-2016 Core Security Technologies
 
 [*] SMBv2.1 dialect used
 [*] Uploading winagent_install.zip to C:\winagent_install.zip
-root@rbtnode1 download# wmiexec.py Administrator:密码@IP地址 "put 7z.dll"
-[root@rbtnode1 download]# wmiexec.py Administrator:密码@IP地址 "put 7z.dll"
+```
+
+```bash
+[root@rbtnode1 download]# wmiexec.py Administrator:'密码'@IP地址 "put 7z.dll"
 Impacket v0.9.15 - Copyright 2002-2016 Core Security Technologies
 
 [*] SMBv2.1 dialect used
 [*] Uploading 7z.dll to C:\7z.dll
-root@rbtnode1 download# wmiexec.py Administrator:密码@IP地址 "put 7z.exe"
+```
+
+```bash
+root@rbtnode1 download# wmiexec.py Administrator:'密码'@IP地址 "put 7z.exe"
 Impacket v0.9.15 - Copyright 2002-2016 Core Security Technologies
 
 [*] SMBv2.1 dialect used
 [*] Uploading 7z.exe to C:\7z.exe
-root@rbtnode1 download# wmiexec.py Administrator:密码@IP地址 "put normaliz.dll"
+```
+
+```bash
+root@rbtnode1 download# wmiexec.py Administrator:'密码'@IP地址 "put normaliz.dll"
 Impacket v0.9.15 - Copyright 2002-2016 Core Security Technologies
 
 [*] SMBv2.1 dialect used
@@ -72,7 +83,7 @@ Impacket v0.9.15 - Copyright 2002-2016 Core Security Technologies
 root@rbtnode1 download#
 ```
 
-安装包默认上传到 C: 根目录下
+安装包默认上传到 C 盘根目录下
 
 **4. 远程执行安装脚本**
 
@@ -94,9 +105,11 @@ root@rbtnode1 download#
 注意：执行脚本 gse_install.bat 时的第二个参数是 0，表示云区域 ID。
 
 ```bash
-root@nginx-1 download#
-root@nginx-1 download# wmiexec.py Administrator:密码@IP地址 "7z.exe -y x winagent_install.zip -oC:\\"
-root@nginx-1 download# wmiexec.py Administrator:密码@IP地址 "winagent_install\\gse_install.bat IP地址 0 "
+root@nginx-1 download# wmiexec.py Administrator:'密码'@IP地址 "7z.exe -y x winagent_install.zip -oC:\\"
+```
+```bash
+root@nginx-1 download# wmiexec.py Administrator:'密码'@IP地址 "winagent_install\\gse_install.bat -o IP地址 -i 0 "
 ```
 输出如下所示：
+
 ![-w2020](../../assets/15316391589446.jpg)
