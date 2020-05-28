@@ -93,7 +93,7 @@ when BRIDGE MODE enabled
 **2. 执行安装**
 
 ```bash
- ./agent_setup_pro.sh -m client -g $NGINX_IP/download
+ ./agent_setup_pro.sh -m client -g $NGINX_IP:$NGINX_PORT/download
 ```
 
 输出如图所示:
