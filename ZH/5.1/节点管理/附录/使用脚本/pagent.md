@@ -17,8 +17,9 @@
 配置文件格式如下
 
 ```bash
-IP  SSH 端口 登陆账号 密码/密钥文件路径 操作系统名称  是否有 Cygwin
+IP  操作系统名称  密码/密钥文件路径  SSH 端口   登陆账号  是否有 Cygwin
 ```
+
 - SSH 端口：Windows 无 Cygwin 时，SSH 端口任意填写即可。但不是空。
 - 登陆账号：root，Administrato，注意区分大小写。
 - 操作系统可以是: `linux`，`windows`， `aix`, 全部小写。
@@ -28,11 +29,11 @@ IP  SSH 端口 登陆账号 密码/密钥文件路径 操作系统名称  是否
 配置文件示例：
 
 ```bash
-10.0.0.1    22  root            mypassword01        linux   0
-10.0.0.2    22  root            /root/.ssh/id_rsa   linux   0
-10.0.0.3    22  Administrator   mypassword02        windows 1
-10.0.0.4    22  Administrator   mypassword02        windows 0
-10.0.0.5    22  root            mypassword02        aix     0
+10.0.0.1    linux       mypassword01         22      root             0
+10.0.0.2    linux       /root/.ssh/id_rsa    22      root             0
+10.0.0.3    windows    mypassword02          22      Administrator    1
+10.0.0.4    windows    mypassword02          22      Administrator    0
+10.0.0.5    aix        mypassword02          22      root             0
 ```
 
 将要准备安装 P-Agent 的机器按照如上格式，填写到一个配置文件中，假设文件名为： /tmp/pagent.list
@@ -42,12 +43,11 @@ IP  SSH 端口 登陆账号 密码/密钥文件路径 操作系统名称  是否
 
 ## 执行安装
 
-在 {% em type=red %} **任意一台** {% endem %} Proxy 机器上执行一下命令即可。
+在 **任意一台** Proxy 机器上执行一下命令即可。
 
 ```bash
-root@rbtnode1 ~#
-root@rbtnode1 ~#
-root@rbtnode1 ~# agent_setup_pros.h -b -m client -o /tmp/pagent.list -i CLOUD_ID -l PROXY_LAN_IP
+
+root@rbtnode1 ~# ./agent_setup_pro.sh -b -m client -o /tmp/pagent.list -i 云区域ID -l proxy内网IP -w proxy外网IP -g http://$NGINX_IP:$NGINX_PORT/download
 ```
 
 > **Note:**
