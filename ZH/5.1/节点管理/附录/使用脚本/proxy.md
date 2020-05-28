@@ -13,8 +13,8 @@
 登陆 Proxy 机器，下载 agent_setup_pro.sh 脚本，后执行如下命令即可：
 
 ```bash
-root@rbtnode1 download#
-root@rbtnode1 download# bash agent_setup_pro.sh -m proxy -i CLOUD_ID
+root@rbtnode1 download# wget $NGINX_IP:$NGINX_PORT/download/agent_setup_pro.sh
+root@rbtnode1 download# bash agent_setup_pro.sh -m proxy -i $CLOUD_ID -g $NGINX_IP:$NGINX_PORT/download/
 ```
 
 > **Note:**
