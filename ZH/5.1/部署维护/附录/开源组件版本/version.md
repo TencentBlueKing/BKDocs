@@ -53,7 +53,7 @@ cat /data/install/VERSION
 
   * `/usr/local/bin/python --version` PaaS 专用版本：2.7.9。
 
-* MySQL：`./mysqld --version` 5.5.24-patch-1.0。
+* MySQL：`./mysqld --version` 5.5.24-patch-1.0-----> 5.7.24。
 
 * MongoDB：`./mongod --version`  v3.6.3。
 
