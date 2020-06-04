@@ -36,7 +36,7 @@ cd /data/install
 
 # 重装 gse_agent 并注册正确的集群模块到配置平台
 # 执行完该操作后，可以在配置平台中看到主机按照 install.config 中的配置分布到对应拓扑下
-./bkcec install gse_agent
+./bk_install gse_agent
 
 #部署官方 SaaS 到正式环境(通过命令行从 /data/src/official_saas/ 目录自动部署 SaaS )
 # 执行完该操作后，可以在蓝鲸工作台看到并使用所有官方 SaaS
