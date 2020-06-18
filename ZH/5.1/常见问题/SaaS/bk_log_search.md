@@ -27,8 +27,9 @@
 
 1. 修改中控机的 /data/install/ports.env 中下面两行配置的 10050 端口为 10049，避开冲突
     ```bash
-    export DATABUS_ES_PORT=10050
     export CONNECTOR_ES_PORT=10050
+    export BKDATA_DATABUS_ES_PORT=10050
+    export DATABUS_ES_PORT=10050
     ```
 2. ./bkcec sync common
 3. ./bkcec render bkdata
