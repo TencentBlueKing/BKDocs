@@ -264,19 +264,19 @@ common:scheduler      FATAL     Exited too quickly (process log may have details
 **思路方法**：
 - 确认有问题的进程名
 ```bash
-supervisorctl  -c /data/bkee/etc/supervisor-bkdata-monitor.conf status all
+supervisorctl  -c /data/bkce/etc/supervisor-bkdata-monitor.conf status all
 ```
 
 - 找到有问题的进程名。例如上图中显示为：common:scheduler，其中common是group， scheduler是进程名
 找到该进程的启动命令
 
 ```bash
-vim /data/bkee/etc/supervisor-bkdata-monitor.conf
+vim /data/bkce/etc/supervisor-bkdata-monitor.conf
 
 # 在[program:scheduler]需要找到一下配置
 
 environment=C_FORCE_ROOT=true,DJANGO_CONF_MODULE=conf.worker.production.enterprise,DJANGO_SETTINGS_MODULE=settings,LOGGER_WITHOUT_CONSOLE=1
-command=/data/bkee/.envs/monitor/bin/celery -A kernel.scheduler.celery_app worker -l info
+command=/data/bkce/.envs/monitor/bin/celery -A kernel.scheduler.celery_app worker -l info
 ```
 
 - 手动执行以下命令
@@ -285,7 +285,7 @@ workon monitor
 # export environment的配置，逗号改成空格。
 export C_FORCE_ROOT=true DJANGO_CONF_MODULE=conf.worker.production.enterprise DJANGO_SETTINGS_MODULE=settings LOGGER_WITHOUT_CONSOLE=1
 # 直接运行command的配置
-/data/bkee/.envs/monitor/bin/celery -A kernel.scheduler.celery_app worker -l info
+/data/bkce/.envs/monitor/bin/celery -A kernel.scheduler.celery_app worker -l info
 ```
 查看报错信息以确认具体错误日志
 
