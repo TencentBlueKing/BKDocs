@@ -1,6 +1,6 @@
 # MagicBox
 
-- [MagicBox](https://magicbox.bk.tencent.com/static_api/v3/main/index.html)
+- 前端开发工具集([MagicBox](https://magicbox.bk.tencent.com/static_api/v3/main/index.html))
 
 蓝鲸MagicBox提供丰富的PC端、移动端前端UI组件，更有样例套餐助您快速搭建前端页面。同时蓝鲸MagicBox提供可视化开发服务，支持在线拖拽页面，所见即所得。
 
