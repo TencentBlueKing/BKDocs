@@ -36,7 +36,7 @@
 
 ## paas_agent 替换指南
 
-- 将开源版编译后生成的二进制：paasagent/bin/paas_agent 拷贝替换社区版 /data/src/paas_agent/paas_agent/bin/paas_agent
+- 将开源版编译后生成的二进制：paasagent/bin/paas_agent 拷贝替换社区版 /data/src/paas_agent/paas_agent/bin/paas_agent。具体的编译方法可参考[编译并安装paasagent](https://github.com/Tencent/bk-PaaS/blob/master/docs/install/ce_paas_agent_install.md#2-%E7%BC%96%E8%AF%91%E5%B9%B6%E5%AE%89%E8%A3%85paasagent)
 
   ```bash
   cp -f paasagent/bin/paas_agent /data/src/paas_agent/paas_agent/bin/  # 将生成的开源二进制文件拷贝到 src/paas_agent 目录下
