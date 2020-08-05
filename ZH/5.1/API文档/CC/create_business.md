@@ -38,6 +38,8 @@ POST
 | bk_biz_developer | string | 是 | 开发人员 |
 | bk_biz_tester | string | 是 | 测试人员 |
 | time_zone | string | 是 | 时区 |
+| language | int | 是 | 语言 |
+| bk_supplier_id | string | 是 | 开发商id |
 
 > **注意：此处的输入参数仅对必填以及系统内置的参数做了说明，其余需要填写的参数取决于用户自己定义的属性字段**
 
@@ -48,14 +50,15 @@ POST
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
     "bk_token": "xxx",
-    "bk_supplier_account": "123456789",
     "data": {
         "bk_biz_name": "cc_app_test",
         "bk_biz_maintainer": "admin",
         "bk_biz_productor": "admin",
         "bk_biz_developer": "admin",
         "bk_biz_tester": "admin",
-        "time_zone": "Asia/Shanghai"
+        "time_zone": "Asia/Shanghai",
+        "language": "1",
+        "bk_supplier_id": ""
     }
 }
 ```
@@ -64,12 +67,25 @@ POST
 
 ```json
 {
-    "result": true,
-    "code": 0,
-    "message": "",
-    "data": {
-        "bk_biz_id": 2
-    }
+"message": "success",
+"code": 0,
+"data":{
+"bk_biz_id": 3,
+"language": "1",
+"life_cycle": "2",
+"bk_biz_developer": "admin",
+"bk_biz_maintainer": "admin",
+"bk_biz_tester": "admin",
+"time_zone": "Asia/Shanghai",
+"default": 0,
+"bk_biz_productor": "admin",
+"bk_supplier_account": "0",
+"operator": null,
+"bk_biz_name": "cc_app_test",
+"bk_supplier_id": ""
+},
+"result": true,
+"request_id": "XXX"
 }
 ```
 
