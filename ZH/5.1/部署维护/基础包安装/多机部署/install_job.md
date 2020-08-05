@@ -39,7 +39,7 @@ echo '[rabbitmq_management，rabbitmq_management_agent].' >$INSTALL_PATH/etc/rab
 2. 启动 RabbitMQ
 
 ```bash
-systemdctl start rabbitmq-server
+systemctl start rabbitmq-server
 ```
 
 3. 初始化 RabbitMQ，会添加账户，vhost，设置权限，具体内容，请参考 `initdata_rabbitmq` 函数
