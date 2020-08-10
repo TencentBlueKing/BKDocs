@@ -22,7 +22,6 @@
         * [Celery 使用](SaaS开发/开发进阶/celery.md)
         * [BKUI-CLI 使用指南](SaaS开发/开发进阶/bkui/bkui.md)
         * [BKUI-CLI 与 Python 开发框架结合使用](SaaS开发/开发进阶/BKUI.md)
-        * [Django+Vue.js 的前后端分离](SaaS开发/开发进阶/django_vue.md)
     * [移动端开发](SaaS开发/移动端开发/Mobile_development.md)
 * [开发规范]()
     * [前端开发规范]()
