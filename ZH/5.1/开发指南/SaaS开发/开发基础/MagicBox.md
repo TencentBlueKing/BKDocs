@@ -8,6 +8,8 @@
 
 - [前端jQuery组件库](https://magicbox.bk.tencent.com/static_api/v3/index.html#index?isPro=1)：提供表单、表格、富文本、按钮等丰富的UI组件，包括PC版、移动版。  
 
+- [前端jQuery组件包下载](https://magicbox.bk.tencent.com/static_api/v3/index.html#plugin)：提供PC版JQuery组件包下载服务。
+
 - [前端Vue组件库](https://magicbox.bk.tencent.com/static_api/v3/components_vue/2.0/example/index.html#/)：基于Vue 2.0，提供按钮、下拉选框、日期选择器、对话框等常用组件。
 
 - [前端套餐样例库](https://magicbox.bk.tencent.com/static_api/v3/index.html#templates)：提供成套的样例页面，即拿即用。
