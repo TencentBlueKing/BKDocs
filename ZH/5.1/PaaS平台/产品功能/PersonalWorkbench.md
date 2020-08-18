@@ -4,6 +4,6 @@
 
 下图所示：“登录” -> “排序” -> 拖拽调整顺序 ->“完成”。
 
-![-w2020](../assets/image003.png)
+![-w2020](../assets/personalwrokbench1.png)
 
-![-w2020](../assets/personalwrokbench.png)
+![-w2020](../assets/personalwrokbench2.png)

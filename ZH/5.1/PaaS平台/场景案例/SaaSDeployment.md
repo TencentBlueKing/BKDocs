@@ -12,4 +12,4 @@
 
 (6) 部署成功后，即可在“工作台”点击进入
 
-![-w2020](../assets/image062.png)
+![SaaSDeployment](../assets/SaaSDeployment.png)

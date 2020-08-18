@@ -4,25 +4,25 @@
 
 第一种：S-mart 应用，通过“下载 SaaS 包 -> 上传部署(正式环境)-> 配置后台服务(可选)-> 工作台进入”的方式来使用；
 
-![-w2020](../../assets/smartsaas.png)
+![SaaSManage](../../assets/SaaSManage1.png)
 
-![-w2020](../../assets/smartupload.png)
+![SaaSManage](../../assets/SaaSManage2.png)
 
 第二种：我的应用，属于开发者/用户自己研发的 SaaS 应用，按照“创建应用 -> 研发 -> 测试环境部署 -> 正式环境部署”的方式自研工具/系统。
 
-![-w2020](../../assets/mysaas.png)
+![SaaSManage](../../assets/SaaSManage3.png)
 
 当应用创建完成后，可以在“我的应用”中看到，并对指定的应用进行基本操作。
 
-![-w2020](../../assets/mysaasoption.png)
+![SaaSManage](../../assets/SaaSManage4.png)
 
-![-w2020](../../assets/mysaasoneoption.png)
+![SaaSManage](../../assets/SaaSManage5.png)
 
 第三种：外链应用，在社区版中没有放到“开发者中心”进行添加，而是通过 PaaS 平台的后台管理进行操作。
 
-![-w2020](../../assets/wailiansaas.png)
+![SaaSManage](../../assets/SaaSManage6.png)
 
-![-w2020](../../assets/wailiansaasadd.png)
+![SaaSManage](../../assets/SaaSManage7.png)
 
 > “常用链接” 的类型有 3 种：
 - 普通链接：添加后，显示在“个人工作台”的右侧，作为“常用链接”；
@@ -35,4 +35,4 @@
 
 为了保证 SaaS 的正常使用，严格记录每一次发布变更的操作信息，不论是测试环境，还是正式环境。
 
-![-w2020](../../assets/image012.png)
+![SaaSManage](../../assets/SaaSManage8.png)

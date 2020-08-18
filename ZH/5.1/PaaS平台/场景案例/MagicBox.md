@@ -6,10 +6,10 @@
 
 (3) 以 PC 端为例：选择网站“布局”结构
 
-![-w2020](../assets/image063.png)
+![MagicBox](../assets/MagicBox1.png)
 
 (4) 从左侧导航选择需要的前端元素，拖拽到右侧的布局中，双击元素可以编辑内容
 
-![-w2020](../assets/image064.png)
+![MagicBox](../assets/MagicBox2.png)
 
 (5) 最后，点击上面的“保持”/“下载” 即可获取完整的前端界面代码。
