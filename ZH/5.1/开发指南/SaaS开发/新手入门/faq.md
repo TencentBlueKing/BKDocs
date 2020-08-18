@@ -16,7 +16,7 @@ git config --global credential.helper store
 
 ## 如何隔离多套开发环境
 
-通过 [pipenv](https://zhuanlan.zhihu.com/p/37581807)，在本地隔离多套开发环境
+通过[pipenv](https://zhuanlan.zhihu.com/p/37581807)，在本地隔离多套开发环境
 ![pipenv](../assets/pipenv.png)
 
 - 进入 `pipenv` 环境没有加载用户环境变量如何处理？
@@ -28,3 +28,5 @@ git config --global credential.helper store
     ```bash
     alias ll="ls -lh"
     ```
+
+详细方案可参考[python多环境开发方案](../开发基础/PYTHON2_3.md)。

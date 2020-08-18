@@ -24,7 +24,7 @@
 
 ### 部署 MySQL
 
-- [官网下载MySQL5.7](https://dev.mysql.com/downloads/windows/installer/5.7.html) ,选择  `mysql-installer-community-5.7.26.0.msi` ，按提示安装即可。
+- [官网下载 MySQL](https://dev.mysql.com/downloads/mysql/) ,选择`.msi`文件进行下载 ，按提示安装即可。
 
 ### 创建应用和准备 git 仓库地址
 
@@ -92,7 +92,7 @@ pip3 install -r requirements.txt
 
 ### 创建和初始化数据库
 
-打开 `MySQL 5.7 Command Line Client` 执行
+打开 `MySQL` 命令行执行
 
 ```bash
 CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
@@ -125,7 +125,7 @@ python manage.py runserver appdev.{PAAS_URL}:8000
 - 本地访问
 用浏览器访问 ```http://appdev.{PAAS_URL}:8000``` , 就可以看到开发框架
 
-![开发框架首页](media/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E9%A6%96%E9%A1%B5.png)
+![开发框架首页](../assets/usage-index.png)
 
 ## Hello,World
 

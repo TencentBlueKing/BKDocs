@@ -288,6 +288,10 @@ STATICFILES_DIRS = (
 其中 BASE_DIR 是工程根目录路径。
 
 ## celery 使用
+
+celery 是一个简单、灵活且可靠的，处理大量消息的分布式系统，并且提供维护这样一个系统的必需工具。
+它是一个专注于实时处理的任务队列，同时也支持任务调度。
+
 ### 打开 Celery 配置
 
 在 config/default.py 中修改配置：
@@ -312,7 +316,7 @@ def mul(x, y):
 
 ```python
 CELERY_IMPORTS = (
-    'testapp.tasks2'
+    'testapp.tasks'
 )
 ```
 
@@ -342,24 +346,33 @@ python manage.py celery beat -l info
 
 ### 调整 celery worker 并发数
 
-- CELERYD_CONCURRENCY 参数官方说明：
-
-http://docs.celeryproject.org/en/v2.2.4/configuration.html#celeryd-prefetch-multiplier
+- CELERYD_CONCURRENCY 参数官方说明：[官方文档](http://docs.celeryproject.org/en/v2.2.4/configuration.html#celeryd-prefetch-multiplier)
 
 - 目前开发框架设置的 celery 并发数是 2，如需调整，有 2 种方法：
 
 1)在蓝鲸平台的 APP 环境变量新增 KEY 为 CELERYD_CONCURRENCY 的变量，并设置对应的值(调大前建议咨询平台维护同事)。
+
 2)直接修改 APP 中的配置，即修改 config/default.py 文件中如下配置的默认值 2 为你想要设置的值。
 
 ```python
 CELERYD_CONCURRENCY = os.getenv('BK_CELERYD_CONCURRENCY', 2)
 ```
 
+### 调整 celery 与 RabbitMQ 心跳包发送时间
+- BROKER_HEARTBEAT 参数官方说明：[官方文档](https://docs.celeryproject.org/en/3.1/configuration.html?#std:setting-BROKER_HEARTBEAT)
+
+- 目前开发框架设置的 BROKER_HEARTBEAT 发送时间是 60，即每60秒发送一个心跳包，如需调整，有以下方法：
+
+直接修改 APP 中的配置，即在 /config/default.py 文件中添加相应配置，框架默认的配置会被覆盖。
+
+```python
+# CELERY与RabbitMQ增加60秒心跳设置项
+BROKER_HEARTBEAT = 60
+```
+
 ## 日志使用
 
-- 日志相关配置方式复用 Django 的配置方式
-
-[https://docs.djangoproject.com/en/2.2/topics/logging/#using-logging](https://docs.djangoproject.com/en/2.2/topics/logging/#using-logging)
+- 日志相关配置方式复用 Django 的配置方式：[官方文档](https://docs.djangoproject.com/en/2.2/topics/logging/#using-logging)
 
 ```python
 import logging
@@ -414,11 +427,11 @@ logger_celery.setsetLevel('CRITICAL')
 ### 使用样例
 
 ```python
-from blueapps.core.exceptions import ArgsMissing
+from blueapps.core.exceptions import ParamValidationError
 def your_view_func(request):
   form = your_form(request.POST)
   if not form.is_valid():
-    raise ArgsValidateFailed(u'参数验证失败,请确认后重试')
+    raise ParamValidationError(u'参数验证失败,请确认后重试')
   # do something you want
 ```
 
@@ -445,10 +458,12 @@ def your_view_func(request):
 
 | 错误类 | 说明 | http 状态码 | 返回错误码 | 场景举例 |
 |  ------ |  ----  |  -----------  |  ----------  |  --------  |
-| ResourceNotFound | 找不到请求的资源  |  404 |  40400 | 找不到用户请求的某个指定ID的model |
-| ArgsValidateFailed | 参数验证失败 | 400 | 40000 | 期待为整形的参数，用户提供了一个字符参数 |
-| ArgsMissing | 请求参数缺失 | 400 | 40001 | 期待的参数找不到 |
+| ParamValidationError | 参数验证失败 | 400 | 40000 | 期待为整形的参数，用户提供了一个字符参数 |
+| ParamRequired | 请求参数缺失 | 400 | 40001 | 期待的参数找不到 |
+| RioVerifyError | 登陆请求经智能网关检测失败 | 401 | 40101 | 用户登录验证 |
+| BkJwtVerifyError | 登陆请求经JWT检测失败 | 401 | 40102 | 用户登录验证 |
 | AccessForbidden | 登陆失败 | 403 | 40301 | 用户身份验证失败 |
 | RequestForbidden | 请求拒绝 | 403 | 40320 | 用户企图操作没有权限的任务 |
 | ResourceLock | 请求资源被锁定 | 403 | 40330 | 用户企图操作一个已经锁定的任务 |
+| ResourceNotFound | 找不到请求的资源 | 404 | 40400 | 找不到用户请求的某个指定ID的model |
 | MethodError | 请求方法不支持 | 405 | 40501 | 用户发送的请求不在预期范围内 |
