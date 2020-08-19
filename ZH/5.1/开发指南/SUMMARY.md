@@ -19,7 +19,6 @@
         * [MagicBox](SaaS开发/开发基础/MagicBox.md)
         * [学习视频](SaaS开发/开发基础/video.md)
     * [开发进阶]()
-        * [Celery 使用](SaaS开发/开发进阶/celery.md)
         * [BKUI-CLI 使用指南](SaaS开发/开发进阶/bkui/bkui.md)
         * [BKUI-CLI 与 Python 开发框架结合使用](SaaS开发/开发进阶/BKUI.md)
         * [蓝鲸 Django 开发框结合 Vue.js 框架项目](SaaS开发/开发进阶/Django+Vue.js.md)

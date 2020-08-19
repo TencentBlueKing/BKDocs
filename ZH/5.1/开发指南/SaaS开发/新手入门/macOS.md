@@ -16,7 +16,7 @@
 
 ### 部署 MySQL
 
-- [官网下载 MySQL 5.7](https://dev.mysql.com/downloads/mysql/5.7.html#downloads)
+- [官网下载 MySQL](https://dev.mysql.com/downloads/mysql/)
 - 修改用户环境变量和 MySQL 密码
 
 ```bash
@@ -94,6 +94,8 @@ pip3 install -r requirements.txt
 
 ### 创建和初始化数据库
 
+打开 `MySQL` 命令行执行
+
 ```
 CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
 ```
@@ -126,7 +128,7 @@ python manage.py runserver appdev.{PAAS_URL}:8000
 
 用浏览器访问 `http://appdev.{PAAS_URL}:8000` , 就可以看到开发框架
 
-![开发框架首页](media/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E9%A6%96%E9%A1%B5.png)
+![开发框架首页](../assets/usage-index.png)
 
 ## Hello,World
 
