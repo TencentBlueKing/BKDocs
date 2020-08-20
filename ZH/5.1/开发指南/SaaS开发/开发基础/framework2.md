@@ -6,7 +6,7 @@
 - blueapps                    # Python开发框架模块
 - blueking                    # ESB调用模块
 - config                      # 应用配置目录
-  - __init__.py               # 应用 RUN_VER(ieod/clouds/qcloud)、APP_CODE 和 SECRET_KEY 等配置
+  - __init__.py               # 应用 RUN_VER(社区版为open)、APP_CODE 和 SECRET_KEY 等配置
   - dev.py                    # 本地开发配置(开发团队共享)
   - default.py                # 全局配置
   - prod.py                   # 生产环境配置
@@ -363,7 +363,7 @@ CELERYD_CONCURRENCY = os.getenv('BK_CELERYD_CONCURRENCY', 2)
 
 - 目前开发框架设置的 BROKER_HEARTBEAT 发送时间是 60，即每60秒发送一个心跳包，如需调整，有以下方法：
 
-直接修改 APP 中的配置，即在 /config/default.py 文件中添加相应配置，框架默认的配置会被覆盖。
+直接修改 APP 中的配置，即在 config/default.py 文件中添加相应配置，框架默认的配置会被覆盖。
 
 ```python
 # CELERY与RabbitMQ增加60秒心跳设置项
