@@ -1,6 +1,6 @@
 ## 监控平台采集插件下载
 
-| 名字                                       |  大小 |  操作  |
+| 文件名                                     |  大小 |  操作  |
 | -------------------------------------------| ---- | -------|
 | bkplugin_active_directory-2.3-official.tgz | 8.9M | [下载](http://bktencent-1252002024.file.myqcloud.com/bkplugin_active_directory-2.3-official.tgz) |             
 | bkplugin_apache-1.4-official.tgz           |  12M | [下载](http://bktencent-1252002024.file.myqcloud.com/bkplugin_apache-1.4-official.tgz) |   
