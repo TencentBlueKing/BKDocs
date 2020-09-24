@@ -2,7 +2,7 @@
 
 - 去除blueapps包中的celery中的依赖
 - 由于djcelery仅支持到celery3x版本，升级celery4x版本，使用django-celery-beat和django-celery-result包代替djcelery功能
-- 升级主要存在的问题在于celery4x的时间流转与celery3x的不同，可能导致旧定时任务和异步任务执行异常，后续章节会详细介绍用户升级和新用户的使用注意事项及相关问题的解决方案
+- 升级主要存在的问题在于celery4x的时间流转与celery3x的不同，导致定时任务和异步任务执行异常，后续章节会详细介绍，[老用户升级](#老用户升级注意事项)和[新用户的使用注意事项](#新用户使用注意事项)
 - celery4x解决了与async关键字的冲突，升级后可以使用python3.7及以上版本（目前仅测试到3.7.4）
 
 ## celery4新特性
@@ -173,7 +173,7 @@
   celery -A blueapps.core.celery worker -l info -P eventlet
   ```
 
-- `djcelery不支持celery4.4，升级后通过django-celery-beat和django-celery-result代替djcelery的功能，因此djcelery提供的celery启动命令已经不支持，新的beat，worker启动命令为
+- djcelery不支持celery4.4，升级后通过django-celery-beat和django-celery-result代替djcelery的功能，因此djcelery提供的celery启动命令已经不支持，新的beat，worker启动命令为
 
   ```python
   # beat启动命令
@@ -181,6 +181,8 @@
   # worker启动命令，windows用户请加上 -P eventlet参数
   celery -A blueapps.core.celery worker -l info 
   ```
+  
+  > 注意：这里`-A blueapps.core.celery`用于指定使用开发框架内部封装好的celery app，可用于加载/conf/default.py中的配置等功能，如果配置使用其他app，会导致无法加载配置及task的自动发现
 
 ### 升级后异步任务需要修改的配置
 
@@ -217,6 +219,11 @@
   解决方案：使用`TzAwareCrontab`配置，添加`tz=timezone.get_current_timezone()`参数，即可以用户所在时区执行定时任务
 
   ```python
+  from celery.task import periodic_task
+  from django.utils import timezone
+  from celery.schedules import crontab
+  from django_celery_beat.tzcrontab import TzAwareCrontab
+  
   # 配置用户所在时区每天10:00执行定时任务
   # 错误配置：由于没有配置定时任务时区，使用UTC时区，实际会在10:00+00:00执行
   @periodic_task(run_every=celery.schedule.crontab(minute="0", hour="10",tz=timezone.get_current_timezone()))
@@ -233,7 +240,12 @@
 
 - 升级后定时任务`CrontabSchedule`表新增`timezone`字段，创建定时任务时，可以通过指定`timezone`字段的时区来配置定时任务执行所在的时区
 
+  
+  示例代码：home_application/celery_utils.py
+  
   ```python
+  from django.utils import timezone
+  from django_celery_beat.models import CrontabSchedule, PeriodicTask
   # 用户实时添加定时任务
   def add_period_task(task, name=None, minute='*', hour='*',
                       day_of_week='*', day_of_month='*',
@@ -272,6 +284,91 @@
       else:
           return True, ''
   
+  # 用户通过定时任务id编辑定时任务
+  def edit_period_task_by_id(task_id, minute='*', hour='*',
+                             day_of_week='*', day_of_month='*',
+                             month_of_year='*', args="[]", kwargs="{}", tz=None):
+      """
+      @summary: 更新一个周期任务
+      @param name: 用户定义的任务名称, 具有唯一性
+      """
+      try:
+          period_task = PeriodicTask.objects.get(id=task_id)
+      except PeriodicTask.DoesNotExist:
+          return False, 'PeriodicTask.DoesNotExist'
+      cron_param = {
+          'minute': minute,
+          'hour': hour,
+          'day_of_week': day_of_week,
+          'day_of_month': day_of_month,
+          'month_of_year': month_of_year,
+          'timezone': timezone.get_current_timezone() if tz is None else tz
+      }
+      try:
+          cron_schedule = CrontabSchedule.objects.get(**cron_param)
+      except CrontabSchedule.DoesNotExist:
+          cron_schedule = CrontabSchedule(**cron_param)
+          cron_schedule.save()
+      period_task.crontab = cron_schedule
+      period_task.args = args
+      period_task.kwargs = kwargs
+      period_task.save()
+      return True, ''
+  ```
+  
+  hoeme_application/views.py
+  
+  ```python
+  
+  def save_task(request):
+      """
+      创建/编辑周期性任务 并 运行
+      """
+      tz = request.POST.get('tz')
+      if tz:
+          timezone.activate(tz)
+      periodic_task_id = request.POST.get('periodic_task_id', '0')
+      params = request.POST.get('params', {})
+      try:
+          params = json.loads(params)
+          add_param = params.get('add_task', {})
+      except Exception:
+          msg = u"参数解析出错"
+          logger.error(msg)
+          result = {'result': False, 'message': msg}
+          return JsonResponse(result)
+      task_args1 = add_param.get('task_args1', '0')
+      task_args2 = add_param.get('task_args2', '0')
+      # 任务参数
+      try:
+          task_args1 = int(task_args1)
+          task_args2 = int(task_args2)
+          task_args_list = [task_args1, task_args2]
+          task_args = json.dumps(task_args_list)
+      except Exception:
+          task_args = '[0,0]'
+          logger.error(u"解析任务参数出错")
+      #  周期参数
+      minute = add_param.get('minute', '*')
+      hour = add_param.get('hour', '*')
+      day_of_week = add_param.get('day_of_week', '*')
+      day_of_month = add_param.get('day_of_month', '*')
+      month_of_year = add_param.get('month_of_year', '*')
+      # 创建周期任务时，任务名必须唯一
+      now = int(time.time())
+      task_name = "{}_{}".format(TASK, now)
+      if periodic_task_id == '0':
+          # 创建任务并运行
+          res, msg = add_period_task(TASK, task_name, minute, hour,
+                                     day_of_week, day_of_month,
+                                     month_of_year, task_args)
+      else:
+          # 修改任务
+          res, msg = edit_period_task_by_id(periodic_task_id, minute, hour,
+                                            day_of_week, day_of_month,
+                                            month_of_year, task_args)
+      return JsonResponse({'result': res, 'message': msg})
+  
   ```
 
 ### DB数据迁移
@@ -279,12 +376,11 @@
 注意：
 
 - 由于升级后djcelery被废弃，使用django-celery-beat和django-celery-results代替，因此需要数据表迁移
-
-- 升级后表结构变更，用于记录tasks任务状态的TaskState表中结构变动过大无法迁移，用于记录celery worker状态的WorkerState表升级后被移除
-
+- 升级后无法迁移的表说明
+  - djcelery包中TaskState表仅用于记录tasks任务状态的，不影响task任务的执行，由于django-celery-beat包中该表结构变动过大，因此无法迁移
+  - djcelery包中WorkerState表用于记录celery worker状态，在django-celery-beat包中被移除
 - 迁移命令的执行时机应该在celery4，django-celery-beat，django-celery-results包安装并配置好，并且执行migrate命令之后，例如，配置到bin/postcompile中
-
-- 如果是带时区迁移，旧的crontab配置依然为无时区时间，如`crontab(minute="57", hour="10")`，beat重启后会以`CELERY_TIMEZONE`配置的时区刷新crontab表中的timezone，可能会导致定时任务时区执行问题，因此需要修改crontab为TzAwareCrontab，示例代码见定时任务配置小节
+- 如果是带时区迁移，旧的crontab配置依然为无时区时间，如`crontab(minute="57", hour="10")`，beat重启后会以`CELERY_TIMEZONE`配置的时区刷新crontab表中的timezone，可能会导致定时任务时区执行问题，因此需要修改crontab为TzAwareCrontab，示例代码[见定时任务配置小节](#定时任务配置)
 
 
 迁移命令
@@ -314,6 +410,8 @@ python manage.py migrate_from_djcelery
   celery -A blueapps.core.celery worker -l info 
   ```
 
+  > 注意：这里`-A blueapps.core.celery`用于指定使用开发框架内部封装好的celery app，可用于加载/conf/default.py中的配置等功能，如果配置使用其他app，会导致无法加载配置及task的自动发现
+
 - 异步任务配置
 
   ```python
@@ -328,9 +426,15 @@ python manage.py migrate_from_djcelery
 - 定时任务配置
 
   ```python
+  from celery.task import periodic_task
+  from django.utils import timezone
+  from django_celery_beat.tzcrontab import TzAwareCrontab
+  
   # 配置用户所在时区每天10:00执行定时任务
   @periodic_task(run_every=django_celery_beat.tzcrontab.TzAwareCrontab(minute="0", hour="10",tz=timezone.get_current_timezone()))
-  def crontab_timezone():
+def crontab_timezone():
       logger.info("test timezone")
       return True
   ```
+  
+  
