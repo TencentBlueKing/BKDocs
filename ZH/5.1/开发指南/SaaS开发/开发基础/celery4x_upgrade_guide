@@ -100,10 +100,9 @@
 17. 新的定时任务写法。
 
     ```python
-    from celery import Celery
-    from celery.schedules import crontab
+    from blueapps.core.celery.celery import app
+    from django_celery_beat.tzcrontab import TzAwareCrontab
     
-    app = Celery()
     
     @app.on_after_configure.connect
     def setup_periodic_tasks(sender, **kwargs):
@@ -115,7 +114,7 @@
     
         # Executes every Monday morning at 7:30 a.m.
         sender.add_periodic_task(
-            crontab(hour=7, minute=30, day_of_week=1),
+            crontab(hour=7, minute=30, day_of_week=1,tz=timezone.get_current_timezone()),
             test.s('Happy Mondays!'),
         )
     
@@ -131,9 +130,7 @@
     monkey.patch_all()
     
     import time
-    from celery import Celery
-    
-    app = Celery(broker='amqp://', backend='rpc')
+    from blueapps.core.celery.celery import app
     
     @app.task
     def add(x, y):
@@ -438,3 +435,4 @@ def crontab_timezone():
   ```
   
   
+
