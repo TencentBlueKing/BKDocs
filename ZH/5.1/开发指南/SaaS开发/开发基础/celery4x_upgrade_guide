@@ -5,6 +5,59 @@
 - 升级主要存在的问题在于celery4x的时间流转与celery3x的不同，导致定时任务和异步任务执行异常，后续章节会详细介绍，[老用户升级](#老用户升级注意事项)和[新用户的使用注意事项](#新用户使用注意事项)
 - celery4x解决了与async关键字的冲突，升级后可以使用python3.7及以上版本（目前仅测试到3.7.4）
 
+## 升级后配置文件更改
+
+- 升级后默认`USE_TZ=True`
+- 替换djcelery依赖为django_celery_beat和django_celery_results
+
+升级前：conf/default.py
+
+```python 
+
+...
+# 国际化配置
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)  # noqa
+
+TIME_ZONE = 'Asia/Shanghai'
+LANGUAGE_CODE = 'zh-hans'
+....
+
+if IS_USE_CELERY:
+    INSTALLED_APPS = locals().get('INSTALLED_APPS', [])
+    import djcelery
+    INSTALLED_APPS += (
+        'djcelery',
+    )
+    djcelery.setup_loader()
+    CELERY_ENABLE_UTC = False
+    CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
+
+```
+
+升级后：conf/default.py
+
+```python
+
+...
+# 国际化配置
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)  # noqa
+
+USE_TZ = True
+TIME_ZONE = 'Asia/Shanghai'
+LANGUAGE_CODE = 'zh-hans'
+....
+
+if IS_USE_CELERY:
+    INSTALLED_APPS = locals().get('INSTALLED_APPS', [])
+    INSTALLED_APPS += (
+        'django_celery_beat',
+        'django_celery_results'
+    )
+    CELERY_ENABLE_UTC = False
+    CELERYBEAT_SCHEDULER = "django_celery_beat.schedulers.DatabaseScheduler"
+
+```
+
 ## celery4新特性
 
 ### 系统级别的更新
@@ -377,6 +430,7 @@
   - djcelery包中TaskState表仅用于记录tasks任务状态的，不影响task任务的执行，由于django-celery-beat包中该表结构变动过大，因此无法迁移
   - djcelery包中WorkerState表用于记录celery worker状态，在django-celery-beat包中被移除
 - 迁移命令的执行时机应该在celery4，django-celery-beat，django-celery-results包安装并配置好，并且执行migrate命令之后，例如，配置到bin/postcompile中
+- 迁移前会检查目标数据库是否为空，不为空则迁移失败
 - 如果是带时区迁移，旧的crontab配置依然为无时区时间，如`crontab(minute="57", hour="10")`，beat重启后会以`CELERY_TIMEZONE`配置的时区刷新crontab表中的timezone，可能会导致定时任务时区执行问题，因此需要修改crontab为TzAwareCrontab，示例代码[见定时任务配置小节](#定时任务配置)
 
 
@@ -387,9 +441,39 @@ python manage.py migrate_from_djcelery
 # 可选参数: -tz  指定之前celery运行的时区，不指定默认使用UTC时区 例如：-tz Asia/Shanghai
 ```
 
+**社区版和企业版用户注意**，请使用如下migrations文件在迁移线上数据库
+
+使用方法：
+
+1. 将下面文件放到任意app的migrations文件夹下，如：home_application/migrations/
+2. 迁移命令：执行`python manaage.py migrate`应用该migration文件即可
+3. 通过第11行handle函数的tz参数指定指定之前celery运行的时区
+
+```python
+# migrations文件
+# -*- coding: utf-8 -*-
+from django.db import migrations
+
+from blueapps.contrib.bk_commands.management.commands import migrate_from_djcelery
+
+
+def migrate_db_from_djcelery(*arg, **kwargs):
+    migrate_command = migrate_from_djcelery.Command()
+    #修改tz指定时区参数
+    migrate_command.handle(tz='Asia/Shanghai')
+
+
+class Migration(migrations.Migration):
+    dependencies = []
+
+    operations = [
+        migrations.RunPython(migrate_db_from_djcelery),
+    ]
+```
+
 ## 新用户使用注意事项
 
-- 默认的时区配置：
+- 默认的时区配置
 
   ```python
   # default.py
@@ -404,10 +488,28 @@ python manage.py migrate_from_djcelery
   # beat启动命令
   celery -A blueapps.core.celery beat -l info
   # worker启动命令，windows用户请加上 -P eventlet参数
-  celery -A blueapps.core.celery worker -l info 
+  celery -A blueapps.core.celery worker -l info
   ```
 
-  > 注意：这里`-A blueapps.core.celery`用于指定使用开发框架内部封装好的celery app，可用于加载/conf/default.py中的配置等功能，如果配置使用其他app，会导致无法加载配置及task的自动发现
+  > 注意：
+  >
+  > 1. 这里`-A blueapps.core.celery`用于指定使用开发框架内部封装好的celery app，可用于加载/conf/default.py中的配置等功能，如果配置使用其他app，会导致无法加载配置及task的自动发现
+
+  **社区版和企业版用户注意**，由于PaaS平台的限制，只能使用下面的启动方式
+
+  ```python
+  # worker启动命令
+  python manage.py celery worker -l info
+  # worker启动命令
+  python manage.py celery beat -l info
+  ```
+
+  > 注意：
+  >
+  > 1. 这种启动命令是从djcelery中迁移过来，
+  > 2. 由于django orm只能允许单线程操作数据库句柄，通过`python manage.py`启动的worker与django不是同一线程因此无法修改
+  > 3. 使用了`patch_thread_ident`的猴子补丁，用于patch掉django校验orm多线程操作数据的逻辑
+  > 4. 未经过完全的测试，可能会有未知的风险
 
 - 异步任务配置
 
