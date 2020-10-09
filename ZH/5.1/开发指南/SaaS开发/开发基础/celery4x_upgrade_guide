@@ -464,6 +464,7 @@ def migrate_db_from_djcelery(*arg, **kwargs):
 
 
 class Migration(migrations.Migration):
+    # dependencies中填写最后一个执行的migrations
     dependencies = []
 
     operations = [
@@ -508,9 +509,8 @@ class Migration(migrations.Migration):
   >
   > 1. 这种启动命令是从djcelery中迁移过来，
   > 2. 由于django orm只能允许单线程操作数据库句柄，通过`python manage.py`启动的worker与django不是同一线程因此无法修改
-  > 3. 使用了`patch_thread_ident`的猴子补丁，用于patch掉django校验orm多线程操作数据的逻辑
-  > 4. 未经过完全的测试，可能会有未知的风险
-
+  > 3. 使用了`patch_thread_ident`的猴子补丁，用于patch掉django校验orm多线程操作数据的逻辑，会将worker的线程ID
+  
 - 异步任务配置
 
   ```python
