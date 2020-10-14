@@ -44,5 +44,5 @@ bk_server_ip 是你刚刚安装蓝鲸社区版5.1 mini体验版 的服务器 IP(
 
 具体域名映射，可留意安装完成后，最后步骤输出的信息：
 
-![](../images/domain_name.png)
+![domain_name](../images/domain_name.png)
 
