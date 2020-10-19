@@ -18,6 +18,7 @@
         * [python2_3共存方案](SaaS开发/开发基础/PYTHON2_3.md)
         * [MagicBox](SaaS开发/开发基础/MagicBox.md)
         * [学习视频](SaaS开发/开发基础/video.md)
+        * [celery4迁移指南](SaaS开发/开发基础/celery4x_upgrade_guide.md)
     * [开发进阶]()
         * [开发框架 2.0 使用进阶](SaaS开发/开发进阶/python_framework_advanced_usage.md)
         * [BKUI-CLI 使用指南](SaaS开发/开发进阶/bkui/bkui.md)
