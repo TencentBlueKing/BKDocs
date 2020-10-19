@@ -77,17 +77,17 @@
 
    * 对应存储组件和密码自定义也需提前定义
 
-     * 域名修改示例（TODO：需要用脚本辅助生成）
+     * 域名修改示例
 
        ```bash
        cat << EOF >/data/install/bin/03-userdef/global.env
        BK_HOME=/data/bkce
        BK_DOMAIN=ce.bktencent.com
-	   BK_HTTP_SCHEMA=http
+	    BK_HTTP_SCHEMA=http
        BK_PAAS_PUBLIC_ADDR=paas.ce.bktencent.com:80
        BK_PAAS_PUBLIC_URL=http://paas.ce.bktencent.com:80
        BK_CMDB_PUBLIC_ADDR=cmdb.ce.bktencent.com:80
-	   BK_CMDB_PUBLIC_URL=http://cmdb.ce.bktencent.com:80
+	    BK_CMDB_PUBLIC_URL=http://cmdb.ce.bktencent.com:80
        BK_JOB_PUBLIC_ADDR=job.ce.bktencent.com:80
        BK_JOB_PUBLIC_URL=http://job.ce.bktencent.com:80
        BK_JOB_API_PUBLIC_URL="http://api.job.ce.bktencent.com:80"
@@ -100,6 +100,7 @@
 
    ```bash
    ./bk_install common
+   ./health_check/check_bk_controller.sh
    ```
 
 2. 部署 PaaS 
