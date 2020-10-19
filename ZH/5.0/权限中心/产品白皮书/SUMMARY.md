@@ -1,0 +1,26 @@
+# Summary
+
+## 权限中心
+* [产品白皮书]()
+
+    * [产品介绍]()
+
+        * [什么是蓝鲸权限中心](产品介绍/WhatisIAM.md)
+        * [产品优势](产品介绍/Feature.md)
+        * [基本概念](产品介绍/BasicConcept.md)
+
+    * [快速入门]()
+
+        * [申请加入用户组](快速入门/ApplyToGroups.md)
+        * [申请自定义权限](快速入门/ApplyToCustomPermissions.md)
+        * [创建权限模板](快速入门/CreatePremissionTemplates.md)
+        * [创建用户组](快速入门/CreateGroups.md)
+    
+    * [产品功能]()
+    
+        * [权限申请](产品功能/PermissionsApply.md)
+        * [我的权限](产品功能/MyPermissions.md)
+        * [权限管理]()
+            * [权限模板](产品功能/PermissionTemplates.md)
+            * [用户](产品功能/Users.md)
+            * [用户组](产品功能/Groups.md)
