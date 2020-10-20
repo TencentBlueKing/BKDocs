@@ -84,13 +84,13 @@
        BK_HOME=/data/bkce
        BK_DOMAIN=bk.com
 	   BK_HTTP_SCHEMA=http
-       BK_PAAS_PUBLIC_ADDR=paas.$BK_DOMAIN.com:80
-       BK_PAAS_PUBLIC_URL=http://paas.$BK_DOMAIN.com:80
-       BK_CMDB_PUBLIC_ADDR=cmdb.$BK_DOMAIN.com:80
-	   BK_CMDB_PUBLIC_URL=http://cmdb.$BK_DOMAIN.com:80
-       BK_JOB_PUBLIC_ADDR=job.$BK_DOMAIN.com:80
-       BK_JOB_PUBLIC_URL=http://job.$BK_DOMAIN.com:80
-       BK_JOB_API_PUBLIC_URL="http://api.job.$BK_DOMAIN.com:80"
+       BK_PAAS_PUBLIC_ADDR=paas.bk.com:80
+       BK_PAAS_PUBLIC_URL=http://paas.bk.com:80
+       BK_CMDB_PUBLIC_ADDR=cmdb.bk.com:80
+	   BK_CMDB_PUBLIC_URL=http://cmdb.bk.com:80
+       BK_JOB_PUBLIC_ADDR=job.bk.com:80
+       BK_JOB_PUBLIC_URL=http://job.bk.com:80
+       BK_JOB_API_PUBLIC_URL="http://api.job.bk.com:80"
        EOF
        ```
 
