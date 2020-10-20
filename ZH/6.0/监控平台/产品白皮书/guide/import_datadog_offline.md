@@ -313,4 +313,4 @@ bkplugin_consul  --  根目录
 tar cvzf bkplugin_consul-1.1.tgz external_plugins_*
 ```
 
-至此，一个完整的插件包诞生了，可以在蓝鲸监控的插件管理页面进行导入
+至此，一个完整的插件包诞生了，可以在监控平台的插件管理页面进行导入

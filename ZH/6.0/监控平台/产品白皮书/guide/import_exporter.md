@@ -1,6 +1,6 @@
 # 如何在线制作exporter插件
 
-蓝鲸监控兼容 [Prometheus Exporter](https://prometheus.io/docs/instrumenting/exporters/)的导入能力，从 Github 获取源码编译二进制或直接获取 release，按照蓝鲸监控的插件规范，可以让监控采集变得非常的简单。 未来可将其分享至蓝鲸的 [S-mart 市场](http://bk.tencent.com/s-mart/market)供行业伙伴使用，提升你的影响力。
+监控平台兼容 [Prometheus Exporter](https://prometheus.io/docs/instrumenting/exporters/)的导入能力，从 Github 获取源码编译二进制或直接获取 release，按照监控平台的插件规范，可以让监控采集变得非常的简单。 未来可将其分享至蓝鲸的 [S-mart 市场](http://bk.tencent.com/s-mart/market)供行业伙伴使用，提升你的影响力。
 
 ## 环境准备
 
@@ -20,7 +20,7 @@ $ go build
 $ ./redis_exporter <flags>
 ```
 
-## 定义蓝鲸监控插件
+## 定义监控平台插件
 
 4. 新增插件填写相关信息并且上传编译好的二进制程序.
 

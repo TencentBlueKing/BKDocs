@@ -142,6 +142,7 @@
 8. 部署 bklog 
 
    ```bash
+   ./bk_install saas-o bk_log_search
    ./bk_install bklog
    ```
 
@@ -157,6 +158,5 @@
     ./bk_install saas-o bk_user_manage
     ./bk_install saas-o bk_sops
     ./bk_install saas-o bk_itsm
-    ./bk_install saas-o bk_log_search
     ./bk_install saas-o bk_fta_solutions
      ```

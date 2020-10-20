@@ -22,13 +22,13 @@
         * 默认采集： 操作系统 basereport, 进程 process 都是默认安装和下发的。系统事件也是默认采集的一种.
         * 采集配置： 通过采集配置下发的采集任务，如脚本，exporter，datadog，jmx，日志采集等。
         * 拨测任务： 拨测是一种特定的场景任务，其实也属于采集配置中的一类。
-    * **自定义上报**： 无需蓝鲸监控进行下发和管理的采集来源，只要符合蓝鲸监控的数据格式即可，包含自定义事件上报和自定义时序数据。
+    * **自定义上报**： 无需监控平台进行下发和管理的采集来源，只要符合监控平台的数据格式即可，包含自定义事件上报和自定义时序数据。
     * **数据平台**： 是已经接入数据平台的[结果表]数据进行监控.
 
 * **采集方式**: 8种
     * Script 脚本插件采集：插件管理中维护，Linux 支持 Bash,Python; Windows 支持 Powershell、vbs、Python
-    * Exporter 插件采集： 支持[Prometheus](https://prometheus.io/docs/instrumenting/exporters/)的采集协议。可以很方便的将 Exporter 转为蓝鲸监控平台的插件。
-    * DataDog 插件采集： 支持[DataDog](https://github.com/DataDog/datadog-agent)的采集。 可以很方便的将 Datadog 转为蓝鲸监控平台的插件。
+    * Exporter 插件采集： 支持[Prometheus](https://prometheus.io/docs/instrumenting/exporters/)的采集协议。可以很方便的将 Exporter 转为监控平台平台的插件。
+    * DataDog 插件采集： 支持[DataDog](https://github.com/DataDog/datadog-agent)的采集。 可以很方便的将 Datadog 转为监控平台平台的插件。
     * JMX 插件采集: 采集任何开启了 JMX 服务端口的 java 进程的服务状态.用户可在插件管理中定义。
     * basereport 基础采集器: 默认安装的操作系统指标采集器.
     * processbeat 进程采集器: 默认的进程采集器,进程的信息依据 CMDB 的进程管理.
@@ -47,7 +47,7 @@
         * 日志的产生方式: 文件日志(行日志,段日志) 系统日志(设备日志,Windows Event 日志)
         * 日志的内容格式: 文本,json,二进制等.
 
-## 蓝鲸监控基本数据结构
+## 监控平台基本数据结构
 
 ### 自定义事件数据
 
@@ -105,7 +105,7 @@
 
 ## Promtheus的数据结构
 
-蓝鲸监控支持[Promtheus的数据结构](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
+监控平台支持[Promtheus的数据结构](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
 
 参考 Promtheus 的基本数据上报格式.
 
@@ -117,6 +117,6 @@ http_request_total{status="404", method="POST", route="/user"} 94334
 
 * **metric**: 指标的名称(metric name)可以反映被监控样本的含义(比如，http_request_total - 表示当前系统接收到的 HTTP 请求总量)。指标名称只能由 ASCII 字符、数字、下划线以及冒号组成并必须符合正则表达式`[a-zA-Z_:][a-zA-Z0-9_:]*`。
 
-* **label**: 标签(label)反映了当前样本的特征维度，通过这些维度 Prometheus 可以对样本数据进行过滤，聚合等。标签的名称只能由 ASCII 字符、数字以及下划线组成并满足正则表达式`[a-zA-Z_][a-zA-Z0-9_]*`。在蓝鲸监控平台中等同于 **dimension**。
+* **label**: 标签(label)反映了当前样本的特征维度，通过这些维度 Prometheus 可以对样本数据进行过滤，聚合等。标签的名称只能由 ASCII 字符、数字以及下划线组成并满足正则表达式`[a-zA-Z_][a-zA-Z0-9_]*`。在监控平台平台中等同于 **dimension**。
 
 

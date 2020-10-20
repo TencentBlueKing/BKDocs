@@ -6,12 +6,12 @@
 | Linux OS      | 2.6+     | 操作系统,指明内核版本不低于 2.6，发行版(Ubuntu or Centos or suse)并不重要。|
 | Kafka         | 0.10.0.1 | Apache 开源消息队列服务，数据总线使用 Kafka 生态设施实现                   |
 | Redis         | 2.8.19   | 监控模块使用 Redis 缓存逻辑中间数据                                       |
-| MySQL         | 5.5      | 蓝鲸监控模块整体使用 MySQL 作为配置库以及存放用户数据                      |
+| MySQL         | 5.5      | 监控平台模块整体使用 MySQL 作为配置库以及存放用户数据                      |
 | ElasticSearch | 5.4      | 日志服务使用 ElasticSearch 作为主存储                                    |
-| Beanstalkd    | 1.10     | 蓝鲸监控队列服务                                                         |
+| Beanstalkd    | 1.10     | 监控平台队列服务                                                         |
 | Consul        |          | 用于监控模块间的信息同步及发布                                            |
 | InfluxDB      |          | 时序数据存储数据库                                                       |
-| Rabbitmq      |          | 蓝鲸监控后台服务异步任务依赖                                              |
+| Rabbitmq      |          | 监控平台后台服务异步任务依赖                                              |
 
 ## 硬件环境
 

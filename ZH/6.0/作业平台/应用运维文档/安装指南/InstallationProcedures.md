@@ -96,9 +96,3 @@ job.listen_ssl.port=8443
 ```
 
 ### 运行服务器
-
-运行 `${JOB_HOME}/job/bin/job.sh start`
-
-停止 `${JOB_HOME}/job/bin/job.sh stop`
-
-重启 `${JOB_HOME}/job/bin/job.sh restart`

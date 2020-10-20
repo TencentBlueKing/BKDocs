@@ -32,7 +32,7 @@
 自定义事件利用http协议，通过bkmonitorproxy上报事件数据。
 
 1. 上报IP及端口
-     bkmointorproxy服务端口为10205。而为了让在不同云区域下的主机都可以正常上报数据，蓝鲸监控将bkmonitorproxy部署到各个云区域：
+     bkmointorproxy服务端口为10205。而为了让在不同云区域下的主机都可以正常上报数据，监控平台将bkmonitorproxy部署到各个云区域：
      - 直连区域
        bkmonitorproxy将会由部署到指定的直连区域主机上。
      - 非直连区域

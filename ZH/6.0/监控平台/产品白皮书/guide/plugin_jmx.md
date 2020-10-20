@@ -88,7 +88,7 @@ netstat -anpt | grep ${portNum}
 
 ## 采集配置
 
-蓝鲸监控中的 JMX 采集是基于 [Prometheus JMX Exporter](https://github.com/prometheus/jmx_exporter) 实现的。插件定义页面的“采集配置”对应了JMX Exporter的 `config.yaml` 配置文件。它决定了该插件将会采集哪些指标，以及决定以何种格式输出。配置文件的定义方式有两种：
+监控平台中的 JMX 采集是基于 [Prometheus JMX Exporter](https://github.com/prometheus/jmx_exporter) 实现的。插件定义页面的“采集配置”对应了JMX Exporter的 `config.yaml` 配置文件。它决定了该插件将会采集哪些指标，以及决定以何种格式输出。配置文件的定义方式有两种：
 
 ### 使用配置模板
 
@@ -163,7 +163,7 @@ domain<beanpropertyName1=beanPropertyValue1, beanpropertyName2=beanPropertyValue
 | $4     | `(.*)` |
 
 
-**请注意，无论是何种配置方式，配置文件都必须严格包含以下属性**。否则蓝鲸监控将无法正确地进行指标采集
+**请注意，无论是何种配置方式，配置文件都必须严格包含以下属性**。否则监控平台将无法正确地进行指标采集
 
 ```yaml
 username: {{ username }}

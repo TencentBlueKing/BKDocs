@@ -12,7 +12,7 @@ bkeec status rabbitmq
 若账号均没有，解决方法如下：
 
 1. 中控机上`source utils.fc`，
-`add_app_token bk_monitor "$(_app_token bk_monitor)" "蓝鲸监控- new"`
+`add_app_token bk_monitor "$(_app_token bk_monitor)" "监控平台- new"`
 2. `./bkeec sync common`
 3. rabbitmq 机器上：
 

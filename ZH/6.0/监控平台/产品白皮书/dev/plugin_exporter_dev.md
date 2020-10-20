@@ -1,4 +1,4 @@
-# 蓝鲸监控 Exporter 开发
+# 监控平台 Exporter 开发
 
 当市面上没有找到相应的 exporter 采集器，或者现有的 exporter 不满足需求，可以自行修改或者重新开发一个 exporter，也是相对比较简单的事情。
 
@@ -8,7 +8,7 @@
 
 ### Exporter 简介
 
-**Exporter 本质上就是将收集的数据，转化为对应的文本格式，并提供 http 接口，供蓝鲸监控采集器定期采集数据**
+**Exporter 本质上就是将收集的数据，转化为对应的文本格式，并提供 http 接口，供监控平台采集器定期采集数据**
 
 ### Exporter 基础
 
@@ -222,7 +222,7 @@ sample_metric2{partition="c:"} 0.44
 
 ### exporter 编译
 
-**蓝鲸监控 exporter 默认只支持 64 位机器运行 exporter。**
+**监控平台 exporter 默认只支持 64 位机器运行 exporter。**
 
 - windows
 
@@ -232,7 +232,7 @@ sample_metric2{partition="c:"} 0.44
 
  `env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./exporter-linux test_exporter.go`
 
-###  封装蓝鲸监控插件
+###  封装监控平台插件
 
 - 定义 exporter 插件
 

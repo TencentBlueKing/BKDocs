@@ -1,6 +1,6 @@
 # 如何直接获取Prometheus的数据
 
-蓝鲸监控支持了Prometheus的数据上报格式,并且也提供一些便利的工具,但并不代表蓝鲸监控是可以完全兼容的,因为整个架构和Prometheus是不一样的,存储也不一样,所以直接获取Prometheus的数据只是获取exporter暴露出来的数据. 
+监控平台支持了Prometheus的数据上报格式,并且也提供一些便利的工具,但并不代表监控平台是可以完全兼容的,因为整个架构和Prometheus是不一样的,存储也不一样,所以直接获取Prometheus的数据只是获取exporter暴露出来的数据. 
 
    服务器已经运行了Prometheus的exporter 或者 pushgateway 或者 服务暴露出来的metrics接口，此时，无需对原有的采集插件进行任何改动，只需要按照如下的步骤操作即可接入到监控平台
 

@@ -3,7 +3,7 @@
 ![-w2020](../media/3f7f2f22391d12ce90b82f04aef3d506.png)
 <center>图2. 故障自愈核心功能图</center>
 
-* **获取告警**：告警源集成蓝鲸监控、4款主流开源监控产品 Zabbix、OpenFalcon、Nagios、Icinga，及 AWS、邮件的告警接入，更能通过 REST API 拉取、推送告警。
+* **获取告警**：告警源集成监控平台、4款主流开源监控产品 Zabbix、OpenFalcon、Nagios、Icinga，及 AWS、邮件的告警接入，更能通过 REST API 拉取、推送告警。
 
 * **告警处理**：故障处理支持作业平台、标准运维流程
 

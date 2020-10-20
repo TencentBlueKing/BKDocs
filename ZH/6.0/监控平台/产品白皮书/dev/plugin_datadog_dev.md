@@ -6,7 +6,7 @@
 
 如果在以上两个渠道没有找到相应的 Integrations，或者不满足个人的需求，可以自己修改或者重新开发一个 Datadog Integrations。
 
-蓝鲸监控支持符合 [Datadog Integrations 开发规范](https://docs.datadoghq.com/developers/integrations/new_check_howto/) 的插件，因此开发完成后，既可以在蓝鲸监控使用，也能回馈 Datadog 社区。
+监控平台支持符合 [Datadog Integrations 开发规范](https://docs.datadoghq.com/developers/integrations/new_check_howto/) 的插件，因此开发完成后，既可以在监控平台使用，也能回馈 Datadog 社区。
 
 ### 环境要求
 
@@ -197,10 +197,10 @@ ddev test system_cpu
 
 > 参考资料：[https://docs.datadoghq.com/developers/integrations/new_check_howto/#configuration](https://docs.datadoghq.com/developers/integrations/new_check_howto/#configuration)
 
-### 第六步:在蓝鲸监控中使用
+### 第六步:在监控平台中使用
 
 参考文档：
 
-- [制作蓝鲸监控 datadog 插件 (线上)](../guide/import_datadog_online.md)
+- [制作监控平台 datadog 插件 (线上)](../guide/import_datadog_online.md)
 
-- [制作蓝鲸监控 datadog 插件 (线下)](../guide/import_datadog_offline.md)
+- [制作监控平台 datadog 插件 (线下)](../guide/import_datadog_offline.md)

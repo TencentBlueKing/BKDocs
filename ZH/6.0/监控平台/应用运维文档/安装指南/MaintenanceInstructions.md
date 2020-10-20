@@ -149,7 +149,7 @@ h.将日志文件、进程信息和配置文件保存给开发排查
 
 ### InfluxDB-Proxy 工作是否正常
 
-为保证 InfluxDB 是高可用的状态，蓝鲸监控提供了 influxdb-proxy 实现数据双写。在 Transfer 将数据格式化完成后，将会将数据通过 proxy 写入到 InfluxDB 中。排查手段可以：
+为保证 InfluxDB 是高可用的状态，监控平台提供了 influxdb-proxy 实现数据双写。在 Transfer 将数据格式化完成后，将会将数据通过 proxy 写入到 InfluxDB 中。排查手段可以：
 
 a.通过 supervisorctl 检查 influxdb-proxy 是否正常工作
 

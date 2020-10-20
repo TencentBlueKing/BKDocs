@@ -6,7 +6,7 @@
 
 > 注意： 对于 Linux 和 Windows 都默认只支持64位的操作系统。如果需要支持32位的操作系统，需要进行订制。
 
-插件输出格式说明: 详细查看 [数据模型](../../concepts/datamodule.md#Promtheus的数据结构)之『蓝鲸监控支持Promtheus的数据结构』
+插件输出格式说明: 详细查看 [数据模型](../../concepts/datamodule.md#Promtheus的数据结构)之『监控平台支持Promtheus的数据结构』
 
 **工作原理**：
 
@@ -156,7 +156,7 @@ Script 就是由用户自定义脚本进行 Metrics 采集。只要符合监控�
 
 Exporter 是用于暴露第三方服务的 metrics 给 Prometheus。是 Prometheus 中重要的一个组件。
 
-按蓝鲸监控插件的规范就可以将开源的 Exporter 插件变成蓝鲸监控的采集能力。
+按监控平台插件的规范就可以将开源的 Exporter 插件变成监控平台的采集能力。
 
 运行的 Exporter 是 go 的二进制程序，需要定义启动进程和占用端口。
 
