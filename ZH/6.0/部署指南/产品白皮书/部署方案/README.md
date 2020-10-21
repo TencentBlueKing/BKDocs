@@ -73,7 +73,7 @@
 
 3. 自定义环境变量
 
-   * 将需要修改的环境变量写入至部署脚本下的bin/03-userdef目录下对应模块文件中
+   * 将需要修改的环境变量写入 $CTRL_DIR/bin/03-userdef 目录下对应的模块文件中
 
    * 对应存储组件和密码自定义也需提前定义
 
@@ -159,4 +159,48 @@
     ./bk_install saas-o bk_sops
     ./bk_install saas-o bk_itsm
     ./bk_install saas-o bk_fta_solutions
-     ```
+    ```
+
+
+
+## 三、环境验证
+
+- 脚本检测
+
+```shell
+# 进入到脚本目录，如果不是在/data下，请自行修改
+cd /data/install/
+./health_check/check_paas.sh
+./health_check/check_job.sh
+./health_check/check_gse.sh
+```
+
+- 进入到节点管理，检查 Agent 是否能够安装 
+
+
+![](../images/1.png)
+
+填写相关信息
+
+![](../images/2.png)
+
+安装完成后，状态会呈现 “正常” 状态，异常可通过最新执行日志查看原因
+
+![](../images/3.png)
+
+- 查看监控数据是否上报
+
+![](../images/5.png)
+
+如果数据未上报，请检查自监控的状态
+
+![](../images/4.png)
+
+
+
+
+
+
+
+
+
