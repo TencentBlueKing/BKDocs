@@ -55,7 +55,7 @@
    ```shell
 	mkdir /data/src/cert/
    tar xvf ssl_tificates.tar.gz -C /data/src/cert/
-   chmod 644 /data/src/cert/
+   chmod 644 /data/src/cert/*
 	```
 
 7. 放置java8.tgz到 /data/src下，以 tencent 的 jdk 为例：
