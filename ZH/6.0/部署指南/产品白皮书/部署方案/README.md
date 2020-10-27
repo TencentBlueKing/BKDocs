@@ -53,10 +53,10 @@
 6. 解压证书包（证书包需要从官网根据提示要求下载）
 
    ```shell
-	mkdir /data/src/cert/
-   tar xvf ssl_tificates.tar.gz -C /data/src/cert/
-   chmod 644 /data/src/cert/
-	```
+   mkdir /data/src/cert/
+   tar xvf ssl_certificates.tar.gz -C /data/src/cert/
+   chmod 644 /data/src/cert/*
+   ```
 
 7. 放置java8.tgz到 /data/src下，以 tencent 的 jdk 为例：
 
@@ -71,14 +71,14 @@
 1. 根据 install.config.3ip.simple 和当前机器资源合理分配，新增 install.config
 
    ```shell
-   cp install.config.3ip.simple install.config
+   cp install.config.3ip.sample install.config
    vim install.config # 根据实际机器ip编辑
    ```
 
 2. 对install.config中的主机执行ssh免密，需要依次输入每台机器的密码
 
    ```shell
-   bash ./configure_ssh_without_pass
+   bash configure_ssh_without_pass
    ```
 
 3. 自定义环境变量
