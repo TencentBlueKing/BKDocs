@@ -7,16 +7,12 @@
 
 - 下载安装包到任意目录，假设 /data/ 下
 
-### 环境准备
-
-- [部署方案-环境准备](https://bk.tencent.com/docs/document/5.1/20/651)
-
 ### 解压相关资源包
 
 1. 解压 src 包
 
    ```shell
-   tar xvf bk_product-6.xxxxx.tgz -C /data
+   tar xvf bkce_product-6.0.0-rc3.tgz -C /data
    ```
 
 2. 解压 src 包下的子包
@@ -47,35 +43,35 @@
 5. 解压脚本包
 
    ```shell
-   tar xvf install_xxxxx.tgz -C /data
+   tar xvf install_ce-v3.0.0-rc3.tgz -C /data
    ```
    
 6. 解压证书包（证书包需要从官网根据提示要求下载）
 
-   ```shell
-	mkdir /data/src/cert/
-   tar xvf ssl_tificates.tar.gz -C /data/src/cert/
-   chmod 644 /data/src/cert/*
+    ```shell
+	 mkdir /data/src/cert
+	 tar xvf ssl_certificates.tar.gz -C /data/src/cert/
+     chmod 644 /data/src/cert/*
 	```
 
-7. 放置java8.tgz到 /data/src下，以 tencent 的 jdk 为例：
+7. 放置 java8.tgz 到 /data/src 下，以 tencent 的 jdk 为例：
 
     ```shell
-     wget https://github.com/Tencent/TencentKona-8/releases/download/v8.0.1-GA/TencentKona-8.0.1-242.x86_64.tar.gz -O /data/src/java8.tgz
+    wget https://github.com/Tencent/TencentKona-8/releases/download/v8.0.1-GA/TencentKona-8.0.1-242.x86_64.tar.gz -O /data/src/java8.tgz
     ```
 
 ### 自定义安装配置
 
 以下操作均相对/data/install/目录
 
-1. 根据 install.config.3ip.simple 和当前机器资源合理分配，新增 install.config
+1. 根据 install.config.3ip.sample 和当前机器资源合理分配，新增 install.config
 
    ```shell
-   cp install.config.3ip.simple install.config
+   cp install.config.3ip.sample install.config
    vim install.config # 根据实际机器ip编辑
    ```
 
-2. 对install.config中的主机执行ssh免密，需要依次输入每台机器的密码
+2. 对  install.config  中的主机执行 ssh 免密，需要依次输入每台机器的密码
 
    ```shell
    bash ./configure_ssh_without_pass
@@ -85,18 +81,13 @@
    
     假设部署脚本已解压至 /data 目录下
     > 蓝鲸 6.0 重构优化了配置渲染的逻辑。运维需要先理解下新的配置渲染方式，保证合理的配置方式：
-    > 1. 先配置 /data/install/bin/03-userdef/global.env 中的文件，需要自定义覆盖 /data/install/bin/default/global.env 中的配置项的，可以写在这里,如域名的相关配置。**可看下文的域名修改示例。**
-    >
+    > 1. 先配置 /data/install/bin/03-userdef/global.env 中的文件，需要自定义覆盖 /data/install/bin/default/global.env 中的配置项的，可以写在这里，如域名的相关配置。**可看下文的域名修改示例。**
     > 2. 需要自定义其他配置项，可参考 /data/install/bin/default 下同名 env 文件，先在 /data/install/bin/03-userdef 下生成同名文件。
-    >
     > 如：自定义账户的登录密码
-    > echo "BK_PAAS_ADMIN_PASSWORD=Blueking666" > /data/install/bin/03-userdef/usermgr.env
-    >
+    >  echo "BK_PAAS_ADMIN_PASSWORD=BlueKing" > /data/install/bin/03-userdef/usermgr.env
     > 3. 运行 /data/install/bin/merge_env.sh <模块> 会自动将 1-4 (01-generate、02-dynamic、03-userdef、04-final)中的各个环境变量按优先级从低到高依次覆盖
-    >
     > 4. /data/install/bin/04-final/的 env 文件就是最终用来渲染 <模块> 所需要的全部的环境变量
-    >
-    > 5. 可以确认下 /data/install/bin/04-final/usermgr.env 的 BK_PAAS_ADMIN_PASSWORD 是之前自定义的 "Blueking666"，而不是一个随机字符串
+    > 5. 可以确认下 /data/install/bin/04-final/usermgr.env 的 BK_PAAS_ADMIN_PASSWORD 是之前自定义的 "BlueKing"，而不是一个随机字符串
 
    - 将需要修改的环境变量写入至 /data/install/bin/bin/03-userdef 目录下的对应的模块文件中
 
@@ -176,10 +167,9 @@
 8. 部署 bklog 
 
    ```shell
-   ./bk_install saas-o bk_log_search
    ./bk_install bklog
    ```
-
+   
 9. 部署 fta 
 
    ```shell
@@ -224,9 +214,7 @@ cd /data/install/
 
 ![](../images/5.png)
 
-如果数据未上报，请检查自监控的状态
 
-![](../images/4.png)
 
 
 
