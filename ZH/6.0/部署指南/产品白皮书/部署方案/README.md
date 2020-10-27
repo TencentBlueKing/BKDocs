@@ -53,10 +53,10 @@
 6. 解压证书包（证书包需要从官网根据提示要求下载）
 
    ```shell
-	mkdir /data/src/cert/
+   mkdir /data/src/cert/
    tar xvf ssl_tificates.tar.gz -C /data/src/cert/
-   chmod 644 /data/src/cert/
-	```
+   chmod 644 /data/src/cert/*
+   ```
 
 7. 放置java8.tgz到 /data/src下，以 tencent 的 jdk 为例：
 
