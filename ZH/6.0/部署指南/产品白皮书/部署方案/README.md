@@ -14,7 +14,7 @@
 ### 证书获取
 
 - 通过 `ifconfig` 或者 `ip addr` 命令分别获取三台机器第一个内网网卡 MAC 地址
-- 前往蓝鲸官网证书生成页面(https://bk.tencent.com/download_ssl/)，根据提示在输入框中填入英文分号分隔的三个 MAC 地址，生成并下载证书
+- 前往蓝鲸官网证书生成页面([https://bk.tencent.com/download_ssl/](https://bk.tencent.com/download_ssl/))，根据提示在输入框中填入英文分号分隔的三个 MAC 地址，生成并下载证书
 - 上传证书包至中控机
 
 ### 下载安装包
@@ -22,7 +22,7 @@
 - 下载安装包到任意目录，假设下列相关包已下载至 /data 目录。（注：本文档以/data/目录为例，如果放到其他目录，请自行修改相关命令涉及到的路径）
 
     1. 产品软件包：bkce_product-6.0.0-rc4.tgz
-    2. 公共组件包：bkce_common-3.0.1.tgz
+    2. 公共组件包：bkce_common-3.0.0.tgz
     3. 部署脚本包：install_ce-v3.0.0-rc4.tgz
 
    **下载完成后，请核对邮件 MD5 码。**
@@ -46,7 +46,7 @@
 
    ```bash
    cd /data
-   tar xvf bkce_common-3.0.1.tgz
+   tar xvf bkce_common-3.0.0.tgz
    ```
 
 5. 解压部署脚本包
