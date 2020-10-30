@@ -33,7 +33,7 @@ source /data/install/utils.fc
   ```bash
   # 从中控机中跳转到 BKDATA Svr，执行检查脚本检查接口，无报错即正常
 
-  ssh $BKDATA_IP
+  ssh $BKDATA_IP1
   /data/bkce/bkdata/dataapi/bin/check_databus_status.sh
   ```
 ![bkdata检查脚本执行结果](../../assets/check3.png)
