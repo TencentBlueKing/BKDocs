@@ -22,9 +22,9 @@
 | 用途 | IP | 进程 | 说明
 | ---|---|---|---
 | web1 | 10.0.15.239 | nginx php-fpm | typecho blog 程序
-| web2 | 10.0.15.155 | nginx php-fpm | typecho blog 程序
+| web2 | 10.0.16.055 | nginx php-fpm | typecho blog 程序
 | mysql master | 10.0.15.96 | mysql mysqld_safe | 数据库主
-| mysql slave | 10.0.15.138  | mysql mysqld_safe | 数据库从
+| mysql slave | 10.0.16.038  | mysql mysqld_safe | 数据库从
 
 为了保证该BLOG网站的稳定性，进行一个全方位的监控至少需要满足如下的监控需求：
 

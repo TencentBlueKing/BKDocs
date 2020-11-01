@@ -83,10 +83,10 @@ $ updated config for topic "snapshot2"
 在 gse 的模块 gse_data 的日志中，会出现有如下报错，这种是 Kafka 消息机制的正常行为，只要确定快照数据 OK，就可确认`gse_data->kafka->bkdata_>cmdb`的链路正常
 
 ```bash
-     52 [2018-08-23 16:47:05.109] <11297--805308672>[ERROR][kafka_producer:18]KAFKA-3-ERROR: rdkafka#producer-15 10.X.X.X:9092/1: Receive failed: Disconnected
+     52 [2018-08-23 16:47:06.009] <11297--805308672>[ERROR][kafka_producer:18]KAFKA-3-ERROR: rdkafka#producer-15 10.X.X.X:9092/1: Receive failed: Disconnected
      53 [2018-08-23 16:47:05.614] <11297--318793984>[ERROR][kafka_producer:18]KAFKA-3-ERROR: rdkafka#producer-4 kafka.service.consul:9092/bootstrap: Receive failed: Disconnected
-     54 [2018-08-23 16:52:05.198] <11297--176183552>[ERROR][kafka_producer:18]KAFKA-3-ERROR: rdkafka#producer-12 10.X.X.X:9092/1: Receive failed: Disconnected
+     54 [2018-08-23 16:52:06.098] <11297--176183552>[ERROR][kafka_producer:18]KAFKA-3-ERROR: rdkafka#producer-12 10.X.X.X:9092/1: Receive failed: Disconnected
      55 [2018-08-23 16:52:05.936] <11297--998275328>[ERROR][kafka_producer:18]KAFKA-3-ERROR: rdkafka#producer-14 10.178.181.35:9092/3: Receive failed: Disconnected
-     56 [2018-08-23 16:57:05.115] <11297--956311808>[ERROR][kafka_producer:18]KAFKA-3-ERROR: rdkafka#producer-16 10.178.181.35:9092/3: Receive failed: Disconnected
-     57 [2018-08-23 16:57:05.115] <11297--1166031104>[ERROR][kafka_producer:18]KAFKA-3-FAIL: rdkafka#producer-12 kafka.service.consul:9092/bootstrap: Receive failed: Disconnected
+     56 [2018-08-23 16:57:06.015] <11297--956311808>[ERROR][kafka_producer:18]KAFKA-3-ERROR: rdkafka#producer-16 10.178.181.35:9092/3: Receive failed: Disconnected
+     57 [2018-08-23 16:57:06.015] <11297--1166031104>[ERROR][kafka_producer:18]KAFKA-3-FAIL: rdkafka#producer-12 kafka.service.consul:9092/bootstrap: Receive failed: Disconnected
 ```

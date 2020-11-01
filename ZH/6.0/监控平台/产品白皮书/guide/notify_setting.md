@@ -9,7 +9,7 @@
 
 详细设置请访问蓝鲸 PaaS 提供的设置文档
 
-- [如何配置通知渠道，如邮件、微信、短信等?](https://bk.tencent.com/docs/document/5.1/1/14)
+- [如何配置通知渠道，如邮件、微信、短信等?](https://bk.tencent.com/docs/document/6.0/1/14)
 - [经验分享-测试邮件服务是否正常](http://bk.tencent.com/s-mart/community/question/95#/)
 
 ## 在全局配置中确定通知方法

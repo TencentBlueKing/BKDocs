@@ -10,8 +10,8 @@
 ## 前提条件
 
 - 开通好企业内部语音网关
-- 掌握 [蓝鲸 SaaS 开发](5.1/开发指南/SaaS开发/新手入门/macOS.md)，打开 [腾讯运维开发实战课](https://bk.tencent.com/s-mart/community/question/440) 马上学习
-- 掌握 [蓝鲸 API 网关开发](5.1/开发指南/扩展开发/API网关/README.md)
+- 掌握 [蓝鲸 SaaS 开发](6.0/开发指南/SaaS开发/新手入门/macOS.md)，打开 [腾讯运维开发实战课](https://bk.tencent.com/s-mart/community/question/440) 马上学习
+- 掌握 [蓝鲸 API 网关开发](6.0/开发指南/扩展开发/API网关/README.md)
 
 
 ## 操作步骤

@@ -28,7 +28,7 @@
 
 监控平台的主机监控,进程监控,多实例的监控都依赖 CMDB 的配置. 配置好 CMDB 才能正确的使用监控平台.
 
- * [CMDB 如何管理进程](https://bk.tencent.com/docs/document/5.1/9/505)
+ * [CMDB 如何管理进程](https://bk.tencent.com/docs/document/6.0/9/505)
  * [CMDB 如何配置服务实例](../../../配置平台/产品白皮书/产品功能/Instance.md)
 
 

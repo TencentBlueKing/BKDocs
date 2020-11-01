@@ -20,7 +20,7 @@
 
 ### 获取 framework_weixin_package.tar.gz
 
-* 蓝鲸文档中心 > 下载资源 > [工具下载](https://bk.tencent.com/docs/document/5.1/2/20?r=1)
+* 蓝鲸文档中心 > 下载资源 > [工具下载](https://bk.tencent.com/docs/document/6.0/2/20?r=1)
 
 > framework_weixin_package.tar.gz 解压
 

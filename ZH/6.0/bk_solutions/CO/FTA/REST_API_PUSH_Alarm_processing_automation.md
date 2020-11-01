@@ -103,4 +103,4 @@ REST API(推动) 的场景在于，如果你使用的监控系统故障自愈默
 
 故障自愈，在安全的前提下完成告警的自动化处理。
 
-> 收敛审批是通过企业微信实现，请参考 [微信审批接入流程](5.1/FTA/Scenes/WeChat_approval_access_process.md)。
+> 收敛审批是通过企业微信实现，请参考 [微信审批接入流程](6.0/FTA/Scenes/WeChat_approval_access_process.md)。

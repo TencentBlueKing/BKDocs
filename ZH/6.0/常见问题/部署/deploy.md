@@ -145,7 +145,7 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 
 - 解决方案：
 
-登陆到`bkdata`机器(社区版 5.1 登陆到 `databus` 所在机器)查看 `consul` 配置是否生成 `databus.json` 配置。
+登陆到`bkdata`机器(社区版 6.0 登陆到 `databus` 所在机器)查看 `consul` 配置是否生成 `databus.json` 配置。
 
 ```bash
 ls /data/bkce/etc/consul.d/bkdata.json
@@ -155,7 +155,7 @@ ls /data/bkce/etc/consul.d/bkdata.json
 ./bkcec start consul
 ./bkcec status consul
 
-# 登陆到 databus 所在机器查看是否生成 bkdata.json(社区版 5.1 为 bkdata-databus.json，bkdata-dataapi.jsonbkdata-monitor.json)
+# 登陆到 databus 所在机器查看是否生成 bkdata.json(社区版 6.0 为 bkdata-databus.json，bkdata-dataapi.jsonbkdata-monitor.json)
 ls /data/bkce/etc/consul.d/bkdata.json
 
 # 启动 bkdata

@@ -4,7 +4,7 @@
 <tr><th>OS 类型 </th><th> 主要 OS 版本 </th></tr>
 <tr><td rowspan="5">CentOS</td></tr>
 <tr><td>5.8 32/64 位 </td></tr>
-<tr><td>5.11 32/64 位 </td></tr>
+<tr><td>6.01 32/64 位 </td></tr>
 <tr><td>6.x 32/64 位 </td></tr>
 <tr><td>7.x 32/64 位 </td></tr>
 <tr><td rowspan="2">Redhat</td><td>6.x 32/64 位 </td></tr>

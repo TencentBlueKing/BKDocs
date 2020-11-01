@@ -1,10 +1,10 @@
-# 蓝鲸监控 - Exporter 开发
+# 监控平台 - Exporter 开发
 
 ## 任务一： 开发⼀个自己的 Exporter
 
 ### 数据链路
 
-#### 蓝鲸监控整体数据链路图
+#### 监控平台整体数据链路图
 
 ![图片描述](./assets/003.png)
 
@@ -12,11 +12,11 @@
 
 ![图片描述](./assets/004.png)
 
-- 蓝鲸监控通过 job 部署 prometheus 社区的 Exporter，对目标组件进行性能数据采集。接着 bkmetricbeat 从 Exporter 上周期拉取性能数据并通过数据通道上报。
+- 监控平台通过 job 部署 prometheus 社区的 Exporter，对目标组件进行性能数据采集。接着 bkmetricbeat 从 Exporter 上周期拉取性能数据并通过数据通道上报。
 
 ### 自定义组件采集导入流程
 
-- 蓝鲸监控当前支持使用 go 编写 Exporter
+- 监控平台当前支持使用 go 编写 Exporter
 
   1. 在社区找到适合自己的 Exporter 或者编写新的 Exporter
 
@@ -30,7 +30,7 @@
 
 ### Exporter 简介
 
-- Exporter 本质上就是将收集的数据，转化为对应的⽂本格式，并提供 http 接口，供蓝鲸监控采集器
+- Exporter 本质上就是将收集的数据，转化为对应的⽂本格式，并提供 http 接口，供监控平台采集器
 定期采集数据。
 
 ### Exporter 基础
@@ -250,7 +250,7 @@ go build test_exporter.go
 
 ### Exporter 编译
 
-蓝鲸监控 Exporter 默认只⽀持 64 位机器运⾏ Exporter。
+监控平台 Exporter 默认只⽀持 64 位机器运⾏ Exporter。
 
 #### linux 系统
 
@@ -444,7 +444,7 @@ go build -o ./exporter-linux test_exporter
 
 ## 自定义组件一键导入
 
-为了方便自己开发的组件采集 Exporter 可以共享给更多的用户，蓝鲸监控支持一键导入。
+为了方便自己开发的组件采集 Exporter 可以共享给更多的用户，监控平台支持一键导入。
 已经添加成功的自定义组件，可以按照以下格式打成 zip 压缩包：
 
 1. 后台解析文件时，无视文件目录结构，直接扫描符合命名规则的文件

@@ -49,7 +49,7 @@ server_name x.x.x.x(内网ip) x.x.x.x(外网ip);
 
 ## Windows 没有 cygwin 的无法连接
 
-参考 [Windows 开 139，445 端口](5.1/节点管理/附录/smb.md)
+参考 [Windows 开 139，445 端口](6.0/节点管理/附录/smb.md)
 
 ## 原来使用 agent 安装, 在部署节点管理后, 主机信息没有同步到节点管理
 
@@ -126,7 +126,7 @@ _add_app_token bk_nodeman $(app_token bk_nodeman)
 
 原因: 检测 Windows 系统版本需要通过 SMB 协议向待安装主机发送命令时可能阻塞
 
-解决办法: 升级节点管理到最新版本或参考 [Windows 开 139，445 端口](5.1/节点管理/附录/smb.md)
+解决办法: 升级节点管理到最新版本或参考 [Windows 开 139，445 端口](6.0/节点管理/附录/smb.md)
 
 ## 启动进程失败
 

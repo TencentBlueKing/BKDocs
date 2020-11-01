@@ -1458,7 +1458,7 @@
         "link_conf": [
             {
                 "extend": {
-                    "summary": "6.0/体系介绍/SUMMARY.md"
+                    "summary": "6.0/快速入门/SUMMARY.md"
                 },
                 "index": 500,
                 "title": "快速入门",

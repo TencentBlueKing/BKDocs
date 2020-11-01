@@ -5,8 +5,8 @@
 
 # 前提条件
 
-- 掌握 [蓝鲸 SaaS 开发](5.1/开发指南/SaaS开发/新手入门/macOS.md)，打开 [腾讯运维开发实战课](https://cloud.tencent.com/edu/learning/major-100008) 马上学习
-- 掌握 [蓝鲸 API 网关开发](5.1/开发指南/扩展开发/API网关/README.md)
+- 掌握 [蓝鲸 SaaS 开发](6.0/开发指南/SaaS开发/新手入门/macOS.md)，打开 [腾讯运维开发实战课](https://cloud.tencent.com/edu/learning/major-100008) 马上学习
+- 掌握 [蓝鲸 API 网关开发](6.0/开发指南/扩展开发/API网关/README.md)
 
 # 步骤
 - 梳理逻辑
@@ -28,7 +28,7 @@
 
 ## 开发环境初始化
 
-在开始开发之前，先把 [蓝鲸 SaaS 的开发环境](5.1/开发指南/SaaS开发/新手入门/macOS.md)准备好。
+在开始开发之前，先把 [蓝鲸 SaaS 的开发环境](6.0/开发指南/SaaS开发/新手入门/macOS.md)准备好。
 
 然后在 **标准运维项目根目录** 下执行 `Django-admin startapp custom_atoms` ，接着新建`components/collections` 和 `static/custom_atoms` 目录。
 
@@ -40,7 +40,7 @@
 
 ## 接入 ESB API
 
-参照 [蓝鲸 API 网关开发指南](5.1/开发指南/扩展开发/API网关/README.md)完成 ESB 接入，然后更新标准运维`blueking/component`下的文件。
+参照 [蓝鲸 API 网关开发指南](6.0/开发指南/扩展开发/API网关/README.md)完成 ESB 接入，然后更新标准运维`blueking/component`下的文件。
 
 ![-w2020](../assets/33.png)
 

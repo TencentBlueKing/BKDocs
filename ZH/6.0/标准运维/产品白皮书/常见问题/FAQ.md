@@ -2,7 +2,7 @@
 
 1.标准运维标准插件支持用户接入企业内 IT 系统吗？
 
-支持，接入方式请参考 [附录 2：标准插件开发](5.1/标准运维/附录/Django.md)。
+支持，接入方式请参考 [附录 2：标准插件开发](6.0/标准运维/附录/Django.md)。
 
 2.标准运维点击开始执行任务后报错：`taskflow[id=1] get status error: node(nodee37e20…c7fb131) does not exist, may have not by executed`，并且在任务列表中查看任务状态是 `未知`，可能是什么原因？
 
@@ -10,4 +10,4 @@
 
 3.标准运维能执行任务，但是标准插件节点报错：`Trackback…TypeError:int() argument must be a string or a number,not ‘NoneType’`，可能是什么原因？
 
-标准运维任务流程的执行状态和标准插件输入、输出等信息缓存依赖 Redis 服务，所以首次部署请务必按照 [标准运维部署文档](5.1/部署维护/SaaS部署/标准运维/sops_install.md)，配置 Redis 环境变量后重新部署。
+标准运维任务流程的执行状态和标准插件输入、输出等信息缓存依赖 Redis 服务，所以首次部署请务必按照 [标准运维部署文档](6.0/部署维护/SaaS部署/标准运维/sops_install.md)，配置 Redis 环境变量后重新部署。

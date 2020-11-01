@@ -7,8 +7,8 @@
 集成蓝鲸配置平台的业务拓扑树，将首页左侧栏改造为服务树，通过选择业务模块快速选择机器，提高监控查看效率。
 
 ## 前提条件
-- [主机纳管在蓝鲸配置平台中](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
-- 在蓝鲸开发者中心 [新建一个应用](5.1/开发指南/SaaS开发/新手入门/Windows.md)，用于调用 [CMDB 的 API](5.1/API文档/CC/README.md)
+- [主机纳管在蓝鲸配置平台中](6.0/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
+- 在蓝鲸开发者中心 [新建一个应用](6.0/开发指南/SaaS开发/新手入门/Windows.md)，用于调用 [CMDB 的 API](6.0/API文档/CC/README.md)
 - 熟悉 `Python`、`JavaScript`
 
 ## 操作步骤
@@ -19,7 +19,7 @@
 - 预览效果
 
 ### 配置平台中建立业务拓扑
-参照 [主机纳管在蓝鲸配置平台中](5.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md)，根据应用的部署分层架构，建立业务拓扑如下：
+参照 [主机纳管在蓝鲸配置平台中](6.0/bk_solutions/CD/CMDB/CMDB_management_hosts.md)，根据应用的部署分层架构，建立业务拓扑如下：
 
 ![-w2020](../assets/15642787521397.jpg)
 
@@ -179,4 +179,4 @@ function createTree(post_url){
 
 ![-w2020](../assets/15643014658046.jpg)
 
-> 注: CMDB 中的资源经常变动，建议使用事件驱动的[消息推送](5.1/配置平台/产品功能/ModelManagement.md)来监听资源变化，而不是周期获取。
+> 注: CMDB 中的资源经常变动，建议使用事件驱动的[消息推送](6.0/配置平台/产品功能/ModelManagement.md)来监听资源变化，而不是周期获取。

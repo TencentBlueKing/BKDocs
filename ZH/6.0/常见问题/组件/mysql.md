@@ -37,7 +37,7 @@ echo bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec stop
 echo bkdata gse job paas gse kafka cmdb | xargs -n 1 ./bkcec status
 ```
 
-社区版 5.1+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS, iam
+社区版 6.0+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS, iam
 
 ```bash
 # 关闭平台服务
@@ -68,7 +68,7 @@ for x in `ls /data/bkce/paas_agent/apps/projects | awk '{print $1}' | sed 's/.$/
 ```bash
 echo mysql paas job bkdata  | xargs -n 1 ./bkcec render
 ```
-社区版 5.1+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS, iam
+社区版 6.0+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS, iam
 
 ```bash
 echo mysql paas job bkdata iam  | xargs -n 1 ./bkcec render
@@ -120,7 +120,7 @@ find /data/bkce/paas_agent/apps/projects/bk_*/conf -name "*.conf" | grep "bk" | 
 ```bash
 echo paas gse cmdb kafka job bkdata | xargs -n 1 ./bkcec start
 ```
-社区版 5.1+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS, iam
+社区版 6.0+bcs 环境中与 MySQL 相关的模块为 MySQL，PaaS，Job，bkdata，SaaS, iam
 
 ```bash
 echo paas gse cmdb kafka job bkdata iam | xargs -n 1 ./bkcec start

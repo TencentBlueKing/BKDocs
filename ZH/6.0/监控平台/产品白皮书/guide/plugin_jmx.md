@@ -323,7 +323,7 @@ rules:
         "labels":{
             "type":"MeanRate"
         },
-        "value":297575.117976
+        "value":297576.017976
     },
     {
         "key":"kafka_server_bytesinpersec",

@@ -6,8 +6,8 @@
 
 ## 前提条件
 
-1. 提前导入或录入 MySQL CI 、创建模型（不是实例）的关联关系，详见：[如何管理数据库实例:以 MySQL 为例](5.1/bk_solutions/CD/CMDB/CMDB_management_database_middleware.md)
-2. 在蓝鲸开发者中心 [新建一个应用](5.1/开发指南/SaaS开发/新手入门/Windows.md)，用于调用 [CMDB 的 API](5.1/API文档/CC/README.md)
+1. 提前导入或录入 MySQL CI 、创建模型（不是实例）的关联关系，详见：[如何管理数据库实例:以 MySQL 为例](6.0/bk_solutions/CD/CMDB/CMDB_management_database_middleware.md)
+2. 在蓝鲸开发者中心 [新建一个应用](6.0/开发指南/SaaS开发/新手入门/Windows.md)，用于调用 [CMDB 的 API](6.0/API文档/CC/README.md)
 3. 提供一个运维权限的账号以及 CMDB 的主机 IP 和端口,用于执行 JOB 作业
 4. 创建查询 MySQL CI 属性的账号
 

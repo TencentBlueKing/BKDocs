@@ -7,8 +7,8 @@
 当该业务下的 CMDB 没有主机的时候,主机监控的数据是空的. 所以先要学会如何在 CMDB 里面添加主机和增加进程信息,服务实例信息等.
 
 * [如何创建业务并导入主机到业务中](../../../../配置平台/产品白皮书/快速入门/case1.md)
-* [CMDB 如何管理进程](https://bk.tencent.com/docs/document/5.1/15/505)
-* [CMDB 如何配置服务实例](https://bk.tencent.com/docs/document/5.1/15/509)
+* [CMDB 如何管理进程](https://bk.tencent.com/docs/document/6.0/15/505)
+* [CMDB 如何配置服务实例](https://bk.tencent.com/docs/document/6.0/15/509)
 
 **工作原理**：
 
@@ -83,7 +83,7 @@
 * 【2】**进程视角**： 主要是查看进程层面的指标。详情查看[主机-进程-指标](../addenda/process-metrics.md)
 * 【3】**视图控制**： 主机场景的视图都相对比较简单，主要是满足开箱即用的需求，如果要做复杂的图表建议到『仪表盘』中实现。
 * 【4】**关联信息**： 主机相关的信息，关联的告警事件和策略信息。
-* 【5】**进程监控配置指标**： 因为进程监控依赖 CMDB 的进程配置信息，所以需要熟悉 [CMDB 如何管理进程](https://bk.tencent.com/docs/document/5.1/15/505)
+* 【5】**进程监控配置指标**： 因为进程监控依赖 CMDB 的进程配置信息，所以需要熟悉 [CMDB 如何管理进程](https://bk.tencent.com/docs/document/6.0/15/505)
 
 ### 高级
 
