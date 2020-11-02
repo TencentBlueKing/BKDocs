@@ -1546,7 +1546,7 @@
 			},
 			"index": 496,
 			"title": "视频教程",
-			"url": "https://bk.tencent.com/docs/video/5.1",
+			"url": "video/6.0",
 			"version": "6.0"
 		}],
 	"source": {
@@ -1597,7 +1597,7 @@
 		"index": 449,
 		"title": "解决方案体系",
 		"url": "6.0/体系介绍/产品白皮书/解决方案/solution.md",
-		"version": "5.1"
+		"version": "6.0"
 	}],
 	"source": {
 		"describe": "了解蓝鲸智云的品牌价值和产品体系",
@@ -2684,7 +2684,7 @@
 		"index": 59,
 		"title": "文档共建",
 		"url": "6.0/文档共建/README.md",
-		"version": "5.1"
+		"version": "6.0"
 	}],
 	"source": {
 		"describe": "",
