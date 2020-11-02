@@ -170,26 +170,21 @@ __注意__：不要修改 settings.py ，配置项修改请在 config 目录下�
 
 日志级别默认是 INFO，如需修改： 
 
-1. 所有环境下的日志级别，请在 config/default.py 对应位置进行如下修改：
-    ```python
-    LOG_LEVEL = "DEBUG"
-    ```
-    __注意__: 需要在 `LOGGING = get_logging_config_dict(locals())` 语句之前添加。
+1. 所有环境下的日志级别，请在 config/default.py 对应位置修改日志级别：
+   ```python
+   LOG_LEVEL = "DEBUG"
+   # load logging settings
+   LOGGING = get_logging_config_dict(locals())
+   ```
 
-2. 如果只希望针对特定环境进行日志级别设置，则在对应环境配置文件（ config/prod.py（只影响生产环境）、config/stag.py（只影响预发布环境）、config/dev.py（只影响预本地开发环境））中添加如下代码：
-    ```python
-    from blueapps.conf.log import get_logging_config_dict
-    LOG_LEVEL = "DEBUG"
-    if RUN_VER == "open":
-        LOGGING = get_paas_v2_logging_config_dict(
-            is_local=IS_LOCAL,
-            bk_log_dir=BK_LOG_DIR,
-            log_level=LOG_LEVEL
-        )
-    else:
-        LOGGING = get_logging_config_dict(locals())
-    ```
-  __注意__：需要在 `from blueapps.patch.settings_open_saas import *` 语句之后添加。
+2. 如果只希望针对特定环境进行日志级别设置，则在对应环境配置文件（ config/prod.py（只影响生产环境）、config/stag.py（只影响预发布环境）、config/dev.py（只影响预本地开发环境））中取消对应代码注释并修改日志级别：
+   ```python
+   # 自定义本地环境日志级别
+   from blueapps.conf.log import set_log_level # noqa
+   LOG_LEVEL = "DEBUG"
+   LOGGING = set_log_level(locals())
+   ```
+    __注意__: 这种修改方式依赖 blueapps版本 >= 3.3.1。
 
 其中，不同配置的含义如下：
 1. DEBUG：用于调试目的的底层系统信息
