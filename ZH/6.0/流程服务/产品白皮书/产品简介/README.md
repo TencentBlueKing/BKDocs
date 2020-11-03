@@ -4,5 +4,5 @@
 
 帮助企业用户规范内部管理流程，提升沟通及管理效率。
 
-![Home](../media/Home.png)
+![首页工作台](../media/首页工作台.png)
 <center>蓝鲸流程服务首页</center>
