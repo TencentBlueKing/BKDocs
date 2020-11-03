@@ -16,5 +16,12 @@
         * [我的权限](产品白皮书/产品功能/MyPermissions.md)
         * [权限管理]()
             * [权限模板](产品白皮书/产品功能/PermissionTemplates.md)
-            * [用户](产品白皮书/产品功能/Users.md)
+            * [用户](产品白皮书/产品功能/Users.md) 
             * [用户组](产品白皮书/产品功能/Groups.md)
+        * [分级管理员](产品白皮书/产品功能/GradingManager.md)
+        * [设置]()
+            * [管理员](产品白皮书/产品功能/Manager.md)
+            * [审批流程](产品白皮书/产品功能/Approval.md)
+        * [最佳实践]()
+             * [分级权限管理](最佳实践/GradingManager.md)
+
