@@ -92,11 +92,17 @@
 
 ### 初始化操作
 
+执行初始化操作
+
    ```bash
    # 快速部署暂不支持自定义安装目录
    cd /data/install/
-
    ./bk_install common
+   ```
+
+检查相关配置
+
+   ```bash
    ./health_check/check_bk_controller.sh
    ```
 

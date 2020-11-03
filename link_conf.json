@@ -2746,7 +2746,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "蓝鲸提供了一整套包括发布、开区、扩缩容等支撑系统，还提供了PaaS服务，可以提供前后端开发框架，用工具文化提高工作效率。携手腾讯云为其他互联网甚至传统行业助力，为社区做贡献，推出了免费社区版和企业定制版。对外还成立了高校联盟，助力大学生提高自我价值、能力和经验。遇见蓝鲸也许是个机会。",
+			"duration": "4:01",
+			"img": "/static/img/15.png",
+			"isLocal": true
 		},
 		"index": 100,
 		"title": "蓝鲸品牌视频-漫画版",
@@ -2762,7 +2765,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "",
+			"duration": "3:06",
+			"img": "/static/img/16.png",
+			"isLocal": true
 		},
 		"index": 99,
 		"title": "蓝鲸品牌视频-商务版",
@@ -2778,7 +2784,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "",
+			"duration": "10节课",
+			"img": "/static/img/bk-python-devops.png",
+			"isLocal": false
 		},
 		"index": 98,
 		"title": "腾讯云课堂-基于Python运维开发实战",
@@ -2794,7 +2803,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "",
+			"duration": "4节课",
+			"img": "/static/img/bk-saas-dev.jpg",
+			"isLocal": false
 		},
 		"index": 97,
 		"title": "学领未来-蓝鲸SaaS开发系列课",
@@ -2810,7 +2822,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "",
+			"duration": "8节课",
+			"img": "/static/img/11.png",
+			"isLocal": false
 		},
 		"index": 96,
 		"title": "2017年腾讯课堂-从0到1掌握蓝鲸DevOps技能",
@@ -2826,7 +2841,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": null,
+			"duration": "8节课",
+			"img": "/static/img/26.png",
+			"isLocal": false
 		},
 		"index": 95,
 		"title": "2019年蓝鲸SaaS开发实战公开课",
@@ -2842,7 +2860,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": null,
+			"duration": "8节课",
+			"img": "/static/img/26.png",
+			"isLocal": false
 		},
 		"index": 94,
 		"title": "2020年秋季蓝鲸基础开发实战课程",
@@ -2858,7 +2879,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "本次活动主题“价值与突破”，分享了优秀运维达人的从业经验和经历的技术变革，交流了如何再运维岗位上，不断拓展价值，并围绕开源协同和DevOps的实践与落地，探讨如何突破运维自身的价值",
+			"duration": "5:21:09",
+			"img": "/static/img/8.png",
+			"isLocal": false
 		},
 		"index": 93,
 		"title": "2019运维日沙龙记录",
@@ -2874,7 +2898,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "2018深圳站7·24运维日特别活动7月22日在腾讯大厦举行，此活动由腾讯智云主办，大会围绕“运维人的远方，蓝鲸与你同行”的主题，分享交流优秀运维人的经验，现场蓝鲸SaaS实战开发演示、为运维从业人员如何转型升级排疑解惑。会上蓝鲸智云发布了最新的社区版v4.1和两个重磅新品：CICDkit和标准运维，作为参会者的福利之一，引起了强烈关注。腾讯蓝鲸产品总监党受辉表示，通过行业深度交流，共同打造国内领先的研发运营一体化平台。",
+			"duration": "4:52:15",
+			"img": "/static/img/7.png",
+			"isLocal": false
 		},
 		"index": 92,
 		"title": "2018运维日沙龙记录",
@@ -2890,7 +2917,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "本次沙龙以“共探DevOps最佳落地实践”为主题，沙龙现场的100多位参会嘉宾，跟来自蓝鲸大咖共同探讨了DevOps在业内落地的难点以及对未来DevOps发展方向的展望。",
+			"duration": "4:40:16",
+			"img": "/static/img/14.png",
+			"isLocal": false
 		},
 		"index": 91,
 		"title": "蓝鲸DevOps主题沙龙·上海站",
@@ -2906,7 +2936,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "此次沙龙以“基于蓝鲸轻松打造一站式DevOps持续交付平台”为主题，蓝鲸首次对外介绍内部持续集成部署的设计与实践，DevOps理念在蓝鲸内部已经有了足够丰富的案例和经验，并推出DevOpsOne社区版，提供给社区用户免费使用。",
+			"duration": "3:59:19",
+			"img": "/static/img/12.png",
+			"isLocal": false
 		},
 		"index": 90,
 		"title": "基于蓝鲸轻松打造一站式DevOps持续交付平台",
@@ -2922,7 +2955,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "本次专场，将结合即将发布的几款运维应用产品，现场演示如何基于蓝鲸PaaS体系实现快速构建运维支撑系统，解决企业的应用标准化交付与管理；以及蓝鲸对行业开放的合作计划，将联手合作伙伴共同打造完整的蓝鲸生态。",
+			"duration": "41:22",
+			"img": "/static/img/6.png",
+			"isLocal": false
 		},
 		"index": 89,
 		"title": "2017 GOPS蓝鲸生态全貌",
@@ -2938,7 +2974,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "万台云主机分布全球不同区域，贴近运维日常工作场景设置题目，海量运维对抗，几只参赛队伍狭路相逢，鹿死谁手，我们拭目以待！",
+			"duration": "1:44:18",
+			"img": "/static/img/5.png",
+			"isLocal": false
 		},
 		"index": 88,
 		"title": "2017 GOPS海量运维技能挑战赛",
@@ -2954,7 +2993,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "如何定义一个好用的PaaS平台，仅将应用服务的运行和开发环境作为一种服务提供是远远不够的，还应该为开发者提供高效便捷的开发服务。蓝鲸集成平台，专为构建运营系统设计的PaaS，10分钟带你体验快速构建自助化/自动化运营系统的惊喜。",
+			"duration": "45:38",
+			"img": "/static/img/2.png",
+			"isLocal": false
 		},
 		"index": 87,
 		"title": "2017 GOPS 基于PaaS十分钟构建运营系统实践",
@@ -2970,7 +3012,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "在当下“智能运维”风起云涌之际，如何将智能化的理念和方法运用在业务监控场景中，帮助运维更快的定位到应用架构的性能/容量瓶颈，做到防范于未然？\n甚至深入挖掘出更有价值的信息，真正实现“辅助运营”？智能监控又该如何有体系化的设计和建设？本次演讲将全面剖析蓝鲸智能监控的设计理念与思路，与行业同仁共同探讨。",
+			"duration": "27:55",
+			"img": "/static/img/4.png",
+			"isLocal": false
 		},
 		"index": 86,
 		"title": "2017 GOPS 深入浅出，智能化运维监控的设计思路",
@@ -2986,7 +3031,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "发布变更是企业运维的主要工作之一，传统的运维手段非常低效并且很容易引发人为事故，本次主题将从腾讯运维实践的角度出发，为大家分享如何利用调度编排，来实现企业纷繁复杂的发布变更场景，助力运维从重复耗时的基础工作之中解放出来。",
+			"duration": "28:55",
+			"img": "/static/img/3.png",
+			"isLocal": false
 		},
 		"index": 85,
 		"title": "2017 GOPS 如何用调度编排解决企业发布变更之痛",
@@ -3002,7 +3050,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "蓝鲸S-mart致力于输出基于企业需求场景的脚本和应用，再结合蓝鲸的生态体系建设，连接应用提供方和企业用户，携手共同打造企业级的应用市场。",
+			"duration": "11:13",
+			"img": "/static/img/1.png",
+			"isLocal": false
 		},
 		"index": 84,
 		"title": "2017 GOPS S-mart打造企业级的应用生态市场",
@@ -3018,7 +3069,10 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": ""
+			"desc": "本届论坛是以“风起时，营在云端”为主题，发布了“腾讯智营”品牌，以及其运维领域的子品牌“蓝鲸”与腾讯云深度合作的几款重量级产品。现场热烈探讨了当下智能化时代的运维变革、游戏运营趋势以及腾讯是如何应对的。",
+			"duration": "31:11",
+			"img": "/static/img/13.png",
+			"isLocal": false
 		},
 		"index": 83,
 		"title": "第四届GOT蓝鲸DevOps快速开发实战",
