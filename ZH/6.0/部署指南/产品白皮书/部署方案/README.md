@@ -156,6 +156,7 @@
 
 ### 部署 SaaS
 
+请逐步执行以下部署 SaaS 命令：
 ```bash
 # 权限中心
 ./bk_install saas-o bk_iam
@@ -170,6 +171,8 @@
 ```
 
 ### 检测相关服务状态
+
+请逐步执行以下服务状态检测脚本：
 
 ```bash
 cd /data/install/

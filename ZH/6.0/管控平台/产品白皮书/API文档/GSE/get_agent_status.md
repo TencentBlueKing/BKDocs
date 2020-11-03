@@ -14,26 +14,26 @@ POST
 
 #### 通用参数
 
-| 字段 | 类型 | 必选 |  描述 |
-|-----------|------------|--------|------------|
-| bk_app_code  | string | 是 | 应用 ID |
-| bk_app_secret| string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过Cookie获取 |
-| bk_username  | string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| 字段          | 类型   | 必选 | 描述                                                                                    |
+| ------------- | ------ | ---- | --------------------------------------------------------------------------------------- |
+| bk_app_code   | string | 是   | 应用 ID                                                                                 |
+| bk_app_secret | string | 是   | 安全密钥(应用 TOKEN)，可以通过蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token      | string | 否   | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取       |
+| bk_username   | string | 否   | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户                    |
 
 #### 接口参数
 
-| 字段                |  类型   |必选|  描述     |
-|---------------------|--------|----|-----------|
-| bk_supplier_account | string | 是 | 开发商账号 |
-| hosts               | array  | 是 | 主机列表   |
+| 字段                | 类型   | 必选 | 描述       |
+| ------------------- | ------ | ---- | ---------- |
+| bk_supplier_account | string | 是   | 开发商账号 |
+| hosts               | array  | 是   | 主机列表   |
 
 #### hosts
 
-| 字段        |  类型   |必选|  描述    |
-|-------------|--------|----|----------|
-| bk_cloud_id | int    | 是 | 云区域 ID |
-| ip          | string | 是 | IP 地址   |
+| 字段        | 类型   | 必选 | 描述      |
+| ----------- | ------ | ---- | --------- |
+| bk_cloud_id | int    | 是   | 云区域 ID |
+| ip          | string | 是   | IP 地址   |
 
 ### 请求参数示例
 
@@ -73,9 +73,9 @@ POST
 
 #### data
 
-| 字段      | 类型      | 描述      |
-|-----------|-----------|-----------|
-| key                  | string | 格式为：bk_cloud_id:ip |
-| value.ip             | string | 主机 IP 地址 |
-| value.bk_cloud_id    | int    | 云区域 ID |
+| 字段                 | 类型   | 描述                                 |
+| -------------------- | ------ | ------------------------------------ |
+| key                  | string | 格式为：bk_cloud_id:ip               |
+| value.ip             | string | 主机 IP 地址                         |
+| value.bk_cloud_id    | int    | 云区域 ID                            |
 | value.bk_agent_alive | int    | agent 在线状态，0 为不在线，1 为在线 |
