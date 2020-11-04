@@ -31,7 +31,7 @@
 
 - 密码
 
-  服务器账号的密码，如 Windows操作系统的 Administrator 密码
+  服务器账号的密码，如 Windows 操作系统的 Administrator 密码
 
 - 确认密码
 

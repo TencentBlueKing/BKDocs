@@ -6,8 +6,8 @@
 
 <table><tbody>
 <tr><th width="30%">支持任务类型</th><th width="75%">详情</th></tr>
-<tr><td><b>命令类型</b></td><td>支持 Linux 的 bash 命令、Windows 的 cmd 命令，<br>支持各种自定义可执行文件格式程序的启动，支持各种解释性语言程序的执行。</td></tr>
-<tr><td><b>脚本类型</b></td><td>支持 Shell、Python、Powershell、Perl、bat 等解释性语言脚本。</td></tr>
+<tr><td><b>命令类型</b></td><td>linux 支持 Bash 命令、Windows 支持 cmd 命令、AIX(企业版) 支持 ksh 命令，支持各种自定义可执行文件格式程序的启动，支持各种解释性语言程序的执行。</td></tr>
+<tr><td><b>脚本类型</b></td><td>linux 支持 Shell 脚本、Windows 支持 Bat 脚本(安装有 cygwin 的额外支持 Shell 脚本)、AIX(企业版) 支持 ksh 脚本，以及各种系统支持的解释性脚本程序(Python, Powershell, Perl)。</td></tr>
 </tbody></table>
 
 ## 任务控制方式
