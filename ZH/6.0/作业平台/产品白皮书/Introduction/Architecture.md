@@ -1,3 +1,4 @@
-# 产品架构图
+# 产品架构
 
-![蓝鲸作业平台_产品架构图_new](media/蓝鲸作业平台_产品架构图_new.png)
+![image-20201104210927590](media/Product-architecture-diagram.png)
+

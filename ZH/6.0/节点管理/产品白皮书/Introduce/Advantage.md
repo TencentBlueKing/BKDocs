@@ -14,8 +14,8 @@
 
 ## 支持多种操作系统
 
-**Linux 主机**：支持主流的 Linux 操作系统，包括但不限于 Centos、Ubuntu、SuSe、debian、深度系统、中标麒麟等
+**Linux 主机**：支持主流的 Linux 操作系统，包括但不限于 Centos、Ubuntu、SuSe、debian、深度系统、中标麒麟等。
 
 **Windows 主机**：支持 Windows server 系列服务器，包括但不限于 2008、2012 等。
 
-**AIX 主机**：支持 AIX 6/7 系列服务器
+**AIX 主机(仅限企业版)**：支持 AIX 6/7 系列服务器。

@@ -1,10 +1,14 @@
+
 ### 请求地址
 
 /api/c/compapi/v2/sops/get_task_status/
 
+
+
 ### 请求方法
 
 GET
+
 
 ### 功能描述
 
@@ -12,21 +16,23 @@ GET
 
 ### 请求参数
 
+
 #### 通用参数
 
-| 字段 | 类型 | 必选 | 描述 |
+| 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  | string    | 是 | 应用 ID     |
-| bk_app_secret| string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     | string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  | string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  |  string    | 是 | 应用ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段          | 类型       | 必选   | 描述            |
+| 字段          |  类型       | 必选   |  描述            |
 |---------------|------------|--------|------------------|
-| bk_biz_id   | string   | 是   | 模板所属业务ID   |
-| task_id     | string   | 是   | 任务或节点ID     |
+|   bk_biz_id   |   string   |   是   |  模板所属业务ID   |
+|   task_id     |   string   |   是   |  任务或节点ID     |
+|   subprocess_id     |   string   |   否   |  任务中的子流程节点 ID  |
 
 ### 请求参数示例
 
@@ -89,33 +95,33 @@ GET
 
 | 字段      | 类型      | 描述      |
 |-----------|----------|-----------|
-| result   | bool    |  true/false 查询成功与否     |
-| data     | dict    |  result=true 时返回数据，详细信息见下面说明     |
-| message  | string  |  result=false 时错误信息     |
+|  result   |    bool    |      true/false 查询成功与否     |
+|  data     |    dict    |      result=true 时返回数据，详细信息见下面说明     |
+|  message  |    string  |      result=false 时错误信息     |
 
 #### data
 
 | 字段      | 类型      | 描述      |
 |-----------|----------|-----------|
-| state      | string    |  任务或节点状态，详细信息见下面说明    |
-| id      | string    |  任务或节点执行态 ID，不等于 task_id    |
-| skip      | bool    |  是否跳过执行    |
-| retry      | int    |  重试和跳过总次数   |
-| start_time      | string    |  任务或节点执行开始时间   |
-| finish_time      | string    |  任务或节点执行结束时间    |
-| children      | dict   |  任务节点执行详情，详细信息见下面说明   |
-| name      | string    |  节点名称    |
+|  state      |    string    |      任务或节点状态，详细信息见下面说明    |
+|  id      |    string    |      任务或节点执行态ID，不等于 task_id    |
+|  skip      |    bool    |      是否跳过执行    |
+|  retry      |    int    |      重试和跳过总次数   |
+|  start_time      |    string    |      任务或节点执行开始时间   |
+|  finish_time      |    string    |      任务或节点执行结束时间    |
+|  children      |    dict   |      任务节点执行详情，详细信息见下面说明   |
+|  name      |    string    |      节点名称    |
 
 #### data.state
 
 | 返回值    | 描述      |
 |----------|-----------|
-| CREATED   | 未执行   |
+| CREATED   | 未执行   |  
 | RUNNING   | 执行中   |
 | FAILED    | 失败     |
 | SUSPENDED | 暂停     |
 | REVOKED   | 已终止   |
-| FINISHED  | 已完成   |
+| FINISHED  | 已完成   |  
 
 #### data.children.KEY
 任务节点执行态ID

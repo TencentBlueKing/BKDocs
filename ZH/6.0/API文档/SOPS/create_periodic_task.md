@@ -1,10 +1,14 @@
+
 ### 请求地址
 
 /api/c/compapi/v2/sops/create_periodic_task/
 
+
+
 ### 请求方法
 
 POST
+
 
 ### 功能描述
 
@@ -12,25 +16,26 @@ POST
 
 ### 请求参数
 
+
 #### 通用参数
 
-| 字段 | 类型 | 必选 | 描述 |
+| 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  | string    | 是 | 应用 ID     |
-| bk_app_secret| string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     | string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  | string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  |  string    | 是 | 应用ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段          | 类型       | 必选   | 描述             |
+| 字段          |  类型       | 必选   |  描述             |
 |---------------|------------|--------|------------------|
-| template_id    | string     | 是   | 用于创建任务的模板 ID |
-| bk_biz_id    | string     | 是   | 任务所属业务 ID |
-| name    | string     | 是   | 要创建的周期任务名称 |
-| cron    | dict     | 是   | 要创建的周期任务调度策略 |
-| constants    | dict     | 否   | 任务全局参数，详细信息见下面说明 |
-| exclude_task_nodes_id    | list     | 否   | 跳过执行的节点 ID列表 |
+|   template_id    |   string     |   是   |  用于创建任务的模板ID |
+|   bk_biz_id    |   string     |   是   |  任务所属业务ID |
+|   name    |   string     |   是   |  要创建的周期任务名称 |
+|   cron    |   dict     |   是   |  要创建的周期任务调度策略 |
+|   constants    |   dict     |   否   | 任务全局参数，详细信息见下面说明 |
+|   exclude_task_nodes_id    |   list     |   否   |  跳过执行的节点ID列表 |
 
 #### constants.KEY
 
@@ -42,17 +47,17 @@ POST
 
 #### cron
 
- | 参数名称   | 参数类型  | 必须  | 参数说明     |
+ |   参数名称   |    参数类型  |  必须  |     参数说明     |
 | ------------ | ------------ | ------ | ---------------- |
-| minute    | string     | 否   | 分，默认为 * |
-| hour    | string     | 否   | 时，默认为 * |
-| day_of_week    | string     | 否   | 一周内的某些天，默认为 * |
-| day_of_month    | string     | 否   | 一个月中的某些天，默认为 * |
-| month_of_year    | string     | 否   | 一年中的某些月份，默认为 * |
+|   minute    |   string     |   否   |  分，默认为 * |
+|   hour    |   string     |   否   |  时，默认为 * |
+|   day_of_week    |   string     |   否   |  一周内的某些天，默认为 * |
+|   day_of_month    |   string     |   否   |  一个月中的某些天，默认为 * |
+|   month_of_year    |   string     |   否   |  一年中的某些月份，默认为 * |
 
 ### 请求参数示例
 
-```json
+```
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -68,7 +73,7 @@ POST
 
 ### 返回结果示例
 
-```json
+```
 {
     "message": "",
     "data": {
@@ -225,38 +230,38 @@ POST
 
 ### 返回结果参数说明
 
-| 名称 | 类型 | 说明 |
-| --------| ------ | -----------------------|
-| result  | bool   | true/false 操作是否成功 |
-| data    | dict   | result=true 时成功数据，详细信息请见下面说明 |
-| message | string | result=false 时错误信息 |
+|   名称   |  类型  |           说明             |
+| ------------ | ---------- | ------------------------------ |
+|  result      |    bool    |      true/false 操作是否成功     |
+|  data        |    dict      |      result=true 时成功数据，详细信息请见下面说明     |
+|  message        |    string      |      result=false 时错误信息     |
 
 #### data
 
-| 名称 | 类型 | 说明 |
-|----- | --- | ---- |
-| cron | string | 周期调度表达式 |
-| total_run_count | int | 周期任务运行次数 |
-| name | string | 周期任务名 |
-| creator | string | 创建者 |
-| last_run_at | string | 上次运行时间 |
-| enabled | bool | 是否激活 |
-| id | int | 周期任务 ID |
-| template_id | string | 用于创建该任务的模板 ID |
-| form | dict | 该周期任务的参数表单对象 |
-| pipeline_tree | dict | 该周期任务的实例树 |
+|   名称   |  类型  |           说明             |
+| ------------ | ---------- | ------------------------------ |
+|  cron      |    string    |      周期调度表达式    |
+|  total_run_count      |    int    |    周期任务运行次数   |
+|  name      |    string    |    周期任务名   |
+|  creator      |    string    |    创建者   |
+|  last_run_at      |    string    |    上次运行时间   |
+|  enabled      |    bool    |    是否激活   |
+|  id      |    int    |    周期任务 ID   |
+|  template_id      |    string    |    用于创建该任务的模板 ID   |
+|  form      |    dict    |    该周期任务的参数表单对象   |
+|  pipeline_tree      |    dict    |    该周期任务的实例树   |
 
 #### data.pipeline_tree
 
-| 名称 | 类型 | 说明 |
-|------|------| ----- |
-| start_event | dict | 开始节点信息 |
-| end_event | dict | 结束节点信息 |
-| activities | dict | 任务节点（原子和子流程）信息 |
-| gateways | dict | 网关节点（并行网关、分支网关和汇聚网关）信息 |
-| flows | dict | 顺序流（节点连线）信息 |
-| constants | dict | 全局变量信息，详情见下面 |
-| outputs | list | 模板输出信息，标记 constants 中的输出字段 |
+|   名称   |  类型  |           说明             |
+| ------------ | ---------- | ------------------------------ |
+|  start_event      |    dict    |      开始节点信息     |
+|  end_event      |    dict    |      结束节点信息    |
+|  activities      |    dict    |      任务节点（原子和子流程）信息    |
+|  gateways      |    dict    |      网关节点（并行网关、分支网关和汇聚网关）信息    |
+|  flows      |    dict    |     顺序流（节点连线）信息    |
+|  constants      |    dict    |  全局变量信息，详情见下面    |
+|  outputs      |    list    |  模板输出信息，标记 constants 中的输出字段    |
 
 #### data.form.KEY, data.pipeline_tree.constants.KEY
 
@@ -264,13 +269,13 @@ POST
 
 #### data.form.VALUE, data.pipeline_tree.constants.VALUE
 
-| 名称   | 类型  | 说明             |
+|   名称   |  类型  |           说明             |
 | ------------ | ---------- | ------------------------------ |
-| key      | string    | 同 KEY     |
-| name      | string    | 变量名字    |
-| index      | int    | 变量在模板中的显示顺序    |
-| desc      | string    | 变量说明   |
-| source_type      | string    | 变量来源, 取值范围 custom: 自定义变量，component_inputs: 从原子输入参数勾选，component_outputs：从原子输出结果中勾选   |
-| custom_type      | string    | source_type=custom 时有效，自定义变量类型， 取值范围 input: 输入框，textarea: 文本框，datetime: 日期时间，int: 整数|
-| source_tag      | string    | source_type=component_inputs/component_outputs 时有效，变量的来源原子   |
-| source_info   | dict  | source_type=component_inputs/component_outputs 时有效，变量的来源节点信息 |
+|  key      |    string    |      同 KEY     |
+|  name      |    string    |      变量名字    |
+|  index      |    int    |      变量在模板中的显示顺序    |
+|  desc      |    string    |      变量说明   |
+|  source_type      |    string    |      变量来源, 取值范围 custom: 自定义变量，component_inputs: 从原子输入参数勾选，component_outputs：从原子输出结果中勾选   |
+|  custom_type      |    string    |      source_type=custom 时有效，自定义变量类型， 取值范围 input: 输入框，textarea: 文本框，datetime: 日期时间，int: 整数|
+|  source_tag      |    string    |      source_type=component_inputs/component_outputs 时有效，变量的来源原子   |
+|  source_info   |   dict  |  source_type=component_inputs/component_outputs 时有效，变量的来源节点信息 |

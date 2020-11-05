@@ -1,10 +1,14 @@
+
 ### 请求地址
 
 /api/c/compapi/v2/itsm/get_ticket_status/
 
+
+
 ### 请求方法
 
 GET
+
 
 ### 功能描述
 
@@ -12,28 +16,31 @@ GET
 
 ### 请求参数
 
-| 字段 | 类型 | 必选 | 描述 |
+
+#### 通用参数
+
+| 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code| string | 是 | 应用 ID |
-| bk_app_secret| string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username| string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  |  string    | 是 | 应用ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段 | 类型 | 必选 | 描述 |
+| 字段        | 类型     | 必选  | 描述                         |
 | --------- | ------ | --- | -------------------------- |
-| sn | string | 是 | 单号 |
+| sn        | string | 是   | 单号                       |
 
 ### 请求参数示例
 
 ```json
-{
-    "bk_app_secret": "xxxx",
-    "bk_app_code": "xxxx",
-    "bk_token": "xxxx",
+{  
+    "bk_app_secret": "xxxx", 
+    "bk_app_code": "xxxx", 
+    "bk_token": "xxxx", 
     "sn": "NO2019090XXXXXXXX"
-}
+}  
 ```
 
 ### 返回结果示例
@@ -139,116 +146,117 @@ GET
 
 ### 返回结果参数说明
 
-| 字段 | 类型 | 描述 |
+| 字段      | 类型        | 描述                      |
 | ------- | --------- | ----------------------- |
-| result | bool | 返回结果，true为成功，false为失败 |
-| code | int | 返回码，0表示成功，其他值表示失败 |
-| message | string | 错误信息 |
-| data | object | 返回数据 |
+| result  | bool      | 返回结果，true为成功，false为失败   |
+| code    | int       | 返回码，0表示成功，其他值表示失败       |
+| message | string    | 错误信息                    |
+| data    | object | 返回数据 |
 
 ### data
 
-| 字段 | 类型 | 描述 |
+| 字段                     | 类型     | 描述       |
 | ---------------------- | ------ | -------- |
-| current_status | string | 单据当前状态，RUNNING（处理中）/FINISHED（已结束）/TERMINATED（被终止）/ SUSPENDED（被挂起） |
-| current_steps | array | 单据当前步骤列表 |
-| operations | array | 单据当前支持的操作列表 |
-| is_commented | bool | 单据是否已评价 |
-| ticket_url | string | 单据详情链接 |
+| current_status         | string | 单据当前状态，RUNNING（处理中）/FINISHED（已结束）/TERMINATED（被终止）/ SUSPENDED（被挂起）   |
+| current_steps          | array  | 单据当前步骤列表   |
+| operations          | array  | 单据当前支持的操作列表   |
+| is_commented           | bool   | 单据是否已评价  |
+| ticket_url           | string   | 单据详情链接  |
 
 
 ### operations（单据支持的操作）
 
-| 字段 | 类型 | 描述 |
+| 字段            | 类型     | 描述      |
 | ------------- | ------ | ------- |
-| key | string | 操作标识，包括：SUSPEND（挂起）/UNSUSPEND（恢复）/WITHDRAW（撤销）/TERMINATE（终止节点和单据） |
-| name | string | 操作名称 |
-| can_operate | string | 可否操作（扩展字段，始终为true） |
+| key           | string | 操作标识，包括：SUSPEND（挂起）/UNSUSPEND（恢复）/WITHDRAW（撤销）/TERMINATE（终止节点和单据） |
+| name          | string | 操作名称  |
+| can_operate   | string | 可否操作（扩展字段，始终为true）  |
 
 ### current_steps（当前步骤）
 
-| 字段 | 类型 | 描述 |
+| 字段              | 类型         | 描述         |
 | --------------- | ---------- | ---------- |
-| name | string | 步骤名称 |
-| action_type | string | 操作类型：TRANSITION（审批）/DISTRIBUTE（分派）/CLAIM（认领）/AUTOMATIC（自动处理） |
-| processors | string | 处理人列表 |
-| processors_type | string | 处理人类型：CMDB（cmdb角色）/GENERAL（通用角色）/PERSON（个人）/STARTER（提单人）/OPEN（不限） |
-| state_id | int | 节点ID |
-| status | string | 节点状态 |
-| operations | array | 单据当前步骤支持的操作列表 |
-| fields | array | 单据当前步骤的表单字段列表 |
+| name            | string    | 步骤名称    |
+| action_type     | string    | 操作类型：TRANSITION（审批）/DISTRIBUTE（分派）/CLAIM（认领）/AUTOMATIC（自动处理）    |
+| processors      | string | 处理人列表  |
+| processors_type | string | 处理人类型：CMDB（cmdb角色）/GENERAL（通用角色）/PERSON（个人）/STARTER（提单人）/OPEN（不限）    |
+| state_id        | int | 节点ID    |
+| status          | string | 节点状态    |
+| operations      | array  | 单据当前步骤支持的操作列表   |
+| fields          | array  | 单据当前步骤的表单字段列表 |
 
 ### operations（节点支持的操作）
 
-| 字段 | 类型 | 描述 |
+| 字段            | 类型     | 描述      |
 | ------------- | ------ | ------- |
-| key | string | 操作标识，包括： TRANSITION（审批）/CLAIM（认领）/DISTRIBUTE（派单）/DELIVER（转单）/TERMINATE（终止节点和单据） |
-| name | string | 操作名称 |
-| can_operate | string | 可否操作（扩展字段，始终为true） |
+| key           | string | 操作标识，包括： TRANSITION（审批）/CLAIM（认领）/DISTRIBUTE（派单）/DELIVER（转单）/TERMINATE（终止节点和单据） |
+| name          | string | 操作名称  |
+| can_operate   | string | 可否操作（扩展字段，始终为true）  |
 
 
 ### fields（节点字段）
 
-| 字段 | 类型 | 描述 |
+| 字段            | 类型     | 描述      |
 | ------------- | ------ | ------- |
-| id | int | 字段id |
-| key | string | 字段唯一标识 |
-| type | string | 字段类型 |
-| name | string | 字段名称 |
-| desc | string | 字段描述 |
-| choice | array | 选项 |
-| validate_type | string | 校验规则 |
-| regex | string | 正则校验规则 |
-| meta | object | 自定义表格格式 |
+| id            | int    | 字段id    |
+| key           | string | 字段唯一标识  |
+| type          | string | 字段类型    |
+| name          | string | 字段名称    |
+| desc          | string | 字段描述    |
+| choice        | array  | 选项      |
+| validate_type | string | 校验规则    |
+| regex         | string | 正则校验规则  |
+| meta          | object   | 自定义表格格式 |
 
 
 ### type（字段类型）
 
-| 类型Key | 类型 |
+| 类型Key            | 类型     |
 | ------------- | ------ |
-| STRING | 单行文本 |
-| STRING | 单行文本|
-| TEXT | 多行文本|
-| INT | 数字|
-| DATE | 日期|
-| DATETIME | 时间|
-| TABLE | 表格|
-| SELECT | 单选下拉框|
-| MULTISELECT | 多选下拉框|
-| CHECKBOX | 复选框|
-| RADIO | 单选框|
-| MEMBERS | 多选人员选择|
-| RICHTEXT | 富文本|
-| FILE | 附件上传|
-| CUSTOMTABLE | 自定义表格|
-| TREESELECT | 树形选择|
-| CASCADE | 级联|
+| STRING            | 单行文本    |
+| STRING  |  单行文本|
+| TEXT  |  多行文本|
+| INT  |  数字|
+| DATE  |  日期|
+| DATETIME  |  时间|
+| DATETIMERANGE  |  时间间隔|
+| TABLE  |  表格|
+| SELECT  |  单选下拉框|
+| MULTISELECT  |  多选下拉框|
+| CHECKBOX  |  复选框|
+| RADIO  |  单选框|
+| MEMBERS  |  多选人员选择|
+| RICHTEXT  |  富文本|
+| FILE  |  附件上传|
+| CUSTOMTABLE  |  自定义表格|
+| TREESELECT  |  树形选择|
+| CASCADE  |  级联|
 
 ### meta
 
-| 字段 | 类型 | 描述 |
+| 字段      | 类型    | 描述  |
 | ------- | ----- | --- |
-| columns | array | 列 |
+| columns | array | 列   |
 
 ### columns
 
-| 字段 | 类型 | 描述 |
+| 字段      | 类型     | 描述   |
 | ------- | ------ | ---- |
-| choice | array | 选项 |
+| choice  | array  | 选项   |
 | display | string | 展现形式 |
-| key | string | 唯一标识 |
-| name | string | 名字 |
+| key     | string | 唯一标识 |
+| name    | string | 名字   |
 
 
 ### status（节点状态）
 
-| 字段 | 类型 | 描述 |
+| 字段              | 类型         | 描述         |
 | --------------- | ---------- | ---------- |
-| WAIT | 待处理 |
-| RUNNING | 处理中 |
-| RECEIVING | 待认领 |
-| DISTRIBUTING | 待分派 |
-| TERMINATED | 被终止 |
-| FINISHED | 已结束 |
-| FAILED | 执行失败 |
-| SUSPEND | 被挂起 |
+| WAIT  |   待处理     |
+| RUNNING   |   处理中     |
+| RECEIVING     |   待认领     |
+| DISTRIBUTING  |   待分派     |
+| TERMINATED    |   被终止     |
+| FINISHED  |   已结束     |
+| FAILED    |   执行失败        |
+| SUSPEND   |   被挂起     |

@@ -6,7 +6,7 @@
 * [产品架构](产品白皮书/Introduce/Architecture.md)
 * [特点及优势](产品白皮书/Introduce/Advantage.md)
 * [产品功能]()
-    * [agent管理](产品白皮书/Feature/Agent.md)
+    * [Agent管理](产品白皮书/Feature/Agent.md)
     * [云区域管理](产品白皮书/Feature/CloudArea.md)
     * [插件管理](产品白皮书/Feature/Plugin.md)
     * [任务历史](产品白皮书/Feature/History.md)

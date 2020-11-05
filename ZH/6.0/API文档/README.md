@@ -142,6 +142,7 @@ AVAILABLE_COLLECTIONS = {
 ```
 
 ## 深入了解 API
+
 你现在知道怎么使用蓝鲸 API ，不要停下来。
 去深入了解 **蓝鲸** 吧。
 我们建议你查阅：
@@ -152,5 +153,5 @@ AVAILABLE_COLLECTIONS = {
 [配置平台API列表](../API文档/CC/README.md)、
 [管控平台API列表](../API文档/GSE/README.md)、
 [作业平台API列表](../API文档/JOB/README.md)、
-[蓝鲸监控API列表](../API文档/MONITOR/README.md)、
+[监控平台API列表](../API文档/MONITOR_V3/README.md)、
 [标准运维API列表](../API文档/SOPS/README.md)。

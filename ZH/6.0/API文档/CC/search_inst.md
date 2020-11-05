@@ -1,72 +1,84 @@
+
 ### 请求地址
 
 /api/c/compapi/v2/cc/search_inst/
+
+
 
 ### 请求方法
 
 POST
 
+
 ### 功能描述
 
-查询实例
+根据关联关系实例查询模型实例
+
+- 该接口只适用于自定义层级模型和通用模型实例上，不适用于业务、集群、模块、主机等模型实例
 
 ### 请求参数
 
+
 #### 通用参数
 
-| 字段 | 类型 | 必选 | 描述 |
+| 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  | string    | 是 | 应用 ID     |
-| bk_app_secret| string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     | string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  | string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  |  string    | 是 | 应用ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段                | 类型      | 必选   | 描述                       |
+| 字段                |  类型      | 必选   |  描述                       |
 |---------------------|------------|--------|-----------------------------|
-| bk_obj_id           | string     | 是     | 模型 ID                      |
-| bk_supplier_account | string     | 是     | 开发商账号,独立部署请填"0"  |
+| bk_obj_id           | string     | 是     | 模型ID                      |
 | page                | object     | 是     | 分页参数                    |
-| condition           | object     | 否     | 查询条件                    |
-| fields              |string array| 否     | 查询的字段                  |
+| condition           | object     | 否     | 具有关联关系的模型实例查询条件                    |
+| fields              | map     | 否     | 指定查询模型实例返回的字段,key为模型ID，value为该查询模型要返回的模型属性字段|
 
 #### page
 
-| 字段      | 类型      | 必选   | 描述                |
+| 字段      |  类型      | 必选   |  描述                |
 |-----------|------------|--------|----------------------|
-| start     | int       | 是     | 记录开始位置         |
-| limit     | int       | 是     | 每页限制条数,最大 200 |
-| sort      | string    | 否     | 排序字段             |
+| start     |  int       | 是     | 记录开始位置         |
+| limit     |  int       | 是     | 每页限制条数,最大200 |
+| sort      |  string    | 否     | 排序字段             |
 
 #### condition
 
-| 字段      | 类型      | 必选   | 描述      |
+| 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
-| bk_weblogic  |string      |是      | 此处仅为示例数据，需要被设置为模型的标识符，在页面上配置的英文名 |
 | field     |string      |是      | 取值为模型的字段名                                               |
 | operator  |string      |是      | 取值为：$regex $eq $ne                                           |
-| value     |string      |是      | field 配置的模型字段名所对应的值                                  |
+| value     |string      |是      | field配置的模型字段名所对应的值                                  |          
 
 
 ### 请求参数示例
 
 ```json
 {
-    "bk_obj_id":"test",
-    "bk_supplier_account":"0",
-    "page":{
-        "start":0,
-        "limit":10,
-        "sort":"bk_inst_id"
+    "bk_obj_id": "bk_switch",
+    "bk_supplier_account": "0",
+    "page": {
+        "start": 0,
+        "limit": 10,
+        "sort": "bk_inst_id"
     },
-    "fields":"test",
-    "condition":{
-        "bk_weblogic":[
+    "fields": {
+        "bk_switch": [
+            "bk_asset_id",
+            "bk_inst_id",
+            "bk_inst_name",
+            "bk_obj_id"
+        ]
+    },
+    "condition": {
+        "host": [
             {
-                "field":"bk_inst_name",
-                "operator":"$regex",
-                "value":"qq"
+                "field": "operator",
+                "operator": "$regex",
+                "value": "admin"
             }
         ]
     }
@@ -79,51 +91,33 @@ POST
 {
     "result": true,
     "code": 0,
-    "message": "",
+    "message": "success",
+    "permission": null,
     "data": {
-		"count": 1,
-		"info": [{
-			"bk_inst_id": 1,
-			"bk_inst_name": "test",
-			"bk_obj_id": "test",
-			"bk_supplier_account": "0",
-			"create_time": "2018-04-17T14:50:15.993+08:00",
-			"last_time": "2018-04-17T15:00:49.274+08:00",
-			"test_asst": [{
-				"bk_inst_id": 2,
-				"bk_inst_name": "test2",
-				"bk_obj_id": "test_obj",
-				"id": "2"
-			}]
-		}]
-	}
+        "count": 2,
+        "info": [
+            {
+                "bk_asset_id": "sw00001",
+                "bk_inst_id": 1,
+                "bk_inst_name": "sw1",
+                "bk_obj_id": "bk_switch"
+            },
+            {
+                "bk_asset_id": "sw00002",
+                "bk_inst_id": 2,
+                "bk_inst_name": "sw2",
+                "bk_obj_id": "bk_switch"
+            }
+        ]
+    }
 }
 ```
 
 ### 返回结果参数说明
-
-| 字段      | 类型      | 描述      |
-|-----------|-----------|-----------|
-| result    | bool      | 请求成功与否，true:请求成功，false:请求失败 |
-| code      | string    | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
-| message   | string    | 请求失败返回的错误消息 |
-| data      | object    | 请求返回的数据 |
 
 #### data
 
 | 字段      | 类型      | 描述         |
 |-----------|-----------|--------------|
 | count     | int       | 记录条数     |
-| info      | array     | 实例实际数据 |
-
-#### data.info
-
-| 字段                | 类型      | 描述                                                 |
-|---------------------|-----------|------------------------------------------------------|
-| id                  | string    | 已存储的关联实例的 id                                 |
-| bk_inst_id          | int       | 新增数据记录的 ID                                     |
-| bk_supplier_account | string    | 开发商账号                                           |
-| bk_obj_id           | string    | 模型 ID                                               |
-| create_time         | string    | 数据创建的时间                                       |
-| last_time           | string    | 最后修改时间                                         |
-| test_asst           | string    | test_asst 为此实例的关联字段，返回关联模型对应的实例。|
+| info      | array     | 模型实例实际数据 |

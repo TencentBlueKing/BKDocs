@@ -1,10 +1,14 @@
+
 ### 请求地址
 
 /api/c/compapi/v2/cc/search_business/
 
+
+
 ### 请求方法
 
 POST
+
 
 ### 功能描述
 
@@ -12,35 +16,40 @@ POST
 
 ### 请求参数
 
+
 #### 通用参数
 
-| 字段 | 类型 | 必选 | 描述 |
+| 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code | string | 是 | 应用 ID |
-| bk_app_secret| string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username | string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code  |  string    | 是 | 应用ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段 | 类型 | 必选 | 描述 |
+| 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
-| bk_supplier_account | string | 否 | 开发商账号 |
-| fields | array | 否 | 指定查询的字段，参数为业务的任意属性，如果不填写字段信息，系统会返回业务的所有字段 |
-| condition | dict | 否 | 查询条件，参数为业务的任意属性，如果不写代表搜索全部数据 |
-| page | dict | 否 | 分页条件 |
+| bk_supplier_account | string     | 否     | 开发商账号 |
+| fields         |  array   | 否     | 指定查询的字段，参数为业务的任意属性，如果不填写字段信息，系统会返回业务的所有字段 |
+| condition      |  dict    | 否     | 查询条件，参数为业务的任意属性，如果不写代表搜索全部数据 |
+| page           |  dict    | 否     | 分页条件 |
+
+Note: 业务分为两类，未归档的业务和已归档的业务。
+- 若要查询已归档的业务，请在condition中增加条件`bk_data_status:disabled`。
+- 若要查询未归档的业务，请不要带字段"bk_data_status",或者在condition中增条件`bk_data_status: {"$ne":disabled"}`。
 
 #### page
 
-| 字段 | 类型 | 必选 | 描述 |
+| 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
-| start | int | 是 | 记录开始位置 |
-| limit | int | 是 | 每页限制条数,最大 200 |
-| sort | string | 否 | 排序字段，通过在字段前面增加 -，如 sort:&#34;-field&#34; 可以表示按照字段 field 降序 |
+| start    |  int    | 是     | 记录开始位置 |
+| limit    |  int    | 是     | 每页限制条数,最大200 |
+| sort     |  string | 否     | 排序字段，通过在字段前面增加 -，如 sort:&#34;-field&#34; 可以表示按照字段 field降序 |
 
 ### 请求参数示例
 
-```json
+```python
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -63,7 +72,8 @@ POST
 
 ### 返回结果示例
 
-```json
+```python
+
 {
     "result": true,
     "code": 0,
@@ -82,16 +92,9 @@ POST
 
 ### 返回结果参数说明
 
-| 字段 | 类型 | 描述 |
-|-----------|-----------|-----------|
-| result | bool | 请求成功与否，true:请求成功，false:请求失败 |
-| code | string | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
-| message | string | 请求失败返回的错误消息 |
-| data | object | 请求返回的数据 |
-
 #### data
 
-| 字段 | 类型 | 描述 |
+| 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
-| count | int | 记录条数 |
-| info | array | 业务实际数据 |
+| count     | int       | 记录条数 |
+| info      | array     | 业务实际数据 |

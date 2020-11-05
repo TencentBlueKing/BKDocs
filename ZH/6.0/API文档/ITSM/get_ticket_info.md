@@ -1,10 +1,14 @@
+
 ### 请求地址
 
 /api/c/compapi/v2/itsm/get_ticket_info/
 
+
+
 ### 请求方法
 
 GET
+
 
 ### 功能描述
 
@@ -12,29 +16,31 @@ GET
 
 ### 请求参数
 
-| 字段 | 类型 | 必选 | 描述 |
-|-----------|------------|--------|------------|
-| bk_app_code| string | 是 | 应用 ID |
-| bk_app_secret| string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username| string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
+#### 通用参数
+
+| 字段 | 类型 | 必选 |  描述 |
+|-----------|------------|--------|------------|
+| bk_app_code  |  string    | 是 | 应用ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
-| 字段 | 类型 | 必选 | 描述 |
-| ---- | ------ | --- | -------- |
-| sn | string | 是 | 单号 |
+| 字段        | 类型     | 必选  | 描述                         |
+| --------- | ------ | --- | -------------------------- |
+| sn        | string | 是   | 单号                       |
 
 ### 请求参数示例
 
 ```json
-{
-    "bk_app_secret": "xxxx",
-    "bk_app_code": "xxxx",
-    "bk_token": "xxxx",
+{  
+    "bk_app_secret": "xxxx", 
+    "bk_app_code": "xxxx", 
+    "bk_token": "xxxx", 
     "sn": "NO2019090XXXXXXXX"
-}
+}  
 ```
 
 ### 返回结果示例
@@ -61,7 +67,7 @@ GET
                     "processors_type": "PERSON",
                     "state_id": 8,
                     "status": "RUNNING"
-                }
+                }        
         ],
         "comment_id": "",
         "is_commented": false,
@@ -96,68 +102,70 @@ GET
 
 ### 返回结果参数说明
 
-| 字段 | 类型 | 描述 |
+| 字段      | 类型        | 描述                      |
 | ------- | --------- | ----------------------- |
-| result | bool | 返回结果，true为成功，false为失败 |
-| code | int | 返回码，0表示成功，其他值表示失败 |
-| message | string | 错误信息 |
-| data | object | 返回数据 |
+| result  | bool      | 返回结果，true为成功，false为失败   |
+| code    | int       | 返回码，0表示成功，其他值表示失败       |
+| message | string    | 错误信息                    |
+| data    | object    | 返回数据 |
 
 ### data
 
-| 字段 | 类型 | 描述 |
+| 字段                     | 类型     | 描述       |
 | ---------------------- | ------ | -------- |
-| id | int | 单据id |
-| catalog_id | int | 服务目录id |
-| service_id | int | 服务id |
-| flow_id | int | 流程版本id |
-| sn | string | 单号 |
-| title | string | 单据标题 |
-| current_status | string | 单据当前状态，RUNNING（处理中）/FINISHED（已结束）/TERMINATED（被终止） |
-| current_steps | array | 单据当前步骤 |
-| comment_id | string | 单据评价id |
-| is_commented | bool | 单据是否已评价 |
-| updated_by | string | 最近更新者 |
-| update_at | string | 最近更新时间 |
-| end_at | string | 结束时间 |
-| creator | string | 提单人 |
-| create_at | string | 创建时间 |
-| is_biz_need | bool | 是否与业务关联 |
-| bk_biz_id | int | 业务id |
-| fields | array | 提单节点字段 |
+| id                     | int    | 单据id     |
+| catalog_id             | int    | 服务目录id   |
+| service_id             | int    | 服务id     |
+| flow_id                | int    | 流程版本id   |
+| sn                     | string | 单号     |
+| title                  | string | 单据标题     |
+| current_status         | string | 单据当前状态，RUNNING（处理中）/FINISHED（已结束）/TERMINATED（被终止）   |
+| current_steps          | array  | 单据当前步骤   |
+| comment_id             | string | 单据评价id   |
+| is_commented           | bool   | 单据是否已评价  |
+| updated_by             | string | 最近更新者    |
+| update_at              | string | 最近更新时间   |
+| end_at                 | string | 结束时间     |
+| creator                | string | 提单人      |
+| create_at             | string | 创建时间    |
+| is_biz_need            | bool   | 是否与业务关联  |
+| bk_biz_id              | int    | 业务id     |
+| fields              | array    | 提单节点字段    |
 
 ### current_steps（当前步骤）
 
-| 字段 | 类型 | 描述 |
+| 字段              | 类型         | 描述         |
 | --------------- | ---------- | ---------- |
-| name | string | 步骤名称 |
-| action_type | string | 操作类型：TRANSITION（审批）/DISTRIBUTE（分派）/CLAIM（认领）/AUTOMATIC（自动处理） |
-| processors | string | 处理人列表 |
-| processors_type | string | 处理人类型：CMDB（cmdb角色）/GENERAL（通用角色）/PERSON（个人）/STARTER（提单人）/OPEN（不限） |
-| state_id | int | 节点ID |
-| status | string | 节点状态 |
+| name            | string    | 步骤名称    |
+| action_type     | string    | 操作类型：TRANSITION（审批）/DISTRIBUTE（分派）/CLAIM（认领）/AUTOMATIC（自动处理）    |
+| processors      | string | 处理人列表  |
+| processors_type | string | 处理人类型：CMDB（cmdb角色）/GENERAL（通用角色）/PERSON（个人）/STARTER（提单人）/OPEN（不限）    |
+| state_id        | int | 节点ID    |
+| status          | string | 节点状态    |
+
 
 ### status（节点状态）
 
-| 字段 | 类型 | 描述 |
+| 字段              | 类型         | 描述         |
 | --------------- | ---------- | ---------- |
-| WAIT | 待处理 |
-| RUNNING | 处理中 |
-| RECEIVING | 待认领 |
-| DISTRIBUTING | 待分派 |
-| TERMINATED | 被终止 |
-| FINISHED | 已结束 |
-| FAILED | 执行失败 |
-| SUSPEND | 被挂起 |
+| WAIT  |   待处理     |
+| RUNNING   |   处理中     |
+| RECEIVING     |   待认领     |
+| DISTRIBUTING  |   待分派     |
+| TERMINATED    |   被终止     |
+| FINISHED  |   已结束     |
+| FAILED    |   执行失败        |
+| SUSPEND   |   被挂起     |
+
 
 ### fields
 
-| 字段 | 类型 | 描述 |
+| 字段              | 类型         | 描述         |
 | --------------- | ---------- | ---------- |
-| id | int | 字段id |
-| key | string | 字段唯一标识 |
-| type | string | 字段类型 |
-| name | string | 字段名称 |
-| desc | string | 字段描述 |
-| value | string | 字段值 |
-| display_value | string | 字段展示值 |
+| id            | int    | 字段id    |
+| key           | string | 字段唯一标识  |
+| type          | string | 字段类型    |
+| name          | string | 字段名称    |
+| desc          | string | 字段描述    |
+| value           | string | 字段值        |
+| display_value   | string | 字段展示值        |
