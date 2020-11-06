@@ -68,6 +68,17 @@
 
 ![-w2020](../../assets/trusteeship.png)
 
+## SaaS可见范围
+
+可以根据“用户管理”的“组织架构”设置 SaaS 的可见范围，仅限授权用户才可以在“应用市场”中检索并添加到该 SaaS。
+
+![-w2020](../../assets/dev_saasfanwei.png)
+
+## 指定服务器部署SaaS应用
+
+若承载 SaaS 运行的服务器有多个，在正式环境部署 SaaS 的时候，针对 SaaS 的特殊性可以选择独立的服务器来部署。
+
+![-w2020](../../assets/dev_zhidingbushu.png)
 
 ## 应用数据库托管服务
 
@@ -119,11 +130,10 @@ PaaS 平台是基于 SOA 理念设计的，其中最重要的就是企业服务�
 
 6\. API 文档：查询蓝鲸官方的和自定义接入组件的使用文档
 
-> 注：[蓝鲸组件在线 API 文档](../../API文档/BK_LOGIN/README.md)。
 
 ## MagicBox
 
-[MagicBox](http://magicbox.bk.tencent.com/)(链接：http://magicbox.bk.tencent.com/)，又称为前端魔盒。是一个前端资源 PaaS 平台，为蓝鲸应用开发者提供丰富的前端资源，包括常用的 UI 组件、JS 插件及基础模版，开发者可以通过蓝鲸 MagicBox 快速构建页面。它还提供完整的套餐样例供开发者选择，开发者也可以在线拖拽组件组装页面，让前端布局可视化。
+[MagicBox](http://magicbox.bk.tencent.com/)(链接：http://magicbox.bk.tencent.com/)，又称为前端工具集。是一个前端资源 PaaS 平台，为蓝鲸应用开发者提供丰富的前端资源，包括常用的 UI 组件、JS 插件及基础模版，开发者可以通过蓝鲸 MagicBox 快速构建页面。它还提供完整的套餐样例供开发者选择，开发者也可以在线拖拽组件组装页面，让前端布局可视化。
 
 ![magicbox](../../assets/magicbox.png)
 
