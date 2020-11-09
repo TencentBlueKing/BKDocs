@@ -48,11 +48,7 @@
 
 获取新的插件包以后，需要上传到蓝鲸所部署的主机以下路径中：
 
-- 企业版
-`/data/bkee/bknodeman/nodeman/official_plugin`
-
-- 社区版
-`/data/bkce/bknodeman/nodeman/official_plugin`
+`$BK_HOME/bknodeman/nodeman/official_plugin`
 
 **第三步：刷新插件包**
 
