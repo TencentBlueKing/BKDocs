@@ -21,6 +21,7 @@
 第三种：外链应用，在社区版中没有放到“开发者中心”进行添加，而是通过 PaaS 平台的后台管理进行操作。
 
 - 社区版
+
 ![-w2020](../../assets/wailiansaas.png)
 
 ![-w2020](../../assets/wailiansaasadd.png)

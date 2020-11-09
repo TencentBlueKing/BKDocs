@@ -10,7 +10,7 @@
     * [安装蓝鲸Agent（自定义云区域）](产品白皮书/QuickStart/CustomCloudAreaInstallAgent.md)
 * [产品功能]()
     * [Agent管理](产品白皮书/Feature/Agent.md)
-    * [云区域管理](产品白皮书/Feature/CloudArea.md)
     * [插件管理](产品白皮书/Feature/Plugin.md)
+    * [云区域管理](产品白皮书/Feature/CloudArea.md)
     * [任务历史](产品白皮书/Feature/History.md)
     * [全局配置](产品白皮书/Feature/Globe.md)
