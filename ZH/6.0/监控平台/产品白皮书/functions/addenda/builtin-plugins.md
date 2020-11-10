@@ -1,14 +1,14 @@
 # 内置官方插件
 
-内置官方插件是由蓝鲸官方维护的插件，主要是满足监控平台开箱即用的一个需求。 虽然是内置的官方插件，也会有一定的依赖和功能局限性。
+内置官方插件是由蓝鲸官方维护的插件，主要是满足监控平台开箱即用的一个需求。虽然是内置的官方插件，也会有一定的依赖和功能局限性。
 
 如果使用描述不清或者错误，或者有需求可以反馈给官方。
 
-> **!注意：** 其实基于监控平台的插件定义可以非常方便的扩展监控能力，可以不用完全依赖官方的插件。具体查看
-> * [如何使用开源的exporter](../../guide/import_exporter.md)
-> * [如何使用开源的datadog](../../guide/import_datadog.md)
+> **注意：**其实基于监控平台的插件定义可以非常方便的扩展监控能力，可以不用完全依赖官方的插件。具体查看
+> * [如何使用开源的Exporter](../../guide/import_exporter.md)
+> * [如何使用开源的DataDog](../../guide/import_datadog.md)
 
-## exporter 插件
+## Exporter 插件
 
 ### Apache 插件
 
@@ -647,9 +647,9 @@
 | tomcat.threads.count | threads | 当前线程池的线程数 |
 | tomcat.threads.max | threads | 线程池最大可以产生的线程数 |
 
-## datadog 插件
+## DataDog 插件
 
-## BK-pull插件
+## BK-Pull 插件
 
 ### Weblogic 插件
 
@@ -795,13 +795,13 @@
 | exchange_adaccess_processes_ldap_read |  | 显示将 LDAP 读请求接收响应的时间 |
 | exchange_database_io_log_writes_avg_latency |  | 显示每个数据库实例每秒写入的日志数量。 |
 | exchange_database_io_db_writes_recovery_avg_latenc | ms | 显示每个被动数据库写入操作的平均时间长度(毫秒) |
-| exchange_adaccess_domain_controllers_ldap_read | ms | 显示将 LDAP 读请求发送至指定域控制器并接收响应的时间", |
+| exchange_adaccess_domain_controllers_ldap_read | ms | 显示将 LDAP 读请求发送至指定域控制器并接收响应的时间 |
 | exchange_database_io_log_writes_persec |  | 显示每个数据库实例每秒写入的日志数量 |
 | exchange_netlogon_semaphore_holders |  | 存放信号的线程数量 |
 | exchange_database_io_db_reads_recovery_avg_latency | ms | 显示每个被动数据库读取操作的平均时间长度 |
 | exchange_database_io_writes_avg_latency | ms | 显示每个数据库写入操作的平均时间长度(毫秒) |
 | exchange_is_store_rpc_latency | ms | RPC Latency average (msec) 是每个数据库的 RPC 请求的平均延迟(毫秒) |
-| exchange_is_clienttype_rpc_latency | ms | 显示针对某个特定客户端协议，过去 1,024 个数据包的平均服务器 RPC 延迟(毫秒) |
+| exchange_is_clienttype_rpc_latency | ms | 显示针对某个特定客户端协议，过去 1024 个数据包的平均服务器 RPC 延迟(毫秒) |
 | exchange_is_clienttype_rpc_ops_persec | ms | 显示每个客户端类型连接每秒的 RPC 操作数 |
 | exchange_is_store_rpc_requests | ms | 指示当前在信息存储进程中执行的全部 RPC 请求 |
 | exchange_is_store_rpc_ops_persec | ms | 显示每个数据库实例每秒的 RPC 操作数 |
@@ -815,7 +815,7 @@
 | exchange_memory_committed | % | 显示 Memory\Committed Bytes 与 Memory\Commit Limit 的比率 |
 | exchange_rpc_conn_count |  | 显示所维护的客户端连接总数。 |
 | exchange_rpc_requests |  | 显示 RPC 客户端访问服务当前正处理的客户端请求数 |
-| exchange_rpc_averaged_latency |  | 显示过去 1,024 个数据包的平均延迟(毫秒) |
+| exchange_rpc_averaged_latency |  | 显示过去 1024 个数据包的平均延迟(毫秒) |
 | exchange_processor_queue_length |  | 表示每个处理器所服务的线程数 |
 | exchange_network_tcpv4_conns_reset |  | 显示 TCP 连接直接从 ESTABLISHED 状态或 CLOSE-WAIT 状态转换为 CLOSED 状态的次数 |
 | exchange_activesync_sync_persec |  | 显示每秒处理的同步命令数 |
@@ -874,7 +874,7 @@
 | exchange_adaccess_processes_ldap_read |  | 显示将 LDAP 读请求接收响应的时间 |
 | exchange_database_io_log_writes_avg_latency |  | 显示每个数据库实例每秒写入的日志数量。 |
 | exchange_database_io_db_writes_recovery_avg_latenc | ms | 显示每个被动数据库写入操作的平均时间长度(毫秒) |
-| exchange_adaccess_domain_controllers_ldap_read | ms | 显示将 LDAP 读请求发送至指定域控制器并接收响应的时间", |
+| exchange_adaccess_domain_controllers_ldap_read | ms | 显示将 LDAP 读请求发送至指定域控制器并接收响应的时间 |
 | exchange_database_io_log_writes_persec |  | 显示每个数据库实例每秒写入的日志数量 |
 | exchange_netlogon_semaphore_holders |  | 存放信号的线程数量 |
 | exchange_database_io_db_reads_recovery_avg_latency | ms | 显示每个被动数据库读取操作的平均时间长度 |
@@ -887,7 +887,7 @@
 | exchange_httpproxy_avg_auth_latency | ms | 显示最近 200 个示例中对 CAS 请求进行身份验证所花费的平均时间 |
 | exchange_httpproxy_outstanding_requests | ms | 显示并发未处理代理请求的数量 |
 | exchange_is_store_rpc_latency | ms | RPC Latency average (msec) 是每个数据库的 RPC 请求的平均延迟(毫秒) |
-| exchange_is_clienttype_rpc_latency | ms | 显示针对某个特定客户端协议，过去 1,024 个数据包的平均服务器 RPC 延迟(毫秒) |
+| exchange_is_clienttype_rpc_latency | ms | 显示针对某个特定客户端协议，过去 1024 个数据包的平均服务器 RPC 延迟(毫秒) |
 | exchange_is_clienttype_rpc_ops_persec | ms | 显示每个客户端类型连接每秒的 RPC 操作数 |
 | exchange_is_store_rpc_requests | ms | 指示当前在信息存储进程中执行的全部 RPC 请求 |
 | exchange_is_store_rpc_ops_persec | ms | 显示每个数据库实例每秒的 RPC 操作数 |
@@ -904,7 +904,7 @@
 | exchange_memory_committed | % | 显示 Memory\Committed Bytes 与 Memory\Commit Limit 的比率 |
 | exchange_rpc_conn_count |  | 显示所维护的客户端连接总数。 |
 | exchange_rpc_requests |  | 显示 RPC 客户端访问服务当前正处理的客户端请求数 |
-| exchange_rpc_averaged_latency |  | 显示过去 1,024 个数据包的平均延迟(毫秒) |
+| exchange_rpc_averaged_latency |  | 显示过去 1024 个数据包的平均延迟(毫秒) |
 | exchange_processor_queue_length |  | 表示每个处理器所服务的线程数 |
 | exchange_network_tcpv4_conns_reset |  | 显示 TCP 连接直接从 ESTABLISHED 状态或 CLOSE-WAIT 状态转换为 CLOSED 状态的次数 |
 | exchange_activesync_sync_persec |  | 显示每秒处理的同步命令数 |
@@ -920,3 +920,5 @@
 | exchange_network_tcpv6_conns_reset |  | TCP 连接直接从 ESTABLISHED 状态或 CLOSE-WAIT 状态转换为 CLOSED 状态的次数 |
 | exchange_processor_cpu_user | % | 在用户模式上处理器时间的百分比 |
 | exchange_rpc_user_count |  | 显示连接到服务的用户数 |
+
+

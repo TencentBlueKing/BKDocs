@@ -8,22 +8,22 @@
 
 ## 组件监控的方案
 
-### 方法一: 使用内置的官方插件
+### 方法一：使用内置的官方插件
 
-目前覆盖 Apache、Nginx、Tomcat、MySQL、redis 等常用组件的性能指标监控，具体配置请参照 APP 上的接入指引。具体查看[内置官方插件列表](../functions/addenda/builtin-plugins.md)
+目前覆盖 Apache、Nginx、Tomcat、MySQL、Redis 等常用组件的性能指标监控，具体配置请参照 APP 上的接入指引。具体查看[内置官方插件列表](../functions/addenda/builtin-plugins.md)。
 
-> **！注意：** 如果想监控的组件不在此列，或者是组件提供的接入提示说明不清晰/按说明无法成功接入，请联系蓝鲸助手 QQ: [800802001](http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDgwMjAwMV80NDMwOTZfODAwODAyMDAxXzJf) 反馈给监控平台团队。（文档中心反馈功能也可以接入这个反馈）
+> **注意：** 如果想监控的组件不在此列，或者是组件提供的接入提示说明不清晰/按说明无法成功接入，请联系蓝鲸助手 QQ： [800802001](http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDgwMjAwMV80NDMwOTZfODAwODAyMDAxXzJf) 反馈给监控平台团队。（文档中心反馈功能也可以接入这个反馈）
 
-### 方法二: 使用其他人制作的监控平台插件导入
+### 方法二：使用其他人制作的监控平台插件导入
 
 可以通过导入功能，把其他人制作的或者分享的插件导入到插件管理中。
 
-**导入功能位置**：  导航 →  监控配置 →  插件 →  导入
+**导入功能位置**：导航  →  监控配置  →  插件  →  导入
 
-### 方法三: 使用开源的exporter在线定义插件
+### 方法三：使用开源的Exporter在线定义插件
 
-具体查看[如何使用开源的exporter](import_exporter.md)
+具体查看[如何使用开源的Exporter](import_exporter.md)。
 
-### 方法四: 开发exporter采集插件
+### 方法四：开发Exporter采集插件
 
-当市面上没有开源的，或者不满足需求是。开发一个 exporter 也是非常简单的事件。具体查看[如何开发一个exporter采集插件](../dev/plugin_exporter_dev.md)
+当市面上没有开源的，或者不满足需求是。开发一个 Exporter 也是非常简单的事件。具体查看[如何开发一个 Exporter 采集插件](../dev/plugin_exporter_dev.md)。

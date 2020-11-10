@@ -1,16 +1,16 @@
-# 如何线下定义Datadog插件
+# 如何线下定义插件
 
-线下定义 Datadog 插件是不必经过 web 界面就可以在线下完成 datadog 的插件的制作，制作完成后通过导入功能上传到插件管理。
+线下定义  插件是不必经过 web 界面就可以在线下完成  的插件的制作，制作完成后通过导入功能上传到插件管理。
 
 ## 准备工作
 
-1. 获取 BK-Plugin Datadog Framework
+1. 获取 BK-Plugin  Framework
 
    ```bash
    git clone https://xxx.com/datadog_plugin_framework.git
    ```
 
-2. 获取  Datadog Integrations(6.15x分支代码)
+2. 获取   Integrations(6.15x分支代码)
 
    官方
 
@@ -24,18 +24,16 @@
    git clone https://github.com/DataDog/integrations-extras.git
    ```
 
-   将上面的仓库 clone 下来，看是否有需要的组件 , 如果没有，需要根据 [官方规范](https://docs.datadoghq.com/developers/integrations/new_check_howto/) 自行开发
+   将上面的仓库 clone 下来，看是否有需要的组件，如果没有，需要根据 [官方规范](https://docs.datadoghq.com/developers/integrations/new_check_howto/) 自行开发。每个  Integrations 包都是一个完整的 Python 包，里面包含了一种组件的采集逻辑。
 
-   每个 Datadog Integrations 包都是一个完整的 Python 包，里面包含了一种组件的采集逻辑。
-
-3. 准备两种操作系统，并确定已安装 `python 2.7` 和 `pip`
+3. 准备两种操作系统，并确定已安装 `Python 2.7` 和 `pip`
 
    - Windows 64位
    - Mac OS/Linux 64位
 
 ## 生成基础包
 
-以 `consul` 组件为例
+以 `consul` 组件为例。
 
 1. 在本地 `integrations-core` 仓库中找到名为 `consul` 文件夹，记录路径
 
@@ -49,11 +47,11 @@
    python build.py consul ~/Projects/integrations-core/consul -o ~/Desktop/datadog_plugins
    ```
 
-   稍等片刻后，`~/Desktop/datadog_plugins` 路径下会创建一个名为 `bkplugin_consul` 的文件夹，根据你使用的操作系统，会生成对应 os 的目录
+   稍等片刻后，`~/Desktop/datadog_plugins` 路径下会创建一个名为 `bkplugin_consul` 的文件夹，根据你使用的操作系统，会生成对应 os 的目录。
 
 ## 包测试
 
-1. 进入基础包目录(如果上个步骤打的是 linux 包)
+1. 进入基础包目录(如果上个步骤打的是 Linux 包)
 
    ```bash
    ~/Desktop/datadog_plugins/bkplugin_consul/external_plugins_linux_x86_64/bkplugin_consul
@@ -130,9 +128,9 @@
    cp etc/conf.yaml.example etc/conf.yaml.tpl
    ```
 
-   查看配置，并使用占位符 `{{ var }}` 将变量标记起来。注意，完整的配置可能有非常多的参数，但只需标记使用频率高的参数，如用户名、密码等变量
+   查看配置，并使用占位符 `{{ var }}` 将变量标记起来。注意，完整的配置可能有非常多的参数，但只需标记使用频率高的参数，如用户名、密码等变量。
 
-   例如，在 consul 的 `conf.yaml.example` 中，有以下配置
+   例如，在 consul 的 `conf.yaml.example` 中，有以下配置：
 
    ```yaml
    init_config:
@@ -146,7 +144,7 @@
      - url: http://localhost:8500
    ```
 
-   可在 `conf.yaml.tpl` 中，将 `url` 的值使用占位符代替
+   可在 `conf.yaml.tpl` 中，将 `url` 的值使用占位符代替。
 
    ```yaml
    init_config:
@@ -160,11 +158,11 @@
      - url: {{ instance_url }}
    ```
 
-   `instance_url` 这个名称先记住，后面完善 `config.json` 会用到
+   `instance_url` 这个名称先记住，后面完善 `config.json` 会用到。
 
 3. 完善 meta.yaml
 
-   `info/meta.yaml` 里面有些字段需要手动填写
+   `info/meta.yaml` 里面有些字段需要手动填写：
 
    ```yaml
    # 插件ID，通常为 bkplugin_{组件名称}
@@ -185,7 +183,7 @@
 
 4. 完善 metrics.json
 
-   请根据实际上报指标和维度，定义 `info/metrics.json`，格式参考插件规范。样例如下
+   请根据实际上报指标和维度，定义 `info/metrics.json`，格式参考插件规范。样例如下：
 
    ```json
    {
@@ -215,7 +213,7 @@
 
 5. 完善 config.json
 
-    `info/config.json` 根据步骤 2 中模板预留的占位符定义参数，格式参考插件规范。样例如下，其中
+    `info/config.json` 根据步骤 2 中模板预留的占位符定义参数，格式参考插件规范。样例如下，其中：
 
    - `python_path` 必须提供
    - 其他参数为 `conf.yaml.tpl`中提供的占位符，mode 请填写 `opt_cmd` ，其余按实际情况填写
@@ -242,8 +240,7 @@
 
 6. 完善 description.md
 
-   `info/description.md` 描述这个插件。包括插件的用途、插件的参数列表及填写示例、插件的依赖等
-
+   `info/description.md` 描述这个插件。包括插件的用途、插件的参数列表及填写示例、插件的依赖等。
 
    **配置说明**
 
@@ -257,7 +254,7 @@
 
 8. 完善 project.yaml
 
-   以下三个字段需要自行完善
+   以下三个字段需要自行完善：
 
    - name
    - description
@@ -297,7 +294,7 @@
 
 ## 制作多操作系统的插件包
 
-将 4 中的步骤在不同操作系统上再操作一次，然后将这些目录合并，最终得到一个这样的目录结构
+将 4 中的步骤在不同操作系统上再操作一次，然后将这些目录合并，最终得到一个这样的目录结构。
 
 ```bash
 bkplugin_consul  --  根目录
@@ -307,10 +304,10 @@ bkplugin_consul  --  根目录
     └── bkplugin_consul
 ```
 
-进入到根目录下打包
+进入到根目录下打包。
 
 ```bash
 tar cvzf bkplugin_consul-1.1.tgz external_plugins_*
 ```
 
-至此，一个完整的插件包诞生了，可以在监控平台的插件管理页面进行导入
+至此，一个完整的插件包诞生了，可以在监控平台的插件管理页面进行导入。

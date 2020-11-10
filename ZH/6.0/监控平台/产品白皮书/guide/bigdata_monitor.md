@@ -1,5 +1,7 @@
 # 如何监控数据平台的数据
 
+> 企业版包含数据平台
+
 进入到数据平台的数据一般有如下情况：
 
 1. 很多数据是监控无法直接采集和获取到
@@ -19,9 +21,9 @@
 5. 告警配置
 6. 监控仪表盘
 
-> 说明: 1-4都是数据平台的功能，5-6是属于监控平台的功能。 本篇文档就是在说明两个平台之间的一些数据关系。
+> 说明：1-4都是数据平台的功能，5-6是属于监控平台的功能。本篇文档就是在说明两个平台之间的一些数据关系。
 
-解答一个问题: **在监控平台中如何识别数据平台中的指标和维度**
+解答一个问题：**在监控平台中如何识别数据平台中的指标和维度**
 
 ## 具体配置方法
 
@@ -31,13 +33,13 @@
 
 Tcaplus 是一个平台类服务，希望在 API 调用的代码里面添加运营数据统计，比如：指标为请求数，时延；维度是集群，业务，游戏区，表，机器，进程等
 
-* Q： 为什么不能通过日志或者采集插件主动采集上来？
+* Q：为什么不能通过日志或者采集插件主动采集上来？
     * 一个机器上的进程实例启动是动态变化的，如：游戏的开房
-* Q： 为什么一定要先入数据平台，而不是直接通过监控进行上报？
+* Q：为什么一定要先入数据平台，而不是直接通过监控进行上报？
     * 因为一个业务采集的数据就有150个指标，但用于告警的只有30个，其他指标还有运营分析的需求。
     * 数据是海量数据，通过 TCP 进行上报保证海量数据的接入和存储。
 
-以下是Tcaplus基于xml定义的结构化统计指标信息：
+以下是 Tcaplus 基于 xml 定义的结构化统计指标信息：
 
 ![-w2020](media/15816615915057.jpg)
 
@@ -88,7 +90,7 @@ ApiConnectTcaproxyCount=4&WriteReqErrNumPerMin=0&ReadRespWarnNumPerMin=0&
 
 然后分别对 TcaplusAPI 的3个数据源数据清洗的结果配置数据入库（数据入库可参考：[数据入库](http://docs.bkdata.oa.com/tencent/fu-wu-gong-neng-jie-shao/shu-ju-ji-cheng/shu-ju-ru-ku.html)），例如：OverallRunStatus 的数据入库：
 
-> 注意: 当前监控只支持MYSQL和Tspider的入库数据.Druid还在适配中. 
+> 注意：当前监控只支持 MySQL 和 Tspider的入库数据。Druid 还在适配中。
 
 ![-w2020](media/15816619757486.jpg)
 
@@ -102,18 +104,18 @@ ApiConnectTcaproxyCount=4&WriteReqErrNumPerMin=0&ReadRespWarnNumPerMin=0&
 
 ### 数据计算
 
-要如何才可以被监控发现指标和维度呢?有两个办法:
+要如何才可以被监控发现指标和维度呢?有两个办法：
 
-第一: 清洗表 简单的指标和维度辩识原则: 数据型为指标,字符串型为维度
+第一：清洗表，简单的指标和维度辩识原则： 数据型为指标，字符串型为维度
 
-> 注意: 如果清洗表设置维度可以满足需求,就可以跳过数据计算环节. 
+> 注意：如果清洗表设置维度可以满足需求，就可以跳过数据计算环节。
 > 清洗表如果数据有延迟并且需要汇聚就建立使用数据计算
-> 数据索引: 数据平台的是否有索引影响是查询效率 
+> 数据索引：数据平台的是否有索引影响是查询效率 
 
 
-第二: 通过数据计算转换成结果表,默认group by的字段为维度 （数据计算可参考：[数据计算](http://docs.bkdata.oa.com/tencent/fu-wu-gong-neng-jie-shao/shu-ju-kai-fa/bksqlhan-shu-ku/shi-shi-ji-suan.html)）。
+第二：通过数据计算转换成结果表，默认 group by 的字段为维度 （数据计算可参考：[数据计算](http://docs.bkdata.oa.com/tencent/fu-wu-gong-neng-jie-shao/shu-ju-kai-fa/bksqlhan-shu-ku/shi-shi-ji-suan.html)）。
 
-数据计算对于一些复杂的计算需求也可以通过数据计算来满足数据汇聚的一些需求.
+数据计算对于一些复杂的计算需求也可以通过数据计算来满足数据汇聚的一些需求。
 
 TcaplusAPI 分别为3张原始数据表配置了数据计算任务，计算结果存入结果表，用于后面告警计算。
 
@@ -137,9 +139,9 @@ select SetID, AppID, ZoneID, iIP, Pid,
 GROUP BY SetID, AppID, ZoneID, iIP, Pid
 ```
 
-数据计算后: group by 的字段默认成为维度. 如: `SetID, AppID, ZoneID, iIP, Pid` 会成为维度,其他的 `ApiMaxOnUpdateIntervalPerMin,AvailableTcapdirNum` 等这些是指标
+数据计算后：group by 的字段默认成为维度。如： `SetID, AppID, ZoneID, iIP, Pid` 会成为维度，其他的 `ApiMaxOnUpdateIntervalPerMin,AvailableTcapdirNum` 等这些是指标
 
-> 注意: 注意语法格式,同 MYSQL 的 SQL 一致.
+> 注意：注意语法格式，同 MYSQL 的 SQL 一致。
 
 检查数据计算的结果表有没有数据：
 
@@ -158,16 +160,16 @@ GROUP BY SetID, AppID, ZoneID, iIP, Pid
 
 打开监控应用
 
-在以下路径配置告警： 导航 → 监控配置 → 策略 → 新建，先配置要告警的指标项：
+在以下路径配置告警：导航  →  监控配置  →  策略  →  新建，先配置要告警的指标项：
 
 * 监控对象：选择其他
 * 添加监控指标，并在数据平台中选择对应的结果表数据和指标项
 
 ![-w2020](media/15816692057602.jpg)
 
-> 注意：监控识别指标维度是两种途径:
-> 第一: 清洗表设置维度,long类型会出现在指标列表,其他出现在维度列表.
-> 第二: 通过数据计算转换成结果表,默认group by的字段为维度
+> 注意：监控识别指标维度是两种途径：
+> 第一：清洗表设置维度，long 类型会出现在指标列表，其他出现在维度列表
+> 第二：通过数据计算转换成结果表，默认 group by 的字段为维度
 
 更多操作查看[策略配置功能介绍](../functions/conf/rules.md)
 
@@ -179,7 +181,7 @@ GROUP BY SetID, AppID, ZoneID, iIP, Pid
 
 ### 监控的仪表盘视图
 
-通过计算后的结果表数据在监控仪表盘也可以进行图表的展示 。
+通过计算后的结果表数据在监控仪表盘也可以进行图表的展示。
 
 更多查看[仪盘表功能介绍](../functions/report/new_dashboard.md)
 

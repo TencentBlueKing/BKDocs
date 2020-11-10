@@ -6,7 +6,7 @@
 
 2. 除了自带的主机、组件、拨测监控外，是否可以接入业务特性的数据？
 
-    答：可以，请使用[脚本采集](https://bk.tencent.com/docs/document/6.0/5/111)、[日志采集](https://bk.tencent.com/docs/document/6.0/5/112)，以及[组件的二次开发](https://bk.tencent.com/docs/document/6.0/5/119)功能。
+    答：可以，请使用[脚本采集](https://bk.tencent.com/docs/document/5.1/5/111)、[日志采集](https://bk.tencent.com/docs/document/5.1/5/112)，以及[组件的二次开发](https://bk.tencent.com/docs/document/5.1/5/119)功能。
 
 3. 是否可以设置监控平台的查看权限？
 
@@ -14,4 +14,4 @@
 
 4. 是否可以按照 CMDB 的拓扑分类查看基础性能指标？
 
-    答：可以，请使用主机监控页面的 [条件过滤](https://bk.tencent.com/docs/document/6.0/5/82) 功能。
+    答：可以，请使用主机监控页面的 [条件过滤](https://bk.tencent.com/docs/document/5.1/5/82) 功能。

@@ -33,7 +33,7 @@
 
 ### 对 IT 系统的自主掌控能力
 
-由于**对 IT 系统自主掌控能力的缺乏**，"正在更换 IT 系统" 和 "走向更换 IT 系统的路上，是部分中、大型企业在"互联网+"浪潮下积极拥抱互联网的现状。
+由于**对 IT 系统自主掌控能力的缺乏**，“正在更换 IT 系统”和“走向更换 IT 系统”的路上，是部分中、大型企业在“互联网+”浪潮下积极拥抱互联网的现状。
 
 鉴于这种情况，部分行业已明确已表明[2][3]必须加大对 IT 系统自主掌控的能力。
 
@@ -59,7 +59,7 @@
 
 ![-w319](../media/15266156093948.jpg)
 
-Prometheus Exporter 的社区很活跃[5]，支持 100+ 常见开源组件，部分大厂甚至专门编写对应的 Prometheus Exporter，比如 Oracle 编写的 Weblogic Exporter，IBM 编写的 IBM MQ exporter，k8s、etcd 甚至内置基于 Exporter 规范的 metrics。
+Prometheus Exporter 的社区很活跃[5]，支持 100+ 常见开源组件，部分大厂甚至专门编写对应的 Prometheus Exporter，比如 Oracle 编写的 Weblogic Exporter，IBM 编写的 IBM MQ Exporter，k8s、etcd 甚至内置基于 Exporter 规范的 metrics。
 
 按照这种方案，只需要做一个**协议转换**即可把指标入库。
 

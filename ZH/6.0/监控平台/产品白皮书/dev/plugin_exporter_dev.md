@@ -1,8 +1,8 @@
 # 监控平台 Exporter 开发
 
-当市面上没有找到相应的 exporter 采集器，或者现有的 exporter 不满足需求，可以自行修改或者重新开发一个 exporter，也是相对比较简单的事情。
+当市面上没有找到相应的 Exporter 采集器，或者现有的 Exporter 不满足需求，可以自行修改或者重新开发一个 Exporter，也是相对比较简单的事情。
 
-接下来简单介绍下如何开发一个 exporter 插件。
+接下来简单介绍下如何开发一个 Exporter 插件。
 
 ## 基础
 
@@ -48,7 +48,7 @@ sample_metric2{partition="c:"} 0.44
 
 ## 依赖
 
-* golang 语言环境
+* Golang 语言环境
 
 * 引入 Prometheus 的依赖库
 
@@ -58,9 +58,9 @@ sample_metric2{partition="c:"} 0.44
 
 ### 开发实例
 
-* (1)新建一个 exporter 项目：
+* (1)新建一个 Exporter 项目：
 
-    一个 exporter 只需要一个文件即可；新建一个 test_exporter 目录和一个 test_exporter.go 文件:
+    一个 Exporter 只需要一个文件即可；新建一个 test_Exporter 目录和一个 test_Exporter.go 文件：
 
 ![e1](../media/e1-1.png)
 
@@ -76,7 +76,7 @@ sample_metric2{partition="c:"} 0.44
     )
     ```
 
-* (3)定义 exporter 的版本(Version)、监听地址(listenAddress)、采集 url(metricPath)以及首页(landingPage)
+* (3)定义 Exporter 的版本(Version)、监听地址(listenAddress)、采集 url(metricPath)以及首页(landingPage)
 
     ```go
     var (
@@ -195,10 +195,10 @@ sample_metric2{partition="c:"} 0.44
     func main() {
     	//解析定义的监听端口等信息
     	flag.Parse()
-    	//生成一个Exporter类型的对象，该exporter需具有collect和Describe方法
-    	exporter := NewExporter()
-    	//将exporter注册入prometheus，prometheus将定期从exporter拉取数据
-    	prometheus.MustRegister(exporter)
+    	//生成一个Exporter类型的对象，该Exporter需具有collect和Describe方法
+    	Exporter := NewExporter()
+    	//将Exporter注册入prometheus，prometheus将定期从Exporter拉取数据
+    	prometheus.MustRegister(Exporter)
     	//接收http请求时，触发collect函数，采集数据
     	http.Handle(*metricPath, promhttp.Handler())
     	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -211,7 +211,7 @@ sample_metric2{partition="c:"} 0.44
 * (11)编译 Exporter
 
     ```go
-    go build test_exporter.go
+    go build test_Exporter.go
     ```
 
 * (12)cmd/shell 中运行即可，访问 `http://127.0.0.1:9601/metrics` 即可验证
@@ -220,23 +220,23 @@ sample_metric2{partition="c:"} 0.44
 
 至此 Exporter 开发完成，其中 8，9 两步中的函数是重点，目前仅仅写了一些数据进行示例，其中的监控指标获取数据就是该部分的主要功能，需要编写对应逻辑获取指标的值。
 
-### exporter 编译
+### Exporter 编译
 
-**监控平台 exporter 默认只支持 64 位机器运行 exporter。**
+**监控平台 Exporter 默认只支持 64 位机器运行 Exporter。**
 
-- windows
+- Windows
 
- `env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ./exporter-windows.exe test_exporter.go`
+ `env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ./Exporter-windows.exe test_Exporter.go`
 
-- linux
+- Linux
 
- `env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./exporter-linux test_exporter.go`
+ `env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./Exporter-linux test_Exporter.go`
 
 ###  封装监控平台插件
 
-- 定义 exporter 插件
+- 定义 Exporter 插件
 
-   (1) 基本信息填写并上传 exporter 文件
+   (1) 基本信息填写并上传 Exporter 文件
 
    (2) 设置参数
 
@@ -244,8 +244,10 @@ sample_metric2{partition="c:"} 0.44
 
    (4) 补充 logo.png 和描述文件
 
-- 调试，验证插件的正确性。
+- 调试，验证插件的正确性
 
-具体参考 [如何在线制作exporter插件](../guide/import_exporter.md)
+具体参考 [如何在线制作Exporter插件](../guide/import_Exporter.md)。
 
-还可以线下制作 exporter 插件包，具体查看 [插件配置文件说明](../functions/addenda/plugins_explain.md)
+还可以线下制作 Exporter 插件包，具体查看 [插件配置文件说明](../functions/addenda/plugins_explain.md)。
+
+

@@ -1,6 +1,6 @@
 # 主机-进程-指标
 
-| 指标 | 单位  | 备注 | 采集方式(linux) |
+| 指标 | 单位  | 备注 | 采集方式(Linux) |
 | --- | --- | --- | --- | --- |
 | Process.CPU | % | 进程当前占用 CPU 的使用率 | 从/proc/{pid}/stat中采集：获得采集间隔中，进程系统CPU总时间及用户CPU总时间，然后与上一次采集值对比的差值为当次进程CPU使用时间，使用率为当次CPU使用时间除以采集间隔(current_total_time - last_total_time) / (gap_time) |
 | Process.Mem | % | 进程当前占用内存的使用率 | 从/proc/{pid}/statm采集：使用当前进程的物理使用量除以机器整体物理内存量 |

@@ -2,7 +2,7 @@
 
 插件制作有线上制作方法，如果要快速线下制作也是非常的方便，需要了解下所有的插件配置说明。
 
-## exporter
+## Exporter
 
 ```bash
 ./                       # 压缩包根目录
@@ -94,8 +94,7 @@ type: Exporter  # 插件类型
 tag: xxxx       # 插件标签
 ```
 
-
-## PushGateway & Datadog & Built-In
+## PushGateway & DataDog & Built-In
 
 ```bash
 ./                       # 压缩包根目录

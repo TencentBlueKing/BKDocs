@@ -1,4 +1,4 @@
-# 组件监控启动 exporter 失败,fail to restart process
+# 组件监控启动 Exporter 失败，fail to restart process
 
 ## 问题描述
 
@@ -25,5 +25,5 @@ cd /usr/local/gse/external_collector/oracle_exporter
 
 然后根据具体的错误信息解决问题
 
-- 端口被占用：exporter 已经启动过，kill 掉进程重新下发即可
+- 端口被占用：Exporter 已经启动过，kill 掉进程重新下发即可
 - 对于 oracle 组件，一般是因为缺少`libclntsh.so`库

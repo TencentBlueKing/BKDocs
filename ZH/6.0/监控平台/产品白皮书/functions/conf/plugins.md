@@ -1,33 +1,33 @@
 # 插件制作
 
-所有的采集配置都需要先定义插件(除了内置插件 如日志),插件包含内置插件和自定义插件, 业务私有插件和公共插件,插件的本地采集和远程采集模式,支持不同的操作系统
+所有的采集配置都需要先定义插件(除了内置插件，如日志)，插件包含内置插件和自定义插件， 业务私有插件和公共插件，插件的本地采集和远程采集模式，支持不同的操作系统。
 
 ## 前置步骤
 
-> 注意： 对于 Linux 和 Windows 都默认只支持64位的操作系统。如果需要支持32位的操作系统，需要进行订制。
+> 注意：对于 Linux 和 Windows 都默认只支持64位的操作系统。如果需要支持32位的操作系统，需要进行订制。
 
-插件输出格式说明: 详细查看 [数据模型](../../concepts/datamodule.md#Promtheus的数据结构)之『监控平台支持Promtheus的数据结构』
+插件输出格式说明：详细查看 [数据模型](../../concepts/datamodule.md#Promtheus的数据结构)之『监控平台支持 Promtheus 的数据结构』。
 
 **工作原理**：
 
 ![-w2020](media/15767474716683.jpg)
 
-**术语解释**:
+**术语解释**：
 
-* **采集器**: Monitor Collector 监控内置的采集器,像 basereport 采集操作系统的指标, bkmonitorbeat 管理采集插件.
-* **采集插件**: 用户自定义的采集插件,可以基于标准要求进行无限扩展.
+* **采集器**： Monitor Collector 监控内置的采集器，像 basereport 采集操作系统的指标， bkmonitorbeat 管理采集插件。
+* **采集插件**： 用户自定义的采集插件，可以基于标准要求进行无限扩展。
 
-> 两者的区别,更多请查看[术语解释](../../concepts/glossary.md)
+> 两者的区别，更多请查看[术语解释](../../concepts/glossary.md)
 
 ## 主功能一览
 
-* 支持的操作系统： Linux、Windows、AIX6、AIX7
-* 支持的插件类型：exporter、Datadog 、 Script (Linux：Shell、Python、Perl、自定义，Windows：PowerShell、VBS、Python、自定义)、BK-pull 、JMX
-* 支持的运作方式： 公共插件、远程插件、官方插件
+* 支持的操作系统：Linux、Windows、AIX6、AIX7
+* 支持的插件类型：Exporter、DataDog、Script(Linux：Shell、Python、Perl、自定义，Windows：PowerShell、VBS、Python、自定义)、BK-Pull、JMX
+* 支持的运作方式：公共插件、远程插件、官方插件
 * 参数定义：命令行参数、环境变量、位置参数
 * 插件导入导出
 * 插件调试
-* 插件定义: LOGO,描述,指标维度单位等.
+* 插件定义：LOGO，描述，指标维度单位等
 
 ## 功能说明
 
@@ -35,11 +35,11 @@
 
 插件的制作分为几种情况：
 
-1. 在线定义，直接在 web 界面定义，比如：[如何使用开源的exporter](../../guide/import_exporter.md)
-2. 线下定义，线下将插件包制作好，直接导入，比如：[如何线下定义Datadog插件](../../guide/import_datadog_offline.md)
+1. 在线定义，直接在 web 界面定义，比如：[如何使用开源的 Exporter](../../guide/import_exporter.md)
+2. 线下定义，线下将插件包制作好，直接导入，比如：[如何线下定义 DataDog 插件](../../guide/import_datadog_offline.md)
 3. 采集程序本身的开发，比如：
-    * [exporter插件开发](../../dev/plugin_exporter_dev.md)
-    * [datadog插件开发](../../dev/plugin_datadog_dev.md)
+    * [Exporter 插件开发](../../dev/plugin_exporter_dev.md)
+    * [DataDog 插件开发](../../dev/plugin_datadog_dev.md)
 
 ### 插件导入和导出
 
@@ -47,15 +47,15 @@
 
 认证的插件可以批量导入
 
-> **！注意:**
-> 1) 官方插件因为默认是公共插件,只有管理员权限的才可以导入.
-> 2) 在菜单的配置导入导出也可以导出相关联的插件.
+> **注意：**
+> 1) 官方插件因为默认是公共插件，只有管理员权限的才可以导入
+> 2) 在菜单的配置导入导出也可以导出相关联的插件
 
 ### 在线制作插件
 
 **插件定义基本流程**：
 
-* **第一步: 插件定义**
+* **第一步： 插件定义**
     * 插件的基本信息：ID，别名，分类，是否为公共插件，是否支持远程
     * 插件主体内容：
         * 脚本/二进制程序/配置内容
@@ -64,36 +64,37 @@
 
 ![定义插件](media/15833902302710.jpg)
 
-> 注意: 公共插件只有平台权限才可以进行设置. 设置完就是全平台全业务可用.
+> 注意：公共插件只有平台权限才可以进行设置。设置完就是全平台全业务可用。
 
-* **第二步: 插件调试**
+* **第二步： 插件调试**
 
-   插件调试是为了确保插件的制作返回的数据是正常的.
+   插件调试是为了确保插件的制作返回的数据是正常的。
 
-   * 步骤:
+   * 步骤：
         * 参数填写
         * 选择调试机器
         * 调试过程
         * 设置指标和维度
         * 保存
-![-w2020](media/15833949594912.jpg)
+
+    ![-w2020](media/15833949594912.jpg)
 
 ![-w2020](media/15833949793387.jpg)
 
 #### 参数定义说明
 
-参数定义提供了三种方式： 命令行参数、位置参数、环境变量
+参数定义提供了三种方式：命令行参数、位置参数、环境变量。
 
 ##### 命令行参数
 
 最常见的参数定义方式。
 
-如redis_exporter的启动参数
+如 redis_exporter 的启动参数
 
-| Name           | Environment Variable Name | Description
-|----------------|---------------------------|-----------------
-| redis.addr     | REDIS_ADDR                | Address of the Redis instance, defaults to `redis://localhost:6379`.
-| redis.password | REDIS_PASSWORD            | Password of the Redis instance, defaults to `""` (no password).
+| Name           | Environment Variable Name | Description                                                          |
+| -------------- | ------------------------- | -------------------------------------------------------------------- |
+| redis.addr     | REDIS_ADDR                | Address of the Redis instance, defaults to `redis://localhost:6379`. |
+| redis.password | REDIS_PASSWORD            | Password of the Redis instance, defaults to `""` (no password).      |
 
 如定义 `--redis.addr  redis://localhost:6379`
 
@@ -103,7 +104,7 @@
 * 默认值：文本  `redis://localhost:6379`
 * 参数说明：Address of the Redis instance, defaults to `redis://localhost:6379`
 
-更多完整的 redis_exporter 的插件制作查看 [如何使用开源的exporter在线制作插件](../../guide/import_exporter.md)
+更多完整的 redis_exporter 的插件制作查看 [如何使用开源的Exporter在线制作插件](../../guide/import_exporter.md)
 
 ##### 位置参数
 
@@ -130,13 +131,13 @@ redis-cli -h $1 -p $2
 
 在程序里面使用的是环境变量来获取的内容。就使用环境变量参数定义。
 
-比如在程序中直接获取环境变量中的变量,想让这个变量可以由插件的使用者来设置 `os.getenv('PYTHONPATH')`
+比如在程序中直接获取环境变量中的变量，想让这个变量可以由插件的使用者来设置 `os.getenv('PYTHONPATH')`
 
 那么可以这样设置：选择环境变量
 
 * 参数名称：`PYTHONPATH`
 * 默认值：文本 `/usr/bin/python`
-* 参数说明：`python的路径 默认为/usr/bin/python`
+* 参数说明：`Python 的路径 默认为/usr/bin/python`
 
 #### Script插件定义
 
@@ -162,28 +163,27 @@ Exporter 是用于暴露第三方服务的 metrics 给 Prometheus。是 Promethe
 
 ![-w2020](media/15794940142991.jpg)
 
-* [如何使用开源的exporter采集能力](../../guide/import_exporter.md)
+* [如何使用开源的 Exporter 采集能力](../../guide/import_exporter.md)
 
-#### Datadog插件定义
+#### DataDog插件定义
 
 ![-w2020](media/15794940751608.jpg)
 
-* [如何使用开源的datadog采集能力](../../guide/import_datadog_online.md)
+* [如何使用开源的 DataDog 采集能力](../../guide/import_datadog_online.md)
 
 #### JMX插件定义
 
-JMX 可以采集任何开启了 JMX 服务端口的 java 进程的服务状态，通过 jmx 采集 java 进程的 jvm 信息，
+JMX 可以采集任何开启了 JMX 服务端口的 java 进程的服务状态，通过 JMX 采集 java 进程的 jvm 信息，
 
 包括 gc 耗时、gc 次数、gc 吞吐、老年代使用率、新生代晋升大小、活跃线程数等信息。
 
 ![-w2020](media/15794940240535.jpg)
 
-
 * [如何定义一个JMX的插件](../../guide/plugin_jmx.md)
 
-#### BK-pull插件定义
+#### BK-Pull插件定义
 
-BK-pull 主要是解决那些只暴露了端口服务的数据源。 通过 pull 拉取目标的数据。
+BK-Pull 主要是解决那些只暴露了端口服务的数据源。通过 pull 拉取目标的数据。
 
 ![-w2020](media/15794940929248.jpg)
 
@@ -193,7 +193,7 @@ BK-pull 主要是解决那些只暴露了端口服务的数据源。 通过 pull
 
 ![-w2020](media/15794941254275.jpg)
 
- * [如何在不安装蓝鲸agent情况下实现监控](../../guide/noagent_monitor.md)
+ * [如何在不安装蓝鲸Agent情况下实现监控](../../guide/noagent_monitor.md)
 
 #### 公共插件定义
 
@@ -205,14 +205,14 @@ BK-pull 主要是解决那些只暴露了端口服务的数据源。 通过 pull
 
 ### 线下制作插件
 
-插件完全也可以通过线下制作直接进入导入,线下插件制作主要清楚各种插件的配置内容及关系.
+插件完全也可以通过线下制作直接进入导入，线下插件制作主要清楚各种插件的配置内容及关系。
 
 * [插件配置说明](../../functions/addenda/plugins_explain.md)
-* [如何线下定义Datadog插件](../../guide/import_datadog_offline.md)
+* [如何线下定义DataDog插件](../../guide/import_datadog_offline.md)
 
 ### 升级插件
 
-每次修改插件都会进行版本的记录，版本记录分为两类。如：x.y 。升级插件的动作在编辑完插件完后在采集配置中会有相应的升级提醒。
+每次修改插件都会进行版本的记录，版本记录分为两类。如：x.y。升级插件的动作在编辑完插件完后在采集配置中会有相应的升级提醒。
 
 > 注意：x 和 y 都是各自变化，不受影响。
 
@@ -229,5 +229,3 @@ BK-pull 主要是解决那些只暴露了端口服务的数据源。 通过 pull
 - 插件描述
 - 插件别名
 - LOGO
-
-

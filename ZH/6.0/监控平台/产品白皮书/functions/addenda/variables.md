@@ -4,7 +4,7 @@
 
 ##  变量格式说明
 
-Jinja2 是一个现代的，设计者友好的，仿照 Django 模板的 Python 模板语言。 它速度快，被广泛使用，并且提供了可选的沙箱模板执行环境保证安全:
+Jinja2 是一个现代的，设计者友好的，仿照 Django 模板的 Python 模板语言。它速度快，被广泛使用，并且提供了可选的沙箱模板执行环境保证安全：
 
 ```html
 <title>{% block title %}{% endblock %}</title>
@@ -22,7 +22,7 @@ Jinja2 是一个现代的，设计者友好的，仿照 Django 模板的 Python 
 | 变量                   | 名称             | 示例                |
 | ---------------------- | ---------------- | -------------------|
 | alarm.target_string    | 告警目标         | 10.0.1.10,10.0.1.11 |
-| alarm.dimension_string | 告警维度(除目标) | 磁盘=C,主机名=xxx   |
+| alarm.dimension_string | 告警维度(除目标) | 磁盘=C，主机名=xxx   |
 | alarm.collect_count    | 汇总事件数量     | 10                  |
 | alarm.notice_from      | 消息来源         | 监控平台            |
 | alarm.company          | 企业标识         | 蓝鲸                |
@@ -97,7 +97,7 @@ CMDB 变量在采集的参数中也是可以使用的。
 | target.host.bk_host_innerip        | 内网IP                | 10.0.0.1    |
 | target.host.bk_host_outerip        | 外网IP                | 10.0.1.11   |
 | target.host.bk_host_name           | 主机名                |             |
-| target.host.bk_os_name             | 操作系统名称          | linux       |
+| target.host.bk_os_name             | 操作系统名称          | Linux       |
 | target.host.bk_os_type             | 操作系统类型(枚举数值) | 1           |
 | target.host.operator_string        | 负责人                | admin,user1 |
 | target.host.bk_bak_operator_string | 备份负责人            | admin,user1 |

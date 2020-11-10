@@ -10,7 +10,7 @@
 
 ## 2. 检查进程
 
-agent 机器：有进程则 ok
+Agent 机器：有进程则 ok
 
 ### 2.1 Linux
 
@@ -34,7 +34,7 @@ agent 机器：有进程则 ok
 
 ## 4. 检查连接
 
-agent 机器：有正常连接 ESTABLISHED 则 ok
+Agent 机器：有正常连接 ESTABLISHED 则 ok
 
 ### 4.1 Linux
 
@@ -71,9 +71,7 @@ get /gse/config/etc/dataserver/data/1001
 	{"server_id": -1, "data_set": "snapshot", "partition": 1, "cluster_ind	ex": 0, "biz_id": 2, "msg_system": 1}
 ```
 
-topic 为 data_set 和 biz_id 组成，则
-topic=snapshot2
-能获取到 topic 则 OK
+topic 为 data_set 和 biz_id 组成，则 topic=snapshot2 能获取到 topic 则 OK
 
 ## 6. 检查数据
 
@@ -97,4 +95,5 @@ ls -l
 ```
 
 看有没有 gse_datapid 开头命名的日志
+
 若有，tail 查看日志内容
