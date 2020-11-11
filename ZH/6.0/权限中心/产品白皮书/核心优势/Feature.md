@@ -1,10 +1,10 @@
 # 核心优势
 
-蓝鲸权限中心是基于ABAC强大权限模型，结合蓝鲸体系内各种业务场景而研发的通用的权限管控产品，可以满足各种业务场景的权限管控场景。
+蓝鲸权限中心是基于 ABAC 强大权限模型，结合蓝鲸体系内各种业务场景而研发的通用的权限管控产品，可以满足各种业务场景的权限管控场景。
 
 ## 强大的权限模型引擎
 
-蓝鲸权限中心底层基于业界功能最强大的ABAC(Attribute-Based Access Control)，即基于属性的访问控制，同时也融合了ACL(Access Control List)、RBAC(Role-Based Access Control)、LBAC(Label-Based Access Control)的理念，使得蓝鲸权限中心能够支持尽可能丰富的业务权限场景。
+蓝鲸权限中心底层基于业界功能最强大的 ABAC(Attribute-Based Access Control)，即基于属性的访问控制，同时也融合了 ACL(Access Control List)、RBAC(Role-Based Access Control)、LBAC(Label-Based Access Control)的理念，使得蓝鲸权限中心能够支持尽可能丰富的业务权限场景。
 
 ## 细粒度的权限控制
 

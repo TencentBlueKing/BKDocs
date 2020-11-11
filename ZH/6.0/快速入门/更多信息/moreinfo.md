@@ -4,7 +4,7 @@
 
 - 部署维护：蓝鲸支持多机部署，详见[部署维护](6.0/部署维护/README.md)的内容。
 
-- 场景案例：为了方便用户获取蓝鲸软件的最佳实践，提供了覆盖CI、CD、CO领域的[实践案例](6.0/bk_solutions/Getting_started/Getting_started.md)。
+- 场景案例：为了方便用户获取蓝鲸软件的最佳实践，提供了覆盖 CI、CD、CO 领域的[实践案例](6.0/bk_solutions/Getting_started/Getting_started.md)。
 
 - 开发指南：软件支持私有化部署，提供的是通用的服务，若需要进行定制化服务，提供了[二次开发](6.0/开发指南/开发简介/README.md)的教程。
 
