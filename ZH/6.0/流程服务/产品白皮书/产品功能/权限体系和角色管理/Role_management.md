@@ -24,6 +24,3 @@
 
 删除会有二次确认提醒。
 
-![](../../media/d0edaad9cfba7474efa57ccc3028008f.jpg)
-
-<center>【流程服务】后台管理示意图</center>
