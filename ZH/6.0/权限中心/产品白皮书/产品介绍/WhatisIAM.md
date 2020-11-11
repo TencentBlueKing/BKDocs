@@ -7,5 +7,3 @@
 ## 产品架构图
 
 ![BKIAM产品架构图](WhatisIAM/BKIAM产品架构图.png)
-
-  

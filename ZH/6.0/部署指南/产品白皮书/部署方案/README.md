@@ -1,5 +1,3 @@
-[toc]
-
 # 社区版 6.0 基础包快速部署
 
 ## 一、安装环境准备
@@ -16,15 +14,15 @@
 ### 1.2 获取证书
 
 - 通过 `ifconfig` 或者 `ip addr` 命令分别获取三台机器第一个内网网卡 MAC 地址
-- 前往蓝鲸官网证书生成页面([https://bk.tencent.com/download_ssl/](https://bk.tencent.com/download_ssl/))，根据提示在输入框中填入英文分号分隔的三个 MAC 地址，生成并下载证书
+- 前往蓝鲸官网证书生成页面（[https://bk.tencent.com/download_ssl/](https://bk.tencent.com/download_ssl/)），根据提示在输入框中填入英文分号分隔的三个 MAC 地址，生成并下载证书
 - 上传证书包至中控机 `/data`
-   - 证书包名：ssl_certificates.tar.gz
+   - 证书包包名：ssl_certificates.tar.gz
 
 ### 1.3 下载安装包
 
 - 下载安装包，选择 6.0.0 版本：[https://bk.tencent.com/download/](https://bk.tencent.com/download/)
 - 上传安装包至中控机 `/data `
-    - 完整包名：bkce_src-6.0.0.tgz
+    - 完整包包名：bkce_src-6.0.0.tgz
 
 
 ### 1.4 解压相关资源包
@@ -61,7 +59,7 @@
 1. 生成 install.config
 
    ```bash
-   # 请根据实际机器的IP 进行替换第一列的示例IP地址，三个内网IP保证能互相通信
+   # 请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
    cat << EOF >/data/install/install.config
    10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana)
    10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk
@@ -79,7 +77,7 @@
 
 ### 2.1 初始化操作
 
-2.1.1 执行初始化操作
+1. 执行初始化操作
 
 ```bash
 # 快速部署暂不支持自定义安装目录
@@ -87,7 +85,7 @@ cd /data/install/
 ./bk_install common
 ```
 
-2.1.2 检查相关配置
+2. 检查相关配置
 
 ```bash
 ./health_check/check_bk_controller.sh
@@ -129,13 +127,13 @@ cd /data/install/
 ./bk_install bkmonitorv3
 ```
 
-### 2.8 部署 bklog （日志平台)
+### 2.8 部署 bklog（日志平台)
 
 ```bash
 ./bk_install bklog
 ```
 
-### 2.9 部署 fta (故障自愈后台)
+### 2.9 部署 fta（故障自愈后台）
 
 ```bash
 ./bk_install fta
@@ -143,7 +141,7 @@ cd /data/install/
 
 ### 2.10 部署 SaaS
 
-请逐条复制单步执行以下部署 SaaS 命令：
+请按顺序执行：
 ```bash
 # 权限中心
 ./bk_install saas-o bk_iam
@@ -159,8 +157,6 @@ cd /data/install/
 
 ### 2.11 检测相关服务状态
 
-请逐条复制单步执行以下服务状态检测脚本：
-
 ```bash
 cd /data/install/
 echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli check
@@ -170,23 +166,29 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 
 ![](../images/paas_status.png)
 
-## 三、配置本地 hosts 并登陆蓝鲸社区版工作台
-### 3.1 配置本地 hosts 文件
+## 三、访问蓝鲸
 
-查找 nginx 与 nodeman 模块所在的机器 IP，并在需访问的个人电脑端配置 hosts 文件
+### 3.1 配置本地 hosts
 
-![](../images/install_config.png)
+> 下面介绍的操作均可能覆盖现有 hosts ，进行操作前请先确认是否需要备份。
 
-示例：
-
+1. Windows 配置
+用文本编辑器（如`Notepad++`）打开文件：
+`C:\Windows\System32\drivers\etc\hosts`
+将以下内容内容复制到上述文件内并保存，以下 IP 须更换为本机浏览器可以访问的 IP。
 ```bash
-# IP 为 nginx 所在机器的外网 IP（本机浏览器可以访问的IP）
 10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
-# IP 为 nodeman 所在机器的外网 IP（本机浏览器可以访问的IP）
+10.0.0.3 nodeman.bktencent.com
+```
+> 注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -> “安全”，然后选择你登陆的用户名，最后点击编辑，勾选“写入”即可。
+2. Linux / Mac OS 配置
+将以下内容全部内容复制到 `/etc/hosts`中并保存，以下 IP 须更换为本机浏览器可以访问的 IP。
+```bash
+10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
 10.0.0.3 nodeman.bktencent.com
 ```
 
-### 3.2 默认自动生成的管理员账号和密码查找
+### 3.2 获取管理员账户名密码
 
 在任意一台机器上，执行以下命令，获取管理员账号和密码
 
@@ -194,6 +196,8 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-final/usermgr.env
 ```
 
-完成以后以上步骤后，访问蓝鲸 (http://paas.bktencent.com)开始使用。
+### 3.3 访问蓝鲸开始使用
+
+> 默认蓝鲸工作台入口：[http://paas.bktencent.com](http://paas.bktencent.com)
 
 ![](../images/login.png)
