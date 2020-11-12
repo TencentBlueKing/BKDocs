@@ -67,7 +67,7 @@
    EOF
    ```
 
-2. 对  install.config  中的主机配置中控机ssh登录免密。根据提示，依次输入每台机器的root密码
+2. 对  install.config  中的主机配置中控机 ssh 登录免密。根据提示，依次输入每台机器的 root 密码
 
    ```bash
    bash /data/install/configure_ssh_without_pass
@@ -155,7 +155,54 @@ cd /data/install/
 ./bk_install saas-o bk_fta_solutions
 ```
 
-### 2.11 检测相关服务状态
+### 2.11 初始化蓝鲸业务拓扑
+
+```bash
+./bkcli initdata topo
+````
+
+部署完成后，在中控机 <进行部署操作的机器> 上 source 一下 .bashrc 文件。
+
+```bash
+source ~/.bashrc
+```
+
+### 2.12 初始化节点管理操作
+
+- 安装蓝鲸后台机器的 Agent。
+
+    蓝鲸社区版 6.0 部署完成后，默认不会将蓝鲸后台相关机器安装好 gse_agent，所以需要手动前往节点管理页面安装。
+
+- 初始化节点管理配置。
+
+    手动添加节点管理的回调地址，如果此地址为空，会影响 Proxy 的安装。
+
+```bash
+# 修改配置文件
+vim /data/bkce/bknodeman/nodeman/bin/environ.sh
+```
+
+`nodeman.bktencent.com` 处原本为空，需要手动添加并使用实际的节点管理域名进行替换。
+
+```bash
+# 节点管理公网回调地址
+
+if [ "" == "" ]; then
+    bkapp_nodeman_outer_callback_url="http://nodeman.bktencent.com/backend"  
+else
+    bkapp_nodeman_outer_callback_url=""
+fi
+
+```
+
+修改完成后手动重启节点管理服务。
+
+```bash
+systemctl restart bk-nodeman.service
+```
+
+
+### 2.13 检测相关服务状态
 
 ```bash
 cd /data/install/
