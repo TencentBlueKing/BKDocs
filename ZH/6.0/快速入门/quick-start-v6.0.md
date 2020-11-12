@@ -1,6 +1,8 @@
 # 快速入门
 
 > 如还未部署蓝鲸社区版，请参考[社区版 6.0 基础包快速部署](https://bk.tencent.com/docs/document/6.0/127/5830)
+> 
+> 点击进入[蓝鲸官方文档在线访问-快速入门](https://bk.tencent.com/docs/document/6.0/142/7346)
 
 ## 一分钟感性认识蓝鲸社区版
 
@@ -28,8 +30,8 @@
 
 | 产品                                                         | 功能简述                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [用户管理](https://bk.tencent.com/docs/markdown/用户管理/产品白皮书/产品白皮书/产品简介/README.md) | 蓝鲸提供的企业组织架构、多用户目录等集中的用户管理解决方案   |
-| [权限中心](https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/产品白皮书/产品简介/README.md) | 蓝鲸体系集中权限管理服务，细化到资源实例级别的访问权限控制   |
+| [用户管理](https://bk.tencent.com/docs/markdown/用户管理/产品白皮书/产品简介/README.md) | 蓝鲸提供的企业组织架构、多用户目录等集中的用户管理解决方案   |
+| [权限中心](https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/产品简介/README.md) | 蓝鲸体系集中权限管理服务，细化到资源实例级别的访问权限控制   |
 | [配置平台](https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品简介/Overview.md) | 提供主机、进程、模型等各种运维场景的配置数据服务管理，是蓝鲸体系的基石 |
 | [节点管理](https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Overview.md) | 批量快速地部署蓝鲸 Agent，覆盖 Linux、Windows 操作系统     |
 | [作业平台](https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Introduction/What-is-Job.md) | 提供批量脚本执行、文件分发、文件拉取、定时任务等基础操作的原子平台 |
