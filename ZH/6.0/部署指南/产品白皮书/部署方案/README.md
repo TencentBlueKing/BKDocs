@@ -159,9 +159,9 @@ cd /data/install/
 
 ```bash
 ./bkcli initdata topo
-````
+```
 
-### 2.12 部署完成后，在中控机 <进行部署操作的机器> 上重新加载 .bashrc
+### 2.12 加载蓝鲸相关维护命令
 
 ```bash
 source ~/.bashrc
