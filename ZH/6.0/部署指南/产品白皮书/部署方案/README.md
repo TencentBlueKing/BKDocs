@@ -161,46 +161,11 @@ cd /data/install/
 ./bkcli initdata topo
 ````
 
-部署完成后，在中控机 <进行部署操作的机器> 上 source 一下 .bashrc 文件。
+## 2.12 部署完成后，在中控机 <进行部署操作的机器> 上重新加载 .bashrc
 
 ```bash
 source ~/.bashrc
 ```
-
-### 2.12 初始化节点管理操作
-
-- 安装蓝鲸后台机器的 Agent。
-
-    蓝鲸社区版 6.0 部署完成后，默认不会将蓝鲸后台相关机器安装好 gse_agent，所以需要手动前往节点管理页面安装。
-
-- 初始化节点管理配置。
-
-    手动添加节点管理的回调地址，如果此地址为空，会影响 Proxy 的安装。
-
-```bash
-# 修改配置文件
-vim /data/bkce/bknodeman/nodeman/bin/environ.sh
-```
-
-`nodeman.bktencent.com` 处原本为空，需要手动添加并使用实际的节点管理域名进行替换。
-
-```bash
-# 节点管理公网回调地址
-
-if [ "" == "" ]; then
-    bkapp_nodeman_outer_callback_url="http://nodeman.bktencent.com/backend"  
-else
-    bkapp_nodeman_outer_callback_url=""
-fi
-
-```
-
-修改完成后手动重启节点管理服务。
-
-```bash
-systemctl restart bk-nodeman.service
-```
-
 
 ### 2.13 检测相关服务状态
 
@@ -208,10 +173,6 @@ systemctl restart bk-nodeman.service
 cd /data/install/
 echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli check
 ```
-
-示例：
-
-![](../images/paas_status.png)
 
 ## 三、访问蓝鲸
 
@@ -252,3 +213,13 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 登陆成功后即可看到 PaaS 平台应用列表页面。
 
 ![](../images/paas_home.png)
+
+### 3.4 安装蓝鲸部署机器的 gse agent
+
+> 默认节点管理入口：[http://paas.bktencent.com/o/bk_nodeman](http://paas.bktencent.com/o/bk_nodeman)
+
+请前往节点管理 SaaS 安装蓝鲸部署机器的 gse agent，安装方法详见[]()
+
+### 3.5 快速上手使用
+
+请参考：[一分钟快速入门蓝鲸社区版](https://bk.tencent.com/docs/document/6.0/142/7346)
