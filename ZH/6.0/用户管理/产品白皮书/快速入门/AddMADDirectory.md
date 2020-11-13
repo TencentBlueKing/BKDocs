@@ -1,6 +1,6 @@
-# 创建 MAD 目录
+# 如何对接已有的 MAD 用户体系
 
-本文介绍如何创建 Microsoft Active Directory(MAD) 目录，并且同步 MAD 用户到用户管理。
+本章节介绍如何创建 Microsoft Active Directory(MAD) 目录，并且同步 MAD 用户到用户管理。
 
 ##前置条件
 
