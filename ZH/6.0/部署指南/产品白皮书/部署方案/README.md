@@ -161,7 +161,7 @@ cd /data/install/
 ./bkcli initdata topo
 ````
 
-## 2.12 部署完成后，在中控机 <进行部署操作的机器> 上重新加载 .bashrc
+### 2.12 部署完成后，在中控机 <进行部署操作的机器> 上重新加载 .bashrc
 
 ```bash
 source ~/.bashrc
@@ -218,8 +218,8 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 
 > 默认节点管理入口：[http://paas.bktencent.com/o/bk_nodeman](http://paas.bktencent.com/o/bk_nodeman)
 
-请前往节点管理 SaaS 安装蓝鲸部署机器的 gse agent，安装方法详见[]()
+请前往节点管理 SaaS 安装蓝鲸部署机器的 gse agent，安装方法详见 [安装蓝鲸 Agent](../../../节点管理/产品白皮书/QuickStart/DefaultAreaInstallAgent.md)
 
 ### 3.5 快速上手使用
 
-请参考：[一分钟快速入门蓝鲸社区版](https://bk.tencent.com/docs/document/6.0/142/7346)
+请参考：[快速入门](../../../快速入门/quick-start-v6.0.md)
