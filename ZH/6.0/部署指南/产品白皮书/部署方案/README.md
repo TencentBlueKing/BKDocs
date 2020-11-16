@@ -44,7 +44,7 @@
 
     ```bash
     install -d -m 755 /data/src/cert
-    tar xf ssl_certificates.tar.gz -C /data/src/cert/
+    tar xf /data/ssl_certificates.tar.gz -C /data/src/cert/
     chmod 644 /data/src/cert/*
     ```
     
@@ -183,14 +183,21 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 1. Windows 配置
 用文本编辑器（如`Notepad++`）打开文件：
 `C:\Windows\System32\drivers\etc\hosts`
-将以下内容内容复制到上述文件内并保存，以下 IP 须更换为本机浏览器可以访问的 IP。
+将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 ```bash
 10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
 10.0.0.3 nodeman.bktencent.com
 ```
+**注意：** 10.0.0.2 为 nginx 模块所在的机器，10.0.0.3 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。查询模块所分布在机器的方式：
+
+```bash
+grep -E "nginx|nodeman" /data/install/install.config
+```
+
 > 注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -> “安全”，然后选择你登陆的用户名，最后点击编辑，勾选“写入”即可。
-2. Linux / Mac OS 配置
-将以下内容全部内容复制到 `/etc/hosts`中并保存，以下 IP 须更换为本机浏览器可以访问的 IP。
+
+1. Linux / Mac OS 配置
+将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 ```bash
 10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
 10.0.0.3 nodeman.bktencent.com
@@ -198,7 +205,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 
 ### 3.2 获取管理员账户名密码
 
-在任意一台机器上，执行以下命令，获取管理员账号和密码
+在任意一台机器上，执行以下命令，获取管理员账号和密码。
 
 ```bash
 grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-final/usermgr.env
@@ -214,12 +221,6 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 
 ![](../images/paas_home.png)
 
-### 3.4 安装蓝鲸部署机器的 gse agent
-
-> 默认节点管理入口：[http://paas.bktencent.com/o/bk_nodeman](http://paas.bktencent.com/o/bk_nodeman)
-
-请前往节点管理 SaaS 安装蓝鲸部署机器的 gse agent，安装方法详见 [安装蓝鲸 Agent](../../../节点管理/产品白皮书/QuickStart/DefaultAreaInstallAgent.md)
-
-### 3.5 快速上手使用
+### 3.4 快速上手使用
 
 请参考：[快速入门](../../../快速入门/quick-start-v6.0.md)
