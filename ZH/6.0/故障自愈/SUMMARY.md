@@ -22,7 +22,7 @@
         * [带审批 Ping 告警组合套餐接入流程](产品白皮书/场景案例/Approval_of_ping_alarm_combination_package_access_process.md)
         * [组合套餐在故障替换场景中的应用](产品白皮书/场景案例/ping_Unreachable_fault_replacement_package.md)
         * [上下文传参](产品白皮书/场景案例/Context_Parameters.md)
-        * [套餐内置变量](产品白皮书/场景案例/BK_36.md)
+        * [套餐内置变量](产品白皮书/场景案例/进阶场景/BK_36.md)
         * [收敛规则大全](产品白皮书/场景案例/Convergence_Rules.md)
         * [告警通知渠道](产品白皮书/场景案例/Notification.md)
     * [社区用户分享](产品白皮书/场景案例/Community_users_share_cases.md)
