@@ -14,4 +14,4 @@
 
 - [前端套餐样例库](https://magicbox.bk.tencent.com/static_api/v3/index.html#templates)：提供成套的样例页面，即拿即用。
 
-- [蓝鲸前端开发脚手架(BKUI_CLI)](https://bk.tencent.com/docs/document/6.0/19/583)：基于 Vue.js 研发的一键构建蓝鲸体系前端工程的脚手架工具，包括了基础工程化能力、基础 mock 服务、蓝鲸前端Vue组件库等。
+- [蓝鲸前端开发脚手架(BKUI_CLI)](https://bk.tencent.com/docs/document/5.1/19/583)：基于 Vue.js 研发的一键构建蓝鲸体系前端工程的脚手架工具，包括了基础工程化能力、基础 mock 服务、蓝鲸前端Vue组件库等。
