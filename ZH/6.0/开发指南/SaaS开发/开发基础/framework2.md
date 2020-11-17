@@ -402,23 +402,30 @@ logger.error('log your info here.')
 
 - 日志级别配置：
 
-日志级别默认是 INFO，如需修改，请在 config/default.py 或者 config/prod.py(只影响生产环境)、config/stag.py(只影响预发布环境)、config/dev.py(只影响预本地开发环境)中添加如下代码。
+日志级别默认是 INFO，如需修改： 
 
-```python
-import logging
-logger = logging.getLogger('app')
-logger.setsetLevel('DEBUG')
-logger.setsetLevel('INFO')
-logger.setsetLevel('WARNING')
-logger.setsetLevel('ERROR')
-logger.setsetLevel('CRITICAL')
-logger_celery = logging.getLogger('celery')
-logger_celery.setsetLevel('DEBUG')
-logger_celery.setsetLevel('INFO')
-logger_celery.setsetLevel('WARNING')
-logger_celery.setsetLevel('ERROR')
-logger_celery.setsetLevel('CRITICAL')
-```
+1. 所有环境下的日志级别，请在 config/default.py 对应位置修改日志级别：
+   ```python
+   LOG_LEVEL = "DEBUG"
+   # load logging settings
+   LOGGING = get_logging_config_dict(locals())
+   ```
+
+2. 如果只希望针对特定环境进行日志级别设置，则在对应环境配置文件（ config/prod.py（只影响生产环境）、config/stag.py（只影响预发布环境）、config/dev.py（只影响预本地开发环境））中取消对应代码注释并修改日志级别：
+   ```python
+   # 自定义本地环境日志级别
+   from blueapps.conf.log import set_log_level # noqa
+   LOG_LEVEL = "DEBUG"
+   LOGGING = set_log_level(locals())
+   ```
+    __注意__: 这种修改方式依赖 blueapps版本 >= 3.3.1。
+
+其中，不同配置的含义如下：
+1. DEBUG：用于调试目的的底层系统信息
+2. INFO：普通的系统信息
+3. WARNING：表示出现一个较小的问题。
+4. ERROR：表示出现一个较大的问题。
+5. CRITICAL：表示出现一个致命的问题。
 
 ## 异常处理
 
