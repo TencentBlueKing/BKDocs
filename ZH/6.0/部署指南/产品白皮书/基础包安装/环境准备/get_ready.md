@@ -119,76 +119,13 @@ echo "$http_proxy" "$https_proxy"
 对于本机配置 http_proxy 变量的方式，请依次查找文件 /etc/profile、/etc/bashrc、$HOME/.bashrc 等是否有设置。
 或者咨询网络管理员/IT 部门协助处理。
 
-在这些主机中，选择任意一台机器作为蓝鲸的运维中控机。之后的安装命令执行，如果没有特别说明，均在这台中控机上执行。
-
-将下载的蓝鲸社区版完整包上传到中控机，并解压到 **同级** 目录下。以解压到 `/data` 目录为例：
-
-```bash
-tar xf bkce_src-6.0.0.tgz -C /data
-```
-
-解压之后，得到两个目录：src，install
-
-- src：存放蓝鲸产品软件，以及依赖的开源组件
-
-- install：存放安装部署脚本、安装时的参数配置、日常运维脚本等
-
-8\. 检查 resolv.conf 是否有修改权限
-
-检查 /etc/resolv.conf 是否被加密无法修改(即便是 root)，执行如下命令，检查是否有 “i” 加密字样：
-
-```bash
-lsattr /etc/resolv.conf
-----i--------e-- /etc/resolv.conf
-```
-
-如果有则执行命令，临时解密处理，执行如下命令：
-
-```bash
-chattr -i /etc/resolv.conf
-```
-
-需要注意，在 resolv.conf 配置文件的首行，即第一个 DNS 地址需为 127.0.0.1，如下所示：
-
-```bash
-nameserver 127.0.0.1
-nameserver 192.168.1.100
-nameserver 192.168.2.100
-```
-
-> 备注说明：resolv 配置文件无需人工修改内容，后续安装脚本会自动为主机进行配置 127.0.0.1，因此只需检查是否允许修改即可。关于首行需要 127.0.0.1，这是由于后面蓝鲸内部组件的调用所需，域名通过 consul 解析，会探测服务运行状态，然后返回 IP 地址，
-> 例如访问 es，那么内部需要解析 es.service.consul 等，若首行不是 127.0.0.1，否则这些域名就通过外网去解析，无法返回正确的响应，导致服务运行异常，或者 SaaS 无法正常打开等情况。
-
-9. 检查部署机器的主机名
+8\. 检查部署机器的主机名
 
 请检查准备用于部署蓝鲸的 3 台机器的主机名是否相同。如果存在同名请进行修改。
 
 ```bash
 hostname
 ```
-
-## 配置文件
-
-### install.config
-
-`install.config` 是模块和服务器对应关系的配置文件，描述在哪些机器上安装哪些模块。
-
-每行两列，第一列是 IP 地址；第二列是以英文逗号分隔的模块名称。
-
-详情参考`install.config.3IP.sample`文件(可将 install.config.3IP.sample 复制为 install.config)。
-
-```bash
-10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana)
-10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk
-10.0.0.3 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman)
-```
-
-说明:
-- 该配置文件，IP 后面使用空格与服务名称隔开，含有多个内网 IP 的机器，默认使用 /sbin/ifconfig 输出中的第一个内网 IP，在 IP 后面写上该机器要安装的服务列表即可，部署过程中默认使用标准私有地址，若企业环境使用非标准私有地址，请参考 [本章后续内容-非标准私有地址处理方法](./get_ready.md#非标准私有地址处理方法) 的处理方法。
-- zk 表示 ZooKeeper， es7 表示 ElasticSearch。
-- gse 与 redis 需要部署在同一台机器上。
-- 增加机器数量时，可以将以上配置中的服务挪到新的机器上，分担负载。
-
 
 
 ### 非标准私有地址处理方法
