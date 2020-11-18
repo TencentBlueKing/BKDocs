@@ -3,6 +3,7 @@
 BCS 支持 K8S 原生的多种存储能力。在存储类型上，支持本地存储 hostpath、emptyDir、local 等；在存储方式上，支持 Volume、静态 PV、动态 PV； 在存储插件方案上，支持 K8S 内置的 In-tree 存储驱动、FlexVolume 存储驱动，以及 CSI 存储驱动的方案。
 
 ## 基础概念
+
 -  Volume、PV 和动态 PV
 K8S 使用 Volume、PV 来管理 Pod 容器的持久化数据。
 
@@ -12,7 +13,7 @@ Volume 生命周期与 Pod 绑定，容器挂掉重启后，Volume 的数据依�
 -  PV
 为了更好管理应用的持久化数据存储，K8S 推出了 PV（[Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)）的概念。PV 独立于 Pod 的生命周期。应用在使用 PV 时，先创建 PVC（[PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)），然后在 Pod 中声明绑定 PVC。
 
-    PV 有 Static PV 和 [Dynamic PV](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/) 两种使用方式。
+PV 有 Static PV 和 [Dynamic PV](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/) 两种使用方式。
 
 - PV 、PVC 的关系：
    - PV、PVC 类似 Nodes、Pods 的关系，Pod 是最小调度单元，资源是 Node 提供。
@@ -72,7 +73,7 @@ spec:
 ## 本地存储使用方式
 
 使用 hostpath 和 emptyDir 等本地存储时，建议用 volume 方式来做存储管理。
-在 "模板集 》Deployment 》Pod 模板设置 》卷" 中，可以配置使用 hostpath 或 emptyDir 本地存储。
+在 “模板集 》Deployment 》Pod 模板设置 》卷” 中，可以配置使用 hostpath 或 emptyDir 本地存储。
 
 ![-w2020](../../assets/localStorage.png)
 
@@ -87,6 +88,7 @@ BCS 原生支持 K8S 的存储方案，考虑到安全性、可扩展性以及�
 ## Ceph RBD 接入和使用
 
 ### RBD CSI 部署
+
 RBD CSI 推荐以 Helm 的方式部署到 K8S 集群当中。BCS 会在 Helm 仓库中提供 RBD CSI 的 Helm Chart 包，用户如果需要在 K8S 集群的应用中使用 Ceph RBD 分布式块存储，可直接通过 Helm 把 RBD CSI 部署至集群当中。
 
 ### RBD CSI 使用
@@ -157,7 +159,7 @@ reclaimPolicy: Delete
 
 #### 创建 PVC
 
-用户在模板集中创建 PVC, 或者使用 kubectl 通过 bcs-api 操作 K8S 集群创建 PVC
+用户在模板集中创建 PVC, 或者使用 kubectl 通过 bcs-api 操作 K8S 集群创建 PVC。
 
 - PVC:
 
@@ -177,7 +179,7 @@ spec:
 
 #### 引用 PVC
 
-在模板集中创建的 Deployment 应用时，在 Pod 中指定挂载 PVC
+在模板集中创建的 Deployment 应用时，在 Pod 中指定挂载 PVC。
 
 - Deployment:
 

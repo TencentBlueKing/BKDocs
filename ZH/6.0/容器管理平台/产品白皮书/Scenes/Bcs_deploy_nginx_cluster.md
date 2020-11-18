@@ -3,15 +3,15 @@
 
 传统的 Nginx 集群要先部署多个 Nginx 节点，然后通过 `upstream` 统一一个入口提供给用户访问。
 
-该过程操作繁琐，接下来看 BCS（容器管理平台） 如何通过 **容器调度 (以 K8S 编排为例，BCS 同时还支持 Mesos)** 快速构建 Nginx 集群。
-
+该过程操作繁琐，接下来看 BCS（容器管理平台） 如何通过 **容器调度** 快速构建 Nginx 集群。
 
 ## 前提条件
+
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含  [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
 
 - [完成 BCS 部署](../../../部署指南/产品白皮书/增强包安装/机器评估/bcs_evaluate.md)
 - 准备 2 台云主机：4 核 8 G，不低于 CentOS 7，K8s Master 和 Node 各 1 台
-- 完成上述 2 台云主机的 [Agent 安装](../../../节点管理/产品白皮书/产品功能/Agent安装.md) ，并分配至  [CMDB 业务下](../../../配置平台/产品白皮书/产品功能/ResourcePool.md)
+- 完成上述 2 台云主机的 [Agent 安装](../../../节点管理/产品白皮书/产品功能/Agent安装.md) ，并分配至 [CMDB 业务下](../../../配置平台/产品白皮书/产品功能/ResourcePool.md)
 
 ## 操作步骤
 
@@ -40,7 +40,7 @@
 
 ![-w1368](../assets/15648366557109.jpg)
 
-> 容器服务的集群划分和 [传统单体应用在 CMDB 中的集群划分](https://bk.tencent.com/docs/document/6.0/15/508)很类似，可以按照`地域（如华北区）`或者`完全独立的应用集合（微信区）`来划分。
+> 容器服务的集群划分和 [传统单体应用在 CMDB 中的集群划分](https://bk.tencent.com/docs/document/5.1/15/508)很类似，可以按照`地域（如华北区）`或者`完全独立的应用集合（微信区）`来划分。
 
 选择 1 台云主机作为 Master。
 
@@ -70,7 +70,7 @@
 
 ### 新建命名空间
 
-新建命名空间`dev`
+新建命名空间`dev`。
 
 ![-w1462](../assets/15652519427953.jpg)
 
@@ -100,15 +100,15 @@
 
 ### 检查部署效果
 
-在菜单`网络` -> `Services`中，找到刚实例化的 Service `web-nginx`
+在菜单`网络` -> `Services`中，找到刚实例化的 Service `web-nginx`。
 
 ![-w1465](../assets/15652551496895.jpg)
 
-在菜单`[应用]` -> `[Deployment]`中可以找到 `web-nginx`
+在菜单`[应用]` -> `[Deployment]`中可以找到 `web-nginx`。
 
 ![-w1464](../assets/15652552229901.jpg)
 
-以及其运行指标
+以及其运行指标：
 
 ![-w1463](../assets/15652552369974.jpg)
 

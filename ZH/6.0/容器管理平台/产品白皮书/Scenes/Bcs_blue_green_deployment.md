@@ -1,10 +1,12 @@
 # 应用的蓝绿发布
 ## 情景
+
 传统的应用更新方式是**停服更新**，用户在更新期间**无法使用服务**。
 
 接下来，将以 Nginx 从 `1.12.2` 升级 `1.17.0` + 程序代码（index.html 的内容从 Nginx 默认页 更新为 1.17.0）为例，看 BCS 中的**蓝绿发布能力**是如何实现**不停机更新**，**用户无感知**。
 
 ## 前提条件
+
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含 [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)；本节教程新增概念：[ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)、[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)、[Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。
 
 - [完成 BCS 部署](../../../部署指南/产品白皮书/增强包安装/机器评估/bcs_evaluate.md)
@@ -18,8 +20,6 @@
 3. 使用 K8S 资源准备新版本
 
 4. 切换流量并观察
-
-
 
 ## 蓝绿发布逻辑介绍
 
@@ -38,7 +38,6 @@
 - 负载均衡器 （LoadBalancer）+ Ingress ： 用户接入和负载均衡
 
 其中 Deployment、Service 不再赘述。
-
 
 ## 使用 K8S 资源准备版本
 
@@ -60,8 +59,6 @@ Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用�
 
 ![-w1674](../assets/15659435399613.jpg)
 
-
-
 ### 创建 K8S 对象 Deployment 、Service、Ingress
 
 - 创建 Deployment
@@ -71,13 +68,11 @@ Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用�
 ![-w1675](../assets/15659437982262.jpg)
 ![-w1672](../assets/15659438850899.jpg)
 
-
 - 创建 Service
 
 在【Service】中关联 Deployment 以及服务名称、暴露的端口。
 
 ![-w1629](../assets/15680918349969.jpg)
-
 
 - 新建 Ingress
 
@@ -104,7 +99,6 @@ Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用�
 - Ingress
 
 ![-w1677](../assets/15659450818610.jpg)
-
 
 修改域名解析或修改 PC 上 hosts 文件（Mac 下路径为 /etc/hosts），将 Ingress 中配置的主机名解析到 LoadBalancer 中节点的外网 IP，然后打开浏览器访问。
 
@@ -172,7 +166,6 @@ cf5b3c6798f7: Mounted from joyfulgame/nginx
 ```
 
 > 更多 Docker Image 的构建方法可以参考 [docker-nginx](https://github.com/nginxinc/docker-nginx/blob/master/stable/alpine/Dockerfile)。
-
 
 ### 克隆模板集为新版本
 

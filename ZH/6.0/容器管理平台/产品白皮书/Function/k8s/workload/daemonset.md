@@ -12,6 +12,7 @@ DaemonSet 能够让所有（或者一些特定）的 Node 节点运行同一个 
 - 在每个节点上运行监控 daemon，例如 Prometheus Node Exporter、collectd 等
 
 ## 1. 模板示例
+
 ```yml
 apiVersion: extensions/v1beta1
 kind: DaemonSet
@@ -75,6 +76,7 @@ spec:
 ```
 
 ## 2. 配置项介绍
+
 DaemonSet 和 Deployment 的大部分配置相同，这里就不在介绍相同点(具体参考 Deployment 说明中的配置项介绍)。
 
 由于 DaemonSet 本身的调度机制和 Deployment 有所不同，配置上会带来一些差异，例如 DaemonSet 并没有`.spec.replicas`字段，每个节点最多只运行一个 Pod，Pod 的总数取决于调度约束条件(节点个数、nodeSelector、taint 和 toleration 等)。

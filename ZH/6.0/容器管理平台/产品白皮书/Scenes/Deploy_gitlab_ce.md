@@ -1,9 +1,11 @@
 # 在 K8S 中部署 GitLab
 
 ## 情景
+
 GitLab，不仅仅一个独立部署的流行 Git 代码托管仓库，通过其 Pipeline 具备部分 CI 环节的能力，接下来看 BCS 如何快速部署 GitLab。
 
 ## 前提条件
+
 - [了解 Helm 的使用方法](../Function/helm/ServiceAccess.md)
 - [集成 K8S 存储](../Function/StorageSolution/kubernetes.md)，例如 [将 NFS 作为 K8S PV Provisioner](../Function/StorageSolution/K8s_NFS_Client_Provisioner.md)
 - Git Clone [Helm Charts](https://github.com/helm/charts/)

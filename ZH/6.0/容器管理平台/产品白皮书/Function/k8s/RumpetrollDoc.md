@@ -8,6 +8,7 @@
 
 ## 模块示例
 ### 基于 Deployment 部署 openresty
+
 ```yml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -58,8 +59,11 @@ spec:
         - name: REDIS_PASSWORD
           value: ""
 ```
-openresty 模块直接使用主机网络，对外提供访问服务
+
+openresty 模块直接使用主机网络，对外提供访问服务。
+
 ### 基于 Statefulset 部署 rumpetroll
+
 ```yml
 apiVersion: apps/v1beta2
 kind: StatefulSet
@@ -121,8 +125,11 @@ spec:
   selector:
     app: web
 ```
-由于每个房间有自己的标识，是有"状态的"，因此采用 StatefulSet 方式部署；同时配置 Headless Service,  提供给 openresty 模块访问
+
+由于每个房间有自己的标识，是有“状态的”，因此采用 StatefulSet 方式部署；同时配置 Headless Service,  提供给 openresty 模块访问。
+
 ### 基于 Deployment 部署 redis
+
 ```yml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -159,4 +166,4 @@ spec:
     port: 6379
     targetPort: 6379
 ```
-redis 服务模块采用 Deployment 方式部署，并创建与其关联的 Service。Service 的 Cluster IP 会被注册到 dns 中，方便 openresty 和 rumpetroll 模块从集群内访问服务
+redis 服务模块采用 Deployment 方式部署，并创建与其关联的 Service。Service 的 Cluster IP 会被注册到 dns 中，方便 openresty 和 rumpetroll 模块从集群内访问服务。

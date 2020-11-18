@@ -102,6 +102,7 @@ spec:
 - 没有勾选**Prometheus 格式设置**，则只会在数据平台申请 dataid，用户可以页面上点击**数据清洗**，去数据平台配置相应的清洗和入库规则。
 
 ### Metric 数据查看
+
 Metric 的数据可以在 监控中心 Dashboard 中查看，具体的使用方法见：
 
 - [监控中心/Dashboard 查询](/monitor/Dashboard/DashboardSearch.md)

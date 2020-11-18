@@ -22,7 +22,7 @@ deployment/daemonset/job/statefuleset
 ## 操作相关
 - 滚动升级
 
-`注: 允许应用类型包含 deployment/daemonset/job/statefulset`
+`注：允许应用类型包含 deployment/daemonset/job/statefulset`
 
 ![-w2020](../../assets/rollingupdate.jpg)
 
@@ -34,7 +34,7 @@ deployment/daemonset/job/statefuleset
 
 - 重建应用
 
-重建包含两个步骤: 删除当前应用，然后以现有配置再创建应用(类似进程重启)
+重建包含两个步骤：删除当前应用，然后以现有配置再创建应用(类似进程重启)
 
 ![-w2020](../../assets/recreate.jpg)
 

@@ -6,6 +6,7 @@ Job 负责批量处理短暂的一次性任务，即仅执行一次的任务，�
 - 带有工作队列的并行 Job：设置`.spec.Parallelism`但不设置`.spec.completions`，当所有 Pod 结束并且至少一个成功时，Job 就认为是成功
 
 ## 1. 模板示例
+
 ```yml
 apiVersion: batch/v1
 kind: Job
@@ -35,6 +36,7 @@ spec:
   backoffLimit: 4
 ```
 ## 2.  配置项介绍
+
 - `.spec.template`: 这里不再介绍(具体参考 Deployment 说明中的配置项介绍)
 - `.spec.completions`:  标志 Job 结束需要成功运行的 Pod 个数，默认为 1
 - `.spec.parallelism`:  标志并行运行的 Pod 的个数，默认为 1

@@ -1,15 +1,15 @@
 # FAQ
 ## 产品使用
 
-### BCS 与 K8S、Mesos 的关系和区别是什么
+### BCS 与 K8S 的关系和区别是什么
 
-K8S、Mesos 为容器编排引擎，BCS 是容器管理平台，兼容 K8S、Mesos 两种容器编排引擎，提供便捷的容器管理服务，更多介绍详见 [产品架构](../Architecture/Architecture.md)。
+K8S 为容器编排引擎，BCS 是容器管理平台，支持 K8S 容器编排引擎，提供便捷的容器管理服务，更多介绍详见 [产品架构](../Architecture/Architecture.md)。
 
 ### 一个集群需要至少需要几台机器
 
 集群由 Master 和 Node 组成，其中 Master 主要用来部署集群的基础组件，Slave 主要用来承载业务容器。
 
-> 注: master 不允许调度，因此，至少需要一台 slave 运行业务容器
+> 注：master 不允许调度，因此，至少需要一台 slave 运行业务容器。
 
 - 平台建议 Master 配置
   建议至少 4 核 / 8 G / 3 台 / CentOS 7.4 +
@@ -21,14 +21,15 @@ K8S、Mesos 为容器编排引擎，BCS 是容器管理平台，兼容 K8S、Mes
 
 用户通过调度约束可以自动的为 POD 选择指定节点，而且可以通过 **亲和性** 和 **反亲和性** 实现个性化的调度能力。
 
-> 注意: 使用不当可能导致其他的 POD 调度不成功
+> 注意：使用不当可能导致其他的 POD 调度不成功。
 
 - 使用场景
     - 想要自己的服务运行到指定的节点
     - 限制其他服务运行到指定节点
 
 - 出现节点匹配提示问题
-```
+
+```bash
 # 错误信息
 No nodes are available that match all of the predicates: MatchInterPodAffinity (2), MatchNodeSelector (3), NodeNotReady (3), PodToleratesNodeTaints (3).
 ```
@@ -53,7 +54,7 @@ No nodes are available that match all of the predicates: MatchInterPodAffinity (
 
 ## 启动容器失败
 
-这种情况一般是用户镜像有问题，用户可以通过如下两种方式查看日志:
+这种情况一般是用户镜像有问题，用户可以通过如下两种方式查看日志：
 - 使用 Webconsole，kubectl logs `pod name` -n `namespace name`
 - 登录节点机器，通过 docker logs `container id`查看相应日志信息
 
@@ -81,8 +82,10 @@ No nodes are available that match all of the predicates: MatchInterPodAffinity (
 ### 关于 POD 创建后一直处于 Waiting 或 ContainerCreating 状态
 
 #### 检查应用配置的资源设置
-首先，通过查看事件日志，如果此时出现下面这种错误，可以认为启动容器的资源不能满足需求
-```
+
+首先，通过查看事件日志，如果此时出现下面这种错误，可以认为启动容器的资源不能满足需求。
+
+```bash
 to start sandbox container for pod ... Error response from daemon: OCI runtime create failed: container_linux.go:348: starting container process caused "process_linux.go:301: running exec setns process for init caused "signal: killed"": unknown
 ```
 

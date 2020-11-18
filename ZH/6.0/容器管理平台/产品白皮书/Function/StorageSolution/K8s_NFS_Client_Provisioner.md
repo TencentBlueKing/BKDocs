@@ -1,12 +1,14 @@
 # 将 NFS 作为 K8S PV Provisioner
 
 ## 情景
+
 互联网应用常见的三层架构：接入层、逻辑层、存储层，在操作系统中 **文件系统** 提供存储层的存储介质，在 K8S 中是 **Persistent Volumes**（持久卷，简称 PV），而 PV 背后需要对接存储介质，比如 NFS、CephFS 以及公有云的云硬盘[1]。
 
 接下来以 NFS 作为 K8S PV 的存储介质（Provisioner）为例，介绍在 K8S 中如何申请以及使用存储空间。
 
 ## 前提条件
-- 了解 K8S 中 [存储](kubernetes.md) 的基础的概念。
+
+- 了解 K8S 中 [存储](kubernetes.md) 的基础的概念
 - 了解 [K8S 的包管理工具 Helm](../helm/ServiceAccess.md)
 
 ## 操作步骤
@@ -19,7 +21,7 @@
 
 > 以下为测试环境在 CentOS 7 下搭建 NFS 的示例，生产环境请咨询公司系统管理员。
 
-安装 NFS Server 端（ IP : 10.0.5.85），并启动以及设置开机自启动。
+安装 NFS Server 端（IP:10.0.5.85），并启动以及设置开机自启动。
 
 ```bash
 # yum -y install nfs-utils
@@ -64,7 +66,7 @@ K8S 使用 NFS 资源，需要能挂载 NFS 以及配套的 K8S 资源（Storage
 
 > 由于 Helm V2 需要在集群中部署 tiller，存在安全风险，无法直接使用 Helm install 部署应用，BCS 会将 Chart 通过  Helm template 解析为 K8S 的资源配置来部署。
 
-下载  的 Charts。
+下载的 Charts。
 
 ```bash
 git clone https://github.com/helm/charts/
@@ -93,7 +95,7 @@ Done.
 
 ### 部署 Chart
 
-点击 【部署】，准备部署 Chart
+点击【部署】，准备部署 Chart。
 
 ![-w1629](../../assets/15680231028519.jpg)
 
@@ -101,7 +103,7 @@ Done.
 
 如果集群中没有 StorageClass ，建议将其设置为默认（StorageClass.defaultClass）。
 
-然后点击 【部署】。
+然后点击【部署】。
 
 ![-w1674](../../assets/15680277372426.jpg)
 
@@ -145,7 +147,7 @@ NAME         STATUS   VOLUME                                     CAPACITY   ACCE
 auto-claim   Bound    pvc-9803c5c5-d2f8-11e9-86f7-525400673e62   1Gi        RWX            nfs-client     13s
 ```
 
-可以看到  PVC 创建成功。
+可以看到 PVC 创建成功。
 
 - 在 NFS 的挂载目录中，可以看到自动创建对应的目录。
 
@@ -155,18 +157,19 @@ auto-claim   Bound    pvc-9803c5c5-d2f8-11e9-86f7-525400673e62   1Gi        RWX 
 drwxrwxrwx 2 root root 4096 9月   9 19:54 default-auto-claim-pvc-9803c5c5-d2f8-11e9-86f7-525400673e62
 ```
 
-## 附录 1 : 默认 StorageClass 不生效
+## 附录 1：默认 StorageClass 不生效
 
 指定了默认的 StorageClass，申请 PVC 不指定 StorageClass 时无法自动创建 PVC。
 
 ### 问题原因
+
 在 [PersistentVolumeClaims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) 中提到如果想实现上述功能，除了指定了默认的 StorageClass 外，还需要开启 [DefaultStorageClass](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#defaultstorageclass)。
 
 下图是解决问题之后的截图，和出问题是配置的差异是 kube-system 命名空间下的 kube-apiserver Pod 的启动参数中多了 `DefaultStorageClass`。
 
 ![-w2020](../../assets/15682537115267.jpg)
 
-> `--admission-control` was deprecated in `1.10` and replaced with `--enable-admission-plugins`.
+`--admission-control` was deprecated in `1.10` and replaced with `--enable-admission-plugins`.
 
 ### 如何解决
 

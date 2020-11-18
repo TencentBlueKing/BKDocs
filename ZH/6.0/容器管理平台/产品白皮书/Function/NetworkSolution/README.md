@@ -5,4 +5,3 @@
 在网络标准选择上，BCS 建议采用 CNI 网络，以方便容器网络能获得最佳的扩展能力。如果启用 BCS 相关的 [SaaS 服务](https://github.com/Tencent/bk-bcs-saas)，集群的相关安装与配置可以通过 SaaS 来完成，如果只是启用 BCS 后台服务，相关配置请参照以下指引。
 
 * [BCS Kubernetes 网络实践](../StorageSolution/kubernetes.md)
-* [BCS Mesos 网络实践](./mesos.md)

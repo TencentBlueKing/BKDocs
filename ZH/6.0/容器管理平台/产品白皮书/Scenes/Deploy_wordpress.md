@@ -1,9 +1,11 @@
 # 在 K8S 中部署 WordPress
 
 ## 情景
+
 WordPress 是流行的开源博客程序，Helm 官方维护了 WorePress 的 Chart，接下来看在 BCS 中如何部署 WordPress，开始你的博客之旅。
 
 ## 前提条件
+
 - [了解 Helm 的使用方法](../Function/helm/ServiceAccess.md)
 - [集成 K8S 存储](../Function/StorageSolution/kubernetes.md)，例如 [将 NFS 作为 K8S PV Provisioner](../Function/StorageSolution/K8s_NFS_Client_Provisioner.md)
 - Git Clone [Helm Charts](https://github.com/helm/charts/)

@@ -9,14 +9,14 @@ Kubernetes 与 BCS 集成可以参考 [BCS 高可用 Kubernetes 集群部署](ht
 Kubernetes node 节点默认安装 CNI 工具的目录
 
 * 二进制目录：/opt/cni/bin/
-* 配置目录: /etc/cni/net.d/
+* 配置目录：/etc/cni/net.d/
 
 如果已经针对网络进行 CNI 扩展，则需要进行扩展 CNI 工具进行部署。
 
 **手动部署**
 
 * CNI 部署，将编译好的 CNI 工具部署到所有 Node 节点 /opt/cni/bin
-* 配置部署，编写对应的 CNI 配置，放置到 /etc/cni/net.d/ ，注意配置文件字母序要为第一。
+* 配置部署，编写对应的 CNI 配置，放置到 /etc/cni/net.d/ ，注意配置文件字母序要为第一
 
 **镜像部署**
 
@@ -28,8 +28,7 @@ kubelet 在 /etc/cni/net.d 目录下读取 CNI 的配置文件时，是按文件
 
 ## 多网络集成
 
-针对部分复杂的场景，容器可能需要多网络设置与集成，由于 Kubernetes 默认不支持 CNI 链式
-调用，BCS 建议在以下场景，可以采用链式 CNI 插件实现多 CNI 插件集成。
+针对部分复杂的场景，容器可能需要多网络设置与集成，由于 Kubernetes 默认不支持 CNI 链式调用，BCS 建议在以下场景，可以采用链式 CNI 插件实现多 CNI 插件集成。
 
 * 多网络栈配置
 * 网络带宽限制

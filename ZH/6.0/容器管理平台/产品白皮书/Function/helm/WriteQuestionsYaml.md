@@ -1,6 +1,7 @@
 # 如何编写 Helm `questions.yaml`
 
 ## Helm questions.yaml 是什么
+
 Helm 是一个软件包管理器，提供了一种简单的方法来查找、共享和使用为 Kubernetes 而构建的软件。它提供 key-value 或者 `values.yaml` 用于设置 Helm 应用的实例化参数。
 
 `questions.yaml` 是为了提高蓝鲸容器服务中 Helm 功能的易用性，参考开源产品 `Rancher` 提供的一种动态表单生成技术。
@@ -40,10 +41,10 @@ Helm 是一个软件包管理器，提供了一种简单的方法来查找、共
 
 ![-w2020](../../assets/1.png)
 
-
 该表单包含一个 radio 用于设置是否使用可持久化存储。如果用户选中使用可持久化存储，`storage class` 和 `volume size` 就可以用来供用户填写对应的存储类和卷大小。
 
 ## 使用场景
+
 - 业务相对稳定之后，把常规发布经常修改的参数项设置成 Form 表单
 - 产品自助，如果希望让产品自行发布，表单是个不错的选择
 - 防止错误输入，为了尽量减少拼写错误，您可以为输入项设置校验规则
@@ -63,11 +64,11 @@ Helm 是一个软件包管理器，提供了一种简单的方法来查找、共
 | 	max_length        | int     | false      | 最大字符串长度.|
 | 	min               | int     | false      |  最小整数长度. |
 | 	max               | int     | false      |  最大整数长度. |
-| 	options           | []string | false     |  如果变量类型是 `enum` 类型, 该字断用于设置可选项，比如选项:<br> - "ClusterIP" <br> - "NodePort" <br> - "LoadBalancer"|
+| 	options           | []string | false     |  如果变量类型是 `enum` 类型, 该字断用于设置可选项，比如选项：<br> - "ClusterIP" <br> - "NodePort" <br> - "LoadBalancer"|
 | 	valid_chars       | string   | false     | 有效输入字符串校验. |
 | 	invalid_chars     | string   | false     |  无效输入字符串的校验.|
 | 	subquestions      | []subquestion | false|  数组类型，用户包含子问题.|
 | 	show_if           | string      | false  | 控制是否显示当前输入项, 比如 `show_if: "serviceType=Nodeport"` |
 | 	show\_subquestion_if |  string  | false     | 如果当前值为 `true` 或者可选项的值，则该子问题会被显示出来. 比如 `show_subquestion_if: "true"`|
 
-**subquestions**: `subquestions[]` 除了不能包含 `subquestions` 或者 `show_subquestions_if` 字段, 上表中的其它字断均支持.
+**subquestions**：`subquestions[]` 除了不能包含 `subquestions` 或者 `show_subquestions_if` 字段, 上表中的其它字断均支持.

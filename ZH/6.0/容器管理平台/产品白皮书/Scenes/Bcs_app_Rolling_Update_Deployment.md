@@ -29,7 +29,7 @@
 
 ### 推送 Nginx:1.17.0 至镜像仓库
 
-参照 [Harbor 仓库使用指南](6.0/bcs/Function/HarborGuide.md)，将镜像 Nginx:1.17.0 推送至 BCS 公共镜像仓库。
+参照 [Harbor 仓库使用指南](5.1/bcs/Function/HarborGuide.md)，将镜像 Nginx:1.17.0 推送至 BCS 公共镜像仓库。
 
 ### 注册镜像仓库账号
 
@@ -111,9 +111,9 @@ Date: Thu, 08 Aug 2019 09:11:42 GMT
 
 ![w1269](../assets/15659379375124.jpg)
 
-> - `maxUnavailable` : 滚动升级期间，考虑应用容量，不可用 Pod 的数量上限
-> - `maxSurge` : 滚动升级期间，考虑集群资源，超出期望 Pod 的数量上限
-> - `minReadySeconds` : 滚动升级期间，考虑可用性，探测 Pod 正常后转为可用的时间
+> - `maxUnavailable`：滚动升级期间，考虑应用容量，不可用 Pod 的数量上限
+> - `maxSurge`：滚动升级期间，考虑集群资源，超出期望 Pod 的数量上限
+> - `minReadySeconds`：滚动升级期间，考虑可用性，探测 Pod 正常后转为可用的时间
 
 修改完镜像的版本后，接下来【保存】模板集，填写【新版本】的版本号。
 

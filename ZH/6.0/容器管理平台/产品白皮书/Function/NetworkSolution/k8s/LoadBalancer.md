@@ -110,6 +110,7 @@ blueking-nginx-ingress-default-backend   1         1         1            1     
 ```
 
 ### 使用建议
+
 一般我们建议选择多台专属节点作为 LoadBalancer，不要分配其他 Pod 到该节点。
 
 可以通过 节点 **亲和性约束** 实现。

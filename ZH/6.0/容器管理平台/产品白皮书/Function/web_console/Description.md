@@ -1,13 +1,13 @@
 # WebConsole 说明
 
 ## WebConsole 简介
-WebConsole 是容器服务提供快捷查看集群状态的命令行服务
 
-kubectl 是 K8S 官方的命令行工具，用于管理 K8S 集群，用户添加完节点，部署完 Deployments, Helm 等，都可以通过 WebConsole 内的 kubectl 命令工具查看节点，Deployment 等信息
+WebConsole 是容器服务提供快捷查看集群状态的命令行服务。
 
-注意： `WebConsole 目前只支持K8S集群`
+kubectl 是 K8S 官方的命令行工具，用于管理 K8S 集群，用户添加完节点，部署完 Deployments, Helm 等，都可以通过 WebConsole 内的 kubectl 命令工具查看节点，Deployment 等信息。
 
 ## WebConsole 使用
+
 进入容器服务，在任意页面右下角，选择对应集群进入 WebConsole。
 
 ![-w1560](../../assets/15675992084889.jpg)
