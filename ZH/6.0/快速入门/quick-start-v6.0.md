@@ -38,7 +38,7 @@
 | [标准运维](https://bk.tencent.com/docs/markdown/标准运维/产品白皮书/产品简介/README.md) | 可视化的图形界面流程编排、跨系统调度利器                     |
 | [监控平台](https://bk.tencent.com/docs/markdown/监控平台/产品白皮书/intro/README.md) | 提供丰富的数据采集能力、大规模的数据处理能力，致力于满足不同场景的监控需求 |
 | [日志平台](https://bk.tencent.com/docs/markdown/日志平台/产品白皮书/intro/README.md) | 基于业界主流的全文检索引擎，提供多种场景化的采集、查询功能   |
-| [故障自愈](https://bk.tencent.com/docs/markdown/故障自愈/产品白皮书/Intro/README.md) | 实时发现告警，预诊断分析，自动恢复故障，并打通周边系统实现整个流程的闭环 |
+| [故障自愈](https://bk.tencent.com/docs/markdown/故障自愈/产品白皮书/产品简介/Overview.md) | 实时发现告警，预诊断分析，自动恢复故障，并打通周边系统实现整个流程的闭环 |
 | [流程服务](https://bk.tencent.com/docs/markdown/流程服务/产品白皮书/产品简介/README.md) | 灵活自定义设计流程模块，覆盖 IT 服务中的不同管理流程或应用场景 |
 | [管控平台](https://bk.tencent.com/docs/markdown/管控平台/产品白皮书/产品简介/README.md) | 蓝鲸体系的底层管控系统，是蓝鲸所有其他服务的基础（GseAgent） |
 
