@@ -6,7 +6,7 @@
 
 ###  1.1 准备机器
 
-1. 建议操作系统： CentOS 7.6 
+1. 建议操作系统： CentOS 7.6 【鉴于完整安装包大小有 4GB，我们已在腾讯云上进行了 CDN 下载资源加速优化，建议使用腾讯云主机（CentOS 7.6）部署体验最佳】
 2. 建议机器配置
    - 体验功能：建议 4 核 16 G，硬盘 50G 以上
    - 生产环境：建议 8 核 32 G，硬盘 100G 以上（可根据实际情况适当调整配置）
@@ -22,10 +22,12 @@
 
 ### 1.3 下载安装包
 
-- 下载安装包，选择 6.0.0 版本：[https://bk.tencent.com/download/](https://bk.tencent.com/download/)
-- 上传安装包至中控机 `/data`
-    - 完整包包名：bkce_src-6.0.0.tgz
+- 登陆中控机 
 
+```bash
+cd /data
+wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.0.tgz 
+```
 
 ### 1.4 解压相关资源包
 
