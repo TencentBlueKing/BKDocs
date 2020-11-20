@@ -78,4 +78,4 @@ body 为空对象时返回所有的分组
 |---------------|-----------|----------|
 | group_name    | string    | 分组名   |
 | user_list     | string    | 用户列表 |
-| group_id      | string    | 分组ID   |
+| group_id      | string    | 分组 ID   |

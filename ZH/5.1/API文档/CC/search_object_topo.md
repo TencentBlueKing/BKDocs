@@ -88,6 +88,6 @@ POST
 |------------|-----------|------------------------------------|
 | arrows     | string    | 取值 to（单向） 或 to,from（双向） |
 | label_name | string    | 关联关系的名字                     |
-| label      | string    | 表明From通过哪个字段关联到To的     |
+| label      | string    | 表明 From 通过哪个字段关联到 To 的     |
 | from       | string    | 对象模型的英文 id，拓扑关系的发起方 |
 | to         | string    | 对象模型的英文 ID，拓扑关系的终止方 |

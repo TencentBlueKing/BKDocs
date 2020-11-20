@@ -39,7 +39,7 @@ POST
 | limit | int | 是 | 每页限制条数,最大 200 |
 | sort | string | 否 | 排序字段 |
 
-#### fields参数说明
+#### fields 参数说明
 
 参数为查询的目标实例对应的模型定义的所有字段
 
@@ -94,7 +94,7 @@ condition 参数为查询的目标实例对应的模型定义的所有字段
 | 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
 | result | bool | 请求成功与否，true:请求成功，false:请求失败 |
-| code | string | 组件返回错误编码，0表示success，>0表示失败错误 |
+| code | string | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
 | message | string | 请求失败返回的错误消息 |
 | data | object | 请求返回的数据 |
 
@@ -109,6 +109,6 @@ condition 参数为查询的目标实例对应的模型定义的所有字段
 
 | 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| bk_cloud_id | int | 云区域ID |
+| bk_cloud_id | int | 云区域 ID |
 | bk_cloud_name | string | 云区域名 |
 | bk_supplier_account | string | 开发商账号 |

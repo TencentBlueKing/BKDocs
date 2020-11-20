@@ -8,7 +8,7 @@ GET
 
 ### 功能描述
 
-根据作业模板ID查询作业模板详情
+根据作业模板 ID 查询作业模板详情
 
 ### 请求参数
 
@@ -219,7 +219,7 @@ GET
 | 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
 | result | bool | 请求成功与否，true:请求成功，false:请求失败 |
-| code | string | 组件返回错误编码，0表示success，>0表示失败错误 |
+| code | string | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
 | message | string | 请求失败返回的错误消息 |
 | data | object | 请求返回的数据 |
 
@@ -231,9 +231,9 @@ GET
 | bk_job_id | int | 作业模板 ID |
 | name | string | 作业名称 |
 | creator | string | 作业创建人帐号 |
-| create_time | string | 创建时间，YYYY-MM-DD HH:mm:ss格式 |
+| create_time | string | 创建时间，YYYY-MM-DD HH:mm:ss 格式 |
 | last_modify_user| string | 作业修改人帐号 |
-| last_modify_time| string | 最后修改时间，YYYY-MM-DD HH:mm:ss格式 |
+| last_modify_time| string | 最后修改时间，YYYY-MM-DD HH:mm:ss 格式 |
 | tag_id | string | 作业标签 ID，1.未分类、2.运营发布、3.故障处理、4.常用工具、5.产品自助、6.测试专用、7.持续集成 |
 | step_num | int | 步骤数量 |
 | steps | array | 步骤对象 |
@@ -243,13 +243,13 @@ GET
 
 | 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| step_id | int | 作业步骤ID |
+| step_id | int | 作业步骤 ID |
 | name | string | 作业步骤名称 |
-| type | int | 步骤类型：1.脚本步骤; 2.文件步骤; 4.SQL步骤 |
+| type | int | 步骤类型：1.脚本步骤; 2.文件步骤; 4.SQL 步骤 |
 | block_order | int | 步骤块在作业中的顺序 |
 | block_name | string | 步骤块名称 |
 | creator | string | 作业步骤创建人帐号 |
-| create_time | string | 创建时间，YYYY-MM-DD HH:mm:ss格式 |
+| create_time | string | 创建时间，YYYY-MM-DD HH:mm:ss 格式 |
 | last_modify_user| string | 作业步骤修改人帐号 |
 | last_modify_time| string | 最后修改时间，YYYY-MM-DD HH:mm:ss |
 | pause | int | 0.执行完成后不暂停(默认); 1.执行完成后暂停 |
@@ -259,9 +259,9 @@ GET
 | script_timeout | int | 脚本超时时间，秒。默认 1000，取值范围 60-86400 |
 | account | string | 执行帐号名/别名 |
 | is_param_sensitive| int | 敏感参数将会在执行详情页面上隐藏, 0.不是（默认），1.是。当 type=1 时才有这个字段。 |
-| db_account_id | int | SQL执行的db帐号ID，SQL步骤必填 |
+| db_account_id | int | SQL 执行的 db 帐号 ID，SQL 步骤必填 |
 | order | int | 当前步骤在作业中的顺序号 |
-| script_type | int | 当type=1或4时并且有值时才有这个字段。脚本类型：1(shell脚本)、2(bat脚本)、3(perl脚本)、4(python脚本)、5(Powershell脚本) |
+| script_type | int | 当 type=1 或 4 时并且有值时才有这个字段。脚本类型：1(shell 脚本)、2(bat 脚本)、3(perl 脚本)、4(python 脚本)、5(Powershell 脚本) |
 | file_target_path| string | 文件传输目标路径，当 type=2 时并且有值时才有这个字段 |
 | file_source | array | 源文件对象数组，当 type=2 时并且有值时才有这个字段，见下面 file_source 定义 |
 | ip_list | array | IP 对象数组，见下面 ip_list 结构定义 |
@@ -277,9 +277,9 @@ GET
 | name | string | 全局变量的名称 |
 | value | string | 字符串类型的全局变量值，当 type=1 时有这个字段 |
 | description | string | 变量描述 |
-| custom_query_id| array | 配置平台上的自定义查询ID列表，当 type=2 时并且有值时才有这个字段 |
+| custom_query_id| array | 配置平台上的自定义查询 ID 列表，当 type=2 时并且有值时才有这个字段 |
 | ip_list | array | IP 对象数组，当 type=2 时并且有值时才有这个字段，见下面 ip_list 结构定义 |
-| step_ids | array | 引用了这个IP全局变量的步骤 ID 列表，当 type=2 时并且有值时才有这个字段 |
+| step_ids | array | 引用了这个 IP 全局变量的步骤 ID 列表，当 type=2 时并且有值时才有这个字段 |
 
 #### file_source
 
@@ -287,12 +287,12 @@ GET
 |-----------|-----------|-----------|
 | files | array | 源文件的绝对路径数组，支持多个文件 |
 | account | string | 执行帐号名/别名 |
-| ip_list | array | IP对象数组，当有值时才有这个字段，见下面ip_list结构定义 |
-| custom_query_id | array | 配置平台上的自定义查询ID列表，当有值时才有这个字段 |
+| ip_list | array | IP 对象数组，当有值时才有这个字段，见下面 ip_list 结构定义 |
+| custom_query_id | array | 配置平台上的自定义查询 ID 列表，当有值时才有这个字段 |
 
 #### ip_list
 
 | 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| bk_cloud_id | int | 云区域ID |
-| ip | string | IP地址 |
+| bk_cloud_id | int | 云区域 ID |
+| ip | string | IP 地址 |

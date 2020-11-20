@@ -21,9 +21,9 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
@@ -31,17 +31,17 @@ POST
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
 | indices         |  string    | 是     | 索引列表 |
-| scenario_id         |  string    | 否     | ES接入场景(非必填） 默认为log，蓝鲸数据平台：bkdata 原生ES：es 日志采集：log |
-| storage_cluster_id  |  int   | 否     | 当scenario_id为es或log时候需要传入 |
-| time_field  |  string   | 否     | 时间字段（非必填，bkdata内部为dtEventTimeStamp，外部如果传入时间范围需要指定时间字段） |
+| scenario_id         |  string    | 否     | ES 接入场景(非必填） 默认为 log，蓝鲸数据平台：bkdata 原生 ES：es 日志采集：log |
+| storage_cluster_id  |  int   | 否     | 当 scenario_id 为 es 或 log 时候需要传入 |
+| time_field  |  string   | 否     | 时间字段（非必填，bkdata 内部为 dtEventTimeStamp，外部如果传入时间范围需要指定时间字段） |
 | start_time  |  string   | 否     | 开始时间 |
 | end_time  |  string   | 否     | 结束时间 |
-| time_range  |  string  | 否     | 时间标识符符["15m", "30m", "1h", "4h", "12h", "1d", "customized"]（非必填，默认15m） |
-| query_string  |  string   | 否     | 搜索语句query_string(非必填，默认为*) |
-| filter  |  list   | 否     | 搜索过滤条件（非必填，默认为没有过滤，默认的操作符是is） 操作符支持 is、is one of、is not、is not one of |
-| start  |  int   | 否     | 起始位置（非必填，类似数组切片，默认为0） |
-| size  |  int   | 否     | 条数（非必填，控制返回条目，默认为500） |
-| aggs  |  dict   | 否     | ES的聚合参数 |
+| time_range  |  string  | 否     | 时间标识符符["15m", "30m", "1h", "4h", "12h", "1d", "customized"]（非必填，默认 15m） |
+| query_string  |  string   | 否     | 搜索语句 query_string(非必填，默认为*) |
+| filter  |  list   | 否     | 搜索过滤条件（非必填，默认为没有过滤，默认的操作符是 is） 操作符支持 is、is one of、is not、is not one of |
+| start  |  int   | 否     | 起始位置（非必填，类似数组切片，默认为 0） |
+| size  |  int   | 否     | 条数（非必填，控制返回条目，默认为 500） |
+| aggs  |  dict   | 否     | ES 的聚合参数 |
 | highlight  |  dict   | 否     | 高亮参数 |
 
 

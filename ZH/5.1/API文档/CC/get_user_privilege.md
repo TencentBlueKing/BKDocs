@@ -87,7 +87,7 @@ POST
 | model_config | object | 模型配置 |
 
 
-#### sys_config  目前仅有global_busi
+#### sys_config  目前仅有 global_busi
 
 | 名称 | 类型 | 描述 |
 |---------|--------|------------|

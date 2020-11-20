@@ -21,9 +21,9 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
@@ -31,7 +31,7 @@ POST
 |   参数名称   |    参数类型  |  必须  |     参数说明     |
 | ------------ | ------------ | ------ | ---------------- |
 |   app_code      |   string     |   是   |  蓝鲸应用编码    |
-|   app_secret    |   string     |   是   |  蓝鲸应用私密key |
+|   app_secret    |   string     |   是   |  蓝鲸应用私密 key |
 |   access_token |   string     |   否   |  用户登录票据，bk_token 为空时必填 |
 |   bk_token       |   string     |   否   |  用户登录票据，access_token 为空时必填 |
 |   bk_biz_id       |   string     |   是   |  项目唯一 ID，项目 ID 或 CMDB 业务 ID |
@@ -41,7 +41,7 @@ POST
 |    exclude_task_nodes_id     |   否   |  需要移除的可选节点 ID 列表，不填时默认为 [] |
 ### 请求参数示例
 
-```
+```plain
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -53,7 +53,7 @@ POST
 
 ### 返回结果示例
 
-```
+```plain
 {
     "result": true,
     "data": {
@@ -222,11 +222,11 @@ POST
 |  data         | dict       | result=true 时返回数据，详情见下面说明 |
 |  message      | string     | result=false 时错误信息        |
 
-#### data说明
+#### data 说明
 |   名称   |  类型  |           说明             |
 | ------------ | ---------- | ------------------------------ |
 |  pipeline_tree      |    dict   |      模板任务树信息，详细信息见下面说明   |
-| constants_not_referred | dict | 流程模板中未引用的全局变量，数据结构同pepeline[constants] |
+| constants_not_referred | dict | 流程模板中未引用的全局变量，数据结构同 pepeline[constants] |
 
 ##### data[pipeline_tree]
 |   名称   |  类型  |           说明             |

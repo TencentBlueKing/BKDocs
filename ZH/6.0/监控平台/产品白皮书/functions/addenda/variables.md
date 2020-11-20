@@ -39,11 +39,11 @@ Jinja2 是一个现代的，设计者友好的，仿照 Django 模板的 Python 
 
 | 变量                          | 名称       | 示例              |
 | ----------------------------- | ---------- | -----------------|
-| strategy.strategy_id          | 策略ID     | 1                 |
-| strategy.strategy_name        | 策略名称   | CPU总使用率       |
+| strategy.strategy_id          | 策略 ID     | 1                 |
+| strategy.strategy_name        | 策略名称   | CPU 总使用率       |
 | strategy.scenario             | 场景       | os                |
 | strategy.source_type          | 数据来源   | BKMONITOR         |
-| strategy.bk_biz_id            | 业务ID     | 2                 |
+| strategy.bk_biz_id            | 业务 ID     | 2                 |
 | strategy.item.result_table_id | 结果表名称 | system.cpu_detail |
 | strategy.item.name            | 指标名称   | 空闲率            |
 | strategy.item.metric_field    | 指标字段   | idle              |
@@ -69,7 +69,7 @@ Jinja2 是一个现代的，设计者友好的，仿照 Django 模板的 Python 
 | content.current_value | 告警当前值   |      |
 
 
-### CMDB变量
+### CMDB 变量
 
 CMDB 变量在采集的参数中也是可以使用的。
 
@@ -77,7 +77,7 @@ CMDB 变量在采集的参数中也是可以使用的。
 
 | 变量                                     | 名称           | 示例              |
 | ---------------------------------------- | --------------| -----------------|
-| target.business.bk_biz_id                | 业务ID         | 2                |
+| target.business.bk_biz_id                | 业务 ID         | 2                |
 | target.business.bk_biz_name              | 业务名称       | 蓝鲸              |
 | target.business.bk_biz_developer_string | 开发人员字符串 | admin,user1,user2 |
 | target.business.bk_biz_maintainer_string | 运维人员字符串 | admin,user1       |
@@ -90,12 +90,12 @@ CMDB 变量在采集的参数中也是可以使用的。
 
 | 变量                               | 名称                   | 示例        |
 | ---------------------------------- | ----------------------| ----------- |
-| target.host.bk_host_id             | 主机ID                | 1           |
-| target.host.bk_biz_id              | 业务ID                | 2           |
-| target.host.bk_cloud_id            | 云区域ID              | 0           |
+| target.host.bk_host_id             | 主机 ID                | 1           |
+| target.host.bk_biz_id              | 业务 ID                | 2           |
+| target.host.bk_cloud_id            | 云区域 ID              | 0           |
 | target.host.bk_cloud_name          | 云区域名称            | 默认区域    |
-| target.host.bk_host_innerip        | 内网IP                | 10.0.0.1    |
-| target.host.bk_host_outerip        | 外网IP                | 10.0.1.11   |
+| target.host.bk_host_innerip        | 内网 IP                | 10.0.0.1    |
+| target.host.bk_host_outerip        | 外网 IP                | 10.0.1.11   |
 | target.host.bk_host_name           | 主机名                |             |
 | target.host.bk_os_name             | 操作系统名称          | Linux       |
 | target.host.bk_os_type             | 操作系统类型(枚举数值) | 1           |
@@ -107,22 +107,22 @@ CMDB 变量在采集的参数中也是可以使用的。
 
 | 变量                                                | 名称         | 示例         |
 | --------------------------------------------------- | ------------| ------------ |
-| target.process.["process_name"].bk_process_id       | 进程ID       | 1            |
-| target.process.["process_name"].bk_process_name     | 进程名称     | 进程1        |
+| target.process.["process_name"].bk_process_id       | 进程 ID       | 1            |
+| target.process.["process_name"].bk_process_name     | 进程名称     | 进程 1        |
 | target.process.["process_name"].bk_func_name        | 进程功能名称 | java         |
-| target.process.["process_name"].bind_ip             | 绑定IP       | 10.0.1.10    |
+| target.process.["process_name"].bind_ip             | 绑定 IP       | 10.0.1.10    |
 | target.process.["process_name"].port                | 绑定端口     | 1,2,3-5,7-10 |
-| target.process.["process_name"].process_template_id | 进程模板ID   | 1            |
-| target.process.["process_name"].service_instance_id | 服务实例ID   | 1            |
-| target.process.["process_name"].bk_host_id          | 主机ID       | 1            |
+| target.process.["process_name"].process_template_id | 进程模板 ID   | 1            |
+| target.process.["process_name"].service_instance_id | 服务实例 ID   | 1            |
+| target.process.["process_name"].bk_host_id          | 主机 ID       | 1            |
 
 
 #### ServiceInstance / 服务实例变量
 
 | 变量                                        | 名称       | 示例          |
 | ------------------------------------------- | ----------| ------------- |
-| target.service_instance.service_instance_id | 服务实例ID | !             |
+| target.service_instance.service_instance_id | 服务实例 ID | !             |
 | target.service_instance.name                | 服务实例名 | xxx_10.0.1.11 |
-| target.service_instance.bk_host_id          | 主机ID     | 1             |
-| target.service_instance.bk_module_id        | 模块ID     | 1             |
-| target.service_instance.service_category_id | 服务分类id | 1             |
+| target.service_instance.bk_host_id          | 主机 ID     | 1             |
+| target.service_instance.bk_module_id        | 模块 ID     | 1             |
+| target.service_instance.service_category_id | 服务分类 id | 1             |

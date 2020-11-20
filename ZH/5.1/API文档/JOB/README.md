@@ -11,11 +11,11 @@
 |[fast_push_file](5.1/API文档/JOB/fast_push_file.md)| 快速分发文件|
 |[get_cron_list](5.1/API文档/JOB/get_cron_list.md)| 查询业务下定时作业信息|
 |[get_job_detail](5.1/API文档/JOB/get_job_detail.md)| 查询作业模板详情|
-|[get_job_instance_log](5.1/API文档/JOB/get_job_instance_log.md)| 根据作业实例ID查询作业执行日志|
+|[get_job_instance_log](5.1/API文档/JOB/get_job_instance_log.md)| 根据作业实例 ID 查询作业执行日志|
 |[get_job_instance_status](5.1/API文档/JOB/get_job_instance_status.md)| 查询作业执行状态|
 |[get_job_list](5.1/API文档/JOB/get_job_list.md)| 查询作业模板|
 |[get_os_account](5.1/API文档/JOB/get_os_account.md)| 查询业务下的执行账号|
-|[get_own_db_account_list](5.1/API文档/JOB/get_own_db_account_list.md)| 查询用户有权限的DB帐号列表|
+|[get_own_db_account_list](5.1/API文档/JOB/get_own_db_account_list.md)| 查询用户有权限的 DB 帐号列表|
 |[get_script_detail](5.1/API文档/JOB/get_script_detail.md)| 查询脚本详情|
 |[get_script_list](5.1/API文档/JOB/get_script_list.md)| 查询脚本列表|
 |[get_step_instance_status](5.1/API文档/JOB/get_step_instance_status.md)| 查询作业步骤的执行状态|

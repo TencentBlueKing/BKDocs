@@ -24,7 +24,7 @@ GET
 
 | 字段 | 类型 | 必选 | 描述 |
 | ---------- | --- | --- | ---- |
-| service_id | int | 是 | 服务id |
+| service_id | int | 是 | 服务 id |
 
 ### 请求参数示例
 
@@ -126,8 +126,8 @@ GET
 
 | 字段 | 类型 | 描述 |
 | ------- | --------- | ------------------------------------------- |
-| result | bool | 返回结果，true为成功，false为失败 |
-| code | int | 返回码，0表示成功，其他值表示失败 |
+| result | bool | 返回结果，true 为成功，false 为失败 |
+| code | int | 返回码，0 表示成功，其他值表示失败 |
 | message | string | 错误信息 |
 | data | object | 返回数据 |
 
@@ -135,8 +135,8 @@ GET
 
 | 字段 | 类型 | 描述 |
 | ------------ | ------ | ---- |
-| service_id | int | 服务id |
-| workflow_id | int | 服务流程id |
+| service_id | int | 服务 id |
+| workflow_id | int | 服务流程 id |
 | name | string | 服务名称 |
 | service_type | string | 服务类型 |
 | desc | string | 服务描述 |
@@ -146,7 +146,7 @@ GET
 
 | 字段 | 类型 | 描述 |
 | ------------- | ------ | ------- |
-| id | int | 字段id |
+| id | int | 字段 id |
 | key | string | 字段唯一标识 |
 | type | string | 字段类型 |
 | name | string | 字段名称 |
@@ -158,7 +158,7 @@ GET
 
 ### type（字段类型）
 
-| 类型Key | 类型 |
+| 类型 Key | 类型 |
 | ------------- | ------ |
 | STRING | 单行文本 |
 | STRING | 单行文本|

@@ -2,7 +2,7 @@
 
 自助接入，开发者不需要编写代码，在自助接入进行配置， 即可将自己的接口接入 API 网关。以如下接口为例，详细介绍如何完成自助接入。
 
->注：适用于将HTTP协议、无需特殊处理的接口，直接对接的场景
+>注：适用于将 HTTP 协议、无需特殊处理的接口，直接对接的场景
 
 - 系统名称：主机配置平台 HCP
 
@@ -34,7 +34,7 @@
 
 - 注册到的 API 路径：/hcp/get_host_list/ 通过"注册到的路径"，加上统一前缀，即是 API 的接口地址：
 
-```
+```plain
 http://xxx.domain.com/api/c/self-service-api/hcp/get_host_list/
 ```
 
@@ -56,6 +56,6 @@ http://xxx.domain.com/api/c/self-service-api/hcp/get_host_list/
 
 通过上面的配置，即可接入 API，访问 API 同样会进行应用和用户的认证。API 的访问地址为：
 
-```
+```plain
 http://xxx.domain.com/api/c/self-service-api/hcp/get_host_list/
 ```

@@ -12,6 +12,6 @@
     * [集群管理](产品功能/ClusterManage.md)
 * [API 文档]()
     * [简介](5.1/API文档/GSE/README.md)
-    * [Agent心跳信息查询](5.1/API文档/GSE/get_agent_info.md)
-    * [Agent在线状态查询](5.1/API文档/GSE/get_agent_status.md)
+    * [Agent 心跳信息查询](5.1/API文档/GSE/get_agent_info.md)
+    * [Agent 在线状态查询](5.1/API文档/GSE/get_agent_status.md)
 * [常见问题](常见问题/FAQ.md)

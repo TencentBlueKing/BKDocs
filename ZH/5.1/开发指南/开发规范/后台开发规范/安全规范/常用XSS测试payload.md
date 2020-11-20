@@ -1,4 +1,4 @@
-## XSS测试payload
+## XSS 测试 payload
 
 - `<script>alert('xss')</script>`
 

@@ -21,16 +21,16 @@ GET
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段 | 类型 | 描述   |
 | ---- | ---- | ------ |
-| id   | int  | 屏蔽ID |
+| id   | int  | 屏蔽 ID |
 
 #### 示例数据
 
@@ -45,7 +45,7 @@ GET
 
 | 字段             | 类型   | 描述                                  |
 | ---------------- | ------ | ------------------------------------- |
-| bk_biz_id        | int    | 业务ID                                |
+| bk_biz_id        | int    | 业务 ID                                |
 | category         | string | 屏蔽类型                              |
 | description      | string | 说明                                  |
 | begin_time       | string | 开始时间                              |
@@ -54,7 +54,7 @@ GET
 | shield_notice    | bool   | 是否发送屏蔽通知                      |
 | notice_config    | dict   | 通知配置                              |
 | dimension_config | dict   | 屏蔽维度                              |
-| id               | int    | 屏蔽ID                                |
+| id               | int    | 屏蔽 ID                                |
 | scope_type       | string | 范围类型                              |
 | status           | int    | 当前状态，屏蔽中(1)，过期(2)，解除(3) |
 
@@ -72,7 +72,7 @@ GET
 
 | 字段            | 类型 | 描述                     |
 | --------------- | ---- | ------------------------ |
-| notice_time     | int  | 屏蔽开始/结束前N分钟通知 |
+| notice_time     | int  | 屏蔽开始/结束前 N 分钟通知 |
 | notice_way      | list | 通知类型                 |
 | notice_receiver | list | 通知人                   |
 

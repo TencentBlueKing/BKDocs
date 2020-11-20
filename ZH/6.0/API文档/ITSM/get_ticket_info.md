@@ -21,9 +21,9 @@ GET
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
@@ -104,8 +104,8 @@ GET
 
 | 字段      | 类型        | 描述                      |
 | ------- | --------- | ----------------------- |
-| result  | bool      | 返回结果，true为成功，false为失败   |
-| code    | int       | 返回码，0表示成功，其他值表示失败       |
+| result  | bool      | 返回结果，true 为成功，false 为失败   |
+| code    | int       | 返回码，0 表示成功，其他值表示失败       |
 | message | string    | 错误信息                    |
 | data    | object    | 返回数据 |
 
@@ -113,15 +113,15 @@ GET
 
 | 字段                     | 类型     | 描述       |
 | ---------------------- | ------ | -------- |
-| id                     | int    | 单据id     |
-| catalog_id             | int    | 服务目录id   |
-| service_id             | int    | 服务id     |
-| flow_id                | int    | 流程版本id   |
+| id                     | int    | 单据 id     |
+| catalog_id             | int    | 服务目录 id   |
+| service_id             | int    | 服务 id     |
+| flow_id                | int    | 流程版本 id   |
 | sn                     | string | 单号     |
 | title                  | string | 单据标题     |
 | current_status         | string | 单据当前状态，RUNNING（处理中）/FINISHED（已结束）/TERMINATED（被终止）   |
 | current_steps          | array  | 单据当前步骤   |
-| comment_id             | string | 单据评价id   |
+| comment_id             | string | 单据评价 id   |
 | is_commented           | bool   | 单据是否已评价  |
 | updated_by             | string | 最近更新者    |
 | update_at              | string | 最近更新时间   |
@@ -129,7 +129,7 @@ GET
 | creator                | string | 提单人      |
 | create_at             | string | 创建时间    |
 | is_biz_need            | bool   | 是否与业务关联  |
-| bk_biz_id              | int    | 业务id     |
+| bk_biz_id              | int    | 业务 id     |
 | fields              | array    | 提单节点字段    |
 
 ### current_steps（当前步骤）
@@ -139,8 +139,8 @@ GET
 | name            | string    | 步骤名称    |
 | action_type     | string    | 操作类型：TRANSITION（审批）/DISTRIBUTE（分派）/CLAIM（认领）/AUTOMATIC（自动处理）    |
 | processors      | string | 处理人列表  |
-| processors_type | string | 处理人类型：CMDB（cmdb角色）/GENERAL（通用角色）/PERSON（个人）/STARTER（提单人）/OPEN（不限）    |
-| state_id        | int | 节点ID    |
+| processors_type | string | 处理人类型：CMDB（cmdb 角色）/GENERAL（通用角色）/PERSON（个人）/STARTER（提单人）/OPEN（不限）    |
+| state_id        | int | 节点 ID    |
 | status          | string | 节点状态    |
 
 
@@ -162,7 +162,7 @@ GET
 
 | 字段              | 类型         | 描述         |
 | --------------- | ---------- | ---------- |
-| id            | int    | 字段id    |
+| id            | int    | 字段 id    |
 | key           | string | 字段唯一标识  |
 | type          | string | 字段类型    |
 | name          | string | 字段名称    |

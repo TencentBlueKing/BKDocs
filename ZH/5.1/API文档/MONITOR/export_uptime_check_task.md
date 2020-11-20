@@ -204,7 +204,7 @@ GET
 | response | str | 期望响应内容 |
 | response_code | str | 期望响应码 |
 
-#### http任务返回的config示例
+#### http 任务返回的 config 示例
 ```json
 {
     "config": {
@@ -255,8 +255,8 @@ GET
 | 字段        | 类型   | 描述         |
 | ----------- | ------ | ------------ |
 | bk_biz_id | int | 节点所属业务 |
-| ip | str | 节点IP |
-| bk_cloud_id | int | 节点云区域ID |
+| ip | str | 节点 IP |
+| bk_cloud_id | int | 节点云区域 ID |
 
 
 #### 1.1.2.1.2 节点配置信息--data.conf_list.target_conf.node_list.node_conf
@@ -314,8 +314,8 @@ alarm_start_time | str | 当日开始告警时间 |
 alarm_end_time | str | 当日结束告警时间 |
 detect_algorithm | list | 检测算法配置 |
 is_recovery | str | 自动恢复 |
-monitor_level | int | 告警级别，1致命、2预警、3提醒 |
-notify_way | list |通知方式，mail邮件、wechat微信、sms短信、phone电话 |
+monitor_level | int | 告警级别，1 致命、2 预警、3 提醒 |
+notify_way | list |通知方式，mail 邮件、wechat 微信、sms 短信、phone 电话 |
 phone_receiver | list | 电话通知对象，账号名 |
 responsible | list | 其他通知人列表 |
 role_list | list | 通知人分组，在业务管理中配置 |
@@ -324,7 +324,7 @@ role_list | list | 通知人分组，在业务管理中配置 |
 |字段  | 类型  |描述  |
 |------|-------|-------|
 | config | dict |检测算法详细配置 |
-| algorithm_id | int | 检测算法ID，静态阈值 1000、同比策略(简易) 1001、环比策略(简易)1002 |
+| algorithm_id | int | 检测算法 ID，静态阈值 1000、同比策略(简易) 1001、环比策略(简易)1002 |
 
 #### 1.1.3.2.1.1.1 检测算法详细配置(静态阈值)--data.conf_list.monitor_conf.alarm_level_config.1.detect_algorithm.config
 |字段  | 类型  | 描述  |

@@ -4,7 +4,7 @@
 
 支持通过 gse agent 和 bkmonitorporxy(http 接口)两种方式实现自定义上报， 上报之前会在本地进行 jsonschema 校验。
 
-## 第一步： 申请数据ID 
+## 第一步： 申请数据 ID 
 
 **导航位置**：导航  →  监控配置  →  自定义上报
 
@@ -95,7 +95,7 @@ Usage of ./bkmonitorbeat:
 {"code":"200","message":"success","request_id":"4a6b1b1e-0af0-4834-87c5-6443662df7d3","result":"true"}
 ```
 
-### 通过gse agent上报自定义事件数据
+### 通过 gse agent 上报自定义事件数据
 
 本示例采用单独指定各个上报字段的方式，用于解决拼装 json 麻烦的问题。
 
@@ -124,7 +124,7 @@ Usage of ./bkmonitorbeat:
 -report.event.timestamp 1595944620000
 ```
 
-### 通过bkmonitorproxy上报自定义事件数据
+### 通过 bkmonitorproxy 上报自定义事件数据
 
 ```bash
 ./bkmonitorbeat -report \

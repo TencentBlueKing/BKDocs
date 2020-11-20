@@ -13,7 +13,7 @@ POST
 ### 功能描述
 
 图表数据查询  
-根据给定的sql表达式查询指定的存储引擎  
+根据给定的 sql 表达式查询指定的存储引擎  
 
 
 
@@ -21,18 +21,18 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段           | 类型   | 必选 | 描述        |
 | -------------- | ------ | ---- | ----------- |
-| sql            | string | 是   | SQL查询语句 |
-| prefer_storage | string | 否   | 查询引擎(默认influxdb)    |
-| bk_username    | string | 否   | 白名单的app_code必填      |
+| sql            | string | 是   | SQL 查询语句 |
+| prefer_storage | string | 否   | 查询引擎(默认 influxdb)    |
+| bk_username    | string | 否   | 白名单的 app_code 必填      |
 
 #### 请求示例
 
@@ -43,15 +43,15 @@ POST
 }
 ```
 
->sql中的结果表名为biz_id + db_name + table_name  
->Biz_id：业务id  
+>sql 中的结果表名为 biz_id + db_name + table_name  
+>Biz_id：业务 id  
 >Db_name: 数据库名  
 >Table_name: 数据表名  
->例：2_system_cpu_detail：业务2下的system库的cpu_detail表  
->查询一个小时内的单核cpu的使用率的sql语句：  
+>例：2_system_cpu_detail：业务 2 下的 system 库的 cpu_detail 表  
+>查询一个小时内的单核 cpu 的使用率的 sql 语句：  
 >Select Mean(usage) as usage from 2_system_detail where time > '1h' group by ip,device_name,minute1 limit 10  
 
->上面请求实例中结果表3_system_disk表示：业务3下的system库中的disk表  
+>上面请求实例中结果表 3_system_disk 表示：业务 3 下的 system 库中的 disk 表  
 
 >注意：上述的库和表并非和时序存储中的实际物理库、表对应。而是指'源数据管理模块'的库表
 

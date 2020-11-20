@@ -43,7 +43,7 @@ POST
 
 ### 返回结果示例
 
-```
+```plain
 {
     "result": true,
     "data": {}

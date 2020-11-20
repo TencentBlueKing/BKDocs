@@ -246,7 +246,7 @@ sample_metric2{partition="c:"} 0.44
 
 - 调试，验证插件的正确性
 
-具体参考 [如何在线制作Exporter插件](../guide/import_Exporter.md)。
+具体参考 [如何在线制作 Exporter 插件](../guide/import_Exporter.md)。
 
 还可以线下制作 Exporter 插件包，具体查看 [插件配置文件说明](../functions/addenda/plugins_explain.md)。
 

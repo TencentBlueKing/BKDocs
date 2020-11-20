@@ -21,19 +21,19 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段          |  类型       | 必选   |  描述             |
 |---------------|------------|--------|------------------|
-|   project_id  |   int      |   是   |  项目ID           |
+|   project_id  |   int      |   是   |  项目 ID           |
 |   name        |   string   |   是   |  任务名称         |
 |   pipeline_tree | dict     |   是   |  任务实例树，详细信息请见下面说明 |
-|   flow_type   |   string   |   否   |  任务流程类型，common: 常规流程，common_func：职能化流程，默认值为common |
+|   flow_type   |   string   |   否   |  任务流程类型，common: 常规流程，common_func：职能化流程，默认值为 common |
 |   description |   string   |   否   |  任务描述         |
 |   category    |   string   |   否   |  任务分类，详细信息请见下面说明 |
 
@@ -45,7 +45,7 @@ POST
 | MonitorAlarm | 监控告警  |
 | ConfManage   | 配置管理  |
 | DevTools     | 开发工具  |
-| EnterpriseIT | 企业IT   |
+| EnterpriseIT | 企业 IT   |
 | OfficeApp    | 办公应用  |
 | Other        | 其它     |
 
@@ -65,7 +65,7 @@ POST
 
 | 字段      | 类型      | 必选   | 描述      |
 |-----------|----------|-------|-----------|
-|  id       |  string  | 是    | 开始节点 ID，在 pipeline_tree 所有ID中全局唯一 |
+|  id       |  string  | 是    | 开始节点 ID，在 pipeline_tree 所有 ID 中全局唯一 |
 |  type     |  string  | 是    | 开始节点类型，当前只支持 EmptyStartEvent: 空开始类 |
 |  name     |  string  | 是    | 开始节点名称，可为空 |
 |  incoming |  string  | 是    | 入度顺序流 ID，必须为空字符串    |
@@ -75,7 +75,7 @@ POST
 
 | 字段      | 类型      | 必选   | 描述      |
 |-----------|----------|-------|-----------|
-|  id       |  string  | 是    | 结束节点 ID，在 pipeline_tree 所有ID中全局唯一 |
+|  id       |  string  | 是    | 结束节点 ID，在 pipeline_tree 所有 ID 中全局唯一 |
 |  type     |  string  | 是    | 结束节点类型，当前只支持 EmptyEndEvent：空结束类 |
 |  name     |  string  | 是    | 结束节点名称，可为空 |
 |  incoming |  string  | 是    | 入度顺序流 ID    |
@@ -391,7 +391,7 @@ POST
 
 ### 返回结果示例
 
-```
+```plain
 {
     "result": true,
     "data": {
@@ -636,7 +636,7 @@ POST
 
 | 字段      | 类型      | 说明      |
 |-----------|----------|-----------|
-|  task_id  | int      | 任务实例ID |
+|  task_id  | int      | 任务实例 ID |
 |  task_url | string   | 任务实例链接 |
 |  pipeline_tree | dict | 任务实例树  |
 

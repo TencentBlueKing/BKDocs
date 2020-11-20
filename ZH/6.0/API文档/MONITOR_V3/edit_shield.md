@@ -21,16 +21,16 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段          | 类型   | 必选 | 描述             |
 | ------------- | ------ | ---- | ---------------- |
-| bk_biz_id     | int    | 是   | 业务ID           |
+| bk_biz_id     | int    | 是   | 业务 ID           |
 | category      | string | 是   | 屏蔽类型         |
 | description   | string | 是   | 说明             |
 | begin_time    | string | 是   | 开始时间         |
@@ -38,7 +38,7 @@ POST
 | cycle_config  | dict   | 是   | 屏蔽配置         |
 | shield_notice | bool   | 是   | 是否发送屏蔽通知 |
 | notice_config | dict   | 否   | 通知配置         |
-| id            | int    | 是   | 屏蔽ID           |
+| id            | int    | 是   | 屏蔽 ID           |
 | level         | int    | 否   | 屏蔽策略的等级   |
 
 #### 屏蔽配置(CycleConfig)
@@ -55,7 +55,7 @@ POST
 
 | 字段            | 类型 | 必选 | 描述                     |
 | --------------- | ---- | ---- | ------------------------ |
-| notice_time     | int  | 是   | 屏蔽开始/结束前N分钟通知 |
+| notice_time     | int  | 是   | 屏蔽开始/结束前 N 分钟通知 |
 | notice_way      | list | 是   | 通知类型                 |
 | notice_receiver | list | 是   | 通知人                   |
 

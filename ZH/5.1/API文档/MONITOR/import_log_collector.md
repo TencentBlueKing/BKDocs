@@ -53,7 +53,7 @@ POST
 | name        | string | 是   | 字段名                                                       |
 | type        | string | 是   | 字段类型                                                     |
 | alis        | string | 否   | 默认填“”                                                     |
-| time_format | string | 否   | 时间格式，若是时间字段则填“1”，为1的时间格式为yyyy-MM-dd HH:mm:ss；若非时间字段则填“”或不传 |
+| time_format | string | 否   | 时间格式，若是时间字段则填“1”，为 1 的时间格式为 yyyy-MM-dd HH:mm:ss；若非时间字段则填“”或不传 |
 | time_zone   | string | 否   | 时区 ，一般为“+8”                                            |
 | description | string | 是   | 字段描述                                                     |
 
@@ -66,7 +66,7 @@ POST
 
 ### 请求参数示例
 
-导入一个采集/tmp/log.txt日志的日志采集器
+导入一个采集/tmp/log.txt 日志的日志采集器
 
 ```json
 {

@@ -28,16 +28,16 @@ docker run -d --rm --privileged=true --name bk5.1-relese --network bk-network --
 >- -d：后台进程启动
 >- --rm：容器停止时删除容器，防止下次启动时容器名重复，启动失败
 >- --privileged=true：开启特权模式，我们后面所做操作需要某些特权，例如设置网卡信息等，否则会失败
->- --name bk5.1-relese：容器名称命名为bk5.1-relese，方便后续操作
+>- --name bk5.1-relese：容器名称命名为 bk5.1-relese，方便后续操作
 >- --network bk-network：使用特定用户网络，以免与用户现有容器环境冲突
->- --hostname rbtnode1：设置容器主机名，rbtnode1为社区版5.1特定主机名，里面某些服务会与之绑定
->- --ip 172.29.144.251：设置特定IP地址，以免与用户现有容器环境冲突
->- --add-host paas|cmdb|job.bk.com:172.29.144.251:添加/etc/hosts解析，社区版所需
->- -v /mnt/soft:/soft：挂载host上的/mnt/soft上的文件，里面有安装社区版5.1所需的安装文件
->- --mac-address 02:d0:c8:0b:37:c3：绑定特定MAC地址，以免重新生成gse证书
->- -p xxx:xxx：端口映射，让host上的端口映射到容器内,80是http服务，其余端口均用于gse_agent通讯
->- docker.oa.com:8080/public/centos-7.2： 使用公司内centos7.2的镜像作为容器基础源
-/sbin/init：使用systemd托管容器进程
+>- --hostname rbtnode1：设置容器主机名，rbtnode1 为社区版 5.1 特定主机名，里面某些服务会与之绑定
+>- --ip 172.29.144.251：设置特定 IP 地址，以免与用户现有容器环境冲突
+>- --add-host paas|cmdb|job.bk.com:172.29.144.251:添加/etc/hosts 解析，社区版所需
+>- -v /mnt/soft:/soft：挂载 host 上的/mnt/soft 上的文件，里面有安装社区版 5.1 所需的安装文件
+>- --mac-address 02:d0:c8:0b:37:c3：绑定特定 MAC 地址，以免重新生成 gse 证书
+>- -p xxx:xxx：端口映射，让 host 上的端口映射到容器内,80 是 http 服务，其余端口均用于 gse_agent 通讯
+>- docker.oa.com:8080/public/centos-7.2： 使用公司内 centos7.2 的镜像作为容器基础源
+/sbin/init：使用 systemd 托管容器进程
 
 - 进入容器
 ```shell
@@ -63,7 +63,7 @@ export PATH=${PATH}:/data/bkce/service/mysql/bin
 ```shell
 source /root/.bashrc
 ```
-- 设置容器 dns，替代 host上 的 `/etc/resolv.conf` 里的内容，127.0.0.1 是使用容器内 consul 监听的 DNS 服务
+- 设置容器 dns，替代 host 上 的 `/etc/resolv.conf` 里的内容，127.0.0.1 是使用容器内 consul 监听的 DNS 服务
 ```shell
 echo 'nameserver 127.0.0.1
 nameserver 8.8.8.8' >/etc/resolv.conf
@@ -234,7 +234,7 @@ cd /data/bkce/open_paas/paas/media/saas_files && rm *
 ```
 
 - 清理 public
-```
+```plain
 cd /data/bkce/public/mongodb/journal && rm *
 /data/bkce/public/mysql && rm ib_logfile* && rm rbtnode1.err
 cd /data/bkce/service/mysql/docs && rm *
@@ -338,7 +338,7 @@ mkdir gse && tar zxvf gse_client-linux-x86_64.tgz -C ./gse/
 ```
 
 - 精简 gse_agent
-```
+```plain
 rm gse/plugins/bin/*
 sed -i 's/auto_launch: 1/auto_launch: 0/g' gse/plugins/project.yaml
 ```
@@ -445,7 +445,7 @@ sed -i 's/auto_launch: 1/auto_launch: 0/g' gse/plugins/project.yaml
 docker kill bk5.1-relese:v1
 ```
 
-- 重新启动容器，不需要挂载数据目录：logs 和public
+- 重新启动容器，不需要挂载数据目录：logs 和 public
 ```shell
 docker run -d --rm --privileged=true --name bk5.1-relese-v1 --network bk-network --hostname rbtnode1 \
 --ip 172.29.144.251 --add-host paas.bk.com:172.29.144.251 \

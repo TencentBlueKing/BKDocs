@@ -82,7 +82,7 @@ POST
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result    | bool      | 请求成功与否，true:请求成功，false:请求失败 |
-| code      | string    | 组件返回错误编码，0表示success，>0表示失败错误 |
+| code      | string    | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
 | message   | string    | 请求失败返回的错误消息 |
 | data      | object    | 请求返回的数据 |
 
@@ -99,5 +99,5 @@ POST
 | bk_supplier_account  | string             | 开发商账号                                                                                     |
 | bk_ispaused          | bool               | 是否停用, true or false                                                                        |
 | ispre                | bool               | 是否预定义, true or false                                                                      |
-| bk_obj_icon          | string             | 对象模型的ICON信息，用于前端显示，取值可参考[(modleIcon.json)](./modleIcon.json)|
+| bk_obj_icon          | string             | 对象模型的 ICON 信息，用于前端显示，取值可参考[(modleIcon.json)](./modleIcon.json)|
 | position             | json object string | 用于前端展示的坐标                                                                             |

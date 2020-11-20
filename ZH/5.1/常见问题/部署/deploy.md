@@ -135,7 +135,7 @@ ln -s /usr/lib64/mysql/libmysqlclient.so.18.0.0 /usr/lib/libmysqlclient.so.18.0.
 
 - 解决方案：
 
-通过安装 snappy-devel 解决,`yum install -y snappy-devel `
+通过安装 snappy-devel 解决,`yum install -y snappy-devel`
 
 #### 启动报 "dataapi.service.consul start failed ERROR： init_snapshot_config"
 

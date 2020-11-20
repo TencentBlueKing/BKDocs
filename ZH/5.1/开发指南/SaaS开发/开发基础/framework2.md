@@ -1,4 +1,4 @@
-# 开发框架2.0使用说明
+# 开发框架 2.0 使用说明
 ## 目录结构说明
 ### 项目目录结构
 
@@ -79,16 +79,16 @@
 ## 开发环境搭建(Python)
 ### 安装 Python(3.6)
 
-如果系统中已经安装有 Python2 版本，可以参考 Python 版本切换了解[Python3与Python2并存的处理方案](PYTHON2_3.md)
+如果系统中已经安装有 Python2 版本，可以参考 Python 版本切换了解[Python3 与 Python2 并存的处理方案](PYTHON2_3.md)
 
-### 安装 MySQL(5.5以上)
+### 安装 MySQL(5.5 以上)
 ### 安装 setuptools、pip 和项目依赖
 
 ```bash
 pip3 install -r requirements.txt
 ```
 
-> 注意：由于依赖中存在 mysqlclient，该模块存在对C环境的依赖，开发者可以参考[项目主页](https://github.com/PyMySQL/mysqlclient-python#install)安装说明
+> 注意：由于依赖中存在 mysqlclient，该模块存在对 C 环境的依赖，开发者可以参考[项目主页](https://github.com/PyMySQL/mysqlclient-python#install)安装说明
 >
 > 此处不使用 PyMySQL 原因是该模块与 Django2.2 存在兼容[问题](https://github.com/PyMySQL/PyMySQL/issues/790)
 
@@ -175,7 +175,7 @@ python manage.py runserver
 ### 把 yourappname 加入 config/default.py 的 INSTALLED_APPS 中
 
 ## 定义 model
-### 在新建的 application 中 models.py 定义model
+### 在新建的 application 中 models.py 定义 model
 
 官方文档：[Django Models](https://docs.djangoproject.com/en/2.2/topics/db/models/)
 
@@ -223,7 +223,7 @@ render 函数接受三个参数：
 
 > 为什么 templates 目录底下还需要再加一层以 APP_NAME 命名的目录？
 > 假设 settings INSTALLED_APPS = ('app1', 'app2')，工程目录如下
-> ```
+> ```plain
 > PROJCET_ROOT
 > |__ app1
 > |__ __ templates
@@ -265,13 +265,13 @@ context = {
 
 ## 静态资源使用规范
 
-- 静态文件按模块划分，分别放在 Django 工程中每个对应APP的 static 目录下
+- 静态文件按模块划分，分别放在 Django 工程中每个对应 APP 的 static 目录下
 
-请将你的 Django 静态文件 xxx.js和xxx.css 放在 PROJECT_ROOT/APP_NAME/static/ 目录底下，建议在 static 底下在加上一层目录，取名为 APP_NAME，即最终模板文件存放路径为 PROJECT_ROOT/APP_NAME/static/APP_NAME[/js或者/css]，这是为了避免在寻找静态文件的时候，出现覆盖的情况。
+请将你的 Django 静态文件 xxx.js 和 xxx.css 放在 PROJECT_ROOT/APP_NAME/static/ 目录底下，建议在 static 底下在加上一层目录，取名为 APP_NAME，即最终模板文件存放路径为 PROJECT_ROOT/APP_NAME/static/APP_NAME[/js 或者/css]，这是为了避免在寻找静态文件的时候，出现覆盖的情况。
 
-- 修改静态文件后要手动运行 python manage.py collectstatic 命令来收集静态文件到根目录的static文件夹中。
+- 修改静态文件后要手动运行 python manage.py collectstatic 命令来收集静态文件到根目录的 static 文件夹中。
 
-- settings需要包含STATIC_ROOT配置。
+- settings 需要包含 STATIC_ROOT 配置。
 
 ```python
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -361,7 +361,7 @@ CELERYD_CONCURRENCY = os.getenv('BK_CELERYD_CONCURRENCY', 2)
 ### 调整 celery 与 RabbitMQ 心跳包发送时间
 - BROKER_HEARTBEAT 参数官方说明：[官方文档](https://docs.celeryproject.org/en/3.1/configuration.html?#std:setting-BROKER_HEARTBEAT)
 
-- 目前开发框架设置的 BROKER_HEARTBEAT 发送时间是 60，即每60秒发送一个心跳包，如需调整，有以下方法：
+- 目前开发框架设置的 BROKER_HEARTBEAT 发送时间是 60，即每 60 秒发送一个心跳包，如需调整，有以下方法：
 
 直接修改 APP 中的配置，即在 config/default.py 文件中添加相应配置，框架默认的配置会被覆盖。
 
@@ -418,7 +418,7 @@ logger.error('log your info here.')
    LOG_LEVEL = "DEBUG"
    LOGGING = set_log_level(locals())
    ```
-    __注意__: 这种修改方式依赖 blueapps版本 >= 3.3.1。
+    __注意__: 这种修改方式依赖 blueapps 版本 >= 3.3.1。
 
 其中，不同配置的含义如下：
 1. DEBUG：用于调试目的的底层系统信息
@@ -450,7 +450,7 @@ def your_view_func(request):
 
 - 异常类所在命名空间
 
-	- blueapps.core.exceptions
+	- blueapps.core.exceptionsplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
 
 - 服务端异常
 
@@ -458,8 +458,8 @@ def your_view_func(request):
 | ------ | ---- | ----------- | ---------- | -------- |
 | DatabaseError | 数据库异常  |  501 |  50110 | 更新数据库记录失败 |
 | ApiNetworkError | 网络异常导致远程服务失效 | 503 | 50301 | 请求第三方接口由于网络连接问题导致失败 |
-| ApiResultError | 远程服务请求结果异常 | 503 | 50302 | 请求第三方结果返回result结果是false |
-| ApiNotAcceptable | 远程服务返回结果格式异常 | 503 | 50303 | 第三方接口返回xml格式结果，但预期返回json格式 |
+| ApiResultError | 远程服务请求结果异常 | 503 | 50302 | 请求第三方结果返回 result 结果是 false |
+| ApiNotAcceptable | 远程服务返回结果格式异常 | 503 | 50303 | 第三方接口返回 xml 格式结果，但预期返回 json 格式 |
 
 - 客户端异常
 
@@ -468,9 +468,9 @@ def your_view_func(request):
 | ParamValidationError | 参数验证失败 | 400 | 40000 | 期待为整形的参数，用户提供了一个字符参数 |
 | ParamRequired | 请求参数缺失 | 400 | 40001 | 期待的参数找不到 |
 | RioVerifyError | 登陆请求经智能网关检测失败 | 401 | 40101 | 用户登录验证 |
-| BkJwtVerifyError | 登陆请求经JWT检测失败 | 401 | 40102 | 用户登录验证 |
+| BkJwtVerifyError | 登陆请求经 JWT 检测失败 | 401 | 40102 | 用户登录验证 |
 | AccessForbidden | 登陆失败 | 403 | 40301 | 用户身份验证失败 |
 | RequestForbidden | 请求拒绝 | 403 | 40320 | 用户企图操作没有权限的任务 |
 | ResourceLock | 请求资源被锁定 | 403 | 40330 | 用户企图操作一个已经锁定的任务 |
-| ResourceNotFound | 找不到请求的资源 | 404 | 40400 | 找不到用户请求的某个指定ID的model |
+| ResourceNotFound | 找不到请求的资源 | 404 | 40400 | 找不到用户请求的某个指定 ID 的 model |
 | MethodError | 请求方法不支持 | 405 | 40501 | 用户发送的请求不在预期范围内 |

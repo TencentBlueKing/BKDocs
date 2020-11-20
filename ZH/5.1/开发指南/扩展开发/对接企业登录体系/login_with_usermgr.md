@@ -212,7 +212,7 @@ class MockBackend(ModelBackend):
 
 `open_paas/login` 下涉及的文件
 
-```
+```plain
 conf/default.py            配置文件如后, 会import ee_login.settings_login 获取登录配置
 
 ee_login/                  自定义登录配置

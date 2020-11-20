@@ -1,4 +1,4 @@
-# macOS 下输出 Hello,World!
+# macOS 下输出 Hello,World
 
 基于 `蓝鲸开发框架 2.0` 上输出 `Hello,World!`
 
@@ -96,7 +96,7 @@ pip3 install -r requirements.txt
 
 打开 `MySQL` 命令行执行
 
-```
+```plain
 CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
 ```
 

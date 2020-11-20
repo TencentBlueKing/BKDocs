@@ -16,7 +16,7 @@ agent 机器：有进程则 ok
 ## 若进程检测失败
 查看进程启动失败原因
 
-切换到cd /usr/local/gse/plugins/bin/目录下
+切换到 cd /usr/local/gse/plugins/bin/目录下
 ### Linux
 > ./basereport -c ../etc/basereport.conf
 
@@ -44,7 +44,7 @@ GSE_IP 和 GSE_IP1 机器：检测 9092 端口
 
 ## 检查配置
 ZK_IP 机器：查看 ZK 节点
-		>/data/bkce/service/zk/bin/zkCli.sh -server ip:2181 (ip通常为zk本机内网IP)
+		>/data/bkce/service/zk/bin/zkCli.sh -server ip:2181 (ip通常为zk本机内网IP)plainplainplainplainplainplainplainplain
 	get /gse/config/etc/dataserver/data/1001
 
 	正常会出现类似下面的数据结构

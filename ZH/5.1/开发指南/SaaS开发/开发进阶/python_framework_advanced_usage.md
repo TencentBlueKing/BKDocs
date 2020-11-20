@@ -27,7 +27,7 @@ def myview(request):
 
 - username
 
-用户唯一标识，如QQ号
+用户唯一标识，如 QQ 号
 
 - nickname
 
@@ -111,7 +111,7 @@ class Migration(migrations.Migration):
     ]
 ```
 
-其中，{APP} 表示你的当前 APP，{APP_LAST_MIGRATION} 表示当前 mirgations 文件中最新一个文件名（如 “0003_auto_20180301_1732”），{INDEX} 表示最新一个文件名的前缀数字加1（如 “0003_auto_20180301_1732” 的前缀数字是 “0003”，那么 {INDEX} 设置为 “0004”）。
+其中，{APP} 表示你的当前 APP，{APP_LAST_MIGRATION} 表示当前 mirgations 文件中最新一个文件名（如 “0003_auto_20180301_1732”），{INDEX} 表示最新一个文件名的前缀数字加 1（如 “0003_auto_20180301_1732” 的前缀数字是 “0003”，那么 {INDEX} 设置为 “0004”）。
 
 - 通过 views 实现
 
@@ -184,7 +184,7 @@ __注意__：不要修改 settings.py ，配置项修改请在 config 目录下�
    LOG_LEVEL = "DEBUG"
    LOGGING = set_log_level(locals())
    ```
-    __注意__: 这种修改方式依赖 blueapps版本 >= 3.3.1。
+    __注意__: 这种修改方式依赖 blueapps 版本 >= 3.3.1。
 
 其中，不同配置的含义如下：
 1. DEBUG：用于调试目的的底层系统信息
@@ -212,7 +212,7 @@ __注意__：不要修改 settings.py ，配置项修改请在 config 目录下�
 
 ### 使用 settings 配置
 
-在Django 应用中，可以通过导入django.conf.settings 对象来使用设置。例如：
+在 Django 应用中，可以通过导入 django.conf.settings 对象来使用设置。例如：
 
 ```python
 from django.conf import settings
@@ -230,7 +230,7 @@ from django.conf.settings import DEBUG  # This won't work.
 __注意__：你的代码不应该从 config.default.py 或其他设置文件中导入。django.conf.settings 抽象出默认设置和站点特定设置的概念；它表示一个单一的接口。它还可以将代码从你的设置所在的位置解耦出来。
 
 
-## 自定义middleware(中间件)
+## 自定义 middleware(中间件)
 
 - default.py 配置如下
 
@@ -242,9 +242,9 @@ MIDDLEWARE += (
 
 __注意__：django1.10 开始，中间件配置项使用 __`MIDDLEWARE`__ ，1.10 以下版本使用的 MIDDLEWARE_CLASSES 配置项会在 django2.0 后不再被支持。
 
-- midlleware开发
+- midlleware 开发
 
-使用MIDDLEWARE配置项开发你的middleware。
+使用 MIDDLEWARE 配置项开发你的 middleware。
 
 ```python
 from django.utils.deprecation import MiddlewareMixin
@@ -270,7 +270,7 @@ __注意__： 你的 middleware 类必须继承 django 的 MiddlewareMixin，同
 
 ### blueapps.utils.logger
 
-提供常用的logger,logger_celery
+提供常用的 logger,logger_celery
 
 ```python
 from blueapps.util.logger import logger         # 普通日志

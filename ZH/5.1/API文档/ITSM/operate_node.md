@@ -25,11 +25,11 @@ POST
 | --------- | ------ | --- | -------------------------- |
 | sn | string | 是 | 单号
 | operator | string | 是 | 单据节点处理人、单据节点认领人，必须在处理人范围内|
-| state_id | int | 是 | 节点ID，必须是当前可处理的节点 |
+| state_id | int | 是 | 节点 ID，必须是当前可处理的节点 |
 | action_type | string | 是 | 操作类型： TRANSITION（审批）/CLAIM（认领）/DISTRIBUTE（派单）/DELIVER（转单） ）/TERMINATE（终止节点和单据） |
 | fields | array | 否 | 审批表单字段列表（审批操作必填）|
 | processors_type | string | 否 | 被指定的处理人类型（分派和转单操作必填）： GENERAL（通用角色）/PERSON（个人）|
-| processors | string | 否 | 被指定的处理人（分派和转单操作必填）： processors_type为GENERAL时，为角色ID，否则为蓝鲸用户的username|
+| processors | string | 否 | 被指定的处理人（分派和转单操作必填）： processors_type 为 GENERAL 时，为角色 ID，否则为蓝鲸用户的 username|
 | action_message | string | 否 | 操作备注信息（转单和终止操作必填）|
 
 
@@ -109,7 +109,7 @@ POST
 
 | 字段 | 类型 | 描述 |
 | ------- | --------- | ----------------------- |
-| result | bool | 返回结果，true为成功，false为失败 |
-| code | int | 返回码，0表示成功，其他值表示失败 |
+| result | bool | 返回结果，true 为成功，false 为失败 |
+| code | int | 返回码，0 表示成功，其他值表示失败 |
 | message | string | 错误信息 |
 | data | object | 返回数据 |

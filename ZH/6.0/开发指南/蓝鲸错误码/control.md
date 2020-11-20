@@ -76,7 +76,7 @@
 |	1000701	|	GSE_FILE_BT_HASH_ERROR	|	哈希失败，由 libtorrent::set_piece_hashes()产生	|
 |	1000702	|	GSE_FILE_BT_LISTEN_ERROR	|会话监听失败	|
 |	1000703	|	GSE_FILE_BT_ADDTORRENT_ERROR	|	会话添加 torrent 时产生的错误	|
-|	1000704	|	GSE_FILE_BT_NOSUCH_MODE	|	无此 BT 数据模式，BT数据模式既非 source 又非 client 时报此错	|
+|	1000704	|	GSE_FILE_BT_NOSUCH_MODE	|	无此 BT 数据模式，BT 数据模式既非 source 又非 client 时报此错	|
 |	1000705	|	GSE_FILE_BT_NOSUCH_DIR	|	目录不存在	|
 |	1000706	|	GSE_FILE_BT_NOSUCH_FILE	|	文件不存在	|
 |	1000707	|	GSE_FILE_BT_CANNOT_OPEN_DIR	|	打开目录失败	|

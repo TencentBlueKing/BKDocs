@@ -1,4 +1,4 @@
-# 如何使用蓝鲸 MagicBox 拖拽一个前端界面？
+# 如何使用蓝鲸 MagicBox 拖拽一个前端界面
 
 1\. 访问 [MagicBox](http://magicbox.bk.tencent.com/)
 

@@ -66,7 +66,7 @@ GET
 | 字段 | 类型 | 描述 |
 |-----------|--------|-----------|
 | result | bool | 请求成功与否，true:请求成功，false:请求失败 |
-| code | string | 组件返回错误编码，0表示 success，>0表示失败错误 |
+| code | string | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
 | message | string | 请求返回的消息 |
 | data | object | 请求返回的数据 |
 
@@ -75,7 +75,7 @@ GET
 | 字段 | 类型 | 描述 |
 |-------------|--------|--------|
 | bk_username | string | 用户名 |
-| qq | string | 用户QQ |
+| qq | string | 用户 QQ |
 | language | string | 语言 |
 | phone | string | 手机号 |
 | wx_userid | string | 企业号用户 USERID/公众号用户 OPENID |

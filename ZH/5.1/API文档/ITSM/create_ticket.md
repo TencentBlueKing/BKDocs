@@ -25,7 +25,7 @@ POST
 
 | 字段 | 类型 | 必选 | 描述 |
 | --------- | ------ | --- | -------------------------- |
-| service_id | int | 是 | 服务id |
+| service_id | int | 是 | 服务 id |
 | creator | string | 是 | 单据创建者 |
 | fields | array | 是 | 提单字段 |
 
@@ -63,8 +63,8 @@ POST
 
 | 字段 | 类型 | 描述 |
 | ------- | --------- | ----------------------- |
-| result | bool | 返回结果，true为成功，false为失败 |
-| code | int | 返回码，0表示成功，其他值表示失败 |
+| result | bool | 返回结果，true 为成功，false 为失败 |
+| code | int | 返回码，0 表示成功，其他值表示失败 |
 | message | string | 错误信息 |
 | data | object | 返回数据 |
 

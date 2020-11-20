@@ -18,13 +18,13 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 ### 请求参数示例
-```
+```plain
 {   "bk_biz_id": 2,
     "conf_list": [
         {
@@ -152,7 +152,7 @@ POST
 ### 请求参数说明
 | 字段   | 类型   | 必选 | 描述                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| bk_biz_id | int | 是 | 业务ID |
+| bk_biz_id | int | 是 | 业务 ID |
 | conf_list | list | 是 | 拨测任务配置列表 |
 
 ### 1 拨测任务配置列表--conf_list
@@ -165,9 +165,9 @@ POST
 ### 1.1 拨测任务下发配置--conf_list.target_conf
 | 字段   | 类型   | 必选 | 描述                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| bk_biz_id | int | 是 | 业务ID |
+| bk_biz_id | int | 是 | 业务 ID |
 | node_list | list | 否 | 默认[],需导入节点配置 |
-| node_id_list | list | 否 | 默认[],下发节点ID列表，node_list与node_id_list不能同时为空 |
+| node_id_list | list | 否 | 默认[],下发节点 ID 列表，node_list 与 node_id_list 不能同时为空 |
 
 ### 1.1.1 需导入节点配置--conf_list.target_conf.node_list
 | 字段  | 类型  | 必选  | 描述  |
@@ -180,17 +180,17 @@ POST
 | 字段  | 类型  | 必选  | 描述  |
 | ------|-------|-------|-------|
 | ip | str | 是 | IP |
-| bk_cloud_id | int | 是 | 云区域ID |
-| bk_biz_id | int | 是 | 业务id |
+| bk_cloud_id | int | 是 | 云区域 ID |
+| bk_biz_id | int | 是 | 业务 id |
 
 
 ## 1.1.1.2 节点基本配置--conf_list.target_conf.node_list.node_conf
 字段  | 类型  | 必选  | 描述  |
 ------|-------|-------|-------|
-is_common | bool | 否 | 是否为通用节点，默认false |
+is_common | bool | 否 | 是否为通用节点，默认 false |
 name | str | 是 | 节点名称 |
 location | dict | 是 | 节点所在地区 |
-carrieroperator | str | 是 | 运营商，最大长度50(内网、联通、移动、其他) |
+carrieroperator | str | 是 | 运营商，最大长度 50(内网、联通、移动、其他) |
 
 ## 1.1.1.2.1 节点所在地区--conf_list.target_conf.node_list.node_conf.location
 字段  | 类型  | 必选  | 描述  |
@@ -207,8 +207,8 @@ city | str | 是 | 城市 |
 | protocol | str | 是 |拨测任务协议类型 |
 | config | dict | 是 | 拨测任务详细配置 |
 
-### TCP任务config示例
-```
+### TCP 任务 config 示例
+```plain
 "config": {
             "ip_list": ["10.0.2.13"],
             "port": 3306,
@@ -221,16 +221,16 @@ city | str | 是 | 城市 |
 ### 1.2.1 拨测任务详细配置(TCP、UDP)--conf_list.collector_conf.config
 | 字段        | 类型   | 必选 | 描述         |
 | ----------- | ------ | ----- | ------------ |
-| ip_list | list |是| 目标IP地址 |
+| ip_list | list |是| 目标 IP 地址 |
 | port | int | 是| 端口地址 |
-| period | int |否 | 采集周期，单位min，默认1 |
-| response_format | str | 否 | 响应信息匹配方式(包含：in，不包含：nin，正则：reg)，默认in |
-| timeout | int | 否 | 期望响应时间，单位ms，默认3000 |
+| period | int |否 | 采集周期，单位 min，默认 1 |
+| response_format | str | 否 | 响应信息匹配方式(包含：in，不包含：nin，正则：reg)，默认 in |
+| timeout | int | 否 | 期望响应时间，单位 ms，默认 3000 |
 | response | str | 否 | 期望响应内容 |
 | response_code | str | 否 | 期望响应码 |
 
-### HTTP任务config示例
-```
+### HTTP 任务 config 示例
+```plain
 "config": {
         "insecure_skip_verify": true,
         "urls": "http://baidu.com",
@@ -250,20 +250,20 @@ city | str | 是 | 城市 |
 | urls | str | 是 | url |
 | method | str | 是 | 请求方式 |
 | headers | list | 否 | 请求头，默认[] |
-| insecure_skip_verify | bool | 否 | 是否开启ssh验证，默认false |
-| period | int | 否 | 采集周期，单位min，默认 1 |
-| response_format | str | 否 | 响应信息匹配方式(包含：in，不包含：nin，正则：reg)，默认in |
-| timeout | int | 否 | 期望响应时间，单位ms，默认3000 |
+| insecure_skip_verify | bool | 否 | 是否开启 ssh 验证，默认 false |
+| period | int | 否 | 采集周期，单位 min，默认 1 |
+| response_format | str | 否 | 响应信息匹配方式(包含：in，不包含：nin，正则：reg)，默认 in |
+| timeout | int | 否 | 期望响应时间，单位 ms，默认 3000 |
 | response | str | 否 | 期望响应内容，默认'' |
 | response_code | str | 否 | 期望响应码，默认'' |
-| request | str | 否 | post请求时的请求内容 |
+| request | str | 否 | post 请求时的请求内容 |
 
 ### 1.3 监控策略配置--conf_list.monitor_conf
 | 字段  | 类型  | 必选  | 描述  |
 | ------|-------|-------|-------|
 | alarm_level_config | dict | 是 | 监控触发条件配置 |
-| alarm_strategy_id | int | 是 | 监控策略ID，0 |
-| bk_biz_id | int | 是 | 业务ID |
+| alarm_strategy_id | int | 是 | 监控策略 ID，0 |
+| bk_biz_id | int | 是 | 业务 ID |
 | condition | list | 是 | 监控范围 |
 | display_name| | 是 | 监控名称 |
 | is_classify_notice | | 是 | 是否分级告警 |
@@ -298,8 +298,8 @@ alarm_start_time | str | 是 | 当日开始告警时间 |
 alarm_end_time | str | 是 | 当日结束告警时间 |
 detect_algorithm | list | 是 | 检测算法配置 |
 is_recovery | str | 是 | 城市 |
-monitor_level | int | 是 | 告警级别，1致命、2预警、3提醒 |
-notify_way | list | 是 | 通知方式，mail邮件、wechat微信、sms短信、phone电话 |
+monitor_level | int | 是 | 告警级别，1 致命、2 预警、3 提醒 |
+notify_way | list | 是 | 通知方式，mail 邮件、wechat 微信、sms 短信、phone 电话 |
 phone_receiver | list | 是 | 电话通知对象，账号名 |
 responsible | list | 是 | 其他通知人列表 |
 role_list | list | 是 | 通知人分组，在业务管理中配置 |
@@ -308,7 +308,7 @@ role_list | list | 是 | 通知人分组，在业务管理中配置 |
 |字段  | 类型  | 必选  | 描述  |
 |------|-------|-------|-------|
 | config | dict | 是 | 检测算法详细配置 |
-| algorithm_id | int | 是 | 检测算法ID，静态阈值 1000、同比策略(简易) 1001、环比策略(简易)1002 |
+| algorithm_id | int | 是 | 检测算法 ID，静态阈值 1000、同比策略(简易) 1001、环比策略(简易)1002 |
 
 ###  1.3.2.1.1.1  检测算法详细配置(静态阈值)--conf_list.monitor_conf.alarm_level_config.1.detect_algorithm.config
 |字段  | 类型  | 必选  | 描述  |
@@ -327,7 +327,7 @@ message | str | 否 | 说明 |
 
 
 ### 返回结果示例
-```
+```plain
 {
     "message": "OK",
     "code": "0",
@@ -354,8 +354,8 @@ message | str | 否 | 说明 |
 ### 返回结果参数说明
 | 字段    | 类型   | 描述 |
 | ------- | ------ | ----------------------------------- |
-| result  | bool   | 返回结果，true为成功，false为失败   |
-| code    | int    | 返回码，200表示成功，其他值表示失败 |
+| result  | bool   | 返回结果，true 为成功，false 为失败   |
+| code    | int    | 返回码，200 表示成功，其他值表示失败 |
 | message | string | 错误信息                            |
 | data    | list   | 结果                                |
 

@@ -25,7 +25,7 @@ GET
 | 字段| 类型| 必选| 描述|
 | --- | --- | --- | --- |
 | has_service | string | 否 | 默认返回全部服务目录，has_service="true"时只返回绑定了服务项的目录 |
-| service_key | string | 否 | 服务项key值，支持通过服务项key值过滤绑定了服务的服务目录 |
+| service_key | string | 否 | 服务项 key 值，支持通过服务项 key 值过滤绑定了服务的服务目录 |
 
 
 ### 请求参数示例
@@ -82,15 +82,15 @@ GET
 
 | 字段 | 类型 | 描述 |
 | ------- | ------ | --------------------- |
-| result| bool | 返回结果，true为成功，false为失败 |
-| code | int | 返回码，0表示成功，其他值表示失败 |
+| result| bool | 返回结果，true 为成功，false 为失败 |
+| code | int | 返回码，0 表示成功，其他值表示失败 |
 | message | string | 错误信息 |
 | data | array| 返回数据 |
 
 ### data
 | 字段 | 类型 | 描述 |
 | ------- | ------ | --------------------- |
-| id | int | 服务目录id |
+| id | int | 服务目录 id |
 | key | string | 服务目录唯一标识 |
 | name | string | 服务目录名称 |
 | level | int | 服务目录等级 |
@@ -100,7 +100,7 @@ GET
 ### children
 | 字段 | 类型 | 描述 |
 | ------- | ------ | --------------------- |
-| id | int | 服务目录id |
+| id | int | 服务目录 id |
 | key | string | 服务目录唯一标识 |
 | name | string | 服务目录名称 |
 | level | int | 服务目录等级 |

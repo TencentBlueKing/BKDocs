@@ -5,7 +5,7 @@
     * [新手之旅](Getting_started/Getting_started.md)
 * [CI：持续集成]()
     * [测试环境自动更新](CI/Pipeline_git_commit_to_stag.md)
-* [CD：持续交付/部署 ]()
+* [CD：持续交付/部署]()
     * [配置管理标准化]()
         * [概述](CD/CMDB/Configuration_management_standardization.md)
         * [业务上线时 CMDB 如何管理主机](CD/CMDB/CMDB_management_hosts.md)

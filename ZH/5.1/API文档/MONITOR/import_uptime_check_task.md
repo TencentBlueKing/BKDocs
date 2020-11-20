@@ -162,9 +162,9 @@ POST
 ### 1.1 拨测任务下发配置--conf_list.target_conf
 | 字段   | 类型   | 必选 | 描述                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| bk_biz_id | int | 是 | 业务ID |
+| bk_biz_id | int | 是 | 业务 ID |
 | node_list | list | 否 | 默认[],需导入节点配置 |
-| node_id_list | list | 否 | 默认[],下发节点ID列表，node_list与node_id_list不能同时为空 |
+| node_id_list | list | 否 | 默认[],下发节点 ID 列表，node_list 与 node_id_list 不能同时为空 |
 
 #### 1.1.1 需导入节点配置--conf_list.target_conf.node_list
 | 字段  | 类型  | 必选  | 描述  |
@@ -178,7 +178,7 @@ POST
 | ------|-------|-------|-------|
 | ip | str | 是 | IP |
 | bk_cloud_id | int | 是 | 云区域 ID |
-| bk_biz_id | int | 是 | 业务id |
+| bk_biz_id | int | 是 | 业务 id |
 
 
 #### 1.1.3 节点基本配置--conf_list.target_conf.node_list.node_conf
@@ -204,7 +204,7 @@ POST
 | protocol | str | 是 |拨测任务协议类型 |
 | config | dict | 是 | 拨测任务详细配置 |
 
-### TCP任务config示例
+### TCP 任务 config 示例
 
 ```json
 "config": {
@@ -223,12 +223,12 @@ POST
 | ip_list | list |是| 目标 IP 地址 |
 | port | int | 是| 端口地址 |
 | period | int |否 | 采集周期，单位 min，默认 1 |
-| response_format | str | 否 | 响应信息匹配方式(包含：in，不包含：nin，正则：reg)，默认in |
-| timeout | int | 否 | 期望响应时间，单位 ms，默认3000 |
+| response_format | str | 否 | 响应信息匹配方式(包含：in，不包含：nin，正则：reg)，默认 in |
+| timeout | int | 否 | 期望响应时间，单位 ms，默认 3000 |
 | response | str | 否 | 期望响应内容 |
 | response_code | str | 否 | 期望响应码 |
 
-### HTTP任务config示例
+### HTTP 任务 config 示例
 
 ```json
 "config": {
@@ -252,7 +252,7 @@ POST
 | headers | list | 否 | 请求头，默认[] |
 | insecure_skip_verify | bool | 否 | 是否开启 ssh 验证，默认 false |
 | period | int | 否 | 采集周期，单位 min，默认 1 |
-| response_format | str | 否 | 响应信息匹配方式(包含：in，不包含：nin，正则：reg)，默认in |
+| response_format | str | 否 | 响应信息匹配方式(包含：in，不包含：nin，正则：reg)，默认 in |
 | timeout | int | 否 | 期望响应时间，单位 ms，默认 3000 |
 | response | str | 否 | 期望响应内容，默认'' |
 | response_code | str | 否 | 期望响应码，默认'' |
@@ -262,8 +262,8 @@ POST
 | 字段  | 类型  | 必选  | 描述  |
 | ------|-------|-------|-------|
 | alarm_level_config | dict | 是 | 监控触发条件配置 |
-| alarm_strategy_id | int | 是 | 监控策略ID，0 |
-| bk_biz_id | int | 是 | 业务ID |
+| alarm_strategy_id | int | 是 | 监控策略 ID，0 |
+| bk_biz_id | int | 是 | 业务 ID |
 | condition | list | 是 | 监控范围 |
 | display_name| | 是 | 监控名称 |
 | is_classify_notice | | 是 | 是否分级告警 |

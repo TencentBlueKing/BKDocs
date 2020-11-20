@@ -30,7 +30,7 @@ POST
 
 | 字段                | 类型      | 必选   | 描述                       |
 |---------------------|------------|--------|-----------------------------|
-|scope_type |string|是|图形范围类型,可选 global,biz,cls(当前只有global)|
+|scope_type |string|是|图形范围类型,可选 global,biz,cls(当前只有 global)|
 |scope_id |string|是|图形范围类型下的 ID,如果为 global,则填 0|
 
 
@@ -87,7 +87,7 @@ POST
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result    | bool      | 请求成功与否，true:请求成功，false:请求失败 |
-| code      | string    | 组件返回错误编码，0表示success，>0表示失败错误 |
+| code      | string    | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
 | message   | string    | 请求失败返回的错误消息 |
 | data      | object    | 请求返回的数据 |
 
@@ -102,7 +102,7 @@ POST
 | position            | string   | 节点在图中的位置      |
 | ext                 | object   | 前端扩展字段          |
 | bk_obj_icon         | string   | 对象模型的图标        |
-| scope_type          | string   | 图形范围类型,可选 global,biz,cls(当前只有global)|
+| scope_type          | string   | 图形范围类型,可选 global,biz,cls(当前只有 global)|
 | scope_id            | string   | 图形范围类型下的 ID,如果为 global,则填 0          |
 | bk_biz_id           | int      | 业务 id                                         |
 | bk_supplier_account | string   | 开发商账号                                     |

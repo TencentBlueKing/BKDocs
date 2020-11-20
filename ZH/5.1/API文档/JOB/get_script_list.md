@@ -31,11 +31,11 @@ GET
 | 字段 | 类型 | 必选 | 描述 |
 |----------------------|------------|--------|------------|
 | bk_biz_id | int | 否 | 业务 ID，如果查询公共脚本可不传 |
-| is_public | bool | 否 | 是否公共脚本。true:公共脚本；false:业务脚本。默认值为false |
-| return_script_content | bool | 否 | 是否需要返回脚本内容。true:返回脚本内容；false：不返回脚本内容。默认为false。 |
+| is_public | bool | 否 | 是否公共脚本。true:公共脚本；false:业务脚本。默认值为 false |
+| return_script_content | bool | 否 | 是否需要返回脚本内容。true:返回脚本内容；false：不返回脚本内容。默认为 false。 |
 | start | int | 否 | 默认 0 表示从第 1 条记录开始返回 |
 | length | int | 否 | 分页查询-每页纪录数，默认为 20。如果传入 0 或者不传，表示不分页 |
-| script_type | string | 否 | 脚本类型。0：所有脚本类型，1：shell，2：bat，3：perl，4：python，5：powershell，6：sql。默认值为0 |
+| script_type | string | 否 | 脚本类型。0：所有脚本类型，1：shell，2：bat，3：perl，4：python，5：powershell，6：sql。默认值为 0 |
 | script_name | string | 否 | 脚本名称，支持模糊查询 |
 
 ### 请求参数示例

@@ -122,7 +122,7 @@ GET
 | name        | string | 字段名                                                       |
 | type        | string | 字段类型                                                     |
 | alis        | string | “”                                                           |
-| time_format | string | 时间格式，若是时间字段则为“1”，为1的时间格式为yyyy-MM-dd HH:mm:ss；若非时间字段则为“” |
+| time_format | string | 时间格式，若是时间字段则为“1”，为 1 的时间格式为 yyyy-MM-dd HH:mm:ss；若非时间字段则为“” |
 | time_zone   | string | 时区                                                         |
 | description | string | 字段描述                                                     |
 

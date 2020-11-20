@@ -1,14 +1,14 @@
 ## 升级总体方案
 
-- 去除blueapps包中的celery中的依赖
-- 由于djcelery仅支持到celery3x版本，升级celery4x版本，使用django-celery-beat和django-celery-result包代替djcelery功能
-- 升级主要存在的问题在于celery4x的时间流转与celery3x的不同，导致定时任务和异步任务执行异常，后续章节会详细介绍，[老用户升级](#老用户升级注意事项)和[新用户的使用注意事项](#新用户使用注意事项)
-- celery4x解决了与async关键字的冲突，升级后可以使用python3.7及以上版本（目前仅测试到3.7.4）
+- 去除 blueapps 包中的 celery 中的依赖
+- 由于 djcelery 仅支持到 celery3x 版本，升级 celery4x 版本，使用 django-celery-beat 和 django-celery-result 包代替 djcelery 功能
+- 升级主要存在的问题在于 celery4x 的时间流转与 celery3x 的不同，导致定时任务和异步任务执行异常，后续章节会详细介绍，[老用户升级](#老用户升级注意事项)和[新用户的使用注意事项](#新用户使用注意事项)
+- celery4x 解决了与 async 关键字的冲突，升级后可以使用 python3.7 及以上版本（目前仅测试到 3.7.4）
 
 ## 升级后配置文件更改
 
 - 升级后默认`USE_TZ=True`
-- 替换djcelery依赖为django_celery_beat和django_celery_results
+- 替换 djcelery 依赖为 django_celery_beat 和 django_celery_results
 
 升级前：conf/default.py
 
@@ -58,37 +58,37 @@ if IS_USE_CELERY:
 
 ```
 
-## celery4新特性
+## celery4 新特性
 
 ### 系统级别的更新
 
-1. 不再对windows 平台提供支持。windwos平台目前主要发现两个主要的问题，其他的基本功能都是正常的。
+1. 不再对 windows 平台提供支持。windwos 平台目前主要发现两个主要的问题，其他的基本功能都是正常的。
 
-   - 一个是需要加入 eventlet才可以使用。
-   - windwos平台下无法同时启动多个worker，主要原因是启动多个worker 依赖resource这个库，这个库只支持linux 和 unix 平台。
+   - 一个是需要加入 eventlet 才可以使用。
+   - windwos 平台下无法同时启动多个 worker，主要原因是启动多个 worker 依赖 resource 这个库，这个库只支持 linux 和 unix 平台。
 
 2. 不再支持 Python 2.6 以及 python 3.3
 
-3. 不再支持Jpython。
+3. 不再支持 Jpython。
 
-4. **celery4.x 支持的最低Django 版本为1.8,官方建议从1.9开始。**
+4. **celery4.x 支持的最低 Django 版本为 1.8,官方建议从 1.9 开始。**
 
-5. celery4 将会是最后一个支持python2的版本，celery5最低支持的python版本为python3.5
+5. celery4 将会是最后一个支持 python2 的版本，celery5 最低支持的 python 版本为 python3.5
 
    ### 功能级别的更新
 
 6. 使用了全新的设置名
 
-   ，具体表现在celery4.x版本的配置缩写全都为小写，但是为了考虑到对于celery3.x 版本的支持，所以大写的配置名仍然是可以使用的.例如:
+   ，具体表现在 celery4.x 版本的配置缩写全都为小写，但是为了考虑到对于 celery3.x 版本的支持，所以大写的配置名仍然是可以使用的.例如:
 
-   ```
+   ```plain
    CELERY_TIMEZONE = 'Asia/Shanghai' # 默认时区是UTC 旧
    timezone = 'Asia/Shanghai' #默认时区是UTC 新
    ```
 
-   关于celery大小写的升级，celery 提供了全新的命令来批量去迁移配置：
+   关于 celery 大小写的升级，celery 提供了全新的命令来批量去迁移配置：
 
-   ```
+   ```plain
    celery upgrade settings [filename]
    ```
 
@@ -97,7 +97,7 @@ if IS_USE_CELERY:
 
 7. json 现在作为默认的序列化器。
 
-   日常使用会出现使用json无法序列化的情况，如果仍然需要使用pickle作为序列化器，需要增加如下配置:
+   日常使用会出现使用 json 无法序列化的情况，如果仍然需要使用 pickle 作为序列化器，需要增加如下配置:
 
    ```python
    task_serializer = 'pickle'
@@ -105,9 +105,9 @@ if IS_USE_CELERY:
    accept_content = {'pickle'}
    ```
 
-8. 使用Task作为基类的任务不会被自动注册了
+8. 使用 Task 作为基类的任务不会被自动注册了
 
-   ，新版本的celery4.x 需要使用装饰器装饰Task 才会被自动注册。
+   ，新版本的 celery4.x 需要使用装饰器装饰 Task 才会被自动注册。
 
    ```python
    # 创建普通任务
@@ -117,17 +117,17 @@ if IS_USE_CELERY:
        return x + y
    ```
 
-9. **优先级发生了改变，现在优先级的顺序为 0-9 依次升高**。主要是为了与AMQP 中的工作方式保持一致。
+9. **优先级发生了改变，现在优先级的顺序为 0-9 依次升高**。主要是为了与 AMQP 中的工作方式保持一致。
 
 10. **命令行参数发生了改变**。celeryd -> celery worker , celerybeat-> celery beat,celeryd-multi-> celery multi
 
 11. Auto-discover 目前支持 Django app 配置
 
-12. 支持RabbitMQ 优先级.
+12. 支持 RabbitMQ 优先级.
 
-13. 新增了broker_read_url和broker_write_url设置选项，这样就可以为用于消费/发布的连接提供单独的代理url。
+13. 新增了 broker_read_url 和 broker_write_url 设置选项，这样就可以为用于消费/发布的连接提供单独的代理 url。
 
-14. 增加了对RabbitMQ扩展的支持.
+14. 增加了对 RabbitMQ 扩展的支持.
 
     ```python
     # 以浮动秒为单位设置队列过期时间。
@@ -144,9 +144,9 @@ if IS_USE_CELERY:
 
 15. 对`Amazon SQS transport` `Apache QPid transport` 提供了支持。
 
-16. 对redis哨兵提供了支持。
+16. 对 redis 哨兵提供了支持。
 
-    ```
+    ```plain
     sentinel://0.0.0.0:26379;sentinel://0.0.0.0:26380/...
     ```
 
@@ -176,7 +176,7 @@ if IS_USE_CELERY:
         print(arg)
     ```
 
-18. AsyncResult 新增回调方法then ，需要结合gevent模块使用。
+18. AsyncResult 新增回调方法 then ，需要结合 gevent 模块使用。
 
     ```python
     import gevent.monkey
@@ -197,24 +197,24 @@ if IS_USE_CELERY:
     time.sleep(3)  # run gevent event loop for a while.
     ```
 
-19. 支持redis ssl 链接方式
+19. 支持 redis ssl 链接方式
 
 ### 不再支持的部分
 
-1. 移除了celery.task.http，emails.app.mail_admins 和 celery.contrib.batches
+1. 移除了 celery.task.http，emails.app.mail_admins 和 celery.contrib.batches
 2. 不再支持使用 Django ORM, SQLAlchemy, CouchDB, IronMQ, Beanstalk 作为 broker。
-3. **不再支持rabbitMQ 作为backend储存结果。**
+3. **不再支持 rabbitMQ 作为 backend 储存结果。**
 
 ## 老用户升级注意事项
 
-- `USE_TZ=False`的老用户升级后，使用MysSQL backend时，会存在DB中无法写入带有时区的配置内容，具体报错为`ValueError: MySQL backend does not support timezone-aware datetimes when USE_TZ is False`
+- `USE_TZ=False`的老用户升级后，使用 MysSQL backend 时，会存在 DB 中无法写入带有时区的配置内容，具体报错为`ValueError: MySQL backend does not support timezone-aware datetimes when USE_TZ is False`
 
   解决方案：
 
-  - 方案1（推荐）：在config/default.py文件中添加`USE_TZ = True`开启django时区
-  - 方案2：在config/default.py中添加`DJANGO_CELERY_BEAT_TZ_AWARE = False`关闭celery时区感知
+  - 方案 1（推荐）：在 config/default.py 文件中添加`USE_TZ = True`开启 django 时区
+  - 方案 2：在 config/default.py 中添加`DJANGO_CELERY_BEAT_TZ_AWARE = False`关闭 celery 时区感知
 
-- Windows老用户来说，celery4.4已经不支持Windows平台，无法启动多worker，只能通过`-p eventlet`启动单worker，evenlet包需通过pip安装后使用
+- Windows 老用户来说，celery4.4 已经不支持 Windows 平台，无法启动多 worker，只能通过`-p eventlet`启动单 worker，evenlet 包需通过 pip 安装后使用
 
   ```python
   # eventlet安装命令
@@ -223,7 +223,7 @@ if IS_USE_CELERY:
   celery -A blueapps.core.celery worker -l info -P eventlet
   ```
 
-- djcelery不支持celery4.4，升级后通过django-celery-beat和django-celery-result代替djcelery的功能，因此djcelery提供的celery启动命令已经不支持，新的beat，worker启动命令为
+- djcelery 不支持 celery4.4，升级后通过 django-celery-beat 和 django-celery-result 代替 djcelery 的功能，因此 djcelery 提供的 celery 启动命令已经不支持，新的 beat，worker 启动命令为
 
   ```python
   # beat启动命令
@@ -232,15 +232,15 @@ if IS_USE_CELERY:
   celery -A blueapps.core.celery worker -l info 
   ```
   
-  > 注意：这里`-A blueapps.core.celery`用于指定使用开发框架内部封装好的celery app，可用于加载/conf/default.py中的配置等功能，如果配置使用其他app，会导致无法加载配置及task的自动发现
+  > 注意：这里`-A blueapps.core.celery`用于指定使用开发框架内部封装好的 celery app，可用于加载/conf/default.py 中的配置等功能，如果配置使用其他 app，会导致无法加载配置及 task 的自动发现
 
 ### 升级后异步任务需要修改的配置
 
 - `T.delay(arg, kwarg=value)`配置：升级后无影响
 
-- `apply_async`中的`eta`参数中使用`datetime.datetime.now()`配置的异步任务，由于没有时区在新版本中会视作UTC时间执行，同理`datetime()`生成的时间对象如果没有时区信息，也会被当作UTC时间执行
+- `apply_async`中的`eta`参数中使用`datetime.datetime.now()`配置的异步任务，由于没有时区在新版本中会视作 UTC 时间执行，同理`datetime()`生成的时间对象如果没有时区信息，也会被当作 UTC 时间执行
 
-  例如，所在时区为Asia/Shanghai，当前时间为12:00+0800，会被当作成12:00+00:00执行，即延迟8小时候执行
+  例如，所在时区为 Asia/Shanghai，当前时间为 12:00+0800，会被当作成 12:00+00:00 执行，即延迟 8 小时候执行
   解决方案：
 
   - 使用`django.utils.timezone.now()`代替`datetime.datetime.now()`获取当前时间
@@ -421,17 +421,17 @@ if IS_USE_CELERY:
   
   ```
 
-### DB数据迁移
+### DB 数据迁移
 
 注意：
 
-- 由于升级后djcelery被废弃，使用django-celery-beat和django-celery-results代替，因此需要数据表迁移
+- 由于升级后 djcelery 被废弃，使用 django-celery-beat 和 django-celery-results 代替，因此需要数据表迁移
 - 升级后无法迁移的表说明
-  - djcelery包中TaskState表仅用于记录tasks任务状态的，不影响task任务的执行，由于django-celery-beat包中该表结构变动过大，因此无法迁移
-  - djcelery包中WorkerState表用于记录celery worker状态，在django-celery-beat包中被移除
-- 迁移命令的执行时机应该在celery4，django-celery-beat，django-celery-results包安装并配置好，并且执行migrate命令之后，例如，配置到bin/postcompile中
+  - djcelery 包中 TaskState 表仅用于记录 tasks 任务状态的，不影响 task 任务的执行，由于 django-celery-beat 包中该表结构变动过大，因此无法迁移
+  - djcelery 包中 WorkerState 表用于记录 celery worker 状态，在 django-celery-beat 包中被移除
+- 迁移命令的执行时机应该在 celery4，django-celery-beat，django-celery-results 包安装并配置好，并且执行 migrate 命令之后，例如，配置到 bin/postcompile 中
 - 迁移前会检查目标数据库是否为空，不为空则迁移失败
-- 如果是带时区迁移，旧的crontab配置依然为无时区时间，如`crontab(minute="57", hour="10")`，beat重启后会以`CELERY_TIMEZONE`配置的时区刷新crontab表中的timezone，可能会导致定时任务时区执行问题，因此需要修改crontab为TzAwareCrontab，示例代码[见定时任务配置小节](#定时任务配置)
+- 如果是带时区迁移，旧的 crontab 配置依然为无时区时间，如`crontab(minute="57", hour="10")`，beat 重启后会以`CELERY_TIMEZONE`配置的时区刷新 crontab 表中的 timezone，可能会导致定时任务时区执行问题，因此需要修改 crontab 为 TzAwareCrontab，示例代码[见定时任务配置小节](#定时任务配置)
 
 
 迁移命令
@@ -441,13 +441,13 @@ python manage.py migrate_from_djcelery
 # 可选参数: -tz  指定之前celery运行的时区，不指定默认使用UTC时区 例如：-tz Asia/Shanghai
 ```
 
-**社区版和企业版用户注意**，请使用如下migrations文件在迁移线上数据库
+**社区版和企业版用户注意**，请使用如下 migrations 文件在迁移线上数据库
 
 使用方法：
 
-1. 将下面文件放到任意app的migrations文件夹下，如：home_application/migrations/
-2. 迁移命令：执行`python manaage.py migrate`应用该migration文件即可
-3. 通过第11行handle函数的tz参数指定指定之前celery运行的时区
+1. 将下面文件放到任意 app 的 migrations 文件夹下，如：home_application/migrations/
+2. 迁移命令：执行`python manaage.py migrate`应用该 migration 文件即可
+3. 通过第 11 行 handle 函数的 tz 参数指定指定之前 celery 运行的时区
 
 ```python
 # migrations文件
@@ -483,7 +483,7 @@ class Migration(migrations.Migration):
   CELERY_ENABLE_UTC = False
   ```
 
-- beat和worker启动命令
+- beat 和 worker 启动命令
 
   ```python
   # beat启动命令
@@ -494,9 +494,9 @@ class Migration(migrations.Migration):
 
   > 注意：
   >
-  > 1. 这里`-A blueapps.core.celery`用于指定使用开发框架内部封装好的celery app，可用于加载/conf/default.py中的配置等功能，如果配置使用其他app，会导致无法加载配置及task的自动发现
+  > 1. 这里`-A blueapps.core.celery`用于指定使用开发框架内部封装好的 celery app，可用于加载/conf/default.py 中的配置等功能，如果配置使用其他 app，会导致无法加载配置及 task 的自动发现
 
-  **社区版和企业版用户注意**，由于PaaS平台的限制，只能使用下面的启动方式
+  **社区版和企业版用户注意**，由于 PaaS 平台的限制，只能使用下面的启动方式
 
   ```python
   # worker启动命令
@@ -507,9 +507,9 @@ class Migration(migrations.Migration):
 
   > 注意：
   >
-  > 1. 这种启动命令是从djcelery中迁移过来，
-  > 2. 由于django orm只能允许单线程操作数据库句柄，通过`python manage.py`启动的worker与django不是同一线程因此无法修改
-  > 3. 使用了`patch_thread_ident`的猴子补丁，用于patch掉django校验orm多线程操作数据的逻辑，会将worker的线程ID
+  > 1. 这种启动命令是从 djcelery 中迁移过来，
+  > 2. 由于 django orm 只能允许单线程操作数据库句柄，通过`python manage.py`启动的 worker 与 django 不是同一线程因此无法修改
+  > 3. 使用了`patch_thread_ident`的猴子补丁，用于 patch 掉 django 校验 orm 多线程操作数据的逻辑，会将 worker 的线程 ID
   
 - 异步任务配置
 

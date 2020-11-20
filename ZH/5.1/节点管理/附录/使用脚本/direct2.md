@@ -1,7 +1,7 @@
 # 手动安装 Agent 使用脚本
-## 直连区域Windows
+## 直连区域 Windows
 
-这节描述的是，Windows 服务器的 Agent安装方法(有 Cygwin的 Windows 也适用)。
+这节描述的是，Windows 服务器的 Agent 安装方法(有 Cygwin 的 Windows 也适用)。
 
 要求如下：
 - Windows 机器的 139，445 端口开放可用访问(可用在安装完后关闭)。
@@ -12,7 +12,7 @@
 
 **1. 首先登陆到 Nginx 所在机器**
 
-进入$INSTALL_PATH/miniweb/download 目录。 以下截图中的 $NGINX_IP需替换成实际的 IP
+进入$INSTALL_PATH/miniweb/download 目录。 以下截图中的 $NGINX_IP 需替换成实际的 IP
 
 ![-w2020](../../assets/15316307726084.jpg)
 
@@ -90,7 +90,7 @@ root@rbtnode1 download#
 完成 Windows Agent 安装的脚本是 gse_install.bat。
 - gse_install.bat 参数说明
 
-```
+```plain
 第一个参数: 主机内网 IP, 连接 GSE, 及绑定数据, 都是用这个 IP
 第二个参数: 云区域 ID, 下图中为 0
 第三个参数: Proxy 内网 IP, 多个 Proxy 用短横线分隔

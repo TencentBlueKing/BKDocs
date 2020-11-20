@@ -35,7 +35,7 @@ bk_server_ip paas.bk.com
 bk_server_ip job.bk.com
 bk_server_ip cmdb.bk.com
 ```
-bk_server_ip 是你刚刚安装蓝鲸社区版5.1 mini体验版 的服务器 IP(如果无法通过内网 IP 访问服务器的 80 端口，这里需要配置外网 IP)，例如：
+bk_server_ip 是你刚刚安装蓝鲸社区版 5.1 mini 体验版 的服务器 IP(如果无法通过内网 IP 访问服务器的 80 端口，这里需要配置外网 IP)，例如：
 ```shell
 192.168.1.100 paas.bk.com
 192.168.1.100 job.bk.com

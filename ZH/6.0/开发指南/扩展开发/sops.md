@@ -52,7 +52,7 @@
 
 ### 修改项目 settings 配置
 
-打开 `config/default.py` 文件，找到 INSTALLED_APPS 变量，加入步骤1中创建的 `{CUSTOM PLUGINS NAME}`。
+打开 `config/default.py` 文件，找到 INSTALLED_APPS 变量，加入步骤 1 中创建的 `{CUSTOM PLUGINS NAME}`。
 
 ### 加入新的 API 网关
 
@@ -263,7 +263,7 @@ TestCustomComponent 类详解：
 - `test_custom`：标准插件后台定义的 code。
 - `tag_code`：参数 code，请保持全局唯一，命名规范为"系统名_参数名"。
 - `type`：前端表单类型，可选 input、textarea、radio、checkbox、select、datetime、datatable、upload、combine 等。
-- `attrs`：对应type的属性设置，如 name、validation等。
+- `attrs`：对应 type 的属性设置，如 name、validation 等。
 
 ### 标准插件远程加载
 

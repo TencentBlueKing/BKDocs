@@ -1,6 +1,6 @@
 # Summary
 
-## PaaS平台
+## PaaS 平台
 * [产品简介](产品简介/README.md)
 * [术语解释](术语解释/Term.md)
 * [产品架构](产品架构图/Architecture.md)
@@ -19,12 +19,12 @@
     * [使用蓝鲸的某个 SaaS](快速入门/UsingSaaS.md)
     * [开发一个 APP](快速入门/DevelopAPP.md)
 * [场景案例]()
-    * [如何将蓝鲸S-mart上的SaaS部署起来？](场景案例/SaaSDeployment.md)
+    * [如何将蓝鲸 S-mart 上的 SaaS 部署起来？](场景案例/SaaSDeployment.md)
     * [如何使用蓝鲸 MagicBox 拖拽一个前端界面？](场景案例/MagicBox.md)
     * [如何将第三方系统放在蓝鲸桌面/工作台中使用？](场景案例/ThirdParty.md)
     * [如何配置通知渠道，如邮件、微信、短信等？](场景案例/noticeWay.md)
     * [部署应用过程中，状态一直在“正在提测”中，如何处理？](场景案例/Loading.md)
-    * [如何给某一个SaaS开组件“免用户认证”的白名单？](场景案例/White.md)
+    * [如何给某一个 SaaS 开组件“免用户认证”的白名单？](场景案例/White.md)
     * [如何配置短信/语音通知的模板？](场景案例/文本短信.md)
 * [API 文档]()
     * [蓝鲸统一登录]()

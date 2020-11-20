@@ -226,7 +226,7 @@
         * [获取主机与拓扑的关系](6.0/API文档/CC/find_host_topo_relation.md)
         * [查询模型实例之间的关联关系](6.0/API文档/CC/find_instance_association.md)
         * [批量查询某业务的模块详情](6.0/API文档/CC/find_module_batch.md)
-        * [根据模块ID查询主机和模块的关系](6.0/API文档/CC/find_module_host_relation.md)
+        * [根据模块 ID 查询主机和模块的关系](6.0/API文档/CC/find_module_host_relation.md)
         * [根据条件查询业务下的模块](6.0/API文档/CC/find_module_with_relation.md)
         * [查询模型之间的关联关系](6.0/API文档/CC/find_object_association.md)
         * [批量查询某业务的集群详情](6.0/API文档/CC/find_set_batch.md)

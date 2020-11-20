@@ -10,7 +10,7 @@
    git clone https://xxx.com/datadog_plugin_framework.git
    ```
 
-2. 获取   Integrations(6.15x分支代码)
+2. 获取   Integrations(6.15x 分支代码)
 
    官方 
 
@@ -24,12 +24,12 @@
    git clone https://github.com/DataDog/integrations-extras.git
    ```
 
-   将上面的仓库clone下来，看是否有需要的组件，如果没有，需要根据 [官方规范](https://docs.datadoghq.com/developers/integrations/new_check_howto/) 自行开发。每个  Integrations 包都是一个完整的 Python 包，里面包含了一种组件的采集逻辑。
+   将上面的仓库 clone 下来，看是否有需要的组件，如果没有，需要根据 [官方规范](https://docs.datadoghq.com/developers/integrations/new_check_howto/) 自行开发。每个  Integrations 包都是一个完整的 Python 包，里面包含了一种组件的采集逻辑。
 
 3. 准备两种操作系统，并确定已安装 `python 2.7` 和 `pip`
 
-   - Windows 64位
-   - Mac OS/Linux 64位
+   - Windows 64 位
+   - Mac OS/Linux 64 位
 
 ## 第三步：生成基础包
 

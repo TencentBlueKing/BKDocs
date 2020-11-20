@@ -12,7 +12,7 @@ POST
 
 ### 功能描述
 
-可通过可选参数根据模型id或业务id查询对象模型属性
+可通过可选参数根据模型 id 或业务 id 查询对象模型属性
 
 ### 请求参数
 
@@ -21,17 +21,17 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段                |  类型      | 必选   |  描述                       |
 |---------------------|------------|--------|-----------------------------|
-|bk_obj_id            | string     | 否     | 模型ID                      |
-| bk_biz_id           | int        | 否     | 业务id，设置后查询结果包含业务自定义字段 |
+|bk_obj_id            | string     | 否     | 模型 ID                      |
+| bk_biz_id           | int        | 否     | 业务 id，设置后查询结果包含业务自定义字段 |
 
 
 ### 请求参数示例
@@ -128,13 +128,13 @@ POST
 | unit                | string       | 单位                                                       |
 | placeholder         | string       | 占位符                                                     |
 | bk_property_group   | string       | 字段分栏的名字                                             |
-| bk_obj_id           | string       | 模型ID                                                     |
+| bk_obj_id           | string       | 模型 ID                                                     |
 | bk_supplier_account | string       | 开发商账号                                                 |
-| bk_property_id      | string       | 模型的属性ID                                               |
+| bk_property_id      | string       | 模型的属性 ID                                               |
 | bk_property_name    | string       | 模型属性名，用于展示                                       |
 | bk_property_type    | string       | 定义的属性字段用于存储数据的数据类型 （singlechar,longchar,int,enum,date,time,objuser,singleasst,multiasst,timezone,bool)|
 | bk_asst_obj_id      | string       | 如果有关联其它的模型，那么就必需设置此字段，否则就不需要设置|
-| bk_biz_id           | int          | 业务自定义字段的业务id                                       |
+| bk_biz_id           | int          | 业务自定义字段的业务 id                                       |
 
 #### bk_property_type
 

@@ -30,7 +30,7 @@ POST
 | title | string | 是 | 主题 |
 | content | string | 是 | 内容 |
 | sender | string | 否 | 发件人，msg_type 为 mail 时有效 |
-| cc__username | string | 否 | 抄送人，包含用户名，用户需在蓝鲸平台注册，多个以逗号分隔，msg_type为mail时有效 |
+| cc__username | string | 否 | 抄送人，包含用户名，用户需在蓝鲸平台注册，多个以逗号分隔，msg_type 为 mail 时有效 |
 | body_format | string | 否 | 邮件格式，包含'Html', 'Text'，默认为'Html'， msg_type 为 mail 时有效 |
 | attachments | list | 否 | 邮件附件， msg_type 为 mail 时有效 |
 | date | string | 否 | 通知发送时间，默认为当前时间 "YYYY-mm-dd HH:MM"，msg_type 为 weixin 时有效 |
@@ -83,4 +83,4 @@ POST
 | code | string | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
 | message | string | 请求返回的消息 |
 | data | object | 请求返回的数据 |
-| request_id| string | 请求返回的ID |
+| request_id| string | 请求返回的 ID |

@@ -18,7 +18,7 @@
 9. 查询失败，原因：【模块：data】接口返回结果错误：SQL 语法错误，请检查语法：06（进程资源无数据 bug，没入库）
 10. \_exporter_url\_参数不能为空（自定义组件导入）
 11. 系统信息可上报，组件信息不上报
-12. 启动入库任务失败【模块：data】接口返回结果错误：添加总线任务失败，添加etl任务失败 6_ja_gse_proc_port（）
+12. 启动入库任务失败【模块：data】接口返回结果错误：添加总线任务失败，添加 etl 任务失败 6_ja_gse_proc_port（）
 13. config_schema：必须提供\_exporter_url\_参数的配置
 14. 基础性能接入失败：2：x.x.x.x 下发配置失败
 15. 【模块：data】接口返回结果错误：调用接口失败 gse_push_file：该业务{0}下没有 IP
@@ -26,7 +26,7 @@
 ### 可能原因
 
 1. nginx未更新安装，`install nginx 1`后解决
-2. gse_agent在节点管理，重新安装
+2. gse_agent 在节点管理，重新安装
 3. bk_monitor 在 supervisor 缺少 celery 和 beat 配置，重新安装部署相对应的最新版本
 4. bk_monitor 的服务使用错误使用 root 启动，停掉进程，删掉原启动对应 root 的文件，用 apps 用户启动
 5. influxdb表结构为空，所有`system_*`的库，`show measurements`为空
@@ -39,7 +39,7 @@
 
 #### 检查进程是否正常
 
-若为 4.1.X 的版本，bk_monitor 有对应 celery 进行异步任务处理，需在 APPO 模块对应机器上，确认 bk_monitor 的进程是否包含`uwsgi`，`celery beat`，`celery worker`3部分，示例如下
+若为 4.1.X 的版本，bk_monitor 有对应 celery 进行异步任务处理，需在 APPO 模块对应机器上，确认 bk_monitor 的进程是否包含`uwsgi`，`celery beat`，`celery worker`3 部分，示例如下
 
 ```bash
 [root@rbtnode1 /data/install]# ps -ef | grep bk_monitor
@@ -59,7 +59,7 @@ apps     31588  1960  0 18:01 ?        00:00:00 /data/bkce/paas_agent/apps/Envs/
 
 ```
 
-#### 检查bkdata日志
+#### 检查 bkdata 日志
 
 确认 databus 日志`/data/bkce/logs/bkdata/databus_etl.log`以及`/data/bkce/logs/bkdata/databus_tsdb.log`是否有 Exception 或者 Error 的错误，示例如下
 
@@ -71,7 +71,7 @@ grep -nE "Exception|Error" /data/bkce/logs/bkdata/databus_etl.log /data/bkce/log
 
 #### 检查 bkdata databus 任务
 
-确认在bkdata服务器上，`check_databus_status.sh`，不能出现有`Failed connect to databus.service.consul:10054; connection refused`或者`JSON object could be decoded`错误输出。正常的输出示例如下（若此处有错误，参考`initdata bkdata`失败的处理方法）
+确认在 bkdata 服务器上，`check_databus_status.sh`，不能出现有`Failed connect to databus.service.consul:10054; connection refused`或者`JSON object could be decoded`错误输出。正常的输出示例如下（若此处有错误，参考`initdata bkdata`失败的处理方法）
 
 异常举例
 
@@ -157,9 +157,9 @@ $ [root@rbtnode1 install]# /data/bkce/service/kafka/bin/kafka-console-consumer.s
 
 ```
 
-#### 检查influxdb
+#### 检查 influxdb
 
-确认influxdb内的数据库和结构，正常返回如下
+确认 influxdb 内的数据库和结构，正常返回如下
 
 ```bash
 $ influx -host $INFLUXDB_HOST -port $INFLUXDB_PORT -execute 'show databases'
@@ -187,7 +187,7 @@ system_proc_2
 system_swap_2
 ```
 
-#### 检查cron任务
+#### 检查 cron 任务
 
 ```bash
 # 确认是否存在update_cc_cache crontab任务
@@ -238,8 +238,8 @@ tail /var/log/cron
 $ /data/bkce/bkdata/dataapi/bin/update_cc_cache.sh
 ```
 
-- 确认无数据上报机器的时间和部署蓝鲸server机器的时间是否同步。
-- 确认无数据的机器上是否有basereport进程采集器
+- 确认无数据上报机器的时间和部署蓝鲸 server 机器的时间是否同步。
+- 确认无数据的机器上是否有 basereport 进程采集器
     - 若无可尝试手动拉起  `/usr/local/gse/plugins/bin/start.sh  basereport`
     - 若采集器进程存在则查看采集器日志 `/var/log/gse/basereport` (日志为 error 级别，有进程无日志说明采集器进程正常)。
 
@@ -267,7 +267,7 @@ common:scheduler      FATAL     Exited too quickly (process log may have details
 supervisorctl  -c /data/bkce/etc/supervisor-bkdata-monitor.conf status all
 ```
 
-- 找到有问题的进程名。例如上图中显示为：common:scheduler，其中common是group， scheduler是进程名
+- 找到有问题的进程名。例如上图中显示为：common:scheduler，其中 common 是 group， scheduler 是进程名
 找到该进程的启动命令
 
 ```bash
@@ -329,9 +329,9 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
 
 2. 第一步正常的情况下，执行下面的步骤
 
-	- 去到bkdata机器tailf一下日志
+	- 去到 bkdata 机器 tailf 一下日志
 
-		```bash
+		```bashplainplain
 		workon monitor  # （社区版6.0用 workon bkdata-monitor）
 		tail -f ../../logs/bkdata/kernel.log | grep "gse_custom_out_str_"
 		```
@@ -367,10 +367,10 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
 
 - 常见问题
 
-  - env.sh文件不存在，在页面点击“重试”即可
+  - env.sh 文件不存在，在页面点击“重试”即可
   - python 版本过低，安装 python2.7 版本，并指定正确的 python 程序路径
   - socket.error: [Errno 98] Address already in use
     ```bash
     ps -ef | grep datadog
     ```
-   - 如果存在`/datadog/datadog/jar/jmxfetch-0.19.0-jar-with-dependencies.jar`的进程，则kill掉即可
+   - 如果存在`/datadog/datadog/jar/jmxfetch-0.19.0-jar-with-dependencies.jar`的进程，则 kill 掉即可

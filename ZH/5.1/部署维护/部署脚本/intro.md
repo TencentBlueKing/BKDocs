@@ -28,7 +28,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 ### 开源外部组件
 
-#### 基础部分：
+#### 基础部分
 
 - **consul：** 分布式服务发现和域名服务。
 
@@ -50,7 +50,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **beanstalk：** 消息队列服务。
 
-#### BCS (容器管理平台)部分：
+#### BCS (容器管理平台)部分
 
 - **web_console：** 是容器服务提供快捷查看集群状态的命令行服务。
 
@@ -150,7 +150,7 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **install.config：** 定义模块在主机的分布部署方式。
 
-- **install.config.3ip.sample：** 部署基础不含bcs时使用。
+- **install.config.3ip.sample：** 部署基础不含 bcs 时使用。
 
 - **install.config.bcs.sample：** 完整的基础平台+bcs 方案分布。
 

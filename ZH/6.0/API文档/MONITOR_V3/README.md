@@ -13,7 +13,7 @@
 | [get_es_data](./get_es_data.md)|获取监控链路时序数据|
 | [get_event_log](./get_event_log.md)|查询事件流转记录|
 | [get_shield](./get_shield.md)|获取告警屏蔽|
-| [get_ts_data](./get_ts_data.md)|获取ES数据|
+| [get_ts_data](./get_ts_data.md)|获取 ES 数据|
 | [get_uptime_check_node_list](./get_uptime_check_node_list.md)|拨测节点列表|
 | [get_uptime_check_task_list](./get_uptime_check_task_list.md)|拨测任务列表|
 | [import_uptime_check_node](./import_uptime_check_node.md)|导入拨测节点配置|
@@ -33,7 +33,7 @@
 | [metadata_get_result_table](./metadata_get_result_table.md)|获取监控结果表具体信息|
 | [metadata_get_result_table_storage](./metadata_get_result_table_storage.md)|查询指定结果表的指定存储信息|
 | [metadata_get_time_series_group](./metadata_get_time_series_group.md)|获取自定义时序分组具体内容|
-| [metadata_get_time_series_metrics](./metadata_get_time_series_metrics.md)|获取自定义时序结果表的metrics信息|
+| [metadata_get_time_series_metrics](./metadata_get_time_series_metrics.md)|获取自定义时序结果表的 metrics 信息|
 | [metadata_list_label](./metadata_list_label.md)|查询当前已有的标签信息|
 | [metadata_list_result_table](./metadata_list_result_table.md)|查询监控结果表|
 | [metadata_modify_cluster_info](./metadata_modify_cluster_info.md)|修改存储集群信息|

@@ -39,7 +39,7 @@ POST
 | script_ext            | string | 否   | 脚本格式；默认值：shell，可选值（shell,bat,python,perl,powershell,vbs,custom） |
 | params_schema         | list   | 否   | 脚本参数模型，详情见下表                                     |
 | script_run_cmd        | string | 否   | 启动命令（脚本模式）                                         |
-| script_content_base64 | string | 否   | 脚本内容（base64编码）                                       |
+| script_content_base64 | string | 否   | 脚本内容（base64 编码）                                       |
 | start_cmd             | string | 否   | 启动命令（命令行模式）                                       |
 | collect_interval      | int    | 否   | 采集周期(分钟)；默认值：1                                    |
 | raw_data_interval     | int    | 否   | 原始数据保存周期(天)；默认值：30                             |

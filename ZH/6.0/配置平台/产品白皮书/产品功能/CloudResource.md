@@ -10,7 +10,7 @@
 
 ## 1. 创建云账户
 
-用户需先在公有云申请创建一组可访问所有资源的“子账户”。不同公有云申请方式略有差异。目前配置平台支持腾讯云和AWS的账号同步能力，相关的账户申请方式可以参考以下文档：
+用户需先在公有云申请创建一组可访问所有资源的“子账户”。不同公有云申请方式略有差异。目前配置平台支持腾讯云和 AWS 的账号同步能力，相关的账户申请方式可以参考以下文档：
 
 - 腾讯云：[https://cloud.tencent.com/document/product/598/37140](https://cloud.tencent.com/document/product/598/37140)
 - AWS：[https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html)
@@ -39,7 +39,7 @@
 
 在云区域设定中完善设置：
 
-1. 补充VPC对应的云区域名称：公有云一个 VPC 内主机 IP 资源不重复，与配置平台中云区域是一一对应的关系。后续此 VPC 下公有云资源都会同步到此 VPC 中
+1. 补充 VPC 对应的云区域名称：公有云一个 VPC 内主机 IP 资源不重复，与配置平台中云区域是一一对应的关系。后续此 VPC 下公有云资源都会同步到此 VPC 中
 2. 设定云主机录入到资源池的目录：配置平台发现一台新云主机，会优先放置到资源池的目录下，默认在“空闲机”目录。用户也可根据实际的部门或者用途划分，创建一个目录专用于存储新增的云主机资源
 
 ![image-20201103151136751](../media/CloudResource/image-20201103151136751.png)

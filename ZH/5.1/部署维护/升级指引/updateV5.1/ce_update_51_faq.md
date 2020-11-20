@@ -1,8 +1,8 @@
-# 社区版V4.1.16/5.0.x 升级V5.1 常见问题指引
+# 社区版 V4.1.16/5.0.x 升级 V5.1 常见问题指引
 
 - [蓝鲸域名错误恢复指引](https://bk.tencent.com/docs/document/5.1/20/666)
 - [蓝鲸开源组件密码错误恢复指引](https://bk.tencent.com/docs/document/5.1/10/250)
-- [升级 BKDATA MySQL-Python安装失败问题修复指引](https://bk.tencent.com/docs/document/5.1/10/248)
+- [升级 BKDATA MySQL-Python 安装失败问题修复指引](https://bk.tencent.com/docs/document/5.1/10/248)
 - 升级 bkdata_update_reserved_dataid 报错
   ```bash
   # 中控机器执行

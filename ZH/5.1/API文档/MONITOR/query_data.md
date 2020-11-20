@@ -25,7 +25,7 @@ POST
 
 | 字段           | 类型   | 必选 | 描述        |
 | -------------- | ------ | ---- | ----------- |
-| sql            | string | 是   | SQL查询语句 |
+| sql            | string | 是   | SQL 查询语句 |
 | prefer_storage | string |    | 查询引擎    |
 
 #### 请求示例

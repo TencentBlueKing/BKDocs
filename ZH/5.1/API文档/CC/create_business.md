@@ -39,7 +39,7 @@ POST
 | bk_biz_tester | string | 是 | 测试人员 |
 | time_zone | string | 是 | 时区 |
 | language | int | 是 | 语言 |
-| bk_supplier_id | string | 是 | 开发商id |
+| bk_supplier_id | string | 是 | 开发商 id |
 
 > **注意：此处的输入参数仅对必填以及系统内置的参数做了说明，其余需要填写的参数取决于用户自己定义的属性字段**
 

@@ -21,24 +21,24 @@ GET
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段          |  类型       | 必选   |  描述            |
 |---------------|------------|--------|------------------|
-|   bk_biz_id    |   string     |   是   |  所属业务ID |
-|   task_id     |   string   |   是   |  任务ID     |
+|   bk_biz_id    |   string     |   是   |  所属业务 ID |
+|   task_id     |   string   |   是   |  任务 ID     |
 |   node_id        | string     | 是         | 节点 ID                        |
 |   component_code| string     | 否         | 标准插件编码，请求标准插件执行详情必填 |
 |   subprocess_stack| string   | 否         | 子流程堆栈，json 格式的列表    |
 
 ### 请求参数示例
 
-```
+```plain
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -53,7 +53,7 @@ GET
 
 ### 返回结果示例
 
-```
+```plain
 {
     "message": "",
     "data": {
@@ -123,9 +123,9 @@ GET
 |  state        | string     | 最后一次执行状态，CREATED：未执行，RUNNING：执行中，FAILED：失败，NODE_SUSPENDED：暂停，FINISHED：成功 |
 |  skip         | bool       | 是否手动跳过                   |
 |  retry        | int        | 重试次数                       |
-|  inputs       | dict       | 输入参数，key：value格式       |
+|  inputs       | dict       | 输入参数，key：value 格式       |
 |  outputs      | list       | 输出参数，详情见下面说明       |
-|  ex_data      | string     | 节点执行失败详情，json字符串或者HTML字符串、普通字符串 |
+|  ex_data      | string     | 节点执行失败详情，json 字符串或者 HTML 字符串、普通字符串 |
 |  histories    | list       | 重试记录详情，详情见下面说明   |
 
 #### outputs[]
@@ -147,6 +147,6 @@ GET
 |  skip         | bool       | 是否手动跳过                   |
 |  retry        | int        | 重试次数                       |
 |  histories    | list       | 重试记录详情，详情见下面说明   |
-|  inputs       | dict       | 输入参数，key：value格式       |
-|  outputs      | dict       | 输出参数，key：value格式       |
-|  ex_data      | string     | 节点执行失败详情，json字符串或者HTML字符串、普通字符串 |
+|  inputs       | dict       | 输入参数，key：value 格式       |
+|  outputs      | dict       | 输出参数，key：value 格式       |
+|  ex_data      | string     | 节点执行失败详情，json 字符串或者 HTML 字符串、普通字符串 |

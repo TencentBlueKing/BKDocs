@@ -18,9 +18,9 @@ GET
 
 |   字段           |  类型       | 必选     |  描述             |
 |-----------------|-------------|---------|------------------|
-|   bk_app_code   |   string    |   是    |  应用ID |
-|   bk_app_secret |   string    |   是    |  安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -> 点击应用ID -> 基本信息 获取 |
-|   bk_token      |   string    |   否    |  当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取  |
+|   bk_app_code   |   string    |   是    |  应用 ID |
+|   bk_app_secret |   string    |   是    |  安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -> 点击应用 ID -> 基本信息 获取 |
+|   bk_token      |   string    |   否    |  当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取  |
 |   bk_username   |   string    |   否    |  当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户              |
 
 #### 接口参数
@@ -32,14 +32,14 @@ GET
 |   keyword     |   string     |   否   |  根据任务名关键词过滤任务列表，默认不过滤 |
 |   is_started  |   bool       |   否   |  根据任务是否已开始过滤任务列表，默认不过滤 |
 |   is_finished |   bool       |   否   |  根据任务是否已结束过滤任务列表，默认不过滤 |
-|   limit       |   int        |   否   |  分页，返回任务列表任务数，默认为15 |
-|   offset      |   int        |   否   |  分页，返回任务列表起始任务下标，默认为0 |
+|   limit       |   int        |   否   |  分页，返回任务列表任务数，默认为 15 |
+|   offset      |   int        |   否   |  分页，返回任务列表起始任务下标，默认为 0 |
 
 
 
 ### 请求参数示例
 
-```
+```plain
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -53,7 +53,7 @@ GET
 
 ### 返回结果示例
 
-```
+```plain
 {
     "result": true,
     "data": [
@@ -161,7 +161,7 @@ GET
 ##### data[item]
 |   名称   |  类型  |           说明             |
 | ------------ | ---------- | ------------------------------ |
-|  id          |    int     | 任务ID |
+|  id          |    int     | 任务 ID |
 |  name        |    string  | 任务名 |
 |  category    |    string  | 任务类型 |
 |  create_method |  string  | 任务创建方式 |
@@ -171,9 +171,9 @@ GET
 |  finish_time |  string    | 任务结束时间 |
 |  is_started  |  bool      | 任务是否已开始 |
 |  is_finished |  bool      | 任务是否已结束 |
-|  template_source |  string      | 任务模版来源，如项目模版project和公共模版common |
-|  template_id     |  string      | 任务模版ID |
-|  project_id      |  int         | 项目ID    |
+|  template_source |  string      | 任务模版来源，如项目模版 project 和公共模版 common |
+|  template_id     |  string      | 任务模版 ID |
+|  project_id      |  int         | 项目 ID    |
 |  project_name    |  string      | 项目名称   |
-|  bk_biz_id       |  int         | 业务ID    |
+|  bk_biz_id       |  int         | 业务 ID    |
 |  bk_biz_name     |  string      | 业务名称   |

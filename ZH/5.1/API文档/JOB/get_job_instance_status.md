@@ -131,9 +131,9 @@ GET
 | name | string | 作业实例名称 |
 | status | int | 作业状态码: 1.未执行; 2.正在执行; 3.执行成功; 4.执行失败; 5.跳过; 6.忽略错误; 7.等待用户; 8.手动结束; 9.状态异常; 10.步骤强制终止中; 11.步骤强制终止成功; 12.步骤强制终止失败 |
 | operator | string | 作业执行人帐号 |
-| create_time | string | 创建时间，YYYY-MM-DD HH:mm:ss格式 |
-| start_time | string | 开始执行时间，YYYY-MM-DD HH:mm:ss格式 |
-| end_time | string | 执行结束时间，YYYY-MM-DD HH:mm:ss格式 |
+| create_time | string | 创建时间，YYYY-MM-DD HH:mm:ss 格式 |
+| start_time | string | 开始执行时间，YYYY-MM-DD HH:mm:ss 格式 |
+| end_time | string | 执行结束时间，YYYY-MM-DD HH:mm:ss 格式 |
 | total_time | float | 总耗时，秒 |
 | start_way | int | 作业启动方式: 1.页面启动; 2.API 调用; 3.定时任务 |
 | bk_biz_id | int | 业务 ID |
@@ -145,7 +145,7 @@ GET
 
 | 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| type | int | 步骤块类型：1.脚本步骤; 2.文件步骤; 4.SQL步骤 |
+| type | int | 步骤块类型：1.脚本步骤; 2.文件步骤; 4.SQL 步骤 |
 | block_order | int | 步骤块顺序 |
 | block_name | string | 步骤块名称 |
 | step_instances | array | 步骤块中包含的各个步骤对象 |
@@ -161,9 +161,9 @@ GET
 | status | int | 作业步骤状态码: 1.未执行; 2.正在执行; 3.执行成功; 4.执行失败; 5.跳过; 6.忽略错误; 7.等待用户; 8.手动结束; 9.状态异常; 10.步骤强制终止中; 11.步骤强制终止成功; 12.步骤强制终止失败 |
 | operator | string | 作业执行人帐号 |
 | pause | int | 0.执行完成后不暂停(默认); 1.执行完成后暂停 |
-| create_time | string | 创建时间，YYYY-MM-DD HH:mm:ss格式 |
-| start_time | string | 开始执行时间，YYYY-MM-DD HH:mm:ss格式 |
-| end_time | string | 执行结束时间，YYYY-MM-DD HH:mm:ss格式 |
+| create_time | string | 创建时间，YYYY-MM-DD HH:mm:ss 格式 |
+| start_time | string | 开始执行时间，YYYY-MM-DD HH:mm:ss 格式 |
+| end_time | string | 执行结束时间，YYYY-MM-DD HH:mm:ss 格式 |
 | total_time | float | 总耗时，秒 |
 | order | int | 当前步骤在步骤块中的顺序 |
 | retry_count | int | 步骤重试次数 |

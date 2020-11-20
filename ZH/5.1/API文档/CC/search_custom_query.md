@@ -8,7 +8,7 @@ POST
 
 ### 功能描述
 
-查询自定义api
+查询自定义 api
 
 ### 请求参数
 
@@ -27,7 +27,7 @@ POST
 | 字段 | 类型 | 必选 | 描述 |
 |-----------|------------|--------|------------|
 | bk_supplier_account | string | 否 | 开发商账号 |
-| bk_biz_id | int | 是 | 业务ID |
+| bk_biz_id | int | 是 | 业务 ID |
 | condition | dict | 否 | 查询条件，condition 字段为自定义 api 的属性字段, 可以是 create_user,modify_user, name |
 | start | int | 是 | 记录开始位置 |
 | limit | int | 是 | 每页限制条数,最大 200 |

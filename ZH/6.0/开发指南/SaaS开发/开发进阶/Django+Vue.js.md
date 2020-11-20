@@ -36,7 +36,7 @@
 {"hello": "world"}
 ```
 
-首先我们需要先初始化一下我们的蓝鲸开发框架，使之可以正常运行，之后我们需要在`home_application/views.py `文件中添加一个我们的路由，`/hello`
+首先我们需要先初始化一下我们的蓝鲸开发框架，使之可以正常运行，之后我们需要在`home_application/views.py`文件中添加一个我们的路由，`/hello`
 
 当然，home_application 并不是强制的，如果你想的话，你可以将`/hello` 对应的函数定义在任何地方，只要我们通过一个特定的 url 访问`/hello`这个路由的时候，它可以返回我们所需要的字符串即可。
 
@@ -66,7 +66,7 @@ urlpatterns = (
 
 到这里，我们开发框架的一个简单的准备就完成啦，当然这只是第一步，当我们遇到诸如跨域，csrf 这些问题的时候，这意味着我们还需要在开发框架中添加额外的配置。
 
-## 前端Vue项目准备
+## 前端 Vue 项目准备
 
 新建一个 Vue 项目非常简单，我们只需要在命令行输入：
 
@@ -161,7 +161,7 @@ new Vue({
 
 这段代码的含义是当我们的 HelloWorld.vue 界面初始化的时候，会调用我们的 test 方法，test 向后端`/hello/`的路由发送一个 Post 请求。并将后端返回的内容打印到控制台中。
 
-现在让我们重新启动我们的Vue项目，并在浏览器访问 http://localhost:8080/  ， 并记得打开 `f12`，这样我们才能看到请求的详细信息。
+现在让我们重新启动我们的 Vue 项目，并在浏览器访问 http://localhost:8080/  ， 并记得打开 `f12`，这样我们才能看到请求的详细信息。
 
 显而易见的，这一切开始变得不那么顺利了起来，我们的请求失败了，控制台无情的输出了以下信息：
 
@@ -247,7 +247,7 @@ if ENVIRONMENT == 'dev':
 POST http://dev.paas-class.bktencent.com:8000/hello/ 403 (Forbidden)
 ```
 
-## 解决403 csrf token认证问题
+## 解决 403 csrf token 认证问题
 
 大家都知道，Django 为了防止`CRSF`攻击，要求我们每一个 Post 请求都要求携带一个 crsftoken 来验明真身，
 当然，如果你并不惧怕 CSRF 攻击，你可以简单粗暴的注释掉 CSRF 的中间件，解决不了问题，那就先解决发现问题的人，这当然没有什么问题，
@@ -295,7 +295,7 @@ new Vue({
 
 当然，你也有可能面临失败，看到这样的字样`Invalid Host header`
 
-好在它解决起来足够简单，我们只需要在我们的 Vue 项目根目录新建一个 vue.config.js项目文件，并添加如下配置：
+好在它解决起来足够简单，我们只需要在我们的 Vue 项目根目录新建一个 vue.config.js 项目文件，并添加如下配置：
 
 ```js
 module.exports = {
@@ -307,12 +307,12 @@ module.exports = {
 
 重启我们的 Vue 项目，发现一切已经恢复正常了，控制台如期打印出了 hello world 字样。
 
-现在我们已经解决了前后端分离中最核心的两个问题，跨域和403认证，这意味着你现在可以做任何你想做的事情了，
+现在我们已经解决了前后端分离中最核心的两个问题，跨域和 403 认证，这意味着你现在可以做任何你想做的事情了，
 比如编写一个接口，返回当前用户信息等等，这些都不会再有问题，因为现在前端可以任意请求后端的接口，并拿到后端接口返回的信息。
 
 到这里一切理应结束了，但是并没有，我们还需要最后一步功能要做，不过好消息是，相较于前面的跨域 和 csrf 问题，后面我们遇到的问题都是相当简单。
 
-因为我们最终要将应用部署到蓝鲸pass平台，这意味着我们需要将我们 Vue 项目合并到我们的开发框架中去。
+因为我们最终要将应用部署到蓝鲸 pass 平台，这意味着我们需要将我们 Vue 项目合并到我们的开发框架中去。
 
 ## vue 项目 和 开发框架 打包部署
 
@@ -334,7 +334,7 @@ TEMPLATES[0]['DIRS'] += (
 )
 ```
 
-注意，如果你前端 Vue 项目中使用了 vue-router 并使用了`history `路由模式，那么你需要修改`config/default.py` 中的 `IS_BKUI_HISTORY_MODE` 字段为`True`.
+注意，如果你前端 Vue 项目中使用了 vue-router 并使用了`history`路由模式，那么你需要修改`config/default.py` 中的 `IS_BKUI_HISTORY_MODE` 字段为`True`.
 
 之后在： `config/stag.py` \ `config/prod.py`两个文件都加上
 
@@ -352,9 +352,9 @@ def home(request):
     return render(request, 'index.html')
 ```
 
-## 解决静态资源404问题
+## 解决静态资源 404 问题
 
-之后，访问我们的后端项目， http://dev.paas-class.bktencent.com:8000 ，发现一片空白，打开控制台我们发现，我们的静态文件全部都是404了。
+之后，访问我们的后端项目， http://dev.paas-class.bktencent.com:8000 ，发现一片空白，打开控制台我们发现，我们的静态文件全部都是 404 了。
 
 ![Vue404](../assets/Vue404.png)
 
@@ -372,7 +372,7 @@ http://dev.paas-class.bktencent.com:8000/static/dist/css/app.775a4d94.css
 
 明白了问题的原因，我们就要去找如何配置我们的静态资源引用路径呢？
 
-还记得我们的`vue.config.js `, 没错，就是它，我们只需要每次在`打包部署前`添加如下配置：
+还记得我们的`vue.config.js`, 没错，就是它，我们只需要每次在`打包部署前`添加如下配置：
 
 ```python
 module.exports = {
@@ -386,7 +386,7 @@ module.exports = {
 即可，为什么一定要是打包部署之前呢？因为你本地开发 Vue 项目的时候，如果也加上 publicPath 配置的话，那么你访问http://dev.paas-class.bktencent.com:8080  
 Vue 项目的资源路径就会出问题了，所以一定要是部署之前，加上这个配置，然后 run build 。
 
-重新编译我们的 Vue 项目，点开 dist 文件中的 index.html文件，我们发现所有静态资源路径的引用已经正确修改为：/static/dist/ 了
+重新编译我们的 Vue 项目，点开 dist 文件中的 index.html 文件，我们发现所有静态资源路径的引用已经正确修改为：/static/dist/ 了
 
 ```html
 <!DOCTYPE html>
@@ -410,7 +410,7 @@ Vue 项目的资源路径就会出问题了，所以一定要是部署之前，�
 
 将我们的 dist 文件再次复制到我们到我们蓝鲸开发框架的 static 目录下，注意别忘记先把之前的删了哦。
 
-之后打开浏览访问 http://dev.paas-class.bktencent.com:8080， 发现一切ok了。
+之后打开浏览访问 http://dev.paas-class.bktencent.com:8080， 发现一切 ok 了。
 
 ## 总结
 

@@ -80,4 +80,4 @@ POST
 
 | 字段 | 类型 | 描述 |
 |----------- |-----------|----------|
-| bk_module_id | int | 模块id |
+| bk_module_id | int | 模块 id |

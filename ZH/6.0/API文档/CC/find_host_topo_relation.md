@@ -21,19 +21,19 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
- bk_biz_id| int| 是|业务ID|
-| bk_set_ids|array | 否| 集群ID列表，最多200条|
-| bk_module_ids|array | 否| 模块ID列表，最多500条| 
-| bk_host_ids|array | 否| 主机ID列表，最多500条| 
+ bk_biz_id| int| 是|业务 ID|
+| bk_set_ids|array | 否| 集群 ID 列表，最多 200 条|
+| bk_module_ids|array | 否| 模块 ID 列表，最多 500 条| 
+| bk_host_ids|array | 否| 主机 ID 列表，最多 500 条| 
 | page| object| 是|分页信息|
 
 #### page 字段说明
@@ -41,7 +41,7 @@ POST
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
 |start|int|否|获取数据偏移位置|
-|limit|int|是|过去数据条数限制，建议 为200|
+|limit|int|是|过去数据条数限制，建议 为 200|
 
 ### 请求参数示例
 
@@ -91,7 +91,7 @@ POST
 ### 返回结果参数说明
 
 
-#### data 字段说明：
+#### data 字段说明
 
 | 名称  | 类型  | 说明 |
 |---|---|---|
@@ -99,10 +99,10 @@ POST
 | info| object array |  业务下主机与集群，模块，集群的数据详情列表 |
 
 
-#### data.info 字段说明：
+#### data.info 字段说明
 | 名称  | 类型  | 说明 |
 |---|---|---|
-| bk_biz_id | int | 业务ID |
-| bk_set_id | int | 集群ID |
-| bk_module_id | int | 模块ID |
-| bk_host_id | int | 主机ID |
+| bk_biz_id | int | 业务 ID |
+| bk_set_id | int | 集群 ID |
+| bk_module_id | int | 模块 ID |
+| bk_host_id | int | 主机 ID |

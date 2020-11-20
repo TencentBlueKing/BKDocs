@@ -10,7 +10,7 @@ GET
 
 返回指定告警
 
-返回指定id的告警数据
+返回指定 id 的告警数据
 
 #### 通用参数
 
@@ -59,7 +59,7 @@ GET
 | begin_time        | time   | 处理开始时间   |
 | end_time          | time   | 处理结束时间   |
 | source_time       | time   | 告警发生时间   |
-| ip                | string | 主机IP         |
+| ip                | string | 主机 IP         |
 | alarm_type        | string | 告警类型       |
 | source_id         | string | 告警特征 ID     |
 | source_type       | string | 告警源类型     |

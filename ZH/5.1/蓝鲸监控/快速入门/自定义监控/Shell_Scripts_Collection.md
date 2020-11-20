@@ -17,7 +17,7 @@
 请提前了解 [指标和维度的含义](5.1/蓝鲸监控/术语解释/Concepts_Terminology.md)
 ![-w2020](../../assets/15779703055595.jpg)
 
-注：默认有一个维度为 IP和云区域ID。
+注：默认有一个维度为 IP 和云区域 ID。
 
 ### 2) 编写采集脚本
 
@@ -29,7 +29,7 @@
  yum install jq -y  // CentOS部署jq参考方法
 ```
 
-```
+```plain
 #!/bin/bash
 
 #获取磁盘使用率
@@ -39,7 +39,7 @@ diskUsage=`df -h | grep ${disk_name} | awk -F '[ %]+' '{print $5}'`
 echo "disk_usage{disk_name=\"${disk_name}\"} ${diskUsage}"
 ```
 
-添加参数: 参数为位置参数 如shell的 `$1`
+添加参数: 参数为位置参数 如 shell 的 `$1`
 
 ![-w2020](../../assets/15779703450815.jpg)
 
@@ -97,7 +97,7 @@ echo "disk_usage{disk_name=\"${disk_name}\"} ${diskUsage}"
 
 - 问：如何一次插入多条数据？
 
-    答：你可以使用Shell的循环语句for、while等来一次上报多条数据，只要符合Shell语法即可。
+    答：你可以使用Shell的循环语句for、while等来一次上报多条数据，只要符合Shell语法即可。plainplainplainplainplainplainplainplainplainplainplainplainplain
 ![edit_shellscript_while](../../assets/edit_shellscript_while.png)
 
 - 问：脚本下发到服务器上后，存放在哪里？

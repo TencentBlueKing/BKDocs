@@ -61,7 +61,7 @@
 | [find_host_topo_relation](./find_host_topo_relation.md)                                       | 获取主机与拓扑的关系                                                         |
 | [find_instance_association](./find_instance_association.md)                                   | 查询模型实例之间的关联关系                                                   |
 | [find_module_batch](./find_module_batch.md)                                                   | 批量查询某业务的模块详情                                                     |
-| [find_module_host_relation](./find_module_host_relation.md)                                   | 根据模块ID查询主机和模块的关系                                               |
+| [find_module_host_relation](./find_module_host_relation.md)                                   | 根据模块 ID 查询主机和模块的关系                                               |
 | [find_module_with_relation](./find_module_with_relation.md)                                   | 根据条件查询业务下的模块                                                     |
 | [find_object_association](./find_object_association.md)                                       | 查询模型之间的关联关系                                                       |
 | [find_set_batch](./find_set_batch.md)                                                         | 批量查询某业务的集群详情                                                     |
@@ -77,8 +77,8 @@
 | [get_service_template](./get_service_template.md)                                             | 获取服务模板                                                                 |
 | [list_biz_hosts](./list_biz_hosts.md)                                                         | 查询业务下的主机                                                             |
 | [list_biz_hosts_topo](./list_biz_hosts_topo.md)                                               | 查询业务下的主机和拓扑信息                                                   |
-| [list_hosts_without_biz](./list_hosts_without_biz.md)                                         | 没有业务ID的主机查询                                                         |
-| [list_process_detail_by_ids](./list_process_detail_by_ids.md)                                 | 查询某业务下进程ID对应的进程详情                                             |
+| [list_hosts_without_biz](./list_hosts_without_biz.md)                                         | 没有业务 ID 的主机查询                                                         |
+| [list_process_detail_by_ids](./list_process_detail_by_ids.md)                                 | 查询某业务下进程 ID 对应的进程详情                                             |
 | [list_process_instance](./list_process_instance.md)                                           | 查询进程实例列表                                                             |
 | [list_proc_template](./list_proc_template.md)                                                 | 查询进程模板列表                                                             |
 | [list_resource_pool_hosts](./list_resource_pool_hosts.md)                                     | 查询资源池中的主机                                                           |

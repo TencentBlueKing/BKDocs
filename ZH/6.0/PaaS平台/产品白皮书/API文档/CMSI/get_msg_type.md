@@ -81,4 +81,4 @@ GET
 | type      | string | 消息发送类型 |
 | label     | string | 消息发送标签 |
 | is_active | bool   | 可用性       |
-| icon      | str    | 消息类型图标，经过base64编码的ico格式的文件 |
+| icon      | str    | 消息类型图标，经过 base64 编码的 ico 格式的文件 |

@@ -1,6 +1,6 @@
-# API简介
+# API 简介
 
-蓝鲸 API 文档已同步到社区版5.1版本。在5.0版本基础上，API 接口文档更加规范和全面。
+蓝鲸 API 文档已同步到社区版 5.1 版本。在 5.0 版本基础上，API 接口文档更加规范和全面。
 蓝鲸系统允许你以编程方式获取和修改蓝鲸的配置，并提供对数据的访问。
 
 主要用于：
@@ -8,7 +8,7 @@
  - 将蓝鲸与第三方系统集成；
  - 自动化执行常规任务等。
 
-API 主要包含以下几种方法：get, create/add, update, delete, find/search, send, import, export等
+API 主要包含以下几种方法：get, create/add, update, delete, find/search, send, import, export 等
 
 **注意：**
 部分 API 预计于下一个版本下线（2020 年 6 月之后）[下线 API 公示](../开发指南/即将下掉的API接口和变量/readme.md)
@@ -37,7 +37,7 @@ API 主要包含以下几种方法：get, create/add, update, delete, find/searc
 
 - functioncontroller: 通用白名单管理，通过指定不同的功能 code，维护不同的白名单
 
-- user_auth::skip_user_auth: "应用免登录态验证白名单" 功能 code，添加此功能 code，然后将应用ID添加到"功能测试白名单"中
+- user_auth::skip_user_auth: "应用免登录态验证白名单" 功能 code，添加此功能 code，然后将应用 ID 添加到"功能测试白名单"中
 。
 
 ## 使用 SaaS 开发框架中的 SDK 包
@@ -145,12 +145,12 @@ AVAILABLE_COLLECTIONS = {
 你现在知道怎么使用蓝鲸 API ，不要停下来。
 去深入了解 **蓝鲸** 吧。
 我们建议你查阅：
-[API网关](../开发指南/扩展开发/API网关/README.md)、
-[蓝鲸统一登录API列表](../API文档/BK_LOGIN/README.md)、
-[蓝鲸开发者中心API列表](../API文档/BK_PAAS/README.md)、
-[消息管理API列表](../API文档/CMSI/README.md)、
-[配置平台API列表](../API文档/CC/README.md)、
-[管控平台API列表](../API文档/GSE/README.md)、
-[作业平台API列表](../API文档/JOB/README.md)、
-[蓝鲸监控API列表](../API文档/MONITOR/README.md)、
-[标准运维API列表](../API文档/SOPS/README.md)。
+[API 网关](../开发指南/扩展开发/API网关/README.md)、
+[蓝鲸统一登录 API 列表](../API文档/BK_LOGIN/README.md)、
+[蓝鲸开发者中心 API 列表](../API文档/BK_PAAS/README.md)、
+[消息管理 API 列表](../API文档/CMSI/README.md)、
+[配置平台 API 列表](../API文档/CC/README.md)、
+[管控平台 API 列表](../API文档/GSE/README.md)、
+[作业平台 API 列表](../API文档/JOB/README.md)、
+[蓝鲸监控 API 列表](../API文档/MONITOR/README.md)、
+[标准运维 API 列表](../API文档/SOPS/README.md)。

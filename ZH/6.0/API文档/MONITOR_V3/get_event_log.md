@@ -21,16 +21,16 @@ GET
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段 | 类型 | 描述   |
 | ---- | ---- | ------ |
-| id   | int  | 事件ID |
+| id   | int  | 事件 ID |
 
 #### 示例数据
 
@@ -45,7 +45,7 @@ GET
 | 字段        | 类型   | 描述     |
 | ----------- | ------ | -------- |
 | status      | string | 状态     |
-| event_id    | string | 事件ID   |
+| event_id    | string | 事件 ID   |
 | message     | string | 记录消息 |
 | operate     | int    | 记录类型 |
 | extend_info | dict   | 其他数据 |
@@ -75,7 +75,7 @@ GET
 
 ##### ANOMALY_NOTICE - 告警通知
 
-* action - 通知配置(参考"查询事件"接口文档中的action_list说明)
+* action - 通知配置(参考"查询事件"接口文档中的 action_list 说明)
 
 ```json
 {
@@ -88,7 +88,7 @@ GET
 * process_time - 收敛数据点的处理时间段
 * anomaly_count - 收敛异常点数量
 * data_time - 收敛数据点的数据时间段
-* anomaly_record - 异常点记录(参考"查询事件"接口文档中的origin_alarm说明)
+* anomaly_record - 异常点记录(参考"查询事件"接口文档中的 origin_alarm 说明)
 
 ```json
 {

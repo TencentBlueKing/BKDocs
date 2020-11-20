@@ -25,7 +25,7 @@ migrate failed for gse (server)
 
 * 需要更新 GSE 版本中的初始化程序文件 on_migrate 和 parse_bizid，路径`/data/bkce/gse/server/bin`
 
-	```bash
+	```bashplain
 	[root@rbtnode1 /data/install]# md5sum /data/bkce/gse/server/bin/on_migrate /data/bkce/gse/server/bin/parse_bizid
 	addc6eeec6e72e73cc330cc7fa69e9b4  /data/bkce/gse/server/bin/on_migrate
 	7ba79e36b731ef9678a3b8bfb41dc2ef  /data/bkce/gse/server/bin/parse_bizid
@@ -117,7 +117,7 @@ Copy
 
 - 查看 agent 机器上的 gse_agent 进程是否成对出现
 
-- 查看是否和 gse_task 的48533端口建立链接：`netstat -antp | grep :48533`
+- 查看是否和 gse_task 的 48533 端口建立链接：`netstat -antp | grep :48533`
 
 ```bash
 [root@nginx-1 ~]# netstat -antp |grep :48533
@@ -352,7 +352,7 @@ Copy
 | proxy(gse_btsvr)   | proxy(gse_btsvr) | TCP     | 58930        | bt 传输(同一子网)    |
 | proxy(gse_btsvr)   | proxy(gse_btsvr) | TCP,UDP | 10020        | bt 传输(同一子网)    |
 | proxy(gse_btsvr)   | proxy(gse_btsvr) | UDP     | 10030        | bt 传输(同一子网)    |
-| proxy(gse_opts)    | gse_ops          | TCP     | 58725        | ping告警数据上报端口 |
+| proxy(gse_opts)    | gse_ops          | TCP     | 58725        | ping 告警数据上报端口 |
 | proxy(gse_agent)   |                  |         | 监听随机端口 | bt 传输，可不开通     |
 | proxy(gse_btsvr)   |                  |         | 监听随机端口 | bt 传输，可不开通     |
 

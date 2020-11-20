@@ -8,7 +8,7 @@ GET
 
 ### 功能描述
 
-获取自定义api详情
+获取自定义 api 详情
 
 ### 请求参数
 
@@ -88,7 +88,7 @@ GET
 
 | 字段 | 类型 | 描述 |
 |-----------|------------|--------------------|
-| bk_obj_id | string | 对象名,可以为biz,set,module,host,object |
+| bk_obj_id | string | 对象名,可以为 biz,set,module,host,object |
 | fields | array | 查询输出字段 |
 | condition | array | 查询条件 |
 

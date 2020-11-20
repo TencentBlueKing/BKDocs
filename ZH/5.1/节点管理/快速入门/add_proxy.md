@@ -28,7 +28,7 @@
 
 点击右上角的 `+ 添加 Proxy` 按钮，进入快速 Proxy 添加页面，如图所示![627042](../assets/cloud_manage/image-20190915225627042.png)
 
-GSE Proxy节点共有至少 4 个服务(gse_agent, gse_transit, gse_opts, gse_btsvr) , 这些服务都需要与 GSE Server 通信，为了保证服务可用，需要开通这些 [网络策略](../附录/network_policy.md)
+GSE Proxy 节点共有至少 4 个服务(gse_agent, gse_transit, gse_opts, gse_btsvr) , 这些服务都需要与 GSE Server 通信，为了保证服务可用，需要开通这些 [网络策略](../附录/network_policy.md)
 
 点击【安装】后，进入安装状态，界面信息与安装直连区域的 Agent 一致，不再详述
 

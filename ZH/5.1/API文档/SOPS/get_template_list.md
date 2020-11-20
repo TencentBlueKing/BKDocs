@@ -95,9 +95,9 @@ GET
 
 | 字段      | 类型      | 描述      |
 |-----------|----------|-----------|
-| bk_biz_id   | string | 模板所属业务ID   |
+| bk_biz_id   | string | 模板所属业务 ID   |
 | bk_biz_name | string | 模板所属业务名称 |
-| id          | int    | 模板ID   |
+| id          | int    | 模板 ID   |
 | name        | string | 模板名称 |
 | category    | string | 模板分类，分类信息见下面说明 |
 | creator     | string | 模板创建人   |
@@ -113,6 +113,6 @@ GET
 | MonitorAlarm | 监控告警  |
 | ConfManage   | 配置管理  |
 | DevTools     | 开发工具  |
-| EnterpriseIT | 企业IT   |
+| EnterpriseIT | 企业 IT   |
 | OfficeApp    | 办公应用  |
 | Other        | 其它     |

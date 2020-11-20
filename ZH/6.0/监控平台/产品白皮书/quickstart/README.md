@@ -27,7 +27,7 @@
 ### 第一层： 开箱即用
 
 * 主机-操作系统监控 
-    * CMDB 中纳管的机器并且安装了Agent的机器会默认进行采集
+    * CMDB 中纳管的机器并且安装了 Agent 的机器会默认进行采集
     * 默认采集的指标 [主机-操作系统-指标](../functions/addenda/host-metrics.md)
     * 默认采集的事件 [主机-操作系统-系统事件](../functions/addenda/host-events.md)
     * 主机监控 主机图表查看和对比等功能 [主机监控](../functions/scene/host-monitor.md)
@@ -35,10 +35,10 @@
 * 主机-进程监控
     * CMDB 配置的进程默认就会进行采集
     * 默认采集的进程指标和事件 [主机-进程-指标](../functions/addenda/process-metrics.md)
-* 官方插件： 内置20款官方插件，可直接在采集中使用，满足常用组件的监控需求。提供动态的采集需求，自动增删采集
+* 官方插件： 内置 20 款官方插件，可直接在采集中使用，满足常用组件的监控需求。提供动态的采集需求，自动增删采集
     * [内置官方插件](../functions/addenda/builtin-plugins.md)
     * [采集配置](../functions/conf/collect-tasks.md)
-* 策略配置：可满足 IP，服务实例，集群模块的监控需求，提供8种检测算法。并且支持数据平台的数据监控需求
+* 策略配置：可满足 IP，服务实例，集群模块的监控需求，提供 8 种检测算法。并且支持数据平台的数据监控需求
     * [算法说明](../functions/addenda/algorithms.md)
     * [策略配置](../functions/conf/rules.md)
     * [告警组](../functions/conf/alarm-group.md)
@@ -58,7 +58,7 @@
 
 ### 第二层： 扩展采集和告警自动处理
 
-* 在线制作插件：通过在线插件制作来扩充采集能力，插件制作提供了脚本，Exporter，，JMX，BK-Pull 5种便利的插件制作类型。可以几分种实现一个好用的采集插件。并且还提供远程采集的方式来满足不方便 Agent 部署的情况。
+* 在线制作插件：通过在线插件制作来扩充采集能力，插件制作提供了脚本，Exporter，，JMX，BK-Pull 5 种便利的插件制作类型。可以几分种实现一个好用的采集插件。并且还提供远程采集的方式来满足不方便 Agent 部署的情况。
     * [插件制作](../functions/conf/plugins.md)
     * [如何通过脚本进行监控](../guide/script_collect.md)
     * [如何实现多实例采集](../guide/multi_instance_monitor.md)
@@ -67,7 +67,7 @@
     * [如何在线制作  插件](../guide/import_datadog_online.md)
     * [如何在线制作 JMX 插件](../guide/plugin_jmx.md)
     * [无 Agent 如何实现采集](../guide/noagent_monitor.md)
-* 自定义上报： 通过自定义上报来扩充采集能力，通过HTTP方式上报可以满足业务灵活的业务指标数据上报的能力。 
+* 自定义上报： 通过自定义上报来扩充采集能力，通过 HTTP 方式上报可以满足业务灵活的业务指标数据上报的能力。 
     * [自定义上报](../functions/conf/custom-report.md)
 * 告警回调能力：通过 HTTP 的告警回调，可以进行自动触发。    [如何设置告警回调](../guide/http_callback.md)
 * 故障自愈能力：通过故障自愈对接对接监控打通处理动作。
@@ -89,7 +89,7 @@
 
 * 插件程序开发：当市面上没有合适的插件时，可以自己制作开发。Python 和 Golang 两种语言可以选择自己更擅长的
     * [Exporter 插件开发](../dev/plugin_exporter_dev.md)
-    * [ 插件开发](../dev/plugin_datadog_dev.md)
+    * [插件开发](../dev/plugin_datadog_dev.md)
 * 全局管理：有很多功能控制在全局配置，如磁盘的黑名单，告警风暴的阈值，通知渠道的设置
     * [全局配置](../functions/global/admin-config.md)
 * 自监控：监控的监控，保证平台的稳定性

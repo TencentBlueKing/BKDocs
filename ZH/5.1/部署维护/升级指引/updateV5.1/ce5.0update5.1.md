@@ -1,13 +1,13 @@
 # 社区版 V5.0 升级至 V5.1 指引
-- **[升级常见问题 FAQ ](#ce_update_51_faq.md)**
+- **[升级常见问题 FAQ](#ce_update_51_faq.md)**
 - **【风险提示】**
   - 熟读升级文档，避免造成文档不熟悉而误操作
-  - 本升级指引仅适用于未做过任何改造的用户，若有定制化调整（如接入企业登陆，新增API以及接入其他企业内部系统），或部分产品为开源产品不适用本升级指引，需自行维护特殊化部分功能。
+  - 本升级指引仅适用于未做过任何改造的用户，若有定制化调整（如接入企业登陆，新增 API 以及接入其他企业内部系统），或部分产品为开源产品不适用本升级指引，需自行维护特殊化部分功能。
   - 原蓝鲸官方 SaaS 必须提前下架，否则将影响 SaaS 升级部署
   - MySQL/MongoDB 备份务必保证 MySQL/MongoDB 机器磁盘空间可用，否则将导致备份失败
   - 新 globals.env 文件的账户密码必须同备份的 globals.env 保持一致，否则将导致蓝鲸服务因为账户密码不一致异常
   - 确保升级前提前有使用蓝鲸监控创建主机告警策略，否则将导致升级 bkdata 失败 【针对从未使用过蓝鲸监控用户】
-  - 非标准私有IP用户需在解压新的脚本后，需要按照以前修改非标准私有IP的方式重新修改
+  - 非标准私有 IP 用户需在解压新的脚本后，需要按照以前修改非标准私有 IP 的方式重新修改
 ## 升级前准备
 
 - 查看 MySQL 占用磁盘空间大小
@@ -20,7 +20,7 @@
 
   - 清理的方式：只用链接到 MySQL 数据库后使用 truncate 或 delete 的方式。
 
-- **通过【开发者中心】->【S-mart应用】下架所有蓝鲸官方 `SaaS`，如：蓝鲸监控，标准运维，节点管理，故障自愈，日志检索。**
+- **通过【开发者中心】->【S-mart 应用】下架所有蓝鲸官方 `SaaS`，如：蓝鲸监控，标准运维，节点管理，故障自愈，日志检索。**
 
 - 停进程
 
@@ -84,9 +84,9 @@
       ```
     > Note:
     >
-    > 原则是不改变原模块所在IP的机器，只新增格式zk(config)，kafka(config)，bkdata(databus)，bkdata(dataapi)，bkdata(monitor)。
+    > 原则是不改变原模块所在 IP 的机器，只新增格式 zk(config)，kafka(config)，bkdata(databus)，bkdata(dataapi)，bkdata(monitor)。
     >
-    > 另：install.config.new.sample内的其他bcs相关模块如需要安装请下载相关安装包解压并新增机器部署bcs，bcs部署机器不能复用[bkce-basic]的机器。
+    > 另：install.config.new.sample 内的其他 bcs 相关模块如需要安装请下载相关安装包解压并新增机器部署 bcs，bcs 部署机器不能复用[bkce-basic]的机器。
 
 - 恢复 CICDKit 安装包
 
@@ -225,7 +225,7 @@
   ./bkcec initdata mysql
   ```
 
-- Check步骤： 确认当前 Job 库编码是否为 UTF8。
+- Check 步骤： 确认当前 Job 库编码是否为 UTF8。
  - Job 库的字符集变更为 UTF8，此步骤适用于从低于 V4.1.16 升级上来的老用户,由于早期 Job 库是 latin 1 字符集
 
     ```bash
@@ -239,7 +239,7 @@
     # 重新查看 Job 库字符集是否为 UTF8
     > SHOW CREATE DATABASE job;
     ```
--  Check步骤：确认 MongoDB是否为 rs0 模式，通过配置文件（mongodb.yaml）和 rs.status () 确认，如已经是 rs0 模式请忽略本步骤。
+-  Check 步骤：确认 MongoDB 是否为 rs0 模式，通过配置文件（mongodb.yaml）和 rs.status () 确认，如已经是 rs0 模式请忽略本步骤。
   - 将 MongoDB 节点手动切换至 rs 模式,此步骤适用于从低版本升级到 V4.1.16 的用户，由于 V4.1.16 早期版本是单实列模式。
 
     确认 `bkce/etc/mongodb.yaml` 配置文件是否支持 rs 模式

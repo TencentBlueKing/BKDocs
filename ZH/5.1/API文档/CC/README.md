@@ -51,7 +51,7 @@
 |[search_biz_inst_topo](5.1/API文档/CC/search_biz_inst_topo.md)| 查询业务实例拓扑|
 |[search_business](5.1/API文档/CC/search_business.md)| 查询业务|
 |[search_classifications](5.1/API文档/CC/search_classifications.md)| 查询模型分类|
-|[search_custom_query](5.1/API文档/CC/search_custom_query.md)| 查询自定义API|
+|[search_custom_query](5.1/API文档/CC/search_custom_query.md)| 查询自定义 API|
 |[search_group_privilege](5.1/API文档/CC/search_group_privilege.md)| 查询分组权限|
 |[search_host](5.1/API文档/CC/search_host.md)| 根据条件查询主机|
 |[search_host_lock](5.1/API文档/CC/search_host_lock.md)| 查询主机锁|

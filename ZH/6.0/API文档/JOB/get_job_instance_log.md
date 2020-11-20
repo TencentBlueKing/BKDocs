@@ -12,7 +12,7 @@ GET
 
 ### 功能描述
 
-根据作业实例ID查询作业执行日志
+根据作业实例 ID 查询作业执行日志
 
 ### 请求参数
 
@@ -21,17 +21,17 @@ GET
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
-| bk_biz_id       |  long    | 是     | 业务ID |
-| job_instance_id |  long    | 是     | 作业实例ID |
+| bk_biz_id       |  long    | 是     | 业务 ID |
+| job_instance_id |  long    | 是     | 作业实例 ID |
 
 ### 请求参数示例
 
@@ -88,16 +88,16 @@ GET
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | is_finished      | bool      | 作业是否结束 |
-| step_instance_id | long       | 作业步骤实例ID |
+| step_instance_id | long       | 作业步骤实例 ID |
 | name             | string    | 作业实例名称 |
 | status           | int       | 作业状态码: 1.未执行; 2.正在执行; 3.执行成功; 4.执行失败; 5.跳过; 6.忽略错误; 7.等待用户; 8.手动结束; 9.状态异常; 10.步骤强制终止中; 11.步骤强制终止成功 |
-| step_results     | array     | 当前步骤下所有ip的日志，按tag分类或ip的执行状态(ip_status)归类存放 |
+| step_results     | array     | 当前步骤下所有 ip 的日志，按 tag 分类或 ip 的执行状态(ip_status)归类存放 |
 
 #### step_result
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
-| ip_status      | int      | 主机任务状态码，1.Agent异常; 3.上次已成功; 5.等待执行; 7.正在执行; 9.执行成功; 11.任务失败; 12.任务下发失败; 13.任务超时; 15.任务日志错误; 101.脚本执行失败; 102.脚本执行超时; 103.脚本执行被终止; 104.脚本返回码非零; 202.文件传输失败; 203.源文件不存在; 310.Agent异常; 311.用户名不存在; 320.文件获取失败; 321.文件超出限制; 329.文件传输错误; 399.任务执行出错 |
+| ip_status      | int      | 主机任务状态码，1.Agent 异常; 3.上次已成功; 5.等待执行; 7.正在执行; 9.执行成功; 11.任务失败; 12.任务下发失败; 13.任务超时; 15.任务日志错误; 101.脚本执行失败; 102.脚本执行超时; 103.脚本执行被终止; 104.脚本返回码非零; 202.文件传输失败; 203.源文件不存在; 310.Agent 异常; 311.用户名不存在; 320.文件获取失败; 321.文件超出限制; 329.文件传输错误; 399.任务执行出错 |
 | tag            | string   | 脚本用 job_success/job_fail 函数返回的标签内容 |
 | ip_logs        | array    | ip 日志内容 |
 
@@ -106,11 +106,11 @@ GET
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | start_time    | string      | 开始执行时间，YYYY-MM-DD HH:mm:ss |
-| end_time      | string      | 执行结束时间，YYYY-MM-DD HH:mm:ss格式 |
+| end_time      | string      | 执行结束时间，YYYY-MM-DD HH:mm:ss 格式 |
 | total_time    | float       | 总耗时，秒 |
 | retry_count   | int         | 步骤重试次数 |
 | error_code    | int         | 作业执行中出错码 |
-| exit_code     | int         | shell脚本退出码; 0正常; 非0异常 |
-| bk_cloud_id   | long         | 云区域ID |
-| ip            | string      | IP地址 |
+| exit_code     | int         | shell 脚本退出码; 0 正常; 非 0 异常 |
+| bk_cloud_id   | long         | 云区域 ID |
+| ip            | string      | IP 地址 |
 | log_content   | string      | 作业脚本输出的日志内容 |

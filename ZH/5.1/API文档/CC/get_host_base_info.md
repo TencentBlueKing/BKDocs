@@ -75,6 +75,6 @@ GET
 
 | 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
-| bk_property_id | string | 属性id |
+| bk_property_id | string | 属性 id |
 | bk_property_name | string | 属性名称 |
 | bk_property_value | string | 属性值 |

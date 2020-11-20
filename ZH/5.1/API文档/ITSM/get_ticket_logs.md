@@ -88,8 +88,8 @@ GET
 
 | 字段 | 类型 | 描述 |
 | ------- | --------- | ----------------------- |
-| result | bool | 返回结果，true为成功，false为失败 |
-| code | int | 返回码，0表示成功，其他值表示失败 |
+| result | bool | 返回结果，true 为成功，false 为失败 |
+| code | int | 返回码，0 表示成功，其他值表示失败 |
 | message | string | 错误信息 |
 | data | object | 返回数据 |
 
@@ -97,7 +97,7 @@ GET
 
 | 字段 | 类型 | 描述 |
 | ---------------------- | ------ | -------- |
-| sn | string | 单据sn |
+| sn | string | 单据 sn |
 | title | string | 单据标题 |
 | create_at | string | 创建时间 |
 | creator | string | 提单人 |

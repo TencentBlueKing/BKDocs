@@ -1,6 +1,6 @@
 # Summary
 
-## PaaS平台
+## PaaS 平台
 * [产品简介](产品白皮书/产品简介/README.md)
 * [术语解释](产品白皮书/术语解释/Term.md)
 * [产品架构](产品白皮书/产品架构图/Architecture.md)
@@ -28,7 +28,7 @@
     * [权限中心](产品白皮书/产品功能/DockIAM.md)
     * [用户管理](产品白皮书/产品功能/DockUserManage.md)
     * [其他功能](产品白皮书/产品功能/AdvancedFeature.md)
-* [API文档]()
+* [API 文档]()
     * [蓝鲸统一登录]()
         * [简介](6.0/API文档/BK_LOGIN/README.md)
         * [获取用户信息](6.0/API文档/BK_LOGIN/get_user.md)
@@ -43,7 +43,7 @@
         * [发送短信](6.0/API文档/CMSI/send_sms.md)
         * [公共语音通知](6.0/API文档/CMSI/send_voice_msg.md)
         * [发送微信消息](6.0/API文档/CMSI/send_weixin.md)
-    * [API网关]()
+    * [API 网关]()
         * [简介](6.0/API文档/ESB/README.md)
         * [查询文档链接](6.0/API文档/ESB/get_doc_link_by_path.md)
 * [常见问题](产品白皮书/常见问题/FAQ.md)

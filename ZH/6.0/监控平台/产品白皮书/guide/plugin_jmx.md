@@ -1,10 +1,10 @@
-# 如何在线制作JMX插件
+# 如何在线制作 JMX 插件
 
 JMX 插件工作原理：
 
 ![-w2020](media/15769074528725.jpg)
 
-# 自定义一个JMX插件
+# 自定义一个 JMX 插件
 
 ## 开启 JMX 远程访问功能
 
@@ -32,10 +32,10 @@ java -jar app.jar \
 
 | 参数名 | 类型   | 描述 |
 | ----- | ------ | ---- |
-| `-Dcom.sun.management.jmxremote` | 布尔 | 是否支持远程JMX访问，默认true。**此项必须开启才能正常进行监控采集** |
+| `-Dcom.sun.management.jmxremote` | 布尔 | 是否支持远程 JMX 访问，默认 true。**此项必须开启才能正常进行监控采集** |
 | `-Dcom.sun.management.jmxremote.port` | 数值 | 监听端口号，用于远程访问 |
 | `-Dcom.sun.management.jmxremote.authenticate` | 布尔 | 是否需要开启用户认证，默认 `true`。开启后需要提供用户名与密码才能进行采集 |
-| `-Dcom.sun.management.jmxremote.ssl` | 布尔 | 是否对连接开启SSL加密，默认`true`。**当前版本暂不支持SSL加密，请将此项设置为 false** |
+| `-Dcom.sun.management.jmxremote.ssl` | 布尔 | 是否对连接开启 SSL 加密，默认`true`。**当前版本暂不支持 SSL 加密，请将此项设置为 false** |
 | `-Dcom.sun.management.jmxremote.access.file` | 字符串 | 用户权限配置文件的路径，默认为 `JRE_HOME/lib/management/ jmxremote.access`。当 `-Dcom.sun.management.jmxremote.authenticate` 配置为 `true` 时，该配置才会生效 |
 | `-Dcom.sun.management.jmxremote. password.file` | 字符串 | 用户密码配置文件的路径，默认为 `JRE_HOME/lib/management/ jmxremote.password`。当 `-Dcom.sun.management.jmxremote.authenticate` 配置为 `true` 时，该配置才会生效 |
 
@@ -47,7 +47,7 @@ monitorRole password
 controlRole password
 ```
 
-`jmxremote.access ` 文件样例：
+`jmxremote.access` 文件样例：
 
 ```bash
 # The "monitorRole" role has readonly access.
@@ -88,7 +88,7 @@ netstat -anpt | grep ${portNum}
 
 ## 采集配置
 
-监控平台中的 JMX 采集是基于 [Prometheus JMX Exporter](https://github.com/prometheus/jmx_exporter) 实现的。插件定义页面的“采集配置”对应了JMX Exporter的 `config.yaml` 配置文件。它决定了该插件将会采集哪些指标，以及决定以何种格式输出。配置文件的定义方式有两种：
+监控平台中的 JMX 采集是基于 [Prometheus JMX Exporter](https://github.com/prometheus/jmx_exporter) 实现的。插件定义页面的“采集配置”对应了 JMX Exporter 的 `config.yaml` 配置文件。它决定了该插件将会采集哪些指标，以及决定以何种格式输出。配置文件的定义方式有两种：
 
 ### 使用配置模板
 
@@ -120,16 +120,16 @@ rules:
 | 字段名                    | 含义                                                         |
 | ------------------------- | ------------------------------------------------------------ |
 | startDelaySeconds         | 启动延迟。延迟期内的任何请求都将返回空指标                   |
-| lowercaseOutputName       | 小写输出指标名称。适用于name。默认为false                    |
-| lowercaseOutputLabelNames | 小写输出指标的标签名称。适用于labels。默认为false            |
-| whitelistObjectNames      | 要查询的ObjectNames列表。默认为所有mBeans                    |
-| blacklistObjectNames      | 要查询的ObjectNames列表。优先级高于whitelistObjectNames。默认为none |
+| lowercaseOutputName       | 小写输出指标名称。适用于 name。默认为 false                    |
+| lowercaseOutputLabelNames | 小写输出指标的标签名称。适用于 labels。默认为 false            |
+| whitelistObjectNames      | 要查询的 ObjectNames 列表。默认为所有 mBeans                    |
+| blacklistObjectNames      | 要查询的 ObjectNames 列表。优先级高于 whitelistObjectNames。默认为 none |
 | rules                     | 要按顺序应用的规则列表，在第一个匹配到的规则处停止处理。不收集不匹配的属性。如果未指定，则默认以默认格式收集所有内容 |
-| pattern                   | 用正则表达式模式匹配每个bean属性。匹配值(用小括号标识一个匹配值)可被其他选项引用，引用方式为$n(表示第n个匹配值)。默认为匹配所有内容 |
-| name                      | 指标名称。可以引用来自pattern的匹配值。如果未指定，将使用默认格式：`domain_beanPropertyValue1_key1_key2_…keyN_attrName` |
-| value                     | 指标的值。可以使用静态值或引用来自pattern的匹配值。如果未指定，将使用mBean值 |
-| valueFactor               | 用于将指标的值value乘以该设置值，主要用于将mBean值从毫秒转换为秒。默认为1 |
-| labels                    | 标签名称到标签值的映射。可以引用来自pattern的匹配值。使用该参数必须先设置name。如果使用了name但未指定该值，则不会输出任何标签 |
+| pattern                   | 用正则表达式模式匹配每个 bean 属性。匹配值(用小括号标识一个匹配值)可被其他选项引用，引用方式为$n(表示第 n 个匹配值)。默认为匹配所有内容 |
+| name                      | 指标名称。可以引用来自 pattern 的匹配值。如果未指定，将使用默认格式：`domain_beanPropertyValue1_key1_key2_…keyN_attrName` |
+| value                     | 指标的值。可以使用静态值或引用来自 pattern 的匹配值。如果未指定，将使用 mBean 值 |
+| valueFactor               | 用于将指标的值 value 乘以该设置值，主要用于将 mBean 值从毫秒转换为秒。默认为 1 |
+| labels                    | 标签名称到标签值的映射。可以引用来自 pattern 的匹配值。使用该参数必须先设置 name。如果使用了 name 但未指定该值，则不会输出任何标签 |
 
 - pattern 格式说明
 
@@ -139,8 +139,8 @@ domain<beanpropertyName1=beanPropertyValue1, beanpropertyName2=beanPropertyValue
 
 | Part                  | Description                                                  |
 | --------------------- | ------------------------------------------------------------ |
-| domain                | Bean名称，JMX object name 中冒号之前的部分                   |
-| beanProperyName/Value | Bean属性，JMX object name 中冒号后面的键/值；多个之间用**逗号+空格**分割 |
+| domain                | Bean 名称，JMX object name 中冒号之前的部分                   |
+| beanProperyName/Value | Bean 属性，JMX object name 中冒号后面的键/值；多个之间用**逗号+空格**分割 |
 | keyN                  | 当遇到复合或表格数据的属性时，将该属性的名称添加到此列表中；多级之间用逗号+空格分割；一般很少用到，留空即可 |
 | attrName              | 属性的名称，即监控指标                                       |
 | value                 | 属性的指，即监控指标的值，一般很少使用                       |
@@ -204,7 +204,7 @@ JMX 插件不支持自定义参数，均为固定参数，这些固定参数将�
 
 - 监听端口：JMX Exporter 启动时监听的 HTTP 端口，注意不是 JMX 端口
 
-- 连接字符串：JMX RMI 的 URL，格式为 `service:jmx:rmi:///jndi/rmi://${hostName}:${portNum}/jmxrmi`。`hostName` 为目标服务的主机IP，`portNum` 为 JMX 监听的端口号。将替换采集配置中的 `{{ jmx_url }}`
+- 连接字符串：JMX RMI 的 URL，格式为 `service:jmx:rmi:///jndi/rmi://${hostName}:${portNum}/jmxrmi`。`hostName` 为目标服务的主机 IP，`portNum` 为 JMX 监听的端口号。将替换采集配置中的 `{{ jmx_url }}`
 - 用户名：若开启了用户认证，则需要输入，否则置空。将替换采集配置中的 `{{ username }}`
 - 密码：若开启了用户认证，则需要输入，否则置空。将替换采集配置中的 `{{ passowrd }}`
 
@@ -363,7 +363,7 @@ rules:
      type: $1
 ```
 
-### 使用pattern变量定义指标
+### 使用 pattern 变量定义指标
 
 配置了更多的指标后会发现，很多 rule 除了某个字段有区别，其他的都一致，因此可以将存在差异的部分抽象为变量，减少配置成本。
 
@@ -390,9 +390,9 @@ rules:
 
 调试并确认数据上报正常后，可进入下一步对插件进行保存。自此，一个 JMX 插件即制作完成。
 
-# tomcat插件使用
+# tomcat 插件使用
 
-## 添加manager角色并设置用户名和密码
+## 添加 manager 角色并设置用户名和密码
 
 编辑 `conf` 目录下的 `tomcat-user.xml` 文件，添加 manager 角色并设置用户名和密码：
 
@@ -406,7 +406,7 @@ rules:
 </tomcat-users>
 ```
 
-## 增加JMX的启动参数
+## 增加 JMX 的启动参数
 
 编辑  `bin/catalina.sh` 在 JAVA_OPTS 后面增加。
 
@@ -419,20 +419,20 @@ CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote.authenticate=false"
 ```
 
 * `-Dcom.sun.management.jmxremote`： 启用 jmxremote 功能；
-* `-Dcom.sun.management.jmxremote.port=9011`：jmxremote 监听端口，用于客户端连接，样例设为9011；
+* `-Dcom.sun.management.jmxremote.port=9011`：jmxremote 监听端口，用于客户端连接，样例设为 9011；
 * `-Dcom.sun.management.jmxremote.ssl=false`：是否启用 SSL 连接，样例设为 false；
 * `-Dcom.sun.management.jmxremote.authenticate=true`：开启用户认证连接；
 * `-Dcom.sun.management.jmxremote.password.file=/usr/share/tomcat/conf/jmxremote.password`：认证用户密码文件，样例设为 `/usr/share/tomcat/conf/jmxremote.password`；
 * `-Dcom.sun.management.jmxremote.access.file=/usr/share/tomcat/conf/jmxremote.access`：认证用户权限配置文件，样例设为 `/usr/share/tomcat/conf/jmxremote.access`。
-* 如果不启用用户认证，将选项 `Dcom.sun.management.jmxremote.authenticate` 的值设为false，也无需再设置选项 `Dcom.sun.management.jmxremote.password.file` 和 `Dcom.sun.management.jmxremote.access.file`。
+* 如果不启用用户认证，将选项 `Dcom.sun.management.jmxremote.authenticate` 的值设为 false，也无需再设置选项 `Dcom.sun.management.jmxremote.password.file` 和 `Dcom.sun.management.jmxremote.access.file`。
 
 ## 参数说明
 
 | 参数名 | 含义 | 使用举例 |
 | --- | --- | ---- |
-| port | Exporter监听的端口，提供给采集器使用 | 9110 |
+| port | Exporter 监听的端口，提供给采集器使用 | 9110 |
 | username | 采集目标认证用户名，没有就为空 | test |
 | password | 采集目标认证密码，没有就为空 | test123 |
-| jmx_url | 采集目标的jmx连接字符串 | service:jmx:rmi:///jndi/rmi://localhost:9011/jmxrmi |
+| jmx_url | 采集目标的 jmx 连接字符串 | service:jmx:rmi:///jndi/rmi://localhost:9011/jmxrmi |
 
-如上配置所示，采集器将会根据你配置的内容，定期在本地访问 localhost:9011的 tomcat jvm 以获取 Tomcat 的指标数据。
+如上配置所示，采集器将会根据你配置的内容，定期在本地访问 localhost:9011 的 tomcat jvm 以获取 Tomcat 的指标数据。

@@ -12,7 +12,7 @@
 
 ![enter image description here](../media/trace_search_2.png)
 
-## Trace详情查询
+## Trace 详情查询
 
 通过检索获取到响应的 trace 后，点击 traceID 可以查询 trace 详情。
 

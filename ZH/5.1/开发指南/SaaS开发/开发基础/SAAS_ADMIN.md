@@ -1,30 +1,30 @@
-### 创建SaaS管理员方法
+### 创建 SaaS 管理员方法
 
 1. 背景说明
 
-   蓝鲸企业版SaaS开发框架在3.1.0.75版本后，默认是将SaaS管理员的权限与PaaS平台管理员权限接触绑定，两者可以独立配置。文章主要说明已有的SaaS如何升级使用该特性，并注入新的管理员权限。
+   蓝鲸企业版 SaaS 开发框架在 3.1.0.75 版本后，默认是将 SaaS 管理员的权限与 PaaS 平台管理员权限接触绑定，两者可以独立配置。文章主要说明已有的 SaaS 如何升级使用该特性，并注入新的管理员权限。
 
 2. 环境准备
 
-   - Python开发框架: 版本 >= 3.1.0.75 [点我下载](https://docs.bk.tencent.com/download/)
+   - Python 开发框架: 版本 >= 3.1.0.75 [点我下载](https://docs.bk.tencent.com/download/)
 
-   - 将开发框架blueapps模块替换已有SaaS的blueapps模块
+   - 将开发框架 blueapps 模块替换已有 SaaS 的 blueapps 模块
 
      > 注意：如果对开发框架有自定义修改，请注意备份
 
 3. 注入新管理员方法
 
-   - 修改INIT_SUPERUSER配置
+   - 修改 INIT_SUPERUSER 配置
 
-     打开config/default.py配置文件，找到INIT_SUPERUSER配置，添加上需要注入的管理员账号名。
+     打开 config/default.py 配置文件，找到 INIT_SUPERUSER 配置，添加上需要注入的管理员账号名。
 
      ```python
      INIT_SUPERUSER = ["admin", "other_admin"]
      ```
 
-   - 添加migration
+   - 添加 migration
 
-     找到项目下任意一个django app，进入到对应的migrations文件夹下，添加一个新的migration，样例内容如下
+     找到项目下任意一个 django app，进入到对应的 migrations 文件夹下，添加一个新的 migration，样例内容如下
 
      ```python
      from django.db import migrations
@@ -53,10 +53,10 @@
 
    - 重新提测
 
-     代码提交到仓库后，重新提测或上线后，将会通过migration自动注入新的管理员配置。
+     代码提交到仓库后，重新提测或上线后，将会通过 migration 自动注入新的管理员配置。
 
 4. FAQ
-   - Q：是否必须通过migrations注入新管理员？
+   - Q：是否必须通过 migrations 注入新管理员？
    - A：不是，这只是一个建议的用法。开发者也可以通过其他手段进行修改。例如，通过一个中间件确保每次请求时，都可以判断用户的身份是否需要提升为管理员。
-   - Q：为什么后面增加INIT_SUPERUSER不再生效？
-   - A：上面的方案是通过migrations注入管理员信息，是一个**一次性**的注入操作。我们预期是先给一批用户提供了管理员权限，其他用户的权限后续可以由第一批管理员通过django admin页面进行操作
+   - Q：为什么后面增加 INIT_SUPERUSER 不再生效？
+   - A：上面的方案是通过 migrations 注入管理员信息，是一个**一次性**的注入操作。我们预期是先给一批用户提供了管理员权限，其他用户的权限后续可以由第一批管理员通过 django admin 页面进行操作

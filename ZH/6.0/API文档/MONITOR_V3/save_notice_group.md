@@ -21,29 +21,29 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段            | 类型   | 必选 | 描述                     |
 | --------------- | ------ | ---- | ------------------------ |
-| bk_biz_id       | int    | 是   | 业务ID                   |
+| bk_biz_id       | int    | 是   | 业务 ID                   |
 | name            | string | 是   | 名称                     |
 | message         | string | 是   | 说明                     |
 | webhook_url     | string | 否   | 回调地址                 |
 | notice_way      | dict   | 是   | 各个级别的通知方式       |
-| id              | int    | 否   | 告警组ID，如果没有则创建 |
+| id              | int    | 否   | 告警组 ID，如果没有则创建 |
 | notice_receiver | list   | 是   | 通知对象列表             |
 
 #### notice_receiver - 通知对象列表
 
 通知对象有两种类型 `user` 或 `group`。
 
-1. user对应的通知对象为用户名
-2. group对应的是通知组
+1. user 对应的通知对象为用户名
+2. group 对应的是通知组
    1. operator - 主负责人
    2. bk_bak_operator - 备份负责人
    3. bk_biz_tester - 测试
@@ -89,7 +89,7 @@ POST
 
 | 字段            | 类型   | 描述               |
 | --------------- | ------ | ------------------ |
-| id              | int    | 告警ID             |
+| id              | int    | 告警 ID             |
 
 #### 示例数据
 

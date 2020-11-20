@@ -21,17 +21,17 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
-| bk_biz_id |  int     | 是     | 业务ID |
-| bk_obj_id |  string  | 是     | 动态分组的目标资源对象类型,目前可以为host,set |
+| bk_biz_id |  int     | 是     | 业务 ID |
+| bk_obj_id |  string  | 是     | 动态分组的目标资源对象类型,目前可以为 host,set |
 | info      |  object  | 是     | 通用查询条件 |
 | name      |  string  | 是     | 动态分组名称 |
 
@@ -39,7 +39,7 @@ POST
 
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
-| bk_obj_id |  string   | 是     | 条件对象资源类型, host类型的动态分组支持的info.conditon:set,module,host；set类型的动态分组支持的info.condition:set |
+| bk_obj_id |  string   | 是     | 条件对象资源类型, host 类型的动态分组支持的 info.conditon:set,module,host；set 类型的动态分组支持的 info.condition:set |
 | condition |  array    | 是     | 查询条件 |
 
 #### info.condition.condition
@@ -47,7 +47,7 @@ POST
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
 | field     |  string    | 是     | 对象的字段 |
-| operator  |  string    | 是     | 操作符, op值为eq(相等)/ne(不等)/in(属于)/nin(不属于) |
+| operator  |  string    | 是     | 操作符, op 值为 eq(相等)/ne(不等)/in(属于)/nin(不属于) |
 | value     |  object    | 是     | 字段对应的值 |
 
 ### 请求参数示例
@@ -116,4 +116,4 @@ POST
 
 | 字段    | 类型  | 描述      |
 |--------|-------|-----------|
-| id     | string | 创建成功后返回新的动态分组主键ID |
+| id     | string | 创建成功后返回新的动态分组主键 ID |

@@ -24,7 +24,7 @@ GET
 
 | 字段 | 类型 | 必选 | 描述 |
 | ------------ | ------ | --- | ------ |
-| catalog_id | int | 否 | 服务目录id |
+| catalog_id | int | 否 | 服务目录 id |
 | service_type | string | 否 | 服务类型 |
 
 ### 请求参数示例
@@ -67,8 +67,8 @@ GET
 
 | 字段 | 类型 | 描述 |
 | ------- | ------ | --------------------- |
-| result | bool | 返回结果，true为成功，false为失败 |
-| code | int | 返回码，0表示成功，其他值表示失败 |
+| result | bool | 返回结果，true 为成功，false 为失败 |
+| code | int | 返回码，0 表示成功，其他值表示失败 |
 | message | string | 错误信息 |
 | data | array | 返回数据 |
 
@@ -76,7 +76,7 @@ GET
 
 | 字段 | 类型 | 描述 |
 | ---------- | ------ | ----- |
-| id | int | 服务id |
+| id | int | 服务 id |
 | name | string | 服务名称 |
 | desc | string | 服务描述 |
 | service_type | string | 服务类型 |

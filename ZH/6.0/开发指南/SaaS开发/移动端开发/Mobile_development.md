@@ -66,7 +66,7 @@
 
 ```
 
-* 修改urls.py文件
+* 修改 urls.py 文件
 
 ```python
 # urlpatterns 添加
@@ -80,14 +80,14 @@
 
 ## 运维配置
 
-* 需要确保应用服务器能访问到微信 API （可以只设置微信API的代理）
+* 需要确保应用服务器能访问到微信 API （可以只设置微信 API 的代理）
     - 微信提供的 API 协议均为 https
     - 域名为 api.weixin.qq.com
 * 反向代理，将应用外网域名的部分路径指向内网蓝鲸应用
     - 为了保证安全，必须只反方向代理部分路径
     - 应用正式环境反向代理：/o/{bk_app_id}/weixin/和/o/{bk_app_id}/static/weixin/
     - 应用测试环境反向代理：/t/{bk_app_id}/weixin/和/t/{bk_app_id}/static/weixin/
-    - header 必需配置 X-Forwarded-Weixin-Host为应用外网域名，Host为蓝鲸内网域名
+    - header 必需配置 X-Forwarded-Weixin-Host 为应用外网域名，Host 为蓝鲸内网域名
     - nginx 反向代理示例：
 
 ```json
@@ -132,7 +132,7 @@ server {
         }
 }
 ```
-## 测试是否OK
+## 测试是否 OK
 
 * 直接手机微信访问  `https://外网域名/o/{bk_app_id}/weixin/`
 
@@ -141,13 +141,13 @@ server {
 > 测试 OK 后，接下来的开发与 PC 端的开发基本一致
 
 * 微信端 CGI 请求都得以 `/o/{bk_app_id}/weixin/`（测试环境为：/o/{bk_app_id}/weixin/），若 Mako 模板渲染的页面，可直接使用 ${WEIXIN_SITE_URL}
-* 微信端本地静态文件请求都得以 `/o/{bk_app_id}/static/weixin/`（测试环境为：/o/{bk_app_id}/static/weixin/），若Mako模板渲染的页面，可直接使用 ${WEIXIN_STATIC_URL}
+* 微信端本地静态文件请求都得以 `/o/{bk_app_id}/static/weixin/`（测试环境为：/o/{bk_app_id}/static/weixin/），若 Mako 模板渲染的页面，可直接使用 ${WEIXIN_STATIC_URL}
 * 若对于不需要微信登录认证的请求，可直接在对应的 View 函数添加装饰器 weixin_login_exempt（from weixin.core.decorators import weixin_login_exempt）
 * 微信公众号登录的用户都存储在 BkWeixinUser 模型（from weixin.core.models import BkWeixinUser）中，即数据库表 bk_weixin_user
-* 集成的微信登录默认是静默登录，只能获取用户 openid，其他信息需要设置为授权登录，可配置 weixin/core/settings.py 文件中的WEIXIN_SCOPE 为 snsapi_userinfo
-* view函数中获取登录的用户方式：request.weixin_user 即为登录的用户的 BkWeixinUser 对象，具体 weixin_user 的属性等的可以查看 weixin/core/models.py 中的 BkWeixinUser
+* 集成的微信登录默认是静默登录，只能获取用户 openid，其他信息需要设置为授权登录，可配置 weixin/core/settings.py 文件中的 WEIXIN_SCOPE 为 snsapi_userinfo
+* view 函数中获取登录的用户方式：request.weixin_user 即为登录的用户的 BkWeixinUser 对象，具体 weixin_user 的属性等的可以查看 weixin/core/models.py 中的 BkWeixinUser
 
-## 开箱即用的蓝鲸MagicBox组件（移动端版本）
+## 开箱即用的蓝鲸 MagicBox 组件（移动端版本）
 
 * [Magic Box 移动端组件库](https://magicbox.bk.tencent.com/#mobile/show)
 
@@ -158,7 +158,7 @@ server {
 
 ## 小程序开发
 
-* 一行代码制作将H5变为小程序
+* 一行代码制作将 H5 变为小程序
 
 ```html
 <view>

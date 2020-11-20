@@ -1,5 +1,5 @@
 # 手动安装 Agent 使用脚本
-## 直连区域AIX
+## 直连区域 AIX
 
 AIX 上 Agent 的 安装与 Windows 类似，都是从 Server 把包推到 AIX 机器上，然后执行脚本安装。差别在于推送和远程执行都是通过 ssh。
 

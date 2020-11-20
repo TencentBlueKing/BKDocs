@@ -20,7 +20,7 @@
 
 ### 功能介绍
 
-**检索语句** 支持 QueryString 语法和正则匹配。 具体的查询语法查看[query string详解](addenda/query_string.md)
+**检索语句** 支持 QueryString 语法和正则匹配。 具体的查询语法查看[query string 详解](addenda/query_string.md)
 
 ![-w2020](../media/2019-12-13-11-03-26.jpg)
 
@@ -28,7 +28,7 @@
 
 ![-w2020](media/15774202479538.jpg)
 
-**IP快选** 通过关联 CMDB 的业务拓扑，控制日志检索范围。
+**IP 快选** 通过关联 CMDB 的业务拓扑，控制日志检索范围。
 
 ![-w2020](media/15774202841325.jpg)
 

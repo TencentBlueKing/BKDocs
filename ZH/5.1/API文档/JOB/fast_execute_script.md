@@ -29,14 +29,14 @@ POST
 | script_id | int | 否 | 脚本 ID |
 | task_name | string | 否 | 自定义作业名称 |
 | script_content | string | 否 | 脚本内容 Base64，如果同时传了 script_id 和 script_content，则 script_id 优先 |
-| script_param | string | 否 | 脚本参数 Base64。注意：如果有多个参数，比如&#34;param1 param2&#34;这种，需要对&#34;param1 param2&#34;整体进行base64编码，而不是对每个参数进行base64编码再拼接起来 |
+| script_param | string | 否 | 脚本参数 Base64。注意：如果有多个参数，比如&#34;param1 param2&#34;这种，需要对&#34;param1 param2&#34;整体进行 base64 编码，而不是对每个参数进行 base64 编码再拼接起来 |
 | script_timeout | int | 否 | 脚本超时时间，秒。默认 1000，取值范围 60-86400 |
 | account | string | 否 | 执行帐号名/别名 |
 | is_param_sensitive | int | 否 | 敏感参数将会在执行详情页面上隐藏, 0:不是（默认），1:是 |
-| script_type | int | 否 | 脚本类型：1(shell脚本)、2(bat脚本)、3(perl脚本)、4(python脚本)、5(Powershell脚本) |
-| custom_query_id| array | 否 | 配置平台上的自定义查询id列表。ip_list 与 custom_query_id 之间任意选一或并存，ip 数据会去重合并 |
-| ip_list | array | 否 | IP 对象数组。ip_list与custom_query_id 之间任意选一或并存，ip 数据会去重合并 |
-| bk_callback_url | string | 否 | 回调 URL，当任务执行完成后，JOB 会调用该URL告知任务执行结果。回调协议参考 callback_protocol 组件文档 |
+| script_type | int | 否 | 脚本类型：1(shell 脚本)、2(bat 脚本)、3(perl 脚本)、4(python 脚本)、5(Powershell 脚本) |
+| custom_query_id| array | 否 | 配置平台上的自定义查询 id 列表。ip_list 与 custom_query_id 之间任意选一或并存，ip 数据会去重合并 |
+| ip_list | array | 否 | IP 对象数组。ip_list 与 custom_query_id 之间任意选一或并存，ip 数据会去重合并 |
+| bk_callback_url | string | 否 | 回调 URL，当任务执行完成后，JOB 会调用该 URL 告知任务执行结果。回调协议参考 callback_protocol 组件文档 |
 
 #### ip_list
 

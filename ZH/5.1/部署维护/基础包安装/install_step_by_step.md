@@ -81,7 +81,7 @@ yum install zip unzip sysvinit-tools procps-ng rsync gawk curl lsof tar sed ipro
 蓝鲸社区版PaaS已经开源，具体介绍参见：https://github.com/tencent/bk-paas
 开源版的部署文档可以作为本章节的参考：https://github.com/Tencent/bk-PaaS/blob/master/docs/install/ce_paas_install.md
 
-首先安装PaaS依赖的第三方开源组件: MySQL、Redis、Nginx
+首先安装 PaaS 依赖的第三方开源组件: MySQL、Redis、Nginx
 
 ### 安装 MySQL
 
@@ -96,7 +96,7 @@ yum install mariadb-server mariadb
 编辑系统安装的 mysql 配置文件。
 
 1. 配置 mysql server：编辑/etc/my.cnf.d/server.cnf (如果不存在，则直接编辑/etc/my.cnf）。在 `[mysqld]` 段下新增如下配置：
-    ```
+    ```plain
         character-set-server = utf8plainplain
         bind-address = 10.0.0.1
         max_connections = 3000
@@ -328,7 +328,7 @@ server {
 
 先引入一个概念，配置文件**占位符**，我们约定软件配置文件中需要在部署时动态替换的地方，使用占位符，而不写死值(hardcode)。在部署时根据用户的自定义配置文件（比如本文中的/data/blueking.env)，和安装环境自动获取这些**占位符**真实对应的值，然后调用 sed 命令进行替换。这就叫做模版渲染。
 
-占位符的形式用正则表达式简化表达为：`"__[0-9A-Z_]+__"`。用人话说就是：以2个连续下划线开头，两个连续下划线结尾，中间是一串由大写字母、数字、单个下划线组成的变量名（但不能以下划线和数字开头，也不能以下划线结尾）。
+占位符的形式用正则表达式简化表达为：`"__[0-9A-Z_]+__"`。用人话说就是：以 2 个连续下划线开头，两个连续下划线结尾，中间是一串由大写字母、数字、单个下划线组成的变量名（但不能以下划线和数字开头，也不能以下划线结尾）。
 
 通过以下命令我们可以找出一个配置文件模版中有哪些占位符需要替换：
 
@@ -505,7 +505,7 @@ paas 的代码目录在 open_paas/paas 下，定义的 python 模块依赖文件
         pip --version
         ```
 
-2. 修改$HOME/.pip/pip.conf 自定义pip源。以腾讯云为例：https://mirrors.cloud.tencent.com/help/pypi.html
+2. 修改$HOME/.pip/pip.conf 自定义 pip 源。以腾讯云为例：https://mirrors.cloud.tencent.com/help/pypi.html
 
 3. 安装 virtualenv 所需要的工具：
 
@@ -555,7 +555,7 @@ mkvirtualenv -a $INSTALL_PATH/open_paas/appengine appengine && pip install --no-
 
 1. 模板文件的文件名，将 **#** 替换为 **/**，然后追加到该模块安装根目录后面即最终配置文件所在路径
 2. paas 是工程，它所属的模块是 open_paas，open_paas 的安装根目录是 $INSTALL_PATH/open_paas
-3. 所以$INSTALL_PATH/open_paas + paas/conf/settings_production.py.tpl得到$INSTALL_PATH/open_paas/paas/conf/settings_production.py.tpl， 末尾的.tpl会去掉，得到$INSTALL_PATH/open_paas/paas/conf/settings_production.py
+3. 所以$INSTALL_PATH/open_paas + paas/conf/settings_production.py.tpl 得到$INSTALL_PATH/open_paas/paas/conf/settings_production.py.tpl， 末尾的.tpl 会去掉，得到$INSTALL_PATH/open_paas/paas/conf/settings_production.py
 
 复习上面模板渲染原理后，我们观察这个配置文件需要替换哪些占位符：
 
@@ -792,7 +792,7 @@ REDIS_IP0=10.0.0.1
 
 > 注： REDIS_MASTER_NAME 这个变量是哨兵模式的 redis cluster 需要配置，社区版没有使用。如果配置了会出现 job 启动失败的问题。
 
-编辑保存后，我们渲染paas的所有配置：
+编辑保存后，我们渲染 paas 的所有配置：
 
 ```bash
 set -a
@@ -1015,7 +1015,7 @@ systemctl status paas.esb
 systemctl stop paas.*
 ```
 
-设置开机启动paas：
+设置开机启动 paas：
 
 ```bash
 systemctl enable paas.target
@@ -1202,7 +1202,7 @@ security:
    keyFile: /var/lib/mongo/mongod.key
 ```
 
-在/data/blueking.env中增加MONGODB_PORT这个变量：
+在/data/blueking.env 中增加 MONGODB_PORT 这个变量：
 
 ```bash
 MONGODB_PORT=27017
@@ -1214,7 +1214,7 @@ MONGODB_PORT=27017
 ~/render_tpl.sh mongod.conf.tpl  > /etc/mongod.conf
 ```
 
-生成mongod.key:
+生成 mongod.key:
 
 ```bash
 openssl rand -base64 756 > /var/lib/mongo/mongod.key
@@ -1624,7 +1624,7 @@ curl  -X POST \
     "http://$LAN_IP:$CMDB_ADMIN_PORT/migrate/v3/migrate/enterprise/0"
 ```
 
-返回success则初始化成功。
+返回 success 则初始化成功。
 
 通过浏览器打开 cmdb.bk.com 测试是否正常（本机的 hosts 文件需要配置）
 
@@ -2067,7 +2067,7 @@ do
 done
 ```
 
-> 注：job在启动时还会自己根据记录初始化一些库表结构。
+> 注：job 在启动时还会自己根据记录初始化一些库表结构。
 
 ### 启动 job
 
@@ -2276,7 +2276,7 @@ SID 和 TOKEN 需要动态地从 paas 接口返回里获取，无法直接渲染
 ~/render_tpl.sh -m paas_agent -E LOGS_HOME=$INSTALL_PATH/logs/paas_agent $PKG_SRC_PATH/paas_agent/support-files/templates/*
 ```
 
-paas_agent目前读取的配置文件路径是固定的需要做一个软链接：
+paas_agent 目前读取的配置文件路径是固定的需要做一个软链接：
 
 ```bash
 ln -sf $INSTALL_PATH/etc/paas_agent_config.yaml $INSTALL_PATH/paas_agent/paas_agent/etc/paas_agent_config.yaml
@@ -2502,7 +2502,7 @@ bkdata 分为 dataapi，databus 和 monitor（蓝鲸监控后台）三个模块
     WantedBy=multi-user.target
     ```
 
-7. 启动es:
+7. 启动 es:
 
     ```bash
     systemctl start es
@@ -2599,7 +2599,7 @@ source /data/blueking.env
 
 这里会输出大量的为空的变量，限于篇幅，不粘贴了。
 
-直接给出需要补全的默认值：追加到/data/blueking.env中：
+直接给出需要补全的默认值：追加到/data/blueking.env 中：
 
 ```bash
 # 监控用的
@@ -2762,7 +2762,7 @@ workon dataapi
 python -u manage.py test databus.tests.DatabusHealthTestCase.init_snapshot_config  --settings='pizza.settings_no_db'
 ```
 
-最后启动monitor后台进程：
+最后启动 monitor 后台进程：
 
 ```bash
 workon monitor

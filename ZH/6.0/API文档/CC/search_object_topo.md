@@ -12,7 +12,7 @@ POST
 
 ### 功能描述
 
-通过对象模型的分类ID查询普通模型拓扑
+通过对象模型的分类 ID 查询普通模型拓扑
 
 ### 请求参数
 
@@ -21,16 +21,16 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段                  |  类型      | 必选   |  描述                                    |
 |----------------------|------------|--------|------------------------------------------|
-| bk_classification_id |string      |是      | 对象模型的分类ID，只能用英文字母序列命名 |
+| bk_classification_id |string      |是      | 对象模型的分类 ID，只能用英文字母序列命名 |
 
 
 ### 请求参数示例
@@ -82,6 +82,6 @@ POST
 |------------|-----------|------------------------------------|
 | arrows     | string    | 取值 to（单向） 或 to,from（双向） |
 | label_name | string    | 关联关系的名字                     |
-| label      | string    | 表明From通过哪个字段关联到To的     |
-| from       | string    | 对象模型的英文id，拓扑关系的发起方 |
-| to         | string    | 对象模型的英文ID，拓扑关系的终止方 |
+| label      | string    | 表明 From 通过哪个字段关联到 To 的     |
+| from       | string    | 对象模型的英文 id，拓扑关系的发起方 |
+| to         | string    | 对象模型的英文 ID，拓扑关系的终止方 |

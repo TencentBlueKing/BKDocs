@@ -30,7 +30,7 @@ POST
 | name    | string     | 是   | 要创建的周期任务名称 |
 | cron    | dict     | 是   | 要创建的周期任务调度策略 |
 | constants    | dict     | 否   | 任务全局参数，详细信息见下面说明 |
-| exclude_task_nodes_id    | list     | 否   | 跳过执行的节点 ID列表 |
+| exclude_task_nodes_id    | list     | 否   | 跳过执行的节点 ID 列表 |
 
 #### constants.KEY
 

@@ -138,14 +138,14 @@ POST
 | bk_error_msg | string | 请求失败返回的错误信息 |
 | data | object | 请求返回的数据 |
 
-#### data 字段说明：
+#### data 字段说明
 
 | 名称 | 类型 | 描述 |
 |---|---|------|
 | count| int| 请求记录条数 |
 | info| object array | record information |
 
-#### info 字段说明：
+#### info 字段说明
 
 | 名称 | 类型 | 描述 |
 |---|---|------|

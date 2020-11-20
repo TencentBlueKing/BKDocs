@@ -131,8 +131,8 @@ POST
 | target_ips | string | 目标服务器 IP 列表，格式:IP1,IP2,IP2 |
 | abnormal_agent_ips | string | 作业执行异常服务器的 IP 列表，格式:IP1,IP2,IP2 |
 | retry_count | int | 步骤重试次数 |
-| start_time | string | 开始执行时间，YYYY-MM-DD HH:mm:ss格式 |
-| end_time | string | 执行结束时间，YYYY-MM-DD HH:mm:ss格式 |
+| start_time | string | 开始执行时间，YYYY-MM-DD HH:mm:ss 格式 |
+| end_time | string | 执行结束时间，YYYY-MM-DD HH:mm:ss 格式 |
 | total_time | float | 步骤总耗时,秒|
 | total_ip_num | int | 目标服务器数量 |
 | abnormal_agent_ip_num |int| 执行异常服务器数量|
@@ -147,7 +147,7 @@ POST
 |result_type | int | 执行结果类型|
 |result_type_text | int | 执行结果类型描述 |
 |count | int | 服务器数目|
-|ip_list | array | 服务器IP列表|
+|ip_list | array | 服务器 IP 列表|
 
 #### ip_list
 

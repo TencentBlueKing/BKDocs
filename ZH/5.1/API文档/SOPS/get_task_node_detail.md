@@ -118,9 +118,9 @@ GET
 | state        | string     | 最后一次执行状态，CREATED：未执行，RUNNING：执行中，FAILED：失败，NODE_SUSPENDED：暂停，SUSPENDED：成功 |
 | skip         | bool       | 是否手动跳过                   |
 | retry        | int        | 重试次数                       |
-| inputs       | dict       | 输入参数，key：value格式       |
+| inputs       | dict       | 输入参数，key：value 格式       |
 | outputs      | list       | 输出参数，详情见下面说明       |
-| ex_data      | string     | 节点执行失败详情，json字符串或者HTML字符串、普通字符串 |
+| ex_data      | string     | 节点执行失败详情，json 字符串或者 HTML 字符串、普通字符串 |
 | histories    | list       | 重试记录详情，详情见下面说明   |
 
 #### outputs[]
@@ -142,6 +142,6 @@ GET
 | skip         | bool       | 是否手动跳过                   |
 | retry        | int        | 重试次数                       |
 | histories    | list       | 重试记录详情，详情见下面说明   |
-| inputs       | dict       | 输入参数，key：value格式       |
-| outputs      | dict       | 输出参数，key：value格式       |
-| ex_data      | string     | 节点执行失败详情，json字符串或者HTML字符串、普通字符串 |
+| inputs       | dict       | 输入参数，key：value 格式       |
+| outputs      | dict       | 输出参数，key：value 格式       |
+| ex_data      | string     | 节点执行失败详情，json 字符串或者 HTML 字符串、普通字符串 |

@@ -26,7 +26,7 @@ POST
 | 字段               |  类型   |必选|  描述      |
 |--------------------|--------|----|------------|
 | receiver           | string | 否 | 微信接收者，包含绑定在指定公众号上的微信用户的 openid 或 企业号上的微信用户的用户 ID，多个以逗号分隔 |
-| receiver__username | string | 否 | 微信接收者，包含用户名，用户需在蓝鲸平台注册，多个以逗号分隔，若 receiver、receiver__username 同时存在，以receiver为准 |
+| receiver__username | string | 否 | 微信接收者，包含用户名，用户需在蓝鲸平台注册，多个以逗号分隔，若 receiver、receiver__username 同时存在，以 receiver 为准 |
 | data               | dict   | 是 | 消息内容 |
 | wx_qy_agentid      | string | 否 | agentid of WeChat app |
 | wx_qy_corpsecret   | string | 否 | secret of WeChat app |

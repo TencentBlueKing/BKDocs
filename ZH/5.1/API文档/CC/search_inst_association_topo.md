@@ -125,7 +125,7 @@ POST
 
 | 字段 | 类型 | 描述   |
 |--------------|--------------|-------------------------------|
-| bk_inst_id | int | 实例ID |
+| bk_inst_id | int | 实例 ID |
 | bk_inst_name | string | 实例用于展示的名字 |
 | bk_obj_icon | string | 模型图标的名字 |
 | bk_obj_id | string | 模型 ID |
@@ -138,7 +138,7 @@ POST
 
 | 字段 | 类型 | 描述    |
 |--------------|--------------|--------------------------------|
-| bk_inst_id | int | 实例ID|the inst ID |
+| bk_inst_id | int | 实例 ID|the inst ID |
 | bk_inst_name | string | 实例用于展示的名字 |
 | bk_obj_icon | string | 模型图标的名字 |
 | bk_obj_id | string | 模型 ID  |
@@ -150,10 +150,10 @@ POST
 
 | 字段 | 类型 | 描述 |
 |--------------|-----------|--------------------|
-| bk_inst_id |int | 实例ID |
+| bk_inst_id |int | 实例 ID |
 | bk_inst_name |string | 实例用于展示的名字 |
 | bk_obj_icon |string | 模型图标的名字 |
-| bk_obj_id |string | 模型ID |
+| bk_obj_id |string | 模型 ID |
 | bk_obj_name |string | 模型用于展示的名字 |
 
 
@@ -162,10 +162,10 @@ POST
 
 | 字段 | 类型 | 描述    |
 |--------------|--------------|--------------------------------|
-| bk_inst_id | int | 实例ID|the inst ID |
+| bk_inst_id | int | 实例 ID|the inst ID |
 | bk_inst_name | string | 实例用于展示的名字 |
 | bk_obj_icon | string | 模型图标的名字 |
-| bk_obj_id | string | 模型ID  |
+| bk_obj_id | string | 模型 ID  |
 | bk_obj_name | string | 模型用于展示的名字 |
 | children | object array | 本模型下所有被关联的实例的集合 |
 | count | int | children 包含节点的数量 |

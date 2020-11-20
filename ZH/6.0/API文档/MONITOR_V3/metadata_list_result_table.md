@@ -21,9 +21,9 @@ GET
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
@@ -31,9 +31,9 @@ GET
 
 | 字段           | 类型   | 必选 | 描述        |
 | -------------- | ------ | ---- | ----------- |
-| datasource_type | string | false | 需要过滤的结果表类型, 如system |
+| datasource_type | string | false | 需要过滤的结果表类型, 如 system |
 | bk_biz_id | int | false | 获取指定业务下的结果表信息 |
-| is_public_include | int | false | 是否包含全业务结果表, 0为不包含, 非0为包含全业务结果表 |
+| is_public_include | int | false | 是否包含全业务结果表, 0 为不包含, 非 0 为包含全业务结果表 |
 | is_config_by_user | bool | false | 是否需要包含非用户配置的结果表内容 |
 
 #### 请求示例
@@ -52,12 +52,12 @@ GET
 
 | 字段                | 类型   | 描述     |
 | ------------------- | ------ | -------- |
-| result\_table_id | int | 结果表ID |
+| result\_table_id | int | 结果表 ID |
 | table\_name_zh | string | 结果表中文名 |
 | is\_custom_table | boolean | 是否自定义结果表 | 
-| schema_type | string | 结果表schema配置方案，free(无schema配置), dynamic(动态schema), fixed(固定schema) | 
+| schema_type | string | 结果表 schema 配置方案，free(无 schema 配置), dynamic(动态 schema), fixed(固定 schema) | 
 | default_storage | string | 默认存储方案 | 
-| storage_list | array | 所有存储列表，元素为string | 
+| storage_list | array | 所有存储列表，元素为 string | 
 | creator | string | 创建者 | 
 | create_time | string | 创建时间, 格式为【2018-10-10 10:00:00】| 
 | last\_modify_user | string | 最后修改者 | 

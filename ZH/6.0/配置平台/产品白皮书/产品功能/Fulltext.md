@@ -11,7 +11,7 @@
 ![1589787054331](../media/1589787054331.png)
 
 全文检索的开启方式：
-```
+```plain
 在common.conf的[site]条目下修改full_text_search = true
 然后重启进程即可
 ```

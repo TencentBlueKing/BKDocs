@@ -21,9 +21,9 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
@@ -49,7 +49,7 @@ POST
 
 ### 请求参数示例
 
-- 无ancestors
+- 无 ancestors
 ```json
 {
     "system": "bk_job",
@@ -60,7 +60,7 @@ POST
 }
 ```
 
-- 有ancestors
+- 有 ancestors
 ```json
 {
     "system": "bk_sops",
@@ -120,8 +120,8 @@ POST
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
-| action | object | creator被授权对应的Action |
-| policy_id | int | creator被授权对应的策略ID |
+| action | object | creator 被授权对应的 Action |
+| policy_id | int | creator 被授权对应的策略 ID |
 
 #### action
 

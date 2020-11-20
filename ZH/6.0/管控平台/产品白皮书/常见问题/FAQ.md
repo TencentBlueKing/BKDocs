@@ -12,7 +12,7 @@
 
 （5）检查 gse.service.consul 是否解析正常
 
-### 通过作业平台执行任务报错 “can not find agent by ip …”
+### 通过作业平台执行任务报错 “can not find agent by ip ……”
 
 （1）检查对应 ip 机器上的 gse_agent 是否正常
 

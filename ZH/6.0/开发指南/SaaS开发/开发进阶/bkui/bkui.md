@@ -65,16 +65,16 @@ $ bkui --help
 
 > 为了让前后端分离协作模式可行，这几个设置默认均为本地模拟地址（即 `http://localhost`），这么做一来可以使前端页面功能开发可以相对独立完成，二来当后端接口准备好之后，前端仅需要修改代码中对应的配置，即可进行功能联调。
 
-### Generate project in current directory?
+### Generate project in current directory
 是否在当前目录下初始化项目，**直接在当前目录下运行 `bkui init` 并且当前目录为空时会出现这个问题**。
 
-### The current directory is not empty. Continue?
+### The current directory is not empty. Continue
 是否在当前目录下初始化项目，**直接在当前目录下运行 `bkui init` 并且当前目录不为空时会出现这个问题**。
 
-### Target directory exists. Will create a new directory and add the `.bak` suffix to the existing directory. Continue?
+### Target directory exists. Will create a new directory and add the `.bak` suffix to the existing directory. Continue
 是否在已存在的目录里初始化项目，**运行 `bkui init DIRECTORY_NAME` 并且 `DIRECTORY_NAME` 已经存在时会出现这个问题**，继续之后，会给已存在的目录添加一个时间戳后缀，同时新建 `DIRECTORY_NAME` 目录，并在 `DIRECTORY_NAME` 新目录里初始化项目。
 
-### Is it a SaaS Application?
+### Is it a SaaS Application
 是否是蓝鲸 SaaS 应用，默认为是。**蓝鲸前端开发脚手架除了可以构建蓝鲸 SaaS 应用，也支持构建 Web 单页应用**。
 
 ### Project name

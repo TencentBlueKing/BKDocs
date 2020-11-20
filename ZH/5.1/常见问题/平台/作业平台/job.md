@@ -94,7 +94,7 @@ JOB 对日志数据库表进行表分区， 并且要求 MYSQL 中启动事件�
     3.gse 和 redis 需要同在一台机器上部署。
 
     4.蓝鲸 server 端 agent 需确保正常
-      `ps -ef |grep gse_agent` 进程成对出现(gse所在机器)
+      `ps -ef |grep gse_agent` 进程成对出现(gse 所在机器)
      ```bash
      root     19467     1  0 Nov04 ?        00:00:00 ./gse_agent -f /usr/local/gse/agent/etc/agent.conf
      root     19469 19467  0 Nov04 ?        00:08:05 ./gse_agent -f /usr/local/gse/agent/etc/agent.conf

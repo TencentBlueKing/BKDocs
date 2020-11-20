@@ -21,9 +21,9 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
@@ -32,9 +32,9 @@ POST
 | --------- | ------ | ---- | ---------- |
 | page      | int    | 否   | 页码       |
 | page_size | int    | 否   | 每页条数   |
-| ids       | list   | 否   | 策略ID列表 |
-| metric_id | string | 否   | 指标ID     |
-| bk_biz_id | int    | 是   | 业务ID     |
+| ids       | list   | 否   | 策略 ID 列表 |
+| metric_id | string | 否   | 指标 ID     |
+| bk_biz_id | int    | 是   | 业务 ID     |
 | fields    | list   | 否   | 所需字段   |
 
 #### 示例数据
@@ -53,11 +53,11 @@ POST
 | action_list | list   | 动作列表(Action) |
 | source_type | string | 数据来源         |
 | target      | list   | 监控目标         |
-| bk_biz_id   | int    | 业务ID           |
+| bk_biz_id   | int    | 业务 ID           |
 | item_list   | list   | 监控项(Item)     |
 | name        | string | 策略名称         |
 | scenario    | string | 监控对象         |
-| id          | int    | 策略ID           |
+| id          | int    | 策略 ID           |
 
 #### NoticeAction
 
@@ -80,9 +80,9 @@ POST
 | --------------- | ------ | -------------------------------------------------- |
 | notice_receiver | list   | 接收人                                             |
 | name            | string | 通知组名称                                         |
-| notice_way      | dict   | 通知方式，告警级别为key，value是通知方式组成的list |
+| notice_way      | dict   | 通知方式，告警级别为 key，value 是通知方式组成的 list |
 | message         | string | 备注                                               |
-| id              | int    | 通知组ID                                           |
+| id              | int    | 通知组 ID                                           |
 
 #### Item
 
@@ -110,7 +110,7 @@ POST
 | agg_interval    | int    | 聚合周期 |
 | agg_dimension   | list   | 查询维度 |
 | agg_method      | string | 聚合方法 |
-| result_table_id | string | 结果表ID |
+| result_table_id | string | 结果表 ID |
 
 #### Algorithm
 

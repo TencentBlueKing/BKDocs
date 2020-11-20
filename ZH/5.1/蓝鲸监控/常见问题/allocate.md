@@ -30,10 +30,10 @@ ls -rlt uptime* | tail -n1
 ```
 假定这里最新的日志文件是`uptimecheckbeat.1`，从中过滤是否有心跳上报关键字“Publish”，且上报时间是否是最新时间：
 
-```
+```plain
 tail -n100 uptimecheckbeat.1 | grep -A10 Publish
 ```
-正常情况下，可观察到最新1分内的采集器心跳上报情况：
+正常情况下，可观察到最新 1 分内的采集器心跳上报情况：
 
 ![15456380115265](../assets/15456380115265.jpg)
 
@@ -73,9 +73,9 @@ grep -A3 https://www.xxx.xxx.com/ uptimecheckbeat.conf
 cd /var/log/gse
 ls -rlt uptime* | tail -n1
 ```
-假定这里最新的日志文件是`uptimecheckbeat.1`，从中过滤是否有task_id为22的数据上报，且上报时间是否是最新时间：
+假定这里最新的日志文件是`uptimecheckbeat.1`，从中过滤是否有 task_id 为 22 的数据上报，且上报时间是否是最新时间：
 
-```
+```plain
 grep -B25 '"task_id": 22' uptimecheckbeat.1
 ```
 

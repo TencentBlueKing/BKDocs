@@ -21,24 +21,24 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 ### 接口参数
 
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
-| bk_biz_id   |  long     | 是     | 业务ID |
+| bk_biz_id   |  long     | 是     | 业务 ID |
 | params      |  dict     | 是     | 请求参数结构 |
 
 #### params
 
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
-| job_instance_id   |  long     | 是     | 作业实例ID |
-| step_instance_id  |  long     | 是     | 作业步骤实例ID |
+| job_instance_id   |  long     | 是     | 作业实例 ID |
+| step_instance_id  |  long     | 是     | 作业步骤实例 ID |
 
 
 ### 请求参数示例
@@ -117,19 +117,19 @@ POST
 
 |   名称   |  类型  |           说明             |
 | ------------ | ---------- | ------------------------------ |
-| step_instance_id | long   | 作业步骤实例ID | 
+| step_instance_id | long   | 作业步骤实例 ID | 
 | name             | string | 步骤名称| 
 | type             | int    | 步骤类型: 1.脚本执行; 2.文件分发; 3.人工确认| 
 | operator         | string | 作业执行人帐号 | 
 | status           | int    | 步骤执行状态码: 1.未执行; 2.正在执行; 3.执行成功; 4.执行失败; 5.跳过; 6.忽略错误; 7.等待用户; 8.手动结束; 9.状态异常; 10.步骤强制终止中; 11.步骤强制终止成功|
-| step_id          | long   | 步骤ID | 
-| job_instance_id  | long   | 作业实例ID | 
-| bk_biz_id        | int    | 业务ID | 
-| target_ips       | string | 目标服务器IP列表，格式:IP1,IP2,IP2 | 
-| abnormal_agent_ips | string  | 作业执行异常服务器的IP列表，格式:IP1,IP2,IP2 | 
+| step_id          | long   | 步骤 ID | 
+| job_instance_id  | long   | 作业实例 ID | 
+| bk_biz_id        | int    | 业务 ID | 
+| target_ips       | string | 目标服务器 IP 列表，格式:IP1,IP2,IP2 | 
+| abnormal_agent_ips | string  | 作业执行异常服务器的 IP 列表，格式:IP1,IP2,IP2 | 
 | retry_count      | int    | 步骤重试次数 | 
-| start_time       | string | 开始执行时间，YYYY-MM-DD HH:mm:ss格式 | 
-| end_time         | string | 执行结束时间，YYYY-MM-DD HH:mm:ss格式 | 
+| start_time       | string | 开始执行时间，YYYY-MM-DD HH:mm:ss 格式 | 
+| end_time         | string | 执行结束时间，YYYY-MM-DD HH:mm:ss 格式 | 
 | total_time       | float | 步骤总耗时,秒| 
 | total_ip_num     | int   | 目标服务器数量 |
 | abnormal_agent_ip_num |int| 执行异常服务器数量| 
@@ -144,11 +144,11 @@ POST
 |result_type      | int | 执行结果类型| 
 |result_type_text | int | 执行结果类型描述 | 
 |count            | int | 服务器数目| 
-|ip_list          | array | 服务器IP列表| 
+|ip_list          | array | 服务器 IP 列表| 
 
 #### ip_list 
 
 |   名称   |  类型  |           说明             |
 | ------------ | ---------- | ------------------------------ |
-|bk_cloud_id   | long | 云区域ID | 
+|bk_cloud_id   | long | 云区域 ID | 
 |ip            | string | IP |

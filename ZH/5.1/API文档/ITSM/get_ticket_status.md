@@ -141,8 +141,8 @@ GET
 
 | 字段 | 类型 | 描述 |
 | ------- | --------- | ----------------------- |
-| result | bool | 返回结果，true为成功，false为失败 |
-| code | int | 返回码，0表示成功，其他值表示失败 |
+| result | bool | 返回结果，true 为成功，false 为失败 |
+| code | int | 返回码，0 表示成功，其他值表示失败 |
 | message | string | 错误信息 |
 | data | object | 返回数据 |
 
@@ -163,7 +163,7 @@ GET
 | ------------- | ------ | ------- |
 | key | string | 操作标识，包括：SUSPEND（挂起）/UNSUSPEND（恢复）/WITHDRAW（撤销）/TERMINATE（终止节点和单据） |
 | name | string | 操作名称 |
-| can_operate | string | 可否操作（扩展字段，始终为true） |
+| can_operate | string | 可否操作（扩展字段，始终为 true） |
 
 ### current_steps（当前步骤）
 
@@ -172,8 +172,8 @@ GET
 | name | string | 步骤名称 |
 | action_type | string | 操作类型：TRANSITION（审批）/DISTRIBUTE（分派）/CLAIM（认领）/AUTOMATIC（自动处理） |
 | processors | string | 处理人列表 |
-| processors_type | string | 处理人类型：CMDB（cmdb角色）/GENERAL（通用角色）/PERSON（个人）/STARTER（提单人）/OPEN（不限） |
-| state_id | int | 节点ID |
+| processors_type | string | 处理人类型：CMDB（cmdb 角色）/GENERAL（通用角色）/PERSON（个人）/STARTER（提单人）/OPEN（不限） |
+| state_id | int | 节点 ID |
 | status | string | 节点状态 |
 | operations | array | 单据当前步骤支持的操作列表 |
 | fields | array | 单据当前步骤的表单字段列表 |
@@ -184,14 +184,14 @@ GET
 | ------------- | ------ | ------- |
 | key | string | 操作标识，包括： TRANSITION（审批）/CLAIM（认领）/DISTRIBUTE（派单）/DELIVER（转单）/TERMINATE（终止节点和单据） |
 | name | string | 操作名称 |
-| can_operate | string | 可否操作（扩展字段，始终为true） |
+| can_operate | string | 可否操作（扩展字段，始终为 true） |
 
 
 ### fields（节点字段）
 
 | 字段 | 类型 | 描述 |
 | ------------- | ------ | ------- |
-| id | int | 字段id |
+| id | int | 字段 id |
 | key | string | 字段唯一标识 |
 | type | string | 字段类型 |
 | name | string | 字段名称 |
@@ -204,7 +204,7 @@ GET
 
 ### type（字段类型）
 
-| 类型Key | 类型 |
+| 类型 Key | 类型 |
 | ------------- | ------ |
 | STRING | 单行文本 |
 | STRING | 单行文本|

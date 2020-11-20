@@ -27,7 +27,7 @@ POST
 |-----------|------------|--------|------------|
 | bk_supplier_account | string | 否 | 开发商账号 |
 | bk_biz_id | int | 否 | 业务 ID |
-| ip | dict | 否 | 主机 ip列表 |
+| ip | dict | 否 | 主机 ip 列表 |
 | condition | array | 否 | 组合条件 |
 | page | dict | 否 | 查询条件 |
 | pattern | string | 否 | 按表达式搜索 |

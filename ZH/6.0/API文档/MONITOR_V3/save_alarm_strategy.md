@@ -21,9 +21,9 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
@@ -32,14 +32,14 @@ POST
 | :---------- | ------ | ---- | ---------------- |
 | action_list | list   | 是   | 动作列表(Action) |
 | target      | list   | 是   | 监控目标         |
-| bk_biz_id   | int    | 是   | 业务ID           |
+| bk_biz_id   | int    | 是   | 业务 ID           |
 | item_list   | list   | 是   | 监控项(Item)     |
 | name        | string | 是   | 策略名称         |
 | scenario    | string | 是   | 监控对象         |
 
 #### NoticeAction
 
-action目前只有通知类型，创建策略时，如果传入通知组的ID，则使用通知组
+action 目前只有通知类型，创建策略时，如果传入通知组的 ID，则使用通知组
 
 | 字段                              | 类型   | 必选 | 描述                    |
 | --------------------------------- | ------ | ---- | ----------------------- |
@@ -58,16 +58,16 @@ action目前只有通知类型，创建策略时，如果传入通知组的ID�
 
 可以使用已存在的通知组
 
-1. 如果存在id，则使用id对应的通知组，传入的通知组配置会更新该通知组。
-2. 如果没有id，则根据传入的字段新建通知组。
+1. 如果存在 id，则使用 id 对应的通知组，传入的通知组配置会更新该通知组。
+2. 如果没有 id，则根据传入的字段新建通知组。
 
 | 字段            | 类型   | 必选 | 描述                                               |
 | --------------- | ------ | ---- | -------------------------------------------------- |
 | notice_receiver | list   | 否   | 接收人                                             |
 | name            | string | 否   | 通知组名称                                         |
-| notice_way      | dict   | 否   | 通知方式，告警级别为key，value是通知方式组成的list |
+| notice_way      | dict   | 否   | 通知方式，告警级别为 key，value 是通知方式组成的 list |
 | message         | string | 否   | 备注                                               |
-| id              | int    | 否   | 通知组ID                                           |
+| id              | int    | 否   | 通知组 ID                                           |
 
 #### Item
 
@@ -95,7 +95,7 @@ action目前只有通知类型，创建策略时，如果传入通知组的ID�
 | agg_interval    | int    | 是   | 聚合周期 |
 | agg_dimension   | list   | 是   | 查询维度 |
 | agg_method      | string | 是   | 聚合方法 |
-| result_table_id | string | 是   | 结果表ID |
+| result_table_id | string | 是   | 结果表 ID |
 
 #### Algorithm
 
@@ -115,7 +115,7 @@ action目前只有通知类型，创建策略时，如果传入通知组的ID�
 
 ##### 静态阈值
 
-静态阈值一次可以配置多个，因此是个list结构
+静态阈值一次可以配置多个，因此是个 list 结构
 
 ```json
 [
@@ -270,7 +270,7 @@ action目前只有通知类型，创建策略时，如果传入通知组的ID�
 
 | 字段        | 类型 | 必选 | 描述   |
 | ----------- | ---- | ---- | ------ |
-| strategy_id | int  | 是   | 策略ID |
+| strategy_id | int  | 是   | 策略 ID |
 
 #### 示例数据
 

@@ -12,7 +12,7 @@ GET
 
 ### 功能描述
 
-查询一个事件分组ID
+查询一个事件分组 ID
 给定一个数据源和业务， 查询器具体的信息
 
 
@@ -21,16 +21,16 @@ GET
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段           | 类型   | 必选 | 描述        |
 | -------------- | ------ | ---- | ----------- |
-| event_group_id  | int | 是   | 事件分组ID |
+| event_group_id  | int | 是   | 事件分组 ID |
 | with_result_table_info | bool | 否 | 事件分组存储信息 | 
 
 
@@ -49,9 +49,9 @@ GET
 
 | 字段                | 类型   | 描述     |
 | ------------------- | ------ | -------- |
-| bk\_event_group_id | int | 事件分组ID  |
-| bk\_data_id | int | 数据源ID |
-| bk\_biz_id | int | 业务ID | 
+| bk\_event_group_id | int | 事件分组 ID  |
+| bk\_data_id | int | 数据源 ID |
+| bk\_biz_id | int | 业务 ID | 
 | event\_group_name | string | 事件分组名 |
 | label | string | 事件标签 | 
 | is_enable | bool | 是否启用 | 
@@ -62,11 +62,11 @@ GET
 | event_info_list | array | 事件列表 |
 | shipper_list | object | 结果表配置信息 | 
 
-#### event_info_list具体内容说明
+#### event_info_list 具体内容说明
 
 | 字段                | 类型   | 描述     |
 | ------------------- | ------ | -------- |
-| bk\_event_id | int | 事件ID  |
+| bk\_event_id | int | 事件 ID  |
 | event_name | string | 事件名 |
 | dimension | array | 维度列表, 元素为维度明 |
 

@@ -4,11 +4,11 @@
 
 1\. 下载相关镜像文件。相关镜像下载链接请看文章末尾。
 
-    - Centos7.x.iso
+    - Centos7.x.isoplainplainplainplainplainplainplainplainplainplain
 
 2\. 挂载到每台机器上：
 
-    ```bash
+    ```bashplainplainplainplainplainplain
     mkdir -p /mnt/centos7 /mnt/centos7-epel
     mount -t iso9660 xxxx.iso /mnt/centos7
     mount -t iso9660 xxx.iso /mnt/centos7-epel
@@ -16,7 +16,7 @@
 
 3\. 配置离线 repo。
 
-    - /etc/yum.repos.d/offline-centos7.repo
+    - /etc/yum.repos.d/offline-centos7.repoplainplainplainplain
 
         ```bash
         [offline-centos7]

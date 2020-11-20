@@ -10,7 +10,7 @@
    git clone https://xxx.com/datadog_plugin_framework.git
    ```
 
-2. 获取   Integrations(6.15x分支代码)
+2. 获取   Integrations(6.15x 分支代码)
 
    官方
 
@@ -28,8 +28,8 @@
 
 3. 准备两种操作系统，并确定已安装 `Python 2.7` 和 `pip`
 
-   - Windows 64位
-   - Mac OS/Linux 64位
+   - Windows 64 位
+   - Mac OS/Linux 64 位
 
 ## 生成基础包
 

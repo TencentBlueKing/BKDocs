@@ -8,7 +8,7 @@
 
 3\. 渲染涉及到的进程的模块文件
 
-    ```bash
+    ```bashplainplainplainplainplainplainplainplainplainplainplain
     ./bkcec render $module
     ```
     知道如何操作以及为什么需要这样操作：

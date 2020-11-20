@@ -8,7 +8,7 @@
     * [产品功能]()
         * [检索](functions/search_log.md)
         * [管理]()
-            * [第三方ES接入](functions/manager/third_es.md)
+            * [第三方 ES 接入](functions/manager/third_es.md)
             * [索引集管理](functions/manager/index_es.md)
             * [用户和权限管理](functions/manager/user_permission.md)
     * [场景案例]()

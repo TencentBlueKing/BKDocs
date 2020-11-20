@@ -12,15 +12,15 @@
 
 - [pipenv](https://github.com/pypa/pipenv)
 
-### 安装Python3 & virtualenvwrapper
+### 安装 Python3 & virtualenvwrapper
 
-- 【MacOS环境】
+- 【MacOS 环境】
 
 首先，我们去到 Python 官网下载最新的 Python 安装包：[Python 下载地址](https://www.python.org/downloads/)。
 
 这里强烈建议大家使用安装器(Installer)的方式安装。因为如果使用源码安装时，会遇到 openssl 开发依赖环境及 macOS 系统限制，给你带来各种麻烦。
 
-- 【Linux环境】
+- 【Linux 环境】
 
 建议大家可以使用 Python 的源码包进行安装，这样的好处在于我们可以指定 Python 的安装路径，确保新安装的 Python3 不会影响已有的系统工具，例如 yum 等。
 
@@ -39,13 +39,13 @@ make install
 export PATH=/opt/python36/bin:$PATH
 ```
 
-- 【Windows环境】
+- 【Windows 环境】
 
-Windows安装的时候需要注意使用自定义的安装路径，可以参考以下视频：[windows安装说明](https://www.youtube.com/watch?v=V_ACbv4329E)。
+Windows 安装的时候需要注意使用自定义的安装路径，可以参考以下视频：[windows 安装说明](https://www.youtube.com/watch?v=V_ACbv4329E)。
 
 > 各位读者需要注意，安装后需要修改 PATH 环境变量。
 
-- 【virtualevnwrapper安装】
+- 【virtualevnwrapper 安装】
 
 安装完成后，大家可以发现自己本地新增了一个【python3】的命令。当然，不用担心系统自身的 Python2 环境丢掉了，安装器会将这个 Python2 的保留下来。如下图所示：
 
@@ -110,10 +110,10 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 上面的操作中，我们首先创建了一个使用默认 Python 解释器的虚拟环境。
 
-创建完成后，我们进入Python可以观察到，对应的版本是2.7.x。
+创建完成后，我们进入 Python 可以观察到，对应的版本是 2.7.x。
 
 紧接着，笔者再创建了一个使用指定 Python 解释器路径的虚拟环境，创建完成后我们进入 Python 可以观察到，对应的版本是 3.6.x。
 
-至此，两个独立、互不干扰的 Py2 和Py3 环境创建完成。
+至此，两个独立、互不干扰的 Py2 和 Py3 环境创建完成。
 
 如果需要不同的环境切换，使用 workon 命令切换即可。

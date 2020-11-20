@@ -21,9 +21,9 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
@@ -32,15 +32,15 @@ POST
 | -------------- | ------ | ---- | ----------- |
 | cluster_name     | string | 是   | 存储集群名 |
 | cluster_type | string | 是 | 存储集群类型, 目前可以支持 influxDB, kafka, redis, elasticsearch |
-| domain_name   | string | 是   | 存储集群域名（可以填入IP） |
+| domain_name   | string | 是   | 存储集群域名（可以填入 IP） |
 | port   | int | 是   | 存储集群端口 |
 | operator | string | 是 | 创建者 |
 | description   | string | 否   | 存储集群描述信息 |
 | auth_info | object | 否 | 集群身份验证信息 |
 | version | string | 否 | 集群版本信息 | 
 | custom_label | string | 否 | 自定义标签 | 
-| schema | string | 否 | 强行配置schema，可用于配置https等情形 | 
-| is_ssl_verify | bool | 否 | 是否需要跳过SSL\TLS 认证 | 
+| schema | string | 否 | 强行配置 schema，可用于配置 https 等情形 | 
+| is_ssl_verify | bool | 否 | 是否需要跳过 SSL\TLS 认证 | 
 
 #### 请求示例
 
@@ -65,7 +65,7 @@ POST
 
 | 字段                | 类型   | 描述     |
 | ------------------- | ------ | -------- |
-| cluster_id | int | 集群ID |
+| cluster_id | int | 集群 ID |
 
 #### 结果示例
 

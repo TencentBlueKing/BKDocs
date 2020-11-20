@@ -18,7 +18,7 @@
 9. 查询失败，原因：【模块：data】接口返回结果错误：SQL 语法错误，请检查语法：06（进程资源无数据 bug，没入库）
 10. \_exporter_url\_参数不能为空（自定义组件导入）
 11. 系统信息可上报，组件信息不上报
-12. 启动入库任务失败【模块：data】接口返回结果错误：添加总线任务失败，添加etl任务失败 6_ja_gse_proc_port（）
+12. 启动入库任务失败【模块：data】接口返回结果错误：添加总线任务失败，添加 etl 任务失败 6_ja_gse_proc_port（）
 13. config_schema：必须提供\_exporter_url\_参数的配置
 14. 基础性能接入失败：2：x.x.x.x 下发配置失败
 15. 【模块：data】接口返回结果错误：调用接口失败 gse_push_file：该业务{0}下没有 IP
@@ -26,14 +26,14 @@
 ### 可能原因
 
 1. nginx未更新安装，`install nginx 1`后解决
-2. gse_agent在节点管理，重新安装
+2. gse_agent 在节点管理，重新安装
 3. bk_monitor 在 supervisor 缺少 celery 和 beat 配置，重新安装部署相对应的最新版本
 4. bk_monitor 的服务使用错误使用 root 启动，停掉进程，删掉原启动对应 root 的文件，用 apps 用户启动
-5. influxdb表结构为空，所有`system_*`的库，`show measurements`为空
+5. influxdb 表结构为空，所有`system_*`的库，`show measurements`为空
 6. `/data/bkce/bkdata/dataapi/bin/check_databus_status.sh`检查结果，`=====ETL=====`发现未更新的，结果类似`etl_1004_2_ja_gse_net`老的结构，
-7. databus的`tsdb.cluster.properties`配置中`cluster.rest.port=__CONNECTOR_TSDB_PORT__`未替换，为空
-8. `./kafka-console-consumer.sh --bootstrap-server kafka.service.consul:9092 --topic snapshot3|grep -P '"ip":".*?"' -o `出现`"ip":"__EXTERNAL_IP__"`
-9. CMDB里面配置进程的时候需要配置网络协议
+7. databus 的`tsdb.cluster.properties`配置中`cluster.rest.port=__CONNECTOR_TSDB_PORT__`未替换，为空
+8. `./kafka-console-consumer.sh --bootstrap-server kafka.service.consul:9092 --topic snapshot3|grep -P '"ip":".*?"' -o`出现`"ip":"__EXTERNAL_IP__"`
+9. CMDB 里面配置进程的时候需要配置网络协议
 
 ### 排查方法
 
@@ -59,7 +59,7 @@ apps     31588  1960  0 18:01 ?        00:00:00 /data/bkce/paas_agent/apps/Envs/
 
 ```
 
-#### 检查bkdata日志
+#### 检查 bkdata 日志
 
 确认 databus 日志`/data/bkce/logs/bkdata/databus_etl.log`以及`/data/bkce/logs/bkdata/databus_tsdb.log`是否有 Exception 或者 Error 的错误，示例如下
 
@@ -157,7 +157,7 @@ $ [root@rbtnode1 install]# /data/bkce/service/kafka/bin/kafka-console-consumer.s
 
 ```
 
-#### 检查influxdb
+#### 检查 influxdb
 
 确认influxdb内的数据库和结构，正常返回如下
 
@@ -232,14 +232,14 @@ tail /var/log/cron
 
 如果没有，应该安装时漏执行，或者执行过`./bkcec clean cron`后忘记加回来。可在中控机执行 `./bkcec install cron` 重新安装上 cron 任务检查 bkdata 的 cron 任务
 
-### 手动运行update_cc_cache.sh
+### 手动运行 update_cc_cache.sh
 
 ```bash
 $ /data/bkce/bkdata/dataapi/bin/update_cc_cache.sh
 ```
 
-- 确认无数据上报机器的时间和部署蓝鲸server机器的时间是否同步。
-- 确认无数据的机器上是否有basereport进程采集器
+- 确认无数据上报机器的时间和部署蓝鲸 server 机器的时间是否同步。
+- 确认无数据的机器上是否有 basereport 进程采集器
     - 若无可尝试手动拉起  `/usr/local/gse/plugins/bin/start.sh  basereport`
     - 若采集器进程存在则查看采集器日志 `/var/log/gse/basereport` (日志为 error 级别，有进程无日志说明采集器进程正常)。
 
@@ -267,7 +267,7 @@ common:scheduler      FATAL     Exited too quickly (process log may have details
 supervisorctl  -c /data/bkce/etc/supervisor-bkdata-monitor.conf status all
 ```
 
-- 找到有问题的进程名。例如上图中显示为：common:scheduler，其中common是group， scheduler是进程名
+- 找到有问题的进程名。例如上图中显示为：common:scheduler，其中 common 是 group， scheduler 是进程名
 找到该进程的启动命令
 
 ```bash
@@ -338,13 +338,13 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
 
 	- 去到业务下任意一台机器，触发一条自定义字符告警
 
-		```bash
+		```bashplain
 		 /usr/local/gse/plugins/bin/gsecmdline -d 2001 -l "xxx"
 		```
 
 	- 回到bkdata机器，看下日志，正常会输出如下的日志
 
-		![-w2020](../assets/tapd_10158081_base64_1532316099_62.png)
+		![-w2020](../assets/tapd_10158081_base64_1532316099_62.png)plainplain
 
 3. 如果第二步正常，可以看到日志输出
 

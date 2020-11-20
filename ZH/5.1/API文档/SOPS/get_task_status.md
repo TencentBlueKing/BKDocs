@@ -25,12 +25,12 @@ GET
 
 | 字段          | 类型       | 必选   | 描述            |
 |---------------|------------|--------|------------------|
-| bk_biz_id   | string   | 是   | 模板所属业务ID   |
-| task_id     | string   | 是   | 任务或节点ID     |
+| bk_biz_id   | string   | 是   | 模板所属业务 ID   |
+| task_id     | string   | 是   | 任务或节点 ID     |
 
 ### 请求参数示例
 
-```
+```plain
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -42,7 +42,7 @@ GET
 
 ### 返回结果示例
 
-```
+```plain
 {
 	"result": true,
     "data": {
@@ -118,7 +118,7 @@ GET
 | FINISHED  | 已完成   |
 
 #### data.children.KEY
-任务节点执行态ID
+任务节点执行态 ID
 
 #### data.children.VALUE
 同 data 格式

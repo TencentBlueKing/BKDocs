@@ -70,6 +70,6 @@ POST
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result    | bool      | 请求成功与否，true:请求成功，false:请求失败 |
-| code      | string    | 组件返回错误编码，0表示success，>0表示失败错误 |
+| code      | string    | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
 | message   | string    | 请求失败返回的错误消息 |
 | data      | object    | 请求返回的数据 |

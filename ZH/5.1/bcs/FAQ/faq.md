@@ -28,7 +28,7 @@ K8S、Mesos 为容器编排引擎，BCS 是容器管理平台，兼容 K8S、Mes
     - 限制其他服务运行到指定节点
 
 - 出现节点匹配提示问题
-```
+```plain
 # 错误信息
 No nodes are available that match all of the predicates: MatchInterPodAffinity (2), MatchNodeSelector (3), NodeNotReady (3), PodToleratesNodeTaints (3).
 ```
@@ -82,7 +82,7 @@ No nodes are available that match all of the predicates: MatchInterPodAffinity (
 
 #### 检查应用配置的资源设置
 首先，通过查看事件日志，如果此时出现下面这种错误，可以认为启动容器的资源不能满足需求
-```
+```plain
 to start sandbox container for pod ... Error response from daemon: OCI runtime create failed: container_linux.go:348: starting container process caused "process_linux.go:301: running exec setns process for init caused "signal: killed"": unknown
 ```
 

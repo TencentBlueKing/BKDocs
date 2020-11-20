@@ -12,8 +12,8 @@ GET
 
 ### 功能描述
 
-查询一个数据源的ID
-根据给定的数据源ID，返回这个结果表的具体信息
+查询一个数据源的 ID
+根据给定的数据源 ID，返回这个结果表的具体信息
 
 
 
@@ -21,21 +21,21 @@ GET
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段           | 类型   | 必选 | 描述        |
 | -------------- | ------ | ---- | ----------- |
-| bk\_data_id  | int | 否   | 数据源ID |
+| bk\_data_id  | int | 否   | 数据源 ID |
 | data\_name | string | 否 | 数据源名称 |
 
 > 注意：
 > 1. 上述两个必须提供一个，不可以两者同时为空;
-> 2. 当bk_data_id提供时，data_name无效
+> 2. 当 bk_data_id 提供时，data_name 无效
 
 #### 请求示例
 
@@ -51,7 +51,7 @@ GET
 
 | 字段                | 类型   | 描述     |
 | ------------------- | ------ | -------- |
-| bk\_data_id | int | 数据源ID  |
+| bk\_data_id | int | 数据源 ID  |
 | data_name | string | 数据源名称| 
 | data_description | string | 数据源描述 | 
 | mq\_cluster_info | object | 消息队列集群信息, 样例会有具体描述 | 
@@ -61,7 +61,7 @@ GET
 | create_time | string | 创建时间, 格式为【2018-10-10 10:00:00】| 
 | last\_modify_user | string | 最后修改者 | 
 | last\_modify_time | string | 最后修改时间【2018-10-10 10:00:00】|
-| token | string | dataID的验证码 |
+| token | string | dataID 的验证码 |
 
 #### 结果示例
 

@@ -7,15 +7,15 @@
 | --------------------------------------------------------- | ------------------------------ |
 | [execute_job](./execute_job.md)                           | 启动作业                       |
 | [fast_execute_script](./fast_execute_script.md)           | 快速执行脚本                   |
-| [fast_execute_sql](./fast_execute_sql.md)                 | 快速执行SQL                    |
+| [fast_execute_sql](./fast_execute_sql.md)                 | 快速执行 SQL                    |
 | [fast_push_file](./fast_push_file.md)                     | 快速分发文件                   |
 | [get_cron_list](./get_cron_list.md)                       | 查询业务下定时作业信息         |
 | [get_job_detail](./get_job_detail.md)                     | 查询作业模板详情               |
-| [get_job_instance_log](./get_job_instance_log.md)         | 根据作业实例ID查询作业执行日志 |
+| [get_job_instance_log](./get_job_instance_log.md)         | 根据作业实例 ID 查询作业执行日志 |
 | [get_job_instance_status](./get_job_instance_status.md)   | 查询作业执行状态               |
 | [get_job_list](./get_job_list.md)                         | 查询作业模板                   |
 | [get_os_account](./get_os_account.md)                     | 查询业务下的执行账号           |
-| [get_own_db_account_list](./get_own_db_account_list.md)   | 查询用户有权限的DB帐号列表     |
+| [get_own_db_account_list](./get_own_db_account_list.md)   | 查询用户有权限的 DB 帐号列表     |
 | [get_public_script_list](./get_public_script_list.md)     | 查询公共脚本列表               |
 | [get_script_detail](./get_script_detail.md)               | 查询脚本详情                   |
 | [get_script_list](./get_script_list.md)                   | 查询脚本列表                   |

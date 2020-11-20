@@ -21,7 +21,7 @@
 5. 告警配置
 6. 监控仪表盘
 
-> 说明：1-4都是数据平台的功能，5-6是属于监控平台的功能。本篇文档就是在说明两个平台之间的一些数据关系。
+> 说明：1-4 都是数据平台的功能，5-6 是属于监控平台的功能。本篇文档就是在说明两个平台之间的一些数据关系。
 
 解答一个问题：**在监控平台中如何识别数据平台中的指标和维度**
 
@@ -36,7 +36,7 @@ Tcaplus 是一个平台类服务，希望在 API 调用的代码里面添加运�
 * Q：为什么不能通过日志或者采集插件主动采集上来？
     * 一个机器上的进程实例启动是动态变化的，如：游戏的开房
 * Q：为什么一定要先入数据平台，而不是直接通过监控进行上报？
-    * 因为一个业务采集的数据就有150个指标，但用于告警的只有30个，其他指标还有运营分析的需求。
+    * 因为一个业务采集的数据就有 150 个指标，但用于告警的只有 30 个，其他指标还有运营分析的需求。
     * 数据是海量数据，通过 TCP 进行上报保证海量数据的接入和存储。
 
 以下是 Tcaplus 基于 xml 定义的结构化统计指标信息：
@@ -78,7 +78,7 @@ ApiConnectTcaproxyCount=4&WriteReqErrNumPerMin=0&ReadRespWarnNumPerMin=0&
 
 ### 数据清洗
 
-接下来分别对 TcaplusAPI 的3个数据源上报的做数据清洗，数据清洗的目的是将原来文本的内容变成格式化的数据。（数据清洗可参考：[数据清洗](http://docs.bkdata.oa.com/tencent/fu-wu-gong-neng-jie-shao/shu-ju-ji-cheng/shu-ju-qing-xi.html)），例如： **OverallRunStatus** 数据清洗：
+接下来分别对 TcaplusAPI 的 3 个数据源上报的做数据清洗，数据清洗的目的是将原来文本的内容变成格式化的数据。（数据清洗可参考：[数据清洗](http://docs.bkdata.oa.com/tencent/fu-wu-gong-neng-jie-shao/shu-ju-ji-cheng/shu-ju-qing-xi.html)），例如： **OverallRunStatus** 数据清洗：
 
 ![-w2020](media/15816618584419.jpg)
 
@@ -88,9 +88,9 @@ ApiConnectTcaproxyCount=4&WriteReqErrNumPerMin=0&ReadRespWarnNumPerMin=0&
 
 ### 数据入库
 
-然后分别对 TcaplusAPI 的3个数据源数据清洗的结果配置数据入库（数据入库可参考：[数据入库](http://docs.bkdata.oa.com/tencent/fu-wu-gong-neng-jie-shao/shu-ju-ji-cheng/shu-ju-ru-ku.html)），例如：OverallRunStatus 的数据入库：
+然后分别对 TcaplusAPI 的 3 个数据源数据清洗的结果配置数据入库（数据入库可参考：[数据入库](http://docs.bkdata.oa.com/tencent/fu-wu-gong-neng-jie-shao/shu-ju-ji-cheng/shu-ju-ru-ku.html)），例如：OverallRunStatus 的数据入库：
 
-> 注意：当前监控只支持 MySQL 和 Tspider的入库数据。Druid 还在适配中。
+> 注意：当前监控只支持 MySQL 和 Tspider 的入库数据。Druid 还在适配中。
 
 ![-w2020](media/15816619757486.jpg)
 
@@ -117,13 +117,13 @@ ApiConnectTcaproxyCount=4&WriteReqErrNumPerMin=0&ReadRespWarnNumPerMin=0&
 
 数据计算对于一些复杂的计算需求也可以通过数据计算来满足数据汇聚的一些需求。
 
-TcaplusAPI 分别为3张原始数据表配置了数据计算任务，计算结果存入结果表，用于后面告警计算。
+TcaplusAPI 分别为 3 张原始数据表配置了数据计算任务，计算结果存入结果表，用于后面告警计算。
 
 ![-w2020](media/15816621529712.jpg)
 
 ![-w2020](media/15816622131979.jpg)
 
-> 注意：在窗口示例往下有一个**统计频率** 默认60秒，就是数据计算的汇聚周期，该**统计频率**在监控里面的**监控周期**是对应的。
+> 注意：在窗口示例往下有一个**统计频率** 默认 60 秒，就是数据计算的汇聚周期，该**统计频率**在监控里面的**监控周期**是对应的。
 
 ```SQL
 select SetID, AppID, ZoneID, iIP, Pid,

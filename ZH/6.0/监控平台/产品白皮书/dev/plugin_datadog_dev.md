@@ -14,7 +14,7 @@ Python 2.7 或以上的版本
 
 ### 第一步：安装开发者工具
 
-2.x 版本将不再支持 Python 2，因此这里将版本固定为1.4。
+2.x 版本将不再支持 Python 2，因此这里将版本固定为 1.4。
 
 ```bash
 pip install "datadog-checks-dev[cli]"==1.4

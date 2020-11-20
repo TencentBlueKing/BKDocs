@@ -21,9 +21,9 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
@@ -37,9 +37,9 @@ condition params
 
 | 字段                 |  类型      | 是否必填	   |  描述 |
 |---------------------|------------|--------|-----------------------------|
-| bk_asst_id           | string     | Yes     | 模型的关联类型唯一id|
-| bk_obj_id           | string     | Yes     | 源模型id|
-| bk_asst_id           | string     | Yes     | 目标模型id|
+| bk_asst_id           | string     | Yes     | 模型的关联类型唯一 id|
+| bk_obj_id           | string     | Yes     | 源模型 id|
+| bk_asst_id           | string     | Yes     | 目标模型 id|
 
 
 ### 请求参数示例
@@ -87,14 +87,14 @@ condition params
 
 | 字段       | 类型     | 描述 |
 |------------|----------|--------------|
-| id|int64|模型关联关系的身份id|
-| bk_obj_asst_id| string|  模型关联关系的唯一id.|
+| id|int64|模型关联关系的身份 id|
+| bk_obj_asst_id| string|  模型关联关系的唯一 id.|
 | bk_obj_asst_name| string| 关联关系的别名. |
-| bk_asst_id| string| 关联类型id|
+| bk_asst_id| string| 关联类型 id|
 | bk_asst_name| string| 关联类型名称 |
-| bk_obj_id| string| 源模型id |
+| bk_obj_id| string| 源模型 id |
 | bk_obj_name| string| 源模型名称 |
-| bk_asst_obj_id| string| 目标模型id|
+| bk_asst_obj_id| string| 目标模型 id|
 | bk_asst_obj_name| string| 目标模型名称|
 | mapping| string|  源模型与目标模型关联关系实例的映身关系，可以是以下中的一种[1:1, 1:n, n:n] |
 | on_delete| string| 删除关联关系时的动作, 取值为以下其中的一种 [none, delete_src, delete_dest], "none" 什么也不做, "delete_src" 删除源模型的实例, "delete_dest" 删除目标模型的实例.|

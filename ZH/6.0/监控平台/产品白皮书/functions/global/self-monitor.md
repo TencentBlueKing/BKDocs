@@ -86,7 +86,7 @@
 |transfer_pipeline_processor_status|处理器流水线状态|
 |transfer_pipeline_backend_status|后端流水线状态|
 |transfer_scheduler_pipeline_status|流水线调度状态|
-|transfer_consul_write_status|transfer 写consul 的计数|
+|transfer_consul_write_status|transfer 写 consul 的计数|
 |transfer_kafka_frontend_rebalanced|kafka 再均衡次数|
 |transfer_esb_request_handle_seconds|处理 esb 请求消耗的时间|
 

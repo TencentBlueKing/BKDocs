@@ -228,7 +228,7 @@ POST
 
 | 字段      | 类型      | 描述      |
 |-----------|----------|-----------|
-| task_id      | int    | 任务实例ID     |
+| task_id      | int    | 任务实例 ID     |
 | task_url     | str     | 任务实例链接     |
 | pipeline_tree     | dict     | 任务实例树     |
 

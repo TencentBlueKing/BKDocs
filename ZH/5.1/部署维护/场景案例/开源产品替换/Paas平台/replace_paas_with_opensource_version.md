@@ -36,7 +36,7 @@
 
 ## paas_agent 替换指南
 
-- 将开源版编译后生成的二进制：paasagent/bin/paas_agent 拷贝替换社区版 /data/src/paas_agent/paas_agent/bin/paas_agent。具体的编译方法可参考[编译并安装paasagent](https://github.com/Tencent/bk-PaaS/blob/master/docs/install/ce_paas_agent_install.md#2-%E7%BC%96%E8%AF%91%E5%B9%B6%E5%AE%89%E8%A3%85paasagent)
+- 将开源版编译后生成的二进制：paasagent/bin/paas_agent 拷贝替换社区版 /data/src/paas_agent/paas_agent/bin/paas_agent。具体的编译方法可参考[编译并安装 paasagent](https://github.com/Tencent/bk-PaaS/blob/master/docs/install/ce_paas_agent_install.md#2-%E7%BC%96%E8%AF%91%E5%B9%B6%E5%AE%89%E8%A3%85paasagent)
 
   ```bash
   cp -f paasagent/bin/paas_agent /data/src/paas_agent/paas_agent/bin/  # 将生成的开源二进制文件拷贝到 src/paas_agent 目录下
@@ -62,11 +62,11 @@
   ./bkcec activate appt
   ```
 
-## 蓝鲸官方SaaS应用组件的维护
+## 蓝鲸官方 SaaS 应用组件的维护
 
 1\. 以标准运维 `bk_sops` 为例进行说明
 
-### 场景一：
+### 场景一
 
 复制 SaaS 为新应用，访问 SaaS 应用组件时，请求转发到新的 SaaS 应用。假定新标准运维应用为 `bk-sops-ce`。
 
@@ -76,7 +76,7 @@
 
 - 重启服务参考：[API 网关服务常用指令/重启 API 网关服务](5.1/开发指南/扩展开发/API网关/chapter1.md#重启服务)
 
-### 场景二：
+### 场景二
 
 复制 SaaS 为新应用，并为新应用提供新的组件。假定新标准运维应用为 `bk-sops-ce`。
 

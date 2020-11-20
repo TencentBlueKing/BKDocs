@@ -13,7 +13,7 @@ GET
 ### 功能描述
 
 查询一个结果表的指定存储信息
-根据给定的结果表ID，返回这个结果表的具体存储集群信息
+根据给定的结果表 ID，返回这个结果表的具体存储集群信息
 
 
 
@@ -21,16 +21,16 @@ GET
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段           | 类型   | 必选 | 描述        |
 | -------------- | ------ | ---- | ----------- |
-| result_table_list  | string | 是   | 结果表ID |
+| result_table_list  | string | 是   | 结果表 ID |
 | storage_type | string | 是 | 存储类型 | 
 
 
@@ -49,10 +49,10 @@ GET
 
 | 字段                | 类型   | 描述     |
 | ------------------- | ------ | -------- |
-| table_id | int | 结果表ID |
+| table_id | int | 结果表 ID |
 | storage_info | array | 存储集群信息 |
 
-###### 对于storage_info，各个元素内容说明如下
+###### 对于 storage_info，各个元素内容说明如下
 | 字段                | 类型   | 描述     |
 | ------------------- | ------ | -------- |
 | storage_config | object | 存储集群特性，各个存储下字段不一致 |

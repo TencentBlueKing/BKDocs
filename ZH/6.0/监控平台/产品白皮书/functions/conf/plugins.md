@@ -4,7 +4,7 @@
 
 ## 前置步骤
 
-> 注意：对于 Linux 和 Windows 都默认只支持64位的操作系统。如果需要支持32位的操作系统，需要进行订制。
+> 注意：对于 Linux 和 Windows 都默认只支持 64 位的操作系统。如果需要支持 32 位的操作系统，需要进行订制。
 
 插件输出格式说明：详细查看 [数据模型](../../concepts/datamodule.md#Promtheus的数据结构)之『监控平台支持 Promtheus 的数据结构』。
 
@@ -104,7 +104,7 @@
 * 默认值：文本  `redis://localhost:6379`
 * 参数说明：Address of the Redis instance, defaults to `redis://localhost:6379`
 
-更多完整的 redis_exporter 的插件制作查看 [如何使用开源的Exporter在线制作插件](../../guide/import_exporter.md)
+更多完整的 redis_exporter 的插件制作查看 [如何使用开源的 Exporter 在线制作插件](../../guide/import_exporter.md)
 
 ##### 位置参数
 
@@ -119,7 +119,7 @@
 redis-cli -h $1 -p $2
 ```
 
-那么就可以这样设置(以$1为例）：选择位置参数
+那么就可以这样设置(以$1 为例）：选择位置参数
 
 * 参数名称： `redis地址`      # 参数名称在位置参数里面就是一个显示名，在插件使用的时候参数填写部分会显示这个。
 * 默认值：文本  `localhost`   # 可以设置默认值，也可以不设置
@@ -139,7 +139,7 @@ redis-cli -h $1 -p $2
 * 默认值：文本 `/usr/bin/python`
 * 参数说明：`Python 的路径 默认为/usr/bin/python`
 
-#### Script插件定义
+#### Script 插件定义
 
 Script 就是由用户自定义脚本进行 Metrics 采集。只要符合监控的标准格式就可以把数据采集上来。 支持的脚本有：
 
@@ -153,7 +153,7 @@ Script 就是由用户自定义脚本进行 Metrics 采集。只要符合监控�
 
 * [如何通过脚本进行监控](../../guide/script_collect.md)
 
-#### Exporter插件定义
+#### Exporter 插件定义
 
 Exporter 是用于暴露第三方服务的 metrics 给 Prometheus。是 Prometheus 中重要的一个组件。
 
@@ -165,13 +165,13 @@ Exporter 是用于暴露第三方服务的 metrics 给 Prometheus。是 Promethe
 
 * [如何使用开源的 Exporter 采集能力](../../guide/import_exporter.md)
 
-#### DataDog插件定义
+#### DataDog 插件定义
 
 ![-w2020](media/15794940751608.jpg)
 
 * [如何使用开源的 DataDog 采集能力](../../guide/import_datadog_online.md)
 
-#### JMX插件定义
+#### JMX 插件定义
 
 JMX 可以采集任何开启了 JMX 服务端口的 java 进程的服务状态，通过 JMX 采集 java 进程的 jvm 信息，
 
@@ -179,21 +179,21 @@ JMX 可以采集任何开启了 JMX 服务端口的 java 进程的服务状态�
 
 ![-w2020](media/15794940240535.jpg)
 
-* [如何定义一个JMX的插件](../../guide/plugin_jmx.md)
+* [如何定义一个 JMX 的插件](../../guide/plugin_jmx.md)
 
-#### BK-Pull插件定义
+#### BK-Pull 插件定义
 
 BK-Pull 主要是解决那些只暴露了端口服务的数据源。通过 pull 拉取目标的数据。
 
 ![-w2020](media/15794940929248.jpg)
 
-* [如何直接获取Prometheus的数据](../../guide/howto_bk-pull.md)
+* [如何直接获取 Prometheus 的数据](../../guide/howto_bk-pull.md)
 
 #### 远程插件定义
 
 ![-w2020](media/15794941254275.jpg)
 
- * [如何在不安装蓝鲸Agent情况下实现监控](../../guide/noagent_monitor.md)
+ * [如何在不安装蓝鲸 Agent 情况下实现监控](../../guide/noagent_monitor.md)
 
 #### 公共插件定义
 
@@ -208,7 +208,7 @@ BK-Pull 主要是解决那些只暴露了端口服务的数据源。通过 pull 
 插件完全也可以通过线下制作直接进入导入，线下插件制作主要清楚各种插件的配置内容及关系。
 
 * [插件配置说明](../../functions/addenda/plugins_explain.md)
-* [如何线下定义DataDog插件](../../guide/import_datadog_offline.md)
+* [如何线下定义 DataDog 插件](../../guide/import_datadog_offline.md)
 
 ### 升级插件
 

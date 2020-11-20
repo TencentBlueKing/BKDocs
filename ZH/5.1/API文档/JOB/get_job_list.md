@@ -28,11 +28,11 @@ GET
 | bk_biz_id  | int | 是 | 业务 ID |
 | creator    | string | 否 | 作业创建人帐号 |
 | name       | string | 否 | 作业名称，模糊匹配 |
-| create_time_start | string | 否 | 创建起始时间，YYYY-MM-DD格式 |
-| create_time_end | string | 否 | 创建结束时间，YYYY-MM-DD格式 |
+| create_time_start | string | 否 | 创建起始时间，YYYY-MM-DD 格式 |
+| create_time_end | string | 否 | 创建结束时间，YYYY-MM-DD 格式 |
 | last_modify_user | string | 否 | 作业修改人帐号 |
-| last_modify_time_start | string | 否 | 最后修改起始时间，YYYY-MM-DD格式 |
-| last_modify_time_end | string | 否 | 最后修改结束时间，YYYY-MM-DD格式 |
+| last_modify_time_start | string | 否 | 最后修改起始时间，YYYY-MM-DD 格式 |
+| last_modify_time_end | string | 否 | 最后修改结束时间，YYYY-MM-DD 格式 |
 | tag_id     | string | 否 | 作业标签 ID，1.未分类、2.运营发布、3.故障处理、4.常用工具、5.产品自助、6.测试专用、7.持续集成 |
 | start      | int | 否 | 默认 0 表示从第 1 条记录开始返回 |
 | length     | int | 否 | 返回记录数量，不传此参数默认返回全部 |
@@ -86,7 +86,7 @@ GET
 | 字段 | 类型 | 描述 |
 |-----------|-----------|-----------|
 | result | bool | 请求成功与否，true:请求成功，false:请求失败 |
-| code | string | 组件返回错误编码，0表示success，>0表示失败错误 |
+| code | string | 组件返回错误编码，0 表示 success，>0 表示失败错误 |
 | message | string | 请求失败返回的错误消息 |
 | data | object | 请求返回的数据 |
 

@@ -17,7 +17,7 @@
 
 明白用户关心的数据分层，所有的实现手段都进行了解耦，简而言之所有的以下所有的方式都是为数据分层而服务。
 
-* **数据上报来源**：3种
+* **数据上报来源**：3 种
     * **监控采集**
         * 默认采集：操作系统 Basereport， 进程 Process 都是默认安装和下发的。系统事件也是默认采集的一种
         * 采集配置：通过采集配置下发的采集任务，如脚本，Exporter，DataDog，JMX，日志采集等
@@ -25,7 +25,7 @@
     * **自定义上报**：无需监控平台进行下发和管理的采集来源，只要符合监控平台的数据格式即可，包含自定义事件上报和自定义时序数据
     * **数据平台**：是已经接入数据平台的[结果表]数据进行监控
 
-* **采集方式**： 8种
+* **采集方式**： 8 种
     * Script 脚本插件采集：插件管理中维护，Linux 支持 Bash,Python; Windows 支持 Powershell、vbs、Python
     * Exporter 插件采集：支持[Prometheus](https://prometheus.io/docs/instrumenting/exporters/)的采集协议。可以很方便的将 Exporter 转为监控平台平台的插件
     * DataDog 插件采集：支持[DataDog](https://github.com/DataDog/datadog-agent)的采集。 可以很方便的将 DataDog 转为监控平台平台的插件
@@ -40,7 +40,7 @@
     * 基于 CMDB 的服务拓扑：监控最小粒度为服务实例 instance，依据 CMDB 的拓扑结构进行配置
     * 数据的维度：通过自定义上报或者数据平台来源的数据无法区别 CMDB 的拓扑结构
 
-* **数据类型**： 3种
+* **数据类型**： 3 种
     * 时序数据：[time series](https://zh.wikipedia.org/wiki/%E6%99%82%E9%96%93%E5%BA%8F%E5%88%97)监控最重要的数据类型，通过时序数据可以发现大部分的问题。 最重要的三要素就是指标，维度，时间。 并且时间上是连续的
     * 事件数据：事件是已发生的一件事情记录，时间上连续，由多个连续异常点构成
     * 日志数据：日志数据是由系统，应用产生的文本记录。 是重要的监控定位信息之一
@@ -103,9 +103,9 @@
 }
 ```
 
-## Promtheus的数据结构
+## Promtheus 的数据结构
 
-监控平台支持[Promtheus的数据结构](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
+监控平台支持[Promtheus 的数据结构](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
 
 参考 Promtheus 的基本数据上报格式。
 

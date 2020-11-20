@@ -12,8 +12,8 @@ POST
 
 ### 功能描述
 
-修改一个事件分组ID
-给定一个事件分组ID，修改某些具体的信息
+修改一个事件分组 ID
+给定一个事件分组 ID，修改某些具体的信息
 
 
 
@@ -21,16 +21,16 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
 | 字段           | 类型   | 必选 | 描述        |
 | -------------- | ------ | ---- | ----------- |
-| event_group_id  | int | 是   | 事件组ID |
+| event_group_id  | int | 是   | 事件组 ID |
 | event_group_name | string | 是 | 事件分组名 | 
 | label | string | 否 | 事件分组标签，用于表示事件监控对象，应该复用【result_table_label】类型下的标签 |
 | operator | string | 否 | 操作者 |
@@ -62,7 +62,7 @@ POST
 
 | 字段                | 类型   | 描述     |
 | ------------------- | ------ | -------- |
-| bk\_group_id | int | 新建的事件分组ID  |
+| bk\_group_id | int | 新建的事件分组 ID  |
 
 
 #### 结果示例

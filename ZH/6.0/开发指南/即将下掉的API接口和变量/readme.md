@@ -86,27 +86,27 @@
 | 接口名                       | 功能描述                                      | 变更信息类型 | 变更信息                               |
 | ---------------------------- | --------------------------------------------- | ------------ | -------------------------------------- |
 | add_host_lock                | 新加主机锁                                    | 减少请求参数 | bk_cloud_id                            |
-| batch_create_proc_template   | 批量创建进程模板                              | 参数结构变更 | 进程的ip、端口等属性的层次结构发生变化 |
+| batch_create_proc_template   | 批量创建进程模板                              | 参数结构变更 | 进程的 ip、端口等属性的层次结构发生变化 |
 | create_business              | 新建业务                                      | 新增请求参数 | language                               |
-| create_process_instance      | 创建进程实例                                  | 参数结构变更 | 进程的ip、端口等属性的层次结构发生变化 |
+| create_process_instance      | 创建进程实例                                  | 参数结构变更 | 进程的 ip、端口等属性的层次结构发生变化 |
 | create_set                   | 创建集群                                      | 新增请求参数 | set_template_id                        |
 | delete_host_lock             | 删除主机锁                                    | 减少请求参数 | bk_cloud_id                            |
 | delete_object_attribute      | 删除对象模型属性                              | 新增功能     | 删除自定义字段                         |
 | find_object_association      | 查询模型之间的关联关系                        | 减少请求参数 | metadata                               |
-| get_service_template         | 获取服务模板                                  | 请求参数变更 | metadata变更为service_template_id      |
-| list_process_instance        | 查询进程实例列表                              | 参数结构变更 | 进程的ip、端口等属性的层次结构发生变化 |
-| list_proc_template           | 查询进程模板列表                              | 参数结构变更 | 进程的ip、端口等属性的层次结构发生变化 |
+| get_service_template         | 获取服务模板                                  | 请求参数变更 | metadata 变更为 service_template_id      |
+| list_process_instance        | 查询进程实例列表                              | 参数结构变更 | 进程的 ip、端口等属性的层次结构发生变化 |
+| list_proc_template           | 查询进程模板列表                              | 参数结构变更 | 进程的 ip、端口等属性的层次结构发生变化 |
 | list_service_instance_detail | 获取服务实例详细信息                          | 新增请求参数 | page                                   |
 | search_cloud_area            | 查询云区域                                    | 减少返回参数 | data.page                              |
 | search_host_lock             | 查询主机锁                                    | 减少请求参数 | bk_cloud_id                            |
-| search_object_attribute      | 查询对象模型属性                              | 新增功能     | 可以业务id查询                         |
+| search_object_attribute      | 查询对象模型属性                              | 新增功能     | 可以业务 id 查询                         |
 | search_subscription          | 查询订阅                                      | 减少请求参数 | bk_biz_id                              |
-| update_custom_query          | 更新自定义API                                 | 减少请求参数 | bk_biz_id                              |
-| update_process_instance      | 更新进程实例                                  | 参数结构变更 | 进程的ip、端口等属性的层次结构发生变化 |
-| update_proc_template         | 更新进程模板                                  | 参数结构变更 | 进程的ip、端口等属性的层次结构发生变化 |
-| update_process_instance      | 更新进程实例                                  | 参数结构变更 | 进程的ip、端口等属性的层次结构发生变化 |
-| update_proc_template         | 更新进程模板                                  | 参数结构变更 | 进程的ip、端口等属性的层次结构发生变化 |
-| get_proc_template            | 获取单个进程模板信息，url参数中指定进程模板ID | 参数结构变更 | 进程的ip、端口等属性的层次结构发生变化 |
+| update_custom_query          | 更新自定义 API                                 | 减少请求参数 | bk_biz_id                              |
+| update_process_instance      | 更新进程实例                                  | 参数结构变更 | 进程的 ip、端口等属性的层次结构发生变化 |
+| update_proc_template         | 更新进程模板                                  | 参数结构变更 | 进程的 ip、端口等属性的层次结构发生变化 |
+| update_process_instance      | 更新进程实例                                  | 参数结构变更 | 进程的 ip、端口等属性的层次结构发生变化 |
+| update_proc_template         | 更新进程模板                                  | 参数结构变更 | 进程的 ip、端口等属性的层次结构发生变化 |
+| get_proc_template            | 获取单个进程模板信息，url 参数中指定进程模板 ID | 参数结构变更 | 进程的 ip、端口等属性的层次结构发生变化 |
 
 
 ### 新增接口
@@ -123,7 +123,7 @@
 | find_host_by_topo                          | 查询拓扑节点下的主机                                                         |
 | find_host_snapshot_batch                   | 批量查询主机快照                                                             |
 | find_module_batch                          | 批量查询某业务的模块详情                                                     |
-| find_module_host_relation                  | 根据模块ID查询主机和模块的关系                                               |
+| find_module_host_relation                  | 根据模块 ID 查询主机和模块的关系                                               |
 | find_set_batch                             | 批量查询某业务的集群详情                                                     |
 | find_topo_node_paths                       | 查询业务拓扑节点的拓扑路径                                                   |
 | list_resource_pool_hosts                   | 查询资源池中的主机                                                           |
@@ -211,12 +211,12 @@
 
 | 接口名                   | 功能描述         | 变更信息                                                                                                                                                                      |
 | ------------------------ | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| execute_job              | 功能不兼容       | 出于产品设计和系统安全考虑，执行时不允许传入步骤(steps)参数，覆盖作业模板的参数<br>统一目标服务器参数(target_server)，用于替换之前的custom_query_id/ip_list参数传递目标服务器 |
-| fast_execute_script      | 新增传递参数     | 统一目标服务器参数(target_server)，用于替换之前的custom_query_id/ip_list参数传递目标服务器                                                                                    |
-| fast_push_file           | 新增传递参数     | 统一目标服务器参数(target_server)，用于替换之前的custom_query_id/ip_list参数传递目标服务器                                                                                    |
-| get_job_detail           | 新增返回参数     | 统一目标服务器参数(target_server)，用于替换之前的custom_query_id/ip_list参数返回目标服务器                                                                                    |
-| get_job_instance_status  | 减少返回参数     | 减少返回参数block_order、block_name、operation_list                                                                                                                           |
-| get_job_list             | 减少传递返回参数 | 不用传递 tag_id 参数，减少返回参数step_num、tag_id                                                                                                                            |
+| execute_job              | 功能不兼容       | 出于产品设计和系统安全考虑，执行时不允许传入步骤(steps)参数，覆盖作业模板的参数<br>统一目标服务器参数(target_server)，用于替换之前的 custom_query_id/ip_list 参数传递目标服务器 |
+| fast_execute_script      | 新增传递参数     | 统一目标服务器参数(target_server)，用于替换之前的 custom_query_id/ip_list 参数传递目标服务器                                                                                    |
+| fast_push_file           | 新增传递参数     | 统一目标服务器参数(target_server)，用于替换之前的 custom_query_id/ip_list 参数传递目标服务器                                                                                    |
+| get_job_detail           | 新增返回参数     | 统一目标服务器参数(target_server)，用于替换之前的 custom_query_id/ip_list 参数返回目标服务器                                                                                    |
+| get_job_instance_status  | 减少返回参数     | 减少返回参数 block_order、block_name、operation_list                                                                                                                           |
+| get_job_list             | 减少传递返回参数 | 不用传递 tag_id 参数，减少返回参数 step_num、tag_id                                                                                                                            |
 | get_step_instance_status | 参数类型变更     | bk_biz_id 参数 int 变更为 long                                                                                                                                                |
 | save_cron                | 参数类型变更     | bk_biz_id、bk_job_id、cron_id 参数 int 变更为 long                                                                                                                            |
 | update_cron_status       | 参数类型变更     | bk_biz_id、cron_id 参数 int 变更为 long                                                                                                                                       |
@@ -225,7 +225,7 @@
 
 | 接口名                 | 功能描述         |
 | ---------------------- | ---------------- |
-| fast_execute_sql       | 快速执行SQL      |
+| fast_execute_sql       | 快速执行 SQL      |
 | get_public_script_list | 查询公共脚本列表 |
 | operate_job_instance   | 作业实例操作     |
 | operate_step_instance  | 步骤实例操作     |
@@ -235,12 +235,12 @@
 
 ### 下线接口
 
-| 接口名                  | 功能描述                 | 替换API      | 替换API功能描述 |
+| 接口名                  | 功能描述                 | 替换 API      | 替换 API 功能描述 |
 | ----------------------- | ------------------------ | ------------ | --------------- |
 | alarm_instance          | 返回指定告警             | search_event | 查询事件        |
 | get_alarms              | 通过筛选条件获取指定告警 | search_event | 查询事件        |
 | list_alarm_instance     | 批量筛选告警             | search_event | 查询事件        |
-| query_data              | 图表数据查询             | get_ts_data  | 获取ES数据      |
+| query_data              | 图表数据查询             | get_ts_data  | 获取 ES 数据      |
 | component_instance      | 返回指定组件             | 废弃         |                 |
 | deploy_script_collector | 下发脚本采集配置         | 废弃         |                 |
 | export_alarm_strategy   | 导出监控策略             | 废弃         |                 |
@@ -265,7 +265,7 @@
 | get_es_data                               | 获取监控链路时序数据                       |
 | get_event_log                             | 查询事件流转记录                           |
 | get_shield                                | 获取告警屏蔽                               |
-| get_ts_data                               | 获取ES数据                                 |
+| get_ts_data                               | 获取 ES 数据                                 |
 | get_uptime_check_node_list                | 拨测节点列表                               |
 | get_uptime_check_task_list                | 拨测任务列表                               |
 | list_shield                               | 获取告警屏蔽列表                           |
@@ -283,7 +283,7 @@
 | metadata_get_result_table                 | 获取监控结果表具体信息                     |
 | metadata_get_result_table_storage         | 查询指定结果表的指定存储信息               |
 | metadata_get_time_series_group            | 获取自定义时序分组具体内容                 |
-| metadata_get_time_series_metrics          | 获取自定义时序结果表的metrics信息          |
+| metadata_get_time_series_metrics          | 获取自定义时序结果表的 metrics 信息          |
 | metadata_list_label                       | 查询当前已有的标签信息                     |
 | metadata_list_result_table                | 查询监控结果表                             |
 | metadata_modify_cluster_info              | 修改存储集群信息                           |

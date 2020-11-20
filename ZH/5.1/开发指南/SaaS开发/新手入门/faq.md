@@ -29,4 +29,4 @@ git config --global credential.helper store
     alias ll="ls -lh"
     ```
 
-详细方案可参考[python多环境开发方案](../开发基础/PYTHON2_3.md)。
+详细方案可参考[python 多环境开发方案](../开发基础/PYTHON2_3.md)。

@@ -41,7 +41,7 @@
 ![采集器框架工作原理](./assets/collector_framework_process.png)
 
 - 采集器调用 b.Publisher.Connect() 连接到输出，Connect 函数返回 Client 实例
-- 采集器初始化周期采集定时器Timer或采集事件监听Event
+- 采集器初始化周期采集定时器 Timer 或采集事件监听 Event
 - 一旦 Timer 或 Event 激活，采集器执行采集数据操作，并调用 Client.PublishEvent 将数据交给 Publisher
 - Publisher 收到采集器的数据，按照配置将数据进行预处理，然后将数据发送给指定输出端
 
@@ -99,19 +99,19 @@ output.gse:
 
 1. 实现 GetStat 函数
 
-  ```
+  ```plain
   type GetStat func() beat.MapStr
   ```
 
 2. 实例化运营数据上报模块
 
-  ```
+  ```plain
   stat, err := stat.NewCycleStat(beatName, GetStat, beat.Send)
   ```
 
 3. 开启运营数据上报模块
 
-  ```
+  ```plain
   stat.Run()
   ```
 
@@ -121,7 +121,7 @@ output.gse:
 
 #### 工程结构
 
-```
+```plain
 <beats>
 	└─<mybeat>
 		├─examplebeat.yml	采集器的配置文件
@@ -136,7 +136,7 @@ output.gse:
 
 基于蓝鲸采集器框架，要开发一个采集器，需要实现 Beater 接口和 Creator 函数。
 
-**Beater接口**
+**Beater 接口**
 
 ```go
 type Beater interface {
@@ -161,7 +161,7 @@ type Beater interface {
 }
 ```
 
-**Creator函数**
+**Creator 函数**
 ```go
 // 定义
 type Creator func(*Beat, *common.Config) (Beater, error)
@@ -241,7 +241,7 @@ var DefaultConfig = Config{
 
 ```
 
-2. 实现ExampleBeat类
+2. 实现 ExampleBeat 类
 
 **成员变量**
 

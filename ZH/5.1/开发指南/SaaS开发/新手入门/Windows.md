@@ -1,4 +1,4 @@
-# Windows 下输出 Hello,World!
+# Windows 下输出 Hello,World
 
 基于 `蓝鲸开发框架 2.0` 上输出 `Hello,World!`
 
@@ -74,7 +74,7 @@ pipenv shell
 
 - 下载开发框架 `http://{PAAS_URL}/guide/newbie/#step3`
 
-> `{PAAS_URL}`为蓝鲸 PaaS访问地址，例如 `paas.blueking.com`
+> `{PAAS_URL}`为蓝鲸 PaaS 访问地址，例如 `paas.blueking.com`
 
 - 安装框架依赖包
 
@@ -84,7 +84,7 @@ pip3 install -r requirements.txt
 
 ### 修改配置
 
-修改 config/\_\_init\_\_.py 中的 `APP_CODE` 和 `SECRET_KEY`(应用TOKEN)
+修改 config/\_\_init\_\_.py 中的 `APP_CODE` 和 `SECRET_KEY`(应用 TOKEN)
 
 - 修改 PaaS 地址
 
@@ -138,7 +138,7 @@ def hello(request):
 ```
 
 - 添加路由 home_application/urls.py
-```
+```plain
 url(r'^$', views.hello),
 ```
 

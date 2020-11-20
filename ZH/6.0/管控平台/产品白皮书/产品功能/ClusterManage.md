@@ -6,15 +6,15 @@
 
 **集群负载均衡**：管控平台同一个集群内，支持按照 Agent 链接数，节点服务负载数据等进行负载均衡。
 
-**Agent状态查询**：管控平台提供接口，查询 Agent 状态。
+**Agent 状态查询**：管控平台提供接口，查询 Agent 状态。
 
-    接口按照实时性分为两类：
+    接口按照实时性分为两类：plainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
 
     一类为实时状态接口，只能查询当前 Agent 是否正常；
 
     二类接口提供 24s 内的状态查询，查询的内容包括 Agent 上次心跳时间、Agent 版本、Agent 使用的 cpu、Agent 使用的 mem。
 
-**Agent失连告警**：管控平台会监控 Agent 的心跳，心跳失连的 Agent 信息会通过告警的方式及时通知用户。
+**Agent 失连告警**：管控平台会监控 Agent 的心跳，心跳失连的 Agent 信息会通过告警的方式及时通知用户。
 
 **多区域负载均衡**：管控平台支持对同一集群进行不同区域的划分，不同区域按照各区域内的负责均衡规则处理；未划分区域的 Agent 按照集群负载均衡策略处理。
 

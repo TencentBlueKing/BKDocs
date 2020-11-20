@@ -5,7 +5,7 @@
 | 采集器 | 采集范围 | 应用场景 |
 | ----- | -------- | -------------- |
 | Basereport(基础性能采集器) | 主机硬件配置信息、CPU、内存、磁盘、网络等实时状态 | 实时检测主机整体状态，应用于 CMDB -主机快照数据展示，监控平台-主机监控 |
-| Bkmetricbeat(插件采集器) | 为插件提供数据清洗和转换等能力，将不同的数据格式转为标准监控平台的数据格式. | 所有的插件需求如Exporter，DataDog，Script，JMX等 |
+| Bkmetricbeat(插件采集器) | 为插件提供数据清洗和转换等能力，将不同的数据格式转为标准监控平台的数据格式. | 所有的插件需求如 Exporter，DataDog，Script，JMX 等 |
 | Exporter(插件) | 托管于 Bkmetricbeat ，内置 Exporter 集成了 Prometheus 成熟的采集器生态，无需像自定义 Exporter 那样需要进行复杂的配置，且可扩展性和可维护性比默认组件强，使用户能够快速用上 Prometheus Exporter 强大的采集能力。| 内置 Exporter 采集器支持：Haproxy 、 Memcache 、 SQL Server 、 Oracle 、 Weglogic 、 RabbitMQ  、 ZooKeeper 等，应用于监控平台-组件监控 |
 | DataDog(插件) | 托管于 Bkmetricbeat ，为进一步增强监控平台的采集能力，基于现有的组件监控的采集架构拓展了 DataDog 的采集方式。通过在 DataDog Agent Integrations 的基础上封装一层 DataDog Http Server ，从而达到与 Prometheus Exporter 相似的被动采集方式。 | 内置 DataDog 采集器支持：Kafka 、 Microsoft AD 、 Ceph 、 Consul 、 Elasticsearch 、 Exchange_Server_2010 、 Microsoft IIS 、 MongoDB 等，应用于监控平台-组件监控 |
 | BK-Pull(远程拉取采集器) | 如 tomcat | 需要远程拉取的应用场景 |

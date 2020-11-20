@@ -6,7 +6,7 @@
 
 ### 情况一：同机同二进制名(相同路径)不同参数启动
 
-如Java、Python解释器类的启动方式.
+如 Java、Python 解释器类的启动方式.
 
 ```bash
 root     13670  0.9 17.8 48339468 17593272 ?   Sl   1月01 290:11 java -server -Xms24g -Xmx24g -XX:MaxDirectMemorySize=32g -XX:+ExitOnOutOfMemoryError -Duser.timezone=UTC -Dfile.encoding=UTF-8 -Djava.io.tmpdir=var/tmp -Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager -cp /data/mapleleaf/druid/conf/druid/cluster/query/broker:/data/mapleleaf/druid/conf/druid/cluster/query/_common:/data/mapleleaf/druid/conf/druid/cluster/query/_common/hadoop-xml:/data/mapleleaf/druid/conf/druid/cluster/query/../_common:/data/mapleleaf/druid/conf/druid/cluster/query/../_common/hadoop-xml:/data/mapleleaf/druid/bin/../lib/* org.apache.druid.cli.Main server broker
@@ -40,7 +40,7 @@ root     27012  0.2  0.5 14885784 538188 ?     Sl   1月15  24:30 java -server -
 
 * 配置方法：暂时不支持，功能待完善。
 
-### 情况四：同机同二进制名，不同路径，同进程显示，参数相同。
+### 情况四：同机同二进制名，不同路径，同进程显示，参数相同
 
 如 Nginx,MySQL,Redis 等支持相对路径参数的服务。因为使用了 cd 到目的目录再进行启动，这类是不建议配置的，因为导致管理的复杂度。
 
@@ -51,7 +51,7 @@ root     27012  0.2  0.5 14885784 538188 ?     Sl   1月15  24:30 java -server -
 
 * 配置方法：暂时不支持，功能待完善。
 
-### 情况五：进程的维度标识无法定义，是由程序动态生成的。
+### 情况五：进程的维度标识无法定义，是由程序动态生成的
 
 其他都是一样的，只有 containers 的部分不一样：
 
@@ -67,7 +67,7 @@ root     27012  0.2  0.5 14885784 538188 ?     Sl   1月15  24:30 java -server -
 
 * 配置方法：暂时不支持，待完善。
 
-### 情况六：windows的进程是大小写
+### 情况六：windows 的进程是大小写
 
 * 配置方法：进程名全部改为小写，功能待完善。
 

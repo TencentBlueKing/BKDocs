@@ -21,9 +21,9 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 
@@ -39,17 +39,17 @@ POST
 
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
-| bk_obj_id |  string    | 是     | 实例模型ID |
-| bk_inst_id|  int    |  是    |实例ID |
-|association_obj_id|string|  是  | 关联对象的模型ID， 返回association_obj_id模型与bk_inst_id实例有关联的实例基本数据（bk_inst_id,bk_inst_name）|
-|is_target_object| bool |  否 |bk_obj_id 是否为目标模型， 默认false， 关联关系中的源模型，否则是目标模型|
+| bk_obj_id |  string    | 是     | 实例模型 ID |
+| bk_inst_id|  int    |  是    |实例 ID |
+|association_obj_id|string|  是  | 关联对象的模型 ID， 返回 association_obj_id 模型与 bk_inst_id 实例有关联的实例基本数据（bk_inst_id,bk_inst_name）|
+|is_target_object| bool |  否 |bk_obj_id 是否为目标模型， 默认 false， 关联关系中的源模型，否则是目标模型|
 
 #### page
 
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
-| start    |  int    | 否      | 记录开始位置,默认值0|
-| limit    |  int    | 否     | 每页限制条数,默认值20,最大200 |
+| start    |  int    | 否      | 记录开始位置,默认值 0|
+| limit    |  int    | 否     | 每页限制条数,默认值 20,最大 200 |
 
 
 ### 请求参数示例
@@ -105,18 +105,18 @@ POST
 | 名称  | 类型  | 说明 |
 |---|---|---|---|
 | count| int| 记录条数 |
-| info| object array |  关联对象的模型ID， 实例关联模型的实例基本数据（bk_inst_id,bk_inst_name） |
+| info| object array |  关联对象的模型 ID， 实例关联模型的实例基本数据（bk_inst_id,bk_inst_name） |
 | page| object|分页信息|
 
-#### data.info 字段说明：
+#### data.info 字段说明
 | 名称  | 类型  | 说明 |
 |---|---|---|---|
-| bk_inst_id | int | 实例ID |
+| bk_inst_id | int | 实例 ID |
 | bk_inst_name | string  | 实例名 | 
 
 ##### data.info.bk_inst_id,data.info.bk_inst_name 字段说明
 
-不同模型bk_inst_id, bk_inst_name 对应的值
+不同模型 bk_inst_id, bk_inst_name 对应的值
 
 | 模型   | bk_inst_id   | bk_inst_name |
 |---|---|---|---|
@@ -128,7 +128,7 @@ POST
 |通用模型 | bk_inst_id | bk_inst_name|
 
 
-#### data.page 字段说明：
+#### data.page 字段说明
 
 | 名称  | 类型  | 说明 |
 |---|---|---|---|

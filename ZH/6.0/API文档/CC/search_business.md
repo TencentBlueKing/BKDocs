@@ -21,9 +21,9 @@ POST
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token与bk_username必须一个有效，bk_token可以通过Cookie获取 |
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
@@ -36,16 +36,16 @@ POST
 | page           |  dict    | 否     | 分页条件 |
 
 Note: 业务分为两类，未归档的业务和已归档的业务。
-- 若要查询已归档的业务，请在condition中增加条件`bk_data_status:disabled`。
-- 若要查询未归档的业务，请不要带字段"bk_data_status",或者在condition中增条件`bk_data_status: {"$ne":disabled"}`。
+- 若要查询已归档的业务，请在 condition 中增加条件`bk_data_status:disabled`。
+- 若要查询未归档的业务，请不要带字段"bk_data_status",或者在 condition 中增条件`bk_data_status: {"$ne":disabled"}`。
 
 #### page
 
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
 | start    |  int    | 是     | 记录开始位置 |
-| limit    |  int    | 是     | 每页限制条数,最大200 |
-| sort     |  string | 否     | 排序字段，通过在字段前面增加 -，如 sort:&#34;-field&#34; 可以表示按照字段 field降序 |
+| limit    |  int    | 是     | 每页限制条数,最大 200 |
+| sort     |  string | 否     | 排序字段，通过在字段前面增加 -，如 sort:&#34;-field&#34; 可以表示按照字段 field 降序 |
 
 ### 请求参数示例
 
