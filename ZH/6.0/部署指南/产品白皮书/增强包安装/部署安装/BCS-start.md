@@ -55,36 +55,51 @@ bk_sops_common_ce_2020_11_16_03.dat
 
 ### 2.2 导入标准运维模版
 打开标准运维--->公共流程--->导入--->点击上传--->选择文件 bk_sops_common_ce_2020_11_16_03.dat--->流程 ID 不变提交（因为 bcs-ops 模块需要关联标准运维模版流程 ID，如果流程 ID 有冲突请参考第六部分 FAQ 的第 2 小点解决）
-   ![avatar](../../assets/import_start.png)
-   ![avatar](../../assets/upload_dat_file.png)
-   ![avatar](../../assets/flow_id_commit.png)
-   ![avatar](../../assets/import_done.png)
+
+![avatar](../../assets/import_start.png)
+![avatar](../../assets/upload_dat_file.png)
+![avatar](../../assets/flow_id_commit.png)
+![avatar](../../assets/import_done.png)
+
 ### 2.3 新建任务
- 打开标准运维--->公共流程--->[BlueKing][BCS][Basic] Environment Deployment--->新建任务
-   ![avatar](../../assets/create_task.png)
+打开标准运维--->公共流程--->[BlueKing][BCS][Basic] Environment Deployment--->新建任务
+
+![avatar](../../assets/create_task.png)
+
 ### 2.4 选择“蓝鲸”业务
-   ![avatar](../../assets/select_biz.png)
+
+![avatar](../../assets/select_biz.png)
+
 ### 2.5 节点选择，不用修改，直接进入下一步
-   ![avatar](../../assets/step_select.png)
+
+![avatar](../../assets/step_select.png)
+
 ### 2.6 参数填写
-   ![avatar](../../assets/args_input.png)
-   ![](../../assets/2020-11-18-16-42-52.png)
+
+![avatar](../../assets/args_input.png)
+![](../../assets/2020-11-18-16-42-52.png)
+
 ### 2.7 执行部署作业
-执行作业过程中没有出现错误即部署正常，否则需要根据 job 执行错误信息解决问题
-   ![avatar](../../assets/exec_task.png)
+执行作业过程中没有出现错误即部署正常，否则需要根据 job 执行错误信息解决问题。
+
+![avatar](../../assets/exec_task.png)
 
 ## 三、访问蓝盾
 ### 3.1 添加 hosts 解析或域名解析
-   ```bash
-   # Linux、Mac：/etc/hosts，Windows：C:\Windows\System32\drivers\etc\hosts
-   # BCS导航页组件IP地址（客户端浏览器可访问的地址） BCS导航页域名（BCS导航页域名前缀.蓝鲸基础域名） BCS导航页API域名（api-BCS导航页域名前缀.蓝鲸基础域名）
-   # 例如：
-   110.111.112.113 bcs.bktencent.com api-bcs.bktencent.com
-   ```
+
+```bash
+# Linux、Mac：/etc/hosts，Windows：C:\Windows\System32\drivers\etc\hosts
+# BCS导航页组件IP地址（客户端浏览器可访问的地址） BCS导航页域名（BCS导航页域名前缀.蓝鲸基础域名） BCS导航页API域名（api-BCS导航页域名前缀.蓝鲸基础域名）
+# 例如：
+110.111.112.113 bcs.bktencent.com api-bcs.bktencent.com
+```
 ### 3.2 访问容器管理平台 SaaS
-   刷新蓝鲸工作台，会出现一个容器管理平台的 SaaS，点击图标会跳转到蓝鲸容器管理平台的 console 页面，也可以直接访问 URL http://bcs.bktencent.com 来访问容器管理平台，如果无法访问时，可能是 hosts 域名解析没有生效，可以关闭浏览器后重试。
+
+刷新蓝鲸工作台，会出现一个容器管理平台的 SaaS，点击图标会跳转到蓝鲸容器管理平台的 console 页面，也可以直接访问 URL http://bcs.bktencent.com 来访问容器管理平台，如果无法访问时，可能是 hosts 域名解析没有生效，可以关闭浏览器后重试。
 
 ### 3.3 容器管理平台部署完毕
 
-完成以上步骤容器管理平台就已经部署完毕
-图 xxxxx
+完成以上步骤容器管理平台就已经部署完毕。
+
+![avatar](../../assets/bcs_home.png)
+
