@@ -39,7 +39,7 @@
 
 ### 1.4 下载 BCS 安装包
 
-- 下载安装包，当前为灰度体验中，下载地址请参照灰度邮件（灰度资格申请：xxxxx）
+- 下载安装包，当前为灰度体验中，下载地址请参照灰度邮件（灰度资格申请：[https://bk.tencent.com/s-mart/community/question/1380](https://bk.tencent.com/s-mart/community/question/1380)）
 - 上传安装包至中控机 /data
 - 容器管理平台扩展软件包：bcs_ce-6.0.3.tgz
 
@@ -51,9 +51,11 @@
 ## 二、开始部署
 
 #### 2.1 下载标准运维模版文件
+
 bk_sops_common_ce_2020_11_16_03.dat
 
 ### 2.2 导入标准运维模版
+
 打开标准运维--->公共流程--->导入--->点击上传--->选择文件 bk_sops_common_ce_2020_11_16_03.dat--->流程 ID 不变提交（因为 bcs-ops 模块需要关联标准运维模版流程 ID，如果流程 ID 有冲突请参考第六部分 FAQ 的第 2 小点解决）
 
 ![avatar](../../assets/import_start.png)
@@ -62,6 +64,7 @@ bk_sops_common_ce_2020_11_16_03.dat
 ![avatar](../../assets/import_done.png)
 
 ### 2.3 新建任务
+
 打开标准运维--->公共流程--->[BlueKing][BCS][Basic] Environment Deployment--->新建任务
 
 ![avatar](../../assets/create_task.png)

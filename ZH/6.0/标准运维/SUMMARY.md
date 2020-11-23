@@ -20,7 +20,7 @@
     * [审计中心](产品白皮书/产品功能/audit.md)
     * [项目管理](产品白皮书/产品功能/project_management.md)
     * [管理员入口](产品白皮书/产品功能/administrator_portal.md)
-* [AIP 文档]()
+* [API 文档]()
     * [简介](6.0/API文档/SOPS/README.md)
     * [认领职能化任务](6.0/API文档/SOPS/claim_functionalization_task.md)
     * [通过流程模板新建周期任务](6.0/API文档/SOPS/create_periodic_task.md)
