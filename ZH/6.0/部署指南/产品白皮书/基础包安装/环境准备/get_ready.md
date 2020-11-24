@@ -158,7 +158,7 @@ grep -l 'get_lan_ip *()' -r /data/install
 
 修改方法：
 
-假设服务器的的 ip 是：138.x.x.x，它不在标准的私有地址范围，那么你需要修改 get_lan_ip() 函数为：
+假设服务器的 ip 是：138.x.x.x，它不在标准的私有地址范围，那么你需要修改 get_lan_ip() 函数为：
 
 ```bash
 get_lan_ip  () {
