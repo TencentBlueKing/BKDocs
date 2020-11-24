@@ -229,4 +229,4 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 
 ### 3.4 快速上手使用
 
-请参考：[快速入门](../../../快速入门/quick-start-v6.0.md)
+请参考：[快速入门](../../../../快速入门/quick-start-v6.0.md)

@@ -1,7 +1,4 @@
-[TOC]
-
-
-# 准备工作
+# 一、准备工作
 ## 资源需求
 ### 常规单点方案
 
@@ -59,6 +56,7 @@ rabbitmq-plugins list | grep rabbitmq_delayed_message_exchange  # 显示 E* 即�
 > 目前微服务框架支持 Redis Sentinel ，但是 `ci(gateway)` 使用的 OpenResty 暂不支持，而 `ci(gateway)` 需要和微服务使用相同的 Redis 实例 ，故不支持 Sentinel 协议。
 
 ### ElasticSearch
+
 `ci(log)` 需要 ElasticSearch ，使用 REST API 连接，要求 ElasticSearch 服务端版本 >=7 。
 
 ### 可选：NFS
@@ -96,7 +94,7 @@ GitHub 下载地址： [https://github.com/Tencent/bk-ci/releases](https://githu
 ./bin/prepare-bk-ci.sh 蓝盾tar.gz包路径  # 在/data/install目录执行. 
 ```
 
-# 配置 install.config
+# 二、配置 install.config
 
 此文件决定着决定哪些机器安装什么服务。
 
@@ -121,7 +119,7 @@ GitHub 下载地址： [https://github.com/Tencent/bk-ci/releases](https://githu
 10.0.1.2 ci(dockerhost)
 ```
 
-# 手动安装
+# 三、手动安装
 
 为了让用户更全面地了解整个软件的模块与服务，提供手动安装的详解过程，遇到问题可以快速定位。
 
