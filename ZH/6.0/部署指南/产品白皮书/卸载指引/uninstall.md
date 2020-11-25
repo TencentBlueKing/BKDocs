@@ -9,7 +9,7 @@
  
 ```bash
 cd /data/install
-cp uninstal/uninstall.sh . 
+cp uninstall/uninstall.sh . 
 ```
 
 - 根据提示，确认后开始清理操作。
