@@ -92,7 +92,7 @@ tar xvf bcs_ce-6.0.3.tgz -C /data/
 
 ![avatar](../../assets/exec_task.png)
 
-## 三、访问蓝盾
+## 三、访问容器管理平台
 ### 3.1 添加 hosts 解析或域名解析
 
 ```bash
