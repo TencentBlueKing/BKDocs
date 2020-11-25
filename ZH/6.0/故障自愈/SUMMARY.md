@@ -1,8 +1,8 @@
 # Summary
 
 ## 故障自愈
-* [产品简介](产品白皮书/intro/README.md)
-* [核心优势](产品白皮书/intro/Advantage.md)
+* [产品简介](产品白皮书/Intro/README.md)
+* [核心优势](产品白皮书/Intro/Advantage.md)
 * [术语解释](产品白皮书/concepts/Concepts_Terminology.md)
 * [产品架构]()
     * [产品架构图](产品白皮书/concepts/Product_Architecture.md)
