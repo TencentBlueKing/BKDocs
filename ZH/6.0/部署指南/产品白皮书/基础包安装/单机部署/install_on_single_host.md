@@ -27,7 +27,7 @@
   - 从 [官网下载](http://bk.tencent.com/download/) 完整包，并解压到 /data/ 下。
 
     ```bash
-    tar xf bkce_src-6.0.0.tar.gz  -C /data
+    tar xf bkce_src-6.0.1.tgz  -C /data
     ```
 
   - 获取机器的 MAC 地址后，下载 [证书文件](https://bk.tencent.com/download_ssl/)，解压到 src/cert 目录下
