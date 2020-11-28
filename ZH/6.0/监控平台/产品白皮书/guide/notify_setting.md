@@ -9,14 +9,15 @@
 
 详细设置请访问蓝鲸 PaaS 提供的设置文档
 
-- [如何配置通知渠道，如邮件、微信、短信等?](https://bk.tencent.com/docs/document/6.0/148/6699)
+- [如何配置通知渠道，如邮件、微信、短信等?](../../../PaaS平台/产品白皮书/场景案例/noticeWay.md)
 - [经验分享-测试邮件服务是否正常](http://bk.tencent.com/s-mart/community/question/95#/)
 
 ## 在全局配置中确定通知方法
 
 在监控中确认消息通知的渠道。
 
-![-w2020](media/15772822606403.jpg)
+![-w2020](media/16051505458005.jpg)
+
 
 ## 告警通知设置入口
 
@@ -29,3 +30,5 @@
 当微信没有接受到告警的时候，注意查看是否已经开启。
 
 ![WeChatWorkScreenshot](media/WeChatWorkScreenshot_dfed1d6a-63d0-48bd-8dc4-f9d59d677cb4.png)
+
+

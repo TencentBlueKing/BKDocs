@@ -1,6 +1,6 @@
 # 如何监控数据平台的数据
 
-> 企业版包含数据平台
+> 仅限企业版
 
 进入到数据平台的数据一般有如下情况：
 
@@ -17,13 +17,11 @@
 1. 数据接入
 2. 数据清洗
 3. 数据入库
-4. 数据计算 (非必需)
+4. 数据计算
 5. 告警配置
 6. 监控仪表盘
 
 > 说明：1-4 都是数据平台的功能，5-6 是属于监控平台的功能。本篇文档就是在说明两个平台之间的一些数据关系。
-
-解答一个问题：**在监控平台中如何识别数据平台中的指标和维度**
 
 ## 具体配置方法
 
@@ -68,17 +66,17 @@ ApiConnectTcaproxyCount=4&WriteReqErrNumPerMin=0&ReadRespWarnNumPerMin=0&
 
 ### 数据接入
 
-将原始的数据通过 TCP 上报到 iData 之后，先在数据平台（ http://ieg.data.oa.com/ ）创建业务 TcaplusAPI：
+将原始的数据通过 TCP 上报到 iData 之后，先在数据平台创建业务 TcaplusAPI：
 
 ![-w2020](media/15816617117290.jpg)
 
-再在数据平台数据接入数据源（数据接入可参考：[数据接入](http://docs.bkdata.oa.com/tencent/fu-wu-gong-neng-jie-shao/shu-ju-ji-cheng/shu-ju-yuan-jie-ru/tglogjie-ru/jian-jie.html)）。TcaplusAPI 接入后的数据源：
+再在数据平台数据接入数据源(具体接入方法查看数据平台的白皮书)。TcaplusAPI 接入后的数据源：
 
 ![-w2020](media/15816617832838.jpg)
 
 ### 数据清洗
 
-接下来分别对 TcaplusAPI 的 3 个数据源上报的做数据清洗，数据清洗的目的是将原来文本的内容变成格式化的数据。（数据清洗可参考：[数据清洗](http://docs.bkdata.oa.com/tencent/fu-wu-gong-neng-jie-shao/shu-ju-ji-cheng/shu-ju-qing-xi.html)），例如： **OverallRunStatus** 数据清洗：
+接下来分别对 TcaplusAPI 的 3 个数据源上报的做数据清洗，数据清洗的目的是将原来文本的内容变成格式化的数据。例如： **OverallRunStatus** 数据清洗：
 
 ![-w2020](media/15816618584419.jpg)
 
@@ -88,7 +86,7 @@ ApiConnectTcaproxyCount=4&WriteReqErrNumPerMin=0&ReadRespWarnNumPerMin=0&
 
 ### 数据入库
 
-然后分别对 TcaplusAPI 的 3 个数据源数据清洗的结果配置数据入库（数据入库可参考：[数据入库](http://docs.bkdata.oa.com/tencent/fu-wu-gong-neng-jie-shao/shu-ju-ji-cheng/shu-ju-ru-ku.html)），例如：OverallRunStatus 的数据入库：
+然后分别对 TcaplusAPI 的 3 个数据源数据清洗的结果配置数据入库，例如：OverallRunStatus 的数据入库：
 
 > 注意：当前监控只支持 MySQL 和 Tspider 的入库数据。Druid 还在适配中。
 
@@ -113,7 +111,7 @@ ApiConnectTcaproxyCount=4&WriteReqErrNumPerMin=0&ReadRespWarnNumPerMin=0&
 > 数据索引：数据平台的是否有索引影响是查询效率 
 
 
-第二：通过数据计算转换成结果表，默认 group by 的字段为维度 （数据计算可参考：[数据计算](http://docs.bkdata.oa.com/tencent/fu-wu-gong-neng-jie-shao/shu-ju-kai-fa/bksqlhan-shu-ku/shi-shi-ji-suan.html)）。
+第二：通过数据计算转换成结果表，默认 group by 的字段为维度 。
 
 数据计算对于一些复杂的计算需求也可以通过数据计算来满足数据汇聚的一些需求。
 

@@ -36,7 +36,7 @@ docker run -d --rm --privileged=true --name bk5.1-relese --network bk-network --
 >- -v /mnt/soft:/soft：挂载 host 上的/mnt/soft 上的文件，里面有安装社区版 5.1 所需的安装文件
 >- --mac-address 02:d0:c8:0b:37:c3：绑定特定 MAC 地址，以免重新生成 gse 证书
 >- -p xxx:xxx：端口映射，让 host 上的端口映射到容器内,80 是 http 服务，其余端口均用于 gse_agent 通讯
->- docker.oa.com:8080/public/centos-7.2： 使用公司内 centos7.2 的镜像作为容器基础源
+
 /sbin/init：使用 systemd 托管容器进程
 
 - 进入容器

@@ -107,7 +107,7 @@ function close_login_dialog(){
 
 ```json
 {
-  "login_url": "https://paasee-dev.oa.com:443/login/plain/?c_url=https%3A//paasee-dev.oa.com/t/framework-login/account/login_success/&app_code=framework-login",
+  "login_url": "https://{PaaS_URL}:443/login/plain/?c_url=https%3A//{PaaS_URL}/t/framework-login/account/login_success/&app_code=framework-login",
   "width": 460,
   "height": 490,
   "has_plain": true

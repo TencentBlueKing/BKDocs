@@ -230,7 +230,7 @@ export JMX_PORT=9999
 
 ## 定义配置文件
 
-例如，需要采集 `kafka.server` ，`type=BrokerTopicMetrics`的 MBean。如下图。具体 MBean 的含义信息可以查看 kafka 组件文档： [ JMX 指标信息](http://kafka.apache.org/documentation/#remote_jmx)。
+例如，需要采集 `kafka.server` ，`type=BrokerTopicMetrics`的 MBean。如下图。具体 MBean 的含义信息可以查看 kafka 组件文档： [JMX 指标信息](http://kafka.apache.org/documentation/#remote_jmx)。
 
 ![image-20200210141212180](media/image-20200210141212180.png)
 
