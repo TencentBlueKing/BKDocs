@@ -1,3 +1,5 @@
+# FAQ
+
 ## 为什么插件无法选择
 
 答：每个插件都有对应的执行环境，只有在合适的执行环境下才能选择。插件右侧有对应执行环境图标。
@@ -12,4 +14,4 @@
 
 ## 更多 FAQ
 
-我们有统一的问答社区，访问 https://bk.tencent.com/s-mart/community 获取最全的 FAQ 文档。
+我们有统一的问答社区，访问[蓝鲸社区](https://bk.tencent.com/s-mart/community)获取最全的 FAQ 文档。

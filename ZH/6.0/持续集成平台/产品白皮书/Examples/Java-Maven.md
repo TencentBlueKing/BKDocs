@@ -4,8 +4,8 @@
 
 ## 准备材料
 
-- 一个 maven 工程：https://gitlab.com/bk-ci/gs-maven.git
-- 一个包含 mvn 命令的 CI 镜像：https://hub.docker.com/r/bkci/ci
+- 一个 maven 工程：<https://gitlab.com/bk-ci/gs-maven.git>
+- 一个包含 mvn 命令的 CI 镜像：<https://hub.docker.com/r/bkci/ci>
 
 ## 详细步骤
 
@@ -17,17 +17,21 @@
    1. Checkout Gitlab
       ![pic](../assets/quickstart_4.png)
    2. Shell Scripts
+
       ```bash
       #!/usr/bin/env bash
       cd initial
       mvn install
       ```
+
    3. Shell Scripts
+
       ```bash
       #!/usr/bin/env bash
       cd initial
       mvn test
       ```
+
    4. Upload artifacts
       ![pic](../assets/examples_java_2.png)
 

@@ -31,4 +31,3 @@
    - Upload artifacts
 
      ![shell](../assets/quickstart_9.png)
-

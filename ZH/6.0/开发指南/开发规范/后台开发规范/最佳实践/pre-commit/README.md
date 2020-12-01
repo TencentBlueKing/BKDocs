@@ -10,20 +10,20 @@
 
 ### 配置方式 (新接入项目)
 
-1. 使用 pip 安装 pre-commit
+1. 使用pip安装pre-commit
 
-        # pipplainplainplainplainplainplainplainplainplainplainplain
+        # pip
         pip install pre-commit
 
-2. 在有.git 的项目配置 pre-commit
+2. 在有.git的项目配置pre-commit
 
-        pre-commit installplainplainplainplainplainplainplainplainplain
+        pre-commit install
 
 执行后，查看 `.git/hooks` 目录，若存在名为 `pre-commit` 新文件，则配置成功 。
 
 ### 触发 Git Hooks
 
-- pre-commit 代码检查无需手动触发，只要执行 `git commit` 命令，就会自动触发（无论是在终端还是 IDE）。请注意，代码检查的范围只是本次提交所修改的文件，而非全局。
+- pre-commit 代码检查无需手动触发，只要执行 `git commit` 命令，就会自动触发（无论是在终端还是IDE）。请注意，代码检查的范围只是本次提交所修改的文件，而非全局。
 
 - 若代码检查不通过，提交会被中断。可以根据具体的错误信息去调整代码，只有所有的检查项全部通过方可 push。
 
@@ -33,19 +33,19 @@
 
 ### pyupgrade
 
-提升 Python 代码风格
+提升Python代码风格
 
 https://github.com/asottile/pyupgrade
 
 ### python-modernize
 
-**【Python2 项目专用】** 将 python2 风格代码自动转换为 2-3 兼容风格。 **Python3 项目无需安装此插件**
+**【Python2项目专用】** 将python2风格代码自动转换为2-3兼容风格。 **Python3 项目无需安装此插件**
 
 https://python-modernize.readthedocs.io/en/latest/fixers.html#
 
 ### check-merge-conflict
 
-通过匹配 conflict string，检查是否存在没有解决冲突的代码
+通过匹配conflict string，检查是否存在没有解决冲突的代码
 
 ### isort
 
@@ -55,7 +55,7 @@ https://python-modernize.readthedocs.io/en/latest/fixers.html#
 
 ### seed-isort-config
 
-提升 isort 排序的准确度，会在项目根目录下生成 `.iosrt.cfg` 配置文件，需要提交
+提升isort排序的准确度，会在项目根目录下生成 `.iosrt.cfg` 配置文件，需要提交
 
 ### autopep8
 

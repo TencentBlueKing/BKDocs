@@ -1,6 +1,7 @@
 # Variables
 
 ## 在流水线中定义变量
+
 ### 在编排流水线时自定义变量
 
 在编辑流水线页面点击 Job1-1，可以添加流水线变量。
@@ -13,11 +14,13 @@
 ### 通过 Bash 插件设置变量
 
 您可以通过 Shell Script 插件中的 setEnv 函数设置插件间传递的参数，用法如下：
+
 ```bash
 #!/usr/bin/env bash
 # setEnv "FILENAME" "package.zip"
 # 然后在后续的插件的表单中使用${FILENAME}引用这个变量
 ```
+
 ![Var](../assets/variables_2.png)
 
 ## 在流水线中引用变量

@@ -4,8 +4,8 @@
 
 ## 准备材料
 
-- 一个 NodeJS 工程：https://gitlab.com/bk-ci/gs-maven.git
-- 一个包含 npm 命令的 CI 镜像：https://hub.docker.com/r/bkci/ci
+- 一个 NodeJS 工程：<https://gitlab.com/bk-ci/gs-maven.git>
+- 一个包含 npm 命令的 CI 镜像：<https://hub.docker.com/r/bkci/ci>
 
 ## 详细步骤
 
@@ -17,11 +17,13 @@
    1. Checkout Gitlab
       ![pic](../assets/quickstart_4.png)
    2. Shell Scripts
+
       ```bash
       #!/usr/bin/env bash
       npm run test
       ```
-   4. Upload artifacts
+
+   3. Upload artifacts
       ![pic](../assets/examples_node_1.png)
 
 5. 运行流水线，观察结果
