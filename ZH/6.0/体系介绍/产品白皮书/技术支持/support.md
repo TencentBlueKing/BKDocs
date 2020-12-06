@@ -1,8 +1,10 @@
 # 技术支持
 
-- 邮箱 contactus_bk@tencent.com
+## 邮箱
 
-- 即时沟通 QQ 群
+contactus_bk@tencent.com
+
+## 即时沟通 QQ 群
 
 | 群名                | QQ 号     | 用途                                                       |
 | ------------------- | --------- | ---------------------------------------------------------- |
@@ -10,4 +12,12 @@
 | 运维开发群          | 878501914 | SaaS 开发、标准运维、PaaS 平台等开源项目交流群             |
 | CMDB 开源群        | 305496802 | 蓝鲸配置平台开源项目交流群                                 |
 
-- 问答交流论坛: [https://bk.tencent.com/s-mart/community](https://bk.tencent.com/s-mart/community)
+## 问答交流论坛
+
+[https://bk.tencent.com/s-mart/community](https://bk.tencent.com/s-mart/community)
+
+## 技术支持时间
+
+| 社区版 | 企业版 |
+|--|--|
+| 工作日 9:30-12:00，14:00-18:00 | 7*8h |
