@@ -9,7 +9,7 @@
 
 ## 部署方式
 
-- [腾讯云实验室](https://cloud.tencent.com/developer/labs/lab/10386)
+- [腾讯云实验室](https://cloud.tencent.com/developer/labs/lab/10386)，目前实验室的仍为 5.1 版本。
 
 - 自行提供主机
 
@@ -18,7 +18,7 @@
 按照安装 [环境准备](../../基础包安装/环境准备/get_ready.md) 章节中，主机和系统环境的要求做好相应设置。
 
 * 环境准备
-  - 准备一台 CentOS 7 以上操作系统的机器(物理机和虚拟机均可)。
+  - 准备一台 CentOS 7.5 及以上操作系统的机器(物理机和虚拟机均可)。
 
   - 按照安装 [环境准备](../../基础包安装/环境准备/get_ready.md) 章节中，主机和系统环境的要求做好相应设置。
 
@@ -27,7 +27,7 @@
   - 从 [官网下载](http://bk.tencent.com/download/) 完整包，并解压到 /data/ 下。
 
     ```bash
-    tar xf bkce_src-6.0.1.tgz  -C /data
+    tar xf bkce_src-6.0.x.tgz  -C /data
     ```
 
   - 获取机器的 MAC 地址后，下载 [证书文件](https://bk.tencent.com/download_ssl/)，解压到 src/cert 目录下

@@ -127,6 +127,17 @@ echo "$http_proxy" "$https_proxy"
 hostname
 ```
 
+9\. 解压 V6.0 软件包
+```bash
+tar xf bkce_src-6.0.x.tgz  -C /data
+```
+
+10\. 获取机器的 MAC 地址后，下载 [证书文件](https://bk.tencent.com/download_ssl/)，解压到 src/cert 目录下
+
+```bash
+install -d -m 755 /data/src/cert
+tar xf ssl_certificates.tar.gz -C /data/src/cert
+```
 
 ### 非标准私有地址处理方法
 
