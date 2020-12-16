@@ -4,32 +4,32 @@
 
 ## 软件包目录结构
 
-请按照目录结构检查对应文件目录是否存在：
+请按照目录结构检查对应文件目录是否存在，版本号会随着每次更新而变更，请以官网下载时提供的版本号为准：
 
 ```bash
 [root@VM-0-1 src]# pwd
 /data/src
 [root@VM-0-1 src]# tree -F -L 1
 .
-├── bkiam_ce-1.4.9.tgz
-├── bklog_ce-4.2.443-bkofficial.tgz
-├── bkmonitorv3_ce-3.3.951-bkofficial.tgz
-├── bknodeman_ce-2.0.631-bkofficial.tgz
-├── bkssm_ce-1.0.8.tgz
+├── bkiam_ce-1.x.xtgz
+├── bklog_ce-4.x.x-bkofficial.tgz
+├── bkmonitorv3_ce-3.x.x-bkofficial.tgz
+├── bknodeman_ce-2.x.x-bkofficial.tgz
+├── bkssm_ce-1.x.x.tgz
 ├── blueking.env
-├── cmdb_ce-3.9.11.tgz
+├── cmdb_ce-3.x.x.tgz
 ├── COMMON_VERSION
-├── fta_solutions_ce-5.2.7.tar.gz
-├── gse_ce-3.5.13.tgz
+├── fta_solutions_ce-5.x.x.tar.gz
+├── gse_ce-3.x.x.tgz
 ├── gse_plugins/
 ├── java8.tgz
-├── job_ce-3.1.2.8.tgz
-├── license_ce-3.1.5.tgz
+├── job_ce-3.x.x.x.tgz
+├── license_ce-3.x.x.tgz
 ├── MD5
 ├── official_saas/
-├── open_paas_ce-2.11.61-bkofficial.tgz
-├── paas_agent_ce-3.2.2.tgz
-├── usermgr_ce-2.2.1-bkofficial.tar.gz
+├── open_paas_ce-2.x.x-bkofficial.tgz
+├── paas_agent_ce-3.x.x.tgz
+├── usermgr_ce-2.x.x-bkofficial.tar.gz
 ├── VERSION
 └── yum/
 ```
