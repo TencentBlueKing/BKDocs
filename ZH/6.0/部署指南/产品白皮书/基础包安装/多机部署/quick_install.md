@@ -28,7 +28,7 @@
 
 ```bash
 cd /data
-wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.1.tgz 
+wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_product-6.0.2.tgz
 ```
 
 ### 1.4 解压相关资源包
@@ -37,7 +37,7 @@ wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.1.tgz
 
    ```bash
    cd /data
-   tar xf bkce_src-6.0.1.tgz
+   tar xf bkce_src-6.0.2.tgz
    ```
 
 2. 解压各个产品软件包

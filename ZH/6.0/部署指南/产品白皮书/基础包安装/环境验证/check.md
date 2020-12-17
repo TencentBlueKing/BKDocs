@@ -13,6 +13,14 @@ source /data/install/utils.fc
 echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli check
 ```
 
+- 检查脚本可用性
+
+```bash
+# 安装 dbcheck 环境
+./bkcli install dbcheck
+./bkcli check dbcheck
+```
+
 - 检查开源组件状态
 
   可以使用 bkcli 或者 systemctl 查看运行的状态
