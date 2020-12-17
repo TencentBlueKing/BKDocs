@@ -28,7 +28,7 @@
 
 ```bash
 cd /data
-wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_product-6.0.2.tgz
+wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.2.tgz
 ```
 
 ### 1.4 解压相关资源包

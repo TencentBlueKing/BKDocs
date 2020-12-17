@@ -2,7 +2,7 @@
 
 ## 一、安装环境准备
 
-在开始安装前，请参照 [环境准备文档](../基础包安装/环境准备/get_ready.md)，准备安装介质，配置系统环境。
+在开始安装前，请参照 [环境准备文档](../环境准备/get_ready.md)，准备安装介质，配置系统环境。
 
 【鉴于完整安装包大小有 4GB，我们已在腾讯云上进行了 CDN 下载资源加速优化，建议使用腾讯云主机（CentOS 7.6）部署体验最佳】
 
@@ -28,7 +28,7 @@
 
 ```bash
 cd /data
-wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.1.tgz 
+wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.2.tgz
 ```
 
 ### 1.4 解压相关资源包
@@ -37,7 +37,7 @@ wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.1.tgz
 
    ```bash
    cd /data
-   tar xf bkce_src-6.0.1.tgz
+   tar xf bkce_src-6.0.2.tgz
    ```
 
 2. 解压各个产品软件包
@@ -221,12 +221,12 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 
 > 默认蓝鲸工作台入口：[http://paas.bktencent.com](http://paas.bktencent.com)
 
-![](../assets/login.png)
+![](../../assets/login.png)
 
 登陆成功后即可看到 PaaS 平台应用列表页面。
 
-![](../assets/paas_home.png)
+![](../../assets/paas_home.png)
 
 ### 3.4 快速上手使用
 
-请参考：[快速入门](../../../快速入门/quick-start-v6.0.md)
+请参考：[快速入门](../../../../快速入门/quick-start-v6.0.md)
