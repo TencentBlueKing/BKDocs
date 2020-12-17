@@ -4,7 +4,7 @@
 
 ## 软件包目录结构
 
-请按照目录结构检查对应文件目录是否存在，版本号会随着每次更新而变更，请以官网下载时提供的版本号为准：
+请按照目录结构检查对应文件目录是否存在，版本号会随着每次更新而变更，请以官网下载的实际版本号为准：
 
 ```bash
 [root@VM-0-1 src]# pwd
@@ -37,9 +37,9 @@
 上面这层目录称为模块，模块下面会有子工程，称为 `project` ，比如 open_paas 模块下：
 
 ```bash
-[root@nginx-1 bkdata]# pwd
+[root@nginx-1 open_paas]# pwd
 /data/src/open_paas
-[root@nginx-1 bkdata]# tree -F -L 1 . support-files/
+[root@nginx-1 open_paas]# tree -F -L 1 . support-files/
 .
 ├── apigw/
 ├── appengine/

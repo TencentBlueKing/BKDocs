@@ -17,10 +17,9 @@
 
 ## CentOS 系统设置
 
-准备好硬件，安装完原生 CentOS 系统后。我们需要对初始系统做一些配置，保证后续安装过程的顺畅和蓝鲸平台的运行。
+准备好硬件，安装完原生 CentOS 系统后。需要对初始系统做一些配置，保证后续安装过程的顺畅和蓝鲸平台的运行。
 
-**系统版本：** 要求 CentOS-7.0 以上版本，推荐 CentOS-7.6。
-
+**系统版本：** 推荐 CentOS-7.6。
 ## 关闭 SELinux
 
 ```bash
@@ -139,15 +138,14 @@ hostname
 
 ## 解压 V6.0 软件包
 ```bash
-# 版本号会随更新而变更，请以实际下载的包版本为准
+# 版本号会随更新而变更，请以实际下载时的实际版本为准
 tar xf bkce_src-6.0.x.tgz  -C /data
 ```
-
 ## 下载证书
 
 获取机器的 MAC 地址生成证书，下载 [证书文件](https://bk.tencent.com/download_ssl/) 上传至中控机并解压到 src/cert 目录下。
 
->license 和 gse 模块所在服务器的第一个内网网卡的 MAC 地址。如果分别属于两台服务器，那么两个的 MAC 地址以英文;分隔。
+>MAC 地址：license 和 gse 模块所在服务器的第一个内网网卡的 MAC 地址。如果分别属于两台服务器，那么两个的 MAC 地址以英文;分隔。
 
 **
 
@@ -214,30 +212,12 @@ bash configure_ssh_without_pass
 
 ## 自定义域名以及登陆密码
 
-- 部署前自定义域名。
-
-**请使用实际的根域名替换下述所有的 `bktencent.com` 以及使用实际的部署脚本路径替换默认的脚本路径 `/data/install`**
+- 部署前自定义域名
+ 
+BK_DOMAIN：需要更新的根域名，INSTALL_PATH：自定义安装目录。
 
 ```bash
-cat > /data/install/bin/03-userdef/global.env << EOF
-
-BK_DOMAIN="bktencent.com"
-
-# 访问PaaS平台的域名
-BK_PAAS_PUBLIC_URL="http://paas.bktencent.com:80"
-BK_PAAS_PUBLIC_ADDR="paas.bktencent.com:80"
-
-# 访问CMDB的域名
-BK_CMDB_PUBLIC_ADDR="cmdb.bktencent.com:80"
-BK_CMDB_PUBLIC_URL="http://cmdb.bktencent.com:80"
-
-# 访问Job平台的域名
-BK_JOB_PUBLIC_ADDR="job.bktencent.com:80"
-BK_JOB_PUBLIC_URL="http://job.bktencent.com:80"
-BK_JOB_API_PUBLIC_ADDR="jobapi.bktencent.com:80"
-BK_JOB_API_PUBLIC_URL="http://jobapi.bktencent.com:80"
-BK_NODEMAN_PUBLIC_DOWNLOAD_URL="http://nodeman.bktencent.com:80"
-EOF
+./configure -d BK_DOMAINN -p INSTALL_PATH
 ```
 
 - 部署前自定义 admin  登陆密码
