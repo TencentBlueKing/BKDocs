@@ -62,10 +62,10 @@ if IS_USE_CELERY:
 
 ### 系统级别的更新
 
-1. 不再对 windows 平台提供支持。windwos 平台目前主要发现两个主要的问题，其他的基本功能都是正常的。
+1. 不再对 windows 平台提供支持。windows 平台目前主要发现两个主要的问题，其他的基本功能都是正常的。
 
    - 一个是需要加入 eventlet 才可以使用。
-   - windwos 平台下无法同时启动多个 worker，主要原因是启动多个 worker 依赖 resource 这个库，这个库只支持 linux 和 unix 平台。
+   - windows 平台下无法同时启动多个 worker，主要原因是启动多个 worker 依赖 resource 这个库，这个库只支持 linux 和 unix 平台。
 
 2. 不再支持 Python 2.6 以及 python 3.3
 
