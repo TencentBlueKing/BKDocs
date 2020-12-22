@@ -135,6 +135,13 @@ echo "$http_proxy" "$https_proxy"
 ```bash
 hostname
 ```
+## 检查 DNS 配置文件
+
+如果输出的第一行信息不是 `nameserver 127.0.0.1` ，请把其加入至该文件（/etc/resolv.conf）的第一行。
+
+```bash
+head -n 1 /etc/resolv.conf
+```
 
 ## 解压 V6.0 软件包
 ```bash

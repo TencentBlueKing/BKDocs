@@ -8,6 +8,10 @@
 - cmdb 启动依赖 zookeeper 可用
 - 监控链路的 bk-influxdb-proxy 和 bk-transfer 依赖 kafka 可用
 
+## 注意事项
+
+以往的脚本提供了 `stop all` 和 `start all` 的操作，容易引发误操作，日常维护中，并不需要经常做全部服务的停止和启动。对于第三方组件尽量保证它们稳定运行，但是混搭进程的情况下，有时会因为内存不足导致不断 OOM 触发一系列异常。此刻应该按实际情况重启相关进程，避免全部进程重启的粗暴操作。
+
 ## 检查思路
 
 - 检查 /etc/resolv.conf 文件首行是否存在 nameserver 127.0.0.1。如不存在，请自行加入该文件的首行。
@@ -31,8 +35,3 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 ```bash
 ./bkcli start saas-o 
 ```
-
-## 注意事项
-
-以往的脚本提供了 `stop all` 和 `start all` 的操作，容易引发误操作，日常维护中，并不需要经常做全部服务的停止和启动。对于第三方组件尽量保证它们稳定运行，但是混搭进程的情况下，有时会因为内存不足导致不断 OOM 触发一系列异常。此刻应该按实际情况重启相关进程，避免全部进程重启的粗暴操作。
-
