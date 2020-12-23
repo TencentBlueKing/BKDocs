@@ -154,8 +154,6 @@ tar xf bkce_src-6.0.x.tgz  -C /data
 
 >MAC 地址：license 和 gse 模块所在服务器的第一个内网网卡的 MAC 地址。如果分别属于两台服务器，那么两个的 MAC 地址以英文;分隔。
 
-**
-
 ```bash
 install -d -m 755 /data/src/cert
 tar xf ssl_certificates.tar.gz -C /data/src/cert
