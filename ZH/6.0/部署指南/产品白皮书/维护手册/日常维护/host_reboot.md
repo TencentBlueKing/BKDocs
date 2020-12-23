@@ -14,23 +14,40 @@
 
 ## 检查思路
 
-- 检查 /etc/resolv.conf 文件首行是否存在 nameserver 127.0.0.1。如不存在，请自行加入该文件的首行。
+### 检查 DNS 配置文件
 
-- 检查相关服务
+- 在部署的 3 台机器上检查 `/etc/resolv.conf` 文件首行是否存在 `nameserver 127.0.0.1` 记录。如不存在，请自行加入该文件的首行。
+
+### 检查相关服务
 
 ```bash
+# 中控机执行命令
 echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli check
 ```
 
-如果 check 输出的状态为非 `ture`，那么可以使用 `start/restart` 拉起。
+如果 check 输出的状态为非 `ture`，那么可以使用 `./bkcli start|restart <module>` 拉起。 **module** 为 check 状态非 `ture` 的模块。
 
-如假设监控的 influxdb-proxy 模块未拉起，可以使用下述命令：
+假设 paas，job，gse，bkmonitorv3 自启动失败，可以参考下述命令：
 
 ```bash
-./bkcli start bkmonitorv3 influxdb-proxy
+# 中控机执行
+echo paas job gse bkmonitorv3 | xargs -n 1 ./bkcli restart
+```
+ job 启动稍微有点慢，可在 10s~30s 再执行 check 命令。
+
+
+此外，还可以登录至模块所在的服务器，通过 `systemctl start|restart <module>` 拉起服务。以 PaaS 为例：
+
+```bash
+# 登录 paas 模块所在的机器
+source /data/install/utils.fc
+ssh $BK_PAAS_IP
+
+# 拉起服务
+systemctl restart bk-paas.target
 ```
 
-- 启动蓝鲸所有 SaaS
+### 启动蓝鲸所有 SaaS
 
 ```bash
 ./bkcli start saas-o 
