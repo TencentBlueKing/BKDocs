@@ -45,5 +45,6 @@
         * [发送微信消息](6.0/API文档/CMSI/send_weixin.md)
     * [API 网关]()
         * [简介](6.0/API文档/ESB/README.md)
-        * [查询文档链接](6.0/API文档/ESB/get_doc_link_by_path.md)
+        * [获取指定系统的组件列表](6.0/API文档/ESB/get_components.md)
+        * [获取系统列表](6.0/API文档/ESB/get_systems.md)
 * [常见问题](产品白皮书/常见问题/FAQ.md)
