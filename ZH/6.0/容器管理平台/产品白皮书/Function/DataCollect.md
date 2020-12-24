@@ -91,11 +91,11 @@ spec:
 
 然后，在应用模板中->更多设置中，勾选启用 Metric 数据采集，并选择相应上一步设置的 Metric;
 
-<img src='../assets/image05.png' alt='image.png' width='750'>
+<img src='../assets/image05.png' alt='image' width='750'>
 
 最后，实例化应用时，会将相关的 Metric 配置文件一起下发。
 
-<img src='../assets/image06.png' alt='image.png' width='750'>
+<img src='../assets/image06.png' alt='image' width='750'>
 
 说明：
 - Metric 配置中，勾选了**Prometheus 格式设置**，会在数据平台申请 dataid，并根据 Prometheus 的数据格式在数据平台配置好默认的字段清洗规则，同时将清洗好的字段入库到 ES 中。

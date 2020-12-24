@@ -11,7 +11,7 @@ def get_all_summary():
     :return: summary_list:  list <- 由所有SUMMARY文件的目录地址组成
     """
     summary_list = []
-    for home, dirs, files in os.walk('5.1'):
+    for home, dirs, files in os.walk('6.0'):
         for filename in files:
             if filename == 'SUMMARY.md':
                 summary_list.append(os.path.join(home, filename).replace('\\', '/'))
@@ -78,7 +78,7 @@ def get_catalog_json(catalog_list):
                 print(e)
                 print('{}SUMMARY.md format error, check the [] and (), error code 11'.format(name))
                 sys.exit(1)
-            if not chapter_path == '' and not chapter_path.startswith('5.1'):
+            if not chapter_path == '' and not chapter_path.startswith('6.0'):
                 chapter_path = name+chapter_path
             if chapter.startswith('*'):
                 yaml_str += '- name: "{}"\n'.format(chapter_name)

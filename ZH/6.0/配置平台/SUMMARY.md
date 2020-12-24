@@ -35,7 +35,7 @@
         * [关联类型](产品白皮书/产品功能/ModelRelationType.md)
     * [运营分析]()
         * [操作审计](产品白皮书/产品功能/OperationalAudit.md)
-        * [运营统计](产品白皮书/产品功能\Statistics.md)
+        * [运营统计](产品白皮书/产品功能/Statistics.md)
 * [API文档]()
     * [简介](6.0/API文档/CC/README.md)
     * [新加主机锁](6.0/API文档/CC/add_host_lock.md)
