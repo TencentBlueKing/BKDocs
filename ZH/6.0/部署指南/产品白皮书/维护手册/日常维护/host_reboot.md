@@ -33,8 +33,8 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 # 中控机执行
 echo paas job gse bkmonitorv3 | xargs -n 1 ./bkcli restart
 
-# 如果是模块的某个服务自启动失败，以gse data 为例
-./bkcli status gse data
+# 如果是模块的某个服务自启动失败，以 gse data 为例
+./bkcli restart gse data
 ```
 
  job 启动稍微有点慢，可等待 10s~30s 再执行 check 命令。
