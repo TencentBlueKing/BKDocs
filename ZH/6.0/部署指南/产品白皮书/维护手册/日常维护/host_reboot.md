@@ -32,8 +32,12 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 ```bash
 # 中控机执行
 echo paas job gse bkmonitorv3 | xargs -n 1 ./bkcli restart
+
+# 如果是模块的某个服务自启动失败，以gse data 为例
+./bkcli status gse data
 ```
- job 启动稍微有点慢，可在 10s~30s 再执行 check 命令。
+
+ job 启动稍微有点慢，可等待 10s~30s 再执行 check 命令。
 
 
 此外，还可以登录至模块所在的服务器，通过 `systemctl start|restart <module>` 拉起服务。以 PaaS 为例：
@@ -43,7 +47,7 @@ echo paas job gse bkmonitorv3 | xargs -n 1 ./bkcli restart
 source /data/install/utils.fc
 ssh $BK_PAAS_IP
 
-# 拉起服务
+# 重启 paas 服务
 systemctl restart bk-paas.target
 ```
 
