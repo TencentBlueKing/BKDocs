@@ -75,7 +75,7 @@ yum -y install rsync
 systemctl stop NetworkManager
 systemctl disable NetworkManager
 ```
-> 备注说明：该操作前提需确保主机为静态 IP，若为 DHCP 获取的 IP，则无法直接 disable NetworkManager，否则会出现主机重启后，或者主机运行一段时间 IP 租约地址到期后，网卡无法从网络重新正常获取 IP 地址的情况。
+> 说明：该操作前提需确保主机为静态 IP，若为 DHCP 获取的 IP，则无法直接 disable NetworkManager，否则会出现主机重启后，或者主机运行一段时间 IP 租约地址到期后，网卡无法从网络重新正常获取 IP 地址的情况。
 
 ## 调整最大文件打开数
 
@@ -86,9 +86,11 @@ ulimit -n
 
 如果为默认的 1024，建议通过修改配置文件调整为 102400 或更大。
 
+但是不能大于 `/proc/sys/fs/nr_open` 的值，该值默认为 1048576。
+
 **注意：** limits.conf 初始文件的备份。
 ```bash
-cat << EOF >> /etc/security/limits.conf
+cat >> /etc/security/limits.conf << EOF
 root soft nofile 102400
 root hard nofile 102400
 EOF
@@ -138,6 +140,7 @@ hostname
 ## 检查 DNS 配置文件
 
 如果输出的第一行信息不是 `nameserver 127.0.0.1` ，请把其加入至该文件（/etc/resolv.conf）的第一行。
+这是由于蓝鲸内部组件的调用所需，域名通过 consul 解析，会探测服务运行状态，然后返回 IP 地址。若首行不是 127.0.0.1，否则这些域名就通过外网去解析，无法返回正确的响应，导致服务运行异常，或者 SaaS 无法正常打开等情况。
 
 ```bash
 head -n 1 /etc/resolv.conf
@@ -152,12 +155,36 @@ tar xf bkce_src-6.0.x.tgz  -C /data
 
 获取机器的 MAC 地址生成证书，下载 [证书文件](https://bk.tencent.com/download_ssl/) 上传至中控机并解压到 src/cert 目录下。
 
->MAC 地址：license 和 gse 模块所在服务器的第一个内网网卡的 MAC 地址。如果分别属于两台服务器，那么两个的 MAC 地址以英文;分隔。
+>MAC 地址：license 和 gse 模块所在服务器的第一个内网网卡的 MAC 地址。如果分别属于两台服务器，那么两个的 MAC 地址以英文 ";" 分隔。
 
 ```bash
 install -d -m 755 /data/src/cert
 tar xf ssl_certificates.tar.gz -C /data/src/cert
 ```
+
+## 配置 install.config 文件
+
+install.config 是模块和服务器对应关系的配置文件，描述在哪些机器上安装哪些模块。
+
+每行两列，第一列是 IP 地址；第二列是以英文逗号分隔的模块名称。
+
+详情参考 `install.config.3IP.sample` 文件(可将 install.config.3IP.sample 复制为 install.config)。
+
+```bash
+# 假设部署脚本放置于 /data 目录下，请以实际部署的目录为准
+cd /data/install
+cp -a install.config.3ip.sample install.config
+
+# 将默认的 IP 地址替换为实际部署时的 IP 地址
+
+10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana)
+10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk
+10.0.0.3 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman)
+```
+> 说明：
+> 1. 该配置文件，ip 后面使用空格与服务名称隔开，含有多个内网 ip 的机器，默认使用 /sbin/ifconfig 输出中的第一个内网 ip，在 ip 后面写上该机器要安装的服务列表即可，部署过程中默认使用标准私有地址，若企业环境使用非标准私有地址，请参考该篇文章后续内容- **非标准私有地址处理方法** 的处理方法。
+> 2. gse 与 redis 需要部署在同一台机器上。
+> 3. 增加机器数量时，可以将以上配置中的服务挪到新的机器上，分担负载。
 
 ## 非标准私有地址处理方法
 
@@ -206,23 +233,16 @@ return $?
 }
 ```
 
-## 配置 SSH 免密登陆 
-
-登录到中控机，执行免密操作。
-
-```bash
-cd /data/install
-bash configure_ssh_without_pass
-```
-
 ## 自定义域名以及登陆密码
 
 - 部署前自定义域名
  
-BK_DOMAIN：需要更新的根域名，INSTALL_PATH：自定义安装目录。
+$BK_DOMAIN：需要更新的根域名，$INSTALL_PATH：自定义安装目录。
 
 ```bash
-./configure -d BK_DOMAINN -p INSTALL_PATH
+# 执行前请使用实际的根域名和安装目录进行替换
+
+./configure -d $BK_DOMAINN -p $INSTALL_PATH
 ```
 
 - 部署前自定义 admin  登陆密码
@@ -234,3 +254,14 @@ cat > /data/install/bin/03-userdef/usermgr.env << EOF
 BK_PAAS_ADMIN_PASSWORD=BlueKing
 EOF
 ```
+
+## 配置 SSH 免密登陆 
+
+中控机执行免密操作。
+
+```bash
+cd /data/install
+bash configure_ssh_without_pass
+```
+
+完成环境准备后，可前往 [标准部署](../多机部署/install.md) 开始部署了。 
