@@ -91,7 +91,7 @@ yum -y install rsync
 systemctl stop NetworkManager
 systemctl disable NetworkManager
 ```
-> 备注说明：该操作前提需确保主机为静态 IP，若为 DHCP 获取的 IP，则无法直接 disable NetworkManager，否则会出现主机重启后，或者主机运行一段时间 IP 租约地址到期后，网卡无法从网络重新正常获取 IP 地址的情况。
+> 说明：该操作前提需确保主机为静态 IP，若为 DHCP 获取的 IP，则无法直接 disable NetworkManager，否则会出现主机重启后，或者主机运行一段时间 IP 租约地址到期后，网卡无法从网络重新正常获取 IP 地址的情况。
 
 5\. 调整最大文件打开数
 
@@ -102,9 +102,11 @@ ulimit -n
 
 如果为默认的 1024，建议通过修改配置文件调整为 102400 或更大。
 
+但是不能大于 `/proc/sys/fs/nr_open` 的值，该值默认为 1048576。
+
 **注意：** limits.conf 初始文件的备份。
 ```bash
-cat << EOF >> /etc/security/limits.conf
+cat >> /etc/security/limits.conf << EOF
 root soft nofile 102400
 root hard nofile 102400
 EOF
@@ -149,7 +151,7 @@ echo "$http_proxy" "$https_proxy"
 将下载的蓝鲸社区版完整包上传到中控机，并解压到 **同级** 目录下。以解压到 `/data` 目录为例：
 
 ```bash
-tar xf bkce_src-5.1.26.tar.gz  -C /data
+tar xf bkce_src-5.1.29.tar.gz  -C /data
 ```
 
 解压之后，得到两个目录：src，install
