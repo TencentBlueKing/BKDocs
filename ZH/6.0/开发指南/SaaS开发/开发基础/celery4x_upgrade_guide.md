@@ -446,7 +446,7 @@ python manage.py migrate_from_djcelery
 使用方法：
 
 1. 将下面文件放到任意 app 的 migrations 文件夹下，如：home_application/migrations/
-2. 迁移命令：执行`python manaage.py migrate`应用该 migration 文件即可
+2. 迁移命令：执行`python manage.py migrate`应用该 migration 文件即可
 3. 通过第 11 行 handle 函数的 tz 参数指定指定之前 celery 运行的时区
 
 ```python
