@@ -144,13 +144,13 @@
 
 ## 导入 / 导出
 
-![image-20200814115348178](file:///Users/nekzhang/product_docs/job-v3-docs/%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/Features/media/image-20200814115348178.png?lastModify=1604498806)
+![image-20200814115348178](media/image-20200814115348178.png?lastModify=1604498806)
 
 从列表中勾选需要导出的作业模板，并点击 `导出` 按钮将其导出。
 
 ### 导出流程
 
-![image-20200814115437296](file:///Users/nekzhang/product_docs/job-v3-docs/%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/Features/media/image-20200814115437296.png?lastModify=1604498806)
+![image-20200814115437296](media/image-20200814115437296.png?lastModify=1604498806)
 
 流程如下：`用户须知` -> `导出内容确认` -> `导出设置` -> `开始导出`
 
@@ -160,13 +160,13 @@
 
 2. 导出内容确认
 
-   ![image-20200814115852221](file:///Users/nekzhang/product_docs/job-v3-docs/%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/Features/media/image-20200814115852221.png?lastModify=1604498806)
+   ![image-20200814115852221](media/image-20200814115852221.png?lastModify=1604498806)
 
    在这个步骤中，用户可以自定义选择需要导出的作业执行方案，而无需全部导出。
 
 3. 导出设置
 
-   ![image-20200814115930036](file:///Users/nekzhang/product_docs/job-v3-docs/%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/Features/media/image-20200814115930036.png?lastModify=1604498806)
+   ![image-20200814115930036](media/image-20200814115930036.png?lastModify=1604498806)
 
    主要是对导出的压缩包一些常规基础和安全设置；
 
@@ -188,13 +188,13 @@
 
 4. 开始导出
 
-   ![image-20200814120230138](file:///Users/nekzhang/product_docs/job-v3-docs/%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/Features/media/image-20200814120230138.png?lastModify=1604498806)
+   ![image-20200814120230138](media/image-20200814120230138.png?lastModify=1604498806)
 
    该步骤将正式开始执行作业导出动作，导出任务完成后会自动弹出文件保存本地的弹窗，如果丢失可点击 `重新下载文件` 再次下载。
 
 ### 导入流程
 
-![image-20200814120411092](file:///Users/nekzhang/product_docs/job-v3-docs/%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/Features/media/image-20200814120411092.png?lastModify=1604498806)
+![image-20200814120411092](media/image-20200814120411092.png?lastModify=1604498806)
 
 流程如下：`用户须知` -> `文件包上传` -> `导入内容确认` -> `导入设置` -> `开始导入`
 
@@ -204,19 +204,19 @@
 
 2. 文件包上传
 
-   ![image-20200814120535291](file:///Users/nekzhang/product_docs/job-v3-docs/%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/Features/media/image-20200814120535291.png?lastModify=1604498806)
+   ![image-20200814120535291](media/image-20200814120535291.png?lastModify=1604498806)
 
    点击上传文件压缩包后，如果后台检测到文件经过加密，将会自动弹出密码输入框，需填写正确密码才可继续导入
 
 3. 导入内容确认
 
-   ![image-20200814120853617](file:///Users/nekzhang/product_docs/job-v3-docs/%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/Features/media/image-20200814120853617.png?lastModify=1604498806)
+   ![image-20200814120853617](media/image-20200814120853617.png?lastModify=1604498806)
 
    在这个步骤中，用户可以按需选择需要导入的作业模板或执行方案，而无需全部导入。
 
 4. 导入设置
 
-   ![image-20200814120943052](file:///Users/nekzhang/product_docs/job-v3-docs/%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/Features/media/image-20200814120943052.png?lastModify=1604498806)
+   ![image-20200814120943052](media/image-20200814120943052.png?lastModify=1604498806)
 
    - 重名后缀
 
@@ -228,6 +228,6 @@
 
 5. 开始导入
 
-   ![image-20200814121110012](file:///Users/nekzhang/product_docs/job-v3-docs/%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/Features/media/image-20200814121110012.png?lastModify=1604498806)
+   ![image-20200814121110012](media/image-20200814121110012.png?lastModify=1604498806)
 
    该步骤将正式开始作业导入任务，导入过程中可以点击日志中的链接及时查看已导入成功的作业信息。
