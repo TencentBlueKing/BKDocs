@@ -10,7 +10,7 @@
 - 主配置
 
 ```bash
-[root@rbtnode1 /data/install]# cat /data/bkee/etc/consul.conf
+[root@rbtnode1 /data/install]# cat /data/bkce/etc/consul.conf
 {
     "rejoin_after_leave": true,
     "skip_leave_on_interrupt": true,
@@ -25,11 +25,11 @@
     "log_level": "info",
     "server": true,
     "datacenter": "dc",
-    "data_dir": "/data/bkee/public/consul",
+    "data_dir": "/data/bkce/public/consul",
     "leave_on_terminate": false,
     "node_name": "gse-1",
     "bootstrap_expect": 3,
-    "pid_file": "/data/bkee/logs/consul.pid",
+    "pid_file": "/data/bkce/logs/consul.pid",
     "encrypt": "uUrZvLe8gff5jNKRwH1QOw==",
     "ports": {
         "dns": 53
@@ -40,7 +40,7 @@
 - 服务配置
 
 ```bash
-[root@rbtnode1 /data/install]# cat /data/bkee/etc/consul.d/license.json
+[root@rbtnode1 /data/install]# cat /data/bkce/etc/consul.d/license.json
 {
     "service": {
         "id": "license-1",
@@ -48,7 +48,7 @@
             {
                 "service_id": "license-1",
                 "interval": "10s",
-                "script": "/data/bkee/bin/health_check/check_proc_exists -m license"
+                "script": "/data/bkce/bin/health_check/check_proc_exists -m license"
             }
         ],
         "name": "license",

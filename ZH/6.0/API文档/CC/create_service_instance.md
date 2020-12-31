@@ -68,7 +68,7 @@ POST
             "auto_time_gap": 60,
             "reload_cmd": "",
             "bk_func_name": "java",
-            "work_path": "/data/bkee",
+            "work_path": "/data/bkce",
             "stop_cmd": "",
             "face_stop_cmd": "",
             "port": "8008,8443",

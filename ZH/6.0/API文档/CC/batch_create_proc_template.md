@@ -141,7 +141,7 @@ POST
           },
           "work_path": {
             "as_default_value": true,
-            "value": "/data/bkee"
+            "value": "/data/bkce"
           },
           "bk_start_param_regex": {
             "as_default_value": true,

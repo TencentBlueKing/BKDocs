@@ -84,6 +84,7 @@ tar xvf bcs_ce-6.0.3.tgz -C /data/
 ### 2.5 参数填写
 
 ![avatar](../../assets/args_input.png)
+
 ![](../../assets/2020-11-18-16-42-52.png)
 
 ### 2.6 执行部署作业

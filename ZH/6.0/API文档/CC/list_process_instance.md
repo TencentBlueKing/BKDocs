@@ -75,7 +75,7 @@ POST
         "stop_cmd": "",
         "timeout": 30,
         "user": "",
-        "work_path": "/data/bkee",
+        "work_path": "/data/bkce",
         "bind_info": [
             {
                 "enable": false,  

@@ -46,7 +46,7 @@ upstream PAAS_AGENT_TEST {
 - 在 paas 服务器上进行测试`curl http://10.x.x.x:8010`
 
 ```bash
-[root@nginx-1 /data/bkee/etc/nginx]# curl http://10.x.x.x:8010
+[root@nginx-1 /data/bkce/etc/nginx]# curl http://10.x.x.x:8010
 curl: (7) Failed connect to 10.x.x.x:8010; 拒绝连接
 ```
 
@@ -54,18 +54,18 @@ curl: (7) Failed connect to 10.x.x.x:8010; 拒绝连接
 
 ```bash
 # 8010 未监听起来
-[root@rbtnode2 /data/bkee/etc/nginx]# netstat -lnpt|grep 8010
-[root@rbtnode2 /data/bkee/etc/nginx]#
+[root@rbtnode2 /data/bkce/etc/nginx]# netstat -lnpt|grep 8010
+[root@rbtnode2 /data/bkce/etc/nginx]#
 
 # 确认 nginx 的路径
-[root@rbtnode2 /data/bkee/etc/nginx]# ps -ef|grep nginx
+[root@rbtnode2 /data/bkce/etc/nginx]# ps -ef|grep nginx
 root     17847 26444  0 12:12 pts/1    00:00:00 grep --color=auto nginx
 root     20934     1  0 Jul18 ?        00:00:00 nginx: master process nginx
-[root@rbtnode2 /data/bkee/etc/nginx]# ll /proc/20934/|grep exe
+[root@rbtnode2 /data/bkce/etc/nginx]# ll /proc/20934/|grep exe
 
 # 重新 reloadnginx，8010起来
-[root@rbtnode2 /data/bkee/etc/nginx]# /usr/sbin/nginx -s reload
-[root@rbtnode2 /data/bkee/etc/nginx]# netstat -lnpt|grep 8010
+[root@rbtnode2 /data/bkce/etc/nginx]# /usr/sbin/nginx -s reload
+[root@rbtnode2 /data/bkce/etc/nginx]# netstat -lnpt|grep 8010
 tcp        0      0 0.0.0.0:8010            0.0.0.0:*               LISTEN      20934/nginx: master
 ```
 

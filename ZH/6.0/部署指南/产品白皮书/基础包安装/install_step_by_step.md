@@ -2441,7 +2441,7 @@ bkdata 分为 dataapi，databus 和 monitor（蓝鲸监控后台）三个模块
 3. 编辑/opt/elasticsearch/config/elasticsearch.yml 文件：
 
     ```yaml
-    cluster.name: bkee-es
+    cluster.name: bkce-es
     node.name: es-1
     node.attr.tag: cold
     path.data: /var/lib/es
