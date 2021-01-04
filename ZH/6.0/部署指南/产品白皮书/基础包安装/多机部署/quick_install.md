@@ -86,7 +86,6 @@ wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.2.tgz
 1. 执行初始化操作
 
 ```bash
-# 快速部署暂不支持自定义安装目录
 cd /data/install/
 ./bk_install common
 ```

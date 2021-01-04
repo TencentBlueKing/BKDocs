@@ -4,27 +4,31 @@
 
 ## 前置条件
 
-> 登录用户是 admin。
+> 登录用户需要切换到管理员角色（超级管理员、系统管理员、分级管理员）
 
 ## 操作步骤
 
-1. 点击`权限模板`菜单进入权限模板列表页。
+1. 切换到**管理员身份**。
 
-   ![image-20200921095941316](CreatePremissionTemplates/image-20200921095941316.png)
+   ![image-20201210105441469](CreatePremissionTemplates/image-20201210105441469.png)
 
-2. 点击`新建`按钮创建权限模板。
+2. 点击**权限模板**菜单进入权限模板列表页。
 
-   ![image-20200921100403455](CreatePremissionTemplates/image-20200921100403455.png)
+   ![image-20201210105735916](CreatePremissionTemplates/image-20201210105735916.png)
 
-3. 创建完权限模板，我们可以将该模板关联某些用户组，对应用户组就具备了该权限模板所包含的权限。
+3. 点击**新建**按钮创建权限模板。
 
-   ![image-20200921100610224](CreatePremissionTemplates/image-20200921100610224.png)
+   ![image-20201210105834597](CreatePremissionTemplates/image-20201210105834597.png)
 
-4. 权限模板保存后，可以再次进行编辑，点击需要编辑的权限模板名称，进入模板详情页面，点击`编辑`按钮进行模板编辑 ，编辑完成 保存。
+4. 创建完权限模板，我们可以将该模板关联某些用户组，对应用户组就具备了该权限模板所包含的权限。
 
-   ![image-20200921100735187](CreatePremissionTemplates/image-20200921100735187.png)
+   ![image-20201210105927183](CreatePremissionTemplates/image-20201210105927183.png)
 
-5. 权限模板编辑意味着模板的更新，模板更新后可以`同步`到已经关联的用户组。
+5. 权限模板保存后，可以再次进行编辑，点击需要编辑的权限模板名称，进入模板详情页面，点击**编辑**按钮进行模板编辑 ，编辑完成 保存。
 
-   ![image-20200921101130398](CreatePremissionTemplates/image-20200921101130398.png)
+   ![image-20201210110014114](CreatePremissionTemplates/image-20201210110014114.png)
+
+6. 权限模板编辑意味着模板的更新，模板更新后可以**同步**到已经关联的用户组。
+
+   ![image-20201210110107399](CreatePremissionTemplates/image-20201210110107399.png)
 
