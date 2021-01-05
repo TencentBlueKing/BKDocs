@@ -36,12 +36,16 @@
     install -d -m 755 /data/src/cert
     tar xf ssl_certificates.tar.gz -C /data/src/cert
     ```
+  - 拷贝 rpm 软件包
+
+    ```bash
+    cp -a /data/src/yum /opt
+    ```
 
 * 配置参数
 
   - install.config 这个文件安装脚本会自动生成，无需自行配置。
-
-  - globals.env 重点关注域名和 GSE 外网 IP 相关的配置，详情参考 [环境准备-配置文件](../环境准备/get_ready.md#配置文件) 一节。
+  - 域名相关配置可参考 [环境准备] 章节。
 
 * 执行安装
 
@@ -51,7 +55,7 @@
   cd /data/install
   ./install_minibk -y
   ```
-
+  
   如果按需部署，假设只需要 PaaS，CMDB，JOB 平台，请执行：
 
   ```bash
