@@ -162,6 +162,12 @@ install -d -m 755 /data/src/cert
 tar xf ssl_certificates.tar.gz -C /data/src/cert
 ```
 
+## 拷贝 rpm 软件包
+
+```bash
+cp -a /data/src/yum /opt
+```
+
 ## 配置 install.config 文件
 
 install.config 是模块和服务器对应关系的配置文件，描述在哪些机器上安装哪些模块。
