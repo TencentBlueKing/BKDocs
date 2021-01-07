@@ -29,7 +29,10 @@
     ```bash
     tar xf bkce_src-6.0.x.tgz  -C /data
     ```
-
+  - 解压各个产品软件包
+    ```bash
+    cd /data/src/; for f in *gz;do tar xf $f; done
+    ```
   - 获取机器的 MAC 地址后，下载 [证书文件](https://bk.tencent.com/download_ssl/)，解压到 src/cert 目录下
 
     ```bash
