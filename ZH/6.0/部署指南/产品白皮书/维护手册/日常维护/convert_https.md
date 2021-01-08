@@ -36,7 +36,7 @@
   consul kv put bkcfg/global/bk_http_schema https
 
   # 刷新前端index.html调用的api地址
-  pcmd -m nginx '$CTRL_DIR/bin/release_job_frontend.sh -p $BK_HOME -s $BK_PKG_SRC_PATH -B $BK_PKG_SRC_PATH/backup -i $BK_JOB_API_PUBLIC_URL'
+  ./pcmd.sh -m nginx '$CTRL_DIR/bin/release_job_frontend.sh -p $BK_HOME -s $BK_PKG_SRC_PATH -B $BK_PKG_SRC_PATH/backup -i $BK_JOB_API_PUBLIC_URL'
 
   # 刷新job后台的web.url配置，并重启进程
   ./bkcli render job
