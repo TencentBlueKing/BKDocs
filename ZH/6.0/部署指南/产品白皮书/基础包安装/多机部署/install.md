@@ -9,6 +9,8 @@
 
 进行标准部署之前，请确保已完成 [环境准备](../../基础包安装/环境准备/get_ready.md) 操作。
 
+## 初始化并检查环境
+
 ```bash
 # 初始化环境
 ./bk_install common
@@ -16,6 +18,8 @@
 # 校验环境和部署的配置
 ./health_check/check_bk_controller.sh
 ```
+
+以上一键部署脚本的详解见文档：[初始化并检查安装环境详解](./install_common.md)
 
 ### 部署 PaaS 
 
