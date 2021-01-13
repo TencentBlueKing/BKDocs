@@ -103,3 +103,40 @@
 - install/check.sh
 
 分别使用 `./bkcli status <模块>` 和 `./bkcli check <模块>` 来调用，根据传入的模块名，ssh 登陆到模块所在的 IP，然后在该 IP 上，运行 bks.sh 和 check_consul_svc_health.sh 的脚本。
+
+
+### 启动失败定位
+
+如果检查状态的时候，发现进程是failed状态，需要定位问题，通用的办法如下，下面以bk-license.service为例：
+
+1. 通过 journalctl 查看该服务最近的启动日志，观察是否有线索
+
+    ```bash
+    # 查看bk-license服务的最新的50行日志，直接输出，不传入给less等PAGER
+    journalctl -u bk-license.service -n 50 --no-pager
+    ```
+
+2. 如果没有可观察到的线索，查看服务的日志，日志目录位于 `$BK_HOME/logs/模块名/` 下，如果不确定看哪个日志，找到最新的几个观察
+
+    ```bash
+    cd $BK_HOME/logs/license/ && ls -lrt 
+    less +F license_serverxxxx.log # +F为了直接看行尾的日志
+    ```
+
+3. 如果依然没有找到线索，可以尝试命令行直接启动。因为蓝鲸使用blueking账号，应使用runuser运行，以便发现权限相关的问题：
+
+    ```bash
+    # 查看ExecStart使用的命令行，把相关的变量替换为实际的。
+    # 需要注意有一些变量是通过EnvironmentFile=来引用的
+    systemctl cat bk-license.service 
+    runuser -u blueking -- /data/bkce/license/license/bin/license_server -config /data/bkce/etc/license.json
+    ps -ef | grep license_server
+    ```
+
+4. 上一步可能依然没有任何输出，最后的招可以使用strace命令观察（需要一定的Linux系统调用基础）
+
+    ```bash
+    strace  -f runuser -u blueking -- /data/bkce/license/license/bin/license_server -config /data/bkce/etc/license.json
+    ```
+
+以上是举的license_server进程例子，其他进程请根据实际命令和参数来定位。
