@@ -162,3 +162,20 @@ $ ./bin/install_py_venv_pkgs.sh -h
     fi
     cd $tmpdir/ && mv $version env && tar -czf $PKG_DIR/$(basename $orig_tgz) env
     ```
+
+## 加密解释器说明
+
+如果某个Python项目代码加密，使用的是加密解释器时，直接运行python脚本是会报错的。处理方式如下：
+
+以运行 paas 的 esb 项目的脚本为例：
+
+```bash
+# 切换到esb虚拟环境
+workon open_paas-esb
+
+# 设置环境变量
+export BK_FILE_PATH=/data/bkce/open_paas/cert/saas_priv.txt
+
+# 运行脚本
+python manage.py
+```
