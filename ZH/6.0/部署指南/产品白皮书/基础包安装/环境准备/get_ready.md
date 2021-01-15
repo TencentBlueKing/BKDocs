@@ -162,6 +162,12 @@ install -d -m 755 /data/src/cert
 tar xf ssl_certificates.tar.gz -C /data/src/cert
 ```
 
+## 解压各个产品软件包
+
+ ```bash
+ cd /data/src/; for f in *gz;do tar xf $f; done
+ ``` 
+
 ## 拷贝 rpm 软件包
 
 ```bash

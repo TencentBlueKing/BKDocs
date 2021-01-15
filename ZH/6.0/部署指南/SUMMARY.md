@@ -29,6 +29,7 @@
         * [机器重启](产品白皮书/维护手册/日常维护/host_reboot.md)
         * [磁盘清理](产品白皮书/维护手册/日常维护/disk_clean.md)
         * [组件更新](产品白皮书/维护手册/日常维护/update.md)
+        * [服务扩容](产品白皮书/维护手册/日常维护/service_expansion.md)
         * [DB 日常维护](产品白皮书/维护手册/日常维护/data_backup.md)
         * [开启 Proxy](产品白皮书/维护手册/日常维护/open_proxy.md)
         * [http 切换为 https ](产品白皮书/维护手册/日常维护/convert_https.md)
