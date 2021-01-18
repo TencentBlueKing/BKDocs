@@ -1,29 +1,38 @@
 # 开启 Proxy
 
-## 修改 bknodeman 的配置文件
+蓝鲸部署默认不开启 Proxy，因为部分用户存在跨云管控需求，而实现跨云管控需要安装 proxy 。
 
-> 注意：如果填写的是域名格式且是未经过解析的。那么需要在安装 proxy 的机器上绑定 hosts。否则在安装过程中会出现 `Could not resolve host` 的报错。
+本文描述，开启 proxy 的方法：
+## 登录至节点管理机器
 
 ```bash
-# 登陆至节点管理所在的机器。$CTRL_DIR 请使用实际部署脚本路径替换。
+# $CTRL_DIR 请使用实际部署脚本路径替换。
 source $CTRL_DIR/utils.fc
 ssh $BK_NODEMAN_IP
-
-# 修改配置文件。$INSTALL_PATH 请使用实际部署安装路径替换。
-vim $INSTALL_PATH/bknodeman/nodeman/bin/environ.sh
 ```
 
-示例：**公网回调地址请按实际进行替换**
+## 获取外网 IP
 
-![modify_bknodeman_config](../../assets/modify_nodeman_config.png)
-
-## 重启节点管理服务
+获取节点管理所在机器的外网 IP 并写入到相关文件中。
 
 ```bash
-# 中控机执行
-./bkcli restart bknodeman
-./bkcli status bknodeman
+echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
 ```
 
-修改节点管理配置文件并重启节点管理服务后，再前往节点管理页面重新安装 proxy。
+## 重新渲染配置
 
+渲染配置可以选择重装或者重新渲染配置文件的方式。
+
+```bash
+# 重新渲染节点管理配置文件
+./bkcli render bknodeman
+
+# 重装节点管理 （可选），建议是重新渲染配置文件
+./bkcli install bknodeman
+```
+
+## 重启节点管理进程
+
+```bash
+./bkcli restart bknodeman
+```
