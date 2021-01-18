@@ -77,7 +77,7 @@ def get_catalog_json(catalog_list):
             except IndexError as e:
                 print(e)
                 print('{}SUMMARY.md format error, check the [] and (), error code 11'.format(name))
-                sys.exit(1)
+                # sys.exit(1)
             if not chapter_path == '' and not chapter_path.startswith('6.0'):
                 chapter_path = name+chapter_path
             if chapter.startswith('*'):
@@ -121,7 +121,7 @@ def get_catalog_json(catalog_list):
         except yaml.parser.ParserError as e:
             print(e)
             print('{}SUMMARY.md format error, error code 22'.format(name))
-            sys.exit(1)
+            # sys.exit(1)
         f = open(
             './bookcatalog/{}.json'.format(name.split('/')[-2]),
             'w'
@@ -154,7 +154,7 @@ def check_md():
                 except TypeError as e:
                     print(e)
                     print('in {0}, Some section don\'t assign md, pls check the \'()\' in the SUMMARY of {0} '.format(filename))
-                    sys.exit(1)
+                    # sys.exit(1)
                 for md in md_list:
                     try:
                         f = open(md['path'], 'r')
@@ -162,7 +162,7 @@ def check_md():
                         print(e)
                         print('pls check the file or directory.')
                         # raise NotADirectoryError
-                        sys.exit(1)
+                        # sys.exit(1)
 
                     f.close()
 
