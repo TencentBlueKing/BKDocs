@@ -20,6 +20,6 @@
     - 如果是通过 DNS 解析的，请修改相应的 DNS 解析。
 
 - 请重新部署所有官方 SaaS 
-  ```plain
+  ```bash
   ./bkcli install saas-o
   ``` 
