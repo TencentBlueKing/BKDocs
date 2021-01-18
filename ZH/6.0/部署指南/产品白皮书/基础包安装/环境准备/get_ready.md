@@ -202,33 +202,15 @@ cp -a install.config.3ip.sample install.config
 
 蓝鲸社区版部署脚本中(install 目录)下有以下文件中有获取 IP 的函数 get_lan_ip，非标准地址，均需要在安装部署前完成修改。
 
-```bash
-/data/install/health_check/deploy_chek.py
-/data/install/agent_setup/download#agent_setup_pro.sh
-/data/install/agent_setup/download#agent_setup_aix.ksh
-/data/install/agent_setup/download#agent_setup.sh
-/data/install/appmgr/docker/saas/buildsaas
-/data/install/appmgr/docker/build
-/data/install/scripts/gse/agent/gsectl
-/data/install/scripts/gse/plugins/stop.sh
-/data/install/scripts/gse/plugins/start.sh
-/data/install/scripts/gse/plugins/reload.sh
-/data/install/scripts/gse/agentaix/gsectl.ksh
-/data/install/scripts/gse/proxy/gsectl
-/data/install/scripts/gse/server/gsectl
-/data/install/precheck.sh
-/data/install/functions
-```
-
 这些文件列表，可能随版本迭代变动，也可以用以下命令查找出来包含这个函数的脚本文件有哪些：
 
 ```bash
-grep -l 'get_lan_ip *()' -r /data/install
+grep "get_lan_ip  ()" -lrl
 ```
 
 修改方法：
 
-假设服务器的 ip 是：138.x.x.x，它不在标准的私有地址范围，那么你需要修改 get_lan_ip() 函数为：
+假设服务器的 ip 是：138.x.x.x，它不在标准的私有地址范围，那么你需要修改 get_lan_ip  () 函数为：
 
 ```bash
 get_lan_ip  () {
