@@ -11,8 +11,8 @@
 4. 同步中控机的脚本到新主机 `./bkcli sync common` 。
    
 5. 新增主机上运行脚本：`bin/init_new_node.sh`，它主要封装了以下几个步骤操作，下面步骤无需手动运行。
-   1. 新增主机上运行 `bin/update_bk_env.sh` 脚本（可通过作业平台，或者中控机pcmd）。
+   1. 新增主机上运行 `bin/update_bk_env.sh` 脚本（可通过作业平台，或者中控机 pcmd）。
    
-   2. 新增主机上配置中控机上搭建的yum源：`$CTRL_DIR/bin/setup_local_yum.sh -l http://<中控机ip>:8080 -a` 。
+   2. 新增主机上配置中控机上搭建的 yum 源：`$CTRL_DIR/bin/setup_local_yum.sh -l http://<中控机ip>:8080 -a` 。
    
-   3. 安装consul client：`source ./load_env.sh; $CTRL_DIR/bin/install_con  sul.sh -j $BK_CONSUL_IP_COMMA -r client -b "$LAN_IP" --dns-port 53 -e "$BK_CONSUL_KEYSTR_32BYTES"` 。
+   3. 安装 consul client：`source ./load_env.sh; $CTRL_DIR/bin/install_con  sul.sh -j $BK_CONSUL_IP_COMMA -r client -b "$LAN_IP" --dns-port 53 -e "$BK_CONSUL_KEYSTR_32BYTES"` 。

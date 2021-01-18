@@ -1,6 +1,6 @@
 # 开启 Proxy
 
-## 修改 bknodeman 的配置文件。
+## 修改 bknodeman 的配置文件
 
 > 注意：如果填写的是域名格式且是未经过解析的。那么需要在安装 proxy 的机器上绑定 hosts。否则在安装过程中会出现 `Could not resolve host` 的报错。
 

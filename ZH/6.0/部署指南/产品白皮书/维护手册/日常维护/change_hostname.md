@@ -20,7 +20,7 @@
     systemctl restart consul
     ```
 
-4. 如果修改主机名的机器是consul server的leader，那么这时会触发consul 集群的重新选主，需要等待一段时间。
+4. 如果修改主机名的机器是 consul server 的 leader，那么这时会触发 consul 集群的重新选主，需要等待一段时间。
 
     ```bash
     consul monitor # 持续观察日志输出，按Ctrl-C中断

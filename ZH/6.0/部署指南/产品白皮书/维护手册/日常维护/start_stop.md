@@ -107,7 +107,7 @@
 
 ### 启动失败定位
 
-如果检查状态的时候，发现进程是failed状态，需要定位问题，通用的办法如下，下面以bk-license.service为例：
+如果检查状态的时候，发现进程是 failed 状态，需要定位问题，通用的办法如下，下面以 bk-license.service 为例：
 
 1. 通过 journalctl 查看该服务最近的启动日志，观察是否有线索
 
@@ -123,7 +123,7 @@
     less +F license_serverxxxx.log # +F为了直接看行尾的日志
     ```
 
-3. 如果依然没有找到线索，可以尝试命令行直接启动。因为蓝鲸使用blueking账号，应使用runuser运行，以便发现权限相关的问题：
+3. 如果依然没有找到线索，可以尝试命令行直接启动。因为蓝鲸使用 blueking 账号，应使用 runuser 运行，以便发现权限相关的问题：
 
     ```bash
     # 查看ExecStart使用的命令行，把相关的变量替换为实际的。
@@ -133,10 +133,10 @@
     ps -ef | grep license_server
     ```
 
-4. 上一步可能依然没有任何输出，最后的招可以使用strace命令观察（需要一定的Linux系统调用基础）
+4. 上一步可能依然没有任何输出，最后的招可以使用 strace 命令观察（需要一定的 Linux 系统调用基础）
 
     ```bash
     strace  -f runuser -u blueking -- /data/bkce/license/license/bin/license_server -config /data/bkce/etc/license.json
     ```
 
-以上是举的license_server进程例子，其他进程请根据实际命令和参数来定位。
+以上是举的 license_server 进程例子，其他进程请根据实际命令和参数来定位。

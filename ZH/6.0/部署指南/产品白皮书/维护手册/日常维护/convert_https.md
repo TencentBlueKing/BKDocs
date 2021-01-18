@@ -51,7 +51,7 @@
     consul kv put bkcfg/global/bk_http_schema https
     ```
 
-4. 渲染PaaS和CMDB配置并重启
+4. 渲染 PaaS 和 CMDB 配置并重启
 
     ```bash
     ./bkcli render paas
@@ -61,7 +61,7 @@
     ./bkcli restart cmdb
     ```
 
-5. 渲染job的配置，并重启
+5. 渲染 job 的配置，并重启
 
     ```bash
     # 刷新前端index.html调用的api地址
@@ -72,7 +72,7 @@
     ./bkcli restart job
     ```
 
-6. 重新部署SaaS，从PaaS中获取新的BK_HTTP_SCHEMA(https)
+6. 重新部署 SaaS，从 PaaS 中获取新的 BK_HTTP_SCHEMA(https)
 
     ```bash
     ./bkcli install saas-o 
