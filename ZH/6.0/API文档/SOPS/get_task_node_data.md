@@ -43,7 +43,7 @@ GET
 
 ### 请求参数示例
 
-```plain
+```bash
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -57,7 +57,7 @@ GET
 
 ### 返回结果示例
 
-```plain
+```bash
 {
     "result": true,
     "data": {

@@ -41,7 +41,7 @@ POST
 
 ### 请求参数示例
 
-```plain
+```bash
 {
     "result": true,
     "data": [

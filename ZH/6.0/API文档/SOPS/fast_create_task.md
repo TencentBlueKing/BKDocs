@@ -391,7 +391,7 @@ POST
 
 ### 返回结果示例
 
-```plain
+```bash
 {
     "result": true,
     "data": {

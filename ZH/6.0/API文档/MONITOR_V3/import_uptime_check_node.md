@@ -24,7 +24,7 @@ POST
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 ## 请求参数示例
-```plain
+```bash
 {"conf_list":[{
     "node_conf": {
         "carrieroperator": "内网",
@@ -95,7 +95,7 @@ city | str | 是 | 城市 |
 
 ## 返回结果示例
 
-```plain
+```bash
 {
     "message": "OK",
     "code": "0",

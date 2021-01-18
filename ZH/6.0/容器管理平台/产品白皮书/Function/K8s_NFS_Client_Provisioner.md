@@ -91,7 +91,7 @@ Done.
 
 ### 部署 Chart
 
-```plain
+```bash
 $ helm install --set nfs.server=x.x.x.x --set nfs.path=/exported/path --storageClass.defaultClass=true	 stable/nfs-client-provisioner
 ```
 

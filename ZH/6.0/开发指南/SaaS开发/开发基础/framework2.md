@@ -223,7 +223,7 @@ render 函数接受三个参数：
 
 > 为什么 templates 目录底下还需要再加一层以 APP_NAME 命名的目录？
 > 假设 settings INSTALLED_APPS = ('app1', 'app2')，工程目录如下
-> ```plain
+> ```bash
 > PROJCET_ROOT
 > |__ app1
 > |__ __ templates
@@ -450,7 +450,7 @@ def your_view_func(request):
 
 - 异常类所在命名空间
 
-	- blueapps.core.exceptionsplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
+	- blueapps.core.exceptions
 
 - 服务端异常
 

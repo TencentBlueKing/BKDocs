@@ -41,7 +41,7 @@ POST
 |    exclude_task_nodes_id     |   否   |  需要移除的可选节点 ID 列表，不填时默认为 [] |
 ### 请求参数示例
 
-```plain
+```bash
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
@@ -53,7 +53,7 @@ POST
 
 ### 返回结果示例
 
-```plain
+```bash
 {
     "result": true,
     "data": {

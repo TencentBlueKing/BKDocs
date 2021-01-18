@@ -96,7 +96,7 @@ pip3 install -r requirements.txt
 
 打开 `MySQL` 命令行执行
 
-```plain
+```bash
 CREATE DATABASE `{APP_CODE}` default charset utf8 COLLATE utf8_general_ci;
 ```
 

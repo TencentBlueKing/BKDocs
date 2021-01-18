@@ -37,7 +37,7 @@ POST
 
 ### 请求参数示例
 
-```plain
+```bash
 {
     "app_code": "app_code",
     "app_secret": "app_secret",
@@ -51,7 +51,7 @@ POST
 
 ### 返回结果示例
 
-```plain
+```bash
 {
     "message": "success",
     "result": true

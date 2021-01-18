@@ -99,19 +99,19 @@ output.gse:
 
 1. 实现 GetStat 函数
 
-  ```plain
+  ```bash
   type GetStat func() beat.MapStr
   ```
 
 2. 实例化运营数据上报模块
 
-  ```plain
+  ```bash
   stat, err := stat.NewCycleStat(beatName, GetStat, beat.Send)
   ```
 
 3. 开启运营数据上报模块
 
-  ```plain
+  ```bash
   stat.Run()
   ```
 
@@ -121,7 +121,7 @@ output.gse:
 
 #### 工程结构
 
-```plain
+```bash
 <beats>
 	└─<mybeat>
 		├─examplebeat.yml	采集器的配置文件

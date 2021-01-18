@@ -18,7 +18,7 @@
 
 ![2020](media/16003086275528.jpg)
 
-    - 配置后的视图展示(Panel)plainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
+    - 配置后的视图展示(Panel)
 
 ![2020](media/16003085498859.jpg)
 

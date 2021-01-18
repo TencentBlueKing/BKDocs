@@ -23,7 +23,7 @@
    template_k8s_remove_id = 4 （[BlueKing][BCS][K8S] Delete Node）
    ```
    假如流程 ID 自增提交后的流程 ID 与模版名称如下：
-   ```plain
+   ```bash
    10001  [BlueKing][BCS][K8S] Create Master
    10002  [BlueKing][BCS][K8S] Remove Master
    10003  [BlueKing][BCS][K8S] Add Node
