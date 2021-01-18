@@ -205,7 +205,7 @@ cp -a install.config.3ip.sample install.config
 这些文件列表，可能随版本迭代变动，也可以用以下命令查找出来包含这个函数的脚本文件有哪些：
 
 ```bash
-grep "get_lan_ip  ()" -lrl
+grep "get_lan_ip  ()" -lr /data/install
 ```
 
 修改方法：
