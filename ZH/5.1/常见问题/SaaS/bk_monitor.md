@@ -338,13 +338,13 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
 
 	- 去到业务下任意一台机器，触发一条自定义字符告警
 
-		```bashplain
+		```bash
 		 /usr/local/gse/plugins/bin/gsecmdline -d 2001 -l "xxx"
 		```
 
 	- 回到bkdata机器，看下日志，正常会输出如下的日志
 
-		![-w2020](../assets/tapd_10158081_base64_1532316099_62.png)plainplain
+		![-w2020](../assets/tapd_10158081_base64_1532316099_62.png)
 
 3. 如果第二步正常，可以看到日志输出
 

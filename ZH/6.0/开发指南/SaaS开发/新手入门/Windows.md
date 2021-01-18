@@ -138,7 +138,7 @@ def hello(request):
 ```
 
 - 添加路由 home_application/urls.py
-```plain
+```bash
 url(r'^$', views.hello),
 ```
 

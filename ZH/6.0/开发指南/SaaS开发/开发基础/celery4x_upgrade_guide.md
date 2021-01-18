@@ -81,14 +81,14 @@ if IS_USE_CELERY:
 
    ，具体表现在 celery4.x 版本的配置缩写全都为小写，但是为了考虑到对于 celery3.x 版本的支持，所以大写的配置名仍然是可以使用的.例如:
 
-   ```plain
+   ```bash
    CELERY_TIMEZONE = 'Asia/Shanghai' # 默认时区是UTC 旧
    timezone = 'Asia/Shanghai' #默认时区是UTC 新
    ```
 
    关于 celery 大小写的升级，celery 提供了全新的命令来批量去迁移配置：
 
-   ```plain
+   ```bash
    celery upgrade settings [filename]
    ```
 
@@ -146,7 +146,7 @@ if IS_USE_CELERY:
 
 16. 对 redis 哨兵提供了支持。
 
-    ```plain
+    ```bash
     sentinel://0.0.0.0:26379;sentinel://0.0.0.0:26380/...
     ```
 

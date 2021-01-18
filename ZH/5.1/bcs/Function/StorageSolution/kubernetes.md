@@ -12,7 +12,7 @@ Volume 生命周期与 Pod 绑定，容器挂掉重启后，Volume 的数据依�
 -  PV
 为了更好管理应用的持久化数据存储，K8S 推出了 PV（[Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)）的概念。PV 独立于 Pod 的生命周期。应用在使用 PV 时，先创建 PVC（[PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)），然后在 Pod 中声明绑定 PVC。
 
-    PV 有 Static PV 和 [Dynamic PV](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/) 两种使用方式。plainplainplainplainplainplainplainplainplainplainplainplainplainplain
+    PV 有 Static PV 和 [Dynamic PV](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/) 两种使用方式。
 
 - PV 、PVC 的关系：
    - PV、PVC 类似 Nodes、Pods 的关系，Pod 是最小调度单元，资源是 Node 提供。

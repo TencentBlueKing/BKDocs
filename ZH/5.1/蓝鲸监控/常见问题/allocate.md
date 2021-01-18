@@ -30,7 +30,7 @@ ls -rlt uptime* | tail -n1
 ```
 假定这里最新的日志文件是`uptimecheckbeat.1`，从中过滤是否有心跳上报关键字“Publish”，且上报时间是否是最新时间：
 
-```plain
+```bash
 tail -n100 uptimecheckbeat.1 | grep -A10 Publish
 ```
 正常情况下，可观察到最新 1 分内的采集器心跳上报情况：
@@ -75,7 +75,7 @@ ls -rlt uptime* | tail -n1
 ```
 假定这里最新的日志文件是`uptimecheckbeat.1`，从中过滤是否有 task_id 为 22 的数据上报，且上报时间是否是最新时间：
 
-```plain
+```bash
 grep -B25 '"task_id": 22' uptimecheckbeat.1
 ```
 

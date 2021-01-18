@@ -234,7 +234,7 @@ cd /data/bkce/open_paas/paas/media/saas_files && rm *
 ```
 
 - 清理 public
-```plain
+```bash
 cd /data/bkce/public/mongodb/journal && rm *
 /data/bkce/public/mysql && rm ib_logfile* && rm rbtnode1.err
 cd /data/bkce/service/mysql/docs && rm *
@@ -338,7 +338,7 @@ mkdir gse && tar zxvf gse_client-linux-x86_64.tgz -C ./gse/
 ```
 
 - 精简 gse_agent
-```plain
+```bash
 rm gse/plugins/bin/*
 sed -i 's/auto_launch: 1/auto_launch: 0/g' gse/plugins/project.yaml
 ```

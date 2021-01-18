@@ -24,7 +24,7 @@ POST
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 ### 请求参数示例
-```plain
+```bash
 {   "bk_biz_id": 2,
     "conf_list": [
         {
@@ -208,7 +208,7 @@ city | str | 是 | 城市 |
 | config | dict | 是 | 拨测任务详细配置 |
 
 ### TCP 任务 config 示例
-```plain
+```bash
 "config": {
             "ip_list": ["10.0.2.13"],
             "port": 3306,
@@ -230,7 +230,7 @@ city | str | 是 | 城市 |
 | response_code | str | 否 | 期望响应码 |
 
 ### HTTP 任务 config 示例
-```plain
+```bash
 "config": {
         "insecure_skip_verify": true,
         "urls": "http://baidu.com",
@@ -327,7 +327,7 @@ message | str | 否 | 说明 |
 
 
 ### 返回结果示例
-```plain
+```bash
 {
     "message": "OK",
     "code": "0",

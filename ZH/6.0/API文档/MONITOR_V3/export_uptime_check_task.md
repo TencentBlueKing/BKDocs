@@ -35,7 +35,7 @@ GET
 
 ### 请求参数示例
 
-```plain
+```bash
 {
      biz_id: 2,
      task_ids: "60",
@@ -44,7 +44,7 @@ GET
 ```
 
 ### 返回参数示例
-```plain
+```bash
 {
     "message": "OK",
     "code": 200,
@@ -209,7 +209,7 @@ GET
 | response_code | str | 期望响应码 |
 
 ### http 任务返回的 config 示例
-```plain
+```bash
 {
     "config": {
         "insecure_skip_verify": true,

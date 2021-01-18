@@ -110,7 +110,7 @@
 
 在 graphite 函数中使用`myinterval`类型的模板变量的示例`Interval`：
 
-```plain
+```bash
 summarize($myinterval, sum, false)
 ```
 
