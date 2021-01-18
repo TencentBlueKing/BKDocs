@@ -132,7 +132,7 @@ echo "$http_proxy" "$https_proxy"
 
 ## 检查部署机器的主机名
 
-请检查准备用于部署蓝鲸的 3 台机器的主机名是否相同。如果存在同名请进行修改。
+请检查准备用于部署蓝鲸的 3 台机器的主机名是否相同。如果存在同名请进行修改。可参考 [修改主机名](../../维护手册/日常维护/change_hostname.md)
 
 ```bash
 hostname
@@ -205,7 +205,7 @@ cp -a install.config.3ip.sample install.config
 这些文件列表，可能随版本迭代变动，也可以用以下命令查找出来包含这个函数的脚本文件有哪些：
 
 ```bash
-grep "get_lan_ip  ()" -lrl
+grep "get_lan_ip  ()" -lr /data/install
 ```
 
 修改方法：

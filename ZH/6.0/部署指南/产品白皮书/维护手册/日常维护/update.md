@@ -10,7 +10,7 @@
    
 3. 部分模块 support-files/bkiam/ 目录下有更新 json 文件的，需要注意 bkiam migration 是否执行成功，如果中途报错，需要解决权限模型注册的问题再继续。
 
-### 后台组件更新的通用步骤如下：
+### 后台组件更新的通用步骤如下
 
 以 CMDB 为例：
 
@@ -20,7 +20,7 @@
 4. 运行 `./bkcli upgrade cmdb`
 5. 将 src/*/VERSION 的版本号刷新到 MySQL 库中存储版本信息的表中：`source ./tools.sh; _update_common_info`
 
-### SaaS 的更新通用步骤有两种方式：
+### SaaS 的更新通用步骤有两种方式
 
 1. 页面更新：登陆 PaaS 平台 -> 开发者中心 -> S-mart 应用 -> 找到待更新的 SaaS 应用名 -> 上传版本 -> 发布部署 -> 选择对应的环境和版本 -> 部署
    
@@ -87,7 +87,7 @@ gse 分为 server 端和 client 端的更新。 Server 端更新和常规通用�
 
 ### Job 更新
 
-Job是前后端分离的部署架构，前后端分开更新，分别使用 `bin/release_job_frontend.sh` 和 `bin/release_job_backend.sh`，但经过 ` upgrade.sh` 脚本封装后，可以直接使用常规通用的来实现更新。
+Job 是前后端分离的部署架构，前后端分开更新，分别使用 `bin/release_job_frontend.sh` 和 `bin/release_job_backend.sh`，但经过 `upgrade.sh` 脚本封装后，可以直接使用常规通用的来实现更新。
 
 ```bash
 ./bkcli upgrade job
@@ -108,7 +108,7 @@ Job是前后端分离的部署架构，前后端分开更新，分别使用 `bin
 
 ### 监控平台更新
 
-监控平台区分了 2 个数据库，一个是 `bk_monitorv3`，一个是 `bkmonitorv3_alert`，SaaS 和后台都会读写这 2 个库。SaaS 的app_code 是bk_monitorv3，后台模块是 bkmonitorv3。更新时，需要先更新 SaaS，数据库的 schema 更新维护是在 SaaS 完成，权限模型的更新也由 SaaS 控制。每次先更新 SaaS，然后更新后台。
+监控平台区分了 2 个数据库，一个是 `bk_monitorv3`，一个是 `bkmonitorv3_alert`，SaaS 和后台都会读写这 2 个库。SaaS 的 app_code 是 bk_monitorv3，后台模块是 bkmonitorv3。更新时，需要先更新 SaaS，数据库的 schema 更新维护是在 SaaS 完成，权限模型的更新也由 SaaS 控制。每次先更新 SaaS，然后更新后台。
 
 ```bash
 # 更新 SaaS。前提是已将 bk_monitorv3 的 SaaS 包放置 src/official_saas/ 下

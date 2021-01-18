@@ -1,36 +1,36 @@
 # 蓝鲸 Python 运行环境简介
 
-蓝鲸的Python项目分为后台直接部署的服务和通过S-mart应用使用Docker部署的SaaS。它们运行时使用的Python环境有所差异，本文档描述
-这些Python运行环境安装部署和配置的细节。安装和使用遇到和解释器相关的问题，请先仔细阅读本文档作为前提。
+蓝鲸的 Python 项目分为后台直接部署的服务和通过 S-mart 应用使用 Docker 部署的 SaaS。它们运行时使用的 Python 环境有所差异，本文档描述
+这些 Python 运行环境安装部署和配置的细节。安装和使用遇到和解释器相关的问题，请先仔细阅读本文档作为前提。
 
 > 说明：本文提及的 `./` 开头的文件路径均相对于脚本和安装包解压的同级目录，默认为 /data
 
-## 后台Python项目运行环境
+## 后台 Python 项目运行环境
 
-后台部署直接部署的服务使用的Python解释器来源于蓝鲸安装包的 `./src/python/` 目录，文件列表为：
+后台部署直接部署的服务使用的 Python 解释器来源于蓝鲸安装包的 `./src/python/` 目录，文件列表为：
 
-- py27.tgz: 原生python2解释器，版本号为`2.7.10`
-- py27_e.tgz：加密python2解释器，版本号为`2.7.9`
-- py36.tgz: 原生python3解释器，版本号为`3.6.10`
-- py36_e.tgz: 加密python3解释器，版本号为`3.6.6`
-- python27_requirements.txt: python2解释器编译安装后，通过pip附加安装的基础pip包依赖列表
-- python36_requirements.txt: python3解释器编译安装后，通过pip附加安装的基础pip包依赖列表
-- MD5: 以上6个文件的md5sum值
+- py27.tgz: 原生 python2 解释器，版本号为`2.7.10`
+- py27_e.tgz：加密 python2 解释器，版本号为`2.7.9`
+- py36.tgz: 原生 python3 解释器，版本号为`3.6.10`
+- py36_e.tgz: 加密 python3 解释器，版本号为`3.6.6`
+- python27_requirements.txt: python2 解释器编译安装后，通过 pip 附加安装的基础 pip 包依赖列表
+- python36_requirements.txt: python3 解释器编译安装后，通过 pip 附加安装的基础 pip 包依赖列表
+- MD5: 以上 6 个文件的 md5sum 值
 - VERSION: python/ 目录的整体版本号
 
 从压缩包到解压到对应机器的 `/opt/` 下，主要由 `./install/install.sh` 文件中定义的 `install_python ()` 函数完成:
 
-- 先将 `./src/python/` 目录四个压缩包从中控机同步到指定模块对应的服务器的 `./src/python/`目录
+- 先将 `./src/python/` 目录四个压缩包从中控机同步到指定模块对应的服务器的 `./src/python/` 目录
 - 解压四个压缩包到 `/opt/` 目录
-- 在 `./install/.installed_module` 文件中追加 `python` 标记该机器已经安装了蓝鲸Python解释器
+- 在 `./install/.installed_module` 文件中追加 `python` 标记该机器已经安装了蓝鲸 Python 解释器
 
-安装Python后台项目时，会利用[virtualenv](https://virtualenv.pypa.io/en/latest/) 创建不同的虚拟环境来隔离。创建虚拟环境时具体使用 /opt/下哪个解释器，根据项目情况，有所区别。这些在模块安装详解中会提及，这里主要描述通用逻辑。
+安装 Python 后台项目时，会利用 [virtualenv](https://virtualenv.pypa.io/en/latest/) 创建不同的虚拟环境来隔离。创建虚拟环境时具体使用 /opt/ 下哪个解释器，根据项目情况，有所区别。这些在模块安装详解中会提及，这里主要描述通用逻辑。
 
 一般部署 Python 工程的步骤如下：
 
-1. 根据Python解释器创建虚拟环境
-2. 在虚拟环境中安装依赖的pip包
-3. 设定启动脚本使用虚拟环境中的Python解释器
+1. 根据 Python 解释器创建虚拟环境
+2. 在虚拟环境中安装依赖的 pip 包
+3. 设定启动脚本使用虚拟环境中的 Python 解释器
 
 前两步为了复用，使用一个独立的脚本 `./install/bin/install_py_venv_pkgs.sh`，它的参数如下：
 
@@ -50,13 +50,13 @@ $ ./bin/install_py_venv_pkgs.sh -h
 
 几个参数的默认取值为：
 
-- `-n` 指定虚拟环境的名字，规则是 模块名-子工程名，例如PaaS模块下的esb工程，虚拟环境名为 `open_paas-esb`
-- `-w` 指定WORKON_HOME(虚拟环境安装的家目录），蓝鲸固定为`$BK_HOME/.envs`，对于社区版，默认是 `/data/bkce/.envs`。virtualenvwrapper 系列脚本会读取的环境变量，比如`workon open_paas-esb` 这个命令，就会加载 `/data/bkce/.envs/open_paas-esb/bin/activate` 来激活虚拟环境
+- `-n` 指定虚拟环境的名字，规则是 模块名-子工程名，例如 PaaS 模块下的 esb 工程，虚拟环境名为 `open_paas-esb`
+- `-w` 指定 WORKON_HOME (虚拟环境安装的家目录），蓝鲸固定为 `$BK_HOME/.envs`，对于社区版，默认是 `/data/bkce/.envs`。virtualenvwrapper 系列脚本会读取的环境变量，比如 `workon open_paas-esb` 这个命令，就会加载 `/data/bkce/.envs/open_paas-esb/bin/activate` 来激活虚拟环境
 - `-p, --python-path` 指定虚拟环境依据的解释器路径。
 - `-a` 指定工程的家目录。便于 `workon xxxx` 后就直接切换目录到该路径。譬如 `workon open_paas-esb` 后，会自动切换当前目录到 `/data/bkce/open_paas/esb/` 下。
-- `-r` 指定工程的requirments.txt路径，pip会根据它来安装依赖包。
-- `-s` 指定离线pip包的安装目录。假如安装环境没有网络，需要通过它指定离线pip包的目录。
-- `-e` 指定`-p`对应的Python解释器是否加密解释器。加密解释器创建虚拟环境时参数略由差异
+- `-r` 指定工程的 requirments.txt 路径，pip 会根据它来安装依赖包。
+- `-s` 指定离线 pip 包的安装目录。假如安装环境没有网络，需要通过它指定离线 pip 包的目录。
+- `-e` 指定 `-p` 对应的 Python 解释器是否加密解释器。加密解释器创建虚拟环境时参数略由差异
 
 还是以 open_paas 的 esb 工程为例，安装时调用的完整参数为：
 
@@ -68,23 +68,23 @@ $ ./bin/install_py_venv_pkgs.sh -h
     -r /data/bkce/oppen_paas/esb/requirements.txt
 ```
 
-## SaaS使用的Docker运行环境
+## SaaS 使用的 Docker 运行环境
 
-安装包中的 `./src/image/` 目录下是SaaS运行的docker镜像和依赖的解压工具二进制：
+安装包中的 `./src/image/` 目录下是 SaaS 运行的 docker 镜像和依赖的解压工具二进制：
 
-- python27e_1.0.tar: 运行python2的SaaS使用的镜像
-- python36e_1.0.tar: 运行python3的SaaS使用的镜像 
-- runtool: 加密SaaS包的解压工具
-- MD5: 以上三个文件的md5sum
+- python27e_1.0.tar: 运行 python2 的 SaaS 使用的镜像
+- python36e_1.0.tar: 运行 python3 的 SaaS 使用的镜像 
+- runtool: 加密 SaaS 包的解压工具
+- MD5: 以上三个文件的 md5sum
 - VERSION: image/ 目录的版本号
 
 该目录在 `./install/bkcli sync appo` 和 `./install/bkcli sync appt` 时同步到对应机器上。
 
 然后通过脚本 `./install/bin/install_docker.sh`（新版本更名为 install_docker_for_paasagent.sh）来导入。
 
-这两个docker镜像构建的Dockerfile如下：
+这两个 docker 镜像构建的 Dockerfile 如下：
 
-1. python27e_1.0.tar对应的Dockerfile：
+1. python27e_1.0.tar 对应的 Dockerfile：
 
     ```bash
     FROM centos:7
@@ -112,7 +112,7 @@ $ ./bin/install_py_venv_pkgs.sh -h
         pip install 'cryptography>=1.1'
     ```
 
-2. python36e_1.0.tar对应的Dockerfile如下：
+2. python36e_1.0.tar 对应的 Dockerfile 如下：
 
     ```bash
     FROM centos:7
@@ -165,7 +165,7 @@ $ ./bin/install_py_venv_pkgs.sh -h
 
 ## 加密解释器说明
 
-如果某个Python项目代码加密，使用的是加密解释器时，直接运行python脚本是会报错的。处理方式如下：
+如果某个 Python 项目代码加密，使用的是加密解释器时，直接运行 python 脚本是会报错的。处理方式如下：
 
 以运行 paas 的 esb 项目的脚本为例：
 
