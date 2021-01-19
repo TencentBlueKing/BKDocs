@@ -8,14 +8,17 @@
 
     ```bash
     hostnamectl set-hostname bk-1
-    hostname # 确认
+
+    # 确认
+    hostname 
     ```
 
-2. 此刻命令行提示符如果显示了主机名还是老的，可以退出登录，重新登录一下生效。
+2. 修改后，命令行提示符显示的主机名仍是旧的，需要退出终端登录，重新登录一下生效。
 3. 修改 consul 的 node_name 配置项，和主机名保持一致。（非必须，但是强烈建议保持一致）
 
     ```bash
     vim /etc/consul.d/consul.json
+
     # 编辑 node_name 配置项
     systemctl restart consul
     ```
@@ -23,6 +26,9 @@
 4. 如果修改主机名的机器是 consul server 的 leader，那么这时会触发 consul 集群的重新选主，需要等待一段时间。
 
     ```bash
-    consul monitor # 持续观察日志输出，按Ctrl-C中断
-    consul members # 观察是否正常加入集群
+    # 持续观察日志输出，按 Ctrl-C中断
+    consul monitor 
+
+    # 观察是否正常加入集群
+    consul members
     ```

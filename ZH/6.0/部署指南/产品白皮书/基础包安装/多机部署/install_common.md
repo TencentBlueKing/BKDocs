@@ -1,6 +1,6 @@
 # 初始化并检查安装环境
 
-为了简化文档描述，以 `./` 开头的脚本和文件，均指相对于部署脚本安装路径 $CTRL_DIR(默认为/data/install)，其他提到的变量可以参照[术语解释](../术语解释/Term.md)。
+为了简化文档描述，以 `./` 开头的脚本和文件，均指相对于部署脚本安装路径 $CTRL_DIR(默认为/data/install)，其他提到的变量可以参照 [术语解释](../术语解释/Term.md)。
 
 ## 初始化安装环境
 
@@ -34,7 +34,7 @@
 
     - 根据默认的 `/data/install/bin/default/*.env` 加上用户自定义的 `/data/install/bin/03-userdef/*.env` 合并生成最终的配置变量文件 `/data/install/bin/04-final/*.env`。具体逻辑详见 [变量配置与渲染](../../维护手册/日常维护/config_generate.md)
 
-3. `./bkcli install python`: 在中控机上安装蓝鲸自带的 Python 解释器。关于蓝鲸 Python 运行环境的说明详见 [蓝鲸Python运行环境简介](../../维护手册/日常维护/python_interpreter.md)。
+3. `./bkcli install python`: 在中控机上安装蓝鲸自带的 Python 解释器。关于蓝鲸 Python 运行环境的说明详见 [蓝鲸 Python 运行环境简介](../../维护手册/日常维护/python_interpreter.md)。
 
 4. `./bkcli sync common`: 同步安装脚本目录 (/data/install) 到所有主机 (${ALL_IP[@]} 数组包含的 IP 列表)，初次同步会自动创建父目录。
 
@@ -46,7 +46,7 @@
 
         - 创建 blueking 用户和同名用户组，UID=10000 GID=10000，固定 UID、GID 是为了多机部署通过 nfs 共享目录时权限一致。
   
-        - 创建 /etc/blueking/env 文件夹用于放置每台主机差异性的环境变量文件，比如 LAN_IP、WAN_IP等。
+        - 创建 /etc/blueking/env 文件夹用于放置每台主机差异性的环境变量文件，比如 LAN_IP、WAN_IP 等。
 
         - 创建 systemd 管理服务用的 `/usr/lib/systemd/system/blueking.target` 文件，便于统一管理蓝鲸服务，并设置为开机启动。
 
