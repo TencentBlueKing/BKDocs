@@ -29,7 +29,7 @@
  yum install jq -y  // CentOS部署jq参考方法
 ```
 
-```plain
+```bash
 #!/bin/bash
 
 #获取磁盘使用率
@@ -97,7 +97,7 @@ echo "disk_usage{disk_name=\"${disk_name}\"} ${diskUsage}"
 
 - 问：如何一次插入多条数据？
 
-    答：你可以使用Shell的循环语句for、while等来一次上报多条数据，只要符合Shell语法即可。plainplainplainplainplainplainplainplainplainplainplainplainplain
+    答：你可以使用Shell的循环语句for、while等来一次上报多条数据，只要符合Shell语法即可。
 ![edit_shellscript_while](../../assets/edit_shellscript_while.png)
 
 - 问：脚本下发到服务器上后，存放在哪里？

@@ -1,6 +1,6 @@
-# 修改蓝鲸入口的HTTP访问端口
+# 修改蓝鲸入口的 HTTP 访问端口
 
-蓝鲸默认部署的是http协议+80端口的访问，比如 http://paas.bktencent.com 。有些用户因为网络原因，需要修改80端口为特殊的端口，比如8080。
+蓝鲸默认部署的是 http 协议+80 端口的访问，比如 http://paas.bktencent.com 。有些用户因为网络原因，需要修改 80 端口为特殊的端口，比如 8080。
 
 本文档描述这种变更需求步骤。
 
@@ -31,7 +31,7 @@
     consul kv put bkcfg/ports/paas_http 8080
     ```
 
-2. 渲染PaaS和CMDB配置并重启
+2. 渲染 PaaS 和 CMDB 配置并重启
 
     ```bash
     ./bkcli render paas
@@ -41,7 +41,7 @@
     ./bkcli restart cmdb
     ```
 
-3. 渲染job的配置，并重启
+3. 渲染 job 的配置，并重启
 
     ```bash
     # 刷新前端index.html调用的api地址
@@ -52,7 +52,7 @@
     ./bkcli restart job
     ```
 
-4. 重新部署SaaS，从PaaS中获取新的PUBLIC_URL
+4. 重新部署 SaaS，从 PaaS 中获取新的 PUBLIC_URL
 
     ```bash
     ./bkcli install saas-o 

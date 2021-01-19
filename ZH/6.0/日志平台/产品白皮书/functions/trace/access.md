@@ -1,55 +1,56 @@
-# 接入
 
-日志平台全链路监控采用 OpenTracing 标准，符合标准的日志均可采集接入。
+   实际业务中，一次请求需要关联到多个任务模块，因此，就需要一些可以帮助理解系统行为、用于分析性能问题的工具，以便发生故障的时候，能够快速定位和解决问题。想要在请求上下文中理解分布式系统的行为，就需要监控那些横跨了不同的模块、不同的服务器之间的关联动作，最终完成整个链路的追踪动作。
+   
+![](../media/trace_1_2.png)
 
-## 数据格式
+   图例：的一次检索操作的调用示例(通过demo业务--全链路跟踪进行体验）
+全链路跟踪核心步骤一般有三个：代码埋点，数据存储、查询展示。
 
-为了更好的使用平台的统计分析功能，在 OpenTracing 标准的基础上，建议业务完成推荐字段的信息采集，同时，新增业务自定义字段，用于日志的检索分析。
+全链路监控支持OpenTracing（OpenTelemetry）开源协议，符合协议标准的日志均可采集接入。
 
-|字段|示例|说明|
-|--|--|--|
-|traceID|2276470b5d19c8e2|必须。一类 trace 代表一种分布式的、涉及多个服务的执行轨迹，通常可以与 tag.scene 形成对应关系，如登录、登出、匹配等。|
-|spanID|40772d65b2e9a93f|必须。span 代表系统中具有开始时间和执行时长的逻辑运行单元|
-|operationName|get_account|强烈建议。操作名，一个具有可读性的字符串，代表这个 span 所做的工作（例如：RPC 方法名，函数名，或者一个大型计算中的某个阶段或子任务）|
-|references|[{"refType": "CHILDOF","traceID": "2276470b5d19c8e2","spanID": "03b50b3958227723"}]|必须。调用关系描述；|
-|startTime|1582707637126|必须。开始时间，单位毫秒|
-|duration|55|必须。耗时，单位毫秒|
-|tags|[{"key": "scene","type": "string","value": "Login"},<br>{"key": "local.service","type": "string","value": "account"},<br>{"key": "peer.service","type": "string","value": "profile"},<br>{"key": "peer.address","type": "string","value": "domain/routeid"},<br>{"key": "loacl.ipv4","type": "string","value": "10.10.10.11"},<br>{"key": "peer.ipv4","type": "string","value": "10.10.10.10"},<br>{"key": "peer.port","type": "integer","value": "8080"},<br>{"key": "error","type": "bool","value": false},<br>{"key": "result_code","type": "integer","value": 10000},<br>{"key": "uid","type": "string","value": "15rjdti2455ksd"}]|强烈建议。一组键值对构成的 Span 标签集合。键值对中，键必须为 string，值可以是字符串，布尔，或者数字类型。<br>建议保留推荐字段，可根据不同的场景（RPC、Message Bus、HTTP、DB 等）设置相符合的内容。<br>可新增业务自定义字段，用于特定条件下的检索分析。|
-|logs|[{"timestamp": 1582707637128714,"messages": " [INFO][WriteSpanLogULS]: Send back, cmd:26677"},<br>{"timestamp": 1582707637128714,"messages": " [INFO][ Send back, cmd:235435"]|强烈建议。span 的日志集合。每次 log 操作包含一个键值对，以及一个时间戳。键值对中，键必须为 string，值可以是任意类型|
-|flags|1|强烈建议。是否采集：1 采样；0 不采样|
+## 数据结构
 
-## 数据采集
-### 日志接入
+![](../media/trace_1_1.png)
 
-1. 日志采集
-	日志接入可以分为服务器日志采集、tlog 接入两种形式。推荐使用 tlog 方式接入。
-		- tlog 接入：业务进程将日志上报到 tglog 或业务独立 tlog 服务器，在通过 gseAgeng 采集到数据平台，无本地服务器磁盘 I/0 压力。
-		- 服务器日志：日志打印本地，gseAgent 采集日志，上报数据平台。
-    日志格式 DEMO：
-    ![enter image description here](../media/trace_access_1.png)
-2. 数据处理：
+图例：opentracing数据结构示例
 
-数据清洗模板示例：
 
-![enter image description here](../media/trace_access_2.png)
+## 数据上报
 
-数据入库 ES，字段设置：
+集成SDK：OpenTelemetry同时提供包括 Java | C# | Go | JavaScript | Python | Rust | C++ | Erlang/Elixir在内的各种SDK，以及各种封装可用的常见框架以及库，如MySQL | Redis | Django | Kafka | Jetty | Akka | RabbitMQ | Spring | Flask | net/http | gorilla/mux | WSGI | JDBC | PostgreSQL等，用户可以非常方便的获取使用，优点是接入快效率高。
+OpenTelemetry官网地址：https://opentelemetry.io/
 
-![enter image description here](../media/trace_access_3.png)
+github地址:https://github.com/open-telemetry
 
-### kafka 接入
+自主实现：按OpenTracing/OpenTelemetry协议进行代码埋点，日志输出上报，同为目前常用方式，优点是灵活可控。
 
-待更新
+## 数据采集&中转
 
-### SDK 接入
+数据上报初代码埋点外，同时涉及数据上报方式，sdk接入过程中需要设置exporter，而自主实现过程中，同样可以选择日志落地本地磁盘，还是网络传输形式落地到指定的collector。
+内部游戏业务推荐使用tlog(tglog)方式接入，一则技术方案熟悉，二则性能稳定有保障，目前多个业务以tlog形式接入；同时用户可以选择kafka等其它组件作为collector，平台侧同样支持对数据进行处理入库。
+ 
+![](../media/trace_1_3.png)
 
-开发中
-    
+图例：tlog接入表字段定义示例（opentracing）
+
+## 数据清洗
+
+通过蓝鲸数据平台，可以对数据进行清洗，数据清洗模板示例：
+
+![](../media/trace_1_4.png)
+
+清洗之后，数据入库ES，字段设置：
+
+![](../media/trace_1_5.png)
+
 ## 索引集接入
 
-日志平台--管理--索引集管理--新建
+管理->索引集管理->新建
 
-- 是否为 trace 日志：是
+- 是否为trace日志：是
 - 数据源：从数据平台中选择对应的索引集
 
-![enter image description here](../media/trace_access_4.png)
+![](../media/trace_1_6.png)
+
+至此，就可以正常使用全链路相关功能。
+

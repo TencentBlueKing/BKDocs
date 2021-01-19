@@ -90,7 +90,7 @@ root@rbtnode1 download#
 完成 Windows Agent 安装的脚本是 gse_install.bat。
 - gse_install.bat 参数说明
 
-```plain
+```bash
 第一个参数: 主机内网 IP, 连接 GSE, 及绑定数据, 都是用这个 IP
 第二个参数: 云区域 ID, 下图中为 0
 第三个参数: Proxy 内网 IP, 多个 Proxy 用短横线分隔

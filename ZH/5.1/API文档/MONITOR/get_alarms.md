@@ -39,14 +39,14 @@ GET
 
 > 注：以上字段除`extend_fields`、`ordering`、`page`、`page_size`外，均支持 Django 的 ORM 操作
 
-```plain
+```bash
 如source_time__gte、source_time__lte、alarm_type__in等。
 使用__in操作时，参数用英文逗号隔开，如alarm_type__in=cpu,net
 ```
 
 #### alarm_type: 监控类型
 
-```plain
+```bash
 base(基础)、cpu(CPU)、mem(内存)、net(网络)、disk(磁盘)、system_env(系统)、
 base_alarm(事件)、gse_custom_event(字符型)、proc_port(进程端口)、
 custom(自定义)、keyword(关键字)、process(进程)、selfscript(脚本)、
@@ -60,13 +60,13 @@ mongodb、mssql、oracle、rabbitmq、weblogic、zookeeper 等
 00:00:01+0800 和 2018-11-08
 23:59:59+0800 之间，业务 ID 为 2，监控类型为 cpu，额外字段为 end_time 的告警事件，且当前页码为 1，单页最大显示数为 10，排序方式为按 begin_time 字段降序：
 
-```plain
+```bash
 bk_biz_id=2&extend_fields=end_time&source_time__gte=2018-10-01 00:00:01%2b0800&source_time__lte=2018-11-08 23:59:59%2b0800&page=1&page_size=10&ordering=-begin_time&alarm_type=cpu
 ```
 (零时区)获取告警接入时间在 2019-01-01 00:00:00 和 2019-01-08
 23:59:59 之间，业务 ID 为 2，告警级别为严重，监控类型为内存，告警内容包含“PING”的告警事件：
 
-```plain
+```bash
 bk_biz_id=2&source_time__gte=2019-01-01 00:00:00&source_time__lte=2019-01-08 23:59:59&level=1&alarm_type=men&alarm_content__contains=PING
 ```
 

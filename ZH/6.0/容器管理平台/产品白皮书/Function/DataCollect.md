@@ -25,7 +25,7 @@
 应用实例化时，会进行以下操作（`整个过程用户无需任何操作`）：
 
 a. 将日志采集的路径和项目的非标准日志采集 dataid 写入到一个 ConfigMap 文件中
-```plain
+```bash
 kind: ConfigMap
 metadata:
   name: deploy-log-container-1-non-standard-configmap
@@ -40,7 +40,7 @@ b. 将上面的 ConfigMap 配置文件挂载到应用容器的 */etc/{{app_name.
 
 c. 在应用容器的 label 中指定日志采集配置文件在容器内的绝对路径：*"io.tencent.bkdata.container.log.cfgfile": "/etc/{{app_name.conf}}"* (k8s 需要写入到容器的环境变量中)。
 
-```plain
+```bash
 kind: Deployment
 metadata:
   name: deploy-log

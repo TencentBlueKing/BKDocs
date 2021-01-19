@@ -96,8 +96,8 @@ yum install mariadb-server mariadb
 编辑系统安装的 mysql 配置文件。
 
 1. 配置 mysql server：编辑/etc/my.cnf.d/server.cnf (如果不存在，则直接编辑/etc/my.cnf）。在 `[mysqld]` 段下新增如下配置：
-    ```plain
-        character-set-server = utf8plainplain
+    ```shell
+        character-set-server = utf8
         bind-address = 10.0.0.1
         max_connections = 3000
         event_scheduler=ON
@@ -107,7 +107,7 @@ yum install mariadb-server mariadb
     > 注：bind-address 中的 10.0.0.1 请替换为实际的 LAN_IP
 2. 配置 mysql 客户端：编辑/etc/my.cnf.d/client.cnf（如果不存在，则直接编辑/etc/my.cnf）。在 `[client]` 段下新增如下配置：
 
-        `default-character-set = utf8plain`
+        `default-character-set = utf8`
 
 往 /data/blueking.env 文件中追加以下配置，依次为蓝鲸连接 mysql 使用的用户名、密码、mysqld 的监听端口：
 

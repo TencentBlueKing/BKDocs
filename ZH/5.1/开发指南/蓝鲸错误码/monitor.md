@@ -3,7 +3,7 @@
 一共 7 位, 前两位 33, 中间两位模块编号, 最后两位具体错误码
 
 ## 自身服务出错
-```plain
+```bash
 #告警配置
 E01000 = ErrorCode("01000", u"告警配置异常：排查告警配置表")
 E01001 = ErrorCode("01001", u"告警配置异常，排查告警配置表 alarm_source")
@@ -20,14 +20,14 @@ E01030 = ErrorCode("01030", u"异常检测模块异常，排查 detect 模块")
 E01040 = ErrorCode("01040", u"告警收敛模块出错，排查 converge 模块")
 ```
 ## 依赖第三服务出错
-```plain
+```bash
 E02010 = ErrorCode("02010", u"调用ESB出错，排查ESB服务")
 E02020 = ErrorCode("02020", u"数据模块查询异常，排查数据模块数据查询服务")
 E02030 = ErrorCode("02030", u"Ping告警格式错误，排查GSE SERVER服务")
 ```
 
 ## 依赖基础服务出错
-```plain
+```bash
 E03010 = ErrorCode("03010", u"redis 服务出错，排查 redis 服务")
 E03020 = ErrorCode("03020", u"beanstalk 服务出错，排查 beanstalk 服务")
 E03030 = ErrorCode("03020", u"kafka  服务出错，排查 kafka 服务")

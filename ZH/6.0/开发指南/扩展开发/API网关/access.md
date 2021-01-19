@@ -34,7 +34,7 @@
 
 - 注册到的 API 路径：/hcp/get_host_list/ 通过"注册到的路径"，加上统一前缀，即是 API 的接口地址：
 
-```plain
+```bash
 http://xxx.domain.com/api/c/self-service-api/hcp/get_host_list/
 ```
 
@@ -56,6 +56,6 @@ http://xxx.domain.com/api/c/self-service-api/hcp/get_host_list/
 
 通过上面的配置，即可接入 API，访问 API 同样会进行应用和用户的认证。API 的访问地址为：
 
-```plain
+```bash
 http://xxx.domain.com/api/c/self-service-api/hcp/get_host_list/
 ```
