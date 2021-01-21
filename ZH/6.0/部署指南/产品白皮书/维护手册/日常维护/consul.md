@@ -373,6 +373,37 @@ consul snapshot inspect backup.snap
 consul snapshot restore backup.snap
 ```
 
+## 开启Web管理界面
+
+1. 选择部署nginx的服务器，修改 consul 的启动命令行参数 （/etc/sysconfig/consul），在 `CMD_OPTS` 中追加命令行参数 `-ui`
+2. 重启 consul: `systemctl restart consul`
+3. 验证是否生效：`curl -sL http://127.0.0.1:8500/ | grep CONSUL_VERSION` 如果有返回说明 webUI 正常开启
+4. 配置 nginx 将请求代理转发给本机127.0.0.1:8500，这样能方便通过浏览器访问，假设我们使用 `consul.bktencent.com` 这个域名来访问。添加以下 nginx 配置，并重新加载生效。
+
+    ```bash
+    source ./load_env.sh
+    cat > /usr/local/openresty/nginx/conf/conf.d/consul.conf <<EOF
+    server {
+        listen 80;
+        server_name consul.bktencent.com;
+
+        access_log $BK_HOME/logs/nginx/consul_ui_access.log main;
+
+        location / {
+            proxy_pass http://127.0.0.1:8500;
+        }
+    }
+    EOF
+    systemctl reload openresty
+    ```
+5. 在本机配置 hosts 文件，添加域名解析，假设nginx所在服务器对应的外网ip是 100.0.0.1
+
+    ```bash
+    100.0.0.1 consul.bktencent.com
+    ```
+
+6. 浏览器输入 `http://consul.bktencent.com` 来访问 Consul的WebUI
+
 ## 常用操作
 
 - 查询leader：`curl -s http://127.0.0.1:8500/v1/status/leader`
@@ -384,6 +415,7 @@ consul snapshot restore backup.snap
 - 取消当前节点注册的服务：
   - 1.0以上的版本使用命令行：`consul services deregister <my-service-id>`
   - 1.0以下的使用httpapi：`curl --request PUT http://127.0.0.1:8500/v1/agent/service/deregister/<my-service-id>`
+
 
 ## 常见问题
 
