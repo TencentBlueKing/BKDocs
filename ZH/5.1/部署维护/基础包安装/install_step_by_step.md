@@ -78,7 +78,7 @@ yum install zip unzip sysvinit-tools procps-ng rsync gawk curl lsof tar sed ipro
 
 ## 安装 PaaS
 
-蓝鲸社区版PaaS已经开源，具体介绍参见：https://github.com/tencent/bk-paas
+蓝鲸社区版 PaaS 已经开源，具体介绍参见：https://github.com/tencent/bk-paas
 开源版的部署文档可以作为本章节的参考：https://github.com/Tencent/bk-PaaS/blob/master/docs/install/ce_paas_install.md
 
 首先安装 PaaS 依赖的第三方开源组件: MySQL、Redis、Nginx
@@ -402,7 +402,7 @@ sed -i -f /tmp/paas.sed /etc/nginx/conf.d/paas.conf
 
 接上上节，配置 Nginx（上）
 
-通过模版渲染原理一节的学习。我们知道需要在/data/blueking.env中追加需要替换的占位符变量的值：
+通过模版渲染原理一节的学习。我们知道需要在/data/blueking.env 中追加需要替换的占位符变量的值：
 
 ```bash
 PAAS_FQDN="paas.bk.com"
@@ -1800,7 +1800,7 @@ gse agent 跟随着 gse 的后台包一起提供(位于$PKG_SRC_PATH/gse/下）�
 
 - 角色分为：client,proxy,plugins
 - 平台分为: linux,windows,aix
-- cpu架构有：x86,x86_64,powerpc
+- cpu 架构有：x86,x86_64,powerpc
 
 其中 proxy 角色只能部署在 linux 的 x86_64 上，故目录直接叫做 proxy
 
@@ -2370,7 +2370,7 @@ bkdata 分为 dataapi，databus 和 monitor（蓝鲸监控后台）三个模块
     tar -xf kafka_2.11-0.10.2.2.tgz -C /opt; mv /opt/kafka_2.11-0.10.2.2 /opt/kafka
     ```
 
-3. 编辑/opt/kafka/config/server.properties，记得替换IP地址:
+3. 编辑/opt/kafka/config/server.properties，记得替换 IP 地址:
 
     ```txt
     broker.id=1
@@ -2717,7 +2717,7 @@ mysql -h$LAN_IP -u$MYSQL_USER -p$MYSQL_PASS open_paas -e "update esb_function_co
     python manage.py migrate trt --database=trt
     ```
 
-    e.  初始化预置的dataapi信息
+    e.  初始化预置的 dataapi 信息
 
     ```bash
     python manage.py test databus.tests.DatabusHealthTestCase.update_reserved_dataid  --settings='pizza.settings_no_db'

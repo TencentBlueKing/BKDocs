@@ -39,7 +39,7 @@
 
 #### 检查进程是否正常
 
-若为 4.1.X 的版本，bk_monitor 有对应 celery 进行异步任务处理，需在 APPO 模块对应机器上，确认 bk_monitor 的进程是否包含`uwsgi`，`celery beat`，`celery worker`3部分，示例如下
+若为 4.1.X 的版本，bk_monitor 有对应 celery 进行异步任务处理，需在 APPO 模块对应机器上，确认 bk_monitor 的进程是否包含`uwsgi`，`celery beat`，`celery worker`3 部分，示例如下
 
 ```bash
 [root@rbtnode1 /data/install]# ps -ef | grep bk_monitor
@@ -71,7 +71,7 @@ grep -nE "Exception|Error" /data/bkce/logs/bkdata/databus_etl.log /data/bkce/log
 
 #### 检查 bkdata databus 任务
 
-确认在bkdata服务器上，`check_databus_status.sh`，不能出现有`Failed connect to databus.service.consul:10054; connection refused`或者`JSON object could be decoded`错误输出。正常的输出示例如下（若此处有错误，参考`initdata bkdata`失败的处理方法）
+确认在 bkdata 服务器上，`check_databus_status.sh`，不能出现有`Failed connect to databus.service.consul:10054; connection refused`或者`JSON object could be decoded`错误输出。正常的输出示例如下（若此处有错误，参考`initdata bkdata`失败的处理方法）
 
 异常举例
 
@@ -344,7 +344,7 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
 
 	- 回到bkdata机器，看下日志，正常会输出如下的日志
 
-		![-w2020](../assets/tapd_10158081_base64_1532316099_62.png)
+		![-w2020](../assets/tapd_10158081_base64_1532316099_62.png)plain
 
 3. 如果第二步正常，可以看到日志输出
 
@@ -352,7 +352,7 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
 
 **问题表象**：在配置组件采集参数，完成配置下发和验证测试的过程中，出现如下错误提示
 
-```
+```plain
 1. 测试不通过，[datadog]托管程序启动失败：fail to restart process
 2. 存在执行失败的主机，需要将失败主机剔除方可进行下一步操作
 ```
@@ -373,4 +373,4 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
     ```bash
     ps -ef | grep datadog
     ```
-   - 如果存在`/datadog/datadog/jar/jmxfetch-0.19.0-jar-with-dependencies.jar`的进程，则kill掉即可
+   - 如果存在`/datadog/datadog/jar/jmxfetch-0.19.0-jar-with-dependencies.jar`的进程，则 kill 掉即可
