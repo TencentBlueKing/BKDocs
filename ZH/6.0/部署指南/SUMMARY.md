@@ -34,7 +34,7 @@
         * [组件更新](产品白皮书/维护手册/日常维护/update.md)
         * [DB 日常维护](产品白皮书/维护手册/日常维护/data_backup.md)
         * [开启 Proxy](产品白皮书/维护手册/日常维护/open_proxy.md)
-        * [http 切换为 https ](产品白皮书/维护手册/日常维护/convert_https.md)
+        * [http 切换为 https](产品白皮书/维护手册/日常维护/convert_https.md)
         * [Consul](产品白皮书/维护手册/日常维护/consul.md)
     * [卸载指引](产品白皮书/卸载指引/uninstall.md)
 * [增强包维护手册]()

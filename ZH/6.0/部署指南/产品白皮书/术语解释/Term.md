@@ -24,4 +24,4 @@
 
 **GSE (General Service Engine)：** 管控平台。
 
-**中控机：** 安装蓝鲸的主机，选择一台作为执行安装命令的机器，它通过ssh免密登录操作其余机器。(安装后查看中控机方式：cat /data/install/.controller_ip)
+**中控机：** 安装蓝鲸的主机，选择一台作为执行安装命令的机器，它通过 ssh 免密登录操作其余机器。(安装后查看中控机方式：cat /data/install/.controller_ip)

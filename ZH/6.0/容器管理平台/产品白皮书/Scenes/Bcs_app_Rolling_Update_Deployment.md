@@ -9,7 +9,7 @@
 
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含 [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
 
-- [完成 BCS 部署](../../../部署指南/产品白皮书/增强包安装/机器评估/bcs_evaluate.md)
+- [完成 BCS 部署]
 
 ## 操作步骤
 

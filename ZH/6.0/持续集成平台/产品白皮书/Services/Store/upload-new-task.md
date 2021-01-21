@@ -24,11 +24,11 @@
 ![png](../../assets/store_plugin_upgrade_1.png)
 ![png](../../assets/store_plugin_upgrade_2.png)
 
-1. 适用Job类型：
-    - 和流水线Job类型对应，请按照插件实际适用情况选择
+1. 适用 Job 类型：
+    - 和流水线 Job 类型对应，请按照插件实际适用情况选择
     - 若选错，需新增版本修改
 2. 发布包：
-    - task.json中的atomCode需和[开发一个流水线插件](start-new-task.md)中新增插件时填写的标识一致，否则上传会失败
+    - task.json 中的 atomCode 需和[开发一个流水线插件](start-new-task.md)中新增插件时填写的标识一致，否则上传会失败
 
 当升级插件时，有三种升级模式：
 ![png](../../assets/store_plugin_version.png)
@@ -52,12 +52,12 @@
 
 ![png](../../assets/store_plugin_release.png)
 
-1. 测试：点击后跳转到插件调试项目的流水线服务下，可以将当前插件添加到流水线，验证UI、功能是否满足预期
+1. 测试：点击后跳转到插件调试项目的流水线服务下，可以将当前插件添加到流水线，验证 UI、功能是否满足预期
 2. 重新传包：当测试发现问题，修复后，重新上传发布包，再次进行测试
-3. 继续：测试OK，满足预期后，确认提交发布
+3. 继续：测试 OK，满足预期后，确认提交发布
 4. 取消发布：发布过程中，随时可以终止发布
 
-> 注意：当插件开发语言为Python、Nodejs时，对插件执行环境有一定要求
+> 注意：当插件开发语言为 Python、Nodejs 时，对插件执行环境有一定要求
 >
 > - [Python 插件执行环境](prepare-python.md)
 > - [NodeJS 插件执行环境](prepare-node.md)

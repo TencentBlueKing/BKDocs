@@ -264,7 +264,7 @@ if IS_USE_CELERY:
 
 ### 定时任务配置
 
-- 使用`crontab`配置的定时任务，由于没有时区，会按照`CELERY_TIMEZONE`配置的时区（默认配置UTC）指定定时任务，
+- 使用`crontab`配置的定时任务，由于没有时区，会按照`CELERY_TIMEZONE`配置的时区（默认配置 UTC）指定定时任务，
 
   解决方案：使用`TzAwareCrontab`配置，添加`tz=timezone.get_current_timezone()`参数，即可以用户所在时区执行定时任务
 

@@ -25,7 +25,7 @@
 - 参数说明:
 时间段和告警数必须填一个。
 
-    - 按时间段汇总：从收到第一条告警开始计时，到规定时间后结束。
+    - 按时间段汇总：从收到第一条告警开始计时，到规定时间后结束。plainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
 
     - 按告警数汇总：从收到第一条告警开始计数，到规定数量后结束。
 
