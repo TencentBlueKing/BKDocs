@@ -63,7 +63,7 @@ support-files/
 
 - **bkiam**: 存放初始化权限文件。
 - **pkgs**： 存放依赖包，比如 Python 工程的 pip 包。
-- **sql**： 存放初始或者升级时用到的 sql 文件。
+- **sql**： 存放初始化或升级时用到的 sql 文件。
 - **templates**： 存放模块的模板文件，安装时会替换里面的 类似 `__VAR_NAME__`： 形式的变量。
 
 ## 软件包内容说明
@@ -81,17 +81,17 @@ support-files/
 - **COMMON_VERSION：** 开源组件包版本号
 - **fta：** 故障自愈后台
 - **gse：** 管控平台后台
-- **gse_plugins：** 采集器官方插件目录
-- **image：** SaaS 镜像目录
-- **java8.tgz：** java 文件
+- **gse_plugins：** 官方采集器插件目录
+- **image：** SaaS 基础镜像目录
+- **java8.tgz：** JDK安装包
 - **job：** 作业平台后台
 - **license：** 鉴权服务
 - **MD5：** MD5 校验文件
 - **official_saas：** 官方 SaaS 包
 - **open_paas：** PaaS 后台
-- **paas_agent：** SaaS 部署后台
-- **python：** 蓝鲸定制 Python 解释器
+- **paas_agent：** PaaS Agent后台
+- **python：** 蓝鲸定制 Python 解释器目录
 - **usermgr：** 用户管理后台
 - **VERSION：** 社区版版本号
-- **yum：** 开源组件 RPM 包
+- **yum：** 开源组件 RPM 包目录
 
