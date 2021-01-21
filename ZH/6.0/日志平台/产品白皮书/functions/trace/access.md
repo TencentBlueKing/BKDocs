@@ -3,35 +3,35 @@
    
 ![](../media/trace_1_2.png)
 
-   图例：的一次检索操作的调用示例(通过demo业务--全链路跟踪进行体验）
+   图例：的一次检索操作的调用示例(通过 demo 业务--全链路跟踪进行体验）
 全链路跟踪核心步骤一般有三个：代码埋点，数据存储、查询展示。
 
-全链路监控支持OpenTracing（OpenTelemetry）开源协议，符合协议标准的日志均可采集接入。
+全链路监控支持 OpenTracing（OpenTelemetry）开源协议，符合协议标准的日志均可采集接入。
 
 ## 数据结构
 
 ![](../media/trace_1_1.png)
 
-图例：opentracing数据结构示例
+图例：opentracing 数据结构示例
 
 
 ## 数据上报
 
-集成SDK：OpenTelemetry同时提供包括 Java | C# | Go | JavaScript | Python | Rust | C++ | Erlang/Elixir在内的各种SDK，以及各种封装可用的常见框架以及库，如MySQL | Redis | Django | Kafka | Jetty | Akka | RabbitMQ | Spring | Flask | net/http | gorilla/mux | WSGI | JDBC | PostgreSQL等，用户可以非常方便的获取使用，优点是接入快效率高。
-OpenTelemetry官网地址：https://opentelemetry.io/
+集成 SDK：OpenTelemetry 同时提供包括 Java | C# | Go | JavaScript | Python | Rust | C++ | Erlang/Elixir 在内的各种 SDK，以及各种封装可用的常见框架以及库，如 MySQL | Redis | Django | Kafka | Jetty | Akka | RabbitMQ | Spring | Flask | net/http | gorilla/mux | WSGI | JDBC | PostgreSQL 等，用户可以非常方便的获取使用，优点是接入快效率高。
+OpenTelemetry 官网地址：https://opentelemetry.io/
 
-github地址:https://github.com/open-telemetry
+github 地址:https://github.com/open-telemetry
 
-自主实现：按OpenTracing/OpenTelemetry协议进行代码埋点，日志输出上报，同为目前常用方式，优点是灵活可控。
+自主实现：按 OpenTracing/OpenTelemetry 协议进行代码埋点，日志输出上报，同为目前常用方式，优点是灵活可控。
 
 ## 数据采集&中转
 
-数据上报初代码埋点外，同时涉及数据上报方式，sdk接入过程中需要设置exporter，而自主实现过程中，同样可以选择日志落地本地磁盘，还是网络传输形式落地到指定的collector。
-内部游戏业务推荐使用tlog(tglog)方式接入，一则技术方案熟悉，二则性能稳定有保障，目前多个业务以tlog形式接入；同时用户可以选择kafka等其它组件作为collector，平台侧同样支持对数据进行处理入库。
+数据上报初代码埋点外，同时涉及数据上报方式，sdk 接入过程中需要设置 exporter，而自主实现过程中，同样可以选择日志落地本地磁盘，还是网络传输形式落地到指定的 collector。
+内部游戏业务推荐使用 tlog(tglog)方式接入，一则技术方案熟悉，二则性能稳定有保障，目前多个业务以 tlog 形式接入；同时用户可以选择 kafka 等其它组件作为 collector，平台侧同样支持对数据进行处理入库。
  
 ![](../media/trace_1_3.png)
 
-图例：tlog接入表字段定义示例（opentracing）
+图例：tlog 接入表字段定义示例（opentracing）
 
 ## 数据清洗
 
@@ -39,7 +39,7 @@ github地址:https://github.com/open-telemetry
 
 ![](../media/trace_1_4.png)
 
-清洗之后，数据入库ES，字段设置：
+清洗之后，数据入库 ES，字段设置：
 
 ![](../media/trace_1_5.png)
 
@@ -47,7 +47,7 @@ github地址:https://github.com/open-telemetry
 
 管理->索引集管理->新建
 
-- 是否为trace日志：是
+- 是否为 trace 日志：是
 - 数据源：从数据平台中选择对应的索引集
 
 ![](../media/trace_1_6.png)

@@ -1,8 +1,8 @@
 ## 1. why 2to3
 
-Python 软件基金会宣布，到 2020 年元旦，将不再为编程语言 Python 2.x 分支提供任何支持。意味着在2020年以后 Python2 将不会有官方的支持和修复。 最近的几年里，Python 主流库都做了很多兼容的工作，以帮助我们从 Python2 迁移到 Python3，但是这类的兼容性代码会消耗相当大的人力和性能。 事实上，这种兼容的工作已经在不同程度上停止了，比如 Django 2.0 已宣布不再支持 Python2，可以预见的是，2020年之后，基本上不会有库再会处理兼容问题了。
+Python 软件基金会宣布，到 2020 年元旦，将不再为编程语言 Python 2.x 分支提供任何支持。意味着在 2020 年以后 Python2 将不会有官方的支持和修复。 最近的几年里，Python 主流库都做了很多兼容的工作，以帮助我们从 Python2 迁移到 Python3，但是这类的兼容性代码会消耗相当大的人力和性能。 事实上，这种兼容的工作已经在不同程度上停止了，比如 Django 2.0 已宣布不再支持 Python2，可以预见的是，2020 年之后，基本上不会有库再会处理兼容问题了。
 
-### 如何选择项目的Python版本？
+### 如何选择项目的 Python 版本
 
 - **新项目** - 必须使用 Python 3 进行开发（推荐版本: Python 3.6）
 - **老项目(仍在迭代更新)** - 需要尽快迁移至 Python 3
@@ -12,17 +12,17 @@ Python 软件基金会宣布，到 2020 年元旦，将不再为编程语言 Pyt
 
 [2to3](https://docs.python.org/zh-cn/3/library/2to3.html) 是一个 Python 程序，它可以用来读取 Python 2.x 版本的代码，并使用一系列的修复器 fixer 来将其转换为合法的 Python 3.x 代码。标准库中已经包含了丰富的修复器，这足以处理绝大多数代码。不过 2to3 的支持库 [`lib2to3`](https://docs.python.org/zh-cn/3.7/library/2to3.html#module-lib2to3) 是一个很灵活通用的库， __所以你也可以为 2to3 编写你自己的修复器__ 。[`lib2to3`](https://docs.python.org/zh-cn/3.7/library/2to3.html#module-lib2to3) 也可以用在那些需要自动处理 Python 代码的应用中。
 
-2to3 是 Python 自带的一个代码转换工具，可以将 Python2 的代码自动转换为 Python3的代码。
+2to3 是 Python 自带的一个代码转换工具，可以将 Python2 的代码自动转换为 Python3 的代码。
 
-**注意事项1：转换后的代码不再对python2进行兼容**
+**注意事项 1：转换后的代码不再对 python2 进行兼容**
 
-**注意事项2：转换后并不确保功能 100% 可用，需要通过完备的单元测试和集成测试去确保功能正确性**
+**注意事项 2：转换后并不确保功能 100% 可用，需要通过完备的单元测试和集成测试去确保功能正确性**
 
 ### 2.1 基本命令
 
-1. 使用patch命令生成文件差异
+1. 使用 patch 命令生成文件差异
 
-        # 解析 test.py ，并将转换到py3后的文件差异输出到 test.patch 
+        # 解析 test.py ，并将转换到py3后的文件差异输出到 test.patchplainplainplainplainplain
         2to3 test.py > test.patch
 
         # 应用 test.patch 中的改动到 test.py
@@ -30,12 +30,12 @@ Python 软件基金会宣布，到 2020 年元旦，将不再为编程语言 Pyt
 
 2. 直接把修改写回原文件
 
-        # 除非传入了 `-n` 参数，否则会为原始文件创建一个副本
+        # 除非传入了 `-n` 参数，否则会为原始文件创建一个副本plainplainplainplainplainplain
         2to3 -w test.py
 
 3. 将整个项目代码转换到 py3
 
-        2to3 -w -n myproject
+        2to3 -w -n myprojectplainplainplainplain
 
 ### 2.2 修复器
 
@@ -55,7 +55,7 @@ Python 软件基金会宣布，到 2020 年元旦，将不再为编程语言 Pyt
 
     > 建议 checkout 一个新分支进行迁移验证，验证通过后再合并回主分支
 
-        2to3 -w -n myproject
+        2to3 -w -n myprojectplainplainplainplainplain
 
 4. 对个别无法通过 2to3 自动转换的代码，根据控制台输出给的修改建议，进行手动调整
 
@@ -67,7 +67,7 @@ Python 软件基金会宣布，到 2020 年元旦，将不再为编程语言 Pyt
 
 如需更改 Python 版本，需要开发者在 **App 根目录下** 添加`runtime.txt`文件，并在其中写上自定义版本号，平台会根据这个版本号选择 Python 版本，例如：
 
-```
+```plain
 python-3.6.6
 ```
 
@@ -79,13 +79,13 @@ python-3.6.6
 
 - 原因
 
-    在Python3需指定文件流编码
+    在 Python3 需指定文件流编码
 
 - 解决
 
     直接在 logging 增加属性 `'encoding': 'utf-8'`
 
-### 2. 在获取字符串MD5时，抛出异常 `TypeError: Unicode-objects must be encoded before hashing`
+### 2. 在获取字符串 MD5 时，抛出异常 `TypeError: Unicode-objects must be encoded before hashing`
 
 ```python
 cache_str = "url_{url}__params_{params}".format(
@@ -98,7 +98,7 @@ cache_key = hash_md5.hexdigest()
 
 - 原因
 
-    在Python3，此函数参数为bytes，需要进行encode
+    在 Python3，此函数参数为 bytes，需要进行 encode
 
 - 解决
 
@@ -168,7 +168,7 @@ f.encrypt(bytes(node_id, encoding='utf8'))
 import ujson as json
 ```
 
-### 8. base64编码时，抛出异常 `TypeError: a bytes-like object is required, not 'str'`
+### 8. base64 编码时，抛出异常 `TypeError: a bytes-like object is required, not 'str'`
 
 ```python
 file_data = base64.b64encode(json.dumps({
