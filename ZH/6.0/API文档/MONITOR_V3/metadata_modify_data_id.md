@@ -32,7 +32,7 @@ POST
 | data_name     | string | 是   | 数据源名称 |
 | data_id     | int | 是   | 数据源 ID |
 | operator | string | 是 | 操作者 |
-| source_label | string | 是 | 数据来源标签，例如：数据平台(bk_data)，监控采集器(bk_monitor_collector) |
+| source_label | string | 是 | 数据来源标签，例如：计算平台(bk_data)，监控采集器(bk_monitor_collector) |
 | type_label | string | 是 | 数据类型标签，例如：时序数据(time_series)，事件数据(event)，日志数据(log) | 
 
 **注意**： 上述的`source_tag`及`data_type`都应该通过`metadata_get_label`接口获取，不应该自行创建 

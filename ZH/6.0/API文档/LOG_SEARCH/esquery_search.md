@@ -31,7 +31,7 @@ POST
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
 | indices         |  string    | 是     | 索引列表 |
-| scenario_id         |  string    | 否     | ES 接入场景(非必填） 默认为 log，蓝鲸数据平台：bkdata 原生 ES：es 日志采集：log |
+| scenario_id         |  string    | 否     | ES 接入场景(非必填） 默认为 log，蓝鲸计算平台：bkdata 原生 ES：es 日志采集：log |
 | storage_cluster_id  |  int   | 否     | 当 scenario_id 为 es 或 log 时候需要传入 |
 | time_field  |  string   | 否     | 时间字段（非必填，bkdata 内部为 dtEventTimeStamp，外部如果传入时间范围需要指定时间字段） |
 | start_time  |  string   | 否     | 开始时间 |

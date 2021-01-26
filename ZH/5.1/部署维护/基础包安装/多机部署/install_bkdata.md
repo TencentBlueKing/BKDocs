@@ -1,6 +1,6 @@
 # 安装 BKDATA 详细步骤
 
-BKDATA（蓝鲸数据平台基础服务）包含三个子工程
+BKDATA（蓝鲸计算平台基础服务）包含三个子工程
 
 - dataapi
 - databus

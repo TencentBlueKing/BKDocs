@@ -1,6 +1,6 @@
 # 脚本采集
 
-运维在蓝鲸监控 SaaS 上编写 Shell 脚本，集中下发并周期调度，实现数据采集、入库蓝鲸数据平台 influxdb、出图、监控。
+运维在蓝鲸监控 SaaS 上编写 Shell 脚本，集中下发并周期调度，实现数据采集、入库蓝鲸计算平台 influxdb、出图、监控。
 
 ![脚本采集时序图](../../assets/Shell_Scripts_Collection_Sequece_Diagram.png)
 

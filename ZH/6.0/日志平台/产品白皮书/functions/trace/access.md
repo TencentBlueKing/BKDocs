@@ -35,7 +35,7 @@ github 地址:https://github.com/open-telemetry
 
 ## 数据清洗
 
-通过蓝鲸数据平台，可以对数据进行清洗，数据清洗模板示例：
+通过蓝鲸计算平台，可以对数据进行清洗，数据清洗模板示例：
 
 ![](../media/trace_1_4.png)
 
@@ -48,7 +48,7 @@ github 地址:https://github.com/open-telemetry
 管理->索引集管理->新建
 
 - 是否为 trace 日志：是
-- 数据源：从数据平台中选择对应的索引集
+- 数据源：从计算平台中选择对应的索引集
 
 ![](../media/trace_1_6.png)
 

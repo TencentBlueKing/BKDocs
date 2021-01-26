@@ -61,7 +61,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 
 - 打开蓝鲸监控平台，查看蓝鲸的数据链路是否正常
 
-  如果只有 bk_data \<社区版不含数据平台\> 为红色则正常 。否则需要针对显红的地方进行排查直至显绿。
+  如果只有 bk_data \<社区版不含计算平台\> 为红色则正常 。否则需要针对显红的地方进行排查直至显绿。
 
 ![bkmonitorv3](../../assets/bkmonitorv3_status.png)
 

@@ -98,11 +98,11 @@ bkcec 的调用语法为：`bkcec <command> <module> [project] [1]`
 
 - **appt：** SaaS 部署的测试环境。
 
-- **bkdata：** 数据平台基础服务。
+- **bkdata：** 计算平台基础服务。
 
-  - **dataapi：** 数据平台 API 接口服务。
+  - **dataapi：** 计算平台 API 接口服务。
 
-  - **databus：** 数据平台总线服务。
+  - **databus：** 计算平台总线服务。
 
   - **monitor：** 监控后台。
 
