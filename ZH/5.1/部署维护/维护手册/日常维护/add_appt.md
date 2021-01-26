@@ -12,7 +12,7 @@
 
 2\. 登陆中控机，编辑 install.config , 新增一行
 
-    ```bashplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
+    ```bash
     10.0.0.2 appt
     ```
 
@@ -22,7 +22,7 @@
 
 4\. 依次运行以下命令开始安装 APPT
 
-    ```bashplainplainplainplain
+    ```bash
     ./bkcec sync common
     ./bkcec sync consul
     ./bkcec sync appt

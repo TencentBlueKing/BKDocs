@@ -83,7 +83,7 @@ consul 可以不需要使用任何命令行开关和配置，都有默认值，�
 1. consul.json
 
 
-    ```jsonplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
+    ```json
     {
         "bind_addr": "10.0.0.1",
         "log_level": "info",

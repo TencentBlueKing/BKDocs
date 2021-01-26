@@ -2089,7 +2089,7 @@
 				"summary": "6.0/开发指南/SUMMARY.md"
 			},
 			"index": 74,
-			"title": "SaaS开发入门",
+			"title": "SaaS开发",
 			"url": "6.0/开发指南/开发简介/README.md",
 			"version": "6.0"
 		}],
@@ -2120,26 +2120,9 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/API文档/SUMMARY.md"
-			},
-			"index": 72,
-			"title": "API文档",
-			"url": "6.0/API文档/README.md",
-			"version": "6.0"
-		}],
-	"source": {
-		"describe": "$$$",
-		"icon_url": "",
-		"page": "docs",
-		"type": "tag1:开发指南"
-	}
-}, {
-	"link_conf": [
-		{
-			"extend": {
 				"summary": "6.0/开发指南/SUMMARY.md"
 			},
-			"index": 71,
+			"index": 72,
 			"title": "前端工具集",
 			"url": "6.0/开发指南/SaaS开发/开发基础/MagicBox.md",
 			"version": "6.0"
@@ -2156,7 +2139,7 @@
 			"extend": {
 				"summary": "6.0/开发指南/SUMMARY.md"
 			},
-			"index": 70,
+			"index": 71,
 			"title": "移动端开发",
 			"url": "6.0/开发指南/SaaS开发/Mobile_development.md",
 			"version": "6.0"
@@ -2173,24 +2156,7 @@
 			"extend": {
 				"summary": "6.0/开发指南/SUMMARY.md"
 			},
-			"index": 69,
-			"title": "蓝鲸错误码",
-			"url": "6.0/开发指南/蓝鲸错误码/README.md",
-			"version": "6.0"
-		}],
-	"source": {
-		"describe": "$$$",
-		"icon_url": "",
-		"page": "docs",
-		"type": "tag1:开发指南"
-	}
-}, {
-	"link_conf": [
-		{
-			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
-			},
-			"index": 68,
+			"index": 70,
 			"title": "开源共建",
 			"url": "6.0/开发指南/开源共建/README.md",
 			"version": "6.0"
@@ -2207,7 +2173,7 @@
 			"extend": {
 				"summary": "6.0/开发指南/SUMMARY.md"
 			},
-			"index": 67,
+			"index": 69,
 			"title": "拓展开发",
 			"url": "6.0/开发指南/扩展开发/sops.md",
 			"version": "6.0"
@@ -2222,11 +2188,45 @@
 	"link_conf": [
 		{
 			"extend": {
+				"summary": "6.0/开发指南/SUMMARY.md"
+			},
+			"index": 68,
+			"title": "蓝鲸错误码",
+			"url": "6.0/开发指南/蓝鲸错误码/README.md",
+			"version": "6.0"
+		}],
+	"source": {
+		"describe": "$$$",
+		"icon_url": "",
+		"page": "docs",
+		"type": "tag1:开发指南"
+	}
+}, {
+	"link_conf": [
+		{
+			"extend": {
+				"summary": "6.0/API文档/SUMMARY.md"
+			},
+			"index": 67,
+			"title": "API文档",
+			"url": "6.0/API文档/README.md",
+			"version": "6.0"
+		}],
+	"source": {
+		"describe": "$$$",
+		"icon_url": "",
+		"page": "docs",
+		"type": "tag1:开发指南"
+	}
+}, {
+	"link_conf": [
+		{
+			"extend": {
 				"summary": "6.0/部署指南/SUMMARY.md"
 			},
-			"index": 66,
-			"title": "部署方案",
-			"url": "",
+			"index": 50,
+			"title": "基础包快速部署",
+			"url": "6.0/部署指南/产品白皮书/基础包安装/多机部署/quick_install.md",
 			"version": "6.0"
 		}],
 	"source": {
@@ -2241,9 +2241,9 @@
 			"extend": {
 				"summary": "6.0/部署指南/SUMMARY.md"
 			},
-			"index": 65,
-			"title": "软件下载",
-			"url": "",
+			"index": 49,
+			"title": "蓝盾快速部署",
+			"url": "6.0/部署指南/产品白皮书/增强包安装/部署安装/CI-start.md",
 			"version": "6.0"
 		}],
 	"source": {
@@ -2258,9 +2258,9 @@
 			"extend": {
 				"summary": "6.0/部署指南/SUMMARY.md"
 			},
-			"index": 64,
-			"title": "基础包安装",
-			"url": "6.0/部署指南/产品白皮书/部署方案/README.md",
+			"index": 48,
+			"title": "BCS快速部署",
+			"url": "6.0/部署指南/产品白皮书/增强包安装/部署安装/BCS-start.md",
 			"version": "6.0"
 		}],
 	"source": {
@@ -2275,9 +2275,9 @@
 			"extend": {
 				"summary": "6.0/部署指南/SUMMARY.md"
 			},
-			"index": 63,
-			"title": "增强包安装",
-			"url": "",
+			"index": 47,
+			"title": "基础包部署详解",
+			"url": "6.0/部署指南/产品白皮书/README.md",
 			"version": "6.0"
 		}],
 	"source": {
@@ -2292,9 +2292,9 @@
 			"extend": {
 				"summary": "6.0/部署指南/SUMMARY.md"
 			},
-			"index": 62,
-			"title": "SaaS部署",
-			"url": "",
+			"index": 46,
+			"title": "蓝盾部署详解",
+			"url": "6.0/部署指南/产品白皮书/增强包安装/部署安装/CI-V2.md",
 			"version": "6.0"
 		}],
 	"source": {
@@ -2309,9 +2309,9 @@
 			"extend": {
 				"summary": "6.0/部署指南/SUMMARY.md"
 			},
-			"index": 61,
-			"title": "维护手册",
-			"url": "",
+			"index": 45,
+			"title": "BCS部署详解",
+			"url": "6.0/部署指南/产品白皮书/增强包安装/部署安装/BCS-V2.md",
 			"version": "6.0"
 		}],
 	"source": {
@@ -2326,7 +2326,41 @@
 			"extend": {
 				"summary": "6.0/部署指南/SUMMARY.md"
 			},
-			"index": 60,
+			"index": 44,
+			"title": "基础包维护手册",
+			"url": "6.0/部署指南/产品白皮书/维护手册/日常维护/maintain.md",
+			"version": "6.0"
+		}],
+	"source": {
+		"describe": "$$$",
+		"icon_url": "",
+		"page": "docs",
+		"type": "tag2:部署维护"
+	}
+}, {
+	"link_conf": [
+		{
+			"extend": {
+				"summary": "6.0/部署指南/SUMMARY.md"
+			},
+			"index": 43,
+			"title": "增强包维护手册",
+			"url": "6.0/部署指南/产品白皮书/增强包维护/蓝盾/Term.md",
+			"version": "6.0"
+		}],
+	"source": {
+		"describe": "$$$",
+		"icon_url": "",
+		"page": "docs",
+		"type": "tag2:部署维护"
+	}
+}, {
+	"link_conf": [
+		{
+			"extend": {
+				"summary": "6.0/部署指南/SUMMARY.md"
+			},
+			"index": 32,
 			"title": "升级指引",
 			"url": "",
 			"version": "6.0"
@@ -2343,7 +2377,7 @@
 			"extend": {
 				"summary": "6.0/部署指南/SUMMARY.md"
 			},
-			"index": 59,
+			"index": 31,
 			"title": "mini版部署",
 			"url": "",
 			"version": "6.0"
@@ -2360,7 +2394,7 @@
 			"extend": {
 				"summary": "6.0/常见问题/SUMMARY.md"
 			},
-			"index": 58,
+			"index": 30,
 			"title": "常见问题",
 			"url": "6.0/常见问题/README.md",
 			"version": "6.0"
@@ -2377,7 +2411,7 @@
 			"extend": {
 				"summary": "6.0/版本日志/SUMMARY.md"
 			},
-			"index": 57,
+			"index": 29,
 			"title": "版本日志",
 			"url": "6.0/版本日志/README.md",
 			"version": "6.0"
@@ -2394,7 +2428,7 @@
 			"extend": {
 				"summary": "6.0/软件资源/SUMMARY.md"
 			},
-			"index": 56,
+			"index": 28,
 			"title": "下载资源",
 			"url": "6.0/软件资源/README.md",
 			"version": "6.0"
@@ -2410,7 +2444,7 @@
 		"extend": {
 			"summary": "6.0/文档共建/SUMMARY.md"
 		},
-		"index": 55,
+		"index": 27,
 		"title": "文档共建",
 		"url": "6.0/文档共建/README.md",
 		"version": "6.0"
@@ -2427,7 +2461,7 @@
 			"extend": {
 				"summary": ""
 			},
-			"index": 54,
+			"index": 26,
 			"title": "品牌视频",
 			"url": "/video/6.0#234",
 			"version": "6.0"
@@ -2444,7 +2478,7 @@
 			"extend": {
 				"summary": ""
 			},
-			"index": 53,
+			"index": 25,
 			"title": "开发课堂",
 			"url": "/video/6.0#235",
 			"version": "6.0"
@@ -2461,7 +2495,7 @@
 			"extend": {
 				"summary": ""
 			},
-			"index": 52,
+			"index": 24,
 			"title": "沙龙活动",
 			"url": "/video/6.0#236",
 			"version": "6.0"

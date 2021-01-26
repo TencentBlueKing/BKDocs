@@ -12,12 +12,12 @@
 
 1. 使用 pip 安装 pre-commit
 
-        # pipplainplainplainplainplainplainplainplainplainplain
+        # pip
         pip install pre-commit
 
 2. 在有.git 的项目配置 pre-commit
 
-        pre-commit installplainplainplainplainplainplainplainplainplainplain
+        pre-commit install
 
 执行后，查看 `.git/hooks` 目录，若存在名为 `pre-commit` 新文件，则配置成功 。
 

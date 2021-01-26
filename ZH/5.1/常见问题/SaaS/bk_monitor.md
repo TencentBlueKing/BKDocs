@@ -344,7 +344,7 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
 
 	- 回到bkdata机器，看下日志，正常会输出如下的日志
 
-		![-w2020](../assets/tapd_10158081_base64_1532316099_62.png)plain
+		![-w2020](../assets/tapd_10158081_base64_1532316099_62.png)
 
 3. 如果第二步正常，可以看到日志输出
 
@@ -352,7 +352,7 @@ source /data/install/utils.fc && mysql -h $MYSQL_IP0 -u $MYSQL_USER -p"$MYSQL_PA
 
 **问题表象**：在配置组件采集参数，完成配置下发和验证测试的过程中，出现如下错误提示
 
-```plain
+```bash
 1. 测试不通过，[datadog]托管程序启动失败：fail to restart process
 2. 存在执行失败的主机，需要将失败主机剔除方可进行下一步操作
 ```

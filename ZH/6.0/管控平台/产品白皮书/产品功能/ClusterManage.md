@@ -8,7 +8,7 @@
 
 **Agent 状态查询**：管控平台提供接口，查询 Agent 状态。
 
-    接口按照实时性分为两类：plainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
+    接口按照实时性分为两类：
 
     一类为实时状态接口，只能查询当前 Agent 是否正常；
 

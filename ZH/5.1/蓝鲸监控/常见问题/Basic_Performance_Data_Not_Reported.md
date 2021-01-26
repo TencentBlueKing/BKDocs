@@ -44,7 +44,7 @@ GSE_IP 和 GSE_IP1 机器：检测 9092 端口
 
 ## 检查配置
 ZK_IP 机器：查看 ZK 节点
-		>/data/bkce/service/zk/bin/zkCli.sh -server ip:2181 (ip通常为zk本机内网IP)plainplainplainplainplainplainplainplainplainplainplainplain
+		>/data/bkce/service/zk/bin/zkCli.sh -server ip:2181 (ip通常为zk本机内网IP)
 	get /gse/config/etc/dataserver/data/1001
 
 	正常会出现类似下面的数据结构

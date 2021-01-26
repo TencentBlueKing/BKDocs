@@ -52,7 +52,7 @@
 - bcs dns 配置: 
 
 所有的节点服务器上需要在`/etc/resolv.conf`文件的第一行加上`nameserver xx.xx.xx.xx`，xx.xx.xx.xx 是 bcs-dns-service 服务所在的 IP 地址。具体可以参考集群被纳管后 Master 服务器上的`/etc/resolv.conf`文件的第一条 nameserver，也可以在蓝鲸中控机上执行以下命令获取：
-   ```plain
+   ```bash
     $ source /data/install/load_env.sh
     $ ping -c 1 ${BCS_API_IP}
    ```
@@ -60,7 +60,7 @@
 - 添加 harbor https 证书:
 
     （1）在所有节点服务器创建目录：
-    ```plain
+    ```bash
     $ mkdir -p /etc/docker/certs.d/harbor-api.service.consul
     ```
     （2）复制 Master 服务器上的`/etc/docker/certs.d/harbor-api.service.consul/ca.crt`到节点上的目录`/etc/docker/certs.d/harbor-api.service.consul/`
@@ -68,20 +68,20 @@
 - 重启所有服务器的 docker 服务（Master & Node）
 
 注意：重启 docker 服务前请确认 docker 服务是否启用了`--live-restore`参数，如果没有启用会影响到目前运行的 docker 容器
-```plain
+```bash
 $ systemctl restart docker
 ```
 
 - 重建 coredns 或 kube-dns 应用
 
 注意：通常 coredns 或 kube-dns 都有 2 个及以上的实例，重建时需要单个处理，以免影响到集群业务。"参考命令"如下
-```plain
+```bash
 $ kubectl delete pod coredns-b65cd664d-glt9r -n kube-system
 $ kubectl delete pod coredns-b65cd664d-mwlgn -n kube-system
 ```
 
 - 检查容器监控与 Web Console 状态
-```plain
+```bash
 $ kubectl get pod -n thanos
     NAME                                                 READY   STATUS    RESTARTS   AGE
     po-kube-prometheus-stack-operator-5dbd6d85c9-v5bgm   1/1     Running   0          11h
