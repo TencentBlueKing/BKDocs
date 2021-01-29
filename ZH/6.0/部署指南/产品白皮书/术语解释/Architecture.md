@@ -90,7 +90,7 @@ Job后台进程之间通过 Consul 服务发现。通过 RabbitMQ 收发消息�
 
 监控平台分为 SaaS(bk_monitorv3)和后台(bkmonitorv3)。
 
-后台(bkmoitorv3)分为四个子工程：
+后台(bkmonitorv3)分为四个子工程：
 
 - monitor: 监控后台，提供api接入esb，供前端SaaS查询
 - transfer: 原始数据清洗入库进程
