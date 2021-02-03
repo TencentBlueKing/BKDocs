@@ -26,7 +26,7 @@ Jinja2 是一个现代的，设计者友好的，仿照 Django 模板的 Python 
 | alarm.collect_count    | 汇总事件数量     | 10                  |
 | alarm.notice_from      | 消息来源         | 监控平台            |
 | alarm.company          | 企业标识         | 蓝鲸                |
-| alarm.data_source_name | 数据来源名称     | 数据平台            |
+| alarm.data_source_name | 数据来源名称     | 计算平台            |
 | alarm.data_source      | 数据来源         | BKMONITOR           |
 | alarm.detail_url       | 详情链接         |                     |
 | alarm.current_value    | 当前值           | 1.1                 |

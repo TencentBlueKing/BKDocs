@@ -24,10 +24,10 @@
 
 更多使用方法查看[第三方 ES 接入](../functions/manager/third_es.md)
 
-方法三： 接入数据平台的日志数据，仅限于企业版
+方法三： 接入计算平台的日志数据，仅限于企业版
 
 
-更多使用方法查看[数据平台日志接入](../functions/manager/bkdata.md)
+更多使用方法查看[计算平台日志接入](../functions/manager/bkdata.md)
 
 
 ## 阶段二：日志检索

@@ -28,7 +28,7 @@
     * [策略&告警相关]()
         * [如何对进程进行监控](产品白皮书/guide/process_monitor.md)
         * [如何监控日志平台的数据](产品白皮书/guide/log_monitor.md)
-        * [如何监控数据平台的数据](产品白皮书/guide/bigdata_monitor.md)
+        * [如何监控计算平台的数据](产品白皮书/guide/bigdata_monitor.md)
         * [如何添加新的通知渠道](产品白皮书/guide/notify_setting.md)
         * [如何自定义通知模版](产品白皮书/guide/notify_case.md)
         * [如何设置告警回调](产品白皮书/guide/http_callback.md)

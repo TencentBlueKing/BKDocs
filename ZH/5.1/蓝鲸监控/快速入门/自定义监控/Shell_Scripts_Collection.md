@@ -1,6 +1,6 @@
 # 脚本采集
 
-运维在蓝鲸监控 SaaS 上编写 Shell 脚本，集中下发并周期调度，实现数据采集、入库蓝鲸数据平台 influxdb、出图、监控。
+运维在蓝鲸监控 SaaS 上编写 Shell 脚本，集中下发并周期调度，实现数据采集、入库蓝鲸计算平台 influxdb、出图、监控。
 
 ![脚本采集时序图](../../assets/Shell_Scripts_Collection_Sequece_Diagram.png)
 
@@ -97,7 +97,7 @@ echo "disk_usage{disk_name=\"${disk_name}\"} ${diskUsage}"
 
 - 问：如何一次插入多条数据？
 
-    答：你可以使用Shell的循环语句for、while等来一次上报多条数据，只要符合Shell语法即可。plainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
+    答：你可以使用Shell的循环语句for、while等来一次上报多条数据，只要符合Shell语法即可。
 ![edit_shellscript_while](../../assets/edit_shellscript_while.png)
 
 - 问：脚本下发到服务器上后，存放在哪里？
