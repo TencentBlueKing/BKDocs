@@ -10,7 +10,7 @@
 
 ## 安装部署
 
-蓝鲸的配置平台依赖 MongoDB 4.2及以上版本，安装参考官方文档：[Install MongoDB Community Edition on Red Hat or CentOS](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/) 
+蓝鲸的配置平台依赖 MongoDB 4.2及以上版本，安装参考[官方文档](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/) 
 
 1. 安装 rpm 包
 2. 配置 /etc/mongod.conf 
@@ -25,7 +25,7 @@
 
 ### 生产环境配置
 
-蓝鲸默认部署的参数，并没有完全参考官方的生产环境配置来处理，因为混合部署了其他模块。假设用户给 MongoDB 单独的机器来搭建，可以参考官方的生产环境配置要求(Production Notes)[https://docs.mongodb.com/manual/administration/production-notes/]:
+蓝鲸默认部署的参数，并没有完全参考官方的生产环境配置来处理，因为混合部署了其他模块。假设用户给 MongoDB 单独的机器来搭建，可以参考官方的[生产环境配置要求](https://docs.mongodb.com/manual/administration/production-notes/):
 
 #### 硬件规格
 
@@ -40,7 +40,7 @@
 1. 不分配swap空间，并调整内核参数禁用 swap (vm.swappiness = 0)
 2. 分配swap空间，但是调整内核参数只当系统内存使用率非常高时才允许 swapping (vm.swappiness = 1)
 
-关于 ulimit 相关的配置:  https://docs.mongodb.com/manual/reference/ulimit/
+关于 ulimit 相关的配置，参考[官方文档](https://docs.mongodb.com/manual/reference/ulimit/)
 
 ### ReplicaSet 集群配置
 
@@ -108,7 +108,7 @@ rs0:PRIMARY> rs.status().ok
 
 ## 用户角色管理
 
-安装部署好集群后，默认只创建了超级管理员账号。接着需要给应用创建普通用户账号来访问对应的数据库。官方关于用户角色管理的文档参考：[Manage Users and Roles](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/)
+安装部署好集群后，默认只创建了超级管理员账号。接着需要给应用创建普通用户账号来访问对应的数据库。关于 MongoDB 用户角色管理参考[官方文档](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/)
 
 蓝鲸部署脚本为了方便调用，封装了 `./bin/add_mongodb_user.sh` 脚本。用法如下：
 
