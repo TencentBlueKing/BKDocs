@@ -20,7 +20,7 @@
 
 ## 创建系统及组件文件
 
-在项目的 components/generic/apis/ 下，按照下面结构创建目录及文件(模版下载)：
+在项目的 components/generic/apis/ 下，按照下面结构创建目录及文件([模版下载](https://bktencent-1252002024.file.myqcloud.com/hcp.tar.gz))：
 
 ```bash
 components/generic/apis/
