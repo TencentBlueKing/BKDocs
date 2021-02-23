@@ -137,6 +137,12 @@ python manage.py sync_api_docs
 组件添加完成后，重启服务，重启步骤如下:
 
 ```bash
+# 设置环境变量
+source /root/.bkrc
+source $CTRL_DIR/functions
+export BK_ENV=production
+export BK_FILE_PATH=/data/bkce/open_paas/cert/saas_priv.txt
+export PAAS_LOGGING_DIR=/data/bkce/logs/open_paas
 # INSTALL_PATH 表示项目安装基准目录，比如：/data/bkce
 # 重启指令
 workon open_paas-paas

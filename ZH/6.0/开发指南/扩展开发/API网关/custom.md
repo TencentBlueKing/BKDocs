@@ -116,6 +116,13 @@ BUFFET_COMPONENTS = [
 ## 同步配置到数据库
 
 ```bash
+# 设置环境变量
+source /root/.bkrc
+source $CTRL_DIR/functions
+export BK_ENV=production
+export BK_FILE_PATH=/data/bkce/open_paas/cert/saas_priv.txt
+export PAAS_LOGGING_DIR=/data/bkce/logs/open_paas
+
 workon open_paas-esb
 # 默认情况，当部分配置与数据库中数据不一致时，显示差别信息；
 # --force，配置与数据库中数据不一致时，强制将配置更新到数据库
