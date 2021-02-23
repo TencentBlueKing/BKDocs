@@ -7,20 +7,17 @@
 在配置文件中，管理自定义的系统及 API 配置
 
 ```bash
-[install_path] /open_paas/esb/components/generic/apis/conf.py
+[install_path]/open_paas/esb/components/generic/apis/conf.py
 ```
 
 ## 配置文件内容
 
-配置文件 conf.py 是一个普通的 python 模块，其中包含以下变量
+配置文件 `conf.py` 是一个普通的 python 模块，其中包含以下变量
 
-- SYSTEM_DOC_CATEGORY: 文档分类，指定系统在 API 文档中所属的文档分类
-
-- SYSTEMS: 系统信息，对应管理端的系统管理
-
-- CHANNELS: 组件通道信息，对应管理端的通道管理
-
-- BUFFET_COMPONENTS: 自助接入 API 信息，对应管理端的自助接入
+- SYSTEM_DOC_CATEGORY: 文档分类，指定系统在 **API 文档**中所属的**文档分类**
+- SYSTEMS: 系统信息，对应管理端的**系统管理**
+- CHANNELS: 组件通道信息，对应管理端的**通道管理**
+- BUFFET_COMPONENTS: 自助接入 API 信息，对应管理端的**自助接入**
 
 ### SYSTEM_DOC_CATEGORY
 
@@ -119,7 +116,7 @@ BUFFET_COMPONENTS = [
 ## 同步配置到数据库
 
 ```bash
-workon esb
+workon open_paas-esb
 # 默认情况，当部分配置与数据库中数据不一致时，显示差别信息；
 # --force，配置与数据库中数据不一致时，强制将配置更新到数据库
 python manage.py sync_system_and_channel_data [--force]
