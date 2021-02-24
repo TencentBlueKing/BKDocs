@@ -54,22 +54,22 @@
 - ComponentClient
 
 ```python
-     from blueking.component.client import ComponentClient
-     # APP应用ID
-     bk_app_code = 'xxx'
-     # APP安全密钥
-     bk_app_secret = 'xxx-xxx-xxx-xxx-xxx'
-     # 用户登录态信息
-     common_args = {'bk_token': 'xxx'}
-     # APP应用ID和APP安全密钥如未提供，默认从django settings中获取
-     client = ComponentClient(
-         bk_app_code=bk_app_code,
-         bk_app_secret=bk_app_secret,
-         common_args=common_args
-     )
-     # 参数
-     kwargs = {'bk_biz_id': 1}
-     result = client.cc.get_app_host_list(kwargs)
+    from blueking.component.client import ComponentClient
+    # APP应用ID
+    bk_app_code = 'xxx'
+    # APP安全密钥
+    bk_app_secret = 'xxx-xxx-xxx-xxx-xxx'
+    # 用户登录态信息
+    common_args = {'bk_token': 'xxx'}
+    # APP应用ID和APP安全密钥如未提供，默认从django settings中获取
+    client = ComponentClient(
+        bk_app_code=bk_app_code,
+        bk_app_secret=bk_app_secret,
+        common_args=common_args
+    )
+    # 参数
+    kwargs = {'bk_biz_id': 1}
+    result = client.cc.get_app_host_list(kwargs)
  ```
 
 ### APP 开发框架中的 SDK 包
@@ -122,7 +122,7 @@ AVAILABLE_COLLECTIONS = {
 用 curl 直接访问示例如下：
 
 ```bash
-    curl -d '{"bk_app_code": "xxx", "bk_app_secret": "xxx", "bk_token": "xxx", "bk_biz_id": 1}' 'http://domain.com/path/'
+curl -d '{"bk_app_code": "xxx", "bk_app_secret": "xxx", "bk_token": "xxx", "bk_biz_id": 1}' 'http://domain.com/path/'
 
-    curl 'http://domain.com/path/?bk_app_code=xxx&bk_app_secret=xxx&bk_token=xxx&bk_biz_id=1'   # 数据需urlencode编码
+curl 'http://domain.com/path/?bk_app_code=xxx&bk_app_secret=xxx&bk_token=xxx&bk_biz_id=1'   # 数据需urlencode编码
 ```
