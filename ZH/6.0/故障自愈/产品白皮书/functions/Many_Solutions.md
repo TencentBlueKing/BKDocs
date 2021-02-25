@@ -12,7 +12,7 @@
 
 背后对应一个作业平台套餐，调用作业平台内置的一个跨业务作业，执行磁盘清理。
 
-更多请参考 [创建磁盘清理自愈套餐和方案](Create_Diskclear_Fta_Solutions.md)。
+更多请参考 [创建磁盘清理自愈套餐和方案](../quickstart/Create_Diskclear_Fta_Solutions.md)。
 
 #### 汇总
 
