@@ -45,13 +45,13 @@
 
 ### 1.4 下载 BCS 安装包
 
-- 下载安装包，[下载地址](https://bk.tencent.com/download_enhance/)
+- 下载安装包，[下载地址](https://bkopen-1252002024.file.myqcloud.com/bcs/bcs_ce-6.0.9.tgz)
 - 上传安装包至中控机 /data
 - 容器管理平台扩展软件包：bcs_ce-6.0.9.tgz
 
 ### 1.5 下载标准运维模版文件
 
-- 下载模版文件至本地
+- [下载模版文件](https://bkopen-1252002024.file.myqcloud.com/bcs/bk_sops_common_ce_2021_02_04-01.dat)至本地
 - 标准运维模版文件名：bk_sops_common_ce_2021_02_04-01.dat
 
 ### 1.6 解压 BCS 安装包
@@ -66,7 +66,7 @@ tar xvf bcs_ce-6.0.9.tgz -C /data/
 
 打开标准运维--->公共流程--->导入--->点击上传--->选择标准运维模版文件名--->流程 ID 不变提交
 
-（因为 bcs-ops 模块需要关联标准运维模版流程 ID，如果流程 ID 有冲突请参考[增强包维护手册-BCS-FAQ](../../维护手册/增强包/BCS/FAQ.md)的第 2 小点解决）
+（因为 bcs-ops 模块需要关联标准运维模版流程 ID，如果流程 ID 有冲突请参考[增强包维护手册-BCS-FAQ](../../增强包维护/BCS/FAQ.md)的第 2 小点解决）
 
 ![avatar](../../assets/import_start.png)
 ![avatar](../../assets/upload_dat_file.png)
