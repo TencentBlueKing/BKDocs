@@ -10,7 +10,7 @@
 
 ## 安装部署
 
-蓝鲸的配置平台依赖 MongoDB 4.2及以上版本，安装参考[官方文档](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/) 
+蓝鲸的配置平台依赖 MongoDB 4.2 及以上版本，安装参考[官方文档](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/) 
 
 1. 安装 rpm 包
 2. 配置 /etc/mongod.conf 
@@ -29,29 +29,29 @@
 
 #### 硬件规格
 
-- 给每个 MongoDB 实例分配至少2核 CPU
+- 给每个 MongoDB 实例分配至少 2 核 CPU
 - 内存通过 /etc/mongod.conf 中的 storage.wiredTiger.engineConfig.cacheSizeGB 配置
-- SSD磁盘
+- SSD 磁盘
 
 #### 系统配置
 
-关于Swap，如果系统发生swapping，会让 MongoDB 的性能受到影响，所以建议：
+关于 Swap，如果系统发生 swapping，会让 MongoDB 的性能受到影响，所以建议：
 
-1. 不分配swap空间，并调整内核参数禁用 swap (vm.swappiness = 0)
-2. 分配swap空间，但是调整内核参数只当系统内存使用率非常高时才允许 swapping (vm.swappiness = 1)
+1. 不分配 swap 空间，并调整内核参数禁用 swap (vm.swappiness = 0)
+2. 分配 swap 空间，但是调整内核参数只当系统内存使用率非常高时才允许 swapping (vm.swappiness = 1)
 
 关于 ulimit 相关的配置，参考[官方文档](https://docs.mongodb.com/manual/reference/ulimit/)
 
 ### ReplicaSet 集群配置
 
-通过前面的 `install_mongodb.sh` 安装的只是一个单实例的 MongoDB，而蓝鲸使用 MongoDB 的模式默认为 ReplicaSet，所以需要将单实例的 Mongod 变为 ReplicaSet模式。
+通过前面的 `install_mongodb.sh` 安装的只是一个单实例的 MongoDB，而蓝鲸使用 MongoDB 的模式默认为 ReplicaSet，所以需要将单实例的 Mongod 变为 ReplicaSet 模式。
 参考官方文档： [集群搭建指南](https://docs.mongodb.com/v4.2/administration/replica-set-deployment/)
 
 值得一提的是，社区版为了节约资源，默认只配置了一台 MongoDB，如果资源充足，可以直接搭建三个节点的 MongoDB，组成高可用集群。
 
 蓝鲸部署脚本为了简化配置，封装了脚本：`./bin/setup_mongodb_rs.sh` 分两步来完成：
 
-1. 配置所有 MongoDB 单实例的机器，开启key认证
+1. 配置所有 MongoDB 单实例的机器，开启 key 认证
 
     ```bash
     # 不带参数运行，会输出命令行的帮助信息
@@ -71,9 +71,9 @@
     ./bin/setup_mongodb_rs.sh -a init -j ${BK_MONGODB_IP_COMMA} -u $BK_MONGODB_ADMIN_USER -p $BK_MONGODB_ADMIN_PASSWORD -P 27017
     ```
 
-### 配置Consul服务名
+### 配置 Consul 服务名
 
-蓝鲸服务访问 MongoDB 使用域名链接，默认配置为 mongodb.service.consul 且 CMDB、GSE、Job访问同一个 MongoDB 集群。严格的生产环境下，如果机器资源允许，建议各自访问独立的 MongoDB 集群实例。譬如按上面的步骤搭建三个集群，然后配置服务名分别为：mongodb-cmdb.service.consul、mongodb-gse.service.consul、mongodb-job.service.consul。
+蓝鲸服务访问 MongoDB 使用域名链接，默认配置为 mongodb.service.consul 且 CMDB、GSE、Job 访问同一个 MongoDB 集群。严格的生产环境下，如果机器资源允许，建议各自访问独立的 MongoDB 集群实例。譬如按上面的步骤搭建三个集群，然后配置服务名分别为：mongodb-cmdb.service.consul、mongodb-gse.service.consul、mongodb-job.service.consul。
 
 这里以默认的 mongodb.service.consul 为例，创建 consul 的服务定义文件如下，需要在组成集群的所有 MongoDB 实例机器上运行：
 
@@ -85,7 +85,7 @@ $ consul reload
 
 ### 验证集群
 
-MongoDB 成功组成集群后，可以通过 `mongo` 命令行来连接。本文使用 [mongodb uri格式](https://docs.mongodb.com/manual/reference/connection-string/)来连接。
+MongoDB 成功组成集群后，可以通过 `mongo` 命令行来连接。本文使用 [mongodb uri 格式](https://docs.mongodb.com/manual/reference/connection-string/)来连接。
 
 ```bash
 mongo mongodb://$BK_MONGODB_ADMIN_USER:$BK_MONGODB_ADMIN_PASSWORD@mongodb.service.consul:27017/?replicaSet=rs0
@@ -122,19 +122,19 @@ rs0:PRIMARY> rs.status().ok
             [ -v, --version         [可选] "查看脚本版本号" ]
 ```
 
-1. 创建 cmdb 使用的账号（授权的db名为 cmdb）
+1. 创建 cmdb 使用的账号（授权的 db 名为 cmdb）
 
     ```bash
     ./bin/add_mongodb_user.sh -d cmdb -i mongodb://$BK_MONGODB_ADMIN_USER:$BK_MONGODB_ADMIN_PASSWORD@mongodb.service.consul:27017/admin?replicaSet=rs0 -u <cmdb的访问用户名> -p <cmdb的访问密码>
     ```
 
-2. 创建 gse 使用的账号（授权的db名为 gse）
+2. 创建 gse 使用的账号（授权的 db 名为 gse）
 
     ```bash
     ./bin/add_mongodb_user.sh -d gse -i mongodb://$BK_MONGODB_ADMIN_USER:$BK_MONGODB_ADMIN_PASSWORD@mongodb.service.consul:27017/admin?replicaSet=rs0 -u <gse的访问用户名> -p <gse的访问密码>
     ```
 
-3. 创建 job 使用的账号（授权的db名为 joblog）
+3. 创建 job 使用的账号（授权的 db 名为 joblog）
 
     ```bash
     ./bin/add_mongodb_user.sh -d joblog -i mongodb://$BK_MONGODB_ADMIN_USER:$BK_MONGODB_ADMIN_PASSWORD@mongodb.service.consul:27017/admin?replicaSet=rs0 -u <job的访问用户名> -p <job的访问密码>
@@ -180,7 +180,7 @@ mongod 默认安装的配置文件在 `/etc/mongod.conf` 中，如果需要修�
     sed -i '/logAppend/a\    logRotate: reopen' /etc/mongod.conf
     ```
 
-2. 重启mongod：`systemctl restart mongod`
+2. 重启 mongod：`systemctl restart mongod`
 3. 增加 logrotate 的配置（请根据实际日志路径修改 /var/log/mongodb/ 目录）
 
     ```bash
@@ -201,7 +201,7 @@ mongod 默认安装的配置文件在 `/etc/mongod.conf` 中，如果需要修�
     EOF
     ```
 
-4. 通过强制滚动验证logrotate是否正常：
+4. 通过强制滚动验证 logrotate 是否正常：
 
     ```bash
     logrotate --force /etc/logrotate.d/mongodb
@@ -213,7 +213,7 @@ mongod 默认安装的配置文件在 `/etc/mongod.conf` 中，如果需要修�
 * 启动进程： `systemctl start mongod`
 * 停止进程： `systemctl stop mongod`
 * 设置开机启动：`systemctl enable mongod`
-* 命令行连上ReplicaSet的集群：`mongo mongodb://<username>:<password>@mongodb.service.consul:27017/admin?replicaSet=rs0`
+* 命令行连上 ReplicaSet 的集群：`mongo mongodb://<username>:<password>@mongodb.service.consul:27017/admin?replicaSet=rs0`
 * 查看当前 RS 集群的主节点：
 
     ```bash

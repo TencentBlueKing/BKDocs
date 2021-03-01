@@ -13,6 +13,7 @@
 5. Harbor 私有仓库 IP 地址、BCS 导航页组件 IP 地址与 BCS 监控 IP 地址都会占用 TCP 80 端口，需要部署在 3 台不同的服务器上以免端口冲突
 
 6. 容器管理平台服务器配置与所需数量
+
    **体验环境（共 3 台）**
    - MYSQL 数据库、MongoDB 数据库、Redis 数据库、Harbor 私有仓库（客户端浏览器可访问的 IP），最低使用 4 核 CPU|8G 内存|200G 磁盘（1 台）
 
@@ -36,6 +37,7 @@
    - 容器监控服务，最低使用 4 核 CPU|8G 内存|200G 磁盘（1 台）
    
 7. K8S 集群服务器配置与数量
+
    **体验集群（最少 2 台）**
    - master 节点，最低使用 4 核 CPU|8G 内存|100G 磁盘（1 台）
 
@@ -65,7 +67,7 @@
 
 使用节点管理 SaaS 导入服务器信息到配置平台与安装 GSEAgent
 
-- 节点管理使用方法请参考文档：[https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Overview.md](https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Overview.md)
+- 节点管理使用方法请参考文档：[节点管理-产品白皮书](https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Overview.md)
 - 容器管理平台后台、K8S 集群服务器都需要导入服务器信息到配置平台与安装 GSE Agent，请把容器管理平台后台、K8S 集群服务器与安装蓝鲸社区版基础包的服务器放在同一业务下
 
 ## 下载、解压安装包
@@ -74,12 +76,12 @@
 
    容器管理平台扩展软件包：bcs_ce-6.0.3.tgz
 
-> **下载完成后，请核对 MD5 码。**
+   **下载完成后，请核对 MD5 码。**
 
 - 解压容器管理平台扩展软件包
 
    ```bash
-   tar xvf bcs_ce-6.0.3.tgz -C /data/
+   tar xvf bcs_ce-6.x.x.tgz -C /data/
    ```
 
 # 二、开始部署
@@ -107,8 +109,8 @@
 
 ## 部署详细步骤
 
-1. 下载标准运维模版文件 bk_sops_common_ce_2020_11_16_03.dat
-2. 打开标准运维--->公共流程--->导入--->点击上传--->选择标准运维模版文件--->流程 ID 不变提交（因为 bcs-ops 模块需要关联标准运维模版流程 ID，如果流程 ID 有冲突请参考[增强包维护手册-BCS-FAQ](../../增强包维护/BCS/FAQ.md)的第 2 小点解决）
+1. 下载标准运维模版文件 bk_sops_common_ce_xxxx_xx_xx_xx.dat
+2. 打开标准运维--->公共流程--->导入--->点击上传--->选择标准运维模版文件 bk_sops_common_ce_xxxx_xx_xx_xx.dat--->流程 ID 不变提交（因为 bcs-ops 模块需要关联标准运维模版流程 ID，如果流程 ID 有冲突请参考[增强包维护手册-BCS-FAQ](../../增强包维护/BCS/FAQ.md)的第 2 小点解决）
    ![avatar](../../assets/import_start.png)
    ![avatar](../../assets/upload_dat_file.png)
    ![avatar](../../assets/flow_id_commit.png)
@@ -120,8 +122,8 @@
 5. 节点选择，不用修改，直接进入下一步
    ![avatar](../../assets/step_select.png)
 6. 参数填写
-
    ![avatar](../../assets/args_input.png)
+
    - **安装包与安装脚本存放路径**：社区版安装包（src 目录）、安装脚本存放路径（install 目录）和安装后文件存放路径（bkce），默认为/data，建议选择一个大一点的数据分区挂载路径
    - **中控机 IP 地址**：社区版基础服务安装的中控机 IP 地址，用于在此服务器上获取一些容器管理平台依赖的其它服务变量
    - **是否新建 MySQL 实例**：如果没有 MySQL 实例，这里不用修改，默认为 1，安装步骤会创建一个新的 MySQL 实例；如果已有 MySQL 实例这里修改为 0，安装步骤将会使用已有 MySQL 实例，不会安装新的 MySQL 实例
@@ -144,6 +146,7 @@
    - **Web Console IP 地址**：部署在提供 kubectl 命令行工具 IP 地址，可以使用 web 页面快捷查看集群内资源，生产环境建议用 2 台服务器做高可用，多个 IP 使用半角逗号分隔
    - **BCS 监控 IP 地址**：部署容器监控服务的 IP 地址，目前只支持单个 IP
    - **Harbor 私有仓库 IP 地址**：部署私有镜像仓库的 IP 地址，使用 Harbor 提供私有仓库服务，如果需要存放的镜像较多，需要部署在磁盘空间稍大的服务器上，目前只支持部署 1 台服务器；此 IP 需要在客户端浏览器可访问，访问 Harbor 页面管理方式为http://{外网 IP}，管理员用户名默认为：admin，密码为：Harbor12345
+
    ![avatar](../../assets/args_step_next.png)
 7. 执行部署作业，执行作业过程中没有出现错误即部署正常，否则需要根据 job 执行错误信息解决问题
    ![avatar](../../assets/exec_task.png)

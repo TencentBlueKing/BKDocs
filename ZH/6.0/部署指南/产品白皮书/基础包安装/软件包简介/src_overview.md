@@ -83,13 +83,13 @@ support-files/
 - **gse：** 管控平台后台
 - **gse_plugins：** 官方采集器插件目录
 - **image：** SaaS 基础镜像目录
-- **java8.tgz：** JDK安装包
+- **java8.tgz：** JDK 安装包
 - **job：** 作业平台后台
 - **license：** 鉴权服务
 - **MD5：** MD5 校验文件
 - **official_saas：** 官方 SaaS 包
 - **open_paas：** PaaS 后台
-- **paas_agent：** PaaS Agent后台
+- **paas_agent：** PaaS Agent 后台
 - **python：** 蓝鲸定制 Python 解释器目录
 - **usermgr：** 用户管理后台
 - **VERSION：** 社区版版本号
