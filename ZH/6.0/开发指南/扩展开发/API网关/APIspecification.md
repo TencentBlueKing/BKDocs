@@ -4,11 +4,10 @@
 
 ## APP 应用认证
 
-使用 API 前，需先根据已有应用或创建一个应用，获取应用 ID 和安全密钥，作为应用认证信息。
+使用 API 前，需先根据**已有应用**或**创建一个应用**，获取应用 ID 和安全密钥，作为应用认证信息。
 
-- 应用 ID: 应用唯一标识，创建应用时由创建者指定，可在应用基本信息中通过 **应用 ID 获取**
-
-- 安全密钥: 应用密钥，创建应用后由平台生成，可在应用基本信息中通过 **安全密钥** 获取
+- **应用 ID**: 应用唯一标识，创建应用时由创建者指定，可在应用基本信息中通过 **应用 ID**获取
+- **安全密钥**: 应用密钥，创建应用后由平台生成，可在应用基本信息中通过 **安全密钥** 获取
 
 ## 用户认证
 
@@ -16,8 +15,7 @@
 
 调用 API 时，若无法提供用户登录态，可将应用 ID 添加到应用免登录态验证白名单中，则此应用请求 API 时，提供当前用户的 bk_username 即可。
 
-- functioncontroller: 通用白名单管理，通过指定不同的功能 code，维护不同的白名单
-
+- functioncontroller: **通用白名单管理**，通过指定不同的功能 code，维护不同的白名单
 - user_auth::skip_user_auth: "应用免登录态验证白名单" 功能 code，添加此功能 code，然后将应用 ID 添加到"功能测试白名单"中
 
 ## API 调用
@@ -56,22 +54,22 @@
 - ComponentClient
 
 ```python
-     from blueking.component.client import ComponentClient
-     # APP应用ID
-     bk_app_code = 'xxx'
-     # APP安全密钥
-     bk_app_secret = 'xxx-xxx-xxx-xxx-xxx'
-     # 用户登录态信息
-     common_args = {'bk_token': 'xxx'}
-     # APP应用ID和APP安全密钥如未提供，默认从django settings中获取
-     client = ComponentClient(
-         bk_app_code=bk_app_code,
-         bk_app_secret=bk_app_secret,
-         common_args=common_args
-     )
-     # 参数
-     kwargs = {'bk_biz_id': 1}
-     result = client.cc.get_app_host_list(kwargs)
+    from blueking.component.client import ComponentClient
+    # APP应用ID
+    bk_app_code = 'xxx'
+    # APP安全密钥
+    bk_app_secret = 'xxx-xxx-xxx-xxx-xxx'
+    # 用户登录态信息
+    common_args = {'bk_token': 'xxx'}
+    # APP应用ID和APP安全密钥如未提供，默认从django settings中获取
+    client = ComponentClient(
+        bk_app_code=bk_app_code,
+        bk_app_secret=bk_app_secret,
+        common_args=common_args
+    )
+    # 参数
+    kwargs = {'bk_biz_id': 1}
+    result = client.cc.get_app_host_list(kwargs)
  ```
 
 ### APP 开发框架中的 SDK 包
@@ -124,7 +122,7 @@ AVAILABLE_COLLECTIONS = {
 用 curl 直接访问示例如下：
 
 ```bash
-    curl -d '{"bk_app_code": "xxx", "bk_app_secret": "xxx", "bk_token": "xxx", "bk_biz_id": 1}' 'http://domain.com/path/'
+curl -d '{"bk_app_code": "xxx", "bk_app_secret": "xxx", "bk_token": "xxx", "bk_biz_id": 1}' 'http://domain.com/path/'
 
-    curl 'http://domain.com/path/?bk_app_code=xxx&bk_app_secret=xxx&bk_token=xxx&bk_biz_id=1'   # 数据需urlencode编码
+curl 'http://domain.com/path/?bk_app_code=xxx&bk_app_secret=xxx&bk_token=xxx&bk_biz_id=1'   # 数据需urlencode编码
 ```

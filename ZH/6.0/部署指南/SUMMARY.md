@@ -73,4 +73,5 @@
             * [容器管理平台组件](产品白皮书/增强包维护/BCS/Components.md)
             * [容器监控](产品白皮书/增强包维护/BCS/Monitor.md)
         * [常用环境变量](产品白皮书/增强包维护/BCS/Env_variable.md)
+        * [卸载](产品白皮书/增强包维护/BCS/Uninstall.md)
         * [常见问题](产品白皮书/增强包维护/BCS/FAQ.md)
