@@ -147,7 +147,7 @@ DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重�
 $BK_DOMAIN：需要更新的根域名，$INSTALL_PATH：自定义安装目录。
 
 ```bash
-# 执行前请使用实际的根域名和安装目录进行替换
+# 执行前请使用实际的顶级域名 (如：bktencent.com) 和安装目录进行替换
 cd /data/install 
 ./configure -d $BK_DOMAINN -p $INSTALL_PATH
 ```
