@@ -77,6 +77,7 @@
 
    修改/data/install/bin/04-final/bcs.env 文件中的环境变量 DEVOPS_NAVIGATOR_FQDN 值为新的 BCS 域名，并执行以下命令：
    ```bash
+   source /data/install/load_env.sh
    cd /data/bkce/bcs/web_console && sh on_migrate /data
    ```
 
@@ -112,7 +113,5 @@
    重新部署 bk_bcs_monitor 应用
    ![avatar](../../assets/deploy_bcs_monitor.png)
    
-   5.在蓝鲸开发者中心调整环境变量与重新部署 SaaS 应用
-   
-   修改域名解析或在 hosts 文件中修改映射为新的域名
+   5.修改域名解析或在 hosts 文件中修改映射为新的域名
    

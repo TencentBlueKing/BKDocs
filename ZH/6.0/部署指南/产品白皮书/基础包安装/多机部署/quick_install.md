@@ -75,7 +75,7 @@ wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.2.tgz
    EOF
    ```
 
-2. 对  install.config  中的主机配置中控机 ssh 登录免密。根据提示，依次输入每台机器的 root 密码
+2. 对 install.config  中的主机配置中控机 ssh 登录免密。根据提示，依次输入每台机器的 root 密码
 
    ```bash
    bash /data/install/configure_ssh_without_pass
@@ -188,14 +188,19 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 > 下面介绍的操作均可能覆盖现有 hosts ，进行操作前请先确认是否需要备份。
 
 1. Windows 配置
+
 用文本编辑器（如`Notepad++`）打开文件：
+
 `C:\Windows\System32\drivers\etc\hosts`
+
 将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 ```bash
 10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
 10.0.0.3 nodeman.bktencent.com
 ```
-**注意：** 10.0.0.2 为 nginx 模块所在的机器，10.0.0.3 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。查询模块所分布在机器的方式：
+**注意：** 10.0.0.2 为 nginx 模块所在的机器，10.0.0.3 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。
+
+查询模块所分布在机器的方式：
 
 ```bash
 grep -E "nginx|nodeman" /data/install/install.config
@@ -203,7 +208,8 @@ grep -E "nginx|nodeman" /data/install/install.config
 
 > 注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -> “安全”，然后选择你登陆的用户名，最后点击编辑，勾选“写入”即可。
 
-1. Linux / Mac OS 配置
+2. Linux / Mac OS 配置
+
 将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 ```bash
 10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
