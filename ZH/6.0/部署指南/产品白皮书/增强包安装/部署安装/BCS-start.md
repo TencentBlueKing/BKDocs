@@ -10,12 +10,14 @@
 
 部署容器管理平台（以下简称：BCS）须依赖社区版 6.0 基础环境，基础环境内必须包含 4 个基础平台和 4 个基础 SaaS：
 
-| **基础平台** | **基础 SaaS** |
-|--|--|
-| 管控平台 | 用户管理 |
-| 配置平台 | 权限中心 |
-| 作业平台 | 节点管理 |
-| PaaS 平台 | 标准运维 |
+<table><tbody>
+<tr><th width="20%" align='center'>基础平台</th><th width="20%" align='center'>基础 SaaS</th></tr>
+<tr><td width="20%" align='center'>管控平台</td><td width="20%" align='center'>用户管理</td></tr>
+<tr><td width="20%" align='center'>配置平台</td><td width="20%" align='center'>权限中心</td></tr>
+<tr><td width="20%" align='center'>作业平台</td><td width="20%" align='center'>节点管理</td></tr>
+<tr><td width="20%" align='center'>PaaS 平台</td><td width="20%" align='center'>标准运维</td></tr>
+</tbody></table>
+
 
 ### 1.2 服务器资源准备
 
@@ -23,16 +25,17 @@
 2. 容器管理平台服务器配置与所需数量：4C 8G 两台、4C 4G 一台
    - 机器分布详解（请记录此处的机器编号，后续部署时需要填入）：
 
-| 机器 | 安装服务 | 配置 |
-|--|--|--|
-| 机器 1 | MYSQL 数据库、MongoDB 数据库、Redis 数据库、Harbor 私有仓库（客户端浏览器可访问的 IP）| 最低使用 4 核 CPU、8G 内存、200G 磁盘（1 台） |
-| 机器 2 | BCS 后台服务、BCS 导航页（客户端浏览器可访问的 IP）、web_console 服务 | 最低使用 4 核 CPU、8G 内存、100G 磁盘（1 台） |
-| 机器 3 | 容器监控服务 | 最低使用 4 核 CPU、4G 内存、100G 磁盘（1 台） |
+<table><tbody>
+<tr><th width="10%" align='center'>机器</th><th align='center'>安装服务</th><th align='center'>配置</th></tr>
+<tr><td width="10%" align='center'>机器 1</td><td align='center'>MYSQL 数据库、MongoDB 数据库、Redis 数据库、Harbor 私有仓库（客户端浏览器可访问的 IP）</td><td>最低使用 4 核 CPU、8G 内存、200G 磁盘（1 台）</td></tr>
+<tr><td width="10%" align='center'>机器 2</td><td align='center'>BCS 后台服务、BCS 导航页（客户端浏览器可访问的 IP）、web_console 服务</td><td>最低使用 4 核 CPU、8G 内存、100G 磁盘（1 台）</td></tr>
+<tr><td width="10%" align='center'>机器 3</td><td align='center'>容器监控服务</td><td>最低使用 4 核 CPU、4G 内存、100G 磁盘（1 台）</td></tr>
+</tbody></table>
 
-3. 服务器网络要与安装蓝鲸社区版基础包的服务器相通，在配置平台中需放在“蓝鲸”业务下
-4. 容器管理平台服务器不能与 K8S 集群服务器、蓝鲸基础服务服务器共用，需要独立申请，否则会导致端口冲突等环境问题
-5. K8S 集群服务器不能与容器管理平台服务器、蓝鲸基础服务服务器共用，需要独立申请，否则会导致端口冲突等环境问题
-6. Harbor 私有仓库 IP 地址、BCS 导航页组件 IP 地址与 BCS 监控 IP 地址都会占用 TCP 80 端口，需要部署在 3 台不同的服务器上以免端口冲突
+1. 服务器网络要与安装蓝鲸社区版基础包的服务器相通，在配置平台中需放在“蓝鲸”业务下
+2. 容器管理平台服务器不能与 K8S 集群服务器、蓝鲸基础服务服务器共用，需要独立申请，否则会导致端口冲突等环境问题
+3. K8S 集群服务器不能与容器管理平台服务器、蓝鲸基础服务服务器共用，需要独立申请，否则会导致端口冲突等环境问题
+4. Harbor 私有仓库 IP 地址、BCS 导航页组件 IP 地址与 BCS 监控 IP 地址都会占用 TCP 80 端口，需要部署在 3 台不同的服务器上以免端口冲突
 
 ### 1.3 安装 BCS 部署机器的 GSE Agent
 

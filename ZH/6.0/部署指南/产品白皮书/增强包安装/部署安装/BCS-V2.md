@@ -50,12 +50,13 @@
 
 社区版 V6.0+ 以上的基础包软件，必须包含 4 个基础平台和 4 个基础 SaaS：
 
-| **基础平台** | **基础 SaaS** |
-|--|--|
-| 管控平台 | 用户管理 |
-| 配置平台 | 权限中心 |
-| 作业平台 | 节点管理 |
-| PaaS 平台 | 标准运维 |
+<table><tbody>
+<tr><th width="20%" align='center'>基础平台</th><th width="20%" align='center'>基础 SaaS</th></tr>
+<tr><td width="20%" align='center'>管控平台</td><td width="20%" align='center'>用户管理</td></tr>
+<tr><td width="20%" align='center'>配置平台</td><td width="20%" align='center'>权限中心</td></tr>
+<tr><td width="20%" align='center'>作业平台</td><td width="20%" align='center'>节点管理</td></tr>
+<tr><td width="20%" align='center'>PaaS 平台</td><td width="20%" align='center'>标准运维</td></tr>
+</tbody></table>
 
 ## 安装 GSEAgent
 
@@ -121,32 +122,31 @@
    ![avatar](../../assets/args_step_next.png)
 
 <table><tbody>
-<tr><td width="10%">安装包与安装脚本存放路径</td><td width="90%">社区版安装包（src 目录）、安装脚本存放路径（install 目录）和安装后文件存放路径（bkce），默认为/data，建议选择一个大一点的数据分区挂载路径</td></tr>
-<tr><td width="10%">中控机 IP 地址</td><td width="90%">社区版基础服务安装的中控机 IP 地址，用于在此服务器上获取一些容器管理平台依赖的其它服务变量</td></tr>
-<tr><td width="10%">是否新建 MySQL 实例</td><td width="90%">如果没有 MySQL 实例，这里不用修改，默认为 1，安装步骤会创建一个新的 MySQL 实例；如果已有 MySQL 实例这里修改为 0，安装步骤将会使用已有 MySQL 实例，不会安装新的 MySQL 实例</td></tr>
-<tr><td width="10%">MySQL IP 地址</td><td width="90%">需安装或可连接的 MySQL 实例 IP 地址或域名，目前只支持单个 IP，如果已有实例是多节点，可以使用域名实现高可用；注意：如果“是否新建 MySQL 实例”值为 1 时，需要指定一台没有部署过 MySQL 实例的服务器上，防止 MySQL 端口冲突</td></tr>
-<tr><td width="10%">MySQL 端口</td><td width="90%">MySQL 实例监听端口，默认为 3306，可根据实际情况自行修改</td></tr>
-<tr><td width="10%">MySQL 用户名</td><td width="90%">MySQL 用户名，默认为 root，如需新建实例，这里会把实例设置成此用户名；如果是连接已有实例，请输入对应实例的用户名</td></tr>
-<tr><td width="10%">MySQL 密码</td><td width="90%">MySQL 密码，如需新建实例，这里会把实例设置成此密码；如果是连接已有实例，请输入对应实例的密码</td></tr>
-<tr><td width="10%">是否新建 Redis 实例</td><td width="90%">如果没有 Redis 实例，这里不用修改，默认为 1，安装步骤会创建一个新的 Redis 实例；如果已有 Redis 实例这里修改为 0，安装步骤将会使用已有 Redis 实例，不会安装新的 Redis 实例</td></tr>
-<tr><td width="10%">Redis IP 地址</td><td width="90%">需安装或可连接的 Redis 实例 IP 地址或域名，目前只支持单个 IP，如果已有实例是多节点，可以使用域名实现高可用；注意：如果“是否新建 Redis 实例”值为 1 时，需要指定一台没有部署过 Redis 实例的服务器上，防止 redis 端口冲突</td></tr>
-<tr><td width="10%">Redis 端口</td><td width="90%">Redis 实例监听端口，默认为 6379，可根据实际情况自行修改</td></tr>
-<tr><td width="10%">Redis 密码</td><td width="90%">Redis 密码，如需新建实例，这里会把实例设置成此密码；如果是连接已有实例，请输入对应实例的密码</td></tr>
-<tr><td width="10%">是否新建 MongoDB 实例</td><td width="90%">是否新建 MongoDB 实例：如果没有 MongoDB 实例，这里不用修改，默认为 1，安装步骤会创建一个新的 MongoDB 实例；如果已有 MongoDB 实例这里修改为 0，安装步骤将会使用已有 MongoDB 实例，不会安装新的 mongodb 实例；MongoDB 必须使用 2.4.x，使用高版本可能会存在兼容性问题，MongoDB 性能消耗较大，建议使用单独的服务器部署</td></tr>
-<tr><td width="10%">MongoDB IP 地址</td><td width="90%">需安装或可连接的 MongoDB 实例 IP 地址或域名，目前只支持单个 IP，如果已有实例是多节点，可以使用域名实现高可用；注意：如果“是否新建 MongoDB 实例”值为 1 时，需要指定一台没有部署过 MongoDB 实例的服务器上，防止 MongoDB 端口冲突</td></tr>
-<tr><td width="10%">MongoDB 端口</td><td width="90%">MongoDB 实例监听端口，默认为 27017，可根据实际情况自行修改</td></tr>
-<tr><td width="10%">MongoDB 用户名</td><td width="90%">MongoDB 用户名，默认为 root，如需新建实例，这里会把实例设置成此用户名；如果是连接已有实例，请输入对应实例的用户名</td></tr>
-<tr><td width="10%">MongoDB 密码</td><td width="90%">MongoDB 密码，如需新建实例，这里会把实例设置成此密码；如果是连接已有实例，请输入对应实例的密码</td></tr>
-<tr><td width="10%">BCS 后台服务 IP 地址</td><td width="90%">容器管理平台后台服务部署的 IP 地址，容器管理平台后台服务包括 bcs-api、bcs-dns-service、bcs-storage、bcs-cc，同时还会部署容器管理平台后台服务所依赖的 etcd 与 zookeeper 服务，体验环境使用 1 台服务器即可，生产环境建议用 3 台服务器做高可用，多个 IP 使用半角逗号分隔</td></tr>
-<tr><td width="10%">BCS 导航页组件 IP 地址</td><td width="90%">部署项目信息管理服务 IP 地址，负责项目创建及基本信息管理，生产环境建议用 2 台服务器做高可用，多个 IP 使用半角逗号分隔，此 IP 需要在客户端浏览器可访问</td></tr>
-<tr><td width="10%">BCS 导航页域名前缀</td><td width="90%">容器管理平台 SaaS 的访问地址，默认为 bcs，例如基础平台使用 bktencent.com 的域名作为基础域名，那容器管理平台 SaaS 的访问地址为：http://bcs.bktencent.com</td></tr>
-<tr><td width="10%">Web Console IP 地址</td><td width="90%">部署在提供 kubectl 命令行工具 IP 地址，可以使用 web 页面快捷查看集群内资源，生产环境建议用 2 台服务器做高可用，多个 IP 使用半角逗号分隔</td></tr>
-<tr><td width="10%">BCS 监控 IP 地址</td><td width="90%">部署容器监控服务的 IP 地址，目前只支持单个 IP</td></tr>
-<tr><td width="10%">Harbor 私有仓库 IP 地址</td><td width="90%">部署私有镜像仓库的 IP 地址，使用 Harbor 提供私有仓库服务，如果需要存放的镜像较多，需要部署在磁盘空间稍大的服务器上，目前只支持部署 1 台服务器；此 IP 需要在客户端浏览器可访问，访问 Harbor 页面管理方式为http://{外网 IP}，管理员用户名默认为：admin，密码为：Harbor12345</td></tr>
+<tr><td width="20%">安装包与安装脚本存放路径</td><td width="80%">社区版安装包（src 目录）、安装脚本存放路径（install 目录）和安装后文件存放路径（bkce），默认为/data，建议选择一个大一点的数据分区挂载路径</td></tr>
+<tr><td width="20%">中控机 IP 地址</td><td width="80%">社区版基础服务安装的中控机 IP 地址，用于在此服务器上获取一些容器管理平台依赖的其它服务变量</td></tr>
+<tr><td width="20%">是否新建 MySQL 实例</td><td width="80%">如果没有 MySQL 实例，这里不用修改，默认为 1，安装步骤会创建一个新的 MySQL 实例；如果已有 MySQL 实例这里修改为 0，安装步骤将会使用已有 MySQL 实例，不会安装新的 MySQL 实例</td></tr>
+<tr><td width="20%">MySQL IP 地址</td><td width="80%">需安装或可连接的 MySQL 实例 IP 地址或域名，目前只支持单个 IP，如果已有实例是多节点，可以使用域名实现高可用；注意：如果“是否新建 MySQL 实例”值为 1 时，需要指定一台没有部署过 MySQL 实例的服务器上，防止 MySQL 端口冲突</td></tr>
+<tr><td width="20%">MySQL 端口</td><td width="80%">MySQL 实例监听端口，默认为 3306，可根据实际情况自行修改</td></tr>
+<tr><td width="20%">MySQL 用户名</td><td width="80%">MySQL 用户名，默认为 root，如需新建实例，这里会把实例设置成此用户名；如果是连接已有实例，请输入对应实例的用户名</td></tr>
+<tr><td width="20%">MySQL 密码</td><td width="80%">MySQL 密码，如需新建实例，这里会把实例设置成此密码；如果是连接已有实例，请输入对应实例的密码</td></tr>
+<tr><td width="20%">是否新建 Redis 实例</td><td width="80%">如果没有 Redis 实例，这里不用修改，默认为 1，安装步骤会创建一个新的 Redis 实例；如果已有 Redis 实例这里修改为 0，安装步骤将会使用已有 Redis 实例，不会安装新的 Redis 实例</td></tr>
+<tr><td width="20%">Redis IP 地址</td><td width="80%">需安装或可连接的 Redis 实例 IP 地址或域名，目前只支持单个 IP，如果已有实例是多节点，可以使用域名实现高可用；注意：如果“是否新建 Redis 实例”值为 1 时，需要指定一台没有部署过 Redis 实例的服务器上，防止 redis 端口冲突</td></tr>
+<tr><td width="20%">Redis 端口</td><td width="80%">Redis 实例监听端口，默认为 6379，可根据实际情况自行修改</td></tr>
+<tr><td width="20%">Redis 密码</td><td width="80%">Redis 密码，如需新建实例，这里会把实例设置成此密码；如果是连接已有实例，请输入对应实例的密码</td></tr>
+<tr><td width="20%">是否新建 MongoDB 实例</td><td width="80%">是否新建 MongoDB 实例：如果没有 MongoDB 实例，这里不用修改，默认为 1，安装步骤会创建一个新的 MongoDB 实例；如果已有 MongoDB 实例这里修改为 0，安装步骤将会使用已有 MongoDB 实例，不会安装新的 mongodb 实例；MongoDB 必须使用 2.4.x，使用高版本可能会存在兼容性问题，MongoDB 性能消耗较大，建议使用单独的服务器部署</td></tr>
+<tr><td width="20%">MongoDB IP 地址</td><td width="80%">需安装或可连接的 MongoDB 实例 IP 地址或域名，目前只支持单个 IP，如果已有实例是多节点，可以使用域名实现高可用；注意：如果“是否新建 MongoDB 实例”值为 1 时，需要指定一台没有部署过 MongoDB 实例的服务器上，防止 MongoDB 端口冲突</td></tr>
+<tr><td width="20%">MongoDB 端口</td><td width="80%">MongoDB 实例监听端口，默认为 27017，可根据实际情况自行修改</td></tr>
+<tr><td width="20%">MongoDB 用户名</td><td width="80%">MongoDB 用户名，默认为 root，如需新建实例，这里会把实例设置成此用户名；如果是连接已有实例，请输入对应实例的用户名</td></tr>
+<tr><td width="20%">MongoDB 密码</td><td width="80%">MongoDB 密码，如需新建实例，这里会把实例设置成此密码；如果是连接已有实例，请输入对应实例的密码</td></tr>
+<tr><td width="20%">BCS 后台服务 IP 地址</td><td width="80%">容器管理平台后台服务部署的 IP 地址，容器管理平台后台服务包括 bcs-api、bcs-dns-service、bcs-storage、bcs-cc，同时还会部署容器管理平台后台服务所依赖的 etcd 与 zookeeper 服务，体验环境使用 1 台服务器即可，生产环境建议用 3 台服务器做高可用，多个 IP 使用半角逗号分隔</td></tr>
+<tr><td width="20%">BCS 导航页组件 IP 地址</td><td width="80%">部署项目信息管理服务 IP 地址，负责项目创建及基本信息管理，生产环境建议用 2 台服务器做高可用，多个 IP 使用半角逗号分隔，此 IP 需要在客户端浏览器可访问</td></tr>
+<tr><td width="20%">BCS 导航页域名前缀</td><td width="80%">容器管理平台 SaaS 的访问地址，默认为 bcs，例如基础平台使用 bktencent.com 的域名作为基础域名，那容器管理平台 SaaS 的访问地址为：http://bcs.bktencent.com</td></tr>
+<tr><td width="20%">Web Console IP 地址</td><td width="80%">部署在提供 kubectl 命令行工具 IP 地址，可以使用 web 页面快捷查看集群内资源，生产环境建议用 2 台服务器做高可用，多个 IP 使用半角逗号分隔</td></tr>
+<tr><td width="20%">BCS 监控 IP 地址</td><td width="80%">部署容器监控服务的 IP 地址，目前只支持单个 IP</td></tr>
+<tr><td width="20%">Harbor 私有仓库 IP 地址</td><td width="80%">部署私有镜像仓库的 IP 地址，使用 Harbor 提供私有仓库服务，如果需要存放的镜像较多，需要部署在磁盘空间稍大的服务器上，目前只支持部署 1 台服务器；此 IP 需要在客户端浏览器可访问，访问 Harbor 页面管理方式为http://{外网 IP}，管理员用户名默认为：admin，密码为：Harbor12345</td></tr>
 </tbody></table>
 
-
-1. 执行部署作业，执行作业过程中没有出现错误即部署正常，否则需要根据 job 执行错误信息解决问题
+7. 执行部署作业，执行作业过程中没有出现错误即部署正常，否则需要根据 job 执行错误信息解决问题
    ![avatar](../../assets/exec_task.png)
 
 ## 添加 hosts 解析或域名解析
