@@ -1,5 +1,18 @@
 # 一、安装环境准备
 
+## 基础环境依赖
+
+社区版 V6.0+ 以上的基础包软件，必须包含 4 个基础平台和 4 个基础 SaaS：
+
+<table><tbody>
+<tr><th width="20%" align='center'>基础平台</th><th width="20%" align='center'>基础 SaaS</th></tr>
+<tr><td width="20%" align='center'>管控平台</td><td width="20%" align='center'>用户管理</td></tr>
+<tr><td width="20%" align='center'>配置平台</td><td width="20%" align='center'>权限中心</td></tr>
+<tr><td width="20%" align='center'>作业平台</td><td width="20%" align='center'>节点管理</td></tr>
+<tr><td width="20%" align='center'>PaaS 平台</td><td width="20%" align='center'>标准运维</td></tr>
+</tbody></table>
+
+
 ## 服务器资源准备
 
 1. 建议操作系统： CentOS 7.6
@@ -49,17 +62,15 @@
    | master 节点 | 最低使用 8 核 CPU、16G 内存、200G 磁盘（3 台，做高可用）|
    | node 节点 | 最低使用 8 核 CPU、16G 内存、200G 磁盘（按需申请）|
 
-## 基础环境依赖
+## 添加域名解析
 
-社区版 V6.0+ 以上的基础包软件，必须包含 4 个基础平台和 4 个基础 SaaS：
+```bash
+# Linux、Mac：/etc/hosts，Windows：C:\Windows\System32\drivers\etc\hosts
+# BCS导航页组件IP地址（客户端浏览器可访问的地址） BCS导航页域名（BCS导航页域名前缀.蓝鲸基础域名） BCS导航页API域名（api-BCS导航页域名前缀.蓝鲸基础域名）
+# 例如：
+110.111.112.113 bcs.bktencent.com api-bcs.bktencent.com
+```
 
-<table><tbody>
-<tr><th width="20%" align='center'>基础平台</th><th width="20%" align='center'>基础 SaaS</th></tr>
-<tr><td width="20%" align='center'>管控平台</td><td width="20%" align='center'>用户管理</td></tr>
-<tr><td width="20%" align='center'>配置平台</td><td width="20%" align='center'>权限中心</td></tr>
-<tr><td width="20%" align='center'>作业平台</td><td width="20%" align='center'>节点管理</td></tr>
-<tr><td width="20%" align='center'>PaaS 平台</td><td width="20%" align='center'>标准运维</td></tr>
-</tbody></table>
 
 ## 安装 GSEAgent
 
@@ -72,7 +83,7 @@
 
 - 下载安装包到社区版基础服务安装的中控机，因为容器管理平台安装包较大，请在相应分区至少保留 20G 的剩余空间（注：本文档以/data 目录为例，如果放到其他目录，请自行修改相关命令涉及到的路径）
 
-   容器管理平台扩展软件包：bcs_ce-6.0.3.tgz
+   容器管理平台扩展软件包：bcs_ce-6.x.x.tgz
 
    **下载完成后，请核对 MD5 码。**
 
@@ -152,24 +163,15 @@
 7. 执行部署作业，执行作业过程中没有出现错误即部署正常，否则需要根据 job 执行错误信息解决问题
    ![avatar](../../assets/exec_task.png)
 
-## 添加 hosts 解析或域名解析
-
-```bash
-# Linux、Mac：/etc/hosts，Windows：C:\Windows\System32\drivers\etc\hosts
-# BCS导航页组件IP地址（客户端浏览器可访问的地址） BCS导航页域名（BCS导航页域名前缀.蓝鲸基础域名） BCS导航页API域名（api-BCS导航页域名前缀.蓝鲸基础域名）
-# 例如：
-110.111.112.113 bcs.bktencent.com api-bcs.bktencent.com
-```
-
-## 访问容器管理平台 SaaS
+# 三、访问容器管理平台
 
 刷新蓝鲸工作台，会出现一个容器管理平台的 SaaS，点击图标会跳转到蓝鲸容器管理平台的 console 页面，也可以直接访问 URL [http://bcs.bktencent.com](http://bcs.bktencent.com) 来访问容器管理平台，如果无法访问时，可能是 hosts 域名解析没有生效，可以关闭浏览器后重试。
 
-## 容器管理平台部署完毕
-
 完成以上步骤容器管理平台就已经部署完毕，[BCS 维护手册](../../增强包维护/BCS/Term.md)可以帮助用户更全面的了解容器管理平台的内容和后期维护。
 
-# 三、部署验收
+![avatar](../../assets/bcs_home.png)
+
+# 四、部署验收
 ## BCS 后台部署验收
 
 标准运维作业可以正常执行完成，执行过程无错误出现
