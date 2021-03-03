@@ -15,22 +15,25 @@
 6. 容器管理平台服务器配置与所需数量
 
    **体验环境（共 3 台）**
-   | 服务 | 配置 |
-   |--|--|
-   | MYSQL 数据库、MongoDB 数据库、Redis 数据库、Harbor 私有仓库（客户端浏览器可访问的 IP）| 最低使用 4 核 CPU、8G 内存、200G 磁盘（1 台）|
-   | BCS 后台服务、BCS 导航页（客户端浏览器可访问的 IP）、web_console 服务 | 最低使用 4 核 CPU、8G 内存、100G 磁盘（1 台）|
-   | 容器监控服务 | 最低使用 4 核 CPU、4G 内存、100G 磁盘（1 台）|
+   <table><tbody>
+   <tr><th width="10%" align='center'>机器</th><th align='center'>安装服务</th><th align='center'>配置</th></tr>
+   <tr><td width="10%" align='center'>机器 1</td><td align='center'>MYSQL 数据库、MongoDB 数据库、Redis 数据库、Harbor 私有仓库（客户端浏览器可访问的 IP）</td><td>最低使用 4 核 CPU、8G 内存、200G 磁盘（1 台）</td></tr>
+   <tr><td width="10%" align='center'>机器 2</td><td align='center'>BCS 后台服务、BCS 导航页（客户端浏览器可访问的 IP）、web_console 服务</td><td>最低使用 4 核 CPU、8G 内存、100G 磁盘（1 台）</td></tr>
+   <tr><td width="10%" align='center'>机器 3</td><td align='center'>容器监控服务</td><td>最低使用 4 核 CPU、4G 内存、100G 磁盘（1 台）</td></tr>
+   </tbody></table>
 
    **生产环境（共 10 台）**
-   | 服务 | 配置 |
-   |--|--|
-   | MYSQL 数据库 | 最低使用 4 核 CPU、8G 内存、200G 磁盘（1 台，如果已有 MYSQL 实例无需准备服务器）|
-   | MongoDB 数据库 | 最低使用 4 核 CPU、8G 内存、200G 磁盘（1 台，如果已有 MongoDB 实例无需准备服务器）|
-   | Redis 数据库 | 最低使用 4 核 CPU、4G 内存、50G 磁盘（1 台，如果已有 Redis 实例无需准备服务器）|
-   | Harbor 私有仓库（客户端浏览器可访问的 IP） | 最低使用 4 核 CPU、4G 内存、300G 磁盘（1 台）|
-   | 容器管理平台后台服务 | 最低使用 4 核 CPU、8G 内存、100G 磁盘（3 台，做高可用）|
-   | BCS 导航页（客户端浏览器可访问的 IP）、web_console 服务可以部署在同一台服务器 | 最低使用 4 核 CPU、4G 内存、50G 磁盘（2 台，做高可用）|
-   | 容器监控服务 | 最低使用 4 核 CPU、8G 内存、200G 磁盘（1 台）|
+   <table><tbody>
+   <tr><th width="10%" align='center'>机器</th><th align='center'>安装服务</th><th align='center'>配置</th></tr>
+   <tr><td width="10%" align='center'>机器 1</td><td align='center'>MYSQL 数据库</td><td>最低使用 4 核 CPU、8G 内存、200G 磁盘（1 台，如果已有 MYSQL 实例无需准备服务器）</td></tr>
+   <tr><td width="10%" align='center'>机器 2</td><td align='center'>MongoDB 数据库</td><td>最低使用 4 核 CPU、8G 内存、200G 磁盘（1 台，如果已有 MongoDB 实例无需准备服务器）</td></tr>
+   <tr><td width="10%" align='center'>机器 3</td><td align='center'>Redis 数据库</td><td>最低使用 4 核 CPU、4G 内存、50G 磁盘（1 台，如果已有 Redis 实例无需准备服务器）</td></tr>
+   <tr><td width="10%" align='center'>机器 4</td><td align='center'>Harbor 私有仓库</td><td>最低使用 4 核 CPU、4G 内存、300G 磁盘（1 台，客户端浏览器可访问的 IP）</td></tr>
+   <tr><td width="10%" align='center'>机器 5-7</td><td align='center'>容器管理平台后台服务</td><td>最低使用 4 核 CPU、8G 内存、100G 磁盘（3 台，做高可用）</td></tr>
+   <tr><td width="10%" align='center'>机器 8-9</td><td align='center'>BCS 导航页（客户端浏览器可访问的 IP）、web_console 服务可以部署在同一台服务器</td><td>最低使用 4 核 CPU、4G 内存、50G 磁盘（2 台，做高可用）</td></tr>
+   <tr><td width="10%" align='center'>机器 10</td><td align='center'>容器监控服务</td><td>最低使用 4 核 CPU、8G 内存、200G 磁盘（1 台）</td></tr>
+   </tbody></table>
+   
 
 7. K8S 集群服务器配置与数量
 

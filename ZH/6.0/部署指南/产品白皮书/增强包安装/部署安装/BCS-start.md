@@ -88,6 +88,8 @@ tar xvf bcs_ce-6.0.9.tgz -C /data/
 
 ### 2.5 参数填写
 
+具体参数填写参考可点击这里 [查看增强包部署详解-部署详细步骤-第 6 点](./BCS-V2.md#部署详细步骤)
+
 ![avatar](../../assets/args_input.png)
 
 ### 2.6 执行部署作业
