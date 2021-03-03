@@ -25,7 +25,7 @@
 | common       | 公共组件包           | 3.0.X      |
 | open_paas    | PaaS 平台            | 2.11.X     |
 | paas_agent   | paas_agent           | 3.2.X      |
-| paas_plugins | paas_plugins         | 4.2.401    |
+| paas_plugins | paas_plugins         | 4.2.X    |
 | license      | 全局认证服务         | 3.1.X      |
 | bkssm        | 凭据管理系统         | 1.0.X      |
 | gse          | 管控平台             | 3.5.X      |
