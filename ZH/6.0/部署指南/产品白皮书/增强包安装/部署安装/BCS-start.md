@@ -3,18 +3,18 @@
 ## 安装概览
 
 【准备阶段】
-- 准备蓝鲸基础环境
-- 服务器资源准备
+- [准备蓝鲸基础环境](#一、安装环境准备)
+- [服务器资源准备](#12)
 
 【安装阶段】
-- 安装 GSE Agent
-- 下载安装包和标准运维模板文件
-- 解压安装包
-- 导入标准运维模板
+- [安装 GSE Agent](#14)
+- [下载安装包和标准运维模板文件](#15)
+- [解压安装包](#16)
+- [导入标准运维模板](#21)
 
 【使用阶段】
-- 执行部署作业
-- 访问容器管理平台
+- [执行部署作业](#23)
+- [访问容器管理平台](#三、访问容器管理平台)
 
 ## 一、安装环境准备
 
@@ -33,6 +33,7 @@
 </tbody></table>
 
 ### 1.2 服务器资源准备
+<a id="12"></a>
 
 1. 建议操作系统： CentOS 7.6
 2. 容器管理平台服务器配置与所需数量：4C 8G 两台、4C 4G 一台
@@ -51,27 +52,30 @@
 > 3. K8S 集群服务器不能与容器管理平台服务器、蓝鲸基础服务服务器共用，需要独立申请，否则会导致端口冲突等环境问题
 > 4. Harbor 私有仓库 IP 地址、BCS 导航页组件 IP 地址与 BCS 监控 IP 地址都会占用 TCP 80 端口，需要部署在 3 台不同的服务器上以免端口冲突
 
-### 1.3 添加 hosts 解析或域名解析
+### 1.3 添加域名解析
 
 ```bash
 # Linux、Mac：/etc/hosts，Windows：C:\Windows\System32\drivers\etc\hosts
 # BCS导航页组件IP地址（客户端浏览器可访问的地址） BCS导航页域名（BCS导航页域名前缀.蓝鲸基础域名） BCS导航页API域名（api-BCS导航页域名前缀.蓝鲸基础域名）
-# 例如：110.111.112.113 是 机器 2 的 IP
-110.111.112.113 bcs.bktencent.com api-bcs.bktencent.com
+
+机器2的IP bcs.bktencent.com api-bcs.bktencent.com
 ```
 
 ### 1.4 安装 BCS 部署机器的 GSE Agent
+<a id="14"></a>
 
 - 安装方法，请参考“快速入门”中“[【节点管理】Agent 安装](../../../../节点管理/产品白皮书/QuickStart/DefaultAreaInstallAgent.md)”
 - 安装时业务请选择“蓝鲸”
 
 ### 1.5 下载 BCS 安装包
+<a id="15"></a>
 
 - 下载安装包，[下载地址](https://bkopen-1252002024.file.myqcloud.com/bcs/bcs_ce-6.0.9.tgz)
 - 上传安装包至中控机 /data
 - 容器管理平台扩展软件包：bcs_ce-6.0.9.tgz
 
 ### 1.6 解压 BCS 安装包
+<a id="16"></a>
 
 ```bash
 tar xvf bcs_ce-6.0.9.tgz -C /data/
@@ -80,6 +84,7 @@ tar xvf bcs_ce-6.0.9.tgz -C /data/
 ## 二、开始部署
 
 ### 2.1 下载标准运维模版文件
+<a id="21"></a>
 
 - [下载模版文件](https://bkopen-1252002024.file.myqcloud.com/bcs/bk_sops_common_ce_2021_02_04-01.dat)至本地
 - 标准运维模版文件名：bk_sops_common_ce_2021_02_04-01.dat
@@ -96,6 +101,7 @@ tar xvf bcs_ce-6.0.9.tgz -C /data/
 ![avatar](../../assets/import_done.png)
 
 ### 2.3 新建任务
+<a id="23"></a>
 
 打开标准运维--->公共流程--->[BlueKing][BCS][Basic] Environment Deployment--->新建任务
 

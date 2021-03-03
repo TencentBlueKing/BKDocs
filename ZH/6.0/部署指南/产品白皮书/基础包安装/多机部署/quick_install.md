@@ -3,19 +3,19 @@
 ## 安装概览
 
 【准备阶段】
-- 准备安装环境
-- 获取证书
-- 下载安装包
-- 解压相关资源包
-- 自定义安装配置
+- [准备安装环境](#一、安装环境准备)
+- [获取证书](#12)
+- [下载安装包](#13)
+- [解压相关资源包](#14)
+- [自定义安装配置](#15)
 
 【安装阶段】
-- 部署后台模块
-- 部署 SaaS
-- 检测服务状态
+- [部署后台模块](#二、开始部署)
+- [部署 SaaS](#210)
+- [检测服务状态](#213)
 
 【使用阶段】
-- 访问蓝鲸各产品
+- [访问蓝鲸各产品](#三、访问蓝鲸)
 
 ## 一、安装环境准备
 
@@ -33,6 +33,7 @@
 4. 选择一台为中控机（假设为 10.0.0.1）进行安装部署操作，使用 root 账号登录。
 
 ### 1.2 获取证书
+<a id="12"></a>
 
 - 通过 `ifconfig` 或者 `ip addr` 命令分别获取三台机器第一个内网网卡 MAC 地址
 - 前往蓝鲸官网证书生成页面（[https://bk.tencent.com/download_ssl/](https://bk.tencent.com/download_ssl/)），根据提示在输入框中填入英文分号分隔的三个 MAC 地址，生成并下载证书
@@ -40,6 +41,7 @@
    - 证书包包名：ssl_certificates.tar.gz
 
 ### 1.3 下载安装包
+<a id="13"></a>
 
 - 登陆中控机 
 
@@ -49,6 +51,7 @@ wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.2.tgz
 ```
 
 ### 1.4 解压相关资源包
+<a id="14"></a>
 
 1. 解压完整包（包含蓝鲸相关产品，如 PaaS、CMDB、JOB 等；蓝鲸依赖的 rpm 包，SaaS 镜像，定制 Python 解释器；部署脚本）
 
@@ -78,6 +81,7 @@ wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.2.tgz
     ```
 
 ### 1.5 自定义安装配置
+<a id="15"></a>
 
 1. 生成 install.config
 
@@ -139,6 +143,7 @@ cd /data/install/
 
 ### 2.6 部署 bknodeman（节点管理）
 
+
 ```bash
 ./bk_install bknodeman
 ```
@@ -162,6 +167,7 @@ cd /data/install/
 ```
 
 ### 2.10 部署 SaaS
+<a id="210"></a>
 
 请按顺序执行：
 ```bash
@@ -190,7 +196,7 @@ source ~/.bashrc
 ```
 
 ### 2.13 检测相关服务状态
-
+<a id="213"></a>
 ```bash
 cd /data/install/
 echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli check
