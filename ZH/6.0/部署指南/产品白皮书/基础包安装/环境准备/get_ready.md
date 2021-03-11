@@ -154,7 +154,7 @@ cd /data/install
 
 - 部署前自定义 admin  登陆密码
 
-**请使用实际的自定义密码替换 BlueKing，以及使用实际的部署脚本路径替换默认的脚本路径 `/data/install`**
+**请使用实际的自定义密码替换 BlueKing，以及使用实际的部署脚本路径替换默认的脚本路径`/data/install`**
 
 ```bash
 cat > /data/install/bin/03-userdef/usermgr.env << EOF
