@@ -35,6 +35,7 @@
         * [DB 日常维护](产品白皮书/维护手册/日常维护/data_backup.md)
         * [开启 Proxy](产品白皮书/维护手册/日常维护/open_proxy.md)
         * [http 切换为 https](产品白皮书/维护手册/日常维护/convert_https.md)
+        * [Nginx](产品白皮书/维护手册/日常维护/nginx.md)
         * [Consul](产品白皮书/维护手册/日常维护/consul.md)
         * [MongoDB](产品白皮书/维护手册/日常维护/mongodb.md)
         * [MySQL](产品白皮书/维护手册/日常维护/mysql.md)
