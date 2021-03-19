@@ -1,8 +1,23 @@
 # 社区版 6.0 基础包快速部署
 
-## 一、安装环境准备
+## 安装概览
 
-![](../../assets/blueking-start.png)
+【准备阶段】
+- [准备安装环境](./quick_install.md#一、安装环境准备)
+- [获取证书](./quick_install.md#12)
+- [下载安装包](./quick_install.md#13)
+- [解压相关资源包](./quick_install.md#14)
+- [自定义安装配置](./quick_install.md#15)
+
+【安装阶段】
+- [部署后台模块](./quick_install.md#二、开始部署)
+- [部署 SaaS](./quick_install.md#210)
+- [检测服务状态](./quick_install.md#213)
+
+【使用阶段】
+- [访问蓝鲸各产品](./quick_install.md#三、访问蓝鲸)
+
+## 一、安装环境准备
 
 在开始安装前，请参照 [环境准备文档](../环境准备/get_ready.md)，准备安装介质，配置系统环境。
 
@@ -18,6 +33,7 @@
 4. 选择一台为中控机（假设为 10.0.0.1）进行安装部署操作，使用 root 账号登录。
 
 ### 1.2 获取证书
+<a id="12"></a>
 
 - 通过 `ifconfig` 或者 `ip addr` 命令分别获取三台机器第一个内网网卡 MAC 地址
 - 前往蓝鲸官网证书生成页面（[https://bk.tencent.com/download_ssl/](https://bk.tencent.com/download_ssl/)），根据提示在输入框中填入英文分号分隔的三个 MAC 地址，生成并下载证书
@@ -25,6 +41,7 @@
    - 证书包包名：ssl_certificates.tar.gz
 
 ### 1.3 下载安装包
+<a id="13"></a>
 
 - 登陆中控机 
 
@@ -34,6 +51,7 @@ wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.2.tgz
 ```
 
 ### 1.4 解压相关资源包
+<a id="14"></a>
 
 1. 解压完整包（包含蓝鲸相关产品，如 PaaS、CMDB、JOB 等；蓝鲸依赖的 rpm 包，SaaS 镜像，定制 Python 解释器；部署脚本）
 
@@ -63,6 +81,7 @@ wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.2.tgz
     ```
 
 ### 1.5 自定义安装配置
+<a id="15"></a>
 
 1. 生成 install.config
 
@@ -75,7 +94,7 @@ wget https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.2.tgz
    EOF
    ```
 
-2. 对  install.config  中的主机配置中控机 ssh 登录免密。根据提示，依次输入每台机器的 root 密码
+2. 对 install.config  中的主机配置中控机 ssh 登录免密。根据提示，依次输入每台机器的 root 密码
 
    ```bash
    bash /data/install/configure_ssh_without_pass
@@ -124,6 +143,7 @@ cd /data/install/
 
 ### 2.6 部署 bknodeman（节点管理）
 
+
 ```bash
 ./bk_install bknodeman
 ```
@@ -147,6 +167,7 @@ cd /data/install/
 ```
 
 ### 2.10 部署 SaaS
+<a id="210"></a>
 
 请按顺序执行：
 ```bash
@@ -175,7 +196,7 @@ source ~/.bashrc
 ```
 
 ### 2.13 检测相关服务状态
-
+<a id="213"></a>
 ```bash
 cd /data/install/
 echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli check
@@ -188,14 +209,19 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 > 下面介绍的操作均可能覆盖现有 hosts ，进行操作前请先确认是否需要备份。
 
 1. Windows 配置
+
 用文本编辑器（如`Notepad++`）打开文件：
+
 `C:\Windows\System32\drivers\etc\hosts`
+
 将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 ```bash
 10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
 10.0.0.3 nodeman.bktencent.com
 ```
-**注意：** 10.0.0.2 为 nginx 模块所在的机器，10.0.0.3 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。查询模块所分布在机器的方式：
+**注意：** 10.0.0.2 为 nginx 模块所在的机器，10.0.0.3 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。
+
+查询模块所分布在机器的方式：
 
 ```bash
 grep -E "nginx|nodeman" /data/install/install.config
@@ -203,7 +229,8 @@ grep -E "nginx|nodeman" /data/install/install.config
 
 > 注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -> “安全”，然后选择你登陆的用户名，最后点击编辑，勾选“写入”即可。
 
-1. Linux / Mac OS 配置
+2. Linux / Mac OS 配置
+
 将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 ```bash
 10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com

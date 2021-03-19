@@ -2,7 +2,7 @@
 
 本章节介绍如何创建 Microsoft Active Directory(MAD) 目录，并且同步 MAD 用户到用户管理。
 
-##前置条件
+## 前置条件
 
 > 1. 需要有已经搭建好的 MAD 服务
 >
