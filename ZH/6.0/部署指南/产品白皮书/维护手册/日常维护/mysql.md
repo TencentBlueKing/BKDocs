@@ -113,3 +113,11 @@ mysql_config_editor 默认使用交互式来输入密码，部署脚本 `./bin/s
 ```
 
 导入成功后，在 `~/.migrate/` 下生成同名 sql 文件的标记文件，并使用 `chattr +i` 限制删除，这样下次运行相同的`sql_migate.sh` 脚本时，会自动跳过已经导入成功的 sql 文件，实现蓝鲸后台的 sql migrate。
+
+## 常用配置
+
+如果需要自定义 mysql 配置，请修改对应实例名的配置文件：/etc/mysql/实例名.my.cnf 
+
+配置选项含义参考[官方文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)
+
+## 常见问题
