@@ -10,9 +10,9 @@
 后台部署直接部署的服务使用的 Python 解释器来源于蓝鲸安装包的 `./src/python/` 目录，文件列表为：
 
 - py27.tgz: 原生 python2 解释器，版本号为`2.7.10`
-- py27_e.tgz：加密 python2 解释器，版本号为`2.7.9`
+- py27_e.tgz：加密 python2 解释器，版本号为`2.7.91`
 - py36.tgz: 原生 python3 解释器，版本号为`3.6.10`
-- py36_e.tgz: 加密 python3 解释器，版本号为`3.6.6`
+- py36_e.tgz: 加密 python3 解释器，版本号为`3.6.61`
 - python27_requirements.txt: python2 解释器编译安装后，通过 pip 附加安装的基础 pip 包依赖列表
 - python36_requirements.txt: python3 解释器编译安装后，通过 pip 附加安装的基础 pip 包依赖列表
 - MD5: 以上 6 个文件的 md5sum 值
@@ -163,7 +163,7 @@ $ ./bin/install_py_venv_pkgs.sh -h
     cd $tmpdir/ && mv $version env && tar -czf $PKG_DIR/$(basename $orig_tgz) env
     ```
 
-## 加密解释器说明
+## 加密解释器特殊说明
 
 如果某个 Python 项目代码加密，使用的是加密解释器时，直接运行 python 脚本是会报错的。处理方式如下：
 
@@ -179,3 +179,23 @@ export BK_FILE_PATH=/data/bkce/open_paas/cert/saas_priv.txt
 # 运行脚本
 python manage.py
 ```
+
+Python3项目的虚拟环境已经使用加密解释器后，如果需要安装或者更新 pip 包，需要注意：
+
+1. 切换到虚拟环境
+
+    ```bash
+    workon <venv_name>
+    ```
+
+2. 判断 pip 命令使用的 python 解释器的版本号
+
+    ```bash
+    eval $(head -1 $(which pip) | sed 's/\#\!//') --version
+    ```
+
+3. 根据版本号输出，假设是加密解释器版本(3.6.61)，需要修改 pip 文件为原生解释器的路径。
+
+    ```bash
+    sed -i "1s,bin/python[0-9. ]*$,bin/python3.6," $(which pip)
+    ```
