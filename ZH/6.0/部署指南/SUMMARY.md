@@ -40,6 +40,7 @@
         * [Consul](产品白皮书/维护手册/日常维护/consul.md)
         * [MongoDB](产品白皮书/维护手册/日常维护/mongodb.md)
         * [MySQL](产品白皮书/维护手册/日常维护/mysql.md)
+        * [更新证书](产品白皮书/维护手册/日常维护/renew_certificate.md)
     * [卸载指引](产品白皮书/卸载指引/uninstall.md)
 * [增强包维护手册]()
     * [蓝盾]()
