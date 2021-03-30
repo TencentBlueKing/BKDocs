@@ -1,4 +1,4 @@
 # 产品架构图
 
-![BKIAM产品架构图new](Architecture/BKIAM产品架构图new.png)
+![image-20210322222404821](Architecture/image-20210322222404821.png)
 
