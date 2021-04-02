@@ -2,7 +2,7 @@
 
 ## 部署 CMDB 常见问题
 
-### prot 31001 start failed，please check
+### port 31001 start failed，please check
 
 ![-w2020](../assets/cmdb-31001.png)
 
