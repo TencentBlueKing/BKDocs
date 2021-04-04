@@ -35,13 +35,13 @@
 
 - 修改 bk_install 脚本
 
- ```bash
+```bash
 # 在 job 添加以下内容
 vim bk_install
 sed -i '/JAVA_OPTS/c JAVA_OPTS="-Xms128m -Xmx128m"' /etc/sysconfig/bk-job-*
- ```
+```
 
-  ![change_job](../../assets/change_job.png)
+![change_job](../../assets/change_job.png)
 
 - install.config 这个文件安装脚本会自动生成，无需自行配置。
 
