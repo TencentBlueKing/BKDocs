@@ -138,6 +138,33 @@ hostname
 DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重启主机后，某些网络配置会导致该文件被还原为初始状态。
 安装前先确认 **“修改 /etc/resolv.conf 并重启主机，是否被还原”** 。如果被还原，可以参考以下红帽官方的文档解决： https://access.redhat.com/solutions/7412
 
+## 自定义安装配置
+
+install.config 是模块和服务器对应关系的配置文件，描述在哪些机器上安装哪些模块。
+
+每行两列，第一列是 IP 地址；第二列是以英文逗号分隔的模块名称。
+详情参考 install.config.3ip.sample 文件(可将 install.config.3ip.sample 复制为 install.config)。
+
+1. 生成 install.config
+```bash
+# 请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
+cat << EOF >/data/install/install.config
+10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana)
+10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk
+10.0.0.3 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman)
+EOF
+```
+
+说明:
+- 该配置文件，ip 后面使用空格与服务名称隔开，含有多个内网 ip 的机器，默认使用 /sbin/ifconfig 输出中的第一个内网 ip，在 ip 后面写上该机器要安装的服务列表即可，部署过程中默认使用标准私有地址。
+- zk 表示 ZooKeeper， es7 表示 ElasticSearch。
+- gse 与 redis 需要部署在同一台机器上。
+
+2. 对 install.config 中的主机配置中控机 ssh 登录免密。根据提示，依次输入每台机器的 root 密码
+```bash
+bash /data/install/configure_ssh_without_pass
+```
+
 ## 自定义域名、安装目录以及登陆密码
 
 以下操作只需要在中控机上执行
@@ -147,7 +174,7 @@ DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重�
 $BK_DOMAIN：需要更新的根域名，$INSTALL_PATH：自定义安装目录。
 
 ```bash
-# 执行前请使用实际的顶级域名 (如：bktencent.com) 和安装目录进行替换
+# 执行前请使用实际的顶级域名 (如：bktencent.com) 和安装目录(如：/data/bkce)进行替换
 cd /data/install 
 ./configure -d $BK_DOMAIN -p $INSTALL_PATH
 ```
