@@ -5,10 +5,10 @@
 
 该过程操作繁琐，接下来看 BCS（容器管理平台） 如何通过 **容器调度 (以 K8S 编排为例，BCS 同时还支持 Mesos)** 快速构建 Nginx 集群。
 
-
 ## 前提条件
+
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含  [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
-- [完成 BCS 部署](6.0/部署维护/增强包安装/部署安装/bcs_install.md)
+- [完成 BCS 部署](../../../部署指南/产品白皮书/增强包安装/部署安装/BCS-V2.md)
 - 准备 2 台云主机：4 核 8 G，不低于 CentOS 7，K8s Master 和 Node 各 1 台
 - 完成上述 2 台云主机的 Agent 安装 ，并分配至 CMDB 业务下
 
@@ -38,7 +38,7 @@
 
 ![-w1368](../assets/15648366557109.jpg)
 
-> 容器服务的集群划分和 [传统单体应用在 CMDB 中的集群划分](6.0/bk_solutions/CD/CMDB/CMDB_management_hosts.md) 很类似，可以按照`地域（如华北区）`或者`完全独立的应用集合（微信区）`来划分。
+> 容器服务的集群划分和 [传统单体应用在 CMDB 中的集群划分](../CMDB/CMDB_management_hosts.md) 很类似，可以按照`地域（如华北区）`或者`完全独立的应用集合（微信区）`来划分。
 
 选择 1 台云主机作为 Master。
 
@@ -73,7 +73,7 @@
 
 #### 新建模板集
 
-模板集，可以类比为 K8S 中 **[Helm](https://helm.sh/)** 的`Charts`，在 K8S 编排中，是 K8S 对象的集合：`Deployment（无状态）`、`StatefulSet（有状态）`、`DaemonSet（守护进程集）`、`Job（定时任务）`、`Configmap（配置项）`、`Secret（保密字典）`，具体参见 [模板集使用介绍](6.0/bcs/Function/TemplateIntroduce.md) 。
+模板集，可以类比为 K8S 中 **[Helm](https://helm.sh/)** 的`Charts`，在 K8S 编排中，是 K8S 对象的集合：`Deployment（无状态）`、`StatefulSet（有状态）`、`DaemonSet（守护进程集）`、`Job（定时任务）`、`Configmap（配置项）`、`Secret（保密字典）`，具体参见 [模板集使用介绍](../../../容器管理平台/产品白皮书/Function/templatesets.md) 。
 
 打开菜单 `[模板集]`，新建模板集 `web-nginx`。
 

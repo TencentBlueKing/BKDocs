@@ -6,7 +6,7 @@
 
 ## 前提条件
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含 [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
-- [完成 BCS 部署](6.0/部署维护/增强包安装/部署安装/bcs_install.md)
+- [完成 BCS 部署](../../../部署指南/产品白皮书/增强包安装/部署安装/BCS-V2.md)
 
 ## 操作步骤
 
@@ -26,12 +26,11 @@
 
 #### 推送 Nginx:1.17.0 至镜像仓库
 
-参照 [Harbor 仓库使用指南](6.0/bcs/Function/HarborGuide.md)，将镜像 Nginx:1.17.0 推送至 BCS 公共镜像仓库。
-
+参照 [Harbor 仓库使用指南](../../../容器管理平台/产品白皮书/Function/image_repo.md)，将镜像 Nginx:1.17.0 推送至 BCS 公共镜像仓库。
 
 #### 注册镜像仓库账号
 
-在 [部署 BCS](6.0/部署维护/增强包安装/环境准备/bcs_envprepare.md) 的中控机上获取镜像仓库的访问地址。
+在 [部署 BCS](../../../部署指南/产品白皮书/增强包安装/部署安装/BCS-V2.md) 的中控机上获取镜像仓库的访问地址。
 
 ```bash
 # source /data/install/utils.fc && echo ${HARBOR_SERVER_FQDN}:${HARBOR_SERVER_HTTPS_PORT}

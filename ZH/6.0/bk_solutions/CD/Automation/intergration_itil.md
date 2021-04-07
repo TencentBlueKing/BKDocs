@@ -1,12 +1,13 @@
 # 开发标准运维插件，集成内部 IT 系统
 
 # 情景
+
 标准运维内置了蓝鲸体系内作业平台、配置平台等系统的原子，但应用交付过程中还包含了部分企业内部的 ITIL 系统，例如`DB变更`、`监控`、`工单`，需要开发标准运维的标准插件，将应用交付过程中，使用到的能力或接口集成到标准运维中。
 
 # 前提条件
 
-- 掌握 [蓝鲸 SaaS 开发](6.0/开发指南/SaaS开发/新手入门/macOS.md)，打开 [腾讯运维开发实战课](https://cloud.tencent.com/edu/learning/major-100008) 马上学习
-- 掌握 [蓝鲸 API 网关开发](6.0/开发指南/扩展开发/API网关/README.md)
+- 掌握 [蓝鲸 SaaS 开发](../../../开发指南/SaaS开发/新手入门/Windows.md)，打开 [腾讯运维开发实战课](https://cloud.tencent.com/edu/learning/major-100008) 马上学习
+- 掌握 [蓝鲸 API 网关开发](../../../开发指南/扩展开发/API网关/README.md)
 
 # 步骤
 - 梳理逻辑
@@ -28,7 +29,7 @@
 
 ## 开发环境初始化
 
-在开始开发之前，先把 [蓝鲸 SaaS 的开发环境](6.0/开发指南/SaaS开发/新手入门/macOS.md)准备好。
+在开始开发之前，先把 [蓝鲸 SaaS 的开发环境](../../../开发指南/SaaS开发/新手入门/Windows.md)准备好。
 
 然后在 **标准运维项目根目录** 下执行 `Django-admin startapp custom_atoms` ，接着新建`components/collections` 和 `static/custom_atoms` 目录。
 
@@ -40,7 +41,7 @@
 
 ## 接入 ESB API
 
-参照 [蓝鲸 API 网关开发指南](6.0/开发指南/扩展开发/API网关/README.md)完成 ESB 接入，然后更新标准运维`blueking/component`下的文件。
+参照 [蓝鲸 API 网关开发指南](../../../开发指南/扩展开发/API网关/README.md)完成 ESB 接入，然后更新标准运维`blueking/component`下的文件。
 
 ![-w2020](../assets/33.png)
 
@@ -66,6 +67,7 @@
 - `form` ：前端表单定义文件路径
 
 **TestCustomService 中 execute 函数详解**：
+
 - 可以是任何 Python 代码，如果对应于 ESB API 调用，一般分为参数组装、API 调用、结果解析。
 - `data` 是标准插件前端数据，对应于前端的表单，可以用 get_one_of_inputs 获取某一个参数；执行完成可以使用 set_outputs 写入返回值和异常信息(ex_data)。
 - `parent_data` 是任务的公共参数，包括 excutor—执行者，operator—操作员，biz_cc_id—所属业务 ID。详细请查看 gcloud/taskflow3/utils.py。

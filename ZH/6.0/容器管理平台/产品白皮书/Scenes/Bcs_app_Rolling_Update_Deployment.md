@@ -29,7 +29,7 @@
 
 ### 推送 Nginx:1.17.0 至镜像仓库
 
-参照 [Harbor 仓库使用指南](5.1/bcs/Function/HarborGuide.md)，将镜像 Nginx:1.17.0 推送至 BCS 公共镜像仓库。
+参照 [Harbor 仓库使用指南](../Function/image_repo.md)，将镜像 Nginx:1.17.0 推送至 BCS 公共镜像仓库。
 
 ### 注册镜像仓库账号
 

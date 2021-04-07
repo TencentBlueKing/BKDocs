@@ -1,6 +1,7 @@
 # Zabbix 告警自动处理
 
 ## 情景
+
 故障处理是运维的职能之一，`Zabbix` 自带 `ActionScript`虽然可以实现告警自动处理，但存在 2 个问题：`无法集中管理自动处理的脚本`、`没有收敛防护，安全性无法保障`。
 
 接下来我们通过将 **Zabbix 中磁盘使用率（vfs.fs.*）告警接入故障自愈** 这个案例 ，来了解故障自愈是如何解决这 2 个痛点。
@@ -14,7 +15,6 @@
  - **自愈套餐** : 告警的处理动作，等同于 Zabbix 的 Action；
  - **自愈方案** : 关联 告警 和 处理动作的一个组合；
 
-
 ## 操作步骤
 
 - 接入 Zabbix 告警源
@@ -24,7 +24,6 @@
 ### 视频教程
 
 {% video %}media/zabbix_fta.mp4{% endvideo %}
-
 
 ### 接入 Zabbix 告警源
 
@@ -36,25 +35,19 @@
 
 ![-w1487](../assets/15644555486013.jpg)
 
-
 Zabbix 接入故障自愈的逻辑是，告警产生时，执行`Action`，将告警推送至故障自愈接收告警的回调接口。
 
 接下来，我们下载并初始化该`Action`。
 
-
 #### 下载初始化脚本
 
 参照上图，进入 Zabbix Action 的目录 `/usr/lib/zabbix/alertscripts`，下载初始化脚本 `zabbix_fta_alarm.py`。
-
-
 
 ```bash
 [root@37ae504b6646 alertscripts]# wget 'http://${PaaS_Host}/o/bk_fta_solutions/0/alarm_source/scripts/zabbix_fta_alarm.py?fta_application_id=66fdfe50-3075-49bf-8101-d97386030c9b&fta_application_secret=EfgBbXD25N6870j9nkgf3ns8eOEsH2Sk' -O /usr/lib/zabbix/alertscripts/zabbix_fta_alarm.py --no-check-certificate
 ```
 
 > 注：请直接复制故障自愈页面的命令，其中包含故障自愈的页面 URL 以及账号信息。
-
-
 
 #### 初始化 Zabbix 告警配置
 
