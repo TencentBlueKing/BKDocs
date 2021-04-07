@@ -6,7 +6,6 @@
 
 - /data/bkce/public
 
-
 logs 目录可以按需设置自动清理 N 天前的日志。
 
 public 目录一般不能手动删除，一般比较大的组件可能有
@@ -106,6 +105,7 @@ log.retention.hours=72（超过指定时间 72 小时后，删除旧的消息）
 log.retention.bytes=10737418240（超过指定大小 10G 后，删除旧的消息）
 
 ```
+
 设置完毕后，重启服务来生效。
 
 ### 方法二：Kafka 设置 Topic 过期时间
@@ -137,5 +137,3 @@ curl -s -u elastic:$BK_ES7_ADMIN_PASSWORD -X GET http://$BK_ES7_IP:9200/_cat/ind
 # index 是索引名称
 curl -s -u elastic:$BK_ES7_ADMIN_PASSWORD -X DELETE http://$BK_ES7_IP:9200/index
 ```
-
-

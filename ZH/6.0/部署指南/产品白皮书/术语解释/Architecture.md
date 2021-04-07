@@ -13,11 +13,11 @@
 PaaS 平台包含：
 
 - paas 后台模块，它包含五个子工程，社区版部署为了简化，均部署在同一台机器上，简称 paas 模块。
-    - appengine
-    - paas
-    - esb
-    - login
-    - apigw
+  - appengine
+  - paas
+  - esb
+  - login
+  - apigw
 - paas_agent 模块，根据环境分为测试环境(appt)和正式环境(appo)，它的功能是和 paas 后台交互，处理 SaaS 部署相关逻辑。
 
 PaaS 平台依赖 MySQL 存储应用数据、Redis 做缓存、Nginx 做接入层。
@@ -59,7 +59,6 @@ gse 的具体架构参考：[GSE 产品架构图](https://bk.tencent.com/docs/do
 - gse_procmgr: 进程管理服务程序。提供进程注册、操作、查询等原子操作，是节点管理的插件管理功能的后台程序之一
 - gse_syncdata: 数据同步服务程序。该服务支持订阅并同步配置平台的主机身份信息到远端 Agent
 - gse_alarm: Agent 状态监控程序。该程序会将心跳超时的 Agent 列表发给 gse_data
-
 
 gse 后台在部署上，需要注意的是，gse_dba 必须和 Redis 同机部署。
 

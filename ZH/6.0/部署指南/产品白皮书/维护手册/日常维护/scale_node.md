@@ -21,7 +21,7 @@
     ./bkcli sync common
     ```
 
-4. 新机器初始化。
+6. 新机器初始化。
 
     ```bash
     pcmd -H 10.0.0.4 /data/install/bin/init_new_node.sh
