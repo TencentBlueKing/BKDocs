@@ -3,6 +3,7 @@
 安装软件需要 [下载](https://bk.tencent.com/download/) 2 个文件：软件包、证书。
 
 **说明：** 首次安装用户，建议下载完整包。
+
 ## 软件包
 
 为了方便用户获取社区版软件包，提供了 2 种下载模式： [完整包下载](https://bk.tencent.com/download/)、 [分包下载](https://bk.tencent.com/download_sdk/)。

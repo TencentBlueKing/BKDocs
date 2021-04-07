@@ -12,7 +12,9 @@ source utils.fc
 # 这个命令用来加载环境变量（/data/install/bin/{01-generate,02-dynamic,03-userdef,04-final}/*.env）加载一些通用函数。
 
 ```
+
 如登录至 JOB 模块所在机器：
+
 ```bash
 ssh $BK_JOB_IP
 # /data/install/bin/02-dynamic/hosts.env 文件通过解析 install.config ，生成了模块对应的 IP。

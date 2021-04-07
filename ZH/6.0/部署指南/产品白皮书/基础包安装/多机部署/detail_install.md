@@ -58,6 +58,17 @@
 
 ## 部署 bknodeman
 
+- 如需使用跨云管控，请提前将节点管理的外网 IP 写入至 `/etc/blueking/env/local.env` 文件。否则请忽略该步骤
+ 
+```bash
+source $CTRL_DIR/utils.fc
+ssh $BK_NODEMAN_IP
+
+echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
+```
+
+- 开始部署
+
 ```bash
 # 安装节点管理后台模块、节点管理 SaaS 及其依赖组件
 ./bk_install bknodeman
@@ -97,3 +108,5 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 ## 3.3 访问蓝鲸开始使用
 
 可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
+
+如需要部署监控告警及日志服务套餐，请参考 [增值套餐部署](./value_added.md)

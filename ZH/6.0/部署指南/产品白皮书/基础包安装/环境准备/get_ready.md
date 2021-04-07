@@ -20,6 +20,7 @@
 准备好硬件，安装完原生 CentOS 系统后。需要对初始系统做一些配置，保证后续安装过程的顺畅和蓝鲸平台的运行。
 
 **系统版本：** 推荐 CentOS-7.6。
+
 ## 关闭 SELinux
 
 ```bash
@@ -42,6 +43,7 @@ sed -i 's/^SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 ```bash
 reboot
 ```
+
 ## 关闭默认防火墙(firewalld)
 
 安装和运行蓝鲸时，模块之间互相访问的端口策略较多，建议对蓝鲸后台服务器之间关闭防火墙。
@@ -52,6 +54,7 @@ firewall-cmd --state
 ```
 
 停止并禁用 firewalld
+
 ```bash
 systemctl stop firewalld    # 停止 firewalld
 systemctl disable firewalld # 禁用 firewall 开机启动
@@ -81,6 +84,7 @@ ulimit -n
 但是不能大于 `/proc/sys/fs/nr_open` 的值，该值默认为 1048576。
 
 **注意：** limits.conf 初始文件的备份。
+
 ```bash
 cat >> /etc/security/limits.conf << EOF
 root soft nofile 102400
@@ -103,6 +107,7 @@ ntpdate -d cn.pool.ntp.org
 ```
 
 如果输出的最后一行 offset 大于 1s 建议校时。
+
 ```bash
 # 和 ntp 服务器同步时间
 ntpdate cn.pool.ntp.org
@@ -119,6 +124,7 @@ ntpdate cn.pool.ntp.org
 # 检查 http_proxy https_proxy 变量是否设置，若为空可以跳过后面的操作。
 echo "$http_proxy" "$https_proxy"
 ```
+
 对于本机配置 http_proxy 变量的方式，请依次查找文件 /etc/profile、/etc/bashrc、$HOME/.bashrc 等是否有设置。
 或者咨询网络管理员/IT 部门协助处理。
 
@@ -138,13 +144,52 @@ hostname
 DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重启主机后，某些网络配置会导致该文件被还原为初始状态。
 安装前先确认 **“修改 /etc/resolv.conf 并重启主机，是否被还原”** 。如果被还原，可以参考以下红帽官方的文档解决： https://access.redhat.com/solutions/7412
 
+## 准备相关软件包
+
+- 请前往 [蓝鲸官网下载页](https://bk.tencent.com/download/) 进行下载。
+
+- 将下载的软件包放置需要部署的机器上。
+
+- 解压下载的软件包 `tar tf bkce_src-6.0.2.tgz -C /data`, 这里默认解压至 data 目录。
+
+- 解压各产品软件包 `cd /data/src/; for f in *gz;do tar xf $f; done`。
+
+- 拷贝 rpm 包文件夹到 /opt/ 目录 `cp -a /data/src/yum /opt`。
+
+## 准备证书文件
+
+- 前往 [蓝鲸官网证书生成页](https://bk.tencent.com/download_ssl/) 使用 MAC 地址生成证书, **GSE/LICENSE 所在服务器的 MAC 地址**, 可参考部署脚本下 install/install.config.3ip.sample 文件。
+
+- 生成后请将证书文件放置与软件包同一台机器上。
+
+- 解压证书文件，这里以 /data 目录为例
+
+    ```bash
+    install -d -m 755 /data/src/cert
+    tar xf /data/ssl_certificates.tar.gz -C /data/src/cert/
+    chmod 644 /data/src/cert/*
+    ```
+
+## 准备 install.config 文件
+
+可直接拷贝 3 台机器部署的模版文件
+
+```bash
+# 以 /data 目录为例
+cp -a /data/install/install.config.3ip.sample /data/install/install.config
+
+# 最后，请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
+```
+
 ## 自定义域名、安装目录以及登陆密码
 
 以下操作只需要在中控机上执行
 
 - 部署前自定义域名以及安装目录
- 
-$BK_DOMAIN：需要更新的根域名，$INSTALL_PATH：自定义安装目录。
+
+\$BK_DOMAIN：需要更新的根域名。
+
+\$INSTALL_PATH：自定义安装目录。
 
 ```bash
 # 执行前请使用实际的顶级域名 (如：bktencent.com) 和安装目录进行替换
@@ -154,7 +199,7 @@ cd /data/install
 
 - 部署前自定义 admin  登陆密码
 
-**请使用实际的自定义密码替换 BlueKing，以及使用实际的部署脚本路径替换默认的脚本路径`/data/install`**
+**请使用实际的自定义密码替换 BlueKing，以及使用实际的部署脚本路径替换默认的脚本路径 `/data/install`**
 
 ```bash
 cat > /data/install/bin/03-userdef/usermgr.env << EOF
@@ -162,4 +207,4 @@ BK_PAAS_ADMIN_PASSWORD=BlueKing
 EOF
 ```
 
-完成环境准备后，可前往 [标准部署](../多机部署/install.md) 开始部署了。 
+完成环境准备后，可前往 [详细部署](../多机部署/install.md) 开始部署了。 

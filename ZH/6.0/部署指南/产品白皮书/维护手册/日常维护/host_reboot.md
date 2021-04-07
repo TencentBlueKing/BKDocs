@@ -39,7 +39,6 @@ echo paas job gse bkmonitorv3 | xargs -n 1 ./bkcli restart
 
  job 启动稍微有点慢，可等待 10s~30s 再执行 check 命令。
 
-
 此外，还可以登录至模块所在的服务器，通过 `systemctl start|restart <module>` 拉起服务。以 PaaS 为例：
 
 ```bash

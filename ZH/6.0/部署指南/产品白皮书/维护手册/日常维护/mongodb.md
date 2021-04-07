@@ -10,10 +10,10 @@
 
 ## 安装部署
 
-蓝鲸的配置平台依赖 MongoDB 4.2 及以上版本，安装参考[官方文档](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/) 
+蓝鲸的配置平台依赖 MongoDB 4.2 及以上版本，安装参考[官方文档](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/)
 
 1. 安装 rpm 包
-2. 配置 /etc/mongod.conf 
+2. 配置 /etc/mongod.conf
 3. 创建必要的目录，设置好正确的权限
 4. 启动进程
 
@@ -78,9 +78,9 @@
 这里以默认的 mongodb.service.consul 为例，创建 consul 的服务定义文件如下，需要在组成集群的所有 MongoDB 实例机器上运行：
 
 ```bash
-$ ./bin/reg_consul_svc -n mongodb -p 27017 -a <本机IP> -D > /etc/consul.d/service/mongodb.json
+./bin/reg_consul_svc -n mongodb -p 27017 -a <本机IP> -D > /etc/consul.d/service/mongodb.json
 
-$ consul reload
+consul reload
 ```
 
 ### 验证集群
@@ -159,7 +159,7 @@ rs0:PRIMARY> rs.status().ok
     ```
 
     测试监控账号是否正常：
-    
+
     ```bash
     mongostat --uri=mongodb://<username>:<password>@mongodb.service.consul:27017/admin
     ```
@@ -210,11 +210,11 @@ mongod 默认安装的配置文件在 `/etc/mongod.conf` 中，如果需要修�
 
 ## 常用操作
 
-* 启动进程： `systemctl start mongod`
-* 停止进程： `systemctl stop mongod`
-* 设置开机启动：`systemctl enable mongod`
-* 命令行连上 ReplicaSet 的集群：`mongo mongodb://<username>:<password>@mongodb.service.consul:27017/admin?replicaSet=rs0`
-* 查看当前 RS 集群的主节点：
+- 启动进程： `systemctl start mongod`
+- 停止进程： `systemctl stop mongod`
+- 设置开机启动：`systemctl enable mongod`
+- 命令行连上 ReplicaSet 的集群：`mongo mongodb://<username>:<password>@mongodb.service.consul:27017/admin?replicaSet=rs0`
+- 查看当前 RS 集群的主节点：
 
     ```bash
     mongo mongodb://<username>:<password>@mongodb.service.consul:27017/admin?replicaSet=rs0 --eval 'rs.status().members.find(r=>r.state===1).name'

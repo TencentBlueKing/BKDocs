@@ -7,6 +7,7 @@
 ```bash
 source /data/install/utils.fc
 ```
+
 - 执行以下命令，检查蓝鲸的服务状态
 
 ```bash
@@ -25,13 +26,13 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 
   可以使用 bkcli 或者 systemctl 查看运行的状态
 
-    - bkcli
+  - bkcli
 
   ```bash
   echo redis es7 beanstalk influxdb rabbitmq mongodb consul zk kafka | xargs -n 1 ./bkcli status
   ```
 
-    - systemctl
+  - systemctl
     相关组件服务名称可见 [组件维护](../../维护手册/日常维护/start_stop.md)
 
   ```bash
@@ -57,7 +58,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 
 - 打开节点管理，安装部署环境机器的 Agent。
   
-![install_agent](../..assets/../../assets/install_agent.png) 
+![install_agent](../..assets/../../assets/install_agent.png)
 
 - 打开蓝鲸监控平台，查看蓝鲸的数据链路是否正常
 
