@@ -21,6 +21,14 @@
 
 **系统版本：** 推荐 CentOS-7.6。
 
+## 检查文件系统类型
+
+如果文件系统为 xfs，那么在安装 docker 时会有问题。详细见：[Docker 存储驱动程序](https://docs.docker.com/storage/storagedriver/select-storage-driver/)
+
+```bash
+lsblk -f
+```
+
 ## 关闭 SELinux
 
 ```bash
