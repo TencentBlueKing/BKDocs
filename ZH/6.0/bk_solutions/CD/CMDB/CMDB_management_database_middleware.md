@@ -1,18 +1,19 @@
-# 管理数据库/中间件实例：以 MySQL 为例
+# CMDB 管理数据库/中间件实例：以 MySQL 为例
 
 ## 情景
+
 应用使用的存储是 MySQL，为了便于 MySQL 的日常维护（如 SQL 变更），需要在 CMDB 中创建 MySQL CI 对象，录入 MySQL 实例。
 
 > 蓝鲸 CMDB 拥有灵活的 CI 能力，掌握该教程后，可以管理数据库、中间件、硬件等 CI 对象
 
 ## 前提条件
 
-在配置平台中 [新建好业务](../../../配置平台/产品白皮书/快速入门/case1.md)，并 定义拓扑及分配主机。
+在配置平台中 [新建业务](../../../配置平台/产品白皮书/快速入门/case1.md)，并 定义拓扑及分配主机。
 
 **术语解释**
- - **CI** : (Configuration Items)，资源对象，如 `MySQL`、主机、交易系统、交换机、路由器等
- - **CI 属性** : (Configuration Items Attribute)，资源对象的配置属性，如 MySQL CI 属性为实例名、IP、端口、存储引擎、数据库版本等
- - **CI 实例** : CI 的实例化，唯一识别一个资源对象，如 MySQL CI 实例为`gd_area_master_01`
+- **CI** : (Configuration Items)，资源对象，如 `MySQL`、主机、交易系统、交换机、路由器等
+- **CI 属性** : (Configuration Items Attribute)，资源对象的配置属性，如 MySQL CI 属性为实例名、IP、端口、存储引擎、数据库版本等
+- **CI 实例** : CI 的实例化，唯一识别一个资源对象，如 MySQL CI 实例为`gd_area_master_01`
 
 ## 操作步骤
 
@@ -27,15 +28,15 @@
 <table>
    <tr>
       <td>字段分组</td>
-      <td>字段中文名</td>
-      <td>字段英文名</td>
+      <td>字段名称</td>
+      <td>唯一标识</td>
       <td>字段类型</td>
       <td>录入方式</td>
       <td>是否唯一</td>
       <td>是否必填</td>
    </tr>
    <tr>
-      <td rowspan=11>基本信息</td>
+      <td rowspan=11>Default</td>
       <td>实例名</td>
       <td>bk_inst_name</td>
       <td>短字符</td>
@@ -179,17 +180,22 @@
 通过`实例名`可以唯一标识一个 MySQL 实例，具体是`IP`和`端口`的组合。
 
 ### 创建 MySQL CI 对象
+
 第一步梳理完 MySQL CI 属性后，接下来开始建模：创建 MySQL CI。
 
 #### 创建 CI
+
 选择`模型管理`中选择`模型`，创建 MySQL 模型。
 
-![-w992](../assets/15632800013005.jpg)
+![-w992](../assets/20210408114711.png)
 
 #### 新增 CI 属性
+
 按照梳理 MySQL CI 属性 中梳理的结果来添加 CI 属性。
 
-![-w1676](../assets/15637992522730.jpg)
+![-w1676](../assets/20210408125755.png)
+
+![-w1676](../assets/20210408125841.png)
 
 如果手工操作繁琐，也可以导入一个 MySQL 模型示例。
 
@@ -208,9 +214,11 @@
 ![-w1220](../assets/15633674062813.jpg)
 
 ### 添加 MySQL 实例
+
 完成 MySQL CI 的建模之后，接下来添加 MySQL 实例
 
 #### 新增或导入 CI 实例
+
 从首页进入 MySQL 实例列表页
 
 ![-w1580](../assets/15643140385105.jpg)
