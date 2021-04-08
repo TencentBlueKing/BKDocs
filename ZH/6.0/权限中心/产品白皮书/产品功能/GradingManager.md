@@ -10,6 +10,3 @@
 ![image-20201210104243675](GradingManager/image-20201210104243675.png)
 
 分级管理员可以由[超级管理员创建](./ManagerCreate.md)或者[普通用户申请创建](./UserApply.md)。
-
-
-

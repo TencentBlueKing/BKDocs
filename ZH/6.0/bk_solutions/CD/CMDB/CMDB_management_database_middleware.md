@@ -6,7 +6,8 @@
 > 蓝鲸 CMDB 拥有灵活的 CI 能力，掌握该教程后，可以管理数据库、中间件、硬件等 CI 对象
 
 ## 前提条件
-在配置平台中 [新建好业务](6.0/配置平台/快速入门/case1.md)，并 定义拓扑及分配主机。
+
+在配置平台中 [新建好业务](../../../配置平台/产品白皮书/快速入门/case1.md)，并 定义拓扑及分配主机。
 
 **术语解释**
  - **CI** : (Configuration Items)，资源对象，如 `MySQL`、主机、交易系统、交换机、路由器等
@@ -14,6 +15,7 @@
  - **CI 实例** : CI 的实例化，唯一识别一个资源对象，如 MySQL CI 实例为`gd_area_master_01`
 
 ## 操作步骤
+
 - 梳理 : 梳理 MySQL CI 属性
 - 建模 : 创建 MySQL CI 对象
 - 实例化 : 添加 MySQL 实例
@@ -172,7 +174,7 @@
    </tr>
 </table>
 
-其中，CI 属性自动录入参考[自动发现 MySQL 实例](6.0/bk_solutions/CD/CMDB/CMDB_CI_auto_discovery_MySQL.md)。
+其中，CI 属性自动录入参考[自动发现 MySQL 实例](./CMDB_CI_auto_discovery_MySQL.md)。
 
 通过`实例名`可以唯一标识一个 MySQL 实例，具体是`IP`和`端口`的组合。
 
