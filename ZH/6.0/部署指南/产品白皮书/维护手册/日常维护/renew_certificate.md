@@ -11,11 +11,11 @@ tar -xvf /data/ssl_certificates.tar.gz -C /data/src/cert/
 
 ## 中控机执行更新证书动作
 
-> 该动作将会重启license、gse、job，请酌情操作
+> 该动作将会重启 license、gse、job，请酌情操作
 
 ```bash
 cd /data/install
 ./bkcli upgrade cert
 ```
 
-``Proxy``和``Agent``已实现免证书更新，不需执行任何操作.
+`Proxy` 和 `Agent` 已实现免证书更新，不需执行任何操作。

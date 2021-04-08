@@ -150,7 +150,7 @@ DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重�
 
 - 将下载的软件包放置需要部署的机器上。
 
-- 解压下载的软件包 `tar tf bkce_src-6.0.2.tgz -C /data`, 这里默认解压至 data 目录。
+- 解压软件包 `tar tf bkce_src-6.0.2.tgz -C /data`, 这里默认解压至 data 目录。
 
 - 解压各产品软件包 `cd /data/src/; for f in *gz;do tar xf $f; done`。
 
@@ -158,7 +158,7 @@ DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重�
 
 ## 准备证书文件
 
-- 前往 [蓝鲸官网证书生成页](https://bk.tencent.com/download_ssl/) 使用 MAC 地址生成证书, **GSE/LICENSE 所在服务器的 MAC 地址**, 可参考部署脚本下 install/install.config.3ip.sample 文件。
+- 使用 gse 与 license 所在服务器的 MAC 地址，前往 [蓝鲸官网证书生成页](https://bk.tencent.com/download_ssl/) 生成证书, 可参考部署脚本下 install/install.config.3ip.sample 文件。
 
 - 生成后请将证书文件放置与软件包同一台机器上。
 
@@ -207,4 +207,4 @@ BK_PAAS_ADMIN_PASSWORD=BlueKing
 EOF
 ```
 
-完成环境准备后，可前往 [详细部署](../多机部署/install.md) 开始部署了。 
+完成环境准备后，可前往 [基础套餐详细部署](../多机部署/install.md) 开始部署了。
