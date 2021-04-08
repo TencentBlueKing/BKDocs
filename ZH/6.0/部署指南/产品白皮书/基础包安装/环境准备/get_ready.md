@@ -26,7 +26,7 @@
 如果文件系统为 xfs，那么在安装 docker 时会有问题。详细见：[Docker 存储驱动程序](https://docs.docker.com/storage/storagedriver/select-storage-driver/)
 
 ```bash
-cat /etc/fstab
+lsblk -f
 ```
 
 ## 关闭 SELinux
