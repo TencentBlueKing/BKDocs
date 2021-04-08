@@ -28,8 +28,8 @@
 <table>
    <tr>
       <td>字段分组</td>
-      <td>字段名称</td>
       <td>唯一标识</td>
+      <td>名称</td>
       <td>字段类型</td>
       <td>录入方式</td>
       <td>是否唯一</td>
@@ -37,88 +37,88 @@
    </tr>
    <tr>
       <td rowspan=11>Default</td>
-      <td>实例名</td>
       <td>bk_inst_name</td>
+      <td>实例名</td>
       <td>短字符</td>
       <td>自动</td>
       <td>是</td>
       <td>是</td>
    </tr>
    <tr>
-      <td>IP地址</td>
       <td>ip_addr</td>
+      <td>IP地址</td>
       <td>短字符</td>
       <td>自动</td>
       <td>是</td>
       <td>是</td>
    </tr>
    <tr>
-      <td>端口</td>
       <td>port</td>
+      <td>端口</td>
       <td>数字</td>
       <td>自动</td>
       <td>是</td>
       <td>是</td>
    </tr>
    <tr>
-      <td>数据库版本</td>
       <td>version</td>
+      <td>数据库版本</td>
       <td>短字符</td>
       <td>自动</td>
       <td></td>
       <td></td>
    </tr>
    <tr>
-      <td>安装路径</td>
       <td>install_dir</td>
+      <td>安装路径</td>
       <td>长字符</td>
       <td>自动</td>
       <td></td>
       <td></td>
    </tr>
    <tr>
-      <td>数据库文件路径</td>
       <td>dbfile_dir</td>
+      <td>数据库文件路径</td>
       <td>长字符</td>
       <td>自动</td>
       <td></td>
       <td></td>
    </tr>
    <tr>
-      <td>是否开启binlog</td>
       <td>enable_binlog</td>
+      <td>是否开启binlog</td>
       <td>枚举</td>
       <td>自动</td>
       <td></td>
       <td></td>
    </tr>
    <tr>
-      <td>是否开启慢查询日志</td>
       <td>enable_slowlog</td>
+      <td>是否开启慢查询日志</td>
       <td>枚举</td>
       <td>自动</td>
       <td></td>
       <td></td>
    </tr>
    <tr>
-      <td>字符集</td>
       <td>chart_set</td>
+      <td>字符集</td>
       <td>短字符</td>
       <td>自动</td>
       <td></td>
       <td></td>
    </tr>
    <tr>
-      <td>存储引擎</td>
       <td>storage_engine</td>
+      <td>存储引擎</td>
       <td>短字符</td>
       <td>自动</td>
       <td></td>
       <td></td>
    </tr>
    <tr>
-      <td>数据库大小</td>
       <td>db_size</td>
+      <td>数据库大小</td>
       <td>数字</td>
       <td>自动</td>
       <td></td>
@@ -126,48 +126,48 @@
    </tr>
    <tr>
       <td rowspan=6>核心参数</td>
-      <td>innodb缓存池大小</td>
       <td>innodb_buffer_pool_size</td>
+      <td>innodb缓存池大小</td>
       <td>数字</td>
       <td>自动</td>
       <td></td>
       <td></td>
    </tr>
    <tr>
-      <td>innodb日志缓存大小</td>
       <td>innodb_log_buffer_size</td>
+      <td>innodb日志缓存大小</td>
       <td>数字</td>
       <td>自动</td>
       <td></td>
       <td></td>
    </tr>
    <tr>
-      <td>innodb日志磁盘写入策略</td>
       <td>innodb_flush_log_at_trx_commit</td>
+      <td>innodb日志磁盘写入策略</td>
       <td>短字符</td>
       <td>自动</td>
       <td></td>
       <td></td>
    </tr>
    <tr>
-      <td>线程缓存大小</td>
       <td>thread_cache_size</td>
+      <td>线程缓存大小</td>
       <td>数字</td>
       <td>自动</td>
       <td></td>
       <td></td>
    </tr>
    <tr>
-      <td>查询缓存大小</td>
       <td>query_cache_size</td>
+      <td>查询缓存大小</td>
       <td>数字</td>
       <td>自动</td>
       <td></td>
       <td></td>
    </tr>
    <tr>
-      <td>最大连接数</td>
       <td>max_connections</td>
+      <td>最大连接数</td>
       <td>数字</td>
       <td>自动</td>
       <td></td>
@@ -195,9 +195,13 @@
 
 ![-w1676](../assets/20210408125755.png)
 
-![-w1676](../assets/20210408125841.png)
-
 如果手工操作繁琐，也可以导入一个 MySQL 模型示例。
+
+#### 新增唯一校验
+
+通过`实例名`可以唯一标识一个 MySQL 实例，具体是`IP`和`端口`的组合，所以将 IP 和端口作为一个组合校验。
+
+![-w1676](../assets/20210408125841.png)
 
 #### 设立 CI 关联
 
@@ -205,13 +209,7 @@
 
 1 个主机可以运行多个 MySQL 实例，所以`源到目标的约束条件`为“ 1-N ”
 
-![-w1239](../assets/15633674736247.jpg)
-
-#### 新增唯一校验
-
-通过`实例名`可以唯一标识一个 MySQL 实例，具体是`IP`和`端口`的组合，所以将 IP 和端口作为一个组合校验。
-
-![-w1220](../assets/15633674062813.jpg)
+![-w1239](../assets/16178641731970.png)
 
 ### 添加 MySQL 实例
 
@@ -219,24 +217,24 @@
 
 #### 新增或导入 CI 实例
 
-从首页进入 MySQL 实例列表页
+从 **资源 -> 资源目录**进入 MySQL 实例列表页
 
-![-w1580](../assets/15643140385105.jpg)
+点击**新建**按钮，按提示添加 MySQL 实例，也可以批量导入 MySQL 实例。
 
-点击`新建`按钮，按提示添加 MySQL 实例，也可以批量导入 MySQL 实例。
-
-![-w1399](../assets/15637993409385.jpg)
+![-w1399](../assets/20210408145717.png)
 
 #### 创建 CI 实例的关联关系
 
 打开一个 MySQL 实例的详情页，点击`关联` TAB 中的`关联管理`，`关联`当前实例运行在哪台主机上。
 
-![-w1398](../assets/15637993763312.jpg)
+![-w1398](../assets/20210408145828.png)
 
 再次点击`关联管理`，可预览 MySQL 实例与主机的关联关系。
 
-![-w1320](../assets/15643143202999.jpg)
+![-w1320](../assets/20210408150024.png)
 
 如果参照本篇教程将`机架`、`交换机`、`机房管理单元`、`数据中心`等 IT 基础设施均录入 CMDB 中，将可以查询一个 MySQL 实例完整的关联关系。
+
+![-w1397](../assets/20210408150251.png)
 
 ![-w1397](../assets/15637996905990.jpg)
