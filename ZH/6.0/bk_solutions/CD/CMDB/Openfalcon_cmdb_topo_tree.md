@@ -12,7 +12,7 @@
 
 - [主机纳管在蓝鲸配置平台中](./CMDB_management_hosts.md)
 - 在蓝鲸开发者中心 [新建一个应用](../../../开发指南/SaaS开发/新手入门/Windows.md)，用于调用 CMDB 的 API
-- 熟悉 `Python`、`JavaScript`
+- 熟悉 Python、JavaScript
 
 ## 操作步骤
 
@@ -29,6 +29,7 @@
 ![-w2020](../assets/15642787521397.jpg)
 
 ### 查询主机及拓扑，写入 Redis
+
 - 定时调用配置平台`查询主机:search_host`接口
 - 将结果转化为 `ztree` 的数据格式，并写入 Redis
 
@@ -96,8 +97,8 @@ topo = sorted(topo, key=lambda x: x['name'])
 rdc.set('cmdb',str({'value':topo}))
 ```
 
-
 ### 封装后台接口
+
 - 用 `flask` 开发接口，用于 Openfalcon 前端调用
 - 跨域访问处理 : 调用外部接口，需要解决跨域问题
 

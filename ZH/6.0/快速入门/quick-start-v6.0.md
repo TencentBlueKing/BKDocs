@@ -54,7 +54,7 @@
 
 如果需要不同角色人员来使用蓝鲸体系产品，则到【用户管理】添加用户即可。详见：[用户管理产品白皮书：新增本地用户目录](https://bk.tencent.com/docs/markdown/用户管理/产品白皮书/产品简介/README.md)
 
-Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三方的组织架构以及鉴权体系，详情可以参考：[社区版: 蓝鲸登录接入企业内部登录](https://bk.tencent.com/docs/markdown/开发指南/扩展开发/对接企业登录体系/development_steps.md)
+Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三方的组织架构以及鉴权体系，详情可以参考：[社区版: 蓝鲸登录接入企业内部登录](https://bk.tencent.com/docs/markdown/开发指南/扩展开发/对接企业登录体系/login_with_usermgr.md)
 
 ### 二、【配置平台】创建业务
 
