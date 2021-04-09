@@ -2035,26 +2035,9 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
-			},
-			"index": 79,
-			"title": "快速部署",
-			"url": "6.0/部署指南/产品白皮书/基础包安装/多机部署/quick_install.md",
-			"version": "6.0"
-		}],
-	"source": {
-		"describe": "$$$",
-		"icon_url": "",
-		"page": "docs",
-		"type": "tag1:快速入门"
-	}
-}, {
-	"link_conf": [
-		{
-			"extend": {
 				"summary": "6.0/快速入门/SUMMARY.md"
 			},
-			"index": 78,
+			"index": 79,
 			"title": "快速使用",
 			"url": "6.0/快速入门/quick-start-v6.0-info.md",
 			"version": "6.0"

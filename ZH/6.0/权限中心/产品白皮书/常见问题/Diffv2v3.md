@@ -1,8 +1,8 @@
-# V3 和 V2 的差异
+# V3 和 V2 的差异？
 
-> V3 和 V2 的差异仅在蓝鲸企业版中存在，V2 对应蓝鲸企业版 2.X，V3 版对应蓝鲸企业版 3.X，社区版统一为 V3 版本。
+> V3 和 V2 的差异仅在蓝鲸企业版中存在，V2 对应蓝鲸企业版2.X，V3 版对应蓝鲸企业版3.X，社区版统一为 V3 版本。
 
-权限中心 V3 采用了目前业界最强大灵活的的 ABAC（Attribute-Based Access Control）模型引擎，融合了 ACL(Access Control List)、RBAC(Role-Based Access Control)、LBAC(Label-Based Access Control)的理念，重新调整优化后的权限模型，使得权限中心在针对海量实例的鉴权时依然可以轻松应对，查询和鉴权性能得到了指数级提升，同时在产品层，对权限的管理删繁就简，聚焦核心场景，更加人性化、更加贴合业务实际需求。
+权限中心 V3 采用了目前业界最强大灵活的的ABAC（Attribute-Based Access Control）模型引擎，融合了 ACL(Access Control List)、RBAC(Role-Based Access Control)、LBAC(Label-Based Access Control)的理念，重新调整优化后的权限模型，使得权限中心在针对海量实例的鉴权时依然可以轻松应对，查询和鉴权性能得到了指数级提升，同时在产品层，对权限的管理删繁就简，聚焦核心场景，更加人性化、更加贴合业务实际需求。
 
 <table><tbody>
 <tr><td width="20%">功能</td><td width="40%">V3版</td><td width="40%">V2版</td></tr>

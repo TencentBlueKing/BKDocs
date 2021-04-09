@@ -14,7 +14,7 @@
 
 ### 1.1 URL
 
-> POST /api/v1/policy/auth/
+> POST /api/v1/policy/auth
 
 ### 1.2 Request
 
@@ -99,7 +99,7 @@ Response 字段说明, 表格
 
 ### 2.1 URL
 
-> POST /api/v1/policy/auth_by_resources/
+> POST /api/v1/policy/auth_by_resources
 
 ### 2.2 Request
 
@@ -209,7 +209,7 @@ Response 字段说明, 表格
 
 ### 3.1 URL
 
-> POST /api/v1/policy/auth_by_actions/
+> POST /api/v1/policy/auth_by_actions
 
 ### 3.2 Request
 

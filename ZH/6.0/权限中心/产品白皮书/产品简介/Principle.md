@@ -12,7 +12,7 @@
 - 实例视图(Instance_selections)模型
 - 操作(Action)模型
 
-具体协议参考 [注册 API 协议](../../../iam_dev_docs/QuickStart/03-Model.md)。
+具体协议参考 [注册API协议](../../../iam_dev_docs/QuickStart/03-Model.md)。
 
 注册成功后，在前端页面可以查看注册效果。
 
@@ -26,20 +26,20 @@
 
 用户申请权限时，权限中心需要从接入系统拉取相应的资源实例来完成最终权限策略的配置。
 
-具体协议参考 [资源反向拉取 API 协议](../../../iam_dev_docs/Reference/API/03-Callback/01-API.md)
+具体协议参考 [资源反向拉取API协议](../../../iam_dev_docs/Reference/API/03-Callback/01-API.md)
 
 ![image-20210322225944420](Principle/image-20210322225944420.png)
 
 ## 4. 权限中心存储权限策略
 
-用户申请的权限，最终会变成一条条权限策略（policy）数据保存在权限中心，即 subject（用户、组织、用户组） + action +  expression（包含了操作对应的资源实例表达式）。
+用户申请的权限，最终会变成一条条权限策略（policy）数据保存在权限中心，即subject（用户、组织、用户组） + action +  expression（包含了操作对应的资源实例表达式）。
 
 ## 5. 用户访问接入系统的资源需要鉴权
 
 用户访问接入系统的某个资源时，因为接入了权限中心，所以需要先判断该用户是否具备访问对应资源的权限。
 
-## 6. 接入系统通过 SDK 进行鉴权
+## 6. 接入系统通过SDK进行鉴权
 
-新版权限中心的鉴权逻辑是由各接入系统调用 SDK 来完成鉴权，具体可以参考[鉴权 SDK](../../../iam_dev_docs/Reference/API/04-Auth/01-SDK.md)，目前[Python、Go 语言版本 SDK](https://pypi.org/project/bk-iam/1.1.9/)已开源，如没有对应语言的 SDK（`推荐`），需要接入系统自行实现或者使用[直接鉴权](../../../iam_dev_docs/Reference/API/04-Auth/02-DirectAPI.md)。
+新版权限中心的鉴权逻辑是由各接入系统调用SDK来完成鉴权，具体可以参考[鉴权SDK](../../../iam_dev_docs/Reference/API/04-Auth/01-SDK.md)，目前[Python、Go语言版本SDK](https://pypi.org/project/bk-iam/1.1.9/)已开源，如没有对应语言的SDK（`推荐`），需要接入系统自行实现或者使用[直接鉴权](../../../iam_dev_docs/Reference/API/04-Auth/02-DirectAPI.md)。
 
 更详细的指引请点击阅读 [系统接入开发指引](../../../iam_dev_docs/QuickStart/01-Begin.md)。
