@@ -67,7 +67,7 @@
 # 请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
 cat << EOF >/data/install/install.config
 10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul
-10.0.0.2 nginx,consul,mongodb,rabbitmq,appoi,zk(config)
+10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,zk(config)
 10.0.0.3 paas,cmdb,job,mysql,appt,consul,nodeman(nodeman)
 EOF
 ```
