@@ -1,10 +1,12 @@
 # 应用的滚动升级
 ## 情景
+
 传统的应用更新方式是停服更新，用户在更新期间 **无法使用服务** 。
 
 接下来，将以 Nginx 从 `1.12.2` 升级 `1.17.0` 为例，看 BCS 中的 **滚动更新能力** 是如何实现 **不停机更新** ，**用户无感知**。
 
 ## 前提条件
+
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含 [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
 - [完成 BCS 部署](../../../部署指南/产品白皮书/增强包安装/部署安装/BCS-V2.md)
 
@@ -20,7 +22,6 @@
 滚动更新对用户无感知。
 
 ![-w1549](../assets/15652581859764.jpg)
-
 
 ### BCS 滚动更新操作指引
 
@@ -107,6 +108,7 @@ Date: Thu, 08 Aug 2019 09:11:42 GMT
 点击【更多设置】，了解默认滚动升级的更新策略。
 
 ![-w1269](../assets/15659379375124.jpg)
+
 > - `maxUnavailable` : 滚动升级期间，考虑应用容量，不可用 Pod 的数量上限
 > - `maxSurge` : 滚动升级期间，考虑集群资源，超出期望 Pod 的数量上限
 > - `minReadySeconds` : 滚动升级期间，考虑可用性，探测 Pod 正常后转为可用的时间

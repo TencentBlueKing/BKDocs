@@ -1,8 +1,6 @@
 # 环境验证
 
-## 基础套餐
-
-### 后台环境验证
+## 基础套餐后台验证
 
 - 加载环境变量和蓝鲸安装维护的函数
 
@@ -44,7 +42,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
   systemctl status rabbitmq-server.service 
   ```
 
-### 前台环境验证
+## 基础套餐前台验证
 
 请先 **配置 host 或者 DNS** 解析后，确认访问社区版域名是否正常。
 
@@ -62,9 +60,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
   
 ![install_agent](../..assets/../../assets/install_agent.png)
 
-## 监控告警及日志服务套餐
-
-### 后台环境验证
+## 增强套餐后台验证
 
 - 执行以下命令，检查蓝鲸的服务状态
 
@@ -72,7 +68,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 echo bklog bkmonitorv3 | xargs -n 1 ./bkcli check
 ```
 
-### 前台环境验证
+## 增强套餐前台验证
 
 - 打开蓝鲸监控平台，查看蓝鲸的数据链路是否正常
 

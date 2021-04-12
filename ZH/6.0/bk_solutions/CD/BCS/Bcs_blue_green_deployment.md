@@ -1,12 +1,13 @@
 # 应用的蓝绿发布（原：研发测试环境管理）
 
 ## 情景
+
 传统的应用更新方式是**停服更新**，用户在更新期间**无法使用服务**。
 
 接下来，将以 Nginx 从 `1.12.2` 升级 `1.17.0` + 程序代码（index.html 的内容从 Nginx 默认页 更新为 1.17.0）为例，看 BCS 中的**蓝绿发布能力**是如何实现**不停机更新**，**用户无感知**。
 
-
 ## 前提条件
+
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含 [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)；本节教程新增概念：[ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)、[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)、[Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。
 - [完成 BCS 部署](../../../部署指南/产品白皮书/增强包安装/部署安装/BCS-V2.md)
 
