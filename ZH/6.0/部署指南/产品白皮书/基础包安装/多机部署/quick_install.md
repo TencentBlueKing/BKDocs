@@ -36,7 +36,7 @@
 
    ```bash
    cd /data
-   tar xf bkce_basic_suite-6.0.3-preview.tgz
+   tar xf bkce_basic_suite-6.0.3.tgz
    ```
 
 2. 解压各个产品软件包
@@ -44,8 +44,6 @@
    ```bash
    cd /data/src/; for f in *gz;do tar xf $f; done
    ```
-
-   合并自定义的组件（比如 paas 模块的 ee_login, esb 的自定义组件等）
 
 3. 解压证书包
 
@@ -98,7 +96,7 @@ bash /data/install/configure_ssh_without_pass
 ./bk_install paas
 ```
 
-PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域名未经解析，可参考本文末段 [访问蓝鲸](./quick_install.md#三、访问蓝鲸) 。
+PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访问，请参考 [访问蓝鲸](./quick_install.md#三、访问蓝鲸) 。
 
 ### 部署 app_mgr
 
@@ -132,7 +130,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 
 ### 部署 bknodeman
 
-- 如需使用跨云管控，请提前将节点管理的外网 IP 写入至 `/etc/blueking/env/local.env` 文件。否则请忽略该步骤
+- 如需使用跨云管控，请提前将节点管理的外网 IP 写入至节点管理后台服务所在机器的`/etc/blueking/env/local.env` 文件。否则请忽略该步骤
 
 ```bash
 source $CTRL_DIR/utils.fc
@@ -231,4 +229,4 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 
 可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
 
-如需要部署监控告警及日志服务套餐，请参考 [增值套餐部署](./value_added.md)
+进阶选项：[监控告警及日志服务套餐部署](./value_added.md)

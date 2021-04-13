@@ -17,29 +17,33 @@
 - 建议操作系统： CentOS 7.6
   - 建议机器配置
     - 生产环境：建议 8 核 16 G，硬盘 100G 以上（可根据实际情况适当调整配置），机器数量：3 台
-    - 功能体验：建议 8 核 16 G，机器数量：1台
+    - 功能体验：建议 8 核 16 G，机器数量：1 台
 
-2.下载套餐安装包
+2.实现免密
 
-请前往 [蓝鲸官网下载页](https://bk.tencent.com/download/) 下载监控告警及日志服务套餐软件包。
+开始部署前，请确保新增主机跟中控机已实现免密。
 
-3.将需要部署产品的标准运维流程模版导入至标准运维
+```bash
+ssh-copy-id <ip>
+```
+
+3.请先前往节点管理，对新增主机进行 agent 安装。
+
+4.下载套餐安装包
+
+请前往 [蓝鲸官网下载页](https://bk.tencent.com/download/) 下载监控告警及日志服务套餐软件包并上传至中控机解压。
+
+5.将需要部署产品的标准运维流程模版导入至标准运维
+
+   标准运维流程模版[下载](http://xxxxx)
 
    **详细步骤：** `打开标准运维 -> 项目流程 -> 导入 -> 点击上传 -> 创建新流程`
 
    ![sops](../../assets/sops.png)
 
- 假设需要部署的 `监控告警及日志服务套餐包` 已放置中控机的 `/data` 目录 ，`对应套餐包的标准运维流程模版` 已导入至标准运维。导入可参考如下:
+   假设需要部署的 `监控告警及日志服务套餐包` 已放置中控机的 `/data` 目录 ，`对应套餐包的标准运维流程模版` 已导入至标准运维。导入可参考如下:
 
    ![sops](../../assets/sops2.png)
-
-4.开始部署前，请确保新增主机跟中控机已实现免密。
-
- ```bash
-ssh-copy-id <ip>
- ```
-
-5.请先前往节点管理，对新增主机进行 agent 安装。
 
 ## 开始部署
 
@@ -53,6 +57,8 @@ ssh-copy-id <ip>
 - `whole_pkg_path`：部署监控平台安装包的绝对路径
 - `deply_iplist`：新增的机器 IP（如果基础环境的资源有富余，可以复用）
 
+![bkmonitorv3_template](../../assets/monitorv3_template.png)
+
 该部署流程主要相关操作：
 
 - 将监控平台安装包放至指定目录
@@ -60,8 +66,6 @@ ssh-copy-id <ip>
 - 初始化新增节点机器
 - 授权监控平台所需的 MySQL 访问权限
 - 安装监控相关依赖、监控平台后台、监控平台 SaaS
-
-![bkmonitorv3_template](../../assets/monitorv3_template.png)
 
 ### 日志平台
 
@@ -73,6 +77,8 @@ ssh-copy-id <ip>
 - `whole_pkg_path`：部署日志平台安装包的绝对路径
 - `deply_iplist`：新增的机器 IP（如果基础环境的资源有富余，可以复用）
 
+![bklog_template](../../assets/bklog_template.png)
+
 该部署流程主要相关操作：
 
 - 将日志平台安装包放至指定目录
@@ -80,8 +86,6 @@ ssh-copy-id <ip>
 - 初始化新增节点机器
 - 授权日志平台所需的 MySQL 访问权限
 - 安装日志平台相关依赖、日志平台后台、日志平台 SaaS
-
-![bklog_template](../../assets/bklog_template.png)
 
 ### 故障自愈
 
@@ -93,6 +97,8 @@ ssh-copy-id <ip>
 - `whole_pkg_path`：部署故障自愈安装包的绝对路径
 - `deply_iplist`：新增的机器 IP（如果基础环境的资源有富余，可以复用）
 
+![fta_template](../../assets/fta_template.png)
+
 主要会做相关操作：
 
 - 将故障自愈安装包放至指定目录
@@ -100,5 +106,3 @@ ssh-copy-id <ip>
 - 初始化新增节点机器
 - 授权故障自愈所需的 MySQL 访问权限
 - 安装故障自愈相关依赖、故障自愈后台、故障自愈 SaaS
-
-![fta_template](../../assets/fta_template.png)
