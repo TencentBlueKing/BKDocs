@@ -79,7 +79,7 @@ bash /data/install/configure_ssh_without_pass
 
 ## 二、开始部署
 
-### 初始化并检查环境
+### 2.1 初始化并检查环境
 
 ```bash
 # 初始化环境
@@ -89,7 +89,7 @@ bash /data/install/configure_ssh_without_pass
 ./health_check/check_bk_controller.sh
 ```
 
-### 部署 PaaS 平台
+### 2.2 部署 PaaS 平台
 
 ```bash
 # 安装 PaaS 平台及其依赖服务
@@ -98,14 +98,14 @@ bash /data/install/configure_ssh_without_pass
 
 PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访问，请参考 [访问蓝鲸](./quick_install.md#三、访问蓝鲸) 。
 
-### 部署 app_mgr
+### 2.3 部署 app_mgr
 
 ```bash
 # 部署 SaaS 运行环境，正式环境及测试环境
 ./bk_install app_mgr
 ```
 
-### 部署权限中心与用户管理
+### 2.4 部署权限中心与用户管理
 
 ```bash
 # 权限中心
@@ -114,21 +114,21 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访
 ./bk_install saas-o bk_user_manage
 ```
 
-### 部署 CMDB
+### 2.5 部署 CMDB
 
 ```bash
 # 安装配置平台及其依赖服务
 ./bk_install cmdb
 ```
 
-### 部署 JOB
+### 2.6 部署 JOB
 
 ```bash
 # 安装作业平台后台模块及其依赖组件
 ./bk_install job
 ```
 
-### 部署 bknodeman
+### 2.7 部署 bknodeman
 
 - 如需使用跨云管控，请提前将节点管理的外网 IP 写入至节点管理后台服务所在机器的`/etc/blueking/env/local.env` 文件。否则请忽略该步骤
 
@@ -146,7 +146,7 @@ echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
 ./bk_install bknodeman
 ```
 
-### 部署标准运维及流程管理
+### 2.8 部署标准运维及流程管理
 
 依次执行下列命令部署相关 SaaS。
 
@@ -158,19 +158,19 @@ echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
 ./bk_install saas-o bk_itsm
 ```
 
-### 初始化蓝鲸业务拓扑
+### 2.9 初始化蓝鲸业务拓扑
 
 ```bash
 ./bkcli initdata topo
 ```
 
-### 加载蓝鲸相关维护命令
+### 2.10 加载蓝鲸相关维护命令
 
 ```bash
 source ~/.bashrc
 ```
 
-### 检测相关服务状态
+### 2.11 检测相关服务状态
 
 ```bash
 cd /data/install/
