@@ -1,4 +1,4 @@
-# Open-Falcon 集成蓝鲸 CMDB 业务拓扑树
+# CMDB 案例-业务拓扑应用
 
 > 感谢社区用户 [StephenWang](https://bk.tencent.com/s-mart/personal/10116/) 贡献该文档.
 

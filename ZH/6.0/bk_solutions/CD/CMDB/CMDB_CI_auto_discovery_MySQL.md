@@ -1,4 +1,4 @@
-# CMDB 自动发现数据库实例：以 MySQL 为例
+# CMDB 案例-DB 配置项发现
 
 > 感谢 [嘉为科技](http://tech.canway.net/cheshi.html) 贡献该文档.
 
