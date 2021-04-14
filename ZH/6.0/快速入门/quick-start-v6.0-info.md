@@ -50,19 +50,19 @@
 
 ## 快速预览蓝鲸社区版各产品功能
 
-| 产品                                                         | 功能简述                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [用户管理](https://bk.tencent.com/docs/markdown/用户管理/产品白皮书/产品简介/README.md) | 蓝鲸提供的企业组织架构、多用户目录等集中的用户管理解决方案   |
-| [权限中心](https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/产品简介/README.md) | 蓝鲸体系集中权限管理服务，细化到资源实例级别的访问权限控制   |
-| [配置平台](https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品简介/Overview.md) | 提供主机、进程、模型等各种运维场景的配置数据服务管理，是蓝鲸体系的基石 |
-| [节点管理](https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Overview.md) | 批量快速地部署蓝鲸 Agent，覆盖 Linux、Windows 操作系统       |
-| [作业平台](https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Introduction/What-is-Job.md) | 提供批量脚本执行、文件分发、文件拉取、定时任务等基础操作的原子平台 |
-| [标准运维](https://bk.tencent.com/docs/markdown/标准运维/产品白皮书/产品简介/README.md) | 可视化的图形界面流程编排、跨系统调度利器                     |
-| [监控平台](https://bk.tencent.com/docs/markdown/监控平台/产品白皮书/intro/README.md) | 提供丰富的数据采集能力、大规模的数据处理能力，致力于满足不同场景的监控需求 |
-| [日志平台](https://bk.tencent.com/docs/markdown/日志平台/产品白皮书/intro/README.md) | 基于业界主流的全文检索引擎，提供多种场景化的采集、查询功能   |
-| [故障自愈](https://bk.tencent.com/docs/markdown/故障自愈/产品白皮书/Intro/README.md) | 实时发现告警，预诊断分析，自动恢复故障，并打通周边系统实现整个流程的闭环 |
-| [流程服务](https://bk.tencent.com/docs/markdown/流程服务/产品白皮书/产品简介/README.md) | 灵活自定义设计流程模块，覆盖 IT 服务中的不同管理流程或应用场景 |
-| [管控平台](https://bk.tencent.com/docs/markdown/管控平台/产品白皮书/产品简介/README.md) | 蓝鲸体系的底层管控系统，是蓝鲸所有其他服务的基础（GseAgent） |
-| [（bkci）持续集成平台](https://bk.tencent.com/docs/markdown/持续集成平台/产品白皮书/产品简介/README.md) | 免费并开源的 CI 服务，助力自动化构建-测试-发布工作流，持续、快速、高质量地交付产品 |
-| [BCS（容器管理平台）](https://bk.tencent.com/docs/markdown/容器管理平台/产品白皮书/Introduction/README.md) | 高度可扩展、灵活易用的容器管理服务平台，支持社区原生 Kubernetes 编排引擎 |
-
+<table><tbody>
+<tr><td width="15%">产品</td><td width="85%">功能简述</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/用户管理/产品白皮书/产品简介/README.md">用户管理</a></td><td width="85%">蓝鲸提供的企业组织架构、多用户目录等集中的用户管理解决方案</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/产品简介/README.md">权限中心</a></td><td width="85%">蓝鲸体系集中权限管理服务，细化到资源实例级别的访问权限控制</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品简介/Overview.md">配置平台</a></td><td width="85%">提供主机、进程、模型等各种运维场景的配置数据服务管理，是蓝鲸体系的基石</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Overview.md">节点管理</a></td><td width="85%">批量快速地部署蓝鲸 Agent，覆盖 Linux、Windows 操作系统</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Introduction/What-is-Job.md">作业平台</a></td><td width="85%">提供批量脚本执行、文件分发、文件拉取、定时任务等基础操作的原子平台</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/标准运维/产品白皮书/产品简介/README.md">标准运维</a></td><td width="85%">可视化的图形界面流程编排、跨系统调度利器</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/监控平台/产品白皮书/intro/README.md">监控平台</a></td><td width="85%">提供丰富的数据采集能力、大规模的数据处理能力，致力于满足不同场景的监控需求</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/日志平台/产品白皮书/intro/README.md">日志平台</a></td><td width="85%">基于业界主流的全文检索引擎，提供多种场景化的采集、查询功能</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/故障自愈/产品白皮书/Intro/README.md">故障自愈</a></td><td width="85%">实时发现告警，预诊断分析，自动恢复故障，并打通周边系统实现整个流程的闭环</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/流程服务/产品白皮书/产品简介/README.md">流程服务</a></td><td width="85%">灵活自定义设计流程模块，覆盖 IT 服务中的不同管理流程或应用场景</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/管控平台/产品白皮书/产品简介/README.md">管控平台</a></td><td width="85%">蓝鲸体系的底层管控系统，是蓝鲸所有其他服务的基础（GseAgent）</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/持续集成平台/产品白皮书/产品简介/README.md">bkci（持续集成平台）</a></td><td width="85%">免费并开源的 CI 服务，助力自动化构建-测试-发布工作流，持续、快速、高质量地交付产品</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/容器管理平台/产品白皮书/Introduction/README.md">BCS（容器管理平台）</a></td><td width="85%">高度可扩展、灵活易用的容器管理服务平台，支持社区原生 Kubernetes 编排引擎</td></tr>
+</tbody></table>

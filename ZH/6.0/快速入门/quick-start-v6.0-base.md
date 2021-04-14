@@ -210,7 +210,7 @@ Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三
 
 蓝鲸部署后，admin 是默认的超级管理员，可以配置权限。
 
-admin 进入到【权限中心】配置**权限模板**及创建**用户组**，比如步骤二里创建的业务`测试专用`，建一个[测试专用业务运维用户组]，该用户组包含了设定的各个系统相关的运维权限，创建好对应的用户组，就可以给用户授权，详细操作见：[权限中心产品白皮书：创建权限模板](https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/快速入门/CreatePremissionTemplates.md)、[创建用户组](https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/产品简介/README.md)。
+admin 进入到【权限中心】配置**权限模板**及创建**用户组**，比如步骤二里创建的业务`测试专用`，建一个[测试专用业务运维用户组]，该用户组包含了设定的各个系统相关的运维权限，创建好对应的用户组，就可以给用户授权，详细操作见：[权限中心产品白皮书：创建权限模板](https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/快速入门/CreatePremissionTemplates.md)、[创建用户组](https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/快速入门/CreateGroups.md)。
 
 #### 2、admin 可以主动授权或者普通用户申请权限
 
