@@ -35,13 +35,13 @@
 
 - 修改 bk_install 脚本
 
- ```bash
-# 在 job 添加以下内容
+```bash
+# 在 job 处添加以下内容
 vim bk_install
 sed -i '/JAVA_OPTS/c JAVA_OPTS="-Xms128m -Xmx128m"' /etc/sysconfig/bk-job-*
- ```
+```
 
-  ![change_job](../../assets/change_job.png)
+![change_job](../../assets/change_job.png)
 
 - install.config 这个文件安装脚本会自动生成，无需自行配置。
 
@@ -52,14 +52,11 @@ sed -i '/JAVA_OPTS/c JAVA_OPTS="-Xms128m -Xmx128m"' /etc/sysconfig/bk-job-*
 ```bash
 cd /data/install
 ./install_minibk -y
-
-# 部署流程服务
-./bk_install saas-o bk_itsm
 ```
 
 安装过程中遇到失败的情况，请先定位排查解决后，再重新运行失败时的安装指令。
 
-### 执行完部署后，执行降低内存消耗脚本
+执行完部署后，执行降低内存消耗脚本。以确保环境的稳定
 
 ```bash
 bash bin/single_host_low_memory_config.sh tweak all

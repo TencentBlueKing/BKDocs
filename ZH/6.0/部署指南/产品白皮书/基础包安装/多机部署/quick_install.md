@@ -1,9 +1,9 @@
-# 基础套餐快速部署
+# 基础套餐安装指引
 
 > 阅读前请确认好您的部署目的。
 > 该文档适用于生产环境多机器分模块部署场景，如仅需体验该套餐功能，可参考 [单机部署](../单机部署/install_on_single_host.md)
 
-基础套餐包含蓝鲸相关产品：PaaS 平台、配置平台、作业平台、权限中心、用户管理、节点管理、标准运维、流程服务
+基础套餐包含：PaaS 平台、配置平台、作业平台、权限中心、用户管理、节点管理、标准运维、流程服务。
 
 ## 一、前期准备
 
@@ -28,15 +28,15 @@
 
 ### 1.3 下载安装包
 
-请前往 [蓝鲸官网下载页](https://bk.tencent.com/download/) 下载基础套餐包。
+- 请前往 [蓝鲸官网下载页](https://bk.tencent.com/download/) 下载基础套餐包。
 
 ### 1.4 解压相关资源包
 
-1. 解压完整包（包含蓝鲸相关产品，如 PaaS、CMDB、JOB 等；蓝鲸依赖的 rpm 包，SaaS 镜像，定制 Python 解释器；部署脚本）
+1. 解压套餐包（包含蓝鲸相关产品，如 PaaS、CMDB、JOB 等；蓝鲸依赖的 rpm 包，SaaS 镜像，定制 Python 解释器；部署脚本）
 
    ```bash
    cd /data
-   tar xf bkce_basic_suite-6.0.3-preview.tgz
+   tar xf bkce_basic_suite-6.0.3.tgz
    ```
 
 2. 解压各个产品软件包
@@ -47,26 +47,26 @@
 
 3. 解压证书包
 
-    ```bash
-    install -d -m 755 /data/src/cert
-    tar xf /data/ssl_certificates.tar.gz -C /data/src/cert/
-    chmod 644 /data/src/cert/*
-    ```
+   ```bash
+   install -d -m 755 /data/src/cert
+   tar xf /data/ssl_certificates.tar.gz -C /data/src/cert/
+   chmod 644 /data/src/cert/*
+   ```
 
 4. 拷贝 rpm 包文件夹到/opt/目录
 
-    ```bash
-    cp -a /data/src/yum /opt
-    ```
+   ```bash
+   cp -a /data/src/yum /opt
+   ```
 
 ### 1.5 配置 install.config
 
 ```bash
 # 请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
 cat << EOF >/data/install/install.config
-10.0.0.1 nginx,rabbitmq,zk(config),appt,consul,ssm
-10.0.0.2 mongodb,appo,mysql,consul,nodeman(nodeman),usermgr
-10.0.0.3 paas,cmdb,job,gse,license,redis,consul,iam
+10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul
+10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,zk(config)
+10.0.0.3 paas,cmdb,job,mysql,appt,consul,nodeman(nodeman)
 EOF
 ```
 
@@ -79,7 +79,7 @@ bash /data/install/configure_ssh_without_pass
 
 ## 二、开始部署
 
-### 初始化并检查环境
+### 2.1 初始化并检查环境
 
 ```bash
 # 初始化环境
@@ -89,23 +89,23 @@ bash /data/install/configure_ssh_without_pass
 ./health_check/check_bk_controller.sh
 ```
 
-### 部署 PaaS 平台
+### 2.2 部署 PaaS 平台
 
 ```bash
 # 安装 PaaS 平台及其依赖服务
 ./bk_install paas
 ```
 
-PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域名未经解析，可参考本文末段 [访问蓝鲸](./quick_install.md#三、访问蓝鲸) 。
+PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访问，请参考 [访问蓝鲸](./quick_install.md#三、访问蓝鲸) 。
 
-### 部署 app_mgr
+### 2.3 部署 app_mgr
 
 ```bash
 # 部署 SaaS 运行环境，正式环境及测试环境
 ./bk_install app_mgr
 ```
 
-### 部署权限中心与用户管理
+### 2.4 部署权限中心与用户管理
 
 ```bash
 # 权限中心
@@ -114,28 +114,39 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 ./bk_install saas-o bk_user_manage
 ```
 
-### 部署 CMDB
+### 2.5 部署 CMDB
 
 ```bash
 # 安装配置平台及其依赖服务
 ./bk_install cmdb
 ```
 
-### 部署 JOB
+### 2.6 部署 JOB
 
 ```bash
 # 安装作业平台后台模块及其依赖组件
 ./bk_install job
 ```
 
-### 部署 bknodeman
+### 2.7 部署 bknodeman
+
+- 如需使用跨云管控，请提前将节点管理的外网 IP 写入至节点管理后台服务所在机器的`/etc/blueking/env/local.env` 文件。否则请忽略该步骤
+
+```bash
+source $CTRL_DIR/utils.fc
+ssh $BK_NODEMAN_IP
+
+echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
+```
+
+- 开始部署
 
 ```bash
 # 安装节点管理后台模块、节点管理 SaaS 及其依赖组件
 ./bk_install bknodeman
 ```
 
-### 部署标准运维及流程管理
+### 2.8 部署标准运维及流程管理
 
 依次执行下列命令部署相关 SaaS。
 
@@ -147,19 +158,19 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 ./bk_install saas-o bk_itsm
 ```
 
-### 初始化蓝鲸业务拓扑
+### 2.9 初始化蓝鲸业务拓扑
 
 ```bash
 ./bkcli initdata topo
 ```
 
-### 加载蓝鲸相关维护命令
+### 2.10 加载蓝鲸相关维护命令
 
 ```bash
 source ~/.bashrc
 ```
 
-### 检测相关服务状态
+### 2.11 检测相关服务状态
 
 ```bash
 cd /data/install/
@@ -174,7 +185,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 
 1.Windows 配置
 
-用文本编辑器（如`Notepad++`）打开文件：
+用文本编辑器（如 `Notepad++`）打开文件：
 
 `C:\Windows\System32\drivers\etc\hosts`
 
@@ -198,6 +209,7 @@ grep -E "nginx|nodeman" /data/install/install.config
 2.Linux / Mac OS 配置
 
 将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
+
 ```bash
 10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
 10.0.0.3 nodeman.bktencent.com
@@ -216,3 +228,5 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 > 默认蓝鲸工作台入口：[http://paas.bktencent.com](http://paas.bktencent.com)
 
 可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
+
+进阶选项：[监控告警及日志服务套餐部署](./value_added.md)

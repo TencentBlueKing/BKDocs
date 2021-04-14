@@ -1190,7 +1190,7 @@
 			},
 			"index": 500,
 			"title": "快速入门",
-			"url": "6.0/快速入门/quick-start-v6.0.md",
+			"url": "6.0/快速入门/quick-start-v6.0-info.md",
 			"version": "6.0"
 		}],
 	"source": {
@@ -1224,7 +1224,7 @@
 			},
 			"index": 498,
 			"title": "场景案例",
-			"url": "6.0/bk_solutions/Getting_started/Getting_started.md",
+			"url": "6.0/bk_solutions/CI/Pipeline_git_commit_to_stag.md",
 			"version": "6.0"
 		}],
 	"source": {
@@ -2035,28 +2035,11 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
-			},
-			"index": 79,
-			"title": "快速部署",
-			"url": "6.0/部署指南/产品白皮书/基础包安装/多机部署/quick_install.md",
-			"version": "6.0"
-		}],
-	"source": {
-		"describe": "$$$",
-		"icon_url": "",
-		"page": "docs",
-		"type": "tag1:快速入门"
-	}
-}, {
-	"link_conf": [
-		{
-			"extend": {
 				"summary": "6.0/快速入门/SUMMARY.md"
 			},
-			"index": 78,
+			"index": 79,
 			"title": "快速使用",
-			"url": "6.0/快速入门/quick-start-v6.0.md",
+			"url": "6.0/快速入门/quick-start-v6.0-info.md",
 			"version": "6.0"
 		}],
 	"source": {
@@ -2464,7 +2447,7 @@
 			},
 			"index": 29,
 			"title": "版本日志",
-			"url": "6.0/版本日志/v6002.md",
+			"url": "6.0/版本日志/v6003.md",
 			"version": "6.0"
 		}],
 	"source": {

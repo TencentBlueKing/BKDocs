@@ -13,7 +13,7 @@
 
 本文从最初的安装部署到日常问题处理，描述 Consul 运维相关的内容。
 
-关于 Consul 的基本概念和知识，建议阅读 Consul 官方的快速入门教程：https://learn.hashicorp.com/consul
+关于 Consul 的基本概念和知识，建议阅读 Consul 官方的快速入门教程：<https://learn.hashicorp.com/consul>
 
 ## 安装部署
 
@@ -60,9 +60,9 @@ $ ./bin/install_consul.sh
 
 安装并启动成功后，脚本会修改 `/etc/resolv.conf`
 
-1.  添加 `nameserver 127.0.0.1` 配置项，并保证它位于第一行
-2.  如果存在 option 的配置，且包含了 `rotate`，则删除该选项，防止轮询。因为蓝鲸依赖 consul 监听的 127.0.0.1:53 做解析。
-3.  添加 `search node.consul`，因为 consul 默认会注册本机的 `<node_name>.node.consul` 这样长主机名，一些 java 应用读取本机的$HOSTNAME 后反向解析 ip 的时候，会用到。
+1. 添加 `nameserver 127.0.0.1` 配置项，并保证它位于第一行
+2. 如果存在 option 的配置，且包含了 `rotate`，则删除该选项，防止轮询。因为蓝鲸依赖 consul 监听的 127.0.0.1:53 做解析。
+3. 添加 `search node.consul`，因为 consul 默认会注册本机的 `<node_name>.node.consul` 这样长主机名，一些 java 应用读取本机的$HOSTNAME 后反向解析 ip 的时候，会用到。
 
 然后停掉 `nscd` 的缓存服务。
 
@@ -81,7 +81,6 @@ consul 可以不需要使用任何命令行开关和配置，都有默认值，�
 蓝鲸部署 consul 主要采用了命令行参数+配置文件的方式。命令行参数在下一节启停中会提到，写在 `/etc/sysconfig/consul` 中，配置文件按功能，拆分为以下几个子配置：
 
 1. consul.json
-
 
     ```json
     {
@@ -119,7 +118,7 @@ consul 可以不需要使用任何命令行开关和配置，都有默认值，�
 
 3. auto_join.json: 配置 consul 启动后自动加入的集群的 ip 列表
 4. recursors.json: 从 `/etc/resolv.conf` 中读取已有的 nameserver ip，并写入到该配置。如果原本没有配置 nameserver，则不存在该配置文件。
-5. telemetry.json: 配置监控 metrics 接口相关的参数。详见：https://www.consul.io/docs/agent/telemetry
+5. telemetry.json: 配置监控 metrics 接口相关的参数。详见：<https://www.consul.io/docs/agent/telemetry>
 
 配置文件全部准备妥当后，可以通过命令 `consul validate /etc/consul.d` 来校验所有的 `*.json` 合并后的语法/语义是否符合 `consul agent` 启动所需。注意该命令需要接受完整的配置定义，而不能只传递部分配置，譬如 `consul validate /etc/consul.d/server.json` 会报错。
 
@@ -188,9 +187,9 @@ EOF
 - address: 该服务对外暴露的访问 ip 地址
 - port: 该服务对外暴露的访问端口
 - check: 定义健康检查机制
-    - tcp: 通过 tcp 进行探测，参数为探测的 ip 和端口
-    - interval: 检查间隔时间，蓝鲸统一设定为 10s
-    - timeout: tcp 探测的超时时间为 3s
+  - tcp: 通过 tcp 进行探测，参数为探测的 ip 和端口
+  - interval: 检查间隔时间，蓝鲸统一设定为 10s
+  - timeout: tcp 探测的超时时间为 3s
 
 运行 `consul reload` 加载配置，让上述配置生效。
 
@@ -396,6 +395,7 @@ consul snapshot restore backup.snap
     EOF
     systemctl reload openresty
     ```
+
 5. 在本机配置 hosts 文件，添加域名解析，假设 nginx 所在服务器对应的外网 ip 是 100.0.0.1
 
     ```bash
@@ -415,7 +415,6 @@ consul snapshot restore backup.snap
 - 取消当前节点注册的服务：
   - 1.0 以上的版本使用命令行：`consul services deregister <my-service-id>`
   - 1.0 以下的使用 httpapi：`curl --request PUT http://127.0.0.1:8500/v1/agent/service/deregister/<my-service-id>`
-
 
 ## 常见问题
 
@@ -447,6 +446,4 @@ consul snapshot restore backup.snap
 4. 重新启动对应服务模块的进程，等待 10s 后再次运行 `./bkcli check consul` 来判断服务是否健康
 5. 对于 check_resolv_conf_127.0.0.1 失败的节点。请配置好 /etc/resolv.conf 并持久化它。
 
-
 ### 持久化/etc/resolv.conf
-

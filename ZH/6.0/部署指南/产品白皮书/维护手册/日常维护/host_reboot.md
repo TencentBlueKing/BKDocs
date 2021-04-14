@@ -25,7 +25,7 @@
 echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli check
 ```
 
-如果 check 输出的状态为非 `ture`，那么可以使用 `./bkcli start|restart <module>` 拉起。 **module** 为 check 状态非 `ture` 的模块。
+如果 check 输出的状态为非 `true`，那么可以使用 `./bkcli start|restart <module>` 拉起。 **module** 为 check 状态非 `true` 的模块。
 
 假设 paas，job，gse，bkmonitorv3 自启动失败，可以参考下述命令：
 
@@ -38,7 +38,6 @@ echo paas job gse bkmonitorv3 | xargs -n 1 ./bkcli restart
 ```
 
  job 启动稍微有点慢，可等待 10s~30s 再执行 check 命令。
-
 
 此外，还可以登录至模块所在的服务器，通过 `systemctl start|restart <module>` 拉起服务。以 PaaS 为例：
 

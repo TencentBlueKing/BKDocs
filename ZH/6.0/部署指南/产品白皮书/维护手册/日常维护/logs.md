@@ -32,7 +32,7 @@
 常见于后台 Python 工程，且使用 supervisord 进行了托管的服务。比如蓝鲸监控后台（bkmonitorv3）。假设监控的 `kernel_api` 进程显示 FAILED，我们需要定位启动失败的原因。
 
 1. 修改监控的 supervisor 配置文件
-   
+
    ```bash
    # 登陆至监控模块所在的机器
    source /data/install/utils.fc
@@ -43,7 +43,7 @@
     ```
 
 2. 修改 `[program:kernel_api]` 配置下的 `stdout_logfile` 的值为一个临时路径，比如 `/data/bkce/logs/kernel_api_stdout.log`
-   
+
 3. 重启监控平台
 
     ```bash
@@ -92,23 +92,20 @@ SaaS 的日志路径较为特殊。如果是查看正式环境部署的 SaaS 日
 
 - Consul 的日志在 /var/log/consul/ 下，也可以通过 `consul monitor` 命令查看
   
-- Redis 的日志在 /var/log/redis/ 下，根据实例名命名的日志文件，比如 服务是 `redis@default.service` 那么日志文件是 /var/log/redis/default.log 
+- Redis 的日志在 /var/log/redis/ 下，根据实例名命名的日志文件，比如 服务是 `redis@default.service` 那么日志文件是 /var/log/redis/default.log
   
-- MySQL 的日志在 `$BK_HOME/logs/mysql/实例名.mysqld.log` 慢查询日志在 `$BK_HOME/logs/mysql/实例名.slow-query.log` 
+- MySQL 的日志在 `$BK_HOME/logs/mysql/实例名.mysqld.log` 慢查询日志在 `$BK_HOME/logs/mysql/实例名.slow-query.log`
   
-- Nginx 的日志在 `$BK_HOME/logs/nginx/` 
+- Nginx 的日志在 `$BK_HOME/logs/nginx/`
   
-- MongoDB 的日志在 `$BK_HOME/logs/mongodb/` 
+- MongoDB 的日志在 `$BK_HOME/logs/mongodb/`
   
 - RabbitMQ 的日志在 `$BK_HOME/logs/rabbitmq/`
   
 - Kafka 的日志在 `/var/log/kafka`
   
-- Zookeeper 的日志在 `/var/log/zookeeper` 
+- Zookeeper 的日志在 `/var/log/zookeeper`
   
 - Elasticsearch7 的日志在 `$BK_HOME/logs/elasticsearch/`
   
-- InfluxDB 的日志在 `$BK_HOME/logs/influxdb/` 
-
-
-
+- InfluxDB 的日志在 `$BK_HOME/logs/influxdb/`

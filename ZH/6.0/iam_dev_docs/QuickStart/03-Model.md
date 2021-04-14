@@ -99,7 +99,7 @@ curl -XPOST 'http://{IAM_HOST}/api/v1/model/systems/demo/instance-selections' \
 
 
 ```bash
-curl -XPOST POST 'http://{IAM_HOST}/api/v1/model/systems/demo/actions' \
+curl -XPOST 'http://{IAM_HOST}/api/v1/model/systems/demo/actions' \
 -H 'X-Bk-App-Code: demo' \
 -H 'X-Bk-App-Secret: c2cfbc92-28a2-420c-b567-cf7dc33cf29f' \
 -H 'Content-Type: application/json' \

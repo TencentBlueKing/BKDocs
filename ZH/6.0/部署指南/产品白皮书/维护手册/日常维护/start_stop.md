@@ -32,16 +32,15 @@
    1. bk-cmdb-admin.service： 需要最先启动，将配置文件刷入 zk 节点。
    2. bk-cmdb-core.service： 其次启动，因为剩余的模块会尝试去 zk 上寻找它的 ip:port 发起请求，如果请求失败，会导致进程启动失败。当前版本是一个强依赖。
    3. 其他微服务进程启动。
-   1. bk-gse-dba.service 应该最先启动，其他进程启动无顺序依赖。
-8. 节点管理后台：`bk-nodeman.service`
-9. 监控后台：
+   4. bk-gse-dba.service 应该最先启动，其他进程启动无顺序依赖。
+7. 节点管理后台：`bk-nodeman.service`
+8. 监控后台：
    1. `bk-monitor.service：` 监控的 kernelapi 后台。
    2. `bk-transfer.service：` 监控链路的 transfer 服务。
    3. `bk-influxd-proxy.service：` 监控读写 influxdb 的代理服务。
    4. `bk-grafana.service` 监控的 grafana 仪表盘服务。
-10. 日志平台后台：`bk-log-api.service`
-11. 故障自愈后台：`bk-fta.service`
-
+9. 日志平台后台：`bk-log-api.service`
+10. 故障自愈后台：`bk-fta.service`
 
 ## 组件启停
 
@@ -57,7 +56,7 @@
 2. 启动 paas 单个模块：`systemctl start bk-paas-<模块名>`
 
 - 配置了 target 的服务，可以使用 `systemctl list-dependencies bk-模块名.target` 来看它下面启用的服务有哪些。
- 
+
     如 cmdb 的 target：
 
     ```bash
@@ -103,7 +102,6 @@
 - install/check.sh
 
 分别使用 `./bkcli status <模块>` 和 `./bkcli check <模块>` 来调用，根据传入的模块名，ssh 登陆到模块所在的 IP，然后在该 IP 上，运行 bks.sh 和 check_consul_svc_health.sh 的脚本。
-
 
 ### 启动失败定位
 

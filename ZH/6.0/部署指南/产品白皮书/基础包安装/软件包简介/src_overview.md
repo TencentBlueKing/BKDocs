@@ -1,65 +1,60 @@
-# 软件包内容概述
+# 软件包简介
 
-解压 `bkce_src-6.0.x.tgz` 安装包后，`src` 即为软件包目录，存放了蓝鲸基础平台、官方 SaaS 包、开源组件等内容。
+解压 `bkce_basic_suite-6.0.3.tgz` 安装包后，`src` 即为软件包目录，存放了蓝鲸基础平台、官方 SaaS 包、开源组件等内容，`install` 则为蓝鲸部署脚本。
 
 ## 软件包目录结构
 
 请按照目录结构检查对应文件目录是否存在，版本号会随着每次更新而变更，请以官网下载的实际版本号为准：
+
+### 基础套餐
 
 ```bash
 [root@VM-0-1 src]# pwd
 /data/src
 [root@VM-0-1 src]# tree -F -L 1
 .
-├── bkiam_ce-1.x.xtgz
-├── bklog_ce-4.x.x-bkofficial.tgz
-├── bkmonitorv3_ce-3.x.x-bkofficial.tgz
-├── bknodeman_ce-2.x.x-bkofficial.tgz
-├── bkssm_ce-1.x.x.tgz
+├── bkiam_ce-1.6.1.tgz
+├── bknodeman_ce-2.0.723-bkofficial.tgz
+├── bkssm_ce-1.0.8.tgz
 ├── blueking.env
-├── cmdb_ce-3.x.x.tgz
+├── cmdb_ce-3.9.22.tgz
 ├── COMMON_VERSION
-├── fta_solutions_ce-5.x.x.tar.gz
-├── gse_ce-3.x.x.tgz
+├── gse_ce-3.5.16.tgz
 ├── gse_plugins/
+├── image/
 ├── java8.tgz
-├── job_ce-3.x.x.x.tgz
-├── license_ce-3.x.x.tgz
+├── job_ce-3.2.5.7.tgz
+├── license_ce-3.1.5.tgz
 ├── MD5
 ├── official_saas/
-├── open_paas_ce-2.x.x-bkofficial.tgz
-├── paas_agent_ce-3.x.x.tgz
-├── usermgr_ce-2.x.x-bkofficial.tar.gz
+├── open_paas_ce-2.12.8-bkofficial.tgz
+├── paas_agent_ce-3.2.2.tgz
+├── python/
+├── usermgr_ce-2.2.5-bkofficial.tar.gz
 ├── VERSION
 └── yum/
 ```
 
-上面这层目录称为模块，模块下面会有子工程，称为 `project` ，比如 open_paas 模块下：
+### 增值套餐
+
+解压 bkce_co_suite-6.0.3-preview.tgz 安装包后，包含的是各产品的监控平台、日志平台和故障自愈的整包，以及各产品部署的标准运维流程模版。
+
+### 增强软件包目录结构
+
+`*.tgz` 为产品安装包。包含了自身产品的 **后台包** 以及 **SaaS 包**。
+`*.dat` 为标准运维流程模版格式。名称组成：产品名称 + common_flow + 时间戳.dat
 
 ```bash
-[root@nginx-1 open_paas]# pwd
-/data/src/open_paas
-[root@nginx-1 open_paas]# tree -F -L 1 . support-files/
-.
-├── apigw/
-├── appengine/
-├── bin/
-├── cert/
-├── esb/
-├── login/
-├── paas/
-├── projects.yaml
-├── release.md
-├── support-files/
-└── VERSION
-support-files/
-├── bkiam/
-├── pkgs/
-├── sql/
-└── templates/
+[root@VM-1-1-centos ~]# tar tvf bkce_co_suite-6.0.3-preview.tgz
+-rw-r--r-- root/root     30416 2021-03-18 09:50 bklog_common_flow_20210318094934.dat
+-rw-r--r-- root/root     31812 2021-03-18 09:50 bkmonitorv3_common_flow_20210318094947.dat
+-rw-r--r-- root/root     30500 2021-03-18 09:50 fta_common_flow_20210318094919.dat
+-rw-r--r-- root/root 147750238 2021-03-17 21:05 bklog_suite-4.2.556.tgz
+-rw-r--r-- root/root 329022244 2021-03-17 21:05 bkmonitorv3_suite-3.3.1660.tgz
+-rw-r--r-- root/root  69477999 2021-03-17 21:05 fta_suite-5.2.14-ce.tgz
 ```
 
-这里重点说明下 `support-files/` 目录：
+这里重点说明各产品下的 `support-files/` 目录，以权限中心的为例：
 
 - **bkiam**: 存放初始化权限文件。
 - **pkgs**： 存放依赖包，比如 Python 工程的 pip 包。
@@ -94,4 +89,3 @@ support-files/
 - **usermgr：** 用户管理后台
 - **VERSION：** 社区版版本号
 - **yum：** 开源组件 RPM 包目录
-

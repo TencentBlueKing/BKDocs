@@ -1,17 +1,21 @@
-# Open-Falcon 集成蓝鲸 CMDB 业务拓扑树
+# CMDB 案例-业务拓扑应用
+
 > 感谢社区用户 [StephenWang](https://bk.tencent.com/s-mart/personal/10116/) 贡献该文档.
 
 ## 情景
+
 `Open-Falcon` 是一款开源监控产品， 默认通过 `Endpoint`（一般为主机名） 查找服务器，体验不够友好。
 
 集成蓝鲸配置平台的业务拓扑树，将首页左侧栏改造为服务树，通过选择业务模块快速选择机器，提高监控查看效率。
 
 ## 前提条件
-- [主机纳管在蓝鲸配置平台中](6.0/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
-- 在蓝鲸开发者中心 [新建一个应用](6.0/开发指南/SaaS开发/新手入门/Windows.md)，用于调用 [CMDB 的 API](6.0/API文档/CC/README.md)
-- 熟悉 `Python`、`JavaScript`
+
+- [主机纳管在蓝鲸配置平台中](./CMDB_management_hosts.md)
+- 在蓝鲸开发者中心 [新建一个应用](../../../开发指南/SaaS开发/新手入门/Windows.md)，用于调用 CMDB 的 API
+- 熟悉 Python、JavaScript
 
 ## 操作步骤
+
 - 配置平台中建立业务拓扑
 - 查询主机及拓扑，写入 Redis
 - 封装后台接口
@@ -19,11 +23,13 @@
 - 预览效果
 
 ### 配置平台中建立业务拓扑
-参照 [主机纳管在蓝鲸配置平台中](6.0/bk_solutions/CD/CMDB/CMDB_management_hosts.md)，根据应用的部署分层架构，建立业务拓扑如下：
+
+参照 [主机纳管在蓝鲸配置平台中](./CMDB_management_hosts.md)，根据应用的部署分层架构，建立业务拓扑如下：
 
 ![-w2020](../assets/15642787521397.jpg)
 
 ### 查询主机及拓扑，写入 Redis
+
 - 定时调用配置平台`查询主机:search_host`接口
 - 将结果转化为 `ztree` 的数据格式，并写入 Redis
 
@@ -91,8 +97,8 @@ topo = sorted(topo, key=lambda x: x['name'])
 rdc.set('cmdb',str({'value':topo}))
 ```
 
-
 ### 封装后台接口
+
 - 用 `flask` 开发接口，用于 Openfalcon 前端调用
 - 跨域访问处理 : 调用外部接口，需要解决跨域问题
 
@@ -179,4 +185,4 @@ function createTree(post_url){
 
 ![-w2020](../assets/15643014658046.jpg)
 
-> 注: CMDB 中的资源经常变动，建议使用事件驱动的[消息推送](6.0/配置平台/产品功能/ModelManagement.md)来监听资源变化，而不是周期获取。
+> 注: CMDB 中的资源经常变动，建议使用[事件订阅](../../../配置平台/产品白皮书/产品功能/EventPush.md)的消息推送来监听资源变化，而不是周期获取。

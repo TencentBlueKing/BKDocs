@@ -4,7 +4,7 @@
 
 ## 安装部署
 
-蓝鲸使用 OpenResty 1.15.8.3 版本，通过官方的 rpm 包安装。安装路径为默认的 `/usr/local/openresty/` 
+蓝鲸使用 OpenResty 1.15.8.3 版本，通过官方的 rpm 包安装。安装路径为默认的 `/usr/local/openresty/`
 
 安装后，默认的配置文件不符合蓝鲸的需求，通过部署脚本包的配置模板文件（$CTRL_DIR/support-files/templates/nginx/nginx.conf) 渲染生成 Nginx 的主配置文件 `/usr/local/openresty/nginx/conf/nginx.conf`，并新建子配置目录 `/usr/local/openresty/nginx/conf/conf.d/`。以上安装逻辑，统一由 `$CTRL_DIR/bin/install_openresty.sh` 脚本封装。
 
@@ -21,7 +21,7 @@
 Nginx的子配置，通过 `consul-template` 服务和 consul 服务以及kv存储配置来动态渲染。
 以 `paas` 项目的配置为例，先查看 `/etc/consul-template/conf.d/paas.conf` 配置：
 
-```
+```bash
 template {
   source = "/etc/consul-template/templates/paas.conf"
   destination = "/usr/local/openresty/nginx/conf/conf.d/paas.conf"

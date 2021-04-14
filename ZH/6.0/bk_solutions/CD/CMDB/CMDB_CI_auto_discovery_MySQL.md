@@ -1,23 +1,26 @@
-# 自动发现数据库实例：以 MySQL 为例
+# CMDB 案例-DB 配置项发现
+
 > 感谢 [嘉为科技](http://tech.canway.net/cheshi.html) 贡献该文档.
 
 ## 情景
+
 业务存储层是 MySQL，通过蓝鲸 CMDB 已管理 MySQL 实例，然而却是手工维护，难以长期维护。需要通过自动化的方式实现，自动发现 MySQL 实例、 MySQL CI 属性以及关联关系。
 
 ## 前提条件
 
-1. 提前导入或录入 MySQL CI 、创建模型（不是实例）的关联关系，详见：[如何管理数据库实例:以 MySQL 为例](6.0/bk_solutions/CD/CMDB/CMDB_management_database_middleware.md)
-2. 在蓝鲸开发者中心 [新建一个应用](6.0/开发指南/SaaS开发/新手入门/Windows.md)，用于调用 [CMDB 的 API](6.0/API文档/CC/README.md)
+1. 提前导入或录入 MySQL CI 、创建模型（不是实例）的关联关系，详见：[CMDB 管理数据库/中间件实例:以 MySQL 为例](./CMDB_management_database_middleware.md)
+2. 在蓝鲸开发者中心 [新建一个应用](../../../开发指南/SaaS开发/新手入门/Windows.md)，用于调用 CMDB 的 API
 3. 提供一个运维权限的账号以及 CMDB 的主机 IP 和端口,用于执行 JOB 作业
 4. 创建查询 MySQL CI 属性的账号
 
 ```bash
-     sudo mysql -e "CREATE USER 'bk'@'{YOUR_MYSQL_IP}' IDENTIFIED BY '{PASSWORD_FOR_BK_QUERY}';"
-     sudo mysql -e "GRANT PROCESS, REPLICATION CLIENT ON *.* TO 'bk'@'{YOUR_MYSQL_IP}' WITH MAX_USER_CONNECTIONS 5;"
-     sudo mysql -e "GRANT SELECT ON performance_schema.* TO 'bk'@'{YOUR_MYSQL_IP}';"
+sudo mysql -e "CREATE USER 'bk'@'{YOUR_MYSQL_IP}' IDENTIFIED BY '{PASSWORD_FOR_BK_QUERY}';"
+sudo mysql -e "GRANT PROCESS, REPLICATION CLIENT ON *.* TO 'bk'@'{YOUR_MYSQL_IP}' WITH MAX_USER_CONNECTIONS 5;"
+sudo mysql -e "GRANT SELECT ON performance_schema.* TO 'bk'@'{YOUR_MYSQL_IP}';"
 ```
 
 ## 操作步骤
+
 - 梳理自动发现逻辑
 - 代码解读（含样例脚本）
 - 测试效果
@@ -27,6 +30,7 @@
 {% video %}media/cmdb_mysql_autodiscovery.mp4{% endvideo %}
 
 ### 梳理自动发现逻辑
+
 - **自动发现 MySQL 实例**：调用作业平台的快速脚本执行 API，在 MySQL 所在的主机上执行 ps 命令发现 MySQL 实例，调用 CMDB 的 API 创建实例。
 - **自动发现  MySQL CI  属性**：调用 CMDB 获取实例的 API，获取 MySQL 实例所在的主机，调用作业平台的快速脚本执行 API，执行 SQL 语句查询 MySQL 属性，并调用 CMDB API 更新实例。
 - **自动发现 MySQL 与所在主机的关联关系**：调用 CMDB 查询实例 API 找出 MySQL 实例对应主机，创建关联关系。
@@ -38,6 +42,7 @@
 - 通过 `netstat` 命令，根据 `进程ID` 获得 `mysql端口` 号
 - 调用 `CMDB` 创建实例的接口，将发现到的实例存入 `CMDB`
 
+以下脚本中调用的接口为历史版本的接口，请按照自己环境版本进行调用接口即可。
 ```python
 #! /usr/bin/env python
 # -*-coding:utf-8-*-
@@ -218,6 +223,7 @@ Cover_Mysql
 ```
 
 #### 自动采集 MySQL CI 属性
+
 - 获取 CMDB 中 MySQL 的实例
 - 根据 MySQL 中的 IP，调用作业平台执行脚本，采集配置信息
 - 调用 CMDB 更新实例接口, 将采集到的配置信息保存到 CMDB 中
@@ -427,6 +433,7 @@ exit
 ```
 
 #### 自动发现关联信息
+
 - 通过 MySQL 实例中 IP 地址，找到与之对应的主机
 - 调用 CMDB 创建关联的接口，添加主机和 MySQL 直接的关联关系
 
@@ -490,6 +497,7 @@ exit
 ```
 
 #### 封装作业平台执行类
+
 封装好调用作业平台快速执行脚本接口的类
 
 ```python
@@ -570,21 +578,21 @@ if __name__ == '__main__':
 
 - 自动发现 MySQL 实例
 
-![-w1373](../assets/15637899863101.jpg)
+![-w1373](../assets/20210408155636.png)
 
 - 自动发现 MySQL CI 属性
 
-![-w1372](../assets/15637900105715.jpg)
+![-w1372](../assets/20210408155702.png)
 
 - 自动发现 MySQL 与主机的关联关系
 
-![-w1372](../assets/15637901490690.jpg)
+![-w1372](../assets/20210408155737.png)
 
 > 注：关联关系中，主机与机架、机房管理单元、机房等关联需要单独添加对应的关联关系，此处不做展开。
 
 ## MySQL 自动发现采集器 Demo
 
-请 [下载 demo](http://bktencent-1252002024.file.myqcloud.com/cmdb_autodiscovery_mysql_instance.py.tgz) 后，在一台有  Python 环境的主机（可访问蓝鲸）或 SaaS 中运行。
+请 [下载 demo](https://bktencent-1252002024.file.myqcloud.com/cmdb_autodiscovery_mysql_instance.py.tgz) 后，在一台有 Python 环境的主机（可访问蓝鲸）或 SaaS 中运行。
 
 ## 其他说明
 

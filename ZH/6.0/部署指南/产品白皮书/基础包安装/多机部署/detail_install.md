@@ -1,6 +1,6 @@
 # 基础套餐详细部署
 
-> 该文档适用于生产环境多机器分模块部署场景，如仅需体验该套餐功能，可参考 [单机部署](../单机部署/install_on_single_host.md)
+> 该文档适用于生产环境多机器分模块部署场景，如仅需体验该套餐功能，可参考 [基础套餐单机部署](../单机部署/install_on_single_host.md)
 
 **每一个步骤执行如果有报错，需要修复错误，保证安装成功后，才可以继续**。因为安装顺序是有依赖关系的，如果前面的平台失败扔继续往下安装，会遇到更多的报错导致整体安装失败。
 
@@ -58,6 +58,17 @@
 
 ## 部署 bknodeman
 
+- 如需使用跨云管控，请提前将节点管理的外网 IP 写入至 `/etc/blueking/env/local.env` 文件。否则请忽略该步骤
+
+```bash
+source $CTRL_DIR/utils.fc
+ssh $BK_NODEMAN_IP
+
+echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
+```
+
+- 开始部署
+
 ```bash
 # 安装节点管理后台模块、节点管理 SaaS 及其依赖组件
 ./bk_install bknodeman
@@ -96,4 +107,6 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 
 ## 3.3 访问蓝鲸开始使用
 
-可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
+可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/) 。
+
+如需要部署监控告警及日志服务套餐，请参考 [监控告警及日志服务套餐部署](./value_added.md) 。
