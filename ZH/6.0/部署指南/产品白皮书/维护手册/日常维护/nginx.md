@@ -1,6 +1,6 @@
 # Nginx
 
-蓝鲸平台的 Web 接入层统一使用 [OpenResty](https://openresty.org/cn/) ，因为部分模块依赖 lua 模块。在在模块分布配置文件 install.config 中，为了兼容以前的配置，以 nginx 代替。
+蓝鲸平台的 Web 接入层统一使用 [OpenResty](https://openresty.org/cn/) ，因为部分模块依赖 lua 模块。在模块分布配置文件 install.config 中，为了兼容以前的配置，以 nginx 代替。
 
 ## 安装部署
 
