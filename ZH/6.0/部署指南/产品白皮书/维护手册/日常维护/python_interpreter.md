@@ -180,7 +180,7 @@ export BK_FILE_PATH=/data/bkce/open_paas/cert/saas_priv.txt
 python manage.py
 ```
 
-Python3项目的虚拟环境已经使用加密解释器后，如果需要安装或者更新 pip 包，需要注意：
+Python3 项目的虚拟环境已经使用加密解释器后，如果需要安装或者更新 pip 包，需要注意：
 
 1. 切换到虚拟环境
 

@@ -22,20 +22,26 @@ Python 软件基金会宣布，到 2020 年元旦，将不再为编程语言 Pyt
 
 1. 使用 patch 命令生成文件差异
 
+```python
         # 解析 test.py ，并将转换到py3后的文件差异输出到 test.patch
         2to3 test.py > test.patch
 
         # 应用 test.patch 中的改动到 test.py
         patch test.py test.patch
+```
 
 2. 直接把修改写回原文件
 
-        # 除非传入了 `-n` 参数，否则会为原始文件创建一个副本
-        2to3 -w test.py
+```python
+# 除非传入了 `-n` 参数，否则会为原始文件创建一个副本
+2to3 -w test.py
+```
 
 3. 将整个项目代码转换到 py3
 
-        2to3 -w -n myproject
+```python
+2to3 -w -n myproject
+```
 
 ### 2.2 修复器
 
@@ -54,9 +60,9 @@ Python 软件基金会宣布，到 2020 年元旦，将不再为编程语言 Pyt
 3. 使用 2to3 工具，将整个项目代码迁移到 py3
 
     > 建议 checkout 一个新分支进行迁移验证，验证通过后再合并回主分支
-
-        2to3 -w -n myproject
-
+    ```python
+    2to3 -w -n myproject
+    ```
 4. 对个别无法通过 2to3 自动转换的代码，根据控制台输出给的修改建议，进行手动调整
 
 5. 进行完整的单元测试和功能测试

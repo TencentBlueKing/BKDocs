@@ -6,18 +6,22 @@
 
 `pre-commit` 检查通过本地配置实现，因此每个开发者在开发之前都必须先配好本地的 Git Hooks。
 
-推荐使用 [pre-conmmit](https://pre-commit.com/) 框架对 Git Hooks 进行配置及管理。**pre-commit**是由 python 实现的，用于管理和维护多个 pre-commit hooks 的实用框架。它提供了插件式的管理机制，并拥有大量的官方与第三方插件（需要时可自行开发），能够快速实现常见的代码检查任务，如 `eslint` 检查（支持跨语言），`flake8` 检查，`isort` 代码美化等。
+推荐使用 [pre-commit](https://pre-commit.com/) 框架对 Git Hooks 进行配置及管理。**pre-commit**是由 python 实现的，用于管理和维护多个 pre-commit hooks 的实用框架。它提供了插件式的管理机制，并拥有大量的官方与第三方插件（需要时可自行开发），能够快速实现常见的代码检查任务，如 `eslint` 检查（支持跨语言），`flake8` 检查，`isort` 代码美化等。
 
 ### 配置方式 (新接入项目)
 
 1. 使用 pip 安装 pre-commit
 
-        # pip
-        pip install pre-commit
+```bash
+# pip
+pip install pre-commit
+```
 
 2. 在有.git 的项目配置 pre-commit
 
-        pre-commit install
+```bash
+pre-commit install
+```
 
 执行后，查看 `.git/hooks` 目录，若存在名为 `pre-commit` 新文件，则配置成功 。
 
