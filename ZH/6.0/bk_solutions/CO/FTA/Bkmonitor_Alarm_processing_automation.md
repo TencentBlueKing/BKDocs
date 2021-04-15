@@ -8,8 +8,8 @@
 
 ## 前提条件
 
-- [蓝鲸配置平台纳管了主机](../../CD/CMDB/CMDB_management_hosts.md)
-- [蓝鲸配置平台纳管了进程](../../CD/CMDB/CMDB_management_process.md)
+- [CMDB 主机资源纳管](../../CD/CMDB/CMDB_management_hosts.md)
+- [CMDB 主机进程管理](../../CD/CMDB/CMDB_management_process.md)
 - [作业平台新建一个作业](../../../作业平台/产品白皮书/Quick-Starts/1.Create-system-account.md)
 
 **术语解释**

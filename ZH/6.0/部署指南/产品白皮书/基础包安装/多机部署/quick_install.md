@@ -229,4 +229,4 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 
 可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
 
-进阶选项：[监控告警及日志服务套餐部署](./value_added.md)
+进阶选项：[监控日志套餐部署](./value_added.md)

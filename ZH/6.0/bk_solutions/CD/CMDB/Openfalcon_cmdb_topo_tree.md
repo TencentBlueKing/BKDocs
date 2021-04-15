@@ -10,7 +10,7 @@
 
 ## 前提条件
 
-- [主机纳管在蓝鲸配置平台中](./CMDB_management_hosts.md)
+- [CMDB 主机资源纳管](./CMDB_management_hosts.md)
 - 在蓝鲸开发者中心 [新建一个应用](../../../开发指南/SaaS开发/新手入门/Windows.md)，用于调用 CMDB 的 API
 - 熟悉 Python、JavaScript
 
@@ -24,7 +24,7 @@
 
 ### 配置平台中建立业务拓扑
 
-参照 [主机纳管在蓝鲸配置平台中](./CMDB_management_hosts.md)，根据应用的部署分层架构，建立业务拓扑如下：
+参照 [CMDB 主机资源纳管](./CMDB_management_hosts.md)，根据应用的部署分层架构，建立业务拓扑如下：
 
 ![-w2020](../assets/15642787521397.jpg)
 

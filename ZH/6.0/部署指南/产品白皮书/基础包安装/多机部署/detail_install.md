@@ -109,4 +109,4 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 
 可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/) 。
 
-如需要部署监控告警及日志服务套餐，请参考 [监控告警及日志服务套餐部署](./value_added.md) 。
+如需要部署监控日志套餐，请参考 [监控日志套餐部署](./value_added.md) 。

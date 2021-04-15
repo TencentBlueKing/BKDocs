@@ -8,7 +8,7 @@
 
 ## 前提条件
 
-- [蓝鲸配置平台纳管了主机](../../CD/CMDB/CMDB_management_hosts.md)
+- [CMDB 主机资源纳管](../../CD/CMDB/CMDB_management_hosts.md)
 - [作业平台新建一个作业](../../CD/Automation/Massive_host_control.md)
 
 **术语解释**

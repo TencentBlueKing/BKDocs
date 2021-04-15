@@ -6,7 +6,7 @@
 
 ## 软件包
 
-为了方便用户获取社区版软件包，提供了 2 种下载模式： [基础套餐下载](https://bk.tencent.com/download/)、 [监控告警及日志服务套餐下载](https://bk.tencent.com/download/)。
+为了方便用户获取社区版软件包，提供了 2 种下载模式： [基础套餐下载](https://bk.tencent.com/download/)、 [监控日志套餐下载](https://bk.tencent.com/download/)。
 
 社区版的 “基础套餐”=“部署脚本”+“产品软件”+“开源组件”。用户可以根据自己的需要进行下载。
 
