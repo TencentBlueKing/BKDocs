@@ -32,7 +32,7 @@
 - 制品库
 - 流水线
 
-包含产品：bkci（持续集成平台）
+包含产品：bkci（蓝盾）
 
 ## 四、容器管理套餐
 
@@ -67,6 +67,6 @@
 <tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/故障自愈/产品白皮书/Intro/README.md">故障自愈</a></td><td width="85%">实时发现告警，预诊断分析，自动恢复故障，并打通周边系统实现整个流程的闭环</td></tr>
 <tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/流程服务/产品白皮书/产品简介/README.md">流程服务</a></td><td width="85%">灵活自定义设计流程模块，覆盖 IT 服务中的不同管理流程或应用场景</td></tr>
 <tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/管控平台/产品白皮书/产品简介/README.md">管控平台</a></td><td width="85%">蓝鲸体系的底层管控系统，是蓝鲸所有其他服务的基础（GseAgent）</td></tr>
-<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/持续集成平台/产品白皮书/产品简介/README.md">bkci（持续集成平台）</a></td><td width="85%">免费并开源的 CI 服务，助力自动化构建-测试-发布工作流，持续、快速、高质量地交付产品</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/持续集成平台/产品白皮书/产品简介/README.md">bkci（蓝盾）</a></td><td width="85%">免费并开源的 CI 服务，助力自动化构建-测试-发布工作流，持续、快速、高质量地交付产品</td></tr>
 <tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/容器管理平台/产品白皮书/Introduction/README.md">BCS（容器管理平台）</a></td><td width="85%">高度可扩展、灵活易用的容器管理服务平台，支持社区原生 Kubernetes 编排引擎</td></tr>
 </tbody></table>
