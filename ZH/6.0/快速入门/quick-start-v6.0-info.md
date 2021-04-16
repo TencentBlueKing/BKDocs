@@ -49,6 +49,7 @@
 **需要说明的是，监控日志套餐、持续集成套餐、容器管理套餐均是基于蓝鲸标准运维 SaaS 部署，所以必须先部署完基础套餐，再按需选择相应的套餐；此外，因为 bkci 和 BCS 已开源，也可以脱离社区版单独部署开源版。**
 
 蓝盾（bk-ci）开源地址：[https://github.com/Tencent/bk-ci](https://github.com/Tencent/bk-ci)
+
 容器管理平台（BCS）开源地址：[https://github.com/Tencent/bk-bcs](https://github.com/Tencent/bk-bcs)、 [https://github.com/Tencent/bk-bcs-saas](https://github.com/Tencent/bk-bcs-saas)
 
 ## 快速预览蓝鲸社区版各产品功能
