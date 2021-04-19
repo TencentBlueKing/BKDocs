@@ -10,7 +10,7 @@
 
 该套餐部署是通过标准运维流程实现，在部署前需要做如下准备：
 
-1.准备机器
+### 1.准备机器
 
 > 为了保证环境的稳定，建议增值套餐独立于基础套餐的机器资源。
 
@@ -19,7 +19,7 @@
     - 生产环境：建议 8 核 16 G，硬盘 100G 以上（可根据实际情况适当调整配置），机器数量：3 台
     - 功能体验：建议 8 核 16 G，机器数量：1 台
 
-2.实现免密
+### 2.实现免密
 
 开始部署前，请确保新增主机跟中控机已实现免密。
 
@@ -27,13 +27,26 @@
 ssh-copy-id <ip>
 ```
 
-3.请先前往节点管理，对新增主机进行 agent 安装。
+### 3.请先前往节点管理，对新增主机进行 agent 安装
 
-4.下载套餐安装包
+- 前往节点管理进行安装，根据图中步骤填写相关信息。
+  
+![valueinstall_agent](../../assets/valueinstall_agent.png)
+
+- 安装成功示意图，如果失败请解决报错后再进行重试或者重装。
+
+![valueinstall_agent](../../assets/install_agentsucc.png)
+
+### 4.下载套餐安装包
 
 请前往 [蓝鲸官网下载页](https://bk.tencent.com/download/) 下载监控日志套餐软件包并上传至中控机解压。
 
-5.将需要部署产品的标准运维流程模版导入至标准运维
+```bash
+cd /data
+tar xf bkce_co_package-6.0.3.tgz
+```
+
+### 5.将需要部署产品的标准运维流程模版导入至标准运维
 
    标准运维流程模版[下载](http://xxxxx)
 
@@ -54,7 +67,7 @@ ssh-copy-id <ip>
 填写信息包括：
 
 - `ctrl_ip`：基础环境的中控机 IP
-- `whole_pkg_path`：部署监控平台安装包的绝对路径
+- `whole_pkg_path`：部署监控平台安装包的绝对路径 `/data/bkmonitorv3_package-3.3.1731.tgz`
 - `deply_iplist`：新增的机器 IP（如果基础环境的资源有富余，可以复用）
 
 ![bkmonitorv3_template](../../assets/monitorv3_template.png)
@@ -74,7 +87,7 @@ ssh-copy-id <ip>
 填写信息包括：
 
 - `ctrl_ip`：基础环境的中控机 IP
-- `whole_pkg_path`：部署日志平台安装包的绝对路径
+- `whole_pkg_path`：部署日志平台安装包的绝对路径 `/data/bklog_package-4.2.580.tgz`
 - `deply_iplist`：新增的机器 IP（如果基础环境的资源有富余，可以复用）
 
 ![bklog_template](../../assets/bklog_template.png)
@@ -94,7 +107,7 @@ ssh-copy-id <ip>
 该部署流程主要相关操作：
 
 - `ctrl_ip`：基础环境的中控机 IP
-- `whole_pkg_path`：部署故障自愈安装包的绝对路径
+- `whole_pkg_path`：部署故障自愈安装包的绝对路径 `/data/fta_package-5.2.14-ce.tgz`
 - `deply_iplist`：新增的机器 IP（如果基础环境的资源有富余，可以复用）
 
 ![fta_template](../../assets/fta_template.png)
@@ -106,3 +119,5 @@ ssh-copy-id <ip>
 - 初始化新增节点机器
 - 授权故障自愈所需的 MySQL 访问权限
 - 安装故障自愈相关依赖、故障自愈后台、故障自愈 SaaS
+
+部署完成后，可参考蓝鲸 [快速入门：监控日志套餐](../../../../快速入门/quick-start-v6.0-monitor.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
