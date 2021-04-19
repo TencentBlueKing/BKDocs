@@ -149,6 +149,16 @@ hostname
 
 ## 检查 DNS 配置文件
 
+检查 DNS 配置文件 /etc/resolv.conf 是否被加锁，如有请临时解锁。
+
+```bash
+# 检查文件属性
+lsattr /etc/resolv.conf
+
+# 如有加锁，请临时解锁处理
+chattr -i /etc/resolv.conf
+```
+
 DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重启主机后，某些网络配置会导致该文件被还原为初始状态。
 
 安装前先确认 **“修改 /etc/resolv.conf 并重启主机，是否被还原”** 。如果被还原，可以参考以下红帽官方的文档解决： https://access.redhat.com/solutions/7412
@@ -215,5 +225,30 @@ cp -a /data/install/install.config.3ip.sample /data/install/install.config
     BK_PAAS_ADMIN_PASSWORD=BlueKing
     EOF
     ```
+
+## 非标准私有地址处理方法
+
+蓝鲸社区版部署脚本中(install 目录)有文件获取 IP 的函数 `get_lan_ip`，非标准地址，需要在安装部署前完成修改。
+
+修改方法：
+
+假设服务器的的 IP 是：138.x.x.x，它不在标准的私有地址范围，那么需要修改 get_lan_ip () 函数为：
+
+```bash
+vim /data/install/functions
+
+get_lan_ip  () {
+...省略
+           if ($3 ~ /^10\./) {
+               print $3
+           }
+           if ($3 ~ /^138\./) {
+               print $3
+           }
+      }
+
+return $?
+}
+```
 
 完成环境准备后，可前往 [基础套餐详细部署](../多机部署/quick_install.md) 开始部署了。
