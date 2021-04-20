@@ -89,7 +89,7 @@ PaaS Agent，根据正式环境和测试环境区分，分别称为 appo 和 app
 说明：
 
 1. 同步 paas_agent/ 和 image/ 目录到 appo服务器
-2. 安装 docker （./bin/install_docker.sh）
+2. 安装 docker 且导入镜像 （./bin/install_docker_for_paasagent.sh）
 3. 安装 paasagent （./bin/install_paasagent.sh -e ./bin/04-final/paasagent.env -b $LAN_IP -m prod -s /data/src -p /data/bkce）
 4. 安装 openresty 
 5. 安装 consul-template 
