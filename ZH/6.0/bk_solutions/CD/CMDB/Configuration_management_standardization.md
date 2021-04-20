@@ -51,8 +51,8 @@
 
 如何实施 CMDB，请参考场景案例：
 
-- [业务上线时 CMDB 如何管理主机](./CMDB_management_hosts.md)
-- [CMDB 如何管理进程](./CMDB_management_process.md)
+- [CMDB 主机资源纳管](./CMDB_management_hosts.md)
+- [CMDB 主机进程管理](./CMDB_management_process.md)
 - [CMDB 如何管理 MySQL 实例](./CMDB_management_database_middleware.md)
 - [自动发现 MySQL 实例](./CMDB_CI_auto_discovery_MySQL.md)
 - [企业 CMDB 主机实例同步至蓝鲸 CMDB](./CMDB_integration.md)

@@ -119,7 +119,7 @@
 ## 部署详细步骤
 
 1. 下载标准运维模版文件 bk_sops_common_ce_xxxx_xx_xx_xx.dat
-2. 打开标准运维--->公共流程--->导入--->点击上传--->选择标准运维模版文件 bk_sops_common_ce_xxxx_xx_xx_xx.dat--->流程 ID 不变提交（因为 bcs-ops 模块需要关联标准运维模版流程 ID，如果流程 ID 有冲突请参考[BCS维护手册-FAQ](../../增强包维护/BCS/FAQ.md)的第 2 小点解决）
+2. 打开标准运维--->公共流程--->导入--->点击上传--->选择标准运维模版文件 bk_sops_common_ce_xxxx_xx_xx_xx.dat--->流程 ID 不变提交（因为 bcs-ops 模块需要关联标准运维模版流程 ID，如果流程 ID 有冲突请参考[BCS 维护手册-FAQ](../../增强包维护/BCS/FAQ.md)的第 2 小点解决）
    ![avatar](../../assets/import_start.png)
    ![avatar](../../assets/upload_dat_file.png)
    ![avatar](../../assets/flow_id_commit.png)

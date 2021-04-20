@@ -41,7 +41,7 @@ ssh $BK_NODEMAN_IP
 echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
 ```
 
-- 进入节点管理后台，修改 gse的全局配置
+- 进入节点管理后台，修改 gse 的全局配置
 
   - 登陆节点管理后台 ：<http://<paas.bktencent.com>/o/bk_nodeman/admin_nodeman/>，请使用实际的域名替换 `<>` 内的域名。
   

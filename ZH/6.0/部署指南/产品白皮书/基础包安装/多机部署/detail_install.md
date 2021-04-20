@@ -61,10 +61,13 @@
 - 如需使用跨云管控，请提前将节点管理的外网 IP 写入至 `/etc/blueking/env/local.env` 文件。否则请忽略该步骤
 
 ```bash
-source $CTRL_DIR/utils.fc
-ssh $BK_NODEMAN_IP
+# 加载蓝鲸相关维护命令
+source ~/.bashrc
+source /data/install/utils.fc
 
-echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
+ssh $BK_NODEMAN_IP "cat >> /etc/blueking/env/local.env <<_EOF
+WAN_IP=$(curl -s icanhazip.com)
+_EOF"
 ```
 
 - 开始部署
@@ -92,12 +95,6 @@ echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
 ./bkcli initdata topo
 ```
 
-## 加载蓝鲸相关维护命令
-
-```bash
-source ~/.bashrc
-```
-
 ## 检测相关服务状态
 
 ```bash
@@ -109,4 +106,4 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 
 可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/) 。
 
-如需要部署监控告警及日志服务套餐，请参考 [监控告警及日志服务套餐部署](./value_added.md) 。
+如需要部署监控日志套餐，请参考 [监控日志套餐部署](./value_added.md) 。

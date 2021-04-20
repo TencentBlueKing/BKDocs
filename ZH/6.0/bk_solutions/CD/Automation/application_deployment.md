@@ -7,7 +7,7 @@
 
 ## 前提条件
 
-- [主机在蓝鲸 CMDB 中管理](../CMDB/CMDB_management_hosts.md)
+- [CMDB 主机资源纳管](../CMDB/CMDB_management_hosts.md)
 
 ## 术语解释
 

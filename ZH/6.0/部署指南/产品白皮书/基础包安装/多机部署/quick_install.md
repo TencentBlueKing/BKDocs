@@ -64,9 +64,9 @@
 ```bash
 # 请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
 cat << EOF >/data/install/install.config
-10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul
-10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,zk(config)
-10.0.0.3 paas,cmdb,job,mysql,appt,consul,nodeman(nodeman)
+10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,mysql
+10.0.0.2 nginx,consul,mongodb,rabbitmq,appo
+10.0.0.3 paas,cmdb,job,zk(config),appt,consul,nodeman(nodeman)
 EOF
 ```
 
@@ -79,7 +79,7 @@ bash /data/install/configure_ssh_without_pass
 
 ## 二、开始部署
 
-### 2.1 初始化并检查环境
+### 初始化并检查环境
 
 ```bash
 # 初始化环境
@@ -89,7 +89,7 @@ bash /data/install/configure_ssh_without_pass
 ./health_check/check_bk_controller.sh
 ```
 
-### 2.2 部署 PaaS 平台
+### 部署 PaaS 平台
 
 ```bash
 # 安装 PaaS 平台及其依赖服务
@@ -98,14 +98,14 @@ bash /data/install/configure_ssh_without_pass
 
 PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访问，请参考 [访问蓝鲸](./quick_install.md#三、访问蓝鲸) 。
 
-### 2.3 部署 app_mgr
+### 部署 app_mgr
 
 ```bash
 # 部署 SaaS 运行环境，正式环境及测试环境
 ./bk_install app_mgr
 ```
 
-### 2.4 部署权限中心与用户管理
+### 部署权限中心与用户管理
 
 ```bash
 # 权限中心
@@ -114,29 +114,32 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访
 ./bk_install saas-o bk_user_manage
 ```
 
-### 2.5 部署 CMDB
+### 部署 CMDB
 
 ```bash
 # 安装配置平台及其依赖服务
 ./bk_install cmdb
 ```
 
-### 2.6 部署 JOB
+### 部署 JOB
 
 ```bash
 # 安装作业平台后台模块及其依赖组件
 ./bk_install job
 ```
 
-### 2.7 部署 bknodeman
+### 部署 bknodeman
 
 - 如需使用跨云管控，请提前将节点管理的外网 IP 写入至节点管理后台服务所在机器的`/etc/blueking/env/local.env` 文件。否则请忽略该步骤
 
 ```bash
-source $CTRL_DIR/utils.fc
-ssh $BK_NODEMAN_IP
+# 加载蓝鲸相关维护命令
+source ~/.bashrc
+source /data/install/utils.fc
 
-echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
+ssh $BK_NODEMAN_IP "cat >> /etc/blueking/env/local.env <<_EOF
+WAN_IP=$(curl -s icanhazip.com)
+_EOF"
 ```
 
 - 开始部署
@@ -146,7 +149,7 @@ echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
 ./bk_install bknodeman
 ```
 
-### 2.8 部署标准运维及流程管理
+### 部署标准运维及流程管理
 
 依次执行下列命令部署相关 SaaS。
 
@@ -158,19 +161,13 @@ echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
 ./bk_install saas-o bk_itsm
 ```
 
-### 2.9 初始化蓝鲸业务拓扑
+### 初始化蓝鲸业务拓扑
 
 ```bash
 ./bkcli initdata topo
 ```
 
-### 2.10 加载蓝鲸相关维护命令
-
-```bash
-source ~/.bashrc
-```
-
-### 2.11 检测相关服务状态
+### 检测相关服务状态
 
 ```bash
 cd /data/install/
@@ -229,4 +226,4 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 
 可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
 
-进阶选项：[监控告警及日志服务套餐部署](./value_added.md)
+进阶选项：[监控日志套餐部署](./value_added.md)

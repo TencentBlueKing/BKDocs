@@ -2,7 +2,7 @@
 
 蓝鲸后台扩容分为，在已有机器上扩容模块和新增机器扩容模块，区别在是否涉及新机器的初始化。
 
-本文假设待扩容的新机器IP为 10.0.0.4 ，且每次只扩容一台。如果扩容多台，请根据实际情况批量执行，或者多次重复执行即可。
+本文假设待扩容的新机器 IP 为 10.0.0.4 ，且每次只扩容一台。如果扩容多台，请根据实际情况批量执行，或者多次重复执行即可。
 
 ## 新机器初始化
 
@@ -35,7 +35,7 @@
 
 ### APPO
 
-APPO的扩容步骤分为：
+APPO 的扩容步骤分为：
 
 1. 同步必要文件
 
@@ -45,7 +45,7 @@ APPO的扩容步骤分为：
     ./bkcli sync appo
     ```
 
-2. 安装并配置 appo 上的docker
+2. 安装并配置 appo 上的 docker
 
     ```bash
     pcmd -H 10.0.0.4 '$CTRL_DIR/bin/install_docker_for_paasagent.sh'
@@ -69,7 +69,7 @@ APPO的扩容步骤分为：
     pcmd -H 10.0.0.4 '${CTRL_DIR}/bin/install_consul_template.sh -m paasagent"
     ```
 
-6. 有NFS共享目录时，需要挂载NFS：
+6. 有 NFS 共享目录时，需要挂载 NFS：
 
     ```bash
     ssh 10.0.0.4

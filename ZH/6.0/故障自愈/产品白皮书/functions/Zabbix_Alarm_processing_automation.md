@@ -7,7 +7,7 @@
 
 ## 前提条件
 
-- [蓝鲸配置平台纳管了 Zabbix 监控的对象](../../../配置平台/产品白皮书/场景案例/CMDB_management_hosts.md)
+- [CMDB 主机资源纳管](../../../配置平台/产品白皮书/场景案例/CMDB_management_hosts.md)
 
 - 拥有 Zabbix 管理员账号，用于注册 Zabbix Action
 

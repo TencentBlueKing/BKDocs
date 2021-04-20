@@ -156,7 +156,7 @@ POST
 
 ### 请求参数示例
 
-```
+```bash
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
