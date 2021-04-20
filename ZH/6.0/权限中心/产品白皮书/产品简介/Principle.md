@@ -40,6 +40,6 @@
 
 ## 6. 接入系统通过SDK进行鉴权
 
-新版权限中心的鉴权逻辑是由各接入系统调用SDK来完成鉴权，具体可以参考[鉴权SDK](../../../iam_dev_docs/Reference/API/04-Auth/01-SDK.md)，目前[Python、Go语言版本SDK](https://pypi.org/project/bk-iam/1.1.9/)已开源，如没有对应语言的SDK（`推荐`），需要接入系统自行实现或者使用[直接鉴权](../../../iam_dev_docs/Reference/API/04-Auth/02-DirectAPI.md)。
+新版权限中心的鉴权逻辑是由各接入系统调用SDK来完成鉴权，具体可以参考[鉴权SDK](../../../iam_dev_docs/Reference/API/04-Auth/01-SDK.md)，目前[Python语言版本SDK](https://pypi.org/project/bk-iam/1.1.9/) [Go语言版本SDK](https://github.com/TencentBlueKing/iam-go-sdk)已开源，如没有对应语言的SDK（`推荐`），需要接入系统自行实现或者使用[直接鉴权](../../../iam_dev_docs/Reference/API/04-Auth/02-DirectAPI.md)。
 
 更详细的指引请点击阅读 [系统接入开发指引](../../../iam_dev_docs/QuickStart/01-Begin.md)。
