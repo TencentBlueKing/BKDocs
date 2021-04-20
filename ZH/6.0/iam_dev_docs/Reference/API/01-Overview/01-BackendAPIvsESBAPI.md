@@ -3,14 +3,14 @@
 由于高性能的 APIGateway2.0 尚未发布企业版, 所以为了性能考虑, 模型/策略/鉴权等接口目前没有接入 ESB, 直接后台 API 调用; 而 SaaS 上无权限申请/授权接口等, 接入了 ESB
 
 目前权限中心提供的接口分为两类:
-1. 后台 API, URL 前缀: `/api/v1/[model | policy | systems]`
-    1.1 model [模型注册及更新 API](../02-Model/00-API.md)
-    1.2 policy [策略查询 API](../04-Auth/01-SDK.md) / [直接鉴权 API](../04-Auth/02-DirectAPI.md)
-    1.3 systems 系统相关  [查询策略 API](../08-Query/01-PolicyGet.md)
-2. 组件 API, URL 前缀: `/api/c/compapi/v2/iam/[application | authorization]`
-    1.1  application [5. 生成无权限申请 URL](../05-Application/01-GenerateURL.md)
-    1.2  authorization [新建关联属性授权接口](../07-ResourceCreatorAction/01-Attribute.md)
-    1.3 authorization [资源拓扑授权/回收](../06-GrantRevoke/01-Topology.md)
+* 后台 API, URL 前缀: `/api/v1/[model | policy | systems]`
+    * model [模型注册及更新 API](../02-Model/00-API.md)
+    * policy [策略查询 API](../04-Auth/01-SDK.md) / [直接鉴权 API](../04-Auth/02-DirectAPI.md)
+    * systems 系统相关  [查询策略 API](../08-Query/01-PolicyGet.md)
+* 组件 API, URL 前缀: `/api/c/compapi/v2/iam/[application | authorization]`
+    * application [生成无权限申请 URL](../05-Application/01-GenerateURL.md)
+    * authorization [新建关联属性授权接口](../07-ResourceCreatorAction/01-Attribute.md)
+    * authorization [资源拓扑授权/回收](../06-GrantRevoke/01-Topology.md)
 
 
 未来, APIGateway 2.0 企业版发布后, 会全部统一接入 APIGateway, 对于接入系统来说, 就是一套系统, 一种调用方式.
