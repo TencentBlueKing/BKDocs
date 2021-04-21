@@ -163,7 +163,7 @@ echo "disk_usage{disk_name=\"${disk_name}\"} ${diskUsage}"
 
 ### 通知设置
 
-![](media/15833968260066.jpg)
+![-w2021](media/15833968260066.jpg)
 
 ### 事件中心
 

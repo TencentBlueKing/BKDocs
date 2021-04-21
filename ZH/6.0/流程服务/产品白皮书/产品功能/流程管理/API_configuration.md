@@ -10,7 +10,7 @@
 
     新增 API 之前，需要先接入系统。接入系统后，可以添加 API 至该系统下。
 
-![](../../media/0ed24fa03b474f5ff8e2097d603d1f87.png)
+![-w2021](../../media/0ed24fa03b474f5ff8e2097d603d1f87.png)
 
 <center>API配置页面</center>
 
@@ -20,11 +20,11 @@
 
     在设计流程时，可以通过拖拽 API 节点来直接选择合适的 API。选定之后，通过相应的字段参数关联设置，在流程应用后，单据流转到该节点时，自动调用相应 API 进行处理及流转。
 
-![](../../media/3e08ccb50a7441c31ec0df21ddf126c6.png)
+![-w2021](../../media/3e08ccb50a7441c31ec0df21ddf126c6.png)
 
 <center>添加API节点</center>
 
-![](../../media/4f931854826571c93ce5b2191aedfc9d.png)
+![-w2021](../../media/4f931854826571c93ce5b2191aedfc9d.png)
 
 <center>API节点配置页面</center>
 
@@ -32,6 +32,6 @@
 
     在对流程节点的字段进行管理时，如果字段值需要从第三方系统调用或引用，则设置该字段值时，可以将其数据来源设置为从 API 获取。
 
-![](../../media/0a64e0058fb9d9bb4d6d8379f8d05af0.png)
+![-w2021](../../media/0a64e0058fb9d9bb4d6d8379f8d05af0.png)
 
 <center>API字段配置列表</center>

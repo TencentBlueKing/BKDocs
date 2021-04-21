@@ -1,6 +1,6 @@
 ## 第 6 步：启用服务
 
-![](../media/step005.png)
+![-w2021](../media/step005.png)
 <center>图5.服务启用</center>
 
 **启用服务**：服务启用生效的开关。
@@ -11,5 +11,5 @@
 
 你的用户在提单页面就可以看到它了！
 
-![](../media/step006.png)
+![-w2021](../media/step006.png)
 <center>图6.服务入口</center>

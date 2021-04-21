@@ -8,11 +8,11 @@ SLA 管理，制定不同的服务协议内容。通过服务协议的配置来�
 
 系统初始化会内置一套优先级矩阵，管理员可根据服务需要进行更新。
 
-![](../../media/b90491b1adcd29d09c191a3af2efbbc6.png)
+![-w2021](../../media/b90491b1adcd29d09c191a3af2efbbc6.png)
 
 <center>优先级矩阵</center>
 
-![](../../media/fe3995196d21d9bcf537ac352302ac45.png)
+![-w2021](../../media/fe3995196d21d9bcf537ac352302ac45.png)
 
 <center>修改优先级矩阵</center>
 

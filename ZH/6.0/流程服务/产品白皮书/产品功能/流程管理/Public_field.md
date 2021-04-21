@@ -4,10 +4,10 @@
 
 公共字段将被“基础模型”应用生成不同的模型，供不同类型的流程设计使用。
 
-![](../../media/f3b6ff2462dcac721b19079f12f691ad.png)
+![-w2021](../../media/f3b6ff2462dcac721b19079f12f691ad.png)
 
 <center>公共字段列表</center>
 
-![](../../media/66e751f20f949167604a996c83668ae9.png)
+![-w2021](../../media/66e751f20f949167604a996c83668ae9.png)
 
 <center>公共字段管理</center>

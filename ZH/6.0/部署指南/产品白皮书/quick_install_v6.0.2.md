@@ -229,11 +229,11 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 
 > 默认蓝鲸工作台入口：[http://paas.bktencent.com](http://paas.bktencent.com)
 
-![](../../assets/login.png)
+![-w2021](../../assets/login.png)
 
 登陆成功后即可看到 PaaS 平台应用列表页面。
 
-![](../../assets/paas_home.png)
+![-w2021](../../assets/paas_home.png)
 
 ### 3.4 快速上手使用
 

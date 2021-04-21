@@ -4,11 +4,11 @@
 
 我们推荐将很多常用字段通过基础模型管理起来，降低日常更新的成本。
 
-![](../../media/d3ed947e1c52e99c7d3d11b1f3f4007e.png)
+![-w2021](../../media/d3ed947e1c52e99c7d3d11b1f3f4007e.png)
 
 <center>基础模型列表</center>
 
-![](../../media/3f5d635c444a8f113add6b50142d5217.png)
+![-w2021](../../media/3f5d635c444a8f113add6b50142d5217.png)
 
 <center>新增/编辑基础模型</center>
 

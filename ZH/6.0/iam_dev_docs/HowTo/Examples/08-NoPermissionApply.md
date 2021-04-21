@@ -15,4 +15,4 @@
 - A 系统将返回数据 [生成无权限申请 URL](../../Reference/API/05-Application/01-GenerateURL.md) 生成权限申请 URL
 - 用户点击按钮, 跳往权限中心, 申请`B`系统的权限
 
-![](../../assets/HowTo/Examples/08_01.jpg)
+![-w2021](../../assets/HowTo/Examples/08_01.jpg)

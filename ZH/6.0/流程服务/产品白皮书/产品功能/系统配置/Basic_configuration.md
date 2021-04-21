@@ -2,7 +2,7 @@
 
 -   附件存储
 
-    ![](../../media/1dbd2fe3936d52718a6eaa5dee490b8c.png)
+    ![-w2021](../../media/1dbd2fe3936d52718a6eaa5dee490b8c.png)
 
 <center>附件存储配置</center>
 
@@ -20,7 +20,7 @@
 
     适用场景：如需即时更新来自 CMDB 的最新数据，可以通过手动清除缓存获取最新数据。
 
-    ![](../../media/4bb43ee81b90a4eb9014d2a184b2199f.png)
+    ![-w2021](../../media/4bb43ee81b90a4eb9014d2a184b2199f.png)
 
 <center>清除缓存</center>
 
@@ -28,7 +28,7 @@
 
     对不同的应用模块，进行启停设置。关闭后，该模块对应的所有的功能将被隐藏。
 
-    ![](../../media/99caa397849e536e33df945c7b33310c.png)
+    ![-w2021](../../media/99caa397849e536e33df945c7b33310c.png)
 
 <center>功能开关</center>
 

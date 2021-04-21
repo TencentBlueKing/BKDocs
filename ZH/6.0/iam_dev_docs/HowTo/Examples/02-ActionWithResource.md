@@ -85,7 +85,7 @@
 
 - 注册之后的权限配置页面
 
-![](../../assets/HowTo/Examples/02_01.jpg)
+![-w2021](../../assets/HowTo/Examples/02_01.jpg)
 
 
 ## 4. 鉴权
@@ -177,7 +177,7 @@ curl -XPOST 'http://{IAM_HOST}/api/v1/policy/auth' \
 具体的 [无权限交互方案](../NoPermissionApply.md)
 
 
-![](../../assets/HowTo/Examples/02_02.jpg)
+![-w2021](../../assets/HowTo/Examples/02_02.jpg)
 
 ```python
 from iam.apply.models import ActionWithoutResources, ActionWithResources, Application, RelatedResourceType
