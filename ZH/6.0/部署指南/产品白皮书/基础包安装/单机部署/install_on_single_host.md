@@ -11,7 +11,7 @@
 - 从 [官网下载](http://bk.tencent.com/download/) 完整包，并解压到 /data/ 下。实际版本请以蓝鲸官网下载为准。
 
     ```bash
-    tar xf bkce_basic_suite-6.0.3-preview.tgz  -C /data
+    tar xf bkce_basic_suite-6.0.3.tgz -C /data
     ```
 
   - 获取机器的 MAC 地址后，下载 [证书文件](https://bk.tencent.com/download_ssl/)，解压到 src/cert 目录下
