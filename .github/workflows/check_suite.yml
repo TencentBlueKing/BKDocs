@@ -37,6 +37,7 @@ jobs:
           echo "${DIFF[@]}" | sort -u
           echo "::set-output name=diff::$( echo "${DIFF[@]}" | sort -u )"
           echo "::endgroup::"
+
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
@@ -49,4 +50,17 @@ jobs:
           [[ $IS_TRACE == 'true' ]] && set -x
           npm i -g lint-md-cli
           lint-md ${{ steps.getfile.outputs.diff }}
+          echo "::endgroup::"
+          
+      - name: Markdown Link Check
+        shell: bash
+        run: |
+          echo "::group::Markdown Link Check by markdown-link-check(https://github.com/tcort/markdown-link-check)"
+          [[ $IS_TRACE == 'true' ]] && set -x
+          npm i -g markdown-link-check
+          ret=0
+          for f in ${{ steps.getfile.outputs.diff }}; do
+              markdown-link-check $f || let ret+=1
+          done
+          [ "$ret" != 0 ] && exit 1
           echo "::endgroup::"
