@@ -175,8 +175,6 @@
    </tr>
 </table>
 
-其中，CI 属性自动录入参考[自动发现 MySQL 实例](./CMDB_CI_auto_discovery_MySQL.md)。
-
 通过`实例名`可以唯一标识一个 MySQL 实例，具体是`IP`和`端口`的组合。
 
 ### 创建 MySQL CI 对象

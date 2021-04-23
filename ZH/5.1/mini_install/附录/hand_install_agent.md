@@ -18,7 +18,7 @@ cd bkce5.1_mini_gse_agent
 - 安装过程脚本会先尝试 systemd 方式安装，失败后会用使用 crontab 方式安装启动
 
 - 安装成功结果如下，安装失败后请根据错误提示手工解决后再次执行安装脚本安装：
-![](./../images/hand_install_agent.png)
+![-w2021](./../images/hand_install_agent.png)
 
 
 ## 管理 GSE Agent

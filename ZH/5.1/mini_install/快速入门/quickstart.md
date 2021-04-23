@@ -78,6 +78,6 @@
 ![执行任务](./../images/view_para.png)
 
 - 任务执行完成后，点击步骤可以查看执行的详细信息。点击对应链接可以跳转至作业平台查看作业执行情况及信息。
-![](./../images/sops_task_situation.png)
-![](./../images/sops_task_situation2.png)
+![-w2021](./../images/sops_task_situation.png)
+![-w2021](./../images/sops_task_situation2.png)
 

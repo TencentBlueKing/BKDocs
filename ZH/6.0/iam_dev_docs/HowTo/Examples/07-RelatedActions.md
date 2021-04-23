@@ -35,11 +35,11 @@
 
 申请某个应用的开发权限
 
-![](../../assets/HowTo/Examples/07_01.jpg)
+![-w2021](../../assets/HowTo/Examples/07_01.jpg)
 
 
 点击`提交`后, 会生成权限申请单; 
 
 可以看到, 申请单中, 多了`访问开发者中心`
 
-![](../../assets/HowTo/Examples/07_02.jpg)
+![-w2021](../../assets/HowTo/Examples/07_02.jpg)

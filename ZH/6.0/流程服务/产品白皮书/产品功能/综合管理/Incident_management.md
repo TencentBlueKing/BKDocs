@@ -2,17 +2,17 @@
 
 ### 申请入口
 
-![](../../media/ef538a6bfd22cf4ca97e1a60799b164b.png)
+![-w2021](../../media/ef538a6bfd22cf4ca97e1a60799b164b.png)
 
 <center>事件提报入口</center>
 
 ### 提报事件
 
-![](../../media/550d161ccf64050f024bd2dd31a72097.png)
+![-w2021](../../media/550d161ccf64050f024bd2dd31a72097.png)
 
 <center>提报事件页面1</center>
 
-![](../../media/d28e8be3f94195c18609bd1ddec4af09.png)
+![-w2021](../../media/d28e8be3f94195c18609bd1ddec4af09.png)
 
 <center>提报事件页面2</center>
 

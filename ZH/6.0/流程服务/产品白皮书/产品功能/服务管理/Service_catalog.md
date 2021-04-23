@@ -2,7 +2,7 @@
 
 > 服务目录为整体服务内容的管理视图及入口。
 
-![](../../media/5e3fc9b25445c4c0069496ce16de1307.png)
+![-w2021](../../media/5e3fc9b25445c4c0069496ce16de1307.png)
 
 <center>服务目录列表</center>
 
@@ -12,23 +12,23 @@
 >
 > 2.服务目录的排序：直接选中进行拖拽即可。
 
-![](../../media/c8ac7f19ab47c3cfbdcb900a3da8b9ac.png)
+![-w2021](../../media/c8ac7f19ab47c3cfbdcb900a3da8b9ac.png)
 
 <center>新增服务目录</center>
 
 服务目录下可以管理多个服务。通过新增/添加或移除来进行服务目录下的服务管理。
 
-![](../../media/73c160d74d093cfe8f9c4c640a37ebd2.png)
+![-w2021](../../media/73c160d74d093cfe8f9c4c640a37ebd2.png)
 
 <center>服务目录下的服务管理</center>
 
 服务目录创建完成后，通过“添加”或者“移除”来进行服务目录下的服务管理。
 
-![](../../media/16d2dac38327695ced8c03bc90cade06.png)
+![-w2021](../../media/16d2dac38327695ced8c03bc90cade06.png)
 
 <center>服务添加至服务目录</center>
 
-![](../../media/dabba699916e102be638f915607ddc83.png)
+![-w2021](../../media/dabba699916e102be638f915607ddc83.png)
 
 <center>将服务从服务目录移除</center>
 

@@ -16,15 +16,15 @@
 
 （<font color=red>说明：由于标准运维流程模板和业务属性强关联，所以如果希望在流程实例中创建不同业务的标准运维任务，在流程设计时，必须将流程和业务强关联。否则，将只能选择标准运维中的公共流程模板。</font>）
 
-![](../../media/612edbed8fb0115f01bc25fb68434235.png)
+![-w2021](../../media/612edbed8fb0115f01bc25fb68434235.png)
 
 <center>任务模板</center>
 
-![](../../media/abb0c48dc9ad7c3071b542dd7553bf8c.png)
+![-w2021](../../media/abb0c48dc9ad7c3071b542dd7553bf8c.png)
 
 <center>普通任务模板配置</center>
 
-![](../../media/9650d7bdbedb33e96f36959bf5770f3d.png)
+![-w2021](../../media/9650d7bdbedb33e96f36959bf5770f3d.png)
 
 <center>标准运维任务模板配置</center>
 
@@ -36,7 +36,7 @@
 
 添加任务模板。一个流程中可以添加多个不同的任务模板。添加多个任务模板，表示，在流程单据实例中，可以选择不同的任务模板来进行任务的创建。
 
-![](../../media/a2b665bc93e1e2f680fbaa4655376701.png)
+![-w2021](../../media/a2b665bc93e1e2f680fbaa4655376701.png)
 
 <center>任务的应用配置入口</center>
 
@@ -48,7 +48,7 @@
 
 ### 单据中的任务创建及处理
 
-![](../../media/b178f3194effb1ad01ce3dc14b86c2e8.png)
+![-w2021](../../media/b178f3194effb1ad01ce3dc14b86c2e8.png)
 
 <center>任务创建1</center>
 
@@ -58,11 +58,11 @@
 
 -   从任务库创建：是指从之前的任务库进行选择修改后创建。这里需要用户将之前的任务有存为任务库。（比较适用相对比较固化的任务项）
 
-![](../../media/13e693a8b12ae87f5feaf4a725c7a2b0.png)
+![-w2021](../../media/13e693a8b12ae87f5feaf4a725c7a2b0.png)
 
 <center>任务创建2</center>
 
-![](../../media/f52554ab58807dfe7ce5e4ba4f83f87c.png)
+![-w2021](../../media/f52554ab58807dfe7ce5e4ba4f83f87c.png)
 
 <center>任务列表</center>
 
@@ -70,7 +70,7 @@
 
 <font color=red>任务只在创建阶段可以进行创建，编辑，和删除。创建阶段完成之后，任务将无法修改。</font>
 
-![](../../media/e88bee9cc587ec904494e6327adfea6b.png)
+![-w2021](../../media/e88bee9cc587ec904494e6327adfea6b.png)
 
 <center>任务的操作入口</center>
 

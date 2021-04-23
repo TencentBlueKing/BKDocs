@@ -24,10 +24,10 @@
 
 2.  服务项配置完成后，根据其所属服务类型，更新到前台各服务入口的提单选项中。
 
-![](../../media/d3d2477b84504e9d5001d58b259a6eb5.png)
+![-w2021](../../media/d3d2477b84504e9d5001d58b259a6eb5.png)
 
 <center>变更申请提交入口</center>
 
-![](../../media/bba0fdc0179e76da8e545e184a890558.png)
+![-w2021](../../media/bba0fdc0179e76da8e545e184a890558.png)
 
 <center>提单入口的服务选择</center>
