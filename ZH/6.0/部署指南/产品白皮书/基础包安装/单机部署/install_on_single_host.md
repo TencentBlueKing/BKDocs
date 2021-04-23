@@ -93,4 +93,4 @@ bash bin/single_host_low_memory_config.sh tweak all
 
 ## 使用蓝鲸
 
-可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
+可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
