@@ -34,7 +34,7 @@ jobs:
             echo "no BASE REF"
             exit 1
           fi
-          echo "${DIFF[@]}" | sort -u
+          echo "${DIFF[@]}" | xargs -n1 | grep 'md$' | sort -u
           echo "::set-output name=diff::$( echo "${DIFF[@]}" | sort -u )"
           echo "::endgroup::"
 
