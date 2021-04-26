@@ -16,6 +16,8 @@ public 目录一般不能手动删除，一般比较大的组件可能有
 
 - Elasticsearch 数据
 
+- MongoDB 数据
+
 ## MySQL 日志清理
 
 MySQL 中的 binlog 日志记录了数据库中数据的变动，便于对数据的基于时间点和基于位置的恢复，但是 binlog 也会日渐增大，占用很大的磁盘空间，因此，要对 binlog 使用正确安全的方法清理掉一部分没用的日志。
@@ -136,4 +138,31 @@ curl -s -u elastic:$BK_ES7_ADMIN_PASSWORD -X GET http://$BK_ES7_IP:9200/_cat/ind
 ```bash
 # index 是索引名称
 curl -s -u elastic:$BK_ES7_ADMIN_PASSWORD -X DELETE http://$BK_ES7_IP:9200/index
+```
+
+## MongoDB 数据清理
+
+CMDB 使用 MongoDB 产生的数据量主要来自 cmdb.cc_OperationLog 这个 collection，它对应的是页面的审计日志查询功能。
+
+需要保留的日期越长，它占用的磁盘空间就越大，可以写脚本定期清理。假设保留时间是1年：
+
+```bash
+# 待补充
+```
+
+Job 使用 MongoDB 产生的都是作业平台分发文件和执行脚本的日志文件，按天建立的 collection，可以写脚本定期按天来清理 collection。
+假设保留时间是1年:
+
+```bash
+source ./load_env.sh # 加载变量
+before_date=$(date -d '1 year ago' +%Y_%m_%d)
+# 生成js
+cat <<'EOF' > /tmp/delete_job_outdate_collection.js
+var fileCollectionNames = db.getCollectionNames().filter(function (collection) { return /^job_log_file/.test(collection) && collection < "job_log_file_"+beforeDate })
+fileCollectionNames.forEach(function(c){print("dropping:" + c);db[c].drop();})
+var scriptCollectionNames = db.getCollectionNames().filter(function (collection) { return /^job_log_script/.test(collection) && collection < "job_log_script_"+beforeDate })
+scriptCollectionNames.forEach(function(c){print("dropping:" + c);db[c].drop();})
+EOF
+# 执行清理的js
+mongo --quiet "$BK_JOB_LOGSVR_MONGODB_URI" --eval 'var beforeDate="'$before_date'"' /tmp/delete_job_outdate_collection.js
 ```
