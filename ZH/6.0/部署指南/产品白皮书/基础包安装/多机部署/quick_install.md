@@ -67,6 +67,7 @@ cat << EOF >/data/install/install.config
 10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,mysql
 10.0.0.2 nginx,consul,mongodb,rabbitmq,appo
 10.0.0.3 paas,cmdb,job,zk(config),appt,consul,nodeman(nodeman)
+
 EOF
 ```
 
