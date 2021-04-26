@@ -35,7 +35,7 @@ jobs:
             exit 1
           fi
           echo "${DIFF[@]}" | xargs -n1 | grep 'md$' | sort -u
-          echo "::set-output name=diff::$( echo "${DIFF[@]}" | sort -u )"
+          echo "::set-output name=diff::$( echo "${DIFF[@]}" | xargs -n1 | grep 'md$' | sort -u )"
           echo "::endgroup::"
 
       - name: Setup Node
