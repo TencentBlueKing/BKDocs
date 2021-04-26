@@ -20,6 +20,15 @@
 准备好硬件，安装完原生 CentOS 系统后。需要对初始系统做一些配置，保证后续安装过程的顺畅和蓝鲸平台的运行。
 
 **系统版本：** 推荐 CentOS-7.6。
+
+## 检查文件系统类型
+
+如果文件系统为 xfs，那么在安装 docker 时会有问题。详细见：[Docker 存储驱动程序](https://docs.docker.com/storage/storagedriver/select-storage-driver/)
+
+```bash
+lsblk -f
+```
+
 ## 关闭 SELinux
 
 ```bash
@@ -42,6 +51,7 @@ sed -i 's/^SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 ```bash
 reboot
 ```
+
 ## 关闭默认防火墙(firewalld)
 
 安装和运行蓝鲸时，模块之间互相访问的端口策略较多，建议对蓝鲸后台服务器之间关闭防火墙。
@@ -52,6 +62,7 @@ firewall-cmd --state
 ```
 
 停止并禁用 firewalld
+
 ```bash
 systemctl stop firewalld    # 停止 firewalld
 systemctl disable firewalld # 禁用 firewall 开机启动
@@ -69,14 +80,6 @@ which rsync
 yum -y install rsync
 ```
 
-
-## 停止并禁用 NetWorkManager
-```bash
-systemctl stop NetworkManager
-systemctl disable NetworkManager
-```
-> 说明：该操作前提需确保主机为静态 IP，若为 DHCP 获取的 IP，则无法直接 disable NetworkManager，否则会出现主机重启后，或者主机运行一段时间 IP 租约地址到期后，网卡无法从网络重新正常获取 IP 地址的情况。
-
 ## 调整最大文件打开数
 
 ```bash
@@ -89,6 +92,7 @@ ulimit -n
 但是不能大于 `/proc/sys/fs/nr_open` 的值，该值默认为 1048576。
 
 **注意：** limits.conf 初始文件的备份。
+
 ```bash
 cat >> /etc/security/limits.conf << EOF
 root soft nofile 102400
@@ -111,6 +115,7 @@ ntpdate -d cn.pool.ntp.org
 ```
 
 如果输出的最后一行 offset 大于 1s 建议校时。
+
 ```bash
 # 和 ntp 服务器同步时间
 ntpdate cn.pool.ntp.org
@@ -127,92 +132,111 @@ ntpdate cn.pool.ntp.org
 # 检查 http_proxy https_proxy 变量是否设置，若为空可以跳过后面的操作。
 echo "$http_proxy" "$https_proxy"
 ```
+
 对于本机配置 http_proxy 变量的方式，请依次查找文件 /etc/profile、/etc/bashrc、$HOME/.bashrc 等是否有设置。
 或者咨询网络管理员/IT 部门协助处理。
 
 ## 检查部署机器的主机名
 
-请检查准备用于部署蓝鲸的 3 台机器的主机名是否相同。如果存在同名请进行修改。可参考 [修改主机名](../../维护手册/日常维护/change_hostname.md)
+请检查准备用于部署蓝鲸的 3 台机器的主机名是否相同。如果存在同名请进行修改。
 
 ```bash
+# 修改主机名
+hostnamectl set-hostname <新主机名>
+# 确认主机名修改成功
 hostname
 ```
+
 ## 检查 DNS 配置文件
 
-如果输出的第一行信息不是 `nameserver 127.0.0.1` ，请把其加入至该文件（/etc/resolv.conf）的第一行。
-这是由于蓝鲸内部组件的调用所需，域名通过 consul 解析，会探测服务运行状态，然后返回 IP 地址。若首行不是 127.0.0.1，否则这些域名就通过外网去解析，无法返回正确的响应，导致服务运行异常，或者 SaaS 无法正常打开等情况。
+检查 DNS 配置文件 /etc/resolv.conf 是否被加锁，如有请临时解锁。
 
 ```bash
-head -n 1 /etc/resolv.conf
+# 检查文件属性
+lsattr /etc/resolv.conf
+
+# 如有加锁，请临时解锁处理
+chattr -i /etc/resolv.conf
 ```
 
-## 解压 V6.0 软件包
+DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重启主机后，某些网络配置会导致该文件被还原为初始状态。
+
+安装前先确认 **“修改 /etc/resolv.conf 并重启主机，是否被还原”** 。如果被还原，可以参考以下红帽官方的文档解决： https://access.redhat.com/solutions/7412
+
+## 准备相关软件包
+
+- 请前往 [蓝鲸官网下载页](https://bk.tencent.com/download/) 进行下载。
+
+- 将下载的软件包放置需要部署的机器上。
+
+- 解压软件包 `tar xf bkce_basic_suite-6.0.3.tgz -C /data`， 这里默认解压至 data 目录。
+
+- 解压各产品软件包 `cd /data/src/; for f in *gz;do tar xf $f; done`。
+
+- 拷贝 rpm 包文件夹到 /opt/ 目录 `cp -a /data/src/yum /opt`。
+
+## 准备证书文件
+
+- 使用 gse 与 license 所在服务器的 MAC 地址，前往 [蓝鲸官网证书生成页](https://bk.tencent.com/download_ssl/) 生成证书， 可参考部署脚本下 install/install.config.3ip.sample 文件。
+
+- 生成后请将证书文件放置与软件包同一台机器上。
+
+- 解压证书文件，这里以 /data 目录为例
+
+    ```bash
+    install -d -m 755 /data/src/cert
+    tar xf /data/ssl_certificates.tar.gz -C /data/src/cert/
+    chmod 644 /data/src/cert/*
+    ```
+
+## 准备 install.config 文件
+
+可直接拷贝 3 台机器部署的模版文件
+
 ```bash
-# 版本号会随更新而变更，请以实际下载时的实际版本为准
-tar xf bkce_src-6.0.x.tgz  -C /data
-```
-## 下载证书
+# 以 /data 目录为例
+cp -a /data/install/install.config.3ip.sample /data/install/install.config
 
-获取机器的 MAC 地址生成证书，下载 [证书文件](https://bk.tencent.com/download_ssl/) 上传至中控机并解压到 src/cert 目录下。
-
->MAC 地址：license 和 gse 模块所在服务器的第一个内网网卡的 MAC 地址。如果分别属于两台服务器，那么两个的 MAC 地址以英文 ";" 分隔。
-
-```bash
-install -d -m 755 /data/src/cert
-tar xf ssl_certificates.tar.gz -C /data/src/cert
+# 最后，请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
 ```
 
-## 解压各个产品软件包
+## 自定义域名、安装目录以及登陆密码
 
- ```bash
- cd /data/src/; for f in *gz;do tar xf $f; done
- ``` 
+以下操作只需要在中控机上执行
 
-## 拷贝 rpm 软件包
+- 部署前自定义域名以及安装目录
 
-```bash
-cp -a /data/src/yum /opt
-```
+    \$BK_DOMAIN：需要更新的根域名。
 
-## 配置 install.config 文件
+    \$INSTALL_PATH：自定义安装目录。
 
-install.config 是模块和服务器对应关系的配置文件，描述在哪些机器上安装哪些模块。
+    ```bash
+    # 执行前请使用实际的顶级域名 (如：bktencent.com) 和安装目录进行替换
+    cd /data/install 
+    ./configure -d $BK_DOMAIN -p $INSTALL_PATH
+    ```
 
-每行两列，第一列是 IP 地址；第二列是以英文逗号分隔的模块名称。
+- 部署前自定义 admin  登陆密码
 
-详情参考 `install.config.3IP.sample` 文件(可将 install.config.3IP.sample 复制为 install.config)。
+    **请使用实际的自定义密码替换 BlueKing，以及使用实际的部署脚本路径替换默认的脚本路径 `/data/install`。**
 
-```bash
-# 假设部署脚本放置于 /data 目录下，请以实际部署的目录为准
-cd /data/install
-cp -a install.config.3ip.sample install.config
-
-# 将默认的 IP 地址替换为实际部署时的 IP 地址
-
-10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana)
-10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk
-10.0.0.3 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman)
-```
-> 说明：
-> 1. 该配置文件，ip 后面使用空格与服务名称隔开，含有多个内网 ip 的机器，默认使用 /sbin/ifconfig 输出中的第一个内网 ip，在 ip 后面写上该机器要安装的服务列表即可，部署过程中默认使用标准私有地址，若企业环境使用非标准私有地址，请参考该篇文章后续内容- **非标准私有地址处理方法** 的处理方法。
-> 2. gse 与 redis 需要部署在同一台机器上。
-> 3. 增加机器数量时，可以将以上配置中的服务挪到新的机器上，分担负载。
+    ```bash
+    cat > /data/install/bin/03-userdef/usermgr.env << EOF
+    BK_PAAS_ADMIN_PASSWORD=BlueKing
+    EOF
+    ```
 
 ## 非标准私有地址处理方法
 
-蓝鲸社区版部署脚本中(install 目录)下有以下文件中有获取 IP 的函数 get_lan_ip，非标准地址，均需要在安装部署前完成修改。
-
-这些文件列表，可能随版本迭代变动，也可以用以下命令查找出来包含这个函数的脚本文件有哪些：
-
-```bash
-grep "get_lan_ip  ()" -lr /data/install
-```
+蓝鲸社区版部署脚本中(install 目录)有文件获取 IP 的函数 `get_lan_ip`，非标准地址，需要在安装部署前完成修改。
 
 修改方法：
 
-假设服务器的 ip 是：138.x.x.x，它不在标准的私有地址范围，那么你需要修改 get_lan_ip  () 函数为：
+假设服务器的的 IP 是：138.x.x.x，它不在标准的私有地址范围，那么需要修改 get_lan_ip () 函数为：
 
 ```bash
+vim /data/install/functions
+
 get_lan_ip  () {
 ...省略
            if ($3 ~ /^10\./) {
@@ -227,35 +251,4 @@ return $?
 }
 ```
 
-## 自定义域名、安装目录以及登陆密码
-
-- 部署前自定义域名以及安装目录
- 
-$BK_DOMAIN：需要更新的根域名，$INSTALL_PATH：自定义安装目录。
-
-```bash
-# 执行前请使用实际的根域名和安装目录进行替换
-
-./configure -d $BK_DOMAINN -p $INSTALL_PATH
-```
-
-- 部署前自定义 admin  登陆密码
-
-**请使用实际的自定义密码替换 BlueKing，以及使用实际的部署脚本路径替换默认的脚本路径 `/data/install`**
-
-```bash
-cat > /data/install/bin/03-userdef/usermgr.env << EOF
-BK_PAAS_ADMIN_PASSWORD=BlueKing
-EOF
-```
-
-## 配置 SSH 免密登陆 
-
-中控机执行免密操作。
-
-```bash
-cd /data/install
-bash configure_ssh_without_pass
-```
-
-完成环境准备后，可前往 [标准部署](../多机部署/install.md) 开始部署了。 
+完成环境准备后，可前往 [基础套餐详细部署](../多机部署/quick_install.md) 开始部署了。

@@ -1,33 +1,17 @@
-# 单机部署
+# 基础套餐单机部署
 
-单机部署方案是针对新老用户快速低成本的搭建一套精简版的蓝鲸社区版推出的。
+## 环境准备
 
-从社区版 4.1.11 版本开始，支持完整版本蓝鲸的单机部署体验，前提要求是，单机 CPU 不低于 2 核，可用内存不低于 16GB。
-若机器性能没满足要求，只能部署精简版的蓝鲸平台。
+- 准备一台 CentOS 7.6 及以上操作系统的机器 (物理机和虚拟机均可)。
 
-精简版蓝鲸平台满足简单的运维场景需求，包含：PaaS 平台，配置平台，作业平台，以及安装  Agent 用的 节点管理 SaaS。
+- 按照安装 [环境准备](../../基础包安装/环境准备/get_ready.md) 章节中，主机和系统环境的要求做好相应设置。
 
-## 部署方式
+- 配置好 YUM 源，包含 EPEL 仓库(可以通过 `yum info pssh` 测试下)。
 
-- [腾讯云实验室](https://cloud.tencent.com/developer/labs/lab/10386)，目前实验室的仍为 5.1 版本。
-
-- 自行提供主机
-
-## 自行提供主机
-
-按照安装 [环境准备](../../基础包安装/环境准备/get_ready.md) 章节中，主机和系统环境的要求做好相应设置。
-
-* 环境准备
-  - 准备一台 CentOS 7.5 及以上操作系统的机器(物理机和虚拟机均可)。
-
-  - 按照安装 [环境准备](../../基础包安装/环境准备/get_ready.md) 章节中，主机和系统环境的要求做好相应设置。
-
-  - 配置好 YUM 源，包含 EPEL 仓库(可以通过 `yum info nginx` 测试下)。
-
-  - 从 [官网下载](http://bk.tencent.com/download/) 完整包，并解压到 /data/ 下。实际版本请以蓝鲸官网下载为准。
+- 从 [官网下载](http://bk.tencent.com/download/) 完整包，并解压到 /data/ 下。实际版本请以蓝鲸官网下载为准。
 
     ```bash
-    tar xf bkce_src-6.0.x.tgz  -C /data
+    tar xf bkce_basic_suite-6.0.3.tgz -C /data
     ```
 
   - 获取机器的 MAC 地址后，下载 [证书文件](https://bk.tencent.com/download_ssl/)，解压到 src/cert 目录下
@@ -49,34 +33,40 @@
     cp -a /data/src/yum /opt
     ```
 
-* 配置参数
+- 修改 bk_install 脚本
 
-  - install.config 这个文件安装脚本会自动生成，无需自行配置。
+```bash
+# 在 job 处添加以下内容
+vim bk_install
+sed -i '/JAVA_OPTS/c JAVA_OPTS="-Xms128m -Xmx128m"' /etc/sysconfig/bk-job-*
+```
 
-* 执行安装
+![change_job](../../assets/change_job.png)
 
-  如果部署全部组件，请执行：
+- install.config 这个文件安装脚本会自动生成，无需自行配置。
 
-  ```bash
-  cd /data/install
-  ./install_minibk -y
-  ```
-  
-  如果按需部署，假设只需要 PaaS，CMDB，JOB 平台，请执行：
+## 执行安装
 
-  ```bash
-  cd /data/install
-  ./install_minibk
-  ./bk_install paas && ./bk_install cmdb && ./bk_install job
-  ```
+如果部署全部组件，请执行：
 
-  安装过程中遇到失败的情况，请先定位排查解决后，再重新运行失败时的安装指令。
+```bash
+cd /data/install
+./install_minibk -y
+```
+
+安装过程中遇到失败的情况，请先定位排查解决后，再重新运行失败时的安装指令。
+
+执行完部署后，执行降低内存消耗脚本。以确保环境的稳定
+
+```bash
+bash bin/single_host_low_memory_config.sh tweak all
+```
 
 ## 访问蓝鲸
 
 根据 `install/bin/04-final/global.env`、`install/bin/04-final/usermgr.env` 里配置的 PaaS 域名(BK_PAAS_PUBLIC_ADDR)、账号 (BK_PAAS_ADMIN_USERNAME)、密码(BK_PAAS_ADMIN_PASSWORD)信息，登录访问(若域名没设置 DNS 解析，需配置本机 hosts)。
 
-* 域名信息
+- 域名信息
 
   ```bash
   # 蓝鲸的根域名
@@ -92,7 +82,7 @@
   BK_NODEMAN_PUBLIC_DOWNLOAD_URL=nodeman.bktencent.com:80
   ```
 
-* 账号信息
+- 账号信息
 
   ```bash
   BK_PAAS_ADMIN_PASSWORD=xxxxx
@@ -103,4 +93,4 @@
 
 ## 使用蓝鲸
 
-请参考蓝鲸各 [产品白皮书](https://bk.tencent.com/docs/)。
+可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)

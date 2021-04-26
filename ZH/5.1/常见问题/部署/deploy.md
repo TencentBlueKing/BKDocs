@@ -2,7 +2,7 @@
 
 ## 部署 CMDB 常见问题
 
-### prot 31001 start failed，please check
+### port 31001 start failed，please check
 
 ![-w2020](../assets/cmdb-31001.png)
 
@@ -187,6 +187,6 @@ ls /data/bkce/etc/consul.d/bkdata.json
 ./bkcec stop paas
 ./bkcec upgrade paas
 ./bkcec start paas
-再次执行部署 saas
+# 再次执行部署 saas
 ./bkcec install saas-o
 ```

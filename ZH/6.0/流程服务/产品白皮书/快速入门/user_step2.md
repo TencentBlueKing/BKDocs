@@ -2,5 +2,5 @@
 
 选择目标服务，在提单页面填写信息，提交即可。
 
-![](../media/step009.png)
+![-w2021](../media/step009.png)
 <center>图3.按要求填写申请信息</center>

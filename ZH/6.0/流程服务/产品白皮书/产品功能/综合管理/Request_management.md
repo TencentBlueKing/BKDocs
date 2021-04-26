@@ -2,17 +2,17 @@
 
 ### **申请入口**
 
-![](../../media/072112fb0ba00b418fe26790857049dd.png)
+![-w2021](../../media/072112fb0ba00b418fe26790857049dd.png)
 
 <center>新增请求入口</center>
 
 ### **提交请求**
 
-![](../../media/82e2dd6ffe90d4f412c8b3ca9926f91b.png)
+![-w2021](../../media/82e2dd6ffe90d4f412c8b3ca9926f91b.png)
 
 <center>选择服务</center>
 
-![](../../media/09192c47de54605abb931b909e310376.png)
+![-w2021](../../media/09192c47de54605abb931b909e310376.png)
 
 <center>请求申请填单页面</center>
 
@@ -28,11 +28,11 @@
 
 ### **处理请求**
 
-![](../../media/2b1f1c2bb1234524befe6096f3472e7d.png)
+![-w2021](../../media/2b1f1c2bb1234524befe6096f3472e7d.png)
 
 <center>请求待办入口</center>
 
-![](../../media/f88fc061ea9604143aeb7748f45c7313.png)
+![-w2021](../../media/f88fc061ea9604143aeb7748f45c7313.png)
 
 <center>处理界面</center>
 

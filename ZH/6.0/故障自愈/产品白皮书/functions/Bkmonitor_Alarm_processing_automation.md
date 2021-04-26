@@ -7,10 +7,8 @@
 
 ## 前提条件
 
-- [蓝鲸配置平台纳管了主机](../../../配置平台/产品白皮书/场景案例/CMDB_management_hosts.md)
-
-- [蓝鲸配置平台纳管了进程](../../../配置平台/产品白皮书/场景案例/CMDB_management_process.md)
-
+- [CMDB 主机资源纳管](../../../配置平台/产品白皮书/场景案例/CMDB_management_hosts.md)
+- [CMDB 主机进程管理](../../../配置平台/产品白皮书/场景案例/CMDB_management_process.md)
 
 **术语解释**
 

@@ -6,10 +6,10 @@
 
 登入到【流程服务】，在“工作台”首页，点击“快速提单”。
 
-![](../media/step007.png)
+![-w2021](../media/step007.png)
 <center>图1.快速提单入口</center>
 
 在服务入口查找你的目标服务。
 
-![](../media/step008.png)
+![-w2021](../media/step008.png)
 <center>图2.服务入口</center>

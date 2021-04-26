@@ -1,12 +1,12 @@
-# 37 秒完成万台服务器的目录标准化
+# 作业平台：批量完成多台服务器的文件分发和脚本检查
 
 ## 情景
 
-对运行在上万台服务器上的业务服务做标准化的调整（还历史债务），经过多轮的灰度验证，计划对剩下数万台服务器批量操作。
+对运行在多台服务器上的业务服务做新版本的文件分发，自动化的批量快速分发、执行脚本检查新版本文件的 md5。
 
 ## 前提条件
 
-- 服务器已在 [CMDB 注册](6.0/bk_solutions/CD/CMDB/CMDB_management_hosts.md)
+- 服务器已在 [CMDB 注册](../CMDB/CMDB_management_hosts.md)
 - 拥有服务器所在 CMDB 中业务的运维权限
 
 ## 操作步骤
@@ -16,32 +16,38 @@
 
 ### 新建作业
 
-按照标准化的需求，我们需要将 `gsectl` 文件推送至 `/usr/local/gse_bkte/agent/bin/` 目录，为了确保万无一失，做 MD5 校验。
+按照新版本发布的需求，我们需要将 `newfile.txt` 文件推送至 `/data/` 目录，为了确保万无一失，做 MD5 校验。
 
 作业模板如下：
 
-![job_magnanimity](../assets/job_magnanimity.png)
+![test](../assets/图1.jpg)
 
-提示：为了阐述作业平台中的两个全局参数：`IP` 和 `云参`，我们通过 [需求自助化](6.0/bk_solutions/CD/Automation/ops_half_automation.md) 中用到的作业模板来介绍。
+提示：我们配置两个全局变量，“主机列表”类型变量 IP（用于批量给作业步骤传输主机 ip 信息）和“字符串”类型变量 md5（用于进行新版本 md5 的填参）
 
-![-w1670](../assets/15638759120598.jpg)
+IP 变量，可以通过“静态 ip 选择”、“动态拓扑选择”、“动态分组选择”和“手动输入”四种方式进行 ip 选择。
 
-IP 这个参数，我们一般建议使用 [动态分组](6.0/配置平台/产品功能/BuzResource.md)，因为服务器会有故障替换的可能，IP 会变。
+![test](../assets/图2.jpg)
 
-`云参`在脚本中可以直接引用。
+在步骤中通过选择目标服务器——全局变量——IP 的方式进行有引用。
 
-![-w1395](../assets/15638755522581.jpg)
+![test](../assets/图3.jpg)
+
+md5 变量，可以在脚本参数中直接使用。
+
+![test](../assets/图4.jpg)
+
+### 设置执行方案
+
+保存作业后，需要将作业模板设置为一个执行方案，进行全局变量和执行步骤的选择，使其满足该单一场景的使用。该执行方案即可重复使用。
+
+![test](../assets/图5.jpg)
 
 ### 执行作业及查看执行结果
 
-点击`执行作业`后，在 9946 台服务器上总耗时 37 秒。
+作业执行后，可以查看到执行步骤的进度。
 
-![job_magnanimity_history_list](../assets/job_magnanimity_history_list.png)
+![test](../assets/图6.jpg)
 
-其中分发 gsectl 文件耗时 13 秒。
+每个步骤点击后，可以查看执行详情。切换步骤，可以切换执行详情。
 
-![job_magnanimity_history_push_file](../assets/job_magnanimity_history_push_file.png)
-
-MD5 校验耗时 24 秒。
-
-![job_magnanimity_history_exec_script](../assets/job_magnanimity_history_exec_script.png)
+![test](../assets/图7.jpg)

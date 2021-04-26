@@ -13,7 +13,7 @@
 
 本文从最初的安装部署到日常问题处理，描述 Consul 运维相关的内容。
 
-关于 Consul 的基本概念和知识，建议阅读 Consul 官方的快速入门教程：https://learn.hashicorp.com/consul
+关于 Consul 的基本概念和知识，建议阅读 Consul 官方的快速入门教程：<https://learn.hashicorp.com/consul>
 
 ## 安装部署
 
@@ -60,9 +60,9 @@ $ ./bin/install_consul.sh
 
 安装并启动成功后，脚本会修改 `/etc/resolv.conf`
 
-1.  添加 `nameserver 127.0.0.1` 配置项，并保证它位于第一行
-2.  如果存在 option 的配置，且包含了 `rotate`，则删除该选项，防止轮询。因为蓝鲸依赖 consul 监听的 127.0.0.1:53 做解析。
-3.  添加 `search node.consul`，因为 consul 默认会注册本机的 `<node_name>.node.consul` 这样长主机名，一些 java 应用读取本机的$HOSTNAME 后反向解析 ip 的时候，会用到。
+1. 添加 `nameserver 127.0.0.1` 配置项，并保证它位于第一行
+2. 如果存在 option 的配置，且包含了 `rotate`，则删除该选项，防止轮询。因为蓝鲸依赖 consul 监听的 127.0.0.1:53 做解析。
+3. 添加 `search node.consul`，因为 consul 默认会注册本机的 `<node_name>.node.consul` 这样长主机名，一些 java 应用读取本机的$HOSTNAME 后反向解析 ip 的时候，会用到。
 
 然后停掉 `nscd` 的缓存服务。
 
@@ -82,8 +82,7 @@ consul 可以不需要使用任何命令行开关和配置，都有默认值，�
 
 1. consul.json
 
-
-    ```jsonplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
+    ```json
     {
         "bind_addr": "10.0.0.1",
         "log_level": "info",
@@ -119,7 +118,7 @@ consul 可以不需要使用任何命令行开关和配置，都有默认值，�
 
 3. auto_join.json: 配置 consul 启动后自动加入的集群的 ip 列表
 4. recursors.json: 从 `/etc/resolv.conf` 中读取已有的 nameserver ip，并写入到该配置。如果原本没有配置 nameserver，则不存在该配置文件。
-5. telemetry.json: 配置监控 metrics 接口相关的参数。详见：https://www.consul.io/docs/agent/telemetry
+5. telemetry.json: 配置监控 metrics 接口相关的参数。详见：<https://www.consul.io/docs/agent/telemetry>
 
 配置文件全部准备妥当后，可以通过命令 `consul validate /etc/consul.d` 来校验所有的 `*.json` 合并后的语法/语义是否符合 `consul agent` 启动所需。注意该命令需要接受完整的配置定义，而不能只传递部分配置，譬如 `consul validate /etc/consul.d/server.json` 会报错。
 
@@ -188,9 +187,9 @@ EOF
 - address: 该服务对外暴露的访问 ip 地址
 - port: 该服务对外暴露的访问端口
 - check: 定义健康检查机制
-    - tcp: 通过 tcp 进行探测，参数为探测的 ip 和端口
-    - interval: 检查间隔时间，蓝鲸统一设定为 10s
-    - timeout: tcp 探测的超时时间为 3s
+  - tcp: 通过 tcp 进行探测，参数为探测的 ip 和端口
+  - interval: 检查间隔时间，蓝鲸统一设定为 10s
+  - timeout: tcp 探测的超时时间为 3s
 
 运行 `consul reload` 加载配置，让上述配置生效。
 
@@ -373,6 +372,38 @@ consul snapshot inspect backup.snap
 consul snapshot restore backup.snap
 ```
 
+## 开启 Web 管理界面
+
+1. 选择部署 nginx 的服务器，修改 consul 的启动命令行参数 （/etc/sysconfig/consul），在 `CMD_OPTS` 中追加命令行参数 `-ui`
+2. 重启 consul: `systemctl restart consul`
+3. 验证是否生效：`curl -sL http://127.0.0.1:8500/ | grep CONSUL_VERSION` 如果有返回说明 webUI 正常开启
+4. 配置 nginx 将请求代理转发给本机 127.0.0.1:8500，这样能方便通过浏览器访问，假设我们使用 `consul.bktencent.com` 这个域名来访问。添加以下 nginx 配置，并重新加载生效。
+
+    ```bash
+    source ./load_env.sh
+    cat > /usr/local/openresty/nginx/conf/conf.d/consul.conf <<EOF
+    server {
+        listen 80;
+        server_name consul.bktencent.com;
+
+        access_log $BK_HOME/logs/nginx/consul_ui_access.log main;
+
+        location / {
+            proxy_pass http://127.0.0.1:8500;
+        }
+    }
+    EOF
+    systemctl reload openresty
+    ```
+
+5. 在本机配置 hosts 文件，添加域名解析，假设 nginx 所在服务器对应的外网 ip 是 100.0.0.1
+
+    ```bash
+    100.0.0.1 consul.bktencent.com
+    ```
+
+6. 浏览器输入 `http://consul.bktencent.com` 来访问 Consul 的 WebUI
+
 ## 常用操作
 
 - 查询 leader：`curl -s http://127.0.0.1:8500/v1/status/leader`
@@ -415,6 +446,4 @@ consul snapshot restore backup.snap
 4. 重新启动对应服务模块的进程，等待 10s 后再次运行 `./bkcli check consul` 来判断服务是否健康
 5. 对于 check_resolv_conf_127.0.0.1 失败的节点。请配置好 /etc/resolv.conf 并持久化它。
 
-
 ### 持久化/etc/resolv.conf
-

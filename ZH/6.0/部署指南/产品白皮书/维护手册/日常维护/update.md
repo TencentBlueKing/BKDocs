@@ -5,9 +5,9 @@
 ### 更新注意事项
 
 1. Python 工程涉及到安装新的 requirement.txt 的中涉及的依赖 pip 包，如果更新过程中报错，可能由于某些系统 devel 包不匹配导致，这时需要根据实际情况，修复该问题后，重新执行更新指令。
-   
+
 2. 部分模块的 support-files/sql/ 目录下有更新 sql 文件的，需要注意 sql 是否正常执行，如果中途报错，需要解决 sql 变更的问题再继续。
-   
+
 3. 部分模块 support-files/bkiam/ 目录下有更新 json 文件的，需要注意 bkiam migration 是否执行成功，如果中途报错，需要解决权限模型注册的问题再继续。
 
 ### 后台组件更新的通用步骤如下
@@ -23,15 +23,14 @@
 ### SaaS 的更新通用步骤有两种方式
 
 1. 页面更新：登陆 PaaS 平台 -> 开发者中心 -> S-mart 应用 -> 找到待更新的 SaaS 应用名 -> 上传版本 -> 发布部署 -> 选择对应的环境和版本 -> 部署
-   
-2. 后台命令行更新，其中 app_code 请替换为具体对应的 SaaS，比如更新标准运维，使用 bk_sops：
-   
-   1. 上传 SaaS 包到中控机的 /data/src/official_saas/ 目录
-   
-   2. 更新正式环境运行命令 `cd /data/install && ./bkcli install saas-o app_code`
-   
-   3. 更新测试环境运行命令 `cd /data/install && ./bkcli install saas-t app_code`
 
+2. 后台命令行更新，其中 app_code 请替换为具体对应的 SaaS，比如更新标准运维，使用 bk_sops：
+
+   1. 上传 SaaS 包到中控机的 /data/src/official_saas/ 目录
+
+   2. 更新正式环境运行命令 `cd /data/install && ./bkcli install saas-o app_code`
+
+   3. 更新测试环境运行命令 `cd /data/install && ./bkcli install saas-t app_code`
 
 ### PaaS 更新
 
@@ -46,9 +45,9 @@ PaaS 更新需要注意处理第三方扩展代码目录。如：改造过企业
 PaaS Agent 分为 appo 和 appt，更新场景主要包括三个方面：
 
 1. src/image/ 的更新。SaaS 所用的基础镜像更新，比较简单，直接使用 `docker load` 加载新的镜像即可。
-   
+
 2. paas_agent 目录的二进制和脚本更新，直接使用 rsync 同步 paas_agent/ 目录到安装目录下的 paas_agent/ 然后重启进程即可
-   
+
 3. openresty 的配置模板更新，需要更新 /etc/consul-template/templates/ 下的模版配置文件
 
 ### CMDB 更新
@@ -105,7 +104,6 @@ Job 是前后端分离的部署架构，前后端分开更新，分别使用 `bi
 ./bkcli upgrade bknodeman
 ```
 
-
 ### 监控平台更新
 
 监控平台区分了 2 个数据库，一个是 `bk_monitorv3`，一个是 `bkmonitorv3_alert`，SaaS 和后台都会读写这 2 个库。SaaS 的 app_code 是 bk_monitorv3，后台模块是 bkmonitorv3。更新时，需要先更新 SaaS，数据库的 schema 更新维护是在 SaaS 完成，权限模型的更新也由 SaaS 控制。每次先更新 SaaS，然后更新后台。
@@ -117,7 +115,6 @@ Job 是前后端分离的部署架构，前后端分开更新，分别使用 `bi
 # 更新后台
 ./bkcli upgrade bkmonitorv3
 ```
-
 
 ### 日志平台更新
 

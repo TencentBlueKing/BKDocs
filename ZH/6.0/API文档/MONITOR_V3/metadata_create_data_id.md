@@ -36,7 +36,7 @@ POST
 | mq_cluster | int | 否 | 数据源使用的消息集群 | 
 | data_description | string | 否 | 数据源的具体描述 | 
 | is_custom_source | bool | 否 | 是否用户自定义数据源，默认为是 | 
-| source_label | string | 是 | 数据来源标签，例如：数据平台(bk_data)，监控采集器(bk_monitor_collector) |
+| source_label | string | 是 | 数据来源标签，例如：计算平台(bk_data)，监控采集器(bk_monitor_collector) |
 | type_label | string | 是 | 数据类型标签，例如：时序数据(time_series)，事件数据(event)，日志数据(log) | 
 | custom_label | string | 否 | 自定义标签配置信息 |
 | option | string | 否 | 数据源配置选项内容，格式为{`option_name`: `option_value`} | 

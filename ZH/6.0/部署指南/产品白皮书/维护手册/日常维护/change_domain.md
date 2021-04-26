@@ -11,15 +11,16 @@
 - 运行变更域名脚本 **（请使用实际的域名进行替换）**
 
   ```bash
-  cd /data/install
+  cd /data/install && source load_env.sh
   ./bin/change_bk_domain.sh bktencent.org
   ```
 
 - 上述脚本运行成功后:
-    - 如果域名是配置的本地 hosts 文件，请修改本机的 hosts 文件。
-    - 如果是通过 DNS 解析的，请修改相应的 DNS 解析。
+  - 如果域名是配置的本地 hosts 文件，请修改本机的 hosts 文件。
+  - 如果是通过 DNS 解析的，请修改相应的 DNS 解析。
 
-- 请重新部署所有官方 SaaS 
+- 请重新部署所有官方 SaaS
+
   ```bash
   ./bkcli install saas-o
-  ``` 
+  ```
