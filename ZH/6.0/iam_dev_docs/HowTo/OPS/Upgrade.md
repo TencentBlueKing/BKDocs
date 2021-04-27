@@ -8,27 +8,27 @@
 1. 升级IAM 后台版本到`1.6.1`, SaaS版本到`1.3.6`
 
 2. 全量同步所有的权限模板
-```
+```bash
 sh $BK_APPO_IP
 docker exec -it $(docker ps | grep -w bk_iam | awk '{print $1}') bash 
 /cache/.bk/env/bin/python /data/app/code/manage.py sync_templates
 # 脚本打印Successful completion of template version synchronization 表示执行同步成功
 ```
 
-3. 升级IAM后台到1.7.1
-```
+3. 升级 IAM 后台到 1.7.x
+```bash
 # 检查IAM后台版本 
 curl http://{IAM_HOST}/version 确认版本号
 ```
 
-1. 升级IAM SaaS到1.4.x
+4. 升级 IAM SaaS到 1.4.x
 
 ### 异常处理
-1. SaaS升级到1.4.x 报错 `you must sync all templates before run migrate`
-   - 请先回退SaaS到1.3.6版本, 后台1.6.1版本, 重新执行升级步骤后再升级SaaS到1.4.x
+1. SaaS 升级到 1.4.x 报错 `you must sync all templates before run migrate`
+   - 请先回退 SaaS 到 1.3.6 版本, 后台 1.6.1 版本, 重新执行升级步骤后再升级 SaaS 到 1.4.x
    
-2. SaaS执行 `python manage.py sync_templates` 报错 `ErrorCode 1902000:(code: None, message: request iam api error`
-   - 请先回退IAM后台到1.6.1版本, 再执行以上命令
+2. SaaS 执行 `python manage.py sync_templates` 报错 `ErrorCode 1902000:(code: None, message: request iam api error`
+   - 请先回退 IAM 后台到 1.6.1 版本, 再执行以上命令
 
 
 
