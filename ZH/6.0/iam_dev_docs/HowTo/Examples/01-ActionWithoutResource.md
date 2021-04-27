@@ -33,7 +33,7 @@
 
 - 注册之后的权限配置页面
 
-![-w2021](../../assets/HowTo/Examples/01_01.jpg)
+![](../../assets/HowTo/Examples/01_01.jpg)
 
 ## 4. 鉴权
 

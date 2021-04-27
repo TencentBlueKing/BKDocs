@@ -59,6 +59,7 @@ curl -XPOST 'http://{IAM_HOST}/api/v1/model/systems/demo/resource-types' \
 在配置`开发应用`权限的时候，由于这个操作关联了`应用`，所以需要配置`实例视图`
 
 - [主要名词概念说明: 实例视图(instance_selections)](../Reference/API/02-Model/00-Concepts.md)
+- [说明: 实例视图](../../Explanation/01-instanceSelection.md)
 
 
 ```bash

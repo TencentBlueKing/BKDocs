@@ -18,6 +18,9 @@
 - 注册一个`action`及对应的实例类型`resourceType`
 - 同时需要注册, 配置权限时如何勾选到实例的`实例视图`(`instanceSelections`)
 
+相关阅读:
+- [说明: 实例视图](../../Explanation/01-instanceSelection.md)
+
 ## 3. 权限模型
 
 - 注册实例类型`resourceType`
@@ -85,7 +88,7 @@
 
 - 注册之后的权限配置页面
 
-![-w2021](../../assets/HowTo/Examples/02_01.jpg)
+![](../../assets/HowTo/Examples/02_01.jpg)
 
 
 ## 4. 鉴权
@@ -177,7 +180,7 @@ curl -XPOST 'http://{IAM_HOST}/api/v1/policy/auth' \
 具体的 [无权限交互方案](../NoPermissionApply.md)
 
 
-![-w2021](../../assets/HowTo/Examples/02_02.jpg)
+![](../../assets/HowTo/Examples/02_02.jpg)
 
 ```python
 from iam.apply.models import ActionWithoutResources, ActionWithResources, Application, RelatedResourceType

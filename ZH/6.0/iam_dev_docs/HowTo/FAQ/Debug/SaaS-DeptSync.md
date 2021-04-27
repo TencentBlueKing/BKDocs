@@ -36,7 +36,7 @@
 
 ### 5.1 部门查询不到
 
-![-w2021](../../../assets/HowTo/FAQ/Debug/DeptSync_01.jpg)
+![](../../../assets/HowTo/FAQ/Debug/DeptSync_01.jpg)
 
 * 排查思路与步骤
 
@@ -87,7 +87,7 @@ print(not_exist_parent)
 
 ### 5.2 节点无法指定自己成为子节点的子节点
 
-![-w2021](../../../assets/HowTo/FAQ/Debug/DeptSync_02.jpg)
+![](../../../assets/HowTo/FAQ/Debug/DeptSync_02.jpg)
 
 
 * 原因
@@ -109,7 +109,7 @@ Department.tree_objects.rebuild()
 
 ### 5.3 存在用户与部门关系，但是其用户不存在
 
-![-w2021](../../../assets/HowTo/FAQ/Debug/DeptSync_03.jpg)
+![](../../../assets/HowTo/FAQ/Debug/DeptSync_03.jpg)
 
 * 原因
   用户被删除了，但是其与部门之间的关系没有删除

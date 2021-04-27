@@ -73,4 +73,4 @@
 
 选中某个常用操作时, 会勾选对应的`操作列表`中的所有操作;
 
-![-w2021](../../assets/HowTo/Examples/06_01.jpg)
+![](../../assets/HowTo/Examples/06_01.jpg)

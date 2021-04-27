@@ -23,6 +23,10 @@
     - 关联实例类型 `resourceType=flow`
     - 关联资源的实例视图 `flow.related_instance_selections=flow`
 
+相关阅读:
+- [说明: 实例视图](../../Explanation/01-instanceSelection.md)
+
+
 ## 3. 权限模型
 
 注册资源类型`project`和`flow`, 注意`flow`的拓扑层级的父级是`project`; 即, `项目/流程模板`
@@ -112,7 +116,7 @@
 
 如果勾选了`project`, 代表这个项目下的所有流程模板有权限; 如果勾选了具体某个`flow`, 代表仅对这个具体的流程模板有权限;
 
-![-w2021](../../assets/HowTo/Examples/03_01.jpg)
+![](../../assets/HowTo/Examples/03_01.jpg)
 
 
 ## 4. 鉴权

@@ -1,6 +1,6 @@
 # 部署及运维说明
 
-> VERSION: 1.1.0
+> VERSION: 1.1.1
 
 ## 背景
 
@@ -268,6 +268,18 @@ histogram_quantile(0.95, sum(rate(api_request_duration_milliseconds_bucket{job="
 例如:
 - 可以监控 `iam.log` 中 `level=error` 的日志
 - 监控`iam_api.log` 中 `status!=200` 的日志
+
+### 3.7 Sentry 支持
+
+如果有 Sentry 服务, 可以将权限中心后台服务接入, 异常及其详情会上报到 Sentry 中
+
+```yaml
+sentry:
+  enable: true
+  dsn: "{Sentry DSN}"
+```
+
+这里的 Sentry DSN 为在Sentry新建项目对应的DSN, 示例: `http://e85eaaa599c44cbbb6833c22c20bbbb@sentry.xx.com/123`
 
 
 ---------

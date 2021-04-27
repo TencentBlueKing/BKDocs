@@ -30,6 +30,7 @@
     - [系统间接口鉴权](../Reference/API/01-Overview/03-APIAuth.md)
 6. 注册权限模型到权限中心
     - [系统注册名词规范](../Reference/NamingRules.md)
+    - [说明: 实例视图](../Explanation/01-instanceSelection.md)
     - [AppCode 和 SystemID 说明](../Reference/AppcodeAndSystemID.md)
     - [模型注册 API](../Reference/API/02-Model/00-API.md)
     - [权限模型自动初始化及更新 migration](Migrateion.md)
@@ -107,5 +108,6 @@
     - [大规模实例级权限限制](LargeScaleInstances.md)
 4. 部署及运维
     - [部署及运维说明](OPS/Deploy.md)
+    - [升级部署说明](OPS/Upgrade.md)
     - [开发测试环境搭建](OPS/Develop.md)
     - [性能测试说明](../Reference/Benchmark.md)
