@@ -105,4 +105,4 @@ spec:
 
 Metric 的数据可以在 监控中心 Dashboard 中查看，具体的使用方法见：
 
-- [监控中心/Dashboard 查询](/monitor/Dashboard/DashboardSearch.md)
+- [监控中心/Dashboard 查询](../monitor/Dashboard/DashboardSearch.md)

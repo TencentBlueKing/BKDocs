@@ -15,7 +15,7 @@
 支持。接入系统需要对每种资源类型设置默认实例选择视图，注册操作时统一引用需要的视图，支持跨系统视图引用。详见[实例视图 API](../../../Reference/API/02-Model/12-InstanceSelection.md)。
 
 相关阅读:
-- [说明: 实例视图](../../Explanation/01-instanceSelection.md)
+- [说明: 实例视图](../../../Explanation/01-instanceSelection.md)
 
 
 ### 5. 主机资源的授权是可以通过业务批量授权，也就是说给某个用户组查看某个业务的权限，那该用户组的用户就可以查看该业务下的所有主机，是这样的吗

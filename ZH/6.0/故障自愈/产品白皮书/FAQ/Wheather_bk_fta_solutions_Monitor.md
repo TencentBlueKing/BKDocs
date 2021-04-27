@@ -2,4 +2,4 @@
 
 故障自愈本身不是监控系统，它获取监控系统的告警，然后执行对应的处理动作，实现故障处理的无人值守。
 
-详细请访问故障自愈的 [产品架构](../Architecture/Product_Architecture.md)。
+详细请访问故障自愈的 [产品架构](../concepts/Product_Architecture.md)。

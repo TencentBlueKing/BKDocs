@@ -47,7 +47,7 @@
     - d.由于认证存在缓存，第一次错误后，相同 AppCode 和 AppSecret `必须等待5秒以上`才能再请求
     - e.如果无法确认, 请提供请求详情.
   
-- `message: unauthorized: app(xxx) is not allowed to call system (yyy) api" xxx这个app_code不允许调用系统yyy的资源, 需要将xxx加入到yyy的`clients`中. 具体见  [系统(System) API](../../../Reference/API/02-Model/10-System.md)
+- `message: unauthorized: app(xxx) is not allowed to call system (yyy) api" xxx这个app_code不允许调用系统yyy的资源, 需要将xxx加入到yyy的`clients`中. 具体见  [系统(System) API](../../Reference/API/02-Model/10-System.md)
 
 ### 1901404
 

@@ -66,7 +66,7 @@
 
 - 日志级别和路径
 
-开发框架默认配置的日志级别是 INFO，你可以在 config/default.py 修改 LOG_LEVEL 变量，会对所有运行环境生效，你也可以单独修改 config/dev.py、config/stag.py、config/prod.py 文件，详情请参考“[日志使用](.framework2.md#日志使用)”。
+开发框架默认配置的日志级别是 INFO，你可以在 config/default.py 修改 LOG_LEVEL 变量，会对所有运行环境生效，你也可以单独修改 config/dev.py、config/stag.py、config/prod.py 文件，详情请参考“[日志使用](./framework2.md#日志使用)”。
 
 你不需要关心线上运行环境的日志路径，这些开发框架已经自动帮你配置了；
 

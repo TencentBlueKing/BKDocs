@@ -17,6 +17,6 @@
 
 - [流水线首页](Pipeline/pipeline-list.md)
 - [制品库首页](Artifactory/Artifactory.md)
-- [代码库首页](Repos/repos-list.md)
+- [代码库首页](Repos/repos-link.md)
 - [构建机管理页](Resource/bkci-hosted.md)
 - [凭证管理页](Ticket/ticket-list.md)

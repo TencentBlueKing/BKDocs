@@ -126,6 +126,6 @@ echo "FTAARGV return_mem:${return_mem}"
 ![-w398](../assets/15361193219458.jpg)
 <center>图 11. 作业+通知 组合套餐的输出结果</center>
 
-> 注：如果参数仅在作业平台中传递，可以使用 [作业平台的上下文传参功能](../../../作业平台/产品白皮书/quickstart/1.Create-system-account.md)。
+> 注：如果参数仅在作业平台中传递，可以使用 [作业平台的上下文传参功能](../../../作业平台/产品白皮书/Best-Practices/How-to-pass-params-through-steps.md)。
 
 
