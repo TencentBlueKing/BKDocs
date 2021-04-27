@@ -60,7 +60,7 @@
    cp -a /data/src/yum /opt
    ```
 
-### 1.5 配置 install.config
+### 1.5 生成并配置 install.config
 
 ```bash
 # 请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信

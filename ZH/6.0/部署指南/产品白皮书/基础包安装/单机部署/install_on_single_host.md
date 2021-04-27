@@ -8,7 +8,7 @@
 
 - 配置好 YUM 源，包含 EPEL 仓库(可以通过 `yum info pssh` 测试下)。
 
-- 从 [官网下载](http://bk.tencent.com/download/) 完整包，并解压到 /data/ 下。实际版本请以蓝鲸官网下载为准。
+- 从 [官网下载](http://bk.tencent.com/download/) 基础套餐，并解压到 /data/ 下。实际版本请以蓝鲸官网下载为准。
 
     ```bash
     tar xf bkce_basic_suite-6.0.3.tgz -C /data
