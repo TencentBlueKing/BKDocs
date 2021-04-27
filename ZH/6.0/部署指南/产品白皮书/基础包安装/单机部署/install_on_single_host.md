@@ -59,6 +59,11 @@ cd /data/install
 执行完部署后，执行降低内存消耗脚本。以确保环境的稳定
 
 ```bash
+# 临时修复：执行 tweak 操作后 open_paas uWsgi 参数中 cheaper > workers 的问题
+# 感谢[广州六子](https://bk.tencent.com/s-mart/personal/1283/)的反馈
+sed -i '/^cheaper/d' /data/bkce/etc/uwsgi-*.ini 
+
+# 执行降低内存消耗脚本
 bash bin/single_host_low_memory_config.sh tweak all
 ```
 
