@@ -1,6 +1,7 @@
 # 基础套餐安装指引
 
 > 阅读前请确认好您的部署目的。
+> 
 > 该文档适用于生产环境多机器分模块部署场景，如仅需体验该套餐功能，可参考 [单机部署](../单机部署/install_on_single_host.md)
 
 基础套餐包含：PaaS 平台、配置平台、作业平台、权限中心、用户管理、节点管理、标准运维、流程服务。
@@ -28,7 +29,7 @@
 
 ### 1.3 下载安装包
 
-- 请前往 [蓝鲸官网下载页](https://bk.tencent.com/download/) 下载基础套餐包。
+- 请前往 [蓝鲸官网下载页](https://bk.tencent.com/download/) 下载基础套餐包
 
 ### 1.4 解压相关资源包
 
@@ -181,11 +182,13 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 
 > 下面介绍的操作均可能覆盖现有 hosts ，进行操作前请先确认是否需要备份。
 
-1.Windows 配置
+1. Windows 配置
 
 用文本编辑器（如 `Notepad++`）打开文件：
 
-`C:\Windows\System32\drivers\etc\hosts`
+```bash
+C:\Windows\System32\drivers\etc\hosts
+```
 
 将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 
@@ -204,7 +207,7 @@ grep -E "nginx|nodeman" /data/install/install.config
 
 > 注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -> “安全”，然后选择你登陆的用户名，最后点击编辑，勾选“写入”即可。
 
-2.Linux / Mac OS 配置
+2. Linux / Mac OS 配置
 
 将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 
