@@ -41,19 +41,18 @@ ssh $BK_NODEMAN_IP
 echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
 ```
 
-- 进入节点管理后台，修改 gse 的全局配置
+- 进入节点管理SaaS，修改 gse 的全局配置
 
-  - 登陆节点管理后台 ：<http://<paas.bktencent.com>/o/bk_nodeman/admin_nodeman/>，请使用实际的域名替换 `<>` 内的域名。
+  - 打开节点管理
   
-  - 登陆至节点管理后，找到 【接入点信息】，选择【默认接入点】
+  - 进入 【全局配置】，编辑【默认接入点】
 
-  - 修改 `GSE BT文件服务器列表`、`GSE 数据服务器列表`、`GSE 任务服务器列表` 的 outer_ip 为实际的 GSE 外网 IP [gse 模块分布的机器]，可参考 `$CTRL_DIR/pcmd.sh -m gse "curl -s icanhazip.com" | tail -n 1`。
+  - 修改 `Btfileserver`、`Dataserver`、`Taskserver` 的 `外网IP列` 为实际的 GSE 外网 IP [gse 模块分布的机器]，可参考 `$CTRL_DIR/pcmd.sh -m gse "curl -s icanhazip.com" | tail -n 1`。
 
-  - 修改 `安装包外网地址` 处的域名为节点管理的外网 IP [nodeman 模块分布的机器]，可参考 `$CTRL_DIR/pcmd.sh -m nodeman "curl -s icanhazip.com" | tail -n 1`
+  - 修改 `Agent包URL` 第二个输入框的域名，替换为节点管理的外网 IP [nodeman 模块分布的机器]，可参考 `$CTRL_DIR/pcmd.sh -m nodeman "curl -s icanhazip.com" | tail -n 1`
   
-  - `接入点状态` 修改为 `1`
+    ![image](https://user-images.githubusercontent.com/4710858/116407651-8f576f00-a864-11eb-8ab4-0461d7b9b6cb.png)
 
-  - `BSCP配置` 修改为 `{"": ""}`
 
 - 重新渲染配置
 
