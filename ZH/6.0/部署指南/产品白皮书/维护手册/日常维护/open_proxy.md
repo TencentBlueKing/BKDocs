@@ -2,19 +2,17 @@
 
 蓝鲸部署默认不开启 Proxy，因为部分用户存在跨云管控需求，而实现跨云管控需要安装 proxy 。
 
-本文描述，开启 proxy 的方法：
+本文描述，开启 proxy 的方法，文章所涉及路径均为蓝鲸默认，如果出入，请以实际为准：
 
 ## 部署前
 
 - 登陆节点管理机器，将 nodeman 模块所在机器的外网 IP 写入指定文件。
 
 ```bash
-# $CTRL_DIR 请使用实际部署脚本路径替换。
-source $CTRL_DIR/utils.fc
-ssh $BK_NODEMAN_IP
+source /data/install/utils.fcc
 
 # 将节点管理机器外网 IP 写入指定文件
-echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
+pcmd -m nodeman "echo WAN_IP=$(curl -s icanhazip.com) >> /etc/blueking/env/local.env"
 ```
 
 - 将 gse 模块所在机器的外网 IP 写入至中控机指定的文件
@@ -23,9 +21,7 @@ echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
 
 ```bash
 # 中控机执行
-# $CTRL_DIR 请使用实际部署脚本路径替换。
-
-echo "BK_GSE_WAN_IP_LIST=$($CTRL_DIR/pcmd.sh -m gse "curl -s icanhazip.com" | tail -n 1)" >> /etc/blueking/env/local.env 
+pcmd -m gse "echo BK_GSE_WAN_IP_LIST=$(curl -s icanhazip.com) >> /etc/blueking/env/local.env" 
 ```
 
 ## 部署后
@@ -33,27 +29,37 @@ echo "BK_GSE_WAN_IP_LIST=$($CTRL_DIR/pcmd.sh -m gse "curl -s icanhazip.com" | ta
 - 登陆节点管理机器，将 nodeman 模块所在机器的外网 IP 写入指定文件。
 
 ```bash
-# $CTRL_DIR 请使用实际部署脚本路径替换。
-source $CTRL_DIR/utils.fc
-ssh $BK_NODEMAN_IP
-
+source /data/install/utils.fcc
+cd /data/install/
 # 将节点管理机器外网 IP 写入指定文件
-echo "WAN_IP=$(curl -s icanhazip.com)" >> /etc/blueking/env/local.env
+pcmd -m nodeman "echo WAN_IP=$(curl -s icanhazip.com) >> /etc/blueking/env/local.env"
+
 ```
 
-- 进入节点管理后台，修改 gse 的全局配置
+- 注册 bkcfg/global/nodeman_wan_ip 至 consul
 
-  - 登陆节点管理后台 ：<http://<paas.bktencent.com>/o/bk_nodeman/admin_nodeman/>，请使用实际的域名替换 `<>` 内的域名。
+```bash
+pcmd -m nodeman "source /data/install/utils.fc; consul kv put bkcfg/global/nodeman_wan_ip \$WAN_IP"
+```
+
+- 重启 consul-template 关服务
+
+```bash
+pcmd -m nodeman "systemctl restart consul-template"
+```
+
+- 进入节点管理 SaaS，修改 gse 的全局配置 (该方式主要是为了解决 gse 与 proxy 内网不通时，如内网能通，请忽略该步骤)
+
+  - 打开节点管理
   
-  - 登陆至节点管理后，找到 【接入点信息】，选择【默认接入点】
+  - 进入 【全局配置】，编辑【默认接入点】
 
-  - 修改 `GSE BT文件服务器列表`、`GSE 数据服务器列表`、`GSE 任务服务器列表` 的 outer_ip 为实际的 GSE 外网 IP [gse 模块分布的机器]，可参考 `$CTRL_DIR/pcmd.sh -m gse "curl -s icanhazip.com" | tail -n 1`。
+  - 修改 `Btfileserver`、`Dataserver`、`Taskserver` 的 `外网IP列` 为实际的 GSE 外网 IP [gse 模块分布的机器]，可参考 `$CTRL_DIR/pcmd.sh -m gse "curl -s icanhazip.com" | tail -n 1`。
 
-  - 修改 `安装包外网地址` 处的域名为节点管理的外网 IP [nodeman 模块分布的机器]，可参考 `$CTRL_DIR/pcmd.sh -m nodeman "curl -s icanhazip.com" | tail -n 1`
+  - 修改 `Agent包 URL` 第二个输入框的域名，替换为节点管理的外网 IP [nodeman 模块分布的机器]，可参考 `$CTRL_DIR/pcmd.sh -m nodeman "curl -s icanhazip.com" | tail -n 1`
   
-  - `接入点状态` 修改为 `1`
+    ![image](https://user-images.githubusercontent.com/4710858/116407651-8f576f00-a864-11eb-8ab4-0461d7b9b6cb.png)
 
-  - `BSCP配置` 修改为 `{"": ""}`
 
 - 重新渲染配置
 

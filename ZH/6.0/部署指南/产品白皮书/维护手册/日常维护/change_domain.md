@@ -11,7 +11,8 @@
 - 运行变更域名脚本 **（请使用实际的域名进行替换）**
 
   ```bash
-  cd /data/install && source load_env.sh
+  cd /data/install
+  source utilsf.fc && source ~/.bkrc
   ./bin/change_bk_domain.sh bktencent.org
   ```
 
