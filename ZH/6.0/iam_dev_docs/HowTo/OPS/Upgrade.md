@@ -3,16 +3,16 @@
 ## 背景
 文档主要说明 IAM某些版本升级需要执行的一些特殊步骤
 
-## 升级 *`SaaS版本 >= 1.4.x`*
+## 升级 SaaS版本 >= 1.4.x
 ### 升级步骤
-1. 升级IAM 后台版本到`1.6.1`, SaaS版本到`1.3.6`
+1. 升级 IAM 后台版本到`1.6.1`, SaaS 版本到`1.3.6`
 
 2. 全量同步所有的权限模板
 ```bash
-sh $BK_APPO_IP
+ssh $BK_APPO_IP
 docker exec -it $(docker ps | grep -w bk_iam | awk '{print $1}') bash 
 /cache/.bk/env/bin/python /data/app/code/manage.py sync_templates
-# 脚本打印Successful completion of template version synchronization 表示执行同步成功
+# 脚本打印 Successful completion of template version synchronization 表示执行同步成功
 ```
 
 3. 升级 IAM 后台到 1.7.x
