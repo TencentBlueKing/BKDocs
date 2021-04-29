@@ -9,10 +9,12 @@
 - 登陆节点管理机器，将 nodeman 模块所在机器的外网 IP 写入指定文件。
 
 ```bash
-source /data/install/utils.fcc
+# 中控机执行
+source /data/install/utils.fc
+ssh $BK_NODEMAN_IP
 
 # 将节点管理机器外网 IP 写入指定文件
-pcmd -m nodeman "echo WAN_IP=$(curl -s icanhazip.com) >> /etc/blueking/env/local.env"
+echo WAN_IP=$(curl -s icanhazip.com) >> /etc/blueking/env/local.env
 ```
 
 - 将 gse 模块所在机器的外网 IP 写入至中控机指定的文件
@@ -21,7 +23,8 @@ pcmd -m nodeman "echo WAN_IP=$(curl -s icanhazip.com) >> /etc/blueking/env/local
 
 ```bash
 # 中控机执行
-pcmd -m gse "echo BK_GSE_WAN_IP_LIST=$(curl -s icanhazip.com) >> /etc/blueking/env/local.env" 
+ssh $BK_GSE_IP
+echo BK_GSE_WAN_IP_LIST=$(curl -s icanhazip.com) >> /etc/blueking/env/local.env
 ```
 
 ## 部署后
@@ -29,23 +32,26 @@ pcmd -m gse "echo BK_GSE_WAN_IP_LIST=$(curl -s icanhazip.com) >> /etc/blueking/e
 - 登陆节点管理机器，将 nodeman 模块所在机器的外网 IP 写入指定文件。
 
 ```bash
-source /data/install/utils.fcc
-cd /data/install/
+# 中控机执行
+source /data/install/utils.fc
+ssh $BK_NODEMAN_IP
+
 # 将节点管理机器外网 IP 写入指定文件
-pcmd -m nodeman "echo WAN_IP=$(curl -s icanhazip.com) >> /etc/blueking/env/local.env"
+echo WAN_IP=$(curl -s icanhazip.com) >> /etc/blueking/env/local.env
 
 ```
 
 - 注册 bkcfg/global/nodeman_wan_ip 至 consul
 
 ```bash
-pcmd -m nodeman "source /data/install/utils.fc; consul kv put bkcfg/global/nodeman_wan_ip \$WAN_IP"
+source /data/install/utils.fc
+consul kv put bkcfg/global/nodeman_wan_ip $WAN_IP
 ```
 
 - 重启 consul-template 关服务
 
 ```bash
-pcmd -m nodeman "systemctl restart consul-template"
+systemctl restart consul-template
 ```
 
 - 进入节点管理 SaaS，修改 gse 的全局配置 (该方式主要是为了解决 gse 与 proxy 内网不通时，如内网能通，请忽略该步骤)
