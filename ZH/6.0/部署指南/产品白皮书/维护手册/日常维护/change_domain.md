@@ -12,7 +12,7 @@
 
   ```bash
   cd /data/install
-  source utilsf.fc && source ~/.bkrc
+  source utils.fc && source ~/.bkrc
   ./bin/change_bk_domain.sh bktencent.org
   ```
 
