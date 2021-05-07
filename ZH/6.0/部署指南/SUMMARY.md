@@ -43,8 +43,8 @@
             * [MongoDB](产品白皮书/维护手册/日常维护/mongodb.md)
             * [MySQL](产品白皮书/维护手册/日常维护/mysql.md)
             * [更新证书](产品白皮书/维护手册/日常维护/renew_certificate.md)
-        * [升级指引]
-            * [社区版 6.0 Patch 升级指引](产品白皮书/升级指引/update%20of%20the%206.0%20patch.md) 
+        * [升级指引]()
+            * [社区版 6.0 Patch 升级指引](产品白皮书/升级指引/update%20of%20the%206.0%20patch.md)
         * [卸载指引](产品白皮书/卸载指引/uninstall.md)
     * [容器管理套餐]()
         * [术语解释](产品白皮书/增强包维护/BCS/Term.md)
