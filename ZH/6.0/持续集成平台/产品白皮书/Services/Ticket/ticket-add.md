@@ -12,6 +12,7 @@
 SSH 私钥 | 关联 GitLab 代码库时（不需要 GitLab 事件触发）使用
 SSH 私钥+私有 Token | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用
 用户名密码+私有 token | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用
+AccessToken | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用
 
 ## 接下来你可能需要
 
