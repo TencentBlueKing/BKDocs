@@ -175,5 +175,4 @@
     * [更新服务模板](6.0/API文档/CC/update_service_template.md)
     * [更新集群](6.0/API文档/CC/update_set.md)
     * [编辑集群模板](6.0/API文档/CC/update_set_template.md)
-* [常见问题](产品白皮书/FAQ/FAQ.md)
 * [结语](产品白皮书/结语/Conclusion.md)
