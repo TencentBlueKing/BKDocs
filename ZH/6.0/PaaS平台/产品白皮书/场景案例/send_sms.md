@@ -4,11 +4,10 @@
 
 ## 组件配置
 
-- dest_url: 若用户不擅长用 Python，可以提供一个其他语言的接口，填到 dest_url，ESB 仅作请求转发即可打通邮件配置
+- dest_url: 若用户不擅长用 Python，可以提供一个其他语言的接口，填到 dest_url，ESB 仅作请求转发即可打通短信配置
 - qcloud_app_id: SDK AppID
 - qcloud_app_key: App Key
 - qcloud_sms_sign: 在腾讯云 SMS 申请的签名，比如：腾讯科技
-
 
 ## 组件示例
 
@@ -24,9 +23,7 @@
 
 ![-w2021](../assets/noticeWay06.png)
 
-
 > 注意：国内短信由签名+正文组成，签名符号为【】（注：全角），发送短信内容时必须带签名;
-
 
 ### 2、创建正文模板
 
@@ -50,14 +47,14 @@
 
 ![-w2021](../assets/markdown-img-paste-20200403173813685.png)
 
-
 ### 4、配置通道
 
 以“admin”的角色进入“开发者中心” -> “API 网关” -> “通道管理” -> 选择系统 “[CMSI] 蓝鲸消息管理” -> 选择 “[CMSI] 发送短信”
 
 ```bash
 qcloud_app_id：SDK AppID
-qcloud_app_key：App Key 
+qcloud_app_key：App Key
+qcloud_sms_sign: 腾讯蓝鲸
 ```
 
 是否开启：是
@@ -94,14 +91,11 @@ http://{PaaS_URL}/api/c/compapi/cmsi/send_sms/
 
 ### 6、排查接口问题
 
-1. 相关日志信息，登录 PaaS 机器查看
+相关日志信息，登录 PaaS 机器查看
 
 ```bash
 tail -f /data/bkce/logs/open_paas/esb.log
 ```
-
-2. 请检查是否将端口打开
-
 
 ### 7、FAQ
 
