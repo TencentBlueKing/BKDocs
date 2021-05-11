@@ -61,7 +61,7 @@ POST
     "receiver": "admin@bking.com",
     "sender": "admin@bking.com",
     "title": "This is a Test",
-    "content": "<html>Welcome to Blueking</html>",
+    "content": "<html>Welcome to Blueking</html>"
 }
 ```
 

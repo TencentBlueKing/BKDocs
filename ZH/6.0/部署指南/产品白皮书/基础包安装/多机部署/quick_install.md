@@ -12,7 +12,7 @@
 
 ### 1.1 准备机器
 
-1. 建议操作系统： CentOS 7.6
+1. 建议操作系统： CentOS 7.6 及以上
 2. 建议机器配置
    - 生产环境：建议 4 核 16 G，硬盘 100G 以上（可根据实际情况适当调整配置）
       - 机器数量：3 台（假设 ip 分别为：10.0.0.1，10.0.0.2，10.0.0.3）
@@ -231,3 +231,5 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
 
 进阶选项：[监控日志套餐部署](./value_added.md)
+
+[【社区版 6.0.3 问题汇总 】](https://bk.tencent.com/s-mart/community/question/2120)
