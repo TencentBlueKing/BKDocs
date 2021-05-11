@@ -27,6 +27,13 @@ ssh $BK_GSE_IP
 echo BK_GSE_WAN_IP_LIST=$(curl -s icanhazip.com) >> /etc/blueking/env/local.env
 ```
 
+- 将 gse 的 bt 模块监听 0.0.0.0
+
+```bash
+# 中控机执行
+sed -i '/filesvrthriftip/s/__LAN_IP__/0.0.0.0/' /data/src/gse/support-files/templates/#etc#gse#btsvr.conf
+```
+
 ## 部署后
 
 - 登陆节点管理机器，将 nodeman 模块所在机器的外网 IP 写入指定文件。
