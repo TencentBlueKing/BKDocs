@@ -153,7 +153,7 @@ chattr -i /etc/resolv.conf
 
 DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重启主机后，某些网络配置会导致该文件被还原为初始状态。
 
-安装前先确认 **“修改 /etc/resolv.conf 并重启主机，是否被还原”** 。如果被还原，可以参考以下红帽官方的文档解决： https://access.redhat.com/solutions/7412
+安装前先确认 **“修改 /etc/resolv.conf 并重启主机，是否被还原”** 。如果被还原，可以参考以下红帽官方的文档解决： [https://access.redhat.com/solutions/7412](https://access.redhat.com/solutions/7412)
 
 ## 准备相关软件包
 
