@@ -35,10 +35,11 @@ QQ 邮箱的 SMTP 服务，默认是关闭的。
 [QQ 邮箱 SMTP 默认配置](https://service.mail.qq.com/cgi-bin/help?subtype=1&&id=20010&&no=1000557)：
 
 ```bash
-smtp_host : smtp.qq.com
+smtp_host ：smtp.qq.com
 smtp_port ：465
 smtp_user ：demo@qq.com （个人QQ邮箱地址）
 smtp_pwd ：授权码
+smtp_usessl ：True
 ```
 
 ![-w2020](../assets/noticeWay02.png)
