@@ -78,33 +78,58 @@ bash bin/single_host_low_memory_config.sh tweak all
 
 ## 访问蓝鲸
 
-根据 `install/bin/04-final/global.env`、`install/bin/04-final/usermgr.env` 里配置的 PaaS 域名(BK_PAAS_PUBLIC_ADDR)、账号 (BK_PAAS_ADMIN_USERNAME)、密码(BK_PAAS_ADMIN_PASSWORD)信息，登录访问(若域名没设置 DNS 解析，需配置本机 hosts)。
+> 下面介绍的操作均可能覆盖现有 hosts ，进行操作前请先确认是否需要备份。
 
-- 域名信息
+### 配置 host
 
-  ```bash
-  # 蓝鲸的根域名
-  BK_DOMAIN=bktencent.com
-  # 访问PaaS平台的域名
-  BK_PAAS_PUBLIC_ADDR=paas.bktencent.com:80
-  # 访问CMDB的域名
-  BK_CMDB_PUBLIC_ADDR=cmdb.bktencent.com:80
-  # 访问Job平台的域名
-  BK_JOB_PUBLIC_ADDR=job.bktencent.com:80
-  BK_JOB_API_PUBLIC_ADDR=jobapi.bktencent.com:80
-  # 访问节点管理下载插件包的URL
-  BK_NODEMAN_PUBLIC_DOWNLOAD_URL=nodeman.bktencent.com:80
-  ```
+1. Windows 配置
 
-- 账号信息
+用文本编辑器（如 `Notepad++`）打开文件：
 
-  ```bash
-  BK_PAAS_ADMIN_PASSWORD=xxxxx
-  BK_PAAS_ADMIN_USERNAME=admin
-  ```
+```bash
+C:\Windows\System32\drivers\etc\hosts
+```
+
+将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
+
+```bash
+10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
+10.0.0.3 nodeman.bktencent.com
+```
+
+**注意：** 10.0.0.2 为 nginx 模块所在的机器，10.0.0.3 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。
+
+查询模块所分布在机器的方式：
+
+```bash
+grep -E "nginx|nodeman" /data/install/install.config
+```
+
+> 注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -> “安全”，然后选择你登陆的用户名，最后点击编辑，勾选“写入”即可。
+
+2. Linux / Mac OS 配置
+
+将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
+
+```bash
+10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
+10.0.0.3 nodeman.bktencent.com
+```
+
+### 获取管理员账户名密码
+
+在任意一台机器上，执行以下命令，获取管理员账号和密码。
+
+```bash
+grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-final/usermgr.env
+```
+
+## 日常维护
 
 日常维护和运维，单机部署和多机是一致的，请参考 [维护文档](../../维护手册/日常维护/maintain.md)。
 
 ## 使用蓝鲸
 
 可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
+
+如需部署监控日志套餐，请参考 [监控日志套餐部署](../多机部署/value_added.md) 。
