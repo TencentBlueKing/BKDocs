@@ -60,6 +60,16 @@ tar xf bkce_co_package-6.0.3.tgz
 
    ![sops](../../assets/sops2.png)
 
+### 6.检查 install.config
+
+检查 install.config 文件是否已经包含增强套餐的相关模块分布。如果有请先移除相关模块。
+
+```bash
+value_modules=(es7 monitorv3\(influxdb-proxy\) monitorv3\(monitor\) monitorv3\(grafana\) influxdb\(bkmonitorv3\) monitorv3\(transfer\) fta beanstalk log\(grafana\) log\(api\) kafka\(config\))
+
+for module in ${value_modules[@]}; do if grep ${module} /data/install/install.config >/dev/null; then echo -e "The \e[1;31m ${module} \e[0m module exists in install.config, please remove it before deploying."; fi; done
+```
+
 ## 开始部署
 
 ### 监控平台
