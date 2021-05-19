@@ -25,7 +25,7 @@
 
     ```bash
     cd /data/src/; for f in *gz;do tar xf $f; done
-    ``` 
+    ```
 
   - 拷贝 rpm 软件包
 
@@ -43,7 +43,6 @@ sed -i '/JAVA_OPTS/c JAVA_OPTS="-Xms128m -Xmx128m"' /etc/sysconfig/bk-job-*
 
 ![change_job](../../assets/change_job.png)
 
-
 - 去除 install_minibk 的 .path 配置
 
 ```bash
@@ -51,8 +50,6 @@ sed  -i '33,34d' /data/install/install_minibk
 ```
 
 - install.config 这个文件安装脚本会自动生成，无需自行配置。
-
-
 
 ## 执行安装
 
@@ -74,6 +71,12 @@ sed -i '/^cheaper/d' /data/bkce/etc/uwsgi-*.ini
 
 # 执行降低内存消耗脚本
 bash bin/single_host_low_memory_config.sh tweak all
+```
+
+## 初始化蓝鲸业务拓扑
+
+```bash
+./bkcli initdata topo
 ```
 
 ## 访问蓝鲸
