@@ -138,17 +138,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访
 
 ### 部署 bknodeman
 
-- 如需使用跨云管控，请提前将节点管理的外网 IP 写入至节点管理后台服务所在机器的`/etc/blueking/env/local.env` 文件。否则请忽略该步骤
-
-```bash
-# 加载蓝鲸相关维护命令
-source ~/.bashrc
-source /data/install/utils.fc
-
-ssh $BK_NODEMAN_IP "cat >> /etc/blueking/env/local.env <<_EOF
-WAN_IP=$(curl -s icanhazip.com)
-_EOF"
-```
+- 如需使用跨云管控，请提前将节点管理的外网 IP 写入至节点管理后台服务所在机器的`/etc/blueking/env/local.env` 文件，详细请参考 [开启 proxy](../维护手册/日常维护/../../../维护手册/日常维护/open_proxy.md)。否则请忽略该步骤
 
 - 开始部署
 
