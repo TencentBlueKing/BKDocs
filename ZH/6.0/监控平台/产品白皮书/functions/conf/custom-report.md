@@ -196,6 +196,6 @@ workon bkmonitorv3-monitor
 
 > 其中填写的 target_ip 将会在页面上显示为云区域 0(直连区域)的上报 IP
 
-- 非直连区域
-  - bkmonitorproxy 的更新依赖节点管理插件管理功能。在首次使用自定义事件上报功能 或 bkmonitorproxy 有更新的时候，需要在节点管理中更新 bkmonitorproxy。
+- 非直连云区域
+  - 只要是创建了自定义上报，非直连的云区域会自动创建并下发配置。需要等待5分钟左右。默认是部署在和GSE Proxy相同的服务器上。 
 
