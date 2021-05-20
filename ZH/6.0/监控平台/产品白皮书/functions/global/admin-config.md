@@ -10,7 +10,7 @@
 
 ### 全局配置页面
 
-![-w2020](media/15772819609704.jpg)
+![-w2021](media/15772819609704.jpg)
 
 #### 数据保存周期
 
@@ -45,7 +45,7 @@
 1. 访问  `${BK_PAAS_HOST}/o/bk_monitor/admin/bkmonitor/globalconfig/` ，进入 admin 页面
 点击看原图
 
-![-w2020](media/15746678905653.jpg)
+![-w2021](media/15746678905653.jpg)
 
 2. 点击需要修改的配置，进入配置页面
 

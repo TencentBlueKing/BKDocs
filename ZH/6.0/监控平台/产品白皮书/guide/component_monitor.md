@@ -12,7 +12,7 @@
 
 目前覆盖 Apache、Nginx、Tomcat、MySQL、Redis 等常用组件的性能指标监控，具体配置请参照 APP 上的接入指引。具体查看[内置官方插件列表](../functions/addenda/builtin-plugins.md)。
 
-> **注意：** 如果想监控的组件不在此列，或者是组件提供的接入提示说明不清晰/按说明无法成功接入，请联系蓝鲸助手 QQ： [800802001](http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDgwMjAwMV80NDMwOTZfODAwODAyMDAxXzJf) 反馈给监控平台团队。（文档中心反馈功能也可以接入这个反馈）
+> **注意**： 如果想监控的组件不在此列，或者是组件提供的接入提示说明不清晰/按说明无法成功接入，请联系蓝鲸助手 QQ： [800802001](http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDgwMjAwMV80NDMwOTZfODAwODAyMDAxXzJf) 反馈给监控平台团队。（文档中心反馈功能也可以接入这个反馈）
 
 ### 方法二：使用其他人制作的监控平台插件导入
 
