@@ -49,6 +49,12 @@ sed -i '/JAVA_OPTS/c JAVA_OPTS="-Xms128m -Xmx128m"' /etc/sysconfig/bk-job-*
 sed  -i '33,34d' /data/install/install_minibk
 ```
 
+- 在 install.config.3ip.sample  文件追加一行空行
+
+```bash
+echo >> /data/install/install.config.3ip.sample
+```
+
 - install.config 这个文件安装脚本会自动生成，无需自行配置。
 
 ## 执行安装
