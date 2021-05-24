@@ -116,7 +116,7 @@
 
 如果勾选了`project`, 代表这个项目下的所有流程模板有权限; 如果勾选了具体某个`flow`, 代表仅对这个具体的流程模板有权限;
 
-![](../../assets/HowTo/Examples/03_01.jpg)
+![-w2021](../../assets/HowTo/Examples/03_01.jpg)
 
 
 ## 4. 鉴权

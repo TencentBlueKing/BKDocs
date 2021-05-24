@@ -3,8 +3,8 @@
 ## 权限中心开发
 
 * [快速指引]()
-    * [产品说明](6.0/权限中心/产品白皮书/产品简介/README.md)
     * [接入指引](HowTo/Guide.md)
+    * [接入流程图](HowTo/GuideFlow.md)
     * [错误码](HowTo/FAQ/ErrorCode.md)
     * [FAQ](HowTo/FAQ/FAQ.md)
     * [问题排查指引](HowTo/FAQ/Guide.md)

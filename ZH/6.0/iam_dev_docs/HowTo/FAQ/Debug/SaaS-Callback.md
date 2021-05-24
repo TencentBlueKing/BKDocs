@@ -31,7 +31,7 @@
 
 ## 5. 常见回调异常场景
 1. 接入系统回调接口502
-![](../../../assets/HowTo/FAQ/Debug/Callback_01.jpg)
+![-w2021](../../../assets/HowTo/FAQ/Debug/Callback_01.jpg)
 
 * 原因：回调接入系统接口502，可能是接入系统服务未启动或回调的HOST&Path有错误
 
