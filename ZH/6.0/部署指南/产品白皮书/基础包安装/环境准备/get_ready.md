@@ -183,13 +183,20 @@ DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重�
 
 ## 准备 install.config 文件
 
-可直接拷贝 3 台机器部署的模版文件
+**说明：**
+
+- gse 与 redis 需要部署在同一台机器上。
+- 当含多个内网 IP 时，默认使用  /sbin/ifconfig 输出中的第一个内网 IP。
+- 部署需要使用标准私有地址，若企业环境使用非标准私有地址，请参考 [环境准备-非标准私有地址处理方法](../环境准备/get_ready.md#非标准私有地址处理方法)
 
 ```bash
-# 以 /data 目录为例
-cp -a /data/install/install.config.3ip.sample /data/install/install.config
+# 请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
+cat << EOF >/data/install/install.config
+10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,mysql
+10.0.0.2 nginx,consul,mongodb,rabbitmq,appo
+10.0.0.3 paas,cmdb,job,zk(config),appt,consul,nodeman(nodeman)
 
-# 最后，请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
+EOF
 ```
 
 **说明：**
