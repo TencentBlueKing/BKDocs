@@ -6,7 +6,7 @@
 
 若有数据，先检查 bkdata 所在机器 crontab 里是否有 update_cc_cache.sh 的项目。
 
-若无则先运行`bkcec install cron`。若有联系蓝鲸技术支持同学。
+若无则先运行`bkeec install cron`。若有联系蓝鲸技术支持同学。
 
 ## 2. 检查进程
 
@@ -61,7 +61,7 @@ GSE_IP 和 GSE_IP1 机器：检测 9092 端口
 ZK_IP 机器：查看 ZK 节点
 
 ```bash
->/data/bkce/service/zk/bin/zkCli.sh -server ip:2181 (ip通常为zk本机内网IP)
+>/data/bkee/service/zk/bin/zkCli.sh -server ip:2181 (ip通常为zk本机内网IP)
 get /gse/config/etc/dataserver/data/1001
 ```
 
@@ -78,7 +78,7 @@ topic 为 data_set 和 biz_id 组成，则 topic=snapshot2 能获取到 topic �
 KAFKA_IP 机器上：查看 KAFKA 最新数据，等待 1 分钟查看是否有数据，有数据则 OK
 
 ```bash
-cd /data/bkce/service/kafka/
+cd /data/bkee/service/kafka/
 zkaddr=`cat config/server.properties | grep common_kafka | cut -d '=' -f 2`
 sh bin/kafka-topics.sh --list --zookeeper $zkaddr
 sh bin/kafka-console-consumer.sh --bootstrap-server $LAN_IP:9092--topic $topic(第5步查询到的)
@@ -90,7 +90,7 @@ GSE_IP 和 GSE_IP1 机器：
 
 ```bash
 ps -ef | grep gse_data
-cd /data/bkce/public/gse/data
+cd /data/bkee/public/gse/data
 ls -l
 ```
 

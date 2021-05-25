@@ -73,7 +73,7 @@ tar xf /data/tmp/install_ce-v3.0.8.tgz -C /data/tmp/
     # 还原 backup 目录
     cp -a /data/src.bak/backup /data/src/
     # 还原 python、yum、license等
-    cp -a -r /data/src.bak/{bkssm,python,yum,license,blueking.env,COMMON_VERSION,VERSION,java8.tgz,paasagent} /data/src
+    cp -a -r /data/src.bak/{bkssm,python,yum,license,blueking.env,COMMON_VERSION,VERSION,java8.tgz,paas_agent} /data/src
     cp -a -r /data/src.bak/gse_plugins/gsecmdline-2.0.3.tgz /data/src/gse_plugins/
     echo "6.0.3" > /data/src/VERSION
 	```

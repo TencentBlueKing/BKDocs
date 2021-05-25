@@ -64,7 +64,7 @@
 
 找到权限中心 SaaS 的 component.log 日志, 搜索对应的请求 request_id, 查询相关 api 调用的上下文
 
-![](../../assets/HowTo/FAQ/ErrorCodes_1.png)
+![-w2021](../../assets/HowTo/FAQ/ErrorCodes_1.png)
 
 ### 1902000
 
@@ -121,7 +121,7 @@
 
 找到权限中心 SaaS 的 bk_iam-app.log 日志, 搜索对应的请求 request_id, 查询相关 api 调用的上下文
 
-![](../../assets/HowTo/FAQ/ErrorCodes_2.png)
+![-w2021](../../assets/HowTo/FAQ/ErrorCodes_2.png)
 
 ### 1902400 1902412 1902414 1902415 1902416
 
@@ -144,13 +144,13 @@
 
 ### 1. 前端 api 调用错误时的提示
 
-![](../../assets/HowTo/FAQ/ErrorCodes_3.png)
+![-w2021](../../assets/HowTo/FAQ/ErrorCodes_3.png)
 
 当权限中心 SaaS 页面出现如上红框弹出提示时, 表示权限中心 SaaS api 调用报错需要查询 api 返回的结果, 找到结果中的 code, 根据以下排查方法排查问题
 
 ### 2. api 请求的 request_id
 
-![](../../assets/HowTo/FAQ/ErrorCodes_4.png)
+![-w2021](../../assets/HowTo/FAQ/ErrorCodes_4.png)
 
 权限中心 SaaS 的每个 api 请求都有 request_id, 在排查前记录 request_id, 在排查日志过程中可以更方便定位到错误信息
 

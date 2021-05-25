@@ -73,11 +73,11 @@
 }
 ```
 
-![](../assets/Explanation/01_instance_selection_01.png)
+![-w2021](../assets/Explanation/01_instance_selection_01.png)
 
 类似的示例: 操作`业务编辑`, 关联资源`业务`, 对应实例视图是`业务列表`, 拉取得到平铺的列表
 
-![](../assets/Explanation/01_instance_selection_02.png)
+![-w2021](../assets/Explanation/01_instance_selection_02.png)
 
 
 ### 3.3 操作关联了一种类型实例, 实例视图是多层的
@@ -132,7 +132,7 @@
 
 此时配置权限的时候, 会先拉取第一层 `项目列表`, 选择某个项目A后, 可以展开`项目A下的任务列表`
 
-![](../assets/Explanation/01_instance_selection_03.png)
+![-w2021](../assets/Explanation/01_instance_selection_03.png)
 
 
 

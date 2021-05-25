@@ -4,12 +4,12 @@
 
 ## 接入流程
 
-![-w2020](media/15800415288588.jpg)
+![-w2021](media/15800415288588.jpg)
 
 基本上接入流程有如下阶段：
 
 1. **[准备工作](prepare.md)**：监控平台的监控目标和进程信息主要是依赖 CMDB 的配置，监控的采集链路依赖蓝鲸 Agent 的部署，监控的功能使用依赖[权限的设置](../functions/global/permissions.md)
-2. **数据采集**：监控本身就是围绕数据来工作的，数据从何而来要么通过[监控插件](../functions/conf/plugins.md)和[采集配置](../functions/conf/collect-tasks.md)获取，要么通过[自定义上报](../functions/conf/custom-report.md)主动上报上来，或者直接使用[计算平台](../guide/bigdata_monitor.md)的结果表数据
+2. **数据采集**：监控本身就是围绕数据来工作的，数据从何而来要么通过[监控插件](../functions/conf/plugins.md)和[采集配置](../functions/conf/collect-tasks.md)获取，要么通过[自定义上报](../functions/conf/custom-report.md)主动上报上来，或者直接使用[数据平台](../guide/bigdata_monitor.md)的结果表数据
 3. **数据检查**：数据是否采集成功，最终还是以是否可以查看相关的图形数据为主。每个采集任务都有一个 **检查视图** 可以查看当前主机/实例采集的数据情况。当然也可以从[Dashboard](../functions/report/dashboard.md)去检索一个任意的指标
 4. **策略配置**：采集上来的数据要么看要么告警，想要告警的指标通过策略配置进行设置。可以提前规划下告警组在告警通知的时候需要使用
 5. **告警处理**：当策略生效并且触发了告警，我们可以通过[事件中心](../functions/analyze/event.md)进行查看，也可以通过[告警通知](../functions/conf/rules.md)接收到相应的告警内容，对于告警事件可以快速的进行**告警确认**或[告警屏蔽](../functions/conf/block.md)
@@ -38,14 +38,14 @@
 * 官方插件： 内置 20 款官方插件，可直接在采集中使用，满足常用组件的监控需求。提供动态的采集需求，自动增删采集
     * [内置官方插件](../functions/addenda/builtin-plugins.md)
     * [采集配置](../functions/conf/collect-tasks.md)
-* 策略配置：可满足 IP，服务实例，集群模块的监控需求，提供 8 种检测算法。并且支持计算平台的数据监控需求
+* 策略配置：可满足 IP，服务实例，集群模块的监控需求，提供 8 种检测算法。并且支持数据平台的数据监控需求
     * [算法说明](../functions/addenda/algorithms.md)
     * [策略配置](../functions/conf/rules.md)
     * [告警组](../functions/conf/alarm-group.md)
-    * [如何监控计算平台的数据](../guide/bigdata_monitor.md)
+    * [如何监控数据平台的数据](../guide/bigdata_monitor.md)
 * 监控屏蔽：提供服务实例，IP，集群模块，策略，事件的屏蔽粒度
      * [告警屏蔽](../functions/conf/block.md)
-* 仪表盘：提供不同的图表配置，支持日志数据、计算平台数据、监控采集的指标数据画图需求
+* 仪表盘：提供不同的图表配置，支持日志数据、数据平台数据、监控采集的指标数据画图需求
      * [仪盘表](../functions/report/dashboard.md)
 * 服务拨测：提供模拟用户请求的监控需求。 
      * [服务拨测](../functions/scene/dial.md)

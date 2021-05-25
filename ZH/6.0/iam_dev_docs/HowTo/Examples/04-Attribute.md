@@ -54,7 +54,7 @@
 此时产品页面的申请入口, 配置页面回调了 [资源反向拉取 API](../../Reference/API/03-Callback/01-API.md)中的`list_attr`和`list_attr_value`(即接入系统如果配置了属性, 需要实现相应的回调接口)
 
 
-![](../../assets/HowTo/Examples/04_01.jpg)
+![-w2021](../../assets/HowTo/Examples/04_01.jpg)
 
 
 ## 4. 鉴权
