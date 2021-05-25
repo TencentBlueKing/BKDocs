@@ -1,6 +1,8 @@
-### 升级 MongoDB
+# 社区版 5.1-6.0 MongoDB 升级指引
 
-#### 准备 mongo 相关 rpm 包
+## 升级 MongoDB
+
+### 准备 mongo 相关 rpm 包
 
 - 登陆 mongodb 所在机器
 
@@ -32,7 +34,7 @@ EOF
 wget -i wget.list
 ```
 
-#### 3.6 版本更新为 4.0 版本
+### 3.6 版本更新为 4.0 版本
 
 ```bash
 yum -y install mongodb-org-shell-4.0.18-1.el7.x86_64.rpm mongodb-org-server-4.0.18-1.el7.x86_64.rpm
@@ -111,7 +113,7 @@ db.adminCommand( { setFeatureCompatibilityVersion: "4.0" } )
 rs.status()
 ```
 
-#### 4.0 版本更新为 4.2 版本
+### 4.0 版本更新为 4.2 版本
 
 - 在 mongodb 机器上执行
 
@@ -158,7 +160,7 @@ db.adminCommand( { setFeatureCompatibilityVersion: "4.2" } )
 rs.status()
 ```
 
-#### 注册 mongo consul 服务
+### 注册 mongo consul 服务
 
 ```bash
 # 注册 consul 服务，中控机执行
@@ -166,7 +168,7 @@ source /data/install/tools.sh
 reg_consul_svc mongodb 27017 $BK_MONGODB_IP_COMMA
 ```
 
-#### 写入相关标记文件
+### 写入相关标记文件
 
 ```bash
 #中控机执行
