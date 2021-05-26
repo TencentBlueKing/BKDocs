@@ -42,6 +42,7 @@
             * [Consul](产品白皮书/维护手册/日常维护/consul.md)
             * [MongoDB](产品白皮书/维护手册/日常维护/mongodb.md)
             * [MySQL](产品白皮书/维护手册/日常维护/mysql.md)
+            * [Kafka](产品白皮书/维护手册/日常维护/kafka.md)
             * [更新证书](产品白皮书/维护手册/日常维护/renew_certificate.md)
         * [升级指引]()
             * [社区版 6.0 Patch 升级指引](产品白皮书/升级指引/update_of_the_6.0_patch.md)
