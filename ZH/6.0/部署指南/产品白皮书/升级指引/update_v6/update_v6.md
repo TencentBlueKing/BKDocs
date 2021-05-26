@@ -52,9 +52,9 @@
 - 库名：bkdata_monitor_alert
 - 表名：ja_alarm_alarminstance
 
-### 下架官方SaaS
+### 下架官方 SaaS
 
-请访问蓝鲸环境，通过【开发者中心】->【S-mart应用】下架所有官方 SaaS。
+请访问蓝鲸环境，通过【开发者中心】->【S-mart 应用】下架所有官方 SaaS。
 
 ### 迁移配置文件相关变量
 
@@ -112,7 +112,7 @@ cd /data/dbbak
 
 - 生成备份脚本
 
-**注意:** 该备份方式不包含 mysql 库的备份，所以如果涉及自行开发的 SaaS 应用使用到的帐户密码会丢失。如无，可参考如下方式进行备份。
+**注意:** 该备份方式不包含 MySQL 库的备份，所以如果涉及自行开发的 SaaS 应用使用到的帐户密码会丢失。如无，可参考如下方式进行备份。
 
 ```bash
 # joblog 在升级的过程中可以不需要备份，可以加入到 ignoredblist 列表里。但是为了后续回滚，请确保 joblog 已存在有一份备份数据。
@@ -171,11 +171,11 @@ mkdir -p /data/mongodb_bak
 
 ```bash
 source /data/install/utils.fc
-# 备份 mongodb 数据：
+# 备份 MongoDB 数据：
 mongodump --host $MONGODB_IP -u $MONGODB_USER -p $MONGODB_PASS --oplog --gzip --out /data/mongodb_bak
 ```
 
-- 停止 mongodb
+- 停止 MongoDB
 
 ```bash
 ./bkcec stop mongodb
@@ -192,7 +192,7 @@ for ip in ${MONGODB_IP[@]}; do
 done
 ```
 
-- 拉起 mongodb 服务
+- 拉起 MongoDB 服务
 
 ```bash
 ./bkcec start mongodb
@@ -234,7 +234,7 @@ mv /data/src/ /data/src.bak
 cp -a /data/install /data/install.bak
 ```
 
-### 备份旧 python 解释器
+### 备份旧 Python 解释器
 
 ```bash
 source /data/install/utils.fc
@@ -344,7 +344,7 @@ ssh $BK_MYSQL_IP
 mysql --login-path=default-root --default-character-set=utf8  < /data/dbbak/bk_mysql_alldata.sql
 ```
 
-### 升级 mongodb
+### 升级 MongoDB
 
 参考 [蓝鲸社区版 5.1 mongodb 升级文档](./update_mongodb_for_v6.md)
 
@@ -363,14 +363,14 @@ mysql --login-path=default-root --default-character-set=utf8  < /data/dbbak/bk_m
 
 <font color="#dd0000">新增机器请忽略该步骤</font>
 
-由于 kafka 版本的原因，以及由原来的集群变为了单点。所以配置文件中的 `broker.id` 会有所变化，在启动 kafka 时会报错。所以需要做修改下 kafka 的配置文件，修改后再启动 `kafka` :
+由于 Kafka 版本的原因，以及由原来的集群变为了单点。所以配置文件中的 `broker.id` 会有所变化，在启动 Kafka 时会报错。所以需要做修改下 Kafka 的配置文件，修改后再启动 `kafka` :
 
 ```bash
-# 登录至 kafka 机器
+# 登录至 Kafka 机器
 source /data/install/utils.fc
 ssh $BK_KAFKA_IP
 
-# 查看升级kafka 后的 server.properties 文件中的 broker.id。将 meta.properties 中的 broker.id 与 server.properties文件中的保持一致
+# 查看升级 Kafka 后的 server.properties 文件中的 broker.id。将 meta.properties 中的 broker.id 与 server.properties文件中的保持一致
 # x 为实际的 broker.id
 grep "broker.id" /data/bkce/public/kafka/meta.properties
 broker.id=x
@@ -814,7 +814,7 @@ python manage.py migrate_from_ce_5dot1 --dry_run   # 无 ERROR 输出即为正�
 python manage.py migrate_from_ce_5dot1 > migrate.log
 ```
 
-### 迁移权限中心数据
+### 权限中心同步用户组织架构
 
 同步用户管理数据，确保是最新的组织架构数据
 
@@ -888,7 +888,7 @@ bash ./edition/mysqldump_bk_sops_data.sh -d bk_sops -p $BK_MYSQL_ADMIN_PASSWORD 
 source /data/install/utils.fc
 ssh $BK_MONGODB_IP
 
-# 登陆 mongodb 查询
+# 登陆 MongoDB 查询
 source /data/install/utils.fc
 mongo -u $BK_MONGODB_ADMIN_USER -p $BK_MONGODB_ADMIN_PASSWORD mongodb://$BK_MONGODB_IP:27017/admin?replicaSet=rs0
 
