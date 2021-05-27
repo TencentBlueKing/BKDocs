@@ -92,6 +92,8 @@ for module in ${value_modules[@]}; do if grep ${module} /data/install/install.co
 - 授权监控平台所需的 MySQL 访问权限
 - 安装监控相关依赖、监控平台后台、监控平台 SaaS
 
+> 详细安装过程介绍，请查看[安装监控平台详解](../../基础包安装/安装详解/install_bkmonitorv3.md)。
+
 ### 日志平台
 
 选择 `[ce][deploy][bklog]` 流程模版进行新建任务，根据提示填写相关信息。确认填写信息无误后，开始执行任务。
@@ -111,6 +113,8 @@ for module in ${value_modules[@]}; do if grep ${module} /data/install/install.co
 - 初始化新增节点机器
 - 授权日志平台所需的 MySQL 访问权限
 - 安装日志平台相关依赖、日志平台后台、日志平台 SaaS
+
+> 详细安装过程介绍，请查看[安装日志平台详解](../../基础包安装/安装详解/install_bkmonitorv3.md)。
 
 ### 故障自愈
 
