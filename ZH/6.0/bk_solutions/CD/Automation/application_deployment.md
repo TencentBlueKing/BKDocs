@@ -7,7 +7,7 @@
 
 ## 前提条件
 
-- [CMDB 主机资源纳管](../CMDB/CMDB_management_hosts.md)
+- [CMDB 如何管理主机](../CMDB/CMDB_management_hosts.md)
 
 ## 术语解释
 
