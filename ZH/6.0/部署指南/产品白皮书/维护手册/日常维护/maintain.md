@@ -10,6 +10,6 @@
 
 - **source load_env.sh：** 一些操作需要加载蓝鲸环境变量和函数后才能调用。此为 `cd $CTRL_PATH/ && source load_env.sh` 的简写
 
-- **bkcli \<command\> \<module\>：** 若无特殊说明，含义是：`cd $CTRL_PATH && ./bkcli <command> <module>`。如安装 mysql：./bkcli install mysql
+- **bkcli \<command\> \<module\>：** 若无特殊说明，含义是在**中控机**上执行命令：`cd $CTRL_PATH && ./bkcli <command> <module>`。如重启 cmdb：`./bkcli restart cmdb`
 
 后文提到路径时，均以默认路径为例，请根据实际安装路径修改相关命令
