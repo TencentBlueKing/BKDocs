@@ -43,6 +43,7 @@
             * [Consul](产品白皮书/维护手册/日常维护/consul.md)
             * [MongoDB](产品白皮书/维护手册/日常维护/mongodb.md)
             * [MySQL](产品白皮书/维护手册/日常维护/mysql.md)
+            * [Kafka](产品白皮书/维护手册/日常维护/zookeeper.md)
             * [Kafka](产品白皮书/维护手册/日常维护/kafka.md)
             * [更新证书](产品白皮书/维护手册/日常维护/renew_certificate.md)
         * [升级指引]()
