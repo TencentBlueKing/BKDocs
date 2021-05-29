@@ -39,6 +39,7 @@
             * [开启 Proxy](产品白皮书/维护手册/日常维护/open_proxy.md)
             * [http 切换为 https](产品白皮书/维护手册/日常维护/convert_https.md)
             * [GSE Agent 手动批量安装](产品白皮书/维护手册/日常维护/gse_agent.md)
+            * [GSE Proxy 手动批量安装](产品白皮书/维护手册/日常维护/gse_proxy.md)
             * [Nginx](产品白皮书/维护手册/日常维护/nginx.md)
             * [Consul](产品白皮书/维护手册/日常维护/consul.md)
             * [MongoDB](产品白皮书/维护手册/日常维护/mongodb.md)
