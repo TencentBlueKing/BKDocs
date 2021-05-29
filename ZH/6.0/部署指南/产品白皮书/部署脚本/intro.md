@@ -21,9 +21,10 @@
   - **status.sh：** 对应 `bkcli status`，用来查看进程的运行与否状态。
   - **check.sh：** 对应 `bkcli check`，查看蓝鲸组件和依赖存储的健康状态。
   - **render.sh：** 对应 `bkcli render`，根据环境变量渲染模块的配置模板。
-  - **upgrade.sh：** 对应 `bkcli upgrade`，用来升级更新组件版本。
-  - **update.rc：** 对应 `bkcli update`，用来做证书更新，主机节点更新。
+  - **upgrade.sh：** 对应 `bkcli upgrade`，用来升级更新组件版本，包括更新证书。
+  - **update.rc：** 对应 `bkcli update`，主机节点更新。
 - **configure_ssh_without_pass：** 用来配置 ssh 免密。
+- **configure：** 用来初次安装配置自定义域名和安装目录。
 - **pcmd.sh：** 封装 pssh 命令的脚本，并行 ssh 到远端机器执行命令。
 - **sync.sh：** 封装 prsync 命令的脚本，并行 rsync 同步文件到远端机器。
 - **functions：** 一些通用共享的 bash 函数。
@@ -39,7 +40,9 @@
   - **check_consul_resolv.sh：** 检查本机的 consul client 的 dns 解析功能是否正常。
   - **check_consul_svc_health.sh：** 检查本机注册的 consul service 的健康情况，支持服务健康检查的列表在脚本中 hardcode。
   - **check_gse.sh：** 检查 gse 的后台进程是否有不断重启。
+  - **check_openresty.sh：** 检查 openresty 上nginx的配置语法和consul-template进程是否存在。
   - **deploy_check.py：** 检查蓝鲸依赖的存储/队列组件的连通性。
+- **monitor/*.sh：** 一些自定义事件上报的监控脚本，用于辅助蓝鲸自监控的建设。
 - **install.config.*.sample：** 初次部署的时候，配置 install.config 的参考分布文件。
 - **install_minibk：** 安装单机的最小化部署蓝鲸（不推荐实际使用，仅用于测试部署脚本的流程）。
   - **minimal_tweak_config.sh：** 配合 install_minibk 用，调整一些引起资源使用量大的参数，降低 cpu 和内存的消耗。
@@ -99,9 +102,13 @@
 - **create_gse_zk_dataid_1001_node.sh：** 创建 basereport 上报的基础性能数据依赖的 1001 dataid 的 zk 节点。
 - **reg_consul_svc、dereg_consul_svc：** 注册 consul 服务 / 解除注册 consul 服务，通过传入服务名，tag，以及监听的 port，生成服务定义的 json 文件。
 - **esb_api_test.sh：** 调用 esb 的 api，主要是为其他脚本服务，对于简单的蓝鲸 api 调用提供便利。
+- **es_delete_expire_index.sh:** 根据一定的命名规则，删除指定天数之前的 elasticsearch index，用于自动清理过期的索引。
+- **es_clean_index_by_query.sh:** 根据日期删除指定index中的过期document，通过_delete_by_query 接口查找后删除。
 - **generate_blueking_generate_envvars.sh：** 为了初次部署的时候，自动生成 01-generate/*.env 文件。
 - **get_version.sh：** 获取蓝鲸组件/开源软件的版本号。
+- **mongodb_drop_joblog_collection.sh:** 清理mongodb中的过期的joblog表数据脚本。
 - **pack_gse_client_with_plugin.sh：** 根据 gse 的包和 plugins 的包，合并为符合 nodeman 的安装的 gse_client 包。
 - **prepare-bk-ci.sh：** 转化 CI（蓝盾）的开源部署包适配部署脚本。
 - **saas.py：** 通过后台接口，部署 SaaS 的脚本。
 - **sql_migrate.sh：** sql 导入的封装脚本，通过配置好免密的 mysql-login-path 名字导入对应的 sql 文件，并做好标记，标记存放到$HOME/.migrate/下，且`chattr +i` 防止误删除。
+- **single_host_low_memory_config.sh:**  单机部署时，调低运行中进程的相应配置，减少内存消耗。
