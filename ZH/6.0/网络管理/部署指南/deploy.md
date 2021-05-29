@@ -12,11 +12,11 @@
 
 建议使用独立的机器进行部署。如果蓝鲸基础环境主机资源充足的前提下，可进行复用。
 
-**说明：** 网络管理平台分服务端与采集端，分别占用 1G 内存（共2G），请合理安排该模块。
+**说明：** 网络管理平台分服务端与采集端，分别占用 1G 内存（共 2G），请合理安排该模块。
 
 - 建议操作系统： CentOS 7.6
 
-	- 建议机器配置：4 核 4G
+	- 建议机器配置：4 核 4Gplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
 
 ### 2.实现免密
 
