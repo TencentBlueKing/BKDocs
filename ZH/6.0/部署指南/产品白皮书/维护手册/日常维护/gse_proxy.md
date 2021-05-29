@@ -7,7 +7,7 @@
 
 ### 1. 安装前准备
 
-**确认接入点配置、访问策略** > **创建云区域** > **导入主机至cmdb** > **启用 proxy**
+**确认接入点配置、访问策略** > **创建云区域** > **导入主机至 cmdb** > **启用 proxy**
 
 ### 2. 安装 proxy 简要流程
 
@@ -20,9 +20,9 @@
     - 访问策略参考: https://bk.tencent.com/docs/document/5.1/21/686
 2. 创建云区域
     - 云区域请在节点管理页面创建：http://paas.bktencent.com/o/bk_nodeman/#/cloud-manager
-3. 导入主机至cmdb
-    - 限制1：由于 cmdb 限制，不能直接通过 web 页面的方式导入非直连区域的机器
-    - 限制2：目前版本不能导入手动安装的 proxy 至 节点管理
+3. 导入主机至 cmdb
+    - 限制 1：由于 cmdb 限制，不能直接通过 web 页面的方式导入非直连区域的机器
+    - 限制 2：目前版本不能导入手动安装的 proxy 至 节点管理
     - 导入方案：从节点管理中使用安装 proxy，导入 cmdb 后终止任务的方式达到导入的效果
     - 不导入的影响：无法安装 pagent、管理插件
 4. 获取对应的业务 ID、云区域 ID
@@ -213,7 +213,9 @@
         for i in {0..10}; do
             sleep 1
             for port in "$@"; do
-                stat -L -c %i /proc/"$pid"/fd/* 2>/dev/null | grep -qwFf - <( awk -v p="$port" 'BEGIN{ check=sprintf(":%04X0A$", p)} $2$4 ~ check {print $10}'             /proc/net/tcp) || ((ret+=1))
+                stat -L -c %i /proc/"$pid"/fd/* 2>/dev/null \
+                | grep -qwFf - <( awk -v p="$port" 'BEGIN{ check=sprintf(":%04X0A$", p)} $2$4 ~ check {print $10}' /proc/net/tcp) \
+                || ((ret+=1))
             done
         done
         return "$ret"
