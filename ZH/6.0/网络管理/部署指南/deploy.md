@@ -40,7 +40,7 @@ ssh-copy-id <ip>
 ```bash
 [root@VM-centos ~]# tar tf bk_network_2.0.2.tgz
 bknetwork_2.0.2.tgz
-bk_sops_bknetwork_20210528174623.dat
+bk_sops_bknetwork_20210531102134.dat
 ```
 
 ### 5. 将网络管理标准运维流程模版导入至标准运维
