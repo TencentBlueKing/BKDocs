@@ -6,8 +6,6 @@
 
 网络管理部署是通过标准运维流程实现，在部署前需要做如下准备：
 
-
-
 ### 1.机器准备
 
 建议使用独立的机器进行部署。如果蓝鲸基础环境主机资源充足的前提下，可进行复用。
@@ -16,7 +14,7 @@
 
 - 建议操作系统： CentOS 7.6
 
-	- 建议机器配置：4 核 4Gplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
+  - 建议机器配置：4 核 4G
 
 ### 2.实现免密
 
@@ -32,9 +30,9 @@ ssh-copy-id <ip>
   
 ![deploy1](../assets/deploy1.png)
 
-
 ### 4.下载套餐安装包
-- 前往 [蓝鲸 S-mart 市场](https://bk.tencent.com/s-mart/market?best_type=1) 下载网络管理软件包。
+
+- 前往 [蓝鲸 S-mart 市场](https://bk.tencent.com/s-mart/application/270/detail) 下载网络管理软件包。
 - 将该软件包放置中控机 /data 目录。
 
 **注意： 软件包包含：网络管理 tgz 包以及网络管理标准运维部署模版文件。模版文件需要通过标准运维进行导入，具体操作流程请看下一步**
@@ -52,15 +50,14 @@ bk_sops_bknetwork_20210528174623.dat
 ![deploy2](../assets/deploy2.png)
 
 
-
 ![deploy3](../assets/deploy3.png)
-
 
 ## 开始部署
 
 选择 `[ce]deploy bknetwork` 流程模版进行新建任务，根据提示填写相关信息。确认填写信息无误后，开始执行任务。
 
 填写信息包括：
+
 - `ctrl_ip`：蓝鲸环境的中控机 IP
 
 - `deply_ip`：部署网络管理的机器。如果是新增机器部署，请先与蓝鲸环境的中控机进行免密，以及安装好 gse_agent。
@@ -80,7 +77,6 @@ bk_sops_bknetwork_20210528174623.dat
 - 安装网络管理相关依赖、网络管理服务端、网络管理采集端
 
 ![deploy4](../assets/deploy4.png)
-
 
 ## 配置本地 host
 
@@ -130,7 +126,6 @@ C:\Windows\System32\drivers\etc\hosts
 2.填写相关信息
 
 ![deploy5](../assets/deploy5.png)
-
 
 3.返回 PaaS 平台刷新页面即可。
 
