@@ -49,7 +49,6 @@ bk_sops_bknetwork_20210528174623.dat
 
 ![deploy2](../assets/deploy2.png)
 
-
 ![deploy3](../assets/deploy3.png)
 
 ## 开始部署
@@ -132,4 +131,5 @@ C:\Windows\System32\drivers\etc\hosts
 ## 访问网络管理
 
 完成上述操作后，可以直接通过网络平台 URL 访问。
+
 如果配置了 SaaS 链接，可以直接在 PaaS 平台点击访问。
