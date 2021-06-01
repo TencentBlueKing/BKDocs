@@ -37,11 +37,8 @@ ssh-copy-id <ip>
 
 **注意： 软件包包含：网络管理 tgz 包以及网络管理标准运维部署模版文件。模版文件需要通过标准运维进行导入，具体操作流程请看下一步**
 
-```bash
-[root@VM-centos ~]# tar tf bk_network_2.0.2.tgz
-bknetwork_2.0.2.tgz
-bk_sops_bknetwork_20210531102134.dat
-```
+- **bk_sops_\*.dat**：为标准运维流程模板
+- **bknetwork_2.x.x.tgz**：为网络管理软件包
 
 ### 5. 将网络管理标准运维流程模版导入至标准运维
 
