@@ -53,17 +53,17 @@ tar xf bkce_patch_6.0.2-6.0.3.tgz /data/tmp
 tar xf /data/tmp/install_ce-v3.0.8.tgz -C /data/tmp/
 ```
 
-5.替换install、src。
+5.替换 install、src。
 
 - 替换 src 目录
 
-	```bash
+	```bashplain
 	mv /data/tmp/src /data/
 	```
 
 - 替换 install
 
-	```bash
+	```bashplainplain
     # 替换部署脚本
     rsync -avz --delete --exclude=".*" --exclude="install.config" --exclude="bin/0[1234]-*" /data/tmp/install/ /data/install/
     # 解压 src 下各个产品软件包
@@ -72,11 +72,11 @@ tar xf /data/tmp/install_ce-v3.0.8.tgz -C /data/tmp/
     cp -a /data/src.bak/cert /data/src/
     # 还原 backup 目录
     cp -a /data/src.bak/backup /data/src/
-    # 还原 python、yum、license等
+    # 还原 python、yum、license 等
     cp -a -r /data/src.bak/{bkssm,python,yum,license,blueking.env,COMMON_VERSION,VERSION,java8.tgz,paas_agent} /data/src
     cp -a -r /data/src.bak/gse_plugins/gsecmdline-2.0.3.tgz /data/src/gse_plugins/
     echo "6.0.3" > /data/src/VERSION
-	```
+	```plain
 
 ## 特殊操作
 
@@ -150,7 +150,7 @@ grant_mongodb_pri cmdb_events
 
 ### 用户管理
 
-如用户管理低于2.2.4版本，更新过程会有已知问题，详情请参考 [【缺陷修复】用户管理接入 AD/LDAP 无法正常同步用户](https://bk.tencent.com/s-mart/community/question/1669)
+如用户管理低于 2.2.4 版本，更新过程会有已知问题，详情请参考 [【缺陷修复】用户管理接入 AD/LDAP 无法正常同步用户](https://bk.tencent.com/s-mart/community/question/1669)
 
 ```bash
 # 停止用户管理
@@ -280,7 +280,7 @@ add_saas_environment
 
 - cmdb 对于服务模板,`监听信息` 相关的 `IP` 字段数据变更，agent 的 processbeat 插件版本更新到 `1.15.61` 版本及以上
     - 方案一： 删掉现有的蓝鲸业务下所有的模块和模板数据，重新注册. 脚本操作，所以会删掉用户已经在蓝鲸业务中自定义添加的相关数据
-	```bash
+	```bashplainplain
 	# step1: 开启页面删除蓝鲸集群选项
 	source /data/install/utils.fc
 	curl -H 'BK_USER:admin' -H 'BK_SUPPLIER_ID:0' -H 'HTTP_BLUEKING_SUPPLIER_ID:0' -X POST $BK_CMDB_IP0:9000/migrate/v3/migrate/system/user_config/blueking_modify/true
@@ -311,7 +311,7 @@ _update_common_info
 ```
 ## 升级后操作
 
-- 升级完成后，请前往节点管理页面升级/重装 agent、Proxy以及采集器相关插件。
+- 升级完成后，请前往节点管理页面升级/重装 agent、Proxy 以及采集器相关插件。
 
 - 如果之前有部署 bkci 以及 bcs 的用户，请按照该方式将相关包进行还原 (`没有部署请忽略该步骤`)
 
