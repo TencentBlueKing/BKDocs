@@ -74,7 +74,7 @@ bash migrate_old_environ_v2.sh
 
 社区版 6.0 中蓝鲸组件统一由 `blueking` 用户管控，需要在所有蓝鲸后台服务器中创建 id 为 10000 的 blueking 用户。
 如已存在 id 为 10000 的用户，请自行处理。
-~~~~
+
 ```bash
 source /data/install/utils.fc
 for ip in ${ALL_IP[@]}; do
