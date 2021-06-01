@@ -50,7 +50,7 @@ ssh-copy-id <ip>
 
 ## 开始部署
 
-选择 `[ce]deploy bknetwork` 流程模版进行新建任务，根据提示填写相关信息。确认填写信息无误后，开始执行任务。
+选择 `[ce] deploy bknetwork` 流程模版进行新建任务，根据提示填写相关信息。确认填写信息无误后，开始执行任务。
 
 填写信息包括：
 
@@ -113,20 +113,6 @@ C:\Windows\System32\drivers\etc\hosts
 10.0.0.2 bknetwork.bktencent.com
 ```
 
-## 配置网络管理 SaaS 链接（可选）
-
-1.打开 【PaaS 平台】 -> 【进入 PaaS 平台后台】 -> 【常用链接】 -> 【增加常用链接】
-
-- 进入 PaaS 后台方式：在实际域名后面加上 admin，例如：http://paas.bktencent.com/admin 。
-
-2.填写相关信息
-
-![deploy5](../assets/deploy5.png)
-
-3.返回 PaaS 平台刷新页面即可。
-
 ## 访问网络管理
 
-完成上述操作后，可以直接通过网络平台 URL 访问。
-
-如果配置了 SaaS 链接，可以直接在 PaaS 平台点击访问。
+完成上述操作后，可以直接前往 PaaS 平台点击访问。
