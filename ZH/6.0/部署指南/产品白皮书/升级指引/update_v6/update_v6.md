@@ -35,18 +35,20 @@
 
 1.下载相关软件包
 
-**目前相关升级迁移工具可从 `邮件附件` 目录中提取，并将相关迁移工具放置 /data 目录。**
+
 
 |软件包|下载地址|MD5|备注|
 |---|---|---|---|
-|bkce_src_6.0.3.tar.gz（目前暂无 src 包，可使用基础 + 套餐整合成 src）|以邮件为准|以邮件为准|蓝鲸完整包|
+|bkce_src_6.0.3.tar.gz|https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.3.tgz|https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.3.tgz|蓝鲸完整包|
+|迁移工具合集|https://bkopen-1252002024.file.myqcloud.com/ce/ce6.0_upgrade_tools.zip|5a7632530948e0733368f859c4db609d|包含下表所有迁移工具|
 |upgrade.py|-|4683f0f7d5136c1799b5010f8960d7e3 |节点管理升级脚本|
 |migrate_old_environ_v2.sh|-|4ae6c6f2a1ccb4658c7a124857561d67|旧变量转换脚本|
 |iam_v3_legacy_1.0.16_for_ce.tgz|-|106f8a90f243be85743ff7baf1d0eafc|权限中心迁移脚本|
 |job-migration-ce_0.1.2_Linux_x86_64.tar.gz|-|3949713d37668535915bf03a4dd09a6e|JOB 升级脚本|
 |job-account-perm-migration_v0.0.0-next_Linux_x86_64.tar.gz|-|5eebb26767debc18d2620ec0840573bf|JOB 帐户迁移|
 
-2.升级前，请检查环境各主机资源情况，避免升级过程中出现内存或者磁盘不足等情况。请参考 [https://bk.tencent.com/download/](https://bk.tencent.com/download/) 。
+2.升级前，请检查环境各主机资源情况，避免升级过程中出现内存或者磁盘不足等情况。配置请参考 [蓝鲸官网下载页](https://bk.tencent.com/download/) 。
+
 3.当数据库的数据量过大时，可以考虑使用 truncate 或 delete 的方式，清空监控告警表的数据 **（用户自主决定是否清理该表的数据）**。
 
 - 库名：bkdata_monitor_alert
@@ -72,11 +74,11 @@ bash migrate_old_environ_v2.sh
 
 社区版 6.0 中蓝鲸组件统一由 `blueking` 用户管控，需要在所有蓝鲸后台服务器中创建 id 为 10000 的 blueking 用户。
 如已存在 id 为 10000 的用户，请自行处理。
-
+~~~~
 ```bash
 source /data/install/utils.fc
 for ip in ${ALL_IP[@]}; do
-	ssh ${ip} "if id 10000 > /dev/null; then echo "${ip} 已存在id为10000的用户";fi"
+	ssh ${ip} "if id 10000 > /dev/null; then echo "${ip} 已存在 id 为 10000 的用户";fi"
 done
 ```
 
