@@ -25,6 +25,12 @@ Kafka 在蓝鲸架构中，用于数据上报通道的队列缓存。在数据�
    consul reload
    ```
 
+## Kafka 常用操作
+
+- 查看topics：`/opt/kafka/bin/kafka-topics.sh --describe --zookeeper zk.service.consul:2181/common_kafka`
+- 查看topic配置：`/opt/kafka/bin/kafka-configs.sh --zookeeper zk.service.consul:2181/common_kafka --entity-type topics --entity-name snapshot2 --describe`
+- 修改per-topic配置：[官方文档](http://kafka.apache.org/documentation.html#topicconfigs) `/opt/kafka/bin/kafka-configs.sh --zookeeper zk.service.consul:2181/common_kafka --entity-type topics --entity-name snapshot2 --alter --add-config retention.bytes=1073741824`
+
 ## Kafka 扩容
 
 当接入的数据越来越多，原有的broker，cpu和磁盘均告急时，需要扩容 broker 来缓解 kafka 压力。
