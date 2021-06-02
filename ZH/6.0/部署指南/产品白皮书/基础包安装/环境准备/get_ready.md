@@ -169,7 +169,7 @@ DNS 配置文件 /etc/resolv.conf 在安装蓝鲸过程中会自动修改。重�
 
 ## 准备证书文件
 
-- 使用 gse 与 license 所在服务器的 MAC 地址，前往 [蓝鲸官网证书生成页](https://bk.tencent.com/download_ssl/) 生成证书， 可参考部署脚本下 install/install.config.3ip.sample 文件。
+- 使用 gse 与 license 所在服务器的 MAC 地址，前往 [蓝鲸官网证书生成页](https://bk.tencent.com/download_ssl/) 生成证书。
 
 - 生成后请将证书文件放置与软件包同一台机器上。
 
