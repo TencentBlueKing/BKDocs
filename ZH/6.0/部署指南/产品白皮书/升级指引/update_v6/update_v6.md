@@ -4,11 +4,23 @@
 
 - 社区版 5.1 - 社区版 6.0.3
 
-## 升级方式
+## 升级准备：准备机器
 
-- 如果主机资源充足，可以参考在 [原机器配置进行升级](./update_install_config_for_v6.md#原机器配置进行升级)。
-- 如果原主机资源紧缺，可选择在升级前，升级主机资源配置（升级配置请参考原机器配置进行升级），或 [新增主机进行升级](./update_install_config_for_v6.md#新增主机进行升级)。
-- 主机资源配置请参考 [官网下载页](https://bk.tencent.com/download/)。
+### 套餐拆分说明
+
+1. 从社区版6.0.3开始，原社区版完整包已拆分为基础套餐与监控日志套餐。**基础套餐**包含：PaaS 平台、配置平台、作业平台、权限中心、用户管理、节点管理、标准运维、流程服务；**监控日志套餐**包含监控平台、日志平台、故障自愈
+2. 为了保证环境的稳定，建议各个套餐使用单独的机器资源部署
+
+### 配置评估
+
+1. 社区版 5.1 的最低机器配置要求为：1 台 4 核 16G + 2 台 4 核 8G
+2. 社区版 6.0 基础套餐的最低机器配置要求为：3 台 4 核 16G
+3. 社区版 6.0 监控日志套餐的最低机器配置要求为：1 台 8 核 16G
+
+### 机器准备建议
+
+1. 现有环境机器配置满足：3 台 4 核 16G，则需要增加 1 台 8 核 16G 部署监控日志套餐，升级请参考 [新增主机进行升级](./update_install_config_for_v6.md#新增主机进行升级)
+2. 现有环境机器配置满足：3 台 8 核 32G，可不增加机器直接升级（不建议），升级请参考 [原机器配置进行升级](./update_install_config_for_v6.md#原机器配置进行升级)
 
 ## 风险提示
 
@@ -20,7 +32,7 @@
 - 本次升级务必保证 MySQL/MongoDB 机器磁盘空间充足，避免导致磁盘空间不足备份失败。
 - 本升级方案不负责迁移 5.1 中的监控数据，包括开源组件中 influxdb 和 es 的数据，监控数据将会丢失，请知悉。
 - 本次升级方案为停服更新，包含多个开源组件版本、官方组件版本的升级，升级时间较长，请避开业务繁忙时期进行升级。
-- 本次升级相关产品有新增进程等，请在升级前先对原主机资源(内存、CPU 等)进行评估是否足够，可看考官网给出的 [机器配置](https://bk.tencent.com/download/) 进行评估。
+- 本次升级相关产品有新增进程等，请在升级前先对原主机资源(内存、CPU 等)进行评估是否足够，可参考官网给出的 [机器配置](https://bk.tencent.com/download/) 进行评估。
 - 本升级方案仅适用于未做过任何改造的用户，若有定制化调整（如接入企业登陆，新增 API 以及接入其他企业内部系统），或部分产品为开源产品不适用本升级指引，需自行维护特殊化部分功能。
 
 ## 重点提前知
@@ -35,18 +47,20 @@
 
 1.下载相关软件包
 
-**目前相关升级迁移工具可从 `邮件附件` 目录中提取，并将相关迁移工具放置 /data 目录。**
+
 
 |软件包|下载地址|MD5|备注|
 |---|---|---|---|
-|bkce_src_6.0.3.tar.gz（目前暂无 src 包，可使用基础 + 套餐整合成 src）|以邮件为准|以邮件为准|蓝鲸完整包|
+|bkce_src_6.0.3.tar.gz|[https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.3.tgz)|d783c76460163cec21d214b91b598467|蓝鲸完整包|
+|迁移工具合集|[https://bkopen-1252002024.file.myqcloud.com/ce/ce6.0_upgrade_tools.zip](https://bkopen-1252002024.file.myqcloud.com/ce/ce6.0_upgrade_tools.zip)|5a7632530948e0733368f859c4db609d|包含下表所有迁移工具|
 |upgrade.py|-|4683f0f7d5136c1799b5010f8960d7e3 |节点管理升级脚本|
 |migrate_old_environ_v2.sh|-|4ae6c6f2a1ccb4658c7a124857561d67|旧变量转换脚本|
 |iam_v3_legacy_1.0.16_for_ce.tgz|-|106f8a90f243be85743ff7baf1d0eafc|权限中心迁移脚本|
 |job-migration-ce_0.1.2_Linux_x86_64.tar.gz|-|3949713d37668535915bf03a4dd09a6e|JOB 升级脚本|
 |job-account-perm-migration_v0.0.0-next_Linux_x86_64.tar.gz|-|5eebb26767debc18d2620ec0840573bf|JOB 帐户迁移|
 
-2.升级前，请检查环境各主机资源情况，避免升级过程中出现内存或者磁盘不足等情况。请参考 [https://bk.tencent.com/download/](https://bk.tencent.com/download/) 。
+2.升级前，请检查环境各主机资源情况，避免升级过程中出现内存或者磁盘不足等情况。配置请参考 [蓝鲸官网下载页](https://bk.tencent.com/download/) 。
+
 3.当数据库的数据量过大时，可以考虑使用 truncate 或 delete 的方式，清空监控告警表的数据 **（用户自主决定是否清理该表的数据）**。
 
 - 库名：bkdata_monitor_alert
@@ -76,7 +90,7 @@ bash migrate_old_environ_v2.sh
 ```bash
 source /data/install/utils.fc
 for ip in ${ALL_IP[@]}; do
-	ssh ${ip} "if id 10000 > /dev/null; then echo "${ip} 已存在id为10000的用户";fi"
+	ssh ${ip} "if id 10000 > /dev/null; then echo "${ip} 已存在 id 为 10000 的用户";fi"
 done
 ```
 
@@ -881,7 +895,7 @@ bash ./edition/mysqldump_bk_sops_data.sh -d bk_sops -p $BK_MYSQL_ADMIN_PASSWORD 
 /opt/py27/bin/python -m edition.migrate_biz_policy -s $BK_IAM_APP_SECRET <iam SaaS的app secret，可由页面获取>  -t $BK_PAAS_PRIVATE_ADDR -e bk_cmdb -E ce -f <配置平台空闲机目录ID>
 ```
 
-**配置平台空闲机目录 ID查询方式：**
+**配置平台空闲机目录 ID 查询方式：**
 
 ```bash
 # 登陆至 mongodb 机器
@@ -916,4 +930,4 @@ done
 
 从 5.1 升级到 6.0 后，如果没有对原拓扑进行升级，蓝鲸监控会出现端口或者不存在的告警。**<该类告警可忽略>**
 
-升级请见 ：[社区版5.1-6.0 蓝鲸业务拓扑升级](./update_bktopo_for_v6.md)
+升级请见 ：[社区版 5.1-6.0 蓝鲸业务拓扑升级](./update_bktopo_for_v6.md)

@@ -40,7 +40,7 @@
 
 ### 详细操作
 
-1. 去掉 `bkdata(databus)`、`bkdata(dataapi)`、`bkdata(monitor)` `influxdb`、`es`、`kafka(config)`、`fta`、`beanstalk`模块。去掉两个zk(config)模块，在任意一台机器上保留一个即可（建议先进行资源评估，再决定在哪台机器上保留）。
+1. 去掉 `bkdata(databus)`、`bkdata(dataapi)`、`bkdata(monitor)` `influxdb`、`es`、`kafka(config)`、`fta`、`beanstalk`模块。去掉两个 zk(config)模块，在任意一台机器上保留一个即可（建议先进行资源评估，再决定在哪台机器上保留）。
 
  **去掉后效果如下：**
 
@@ -49,7 +49,7 @@
 10.0.0.1 nginx,rabbitmq,zk(config),appt,consul
 10.0.0.2 mongodb,appo,mysql,consul
 10.0.0.3 paas,cmdb,job,gse,license,redis,consul
-```
+```plain
 
 2. 将 `iam`、`ssm`、`usermgr`、`nodeman(nodeman)`模块合理的分布在原机器环境上。
 
