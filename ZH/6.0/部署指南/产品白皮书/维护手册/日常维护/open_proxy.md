@@ -71,8 +71,7 @@ systemctl restart consul-template
 
   - 修改 `Agent包 URL` 第二个输入框的域名，替换为节点管理的外网 IP [nodeman 模块分布的机器]，可参考 `$CTRL_DIR/pcmd.sh -m nodeman "curl -s icanhazip.com" | tail -n 1`
   
-    ![image](https://user-images.githubusercontent.com/4710858/116407651-8f576f00-a864-11eb-8ab4-0461d7b9b6cb.png)
-
+    ![nodeman_global_setting](../../assets/nodeman_global_setting.png)
 
 - 重新渲染配置
 

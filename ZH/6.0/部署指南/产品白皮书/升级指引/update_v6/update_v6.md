@@ -4,7 +4,7 @@
 
 - 社区版 5.1 - 社区版 6.0.3
 
-## 升级准备：准备机器
+## 准备机器
 
 ### 套餐拆分说明
 
@@ -51,7 +51,7 @@
 
 |软件包|下载地址|MD5|备注|
 |---|---|---|---|
-|bkce_src_6.0.3.tar.gz|[https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.3.tgz)|d783c76460163cec21d214b91b598467|蓝鲸完整包|
+|bkce_src_6.0.3.tar.gz|[https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.3.tgz)|565d48217a1ff1002fe181130637b170|蓝鲸完整包|
 |迁移工具合集|[https://bkopen-1252002024.file.myqcloud.com/ce/ce6.0_upgrade_tools.zip](https://bkopen-1252002024.file.myqcloud.com/ce/ce6.0_upgrade_tools.zip)|5a7632530948e0733368f859c4db609d|包含下表所有迁移工具|
 |upgrade.py|-|4683f0f7d5136c1799b5010f8960d7e3 |节点管理升级脚本|
 |migrate_old_environ_v2.sh|-|4ae6c6f2a1ccb4658c7a124857561d67|旧变量转换脚本|

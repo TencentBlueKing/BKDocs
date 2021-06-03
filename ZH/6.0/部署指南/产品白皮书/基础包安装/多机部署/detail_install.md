@@ -91,7 +91,7 @@
 ./bk_install saas-o bk_itsm
 ```
 
-### 加载蓝鲸相关维护命令
+## 加载蓝鲸相关维护命令
 
 ```bash
 source ~/.bashrc
