@@ -159,6 +159,12 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访
 ./bk_install saas-o bk_itsm
 ```
 
+### 加载蓝鲸相关维护命令
+
+```bash
+source ~/.bashrc
+```
+
 ### 初始化蓝鲸业务拓扑
 
 ```bash
