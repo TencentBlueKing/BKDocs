@@ -66,14 +66,19 @@ tar xf /data/tmp/install_ce-v3.0.8.tgz -C /data/tmp/
 	```bash
     # 替换部署脚本
     rsync -avz --delete --exclude=".*" --exclude="install.config" --exclude="bin/0[1234]-*" /data/tmp/install/ /data/install/
+
     # 解压 src 下各个产品软件包
     cd /data/src/; for f in *gz;do tar xf $f; done
+
     # 还原证书
     cp -a /data/src.bak/cert /data/src/
+
     # 还原 backup 目录
     cp -a /data/src.bak/backup /data/src/
+
     # 还原 python、yum、license 等
     cp -a -r /data/src.bak/{bkssm,python,yum,license,blueking.env,COMMON_VERSION,VERSION,java8.tgz,paas_agent} /data/src
+	
     cp -a -r /data/src.bak/gse_plugins/gsecmdline-2.0.3.tgz /data/src/gse_plugins/
     echo "6.0.3" > /data/src/VERSION
 	```
