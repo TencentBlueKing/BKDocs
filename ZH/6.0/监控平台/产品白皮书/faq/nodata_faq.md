@@ -11,13 +11,13 @@
 首先，我们建议先通过kafka中的数据入手，判断数据异常是出现在采集端还是服务端。用户可以参考一下命令消费kafka中的数据观察
     
 ```bash
-./bin/kafka-console-consumer.sh --bootstrap-server kafka.service.sv.consul:9092 --topic 0bkmonitor_10010 
+/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafka.service.consul:9092 --topic 0bkmonitor_10010 
 ```
     
 如果我们是排查某个IP上报失败的情况，那么我们可以通过grep进行过滤
     
 ```bash
-./bin/kafka-console-consumer.sh --bootstrap-server kafka.service.sv.consul:9092 --topic 0bkmonitor_10010 | grep $IP
+/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafka.service.consul:9092 --topic 0bkmonitor_10010 | grep $IP
 ```
     
 如果发现kafka中无数据，则需要排查`采集端`，否则需要排查`服务端`。通常是服务端出现异常，无数据情况是大规模跨业务的出现；如果是部分机器存在上报异常，那么更多是采集端异常导致。
