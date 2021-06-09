@@ -27,6 +27,7 @@
 - 请仔细阅读本升级文档，避免因未注意相关细节造成误操作。
 - 如无特殊说明，所述操作均在中控机执行。
 - 原蓝鲸官方 SaaS 必须提前下架，否则将影响 SaaS 升级部署。
+- 请严格按照本文档步骤进行升级，如升级过程存在问题，请先解决该问题后再继续往下执行升级。
 - 非标准私有 IP 用户需在解压新的脚本后，需要按照以前修改 [非标准私有 IP](https://bk.tencent.com/docs/document/6.0/127/7543) 的方式重新修改。
 - 如果 MySQL 备份参考本升级文档的备份方式，涉及到有自行开发的 SaaS 应用，请重新前往 MySQL 重新授权。
 - 本次升级务必保证 MySQL/MongoDB 机器磁盘空间充足，避免导致磁盘空间不足备份失败。
@@ -46,8 +47,6 @@
 下述所有升级步骤均以默认的安装目录 `/data/bkce` 为例，升级过程中请使用自定义的安装目录进行替换。
 
 1.下载相关软件包
-
-
 
 |软件包|下载地址|MD5|备注|
 |---|---|---|---|
@@ -427,7 +426,7 @@ mysql --login-path=mysql-default < /data/change_paas.sql
 mysql --login-path=mysql-default  -e "use open_paas;select  app,name,applied from django_migrations where app='bkcore' order by name desc  limit 5;"
 ```
 
-- 由于 5.1 之前的 PaaS 是未加密版本，而 6.0 的是加密版本，所以在升级的过程中，会出现解密失败的问题。所以需要删掉 PaaS 的旧虚拟环境后再升级 PaaS。
+- 由于 5.1 的 PaaS 是未加密，而 6.0 的已进行加密，在升级的过程中，会出现加密的问题。所以需要删掉 PaaS 的旧虚拟环境后再升级 PaaS。
 
 ```bash
 source /data/install/utils.fc
