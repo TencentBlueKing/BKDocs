@@ -453,6 +453,34 @@ source /data/install/utils.fc
 ./bk_install saas-o bk_user_manage
 ```
 
+#### 迁移用户管理数据
+
+> 验证：执行完下述命令后，打开用户管理 -> 组织架构 -> 默认目录 -> 总公司。查看相关原 5.1 上的用户是否存在。
+
+```bash
+# 登陆 usermgr 服务器，执行脚本
+source /data/install/utils.fc
+ssh $BK_USERMGR_IP
+
+# 进入用户管理虚拟环境
+workon usermgr-api
+
+source /data/install/utils.fc
+# 加载相关环境变量
+export MYSQL_IP0=$BK_PAAS_MYSQL_HOST
+export MYSQL_PORT=$BK_PAAS_MYSQL_PORT
+export MYSQL_USER=$BK_PAAS_MYSQL_USER
+export MYSQL_PASS=$BK_PAAS_MYSQL_PASSWORD
+export DJANGO_SETTINGS_MODULE=config.ce.prod
+export BK_FILE_PATH="/data/bkce/usermgr/cert/saas_priv.txt"
+
+# 迁移数据前，查看迁移内容
+python manage.py migrate_from_ce_5dot1 --dry_run   # 无 ERROR 输出即为正常
+
+# 迁移内容无误后，开始迁移
+python manage.py migrate_from_ce_5dot1 > migrate.log
+```
+
 ### 升级 CMDB
 
 ```bash
@@ -795,36 +823,6 @@ cd /data/app/code && python manage.py task_model_migrate
 
 ```bash
 ./bk_install saas-o bk_itsm
-```
-
-## 执行权限、用户数据迁移
-
-### 迁移用户管理数据
-
-> 验证：执行完下述命令后，打开用户管理 -> 组织架构 -> 默认目录 -> 总公司。查看相关原 5.1 上的用户是否存在。
-
-```bash
-# 登陆 usermgr 服务器，执行脚本
-source /data/install/utils.fc
-ssh $BK_USERMGR_IP
-
-# 进入用户管理虚拟环境
-workon usermgr-api
-
-source /data/install/utils.fc
-# 加载相关环境变量
-export MYSQL_IP0=$BK_PAAS_MYSQL_HOST
-export MYSQL_PORT=$BK_PAAS_MYSQL_PORT
-export MYSQL_USER=$BK_PAAS_MYSQL_USER
-export MYSQL_PASS=$BK_PAAS_MYSQL_PASSWORD
-export DJANGO_SETTINGS_MODULE=config.ce.prod
-export BK_FILE_PATH="/data/bkce/usermgr/cert/saas_priv.txt"
-
-# 迁移数据前，查看迁移内容
-python manage.py migrate_from_ce_5dot1 --dry_run   # 无 ERROR 输出即为正常
-
-# 迁移内容无误后，开始迁移
-python manage.py migrate_from_ce_5dot1 > migrate.log
 ```
 
 ### 权限中心同步用户组织架构
