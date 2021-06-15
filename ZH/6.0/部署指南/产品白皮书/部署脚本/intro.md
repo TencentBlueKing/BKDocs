@@ -112,3 +112,4 @@
 - **saas.py：** 通过后台接口，部署 SaaS 的脚本。
 - **sql_migrate.sh：** sql 导入的封装脚本，通过配置好免密的 mysql-login-path 名字导入对应的 sql 文件，并做好标记，标记存放到$HOME/.migrate/下，且`chattr +i` 防止误删除。
 - **single_host_low_memory_config.sh:**  单机部署时，调低运行中进程的相应配置，减少内存消耗。
+- **zk4lw.sh** 往 zookeeper 发送四字命令，获取返回结果的纯bash脚本，不依赖nc和telnet
