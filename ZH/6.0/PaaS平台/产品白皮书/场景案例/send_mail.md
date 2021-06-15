@@ -81,3 +81,9 @@ tail -f /data/bkce/logs/open_paas/esb.log
 
 2. 请检查是否将端口打开
 
+
+### 5、FAQ
+
+1、"message": "Request JSON string is wrong in format, which cannot be analyzed"
+
+解决方法：请求格式错误，请使用 JSON 格式。

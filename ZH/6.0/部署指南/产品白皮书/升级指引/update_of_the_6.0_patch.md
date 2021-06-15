@@ -27,9 +27,9 @@ cd /data/src; grep . */*VERSION */*/VERSION
 
 ## 前置准备
 
-1.下载相关产品包。请前往 [蓝鲸下载页](https://bk.tencent.com/download/) 下载。
+1.下载相关产品包。请前往 [蓝鲸官网下载页-版本列表](https://bk.tencent.com/download_version_list/) 下载。
 
-- patch 包 [bkce_patch_6.0.2-6.0.3.tgz](https://bk.tencent.com/download_version_list/)
+- patch 包：bkce_patch_6.0.2-6.0.3.tgz
 
 2.将相关产品包上传至服务器 /data 目录。
 
@@ -47,7 +47,7 @@ mv /data/src /data/src.bak
 mkdir /data/tmp
 
 # 将 patch 包解压至临时存放目录
-tar xf bkce_patch_6.0.2-6.0.3.tgz /data/tmp
+tar xf bkce_patch_6.0.2-6.0.3.tgz -C /data/tmp
 
 # 解压 install 部署脚本包
 tar xf /data/tmp/install_ce-v3.0.8.tgz -C /data/tmp/
@@ -57,26 +57,31 @@ tar xf /data/tmp/install_ce-v3.0.8.tgz -C /data/tmp/
 
 - 替换 src 目录
 
-	```bashplain
+	```bash
 	mv /data/tmp/src /data/
 	```
 
 - 替换 install
 
-	```bashplainplain
+	```bash
     # 替换部署脚本
     rsync -avz --delete --exclude=".*" --exclude="install.config" --exclude="bin/0[1234]-*" /data/tmp/install/ /data/install/
+
     # 解压 src 下各个产品软件包
     cd /data/src/; for f in *gz;do tar xf $f; done
+
     # 还原证书
     cp -a /data/src.bak/cert /data/src/
+
     # 还原 backup 目录
     cp -a /data/src.bak/backup /data/src/
+
     # 还原 python、yum、license 等
     cp -a -r /data/src.bak/{bkssm,python,yum,license,blueking.env,COMMON_VERSION,VERSION,java8.tgz,paas_agent} /data/src
+	
     cp -a -r /data/src.bak/gse_plugins/gsecmdline-2.0.3.tgz /data/src/gse_plugins/
     echo "6.0.3" > /data/src/VERSION
-	```plain
+	```
 
 ## 特殊操作
 

@@ -14,7 +14,7 @@
 2. 新增插件
 3. 单个插件的管理入口
 4. 升级、下架、删除插件快捷入口
-5. 指引文档和插件 UI 调试工具入口
+5. 指引文档和插件UI调试工具入口
 
 ### 新增插件
 
@@ -37,16 +37,16 @@
 > 初始化好插件之后，可以开始开发插件
 
 - 根据开发语言参考对应的开发指引
-  - [Java 插件开发指引](https://github.com/ci-plugins/ci-plugins-wiki/blob/master/guide/guide_java.md)
-  - [Python 插件开发指引](https://github.com/ci-plugins/ci-plugins-wiki/blob/master/guide/guide_python.md)
-  - [Golang 插件开发指引](https://github.com/ci-plugins/ci-plugins-wiki/blob/master/guide/guide_golang.md)
-  - [Nodejs 插件开发指引](https://github.com/ci-plugins/ci-plugins-wiki/blob/master/guide/guide_nodejs.md)
+  - [Java 插件开发指引](https://docs.bkci.net/store/plugins/create-plugin/plugin-dev-guide/java)
+  - [Python 插件开发指引](https://docs.bkci.net/store/plugins/create-plugin/plugin-dev-guide/python)
+  - [Golang 插件开发指引](https://docs.bkci.net/store/plugins/create-plugin/plugin-dev-guide/golang)
+  - [Nodejs 插件开发指引](https://docs.bkci.net/store/plugins/create-plugin/plugin-dev-guide/nodejs)
 
 ### 插件私有配置
 
-> 插件级别的敏感信息，如 token、用户名密码、IP、域名等，不建议直接提交到代码库，通过工作台私有配置界面管理
+> 插件级别的敏感信息，如token、用户名密码、IP、域名等，不建议直接提交到代码库，通过工作台私有配置界面管理
 
-入口如下，创建后，在插件中通过 SDK 提供的方法即可获取使用
+入口如下，创建后，在插件中通过SDK提供的方法即可获取使用
 ![png](../../assets/store_plugin_private_info.png)
 
 ## 接下来你可能需要

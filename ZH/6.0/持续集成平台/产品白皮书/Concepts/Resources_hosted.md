@@ -18,3 +18,5 @@ bkci/ci:latest | https://github.com/ci-plugins/base-images/blob/master/ci-build/
 bkci/ci:alpine | https://github.com/ci-plugins/base-images/blob/master/ci-build-less/Dockerfile
 
 你也可以将这两个镜像作为基础镜像来制作你自己的 CI 镜像，当然，这需要一点点[Docker build](https://docs.docker.com/engine/reference/commandline/build/)相关知识。
+
+制作自定义 CI 镜像请参考：[构建并托管一个 CI 镜像](../Services/Store/docker-build.md)

@@ -1,99 +1,96 @@
 # 持续集成套餐安装指引
 
-## 安装概览
+## 概述
+本文档适用于在蓝鲸社区版基础套餐中加装蓝鲸持续集成套餐。
 
-【准备阶段】
-- [准备蓝鲸基础环境](./CI-start.md#12)
-- [服务器资源准备](./CI-start.md#13)
-- [下载安装包](./CI-start.md#14)
-- [解压相关资源包](./CI-start.md#15)
+蓝鲸持续集成套餐分为 流水线（CI，也称为“蓝盾”）、代码检查（CodeCC）等2个系统。
 
-【安装阶段】
-- [自定义安装配置](./CI-start.md#16)
-- [开始部署](./CI-start.md#二、开始部署)
+## 流水线（CI）
+### 资源准备
+请按照如下清单准备服务器或虚拟机（暂不支持容器），用于正式部署持续集成套餐。
 
-【使用阶段】
-- [访问蓝盾](./CI-start.md#三、访问蓝盾)
+机器数量： 2 （一台用作服务端，一台用作公共构建机（ ci(dockerhost) ））<br>
+要求操作系统： CentOS 7.X （请勿使用其他系统）<br>
+建议硬件配置：8 核 32GB （测试环境可使用 16GB 内存，性能略低）<br>
+磁盘大小：100GB
 
+### 准备工作
+#### 蓝鲸组件依赖
+请先安装蓝鲸社区版 6.0 基础环境。并安装 “权限中心”，“节点管理”，“标准运维”等 SaaS （安装完成可在蓝鲸工作台“应用列表”中看到）。
 
-## 一、安装环境准备
-
-### 1.1 方案说明
-
-蓝盾（简称 `bk-ci`，在安装脚本中使用 `ci` 作为标识）作为蓝鲸基础环境的增强包存在，该产品由腾讯蓝鲸智云体系的蓝盾作为底层支撑，预期加装到已有的蓝鲸基础环境中。
-
-蓝鲸社区版 6.0 部署脚本包（文件名： `install_ce-v3.0.*.tgz` ）中提供了 “一键安装” 功能，直接复用蓝鲸已有的基础服务，方便快速集成到蓝鲸中。
-
-### 1.2 基础环境依赖
-<a id="12"></a>
-
-请确保蓝鲸社区版 6.0 基础环境的 `install.config` 里存在如下的项目：
-* `paas` （PaaS 平台）
-* `ssm` （凭据管理）
-* `iam` （权限中心 v3）
-* `es7` （ElasticSearch，一般随蓝鲸监控安装）
-
-### 1.3 准备机器
-<a id="13"></a>
-
-请按照如下清单准备服务器或虚拟机（不能是容器），用于正式部署蓝盾。
-
-* 机器数量： `2` （一台用作服务端，一台用作公共构建机（ `ci(dockerhost)` ））
-* 要求操作系统： `CentOS 7.X`  （请勿使用其他系统）
-* 建议硬件配置：8 核 32GB （测试环境可使用 16GB 内存，性能略低）
-* 磁盘大小：100GB
-
-随着任务量增多，您需要准备更多机器部署公共构建机（ `ci(dockerhost)` ）服务。
-
-### 1.4 下载安装包
-<a id="14"></a>
-
-请下载安装包到蓝鲸 “中控机”，参考路径如下：（**此时无需手动解压，后续预处理步骤时包含解压操作。**）
-* `/data/src/bkci.tar.gz` 建议将下载的文件放置在此路径。参考从 GitHub 下载的命令：
-
-``` bash
-curl -L -o "${BK_PKG_SRC_PATH:-/data/src}/bkci.tar.gz" "https://github.com/Tencent/bk-ci/releases/download/v1.2.5/bkci.tar.gz"
+如果您没有部署监控日志套餐，则默认不会安装 `es7`，需在中控机检查es7并安装：
 ```
-
-* `/data/src/rabbitmq_delayed_message_exchange-3.8.0.ez`, 路径及文件名不能变动。下载 RabbitMQ 插件的命令：
-
-``` bash
-curl -L -o "${BK_PKG_SRC_PATH:-/data/src}/rabbitmq_delayed_message_exchange-3.8.0.ez" "https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.8.0/rabbitmq_delayed_message_exchange-3.8.0.ez"
+cd "${CTRL_DIR:-/data/install}"
+./bkcli status es7   # 检查es7是否安装并启动。应该显示为active。
+./bkcli install es7  # 安装 es7
+./bkcli start es7    # 启动 es7
 ```
-
-### 1.5 解压相关资源包
-<a id="15"></a>
-
-部署脚本预期解压后的目录，请使用我们提供的预处理脚本：（会在解压完成后自动更新默认 env 模板）
-``` bash
-./bin/prepare-bk-ci.sh /data/src/bkci.tar.gz  # 如果放在其他路径下，请自行修改。
+#### 描述部署拓扑
+编辑 install.config，指示ci的安装拓扑。参考示例：（请修改IP1等为合适的IP）
 ```
-
-### 1.6 自定义安装配置
-<a id="16"></a>
-
-需要编辑 install.config 新增配置项，可使用如下代码添加：
-
-（请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保新增 IP 和文件中已有 IP 之间能互相通信）
-``` bash
-[ -f install.config ] && cat >> install.config <<EOF || echo "当前目录无 install.config, 请切换到 ${CTRL_DIR:-/data/install} 目录下执行。"
-10.0.0.4 ci(gateway),ci(agentless),ci(artifactory),ci(auth),ci(dispatch),ci(environment),ci(image),ci(log),ci(misc),ci(notify),ci(openapi),ci(plugin),ci(process),ci(project),ci(quality),ci(repository),ci(store),ci(ticket),ci(websocket)
-10.0.0.5 ci(dockerhost)
-EOF
+# 服务端(网关+微服务), 单节点要求最低配置8核16G. 后期可升级节点硬件配置或分散微服务到不同节点.
+IP1 ci(gateway)
+IP1 ci(artifactory),ci(auth),ci(dispatch),ci(dispatch-docker),ci(environment)
+IP1 ci(image),ci(log),ci(misc),ci(notify)
+IP1 ci(openapi),ci(plugin),ci(process),ci(project),ci(quality)
+IP1 ci(repository),ci(store),ci(ticket),ci(websocket)
+# 可选的无编译环境. 资源开销较dockerhost低, 可以和服务端混合部署. 如无则无法使用"无编译环境".
+IP1 ci(agentless)
+# 可选的公共构建机. 至少1台, 按需新增. 建议16核32G内存500GB磁盘.
+IP2 ci(dockerhost)
+# 私有构建机无需配置install.config, 默认仅支持Linux系统, 其他系统需参考官网文档完成实施.
 ```
+ 如需修改配置，请提前编辑中控机的 `$CTRL_DIR/bin/03-userdef/ci.env` 文件。然后执行流程。
 
-## 二、开始部署
+#### 配置ssh免密
+在中控机使用 `./configure_ssh_without_pass` 脚本配置ssh免密登录。
 
-请执行 “一键安装” 脚本即可：
-``` bash
-cd ${CTRL_DIR:-/data/install}  # 进入部署脚本主目录，默认为 /data/install 。
-./bk_install ci  # 参数为小写的ci，输入时请注意大小写。
-```
+#### 安装gse agent
+登录蓝鲸PaaS，打开“节点管理”。点击“agent管理”界面下的“安装Agent”按钮，安装“CI主机”到 《蓝鲸》 业务下。如中控机未安装，需一并安装。
 
-“一键安装”脚本在安装过程会不断输出提示。如果失败，会在屏幕输出报错，并提示出错脚本的位置。您在排除故障后重新执行该脚本即可。
+节点管理会自动注册CMDB。安装成功后，在CMDB首页搜索“中控机”及“新增的CI主机”的IP，搜索结果中对应IP的“业务拓扑”应当以“蓝鲸”开头。
 
-## 三、访问蓝盾
+#### yum源
+部署过程中会自动安装 `jq`，此软件来自EPEL仓库。请确保CI主机已经配置了EPEL仓库。
 
-“一键安装”脚本在安装成功后会提示蓝盾的直接访问 URL。您也可以在蓝鲸 PaaS “工作台” 里找到 “蓝盾” 并打开。
+#### 离线环境部署（可选）
+ 部署流程中，会自动在中控机联网下载资源，如果中控机网络受限，可自行下载后传输到预期路径。 
+
+ 资源列表如下：
+1. CI安装包（以v1.5.3为例，其他版本请自行替换版本号）：
+  * 预期放置路径： `/data/src/bkci-v1.5.2-slim.tar.gz`
+  * 参考下载地址（蓝鲸官网）： https://bkopen-1252002024.file.myqcloud.com/bkci/bkci-v1.5.3-slim.tar.gz
+  * 参考下载地址（GitHub）： https://github.com/Tencent/bk-ci/releases/download/v1.5.3/bkci-slim.tar.gz （记得重命名）
+2. rabbitmq_delayed_message_exchange插件 （版本固定，不能修改）：
+ * 预期放置路径: `/data/src/rabbitmq_delayed_message_exchange-3.8.0.ez`
+ * 参考下载地址： https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.8.0/rabbitmq_delayed_message_exchange-3.8.0.ez
+
+### 快速部署
+1. 导入标准运维流程模板
+进入“标准运维”，选择《蓝鲸》业务，导入 [部署流程模板](https://bkopen-1252002024.file.myqcloud.com/bkci/bk-ci-deploy-20210611.dat) 。
+2. 执行部署
+从模板 “[蓝鲸持续集成][CI]部署或升级流水线” 新建任务。
+> 直接点击下一步。（初次部署勾选全部步骤，后续按需取消。）
+> 
+> 填写蓝鲸中控机IP及版本号。版本号建议填写蓝鲸增值套餐下载界面的推荐版本号。也可参考 [GitHub Release 页面](https://github.com/Tencent/bk-ci/releases) ，选择注明适配蓝鲸社区版6.0的版本。
+> 
+> 流程中会自动下载重命名安装包，也可手动下载安装包，并传输到中控机上，确保文件路径为 /data/src/bkci-版本号.tar.gz，可自动跳过下载步骤。
+> 
+> 如果出现异常，请查看具体步骤的报错，故障排除后可直接重试对应的步骤。
+
+### 访问蓝盾
+请配置DNS系统或本地hosts文件。将 `BK_CI_FQDN` 解析到 `ci（gateway）` 所在的IP。
+
+我们在部署结果中提示了访问链接及参考的hosts内容。请查看部署流程中 “集群初始配置” 步骤中的“job任务链接”，在console输出的末尾显示访问的域名及IP。
+
+完成域名解析后，即可在蓝鲸工作台打开“蓝盾”。
+
+相关链接：
+* [快速入门](../../../../持续集成平台/产品白皮书/Quickstarts/Create-your-first-pipeline.md)
+* [产品白皮书](../../../../持续集成平台/产品白皮书/产品简介/README.md)
 
 ![CI_home.png](../../assets/CI_home.png)
+
+## 代码检查（CodeCC） （即将推出，敬请期待）
+
+

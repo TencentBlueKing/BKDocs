@@ -119,6 +119,13 @@ class GetHostList(Component):
 - 组件开头部分为组件文档，注册组件通道后，通过下面指令可更新文档，组件文档地址
 
 ```bash
+# 设置环境变量
+source /root/.bkrc
+source $CTRL_DIR/functions
+export BK_ENV=production
+export BK_FILE_PATH=/data/bkce/open_paas/cert/saas_priv.txt
+export PAAS_LOGGING_DIR=/data/bkce/logs/open_paas
+
 workon open_paas-esb
 python manage.py sync_api_docs
 ```
@@ -137,13 +144,6 @@ python manage.py sync_api_docs
 组件添加完成后，重启服务，重启步骤如下:
 
 ```bash
-# 设置环境变量
-source /root/.bkrc
-source $CTRL_DIR/functions
-export BK_ENV=production
-export BK_FILE_PATH=/data/bkce/open_paas/cert/saas_priv.txt
-export PAAS_LOGGING_DIR=/data/bkce/logs/open_paas
-
 # INSTALL_PATH 表示项目安装基准目录，比如：/data/bkce
 # 重启指令
 workon open_paas-paas

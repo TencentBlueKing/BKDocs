@@ -14,6 +14,6 @@
 
 ## 接下来你可能需要
 
-- [bk-ci 导航条](../Console.md)
+- [bk-ci导航条](../Console.md)
 - [流水线编辑页](pipeline-edit.md)
 - [流水线任务详情页](pipeline-detail.md)

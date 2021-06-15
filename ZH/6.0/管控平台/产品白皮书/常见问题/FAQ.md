@@ -69,3 +69,40 @@
   1. 在 cmdb 上导入 agentip 中配置的 ip。
 
   2. 两台 proxy 情况，建议这种网络情况下，交叉配置另一台 proxy 的 ip，这种就可以统一用 identifyip 在 cmdb 中导入。
+
+
+
+### gse_agent 是否可以用普通用户启动？
+
+可以，但是部分功能受限。
+
+以下为非 root 账户运行评估
+
+<table><tbody>
+<tr ><td width="15%" >-</td><td width="20%">模块</td><td width="20%">功能</td><td width="45%">非root账户运行评估</td></tr>
+<tr><td rowspan="7">gse_agent</td><td>任务</td><td>执行脚本任务</td><td>功能受限：<br>1、不能切换账户；<br>2、不能对切换的账户限权</td></tr>
+<tr><td rowspan="2">进程</td><td>进程启停操作</td><td>功能受限：<br>1、如托管进程运行账户与非gse_agent运行账户不一致时，无法启停进程</td></tr>
+<tr><td>进程状态托管</td><td>功能受限：<br>1、如托管进程运行账户以非gse_agent运行账户不一致时，无发托管</td></tr>
+<tr><td rowspan="3">文件</td><td>文件上传</td><td>功能受限：<br>1、不能上传gse_agent运行账户无权限访问的文件</td></tr>
+<tr><td>文件下载</td><td>功能受限：<br>1、不能下载到gse_agent运行账户无权访问的目录<br>2、如文件所属账户是非gse_agent运行账户，不能切换文件所属账户和权限(mod)</td></tr>
+<tr><td>目录和正则传输</td><td>功能受限：<br>1、不能上传gse_agent运行账户无权限访问的目录或文件<br>2、不能下载到gse_agent运行账户无权访问的目录<br>3、如文件所属账户是非gse_agent运行账户，不能切换目录所属账户和权限(mod)</td></tr>
+<tr><td>数据</td><td>接收并上报采集插件数据</td><td>功能受限：<br>1、如采集插件运行账户以非gse_agent运行账户不一致时，无法上报数据</td></tr>
+<tr><td rowspan="15">采集插件</td><td>采集框架</td><td>-</td><td>功能正常</td></tr>
+<tr><td>unifyTlogc</td><td>日志采集</td><td>功能受限：<br>1、如日志文件及目录所属账户非unifyTlogc运行账户，不能采集日志</td></tr>
+<tr><td>basereport</td><td>基础性能采集</td><td>功能受损：<br>1、不能采集主机cpu,mem, disk等需要读取系统文件的指标</td></tr>
+<tr><td>processbeat</td><td>进程采集</td><td>功能受损：<br>1、不能读取/proc下的进程文件，进程cpu, mem,fd等指标无法采集</td></tr>
+<tr><td>bkmetricbeat</td><td>组件采集</td><td>功能正常</td></tr>
+<tr><td>uptimecheckbeat</td><td>波测采集器</td><td>功能受损：<br>1、脚本采集方式不可用</td></tr>
+<tr><td>netdevicebeat</td><td>网络采集（snmp）</td><td>功能受损：<br>1、不能采集链接到交换机上的主机</td></tr>
+<tr><td>tcpbeat</td><td>采集中转</td><td>功能正常</td></tr>
+<tr><td>mysqlbeat</td><td>mysql数据采集</td><td>功能正常</td></tr>
+<tr><td>oraclebeat</td><td>oracle数据采集</td><td>功能正常</td></tr>
+<tr><td>redis</td><td>redis数据采集</td><td>功能正常</td></tr>
+<tr><td>dbbeat</td><td>db数据采集</td><td>功能正常</td></tr>
+<tr><td>httpbeat</td><td>http采集</td><td>功能正常</td></tr>
+<tr><td>cadvisorbeat</td><td>容器性能采集</td><td>功能受损：<br>1、不能读取容器性能数据的文件，性能指标数据无法采集</td></tr>
+<tr><td>logbeat/bk_logbeat</td><td>容器文件采集（linux+win）</td><td>功能受限：<br>1、如日志文件及目录所属账户非logbeat/bk_logbeat运行账户，不能采集日志</td></tr>
+<tr><td rowspan="2">其他关联产品</td><td>监控SaaS</td><td>插件配置下发</td><td>功能受限：<br>1、如下发配置所属账户，非gse_agent运行的账户，配置下发失败</td></tr>
+<tr><td>节点管理SaaS</td><td>插件管理</td><td>功能受限：<br>1、如插件运行账户，非gse_agent运行的账户，不能进行插件的部署，更新等管理</td></tr>
+</tbody></table>
+

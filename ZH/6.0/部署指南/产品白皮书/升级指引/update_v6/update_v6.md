@@ -4,7 +4,7 @@
 
 - 社区版 5.1 - 社区版 6.0.3
 
-## 升级准备：准备机器
+## 准备机器
 
 ### 套餐拆分说明
 
@@ -27,6 +27,7 @@
 - 请仔细阅读本升级文档，避免因未注意相关细节造成误操作。
 - 如无特殊说明，所述操作均在中控机执行。
 - 原蓝鲸官方 SaaS 必须提前下架，否则将影响 SaaS 升级部署。
+- 请严格按照本文档步骤进行升级，如升级过程存在问题，请先解决该问题后再继续往下执行升级。
 - 非标准私有 IP 用户需在解压新的脚本后，需要按照以前修改 [非标准私有 IP](https://bk.tencent.com/docs/document/6.0/127/7543) 的方式重新修改。
 - 如果 MySQL 备份参考本升级文档的备份方式，涉及到有自行开发的 SaaS 应用，请重新前往 MySQL 重新授权。
 - 本次升级务必保证 MySQL/MongoDB 机器磁盘空间充足，避免导致磁盘空间不足备份失败。
@@ -47,11 +48,9 @@
 
 1.下载相关软件包
 
-
-
 |软件包|下载地址|MD5|备注|
 |---|---|---|---|
-|bkce_src_6.0.3.tar.gz|[https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.3.tgz)|d783c76460163cec21d214b91b598467|蓝鲸完整包|
+|bkce_src_6.0.3.tar.gz|[https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/ce/bkce_src-6.0.3.tgz)|565d48217a1ff1002fe181130637b170|蓝鲸完整包|
 |迁移工具合集|[https://bkopen-1252002024.file.myqcloud.com/ce/ce6.0_upgrade_tools.zip](https://bkopen-1252002024.file.myqcloud.com/ce/ce6.0_upgrade_tools.zip)|5a7632530948e0733368f859c4db609d|包含下表所有迁移工具|
 |upgrade.py|-|4683f0f7d5136c1799b5010f8960d7e3 |节点管理升级脚本|
 |migrate_old_environ_v2.sh|-|4ae6c6f2a1ccb4658c7a124857561d67|旧变量转换脚本|
@@ -427,7 +426,7 @@ mysql --login-path=mysql-default < /data/change_paas.sql
 mysql --login-path=mysql-default  -e "use open_paas;select  app,name,applied from django_migrations where app='bkcore' order by name desc  limit 5;"
 ```
 
-- 由于 5.1 之前的 PaaS 是未加密版本，而 6.0 的是加密版本，所以在升级的过程中，会出现解密失败的问题。所以需要删掉 PaaS 的旧虚拟环境后再升级 PaaS。
+- 由于 5.1 的 PaaS 是未加密，而 6.0 的已进行加密，在升级的过程中，会出现加密的问题。所以需要删掉 PaaS 的旧虚拟环境后再升级 PaaS。
 
 ```bash
 source /data/install/utils.fc
@@ -452,6 +451,34 @@ source /data/install/utils.fc
 ```bash
 ./bk_install saas-o bk_iam
 ./bk_install saas-o bk_user_manage
+```
+
+#### 迁移用户管理数据
+
+> 验证：执行完下述命令后，打开用户管理 -> 组织架构 -> 默认目录 -> 总公司。查看相关原 5.1 上的用户是否存在。
+
+```bash
+# 登陆 usermgr 服务器，执行脚本
+source /data/install/utils.fc
+ssh $BK_USERMGR_IP
+
+# 进入用户管理虚拟环境
+workon usermgr-api
+
+source /data/install/utils.fc
+# 加载相关环境变量
+export MYSQL_IP0=$BK_PAAS_MYSQL_HOST
+export MYSQL_PORT=$BK_PAAS_MYSQL_PORT
+export MYSQL_USER=$BK_PAAS_MYSQL_USER
+export MYSQL_PASS=$BK_PAAS_MYSQL_PASSWORD
+export DJANGO_SETTINGS_MODULE=config.ce.prod
+export BK_FILE_PATH="/data/bkce/usermgr/cert/saas_priv.txt"
+
+# 迁移数据前，查看迁移内容
+python manage.py migrate_from_ce_5dot1 --dry_run   # 无 ERROR 输出即为正常
+
+# 迁移内容无误后，开始迁移
+python manage.py migrate_from_ce_5dot1 > migrate.log
 ```
 
 ### 升级 CMDB
@@ -796,36 +823,6 @@ cd /data/app/code && python manage.py task_model_migrate
 
 ```bash
 ./bk_install saas-o bk_itsm
-```
-
-## 执行权限、用户数据迁移
-
-### 迁移用户管理数据
-
-> 验证：执行完下述命令后，打开用户管理 -> 组织架构 -> 默认目录 -> 总公司。查看相关原 5.1 上的用户是否存在。
-
-```bash
-# 登陆 usermgr 服务器，执行脚本
-source /data/install/utils.fc
-ssh $BK_USERMGR_IP
-
-# 进入用户管理虚拟环境
-workon usermgr-api
-
-source /data/install/utils.fc
-# 加载相关环境变量
-export MYSQL_IP0=$BK_PAAS_MYSQL_HOST
-export MYSQL_PORT=$BK_PAAS_MYSQL_PORT
-export MYSQL_USER=$BK_PAAS_MYSQL_USER
-export MYSQL_PASS=$BK_PAAS_MYSQL_PASSWORD
-export DJANGO_SETTINGS_MODULE=config.ce.prod
-export BK_FILE_PATH="/data/bkce/usermgr/cert/saas_priv.txt"
-
-# 迁移数据前，查看迁移内容
-python manage.py migrate_from_ce_5dot1 --dry_run   # 无 ERROR 输出即为正常
-
-# 迁移内容无误后，开始迁移
-python manage.py migrate_from_ce_5dot1 > migrate.log
 ```
 
 ### 权限中心同步用户组织架构
