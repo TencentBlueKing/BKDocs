@@ -18,6 +18,10 @@ public 目录一般不能手动删除，一般比较大的组件可能有
 
 - MongoDB 数据
 
+- SaaS包上传目录
+
+- 作业平台上传文件目录
+
 ## MySQL 日志清理
 
 MySQL 中的 binlog 日志记录了数据库中数据的变动，便于对数据的基于时间点和基于位置的恢复，但是 binlog 也会日渐增大，占用很大的磁盘空间，因此，要对 binlog 使用正确安全的方法清理掉一部分没用的日志。
@@ -166,3 +170,37 @@ EOF
 # 执行清理的js
 mongo --quiet "$BK_JOB_LOGSVR_MONGODB_URI" --eval 'var beforeDate="'$before_date'"' /tmp/delete_job_outdate_collection.js
 ```
+
+## SaaS 包上传目录
+
+通过开发者中心部署上传 S-mart 应用包，时间长了以后，会占用一定的磁盘空间，可以配置作业平台任务定时清理。提供示例脚本如下：
+第一个参数为 SaaS 包上传目录绝对路径，第二个参数为每个app_code对应的包保留的个数（默认为最近15个）
+
+需要注意的是，该脚本需要在两个不同的组件服务器上运行：
+
+- paas 所在服务器的 /data/bkce/open_paas/paas/media/saas_files/ 目录
+- appo 和 appt 所在服务器的 /data/bkce/paas_agent/saasapp/ 目录
+
+```bash
+dir=${1}
+keep_cnt=${2-:15}
+cd $dir || { echo "can't change to $dir"; exit 1; }
+
+app_code=$(ls -rt | grep -Po 'bk_[0-9a-z_]+(?=_V)' | sort | uniq -c  | awk -v keep=$keep_cnt '$1 > keep { print $2 }')
+if [[ -z "$app_code" ]]; then
+    echo "无需清理"
+    exit 0
+else
+    echo "以下app_code需要清理"
+    echo "$app_code"
+fi
+
+while read app; do 
+    ls ${app}_V*.gz -t | sed "1,${keep_cnt}d" | xargs --no-run-if-empty -I{} sh -c 'ls -l {}; rm -v {};'
+done <<<"$app_code"
+```
+
+## 作业平台上传文件目录
+
+作业平台长时间使用本地上传文件，文件存储目录 `/data/bkce/public/job/localupload` 会持续增长，job后台默认会每小时自动清理超过7天的未被任何
+作业引用的本地上传文件（一般是快速分发文件功能落地的），如果本地上传的文件，有被任意作业引用，则即使超过7天也不会被自动删除。
