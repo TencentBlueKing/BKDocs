@@ -85,7 +85,9 @@ IP2 ci(dockerhost)
 
 完成域名解析后，即可在蓝鲸工作台打开“蓝盾”。
 
-扩展阅读：[快速入门](../../../../持续集成平台/产品白皮书/Quickstarts/Create-your-first-pipeline.md) [产品白皮书](../../../../持续集成平台/产品白皮书/产品简介/README.md) [视频]()。
+相关链接：
+* [快速入门](../../../../持续集成平台/产品白皮书/Quickstarts/Create-your-first-pipeline.md)
+* [产品白皮书](../../../../持续集成平台/产品白皮书/产品简介/README.md)
 
 ![CI_home.png](../../assets/CI_home.png)
 
