@@ -1,6 +1,5 @@
 # 组件维护
 
-
 ## 第三方组件
 
 第三方依赖组件安装时均使用 rpm 包安装，或者二进制直接拷贝到 $PATH 目录下。下面按照安装顺序依次介绍第三方组件：
@@ -138,3 +137,91 @@
     ```
 
 以上是举的 license_server 进程例子，其他进程请根据实际命令和参数来定位。
+
+## 进程查看
+
+各组件对应的进程名，启动参数，启动用户，写入的日志文件路径等信息。可以用以下方式查看，本文附表汇总了
+基础版的所有组件进程信息，方便对照。见[《蓝鲸社区版6.0进程列表》](https://docs.qq.com/sheet/DWkV5elFBemxwY3Nk?tab=BB08J2)
+
+1. 通览本机所有组件进程，默认是用 `more` 命令来查看，可以翻页和搜索感兴趣的 service
+
+    ```bash
+    systemctl status
+    ```
+
+2. 如果已知 service 的名字，可以直接查看该服务下进程的 MAINPID 找到主进程。
+
+    ```bash
+    systemctl show -p MainPID bk-nodeman.service
+    ```
+
+3. 找到 MAINPID 后，可以通过 `pstree` 查看进程树，包含 pid, cmdline 等信息。
+
+    ```bash
+    pstree -pla <mainpid>
+    ```
+
+4. 知道进程的 pid 后，通过 `ps`、`lsof`、`/proc/<pid>/*` 等命令和文件可以了解进程有关的详细信息。
+
+    ```bash
+    # 获取 pid 进程的当前工作目录，顺便查看进程的用户、组。
+    ls -l /proc/<pid>/cwd
+    # 查看 pid 进程生效的 limits 相关信息：
+    cat /proc/<pid>/limits
+    # 查看 pid 进程生效的环境变量信息：
+    tr '\0' '\n' /proc/<pid>/environ
+    # 查看 pid 打开的普通文件：
+    lsof -nP -p <pid> | grep REG 
+    # 查看 pid 监听的端口：
+    lsof -Pan -i -sTCP:LISTEN -p <pid>
+    ss -nlp | grep ,pid=<pid>,
+    ```
+
+5. 有些 MAINPID 是 supervisord 的进程，说明这个 service 是 systemd 启动托管 supervisord，supervisord再拉起相应进程，在蓝鲸基础平台中，一般是 Python 工程会这样使用。
+
+6. 部署脚本（`./bin/bks.sh`）封装了根据 service 名查看进程相关信息的操作，日常使用中可带来便利。
+
+
+关于进程启动后的 STDOUT 和 STDERR 指向哪里，这里提供一个通用定位方法：
+
+1. 找到pid打开的文件句柄 1（STDOUT）和 2（STDERR）。下面以 `license_server` 为例：
+
+    ```bash
+    $ lsof -p 3518 -a -d 1,2
+    COMMAND    PID     USER   FD   TYPE             DEVICE SIZE/OFF  NODE NAME
+    license_s 3518 blueking    1u  unix 0xffff880423539880      0t0 31718 socket
+    license_s 3518 blueking    2u  unix 0xffff880423539880      0t0 31718 socket
+    ```
+
+2. 指向的是 unix socket 类型, NODE 为 31718，使用 ss 查找对应的进程
+
+    ```bash
+    $ ss -xp | grep -w 31718
+    u_str  ESTAB      0      0       * 31718                 * 15113                 users:(("license_server",pid=3518,fd=2),("license_server",pid=3518,fd=1))
+    u_str  ESTAB      0      0      /run/systemd/journal/stdout 15113                 * 31718                 users:(("systemd-journal",pid=997,fd=52),("systemd",pid=1,fd=160))
+    ```
+
+    可以看出该 unix socket 的对端进程是 systemd-journald。一般使用 systemd 托管的进程，如果没有特殊配置， STDOUT 和 STDERR 都通过 unix socket 发送给 journald 进程然后通过rsyslogd的规则，会写入相应的磁盘文件。
+
+3. 对于插件进程，比如 `basereport`，看到 STDERR 是重定向到 /tmp/xuoasefasd.err 文件。
+
+    ```bash
+    $ lsof -c basereport -a -d 1,2
+    COMMAND     PID USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
+    baserepor 21360 root    1w   CHR    1,3      0t0   1028 /dev/null
+    baserepor 21360 root    2w   REG  252,1        0 399806 /tmp/xuoasefasd.err
+    ```
+
+4. 对于 supervisord 托管的进程，且配置文件中配置了 "stdout_logfile" 和 "redirect_stderr" 配置项。那么会显示如下：通过supervisord创建的PIPE pair打印。
+
+    ```bash
+    $ lsof -p 12435 -a -d 1,2
+    COMMAND    PID     USER   FD   TYPE DEVICE SIZE/OFF      NODE NAME
+    gunicorn 12435 blueking    1w  FIFO    0,8      0t0 427293063 pipe
+    gunicorn 12435 blueking    2w  FIFO    0,8      0t0 427293063 pipe
+
+    $ lsof -n | grep -w 427293063
+    ...
+    superviso 12422       blueking    8r     FIFO                0,8       0t0  427293063 pipe
+    ...
+    ```
