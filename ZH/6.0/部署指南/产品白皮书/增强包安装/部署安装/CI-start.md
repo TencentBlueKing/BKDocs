@@ -46,7 +46,7 @@ IP2 ci(dockerhost)
 在中控机使用 `./configure_ssh_without_pass` 脚本配置ssh免密登录。
 
 #### 安装gse agent
-登录蓝鲸PaaS，打开“节点管理”。点击“agent管理”界面下的“安装Agent”按钮，安装“CI主机”到 《蓝鲸》 业务下。如中控机未安装，需一并安装。
+登录蓝鲸PaaS，打开“节点管理”。点击“agent管理”界面下的“安装Agent”按钮，安装“CI主机”到 《`蓝鲸`》 业务下。如中控机未安装，需一并安装。
 
 节点管理会自动注册CMDB。安装成功后，在CMDB首页搜索“中控机”及“新增的CI主机”的IP，搜索结果中对应IP的“业务拓扑”应当以“蓝鲸”开头。
 
@@ -57,8 +57,8 @@ IP2 ci(dockerhost)
  部署流程中，会自动在中控机联网下载资源，如果中控机网络受限，可自行下载后传输到预期路径。 
 
  资源列表如下：
-1. CI安装包（以v1.5.3为例，其他版本请自行替换版本号）：
-  * 预期放置路径： `/data/src/bkci-v1.5.2-slim.tar.gz`
+1. CI安装包（以 `v1.5.3` 为例，其他版本请自行替换版本号）：
+  * 预期放置路径： `/data/src/bkci-v1.5.3-slim.tar.gz`
   * 参考下载地址（蓝鲸官网）： https://bkopen-1252002024.file.myqcloud.com/bkci/bkci-v1.5.3-slim.tar.gz
   * 参考下载地址（GitHub）： https://github.com/Tencent/bk-ci/releases/download/v1.5.3/bkci-slim.tar.gz （记得重命名）
 2. rabbitmq_delayed_message_exchange插件 （版本固定，不能修改）：
@@ -67,7 +67,7 @@ IP2 ci(dockerhost)
 
 ### 快速部署
 1. 导入标准运维流程模板
-进入“标准运维”，选择《蓝鲸》业务，导入 [部署流程模板](https://bkopen-1252002024.file.myqcloud.com/bkci/bk-ci-deploy-20210611.dat) 。
+进入“标准运维”，选择《`蓝鲸`》业务，导入 [部署流程模板](https://bkopen-1252002024.file.myqcloud.com/bkci/bk-ci-deploy-20210611.dat) 。
 2. 执行部署
 从模板 “[蓝鲸持续集成][CI]部署或升级流水线” 新建任务。
 > 直接点击下一步。（初次部署勾选全部步骤，后续按需取消。）
@@ -84,12 +84,17 @@ IP2 ci(dockerhost)
 我们在部署结果中提示了访问链接及参考的hosts内容。请查看部署流程中 “集群初始配置” 步骤中的“job任务链接”，在console输出的末尾显示访问的域名及IP。
 
 完成域名解析后，即可在蓝鲸工作台打开“蓝盾”。
+![CI_home.png](../../assets/CI_home.png)
 
 相关链接：
 * [快速入门](../../../../持续集成平台/产品白皮书/Quickstarts/Create-your-first-pipeline.md)
 * [产品白皮书](../../../../持续集成平台/产品白皮书/产品简介/README.md)
+* [BKCI Docs](https://docs.bkci.net/)
+* [常见问题](../../增强包维护/蓝盾/FAQ.md)
+* [部署详解](./CI-V2.md)
+* [日常维护](../../增强包维护/蓝盾/Maintenance.md)
+* [私有构建机方案](../../增强包维护/蓝盾/Private-build-setup.md)
 
-![CI_home.png](../../assets/CI_home.png)
 
 ## 代码检查（CodeCC） （即将推出，敬请期待）
 
