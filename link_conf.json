@@ -1596,7 +1596,7 @@
 				"summary": "6.0/iam_dev_docs/SUMMARY.md"
 			},
 			"index": 344,
-			"title": "权限中心开发",
+			"title": "权限中心接入",
 			"url": "6.0/iam_dev_docs/HowTo/Guide.md",
 			"version": "6.0"
 		}],
@@ -2259,7 +2259,7 @@
 				"summary": "6.0/iam_dev_docs/SUMMARY.md"
 			},
 			"index": 66,
-			"title": "权限中心开发",
+			"title": "权限中心接入",
 			"url": "6.0/iam_dev_docs/HowTo/Guide.md",
 			"version": "6.0"
 		}],
