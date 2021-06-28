@@ -22,7 +22,6 @@ related_resource_types 里的元素
 | id | string | 是 | 资源类型 ID，操作关联多个资源类型时，`同一个related_resource_types里 id 不能重复` |
 | name_alias | string | 否 | 资源类型名称的别名，同一个资源类型对于不同 Action 可以有各自的显示名称
 | name_alias_en | string | 否 | 资源类型名称的别名英文名 |
-| scope | Object | 否 | 选填，限制该操作对该资源的选择范围，[条件表达式协议](../../Expression/01-Schema.md)  |
 | selection_mode | string | 否 | 选择类型, 即资源在权限中心产品上配置权限时的作用范围, 可选: `instance`/`attribute`/`all`, 如果不设置, 默认为`instance`, [更多概念说明](./00-Concepts.md)  |
 | related_instance_selections | Array(Object) | 否 |  关联的实例视图，即资源在权限中心产品上配置权限时的选择方式; 可以配置本系统的实例视图, 也可以配置其他系统的实例视图(如果`selection_mode=attribute`则该字段不用配置; 如果没有设置`selection_mode`或`selection_mode=instance/all`, 此时这个字段不能为空)  |
 

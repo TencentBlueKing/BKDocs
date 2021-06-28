@@ -1,7 +1,6 @@
 # Summary
 
-## 权限中心开发
-
+## 权限中心接入
 * [快速指引]()
     * [接入指引](HowTo/Guide.md)
     * [接入流程图](HowTo/GuideFlow.md)
@@ -50,6 +49,7 @@
         * [开发测试环境搭建](HowTo/OPS/Develop.md)
 * [Explanation]()
     * [说明: 实例视图](Explanation/01-InstanceSelection.md)
+    * [说明: 权限模型](Explanation/02-AuthModel.md)
 * [Reference]()
     * [规范及说明]()
         * [系统注册名词规范](Reference/NamingRules.md)

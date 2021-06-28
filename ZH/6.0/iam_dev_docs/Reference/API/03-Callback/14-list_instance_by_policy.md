@@ -7,7 +7,7 @@
 ### Request.Body
 
 | 字段 |  类型 |是否必须  | 描述  |
-|:---|:---|:---|:---||
+|:---|:---|:---|:---|
 | type | string | 是 | 对应查询的资源类型 |
 | method |string | 是 | 值为：list_instance_by_policy |
 | filter | object | 是 | 查询条件 |

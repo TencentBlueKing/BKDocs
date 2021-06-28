@@ -159,3 +159,61 @@ $ ./iam-cli cache policy group 1 access_developer_center
   ]
 }
 ```
+
+### 3.8 SaaS 登录 login
+
+> ./iam-cli saas login http://{iam_saas_host} {app_code} {app_secret}
+
+```bash
+$ ./iam-cli saas login http://{bkiam_saas_address} bk_iam {bk_iam_saas_app_secret}
+INFO: success
+```
+
+### 3.9 确认SaaS可用
+
+> ./iam-cli saas ping
+
+去掉SaaS可达
+
+```bash
+$ ./iam-cli saas ping
+INFO: pong
+```
+
+### 3.10 查询SaaS的Debug信息列表
+
+> ./iam-cli saas debug list 20210101
+
+查询`20210101`这一天SaaS的所有debug信息
+
+```bash
+$ ./iam-cli saas debug list 20210101
+[
+  {
+    "id": "cdc04cd3-c91f-4a98-9772-f237e313e90c",
+    "type": "task",
+    "name": "backend.apps.role.tasks.role_group_expire_remind",
+    "exc": "",
+    "stack": [],
+  }
+]
+```
+
+### 3.11 通过request_id/task_id查询单个请求的Debug信息
+
+> ./iam-cli saas debug get {request_id/task_id}
+
+通过请求ID或者Celery Task ID查询Debug信息
+
+```bash
+$ ./iam-cli saas debug get 205310e3fe5548059ad386d7969b8161
+{
+  "id": "205310e3fe5548059ad386d7969b8161",  # request_id
+  "type": "api",
+  "path": "/api/v1/accounts/user/",  #  请求path
+  "method": "post",  # 请求method
+  "data": {},  # request data
+  "exc": "",  # 异常信息
+  "stack": [],  # 调用链信息
+}
+```

@@ -1,5 +1,11 @@
 # 样例 3: 使用拓扑层级管理权限
 
+## 相关阅读
+
+> 拓扑层级管理权限涉及到实例视图的概念, 请先阅读相关的文档, 了解实例视图的概念
+
+- [说明: 实例视图](../../Explanation/01-instanceSelection.md)
+
 ## 1. 场景描述
 
 在业务实际模型中, 可能存在多层的`拓扑层级`关系, 例如`项目-模块-主机`.
@@ -23,8 +29,7 @@
     - 关联实例类型 `resourceType=flow`
     - 关联资源的实例视图 `flow.related_instance_selections=flow`
 
-相关阅读:
-- [说明: 实例视图](../../Explanation/01-instanceSelection.md)
+
 
 
 ## 3. 权限模型
@@ -114,16 +119,17 @@
 
 这样, 配置权限时, 实例视图中选择 flow 就会存在树状结构, 上级是`project`, 叶子节点是`flow`;
 
-如果勾选了`project`, 代表这个项目下的所有流程模板有权限; 如果勾选了具体某个`flow`, 代表仅对这个具体的流程模板有权限;
+- 如果勾选了`project`, 代表这个项目下的所有流程模板有权限; 
+    - 生成策略: `__bk_iam_path__ startswith /project,123/`
+- 如果勾选了具体某个`flow`, 代表仅对某个项目下这个具体的流程模板有权限;
+    - 生成策略: `__bk_iam_path__ startswith /project,123/ AND flow.id eq "abc"`
 
 ![-w2021](../../assets/HowTo/Examples/03_01.jpg)
 
 
 ## 4. 鉴权
 
-鉴权的 resource 同 
-
-需要注意, 传递 attribute 中包含一个字段`__bk_iam_path__`, 这个字段格式具体查看  [资源的拓扑说明](../../Reference/ResourceTopology.md)
+需要注意, Resource传递 attribute 中包含一个字段`__bk_iam_path__`, 这个字段格式具体查看  [资源的拓扑说明](../../Reference/ResourceTopology.md)
 
 `/project,abc/`代表`task 123`是`project abc`下的一个流程.
 
@@ -148,5 +154,6 @@
 
 [生成无权限申请 URL](../../Reference/API/05-Application/01-GenerateURL.md)中, 使用`instances`进行拓扑层级的权限申请; 
 
-例如`instances[0]`中的`resources`列表只包含了`project=a`, 代表申请`project a`下的所有`flow`的查看权限; 
-如果包含了`project=a, flow=b`,   代表申请`project a`下的`flow b`的查看权限;
+例如
+- `instances[0]`中的`resources`列表只包含了`project=a`, 代表申请`project a`下的所有`flow`的查看权限; 
+- 如果包含了`project=a, flow=b`,   代表申请`project a`下的`flow b`的查看权限;

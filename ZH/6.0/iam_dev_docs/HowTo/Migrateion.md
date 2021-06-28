@@ -4,8 +4,8 @@
 
 附件:
 
-1. do_migrate.py 是届时给运维用的工具, 每个接入系统的模型接入可以写好对应 migration 文件后, 用这个文件先进行测试
-2. example.json 是一个 migration 文件示例, 可以参考编辑自己系统的 migration 文件
+1. [do_migrate.py](https://github.com/TencentBlueKing/iam-python-sdk/blob/master/iam/contrib/iam_migration/utils/do_migrate.py) 是届时给运维用的工具, 每个接入系统的模型接入可以写好对应 migration 文件后, 用这个文件先进行测试
+2. [example.json](https://github.com/TencentBlueKing/iam-python-sdk/blob/master/iam/contrib/iam_migration/utils/example.json) 是一个 migration 文件示例, 可以参考编辑自己系统的 migration 文件
 
 
 注意:

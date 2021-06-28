@@ -1,6 +1,8 @@
 # 鉴权
 
-直接使用 python sdk 进行鉴权操作 [iam-python-sdk: is_allowed](https://github.com/TencentBlueKing/iam-python-sdk/blob/master/docs/usage.md#12-is_allowed)
+## 1. 使用 python sdk 进行鉴权
+
+[iam-python-sdk: is_allowed](https://github.com/TencentBlueKing/iam-python-sdk/blob/master/docs/usage.md#12-is_allowed)
 
 ```python
 from iam import IAM, Request, Subject, Action, Resource
@@ -60,4 +62,50 @@ class Permission(object):
 Permission().allowed_access_developer_center(request.user.username)
 
 Permission().allowed_develop_app(request.user.username, app_code)
+```
+
+## 2. 使用 API 进行鉴权
+
+访问开发者中心权限
+
+```bash
+curl -XPOST 'http://{IAM_HOST}/api/v1/policy/auth' \
+-H 'X-Bk-App-Code: demo' \
+-H 'X-Bk-App-Secret: c2cfbc92-28a2-420c-b567-cf7dc33cf29f' \
+-H 'Content-Type: application/json' \
+-d '{
+	"system": "demo",
+	"subject": {
+		"type": "user",
+		"id": "tom"
+	},
+	"action": {
+		"id": "access_developer_center"
+	},
+	"resources": []
+}'
+```
+
+APP 开发权限
+
+```bash
+curl -XPOST 'http://{IAM_HOST}/api/v1/policy/auth' \
+-H 'X-Bk-App-Code: demo' \
+-H 'X-Bk-App-Secret: c2cfbc92-28a2-420c-b567-cf7dc33cf29f' \
+-H 'Content-Type: application/json' \
+-d '{
+    "system": "demo",
+    "subject": {
+        "type": "user",
+        "id": "tom"
+    },
+    "action": {
+        "id": "develop_app"
+    },
+    "resources": [{
+        "system": "demo",
+        "type": "app",
+        "id": "test_app_1"
+    }]
+}'
 ```
