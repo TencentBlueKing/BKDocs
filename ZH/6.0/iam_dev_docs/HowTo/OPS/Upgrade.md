@@ -11,6 +11,7 @@
 ```bash
 ssh $BK_APPO_IP
 docker exec -it $(docker ps | grep -w bk_iam | awk '{print $1}') bash 
+export BK_FILE_PATH="/data/app/code/conf/saas_priv.txt"
 /cache/.bk/env/bin/python /data/app/code/manage.py sync_templates
 # 脚本打印 Successful completion of template version synchronization 表示执行同步成功
 ```
