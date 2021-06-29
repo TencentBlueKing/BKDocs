@@ -49,7 +49,7 @@
 10.0.0.1 nginx,rabbitmq,zk(config),appt,consul
 10.0.0.2 mongodb,appo,mysql,consul
 10.0.0.3 paas,cmdb,job,gse,license,redis,consul
-```plain
+```
 
 2. 将 `iam`、`ssm`、`usermgr`、`nodeman(nodeman)`模块合理的分布在原机器环境上。
 
