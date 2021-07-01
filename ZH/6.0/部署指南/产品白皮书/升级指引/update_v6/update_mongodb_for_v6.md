@@ -26,8 +26,8 @@ cd /data/version_pkg/mongodb
 cat > wget.list <<EOF
 https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.0/x86_64/RPMS/mongodb-org-shell-4.0.18-1.el7.x86_64.rpm
 https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.0/x86_64/RPMS/mongodb-org-server-4.0.18-1.el7.x86_64.rpm
-https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.2/x86_64/RPMS/mongodb-org-shell-4.2.8-1.el7.x86_64.rpm
-https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.2/x86_64/RPMS/mongodb-org-server-4.2.8-1.el7.x86_64.rpm
+https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.2/x86_64/RPMS/mongodb-org-shell-4.2.3-1.el7.x86_64.rpm
+https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.2/x86_64/RPMS/mongodb-org-server-4.2.3-1.el7.x86_64.rpm
 EOF
 
 # 开始下载
@@ -119,8 +119,9 @@ rs.status()
 
 ```bash
 cd /data/version_pkg/mongodb
-yum -y install mongodb-org-shell-4.2.8-1.el7.x86_64.rpm  mongodb-org-server-4.2.8-1.el7.x86_64.rpm
+yum -y install mongodb-org-shell-4.2.3-1.el7.x86_64.rpm mongodb-org-server-4.2.3-1.el7.x86_64.rpm
 ```
+
 - 确认版本号
 
 ```bash
