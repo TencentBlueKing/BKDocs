@@ -890,7 +890,7 @@ bash ./edition/mysqldump_bk_sops_data.sh -d bk_sops -p $BK_MYSQL_ADMIN_PASSWORD 
 > 验证：执行完下述命令后，打开权限中心 ->  右上角切换身份至超级管理 -> 权限模版。查看是都建立对对应业务的配置平台运维模版。
 
 ```bash
-/opt/py27/bin/python -m edition.migrate_biz_policy -s $BK_IAM_APP_SECRET <iam SaaS的app secret，可由页面获取>  -t $BK_PAAS_PRIVATE_ADDR -e bk_cmdb -E ce -f <配置平台空闲机目录ID>
+/opt/py27/bin/python -m edition.migrate_biz_policy -s $BK_IAM_APP_SECRET <iam SaaS的app secret，可由页面获取>  -t $BK_PAAS_PRIVATE_ADDR -e bk_cmdb -E ce -f <配置平台空闲机目录 ID，获取方式请往下看>
 ```
 
 **配置平台空闲机目录 ID 查询方式：**
