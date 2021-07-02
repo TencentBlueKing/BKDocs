@@ -2,12 +2,12 @@
 
 ## 原机器配置进行升级
 
-**原则上：建议在是不改变原 5.1 模块的分布，而是将新增的模块进行的合理分布、修改变化的模块名以及去掉不需要的模块即可。**
+**原则上：是在不改变原 5.1 模块的分布，将新增的模块进行的合理分布、修改变化的模块名以及去掉不需要的模块即可。**
 
 以蓝鲸默认分布的模块为例。
 如原来部署时，调整过模块的位置，请自行合理的将相关模块分布到机器上。避免因分布不合理，导致个别主机资源不足产生问题。
 
-**原 5.1 install.config 模板分布文件**
+**原 5.1 install.config 模板文件**
 
 ```bash
 [bkce-basic]
@@ -16,7 +16,7 @@
 10.0.0.3 paas,cmdb,job,gse,license,kafka(config),zk(config),es,redis,influxdb,consul,bkdata(monitor)
 ```
 
-**现 6.0 install.config 模块分布**
+**现 6.0 install.config 模板文件**
 
 ```bash
 10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana)
@@ -26,21 +26,29 @@
 
 ### 详细操作
 
+**注意：** 请合理进行模块分布，建议先进行资源评估，再决定在哪台机器上保留模块。
+
 1. 去掉 `bkdata(databus),bkdata(dataapi),bkdata(monitor)` 模块。
 
-2. 将 `influxdb`、`es` 模块更名为 `influxdb(bkmonitorv3)`、`es7`。
+2. 去掉其中 2 个 es 模块，将留存的 `es` 更名为 `es7`。
 
-3. 然后将新增的`iam、ssm、usermgr、monitorv3(influxdb-proxy)、monitorv3(monitor)、monitorv3(grafana)、monitorv3(transfer)、nodeman(nodeman)、log(api)、log(grafana)`模块合理的分布到机器上。分布可参考 6.0 install.config 模块分布。
+3. 去掉两个 zk(config) 模块，保留一个即可。
+
+4. 将 `influxdb`、模块更名为 `influxdb(bkmonitorv3)`。
+
+5. 将新增的 `iam、ssm、usermgr、monitorv3(influxdb-proxy)、monitorv3(monitor)、monitorv3(grafana)、monitorv3(transfer)、nodeman(nodeman)、log(api)、log(grafana)` 模块合理的分布到机器上。分布可参考 6.0 install.config 模板文件。
 
 ## 新增主机进行升级
 
 新增主机进行升级，是将增强套餐的监控平台、日志平台、故障自愈进行剥离升级。而基础套餐则保持在原环境机器上进行升级。
 
-**原则上：建议在是不改变原 5.1 模块分布的原则上，将新增的模块进行的合理分布、修改变化的模块名以及去掉不需要的模块即可。**
+**原则上：是在不改变原 5.1 模块的分布，将新增的模块进行的合理分布、修改变化的模块名以及去掉不需要的模块即可。**
 
 ### 详细操作
 
-1. 去掉 `bkdata(databus)`、`bkdata(dataapi)`、`bkdata(monitor)` `influxdb`、`es`、`kafka(config)`、`fta`、`beanstalk`模块。去掉两个 zk(config)模块，在任意一台机器上保留一个即可（建议先进行资源评估，再决定在哪台机器上保留）。
+**注意：** 请合理进行模块分布，建议先进行资源评估，再决定在哪台机器上保留模块。
+
+1. 去掉 `bkdata(databus)`、`bkdata(dataapi)`、`bkdata(monitor)` `influxdb`、`es`、`kafka(config)`、`fta`、`beanstalk`模块。去掉两个 zk(config) 模块，在任意一台机器上保留一个即可（建议先进行资源评估，再决定在哪台机器上保留）。
 
 **去掉后效果如下：**
 
@@ -57,7 +65,7 @@
 
 **变更后效果如下：**
 
-**注意：** 该效果不包含详细操作的第 2 点。需要自行合理的分布在原环境的机器上。
+**注意：** 该效果不包含详细操作的第 2 点。新增的模块需要自行合理的分布在原环境的机器上。
 
 ```bash
 [bkce-basic]
@@ -69,4 +77,4 @@
 10.0.0.5 consul,log(api),log(grafana),fta,beanstalk
 ```
 
-分配模块后，可以返回升级指引继续后续升级操作。
+模块分配完成后，请返回升级指引继续后续升级操作。

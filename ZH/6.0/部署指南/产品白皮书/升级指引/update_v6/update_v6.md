@@ -8,7 +8,9 @@
 
 ### 套餐拆分说明
 
-1. 从社区版6.0.3开始，原社区版完整包已拆分为基础套餐与监控日志套餐。**基础套餐**包含：PaaS 平台、配置平台、作业平台、权限中心、用户管理、节点管理、标准运维、流程服务；**监控日志套餐**包含监控平台、日志平台、故障自愈
+1. 从社区版 6.0.3 开始，原社区版完整包已拆分为基础套餐与监控日志套餐：
+   - **基础套餐**：PaaS 平台、配置平台、作业平台、权限中心、用户管理、节点管理、标准运维、流程服务。
+   - **监控日志套餐**：监控平台、日志平台、故障自愈。
 2. 为了保证环境的稳定，建议各个套餐使用单独的机器资源部署
 
 ### 配置评估
@@ -30,7 +32,7 @@
 - 请严格按照本文档步骤进行升级，如升级过程存在问题，请先解决该问题后再继续往下执行升级。
 - 非标准私有 IP 用户需在解压新的脚本后，需要按照以前修改 [非标准私有 IP](https://bk.tencent.com/docs/document/6.0/127/7543) 的方式重新修改。
 - 如果 MySQL 备份参考本升级文档的备份方式，涉及到有自行开发的 SaaS 应用，请重新前往 MySQL 重新授权。
-- 本次升级务必保证 MySQL/MongoDB 机器磁盘空间充足，避免导致磁盘空间不足备份失败。
+- 本次升级务必保证 MySQL/MongoDB 机器磁盘空间充足，避免磁盘空间不足导致备份失败。
 - 本升级方案不负责迁移 5.1 中的监控数据，包括开源组件中 influxdb 和 es 的数据，监控数据将会丢失，请知悉。
 - 本次升级方案为停服更新，包含多个开源组件版本、官方组件版本的升级，升级时间较长，请避开业务繁忙时期进行升级。
 - 本次升级相关产品有新增进程等，请在升级前先对原主机资源(内存、CPU 等)进行评估是否足够，可参考官网给出的 [机器配置](https://bk.tencent.com/download/) 进行评估。
@@ -45,9 +47,9 @@
   
 ## 升级前置准备
 
-下述所有升级步骤均以默认的安装目录 `/data/bkce` 为例，升级过程中请使用自定义的安装目录进行替换。
+下述所有升级步骤均以默认的安装目录 `/data/bkce` 为例，如使用自定义安装目录请在相关操作前进行替换。
 
-1.下载相关软件包
+1.下载软件包以及迁移工具
 
 |软件包|下载地址|MD5|备注|
 |---|---|---|---|
@@ -61,14 +63,14 @@
 
 2.升级前，请检查环境各主机资源情况，避免升级过程中出现内存或者磁盘不足等情况。配置请参考 [蓝鲸官网下载页](https://bk.tencent.com/download/) 。
 
-3.当数据库的数据量过大时，可以考虑使用 truncate 或 delete 的方式，清空监控告警表的数据 **（用户自主决定是否清理该表的数据）**。
+3.当数据库的数据量过大时，可以考虑使用 truncate 或 delete 的方式，清空监控告警表的数据 **（该项由用户自主决定是否清理该表的数据）**。
 
 - 库名：bkdata_monitor_alert
 - 表名：ja_alarm_alarminstance
 
 ### 下架官方 SaaS
 
-请访问蓝鲸环境，通过【开发者中心】->【S-mart 应用】下架所有官方 SaaS。
+请访问蓝鲸 PaaS 平台，通过【开发者中心】->【 S-mart 应用】下架所有官方 SaaS。
 
 ### 迁移配置文件相关变量
 
@@ -109,7 +111,7 @@ echo fta bkdata appo appt gse job cmdb paas redis nginx license kafka es beansta
 
 ### 备份 MySQL
 
-**备份前，请确认使用到 MySQL 的服务已停止，避免出现数据不一致的问题。**
+**备份前，请确认使用到 MySQL 的相关服务已停止，避免出现数据不一致的问题。**
 该备份方式仅供参考，可自行选择备份方式。
 
 - 登陆至 MySQL 机器，创建备份目录
@@ -126,7 +128,7 @@ cd /data/dbbak
 
 - 生成备份脚本
 
-**注意:** 该备份方式不包含 MySQL 库的备份，所以如果涉及自行开发的 SaaS 应用使用到的帐户密码会丢失。如无，可参考如下方式进行备份。
+**注意:** 该备份方式不包含 MySQL 默认库的备份，所以涉及自行开发的 SaaS 应用使用到的帐户密码会丢失。如无，可参考如下方式进行备份。
 
 ```bash
 # joblog 在升级的过程中可以不需要备份，可以加入到 ignoredblist 列表里。但是为了后续回滚，请确保 joblog 已存在有一份备份数据。
@@ -143,7 +145,7 @@ mysqldump -u$MYSQL_USER -p$MYSQL_PASS -h$MYSQL_IP -P$MYSQL_PORT  --skip-opt --cr
 EOF
 ```
 
-- 开始备份 MySQL
+- 开始备份
 
 ```bash
 # 如果不存在 mysql 命令可以手动安装（非必选）
@@ -225,7 +227,7 @@ done
 
 ### 备份 Rabbitmq
 
-- 备份 Rabbitmq 数据目录 (中控机执行)
+- 备份 Rabbitmq 数据目录
 
 ```bash
 for ip in ${RABBITMQ_IP[@]}; do
@@ -248,11 +250,11 @@ mv /data/src/ /data/src.bak
 cp -a /data/install /data/install.bak
 ```
 
-### 备份旧 Python 解释器
+### 备份 Python 解释器
 
 ```bash
 source /data/install/utils.fc
-for i in ${ALL_IP[@]};do ssh $i 'for py in py27 py27_e py36 py36_e; do mv /opt/$py /opt/"$py"_bak; done'; done
+for i in ${ALL_IP[@]};do ssh $i 'for py in py27 py27_e py36 py36_e; do [[ -d /opt/$py ]] && mv /opt/$py /opt/"$py"_bak; done'; done
 ```
 
 ### 备份模块分布标记文件
@@ -310,15 +312,24 @@ cp /tmp/install/bin/03-userdef/* /data/install/bin/03-userdef/
 
 ### 恢复证书
 
-如原 license 模块分布发生改变，需重新生成证书文件并将其解压到指定目录。如无，请按下述步骤操作。
+- 如原 license 模块分布未发生改变，请按下述步骤操作：
 
 ```bash
 cp -a /data/src.bak/cert /data/src/
 ```
 
-### 初始操作
+- 如原 license 模块分布发生改变，请按下述步骤操作：
 
-生成部署时所需的环境变量，以及所需的资源。
+请前往 [蓝鲸官网](https://bk.tencent.com/download_ssl/) 重新生成证书。将生成的证书包上传至中控机 /data 目录
+
+```bash
+install -d -m 755 /data/src/cert
+tar xf /data/ssl_certificates.tar.gz -C /data/src/cert/
+```
+
+### 初始化操作
+
+生成蓝鲸部署时所需的环境变量以及资源。
 
 ```bash
 ./bk_install common
@@ -377,7 +388,7 @@ mysql --login-path=default-root --default-character-set=utf8  < /data/dbbak/bk_m
 
 <font color="#dd0000">新增机器请忽略该步骤</font>
 
-由于 Kafka 版本的原因，以及由原来的集群变为了单点。所以配置文件中的 `broker.id` 会有所变化，在启动 Kafka 时会报错。所以需要做修改下 Kafka 的配置文件，修改后再启动 `kafka` :
+由于 Kafka 版本原因，以及由原来的集群变为单点。所以配置文件中的 `broker.id` 会有所变化，在启动 Kafka 时会报错。所以需要先做如下修改，修改后再启动 kafka :
 
 ```bash
 # 登录至 Kafka 机器
@@ -402,7 +413,7 @@ chown -R kafka.kafka /data/bkce/public/kafka
 
 **注意：** 确定所有的 SaaS 已下线
 
-- 升级前需要先生成前置 SQL 文件，并执行该 SQL 文件。
+- 升级前需先生成前置 SQL 文件，并将该 SQL 文件导入指定数据库。
 
 ```bash
 # 生成前置 SQL 文件
@@ -427,7 +438,7 @@ mysql --login-path=mysql-default < /data/change_paas.sql
 mysql --login-path=mysql-default  -e "use open_paas;select  app,name,applied from django_migrations where app='bkcore' order by name desc  limit 5;"
 ```
 
-- 由于 5.1 的 PaaS 是未加密，而 6.0 的已进行加密，在升级的过程中，会出现加密的问题。所以需要删掉 PaaS 的旧虚拟环境后再升级 PaaS。
+- 由于 5.1 的 PaaS 是未加密版本，所以在升级的过程中，会出现加密的报错。需先删掉 PaaS 的旧虚拟环境后再升级 PaaS。
 
 ```bash
 source /data/install/utils.fc
@@ -456,7 +467,7 @@ source /data/install/utils.fc
 
 #### 迁移用户管理数据
 
-> 验证：执行完下述命令后，打开用户管理 -> 组织架构 -> 默认目录 -> 总公司。查看相关原 5.1 上的用户是否存在。
+> 验证：执行完下述命令后，打开用户管理 -> 组织架构 -> 默认目录 -> 总公司。检查原 5.1 上的用户是否存在。
 
 ```bash
 # 登陆 usermgr 服务器，执行脚本
@@ -525,7 +536,7 @@ mysql --login-path=mysql-default -e "select * from bk_iam.authorization_authapia
 	source /data/install/utils.fc
 	```
 
-	- 参照 README.md 编辑配置文件 config.toml
+	- 生成 config.toml 文件。`生成后请检查该文件内的相关变量是否转化成具体的值。`
 
 	```bash
 	cat > config.toml << EOF
@@ -584,7 +595,7 @@ cd /data/job-account-perm-migration_v0.0.0-next_Linux_x86_64
 source /data/install/utils.fc
 ```
 
-- 生成 config.toml 配置文件
+- 生成 config.toml 文件。 `生成后请检查该文件内的相关变量是否转化成具体的值。`
 
 ```bash
 cat > config.toml << EOF
@@ -647,6 +658,7 @@ chown -R blueking.blueking /data/bkce/public/job/localupload/
 
 ```bash
 # 中控机
+cd /data/install
 ./sync.sh nodeman /data/upgrade.py /data/
 ```
 
@@ -791,7 +803,7 @@ export BK_FILE_PATH="/data/app/code/conf/saas_priv.txt"
 
 ### 升级故障自愈
 
-- 升级故障自愈之前，需要对原来的日志目录权限做下修改，6.0之前的启动用户是root，在启动故障自愈时会出现权限问题，所以需要将原来的属主属组修改成 blueking。<font color="#dd0000">新增机器请忽略该步骤</font>
+- 升级故障自愈之前，需要对原来的日志目录权限做下修改，6.0 之前的启动用户是 root，在启动故障自愈时会出现权限问题，所以需要将原来的属主属组修改成 blueking。<font color="#dd0000">新增机器请忽略该步骤</font>
 
 ```bash
 # 中控机执行
@@ -854,7 +866,7 @@ sync_organization()
 
 ```bash
 tar -xvf /data/iam_v3_legacy_1.0.16_for_ce.tgz -C /data
-cd iam_v3_legacy_1.0.16_for_ce
+cd /data/iam_v3_legacy_1.0.16_for_ce
 ```
 
 - 执行 v3 相关权限数据导出到文件
@@ -868,7 +880,7 @@ bash mysqldump_bk_iam_data.sh -d bk_iam -p $BK_MYSQL_ADMIN_PASSWORD -P 3306 -b $
 ```bash
 bash ./edition/mysqldump_bk_sops_data.sh -d bk_sops -p $BK_MYSQL_ADMIN_PASSWORD -P 3306 -b $BK_MYSQL_IP0
 
-/opt/py27/bin/python -m edition.dump_biz_data -s $BK_IAM_APP_SECRET <iam SaaS的app secret，可由页面获取>  -t $BK_PAAS_PRIVATE_ADDR
+/opt/py27/bin/python -m edition.dump_biz_data -s $BK_IAM_APP_SECRET <iam SaaS 的 app secret，可由页面获取>  -t $BK_PAAS_PRIVATE_ADDR
 ```
 
 ### 创建对应业务运维组
@@ -890,7 +902,7 @@ bash ./edition/mysqldump_bk_sops_data.sh -d bk_sops -p $BK_MYSQL_ADMIN_PASSWORD 
 > 验证：执行完下述命令后，打开权限中心 ->  右上角切换身份至超级管理 -> 权限模版。查看是都建立对对应业务的配置平台运维模版。
 
 ```bash
-/opt/py27/bin/python -m edition.migrate_biz_policy -s $BK_IAM_APP_SECRET <iam SaaS的app secret，可由页面获取>  -t $BK_PAAS_PRIVATE_ADDR -e bk_cmdb -E ce -f <配置平台空闲机目录 ID，获取方式请往下看>
+/opt/py27/bin/python -m edition.migrate_biz_policy -s $BK_IAM_APP_SECRET <iam SaaS 的 app secret，可由页面获取>  -t $BK_PAAS_PRIVATE_ADDR -e bk_cmdb -E ce -f <配置平台空闲机目录 ID，获取方式请往下看>
 ```
 
 **配置平台空闲机目录 ID 查询方式：**
@@ -926,6 +938,6 @@ done
 
 ## 蓝鲸业务拓扑升级
 
-从 5.1 升级到 6.0 后，如果没有对原拓扑进行升级，蓝鲸监控会出现端口或者不存在的告警。**<该类告警可忽略>**
+从 5.1 升级到 6.0 后，如果没有对原拓扑进行升级，蓝鲸监控会出现端口或者进程不存在的告警。**<该类告警可忽略>**
 
 升级请见 ：[社区版 5.1-6.0 蓝鲸业务拓扑升级](./update_bktopo_for_v6.md)
