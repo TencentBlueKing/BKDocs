@@ -61,26 +61,26 @@ IP2 ci(dockerhost)
  部署流程中，会自动在中控机联网下载资源，如果中控机网络受限，可自行下载后传输到预期路径。 
 
  资源列表如下：
-1. CI安装包（以 `v1.5.4` 为例，其他版本请自行替换版本号）：
-  * 预期放置路径： `/data/src/bkci-v1.5.4-slim.tar.gz`
-  * 参考下载地址（蓝鲸官网）： https://bkopen-1252002024.file.myqcloud.com/bkci/bkci-v1.5.4-slim.tar.gz
-  * 参考下载地址（GitHub）： https://github.com/Tencent/bk-ci/releases/download/v1.5.4/bkci-slim.tar.gz （记得重命名）
+1. CI安装包（以 `v1.5.7` 为例，其他版本请自行替换版本号）：
+  * 预期放置路径： `/data/src/bkci-v1.5.7-slim.tar.gz`
+  * 参考下载地址（蓝鲸官网）： https://bkopen-1252002024.file.myqcloud.com/bkci/bkci-v1.5.7-slim.tar.gz
+  * 参考下载地址（GitHub）： https://github.com/Tencent/bk-ci/releases/download/v1.5.7/bkci-slim.tar.gz （注意修改为预期放置路径的文件名）
 2. rabbitmq_delayed_message_exchange插件 （版本固定，不能修改）：
  * 预期放置路径: `/data/src/rabbitmq_delayed_message_exchange-3.8.0.ez`
  * 参考下载地址： https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.8.0/rabbitmq_delayed_message_exchange-3.8.0.ez
 
 ### 快速部署
 1. 导入标准运维流程模板
-进入“标准运维”，选择《`蓝鲸`》业务，导入 [部署流程模板](https://bkopen-1252002024.file.myqcloud.com/bkci/bk-ci-deploy-20210618.dat) 。
+进入“标准运维”，选择《`蓝鲸`》业务，导入 [部署流程模板](https://bkopen-1252002024.file.myqcloud.com/bkci/bk-ci-deploy-20210706.dat) 。
 2. 执行部署
 从模板 “[蓝鲸持续集成][CI]部署或升级流水线” 新建任务。
-> 直接点击下一步。（初次部署勾选全部步骤，后续按需取消。）
-> 
-> 填写蓝鲸中控机IP及版本号。版本号建议填写蓝鲸增值套餐下载界面的推荐版本号。也可参考 [GitHub Release 页面](https://github.com/Tencent/bk-ci/releases) ，选择注明适配蓝鲸社区版6.0的版本。
-> 
-> 流程中会自动下载重命名安装包，也可手动下载安装包，并传输到中控机上，确保文件路径为 /data/src/bkci-版本号.tar.gz，可自动跳过下载步骤。
-> 
-> 如果出现异常，请查看具体步骤的报错，故障排除后可直接重试对应的步骤。
+>直接点击下一步。（初次部署勾选全部步骤，后续按需取消。）
+>
+>填写蓝鲸中控机IP及版本号。版本号建议填写蓝鲸增值套餐下载界面的推荐版本号。也可参考 [GitHub Release 页面](https://github.com/Tencent/bk-ci/releases) ，选择注明适配蓝鲸社区版6.0的版本。
+>
+>流程中会自动下载重命名安装包，也可手动下载安装包，并传输到中控机上，确保文件路径为 /data/src/bkci-版本号.tar.gz，可自动跳过下载步骤。
+>
+>如果出现异常，请查看具体步骤的报错，故障排除后可直接重试对应的步骤。
 
 ### 访问蓝盾
 请配置DNS系统或本地hosts文件。将 `BK_CI_FQDN` 解析到 `ci（gateway）` 所在的IP。
