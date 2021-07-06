@@ -121,41 +121,40 @@ import Vue from 'vue'
 import App from './App.vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-Vue.use(VueAxios,axios); 
+Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
-axios.defaults.baseURL = 'http://dev.paas-class.bktencent.com:8000/' //axios 发起请求的前缀
+axios.defaults.baseURL = 'http://dev.paas-class.bktencent.com:8000/' // axios 发起请求的前缀
 
 new Vue({
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')
-
 ```
 
 之后让我们点开 src/components/HelloWorld.vue 文件, 并加入以下内容：
 
 ```js
 <script>
-	export default {
-		name: 'HelloWorld',
-		props: {
-			msg: String
-		},
-		mounted() {
-			this.test()
-		},
-		methods: {
-			test: function() {
-				this.axios({
-					url: "/hello/",
-					method: 'post',
-					responseType: 'json', // 默认的
-				}).then(res => {
-					var jsondata = JSON.parse(JSON.stringify(res.data));
-					console.log(jsondata)
-				})
-			}
-		}
-	}
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: String
+  },
+  mounted() {
+    this.test()
+  },
+  methods: {
+    test: function() {
+      this.axios({
+        url: "/hello/",
+        method: 'post',
+        responseType: 'json', // 默认的
+      }).then(res => {
+        var jsondata = JSON.parse(JSON.stringify(res.data));
+        console.log(jsondata)
+      })
+    }
+  }
+}
 </script>
 ```
 
