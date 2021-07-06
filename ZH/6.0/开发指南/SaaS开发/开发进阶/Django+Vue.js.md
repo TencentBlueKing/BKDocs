@@ -139,17 +139,17 @@ export default {
   props: {
     msg: String
   },
-  mounted() {
+  mounted () {
     this.test()
   },
   methods: {
-    test: function() {
+    test: function () {
       this.axios({
-        url: "/hello/",
+        url: '/hello/',
         method: 'post',
-        responseType: 'json', // 默认的
+        responseType: 'json' // 默认的
       }).then(res => {
-        var jsondata = JSON.parse(JSON.stringify(res.data));
+        var jsondata = JSON.parse(JSON.stringify(res.data))
         console.log(jsondata)
       })
     }
