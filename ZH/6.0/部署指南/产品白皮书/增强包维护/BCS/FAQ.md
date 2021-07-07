@@ -115,3 +115,33 @@
    
    5.修改域名解析或在 hosts 文件中修改映射为新的域名
    
+4. **添加 Helm Chart 仓库失败，如何处理？**
+
+   按照指引添加 Helm Chart 仓库时会失败，是因为 Harbor 仓库为了保证安全性切换了 HTTPS 协议
+
+   ![avatar](../../assets/helm_add_chart.png)
+
+   ```bash
+   helm repo add lasttest http://harbor-api.service.consul/chartrepo/testdata01/ --username=xxxxxxx --password=xxxxxxx
+   Error: looks like "http://harbor-api.service.consul/chartrepo/testdata01/" is not a valid chart repository or cannot be reached: Get "https://harbor-api.service.consul/chartrepo/testdata01/index.yaml": x509: certificate relies on legacy Common Name field, use SANs or temporarily enable Common Name matching with GODEBUG=x509ignoreCN=0
+   或
+   Error: looks like "http://harbor-api.service.consul/chartrepo/testdata01/" is not a valid chart repository or cannot be reached: Get "https://harbor-api.service.consul/chartrepo/testdata01/index.yaml": x509: certificate signed by unknown authority
+   ```
+   可以按以下操作修复该问题：
+   
+   1、把部署 BCS 后台服务器上的/data/bkce/cert/bcs/harbor-api.service.consul.crt 拷贝到 helm client 所在服务器
+
+   2、export GODEBUG 环境变量，修改访问 harbor 协议为 https 协议，然后追加证书参数即可
+
+   ```bash
+   export GODEBUG=x509ignoreCN=0;helm repo add lasttest https://harbor-api.service.consul/chartrepo/testdata01/ --username=xxxx --password=xxx --ca-file=./harbor-api.service.consul.crt
+   "testdata01" has been added to your repositories
+   ```
+   
+   3、同样，helmpush 时也要加 ca 证书
+
+   ```bash
+   helmpush rumpetroll/ testdata01 --ca-file=./harbor-api.service.consul.crt
+   Pushing rumpetroll-1.0.1.tgz to testdata01...
+   Done.
+   ```
