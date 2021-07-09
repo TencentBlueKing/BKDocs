@@ -9,6 +9,7 @@
 
 2. 全量同步所有的权限模板
 ```bash
+source /data/install/utils.fc
 ssh $BK_APPO_IP
 docker exec -it $(docker ps | grep -w bk_iam | awk '{print $1}') bash 
 export BK_FILE_PATH="/data/app/code/conf/saas_priv.txt"
