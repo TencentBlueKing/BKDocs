@@ -8,13 +8,13 @@
 
 - 配置好 YUM 源，包含 EPEL 仓库(可以通过 `yum info pssh` 测试下)。
 
-- 从 [官网下载](http://bk.tencent.com/download/) 基础套餐，并解压到 /data/ 下。实际版本请以蓝鲸官网下载为准。
+- 从 [官网下载](http://bk.tencent.com/download/) 基础套餐，并解压到 /data 下。实际版本请以蓝鲸官网下载为准。
 
     ```bash
-    tar xf bkce_basic_suite-6.0.3.tgz -C /data
+    tar xf bkce_basic_suite-6.0.4.tgz -C /data
     ```
 
-  - 获取机器的 MAC 地址后，下载 [证书文件](https://bk.tencent.com/download_ssl/)，解压到 src/cert 目录下
+  - 获取机器的 MAC 地址后，下载 [证书文件](https://bk.tencent.com/download_ssl/)，解压到 /data/src/cert 目录下
 
     ```bash
     install -d -m 755 /data/src/cert
@@ -43,17 +43,6 @@ sed -i '/JAVA_OPTS/c JAVA_OPTS="-Xms128m -Xmx128m"' /etc/sysconfig/bk-job-*
 
 ![change_job](../../assets/change_job.png)
 
-- 去除 install_minibk 的 .path 配置
-
-```bash
-sed  -i '33,34d' /data/install/install_minibk
-```
-
-- 在 install.config.3ip.sample  文件追加一行空行
-
-```bash
-echo >> /data/install/install.config.3ip.sample
-```
 
 - install.config 这个文件安装脚本会自动生成，无需自行配置。
 
@@ -71,10 +60,6 @@ cd /data/install
 执行完部署后，执行降低内存消耗脚本。以确保环境的稳定
 
 ```bash
-# 临时修复：执行 tweak 操作后 open_paas uWsgi 参数中 cheaper > workers 的问题
-# 感谢[广州六子](https://bk.tencent.com/s-mart/personal/1283/)的反馈
-sed -i '/^cheaper/d' /data/bkce/etc/uwsgi-*.ini 
-
 # 执行降低内存消耗脚本
 bash bin/single_host_low_memory_config.sh tweak all
 ```
