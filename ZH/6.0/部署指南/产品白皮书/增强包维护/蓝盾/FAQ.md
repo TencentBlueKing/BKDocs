@@ -25,11 +25,11 @@
 
 这是因为找不到可用的公共构建机所致。请参考如下步骤排查：
 1. 新增的公共构建机需要手动注册，请参考 “注册构建机” 章节。
-2. 在 dispatch 节点使用 `/data/src/ci/bkci-op.sh list` 命令检查当前构建机是否均为 `enabled=yes` 的状态。否则请检查对应 dockerhost 节点的服务是否存活，并核查服务日志。
+2. 在 `ci(dispatch-docker)` 主机使用 `/data/src/ci/scripts/bkci-op.sh list` 命令检查当前构建机是否均为 `enabled=yes` 的状态。否则请检查对应 dockerhost 节点的服务是否存活，并核查服务日志。
 
 >**提示**
-> 如果确定不需要公共构建机，或者急需使用，可以考虑添加私有构建机到本项目使用。
-> 细节请参考《[私有构建机方案](../../增强包维护/蓝盾/Private-build-setup.md)》。
+>
+> 如果确定不需要公共构建机，或者急需使用，可以考虑添加私有构建机到本项目使用。细节请参考《[私有构建机方案](../../增强包维护/蓝盾/Private-build-setup.md)》。
 
 ### artifactory下载构件时偶现404
 表现为下载的二进制构件文件不变的情况，经常出现404，但是重试时能正常下载。
@@ -38,16 +38,31 @@
 如果已经存在多实例，造成了数据分裂，需人工合并 artifactory 服务的数据目录（ `$BK_CI_DATA_DIR/artifactory/`）。
 
 ## 流水线（CI）维护问题
-### 蓝盾 HTTPS 适配
-蓝盾的 HTTPS 适配目前没有全部通过测试，待梳理，故暂无自动化部署。
+### ci-gateway使用非80端口问题
+目前暂未测试使用非80端口的效果，可以自行变更env文件中的端口变量体验，但不对效果做保证。
 
-参考步骤：
+如果发现端口不一致的bug，欢迎在 GitHub 反馈：[chore: ci-gateway监听非80端口 #4611](https://github.com/Tencent/bk-ci/issues/4611)
+
+### HTTPS 适配
+>**提示**
+>
+> 我们在 v1.5.8 临时提供了 `${BK_PKG_SRC_PATH:-/data/src}/ci/scripts/bk-ci-utils-https.sh` 快速设置https。
+>
+> 在中控机执行此脚本即可。如果升级了CI版本，需要重新执行此脚本。
+>
+> 欢迎体验上述切换脚本并在 GitHub 反馈: [chore: ci-gateway部署时支持https #4612](https://github.com/Tencent/bk-ci/issues/4612)
+
+蓝盾的 HTTPS 适配目前没有全部通过测试，故暂无默认部署支持，需要使用上述补丁脚本。
+
+参考手动修改步骤：
 1. 修改 gateway `server.devops.conf`里注释掉的 SSL 相关配置项。
 2. 复制蓝鲸的`bk.ssl`到上述配置里 `devops.ssl` 对应的路径。
 3. 修改 PUBLIC_URL 为 HTTPS:// 前缀。
 4. 重新使用 HTTPS URL 注册蓝鲸 PaaS APP 。
 
->**提示**：HTTPS 适配还面临着更多证书信任相关的适配工作，且未曾经过完备的 HTTPS 兼容性测试及评审，故暂不做官方推荐，不提供自动部署 HTTPS 。
+>**提示**
+>
+>HTTPS 适配还面临着更多证书信任相关的适配工作，且未曾经过完备的 HTTPS 兼容性测试及评审，故暂不做官方推荐，不提供自动部署 HTTPS 。
 
 ### GitLab HTTPS 适配问题
 

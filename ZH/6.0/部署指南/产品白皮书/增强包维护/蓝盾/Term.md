@@ -22,7 +22,8 @@ systemd 服务名： `bk-ci-工程名.service`， 都位于 `bk-ci.target` 下�
 | agentless | 无编译环境。同 dockerhost ，资源配额更低。一般用于和蓝鲸及第三方系统联动。 |
 | artifactory | 二进制构件仓库管理。对接各类构件服务后端。目前可使用本地存储。 |
 | auth | 蓝盾权限服务。对接各种其他的权限管理服务，如蓝鲸 IAM。 |
-| dispatch | 构建机调度服务。调度流水线任务。目前公共构建机及私有构建机均复用此服务，后续计划分拆。 |
+| dispatch | 构建机调度服务。调度流水线任务。管理私有构建机。 |
+| dispatch-docker | 构建机调度服务。调度流水线任务。管理公共构建机。 |
 | dockerhost | 公共构建机。与本机 dockerd 通信，管理容器的生命周期。 |
 | environment | 管理私有构建机。 |
 | gateway | 网关。负责提供对外的入口。前端页面放在 frontend ，会一起安装。 |

@@ -1,14 +1,16 @@
 # 私有构建机方案
+## 概述
+私有构建机，也称为 “第三方构建机” ，是对和特定项目绑定的 Agent 的泛称。一般用于敏感项目、资源隔离、定制硬件或构建环境等场景。
 
-> **提示**
->
-> 我们默认的构建资源类型为公共构建机。此方案作为选配，在您需要的时候可继续实施。
+我们默认提供了基于 Docker 技术的公共构建机，公共构建机默认向所有项目开放，使用统一的容器规格。
 
-私有构建机，也称为 “第三方构建机” ，是和项目绑定的专用构建机。
-私有构建机一般用于敏感项目或者需要提供定制构建资源的场景。
+我们已经在标准运维流程模板“`[蓝鲸持续集成][CI]部署或升级流水线`”中提供了私有构建机的部署流程，仅默认部署了 Linux 系统的支撑环境。
 
-## 补充软件包
-### jre.zip
+如需在 Windows 及 MacOS 系统下安装私有构建机，需要您手动实施部分步骤。
+
+## 服务端（私有构建机支撑环境）
+### 补充软件包
+#### jre.zip
 中控机 `/data/src/bkci-agent-package-patch/jre` 下需要放置 Linux / Windows / MacOS 对应的 jre.zip 文件。
 一般使用 JDK8 的 tgz 安装包为基础， jre.zip 中应当存在 `bin/java` ，并预打包 `lib/ext/bcprov-jdk16-1.46.jar` 到 jre.zip 里。
 
@@ -31,15 +33,22 @@ jre/windows/jre.zip
   1876535  05-23-2018 20:20   lib/ext/bcprov-jdk16-1.46.jar
 ```
 
-### unzip.exe
+#### unzip.exe
 
-windows 需要 unzip.exe ，放在中控机 `/data/src/bkci-agent-package-patch/packages/windows/` 目录下。
+windows 需要 `unzip.exe` ，放在中控机 `/data/src/bkci-agent-package-patch/packages/windows/` 目录下。
 
-## 安装服务端
+推荐使用 GnuWin 项目编译的 Info-ZIP： [http://gnuwin32.sourceforge.net/packages/unzip.htm](http://gnuwin32.sourceforge.net/packages/unzip.htm)
 
-在完成了软件包补充工作后，进入“标准运维”，重新使用模板“[蓝鲸持续集成][CI]部署或升级流水线”创建任务即可。
+### 部署
 
-## 私有构建机选型要求
+在完成了软件包补充工作后，进入“标准运维”，重新使用模板“`[蓝鲸持续集成][CI]部署或升级流水线`”创建任务即可。
+
+### 检查部署情况
+
+请安装客户端测试。
+
+## 客户端（私有构建机实例）
+### 选型要求
 
 1. 第三方构建机需要能直接（不通过代理）访问 `$BK_CI_PUBLIC_URL` 。如果不能满足，请自行处理网络互通问题。
 2. 需要准备至少 2GB 空闲内存，以及 10GB 以上的磁盘空间。
@@ -56,9 +65,18 @@ windows 需要 unzip.exe ，放在中控机 `/data/src/bkci-agent-package-patch/
 4. 当安装了多个 agent 实例（尤其是跨项目时），请做好运行用户及权限的控制与隔离。
 
 >**提示**
+>
 >agent 安装目录选择建议：
 >1. agent 安装目录需要有足够的磁盘空间。
 >2. agent 实例是项目专属的，建议 agent 目录命名和所属项目具备相关性。在多 agent 共存时便于维护及排查。
+
+安装过程中会自动启动进程，最终目录如下：
+```text
+[devops@VM-5-42-centos p-demo]$ ls -Ap
+.agent.properties  devopsDaemon  jre.zip    runtime/  uninstall.sh
+agent.zip          install.sh    logs/      start.sh  worker-agent.jar
+devopsAgent        jre/          README.md  stop.sh   workspace/
+```
 
 ## 使用私有构建机
 
@@ -93,9 +111,12 @@ Windows ：
 
 ## 私有构建机问题排查
 ### 私有构建机安装失败
-
 1. 请检查部署时有无提供对应平台的 jre.zip 。
 2. 请检查 jre.zip 内是否有 `bcprov-jdk16-1.46.jar` 。
 3. 请检查 Linux / MacOS 系统中是否有 `unzip` 命令。（ Windows 版本包含在 agent 里了）
 4. 如果已经完成了上述步骤，请清空安装目录后重新安装。避免旧的错误安装包缓存造成干扰。
 
+### 直接复制agent目录启动的agent不识别或任务调度异常
+同一主机可以在不同的目录安装多个 agent 实例，不同的 agent 实例依靠 agent 安装目录下 `.agent.properties` 文件里的 `devops.agent.id` 区分。
+
+如果 ID 相同，会被视作同一 agent 实例，因此产生心跳异常及调度问题。请卸载其中一个 Agent，并参考“安装私有构建机”章节重新操作。
