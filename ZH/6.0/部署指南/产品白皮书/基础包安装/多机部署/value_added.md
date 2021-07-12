@@ -45,12 +45,12 @@ ssh-copy-id <ip>
 
 ```bash
 cd /data
-tar xf bkce_co_package-6.0.3.tgz
+tar xf bkce_co_package-6.0.4.tgz
 ```
 
 ### 5.将需要部署产品的标准运维流程模版导入至标准运维
 
-   标准运维流程模版[下载](https://bkopen-1252002024.file.myqcloud.com/ce/bk_sops_co_package-6.0.3.dat)
+   标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/bk_sops_co_package-6.0.3.dat)
 
    **详细步骤：** `打开标准运维 -> 项目流程 -> 导入 -> 点击上传 -> 创建新流程`
 
@@ -62,12 +62,20 @@ tar xf bkce_co_package-6.0.3.tgz
 
 ### 6.检查 install.config
 
-检查 install.config 文件是否已经包含增强套餐的相关模块分布。如果有请先移除相关模块。
+检查 install.config 文件是否已经包含增强套餐的相关模块分布，如果有请先移除相关模块。如无输出则可继续往下操作。
 
 ```bash
 value_modules=(es7 monitorv3\(influxdb-proxy\) monitorv3\(monitor\) monitorv3\(grafana\) influxdb\(bkmonitorv3\) monitorv3\(transfer\) fta beanstalk log\(grafana\) log\(api\) kafka\(config\))
 
 for module in ${value_modules[@]}; do if grep ${module} /data/install/install.config >/dev/null; then echo -e "The \e[1;31m ${module} \e[0m module exists in install.config, please remove it before deploying."; fi; done
+```
+
+### 7. 检查主机名
+
+检查新增机器的主机名是否与基础环境机器的主机名是否有冲突。如有冲突，请先进行修改，如无请忽略。
+
+```
+hostname
 ```
 
 ## 开始部署
@@ -79,7 +87,7 @@ for module in ${value_modules[@]}; do if grep ${module} /data/install/install.co
 填写信息包括：
 
 - `ctrl_ip`：基础环境的中控机 IP
-- `whole_pkg_path`：部署监控平台安装包的绝对路径 `/data/bkmonitorv3_package-3.3.1731.tgz`
+- `whole_pkg_path`：部署监控平台安装包的绝对路径
 - `deply_iplist`：新增的机器 IP（如果基础环境的资源有富余，可以复用）
 
 ![bkmonitorv3_template](../../assets/monitorv3_template.png)
@@ -101,7 +109,7 @@ for module in ${value_modules[@]}; do if grep ${module} /data/install/install.co
 填写信息包括：
 
 - `ctrl_ip`：基础环境的中控机 IP
-- `whole_pkg_path`：部署日志平台安装包的绝对路径 `/data/bklog_package-4.2.580.tgz`
+- `whole_pkg_path`：部署日志平台安装包的绝对路径 
 - `deply_iplist`：新增的机器 IP（如果基础环境的资源有富余，可以复用）
 
 ![bklog_template](../../assets/bklog_template.png)
@@ -114,7 +122,7 @@ for module in ${value_modules[@]}; do if grep ${module} /data/install/install.co
 - 授权日志平台所需的 MySQL 访问权限
 - 安装日志平台相关依赖、日志平台后台、日志平台 SaaS
 
-> 详细安装过程介绍，请查看[安装日志平台详解](../../基础包安装/安装详解/install_bkmonitorv3.md)。
+> 详细安装过程介绍，请查看 [安装日志平台详解](../../基础包安装/安装详解/install_bkmonitorv3.md)。
 
 ### 故障自愈
 
@@ -123,7 +131,7 @@ for module in ${value_modules[@]}; do if grep ${module} /data/install/install.co
 该部署流程主要相关操作：
 
 - `ctrl_ip`：基础环境的中控机 IP
-- `whole_pkg_path`：部署故障自愈安装包的绝对路径 `/data/fta_package-5.2.14-ce.tgz`
+- `whole_pkg_path`：部署故障自愈安装包的绝对路径
 - `deply_iplist`：新增的机器 IP（如果基础环境的资源有富余，可以复用）
 
 ![fta_template](../../assets/fta_template.png)

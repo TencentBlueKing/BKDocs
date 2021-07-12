@@ -37,7 +37,7 @@
 
    ```bash
    cd /data
-   tar xf bkce_basic_suite-6.0.3.tgz
+   tar xf bkce_basic_suite-6.0.4.tgz
    ```
 
 2. 解压各个产品软件包
