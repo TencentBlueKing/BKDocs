@@ -71,7 +71,7 @@ tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
     cd /data/src/; for f in *gz;do tar xf $f; done
 
     # 还原 python、yum、license 等
-    cp -a -r /data/src_6.0.3.bak/{bkssm,python,image,yum,license,blueking.env,COMMON_VERSION,VERSION,java8.tgz,paas_agent,backup,cert,job} /data/src
+    cp -a -r /data/src_6.0.3.bak/{bkssm,python,yum,license,blueking.env,COMMON_VERSION,VERSION,java8.tgz,backup,cert,job} /data/src
 
     cp -a -r /data/src_6.0.3.bak/gse_plugins/gsecmdline-2.0.3.tgz /data/src/gse_plugins/
 

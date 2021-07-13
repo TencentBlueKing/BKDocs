@@ -178,6 +178,57 @@ cd /data/install/
 echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 ```
 
+### 部署 lesscode (可选)
+
+#### 分布模块
+
+将 lesscode 模块加入 install.config 文件
+
+```bash
+# 请以实际分布的 IP 为准
+{
+echo ""
+echo "10.0.0.6 lesscode" 
+} >> /data/install/install.config
+```
+
+#### 定义 lesscode 域名
+
+**注意：** lesscode 的域名需要定义成与 PaaS 一致的根域名。
+
+例如：PaaS 的域名为 `paas.bk.bktencent.com`，那么 lesscode 就需要为：`lesscode.bk.bktencent.com`。
+
+```bash
+# 以蓝鲸默认域名为例
+{
+echo "BK_LESSCODE_PUBLIC_ADDR=lesscode.bktencent.com:80"
+echo "BK_LESSCODE_PUBLIC_URL=http://lesscode.bktencent.com:80"
+} >> /data/install/bin/03-userdef/lesscode.env
+```
+
+#### 生成环境变量
+
+生成 lesscode 所需的环境变量
+
+```bash
+cd /data/install
+./bkcli install bkenv
+
+./bkcli sync common
+```
+
+#### 生成 MySQL 登陆信息
+
+```bash
+./bkcli install mysql
+```
+
+#### 开始部署
+
+```bash
+./bk_install lesscode
+```
+
 ## 三、访问蓝鲸
 
 ### 3.1 配置本地 hosts
@@ -192,10 +243,10 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 C:\Windows\System32\drivers\etc\hosts
 ```
 
-将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
+将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。如无部署lesscode，可去掉 `lesscode.bktencent.com` 再进行绑定
 
 ```bash
-10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
+10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com lesscode.bktencent.com
 10.0.0.3 nodeman.bktencent.com
 ```
 
