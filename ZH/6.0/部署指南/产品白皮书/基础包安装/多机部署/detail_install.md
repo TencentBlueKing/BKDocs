@@ -9,6 +9,13 @@
 
 进行标准部署之前，请确保已完成 [环境准备](../../基础包安装/环境准备/get_ready.md) 操作。
 
+## 执行免密
+
+```bash
+cd /data/install
+bash /data/install/configure_ssh_without_pass
+```
+
 ## 初始化并检查环境
 
 ```bash

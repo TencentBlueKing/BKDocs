@@ -31,7 +31,7 @@ echo "10.0.0.6 lesscode"
 ```bash
 # 以蓝鲸默认域名为例
 {
-echo "BK_LESSCODE_PUBLIC_ADDR=lesscode.ktencent.com:80"
+echo "BK_LESSCODE_PUBLIC_ADDR=lesscode.bktencent.com:80"
 echo "BK_LESSCODE_PUBLIC_URL=http://lesscode.bktencent.com:80"
 } >> /data/install/bin/03-userdef/lesscode.env
 
