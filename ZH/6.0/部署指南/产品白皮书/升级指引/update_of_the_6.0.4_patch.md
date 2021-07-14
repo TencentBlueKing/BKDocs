@@ -70,9 +70,9 @@ tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
     # 解压 src 下各个产品软件包
     cd /data/src/; for f in *gz;do tar xf $f; done
 
-    # 还原 python、yum、license 等
+    # 还原不需要更新的模块
     cp -a -r /data/src_6.0.3.bak/{bkssm,python,yum,license,blueking.env,COMMON_VERSION,VERSION,java8.tgz,backup,cert,job} /data/src
-
+    cp -a -r /data/src_6.0.3.bak/official_saas/bk_fta_solutions_V5.2.14-ce-bkofficial.tar.gz /data/src/official_saas/
     cp -a -r /data/src_6.0.3.bak/gse_plugins/gsecmdline-2.0.3.tgz /data/src/gse_plugins/
 
     echo "6.0.4" > /data/src/VERSION
@@ -84,15 +84,14 @@ tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
 
 - 中间版本下载：[bk_iam_V1.3.6-bkofficial.tar.gz]()
 
-- 部署中间版本 SaaS。可使用前端或者后台部署的方式。
-  - 前端：访问蓝鲸 PaaS 工作台 - 开发者中心 - S-mart 应用 - 找到 bk_iam，点击部署 - 上传版本 - 部署至正式环境。
-  - 后台：将中间版本 SaaS 放置中控机 /data/src/official_saas 下，使用 `./bkcli install saas-o bk_iam` 命令进行部署。
+- 部署中间版本 SaaS。
+  - 访问蓝鲸 PaaS 工作台 - 开发者中心 - S-mart 应用 - 找到 bk_iam，点击部署 - 上传版本 - 部署至正式环境。
 
-- 确认版本。后台必须为 1.6.1，SaaS 必须为：1.3.6
+- 确认版本：**后台必须为 1.6.1，SaaS 必须为：1.3.6**。
 
 - [中间版本升级指引](https://bk.tencent.com/docs/document/6.0/160/8629)
 
-**注意：** 在此之前，必须将权限中心升级至指定的中间版本，如未升级，请勿升级 6.0.4 的权限中心版本。
+**注意：** 在此之前，必须将权限中心升级至指定中间版本，如未升级，请勿升级 6.0.4 的权限中心版本。
 
 ## 开始更新
 
@@ -212,7 +211,7 @@ chmod +x  /usr/bin/runtool
 
 ### 删除旧镜像
 
-执行前，因提供的命令是删除 appo 或者 appt 上所有的 none 镜像。请确认是否所有的 none 镜像都可删除。
+因提供的命令是删除 appo 或者 appt 上所有的 none 镜像。执行前请确认所有的 none 镜像是否都可以删除。
 
 ```bash
 ssh $BK_APPO_IP
