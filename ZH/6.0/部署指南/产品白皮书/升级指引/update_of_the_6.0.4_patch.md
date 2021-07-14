@@ -90,9 +90,9 @@ tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
 
 - 确认版本。后台必须为 1.6.1，SaaS 必须为：1.3.6
 
-- [升级指引](https://bk.tencent.com/docs/document/6.0/160/8629)
+- [中间版本升级指引](https://bk.tencent.com/docs/document/6.0/160/8629)
 
-**注意：** 在此之前，必须将权限中心升级指定的中间版本，如未升级，请勿升级至 6.0.4 的权限中心版本。
+**注意：** 在此之前，必须将权限中心升级至指定的中间版本，如未升级，请勿升级 6.0.4 的权限中心版本。
 
 ## 开始更新
 
@@ -100,6 +100,37 @@ tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
 
 ```bash
 ./bkcli upgrade paas
+```
+
+### 更新 paasagent
+
+- 更新 appo 以及 appt 环境
+
+```bash
+./bkcli upgrade appo
+./bkcli upgrade appt
+```
+
+### 更新 docker 镜像
+
+- 更新 appo 机器上的 python 镜像
+
+```bash
+ssh $BK_APPO_IP
+docker load < /data/src/image/python27e_1.0.tar
+docker load < /data/src/image/python36e_1.0.tar
+rsync -avz /data/src/image/runtool /usr/bin/
+chmod +x  /usr/bin/runtool
+```
+
+- 更新 appt 机器上的 python 镜像
+
+```bash
+ssh $BK_APPT_IP
+docker load < /data/src/image/python27e_1.0.tar
+docker load < /data/src/image/python36e_1.0.tar
+rsync -avz /data/src/image/runtool /usr/bin/
+chmod +x  /usr/bin/runtool
 ```
 
 ### 权限中心
@@ -171,6 +202,24 @@ tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
 
 ```bash
 ./bk_install saas-o bk_itsm
+```
+
+### 重装故障自愈 SaaS
+
+```bash
+./bkcli install saas-o bk_fta_solutions
+```
+
+### 删除旧镜像
+
+执行前，因提供的命令是删除 appo 或者 appt 上所有的 none 镜像。请确认是否所有的 none 镜像都可删除。
+
+```bash
+ssh $BK_APPO_IP
+docker images | grep "none" | awk '{print $3}' | xargs -n1 docker rmi
+
+ssh $BK_APPT_IP
+docker images | grep "none" | awk '{print $3}' | xargs -n1 docker rmi
 ```
 
 ### 刷新版本信息
