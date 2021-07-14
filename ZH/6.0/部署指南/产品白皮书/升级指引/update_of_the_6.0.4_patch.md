@@ -50,7 +50,7 @@ mkdir /data/tmp
 tar xf bkce_patch_6.0.3-6.0.4.tgz -C /data/tmp
 
 # 解压 install 部署脚本包
-tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
+tar xf /data/tmp/install_ce-v3.0.10.tgz -C /data/tmp/
 ```
 
 5.替换 install、src。
