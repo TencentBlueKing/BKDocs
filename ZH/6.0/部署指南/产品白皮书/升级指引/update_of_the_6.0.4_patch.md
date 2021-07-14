@@ -74,6 +74,7 @@ tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
     cp -a -r /data/src_6.0.3.bak/{bkssm,python,yum,license,blueking.env,COMMON_VERSION,VERSION,java8.tgz,backup,cert,job} /data/src
     cp -a -r /data/src_6.0.3.bak/official_saas/bk_fta_solutions_V5.2.14-ce-bkofficial.tar.gz /data/src/official_saas/
     cp -a -r /data/src_6.0.3.bak/gse_plugins/gsecmdline-2.0.3.tgz /data/src/gse_plugins/
+    cp -a -r /data/src_6.0.3.bak/gse_plugins/pluginscripts-1.0.3.tgz /data/src/gse_plugins/
 
     echo "6.0.4" > /data/src/VERSION
 	```
