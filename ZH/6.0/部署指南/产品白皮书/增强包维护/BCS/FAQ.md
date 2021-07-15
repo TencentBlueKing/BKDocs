@@ -145,22 +145,28 @@
    Pushing rumpetroll-1.0.1.tgz to testdata01...
    Done.
    ```
- 5. 容器监控问题排查思路：
-   1、查看Prometheus pod状态是否正常
-   ```bash
-   kubectl get pod -n thanos
-   ```
-   2、查看Prometheus pod日志是否有报错
-   ```bash
-   kubectl logs --tail=100 prometheus-po-prometheus-operator-prometheus-0 -n thanos -c prometheus
-   kubectl logs --tail=100 prometheus-po-prometheus-operator-prometheus-0 -n thanos -c thanos-sidecar
-   ```
-   3、查看Prometheus部署pod到thanos.service.consul:18902网络是否连通
-   ```bash
-   kubectl exec -it prometheus-po-prometheus-operator-prometheus-0 -n thanos -c thanos-sidecar -- telnet thanos.service.consul 18902
-   ```
-   4、在监控部署服务器上看服务是否正常
-   ```bash
-   systemctl status bcs-thanos-query bcs-thanos-relay bcs-thanos-sd-svc bcs-thanos-sd-target bcs-monitor-ruler bcs-grafana.service bcs-monitor-alertmanager bcs-monitor-api
-   先做完这些检查再做下一步判断
-   ```
+ 5. **容器监控问题排查思路**
+ 
+     1、查看Prometheus pod状态是否正常
+   
+     ```bash
+     kubectl get pod -n thanos
+     ```
+     2、查看Prometheus pod日志是否有报错
+   
+     ```bash
+     kubectl logs --tail=100 prometheus-po-prometheus-operator-prometheus-0 -n thanos -c prometheus
+     kubectl logs --tail=100 prometheus-po-prometheus-operator-prometheus-0 -n thanos -c thanos-sidecar
+     ```
+     3、查看Prometheus部署pod到thanos.service.consul:18902网络是否连通
+   
+     ```bash
+     kubectl exec -it prometheus-po-prometheus-operator-prometheus-0 -n thanos -c thanos-sidecar -- telnet thanos.service.consul 18902
+     ```
+     4、在监控部署服务器上看服务是否正常
+   
+     ```bash
+     systemctl status bcs-thanos-query bcs-thanos-relay bcs-thanos-sd-svc bcs-thanos-sd-target bcs-monitor-ruler bcs-grafana.service bcs-monitor-alertmanager bcs-monitor-api
+     ```
+   
+     先做完这些检查再做下一步判断
