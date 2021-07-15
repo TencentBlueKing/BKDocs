@@ -96,6 +96,12 @@ tar xf /data/tmp/install_ce-v3.0.10.tgz -C /data/tmp/
 
 ## 开始更新
 
+开始更新前请先同步最新脚本至其他机器。
+
+```bash
+./bkcli sync common
+```
+
 ### PaaS 平台
 
 ```bash
