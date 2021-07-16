@@ -187,6 +187,14 @@ chmod +x  /usr/bin/runtool
 
 ### 日志平台
 
+在 6.0.4 版本里，bklog 新增了 mysql 的依赖，所以在升级前，请确保 bklog 机器上是否有 mysql 的相关命令，否则升级过程中会有相关报错。
+
+```bash
+yum -y install mysql-devel
+```
+
+开始更新
+
 ```bash
 ./bkcli install saas-o bk_log_search
 ./bkcli upgrade bklog

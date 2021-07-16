@@ -198,7 +198,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 C:\Windows\System32\drivers\etc\hosts
 ```
 
-将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。如无部署lesscode，可去掉 `lesscode.bktencent.com` 再进行绑定
+将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。如无部署 lesscode，可去掉 `lesscode.bktencent.com` 再进行绑定
 
 ```bash
 10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com lesscode.bktencent.com

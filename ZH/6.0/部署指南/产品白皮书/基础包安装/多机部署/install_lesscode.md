@@ -10,7 +10,7 @@
 
 ## 解压软件包
 
-将下载好的 lesscode 放置 /data 目录
+前往 [蓝鲸 S-mart 市场](https://bk.tencent.com/s-mart/market) 下载 Lesscode 软件包。并将下载好的 lesscode 放置 /data 目录
 
 ```bash
 tar xf /data/lesscode-ce-0.0.11.tar.gz -C /data/src/
@@ -71,8 +71,8 @@ cd /data/install
 - 绑定本地 hosts
 
 ```bash
-# 映射的 IP 为  nginx 所在机器的外网 IP
+# 映射的 IP 为 nginx 所在机器的外网 IP
 10.0.0.2 lesscode.bktencent.com
 ```
 
-完成 hosts 配置后，访问蓝鲸 PaaS 工作台即可。
+完成 hosts 配置后，访问蓝鲸 PaaS 工作台即可看到【可视化开发平台】。
