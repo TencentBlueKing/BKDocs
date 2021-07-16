@@ -50,7 +50,7 @@ mkdir /data/tmp
 tar xf bkce_patch_6.0.3-6.0.4.tgz -C /data/tmp
 
 # 解压 install 部署脚本包
-tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
+tar xf /data/tmp/install_ce-v3.0.10.tgz -C /data/tmp/
 ```
 
 5.替换 install、src。
@@ -70,10 +70,11 @@ tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
     # 解压 src 下各个产品软件包
     cd /data/src/; for f in *gz;do tar xf $f; done
 
-    # 还原 python、yum、license 等
+    # 还原不需要更新的模块
     cp -a -r /data/src_6.0.3.bak/{bkssm,python,yum,license,blueking.env,COMMON_VERSION,VERSION,java8.tgz,backup,cert,job} /data/src
-
+    cp -a -r /data/src_6.0.3.bak/official_saas/bk_fta_solutions_V5.2.14-ce-bkofficial.tar.gz /data/src/official_saas/
     cp -a -r /data/src_6.0.3.bak/gse_plugins/gsecmdline-2.0.3.tgz /data/src/gse_plugins/
+    cp -a -r /data/src_6.0.3.bak/gse_plugins/pluginscripts-1.0.3.tgz /data/src/gse_plugins/
 
     echo "6.0.4" > /data/src/VERSION
 	```
@@ -84,22 +85,58 @@ tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
 
 - 中间版本下载：[bk_iam_V1.3.6-bkofficial.tar.gz]()
 
-- 部署中间版本 SaaS。可使用前端或者后台部署的方式。
-  - 前端：访问蓝鲸 PaaS 工作台 - 开发者中心 - S-mart 应用 - 找到 bk_iam，点击部署 - 上传版本 - 部署至正式环境。
-  - 后台：将中间版本 SaaS 放置中控机 /data/src/official_saas 下，使用 `./bkcli install saas-o bk_iam` 命令进行部署。
+- 部署中间版本 SaaS。
+  - 访问蓝鲸 PaaS 工作台 - 开发者中心 - S-mart 应用 - 找到 bk_iam，点击部署 - 上传版本 - 部署至正式环境。
 
-- 确认版本。后台必须为 1.6.1，SaaS 必须为：1.3.6
+- 确认版本：**后台必须为 1.6.1，SaaS 必须为：1.3.6**。
 
-- [升级指引](https://bk.tencent.com/docs/document/6.0/160/8629)
+- [中间版本升级指引](https://bk.tencent.com/docs/document/6.0/160/8629)
 
-**注意：** 在此之前，必须将权限中心升级指定的中间版本，如未升级，请勿升级至 6.0.4 的权限中心版本。
+**注意：** 在此之前，必须将权限中心升级至指定中间版本，如未升级，请勿升级 6.0.4 的权限中心版本。
 
 ## 开始更新
+
+开始更新前请先同步最新脚本至其他机器。
+
+```bash
+./bkcli sync common
+```
 
 ### PaaS 平台
 
 ```bash
 ./bkcli upgrade paas
+```
+
+### 更新 paasagent
+
+- 更新 appo 以及 appt 环境
+
+```bash
+./bkcli upgrade appo
+./bkcli upgrade appt
+```
+
+### 更新 docker 镜像
+
+- 更新 appo 机器上的 python 镜像
+
+```bash
+ssh $BK_APPO_IP
+docker load < /data/src/image/python27e_1.0.tar
+docker load < /data/src/image/python36e_1.0.tar
+rsync -avz /data/src/image/runtool /usr/bin/
+chmod +x  /usr/bin/runtool
+```
+
+- 更新 appt 机器上的 python 镜像
+
+```bash
+ssh $BK_APPT_IP
+docker load < /data/src/image/python27e_1.0.tar
+docker load < /data/src/image/python36e_1.0.tar
+rsync -avz /data/src/image/runtool /usr/bin/
+chmod +x  /usr/bin/runtool
 ```
 
 ### 权限中心
@@ -150,6 +187,14 @@ tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
 
 ### 日志平台
 
+在 6.0.4 版本里，bklog 新增了 mysql 的依赖，所以在升级前，请确保 bklog 机器上是否有 mysql 的相关命令，否则升级过程中会有相关报错。
+
+```bash
+yum -y install mysql-devel
+```
+
+开始更新
+
 ```bash
 ./bkcli install saas-o bk_log_search
 ./bkcli upgrade bklog
@@ -171,6 +216,24 @@ tar xf /data/tmp/install_ce-v3.0.9.tgz -C /data/tmp/
 
 ```bash
 ./bk_install saas-o bk_itsm
+```
+
+### 重装故障自愈 SaaS
+
+```bash
+./bkcli install saas-o bk_fta_solutions
+```
+
+### 删除旧镜像
+
+因提供的命令是删除 appo 或者 appt 上所有的 none 镜像。执行前请确认所有的 none 镜像是否都可以删除。
+
+```bash
+ssh $BK_APPO_IP
+docker images | grep "none" | awk '{print $3}' | xargs -n1 docker rmi
+
+ssh $BK_APPT_IP
+docker images | grep "none" | awk '{print $3}' | xargs -n1 docker rmi
 ```
 
 ### 刷新版本信息
