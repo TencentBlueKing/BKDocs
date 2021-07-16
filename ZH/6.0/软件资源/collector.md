@@ -5,9 +5,9 @@
 basereport | 10.9.x | [basereport-10.9.57.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/basereport-10.9.57.tgz)
 processbeat | 1.16.x | [processbeat-1.16.63.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/processbeat-1.16.63.tgz)
 exceptionbeat | 1.6.x | [exceptionbeat-1.6.40.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.6.40.tgz)
-bkmonitorbeat | 1.14.x | [bkmonitorbeat-1.14.105.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.14.105.tgz)
+bkmonitorbeat | 1.14.x | [bkmonitorbeat-1.14.113.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.14.113.tgz)
 bkmonitorproxy | 1.2.x | [bkmonitorproxy-1.2.43.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorproxy-1.2.43.tgz)
-bkunifylogbeat | 7.2.x | [bkunifylogbeat-7.2.76.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.2.76.tgz)
+bkunifylogbeat | 7.2.x | [bkunifylogbeat-7.2.77.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.2.77.tgz)
 gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gsecmdline-2.0.3.tgz)
 
 
@@ -38,9 +38,9 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 ### bkmonitorbeat
 
-#### bkmonitorbeat-1.14.105.tgz
+#### bkmonitorbeat-1.14.113.tgz
 
-无
+- 【aix】aix 版本更新
 
 #### bkmonitorbeat-1.14.101.tgz
 
@@ -66,8 +66,13 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 - 【优化】提供数据上报校验功能，包括数据格式和数据类型的校验
 - 【新增】提供 consul 域名注册上报功能
 
+### bkunifylogbeat
 
-### bkunifylogbeat-7.2.76.tgz
+#### bkunifylogbeat-7.2.77.tgz
+
+- 【修复】因采集配置差异移除aix采集模块（aix可部署7.1.x版本）
+
+#### bkunifylogbeat-7.2.76.tgz
 
 - 【新增】兼容bklogbeat、unifyTlogc配置及输出
 - 【新增】文件采集支持软链
