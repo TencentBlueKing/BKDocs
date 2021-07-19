@@ -157,7 +157,7 @@ chmod +x  /usr/bin/runtool
 
 ```bash
 ./bkcli upgrade cmdb
-# 检查 cmd/
+# 检查 cmdb
 ./bkcli check cmdb
 ```
 
