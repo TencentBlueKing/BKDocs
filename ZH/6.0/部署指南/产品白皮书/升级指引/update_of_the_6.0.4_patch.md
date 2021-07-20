@@ -157,9 +157,15 @@ chmod +x  /usr/bin/runtool
 
 ```bash
 ./bkcli upgrade cmdb
-# 检查 cmdb 进程
+# 检查 cmdb
 ./bkcli check cmdb
 ```
+
+更新完 CMDB 后，请前往配置平台修改蓝鲸业务下的gse_btsvr 服务模版
+
+详细操作：配置平台 - 业务 (选择蓝鲸业务) - 服务模版 - 搜索 "gse_btsvr" - 点击 ID 进行编辑 - 将第一内网IP 修改成 0.0.0.0 即可
+
+![change_gse_btsvr_bindip](../../assets/../产品白皮书/assets/change_gse_btsvr_bindip.png)
 
 ### 管控平台
 
