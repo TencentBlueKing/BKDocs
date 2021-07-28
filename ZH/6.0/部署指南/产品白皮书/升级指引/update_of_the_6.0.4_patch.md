@@ -8,7 +8,6 @@
 
 - 如无特殊说明，所述操作均在中控机执行。
 - 文中所述的目录路径均以默认为主，如与实际有出入，请以升级实际路径为准。
-- 本次升级会停止部分服务，请避开业务高峰期进行升级，以免影响业务正常运行。
 - 本次升级仅面向涉及到的产品，未更新的产品不做阐述，请知悉。详细请见官网文档：[组件更新](https://bk.tencent.com/docs/document/6.0/127/7774)。
 
 ## 获取更新产品信息
@@ -50,7 +49,7 @@ mkdir /data/tmp
 tar xf bkce_patch_6.0.3-6.0.4.tgz -C /data/tmp
 
 # 解压 install 部署脚本包
-tar xf /data/tmp/install_ce-v3.0.10.tgz -C /data/tmp/
+tar xf /data/tmp/install_ce-v3.0.11.tgz -C /data/tmp/
 ```
 
 5.替换 install、src。
@@ -142,15 +141,15 @@ chmod +x  /usr/bin/runtool
 ### 权限中心
 
 ```bash
-./bkcli upgrade bkiam
 ./bkcli install saas-o bk_iam
+./bkcli upgrade bkiam
 ```
 
 ### 用户管理
 
 ```bash
-./bkcli upgrade usermgr
 ./bkcli install saas-o bk_user_manage
+./bkcli upgrade usermgr
 ```
 
 ### 配置平台
@@ -235,11 +234,9 @@ yum -y install mysql-devel
 因提供的命令是删除 appo 或者 appt 上所有的 none 镜像。执行前请确认所有的 none 镜像是否都可以删除。
 
 ```bash
-ssh $BK_APPO_IP
-docker images | grep "none" | awk '{print $3}' | xargs -n1 docker rmi
+pcmd -m appo "docker images | grep \"none\" | awk '{print $3}' | xargs -n1 docker rmi"
 
-ssh $BK_APPT_IP
-docker images | grep "none" | awk '{print $3}' | xargs -n1 docker rmi
+pcmd -m appt "docker images | grep \"none\" | awk '{print $3}' | xargs -n1 docker rmi"
 ```
 
 ### 刷新版本信息

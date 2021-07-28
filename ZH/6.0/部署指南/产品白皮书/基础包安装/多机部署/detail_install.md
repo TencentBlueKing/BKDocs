@@ -98,6 +98,12 @@ bash /data/install/configure_ssh_without_pass
 ./bk_install saas-o bk_itsm
 ```
 
+## 部署 lesscode (可选)
+
+```bash
+./bk_install lesscode
+```
+
 ## 加载蓝鲸相关维护命令
 
 ```bash
