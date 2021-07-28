@@ -220,7 +220,7 @@ grep -E "nginx|nodeman" /data/install/install.config
 将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 
 ```bash
-10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
+10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com lesscode.bktencent.com
 10.0.0.3 nodeman.bktencent.com
 ```
 
