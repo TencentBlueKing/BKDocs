@@ -34,7 +34,7 @@
     - [说明: 实例视图](../Explanation/01-instanceSelection.md)
     - [AppCode 和 SystemID 说明](../Reference/AppcodeAndSystemID.md)
     - [模型注册 API](../Reference/API/02-Model/00-API.md)
-    - [权限模型自动初始化及更新 migration](Migrateion.md)
+    - [权限模型自动初始化及更新 migration](Migration.md)
 
     建议使用 json 通过 migration 进行模型注册, 方便后续维护及升级; 如果使用了 python sdk, 可以利用 sdk 的封装将模型注册 migration 整合到 django migration 中
 7. 接入系统实现相关资源反向拉取接口

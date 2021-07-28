@@ -27,7 +27,7 @@
         * [开源项目: 接入权限中心的实现](HowTo/Examples/10-OpenSource.md)
     * [相关方案]()
         * [无权限交互方案](HowTo/NoPermissionApply.md)
-        * [权限模型自动初始化及更新 migration](HowTo/Migrateion.md)
+        * [权限模型自动初始化及更新 migration](HowTo/Migration.md)
         * [依赖操作权限方案](HowTo/RelatedActions.md)
         * [新建关联权限方案](HowTo/ResourceCreatorAction.md)
         * [大规模实例级权限限制](HowTo/LargeScaleInstances.md)

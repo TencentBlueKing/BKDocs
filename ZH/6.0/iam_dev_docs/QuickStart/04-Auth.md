@@ -84,6 +84,15 @@ curl -XPOST 'http://{IAM_HOST}/api/v1/policy/auth' \
 	},
 	"resources": []
 }'
+
+# response
+{
+    "code": 0,
+    "message": "ok",
+    "data": {
+        "allowed": true
+    }
+}
 ```
 
 APP 开发权限
@@ -108,4 +117,13 @@ curl -XPOST 'http://{IAM_HOST}/api/v1/policy/auth' \
         "id": "test_app_1"
     }]
 }'
+
+# response
+{
+    "code": 0,
+    "message": "ok",
+    "data": {
+        "allowed": false
+    }
+}
 ```

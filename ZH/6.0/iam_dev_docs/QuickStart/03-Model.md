@@ -151,3 +151,15 @@ curl -XPOST 'http://{IAM_HOST}/api/v1/model/systems/demo/actions' \
 由于还没有实现 [资源反向拉取](../Reference/API/03-Callback/01-API.md)，申请权限时，资源实例可以选择`无限制`
 
 ![enter image description here](../assets/QuickStart/image_4.png)
+
+如果实现了 [资源反向拉取](../Reference/API/03-Callback/01-API.md)，申请权限时
+
+![enter image description here](../assets/QuickStart/image_7.jpg)
+
+如果勾选了右上角的`无限制`, 即所有应用的权限(包括现在及未来新建的应用)
+
+实例选择是通过实例视图的配置展示的, 这里使用的实例视图是`app_view`(应用视图), 只配置了一级资源`system=demo, resource_type=app`, 所以回调接入系统拉取得到的是`应用列表`
+
+## 5. 扩展阅读
+
+权限中心提供了另一种模型注册方式, 具体见 [权限模型自动初始化及更新 migration](../HowTo/Migration.md)
