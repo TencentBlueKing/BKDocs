@@ -49,7 +49,7 @@ mkdir /data/tmp
 tar xf bkce_patch_6.0.3-6.0.4.tgz -C /data/tmp
 
 # 解压 install 部署脚本包
-tar xf /data/tmp/install_ce-v3.0.11.tgz -C /data/tmp/
+tar xf /data/tmp/install_ce-v3.0.10.tgz -C /data/tmp/
 ```
 
 5.替换 install、src。
@@ -82,9 +82,11 @@ tar xf /data/tmp/install_ce-v3.0.11.tgz -C /data/tmp/
 
 **重要：** 因 6.0.3 升级至 6.0.4 权限中心 SaaS 需要先升级中间版本。所以下述操作必须操作。
 
-- 中间版本下载：[bk_iam_V1.3.6-bkofficial.tar.gz]()
+- 中间版本已随 patch 包放置 src/official_saas/ 目录下。
 
-- 部署中间版本 SaaS。
+- 将 src/official_saas 目录下的 bk_iam_V1.3.6-bkofficial.tar.gz 包放置本地。
+
+- 部署权限中心 SaaS 中间版本（bk_iam_V1.3.6-bkofficial.tar.gz）。
   - 访问蓝鲸 PaaS 工作台 - 开发者中心 - S-mart 应用 - 找到 bk_iam，点击部署 - 上传版本 - 部署至正式环境。
 
 - 确认版本：**后台必须为 1.6.1，SaaS 必须为：1.3.6**。
