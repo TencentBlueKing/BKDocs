@@ -46,7 +46,7 @@ mv /data/src /data/src_6.0.3.bak
 mkdir /data/tmp
 
 # 将 patch 包解压至临时存放目录
-tar xf bkce_patch_6.0.3-6.0.4.tgz -C /data/tmp
+tar xf /data/bkce_patch_6.0.3-6.0.4.tgz -C /data/tmp
 
 # 解压 install 部署脚本包
 tar xf /data/tmp/install_ce-v3.0.10.tgz -C /data/tmp/
@@ -70,30 +70,12 @@ tar xf /data/tmp/install_ce-v3.0.10.tgz -C /data/tmp/
     cd /data/src/; for f in *gz;do tar xf $f; done
 
     # 还原不需要更新的模块
-    cp -a -r /data/src_6.0.3.bak/{bkssm,python,yum,license,blueking.env,COMMON_VERSION,VERSION,java8.tgz,backup,cert,job} /data/src
+    cp -a -r /data/src_6.0.3.bak/{bkssm,python,yum,license,blueking.env,java8.tgz,backup,cert,job} /data/src
     cp -a -r /data/src_6.0.3.bak/official_saas/bk_fta_solutions_V5.2.14-ce-bkofficial.tar.gz /data/src/official_saas/
     cp -a -r /data/src_6.0.3.bak/gse_plugins/gsecmdline-2.0.3.tgz /data/src/gse_plugins/
     cp -a -r /data/src_6.0.3.bak/gse_plugins/pluginscripts-1.0.3.tgz /data/src/gse_plugins/
 
-    echo "6.0.4" > /data/src/VERSION
 	```
-
-## 特殊操作
-
-**重要：** 因 6.0.3 升级至 6.0.4 权限中心 SaaS 需要先升级中间版本。所以下述操作必须操作。
-
-- 中间版本已随 patch 包放置 src/official_saas/ 目录下。
-
-- 将 src/official_saas 目录下的 bk_iam_V1.3.6-bkofficial.tar.gz 包放置本地。
-
-- 部署权限中心 SaaS 中间版本（bk_iam_V1.3.6-bkofficial.tar.gz）。
-  - 访问蓝鲸 PaaS 工作台 - 开发者中心 - S-mart 应用 - 找到 bk_iam，点击部署 - 上传版本 - 部署至正式环境。
-
-- 确认版本：**后台必须为 1.6.1，SaaS 必须为：1.3.6**。
-
-- [中间版本升级指引](https://bk.tencent.com/docs/document/6.0/160/8629)
-
-**注意：** 在此之前，必须将权限中心升级至指定中间版本，如未升级，请勿升级 6.0.4 的权限中心版本。
 
 ## 开始更新
 
@@ -141,6 +123,40 @@ chmod +x  /usr/bin/runtool
 ```
 
 ### 权限中心
+
+#### 特殊操作
+
+**重要：** 因 6.0.3 升级至 6.0.4 权限中心 SaaS 需要先升级中间版本。所以下述操作必须操作。
+
+- 中间版本已随 patch 包放置 src/official_saas/ 目录下。
+
+- 将 src/official_saas 目录下的 bk_iam_V1.3.6-bkofficial.tar.gz 包放置本地。
+
+- 部署权限中心 SaaS 中间版本（bk_iam_V1.3.6-bkofficial.tar.gz）。
+  - 访问蓝鲸 PaaS 工作台 - 开发者中心 - S-mart 应用 - 找到 bk_iam，点击部署 - 上传版本 - 发布部署 - 选择 1.3.6 版本进行部署 - 部署至正式环境。
+
+- 升级完中间版本后，全量同步所有的权限模板
+
+```bash
+source /data/install/utils.fc
+ssh $BK_APPO_IP
+
+docker exec -it $(docker ps | grep -w bk_iam | awk '{print $1}') bash 
+export BK_FILE_PATH="/data/app/code/conf/saas_priv.txt"
+
+# 脚本打印 Successful completion of template version synchronization 表示执行同步成功
+/cache/.bk/env/bin/python /data/app/code/manage.py sync_templates
+
+```
+
+- 确认版本：**后台必须为 1.6.1，SaaS 必须为：1.3.6**。
+
+```bash
+# 后台版本
+curl http://bkiam.service.consul:5001/version | jq .version
+```
+
+**注意：** 在此之前，必须将权限中心升级至指定中间版本，如未升级，请勿升级继续向下操作。
 
 ```bash
 ./bkcli install saas-o bk_iam
@@ -197,7 +213,8 @@ chmod +x  /usr/bin/runtool
 在 6.0.4 版本里，bklog 新增了 mysql 的依赖，所以在升级前，请确保 bklog 机器上是否有 mysql 的相关命令，否则升级过程中会有相关报错。
 
 ```bash
-yum -y install mysql-devel
+source /data/install/utils.fc
+ssh $BK_LOG_IP "yum -y install mysql-devel"
 ```
 
 开始更新
@@ -231,9 +248,16 @@ yum -y install mysql-devel
 ./bkcli install saas-o bk_fta_solutions
 ```
 
+### 部署 lesscode （可选）
+
+```bash
+./bk_install lesscode
+```
+
 ### 删除旧镜像
 
-因提供的命令是删除 appo 或者 appt 上所有的 none 镜像。执行前请确认所有的 none 镜像是否都可以删除。
+- 因提供的命令是删除 appo 或者 appt 上所有的 none 镜像。执行前请确认所有的 none 镜像是否都可以删除。
+- 如有自行的开发的 SaaS，需要自行重新部署后，才能进行删除。
 
 ```bash
 pcmd -m appo "docker images | grep \"none\" | awk '{print $3}' | xargs -n1 docker rmi"
