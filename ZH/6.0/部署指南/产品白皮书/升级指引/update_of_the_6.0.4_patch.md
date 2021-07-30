@@ -247,12 +247,6 @@ ssh $BK_LOG_IP "yum -y install mysql-devel"
 ./bkcli install saas-o bk_fta_solutions
 ```
 
-### 部署 lesscode （可选）
-
-```bash
-./bk_install lesscode
-```
-
 ### 删除旧镜像
 
 - 因提供的命令是删除 appo 或者 appt 上所有的 none 镜像。执行前请确认所有的 none 镜像是否都可以删除。
