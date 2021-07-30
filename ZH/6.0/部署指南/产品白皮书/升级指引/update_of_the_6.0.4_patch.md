@@ -72,8 +72,7 @@ tar xf /data/tmp/install_ce-v3.0.10.tgz -C /data/tmp/
     # 还原不需要更新的模块
     cp -a -r /data/src_6.0.3.bak/{bkssm,python,yum,license,blueking.env,java8.tgz,backup,cert,job} /data/src
     cp -a -r /data/src_6.0.3.bak/official_saas/bk_fta_solutions_V5.2.14-ce-bkofficial.tar.gz /data/src/official_saas/
-    cp -a -r /data/src_6.0.3.bak/gse_plugins/gsecmdline-2.0.3.tgz /data/src/gse_plugins/
-    cp -a -r /data/src_6.0.3.bak/gse_plugins/pluginscripts-1.0.3.tgz /data/src/gse_plugins/
+    cp -a -r /data/src_6.0.3.bak/gse_plugins/{gsecmdline-2.0.3.tgz,pluginscripts-1.0.3.tgz} /data/src/gse_plugins/
 
 	```
 
@@ -159,7 +158,7 @@ curl http://bkiam.service.consul:5001/version | jq .version
 **注意：** 在此之前，必须将权限中心升级至指定中间版本，如未升级，请勿升级继续向下操作。
 
 ```bash
-./bkcli install saas-o bk_iam
+./bkcli install saas-o bk_iam==1.4.23
 ./bkcli upgrade bkiam
 ```
 
@@ -274,7 +273,7 @@ _update_common_info
 
 ## 升级后操作
 
-- 升级完成后，请前往节点管理页面升级/重装 agent、Proxy 以及采集器相关插件。
+- 升级完成后，请前往节点管理页面升级/重装 agent、Proxy 以及相关采集器插件。
 
 - 如果之前有部署 bkci 以及 bcs 的用户，请按照该方式将相关包进行还原 (`没有部署请忽略该步骤`)
 
