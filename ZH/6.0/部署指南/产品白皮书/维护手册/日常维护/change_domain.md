@@ -25,3 +25,9 @@
   ```bash
   ./bkcli install saas-o
   ```
+
+- 重新部署 lesscode 
+
+```bash
+./bkcli install lesscode
+```
