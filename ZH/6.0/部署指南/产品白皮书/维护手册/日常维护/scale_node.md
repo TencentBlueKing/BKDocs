@@ -21,7 +21,13 @@
     ./bkcli sync common
     ```
 
-6. 新机器初始化。
+6. 同步蓝鲸 repo
+
+    ```bash
+    rsync -av /etc/yum.repos.d/Blueking.repo root@10.0.0.4:/etc/yum.repos.d/
+    ```
+
+7. 新机器初始化。
 
     ```bash
     pcmd -H 10.0.0.4 /data/install/bin/init_new_node.sh

@@ -8,12 +8,22 @@
 
 下述操作均在中控机操作，且所述路径均为蓝鲸默认路径，实际操作过程中，请以实际为准。
 
-## 解压软件包
+
+## 下载软件包
+
+### 下载 lesscode 软件包
 
 前往 [蓝鲸 S-mart 市场](https://bk.tencent.com/s-mart/market) 下载 Lesscode 软件包。并将下载好的 lesscode 放置 /data 目录
 
 ```bash
 tar xf /data/lesscode-ce-0.0.11.tar.gz -C /data/src/
+```
+
+### 下载 lesscode 依赖包
+
+```bash
+cd /data/src
+wget https://nodejs.org/download/release/v14.17.0/node-v14.17.0-linux-x64.tar.gz
 ```
 
 ## 分布模块
