@@ -249,7 +249,18 @@ ssh $BK_LOG_IP "yum -y install mysql-devel"
 
 ### 部署 lesscode （可选）
 
+分布 lesscode 模块
+
 ```bash
+# 请使用实际ip进行替换
+{
+echo ""
+echo "10.0.5.16 lesscode" 
+} >> /data/install/install.config
+```
+
+```bash
+./bkcli sync common
 ./bk_install lesscode
 ```
 
