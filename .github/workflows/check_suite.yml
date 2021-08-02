@@ -48,8 +48,18 @@ jobs:
         run: |
           echo "::group::Lint Markdown by lint-md(https://github.com/lint-md/lint-md)"
           [[ $IS_TRACE == 'true' ]] && set -x
+          cat >> lintmdrc <<EOF
+          {
+            "excludeFiles": [],
+            "rules": {
+              "no-empty-url": 1,
+              "no-long-code": 1,
+              "no-empty-code-lang": 1
+            }
+          }
+          EOF
           npm i -g lint-md-cli
-          lint-md ${{ steps.getfile.outputs.diff }}
+          lint-md -c ./lintmdrc ${{ steps.getfile.outputs.diff }}
           echo "::endgroup::"
           
       - name: Markdown Link Check
