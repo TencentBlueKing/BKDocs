@@ -177,12 +177,6 @@ curl http://bkiam.service.consul:5001/version | jq .version
 ./bkcli check cmdb
 ```
 
-更新完 CMDB 后，请前往配置平台修改蓝鲸业务下的gse_btsvr 服务模版
-
-详细操作：配置平台 - 业务 (选择蓝鲸业务) - 服务模版 - 搜索 "gse_btsvr" - 点击 ID 进行编辑 - 将第一内网IP 修改成 0.0.0.0 即可
-
-![change_gse_btsvr_bindip](../../assets/../产品白皮书/assets/change_gse_btsvr_bindip.png)
-
 ### 管控平台
 
 ```bash
@@ -253,9 +247,15 @@ ssh $BK_LOG_IP "yum -y install mysql-devel"
 - 如有自行的开发的 SaaS，需要自行重新部署后，才能进行删除。
 
 ```bash
-pcmd -m appo "docker images | grep \"none\" | awk '{print $3}' | xargs -n1 docker rmi"
+source /data/install/utils.fc
 
-pcmd -m appt "docker images | grep \"none\" | awk '{print $3}' | xargs -n1 docker rmi"
+# appo 环境
+ssh $BK_APPO_IP
+docker images | grep "none" | awk '{print $3}' | xargs -n1 docker rmi
+
+# appt 环境
+ssh $BK_APPO_IP
+docker images | grep "none" | awk '{print $3}' | xargs -n1 docker rmi
 ```
 
 ### 刷新版本信息
@@ -266,6 +266,12 @@ _update_common_info
 ```
 
 ## 升级后操作
+
+- 请前往配置平台修改蓝鲸业务下的 gse_btsvr 服务模版
+
+详细操作：配置平台 - 业务 (选择蓝鲸业务) - 服务模版 - 搜索 "gse_btsvr" - 点击 ID 进行编辑 - 将第一内网IP 修改成 0.0.0.0 即可
+
+![change_gse_btsvr_bindip](../../assets/../产品白皮书/assets/change_gse_btsvr_bindip.png)
 
 - 升级完成后，请前往节点管理页面升级/重装 agent、Proxy 以及相关采集器插件。
 
