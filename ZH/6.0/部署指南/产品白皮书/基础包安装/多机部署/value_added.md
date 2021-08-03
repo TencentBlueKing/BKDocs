@@ -74,7 +74,7 @@ for module in ${value_modules[@]}; do if grep ${module} /data/install/install.co
 
 检查新增机器的主机名是否与基础环境机器的主机名是否有冲突。如有冲突，请先进行修改，如无请忽略。
 
-```
+```bash
 hostname
 ```
 

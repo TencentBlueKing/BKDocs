@@ -10,7 +10,7 @@ CMDB 开源版的部署说明，可以参考 [CMDB 部署文档](https://github.
 
 ## 配置 CMDB 
 
-CMDB 的主要依赖是 MongoDB 实例，逻辑上，需要2个 MongoDB 实例，分别对应主数据库 cmdb，和事件库 cmdb_events。
+CMDB 的主要依赖是 MongoDB 实例，逻辑上，需要 2 个 MongoDB 实例，分别对应主数据库 cmdb，和事件库 cmdb_events。
 在环境变量配置中，对应的变量名是：
 
 ```bash
@@ -25,7 +25,7 @@ BK_CMDB_EVENTS_MONGODB_PASSWORD=
 BK_CMDB_EVENTS_MONGODB_DATABASE=cmdb_events
 ```
 
-第二个依赖 Redis，它的配置变量，对应单实例的Redis
+第二个依赖 Redis，它的配置变量，对应单实例的 Redis
 
 ```bash
 BK_CMDB_REDIS_HOST=redis.service.consul
@@ -36,7 +36,7 @@ BK_CMDB_REDIS_PASSWORD=
 
 第三个依赖 zookeeper，它的配置变量比较简单：BK_CMDB_ZK_ADDR=zk.service.consul:2181。
 
-第四个依赖是可选依赖，如果需要开启全文检索功能，需要配置 elasticsearch （7.x.x版本） 的地址和认证方式。本文不作介绍。
+第四个依赖是可选依赖，如果需要开启全文检索功能，需要配置 elasticsearch （7.x.x 版本） 的地址和认证方式。本文不作介绍。
 
 ## 安装 CMDB
 

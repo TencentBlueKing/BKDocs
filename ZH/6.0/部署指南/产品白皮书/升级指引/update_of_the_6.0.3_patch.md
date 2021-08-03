@@ -57,13 +57,13 @@ tar xf /data/tmp/install_ce-v3.0.8.tgz -C /data/tmp/
 
 - 替换 src 目录
 
-	```bash
-	mv /data/tmp/src /data/
-	```
+    ```bash
+    mv /data/tmp/src /data/
+    ```
 
 - 替换 install
 
-	```bash
+    ```bash
     # 替换部署脚本
     rsync -avz --delete --exclude=".*" --exclude="install.config" --exclude="bin/0[1234]-*" /data/tmp/install/ /data/install/
 
@@ -78,10 +78,10 @@ tar xf /data/tmp/install_ce-v3.0.8.tgz -C /data/tmp/
 
     # 还原 python、yum、license 等
     cp -a -r /data/src.bak/{bkssm,python,yum,license,blueking.env,COMMON_VERSION,VERSION,java8.tgz,paas_agent} /data/src
-	
+
     cp -a -r /data/src.bak/gse_plugins/gsecmdline-2.0.3.tgz /data/src/gse_plugins/
     echo "6.0.3" > /data/src/VERSION
-	```
+    ```
 
 ## 特殊操作
 
@@ -245,7 +245,6 @@ ssh $BK_NODEMAN_IP 'rmvirtualenv bknodeman-nodeman'
 ### 日志平台
 
 ```bash
-
 ./bkcli install saas-o bk_log_search
 ./bkcli stop bklog
 ssh $BK_LOG_IP 'rmvirtualenv bklog-api'
@@ -285,7 +284,7 @@ add_saas_environment
 
 - cmdb 对于服务模板,`监听信息` 相关的 `IP` 字段数据变更，agent 的 processbeat 插件版本更新到 `1.15.61` 版本及以上
     - 方案一： 删掉现有的蓝鲸业务下所有的模块和模板数据，重新注册. 脚本操作，所以会删掉用户已经在蓝鲸业务中自定义添加的相关数据
-	```bashplainplain
+    ```bash
 	# step1: 开启页面删除蓝鲸集群选项
 	source /data/install/utils.fc
 	curl -H 'BK_USER:admin' -H 'BK_SUPPLIER_ID:0' -H 'HTTP_BLUEKING_SUPPLIER_ID:0' -X POST $BK_CMDB_IP0:9000/migrate/v3/migrate/system/user_config/blueking_modify/true
@@ -302,11 +301,11 @@ add_saas_environment
 	
 	# step5: 重新注册蓝鲸业务拓扑
 	cd /data/install && ./bkcli initdata topo
-	```
+    ```
 
     - 方案二： 用户通过页面手动更改所有监控信息异常的进程模板，并同步到现有进程实例，完成``IP``字段的变更
 
-	**需将之前`ip`为空的字段，变更``第一内网IP``或者是``0.0.0.0``，具体情况根据进程实际监听地址修改**
+    **需将之前`ip`为空的字段，变更``第一内网IP``或者是``0.0.0.0``，具体情况根据进程实际监听地址修改**
 
 ### 刷新版本信息
 

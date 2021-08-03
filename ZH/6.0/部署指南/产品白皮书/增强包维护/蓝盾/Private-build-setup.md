@@ -116,7 +116,7 @@ Windows ：
 3. 请检查 Linux / MacOS 系统中是否有 `unzip` 命令。（ Windows 版本包含在 agent 里了）
 4. 如果已经完成了上述步骤，请清空安装目录后重新安装。避免旧的错误安装包缓存造成干扰。
 
-### 直接复制agent目录启动的agent不识别或任务调度异常
+### 直接复制 agent 目录启动的 agent 不识别或任务调度异常
 同一主机可以在不同的目录安装多个 agent 实例，不同的 agent 实例依靠 agent 安装目录下 `.agent.properties` 文件里的 `devops.agent.id` 区分。
 
 如果 ID 相同，会被视作同一 agent 实例，因此产生心跳异常及调度问题。请卸载其中一个 Agent，并参考“安装私有构建机”章节重新操作。

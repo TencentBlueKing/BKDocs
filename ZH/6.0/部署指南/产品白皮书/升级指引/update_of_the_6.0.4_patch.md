@@ -56,13 +56,13 @@ tar xf /data/tmp/install_ce-v3.0.10.tgz -C /data/tmp/
 
 - 替换 src 目录
 
-	```bash
-	mv /data/tmp/src /data/
-	```
+    ```bash
+    mv /data/tmp/src /data/
+    ```
 
 - 替换 install
 
-	```bash
+    ```bash
     # 替换部署脚本
     rsync -avz --delete --exclude=".*" --exclude="install.config" --exclude="bin/0[1234]-*" /data/tmp/install/ /data/install/
 
@@ -73,8 +73,7 @@ tar xf /data/tmp/install_ce-v3.0.10.tgz -C /data/tmp/
     cp -a -r /data/src_6.0.3.bak/{bkssm,python,yum,license,blueking.env,java8.tgz,backup,cert,job} /data/src
     cp -a -r /data/src_6.0.3.bak/official_saas/bk_fta_solutions_V5.2.14-ce-bkofficial.tar.gz /data/src/official_saas/
     cp -a -r /data/src_6.0.3.bak/gse_plugins/{gsecmdline-2.0.3.tgz,pluginscripts-1.0.3.tgz} /data/src/gse_plugins/
-
-	```
+    ```
 
 ## 开始更新
 
@@ -215,6 +214,8 @@ ssh $BK_LOG_IP "yum -y install mysql-devel"
 ```bash
 ./bkcli install saas-o bk_log_search
 ./bkcli upgrade bklog
+
+./bkcli restart bklog grafana
 ```
 
 ### 故障自愈

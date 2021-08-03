@@ -9,7 +9,7 @@
    ``` bash
    cd $BK_HOME/ci/dispatch-docker/
    ```
-2. 修改微服务目录下的 `start.env` 文件，添加或更新 `MEM_OPTS` 配置项。模板文件为 `service.env`文件，随CI版本更新而更新，请勿修改。 例如
+2. 修改微服务目录下的 `start.env` 文件，添加或更新 `MEM_OPTS` 配置项。模板文件为 `service.env`文件，随 CI 版本更新而更新，请勿修改。 例如
     ```bash
     # grep MEM_OPTS service.env
     MEM_OPTS="-Xms256m -Xmx512m"
@@ -30,7 +30,7 @@
 目前构建机（公共构建机及无编译环境）启动时默认连接到 Docker Hub 拉取构建镜像。
 
 ### registry mirror
-Docker Hub 官方自2020年11月起对镜像拉取频率进行了限制（[官方公告点此](https://www.docker.com/increase-rate-limits)）。
+Docker Hub 官方自 2020 年 11 月起对镜像拉取频率进行了限制（[官方公告点此](https://www.docker.com/increase-rate-limits)）。
 如果遇到了 `ERROR: toomanyrequests: Too Many Requests.` 报错，请自备 Docker Hub 账户。
 
 推荐在内网部署 Docker Hub 镜像站缓存。请参考官方文档：[https://docs.docker.com/registry/recipes/mirror/](https://docs.docker.com/registry/recipes/mirror/)

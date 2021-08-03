@@ -134,7 +134,7 @@ pcmd -m ci '${CTRL_DIR:-/data/install}/bin/bks.sh bk-ci consul'
 
 ### 检查服务的 stdout 和 stderr
 
-服务使用systemd启动，启动过程中会输出提示信息。
+服务使用 systemd 启动，启动过程中会输出提示信息。
 需登录到对应的机器上操作。
 
 ```bash
@@ -152,8 +152,8 @@ getent hosts dispatch-devops.service.consul  # 会输出DNS解析结果, 格式�
 >
 >`getent` 命令来自 `glic-common` 包，一般无需安装。
 
-### SpringBoot Health接口
-java微服务提供了health接口，可以输出服务状态。
+### SpringBoot Health 接口
+java 微服务提供了 health 接口，可以输出服务状态。
 ```bash
 API_PORT=  # 填写对应微服务的API PORT。可以查看 /data/bkce/ci/微服务/start.env 文件获取。
 curl -m 1 -sf "http://127.0.0.1:$API_PORT/management/health"
@@ -201,14 +201,14 @@ pcmd -m ci_$ms "grep --color=yes -E '^Caused by|[.][a-zA-Z]*Exception' ${BK_HOME
 ```
 
 ## 依赖服务升级
-蓝盾依赖着 MySQL、RabbitMQ、Redis、consul等第三方软件。
+蓝盾依赖着 MySQL、RabbitMQ、Redis、consul 等第三方软件。
 
 修订版及小版本下的安全更新建议持续进行。理论上无稳定性风险。但建议做好预案。
 不建议升级大版本。如果必须大版本升级依赖的服务，请关注蓝鲸官方公告。并自行测试可用性。
 
 ## 数据迁移
 迁移数据库及蓝盾的数据目录（变量`BK_CI_DATA_DIR`）。
-以及用户自定义env文件: `${CTRL_DIR:-/data/install}/bin/03-userdef/ci.env` (如果新环境密码发生变动, 记得更新此文件. )
+以及用户自定义 env 文件: `${CTRL_DIR:-/data/install}/bin/03-userdef/ci.env` (如果新环境密码发生变动, 记得更新此文件. )
 
 ## 拉取镜像
 提前在构建机拉取镜像，避免在构建时临时拉取镜像导致任务超时。

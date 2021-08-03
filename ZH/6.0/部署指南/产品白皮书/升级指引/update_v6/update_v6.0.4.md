@@ -92,7 +92,7 @@ bash migrate_old_environ_v2.sh
 ```bash
 source /data/install/utils.fc
 for ip in ${ALL_IP[@]}; do
-	ssh ${ip} "if id 10000 > /dev/null; then echo "${ip} 已存在 id 为 10000 的用户";fi"
+    ssh ${ip} "if id 10000 > /dev/null; then echo "${ip} 已存在 id 为 10000 的用户";fi"
 done
 ```
 
@@ -522,62 +522,62 @@ mysql --login-path=mysql-default -e "select * from bk_iam.authorization_authapia
 
 - 开始迁移
 
-	下载迁移工具：job-migration-ce_0.1.2_Linux_x86_64.tar.gz
+    下载迁移工具：job-migration-ce_0.1.2_Linux_x86_64.tar.gz
 
-	```bash
-	# 请按照仔细阅读目录下 README.md 文档
-	tar -xvf /data/job-migration-ce_0.1.2_Linux_x86_64.tar.gz -C /data
-	cd /data/job-migration-ce_0.1.2_Linux_x86_64
-	```
+    ```bash
+    # 请按照仔细阅读目录下 README.md 文档
+    tar -xvf /data/job-migration-ce_0.1.2_Linux_x86_64.tar.gz -C /data
+    cd /data/job-migration-ce_0.1.2_Linux_x86_64
+    ```
 
-	- 加载环境变量
+    - 加载环境变量
 
-	```bash
-	source /data/install/utils.fc
-	```
+    ```bash
+    source /data/install/utils.fc
+    ```
 
-	- 生成 config.toml 文件。`生成后请检查该文件内的相关变量是否转化成具体的值。`
+    - 生成 config.toml 文件。`生成后请检查该文件内的相关变量是否转化成具体的值。`
 
-	```bash
-	cat > config.toml << EOF
-	jobManageHost = "http://$BK_JOB_IP:$BK_JOB_MANAGE_SERVER_PORT"
-	jobCrontabHost = "http://$BK_JOB_IP:$BK_JOB_CRONTAB_SERVER_PORT"
-	processScript = true
-	processPlan = true
-	processCron = true
-	processWhiteList = true
-	offset = 0
-	includeAppId = ""
-	excludeAppId = ""
-	test = false
+    ```bash
+    cat > config.toml << EOF
+    jobManageHost = "http://$BK_JOB_IP:$BK_JOB_MANAGE_SERVER_PORT"
+    jobCrontabHost = "http://$BK_JOB_IP:$BK_JOB_CRONTAB_SERVER_PORT"
+    processScript = true
+    processPlan = true
+    processCron = true
+    processWhiteList = true
+    offset = 0
+    includeAppId = ""
+    excludeAppId = ""
+    test = false
 
-	# 如果不需要更改业务 ID 则可以去掉。配置成 1=1 也不影响
-	[appMapper]
-	1 = 1
+    # 如果不需要更改业务 ID 则可以去掉。配置成 1=1 也不影响
+    [appMapper]
+    1 = 1
 
-	[mysql]
-	host = "$BK_MYSQL_IP"
-	port = 3306
-	username = "$BK_MYSQL_ADMIN_USER"
-	password = "$BK_MYSQL_ADMIN_PASSWORD"
-	database = "job"
+    [mysql]
+    host = "$BK_MYSQL_IP"
+    port = 3306
+    username = "$BK_MYSQL_ADMIN_USER"
+    password = "$BK_MYSQL_ADMIN_PASSWORD"
+    database = "job"
 
-	[log]
-	level = "info"
+    [log]
+    level = "info"
 
-	[jwt]
-	RSAPublicKey = "$BK_JOB_SECURITY_PUBLIC_KEY_BASE64"
+    [jwt]
+    RSAPublicKey = "$BK_JOB_SECURITY_PUBLIC_KEY_BASE64"
 
-	RSAPrivateKey = "$BK_JOB_SECURITY_PRIVATE_KEY_BASE64"
+    RSAPrivateKey = "$BK_JOB_SECURITY_PRIVATE_KEY_BASE64"
 
-	EOF
-	```
+    EOF
+    ```
 
-	- 迁移 JOB 脚本数据
+    - 迁移 JOB 脚本数据
 
-	```bash
-	./job-migration-ce
-	```
+    ```bash
+    ./job-migration-ce
+    ```
 
 #### JOB 帐号迁移
 

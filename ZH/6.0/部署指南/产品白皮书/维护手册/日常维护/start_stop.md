@@ -141,7 +141,7 @@
 ## 进程查看
 
 各组件对应的进程名，启动参数，启动用户，写入的日志文件路径等信息。可以用以下方式查看，本文附表汇总了
-基础版的所有组件进程信息，方便对照。见[《蓝鲸社区版6.0进程列表》](https://docs.qq.com/sheet/DWkV5elFBemxwY3Nk?tab=BB08J2)
+基础版的所有组件进程信息，方便对照。见[《蓝鲸社区版 6.0 进程列表》](https://docs.qq.com/sheet/DWkV5elFBemxwY3Nk?tab=BB08J2)
 
 1. 通览本机所有组件进程，默认是用 `more` 命令来查看，可以翻页和搜索感兴趣的 service
 
@@ -177,14 +177,14 @@
     ss -nlp | grep ,pid=<pid>,
     ```
 
-5. 有些 MAINPID 是 supervisord 的进程，说明这个 service 是 systemd 启动托管 supervisord，supervisord再拉起相应进程，在蓝鲸基础平台中，一般是 Python 工程会这样使用。
+5. 有些 MAINPID 是 supervisord 的进程，说明这个 service 是 systemd 启动托管 supervisord，supervisord 再拉起相应进程，在蓝鲸基础平台中，一般是 Python 工程会这样使用。
 
 6. 部署脚本（`./bin/bks.sh`）封装了根据 service 名查看进程相关信息的操作，日常使用中可带来便利。
 
 
 关于进程启动后的 STDOUT 和 STDERR 指向哪里，这里提供一个通用定位方法：
 
-1. 找到pid打开的文件句柄 1（STDOUT）和 2（STDERR）。下面以 `license_server` 为例：
+1. 找到 pid 打开的文件句柄 1（STDOUT）和 2（STDERR）。下面以 `license_server` 为例：
 
     ```bash
     $ lsof -p 3518 -a -d 1,2
@@ -201,7 +201,7 @@
     u_str  ESTAB      0      0      /run/systemd/journal/stdout 15113                 * 31718                 users:(("systemd-journal",pid=997,fd=52),("systemd",pid=1,fd=160))
     ```
 
-    可以看出该 unix socket 的对端进程是 systemd-journald。一般使用 systemd 托管的进程，如果没有特殊配置， STDOUT 和 STDERR 都通过 unix socket 发送给 journald 进程然后通过rsyslogd的规则，会写入相应的磁盘文件。
+    可以看出该 unix socket 的对端进程是 systemd-journald。一般使用 systemd 托管的进程，如果没有特殊配置， STDOUT 和 STDERR 都通过 unix socket 发送给 journald 进程然后通过 rsyslogd 的规则，会写入相应的磁盘文件。
 
 3. 对于插件进程，比如 `basereport`，看到 STDERR 是重定向到 /tmp/xuoasefasd.err 文件。
 
@@ -212,7 +212,7 @@
     baserepor 21360 root    2w   REG  252,1        0 399806 /tmp/xuoasefasd.err
     ```
 
-4. 对于 supervisord 托管的进程，且配置文件中配置了 "stdout_logfile" 和 "redirect_stderr" 配置项。那么会显示如下：通过supervisord创建的PIPE pair打印。
+4. 对于 supervisord 托管的进程，且配置文件中配置了 "stdout_logfile" 和 "redirect_stderr" 配置项。那么会显示如下：通过 supervisord 创建的 PIPE pair 打印。
 
     ```bash
     $ lsof -p 12435 -a -d 1,2
