@@ -214,6 +214,8 @@ ssh $BK_LOG_IP "yum -y install mysql-devel"
 ```bash
 ./bkcli install saas-o bk_log_search
 ./bkcli upgrade bklog
+
+./bkcli restart bklog grafana
 ```
 
 ### 故障自愈
