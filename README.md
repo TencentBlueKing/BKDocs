@@ -19,3 +19,8 @@
 3. 给我们写邮件：contactus_bk@tencent.com
 
 具体教程：[文档更新指引](./新文档中心格式要求/文档更新指引.md)
+
+<!-- test start >
+Openxxx 1.15.8.3
+<!-- test end >
+
