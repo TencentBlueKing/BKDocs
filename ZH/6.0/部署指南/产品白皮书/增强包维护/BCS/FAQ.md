@@ -147,18 +147,18 @@
    ```
  5. **容器监控问题排查思路**
  
-     1、查看Prometheus pod状态是否正常
+     1、查看 Prometheus pod 状态是否正常
    
      ```bash
      kubectl get pod -n thanos
      ```
-     2、查看Prometheus pod日志是否有报错
+     2、查看 Prometheus pod 日志是否有报错
    
      ```bash
      kubectl logs --tail=100 prometheus-po-prometheus-operator-prometheus-0 -n thanos -c prometheus
      kubectl logs --tail=100 prometheus-po-prometheus-operator-prometheus-0 -n thanos -c thanos-sidecar
      ```
-     3、查看Prometheus部署pod到thanos.service.consul:18902网络是否连通
+     3、查看 Prometheus 部署 pod 到 thanos.service.consul:18902 网络是否连通
    
      ```bash
      kubectl exec -it prometheus-po-prometheus-operator-prometheus-0 -n thanos -c thanos-sidecar -- telnet thanos.service.consul 18902

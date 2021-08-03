@@ -5,7 +5,7 @@ Kafka 在蓝鲸架构中，用于数据上报通道的队列缓存。在数据�
 
 ## Kafka 搭建
 
-1. 搭建kafka使用的 Zookeeper 集群。（详见：[Zookeeper](./zookeeper.md)）
+1. 搭建 kafka 使用的 Zookeeper 集群。（详见：[Zookeeper](./zookeeper.md)）
 2. 安装 JDK
 
    ```bash
@@ -27,26 +27,26 @@ Kafka 在蓝鲸架构中，用于数据上报通道的队列缓存。在数据�
 
 ## Kafka 常用操作
 
-- 查看topics：`/opt/kafka/bin/kafka-topics.sh --describe --zookeeper zk.service.consul:2181/common_kafka`
-- 查看topic配置：`/opt/kafka/bin/kafka-configs.sh --zookeeper zk.service.consul:2181/common_kafka --entity-type topics --entity-name snapshot2 --describe`
-- 修改per-topic配置：[官方文档](http://kafka.apache.org/documentation.html#topicconfigs) `/opt/kafka/bin/kafka-configs.sh --zookeeper zk.service.consul:2181/common_kafka --entity-type topics --entity-name snapshot2 --alter --add-config retention.bytes=1073741824`
+- 查看 topics：`/opt/kafka/bin/kafka-topics.sh --describe --zookeeper zk.service.consul:2181/common_kafka`
+- 查看 topic 配置：`/opt/kafka/bin/kafka-configs.sh --zookeeper zk.service.consul:2181/common_kafka --entity-type topics --entity-name snapshot2 --describe`
+- 修改 per-topic 配置：[官方文档](http://kafka.apache.org/documentation.html#topicconfigs) `/opt/kafka/bin/kafka-configs.sh --zookeeper zk.service.consul:2181/common_kafka --entity-type topics --entity-name snapshot2 --alter --add-config retention.bytes=1073741824`
 
 ## Kafka 扩容
 
-当接入的数据越来越多，原有的broker，cpu和磁盘均告急时，需要扩容 broker 来缓解 kafka 压力。
+当接入的数据越来越多，原有的 broker，cpu 和磁盘均告急时，需要扩容 broker 来缓解 kafka 压力。
 
 Kafka 官方文档关于扩容集群的说明见：https://kafka.apache.org/0100/documentation.html#basic_ops_cluster_expansion
 
 在蓝鲸下可以使用以下步骤来完成扩容：
 
 1. 如果是新机器，请先按照通用的扩容步骤，做好初始化。（详见：[组件扩容](./scale_node.md)）
-2. 通过 yum 安装 kafka：`yum -y install kafka` 应该会从bk-custom 这个仓库中安装kafka 0.10.2.0 版本
-3. 将原 kafka 机器的 /etc/kafka/server.properties 文件拷贝到新节点，并修改内网ip地址和 `broker.id` 的配置，id在kafka集群中必须保持唯一。
+2. 通过 yum 安装 kafka：`yum -y install kafka` 应该会从 bk-custom 这个仓库中安装 kafka 0.10.2.0 版本
+3. 将原 kafka 机器的 /etc/kafka/server.properties 文件拷贝到新节点，并修改内网 ip 地址和 `broker.id` 的配置，id 在 kafka 集群中必须保持唯一。
 4. 创建必要数据目录：`install -d -o kafka -g kafka /data/bkce/public/kafka `
 5. 启动 kafka：`systemctl enable --now kafka`
-6. 可以在zk的节点上(/brokers/ids)确认新扩容的kafka 的broker id出现。
+6. 可以在 zk 的节点上(/brokers/ids)确认新扩容的 kafka 的 broker id 出现。
 
-扩容完成后，新的broker，如果没有新的 Topic 创建，它不会承载任何数据，除非手动迁移老的数据到新的 broker。
+扩容完成后，新的 broker，如果没有新的 Topic 创建，它不会承载任何数据，除非手动迁移老的数据到新的 broker。
 
 现在假设按整个 topic 迁移到新的 broker 上。待迁移的topic名字为 "0bkmonitor_5243810" 和 "0bkmonitor_5243810"，目标 broker 为 "4,5"
 
