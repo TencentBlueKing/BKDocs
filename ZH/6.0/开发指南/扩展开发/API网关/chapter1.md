@@ -144,10 +144,7 @@ python manage.py sync_api_docs
 组件添加完成后，重启服务，重启步骤如下:
 
 ```bash
-# INSTALL_PATH 表示项目安装基准目录，比如：/data/bkce
-# 重启指令
-workon open_paas-paas
-supervisorctl -c $INSTALL_PATH/etc/supervisor-open_paas.conf restart esb
+systemctl restart bk-paas-esb.service
 ```
 新组件的访问地址为：
 
