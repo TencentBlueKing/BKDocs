@@ -30,6 +30,8 @@ wget https://nodejs.org/download/release/v14.17.0/node-v14.17.0-linux-x64.tar.gz
 
 将 lesscode 模块加入 install.config 文件
 
+如基础环境主机资源有富余（lesscode 占用内存 150M 左右），可复用基础环境的机器，反之请按下述操作新增机器分布模块。
+
 ```bash
 # 请以实际分布的 IP 为准
 {
