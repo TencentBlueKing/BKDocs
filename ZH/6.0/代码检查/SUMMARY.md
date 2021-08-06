@@ -18,4 +18,4 @@
         * [规则集](产品白皮书/Services/RuleSet.md)
         * [规则和工具](产品白皮书/Services/RulesAndTools.md)
     * [常见问题]()
-        * [常见FAQ](产品白皮书/FAQS/FAQ.md)
+        * [常见FAQ](产品白皮书/FAQ/FAQ.md)
