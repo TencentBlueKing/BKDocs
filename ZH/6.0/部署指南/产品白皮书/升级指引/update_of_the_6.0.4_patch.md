@@ -252,11 +252,11 @@ source /data/install/utils.fc
 
 # appo 环境
 ssh $BK_APPO_IP
-docker images | grep -v grep | grep "none" | awk '{print $3}' | xargs -n1 docker rmi
+docker images | grep "none" | grep -v grep | awk '{print $3}' | xargs -n1 docker rmi
 
 # appt 环境
 ssh $BK_APPT_IP
-docker images | grep -v grep | grep "none" | awk '{print $3}' | xargs -n1 docker rmi
+docker images | grep "none" | grep -v grep | awk '{print $3}' | xargs -n1 docker rmi
 ```
 
 ### 刷新版本信息
