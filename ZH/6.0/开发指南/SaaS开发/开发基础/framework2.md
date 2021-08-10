@@ -381,8 +381,8 @@ logger_celery = logging.getLogger('celery')   # celery日志
 logger.error('log your info here.')
 
 # 第二种方式
-from blueapps.util.logger import logger         # 普通日志
-from blueapps.util.logger import logger_celery  # celery日志
+from blueapps.utils.logger import logger         # 普通日志
+from blueapps.utils.logger import logger_celery  # celery日志
 logger.error('log your info here.')
 ```
 
