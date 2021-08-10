@@ -32,11 +32,13 @@
 
 2. 去掉其中 2 个 es 模块，将留存的 `es` 更名为 `es7`。
 
-3. 去掉两个 zk(config) 模块，保留一个即可。
+3. 去掉两个 kafka(config) 模块，保留一个即可。
 
-4. 将 `influxdb`、模块更名为 `influxdb(bkmonitorv3)`。
+4. 去掉两个 zk(config) 模块，保留一个即可。
 
-5. 将新增的 `iam、ssm、usermgr、monitorv3(influxdb-proxy)、monitorv3(monitor)、monitorv3(grafana)、monitorv3(transfer)、nodeman(nodeman)、log(api)、log(grafana)` 模块合理的分布到机器上。分布可参考 6.0 install.config 模板文件。
+5. 将 `influxdb`、模块更名为 `influxdb(bkmonitorv3)`。
+
+6. 将新增的 `iam、ssm、usermgr、monitorv3(influxdb-proxy)、monitorv3(monitor)、monitorv3(grafana)、monitorv3(transfer)、nodeman(nodeman)、log(api)、log(grafana)` 模块合理的分布到机器上。分布可参考 6.0 install.config 模板文件。
 
 ## 新增主机进行升级
 
