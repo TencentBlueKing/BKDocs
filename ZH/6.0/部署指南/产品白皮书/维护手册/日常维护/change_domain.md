@@ -5,7 +5,7 @@
 - 备份中控机的 install 目录
 
   ```bash
-  tar -czf /data/src/backup/install_ce_$(date +%Y%m%d).tgz -C /data install
+  tar -czf /data/src/backup/install_ce_$(date +%Y%m%d).tgz -C /data/install
   ```
 
 - 运行变更域名脚本 **（请使用实际的域名进行替换）**
