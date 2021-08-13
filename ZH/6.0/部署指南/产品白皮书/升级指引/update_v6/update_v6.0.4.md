@@ -49,7 +49,7 @@
 
 下述所有升级步骤均以默认的安装目录 `/data/bkce` 为例，如使用自定义安装目录请在相关操作前进行替换。
 
-1.下载软件包以及迁移工具
+1.下载软件包以及迁移工具，并将其放置 /data 目录
 
 |软件包|下载地址|MD5|备注|
 |---|---|---|---|
@@ -71,6 +71,12 @@
 ### 下架官方 SaaS
 
 请访问蓝鲸 PaaS 平台，通过【开发者中心】->【 S-mart 应用】下架所有官方 SaaS。
+
+### 解压迁移工具包
+
+```bash
+unzip ce6.0_upgrade_tools.zip -d /data/
+```
 
 ### 迁移配置文件相关变量
 
@@ -487,7 +493,7 @@ export DJANGO_SETTINGS_MODULE=config.ce.prod
 export BK_FILE_PATH="/data/bkce/usermgr/cert/saas_priv.txt"
 
 # 迁移数据前，查看迁移内容
-python manage.py migrate_from_ce_5dot1 --dry_run   # 无 ERROR 输出即为正常
+python manage.py migrate_from_ce_5dot1 --dry_run   # WARNING 输出为正常
 
 # 迁移内容无误后，开始迁移
 python manage.py migrate_from_ce_5dot1 > migrate.log
@@ -638,6 +644,7 @@ ssh $BK_JOB_IP
 cd /data/bkce/public/job/
 
 # 如果未进行过文件分发，不会生成 localupload ，可手动创建
+mkdir localupload
 cp -a -r  data1/localupload/* localupload/
 chown -R blueking.blueking /data/bkce/public/job/localupload/
 ```

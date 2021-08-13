@@ -42,6 +42,12 @@
     BK_JOB_PUBLIC_URL="https://job.bktencent.com"
     BK_JOB_API_PUBLIC_ADDR="jobapi.bktencent.com:443"
     BK_JOB_API_PUBLIC_URL="https://jobapi.bktencent.com"
+    # 访问节点管理下载插件包的URL前缀
+    BK_NODEMAN_PUBLIC_DOWNLOAD_URL="https://nodeman.bktencent.com:443"
+    # lesscode 域名
+    BK_LESSCODE_PUBLIC_ADDR='lesscode.bktencent.com:443'
+    BK_LESSCODE_PUBLIC_URL='https://lesscode.bktencent.com:443'
+
     EOF
 
     ./bkcli install bkenv
@@ -72,7 +78,14 @@
     ./bkcli restart job
     ```
 
-6. 重新部署 SaaS，从 PaaS 中获取新的 BK_HTTP_SCHEMA(https)
+6. 刷新 lesscode url
+
+    ```bash
+    ./pcmd.sh -m lesscode "bash /data/install/bin/bk-lesscode-reg-paas-app.sh "
+    ./pcmd.sh -m nginx "systemctl reload openresty.service"
+    ```
+
+7. 重新部署 SaaS，从 PaaS 中获取新的 BK_HTTP_SCHEMA(https)
 
     ```bash
     ./bkcli install saas-o 
