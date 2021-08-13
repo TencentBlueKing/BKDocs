@@ -81,8 +81,8 @@
 6. 刷新 lesscode url
 
     ```bash
-
     ./pcmd.sh -m lesscode "bash /data/install/bin/bk-lesscode-reg-paas-app.sh "
+    ./pcmd.sh -m nginx "systemctl reload openresty.service"
     ```
 
 7. 重新部署 SaaS，从 PaaS 中获取新的 BK_HTTP_SCHEMA(https)
