@@ -27,7 +27,7 @@ ssh $BK_GSE_IP
 echo BK_GSE_WAN_IP_LIST=$(curl -s icanhazip.com) >> /etc/blueking/env/local.env
 ```
 
-- 将 gse 的 bt 模块监听 0.0.0.0
+- 将 gse 的 bt 模块监听 0.0.0.0 (6.0.4 之前版本需要此步骤)
 
 ```bash
 # 中控机执行
