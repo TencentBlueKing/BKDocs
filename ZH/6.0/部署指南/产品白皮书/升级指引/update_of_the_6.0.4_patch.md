@@ -157,7 +157,7 @@ curl http://bkiam.service.consul:5001/version | jq .version
 **注意：** 在此之前，必须将权限中心升级至指定中间版本，如未升级，请勿升级继续向下操作。
 
 ```bash
-./bkcli install saas-o bk_iam==1.4.23
+./bkcli install saas-o bk_iam==1.4.24
 ./bkcli upgrade bkiam
 ```
 
