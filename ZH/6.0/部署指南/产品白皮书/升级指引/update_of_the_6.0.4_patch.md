@@ -28,7 +28,7 @@ cd /data/src; grep . */*VERSION */*/VERSION
 
 1.下载相关产品包。请前往 [蓝鲸官网下载页-版本列表](https://bk.tencent.com/download_version_list/) 下载。
 
-- patch 包：bkce_patch_6.0.3-6.0.4.tgz
+- patch 包：[bkce_patch_6.0.3-6.0.4.tgz](https://bkopen-1252002024.file.myqcloud.com/ce/bkce_patch_6.0.3-6.0.4.tgz)
 
 2.将相关产品包上传至服务器 /data 目录。
 
