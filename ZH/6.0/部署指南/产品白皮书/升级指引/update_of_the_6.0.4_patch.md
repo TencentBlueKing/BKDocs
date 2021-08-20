@@ -268,7 +268,7 @@ _update_common_info
 
 ## 升级后操作
 
-- 禁用原 mysqld.service 服务，避免服务器重启后无法拉起 mysql@default.service 服务
+- 禁用 mysqld.service 服务，避免服务器重启后无法拉起蓝鲸使用的 mysql@default.service 服务
 
 ```bash
 cd /data/install
