@@ -271,7 +271,8 @@ _update_common_info
 - 禁用原 mysqld.service 服务，避免服务器重启后无法拉起 mysql@default.service 服务
 
 ```bash
-systemctl disable mysqld.service
+cd /data/install
+./pcmd.sh -m mysql "systemctl disable mysqld.service"
 ```
 
 - 请前往配置平台修改蓝鲸业务下的 gse_btsvr 服务模版
