@@ -42,8 +42,8 @@ input Filter{
     # Numeric filters
     num eq: Numeric
     num not_eq: Numeric
-    num in: [Numeric]
-    num not_in: [Numeric]
+    num in: [Numeric!]
+    num not_in: [Numeric!]
     num lt: Numeric
     num lte: Numeric
     num gt: Numeric
@@ -124,12 +124,12 @@ id in [1, 2, 3]
         {
             "op": "starts_with",
             "field": "host._bk_iam_path_",
-            "value": "/biz,1/", 
+            "value": "/biz,1/",
         },
         {
             "op": "starts_with",
             "field": "host._bk_iam_path_",
-            "value": "/biz,2/", 
+            "value": "/biz,2/",
         }]
     },
     {
@@ -164,9 +164,9 @@ id in [1, 2, 3]
 
 ```bash
 Resource.objects.filter(
-	  Q(id__in=[1,2,3]) 
-      | Q(os="linux") 
-      | Q(owner="admin") 
+	  Q(id__in=[1,2,3])
+      | Q(os="linux")
+      | Q(owner="admin")
       | (Q(path__startswith("/biz,1/")) |  Q(path__startswith("/biz,2/")))
       | (Q(biz="bk") & Q(status="online"))
 )
@@ -175,17 +175,17 @@ Resource.objects.filter(
 如果转换成 sql
 
 ```sql
-SELECT * 
-FROM resource 
-WHERE id IN (1, 2, 3) 
-       OR os="linux" 
+SELECT *
+FROM resource
+WHERE id IN (1, 2, 3)
+       OR os="linux"
        OR owner="admin"
-       OR (path like "/biz,1/%" OR path like "/biz,2/%") 
+       OR (path like "/biz,1/%" OR path like "/biz,2/%")
        OR (biz="bk" AND status="online")
 ```
 
 - 其他存储, 例如 mongodb/elasticsearch 等等, 需要接入系统自行转换
-- 权限中心返回的表达式中的 key/value 等, 是接入系统注册的模型 + 用户配置权限填充的内容; 
+- 权限中心返回的表达式中的 key/value 等, 是接入系统注册的模型 + 用户配置权限填充的内容;
 
 ## 5. 无关联资源的操作表达式说明
 
@@ -206,7 +206,7 @@ WHERE id IN (1, 2, 3)
 ## 6. 参考资料
 
 - 表达式协议参考了 graphql 的规范, 但是 graphql 没有具体的实现, 所以以下资料仅供参考, 需要自行实现
-- graphql spec 中没有涉及 filter 的, 目前是每种语言的实现自行定义了 filter 处理; 
+- graphql spec 中没有涉及 filter 的, 目前是每种语言的实现自行定义了 filter 处理;
     - [graphql spec](https://github.com/graphql/graphql-spec)
     - [Proposal: Basic expression language for filters inside GraphQL](https://github.com/graphql/graphql-spec/issues/271)
     - [Graphene: How to make an OR/AND filtering](https://github.com/graphql-python/graphene/issues/528)

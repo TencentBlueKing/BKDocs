@@ -24,6 +24,9 @@ python  do_validate.py 0001_bk_paas_20190619-1632_iam.json
 python do_migrate.py -h
 
 python do_migrate.py -t http://bkiam.service.consul -f 0001_bk_paas_20190619-1632_iam.json -a {app_code} -s {app_secret}
+
+# 如果环境中存在 APIGateway, 使用统一的 APIGateway 上的bk-iam网关进行注册; env值 prod(生产)/stage(预发布)
+python do_migrate.py -t http://bk-iam.{APIGATEWAY_DOMAIN}/{env} -f 0001_bk_paas_20190619-1632_iam.json -a {app_code} -s {app_secret} --apigateway
 ```
 - `{app_code} / {app_secret}` 为应用在 IAM 接入系统对应环境的`{app_code}/{app_secret}`
 - do_migrate.py 执行依赖 python 环境 `requests`包

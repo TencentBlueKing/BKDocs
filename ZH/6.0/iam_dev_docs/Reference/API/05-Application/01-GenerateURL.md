@@ -75,6 +75,60 @@ related_resource_types.attributes.values
 |id|字符串|是|属性 value|
 |name|字符串|是|属性 value 名称|
 
+1. 无关联资源类型的操作示例:
+
+系统`bk_job`的`create_job`操作未关联资源类型
+
+```json
+{
+  "system": "bk_job",  # 权限的系统
+  "actions": [
+    {
+      "id": "create_job",  # 操作id
+      "related_resource_types": []  # related_resource_types 空数组表示操作不关联资源类型
+    }
+  ]
+}
+```
+
+2. 资源拓扑路径的操作示例:
+
+系统`bk_job`的`view_job`操作关联资源类型`job`, 并且注册了实例视图 `业务(biz)`-`作业(job)`, 这个实例视图拓扑路径有2层
+
+```json
+{
+  "system": "bk_job",  # 权限的系统
+  "actions": [
+    {
+      "id": "view_job",  # 操作id
+      "related_resource_types": [
+        {
+          "system": "bk_job",  # 资源类型所属的系统id
+          "type": "job",  # 资源类型
+          "instances": [
+            [  # 一个数组表示一个实例的拓扑路径, 拓扑路径必须与实例视图的资源链路一致, 业务(biz)-作业(job)
+              {
+                "type": "biz",  # 实例视图中资源的第一层业务
+                "id": "biz1",
+              },
+              {
+                "type": "job",  # 实例视图中资源拓扑路径的第二层作业
+                "id": "job1",
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+3. 关联多个资源类型的操作示例:
+
+系统`bk_job`的`execute_job`操作关联资源类型`job`与系统`bk_cmdb`的资源类型`host`,
+`job`注册了实例视图 `业务(biz)`-`作业(job)`, 这个实例视图拓扑路径有2层,
+`bk_cmdb`的资源类型`host`注册实例视图, `业务(biz)`-`集群(set)`-`模块(module)`-`主机(host)`, 这个实例视图拓扑路径有4层
 
 ```json
 {
@@ -82,15 +136,19 @@ related_resource_types.attributes.values
   "actions": [
     {
       "id": "execute_job",  # 操作id
-      "related_resource_types": [  # 关联的资源类型, 无关联资源类型的操作, 必须为空, 资源类型的顺序必须操作注册时的顺序一致
+      "related_resource_types": [  # 关联几个资源类型, 这里就必须传几个item, 并且资源类型的顺序必须与注册操作时资源类型的顺序一致
         {
-          "system": "bk_job",  # 资源类型所属的系统id
-          "type": "job",  # 资源类型
-          "instances": [  # 申请权限的资源实例
-            [  # 带层级的实例表示
+          "system": "bk_job",
+          "type": "job",
+          "instances": [
+            [  # 业务(biz)-作业(job)
               {
-                "type": "job",  # 层级节点的资源类型
-                "id": "job1",  # 层级节点的资源实例id
+                "type": "biz",
+                "id": "biz1",
+              },
+              {
+                "type": "job",
+                "id": "job1",
               }
             ]
           ]
@@ -99,7 +157,7 @@ related_resource_types.attributes.values
           "system": "bk_cmdb",  # 资源类型所属的系统id
           "type": "host",  # 操作依赖的另外一个资源类型
           "instances": [
-            [
+            [  # 4层的拓扑路径, 必须与实例视图的资源链路一致: 业务(biz)-集群(set)-模块(module)-主机(host)
               {
                 "type": "biz",
                 "id": "biz1",
@@ -115,7 +173,7 @@ related_resource_types.attributes.values
               }
             ]
           ],
-          "attributes": [  # 支持配置实例的属性值
+          "attributes": [  # 支持配置实例的属性值, attributes与instances的组合关系为AND
             {
               "id": "os",  # 属性的key
               "name": "操作系统",
