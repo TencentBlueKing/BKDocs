@@ -19,6 +19,7 @@
     ```bash
     install -d -m 755 /data/src/cert
     tar xf ssl_certificates.tar.gz -C /data/src/cert
+    chmod 644 /data/src/cert/*
     ```
 
   - 解压各个产品软件包
