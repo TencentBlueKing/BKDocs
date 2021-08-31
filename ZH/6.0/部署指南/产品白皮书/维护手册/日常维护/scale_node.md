@@ -82,3 +82,89 @@ APPO 的扩容步骤分为：
     source $CTRL_DIR/tools.sh
     _mount_shared_nfs appo
     ```
+
+###  bkmonitorv3 后台扩容
+
+扩容的主要步骤如下：
+
+1. 使用节点管理，在「蓝鲸」业务下，给新增机器安装 gse agent。
+
+2. 在「蓝鲸」业务下，导入监控平台 monitor 扩容标准运维流程。[下载链接](https://bkopen-1252002024.file.myqcloud.com/ce/bk_sops_scale_monitor_transfer.dat)
+
+3. 执行 `[common][scale] add blueking node` 流程对新增机器进行初始化操作。`如果是复用蓝鲸环境的机器，可忽略该步骤`
+
+4. 执行 `[bkmonitor][scale]monitor` 流程进行监控平台的扩容。
+
+    - refer_ip：扩容参考机 IP (monitor 在的机器，可使用下述命令查看)，和待扩容的 transfer 同类型同集群
+
+    ```bash
+    source /data/install/utils.fc
+    echo $BK_MONITORV3_IP
+    ```
+
+    - mysql_ip：蓝鲸 MySQL IP 地址。如果为空，则 MySQL 使用的是外部依赖，授权需要用户自行处理。`自行处理的用户，可使用下述命令获取相关 MySQL 用户以及密码，然后自行授权`
+
+    ```bash
+    source /data/install/utils.fc
+    # bkmonitorv3 账户以及密码
+    echo $BK_MONITOR_MYSQL_USER $BK_MONITOR_MYSQL_PASSWORD
+
+    # paas 账户以及密码
+    echo $BK_PAAS_MYSQL_USER $BK_PAAS_MYSQL_PASSWORD
+    ```
+
+    - scale_iplist：扩容 monitor 的机器
+
+5. 填写并确认参数无误后，开始执行流程。
+6. 流程执行期间会有暂停步骤，需要手动继续执行。该步骤主要是用户自行检查确认扩容配置，确认访问数据库权限
+
+    1. 检查  `/data/bkce/bkmonitorv3/` 目录的属组属主用户是否为 `blueking`
+
+    2. 检查后台环境变量文件对应 IP 是否替换 `grep "LAN_IP" /data/bkce/bkmonitorv3/monitor/bin/environ.sh`
+
+    3. 检查 bkmonitorv3 的 consul 中是否有新增机器的 IP
+
+   ```bash
+   dig bkmonitorv3.service.consul
+   ```
+
+7. 查看【监控平台】-【自监控】后台服务器性能指标是否有新增机器。
+
+![scale_monitor](../../assets/scale_monitor.png)
+
+### transfer 扩容
+
+扩容的主要步骤如下：
+
+1. 使用节点管理，在「蓝鲸」业务下，给新增机器安装 gse agent。
+
+2. 在「蓝鲸」业务下，导入监控平台 transfer 扩容标准运维流程。[下载链接](https://bkopen-1252002024.file.myqcloud.com/ce/bk_sops_scale_monitor_transfer.dat)
+
+3. 执行 `[common][scale] add blueking node` 流程对新增机器进行初始化操作。`如果是复用蓝鲸环境的机器，可忽略该步骤`
+
+4. 执行 `[bkmonitor][scale]transfer` 流程进行监控平台的扩容。
+
+    - refer_ip：扩容参考机 IP (transfer 在的机器，可使用下述命令查看)，和待扩容的 transfer 同类型同集群
+
+    ```bash
+    source /data/install/utils.fc
+    echo $BK_MONITORV3_TRANSFER_IP
+    ```
+
+    - scale_iplist：扩容 transfer 的机器
+
+5. 填写并确认参数无误后，开始执行流程。
+
+6. 流程执行期间会有暂停步骤，需要手动继续执行。该步骤主要是用户自行检查确认扩容配置，确认访问数据库权限
+
+   1. 检查  `/data/bkce/bkmonitorv3/` 目录的属组属主用户是否为 `blueking`
+
+   2. 检查 transfer 的 consul 中是否有新增机器的 IP
+
+   ```bash
+   dig transfer.bkmonitorv3.service.consul
+   ```
+
+7. 查看【监控平台】-【自监控】transfer 是否有新增机器。
+
+![scale_transfer](../../assets/scale_transfer.png)
