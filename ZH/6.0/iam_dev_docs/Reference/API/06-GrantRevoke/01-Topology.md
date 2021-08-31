@@ -162,7 +162,6 @@ resources.path
 | 字段 |  类型 |是否必须  | 描述  |
 |:---|:---|:---|:---|
 | policy_id   | 数值     | 权限策略 id |
-| expression   | 对象     | 权限表达式 |
 
 
 > Status: 200 OK
@@ -172,27 +171,7 @@ resources.path
   "code": 0,
   "message": "ok",
   "data": {
-    "policy_id": 1,
-    "expression": {  # 表达式是整个action的所有条件的组合, 包括用户已有的权限与新增的path授权的条件
-      "op": "OR",
-      "content": [
-        {  # 表达式中新增的路径授权
-          "field": "host._bk_iam_path_",
-          "op": "starts_with",
-          "value": [
-            "/biz,1/set,*/"
-          ]
-        },
-        {
-          "field": "host.id",
-          "op": "in",
-          "value": [
-            "host1",
-            "host2"
-          ]
-        }
-      ]
-    }
+    "policy_id": 1
   }
 }
 ```

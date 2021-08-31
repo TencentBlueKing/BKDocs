@@ -32,7 +32,7 @@
 6. 注册权限模型到权限中心
     - [系统注册名词规范](../Reference/NamingRules.md)
     - [说明: 实例视图](../Explanation/01-instanceSelection.md)
-    - [AppCode 和 SystemID 说明](../Reference/AppcodeAndSystemID.md)
+    - [AppCode 和 SystemID 说明](../Explanation/05-AppcodeAndSystemID.md)
     - [模型注册 API](../Reference/API/02-Model/00-API.md)
     - [权限模型自动初始化及更新 migration](Migration.md)
 

@@ -8,7 +8,7 @@
 - [实例视图 InstanceSelection API](../Reference/API/02-Model/12-InstanceSelection.md)
 - [操作 Action API](../Reference/API/02-Model/13-Action.md)
 - [资源拉取 API](../Reference/API/03-Callback/01-API.md)
-- [资源拓扑说明](../Reference/ResourceTopology.md)
+- [说明: 资源拓扑`_bk_iam_path_`](../Explanation/04-BkIAMPath.md)
 
 ## 2. 什么是实例视图
 
@@ -316,7 +316,7 @@ task._bk_iam_path_ starts_with /project,蓝鲸/task,*/
 }
 ```
 
-具体见 [资源拓扑说明](../Reference/ResourceTopology.md)
+具体见 [说明: 资源拓扑`_bk_iam_path_`](../Explanation/04-BkIAMPath.md)
 
 ## 7. 什么时候需要多层实例视图
 
