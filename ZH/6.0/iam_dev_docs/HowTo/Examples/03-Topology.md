@@ -5,6 +5,7 @@
 > 拓扑层级管理权限涉及到实例视图的概念, 请先阅读相关的文档, 了解实例视图的概念
 
 - [说明: 实例视图](../../Explanation/01-instanceSelection.md)
+- [说明: 资源拓扑`_bk_iam_path_`](../../Explanation/04-BkIAMPath.md)
 
 ## 1. 场景描述
 
@@ -129,7 +130,7 @@
 
 ## 4. 鉴权
 
-需要注意, Resource传递 attribute 中包含一个字段`__bk_iam_path__`, 这个字段格式具体查看  [资源的拓扑说明](../../Reference/ResourceTopology.md)
+需要注意, Resource传递 attribute 中包含一个字段`__bk_iam_path__`, 这个字段格式具体查看  [说明: 资源拓扑`_bk_iam_path_`](../../Explanation/04-BkIAMPath.md)
 
 `/project,abc/`代表`task 123`是`project abc`下的一个流程.
 
@@ -141,7 +142,7 @@
             123,
             {
                 "iam_resource_owner": "tom",
-                "_bk_iam_path_": "/project,abc/",
+                "_bk_iam_path_": ["/project,abc/"],
                 "name": "test_task",
                 "type": "flow"
             },
