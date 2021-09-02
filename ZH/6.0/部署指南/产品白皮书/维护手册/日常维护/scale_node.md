@@ -87,15 +87,23 @@ APPO 的扩容步骤分为：
 
 扩容的主要步骤如下：
 
-1. 使用节点管理，在「蓝鲸」业务下，给新增机器安装 gse agent。
+1. 中控机对新增机器配置 ssh 免密登录
 
-2. 在「蓝鲸」业务下，导入监控平台 monitor 扩容标准运维流程。[下载链接](https://bkopen-1252002024.file.myqcloud.com/ce/bk_sops_scale_monitor_transfer.dat)
+    ```bash
+    # 以实际 IP 为准
+    ssh-copy-id 10.0.0.4
+    ```
 
-3. 执行 `[common][scale] add blueking node` 流程对新增机器进行初始化操作。`如果是复用蓝鲸环境的机器，可忽略该步骤`
+2. 使用节点管理，在「蓝鲸」业务下，给新增机器安装 gse agent。
 
-4. 执行 `[bkmonitor][scale]monitor` 流程进行监控平台的扩容。
+3. 在「蓝鲸」业务下，导入监控平台 monitor 扩容标准运维流程。[下载链接](https://bkopen-1252002024.file.myqcloud.com/ce/bk_sops_scale_monitor_transfer.dat)
 
-    - refer_ip：扩容参考机 IP (monitor 在的机器，可使用下述命令查看)，和待扩容的 transfer 同类型同集群
+4. 执行 `[common][scale] add blueking node` 流程对新增机器进行初始化操作。`如果是复用蓝鲸环境的机器，可忽略该步骤`
+
+5. 执行 `[bkmonitor][scale]monitor` 流程进行监控平台的扩容。
+
+    - ctrl_ip：蓝鲸中控机 IP
+    - refer_ip：扩容参考机 IP (monitor 在的机器，可使用下述命令查看)，和待扩容的 monitor 同类型同集群
 
     ```bash
     source /data/install/utils.fc && echo $BK_MONITORV3_IP
@@ -116,25 +124,25 @@ APPO 的扩容步骤分为：
 
     - scale_iplist：扩容 monitor 的机器 IP
 
-5. 填写并确认参数无误后，开始执行流程。
+6. 填写并确认参数无误后，开始执行流程。
 
-6. 流程执行期间会有暂停步骤，需要手动确认执行。该步骤主要是用户自行检查确认扩容配置，确认访问数据库权限 `新增机器上执行`
+7. 流程执行期间会有暂停步骤，需要手动确认执行。该步骤主要是用户自行检查确认扩容配置，确认访问数据库权限 `新增机器上执行`
 
-    1. 检查  `/data/bkce/bkmonitorv3/` 目录的属组属主用户是否为 `blueking`
+    1. 检查  `/data/bkce/bkmonitorv3/` 目录的属组属主是否为 `blueking`
 
-    2. 检查后台环境变量文件对应 IP 是否替换
+    2. 检查后台环境变量文件对应 IP 是否替换正确
 
     ```bash
-    source /data/install/utils.fc && grep "$LAN_IP" $BK_HOME/bkmonitorv3/monitor/bin/environ.sh
+    source ~/.bashrc && grep "$LAN_IP" $BK_HOME/bkmonitorv3/monitor/bin/environ.sh
     ```
 
-7. 上述第 6 步检查无误后，请继续执行流程直至结束。
+8. 上述第 6 步检查无误后，请继续执行流程直至结束。
 
-8. 查看【监控平台】-【自监控】后台服务器性能指标是否有新增机器。
+9. 查看【监控平台】-【自监控】后台服务器性能指标是否有新增机器。
 
-![scale_monitor](../../assets/scale_monitor.png)
+    ![scale_monitor](../../assets/scale_monitor.png)
 
-9. 检查 bkmonitorv3 的 consul 中是否有新增机器的 IP
+10. 检查 bkmonitorv3 的 consul 中是否有新增机器的 IP
 
 ```bash
 dig bkmonitorv3.service.consul
@@ -144,13 +152,22 @@ dig bkmonitorv3.service.consul
 
 扩容的主要步骤如下：
 
-1. 使用节点管理，在「蓝鲸」业务下，给新增机器安装 gse agent。
+1. 中控机对新增机器配置 ssh 免密登录
 
-2. 在「蓝鲸」业务下，导入监控平台 transfer 扩容标准运维流程。[下载链接](https://bkopen-1252002024.file.myqcloud.com/ce/bk_sops_scale_monitor_transfer.dat)
+    ```bash
+    # 以实际 IP 为准
+    ssh-copy-id 10.0.0.4
+    ```
 
-3. 执行 `[common][scale] add blueking node` 流程对新增机器进行初始化操作。`如果是复用蓝鲸环境的机器，可忽略该步骤`
+2. 使用节点管理，在「蓝鲸」业务下，给新增机器安装 gse agent。
 
-4. 执行 `[bkmonitor][scale]transfer` 流程进行监控平台的扩容。
+3. 在「蓝鲸」业务下，导入监控平台 transfer 扩容标准运维流程。[下载链接](https://bkopen-1252002024.file.myqcloud.com/ce/bk_sops_scale_monitor_transfer.dat)
+
+4. 执行 `[common][scale] add blueking node` 流程对新增机器进行初始化操作。`如果是复用蓝鲸环境的机器，可忽略该步骤`
+
+5. 执行 `[bkmonitor][scale]transfer` 流程进行监控平台的扩容。
+
+    - ctrl_ip：蓝鲸中控机 IP
 
     - refer_ip：扩容参考机 IP (transfer 在的机器，可使用下述命令查看)，和待扩容的 transfer 同类型同集群
 
@@ -158,27 +175,27 @@ dig bkmonitorv3.service.consul
     source /data/install/utils.fc && echo $BK_MONITORV3_TRANSFER_IP
     ```
 
-    - scale_iplist：扩容 transfer 的机器
+    - scale_iplist：扩容 transfer 的机器 IP
 
-5. 填写并确认参数无误后，开始执行流程。
+6. 填写并确认参数无误后，开始执行流程。
 
-6. 流程执行期间会有暂停步骤，需要手动继续执行。该步骤主要是用户自行检查确认扩容配置，确认访问数据库权限 `新增机器上执行`
+7. 流程执行期间会有暂停步骤，需要手动继续执行。该步骤主要是用户自行检查确认扩容配置，确认访问数据库权限 `新增机器上执行`
 
-   1. 检查  `/data/bkce/bkmonitorv3/` 目录的属组属主用户是否为 `blueking`
+   1. 检查  `/data/bkce/bkmonitorv3/` 目录的属组属主是否为 `blueking`
 
-   2. 检查 transfer 环境变量文件对应 IP 是否替换
+   2. 检查 transfer 环境变量文件对应 IP 是否替换正确
 
     ```bash
-    source /data/install/utils.fc && grep "$LAN_IP" $BK_HOME/bkmonitorv3/transfer/transfer.yaml
+    source ~/.bashrc && grep "$LAN_IP" $BK_HOME/bkmonitorv3/transfer/transfer.yaml
     ```
 
-7. 上述第 6 步检查无误后，请继续执行流程直至结束。
+8. 上述第 6 步检查无误后，请继续执行流程直至结束。
 
-8. 查看【监控平台】-【自监控】transfer 是否有新增机器。
+9. 查看【监控平台】-【自监控】transfer 是否有新增机器。
 
-![scale_transfer](../../assets/scale_transfer.png)
+    ![scale_transfer](../../assets/scale_transfer.png)
 
-9. 检查 transfer 的 consul 中是否有新增机器的 IP
+10. 检查 transfer 的 consul 中是否有新增机器的 IP
 
 ```bash
 dig transfer.bkmonitorv3.service.consul
