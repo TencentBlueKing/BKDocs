@@ -66,6 +66,13 @@ cd /data/install
 ./bkcli sync common
 ```
 
+**说明：** 如果是全新的机器需要做如下操作
+
+```bash
+source /data/install/utils.fc
+pcmd -m lesscode "bash /data/install/bin/init_new_node.sh"
+```
+
 ## 生成 MySQL 登陆信息
 
 ```bash
