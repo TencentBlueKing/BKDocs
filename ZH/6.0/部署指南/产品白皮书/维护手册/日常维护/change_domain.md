@@ -30,4 +30,6 @@
 
 ```bash
 ./bkcli install lesscode
+./bkcli initdata lesscode
+./bkcli restart lesscode
 ```
