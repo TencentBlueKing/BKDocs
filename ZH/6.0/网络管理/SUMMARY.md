@@ -11,6 +11,7 @@
 * [快速入门](快速入门/Guide.md)
 * [场景案例](场景案例/scene.md)
 * [日常维护]()
+    * [更新域名](日常维护/change_domain.md)
     * [更新指引](日常维护/更新指引/update.md)
     * [维护指引](日常维护/daily_main.md)
     * [卸载指引](日常维护/卸载指引/uninstall.md)
