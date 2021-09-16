@@ -12,13 +12,15 @@
 
 以下接口使用`HTTP Basic authentication`认证方式, 用户名: IAM SaaS 的`app_code`, 密码: IAM SaaS 的`app_secret`
 
+`iam_saas_api_prefix`为权限中心 SaaS 部署后的地址(即蓝鲸权限中心页面访问地址), 例如`http://{{paas_domain}}/o/bk_iam`
+
 # 3. 协议
 
 ## 3.1 通过 request_id/task_id 查询调试跟踪信息
 
 #### URL
 
-> GET http://{iam_saas_api_host}/api/v1/debug/{request_id/task_id}/
+> GET http://{iam_saas_api_prefix}/api/v1/debug/{request_id/task_id}/
 
 #### Parameters
 
@@ -63,7 +65,7 @@
 
 #### URL
 
-> GET http://{iam_saas_api_host}/api/v1/debug/?day={day}
+> GET http://{iam_saas_api_prefix}/api/v1/debug/?day={day}
 
 #### Parameters
 
