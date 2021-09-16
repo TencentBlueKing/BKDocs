@@ -19,9 +19,9 @@ debug 接口将返回本次请求的上下文/执行详情/报错等信息
 在接口 url 中加入参数`?debug`或者`?debug=true`
 
 ```bash
-http://{{host}}/api/v1/policy/query?debug
+http://{IAM_HOST}/api/v1/policy/query?debug
 
-http://{{host}}/api/v1/policy/auth?debug
+http://{IAM_HOST}/api/v1/policy/auth?debug
 ```
 
 返回内容:
@@ -76,7 +76,7 @@ http://{{host}}/api/v1/policy/auth?debug
 # 4. 示例
 
 ```json
-# http://{{host}}/api/v1/policy/query?debug
+# http://{IAM_HOST}/api/v1/policy/query?debug
 {
     "code": 0,
     "data": {
@@ -185,7 +185,7 @@ http://{{host}}/api/v1/policy/auth?debug
 
 
 ```json
-# http://{{host}}/api/v1/policy/auth?debug
+# http://{IAM_HOST}/api/v1/policy/auth?debug
 {
     "code": 0,
     "data": {
