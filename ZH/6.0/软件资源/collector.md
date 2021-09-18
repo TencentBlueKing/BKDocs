@@ -88,7 +88,6 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 - 【优化】优化 prometheus 抓取大量数据而造成数据截断的问题
 
-
 #### bkmonitorbeat-1.13.98.tgz
 
 - 【优化】日志关键字采集增加 labels 字段的上报
@@ -107,21 +106,6 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 - 【优化】提供数据上报校验功能，包括数据格式和数据类型的校验
 - 【新增】提供 consul 域名注册上报功能
-
-### bkunifylogbeat
-
-#### bkunifylogbeat-7.2.77.tgz
-
-- 【修复】因采集配置差异移除 aix 采集模块（aix 可部署 7.1.x 版本）
-
-#### bkunifylogbeat-7.2.76.tgz
-
-- 【新增】兼容 bklogbeat、unifyTlogc 配置及输出
-- 【新增】文件采集支持软链
-- 【新增】采集器任务管理按任务 hash 去重
-- 【修复】修复文件监听删除或过期后未移除采集进度的问题
-- 【修复】修复 windows 采集器 reload 异常的问题
-- 【优化】采集器默认监听最近 7 天的变更的文件
 
 
 ### gsecmdline-2.0.3.tgz
