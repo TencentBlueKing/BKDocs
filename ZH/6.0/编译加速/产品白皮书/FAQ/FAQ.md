@@ -31,6 +31,8 @@ ln -s /usr/bin/gcc++73 /usr/local/bin/g++
 
 然后再尝试编译加速。
 
+
+
 #### 2. 使用加速后 gcc/clang 错误信息颜色丢失
 
 gcc/clang 提供一个参数来强制输出颜色格式：

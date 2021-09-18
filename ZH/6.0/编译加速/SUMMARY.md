@@ -8,7 +8,7 @@
     * [术语解释](产品白皮书/Intro/turboConcept.md)
     * [产品架构](产品白皮书/Intro/Architecture.md)
     * [快速入门]()
-        * [Linux C/C++ 编译加速](产品白皮书/Quickstart/linux_c_c++.md)
+        * [Linux C/C++ 编译加速](产品白皮书/Quickstart/linux_c_cpp.md)
         * [UE4 编译加速](产品白皮书/Quickstart/ue.md)
     * [产品功能]()
         * [加速方案](产品白皮书/Services/turbo_plan.md)
