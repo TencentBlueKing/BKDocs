@@ -84,7 +84,7 @@
    在 config/prod.py、config/stag.py、config/dev.py 文件中，增加以下配置
 
    ```python
-   BK_STATIC_URL = STATIC_URL + '/dist/'
+   BK_STATIC_URL = STATIC_URL + 'dist'
    ```
 
    > 注意：此处预计前端打包文件输出路径为 {root_path}/static/dist，如果有变化请按照实际情况配置。
@@ -92,8 +92,8 @@
    在 blueapps/template/context_processors.py 文件中，第 57 行附近，对 context 变量追加一个键值对
 
    ```python
-    # 前后端分离的静态 URL 配置
-    'BK_STATIC_URL': settings.BK_STATIC_URL
+   # 前后端分离的静态 URL 配置
+   'BK_STATIC_URL': settings.BK_STATIC_URL
    ```
 
 完成上述的修改后，就可在本地及线上环境合并部署前后端代码。
