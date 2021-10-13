@@ -18,7 +18,7 @@
 
 - Github 地址: [Tencent/bk-bcs-saas](https://github.com/Tencent/bk-bcs-saas)
     - 权限模型: [bcs-app/support-files/iam](https://github.com/Tencent/bk-bcs-saas/tree/master/bcs-app/support-files/iam)
-    - 对 iam 调用的封装: [bcs-app/backend/components/iam/permissions.py](https://github.com/Tencent/bk-bcs-saas/blob/master/bcs-app/backend/components/iam/permissions.py)
+    - 对 iam 调用的封装: [bcs-app/backend/iam](https://github.com/Tencent/bk-bcs-saas/tree/master/bcs-app/backend/iam)
 
 ## TencentBlueKing/bk-itsm(python)
 
