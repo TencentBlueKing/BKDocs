@@ -251,12 +251,10 @@ ssh $BK_LOG_IP "yum -y install mysql-devel"
 source /data/install/utils.fc
 
 # appo 环境
-ssh $BK_APPO_IP
-docker images | grep "none" | grep -v grep | awk '{print $3}' | xargs -n1 docker rmi
+pcmd -m appo "docker image prune  -f "
 
 # appt 环境
-ssh $BK_APPT_IP
-docker images | grep "none" | grep -v grep | awk '{print $3}' | xargs -n1 docker rmi
+pcmd -m appt "docker image prune  -f "
 ```
 
 ### 刷新版本信息
