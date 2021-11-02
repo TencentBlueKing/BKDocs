@@ -79,7 +79,7 @@
 # 高级接入
 
 1. 授权及回收
-    - [大规模实例级权限限制](LargeScaleInstances.md)
+    - [大规模实例级权限限制](../Explanation/06-LargeScaleInstances.md)
     - [资源拓扑授权/回收](../Reference/API/06-GrantRevoke/01-Topology.md)
     - [批量资源拓扑授权/回收](../Reference/API/06-GrantRevoke/02-BatchTopology.md)
 2. 查询类 API
@@ -106,7 +106,7 @@
     - [系统间接口鉴权](../Reference/API/01-Overview/03-APIAuth.md)
 3. 附加阅读
     - [表达式定义](../Reference/Expression/01-Schema.md)
-    - [大规模实例级权限限制](LargeScaleInstances.md)
+    - [大规模实例级权限限制](../Explanation/06-LargeScaleInstances.md)
 4. 部署及运维
     - [部署及运维说明](OPS/Deploy.md)
     - [升级部署说明](OPS/Upgrade.md)

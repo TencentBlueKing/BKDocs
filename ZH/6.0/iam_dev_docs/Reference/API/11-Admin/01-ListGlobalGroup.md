@@ -1,4 +1,4 @@
-# 超级管理类API
+# 超级管理类 API
 ### 查询用户组列表
 -------
 
@@ -23,16 +23,16 @@
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| limit |  int  | 是   | query |分页查询参数之一，limit表示查询数量，`最大值为100` |
-| offset  | int | 是 | query | 分页查询参数之一，offset表示从第几个开始查询，offset从0开始计算 |
-| id | int | 否 | query | 过滤的用户组ID | 
+| limit |  int  | 是   | query |分页查询参数之一，limit 表示查询数量，`最大值为100` |
+| offset  | int | 是 | query | 分页查询参数之一，offset 表示从第几个开始查询，offset 从 0 开始计算 |
+| id | int | 否 | query | 过滤的用户组 ID | 
 | name | string | 否 | query | 用于搜索的用户组名称 |
 | description | string | 否 | query | 用于搜索的用户组描述 |
 | grade_manager_id | int | 否 | query | 用于过滤某个分级管理员下用户组 |
 
 
 #### Request
-```
+```plain
 Get /api/c/compapi/v2/iam/admin/groups/?offset=0&limit=10
 ```
 
@@ -46,7 +46,7 @@ Get /api/c/compapi/v2/iam/admin/groups/?offset=0&limit=10
 results
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
-| id   | int     | 用户组ID |
+| id   | int     | 用户组 ID |
 | name | string | 用户组名称 |
 | description | string | 用户组描述 |
 
