@@ -1,4 +1,4 @@
-# 接入系统管理类API
+# 接入系统管理类 API
 ### 查询用户在某个分级管理员下的加入的用户组列表
 
 -------
@@ -24,11 +24,11 @@
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| grade_manager_id | int | 是 | path | 分级管理员ID |
-| uesr_id | string | 是 | body | 用户ID，即用户名 |
+| grade_manager_id | int | 是 | path | 分级管理员 ID |
+| uesr_id | string | 是 | body | 用户 ID，即用户名 |
 
 #### Request
-```
+```plain
 Get /api/c/compapi/v2/iam/management/users/grade_managers/1/groups?user_id=admin
 ```
 
@@ -36,7 +36,7 @@ Get /api/c/compapi/v2/iam/management/users/grade_managers/1/groups?user_id=admin
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
-| id   | int     | 用户组ID |
+| id   | int     | 用户组 ID |
 | name | string | 用户组名称 |
 | description | string | 用户组描述 |
 

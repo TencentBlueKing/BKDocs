@@ -1,4 +1,4 @@
-# 接入系统管理类API
+# 接入系统管理类 API
 ### 删除用户组成员
 
 -------
@@ -24,12 +24,12 @@
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| group_id | int | 是 | path | 用户组ID |
-| type | string | 是 | query | 成员类型，user表示用户，department表示部门 |
-| ids |  string  | 是   | query | 成员ID列表，多个以英文逗号分隔, 对于type=user，则ID为用户名，对于type=department，则为部门ID |
+| group_id | int | 是 | path | 用户组 ID |
+| type | string | 是 | query | 成员类型，user 表示用户，department 表示部门 |
+| ids |  string  | 是   | query | 成员 ID 列表，多个以英文逗号分隔, 对于 type=user，则 ID 为用户名，对于 type=department，则为部门 ID |
 
 #### Request
-```
+```plain
 Delete /api/c/compapi/v2/iam/management/groups/1/members/?type=user&ids=admin,test1,test2
 ```
 

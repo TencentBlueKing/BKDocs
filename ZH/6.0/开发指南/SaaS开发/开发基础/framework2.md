@@ -450,7 +450,7 @@ def your_view_func(request):
 
 - 异常类所在命名空间
 
-	- blueapps.core.exceptions
+	- blueapps.core.exceptionsplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplainplain
 
 - 服务端异常
 

@@ -1,4 +1,4 @@
-# 接入系统管理类API
+# 接入系统管理类 API
 ### 用户组授权
 -------
 
@@ -23,8 +23,8 @@
 
 | 字段      |  类型      | 必选   | 位置 |描述      |
 |-----------|------------|--------|------------|------------|
-| group_id | int | 是 | path | 用户组ID |
-| system |  string  | 是   | body | 系统id |
+| group_id | int | 是 | path | 用户组 ID |
+| system |  string  | 是   | body | 系统 id |
 | actions |  array[object]   | 是   | body | 操作 |
 | resources |  array[object]   | 是   | body | 资源拓扑, 资源类型的顺序必须操作注册时的顺序一致|
 
@@ -32,23 +32,23 @@ actions
 
 | 字段      |  类型      | 必选   |  位置 | 描述      |
 |-----------|------------|--------|------------|------------|
-| id    |  string  | 是   | body | 操作ID |
+| id    |  string  | 是   | body | 操作 ID |
 
 resources
 
 | 字段      |  类型      | 必选   | 位置 | 描述      |
 |-----------|------------|--------|------------|------------|
-| system |  string  | 是   | body | 资源系统ID |
-| type |  string  | 是   | body | 资源类型ID |
+| system |  string  | 是   | body | 资源系统 ID |
+| type |  string  | 是   | body | 资源类型 ID |
 | paths | `array[array[object]]` | 是 | body | 批量资源拓扑，`最多1000个` |
 
 paths
 
 | 字段      |  类型      | 必选   | 位置 | 描述      |
 |-----------|------------|--------|------------|------------|
-| system |  string  | 是   | body | 拓扑节点类型的系统ID |
-| type | string  | 是   | body | 拓扑节点类型ID |
-| id | string | 是 | body | 拓扑节点实例ID |
+| system |  string  | 是   | body | 拓扑节点类型的系统 ID |
+| type | string  | 是   | body | 拓扑节点类型 ID |
+| id | string | 是 | body | 拓扑节点实例 ID |
 | name | string | 是 | body | 拓扑节点实例名称 |
 
 `resources.paths`是批量的资源实例拓扑, 具体说明可以参考[资源拓扑授权/回收](../06-GrantRevoke/01-Topology.md)
