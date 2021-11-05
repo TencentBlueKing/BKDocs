@@ -109,13 +109,13 @@ pipenv shell
 
 修改 config/\_\__init\_\_.py 中的 `BK_URL`
 ```bash
-BK_URL = "http://paas.bktencent.com/"
+BK_URL = os.getenv("BK_PAAS_HOST")
 ```
 
-添加两个环境变量
+添加环境变量
 
+BK_PAAS_HOST=`PaaS_URL`
 APP_ID=`APP_CODE`
-
 APP_TOKEN=`SECRET_KEY`(应用 TOKEN)
 
 ### 创建本地数据库
