@@ -82,15 +82,19 @@ pipenv shell
 pip3 install -r requirements.txt
 ```
 
-### 修改配置
+### 配置环境变量
 
-- 修改应用(SaaS)配置
+修改 config/\_\__init\_\_.py 中的 `BK_URL`
+```bash
+BK_URL = os.getenv("BK_PAAS_HOST")
+```
 
-    修改 config/\_\_init\_\_.py 中的 `APP_CODE` 和 `SECRET_KEY`
+添加环境变量
 
-- 修改 PaaS 地址
+BK_PAAS_HOST=`PaaS_URL`
+APP_ID=`APP_CODE`
+APP_TOKEN=`SECRET_KEY`(应用 TOKEN)
 
-    修改 config/\_\_init\_\_.py 中的 `BK_URL` 为 `{PAAS_URL}`
 
 ### 创建和初始化数据库
 
