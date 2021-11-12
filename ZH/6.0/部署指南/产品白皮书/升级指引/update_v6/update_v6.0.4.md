@@ -169,11 +169,11 @@ grep 'CREATE DATABASE' bk_mysql_alldata.sql
 在 MySQL 节点停止 MySQL 停止后自动启动的机制
 
 ```bash
-crontab -l
+crontab -e
 ```
 注释掉
 ```
-* * * * * export INSTALL_PATH=/data/bkce; /data/bkce/bin/process_watch mysql >/dev/null 2>&1
+#* * * * * export INSTALL_PATH=/data/bkce; /data/bkce/bin/process_watch mysql >/dev/null 2>&1
 ```
 
 ```bash
@@ -208,6 +208,16 @@ mongodump --host $MONGODB_IP -u $MONGODB_USER -p $MONGODB_PASS --oplog --gzip --
 ```
 
 - 停止 MongoDB
+
+在 MongoDB 节点停止 MongoDB 停止后自动启动的机制
+
+```bash
+crontab -e
+```
+注释掉
+```
+#* * * * * export INSTALL_PATH=/data/bkce; /data/bkce/bin/process_watch mysql >/dev/null 2>&1
+```
 
 ```bash
 ./bkcec stop mongodb
