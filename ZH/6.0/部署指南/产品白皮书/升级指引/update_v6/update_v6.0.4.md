@@ -166,6 +166,16 @@ grep 'CREATE DATABASE' bk_mysql_alldata.sql
 
 - 停止服务
 
+在 MySQL 节点停止 MySQL 停止后自动启动的机制
+
+```bash
+crontab -l
+```
+注释掉
+```
+* * * * * export INSTALL_PATH=/data/bkce; /data/bkce/bin/process_watch mysql >/dev/null 2>&1
+```
+
 ```bash
 # 中控机操作
 ./bkcec stop mysql
