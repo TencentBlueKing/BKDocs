@@ -79,9 +79,20 @@
     ```
 
 6. 刷新 lesscode url
-
     ```bash
-    ./pcmd.sh -m lesscode "bash /data/install/bin/bk-lesscode-reg-paas-app.sh "
+    lesscode 模块所在服务器，nginx模板文件插入 https 配置 /etc/consul-template/templates/lesscode.conf
+    {{ if key "bkcfg/global/bk_http_schema" | regexMatch "^https$" }}
+        ### ssl config begin ###
+        listen {{ key "bkcfg/ports/paas_https" }}  ssl;
+        include /usr/local/openresty/nginx/conf/bk.ssl;
+        # force https-redirects
+        if ($scheme = http) {
+            return 301 https://$server_name$request_uri;
+        }
+        ### ssl config end ###
+    {{ end }}
+    
+    ./pcmd.sh -m lesscode "bash /data/install/bin/bk-lesscode-reg-paas-app.sh"
     ./pcmd.sh -m nginx "systemctl reload openresty.service"
     ```
 
