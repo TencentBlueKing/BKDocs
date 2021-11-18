@@ -104,6 +104,8 @@ done
 
 ### 停止相关服务进程
 
+登陆每台机器，注释掉蓝鲸相关的cron任务
+
 ```bash
 source /data/install/utils.fc
 # 停止蓝鲸相关服务
