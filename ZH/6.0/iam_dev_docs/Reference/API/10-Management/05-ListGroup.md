@@ -1,4 +1,4 @@
-# 接入系统管理类 API
+# 接入系统管理类API
 ### 查询用户组列表
 
 > 只能查询某个分级管理员下的用户组列表
@@ -26,12 +26,12 @@
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| grade_manager_id | int | 是 | path | 分级管理员 ID |
-| limit |  int  | 是| query | 分页查询参数之一，limit 表示查询数量，`最大值为100` |
-| offset  | int | 是| query | 分页查询参数之一，offset 表示从第几个开始查询，offset 从 0 开始计算 |
+| grade_manager_id | int | 是 | path | 分级管理员ID |
+| limit |  int  | 是| query | 分页查询参数之一，limit表示查询数量，`最大值为100` |
+| offset  | int | 是| query | 分页查询参数之一，offset表示从第几个开始查询，offset从0开始计算 |
 
 #### Request
-```plain
+```
 Get /api/c/compapi/v2/iam/management/grade_managers/1/groups/?offset=0&limit=10
 ```
 
@@ -45,7 +45,7 @@ Get /api/c/compapi/v2/iam/management/grade_managers/1/groups/?offset=0&limit=10
 results
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
-| id   | int     | 用户组 ID |
+| id   | int     | 用户组ID |
 | name | string | 用户组名称 |
 | description | string | 用户组描述 |
 | attributes | array[object] | 用户组属性 |
@@ -53,7 +53,7 @@ results
 attributes
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
-| readonly   | bool     | 用户组仅仅可读，true 时，则无法用户组在权限中心产品上将无法删除 |
+| readonly   | bool     | 用户组仅仅可读，true时，则无法用户组在权限中心产品上将无法删除 |
 
 > Status: 200 OK
 

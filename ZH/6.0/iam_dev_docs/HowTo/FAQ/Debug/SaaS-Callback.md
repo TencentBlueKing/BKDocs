@@ -11,7 +11,7 @@
 - 19022xx：回调第三方接口错误
 
 接入系统回调接口本身协议及错误码: 
-- [资源拉取 API 说明](../../../Reference/API/03-Callback/01-API.md)
+- [资源拉取 API说明](../../../Reference/API/03-Callback/01-API.md)
 
 ## 2. 产品页面表现
 

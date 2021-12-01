@@ -1,4 +1,4 @@
-# 接入系统管理类 API
+# 接入系统管理类API
 ### 创建用户组申请单据
 
 -------
@@ -24,9 +24,9 @@
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| group_ids |  array[int]  | 是| body | 用户组 ID 列表 |
-| expired_at | int | 是 | body | 过期时间戳(单位秒)，即用户在 expired_at 后将不具有申请的用户组的相关权限，其中值为 4102444800 表示永久 |
-| applicant | string | 是 | body | 申请人，即 username |
+| group_ids |  array[int]  | 是| body | 用户组ID列表 |
+| expired_at | int | 是 | body | 过期时间戳(单位秒)，即用户在expired_at后将不具有申请的用户组的相关权限，其中值为4102444800表示永久 |
+| applicant | string | 是 | body | 申请人，即username |
 | reason | string | 是 | body | 申请理由 |
 
 #### Request
@@ -47,7 +47,7 @@
 
 | 字段      |  类型      |  描述      |
 |-----------|------------|--------|
-| ids | array[int]  | 申请单据 ID 列表，由于不同用户组审批流程不一样，所以会拆分出不同申请单据 |
+| ids | array[int]  | 申请单据ID列表，由于不同用户组审批流程不一样，所以会拆分出不同申请单据 |
 
 > Status: 200 OK
 

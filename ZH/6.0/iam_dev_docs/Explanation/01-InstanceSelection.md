@@ -27,10 +27,10 @@
 
 ### 3.2 操作关联了类型实例, 实例视图是单层的
 
-以 PaaS 的开发应用为例
+以PaaS的开发应用为例
 - `action=develop_app`
 - 关联资源类型 resource_type 为`system_id=bk_paas; id=app`
-- 在配置权限的时候, 这个 app 的选择是通过实例视图 instance_selection 为 `system_id=bk_paas, id=app_view`选择出来的;
+- 在配置权限的时候, 这个app的选择是通过实例视图 instance_selection 为 `system_id=bk_paas, id=app_view`选择出来的;
 - `app_view`应用视图 只有一层 `system_id=bk_paas, id=app`, 即指向资源自己, 产品上的表现就是配置权限的时候, 是平铺的应用列表
 
 ```json
@@ -85,7 +85,7 @@
 标准运维的任务查看为例
 - `action=task_view`
 - 关联资源类型 resource_type 为`system_id=bk_sops; id=task`
-- 在配置权限的时候, 这个 task 的选择是通过实例视图 instance_selection 为 `system_id=bk_sops, id=task`选择出来的;
+- 在配置权限的时候, 这个task的选择是通过实例视图 instance_selection 为 `system_id=bk_sops, id=task`选择出来的;
 - 任务实例视图有两层 `system_id=bk_sops, id=project` / `system_id=bk_sops, id=task`, 表示 `项目下的任务`
 
 ```json
@@ -130,7 +130,7 @@
 }
 ```
 
-此时配置权限的时候, 会先拉取第一层 `项目列表`, 选择某个项目 A 后, 可以展开`项目A下的任务列表`
+此时配置权限的时候, 会先拉取第一层 `项目列表`, 选择某个项目A后, 可以展开`项目A下的任务列表`
 
 ![-w2021](../assets/Explanation/01_instance_selection_03.png)
 
@@ -197,7 +197,7 @@ POST system.provider_config.host + system.provider_config.path
 }
 ```
 
-即, 每次调用接入系统接口拉取下一层资源列表的时候, 会传递父级节点的类型和 id(`parent{type=,id=}`)
+即, 每次调用接入系统接口拉取下一层资源列表的时候, 会传递父级节点的类型和id(`parent{type=,id=}`)
 
 ## 5. 实例视图配置的权限
 
@@ -205,7 +205,7 @@ POST system.provider_config.host + system.provider_config.path
 
 以上面示例中, 开发应用的实例视图为例; 示例中, 我们勾选了`test12`
 
-```plain
+```
 app.id in ["test12"]
 ```
 
@@ -215,7 +215,7 @@ app.id in ["test12"]
 
 如果勾选了 `项目蓝鲸下的任务test`
 
-```plain
+```
 task.id eq test
 AND
 task._bk_iam_path_ starts_with /project,蓝鲸/
@@ -223,7 +223,7 @@ task._bk_iam_path_ starts_with /project,蓝鲸/
 
 如果勾选了 `项目蓝鲸`, 代表项目蓝鲸下的所有任务都有权限, **包括未来在项目蓝鲸下新添加的所有任务**
 
-```plain
+```
 task._bk_iam_path_ starts_with /project,蓝鲸/task,*/
 ```
 
@@ -275,15 +275,15 @@ task._bk_iam_path_ starts_with /project,蓝鲸/task,*/
 }
 ```
 
-如果勾选了 项目蓝鲸下的 test
+如果勾选了 项目蓝鲸下的test
 
-```plain
+```
 task.id == test123
 ```
 
 如果勾选了 `项目蓝鲸`, 代表项目蓝鲸下的所有任务都有权限
 
-```plain
+```
 task._bk_iam_path_ starts_with /project,蓝鲸/task,*/
 ```
 
@@ -328,4 +328,4 @@ task._bk_iam_path_ starts_with /project,蓝鲸/task,*/
 - `业务A / 集群B` 下的所有主机
 - `业务A / 集群B / 模块C` 下的所有主机
 - `业务A / 集群B / 模块C` 下的主机 A (`ignore_iam_path=false`)
-- 主机 A (`ignore_iam_path=true`)
+- 主机A (`ignore_iam_path=true`)
