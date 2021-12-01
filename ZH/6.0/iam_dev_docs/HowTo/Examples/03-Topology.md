@@ -130,7 +130,7 @@
 
 ## 4. 鉴权
 
-需要注意, Resource 传递 attribute 中包含一个字段`__bk_iam_path__`, 这个字段格式具体查看  [说明: 资源拓扑`_bk_iam_path_`](../../Explanation/04-BkIAMPath.md)
+需要注意, Resource传递 attribute 中包含一个字段`__bk_iam_path__`, 这个字段格式具体查看  [说明: 资源拓扑`_bk_iam_path_`](../../Explanation/04-BkIAMPath.md)
 
 `/project,abc/`代表`task 123`是`project abc`下的一个流程.
 

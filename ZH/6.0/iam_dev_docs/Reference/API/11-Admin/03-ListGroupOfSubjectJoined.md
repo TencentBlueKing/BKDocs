@@ -1,5 +1,5 @@
-# 超级管理类 API
-### 查询 Subject 加入的用户组列表
+# 超级管理类API
+### 查询Subject加入的用户组列表
 
 -------
 
@@ -24,11 +24,11 @@
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| subject_type | string | 是 | path | Subject 类型，user 表示用户，department 表示部门 |
-| subject_id | string | 是 | path | 部门 ID 或用户名 | 
+| subject_type | string | 是 | path | Subject类型，user表示用户，department表示部门 |
+| subject_id | string | 是 | path | 部门ID或用户名 | 
 
 #### Request
-```plain
+```
 Get /api/c/compapi/v2/iam/admin/subjects/user/admin/groups/
 ```
 
@@ -36,9 +36,9 @@ Get /api/c/compapi/v2/iam/admin/subjects/user/admin/groups/
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
-| id   | int     | 用户组 ID |
+| id   | int     | 用户组ID |
 | name | string | 用户组名称 |
-| expired_at | int | 过期时间戳(单位秒)，即用户或部门在 expired_at 后将不具有该用户组的相关权限，其中值为 4102444800 表示永久 |
+| expired_at | int | 过期时间戳(单位秒)，即用户或部门在expired_at后将不具有该用户组的相关权限，其中值为4102444800表示永久 |
 
 
 > Status: 200 OK

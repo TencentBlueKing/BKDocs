@@ -1,4 +1,4 @@
-# 接入系统管理类 API
+# 接入系统管理类API
 ### 添加用户组成员
 
 -------
@@ -24,15 +24,15 @@
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| group_id | int | 是 | path | 用户组 ID |
+| group_id | int | 是 | path | 用户组ID |
 | members |  array[object]  | 是 | body | 成员列表 |
-| expired_at | int | 是 | body |过期时间戳(单位秒)，即用户或部门在 expired_at 后将不具有该用户组的相关权限，其中值为 4102444800 表示永久 |
+| expired_at | int | 是 | body |过期时间戳(单位秒)，即用户或部门在expired_at后将不具有该用户组的相关权限，其中值为4102444800表示永久 |
 
 members
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| type |  string  | 是 | body | 成员类型，user 表示用户，department 表示部门 |
-| id | string | 是 | body | 用户或部门 ID |
+| type |  string  | 是 | body | 成员类型，user表示用户，department表示部门 |
+| id | string | 是 | body | 用户或部门ID |
 
 #### Request
 ```json
@@ -61,10 +61,10 @@ members
 results
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
-| type | string | 成员类型，user 表示用户，department 表示部门
-| id   | string     | 用户或部门 ID |
+| type | string | 成员类型，user表示用户，department表示部门
+| id   | string     | 用户或部门ID |
 | name | string | 用户或部门名称 |
-| expired_at | int | 过期时间戳(单位秒)，即用户或部门在 expired_at 后将不具有该用户组的相关权限，其中值为 4102444800 表示永久 |
+| expired_at | int | 过期时间戳(单位秒)，即用户或部门在expired_at后将不具有该用户组的相关权限，其中值为4102444800表示永久 |
 
 > Status: 200 OK
 

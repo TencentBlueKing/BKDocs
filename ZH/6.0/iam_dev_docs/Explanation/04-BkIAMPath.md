@@ -37,7 +37,7 @@
 标准运维的任务查看为例
 - 操作: `任务查看`(`action=task_view`)
 - 关联资源类型 resource_type 为 `任务`(`system_id=bk_sops; id=task`)
-- 在配置权限的时候, 这个 task 的选择是通过实例视图 instance_selection 为 `任务实例视图`(`system_id=bk_sops, id=task`) 选择出来的;
+- 在配置权限的时候, 这个task的选择是通过实例视图 instance_selection 为 `任务实例视图`(`system_id=bk_sops, id=task`) 选择出来的;
 - 任务实例视图(`system_id=bk_sops, id=task`) 有两层:  `system_id=bk_sops, id=project` / `system_id=bk_sops, id=task`, 表示 `项目下的任务`
 
 ```json
@@ -86,7 +86,7 @@
 
 如果勾选了 `项目蓝鲸下的任务test`
 
-```plain
+```
 task.id eq test
 AND
 task._bk_iam_path_ starts_with /project,蓝鲸/
@@ -94,7 +94,7 @@ task._bk_iam_path_ starts_with /project,蓝鲸/
 
 如果勾选了 `项目蓝鲸`, 代表项目蓝鲸下的所有任务都有权限, **包括未来在项目蓝鲸下新添加的所有任务**
 
-```plain
+```
 task._bk_iam_path_ starts_with /project,蓝鲸/task,*/
 ```
 

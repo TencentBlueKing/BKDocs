@@ -13,7 +13,7 @@
 2. 请求 API, 获取权限申请 url
 3. url 渲染到前端表单, 用户点击后, 跳转到权限中心的权限申请页面
 
-具体无权限交互可以查看 [文档](../../../HowTo/NoPermissionApply.md)
+具体无权限交互可以查看 [文档](../../../HowTo/Solutions/NoPermissionApply.md)
 
 #### URL
 
@@ -93,7 +93,7 @@ related_resource_types.attributes.values
 
 2. 资源拓扑路径的操作示例:
 
-系统`bk_job`的`view_job`操作关联资源类型`job`, 并且注册了实例视图 `业务(biz)`-`作业(job)`, 这个实例视图拓扑路径有 2 层
+系统`bk_job`的`view_job`操作关联资源类型`job`, 并且注册了实例视图 `业务(biz)`-`作业(job)`, 这个实例视图拓扑路径有2层
 
 ```json
 {
@@ -127,8 +127,8 @@ related_resource_types.attributes.values
 3. 关联多个资源类型的操作示例:
 
 系统`bk_job`的`execute_job`操作关联资源类型`job`与系统`bk_cmdb`的资源类型`host`,
-`job`注册了实例视图 `业务(biz)`-`作业(job)`, 这个实例视图拓扑路径有 2 层,
-`bk_cmdb`的资源类型`host`注册实例视图, `业务(biz)`-`集群(set)`-`模块(module)`-`主机(host)`, 这个实例视图拓扑路径有 4 层
+`job`注册了实例视图 `业务(biz)`-`作业(job)`, 这个实例视图拓扑路径有2层,
+`bk_cmdb`的资源类型`host`注册实例视图, `业务(biz)`-`集群(set)`-`模块(module)`-`主机(host)`, 这个实例视图拓扑路径有4层
 
 ```json
 {

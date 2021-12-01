@@ -34,7 +34,7 @@
     - [说明: 实例视图](../Explanation/01-instanceSelection.md)
     - [AppCode 和 SystemID 说明](../Explanation/05-AppcodeAndSystemID.md)
     - [模型注册 API](../Reference/API/02-Model/00-API.md)
-    - [权限模型自动初始化及更新 migration](Migration.md)
+    - [权限模型自动初始化及更新 migration](Solutions/Migration.md)
 
     建议使用 json 通过 migration 进行模型注册, 方便后续维护及升级; 如果使用了 python sdk, 可以利用 sdk 的封装将模型注册 migration 整合到 django migration 中
 7. 接入系统实现相关资源反向拉取接口
@@ -52,7 +52,7 @@
     - [直接鉴权](../Reference/API/04-Auth/02-DirectAPI.md)
 9. 实现无权限交互逻辑
 
-    - [无权限交互方案](NoPermissionApply.md)
+    - [无权限交互方案](Solutions/NoPermissionApply.md)
     - [生成无权限申请 URL](../Reference/API/05-Application/01-GenerateURL.md)
     - [第三方鉴权失败返回权限申请数据协议](../Reference/API/05-Application/02-NoPermissionData.md)
 
@@ -60,11 +60,11 @@
 
 1. 新建关联
     当新建一个资源时, 需要给某些人自动授予某些权限, 例如新建一个业务, 自动授予创建者 A 用户业务查看, 业务编辑, 业务删除的权限
-    - [新建关联权限方案](ResourceCreatorAction.md)
+    - [新建关联权限方案](Solutions/ResourceCreatorAction.md)
     - [新建关联属性授权接口](../Reference/API/07-ResourceCreatorAction/01-Attribute.md)
 2. 依赖操作
     用户在申请操作 A 权限时, 操作 A 依赖于操作 B, IAM 在创建申请单时会同时帮用户申请操作 B 的权限 例如申请`开发应用`的权限时, 会自动申请`访问开发者中心`权限, 这样存在依赖关系的权限就不需要额外单独申请
-    - [依赖操作权限方案](RelatedActions.md)
+    - [依赖操作权限方案](Solutions/RelatedActions.md)
     - [样例 7: 配置依赖操作优化权限申请](Examples/07-RelatedActions.md)
     - [操作(Action)](../Reference/API/02-Model/13-Action.md)
 3. 操作组

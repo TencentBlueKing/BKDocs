@@ -1,4 +1,4 @@
-# 接入系统管理类 API
+# 接入系统管理类API
 ### 删除分级管理员成员
 -------
 
@@ -23,12 +23,12 @@
 
 | 字段      |  类型      | 必选   | 位置 |描述      |
 |-----------|------------|--------|------------|------------|
-| grade_manager_id | int | 是 | path | 分级管理员 ID |
+| grade_manager_id | int | 是 | path | 分级管理员ID |
 | members |  string  | 是   | query |要删除的用户名，多个用户则使用英文逗号分隔 |
 
 
 #### Request
-```plain
+```
 Delete /api/c/compapi/v2/iam/management/grade_managers/1/members/?members=admin,test1,test2
 ```
 

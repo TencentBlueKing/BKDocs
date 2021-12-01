@@ -115,7 +115,7 @@ Department.tree_objects.rebuild()
   
 * 解决方式
 
-```plain
+```
 1. 确认用户id=xxxx是否被删除
 进入“用户管理”DB，查询profile_profiles表，查询id为xxxx的用户
 用户表是软删除的，得看是否被标记为删除

@@ -1,7 +1,7 @@
 # 无权限申请
 
 
-具体的 [无权限交互方案](../HowTo/NoPermissionApply.md)
+具体的 [无权限交互方案](../HowTo/Solutions/NoPermissionApply.md)
 
 ![enter image description here](../assets/QuickStart/image_5.png)
 
