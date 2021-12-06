@@ -138,7 +138,9 @@
 <table><tbody>
 <tr><td width="20%">安装包与安装脚本存放路径</td><td width="80%">社区版安装包（src 目录）、安装脚本存放路径（install 目录）和安装后文件存放路径（bkce），默认为/data，建议选择一个大一点的数据分区挂载路径</td></tr>
 <tr><td width="20%">中控机 IP 地址</td><td width="80%">社区版基础服务安装的中控机 IP 地址，用于在此服务器上获取一些容器管理平台依赖的其它服务变量</td></tr>
-<tr><td width="20%">是否新建 MySQL 实例</td><td width="80%">如果没有 MySQL 实例，这里不用修改，默认为 1，安装步骤会创建一个新的 MySQL 实例；如果已有 MySQL 实例这里修改为 0，安装步骤将会使用已有 MySQL 实例，不会安装新的 MySQL 实例</td></tr>
+<tr><td width="20%">是否新建 MySQL 实例</td><td width="80%">如果没有 MySQL 实例，这里不用修改，默认为 1，安装步骤会创建一个新的 MySQL 实例；如果已有 MySQL 实例这里修改为 0，安装步骤将会使用已有 MySQL 实例，不会安装新的 MySQL 实例;注意：使用已有MySQL实例时请提前给所有BCS服务器添加授权访问，参考以下命令：
+source /data/install/load_env.sh 
+/data/install/bin/grant_mysql_priv.sh -n default-root -u root -p ${BK_MYSQL_ADMIN_PASSWORD} -H 192.168.xx.xx #替换真实的bcs_ip </td></tr>
 <tr><td width="20%">MySQL IP 地址</td><td width="80%">需安装或可连接的 MySQL 实例 IP 地址或域名，目前只支持单个 IP，如果已有实例是多节点，可以使用域名实现高可用；注意：如果“是否新建 MySQL 实例”值为 1 时，需要指定一台没有部署过 MySQL 实例的服务器上，防止 MySQL 端口冲突</td></tr>
 <tr><td width="20%">MySQL 端口</td><td width="80%">MySQL 实例监听端口，默认为 3306，可根据实际情况自行修改</td></tr>
 <tr><td width="20%">MySQL 用户名</td><td width="80%">MySQL 用户名，默认为 root，如需新建实例，这里会把实例设置成此用户名；如果是连接已有实例，请输入对应实例的用户名</td></tr>
