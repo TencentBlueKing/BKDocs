@@ -32,8 +32,8 @@ POST
 |-----------|------------|--------|------------|
 | sns        | array   | 否     | 根据单号列表过滤 |
 | creator   | string    | 否 | 根据单据创建人过滤 |
-| create_at__lte | string | 否 | 创建时间大于或等于，格式："YYYY-MM-DD hh:mm:ss" |
-| create_at__gte | string | 否 | 创建时间小于或等于，格式："YYYY-MM-DD hh:mm:ss" |
+| create_at__lte | string | 否 | 创建时间小于或等于，格式："YYYY-MM-DD hh:mm:ss" |
+| create_at__gte | string | 否 | 创建时间大于或等于，格式："YYYY-MM-DD hh:mm:ss" |
 | page         | int    | 否   | 请求页码，默认为 1     |
 | page_size    | int    | 否   | 每页数据量，默认为 10，最大 10000 |
 
