@@ -141,7 +141,7 @@ import random
 timestamp=int(time.time() * 1000)
  
 #PROXY_IP
-PROXY_IP='bkmonitor_http_report_v1_001.woa.com'  #直连区域可填此IP
+PROXY_IP='x.x.x.x'  #直连区域可填此IP
 PROXY_URL='http://%s:10205/v2/push/'%(PROXY_IP)
  
 #data_id
