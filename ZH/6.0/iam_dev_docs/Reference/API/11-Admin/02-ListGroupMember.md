@@ -1,4 +1,4 @@
-# 超级管理类API
+# 超级管理类 API
 ### 查询用户组成员列表
 
 * 注意：只能分页查询用户组成员列表
@@ -26,12 +26,12 @@
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| group_id |int | 是 | path | 用户组ID |
-| limit |  int  | 是   | query |分页查询参数之一，limit表示查询数量，`最大值为100` |
-| offset  | int | 是 | query | 分页查询参数之一，offset表示从第几个开始查询，offset从0开始计算 |
+| group_id |int | 是 | path | 用户组 ID |
+| limit |  int  | 是   | query |分页查询参数之一，limit 表示查询数量，`最大值为100` |
+| offset  | int | 是 | query | 分页查询参数之一，offset 表示从第几个开始查询，offset 从 0 开始计算 |
 
 #### Request
-```
+```bash
 Get /api/c/compapi/v2/iam/admin/groups/1/members/?offset=0&limit=10
 ```
 
@@ -45,7 +45,7 @@ Get /api/c/compapi/v2/iam/admin/groups/1/members/?offset=0&limit=10
 results
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
-| id   | int     | 用户组ID |
+| id   | int     | 用户组 ID |
 | name | string | 用户组名称 |
 | description | string | 用户组描述 |
 

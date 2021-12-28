@@ -1,4 +1,4 @@
-# 接入系统管理类API
+# 接入系统管理类 API
 ### 查询分级管理员成员列表
 
 -------
@@ -24,10 +24,10 @@
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| grade_manager_id | int | 是 | path | 分级管理员ID |
+| grade_manager_id | int | 是 | path | 分级管理员 ID |
 
 #### Request
-```
+```bash
 Get /api/c/compapi/v2/iam/management/grade_managers/1/members/
 ```
 

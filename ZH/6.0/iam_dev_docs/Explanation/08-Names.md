@@ -8,7 +8,7 @@
 
 相关链接:
 - [说明: AppCode 和 SystemID](../Explanation/05-AppcodeAndSystemID.md)
-- [模型注册API: 系统](../Reference/API/02-Model/10-System.md)
+- [模型注册 API: 系统](../Reference/API/02-Model/10-System.md)
 
 ## 操作(Action)
 
@@ -17,7 +17,7 @@
 接入系统中需要做权限控制的某个场景功能，如作业新建、主机转移、菜单查看等，一个操作最好是最小原子功能，操作应该是可枚举相对静态的，一个系统的操作数量有可能随着系统功能模块的增加而增加，但一般不会随着时间的推移无限增长。
 
 相关链接:
-- [模型注册API: 操作](../Reference/API/02-Model/13-Action.md)
+- [模型注册 API: 操作](../Reference/API/02-Model/13-Action.md)
 
 ## 资源类型(ResourceType)
 
@@ -26,8 +26,8 @@
 指各系统需要做权限控制的操作所关联的对象，如作业新建关联的对象是作业、主机转移关联的对象是主机等，作业、主机都是一种资源类型。
 
 相关链接:
-- [模型注册API: 资源类型](../Reference/API/02-Model/11-ResourceType.md)
-- [资源反向拉取API](../Reference/API/03-Callback/01-API.md)
+- [模型注册 API: 资源类型](../Reference/API/02-Model/11-ResourceType.md)
+- [资源反向拉取 API](../Reference/API/03-Callback/01-API.md)
 
 ## 实例视图(InstanceSelection)
 
@@ -38,7 +38,7 @@
 ![-w2021](../assets/Explanation/01_instance_selection_03.png)
 
 相关链接:
-- [模型注册API: 实例视图](../Reference/API/02-Model/12-InstanceSelection.md)
+- [模型注册 API: 实例视图](../Reference/API/02-Model/12-InstanceSelection.md)
 - [说明: 实例视图](../Explanation/01-InstanceSelection.md)
 - [样例 3: 使用拓扑层级管理权限](../HowTo/Examples/03-Topology.md)
 
@@ -63,14 +63,14 @@
 
 操作组是接入系统，根据系统使用习惯，将相同场景的操作按操作组归类，方便用户/管理员在权限中心勾选操作权限。 操作组只是前端勾选操作时的体验优化，不涉及底层逻辑的依赖。
 
-比如，作业平台有作业执行、作业删除、脚本执行、脚本查看、IP白名单新建、全局设置管理几个操作。
+比如，作业平台有作业执行、作业删除、脚本执行、脚本查看、IP 白名单新建、全局设置管理几个操作。
 
 加上操作组后，前端表现为：
 
 ![-w2021](../assets/HowTo/Examples/05_01.jpg)
 
 相关链接:
-- [模型注册API: 操作组](../Reference/API/02-Model/14-ActionGroup.md)
+- [模型注册 API: 操作组](../Reference/API/02-Model/14-ActionGroup.md)
 - [样例 5: 配置操作组优化权限申请](../HowTo/Examples/05-ActionGroup.md)
 
 ## 常用操作
@@ -79,7 +79,7 @@
 
 
 相关链接:
-- [模型注册API: 常用操作](../Reference/API/02-Model/17-CommonActions.md)
+- [模型注册 API: 常用操作](../Reference/API/02-Model/17-CommonActions.md)
 - [样例 6: 配置常用操作优化权限申请](../HowTo/Examples/06-CommonActions.md)
 
 ## 依赖操作

@@ -1,4 +1,4 @@
-# 接入系统管理类API
+# 接入系统管理类 API
 ### 查询用户的分级管理员列表
 
 -------
@@ -24,11 +24,11 @@
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| system | string| 是 | body | 系统ID，即查询由某个系统创建的分级管理员列表 |
-| uesr_id | string | 是 | body | 用户ID，即用户名 |
+| system | string| 是 | body | 系统 ID，即查询由某个系统创建的分级管理员列表 |
+| uesr_id | string | 是 | body | 用户 ID，即用户名 |
 
 #### Request
-```
+```bash
 Get /api/c/compapi/v2/iam/management/users/grade_managers/?system=bk_ci&user_id=admin
 ```
 
@@ -36,7 +36,7 @@ Get /api/c/compapi/v2/iam/management/users/grade_managers/?system=bk_ci&user_id=
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
-| id   | int | 分级管理员ID |
+| id   | int | 分级管理员 ID |
 
 
 > Status: 200 OK

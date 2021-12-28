@@ -279,7 +279,7 @@ sentry:
   dsn: "{Sentry DSN}"
 ```
 
-这里的 Sentry DSN 为在Sentry新建项目对应的DSN, 示例: `http://e85eaaa599c44cbbb6833c22c20bbbb@sentry.xx.com/123`
+这里的 Sentry DSN 为在 Sentry 新建项目对应的 DSN, 示例: `http://e85eaaa599c44cbbb6833c22c20bbbb@sentry.xx.com/123`
 
 
 ---------

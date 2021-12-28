@@ -14,7 +14,7 @@
 
 > 推荐做法
 
-将权限中心的条件表达式, 转换成系统自己存储的查询语句, 例如sql, django queryset, mongodb query或者elasticsearch Query DSL. 
+将权限中心的条件表达式, 转换成系统自己存储的查询语句, 例如 sql, django queryset, mongodb query 或者 elasticsearch Query DSL. 
 
 在 [Python SDK](https://github.com/TencentBlueKing/iam-python-sdk/tree/master/iam/contrib/converter) 中, 我们给到了两种实现, 具体见文档: [表达式解析](../../Reference/Expression/03-Translate.md)
 
@@ -26,7 +26,7 @@
 
 使用 SDK 进行鉴权的逻辑是, 查询`用户 1 编辑主机`的权限策略到本地, 然后将资源带入进行计算, 而计算是在内存中进行的, 效率非常高.
 
-批量1000 台主机鉴权, 也是一次策略查询, 然后将1000 台主机循环带入计算.
+批量 1000 台主机鉴权, 也是一次策略查询, 然后将 1000 台主机循环带入计算.
 
 具体实现可以参考各个 SDK 提供的批量鉴权接口 [Python SDK](../../Reference/SDK/01-PythonSDK.md) / [Go SDK](../../Reference/SDK/02-GoSDK.md) / [Java SDK](../../Reference/SDK/03-JavaSDK.md) / [PHP SDK](../../Reference/SDK/05-PHPSDK.md)
 

@@ -169,22 +169,22 @@ $ ./iam-cli saas login http://{bkiam_saas_address} bk_iam {bk_iam_saas_app_secre
 INFO: success
 ```
 
-### 3.9 确认SaaS可用
+### 3.9 确认 SaaS 可用
 
 > ./iam-cli saas ping
 
-去掉SaaS可达
+去掉 SaaS 可达
 
 ```bash
 $ ./iam-cli saas ping
 INFO: pong
 ```
 
-### 3.10 查询SaaS的Debug信息列表
+### 3.10 查询 SaaS 的 Debug 信息列表
 
 > ./iam-cli saas debug list 20210101
 
-查询`20210101`这一天SaaS的所有debug信息
+查询`20210101`这一天 SaaS 的所有 debug 信息
 
 ```bash
 $ ./iam-cli saas debug list 20210101
@@ -199,11 +199,11 @@ $ ./iam-cli saas debug list 20210101
 ]
 ```
 
-### 3.11 通过request_id/task_id查询单个请求的Debug信息
+### 3.11 通过 request_id/task_id 查询单个请求的 Debug 信息
 
 > ./iam-cli saas debug get {request_id/task_id}
 
-通过请求ID或者Celery Task ID查询Debug信息
+通过请求 ID 或者 Celery Task ID 查询 Debug 信息
 
 ```bash
 $ ./iam-cli saas debug get 205310e3fe5548059ad386d7969b8161

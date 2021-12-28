@@ -1,4 +1,4 @@
-# 接入系统管理类API
+# 接入系统管理类 API
 ### 创建用户组
 
 -------
@@ -24,15 +24,15 @@
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| grade_manager_id | int | 是 | path | 分级管理员ID |
+| grade_manager_id | int | 是 | path | 分级管理员 ID |
 | groups |  array[object]  | 是 | body | 用户组列表 |
 
 groups
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| name |  string  | 是   | body |用户组名称，至少5个字符，同一个分级管理员下唯一 |
-| description | string | 是 | body | 用户组描述，至少10个字符 |
-| readonly | bool | 否 | body |可选参数，默认为false, 用户组仅仅可读，true时，则无法用户组在权限中心产品上将无法删除 |
+| name |  string  | 是   | body |用户组名称，至少 5 个字符，同一个分级管理员下唯一 |
+| description | string | 是 | body | 用户组描述，至少 10 个字符 |
+| readonly | bool | 否 | body |可选参数，默认为 false, 用户组仅仅可读，true 时，则无法用户组在权限中心产品上将无法删除 |
 
 #### Request
 ```json
@@ -55,7 +55,7 @@ groups
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
-| data |  array[int]  | 用户组ID列表 |
+| data |  array[int]  | 用户组 ID 列表 |
 
 > Status: 200 OK
 

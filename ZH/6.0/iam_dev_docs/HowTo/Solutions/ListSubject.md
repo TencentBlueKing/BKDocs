@@ -35,9 +35,9 @@
 
 ## 解决方案 2: 操作的用户列表
 
-某些审计需求, 接入系统需要知道某个操作的有权限的subject列表. 或者只是为了一个计数.
+某些审计需求, 接入系统需要知道某个操作的有权限的 subject 列表. 或者只是为了一个计数.
 
-此时, 可以通过 [policy list查询接口](../../Reference/API/08-Query/02-PolicyList.md)
+此时, 可以通过 [policy list 查询接口](../../Reference/API/08-Query/02-PolicyList.md)
 
 此时, 可以查询到一个操作的所有策略表达式及对应的`subject`;
 
