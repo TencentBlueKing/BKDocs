@@ -48,6 +48,8 @@ http://{IAM_HOST}/api/v1/policy/auth?debug=true&force=true
 
 debug 中包含请求上下文, 获取的策略, 执行结果等详细信息
 
+最终以接口返回的debug信息进行`是否有权限`排查
+
 ## 3. 分析确定
 
 debug 信息中

@@ -218,13 +218,13 @@ app.id in ["test12"]
 ```bash
 task.id eq test
 AND
-task._bk_iam_path_ starts_with /project,蓝鲸/
+task._bk_iam_path_ starts_with /project,蓝鲸ProjectID/
 ```
 
 如果勾选了 `项目蓝鲸`, 代表项目蓝鲸下的所有任务都有权限, **包括未来在项目蓝鲸下新添加的所有任务**
 
 ```bash
-task._bk_iam_path_ starts_with /project,蓝鲸/task,*/
+task._bk_iam_path_ starts_with /project,蓝鲸ProjectID/task,*/
 ```
 
 
@@ -284,7 +284,7 @@ task.id == test123
 如果勾选了 `项目蓝鲸`, 代表项目蓝鲸下的所有任务都有权限
 
 ```bash
-task._bk_iam_path_ starts_with /project,蓝鲸/task,*/
+task._bk_iam_path_ starts_with /project,蓝鲸ProjectID/task,*/
 ```
 
 注意, `ignore_iam_path` **只对叶子节点生效**, 对勾选中间节点的场景不起作用;

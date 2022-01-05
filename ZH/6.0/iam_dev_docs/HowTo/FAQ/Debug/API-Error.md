@@ -3,6 +3,7 @@
 请根据接口错误`message`中关键字进行检索
 
 注意, 如果想确认目前环境中注册的权限模型, 
+
 可以用接口 [权限模型: 通用查询 Common Query API](../../../Reference/API/02-Model/15-CommonQuery.md) 查询.
 
 ## 通用报错
@@ -21,9 +22,11 @@
 
 `action.id`非法, 确认下这个环境注册的权限模型中是否有这个操作
 
+可以使用[权限模型: 通用查询 Common Query API](../../../Reference/API/02-Model/15-CommonQuery.md) 查询确认
+
 ### 3. GetSystemClients fail
 
-> bad request:get system(xxxx) valid clients fail, err=[Cache:GetSystemClients] LocalSystemClientsCache.Gt key=`xxx` fail => [SystemSVC:Get] saasManager.Get id=`xxx` fail => [Raw:Error] sql: no rows in result set
+> bad request:get system(xxxx) valid clients fail, err=[Cache:GetSystemClients] LocalSystemClientsCache.Get key=`xxx` fail => [SystemSVC:Get] saasManager.Get id=`xxx` fail => [Raw:Error] sql: no rows in result set
 
 找不到这个注册的系统
 
@@ -39,39 +42,27 @@
 
 默认权限中心从用户管理一天同步一次组织架构.
 
-### 5. 1901401
+### 5. 错误码 
 
-> unauthorized: app code and app secret required
+- 1901400
+- 1901401
+- 1901404
+- 1901409
+- 1902412
+- 1902417
 
-请求 header 中没有传递 X-Bk-App-Code/X-Bk-App-Secret
+见 [错误码](../ErrorCode.md)
 
-> unauthorized: app code or app secret wrong
 
-请求 header 中传递的 X-Bk-App-Code/X-Bk-App-Secret 错误, 无法在该环境找到匹配的.
-需要确认:
-- 是否传递了 X-Bk-App-Code/X-Bk-App-Secret 且非空
-- 对应的 app_code 和 app_secret 是在同一个环境生成的
-- 再次确认 app_code/app_secret 是否同应用详情页信息匹配(经常出现的是复制错/复制漏)`
-- 由于认证存在缓存，第一次错误后，相同 AppCode 和 AppSecret 必须等待 5 秒以上才能再请求
-- 如果无法确认, 请提供请求详情.
+### 6. SaaS接口调用
 
-> unauthorized: app(xxx) is not allowed to call system (yyy) api" 
+> app_code(bk_xxxx) do not be allowed to call api(group_list)
 
-xxx 这个 app_code 不允许调用系统 yyy 的资源, 需要将 xxx 加入到 yyy 的 clients`中.
+需要添加白名单
 
-### 6. 1901404
+> creator authorization instance api don't support the (xxxxx] of system[yyyyy]
 
-> not found: system(xxx) not exists 
-
-系统 xxx 不存在, 请确认系统已注册(注意, system 是接入系统注册到权限中心的, clients 中配置的是可以调用这个系统 API 的合法 app_code, 不要混淆二者概念)
-
-### 7. 1901400
-
-> bad request: {message}
-
-用户传入的参数非法, 不符合规范. 详细信息在 message 中
-
-需要仔细接口协议, 确保调用的 URL/参数等符合要求
+没有权限调用, 需要评估后, 添加白名单
 
 ## 鉴权相关
 
@@ -98,4 +89,15 @@ xxx 这个 app_code 不允许调用系统 yyy 的资源, 需要将 xxx 加入到
 1. 接入系统没有注册对应的`action`
 2. 鉴权请求传入了错误的`action.id`
 3. 接入系统变更了模型, 例如删除 action 
+
+## 无权限申请
+
+### 1. Parameter error
+
+> Parameter error: The resource(system_id:bk_xxxx, type:page, id:244) display_name cannot be queried through the API - fetch_instance_info
+
+回调接口, 查询 244 资源实例时报错; 需要到被调用系统确认
+
+无权限申请, 对于传入的数据，我们需要严格校验，这时候会回调 接入系统资源 fetch_instance_info接口查询资源名称
+
 

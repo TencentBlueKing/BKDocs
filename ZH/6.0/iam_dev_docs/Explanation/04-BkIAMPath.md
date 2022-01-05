@@ -89,13 +89,13 @@
 ```bash
 task.id eq test
 AND
-task._bk_iam_path_ starts_with /project,蓝鲸/
+task._bk_iam_path_ starts_with /project,蓝鲸ProjectID/
 ```
 
 如果勾选了 `项目蓝鲸`, 代表项目蓝鲸下的所有任务都有权限, **包括未来在项目蓝鲸下新添加的所有任务**
 
 ```bash
-task._bk_iam_path_ starts_with /project,蓝鲸/task,*/
+task._bk_iam_path_ starts_with /project,蓝鲸ProjectID/task,*/
 ```
 
 ## 鉴权
@@ -178,7 +178,7 @@ class Permission(object):
       "id": "test",
       "attribute": {
         "_bk_iam_path_": [
-          "/project,蓝鲸/"
+          "/project,蓝鲸ProjectID/"
         ]
       }
     }
@@ -188,7 +188,7 @@ class Permission(object):
 
 ## 资源反向拉取
 
-* [资源反向拉取: 4. fetch_instance_info](Reference/API/03-Callback/13-fetch_instance_info.md)
+* [资源反向拉取: 4. fetch_instance_info](../Reference/API/03-Callback/13-fetch_instance_info.md)
 
 资源反向拉取获取一批实例属性的时候, 可能会要求接入系统返回实例的`_bk_iam_path_`属性, 按照规范返回即可
 

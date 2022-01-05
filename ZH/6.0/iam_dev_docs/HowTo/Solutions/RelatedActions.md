@@ -8,7 +8,7 @@
 
 ## 接入系统注册操作的依赖操作
 
-详细见[注册操作 API](../Reference/API/02-Model/13-Action.md)的`related_actions`字段
+详细见[注册操作 API](../../Reference/API/02-Model/13-Action.md)的`related_actions`字段
 
 ## 依赖操作产生权限的规则
 

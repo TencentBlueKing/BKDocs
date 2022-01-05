@@ -24,6 +24,6 @@
 
 ## 资源反向拉取
 
-* [资源反向拉取: 4. fetch_instance_info](Reference/API/03-Callback/13-fetch_instance_info.md)
+* [资源反向拉取: 4. fetch_instance_info](../Reference/API/03-Callback/13-fetch_instance_info.md)
 
 资源反向拉取获取一批实例属性的时候, 可能会要求接入系统返回实例的`_bk_iam_approver_`属性, 按照规范返回即可
