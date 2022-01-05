@@ -66,13 +66,13 @@ APPO 的扩容步骤分为：
 4. 安装 Openresty
 
     ```bash
-    pcmd -H 10.0.0.4 '${CTRL_DIR}/bin/install_openresty.sh -p ${INSTALL_PATH} -d ${CTRL_DIR}/support-files/templates/nginx/"
+    pcmd -H 10.0.0.4 '${CTRL_DIR}/bin/install_openresty.sh -p ${INSTALL_PATH} -d ${CTRL_DIR}/support-files/templates/nginx/'
     ```
 
 5. 安装 consul-template
 
     ```bash
-    pcmd -H 10.0.0.4 '${CTRL_DIR}/bin/install_consul_template.sh -m paasagent"
+    pcmd -H 10.0.0.4 '${CTRL_DIR}/bin/install_consul_template.sh -m paasagent'
     ```
 
 6. 有 NFS 共享目录时，需要挂载 NFS：
