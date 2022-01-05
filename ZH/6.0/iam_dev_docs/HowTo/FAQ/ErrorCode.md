@@ -1,4 +1,5 @@
 # 错误码
+
 ## 错误码总览
 
 | 错误码 | 描述  |
@@ -44,31 +45,53 @@
 
 ### 1901400
 
-用户传入的参数非法, 不符合规范. 详细信息在 message 中, `bad request: {message}`
+> bad request: {message}
+
+用户传入的参数非法, 不符合规范. 详细信息在 message 中
 
 需要仔细接口协议, 确保调用的 URL/参数等符合要求
 
+举例: `bad request:json decode or validate fail, err=[0]: Key: 'commonActionSerializer.Actions' Error:Field validation for 'Actions' failed on the 'gt' tag` 常用操作`actions`必须至少一个 (使用了开源validation库的validate规则, 提示信息可能没那么清晰)
+
+
 ### 1901401
 
-- `message: unauthorized: app code and app secret required` 请求 header 中没有传递 `X-Bk-App-Code`/`X-Bk-App-Secret`
+> unauthorized: app code and app secret required
 
-- `message: unauthorized: app code or app secret wrong` 请求 header 中传递的`X-Bk-App-Code`/`X-Bk-App-Secret`错误, 无法在该环境找到匹配的.需要确认 
-    - a.是否传递了`X-Bk-App-Code`/`X-Bk-App-Secret`且非空 
-    - b.对应的`app_code`和`app_secret`是在同一个环境生成的 
-    - c.再次确认`app_code`/`app_secret`是否同应用详情页信息匹配(经常出现的是复制错/复制漏)`
-    - d.由于认证存在缓存，第一次错误后，相同 AppCode 和 AppSecret `必须等待5秒以上`才能再请求
-    - e.如果无法确认, 请提供请求详情.
-  
-- `message: unauthorized: app(xxx) is not allowed to call system (yyy) api" xxx这个app_code不允许调用系统yyy的资源, 需要将xxx加入到yyy的`clients`中. 具体见  [系统(System) API](../../Reference/API/02-Model/10-System.md)
+请求 header 中没有传递 `X-Bk-App-Code/X-Bk-App-Secret`
+
+> unauthorized: app code or app secret wrong
+
+请求 header 中传递的 `X-Bk-App-Code/X-Bk-App-Secret` 错误, 无法在该环境找到匹配的.
+
+需要确认:
+- 是否传递了 `X-Bk-App-Code/X-Bk-App-Secret` 且非空
+- 对应的 `app_code` 和 `app_secret` 是在同一个环境生成的
+- 再次确认 `app_code/app_secret` 是否同应用详情页信息匹配(经常出现的是复制错/复制漏)`
+- 由于认证存在缓存，第一次错误后，相同 AppCode 和 AppSecret 必须等待 5 秒以上才能再请求
+- 如果无法确认, 请提供请求详情.
+
+> unauthorized: app(xxx) is not allowed to call system (yyy) api" 
+
+xxx 这个 app_code 不允许调用系统 yyy 的资源, 需要将 xxx 加入到 yyy 的 clients`中. 具体见  [系统(System) API](../../Reference/API/02-Model/10-System.md)
 
 ### 1901404
 
-- `message: not found: system(xxx) not exists` 系统 xxx 不存在, 请确认系统已注册(注意, system 是接入系统注册到权限中心的, `clients`中配置的是可以调用这个系统 API 的合法`app_code`, 不要混淆二者概念)
+> not found: system(xxx) not exists 
 
+系统 xxx 不存在, 请确认系统已注册(注意, system 是接入系统注册到权限中心的, `clients`中配置的是可以调用这个系统 API 的合法`app_code`, 不要混淆二者概念)
 
 ### 1901409
 
-- `message: conflict:action has releated policies, you can't delete it or update the related_resource_types unless delete all the related policies. please contact administrator.` 操作已经被使用配置了相关的权限, 不能删除 action 或者改变这个 action 的 related_resource_types. 联系管理员, 通过权限中心 SaaS 的 Django Command 进行`权限升级`或者`权限清理`;
+> conflict:instance selection name[xxxx] already exists
+
+资源冲突, 接口创建的`xxxx`已存在.
+
+可以使用[权限模型: 通用查询 Common Query API](../../Reference/API/02-Model/15-CommonQuery.md) 查询确认
+
+> conflict:action has releated policies, you can't delete it or update the related_resource_types unless delete all the related policies. please contact administrator.
+
+操作已经被使用配置了相关的权限, 不能删除 action 或者改变这个 action 的 related_resource_types. 联系管理员, 通过权限中心 SaaS 的 Django Command 进行`权限升级`或者`权限清理`;
 
 ## 组件调用错误 1902XXX - 190230X
 
@@ -84,9 +107,17 @@
 
 错误信息:
 
-- `request esb api error`  排查权限中心 SaaS 的主机是否能正常访问 ESB api
-- `request usermanger api error`  排查权限中心 SaaS 的主机是否能正常访问用户管理的 ESB api
-- `request iam api error` 排查权限中心 SaaS 的主机是否能正常访问权限中心后台 api
+> request esb api error
+
+排查权限中心 SaaS 的主机是否能正常访问 ESB api
+
+> request usermanger api error
+
+排查权限中心 SaaS 的主机是否能正常访问用户管理的 ESB api
+
+> request iam api error
+
+排查权限中心 SaaS 的主机是否能正常访问权限中心后台 api
 
 ### 1902001
 
@@ -100,8 +131,13 @@
 
 错误信息:
 
-- `unreachable interface call`  接入系统接口不可达
-- `interface status code:`xxx`error`  接入系统接口返回状态码`xxx`错误
+> unreachable interface call
+
+接入系统接口不可达
+
+> interface status code:`xxx`error
+
+接入系统接口返回状态码`xxx`错误
 
 ### 1902201
 
@@ -117,7 +153,21 @@
 
 某些场景下, 例如上云环境, app_code 和 system 是不一致的, 如果出现这个错误码, 大概率是使用`DjangoBasicResourceApiDispatcher`传递`system`参数错误
 
+### 1902250
 
+> 接入系统自身接口异常
+
+调用接入系统接口失败
+
+> 接入系统自身接口返回数据进行JSON解析出错
+
+返回数据非json或json数据有问题
+
+> 接入系统自身接口返回数据不符合要求
+
+没有按协议要求返回`list`/`dict`
+
+出现以上问题, 需要找**对应接入系统的开发人员**排查解决
 
 ### 1902301
 
@@ -138,17 +188,36 @@
 ### 1902400 1902412 1902414 1902415 1902416
 
 描述: 用户的请求数据错误
+说明: 请仔细阅读错误信息, 信息中包含具体原因 (如无法确定, 提供请求数据/结果返回数据/日志信息等提单到权限中心负责人排查)
 
-提供请求数据, 结果返回数据, 日志信息提单到权限中心负责人排查
+
+> 1902412 Parameter verification failed: related resource type(file_source), resource([ApplyPathNode(system_id='', type='file_source', id='53', name='')]) not satisfy instance selection"
+
+权限中心会校验请求中传递的资源列表, 是否与操作关联的`实例视图`链路匹配
+
 
 ### 1902417
 
 描述: 权限提交的数据与接入系统注册操作依赖的资源类型数据校验错误
 
 错误信息:
-- `action xxx has no related resource type yyy` 操作`xxx`不关联申请的资源类型`yyy`
-- `action xxx related resource types yyy are in the wrong order` 操作`xxx`关联多个资源类型, 其中类型`yyy`与接入系统注册的操作关联资源类型顺序不一致
-- `action xxx lacks related resource type yyy` 操作`xxx`缺少资源类型`yyy`
+
+> action xxx has no related resource type yyy
+
+操作`xxx`不关联申请的资源类型`yyy`
+
+> action xxx related resource types yyy are in the wrong order
+
+操作`xxx`关联多个资源类型, 其中类型`yyy`与接入系统注册的操作关联资源类型顺序不一致
+
+> action xxx lacks related resource type yyy
+
+操作`xxx`缺少资源类型`yyy`
+
+> Action check error: action `execute_script` related resource types `host` wrong
+
+传递的资源错误, 或者顺序与注册action的`releated_resource_types`顺序不一致
+
 
 ----
 
@@ -158,7 +227,16 @@
 
 ![-w2021](../../assets/HowTo/FAQ/ErrorCodes_3.png)
 
-当权限中心 SaaS 页面出现如上红框弹出提示时, 表示权限中心 SaaS api 调用报错需要查询 api 返回的结果, 找到结果中的 code, 根据以下排查方法排查问题
+当权限中心 SaaS 页面出现如上红框弹出提示时
+表示
+1. 回调接入系统接口失败
+2. 权限中心 SaaS api 调用报错
+
+点击复制, 可以获取的到报错详细信息, 根据信息分析原因
+
+1. 如果是回调接入系统失败, 可以查看  [常见: SaaS 回调接入系统失败](Debug/SaaS-Callback.md)
+2. 如果是其他原因, 需要查看 api 返回的结果, 找到结果中的 code(错误码), 根据本页错误码索引确定原因
+
 
 ### 2. api 请求的 request_id
 

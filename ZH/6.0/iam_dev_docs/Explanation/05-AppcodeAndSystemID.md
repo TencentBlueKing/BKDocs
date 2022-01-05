@@ -37,4 +37,4 @@ system_id 是接入系统注册到权限中心的唯一标识;
 
 此时, 多个 app_code 需要调用同一个 system_id 的接口进行策略查询/鉴权等操作
 
-解决方案: system 注册的时候, 声明了`clients=[app_code]`列表, 即允许哪些 app 可以调用这个系统的权限数据; 具体文档[系统(System) API](API/02-Model/10-System.md)
+解决方案: system 注册的时候, 声明了`clients=[app_code]`列表, 即允许哪些 app 可以调用这个系统的权限数据; 具体文档[系统(System) API](../Reference/API/02-Model/10-System.md)

@@ -27,3 +27,19 @@
 `update_*`操作需要确保资源存在
 
 `upsert_*` 操作不存在则创建/存在则更新. 建议尽量使用`upsert`操作
+
+## 5. 已经有最新版的 APIGateway 且有权限中心网关, do_migrate如何切换?
+
+注册权限模型也需要调用APIGateway接口，  需要替换一下[do_migrate.py文件](https://github.com/TencentBlueKing/iam-python-sdk/blob/0d9b67baa24144d3c84be12cc3cd4adfd487b74c/iam/contrib/iam_migration/utils/do_migrate.py) 
+
+然后使用新命令执行，
+
+`-t` 换成apigateway的 URL 之后, 多加一个 `--apigateway`
+
+新命令样例如下：
+
+```
+python3 do_migrate.py -t http://bk-iam.apigw.blueking.com/prod -f ./demo_model.json -a "demo" -s "c2cfbc92-28a2-420c-b567-cf7dc33cf29f" --apigateway
+```
+
+

@@ -14,8 +14,8 @@
 5. 确认 SaaS 服务的依赖`MySQL`/`Redis`/`RabbitMQ` 可达/正常
 
 如何确认权限中心后台服务可用?
-1. 确认后台服务可达 `curl -vv http://{IAM_HOST}/ping`, 正常应该返回`{"message": "pong"}`(可以使用[IAM-Debug CLI](./SelfHelp/DebugCLI.md)确认)
-2. 确认后台服务健康 `curl -vv http://{IAM_HOST}/healthz`, 正常应该返回`ok`(可以使用[IAM-Debug CLI](./SelfHelp/DebugCLI.md)确认)
+1. 确认后台服务可达 `curl -vv http://{IAM_HOST}/ping`, 正常应该返回`{"message": "pong"}`(可以使用[IAM-Debug CLI](../FAQ/Debug/SelfHelp/DebugCLI.md)确认)
+2. 确认后台服务健康 `curl -vv http://{IAM_HOST}/healthz`, 正常应该返回`ok`(可以使用[IAM-Debug CLI](../FAQ/Debug/SelfHelp/DebugCLI.md)确认)
 3. 查看后台服务的系统日志 `iam.log` 是否有异常堆栈信息(error) / `iam_api.log` 中的请求处理响应时间是否超过 100ms
 4. 确认后台服务所在机器的 `负载/网络/IO` 等正常
 5. 确认后台服务依赖的 `Redis`/`MySQL` 可达/正常; 查看后台日志 `iam_sql.log`是否有大量 SQL 慢请求日志

@@ -19,6 +19,12 @@
 
 ![-w2021](../../../assets/HowTo/FAQ/Debug/Callback_01.jpg)
 
+内容示例:
+
+```
+接入系统资源接口请求失败: bk_job's API response status code is `500`, should be 200! call bk_job's API fail! you should check the network/bk_job is available and bk_job's log for more info. request: [POST /iam/api/v1/resources/task/template body.data.method=fetch_instance_info](system_id=bk_job, resource_type_id=job_template)
+```
+
 注意这里 message 会包含的内容: 
 
 ```python

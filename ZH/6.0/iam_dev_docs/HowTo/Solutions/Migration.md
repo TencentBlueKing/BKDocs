@@ -78,25 +78,25 @@ json 文件格式
 
 | 操作代码                          | data 类型(链接文档)                                                                            | 行为                 | 注意                      |
 |:---|:---|:---|:---|
-| upsert_system                  | Map,[格式](../Reference/API/02-Model/10-System.md) | 新增或更新 system        | **推荐**                  |
+| upsert_system                  | Map,[格式](../../Reference/API/02-Model/10-System.md) | 新增或更新 system        | **推荐**                  |
 | add_system                    |   同上                                                                                | 新增 system           | 当 system 已存在时将新增失败        |
 | update_system                 |   同上                                                                             | 更新系统               | 不存在时将更新失败               |
-| upsert_resource_type           |   Map, [格式](../Reference/API/02-Model/11-ResourceType.md)                                                                              | 新增或更新 resource_type | **推荐**                  |
+| upsert_resource_type           |   Map, [格式](../../Reference/API/02-Model/11-ResourceType.md)                                                                              | 新增或更新 resource_type | **推荐**                  |
 | add_resource_type             |   同上                                                                                 | 新增 resource_type    | 当 resource_type 已存在时将新增失败 |
 | update_resource_type          |   同上                                                                               | 更新 resource_type    | 不存在时将更新失败               |
 | delete_resource_type          |    `{"id": "theid"}`                                                                               | 删除 resource_type    |                         |
-| upsert_instance_selection           |   Map, [格式](../Reference/API/02-Model/12-InstanceSelection.md)                                                                              | 新增或更新 instance_selection | **推荐**                  |
+| upsert_instance_selection           |   Map, [格式](../../Reference/API/02-Model/12-InstanceSelection.md)                                                                              | 新增或更新 instance_selection | **推荐**                  |
 | add_instance_selection             |   同上                                                                                 | 新增 instance_selection    | 当 instance_selection 已存在时将新增失败 |
 | update_instance_selection          |   同上                                                                               | 更新 instance_selection    | 不存在时将更新失败               |
 | delete_instance_selection          |    `{"id": "theid"}`                                                                               | 删除 instance_selection    |                         |
-| upsert_action                  |   Map, [格式](../Reference/API/02-Model/13-Action.md)                                                                                | 新增或更新 action        | **推荐**                  |
+| upsert_action                  |   Map, [格式](../../Reference/API/02-Model/13-Action.md)                                                                                | 新增或更新 action        | **推荐**                  |
 | add_action                    |   同上                                                                                | 新增 action           | 当 action 已存在时将新增失败        |
 | update_action                 |   同上                                                                                | 更新 action           | 不存在时将更新失败               |
 | delete_action                 |    `{"id": "theid"}`                                                                               | 删除 action           |                         |
-| upsert_action_groups          |   `array[map]` [格式](../Reference/API/02-Model/14-ActionGroup.md)  | 新增或更新操作组         |    **推荐** |
-| upsert_resource_creator_actions |  `Map`, [格式](../Reference/API/02-Model/19-ResourceCreatorAction.md)  | 新增或更新新建关联配置  |    **推荐**  |
-| upsert_common_actions|  `array[map]`, [格式](../Reference/API/02-Model/17-CommonActions.md)  | 新增或更新常用操作配置  |    **推荐**  |
-| upsert_feature_shield_rules |  `array[map]`, [格式](../Reference/API/02-Model/18-FeatureShieldRules.md)  | 新增或更新功能开关配置  |    **推荐**  |
+| upsert_action_groups          |   `array[map]` [格式](../../Reference/API/02-Model/14-ActionGroup.md)  | 新增或更新操作组         |    **推荐** |
+| upsert_resource_creator_actions |  `Map`, [格式](../../Reference/API/02-Model/19-ResourceCreatorAction.md)  | 新增或更新新建关联配置  |    **推荐**  |
+| upsert_common_actions|  `array[map]`, [格式](../../Reference/API/02-Model/17-CommonActions.md)  | 新增或更新常用操作配置  |    **推荐**  |
+| upsert_feature_shield_rules |  `array[map]`, [格式](../../Reference/API/02-Model/18-FeatureShieldRules.md)  | 新增或更新功能开关配置  |    **推荐**  |
 
 **建议:**: 如果 migration 中存在多个操作, `新增`建议使用`upsert`来实现, 而不是`add_`来实现, `add_`将会导致, 同一个 migration 只能执行一次; 重复执行会报错(资源已存在)
 

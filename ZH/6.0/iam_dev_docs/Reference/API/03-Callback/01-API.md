@@ -1,4 +1,5 @@
 # 资源拉取 API
+
 ## API 地址
 
 接入系统注册模型到权限中心时
@@ -23,14 +24,14 @@
 
 Request Header: 
 - [系统间调用接口鉴权:权限中心->接入系统](../01-Overview/03-APIAuth.md)
-
 - `Blueking-Language`  国际化多语言，值为：zh-cn 或 en，当值为 en 时，则接口数据返回中包含的 display_name 字段的值为英文，否则默认返回中文；
 -  `X-Request-Id`  请求 request_id, 请记录, 用于错误排查
 
 Response Header:
 -  `X-Request-Id`  将请求 Header 头里的 request_id 返回, 用于错误排查
 
-Response Body: 遵循蓝鲸官方 API 协议进行返回, `code != 0` 表示出错, `message`包含具体信息
+Response Body: 
+遵循蓝鲸官方 API 协议进行返回, `code != 0` 表示出错, `message`包含具体信息
 ```bash
 {
     "code": 0,
@@ -45,7 +46,7 @@ Response Body: 遵循蓝鲸官方 API 协议进行返回, `code != 0` 表示出�
 
 ## 协议
 
-- Method: POST
+- Method: `POST` (注意, 是`POST`)
 - Path: `system.provider_config.host` + `system.provider_config.path`
 - Request.Body:
 
