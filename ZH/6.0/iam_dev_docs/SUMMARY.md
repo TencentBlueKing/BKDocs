@@ -38,7 +38,6 @@
         * [错误码](HowTo/FAQ/ErrorCode.md)
         * [常见: SaaS 回调接入系统失败](HowTo/FAQ/Debug/SaaS-Callback.md)
         * [常见: SaaS 组织架构同步异常](HowTo/FAQ/Debug/SaaS-DeptSync.md)
-        * [常见: 接口错误汇总](HowTo/FAQ/Debug/API-Error.md)
         * [常见: 为什么有权限/无权限](HowTo/FAQ/Debug/PolicyAPIDebug.md)
         * [FAQ]()
             * [模型注册](HowTo/FAQ/Questions/Model.md)

@@ -100,7 +100,6 @@
     - [错误码](FAQ/ErrorCode.md)
     - [常见: SaaS 回调接入系统失败](FAQ/Debug/SaaS-Callback.md)
     - [常见: SaaS 组织架构同步异常](FAQ/Debug/SaaS-DeptSync.md)
-    - [常见: 接口错误汇总](FAQ/Debug/API-Error.md)
     - [常见: 为什么有权限/无权限](FAQ/Debug/PolicyAPIDebug.md)
     - [产品相关](../../权限中心/产品白皮书/常见问题/Diffv2v3.md)
 2. API

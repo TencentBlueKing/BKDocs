@@ -1,10 +1,13 @@
 # 问题排查指引
 
+如果有`错误码`, 优先看错误码
+
+- [错误码](ErrorCode.md)
+
 如果是下面这几类问题, 直接跳转到对应文档
 
 - [常见: SaaS 回调接入系统失败](Debug/SaaS-Callback.md)
 - [常见: SaaS 组织架构同步异常](Debug/SaaS-DeptSync.md)
-- [常见: 接口错误汇总](Debug/API-Error.md)
 - [常见: 为什么有权限/无权限](Debug/PolicyAPIDebug.md)
 
 ---

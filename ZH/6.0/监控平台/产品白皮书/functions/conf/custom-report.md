@@ -79,7 +79,7 @@
 
   使用 Python 语言 requests 库上报事件样例
 
-   ```python
+```python
 # -*- coding: utf-8 -*-
 import datetime
 import time
@@ -116,7 +116,7 @@ result = requests.post(PROXY_URL, data=json.dumps({
     }]
 }))
 print(result.text)
-   ```
+```
 
    返回内容：
 
