@@ -5,7 +5,7 @@
 | bkplugin_active_directory-2.3-official.tgz | 8.9M | [下载](https://bktencent-1252002024.file.myqcloud.com/bkplugin_active_directory-2.3-official.tgz) |             
 | bkplugin_apache-1.4-official.tgz           |  12M | [下载](https://bktencent-1252002024.file.myqcloud.com/bkplugin_apache-1.4-official.tgz) |   
 | bkplugin_ceph-2.4-official.tgz             | 6.5M | [下载](https://bktencent-1252002024.file.myqcloud.com/bkplugin_ceph-2.4-official.tgz) | 
-| bkplugin_consul-4.3-official.tgz           | 6.5M | [下载](https://bktencent-1252002024.file.myqcloud.com/bkplugin_consul-4.3-official.tgz) |   
+| bkplugin_consul-6.3-official.tgz           | 6.5M | [下载](https://bktencent-1252002024.file.myqcloud.com/bkplugin_consul-6.3-official.tgz) |   
 | bkplugin_elastic-2.3-official.tgz          | 6.5M | [下载](https://bktencent-1252002024.file.myqcloud.com/bkplugin_elastic-2.3-official.tgz) |    
 | bkplugin_exchange_server-2.3-official.tgz  | 8.9M | [下载](https://bktencent-1252002024.file.myqcloud.com/bkplugin_exchange_server-2.3-official.tgz) |            
 | bkplugin_haproxy-1.4-official.tgz          | 3.5M | [下载](https://bktencent-1252002024.file.myqcloud.com/bkplugin_haproxy-1.4-official.tgz) |    
