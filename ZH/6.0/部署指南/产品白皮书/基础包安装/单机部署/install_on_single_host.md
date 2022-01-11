@@ -34,7 +34,7 @@
     cp -a /data/src/yum /opt
     ```
 
-- 修改 bk_install 脚本
+- 修改 /data/install/bk_install 脚本
 
 ```bash
  sed -i '/start job/i\\t./pcmd.sh\ -m\ job\ \"sed -i '\'/JAVA_OPTS/c\ JAVA_OPTS="-Xms128m -Xmx128m"\'\ /etc/sysconfig/bk-job-*\" bk_install
