@@ -34,7 +34,7 @@
     cp -a /data/src/yum /opt
     ```
 
-- 修改 bk_install 脚本
+- 修改 /data/install/bk_install 脚本
 
 ```bash
  cd /data/install/
