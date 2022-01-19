@@ -3,11 +3,11 @@
 采集器 | 当前版本 | 包名
 ----|------|---
 basereport | 10.11.x | [basereport-10.11.66.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/basereport-10.11.66.tgz)
-processbeat | 1.17.x | [processbeat-1.18.69.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/processbeat-1.18.69.tgz)
+processbeat | 1.19.x | [processbeat-1.19.71.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/processbeat-1.19.71.tgz)
 exceptionbeat | 1.7.x | [exceptionbeat-1.8.44.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.8.44.tgz)
-bkmonitorbeat | 1.14.x | [bkmonitorbeat-1.14.114.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.14.114.tgz)
+bkmonitorbeat | 1.16.x | [bkmonitorbeat-1.16.118.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.16.118.tgz)
 bkmonitorproxy | 1.2.x | [bkmonitorproxy-1.2.43.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorproxy-1.2.43.tgz)
-bkunifylogbeat | 7.2.x | [bkunifylogbeat-7.2.77.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.2.77.tgz)
+bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.0.100.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.0.100.tgz)
 gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gsecmdline-2.0.3.tgz)
 
 ## 采集器版本日志
@@ -45,9 +45,15 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 ### processbeat
 
+- processbeat-1.19.71.tgz
+
+
+【修复】windows 默认子任务配置路径错误问题
+【修复】监控平台下发的进程监控任务，在windows下匹配命令行异常
+
 - processbeat-1.18.69.tgz
 
-【Bugfix】当监听IPv6的0.0.0.0时，不能正确匹配的问题
+【Bugfix】当监听 IPv6 的 0.0.0.0 时，不能正确匹配的问题
 
 - processbeat-1.17.68.tgz
 
@@ -79,6 +85,10 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 ### bkunifylogbeat
 
+- bkunifylogbeat-7.3.0.100.tgz
+
+【bugfix】修复日志采集卡主问题
+
 - bkunifylogbeat-7.2.77.tgz
 
 【修复】因采集配置差异移除 aix 采集模块（aix 可部署 7.1.x 版本）
@@ -101,6 +111,13 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 【优化】采集器默认监听最近 7 天的变更的文件
 
 ### bkmonitorbeat
+
+- bkmonitorbeat-1.16.118.tgz
+
+【重构】关闭trap的oid自动维度上报
+【优化】修改trap的content格式为json
+【优化】增加可配置的oid维度上报，oid翻译开关以及oid raw_byte处理配置
+【优化】prom采集每个指标追加一个采集时间
 
 - bkmonitorbeat-1.14.114.tgz
 
