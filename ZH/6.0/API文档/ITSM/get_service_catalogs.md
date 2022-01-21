@@ -1,23 +1,8 @@
-
-### 请求地址
-
-/api/c/compapi/v2/itsm/get_service_catalogs/
-
-
-
-### 请求方法
-
-GET
-
-
 ### 功能描述
 
 服务目录查询
 
 ### 请求参数
-
-
-#### 通用参数
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
@@ -31,7 +16,7 @@ GET
 | 字段  | 类型  | 必选  | 描述  |
 | --- | --- | --- | --- |
 |  has_service   |  string   |  否   |  默认返回全部服务目录，has_service="true"时只返回绑定了服务项的目录 |
-|  service_key   |  string   |  否   |  服务项 key 值，支持通过服务项 key 值过滤绑定了服务的服务目录 |
+|  service_key   |  string   |  否   |  服务项 key 值：change(变更)，event(事件)，request(请求)，question(问题)，支持通过服务项 key 值过滤绑定了服务的服务目录 |
 
 
 ### 请求参数示例

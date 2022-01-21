@@ -1,23 +1,8 @@
-
-### 请求地址
-
-/api/c/compapi/v2/monitor_v3/search_alarm_strategy/
-
-
-
-### 请求方法
-
-POST
-
-
 ### 功能描述
 
 查询告警策略
 
-### 接口参数
-
-
-#### 通用参数
+### 请求参数
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
@@ -25,6 +10,15 @@ POST
 | bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
 | bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+
+#### 通用参数
+
+| 字段          | 类型   | 必选 | 描述                                                         |
+| ------------- | ------ | ---- | ------------------------------------------------------------ |
+| bk_app_code   | string | 是   | 应用 ID                                                       |
+| bk_app_secret | string | 是   | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -> 点击应用 ID -> 基本信息 获取 |
+| bk_token      | string | 否   | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username   | string | 否   | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
@@ -41,12 +35,24 @@ POST
 
 ```json
 {
-  "bk_biz_id": 2,
-  "ids": [1, 2]
+    "bk_app_code": "xxx",
+    "bk_app_secret": "xxxxx",
+    "bk_token": "xxxx",
+    "bk_biz_id": 2,
+    "ids": [1, 2]
 }
 ```
 
 ### 响应参数
+
+| 字段    | 类型   | 描述         |
+| ------- | ------ | ------------ |
+| result  | bool   | 请求是否成功 |
+| code    | int    | 返回的状态码 |
+| message | string | 描述信息     |
+| data    | dict   | 数据         |
+
+#### data 字段说明
 
 | 字段        | 类型   | 描述             |
 | :---------- | ------ | ---------------- |
@@ -59,7 +65,7 @@ POST
 | scenario    | string | 监控对象         |
 | id          | int    | 策略 ID           |
 
-#### NoticeAction
+#### data.action_list
 
 | 字段                              | 类型   | 描述                    |
 | --------------------------------- | ------ | ----------------------- |
@@ -74,7 +80,7 @@ POST
 | notice_template.recovery_template | string | 恢复通知模板            |
 | notice_group_list                 | list   | 通知组列表(NoticeGroup) |
 
-#### NoticeGroup
+#### data.action_list.notice_group_list
 
 | 字段            | 类型   | 描述                                               |
 | --------------- | ------ | -------------------------------------------------- |
@@ -84,7 +90,7 @@ POST
 | message         | string | 备注                                               |
 | id              | int    | 通知组 ID                                           |
 
-#### Item
+#### item_list
 
 | 字段                      | 类型   | 描述                        |
 | ------------------------- | ------ | --------------------------- |
@@ -98,7 +104,7 @@ POST
 | no_data_config.continous  | int    | 无数据告警检测周期数        |
 | data_type_label           | string | 数据类型                    |
 
-#### RtQueryConfig
+#### item_list.rt_query_config
 
 | 字段            | 类型   | 描述     |
 | --------------- | ------ | -------- |
@@ -112,7 +118,7 @@ POST
 | agg_method      | string | 聚合方法 |
 | result_table_id | string | 结果表 ID |
 
-#### Algorithm
+#### item_list.algorithm_list
 
 | 字段                         | 类型   | 描述           |
 | ---------------------------- | ------ | -------------- |
@@ -131,7 +137,7 @@ POST
 ```json
 {
     "message": "OK",
-    "code": "0",
+    "code": 200,
     "data": [
         {
             "bk_biz_id": 2,
@@ -145,12 +151,12 @@ POST
                     "data_source_label": "bk_monitor",
                     "algorithm_list": [
                         {
-                            "algorithm_config": [
+                            "algorithm_config": [[
                                 {
                                     "threshold": 0.1,
                                     "method": "gte"
                                 }
-                            ],
+                            ]],
                             "update_time": "2019-11-22 14:50:23+0800",
                             "trigger_config": {
                                 "count": 1,
@@ -206,7 +212,7 @@ POST
                         "method": "eq",
                         "value": [
                             {
-                                "bk_target_ip": "10.0.1.10",
+                                "bk_target_ip": "10.0.0.1",
                                 "bk_target_cloud_id": 0
                             }
                         ]

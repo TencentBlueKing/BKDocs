@@ -1,15 +1,3 @@
-
-### 请求地址
-
-/api/c/compapi/v2/cc/resource_watch/
-
-
-
-### 请求方法
-
-POST
-
-
 ### 功能描述
 
 监听系统资源变化产生的事件(v3.8 以上)
@@ -33,7 +21,7 @@ POST
 * 支持主机与主机关系数据变化的事件 watch 能力。
 
 
-* 采用短长链的设计，当用户通过游标进行事件 watch 时，如果没有事件，则会保持会话连接，在 25s 内有事件变更则直接直接将事件推回。避免用户不断请求，同时保证用户能及时的拿到变更的数据。
+* 采用短长链的设计，当用户通过游标进行事件 watch 时，如果没有事件，则会保持会话连接，在 20s 内有事件变更则直接直接将事件推回。避免用户不断请求，同时保证用户能及时的拿到变更的数据。
 
 
 * 支持批量事件 watch 能力，提升系统吞吐能力。
@@ -44,15 +32,12 @@ POST
 
 ### 请求参数
 
-
-#### 通用参数
-
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code   | string | 是 | 应用 ID     |
+| bk_app_secret | string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token      | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username   | string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
@@ -62,7 +47,7 @@ POST
 | bk_fields           | array string   | 看情况 | 返回的事件中需要返回的字段列表，目前监听主机资源该字段为必填字段，不能置空，主机关系可以置空。置空则默认为返回所有字段。 |
 | bk_start_from       | Int64          | 否     | 监听事件的起始时间，该值为 unix time 的秒数，即为从 UTC1970 年 1 月 1 日 0 时 0 分 0 秒起至你要 watch 的时间点的总秒数。 |
 | bk_cursor           | string         | 否     | 监听事件的游标，代表了要开始或者继续 watch(监听)的事件地址，系统会返回这个游标的下一个、或一批事件。 |
-| bk_resource         | string         | 是     | 要监听的资源类型，枚举值为：host, host_relation, biz, set, module, set_template。其中 host 代表主机详情事件，host_relation 代表主机的关系事件，biz 代表业务详情事件，set 代表集群详情事件，module 代表模块详情事件，set_template 代表集群模板详情事件。 |
+| bk_resource         | string         | 是     | 要监听的资源类型，枚举值为：host, host_relation, biz, set, module, process。其中 host 代表主机详情事件，host_relation 代表主机的关系事件，biz 代表业务详情事件，set 代表集群详情事件，module 代表模块详情事件，process 代表进程详情事件。 |
 | bk_supplier_account | string         | 是     | 开发商账号                                                   |
 
 
@@ -193,3 +178,6 @@ POST
 
 1. 指定从某一时间开始监听事件
 2. 指定当前时间开始监听事件
+
+
+

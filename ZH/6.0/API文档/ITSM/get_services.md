@@ -1,23 +1,8 @@
-
-### 请求地址
-
-/api/c/compapi/v2/itsm/get_services/
-
-
-
-### 请求方法
-
-GET
-
-
 ### 功能描述
 
 服务列表查询，支持根据指定的目录查询服务列表
 
 ### 请求参数
-
-
-#### 通用参数
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
@@ -30,9 +15,10 @@ GET
 
 | 字段           | 类型     | 必选  | 描述     |
 | ------------ | ------ | --- | ------ |
-| catalog_id   | int    | 否   | 服务目录 id |
-| service_type | string | 否   | 服务类型   |
-| display_type | string | 否   | 可见范围   |
+| catalog_id   | int    | 否   | 服务目录 id，可在`服务目录查询`接口中`data["id"]`字段获取 |
+| service_type | string | 否   | 服务类型：change(变更)，event(事件)，request(请求)，question(问题)  |
+| display_type | string | 否   | 可见范围类型：GENERAL(通用角色表)，组织架构(ORGANIZATION)，第三方系统(API)  |
+| display_role | string | 否   | 可见范围: display_type 是 ORGANIZATION 时为角色 ID，GENERAL/API 时为系统唯一标识   |
 
 ### 请求参数示例
 
@@ -43,7 +29,8 @@ GET
     "bk_token": "xxxx",
     "catalog_id": 12,
     "service_type": "request",
-    "display_type": "IAM"
+    "display_type": "GENERAL",
+    "display_role": "GENERAL_8"
 }
 ```
 

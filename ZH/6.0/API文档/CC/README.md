@@ -7,6 +7,7 @@
 | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | [add_host_lock](./add_host_lock.md)                                                           | 新加主机锁                                                                   |
 | [add_host_to_resource](./add_host_to_resource.md)                                             | 新增主机到资源池                                                             |
+| [add_host_to_resource_pool](./add_host_to_resource_pool.md)                                   | 根据主机列表信息添加主机到指定 id 的资源池                                   |
 | [add_instance_association](./add_instance_association.md)                                     | 新建模型实例之间的关联关系                                                   |
 | [add_label_for_service_instance](./add_label_for_service_instance.md)                         | 为服务实例添加标签                                                           |
 | [batch_create_proc_template](./batch_create_proc_template.md)                                 | 批量创建进程模板                                                             |
@@ -14,13 +15,11 @@
 | [batch_delete_set](./batch_delete_set.md)                                                     | 批量删除集群                                                                 |
 | [batch_update_host](./batch_update_host.md)                                                   | 批量更新主机属性                                                             |
 | [batch_update_inst](./batch_update_inst.md)                                                   | 批量更新对象实例                                                             |
-| [bind_role_privilege](./bind_role_privilege.md)                                               | 绑定角色权限                                                                 |
 | [clone_host_property](./clone_host_property.md)                                               | 克隆主机属性                                                                 |
 | [create_biz_custom_field](./create_biz_custom_field.md)                                       | 创建业务自定义模型属性                                                       |
 | [create_business](./create_business.md)                                                       | 新建业务                                                                     |
 | [create_classification](./create_classification.md)                                           | 添加模型分类                                                                 |
 | [create_cloud_area](./create_cloud_area.md)                                                   | 创建云区域                                                                   |
-| [create_custom_query](./create_custom_query.md)                                               | 添加自定义查询                                                               |
 | [create_dynamic_group](./create_dynamic_group.md)                                             | 创建动态分组                                                                 |
 | [create_inst](./create_inst.md)                                                               | 创建实例                                                                     |
 | [create_module](./create_module.md)                                                           | 创建模块                                                                     |
@@ -32,10 +31,8 @@
 | [create_service_template](./create_service_template.md)                                       | 新建服务模板                                                                 |
 | [create_set](./create_set.md)                                                                 | 创建集群                                                                     |
 | [create_set_template](./create_set_template.md)                                               | 新建集群模板                                                                 |
-| [delete_business](./delete_business.md)                                                       | 删除业务                                                                     |
 | [delete_classification](./delete_classification.md)                                           | 删除模型分类                                                                 |
 | [delete_cloud_area](./delete_cloud_area.md)                                                   | 删除云区域                                                                   |
-| [delete_custom_query](./delete_custom_query.md)                                               | 删除自定义查询                                                               |
 | [delete_dynamic_group](./delete_dynamic_group.md)                                             | 删除动态分组                                                                 |
 | [delete_host](./delete_host.md)                                                               | 删除主机                                                                     |
 | [delete_host_lock](./delete_host_lock.md)                                                     | 删除主机锁                                                                   |
@@ -61,24 +58,26 @@
 | [find_host_topo_relation](./find_host_topo_relation.md)                                       | 获取主机与拓扑的关系                                                         |
 | [find_instance_association](./find_instance_association.md)                                   | 查询模型实例之间的关联关系                                                   |
 | [find_module_batch](./find_module_batch.md)                                                   | 批量查询某业务的模块详情                                                     |
-| [find_module_host_relation](./find_module_host_relation.md)                                   | 根据模块 ID 查询主机和模块的关系                                               |
+| [find_module_host_relation](./find_module_host_relation.md)                                   | 根据模块 ID 查询主机和模块的关系                                             |
 | [find_module_with_relation](./find_module_with_relation.md)                                   | 根据条件查询业务下的模块                                                     |
 | [find_object_association](./find_object_association.md)                                       | 查询模型之间的关联关系                                                       |
 | [find_set_batch](./find_set_batch.md)                                                         | 批量查询某业务的集群详情                                                     |
 | [find_topo_node_paths](./find_topo_node_paths.md)                                             | 查询业务拓扑节点的拓扑路径                                                   |
+| [find_host_relations_with_topo](./find_host_relations_with_topo.md)                           | 根据业务拓扑实例节点，查询该实例节点下的主机关系信息                         |
+| [find_biz_tree_brief_info](./find_biz_tree_brief_info.md)                                     | 查询业务 topo 树的简要信息，仅包含集群、模块与主机信息                       |
+| [find_audit_by_id](./find_audit_by_id.md)                                                     | 根据审计 ID 获取详细信息                                                     |
 | [get_biz_internal_module](./get_biz_internal_module.md)                                       | 查询业务的空闲机/故障机/待回收模块                                           |
-| [get_custom_query_data](./get_custom_query_data.md)                                           | 根据自定义查询获取数据                                                       |
-| [get_custom_query_detail](./get_custom_query_detail.md)                                       | 获取自定义查询详情                                                           |
 | [get_dynamic_group](./get_dynamic_group.md)                                                   | 查询指定动态分组                                                             |
 | [get_host_base_info](./get_host_base_info.md)                                                 | 获取主机详情                                                                 |
 | [get_mainline_object_topo](./get_mainline_object_topo.md)                                     | 查询主线模型的业务拓扑                                                       |
-| [get_operation_log](./get_operation_log.md)                                                   | 获取操作日志                                                                 |
 | [get_proc_template](./get_proc_template.md)                                                   | 获取进程模板                                                                 |
 | [get_service_template](./get_service_template.md)                                             | 获取服务模板                                                                 |
+| [get_biz_brief_cache_topo](./get_biz_brief_cache_topo.md)                                     | 根据业务 ID,查询该业务的全量简明拓扑树信息                                   |
+| [host_install_bk](./host_install_bk.md)                                                       | 安装主机到蓝鲸业务下                                                         |
 | [list_biz_hosts](./list_biz_hosts.md)                                                         | 查询业务下的主机                                                             |
 | [list_biz_hosts_topo](./list_biz_hosts_topo.md)                                               | 查询业务下的主机和拓扑信息                                                   |
-| [list_hosts_without_biz](./list_hosts_without_biz.md)                                         | 没有业务 ID 的主机查询                                                         |
-| [list_process_detail_by_ids](./list_process_detail_by_ids.md)                                 | 查询某业务下进程 ID 对应的进程详情                                             |
+| [list_hosts_without_biz](./list_hosts_without_biz.md)                                         | 没有业务 ID 的主机查询                                                       |
+| [list_process_detail_by_ids](./list_process_detail_by_ids.md)                                 | 查询某业务下进程 ID 对应的进程详情                                           |
 | [list_process_instance](./list_process_instance.md)                                           | 查询进程实例列表                                                             |
 | [list_proc_template](./list_proc_template.md)                                                 | 查询进程模板列表                                                             |
 | [list_resource_pool_hosts](./list_resource_pool_hosts.md)                                     | 查询资源池中的主机                                                           |
@@ -90,13 +89,16 @@
 | [list_service_template](./list_service_template.md)                                           | 服务模板列表查询                                                             |
 | [list_set_template](./list_set_template.md)                                                   | 查询集群模板                                                                 |
 | [list_set_template_related_service_template](./list_set_template_related_service_template.md) | 获取某集群模版下的服务模版列表                                               |
+| [list_host_detail_topology](./list_host_detail_topology.md)                                   | 根据主机条件信息查询主机详情及其所属的拓扑信息                               |
+| [list_operation_audit](./list_operation_audit.md)                                             | 根据条件获取操作审计日志                                                     |
+| [list_service_template_difference](./list_service_template_difference.md)                     | 列出服务模版和服务实例之间的差异                                             |
+| [list_process_related_info](./list_process_related_info.md)                                   | 点分五位查询进程实例的相关信息                                               |
 | [remove_label_from_service_instance](./remove_label_from_service_instance.md)                 | 从服务实例移除标签                                                           |
 | [resource_watch](./resource_watch.md)                                                         | 监听资源变化事件                                                             |
 | [search_biz_inst_topo](./search_biz_inst_topo.md)                                             | 查询业务实例拓扑                                                             |
 | [search_business](./search_business.md)                                                       | 查询业务                                                                     |
 | [search_classifications](./search_classifications.md)                                         | 查询模型分类                                                                 |
 | [search_cloud_area](./search_cloud_area.md)                                                   | 查询云区域                                                                   |
-| [search_custom_query](./search_custom_query.md)                                               | 查询自定义查询                                                               |
 | [search_dynamic_group](./search_dynamic_group.md)                                             | 搜索动态分组                                                                 |
 | [search_host_lock](./search_host_lock.md)                                                     | 查询主机锁                                                                   |
 | [search_hostidentifier](./search_hostidentifier.md)                                           | 根据条件查询主机身份                                                         |
@@ -111,11 +113,11 @@
 | [search_related_inst_asso](./search_related_inst_asso.md)                                     | 查询某实例所有的关联关系（包含其作为关联关系原模型和关联关系目标模型的情况） |
 | [search_set](./search_set.md)                                                                 | 查询集群                                                                     |
 | [search_subscription](./search_subscription.md)                                               | 查询订阅                                                                     |
-| [search_topo_tree](./search_topo_tree.md)                                                     | 搜索业务拓扑树                                                               |
 | [subscribe_event](./subscribe_event.md)                                                       | 订阅事件                                                                     |
 | [sync_set_template_to_set](./sync_set_template_to_set.md)                                     | 集群模板同步                                                                 |
 | [transfer_host_module](./transfer_host_module.md)                                             | 业务内主机转移模块                                                           |
 | [transfer_host_to_faultmodule](./transfer_host_to_faultmodule.md)                             | 上交主机到业务的故障机模块                                                   |
+| [transfer_host_to_recyclemodule](./transfer_host_to_recyclemodule.md)                         | 上交主机到业务的待回收模块                                                   |
 | [transfer_host_to_idlemodule](./transfer_host_to_idlemodule.md)                               | 上交主机到业务的空闲机模块                                                   |
 | [transfer_host_to_resourcemodule](./transfer_host_to_resourcemodule.md)                       | 上交主机至资源池                                                             |
 | [transfer_resourcehost_to_idlemodule](./transfer_resourcehost_to_idlemodule.md)               | 资源池主机分配至业务的空闲机模块                                             |
@@ -126,7 +128,6 @@
 | [update_business_enable_status](./update_business_enable_status.md)                           | 修改业务启用状态                                                             |
 | [update_classification](./update_classification.md)                                           | 更新模型分类                                                                 |
 | [update_cloud_area](./update_cloud_area.md)                                                   | 更新云区域                                                                   |
-| [update_custom_query](./update_custom_query.md)                                               | 更新自定义查询                                                               |
 | [update_dynamic_group](./update_dynamic_group.md)                                             | 更新动态分组                                                                 |
 | [update_event_subscribe](./update_event_subscribe.md)                                         | 修改订阅                                                                     |
 | [update_host](./update_host.md)                                                               | 更新主机属性                                                                 |

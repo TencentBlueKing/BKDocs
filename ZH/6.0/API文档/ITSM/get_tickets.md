@@ -1,23 +1,8 @@
-
-### 请求地址
-
-/api/c/compapi/v2/itsm/get_tickets/
-
-
-
-### 请求方法
-
-POST
-
-
 ### 功能描述
 
 获取单据
 
 ### 请求参数
-
-
-#### 通用参数
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
@@ -32,10 +17,11 @@ POST
 |-----------|------------|--------|------------|
 | sns        | array   | 否     | 根据单号列表过滤 |
 | creator   | string    | 否 | 根据单据创建人过滤 |
-| create_at__lte | string | 否 | 创建时间小于或等于，格式："YYYY-MM-DD hh:mm:ss" |
-| create_at__gte | string | 否 | 创建时间大于或等于，格式："YYYY-MM-DD hh:mm:ss" |
+| create_at__lte | string | 否 | 创建时间大于或等于，格式："YYYY-MM-DD hh:mm:ss" |
+| create_at__gte | string | 否 | 创建时间小于或等于，格式："YYYY-MM-DD hh:mm:ss" |
 | page         | int    | 否   | 请求页码，默认为 1     |
 | page_size    | int    | 否   | 每页数据量，默认为 10，最大 10000 |
+| username    | string    | 否   | 过滤该用户的待办，每页数据量，默认为 10，最大 10000 |
 
 ### 请求参数示例
 
@@ -45,7 +31,12 @@ POST
     "bk_app_code": "xxxx",
     "bk_token": "xxxx",
     "sns": ["NO2019091610001755"],
-    "create_at__lte": "2019-09-16 10:00:00"
+    "creator": "admin",
+    "create_at__lte": "2019-09-16 10:00:00",
+    "create_at__gte": "2020-09-16 10:00:00",
+    "page": 1,
+    "page_size": "10",
+    "username": "admin"
 }
 ```
 ### 返回结果示例

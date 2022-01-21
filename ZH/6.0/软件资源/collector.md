@@ -5,7 +5,7 @@
 basereport | 10.11.x | [basereport-10.11.66.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/basereport-10.11.66.tgz)
 processbeat | 1.19.x | [processbeat-1.19.71.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/processbeat-1.19.71.tgz)
 exceptionbeat | 1.7.x | [exceptionbeat-1.8.44.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.8.44.tgz)
-bkmonitorbeat | 1.16.x | [bkmonitorbeat-1.16.118.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.16.118.tgz)
+bkmonitorbeat | 1.17.x | [bkmonitorbeat-1.17.119.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.17.119.tgz)
 bkmonitorproxy | 1.2.x | [bkmonitorproxy-1.2.43.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorproxy-1.2.43.tgz)
 bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.0.100.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.0.100.tgz)
 gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gsecmdline-2.0.3.tgz)
@@ -49,7 +49,7 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 
 【修复】windows 默认子任务配置路径错误问题
-【修复】监控平台下发的进程监控任务，在windows下匹配命令行异常
+【修复】监控平台下发的进程监控任务，在 windows 下匹配命令行异常
 
 - processbeat-1.18.69.tgz
 
@@ -112,12 +112,16 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 ### bkmonitorbeat
 
+- bkmonitorbeat-1.17.119.tgz
+
+【Fixed】修复 UDP 拨测 Endtime 未赋值的问题
+
 - bkmonitorbeat-1.16.118.tgz
 
-【重构】关闭trap的oid自动维度上报
-【优化】修改trap的content格式为json
-【优化】增加可配置的oid维度上报，oid翻译开关以及oid raw_byte处理配置
-【优化】prom采集每个指标追加一个采集时间
+【重构】关闭 trap 的 oid 自动维度上报
+【优化】修改 trap 的 content 格式为 json
+【优化】增加可配置的 oid 维度上报，oid 翻译开关以及 oid raw_byte 处理配置
+【优化】prom 采集每个指标追加一个采集时间
 
 - bkmonitorbeat-1.14.114.tgz
 

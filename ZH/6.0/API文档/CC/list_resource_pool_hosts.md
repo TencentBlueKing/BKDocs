@@ -1,15 +1,3 @@
-
-### 请求地址
-
-/api/c/compapi/v2/cc/list_resource_pool_hosts/
-
-
-
-### 请求方法
-
-POST
-
-
 ### 功能描述
 
 查询资源池中的主机
@@ -83,8 +71,8 @@ POST
         "rules": [
         {
             "field": "bk_host_outerip",
-            "operator": "begins_with",
-            "value": "127.0"
+            "operator": "equal",
+            "value": "127.0.0.1"
         }, {
             "condition": "OR",
             "rules": [{

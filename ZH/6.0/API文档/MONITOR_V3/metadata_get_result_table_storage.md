@@ -1,23 +1,11 @@
 
-### 请求地址
-
-/api/c/compapi/v2/monitor_v3/metadata_get_result_table_storage/
-
-
-
-### 请求方法
-
-GET
-
 
 ### 功能描述
 
 查询一个结果表的指定存储信息
 根据给定的结果表 ID，返回这个结果表的具体存储集群信息
 
-
-
-#### 通用参数
+### 请求接口
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
@@ -25,6 +13,15 @@ GET
 | bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
 | bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+
+#### 通用参数
+
+| 字段          | 类型   | 必选 | 描述                                                         |
+| ------------- | ------ | ---- | ------------------------------------------------------------ |
+| bk_app_code   | string | 是   | 应用 ID                                                       |
+| bk_app_secret | string | 是   | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -> 点击应用 ID -> 基本信息 获取 |
+| bk_token      | string | 否   | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username   | string | 否   | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
@@ -38,6 +35,9 @@ GET
 
 ```json
 {
+    "bk_app_code": "xxx",
+  	"bk_app_secret": "xxxxx",
+  	"bk_token": "xxxx",
 	"result_table_list": "system.cpu",
 	"storage_type": "elasticsearch"
 }
@@ -45,31 +45,40 @@ GET
 
 ### 返回结果
 
-#### 字段说明
+| 字段       | 类型   | 描述         |
+| ---------- | ------ | ------------ |
+| result     | bool   | 请求是否成功 |
+| code       | int    | 返回的状态码 |
+| message    | string | 描述信息     |
+| data       | dict   | 数据         |
+| request_id | string | 请求 ID       |
+
+#### data 字段说明
 
 | 字段                | 类型   | 描述     |
 | ------------------- | ------ | -------- |
 | table_id | int | 结果表 ID |
-| storage_info | array | 存储集群信息 |
+| storage_info | list | 存储集群信息 |
 
 ###### 对于 storage_info，各个元素内容说明如下
+
 | 字段                | 类型   | 描述     |
 | ------------------- | ------ | -------- |
-| storage_config | object | 存储集群特性，各个存储下字段不一致 |
-| cluster_config | object | 存储集群信息 |
+| storage_config | dict | 存储集群特性，各个存储下字段不一致 |
+| cluster_config | dict | 存储集群信息 |
 | cluster_type | string | 存储集群类型 |
-| auth_info | object | 身份认证信息 | 
+| auth_info | dict | 身份认证信息 |
 
 #### 结果示例
 
 ```json
 {
     "message":"OK",
-    "code":"0",
+    "code":200,
     "data":{
         "system.cpu": {
             "table_id": "system.cpu",
-    	    "storage_info": [{
+            "storage_info": [{
                 "storage_config": {
                     "index_datetime_format": "%Y%m%h", 
                     "slice_size": 400,
@@ -89,7 +98,7 @@ GET
                     "username": "admin",
                     "password": "password"
                 }
-    	    }]
+            }]
         }
 
     },

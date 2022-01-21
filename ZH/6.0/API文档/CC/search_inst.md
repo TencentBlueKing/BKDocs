@@ -1,15 +1,3 @@
-
-### 请求地址
-
-/api/c/compapi/v2/cc/search_inst/
-
-
-
-### 请求方法
-
-POST
-
-
 ### 功能描述
 
 根据关联关系实例查询模型实例
@@ -18,15 +6,12 @@ POST
 
 ### 请求参数
 
-
-#### 通用参数
-
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code   | string | 是 | 应用 ID     |
+| bk_app_secret | string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token      | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username   | string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
@@ -35,6 +20,7 @@ POST
 | bk_obj_id           | string     | 是     | 模型 ID                      |
 | page                | object     | 是     | 分页参数                    |
 | condition           | object     | 否     | 具有关联关系的模型实例查询条件                    |
+| time_condition      | object     | 否     | 按时间查询模型实例的查询条件 |
 | fields              | map     | 否     | 指定查询模型实例返回的字段,key 为模型 ID，value 为该查询模型要返回的模型属性字段|
 
 #### page
@@ -52,6 +38,21 @@ POST
 | field     |string      |是      | 取值为模型的字段名                                               |
 | operator  |string      |是      | 取值为：$regex $eq $ne                                           |
 | value     |string      |是      | field 配置的模型字段名所对应的值                                  |          
+
+#### time_condition
+
+| 字段   | 类型   | 必选 |  描述              |
+|-------|--------|-----|--------------------|
+| oper  | string | 是  | 操作符，目前只支持 and |
+| rules | array  | 是  | 时间查询条件         |
+
+#### rules
+
+| 字段   | 类型   | 必选 | 描述                             |
+|-------|--------|-----|----------------------------------|
+| field | string | 是  | 取值为模型的字段名                  |
+| start | string | 是  | 起始时间，格式为 yyyy-MM-dd hh:mm:ss |
+| end   | string | 是  | 结束时间，格式为 yyyy-MM-dd hh:mm:ss |          
 
 
 ### 请求参数示例
@@ -74,11 +75,21 @@ POST
         ]
     },
     "condition": {
-        "host": [
+        "user": [
             {
                 "field": "operator",
                 "operator": "$regex",
                 "value": "admin"
+            }
+        ]
+    },
+    "time_condition": {
+        "oper": "and",
+        "rules": [
+            {
+                "field": "create_time",
+                "start": "2021-05-13 01:00:00",
+                "end": "2021-05-14 01:00:00"
             }
         ]
     }

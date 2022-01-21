@@ -2,7 +2,6 @@
 
 | 资源名称                                                  | 资源描述                                                        |
 | --------------------------------------------------------- | --------------------------------------------------------------- |
-| [department_ancestor](./department_ancestor.md)           | 查询部门全部祖先 (旧版接口，不推荐使用，后续会下架，请尽快迁移) |
 | [list_department_profiles](./list_department_profiles.md) | 查询部门的用户信息 (v2)                                         |
 | [list_departments](./list_departments.md)                 | 查询部门 (v2)                                                   |
 | [list_profile_departments](./list_profile_departments.md) | 查询用户的部门信息 (v2)                                         |

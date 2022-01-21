@@ -1,30 +1,15 @@
-
-### 请求地址
-
-/api/c/compapi/v2/cc/batch_create_proc_template/
-
-
-
-### 请求方法
-
-POST
-
-
 ### 功能描述
 
 批量创建进程模板
 
 ### 请求参数
 
-
-#### 通用参数
-
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code   | string | 是 | 应用 ID     |
+| bk_app_secret | string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token      | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username   | string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
@@ -37,7 +22,7 @@ POST
 
 ### 请求参数示例
 
-```python
+```json
 {
   "bk_biz_id": 1,
   "service_template_id": 1,
@@ -51,9 +36,28 @@ POST
           "auto_time_gap": {
             "as_default_value": false
           },
-          "bind_ip": {
+          "bind_info": {
             "as_default_value": true,
-            "value": "1"
+            "value": [
+              {
+                "ip": {
+                  "value": "2",
+                  "as_default_value": true
+                },
+                "port": {
+                  "value": "1",
+                  "as_default_value": false
+                },
+                "protocol": {
+                  "value": "2",
+                  "as_default_value": false
+                },
+                "enable": {
+                  "value": false,
+                  "as_default_value": false
+                }
+              }
+            ]
           },
           "bk_biz_id": {
             "as_default_value": true,
@@ -99,10 +103,6 @@ POST
             "as_default_value": true,
             "value": ""
           },
-          "port": {
-            "as_default_value": true,
-            "value": "8000,8001,8003,8004"
-          },
           "priority": {
             "as_default_value": true,
             "value": 1
@@ -110,10 +110,6 @@ POST
           "proc_num": {
             "as_default_value": true,
             "value": 1
-          },
-          "protocol": {
-            "as_default_value": true,
-            "value": "1"
           },
           "reload_cmd": {
             "as_default_value": true,
@@ -141,7 +137,7 @@ POST
           },
           "work_path": {
             "as_default_value": true,
-            "value": "/data/bkce"
+            "value": "/data/bkee"
           },
           "bk_start_param_regex": {
             "as_default_value": true,
@@ -155,7 +151,7 @@ POST
 
 ### 返回结果示例
 
-```python
+```json
 {
   "result": true,
   "code": 0,
