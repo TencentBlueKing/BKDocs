@@ -1,15 +1,3 @@
-
-### 请求地址
-
-/api/c/compapi/v2/cc/search_hostidentifier/
-
-
-
-### 请求方法
-
-POST
-
-
 ### 功能描述
 
 根据条件查询主机身份

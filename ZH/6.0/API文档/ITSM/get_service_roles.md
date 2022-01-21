@@ -1,23 +1,8 @@
-
-### 请求地址
-
-/api/c/compapi/v2/itsm/get_service_roles/
-
-
-
-### 请求方法
-
-GET
-
-
 ### 功能描述
 
 获取服务角色
 
 ### 请求参数
-
-
-#### 通用参数
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
@@ -30,7 +15,7 @@ GET
 
 | 字段        | 类型     | 必选  | 描述                         |
 | --------- | ------ | --- | -------------------------- |
-| service_id | string    | 是   | 服务 id |
+| service_id | string    | 是   | 服务 id，从`服务列表查询`中的`data["id"]`字段获取 |
 | ticket_creator     | string    | 否   | 提单人，实例化 leader 和提单人本身时使用 |
 
 
@@ -42,7 +27,7 @@ GET
     "bk_app_code": "xxxx", 
     "bk_token": "xxxx",
     "service_id": 1,
-    "ticket_creator": "xx"
+    "ticket_creator": "admin"
 }  
 ```
 
@@ -56,7 +41,7 @@ GET
 			"id": 92580,
 			"name": "节点1",
 			"processors_type": "GENERAL",
-			"processors": "xxxx",
+			"processors": "xx",
 			"sign_type": "or"
 		},
 		{
@@ -70,7 +55,7 @@ GET
 			"id": 92582,
 			"name": "节点3",
 			"processors_type": "PERSON",
-			"processors": "xxxx",
+			"processors": "xxx",
 			"sign_type": "and"
 		}
 	],

@@ -1,15 +1,3 @@
-
-### 请求地址
-
-/api/c/compapi/v2/cc/list_hosts_without_biz/
-
-
-
-### 请求方法
-
-POST
-
-
 ### 功能描述
 
 没有业务信息的主机查询
@@ -82,8 +70,8 @@ POST
         "rules": [
             {
                 "field": "bk_host_innerip",
-                "operator": "begins_with",
-                "value": "192.168"
+                "operator": "equal",
+                "value": "127.0.0.1"
             },
             {
                 "condition": "OR",

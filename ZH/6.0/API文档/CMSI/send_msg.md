@@ -57,7 +57,7 @@ POST
 
 ### 请求参数示例
 
-```python
+```json
 {
     "bk_app_code": "esb-test",
     "bk_app_secret": "esb-test-secret",
@@ -71,7 +71,7 @@ POST
 
 ### 返回结果示例
 
-```python
+```json
 {
     "result": true,
     "code": 0,

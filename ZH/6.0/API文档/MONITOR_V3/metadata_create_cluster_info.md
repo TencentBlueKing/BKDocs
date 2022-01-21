@@ -1,23 +1,11 @@
 
-### 请求地址
-
-/api/c/compapi/v2/monitor_v3/metadata_create_cluster_info/
-
-
-
-### 请求方法
-
-POST
-
 
 ### 功能描述
 
 创建存储集群配置
 根据给定的配置参数，创建一个存储集群配置
 
-
-
-#### 通用参数
+### 请求参数
 
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
@@ -25,6 +13,15 @@ POST
 | bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
 | bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
 | bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+
+#### 通用参数
+
+| 字段          | 类型   | 必选 | 描述                                                         |
+| ------------- | ------ | ---- | ------------------------------------------------------------ |
+| bk_app_code   | string | 是   | 应用 ID                                                       |
+| bk_app_secret | string | 是   | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -> 点击应用 ID -> 基本信息 获取 |
+| bk_token      | string | 否   | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username   | string | 否   | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
@@ -36,32 +33,43 @@ POST
 | port   | int | 是   | 存储集群端口 |
 | operator | string | 是 | 创建者 |
 | description   | string | 否   | 存储集群描述信息 |
-| auth_info | object | 否 | 集群身份验证信息 |
-| version | string | 否 | 集群版本信息 | 
-| custom_label | string | 否 | 自定义标签 | 
-| schema | string | 否 | 强行配置 schema，可用于配置 https 等情形 | 
-| is_ssl_verify | bool | 否 | 是否需要跳过 SSL\TLS 认证 | 
+| auth_info | dict | 否 | 集群身份验证信息 |
+| version | string | 否 | 集群版本信息 |
+| custom_label | string | 否 | 自定义标签 |
+| schema | string | 否 | 强行配置 schema，可用于配置 https 等情形 |
+| is_ssl_verify | bool | 否 | 是否需要跳过 SSL\TLS 认证 |
 
 #### 请求示例
 
 ```json
 {
-	"cluster_name": "first_influxdb",
-	"cluster_type": "influxDB",
-	"domain_name": "influxdb.service.consul",
-	"operator": "admin",
-	"auth_info": {
-	  "username": "username",
-	  "password": "password"
-	},
-	"port": 9052,
-	"description": "描述信息"
+    "bk_app_code": "xxx",
+    "bk_app_secret": "xxxxx",
+    "bk_token": "xxxx",
+    "cluster_name": "first_influxdb",
+    "cluster_type": "influxDB",
+    "domain_name": "influxdb.service.consul",
+    "operator": "admin",
+    "auth_info": {
+        "username": "username",
+        "password": "password"
+    },
+    "port": 9052,
+    "description": "描述信息"
 }
 ```
 
 ### 返回结果
 
-#### 字段说明
+| 字段       | 类型   | 描述         |
+| ---------- | ------ | ------------ |
+| result     | bool   | 请求是否成功 |
+| code       | int    | 返回的状态码 |
+| message    | string | 描述信息     |
+| data       | dict   | 数据         |
+| request_id | string | 请求 id       |
+
+#### data 字段说明
 
 | 字段                | 类型   | 描述     |
 | ------------------- | ------ | -------- |
@@ -72,7 +80,7 @@ POST
 ```json
 {
     "message":"OK",
-    "code":"0",
+    "code":200,
     "data":{
     	"cluster_id": 1001
     },

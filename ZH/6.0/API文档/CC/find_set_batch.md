@@ -1,30 +1,15 @@
-
-### 请求地址
-
-/api/c/compapi/v2/cc/find_set_batch/
-
-
-
-### 请求方法
-
-POST
-
-
 ### 功能描述
 
 根据业务 id 和集群实例 id 列表，以及想要获取的属性列表，批量获取指定业务下集群的属性详情 (v3.8.6)
 
 ### 请求参数
 
-
-#### 通用参数
-
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code   | string | 是 | 应用 ID     |
+| bk_app_secret | string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token      | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username   | string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 

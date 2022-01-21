@@ -1,30 +1,15 @@
-
-### 请求地址
-
-/api/c/compapi/v2/cc/list_service_instance_detail/
-
-
-
-### 请求方法
-
-POST
-
-
 ### 功能描述
 
 根据业务 id 查询服务实例列表(带进程信息)，可再附加上模块 id 等查询条件
 
 ### 请求参数
 
-
-#### 通用参数
-
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code   | string | 是 | 应用 ID     |
+| bk_app_secret | string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token      | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username   | string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
@@ -46,7 +31,7 @@ POST
 
 ### 请求参数示例
 
-```python
+```json
 
 {
   "bk_biz_id": 1,
@@ -69,7 +54,7 @@ POST
 
 ### 返回结果示例
 
-```python
+```json
 {
   "result": true,
   "code": 0,
@@ -81,7 +66,7 @@ POST
       {
         "bk_biz_id": 1,
         "id": 49,
-        "name": "10.27.0.9_p1_81",
+        "name": "p1_81",
         "service_template_id": 50,
         "bk_host_id": 11,
         "bk_module_id": 56,
@@ -94,7 +79,6 @@ POST
         "process_instances": [
           {
             "process": {
-              "bk_biz_id": 1,
               "proc_num": 0,
               "stop_cmd": "",
               "restart_cmd": "",
@@ -102,25 +86,29 @@ POST
               "bk_process_id": 43,
               "bk_func_name": "p1",
               "work_path": "",
-              "bind_ip": "0.0.0.0",
               "priority": 0,
               "reload_cmd": "",
               "bk_process_name": "p1",
-              "port": "81",
               "pid_file": "",
               "auto_start": false,
-              "auto_time_gap": 0,
               "last_time": "2019-07-22T09:54:50.927+08:00",
               "create_time": "2019-07-22T09:54:50.927+08:00",
               "bk_biz_id": 3,
               "start_cmd": "",
-              "bk_func_id": "",
               "user": "",
               "timeout": 0,
-              "protocol": "1",
               "description": "",
               "bk_supplier_account": "0",
-              "bk_start_param_regex": ""
+              "bk_start_param_regex": "",
+              "bind_info": [
+                {
+                    "enable": true,
+                    "ip": "127.0.0.1",
+                    "port": "80",
+                    "protocol": "1",
+                    "template_row_id": 1234
+                }
+              ]
             },
             "relation": {
               "bk_biz_id": 1,
@@ -172,7 +160,9 @@ POST
 |create_time|string|创建时间||
 |last_time|string|修复时间||
 |bk_supplier_account|string|供应商 ID||
+|service_category_id|integer|服务分类 ID||
 |process_instances|数组|进程实例信息|包括||
 |bk_biz_id|int|业务 ID|业务 ID||
 |process_instances.process|object|进程实例详情|进程属性字段||
 |process_instances.relation|object|进程实例的关联信息|比如主机 ID，进程模板 ID||
+

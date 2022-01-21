@@ -46,7 +46,7 @@ API 主要包含以下几种方法：get, create/add, update, delete, find/searc
 使用 SDK 包访问 API 有两种方式 shortcuts 或 ComponentClient。使用示例如下：
 
 - shortcuts -- get_client_by_request
-```python
+```json
     from blueking.component.shortcuts import get_client_by_request
     # 默认从django settings中获取APP认证信息：应用ID和安全密钥
     # 默认从django request中获取用户登录态bk_token
@@ -57,7 +57,7 @@ API 主要包含以下几种方法：get, create/add, update, delete, find/searc
 ```
 
 - shortcuts -- get_client_by_user
-```python
+```json
     from blueking.component.shortcuts import get_client_by_user
     # 默认从django settings中获取APP认证信息：应用ID和安全密钥
     # 默认从user中获取username，user为User对象或直接为User中username数据
@@ -69,7 +69,7 @@ API 主要包含以下几种方法：get, create/add, update, delete, find/searc
 ```
 
 - ComponentClient
-```python
+```json
      from blueking.component.client import ComponentClient
      # APP应用ID
      bk_app_code = 'xxx'
@@ -97,7 +97,7 @@ SDK 包默认包含系统提供的所有 API；
 - 在 APP 开发框架 blueking/component/apis 目录下，创建系统包文件，如系统名称为 agent，可创建系统包文件 agent.py
 - 系统包文件中添加 API 信息，如 agent.py 中添加 create_task 的访问入口
 
-```python
+```json
 # -*- coding: utf-8 -*-
 from ..base import ComponentAPI
 
@@ -116,7 +116,7 @@ class CollectionsAGENT(object):
 
 - 在 blueking/component/collections.py 中加入系统 API 文件信息（若已加入则忽略此步骤）
 
-```python
+```json
 # 导入路径
 from .apis.agent import CollectionsAGENT
 

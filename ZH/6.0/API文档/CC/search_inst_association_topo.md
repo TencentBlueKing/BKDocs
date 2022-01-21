@@ -1,30 +1,15 @@
-
-### 请求地址
-
-/api/c/compapi/v2/cc/search_inst_association_topo/
-
-
-
-### 请求方法
-
-POST
-
-
 ### 功能描述
 
 查询实例关联拓扑
 
 ### 请求参数
 
-
-#### 通用参数
-
 | 字段 | 类型 | 必选 |  描述 |
 |-----------|------------|--------|------------|
-| bk_app_code  |  string    | 是 | 应用 ID     |
-| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
-| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
-| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+| bk_app_code   | string | 是 | 应用 ID     |
+| bk_app_secret | string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token      | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username   | string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
 
 #### 接口参数
 
@@ -47,28 +32,30 @@ POST
 
 ### 返回结果示例
 
-```python
-
+```json
 {
-    "result": true,
-    "code": 0,
-    "message": "",
-    "data": [{
-        "bk_inst_id":0,
-		"bk_inst_name": "",
-		"bk_obj_icon": "icon-cc-business",
-		"bk_obj_id": "biz",
-		"bk_obj_name": "业务",
-        "count": 1,
-		"children": [{
-			"bk_inst_id": 2,
-			"bk_inst_name": "蓝鲸",
-			"bk_obj_icon": "",
-			"bk_obj_id": "biz",
-			"bk_obj_name": "业务"
-		}],
-
-	}]
+    "result":true,
+    "code":0,
+    "message":"",
+    "data":[
+        {
+            "bk_inst_id":0,
+            "bk_inst_name":"",
+            "bk_obj_icon":"icon-cc-business",
+            "bk_obj_id":"biz",
+            "bk_obj_name":"业务",
+            "count":1,
+            "children":[
+                {
+                    "bk_inst_id":2,
+                    "bk_inst_name":"蓝鲸",
+                    "bk_obj_icon":"",
+                    "bk_obj_id":"biz",
+                    "bk_obj_name":"业务"
+                }
+            ]
+        }
+    ]
 }
 ```
 

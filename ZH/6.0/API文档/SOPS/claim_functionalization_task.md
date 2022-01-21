@@ -1,14 +1,10 @@
-
 ### 请求地址
 
-/api/c/compapi/v2/sops/claim_functionalization_task/
-
-
+/v2/sops/claim_functionalization_task/
 
 ### 请求方法
 
 POST
-
 
 ### 功能描述
 
@@ -43,33 +39,41 @@ POST
 
 ### 请求参数示例
 
-```bash
+```plain
 {
     "bk_app_code": "esb_test",
     "bk_app_secret": "xxx",
     "bk_token": "xxx",
+    "bk_username":"xxx",
     "bk_biz_id": "2",
     "task_id": "8",
     "constants": {
         "${bk_timing}": "100"
-    }
+    },
+    "name": "xxx",
+    "scope": "cmdb_biz"
 }
 ```
 
 ### 返回结果示例
 
-```bash
+```plain
 {
     "data": "success",
     "result": true, 
-    "code": 0
+    "code": 0,
+    "request_id": "xxx",
+    "trace_id": "xxx"
 }
 ```
 
 ### 返回结果说明
+
 |   名称   |  类型  |           说明             |
 | ------------ | ---------- | ------------------------------ |
 |  result      |    bool    |      true/false 操作是否成功     |
 |  data        |    string  |      result=true 时成功数据, "success" |
 |  code        |    int     |      结果状态码                  |
 |  message     |    string  |      result=false 时错误信息     |
+|  request_id     |    string  |      esb 请求 id     |
+|  trace_id     |    string  |      open telemetry trace_id     |
