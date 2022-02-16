@@ -2,7 +2,7 @@
     <html lang="zh-cn">
     <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <link href="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/default.css" rel="stylesheet">
+    <link href="F:\v_awjliu\BKDocs\ZH/default.css" rel="stylesheet">
     </head>
     <body>
     <h1 id="_1">产品简介</h1>
@@ -19,7 +19,7 @@
 <li><strong>索引集</strong>：一个或多个符合一定条件的 ES 索引的集合，检索和监控的前提都要形成索引集。具体的使用查看 <a href="../functions/manager/index_es.md">索引集管理</a></li>
 <li>
 <p><strong>数据分类</strong>：数据分类是基于采集对象来确定的，这个数据的分类基本同监控分类的相同。使用了这个数据上也将追加这个数据标签。内置的数据维度也会有所区别。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/concepts/media/15774260466296.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/concepts/media/15774260466296.jpg" /></p>
 <ol>
 <li><strong>应用</strong>：指的是用户使用应用的情况，应用的运营数据。如 移动端的使用情况，业务应用的登陆数等</li>
 <li><strong>服务</strong>：指的是运行在服务器操作系统之上的服务模块。如 数据库， 进程等。对应 CMDB-服务拓扑，对于多实例的数据采集时会有所区分</li>
@@ -28,9 +28,9 @@
 </ol>
 </li>
 </ul><h1 id="_1">产品架构图</h1>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/concepts/media/16105969707033.jpg" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/concepts/media/16105969707033.jpg" /></p>
 <p><center>日志平台工作流程[简易版]</center></p>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/concepts/media/16105970600853.jpg" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/concepts/media/16105970600853.jpg" /></p>
 <p><center>完整日志平台产品功能</center></p><h1 id="_1">准备工作</h1>
 <p>在正式使用日志平台之前有些准备工作做好了会事半功倍。</p>
 <h2 id="_2">了解日志平台</h2>
@@ -48,9 +48,9 @@
 <p>具体可以查看<a href="perm.md">权限申请</a>。</p>
 <h2 id="_5">安装日志采集器插件</h2>
 <p>日志采集功能依赖日志采集器 bkunifylogbeat，在节点管理进行安装。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/quickstart/media/16044598148362.jpg" /></p><h1 id="_1">权限申请</h1>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/quickstart/media/16044598148362.jpg" /></p><h1 id="_1">权限申请</h1>
 <p>日志平台的权限申请接入了权限中心，所以需要申请日志平台的使用权限主要是通过权限中心操作。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/quickstart/media/16044605625554.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/quickstart/media/16044605625554.jpg" /></p>
 <p>具体有两种申请方式：</p>
 <ol>
 <li>创建权限用户组，如 xx 业务运维组，可以由权限的管理员添加对应的人，或者申请加入该组</li>
@@ -62,7 +62,7 @@
 <li>日志检索：如运维，开发，测试，产品等。适用申请查看类操作</li>
 <li>日志配置者：如运维。适用于申请查看+管理类操作</li>
 </ul>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/quickstart/media/16044606162659.jpg" /></p><h1 id="_1">使用指引</h1>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/quickstart/media/16044606162659.jpg" /></p><h1 id="_1">使用指引</h1>
 <p>日志平台快速入门的简单指引，方便快速的了解和使用日志平台。分为三个阶段：</p>
 <ul>
 <li>第一个阶段： 数据接入</li>
@@ -73,16 +73,16 @@
 <p>想对日志进行查询，告警等其他处理，需要先把日志采集入库。 日志接入有三个方法：</p>
 <p>方法一： 直接采集，直接通过日志采集器，采集目标服务器上面的日志文件。 </p>
 <p><code>导航 →  管理 → 数据接入 →  采集接入 →  新建</code> </p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/quickstart/media/16049158688127.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/quickstart/media/16049158688127.jpg" /></p>
 <p>更多使用方法查看<a href="../functions/manager/collect_log.md">日志采集</a></p>
 <p>方法二：第三方 ES 接入，已经通过其他方式采集日志到 ES 存储，可以直接进行配置使用</p>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/quickstart/media/16049160893702.jpg" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/quickstart/media/16049160893702.jpg" /></p>
 <p>更多使用方法查看<a href="../functions/manager/third_es.md">第三方 ES 接入</a></p>
 <p>方法三： 接入计算平台的日志数据，仅限于企业版</p>
 <p>更多使用方法查看<a href="../functions/manager/bkdata.md">计算平台日志接入</a></p>
 <h2 id="_3">阶段二：日志检索</h2>
 <p>日志检索查看日志内容，通过查询语句，上下文等功能，方便问题的定位。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/quickstart/media/16049823259300.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/quickstart/media/16049823259300.jpg" /></p>
 <p>更多功能实用查看<a href="../functions/search_log.md">日志检索功能</a></p>
 <h2 id="_4">阶段三：日志告警</h2>
 <p>线上出线问题，通过日志检索定位分析问题，总是有些被动，添加上一次常规的告警，可以更快的发现问题。</p>
@@ -92,37 +92,37 @@
 <li>日志字段的汇聚统计告警，可以通过字段提取功能格式化日志，并且进行汇聚通过指标的阈值类告警</li>
 </ol>
 <h3 id="_5">日志关键字告警</h3>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/quickstart/media/16049823473941.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/quickstart/media/16049823473941.jpg" /></p>
 <p>更多方法查看<a href="../guide/keyword_monitor.md">日志关键字监控</a></p>
 <h3 id="_6">日志汇聚告警</h3>
 <p>日志汇聚的告警是监控平台完全打通了日志平台的数据，只要日志数据的字段符合数值类型的为指标，字符串的为维度就可以实现日志的汇聚告警。 直接在监控平台进行<code>策略</code>指标添加。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/quickstart/media/16049175632146.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/quickstart/media/16049175632146.jpg" /></p>
 <p>更多方法查看<a href="../../../监控平台/产品白皮书/guide/log_monitor.md">日志汇聚告警</a></p><h1 id="_1">如何进行日志关键字监控</h1>
 <p>日志关键字监控是一种非常常见的监控需求，进行日志关键字监控有两个入口。</p>
 <h2 id="_2">入口一：日志检索</h2>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/guide/media/16049822432594.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/guide/media/16049822432594.jpg" /></p>
 <p>在日志平台进行检索后，想进行监控的添加可以直接跳转到监控平台进行日志关键字的策略添加。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/guide/media/16044615554456.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/guide/media/16044615554456.jpg" /></p>
 <h2 id="_3">入口二：直接在监控平台添加</h2>
 <p>第一步：策略新建，选择日志关键字。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/guide/media/16044616192990.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/guide/media/16044616192990.jpg" /></p>
 <p>第二步：选择索引集，注意数据分类的选择。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/guide/media/16044616536169.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/guide/media/16044616536169.jpg" /></p>
 <p>第三步：进入到第一种方法的添加界面进行相应的策略内容补充。</p><h1 id="_1">接入计算平台的日志</h1>
 <blockquote>
 <p>企业版包含计算平台</p>
 </blockquote>
 <p>在计算平台完成日志的采集、清洗和存储，具体操作可查看计算平台相关指引。</p>
 <p><strong>导航路径</strong>：管理  →  索引集管理  →  新建</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-20-24.jpg" /></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-22-43.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-20-24.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-22-43.jpg" /></p>
 <blockquote>
 <p><strong>注意：</strong> 一个索引集下面添加多个索引时，各索引的字段要保持一致。提交后数据源类型不可变更。</p>
 </blockquote><h1 id="_1">日志检索</h1>
 <p>日志检索主要是用来快速定位问题，避免在服务器端进行日志的查询，优点是性能高效和工具便捷。</p>
 <h2 id="_2">前置步骤</h2>
 <p>能够进行日志的检索，需要已经有数据源的接入并且形成<strong>索引集</strong>，才可以用来检索和监控。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/15774208779344.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/15774208779344.jpg" /></p>
 <h2 id="_3">功能列表</h2>
 <ul>
 <li>日志检索和展示</li>
@@ -135,27 +135,27 @@
 <h2 id="_4">功能介绍</h2>
 <h3 id="_5">检索语句</h3>
 <p>支持 QueryString 语法和正则匹配。具体的查询语法查看<a href="addenda/query_string.md">query string 详解</a>。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/16049823794094.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/16049823794094.jpg" /></p>
 <h3 id="_6">过滤条件</h3>
 <p><strong>添加过滤条件</strong>可以更精确的定位到日志内容。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/15774202479538.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/15774202479538.jpg" /></p>
 <h3 id="ip">IP 快选</h3>
 <p><strong>IP 快选</strong>通过关联 CMDB 的业务拓扑，控制日志检索范围。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/15774202841325.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/15774202841325.jpg" /></p>
 <h3 id="_7">实时日志</h3>
 <p><strong>实时日志滚动。</strong></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/15774198565565.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/15774198565565.jpg" /></p>
 <p><strong>上下文查看。</strong></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/15774198794995.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/15774198794995.jpg" /></p>
 <h3 id="_8">字段显示和排序</h3>
 <p><strong>字段显示和顺序，还有多列排序功能。</strong></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/15774197718914.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/15774197718914.jpg" /></p>
 <h3 id="_9">查询收藏</h3>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/16044636516379.jpg" /></p><h1 id="_1">采集接入</h1>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/16044636516379.jpg" /></p><h1 id="_1">采集接入</h1>
 <p>日志采集是通过日志服务的自有链路，通过实时流的方式将日志采集到服务端，并且还可以在采集过程中运行 Agent 端的过滤和服务端的字段提取功能，可以快速的实现日志的格式化需求。</p>
 <h2 id="_2">前置步骤</h2>
 <p>日志采集原理</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774222247800.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774222247800.jpg" /></p>
 <h2 id="_3">功能列表</h2>
 <ul>
 <li>新建采集</li>
@@ -174,13 +174,13 @@
 <li>(4) 完成</li>
 </ul>
 <h3 id="_6">采集配置</h3>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774247992632.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774247992632.jpg" /></p>
 <ul>
 <li>日志类型：先仅支持行日志文件，支持 Windows 和 Linux 系统</li>
 <li>数据分类：具体查看术语解释 <a href="../../concepts/glossary.md">数据分类</a></li>
 <li>采集目标：可以基于静态 IP 采集，也可以使用动态模块方式采集。动态采集就将随着 CMDB 模块的主机变化自动增删</li>
 </ul>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774247261632.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774247261632.jpg" /></p>
 <ul>
 <li>日志路径：<ul>
 <li>日志是绝对路径</li>
@@ -195,11 +195,11 @@
 <blockquote>
 <p>注意：在当前离开采集还是在继续异步执行的，但没有完成存储设置，所以在 24 小后没有完成第三步的存储，采集任务会被强制停用。</p>
 </blockquote>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774268164786.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774268164786.jpg" /></p>
 <h3 id="_8">字段提取</h3>
 <p>非必需项，适用场景需要对日志进行格式化的时候，适用于需要对日志进行汇聚和维度的监控需求时。</p>
 <p>字段提取提供三种提取方式：JSON，分隔符，正则表达式。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774269753258.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774269753258.jpg" /></p>
 <h4 id="_9">正则提取</h4>
 <p>格式说明：</p>
 <p>正则提取使用的是 Go 的正则语法：有两种形式，一种是普通提取组，另一种是命名提取组。这里使用的是命名提取组语法。</p>
@@ -215,14 +215,14 @@
 <p><a href="https://www.debuggex.com/">在线正则表达式调试页面</a></p>
 <h4 id="json">JSON 方式</h4>
 <p>采集上报的日志是标准的 JSON 格式，只提取第一级的 key。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774405468816.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774405468816.jpg" /></p>
 <h4 id="_10">分隔符</h4>
 <p>通过分隔符来确定需要的字段内容，当前支持：竖线，逗号，反引号，空格，分号。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774276571600.jpg" /></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774290884163.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774276571600.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774290884163.jpg" /></p>
 <h3 id="_11">存储</h3>
 <p>采集的数据存储的索引名，在索引集中会使用到。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774271280504.jpg" /></p><h1 id="es">第三方 ES 接入</h1>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/manager/media/15774271280504.jpg" /></p><h1 id="es">第三方 ES 接入</h1>
 <p>第三方 ES 接入的场景主要是解决，已存在的 ES 集群接入日志服务使用，或者是从采集入到第三方的集群中。</p>
 <h2 id="_1">前置步骤</h2>
 <h3 id="_2">功能介绍</h3>
@@ -230,7 +230,7 @@
 <li>先接入 ES 集群</li>
 </ul>
 <p>导航路径：管理  →  数据接入  →  ES 源接入  →  新建</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-30-30.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-30-30.jpg" /></p>
 <p>输入完整的 ES 集群地址后，进行连通性测试，测试通过方可保存。</p>
 <blockquote>
 <p>第三方 ES 集群版本支持 &gt;=5.4 ， 测试验证过 5.4 到 7 的版本。</p>
@@ -240,7 +240,7 @@
 </ul>
 <p>接入第三方 ES 的集群后，要能够真正的使用起来，还需要创建索引集才可以使用。</p>
 <p>导航路径：管理  →  索引集管理  →  新建</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-26-59.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-26-59.jpg" /></p>
 <p>支持“*”匹配多个索引，要求所有匹配到的索引的字段一致，并且索引必须包含一个时间字段，否则无法完成接入。</p>
 <ul>
 <li>采集接入</li>
@@ -248,7 +248,7 @@
 <p>想把采集数据接入到第三方 ES 的集群，在采集的时候选择第三方的 ES 集群即可。具体查看<a href="collect_log.md">采集接入</a></p><h1 id="_1">索引集管理</h1>
 <p>索引集管理为管理员提供索引集的增、删、查、改功能。</p>
 <p>存储在 ES 中的日志要先通过建立索引集，才能进行查询。查询的对象为索引集。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-12-11-03-07.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-12-11-03-07.jpg" /></p>
 <p><strong>索引集列表字段解读</strong></p>
 <p>索引集：用户自定义索引集合的名称，支持中英文。</p>
 <p>索引：保存在 ES 中的 index。</p>
@@ -263,13 +263,13 @@
 <h2 id="_2">新建索引集</h2>
 <p>在日志检索内采集接入的日志，会自动创建对应的索引集。</p>
 <p>其他情况需要管理员手动创建索引集。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-10-29-12.jpg" /></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-10-29-37.jpg" /></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-10-14-41.jpg" /></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-10-16-53.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-10-29-12.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-10-29-37.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-10-14-41.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-10-16-53.jpg" /></p>
 <h2 id="_3">编辑索引集</h2>
 <p>编辑索引集可修改索引集名称、数据分类、增删索引、修改授权，不能修改数据源类型。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-10-31-15.jpg" /></p><h1 id="_1">计算平台快速接入</h1>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-10-31-15.jpg" /></p><h1 id="_1">计算平台快速接入</h1>
 <p>通过接入计算平台，快速接入日志平台。（仅限企业版）</p>
 <h2 id="_2">接入步骤</h2>
 <h3 id="_3">数据采集</h3>
@@ -277,26 +277,26 @@
 <li>通过计算平台完成数据采集</li>
 </ul>
 <p>导航路径：计算平台  →  数据集成  →  新接入数据源</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/manager/media/16049162018738.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/manager/media/16049162018738.jpg" /></p>
 <h3 id="_4">数据清洗</h3>
 <ul>
 <li>采集完成后，进行数据清洗，具体清洗流程根据数据特点，参照计算平台清洗说明进行</li>
 </ul>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/bkdata_qingxi.png" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/bkdata_qingxi.png" /></p>
 <h3 id="_5">数据入库</h3>
 <ul>
 <li>清洗后新建入库，将数据入库到 ES 后，即可在日志平台查询</li>
 </ul>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/manager/media/16049162364973.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/manager/media/16049162364973.jpg" /></p>
 <p>入库配置项说明：</p>
 <p>分词：一般比较长的文本可以选择，入库时会对文本按 ES 标准分词器进行分词。</p>
 <p>聚合：入库 es 时会把 doc_values 设为 true，设置后在日志平台可用来做排序。</p>
 <p>json：数据如果是 dict 类型，并且需要对子级进行查询可以选择。</p><h2 id="_1">日志提取管理</h2>
 <p>业务接入日志平台之后，就可以启用日志提取功能，权限由运维同学维护，首先需要对下载目录以及人员进行设置后，方可下载。</p>
 <p>路径：管理  →  日志提取  →  新增</p>
-<p><img alt="log_download_1.png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/log_download_1.png" /></p>
+<p><img alt="log_download_1.png" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/log_download_1.png" /></p>
 <p>点击“新增”后，按照提示完成权限设置：</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/log_download/media/16049180992760.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/log_download/media/16049180992760.jpg" /></p>
 <blockquote>
 <p>注意：执行人需要有 job 的操作执行权限才可以。</p>
 </blockquote>
@@ -304,28 +304,28 @@
 <li>权限请谨慎开放，避免过度授权。</li>
 </ul>
 <p>授权目录可以按照大区或模块选择：</p>
-<p><img alt="log_download_1.png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/log_download_3.png" /></p>
+<p><img alt="log_download_1.png" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/log_download_3.png" /></p>
 <p>新增完之后，可以在管理页面看到具体内容。</p><h2 id="_1">日志提取</h2>
 <p>在“日志提取”菜单页面中新建下载任务。</p>
-<p><img alt="log_download_1.png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/log_download_5.png" /></p>
+<p><img alt="log_download_1.png" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/log_download_5.png" /></p>
 <p>根据提示输入内容，输入过程请详细阅读提示内容：</p>
-<p><img alt="log_download_1.png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/log_download_6.png" /></p>
+<p><img alt="log_download_1.png" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/log_download_6.png" /></p>
 <ul>
 <li>目录支持通配符，以“/”结尾则查看子目录，否则直接查询目录下的所有文件</li>
 <li>单台服务器，单次最多下载 100 个文件，考虑到效率问题，建议最小范围选择需要下载的内容</li>
 </ul>
 <p>提交任务后，可在任务列表中查看任务状态，并下载文件：</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/log_download/media/16049182688454.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/log_download/media/16049182688454.jpg" /></p>
 <ul>
 <li>运维同学可以查看所有下载列表，其他授权用户，可以查看个人下载历史</li>
 <li>下载任务 24 小时候过期，请及时下载</li>
 </ul><p>实际业务中，一次请求需要关联到多个任务模块，因此，就需要一些可以帮助理解系统行为、用于分析性能问题的工具，以便发生故障的时候，能够快速定位和解决问题。想要在请求上下文中理解分布式系统的行为，就需要监控那些横跨了不同的模块、不同的服务器之间的关联动作，最终完成整个链路的追踪动作。</p>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/trace_1_2.png" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/trace_1_2.png" /></p>
 <p>图例：的一次检索操作的调用示例(通过 demo 业务--全链路跟踪进行体验）
 全链路跟踪核心步骤一般有三个：代码埋点，数据存储、查询展示。</p>
 <p>全链路监控支持 OpenTracing（OpenTelemetry）开源协议，符合协议标准的日志均可采集接入。</p>
 <h2 id="_1">数据结构</h2>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/trace_1_1.png" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/trace_1_1.png" /></p>
 <p>图例：opentracing 数据结构示例</p>
 <h2 id="_2">数据上报</h2>
 <p>集成 SDK：OpenTelemetry 同时提供包括 Java | C# | Go | JavaScript | Python | Rust | C++ | Erlang/Elixir 在内的各种 SDK，以及各种封装可用的常见框架以及库，如 MySQL | Redis | Django | Kafka | Jetty | Akka | RabbitMQ | Spring | Flask | net/http | gorilla/mux | WSGI | JDBC | PostgreSQL 等，用户可以非常方便的获取使用，优点是接入快效率高。
@@ -335,47 +335,47 @@ OpenTelemetry 官网地址：https://opentelemetry.io/</p>
 <h2 id="_3">数据采集&amp;中转</h2>
 <p>数据上报初代码埋点外，同时涉及数据上报方式，sdk 接入过程中需要设置 exporter，而自主实现过程中，同样可以选择日志落地本地磁盘，还是网络传输形式落地到指定的 collector。
 内部游戏业务推荐使用 tlog(tglog)方式接入，一则技术方案熟悉，二则性能稳定有保障，目前多个业务以 tlog 形式接入；同时用户可以选择 kafka 等其它组件作为 collector，平台侧同样支持对数据进行处理入库。</p>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/trace_1_3.png" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/trace_1_3.png" /></p>
 <p>图例：tlog 接入表字段定义示例（opentracing）</p>
 <h2 id="_4">数据清洗</h2>
 <p>通过蓝鲸计算平台，可以对数据进行清洗，数据清洗模板示例：</p>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/trace_1_4.png" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/trace_1_4.png" /></p>
 <p>清洗之后，数据入库 ES，字段设置：</p>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/trace_1_5.png" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/trace_1_5.png" /></p>
 <h2 id="_5">索引集接入</h2>
 <p>管理-&gt;索引集管理-&gt;新建</p>
 <ul>
 <li>是否为 trace 日志：是</li>
 <li>数据源：从计算平台中选择对应的索引集</li>
 </ul>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/trace_1_6.png" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/trace_1_6.png" /></p>
 <p>至此，就可以正常使用全链路相关功能。</p><h2 id="_1">统计预览</h2>
 <p>检索首页可以便捷使用时间、耗时、场景、服务、操作名等查询条件进行过滤查找用户想要获取的信息。平台以耗时图、返回码等维度对结果进行统计分析。
 当只有时间、场景为查询条件时，检索结果以 trace 维度进行聚合及统计；否则，结果以 span 维度进行统计及展示，两种方式结合，准确表达查询意图。目前系统默认按照场景/服务类别进行聚合统计（需在接入或者清洗时入库相关字段，详情见接入指引文档），后续会优化为按照用户接入时自定义字段进行聚合，满足用户多种多样需求。
 按照返回码聚合：</p>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/trace_2_1.png" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/trace_2_1.png" /></p>
 <p>按照服务场景进行聚合：</p>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/trace_2_2.png" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/trace_2_2.png" /></p>
 <p>同时，用户也可以在搜索框输入具体信息，包括具体的 traceid、spanid 或者具体的错误日志等进行查询。</p>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/trace_2_3.png" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/trace_2_3.png" /></p>
 <h2 id="trace">Trace 详情查询</h2>
 <p>通过检索获取到响应的 trace 后，点击 traceID 可以查询 trace 详情。
 trace 详情展示，按调用关系、耗时两个维度进行展示。</p>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/trace_2_4.png" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/trace_2_4.png" /></p>
 <p>其中：
 - 调用关系图显示各个节点(span)之间的调用关系：
     - 绿色节点为返回值正常节点，红色为异常节点
     - 带角标的节点表示其与父节点的关系为同步执行关系，否则为异步执行节点。
 - 瀑布图展示节点的执行耗时，同时瀑布图增加“仅显示同步请求”开关，用来在调用关系复杂时，可以更准确的了解到关键路径的信息。</p>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/trace_2_5.png" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/trace_2_5.png" /></p>
 <h2 id="_2">节点详情展示</h2>
 <p>点击具体节点后，会详细显示节点的具体内容，上下游 IP，调用时间，耗时等信息均可详细展示：</p>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/media/trace_2_6.png" /></p><h1 id="_1">检索语法指南</h1>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/media/trace_2_6.png" /></p><h1 id="_1">检索语法指南</h1>
 <p>在日志检索当中，使用了标准的 Elasticsearch QueryString，基本支持所有语法。下面是基础的语法介绍。</p>
 <h2 id="querystring">QueryString 简介</h2>
 <p>查询后台会根据 QueryString 传入的文本信息进行解析，解析的语法原则是根据具体的操作符进行分割判断，并对分割后的每一段进行独立分析，然后进行查询分析。
 如图：</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/addenda/media/16049824548149.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/addenda/media/16049824548149.jpg" /></p>
 <p>查询语句 (Mozilla) OR (Chrome)</p>
 <p>查询语句会根据操作分成 Mozilla 和 Chrome 两个部分，每个部分都会被查询后台独立进行分析。</p>
 <blockquote>
@@ -384,18 +384,18 @@ trace 详情展示，按调用关系、耗时两个维度进行展示。</p>
 <h2 id="querystring_1">QueryString 语法</h2>
 <h3 id="_2">基础语法</h3>
 <p>上面提到 QueryString 的内容会被解析成词语或者操作符，词语可以是单词-如 MozillaORChrome，也可以是个短语语句，被双引号包围<code>"Mozilla\/5.0" AND "KHTML,like Gecko"</code>。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-25-42.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-25-42.jpg" /></p>
 <h3 id="_3">查询指定字段</h3>
 <p>默认情况下 QueryString 会将查询内容解析到所有的字段（_all），可以通过字段设定固定查询具体的字段。</p>
 <p>例：查询 agent 里面包含 Mozilla。</p>
 <p><code>agent:Mozilla</code></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-26-46.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-26-46.jpg" /></p>
 <p>例：查询 agent 里面包含 Mozilla 或者 X11 或者 4.0。</p>
 <p><code>agent: Mozilla OR X11 OR 4.0</code></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-27-23.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-27-23.jpg" /></p>
 <p>例：查询 agent 里面具体的短语（使用双引号包裹）。</p>
 <p><code>agent: "KHTML,like Gecko"</code></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-27-47.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-27-47.jpg" /></p>
 <p>例：查询 geo. 通配符含有 CN 的内容。</p>
 <p><code>geo.\*:CN</code></p>
 <p>例：查询 geo.src 非空</p>
@@ -406,7 +406,7 @@ trace 详情展示，按调用关系、耗时两个维度进行展示。</p>
 <p>* 替换一个 0 个或者多个字符。</p>
 <p>这个与正则表达式类似。</p>
 <p>如查询 <code>agent: M?zi*a</code>。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-29-42.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-29-42.jpg" /></p>
 <blockquote>
 <p>注意：通配符查询是会消耗大量内存的，在一个短语或者词语中存在多个通配符，会导致大量的词语列入搜索范围。</p>
 </blockquote>
@@ -416,31 +416,31 @@ trace 详情展示，按调用关系、耗时两个维度进行展示。</p>
 <h3 id="_5">正则表达式</h3>
 <p>正则表达式模式嵌套可以再 Query String 中使用，使用时需要将查询内容包裹在两个正斜杠中（“/”）。</p>
 <p>如：<code>agent: /[L-N].*z*l{2}a/</code></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-30-54.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-30-54.jpg" /></p>
 <h3 id="_6">模糊查询</h3>
 <p>可以带波浪号对末尾模糊查询。</p>
 <p><code>agent: Mozill~</code></p>
 <p>可以针对短语进行模糊查询。</p>
 <p><code>agent:"KHTML Gecko"~2</code></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-33-42.jpg" /></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-33-47.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-33-42.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-14-33-47.jpg" /></p>
 <h3 id="_7">范围查询</h3>
 <p>范围查询是针对时间、数字和字符串类型的字段使用的。</p>
 <p>范围查询的操作符主要是 []和{}，其中[]是闭合查询，{}非闭合查询。</p>
 <p>例：查询 Bytes 字段从 8023 到 9057 区间内的数据，包含 8023 和 9057。</p>
 <p><code>bytes: [8823 TO 9057]</code></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-36-50.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-36-50.jpg" /></p>
 <p>例：查询时间字段是时间类型的区间。</p>
 <p><code>timestamp:[2019-08-01T19:56:00 TO 2019-08-01T22:00:00]</code></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-37-16.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-37-16.jpg" /></p>
 <p>例：查询 Bytes 字段从 8023 到 9057 区间内的数据，不包含 9057。</p>
 <p><code>bytes: [8823 TO 9057}</code></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-37-35.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-37-35.jpg" /></p>
 <h2 id="bool">Bool 操作符</h2>
 <p>回顾一个最基础的查询</p>
 <p><code>agent: Mozilla X11 4.0 5.0</code></p>
 <p>在这个查询当中，所有的短语都是可选的，也就是会得到如下的结果：</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-39-23.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-39-23.jpg" /></p>
 <p>如果希望对查询操作有更多的控制，可以通过 Bool 操作符如：</p>
 <p><code>agent: Mozilla X11 +4.0 -5.0</code></p>
 <p>对于这个查询的理解，</p>
@@ -448,7 +448,7 @@ trace 详情展示，按调用关系、耗时两个维度进行展示。</p>
 <p>4.0 是必须的，</p>
 <p>5.0 是不能存在的，</p>
 <p>得到如下的结果：</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-39-57.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-39-57.jpg" /></p>
 <p>以上的查询可以被理解成：</p>
 <p><code>agent: ((Mozilla AND 4.0) OR (X11 AND 4.0) OR 4.0) AND NOT 5.0</code></p>
 <p>相比而言使用 Bool 操作符就能够简单获得需要的结果。</p>
@@ -456,16 +456,16 @@ trace 详情展示，按调用关系、耗时两个维度进行展示。</p>
 <p><code>agent: ((Mozilla AND 4.0) OR (X11 AND 4.0) OR 4.0) AND NOT 5.0</code></p>
 <p>上面的这种查询就是分组的示例，还可以针对不同的字段进行条件分组。</p>
 <p><code>bytes: "2189" AND agent: ((Mozilla AND 4.0) OR (X11 AND 4.0) OR 4.0) AND NOT 5.0</code></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-40-46.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-40-46.jpg" /></p>
 <h2 id="_9">特殊字符的转义</h2>
 <p>如果希望查询的内容当中是包含日志检索的操作符，那么需要在 Query String 当中进行转义，通过反斜杠进行转义，需要转义的字符如下：</p>
 <p><code>+ - = &amp;&amp; || &gt;&lt; ! ( ) { } [ ] ^ " ~ * ? : \ /</code></p>
 <p>如果忘记了转义会导致查询报错。</p>
 <p>如希望查询 agent 是 Mozilla/5.0 (X11; Linux x86_64; rv:6.0a1) Gecko/20110421 Firefox/6.0a1。</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-41-20.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-41-20.jpg" /></p>
 <p>通过转义，</p>
 <p><code>agent:Mozilla\/5.0 \(X11; Linux x86_64; rv\:6.0a1\) Gecko\/20110421 Firefox\/6.0a1</code></p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-41-42.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/media/2019-12-13-17-41-42.jpg" /></p>
 <p>转义后会转成分词的模式进行查询。</p><h1 id="_1">正则提取参考</h1>
 <p><a href="https://www.debuggex.com/">在线正则调试地址</a></p>
 <h2 id="nginx">Nginx 日志正则提取参考</h2>
@@ -477,7 +477,7 @@ trace 详情展示，按调用关系、耗时两个维度进行展示。</p>
 
 
 <p>效果：</p>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/addenda/media/15774255970249.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/addenda/media/15774255970249.jpg" /></p>
 <p>正则参考语法样例：</p>
 <pre class="codehilite"><code class="language-bash">([^\s]*)              # 匹配 $http_host
 (\d+\.\d+\.\d+\.\d+)  # 匹配 $server_addr,$remote_addr
@@ -501,7 +501,7 @@ $                     # 匹配每行数据的结局</code></pre>
 
 
 <h2 id="_2">正则小语法</h2>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/日志平台/产品白皮书/functions/addenda/media/15795124339602.jpg" /></p><h1 id="_1">常见通配符</h1>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/日志平台/产品白皮书/functions/addenda/media/15795124339602.jpg" /></p><h1 id="_1">常见通配符</h1>
 <table>
 <thead>
 <tr>
@@ -542,258 +542,7 @@ $                     # 匹配每行数据的结局</code></pre>
 <td abc_xyz_123="abc,xyz,123">a</td>
 </tr>
 </tbody>
-</table><h2 id="api">蓝鲸日志平台 API 简介</h2>
-<table>
-<thead>
-<tr>
-<th>资源名称</th>
-<th>资源描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="./esquery_search.md">esquery_search</a></td>
-<td>日志查询接口</td>
-</tr>
-</tbody>
-</table><h3 id="_1">请求地址</h3>
-<p>/api/c/compapi/v2/log_search/esquery_search/</p>
-<h3 id="_2">请求方法</h3>
-<p>POST</p>
-<h3 id="_3">功能描述</h3>
-<p>日志查询接口</p>
-<h3 id="_4">请求参数</h3>
-<h4 id="_5">通用参数</h4>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>类型</th>
-<th>必选</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bk_app_code</td>
-<td>string</td>
-<td>是</td>
-<td>应用 ID</td>
-</tr>
-<tr>
-<td>bk_app_secret</td>
-<td>string</td>
-<td>是</td>
-<td>安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取</td>
-</tr>
-<tr>
-<td>bk_token</td>
-<td>string</td>
-<td>否</td>
-<td>当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取</td>
-</tr>
-<tr>
-<td>bk_username</td>
-<td>string</td>
-<td>否</td>
-<td>当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户</td>
-</tr>
-</tbody>
 </table>
-<h4 id="_6">接口参数</h4>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>类型</th>
-<th>必选</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>indices</td>
-<td>string</td>
-<td>是</td>
-<td>索引列表</td>
-</tr>
-<tr>
-<td>scenario_id</td>
-<td>string</td>
-<td>否</td>
-<td>ES 接入场景(非必填） 默认为 log，蓝鲸计算平台：bkdata 原生 ES：es 日志采集：log</td>
-</tr>
-<tr>
-<td>storage_cluster_id</td>
-<td>int</td>
-<td>否</td>
-<td>当 scenario_id 为 es 或 log 时候需要传入</td>
-</tr>
-<tr>
-<td>time_field</td>
-<td>string</td>
-<td>否</td>
-<td>时间字段（非必填，bkdata 内部为 dtEventTimeStamp，外部如果传入时间范围需要指定时间字段）</td>
-</tr>
-<tr>
-<td>start_time</td>
-<td>string</td>
-<td>否</td>
-<td>开始时间</td>
-</tr>
-<tr>
-<td>end_time</td>
-<td>string</td>
-<td>否</td>
-<td>结束时间</td>
-</tr>
-<tr>
-<td>time_range</td>
-<td>string</td>
-<td>否</td>
-<td>时间标识符符["15m", "30m", "1h", "4h", "12h", "1d", "customized"]（非必填，默认 15m）</td>
-</tr>
-<tr>
-<td>query_string</td>
-<td>string</td>
-<td>否</td>
-<td>搜索语句 query_string(非必填，默认为*)</td>
-</tr>
-<tr>
-<td>filter</td>
-<td>list</td>
-<td>否</td>
-<td>搜索过滤条件（非必填，默认为没有过滤，默认的操作符是 is） 操作符支持 is、is one of、is not、is not one of</td>
-</tr>
-<tr>
-<td>start</td>
-<td>int</td>
-<td>否</td>
-<td>起始位置（非必填，类似数组切片，默认为 0）</td>
-</tr>
-<tr>
-<td>size</td>
-<td>int</td>
-<td>否</td>
-<td>条数（非必填，控制返回条目，默认为 500）</td>
-</tr>
-<tr>
-<td>aggs</td>
-<td>dict</td>
-<td>否</td>
-<td>ES 的聚合参数</td>
-</tr>
-<tr>
-<td>highlight</td>
-<td>dict</td>
-<td>否</td>
-<td>高亮参数</td>
-</tr>
-</tbody>
-</table>
-<h3 id="_7">请求参数示例</h3>
-<pre class="codehilite"><code class="language-json">{
-    &quot;indices&quot;: &quot;index_a,index_b,&quot;,
-    &quot;scenario_id&quot;: &quot;bkdata&quot;,
-    &quot;start_time&quot;: &quot;2019-06-11 00:00:00&quot;,
-    &quot;end_time&quot;: &quot;2019-06-12 11:11:11&quot;,
-    &quot;time_range&quot;: &quot;customized&quot;,
-    &quot;keyword&quot;: &quot;error&quot;,
-    &quot;filter&quot;: [
-        {
-            &quot;field&quot;: &quot;ip&quot;,
-            &quot;operator&quot;: &quot;is&quot;,
-            &quot;value&quot;: &quot;127.0.0.1&quot;
-        }
-    ],
-    &quot;sort_list&quot;: [
-        [&quot;field_a&quot;, &quot;desc&quot;],
-        [&quot;field_b&quot;, &quot;asc&quot;]
-    ],
-    &quot;start&quot;: 0,
-    &quot;size&quot;: 15,
-    &quot;aggs&quot;: {
-        &quot;docs_per_minute&quot;: {
-            &quot;date_histogram&quot;: {
-                &quot;field&quot;: &quot;dtEventTimeStamp&quot;,
-                &quot;interval&quot;: &quot;1m&quot;,
-                &quot;time_zone&quot;: &quot;+08: 00&quot;
-            }
-        },
-        &quot;top_ip&quot;: {
-            &quot;terms&quot;: {
-                &quot;field&quot;: &quot;ip&quot;,
-                &quot;size&quot;: 5
-            }
-        }
-    },
-    &quot;highlight&quot;: {
-        &quot;pre_tags&quot;: [
-            &quot;&lt;mark&gt;&quot;
-        ],
-        &quot;post_tags&quot;: [
-            &quot;&lt;/mark&gt;&quot;
-        ],
-        &quot;fields&quot;: {
-            &quot;*&quot;: {
-            }
-        },
-        &quot;require_field_match&quot;: false
-    }
-}</code></pre>
-
-
-<h3 id="_8">返回结果示例</h3>
-<pre class="codehilite"><code class="language-json">{
-    &quot;result&quot;: true,
-    &quot;message&quot;: &quot;查询成功&quot;,
-    &quot;data&quot;: {
-        &quot;hits&quot;: {
-            &quot;hits&quot;: [
-                {
-                    &quot;_score&quot;: 2,
-                    &quot;_type&quot;: &quot;xx&quot;,
-                    &quot;_id&quot;: &quot;xxx&quot;,
-                    &quot;_source&quot;: {
-                        &quot;dtEventTimeStamp&quot;: 1565453112000,
-                        &quot;report_time&quot;: &quot;2019-08-11 00:05:12&quot;,
-                        &quot;log&quot;: &quot;xxxxxx&quot;,
-                        &quot;ip&quot;: &quot;127.0.0.1&quot;,
-                        &quot;gseindex&quot;: 5857918,
-                        &quot;_iteration_idx&quot;: 3,
-                        &quot;path&quot;: &quot;xxxxx&quot;
-                    },
-                    &quot;_index&quot;: &quot;xxxxxxxx&quot;
-                },
-                {
-                    &quot;_score&quot;: 2,
-                    &quot;_type&quot;: &quot;xxxx&quot;,
-                    &quot;_id&quot;: &quot;xxxxx&quot;,
-                    &quot;_source&quot;: {
-                        &quot;dtEventTimeStamp&quot;: 1565453113000,
-                        &quot;report_time&quot;: &quot;2019-08-11 00:05:13&quot;,
-                        &quot;log&quot;: &quot;xxxxxxx&quot;,
-                        &quot;ip&quot;: &quot;127.0.0.1&quot;,
-                        &quot;gseindex&quot;: 5857921,
-                        &quot;_iteration_idx&quot;: 2,
-                        &quot;path&quot;: &quot;xxxxxxxxx&quot;
-                    },
-                    &quot;_index&quot;: &quot;xxxxxxx&quot;
-                }
-            ],
-            &quot;total&quot;: 8429903,
-            &quot;max_score&quot;: 2
-        },
-        &quot;_shards&quot;: {
-            &quot;successful&quot;: 9,
-            &quot;failed&quot;: 0,
-            &quot;total&quot;: 9
-        },
-        &quot;took&quot;: 136,
-        &quot;timed_out&quot;: false
-    },
-    &quot;code&quot;: 0
-}</code></pre>
     </body>
     </html>
     

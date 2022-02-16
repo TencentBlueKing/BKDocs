@@ -2,11 +2,11 @@
     <html lang="zh-cn">
     <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <link href="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/default.css" rel="stylesheet">
+    <link href="F:\v_awjliu\BKDocs\ZH/default.css" rel="stylesheet">
     </head>
     <body>
     <h1 id="_1">产品简介</h1>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/管控平台/产品白皮书/assets/001.png" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/管控平台/产品白皮书/assets/001.png" /></p>
 <p>蓝鲸管控平台，是整个蓝鲸平台的底层管控系统，是蓝鲸所有其他服务的基础，是蓝鲸服务体系与用户机器的连接器。</p>
 <p>在整个蓝鲸体系中，蓝鲸管控平台作为蓝鲸的底层管控通道，没有提供独立的接口供用户直接访问调用，而是通过蓝鲸 ESB 能力向上提供服务，供上层平台或者 SaaS 去实现场景赋能。</p>
 <p>蓝鲸管控平台主要提供了三种类型的服务能力：<strong>文件传输能力、实时任务执行能力、数据采集与传输的能力</strong>。</p><h1 id="_1">术语解释</h1>
@@ -28,7 +28,7 @@
 <tr><td><b>Zookeeper</b></td><td>一种分布式应用程序协调服务，为分布式应用提供一致性服务</td></tr>
 <tr><td><b>Thrift</b></td><td>一种跨语言的进程间通信协议</td></tr>
 </tbody></table><h1 id="_1">产品架构图</h1>
-<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/管控平台/产品白皮书/assets/002.png" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/管控平台/产品白皮书/assets/002.png" /></p>
 <p>从网络框架层面来看，蓝鲸管控平台分为两层网络架构，分别为<strong>服务层</strong>和<strong>业务代理层</strong>。</p>
 <p><strong>服务层</strong>由三种不同类型的服务集群构成：控制任务执行的 TaskServer 集群、负责数据采集传输服务的 DataServer 集群以及提供文件高速传输服务的 FileServer 集群。</p>
 <p><strong>业务代理层</strong>则是部署在业务服务器上的蓝鲸 Agent，承载了服务层提供的三种服务。</p>
@@ -148,349 +148,7 @@
 
 
 <p><strong>Agent 失连告警</strong>：管控平台会监控 Agent 的心跳，心跳失连的 Agent 信息会通过告警的方式及时通知用户。</p>
-<p><strong>多区域负载均衡</strong>：管控平台支持对同一集群进行不同区域的划分，不同区域按照各区域内的负责均衡规则处理；未划分区域的 Agent 按照集群负载均衡策略处理。</p><h2 id="api">蓝鲸管控平台 API 简介</h2>
-<table>
-<thead>
-<tr>
-<th>资源名称</th>
-<th>资源描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="./get_agent_info.md">get_agent_info</a></td>
-<td>Agent 心跳信息查询</td>
-</tr>
-<tr>
-<td><a href="./get_agent_status.md">get_agent_status</a></td>
-<td>Agent 在线状态查询</td>
-</tr>
-</tbody>
-</table><h3 id="_1">请求地址</h3>
-<p>/api/c/compapi/v2/gse/get_agent_info/</p>
-<h3 id="_2">请求方法</h3>
-<p>POST</p>
-<h3 id="_3">功能描述</h3>
-<p>查询 agent 心跳详细信息。数据非实时，延时 1 分钟内。</p>
-<h3 id="_4">请求参数</h3>
-<h4 id="_5">通用参数</h4>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>类型</th>
-<th>必选</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bk_app_code</td>
-<td>string</td>
-<td>是</td>
-<td>应用 ID</td>
-</tr>
-<tr>
-<td>bk_app_secret</td>
-<td>string</td>
-<td>是</td>
-<td>安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取</td>
-</tr>
-<tr>
-<td>bk_token</td>
-<td>string</td>
-<td>否</td>
-<td>当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取</td>
-</tr>
-<tr>
-<td>bk_username</td>
-<td>string</td>
-<td>否</td>
-<td>当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户</td>
-</tr>
-</tbody>
-</table>
-<h4 id="_6">接口参数</h4>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>类型</th>
-<th>必选</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bk_supplier_account</td>
-<td>string</td>
-<td>是</td>
-<td>开发商账号</td>
-</tr>
-<tr>
-<td>hosts</td>
-<td>array</td>
-<td>是</td>
-<td>主机列表</td>
-</tr>
-</tbody>
-</table>
-<h4 id="hosts">hosts</h4>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>类型</th>
-<th>必选</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bk_cloud_id</td>
-<td>int</td>
-<td>是</td>
-<td>云区域 ID</td>
-</tr>
-<tr>
-<td>ip</td>
-<td>string</td>
-<td>是</td>
-<td>IP 地址</td>
-</tr>
-</tbody>
-</table>
-<h3 id="_7">请求参数示例</h3>
-<pre class="codehilite"><code class="language-python">{
-    &quot;bk_app_code&quot;: &quot;esb_test&quot;,
-    &quot;bk_app_secret&quot;: &quot;xxx&quot;,
-    &quot;bk_token&quot;: &quot;xxx&quot;,
-    &quot;bk_supplier_account&quot;: &quot;0&quot;,
-    &quot;hosts&quot;: [
-        {
-            &quot;ip&quot;: &quot;10.0.0.1&quot;,
-            &quot;bk_cloud_id&quot;: 0
-        }
-    ]
-}</code></pre>
-
-
-<h3 id="_8">返回结果示例</h3>
-<pre class="codehilite"><code class="language-python">{
-    &quot;result&quot;: true,
-    &quot;code&quot;: 0,
-    &quot;message&quot;: &quot;&quot;,
-    &quot;data&quot;: {
-        &quot;0:10.0.0.1&quot;: {
-            &quot;ip&quot;: &quot;10.0.0.1&quot;,
-            &quot;version&quot;: &quot;V0.01R060D38&quot;,
-            &quot;bk_cloud_id&quot;: 0,
-            &quot;parent_ip&quot;: &quot;10.0.0.2&quot;,
-            &quot;parent_port&quot;: 50000
-        }
-    }
-}</code></pre>
-
-
-<h3 id="_9">返回结果参数说明</h3>
-<h4 id="data">data</h4>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td>string</td>
-<td>格式为：bk_cloud_id:ip</td>
-</tr>
-<tr>
-<td>value.ip</td>
-<td>string</td>
-<td>主机 IP 地址</td>
-</tr>
-<tr>
-<td>value.bk_cloud_id</td>
-<td>int</td>
-<td>云区域 ID</td>
-</tr>
-<tr>
-<td>value.version</td>
-<td>string</td>
-<td>agent 版本号</td>
-</tr>
-<tr>
-<td>value.parent_ip</td>
-<td>string</td>
-<td>agent 的上级节点 ip</td>
-</tr>
-<tr>
-<td>value.parent_port</td>
-<td>int</td>
-<td>agent 的上级节点端口</td>
-</tr>
-</tbody>
-</table><h3 id="_1">请求地址</h3>
-<p>/api/c/compapi/v2/gse/get_agent_status/</p>
-<h3 id="_2">请求方法</h3>
-<p>POST</p>
-<h3 id="_3">功能描述</h3>
-<p>查询 agent 实时在线状态</p>
-<h3 id="_4">请求参数</h3>
-<h4 id="_5">通用参数</h4>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>类型</th>
-<th>必选</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bk_app_code</td>
-<td>string</td>
-<td>是</td>
-<td>应用 ID</td>
-</tr>
-<tr>
-<td>bk_app_secret</td>
-<td>string</td>
-<td>是</td>
-<td>安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取</td>
-</tr>
-<tr>
-<td>bk_token</td>
-<td>string</td>
-<td>否</td>
-<td>当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取</td>
-</tr>
-<tr>
-<td>bk_username</td>
-<td>string</td>
-<td>否</td>
-<td>当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户</td>
-</tr>
-</tbody>
-</table>
-<h4 id="_6">接口参数</h4>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>类型</th>
-<th>必选</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bk_supplier_account</td>
-<td>string</td>
-<td>是</td>
-<td>开发商账号</td>
-</tr>
-<tr>
-<td>hosts</td>
-<td>array</td>
-<td>是</td>
-<td>主机列表</td>
-</tr>
-</tbody>
-</table>
-<h4 id="hosts">hosts</h4>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>类型</th>
-<th>必选</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bk_cloud_id</td>
-<td>int</td>
-<td>是</td>
-<td>云区域 ID</td>
-</tr>
-<tr>
-<td>ip</td>
-<td>string</td>
-<td>是</td>
-<td>IP 地址</td>
-</tr>
-</tbody>
-</table>
-<h3 id="_7">请求参数示例</h3>
-<pre class="codehilite"><code class="language-python">{
-    &quot;bk_app_code&quot;: &quot;esb_test&quot;,
-    &quot;bk_app_secret&quot;: &quot;xxx&quot;,
-    &quot;bk_token&quot;: &quot;xxx&quot;,
-    &quot;bk_supplier_account&quot;: &quot;0&quot;,
-    &quot;hosts&quot;: [
-        {
-            &quot;ip&quot;: &quot;10.0.0.1&quot;,
-            &quot;bk_cloud_id&quot;: 0
-        }
-    ]
-}</code></pre>
-
-
-<h3 id="_8">返回结果示例</h3>
-<pre class="codehilite"><code class="language-python">{
-    &quot;result&quot;: true,
-    &quot;code&quot;: 0,
-    &quot;message&quot;: &quot;&quot;,
-    &quot;data&quot;: {
-        &quot;0:10.0.0.1&quot;: {
-            &quot;ip&quot;: &quot;10.0.0.1&quot;,
-            &quot;bk_cloud_id&quot;: 0,
-            &quot;bk_agent_alive&quot;: 1
-        }
-    }
-}</code></pre>
-
-
-<h3 id="_9">返回结果参数说明</h3>
-<h4 id="data">data</h4>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td>string</td>
-<td>格式为：bk_cloud_id:ip</td>
-</tr>
-<tr>
-<td>value.ip</td>
-<td>string</td>
-<td>主机 IP 地址</td>
-</tr>
-<tr>
-<td>value.bk_cloud_id</td>
-<td>int</td>
-<td>云区域 ID</td>
-</tr>
-<tr>
-<td>value.bk_agent_alive</td>
-<td>int</td>
-<td>agent 在线状态，0 为不在线，1 为在线</td>
-</tr>
-</tbody>
-</table><h1 id="_1">常见问题</h1>
+<p><strong>多区域负载均衡</strong>：管控平台支持对同一集群进行不同区域的划分，不同区域按照各区域内的负责均衡规则处理；未划分区域的 Agent 按照集群负载均衡策略处理。</p><h1 id="_1">常见问题</h1>
 <h3 id="job-gse-server-failed">通过 JOB 执行任务报错 “GSE SERVER FAILED”</h3>
 <p>（1）检查 gse_task 进程状态是否正常</p>
 <p>（2）检查 gse_task 是否正常监听 48669 端口</p>
@@ -543,7 +201,37 @@
 <li>
 <p>两台 proxy 情况，建议这种网络情况下，交叉配置另一台 proxy 的 ip，这种就可以统一用 identifyip 在 cmdb 中导入。</p>
 </li>
-</ul><h1 id="_1">结语</h1>
+</ul>
+<h3 id="gse_agent_1">gse_agent 是否可以用普通用户启动？</h3>
+<p>可以，但是部分功能受限。</p>
+<p>以下为非 root 账户运行评估</p>
+<table><tbody>
+<tr ><td width="15%" >-</td><td width="20%">模块</td><td width="20%">功能</td><td width="45%">非root账户运行评估</td></tr>
+<tr><td rowspan="7">gse_agent</td><td>任务</td><td>执行脚本任务</td><td>功能受限：<br>1、不能切换账户；<br>2、不能对切换的账户限权</td></tr>
+<tr><td rowspan="2">进程</td><td>进程启停操作</td><td>功能受限：<br>1、如托管进程运行账户与非gse_agent运行账户不一致时，无法启停进程</td></tr>
+<tr><td>进程状态托管</td><td>功能受限：<br>1、如托管进程运行账户以非gse_agent运行账户不一致时，无发托管</td></tr>
+<tr><td rowspan="3">文件</td><td>文件上传</td><td>功能受限：<br>1、不能上传gse_agent运行账户无权限访问的文件</td></tr>
+<tr><td>文件下载</td><td>功能受限：<br>1、不能下载到gse_agent运行账户无权访问的目录<br>2、如文件所属账户是非gse_agent运行账户，不能切换文件所属账户和权限(mod)</td></tr>
+<tr><td>目录和正则传输</td><td>功能受限：<br>1、不能上传gse_agent运行账户无权限访问的目录或文件<br>2、不能下载到gse_agent运行账户无权访问的目录<br>3、如文件所属账户是非gse_agent运行账户，不能切换目录所属账户和权限(mod)</td></tr>
+<tr><td>数据</td><td>接收并上报采集插件数据</td><td>功能受限：<br>1、如采集插件运行账户以非gse_agent运行账户不一致时，无法上报数据</td></tr>
+<tr><td rowspan="15">采集插件</td><td>采集框架</td><td>-</td><td>功能正常</td></tr>
+<tr><td>unifyTlogc</td><td>日志采集</td><td>功能受限：<br>1、如日志文件及目录所属账户非unifyTlogc运行账户，不能采集日志</td></tr>
+<tr><td>basereport</td><td>基础性能采集</td><td>功能受损：<br>1、不能采集主机cpu,mem, disk等需要读取系统文件的指标</td></tr>
+<tr><td>processbeat</td><td>进程采集</td><td>功能受损：<br>1、不能读取/proc下的进程文件，进程cpu, mem,fd等指标无法采集</td></tr>
+<tr><td>bkmetricbeat</td><td>组件采集</td><td>功能正常</td></tr>
+<tr><td>uptimecheckbeat</td><td>波测采集器</td><td>功能受损：<br>1、脚本采集方式不可用</td></tr>
+<tr><td>netdevicebeat</td><td>网络采集（snmp）</td><td>功能受损：<br>1、不能采集链接到交换机上的主机</td></tr>
+<tr><td>tcpbeat</td><td>采集中转</td><td>功能正常</td></tr>
+<tr><td>mysqlbeat</td><td>mysql数据采集</td><td>功能正常</td></tr>
+<tr><td>oraclebeat</td><td>oracle数据采集</td><td>功能正常</td></tr>
+<tr><td>redis</td><td>redis数据采集</td><td>功能正常</td></tr>
+<tr><td>dbbeat</td><td>db数据采集</td><td>功能正常</td></tr>
+<tr><td>httpbeat</td><td>http采集</td><td>功能正常</td></tr>
+<tr><td>cadvisorbeat</td><td>容器性能采集</td><td>功能受损：<br>1、不能读取容器性能数据的文件，性能指标数据无法采集</td></tr>
+<tr><td>logbeat/bk_logbeat</td><td>容器文件采集（linux+win）</td><td>功能受限：<br>1、如日志文件及目录所属账户非logbeat/bk_logbeat运行账户，不能采集日志</td></tr>
+<tr><td rowspan="2">其他关联产品</td><td>监控SaaS</td><td>插件配置下发</td><td>功能受限：<br>1、如下发配置所属账户，非gse_agent运行的账户，配置下发失败</td></tr>
+<tr><td>节点管理SaaS</td><td>插件管理</td><td>功能受限：<br>1、如插件运行账户，非gse_agent运行的账户，不能进行插件的部署，更新等管理</td></tr>
+</tbody></table><h1 id="_1">结语</h1>
 <p>蓝鲸管控平台可以满足企业内部对 IaaS 层的所有管控需求：批量脚本执行、大文件传输、海量数据采集、跨云管理、多种操作系统兼容等场景。</p>
 <p>工欲善其事必先利其器，有了蓝鲸管控平台以及 API 接口，结合上层的 SaaS 应用，可以实现更丰富的场景应用。</p>
     </body>
