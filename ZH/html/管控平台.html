@@ -1,0 +1,551 @@
+
+    <html lang="zh-cn">
+    <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <link href="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/default.css" rel="stylesheet">
+    </head>
+    <body>
+    <h1 id="_1">产品简介</h1>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/管控平台/产品白皮书/assets/001.png" /></p>
+<p>蓝鲸管控平台，是整个蓝鲸平台的底层管控系统，是蓝鲸所有其他服务的基础，是蓝鲸服务体系与用户机器的连接器。</p>
+<p>在整个蓝鲸体系中，蓝鲸管控平台作为蓝鲸的底层管控通道，没有提供独立的接口供用户直接访问调用，而是通过蓝鲸 ESB 能力向上提供服务，供上层平台或者 SaaS 去实现场景赋能。</p>
+<p>蓝鲸管控平台主要提供了三种类型的服务能力：<strong>文件传输能力、实时任务执行能力、数据采集与传输的能力</strong>。</p><h1 id="_1">术语解释</h1>
+<table><tbody>
+<tr><th width="30%">术语</th><th width="75%">解释</th></tr>
+<tr><td><b>GSE</b></td><td>蓝鲸管控平台系统简称(General Service Engine)</td></tr>
+<tr><td><b>BK Agent</b></td><td>蓝鲸智能 Agent，部署在业务服务器上的代理程序</td></tr>
+<tr><td><b>BK TaskServer</b></td><td>蓝鲸管控平台任务及控制服务端程序</td></tr>
+<tr><td><b>BK FileServer</b></td><td>蓝鲸管控平台文件传输控制服务端程序</td></tr>
+<tr><td><b>BK DataServer</b></td><td>蓝鲸管控平台数据传输服务端程序</td></tr>
+<tr><td><b>BK DB Proxy</b></td><td>蓝鲸管控平台 Redis 集群管理模块</td></tr>
+<tr><td><b>BK ApiServer</b></td><td>蓝鲸管控平台提供外部 api 的服务程序</td></tr>
+<tr><td><b>BK AlarmServer</b></td><td>蓝鲸管控平台告警服务程序</td></tr>
+<tr><td><b>BK ProcMgrServer</b></td><td>蓝鲸管控平台进程管理服务程序</td></tr>
+<tr><td><b>BK SyncDataServer</b></td><td>蓝鲸管控平台数据同步服务程序</td></tr>
+<tr><td><b>BK DataOpServer</b></td><td>蓝鲸管控平台数据传输服务运营监控程序</td></tr>
+<tr><td><b>BK TransitServer</b></td><td>蓝鲸管控平台跨云数据转发程序</td></tr>
+<tr><td><b>Redis</b></td><td>一种基于内存的 Key-Value 数据库</td></tr>
+<tr><td><b>Zookeeper</b></td><td>一种分布式应用程序协调服务，为分布式应用提供一致性服务</td></tr>
+<tr><td><b>Thrift</b></td><td>一种跨语言的进程间通信协议</td></tr>
+</tbody></table><h1 id="_1">产品架构图</h1>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/管控平台/产品白皮书/assets/002.png" /></p>
+<p>从网络框架层面来看，蓝鲸管控平台分为两层网络架构，分别为<strong>服务层</strong>和<strong>业务代理层</strong>。</p>
+<p><strong>服务层</strong>由三种不同类型的服务集群构成：控制任务执行的 TaskServer 集群、负责数据采集传输服务的 DataServer 集群以及提供文件高速传输服务的 FileServer 集群。</p>
+<p><strong>业务代理层</strong>则是部署在业务服务器上的蓝鲸 Agent，承载了服务层提供的三种服务。</p>
+<table><tbody>
+<tr><th width="30%">服务</th><th width="75%">服务作用</th></tr>
+<tr><td><b>Agent</b></td><td>蓝鲸智能 Agent 程序，可以安装在业务需要管控的<b>实体机、虚拟机或者容器里面</b>。<br>BK Agent 是蓝鲸管控平台提供三大服务能力的实际执行者。</td></tr>
+<tr><td><b>PA</b></td><td>蓝鲸管控平台跨云代理节点，为云区域 BK Agent 提供代理转发服务，提供跨云区域机器管控能力。</td></tr>
+<tr><td><b>TaskServer</b></td><td>蓝鲸管控平台任务及控制服务端程序。<br>该程序提供对集群内 Agent 的管理能力，并支持对 Agent 批量下发和执行发命令或脚本。</td></tr>
+<tr><td><b>FileServer</b></td><td>蓝鲸管控平台文件传输控制服务端程序。<br>该程序对指定范围内 Agent 节点提供 BT 种子服务，保证对传输的安全性、不同区域及业务模块间的隔离性，并控制 BT 传输在有限的贪婪特性范围内。</td></tr>
+<tr><td><b>DataServer</b></td><td>蓝鲸管控平台数据传输服务端程序。<br>该服务端主要提供对 Agent 采集的数据进行汇聚、分类、流转能力。<br>对于普通的千兆网卡机器，BK DataServer 能够提供百兆级别的数据处理能力。</td></tr>
+<tr><td><b>Redis</b></td><td>Redis 在本系统中提供工作区数据缓存作用。</td></tr>
+<tr><td><b>Zookeeper</b></td><td>Zookeeper 主要提供对集群的管理能力。<br>包括集群中不同节点间的相互发现，有效性探测等。</td></tr>
+</tbody></table><h2 id="bk-agent">BK Agent，强大的执行代理</h2>
+<p>蓝鲸智能 Agent 程序，可以安装在业务需要管控的实体机、虚拟机或者容器里面，</p>
+<p>蓝鲸 Agent 是蓝鲸管控平台提供三大服务能力（命令执行、文件传输、数据上报）的实际执行者，蓝鲸 Agent 所在机器的通讯策略、网络状况需要在安装前调整好才能发挥其所有能力。</p>
+<h2 id="bk-taskserver">BK TaskServer，提供海量管控能力</h2>
+<p>蓝鲸管控平台任务及控制服务端程序，该程序提供对集群内 Agent 的管理能力，并支持对 Agent 批量下发执行发命令或脚本，最快任务流转时间小于 2s。</p>
+<h2 id="bk-fileserver-bt">BK FileServer，基于 BT 协议，传输更高效</h2>
+<p>管控平台文件传输控制服务端程序，该程序对指定范围内 Agent 节点提供 BT 种子服务，保证对传输的安全性、不同区域及业务模块间的隔离性，并控制 BT 传输在有限的贪婪特性范围内。</p>
+<p>单独部署 BK FileServer 并不能提供文件传输服务，受限于安全性考虑，BK FileServer 必须和 BK TaskServer 配合才能完成完整的文件分发流程。</p>
+<h2 id="bk-dataserver">BK DataServer，海量数据处理不再是瓶颈</h2>
+<p>蓝鲸管控平台数据传输服务端程序。该服务端主要提供对 Agent 采集的数据进行汇聚、分类、流转能力。</p>
+<p>对于普通的千兆网卡机器，BK DataServer 能够最大提供 100MB/s 的数据处理能力。</p>
+<p>BK DataServer 可以单独为用户提供数据服务，而不需要其他服务端程序配合。</p>
+<h2 id="os">支持 OS 类型</h2>
+<table><tbody>
+<tr><th>OS 类型 </th><th>主要 OS 版本</th></tr>
+<tr><td rowspan="5">CentOS</td></tr>
+<tr><td>5.8 32/64 位 </td></tr>
+<tr><td>5.11 32/64 位 </td></tr>
+<tr><td>6.x 32/64 位 </td></tr>
+<tr><td>7.x 32/64 位 </td></tr>
+<tr><td rowspan="4">Redhat</td>
+<td>5.3 32/64 位 </td></tr>
+<tr><td>5.5 64 位 </td></tr>
+<tr><td>6.x 32/64 位 </td></tr>
+<tr><td>7.x 32/64 位 </td></tr>
+<tr><td>Debian</td><td>7.4  64 位 </td></tr>
+<tr><td>SUSE</td><td>10  64 位 </td></tr>
+<tr><td rowspan="4">Ubuntu</td><td>14.04  32/64 位 </td></tr>
+<tr><td>10.04  32/64 位 </td></tr>
+<tr><td>12.04  64 位 </td></tr>
+<tr><td>12.04  docker 64 位 </td></tr>
+<tr><td rowspan="5">Windows Server</td><td>2016</td></tr>
+<tr><td>2012</td></tr>
+<tr><td>2008</td></tr>
+<tr><td>2003</td></tr>
+<tr><td>Win 7</td></tr>
+<tr><td rowspan="2">AIX (企业版)</td><td>AIX 6</td></tr>
+<tr><td>AIX 7</td></tr>
+<tr><td>linuxone (企业版)</td><td>IBM Linuxone 64 位 </td></tr>
+<tr><td>linux-arm (企业版)</td><td>华为arm服务器linux 64 位 </td></tr>
+</tbody></table><h1 id="_1">文件传输</h1>
+<p>文件传输是指用户从指定机器将指定文件批量传输到指定的目标机器上，文件传输具备以下几个特性。</p>
+<h2 id="_2">传输模式</h2>
+<table><tbody>
+<tr><th width="30%">传输模式</th><th width="75%">详情</th></tr>
+<tr><td><b>BT 模式</b></td><td>对于大于 10KB 的文件，蓝鲸管控平台将自动启用 BT 作为首选的传输方式</td></tr>
+<tr><td><b>直传模式</b></td><td>对于 10KB 以下的小文件，将使用 tcp 数据流 直传模式。</td></tr>
+<tr><td><b>混合模式</b></td><td>在 BT 模式下，如果发生 BT 传输持续性失败，则会尝试使用直传模式传输 BT 文件分片，当 BT 传输恢复时，则自动切换至 BT 模式。</td></tr>
+</tbody></table>
+
+<h2 id="_3">传输类型</h2>
+<table><tbody>
+<tr><th width="30%">传输类型</th><th width="75%">详情</th></tr>
+<tr><td><b>文件传输</b></td><td>分发单个文件到指定机器，这里文件可以是任何格式，任何可读目录下的可读文件；<br>文件分发完成后，会自动同步目标文件权限与源文件一致；<br>对于直传模式，文件传输结束后会进行 MD5 校验，<br>对于 BT 模式和混合模式，会进行 hash 值校验文件的完整性</td></tr>
+<tr><td><b>目录传输</b></td><td>用户可以将指定目录传输到一批机器的指定可写目录下，目录传输将保持目录的结构和权限不变。</td></tr>
+<tr><td><b>正则匹配传输</b></td><td>用户可以通过通配符（符合通用正则表达式）匹配一批文件，并传输到指定机器的指定可写目录，传输完成后文件的格式和权限与源文件保持一致。</td></tr>
+</tbody></table>
+
+<h2 id="_4">传输控制</h2>
+<table><tbody>
+<tr><th width="30%">传输控制</th><th width="75%">详情</th></tr>
+<tr><td><b>区域链控制</b></td><td>让文件沿着指定的路径，通过多个中转节点的接力，最终到达目标机器，并且源文件和目标文件所在机器不在同一个物理或逻辑区域，我们称这种传输方式为<b>区域链传输</b>。<br>区域链控制是指通过一定规则指定文件中转的路径，以满足具有特殊专线链接的两个区域间的传输需求。</td></tr>
+<tr><td><b>跨区域穿透</b></td><td>跨区域穿透是指原本相互隔离的两个区域，由于特殊目的，需要就本次传输进行定向透传。<br>蓝鲸管控平台允许权限用户适当修改配置来完成这种定向穿透。</td></tr>
+</tbody></table>
+
+<h2 id="_5">传输限速</h2>
+<p>考虑到企业内部网络负载情况，BK Agent 会设置默认的传输速度限制，</p>
+<p>如果发现限速不合适，可以通过修改 BK Agent 配置来调整速度配置以便达到最佳的传输效果（具体参考部署文档）。</p><h1 id="_1">实时任务执行</h1>
+<p>蓝鲸管控平台采用分布式多层级任务控制机制，实现海量多层级联网络的主机管控。</p>
+<h2 id="_2">支持的任务类型</h2>
+<table><tbody>
+<tr><th width="30%">支持任务类型</th><th width="75%">详情</th></tr>
+<tr><td><b>命令类型</b></td><td>linux 支持 Bash 命令、Windows 支持 cmd 命令、AIX(企业版) 支持 ksh 命令，支持各种自定义可执行文件格式程序的启动，支持各种解释性语言程序的执行。</td></tr>
+<tr><td><b>脚本类型</b></td><td>linux 支持 Shell 脚本、Windows 支持 Bat 脚本(安装有 cygwin 的额外支持 Shell 脚本)、AIX(企业版) 支持 ksh 脚本，以及各种系统支持的解释性脚本程序(Python, Powershell, Perl)。</td></tr>
+</tbody></table>
+
+<h2 id="_3">任务控制方式</h2>
+<table><tbody>
+<tr><th width="30%">任务控制方式</th><th width="75%">详情</th></tr>
+<tr><td><b>指定用户执行</b></td><td>Linux 及其他类 Linux 系统支持按指定用户执行任务，例如用户设定以 user00 用户执行 ps，则只能看到该用户权限范围内的结果；<br>因为 Windows 操作系统的限制，只有开启校验机器密码功能的用户才能指定用户执行任务，否则都以 SYSTEM 用户执行任务。</td></tr>
+<tr><td><b>继承用户环境</b></td><td>Linux 及其他类 Linux 系统支持指定用户后继承该用户设定的环境变量，<br>Windows 无此功能。</td></tr>
+<tr><td><b>校验机器密码</b></td><td>企业版用户可以选择是否校验机器密码，<br>如果选择不校验，则 Window Agent 不支持按指定用户执行任务的功能。</td></tr>
+<tr><td><b>有害操作告警</b></td><td>蓝鲸管控平台能够对高危操作进行预警，高危操作的定义由系统自动设定。</td></tr>
+<tr><td><b>有害操作防护</b></td><td>蓝鲸管控平台能够对高危操作进行预警并干预，高危操作的定义及干预措施提供选项供用户配置。</td></tr>
+</tbody></table><h1 id="_1">数据采集与传输</h1>
+<h2 id="_2">采集方式</h2>
+<table><tbody>
+<tr><th width="30%">采集方式</th><th width="75%">详情</th></tr>
+<tr><td><b>自定义数据采集</b></td><td>Agent 开放数据发送接口，cmdline, 供用户开发自定义的数据采集程序或脚本。</td></tr>
+<tr><td><b>采集器插件化支持</b></td><td>Agent 支持采集器插件化，自动加载采集插件，并监控插件的存活状况。<br>如果采集插件异常终止，则重新拉起采集插件；如果多次拉起失败则会触发告警。</td></tr>
+<tr><td><b>实时数据快照</b></td><td>管控平台支持缓存安装有 Agent 的机器 1min 内的系统快照数据，并提供接口供用户访问。</td></tr>
+</tbody></table>
+
+<h2 id="_3">传输控制</h2>
+<p><strong>动态负载均衡</strong> ：由于 Agent 数据采集的量大，且具有随业务特性波动的特点，这些数据在流转时需要高性能的服务端做收敛转发，为了提供服务端机器的利用率，减少由于数据量变化时带来的负载不均衡问题，管控系统支持按分钟级别动态调整数据转发的通道，以达到集群内服务端负载均衡的目的。</p><h1 id="_1">集群管理</h1>
+<p>蓝鲸管控平台提供了一套有效的集群管理机制，让任务，文件，数据服务的自动服务发现，负载均衡等更加智能。</p>
+<p><strong>自动服务发现</strong>：管控平台同一个集群内的模块均支持自动发现，用户扩缩容任何节点，系统均能实时感知，并调整通讯策略，保证服务的高可用。</p>
+<p><strong>集群负载均衡</strong>：管控平台同一个集群内，支持按照 Agent 链接数，节点服务负载数据等进行负载均衡。</p>
+<p><strong>Agent 状态查询</strong>：管控平台提供接口，查询 Agent 状态。</p>
+<pre class="codehilite"><code>接口按照实时性分为两类：
+
+一类为实时状态接口，只能查询当前 Agent 是否正常；
+
+二类接口提供 24s 内的状态查询，查询的内容包括 Agent 上次心跳时间、Agent 版本、Agent 使用的 cpu、Agent 使用的 mem。</code></pre>
+
+
+<p><strong>Agent 失连告警</strong>：管控平台会监控 Agent 的心跳，心跳失连的 Agent 信息会通过告警的方式及时通知用户。</p>
+<p><strong>多区域负载均衡</strong>：管控平台支持对同一集群进行不同区域的划分，不同区域按照各区域内的负责均衡规则处理；未划分区域的 Agent 按照集群负载均衡策略处理。</p><h2 id="api">蓝鲸管控平台 API 简介</h2>
+<table>
+<thead>
+<tr>
+<th>资源名称</th>
+<th>资源描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="./get_agent_info.md">get_agent_info</a></td>
+<td>Agent 心跳信息查询</td>
+</tr>
+<tr>
+<td><a href="./get_agent_status.md">get_agent_status</a></td>
+<td>Agent 在线状态查询</td>
+</tr>
+</tbody>
+</table><h3 id="_1">请求地址</h3>
+<p>/api/c/compapi/v2/gse/get_agent_info/</p>
+<h3 id="_2">请求方法</h3>
+<p>POST</p>
+<h3 id="_3">功能描述</h3>
+<p>查询 agent 心跳详细信息。数据非实时，延时 1 分钟内。</p>
+<h3 id="_4">请求参数</h3>
+<h4 id="_5">通用参数</h4>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必选</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bk_app_code</td>
+<td>string</td>
+<td>是</td>
+<td>应用 ID</td>
+</tr>
+<tr>
+<td>bk_app_secret</td>
+<td>string</td>
+<td>是</td>
+<td>安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取</td>
+</tr>
+<tr>
+<td>bk_token</td>
+<td>string</td>
+<td>否</td>
+<td>当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取</td>
+</tr>
+<tr>
+<td>bk_username</td>
+<td>string</td>
+<td>否</td>
+<td>当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_6">接口参数</h4>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必选</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bk_supplier_account</td>
+<td>string</td>
+<td>是</td>
+<td>开发商账号</td>
+</tr>
+<tr>
+<td>hosts</td>
+<td>array</td>
+<td>是</td>
+<td>主机列表</td>
+</tr>
+</tbody>
+</table>
+<h4 id="hosts">hosts</h4>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必选</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bk_cloud_id</td>
+<td>int</td>
+<td>是</td>
+<td>云区域 ID</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>string</td>
+<td>是</td>
+<td>IP 地址</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">请求参数示例</h3>
+<pre class="codehilite"><code class="language-python">{
+    &quot;bk_app_code&quot;: &quot;esb_test&quot;,
+    &quot;bk_app_secret&quot;: &quot;xxx&quot;,
+    &quot;bk_token&quot;: &quot;xxx&quot;,
+    &quot;bk_supplier_account&quot;: &quot;0&quot;,
+    &quot;hosts&quot;: [
+        {
+            &quot;ip&quot;: &quot;10.0.0.1&quot;,
+            &quot;bk_cloud_id&quot;: 0
+        }
+    ]
+}</code></pre>
+
+
+<h3 id="_8">返回结果示例</h3>
+<pre class="codehilite"><code class="language-python">{
+    &quot;result&quot;: true,
+    &quot;code&quot;: 0,
+    &quot;message&quot;: &quot;&quot;,
+    &quot;data&quot;: {
+        &quot;0:10.0.0.1&quot;: {
+            &quot;ip&quot;: &quot;10.0.0.1&quot;,
+            &quot;version&quot;: &quot;V0.01R060D38&quot;,
+            &quot;bk_cloud_id&quot;: 0,
+            &quot;parent_ip&quot;: &quot;10.0.0.2&quot;,
+            &quot;parent_port&quot;: 50000
+        }
+    }
+}</code></pre>
+
+
+<h3 id="_9">返回结果参数说明</h3>
+<h4 id="data">data</h4>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>格式为：bk_cloud_id:ip</td>
+</tr>
+<tr>
+<td>value.ip</td>
+<td>string</td>
+<td>主机 IP 地址</td>
+</tr>
+<tr>
+<td>value.bk_cloud_id</td>
+<td>int</td>
+<td>云区域 ID</td>
+</tr>
+<tr>
+<td>value.version</td>
+<td>string</td>
+<td>agent 版本号</td>
+</tr>
+<tr>
+<td>value.parent_ip</td>
+<td>string</td>
+<td>agent 的上级节点 ip</td>
+</tr>
+<tr>
+<td>value.parent_port</td>
+<td>int</td>
+<td>agent 的上级节点端口</td>
+</tr>
+</tbody>
+</table><h3 id="_1">请求地址</h3>
+<p>/api/c/compapi/v2/gse/get_agent_status/</p>
+<h3 id="_2">请求方法</h3>
+<p>POST</p>
+<h3 id="_3">功能描述</h3>
+<p>查询 agent 实时在线状态</p>
+<h3 id="_4">请求参数</h3>
+<h4 id="_5">通用参数</h4>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必选</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bk_app_code</td>
+<td>string</td>
+<td>是</td>
+<td>应用 ID</td>
+</tr>
+<tr>
+<td>bk_app_secret</td>
+<td>string</td>
+<td>是</td>
+<td>安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取</td>
+</tr>
+<tr>
+<td>bk_token</td>
+<td>string</td>
+<td>否</td>
+<td>当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取</td>
+</tr>
+<tr>
+<td>bk_username</td>
+<td>string</td>
+<td>否</td>
+<td>当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_6">接口参数</h4>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必选</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bk_supplier_account</td>
+<td>string</td>
+<td>是</td>
+<td>开发商账号</td>
+</tr>
+<tr>
+<td>hosts</td>
+<td>array</td>
+<td>是</td>
+<td>主机列表</td>
+</tr>
+</tbody>
+</table>
+<h4 id="hosts">hosts</h4>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必选</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bk_cloud_id</td>
+<td>int</td>
+<td>是</td>
+<td>云区域 ID</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>string</td>
+<td>是</td>
+<td>IP 地址</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">请求参数示例</h3>
+<pre class="codehilite"><code class="language-python">{
+    &quot;bk_app_code&quot;: &quot;esb_test&quot;,
+    &quot;bk_app_secret&quot;: &quot;xxx&quot;,
+    &quot;bk_token&quot;: &quot;xxx&quot;,
+    &quot;bk_supplier_account&quot;: &quot;0&quot;,
+    &quot;hosts&quot;: [
+        {
+            &quot;ip&quot;: &quot;10.0.0.1&quot;,
+            &quot;bk_cloud_id&quot;: 0
+        }
+    ]
+}</code></pre>
+
+
+<h3 id="_8">返回结果示例</h3>
+<pre class="codehilite"><code class="language-python">{
+    &quot;result&quot;: true,
+    &quot;code&quot;: 0,
+    &quot;message&quot;: &quot;&quot;,
+    &quot;data&quot;: {
+        &quot;0:10.0.0.1&quot;: {
+            &quot;ip&quot;: &quot;10.0.0.1&quot;,
+            &quot;bk_cloud_id&quot;: 0,
+            &quot;bk_agent_alive&quot;: 1
+        }
+    }
+}</code></pre>
+
+
+<h3 id="_9">返回结果参数说明</h3>
+<h4 id="data">data</h4>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>格式为：bk_cloud_id:ip</td>
+</tr>
+<tr>
+<td>value.ip</td>
+<td>string</td>
+<td>主机 IP 地址</td>
+</tr>
+<tr>
+<td>value.bk_cloud_id</td>
+<td>int</td>
+<td>云区域 ID</td>
+</tr>
+<tr>
+<td>value.bk_agent_alive</td>
+<td>int</td>
+<td>agent 在线状态，0 为不在线，1 为在线</td>
+</tr>
+</tbody>
+</table><h1 id="_1">常见问题</h1>
+<h3 id="job-gse-server-failed">通过 JOB 执行任务报错 “GSE SERVER FAILED”</h3>
+<p>（1）检查 gse_task 进程状态是否正常</p>
+<p>（2）检查 gse_task 是否正常监听 48669 端口</p>
+<p>（3）检查作业平台和管控平台的证书是否匹配</p>
+<p>（4）检查作业平台部署主机到管控平台部署主机的 48669 端口策略是否开通</p>
+<p>（5）检查 gse.service.consul 是否解析正常</p>
+<h3 id="can-not-find-agent-by-ip">通过作业平台执行任务报错 “can not find agent by ip ……”</h3>
+<p>（1）检查对应 ip 机器上的 gse_agent 是否正常</p>
+<p>（2）检查 gse_agent 的 48668 连接是否正常</p>
+<p>（3）检查 gse_agent 与 gse_task 的证书是否匹配</p>
+<p>（4）检查该 ip 在配置平台上的业务及云区域 id 是否正确</p>
+<h3 id="_2">文件传输任务超时失败</h3>
+<p>（1）根据作业平台打屏信息，判断是上传还是下载超时</p>
+<p>（2）检查 BT 传输的端口策略是否开通</p>
+<h3 id="saas-agent">点管理 SaaS 或作业平台显示 Agent 异常</h3>
+<p>（1）检查对应 ip 机器上的 gse_agent 是否正常</p>
+<p>（2）检查 gse_agent 的 48668 连接是否正常</p>
+<p>（3）检查 gse_agent 与 gse_task 的证书是否匹配</p>
+<p>（4）检查该 ip 在配置平台上的业务及云区域 id 是否正确</p>
+<p>（5）若以上检查结果均正常，检查 gse_api 日志是否有 “no db proxy server addr found” 报错，若有则重启 gse_api</p>
+<h3 id="gse_agent">通过作业平台重启 gse_agent 环境变量不生效</h3>
+<ul>
+<li>问题现象</li>
+</ul>
+<p>安装 python 后，添加 python 环境变量，通过 <code>restart.bat</code> 脚本重启 Agent 后环境变量不生效。</p>
+<ul>
+<li>问题原因</li>
+</ul>
+<p>通过作业平台执行 Agent，环境变量是不会生效的，因为环境变量是基于当前上下文环境的，通过 Agent 重启时，Agent 上本身没有最新的环境变量信息，所以也不会生效。</p>
+<ul>
+<li>解决方案</li>
+</ul>
+<p>需要在能获取到最新环境变量的状态下重启 gse_agent，比如登录到机器重启 gse_agent 进程。</p>
+<h3 id="pa-agent">PA 机器上的 Agent 显示未安装</h3>
+<ul>
+<li>问题现象</li>
+</ul>
+<p>手动安装 proxy，主机监控数据上报正常，p-agent 数据及 agent 状态也正常，但是 proxy 这台代理服务器在主机监控及作业平台均显示 agent 未安装。通过 JOB 执行任务报错，提示 agent 未安装。</p>
+<ul>
+<li>问题原因</li>
+</ul>
+<p>有些用户的机器连接 gse server 时看到的 ip 和本机 ip 不一致，做了 NAT 转换，所以 agent 安装部署时导入 cmdb 的 ip 使用 identityip 作为标识。proxy 上的 agent 实际在本机建立连接，未经过 nat 转换，所以实际通信的 ip 就是本机真实 ip。</p>
+<ul>
+<li>
+<p>解决方案</p>
+</li>
+<li>
+<p>在 cmdb 上导入 agentip 中配置的 ip。</p>
+</li>
+<li>
+<p>两台 proxy 情况，建议这种网络情况下，交叉配置另一台 proxy 的 ip，这种就可以统一用 identifyip 在 cmdb 中导入。</p>
+</li>
+</ul><h1 id="_1">结语</h1>
+<p>蓝鲸管控平台可以满足企业内部对 IaaS 层的所有管控需求：批量脚本执行、大文件传输、海量数据采集、跨云管理、多种操作系统兼容等场景。</p>
+<p>工欲善其事必先利其器，有了蓝鲸管控平台以及 API 接口，结合上层的 SaaS 应用，可以实现更丰富的场景应用。</p>
+    </body>
+    </html>
+    

@@ -1,0 +1,2167 @@
+
+    <html lang="zh-cn">
+    <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <link href="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/default.css" rel="stylesheet">
+    </head>
+    <body>
+    <h1 id="_1">产品简介</h1>
+<p>蓝鲸容器管理平台（BCS，Blueking Container Service）是 <strong>高度可扩展、灵活易用的容器管理服务平台</strong>，支持社区原生 <strong>Kubernetes</strong> 编排引擎。</p>
+<p>用户无需关注基础设施的安装、运维和管理，只需要调用简单的 API，或者在页面上进行简单的配置，便可对容器进行启动、停止等操作，查看集群、容器及服务的状态，以及使用各种组件服务。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15675817359278.jpg" /></p>
+<h2 id="_2">容器服务怎么用</h2>
+<p>见下图，只需要三步即可运行服务：</p>
+<ol>
+<li>
+<p>创建集群</p>
+</li>
+<li>
+<p>创建模板集</p>
+</li>
+<li>
+<p>实例化模板集</p>
+</li>
+</ol>
+<p><img alt="-w1678" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15679996186125.jpg" /></p><h1 id="_1">术语解释</h1>
+<p>了解 BCS，会涉及到以下基本概念：</p>
+<ul>
+<li><strong>容器编排引擎</strong>：用于容器化应用的自动化部署、扩展和管理的工具或平台，目前行业主流的引擎 K8S。</li>
+<li><strong>集群</strong>：容器运行所需要的物理机或虚拟机资源的集合。</li>
+<li><strong>节点</strong>：一台已经注册到集群中的服务器，为集群提供计算资源。</li>
+<li><strong>应用</strong>：由一组容器及服务构成集合，这个集合可以代表一个业务，或者业务的某个大区，在 K8S 中应用通常由工作负载（Workload）、服务（Service、Ingress）、配置（ConfigMap、Secret）构成。</li>
+<li><strong>模板集</strong>：资源模板的集合，简化资源管理的复杂度。用户基于模板集可以实现应用的部署、升级等操作。</li>
+<li><strong>网络</strong>：主要包含 <strong>服务</strong> 和 <strong>负载均衡器</strong> 的定义和管理，服务是由多个相同配置的容器和访问这些容器的规则组成的微服务，负载均衡器定义了访问规则的具体实现。</li>
+<li><strong>仓库</strong>：用户存放 Docker 镜像、Helm Charts。</li>
+</ul><h1 id="_1">产品特性</h1>
+<p>BCS 的核心功能包含集群管理、资源模板管理、应用管理、镜像管理以及网络管理。</p>
+<table border="1" width="100%">  
+<tr bgcolor="#D3D3D3">  
+<td width="10%">产品功能</td>  
+<td width="40%">概述</td>  
+<td width="50%">功能简介</td>  
+</tr>  
+<tr>  
+<td>集群管理</td>  
+<td>通过蓝鲸容器服务可以简单高效地管理容器集群</td>  
+<td><b>集群创建</b><ul>  
+<li>支持自定义设置Master和Node节点，一键自动安装集群组件</li>  
+<li>用户独占集群，保证安全隔离性</li>
+</ul>
+<b>集群管理</b>
+<ul>
+<li>支持动态伸缩，可以添加集群节点，也可以实时剔除集群节点</li>  
+<li>支持集群和节点级别的监控告警及主要数据的视图展示</li>  
+</ul></td>  
+</tr>  
+<tr>  
+<td>模板管理</td>  
+<td>模板管理为用户提供了在集群中部署资源的管理方案。支持用户设置容器编排的模板集或Helm Chart。用户可以将同一套模板集或Helm Chart，实例化到不同的命名空间，通过模板变量，完成差异化的资源编排</td>
+<td>
+<b>管理容器资源模板</b>
+<ul>  
+<li>支持模板集或Helm Chart的多版本管理</li>  
+<li>支持通过命名空间管理不同的环境</li>  
+</ul></td>  
+</tr>
+<tr>  
+<td>应用管理</td>  
+<td>应用管理为用户提供了对模板集实例化后得到的容器集合的管理方案，通过应用管理，可以看到容器各个编排维度的信息和状态。并且可以针对单个维度进行操作，重启容器，重新调度容器等等</td>  
+<td>
+<b>容器视图</b>
+<ul>  
+<li>通过应用视图或者命名空间视图管理容器</li>  
+<li>查看应用、POD、容器等的在线状态</li>  
+</ul>
+<b>容器操作</b><ul>
+<li>启停容器，重新调度容器
+<li>对应用做更新，例如扩缩容、滚动升级等
+</ul></td>  
+</tr>
+<tr>
+<td>镜像管理</td>
+<td>镜像仓库包含公共镜像库、项目私有镜像库。项目私有镜像库只有项目中有指定权限的人才能访问</td>
+<td><ul>
+<li>公共镜像，包含了一些实用程度比较高，且开源共有的镜像资源。公共镜像对所有用户可见<li>项目镜像，是项目成员主动添加的镜像，或者是通过CI流程归档的私有镜像。项目镜像只有项目中指定的权限所有者才能访问。
+</ul></td>
+</tr>
+<tr>
+<td>网络管理</td>
+<td>网络管理提供了用户管理服务和负载均衡器的方案。用户通过网络管理可以查看线上服务的状态和负载均衡器的状态</td>
+<td>
+<b>服务管理</b>
+<ul>
+<li>查看服务的列表，以及每个服务的详细信息
+<li>对服务进行操作，例如更新服务或者停止服务
+</ul>
+<b>负载均衡器管理</b><ul>
+<li>查看线上负载均衡器列表，及每个负载均衡器的详细信息
+<li>启动、删除或者更新负载均衡器
+</ul>
+</td>
+</tr>
+</table><h1 id="_1">产品优势</h1>
+<h2 id="kubernetes">支持原生 Kubernetes 容器编排方案</h2>
+<p>Kubernetes 是基于 Google borg 系统开源的项目，集成了 <strong>资源调度</strong> 和 <strong>应用编排</strong> 的能力，面向分布式应用、微服务和大规模集群管理。</p>
+<h3 id="kubernetes_1">基于 Kubernetes</h3>
+<ul>
+<li>基于原生 Kubernetes 实现，秉承社区开源、开放的心态</li>
+<li>支持社区容器、网络、存储实施方案</li>
+</ul>
+<h2 id="docker">基于 Docker 的服务生态</h2>
+<ul>
+<li>服务发现</li>
+</ul>
+<p>基于 Kubernetes 的集群，都自带了服务发现的能力。服务发现有两种模式，一是通过服务的域名访问服务，在域名上动态绑定当前服务的后端；另一种是通过服务代理容器，流量全部导向服务代理容器，由代理容器将流量转发到服务的后端。</p>
+<ul>
+<li>负载均衡</li>
+</ul>
+<p>负载均衡器是一组特殊的容器，用来帮一个服务或者多个服务实现后端流量或者处理能力的均衡。用户可以设定负载均衡的算法以达到不同的负载均衡效果。</p>
+<ul>
+<li>分布式配置中心</li>
+</ul>
+<p>业务程序在运行过程中往往需要使用不同的配置启动，在活动期间，也可能需要通过配置调整策略。蓝鲸容器服务提供了分布式配置中心，用户可以将配置存放在配置中心，业务容器可以通过指定的协议方式获取到对应的配置。</p>
+<ul>
+<li>CNI 格式的 Overlay 和 Underlay 网络支持</li>
+</ul>
+<p>容器的网络方案不仅支持 Overlay，也支持 Underlay 的方案。在 Underlay 方案下，每个容器拥有一个真实的内网 IP，并且在容器销毁时自动回收该 IP，用户也可以设定容器重启、迁移时使用固定的一组 IP。</p>
+<h2 id="_2">认证</h2>
+<p><strong>蓝鲸智云容器管理平台</strong> 于 2019 年 7 月 30 日通过了中国 <strong>云计算开源产业联盟</strong> 组织的 <strong>可信云容器解决方案评估认证</strong>。</p>
+<p>蓝鲸智云容器管理平台在基本能力要求、应用场景技术指标、安全性等解决方案质量方面，以及产品周期、运维服务、权益保障等服务指标的完备性和规范性方面均达到可信云容器解决方案的评估标准。应用场景满足以下四个：</p>
+<ul>
+<li>开发测试场景</li>
+<li>持续集成、持续交付</li>
+<li>运维自动化</li>
+<li>微服务</li>
+</ul><h1 id="_1">产品开源</h1>
+<p>BCS 团队对容器管理平台进行开源，希望将我们的技术和沉淀反馈给社区，期望能帮助更多的人解决问题；同时也邀请容器技术爱好者一起参与建设，让产品变更更加强大和易用，构建生态活跃的技术社区。</p>
+<p>开源地址：<a href="https://github.com/Tencent/bk-bcs">https://github.com/Tencent/bk-bcs</a>、 <a href="https://github.com/Tencent/bk-bcs-saas">https://github.com/Tencent/bk-bcs-saas</a></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15675818335780.jpg" /></p>
+<h2 id="_2">开源协作方式</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15675821906996.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15675821980466.jpg" /></p>
+<h2 id="_3">开源协议</h2>
+<p>蓝鲸容器管理平台采用的是 MIT 开源协议。MIT 是和 BSD 一样宽范的许可协议，BCS 团队只想保留版权，而无任何其他的限制。 也就是说，你必须在你的发行版里包含原许可协议的声明，无论你是以二进制发布的还是以源代码发布的。</p>
+<h2 id="_4">欢迎交流</h2>
+<p><img alt="开源二维码" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/%E5%BC%80%E6%BA%90%E4%BA%8C%E7%BB%B4%E7%A0%81.png" /></p><h1 id="_1">产品架构图</h1>
+<p>BCS 是蓝鲸基于社区原生 K8S 的容器部署管理解决方案。</p>
+<p><img alt="BCS 在蓝鲸中的位置" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/BCS在蓝鲸中的位置.png" />
+<center>BCS 在蓝鲸中的位置</center></p>
+<h1 id="bcs">BCS（容器管理平台）架构图</h1>
+<p>BCS 由 <strong>BCS SaaS</strong> 和 <strong>BCS 后台</strong> 组成，以下为对应的架构图。</p>
+<h2 id="bcs-saas">BCS SaaS 架构图</h2>
+<h3 id="bcs-saas_1">BCS SaaS 功能结构图</h3>
+<p>BCS SaaS 作为 BCS 的上层产品，包含已开源的项目管理系统（bcs-projmgr）、容器服务产品层主体功能模块（bcs-app）、底层的配置中心模块（bcs-cc）以及未开源的监控中心，同时它依赖蓝鲸体系下的其他产品服务（如 PaaS、CMDB 等）。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15674159010680.jpg" /></p>
+<p>SaaS 依赖的服务介绍：
+- <a href="https://github.com/Tencent/bk-PaaS">bk-PaaS</a>：为 BCS SaaS 提供了 4 大服务(统一登录、开发者中心、ESB 和应用引擎)，其中 bcs-app 由应用引擎托管</p>
+<ul>
+<li>
+<p><a href="https://github.com/Tencent/bk-bcs">bk-bcs-services</a>：BCS 底层服务。作为后台服务，bk-bcs-services 给 bcs-app 提供了集群搭建，应用编排等丰富的底层接口，更多详见下 <em>BCS 后台架构图</em></p>
+</li>
+<li>
+<p><a href="https://github.com/Tencent/bk-cmdb">bk-cmdb</a>：蓝鲸配置平台。bcs-app 的集群管理功能涉及的业务和主机信息来源于配置平台</p>
+</li>
+<li>
+<p>bk-iam：蓝鲸权限中心，BCS SaaS 基于 bk-iam，实现了用户与平台资源之间的权限控制</p>
+</li>
+<li>
+<p>bk-Habor：蓝鲸容器管理平台镜像仓库服务。bcs-app 使用 bk-Habor 提供的 API，实现了业务镜像的查询与配置功能</p>
+</li>
+</ul>
+<h3 id="bcs-saas_2">BCS SaaS 部署拓扑图</h3>
+<p>SaaS 包含 bcs-projmgr, bcs-app, bcs-cc 三个模块。</p>
+<p>SaaS 依赖的后端服务 bk-bcs-services 也已开源，bk-iam 等灰色标注的系统暂未开源，需要依托蓝鲸独立部署版本进行搭建。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15677593863168.jpg" /></p>
+<h2 id="bcs_1">BCS 后台架构图</h2>
+<p>下图为 BCS 的整体架构图：BCS Client 或者业务 SaaS 服务通过 API 接入，API 根据访问的集群将请求路由到 BCS 下的 K8S 集群。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15674155869369.jpg" /></p>
+<p>Kubenetes 容器编排的说明：
+- BCS 支持原生 K8S 的使用方式
+- K8S 集群运行的 Agent（bcs-k8s-agent） 向 BCS API 服务进行集群注册
+- K8S 集群运行的 Data Watch 负责将该集群的数据同步到 BCS Storage</p><h1 id="_1">容器管理套餐快速入门</h1>
+<p><img alt="-w1997" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15290519660825.jpg" /></p>
+<p>此外，场景案例中的 <a href="../Scenes/Bcs_deploy_nginx_cluster.md">如何构建 Nginx 集群</a> 也可以实现快速上手 BCS。</p>
+<h2 id="_2">登录蓝鲸容器服务控制台</h2>
+<p>登录蓝鲸容器服务控制台。</p>
+<h2 id="_3">创建项目（也可选择已有项目）</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/project_home.png" /></p>
+<ul>
+<li>创建新项目：进入项目管理页面，点击【新建项目】按钮，完成项目创建操作</li>
+<li>获取已有项目权限：进入蓝鲸权限中心，【申请加入】已有项目来获取项目使用权限</li>
+</ul>
+<p><strong>关键项说明</strong>：通过项目进入容器服务后，还需要关联“蓝鲸配置平台（CMDB）”上的某个业务，目的是从该业务机器资源池中获取创建集群的主机列表。</p>
+<h2 id="_4">创建集群</h2>
+<p>在容器服务左侧导航中点击【集群】进入集群管理页面，点击【创建集群】按钮。</p>
+<p><strong>关键项说明：</strong>
+- 集群 Master 节点为奇数个，最少 1 个，最多 7 个
+- 创建集群，系统将对主机做以下初始化操作：
+    - 机器前置检查
+    - 安装蓝鲸容器服务初始化包
+    - 安装蓝鲸容器服务基础组件
+- Master 要求：
+    - 机器配置：至少 CPU/内存为 4 核/8G
+    - 系统版本：CentOS 7 及以上系统（内核版本 3.10.0-693 及以上），推荐 CentOS 7.4</p>
+<h2 id="_5">添加集群节点</h2>
+<p>集群创建成功后，您可以进入集群节点列表，为集群增加节点。</p>
+<p><strong>关键项说明：</strong>
+- Node 要求：
+    - 系统版本：CentOS 7 及以上系统（内核版本 3.10.0-693 及以上），推荐 CentOS 7.4
+    - NAT 模块：确认 NAT 模块已安装</p>
+<h2 id="_6">创建命名空间</h2>
+<p>在容器服务左侧导航中点击【命名空间】，点击【新建】按钮，创建指定集群的命名空间信息（创建服务实例将以集群命名空间维度创建）。</p>
+<p><code>注意：创建命名空间后，名称不允许修改。</code></p>
+<h2 id="_7">创建服务实例</h2>
+<p>新建项目时，系统将初始“示例模板集”到当前项目的模板集库中，您可以直接使用该模板集体验操作。</p>
+<p>示例模板集：
+- 是蓝鲸提供的《吃豆小游戏》模板配置，您可以查看该模板配置详情，对模板的使用有一个初步概念
+- 模板集中使用了镜像仓库提供的公共镜像，您可以在容器服务左侧导航中点击“仓库”查看，并推送您的项目镜像到项目私有镜像仓库</p>
+<p>创建服务应用实例：
+- 进入“示例模板集”，点击【实例化】按钮进入实例化页面
+- 选择模板集，选择集群命名空间
+- 点击【创建】按钮</p>
+<h2 id="_8">确认完成</h2>
+<p>《吃豆小游戏》已经部署完成，您可以在容器服务左侧导航中点击【应用】，查看小游戏服务应用实例。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/nginx_app.jpg" /></p>
+<p>接下来，您可以体验吃豆小游戏：</p>
+<ul>
+<li>在<code>deploy-nginx</code>应用详情页面查看<code>Host IP</code>，也就是接入层的 IP</li>
+<li>将链接 <code>http://HOST_IP/rumpetroll/?openid=is__superuser&amp;token=tPp5GwAmMPIrzXhyyA8X</code> 中的 <code>HOST_IP</code>替换为接入层 IP(如下图红框部分)，访问即可体验</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/game_app.jpg" /></p>
+<p>您可以尝试：
+- 在线滚动升级小游戏
+- 在线扩缩容小游戏服务实例
+- 在线删除或重建小游戏服务实例</p>
+<h2 id="_9">小游戏使用说明</h2>
+<p>部署完成后，用户可以登入小游戏试玩使用。</p>
+<p>注意：下面 token 默认为<code>tPp5GwAmMPIrzXhyyA8X</code>。</p>
+<h3 id="pc">PC 登入地址</h3>
+<blockquote>
+<p><code>http://{domain}/rumpetroll/?openid=is__superuser&amp;token={token}</code></p>
+</blockquote>
+<p>PC 登入可以显示倒计时页面，管理员或者投放到大屏使用。</p>
+<h3 id="_10">玩家登入地址</h3>
+<blockquote>
+<p><code>http://{domain}/rumpetroll/</code></p>
+</blockquote>
+<p>普通玩家使用上面地址登入游戏。</p>
+<h3 id="_11">游戏开启和关闭</h3>
+<p>默认情况下，游戏是关闭的，可以调用 API 开启，关闭游戏。</p>
+<pre class="codehilite"><code class="language-bash"># 开启游戏
+curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'func_code=is_start&amp;enabled=1' 'http://{domain}/rumpetroll/api/func_controller/?token={token}'
+
+# 关闭游戏
+curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'func_code=is_start&amp;enabled=0' 'http://{domain}/rumpetroll/api/func_controller/?token={token}'
+
+# 获取开关状态
+curl -X GET 'http://{domain}/rumpetroll/api/func_controller/?token={token}&amp;func_code=is_start'</code></pre>
+
+
+<h3 id="_12">发送豆子</h3>
+<p>可以调用 API 发送豆子，用户角色吃掉豆子后，体型有变大效果。</p>
+<pre class="codehilite"><code class="language-bash"># 发送豆子, num 是发送豆子数量
+curl -X GET 'http://{domain}/rumpetroll/api/gold/?token={token}&amp;num={num}'</code></pre>
+
+
+<p>注意：发送完成后，PC 端会自动进入倒计时，默认 3 分钟。</p>
+<h3 id="_13">游戏统计地址</h3>
+<ul>
+<li>在线统计：http://{domain}/rumpetroll/api/stat/?token={token}&amp;meter=online</li>
+<li>吃豆排名统计：http://{domain}/rumpetroll/api/stat/?token={token}&amp;meter=online</li>
+<li>豆子剩余数量：http://{domain}/rumpetroll/api/stat/?token={token}&amp;meter=golds</li>
+</ul>
+<h3 id="_14">重置数据</h3>
+<p>使用 <code>web-console</code> 登入到 redis 所在 pod 中，清空 redis 数据即可。</p>
+<pre class="codehilite"><code class="language-bash">redis-cli flushall</code></pre><h1 id="nginx">快速构建 Nginx 集群</h1>
+<h2 id="_1">情景</h2>
+<p>传统的 Nginx 集群要先部署多个 Nginx 节点，然后通过 <code>upstream</code> 统一一个入口提供给用户访问。</p>
+<p>该过程操作繁琐，接下来看 BCS（容器管理平台） 如何通过 <strong>容器调度</strong> 快速构建 Nginx 集群。</p>
+<h2 id="_2">前提条件</h2>
+<ul>
+<li>
+<p><a href="https://kubernetes.io/zh/docs/concepts/">K8S 基本概念</a>，包含  <a href="https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/">Deployment</a>、<a href="https://kubernetes.io/docs/concepts/services-networking/service/">Services</a>。</p>
+</li>
+<li>
+<p><a href="../../../部署指南/产品白皮书/增强包安装/机器评估/bcs_evaluate.md">完成 BCS 部署</a></p>
+</li>
+<li>准备 2 台云主机：4 核 8 G，不低于 CentOS 7，K8s Master 和 Node 各 1 台</li>
+<li>完成上述 2 台云主机的 <a href="../../../节点管理/产品白皮书/产品功能/Agent安装.md">Agent 安装</a> ，并分配至 <a href="../../../配置平台/产品白皮书/产品功能/ResourcePool.md">CMDB 业务下</a></li>
+</ul>
+<h2 id="_3">操作步骤</h2>
+<ol>
+<li>
+<p>新建集群</p>
+</li>
+<li>
+<p>BCS 快速构建 Nginx 集群</p>
+</li>
+</ol>
+<h2 id="_4">新建集群</h2>
+<h3 id="_5">启用容器服务</h3>
+<p>在 BCS 首页，点击<code>新建项目</code>，如<code>欢乐游戏(demo)</code>。</p>
+<p><img alt="-w1378" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15648362836651.jpg" /></p>
+<p>然后选择容器编排类型为 <code>Kubernetes</code> ，关联 <em>前提条件</em> 中提到的 CMDB 业务，点击<code>启用容器服务</code>。</p>
+<p><img alt="-w1304" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15648364147641.jpg" /></p>
+<h3 id="_6">新建集群</h3>
+<p><code>启用容器服务</code>后，进入容器服务欢迎页，点击<code>创建容器集群</code>。</p>
+<p><img alt="-w1361" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15648365448905.jpg" /></p>
+<p>按提示填写集群的基本信息。</p>
+<p><img alt="-w1368" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15648366557109.jpg" /></p>
+<blockquote>
+<p>容器服务的集群划分和 <a href="../../../配置平台/产品白皮书/场景案例/CMDB_management_hosts.md">传统单体应用在 CMDB 中的集群划分</a>很类似，可以按照<code>地域（如华北区）</code>或者<code>完全独立的应用集合（微信区）</code>来划分。</p>
+</blockquote>
+<p>选择 1 台云主机作为 Master。</p>
+<p><img alt="-w1368" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15648366389029.jpg" /></p>
+<p>点击<code>确定</code>后，集群开始初始化。</p>
+<p><img alt="-w1368" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15648367382011.jpg" /></p>
+<p>点击<code>节点管理</code></p>
+<p><img alt="-w1363" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15648839802641.jpg" /></p>
+<p>点击<code>添加节点</code>，按提示节点添加。</p>
+<p><img alt="-w1368" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15648840282881.jpg" /></p>
+<p>至此，新建集群完毕。可以看到集群的基础信息。</p>
+<p><img alt="-w1487" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15648861584543.jpg" /></p>
+<p>另外，在集群的设置(<strong>⋮</strong>)下拉菜单中，可以看到集群主要性能指标。</p>
+<p><img alt="-w1488" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15648861821783.jpg" /></p>
+<h2 id="bcs-nginx">BCS 快速构建 Nginx 集群</h2>
+<h3 id="_7">新建命名空间</h3>
+<p>新建命名空间<code>dev</code>。</p>
+<p><img alt="-w1462" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652519427953.jpg" /></p>
+<h3 id="_8">新建模板集</h3>
+<p>模板集，可以类比为 K8S 中 <strong><a href="https://helm.sh/">Helm</a></strong> 的<code>Charts</code>，在 K8S 编排中，是 K8S 对象的集合：<code>Deployment（无状态）</code>、<code>StatefulSet（有状态）</code>、<code>DaemonSet（守护进程集）</code>、<code>Job（定时任务）</code>、<code>Configmap（配置项）</code>、<code>Secret（保密字典）</code>，具体参见 <a href="../Function/TemplateIntroduce.md">模板集使用介绍</a> 。</p>
+<p>打开菜单<code>[模板集]</code>，新建模板集<code>web-nginx</code>。</p>
+<p><img alt="-w1466" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652520004880.jpg" /></p>
+<p>按提示，填写<code>Deployment</code></p>
+<p><img alt="-w1465" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652532175601.jpg" /></p>
+<p><img alt="-w1462" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652535815272.jpg" /></p>
+<p>填写<code>Service</code></p>
+<p><img alt="-w1458" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652542476126.jpg" /></p>
+<h3 id="_9">实例化</h3>
+<p><img alt="-w1470" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652543011285.jpg" /></p>
+<p><img alt="-w1466" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652545088426.jpg" /></p>
+<h3 id="_10">检查部署效果</h3>
+<p>在菜单<code>网络</code> -&gt; <code>Services</code>中，找到刚实例化的 Service <code>web-nginx</code>。</p>
+<p><img alt="-w1465" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652551496895.jpg" /></p>
+<p>在菜单<code>[应用]</code> -&gt; <code>[Deployment]</code>中可以找到 <code>web-nginx</code>。</p>
+<p><img alt="-w1464" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652552229901.jpg" /></p>
+<p>以及其运行指标：</p>
+<p><img alt="-w1463" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652552369974.jpg" /></p>
+<p>通过访问 <code>Node+NodePort</code>，可以查看刚刚部署 Nginx 集群的版本号。</p>
+<pre class="codehilite"><code class="language-bash">[root@ip-10-0-5-94-n-bcs-k8s-40015 ~]# curl 10.0.5.94:30008 -I
+HTTP/1.1 200 OK
+Server: nginx/1.12.2
+Date: Thu, 08 Aug 2019 09:11:42 GMT</code></pre>
+
+
+<p>通过访问<code>Service IP + Port</code>，也可以查看刚部署 Nginx 的版本号。</p>
+<pre class="codehilite"><code class="language-bash">[root@ip-10-0-5-94-n-bcs-k8s-40015 ~]# curl 10.254.11.4:8088 -I
+HTTP/1.1 200 OK
+Server: nginx/1.12.2
+Date: Thu, 08 Aug 2019 09:12:33 GMT
+Content-Type: text/html
+Content-Length: 612
+Last-Modified: Tue, 11 Jul 2017 13:29:18 GMT
+Connection: keep-alive
+ETag: &quot;5964d2ae-264&quot;
+Accept-Ranges: bytes</code></pre><h1 id="_1">应用的滚动升级</h1>
+<h2 id="_2">情景</h2>
+<p>传统的应用更新方式是停服更新，用户在更新期间<strong>无法使用服务</strong>。</p>
+<p>接下来，将以 Nginx 从<code>1.12.2</code>升级<code>1.17.0</code>为例，看 BCS 中的<strong>滚动更新能力</strong>是如何实现<strong>不停机更新</strong>，<strong>用户无感知</strong>。</p>
+<h2 id="_3">前提条件</h2>
+<ul>
+<li>
+<p><a href="https://kubernetes.io/zh/docs/concepts/">K8S 基本概念</a>，包含 <a href="https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/">Deployment</a>、<a href="https://kubernetes.io/docs/concepts/services-networking/service/">Services</a>。</p>
+</li>
+<li>
+<p>[完成 BCS 部署]</p>
+</li>
+</ul>
+<h2 id="_4">操作步骤</h2>
+<ol>
+<li>
+<p>滚动更新逻辑介绍</p>
+</li>
+<li>
+<p>BCS 滚动更新操作指引</p>
+</li>
+</ol>
+<h2 id="_5">滚动更新逻辑介绍</h2>
+<p>滚动更新的逻辑如下图，创建一个新版本的实例（ POD），销毁一个旧版本实例（POD），如此滚动，直至线上都是新版本，旧版本已全部销毁。</p>
+<p>滚动更新对用户无感知。</p>
+<p><img alt="w1549" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652581859764.jpg" /></p>
+<h2 id="bcs">BCS 滚动更新操作指引</h2>
+<h3 id="nginx1170">推送 Nginx:1.17.0 至镜像仓库</h3>
+<p>参照 <a href="../Function/image_repo.md">Harbor 仓库使用指南</a>，将镜像 Nginx:1.17.0 推送至 BCS 公共镜像仓库。</p>
+<h3 id="_6">注册镜像仓库账号</h3>
+<p>在 <a href="../../../部署指南/产品白皮书/增强包安装/机器评估/bcs_evaluate.md">部署 BCS</a> 的中控机上获取镜像仓库的访问地址。</p>
+<pre class="codehilite"><code class="language-bash"># source /data/install/utils.fc &amp;&amp; echo ${HARBOR_SERVER_FQDN}:${HARBOR_SERVER_HTTPS_PORT}
+hub-d.o.******.com:443</code></pre>
+
+
+<p>登录仓库地址，注册镜像仓库账号。</p>
+<p><img alt="w1051" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652566855628.jpg" /></p>
+<p>注册完，登录后可以访问公共仓库。</p>
+<p><img alt="w1478" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652567813655.jpg" /></p>
+<h3 id="nginx1170_1">推送 Nginx:1.17.0 至镜像仓库</h3>
+<p>使用<code>docker pull</code> 从<code>hub.docker.com</code>拉取镜像<code>nginx:1.17.0</code>。</p>
+<pre class="codehilite"><code class="language-bash"># docker pull nginx:1.17.0
+1.17.0: Pulling from library/nginx
+fc7181108d40: Pull complete
+c4277fc40ec2: Pull complete
+780053e98559: Pull complete
+Digest: sha256:bdbf36b7f1f77ffe7bd2a32e59235dff6ecf131e3b6b5b96061c652f30685f3a
+Status: Downloaded newer image for nginx:1.17.0</code></pre>
+
+
+<p>规范镜像<code>tag</code>为仓库要求的格式。</p>
+<pre class="codehilite"><code class="language-bash"># docker tag nginx:1.17.0 hub-d.******.com/public/nginx:1.17.0
+
+# docker images
+REPOSITORY                                                                TAG                  IMAGE ID            CREATED             SIZE
+nginx                                                                     1.17.0               719cd2e3ed04        8 weeks ago         109MB
+hub-d.******.com/public/nginx                                           1.17.0               719cd2e3ed04        8 weeks ago         109MB</code></pre>
+
+
+<p>推动镜像至 BCS 镜像仓库。</p>
+<pre class="codehilite"><code class="language-bash"># docker push hub-d.******.com/public/nginx:1.17.0
+The push refers to repository [hub-d.******.com/public/nginx]
+d7acf794921f: Pushed
+d9569ca04881: Pushed
+cf5b3c6798f7: Pushed
+1.17.0: digest: sha256:079aa93463d2566b7a81cbdf856afc6d4d2a6f9100ca3bcbecf24ade92c9a7fe size: 948</code></pre>
+
+
+<p>在镜像仓库中，可以找到刚推送的<code>Nginx:1.17.0</code>镜像。</p>
+<p><img alt="w1465" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652572564612.jpg" /></p>
+<p>在 BCS 的<code>[仓库菜单]</code>中也可以找到。</p>
+<p><img alt="w1462" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652575817580.jpg" /></p>
+<h3 id="nginx-1122-1170">滚动升级 Nginx ：从 1.12.2 到 1.17.0</h3>
+<p>确认当前版本号为<code>nginx/1.12.2</code></p>
+<pre class="codehilite"><code class="language-bash">[root@ip-10-0-5-94-n-bcs-k8s-40015 ~]# curl 10.0.5.94:30008 -I
+HTTP/1.1 200 OK
+Server: nginx/1.12.2
+Date: Thu, 08 Aug 2019 09:11:42 GMT</code></pre>
+
+
+<p>在【模板集】的【Deployment】页面中，修改【镜像及版本】，将版本从<code>1.12.2</code>修改为在 <em>推送 Nginx:1.17.0</em> 至镜像仓库 中上传的 Nginx 新镜像 <code>1.17.0</code>。</p>
+<p><img alt="w1633" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652627456802.jpg" /></p>
+<p>点击【更多设置】，了解默认滚动升级的更新策略。</p>
+<p><img alt="w1269" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15659379375124.jpg" /></p>
+<blockquote>
+<ul>
+<li><code>maxUnavailable</code>：滚动升级期间，考虑应用容量，不可用 Pod 的数量上限</li>
+<li><code>maxSurge</code>：滚动升级期间，考虑集群资源，超出期望 Pod 的数量上限</li>
+<li><code>minReadySeconds</code>：滚动升级期间，考虑可用性，探测 Pod 正常后转为可用的时间</li>
+</ul>
+</blockquote>
+<p>修改完镜像的版本后，接下来【保存】模板集，填写【新版本】的版本号。</p>
+<p><img alt="w1633" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652627905254.jpg" /></p>
+<p>接着，开始滚动升级。点击菜单【应用】 -&gt; 【Deployment】，找到<code>web-nginx</code>应用，点击【滚动升级】。</p>
+<p><img alt="w1637" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652616938580.jpg" /></p>
+<p>可以看到，差异点是<code>images</code>从<code>nginx:1.12.2</code>调整为<code>nginx:1.17.0</code></p>
+<p><img alt="w1637" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652628433125.jpg" /></p>
+<p>点击【确定】滚动升级后，正在更新。</p>
+<p><img alt="w1636" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652628788988.jpg" /></p>
+<p>通过 右下角的 【Web console】 可以通过命令行的方式获取实例(POD)的基础信息。</p>
+<p><img alt="w1636" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15652622109567.jpg" /></p>
+<p>以下是更新前后的对比</p>
+<pre class="codehilite"><code class="language-bash">root:~$ kubectl get pods -n dev -o wideNAME                         READY   STATUS    RESTARTS   AGE    IP            NODE                           NOMINATED NODE
+web-nginx-678bb9c4fb-m8cf4   1/1     Running   0          134m   172.32.1.18   ip-10-0-5-94-n-bcs-k8s-40015   &lt;none&gt;
+web-nginx-678bb9c4fb-nxwf4   1/1     Running   0          134m   172.32.1.17   ip-10-0-5-94-n-bcs-k8s-40015   &lt;none&gt;
+
+root:~$ kubectl get pods -n dev -o wide
+NAME                        READY   STATUS    RESTARTS   AGE   IP            NODE                           NOMINATED NODE
+web-nginx-f95ffc78d-cxhrq   1/1     Running   0          21s   172.32.1.20   ip-10-0-5-94-n-bcs-k8s-40015   &lt;none&gt;
+web-nginx-f95ffc78d-pqtcj   1/1     Running   0          14s   172.32.1.21   ip-10-0-5-94-n-bcs-k8s-40015   &lt;none&gt;</code></pre>
+
+
+<p>可以看到<code>Nginx</code>版本已经从<code>1.12.2</code>更新为<code>1.17.0</code></p>
+<pre class="codehilite"><code class="language-bash">[root@ip-10-0-5-94-n-bcs-k8s-40015 ~]# curl 10.0.5.94:30008 -I
+HTTP/1.1 200 OK
+Server: nginx/1.17.0</code></pre><h1 id="_1">应用的蓝绿发布</h1>
+<h2 id="_2">情景</h2>
+<p>传统的应用更新方式是<strong>停服更新</strong>，用户在更新期间<strong>无法使用服务</strong>。</p>
+<p>接下来，将以 Nginx 从 <code>1.12.2</code> 升级 <code>1.17.0</code> + 程序代码（index.html 的内容从 Nginx 默认页 更新为 1.17.0）为例，看 BCS 中的<strong>蓝绿发布能力</strong>是如何实现<strong>不停机更新</strong>，<strong>用户无感知</strong>。</p>
+<h2 id="_3">前提条件</h2>
+<ul>
+<li>
+<p><a href="https://kubernetes.io/zh/docs/concepts/">K8S 基本概念</a>，包含 <a href="https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/">Deployment</a>、<a href="https://kubernetes.io/docs/concepts/services-networking/service/">Services</a>；本节教程新增概念：<a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/">ConfigMap</a>、<a href="https://kubernetes.io/docs/concepts/services-networking/ingress/">Ingress</a>、<a href="https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/">Ingress Controllers</a>。</p>
+</li>
+<li>
+<p>[完成 BCS 部署]</p>
+</li>
+</ul>
+<h2 id="_4">操作步骤</h2>
+<ol>
+<li>
+<p>应用的蓝绿发布逻辑介绍</p>
+</li>
+<li>
+<p>使用 K8S 资源准备版本</p>
+</li>
+<li>
+<p>使用 K8S 资源准备新版本</p>
+</li>
+<li>
+<p>切换流量并观察</p>
+</li>
+</ol>
+<h2 id="_5">蓝绿发布逻辑介绍</h2>
+<h3 id="_6">发布逻辑示意图</h3>
+<p>蓝绿发布，即准备 <em>当前运行版本</em> 和 <em>新版本</em> 两组实例，正式发布的时候，修改服务的域名的 DNS 记录将，将其指向新版本的 Ingress 指向的地址 。</p>
+<p><img alt="-w1303" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15680799749131.jpg" /></p>
+<h3 id="_7">版本更新流程中引入的对象</h3>
+<p>以 Nginx 从 <code>1.12.2</code> 升级 <code>1.17.0</code> + 程序代码（index.html 的内容从 Nginx 默认页 更新为 1.17.0）为例，使用以下几个 新的对象：</p>
+<ul>
+<li>程序代码或可执行文件（index.html） ：Docker 镜像</li>
+<li>程序或运行环境配置（nginx.conf） ：ConfigMap</li>
+<li>负载均衡器 （LoadBalancer）+ Ingress ： 用户接入和负载均衡</li>
+</ul>
+<p>其中 Deployment、Service 不再赘述。</p>
+<h2 id="k8s">使用 K8S 资源准备版本</h2>
+<h3 id="loadbalancer">新增 LoadBalancer</h3>
+<p>Ingress 是 K8S 中描述用户接入的对象之一， 需要配合 LB 应用才能对外提供访问。</p>
+<p>在 BCS 中，LoadBalancer 背后的技术是 K8S 维护的 <strong>Nginx Ingress Controller</strong>。</p>
+<p>选择菜单【LoadBalancer】，点击【新建 LoadBalancer】，选择一个节点作为 LB 对外提供网络接入服务。</p>
+<p><img alt="-w1678" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15659439205670.jpg" /></p>
+<blockquote>
+<p>建议业务 Pod 不调度至 LB 所在的节点，可使用 节点亲和性（nodeAffinity）实现。</p>
+</blockquote>
+<h3 id="configmap-nginxconf">Configmap ： 存放 nginx.conf</h3>
+<p>在【模板集】菜单中，选择【Configmap】，新建 nginx.conf 和 default.conf 两个 configmap，实现<strong>应用程序和配置的解耦</strong>。</p>
+<p><img alt="-w1674" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15659435399613.jpg" /></p>
+<h3 id="k8s-deployment-serviceingress">创建 K8S 对象 Deployment 、Service、Ingress</h3>
+<ul>
+<li>创建 Deployment</li>
+</ul>
+<p>在【Deployment】中，填写 名称、标签（Label）、容器镜像、挂载卷（挂载 Configmap）。</p>
+<p><img alt="-w1675" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15659437982262.jpg" />
+<img alt="-w1672" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15659438850899.jpg" /></p>
+<ul>
+<li>创建 Service</li>
+</ul>
+<p>在【Service】中关联 Deployment 以及服务名称、暴露的端口。</p>
+<p><img alt="-w1629" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15680918349969.jpg" /></p>
+<ul>
+<li>新建 Ingress</li>
+</ul>
+<p>在【Ingress】中填写 【主机名】、【路径】以及绑定 【Service】。</p>
+<p><img alt="-w1629" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15680920723966.jpg" /></p>
+<h3 id="_8">实例化模板集</h3>
+<p>保存模板集后，实例化模板集。</p>
+<p><img alt="-w1678" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15659439491084.jpg" /></p>
+<p>可以看到对应资源已生成好。</p>
+<ul>
+<li>Deployment</li>
+</ul>
+<p><img alt="-w1678" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15659449765672.jpg" /></p>
+<ul>
+<li>Service</li>
+</ul>
+<p><img alt="-w1677" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15659450631792.jpg" /></p>
+<ul>
+<li>Ingress</li>
+</ul>
+<p><img alt="-w1677" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15659450818610.jpg" /></p>
+<p>修改域名解析或修改 PC 上 hosts 文件（Mac 下路径为 /etc/hosts），将 Ingress 中配置的主机名解析到 LoadBalancer 中节点的外网 IP，然后打开浏览器访问。</p>
+<p><img alt="-w1115" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15680984160424.jpg" /></p>
+<p>以上作为线上环境运行的版本，接下来部署新版本。</p>
+<h2 id="k8s_1">使用 K8S 资源准备新版本</h2>
+<p>本次新版本参照微服务更新的最佳实践：将应用程序打入 Docker Image，<strong>更新 Deployment 中的镜像即更新版本</strong>。</p>
+<h3 id="docker-image">制作新版本的 Docker Image</h3>
+<p>以 index.html 为应用程序，将其打入镜像，由于新版本的运行时是 Ningx 1.17.0，故以  Nginx 1.17.0 为基础镜像。</p>
+<ul>
+<li>准备 dockerfile</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">$ ll
+total 16
+-rw-r--r--  1 breaking  staff    49B  9 10 10:55 dockerfile
+-rw-r--r--  1 breaking  staff    40B  9 10 10:54 index.html
+
+$ cat index.html
+
+Welcome to BCS.
+
+Nginx Version: 1.17.0
+
+$ cat dockerfile
+FROM nginx:1.17.0
+COPY index.html /usr/share/nginx/html</code></pre>
+
+
+<ul>
+<li>构建 Docker Image</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">$ docker build -t bcs_nginx:1.17.0 .
+Sending build context to Docker daemon  3.072kB
+Step 1/2 : FROM nginx:1.17.0
+ ---&gt; 719cd2e3ed04
+Step 2/2 : COPY index.html /usr/share/nginx/html
+ ---&gt; 9e1342027c80
+Successfully built 9e1342027c80
+Successfully tagged bcs_nginx:1.17.0
+
+$ docker images
+REPOSITORY                                              TAG                   IMAGE ID            CREATED             SIZE
+bcs_nginx                                               1.17.0                9e1342027c80        18 seconds ago      109MB</code></pre>
+
+
+<ul>
+<li>推送镜像到仓库</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">$ docker tag bcs_nginx:1.17.0 &lt;Registry_URL&gt;/joyfulgame/bcs_nginx:1.17.0
+
+$ docker push &lt;Registry_URL&gt;/joyfulgame/bcs_nginx:1.17.0
+The push refers to repository [&lt;Registry_URL&gt;/joyfulgame/bcs_nginx]
+8b2c2f2923c8: Pushed
+d7acf794921f: Mounted from joyfulgame/nginx
+d9569ca04881: Mounted from joyfulgame/nginx
+cf5b3c6798f7: Mounted from joyfulgame/nginx
+1.17.0: digest: sha256:b608ac54ca92dd092529f9b86403d3a539eab030103e2e0c1a984787ece448c9 size: 1155</code></pre>
+
+
+<blockquote>
+<p>更多 Docker Image 的构建方法可以参考 <a href="https://github.com/nginxinc/docker-nginx/blob/master/stable/alpine/Dockerfile">docker-nginx</a>。</p>
+</blockquote>
+<h3 id="_9">克隆模板集为新版本</h3>
+<p>由于新版本主要在 Deployment 的镜像版本、Ingress 绑定的主机名，以及这几个 K8S 对象的命名差别（同一个命名空间不允许重名），所以克隆模板集，然后修改即可。</p>
+<p>点击【复制模板集】，会克隆一个模板集，命名为：蓝绿发布-绿</p>
+<p><img alt="-w1678" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15659444709512.jpg" /></p>
+<ul>
+<li>修改【Deployment】中的名称、标签以及镜像版本。</li>
+</ul>
+<p><img alt="-w1679" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15681000388594.jpg" /></p>
+<ul>
+<li>修改【Service】中的名称、关联标签。</li>
+</ul>
+<p><img alt="-w1620" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15681000844250.jpg" /></p>
+<ul>
+<li>修改 Ingress，主机名不能上一个版本一样。</li>
+</ul>
+<p><img alt="-w1631" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15681001549718.jpg" /></p>
+<p>最后保存模板集，然后开始实例化模板集。</p>
+<p>修改域名解析或修改 PC 上 hosts 文件（Mac 下路径为 /etc/hosts）后，访问 Ingress 中配置的主机名。</p>
+<p><img alt="-w513" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15681005088734.jpg" /></p>
+<h2 id="_10">切换流量并观察</h2>
+<p>如果是客户端业务，将请求的后端地址指向为新版本的主机名即可，如果客户端不方便更新配置，可以使用 CNAME 将域名指向到新的版本的主机名。</p>
+<p>观察一段时间，如果没有异常，删除原版本的实例即可。</p>
+<p><img alt="-w1626" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15681007939276.jpg" /></p>
+<ul>
+<li>
+<p>蓝绿发布的好处：新版本如果发现异常，可以快速的切换到老版本。</p>
+</li>
+<li>
+<p>蓝绿发布的坏处：预备双倍的资源，直到下线老版本。不过如果有云平台，成本可控。</p>
+</li>
+</ul>
+<p>企业可以结合自身实际情况，选择合适的版本发布方式。</p><h1 id="k8s-wordpress">在 K8S 中部署 WordPress</h1>
+<h2 id="_1">情景</h2>
+<p>WordPress 是流行的开源博客程序，Helm 官方维护了 WorePress 的 Chart，接下来看在 BCS 中如何部署 WordPress，开始你的博客之旅。</p>
+<h2 id="_2">前提条件</h2>
+<ul>
+<li><a href="../Function/helm/ServiceAccess.md">了解 Helm 的使用方法</a></li>
+<li><a href="../Function/StorageSolution/kubernetes.md">集成 K8S 存储</a>，例如 <a href="../Function/StorageSolution/K8s_NFS_Client_Provisioner.md">将 NFS 作为 K8S PV Provisioner</a></li>
+<li>Git Clone <a href="https://github.com/helm/charts/">Helm Charts</a></li>
+<li>新增 <a href="../Function/NetworkSolution/k8s/LoadBalancer.md">LoadBalancer</a></li>
+</ul>
+<h2 id="_3">操作步骤</h2>
+<ol>
+<li>上传 WordPress Chart 到仓库</li>
+<li>部署 WordPress</li>
+<li>访问测试</li>
+</ol>
+<h2 id="wordpress-chart">上传 WordPress Chart 到仓库</h2>
+<p>进入 <a href="https://github.com/helm/charts/">Charts</a> 本地仓库的 wordpress 目录。</p>
+<pre class="codehilite"><code class="language-bash"># cd charts/stable/wordpress/
+
+# ll
+总用量 84
+-rw-r--r-- 1 root root   454 9月  12 11:01 Chart.yaml
+-rw-r--r-- 1 root root   186 9月  12 11:01 OWNERS
+-rw-r--r-- 1 root root 29059 9月  12 11:01 README.md
+-rw-r--r-- 1 root root   233 9月  12 11:01 requirements.lock
+-rw-r--r-- 1 root root   173 8月  27 17:00 requirements.yaml
+drwxr-xr-x 3 root root  4096 9月  12 11:01 templates
+-rw-r--r-- 1 root root 13278 9月  12 11:01 values-production.yaml
+-rw-r--r-- 1 root root 12925 9月  12 11:01 values.yaml</code></pre>
+
+
+<p>可以看到存在 requirements.yaml 文件，了解 WordPress 依赖 mariadb 的 Chart。</p>
+<pre class="codehilite"><code class="language-bash"># cat requirements.yaml
+dependencies:
+- name: mariadb
+  version: 6.x.x
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  condition: mariadb.enabled
+  tags:
+    - wordpress-database</code></pre>
+
+
+<p>在当前目录使用 Helm 命令下载依赖包。</p>
+<pre class="codehilite"><code class="language-bash"># helm dep build
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the &quot;joyfulgame&quot; chart repository
+...Successfully got an update from the &quot;stable&quot; chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 1 charts
+Downloading mariadb from repo https://kubernetes-charts.storage.googleapis.com/
+Deleting outdated charts</code></pre>
+
+
+<p>推送 Chart 到仓库</p>
+<pre class="codehilite"><code class="language-bash"># helm push . joyfulgame
+Pushing wordpress-7.3.4.tgz to joyfulgame...
+Done.</code></pre>
+
+
+<p>在 BCS 【Chart 仓库】菜单中，点击【同步仓库】，将刚刚上传的 Chart 从仓库同步到 BCS 的界面中。</p>
+<h2 id="wordpress">部署 WordPress</h2>
+<p>在 BCS 【Chart 仓库】菜单中，找到刚刚上传的 WordPress Chart ，点击【部署】。</p>
+<p><img alt="w1645" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15682579071348.jpg" /></p>
+<p>可以修改 Helm 参数，例如 WordPress 管理员账号、密码等，这里重点提一下用户访问用到的 Service 和 Ingress：</p>
+<ul>
+<li>Service</li>
+</ul>
+<p>使用 ClusterIP 即可，因为用户访问使用 Ingress。</p>
+<pre class="codehilite"><code class="language-yaml">service:
+  type: ClusterIP
+  # HTTP Port
+  port: 80</code></pre>
+
+
+<ul>
+<li>Ingress</li>
+</ul>
+<p>此处启用 Ingress，并填写绑定的 <strong>主机名</strong> 和 <strong>路径</strong>。类似 Nginx 配置文件中 Server Section 部分的 server_name。</p>
+<p><img alt="w1678" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15682642857653.jpg" /></p>
+<p>点击【预览】，可以看到 BCS 将 Charts 通过 <code>helm template</code> 命令渲染为 K8S 的对象描述文件。</p>
+<p><img alt="w1657" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15682582162576.jpg" /></p>
+<p>点击 【部署】即可。</p>
+<p>在【Release 列表】菜单中可以查看部署状态。</p>
+<p><img alt="w1652" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15683730410624.jpg" /></p>
+<p>部署成功，接下来测试访问。</p>
+<h2 id="_4">访问测试</h2>
+<p>修改域名解析或 PC 上 hosts 文件（Mac 下路径为 /etc/hosts），将 Ingress 中配置的主机名指向到 LoadBalancer 中节点的外网 IP，然后打开浏览器访问，可以看到 WordPress 首页。</p>
+<p><img alt="w1648" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15683743074917.jpg" /></p>
+<p>输入用户名（默认为 user）和密码登录 Wordpress 后台。</p>
+<p><img alt="w1676" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15683744779001.jpg" /></p>
+<p>如果没有在 Chart 参数中没有设置密码，可以通过命令获取 WordPress 的 Secret。</p>
+<pre class="codehilite"><code class="language-yaml"># kubectl  get secret -n dev
+NAME                                                TYPE                                  DATA   AGE
+wordpress-1909130255                                Opaque                                1      4h37m
+
+# kubectl  get secret/wordpress-1909130255 -n dev -o yaml
+apiVersion: v1
+data:
+  wordpress-password: bFgzTmZvSHJIVg==
+kind: Secret
+  creationTimestamp: 2019-09-13T07:01:33Z
+  name: wordpress-1909130255
+  namespace: dev
+type: Opaque
+
+# echo &quot;bFgzTmZvSHJIVg==&quot; | base64 --decode
+lX3NfoHrHV</code></pre>
+
+
+<p>BCS 部署应用，如此简单。</p><h1 id="k8s-gitlab">在 K8S 中部署 GitLab</h1>
+<h2 id="_1">情景</h2>
+<p>GitLab，不仅仅一个独立部署的流行 Git 代码托管仓库，通过其 Pipeline 具备部分 CI 环节的能力，接下来看 BCS 如何快速部署 GitLab。</p>
+<h2 id="_2">前提条件</h2>
+<ul>
+<li><a href="../Function/helm/ServiceAccess.md">了解 Helm 的使用方法</a></li>
+<li><a href="../Function/StorageSolution/kubernetes.md">集成 K8S 存储</a>，例如 <a href="../Function/StorageSolution/K8s_NFS_Client_Provisioner.md">将 NFS 作为 K8S PV Provisioner</a></li>
+<li>Git Clone <a href="https://github.com/helm/charts/">Helm Charts</a></li>
+<li>新增 <a href="../Function/NetworkSolution/k8s/LoadBalancer.md">LoadBalancer</a></li>
+</ul>
+<h2 id="_3">操作步骤</h2>
+<ol>
+<li>
+<p>上传 GitLab Chart 到仓库</p>
+</li>
+<li>
+<p>部署 GitLab</p>
+</li>
+<li>
+<p>访问测试</p>
+</li>
+</ol>
+<h2 id="gitlab-chart">上传 GitLab Chart 到仓库</h2>
+<p>进入 <a href="https://github.com/helm/charts/">Charts</a> 本地仓库的 gitlab-ce 目录。</p>
+<pre class="codehilite"><code class="language-bash"># cd charts/stable/gitlab-ce/
+
+# ll
+总用量 28
+-rwxr-xr-x 1 root root  365 8月  27 17:00 Chart.yaml
+-rw-r--r-- 1 root root 2502 8月  27 17:00 README.md
+-rw-r--r-- 1 root root  336 8月  27 17:00 requirements.lock
+-rw-r--r-- 1 root root  209 8月  27 17:00 requirements.yaml
+drwxr-xr-x 2 root root 4096 9月  13 15:14 templates
+-rw-r--r-- 1 root root 3445 8月  27 17:00 values.yaml</code></pre>
+
+
+<p>可以看到存在 requirements.yaml 文件，了解 GitLab 依赖 redis、postgresql 的 Chart。</p>
+<pre class="codehilite"><code class="language-bash"># cat requirements.yaml
+dependencies:
+- name: redis
+  version: 0.9.0
+  repository: https://kubernetes-charts.storage.googleapis.com/
+- name: postgresql
+  version: 0.8.1
+  repository: https://kubernetes-charts.storage.googleapis.com/</code></pre>
+
+
+<p>在当前目录使用 Helm 命令下载依赖包。</p>
+<pre class="codehilite"><code class="language-bash"># helm dep build
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the &quot;joyfulgame&quot; chart repository
+...Successfully got an update from the &quot;stable&quot; chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 2 charts
+Downloading redis from repo https://kubernetes-charts.storage.googleapis.com/
+Downloading postgresql from repo https://kubernetes-charts.storage.googleapis.com/
+Deleting outdated charts</code></pre>
+
+
+<p>推送 Chart 到仓库</p>
+<pre class="codehilite"><code class="language-bash"># helm push . joyfulgame
+Pushing gitlab-ce-0.2.2.tgz to joyfulgame...
+Done.</code></pre>
+
+
+<p>在 BCS 【Chart 仓库】菜单中，点击【同步仓库】，将刚刚上传的 Chart 从仓库同步到 BCS 的界面中。</p>
+<h2 id="gitlab">部署 GitLab</h2>
+<p>在 BCS 【Chart 仓库】菜单中，找到刚刚上传的 GitLab Chart ，点击【部署】。</p>
+<p><img alt="-w1678" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15683755718942.jpg" /></p>
+<p>选择 Chart 版本以及命名空间后，下方显示 Helm 参数。</p>
+<p><img alt="-w1673" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15683757228949.jpg" /></p>
+<p>需调整 externalUrl、Service 和 Ingress：</p>
+<ul>
+<li>externalUrl</li>
+</ul>
+<p>必填，安装过程需要 GitLab 访问地址。</p>
+<ul>
+<li>Service</li>
+</ul>
+<p>使用 ClusterIP 即可，因为用户访问使用 Ingress。</p>
+<pre class="codehilite"><code class="language-yaml">serviceType: ClusterIP</code></pre>
+
+
+<ul>
+<li>Ingress</li>
+</ul>
+<p>此处启用 Ingress，并填写 URL。</p>
+<pre class="codehilite"><code class="language-yaml">ingress:
+  annotations:
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: &quot;true&quot;
+  enabled: true
+  tls:
+      # - secretName: gitlab.cluster.local
+      #   hosts:
+      #     - gitlab.cluster.local
+  url: gitlab.bk.tencent.com</code></pre>
+
+
+<p>点击【预览】，可以看到 BCS 将 Charts 通过 <code>helm template</code> 命令渲染为 K8S 的对象描述文件。</p>
+<p><img alt="-w1679" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15683761927767.jpg" /></p>
+<p>点击 【部署】即可。</p>
+<p>在【Release 列表】菜单中可以查看部署状态。</p>
+<p><img alt="-w1676" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15683762160110.jpg" /></p>
+<p>部署成功，接下来测试访问。</p>
+<h2 id="_4">访问测试</h2>
+<p>修改域名解析或 PC 上 hosts 文件（Mac 下路径为 /etc/hosts），将 Ingress 中配置的主机名指向到 LoadBalancer 中节点的外网 IP，然后打开浏览器访问，可以看到 GitLab 首次登陆密码设置界面。</p>
+<p>管理员用户名为 root，登陆后界面如下：</p>
+<p><img alt="-w1678" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15683762619925.jpg" /></p>
+<p>创建一个仓库，体验一下。</p>
+<p><img alt="-w1676" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15683763495121.jpg" /></p>
+<p>BCS 部署应用，如此简单。</p><h1 id="_1">项目管理介绍</h1>
+<p>项目是容器管理平台的一级入口，所有的资源都是围绕项目进行划分。</p>
+<h2 id="_2">创建项目</h2>
+<p>用户进入到容器管理平台后，通过点击【新建项目】按钮，完成个人项目的创建。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/project_create.png" /></p>
+<h2 id="_3">申请加入已存在的项目</h2>
+<p>对于已存在的项目，如果没有权限，可以点击【申请加入】，到权限中心完成权限的申请。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/project_join.png" /></p>
+<p>点击【去申请】，跳转到权限中心页面。填写申请理由，点击【提交】，申请单据会流转到管理员的审批列表中，等待审批。审批通过后，用户便可以进入项目对应的容器服务中。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/project_auth.png" /></p><h1 id="_1">集群管理</h1>
+<h2 id="1">1. 启用容器服务</h2>
+<p>如果当前项目未启用过容器服务，会看到如下的启用页面。如果是管理员，这里会直接出现有权限的业务列表(业务列表来源于配置平台)；非管理员需要单独申请。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/bcs_start.png" /></p>
+<p>可以点击【查看帮助】，了解如何申请业务权限。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/bcs_auth.png" /></p>
+<p>通过绑定有权限的业务，正式【启用容器服务】
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/bcs_start1.png" /></p>
+<h2 id="2">2. 创建集群</h2>
+<p>集群作为容器调度的基础，启用完容器服务后，首先需要创建集群。平台提供了两种创建集群的方式，一种是新建集群，另一种是导入已有集群。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/cluster_create.png" /></p>
+<h3 id="_2">新建集群</h3>
+<h4 id="master">创建集群 Master 节点</h4>
+<p>选择【新建集群】，通过【选择服务器】，完成 Master 节点的选择。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/cluster_create_new.png" /></p>
+<p>点击【确定】后，开始创建集群。可以通过【查看日志】观察集群的创建过程。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/cluster_create_process.png" /></p>
+<p>集群 Master 创建完成后，可以点击【总览】查看集群状态。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/cluster_overview.png" /></p>
+<p>可以看到成功添加了一个 Master 节点。但其实当前集群并非可用，因为通常 Master 节点并不会设置成调度节点，而是需要添加 Node 节点(业务容器实际运行所在的主机)。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/cluster_overview1.png" /></p>
+<h4 id="node">添加集群 Node 节点</h4>
+<p>选中【节点管理】标签，点击【添加节点】。选择主机的方式和创建 Master 类似。【确定】后，节点的添加会进入初始化阶段，直到最终完成添加。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/cluster_add_node.png" />
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/cluster_add_node1.png" /></p>
+<p>【节点管理】标签除了可以查看集群的所有节点外，还提供了一些集群日常管理的操作，如【停止调度】等，具体可以参考<a href="https://kubernetes.io/zh/docs/concepts/architecture/nodes/">K8S 官方介绍</a>。</p>
+<h3 id="_3">导入已有集群</h3>
+<p>除了可以新建集群，容器服务也支持用户导入已有的集群。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/cluster_imported.png" /></p>
+<p>注意：只有符合条件的集群才能够被容器服务纳管，这里给出集群需要满足的条件：
+- 主机已经导入配置平台
+- 支持的 K8S 集群版本在 1.12-1.18 之间
+- kubectl 命令路径需要在环境变量中，可以直接执行 kubectl 命令</p>
+<p>如果集群节点上需要使用容器服务自带的 Harbor 私有仓库，则需要手动完成以下操作：
+- bcs dns 配置: </p>
+<p>所有的节点服务器上需要在<code>/etc/resolv.conf</code>文件的第一行加上<code>nameserver xx.xx.xx.xx</code>，xx.xx.xx.xx 是 bcs-dns-service 服务所在的 IP 地址。具体可以参考集群被纳管后 Master 服务器上的<code>/etc/resolv.conf</code>文件的第一条 nameserver，也可以在蓝鲸中控机上执行以下命令获取：
+   <code>bash
+    $ source /data/install/load_env.sh
+    $ ping -c 1 ${BCS_API_IP}</code></p>
+<ul>
+<li>
+<p>添加 harbor https 证书:</p>
+<p>（1）在所有节点服务器创建目录：
+<code>bash
+$ mkdir -p /etc/docker/certs.d/harbor-api.service.consul</code>
+（2）复制 Master 服务器上的<code>/etc/docker/certs.d/harbor-api.service.consul/ca.crt</code>到节点上的目录<code>/etc/docker/certs.d/harbor-api.service.consul/</code></p>
+</li>
+<li>
+<p>重启所有服务器的 docker 服务（Master &amp; Node）</p>
+</li>
+</ul>
+<p>注意：重启 docker 服务前请确认 docker 服务是否启用了<code>--live-restore</code>参数，如果没有启用会影响到目前运行的 docker 容器</p>
+<pre class="codehilite"><code class="language-bash">$ systemctl restart docker</code></pre>
+
+
+<ul>
+<li>重建 coredns 或 kube-dns 应用</li>
+</ul>
+<p>注意：通常 coredns 或 kube-dns 都有 2 个及以上的实例，重建时需要单个处理，以免影响到集群业务。"参考命令"如下</p>
+<pre class="codehilite"><code class="language-bash">$ kubectl delete pod coredns-b65cd664d-glt9r -n kube-system
+$ kubectl delete pod coredns-b65cd664d-mwlgn -n kube-system</code></pre>
+
+
+<ul>
+<li>检查容器监控与 Web Console 状态</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">$ kubectl get pod -n thanos
+    NAME                                                 READY   STATUS    RESTARTS   AGE
+    po-kube-prometheus-stack-operator-5dbd6d85c9-v5bgm   1/1     Running   0          11h
+    po-kube-state-metrics-7796587c9c-fjk96               1/1     Running   0          11h
+    po-prometheus-node-exporter-6dknv                    1/1     Running   1          11h
+    po-prometheus-node-exporter-v2d7t                    1/1     Running   0          11h
+    prometheus-po-kube-prometheus-stack-prometheus-0     3/3     Running   1          4m21s</code></pre>
+
+
+<p>通过执行完上述步骤，集群 Master 节点在导入成功后，用户在集群页面可以看到 <code>Imported</code> 标记，同时可以看到性能指标和 Node 节点，其中 Node 节点会自动添加，无需再单独添加。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/cluster_imported1.png" />
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/cluster_imported2.png" />
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/cluster_imported3.png" /></p><h1 id="_1">节点管理</h1>
+<p>菜单【节点】是对集群管理的补充，该功能菜单主要是支持用户按照项目和集群的维度，查询节点信息，并提供如【设置标签】等操作。更多操作在【集群】-&gt; 【概览】-&gt; 【节点管理】中。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/node_management.png" /></p><h1 id="_1">命名空间</h1>
+<p>在一个 K8S 集群中可以使用命名空间 (namespace) 创建多个 “虚拟集群”，它是多个用户或服务之间划分集群资源的一种方法，具备隔离性。</p>
+<h2 id="_2">创建命名空间</h2>
+<p>点击【新建】按钮，输入命名空间名称，同时选择实际要下发到的集群，完成命名空间的创建。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/namespace_create.png" /></p>
+<h2 id="_3">删除命名空间</h2>
+<p>命名空间并不支持直接更新名字，只能通过删除再新建的方式来完成"重命名"。然而，命名空间的删除是一个比较高危的操作，它将删除该命名空间下所有资源，操作时需要谨慎。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/namespace_delete.png" /></p>
+<h2 id="_4">设置变量值</h2>
+<p>命名空间变量值是针对模板集/Helm 来使用的。在左侧菜单的【变量管理】中，用户可以创建命名空间变量，对于这些变量值的调整，可以通过【设置变量值】完成。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/namespace_var.png" /></p><h1 id="_1">变量管理</h1>
+<p>一份模板集，通过设置变量，可以实例化出不同的模板集实例。变量有 3 种类型：全局变量、集群变量和命名空间变量。
+- 全局变量：一个项目下只会有一个值的变量。如系统变量里面的：项目 ID、业务 ID
+- 集群变量：同一个变量可以针对不同的集群设置不同的值。如系统变量里面的：集群 ID、仓库域名
+- 命名空间变量：同一个变量可以针对不同的命名空间设置不同的值</p>
+<p>注意：同一个项目下变量的 key 不允许重复</p>
+<h2 id="_2">如何管理变量</h2>
+<h3 id="_3">变量的创建</h3>
+<p>通过【变量管理】菜单进入变量管理页面，点击【新增变量】完成创建。创建时，用户根据实际的需要，选择变量类型。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/var_create.png" /></p>
+<h3 id="_4">变量的更新</h3>
+<p>点击【编辑】或【批量更新】，完成变量的更新。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/var_update.png" /></p>
+<h2 id="_5">变量的使用</h2>
+<h3 id="yaml">模板集(YAML 模式)如何使用——暂时仅支持命名空间变量</h3>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/var_nginx_tag.png" /></p>
+<p>YAML 文件中指定变量
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/var_yaml_templateset.png" /></p>
+<p>实例化预览变量效果
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/var_yaml_templateset1.png" /></p>
+<h3 id="_6">模板集(表单模式)如何使用</h3>
+<p>表单中设置变量，其他和 YAML 模板集效果类似
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/var_form_templateset.png" /></p>
+<h3 id="helm-bcs">Helm 如何使用 BCS 变量——暂时仅支持命名空间变量</h3>
+<p>Helm 中如果要使用 BCS 变量，需要加上 <code>__BCS__</code> 前缀。详细可参考<a href="helm/Skills.md">Helm 使用技巧</a>中变量章节</p><h1 id="_1">模板集使用介绍</h1>
+<p>在容器服务中，模板集是 K8S 配置文件模板的集合。用户可以通过将多个应用 (如 Deployment) 的配置模板构成一个模板集，来简化服务管理的复杂度；同时也可以将模板里面需要频繁修改的数据设置成变量，以方便维护。</p>
+<p>容器服务提供了两种类型的模板集：一种是 YAML 模式，另一种是表单模式。对于熟悉 K8S manifest 的用户，YAML 模式更加灵活。</p>
+<h2 id="yaml">YAML 模板集</h2>
+<h3 id="_2">创建模板集</h3>
+<p>在【模板集】菜单中，点击【添加模板集】，选择【YAML 模式】。用户进入创建模板集页面后，可以在模板集定义 Deployment、Service 等资源。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/yaml_templateset_create.png" /></p>
+<p>在使用模板集的时候，可能会用到<a href="variable_management.md">变量管理</a>。对于模板集中的镜像信息，用户可以通过【镜像】按钮进行查询，复制并替换 image 的值。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/nginx_templateset.png" /></p>
+<p>模板集提供了版本管理的功能，在实际保存时，可以填入版本信息。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/tempateset_version_save.png" /></p>
+<h3 id="_3">实例化模板集</h3>
+<p>点击【实例化】按钮，选择模板集的版本以及需要实例化的 YAML 文件
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/yaml_templateset_apply1.png" /></p>
+<p>选择要下发到的集群和命名空间，页面会出现待下发的 YAML 文件的预览，点击【创建】按钮完成配置下发。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/yaml_templateset_apply2.png" /></p>
+<h2 id="_4">表单模板集</h2>
+<p>表单模板集主要是将 K8S 的资源以表单的方式展示出来，相比 YAML 模式，它有填写提示，关联提示等辅助功能，方便用户使用。在字段说明上，它基本对应 K8S 的资源 spec。</p>
+<h3 id="_5">创建模板集</h3>
+<p>在【模板集】菜单中，点击【添加模板集】，选择【表单模式】。进入创建模板集页面后，可以在模板集定义 Deployment 等资源。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/page_templateset_create.png" /></p>
+<p>表单模板集在“保存”和“实例化”时，页面交互和 YAML 模式类似，用户可以直接参考 YAML 模板集的使用方法。</p>
+<h2 id="_6">应用资源查看</h2>
+<p>实例化成功后，用户可以通过左侧菜单【应用】、【网络】以及【配置】来查看实际下发到集群中的资源，例如上面的例子中，实例化了一个 nginx 的 Deployment。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/nginx_templateset_dashboard.png" /></p>
+<p>点开具体的应用，可以看到更详细的内容，如 Pod 的性能指标，Pod 的状态等。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/nginx_templateset_dashboard1.png" /></p><h1 id="helm">业务接入 Helm</h1>
+<p>本文先简单介绍什么是 Helm，然后以蓝鲸小游戏为例，介绍如何使用蓝鲸容器服务部署 Helm Release。</p>
+<h2 id="helm_1">什么是 Helm</h2>
+<p>Helm 是 Kubernetes 的一个包管理工具，用来简化应用的部署和管理。可以把 Helm 比作 CentOS 的 yum 工具。</p>
+<p>使用 Helm 可以完成以下事情：</p>
+<ul>
+<li>管理 Kubernetes manifest files</li>
+<li>管理 Helm 安装包 Charts</li>
+<li>基于 Chart 的 Kubernetes 应用分发</li>
+</ul>
+<p>更多可以参考 <a href="https://helm.sh/docs/intro/">Helm 官方文档</a> 。</p>
+<blockquote>
+<p>蓝鲸容器服务支持 Helm3 和 Helm2，其中 Helm2 使用了 <code>helm template</code> 生成 Kubernetes YAML, 但是部署没有使用 Helm Tiller，而是直接使用的 <code>kubectl apply</code>。</p>
+</blockquote>
+<h2 id="helm-chart">Helm Chart 仓库</h2>
+<p>平台会给项目分配 Helm Chart 仓库，用于存放项目的 Chart，仓库的读写操作均需要密码；另外，所有项目只读共享一个公共仓库，用于共享公共资源，比如社区中常用开源组件的部署方案，所有项目对公共仓库享有只读权限。</p>
+<p><img alt="-w1628" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15680228351971.jpg" /></p>
+<p>如果用户的 Chart 需要推送到公共仓库，可以在 Harbor 页面的 <code>public</code> 项目下的 <code>Helm Charts</code> 上传。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/img02.png" /></p>
+<h2 id="helm-chart_1">推送业务 Helm Chart 到仓库</h2>
+<p>点击 【如何推送 Helm Chart 到项目仓库】 指引，平台会为每个项目生成对应的 Chart 推送命令，可直接复制使用。</p>
+<p><img alt="-w1625" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15680226631931.jpg" /></p>
+<p>建议参照指引完成 Helm Chart 的推送。</p>
+<p><img alt="-w1632" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15680227175027.jpg" /></p><h1 id="helm">使用 Helm 发布应用</h1>
+<h2 id="helm-chart">使用容器服务 Helm 部署 Chart</h2>
+<p>参考上一步推送完 Chart 之后，用户可以在【项目仓库】栏目中看到新推送的 Chart，如果没有可以点击【同步仓库】进行同步。</p>
+<ul>
+<li>创建入口<ul>
+<li>【Release 列表】菜单下，点击【部署 Helm Chart】</li>
+<li>跳转到【Chart 仓库】，选择目标 Chart 点击【部署】</li>
+</ul>
+</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/helm_release_deploy.png" /></p>
+<p><center>图 1. Helm Release 创建入口</center></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/chart_to_deploy.png" /></p>
+<p><center>图 2. Helm Chart 部署按钮</center></p>
+<ul>
+<li>参数填写<ul>
+<li>名称：只能输入字母, 数字或者 <code>-</code></li>
+<li>Chart 版本：Chart 版本</li>
+<li>命名空间：需要实例化的目标集群+命名空间</li>
+<li>用于实例化 Helm Release 的参数，包括直接编辑 yaml 和表单两种方式：<ul>
+<li>yaml 文本编辑，相当于给<code>helm template</code>命令传递<code>-f, --values</code>参数</li>
+<li>表单，主要为了提升输入体验和参数校验，只有在 Chart 中定义了<code>questions.yaml</code>文件时，创建 Helm Release 页面才会生成根据<code>questions.yaml</code>内容生成表单页面。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/chart_rumpetroll_deploy.png" /></p>
+<p><center>图 3. Helm Release 创建参数页面</center></p>
+<ul>
+<li>Helm Release 预览<ul>
+<li>在真正创建 Helm Release 之前，可以通过【预览】功能查看，将要生成的 K8S 资源配置是否符合预期。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/helm_preview_button.png" /></p>
+<p><center>图 4. Helm Release 创建预览入口</center></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/helm_preview.png" /></p>
+<p><center>图 5. Helm Release 创建预览页面示例</center></p>
+<ul>
+<li>Helm Release 升级-对比查看功能<ul>
+<li>相比于创建，针对更新的场景，蓝鲸容器服务提供了对比的功能，可以确认变更内容之后，再执行更新</li>
+</ul>
+</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/release_update.png" /></p>
+<p><center>图 6. Helm Release 升级-对比查看功能</center></p>
+<ul>
+<li>回滚<ul>
+<li>针对 Helm Release 的变更，容器服务还提供了回滚功能，在 Helm Release 列表中，选中需要回滚 Helm Release 的<code>回滚</code>操作按钮。即可以看到回滚页面，选中会要回滚的版本，确认回滚操作的变更内容即可执行回滚。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/release_rollback.png" /></p>
+<p><center>图 7. Helm Release 回滚入口</center></p>
+<h2 id="helm-release">检查 Helm Release 状态</h2>
+<ul>
+<li>通过 Helm Release 列表页面查看<ul>
+<li>选中【查看状态】即可查看资源的状态信息。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/release_status.png" /></p>
+<p><center>图 8. Helm Release 状态查看入口</center></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/status_detail.png" /></p>
+<p><center>图 9. Helm Release 状态效果图</center></p>
+<ul>
+<li>使用蓝鲸容器服务 WebConsole 功能<ul>
+<li>使用蓝鲸容器服务的 WebConsole 功能，用户可以不用登录主机，直接使用 kubectl 命令查看业务容器的状态。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/helm_webconsole_detail.png" /></p>
+<p><center>图 10. WebConsole 使用效果图</center></p>
+<h2 id="helm-release_1">Helm Release 升级的版本</h2>
+<p>通过容器服务对 Helm Release 做升级时，有默认选中的版本(当前版本)。如下图所示，蓝鲸小游戏 rumpetroll 当前版本是 1.0.6，标记的是 <code>unchanged</code> , 表示当前版本自上一次被当前 Helm Release 使用之后未发生过变化。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/helm_release_unchange.png" /></p>
+<ul>
+<li><a href="https://github.com/helm/charts">开源 Helm Chart</a></li>
+</ul><h1 id="helm">Helm 使用技巧</h1>
+<h2 id="chart-bcs">在 Chart 中使用 BCS 变量</h2>
+<h3 id="bcs-helm">BCS 提供的 Helm 变量</h3>
+<ul>
+<li>这些变量可以在 helm chart 中通过<code>{{ .Values.__BCS__.Key }}</code>的方式引用。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value 示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SYS_JFROG_DOMAIN</td>
+<td>xxx</td>
+<td>仓库域名</td>
+</tr>
+<tr>
+<td>SYS_CLUSTER_ID</td>
+<td>BCS-K8S-XXX</td>
+<td>集群 ID</td>
+</tr>
+<tr>
+<td>SYS_PROJECT_ID</td>
+<td>xxx</td>
+<td>项目 ID</td>
+</tr>
+<tr>
+<td>SYS_CC_APP_ID</td>
+<td>1</td>
+<td>业务 ID</td>
+</tr>
+<tr>
+<td>SYS_NAMESPACE</td>
+<td>default</td>
+<td>命名空间</td>
+</tr>
+</tbody>
+</table>
+<p>如下两种使用方式支持包含子 Chart 的场景</p>
+<h4 id="1-chart">方式 1 ：直接在 Chart 中使用</h4>
+<pre class="codehilite"><code class="language-bash">{{ default &quot;127.0.0.1&quot; $.Values.global.__BCS__.SYS_JFROG_DOMAIN }}</code></pre>
+
+
+<h4 id="2">方式 2 ：通过模板的方式使用</h4>
+<pre class="codehilite"><code class="language-bash">{{/*
+domain template
+*/}}
+{{- define &quot;bcsDomain&quot; -}}
+    {{- $default := &quot;127.0.0.1&quot; -}}
+    {{- $values := .Values }}
+    {{- if $values -}}
+
+        {{- $global := $values.global }}
+        {{- if $global -}}
+
+            {{- $bcs := $global.__BCS__ -}}
+            {{- if $bcs -}}
+
+                {{- if $bcs.SYS_JFROG_DOMAIN -}}
+                    {{- $bcs.SYS_JFROG_DOMAIN -}}
+                {{- else -}}
+                    {{- $default -}}
+                {{- end -}}
+
+            {{- else -}}
+                {{- $default -}}
+            {{- end -}}
+
+        {{- else -}}
+            {{- $default -}}
+        {{- end -}}
+
+    {{- else -}}
+        {{- $default -}}
+    {{- end -}}
+{{- end -}}</code></pre>
+
+
+<p>在 Chart 中使用方式如下：</p>
+<pre class="codehilite"><code class="language-bash">{{ template &quot;bcsDomain&quot; $ }}</code></pre>
+
+
+<h2 id="helm-release-valuesyaml">Helm Release 创建时表单与 values.yaml 参数说明</h2>
+<ul>
+<li>在创建 Helm Release 时，您可以通过填写表单或者直接编辑<code>values.yaml</code>来给 chart 传递参数。</li>
+<li>表单是为了提升输入体验（规避错误输入）而引入的一种技术，它的值最终通过<code>--set</code>方式传递给<code>helm template</code>命令（string 类型的值通过 <code>--set-string</code> 传递给 <code>helm template</code>）。</li>
+<li>页面编辑的<code>values.yaml</code>默认值是 Chart 中<code>values.yaml</code>文件内容，用于生成 Helm Release 时并不会替换 Chart 中的<code>values.yaml</code>文件，而是通过<code>--values</code>参数传递给<code>helm template</code>命令。</li>
+<li>优先级问题<ul>
+<li>为了消除您对参数优先级的困惑，我们通过一种双向同步的技术，将最新修改的输入源同步到另外一个输入源。比如，您在 form 表单中修改了镜像的 tag，当 form 表单失去焦点时，这个 tag 值会同步到<code>values.yaml</code>中，对应的，如果您接着编辑<code>values.yaml</code>的值，文本内容的变化也会自动反应到 form 表单中。</li>
+</ul>
+</li>
+</ul><h1 id="helm-questionsyaml">*如何编写 Helm <code>questions.yaml</code></h1>
+<h2 id="helm-questionsyaml_1">Helm questions.yaml 是什么</h2>
+<p>Helm 是一个软件包管理器，提供了一种简单的方法来查找、共享和使用为 Kubernetes 而构建的软件。它提供 key-value 或者 <code>values.yaml</code> 用于设置 Helm 应用的实例化参数。</p>
+<p><code>questions.yaml</code> 是为了提高蓝鲸容器服务中 Helm 功能的易用性，参考开源产品 <code>Rancher</code> 提供的一种动态表单生成技术。</p>
+<p>用户可在 Chart 中提供 <code>questions.yaml</code> 文件，在蓝鲸容器服务产品中实例化 Helm 应用的时候，蓝鲸容器服务会根据 <code>questions.yaml</code> 生成表单供用户输入实例化参数。</p>
+<p>如下图所示，即为一个包含了 <code>questions.yaml</code> 的 Chart：</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15422121558476.jpg" /></p>
+<h2 id="_1">可以干什么</h2>
+<p>为了说明 <code>questions.yaml</code> 可以提供什么样的动态表单，下面先展示一个 <code>questions.yaml</code> 内容段用于说明。</p>
+<pre class="codehilite"><code class="language-yaml">- variable: persistence.enabled
+  default: &quot;false&quot;
+  description: &quot;Enable persistent volume for WordPress&quot;
+  type: boolean
+  required: true
+  label: WordPress Persistent Volume Enabled
+  show_subquestion_if: true
+  group: &quot;WordPress Settings&quot;
+  subquestions:
+  - variable: persistence.size
+    default: &quot;10Gi&quot;
+    description: &quot;WordPress Persistent Volume Size&quot;
+    type: string
+    label: WordPress Volume Size
+  - variable: persistence.storageClass
+    default: &quot;&quot;
+    description: &quot;If undefined or null, uses the default StorageClass. Default to null&quot;
+    type: storageclass
+    label: Default StorageClass for WordPress</code></pre>
+
+
+<p>上面这段配置在用户创建或者更新 helm 应用的时候一个如下表单，</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/1.png" /></p>
+<p>该表单包含一个 radio 用于设置是否使用可持久化存储。如果用户选中使用可持久化存储，<code>storage class</code> 和 <code>volume size</code> 就可以用来供用户填写对应的存储类和卷大小。</p>
+<h2 id="_2">使用场景</h2>
+<ul>
+<li>业务相对稳定之后，把常规发布经常修改的参数项设置成 Form 表单</li>
+<li>产品自助，如果希望让产品自行发布，表单是个不错的选择</li>
+<li>防止错误输入，为了尽量减少拼写错误，可以为输入项设置校验规则</li>
+</ul>
+<h2 id="_3">如何编写</h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>variable</td>
+<td>string</td>
+<td>true</td>
+<td>申明该表单值对应于 <code>values.yaml</code> 中的字断, 及联字段使用 <code>.</code> 进行隔开，比如 <code>persistence.enabled</code>.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>true</td>
+<td>表单项的标签 <code>label</code>.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>false</td>
+<td>关于变量的特别说明.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>false</td>
+<td>表单值的字断类型，默认是 <code>string</code> 类型 (当前支持的字断的类型为： string, boolean, int, enum, password, storageclass and hostname).</td>
+</tr>
+<tr>
+<td>required</td>
+<td>bool</td>
+<td>false</td>
+<td>申明该字断是否是必填项 (真/假)</td>
+</tr>
+<tr>
+<td>default</td>
+<td>string</td>
+<td>false</td>
+<td>设置默认值.</td>
+</tr>
+<tr>
+<td>group</td>
+<td>string</td>
+<td>false</td>
+<td>输入项所属的组.</td>
+</tr>
+<tr>
+<td>min_length</td>
+<td>int</td>
+<td>false</td>
+<td>最小字符串长度.</td>
+</tr>
+<tr>
+<td>max_length</td>
+<td>int</td>
+<td>false</td>
+<td>最大字符串长度.</td>
+</tr>
+<tr>
+<td>min</td>
+<td>int</td>
+<td>false</td>
+<td>最小整数长度.</td>
+</tr>
+<tr>
+<td>max</td>
+<td>int</td>
+<td>false</td>
+<td>最大整数长度.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>[]string</td>
+<td>false</td>
+<td>如果变量类型是 <code>enum</code> 类型, 该字断用于设置可选项，比如选项：<br> - "ClusterIP" <br> - "NodePort" <br> - "LoadBalancer"</td>
+</tr>
+<tr>
+<td>valid_chars</td>
+<td>string</td>
+<td>false</td>
+<td>有效输入字符串校验.</td>
+</tr>
+<tr>
+<td>invalid_chars</td>
+<td>string</td>
+<td>false</td>
+<td>无效输入字符串的校验.</td>
+</tr>
+<tr>
+<td>subquestions</td>
+<td>[]subquestion</td>
+<td>false</td>
+<td>数组类型，用户包含子问题.</td>
+</tr>
+<tr>
+<td>show_if</td>
+<td>string</td>
+<td>false</td>
+<td>控制是否显示当前输入项, 比如 <code>show_if: "serviceType=Nodeport"</code></td>
+</tr>
+<tr>
+<td>show_subquestion_if</td>
+<td>string</td>
+<td>false</td>
+<td>如果当前值为 <code>true</code> 或者可选项的值，则该子问题会被显示出来. 比如 <code>show_subquestion_if: "true"</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>subquestions</strong>：<code>subquestions[]</code> 除了不能包含 <code>subquestions</code> 或者 <code>show_subquestions_if</code> 字段, 上表中的其它字断均支持.</p><h1 id="_1">应用列表</h1>
+<p>容器服务应用列表分为两个视图展示："集群模板"视图和"命名空间"视图。其中，集群模板视图展示由"表单模板集"页面实例化的应用，命名空间视图展示集群中所有命名空间下的应用，包含模板集、Helm、Client(kubectl、K8S Api 等) 方式部署的应用。通过应用页面可以方便查看应用详情、调度 Pod 以及对应用做滚动升级、扩缩容等操作。</p>
+<h2 id="_2">应用类型</h2>
+<ul>
+<li>Deployment</li>
+<li>DaemonSet</li>
+<li>Job</li>
+<li>StatefulSet</li>
+</ul>
+<h2 id="_3">查询展示</h2>
+<ul>
+<li>应用列表</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/app_list.jpg" /></p>
+<ul>
+<li>应用详情</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/deployment_detail.jpg" /></p>
+<ul>
+<li>容器详情</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/container_detail.jpg" /></p>
+<h2 id="_4">应用管理</h2>
+<ul>
+<li>滚动升级</li>
+</ul>
+<p>选择【更新版本】，查看版本差异，点击【确定】滚动升级</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/rollingupdate_button.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/rollingupdate.jpg" /></p>
+<ul>
+<li>扩缩容</li>
+</ul>
+<p>增加或缩减实例数量</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/scale_button.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/scale.jpg" /></p>
+<ul>
+<li>回滚上一版本</li>
+</ul>
+<p>回滚到上一个版本</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/rollback_button.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/rollback.jpg" /></p>
+<ul>
+<li>重建应用</li>
+</ul>
+<p>重新调度应用下的 Pod</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/recreate_button.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/recreate.jpg" /></p>
+<ul>
+<li>删除应用</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/delete.jpg" /></p>
+<ul>
+<li>Pod 重新调度</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/application/reschedule.jpg" /></p><h1 id="service">Service 列表</h1>
+<p>Service 列表用于展示集群中所有 Service 信息，包含名称、Service 类型、集群内访问或集群外访问方式等，并且允许通过页面更新和删除 Service 资源。</p>
+<h2 id="_1">列表展示</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/service_list.jpg" /></p>
+<h2 id="_2">详情查看</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/service_detail.png" /></p>
+<h2 id="_3">更新操作</h2>
+<p><code>注意: 仅允许操作通过表单模板集部署的 service 资源</code></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/update_service_button.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/update_service.jpg" /></p>
+<h2 id="_4">删除操作</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/delete_service.jpg" /></p><h1 id="ingress">Ingress 列表</h1>
+<p>Ingress 列表展示集群中所有 Ingress 信息，通过列表页面方便查看、更新及删除 Ingress 资源。</p>
+<h2 id="_1">列表展示</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/ingress_list.jpg" /></p>
+<h2 id="_2">更新操作</h2>
+<p><code>注意: 仅允许操作通过模板集部署的 ingress 资源</code></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/update_ingress_button.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/update_ingress.jpg" /></p>
+<h2 id="_3">删除操作</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/delete_ingress.jpg" /></p><h1 id="loadbalancer">LoadBalancer</h1>
+<p>容器服务 LoadBalancer 采用 K8S 官方维护的 nginx ingress controller 方案，通过 Helm Chart 的方式进行部署管理。LoadBalancer 主要包含两部分: nginx 和 nginx controller，其中，nginx controller 主要负责监听 Ingress 规则，最终转换成 nginx 配置。</p>
+<p>如下图所示，用户通过 LoadBalancer 管理的 ingress 配置，访问对应的服务。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/nginx-ingress.jpg" /></p>
+<h2 id="loadbalancer_1">部署 LoadBalancer</h2>
+<p>选择集群，【添加节点】，调整 Values 中 <code>replicaCount</code> 的值和节点数量相同，部署 LoadBalancer。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/create_lb.jpg" /></p>
+<h2 id="loadbalancer_2">LoadBalancer 列表</h2>
+<p>展示集群、命名空间(默认为 bcs-system )及对应的 chart 和版本</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/lb_list.jpg" /></p>
+<h2 id="loadbalancer_3">更新 LoadBalancer</h2>
+<p>调整部署节点及 Values 配置，更新集群 LoadBalancer。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/update_lb_button.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/network/update_lb.jpg" /></p><h1 id="configmap">ConfigMap 列表</h1>
+<p>ConfigMap 列表用于展示集群中存储的非敏感数据，并且允许通过页面进行数据的更新和删除操作。</p>
+<h2 id="_1">列表展示</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/configuration/cfg_list.jpg" /></p>
+<h2 id="_2">详情展示</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/configuration/cfg_detail.jpg" /></p>
+<h2 id="_3">更新操作</h2>
+<p><code>注意: 仅允许操作通过表单模板集部署的 ConfigMap 资源</code></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/configuration/update_cfg_button.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/configuration/update_cfg.jpg" /></p>
+<h2 id="_4">删除操作</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/configuration/delete_cfg.jpg" /></p><h1 id="secret">Secret 列表</h1>
+<p>Secret 列表用于展示集群中存储的敏感数据，并且允许通过页面进行数据的更新和删除操作。</p>
+<h2 id="_1">列表展示</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/configuration/secret_list.jpg" /></p>
+<h2 id="_2">详情展示</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/configuration/secret_detail.jpg" /></p>
+<h2 id="_3">更新操作</h2>
+<p><code>注意: 仅允许操作通过表单模板集部署的 secret 资源</code></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/configuration/update_secret_button.jpg" /></p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/configuration/update_secret.jpg" /></p>
+<h2 id="_4">删除操作</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/configuration/delete_secret.jpg" /></p><h1 id="_1">仓库</h1>
+<p>容器服务采用 Harbor 做镜像仓库。仓库分为公共镜像和项目镜像，公共镜像可以被所有项目共享，项目镜像只有当前项目有权限访问。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/image_repo.png" /></p>
+<h2 id="harbor">Harbor 镜像仓库简介</h2>
+<p><a href="https://github.com/vmware/harbor">Harbor</a> 是 VMware 公司开源的企业级 Docker Registry 管理项目。在 Harbor 仓库中，用户和仓库都是基于项目进行组织，用户基于项目可以拥有不同的权限。</p>
+<p>Harbor 项目类型分为公共仓库和私有仓库两种类型，其中</p>
+<ul>
+<li>公共仓库：任何使用者都可以获取这个仓库中的镜像。</li>
+<li>私有仓库：只有被授予权限的用户可以获取这个仓库中的镜像。</li>
+</ul>
+<p>更多关于 Harbor 项目和用户的使用指引，请参考 <a href="https://github.com/goharbor/harbor/blob/master/docs/user_guide.md">Harbor 的用户手册</a>。</p>
+<h2 id="harbor_1">容器服务中的 Harbor 仓库</h2>
+<h3 id="_2">获取项目仓库账号</h3>
+<p>选中【Helm】菜单中的【Charts 仓库】，点击右上角【如何推送 Helm Chart 到项目仓库】指引，可以获取仓库信息。</p>
+<p><img alt="-w1566" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/repo_info.png" /></p>
+<p>具体包含以下内容：
+- 镜像仓库地址，下文用<code>&lt;registry_url&gt;</code>表示(注意：地址包含端口)。<code>&lt;registry_url&gt;</code>实际是服务上(如集群中的 Node 节点)配置的内网 consul 域名，如果需要浏览器或者本地终端访问，可以本地配置 hosts，如<code>10.0.0.1 &lt;registry_url&gt;</code>，其中<code>10.0.0.1</code>是<code>&lt;registry_url&gt;</code>后端服务器上的 IP(如外网 IP，保证本地可访问)
+- 镜像仓库用户名和密码 （Harbor 中的一个项目账号，可以上传 <strong>镜像</strong> 和 <strong>Charts</strong>）
+- 项目 code，下文用<code>&lt;project_code&gt;</code>表示，如上图中的<code>demoproj1</code></p>
+<h3 id="_3">登录镜像仓库</h3>
+<pre class="codehilite"><code class="language-bash">docker login --username=&lt;username&gt; &lt;registry_url&gt;
+Password:
+Login Succeeded</code></pre>
+
+
+<p>注意：镜像仓库地址包含端口。</p>
+<h3 id="_4">推送镜像</h3>
+<p>推送镜像之前，要先将镜像 tag 为满足 <strong>Harbor 项目前缀要求的格式</strong>。</p>
+<p>例如需要将本地镜像<code>nginx:1.18.0</code>推送到当前项目下，首先将镜像按下面的命令重新 tag。</p>
+<pre class="codehilite"><code class="language-bash">docker tag nginx:1.18.0 &lt;registry_url&gt;/&lt;project_code&gt;/nginx:1.18.0
+docker push &lt;registry_url&gt;/&lt;project_code&gt;/nginx:1.18.0</code></pre>
+
+
+<h3 id="_5">拉取镜像</h3>
+<p>拉取项目镜像前需先完成登录，拉取公共镜像可以不登录。</p>
+<pre class="codehilite"><code class="language-bash">docker pull &lt;registry_url&gt;/&lt;project_code&gt;/nginx:1.18.0</code></pre>
+
+
+<h2 id="harbor-web">登录 Harbor Web 仓库</h2>
+<h3 id="harbor_2">获取 Harbor 账号</h3>
+<ul>
+<li>获取项目仓库账号</li>
+</ul>
+<p>在 【Chart 仓库】菜单下，点击【查看项目 Chart 仓库配置信息】后，可以获取 Harbor 的项目账号，访问项目（BCS 中新建的项目）仓库。</p>
+<ul>
+<li>获取 Harbor 管理员账号</li>
+</ul>
+<p>在<a href="https://bk.tencent.com/docs/markdown/部署指南/产品白皮书/增强包维护/BCS/Env_variable.md">常用环境变量</a> 中可以找到 Harbor 的用户名<code>HARBOR_SERVER_ADMIN_USER</code>以及密码<code>HARBOR_SERVER_ADMIN_PASS</code>。</p>
+<h3 id="harbor-web_1">访问 Harbor Web 端</h3>
+<ul>
+<li>项目仓库账号视角</li>
+</ul>
+<p>通过浏览器可以访问地址 <code>&lt;registry_url&gt;</code>，进入 Harbor 管理页面，从中可以看到项目的访问级别有“公开”和“私有”。</p>
+<p><img alt="-w1565" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15675973703087.jpg" /></p>
+<p>在上图中点击 项目仓库 <code>joyfulgame</code>，可以看到有 2 个镜像，其中<code>joyfulgame</code>是<code>&lt;project_code&gt;</code>。</p>
+<p><img alt="-w1570" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15675973839581.jpg" /></p>
+<p>点击 【Helm Charts】页面，可以看到仓库中上传的 <a href="helm/ServiceAccess.md">Charts</a>。</p>
+<p><img alt="-w1566" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15675973941768.jpg" /></p>
+<ul>
+<li>Harbor 管理员账号视角</li>
+</ul>
+<p>使用管理员账号，可以实现用户管理、仓库管理、复制管理、配置管理。</p>
+<p><img alt="-w1563" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15675975535096.jpg" /></p><h1 id="_1">操作审计</h1>
+<p>操作审计功能主要是记录用户在使用容器服务时的一些关键操作和结果，方便回溯问题。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/operation_audit.png" /></p><h1 id="_1">事件查询</h1>
+<p>容器服务提供了收集 kubelet 上报事件的能力。通过【事件查询】，用户可以查询项目下集群的 kubelet 上报的部分事件，例如拉取镜像成功或失败等。
+<img alt="-w2020" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/event_query.png" /></p><h1 id="webconsole">WebConsole 说明</h1>
+<h2 id="webconsole_1">WebConsole 简介</h2>
+<p>WebConsole 是容器服务提供快捷查看集群状态的命令行服务。</p>
+<p>kubectl 是 K8S 官方的命令行工具，用于管理 K8S 集群，用户添加完节点，部署完 Deployments, Helm 等，都可以通过 WebConsole 内的 kubectl 命令工具查看节点，Deployment 等信息。</p>
+<h2 id="webconsole_2">WebConsole 使用</h2>
+<p>进入容器服务，在任意页面右下角，选择对应集群进入 WebConsole。</p>
+<p><img alt="-w1560" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15675992084889.jpg" /></p>
+<p>大概 1 秒钟打开 WebConsole ，背后实际是启动了一个 WebConsole 的 Pod。</p>
+<p>在 WebConsole 中可以使用 kubectl 命令操作集群。</p>
+<p><img alt="-w1157" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/15675996254116.jpg" /></p>
+<h2 id="kubectl">kubectl 常用命令介绍</h2>
+<h3 id="_1">查询集群信息</h3>
+<pre class="codehilite"><code class="language-bash">kubectl cluster-info</code></pre>
+
+
+<h3 id="kubectl-get">Kubectl Get</h3>
+<p><strong>获取 K8S 集群资源列表</strong>，包含 Nodes、Namespaces、Pods、Deployment、Services 等。</p>
+<ul>
+<li>查询 Node 节点信息</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">kubectl get nodes</code></pre>
+
+
+<ul>
+<li>获取 NameSpace 信息</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">kubectl get namespace</code></pre>
+
+
+<ul>
+<li>查询 Pods 列表</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">kubectl get pods</code></pre>
+
+
+<ul>
+<li>以 JSON 格式输出 Pod 的详细信息</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">kubectl get pod &lt;podname&gt; -o json</code></pre>
+
+
+<ul>
+<li>查询打印 DEBUG 信息</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">kubectl get pods -v=11</code></pre>
+
+
+<h3 id="kubectl-describe">Kubectl Describe</h3>
+<p>获取<strong>集群资源的详情</strong>，在排查故障的非常有用，例如某一个 Pod 无法启动。</p>
+<pre class="codehilite"><code class="language-bash">kubectl describe pod &lt;podname&gt;</code></pre>
+
+
+<h3 id="help">Help 查看帮助</h3>
+<pre class="codehilite"><code class="language-bash">kubectl --help</code></pre>
+
+
+<p>kubectl 的帮助信息、示例相当详细，而且简单易懂。</p>
+<p>更多 kubectl 使用说明请参照 <a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands">Kubectl 操作手册</a>。</p><h1 id="dashboard">Dashboard 查询使用技巧</h1>
+<p>容器的基础性能数据、容器的日志（标准输出日志采集、非标准输出日志采集）、容器内运行的应用程序的自定义 Metric 在采集，清洗完成，且在计算平台生成相应结果表后，即可在 Dashboard 中查询。</p>
+<blockquote>
+<p>入口地址： 【监控中心】 -&gt; 【Dashboard】</p>
+</blockquote>
+<p>Dashboard 含默认 和 自定义 2 种。</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/Dashboard/_image/2020-11-17-10-48-07.jpg" /></p>
+<p>注意： <code>请勿修改默认 Dashboard，默认视图下次升级会覆盖用户修改的配置</code></p>
+<p>点击 <code>New Dashboard</code> 可以添加自定义数据仪表盘，点击 <code>Import Dashboard</code> 可以导入自定义数据仪表盘。</p>
+<h2 id="_1">视图</h2>
+<p>默认 Dashboard 包含：</p>
+<ul>
+<li>
+<p><code>BCS Cluster</code>, 集群视图</p>
+</li>
+<li>
+<p><code>BCS Node</code>, 集群节点视图</p>
+</li>
+<li>
+<p><code>BCS Pods</code>, 容器 Pod 视图</p>
+</li>
+</ul>
+<h3 id="bcs-cluster">BCS Cluster</h3>
+<p>呈现集群的 CPU、内存资源的容量以及使用率。</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/Dashboard/_image/2020-11-17-10-48-35.jpg" /></p>
+<h3 id="bcs-node">BCS Node</h3>
+<p>呈现节点的平均负载以及 CPU、内存使用率。</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/Dashboard/_image/2020-11-17-10-49-01.jpg" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/Dashboard/_image/2020-11-17-10-49-32.jpg" /></p>
+<h3 id="bcs-pods">BCS Pods</h3>
+<p>呈现 Pod 的 CPU、内存、网络资源的使用情况。</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/Dashboard/_image/2020-11-17-10-50-04.jpg" /></p><h1 id="dashboard">Dashboard 模板使用技巧</h1>
+<h2 id="_1">什么是模板变量</h2>
+<p>模板允许更多交互方式，如动态的仪表板。用户可以在标准查询中使用变量代替硬编码，比如 cluster_id，namespace 和 container_id 名称等。变量显示为仪表板顶部的下拉选择框。通过这些下拉菜单，用户可以轻松更改仪表板中显示的数据。</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/Dashboard/_image/2020-11-17-10-50-29.jpg" /></p>
+<p>变量显示为仪表板顶部的下拉选择框。它具有当前值和一组选项。该选项是一组可供选择的值。</p>
+<h2 id="_2">如何添加变量</h2>
+<p>在每个 Dashboard 右上角，可以看到一个<code>设置</code>按钮，点击进入设置页面。</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/Dashboard/_image/2020-11-17-11-00-35.jpg" /></p>
+<p>在 <strong>Variables -&gt; Add variable</strong> 处添加变量。</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/Dashboard/_image/2020-11-17-10-57-10.jpg" /></p>
+<p>可以使用查询语法动态添加变量值。</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/Dashboard/_image/2020-11-17-10-58-14.jpg" /></p>
+<h2 id="_3">基本变量说明</h2>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Name</em></td>
+<td>变量的名称，这是在查询中引用变量时使用的名称。必须是唯一的，不包含空格，建议是使用英文字母，下划线表示。</td>
+</tr>
+<tr>
+<td><em>Label</em></td>
+<td>此变量的下拉列表时展示的名称。</td>
+</tr>
+<tr>
+<td><em>Hide</em></td>
+<td>隐藏下拉选择框的选项。</td>
+</tr>
+<tr>
+<td><em>Type</em></td>
+<td>定义变量类型。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">变量类型</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Query</em></td>
+<td>此变量类型允许用户编写数据源查询，该查询通常返回变量名称，标记值或键的列表。例如，返回 cluster_id，pod_name 或 namespace 的查询。</td>
+</tr>
+<tr>
+<td><em>Interval</em></td>
+<td>此变量可表示时间跨度。不是按时间或日期直方图间隔对组进行硬编码，而是使用此类型的变量。</td>
+</tr>
+<tr>
+<td><em>Datasource</em></td>
+<td>此类型允许用户快速更改整个仪表板的数据源。如果用户在不同的环境中有多个数据源实例，则非常有用。</td>
+</tr>
+<tr>
+<td><em>Custom</em></td>
+<td>使用逗号分隔列表手动定义变量选项。</td>
+</tr>
+<tr>
+<td><em>Constant</em></td>
+<td>定义隐藏常量。对于要共享的仪表板的度量标准路径前缀很有用。在仪表板导出期间，常量变量将变为导入选项。</td>
+</tr>
+<tr>
+<td><em>Ad hoc filters</em></td>
+<td>非常特殊的变量，目前仅适用于某些数据源，InfluxDB 和 Elasticsearch。它允许用户添加键/值过滤器，这些过滤器将自动添加到使用指定数据源的所有度量标准查询中。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">查询选项</h3>
+<p>此变量类型是最强大和最复杂的，因为它可以使用数据源查询动态获取其选项。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Data source</em></td>
+<td>查询的数据源目标。</td>
+</tr>
+<tr>
+<td><em>Refresh</em></td>
+<td>控制何时更新变量选项列表（下拉列表中的值）。在仪表板上加载将减慢仪表板负载，因为在初始化仪表板之前需要完成变量查询。如果变量选项查询包含时间范围过滤器或取决于仪表板时间范围，则仅将此设置为“ 开启时间范围更改”。</td>
+</tr>
+<tr>
+<td><em>Query</em></td>
+<td>数据源特定的查询表达式。</td>
+</tr>
+<tr>
+<td><em>Regex</em></td>
+<td>正则表达式用于过滤或捕获数据源查询返回的名称的特定部分。可选的。</td>
+</tr>
+<tr>
+<td><em>Sort</em></td>
+<td>在下拉列表中定义选项的排序顺序。已禁用表示将使用数据源查询返回的选项顺序。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">查询表达式</h3>
+<p>每个数据源的查询表达式都不同，下面是 Prometheus 的表达式，其他请参考 grafana 官方文档</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>label_names()</code></td>
+<td>返回 label 的名称列表</td>
+</tr>
+<tr>
+<td><code>label_values(label)</code></td>
+<td>返回每个 <code>metrics</code> 中标签的标签值列表。</td>
+</tr>
+<tr>
+<td><code>label_values(metric, label)</code></td>
+<td>返回指定 <code>metrics</code> 标签的标签值列表。</td>
+</tr>
+<tr>
+<td><code>metrics(metric)</code></td>
+<td>返回与指定的 <code>metric</code> 正则表达式匹配的指标列表。</td>
+</tr>
+<tr>
+<td><code>query_result(query)</code></td>
+<td>返回查询的 Prometheus 查询结果列表。</td>
+</tr>
+</tbody>
+</table>
+<p>需要注意的一点是，查询表达式可以包含对其他变量的引用，实际上可以创建链接变量。Grafana 将检测到这一点并在其中一个变量包含上一级变量时自动刷新变量。</p>
+<h3 id="_7">区间变量</h3>
+<p>使用 Interval 类型创建表示时间跨度的变量（例如<code>1m</code>，<code>1h</code>，<code>1d</code>）。还有一个特殊 auto 选项会根据当前时间范围而改变。用户可以指定当前时间范围应分多少次以计算当前 auto 时间跨度。</p>
+<p>此变量类型可用作按时间分组的参数（对于 InfluxDB），日期直方图间隔（对于 Elasticsearch）或作为汇总函数参数（对于 Graphite）。</p>
+<h2 id="_8">全局内置变量说明</h2>
+<p>Grafana 具有全局内置变量，可以在查询编辑器中的表达式中使用。</p>
+<h3 id="__interval">$__interval 变量</h3>
+<p>这个$__interval 变量类似于上面描述的<code>auto</code>interval 变量。它可以用作按时间分组的参数（对于 InfluxDB），日期直方图间隔（对于 Elasticsearch）或作为汇总函数参数（对于 Graphite）。</p>
+<p>Grafana 自动计算可用于在查询中按时间分组的间隔。当数据点多于图表上显示的数据点时，可以通过更大的间隔分组来提高查询效率。在查看 3 个月的数据时，分组比 1 天比 10 分更有效，图表看起来相同，查询会更快。$__interval 使用时间范围和图形（像素数）的宽度来计算。</p>
+<p>近似计算： <code>(from - to) / resolution</code></p>
+<p>例如，当时间范围为 1 小时且图形为全屏时，则可以计算间隔<code>2m</code> - 以 2 分钟为间隔对点进行分组。如果时间范围是 6 个月并且图表是全屏，则间隔可能是<code>1d</code>（1 天） - 点按天分组。</p>
+<h3 id="__interval_ms">$__interval_ms 变量</h3>
+<p>此变量是以<code>$__interval</code>毫秒为单位的变量（而不是格式化字符串的时间间隔）。例如，如果<code>$__interval</code>是 20m，那么<code>$__interval_ms</code>是 1200000。</p>
+<h3 id="timefilter-__timefilter">$timeFilter 或 $__timeFilter 变量</h3>
+<p>$timeFilter 变量返回当前选定的时间范围作为表达。例如，时间范围间隔<code>Last 7 days</code>表达式为<code>time &gt; now() - 7d</code>。</p>
+<p>这在 InfluxDB 数据源的 WHERE 子句中使用。在查询编辑器模式下，Grafana 会自动将其添加到 InfluxDB 查询中。必须在文本编辑器模式下手动添加：<code>WHERE $timeFilter</code>。</p>
+<h3 id="__name">$__name 变量</h3>
+<p>此变量仅在 Singlestat 面板中可用，可以在 <code>选项</code> 选项卡上的前缀或后缀字段中使用。变量将替换为系列名称或别名。</p>
+<h3 id="_9">其他参考</h3>
+<ul>
+<li><a href="http://play.grafana.org/dashboard/db/elasticsearch-templated">Elasticsearch Templated Dashboard</a></li>
+<li><a href="http://play.grafana.org/dashboard/db/influxdb-templated-queries">InfluxDB Templated Dashboard</a></li>
+</ul><h1 id="_1">告警策略如何配置</h1>
+<h3 id="_2">告警策略介绍</h3>
+<p>告警策略兼容 Prometheus alerting rule 规则，提供在线编辑，导入/导出，告警内容预览等功能</p>
+<h3 id="_3">新建告警策略</h3>
+<p>新建告警策略流程如下：</p>
+<blockquote>
+<p>入口：http://bcs.bktencent.com/console/monitor/ (有多个项目请在导航切换，域名地址请以安装部署的域名为准)</p>
+</blockquote>
+<p>在监控中心，点击<code>新建策略</code>按钮</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/AlertingRules/_image/2020-11-16-17-31-29.jpg" /></p>
+<p>填写策略名称，注意名称必须全局唯一，保存后不能修改</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/AlertingRules/_image/2020-11-16-17-37-22.jpg" /></p>
+<p>规则表达式使用 PromQL 语法，详情参考 <a href="https://prometheus.io/docs/prometheus/latest/querying/basics/">QUERYING PROMETHEU</a></p>
+<p>告警内容支持模板，支持的函数和语法，详情参考 <a href="./alerting_template.md">告警模板使用说明</a></p>
+<p>针对不同的告警需求，选择汇总等待时间，重复通知间隔等</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/AlertingRules/_image/2020-11-16-17-39-40.jpg" /></p>
+<p>通知支持微信，邮件，电话，短信等，注意需要运维配置相关通知渠道</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/AlertingRules/_image/2020-11-16-17-40-34.jpg" /></p>
+<p>通知也支持通用的接口回调方式，文档参考 <a href="./notice_webhook.md">告警接口回调说明</a></p>
+<h3 id="_4">导入/导出策略</h3>
+<p>支持导入/导出，注意：只允许导出非系统内置策略
+<img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/AlertingRules/_image/2020-11-17-10-45-45.jpg" /></p>
+<p>导入格式参考：</p>
+<pre class="codehilite"><code class="language-yaml">version: '1.0'
+rules:
+- alertname: CPU告警测试
+  comment: 系统默认添加的策略
+  expr: (1 - (avg by(cluster_id, instance) (irate(node_cpu_seconds_total{mode=&quot;idle&quot;}[5m]))))
+    * 100
+  for: 120
+  operator: '&gt;='
+  threshold: 0.0
+  message: 服务器 {{ $labels.instance | ip }}, 当前CPU使用率 {{ $value | printf &quot;%.2f%%&quot; }},
+    已持续{{ $for | duration }}超过设定阈值{{ $threshold }}%, 请检查服务是否正常
+  labels: {}
+  annotations: {}
+  enabled: true
+  notice_config:
+    group_wait: 60
+    group_interval: 60
+    repeat_interval: 60
+    receiver_configs:
+      esb_notice_configs:
+      - receivers:
+        - admin
+        wechat: true
+        wechat_work: true
+        email: true
+        sms: false
+        phone: false
+      webhook_configs: []</code></pre><h2 id="_1">背景</h2>
+<p>在告警策略中，可以通过模板变量生成动态的告警内容，也可以自定义标签和注解，在 Webhooks 中使用。</p>
+<p>告警规则模板基于 go template 开发，基本使用语法和一致， 如 {{ $labels }}  替换变量等。</p>
+<p>模板规则在 Prometheus Template 基础上，新增了变量和函数，如果不满足需求，请联系<a href="https://bk.tencent.com/">蓝鲸客服</a>。</p>
+<h2 id="_2">模板变量</h2>
+<p>Prometheus 内置的变量有：</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$labels</td>
+<td>map[string]string</td>
+<td>查询告警返回的 labels, 和规则表达式有关</td>
+</tr>
+<tr>
+<td>$value</td>
+<td>float64</td>
+<td>查询告警返回的值，和规则表达式有关</td>
+</tr>
+<tr>
+<td>$externalLabels</td>
+<td>map[string]string</td>
+<td>全局 labels，目前是空</td>
+</tr>
+</tbody>
+</table>
+<p>BCS 扩展的变量有：</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$ruleLabels</td>
+<td>map[string]string</td>
+<td>填写的标签</td>
+</tr>
+<tr>
+<td>$ruleAnnotations</td>
+<td>map[string]string</td>
+<td>填写的注解</td>
+</tr>
+<tr>
+<td>$threshold</td>
+<td>float64</td>
+<td>填写的告警阀值</td>
+</tr>
+<tr>
+<td>$for</td>
+<td>uint64</td>
+<td>填写的持续时间，单位是秒，可以结合函数<code>duration</code>得到中文描述的持续时间</td>
+</tr>
+<tr>
+<td>$operator</td>
+<td>string</td>
+<td>填写操作符，&gt;=, =等</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">模板函数</h2>
+<p>Prometheus 内置的函数：</p>
+<p><a href="https://prometheus.io/docs/prometheus/latest/configuration/template_reference/#functions">Prometheus Function</a></p>
+<p>BCS 扩展的函数有：</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>参数</th>
+<th>返回</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ip</td>
+<td>任意 ip:port 字符串</td>
+<td>ip</td>
+<td>如果不是合法的 ip:port，会原样返回，多用于 instance 中提取 IP 变量，如<code>$labels.instance pipe ip</code></td>
+</tr>
+<tr>
+<td>duration</td>
+<td>uint64, 单位是秒</td>
+<td>持续时间</td>
+<td>计算持续时间，一般和 $for 变量结合使用</td>
+</tr>
+<tr>
+<td>queryMetric</td>
+<td>$labels 等 key,value 字符串</td>
+<td>[]sample</td>
+<td>查询单个 metric 的值</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">参考文档</h2>
+<p><a href="https://prometheus.io/docs/prometheus/latest/configuration/template_reference/">Prometheus 模板规则</a>
+<a href="https://prometheus.io/docs/prometheus/latest/configuration/template_examples/">Prometheus 模板使用样例</a></p><h2 id="_1">产品配置回调地址</h2>
+<blockquote>
+<p>产品入口：http://bcs.bktencent.com/console/monitor/ (有多个项目请在导航切换，域名地址请以安装部署的域名为准) -&gt; 新建告警策略</p>
+</blockquote>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/AlertingRules/_image/2020-11-16-17-08-45.jpg" /></p>
+<p>添加 IP 或者域名地址即可。</p>
+<h2 id="_2">查看告警历史</h2>
+<p>配置好回调接口后，可以到告警历史查看回调通知是否成功。</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/AlertingRules/_image/2020-11-16-17-09-53.jpg" /></p>
+<p>鼠标移动可以看到错误详情</p>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/AlertingRules/_image/2020-11-16-17-09-40.jpg" /></p>
+<h2 id="_3">回调接口说明</h2>
+<h4 id="_4">请求方式</h4>
+<p>接口回调会以 http <code>POST</code> 方式请求回调 URL，其中：
+- Content-Type：application/json
+- UserAgent：BCS-Generic-Alertmanager/0.9.0-bcs.v1.1.10 (注意，后面的版本号会可能升级为更高的版本)
+- Body： 为 json 格式的数据，详情见下面的消息格式</p>
+<h4 id="_5">合法返回</h4>
+<p>返回 200 状态码，系统认为是请求正常，否则会再发送<code>3次</code>请求，如果连续都失败，系统认为回调失败，等下个告警周期再回调。</p>
+<h4 id="_6">消息格式</h4>
+<ul>
+<li>alerts：告警的具体内容</li>
+<li>commonAnnotations：公共的 Annotations</li>
+<li>commonLabels：公共的 Labels</li>
+<li>groupKey：分组的 key</li>
+<li>version：版本，目前固定为<code>4</code></li>
+<li>noticeHistoryId：BCS 系统记录的 ID，可以通过这个排查告警链路</li>
+</ul>
+<h4 id="_7">消息格式示例</h4>
+<pre class="codehilite"><code class="language-json">{
+    &quot;alerts&quot;: [
+        {
+            &quot;annotations&quot;: {
+                &quot;comment&quot;: &quot;测试&quot;,
+                &quot;message&quot;: &quot;服务器 192.168.1.1:9100, 当前CPU使用率 0.59%, 已持续5分钟超过设定阈值90%, 请尽快处理&quot;
+            },
+            &quot;endsAt&quot;: &quot;0001-01-01T00:00:00Z&quot;,
+            &quot;fingerprint&quot;: &quot;33e5e99cde6f03ea&quot;,
+            &quot;generatorURL&quot;: &quot;/graph?g0.expr=%28avg+by%28instance%2C+cluster_id%29+%28irate%28node_cpu_seconds_total%7Bmode%21%3D%22idle%22%7D%5B5m%5D%29%29+%2A+100%29+%3C+90&amp;g0.tab=1&quot;,
+            &quot;labels&quot;: {
+                &quot;alertname&quot;: &quot;测试&quot;,
+                &quot;cc_biz_id&quot;: &quot;10000&quot;,
+                &quot;cluster_id&quot;: &quot;BCS-K8S-15091&quot;,
+                &quot;instance&quot;: &quot;192.168.1.1:9100&quot;,
+                &quot;project_id&quot;: &quot;b37778ec757544868a01e1f01f07037f&quot;,
+                &quot;rule_id&quot;: &quot;1&quot;,
+                &quot;source_type&quot;: &quot;BCS_ALERTING_RULE&quot;
+            },
+            &quot;startsAt&quot;: &quot;2020-04-02T11:39:06.083535213+08:00&quot;,
+            &quot;status&quot;: &quot;firing&quot;
+        },
+        {
+            &quot;annotations&quot;: {
+                &quot;comment&quot;: &quot;测试&quot;,
+                &quot;message&quot;: &quot;服务器 192.168.1.1:9100, 当前CPU使用率 0.33%, 已持续5分钟超过设定阈值90%, 请尽快处理&quot;
+            },
+            &quot;endsAt&quot;: &quot;0001-01-01T00:00:00Z&quot;,
+            &quot;fingerprint&quot;: &quot;ccdf584208098e7d&quot;,
+            &quot;generatorURL&quot;: &quot;/graph?g0.expr=%28avg+by%28instance%2C+cluster_id%29+%28irate%28node_cpu_seconds_total%7Bmode%21%3D%22idle%22%7D%5B5m%5D%29%29+%2A+100%29+%3C+90&amp;g0.tab=1&quot;,
+            &quot;labels&quot;: {
+                &quot;alertname&quot;: &quot;测试&quot;,
+                &quot;cc_biz_id&quot;: &quot;10000&quot;,
+                &quot;cluster_id&quot;: &quot;BCS-K8S-15091&quot;,
+                &quot;instance&quot;: &quot;192.168.1.1:9100&quot;,
+                &quot;project_id&quot;: &quot;b37778ec757544868a01e1f01f07037f&quot;,
+                &quot;rule_id&quot;: &quot;1&quot;,
+                &quot;source_type&quot;: &quot;BCS_ALERTING_RULE&quot;
+            },
+            &quot;startsAt&quot;: &quot;2020-04-02T11:39:06.083535213+08:00&quot;,
+            &quot;status&quot;: &quot;firing&quot;
+        }
+    ],
+    &quot;commonAnnotations&quot;: {
+        &quot;comment&quot;: &quot;测试&quot;
+    },
+    &quot;commonLabels&quot;: {
+        &quot;alertname&quot;: &quot;测试&quot;,
+        &quot;cc_biz_id&quot;: &quot;10000&quot;,
+        &quot;cluster_id&quot;: &quot;BCS-K8S-15091&quot;,
+        &quot;project_id&quot;: &quot;b37778ec757544868a01e1f01f07037f&quot;,
+        &quot;rule_id&quot;: &quot;1&quot;,
+        &quot;source_type&quot;: &quot;BCS_ALERTING_RULE&quot;
+    },
+    &quot;externalURL&quot;: &quot;http://test:9093&quot;,
+    &quot;groupKey&quot;: &quot;{project_id=\&quot;b37778ec757544868a01e1f01f07037f\&quot;,rule_id=\&quot;1\&quot;}:{alertname=\&quot;测试\&quot;, cluster_id=\&quot;BCS-K8S-15091\&quot;, project_id=\&quot;b37778ec757544868a01e1f01f07037f\&quot;, rule_id=\&quot;1\&quot;, source_type=\&quot;BCS_ALERTING_RULE\&quot;}&quot;,
+    &quot;groupLabels&quot;: {
+        &quot;alertname&quot;: &quot;测试&quot;,
+        &quot;cluster_id&quot;: &quot;BCS-K8S-15091&quot;,
+        &quot;project_id&quot;: &quot;b37778ec757544868a01e1f01f07037f&quot;,
+        &quot;rule_id&quot;: &quot;1&quot;,
+        &quot;source_type&quot;: &quot;BCS_ALERTING_RULE&quot;
+    },
+    &quot;receiver&quot;: &quot;1&quot;,
+    &quot;status&quot;: &quot;firing&quot;,
+    &quot;version&quot;: &quot;4&quot;,
+    &quot;noticeHistoryId&quot;:15117
+}</code></pre>
+
+
+<h2 id="_8">参考文档</h2>
+<ul>
+<li><a href="https://prometheus.io/docs/alerting/configuration/#webhook_config">Alertmanager Webhook 配置</a></li>
+</ul><h1 id="_1">指标查询</h1>
+<p><code>指标查询</code>提供可以查询当前项目内所有的 Prometheus metrics 指标的功能</p>
+<h2 id="metrics">查询 Metrics 列表</h2>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/MetricsExplorer/_image/2020-11-16-14-45-53.jpg" /></p>
+<p>在左边的 Metrics 按钮，可以方便的看到 metrics 类别，在 Prometheus 中 metrics 并没有层级概念，但是为方便用户查看，监控中心的指标查询对 metrics 封装了一层，以第一个下划线(_)为分割符，做一层分组</p>
+<h2 id="promql">使用 PromQL 语法查询</h2>
+<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/MetricsExplorer/_image/2020-11-16-14-50-03.jpg" /></p>
+<h2 id="_2">其他快捷操作</h2>
+<p>快捷复制按钮，可把当前表达式，时间等，组装好链接，再分享给别人
+<img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/MetricsExplorer/_image/2020-11-17-10-14-13.jpg" /></p>
+<p>切换到 console，可查询最新值，适合需要查看有哪些 metrics 和 labels 的场景
+<img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/monitor/MetricsExplorer/_image/2020-11-17-10-15-48.jpg" /></p><h1 id="faq">FAQ</h1>
+<h2 id="_1">产品使用</h2>
+<h3 id="bcs-k8s">BCS 与 K8S 的关系和区别是什么</h3>
+<p>K8S 为容器编排引擎，BCS 是容器管理平台，支持 K8S 容器编排引擎，提供便捷的容器管理服务，更多介绍详见 <a href="../Architecture/Architecture.md">产品架构</a>。</p>
+<h3 id="_2">一个集群需要至少需要几台机器</h3>
+<p>集群由 Master 和 Node 组成，其中 Master 主要用来部署集群的基础组件，Slave 主要用来承载业务容器。</p>
+<blockquote>
+<p>注：master 不允许调度，因此，至少需要一台 slave 运行业务容器。</p>
+</blockquote>
+<ul>
+<li>
+<p>平台建议 Master 配置
+  建议至少 4 核 / 8 G / 3 台 / CentOS 7.4 +</p>
+</li>
+<li>
+<p>平台建议 Node 配置
+   配置和数量视业务需求而定(至少需要 1 台)；操作系统：CentOS 7.4 +</p>
+</li>
+</ul>
+<h3 id="_3">调度约束</h3>
+<p>用户通过调度约束可以自动的为 POD 选择指定节点，而且可以通过 <strong>亲和性</strong> 和 <strong>反亲和性</strong> 实现个性化的调度能力。</p>
+<blockquote>
+<p>注意：使用不当可能导致其他的 POD 调度不成功。</p>
+</blockquote>
+<ul>
+<li>
+<p>使用场景</p>
+<ul>
+<li>想要自己的服务运行到指定的节点</li>
+<li>限制其他服务运行到指定节点</li>
+</ul>
+</li>
+<li>
+<p>出现节点匹配提示问题</p>
+</li>
+</ul>
+<pre class="codehilite"><code class="language-bash"># 错误信息
+No nodes are available that match all of the predicates: MatchInterPodAffinity (2), MatchNodeSelector (3), NodeNotReady (3), PodToleratesNodeTaints (3).</code></pre>
+
+
+<ul>
+<li>确认是否必须调度约束<blockquote>
+<p>如果自己的场景不必须使用调度约束，可以直接去掉；如果必须使用可以确认下面条件是否满足</p>
+</blockquote>
+<ul>
+<li>是否设置相应的节点标签，比如 nodeselect 为 app=test，这样节点必须要打 app=test 的标签</li>
+<li>当前节点是否有设置亲和性，比如设置了亲和性，那么必须满足亲和性条件</li>
+<li>其他服务是否有设置反亲和性，比如别的节点设置了反亲和性，那么设置的节点就不允许其他服务调度</li>
+</ul>
+</li>
+</ul>
+<h2 id="_4">问题排查</h2>
+<h3 id="_5">拉取镜像失败</h3>
+<p>出现镜像拉取失败的问题，可能有如下两种可能导致：</p>
+<ul>
+<li>
+<p>镜像不存在
+针对这种情况，需要用户上传镜像即可。</p>
+</li>
+<li>
+<p>节点没有权限拉取镜像
+这种情况，一般是由于平台侧创建<code>imagePullSecrets</code>失败导致。</p>
+</li>
+</ul>
+<h2 id="_6">启动容器失败</h2>
+<p>这种情况一般是用户镜像有问题，用户可以通过如下两种方式查看日志：
+- 使用 Webconsole，kubectl logs <code>pod name</code> -n <code>namespace name</code>
+- 登录节点机器，通过 docker logs <code>container id</code>查看相应日志信息</p>
+<h3 id="webconsole">使用 Webconsole 查看日志</h3>
+<ul>
+<li>登录 Webcosole
+点击容器服务的右下角“WebConsole”，点击相应的集群，弹出 Webcosole 页面</li>
+</ul>
+<p><img alt="webconsole" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/web-console.png" /></p>
+<p>然后，输入 kubectl logs <code>pod name</code> -n <code>namespace name</code>，查看指定命名空间下的应用日志</p>
+<h3 id="_7">登录节点查看日志</h3>
+<ul>
+<li>通过点击应用详情，跳转到应用详情页</li>
+</ul>
+<p><img alt="点击查看详情" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/app.jpg" /></p>
+<ul>
+<li>查找 Pod / Taskgroup 管理项，查看到部署的节点</li>
+</ul>
+<p><img alt="应用详情" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/taskgroup_pod.jpg" /></p>
+<ul>
+<li>登录节点查看相应的容器日志</li>
+</ul>
+<h3 id="pod-waiting-containercreating">关于 POD 创建后一直处于 Waiting 或 ContainerCreating 状态</h3>
+<h4 id="_8">检查应用配置的资源设置</h4>
+<p>首先，通过查看事件日志，如果此时出现下面这种错误，可以认为启动容器的资源不能满足需求。</p>
+<pre class="codehilite"><code class="language-bash">to start sandbox container for pod ... Error response from daemon: OCI runtime create failed: container_linux.go:348: starting container process caused &quot;process_linux.go:301: running exec setns process for init caused &quot;signal: killed&quot;&quot;: unknown</code></pre>
+
+
+<p>其次，检查下应用下面容器的配置，类似下图；然后根据需求设置 request 和 limit 数量</p>
+<p><img alt="应用资源限制" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/容器管理平台/产品白皮书/assets/res_limit.jpg" /></p>
+<h4 id="_9">镜像问题</h4>
+<p>请参考 查看本文上面的 <a href="./faq.md#拉取镜像失败">拉取镜像失败</a>处理流程</p>
+    </body>
+    </html>
+    

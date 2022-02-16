@@ -1,0 +1,54 @@
+
+    <html lang="zh-cn">
+    <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <link href="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/default.css" rel="stylesheet">
+    </head>
+    <body>
+    <h1 id="_1">常见问题说明</h1>
+<p>蓝鲸社区版，是蓝鲸智云提供的面向社区用户的基于 PaaS 的运维技术解决方案套件。
+它永久免费，支持公有云环境、私有环境的独立搭建部署。</p>
+<p>本文档主要介绍蓝鲸社区版的在日常安装部署、维护、更新升级中遇到的常见问题及故障排查等运维相关的内容。</p>
+<p>关于蓝鲸各大平台、SaaS 应用的相关使用说明，请参考蓝鲸社区版产品白皮书。</p><h1 id="_1">开发常见问题</h1>
+<h2 id="_2">开发环境与配置类</h2>
+<h3 id="pip-install">pip install 安装某个包时，提示包未找到</h3>
+<p>可能是仓库源配置问题。建议使用腾讯云提供的 PYPI 源: <code>mirrors.cloud.tencent.com/pypi/simple/</code></p>
+<h2 id="_3">用户与鉴权相关</h2>
+<h3 id="_4">如何模拟登录蓝鲸框架，需要哪些值</h3>
+<p>只要确保 cookie 中的 bk_ticket 和 bk_uid 一样，就可以复用同样的登录态</p>
+<h2 id="saas">SaaS 开发框架相关</h2>
+<h3 id="_5">如何判断开发框架当前加载的是那个配置文件？能否自己指定</h3>
+<p>1. 三种配置文件分别对应：本地开发时，加载 dev；预发布环境下，加载 stag；正式环境下，加载 prod。</p>
+<p>2. 不能指定，因为框架写死通过运行环境加载。</p>
+<h3 id="_6">如何确认当前框架所在的运行环境</h3>
+<p>可以使用 <code>RUN_MODE</code> 变量，它被定义在 <code>dev.py / stag.py / prod.py</code> 文件的开头位置。</p>
+<pre class="codehilite"><code class="language-python">from django.conf import settings
+settings.RUN_MODE</code></pre>
+
+
+<h3 id="_7">蓝鲸框架在哪里添加全局配置</h3>
+<p>可以在 <code>conf</code> 目录下的 <code>default.py</code> 文件里添加自定义全局配置。</p>
+<h2 id="saas_1">SaaS 开发相关</h2>
+<h3 id="ip">应用内如何获取请求客户端 IP 地址</h3>
+<p>请求在到达到应用前，会经过多层负载均衡服务。如果应用直接拿请求 IP 作为客户端 IP，通常是有问题的，因为这个 IP 是负载均衡器 IP，而非真实客户端 IP。想要获取真实 IP，需要解析请求头信息里的 <code>X-Forwarded-For</code> 字段。</p>
+<p><code>X-Forwarded-For</code> 头信息里包含的是以 , 连接的 IP 地址列表，如 <code>8.8.8.8,4,4,4,4</code>。第一个 <code>8.8.8.8</code> 就是客户端 IP。</p>
+<p>下面是一段在 Django 框架内获取客户端 IP 的代码样例：</p>
+<pre class="codehilite"><code class="language-python">def get_client_ip(request):
+    &quot;&quot;&quot;Get real client IP address from request
+    &quot;&quot;&quot;
+    # Try &quot;x-forwarded-for&quot; header
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        return x_forwarded_for.split(',')[0].strip()
+    return request.META.get('REMOTE_ADDR')</code></pre>
+
+
+<h3 id="django-gzip">django 如何对通过接口请求的数据进行 gzip 压缩</h3>
+<p>1. 添加 <code>django.middleware.gzip.GZipMiddleware</code> 中间件。</p>
+<p>2. 在视图文件中添加 <code>from django.views.decorators.gzip import gzip_page</code>。</p>
+<p>3. 给视图函数添加上 <code>@gzip_page</code> 装饰器，返回的数据将会被压缩。</p>
+<h3 id="site_url-django">本地访问前端，{{ SITE_URL }} Django 模版语法未生效</h3>
+<p>查检本地环境 dev.py 内是否有 <code>SITE_URL='xxx'</code> 的定义，如没有，请在本地环境 dev.py 里添加 <code>SITE_URL='xxx'</code> 变量即可。</p>
+    </body>
+    </html>
+    
