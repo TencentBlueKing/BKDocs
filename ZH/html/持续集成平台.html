@@ -2,7 +2,7 @@
     <html lang="zh-cn">
     <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <link href="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/default.css" rel="stylesheet">
+    <link href="F:\v_awjliu\BKDocs\ZH/default.css" rel="stylesheet">
     </head>
     <body>
     <h1 id="_1">产品简介</h1>
@@ -38,7 +38,7 @@
 <p>流水线模板将是企业内部推行研发规范的一大助力。</p><h1 id="5-bk-ci">5 分钟读懂 bk-ci 流水线</h1>
 <p>bk-ci 可以帮你快速实现一条持续交付流水线来编译、测试、部署你的应用，下面将通过教程和文档指南告诉你，怎么在 bk-ci 里配置和管理持续集成、持续交付（CI/CD）流水线。</p>
 <p>下面为流水线的完整逻辑图：</p>
-<p><img alt="流水线基本概念" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/term.png" /></p>
+<p><img alt="流水线基本概念" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/term.png" /></p>
 <h2 id="task">Task（插件）</h2>
 <p>即一个单独的任务，如拉取 GitHub 仓库代码。</p>
 <h2 id="job">Job（作业）</h2>
@@ -46,14 +46,14 @@
 <ul>
 <li>由多个 Tasks(插件)组成</li>
 <li>一个 Task 失败，则该 Job 失败，其余 Task 将不会运行</li>
-<li><img alt="Job" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/job.png" /></li>
+<li><img alt="Job" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/job.png" /></li>
 </ul>
 <h2 id="stage">Stage（阶段）</h2>
 <ul>
 <li>由多个 Job 组成</li>
 <li>同个 Stage 下的 Job 并行执行，且 Job 与 Job 之间相互独立</li>
 <li>当一个 Job 失败，则该 Stage 失败</li>
-<li><img alt="Stage" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/stage.png" /></li>
+<li><img alt="Stage" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/stage.png" /></li>
 </ul>
 <h2 id="pipeline">Pipeline（流水线）</h2>
 <ul>
@@ -120,7 +120,7 @@
 <p>通过研发商店，你可以开发自己的插件，目前已支持 Java/Python/NodeJS/Go 4 种主流语言，开始开发你的第一个流水线插件吧。</p>
 <h2 id="_2">插件版本</h2>
 <p>每个插件都有版本控制，在使用插件时，你必须指定一个版本。
-<img alt="插件版本" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/task_version.png" /></p>
+<img alt="插件版本" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/task_version.png" /></p>
 <blockquote>
 <p>插件的版本规范：</p>
 <ul>
@@ -131,10 +131,10 @@
 <h2 id="_3">插件的通用选项</h2>
 <h3 id="_4">高级流程控制</h3>
 <p>通过高级流程控制，可以定义插件的运行逻辑。</p>
-<p><img alt="插件高级流程控制" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/task_control.png" /></p>
+<p><img alt="插件高级流程控制" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/task_control.png" /></p>
 <h3 id="_5">插件输出</h3>
 <p>每个插件在运行之后，会产生一系列的输出变量，通过变量和高级流程控制的有效组合，可以实现各种应用场景。
-<img alt="插件高级流程控制" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/task_output.png" /></p>
+<img alt="插件高级流程控制" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/task_output.png" /></p>
 <blockquote>
 <p>输出字段命名空间
 用于解决流水线下，相同插件有多个实例时，输出字段使用冲突的问题。</p>
@@ -153,10 +153,10 @@
 <li>由多个 Tasks(插件)组成；</li>
 <li>一个 Task 失败，则该 Job 失败，其余 Task 将不会运行；</li>
 </ul>
-<p><img alt="Job" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/job.png" /></p>
+<p><img alt="Job" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/job.png" /></p>
 <blockquote>
 <p>bk-ci 内置了 Linux Docker 公共构建机（如果该选项无法选中，请联系您的 CI 平台管理员），同时也支持业务自己管理的 Windows、macOS、Linux 构建机。</p>
-<p><img alt="Job Resources" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/job_resource.png" /></p>
+<p><img alt="Job Resources" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/job_resource.png" /></p>
 </blockquote>
 <h2 id="workspace">WORKSPACE</h2>
 <p>每个 Job 都有自己的 WORKSPACE，WORKSPACE 就是该 Job 下所有插件的运行根目录。</p>
@@ -179,10 +179,10 @@
 <h2 id="job_1">Job 的通用选项</h2>
 <h3 id="_1">流程控制选项</h3>
 <p>通过高级流程控制，可以定义 Job 的运行逻辑。</p>
-<p><img alt="Job Control" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/job_control.png" /></p>
+<p><img alt="Job Control" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/job_control.png" /></p>
 <h3 id="_2">互斥组</h3>
 <p>互斥组是为了解决并发构建使用同一构建机时的资源冲突问题而设计的，对不同流水线的不同 Job 设置同一个互斥组。</p>
-<p><img alt="Job mutex group" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/job_mutex_group%20.png" /></p>
+<p><img alt="Job mutex group" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/job_mutex_group%20.png" /></p>
 <h2 id="_3">接下来你可能需要</h2>
 <ul>
 <li><a href="Task.md">Task</a></li>
@@ -194,13 +194,13 @@
 <li>同一个 Stage 下的 Job 执行方式为并行，由于 Job 之间是相互独立的，某个 Job 失败后，其它的 Job 会被运行到完成；</li>
 <li>一个 Job 失败，则该 Stage 失败。</li>
 </ul>
-<p><img alt="Stage" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/stage.png" /></p>
+<p><img alt="Stage" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/stage.png" /></p>
 <h2 id="stage_1">Stage 的通用选项</h2>
 <h3 id="fastkill">Fastkill</h3>
 <p>开启 Fastkill 之后，当 Job 失败时立即结束当前 Stage。</p>
 <h3 id="_1">流程控制选项</h3>
 <p>通过高级流程控制，可以定义 Job 的运行逻辑。</p>
-<p><img alt="Stage Detail" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/stage_detail.png" /></p>
+<p><img alt="Stage Detail" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/stage_detail.png" /></p>
 <h2 id="_2">接下来你可能需要</h2>
 <ul>
 <li><a href="Task.md">Task</a></li>
@@ -209,7 +209,7 @@
 <h2 id="_1">在流水线中定义变量</h2>
 <h3 id="_2">在编排流水线时自定义变量</h3>
 <p>在编辑流水线页面点击 Job1-1，可以添加流水线变量。
-<img alt="Var" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/variables_1.png" /></p>
+<img alt="Var" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/variables_1.png" /></p>
 <h3 id="_3">在流水线插件中设置变量</h3>
 <p>如果你在 bk-ci 中开发了自己的流水线插件，可以在插件的 task.json 中定义 output 字段，这样也可以在运行该插件时声明这些变量。</p>
 <h3 id="bash">通过 Bash 插件设置变量</h3>
@@ -219,10 +219,10 @@
 # 然后在后续的插件的表单中使用${FILENAME}引用这个变量</code></pre>
 
 
-<p><img alt="Var" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/variables_2.png" /></p>
+<p><img alt="Var" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/variables_2.png" /></p>
 <h2 id="_4">在流水线中引用变量</h2>
 <p>你可以在任意的插件表单中使用通过上面介绍的方式定义的变量，引用方式为${KEY}，例如：
-<img alt="Var" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/variables_3.png" /></p>
+<img alt="Var" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/variables_3.png" /></p>
 <blockquote>
 <p>示例中，就在“Upload artifacts”插件中的某字段中引用了${PKG}这个变量。</p>
 </blockquote>
@@ -230,11 +230,11 @@
 <ol>
 <li>在编辑流水线时定义了流水线变量，并开启了“执行时显示”选项时，则会在运行流水线后进入<strong>流水线预览页</strong>；</li>
 </ol>
-<p><img alt="Var" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/variables_4.png" /></p>
+<p><img alt="Var" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/variables_4.png" /></p>
 <ol>
 <li>进入预览页，你可以再次编辑你的变量 value 并运行流水线。</li>
 </ol>
-<p><img alt="Var" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/variables_5.png" /></p>
+<p><img alt="Var" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/variables_5.png" /></p>
 <blockquote>
 <p>变量 Key 在执行时不可修改，只能修改 value。</p>
 </blockquote>
@@ -286,11 +286,11 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="Triggers" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/triggers_1.png" /></p><h1 id="bk-ci">bk-ci 云托管的构建资源</h1>
+<p><img alt="Triggers" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/triggers_1.png" /></p><h1 id="bk-ci">bk-ci 云托管的构建资源</h1>
 <p>为了让你更友好的接入 CI，我们提供了包含以下类型的公共构建资源，你可放心使用。</p>
 <h2 id="linux-docker">Linux Docker 母机</h2>
 <p>在部署好 bk-ci 之后默认内置的公共构建资源（如无法选择，请联系你的 CI 平台管理员），我们会在你的物理机/虚拟机上运行 Docker 服务来运行你的 CI 编译镜像，你只需要在流水线里指定一个镜像地址即可开始编译。</p>
-<p><img alt="Resource" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/resource_1.png" /></p>
+<p><img alt="Resource" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/resource_1.png" /></p>
 <h2 id="ci">自定义 CI 镜像</h2>
 <p>我们在 dockerhub 上内置了两个最基础的 CI docker 镜像：</p>
 <table>
@@ -311,11 +311,12 @@
 </tr>
 </tbody>
 </table>
-<p>你也可以将这两个镜像作为基础镜像来制作你自己的 CI 镜像，当然，这需要一点点<a href="https://docs.docker.com/engine/reference/commandline/build/">Docker build</a>相关知识。</p><h1 id="_1">私有构建资源</h1>
-<p>除了公共编译资源外，你也可以将自己正在使用的 Linux/macOS/Windows 电脑作为私有构建资源托管至 bk-ci。</p>
+<p>你也可以将这两个镜像作为基础镜像来制作你自己的 CI 镜像，当然，这需要一点点<a href="https://docs.docker.com/engine/reference/commandline/build/">Docker build</a>相关知识。</p>
+<p>制作自定义 CI 镜像请参考：<a href="../Services/Store/docker-build.md">构建并托管一个 CI 镜像</a></p><h1 id="_1">私有构建资源</h1>
+<p>除了公共编译资源外，你也可以将自己正在使用的 Linux/macOS/Windows 电脑作为私有构建资源托管至bk-ci。</p>
 <p><a href="../Services/Resource/bkci-hosted.md">将你的构建机托管至 bk-ci</a></p><h1 id="_1">产品架构图</h1>
 <p>DevOps 平台通过一个研发、测试、运营一体化的流水线将各种角色的工作流串起来，实现真正意义上的软件研发价值流。</p>
-<p><img alt="DevOps 产品架构图" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/devops_struct.png" /></p><h1 id="_1">创建你的第一条流水线</h1>
+<p><img alt="DevOps 产品架构图" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/devops_struct.png" /></p><h1 id="_1">创建你的第一条流水线</h1>
 <p>这个 step-by-step 教程为你的 Go 工程创建一条流水线。</p>
 <h2 id="_2">准备事项</h2>
 <ul>
@@ -329,10 +330,10 @@
 <li>切换到你的项目</li>
 <li>点击新建流水线</li>
 <li>编辑如下图所示的流水线：
-   <img alt="a" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/aasets/../assets/quickstart_1.png" /></li>
+   <img alt="a" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/aasets/../assets/quickstart_1.png" /></li>
 <li>点击<strong>保存并执行</strong></li>
 <li>你的#1 构建已经成功运行，请耐心等待结束
-   <img alt="a" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/aasets/../assets/quickstart_2.png" /></li>
+   <img alt="a" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/aasets/../assets/quickstart_2.png" /></li>
 </ol>
 <h2 id="_4">接下来你可能需要</h2>
 <p>接下来你可能需要对流水线有更深一步的了解：</p>
@@ -344,7 +345,7 @@
 <li>切换至代码库服务</li>
 <li>选择关联 Gitlab 代码库（如果凭据为空时，可以点击“新增”去增加凭据）</li>
 </ol>
-<p><img alt="gitlab" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_3.png" /></p>
+<p><img alt="gitlab" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_3.png" /></p>
 <p>目前支持的代码库类型有：</p>
 <ul>
 <li>SVN</li>
@@ -368,28 +369,28 @@
 <ol>
 <li>创建一条空白流水线</li>
 <li>
-<p>在 Job1-1 中添加触发器：GitLab<img alt="gitlab" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_4.png" /></p>
+<p>在 Job1-1 中添加触发器：GitLab<img alt="gitlab" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_4.png" /></p>
 </li>
 <li>
 <p>添加 Job2-1，用来执行具体的编译任务</p>
 </li>
 </ol>
-<p><img alt="gitlab" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_5.png" /></p>
+<p><img alt="gitlab" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_5.png" /></p>
 <ol>
 <li>
 <p>依次添加如下 3 个插件：</p>
 </li>
 <li>
 <p>Checkout GitLab</p>
-<p><img alt="gitlab" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_7.png" /></p>
+<p><img alt="gitlab" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_7.png" /></p>
 </li>
 <li>
 <p>Shell Script</p>
-<p><img alt="shell" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_8.png" /></p>
+<p><img alt="shell" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_8.png" /></p>
 </li>
 <li>
 <p>Upload artifacts</p>
-<p><img alt="shell" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_9.png" /></p>
+<p><img alt="shell" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_9.png" /></p>
 </li>
 </ol><h1 id="java-maven-demo">Java Maven Demo</h1>
 <p>本篇文章将指导你如何在 bk-ci 编译<strong>Maven</strong>工程。</p>
@@ -403,10 +404,10 @@
 <li>将准备好的 gitlab 代码库关联至 bk-ci，<a href="../Quickstarts/Link-your-first-repo.md">请参考</a></li>
 <li>创建一条空白流水线</li>
 <li>将 Linux 构建环境添加到 Job2-1，镜像地址填写：bkci/ci:latest
-   <img alt="pic" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/examples_java_1.png" /></li>
+   <img alt="pic" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/examples_java_1.png" /></li>
 <li>依次添加如下 4 个插件：</li>
 <li>Checkout Gitlab
-      <img alt="pic" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_4.png" /></li>
+      <img alt="pic" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_4.png" /></li>
 <li>
 <p>Shell Scripts</p>
 <p><code>bash
@@ -423,11 +424,11 @@
 </li>
 <li>
 <p>Upload artifacts
-      <img alt="pic" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/examples_java_2.png" /></p>
+      <img alt="pic" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/examples_java_2.png" /></p>
 </li>
 <li>
 <p>运行流水线，观察结果
-<img alt="pic" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/examples_java_3.png" /></p>
+<img alt="pic" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/examples_java_3.png" /></p>
 </li>
 </ol><h1 id="nodejs-demo">NodeJS Demo</h1>
 <p>本篇文章将指导你如何在 bk-ci 编译<strong>NodeJS</strong>工程。</p>
@@ -441,10 +442,10 @@
 <li>将准备好的 gitlab 代码库关联至 bk-ci，<a href="../Quickstarts/Link-your-first-repo.md">请参考</a></li>
 <li>创建一条空白流水线</li>
 <li>将 Linux 构建环境添加到 Job2-1，镜像地址填写：bkci/ci:latest
-   <img alt="pic" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/examples_java_1.png" /></li>
+   <img alt="pic" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/examples_java_1.png" /></li>
 <li>依次添加如下 3 个插件：</li>
 <li>Checkout Gitlab
-      <img alt="pic" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_4.png" /></li>
+      <img alt="pic" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_4.png" /></li>
 <li>
 <p>Shell Scripts</p>
 <p><code>bash
@@ -453,16 +454,16 @@
 </li>
 <li>
 <p>Upload artifacts
-      <img alt="pic" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/examples_node_1.png" /></p>
+      <img alt="pic" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/examples_node_1.png" /></p>
 </li>
 <li>
 <p>运行流水线，观察结果
-<img alt="pic" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/examples_node_2.png" /></p>
+<img alt="pic" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/examples_node_2.png" /></p>
 </li>
-</ol><h1 id="bk-ci">bk-ci 导航条功能介绍</h1>
-<p>该区域将出现在 bk-ci 的所有页面上，以方便你在需要时及时切换其它服务、项目等。该导航条共有 6 个功能入口。</p>
+</ol><h1 id="bk-ci">bk-ci导航条功能介绍</h1>
+<p>该区域将出现在bk-ci的所有页面上，以方便你在需要时及时切换其它服务、项目等。该导航条共有6个功能入口。</p>
 <h2 id="_1">功能区介绍</h2>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/service_console.png" /></p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/service_console.png" /></p>
 <ol>
 <li>切换项目</li>
 <li>切换服务</li>
@@ -475,13 +476,13 @@
 <ul>
 <li><a href="Pipeline/pipeline-list.md">流水线首页</a></li>
 <li><a href="Artifactory/Artifactory.md">制品库首页</a></li>
-<li><a href="Repos/repos-link.md">代码库首页</a></li>
+<li><a href="Repos/repos-list.md">代码库首页</a></li>
 <li><a href="Resource/bkci-hosted.md">构建机管理页</a></li>
 <li><a href="Ticket/ticket-list.md">凭证管理页</a></li>
 </ul><h1 id="_1">流水线列表查看页</h1>
 <p>你切换至流水线服务后的第一个页面就是流水线列表页，在这里你可以找到管理流水线需要的常见入口。</p>
 <h2 id="_2">功能区介绍</h2>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/service_pipeline_list.png" /></p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/service_pipeline_list.png" /></p>
 <ol>
 <li>新建流水线</li>
 <li>查看流水线列表</li>
@@ -491,13 +492,13 @@
 </ol>
 <h2 id="_3">接下来你可能需要</h2>
 <ul>
-<li><a href="../Console.md">bk-ci 导航条</a></li>
+<li><a href="../Console.md">bk-ci导航条</a></li>
 <li><a href="pipeline-edit.md">流水线编辑页</a></li>
 <li><a href="pipeline-detail.md">流水线任务详情页</a></li>
 </ul><h1 id="_1">流水线构建任务执行历史</h1>
-<p>每个流水线都有自己的任务执行历史页，在这里你可以快速查找 CI 任务记录。</p>
+<p>每个流水线都有自己的任务执行历史页，在这里你可以快速查找CI任务记录。</p>
 <h2 id="_2">功能区介绍</h2>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/service_pipeline_history.png" /></p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/service_pipeline_history.png" /></p>
 <ol>
 <li>过滤：可根据<strong>任务状态、代码库、分支</strong>等常见字段过滤流水线构建任务</li>
 <li>设置显示列：如果执行历史的默认表格字段不满足你，别担心，这里可以自定义</li>
@@ -508,23 +509,23 @@
 <li><a href="pipeline-list.md">流水线列表页</a></li>
 <li><a href="pipeline-detail.md">流水线任务详情页</a></li>
 </ul><h1 id="_1">流水线编辑页</h1>
-<p>流水线的核心页面之一，可通过可视化界面生成 CI 流水线。</p>
+<p>流水线的核心页面之一，可通过可视化界面生成CI流水线。</p>
 <h2 id="_2">功能区介绍</h2>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/service_pipeline_edit.png" /></p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/service_pipeline_edit.png" /></p>
 <ol>
 <li>流水线面包屑：此处有两个点击事件</li>
 <li>点击流水线名称：快速进入流水线执行历史</li>
 <li>点击名称右侧的小三角：快速切换至其它流水线</li>
 <li>流水线编辑标签，可以在流水线编排页、基础设置之间互相切换：</li>
-<li>流水线编排区：参考 3</li>
+<li>流水线编排区：参考3</li>
 <li>流水线基础设置：</li>
 <li>流水线编排区：遵守<a href="../../Concepts/Learn-pipeline-in-5min.md">流水线核心理念</a>的可视化编排区域</li>
 <li>流水线操作区，包含如下常用操作集合：</li>
-<li>保存：每点一次保存，会生成一个从 1 开始自增的编排版本号，可用于回滚</li>
+<li>保存：每点一次保存，会生成一个从1开始自增的编排版本号，可用于回滚</li>
 <li>执行：基于当前的编排版本号，生成一个快照流水线任务</li>
 <li>重命名：对当前流水线名称进行改名</li>
 <li>收藏：将当前流水线收藏，可以在“我的收藏”视图中查看</li>
-<li>导出：将当前流水线导出为 JSON，可以在新建流水线时导入（可跨不同项目）</li>
+<li>导出：将当前流水线导出为JSON，可以在新建流水线时导入（可跨不同项目）</li>
 <li>复制为：基于当前流水线的当前编排版本号，复制一个新的流水线“旧流水线名称_copy”</li>
 <li>另存为模板：将当前流水线的编排保存为流水线模板</li>
 <li>删除：软删除，将放入流水线回收站</li>
@@ -536,52 +537,52 @@
 <li><a href="pipeline-detail.md">流水线任务详情页</a></li>
 </ul><h1 id="_1">流水线任务详情页</h1>
 <h2 id="_2">功能区介绍</h2>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/service_pipeline_detail.png" /></p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/service_pipeline_detail.png" /></p>
 <ol>
-<li>任务详情页标签区：由<strong>执行详情、查看构件、代码变更记录、产出物报告</strong>4 个标签页组成</li>
+<li>任务详情页标签区：由<strong>执行详情、查看构件、代码变更记录、产出物报告</strong>4个标签页组成</li>
 <li>执行详情：通过可视化编排展示流水线任务执行结果</li>
 <li>查看构件：显示本次任务的构建产物</li>
 <li>代码变更记录：显示本次构建跟上次构建对比变化的提交记录</li>
 <li>产出物报告：如有添加对应插件，可以展示自动化测试报告等</li>
 <li>任务总览区：显示任务状态、执行人、耗时等基本信息</li>
-<li>执行详情：显示每个 Job、Task 的耗时</li>
+<li>执行详情：显示每个Job、Task的耗时</li>
 </ol>
 <h2 id="_3">接下来你可能需要</h2>
 <ul>
-<li><a href="../Console.md">bk-ci 导航条</a></li>
+<li><a href="../Console.md">bk-ci导航条</a></li>
 <li><a href="pipeline-list.md">流水线列表页</a></li>
 <li><a href="pipeline-edit.md">流水线编辑页</a></li>
 </ul><h1 id="_1">制品的归档与拉取</h1>
 <p>持续集成平台提供制品库，可以让你将 ipa、apk、maven、docker image、二进制包等产物归档并分享，结合流水线，会让持续交付变得更加简单。</p>
 <p>编译产出构件后，添加<code>Upload artifacts</code>插件将构件归档至制品库</p>
-<p><img alt="添加插件" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/artifactory_1.png" /></p>
+<p><img alt="添加插件" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/artifactory_1.png" /></p>
 <p>配置产物的所在路径</p>
-<p><img alt="配置插件" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/artifactory_2.png" /></p>
+<p><img alt="配置插件" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/artifactory_2.png" /></p>
 <p>添加新的构建环境<code>Job 3-1</code></p>
-<p><img alt="添加构建环境" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/artifactory_3.png" /></p>
+<p><img alt="添加构建环境" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/artifactory_3.png" /></p>
 <p>添加并配置<code>Downlad artifacts</code>插件，用以拉取已上传至制品库的构件</p>
-<p><img alt="配置插件" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/artifactory_4.png" /></p>
+<p><img alt="配置插件" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/artifactory_4.png" /></p>
 <p>执行流水线，通过插件日志检查构件是否拉取成功</p>
 <p>进入制品库服务，查看构件是否成功归档至流水线仓库</p><h1 id="_1">代码库管理页</h1>
-<p>在本页面，你可以将企业已有的代码库关联至 bk-ci，也可以查阅已关联的代码库列表。</p>
-<h2 id="gitlab">关联 gitlab 代码库</h2>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/service_repos_link.png" /></p>
+<p>在本页面，你可以将企业已有的代码库关联至bk-ci，也可以查阅已关联的代码库列表。</p>
+<h2 id="gitlab">关联gitlab代码库</h2>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/service_repos_link.png" /></p>
 <p>点击关联代码库后可弹出“关联代码库”的弹窗，会收集代码库的基本信息：</p>
 <ol>
-<li>源代码地址：可以通过 bk-ci 服务端正常访问的 gitlab 仓库地址，以 http/https 开头，以.git 结尾；</li>
-<li>别名：关联后在 bk-ci 里显示的名字，这个别名会在流水线中关联代码库时显示，整个项目下唯一；</li>
+<li>源代码地址：可以通过bk-ci服务端正常访问的gitlab仓库地址，以http/https开头，以.git结尾；</li>
+<li>别名：关联后在bk-ci里显示的名字，这个别名会在流水线中关联代码库时显示，整个项目下唯一；</li>
 <li>访问凭证：点击右侧<strong>新增</strong>按钮可跳转到凭证管理中添加凭证。</li>
 </ol>
 <h2 id="_2">接下来你可能需要</h2>
 <ul>
-<li><a href="../Console.md">bk-ci 导航条</a></li>
+<li><a href="../Console.md">bk-ci导航条</a></li>
 </ul><h1 id="bk-ci">将你的构建机托管至 bk-ci</h1>
 <p>本教程将指引你将自己的构建资源以第三方构建机的形式托管至 bk-ci，构建资源同时支持 macOS、Windows、Linux。</p>
 <blockquote>
 <p>托管前，请先准备好执行环境：<a href="prepare-your-host.md">第三方构建机环境准备</a></p>
 </blockquote>
 <p>导入方法：服务-环境管理-节点页面，点击右上角的导入第三方构建机：</p>
-<p><img alt="Resource" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/Services/assets/../../assets/resource_2.png" /></p>
+<p><img alt="Resource" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/Services/assets/../../assets/resource_2.png" /></p>
 <p>根据弹窗：</p>
 <ol>
 <li>选择机器的系统，不同操作系统安装命令和安装方法不一样；</li>
@@ -592,44 +593,43 @@
 <ul>
 <li><a href="host-detail.md">构建机详情页</a></li>
 </ul><h1 id="_1">构建机详情查看</h1>
-<p>将你的构建机托管至 bk-ci 后，你可以在这个页面查看到构建机列表和每一台构建机的详情信息。</p>
+<p>将你的构建机托管至bk-ci后，你可以在这个页面查看到构建机列表和每一台构建机的详情信息。</p>
 <h2 id="_2">构建机列表</h2>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/service_env_list.png" /></p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/service_env_list.png" /></p>
 <ul>
 <li>在列表中，可以查阅构建机的基本信息，点击别名进入构建机详情。</li>
 </ul>
 <h2 id="_3">构建机详情</h2>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/service_env_detail.png" /></p>
-<p>构建机详情页共有 6 个功能区，对应功能如下：</p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/service_env_detail.png" /></p>
+<p>构建机详情页共有6个功能区，对应功能如下：</p>
 <ol>
-<li>构建机 CPU 使用率趋势图</li>
+<li>构建机CPU使用率趋势图</li>
 <li>构建机内存使用率趋势图</li>
-<li>构建机网络 IO 趋势图</li>
-<li>构建机磁盘 IO 趋势图</li>
-<li>复制安装命令：当构建机重装系统、Agent 目录被删除的场景下重新安装 Agent 时使用</li>
-<li>提供了与本构建机有关的 4 个重要信息：</li>
-<li>基本信息：包含启动用户、安装目录、Agent 版本、最大构建任务并发数（默认为 4，防止当构建机负载过高时）等基本信息。</li>
+<li>构建机网络IO趋势图</li>
+<li>构建机磁盘IO趋势图</li>
+<li>复制安装命令：当构建机重装系统、Agent目录被删除的场景下重新安装Agent时使用</li>
+<li>提供了与本构建机有关的4个重要信息：</li>
+<li>基本信息：包含启动用户、安装目录、Agent版本、最大构建任务并发数（默认为4，防止当构建机负载过高时）等基本信息。</li>
 <li>环境变量（即将删除）</li>
-<li>构建任务：所有分配到本构建机的流水线 Job 都会出现在这里，在遇到任务排队时可以到这里查看具体的任务分配信息。</li>
-<li>机器上下线记录：构建机 Agent 离线上线，都会产生一条记录在这里。</li>
+<li>构建任务：所有分配到本构建机的流水线Job都会出现在这里，在遇到任务排队时可以到这里查看具体的任务分配信息。</li>
+<li>机器上下线记录：构建机Agent离线上线，都会产生一条记录在这里。</li>
 </ol><h1 id="_1">创建凭证页</h1>
-<p>在流水线运行期间，你可能需要很多种凭据类型在拉取代码库、调用代码库 API、通过账号密码访问第三方服务时使用。</p>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/service_ticket_add.png" /></p>
+<p>在流水线运行期间，你可能需要很多种凭据类型在拉取代码库、调用代码库API、通过账号密码访问第三方服务时使用。</p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/service_ticket_add.png" /></p>
 <p>目前支持以下几种凭据类型：
 类型 | 描述
 --- | ---
 密码 | 定义后会作为流水线变量在各种插件中引用
-用户名+密码 | 一般在关联 SVN 代码库时用到
-SSH 私钥 | 关联 GitLab 代码库时（不需要 GitLab 事件触发）使用
-SSH 私钥+私有 Token | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用
-用户名密码+私有 token | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用
-AccessToken | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用</p>
+用户名+密码 | 一般在关联SVN代码库时用到
+SSH私钥 | 关联GitLab代码库时（不需要GitLab事件触发）使用
+SSH私钥+私有Token | 关联GitLab代码库时（需要GitLab事件触发）使用
+用户名密码+私有token | 关联GitLab代码库时（需要GitLab事件触发）使用</p>
 <h2 id="_2">接下来你可能需要</h2>
 <ul>
 <li><a href="ticket-list.md">查看凭据</a></li>
 </ul><h1 id="_1">凭据查看页</h1>
 <p>可以在这里查看所有有权限的已关联凭据。</p>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/service_ticket_list.png" /></p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/service_ticket_list.png" /></p>
 <h2 id="_2">接下来你可能需要</h2>
 <ul>
 <li><a href="../../Quickstarts/Create-your-first-pipeline.md">创建你的第一条流水线</a>，在流水线中使用凭证</li>
@@ -637,9 +637,9 @@ AccessToken | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用</
 </ul><h1 id="_1">研发商店首页</h1>
 <p>研发商店里提供了流水线运行需要的公共资源：插件、模板、容器镜像。你可以找到适合自己项目的插件，</p>
 <h2 id="_2">功能区介绍</h2>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/service_store_home.png" /></p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/service_store_home.png" /></p>
 <ol>
-<li>通过关键字搜索当前类型的研发商店资源（当前属于什么资源类型可以在 4 中查看）</li>
+<li>通过关键字搜索当前类型的研发商店资源（当前属于什么资源类型可以在4中查看）</li>
 <li>工作台入口，可以管理自己贡献的资源</li>
 <li>当前资源列表</li>
 <li>资源类型，目前有流水线插件、流水线模板、容器镜像</li>
@@ -657,16 +657,16 @@ AccessToken | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用</
 <h2 id="_2">工作台</h2>
 <p>可以在这里进行新增/发布/下架等管理插件的操作</p>
 <h3 id="_3">功能区介绍</h3>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_list.png" /></p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_list.png" /></p>
 <ol>
 <li>切换资源类型</li>
 <li>新增插件</li>
 <li>单个插件的管理入口</li>
 <li>升级、下架、删除插件快捷入口</li>
-<li>指引文档和插件 UI 调试工具入口</li>
+<li>指引文档和插件UI调试工具入口</li>
 </ol>
 <h3 id="_4">新增插件</h3>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_add.png" /></p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_add.png" /></p>
 <ol>
 <li>标识<ul>
 <li>插件在平台中的唯一标识，建议取和插件功能相关的可读性好的英文标识</li>
@@ -694,17 +694,17 @@ AccessToken | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用</
 </blockquote>
 <ul>
 <li>根据开发语言参考对应的开发指引</li>
-<li><a href="https://github.com/ci-plugins/ci-plugins-wiki/blob/master/guide/guide_java.md">Java 插件开发指引</a></li>
-<li><a href="https://github.com/ci-plugins/ci-plugins-wiki/blob/master/guide/guide_python.md">Python 插件开发指引</a></li>
-<li><a href="https://github.com/ci-plugins/ci-plugins-wiki/blob/master/guide/guide_golang.md">Golang 插件开发指引</a></li>
-<li><a href="https://github.com/ci-plugins/ci-plugins-wiki/blob/master/guide/guide_nodejs.md">Nodejs 插件开发指引</a></li>
+<li><a href="https://docs.bkci.net/store/plugins/create-plugin/plugin-dev-guide/java">Java 插件开发指引</a></li>
+<li><a href="https://docs.bkci.net/store/plugins/create-plugin/plugin-dev-guide/python">Python 插件开发指引</a></li>
+<li><a href="https://docs.bkci.net/store/plugins/create-plugin/plugin-dev-guide/golang">Golang 插件开发指引</a></li>
+<li><a href="https://docs.bkci.net/store/plugins/create-plugin/plugin-dev-guide/nodejs">Nodejs 插件开发指引</a></li>
 </ul>
 <h3 id="_6">插件私有配置</h3>
 <blockquote>
-<p>插件级别的敏感信息，如 token、用户名密码、IP、域名等，不建议直接提交到代码库，通过工作台私有配置界面管理</p>
+<p>插件级别的敏感信息，如token、用户名密码、IP、域名等，不建议直接提交到代码库，通过工作台私有配置界面管理</p>
 </blockquote>
-<p>入口如下，创建后，在插件中通过 SDK 提供的方法即可获取使用
-<img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_private_info.png" /></p>
+<p>入口如下，创建后，在插件中通过SDK提供的方法即可获取使用
+<img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_private_info.png" /></p>
 <h2 id="_7">接下来你可能需要</h2>
 <ul>
 <li><a href="upload-new-task.md">上传一个流水线插件</a></li>
@@ -714,13 +714,13 @@ AccessToken | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用</
 </blockquote>
 <h2 id="_2">入口</h2>
 <p>在工作台列表，点击如下入口发起发布流程：
-<img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_upgrade_entry1.png" /></p>
+<img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_upgrade_entry1.png" /></p>
 <ol>
 <li>首次发布时，入口名为“上架”</li>
 <li>升级版本时，入口名为“升级”</li>
 </ol>
 <p>或者在插件发布管理-&gt;版本管理界面发起发布流程：
-<img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_upgrade_entry2.png" /></p>
+<img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_upgrade_entry2.png" /></p>
 <ol>
 <li>当前版本不是结束态时，这里可能的操作是：<ul>
 <li>上架：首版本进入上架流程</li>
@@ -731,21 +731,21 @@ AccessToken | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用</
 </ol>
 <h2 id="_3">填写插件相关信息/上传插件发布包</h2>
 <p>上架/升级插件时，可以修改插件的基本信息，如下所示：
-<img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_upgrade_1.png" />
-<img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_upgrade_2.png" /></p>
+<img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_upgrade_1.png" />
+<img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_upgrade_2.png" /></p>
 <ol>
-<li>适用 Job 类型：<ul>
-<li>和流水线 Job 类型对应，请按照插件实际适用情况选择</li>
+<li>适用Job类型：<ul>
+<li>和流水线Job类型对应，请按照插件实际适用情况选择</li>
 <li>若选错，需新增版本修改</li>
 </ul>
 </li>
 <li>发布包：<ul>
-<li>task.json 中的 atomCode 需和<a href="start-new-task.md">开发一个流水线插件</a>中新增插件时填写的标识一致，否则上传会失败</li>
+<li>task.json中的atomCode需和<a href="start-new-task.md">开发一个流水线插件</a>中新增插件时填写的标识一致，否则上传会失败</li>
 </ul>
 </li>
 </ol>
 <p>当升级插件时，有三种升级模式：
-<img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_version.png" /></p>
+<img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_version.png" /></p>
 <ol>
 <li>非兼容式升级：<ul>
 <li>插件输入、输出不同或者相同输入输出但功能逻辑发生重大变更，和老版本不兼容时使用</li>
@@ -770,15 +770,15 @@ AccessToken | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用</
 <blockquote>
 <p>填写好信息，提交后，进入发布流程，可以测试-&gt;重新传包-&gt;测试，直至插件满足预期后，手动继续流程将插件发布到研发商店</p>
 </blockquote>
-<p><img alt="png" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_release.png" /></p>
+<p><img alt="png" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/store_plugin_release.png" /></p>
 <ol>
-<li>测试：点击后跳转到插件调试项目的流水线服务下，可以将当前插件添加到流水线，验证 UI、功能是否满足预期</li>
+<li>测试：点击后跳转到插件调试项目的流水线服务下，可以将当前插件添加到流水线，验证UI、功能是否满足预期</li>
 <li>重新传包：当测试发现问题，修复后，重新上传发布包，再次进行测试</li>
-<li>继续：测试 OK，满足预期后，确认提交发布</li>
+<li>继续：测试OK，满足预期后，确认提交发布</li>
 <li>取消发布：发布过程中，随时可以终止发布</li>
 </ol>
 <blockquote>
-<p>注意：当插件开发语言为 Python、Nodejs 时，对插件执行环境有一定要求</p>
+<p>注意：当插件开发语言为Python、Nodejs时，对插件执行环境有一定要求</p>
 <ul>
 <li><a href="prepare-python.md">Python 插件执行环境</a></li>
 <li><a href="prepare-node.md">NodeJS 插件执行环境</a></li>
@@ -786,63 +786,74 @@ AccessToken | 关联 GitLab 代码库时（需要 GitLab 事件触发）使用</
 </blockquote><h1 id="ci">构建并托管一个 CI 镜像</h1>
 <p>bk-ci 提供了默认的 Ubuntu 镜像，但不一定能满足所有编译场景，你可以通过这篇文章基于默认镜像制作自定义镜像。</p>
 <ul>
-<li>默认镜像： <a href="https://github.com/ci-plugins/base-images">bkci/ci:latest</a></li>
+<li>默认镜像： <a href="https://github.com/ci-plugins/base-images/blob/master/ci-build/Dockerfile">bkci/ci:latest</a></li>
 </ul>
 <h2 id="_1">准备材料</h2>
 <ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/build/">docker build</a>相关
-知识</li>
-<li>一台 linux 构建机</li>
-<li>一个可以在机器上成功构建出镜像的 Dockerfile 工程</li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/build/">docker build</a> 相关知识</li>
+<li>一台linux构建机</li>
+<li>一个可以在机器上成功构建出镜像的Dockerfile工程</li>
 </ul>
-<h2 id="ci_1">自定义 CI 镜像</h2>
+<h2 id="ci_1">自定义CI镜像</h2>
 <ol>
-<li>登录构建机，将 Dockerfile 工程同步到构建机，进入 Dockerfile 工程目录</li>
+<li>
+<p>登录构建机，将Dockerfile工程同步到构建机，进入Dockerfile工程目录</p>
+</li>
+<li>
+<p><strong>Dockerfile 示例1（以bkci默认镜像为基础镜像）：</strong></p>
+</li>
 </ol>
-<p>Dockerfile 示例：</p>
 <pre class="codehilite"><code class="language-CMD">FROM bkci/ci:latest
 
 RUN yum install -y mysql-devel</code></pre>
 
 
-<ol>
-<li>执行 docker build</li>
-</ol>
-<blockquote>
-<p>重要提示：</p>
 <ul>
-<li>因为流水线里面的容器是通过 CMD，使用/bin/sh 启动的，因此必须保证镜像里面存在/bin/sh 以及 curl 命令（用来下载 Agent）</li>
-<li>不要设置 ENTRYPOINT</li>
-<li>确保为 64 位镜像</li>
-<li>用户用 root，如需普通用户可以在 bash 里面切换，否则流水线任务启动不了</li>
+<li><strong>Dockerfile 示例2（不以bkci默认镜像为基础镜像时，镜像环境基本要求如下）：</strong></li>
+</ul>
+<pre class="codehilite"><code class="language-CMD"># ============= bkci基础环境 ================
+FROM openjdk:8-jre-slim
+RUN apt update &amp;&amp; apt upgrade &amp;&amp; apt autoremove -y
+RUN apt install -y curl wget
+RUN wget -q https://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk16/1.46/bcprov-jdk16-1.46.jar -O $JAVA_HOME/lib/ext/bcprov-jdk16-1.46.jar
+RUN ln -sf $JAVA_HOME /usr/local/jre
+
+# ============= 自定义环境 ================
+# RUN whatever you want
+RUN apt install -y git python-pip</code></pre>
+
+
+<blockquote>
+<p><strong>重要提示</strong>：</p>
+<ul>
+<li>因为流水线里的容器是通过CMD，使用/bin/sh启动的，因此必须保证镜像里面存在/bin/sh以及curl命令（用来下载Agent）</li>
+<li>不要设置ENTRYPOINT</li>
+<li>确保为64位镜像</li>
+<li>用户用root，如需普通用户可以在bash里面切换，否则流水线任务启动不了</li>
+<li>流水线插件有可能使用 python 或 nodejs 开发，建议准备好插件执行环境:
+<br/><a href="prepare-python.md">Python 插件执行环境</a>
+<br/><a href="prepare-node.md">NodeJS 插件执行环境</a></li>
 </ul>
 </blockquote>
+<ol>
+<li>执行docker build</li>
+</ol>
 <pre class="codehilite"><code class="language-CMD">docker build -t XXX.com/XXX/YYY:latest -f Dockerfile .</code></pre>
 
 
 <ol>
-<li>执行 docker login</li>
+<li>执行docker login</li>
 </ol>
 <pre class="codehilite"><code class="language-CMD">docker login XXX.com</code></pre>
 
 
 <ol>
-<li>执行 docker push</li>
+<li>执行docker push</li>
 </ol>
 <pre class="codehilite"><code class="language-CMD">docker push XXX.com/XXX/YYY:latest</code></pre>
 
 
-<h2 id="_2">注意</h2>
-<ul>
-<li>
-<p>插件可能使用 Java、Python、Golang、Nodejs 其中一种或多种语言开发，镜像环境需支持多种语言执行</p>
-</li>
-<li>
-<p><a href="prepare-python.md">Python 插件执行环境</a></p>
-</li>
-<li><a href="prepare-node.md">NodeJS 插件执行环境</a></li>
-</ul>
-<h2 id="_3">接下来你可能需要</h2>
+<h2 id="_2">接下来你可能需要</h2>
 <ul>
 <li><a href="release-new-image.md">发布一个容器镜像</a></li>
 </ul><h1 id="faq">FAQ</h1>
@@ -854,9 +865,9 @@ RUN yum install -y mysql-devel</code></pre>
 <p>答：只有最新一次的构建可以重试。</p>
 <h2 id="faq_1">更多 FAQ</h2>
 <p>我们有统一的问答社区，访问<a href="https://bk.tencent.com/s-mart/community">蓝鲸社区</a>获取最全的 FAQ 文档。</p><h1 id="_1">预定义变量列表</h1>
-<p>合理的使用变量可以更便捷的维护流水线，bk-ci 提供了很多系统变量。</p>
+<p>合理的使用变量可以更便捷的维护流水线，bk-ci提供了很多系统变量。</p>
 <blockquote>
-<p>注意：变量即意味着可变，可被用户和插件进行覆盖，所以在使用过程中，谨慎覆盖以免影响自己的业务逻辑，bk-ci 没有系统常量，一切交给用户自己决定</p>
+<p>注意：变量即意味着可变，可被用户和插件进行覆盖，所以在使用过程中，谨慎覆盖以免影响自己的业务逻辑，bk-ci没有系统常量，一切交给用户自己决定</p>
 </blockquote>
 <p>用法：插件配置中，输入 ${变量名} 即可获取对应变量的值。如 ${BK_CI_PIPELINE_NAME}
 | Variable | Description | 样例 |

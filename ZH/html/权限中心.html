@@ -2,41 +2,19 @@
     <html lang="zh-cn">
     <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <link href="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/default.css" rel="stylesheet">
+    <link href="F:\v_awjliu\BKDocs\ZH/default.css" rel="stylesheet">
     </head>
     <body>
     <h1 id="_1">产品简介</h1>
 <p>蓝鲸权限中心（BKIAM）是蓝鲸智云提供的集中权限管理服务，支持基于蓝鲸开发框架的SaaS和企业第三方系统的权限控制接入，以及支持细粒度的权限管理。</p>
 <h2 id="_2">权限集中接入</h2>
-<p>蓝鲸各平台或 SaaS 已经内置到权限中心，企业开箱即用，针对企业第三方系统或者在蓝鲸开发的 SaaS 同样可以快速对接到蓝鲸权限中心。</p>
-<p><img alt="image-20201110095219983" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品简介/README/image-20201110095219983.png" /></p>
+<p>蓝鲸各平台或 SaaS 已经内置到权限中心，企业开箱即用，针对企业第三方系统或者在蓝鲸开发的 SaaS 同样可以快速对接到蓝鲸权限中心，详情参考 <a href="../../../iam_dev_docs/QuickStart/01-Begin.md">系统接入开发指引</a></p>
+<p><img alt="image-20201110095219983" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品简介/README/image-20201110095219983.png" /></p>
 <h2 id="_3">细粒度权限管理</h2>
 <p>管理员可以给不同岗位的员工分配具体某些实例的权限，让权限管理更灵活。</p>
-<p><img alt="image-20201110095158988" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品简介/README/image-20201110095158988.png" /></p><h1 id="_1">工作原理</h1>
+<p><img alt="image-20201110095158988" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品简介/README/image-20201110095158988.png" /></p><h1 id="_1">工作原理</h1>
 <p>本章节讲解从系统接入到用户访问鉴权的整体交互原理，可以大致了解蓝鲸权限中心的工作原理。</p>
-<p><img alt="image-20210322223821599#600px" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品简介/Principle/image-20210322223821599.png" /></p>
-<h2 id="1">1. 注册权限模型</h2>
-<p>对接到权限中心，接入系统需要将必要的<code>数据模型注册</code>到权限中心，具体需要注册的数据模型如下：
-- 系统(System)模型
-- 资源类型(ResourceType)模型
-- 实例视图(Instance_selections)模型
-- 操作(Action)模型</p>
-<p>具体协议参考 <a href="../../../iam_dev_docs/QuickStart/03-Model.md">注册API协议</a>。</p>
-<p>注册成功后，在前端页面可以查看注册效果。</p>
-<p><img alt="image-20210322225215695" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品简介/Principle/image-20210322225215695.png" /></p>
-<h2 id="2">2. 用户去权限中心申请权限</h2>
-<p>系统接入权限中心后，用户可以在权限中心申请对应的操作权限，操作权限需要关联资源实例，用户选择资源实例的方式可以通过拓扑树选择或者通过属性过滤。</p>
-<h2 id="3">3. 接入系统提供资源实例拉取接口</h2>
-<p>用户申请权限时，权限中心需要从接入系统拉取相应的资源实例来完成最终权限策略的配置。</p>
-<p>具体协议参考 <a href="../../../iam_dev_docs/Reference/API/03-Callback/01-API.md">资源反向拉取API协议</a></p>
-<p><img alt="image-20210322225944420" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品简介/Principle/image-20210322225944420.png" /></p>
-<h2 id="4">4. 权限中心存储权限策略</h2>
-<p>用户申请的权限，最终会变成一条条权限策略（policy）数据保存在权限中心，即subject（用户、组织、用户组） + action +  expression（包含了操作对应的资源实例表达式）。</p>
-<h2 id="5">5. 用户访问接入系统的资源需要鉴权</h2>
-<p>用户访问接入系统的某个资源时，因为接入了权限中心，所以需要先判断该用户是否具备访问对应资源的权限。</p>
-<h2 id="6-sdk">6. 接入系统通过SDK进行鉴权</h2>
-<p>新版权限中心的鉴权逻辑是由各接入系统调用SDK来完成鉴权，具体可以参考<a href="../../../iam_dev_docs/Reference/API/04-Auth/01-SDK.md">鉴权SDK</a>，目前<a href="https://pypi.org/project/bk-iam/1.1.9/"> Python 语言版本SDK</a> <a href="https://github.com/TencentBlueKing/iam-go-sdk"> Go 语言版本SDK</a>已开源，如没有对应语言的SDK（<code>推荐</code>），需要接入系统自行实现或者使用<a href="../../../iam_dev_docs/Reference/API/04-Auth/02-DirectAPI.md">直接鉴权</a>。</p>
-<p>更详细的指引请点击阅读 <a href="../../../iam_dev_docs/QuickStart/01-Begin.md">系统接入开发指引</a>。</p><h1 id="_1">使用限制</h1>
+<p><img alt="flow_02" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品简介/Principle/flow_02.png" /></p><h1 id="_1">使用限制</h1>
 <h2 id="_2">数量限制</h2>
 <table><tbody>
 <tr><td width="20%">限制类型</td><td width="60%">限制项</td><td width="20%">限制值</td></tr>
@@ -62,18 +40,18 @@
 <p>在使用蓝鲸权限中心产品前，快速了解一些基本名词概念。</p>
 <h2 id="_2">系统</h2>
 <p>蓝鲸体系内各大平台或 SaaS，非蓝鲸框架的应用需在蓝鲸开发者中心注册为蓝鲸 SaaS。</p>
-<h2 id="_3">资源类型</h2>
-<p>简称 <strong>资源</strong> ，指各系统需要做权限控制的操作对象类称，如作业、主机、菜单等。</p>
-<h2 id="_4">操作</h2>
-<p>接入系统中某个<strong>资源</strong>的场景功能，如作业新建、主机转移、菜单查看等，一个操作一定是最小原子功能。</p>
+<h2 id="_3">操作</h2>
+<p>接入系统中需要做权限控制的某个场景功能，如作业新建、主机转移、菜单查看等，一个操作最好是最小原子功能，操作应该是<strong>可枚举相对静态的</strong>，一个系统的操作数量有可能随着系统功能模块的增加而增加，但一般不会随着时间的推移无限增长。</p>
+<h2 id="_4">资源类型</h2>
+<p>简称 <strong>资源</strong> ，指各系统需要做权限控制的<strong>操作</strong>所关联的对象，如<strong>作业新建</strong>关联的对象是<strong>作业</strong>、<strong>主机转移</strong>关联的对象是<strong>主机</strong>等，作业、主机都是一种<strong>资源类型</strong>。</p>
 <h2 id="_5">资源实例</h2>
-<p>资源类型的实例化对象，也是权限控制的最小粒度，如具体某个作业、某台主机、某个菜单等。</p>
+<p>资源实例是某种资源类型的具体实例化对象，也是权限控制的最小粒度，如具体<strong>某个作业</strong>、<strong>某台主机</strong>等，一般来说资源实例是<strong>动态的</strong>，会随着时间推移线性增长。 </p>
 <h2 id="_6">实例视图</h2>
 <p>接入系统可以根据自己的业务场景，向权限中心自定义<code>注册</code>多种实例视图，一种实例视图代表了一种实例的选择方式，用户在申请权限关联资源实例时，可以切换不同的 <strong>实例视图</strong> 来选择实例权限。</p>
-<p><img alt="image-20210322111756643" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/术语解释/Trem/image-20210322111756643.png" /></p>
+<p><img alt="image-20210322111756643" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/术语解释/Trem/image-20210322111756643.png" /></p>
 <h2 id="_7">资源属性</h2>
 <p><strong>资源属性</strong> 是权限中心筛选资源实例的一种方式，满足那些需要动态授权的场景。</p>
-<p><img alt="image-20210409154928258" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/术语解释/Trem/image-20210409154928258.png" /></p>
+<p><img alt="image-20210409154928258" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/术语解释/Trem/image-20210409154928258.png" /></p>
 <h2 id="_8">新建关联权限</h2>
 <p>为了方便用户的权限获得，权限中心提供了新建关联权限的功能，用户申请某个资源的新建操作时，可以 <strong>同时获得</strong> 新建资源实例的其他操作权限。比如用户申请<strong>作业新建</strong>权限，用户新建某个作业时，自动拥有该作业的<strong>删除、编辑、查看</strong>等权限，不需要用户二次申请。</p>
 <h2 id="_9">依赖操作</h2>
@@ -94,16 +72,16 @@
 <p>比如，作业平台有<code>作业执行、作业删除、脚本执行、脚本查看、IP白名单新建、全局设置管理</code>几个操作。</p>
 </blockquote>
 <p>加上操作组后，前端表现为：
-<img alt="image-20210322111439099" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/术语解释/Trem/image-20210322111439099.png" /></p>
+<img alt="image-20210322111439099" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/术语解释/Trem/image-20210322111439099.png" /></p>
 <p>操作组名称，操作组以及组内元素顺序，由各接入系统定义，目前权限中心支持<code>两级操作组</code>设置。</p>
 <p><strong>重要！！！！</strong>
 <code>各接入系统根据需要，可以定义0（不需要分类）、1、2级操作组</code>，操作可以按照<code>资源类型归类</code>、也可以按照<code>用户使用场景来归类</code>，<code>一个操作只能属于一个操作组，不能重叠。</code></p>
 <h2 id="_12">版本</h2>
 <p>权限中心针对接入系统注册的资源和操作，提供 <code>版本</code> 支持，版本仅用来给接入系统在系统接入页面区分新旧资源和操作的展示。</p>
 <h2 id="_13">权限模板</h2>
-<p>权限模板是包含了一批操作和对应资源实例的权限集合，一个权限模板可以关联多个用户组，支持版本更新。</p>
+<p>权限模板是若干操作的集合，一个权限模板代表了一种岗位角色需要的场景权限，比如运维、开发、测试，一个模板只能包含一个系统的操作。</p>
 <h2 id="_14">用户组</h2>
-<p>用户组是权限中心推荐的权限管理方式，一个用户组可以关联若干个权限模板权限，管理员只需要往用户组添加<strong>用户/组织</strong>即可让对应的用户获得用户组的所有权限。</p>
+<p>用户组是权限中心推荐的权限管理方式，一个用户组可以关联多个系统的多个权限模板，从而具备对应的权限，管理员只需要往用户组添加<strong>用户/组织</strong>即可让对应的用户获得用户组的所具备的权限。</p>
 <h2 id="_15">自定义权限</h2>
 <p>权限中心除了通过用户组方式来管理用户权限，还支持更加灵活的授权方式：自定义权限，用户可以选择任意的操作和实例作为他场景需要的权限，由于该权限的灵活性，不像用户组那样方便管理，所以为了不给后期权限管理带来混乱，请谨慎使用，当前 1 个人拥有<strong>1个操作 + 1个资源类型</strong>的实例权限<strong>最大</strong>数量为 10000 个。</p>
 <h2 id="_16">分级管理员</h2>
@@ -119,7 +97,7 @@
 <p>蓝鲸权限中心支持<strong>超级管理员、系统管理员、分级管理员</strong>三种级别的管理模式，超级管理员拥有整个平台的权限分配能力，系统管理员拥有对应系统的权限分配能力，分级管理员则是一种更加灵活的权限管理方式，它可以拥有任意操作及实例范围的权限分配能力。</p>
 <h2 id="_6">组织架构权限管理</h2>
 <p>蓝鲸权限中心支持通过组织架构来管理权限，包括个人、组织的权限管理。</p><h1 id="_1">产品架构图</h1>
-<p><img alt="image-20210322222404821" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品架构/Architecture/image-20210322222404821.png" /></p><h1 id="_1">创建权限模板</h1>
+<p><img alt="image-20210322222404821" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品架构/Architecture/image-20210322222404821.png" /></p><h1 id="_1">创建权限模板</h1>
 <p>当多个用户组需要涉及同一批权限的添加时，蓝鲸权限中心建议先创建权限模板，再把权限模板关联用户组的方式来达到权限关联的目的，创建权限模板是管理员（超级管理员、系统管理员、分级管理员）的能力。</p>
 <h2 id="_2">前置条件</h2>
 <blockquote>
@@ -129,27 +107,27 @@
 <ol>
 <li>切换到<strong>管理员身份</strong>。</li>
 </ol>
-<p><img alt="image-20201210105441469" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/CreatePremissionTemplates/image-20201210105441469.png" /></p>
+<p><img alt="image-20201210105441469" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/CreatePremissionTemplates/image-20201210105441469.png" /></p>
 <ol>
 <li>点击<strong>权限模板</strong>菜单进入权限模板列表页。</li>
 </ol>
-<p><img alt="image-20201210105735916" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/CreatePremissionTemplates/image-20201210105735916.png" /></p>
+<p><img alt="image-20201210105735916" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/CreatePremissionTemplates/image-20201210105735916.png" /></p>
 <ol>
 <li>点击<strong>新建</strong>按钮创建权限模板。</li>
 </ol>
-<p><img alt="image-20201210105834597" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/CreatePremissionTemplates/image-20201210105834597.png" /></p>
+<p><img alt="image-20201210105834597" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/CreatePremissionTemplates/image-20201210105834597.png" /></p>
 <ol>
 <li>创建完权限模板，我们可以将该模板关联某些用户组，对应用户组就具备了该权限模板所包含的权限。</li>
 </ol>
-<p><img alt="image-20201210105927183" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/CreatePremissionTemplates/image-20201210105927183.png" /></p>
+<p><img alt="image-20201210105927183" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/CreatePremissionTemplates/image-20201210105927183.png" /></p>
 <ol>
 <li>权限模板保存后，可以再次进行编辑，点击需要编辑的权限模板名称，进入模板详情页面，点击<strong>编辑</strong>按钮进行模板编辑 ，编辑完成 保存。</li>
 </ol>
-<p><img alt="image-20201210110014114" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/CreatePremissionTemplates/image-20201210110014114.png" /></p>
+<p><img alt="image-20201210110014114" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/CreatePremissionTemplates/image-20201210110014114.png" /></p>
 <ol>
 <li>权限模板编辑意味着模板的更新，模板更新后可以<strong>同步</strong>到已经关联的用户组。</li>
 </ol>
-<p><img alt="image-20201210110107399" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/CreatePremissionTemplates/image-20201210110107399.png" /></p><h1 id="_1">创建用户组</h1>
+<p><img alt="image-20201210110107399" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/CreatePremissionTemplates/image-20201210110107399.png" /></p><h1 id="_1">创建用户组</h1>
 <p>蓝鲸权限中心<strong>推荐</strong>通过用户组的方式来管理权限，可以关联权限模板来给一个用户组授权，然后通过将用户或组织加入用户组，这些用户或组织就自动拥有了该用户组的权限。 </p>
 <h2 id="_2">前置条件</h2>
 <blockquote>
@@ -166,15 +144,15 @@
 <ol>
 <li>切换到<strong>管理员身份</strong>。</li>
 </ol>
-<p><img alt="image-20201210105441469" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/CreateGroups/image-20201210105441469.png" /></p>
+<p><img alt="image-20201210105441469" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/CreateGroups/image-20201210105441469.png" /></p>
 <ol>
 <li>点击<strong>用户组</strong>菜单，进入用户组列表页。</li>
 </ol>
-<p><img alt="image-20201210105543517" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/CreateGroups/image-20201210105543517.png" /></p>
+<p><img alt="image-20201210105543517" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/CreateGroups/image-20201210105543517.png" /></p>
 <ol>
 <li>点击<strong>新建</strong>按钮创建新用户组。</li>
 </ol>
-<p><img alt="image-20201210105615861" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/CreateGroups/image-20201210105615861.png" /></p>
+<p><img alt="image-20201210105615861" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/CreateGroups/image-20201210105615861.png" /></p>
 <ul>
 <li>用户组名：<code>必填</code>，全局唯一，用户组名必须大于 4 个字符。</li>
 <li>描述：<code>必填</code>，将用户组的功能描述清楚，便于管理员或者用户申请时辨识。</li>
@@ -189,15 +167,15 @@
 <ol>
 <li>点击<strong>权限申请</strong>进入权限申请页面。</li>
 </ol>
-<p><img alt="image-20201210104811158" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToGroups/image-20201210104811158.png" /></p>
+<p><img alt="image-20201210104811158" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToGroups/image-20201210104811158.png" /></p>
 <ol>
 <li>点击<strong>申请加入用户组-立即申请</strong>按钮，进入用户组申请页面，选择需要申请的用户组、申请期限，填写申请理由。</li>
 </ol>
-<p><img alt="image-20201210104945325" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToGroups/image-20201210104945325.png" /></p>
+<p><img alt="image-20201210104945325" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToGroups/image-20201210104945325.png" /></p>
 <ol>
 <li>点击<strong>提交</strong>，提交后等待审批人审批，审批通过后，在<strong>我的权限</strong>页面可以查看刚才申请的用户组。</li>
 </ol>
-<p><img alt="image-20201210105033285" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToGroups/image-20201210105033285.png" /></p><h1 id="_1">申请自定义权限</h1>
+<p><img alt="image-20201210105033285" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToGroups/image-20201210105033285.png" /></p><h1 id="_1">申请自定义权限</h1>
 <h2 id="_2">前置条件</h2>
 <blockquote>
 <p>无</p>
@@ -209,34 +187,34 @@
 <ol>
 <li>点击<strong>权限申请</strong>菜单，进入权限申请页面。</li>
 </ol>
-<p><img alt="image-20201210104742156" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToCustomPermissions/image-20201210104742156.png" /></p>
+<p><img alt="image-20201210104742156" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToCustomPermissions/image-20201210104742156.png" /></p>
 <ol>
 <li>点击<strong>申请自定义权限-立即申请</strong>按钮，进入自定义权限申请页面，依次选择<strong>系统、操作、资源实例</strong>，保存。</li>
 </ol>
-<p><img alt="image-20201113141632048" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToCustomPermissions/image-20201113141632048.png" /></p>
+<p><img alt="image-20201113141632048" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToCustomPermissions/image-20201113141632048.png" /></p>
 <ol>
 <li>点击<strong>提交</strong>，提交后等待审批人审批，审批通过后，在<strong>我的权限</strong>页面可以查看刚才申请的自定义权限。</li>
 </ol>
-<p><img alt="image-20201113112504194" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToCustomPermissions/image-20201113112504194.png" /></p>
+<p><img alt="image-20201113112504194" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToCustomPermissions/image-20201113112504194.png" /></p>
 <ol>
 <li>打开<strong>作业平台</strong>，切换到<strong>脚本执行</strong>页面，选择刚才申请的主机，点击<code>执行</code>按钮，因为申请了权限，所以这里可以执行成功。</li>
 </ol>
-<p><img alt="image-20201113141734175" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToCustomPermissions/image-20201113141734175.png" /></p>
+<p><img alt="image-20201113141734175" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToCustomPermissions/image-20201113141734175.png" /></p>
 <h2 id="_5">从接入系统侧无权限跳转</h2>
 <h3 id="_6">操作步骤</h3>
 <ol>
 <li>用户直接访问接入系统页面，接入系统会提示用户无权限并申请需要的操作权限。</li>
 </ol>
-<p><img alt="image-20200921215730298" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToCustomPermissions/image-20200921215730298.png" /></p>
+<p><img alt="image-20200921215730298" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToCustomPermissions/image-20200921215730298.png" /></p>
 <ol>
 <li>点击<strong>去申请</strong>自动跳转到权限中心，跳转时会自动带上用户需要的操作和实例权限，用户直接点击提交即可完成权限申请。</li>
 </ol>
-<p><img alt="image-20200921220101732" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToCustomPermissions/image-20200921220101732.png" /></p><h1 id="_1">二级权限管理</h1>
+<p><img alt="image-20200921220101732" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToCustomPermissions/image-20200921220101732.png" /></p><h1 id="_1">二级权限管理</h1>
 <h2 id="_2">场景描述</h2>
 <p>某企业拥有多款业务，每个业务都有专门的业务负责人来管理权限，比如A业务的业务负责人需要给开发人员、产品人员、测试人员分配相应的业务访问权限。</p>
 <h2 id="_3">解决方案</h2>
 <p>蓝鲸权限中心提供了分级权限管理解决方案，由超级管理员创建或者业务负责人自己申请创建<a href="../产品功能/GradingManager.md">分级管理员</a>，成为分级管理员后，就可以自主管理权限。</p>
-<p><img alt="分级管理员2" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/场景案例/GradingManager/分级管理员2.png" /></p>
+<p><img alt="分级管理员2" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/场景案例/GradingManager/分级管理员2.png" /></p>
 <ul>
 <li>由<a href="../产品功能/ManagerCreate.md">超级管理员创建</a>，或者A业务负责人<a href="../产品功能/UserApply.md">申请创建分级管理员</a></li>
 <li>点击<strong>右上角个人信息</strong>切换到<strong>A业务分级管理员</strong>身份</li>
@@ -247,11 +225,11 @@
 <p>用户可以通过三种方式主动申请需要的权限：<strong>申请加入用户组</strong>、<strong>申请自定义权限</strong>、<strong>从接入系统侧无权限跳转</strong>。</p>
 <h2 id="_2">申请加入用户组</h2>
 <p>蓝鲸权限中心<strong>推荐</strong>的权限管理方式，用户进入权限申请页面 ，点击<strong>申请加入用户组</strong>按钮进行申请，在申请用户组列表页面，用户只需要通过关键词搜索到需要的用户组，申请加入即可。</p>
-<p><img alt="image-20201210104945325" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToGroups/image-20201210104945325.png" /></p>
+<p><img alt="image-20201210104945325" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/快速入门/ApplyToGroups/image-20201210104945325.png" /></p>
 <h2 id="_3">申请自定义权限</h2>
 <p>自定义权限建议是在用户组权限无法满足的情况下才申请，自定义权限虽然灵活，但零散的权限带来的后果就是不方便后续权限的统一管理。</p>
 <p>用户在<strong>权限申请</strong>界面，点击<strong>申请自定义权限</strong>按钮进行申请。</p>
-<p><img alt="image-20201210114221531" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/PermissionsApply/image-20201210114221531.png" /></p>
+<p><img alt="image-20201210114221531" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/PermissionsApply/image-20201210114221531.png" /></p>
 <p>权限中心支持<strong>拓扑实例选择</strong>、<strong>属性条件</strong>两种实例选择方式，大部分接入系统只接入拓扑实例选择方式。</p>
 <ul>
 <li>
@@ -262,11 +240,11 @@
 </li>
 </ul>
 <p>一组实例选择，可以通过<strong>拓扑实例选择</strong>或<strong>属性条件</strong>，也可以组合使用，组合使用时，拓扑实例和属性条件是<strong>且</strong>的关系。多组实例之间是<code>或</code>的关系。</p>
-<p><img alt="image-20200921211124608" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/PermissionsApply/image-20200921211124608.png" /></p><h1 id="_1">我的申请</h1>
+<p><img alt="image-20200921211124608" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/PermissionsApply/image-20200921211124608.png" /></p><h1 id="_1">我的申请</h1>
 <p><strong>我的申请</strong>页面展示个人的权限申请记录，用户申请完权限后，自动跳转到该页面，可以查看当前<strong>审批中、已通过、被拒绝、已撤销</strong>状态的单据，针对审批中的单据，可以查看当前节点的审批人员。</p>
-<p><img alt="image-20201111093207005" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/MyApply/image-20201111093207005.png" /></p><h1 id="_1">我的审批</h1>
+<p><img alt="image-20201111093207005" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/MyApply/image-20201111093207005.png" /></p><h1 id="_1">我的审批</h1>
 <p>审批功能已经对接到ITSM，所以在<strong>我的审批</strong>，点击后自动跳转到ITSM的待办单据。</p>
-<p><img alt="image-20201210114750183" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/MyApproval/image-20201210114750183.png" /></p><h1 id="_1">我的权限</h1>
+<p><img alt="image-20201210114750183" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/MyApproval/image-20201210114750183.png" /></p><h1 id="_1">我的权限</h1>
 <p><strong>我的权限</strong>页面展示个人拥有的所有权限，分<strong>用户组权限</strong>、<strong>自定义权限</strong>两部分权限展示。同一个操作权限可以同时在自定义权限和用户组权限里，删除其中一个来源无影响。</p>
 <h2 id="_2">用户组权限</h2>
 <p>用户可以在<strong>用户组权限</strong>Tab 页进行申请新的用户组权限或者选择退出某个用户组。用户加入用户组的方式有两种：直接加入、通过组织加入。</p>
@@ -274,19 +252,19 @@
 <li>直接加入：指用户直接被添加到某个用户组里，用户如不需要该组的权限 ，可以直接在<strong>我的权限-用户组权限</strong>里选择对应的用户组，点击<strong>退出</strong>。</li>
 <li>通过组织加入：指用户所在的组织被添加到某个用户组里，用户如不需要该组的权限，无法直接退出，必须管理员将用户所在组织从该组里移除。</li>
 </ul>
-<p><img alt="image-20201210114839328" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/MyPermissions/image-20201210114839328.png" /></p>
+<p><img alt="image-20201210114839328" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/MyPermissions/image-20201210114839328.png" /></p>
 <h2 id="_3">自定义权限</h2>
 <p>自定义权限是用户通过<strong>自定义权限申请</strong>而获得的权限，该方式并不是权限中心推荐使用，因为自定义权限太灵活，不方便后续权限的统一维护。</p>
-<p><img alt="image-20201210115712303" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/MyPermissions/image-20201210115712303.png" /></p>
+<p><img alt="image-20201210115712303" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/MyPermissions/image-20201210115712303.png" /></p>
 <p>自定义权限按照系统分组聚合展示，用户可以在该页面继续申请自定义权限，或者删除部分权限，部分权限的删除包括<strong>操作权限和实例权限</strong>。</p>
 <ul>
 <li><strong>实例权限删除</strong>：找到需要删除实例权限对应的操作，点击实例详情，在实例详情页里，点击<strong>批量实例删除</strong>可以进行实例权限的删除。</li>
 </ul>
-<p><img alt="image-20201210115833432" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/MyPermissions/image-20201210115833432.png" /></p>
+<p><img alt="image-20201210115833432" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/MyPermissions/image-20201210115833432.png" /></p>
 <ul>
 <li><strong>操作权限删除</strong>：如不需要某个操作的权限 ，可以在权限列表里找到对应的操作权限，直接删除。</li>
 </ul>
-<p><img alt="image-20201210115911567" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/MyPermissions/image-20201210115911567.png" /></p><h1 id="_1">内置管理角色</h1>
+<p><img alt="image-20201210115911567" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/MyPermissions/image-20201210115911567.png" /></p><h1 id="_1">内置管理角色</h1>
 <p>为了方便管理员管理权限，蓝鲸权限中心内置了三种管理角色：超级管理员、系统管理员、分级管理员。</p>
 <p><strong>admin</strong>既是初始的唯一登录账号，也是默认的唯一超级管理员。</p>
 <p><strong>超级管理员</strong>、<strong>系统管理员</strong>属于特殊的分级管理员。</p>
@@ -415,10 +393,10 @@
 <li><strong>操作和资源实例范围</strong>：决定了分级管理员能够授予的最大权限范围，可以只是某一个资源实例授权，也可以是基于所有资源实例范围的授权。</li>
 <li><strong>可授权人员范围</strong>：决定了分级管理员能够给哪些人员授权，以及只有在被授权人员范围内的用户才能申请到对应分级管理员创建的用户组。人员可以是某些用户，也可以是某些组织。 </li>
 </ul>
-<p><img alt="image-20201210104243675" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/GradingManager/image-20201210104243675.png" /></p>
+<p><img alt="image-20201210104243675" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/GradingManager/image-20201210104243675.png" /></p>
 <p>分级管理员可以由<a href="./ManagerCreate.md">超级管理员创建</a>或者<a href="./UserApply.md">普通用户申请创建</a>。</p><h1 id="_1">超级管理员创建分级管理员</h1>
 <p>以有超级管理员身份的账号登录到蓝鲸权限中心，在<code>右上角</code>个人信息里切换到<code>超级管理员</code>身份，进入到<code>分级管理员</code>页面，点击<code>新建</code>创建分级管理员。</p>
-<p><img alt="image-20201029143648601" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/ManagerCreate/image-20201029143648601.png" /></p>
+<p><img alt="image-20201029143648601" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/ManagerCreate/image-20201029143648601.png" /></p>
 <h2 id="_2">基本信息</h2>
 <ul>
 <li>分级管理员名称：区分不同分级管理员，根据需求场景来命名，可以随时修改。</li>
@@ -427,27 +405,27 @@
 </ul>
 <h2 id="_3">选择操作和资源实例范围</h2>
 <p><strong>操作和资源实例范围</strong>代表该分级管理员能够<code>授权</code>的权限范围，可以跨系统选择多个操作。</p>
-<p><img alt="image-20201029145638479" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/ManagerCreate/image-20201029145638479.png" /></p>
+<p><img alt="image-20201029145638479" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/ManagerCreate/image-20201029145638479.png" /></p>
 <p>选择操作后，需要针对每个操作进行对应的实例范围选择，实例选择可以选择具体实例，也可以通过属性条件来实现动态实例的选择。</p>
 <p>比如，选择了 A 系统的 a 操作，对应的实例是 i1，i2，i3，则该分级管理员就只能给其他人授予 a 操作的 i1、i2、i3 这几个实例内的权限。</p>
-<p><img alt="image-20201209185808659" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/ManagerCreate/image-20201209185808659.png" /></p>
+<p><img alt="image-20201209185808659" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/ManagerCreate/image-20201209185808659.png" /></p>
 <h2 id="_4">选择可授权人员范围</h2>
 <p><strong>可授权人员范围</strong>代表该分级管理员能够<code>授权</code>的人员范围，反过来，也只有在可授权人员范围内的用户才能看到对应分级管理员所创建的用户组，双向的限制，避免了不必要的权限给用户带来的干扰，也避免敏感权限外泄，人员可以是组织，也可以是具体某个用户。</p>
 <blockquote>
 <p>比如，选择了<code>组织：广东分公司、用户：user</code>，则该分级管理员只能给这两类人授权，也只有他们才能看到对应分级管理员创建的用户组，去申请加入。</p>
 </blockquote>
-<p><img alt="-w2021" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/ManagerCreate/image-20201029152316625.png" /></p>
+<p><img alt="-w2021" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/ManagerCreate/image-20201029152316625.png" /></p>
 <p>选择完操作实例和人员范围，点击<code>提交</code>即完成分级管理员的创建。 </p>
 <h2 id="_5">切换分级管理员身份</h2>
 <p>能够切换分级管理员身份的前提是成为分级管理员的管理成员。</p>
-<p><img alt="image-20201117093004886" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/ManagerCreate/image-20201117093004886.png" /></p>
+<p><img alt="image-20201117093004886" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/ManagerCreate/image-20201117093004886.png" /></p>
 <p>点击右上角<strong>个人信息</strong>，点击<strong>切换身份</strong>，选择需要的身份进行切换。</p>
-<p><img alt="image-20201117093220231" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/ManagerCreate/image-20201117093220231.png" /></p><h1 id="_1">普通用户申请创建分级管理员</h1>
+<p><img alt="image-20201117093220231" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/ManagerCreate/image-20201117093220231.png" /></p><h1 id="_1">普通用户申请创建分级管理员</h1>
 <p>用户登陆蓝鲸，打开权限中心，点击<strong>分级管理员</strong>菜单，进入分级管理员列表页，该页面展示自己可以使用的分级管理员列表。</p>
 <p>点击<strong>申请新建</strong>进行分级管理员创建申请。</p>
-<p><img alt="image-20201209174306845" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/UserApply/image-20201209174306845.png" /></p>
+<p><img alt="image-20201209174306845" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/UserApply/image-20201209174306845.png" /></p>
 <p>填写分级管理员基本信息，选择分配权限和授权人员<strong>范围</strong>。</p>
-<p><img alt="image-20201209175203048" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/UserApply/image-20201209175203048.png" /></p>
+<p><img alt="image-20201209175203048" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/UserApply/image-20201209175203048.png" /></p>
 <h2 id="_2">基本信息</h2>
 <ul>
 <li>分级管理员名称：区分不同分级管理员，根据需求场景来命名，可以随时修改。</li>
@@ -456,20 +434,20 @@
 </ul>
 <h2 id="_3">选择操作和资源实例范围</h2>
 <p><strong>操作和资源实例范围</strong>代表该分级管理员<strong>能够授权的权限范围</strong>，可以跨系统选择多个操作。</p>
-<p><img alt="image-20201209175841973" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/UserApply/image-20201209175841973.png" /></p>
+<p><img alt="image-20201209175841973" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/UserApply/image-20201209175841973.png" /></p>
 <p>选择操作后，需要针对每个操作进行对应的实例范围选择，实例选择可以选择具体实例，也可以通过属性条件来实现动态实例的选择。</p>
 <blockquote>
 <p>比如，选择了 A 系统的 a 操作，对应的实例是 i1，i2，i3，则该分级管理员就只能给其他人授予 a 操作的 i1、i2、i3 这几个实例内的权限。</p>
 </blockquote>
-<p><img alt="image-20201209175949478" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/UserApply/image-20201209175949478.png" /></p>
+<p><img alt="image-20201209175949478" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/UserApply/image-20201209175949478.png" /></p>
 <h2 id="_4">选择可授权人员范围</h2>
 <p><strong>可授权人员范围</strong>代表该分级管理员能够<code>授权</code>的人员范围(注意这里不是授权)，也只有在可授权人员范围内的用户才能看到对应分级管理员所创建的用户组，双向的限制，避免了不必要的权限给用户带来的干扰，也避免敏感权限外泄，人员可以是组织，也可以是具体某个用户。</p>
 <p>比如，选择了<code>组织：广东分公司、用户：user</code>，则该分级管理员只能给这两类人授权，也只有他们才能看到对应分级管理员创建的用户组，去申请加入。</p>
-<p><img alt="image-20201209180247928" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/UserApply/image-20201209180247928.png" /></p>
+<p><img alt="image-20201209180247928" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/UserApply/image-20201209180247928.png" /></p>
 <p>选择完操作实例和人员范围，点击<code>提交</code>即完成分级管理员的申请创建，申请创建分级管理员需要审批，审批通过后，可以在分级管理员列表看到对应的记录。</p>
 <h2 id="_5">切换分级管理员身份</h2>
 <p>点击右上角<strong>个人信息</strong>，点击<strong>切换身份</strong>，选择需要的身份进行切换。</p>
-<p><img alt="image-20201117093220231" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/UserApply/image-20201117093220231.png" /></p><h1 id="_1">权限模板</h1>
+<p><img alt="image-20201117093220231" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/UserApply/image-20201117093220231.png" /></p><h1 id="_1">权限模板</h1>
 <h2 id="_2">前置条件</h2>
 <blockquote>
 <ol>
@@ -481,15 +459,20 @@
 </li>
 </ol>
 </blockquote>
-<p><img alt="image-20201209191849425" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/PermissionTemplates/image-20201209191849425.png" /></p>
-<p>权限模板的主要作用是<strong>可复用性</strong>，分级管理员创建一个权限模板，可以给多个用户组关联授权，而且权限模板的版本变更也可以选择性同步给已关联的用户组。</p>
-<h2 id="_3">创建权限模板</h2>
+<p><img alt="image-20201209191849425" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/PermissionTemplates/image-20201209191849425.png" /></p>
+<p>权限模板的主要作用是<strong>可复用性</strong>，分级管理员创建一个权限模板，可以给多个用户组关联授权，而且权限模板更新后可以同步给已关联授权的用户组。</p>
+<h2 id="_3">新建权限模板</h2>
 <p>进入<strong>权限模板</strong>页面，点击<strong>新建</strong>按钮进行模板新建，一个模板只能包含<strong>一个系统</strong>的操作权限。</p>
-<p><img alt="image-20201209190603120" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/PermissionTemplates/image-20201209190603120.png" /></p>
-<h2 id="_4">权限模板更新同步</h2>
+<p><img alt="image-20210411203830159" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/PermissionTemplates/image-20210411203830159.png" /></p>
+<h2 id="_4">权限模板编辑</h2>
 <p>在<strong>权限模板</strong>页面，选择具体需要编辑的权限模板，点击<strong>权限模板名称</strong>进入权限模板的详情页面，点击详情页里的编辑按钮进行模板编辑。</p>
-<p>模板编辑后不会自动同步到关联的用户组，需要点击<strong>去同步</strong>或者切换到<strong>关联用户组</strong>Tab 页来更新到用户组。</p>
-<p><img alt="image-20201209191113128" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/PermissionTemplates/image-20201209191113128.png" /></p><h1 id="_1">用户/组织</h1>
+<p><img alt="image-20210411205031258" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/PermissionTemplates/image-20210411205031258.png" /></p>
+<p>权限模板如果未关联任何用户组，编辑更新操作后可以直接保存。</p>
+<p>如果已经关联了用户组，点击<strong>下一步</strong>进行用户组同步，选择模板新增的操作在各个用户组里需要的资源实例，权限中心提供两种可以批量刷实例的方式。</p>
+<p><strong>批量粘贴</strong>：用户先选择操作在一个用户组里的实例，然后在输入框尾部点击<strong>复制</strong>按钮，复制成功后，立即为弹出<strong>批量粘贴</strong>小icon，点击批量粘贴后，即可将对应的实例刷到其他用户组里，达到批量刷实例的效果。</p>
+<p><strong>批量引用已有操作的资源实例</strong>：该功能是当<strong>同一个操作在不同用户组里选择的实例不一样</strong>的场景时使用，比如，<strong>业务访问</strong>这个操作在100个用户组里对应的实例都不一样时，这个时候用批量粘贴的方式或者人工选择的方式都是不可行的。</p>
+<p>这时可以通过<strong>批量引用已有操作的资源实例</strong>来完成，在输入框右上角点击该按钮，选择一个模板里已有的操作，确定后，自动批量填充到每个用户组。 </p>
+<p><img alt="image-20210411213529054" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/PermissionTemplates/image-20210411213529054.png" /></p><h1 id="_1">用户/组织</h1>
 <h2 id="_2">前置条件</h2>
 <blockquote>
 <ol>
@@ -497,34 +480,31 @@
 <li>切换到超级管理员身份</li>
 </ol>
 </blockquote>
-<p><img alt="image-20201209191849425" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Users/image-20201209191849425.png" /></p>
+<p><img alt="image-20201209191849425" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Users/image-20201209191849425.png" /></p>
 <p>蓝鲸权限中心默认以组织架构的形式同步了蓝鲸用户管理的人员组织信息，方便管理员以<strong>人</strong>和<strong>组织</strong>的维度管理权限。</p>
 <p>在<strong>用户</strong>菜单里，我们可以查看某人或某个组织的权限，并且对其进行权限管理。</p>
 <h2 id="_3">管理用户权限</h2>
 <p>点击<strong>用户</strong>菜单，通过搜索查找需要管理权限的<strong>用户</strong>，选择具体某个用户后，可以对其权限进行删减。</p>
-<p><img alt="image-20201209192920927" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Users/image-20201209192920927.png" /></p>
+<p><img alt="image-20201209192920927" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Users/image-20201209192920927.png" /></p>
 <h2 id="_4">管理组织权限</h2>
 <p>进入用户菜单，通过搜索查找需要管理权限的<strong>组织</strong>，选择具体某个组织后，可以对其权限进行删减。</p>
-<p><img alt="image-20201209193058032" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Users/image-20201209193058032.png" /></p><h1 id="_1">用户组</h1>
+<p><img alt="image-20201209193058032" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Users/image-20201209193058032.png" /></p><h1 id="_1">用户组</h1>
 <h2 id="_2">前置条件</h2>
 <blockquote>
 <ol>
-<li>
-<p>用户必须是分级管理员/超级管理员/系统管理员</p>
-</li>
-<li>
-<p>切换到管理员身份</p>
-</li>
+<li>用户必须是分级管理员/超级管理员/系统管理员</li>
+<li>切换到管理员身份</li>
 </ol>
 </blockquote>
-<p><img alt="image-20201209191843530" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20201209191843530.png" /></p>
-<p>用户组是蓝鲸权限中心<strong>推荐</strong>的一种权限管理方式，一个用户组可以添加<strong>多个系统</strong>的权限，本章节重点介绍用户组的创建、用户组成员管理、用户组权限管理等功能。</p>
+<p><img alt="image-20210411220815644" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20210411220815644.png" /></p>
+<p>用户组是蓝鲸权限中心<strong>推荐</strong>的一种权限管理方式，一个用户组可以添加<strong>多个系统</strong>的权限。</p>
+<p>本章节重点介绍用户组的创建、用户组成员管理、用户组权限管理等功能。</p>
 <h2 id="_3">新建用户组</h2>
-<p>点击<strong>用户组-新建</strong>按钮。</p>
-<p><img alt="image-20201209192253937" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20201209192253937.png" /></p>
+<p>点击<strong>用户组-新建</strong>按钮（如果还没有创建权限模板，可以先创建权限模板）。</p>
+<p><img alt="image-20201209192253937" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20201209192253937.png" /></p>
 <ul>
 <li>
-<p>用户组名：<code>必填</code>，全局唯一，用户组名必须大于 4 个字符。</p>
+<p>用户组名：<code>必填</code>，全局唯一，为了避免取不好辨识的用户组名，用户组名必须大于 4 个字符。</p>
 </li>
 <li>
 <p>描述：<code>必填</code>，将用户组的功能描述清楚，便于管理员或者用户申请时辨识。</p>
@@ -533,14 +513,16 @@
 <p>添加组成员：<code>非必填</code>，组成员包括用户和组织，权限中心提供组织架构拓扑选择和手动输入两种方式添加成员（手动输入方式只支持用户添加）。成员的添加也可以在用户组列表中找到对应的用户组直接添加。</p>
 </li>
 </ul>
-<p><img alt="image-20200921170621290" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20200921170621290.png" /></p>
+<p><img alt="image-20200921170621290" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20200921170621290.png" /></p>
 <ul>
-<li>添加组权限：<code>非必填</code>，选择权限模板。</li>
+<li>添加组权限：<code>非必填</code>，选择权限模板或者自定义权限，强烈建议通过添加权限模板的方式授权，方便后续的统一更新维护。</li>
 </ul>
-<p><img alt="image-20200921171216223" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20200921171216223.png" /></p>
+<p><img alt="image-20210411221237846" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20210411221237846.png" /></p>
+<p>选择模板或者自定义权限后，还需要关联具体的资源实例，选择资源实例后点击<strong>提交</strong>完成用户组的创建。 </p>
+<p><img alt="image-20210411221511293" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20210411221511293.png" /></p>
 <h2 id="_4">编辑用户组</h2>
 <p>编辑用户组涉及组基本信息、用户组权限和成员的变更。</p>
-<p><img alt="image-20201209192404971" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20201209192404971.png" /></p>
+<p><img alt="image-20201209192404971" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20201209192404971.png" /></p>
 <ul>
 <li>
 <p>组基本信息编辑：可以编辑用户组名、组描述信息。</p>
@@ -549,13 +531,13 @@
 <p>组成员编辑：可以删除、添加用户组成员。</p>
 </li>
 <li>
-<p>组权限编辑：切换<strong>组权限</strong>Tab 页，可以添加、删除权限，如果组权限是权限模板，则可以选择是否同步权限模板的最新版本。</p>
+<p>组权限编辑：切换<strong>组权限</strong>Tab 页，可以添加、删除实例权限。</p>
 </li>
 </ul>
-<p><img alt="image-20201209192511127" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20201209192511127.png" /></p>
+<p><img alt="image-20210411221757941" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20210411221757941.png" /></p>
 <h2 id="_5">删除用户组</h2>
 <p>在用户组列表，可以针对用户组直接删除，删除用户组会同时移除组内用户、组内权限，请谨慎操作。</p>
-<p><img alt="image-20201209192559031" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20201209192559031.png" /></p><h1 id="_1">管理员设置</h1>
+<p><img alt="image-20201209192559031" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Groups/image-20201209192559031.png" /></p><h1 id="_1">管理员设置</h1>
 <blockquote>
 <p>本文介绍如何设置超级管理员、系统管理员。</p>
 </blockquote>
@@ -566,11 +548,11 @@
 <h2 id="_2">超级管理员设置</h2>
 <p>切换<code>超级管理员</code>身份，进入<code>设置-管理员</code>页面，切换到<code>超级管理员</code>tab，点击<code>添加超级管理员</code>，输入用户名后保存即可。</p>
 <p>默认超级管理员只有蓝鲸平台的所有授权权限，可以勾选<code>拥有蓝鲸平台的所有操作权限</code>让对应超级管理员同时拥有所有操作权限。</p>
-<p><img alt="image-20201029193525009" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Manager/image-20201029193525009.png" /></p>
+<p><img alt="image-20201029193525009" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Manager/image-20201029193525009.png" /></p>
 <h2 id="_3">系统管理员设置</h2>
 <p>切换<code>超级管理员</code>或需要设置的对应<code>系统管理员</code>（这里以超级管理员身份介绍），进入<code>设置-管理员</code>页面，切换到<code>系统管理员</code>tab，找到需要更新成员的系统，直接编辑成员列表，即可完成对应管理员的更新。</p>
 <p>同样，默认系统管理员只有对应系统的授权权限，可以勾选<code>拥有该系统的所有操作权限</code>让对应系统管理员同时拥有该系统的所有操作权限。</p>
-<p><img alt="image-20201029194437908" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Manager/image-20201029194437908.png" /></p><h1 id="_1">审批流程设置</h1>
+<p><img alt="image-20201029194437908" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Manager/image-20201029194437908.png" /></p><h1 id="_1">审批流程设置</h1>
 <p>审批流程设置分审批流程的<code>创建和关联</code>，审批流程<code>创建</code>将在流程服务系统（ITSM）实现，权限中心只需支持审批流程的<code>关联</code>配置。</p>
 <h2 id="_2">审批流程创建</h2>
 <p>待补充</p>
@@ -592,20 +574,20 @@
 <p>个性化审批流程场景包括：自定义权限审批流程、加入用户组审批流程。</p>
 <p>自定义权限审批流程：超级管理员能设置<strong>所有的</strong>自定义权限申请时的审批流程。</p>
 <p>加入用户组审批流程：超级管理员能设置<strong>所有的</strong>用户组的审批流程。</p>
-<p><img alt="image-20201117094221359" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Approval/image-20201117094221359.png" /></p>
+<p><img alt="image-20201117094221359" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Approval/image-20201117094221359.png" /></p>
 <h3 id="_5">系统管理员审批流程设置</h3>
 <p>点击右上角<strong>个人信息</strong>切换到对应系统管理员身份，切换成功后，点击菜单<strong>设置 -&gt; 审批流程</strong>进入审批流程设置页面。</p>
 <p>系统管理员可以设置对应审批场景的个性化审批流程。</p>
 <p>个性化审批流程场景包括：自定义权限审批流程、加入用户组审批流程。</p>
 <p>自定义权限审批流程：系统管理员只能设置属于<strong>本系统</strong>的自定义权限申请时的审批流程。</p>
 <p>加入用户组审批流程：系统管理员只能设置属于<strong>本系统</strong>的用户组的审批流程。</p>
-<p><img alt="image-20201117095953514" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Approval/image-20201117095953514.png" /></p>
+<p><img alt="image-20201117095953514" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Approval/image-20201117095953514.png" /></p>
 <h3 id="_6">分级管理员审批流程设置</h3>
 <p>点击右上角<strong>个人信息</strong>切换到对应分级管理员身份，切换成功后，点击菜单<strong>设置 -&gt; 审批流程</strong>进入审批流程设置页面。</p>
 <p>分级管理员可以设置对应审批场景的个性化审批流程。</p>
 <p>个性化审批流程场景包括：加入用户组审批流程。</p>
 <p>加入用户组审批流程：分级管理员只能设置属于<strong>本分级管理员</strong>创建的用户组的审批流程。</p>
-<p><img alt="image-20201117100239755" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品功能/Approval/image-20201117100239755.png" /></p><h1 id="v3-v2">V3 和 V2 的差异？</h1>
+<p><img alt="image-20201117100239755" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品功能/Approval/image-20201117100239755.png" /></p><h1 id="v3-v2">V3 和 V2 的差异？</h1>
 <blockquote>
 <p>V3 和 V2 的差异仅在蓝鲸企业版中存在，V2 对应蓝鲸企业版2.X，V3 版对应蓝鲸企业版3.X，社区版统一为 V3 版本。</p>
 </blockquote>
@@ -639,15 +621,15 @@
 <p>最佳实践详情参考<a href="../场景案例/GradingManager.md">场景案例</a>。</p><h1 id="_1">支持跨部门或者业务的管理权限吗？</h1>
 <p>支持，权限控制很灵活，可以按组织架构授权，也可以按个人，按业务授权等。</p>
 <p>V3 版权限中心没有特殊处理业务、项目的概念，而是把业务、项目作为资源实例选择的其中一个层级的节点资源，很方便的适应了，按业务、项目等资源隔离范围等场景授权，勾选某个业务节点，就拥有了对应业务下任意实例的权限，满足动态赋权的需求。</p>
-<p><img alt="image-20210322215637372" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/常见问题/Orggrants/image-20210322215637372.png" /></p>
+<p><img alt="image-20210322215637372" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/常见问题/Orggrants/image-20210322215637372.png" /></p>
 <p>权限中心支持组织架构权限管理，管理员只需要将某个组织加入到用户组，整个组织以及子组织的用户都拥有了对应用户组的权限，而且组织后期变动的人员也自动失去或拥有用户组的权限，满足动态人员授权需求。</p>
-<p><img alt="image-20210322220057205" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/常见问题/Orggrants/image-20210322220057205.png" /></p>
-<p><img alt="image-20210322220403954" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/常见问题/Orggrants/image-20210322220403954.png" /></p><h1 id="_1">权限中心支持属性授权吗？</h1>
+<p><img alt="image-20210322220057205" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/常见问题/Orggrants/image-20210322220057205.png" /></p>
+<p><img alt="image-20210322220403954" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/常见问题/Orggrants/image-20210322220403954.png" /></p><h1 id="_1">权限中心支持属性授权吗？</h1>
 <p>支持，但这个需要接入的系统本身支持属性筛选实例的功能实现，目前蓝鲸官方系统支持属性授权的有：标准运维，后期迭代会有更多的接入系统支持属性授权。</p>
-<p><img alt="image-20210322212344234" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/常见问题/Attribute/image-20210322212344234.png" /></p><h1 id="_1">如何接入权限中心</h1>
+<p><img alt="image-20210322212344234" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/常见问题/Attribute/image-20210322212344234.png" /></p><h1 id="_1">如何接入权限中心</h1>
 <p>权限中心支持基于蓝鲸开发框架开发的SaaS接入，也支持企业第三方系统的接入，接入系统无需再单独实现权限控制模块，只需要实现少量业务逻辑代码即可，减少核心基础功能的重复开发和人力投入。</p>
 <p>详情参考 <a href="../../../iam_dev_docs/QuickStart/01-Begin.md">系统接入开发指引</a>。</p>
-<p><img alt="image-20201110095219983" src="F:\v_awjliu\社区版文档\BlueKingDocsTest\ZH/6.0/权限中心/产品白皮书/产品简介/README/image-20201110095219983.png" /></p><h1 id="api-esb-api">后台 API 和 ESB API 说明</h1>
+<p><img alt="image-20201110095219983" src="F:\v_awjliu\BKDocs\ZH/6.0/权限中心/产品白皮书/产品简介/README/image-20201110095219983.png" /></p><h1 id="api-esb-api">后台 API 和 ESB API 说明</h1>
 <h2 id="_1">背景</h2>
 <p>由于高性能的 APIGateway2.0 尚未发布企业版, 所以为了性能考虑, 模型/策略/鉴权等接口目前没有接入 ESB, 直接后台 API 调用; 而 SaaS 上无权限申请/授权接口等, 接入了 ESB</p>
 <p>目前权限中心提供的接口分为两类:
@@ -1742,12 +1724,6 @@ response_body:
 <td align="left">string</td>
 <td align="left">否</td>
 <td align="left">资源类型名称的别名英文名</td>
-</tr>
-<tr>
-<td align="left">scope</td>
-<td align="left">Object</td>
-<td align="left">否</td>
-<td align="left">选填，限制该操作对该资源的选择范围，<a href="../../Expression/01-Schema.md">条件表达式协议</a></td>
 </tr>
 <tr>
 <td align="left">selection_mode</td>
@@ -2986,7 +2962,7 @@ response_body:
 
 
 <h2 id="3-path">3. 特殊属性：路径(path)属性说明</h2>
-<p><a href="../../ResourceTopology.md">资源拓扑 Path 说明</a></p><h1 id="api">资源拉取 API</h1>
+<p><a href="../../../Explanation/04-BkIAMPath.md">说明: 资源拓扑<code>_bk_iam_path_</code></a></p><h1 id="api">资源拉取 API</h1>
 <h2 id="api_1">API 地址</h2>
 <p>接入系统注册模型到权限中心时
 - 注册<code>system</code>有提供<code>system.provider_config.host</code>; 假设为<code>http://cmdb.consul</code>
@@ -3003,14 +2979,13 @@ response_body:
 <hr />
 <h2 id="_1">接口协议前置说明</h2>
 <p>Request Header: 
-- <a href="../01-Overview/03-APIAuth.md">系统间调用接口鉴权:权限中心-&gt;接入系统</a></p>
-<ul>
-<li><code>Blueking-Language</code>  国际化多语言，值为：zh-cn 或 en，当值为 en 时，则接口数据返回中包含的 display_name 字段的值为英文，否则默认返回中文；</li>
-<li><code>X-Request-Id</code>  请求 request_id, 请记录, 用于错误排查</li>
-</ul>
+- <a href="../01-Overview/03-APIAuth.md">系统间调用接口鉴权:权限中心-&gt;接入系统</a>
+- <code>Blueking-Language</code>  国际化多语言，值为：zh-cn 或 en，当值为 en 时，则接口数据返回中包含的 display_name 字段的值为英文，否则默认返回中文；
+-  <code>X-Request-Id</code>  请求 request_id, 请记录, 用于错误排查</p>
 <p>Response Header:
 -  <code>X-Request-Id</code>  将请求 Header 头里的 request_id 返回, 用于错误排查</p>
-<p>Response Body: 遵循蓝鲸官方 API 协议进行返回, <code>code != 0</code> 表示出错, <code>message</code>包含具体信息</p>
+<p>Response Body: 
+遵循蓝鲸官方 API 协议进行返回, <code>code != 0</code> 表示出错, <code>message</code>包含具体信息</p>
 <pre class="codehilite"><code class="language-bash">{
     &quot;code&quot;: 0,
     &quot;message&quot;: &quot;&quot;,
@@ -3023,7 +2998,7 @@ response_body:
 <hr />
 <h2 id="_2">协议</h2>
 <ul>
-<li>Method: POST</li>
+<li>Method: <code>POST</code> (注意, 是<code>POST</code>)</li>
 <li>Path: <code>system.provider_config.host</code> + <code>system.provider_config.path</code></li>
 <li>Request.Body:</li>
 </ul>
@@ -3727,7 +3702,11 @@ keyword搜索 &lt; 100ms
 </tr>
 </tbody>
 </table>
-<p><code>特殊属性</code>:  <a href="../../ResourceTopology.md">path 属性说明</a></p>
+<p><code>特殊属性</code>:</p>
+<ul>
+<li><a href="../../../Explanation/04-BkIAMPath.md">说明: 资源拓扑<code>_bk_iam_path_</code></a></li>
+<li><a href="../../../Explanation/08-BkIAMApprover.md">说明: 资源审批人<code>_bk_iam_approver_</code></a></li>
+</ul>
 <pre class="codehilite"><code class="language-json">{
     &quot;code&quot;: 0,
     &quot;message&quot;: &quot;ok&quot;,
@@ -3761,12 +3740,42 @@ keyword搜索 &lt; 100ms
 <p>在权限中心里用于（1）<code>产品</code>上动态查询资源实例进行预览</p>
 </blockquote>
 <h3 id="requestbody">Request.Body</h3>
-<p>| 字段 |  类型 |是否必须  | 描述  |
-|:---|:---|:---|:---||
-| type | string | 是 | 对应查询的资源类型 |
-| method |string | 是 | 值为：list_instance_by_policy |
-| filter | object | 是 | 查询条件 |
-| page | object | 是 | 返回数据需要支持分页，该参数必填，具体说明请查看 <a href="./01-API.md">需实现接口的基础协议里的 Request.Body.page 字段</a>|</p>
+<table>
+<thead>
+<tr>
+<th align="left">字段</th>
+<th align="left">类型</th>
+<th align="left">是否必须</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">type</td>
+<td align="left">string</td>
+<td align="left">是</td>
+<td align="left">对应查询的资源类型</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">string</td>
+<td align="left">是</td>
+<td align="left">值为：list_instance_by_policy</td>
+</tr>
+<tr>
+<td align="left">filter</td>
+<td align="left">object</td>
+<td align="left">是</td>
+<td align="left">查询条件</td>
+</tr>
+<tr>
+<td align="left">page</td>
+<td align="left">object</td>
+<td align="left">是</td>
+<td align="left">返回数据需要支持分页，该参数必填，具体说明请查看 <a href="./01-API.md">需实现接口的基础协议里的 Request.Body.page 字段</a></td>
+</tr>
+</tbody>
+</table>
 <p>filter 字段</p>
 <table>
 <thead>
@@ -5240,7 +5249,7 @@ keyword搜索 &lt; 100ms
 1. 组装权限申请信息
 2. 请求 API, 获取权限申请 url
 3. url 渲染到前端表单, 用户点击后, 跳转到权限中心的权限申请页面</p>
-<p>具体无权限交互可以查看 <a href="../../../HowTo/NoPermissionApply.md">文档</a></p>
+<p>具体无权限交互可以查看 <a href="../../../HowTo/Solutions/NoPermissionApply.md">文档</a></p>
 <h4 id="url_1">URL</h4>
 <blockquote>
 <p>POST /api/c/compapi/v2/iam/application/
@@ -5451,20 +5460,77 @@ keyword搜索 &lt; 100ms
 </tr>
 </tbody>
 </table>
+<ol>
+<li>无关联资源类型的操作示例:</li>
+</ol>
+<p>系统<code>bk_job</code>的<code>create_job</code>操作未关联资源类型</p>
+<pre class="codehilite"><code class="language-json">{
+  &quot;system&quot;: &quot;bk_job&quot;,  # 权限的系统
+  &quot;actions&quot;: [
+    {
+      &quot;id&quot;: &quot;create_job&quot;,  # 操作id
+      &quot;related_resource_types&quot;: []  # related_resource_types 空数组表示操作不关联资源类型
+    }
+  ]
+}</code></pre>
+
+
+<ol>
+<li>资源拓扑路径的操作示例:</li>
+</ol>
+<p>系统<code>bk_job</code>的<code>view_job</code>操作关联资源类型<code>job</code>, 并且注册了实例视图 <code>业务(biz)</code>-<code>作业(job)</code>, 这个实例视图拓扑路径有 2 层</p>
+<pre class="codehilite"><code class="language-json">{
+  &quot;system&quot;: &quot;bk_job&quot;,  # 权限的系统
+  &quot;actions&quot;: [
+    {
+      &quot;id&quot;: &quot;view_job&quot;,  # 操作id
+      &quot;related_resource_types&quot;: [
+        {
+          &quot;system&quot;: &quot;bk_job&quot;,  # 资源类型所属的系统id
+          &quot;type&quot;: &quot;job&quot;,  # 资源类型
+          &quot;instances&quot;: [
+            [  # 一个数组表示一个实例的拓扑路径, 拓扑路径必须与实例视图的资源链路一致, 业务(biz)-作业(job)
+              {
+                &quot;type&quot;: &quot;biz&quot;,  # 实例视图中资源的第一层业务
+                &quot;id&quot;: &quot;biz1&quot;,
+              },
+              {
+                &quot;type&quot;: &quot;job&quot;,  # 实例视图中资源拓扑路径的第二层作业
+                &quot;id&quot;: &quot;job1&quot;,
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+
+<ol>
+<li>关联多个资源类型的操作示例:</li>
+</ol>
+<p>系统<code>bk_job</code>的<code>execute_job</code>操作关联资源类型<code>job</code>与系统<code>bk_cmdb</code>的资源类型<code>host</code>,
+<code>job</code>注册了实例视图 <code>业务(biz)</code>-<code>作业(job)</code>, 这个实例视图拓扑路径有 2 层,
+<code>bk_cmdb</code>的资源类型<code>host</code>注册实例视图, <code>业务(biz)</code>-<code>集群(set)</code>-<code>模块(module)</code>-<code>主机(host)</code>, 这个实例视图拓扑路径有 4 层</p>
 <pre class="codehilite"><code class="language-json">{
   &quot;system&quot;: &quot;bk_job&quot;,  # 权限的系统
   &quot;actions&quot;: [
     {
       &quot;id&quot;: &quot;execute_job&quot;,  # 操作id
-      &quot;related_resource_types&quot;: [  # 关联的资源类型, 无关联资源类型的操作, 必须为空, 资源类型的顺序必须操作注册时的顺序一致
+      &quot;related_resource_types&quot;: [  # 关联几个资源类型, 这里就必须传几个item, 并且资源类型的顺序必须与注册操作时资源类型的顺序一致
         {
-          &quot;system&quot;: &quot;bk_job&quot;,  # 资源类型所属的系统id
-          &quot;type&quot;: &quot;job&quot;,  # 资源类型
-          &quot;instances&quot;: [  # 申请权限的资源实例
-            [  # 带层级的实例表示
+          &quot;system&quot;: &quot;bk_job&quot;,
+          &quot;type&quot;: &quot;job&quot;,
+          &quot;instances&quot;: [
+            [  # 业务(biz)-作业(job)
               {
-                &quot;type&quot;: &quot;job&quot;,  # 层级节点的资源类型
-                &quot;id&quot;: &quot;job1&quot;,  # 层级节点的资源实例id
+                &quot;type&quot;: &quot;biz&quot;,
+                &quot;id&quot;: &quot;biz1&quot;,
+              },
+              {
+                &quot;type&quot;: &quot;job&quot;,
+                &quot;id&quot;: &quot;job1&quot;,
               }
             ]
           ]
@@ -5473,7 +5539,7 @@ keyword搜索 &lt; 100ms
           &quot;system&quot;: &quot;bk_cmdb&quot;,  # 资源类型所属的系统id
           &quot;type&quot;: &quot;host&quot;,  # 操作依赖的另外一个资源类型
           &quot;instances&quot;: [
-            [
+            [  # 4层的拓扑路径, 必须与实例视图的资源链路一致: 业务(biz)-集群(set)-模块(module)-主机(host)
               {
                 &quot;type&quot;: &quot;biz&quot;,
                 &quot;id&quot;: &quot;biz1&quot;,
@@ -5489,7 +5555,7 @@ keyword搜索 &lt; 100ms
               }
             ]
           ],
-          &quot;attributes&quot;: [  # 支持配置实例的属性值
+          &quot;attributes&quot;: [  # 支持配置实例的属性值, attributes与instances的组合关系为AND
             {
               &quot;id&quot;: &quot;os&quot;,  # 属性的key
               &quot;name&quot;: &quot;操作系统&quot;,
@@ -5554,7 +5620,7 @@ keyword搜索 &lt; 100ms
   &quot;message&quot;: &quot;&quot;,
   &quot;data&quot;: null,
   &quot;permission&quot;: {
-    &quot;system_id&quot;: &quot;bk_job&quot;,
+    &quot;system&quot;: &quot;bk_job&quot;,
     &quot;system_name&quot;: &quot;作业平台&quot;,
     &quot;actions&quot;: [
       {
@@ -5562,7 +5628,7 @@ keyword搜索 &lt; 100ms
         &quot;name&quot;: &quot;执行作业&quot;,
         &quot;related_resource_types&quot;: [
           {
-            &quot;system_id&quot;: &quot;bk_job&quot;,
+            &quot;system&quot;: &quot;bk_job&quot;,
             &quot;system_name&quot;: &quot;作业平台&quot;,
             &quot;type&quot;: &quot;job&quot;,
             &quot;type_name&quot;: &quot;作业&quot;,
@@ -5578,7 +5644,7 @@ keyword搜索 &lt; 100ms
             ]
           },
           {
-            &quot;system_id&quot;: &quot;bk_cmdb&quot;,
+            &quot;system&quot;: &quot;bk_cmdb&quot;,
             &quot;system_name&quot;: &quot;配置平台&quot;,
             &quot;type&quot;: &quot;host&quot;,
             &quot;type_name&quot;: &quot;主机&quot;,
@@ -5921,12 +5987,6 @@ keyword搜索 &lt; 100ms
 <td align="left">权限策略 id</td>
 <td align="left"></td>
 </tr>
-<tr>
-<td align="left">expression</td>
-<td align="left">对象</td>
-<td align="left">权限表达式</td>
-<td align="left"></td>
-</tr>
 </tbody>
 </table>
 <blockquote>
@@ -5936,27 +5996,7 @@ keyword搜索 &lt; 100ms
   &quot;code&quot;: 0,
   &quot;message&quot;: &quot;ok&quot;,
   &quot;data&quot;: {
-    &quot;policy_id&quot;: 1,
-    &quot;expression&quot;: {  # 表达式是整个action的所有条件的组合, 包括用户已有的权限与新增的path授权的条件
-      &quot;op&quot;: &quot;OR&quot;,
-      &quot;content&quot;: [
-        {  # 表达式中新增的路径授权
-          &quot;field&quot;: &quot;host._bk_iam_path_&quot;,
-          &quot;op&quot;: &quot;starts_with&quot;,
-          &quot;value&quot;: [
-            &quot;/biz,1/set,*/&quot;
-          ]
-        },
-        {
-          &quot;field&quot;: &quot;host.id&quot;,
-          &quot;op&quot;: &quot;in&quot;,
-          &quot;value&quot;: [
-            &quot;host1&quot;,
-            &quot;host2&quot;
-          ]
-        }
-      ]
-    }
+    &quot;policy_id&quot;: 1
   }
 }</code></pre>
 

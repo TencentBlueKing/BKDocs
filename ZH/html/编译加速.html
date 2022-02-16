@@ -1,0 +1,392 @@
+
+    <html lang="zh-cn">
+    <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <link href="F:\v_awjliu\BKDocs\ZH/default.css" rel="stylesheet">
+    </head>
+    <body>
+    <h1 id="_1">产品简介</h1>
+<p>蓝鲸编译加速平台（Turbo）是一个<strong>通用、易扩展的分布式任务加速平台</strong>，支持对接<strong>蓝鲸容器管理平台</strong>来管理海量、异构的加速环境。</p>
+<p>用户无需关心分布式资源的管理、多租户的安全和效率问题，只需要在页面上简单注册一个加速方案，再用客户端启动编译，就能体验到数倍于本地的编译速度。</p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/product.png" /></p>
+<h2 id="_2">编译加速怎么用</h2>
+<ol>
+<li>配置加速方案</li>
+<li>在本地安装 turbo 工具链，或在流水线上使用 turbo 插件</li>
+<li>用 turbo 工具启动编译</li>
+</ol><h1 id="_1">产品优势</h1>
+<h2 id="_2">跨平台的加速资源</h2>
+<p>turbo 的后台资源管理基于蓝鲸容器管理平台的 Kubernetes 集群</p>
+<ul>
+<li>以容器形式提供<strong>Linux</strong>，<strong>Windows</strong>的加速资源。</li>
+<li>通过不同镜像来支持异构的加速环境，扩展性好，扩展成本低。</li>
+</ul>
+<p>turbo 同时也支持通过物理机直接管控，提供<strong>MacOS</strong>的加速资源。</p>
+<h2 id="_3">安全可控</h2>
+<ul>
+<li>
+<p>通过容器技术隔离加速环境，独占独享，用完即销毁。</p>
+</li>
+<li>
+<p>限制编译过程中的来源 IP，确保过程不被其他人影响。</p>
+</li>
+<li>
+<p>支持为特殊业务搭建专属集群，实现物理机隔离。</p>
+</li>
+</ul>
+<h2 id="_4">多场景支持</h2>
+<p>支持<strong>C/C++编译</strong>、<strong>UE4 代码编译</strong>、<strong>UE4 Shader 编译</strong>等等应用场景。</p>
+<h2 id="_5">接入便捷，使用方便</h2>
+<ul>
+<li>将技术背后复杂的参数和配置进行简化，接入简单。</li>
+<li>可结合流水线，提交触发自动编译加速。</li>
+</ul>
+<h2 id="_6">过程数据可视化</h2>
+<p>turbo 提供多维度数据采集，自动绘制过程可视化图表，摆脱编译黑盒，协助用户发现瓶颈和问题。</p><h1 id="_1">术语解释</h1>
+<p>了解编译加速，会涉及到以下基本概念：</p>
+<ul>
+<li><strong>Turbo</strong>： 编译加速产品代称，在 CI 页面上有一个主页入口。</li>
+<li><strong>TBS</strong>：编译加速后台服务系统</li>
+<li><strong>Turbo-Client</strong>： 指编译加速工具链，用户需要在编译机上预装工具链才能发起加速</li>
+<li><strong>加速方案</strong>： 或<strong>Turbo Plan</strong>，指在 turbo 页面上创建的加速配置，一个方案对应一个加速配置</li>
+<li><strong>加速方案 ID</strong>：或<strong>TURBO_PLAN_ID</strong>，指对应的 turbo 加速方案的 ID，用于发起编译加速</li>
+<li><strong>TaskID</strong>： 指每一次加速构建在 TBS 后台的记录号，在每次编译加速结束时，会通过日志打印出来</li>
+<li><strong>DistTask</strong>: Turbo 支持的通用加速引擎</li>
+</ul><h1 id="_1">产品架构图</h1><h1 id="linux-cc">Linux C/C++ 编译加速</h1>
+<blockquote>
+<p>Linux C/C++ 编译加速支持 pch、gcov、分布式预处理等功能<br/>
+如下教程指引如何配置并进行 Linux C/C++ 编译加速</p>
+</blockquote>
+<h2 id="id">一、获得加速方案 ID</h2>
+<p>若已有满足需求的加速方案，在<a href="../Services/turbo_plan_list.md">方案列表</a>快速复制方案 ID，或点击方案名称进入查看页面复制方案 ID</p>
+<h3 id="step1-bkci">Step1 访问 BKCI，导航栏进入服务 → 编译加速</h3>
+<p>首次时，进入页面如下，点击立即使用进入方案定制页面：</p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/init_entry.png" /></p>
+<h3 id="step2">Step2 填写方案配置</h3>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/create_plan3.png" /></p>
+<p>方案配置包括：</p>
+<ul>
+<li>方案名称：作为标识名称，可以填写诸如“xxx 个人加速”、“每日构建加速”、“构建机出包加速”等等。</li>
+<li>加速模式：选择要创建的加速模式，一旦创建，加速模式不可修改。</li>
+<li>方案说明：可以写一些备注或者说明在这里。</li>
+<li>编译环境：根据你的本地环境，选择对应的编译环境，如果列表中没有，请联系管理员快速支持。</li>
+<li>是否启用 ccache：按需勾选是否要开启 ccache，若开启，则会在本地优先考虑 ccache，没有命中的部分再使用分布式加速。</li>
+<li>优先调度区域：根据本地环境的区域，就近选择。</li>
+</ul>
+<h3 id="step3-id">Step3 提交注册，获得专属方案 ID</h3>
+<p>点击提交后，会生成一个你专属的方案 ID，这个 ID 后续也可以在“加速方案”→点击方案名字，进入详情页面查询到。</p>
+<p>方案 ID 是使用加速的凭证，里面包含了你的环境信息、配置信息、权限信息。<strong>请妥善保管好你的方案 ID，不要随意透露给他人。</strong></p>
+<h2 id="_1">二、在流水线中使用编译加速</h2>
+<h3 id="_2">准备工作</h3>
+<p>如果你的流水线所选择的环境是<strong>私有构建机</strong>，那么需要提前在你的机器上以 root 权限安装 client。</p>
+<pre class="codehilite"><code class="language-bash">/bin/bash -c &quot;$(curl http://&lt;您的服务域名&gt;/turbo-client/disttask/install.sh)&quot;</code></pre>
+
+
+<p>如果你的流水线选择的是公共构建机，则<strong>无需这个步骤</strong>。</p>
+<h3 id="step1">Step1 修改编译脚本</h3>
+<p>假设原编译脚本为：</p>
+<pre class="codehilite"><code class="language-bash">cd ${WORKSPACE}/master
+
+./autogen.sh
+./configure --disable-pump-mode
+
+make clean
+make -j all</code></pre>
+
+
+<p>可见，前面部分的命令在做一些准备工作，实际编译指令是：</p>
+<pre class="codehilite"><code class="language-bash">make -j all</code></pre>
+
+
+<p>我们只需要修改这句，用加速器来执行编译指令，即可获得加速。</p>
+<pre class="codehilite"><code class="language-bash">bk-booster -bt cc -p $TURBO_PLAN_ID --hook -a &quot;make -j@BK_JOBS all&quot;</code></pre>
+
+
+<p>其中 bk-booster 是插件提供的加速器，用来启动加速
+命令中的参数含义分别为</p>
+<ul>
+<li>-bt cc，指定场景为 cc，用于 linux 下的 c/c++编译。</li>
+<li>-p $TURBO_PLAN_ID，指定方案 ID，在“Turbo 编译加速”插件中，会默认注入选中的方案的 ID。</li>
+<li>--hook，开启命令 hook，会自动劫持 gcc/clang 等编译器，实现加速。</li>
+<li>-a "make -j@BK_JOBS all"，指定要执行的编译命令，其中@BK_JOBS 作为占位符，在运行时会自动替换为推荐的并发数量。</li>
+</ul>
+<h3 id="step2-turbo">Step2 打开流水线，添加 “Turbo 编译加速”插件</h3>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/use_turbo2.png" /></p>
+<blockquote>
+<p>注意：这个步骤之前需添加拉代码插件</p>
+</blockquote>
+<h3 id="step3">Step3 选择已注册好的加速方案</h3>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/use_turbo4.png" /></p>
+<h3 id="step4">Step4 配置编译脚本</h3>
+<p>编译脚本可以使用文件管理，提交到代码库，流水线中仅需填写脚本文件的相对路径即可：</p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/use_turbo5.png" /></p>
+<p>也可以将编译脚本配置到插件里：</p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/use_turbo6.png" /></p>
+<h2 id="_3">三、在本地构建机使用编译加速</h2>
+<h3 id="step1-root">Step1  首先在机器上安装加速工具包（使用 root 执行）</h3>
+<pre class="codehilite"><code class="language-bash">/bin/bash -c &quot;$(curl http://&lt;您的服务域名&gt;/turbo-client/disttask/install.sh)&quot;</code></pre>
+
+
+<h3 id="step2-id">Step2 拷贝加速方案 ID</h3>
+<p>详见此文档第一章节</p>
+<h3 id="step3_1">Step3 使用加速工具来启动加速</h3>
+<p>例如原来的编译脚本为：</p>
+<pre class="codehilite"><code class="language-bash">make -j gamesvr</code></pre>
+
+
+<p>用 Step1 中安装的工具，结合 Step2 中的方案 ID，来执行加速：</p>
+<pre class="codehilite"><code class="language-bash">bk-booster -bt cc -p &lt;步骤2中拷贝的ID&gt; --hook -a &quot;make -j@BK_JOBS gamesvr&quot;</code></pre>
+
+
+<p>其中 bk-booster 是插件提供的加速器，用来启动加速。
+命令中的参数含义分别为:</p>
+<ul>
+<li>-bt cc，指定场景为 cc，用于 linux 下的 c/c++编译。</li>
+<li>-p &lt;加速方案 ID&gt;，指定方案 ID。</li>
+<li>--hook，开启命令 hook，会自动劫持 gcc/clang 等编译器，实现加速。</li>
+<li>-a "make -j@BK_JOBS gamesvr"，指定要执行的编译命令，其中@BK_JOBS 作为占位符，在运行- 时会自动替换为推荐的并发数量。</li>
+</ul><h1 id="ue4">UE4 编译加速</h1>
+<blockquote>
+<p>如下教程指引如何配置并进行 UE4 编译加速</p>
+</blockquote>
+<h2 id="id">一、获得加速方案 ID</h2>
+<p>若已有满足需求的加速方案，在<a href="../Services/turbo_plan_list.md">方案列表</a>快速复制方案 ID，或点击方案名称进入查看页面复制方案 ID</p>
+<h3 id="step1-bkci">Step1 访问 BKCI，导航栏进入服务 → 编译加速</h3>
+<p>首次时，进入页面如下，点击立即使用进入方案定制页面：</p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/init_entry1.png" /></p>
+<h3 id="step2">Step2 填写方案配置</h3>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/create_plan5.png" /></p>
+<p>方案配置包括：</p>
+<ul>
+<li>方案名称：作为标识名称，可以填写诸如“xxx 个人加速”、“每日构建加速”、“构建机出包加速”等等。</li>
+<li>加速模式：选择要创建的加速模式，一旦创建，加速模式不可修改。</li>
+<li>方案说明：可以写一些备注或者说明在这里。</li>
+<li>编译环境：根据实际场景选择编译环境</li>
+<li>加速平台：根据实际场景选择加速平台</li>
+</ul>
+<h3 id="step3-id">Step3 提交注册，获得专属方案 ID</h3>
+<p>点击提交后，会生成一个你专属的方案 ID，这个 ID 后续也可以在“加速方案”→点击方案名字，进入详情页面查询到。</p>
+<p>方案 ID 是使用加速的凭证，里面包含了你的环境信息、配置信息、权限信息。<strong>请妥善保管好你的方案 ID，不要随意透露给他人。</strong></p>
+<h2 id="ue4_1">二、使用 UE4 编译加速</h2>
+<blockquote>
+<p>UE4 工具包中有详细的使用指引，下载并解压工具包后，按照 readme.pdf 中的指引进行配置</p>
+</blockquote>
+<h3 id="1-ue4">1. 根据 ue4 版本，下载对应的加速工具包</h3>
+<p>下载路径：
+待补充</p>
+<h3 id="2-ue4">2. 拷贝工具包到 ue4 项目中，作为编译工具链</h3>
+<h3 id="3-ue4">3. 根据文档指引，合并或修改部分 ue4 源文件，使其构建环节能够接入加速</h3>
+<h3 id="4-id">4. 根据文档指引，配置加速方案 id，并启用加速配置</h3>
+<h3 id="5-ubt-ue4-editor">5. 重新生成 ubt 和 ue4 editor，发起构建并观察效果</h3><h1 id="_1">加速方案管理</h1>
+<blockquote>
+<p>使用编译加速时，首先需制定一个加速方案。<br/>
+加速方案是一组配置的集合，决定了加速时的执行环境等信息，不同场景下的加速配置项不同。</p>
+</blockquote>
+<h2 id="_2">新建加速方案</h2>
+<p>新建加速方案可以获得一个新的方案配置和 ID。</p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/create_plan3.png" /></p>
+<ol>
+<li>方案名称：可以填写诸如“xxx 个人加速”、“每日构建加速”、“构建机出包加速”等等。</li>
+<li>加速模式：选择要创建的加速模式，一旦创建，加速模式<strong>不可修改</strong>。</li>
+<li>方案说明：可以写一些备注详细说明使用场景、注意事项等，备忘或方便项目其他成员了解。</li>
+</ol>
+<blockquote>
+<p>不同的加速模式，需要的加速参数不一样，以 Linux C/C++为例，需要如下参数：</p>
+</blockquote>
+<ol>
+<li>编译环境：根据你的项目所需环境（如本地环境），选择对应的编译环境。</li>
+<li>是否启用 ccache：按需勾选是否要开启 ccache，若开启，则会在本地优先考虑 ccache，没有命中的部分再使用分布式加速。</li>
+<li>优先调度区域：根据构建机（如本地环境或流水线构建机）所在的区域，就近选择，若不确定，保持默认即可。</li>
+</ol>
+<h2 id="_3">修改加速方案</h2>
+<p>已经创建的方案，可以修改其编译环境等配置，例如编译器升级了，可以在原有方案里重新选择新的编译器版本。</p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/edit_plan1.png" /></p>
+<h2 id="_4">查看加速方案</h2>
+<p>已经创建的方案，可以在列表中点击名称查看。</p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/edit_plan2.png" /></p>
+<p>查看页面包含如下内容</p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/view_plan.png" /></p>
+<ol>
+<li>方案的基本信息，包括方案 ID、方案名称、加速模式和方案说明</li>
+<li>可以启用/禁用方案。禁用后，即使编译命令中指定了加速方案，也不会进行加速。</li>
+<li>加速参数，根据加速模式不同有不同的加速参数</li>
+<li>使用指引，根据加速模式不同有不同的使用指引</li>
+<li>更新记录，可以查看创建和最近更新信息</li>
+</ol>
+<h2 id="_5">删除加速方案</h2>
+<p>尚未支持</p><h1 id="_1">加速方案列表</h1>
+<blockquote>
+<p>可以在加速方案列表查看方案的使用统计</p>
+</blockquote>
+<h2 id="_2">列表</h2>
+<p>加速列表如下图所示：</p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/list.png" /></p>
+<p>包含三部分：</p>
+<h3 id="1-id">1. 方案名称和 ID</h3>
+<p>可以在此快捷复制方案 ID
+点击方案名称进入查看方案详情界面</p>
+<h3 id="2">2. 当前方案的使用统计</h3>
+<p>包括：</p>
+<ul>
+<li>实例数</li>
+<li>加速总次数</li>
+<li>未加速耗时（h）（预估）</li>
+<li>实际耗时（h）</li>
+<li>节省率</li>
+</ul>
+<h3 id="3">3. 实例列表</h3>
+<p>使用此方案的实例，发起加速的一个入口为一个实例，如一条流水线、或者一台本地构建机
+每个实例包含如下信息：</p>
+<ul>
+<li>实例名称：流水线名称或者构建机 IP</li>
+<li>加速次数：单实例的执行次数</li>
+<li>平均耗时：单实例的凭据耗时</li>
+<li>节省率：单实例的节省率</li>
+<li>最新开始时间：当前实例最近一次执行的开始时间</li>
+<li>最近状态：当前实例最近一次执行的状态</li>
+</ul><h1 id="_1">加速历史</h1>
+<blockquote>
+<p>按照指引配置 OK 之后，运行构建脚本，即可进行加速，可在加速历史界面查看加速记录和效果</p>
+</blockquote>
+<h2 id="_2">加速记录列表</h2>
+<p>加速记录列表如下图所示</p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/build_history.png" /></p>
+<h3 id="1">1. 流水线/构建机<br/></h3>
+<p>当构建从流水线发起时，为对应的流水线名称，名称后有入口点击跳转到流水线页面<br/></p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/view_pipeline.png" /></p>
+<p>当构建从本地构建机发起时，为构建机的 IP<br/></p>
+<h3 id="2">2. 状态</h3>
+<p>构建状态，包括：</p>
+<ul>
+<li>准备中</li>
+<li>正在开始</li>
+<li>正在构建</li>
+<li>构建失败</li>
+<li>构建完成</li>
+</ul>
+<h3 id="3">3. 开始时间</h3>
+<p>构建开始时间</p>
+<h3 id="4">4. 未加速耗时</h3>
+<p>根据加速资源预估不使用加速的耗时</p>
+<h3 id="5">5. 实际耗时</h3>
+<p>当前次构建实际耗时</p>
+<h3 id="6">6. 节省率</h3>
+<p>加速效果，计算公式为：（未加速耗时 - 实际耗时）/ 未加速耗时</p>
+<h2 id="_3">过滤加速记录</h2>
+<p>支持根据如下条件组合查询加速记录：</p>
+<ul>
+<li>加速方案</li>
+<li>流水线</li>
+<li>构建机</li>
+<li>状态</li>
+<li>时间段</li>
+</ul><h1 id="_1">加速历史</h1>
+<blockquote>
+<p>按照指引配置 OK 之后，运行构建脚本，即可进行加速，可在加速历史界面查看加速记录和效果</p>
+</blockquote>
+<h2 id="_2">加速记录列表</h2>
+<p>加速记录列表如下图所示</p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/build_history.png" /></p>
+<h3 id="1">1. 流水线/构建机<br/></h3>
+<p>当构建从流水线发起时，为对应的流水线名称，名称后有入口点击跳转到流水线页面<br/></p>
+<p><img alt="img" src="F:\v_awjliu\BKDocs\ZH/6.0/编译加速/产品白皮书/assets/view_pipeline.png" /></p>
+<p>当构建从本地构建机发起时，为构建机的 IP<br/></p>
+<h3 id="2">2. 状态</h3>
+<p>构建状态，包括：</p>
+<ul>
+<li>准备中</li>
+<li>正在开始</li>
+<li>正在构建</li>
+<li>构建失败</li>
+<li>构建完成</li>
+</ul>
+<h3 id="3">3. 开始时间</h3>
+<p>构建开始时间</p>
+<h3 id="4">4. 未加速耗时</h3>
+<p>根据加速资源预估不使用加速的耗时</p>
+<h3 id="5">5. 实际耗时</h3>
+<p>当前次构建实际耗时</p>
+<h3 id="6">6. 节省率</h3>
+<p>加速效果，计算公式为：（未加速耗时 - 实际耗时）/ 未加速耗时</p>
+<h2 id="_3">过滤加速记录</h2>
+<p>支持根据如下条件组合查询加速记录：</p>
+<ul>
+<li>加速方案</li>
+<li>流水线</li>
+<li>构建机</li>
+<li>状态</li>
+<li>时间段</li>
+</ul><h1 id="_1">常见问题</h1>
+<h2 id="faq">FAQ</h2>
+<h3 id="_2">产品使用</h3>
+<h4 id="_3">加速的资源数量如何调整</h4>
+<p>加速资源的数量由系统管理员在 op 中配置，每个加速方案配置的资源数量都是相同的，加速时独占且互不干扰。</p>
+<h4 id="_4">加速方案中的编译环境如何选择</h4>
+<p>方案中的<strong>编译环境</strong>指定了分布式资源的环境配置，应当根据自己的构建机实际情况，选择与之相同的编译环境作为加速配置。</p>
+<p>若选项中没有想要的环境配置，请联系系统管理员适配。</p>
+<h3 id="_5">问题排查</h3>
+<h4 id="1-oom">1. 加速效果不明显，或编译时机器卡死、编译器触发 OOM</h4>
+<p>接入加速并成功编译后，应打开<strong>dashboard</strong>页面来查看详细的数据。</p>
+<p>若<strong>远程编译任务</strong>一栏数量为 0，则说明没有成功分发编译任务，此时检查构建的编译器配置，如<code>CC</code>，<code>CXX</code>等，指定的编译器名字必须在<code>/etc/bk_dist/bk_cc_rules.json</code>中。</p>
+<p>若编译器名字不在其中，如当前编译器名称为<code>gcc73</code>，则需要手动用软链接兼容编译器名称。如</p>
+<pre class="codehilite"><code class="language-bash">ln -s /usr/bin/gcc73 /usr/local/bin/gcc
+ln -s /usr/bin/gcc++73 /usr/local/bin/g++</code></pre>
+
+
+<p>然后再尝试编译加速。</p>
+<h4 id="2-gccclang">2. 使用加速后 gcc/clang 错误信息颜色丢失</h4>
+<p>gcc/clang 提供一个参数来强制输出颜色格式：</p>
+<p>gcc 参数</p>
+<pre class="codehilite"><code class="language-plain">-fdiagnostics-color=always</code></pre>
+
+
+<p>clang 参数</p>
+<pre class="codehilite"><code class="language-plain">-fcolor-diagnostics</code></pre>
+
+
+<p>只要在 ccflags 里加上这个参数，那么启用加速也能够获得颜色了。</p>
+<h4 id="3-init-booster-failed-unknown-handler">3. 信息：init booster failed: unknown handler</h4>
+<p>若执行<code>bk-booster</code>报<code>unknown handler</code>，是<code>-bt</code>参数指定错误或未指定。</p>
+<p>在 LinuxC/C++加速场景下，指定<code>-bt cc</code></p>
+<p>在 UE4 加速场景下，指定<code>-bt ue4</code></p>
+<h4 id="4-apply-resource-failed-project-no-found">4. 信息：apply resource failed | project no found</h4>
+<p>若执行<code>bk-booster</code>报<code>project no found</code>，是<code>-p</code>参数指定错误或未指定。</p>
+<p>需要确认所指定的方案 ID 是否存在，或在页面上新建一个方案。</p>
+<p>可以通过<code>curl $gateway/api/v1/disttask/resource/project/</code>查询数据库中的方案。</p>
+<p>不同的场景，<code>-p</code>所指定的方案 ID 是不同的，也有可能是<code>-bt</code>指定的场景不对，导致在该场景下找不到该方案 ID。</p>
+<h4 id="5-apply-resource-failed-worker-no-found">5. 信息：apply resource failed | worker no found</h4>
+<p>若执行<code>bk-booster</code>报<code>worker no found</code>，是方案中配置的编译环境不存在。</p>
+<p>需要确认所指定的编译环境是否存在。</p>
+<p>可以通过<code>curl $gateway/api/v1/disttask/resource/worker/</code>查询数据库中的编译环境。</p>
+<h4 id="6-busy-compiling-now-no-enough-resource-left-degrade-to-local-compiling">6. 信息：busy compiling now, no enough resource left, degrade to local compiling</h4>
+<p>若执行<code>bk-booster</code>报<code>busy compiling</code>，则是所指定的资源无法在规定时间内得到满足。</p>
+<p>需要确认方案所属的<code>queue_name</code>在 server 的配置中是否有对应的<code>queue_list</code>配置来消费。</p>
+<p>然后确认所属的<code>queue_name</code>下的资源是否能够满足<code>least_cpu</code>指定的数量。</p>
+<h4 id="7">7. 快速确认是否已经成功申请资源</h4>
+<p>在执行<code>bk-booster</code>后，若没有输出 taskID，则说明没有申请到资源，可以关注具体的输出信息。</p>
+<p>若有输出 taskID，分为几种情况：</p>
+<ul>
+<li>若状态一直处于 starting，且最终超时转本地编译（degraded to local），则说明创建资源容器失败，需要关注 bcs 的错误信息。</li>
+<li>若状态一直处于 staging，且最终超时转本地编译，则说明等待资源超时，当前没有充足的资源<ol>
+<li>可以观察 server 的日志（关键字"City:"），来查看对应的资源分组是否有足够的 available-instance 和 CPU-Left</li>
+<li>若 available-instance 不足，则查看 server 的配置文件中，crm_bcs_cpu_per_instance 和 crm_bcs_mem_per_instance 参数，是否指定过大</li>
+<li>若 CPU-Left 不足，查看 bcs 的 node 节点，是否打上了对应的 label</li>
+</ol>
+</li>
+<li>若资源数量不符合预期，可以在客户机的~/.bk_dist/logs/bk-dist-controller.INFO 中，可以通过关键字"success to apply resources and get host"来查看申请到的资源数量和 IP</li>
+</ul>
+<h4 id="8">8. 快速确认是否成功加速</h4>
+<p>在确认"成功申请资源"后，对于<code>bk-booster</code>执行后打印的 taskID</p>
+<p>在编译结束之后，访问 dashboard 并输入 taskID 查询</p>
+<ul>
+<li>若"远程成功任务"一栏有数值，说明成功进行了编译加速</li>
+<li>若"远程成功任务"一栏为空，且"本地成功任务"有数值，说明任务都集中在了本地执行，则<ol>
+<li>可能没有可用的资源，查看"远程 CPU"一栏是否有数值，若为 0，则需要排查资源是否申请成功。</li>
+<li>可能为本地临时文件写入权限有问题，考虑对临时目录<code>/tmp/.bk_dist</code>做权限放行。</li>
+</ol>
+</li>
+<li>若"远程编译失败"一栏数值很大，说明大部分任务在加速机上执行失败，打开浏览器的 F12，选择<code>console</code>，输入<code>fast_re()</code>并执行，可以得到执行失败的日志。</li>
+</ul>
+    </body>
+    </html>
+    
