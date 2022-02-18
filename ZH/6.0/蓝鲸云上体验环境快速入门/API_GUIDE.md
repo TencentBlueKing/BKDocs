@@ -21,5 +21,6 @@ https://ce.bktencent.com/esb/api_docs/system/CC/search_business/ 这个接口
 
 
 更多关于云上体验环境的问题欢迎到[云上体验交流专区](https://bk.tencent.com/s-mart/community/question/5612)进行交流。
-云上环境不定期的进行更新，可以查看[更新公告](https://docs.qq.com/doc/DSWViVEZvdW9LVE15)；也可以通过工作台右侧的常用链接进去查看。
+
+云上环境不定期的进行更新，可以查看[更新公告](./CHANGE_LOG.md)；也可以通过工作台右侧的常用链接进去查看。
 ![](./assets/2022-02-18-17-59-06.png)
