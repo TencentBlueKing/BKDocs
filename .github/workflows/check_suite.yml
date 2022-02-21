@@ -1,0 +1,76 @@
+name: BKDocs check suite
+
+on:
+  pull_request:
+    types: [opened, edited, reopened]
+    branches: "*"
+    paths: 
+      - "**.md"
+
+env:
+  IS_TRACE: false
+
+jobs:
+  lint-md:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Get Changed Files
+        id: getfile
+        shell: bash
+        run: |
+          echo "::group::git diff --name-only -z origin/$GITHUB_BASE_REF $GITHUB_SHA"
+          [[ $IS_TRACE == 'true' ]] && set -x
+          set -eu
+          if [ $GITHUB_BASE_REF ]; then
+            git fetch origin $GITHUB_BASE_REF --depth=1
+            export DIFF=$( while IFS= read -r -d '' x; do printf '%q\n' "$x"; done < <( git diff --name-only -z origin/$GITHUB_BASE_REF $GITHUB_SHA ) )
+            echo "Diff between origin/$GITHUB_BASE_REF and $GITHUB_SHA"
+          else
+            echo "no BASE REF"
+            exit 1
+          fi
+          echo "${DIFF[@]}" | xargs -n1 | grep 'md$' | sort -u
+          echo "::set-output name=diff::$( echo "${DIFF[@]}" | xargs -n1 | grep 'md$' | sort -u )"
+          echo "::endgroup::"
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+          
+      - name: Lint Markdown
+        shell: bash
+        run: |
+          echo "::group::Lint Markdown by lint-md(https://github.com/lint-md/lint-md)"
+          [[ $IS_TRACE == 'true' ]] && set -x
+          cat >> lintmdrc <<EOF
+          {
+            "excludeFiles": [],
+            "rules": {
+              "no-empty-url": 1,
+              "no-long-code": 1,
+              "no-empty-code-lang": 1
+            }
+          }
+          EOF
+          npm i -g lint-md-cli
+          lint-md -c ./lintmdrc ${{ steps.getfile.outputs.diff }}
+          echo "::endgroup::"
+          
+      - name: Markdown Link Check
+        shell: bash
+        run: |
+          echo "::group::Markdown Link Check by markdown-link-check(https://github.com/tcort/markdown-link-check)"
+          [[ $IS_TRACE == 'true' ]] && set -x
+          npm i -g markdown-link-check
+          ret=0
+          for f in ${{ steps.getfile.outputs.diff }}; do
+              markdown-link-check $f || let ret+=1
+          done
+          [ "$ret" != 0 ] && exit 1
+          echo "::endgroup::"
