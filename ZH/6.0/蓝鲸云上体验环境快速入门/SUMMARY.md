@@ -5,7 +5,7 @@
 * [前言](README.md)
 * [如何开始体验？]()
     * [1、工作台应用面板](PAAS.md)
-    * [2、配置平台(CMDB)](CMDB.md)
+    * [2、配置平台（CMDB）](CMDB.md)
     * [3、作业平台](JOB.md)
     * [4、权限中心](IAM.md)
     * [5、用户管理](USERMGR.md)
