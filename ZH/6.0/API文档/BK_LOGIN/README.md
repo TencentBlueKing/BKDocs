@@ -1,7 +1,7 @@
-## 蓝鲸统一登录 API 简介
+## 统一登录 API 简介
 
 **蓝鲸统一登录，管理用户登录验证，及用户信息。**
 
 | 资源名称 | 资源描述 |
 |---|---|
-| [get_user](./get_user.md) | 获取用户信息 |
+| [get_doc_link_by_path](./zh-hans/get_user.md)	| 获取用户信息 |

@@ -1,5 +1,5 @@
-## 蓝鲸文档中心 API 简介
+## 文档中心 API 简介
 
 | 资源名称 | 资源描述 |
 |---|---|
-| [get_doc_link_by_path](./get_doc_link_by_path.md)	| 查询文档链接 |
+| [get_doc_link_by_path](./zh-hans/get_doc_link_by_path.md)	| 根据md文档名查询文档链接 |
