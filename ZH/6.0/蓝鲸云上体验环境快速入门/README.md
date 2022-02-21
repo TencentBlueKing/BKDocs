@@ -4,7 +4,9 @@
 
 社区版 6.0 推出之后，新增了不少产品模块，对部署资源的要求也随之提升；为了降低体验产品的门槛，蓝鲸社区官方推出云上体验环境，所见即所得，让广大社区同仁可以最快、最低成本的了解并使用到蓝鲸产品。
 
-## 云上环境入口：[https://ce.bktencent.com](https://ce.bktencent.com)
+## 云上环境
+
+- **入口：[https://ce.bktencent.com](https://ce.bktencent.com)**
 
 如还未申请体验账号，可以根据[【社区版云上体验交流专区】](https://bk.tencent.com/s-mart/community/question/5612)的指引申请，也可以直接在登陆页面点击体验账号申请。
 
