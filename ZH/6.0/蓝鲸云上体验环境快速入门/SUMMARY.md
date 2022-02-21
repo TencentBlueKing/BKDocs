@@ -15,6 +15,7 @@
     * [9、监控平台](MONITORV3.md)
     * [10、日志平台](LOG.md)
     * [11、SaaS 开发（api 调用）](API_GUIDE.md)
+    * [12、合作伙伴优质SaaS体验](PARTNER.md)
 * [附录]()
     * [蓝鲸云上体验环境更新公告](CHANGE_LOG.md)
     * [蓝鲸云上体验环境体验须知&FAQ](FAQ.md)
