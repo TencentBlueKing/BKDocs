@@ -150,7 +150,6 @@
     * [更新模块](cc/zh-hans/update_module.md)
     * [更新定义](cc/zh-hans/update_object.md)
     * [更新对象模型属性](cc/zh-hans/update_object_attribute.md)
-    * [更新拓扑图](cc/zh-hans/update_object_topo_graphics.md)
     * [更新进程实例](cc/zh-hans/update_process_instance.md)
     * [更新进程模板](cc/zh-hans/update_proc_template.md)
     * [更新服务分类](cc/zh-hans/update_service_category.md)
