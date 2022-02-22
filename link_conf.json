@@ -2086,11 +2086,11 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/蓝鲸云上体验环境快速入门/SUMMARY.md"
+				"summary": "6.0/蓝鲸线上体验环境快速入门/SUMMARY.md"
 			},
 			"index": 78,
-			"title": "云上体验环境快速入门",
-			"url": "6.0/蓝鲸云上体验环境快速入门/README.md",
+			"title": "蓝鲸线上体验环境快速入门",
+			"url": "6.0/蓝鲸线上体验环境快速入门/README.md",
 			"version": "6.0"
 		}],
 	"source": {
