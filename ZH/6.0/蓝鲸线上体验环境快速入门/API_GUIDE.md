@@ -1,4 +1,4 @@
-## SaaS 开发（api 调用）
+## 11、SaaS 开发（api 调用）
 
 线上体验环境也开放了 api 调用的体验权限，可以本地使用 postman 等工具进行测试调用。
 
@@ -10,7 +10,7 @@
 
 ![](./assets/2022-02-18-17-58-31.png)
 
-这样就拿到了了 app_code，也就是应用 ID，和 app_secret 也即应用的 TOKEN
+这样就拿到了 app_code，也就是应用 ID，和 app_secret 也即应用的 TOKEN
 
 ![](./assets/2022-02-18-17-58-37.png)
 
