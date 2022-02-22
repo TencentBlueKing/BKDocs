@@ -32,11 +32,14 @@ POST
 | 字段                 |  类型      | 必选   |  描述       |
 |----------------------|------------|--------|-------------|
 |condition|object|否|查询条件|
-|bk_cloud_id|int|否|云区域ID|
-|bk_cloud_name|string|否|云区域名称|
 | page| object| 是|分页信息|
 
 
+#### condition
+| 字段                 |  类型      | 必选   |  描述       |
+|----------------------|------------|--------|-------------|
+|bk_cloud_id|int|否|云区域ID|
+|bk_cloud_name|string|否|云区域名称|
 
 #### page 字段说明
 
@@ -50,6 +53,11 @@ POST
 
 ``` python
 {
+
+    "bk_app_code": "esb_test",
+    "bk_app_secret": "xxx",
+    "bk_username": "xxx",
+    "bk_token": "xxx",
     "condition": {
         "bk_cloud_id": 12,
         "bk_cloud_name" "aws",
@@ -69,6 +77,7 @@ POST
   "code": 0,
   "message": "success",
   "permission": null,
+  "request_id": "e43da4ef221746868dc4c837d36f3807",
   "data": {
     "count": 10,
     "info": [
@@ -87,17 +96,27 @@ POST
 ```
 
 ### 返回结果参数说明
+#### response
+
+| 名称    | 类型   | 描述                                       |
+| ------- | ------ | ------------------------------------------ |
+| result  | bool   | 请求成功与否。true:请求成功；false请求失败 |
+| code    | int    | 错误编码。 0表示success，>0表示失败错误    |
+| message | string | 请求失败返回的错误信息                     |
+| permission    | object | 权限信息    |
+| request_id    | string | 请求链id    |
+| data    | object | 请求返回的数据                             |
 
 #### data
 
 | 名称  | 类型  | 说明 |
-|---|---|---|---|
+|---|---|---|
 | count| int| 记录条数 |
-| info| object array |  查询到的云区域列表信息 |
+| info| array |  查询到的云区域列表信息 |
 
 #### data.info 字段说明：
 | 名称  | 类型  | 说明 |
-|---|---|---|---|
+|---|---|---|
 | bk_cloud_id | int | 云区域ID |
 | bk_cloud_name | string  | 云区域名字 | 
 | create_time | string | 创建时间 |

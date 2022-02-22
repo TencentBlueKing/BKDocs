@@ -9,12 +9,15 @@
 | [add_host_to_resource](./zh-hans/add_host_to_resource.md)                                             | 新增主机到资源池                                                             |
 | [add_instance_association](./zh-hans/add_instance_association.md)                                     | 新建模型实例之间的关联关系                                                   |
 | [add_label_for_service_instance](./zh-hans/add_label_for_service_instance.md)                         | 为服务实例添加标签                                                           |
+| [batch_create_instance_association](./zh-hans/batch_create_instance_association.md)                   | 批量创建通用模型实例关联关系                                                 |
 | [batch_create_proc_template](./zh-hans/batch_create_proc_template.md)                                 | 批量创建进程模板                                                             |
 | [batch_delete_inst](./zh-hans/batch_delete_inst.md)                                                   | 批量删除实例                                                                 |
 | [batch_delete_set](./zh-hans/batch_delete_set.md)                                                     | 批量删除集群                                                                 |
 | [batch_update_host](./zh-hans/batch_update_host.md)                                                   | 批量更新主机属性                                                             |
 | [batch_update_inst](./zh-hans/batch_update_inst.md)                                                   | 批量更新对象实例                                                             |
 | [clone_host_property](./zh-hans/clone_host_property.md)                                               | 克隆主机属性                                                                 |
+| [count_instance_associations](./zh-hans/count_instance_associations.md)                               | 模型实例关系数量查询                                                         |
+| [count_object_instances](./zh-hans/count_object_instances.md)                                         | 通用模型实例数量查询                                                         |
 | [create_biz_custom_field](./zh-hans/create_biz_custom_field.md)                                       | 创建业务自定义模型属性                                                       |
 | [create_business](./zh-hans/create_business.md)                                                       | 新建业务                                                                     |
 | [create_classification](./zh-hans/create_classification.md)                                           | 添加模型分类                                                                 |
@@ -49,6 +52,7 @@
 | [delete_set](./zh-hans/delete_set.md)                                                                 | 删除集群                                                                     |
 | [delete_set_template](./zh-hans/delete_set_template.md)                                               | 删除集群模板                                                                 |
 | [execute_dynamic_group](./zh-hans/execute_dynamic_group.md)                                           | 执行动态分组                                                                 |
+| [find_brief_biz_topo_node_relation](./zh-hans/find_brief_biz_topo_node_relation.md)                   | 查询实例其直接相关联的上、下层级(模型)的简明关系信息                         |
 | [find_host_biz_relations](./zh-hans/find_host_biz_relations.md)                                       | 查询主机业务关系信息                                                         |
 | [find_host_by_service_template](./zh-hans/find_host_by_service_template.md)                           | 查询服务模板下的主机                                                         |
 | [find_host_by_set_template](./zh-hans/find_host_by_set_template.md)                                   | 查询集群模板下的主机                                                         |
@@ -96,9 +100,11 @@
 | [search_inst_association_topo](./zh-hans/search_inst_association_topo.md)                             | 根据关联关系实例查询模型实例                                                 |
 | [search_inst_asst_object_inst_base_info](./zh-hans/search_inst_asst_object_inst_base_info.md)         | 查询实例关联模型实例基本信息                                                 |
 | [search_inst_by_object](./zh-hans/search_inst_by_object.md)                                           | 查询实例详情                                                                 |
+| [search_instance_associations](./zh-hans/search_instance_associations.md)                             | 通用模型实例关系查询                                                         |
 | [search_module](./zh-hans/search_module.md)                                                           | 查询模块                                                                     |
 | [search_objects](./zh-hans/search_objects.md)                                                         | 查询模型                                                                     |
 | [search_object_attribute](./zh-hans/search_object_attribute.md)                                       | 查询对象模型属性                                                             |
+| [search_object_instances](./zh-hans/search_object_instances.md)                                       | 通用模型实例查询                                                             |
 | [search_object_topo](./zh-hans/search_object_topo.md)                                                 | 查询普通模型拓扑                                                             |
 | [search_related_inst_asso](./zh-hans/search_related_inst_asso.md)                                     | 查询某实例所有的关联关系（包含其作为关联关系原模型和关联关系目标模型的情况） |
 | [search_set](./zh-hans/search_set.md)                                                                 | 查询集群                                                                     |
