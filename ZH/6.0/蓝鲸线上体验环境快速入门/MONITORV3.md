@@ -34,7 +34,7 @@ demo 体验业务下有安装 agent 的主机，预设了一些监控视图
 ### 9.6 服务拨测
 
 服务拨测通过拨测节点向远程目标发送探测信息，来发现目标服务的状态情况。支持 TCP HTTP(s) UDP ICMP。该功能依赖服务器安装 bkmonitorbeat 采集器（demo 机器已安装）。
-如内置的一个拨测云上体验环境地址的
+如内置的一个拨测线上体验环境地址的
 
 ![](./assets/2022-02-18-17-53-19.png)
 
@@ -44,10 +44,17 @@ demo 体验业务下有安装 agent 的主机，预设了一些监控视图
 
 ### 9.7 插件
 
-云上体验环境内置了常见的插件，也有合作伙伴[嘉为蓝鲸](https://www.canway.net/)贡献制作的 exporter、JMX，可以参考配置，同时如果自己有私有化环境，可以申请导出到自己环境（需要申请插件管理的权限，可以到[云上体验交流专区](https://bk.tencent.com/s-mart/community/question/5612)进行申请说明）。
+线上体验环境内置了常见的插件，也有合作伙伴[嘉为蓝鲸](https://www.canway.net/)贡献制作的 exporter、JMX，可以参考配置，同时如果自己有私有化环境，可以申请导出到自己环境（需要申请插件管理的权限，可以到[线上体验交流专区](https://bk.tencent.com/s-mart/community/question/5612)进行申请说明）。
 
 ![](./assets/2022-02-18-17-53-33.png)
 
 ![](./assets/2022-02-18-17-53-40.png)
 
-更多监控平台的功能探索，可参考[监控平台产品白皮书](https://bk.tencent.com/docs/markdown/%E7%9B%91%E6%8E%A7%E5%B9%B3%E5%8F%B0/%E4%BA%A7%E5%93%81%E7%99%BD%E7%9A%AE%E4%B9%A6/intro/README.md)。
+更多监控平台的功能探索，可参考[监控平台产品白皮书](https://bk.tencent.com/docs/markdown/%E7%9B%91%E6%8E%A7%E5%B9%B3%E5%8F%B0/%E4%BA%A7%E5%93%81%E7%99%BD%E7%9A%AE%E4%B9%A6/intro/README.md)
+
+---
+
+- 您可能需要：
+
+    1. [立即下载社区版](https://bk.tencent.com/download/)
+    2. 了解更多企业定制化服务：[点击咨询](https://bk.tencent.com/applyinfo/ee/)

@@ -5,3 +5,10 @@
 
 ![](./assets/2022-02-18-17-49-38.png)
 ![](./assets/2022-02-18-17-49-42.png)
+
+---
+
+- 您可能需要：
+
+    1. [立即下载社区版](https://bk.tencent.com/download/)
+    2. 了解更多企业定制化服务：[点击咨询](https://bk.tencent.com/applyinfo/ee/)
