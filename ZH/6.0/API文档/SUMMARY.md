@@ -2,6 +2,9 @@
 
 ## API 文档
 * [API 文档简介](README.md)
+* [文档中心]()
+    * [简介](bk_docs_center/README.md)
+    * [查询文档链接](bk_docs_center/zh-hans/get_doc_link_by_path.md)
 * [蓝鲸统一登录]()
     * [简介](bk_login/README.md)
     * [获取用户信息](bk_login/zh-hans/get_user.md)
@@ -349,6 +352,3 @@
         * [policy get 获取某条策略详情](6.0/iam_dev_docs/Reference/API/08-Query/01-PolicyGet.md)
         * [policy list 拉取系统下某个操作的策略列表](6.0/iam_dev_docs/Reference/API/08-Query/02-PolicyList.md)
         * [policy subjects 根据策略 ID 拉群策略对应的用户信息](6.0/iam_dev_docs/Reference/API/08-Query/03-PolicySubjects.md)
-* [文档中心]()
-    * [简介](bk_docs_center/README.md)
-    * [查询文档链接](bk_docs_center/zh-hans/get_doc_link_by_path.md)
