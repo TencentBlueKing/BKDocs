@@ -11,7 +11,7 @@
 | [add_instance_association](./zh-hans/add_instance_association.md)                                     | 新建模型实例之间的关联关系                                                   |
 | [add_label_for_service_instance](./zh-hans/add_label_for_service_instance.md)                         | 为服务实例添加标签                                                           |
 | [batch_create_instance_association](./zh-hans/batch_create_instance_association.md)                   | 批量创建通用模型实例关联关系                                                 |
-| [batch_create_inst](./zh-hans/batch_create_inst.md)
+| [batch_create_instance](./zh-hans/batch_create_instance.md) | 批量创建通用模型实例 |
 | [batch_create_proc_template](./zh-hans/batch_create_proc_template.md)                                 | 批量创建进程模板                                                             |
 | [batch_delete_inst](./zh-hans/batch_delete_inst.md)                                                   | 批量删除实例                                                                 |
 | [batch_delete_set](./zh-hans/batch_delete_set.md)                                                     | 批量删除集群                                                                 |
@@ -60,7 +60,6 @@
 | [find_host_by_set_template](./zh-hans/find_host_by_set_template.md)                                   | 查询集群模板下的主机                                                         |
 | [find_host_by_topo](./zh-hans/find_host_by_topo.md)                                                   | 查询拓扑节点下的主机                                                         |
 | [find_host_relations_with_topo](./zh-hans/find_host_relations_with_topo.md)                           | 根据业务拓扑实例节点，查询该实例节点下的主机关系信息                         |
-| [find_host_snapshot_batch](./zh-hans/find_host_snapshot_batch.md)                                     | 批量查询主机快照                                                             |
 | [find_host_topo_relation](./zh-hans/find_host_topo_relation.md)                                       | 获取主机与拓扑的关系                                                         |
 | [find_instance_association](./zh-hans/find_instance_association.md)                                   | 查询模型实例之间的关联关系                                                   |
 | [find_module_batch](./zh-hans/find_module_batch.md)                                                   | 批量查询某业务的模块详情                                                     |

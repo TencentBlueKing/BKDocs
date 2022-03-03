@@ -6,7 +6,7 @@ POST
 
 ### 请求地址
 
-/api/c/compapi/v2/cc/batch_create_inst/
+/api/c/compapi/v2/cc/batch_create_instance/
 
 
 ### 通用参数
