@@ -1,0 +1,51 @@
+## 蓝鲸监控V3 API 简介
+
+| 资源名称                                                                                    | 资源描述                                   |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| [add_shield](./zh-hans/add_shield.md)                                                               | 新增告警屏蔽                               |
+| [delete_alarm_strategy](./zh-hans/delete_alarm_strategy.md)                                         | 删除告警策略                               |
+| [delete_alarm_strategy_v2](./zh-hans/delete_alarm_strategy_v2.md)                                   | 删除策略配置                               |
+| [delete_notice_group](./zh-hans/delete_notice_group.md)                                             | 删除通知组                                 |
+| [disable_shield](./zh-hans/disable_shield.md)                                                       | 解除告警屏蔽                               |
+| [edit_shield](./zh-hans/edit_shield.md)                                                             | 编辑告警屏蔽                               |
+| [export_uptime_check_task](./zh-hans/export_uptime_check_task.md)                                   | 导出拨测任务配置                           |
+| [get_event_log](./zh-hans/get_event_log.md)                                                         | 查询事件流转记录                           |
+| [get_shield](./zh-hans/get_shield.md)                                                               | 获取告警屏蔽                               |
+| [get_ts_data](./zh-hans/get_ts_data.md)                                                             | 获取 ES 数据                               |
+| [import_uptime_check_node](./zh-hans/import_uptime_check_node.md)                                   | 导入拨测节点配置                           |
+| [import_uptime_check_task](./zh-hans/import_uptime_check_task.md)                                   | 导入拨测任务配置                           |
+| [list_shield](./zh-hans/list_shield.md)                                                             | 获取告警屏蔽列表                           |
+| [metadata_create_cluster_info](./zh-hans/metadata_create_cluster_info.md)                           | 创建存储集群信息                           |
+| [metadata_create_data_id](./zh-hans/metadata_create_data_id.md)                                     | 创建监控数据源                             |
+| [metadata_create_event_group](./zh-hans/metadata_create_event_group.md)                             | 创建事件分组                               |
+| [metadata_create_result_table](./zh-hans/metadata_create_result_table.md)                           | 创建监控结果表                             |
+| [metadata_create_result_table_metric_split](./zh-hans/metadata_create_result_table_metric_split.md) | 创建结果表的维度拆分配置                   |
+| [metadata_create_time_series_group](./zh-hans/metadata_create_time_series_group.md)                 | 创建自定义时序分组                         |
+| [metadata_delete_event_group](./zh-hans/metadata_delete_event_group.md)                             | 删除事件分组                               |
+| [metadata_delete_time_series_group](./zh-hans/metadata_delete_time_series_group.md)                 | 删除自定义时序分组                         |
+| [metadata_get_data_id](./zh-hans/metadata_get_data_id.md)                                           | 获取监控数据源具体信息                     |
+| [metadata_get_event_group](./zh-hans/metadata_get_event_group.md)                                   | 查询事件分组具体内容                       |
+| [metadata_get_result_table](./zh-hans/metadata_get_result_table.md)                                 | 获取监控结果表具体信息                     |
+| [metadata_get_result_table_storage](./zh-hans/metadata_get_result_table_storage.md)                 | 查询指定结果表的指定存储信息               |
+| [metadata_get_time_series_group](./zh-hans/metadata_get_time_series_group.md)                       | 获取自定义时序分组具体内容                 |
+| [metadata_list_label](./zh-hans/metadata_list_label.md)                                             | 查询当前已有的标签信息                     |
+| [metadata_list_result_table](./zh-hans/metadata_list_result_table.md)                               | 查询监控结果表                             |
+| [metadata_list_transfer_cluster](./zh-hans/metadata_list_transfer_cluster.md)                       | 获取所有 transfer 集群信息                 |
+| [metadata_modify_cluster_info](./zh-hans/metadata_modify_cluster_info.md)                           | 修改存储集群信息                           |
+| [metadata_modify_data_id](./zh-hans/metadata_modify_data_id.md)                                     | 修改指定数据源的配置信息                   |
+| [metadata_modify_event_group](./zh-hans/metadata_modify_event_group.md)                             | 修改事件分组                               |
+| [metadata_modify_result_table](./zh-hans/metadata_modify_result_table.md)                           | 修改监控结果表                             |
+| [metadata_modify_time_series_group](./zh-hans/metadata_modify_time_series_group.md)                 | 修改自定义时序分组                         |
+| [metadata_query_event_group](./zh-hans/metadata_query_event_group.md)                               | 创建事件分组                               |
+| [metadata_query_tag_values](./zh-hans/metadata_query_tag_values.md)                                 | 获取自定义时序分组具体内容                 |
+| [metadata_query_time_series_group](./zh-hans/metadata_query_time_series_group.md)                   | 查询事件分组                               |
+| [metadata_upgrade_result_table](./zh-hans/metadata_upgrade_result_table.md)                         | 将指定的监控单业务结果表升级为全业务结果表 |
+| [save_alarm_strategy](./zh-hans/save_alarm_strategy.md)                                             | 保存告警策略                               |
+| [save_alarm_strategy_v2](./zh-hans/save_alarm_strategy_v2.md)                                       | 保存告警策略                               |
+| [save_notice_group](./zh-hans/save_notice_group.md)                                                 | 保存通知组                                 |
+| [search_alarm_strategy](./zh-hans/search_alarm_strategy.md)                                         | 查询告警策略                               |
+| [search_alarm_strategy_v2](./zh-hans/search_alarm_strategy_v2.md)                                   | 查询告警策略列表                           |
+| [search_event](./zh-hans/search_event.md)                                                           | 查询事件                                   |
+| [search_notice_group](./zh-hans/search_notice_group.md)                                             | 查询通知组                                 |
+| [switch_alarm_strategy](./zh-hans/switch_alarm_strategy.md)                                         | 启停告警策略                               |
+| [update_partial_strategy_v2](./zh-hans/update_partial_strategy_v2.md)                               | 批量更新策略局部配置                       |
