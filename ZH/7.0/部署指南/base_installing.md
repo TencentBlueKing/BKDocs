@@ -210,8 +210,9 @@ SaaS 包名：bk_lesscode-ee-xxx.tar.gz
 1. 上传 `S-mart` 包，参考流程服务 saas 部署。
 2. 配置环境变量：
 注意环境变量的作用范围，可以直接选所有环境
+ 
 |环境变量名称 |VALUE |描述 |
-|--|--|
+| -- | -- | -- |
 |`PRIVATE_NPM_REGISTRY` |按以下模板填写:  `${bkrepoConfig.endpoint}/npm/bkpaas/npm/`  , 其中 bkrepoConfig.endpoint 为 bkrepo 服务的网关地址,即http://bkrepo.$BK_DOMAIN |npm 镜像源地址 |
 |`PRIVATE_NPM_USERNAME` |填写部署 PaaS3.0 时配置的  `bkrepoConfig.lesscodeUsername`  默认值是 bklesscode |npm 账号用户名 |
 |`PRIVATE_NPM_PASSWORD` |填写部署 PaaS3.0 时配置的  `bkrepoConfig.lesscodePassword`  默认值是 blueking |npm 账号密码 |
@@ -240,7 +241,7 @@ Ps:环境变量的作用范围，可以直接选所有环境。
 
 
 |环境变量名称 |VALUE |描述 |
-|--|--|
+|--|--| -- |
 |STORAGE_TYPE |BLUEKING_ARTIFACTORY |存储类型 |
 |BKAPP_RUN_ENV |ce |运行环境 |
 |BKAPP_NODEMAN_CALLBACK_URL |http://apps.$BK_DOMAIN/prod--backend--bk--nodeman/backend |节点管理回调地址 |
