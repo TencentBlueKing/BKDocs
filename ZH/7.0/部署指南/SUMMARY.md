@@ -10,4 +10,4 @@
 * [FAQ](./faq.md)
 * [附录]()
     * [腾讯云 TKE 集群准备](./tke_hosting.md)
-    * [基础套餐后台分步部署文档](./base_installing_helmfile.md)
+    * [分步部署基础套餐后台](./base_installing_helmfile.md)

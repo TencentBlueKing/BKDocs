@@ -1,7 +1,7 @@
-蓝鲸基础套餐一共分为两个部分：先在中控机部署后台；然后在浏览器安装并配置 SaaS 。
+蓝鲸基础套餐的部署主要分为两个部分：先在中控机部署后台；然后在浏览器安装并配置 SaaS 。
 
-# 部署蓝鲸基础套餐-后台
-## 一键部署蓝鲸基础套餐-后台
+# 部署基础套餐后台
+## 一键部署基础套餐后台
 为了便于您体验，我们封装了“一键部署” 脚本。
 
 ``` bash
@@ -19,13 +19,8 @@ curl -Lo ~/setup_bkce7.sh http://bkopen-1252002024.file.myqcloud.com/ce7/setup_b
 > 
 > k8s 所有 `node` 机器均需保持网络畅通，可访问蓝鲸提供的镜像地址。
 
-## 设置默认的 k8s namespace
-为了方便后续操作，强烈建议在 **中控机** 配置默认的 k8s namespace：
-``` bash
-kubectl config set-context --current --namespace=blueking
-```
-如果成功，提示为 `Context "kubernetes-admin@kubernetes" modified.`。
-
+## 分步部署基础套餐后台
+具体操作请查阅 [分步部署基础套餐后台](./base_installing_helmfile.md) 。
 
 # 访问蓝鲸
 
