@@ -1,0 +1,524 @@
+
+    <html lang="zh-cn">
+    <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <link href="F:\v_awjliu\BKDocs\ZH/default.css" rel="stylesheet">
+    </head>
+    <body>
+    <h2 id="_1">产品简介</h2>
+<h3 id="_2">产品概述</h3>
+<p>网络设备运维管理平台（NOP）作为一款合作商软件包，可以实现对网络设备运维管理的需求，可以完成对网络设备的性能数据进行监控，以及对设备 syslog 事件进行监听及告警。</p>
+<h3 id="_3">功能特性</h3>
+<table>
+<thead>
+<tr>
+<th>菜单</th>
+<th>功能名称</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>首页</td>
+<td>-</td>
+<td>提供纳管网络设备概况，显示目前存在的告警事件和告警分布，设备 CPU、内存的性能快照 TopN，以及设备类型 TopN 和设备告警 TopN 的视图</td>
+</tr>
+<tr>
+<td>设备管理</td>
+<td>设备入网</td>
+<td>提供基于 SNMP 协议的发现方式将设备添加进入网管系统，支持 SNMP 的所有版本，且支持 IPv6 协议的发现方式</td>
+</tr>
+<tr>
+<td></td>
+<td>在线设备管理</td>
+<td>支持查看设备的基础信息，包括设备名、ip、序列号、型号、软件版本、设备运行时间、设备模块、端口表、堆叠状态、板卡成员等信息</td>
+</tr>
+<tr>
+<td></td>
+<td>设备历史变更</td>
+<td>支持查看某一时间段内设备在系统内的增删历史数据</td>
+</tr>
+<tr>
+<td></td>
+<td>设备组定义</td>
+<td>支持按多个维度定义设备的成员组，方便基于不同的管理维度来管理设备</td>
+</tr>
+<tr>
+<td></td>
+<td>端口组定义</td>
+<td>支持自定义设备端口组方便采集网络设备的端口性能数据</td>
+</tr>
+<tr>
+<td>性能管理</td>
+<td>性能图</td>
+<td>支持以时序图的形式出具设备的性能图，包括但不限于设备的 CPU、内存使用率、流量使用情况、带宽占有率等</td>
+</tr>
+<tr>
+<td></td>
+<td>OID 定义</td>
+<td>支持自定义 OID 添加进入系统，采集设备的某一性能数据</td>
+</tr>
+<tr>
+<td></td>
+<td>KPI 定义</td>
+<td>支持选择定义好的 OID 建立 KPI 采集指标方便采集设备数据</td>
+</tr>
+<tr>
+<td></td>
+<td>采集设置</td>
+<td>支持选择定义好的 KPI 应用在特定的设备组或者端口组下进行性能采集</td>
+</tr>
+<tr>
+<td></td>
+<td>阈值定义</td>
+<td>支持二级阈值和连续采集设置来设定设备的阈值告警，当设备达到设定阈值触发对应的告警</td>
+</tr>
+<tr>
+<td>事件管理</td>
+<td>活动事件</td>
+<td>网络设备产生的告警会在活动事件集中显示，方便监控和管理</td>
+</tr>
+<tr>
+<td></td>
+<td>历史事件</td>
+<td>已经关闭或者恢复的告警会归入历史事件中方便回溯查询</td>
+</tr>
+<tr>
+<td></td>
+<td>事件预处理</td>
+<td>支持设定 syslog 的正则匹配策略来匹配设备的 syslog，并对相应 syslog 进行告警、丢弃或者关联处理的操作</td>
+</tr>
+<tr>
+<td></td>
+<td>事件通知</td>
+<td>支持将告警对接到短信、邮件或者统一告警中心等多种渠道的告警源</td>
+</tr>
+<tr>
+<td></td>
+<td>知识库</td>
+<td>支持匹配市面上常规厂商的 syslog 告警，并针对告警给出相应的处理建议</td>
+</tr>
+<tr>
+<td>平台审计</td>
+<td>-</td>
+<td>支持记录登录用户对网管系统的操作审计，查看用户在何时对系统做了何种操作</td>
+</tr>
+</tbody>
+</table><h2 id="_1">术语解释</h2>
+<p>本文为大家介绍 NOP 网管平台特有的一些术语和基本概念。</p>
+<h3 id="community">community</h3>
+<p>SNMP 的团体名，当需要对设备进行 SNMP 发现时，当 SNMP 版本是 1 或者 2 时，community 作为 SNMP 的凭据是必填项目。注意在 V3 版本中，SNMP 是弃用了 community 团体名这个参数的取而代之的是一套更安全的加密认证方法，为 SNMP 凭据提供了更安全的鉴权信息。</p>
+<h3 id="oid">OID</h3>
+<p>SNMP OID 是用一种按照层次化格式组织的、树状结构中的唯一地址来表示的，它与 DNS 层次相似。与其他格式的寻址方式类型，OID 以两种格式加以应用：全名和相对名（有时称为“相关”） 所有完全验证 OID 都有 <code>.iso.org.dod.internet.private</code> 开始，数字表达为: <code>.1.3.6.4.</code> 。几乎所有的 OID 都会跟上企业(.1)和由 IANA（互联网编号分配中心分配的）唯一的厂商标号。例如 OID 789 表示 Network Appliance 格式的厂商编号( NetApp ）。</p>
+<p>厂商编号后面的是基于厂商实现的功能，并且各不相同。请注意，在 iso.前面的 .  ，与 DNS 中的后点相似，正确验证的 OID 是有一个表示根的前缀 . 开始的。 OID 的相对格式，从企业值开始，略过所有的隐含地址。因此，我们可以用相对地址<code>enterprises.netapp.netappl.raid.diskSUmmary.diskSpaceCount.0</code> 来表示上述的 OID，或者用数字格式 <code>.1.789.6.4.8.0</code>。</p>
+<p>写 OID 的常用格式是用 MIB 名称和在 MIB 中定义的唯一键值。例如，我们可以用简写的格式重写上述 OID:</p>
+<p><code>NETWORK-APPLIANCE-MIB::diskSpareCount.0</code>
+<code>MIB中OID的书写格式规则为：:MIB Name::唯一键值.instance.</code></p>
+<p>某些唯一键值，可用多个实例表示，这样所有的 OID 都以实例值结尾。</p>
+<h3 id="kpi">KPI</h3>
+<p>KPI 通俗来讲就是设备的采集性能指标，当定义好 OID 后，需要配置相应的采集指标并且引入之前定义的 OID，这样就完成了一个采集指标的定义，后面设置采集时直接选择定义的 KPI 应用至相应的设备组或者端口组上就可以对设备性能数据进行采集。</p><h2 id="_1">产品架构</h2>
+<p>敬请期待</p><h2 id="_1">核心优势</h2>
+<h3 id="_2">产品优势</h3>
+<p>网络管理（以下简称 NOP）目前主要包含 6 个系统功能模块：资产管理、性能管理、 Portal 管理、事件管理。NOP 补充了蓝鲸管控平台在网络设备纳管、信息采集、指标监控等方面的不足，丰富了蓝鲸智云的运维纳管体系。同时，NOP 作为原子平台层，向下通过 NOP 的采集代理对接网络设备，提供事件管道、命令管道和数据管道，支持区域隔离纳管。向上则对接蓝鲸 API 网关，提供了丰富 API。可供用于 CMDB 同步、业务 SaaS 开发、标准运维的流程编排等业务或技术层面的消费。</p>
+<h3 id="_3">监控覆盖范围广</h3>
+<p>网络管理是基于网络设备的 SNMP 协议来完成对设备的管控，只要设备支持 SNMP 协议的情况下都可以对设备进行纳管，能够很友好地完成对市面上主流的网络设备的监控。并且不需要额外的成本开销，只需要开启网络设备的 SNMP 代理功能即可，对设备的负载也不会太高。</p>
+<h3 id="_4">灵活的采集配置</h3>
+<p>用户只要有相应设备的 MIB 文件，即可以对设备进行相应性能数据的采集，通过系统内置的 OID 和 KPI 自定义功能可以配置想要的采集数据友好地配置向导界面摒弃了 zabbix 上配置网络采集的繁琐复杂步骤。</p>
+<h3 id="_5">性能可视化</h3>
+<p>将采集到的设备信息以折线图的方式呈现出来，并且支持特定时间段的展示，有利于对设备的维护。</p>
+<h3 id="_6">丰富的告警事件定义</h3>
+<p>丰富的告警源设置，支持性能阈值的告警、syslog 事件的告警过滤、系统本身对网络节点的健康检查。多维度监控设备的健康状况，做到告警的及时上报、不误报、不漏报，高效地解决了网络运维人员在网络设备监控上的难点。</p>
+<h3 id="_7">广泛地兼容性</h3>
+<p>兼容市面上主流的网络设备，能最大限度上将所有网络设备纳入到监控中去，避免不同品牌设备的监控需要使用不同厂商的网管软件监控。最大程度上保证了网管监控的统一性，打破原有网络监控的离散性。</p><h2 id="_1">产品功能</h2>
+<h3 id="_2">设备管理</h3>
+<p>网络设备管理中对设备定义了六种状态，分别是待入网、运行中、维护中、待拆除、已下线、手动维护这六种状态。通过自动发现被管设备，自动实时发现设备状态变化；自动实时轮询设备状态；将新发现的设备置于待入网状态，由管理员确认后进入运行中状态；当设备在预设的时间段内离线时，自动将设备置于维护中状态；当设备在更长的预设时间段内离线时，自动将设备置于待拆除状态。待拆除状态经过一段时间未处理就会变成已下线状态。手动维护状态则可以帮助用户出于维护需要将设备手动修改成维护状态，标记该设备处于维护中。每种状态都以不同颜色标识以提醒管理员关注。</p>
+<p>在发现方式上，用户可选择根据管理 IP 网段或指定种子节点（如核心设备 IP）等方式自动发现各种在线设备。设备自动发现功能支持用户自定义厂商的 snmp oid 等参数，可以支持各厂商的设备。设备自动发现入网的设备，可同时将设备序列号，型号，软件版本等基础数据自动采集至资产库。用户还可通过外部文件批量导入或手动输入的形式关联设备入库线下数据（如安装位置、供电方式、冗余电源、资产编号）。</p>
+<p><img alt="image-20210126175120182" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126175120182.png" /></p>
+<p><img alt="image-20210126175222633" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126175222633.png" /></p>
+<p><img alt="image-20210126175304669" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126175304669.png" /></p>
+<p>通过设备自动发现，设备入网，在线设备管理，待确认事件管理等实现了设备管理的流程闭环。目前系统可以管理的设备类型囊括了路由器、交换机、防火墙、负载均衡设备、无线 AP 以及其他支持 snmp 协议的设备。通过后台扫描网络设备的管理 IP 自动更新网络设备信息。能够自动获取设备下的端口信息和模块信息。</p>
+<p><img alt="image-20210126175453588" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126175453588.png" /></p>
+<p>除了设备自动添加，NOP 还支持设备的手动添加，可以设置设备的安装位置、供电方式和资产编号等。</p>
+<p><img alt="image-20210126175513955" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126175513955.png" /></p>
+<p>针对某些大型企业网络规模巨大（设备数量甚至超过万台），种类繁多（路由器、交换机、防火墙、负载均衡、无线接入设备等等），厂家众多。为方便网络运维人员对大规模数量的设备及端口进行管理，平台支持将节点、端口按照逻辑关系分组，易于分类分批管理，同时方便性能管理模块、报表模块等的个性化统计与展示。</p>
+<p><img alt="image-20210126175556971" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126175556971.png" /></p>
+<p><img alt="image-20210126175630381" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126175630381.png" /></p>
+<p>NOP 系统提供节点树操作，可方便查看节点组、节点、端口各层级关系，并支持在树节点上的快捷操作。</p>
+<h3 id="_3">性能管理</h3>
+<p>性能管理也是网络管理领域的重要部分。设备的运行性能及端口、链路的流量、带宽利用率、丢包、延时等等与网络各环节运行状态相关的性能数据复杂而多样。及时而全面的性能数据采集与展示是性能管理部分的关键要素。性能数据库采用开源时序数据库 InfluxDB，特别适合用于处理和分析资源监控数据这种时序相关数据。而 InfluxDB 自带的各种特殊函数如求标准差，随机取样数据，统计数据变化比等，使数据统计和实时分析变得十分方便。NOP 开放的可自定义的 KPI 指标体系帮助性能指标的灵活扩展；灵活的多级性能阈值定义及告警。系统中通过完全自定义的 KPI，动态表达式让网管人员能更轻松自如配置各复杂指标。</p>
+<p><img alt="image-20210126181207277" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126181207277.png" /></p>
+<p>KPI 定义列表展示页面效果如图：</p>
+<p><img alt="image-20210126181136521" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126181136521.png" /></p>
+<p>网络管理人员可以按照节点选择一定时间段内的流量情况：</p>
+<p><img alt="image-20210126181426864" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126181426864.png" /></p>
+<h3 id="portal">Portal 管理</h3>
+<p>为网络管理人员提供更为便捷直观的管理视图，本系统提供了可灵活定制的主页数据展示功能。如下图示例：</p>
+<ul>
+<li>页面最上部分展示关注的汇总数据指标。如在线设备数，当前活动事件数，数等，每个 Tab 可以点击进入专项页面查看数据明细等详情</li>
+</ul>
+<p><img alt="image-20210127173327304" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210127173327304.png" /></p>
+<ul>
+<li>页面图形展示区域可以由管理员自行定义，这里分四个区域展示了关键端口流量，按客户的流量及占比排名图形。这两个是在性能管理模块里定义好性能监控组合后直接在页面选择加入 Portal 主页即可生效。资产占用汇总图在统计报表模板中选择加入 Portal 主页；待处理事项列表在流程管理页面定义选择加入 Portal 主页</li>
+</ul>
+<p><img alt="image-20210127173506071" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210127173506071.png" /></p>
+<h3 id="_4">事件告警管理</h3>
+<p>告警事件处理是网络管理中几乎最为重要的工作。告警的准确性、及时性直接影响到网络管理的效率和用户服务水平。简单来说，告警事件处理需要做到不错报，不漏报，及时报。对于告警事件的产生判断流程如下图所示：</p>
+<p><img alt="image-20210126182510283" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126182510283.png" /></p>
+<p>网络告警事件的数据来源有三个方面：</p>
+<ul>
+<li>
+<p>网络设备的 Syslog</p>
+</li>
+<li>
+<p>网管平台主动发起的 ICMP 报文检测和 SNMP 连通性反馈</p>
+</li>
+<li>
+<p>性能 KPI 触发了阈值产生的健康度告警</p>
+</li>
+</ul>
+<p>对于 syslog 产生的原始数据，事件处理平台通过预处理模板定义对原始的 Syslog 执行过滤策略，格式化策略。事件过滤：如果不是用户关心的事件或不能通过事件过滤器，则该事件会被丢弃，从而节省大量的处理时间和存储空间。用户可在管理控制台上建立过滤规则、修改过滤规则以及删除过滤规则等。</p>
+<p><img alt="image-20210127192417689" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210127192417689.png" /></p>
+<p>NOP 平台已经预先包含有关联逻辑的模版，对于最常见的关联逻辑都可以在这些模版上作适当的修改快速实现，为关联逻辑的开发、调整、部署提供了基础。可以丰富增加额外的事件属性，对重复事件进行处理，压缩满足某种条件的事件等。除了上述预先定义的关联模版，用户还能够通过用户关联定义模版配置自己的关联逻辑。</p><h1 id="_1">网络管理部署</h1>
+<p>网络管理平台可以实现对网络设备运维管理的需求，可以完成对网络设备的性能数据进行监控，以及对设备 syslog 事件进行监听及告警。</p>
+<h2 id="_2">前期准备</h2>
+<p>网络管理部署是通过标准运维流程实现，在部署前需要做如下准备：</p>
+<h3 id="1">1.机器准备</h3>
+<p>建议使用独立的机器进行部署。如果蓝鲸基础环境主机资源充足的前提下，可进行复用。</p>
+<p><strong>说明：</strong> 网络管理平台分服务端与采集端，分别占用 1G 内存（共 2G），请合理安排该模块。</p>
+<ul>
+<li>
+<p>建议操作系统： CentOS 7.6</p>
+</li>
+<li>
+<p>建议机器配置：4 核 4G</p>
+</li>
+</ul>
+<h3 id="2">2.实现免密</h3>
+<p>开始部署前，请确保新增主机跟中控机已实现免密。如果是复用机器，请忽略该步骤。</p>
+<pre class="codehilite"><code class="language-bash">ssh-copy-id &lt;ip&gt;</code></pre>
+
+
+<h3 id="3-agent">3.请先前往节点管理，对新增主机进行 agent 安装</h3>
+<ul>
+<li>前往节点管理进行安装，根据图中步骤填写相关信息。如果是复用机器，请忽略该步骤。</li>
+</ul>
+<p><img alt="deploy1" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/deploy1.png" /></p>
+<h3 id="4">4.下载套餐安装包</h3>
+<ul>
+<li>前往 <a href="https://bk.tencent.com/s-mart/application/270/detail">蓝鲸 S-mart 市场</a> 下载网络管理软件包。</li>
+<li>将该软件包放置中控机 /data 目录。</li>
+</ul>
+<p><strong>注意： 软件包包含：网络管理 tgz 包以及网络管理标准运维部署模版文件。模版文件需要通过标准运维进行导入，具体操作流程请看下一步</strong></p>
+<ul>
+<li><strong>bk_sops_*.dat</strong>：为标准运维流程模板</li>
+<li><strong>bknetwork_2.x.x.tgz</strong>：为网络管理软件包</li>
+</ul>
+<h3 id="5">5. 将网络管理标准运维流程模版导入至标准运维</h3>
+<p><strong>详细步骤：</strong> <code>打开标准运维 -&gt; 项目流程 -&gt; 导入 -&gt; 点击上传 -&gt; 创建新流程</code></p>
+<p><img alt="deploy2" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/deploy2.png" /></p>
+<p><img alt="deploy3" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/deploy3.png" /></p>
+<h2 id="_3">开始部署</h2>
+<p>选择 <code>[ce] deploy bknetwork</code> 流程模版进行新建任务，根据提示填写相关信息。确认填写信息无误后，开始执行任务。</p>
+<p>填写信息包括：</p>
+<ul>
+<li>
+<p><code>ctrl_ip</code>：蓝鲸环境的中控机 IP</p>
+</li>
+<li>
+<p><code>deply_ip</code>：部署网络管理的机器。如果是新增机器部署，请先与蓝鲸环境的中控机进行免密，以及安装好 gse_agent。</p>
+</li>
+<li>
+<p><code>whole_pkg_path</code>：网络管理平台整包在中控机的绝对路径</p>
+</li>
+</ul>
+<p>该部署流程主要相关操作：</p>
+<ul>
+<li>
+<p>将网络管理安装包放至指定目录</p>
+</li>
+<li>
+<p>生成网络管理 install.config 配置</p>
+</li>
+<li>
+<p>初始化新增节点机器</p>
+</li>
+<li>
+<p>授权网络管理所需的 MySQL 访问权限</p>
+</li>
+<li>
+<p>安装网络管理相关依赖、网络管理服务端、网络管理采集端</p>
+</li>
+</ul>
+<p><img alt="deploy4" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/deploy4.png" /></p>
+<h2 id="host">配置本地 host</h2>
+<blockquote>
+<p>下面介绍的操作均可能覆盖现有 hosts ，进行操作前请先确认是否需要备份。</p>
+</blockquote>
+<p>在进行下述操作前，请先获取网络管理的域名：</p>
+<p><strong>注意：</strong> 网络管理默认会继承蓝鲸环境的顶级域名 (如：bktencent.com)</p>
+<pre class="codehilite"><code class="language-bash">source /data/install/utils.fc
+echo $BK_NETWORK_PUBLIC_URL</code></pre>
+
+
+<h3 id="1windows">1.Windows 配置</h3>
+<p>用文本编辑器（如 <code>Notepad++</code>）打开文件：</p>
+<pre class="codehilite"><code class="language-bash">C:\Windows\System32\drivers\etc\hosts</code></pre>
+
+
+<p>将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。</p>
+<p><strong>说明：</strong> 10.0.0.2 为蓝鲸的 nginx 模块所在机器的外网 IP</p>
+<pre class="codehilite"><code class="language-bash">10.0.0.2 bknetwork.bktencent.com</code></pre>
+
+
+<blockquote>
+<p>注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -&gt; “安全”，然后选择你登陆的用户名，最后点击编辑，勾选“写入”即可。</p>
+</blockquote>
+<h3 id="2linux-mac-os">2.Linux / Mac OS 配置</h3>
+<p>将以下内容复制到 <code>/etc/hosts</code> 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。</p>
+<pre class="codehilite"><code class="language-bash">10.0.0.2 bknetwork.bktencent.com</code></pre>
+
+
+<h2 id="_4">访问网络管理</h2>
+<p>完成上述操作后，可以直接前往 PaaS 平台点击访问。</p><h2 id="_1">快速入门</h2>
+<p>社区版在页面左上角内置了网管操作的向导说明可以引导用户完成网管的基本操作，结合向导说明可以帮助用户了解快速入门中介绍的系统操作流程。</p>
+<p><img alt="image-20210127192013194" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210127192013194.png" /></p>
+<p><img alt="image-20210127192036212" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210127192036212.png" /></p>
+<h3 id="_2">添加设备进行设备入网</h3>
+<h4 id="_3">前置条件</h4>
+<p>网络设备配置了 SNMP 代理</p>
+<h4 id="_4">操作步骤</h4>
+<p>1、选择 IP 类型，填写起始结束 IP，选定云区域 ID 及版本，点击搜索进行设备发现</p>
+<p><img alt="image-20210126101139167" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126101139167.png" /></p>
+<p>2、通过在线设备管理模块可在线查看已入网设备的基本信息</p>
+<p><img alt="image-20210126101230584" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126101230584.png" /></p>
+<p><img alt="image-20210126101300818" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126101300818.png" /></p>
+<h3 id="_5">设备组定义</h3>
+<h4 id="_6">前置条件</h4>
+<p>已经有做过设备入网操作，添加过网络设备</p>
+<h4 id="_7">操作步骤</h4>
+<p>1、根目录下包含所有纳管设备，可以根据管理需求在根目录下面自定义创建子组。填写过滤条件进行设备筛选，不写过滤条件，默认添加所有设备。社区版中默认按设备品牌分出了按品牌过滤的设备组，后续用户可以根据管理需求再基于其他维度对设备分组。</p>
+<p><img alt="image-20210126101943579" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126101943579.png" /></p>
+<p><img alt="image-20210126101957832" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126101957832.png" /></p>
+<p>2、添加设备组后需进行用户绑定，普通用户才可查看设备，在父目录进行绑定用户后默认所有子目录生效。</p>
+<p><img alt="image-20210126102116675" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126102116675.png" /></p>
+<p><img alt="image-20210126102145309" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126102145309.png" /></p>
+<p>3、设备组添加完成后可以点击展示组内设备，查看组内设备是否按照预设的过滤条件成功匹配上。</p>
+<p><img alt="image-20210126102405375" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126102405375.png" /></p>
+<p><img alt="image-20210126102345895" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126102345895.png" /></p>
+<h3 id="_8">端口组定义</h3>
+<h4 id="_9">前置条件</h4>
+<p>已经有做过设备入网操作，添加过网络设备</p>
+<h4 id="_10">操作步骤</h4>
+<p>1、编写端口组名称，自定义多种过滤属性，进行端口添加。</p>
+<p><img alt="image-20210126102555356" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126102555356.png" /></p>
+<p>2、也可手动添加特定端口，不填写过滤条件，点击详情，右上角选择无关联，勾选需要添加的端口，点击”+“即可添加进端口组。</p>
+<p><img alt="image-20210126102742177" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126102742177.png" /></p>
+<p><img alt="image-20210126102804793" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126102804793.png" /></p>
+<p><img alt="image-20210126102834872" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126102834872.png" /></p>
+<h3 id="_11">设备历史变更</h3>
+<h4 id="_12">前置条件</h4>
+<p>无</p>
+<h4 id="_13">操作步骤</h4>
+<p>1、可通过设备历史变更，查看历史设备信息，支持查看特定时间段，特定设备的历史变更情况</p>
+<p><img alt="image-20210126103104510" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126103104510.png" /></p>
+<h3 id="_14">手动配置监控项</h3>
+<h4 id="_15">前置条件</h4>
+<p>完成设备入网并配置相应的设备组和端口组</p>
+<h4 id="_16">操作步骤</h4>
+<p>1、社区版已经内置了常用设备的采集监控指标，如果是已经内置的指标则不需要配置 OID 和 KPI 直接配置采集设置即可。这里针对未内置的监控指标说明下如何配置。在 OID 定义界面点击添加 OID 按钮：</p>
+<p><img alt="image-20210126104138505" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126104138505.png" /></p>
+<p>定义名称描述，填写 OID 信息点击保存。针对 OID 中有些值是累加值的情况下则需要勾选计算按钮进行差值计算，而如果 MIB 中定义该 OID 的字符值是一个实时值时则不需要勾选计算。差值计算多出现于一些端口性能的指标上，比如端口出、入包数，出、入流量等。</p>
+<p><img alt="image-20210126104249807" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126104249807.png" /></p>
+<p><img alt="image-20210126104652393" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126104652393.png" /></p>
+<p>2、社区版已经内置了常用设备的采集监控指标，如果是已经内置的 KPI 指标则跳过此步直接进行采集配置。这里针对不在社区版内置范围之内的 KPI 指标说明下如何配置。在 KPI 定义界面点击添加 KPI 按钮</p>
+<p><img alt="image-20210126105747601" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126105747601.png" /></p>
+<p>定义名称单位描述，选择 KPI 类型，选定 OID，这里支持利用多个 OID 进行四则运算来获取想要的监控指标，KPI 分为单 KPI 和聚合 KPI。一般选择单 KPI 就可以，聚合 KPI 常用在需要在一张性能图上同时查看设备的出入流量时使用。KPI 类型分为设备类型、端口类型、属性类型的 KPI，常见的 CPU、内存属于设备类型 KPI，端口出入流量，出入包数则属于端口类型 KPI，属性类型 KPI 则常用于多板卡设备的性能获取。</p>
+<p><img alt="image-20210126110004041" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126110004041.png" /></p>
+<p>3、配置采集，点击采集设置，添加采集配置</p>
+<p><img alt="image-20210126114608674" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126114608674.png" /></p>
+<p>定义名称，选择 KPI 指标，选定采集对象，勾选启用，点击保存按钮</p>
+<p><img alt="image-20210126114759842" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126114759842.png" /></p>
+<h3 id="_17">性能图数据查看</h3>
+<h4 id="_18">前置条件</h4>
+<p>完成采集相关配置</p>
+<h4 id="_19">操作步骤</h4>
+<p>1、选择设备组，定位到所有查看的设备，选择设备 KPI 直接查看性能图，若选择端口 KPI 则需手动选择所要查看到的端口。</p>
+<p><img alt="image-20210126115511808" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126115511808.png" /></p>
+<p>另外也支持从在线设备管理页面右键设备快速跳转到性能图查询页面选择 KPI 查看</p>
+<p><img alt="image-20210126115614934" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126115614934.png" /></p>
+<h3 id="_20">性能阈值设定</h3>
+<h4 id="_21">前置条件</h4>
+<p>配置了性能数据采集</p>
+<h4 id="_22">操作步骤</h4>
+<p>1、在阈值定义添加阈值设置，弹出新建阈值对话框。</p>
+<p><img alt="image-20210126145251785" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126145251785.png" /></p>
+<p>2、配置阈值设置名称，选择 KPI，选定作用域，启动阈值，设定阈值，最多支持两个阈值，撰写消息正文，点击“+”保存。为了消除突发性的临时阈值上升的告警，可以配置是否启用连续采集的机制，当连续采集次数的值都达到设定阈值了才告警。</p>
+<p><img alt="image-20210126145104990" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126145104990.png" /></p>
+<h3 id="_23">事件预处理配置</h3>
+<h4 id="_24">前置条件</h4>
+<p>网络设备开启了 syslog,并且已经将 syslog 配置转发给 NOP</p>
+<h4 id="_25">操作步骤</h4>
+<p>1、在事件预处理页面点击“+”添加模板，新建预处理模板。</p>
+<p><img alt="image-20210126151559960" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126151559960.png" /></p>
+<p>填入模板名称、可选添加模板描述、设备名称、填写消息匹配的正则表达式，处理方式可以选择关联处理、告警、丢弃三种方式，选择是否启用这条模板，选择这个模板应用的设备组。</p>
+<p><img alt="image-20210126151910568" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126151910568.png" /></p>
+<p>配置这条事件匹配的告警级别，eventCode 用来对同一类型的事件进行标记，方便事件压缩和归类，消息正文可以选择保留 syslog 的源消息显示也可以支持自定义消息正文，支持用占位符来表示变量代入到消息正文中，发生位置填写占位符变量，选择对冲类型，这样这条事件预处理就配置完成。</p>
+<p><img alt="image-20210126152155361" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126152155361.png" /></p>
+<p>2、配置完预处理模板后可以在预处理模板优先级中调整策略应用的优先级，处理优先级高的模板可以直接鼠标拖拽至顶部，拖拽好优先级后点击确认优先级下发优先级</p>
+<p><img alt="image-20210126154132167" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126154132167.png" /></p>
+<p>3、社区版已经内置了 H3C、HUAWEI、CISCO 这三种品牌的 syslog 在级别 3 以上的告警作为兜底告警，用户可以在此基础上将不需要的告警配置丢弃动作</p>
+<p><img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/快速入门/NOP社区版白皮书.assets/image-20210127191123434.png" /></p>
+<p><img alt="image-20210127191625042" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210127191625042.png" /></p>
+<h3 id="_26">事件通知配置</h3>
+<h4 id="_27">前置条件</h4>
+<p>配置了事件预处理模板</p>
+<h4 id="_28">操作步骤</h4>
+<p>1、在事件通知页面点击创建通知按钮创建事件通知条目</p>
+<p><img alt="image-20210126164913691" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126164913691.png" /></p>
+<p>填写通知名称，选择消息来源为 syslogd，选择通知发送的用户组，选择告警应用的设备组，选择通知的发送类型，例如邮件、短信或者第三方统一告警平台，再选择事件匹配的规则即可。</p>
+<p><img alt="image-20210126164836178" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126164836178.png" /></p><h2 id="_1">场景案例</h2>
+<h3 id="_2">如何批量更新已入网设备的配置信息</h3>
+<p>当我们纳管的一些设备的配置信息发生变更后我们想手动批量更新这部分设备的配置信息时，无需一台台手动更新。</p>
+<h4 id="_3">操作步骤</h4>
+<p>从在线设备管理页面手工勾选需要更新的设备，点击重新发现即可更新设备配置信息。</p>
+<p><img alt="image-20210126170240711" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126170240711.png" /></p>
+<h3 id="_4">如何添加常用性能视图到性能图组</h3>
+<p>当我们需要频繁查看一些固定设备的固定 KPI 时，我们可以将这些 KPI 收藏到固定的性能图组内，方便直接在性能图组内查看性能数据</p>
+<h4 id="_5">操作步骤</h4>
+<p>1、在性能图找到这台设备的 KPI 的性能数据点击收藏按钮</p>
+<p><img alt="image-20210126171812969" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126171812969.png" /></p>
+<p>选择要加入的性能图组点击确定</p>
+<p><img alt="image-20210126172005249" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126172005249.png" /></p>
+<p>2、点击性能图组，点击右侧“+”号，弹出性能图组对话框，勾选应用的性能图组，点击添加到查看详情按钮</p>
+<p><img alt="image-20210126172608306" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126172608306.png" /></p>
+<p><img alt="image-20210126172530988" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126172530988.png" /></p>
+<p>3、在性能图组中就可以看到收藏的性能图数据</p>
+<p><img alt="image-20210126172650173" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126172650173.png" /></p>
+<h3 id="syslog">如何对常见的 syslog 的处理建议进行录入</h3>
+<p>知识库中内置了常见主流网络设备的 syslog 处理建议，为网络设备的常见故障提供了解决方案。除内置的 syslog 告警知识处理条目外另外还支持用户自主录入处理建议方便对设备出现的 syslog 告警提供告警建议，进行更高效的处理。</p>
+<h4 id="_6">操作步骤</h4>
+<p>1、在知识库页面中点击新增知识库按钮</p>
+<p><img alt="image-20210126173228244" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126173228244.png" /></p>
+<p>2、录入网络设备品牌名称、添加 syslog 的助记符、添加 syslog 中的占位符参数、建议的告警级别、示例的 syslog 的消息正文、简单的说明信息、以及告警处理建议，告警内容示例</p>
+<p><img alt="image-20210126173650038" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126173650038.png" /></p>
+<p><img alt="image-20210126173709975" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/image-20210126173709975.png" /></p><h1 id="_1">变更域名</h1>
+<p>安装部署后，网络管理默认跟蓝鲸基础环境使用的顶级域名保持一致 (bktencent.com)，如果需要修改成其他的域名。例如换成 bktencent.org，可以按以下步骤进行：</p>
+<p>下述操作以蓝鲸默认目录为准，操作过程中请以实际目录路径为准。</p>
+<ol>
+<li>
+<p>变更 bknetwork 域名配置项</p>
+<p><code>bash
+echo "BK_NETWORK_PUBLIC_URL=http://bknetwork.bktencent.org:80" &gt;&gt; /data/install/bin/03-userdef/bknetwork.env</code></p>
+<p>渲染至 04-final/bknetwork.env</p>
+<p><code>bash
+cd /data/install
+./bin/merge_env.sh bknetwork</code></p>
+</li>
+<li>
+<p>同步脚本目录至所有机器</p>
+<p><code>bash
+./bkcli sync common</code></p>
+</li>
+<li>
+<p>更新 bknetwork 的 kv</p>
+<p>```bash
+source /data/install/utils.fc</p>
+<h1 id="_2">确认是否已加载正确的值</h1>
+<p>echo  $BK_NETWORK_PUBLIC_URL</p>
+<h1 id="kv">更新 kv</h1>
+<p>consul kv put bkcfg/fqdn/bknetwork $(awk -F'[:/]' '{ print $4}' &lt;&lt;&lt;"${BK_NETWORK_PUBLIC_URL}")</p>
+<h1 id="_3">确认是否更新成功</h1>
+<p>consul kv get bkcfg/fqdn/bknetwork<br />
+```</p>
+</li>
+<li>
+<p>修改 bknetwork 配置文件</p>
+<p>```bash</p>
+<h1 id="_4">登陆至网络管理机器</h1>
+<p>ssh $BK_NETWORK_IP</p>
+<h1 id="bknetwork-paascmdb-host">文件末尾处蓝鲸配置处进行修改 bknetwork 的域名，包括 paas、cmdb 的 host</h1>
+<p>vim /data/bkce/bknetwork/nop/conf/application.yml
+```</p>
+</li>
+<li>
+<p>更新 /etc/hosts 中原 paas 域名为新的域名</p>
+<p><code>bash
+vim /etc/hosts</code></p>
+</li>
+<li>
+<p>重启网络管理</p>
+<p>```bash</p>
+<h1 id="_5">网络管理机器上执行</h1>
+<p>systemctl restart bk-network.target
+```</p>
+</li>
+<li>
+<p>修改 SaaS 链接</p>
+<p>```bash</p>
+<h1 id="_6">中控机执行，请使用实际过程中的域名替换指引的案例域名</h1>
+<p>mysql --login-path=mysql-default -e "use open_paas; update paas_usefullinks set link='http://bknetwork.bktencent.org' where name='网络管理';"
+```</p>
+</li>
+</ol><h1 id="_1">更新指引</h1>
+<p>选择 <code>[ce] upgrade bknetwork</code> 流程模版进行新建任务，根据提示填写相关信息。确认填写信息无误后，开始执行任务。</p>
+<p>填写信息包括：</p>
+<ul>
+<li><code>ctrl_ip</code>：蓝鲸环境的中控机 IP</li>
+<li><code>whole_pkg_path</code>：网络管理平台整包在中控机的绝对路径</li>
+</ul>
+<p>该部署流程主要相关操作：</p>
+<ul>
+<li>将网络管理安装包更新至指定目录</li>
+<li>生成网络管理更新脚本</li>
+<li>更新网络管理</li>
+</ul>
+<p><img alt="update" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/update.png" /></p>
+<p>更新完成后，可访问网络管理平台是否正常。</p><h1 id="_1">维护指引</h1>
+<h2 id="_2">查看服务</h2>
+<p>网络管理使用 systemd 进行托管，进程启动过程中如果有打印标准输出和标准错误日志，会定向到 systemd-journald 服务，通过 journactl 命令来查看。定位时常用的命令行参数如下：</p>
+<ul>
+<li>查看服务状态</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">source /data/install/utils.fc
+ssh $BK_NETWORK_IP
+
+# 服务端
+systemctl status bk-network-nop.service
+
+# 采集端
+systemctl status bk-network-nopcollector.service</code></pre>
+
+
+<h2 id="_3">进程启动日志</h2>
+<ul>
+<li>查看服务端/采集端的日志</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">source /data/install/utils.fc
+ssh $BK_NETWORK_IP
+
+# 服务端
+journalctl -u bk-network-nop.service
+
+# 采集端
+journalctl -u bk-network-nopcollector.service</code></pre>
+
+
+<h2 id="_4">后台日志</h2>
+<p>网络管理运行日志在 $BK_HOME/logs/bknetwork 下，按模块名，组件名分目录存放。</p>
+<pre class="codehilite"><code class="language-bash">source /data/install/utils.fc
+ssh $BK_NETWORK_IP
+
+cd $BK_HOME/logs/bknetwork</code></pre><h1 id="_1">卸载指引</h1>
+<p>选择 <code>[ce] uninstall bknetwork</code> 流程模版进行新建任务，根据提示填写相关信息。确认填写信息无误后，开始执行任务。</p>
+<p>填写信息包括：</p>
+<ul>
+<li><code>ctrl_ip</code>：蓝鲸环境中控机 IP。</li>
+</ul>
+<p>该部署流程主要相关操作：</p>
+<ul>
+<li>卸载网络管理平台相关服务进程以及相关文件。</li>
+</ul>
+<p><img alt="uninstall_bknetwork" src="F:\v_awjliu\BKDocs\ZH/6.0/网络管理/assets/uninstall.png" /></p>
+    </body>
+    </html>
+    
