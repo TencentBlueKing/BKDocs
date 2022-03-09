@@ -187,22 +187,26 @@ SaaS 应用采用 s-mart 包部署方式：
 
 ## 各 SaaS 安装及配置说明
 ### 部署流程服务（bk_itsm）
-SaaS 包名：bk_itsm_xxx.tar.gz
+SaaS 包名：`bk_itsm_xxx.tar.gz`
+
 无需配置额外环境变量，工作台进入开发者中心，直接创建应用，上传 `S-mart` 包部署即可。
 ![](./assets/2022-03-09-10-44-40.png)
 ![](./assets/2022-03-09-10-44-46.png)
 
 ### 部署 gsekit(进程配置管理)
+SaaS 包名：`bk_gsekit-xxx.tar.gz`
+
 无环境变量，直接部署，参考流程服务的部署
-SaaS 包名：bk_gsekit-xxx.tar.gz
 
 ### 部署标准运维（bk_sops）
-SaaS 包名：bk_sops-xxx.tar.gz
+SaaS 包名：`bk_sops-xxx.tar.gz`
+
 无环境变量直接部署，注意：有四个模块依次部署，default 需要先部署，其他的无顺序要求。
 ![](./assets/2022-03-09-10-44-54.png)
 
 ### 部署蓝鲸可视化平台（bk_lesscode）
-SaaS 包名：bk_lesscode-ee-xxx.tar.gz
+SaaS 包名：`bk_lesscode-ee-xxx.tar.gz`
+
 1. 上传 `S-mart` 包，参考流程服务 saas 部署。
 2. 配置环境变量：
 注意环境变量的作用范围，可以直接选所有环境
@@ -227,9 +231,10 @@ SaaS 包名：bk_lesscode-ee-xxx.tar.gz
 
 ### 部署节点管理（bk_nodeman）
 >注意：节点管理 SaaS 分了 2 个模块，default 和 backend，需要分别部署（先部署 default，后部署 backend）！
-步骤比较多，注意操作顺序
+步骤比较多，注意操作顺序。
 
-SaaS 包名：bk_nodeman-xxx.tar.gz
+SaaS 包名：`bk_nodeman-xxx.tar.gz`
+
 在部署之前，均需要在各自模块提前配置以下 3 个环境变量  `(注意: 配置一次default模块的变量后，backend的变量可以从default模块导入）`  。
 Ps:环境变量的作用范围，可以直接选所有环境。
 ![](./assets/2022-03-09-10-45-40.png)
@@ -263,7 +268,6 @@ agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 http://<node_ip>:
 1. （可选）如果存在，则先停掉 gse 部署时自动安装的 gse_agent daemonset 资源
  `kubectl delete daemonsets.apps bk-gse-agent -n blueking` 
 2. 节点管理上，通过直连区域安装 gse_agent。如果 node 机器上，无法解析 apps.`$BK_DOMAIN和bkrepo.$BK_DOMAIN`域名，则需要在 node 机器上配置/etc/hosts 的解析。
-apps.$BK_DOMAIN 解析到 `bk-ingress-controller`  pod 所在 node 机器
-bkrepo.$BK_DOMAIN 解析到 `ingress-controller`  pod 所在 node 机器
-![](./assets/2022-03-09-10-46-34.png)
+`apps.$BK_DOMAIN` 解析到 `bk-ingress-controller`  pod 所在 node 机器
+`bkrepo.$BK_DOMAIN` 解析到 `ingress-controller`  pod 所在 node 机器
 ![](./assets/2022-03-09-10-46-45.png)
