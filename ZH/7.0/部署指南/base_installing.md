@@ -1,21 +1,17 @@
-# 部署蓝鲸基座
-## 一键部署蓝鲸基座
+蓝鲸基础套餐一共分为两个部分：先在中控机部署后台；然后在浏览器安装并配置 SaaS 。
+
+# 部署蓝鲸基础套餐-后台
+## 一键部署蓝鲸基础套餐-后台
 为了便于您体验，我们封装了“一键部署” 脚本。
 
 ``` bash
 # 下载部署脚本并添加可执行权限.
-curl -LOJ http://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.sh && chmod +x ./setup_bkce7.sh
+curl -Lo ~/setup_bkce7.sh http://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.sh && chmod +x ~/setup_bkce7.sh
 ```
 
 假设您用于部署蓝鲸的域名为 `bkce7.bktencent.com`，使用如下的命令:
-```plain
-BK_DOMAIN=bkce7.bktencent.com  # 配置域名
-# 检测如果server为bcs.sh创建，则修改paas应用的log采集路径。
-if kubectl config view -o jsonpath='{.clusters[0].cluster.server}' | grep -F bcs.local; then
-  ./setup_bkce7.sh --install base --domain "$BK_DOMAIN" --log "/data/bcs/lib/docker/containers"
-else
-  ./setup_bkce7.sh --install base --domain "$BK_DOMAIN"
-fi
+``` bash
+~/setup_bkce7.sh --install base --domain bkce7.bktencent.com
 ```
 此脚本耗时 15 ~ 30 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。
 
@@ -80,14 +76,14 @@ EOF
 helm status bk-user -n blueking
 ```
 其关键输出如下: 
-```plain
+``` plain
 登录账户名密码:
 admin/密码略
 ```
 
 ## 浏览器访问
 浏览器访问 `$BK_DOMAIN` 所指向的域名。此域名可以在 **中控机** 执行如下命令获取：
-```plain
+``` bash
 cd ~/bkhelmfile/blueking/  # 进入蓝鲸helmfile目录
 yq e '.domain.bkDomain' environments/default/custom.yaml  # 读取自定义的域名.
 ```
@@ -99,7 +95,7 @@ yq e '.domain.bkDomain' environments/default/custom.yaml  # 读取自定义的�
 > 本步骤已经在 “一键部署蓝鲸基座” 脚本中自动完成。如需单独更新时可重复此操作。
 
 在 **中控机** 获取需要执行的命令：
-```plain
+``` bash
 helm status bk-paas -n blueking
 ```
 其输出如图所示：
@@ -142,7 +138,7 @@ printf "$redis_json_tpl\n" $(kubectl get secret --namespace blueking bk-redis -o
 
 ### 配置 node 污点
 假设该节点名为 `node-1`，给该 node 配置 label 和污点，确保 `pod` 默认不会分配到这些 `node`。
-```plain
+``` bash
 kubectl label nodes node-1 dedicated=bkSaas
 kubectl taint nodes node-1 dedicated=bkSaas:NoSchedule
 ```
@@ -167,7 +163,7 @@ kubectl taint nodes node-1 dedicated=bkSaas:NoSchedule
 如果因为资源不足导致 SaaS 运行异常，请先参考 **添加 k8s-node** 完成 k8s 扩容，然后参考 **配置 node 污点** 完成专机配置。
 
 
-# 安装基础套餐 SaaS 
+# 部署蓝鲸基础套餐 SaaS 
 > **提示**
 > 
 > 1. 目前安装 SaaS 需要在浏览器操作，记得先完成 **访问蓝鲸** 章节的内容。
@@ -193,7 +189,7 @@ SaaS 应用采用 s-mart 包部署方式：
     - MD5：7f9217b406703e3e3ee88681dd903bd1
     - 下载地址：http://bkopen-1252002024.file.myqcloud.com/common/py36.tgz
 
-## 基础套餐各 SaaS 部署
+## 各 SaaS 安装及配置说明
 ### 部署流程服务（bk_itsm）
 SaaS 包名：bk_itsm_xxx.tar.gz
 无需配置额外环境变量，工作台进入开发者中心，直接创建应用，上传 `S-mart` 包部署即可。
@@ -257,7 +253,7 @@ Ps:环境变量的作用范围，可以直接选所有环境。
 2. 下载 py36 解释器包，部署 gse proxy 安装 gse p-agent 需要用到：[http://bkopen-1252002024.file.myqcloud.com/common/py36.tgz](http://bkopen-1252002024.file.myqcloud.com/common/py36.tgz) 上传到和第一步 agent 的同级目录。
 3. 上传基础插件包（bknodeman 的页面上传），文件名为 `bk_nodeman-*.tar.gz` 。
 4. 点击全局配置->gse 环境管理->默认接入点->编辑，相关信息需要用以下命令行获取
-```plain
+``` plain
 zookeeper集群地址：nodePort=32181 参考 kubectl get pod -n blueking -o wide|grep zookeeper 对应的node IP。
 zookeeper用户名和密码：helm get values bk-gse-ce -n blueking | grep token
 Btserver，dataserver，taskserver的地址，先都填入 127.0.0.1 即可。后台任务一分钟后，根据zk的地址刷新真实的gse 后台服务的地址。
