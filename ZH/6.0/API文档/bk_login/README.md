@@ -4,4 +4,4 @@
 
 | 资源名称 | 资源描述 |
 |---|---|
-| [get_doc_link_by_path](./zh-hans/get_user.md)	| 获取用户信息 |
+| [get_user](./zh-hans/get_user.md)	| 获取用户信息 |
