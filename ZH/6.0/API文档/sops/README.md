@@ -15,10 +15,10 @@
 | [get_plugin_list](./zh-hans/get_plugin_list.md)                                         | 查询某个业务下的插件列表                 |
 | [get_plugin_detail](./zh-hans/get_plugin_detail.md)                                     | 根据插件 code 获取某个业务下对应插件信息 |
 | [get_tasks_status](./zh-hans/get_task_detail.md)                                        | 批量查询任务状态                         |
-| [get_task_detail](./zh-hans/get_task_list.md)                                           | 查询任务执行详情                         |
-| [get_task_list](./zh-hans/get_task_node_data.md)                                        | 获取业务下的任务列表                     |
-| [get_task_node_data](./zh-hans/get_task_node_detail.md)                                 | 获取节点执行数据                         |
-| [get_task_node_detail](./zh-hans/get_task_status.md)                                    | 查询任务节点执行详情                     |
+| [get_task_list](./zh-hans/get_task_list.md)                                           | 查询任务执行详情                         |
+| [get_task_node_data](./zh-hans/get_task_node_data.md)                                        | 获取业务下的任务列表                     |
+| [get_task_node_detail](./zh-hans/get_task_node_detail.md)                                 | 获取节点执行数据                         |
+| [get_task_status](./zh-hans/get_task_status.md)                                    | 查询任务节点执行详情                     |
 | [get_tasks_manual_intervention_state](./zh-hans/get_tasks_manual_intervention_state.md) | 获取一批任务的是否需要人工干预的判断状态 |
 | [get_task_status](./zh-hans/get_tasks_status.md)                                        | 查询任务或任务节点执行状态               |
 | [get_template_info](./zh-hans/get_template_info.md)                                     | 查询单个模板详情                         |

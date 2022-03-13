@@ -2,17 +2,22 @@
 
 采集器 | 当前版本 | 包名
 ----|------|---
-basereport | 10.11.x | [basereport-10.11.66.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/basereport-10.11.66.tgz)
+basereport | 10.12.x | [basereport-10.12.76.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/basereport-10.12.76.tgz)
 processbeat | 1.19.x | [processbeat-1.19.71.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/processbeat-1.19.71.tgz)
-exceptionbeat | 1.7.x | [exceptionbeat-1.8.44.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.8.44.tgz)
-bkmonitorbeat | 1.17.x | [bkmonitorbeat-1.17.119.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.17.119.tgz)
+exceptionbeat | 1.8.x | [exceptionbeat-1.8.44.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.8.44.tgz)
+bkmonitorbeat | 1.19.x | [bkmonitorbeat-1.19.123.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.19.123.tgz)
 bkmonitorproxy | 1.2.x | [bkmonitorproxy-1.2.43.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorproxy-1.2.43.tgz)
-bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.0.100.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.0.100.tgz)
+bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.0.101.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.0.101.tgz)
 gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gsecmdline-2.0.3.tgz)
 
 ## 采集器版本日志
 
 ### basereport
+
+- basereport-10.12.76.tgz
+
+【Added】新增多路径读取 gseagent/proxy cloudid 的能力
+【Fixed】修复空指针异常
 
 - basereport-10.11.66.tgz
 
@@ -46,7 +51,6 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 ### processbeat
 
 - processbeat-1.19.71.tgz
-
 
 【修复】windows 默认子任务配置路径错误问题
 【修复】监控平台下发的进程监控任务，在 windows 下匹配命令行异常
@@ -85,6 +89,11 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 ### bkunifylogbeat
 
+- bkunifylogbeat-7.3.0.101.tgz
+
+【Feature】新增支持TQOS数据上报协议
+【Fixed】修复在lxcfs系统下读取uptime文件，会导致系统卡主问题
+
 - bkunifylogbeat-7.3.0.100.tgz
 
 【bugfix】修复日志采集卡主问题
@@ -111,6 +120,10 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 【优化】采集器默认监听最近 7 天的变更的文件
 
 ### bkmonitorbeat
+
+- bkmonitorbeat-1.19.123.tgz
+
+【Optimize】优化主机静态数据采集
 
 - bkmonitorbeat-1.17.119.tgz
 
