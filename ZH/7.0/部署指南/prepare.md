@@ -33,7 +33,7 @@
 
 请在 **第一台 `master` 机器**（下文称为 **初始 master**，新手用户建议复用 **中控机**）上执行此命令：
 ``` bash
-curl -fsSL https://bkopen-1252002024.cos.ap-guangzhou.myqcloud.com/ce7/bcs.sh | bash -s -- -i k8s
+curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -i k8s
 ```
 
 安装成功后会提示如下输出:
@@ -47,7 +47,7 @@ curl -fsSL https://bkopen-1252002024.cos.ap-guangzhou.myqcloud.com/ce7/bcs.sh | 
 
 如果当时没有保存扩容命令，可以在 **初始 master** 机器上执行如下命令重新获取：
 ``` bash
-curl -fsSL https://bkopen-1252002024.cos.ap-guangzhou.myqcloud.com/ce7/bcs.sh | bash -s -- -i k8sctrl
+curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -i k8sctrl
 ```
 
 > **注意**
@@ -60,7 +60,7 @@ set -a
 cluster_env=略
 join_cmd_b64=略
 set +a
-curl -fsSL https://bkopen-1252002024.cos.ap-guangzhou.myqcloud.com/ce7/bcs.sh  | bash -s -- install k8s-node
+curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh  | bash -s -- install k8s-node
 ```
 
 扩容成功后, 会在结尾输出:

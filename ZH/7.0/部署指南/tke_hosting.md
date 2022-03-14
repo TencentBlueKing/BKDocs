@@ -22,7 +22,7 @@ https://console.cloud.tencent.com/tke2/cluster?rid=1
 
 使用 bcs.sh 脚本一键初始化，会部署一些常用的工具客户端，比如 kubectl、helm、docker 等，便于操作管理 TKE 集群
 ``` bash
-curl -fsSL https://bkopen-1252002024.cos.ap-guangzhou.myqcloud.com/ce7/bcs.sh | bash -s -- -i k8s
+curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -i k8s
 ```
 
 ####  部署 ingress-nginx，并禁用默认的 qcloud 的 nginx controller
