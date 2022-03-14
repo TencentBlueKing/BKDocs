@@ -254,10 +254,8 @@ Ps:环境变量的作用范围，可以直接选所有环境。
 ![](./assets/2022-03-09-10-45-40.png)
 ![](./assets/2022-03-09-10-45-45.png)
 
-
 |环境变量名称 |VALUE |描述 |
-
-|--|--| -- |
+|--|--|--|
 |STORAGE_TYPE |BLUEKING_ARTIFACTORY |存储类型 |
 |BKAPP_RUN_ENV |ce |运行环境 |
 |BKAPP_NODEMAN_CALLBACK_URL |http://apps.$BK_DOMAIN/prod--backend--bk--nodeman/backend |节点管理回调地址 |
