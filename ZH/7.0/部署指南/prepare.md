@@ -140,17 +140,7 @@ kubectl get nodes -o wide
 kubectl describe nodes NAME  # NAME参数为 kubectl get nodes输出的 NAME 列
 ```
 
-
-## 设置默认的 k8s namespace
-为了方便后续操作，强烈建议在 **中控机** 配置默认的 k8s namespace：
-``` bash
-kubectl config set-context --current --namespace=blueking
-```
-如果成功，提示为 `Context "kubernetes-admin@kubernetes" modified.`。
-
-
 ## kubectl 的常见报错
 1. `Unable to connect to the server: dial tcp: lookup k8s-api.bcs.local: no such host`，请确保 **中控机** 能正常解析  `~/.kube/config` 文件中的 `cluster.server` 配置项中的域名。
 2. `The connection to the server k8s-api.bcs.local:6443 was refused - did you specify the right host or port?`，请确保 **中控机** 到 `k8s-api.bcs.local` （提示的域名）的 6443 端口。一般需要检查目的服务器的防火墙，云服务器需额外检查安全组。
 3. `Unable to connect to the server: dial tcp 10.0.0.254:6443: i/o timeout`，请确保 **中控机** 到 `k8s-api.bcs.local` （提示的域名）的网络可互通，以及目的服务器的防火墙，云服务器需额外检查安全组。
-
