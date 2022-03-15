@@ -45,7 +45,7 @@ ssh-copy-id <ip>
 
 ```bash
 cd /data
-tar xf bkce_co_package-6.0.4.tgz
+tar xf bkce_co_package-6.0.5.tgz
 ```
 
 ### 5.将需要部署产品的标准运维流程模版导入至标准运维
