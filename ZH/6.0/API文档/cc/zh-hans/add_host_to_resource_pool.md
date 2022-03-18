@@ -78,7 +78,6 @@ POST
   "result": true,
   "code": 0,
   "message": "success",
-  "permission": null,
   "data": {
       "success": [
           {
