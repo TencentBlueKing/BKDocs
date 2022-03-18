@@ -69,21 +69,7 @@ GET
       "name":"总公司",
       "has_children":true,
       "full_name":"总公司",
-      "order":1,
-      "extras":{},
-      "enabled":true,
-      "children":[{
-        "id":316,
-        "name":"子部门",
-        "full_name":"总公司/子公司",
-        "has_children":true
-      }],
-      "code":null,
-      "category_id":1,
-      "lft":1,
-      "rght":6900,
-      "tree_id":1004,
-      "level":0,
+      "children":[],
       "parent":null
     }],
     "result": true
@@ -97,4 +83,15 @@ GET
 |result| bool | 返回结果，true为成功，false为失败 |
 |code|int|返回码，0表示成功，其他值表示失败|
 |message|string|错误信息|
-|data| array| 结果，请参照返回结果示例 |
+|data| array| 结果，请参照返回结果示例 | 
+
+`data` 字段简析（具体字段取决于参数 `fields`）
+
+| 字段      | 类型     | 描述      |
+|-----------|-----------|-----------|
+|id| int | 部门 ID |
+|name|string| 部门名 |
+|has_children|bool| 是否包含子部门 |
+|full_name| string | 部门完整路径 |
+|children| array| 用户关联子部门 |
+|parent| object | 该部门的父部门 |
