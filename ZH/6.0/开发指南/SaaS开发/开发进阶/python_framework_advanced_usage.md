@@ -263,7 +263,7 @@ class MyCustomMiddleware(MiddlewareMixin):
         ...
 ```
 
-__注意__： 你的 middleware 类必须继承 django 的 MiddlewareMixin，同时你的 middleware 尽量不要去重写 `__call__` 和 `__init__` 方法，参考[官方文档](https://docs.djangoproject.com/en/{{site.recommended_django_version}}/topics/http/middleware/)。
+__注意__： 你的 middleware 类必须继承 django 的 MiddlewareMixin，同时你的 middleware 尽量不要去重写 `__call__` 和 `__init__` 方法，参考[官方文档](https://docs.djangoproject.com/en/2.2/topics/http/middleware/)。
 
 
 ## 公共方法
