@@ -70,7 +70,7 @@ jobs:
           npm i -g markdown-link-check
           ret=0
           for f in ${{ steps.getfile.outputs.diff }}; do
-              markdown-link-check $f || let ret+=1
+              markdown-link-check -a [200,301,302] $f || let ret+=1
           done
           [ "$ret" != 0 ] && exit 1
           echo "::endgroup::"
