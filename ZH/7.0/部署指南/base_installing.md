@@ -90,10 +90,6 @@ yq e '.domain.bkDomain' environments/default/custom.yaml  # 读取自定义的�
 # 准备 SaaS 运行环境
 
 ## 上传 PaaS runtime 到 bkrepo
-> **注意**
->
-> 如果您在部署基础套餐后台时使用了 “一键部署脚本” （ `setup_bkce7.sh` ），则脚本自动进行了如下操作，可跳过本小节；如为分步部署，请勿跳过。
-
 
 在 **中控机** 获取需要执行的命令：
 ``` bash
