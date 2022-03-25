@@ -86,6 +86,7 @@ master_ip=10.0.0.2  # 请自行修改为bcs.sh所部署的master ip，建议配�
 mkdir -p ~/.kube
 scp "$master_ip":.kube/config ~/.kube/config  # 复制kubeconfig，如未配置免密登录请输入master的密码
 grep bcs.local /etc/hosts || ssh "$master_ip" grep bcs.local /etc/hosts | tee -a /etc/hosts  # 导出master上的bcs hosts配置到中控机，如未配置免密登录请输入master的密码
+scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进制到中控机使用
 ```
 
 ## 使用已有的 k8s 集群

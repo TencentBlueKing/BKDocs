@@ -1,6 +1,35 @@
 
 蓝鲸基础套餐的部署主要分为两个部分：先在中控机部署后台；然后在浏览器安装并配置 SaaS 。
 
+# 准备工作
+## 中控机安装工具
+`jq` 用于在中控机解析服务端 API 返回的 json 数据。
+
+在 **中控机** 执行如下命令：
+``` bash
+yum install -y jq
+```
+> **注意**
+>
+> CentOS 7 在 **`epel` 源** 提供了 `jq-1.6`。如果提示 `No package jq available.`，请先确保 **`epel` 源** 可用。
+
+## 在中控机配置ssh免密登录
+本文中会提供命令片段方便您部署。部分命令片段会从中控机上调用 `ssh` 在 k8s node 上执行远程命令，所以需提前配置免密登录。
+
+在 **中控机** 执行如下命令：
+``` bash
+k8s_nodes_ips=$(kubectl get nodes -o json |
+  jq -r '.items[].status.addresses[] | select(.type=="InternalIP") | .address')
+test -f /root/.ssh/id_rsa || ssh-keygen -N '' -t rsa -f /root/.ssh/id_rsa  # 如果不存在rsa key则创建一个。
+# 开始给发现的ip添加ssh key，期间需要您输入各节点的密码。
+for ip in $k8s_nodes_ips; do
+  ssh-copy-id "$ip" || { echo "failed on $ip."; break; }  # 如果执行失败，则退出
+done
+```
+
+常见报错：
+1. `Host key verification failed.`，且开头提示 `REMOTE HOST IDENTIFICATION HAS CHANGED`: 检查目的主机是否重装过。如果确认没连错机器，可以参考提示（如 `Offending 类型 key in /root/.ssh/known_hosts:行号`）删除 `known_hosts` 文件里的对应行。
+
 # 部署基础套餐后台
 ## 一键部署基础套餐后台
 
@@ -8,13 +37,20 @@
 
 ``` bash
 # 下载部署脚本并添加可执行权限.
-curl -Lo ~/setup_bkce7.sh http://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.sh && chmod +x ~/setup_bkce7.sh
+curl -Lo ~/setup_bkce7.sh https://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.sh && \
+  chmod +x ~/setup_bkce7.sh
 ```
 
 假设您用于部署蓝鲸的域名为 `bkce7.bktencent.com`，使用如下的命令:
 ``` bash
-~/setup_bkce7.sh --install base --domain bkce7.bktencent.com
+BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
+~/setup_bkce7.sh -i base --domain "$BK_DOMAIN"
 ```
+
+`setup_bkce7.sh` 脚本的参数解析:
+1. `-i base`：指定要安装的模块。关键词 `base` 表示基础套餐的后台部分。
+2. `--domain BK_DOMAIN`：指定蓝鲸的基础域名（下文也会使用 `BK_DOMAIN` 指代）。<br/>k8s 要求域名中的字母为**小写字母**，可以使用如下命令校验（输出结果中会高亮显示符合规范的部分）：`echo "$BK_DOMAIN" | grep -P '[a-z0-9]([-a-z0-9]*[a-z0-9])(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*'` 。
+
 此脚本耗时 15 ~ 30 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。
 
 > **提醒**
@@ -27,7 +63,6 @@ curl -Lo ~/setup_bkce7.sh http://bkopen-1252002024.file.myqcloud.com/ce7/setup_b
 
 
 # 访问蓝鲸
-
 ## 配置用户侧 DNS
 蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。
 
@@ -35,16 +70,18 @@ curl -Lo ~/setup_bkce7.sh http://bkopen-1252002024.file.myqcloud.com/ce7/setup_b
 > 
 > 请留意，这里指的不是 **k8s 集群内部** 所使用的 `coredns` 。
 
-在中控机执行如下命令即可获得 hosts 文件的参考内容:
+在 **中控机** 执行如下命令即可获得 hosts 文件的参考内容（如果有新增 node，记得提前更新 ssh 免密）：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入蓝鲸helmfile目录
 
 # 获取 ingress-controller pod所在机器的公网ip，记为$IP1
-IP1=$(kubectl get pods -n blueking -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+IP1=$(kubectl get pods -n blueking -l app.kubernetes.io/name=ingress-nginx \
+  -o jsonpath='{.items[0].status.hostIP}')
 # 获取外网ip
 IP1=$(ssh $IP1 'curl -sSf ip.sb')
 # 获取 bk-ingress-controller pod所在机器的公网ip，记为$IP2，它负责SaaS应用的流量代理。
-IP2=$(kubectl get pods -n blueking -l app.kubernetes.io/name=bk-ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+IP2=$(kubectl get pods -n blueking -l app.kubernetes.io/name=bk-ingress-nginx \
+  -o jsonpath='{.items[0].status.hostIP}')
 # 获取外网ip
 IP2=$(ssh $IP2 'curl -sSf ip.sb')
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)
@@ -90,10 +127,6 @@ yq e '.domain.bkDomain' environments/default/custom.yaml  # 读取自定义的�
 # 准备 SaaS 运行环境
 
 ## 上传 PaaS runtime 到 bkrepo
-> **注意**
->
-> 如果您在部署基础套餐后台时使用了 “一键部署脚本” （ `setup_bkce7.sh` ），则脚本自动进行了如下操作，可跳过本小节；如为分步部署，请勿跳过。
-
 
 在 **中控机** 获取需要执行的命令：
 ``` bash
@@ -119,20 +152,24 @@ kubectl run --rm \
 
 
 ## 在 PaaS 界面配置 Redis 资源池
-需要添加 SaaS 使用的 Redis 资源池，访问蓝鲸 PaaS Admin: `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
+需要添加 SaaS 使用的 Redis 资源池。
 
-共享资源池和独占资源池，各添加 10 个（如果复用则 json 一样）。如果部署 SaaS 时提示 “分配不到 redis”，需增大此处的设置。
-
+1. 先登录。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为您配置的蓝鲸基础域名。）
+2. 访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
+3. 分别在 共享资源池（`0shared`）和独占资源池（`1exclusive`）点击 “添加实例”，各添加 10 项。如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。如果部署 SaaS 时提示 “分配不到 redis”，需增大此处的数量。
 ![](./assets/2022-03-09-10-43-11.png)
-![](./assets/2022-03-09-10-43-19.png)
-
-在 **中控机** 执行如下命令可输出待填写的 json：
-``` bash
-redis_json_tpl='{"host":"bk-redis-master.blueking.svc.cluster.local","port":6379,"password":"%s"}'
-printf "$redis_json_tpl\n" $(kubectl get secret --namespace blueking bk-redis -o jsonpath="{.data.redis-password}" | base64 --decode) | jq .
-```
-命令输出如下：
-![](./assets/2022-03-09-10-44-00.png)
+启用 “可回收复用” 开关，并在 “实例配置” 贴入配置代码，在 **中控机** 执行如下命令生成：
+    ``` bash
+    redis_json_tpl='{"host":"%s","port": %d,"password":"%s"}'
+    redis_host="bk-redis-master.blueking.svc.cluster.local"  # 默认用蓝鲸默认的redis，可自行修改
+    redis_pass=$(kubectl get secret --namespace blueking bk-redis \
+      -o jsonpath="{.data.redis-password}" | base64 --decode)  # 读取默认redis的密码，可自行修改
+    printf "$redis_json_tpl\n" "$redis_host" 6379 "$redis_pass" | jq .  # 格式化以确保json格式正确
+    ```
+    命令输出如下图所示：
+    ![](./assets/2022-03-09-10-44-00.png)
+    浏览器界面如下图所示：
+    ![](./assets/2022-03-09-10-43-19.png)
 
 ## （可选） 配置 SaaS 专用 node
 在资源充足的情况下，建议单独给 SaaS 分配单独的 `node`。因为 SaaS 部署时，编译会产生高 IO 和高 CPU 消耗。原生 k8s 集群的 io 隔离暂无方案，这样会影响到所在 `node` 的其他 `pod`。
@@ -146,8 +183,8 @@ kubectl label nodes node-1 dedicated=bkSaas
 kubectl taint nodes node-1 dedicated=bkSaas:NoSchedule
 ```
 ### 在 PaaS 页面配置污点容忍
-1. 访问 http://bkpaas.$BK_DOMAIN （确保完成登录）
-2. 访问 http://bkpaas.$BK_DOMAIN/backend/admin42/platform/clusters/manage/
+1. 先登录。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为您配置的蓝鲸基础域名。）
+2. 访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/clusters/manage/` 。
 3. 点击集群 最右侧的编辑按钮，并滚动到最下面。
 4. 在 **默认 nodeSelector** 栏填写：
 ``` json
@@ -184,13 +221,13 @@ SaaS 应用采用 s-mart 包部署方式：
 
 1. SaaS 集合包 文件名：ce7_saas.tgz
     - MD5：ad0f2bea16e52c496c5ec70f2097e5eb
-    - 下载地址：http://bkopen-1252002024.file.myqcloud.com/ce7/ce7_saas.tgz
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/ce7_saas.tgz
 2. GSE Agent 集合包 文件名：gse_client_ce_3.6.16.zip
     - MD5：9a2d4f3d0034ea37a6c5cb8f7c4e399a
-    - 下载地址：http://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip
 3. Python 3.6 文件名：py36.tgz
     - MD5：7f9217b406703e3e3ee88681dd903bd1
-    - 下载地址：http://bkopen-1252002024.file.myqcloud.com/common/py36.tgz
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz
 
 ## 各 SaaS 安装及配置说明
 ### 部署流程服务（bk_itsm）
@@ -261,11 +298,11 @@ Ps:环境变量的作用范围，可以直接选所有环境。
 |BKAPP_NODEMAN_CALLBACK_URL |http://apps.$BK_DOMAIN/prod--backend--bk--nodeman/backend |节点管理回调地址 |
 
 **部署成功后，按以下指引做部署后配置：**
-1. 下载 agent 合集包：下载 [http://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip](http://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip)
+1. 下载 agent 合集包：下载 [https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip](https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip)
 本机解压 zip 包后，分别上传 agent 包到 bkrepo 中（`bkrepo.$BK_DOMAIN 登陆账号密码可以通过： helm status -n blueking bk-repo 获取`。先找到 bksaas-addons 项目，节点管理对应的目录（public-bkapp-bk_nod-x > data > bkee > public > bknodeman > download），每次只能上传一个包，需要分多次上传。
 ![](./assets/2022-03-09-10-46-05.png)
 ![](./assets/2022-03-09-10-46-13.png)
-2. 下载 py36 解释器包，部署 gse proxy 安装 gse p-agent 需要用到：[http://bkopen-1252002024.file.myqcloud.com/common/py36.tgz](http://bkopen-1252002024.file.myqcloud.com/common/py36.tgz) 上传到和第一步 agent 的同级目录。
+2. 下载 py36 解释器包，部署 gse proxy 安装 gse p-agent 需要用到：[https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz](https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz) 上传到和第一步 agent 的同级目录。
 3. 上传基础插件包（bknodeman 的页面上传），文件名为 `bk_nodeman-*.tar.gz` 。
 4. 点击全局配置->gse 环境管理->默认接入点->编辑，相关信息需要用以下命令行获取
 ``` plain
