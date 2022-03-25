@@ -13,8 +13,14 @@ curl -Lo ~/setup_bkce7.sh http://bkopen-1252002024.file.myqcloud.com/ce7/setup_b
 
 假设您用于部署蓝鲸的域名为 `bkce7.bktencent.com`，使用如下的命令:
 ``` bash
-~/setup_bkce7.sh --install base --domain bkce7.bktencent.com
+BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
+~/setup_bkce7.sh -i base --domain "$BK_DOMAIN"
 ```
+
+`setup_bkce7.sh` 脚本的参数解析:
+1. `-i base`：指定要安装的模块。关键词 `base` 表示基础套餐的后台部分。
+2. `--domain BK_DOMAIN`：指定蓝鲸的基础域名（下文也会使用 `BK_DOMAIN` 指代）。<br/>k8s要求域名中的字母为**小写字母**，可以使用如下命令校验（输出结果中会高亮显示符合k8s要求的部分）：`echo "$BK_DOMAIN" | grep -P '[a-z0-9]([-a-z0-9]*[a-z0-9])(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*'` 。
+
 此脚本耗时 15 ~ 30 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。
 
 > **提醒**
@@ -127,7 +133,7 @@ kubectl run --rm \
 redis_json_tpl='{"host":"bk-redis-master.blueking.svc.cluster.local","port":6379,"password":"%s"}'
 printf "$redis_json_tpl\n" $(kubectl get secret --namespace blueking bk-redis -o jsonpath="{.data.redis-password}" | base64 --decode) | jq .
 ```
-命令输出如下：
+命令输出如下图所示：
 ![](./assets/2022-03-09-10-44-00.png)
 
 ## （可选） 配置 SaaS 专用 node
