@@ -3,7 +3,7 @@
 
 # 准备工作
 ## 中控机安装工具
-`jq` 用于在中控机解析服务端API返回的json数据。
+`jq` 用于在中控机解析服务端 API 返回的 json 数据。
 
 在 **中控机** 执行如下命令：
 ``` bash
@@ -11,14 +11,15 @@ yum install -y jq
 ```
 > **注意**
 >
-> CentOS 7 在 epel源 提供了 jq-1.6。如果提示 `No package jq available.`，请先确保 epel源 可用。
+> CentOS 7 在 **`epel` 源** 提供了 `jq-1.6`。如果提示 `No package jq available.`，请先确保 **`epel` 源** 可用。
 
 ## 在中控机配置ssh免密登录
-本文中会提供命令片段方便您部署，会从中控机上自动 `ssh` 到不同的k8s node上执行命令。所以需提前配置ssh免密登录。
+本文中会提供命令片段方便您部署。部分命令片段会从中控机上调用 `ssh` 在 k8s node 上执行远程命令，所以需提前配置免密登录。
 
 在 **中控机** 执行如下命令：
 ``` bash
-k8s_nodes_ips=$(kubectl get nodes -o json | jq -r '.items[].status.addresses[] | select(.type=="InternalIP") | .address')
+k8s_nodes_ips=$(kubectl get nodes -o json |
+  jq -r '.items[].status.addresses[] | select(.type=="InternalIP") | .address')
 test -f /root/.ssh/id_rsa || ssh-keygen -N '' -t rsa -f /root/.ssh/id_rsa  # 如果不存在rsa key则创建一个。
 # 开始给发现的ip添加ssh key，期间需要您输入各节点的密码。
 for ip in $k8s_nodes_ips; do
@@ -36,7 +37,8 @@ done
 
 ``` bash
 # 下载部署脚本并添加可执行权限.
-curl -Lo ~/setup_bkce7.sh https://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.sh && chmod +x ~/setup_bkce7.sh
+curl -Lo ~/setup_bkce7.sh https://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.sh && \
+  chmod +x ~/setup_bkce7.sh
 ```
 
 假设您用于部署蓝鲸的域名为 `bkce7.bktencent.com`，使用如下的命令:
@@ -47,7 +49,7 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 `setup_bkce7.sh` 脚本的参数解析:
 1. `-i base`：指定要安装的模块。关键词 `base` 表示基础套餐的后台部分。
-2. `--domain BK_DOMAIN`：指定蓝鲸的基础域名（下文也会使用 `BK_DOMAIN` 指代）。<br/>k8s要求域名中的字母为**小写字母**，可以使用如下命令校验（输出结果中会高亮显示符合k8s要求的部分）：`echo "$BK_DOMAIN" | grep -P '[a-z0-9]([-a-z0-9]*[a-z0-9])(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*'` 。
+2. `--domain BK_DOMAIN`：指定蓝鲸的基础域名（下文也会使用 `BK_DOMAIN` 指代）。<br/>k8s 要求域名中的字母为**小写字母**，可以使用如下命令校验（输出结果中会高亮显示符合规范的部分）：`echo "$BK_DOMAIN" | grep -P '[a-z0-9]([-a-z0-9]*[a-z0-9])(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*'` 。
 
 此脚本耗时 15 ~ 30 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。
 
@@ -73,11 +75,13 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 cd ~/bkhelmfile/blueking/  # 进入蓝鲸helmfile目录
 
 # 获取 ingress-controller pod所在机器的公网ip，记为$IP1
-IP1=$(kubectl get pods -n blueking -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+IP1=$(kubectl get pods -n blueking -l app.kubernetes.io/name=ingress-nginx \
+  -o jsonpath='{.items[0].status.hostIP}')
 # 获取外网ip
 IP1=$(ssh $IP1 'curl -sSf ip.sb')
 # 获取 bk-ingress-controller pod所在机器的公网ip，记为$IP2，它负责SaaS应用的流量代理。
-IP2=$(kubectl get pods -n blueking -l app.kubernetes.io/name=bk-ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+IP2=$(kubectl get pods -n blueking -l app.kubernetes.io/name=bk-ingress-nginx \
+  -o jsonpath='{.items[0].status.hostIP}')
 # 获取外网ip
 IP2=$(ssh $IP2 'curl -sSf ip.sb')
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)
@@ -152,13 +156,15 @@ kubectl run --rm \
 
 1. 先登录。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为您配置的蓝鲸基础域名。）
 2. 访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
-3. 分别在 共享资源池（`0shared`）和独占资源池（`1exclusive`）点击 “添加实例”，各添加 10 项。如果部署 SaaS 时提示 “分配不到 redis”，需增大此处的数量。
+3. 分别在 共享资源池（`0shared`）和独占资源池（`1exclusive`）点击 “添加实例”，各添加 10 项。如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。如果部署 SaaS 时提示 “分配不到 redis”，需增大此处的数量。
 ![](./assets/2022-03-09-10-43-11.png)
-启用 “可回收复用” 开关，并在 “实例配置” 贴入redis配置。如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。
-如需复用蓝鲸默认的 redis，可在 **中控机** 执行如下命令：
+启用 “可回收复用” 开关，并在 “实例配置” 贴入配置代码，在 **中控机** 执行如下命令生成：
     ``` bash
-    redis_json_tpl='{"host":"bk-redis-master.blueking.svc.cluster.local","port":6379,"password":"%s"}'
-    printf "$redis_json_tpl\n" $(kubectl get secret --namespace blueking bk-redis -o jsonpath="{.data.redis-password}" | base64 --decode) | jq .
+    redis_json_tpl='{"host":"%s","port": %d,"password":"%s"}'
+    redis_host="bk-redis-master.blueking.svc.cluster.local"  # 默认用蓝鲸默认的redis，可自行修改
+    redis_pass=$(kubectl get secret --namespace blueking bk-redis \
+      -o jsonpath="{.data.redis-password}" | base64 --decode)  # 读取默认redis的密码，可自行修改
+    printf "$redis_json_tpl\n" "$redis_host" 6379 "$redis_pass" | jq .  # 格式化以确保json格式正确
     ```
     命令输出如下图所示：
     ![](./assets/2022-03-09-10-44-00.png)
