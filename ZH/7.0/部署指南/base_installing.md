@@ -148,20 +148,22 @@ kubectl run --rm \
 
 
 ## 在 PaaS 界面配置 Redis 资源池
-需要添加 SaaS 使用的 Redis 资源池，访问蓝鲸 PaaS Admin: `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
+需要添加 SaaS 使用的 Redis 资源池。
 
-共享资源池和独占资源池，各添加 10 个（如果复用则 json 一样）。如果部署 SaaS 时提示 “分配不到 redis”，需增大此处的设置。
-
+1. 先登录。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为您配置的蓝鲸基础域名。）
+2. 访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
+3. 分别在 共享资源池（`0shared`）和独占资源池（`1exclusive`）点击 “添加实例”，各添加 10 项。如果部署 SaaS 时提示 “分配不到 redis”，需增大此处的数量。
 ![](./assets/2022-03-09-10-43-11.png)
-![](./assets/2022-03-09-10-43-19.png)
-
-在 **中控机** 执行如下命令可输出待填写的 json：
-``` bash
-redis_json_tpl='{"host":"bk-redis-master.blueking.svc.cluster.local","port":6379,"password":"%s"}'
-printf "$redis_json_tpl\n" $(kubectl get secret --namespace blueking bk-redis -o jsonpath="{.data.redis-password}" | base64 --decode) | jq .
-```
-命令输出如下图所示：
-![](./assets/2022-03-09-10-44-00.png)
+启用 “可回收复用” 开关，并在 “实例配置” 贴入redis配置。如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。
+如需复用蓝鲸默认的 redis，可在 **中控机** 执行如下命令：
+    ``` bash
+    redis_json_tpl='{"host":"bk-redis-master.blueking.svc.cluster.local","port":6379,"password":"%s"}'
+    printf "$redis_json_tpl\n" $(kubectl get secret --namespace blueking bk-redis -o jsonpath="{.data.redis-password}" | base64 --decode) | jq .
+    ```
+    命令输出如下图所示：
+    ![](./assets/2022-03-09-10-44-00.png)
+    浏览器界面如下图所示：
+    ![](./assets/2022-03-09-10-43-19.png)
 
 ## （可选） 配置 SaaS 专用 node
 在资源充足的情况下，建议单独给 SaaS 分配单独的 `node`。因为 SaaS 部署时，编译会产生高 IO 和高 CPU 消耗。原生 k8s 集群的 io 隔离暂无方案，这样会影响到所在 `node` 的其他 `pod`。
@@ -175,8 +177,8 @@ kubectl label nodes node-1 dedicated=bkSaas
 kubectl taint nodes node-1 dedicated=bkSaas:NoSchedule
 ```
 ### 在 PaaS 页面配置污点容忍
-1. 访问 http://bkpaas.$BK_DOMAIN （确保完成登录）
-2. 访问 http://bkpaas.$BK_DOMAIN/backend/admin42/platform/clusters/manage/
+1. 先登录。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为您配置的蓝鲸基础域名。）
+2. 访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/clusters/manage/` 。
 3. 点击集群 最右侧的编辑按钮，并滚动到最下面。
 4. 在 **默认 nodeSelector** 栏填写：
 ``` json
