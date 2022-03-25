@@ -36,7 +36,7 @@ done
 
 ``` bash
 # 下载部署脚本并添加可执行权限.
-curl -Lo ~/setup_bkce7.sh http://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.sh && chmod +x ~/setup_bkce7.sh
+curl -Lo ~/setup_bkce7.sh https://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.sh && chmod +x ~/setup_bkce7.sh
 ```
 
 假设您用于部署蓝鲸的域名为 `bkce7.bktencent.com`，使用如下的命令:
@@ -68,7 +68,7 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 > 
 > 请留意，这里指的不是 **k8s 集群内部** 所使用的 `coredns` 。
 
-在 **中控机** 执行如下命令即可获得 hosts 文件的参考内容:
+在 **中控机** 执行如下命令即可获得 hosts 文件的参考内容（如果有新增 node，记得提前更新 ssh 免密）：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入蓝鲸helmfile目录
 
@@ -215,13 +215,13 @@ SaaS 应用采用 s-mart 包部署方式：
 
 1. SaaS 集合包 文件名：ce7_saas.tgz
     - MD5：ad0f2bea16e52c496c5ec70f2097e5eb
-    - 下载地址：http://bkopen-1252002024.file.myqcloud.com/ce7/ce7_saas.tgz
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/ce7_saas.tgz
 2. GSE Agent 集合包 文件名：gse_client_ce_3.6.16.zip
     - MD5：9a2d4f3d0034ea37a6c5cb8f7c4e399a
-    - 下载地址：http://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip
 3. Python 3.6 文件名：py36.tgz
     - MD5：7f9217b406703e3e3ee88681dd903bd1
-    - 下载地址：http://bkopen-1252002024.file.myqcloud.com/common/py36.tgz
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz
 
 ## 各 SaaS 安装及配置说明
 ### 部署流程服务（bk_itsm）
@@ -292,11 +292,11 @@ Ps:环境变量的作用范围，可以直接选所有环境。
 |BKAPP_NODEMAN_CALLBACK_URL |http://apps.$BK_DOMAIN/prod--backend--bk--nodeman/backend |节点管理回调地址 |
 
 **部署成功后，按以下指引做部署后配置：**
-1. 下载 agent 合集包：下载 [http://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip](http://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip)
+1. 下载 agent 合集包：下载 [https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip](https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip)
 本机解压 zip 包后，分别上传 agent 包到 bkrepo 中（`bkrepo.$BK_DOMAIN 登陆账号密码可以通过： helm status -n blueking bk-repo 获取`。先找到 bksaas-addons 项目，节点管理对应的目录（public-bkapp-bk_nod-x > data > bkee > public > bknodeman > download），每次只能上传一个包，需要分多次上传。
 ![](./assets/2022-03-09-10-46-05.png)
 ![](./assets/2022-03-09-10-46-13.png)
-2. 下载 py36 解释器包，部署 gse proxy 安装 gse p-agent 需要用到：[http://bkopen-1252002024.file.myqcloud.com/common/py36.tgz](http://bkopen-1252002024.file.myqcloud.com/common/py36.tgz) 上传到和第一步 agent 的同级目录。
+2. 下载 py36 解释器包，部署 gse proxy 安装 gse p-agent 需要用到：[https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz](https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz) 上传到和第一步 agent 的同级目录。
 3. 上传基础插件包（bknodeman 的页面上传），文件名为 `bk_nodeman-*.tar.gz` 。
 4. 点击全局配置->gse 环境管理->默认接入点->编辑，相关信息需要用以下命令行获取
 ``` plain
