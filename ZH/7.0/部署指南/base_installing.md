@@ -1,6 +1,34 @@
 
 蓝鲸基础套餐的部署主要分为两个部分：先在中控机部署后台；然后在浏览器安装并配置 SaaS 。
 
+# 准备工作
+## 中控机安装工具
+`jq` 用于在中控机解析服务端API返回的json数据。
+
+在 **中控机** 执行如下命令：
+``` bash
+yum install -y jq
+```
+> **注意**
+>
+> CentOS 7 在 epel源 提供了 jq-1.6。如果提示 `No package jq available.`，请先确保 epel源 可用。
+
+## 在中控机配置ssh免密登录
+本文中会提供命令片段方便您部署，会从中控机上自动 `ssh` 到不同的k8s node上执行命令。所以需提前配置ssh免密登录。
+
+在 **中控机** 执行如下命令：
+``` bash
+k8s_nodes_ips=$(kubectl get nodes -o json | jq -r '.items[].status.addresses[] | select(.type=="InternalIP") | .address')
+test -f /root/.ssh/id_rsa || ssh-keygen -N '' -t rsa -f /root/.ssh/id_rsa  # 如果不存在rsa key则创建一个。
+# 开始给发现的ip添加ssh key，期间需要您输入各节点的密码。
+for ip in $k8s_nodes_ips; do
+  ssh-copy-id "$ip" || { echo "failed on $ip."; break; }  # 如果执行失败，则退出
+done
+```
+
+常见报错：
+1. `Host key verification failed.`，且开头提示 `REMOTE HOST IDENTIFICATION HAS CHANGED`: 检查目的主机是否重装过。如果确认没连错机器，可以参考提示（如 `Offending 类型 key in /root/.ssh/known_hosts:行号`）删除 `known_hosts` 文件里的对应行。
+
 # 部署基础套餐后台
 ## 一键部署基础套餐后台
 
@@ -33,7 +61,6 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 
 # 访问蓝鲸
-
 ## 配置用户侧 DNS
 蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。
 
@@ -41,7 +68,7 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 > 
 > 请留意，这里指的不是 **k8s 集群内部** 所使用的 `coredns` 。
 
-在中控机执行如下命令即可获得 hosts 文件的参考内容:
+在 **中控机** 执行如下命令即可获得 hosts 文件的参考内容:
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入蓝鲸helmfile目录
 
