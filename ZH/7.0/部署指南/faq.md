@@ -125,3 +125,12 @@ username="admin"
 user_id = user_id_encoder.encode(ProviderType.BK.value, username)
 UserProfile.objects.update_or_create(user=user_id, defaults={'role':4, 'enable_regions':'default'})
 ```
+
+### bkpaas3 修改日志级别
+apiserver 和 engine 模块都支持通过环境变量设置日志级别。
+
+apiserver-main、apiserver-celery、engine-main、engine-celery ：编辑这些 Deployment，如：
+``` bash
+kubectl edit deployment apiserver-main
+```
+将 `DJANGO_LOG_LEVEL` 的值改为 `DEBUG`。
