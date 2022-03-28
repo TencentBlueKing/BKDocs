@@ -156,7 +156,7 @@ kubectl run --rm \
 
 1. 先登录。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为您配置的蓝鲸基础域名。）
 2. 访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
-3. 分别在 共享资源池（`0shared`）和独占资源池（`1exclusive`）点击 “添加实例”，各添加 10 项。如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。如果部署 SaaS 时提示 “分配不到 redis”，需增大此处的数量。
+3. 分别在 共享资源池（`0shared`）和独占资源池（`1exclusive`）点击 “添加实例”，各添加 10 项（只有 1 个 redis 服务则 json 内容一样）。如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。如果部署 SaaS 时提示 “分配不到 redis”，需增大此处的数量。
 ![](./assets/2022-03-09-10-43-11.png)
 启用 “可回收复用” 开关，并在 “实例配置” 贴入配置代码，在 **中控机** 执行如下命令生成：
     ``` bash
