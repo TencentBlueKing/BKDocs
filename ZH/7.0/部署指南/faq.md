@@ -9,9 +9,9 @@
    ``` bash
    kubectl get pods -w
    ```
-3. 查看 pod 日志：(如果 pod 日志较多，加上 `--tail` 防止刷屏)
+3. 查看 pod `PODNAME` 的日志：（如果 pod 日志非常多，加上 `--tail=行数` 防止刷屏）
    ``` bash
-   kubectl logs <pod_name> -f --tail=xxx
+   kubectl logs PODNAME -f --tail=20
    ```
 4. 查看 pod 状态不等于 `Running` 的：
    ``` bash
@@ -20,21 +20,30 @@
    注意 job 任务生成的 pod，没有自动删除的且执行完毕的 pod，处于 `Completed` 状态。
 5. pod 状态不是 `Running`，需要了解原因：
    ``` bash
-   kubectl describe pod <pod_name>
+   kubectl describe pod PODNAME
    ```
 6. 有些 pod 的日志没有打印到 stdout，需要进入容器查看：
    ``` bash
-   kubectl exec -it <pod_name> -- bash
-   ```
-7. 访问公共 mysql：
-   ``` bash
-   kubectl exec -it -n blueking bk-mysql-mysql-master-0 -- mysql -uroot -p密码
-   ```
-8. 访问公共 mongodb:
-   ``` bash
-   kubectl exec -it -n blueking  bk-mongodb-0 -- mongo
+   kubectl exec -it PODNAME -- bash
    ```
 
+## 访问公共服务
+访问公共 mysql：
+``` bash
+kubectl exec -it -n blueking bk-mysql-mysql-master-0 -- mysql -uroot -p密码
+```
+
+访问公共 mongodb:
+``` bash
+kubectl exec -it -n blueking bk-mongodb-0 -- mongo
+```
+
+访问公共 zk:
+``` bash
+kubectl exec -it -n blueking bk-zookeeper-0 -- zkCli.sh
+```
+
+## 错误案例
 ### 部署 SaaS 在“配置资源实例”阶段报错
 首先查看 `engine-main` 这个应用对应 pod 的日志。根据错误日志提示，判断定位方向：
 1. 检测 mysql，rabbitmq，redis 等「增强服务」的资源配置是否正确。`http://bkpaas.$BK_DOMAIN/backend/admin42/platform/plans/manage` 以及 `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
