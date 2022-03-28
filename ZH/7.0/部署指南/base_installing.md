@@ -11,9 +11,9 @@ yum install -y jq
 ```
 > **注意**
 >
-> CentOS 7 在 **`epel` 源** 提供了 `jq-1.6`。如果提示 `No package jq available.`，请先确保 **`epel` 源** 可用。
+> CentOS 7 在 **`epel`源** 提供了 `jq-1.6`。如果提示 `No package jq available.`，请先确保 **`epel`源** 可用。
 
-## 在中控机配置ssh免密登录
+## 在中控机配置 ssh 免密登录
 本文中会提供命令片段方便您部署。部分命令片段会从中控机上调用 `ssh` 在 k8s node 上执行远程命令，所以需提前配置免密登录。
 
 在 **中控机** 执行如下命令：
@@ -146,7 +146,7 @@ kubectl run --rm \
 -n blueking
 ```
 
-> `runtimes-download.sh` 脚本的主要动作就是从蓝鲸官方资源库下载依赖 SaaS 必需的 `runtime` （运行时资源）并上传到私有化环境中的 bkrepo 仓库。
+> 此处 `runtimes-download.sh` 脚本从蓝鲸官方资源库下载依赖 SaaS 必需的 `runtime` （运行时资源）并上传到私有化环境中的 bkrepo 仓库。
 > 
 > 要求 k8s node 能访问外网，如果因网络问题下载异常，可以重复运行此脚本。
 
@@ -315,7 +315,7 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 
 > **提示**:
 > 
-> 1. 配置一次default模块的变量后，backend的变量可以从default模块导入。
+> 1. 配置一次 `default` 模块的变量后，`backend` 的变量可以从 `default` 模块导入。
 > 2. 环境变量的作用范围，可以直接选所有环境。
 
 ![](./assets/2022-03-09-10-45-40.png)
