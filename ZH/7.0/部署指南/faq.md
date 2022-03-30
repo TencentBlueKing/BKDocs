@@ -6,26 +6,30 @@
     kubectl config set-context --current --namespace=blueking
     ```
 2. 部署过程中，查看 pod 的变化情况：
-   ``` bash
-   kubectl get pods -w
+	``` bash
+	kubectl get pods -w
    ```
 3. 查看 pod `PODNAME` 的日志：（如果 pod 日志非常多，加上 `--tail=行数` 防止刷屏）
-   ``` bash
-   kubectl logs PODNAME -f --tail=20
-   ```
+	``` bash
+	kubectl logs PODNAME -f --tail=20
+	```
 4. 查看 pod 状态不等于 `Running` 的：
-   ``` bash
-   kubectl get pods --field-selector 'status.phase!=Running'
-   ```
-   注意 job 任务生成的 pod，没有自动删除的且执行完毕的 pod，处于 `Completed` 状态。
+	``` bash
+	kubectl get pods --field-selector 'status.phase!=Running'
+	```
+	注意 job 任务生成的 pod，没有自动删除的且执行完毕的 pod，处于 `Completed` 状态。
 5. pod 状态不是 `Running`，需要了解原因：
-   ``` bash
-   kubectl describe pod PODNAME
-   ```
+	``` bash
+	kubectl describe pod PODNAME
+	```
 6. 有些 pod 的日志没有打印到 stdout，需要进入容器查看：
-   ``` bash
-   kubectl exec -it PODNAME -- bash
-   ```
+	``` bash
+	kubectl exec -it PODNAME -- bash
+	```
+7. 为当前 bash 会话临时开启 `kubectl` 命令行补全：（标准配置方法请查阅 《[部署前置工作](./prepare.md)》 里的 “配置 kubectl 命令行补全” 章节）
+	``` bash
+	source <(kubectl completion bash)
+	```
 
 ## 访问公共服务
 访问公共 mysql：
@@ -49,13 +53,36 @@ kubectl exec -it -n blueking bk-zookeeper-0 -- zkCli.sh
 1. 检测 mysql，rabbitmq，redis 等「增强服务」的资源配置是否正确。`http://bkpaas.$BK_DOMAIN/backend/admin42/platform/plans/manage` 以及 `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
 2. 检查应用集群的 k8s 相关配置 token 是否正确。初次部署时会自动调用 `scripts/create_k8s_cluster_admin_for_paas3.sh` 脚本自动生成 token 等参数到 `./paas3_initial_cluster.yaml` 文件中。如果不正确，可以删除后这些账号和绑定后重建。
 
+### 部署 SaaS 在“执行部署前置命令”阶段报错
+检查对应 `app_code` 的日志。“执行部署前置命令” 对应着 `pre-release-hook` 容器。
+
+如下以 `bk_itsm` 为例：
+``` bash
+# kubectl logs -n bkapp-bk0us0itsm-prod pre-release-hook
+Error from server (BadRequest): container "pre-release-hook" in pod "pre-release-hook" is waiting to start: trying and failing to pull image
+```
+可以看到失败原因是无法拉取镜像，然后我们可以检查容器：
+``` bash
+# kubectl describe pod -n bkapp-bk0us0itsm-prod pre-release-hook
+Events:
+  Type     Reason     Age                    From               Message
+  ----     ------     ----                   ----               -------
+  Normal   Scheduled  3m56s                  default-scheduler  Successfully assigned bkapp-bk0us0itsm-prod/pre-release-hook to node-10-0-1-3
+  Normal   Pulling    2m24s (x4 over 3m56s)  kubelet            Pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.0-rc.399"
+  Warning  Failed     2m24s (x4 over 3m55s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.0-rc.399": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: dial tcp: lookup docker.bkce7.bktencent.com on 10.0.1.1:53: no such host
+  Warning  Failed     2m24s (x4 over 3m55s)  ku：wqbelet            Error: ErrImagePull
+  Normal   BackOff    2m10s (x6 over 3m55s)  kubelet            Back-off pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.0-rc.399"
+  Warning  Failed     119s (x7 over 3m55s)   kubelet            Error: ImagePullBackOff
+```
+此处的报错是 `node-10-0-1-3` 解析 `docker.bkce7.bktencent.com` 失败。因此需要配置所用的 DNS 服务或者配置对应机器的 `/etc/hosts` 文件。
+
 ### 无法查看 SaaS 日志
 
 确认所使用的 k8s 集群，node 节点上，docker 的容器日志路径，和 values 中配置的是否相匹配。请参考前面文档。
 
 ### ImagePullBackOff 问题
 
-pod 无法启动，状态是 ImagePullBackOff，一般是 image 地址问题。可以先查看各个 manifest 的 image 地址是否正确。
+pod 无法启动，状态是 `ImagePullBackOff`，一般是 image 地址问题。可以先查看各个 manifest 的 image 地址是否正确。
 
 ``` bash
 helm get manifest release名 | grep image:
@@ -63,8 +90,8 @@ helm get manifest release名 | grep image:
 
 ### 安装 metrics-server
 
-```bash
-helm upgrade --namespace default metrics-server bitnami/metrics-server  --set apiService.create=true --set extraArgs.kubelet-preferred-address-types=InternalIP
+``` bash
+helm install --namespace default metrics-server bitnami/metrics-server  --set apiService.create=true --set extraArgs.kubelet-preferred-address-types=InternalIP
 ```
 
 ### 使用 ksniff 抓包

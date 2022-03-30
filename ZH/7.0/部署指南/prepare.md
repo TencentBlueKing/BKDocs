@@ -118,12 +118,19 @@ gpgcheck=0
 EOF
   yum makecache fast
   yum install -y kubectl
-  mkdir -p /etc/bash_completion.d/
-  kubectl completion bash > /etc/bash_completion.d/kubectl  # 添加命令行补全
 fi
 ```
 
 如为其他系统，您可以参考 k8s 官方文档安装： https://kubernetes.io/zh/docs/tasks/tools/install-kubectl-linux/
+
+## 配置 kubectl 命令行补全
+`kubectl` 命令参数十分复杂，且 pod 名称多含有随机的标识。因此命令行补全功能十分重要。
+``` bash
+yum install -y bash-completion
+mkdir -p /etc/bash_completion.d/
+kubectl completion bash > /etc/bash_completion.d/kubectl  # 添加命令行补全
+source /etc/bash_completion.d/kubectl  # 补全会在下次登录时加载，如需在当前会话补全，主动加载之。
+```
 
 ## 检查 k8s 集群节点
 在 **中控机** 上执行如下命令：
