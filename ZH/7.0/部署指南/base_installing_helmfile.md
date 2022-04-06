@@ -69,49 +69,6 @@ helmfile -f 00-ingress-nginx.yaml.gotmpl sync
 kubectl get pod -o wide -n blueking | grep ingress-nginx-controller
 ```
 
-## 集群内 DNS 解析
-我们需要确保一些域名能解析到 ingress controller。
-
-因此需要注入 hosts 配置项到 coredns，步骤如下：
-
-``` bash
-BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
-IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-./scripts/control_coredns.sh update "$IP1" bkrepo.$BK_DOMAIN docker.$BK_DOMAIN $BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN
-./scripts/control_coredns.sh update "$IP2" apps.$BK_DOMAIN
-```
-
-确认注入结果，执行如下命令：
-``` bash
-kubectl describe configmap coredns -n kube-system
-```
-其输出中应该包含如下内容：
-``` plain
-Name:         coredns
-Namespace:    kube-system
-Labels:       <none>
-Annotations:  <none>
-
-Data
-====
-Corefile:
-----
-.:53 {
-    略
-    hosts {
-        10.0.0.4 bkrepo.bkce7.bktencent.com
-        10.0.5.4 docker.bkce7.bktencent.com
-        10.0.0.4 bkce7.bktencent.com
-        10.0.0.4 bkapi.bkce7.bktencent.com
-        10.0.0.4 bkpaas.bkce7.bktencent.com
-        10.0.0.4 bkiam-api.bkce7.bktencent.com
-        10.0.5.4 bkiam.bkce7.bktencent.com
-        fallthrough
-    }
-    略
-```
-
 # 部署基础套餐后台
 
 执行部署基础套餐命令（该步骤根据机器环境配置，大概需要 8 ~ 16 分钟）

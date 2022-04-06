@@ -62,13 +62,92 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 具体操作请查阅 [分步部署基础套餐后台](base_installing_helmfile.md) 。
 
 
-# 访问蓝鲸
-## 配置用户侧 DNS
-蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。
+# 配置 DNS
+针对访问场景的不同，我们需要配置不同的 DNS 记录。为了简化操作，以下步骤皆以 `hosts` 文件为例。
 
+## 配置 coredns
 > **提示**
 > 
-> 请留意，这里指的不是 **k8s 集群内部** 所使用的 `coredns` 。
+> “一键部署” 脚本中自动完成了此步骤，可以跳过此章节。
+
+我们需要确保 k8s 集群的容器内能解析到 ingress controller。
+
+因此需要注入 hosts 配置项到 `kube-system` namespace 下的 `coredns` 系列 pod，步骤如下：
+
+``` bash
+BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
+IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+./scripts/control_coredns.sh update "$IP1" bkrepo.$BK_DOMAIN docker.$BK_DOMAIN $BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN
+./scripts/control_coredns.sh update "$IP2" apps.$BK_DOMAIN
+```
+
+确认注入结果，执行如下命令：
+``` bash
+./scripts/control_coredns.sh list
+```
+其输出如下：
+``` plain
+        10.244.0.4 apps.bkce7.bktencent.com
+        10.244.0.5 bkrepo.bkce7.bktencent.com
+        10.244.0.5 docker.bkce7.bktencent.com
+        10.244.0.5 bkce7.bktencent.com
+        10.244.0.5 bkapi.bkce7.bktencent.com
+        10.244.0.5 bkpaas.bkce7.bktencent.com
+        10.244.0.5 bkiam-api.bkce7.bktencent.com
+        10.244.0.5 bkiam.bkce7.bktencent.com
+        10.244.0.5 bcs.bkce7.bktencent.com
+```
+
+## 配置 k8s node 的 DNS
+k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
+
+因为 node 上均有虚拟网络的路由，因此我们使用持久化的 `clusterIP`。以免频繁刷新 hosts 文件。
+
+``` bash
+BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
+IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+cat <<EOF
+$IP1 $BK_DOMAIN
+$IP1 bkrepo.$BK_DOMAIN
+$IP1 docker.$BK_DOMAIN
+EOF
+```
+
+## 配置中控机的 DNS
+当中控机为 k8s 集群的成员时，可以参考 “配置 k8s node 的 DNS” 章节改为取 `clusterIP`。
+
+当中控机非 k8s 集群成员时，需要使用 node 的内网 IP (`hostIP`)。
+> **注意**
+>
+> 当使用 node 内网 IP 时，请在 pod 迁移到其他 node 后刷新 hosts 文件。
+
+``` bash
+BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
+IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+# 配置本地host
+cat <<EOF
+$IP1 $BK_DOMAIN
+$IP1 bkrepo.$BK_DOMAIN
+$IP1 docker.$BK_DOMAIN
+$IP1 bkpaas.$BK_DOMAIN
+$IP1 bkuser.$BK_DOMAIN
+$IP1 bkuser-api.$BK_DOMAIN
+$IP1 bkapi.$BK_DOMAIN
+$IP1 apigw.$BK_DOMAIN
+$IP1 bkiam.$BK_DOMAIN
+$IP1 bkiam-api.$BK_DOMAIN
+$IP1 cmdb.$BK_DOMAIN
+$IP1 job.$BK_DOMAIN
+$IP1 jobapi.$BK_DOMAIN
+$IP2 apps.$BK_DOMAIN
+EOF
+```
+
+## 配置用户侧的 DNS
+蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。
 
 在 **中控机** 执行如下命令即可获得 hosts 文件的参考内容（如果有新增 node，记得提前更新 ssh 免密）：
 ``` bash
@@ -105,6 +184,7 @@ $IP2 apps.$BK_DOMAIN
 EOF
 ```
 
+# 访问蓝鲸
 ## 获取 PaaS 登录账户及密码
 在 **中控机** 执行如下命令获取登录账户:
 
