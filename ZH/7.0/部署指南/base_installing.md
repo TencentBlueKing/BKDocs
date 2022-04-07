@@ -151,6 +151,7 @@ EOF
 在 **中控机** 执行如下命令即可获得 hosts 文件的参考内容（如果有新增 node，记得提前更新 ssh 免密）：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入蓝鲸helmfile目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 默认从配置中提取, 也可自行赋值
 
 # 获取 ingress-controller pod所在机器的公网ip，记为$IP1
 IP1=$(kubectl get pods -n blueking -l app.kubernetes.io/name=ingress-nginx \
@@ -162,7 +163,6 @@ IP2=$(kubectl get pods -n blueking -l app.kubernetes.io/name=bk-ingress-nginx \
   -o jsonpath='{.items[0].status.hostIP}')
 # 获取外网ip
 IP2=$(ssh $IP2 'curl -sSf ip.sb')
-BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)
 # 人工检查取值
 echo "BK_DOMAIN=$BK_DOMAIN IP1=$IP1 IP2=$IP2"
 # 输出hosts
