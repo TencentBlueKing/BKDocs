@@ -18,8 +18,7 @@ yum install -y jq
 
 在 **中控机** 执行如下命令：
 ``` bash
-k8s_nodes_ips=$(kubectl get nodes -o json |
-  jq -r '.items[].status.addresses[] | select(.type=="InternalIP") | .address')
+k8s_nodes_ips=$(kubectl get nodes -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
 test -f /root/.ssh/id_rsa || ssh-keygen -N '' -t rsa -f /root/.ssh/id_rsa  # 如果不存在rsa key则创建一个。
 # 开始给发现的ip添加ssh key，期间需要您输入各节点的密码。
 for ip in $k8s_nodes_ips; do
