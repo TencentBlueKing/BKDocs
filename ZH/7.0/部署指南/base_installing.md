@@ -124,8 +124,8 @@ EOF
 
 ``` bash
 BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
-IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
-IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+IP1=$(kubectl -n blueking get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+IP2=$(kubectl -n blueking get pods -l app=bk-ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
 # 配置本地host
 cat <<EOF
 $IP1 $BK_DOMAIN
