@@ -258,6 +258,38 @@ kubectl run --rm \
     浏览器界面如下图所示：
     ![](assets/2022-03-09-10-43-19.png)
 
+### 配置 node 上的 docker 服务
+PaaS 支持 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 提供的 docker registry 服务。
+
+因为 docker 默认使用 https 协议访问 registry，因此需要额外配置。一共有 2 种配置方案：
+1. 配置 docker 使用 http 访问 registry（推荐使用，步骤见下文）。
+2. 配置 docker 使用 https 访问 registry（暂无文档，请根据如下提示自行研究）：
+   1. 用户购买了商业证书： 仅在 bkrepo 配置 docker 域名的证书即可。
+   2. 用户自签的证书： 需要在 bkrepo 配置 docker 域名的证书，且在 node 添加自签证书到操作系统 CA 库并重启 docker 服务。
+
+#### 配置 docker 使用 http 访问 registry
+在 SaaS 专用 node （如未配置专用 node，则为全部 node ）上执行命令生成新的配置文件：
+``` bash
+BK_DOMAIN="bkce7.bktencent.com"  # 请按需修改
+cat /etc/docker/daemon.json | jq '.["insecure-registries"]+=["docker.'$BK_DOMAIN'"]'
+```
+
+检查内容无误后，即可将上述内容写入此 node 上的 `/etc/docker/daemon.json`。如果这些 node 的配置文件相同，您可以在中控机生成新文件后批量替换。
+
+然后 reload docker 服务使之生效：
+``` bash
+systemctl reload docker
+```
+检查确认已经生效：
+``` bash
+docker info
+```
+预期可看到新添加的 `docker.$BK_DOMAIN` ，如果没有，请检查 docker 服务是否成功 reload：
+``` yaml
+ Insecure Registries:
+  docker.bkce7.bktencent.com
+  127.0.0.0/8
+```
 
 ## 配置 SaaS 专用 node （可选）
 在资源充足的情况下，建议单独给 SaaS 分配单独的 `node`。因为 SaaS 部署时，编译会产生高 IO 和高 CPU 消耗。原生 k8s 集群的 io 隔离暂无方案，这样会影响到所在 `node` 的其他 `pod`。
