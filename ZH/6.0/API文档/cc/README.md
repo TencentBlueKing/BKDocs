@@ -6,12 +6,12 @@
 | 资源名称                                                                                              | 资源描述                                                                     |
 | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | [add_host_lock](./zh-hans/add_host_lock.md)                                                           | 新加主机锁                                                                   |
-| [add_host_to_resource_pool](./zh-hans/add_host_to_resource_pool.md) | 根据主机列表信息添加主机到指定id的资源池 |
+| [add_host_to_resource_pool](./zh-hans/add_host_to_resource_pool.md)                                   | 根据主机列表信息添加主机到指定id的资源池                                     |
 | [add_host_to_resource](./zh-hans/add_host_to_resource.md)                                             | 新增主机到资源池                                                             |
 | [add_instance_association](./zh-hans/add_instance_association.md)                                     | 新建模型实例之间的关联关系                                                   |
 | [add_label_for_service_instance](./zh-hans/add_label_for_service_instance.md)                         | 为服务实例添加标签                                                           |
 | [batch_create_instance_association](./zh-hans/batch_create_instance_association.md)                   | 批量创建通用模型实例关联关系                                                 |
-| [batch_create_instance](./zh-hans/batch_create_instance.md) | 批量创建通用模型实例 |
+| [batch_create_inst](./zh-hans/batch_create_inst.md)                                                   | 批量创建通用模型实例                                                         |
 | [batch_create_proc_template](./zh-hans/batch_create_proc_template.md)                                 | 批量创建进程模板                                                             |
 | [batch_delete_inst](./zh-hans/batch_delete_inst.md)                                                   | 批量删除实例                                                                 |
 | [batch_delete_set](./zh-hans/batch_delete_set.md)                                                     | 批量删除集群                                                                 |
@@ -62,6 +62,7 @@
 | [find_host_relations_with_topo](./zh-hans/find_host_relations_with_topo.md)                           | 根据业务拓扑实例节点，查询该实例节点下的主机关系信息                         |
 | [find_host_topo_relation](./zh-hans/find_host_topo_relation.md)                                       | 获取主机与拓扑的关系                                                         |
 | [find_instance_association](./zh-hans/find_instance_association.md)                                   | 查询模型实例之间的关联关系                                                   |
+| [find_instassociation_with_inst](./zh-hans/find_instassociation_with_inst.md)                         | 查询模型实例关联关系，可选择返回源模型实例与目标模型实例的详情               |
 | [find_module_batch](./zh-hans/find_module_batch.md)                                                   | 批量查询某业务的模块详情                                                     |
 | [find_module_host_relation](./zh-hans/find_module_host_relation.md)                                   | 根据模块 ID 查询主机和模块的关系                                             |
 | [find_module_with_relation](./zh-hans/find_module_with_relation.md)                                   | 根据条件查询业务下的模块                                                     |
