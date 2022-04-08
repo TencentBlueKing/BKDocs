@@ -111,6 +111,7 @@ cat <<EOF
 $IP1 $BK_DOMAIN
 $IP1 bkrepo.$BK_DOMAIN
 $IP1 docker.$BK_DOMAIN
+$IP2 apps.$BK_DOMAIN
 EOF
 ```
 
@@ -422,11 +423,9 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 #### 配置 GSE 环境管理
 点击全局配置->gse 环境管理->默认接入点->编辑，相关信息需要用以下命令行获取。
 
-zookeeper 集群地址填写任意 k8s node IP，然后端口填写 `32181` （注意不是默认的 `2181`）。
-
-zookeeper 用户名和密码：
+zookeeper 集群地址填写任意 k8s node IP，端口填写 `32181` （注意不是默认的 `2181`）。然后查询 zookeeper 用户名和密码：
 ``` bash
-helm get values bk-gse-ce -n blueking | grep token
+helm get values bk-gse-ce -n blueking | grep -A 2 externalZookeeper
 ```
 
 Btserver，dataserver，taskserver 的地址，先都填入 `127.0.0.1` 即可。后台任务一分钟后，会从 zookeeper 获取到最新的后台服务地址。
@@ -435,7 +434,12 @@ Btserver，dataserver，taskserver 的地址，先都填入 `127.0.0.1` 即可�
 
 agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 `http://node_ip:30025/` （任意 k8s node IP） 后面目录路径保持不变。`30025` 是 bkrepo 暴露的 NodePort，这样可以使用 ip 来下载，无需配置 agent 端的域名解析。
 
+最终配置界面如下图所示：
 ![](assets/2022-03-09-10-46-25.png)
+
+点击 “测试 Server 及 URL 可用性”，然后点击 “下一步”。在新的 agent 信息界面点击 “确认” 保存。回到查看界面，请等待 1 ~ 2 分钟，然后刷新此页面。
+
+如果 Btserver，dataserver，taskserver 的地址自动从 `127.0.0.1` 变更为 node 的内网 IP ，则说明读取 zookeeper 成功，否则需检查 zookeeper 的 IP、 端口以及账户密码是否正确。
 
 #### agent 资源上传
 下载 agent 合集包：[https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip](https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip)
