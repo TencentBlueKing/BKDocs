@@ -81,7 +81,7 @@
 6. 刷新 lesscode url
 
    - 新增 https 相关内容 (后续版本修复)
-  
+   
         登陆至 lesscode 所在机器，在 /etc/consul-template/templates/lesscode.conf 文件 server 内新增如下内容：
 
         ```bash
@@ -114,3 +114,13 @@
     ```bash
     ./bkcli install saas-o 
     ```
+
+8. 「可选」持续集成平台（bkci）切换 https
+	
+   - 在中控机运行
+   ```bash
+   cp /data/src/ci/scripts/bk-ci-utils-https.sh  /data/install/
+   cd /data/install/
+   chmod +x bk-ci-utils-https.sh
+   ./bk-ci-utils-https.sh https
+   ```
