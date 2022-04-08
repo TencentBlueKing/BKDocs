@@ -91,7 +91,7 @@ helm get manifest release名 | grep image:
 ### 安装 metrics-server
 
 ``` bash
-helm install --namespace default metrics-server bitnami/metrics-server  --set apiService.create=true --set extraArgs.kubelet-preferred-address-types=InternalIP
+helmfile -f 00-metrics-server.yaml.gotmpl sync
 ```
 
 ### 使用 ksniff 抓包
