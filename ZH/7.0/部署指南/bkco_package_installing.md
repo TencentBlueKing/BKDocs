@@ -4,16 +4,16 @@
 在 中控机 执行
 ``` bash
 cd ~/bkhelmfile/blueking
-./scripts/config_monitor_bcs_token.sh
 helmfile -f 04-bkmonitor.yaml.gotmpl sync
 ```
 
+## 访问监控平台
 配置本地 hosts 进行访问
 ``` bash
 # 请注意替换为实际的 BK_DOMAIN
-BK_DOMAIN=paas.bktencent.com
+BK_DOMAIN=bkce7.bktencent.com
 IP1=$(kubectl get pods -n blueking -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
-IP1=$(ssh $IP1 'curl ip.sb')
+IP1=$(ssh "$IP1" 'curl ip.sb')
 echo $IP1 bkmonitor.$BK_DOMAIN
 ```
 
@@ -21,16 +21,15 @@ echo $IP1 bkmonitor.$BK_DOMAIN
 在 中控机 执行
 ``` bash
 cd ~/bkhelmfile/blueking
-helmfile -f 04-bklog-collector.yaml.gotmpl sync
 helmfile -f 04-bklog-search.yaml.gotmpl sync
 ```
 
 配置本地 hosts 进行访问
 ``` bash
 # 请注意替换为实际的 BK_DOMAIN
-BK_DOMAIN=paas.bktencent.com
+BK_DOMAIN=bkce7.bktencent.com
 IP1=$(kubectl get pods -n blueking -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
-IP1=$(ssh $IP1 'curl ip.sb')
+IP1=$(ssh "$IP1" 'curl ip.sb')
 echo $IP1 bklog.$BK_DOMAIN
 ```
 
@@ -59,10 +58,18 @@ k8smetricdataid      22m
 kubectl logs -n blueking bk-monitor-alarm-cron-worker-补全名称 bk-monitor-alarm-cron-worker
 ```
 
-### 部署 bkmonitor-operator
+### 调整 bkmonitor
+需要能读取 bcs 管理接口。
+``` bash
+cd ~/bkhelmfile/blueking
+./scripts/config_monitor_bcs_token.sh
+helmfile -f 04-bkmonitor.yaml.gotmpl apply   # apply 仅增量更新
+```
 
+### 部署 bkmonitor-operator
 ``` bash
 helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
+helmfile -f 04-bklog-collector.yaml.gotmpl sync  # 部署日志采集器
 ```
 
 如果部署中出错，请检查 pod 的日志。
