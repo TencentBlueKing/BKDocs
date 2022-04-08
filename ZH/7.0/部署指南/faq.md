@@ -26,7 +26,7 @@
 	``` bash
 	kubectl exec -it PODNAME -- bash
 	```
-7. 为当前 bash 会话临时开启 `kubectl` 命令行补全：（标准配置方法请查阅 《[部署前置工作](./prepare.md)》 里的 “配置 kubectl 命令行补全” 章节）
+7. 为当前 bash 会话临时开启 `kubectl` 命令行补全：（标准配置方法请查阅 《[部署前置工作](prepare.md)》 里的 “配置 kubectl 命令行补全” 章节）
 	``` bash
 	source <(kubectl completion bash)
 	```
@@ -91,7 +91,7 @@ helm get manifest release名 | grep image:
 ### 安装 metrics-server
 
 ``` bash
-helm install --namespace default metrics-server bitnami/metrics-server  --set apiService.create=true --set extraArgs.kubelet-preferred-address-types=InternalIP
+helmfile -f 00-metrics-server.yaml.gotmpl sync
 ```
 
 ### 使用 ksniff 抓包
