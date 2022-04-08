@@ -64,3 +64,10 @@ kubectl logs -n blueking bk-monitor-alarm-cron-worker-补全名称 bk-monitor-al
 ``` bash
 helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
 ```
+
+如果部署中出错，请检查 pod 的日志。
+
+如果未在 “节点管理” 中安装 agent，则日志中会出现如下报错：
+``` plain
+Init filed with error: failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/ipc.state.report: connect: no such file or directory
+```
