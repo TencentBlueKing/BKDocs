@@ -16,7 +16,7 @@ EOF
 cd ~/bkhelmfile/blueking
 helmfile -f 03-bcs.yaml.gotmpl sync
 ```
-另起一个终端观察相关 pod 的状态
+耗时 3 ~ 7 分钟，此时可以另起一个终端观察相关 pod 的状态
 ``` bash
 kubectl get pod -n bcs-system -w
 ```
