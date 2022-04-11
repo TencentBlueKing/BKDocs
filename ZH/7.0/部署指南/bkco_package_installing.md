@@ -64,11 +64,14 @@ helmfile -f 04-bkmonitor.yaml.gotmpl apply   # apply 仅增量更新
 
 ### 部署 bkmonitor-operator
 ``` bash
-helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
 helmfile -f 04-bklog-collector.yaml.gotmpl sync  # 部署日志采集器
+helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
 ```
 
 如果部署中出错，请检查 pod 的日志。
+``` bash
+kubectl logs -n blueking bklog-collector-bk-log-collector-补全名称 bkunifylogbeat-bklog
+```
 
 如果未在 “节点管理” 中安装 agent，则日志中会出现如下报错：
 ``` plain
