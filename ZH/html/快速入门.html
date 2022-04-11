@@ -1,0 +1,491 @@
+
+    <html lang="zh-cn">
+    <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <link href="F:\v_awjliu\BKDocs\ZH/default.css" rel="stylesheet">
+    </head>
+    <body>
+    <h1 id="_1">新手必读</h1>
+<p>运维的职能通常包含 <strong>应用发布</strong> 、 <strong>变更</strong> 、 <strong>故障处理</strong> 以及 <strong>日常需求处理</strong>等 ，覆盖研发运营生命周期的 <strong>持续集成</strong> （CI）、 <strong>持续部署</strong> （CD）、 <strong>持续运营</strong> （CO）三个阶段，从研发代码构建到产物包交付再到测试环境部署，将验证通过的版本部署到生产环境，以及提供业务上线后的运维基础支撑和增强服务。</p>
+<p>蓝鲸社区版致力于打造研发运营一体化平台，在 6.0 对外之后，我们将蓝鲸社区版产品拆分成了套餐模式，以便满足不同企业或用户的场景需求。</p>
+<h2 id="_2">一、基础套餐</h2>
+<p>持续部署场景（CD），主要覆盖应用发布变更、基础管控等运维自动化阶段，比如：
+- 配置资源管理，如主机设备、业务模块、服务进程端口、自定义配置模型等
+- 批量基础管控，如脚本执行、文件分发、定时任务等基础运维场景
+- 任务流程编排和执行，如编排一个完整的应用自动发布流程，包括备份、版本更新、配置变更、服务上线等流程节点
+- 自定义 SaaS 开发</p>
+<p>包含产品：蓝鲸 PaaS 平台、配置平台、作业平台、权限中心、用户管理、节点管理、标准运维、ITSM（流程服务管理）</p>
+<h2 id="_3">二、监控日志套餐</h2>
+<p>持续运营场景（CO），主要覆盖监控&amp;告警处理、日志检索分析，比如：
+- 不同业务场景下的监控配置、告警通知、报表视图展示、分析定位及自定义的采集上报等
+- 日志采集&amp;检索查询、关键字的日志监控、日志提取等日志服务
+- 故障自动处理，包括实时发现告警、预诊断分析、自动恢复故障</p>
+<p>包含产品：监控平台、日志平台、故障自愈</p>
+<h2 id="_4">三、容器管理套餐</h2>
+<p>容器管理的运维进阶场景，主要覆盖基于原生 K8S 的容器编排，比如：</p>
+<ul>
+<li>集群管理</li>
+<li>模板管理</li>
+<li>应用管理</li>
+<li>镜像管理</li>
+<li>网络管理</li>
+</ul>
+<p>包含产品：蓝鲸容器管理平台（BCS）</p>
+<h2 id="_5">四、持续集成套餐</h2>
+<p>持续集成场景（CI），主要覆盖自动化代码构建-测试-发布工作流，比如：</p>
+<ul>
+<li>工程编译</li>
+<li>代码库托管</li>
+<li>制品库</li>
+<li>流水线</li>
+</ul>
+<p>包含产品：蓝盾（bkci）</p>
+<p><strong>需要说明的是，监控日志套餐、持续集成套餐、容器管理套餐均是基于蓝鲸标准运维 SaaS 部署，所以必须先部署完基础套餐，再按需选择相应的套餐；此外，因为 bkci 和 BCS 已开源，也可以脱离社区版单独部署开源版。</strong></p>
+<p>蓝盾（bk-ci）开源地址：<a href="https://github.com/Tencent/bk-ci">https://github.com/Tencent/bk-ci</a></p>
+<p>容器管理平台（BCS）开源地址：<a href="https://github.com/Tencent/bk-bcs">https://github.com/Tencent/bk-bcs</a>、 <a href="https://github.com/Tencent/bk-bcs-saas">https://github.com/Tencent/bk-bcs-saas</a></p>
+<h2 id="_6">快速预览蓝鲸社区版各产品功能</h2>
+<table><tbody>
+<tr><td width="15%">产品</td><td width="85%">功能简述</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/用户管理/产品白皮书/产品简介/README.md">用户管理</a></td><td width="85%">蓝鲸提供的企业组织架构、多用户目录等集中的用户管理解决方案</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/产品简介/README.md">权限中心</a></td><td width="85%">蓝鲸体系集中权限管理服务，细化到资源实例级别的访问权限控制</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品简介/Overview.md">配置平台</a></td><td width="85%">提供主机、进程、模型等各种运维场景的配置数据服务管理，是蓝鲸体系的基石</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Overview.md">节点管理</a></td><td width="85%">批量快速地部署蓝鲸 Agent，覆盖 Linux、Windows 操作系统</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Introduction/What-is-Job.md">作业平台</a></td><td width="85%">提供批量脚本执行、文件分发、文件拉取、定时任务等基础操作的原子平台</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/标准运维/产品白皮书/产品简介/README.md">标准运维</a></td><td width="85%">可视化的图形界面流程编排、跨系统调度利器</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/监控平台/产品白皮书/intro/README.md">监控平台</a></td><td width="85%">提供丰富的数据采集能力、大规模的数据处理能力，致力于满足不同场景的监控需求</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/日志平台/产品白皮书/intro/README.md">日志平台</a></td><td width="85%">基于业界主流的全文检索引擎，提供多种场景化的采集、查询功能</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/故障自愈/产品白皮书/Intro/README.md">故障自愈</a></td><td width="85%">实时发现告警，预诊断分析，自动恢复故障，并打通周边系统实现整个流程的闭环</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/流程服务/产品白皮书/产品简介/README.md">流程服务</a></td><td width="85%">灵活自定义设计流程模块，覆盖 IT 服务中的不同管理流程或应用场景</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/管控平台/产品白皮书/产品简介/README.md">管控平台</a></td><td width="85%">蓝鲸体系的底层管控系统，是蓝鲸所有其他服务的基础（GseAgent）</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/持续集成平台/产品白皮书/产品简介/README.md">bkci（蓝盾）</a></td><td width="85%">免费并开源的 CI 服务，助力自动化构建-测试-发布工作流，持续、快速、高质量地交付产品</td></tr>
+<tr><td width="15%"><a href="https://bk.tencent.com/docs/markdown/容器管理平台/产品白皮书/Introduction/README.md">BCS（容器管理平台）</a></td><td width="85%">高度可扩展、灵活易用的容器管理服务平台，支持社区原生 Kubernetes 编排引擎</td></tr>
+</tbody></table><h1 id="_1">基础套餐快速入门</h1>
+<blockquote>
+<p>如还未部署蓝鲸社区版【基础套餐】，请参考<a href="https://bk.tencent.com/docs/markdown/部署指南/产品白皮书/基础包安装/多机部署/quick_install.md">基础套餐部署指引</a></p>
+</blockquote>
+<h2 id="_2">一分钟感性认识蓝鲸社区版</h2>
+<ul>
+<li>应用面板</li>
+</ul>
+<p>以应用的方式展示社区版基础套餐部署之后的所有产品（包括后续自己开发的 SaaS），可以通过拖动图标排序来自定义 SaaS 位置。</p>
+<p><img alt="image-20210408212126061" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/应用列表-基础服务.png" /></p>
+<ul>
+<li>开发者中心</li>
+</ul>
+<p>面向开发人员，提供了丰富的“SaaS 开发者服务”，如前后台开发框架、API 网关(ESB)、调度引擎、公共组件等，让开发者可以简单、快速地创建、部署和管理 SaaS。</p>
+<p><img alt="image-20210408212358315" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/开发者中心-新.png" /></p>
+<p><img alt="image-20201104221315879" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/开发者中心.png" /></p>
+<ul>
+<li>侧边栏（常用链接）</li>
+</ul>
+<p>包含蓝鲸官网提供的资源，如教程文档、MagicBox（前端开发工具集，速搭建前端页面），以及自定义的快捷访问链接。</p>
+<p><img alt="image-20210408212449321" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/侧边栏.png" /></p>
+<p>接下来，我们从<code>管理员</code>admin 视角来开启使用！</p>
+<h3 id="_3">一、【用户管理】账号分配</h3>
+<blockquote>
+<p>社区版部署完成之后只有一个系统默认内置的 admin 账号，也即管理员账号，拥有蓝鲸体系所有产品的权限。</p>
+</blockquote>
+<p>如果需要不同角色人员来使用蓝鲸体系产品，则到【用户管理】添加用户即可。详见：<a href="https://bk.tencent.com/docs/markdown/用户管理/产品白皮书/快速入门/AddLocalDirectory.md">用户管理产品白皮书：新增本地用户目录</a></p>
+<p>Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三方的组织架构以及鉴权体系，详情可以参考：<a href="https://bk.tencent.com/docs/markdown/开发指南/扩展开发/对接企业登录体系/login_with_usermgr.md">社区版: 蓝鲸登录接入企业内部登录</a></p>
+<h3 id="_4">二、【配置平台】创建业务</h3>
+<blockquote>
+<p>配置平台是构建其他所有流程的基石，所以在配置平台创建业务是重要的前置步骤。</p>
+</blockquote>
+<h4 id="1">1、创建业务</h4>
+<p><em><code>业务</code>是蓝鲸 CD 体系中比较重要的概念和维度，日常使用中主机、进程、业务拓扑的管理都需要依赖已经存在业务，其他蓝鲸体系产品也基本上都是围绕<code>业务</code>的维度来提供对应的服务和相关的鉴权。</em></p>
+<p>打开【蓝鲸配置平台】，选择<code>资源</code>--&gt;<code>业务</code>--&gt;<code>新建</code></p>
+<p><img alt="image-20201105190409518" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/cmdb-创建业务.png" /></p>
+<h4 id="2">2、创建业务拓扑</h4>
+<p><em><code>业务拓扑</code>是配置平台进行主机管理的基础，合适的业务模型，可以结构化的管理好主机。</em></p>
+<p>业务创建成功后在<code>业务</code>菜单中，可以看到下拉列表有了刚刚新增的业务，默认有一个<code>空闲机池</code>的 set 和三个模块，如下：</p>
+<p><img alt="image-20201105200710289" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/业务拓扑.png" /></p>
+<p>点击拓扑顶点的业务，新建集群</p>
+<p><img alt="image-20201105201737192" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/新建集群.png" /></p>
+<p>有两种方式创建集群，这里以直接创建为例（同下面创建模块），从集群模板创建详见：<a href="https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品功能/SetTemp.md">集群模板</a></p>
+<p><img alt="image-20201105201829608" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/直接创建集群.png" /></p>
+<p><img alt="image-20201105202450791" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/创建模块.png" /></p>
+<p>从模板新建模块和服务分类的详细说明，可详见：<a href="https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品功能/ServiceTemp.md">服务模板</a>  <a href="https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品功能/ServiceType.md">服务分类</a></p>
+<p>至此，业务拓扑即创建完毕。</p>
+<p><img alt="image-20201105203423835" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/集群模块.png" /></p>
+<p><em>Ps:业务拓扑默认三层，业务--&gt;集群--&gt;模块；如果实际应用场景不满足，可以新增自定义层级（最多支持 7 层），详见：<a href="https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品功能/ModelRelation.md">模型关系</a></em></p>
+<h4 id="3">3、导入主机</h4>
+<blockquote>
+<p>主机是配置平台管控最常见的资源，也是运维日常主要的管控对象；更多 CMDB 配置模型管理见：<a href="https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品功能/Model.md">模型管理</a></p>
+</blockquote>
+<p>（1）方式一：手动导入，<code>资源</code>--&gt;<code>主机</code>--&gt;<code>导入主机</code>，批量从 Excel 导入（注意：批量导入只能导入直连区的主机，跨云区域的需要通过 Agent 安装导入，云区域说明详见：<a href="https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Terms.md">基本概念：云区域</a>）</p>
+<p><img alt="image-20201105205112867" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/导入主机excel.png" /></p>
+<p>​（2）方式二：安装 Agent 自动注册（推荐）</p>
+<h3 id="agent">三、【节点管理】Agent 安装</h3>
+<blockquote>
+<p>蓝鲸 Agent，是实现主机与蓝鲸通讯的专用程序，在主机上安装了蓝鲸 Agent 以后，可以通过蓝鲸对主机进行管控，包含文件分发、作业执行、数据上报、基础信息采集等，是所有上层服务的基础。</p>
+</blockquote>
+<p>安装工具：<strong><a href="https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Overview.md">节点管理</a></strong>（批量快速地部署蓝鲸 Agent，覆盖 Linux、Windows）</p>
+<p>以安装直连区域为例（非直连安装可详见：<a href="https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/QuickStart/CustomCloudAreaInstallAgent.md">安装蓝鲸 Agent（自定义云区域）</a>）</p>
+<p>打开【节点管理】，选择<code>Agent管理</code>菜单，点击安装 Agent--&gt;普通安装</p>
+<p><img alt="image-20201105211632178" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/普通安装" /></p>
+<p><img alt="image-20201105212214483" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/普通安装.png" /></p>
+<p>安装过程可以看到每个步骤的详情</p>
+<p><img alt="image-20201105212620448" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/步骤详情.png" /></p>
+<p>安装成功后，在<code>Agent管理</code>菜单可以看到状态正常，即完成 Agent 的安装</p>
+<p><img alt="image-20201105212800806" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/状态正常.png" /></p>
+<h3 id="_5">四、【作业平台】作业执行&amp;文件分发</h3>
+<blockquote>
+<p>Agent 安装完之后，即可用<a href="https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Introduction/What-is-Job.md">作业平台</a>进行批量脚本执行、文件分发、文件拉取、定时任务等基础运维操作</p>
+</blockquote>
+<h4 id="1_1">1、快速脚本执行</h4>
+<p>打开<a href="https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Introduction/What-is-Job.md">作业平台</a>，选择左边菜单栏的<code>脚本执行</code></p>
+<p><img alt="image-20201105213835392" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/脚本执行.png" /></p>
+<p><img alt="image-20201105214108237" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/执行成功.png" /></p>
+<h4 id="2_1">2、快速文件分发</h4>
+<p>打开<a href="https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Introduction/What-is-Job.md">作业平台</a>，选择左边菜单栏的<code>文件分发</code></p>
+<p><img alt="image-20201105215606746" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/文件分发.png" /></p>
+<p>至此，我们完成了作业平台的两大核心功能<code>脚本执行</code>和<code>文件分发</code>的操作；通常情况，我们往往是需要组合这两个操作原子，并进行编排，比如版本包分发到服务器之后，需要解压，然后需要修改配置并拉起进程，这种场景我们可以通过作业平台的<code>作业</code>功能来实现，可详见：<a href="https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Features/Jobs.md">作业管理</a> 。</p>
+<h3 id="_6">五、【标准运维】任务流程编排</h3>
+<blockquote>
+<p><strong>标准运维</strong>是通过可视化的图形界面进行多系统间的“任务流程编排”和“执行”的系统，将企业内部多系统间的工作整合到一个流程模版中，实现一键自动化调度。</p>
+</blockquote>
+<p>标准运维使用<code>项目流程</code>作为任务编排模板，通过<code>项目流程</code>模板可以反复新建、执行“任务”实例，从而实现“反复多次一键自动化调度”运维日常任务的功能。</p>
+<p>我们准备编排一个简单的流程：<strong>去服务器 IP1 上执行脚本（基于蓝鲸作业平台），然后发邮件通知（基于蓝鲸 PaaS 平台）告诉用户 userA：脚本执行完成</strong>；并能够反复多次一键自动化调度使用。</p>
+<h4 id="1_2">1、创建项目流程</h4>
+<p>标准运维使用<code>项目流程</code>进行调度编排。进入标准运维后，选择<code>项目流程</code>，选择服务器 IP1 所在的业务。</p>
+<p>在项目流程页面，点击左上角新建按钮，新建项目流程。</p>
+<p><img alt="image-20201105193135770" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/image-20201105193135770.png" /></p>
+<h4 id="2_2">2、编排项目流程</h4>
+<p>流程编排页面的总体界面介绍：</p>
+<p><strong>上方：标题和流程功能区。</strong> 命名标题和编辑流程的 4 项功能：设置全局变量、基础信息、本地快照、模板数据。</p>
+<p><strong>左侧：插件节点。</strong> 选择已经对接的系统功能插件、和流程逻辑按钮。</p>
+<p><strong>中间：画布。</strong> 将左侧原子、流程逻辑按钮，拖拽到画布上，连接，进行任务编排。</p>
+<p>（1）拖拽左侧节点<code>作业平台(job)—快速执行作业</code>和<code>蓝鲸服务(BK)—发送通知</code>插件，到中间画布区域。</p>
+<p>（2）通过连线，将节点以<code>开始</code>--&gt;<code>快速执行作业</code>--&gt;<code>发送通知</code>--&gt;<code>结束</code>的方式进行编排。</p>
+<p><img alt="image-20201105194518565" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/image-20201105194518565.png" /></p>
+<p>（3）点击<code>快速执行脚本</code>节点，页面右侧弹出<code>节点配置</code>页面，在其中配置要执行的脚本、服务器 ip、目标账户等信息。填写好参数后，点击<code>保存</code>按钮。<strong>该步骤将蓝鲸作业平台的[快速执行脚本]的功能，编排入本流程中。</strong></p>
+<p><img alt="image-20201105195733855" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/image-20201105195733855.png" /></p>
+<p>（4）点击<code>发动通知</code>节点，页面右侧弹出<code>节点配置</code>页面，在其中配置通知方式、通知人员、主题、内容等信息。填写好参数后，点击“保存”按钮。<strong>该步骤将蓝鲸 PaaS 平台的<code>发送通知</code>的功能，编排入本流程中。</strong>（如果需要真实的发送通知，详见：<a href="https://bk.tencent.com/docs/markdown/PaaS平台/产品白皮书/场景案例/noticeWay.md">如何配置通知渠道，如邮件、微信、短信等？</a>）</p>
+<p><img alt="image-20201105203249641" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/image-20201105203249641.png" /></p>
+<p>（5）至此，我们就编排好了一个流程，将【蓝鲸作业平台】和【蓝鲸 PaaS 平台】的两个功能进行串联。现在我们便可以一键式的自动调度执行这个流程。</p>
+<h4 id="3_1">3、执行流程任务</h4>
+<p>在项目流程页面，可以查看已经保存的项目流程，通过点击右侧的<code>新建任务</code>链接，可以进入该项目流程的执行页面。</p>
+<p><img alt="image-20201105200547226" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/image-20201105200547226.png" /></p>
+<p>（1）第 1 步：查看到这个项目的全部步骤，如果配置了可选节点，可以选择要执行的节点。本例中，我们无须配置，直接点击<code>下一步</code>按钮。</p>
+<p><img alt="image-20201105200654504" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/image-20201105200654504.png" /></p>
+<p>（2）第 2 步：选择项目的执行信息和填写流程中需要的参数信息，本例中我们无须配置，直接点击<code>下一步</code>按钮。</p>
+<p><img alt="image-20201105200625097" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/image-20201105200625097.png" /></p>
+<p>（3）第 3 步：确认节点、参数，无误后，点击右上角的<code>执行</code>按钮，基于该流程的一条新任务实例开始执行。</p>
+<p><img alt="image-20201105200938312" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/image-20201105200938312.png" /></p>
+<p>（4）在执行页面，可以直观看到每个节点的执行状态。</p>
+<p><img alt="image-20201105202027151" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/image-20201105202027151.png" /></p>
+<p>（5）点击节点，右侧弹窗会显示该节点详细的输入参数和输出返回的结果。当执行出错时，我们可以依据输入输出参数信息，定位出调用该系统时，执行出错的原因。</p>
+<p><img alt="image-20201105201141590" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/image-20201105201141590.png" /></p>
+<p>（6）节点的调用执行都成功以后，整个任务执行成功。我们可以在【蓝鲸作业平台】上看到服务器脚本的执行记录，也可以收到【蓝鲸 PaaS 平台】发送的邮件通知消息。</p>
+<p><img alt="image-20201105202411014" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/image-20201105202411014.png" /></p>
+<p>这样我们就完成了使用标准运维编排出了多系统调度的自动化流程，并且成功的一键式触发了执行。抛砖引玉，我们可以根据自己的业务场景来编排不同的任务流程。更多标准运维场景使用见：<a href="https://bk.tencent.com/docs/markdown/标准运维/产品白皮书/产品简介/README.md">标准运维产品白皮书</a>。</p>
+<h3 id="_7">六、【权限中心】权限管理</h3>
+<blockquote>
+<p>以管理员（admin）的身份完成了以上的所有相关配置及操作之后，如果公司组织里其他人员需要使用蓝鲸体系产品，该如何进行权限的授权和申请呢？</p>
+</blockquote>
+<p>蓝鲸权限中心（BKIAM）是蓝鲸智云提供的集中权限管理服务，提供权限接入服务，细化到资源实例级别的访问权限控制。用户可以在权限中心通过自定义操作权限、用户组来实现人员权限的管理。    </p>
+<h4 id="1_3">1、配置权限模板&amp;用户组</h4>
+<p>蓝鲸部署后，admin 是默认的超级管理员，可以配置权限。</p>
+<p>admin 进入到【权限中心】配置<strong>权限模板</strong>及创建<strong>用户组</strong>，比如步骤二里创建的业务<code>测试专用</code>，建一个[测试专用业务运维用户组]，该用户组包含了设定的各个系统相关的运维权限，创建好对应的用户组，就可以给用户授权，详细操作见：<a href="https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/快速入门/CreatePremissionTemplates.md">权限中心产品白皮书：创建权限模板</a>、<a href="https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/快速入门/CreateGroups.md">创建用户组</a>。</p>
+<h4 id="2admin">2、admin 可以主动授权或者普通用户申请权限</h4>
+<ul>
+<li>主动授权</li>
+</ul>
+<p><img alt="image-20201105231234428" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/groups.png" /></p>
+<ul>
+<li>普通用户申请权限（推荐申请用户组，如果不满足可以申请自定义权限）</li>
+</ul>
+<p><img alt="image-20201105231234428" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/申请用户组.png" /></p>
+<p><img alt="image-20201105231234428" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/申请用户组2.png" /></p>
+<p>至此，非管理员也具备了使用蓝鲸体系的权限，可以根据具体场景来使用不同的产品。</p>
+<p>关于权限管理的更多场景参考：</p>
+<p><a href="https://bk.tencent.com/docs/document/6.0/131/7109">如何设置其他管理员？</a></p>
+<p><a href="https://bk.tencent.com/docs/document/6.0/131/8385">如何给组织授权？</a></p>
+<p><a href="https://bk.tencent.com/docs/document/6.0/131/7975">企业权限管理的最佳实践是怎样的？</a></p><h1 id="_1">监控日志套餐快速入门</h1>
+<p>​在<a href="https://bk.tencent.com/docs/markdown/快速入门/quick-start-v6.0-base.md">基础套餐</a>的快速入门中，我们已经掌握了利用平台能力实现运维自动化，无论您的服务器是几百，几千，几万，甚至几十万，都可以轻松进行管控。在实现了自动化之后，将极大地释放运维繁重的重复操作任务，使其能够更关注业务，为业务创造更多价值。</p>
+<p>在持续运维的过程中，我们需要监控预警告警，需要日志排查分析问题。通过不断总结、沉淀经验，甚至可以实现故障的自动修复。</p>
+<p>接下来，我们来快速了解监控日志套餐的强大功能。</p>
+<blockquote>
+<p>如还未部署【监控日志套餐】，请参考<a href="https://bk.tencent.com/docs/markdown/部署指南/产品白皮书/基础包安装/多机部署/value_added.md">监控日志套餐部署指引</a></p>
+</blockquote>
+<p>在部署好监控日志套餐后，即可在<code>应用列表</code>页看到<code>监控平台</code> <code>日志平台</code> <code>故障自愈</code> 这 3 个平台，如下图所示。</p>
+<p><img alt="image-20210407102451192" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/监控-image-20210407102227495.png" /></p>
+<h3 id="_2">一、【监控平台】监控告警配置</h3>
+<p>通过【节点管理】安装 Agent 之后，默认即可使用主机监控功能。</p>
+<h4 id="1">1、监控平台首页</h4>
+<p>​监控平台首页，相关功能如图所示，分为<code>左侧菜单</code>，<code>图表展示</code>和<code>业务切换</code>等几个功能区域。</p>
+<p><img alt="监控-首页-20210407113630767.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/监控-首页-20210407113630767.png" /></p>
+<h4 id="2">2、主机监控</h4>
+<p>主机监控是监控产品的核心功能之一，无需繁琐的配置，在 Agent 安装后，即可采集到完整的操作系统主机相关指标，如下图所示。</p>
+<p><img alt="监控-主机监控-20210407113630767.jpg" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/监控-主机监控-20210407113630767.jpg" /></p>
+<h4 id="3">3、主机监控视图</h4>
+<p>从主机列表上，点击主机 IP，可查看详情，如下图所示。其中左侧的主机列表，来源于 CMDB 中配置的业务拓扑，业务拓扑配置请参考<a href="https://bk.tencent.com/docs/markdown/快速入门/quick-start-v6.0-base.md#2、创建业务拓扑">CMDB 创建业务拓扑</a>。</p>
+<p><img alt="监控-主机详情-20210407113630767.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/监控-主机详情-20210407113630767.png" /></p>
+<p>主机在 CMDB 中配置了进程端口数据，则监控会展示该主机的进程端口运行情况，如下图所示。</p>
+<p><img alt="监控-主机进程监控-20210407113630767.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/监控-主机进程监控-20210407113630767.png" /></p>
+<p>​除了在主机监控中可查看视图外，还可以在<code>仪表盘</code>对各类数据进行展示，实现一屏显示所有关键图表数据的效果，如下图所示。</p>
+<p><img alt="监控-仪表盘-20210407113630767.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/监控-仪表盘-20210407113630767.png" /></p>
+<h4 id="4">4、告警策略配置</h4>
+<p>​监控的重要功能之一是发送告警，通过配置监控策略，触发阈值即可发送告警出来，默认策略如下图所示。注意，策略是默认自带的，当主机扩容后，策略 Hi 自动匹配新增的主机目标，无需人工修改策略。</p>
+<p><img alt="监控-策略管理-20210407113630767.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/监控-策略管理-20210407113630767.png" /></p>
+<p>​告警发送，默认是具有收敛功能，可以基于主机，基于策略窗口等方式进行收敛，将告警事件有效聚合，避免产生”告警风暴“，为您的提供更有效的告警信息。</p>
+<h4 id="5">5、事件中心</h4>
+<p>​在告警产生、发送后，可通过<code>事件中心</code>查看告警信息，如下图所示。</p>
+<p><img alt="监控-事件中心-20210407113630767.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/监控-事件中心-20210407113630767.png" /></p>
+<h4 id="6">6、告警屏蔽</h4>
+<p>当告警属于已知问题、无关紧要问题、或者常规的业务变更等情况，可对告警按需进行屏蔽，如下图所示。</p>
+<p><img alt="监控-告警屏蔽-20210407113630767.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/监控-告警屏蔽-20210407113630767.png" /></p>
+<h4 id="7">7、更多功能</h4>
+<p>体验到此，相信您已经掌握了<code>监控平台</code>的基本使用，如主机监控，查看视图，配置告警，告警屏蔽等，除此之外，监控平台还提供了以下更多的功能。</p>
+<ul>
+<li>灵活的自定义脚本采集</li>
+<li>日志关键字监控</li>
+<li>JMX 支持 java 程序监控</li>
+<li>兼容 Prometheus 的 Exporter 数据采集</li>
+<li>兼容 Datadog Agent 的数据采集</li>
+<li>可编程上报监控数据，支持 HTTP，命令行上报数据</li>
+<li>支持日志平台数据源接入</li>
+<li>服务拨测、网站监控</li>
+<li>动态进程监控</li>
+</ul>
+<p>更多<code>监控平台</code>的功能探索，可参考<a href="https://bk.tencent.com/docs/markdown/监控平台/产品白皮书/intro/README.md">监控平台产品白皮书</a>。</p>
+<h3 id="_3">二、【日志平台】日志检索</h3>
+<blockquote>
+<p>​如果说监控是运维的千里眼，那么日志就是运维的诊断器，有了日志，运维能精准的定位各种疑难杂症，是故采集分析日志，是运维能够更好服务团队的重要能力。在实际的运维过程中，经常会有开发找运维查询各种日志，分析线上服务运行的报错等异常情况，运维会这种琐事被打断，那么，日志平台将为您解决这种烦恼。</p>
+</blockquote>
+<p><code>日志平台</code>可以快速接入日志，与<code>ELK</code>日志套件相比，具有入门容易，配置简单，接入成本低等特点，并且可与监控平台对接配置告警。相比<code>ELK</code>，可以无需关心采集端的部署配置，无需关心数据清洗，而相同点是存储都是有 Elasticsearch。</p>
+<p>​下面，我们将采集操作系统的<code>/var/log/messages</code> ，来演示日志如何接入:</p>
+<h4 id="1_1">1、日志平台功能概览</h4>
+<p>日志平台的使用分三步，第一步接入日志，第二步使用日志，第三步按需配置日志告警。首次进入系统，界面如下图所示。</p>
+<p><img alt="日志-首页-20210408101414597.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/日志-首页-20210408101414597.png" /></p>
+<h4 id="2_1">2、接入日志</h4>
+<p>​点击菜单 <code>管理-&gt;数据接入-&gt;采集接入-新建</code> ，如下图所示</p>
+<p><img alt="日志-接入日志-20210408101414597.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/日志-接入日志-20210408101414597.png" /></p>
+<p>​配置日志采集，输入名称，日志类型，采集目标，采集路径等信息，如下图所示。</p>
+<p><img alt="日志-配置采集-1-20210408101414597.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/日志-配置采集-1-20210408101414597.png" /></p>
+<p>填写日志采集信息和选择采集目标后，如下图所示</p>
+<p><img alt="日志-配置采集-2-20210408101414597.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/日志-配置采集-2-20210408101414597.png" /></p>
+<p>​下发采集配置(如未安装日志采集器，则需要到节点管理安装采集器<code>bkunifylogbeat</code>)，如下图所示</p>
+<p><img alt="日志-配置采集-3-20210408101414597.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/日志-配置采集-3-20210408101414597.png" /></p>
+<p>​配置 ES 存储、索引名称，存储周期等，可根据实际存储周期要求配置，图下图所示</p>
+<p><img alt="日志-配置采集-4-20210408101414597.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/日志-配置采集-4-20210408101414597.png" /></p>
+<p>采集配置完成后，日志会自动入库 ES，接下来就可以进行检索日志，如下图所示</p>
+<p><img alt="日志-配置采集-5-20210408101414597.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/日志-配置采集-5-20210408101414597.png" /></p>
+<h4 id="3_1">3、检索日志</h4>
+<p>检索采集的日志，如下图所示。</p>
+<p><img alt="日志-配置采集-6-20210408101414597.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/日志-配置采集-6-20210408101414597.png" /></p>
+<p>​检索出的日志如下图所示</p>
+<p><img alt="日志-配置采集-7-20210408101414597.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/日志-配置采集-7-20210408101414597.png" /></p>
+<p>至此，我们很快完成了一个日志采集和检索的场景。如需对日志错误、关键字等进行告警，则可通过监控平台添加告警策略。此处由于篇幅关系不再详细演示，更多日志平台功能详见：<a href="https://bk.tencent.com/docs/markdown/日志平台/产品白皮书/intro/README.md">日志平台产品白皮书</a>。</p>
+<h3 id="_4">三、【故障自愈】故障自动处理</h3>
+<blockquote>
+<p>监控建好了，日志也建设了，运维工作将变得越来越轻松。接下来，我们可以玩一些更高级的用法，通过故障自愈实现故障自动修复故障。</p>
+</blockquote>
+<h4 id="1_2">1、故障自愈的权限</h4>
+<p>​故障自愈由于当前版没有接入权限中心，需要在 CMDB 中配置对应业务的运维人员，admin 账号默认具有<code>蓝鲸</code>业务权限。</p>
+<p><img alt="故障自愈-1.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/故障自愈-1.png" /></p>
+<h4 id="2_2">2、开启监控平台告警源</h4>
+<p>​监控平台的告警策略，都可以接入故障自愈中，默认已开启告警源<code>监控平台(社区版6.0)</code> 和<code>蓝鲸监控(社区版5.0版)</code> ，如下图所示</p>
+<p><img alt="故障自愈-2.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/故障自愈-2.png" /></p>
+<p>​点开<code>监控平台</code>告警源，<code>刷新告警类型</code>，即可同步<code>监控平台</code>的告警策略，如下图所示</p>
+<p><img alt="故障自愈-3.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/故障自愈-3.png" /></p>
+<p>同步后的告警策略如下图所示</p>
+<p><img alt="故障自愈-4.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/故障自愈-4.png" /></p>
+<h4 id="3_2">3、接入自愈</h4>
+<p>​创建自愈，选择<code>告警类型</code> 的告警策略，在产生告警事件后，就会调用<code>自愈套餐</code>执行相应的动作，从而实现告警和自动化运维系统打通的闭环场景，如下图所示</p>
+<p><img alt="故障自愈-5.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/故障自愈-5.png" /></p>
+<h4 id="4_1">4、自愈套餐</h4>
+<p><code>自愈套餐</code>，是告警事件后需要去处理的任务，可以调用<code>作业平台</code>，<code>标准运维</code>，<code>CMDB</code>等多个产品，</p>
+<p>如下图所示</p>
+<p><img alt="故障自愈-6.png" src="F:\v_awjliu\BKDocs\ZH/6.0/快速入门/img/故障自愈-6.png" /></p>
+<p>在我们实现了运维自动化之后，对于故障处理的自动化，仍有很大的探索空间，自愈实现了故障自动修复，减少了运维重复的故障处理操作，让我们的运维工作更高效，更专业。</p>
+<p>通过以上的快速入门，相信您已经熟悉了监控平台、日志平台、故障自愈这 3 个组合产品的使用，这 3 个产品互相之间紧密关联，同时产品功能上也支持丰富的扩展能力，无论是多么复杂的场景，都可以应对自如，</p>
+<p>通过自定义扩展，将更加适合您的个性化场景需求，极大提高运维生产力。</p><h1 id="_1">容器管理套餐快速入门</h1>
+<p><img alt="-w1997" src="F:\v_awjliu\BKDocs\ZH/6.0/容器管理平台/产品白皮书/assets/15290519660825.jpg" /></p>
+<p>此外，场景案例中的 <a href="../Scenes/Bcs_deploy_nginx_cluster.md">如何构建 Nginx 集群</a> 也可以实现快速上手 BCS。</p>
+<h2 id="_2">登录蓝鲸容器服务控制台</h2>
+<p>登录蓝鲸容器服务控制台。</p>
+<h2 id="_3">创建项目（也可选择已有项目）</h2>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/容器管理平台/产品白皮书/assets/project_home.png" /></p>
+<ul>
+<li>创建新项目：进入项目管理页面，点击【新建项目】按钮，完成项目创建操作</li>
+<li>获取已有项目权限：进入蓝鲸权限中心，【申请加入】已有项目来获取项目使用权限</li>
+</ul>
+<p><strong>关键项说明</strong>：通过项目进入容器服务后，还需要关联“蓝鲸配置平台（CMDB）”上的某个业务，目的是从该业务机器资源池中获取创建集群的主机列表。</p>
+<h2 id="_4">创建集群</h2>
+<p>在容器服务左侧导航中点击【集群】进入集群管理页面，点击【创建集群】按钮。</p>
+<p><strong>关键项说明：</strong>
+- 集群 Master 节点为奇数个，最少 1 个，最多 7 个
+- 创建集群，系统将对主机做以下初始化操作：
+    - 机器前置检查
+    - 安装蓝鲸容器服务初始化包
+    - 安装蓝鲸容器服务基础组件
+- Master 要求：
+    - 机器配置：至少 CPU/内存为 4 核/8G
+    - 系统版本：CentOS 7 及以上系统（内核版本 3.10.0-693 及以上），推荐 CentOS 7.4</p>
+<h2 id="_5">添加集群节点</h2>
+<p>集群创建成功后，您可以进入集群节点列表，为集群增加节点。</p>
+<p><strong>关键项说明：</strong>
+- Node 要求：
+    - 系统版本：CentOS 7 及以上系统（内核版本 3.10.0-693 及以上），推荐 CentOS 7.4
+    - NAT 模块：确认 NAT 模块已安装</p>
+<h2 id="_6">创建命名空间</h2>
+<p>在容器服务左侧导航中点击【命名空间】，点击【新建】按钮，创建指定集群的命名空间信息（创建服务实例将以集群命名空间维度创建）。</p>
+<p><code>注意：创建命名空间后，名称不允许修改。</code></p>
+<h2 id="_7">创建服务实例</h2>
+<p>新建项目时，系统将初始“示例模板集”到当前项目的模板集库中，您可以直接使用该模板集体验操作。</p>
+<p>示例模板集：
+- 是蓝鲸提供的《吃豆小游戏》模板配置，您可以查看该模板配置详情，对模板的使用有一个初步概念
+- 模板集中使用了镜像仓库提供的公共镜像，您可以在容器服务左侧导航中点击“仓库”查看，并推送您的项目镜像到项目私有镜像仓库</p>
+<p>创建服务应用实例：
+- 进入“示例模板集”，点击【实例化】按钮进入实例化页面
+- 选择模板集，选择集群命名空间
+- 点击【创建】按钮</p>
+<h2 id="_8">确认完成</h2>
+<p>《吃豆小游戏》已经部署完成，您可以在容器服务左侧导航中点击【应用】，查看小游戏服务应用实例。</p>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/容器管理平台/产品白皮书/assets/nginx_app.jpg" /></p>
+<p>接下来，您可以体验吃豆小游戏：</p>
+<ul>
+<li>在<code>deploy-nginx</code>应用详情页面查看<code>Host IP</code>，也就是接入层的 IP</li>
+<li>将链接 <code>http://HOST_IP/rumpetroll/?openid=is__superuser&amp;token=tPp5GwAmMPIrzXhyyA8X</code> 中的 <code>HOST_IP</code>替换为接入层 IP(如下图红框部分)，访问即可体验</li>
+</ul>
+<p><img alt="-w2020" src="F:\v_awjliu\BKDocs\ZH/6.0/容器管理平台/产品白皮书/assets/game_app.jpg" /></p>
+<p>您可以尝试：
+- 在线滚动升级小游戏
+- 在线扩缩容小游戏服务实例
+- 在线删除或重建小游戏服务实例</p>
+<h2 id="_9">小游戏使用说明</h2>
+<p>部署完成后，用户可以登入小游戏试玩使用。</p>
+<p>注意：下面 token 默认为<code>tPp5GwAmMPIrzXhyyA8X</code>。</p>
+<h3 id="pc">PC 登入地址</h3>
+<blockquote>
+<p><code>http://{domain}/rumpetroll/?openid=is__superuser&amp;token={token}</code></p>
+</blockquote>
+<p>PC 登入可以显示倒计时页面，管理员或者投放到大屏使用。</p>
+<h3 id="_10">玩家登入地址</h3>
+<blockquote>
+<p><code>http://{domain}/rumpetroll/</code></p>
+</blockquote>
+<p>普通玩家使用上面地址登入游戏。</p>
+<h3 id="_11">游戏开启和关闭</h3>
+<p>默认情况下，游戏是关闭的，可以调用 API 开启，关闭游戏。</p>
+<pre class="codehilite"><code class="language-bash"># 开启游戏
+curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'func_code=is_start&amp;enabled=1' 'http://{domain}/rumpetroll/api/func_controller/?token={token}'
+
+# 关闭游戏
+curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' -d 'func_code=is_start&amp;enabled=0' 'http://{domain}/rumpetroll/api/func_controller/?token={token}'
+
+# 获取开关状态
+curl -X GET 'http://{domain}/rumpetroll/api/func_controller/?token={token}&amp;func_code=is_start'</code></pre>
+
+
+<h3 id="_12">发送豆子</h3>
+<p>可以调用 API 发送豆子，用户角色吃掉豆子后，体型有变大效果。</p>
+<pre class="codehilite"><code class="language-bash"># 发送豆子, num 是发送豆子数量
+curl -X GET 'http://{domain}/rumpetroll/api/gold/?token={token}&amp;num={num}'</code></pre>
+
+
+<p>注意：发送完成后，PC 端会自动进入倒计时，默认 3 分钟。</p>
+<h3 id="_13">游戏统计地址</h3>
+<ul>
+<li>在线统计：http://{domain}/rumpetroll/api/stat/?token={token}&amp;meter=online</li>
+<li>吃豆排名统计：http://{domain}/rumpetroll/api/stat/?token={token}&amp;meter=online</li>
+<li>豆子剩余数量：http://{domain}/rumpetroll/api/stat/?token={token}&amp;meter=golds</li>
+</ul>
+<h3 id="_14">重置数据</h3>
+<p>使用 <code>web-console</code> 登入到 redis 所在 pod 中，清空 redis 数据即可。</p>
+<pre class="codehilite"><code class="language-bash">redis-cli flushall</code></pre><h1 id="_1">创建你的第一条流水线</h1>
+<p>这个 step-by-step 教程为你的 Go 工程创建一条流水线。</p>
+<h2 id="_2">准备事项</h2>
+<ul>
+<li>一个 git 工程，可参考<a href="Link-your-first-repo.md">关联你的第一个代码库</a></li>
+<li>一个 bk-ci 项目</li>
+<li>熟悉<a href="../Services/Pipeline/pipeline-edit.md">编辑流水线</a>页面相关操作</li>
+</ul>
+<h2 id="_3">运行你的第一次构建</h2>
+<ol>
+<li>打开 bk-ci，切换至流水线服务</li>
+<li>切换到你的项目</li>
+<li>点击新建流水线</li>
+<li>编辑如下图所示的流水线：
+   <img alt="a" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/aasets/../assets/quickstart_1.png" /></li>
+<li>点击<strong>保存并执行</strong></li>
+<li>你的#1 构建已经成功运行，请耐心等待结束
+   <img alt="a" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/aasets/../assets/quickstart_2.png" /></li>
+</ol>
+<h2 id="_4">接下来你可能需要</h2>
+<p>接下来你可能需要对流水线有更深一步的了解：</p>
+<ul>
+<li><a href="../Concepts/Learn-pipeline-in-5min.md">5 分钟读懂 bk-ci 流水线</a></li>
+</ul><h1 id="_1">关联你的第一个代码库</h1>
+<p>请按照如下步骤将你的代码库关联至 bk-ci（这里以 gitlab 为例）：</p>
+<ol>
+<li>切换至代码库服务</li>
+<li>选择关联 Gitlab 代码库（如果凭据为空时，可以点击“新增”去增加凭据）</li>
+</ol>
+<p><img alt="gitlab" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_3.png" /></p>
+<p>目前支持的代码库类型有：</p>
+<ul>
+<li>SVN</li>
+<li>私有 gitlab</li>
+<li>github</li>
+</ul>
+<h2 id="_2">接下来你可能需要</h2>
+<ul>
+<li><a href="Create-your-first-pipeline.md">创建你的第一条流水线</a></li>
+</ul><h1 id="git-ci">为你的 Git 工程开启 CI</h1>
+<h2 id="_1">准备事项</h2>
+<ul>
+<li>一个 gitlab 工程</li>
+</ul>
+<p>如没有，请参考<a href="Link-your-first-repo.md">关联你的第一个代码库</a></p>
+<ul>
+<li>一个 bk-ci 项目</li>
+<li>了解<a href="../Concepts/Learn-pipeline-in-5min.md">流水线基本概念和使用</a></li>
+</ul>
+<h2 id="bk-ci-push">通过 BK-CI 监听代码库 push 事件</h2>
+<ol>
+<li>创建一条空白流水线</li>
+<li>
+<p>在 Job1-1 中添加触发器：GitLab<img alt="gitlab" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_4.png" /></p>
+</li>
+<li>
+<p>添加 Job2-1，用来执行具体的编译任务</p>
+</li>
+</ol>
+<p><img alt="gitlab" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_5.png" /></p>
+<ol>
+<li>
+<p>依次添加如下 3 个插件：</p>
+</li>
+<li>
+<p>Checkout GitLab</p>
+<p><img alt="gitlab" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_7.png" /></p>
+</li>
+<li>
+<p>Shell Script</p>
+<p><img alt="shell" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_8.png" /></p>
+</li>
+<li>
+<p>Upload artifacts</p>
+<p><img alt="shell" src="F:\v_awjliu\BKDocs\ZH/6.0/持续集成平台/产品白皮书/assets/quickstart_9.png" /></p>
+</li>
+</ol><h1 id="_1">更多信息</h1>
+<p>说明：“快速入门”是蓝鲸软件的一个基础操作，并不能涵盖所有的内容，通过下面文章介绍，可以获取更多信息。</p>
+<ul>
+<li>
+<p>部署维护：蓝鲸支持多机部署，详见<a href="../../部署指南/产品白皮书/基础包安装/多机部署/quick_install.md">部署维护</a>的内容。</p>
+</li>
+<li>
+<p>场景案例：为了方便用户获取蓝鲸软件的最佳实践，提供了覆盖 CI、CD、CO 领域的<a href="../../bk_solutions/CI/Pipeline_git_commit_to_stag.md">实践案例</a>。</p>
+</li>
+<li>
+<p>开发指南：软件支持私有化部署，提供的是通用的服务，若需要进行定制化服务，提供了<a href="../../开发指南/开发简介/README.md">二次开发</a>的教程。</p>
+</li>
+<li>
+<p>常见问题：提供了丰富的<a href="../../常见问题/README.md">问题库</a>。</p>
+</li>
+</ul>
+    </body>
+    </html>
+    

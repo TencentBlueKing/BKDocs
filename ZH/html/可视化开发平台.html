@@ -1,0 +1,721 @@
+
+    <html lang="zh-cn">
+    <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <link href="F:\v_awjliu\BKDocs\ZH/default.css" rel="stylesheet">
+    </head>
+    <body>
+    <h1 id="_1">产品简介</h1>
+<p>蓝鲸可视化开发平台提供了前端页面在线可视化拖拽组装、配置编辑、变量管理、布局模板、路由配置、源码生成、二次开发等能力。旨在帮助用户通过尽量少的手写代码的方式快速设计和开发 SaaS。</p>
+<p>帮助 SaaS 开发者提高开发效率，支持不同角色的用户在本平台中各取所需。对前端知识不太熟悉的人员（例如产品、设计、运维开发等）来说，可以通过可视化开发平台，方便快捷的生成一个简单的页面或 SaaS 工程，可以直接用作产品原型或者 SaaS 功能页面；对专业的前端开发人员来说，除了可以方便快捷的生成页面或 SaaS 工程之外，更可以深度的订制每个组件专属的属性、事件等等，二次开发上手也非常方便快捷。</p>
+<p>目前，蓝鲸可视化开发平台已正式对外开源，GitHub 地址： <a href="https://github.com/Tencent/bk-PaaS/tree/lesscode-master/paas-ce/lesscode">https://github.com/Tencent/bk-PaaS/tree/lesscode-master/paas-ce/lesscode</a></p><h1 id="_1">术语解释</h1>
+<ul>
+<li>
+<p><strong>项目</strong>：在蓝鲸可视化开发平台中，项目就是一个前端工程，每个用户可以创建多个项目，每个项目中可以创建多个页面、多个函数、多个变量、多个自定义组件、多个变量等等。可以在线预览页面，同时也可以在线预览项目（预览时支持页面路由的跳转），当拖拽完成后，项目可以直接线上部署同时也可以下载到本地进行二次开发。</p>
+</li>
+<li>
+<p><strong>页面</strong>：页面即一个 Vue 文件，用户在页面中拖拽组件，设置组件属性、样式，设置变量，编写函数实现复杂逻辑。操作完成后保存，可下载单个页面，可查看页面源码，可查看页面 JSON 配置。</p>
+</li>
+<li>
+<p><strong>布局模板实例</strong>：我们提供了默认的一些页面布局配置，例如侧边导航布局、横向导航布局、复合型导航布局等等，帮助用户搭建页面框架，让用户专注于拖拽页面内容区，提供用户效率。</p>
+</li>
+</ul><h1 id="_1">产品架构</h1>
+<p><img alt="Architecture" src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/architecture.png" /></p><h1 id="_1">特点及优势</h1>
+<ul>
+<li><strong>可视化拖拽布局</strong>：集成蓝鲸 <a href="https://magicbox.bk.tencent.com/components_vue/2.0/example/index.html#/">MagicBox Vue</a> 通用组件、<a href="https://element.eleme.cn/#/zh-CN/component/installation">Element</a> 组件，支持在线画布拖拽组件进行页面布局编辑、在线预览、查看及下载源码</li>
+<li><strong>在线函数库管理</strong>：支持在线灵活编写管理事件函数及远程接口返回数据清洗函数</li>
+<li><strong>在线组件配置</strong>：支持组件样式、属性、事件在线配置</li>
+<li><strong>布局模板</strong>：提供多种导航布局模板</li>
+<li><strong>路由配置</strong>：支持灵活配置各个页面路由，配合预览功能可实现在线预览完整项目</li>
+<li><strong>变量管理</strong>：提供设置变量功能，灵活设置项目级、页面级变量，配合函数管理实现复杂的业务逻辑</li>
+<li><strong>支持自定义组件开发</strong>：提供自定义组件开发规范及示例，开放自定义组件开发能力，满足业务场景组件集成需求</li>
+<li><strong>二次开发能力</strong>：生成的 Vue 源码文件支持无缝集成到蓝鲸前端开发框架(<a href="https://bk.tencent.com/docs/document/6.0/130/5940">BKUI-CLI</a>)进行二次开发</li>
+</ul><h1 id="_1">快速入门</h1>
+<h2 id="1">1. 创建项目</h2>
+<p>进入蓝鲸可视化开发平台后，你可以“创建项目”开始在线一站式研发。</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/create-proj1.png" /></p>
+<p><br/></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/create-proj2.png" /></p>
+<p>注意：</p>
+<ol>
+<li>项目 ID 将作为该项目自定义组件 ID 前缀，请谨慎命名</li>
+<li>创建项目时，可选择初始化布局模板实例，可基于指定布局模板实例创建项目页面</li>
+</ol>
+<h2 id="2">2. 创建、编辑页面</h2>
+<p>进入项目“页面列表”，你可以创建多个页面，并进行页面拖拽布局编辑。</p>
+<ul>
+<li>
+<p>选择页面使用的布局导航风格</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/create-page.png" /></p>
+</li>
+<li>
+<p>拖拽组件到画布区域，进行配置</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/page1.png" /></p>
+</li>
+</ul>
+<h3 id="21">2.1 组件选择区域</h3>
+<ul>
+<li>基础组件：包含蓝鲸 Vue 组件库提供的基础通用 PC 端组件以及 ElementUI 组件库（后续将支持更多组件库）</li>
+<li>自定义组件：包含当前项目内上传的自定义组件库及其它项目公开的自定义组件</li>
+<li>图标：包含蓝鲸 Vue 组件库提供的图标集合，小图标、填充图标以及线性图标（后续将支持更多图标库）</li>
+</ul>
+<h3 id="22">2.2 画布区域</h3>
+<ul>
+<li>
+<p>第一步：拖拽组件“栅格布局”或“自由布局”到画布中，比如“二格”和“自由布局”</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/page2.png" /></p>
+</li>
+<li>
+<p>第二步：再拖拽其它组件到“二格”栅栏布局和自由布局里。（在自由布局中拖拽时，会提供辅助线帮助用户对齐组件）</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/page3.png" /></p>
+</li>
+<li>
+<p>第三步：编辑组件样式、属性，绑定事件函数</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/page4.png" /></p>
+</li>
+<li>
+<p>第四步：配置页面导航</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/page5.png" /></p>
+</li>
+<li>
+<p>第五步：保存、预览页面</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/page6.png" /></p>
+</li>
+</ul>
+<h2 id="3">3. 函数库</h2>
+<p>你可以创建、管理项目页面所需要使用的 JS 函数。平台提供了两款示例函数供参考。
+- getMockData：基于空白函数模板，调用远程 API 获取数据
+- getApiData：基于远程函数模板，填写远程 API 调用信息，函数本身仅处理远程 API 返回数据即可</p>
+<p>函数可用于组件事件绑定或组件数据源获取。</p>
+<h4 id="_2">注意</h4>
+<ul>
+<li>基于远程函数模板调用远程 API 的方式是由 server 发送异步请求，因此在远程 API 的服务端支持的情况下，可以实现跨域请求</li>
+<li>基于空白函数模板调用远程 API 的方式默认是由浏览器发送异步请求，因此不能跨域。具体参见 getMockData 示例函数。</li>
+<li>在空白函数模板中，在函数体中编写如下代码也可实现跨域请求，本质上是使用了 getApiData 的方式。
+    <img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/func.png" /></li>
+</ul>
+<h2 id="4">4. 自定义组件库</h2>
+<p>除了基础通用组件，还可以上传自己研发的业务场景组件。</p>
+<p>注意：
+- 自定义组件是由用户自己上传的组件，因此需要自行搭建私有 npm 仓库或者搭建<a href="https://github.com/Tencent/bk-ci/tree/master/src/backend/storage/core">蓝鲸制品库服务</a>
+- 组件上传包必须是使用平台提供的打包工具打包后再上传
+- 须遵循平台提供的自定义组件规范进行组件开发</p>
+<p>自定义组件开发请参见<a href="../产品功能/custom-compent.md">自定义组件开发指引</a></p>
+<h2 id="5">5. 二次开发</h2>
+<p>如果你对拖拽出来的页面需要进行二次开发，可参考如下方式进行：</p>
+<h3 id="_3">方式一：下载项目全部源码</h3>
+<p>平台将把项目所有页面源码及页面路由配置集成到蓝鲸前端开发框架（<a href="https://www.npmjs.com/package/bkui-cli">bkui-cli</a>）框架中，下载后的源码包可以直接在蓝鲸 PaaS 平台部署。</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/page7.png" /></p>
+<h3 id="_4">方式二：下载单页面源码</h3>
+<p>如果是已有开发中项目，只需要拖拽单独页面进行二次开发，你可以只下载单页面的源码放入你已有开发中项目工程代码中即可。</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/page8.png" /></p><h1 id="_1">如何开发一个表格查询页面</h1>
+<h2 id="inputtable">第一步：画布中添加 Input、Table 组件</h2>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table1.png" /></p>
+<h2 id="input">第二步：为 Input 组件的值绑定变量</h2>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table2.png" /></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table3.png" /></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table4.png" /></p>
+<h2 id="table">第三步：为 Table 组件的数据属性和分页属性绑定变量</h2>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table5.png" /></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table6.png" /></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table7.png" /></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table8.png" /></p>
+<h2 id="table-gettabledata">第四步：编写 Table 组件数据源获取函数 (getTableData)</h2>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table9.png" /></p>
+<p><strong>编写函数时，编辑器除了支持 JS 本身的自动提示，还支持提示用户自己设置的函数、变量。</strong></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table10.png" /></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table11.png" /></p>
+<h2 id="table_1">第五步：Table 组件绑定数据源</h2>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table12.png" /></p>
+<p><strong>远程函数获取数据后，发现画布中表格数据空了，这是因为数据返回生效了，而表格的列并没有和数据返回的列对应上，这里只需要设置表头配置即可</strong></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table13.png" /></p>
+<h2 id="table-pagechange">第六步：编写 Table 组件分页函数 (pageChange)</h2>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table14.png" /></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table15.png" /></p>
+<h2 id="input-change">第七步：设置 Input 组件 change 事件，添加搜索功能</h2>
+<p><strong>由于在前面的 getTableData 函数中，我们已经设置 keyword 参数为 Input 组件绑定的 v-model 变量，因此这里直接将 Input 组件的 change 事件绑定为 getTableData 函数即可</strong></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table16.png" /></p>
+<h2 id="_2">第八步：拖拽完毕，预览查看最终效果</h2>
+<p><strong>页面加载时，发送异步请求，返回数据渲染表格</strong></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table17.png" /></p>
+<p><strong>翻页后，带上正确的翻页参数发送异步请求，返回数据渲染表格</strong></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table18.png" /></p>
+<p><strong>搜索框内容改变时，带上正确的搜索参数发送异步请求，返回数据渲染表格</strong></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/case-table19.png" /></p><h1 id="_1">栅格布局</h1>
+<h2 id="_2">栅格布局有单格、两格、三格、四格组件可快速拖动生成页面布局</h2>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/grid1.png" /></p>
+<h2 id="12-12-24">每个栅格组件都可以增加列数，最多 12 列。我们建议在拖拽布局时采用 12 等分或 24 等分的原则进行规划</h2>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/grid2.png" /></p>
+<h2 id="_3">你也可以通过修改尺寸、外边距等样式来实现更加灵活的布局</h2>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/grid3.png" /></p><h1 id="_1">自由布局</h1>
+<h2 id="500px">自由布局是默认高度为 500px，背景透明的一块区域，高度、宽度和背景色可以通过右侧的样式面板修改</h2>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/free-layout1.png" /></p>
+<h2 id="_2">初次从左侧面板拖入组件到自由布局中，默认放置在自由布局的左上角</h2>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/free-layout2.png" /></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/free-layout3.png" /></p>
+<h2 id="3px">自由布局里的组件可以随意的拖动，拖动的过程中，组件和组件之间会有黄色辅助线，同时会有 3px 的吸附效果，帮助你方便的对齐组件</h2>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/free-layout4.png" /></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/free-layout5.png" /></p>
+<h2 id="_3">自由布局与栅格布局的关系</h2>
+<p>可视化开发的画布支持三种类型，栅格布局、自由布局和普通组件，他们之间关系是</p>
+<ul>
+<li>自由布局中只能放入普通组件，不能放入栅格布局和自由布局</li>
+<li>自由布局里的普通组件不能拖入到栅格布局中，也不能拖到另外的自由布局中</li>
+<li>栅格布局中可以放入栅格布局、自由布局和普通组件</li>
+<li>栅格布局里的普通组件可以拖入到另外的自由布局以及另外的栅格布局中</li>
+<li>栅格布局里的栅格布局和自由布局不能拖入到另外的自由布局以及另外的栅格布局中</li>
+</ul><h1 id="_1">布局模板</h1>
+<h2 id="1">1. 概念</h2>
+<p>布局模板是用来将具有相同布局（导航）的页面收纳在一起的方式，这样页面间就可以复用同一个布局，同时布局的路由也将成为页面的共同父路由。</p>
+<h2 id="2">2. 添加布局模板</h2>
+<p>系统目前共提供了 4 种布局，分别是“空白布局”、“侧边导航布局”、“横向型导航布局”、“复合型导航布局”。</p>
+<h3 id="21">2.1 在新建项目时添加</h3>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/layout-guide-1.png" /></p>
+<ul>
+<li>其中，“空白布局”为系统默认布局，自动勾选且不能取消。</li>
+<li>如果添加时未选择其它布局模板，可创建项目后，到“布局模板实例”功能页中添加。</li>
+</ul>
+<h3 id="22">2.2 在布局模板实例中添加</h3>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/layout-guide-2.png" /></p>
+<p><strong>最终所属布局的页面访问路由为“布局路由/页面路由”</strong></p>
+<p>新建成功后，可看到项目中所有的布局模板。</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/layout-guide-3.png" /></p>
+<h2 id="3">3. 应用布局模板</h2>
+<p>完成布局模板添加后，在添加页面时即可应用添加的布局模板到页面。多个页面使用同一个布局，则可达到复用布局的效果。布局配置在所有页面间生效，同时页面拥有共同的父路由即布局的路由。</p>
+<p>新建页面时选择布局模板，可选择的模板为项目中所添加的所有模板。</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/layout-guide-4.png" /></p>
+<h2 id="4">4. 配置布局模板</h2>
+<p>页面应用了模板后，进入到页面编辑页，在画布中可看见模板内容，同时可以对提供的配置项进行设置。如使用的空白布局则无模板内容可见，画布中可视的即为页面内容。目前可提供的配置包括：站点名称、Logo 和导航。</p>
+<p>下列示例图中使用的是“侧边导航布局”，正在对布局导航进入设置。其中，中间区域为页面内容编辑区。</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/layout-guide-5.png" /></p>
+<h2 id="5">5. 更多</h2>
+<h3 id="51">5.1 修改页面布局模板</h3>
+<p>进入页面编辑页在“页面配置”中进行修改</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/layout-guide-6.png" /></p>
+<h3 id="52-id">5.2 修改布局模板实例名称、ID 以及模板路由</h3>
+<p>进入“布局模板实例”页找到需要修改的模板</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/layout-guide-7.png" /></p><h1 id="_1">自定义组件</h1>
+<p>蓝鲸可视化开发平台提供自定义组件开发规范及示例，开放自定义组件开发能力，满足业务场景组件集成需求</p>
+<h2 id="npm">npm 安装自定义组件打包构建工具</h2>
+<pre class="codehilite"><code class="language-bash">npm i -g @blueking/lesscode-cli</code></pre>
+
+
+<h2 id="_2">自定义组件工程文件结构</h2>
+<p><a href="../assets/bk-lesscode-component-demo.zip">下载 demo 示例包</a></p>
+<pre class="codehilite"><code class="language-bash">|-- ROOT/               # 自定义组件根目录
+    |-- config.json     # 必须。组件能力配置，自定义组件暴露给 lesscode 的能力说明
+    |-- index.vue       # 必须。组件实现源码
+    |-- components/     # 推荐。引用的子组件目录
+    |   ......          # ajax mock 的实现
+    |-- doc/            # 蓝鲸前端开发脚手架的文档工程，这里的细节与实际工程无关，就不详细介绍了，如有兴趣，可自行查看（doc 里的内容不会影响到实际的工程）
+    |   ......
+    |-- statics/        # 推荐。静态资源目录
+    |   ......</code></pre>
+
+
+<h2 id="_3">开始创建组件工程</h2>
+<pre class="codehilite"><code class="language-bash">1. 创建自定义组件工程主目录 component-project
+mkdir component-project
+
+2. 进入工程主目录
+cd component-project
+
+3. 解压组件开发demo示例包到上述目录
+
+4. 进行组件功能开发（文件 ./index.vue）
+touch index.vue
+
+5. 暴露组件给 lesscode 的能力配置（文件 ./config.json）
+touch config.json</code></pre>
+
+
+<h2 id="configjson-lesscode">config.json（暴露给 lesscode 的能力配置）</h2>
+<table class="table">
+    <tr>
+        <th>字段 name</th>
+        <th>类型 type</th>
+        <th>描述 describe</th>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>String</td>
+        <td>源码中展示的标签名（只支持小写英文字母）</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>String</td>
+        <td>页面展示的英文名</td>
+    </tr>
+    <tr>
+        <td>displayName</td>
+        <td>String</td>
+        <td>页面展示的中文名</td>
+    </tr>
+    <tr>
+        <td>events</td>
+        <td>Array</td>
+        <td>组件支持的自定义事件</td>
+    </tr>
+    <tr>
+        <td>styles</td>
+        <td>
+            Array，可选值如下：
+            <p>display: 生成的框的类型</p>
+            <p>size: css 盒模型（width, height）</p>
+            <p>padding: css 盒模型内边距</p>
+            <p>margin: css 盒模型外边距</p>
+            <p>font: 字体</p>
+            <p>border: 边框</p>
+        </td>
+        <td>支持的 css 样式设置</td>
+    </tr>
+    <tr>
+        <td>props</td>
+        <td>Object</td>
+        <td>组件支持的属性配置</td>
+    </tr>
+    <tr>
+        <td>directives</td>
+        <td>Array</td>
+        <td>支持的指令配置</td>
+    </tr>
+</table>
+
+<h4 id="events-vue-thisemitclick">events —— 组件内部支持 vue 的自定义事件（this.$emit('click')），配置希望那些事件可以暴露给平台</h4>
+<pre class="codehilite"><code class="language-js">// events
+{
+    ...
+    events: [
+        {
+            name: 'click', // 组件支持点击事件
+            tips: '响应组件的点击事件' // 事件功能描述
+        },
+        {
+            name: 'foucs', // 组件支持获得焦点事件
+            tips: '响应组件的获得焦点事件' // 事件功能描述
+        }
+    ]
+}</code></pre>
+
+
+<h4 id="props-props-vue">props —— 组件支持配置那些 props（与 vue 自定义组件使用方式保持一致）</h4>
+<pre class="codehilite"><code class="language-js">// props
+{
+    ...
+    // 组件支持配置 value
+    value: {
+        type: 'string', // 类型（string、number、array、object、boolean）
+        val: 'hello world !!!', // 默认值
+        options: [] // 值可选列表
+        tips: '空白提示', // 数据使用描述
+    }
+}</code></pre>
+
+
+<h4 id="directives">directives —— 支持配置那些指令</h4>
+<pre class="codehilite"><code class="language-js">// directives
+{
+    [
+        ...
+        {
+            type: 'v-bind', // 指令类型
+            prop: 'disabled', // 指令所绑定的属性
+            val: '', // 指令绑定的变量名
+            modifiers: ['sync'], // 指令修饰符，该字段可选
+            defaultVal: false // 指令绑定变量的默认值
+        }
+    ]
+}</code></pre>
+
+
+<h2 id="_4">本地调试</h2>
+<h3 id="_5">自定义组件本地调试步骤</h3>
+<ol>
+<li>初始化一个完整的 vue 项目（使用蓝鲸前端脚手架 <a href="https://www.npmjs.com/package/bkui-cli">bkui-cli</a>）</li>
+<li>运行上一步初始好的前端工程</li>
+<li>将开发好的自定义组件作为项目中引用的组件引入项目中（在蓝鲸前端脚手架初始化的工程中，通常是在 components 目录）</li>
+<li>在项目中使用你的自定义组件，测试组件的逻辑</li>
+</ol>
+<h5 id="css-postcss">注意项目中的 css 的处理工具需要配置为 postcss</h5>
+<h3 id="_6">本地开发调试完成后，为保证组件能够在线上使用，需要做以下事情</h3>
+<ol>
+<li>在组件工程根目录添加 config.json 文件，并按照上面步骤写入配置项</li>
+<li>去掉 package.json 中的 vue、bk-magic-vue 等已经由平台内置依赖，以减少组件包体积</li>
+<li>去掉项目入口文件中的 <code>import Vue from 'vue'</code> 语句，确保自定义组件使用平台提供的 vue 实例，来注册指令、组件等</li>
+<li>修改接口调用的方式，本地调试的接口调用统一修改为调用平台函数库的 getApiData 方法，注意本地调试接口与线上接口的字段是否存在差异</li>
+</ol>
+<h2 id="_7">开发完成打包</h2>
+<pre class="codehilite"><code class="language-bash"># 完成自定义组件功能开发，进入自定义组件工程根目录的上一级目录，../component-project
+cd ../component-project
+
+# 在当前目录打包得到 component-project.zip（需先安装打包工具 npm i -g @blueking/lesscode-cli）
+bklc build component-project</code></pre>
+
+
+<h2 id="_8">上传自定义组件</h2>
+<h3 id="1">1. 登录蓝鲸可视化开发平台</h3>
+<h3 id="2">2. 选择一个项目，进入项目管理</h3>
+<p>在项目列表中选择将要编辑的项目，或者新建一个项目（项目创建成功会自动进入到项目管理页面）</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/project-list.png" /></p>
+<h3 id="_9">新建自定义组件</h3>
+<p>在左侧可选 tab 中选中自定义组件库，进入自定义组件管理页面</p>
+<p>点击新建按钮进行自定义组件上传操作，如果已上传过自定义组件会展示已上传的自定义组
+件可以在当前页面进行自定义组件管理操作</p>
+<p>使用中的组件 tab 会展示自定义的使用记录</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/component-upload.png" /></p>
+<h3 id="component-projectzip">上传自定义组件（component-project.zip）</h3>
+<p>点击新建按钮会出现自定义组件新建弹框</p>
+<p>操作表单第一项选择将要上传的自定义组件包（component-project.zip）</p>
+<p>上传成功后会自动解析自定义组件包中的 config.json，返回提供的 type、name、displayName 并自动回填到对应的表单项中</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/component-create.png" /></p>
+<h2 id="_10">使用</h2>
+<h3 id="_11">指定使用组件的页面</h3>
+<p>在页面列表中选择将要编辑的页面，或者新建一个页面来编辑</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/page-list.png" /></p>
+<h3 id="_12">拖拽组件</h3>
+<p>上传的组件在页面编辑页面会自动注册</p>
+<p>进入页面编辑页面选中自定义组件 tab</p>
+<p>找到将要使用的组件拖拽到编辑区</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/component-use.png" /></p>
+<h3 id="_13">编辑组件功能</h3>
+<p>在编辑区选中将要操作的组件</p>
+<p>在右侧配置面板选中将进行的操作 tab 完成页面功能配置</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/component-operation.png" /></p><h1 id="_1">变量</h1>
+<p>蓝鲸可视化开发平台中：可以由用户创建变量，并在页面中使用变量。通过使用变量，可以完成以下需求：</p>
+<ul>
+<li>给组件属性动态赋值：将变量与属性绑定，后续可以通过函数操作变量来获取或者修改变量的值，来影响组件的属性</li>
+<li>给组件指令动态赋值：目前平台提供了 VUE 语法中的指令，将变量与指令绑定，可以通过函数操作变量来控制指令的表现，具体指令的表现可以参考<a href="https://cn.vuejs.org/v2/api/#%E6%8C%87%E4%BB%A4">VUE 指令文档</a></li>
+<li>全局变量：可以在项目定义全局变量，每个页面共享这个变量的值</li>
+<li>环境变量：一个变量可以分别配置在生产环境和预发布环境下的值，做为该变量的初始值</li>
+<li>函数参数使用变量：函数的 Api Url 和 Api Data 可以使用变量来动态获取值</li>
+</ul>
+<h2 id="_2">全局变量管理</h2>
+<h3 id="_3">全局变量管理页面路径</h3>
+<p>首页 -&gt; 项目管理 -&gt; 变量管理</p>
+<h3 id="_4">全局变量管理页说明</h3>
+<ul>
+<li>可以在本页面对全局变量进行增删改查操作</li>
+<li>已经使用的变量不允许删除，只有管理员和自己创建的变量才有删除权限</li>
+<li>全局变量的变量标识是全局唯一</li>
+<li>在页面中修改了全局变量的值，其它页面使用到该变量的地方值也会一起被修改</li>
+</ul>
+<h2 id="_5">页面变量管理</h2>
+<h3 id="_6">页面变量管理页面路径</h3>
+<p>页面 -&gt; 画布编辑 -&gt; 页面变量</p>
+<h3 id="_7">页面变量管理页说明</h3>
+<ul>
+<li>该页面展示了本页面可用的变量详情（包含了全局变量和本页的页面变量）</li>
+<li>只能操作页面变量，全局变量需要到全局变量管理页进行操作</li>
+<li>已经使用的变量不允许删除，只有管理员和自己创建的变量才有删除权限</li>
+<li>可以在本页面对页面变量进行增删改查操作</li>
+</ul>
+<h2 id="_8">变量初始类型介绍</h2>
+<p>蓝鲸可视化开发平台目前提供了七种变量初始化类型，以便业务发开使用，该类型只做为初始化的类型，后续可以在函数中对变量进行修改。将来会添加更多的变量初始化类型，敬请期待
+* 普通数据类型（String，Number，Boolean，Array，Object）：即 JS 数据类型，在绑定给属性的时候，会基于数据类型进行过滤
+* 图片地址：用户可以上传一张图，然后该图片可以在画布中绑定到可以使用图片的属性上
+* 计算变量：可以根据多个变量或者函数进行组合，最后返回一个值，该变量可以应用到所有的属性和指令上。计算变量具体用法可以参考<a href="https://cn.vuejs.org/v2/guide/computed.html#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7">VUE 计算属性文档</a></p>
+<h2 id="_9">变量与属性绑定</h2>
+<p>在项目页面编辑页面，鼠标单击选择相应的组件，在右侧的配置面板，选择<code>属性</code>tab，选择想要绑定变量的属性，然后右上角切换为变量，即可选择变量。也可以切换成值和表达式，表达式可以直接写变量标识来使用变量，编写最终是 JS 的表达式</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/variable-prop.png" /></p>
+<h2 id="_10">变量与指令绑定</h2>
+<p>在项目页面编辑页面，鼠标单击选择相应的组件，在右侧的配置面板，选择<code>指令</code>tab，选择想要绑定变量的指令，选择变量即可。也可以切换成值和表达式，表达式可以直接写变量标识来使用变量，编写最终是 JS 的表达式</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/variable-directive.png" /></p>
+<h2 id="_11">变量与函数绑定</h2>
+<p>函数的 API Url 和 API Data 可以使用变量：如图所示，可以使用<code>{{变量标识}}</code>在参数中使用变量</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/variable-method.png" /><br></p><h1 id="_1">指令使用指引</h1>
+<p>蓝鲸可视化开发平台中：可以通过<a href="https://cn.vuejs.org/v2/api/#%E6%8C%87%E4%BB%A4">VUE 指令</a>完成更多业务开发，通过指令可以完成以下功能：
+* 通过配置属性相关的指令，可以做到动态修改组件的值，也可以在函数中获取该属性的值，用于后续的业务开发
+* 通过配置指令面板的指令，可以做到渲染多个元素、控制元素是否显示和在表单控件或者组件上创建双向绑定</p>
+<h2 id="_2">配置属性相关的指令</h2>
+<h3 id="_3">配置方式</h3>
+<ul>
+<li>打开画布编辑页面</li>
+<li>在画布编辑区，使用鼠标选中某个组件</li>
+<li>在右侧配置区域，将 Tab 切换到属性面板</li>
+<li>找到某个想配置的属性，点击属性的右上角可以进行切换，可以切换为变量或者表达式</li>
+<li>选择变量或者填入表达式</li>
+</ul>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/directive-prop.png" /></p>
+<h3 id="_4">使用说明</h3>
+<ul>
+<li>属性切换为变量并且选择变量后，该属性的值将会和该变量绑定。可以在函数中修改该属性的值，也可以在函数中获取该属性的值。注：函数中可以使用<code>lesscode.</code>来唤起变量选择，可以选择绑定到某个属性的变量</li>
+<li>属性切换为指令并且填入表达式后，该属性的值将会由表达式计算而来。可以填入类似<code>lesscodeVar.inputValue</code>这种对象取值的表达式，也可以是<code>'perfix' + inputSearchVar</code>这种表达式。注：表达式中可以使用该页面的变量和 JS 提供的全局属性，其余变量将会当作<code>undefined</code>处理</li>
+</ul>
+<h2 id="_5">配置指令面板的指令</h2>
+<h3 id="_6">支持的指令</h3>
+<p>目前支持了 <code>v-if</code> <code>v-show</code> <code>v-for</code> <code>v-model</code> <code>v-html</code></p>
+<h3 id="_7">配置方式</h3>
+<ul>
+<li>打开画布编辑页面</li>
+<li>在画布编辑区，使用鼠标选中某个组件</li>
+<li>在右侧配置区域，将 Tab 切换到指令面板</li>
+<li>找到某个想配置的指令，点击属性的右上角可以进行切换，可以切换为值、变量或者表达式</li>
+<li>选择变量或者填入表达式</li>
+</ul>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/directive-tab.png" /></p>
+<h3 id="v-ifv-show">v-if、v-show 使用说明</h3>
+<blockquote>
+<p>v-if 和 v-show 都是控制元素是否显示，区别在于<code>v-if</code>会控制 Dom 元素是否渲染来控制元素是否显示，<code>v-show</code>会控制元素的<code>display</code>属性来控制元素是否显示。下面实例演示如何使用<code>v-if</code>:</p>
+</blockquote>
+<ul>
+<li>画布拖入<code>Tab</code>和 3 个<code>Grid</code>组件</li>
+<li>选中<code>Tab</code>组件，切换到属性面板，给<code>active</code>属性绑定一个变量<code>curTab</code>(如下图一所示)</li>
+<li>为了区分三个<code>Grid</code>组件，分别拖入<code>Paragraph</code>组件，并写入一个文字以区分</li>
+<li>选中<code>Grid</code>组件，切换到指令面板，将<code>v-if</code>切换为表达式，并填入<code>curTab === 'Tab-1'</code>,其余两个<code>Grid</code>组件同样配置(如下图二所示)。注: <code>Tab-1</code>是<code>Tab</code>组件配置的三个 tab 的值</li>
+<li>即完成切换 tab 的时候，展示不同 grid 的需求(如下图三所示)</li>
+</ul>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/directive-cur-tab.png" />
+<img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/directive-if.png" />
+<img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/directive-if-preview.png" /></p>
+<h3 id="v-for">v-for 使用说明</h3>
+<blockquote>
+<p><code>v-for</code>指令可以将一组数据渲染成一组元素。下面实例演示如何使用<code>v-for</code>:</p>
+</blockquote>
+<ul>
+<li>画布拖入<code>Card</code>组件，<code>Card</code>组件内部拖入一个<code>Paragraph</code>组件<code>Image</code>组件</li>
+<li>选中<code>Card</code>组件，切换到指令面板，给<code>v-for</code>指令绑定一个变量<code>cardList</code>(如下图一所示)。注：项目里面需要存在变量<code>cardList</code>，它是一个有 4 个子元素的数组，每个子元素都有<code>img</code>和<code>name</code>属性</li>
+<li><code>v-for</code>指令上面的显示的<code>card06fb0729Item</code>，可以为当前组件和子组件的指令赋值，当前组件的 v-if 和 v-show 除外</li>
+<li>选中<code>Image</code>组件，给组件的<code>src</code>属性填入表达式<code>card06fb0729Item.img</code>(如下图二所示)。注：变量<code>cardList</code>的子项<code>card06fb0729Item</code>需要有<code>img</code>属性</li>
+<li>选中<code>Paragraph</code>组件，给组件的<code>文本配置</code>属性填入表达式<code>card06fb0729Item.name</code>(如下图三所示)。注：变量<code>cardList</code>的子项<code>card06fb0729Item</code>需要有<code>img</code>属性</li>
+<li>即完成将一组数据渲染成一组元素(如下图四所示)</li>
+</ul>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/directive-for.png" />
+<img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/directive-for-img.png" />
+<img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/directive-for-paragraph.png" />
+<img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/directive-for-preview.png" /></p>
+<h3 id="v-modelv-html">v-model，v-html 使用说明</h3>
+<blockquote>
+<p>不是所有组件都支持 v-model，v-html，下面具体介绍如何使用</p>
+</blockquote>
+<ul>
+<li>v-model：在表单控件或者组件上创建双向绑定，目前在表单控件类型组件上支持该属性。可以用 v-model 指令在表单元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素，具体查看<a href="https://cn.vuejs.org/v2/guide/forms.html">表单输入绑定文档</a>。</li>
+<li>v-html：用于更新元素的 innerHTML，目前在<code>Paragraph</code>组件上支持该属性。</li>
+</ul><h1 id="_1">函数</h1>
+<p>蓝鲸可视化开发平台中：可以由用户自行编写函数，并在页面中使用函数。通过使用函数，可以完成以下需求：
+* 编写空白函数：使用 js 语法编写代码，可以发起 ajax 请求，获取接口数据，然后进行业务处理
+* 编写远程函数：通过后台转发的形式，发起 ajax 请求，转发的请求可以通过配置的方式来携带更多的数据
+* 函数配合组件事件：在组件事件触发的时候，执行相应的函数，来完成相关业务
+* 函数配合页面生命周期：在页面管理 tab 下，配置生命周期用到的函数，在函数中进行相关业务处理
+* 函数配合指令：组件的指令配置页面，可以配置属性的指令变量名，然后在函数中，使用或者修改属性值
+* 函数绑定组件数据源：在组件的部分属性中，可以通过绑定远程数据源来设置初始化数据
+* 函数中调用函数，调用其他组件：编写函数时，可以通过编辑器自动补全功能使用函数，也可以通过 js 调用组件库组件</p>
+<h2 id="_2">函数管理入口</h2>
+<h3 id="_3">函数管理页面路径</h3>
+<p>首页 -&gt; 项目管理 -&gt; 函数库</p>
+<h3 id="_4">函数管理页功能如下</h3>
+<ul>
+<li>页面左侧面板可以新增，搜索和选择函数组。函数组主要用户将项目中的函数进行归类，方便后续查找和管理函数</li>
+<li>左侧面板可以通过拖拽的方式对函数组排序，方便管理函数</li>
+<li>页面右侧面板可以新增，搜索，修改，删除和复制函数。主要管理当前项目下的所有函数</li>
+</ul>
+<h2 id="_5">函数管理弹窗</h2>
+<h3 id="_6">函数管理弹窗打开方式</h3>
+<p>页面 -&gt; 画布编辑 -&gt; 函数库</p>
+<h3 id="_7">函数管理弹窗功能如下</h3>
+<ul>
+<li>左侧面板可以选择，删除，新增和复制函数</li>
+<li>右侧面板可以填写相关函数内容</li>
+<li>右上角有自动修复 eslint 功能，点击可以 fix eslint 规范错误</li>
+<li>右上角有全屏按钮，点击可以进行全屏编写函数</li>
+</ul>
+<h2 id="_8">函数类型介绍</h2>
+<p>蓝鲸可视化开发平台目前提供了空白函数和远程函数两种函数类型，以便业务发开使用。后续将会添加更多的函数类型，敬请期待</p>
+<h3 id="_9">空白函数</h3>
+<ul>
+<li>空白函数，函数内容完全由用户编写</li>
+<li>这里编辑管理的函数，用于画布页面的属性配置和事件绑定</li>
+<li>用于属性时：函数需要返回值，该返回值将会赋值给属性</li>
+<li>用于事件时：函数将在事件触发时执行</li>
+<li>可以使用 lesscode.指令值，必须通过编辑器自动补全功能选择对应属性指令值，来获取或者修改当前页面中配置了指令的组件属性值</li>
+<li>可以使用 lesscode.方法名，必须通过编辑器自动补全功能选择对应函数，来调用项目中的函数</li>
+<li>
+<p>用于属性时示例如下：</p>
+<p><code>js
+return this.$http.get("http://apiHost.com/api/data/getMockData").then((res) =&gt; {
+    return res.data
+})</code></p>
+</li>
+</ul>
+<h3 id="_10">远程函数</h3>
+<ul>
+<li>远程函数，系统将会根据参数组成 Ajax 请求，由后台转发该请求，用户在这里编写 Ajax 回调函数</li>
+<li>如果项目进行二次开发，可以通过配置 <code>lib/server/conf/token.js</code>，来让转发请求携带更多数据</li>
+<li>这里编辑管理的函数，用于画布页面的属性配置和事件绑定</li>
+<li>用于属性时：函数需要返回值，该返回值将会赋值给属性</li>
+<li>用于事件时：事件触发时候，系统将发起 Ajax 请求，然后执行用户编写的回调函数</li>
+<li>可以使用 lesscode.指令值，必须通过编辑器自动补全功能选择对应属性指令值，来获取或者修改当前页面中配置了指令的组件属性值</li>
+<li>可以使用 lesscode.方法名，必须通过编辑器自动补全功能选择对应函数，来调用项目中的函数</li>
+<li>示例如下：return res.data</li>
+</ul>
+<h2 id="_11">函数配合组件事件</h2>
+<p>在函数管理页或者函数管理弹窗编写好函数后，在项目页面编辑页面，鼠标单击选择相应的组件，在右侧的配置面板，选择<code>事件</code>tab，然后就可以通过下拉框来配置相应的回调函数了，注意函数的入参和组件的事件参数一致，具体可以查看<a href="https://magicbox.bk.tencent.com/static_api/v3/components_vue/2.0/example/index.html#/">MagicBox 组件库文档</a></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/function-event.png" /></p>
+<h2 id="_12">函数配合页面生命周期</h2>
+<p>在函数管理页或者函数管理弹窗编写好函数后，在项目页面编辑页面，顶部选择<code>页面配置</code>，即可通过生命周期配置，来选择回调函数</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/function-lifecycle.png" /></p>
+<h2 id="_13">函数配合指令</h2>
+<p>组件的指令配置页面，可以配置属性的指令变量名，然后在函数中，可以使用或者修改属性值。选中组件后，可以在右侧配置面板进行属性编辑，切换到指令 tab，可以对部分属性进行指令 key 的配置，系统会为该属性生成变量名。然后在函数编辑面板中，使用<code>lesscode</code>这样的字符串，引出编辑器自动补全功能，然后选择相应的属性指令，即可在函数中获取或者修改相应的属性值</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/function-dir.png" /></p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/function-dir-use.png" /></p>
+<h2 id="_14">函数绑定组件数据源</h2>
+<p>在组件的部分属性中，可以通过绑定远程数据源来设置初始化数据。选中组件后，可以在右侧配置面板进行属性编辑，找到类型为 remote 的属性，切换到 remote tab，然后通过下拉框选择函数来绑定远程数据源。也可以点击获取数据按钮，来实时看到获取数据源后的组件效果</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/function-remote.png" /></p>
+<h2 id="_15">函数中调用函数，调用其他组件</h2>
+<hr />
+<p>函数中调用函数，调用其他组件：编写函数时，使用<code>lesscode</code>这样的字符串，引出编辑器自动补全功能，然后选择函数，即可在函数中使用函数。也可以使用 js 直接使用组件库中的组件，比如弹窗组件，组件具体配置可查看<a href="https://magicbox.bk.tencent.com/static_api/v3/components_vue/2.0/example/index.html#/">MagicBox 组件库文档</a></p>
+<pre class="codehilite"><code class="language-js">this.$bkInfo({
+    title: 'Dialog',
+    subTitle: '调用 Dialog',
+})
+
+this.$bkMessage({
+    message: '调用 Message',
+    delay: 0,
+    theme: 'error',
+    offsetY: 80,
+    ellipsisLine: 2
+})
+
+this.$bkNotify({
+    title: 'Notify',
+    message: '调用 Notify',
+    limitLine: 3,
+    offsetY: 80
+})</code></pre>
+
+
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/function-method.png" /></p><h1 id="_1">项目二次开发指引</h1>
+<h2 id="_2">方式一：下载整个项目源码包进行二次开发</h2>
+<p>下载项目源码，平台将会把项目的所有页面源码及页面路由配置集成到<a href="https://bk.tencent.com/docs/document/6.0/130/5940">蓝鲸前端开发框架（BKUI-CLI）</a>中，作为项目整个源码包下载下来。</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/page7.png" /></p>
+<p>下载后的工程目录如下，可以直接作为前端工程进行自己的二次开发和部署</p>
+<pre class="codehilite"><code class="language-bash">├── README.md
+├── lib/                    # 源码目录
+│   ├── client/             # 前端源码目录
+│   │   ├── build/          # 前端构建脚本目录
+│   │   │   ......
+│   │   ├── index-dev.html  # 本地开发使用的 html
+│   │   ├── index.html      # 生产环境使用的 html
+│   │   ├── src/            # 前端源码目录
+│   │   │   ├── App.vue     # App 组件
+│   │   │   ├── main.js     # 主入口
+│   │   │   ├── api/        # 前端 ajax 目录
+│   │   │   │   ......
+│   │   │   ├── common/     # 常用前端模块目录
+│   │   │   │   ......
+│   │   │   ├── components/ # 前端组件目录
+│   │   │   │   ......
+│   │   │   ├── css/        # 前端 css 目录
+│   │   │   │   ......
+│   │   │   ├── images/     # 前端使用的图片存放目录
+│   │   │   │   .....
+│   │   │   ├── mixins/     # 前端使用的 mixins
+│   │   │   │   ......
+│   │   │   ├── router/     # 前端 router 目录
+│   │   │   │   ......
+│   │   │   ├── store/      # 前端 store 目录
+│   │   │   │   ......
+│   │   │   ├── views/      # 前端页面目录
+│   │   │   │   ......
+│   │   └── static/         # 前端静态资源目录
+│   │       ......
+│   └── server/             # 后端源码目录
+│       ├── app.browser.js  # 服务器启动文件
+│       ├── logger.js       # 后端日志组件
+│       ├── util.js         # 后端工具方法
+│       ├── conf/           # 后端配置文件目录
+│       │   ......
+│       ├── controller/     # 后端 controller 目录
+│       │   ......
+│       ├── middleware/     # 后端中间件目录
+│       │   ......
+│       ├── model/          # 后端实体目录
+│       │   ......
+│       ├── router/         # 后端路由目录
+│       │   ......
+│       ├── service/        # 后端服务目录
+│       │   ......
+├── nodemon.json            # nodemon 配置文件
+├── package.json            # 项目描述文件</code></pre>
+
+
+<h2 id="_3">方式二：下载项目单个页面源码进行二次开发</h2>
+<p>如果开发场景是在已有项目里新增功能页面，那你可以拖拽布局单独页面后，直接下载独立页面源码，集成到已有项目工程里。</p>
+<p><img src="F:\v_awjliu\BKDocs\ZH/6.0/可视化开发平台/assets/page8.png" /></p><h1 id="_1">常见问题</h1>
+<h2 id="_2">蓝鲸可视化开发平台使用的技术栈以及依赖说明</h2>
+<p><a href="https://github.com/Tencent/bk-PaaS/blob/lesscode-master/paas-ce/lesscode/README.md#%E6%8A%80%E6%9C%AF%E6%A0%88">https://github.com/Tencent/bk-PaaS/blob/lesscode-master/paas-ce/lesscode/README.md#技术栈</a></p>
+<h2 id="_3">如何参与蓝鲸可视化开发平台的开发</h2>
+<p><a href="https://github.com/Tencent/bk-PaaS/blob/lesscode-master/paas-ce/lesscode/README.md#%E5%88%86%E6%94%AF%E8%AF%B4%E6%98%8E">https://github.com/Tencent/bk-PaaS/blob/lesscode-master/paas-ce/lesscode/README.md#分支说明</a></p>
+<h2 id="_4">学习、使用以及开发蓝鲸可视化开发平台过程中遇到问题怎么办</h2>
+<p>可以直接在 <a href="https://github.com/Tencent/bk-PaaS/issues/new">github issue</a> 上与我们讨论，我们会积极响应</p><h1 id="lesscode">可视化开发平台（lesscode）安装指引</h1>
+<h2 id="_1">使用范围</h2>
+<p>6.0.4 之前版本（不含 6.0.4 ，6.0.4 基础套餐默认包含）</p>
+<h2 id="_2">说明</h2>
+<ul>
+<li>下述操作均在中控机操作，且所述路径均为蓝鲸默认路径，实际操作过程中，请以实际为准。</li>
+<li>如果使用的是新机器进行部署可视化开发平台，请先根据 <a href="../../维护手册/日常维护/scale_node.md">新机器初始化</a> 进行操作。</li>
+</ul>
+<h2 id="_3">下载软件包</h2>
+<h3 id="lesscode_1">下载 lesscode 软件包</h3>
+<p>前往 <a href="https://bk.tencent.com/s-mart/market">蓝鲸 S-mart 市场</a> 下载 Lesscode 软件包。并将下载好的 lesscode 放置 /data 目录</p>
+<pre class="codehilite"><code class="language-bash">tar xf /data/lesscode-ce-0.0.11.tar.gz -C /data/src/</code></pre>
+
+
+<h3 id="lesscode_2">下载 lesscode 依赖包</h3>
+<pre class="codehilite"><code class="language-bash">cd /data/src
+wget https://nodejs.org/download/release/v14.17.0/node-v14.17.0-linux-x64.tar.gz</code></pre>
+
+
+<h2 id="_4">分布模块</h2>
+<p>将 lesscode 模块加入 install.config 文件</p>
+<p>如基础环境主机资源有富余（lesscode 占用内存 150M 左右），可复用基础环境的机器，反之请按下述操作新增机器分布模块。</p>
+<pre class="codehilite"><code class="language-bash"># 请以实际分布的 IP 为准
+{
+echo &quot;&quot;
+echo &quot;10.0.0.6 lesscode&quot; 
+} &gt;&gt; /data/install/install.config</code></pre>
+
+
+<h2 id="lesscode_3">定义 lesscode 域名</h2>
+<p><strong>注意：</strong> lesscode 的域名需要定义成与 PaaS 一致的根域名。</p>
+<p>例如：PaaS 的域名为 <code>paas.bk.bktencent.com</code>，那么 lesscode 就需要为：<code>lesscode.bk.bktencent.com</code>。</p>
+<pre class="codehilite"><code class="language-bash"># 以蓝鲸默认域名为例
+{
+echo &quot;BK_LESSCODE_PUBLIC_ADDR=lesscode.bktencent.com:80&quot;
+echo &quot;BK_LESSCODE_PUBLIC_URL=http://lesscode.bktencent.com:80&quot;
+} &gt;&gt; /data/install/bin/03-userdef/lesscode.env</code></pre>
+
+
+<h2 id="_5">生成环境变量</h2>
+<p>生成 lesscode 所需的环境变量</p>
+<pre class="codehilite"><code class="language-bash">cd /data/install
+./bkcli install bkenv
+
+./bkcli sync common</code></pre>
+
+
+<p><strong>说明：</strong> 如果是全新的机器需要做如下操作</p>
+<pre class="codehilite"><code class="language-bash">source /data/install/utils.fc
+pcmd -m lesscode &quot;bash /data/install/bin/init_new_node.sh&quot;</code></pre>
+
+
+<h2 id="mysql">生成 MySQL 登陆信息</h2>
+<pre class="codehilite"><code class="language-bash">./bkcli install mysql</code></pre>
+
+
+<h2 id="lesscode_4">部署 lesscode</h2>
+<pre class="codehilite"><code class="language-bash">./bk_install lesscode</code></pre>
+
+
+<h2 id="lesscode_5">访问 lesscode</h2>
+<ul>
+<li>绑定本地 hosts</li>
+</ul>
+<pre class="codehilite"><code class="language-bash"># 映射的 IP 为 nginx 所在机器的外网 IP
+10.0.0.2 lesscode.bktencent.com</code></pre>
+
+
+<p>完成 hosts 配置后，访问蓝鲸 PaaS 工作台即可看到【可视化开发平台】。</p>
+    </body>
+    </html>
+    

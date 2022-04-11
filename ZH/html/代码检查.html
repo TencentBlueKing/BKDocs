@@ -1,0 +1,174 @@
+
+    <html lang="zh-cn">
+    <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <link href="F:\v_awjliu\BKDocs\ZH/default.css" rel="stylesheet">
+    </head>
+    <body>
+    <h2 id="_1">什么是代码检查</h2>
+<p>代码检查，一般又称为静态代码分析，是指无需运行被测代码，仅通过分析或检查源程序的语法、结构、过程、接口等来检查程序的正确性，找出代码隐藏的错误和缺陷，如内存泄漏，空指针引用，死代码，变量未初始化，复制粘贴错误，重复代码，函数复杂度过高等等。</p>
+<p>CodeCC（蓝鲸代码检查中心）构建开放的代码检查平台，提供专业的代码检查解决方案及服务，为产品质量保驾护航。</p>
+<h2 id="codecc">CodeCC能解决的问题</h2>
+<p><img alt="CodeCC能解决的问题" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/WhatCodeccCanDo.png" /></p>
+<h2 id="codecc_1">CodeCC特色功能</h2>
+<p>• 多种检查维度：目前已集成十余款含开源、自研的代码检查工具，覆盖代码缺陷、安全漏洞、编码规范、圈复杂度、代码重复率多种维度；</p>
+<p>• 丰富的平台功能：通过快速准确地分析源代码，找出质量问题和安全漏洞，并提供自助接入、实时扫描、告警展示、告警屏蔽、定时日报、修复激励等功能；</p>
+<p>• 工具自助上架：支持工具开发框架和自助上架。</p><h2 id="_1">核心优势</h2>
+<ul>
+<li>
+<p>自助接入：依托蓝盾强大的流水线的能力，无论是依赖编译的工具，还是其它非编译型工具，都能轻松接入；</p>
+</li>
+<li>
+<p>实时扫描：实时扫描并反馈结果，扫描动态全部掌握；</p>
+</li>
+<li>
+<p>问题展示：直接在平台查看问题及错误代码，还有针对问题规则类型的修复指导；</p>
+</li>
+<li>
+<p>问题屏蔽：自助设置项目屏蔽路径，修复变得更加easy；</p>
+</li>
+<li>
+<p>数据报表：问题新增和关闭一目了然，并可设置定时报告/即时报告，质量趋势尽在把握中。</p>
+</li>
+</ul><ul>
+<li>
+<p>工具：用于运行规则。代码检查工具是规则运行的载体。一个工具需要需要有1条或多条的规则。例如CppLint，就是谷歌针对《Google C++风格指南》开源的一款工具，它有99条规则。</p>
+</li>
+<li>
+<p>规则：用于发现问题。代码检查规则是匹配代码问题的模式。例如tosa/line_length（代码每一行的字符数不能超过120）就是一条简单的规则。</p>
+</li>
+<li>
+<p>规则集：规则的集合。便于在创建任务/添加流水线插件时根据场景选择多条规则。</p>
+</li>
+<li>
+<p>任务：用于对一个代码库进行代码检查。代码库、规则集、通知报告、路径屏蔽等都是在一个任务中进行配置的，一条流水线添加代码检查插件后对应一个任务。</p>
+</li>
+</ul><p><img alt="CodeCC产品架构图" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/Architecture.png" /></p><h2 id="_1">点击新建任务</h2>
+<p>在任务列表，点击新建任务按钮，进入到新建任务的页面。</p>
+<p><img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/CreateNewTask.png" /></p>
+<h2 id="_2">填写任务名称和语言</h2>
+<p>填写任务名称和语言信息，语言将决定后续的规则集。</p>
+<p><img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/AddLanguage.png" /></p>
+<h2 id="_3">选择规则集</h2>
+<p>选择需要的规则集。
+如果包含了SpotBugs等编译型工具，还需要填写编译脚本。</p>
+<p><img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/ChooseRuleSet.png" /></p>
+<h2 id="_4">执行代码检查</h2>
+<p>点击立即检查按钮，触发检查。检查结束即可查看代码检查报告。
+<img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/DoCodeCheck.png" /></p><h2 id="_1">新建一条流水线</h2>
+<p>在流水线服务中，点击新建一条流水线。</p>
+<p><img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/CreateNewPipeline.png" /></p>
+<h2 id="_2">添加拉取代码插件</h2>
+<p>要执行CodeCC代码检查，首先需要一个拉取代码插件，将代码拉取到构建环境下的工作空间。</p>
+<p><img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/GitPull.png" /></p>
+<h2 id="codecc">添加CodeCC代码检查插件</h2>
+<p>添加CodeCC代码检查插件，选择语言、规则集等信息。
+如果包含了SpotBugs等编译型工具，还需要填写编译脚本。</p>
+<p><img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/AddCodeccPlugin.png" /></p>
+<h2 id="_3">执行流水线，查看流水线报告</h2>
+<p>点击保存并执行按钮，执行流水线。执行结束即可查看流水线产出物报告。
+<img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/ExecutePipeline.png" /></p>
+<p><img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/PipelineOutput.png" /></p><h2 id="_1">创建规则集</h2>
+<p>在CodeCC服务中，选择创建规则集，填写基本信息。</p>
+<p><img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/CreateRuleset.png" /></p>
+<h2 id="_2">挑选合适的规则并保存</h2>
+<p>通过筛选和搜索，选择合适的规则，保存为规则集的一个版本。</p>
+<p><img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/ChooseRule.png" /></p>
+<h2 id="_3">将规则集设置为公开</h2>
+<p>在规则集列表，可将规则集设置为公开。此时规则集将可以被其他项目的用户检索到，安装后即可使用。</p>
+<p><img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/SetRulesPublic.png" /></p>
+<p><img alt="" src="F:\v_awjliu\BKDocs\ZH/6.0/代码检查/产品白皮书/assets/InstallRuleset.png" /></p><p>任务详情包含以下6大模块：
+- 总览
+- 设置
+  - 基础信息
+  - 规则集配置
+  - 扫描触发
+  - 路径屏蔽
+  - 任务管理
+- 问题管理（含数据报表）
+  - 代码缺陷
+  - 安全漏洞
+  - 代码规范
+- 圈复杂度（含数据报表）
+- 重复率（含数据报表）
+- 代码统计
+  - 按目录
+  - 按语言</p><p>任务列表主要包含以下功能：
+- 新增任务
+- 任务筛选
+  - 状态筛选
+  - 来源筛选
+- 任务排序
+  - 按名称A~Z
+  - 按最近执行时间
+  - 按创建时间
+- 任务列表项
+  - 任务名称
+  - 代码库
+  - 分析进度
+  - 质量星级
+  - 置顶操作
+  - 设置操作
+  - 立即检查操作</p><p>规则集列表支持以下功能：
+- 新建规则集
+- 安装规则集。可以安装来自其它项目设置为公开的规则集。
+- 规则集搜索和查询
+- 规则集设为公开/私密
+- 规则集设为默认。默认的规则集将在创建任务或添加蓝盾流水线时被自动选中。
+- 复制规则集
+- 删除规则集</p><h1 id="_1">第一大类：代码问题</h1>
+<h2 id="11">1.1、发现代码缺陷</h2>
+<h3 id="spotbugs">SpotBugs</h3>
+<p>支持语言：Java</p>
+<p>描述：SpotBugs即Findbugs，是Java的缺陷检测工具，它使用静态分析来查找400多种错误模式，例如空指针取消引用，无限递归循环，对Java库的错误使用和死锁等。</p>
+<h2 id="12">1.2、发现安全漏洞</h2>
+<p>工具待补充。</p>
+<h2 id="13">1.3、规范代码，检查一些逻辑错误</h2>
+<h3 id="cpplint">CppLint</h3>
+<p>支持语言：C/C++</p>
+<p>描述：谷歌开源的C++代码风格检查工具，可确保C++代码符合谷歌编码规范，并能检查语法错误。</p>
+<h3 id="checkstyle">CheckStyle</h3>
+<p>支持语言：Java</p>
+<p>描述：用于检查Java源代码是否符合编码规范。它可以找到类和方法设计问题，还能够检查代码布局和格式问题。</p>
+<h3 id="eslint">ESLint</h3>
+<p>支持语言：JS</p>
+<p>描述：开源的 JavaScript 代码检查工具，可以在开发阶段发现代码问题，支持最新的ES6语法标准，支持前端框架Vue和React等。</p>
+<h3 id="stylecop">StyleCop</h3>
+<p>支持语言：C#</p>
+<p>描述：微软的开源静态代码分析工具，它检查C＃代码是否符合StyleCop推荐的编码样式和Microsoft .NET Framework设计指南。</p>
+<h3 id="gometalinter">Gometalinter</h3>
+<p>支持语言：Golang</p>
+<p>描述：一款开源的 Golang 代码检查工具，支持检查代码规范、死代码、语法错误和安全漏洞等问题。</p>
+<h3 id="detekt">detekt</h3>
+<p>支持语言：kotlin</p>
+<p>描述：Kotlin语言代码分析工具，除了能扫出编码的风格规范问题之外，还能检查出代码的复杂度、某些潜在逻辑错误以及性能问题，告警类型多达152种。</p>
+<h3 id="phpcs">PHPCS</h3>
+<p>支持语言：php</p>
+<p>描述：PHP_CodeSniffer用于检查PHP的编码规范。PHPCS支持包括PEAR、PSR-1、PSR-2、PSR-12等5类代码规范标准，涵盖257种告警类型。</p>
+<h3 id="pylint">PyLint</h3>
+<p>支持语言：python</p>
+<p>描述：Python代码风格检查工具，可检查代码行的长度、变量命名是否符合编码规范或声明的接口是否被真正的实现等。</p>
+<h3 id="occheck">OCCheck</h3>
+<p>支持语言：OC/OC++</p>
+<p>描述：OCCheck是一款基于ANTLR4的Objective-C代码分析工具，可检查Obj-C常见的风格规范问题，目前支持11种告警类型。</p>
+<h1 id="_2">第二大类：控制复杂度</h1>
+<h3 id="_3">圈复杂度</h3>
+<p>支持语言：C/C++、JAVA、C#、JS、OC/OC++、Python、PHP、Ruby、Golang、Swift、Scala、Lua、TTCN-3、Rust</p>
+<p>描述：通过计算函数的节点个数来衡量代码复杂性。复杂度越高代码存在缺陷的风险越大。</p>
+<h1 id="_4">第三大类：检测重复代码</h1>
+<h3 id="_5">重复率</h3>
+<p>支持语言： C/C++、JAVA、C#、JS、OC/OC++、Python、Golang、Kotlin、Lua、PHP、Ruby</p>
+<p>描述：可以检测项目中复制粘贴和重复开发相同功能等问题，帮助开发者发现冗余代码，以便代码抽象和重构。</p>
+<h1 id="_6">第四大类：检测代码行数</h1>
+<h3 id="_7">代码统计</h3>
+<p>支持语言： 支持所有语言，JAVA,Golang,C#,JS,Kotlin,C/C++,OC/OC++等</p>
+<p>描述：可以统计代码中各类语言代码行、注释行、空白行的情况。</p><h2 id="120">1、查看小于20圈复杂度的风险</h2>
+<p>CodeCC只展示大于等于阈值的风险函数，一般来说阈值为20. 如果需要查看更小复杂度的函数，可以修改规则集中圈复杂度规则的阈值。</p>
+<h2 id="2">2、代码有问题没扫描出来</h2>
+<p>代码有明显问题没扫描出来，可能从以下三个方面进行排查：
+ - 配置的规则集中是否有相应的规则；
+ - CodeCC插件中配置的白名单是否符合预期；
+ - CodeCC插件或任务中配置的黑名单是否符合预期。</p>
+    </body>
+    </html>
+    
