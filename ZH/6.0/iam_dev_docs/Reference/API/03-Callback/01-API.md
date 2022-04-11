@@ -10,13 +10,13 @@
 
 即: 接入系统需要实现一个 API, 用于权限中心拉取不同资源类型的信息;
 
-需要支持: (一个接口根据参数做分发)
-1. list_attr 查询某个资源类型可用于配置权限的属性列表
-2. list_attr_value 获取一个资源类型某个属性的值列表
-3. list_instance 根据过滤条件查询实例
-4. fetch_instance_info 批量获取资源实例详情
-5. list_instance_by_policy 根据策略表达式查询资源实例
-6. search_instance 搜索资源实例
+这个 API 需要支持: (一个接口根据参数做分发)
+1. `list_attr` 查询某个资源类型可用于配置权限的属性列表
+2. `list_attr_value` 获取一个资源类型某个属性的值列表
+3. `list_instance` 根据过滤条件查询实例
+4. `fetch_instance_info` 批量获取资源实例详情
+5. `list_instance_by_policy` 根据策略表达式查询资源实例(目前没有用到, 暂时可以不实现或直接返回空)
+6. `search_instance` 搜索资源实例
 
 ---
 
@@ -25,7 +25,8 @@
 Request Header: 
 - [系统间调用接口鉴权:权限中心->接入系统](../01-Overview/03-APIAuth.md)
 - `Blueking-Language`  国际化多语言，值为：zh-cn 或 en，当值为 en 时，则接口数据返回中包含的 display_name 字段的值为英文，否则默认返回中文；
--  `X-Request-Id`  请求 request_id, 请记录, 用于错误排查
+- `X-Request-Id` 请求 request_id, 请记录, 用于错误排查
+- `Request-Username`, 只有`list_instance/search_instance` 两个回调接口有, 非空时为当前正在使用权限中心配置接入系统权限的用户名. (可用于接入系统配置权限展示时做一些个性化的逻辑, 例如某些实例不展示给该用户看到); 注意, 值可能为空(非用户态的API 调用无法获取用户名).
 
 Response Header:
 -  `X-Request-Id`  将请求 Header 头里的 request_id 返回, 用于错误排查
@@ -77,11 +78,11 @@ Response Body:
 | `code = 429` | 代表接口请求超过接入系统的频率控制  |
 
 
-- 说明
-	- 接口只提供给 iam 使用, 需要单独 url/鉴权/逻辑等, 避免同现有业务使用 api 重复
-	- 上面的 URL 只是一个示例, 可自行定义, 注册到权限中心即可
-	- 需要支持版本, url 格式如`/api/v1/`, 确保后续可以进行 api 升级
-	- 性能要求: 
+说明:
+- 接口只提供给 iam 使用, 需要单独 url/鉴权/逻辑等, 避免同现有业务使用 api 重复
+- 上面的 URL 只是一个示例, 可自行定义, 注册到权限中心即可
+- 需要支持版本, url 格式如`/api/v1/`, 确保后续可以进行 api 升级
+- 性能要求: 
 
 ```bash
 [list_attr] 

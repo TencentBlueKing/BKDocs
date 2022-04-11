@@ -175,7 +175,15 @@ related_instance_selections 里的元素
 ### 3. 删除 action
 
 说明：
-- 删除 Action 成功后，将会删除该 Action 相关权限，该删除操作不可逆，请谨慎调用
+- 如果action没有配置相关的操作分组/常用操作/新建关联, 并且没有配置过权限, 可以直接删除;
+- 如果配置过, 需要先删除操作分组/常用操作/新建关联的引用及用户配置的权限, 之后完全删除action;
+
+删除action步骤：
+1. [调用更新操作分组API](./14-ActionGroup.md) - 将要删除的Action从操作分组里删除
+2. [调用更新常用操作配置API](./17-CommonActions.md) - 将要删除的Action从常用操作配置里移除
+3. [调用更新新建关联配置API](./19-ResourceCreatorAction.md) - 将要删除的Action从新建关联配置里移除
+4. [调用异步删除Action配置的权限策略API](./20-ActionPolicy.md) - 将所有涉及要删除的Action的权限都删除
+5. 调用以下接口完成Action的删除
 
 #### URL
 

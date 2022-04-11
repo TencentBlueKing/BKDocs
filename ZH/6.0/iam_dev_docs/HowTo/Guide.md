@@ -46,6 +46,8 @@
     使用 SDK 进行鉴权(推荐, 常规 SaaS/中大型系统)
     - [Python SDK](../Reference/SDK/01-PythonSDK.md)
     - [Go SDK](../Reference/SDK/02-GoSDK.md)
+    - [Java SDK](../Reference/SDK/03-JavaSDK.md)
+    - [PHP SDK](../Reference/SDK/05-PHPSDK.md)
     - [SDK 鉴权](../Reference/API/04-Auth/01-SDK.md)
     
     非 SDK 鉴权(直接鉴权, 小型系统/脚本/定时任务等无法使用 SDK 的情况)
