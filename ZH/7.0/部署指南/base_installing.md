@@ -485,14 +485,11 @@ agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 `http://node_ip:3
 #### gse 插件包
 上传基础插件包（bknodeman 的页面上传），解压 `gse_plugins.tgz` ，单独上传里面的小包 `*.tgz`。
 
-#### 给 node 安装 gse agent
-节点管理安装成功后，可以给蓝鲸集群的 node 机器安装 gse_agent。
 
-1. （可选）如果存在，则先停掉 gse 部署时自动安装的 gse_agent daemonset 资源。
-    ``` bash
-    kubectl delete daemonsets.apps bk-gse-agent -n blueking
-    ```
-2. 节点管理上，通过直连区域安装 gse_agent。如果 node 机器上，无法解析 `apps.$BK_DOMAIN` 和 `bkrepo.$BK_DOMAIN` 域名，则需要在 node 上配置 `/etc/hosts` 实现解析。
-`apps.$BK_DOMAIN` 解析到 `bk-ingress-controller` pod 所在 node 机器。
-`bkrepo.$BK_DOMAIN` 解析到 `ingress-controller` pod 所在 node 机器。
-![](assets/2022-03-09-10-46-45.png)
+# 给 node 安装 gse agent
+
+节点管理安装成功后，需要给集群的全部 node （包括 master ）机器安装 gse agent。
+
+用途：
+1. job 依赖 agent 做文件分发。
+2. 容器监控需要通过 node 上的 gse agent 完成监控。
