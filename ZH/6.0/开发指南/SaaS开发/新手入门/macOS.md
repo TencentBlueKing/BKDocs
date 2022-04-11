@@ -74,7 +74,7 @@ pipenv shell
 
 - 下载开发框架 `http://{PAAS_URL}/guide/newbie/#step3`
 
-> `{PAAS_URL}` 为蓝鲸 PaaS 访问地址，例如 `paas.blueking.com`
+`{PAAS_URL}` 为蓝鲸 PaaS 访问地址，例如 `paas.blueking.com`
 
 - 安装框架依赖包
 
@@ -94,6 +94,10 @@ BK_URL = os.getenv("BK_PAAS_HOST")
 BK_PAAS_HOST=`PaaS_URL`
 APP_ID=`APP_CODE`
 APP_TOKEN=`SECRET_KEY`(应用 TOKEN)
+
+不同开发环境下，设置环境变量的方法各不相同。常用的有：
+
+- [如何在 Mac 下设置环境变量](https://apple.stackexchange.com/questions/106778/how-do-i-set-environment-variables-on-os-x)
 
 
 ### 创建和初始化数据库

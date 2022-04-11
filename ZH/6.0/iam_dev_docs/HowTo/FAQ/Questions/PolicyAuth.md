@@ -40,5 +40,31 @@ admin 是超级管理员, 默认有所有权限, 所以鉴权/策略查询得到
 - 自定义申请
 - 个人加入用户组权限 => 默认继承用户组权限
 - 个人加入部门, 部门加入用户组 => 默认继承用户组权限
+- 是超级管理员, 并勾选`拥有蓝鲸平台所有操作权限`
+- 是系统管理员, 并勾选`拥有该系统的所有操作权限`
 
-所以, [我的权限]-[自定义权限]中看不到, 并不一定没有权限, 需要检查 [用户组权限]
+所以, `[我的权限]-[自定义权限]`中看不到, 并不一定没有权限, 需要检查 `[用户组权限]`
+
+## 7. 删除了`我的权限`里面这个系统所有权限, 同时加入的组也都没有这个系统的权限, 但是去页面操作还是有权限?
+
+见上一个问题中的`权限来源`
+
+此时, 需要去找`超级管理员`确认, 自己是否是超级管理员或某个系统的系统管理员
+
+## 8. 跨系统资源依赖鉴权报`request resources not match action `
+
+```
+POST /api/v1/policy/query_by_actions
+{
+    "code": 1901500,
+    "message": "system error[request_id=6741e5d31fe24841b8b55b1fc807a34e]: [Handler:BatchQueryByActions] systemID=`bk-xxxx`, request.Action.ID=`app_create`, body=`{baseRequest:{System:bk-xxxx Subject:{Type:user ID:kelseywang}} Resources:[] Actions:[{ID:app_create}]}` =\u003e [PDP:Query] queryAndPartialEvalConditions fail%!!(MISSING)(EXTRA types.Action={app_create 0xc003559f60}) =\u003e [PDP:queryAndPartialEvalConditions] ValidateActionResource systemID=`bk-bscp`, actionID=`%!!(MISSING)d(string=app_create)`, resources=`[]` fail, request resources not match action =\u003e [Raw:Error] validateActionResource fail",
+    "data": {}
+}
+```
+
+跨系统资源依赖的场景, 相当于接入系统不需要关心第三方系统的资源, 拿到的表达式都是本系统的
+
+所以, 鉴权时, 自己系统资源的可以不传, 跨系统的资源必须传递. 
+
+- 如果同时传递本系统资源+跨系统资源, 有权限会返回any表达式, 没权限就不返回任何策略
+- 如果只传递跨系统资源, 会返回本系统表达式(需要代入本系统资源进一步计算), 或者不返回任何策略(没权限)

@@ -42,4 +42,10 @@
 python3 do_migrate.py -t http://bk-iam.apigw.blueking.com/prod -f ./demo_model.json -a "demo" -s "c2cfbc92-28a2-420c-b567-cf7dc33cf29f" --apigateway
 ```
 
+## 6. 使用do_migrate.py+json 文件进行模型变更, 是否可以切换使用API维护?
 
+本质上do_migrate做的upsert, 先查, 再更新, 如果存在, 调用 PUT, 如果不存在调用 POST
+
+相关代码: [do_migrate.py](https://github.com/TencentBlueKing/iam-python-sdk/blob/master/iam/contrib/iam_migration/utils/do_migrate.py#L469)
+
+可以全部走注册接口注册, 通过接口维护 

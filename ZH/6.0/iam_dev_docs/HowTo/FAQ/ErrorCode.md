@@ -64,6 +64,15 @@
 
 可以使用[权限模型: 通用查询 Common Query API](../../Reference/API/02-Model/15-CommonQuery.md) 查询确认
 
+> bad request: ......Key: 'instanceSelectionSerializer.ID' Error: Field validation for 'ID' failed on the 'max' tag
+
+id超过 32 位长度限制
+
+> instance_selections should contain at least 1
+
+注册操作时, 如果操作关联了资源类型(related_resource_types列表非空), 那么关联资源类型对应的实例视图不能为空(related_instance_selections)
+
+
 > bad request:get system(xxxx) valid clients fail, err=[Cache:GetSystemClients] LocalSystemClientsCache.Get key=`xxx` fail => [SystemSVC:Get] saasManager.Get id=`xxx` fail => [Raw:Error] sql: no rows in result set
 
 找不到这个注册的系统
@@ -104,6 +113,10 @@ xxx 这个 app_code 不允许调用系统 yyy 的资源, 需要将 xxx 加入到
 资源冲突, 接口创建的`xxxx`已存在.
 
 可以使用[权限模型: 通用查询 Common Query API](../../Reference/API/02-Model/15-CommonQuery.md) 查询确认
+
+> conflict:action name[业务访问] already exists
+
+操作名称冲突, 已存在(系统内唯一)
 
 > conflict:action has releated policies, you can't delete it or update the related_resource_types unless delete all the related policies. please contact administrator.
 

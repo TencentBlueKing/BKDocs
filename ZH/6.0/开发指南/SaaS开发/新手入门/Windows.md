@@ -73,6 +73,7 @@ Sourcetree、GitHub Desktop、Fork、TortoiseGit、开发工具 Git 插件 等
 例：`127.0.0.1 dev.paas.bktencent.com`
 
 > 启动开发框架，需要使用 域名
+> 
 ### 配置虚拟环境
 
 > 可选：只有一个开发项目的可忽略。Pycharm 可以帮忙创建虚拟环境。
@@ -117,6 +118,14 @@ BK_URL = os.getenv("BK_PAAS_HOST")
 BK_PAAS_HOST=`PaaS_URL`
 APP_ID=`APP_CODE`
 APP_TOKEN=`SECRET_KEY`(应用 TOKEN)
+
+不同开发环境下，设置环境变量的方法各不相同。常用的有：
+- [如何在 Mac 下设置环境变量](https://apple.stackexchange.com/questions/106778/how-do-i-set-environment-variables-on-os-x)
+- [如何在 Windows 下设置环境变量](https://stackoverflow.com/questions/32463212/how-to-set-environment-variables-from-windows?noredirect=1&lq=1)
+
+如果本地开发不同的 SaaS 需要配置多套环境变量，可以采用一些基于项目的环境变量设置方案。常用的有：
+- [在 PyCharm 下设置环境变量](https://stackoverflow.com/questions/42708389/how-to-set-environment-variables-in-pycharm) ：在 PyCharm 中运行  SaaS，PyCharm 会根据不同的项目配置读取不同的环境变量值。
+- [在 virtualenv 虚拟环境中 postactive 文件中设置环境变量](https://stackoverflow.com/questions/9554087/setting-an-environment-variable-in-virtualenv) ：这种做法需要在不同的项目使用不同的虚拟环境，每次激活虚拟环境时可以自动加载对应的环境变量值。
 
 ### 创建本地数据库
 

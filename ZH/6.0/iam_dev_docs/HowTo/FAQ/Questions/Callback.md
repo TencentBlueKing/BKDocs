@@ -42,4 +42,26 @@ fetch_instance的时候只有id列表，入口有无权限申请/页面申请/�
 
 `list_instance`, 参数是上一级的`parent`的`type/id`, 拉取当前层级的资源列表
 
+## 7. 提示回调接入系统接口错误, 怎么调试?
+
+优先到被调用系统找到对应的回调请求记录, 从日志确认问题. 找不到再考虑构造请求复现.
+
+使用文档中提示的回调接口协议, 构建请求验证即可; 以curl为例
+
+- THE_TOKEN 为注册系统到权限中心时权限中心生成的 token, 可以通过 `get_token` 接口获取
+- THE_CALLBACK_HOST 为注册系统到权限中心时的 `provider_config.host`的值, 一般是回调目标系统的地址
+- request body中参数替换成对应的method, 资源类型以及filter过滤参数
+
+```
+curl -X POST -H 'Content-Type:application/json' -u bk_iam:{THE_TOKEN} http://{THE_CALLBACK_HOST}/auth/v3/find/resource -d '{
+    "type": "biz_custom_query",
+    "method": "fetch_instance_info",
+    "filter": {
+        "ids": ["bubdvkg64nb78c378ob0"],
+        "attrs": ["display_name"]
+    }
+}'
+```
+
+注意, 如果 `THE_CALLBACK_HOST` 注册错误, 可能回调到其他地方去了(例如本地开发不小心刷掉了线上的系统配置)
 
