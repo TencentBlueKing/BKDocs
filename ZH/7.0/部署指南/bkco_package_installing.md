@@ -82,10 +82,9 @@ kubectl logs -n blueking bklog-collector-bk-log-collector-补全名称 bkunifylo
 Init filed with error: failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/ipc.state.report: connect: no such file or directory
 ```
 
-此时部署 gse agent 成功后，pod 会逐步自动恢复。也可直接重新部署此 charts：
+此时部署 gse agent 成功后，pod 会逐步自动恢复。也可直接删除出错的 pod，会立刻重新创建：
 ``` bash
-helmfile -f 04-bklog-collector.yaml.gotmpl destroy
-helmfile -f 04-bklog-collector.yaml.gotmpl sync
+kubectl delete pod -n blueking bklog-collector-bk-log-collector-补全时选择非Running的pod
 ```
 
 ### 部署 bkmonitor-operator
