@@ -68,7 +68,7 @@ helmfile -f 04-bkmonitor.yaml.gotmpl apply   # apply 仅增量更新
 ``` bash
 cd ~/bkhelmfile/blueking
 helmfile -f 04-bklog-collector.yaml.gotmpl sync
-# 等待1分钟，如果 pod 最终维持为 RUNNING，则正常。
+# 等待1分钟，如果 pod 稳定状态为 Running ，则部署完成。
 timeout 60 kubectl get pods -n blueking -w | grep bklog-collector
 ```
 
@@ -77,13 +77,27 @@ timeout 60 kubectl get pods -n blueking -w | grep bklog-collector
 kubectl logs -n blueking bklog-collector-bk-log-collector-补全名称 bkunifylogbeat-bklog
 ```
 
-未在 “节点管理” 中安装 agent 时，日志中会出现如下报错：
+未在 “节点管理” 中为所有 node 安装 agent 时，`bklog-collector-bk-log-collector` 系列 pod 的日志中会出现如下报错：
 ``` plain
 Init filed with error: failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/ipc.state.report: connect: no such file or directory
 ```
 
+此时部署 gse agent 成功后，pod 会逐步自动恢复。也可直接重新部署此 charts：
+``` bash
+helmfile -f 04-bklog-collector.yaml.gotmpl destroy
+helmfile -f 04-bklog-collector.yaml.gotmpl sync
+```
+
 ### 部署 bkmonitor-operator
+
 ``` bash
 cd ~/bkhelmfile/blueking
 helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
 ```
+
+然后在新窗口中检查 pod 稳定状态为 `Running` 即可：
+``` bash
+kubectl get pod -n bkmonitor-operator -w
+```
+
+未在 “节点管理” 中为所有 node 安装 agent 时，`bkmonitor-operator-bkmonitorbeat-daemonset` 系列 pod 的日志与 `bklog-collector` 相似，请参考 “部署 bklog-collector” 章节处理。
