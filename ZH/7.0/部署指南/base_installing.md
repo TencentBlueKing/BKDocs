@@ -189,20 +189,22 @@ EOF
 在 **中控机** 执行如下命令获取登录账户:
 
 ``` bash
-helm status bk-user -n blueking
+kubectl get cm -n blueking bk-user-api-general-envs -o go-template='user={{.data.INITIAL_ADMIN_USERNAME}}{{"\n"}}password={{ .data.INITIAL_ADMIN_PASSWORD }}{{"\n"}}'
 ```
-其关键输出如下: 
+其输出如下：
 ``` plain
-登录账户名密码:
-admin/密码略
+user=用户名
+password=密码
 ```
 
 ## 浏览器访问
-浏览器访问 `$BK_DOMAIN` 所指向的域名。此域名可以在 **中控机** 执行如下命令获取：
+在 **中控机** 执行如下命令获取访问地址：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入蓝鲸helmfile目录
-yq e '.domain.bkDomain' environments/default/custom.yaml  # 读取自定义的域名.
+BK_DOMAIN=$(cat environments/default/{values,custom}.yaml 2>/dev/null | yq e '.domain.bkDomain' -)  # 读取默认或自定义域名
+echo "http://$BK_DOMAIN"
 ```
+浏览器访问上述地址即可。记得提前配置本地 DNS 服务器或修改本机的 hosts 文件。
 
 # 准备 SaaS 运行环境
 
