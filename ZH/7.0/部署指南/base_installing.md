@@ -455,7 +455,7 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 #### 配置 GSE 环境管理
 点击全局配置->gse 环境管理->默认接入点->编辑，相关信息需要用以下命令行获取。
 
-zookeeper 集群地址填写任意 k8s node IP，端口填写 `32181` （注意不是默认的 `2181`）。然后查询 zookeeper 用户名和密码：
+zookeeper 集群地址填写 **任意 k8s node IP**，端口填写 `32181` （注意不是默认的 `2181`）。然后查询 zookeeper 用户名和密码：
 ``` bash
 helm get values bk-gse-ce -n blueking | grep -A 2 externalZookeeper
 ```
@@ -469,9 +469,9 @@ agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 `http://node_ip:3
 最终配置界面如下图所示：
 ![](assets/2022-03-09-10-46-25.png)
 
-点击 “测试 Server 及 URL 可用性”，然后点击 “下一步”。在新的 agent 信息界面点击 “确认” 保存。回到查看界面，请等待 1 ~ 2 分钟，然后刷新此页面。
+点击 “测试 Server 及 URL 可用性”，然后点击 “下一步”。在新的 agent 信息界面点击 “确认” 保存。
 
-如果 Btserver，dataserver，taskserver 的地址自动从 `127.0.0.1` 变更为 node 的内网 IP ，则说明读取 zookeeper 成功，否则需检查 zookeeper 的 IP、 端口以及账户密码是否正确。
+回到查看界面后，请 **等待 1 ~ 2 分钟**，然后刷新此页面。如果 Btserver，dataserver，taskserver 的地址自动从 `127.0.0.1` 变更为 node 的内网 IP ，则说明读取 zookeeper 成功，否则需检查 zookeeper 的 IP、 端口以及账户密码是否正确。
 
 #### agent 资源上传
 下载 agent 合集包：[https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip](https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip)
@@ -493,3 +493,7 @@ agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 `http://node_ip:3
 用途：
 1. job 依赖 agent 做文件分发。
 2. 容器监控需要通过 node 上的 gse agent 完成监控。
+
+常见报错：
+1. `[script] agent(PID:NNN) is not connect to gse server`，请检查 “配置 GSE 环境管理” 章节的配置是否正确。
+2. `命令返回非零值：exit_status -> 6, stdout -> , stderr -> curl: (6) Could not resolve host: bkrepo.$BK_DOMAIN; Unknown error`，请检查目标主机的 DNS 配置是否正确，也可临时添加 hosts 记录解决解析问题。或参考 “配置 GSE 环境管理” 章节配置 agent url 为 k8s node IP。
