@@ -72,10 +72,10 @@ IP2 ci(dockerhost)
 部署流程中，会自动在中控机联网下载资源，如果中控机网络受限，可自行下载后传输到预期路径。 
 
 资源列表如下：
-1. CI 安装包（以 `v1.5.7` 为例，其他版本请自行替换版本号）：
-  * 预期放置路径： `/data/src/bkci-v1.5.7-slim.tar.gz`
-  * 参考下载地址（蓝鲸官网）： https://bkopen-1252002024.file.myqcloud.com/bkci/bkci-v1.5.7-slim.tar.gz
-  * 参考下载地址（GitHub）： https://github.com/Tencent/bk-ci/releases/download/v1.5.7/bkci-slim.tar.gz （注意修改为预期放置路径的文件名）
+1. CI 安装包（以 `v1.7.36` 为例，其他版本请自行替换版本号）：
+  * 预期放置路径： `/data/src/bkci-v1.7.36-slim.tar.gz`
+  * 参考下载地址（蓝鲸官网）： https://bkopen-1252002024.file.myqcloud.com/bkci/bkci-v1.7.36-slim.tar.gz
+  * 参考下载地址（GitHub）： https://github.com/Tencent/bk-ci/releases/download/v1.7.36/bkci-slim.tar.gz （注意修改为预期放置路径的文件名）
 2. rabbitmq_delayed_message_exchange 插件 （版本固定，不能修改）：
  * 预期放置路径: `/data/src/rabbitmq_delayed_message_exchange-3.8.0.ez`
  * 参考下载地址： https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.8.0/rabbitmq_delayed_message_exchange-3.8.0.ez
