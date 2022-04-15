@@ -1,0 +1,82 @@
+### 请求地址
+
+/api/c/compapi/v2/itsm/get_services/
+
+### 请求方法
+
+GET
+
+### 功能描述
+
+服务列表查询，支持根据指定的目录查询服务列表
+
+### 请求参数
+
+| 字段 | 类型 | 必选 | 描述 |
+|-----------|------------|--------|------------|
+| bk_app_code| string | 是 | 应用 ID |
+| bk_app_secret| string | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -&gt; 点击应用 ID -&gt; 基本信息 获取 |
+| bk_token | string | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username| string | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+
+
+#### 接口参数
+
+| 字段 | 类型 | 必选 | 描述 |
+| ------------ | ------ | --- | ------ |
+| catalog_id | int | 否 | 服务目录 id |
+| service_type | string | 否 | 服务类型 |
+
+### 请求参数示例
+
+```json
+{
+    "bk_app_secret": "xxxx",
+    "bk_app_code": "xxxx",
+    "bk_token": "xxxx",
+    "catalog_id": 12,
+    "service_type": "request"
+}
+```
+
+### 返回结果示例
+
+```json
+{
+    "message": "success",
+    "code": 0,
+    "data": [
+        {
+            "id": 3,
+            "name": "test1",
+            "desc": "1",
+            "service_type": "request"
+        },
+        {
+            "id": 4,
+            "name": "test2",
+            "desc": "2",
+            "service_type": "request"
+        }
+    ],
+    "result": true
+}
+```
+
+### 返回结果参数说明
+
+| 字段 | 类型 | 描述 |
+| ------- | ------ | --------------------- |
+| result | bool | 返回结果，true 为成功，false 为失败 |
+| code | int | 返回码，0 表示成功，其他值表示失败 |
+| message | string | 错误信息 |
+| data | array | 返回数据 |
+
+### data
+
+| 字段 | 类型 | 描述 |
+| ---------- | ------ | ----- |
+| id | int | 服务 id |
+| name | string | 服务名称 |
+| desc | string | 服务描述 |
+| service_type | string | 服务类型 |
