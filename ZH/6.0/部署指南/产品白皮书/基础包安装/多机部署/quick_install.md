@@ -96,6 +96,9 @@ bash /data/install/configure_ssh_without_pass
 # 校验环境和部署的配置
 ./health_check/check_bk_controller.sh
 ```
+[初始化环境-常见报错](https://bk.tencent.com/s-mart/community/question/5540?type=answer)
+
+[校验环境和部署的配置-常见报错](https://bk.tencent.com/s-mart/community/question/5668?type=answer)
 
 ### 部署 PaaS 平台
 
@@ -103,8 +106,9 @@ bash /data/install/configure_ssh_without_pass
 # 安装 PaaS 平台及其依赖服务
 ./bk_install paas
 ```
-
 PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访问，请参考 [访问蓝鲸](./quick_install.md#三、访问蓝鲸) 。
+
+[部署 paas-常见报错](https://bk.tencent.com/s-mart/community/question/5559?type=answer)
 
 ### 部署 app_mgr
 
@@ -112,7 +116,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访
 # 部署 SaaS 运行环境，正式环境及测试环境
 ./bk_install app_mgr
 ```
-
+[部署 app_mgr-常见报错](https://bk.tencent.com/s-mart/community/question/5713?type=answer)
 ### 部署权限中心与用户管理
 
 ```bash
@@ -121,6 +125,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访
 # 用户管理
 ./bk_install saas-o bk_user_manage
 ```
+[部署 saas-常见报错](https://bk.tencent.com/s-mart/community/question/5669?type=answer)
 
 ### 部署 CMDB
 
@@ -135,7 +140,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访
 # 安装作业平台后台模块及其依赖组件
 ./bk_install job
 ```
-
+[部署 job-常见报错](https://bk.tencent.com/s-mart/community/question/5538?type=answer)
 ### 部署 bknodeman
 
 - 如需使用跨云管控，请提前将节点管理的外网 IP 写入至节点管理后台服务所在机器的`/etc/blueking/env/local.env` 文件，详细请参考 [开启 proxy](../../维护手册/日常维护/open_proxy.md)。否则请忽略该步骤
@@ -146,6 +151,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访
 # 安装节点管理后台模块、节点管理 SaaS 及其依赖组件
 ./bk_install bknodeman
 ```
+[部署 saas-常见报错](https://bk.tencent.com/s-mart/community/question/5669?type=answer)
 
 ### 部署标准运维及流程管理
 
@@ -158,7 +164,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。配置域名访
 # 流程管理
 ./bk_install saas-o bk_itsm
 ```
-
+[部署 saas-常见报错](https://bk.tencent.com/s-mart/community/question/5669?type=answer)
 ### 加载蓝鲸相关维护命令
 
 ```bash
@@ -170,13 +176,13 @@ source ~/.bashrc
 ```bash
 ./bkcli initdata topo
 ```
-
+[初始化拓扑-常见报错](https://bk.tencent.com/s-mart/community/question/5417?type=answer)
 ### 部署 lesscode (可选)
 
 ```bash
 ./bk_install lesscode
 ```
-
+[部署 lesscode-常见报错](https://bk.tencent.com/s-mart/community/question/6238?type=answer)
 ### 检测相关服务状态
 
 ```bash
@@ -240,4 +246,7 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 
 进阶选项：[监控日志套餐部署](./value_added.md)
 
+
 [【社区版 6.0.3 问题汇总 】](https://bk.tencent.com/s-mart/community/question/2120)
+
+[【部署后无法访问—常见报错】](https://bk.tencent.com/s-mart/community/question/6807?type=answer)
