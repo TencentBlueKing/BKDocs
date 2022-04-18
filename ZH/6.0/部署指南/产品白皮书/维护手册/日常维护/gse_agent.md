@@ -79,7 +79,46 @@
 
 ## Windows 系统安装
 
-待补充
+
+1. 登录到 10.0.0.1 机器，打包安装成功的 agent 目录：
+
+    ```batch
+    Compress-Archive -Path C:\gse\agent\ -CompressionLevel Optimal -DestinationPath C:\gse_client.Zip
+    ```
+
+2. 将 C:\gse_client.Zip 分发到 待安装的目标机器的 C:\ 目录下。
+3. 在待安装的目标机器上创建必要目录后，解压客户端包：
+  
+   ```batch
+   Expand-Archive -LiteralPath C:\gse_client.Zip -DestinationPath C:\gse
+   ```
+
+4. 确认目标机器需要注册到配置平台的内网 IP 地址以及本机的网卡地址，这里涉及到 agent.conf 配置文件的修改。大多数情况下这两个 ip 地址都是一样的。
+
+    - 注册到配置平台的内网 ip 地址(填入 identityip)：日后在蓝鲸平台上，无论是作业平台，还是监控平台，都会用该 ip 地址来指代这台主机。
+    - 本机网卡地址(填入 agentip)：通过 `ip addr` 命令能看到的 ip 地址
+
+5. 启动 agent
+
+    ```batch
+    C:\gse\agent\bin\gsectl.bat start
+    ```
+
+6. 确认 agent 启动正常，并和 gse server 成功建立连接
+
+    ```batch
+    # 任务管理器中观察进程状态
+    tasklist | findstr gse_
+    ## 输出有 gse_agent_daemon.exe 和 gse_agent.exe
+    
+    # 确认建立了连接
+    netstat -an | findstr 48533
+    ## 输出有一个ESTABLISHED
+    ```
+7. 使用“节点管理”升级功能，恢复 agent 功能
+8. 使用“节点管理”托管“插件”
+
+用户根据实际情况将上述步骤，编写脚本来处理批量初始化安装 gse agent，或者在操作系统初始化阶段内置这些操作即可达到自动安装 gse agent 的目的。
 
 ## 导入主机到配置平台
 
