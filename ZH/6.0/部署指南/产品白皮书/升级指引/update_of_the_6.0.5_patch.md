@@ -29,7 +29,7 @@ cd /data/src; grep . */*VERSION */*/VERSION
 1.下载相关产品包。请前往 [蓝鲸官网下载页-版本列表](https://bk.tencent.com/download_version_list/) 下载。
 
 - patch 包：[bkce_patch_6.0.3-6.0.4.tgz](https://bkopen-1252002024.file.myqcloud.com/ce/bkce_patch_6.0.3-6.0.4.tgz)
-    - 此处复用 6.0.3-6.0.4 的升级包，6.0.4 - 6.0.5 仅修复 Apache Log4j2 存在潜在 JNDI 注入安全（CVE-2021-44228）漏洞，未有功能更新
+    - 此处复用 6.0.3-6.0.4 的升级包，6.0.4 - 6.0.5 仅修复 [Apache Log4j2 存在潜在 JNDI 注入安全漏洞](https://bk.tencent.com/s-mart/community/question/5120?type=article)，未有功能更新
 
 2.将相关产品包上传至服务器 /data 目录。
 
@@ -265,21 +265,20 @@ source /data/install/tools.sh
 _update_common_info
 ```
 
-## 【重要】修复 Apache Log4j2 存在潜在 JNDI 注入安全（CVE-2021-44228）漏洞
+## 【重要】修复 Apache Log4j2 存在潜在 JNDI 注入安全漏洞
 
 > [漏洞说明](https://bk.tencent.com/s-mart/community/question/5120)
 
 ```bash
 # 中控机执行
 cd /opt/yum
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.1-x86_64.rpm
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-x86_64.rpm
 createrepo ./
 
-# 登录到每一台 es 机器执行
+# 登录到每一台 es 机器执行，建议滚动重启 es 服务
 ssh $BK_ES7_IP
-yum install -y elasticsearch-7.16.1
+yum install -y elasticsearch-7.16.3
 
-# 重启服务
 systemctl restart elasticsearch.service
 systemctl status elasticsearch.service
 ```
