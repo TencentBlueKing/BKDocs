@@ -333,7 +333,3 @@ mv /data/src_6.0.3.bak/java8.tgz /data/src/
 mv /data/src_6.0.3.bak/bcs-monitor-ce-1.2.12-1.el7.x86_64.rpm /data/src/
 mv /data/src_6.0.3.bak/bcs-thanos-ce-1.2.12-1.el7.x86_64.rpm /data/src/
 ```
-
-
-
-如升级过程有任何疑问及问题，请前往蓝鲸社区群 (495299374) 联系蓝鲸助手获取技术支持。
