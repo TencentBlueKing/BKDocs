@@ -83,7 +83,7 @@
 1. 登录到 10.0.0.1 机器，打包安装成功的 agent 目录：
 
     ```batch
-    Compress-Archive -Path C:\gse\agent\ -CompressionLevel Optimal -DestinationPath C:\gse_client.Zip
+    Compress-Archive -Path C:\gse\agent\, C:\gse\plugins\bin\ -CompressionLevel Optimal -DestinationPath C:\gse_client.Zip
     ```
 
 2. 将 C:\gse_client.Zip 分发到 待安装的目标机器的 C:\ 目录下。
@@ -96,7 +96,7 @@
 4. 确认目标机器需要注册到配置平台的内网 IP 地址以及本机的网卡地址，这里涉及到 agent.conf 配置文件的修改。大多数情况下这两个 ip 地址都是一样的。
 
     - 注册到配置平台的内网 ip 地址(填入 identityip)：日后在蓝鲸平台上，无论是作业平台，还是监控平台，都会用该 ip 地址来指代这台主机。
-    - 本机网卡地址(填入 agentip)：通过 `ip addr` 命令能看到的 ip 地址
+    - 本机网卡地址(填入 agentip)：通过 `ipconfig` 命令能看到的 ip 地址
 
 5. 启动 agent
 
