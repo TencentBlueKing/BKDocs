@@ -53,7 +53,7 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 此脚本耗时 15 ~ 30 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。
 
 > **提醒**
-> 
+>
 > k8s 所有 `node` 机器均需保持网络畅通，可访问蓝鲸提供的镜像地址。
 
 
@@ -66,7 +66,7 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 ## 配置 coredns
 > **提示**
-> 
+>
 > “一键部署” 脚本中自动完成了此步骤，可以跳过此章节。
 
 我们需要确保 k8s 集群的容器内能解析到 ingress controller。
@@ -169,17 +169,17 @@ echo "BK_DOMAIN=$BK_DOMAIN IP1=$IP1 IP2=$IP2"
 # 输出hosts
 cat <<EOF
 $IP1 $BK_DOMAIN
-$IP1 bkrepo.$BK_DOMAIN 
-$IP1 bkpaas.$BK_DOMAIN 
+$IP1 bkrepo.$BK_DOMAIN
+$IP1 bkpaas.$BK_DOMAIN
 $IP1 bkuser.$BK_DOMAIN
 $IP1 bkuser-api.$BK_DOMAIN
-$IP1 bkapi.$BK_DOMAIN 
+$IP1 bkapi.$BK_DOMAIN
 $IP1 apigw.$BK_DOMAIN
 $IP1 bkiam.$BK_DOMAIN
 $IP1 bkiam-api.$BK_DOMAIN
-$IP1 cmdb.$BK_DOMAIN 
-$IP1 job.$BK_DOMAIN 
-$IP1 jobapi.$BK_DOMAIN 
+$IP1 cmdb.$BK_DOMAIN
+$IP1 job.$BK_DOMAIN
+$IP1 jobapi.$BK_DOMAIN
 $IP2 apps.$BK_DOMAIN
 EOF
 ```
@@ -207,60 +207,11 @@ echo "http://$BK_DOMAIN"
 浏览器访问上述地址即可。记得提前配置本地 DNS 服务器或修改本机的 hosts 文件。
 
 # 准备 SaaS 运行环境
-
-## 上传 PaaS runtime 到 bkrepo
-
-在 **中控机** 获取需要执行的命令：
-``` bash
-helm status bk-paas -n blueking
-```
-其输出如图所示：
-![](assets/2022-03-09-10-42-53.png)
-在 **中控机** 执行所提示的命令即可运行 `runtimes-download.sh` 脚本：
-``` bash
-kubectl run --rm \
---env="BKREPO_USERNAME=admin" \
---env="BKREPO_PASSWORD=略" \
---env="BKREPO_ENDPOINT=http://bkrepo.略" \
---env="BKREPO_PROJECT=bkpaas" \
---image="hub.bktencent.com/blueking/paas3-buildpack-toolkit:1.1.0-beta.70" \
--it bkpaas3-upload-runtime --command  -- /bin/bash runtimes-download.sh \
--n blueking
-```
-
-> 此处 `runtimes-download.sh` 脚本从蓝鲸官方资源库下载依赖 SaaS 必需的 `runtime` （运行时资源）并上传到私有化环境中的 bkrepo 仓库。
-> 
-> 要求 k8s node 能访问外网，如果因网络问题下载异常，可以重复运行此脚本。
-
-
-## 在 PaaS 界面配置 Redis 资源池
-需要添加 SaaS 使用的 Redis 资源池。
-
-> **提示**
+> **注意**
 >
-> 目前 Redis 资源池分为 2 类：
-> - `0shared`：共享实例。池内实例允许重复以供多个 SaaS 复用。由 SaaS 自主规避 `key` 冲突。
-> - `1exclusive`：独占实例。池内实例不应该重复，否则可能因为 `key` 冲突而影响 SaaS 运行。
+> SaaS 部署时需要访问 bkrepo 提供的 docker 服务，请先完成 “配置 k8s node 的 DNS” 章节。
 
-1. 先登录「开发者中心」。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为您配置的蓝鲸基础域名。）
-2. 访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
-3. 在 「`0shared`」这行点击 「添加实例」，重复添加 5 - 10 次（蓝鲸基础套餐会占用 4 个实例，余量可供后续安装的 SaaS 使用）。如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。如果部署 SaaS 时提示 “分配不到 redis”，则需补充资源实例。
-![](assets/2022-03-09-10-43-11.png)
-启用 “可回收复用” 开关，并在 “实例配置” 贴入配置代码，在 **中控机** 执行如下命令生成：
-    ``` bash
-    redis_json_tpl='{"host":"%s","port": %d,"password":"%s"}'
-    redis_host="bk-redis-master.blueking.svc.cluster.local"  # 默认用蓝鲸默认的redis，可自行修改
-    redis_port=6379  # 按需修改
-    redis_pass=$(kubectl get secret --namespace blueking bk-redis \
-      -o jsonpath="{.data.redis-password}" | base64 --decode)  # 读取默认redis的密码，按需修改赋值语句
-    printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # 格式化以确保json格式正确
-    ```
-    命令输出如下图所示：
-    ![](assets/2022-03-09-10-44-00.png)
-    浏览器界面如下图所示：
-    ![](assets/2022-03-09-10-43-19.png)
-
-### 配置 node 上的 docker 服务
+## 调整 node 上的 docker 服务
 PaaS 支持 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 提供的 docker registry 服务。
 
 因为 docker 默认使用 https 协议访问 registry，因此需要额外配置。一共有 2 种配置方案：
@@ -269,7 +220,7 @@ PaaS 支持 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 
    1. 用户购买了商业证书： 仅在 bkrepo 配置 docker 域名的证书即可。
    2. 用户自签的证书： 需要在 bkrepo 配置 docker 域名的证书，且在 node 添加自签证书到操作系统 CA 库并重启 docker 服务。
 
-#### 配置 docker 使用 http 访问 registry
+### 配置 docker 使用 http 访问 registry
 在 SaaS 专用 node （如未配置专用 node，则为全部 node ）上执行命令生成新的配置文件：
 ``` bash
 BK_DOMAIN="bkce7.bktencent.com"  # 请按需修改
@@ -282,10 +233,12 @@ cat /etc/docker/daemon.json | jq '.["insecure-registries"]+=["docker.'$BK_DOMAIN
 ``` bash
 systemctl reload docker
 ```
+
 检查确认已经生效：
 ``` bash
 docker info
 ```
+
 预期可看到新添加的 `docker.$BK_DOMAIN` ，如果没有，请检查 docker 服务是否成功 reload：
 ``` yaml
  Insecure Registries:
@@ -293,204 +246,80 @@ docker info
   127.0.0.0/8
 ```
 
-## 配置 SaaS 专用 node （可选）
+## 在 PaaS 界面配置 Redis 资源池
+需要添加 SaaS 使用的 Redis 资源池。
+
+> **提示**
+>
+> 目前 Redis 资源池分为 2 类：
+> - `0shared`：共享实例。池内实例允许重复以供多个 SaaS 复用。由 SaaS 自主规避 `key` 冲突。
+> - `1exclusive`：独占实例。池内实例不应该重复，否则可能因为 `key` 冲突而影响 SaaS 运行。
+
+先登录「开发者中心」。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为您配置的蓝鲸基础域名。）
+
+访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
+
+在 「`0shared`」这行点击 「添加实例」，重复添加 5 - 10 次（蓝鲸基础套餐会占用 4 个实例，余量可供后续安装的 SaaS 使用）。如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。如果部署 SaaS 时提示 “分配不到 redis”，则需补充资源实例。
+![](assets/2022-03-09-10-43-11.png)
+启用 “可回收复用” 开关，并在 “实例配置” 贴入配置代码，在 **中控机** 执行如下命令生成：
+``` bash
+redis_json_tpl='{"host":"%s","port": %d,"password":"%s"}'
+redis_host="bk-redis-master.blueking.svc.cluster.local"  # 默认用蓝鲸默认的redis，可自行修改
+redis_port=6379  # 按需修改
+redis_pass=$(kubectl get secret --namespace blueking bk-redis \
+  -o jsonpath="{.data.redis-password}" | base64 --decode)  # 读取默认redis的密码，按需修改赋值语句
+printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # 格式化以确保json格式正确
+```
+命令输出如下图所示：
+![](assets/2022-03-09-10-44-00.png)
+浏览器界面如下图所示：
+![](assets/2022-03-09-10-43-19.png)
+
+## 可选：上传 PaaS runtimes 到 bkrepo
+具体操作请查阅《[上传 PaaS runtimes 到 bkrepo](paas-upload-runtimes.md)》文档。
+
+在如下场景下用到：
+1. 目前蓝鲸官方 SaaS 包格式为 `image`，如需部署 `package` 格式的 `S-Mart` 包，需要使用到编译工具。
+2. 用户通过 PaaS 自行开发 SaaS 时。
+
+## 可选：配置 SaaS 专用 node
+具体操作请查阅《[配置 SaaS 专用 node](saas-dedicated-node.md)》文档。
+
 在资源充足的情况下，建议单独给 SaaS 分配单独的 `node`。因为 SaaS 部署时，编译会产生高 IO 和高 CPU 消耗。原生 k8s 集群的 io 隔离暂无方案，这样会影响到所在 `node` 的其他 `pod`。
 
-我们通过 k8s 的污点（`taint`）来实现专机专用。
+# 部署基础套餐 SaaS
+在前面部署蓝鲸后台时包含了 PaaS（开发者中心）、配置平台、作业平台 等平台和用户管理、权限中心两个 SaaS。
 
-### 配置 node 污点
-假设该节点名为 `node-1`，给该 node 配置 label 和污点，确保 `pod` 默认不会分配到这些 `node`。
+其他社区版官方的 SaaS 应用，比如标准运维、节点管理、流程服务等需要通过开发者中心来部署。
+
+## 一键部署基础套餐 SaaS
+为了便于您体验，我们扩展了“一键部署” 脚本，现在可以安装 SaaS 并完成大部分设置了。
+
+目前脚本仅支持初次安装，如 SaaS 已安装会跳过。如需更新 SaaS ，请查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档上传 `S-Mart` 包并选择新版本部署。
+
+使用 `-i saas` 可以安装全部 SaaS 到生产环境：
 ``` bash
-kubectl label nodes node-1 dedicated=bkSaas
-kubectl taint nodes node-1 dedicated=bkSaas:NoSchedule
+~/setup_bkce7.sh -i saas
 ```
-### 在 PaaS 页面配置污点容忍
-1. 先登录。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为您配置的蓝鲸基础域名。）
-2. 访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/clusters/manage/` 。
-3. 点击集群 最右侧的编辑按钮，并滚动到最下面。
-4. 在 **默认 nodeSelector** 栏填写：
-``` json
-{"dedicated": "bkSaas"}
-```
-5. 在 **默认 tolerations** 栏填写：
-``` json
-[{"key":"dedicated","operator":"Equal","value":"bkSaas","effect":"NoSchedule"}]
-```
-6. 保存
-![](assets/2022-03-09-10-44-14.png)
 
-### SaaS 专用 node 问题排查
-如果发现 SaaS 的 Pod 调度到了其他 `node`，请检查 PaaS 页面的配置是否正确。
-
-如果因为资源不足导致 SaaS 运行异常，请先参考 **添加 k8s-node** 完成 k8s 扩容，然后参考 **配置 node 污点** 完成专机配置。
-
-
-# 部署蓝鲸基础套餐 SaaS 
-> **提示**
-> 
-> 1. 目前安装 SaaS 需要在浏览器操作，记得先完成 **访问蓝鲸** 章节的内容。
-> 2. SaaS 运行前需要先完成 **准备 SaaS 运行环境** 章节的内容。
-
-在前面部署蓝鲸套件里包含了 PaaS 平台 V3、配置平台、作业平台、gse 几个原子平台和用户管理、权限中心两个公共模块，其他社区版官方的 SaaS 应用，比如标准运维、节点管理、流程服务等通过开发者中心来自助部署
-
-## 部署 S-Mart 包
-SaaS 应用采用 `S-Mart` 包分发，部署方法：
-
-登录 「蓝鲸工作台」，在顶部导航栏里打开 「开发者中心」 ，点击 「创建应用」，选择 「S-mart 应用」 ，上传包。
-![](assets/2022-03-09-10-44-26.png)
-上传成功后，点击 「部署应用」。
-![](assets/smart-package-upload-success.png)
-
-如果存在部署前配置（如 环境变量），需参考文档先完成配置，然后才能部署。
-
-先确认顶部的 「模块」 为需要部署的模块，然后切换下方面板到 「生产环境」，选择刚才上传的版本点击 「部署至生产环境」 按钮。此时开始显示部署进度。
-![](assets/deploy-saas-on-appo.png)
-
-## 需要提前下载的资源
-我们汇总整理了接下来需要下载的文件。
-
-1. SaaS 集合包 文件名：ce7_saas.tgz
-    - MD5：ad0f2bea16e52c496c5ec70f2097e5eb
-    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/ce7_saas.tgz
-2. GSE Agent 集合包 文件名：gse_client_ce_3.6.16.zip
-    - MD5：9a2d4f3d0034ea37a6c5cb8f7c4e399a
-    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip
-3. Python 3.6 文件名：py36.tgz
-    - MD5：7f9217b406703e3e3ee88681dd903bd1
-    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz
-4. GSE 插件集合包 文件名：gse_plugins.tgz
-    - MD5：d29be1a7e5b05c9aee54e9f0437b3f72
-    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gse_plugins.tgz
-
-## 各 SaaS 部署过程
-> **提示**
->
-> 解压刚才下载的 SaaS 集合包，即可得到各个 SaaS 安装所需的 `S-Mart` 包。
-
-### 部署流程服务（bk_itsm）
-
-SaaS 包名：`bk_itsm_V*.tar.gz`
-
-无部署前配置，部署 `default` 模块即可。
-
-部署步骤请参考 **部署 S-Mart 包** 章节。
-
-### 部署进程配置管理（bk_gsekit）
-
-SaaS 包名：`bk_gsekit-V*.tar.gz`
-
-无部署前配置，部署 `default` 模块即可。
-
-### 部署标准运维（bk_sops）
-
-SaaS 包名：`bk_sops-V*.tar.gz`
-
-无部署前配置，共有 **四个模块** 需要部署。
-
-需要先部署 `default` ，然后才能部署 `api`、`pipeline`、`callback` 等 3 个模块（无顺序要求，可同时部署）。
-![](assets/2022-03-09-10-44-54.png)
-
-### 部署蓝鲸可视化平台（bk_lesscode）
-
-SaaS 包名：`bk_lesscode-ee-V*.tar.gz`
-
-先配置 「环境变量」，然后部署 `default` 模块即可。
-
-配置 **环境变量**：
-
-进入 「应用引擎」 - 「环境配置」页面，在「环境变量配置」下方填写环境变量并点击「添加」按钮。
-
-注意环境变量的作用范围，可以直接选所有环境
-
-|环境变量名称 |VALUE |描述 |
-| -- | -- | -- |
-|`PRIVATE_NPM_REGISTRY` |按以下模板填写: `${bkrepoConfig.endpoint}/npm/bkpaas/npm/` , 其中 bkrepoConfig.endpoint 为 bkrepo 服务的网关地址,即http://bkrepo.$BK_DOMAIN |npm 镜像源地址 |
-|`PRIVATE_NPM_USERNAME` |填写部署 PaaS3.0 时配置的 `bkrepoConfig.lesscodeUsername` 默认值是 bklesscode |npm 账号用户名 |
-|`PRIVATE_NPM_PASSWORD` |填写部署 PaaS3.0 时配置的 `bkrepoConfig.lesscodePassword` 默认值是 blueking |npm 账号密码 |
-|`BKAPIGW_DOC_URL` |填写部署 API 网关时，生成的环境变量 APISUPPORT_FE_URL 的值 默认值是 `http://apigw.$BK_DOMAIN/docs` |云 API 文档地址 |
-
-最终配置界面如下图所示：
-![](assets/2022-03-09-10-45-04.png)
-部署应用到所需的环境
-![](assets/2022-03-09-10-45-12.png)
-
-### 部署节点管理（bk_nodeman）
-
-SaaS 包名：`bk_nodeman-V*.tar.gz`
-
-先配置 「环境变量」，共有 **两个模块** 需要部署。
-
-在各自模块提前配置以下 3 个环境变量 ：
-
-|环境变量名称 |VALUE |描述 |
-|--|--|--|
-|STORAGE_TYPE |BLUEKING_ARTIFACTORY |存储类型 |
-|BKAPP_RUN_ENV |ce |运行环境 |
-|BKAPP_NODEMAN_CALLBACK_URL |http://apps.$BK_DOMAIN/prod--backend--bk--nodeman/backend |节点管理回调地址 |
-
-> **提示**:
-> 
-> 1. 配置一次 `default` 模块的变量后，`backend` 的变量可以从 `default` 模块导入。
-> 2. 环境变量的作用范围，可以直接选所有环境。
-
-![](assets/2022-03-09-10-45-40.png)
-![](assets/2022-03-09-10-45-45.png)
-
-需要先部署 `default` ，然后部署 `backend` 模块。
-
-## SaaS 部署后的设置
-> **提示**
->
-> 一些 SaaS 在部署成功后，还需要做初始化设置。
-
-### 蓝鲸可视化平台（bk_lesscode）部署后配置
-目前 bk_lesscode 只支持通过独立域名来访问。
-
-在 bk_lesscode 应用页中, 点击 「应用引擎」-「访问入口」中配置独立域名并保存。
-如果没有配置公网 DNS 解析，则在本地 hosts 需要加上
-1.1.1.1（ `bk-ingress-controller` pod 所在机器的公网 IP） `lesscode.$BK_DOMAIN`
-![](assets/2022-03-09-10-45-21.png)
-在应用推广-发布管理中，将应用市场的访问地址类型设置为：主模块生产环境独立域名
-![](assets/2022-03-09-10-45-29.png)
-
-### 节点管理（bk_nodeman）部署后配置
-#### 配置 GSE 环境管理
-点击全局配置->gse 环境管理->默认接入点->编辑，相关信息需要用以下命令行获取。
-
-zookeeper 集群地址填写 **任意 k8s node IP**，端口填写 `32181` （注意不是默认的 `2181`）。然后查询 zookeeper 用户名和密码：
+也可以只安装单个 SaaS（目前支持 itsm sops nodeman gsekit lesscode ）：
 ``` bash
-helm get values bk-gse-ce -n blueking | grep -A 2 externalZookeeper
+~/setup_bkce7.sh -i nodeman  # 安装节点管理到生产环境, -i nodeman@stag 则为预发布环境
 ```
 
-Btserver，dataserver，taskserver 的地址，先都填入 `127.0.0.1` 即可。后台任务一分钟后，会从 zookeeper 获取到最新的后台服务地址。
+如下操作未能在脚本中实现，请您查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档的“SaaS 部署后的设置”章节手动操作：
+1. bk_lesscode 配置独立域名。
+2. bk_nodeman 配置 GSE 环境管理；上传 gse 插件包。
 
-外网回调地址：http://apps.$BK_DOMAIN/prod--backend--bk--nodeman/backend
-
-agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 `http://node_ip:30025/` （任意 k8s node IP） 后面目录路径保持不变。`30025` 是 bkrepo 暴露的 NodePort，这样可以使用 ip 来下载，无需配置 agent 端的域名解析。
-
-最终配置界面如下图所示：
-![](assets/2022-03-09-10-46-25.png)
-
-点击 “测试 Server 及 URL 可用性”，然后点击 “下一步”。在新的 agent 信息界面点击 “确认” 保存。
-
-回到查看界面后，请 **等待 1 ~ 2 分钟**，然后刷新此页面。如果 Btserver，dataserver，taskserver 的地址自动从 `127.0.0.1` 变更为 node 的内网 IP ，则说明读取 zookeeper 成功，否则需检查 zookeeper 的 IP、 端口以及账户密码是否正确。
-
-#### agent 资源上传
-下载 agent 合集包：[https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip](https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip)
-
-本机解压 zip 包后，分别上传 agent 包到 bkrepo 中（`bkrepo.$BK_DOMAIN` 登陆账号密码可以通过： `helm status -n blueking bk-repo` 获取。先找到 `bksaas-addons` 项目，节点管理对应的目录（public-bkapp-bk_nod-x/data/bkee/public/bknodeman/download ），每次只能上传一个包，需要分多次上传。
-![](assets/2022-03-09-10-46-05.png)
-![](assets/2022-03-09-10-46-13.png)
-
-下载 py36 解释器包，部署 gse proxy 安装 gse p-agent 需要用到：[https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz](https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz) 上传到和第一步 agent 的同级目录。
-
-#### gse 插件包
-上传基础插件包（bknodeman 的页面上传），解压 `gse_plugins.tgz` ，单独上传里面的小包 `*.tgz`。
-
+## 手动部署基础套餐 SaaS
+请查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
 
 # 给 node 安装 gse agent
+> **提示**
+>
+> 需要先部署 “节点管理（bk_nodeman）”并 “配置 GSE 环境管理”。才能安装 agent。
 
-节点管理安装成功后，需要给集群的全部 node （包括 master ）机器安装 gse agent。
+需要给集群的全部 node （包括 master ）机器安装 gse agent。
 
 用途：
 1. job 依赖 agent 做文件分发。
