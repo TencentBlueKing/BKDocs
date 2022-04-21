@@ -36,7 +36,7 @@ done
 
 ``` bash
 # 下载部署脚本并添加可执行权限.
-curl -Lo ~/setup_bkce7.sh https://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.sh && \
+curl -Lo ~/setup_bkce7.sh https://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.0.1.sh && \
   chmod +x ~/setup_bkce7.sh
 ```
 
@@ -58,7 +58,7 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 
 ## 分步部署基础套餐后台
-具体操作请查阅 [分步部署基础套餐后台](base_installing_helmfile.md) 。
+具体操作请查阅 [分步部署基础套餐后台](install-base-manually.md) 。
 
 
 # 配置 DNS

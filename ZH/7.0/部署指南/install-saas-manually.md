@@ -17,17 +17,17 @@ SaaS 应用采用 `S-Mart` 包分发，这里描述了通用的部署方法。
 ## 需要提前下载的资源
 我们汇总整理了接下来需要下载的文件。
 
-1. SaaS 集合包 文件名：ce7_saas.tgz
-    - MD5：ad0f2bea16e52c496c5ec70f2097e5eb
-    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/ce7_saas.tgz
+1. SaaS 集合包 文件名：ce7_saas.tgz （7.0.1 版本文件名不同，记得重命名为此名称。）
+    - MD5： 756a093bb030fc6902339623c1dfeac0
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/ce7.0.1_saas.tgz
 2. GSE Agent 集合包 文件名：gse_client_ce_3.6.16.zip
-    - MD5：9a2d4f3d0034ea37a6c5cb8f7c4e399a
+    - MD5： 9a2d4f3d0034ea37a6c5cb8f7c4e399a
     - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip
 3. Python 3.6 文件名：py36.tgz
-    - MD5：7f9217b406703e3e3ee88681dd903bd1
+    - MD5： 7f9217b406703e3e3ee88681dd903bd1
     - 下载地址：https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz
 4. GSE 插件集合包 文件名：gse_plugins.tgz
-    - MD5：d29be1a7e5b05c9aee54e9f0437b3f72
+    - MD5： d29be1a7e5b05c9aee54e9f0437b3f72
     - 下载地址：https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gse_plugins.tgz
 
 ## 各 SaaS 部署过程
@@ -146,7 +146,7 @@ agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 `http://node_ip:3
 #### agent 资源上传
 下载 agent 合集包：[https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip](https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip)
 
-本机解压 zip 包后，分别上传 agent 包到 bkrepo 中（`bkrepo.$BK_DOMAIN` 登陆账号密码可以通过： `helm status -n blueking bk-repo` 获取。先找到 `bksaas-addons` 项目，节点管理对应的目录（public-bkapp-bk_nod-x/data/bkee/public/bknodeman/download ），每次只能上传一个包，需要分多次上传。
+本机解压 zip 包后，分别上传 agent 包到 bkrepo 中（ `bkrepo.$BK_DOMAIN` 登陆账号密码可以通过： `helm status -n blueking bk-repo` 获取。先找到 `bksaas-addons` 项目，节点管理对应的目录（public-bkapp-bk_nod-x/data/bkee/public/bknodeman/download ），每次只能上传一个包，需要分多次上传。
 ![](assets/2022-03-09-10-46-05.png)
 ![](assets/2022-03-09-10-46-13.png)
 

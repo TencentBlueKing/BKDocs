@@ -4,7 +4,7 @@
 在 **中控机** 下载官方提供的  `bkce-helmfile`  包，它包含了  `helmfile`  的二进制（管理并渲染 helm 的 values 来进行轻编排的命令行工具）以及容器化蓝鲸社区版部署的相关 yaml 配置模板。
 
 ``` bash
-wget -c -O ~/bkce-helmfile.tgz https://bkopen-1252002024.file.myqcloud.com/ce7/bkce-helmfile.tgz
+wget -c -O ~/bkce-helmfile.tgz https://bkopen-1252002024.file.myqcloud.com/ce7/bkce-helmfile-7.0.1.tgz
 wget -O ~/example_bkce_cert.tgz https://bkopen-1252002024.file.myqcloud.com/ce7/example_bkce_cert.tgz
 mkdir -p ~/bkhelmfile && tar xf ~/bkce-helmfile.tgz -C ~/bkhelmfile
 tar xf ~/example_bkce_cert.tgz -C ~/bkhelmfile/blueking/environments/default/
