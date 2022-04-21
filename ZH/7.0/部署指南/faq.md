@@ -31,22 +31,6 @@
 	source <(kubectl completion bash)
 	```
 
-## 访问公共服务
-访问公共 mysql：
-``` bash
-kubectl exec -it -n blueking bk-mysql-mysql-master-0 -- mysql -uroot -p密码
-```
-
-访问公共 mongodb:
-``` bash
-kubectl exec -it -n blueking bk-mongodb-0 -- mongo
-```
-
-访问公共 zk:
-``` bash
-kubectl exec -it -n blueking bk-zookeeper-0 -- zkCli.sh
-```
-
 ## 错误案例
 ### 部署 SaaS 在“配置资源实例”阶段报错
 首先查看 `engine-main` 这个应用对应 pod 的日志。根据错误日志提示，判断定位方向：

@@ -12,3 +12,4 @@
 * [附录]()
     * [腾讯云 TKE 集群准备](tke_hosting.md)
     * [分步部署基础套餐后台](base_installing_helmfile.md)
+    * [访问入口及账户密码汇总](access.md)
