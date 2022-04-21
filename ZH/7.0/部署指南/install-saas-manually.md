@@ -1,0 +1,156 @@
+我们已经提供了“一键脚本”，可以完成本文档的大部分内容，建议先阅读《[基础套餐部署](install-bkce.md)》文档。
+
+# 手动部署基础套餐 SaaS
+## 部署 S-Mart 包
+SaaS 应用采用 `S-Mart` 包分发，这里描述了通用的部署方法。
+
+登录 「蓝鲸工作台」，在顶部导航栏里打开 「开发者中心」 ，点击 「创建应用」，选择 「S-mart 应用」 ，上传包。
+![](assets/2022-03-09-10-44-26.png)
+上传成功后，点击 「部署应用」。
+![](assets/smart-package-upload-success.png)
+
+如果存在部署前配置（如 环境变量），需参考对应 SaaS 的部署文档先配置，配置完成后部署才会生效。
+
+先确认顶部的 「模块」 为需要部署的模块，然后切换下方面板到 「生产环境」，选择刚才上传的版本点击 「部署至生产环境」 按钮。此时开始显示部署进度。
+![](assets/deploy-saas-on-appo.png)
+
+## 需要提前下载的资源
+我们汇总整理了接下来需要下载的文件。
+
+1. SaaS 集合包 文件名：ce7_saas.tgz （7.0.1 版本文件名不同，记得重命名为此名称。）
+    - MD5： 756a093bb030fc6902339623c1dfeac0
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/ce7.0.1_saas.tgz
+2. GSE Agent 集合包 文件名：gse_client_ce_3.6.16.zip
+    - MD5： 9a2d4f3d0034ea37a6c5cb8f7c4e399a
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip
+3. Python 3.6 文件名：py36.tgz
+    - MD5： 7f9217b406703e3e3ee88681dd903bd1
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz
+4. GSE 插件集合包 文件名：gse_plugins.tgz
+    - MD5： d29be1a7e5b05c9aee54e9f0437b3f72
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gse_plugins.tgz
+
+## 各 SaaS 部署过程
+> **提示**
+>
+> 解压刚才下载的 SaaS 集合包，即可得到各个 SaaS 安装所需的 `S-Mart` 包。
+
+### 部署流程服务（bk_itsm）
+
+SaaS 包名：`bk_itsm_V*.tar.gz`
+
+无部署前配置，部署 `default` 模块即可。
+
+部署步骤请参考 **部署 S-Mart 包** 章节。
+
+### 部署进程配置管理（bk_gsekit）
+
+SaaS 包名：`bk_gsekit-V*.tar.gz`
+
+无部署前配置，部署 `default` 模块即可。
+
+### 部署标准运维（bk_sops）
+
+SaaS 包名：`bk_sops-V*.tar.gz`
+
+无部署前配置，共有 **四个模块** 需要部署。
+
+需要先部署 `default` ，然后才能部署 `api`、`pipeline`、`callback` 等 3 个模块（无顺序要求，可同时部署）。
+![](assets/2022-03-09-10-44-54.png)
+
+### 部署蓝鲸可视化平台（bk_lesscode）
+
+SaaS 包名：`bk_lesscode-ee-V*.tar.gz`
+
+先配置 「环境变量」，然后部署 `default` 模块即可。
+
+配置 **环境变量**：
+
+进入 「应用引擎」 - 「环境配置」页面，在「环境变量配置」下方填写环境变量并点击「添加」按钮。
+
+注意环境变量的作用范围，可以直接选所有环境
+
+|环境变量名称 |VALUE |描述 |
+| -- | -- | -- |
+|`PRIVATE_NPM_REGISTRY` |按以下模板填写: `${bkrepoConfig.endpoint}/npm/bkpaas/npm/` , 其中 bkrepoConfig.endpoint 为 bkrepo 服务的网关地址,即http://bkrepo.$BK_DOMAIN |npm 镜像源地址 |
+|`PRIVATE_NPM_USERNAME` |填写部署 PaaS3.0 时配置的 `bkrepoConfig.lesscodeUsername` 默认值是 bklesscode |npm 账号用户名 |
+|`PRIVATE_NPM_PASSWORD` |填写部署 PaaS3.0 时配置的 `bkrepoConfig.lesscodePassword` 默认值是 blueking |npm 账号密码 |
+|`BKAPIGW_DOC_URL` |填写部署 API 网关时，生成的环境变量 APISUPPORT_FE_URL 的值 默认值是 `http://apigw.$BK_DOMAIN/docs` |云 API 文档地址 |
+
+最终配置界面如下图所示：
+![](assets/2022-03-09-10-45-04.png)
+部署应用到所需的环境
+![](assets/2022-03-09-10-45-12.png)
+
+### 部署节点管理（bk_nodeman）
+
+SaaS 包名：`bk_nodeman-V*.tar.gz`
+
+先配置 「环境变量」，共有 **两个模块** 需要部署。
+
+在各自模块提前配置以下 3 个环境变量 ：
+
+|环境变量名称 |VALUE |描述 |
+|--|--|--|
+|STORAGE_TYPE |BLUEKING_ARTIFACTORY |存储类型 |
+|BKAPP_RUN_ENV |ce |运行环境 |
+|BKAPP_NODEMAN_CALLBACK_URL |http://apps.$BK_DOMAIN/prod--backend--bk--nodeman/backend |节点管理回调地址 |
+
+> **提示**:
+>
+> 1. 配置一次 `default` 模块的变量后，`backend` 的变量可以从 `default` 模块导入。
+> 2. 环境变量的作用范围，可以直接选所有环境。
+
+![](assets/2022-03-09-10-45-40.png)
+![](assets/2022-03-09-10-45-45.png)
+
+需要先部署 `default` ，然后部署 `backend` 模块。
+
+## SaaS 部署后的设置
+> **提示**
+>
+> 一些 SaaS 在部署成功后，还需要做初始化设置。
+
+### 蓝鲸可视化平台（bk_lesscode）部署后配置
+目前 bk_lesscode 只支持通过独立域名来访问。
+
+在 bk_lesscode 应用页中, 点击 「应用引擎」-「访问入口」中配置独立域名并保存。
+如果没有配置公网 DNS 解析，则在本地 hosts 需要加上
+1.1.1.1（ `bk-ingress-controller` pod 所在机器的公网 IP） `lesscode.$BK_DOMAIN`
+![](assets/2022-03-09-10-45-21.png)
+在应用推广-发布管理中，将应用市场的访问地址类型设置为：主模块生产环境独立域名
+![](assets/2022-03-09-10-45-29.png)
+
+### 节点管理（bk_nodeman）部署后配置
+#### 配置 GSE 环境管理
+点击全局配置->gse 环境管理->默认接入点->编辑，相关信息需要用以下命令行获取。
+
+zookeeper 集群地址填写 **任意 k8s node IP**，端口填写 `32181` （注意不是默认的 `2181`）。然后查询 zookeeper 用户名和密码：
+``` bash
+helm get values bk-gse-ce -n blueking | grep -A 2 externalZookeeper
+```
+
+Btserver，dataserver，taskserver 的地址，先都填入 `127.0.0.1` 即可。后台任务一分钟后，会从 zookeeper 获取到最新的后台服务地址。
+
+外网回调地址：http://apps.$BK_DOMAIN/prod--backend--bk--nodeman/backend
+
+agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 `http://node_ip:30025/` （任意 k8s node IP） 后面目录路径保持不变。`30025` 是 bkrepo 暴露的 NodePort，这样可以使用 ip 来下载，无需配置 agent 端的域名解析。
+
+最终配置界面如下图所示：
+![](assets/2022-03-09-10-46-25.png)
+
+点击 “测试 Server 及 URL 可用性”，然后点击 “下一步”。在新的 agent 信息界面点击 “确认” 保存。
+
+回到查看界面后，请 **等待 1 ~ 2 分钟**，然后刷新此页面。如果 Btserver，dataserver，taskserver 的地址自动从 `127.0.0.1` 变更为 node 的内网 IP ，则说明读取 zookeeper 成功，否则需检查 zookeeper 的 IP、 端口以及账户密码是否正确。
+
+#### agent 资源上传
+下载 agent 合集包：[https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip](https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip)
+
+本机解压 zip 包后，分别上传 agent 包到 bkrepo 中（ `bkrepo.$BK_DOMAIN` 登陆账号密码可以通过： `helm status -n blueking bk-repo` 获取。先找到 `bksaas-addons` 项目，节点管理对应的目录（public-bkapp-bk_nod-x/data/bkee/public/bknodeman/download ），每次只能上传一个包，需要分多次上传。
+![](assets/2022-03-09-10-46-05.png)
+![](assets/2022-03-09-10-46-13.png)
+
+下载 py36 解释器包，部署 gse proxy 安装 gse p-agent 需要用到：[https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz](https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz) 上传到和第一步 agent 的同级目录。
+
+#### 上传 gse 插件包
+上传基础插件包（bknodeman 的页面上传），解压 `gse_plugins.tgz` ，单独上传里面的小包 `*.tgz`。

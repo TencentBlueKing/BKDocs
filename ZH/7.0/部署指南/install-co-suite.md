@@ -50,7 +50,7 @@ echo $IP1 bklog.$BK_DOMAIN
 ### 前置检查
 容器监控功能需要在所有 k8s node （包括 master ）部署 gse-agent。请先在 “节点管理” 中完成 agent 安装。
 
-容器监控功能依赖 **容器管理平台** （BCS），请先完成 [容器管理套餐部署](bcs_package_installing.md) 。
+容器监控功能依赖 **容器管理平台** （BCS），请先完成 [容器管理平台部署](install-bcs.md) 。
 
 容器监控功能依赖 **监控平台** ，请先完成 “部署监控平台” 章节。
 
