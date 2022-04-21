@@ -6,7 +6,7 @@
 helm list -n blueking -a | grep bk-paas # 会看到failed的一个release。
 ```
 
-执行脚本：`./scripts/uninstall -y bk-paas` 卸载 bk-paas 这个 release 及其相关资源。
+执行脚本：`./scripts/uninstall.sh -y bk-paas` 卸载 bk-paas 这个 release 及其相关资源。
 
 ## 完全卸载
 如果想完全卸载蓝鲸，建议按以下步骤：
