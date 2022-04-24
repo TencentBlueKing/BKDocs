@@ -6,12 +6,12 @@
 
 ## 部署容器管理平台
 ### TKE 集群配置
-如果是 TKE 集群请修改 BCS 的 storageClass，自自建 k8s 可以忽略该步骤。
+如果是 TKE 集群请修改 BCS 的 storageClass，其他场景可以忽略本步骤。
 ``` bash
 cd ~/bkhelmfile/blueking/
 cat <<EOF >> environments/default/custom.yaml
 bcs:
-storageClass: cbs
+  storageClass: cbs
 EOF
 ```
 
