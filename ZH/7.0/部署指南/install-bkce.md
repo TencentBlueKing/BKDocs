@@ -30,17 +30,20 @@ done
 1. `Host key verification failed.`，且开头提示 `REMOTE HOST IDENTIFICATION HAS CHANGED`: 检查目的主机是否重装过。如果确认没连错机器，可以参考提示（如 `Offending 类型 key in /root/.ssh/known_hosts:行号`）删除 `known_hosts` 文件里的对应行。
 
 # 部署基础套餐后台
+如果您希望尽快体验蓝鲸，我们提供了“一键部署” 脚本供您选择。
+
+如果您打算研究部署细节，则可以查阅 《[分步部署基础套餐后台](install-base-manually.md)》 文档。
+
+<a id="setup_bkce7-i-base"></a>
+
 ## 一键部署基础套餐后台
-
-为了便于您体验，我们封装了“一键部署” 脚本。
-
+下载部署脚本并添加可执行权限：
 ``` bash
-# 下载部署脚本并添加可执行权限.
 curl -Lo ~/setup_bkce7.sh https://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.0.1.sh && \
   chmod +x ~/setup_bkce7.sh
 ```
 
-假设您用于部署蓝鲸的域名为 `bkce7.bktencent.com`，使用如下的命令:
+假设您用于部署蓝鲸的域名为 `bkce7.bktencent.com`，使用如下的命令开始部署:
 ``` bash
 BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 ~/setup_bkce7.sh -i base --domain "$BK_DOMAIN"
@@ -67,7 +70,7 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 ## 配置 coredns
 > **提示**
 >
-> “一键部署” 脚本中自动完成了此步骤，可以跳过此章节。
+> “一键部署” 脚本中自动完成了此步骤，可以跳过本章节。
 
 我们需要确保 k8s 集群的容器内能解析到 ingress controller。
 
@@ -102,6 +105,8 @@ IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0
 k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
 
 因为 node 上均有虚拟网络的路由，因此我们使用持久化的 `clusterIP`。以免频繁刷新 hosts 文件。
+
+请在 **中控机** 执行如下脚本，然后将 **生成的 hosts 内容** 追加到所有的 `node` 的 `/etc/hosts` 文件结尾（如 pod 经历删除重建，则需要更新 hosts 文件覆盖 pod 相应的域名）。
 
 ``` bash
 BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
@@ -247,6 +252,10 @@ docker info
 ```
 
 ## 在 PaaS 界面配置 Redis 资源池
+>**提示**
+>
+>“一键部署” 脚本中自动完成了此步骤，可以跳过本章节。
+
 需要添加 SaaS 使用的 Redis 资源池。
 
 > **提示**
@@ -292,10 +301,12 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 
 其他社区版官方的 SaaS 应用，比如标准运维、节点管理、流程服务等需要通过开发者中心来部署。
 
-## 一键部署基础套餐 SaaS
-为了便于您体验，我们扩展了“一键部署” 脚本，现在可以安装 SaaS 并完成大部分设置了。
+为了方便您快速体验，我们扩展了 “一键部署” 脚本，现在可以支持 SaaS 的初次安装 以及部署前设置了。
+如 SaaS 已安装会跳过，因此更新 SaaS 需查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档上传 `S-Mart` 包并选择新版本部署。
 
-目前脚本仅支持初次安装，如 SaaS 已安装会跳过。如需更新 SaaS ，请查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档上传 `S-Mart` 包并选择新版本部署。
+<a id="setup_bkce7-i-saas"></a>
+
+## 一键部署基础套餐 SaaS
 
 使用 `-i saas` 可以安装全部 SaaS 到生产环境：
 ``` bash
@@ -307,7 +318,7 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 ~/setup_bkce7.sh -i nodeman  # 安装节点管理到生产环境, -i nodeman@stag 则为预发布环境
 ```
 
-如下操作未能在脚本中实现，请您查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档的“SaaS 部署后的设置”章节手动操作：
+如下操作未能在脚本中实现，请您查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档的“[SaaS 部署后的设置](install-saas-manually.md#post-install-bk-saas)”章节手动操作：
 1. bk_lesscode 配置独立域名。
 2. bk_nodeman 配置 GSE 环境管理；上传 gse 插件包。
 
