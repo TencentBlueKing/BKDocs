@@ -22,7 +22,7 @@
 
 平台约定了用户代码中的 `bin/pre-compile` 和 `bin/post-compile` 文件即为 `构建(Build)阶段钩子` 中执行的自定义脚本, 其中 `pre-compile` 定义 compile 的构建前置钩子，`post-compile` 定义构建后置钩子。
 
-在实际运行时, 构建阶段钩子将会使用 `source` 命令运行, 因此它们支持 bash 语法，并且可以使用所有环境变量。（关于环境变量，可以参看 [如何使用自定义环境变量](./custom_configvars) 了解更多）
+在实际运行时, 构建阶段钩子将会使用 `source` 命令运行, 因此它们支持 bash 语法，并且可以使用所有环境变量。（关于环境变量，可以参看 [如何使用自定义环境变量](./custom_configvars.md) 了解更多）
 
 如果构建(Build)阶段钩子执行失败, 那么该次构建将被认为执行失败, 同时也不会进入「部署阶段」。
 
@@ -63,4 +63,4 @@ python manage.py migrate --no-input
 ```
 
 ### 基于镜像部署的蓝鲸应用如何在 release 前执行自定义指令(如数据库变更)？
-对于基于镜像部署的蓝鲸应用, 请使用 [部署(Release)阶段钩子](./release_hooks)
+对于基于镜像部署的蓝鲸应用, 请使用 [部署(Release)阶段钩子](./release_hooks.md)
