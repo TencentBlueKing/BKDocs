@@ -122,7 +122,7 @@ gunicorn wsgi -w 4 -b :5000
 
 
 **注意事项：**
-- [构建(Build)阶段钩子](/topics/paas/build_hooks)在每个构建工具执行后都会被触发。
+- [构建(Build)阶段钩子](./build_hooks.md)在每个构建工具执行后都会被触发。
 
 ## 使用（容器）镜像来部署蓝鲸应用
 
