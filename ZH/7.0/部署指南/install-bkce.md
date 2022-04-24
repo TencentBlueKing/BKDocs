@@ -106,7 +106,7 @@ k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
 
 因为 node 上均有虚拟网络的路由，因此我们使用持久化的 `clusterIP`。以免频繁刷新 hosts 文件。
 
-请在 **中控机** 执行如下脚本，然后将 **生成的 hosts 内容** 追加到所有的 `node` 的 `/etc/hosts` 文件结尾（如 pod 经历删除重建，则需要更新 hosts 文件覆盖 pod 相应的域名）。
+请在 **中控机** 执行如下脚本 **生成 hosts 内容**，然后将其追加到所有的 `node` 的 `/etc/hosts` 文件结尾（如 pod 经历删除重建，则需要更新 hosts 文件覆盖 pod 相应的域名）。
 
 ``` bash
 BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
@@ -132,7 +132,7 @@ EOF
 BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
 IP1=$(kubectl -n blueking get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
 IP2=$(kubectl -n blueking get pods -l app=bk-ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
-# 配置本地host
+# 生成hosts内容
 cat <<EOF
 $IP1 $BK_DOMAIN
 $IP1 bkrepo.$BK_DOMAIN
