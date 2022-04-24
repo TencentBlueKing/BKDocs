@@ -57,9 +57,9 @@ kubectl get secrets -n blueking bk-rabbitmq -o go-template='{{index .data "rabbi
 ```
 
 ## Zookeeper
-获取 auth。
+获取 auth，格式为 `用户名:密码`。
 ``` bash
-kubectl get -n blueking cm bk-gse-ce-task-config -o  go-template --template '{{index .data "task.conf" }}' | jq ."zkauth"
+kubectl get -n blueking cm bk-gse-ce-task-config -o go-template --template '{{index .data "task.conf" }}' | jq -r ".zkauth"
 ```
 
 # 访问存储服务
