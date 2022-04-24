@@ -67,6 +67,8 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 # 配置 DNS
 针对访问场景的不同，我们需要配置不同的 DNS 记录。为了简化操作，以下步骤皆以 `hosts` 文件为例。
 
+<a id="hosts-in-coredns"></a>
+
 ## 配置 coredns
 > **提示**
 >
@@ -101,6 +103,8 @@ IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0
         10.244.0.5 bcs.bkce7.bktencent.com
 ```
 
+<a id="hosts-in-k8s-node"></a>
+
 ## 配置 k8s node 的 DNS
 k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
 
@@ -119,6 +123,8 @@ $IP1 docker.$BK_DOMAIN
 $IP2 apps.$BK_DOMAIN
 EOF
 ```
+
+<a id="hosts-in-bk-ctrl"></a>
 
 ## 配置中控机的 DNS
 当中控机为 k8s 集群的成员时，可以参考 “配置 k8s node 的 DNS” 章节改为取 `clusterIP`。
@@ -150,6 +156,8 @@ $IP1 jobapi.$BK_DOMAIN
 $IP2 apps.$BK_DOMAIN
 EOF
 ```
+
+<a id="hosts-in-user-pc"></a>
 
 ## 配置用户侧的 DNS
 蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。
@@ -214,7 +222,9 @@ echo "http://$BK_DOMAIN"
 # 准备 SaaS 运行环境
 > **注意**
 >
-> SaaS 部署时需要访问 bkrepo 提供的 docker 服务，请先完成 “配置 k8s node 的 DNS” 章节。
+> SaaS 部署时需要访问 bkrepo 提供的 docker 服务，请先完成 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 章节。
+
+<a id="k8s-node-docker-insecure-registries"></a>
 
 ## 调整 node 上的 docker 服务
 PaaS 支持 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 提供的 docker registry 服务。
@@ -307,11 +317,17 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 <a id="setup_bkce7-i-saas"></a>
 
 ## 一键部署基础套餐 SaaS
+> **注意**
+>
+> 1. 先完成 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 章节。
+> 2. 然后完成 “[调整 node 上的 docker 服务](#k8s-node-docker-insecure-registries)” 章节。
 
 使用 `-i saas` 可以安装全部 SaaS 到生产环境：
 ``` bash
 ~/setup_bkce7.sh -i saas
 ```
+
+此步骤总耗时 18 ~ 27 分钟。每个 SaaS 部署不超过 10 分钟，如果超时请参考 《[FAQ](faq.md)》文档的 “[部署 SaaS 在“执行部署前置命令”阶段报错](faq.md#saas-deploy-prehook)” 章节排查。
 
 也可以只安装单个 SaaS（目前支持 itsm sops nodeman gsekit lesscode ）：
 ``` bash
