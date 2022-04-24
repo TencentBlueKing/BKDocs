@@ -51,6 +51,7 @@
 cd /data/install
 ./install_minibk -y
 ```
+[单机部署常见报错](https://bk.tencent.com/s-mart/community/question/5658?type=answer)
 
 安装过程中遇到失败的情况，请先定位排查解决后，再重新运行失败时的安装指令。
 
@@ -72,7 +73,7 @@ source ~/.bashrc
 ```bash
 ./bkcli initdata topo
 ```
-
+[初始业务拓扑常见报错](https://bk.tencent.com/s-mart/community/question/5417?type=answer)
 ## 访问蓝鲸
 
 > 下面介绍的操作均可能覆盖现有 hosts ，进行操作前请先确认是否需要备份。
