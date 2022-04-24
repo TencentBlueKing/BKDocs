@@ -14,6 +14,7 @@ SaaS 应用采用 `S-Mart` 包分发，这里描述了通用的部署方法。
 先确认顶部的 「模块」 为需要部署的模块，然后切换下方面板到 「生产环境」，选择刚才上传的版本点击 「部署至生产环境」 按钮。此时开始显示部署进度。
 ![](assets/deploy-saas-on-appo.png)
 
+<a id="saas-res-download"></a>
 ## 需要提前下载的资源
 我们汇总整理了接下来需要下载的文件。
 
@@ -106,6 +107,8 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 
 需要先部署 `default` ，然后部署 `backend` 模块。
 
+<a id="post-install-bk-saas"></a>
+
 ## SaaS 部署后的设置
 > **提示**
 >
@@ -122,6 +125,7 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 ![](assets/2022-03-09-10-45-29.png)
 
 ### 节点管理（bk_nodeman）部署后配置
+
 #### 配置 GSE 环境管理
 点击全局配置->gse 环境管理->默认接入点->编辑，相关信息需要用以下命令行获取。
 
@@ -143,7 +147,27 @@ agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 `http://node_ip:3
 
 回到查看界面后，请 **等待 1 ~ 2 分钟**，然后刷新此页面。如果 Btserver，dataserver，taskserver 的地址自动从 `127.0.0.1` 变更为 node 的内网 IP ，则说明读取 zookeeper 成功，否则需检查 zookeeper 的 IP、 端口以及账户密码是否正确。
 
+#### 上传 gse 插件包
+打开 “工作台” —— “蓝鲸节点管理”。切换顶部导航到 “插件管理”，选择左侧菜单栏里的 “插件包”。
+![](assets/bk_nodeman-upload-gse-plugin.png)
+
+在用户 PC 上解压 [提前下载](#saas-res-download) 的 `gse_plugins.tgz` ，单独上传里面的小包 `*.tgz`。
+
+| 包名 | 用途 | 描述 |
+| -- | -- | -- |
+| basereport | 基础性能采集器 | 负责采集 CMDB 上的实时数据，蓝鲸监控里的主机监控，包含 CPU，内存，磁盘等 |
+| bkmonitorbeat | 蓝鲸监控指标采集器 | 蓝鲸监控拨测采集器 支持多协议多任务的采集，监控和可用率计算，提供多种运行模式和热加载机制 |
+| bkmonitorproxy | 自定义上报服务 | 自定义数据上报服务，用来收集用户自定义上报的时序数据，或事件数据。 |
+| bkunifylogbeat | 高性能日志采集 | 数据平台，蓝鲸监控，日志检索等和日志相关的数据. 首次使用插件管理进行操作前，先到日志检索/数据平台等进行设置插件的功能项 |
+| exceptionbeat | 系统事件采集器 | 系统事件采集器，用来收集系统事件如磁盘只读，corefile 产生等。 |
+| gsecmdline | 自定义上报命令行工具 | 蓝鲸监控脚本采集，自定义监控，数据平台自定义上报数据 |
+| processbeat | 主机进程信息采集器 | 蓝鲸监控主机监控里面的进程信息. 首次使用插件管理进行操作前，先到蓝鲸监控进行设置插件的功能项 |
+
 #### agent 资源上传
+>**提示**
+>
+>“一键部署” 脚本中自动完成了此步骤，可以跳过本章节。
+
 下载 agent 合集包：[https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip](https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip)
 
 本机解压 zip 包后，分别上传 agent 包到 bkrepo 中（ `bkrepo.$BK_DOMAIN` 登陆账号密码可以通过： `helm status -n blueking bk-repo` 获取。先找到 `bksaas-addons` 项目，节点管理对应的目录（public-bkapp-bk_nod-x/data/bkee/public/bknodeman/download ），每次只能上传一个包，需要分多次上传。
@@ -151,6 +175,3 @@ agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 `http://node_ip:3
 ![](assets/2022-03-09-10-46-13.png)
 
 下载 py36 解释器包，部署 gse proxy 安装 gse p-agent 需要用到：[https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz](https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz) 上传到和第一步 agent 的同级目录。
-
-#### 上传 gse 插件包
-上传基础插件包（bknodeman 的页面上传），解压 `gse_plugins.tgz` ，单独上传里面的小包 `*.tgz`。
