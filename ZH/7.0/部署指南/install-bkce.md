@@ -65,7 +65,13 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 
 # 配置 DNS
-针对访问场景的不同，我们需要配置不同的 DNS 记录。为了简化操作，以下步骤皆以 `hosts` 文件为例。
+针对访问场景的不同，我们需要配置不同的 DNS 记录:
+* k8s pod 间解析蓝鲸域名，需要 [配置 coredns](#hosts-in-coredns)
+* k8s node 从 bkrepo 拉取镜像，安装 GSE Agent，需要 [配置 k8s node 的 DNS](#hosts-in-k8s-node)
+* 中控机调用蓝鲸接口，需要 [配置中控机的 DNS](#hosts-in-bk-ctrl)
+* 您在电脑上访问蓝鲸，需要 [配置用户侧的 DNS](#hosts-in-user-pc)
+
+为了简化操作，这些步骤皆以 `hosts` 文件为例。
 
 <a id="hosts-in-coredns"></a>
 
