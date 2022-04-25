@@ -171,19 +171,17 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 #### 配置 GSE 环境管理
 点击全局配置->gse 环境管理->默认接入点->编辑，相关信息需要用以下命令行获取。
 
-zookeeper 集群地址填写 **任意 k8s node IP**，端口填写 `32181` （注意不是默认的 `2181`）。然后查询 zookeeper 用户名和密码：
+zookeeper 集群地址填写 **任意 k8s node IP**，端口填写 `32181` （注意不是默认的 `2181`）。然后查询 zk 用户名和密码：
 ``` bash
 helm get values bk-gse-ce -n blueking | grep -A 2 externalZookeeper
 ```
 
-Btserver、dataserver、taskserver 的 **内网 IP** 及 **外网 IP** 地址默认为空，必须填写。可暂且填入 `127.0.0.1` ，因为后台任务每分钟都会从 zookeeper 读取新的服务地址。
+Btserver、dataserver、taskserver 的 **内网 IP** 及 **外网 IP** 地址默认为空，必须填写。可暂且填入 `127.0.0.1` ，这样后台任务会优先使用从 zk 中读取的服务地址。
 
-外网回调地址：http://apps.$BK_DOMAIN/prod--backend--bk--nodeman/backend
-
-agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 `http://node_ip:30025/` （任意 k8s node IP） 后面目录路径保持不变。`30025` 是 bkrepo 暴露的 NodePort，这样可以使用 ip 来下载，无需配置 agent 端的域名解析。
+agent url: 一般无需修改，默认通过域名访问 bkrepo 下载安装包。如果用户环境不具备配置 DNS 的条件，可使用 IP 直接访问 bkrepo。将默认值里的 `http://bkrepo.$BK_DOMAIN/` 部分换成 `http://node_ip:30025/` （任意 k8s node IP） 后面目录路径保持不变。`30025` 是 bkrepo 暴露的 NodePort。
 
 最终配置界面如下图所示：
-![](assets/2022-03-09-10-46-25.png)
+![](assets/bk_nodeman-conf-gse-env.png)
 
 点击 “测试 Server 及 URL 可用性”，然后点击 “下一步”。在新的 agent 信息界面点击 “确认” 保存。
 
