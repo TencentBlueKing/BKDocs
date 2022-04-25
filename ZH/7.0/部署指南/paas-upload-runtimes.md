@@ -18,7 +18,7 @@ kubectl run --rm \
 -n blueking
 ```
 
-> 此处 `runtimes-download.sh` 脚本从蓝鲸官方资源库下载依赖 SaaS 必需的 `runtime` （运行时资源）并上传到私有化环境中的 bkrepo 仓库。
-> 
-> 要求 k8s node 能访问外网，如果因网络问题下载异常，可以重复运行此脚本。
+>此处 `runtimes-download.sh` 脚本从蓝鲸官方资源库下载依赖 SaaS 必需的 `runtime` （运行时资源）并上传到私有化环境中的 bkrepo 仓库。
+>
+>要求 k8s node 能访问外网，如果因网络问题下载异常，可以重复运行此脚本。
 

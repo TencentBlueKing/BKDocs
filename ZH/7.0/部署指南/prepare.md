@@ -58,9 +58,9 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -i k8sctrl
 ```
 
-> **注意**
-> 
-> `master` 和 `node` 机器的扩容命令不同，请勿混用。而同一类型的机器扩容命令相同。
+>**注意**
+>
+>`master` 和 `node` 机器的扩容命令不同，请勿混用。而同一类型的机器扩容命令相同。
 
 登录到待扩容一批机器上粘贴对应的命令即可。假设我们要扩容 `node`，则需在 **待扩容机器** 上执行：
 ```plain
@@ -105,7 +105,7 @@ scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进�
 
 <a id="purchase-cloud-service-tke" ></a>
 
-## 使用腾讯云 TKE 服务
+## 购买腾讯云 TKE 服务
 您可以腾讯云提供的 k8s 集群，具体操作请查阅文档： [腾讯云 TKE 集群搭建指引](tke_hosting.md){target=_blank}
 
 文末描述了导出 kubeconfig 的方法，将其内容写入  **中控机** 的  `~/.kube/config` 路径下即可：

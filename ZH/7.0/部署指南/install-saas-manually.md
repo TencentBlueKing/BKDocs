@@ -1,6 +1,38 @@
 我们已经提供了“一键脚本”，可以完成本文档的大部分内容，建议先阅读《[基础套餐部署](install-bkce.md)》文档。
 
 # 手动部署基础套餐 SaaS
+
+## 在 PaaS 界面配置 Redis 资源池
+添加 SaaS 使用的 Redis 资源池。如果部署 SaaS 时提示 “分配不到 redis”，则需补充资源实例。
+
+>**提示**
+>
+>目前 Redis 资源池分为 2 类：
+>- `0shared`：共享实例。池内实例允许重复以供多个 SaaS 复用。由 SaaS 自主规避 `key` 冲突。
+>- `1exclusive`：独占实例。池内实例不应该重复，否则可能因为 `key` 冲突而影响 SaaS 运行。
+
+先登录「开发者中心」。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为您配置的蓝鲸基础域名。）
+
+访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
+
+在 「`0shared`」这行点击 「添加实例」，重复添加 5 - 10 次（蓝鲸基础套餐会占用 4 个实例，余量可供后续安装的 SaaS 使用）。如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。
+
+![](assets/2022-03-09-10-43-11.png)
+启用 “可回收复用” 开关，并在 “实例配置” 贴入配置代码，在 **中控机** 执行如下命令生成：
+``` bash
+redis_json_tpl='{"host":"%s","port": %d,"password":"%s"}'
+redis_host="bk-redis-master.blueking.svc.cluster.local"  # 默认用蓝鲸默认的redis，可自行修改
+redis_port=6379  # 按需修改
+redis_pass=$(kubectl get secret --namespace blueking bk-redis \
+  -o jsonpath="{.data.redis-password}" | base64 --decode)  # 读取默认redis的密码，按需修改赋值语句
+printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # 格式化以确保json格式正确
+```
+命令输出如下图所示：
+![](assets/2022-03-09-10-44-00.png)
+浏览器界面如下图所示：
+![](assets/2022-03-09-10-43-19.png)
+
+
 ## 部署 S-Mart 包
 SaaS 应用采用 `S-Mart` 包分发，这里描述了通用的部署方法。
 
@@ -15,6 +47,7 @@ SaaS 应用采用 `S-Mart` 包分发，这里描述了通用的部署方法。
 ![](assets/deploy-saas-on-appo.png)
 
 <a id="saas-res-download"></a>
+
 ## 需要提前下载的资源
 我们汇总整理了接下来需要下载的文件。
 
@@ -32,9 +65,9 @@ SaaS 应用采用 `S-Mart` 包分发，这里描述了通用的部署方法。
     - 下载地址：https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gse_plugins.tgz
 
 ## 各 SaaS 部署过程
-> **提示**
+>**提示**
 >
-> 解压刚才下载的 SaaS 集合包，即可得到各个 SaaS 安装所需的 `S-Mart` 包。
+>解压刚才下载的 SaaS 集合包，即可得到各个 SaaS 安装所需的 `S-Mart` 包。
 
 ### 部署流程服务（bk_itsm）
 
@@ -97,22 +130,26 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 |BKAPP_RUN_ENV |ce |运行环境 |
 |BKAPP_NODEMAN_CALLBACK_URL |http://apps.$BK_DOMAIN/prod--backend--bk--nodeman/backend |节点管理回调地址 |
 
-> **提示**:
+>**提示**:
 >
-> 1. 配置一次 `default` 模块的变量后，`backend` 的变量可以从 `default` 模块导入。
-> 2. 环境变量的作用范围，可以直接选所有环境。
+>1. 配置一次 `default` 模块的变量后，`backend` 的变量可以从 `default` 模块导入。
+>2. 环境变量的作用范围，可以直接选所有环境。
 
 ![](assets/2022-03-09-10-45-40.png)
 ![](assets/2022-03-09-10-45-45.png)
 
 需要先部署 `default` ，然后部署 `backend` 模块。
 
+
 <a id="post-install-bk-saas"></a>
 
 ## SaaS 部署后的设置
-> **提示**
+>**提示**
 >
-> 一些 SaaS 在部署成功后，还需要做初始化设置。
+>一些 SaaS 在部署成功后，还需要做初始化设置。
+
+
+<a id="post-install-bk-lesscode"></a>
 
 ### 蓝鲸可视化平台（bk_lesscode）部署后配置
 目前 bk_lesscode 只支持通过独立域名来访问。
@@ -124,7 +161,12 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 在应用推广-发布管理中，将应用市场的访问地址类型设置为：主模块生产环境独立域名
 ![](assets/2022-03-09-10-45-29.png)
 
+
+<a id="post-install-bk-nodeman"></a>
+
 ### 节点管理（bk_nodeman）部署后配置
+
+<a id="post-install-bk-nodeman-gse-env"></a>
 
 #### 配置 GSE 环境管理
 点击全局配置->gse 环境管理->默认接入点->编辑，相关信息需要用以下命令行获取。
@@ -147,6 +189,9 @@ agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 `http://node_ip:3
 
 回到查看界面后，请 **等待 1 ~ 2 分钟**，然后刷新此页面。如果 Btserver，dataserver，taskserver 的地址自动从 `127.0.0.1` 变更为 node 的内网 IP ，则说明读取 zookeeper 成功，否则需检查 zookeeper 的 IP、 端口以及账户密码是否正确。
 
+
+<a id="post-install-bk-nodeman-gse-plugin"></a>
+
 #### 上传 gse 插件包
 打开 “工作台” —— “蓝鲸节点管理”。切换顶部导航到 “插件管理”，选择左侧菜单栏里的 “插件包”。
 ![](assets/bk_nodeman-upload-gse-plugin.png)
@@ -162,6 +207,9 @@ agent url: 将默认的 http://bkrepo.$BK_DOMAIN/ 部分换成 `http://node_ip:3
 | exceptionbeat | 系统事件采集器 | 系统事件采集器，用来收集系统事件如磁盘只读，corefile 产生等。 |
 | gsecmdline | 自定义上报命令行工具 | 蓝鲸监控脚本采集，自定义监控，数据平台自定义上报数据 |
 | processbeat | 主机进程信息采集器 | 蓝鲸监控主机监控里面的进程信息. 首次使用插件管理进行操作前，先到蓝鲸监控进行设置插件的功能项 |
+
+
+<a id="post-install-bk-nodeman-gse-client"></a>
 
 #### agent 资源上传
 >**提示**
