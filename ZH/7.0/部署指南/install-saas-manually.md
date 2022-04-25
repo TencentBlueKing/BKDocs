@@ -176,7 +176,7 @@ zookeeper 集群地址填写 **任意 k8s node IP**，端口填写 `32181` （�
 helm get values bk-gse-ce -n blueking | grep -A 2 externalZookeeper
 ```
 
-Btserver，dataserver，taskserver 的地址，先都填入 `127.0.0.1` 即可。后台任务一分钟后，会从 zookeeper 获取到最新的后台服务地址。
+Btserver、dataserver、taskserver 的 **内网 IP** 及 **外网 IP** 地址默认为空，必须填写。可暂且填入 `127.0.0.1` ，因为后台任务每分钟都会从 zookeeper 读取新的服务地址。
 
 外网回调地址：http://apps.$BK_DOMAIN/prod--backend--bk--nodeman/backend
 
