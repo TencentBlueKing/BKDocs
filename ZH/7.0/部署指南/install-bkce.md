@@ -291,39 +291,6 @@ docker info
   127.0.0.0/8
 ```
 
-## 在 PaaS 界面配置 Redis 资源池
->**提示**
->
->“一键部署” 脚本在部署任意 SaaS 时会自动完成此步骤，您可以先跳过本章节。
-
-需要添加 SaaS 使用的 Redis 资源池。
-
->**提示**
->
->目前 Redis 资源池分为 2 类：
->- `0shared`：共享实例。池内实例允许重复以供多个 SaaS 复用。由 SaaS 自主规避 `key` 冲突。
->- `1exclusive`：独占实例。池内实例不应该重复，否则可能因为 `key` 冲突而影响 SaaS 运行。
-
-先登录「开发者中心」。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为您配置的蓝鲸基础域名。）
-
-访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
-
-在 「`0shared`」这行点击 「添加实例」，重复添加 5 - 10 次（蓝鲸基础套餐会占用 4 个实例，余量可供后续安装的 SaaS 使用）。如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。如果部署 SaaS 时提示 “分配不到 redis”，则需补充资源实例。
-![](assets/2022-03-09-10-43-11.png)
-启用 “可回收复用” 开关，并在 “实例配置” 贴入配置代码，在 **中控机** 执行如下命令生成：
-``` bash
-redis_json_tpl='{"host":"%s","port": %d,"password":"%s"}'
-redis_host="bk-redis-master.blueking.svc.cluster.local"  # 默认用蓝鲸默认的redis，可自行修改
-redis_port=6379  # 按需修改
-redis_pass=$(kubectl get secret --namespace blueking bk-redis \
-  -o jsonpath="{.data.redis-password}" | base64 --decode)  # 读取默认redis的密码，按需修改赋值语句
-printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # 格式化以确保json格式正确
-```
-命令输出如下图所示：
-![](assets/2022-03-09-10-44-00.png)
-浏览器界面如下图所示：
-![](assets/2022-03-09-10-43-19.png)
-
 ## 可选：上传 PaaS runtimes 到 bkrepo
 具体操作请查阅《[上传 PaaS runtimes 到 bkrepo](paas-upload-runtimes.md)》文档。
 
