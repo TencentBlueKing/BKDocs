@@ -17,11 +17,11 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": "5.1/部署维护/SUMMARY.md"
+			"summary": "5.1/部署指南/SUMMARY.md"
 		},
 		"index": 99,
 		"title": "部署维护",
-		"url": "5.1/部署维护/README.md",
+		"url": "5.1/部署指南/README.md",
 		"version": "5.1"
 	}],
 	"source": {
@@ -1406,11 +1406,11 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/持续集成平台/SUMMARY.md"
+				"summary": ""
 			},
 			"index": 395,
 			"title": "蓝盾",
-			"url": "6.0/持续集成平台/产品白皮书/产品简介/README.md",
+			"url": "https://docs.bkci.net/",
 			"version": "6.0"
 		}],
 	"source": {
@@ -1695,11 +1695,11 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/持续集成平台/SUMMARY.md"
+				"summary": ""
 			},
 			"index": 295,
 			"title": "持续集成平台",
-			"url": "6.0/持续集成平台/产品白皮书/产品简介/README.md",
+			"url": "https://docs.bkci.net/",
 			"version": "6.0"
 		}],
 	"source": {
@@ -1865,11 +1865,11 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/持续集成平台/SUMMARY.md"
+				"summary": ""
 			},
 			"index": 94,
 			"title": "持续集成平台",
-			"url": "6.0/持续集成平台/产品白皮书/产品简介/README.md",
+			"url": "https://docs.bkci.net/",
 			"version": "6.0"
 		}],
 	"source": {
@@ -1967,11 +1967,11 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/持续集成平台/SUMMARY.md"
+				"summary": ""
 			},
 			"index": 88,
 			"title": "蓝盾",
-			"url": "6.0/持续集成平台/产品白皮书/产品简介/README.md",
+			"url": "https://docs.bkci.net/",
 			"version": "6.0"
 		}],
 	"source": {
