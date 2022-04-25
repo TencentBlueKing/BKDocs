@@ -105,7 +105,7 @@ scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进�
 
 <a id="purchase-cloud-service-tke" ></a>
 
-## 使用腾讯云 TKE 服务
+## 购买腾讯云 TKE 服务
 您可以腾讯云提供的 k8s 集群，具体操作请查阅文档： [腾讯云 TKE 集群搭建指引](tke_hosting.md){target=_blank}
 
 文末描述了导出 kubeconfig 的方法，将其内容写入  **中控机** 的  `~/.kube/config` 路径下即可：

@@ -5,13 +5,22 @@
 >目前灰度版本中，BCS 有部分功能可能无法使用，建议先体验其他产品。
 
 ## 部署容器管理平台
-### TKE 集群配置
-如果是 TKE 集群请修改 BCS 的 storageClass，其他场景可以忽略本步骤。
+### 确认 storageClass
+在 **中控机** 检查当前 k8s 集群所使用的存储：
+``` bash
+kubectl get sc
+```
+预期输出为：
+``` plain
+NAME                      PROVISIONER                    RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+local-storage (default)   kubernetes.io/no-provisioner   Delete          WaitForFirstConsumer   false                  3d21h
+```
+如果输出的名称不是 `local-storage`，则需通过创建 `custom.yaml` 实现修改：
 ``` bash
 cd ~/bkhelmfile/blueking/
 cat <<EOF >> environments/default/custom.yaml
 bcs:
-  storageClass: cbs
+  storageClass: 填写上面的查询到的名称
 EOF
 ```
 
