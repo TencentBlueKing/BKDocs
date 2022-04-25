@@ -7,7 +7,7 @@
 
 在 **中控机** 执行如下命令：
 ``` bash
-yum install -y jq
+yum install -y jq unzip uuid
 ```
 >**注意**
 >
