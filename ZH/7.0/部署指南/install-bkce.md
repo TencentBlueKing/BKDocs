@@ -226,7 +226,7 @@ echo "http://$BK_DOMAIN"
 浏览器访问上述地址即可。记得提前配置本地 DNS 服务器或修改本机的 hosts 文件。
 
 # 准备 SaaS 运行环境
-　**注意**
+>**注意**
 >
 >SaaS 部署时需要访问 bkrepo 提供的 docker 服务，请先完成 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 章节。
 
