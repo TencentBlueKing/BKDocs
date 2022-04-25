@@ -30,14 +30,14 @@ done
 1. `Host key verification failed.`，且开头提示 `REMOTE HOST IDENTIFICATION HAS CHANGED`: 检查目的主机是否重装过。如果确认没连错机器，可以参考提示（如 `Offending 类型 key in /root/.ssh/known_hosts:行号`）删除 `known_hosts` 文件里的对应行。
 
 # 部署基础套餐后台
-如果您希望尽快体验蓝鲸，我们提供了“一键部署” 脚本供您选择。
+如果您希望尽快体验蓝鲸，我们提供了 “一键部署” 脚本供您选择。
 
 如果您打算研究部署细节，则可以查阅 《[分步部署基础套餐后台](install-base-manually.md)》 文档。
 
 <a id="setup_bkce7-i-base"></a>
 
 ## 一键部署基础套餐后台
-下载部署脚本并添加可执行权限：
+在 **中控机** 下载 “一键部署” 脚本并添加可执行权限：
 ``` bash
 curl -Lo ~/setup_bkce7.sh https://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.0.1.sh && \
   chmod +x ~/setup_bkce7.sh
@@ -309,7 +309,6 @@ docker info
 其他社区版官方的 SaaS 应用，比如标准运维、节点管理、流程服务等需要通过开发者中心来部署。
 
 为了方便您快速体验，我们扩展了 “一键部署” 脚本，现在可以支持 SaaS 的初次安装 以及部署前设置了。
-如 SaaS 已安装会跳过，因此更新 SaaS 需查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档上传 `S-Mart` 包并选择新版本部署。
 
 <a id="setup_bkce7-i-saas"></a>
 
@@ -318,30 +317,26 @@ docker info
 >
 >1. 先完成 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 章节。
 >2. 然后完成 “[调整 node 上的 docker 服务](#k8s-node-docker-insecure-registries)” 章节。
+>3. 如下操作未能在脚本中实现，请您查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档的“[SaaS 部署后的设置](install-saas-manually.md#post-install-bk-saas)”章节手动操作：
+>    1. bk_lesscode 配置独立域名。
+>    2. bk_nodeman 配置 GSE 环境管理；上传 gse 插件包。
+>4. 如 SaaS 已安装会跳过，因此更新 SaaS 需查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档上传 `S-Mart` 包并选择新版本部署。
 
-使用 `-i saas` 可以安装全部 SaaS 到生产环境：
+在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境：
 ``` bash
 ~/setup_bkce7.sh -i saas
 ```
 
 此步骤总耗时 18 ~ 27 分钟。每个 SaaS 部署不超过 10 分钟，如果超时请参考 《[FAQ](faq.md)》文档的 “[部署 SaaS 在“执行部署前置命令”阶段报错](faq.md#saas-deploy-prehook)” 章节排查。
 
-也可以只安装单个 SaaS（目前支持 itsm sops nodeman gsekit lesscode ）：
-``` bash
-~/setup_bkce7.sh -i nodeman  # 安装节点管理到生产环境, -i nodeman@stag 则为预发布环境
-```
-
-如下操作未能在脚本中实现，请您查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档的“[SaaS 部署后的设置](install-saas-manually.md#post-install-bk-saas)”章节手动操作：
-1. bk_lesscode 配置独立域名。
-2. bk_nodeman 配置 GSE 环境管理；上传 gse 插件包。
 
 ## 手动部署基础套餐 SaaS
-请查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
+如需了解 SaaS 部署细节，可查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
 
 # 给 node 安装 gse agent
->**提示**
+>**注意**
 >
->需要先部署 “节点管理（bk_nodeman）”并 “配置 GSE 环境管理”。才能安装 agent。
+>使用 “一键脚本” 部署基础套餐 SaaS 时，无法自动 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env)，请务必手动配置。
 
 需要给集群的全部 node （包括 master ）机器安装 gse agent。
 
