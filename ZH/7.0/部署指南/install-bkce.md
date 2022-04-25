@@ -82,6 +82,10 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 我们需要确保 k8s 集群的容器内能解析到 ingress controller。
 
+>**注意**
+>
+>pod 删除重建后，clusterIP 会变动，需刷新 hosts 文件。
+
 因此需要注入 hosts 配置项到 `kube-system` namespace 下的 `coredns` 系列 pod，步骤如下：
 
 ``` bash
@@ -114,7 +118,9 @@ IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0
 ## 配置 k8s node 的 DNS
 k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
 
-因为 node 上均有虚拟网络的路由，因此我们使用持久化的 `clusterIP`。以免频繁刷新 hosts 文件。
+>**注意**
+>
+>pod 删除重建后，clusterIP 会变动，需刷新 hosts 文件。
 
 请在 **中控机** 执行如下脚本 **生成 hosts 内容**，然后将其追加到所有的 `node` 的 `/etc/hosts` 文件结尾（如 pod 经历删除重建，则需要更新 hosts 文件覆盖 pod 相应的域名）。
 
@@ -134,16 +140,30 @@ EOF
 
 ## 配置中控机的 DNS
 当中控机为 k8s 集群的成员时，可以参考 “配置 k8s node 的 DNS” 章节改为取 `clusterIP`。
+>**注意**
+>
+>pod 删除重建后，clusterIP 会变动，则需刷新 hosts 文件。
+
+获取 clusterIP：
+``` bash
+IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+```
 
 当中控机非 k8s 集群成员时，需要使用 node 的内网 IP (`hostIP`)。
 >**注意**
 >
->当使用 node 内网 IP 时，请在 pod 迁移到其他 node 后刷新 hosts 文件。
+>如果 Pod 重新调度，所在 node 发生了变动，则需刷新 hosts 文件。
 
+获取内网 IP：
 ``` bash
-BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
 IP1=$(kubectl -n blueking get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
 IP2=$(kubectl -n blueking get pods -l app=bk-ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+```
+
+请先根据中控机的角色选择合适的 IP。然后生成 hosts 内容并手动更新到 `/etc/hosts`：
+``` bash
+BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
 # 生成hosts内容
 cat <<EOF
 $IP1 $BK_DOMAIN
@@ -167,6 +187,10 @@ EOF
 
 ## 配置用户侧的 DNS
 蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。
+
+>**注意**
+>
+>如 k8s 集群重启等原因重新调度，pod 所在 node 发生了变动，需刷新 hosts 文件。
 
 在 **中控机** 执行如下命令即可获得 hosts 文件的参考内容（如果有新增 node，记得提前更新 ssh 免密）：
 ``` bash
