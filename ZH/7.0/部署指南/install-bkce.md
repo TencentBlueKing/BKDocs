@@ -9,9 +9,9 @@
 ``` bash
 yum install -y jq
 ```
-> **注意**
+>**注意**
 >
-> CentOS 7 在 **`epel`源** 提供了 `jq-1.6`。如果提示 `No package jq available.`，请先确保 **`epel`源** 可用。
+>CentOS 7 在 **`epel`源** 提供了 `jq-1.6`。如果提示 `No package jq available.`，请先确保 **`epel`源** 可用。
 
 ## 在中控机配置 ssh 免密登录
 本文中会提供命令片段方便您部署。部分命令片段会从中控机上调用 `ssh` 在 k8s node 上执行远程命令，所以需提前配置免密登录。
@@ -55,9 +55,9 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 此脚本耗时 15 ~ 30 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。
 
-> **提醒**
+>**提醒**
 >
-> k8s 所有 `node` 机器均需保持网络畅通，可访问蓝鲸提供的镜像地址。
+>k8s 所有 `node` 机器均需保持网络畅通，可访问蓝鲸提供的镜像地址。
 
 
 ## 分步部署基础套餐后台
@@ -76,9 +76,9 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 <a id="hosts-in-coredns"></a>
 
 ## 配置 coredns
-> **提示**
+>**提示**
 >
-> “一键部署” 脚本中自动完成了此步骤，可以跳过本章节。
+>“一键部署” 脚本中自动完成了此步骤，可以跳过本章节。
 
 我们需要确保 k8s 集群的容器内能解析到 ingress controller。
 
@@ -136,9 +136,9 @@ EOF
 当中控机为 k8s 集群的成员时，可以参考 “配置 k8s node 的 DNS” 章节改为取 `clusterIP`。
 
 当中控机非 k8s 集群成员时，需要使用 node 的内网 IP (`hostIP`)。
-> **注意**
+>**注意**
 >
-> 当使用 node 内网 IP 时，请在 pod 迁移到其他 node 后刷新 hosts 文件。
+>当使用 node 内网 IP 时，请在 pod 迁移到其他 node 后刷新 hosts 文件。
 
 ``` bash
 BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
@@ -226,9 +226,9 @@ echo "http://$BK_DOMAIN"
 浏览器访问上述地址即可。记得提前配置本地 DNS 服务器或修改本机的 hosts 文件。
 
 # 准备 SaaS 运行环境
-> **注意**
+　**注意**
 >
-> SaaS 部署时需要访问 bkrepo 提供的 docker 服务，请先完成 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 章节。
+>SaaS 部署时需要访问 bkrepo 提供的 docker 服务，请先完成 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 章节。
 
 <a id="k8s-node-docker-insecure-registries"></a>
 
@@ -274,11 +274,11 @@ docker info
 
 需要添加 SaaS 使用的 Redis 资源池。
 
-> **提示**
+>**提示**
 >
-> 目前 Redis 资源池分为 2 类：
-> - `0shared`：共享实例。池内实例允许重复以供多个 SaaS 复用。由 SaaS 自主规避 `key` 冲突。
-> - `1exclusive`：独占实例。池内实例不应该重复，否则可能因为 `key` 冲突而影响 SaaS 运行。
+>目前 Redis 资源池分为 2 类：
+>- `0shared`：共享实例。池内实例允许重复以供多个 SaaS 复用。由 SaaS 自主规避 `key` 冲突。
+>- `1exclusive`：独占实例。池内实例不应该重复，否则可能因为 `key` 冲突而影响 SaaS 运行。
 
 先登录「开发者中心」。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为您配置的蓝鲸基础域名。）
 
@@ -323,10 +323,10 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 <a id="setup_bkce7-i-saas"></a>
 
 ## 一键部署基础套餐 SaaS
-> **注意**
+>**注意**
 >
-> 1. 先完成 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 章节。
-> 2. 然后完成 “[调整 node 上的 docker 服务](#k8s-node-docker-insecure-registries)” 章节。
+>1. 先完成 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 章节。
+>2. 然后完成 “[调整 node 上的 docker 服务](#k8s-node-docker-insecure-registries)” 章节。
 
 使用 `-i saas` 可以安装全部 SaaS 到生产环境：
 ``` bash
@@ -348,9 +348,9 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 请查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
 
 # 给 node 安装 gse agent
-> **提示**
+>**提示**
 >
-> 需要先部署 “节点管理（bk_nodeman）”并 “配置 GSE 环境管理”。才能安装 agent。
+>需要先部署 “节点管理（bk_nodeman）”并 “配置 GSE 环境管理”。才能安装 agent。
 
 需要给集群的全部 node （包括 master ）机器安装 gse agent。
 

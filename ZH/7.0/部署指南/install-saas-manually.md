@@ -32,9 +32,9 @@ SaaS 应用采用 `S-Mart` 包分发，这里描述了通用的部署方法。
     - 下载地址：https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gse_plugins.tgz
 
 ## 各 SaaS 部署过程
-> **提示**
+>**提示**
 >
-> 解压刚才下载的 SaaS 集合包，即可得到各个 SaaS 安装所需的 `S-Mart` 包。
+>解压刚才下载的 SaaS 集合包，即可得到各个 SaaS 安装所需的 `S-Mart` 包。
 
 ### 部署流程服务（bk_itsm）
 
@@ -97,10 +97,10 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 |BKAPP_RUN_ENV |ce |运行环境 |
 |BKAPP_NODEMAN_CALLBACK_URL |http://apps.$BK_DOMAIN/prod--backend--bk--nodeman/backend |节点管理回调地址 |
 
-> **提示**:
+>**提示**:
 >
-> 1. 配置一次 `default` 模块的变量后，`backend` 的变量可以从 `default` 模块导入。
-> 2. 环境变量的作用范围，可以直接选所有环境。
+>1. 配置一次 `default` 模块的变量后，`backend` 的变量可以从 `default` 模块导入。
+>2. 环境变量的作用范围，可以直接选所有环境。
 
 ![](assets/2022-03-09-10-45-40.png)
 ![](assets/2022-03-09-10-45-45.png)
@@ -110,9 +110,9 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 <a id="post-install-bk-saas"></a>
 
 ## SaaS 部署后的设置
-> **提示**
+>**提示**
 >
-> 一些 SaaS 在部署成功后，还需要做初始化设置。
+>一些 SaaS 在部署成功后，还需要做初始化设置。
 
 ### 蓝鲸可视化平台（bk_lesscode）部署后配置
 目前 bk_lesscode 只支持通过独立域名来访问。

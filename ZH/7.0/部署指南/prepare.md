@@ -58,9 +58,9 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -i k8sctrl
 ```
 
-> **注意**
-> 
-> `master` 和 `node` 机器的扩容命令不同，请勿混用。而同一类型的机器扩容命令相同。
+>**注意**
+>
+>`master` 和 `node` 机器的扩容命令不同，请勿混用。而同一类型的机器扩容命令相同。
 
 登录到待扩容一批机器上粘贴对应的命令即可。假设我们要扩容 `node`，则需在 **待扩容机器** 上执行：
 ```plain
