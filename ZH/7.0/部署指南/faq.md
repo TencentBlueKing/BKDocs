@@ -113,9 +113,18 @@ Events:
 
 ### node(s) didn't find available persistent volumes to bind
 describe pod 发现报错：
-```
+``` plain
 Warning FailedScheduling 3m10s default-scheduler 0/5 nodes are available: 1 node(s) had taint {node-role.kubernetes.io/master: }, that the pod didn't tolerate, 4 node(s) didn't find available persistent volumes to bind.
 ```
+先检查状态异常的 pvc：
+``` bash
+kubectl get pvc -A | grep -vw Bound
+```
+然后 describe pvc 了解异常原因：
+``` bash
+kubectl describe pvc -n 命名空间 pvc名称
+```
+然后我们需要根据 pvc 的错误信息查找对应的错误案例。
 
 
 ### 无法查看 SaaS 日志
