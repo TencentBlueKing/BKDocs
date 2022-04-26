@@ -135,7 +135,7 @@ kubectl describe pvc -n 命名空间 pvc名称
 ### waiting for pod to be scheduled
 describe pvc 发现报错：
 ``` plain
-Normal  WaitForPodScheduled  32s (×15 over 4m)  persistentvolume-controller  waiting for pod 名称略 to be scheduled
+ Normal  WaitForPodScheduled  32s (×15 over 4m)  persistentvolume-controller  waiting for pod 名称略 to be scheduled
 ```
 需要 describe pod 检查不调度的原因，一般为目的 node 的 CPU 或 内存 配额不足。
 
