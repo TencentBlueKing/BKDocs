@@ -333,6 +333,9 @@ docker info
 ## 手动部署基础套餐 SaaS
 如需了解 SaaS 部署细节，可查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
 
+
+<a id="k8s-node-install-gse-agent"></a>
+
 # 给 node 安装 gse agent
 >**注意**
 >
@@ -340,8 +343,12 @@ docker info
 
 需要给集群的全部 node （包括 master ）机器安装 gse agent。
 
+>**提示**
+>
+>如有添加新的 k8s node，需为其安装 gse agent。
+
 用途：
-1. job 依赖 agent 做文件分发。
+1. job 依赖 node 上的 gse agent 进行文件分发。节点管理安装插件时也是通过 job 分发。
 2. 容器监控需要通过 node 上的 gse agent 完成监控。
 
 常见报错：

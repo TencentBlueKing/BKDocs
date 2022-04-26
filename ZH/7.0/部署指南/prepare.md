@@ -2,6 +2,7 @@
 1. 确认已经阅读过[K8S 新手必读](beginners_guide.md)
 
 # 资源准备
+
 ## 中控机
 您需要一台机器执行部署操作。我们沿用惯例称其为“中控机”。
 
@@ -33,6 +34,7 @@
 |容器管理平台 | 容器管理后台及 SaaS | 0.7 台 node | 1 台 node | |
 |监控套餐 | 监控、日志服务及其 SaaS | 1 台 node | 2 台 node | |
 
+
 <a id="get-a-k8s-cluster"></a>
 
 # 准备 K8S 集群
@@ -44,6 +46,7 @@
 * [购买腾讯云 TKE 服务](#purchase-cloud-service-tke) （其他厂商提供 K8S 集群同理）
 
 请查阅如下章节获得对应场景的操作指引。
+
 
 <a id="deploy-k8s-using-bcs-sh" ></a>
 
@@ -63,6 +66,10 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 这表示您成功部署了一个 k8s 集群，此时您可以使用 `kubectl` 命令了。接下来开始添加节点吧。
 
 ### 添加 k8s-node
+>**提示**
+>
+>在部署蓝鲸基础后添加 node 时，要记得 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
+
 在 **部署初始 master** 章节，我们可以观察到脚本在结尾输出了 **扩容控制平面** （即 master） 及 **扩容节点** （即 node）的命令。
 
 如果当时没有保存扩容命令，可以在 **初始 master** 机器上执行如下命令重新获取：
@@ -109,15 +116,27 @@ grep bcs.local /etc/hosts || ssh "$master_ip" grep bcs.local /etc/hosts | tee -a
 scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进制到中控机使用
 ```
 
+
 <a id="using-existing-k8s" ></a>
 
 ## 使用已有的 k8s 集群
-如果能访问到 `master` 上的文件，可将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下。同时记得更新  **中控机** 的 `/etc/hosts` 文件确保可访问 config 文件中 k8s server。
+>**提示**
+>
+>在部署蓝鲸基础后添加 node 时，要记得 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
+
+如果能访问到 `master` 上的文件，可将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下。
+
+同时记得更新  **中控机** 的 `/etc/hosts` 文件确保可访问 config 文件中 k8s server。
 如果使用了 k8s 云服务，则厂商一般会提供 kubeconfig 导出功能，将其内容写入 **中控机** 的 `~/.kube/config` 路径下即可。
+
 
 <a id="purchase-cloud-service-tke" ></a>
 
 ## 购买腾讯云 TKE 服务
+>**提示**
+>
+>在部署蓝鲸基础后添加 node 时，要记得 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
+
 您可以腾讯云提供的 k8s 集群，具体操作请查阅文档： [腾讯云 TKE 集群搭建指引](tke_hosting.md){target=_blank}
 
 文末描述了导出 kubeconfig 的方法，将其内容写入  **中控机** 的  `~/.kube/config` 路径下即可：
