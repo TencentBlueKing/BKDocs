@@ -12,6 +12,18 @@
 * `master` 负责 k8s 集群本身的管理调度，配置至少为 4 核心 8GB 内存 100GB 磁盘。
 * `node` 负责承载业务运行。建议每台机器配置至少为 8 核心 32GB 内存 100GB 磁盘。
 
+软件要求：
+| 需求项 | 具体要求 | 检查命令 |
+| -- | -- | -- |
+| 操作系统　| CentOS 7.9 | `cat /etc/centos-release` |
+| kernel | 3.10.0 及以上 | `uname -r` |
+| Swap | 关闭。防止 io 飙升影响 kubelet 进程。 | `free -m` Swap 这行值为 0 |
+| 防火墙 | 关闭 | `iptables -vnL` 无其他规则 |
+| SELinux | 关闭。k8s 官方要求。 | `getenforce` 的输出为 Disabled |
+| 时区 | 所有服务器时区应该统一，建议使用北京时间 | 使用 `timedatectl set-timezone Asia/Shanghai` 设置为北京时间。 |
+| 时间同步 | etcd 选举时要求节点间时间差小于 1s | 配置 `chronyd` 同步时间 |
+| docker 版本 | 19.03 及更高，最好卸载预装的 | `docker info` |
+
 ## 资源评估表
 我们整理了各套餐所需的 node 数量。如果您的 `node` 配置不同，请自行折算。
 
