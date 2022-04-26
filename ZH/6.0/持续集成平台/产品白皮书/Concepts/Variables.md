@@ -18,16 +18,16 @@
 ```bash
 #!/usr/bin/env bash
 # setEnv "FILENAME" "package.zip"
-# 然后在后续的插件的表单中使用${FILENAME}引用这个变量
+# 然后在后续的插件的表单中使用${{FILENAME}}引用这个变量
 ```
 
 ![Var](../assets/variables_2.png)
 
 ## 在流水线中引用变量
 
-你可以在任意的插件表单中使用通过上面介绍的方式定义的变量，引用方式为${KEY}，例如：
+你可以在任意的插件表单中使用通过上面介绍的方式定义的变量，引用方式为${{KEY}}，例如：
 ![Var](../assets/variables_3.png)
-> 示例中，就在“Upload artifacts”插件中的某字段中引用了${PKG}这个变量。
+> 示例中，就在“Upload artifacts”插件中的某字段中引用了${{FILENAME}}这个变量。
 
 ## 在手动触发流水线时设置变量值
 

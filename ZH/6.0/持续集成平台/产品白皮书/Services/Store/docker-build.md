@@ -2,7 +2,7 @@
 
 bk-ci 提供了默认的 Ubuntu 镜像，但不一定能满足所有编译场景，你可以通过这篇文章基于默认镜像制作自定义镜像。
 
-- 默认镜像： [bkci/ci:latest](https://github.com/ci-plugins/base-images/blob/master/ci-build/Dockerfile)
+- 默认镜像： [bkci/ci:latest](https://github.com/TencentBlueKing/ci-base-images/blob/master/ci-build/Dockerfile)
 
 ## 准备材料
 
@@ -45,8 +45,8 @@ RUN apt install -y git python-pip
 > - 确保为64位镜像
 > - 用户用root，如需普通用户可以在bash里面切换，否则流水线任务启动不了
 > - 流水线插件有可能使用 python 或 nodejs 开发，建议准备好插件执行环境:
-<br/>[Python 插件执行环境](prepare-python.md)
-<br/>[NodeJS 插件执行环境](prepare-node.md)
+<br/>[Python 插件执行环境](./prepare-python.md)
+<br/>[NodeJS 插件执行环境](./prepare-node.md)
 
 2. 执行docker build
 

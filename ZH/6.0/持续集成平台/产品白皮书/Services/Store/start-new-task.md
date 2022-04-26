@@ -37,10 +37,10 @@
 > 初始化好插件之后，可以开始开发插件
 
 - 根据开发语言参考对应的开发指引
-  - [Java 插件开发指引](plugins/plugin-dev-guide/java.md)
-  - [Python 插件开发指引](plugins/plugin-dev-guide/python.md)
-  - [Golang 插件开发指引](plugins/plugin-dev-guide/golang.md)
-  - [Nodejs 插件开发指引](plugins/plugin-dev-guide/nodejs.md)
+  - [Java 插件开发指引](./plugins/plugin-dev-guide/java.md)
+  - [Python 插件开发指引](./plugins/plugin-dev-guide/python.md)
+  - [Golang 插件开发指引](./plugins/plugin-dev-guide/golang.md)
+  - [Nodejs 插件开发指引](./plugins/plugin-dev-guide/nodejs.md)
 
 ### 插件私有配置
 

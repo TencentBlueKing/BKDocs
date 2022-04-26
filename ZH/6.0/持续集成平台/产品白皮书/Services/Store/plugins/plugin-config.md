@@ -345,7 +345,7 @@
 
 执行时传给插件后台的数据示例：
 
-\[{"id":"parameterId","values":\[{"id":123,"value":"3d029fbe08c011e99792fa163e50f2b5,${abc}"},{"id":1233,"value":"ab"},{"id":1235,"value":"id"}\]}\]
+\[{"id":"parameterId","values":\[{"id":123,"value":"3d029fbe08c011e99792fa163e50f2b5,${{abc}}"},{"id":1233,"value":"ab"},{"id":1235,"value":"id"}\]}\]
 
 12、**简化版动态参数组件：dynamic-parameter-simple**
 
