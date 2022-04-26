@@ -12,7 +12,7 @@ mv /data/src/open_paas /data/src/open_paas_bak
 
 ### 社区版 6.0.x
 
-6.0.x 使用 develop 分支 代码进行替换
+6.0.x 使用 [develop](https://github.com/Tencent/bk-PaaS/tree/develop) 分支 代码进行替换
 ```bash
 cp -a /opt/bk-PaaS-develop/paas2 /data/src/open_paas/
 
