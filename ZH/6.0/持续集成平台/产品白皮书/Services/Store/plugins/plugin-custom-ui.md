@@ -17,7 +17,7 @@
 ## 框架目录结构介绍
 
 插件代码库根目录下的 bk-frontend 目录为前端代码根目录。  
-其下代码结构如下： ![](vscode-webview-resource://3f6fc6ee-8541-4ba2-969a-1a7624756a26/file///Users/zhaozhihui/Downloads/ci-plugins-wiki/assets/atom-custom-ui.png)
+其下代码结构如下： ![png](../../../assets/store_plugin_customui_folder.png)
 
 ## 开发步骤
 

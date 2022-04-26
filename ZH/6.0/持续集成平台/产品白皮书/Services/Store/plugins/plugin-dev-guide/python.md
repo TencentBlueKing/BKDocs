@@ -10,8 +10,8 @@
 **一、插件代码工程的整体结构示例如下：**
 
 ```text
-|- ${你的插件标识}             # 插件包名
-    |- ${你的插件标识}         # 插件包名
+|- <你的插件标识>              # 插件包名
+    |- <你的插件标识>          # 插件包名
         |- __init__.py py     # py包标识
         |- command_line.py    # 命令入口文件
     |- python_atom_sdk        # 插件开发SDK包
@@ -50,9 +50,9 @@
    python setup.py sdist
    ```
 
-3. 在任意位置新建文件夹，命名示例：release\_pkg = ${你的插件标识}\_release
-4. 将步骤 2 生产的执行包拷贝到 ${release\_pkg} 下
-5. 添加 task.json 文件到 ${release\_pkg} 下 task.json 见示例，按照插件功能配置。
+3. 在任意位置新建文件夹，命名示例：release\_pkg = <你的插件标识>\_release
+4. 将步骤 2 生产的执行包拷贝到 <release\_pkg> 下
+5. 添加 task.json 文件到 <release\_pkg> 下 task.json 见示例，按照插件功能配置。
 
    * [插件配置规范](../plugin-config.md)
    * task.json示例：
@@ -86,7 +86,7 @@
    }
    ```
 
-6. 在 ${release\_pkg} 目录下，把所有文件打成 `zip` 包即可
+6. 在 <release\_pkg> 目录下，把所有文件打成 `zip` 包即可
 
 `zip` 包结构示例：
 

@@ -15,10 +15,8 @@
 * 插件封装为命令行可执行命令：
   * 调起命令由task.json的 `execution.target` 字段指定
     * execution.target 格式为字符串
-    * 调起命令中可以使用 ${var\_name} 的方式获取变量
   * 若调起执行前需安装依赖，安装命令由 task.json 的 `execution.demands` 字段指定
     * execution.demands 为列表，可配置多个安装命令
-    * 安装命令可以使用 ${var\_name} 的方式获取变量
 * 插件输入字段值，从指定的输入文件中获取
   * 输入信息文件名，由环境变量 `bk_data_input` 指定
   * 输入信息文件存放路径，由环境变量 `bk_data_dir` 指定
@@ -35,7 +33,7 @@
 * 插件输出信息通过写文件的方式通知 bkci agent
   * 输出信息文件名，由环境变量 `bk_data_output` 指定
   * 输出信息文件存放路径，由环境变量 `bk_data_dir` 指定
-  * 输出信息文件格式，详见[插件输出规范](vscode-webview-resource://83cf071b-05d8-44c9-934f-26f3182c6000/file///Users/zhaozhihui/Downloads/ci-plugins-wiki/specification/plugin_output.md)
+  * 输出信息文件格式，详见[插件输出规范](plugin_output.md)
   * 使用 SDK 进行开发时，无需关注输出文件位置和名称，使用 SDK 提供的方法设置输出即可
 * 插件执行结果将由两个策略判定：
   * 若输出信息文件中指定了 `status` 字段，则以该字段值为准
@@ -57,7 +55,7 @@
 插件代码建议统一管理，便于分享、交接和系统级别的管理。
 
 * 企业内部按照企业代码管理方式，统一到一个group下管理
-* 开源的通用插件，可以联系bkci客服，提交到bkci开源版插件组 [ci-plugins](https://github.com/ci-plugins) 下
+* 开源的通用插件，可以联系bkci客服，提交到蓝鲸开源组件管理 [TencentBlueKing](https://github.com/TencentBlueKing) 下
 
 ## 插件帮助文档（详细描述）规范
 
@@ -92,7 +90,7 @@
 
 ### 插件状态流转图
 
-![](vscode-webview-resource://83cf071b-05d8-44c9-934f-26f3182c6000/file///Users/zhaozhihui/Downloads/ci-plugins-wiki/assets/status.png)
+![png](../../../assets/store_plugin_status.png)
 
 ### 流程描述
 
