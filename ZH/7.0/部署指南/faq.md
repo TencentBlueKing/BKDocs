@@ -140,6 +140,21 @@ describe pod 发现报错：
 需要 describe 异常 pvc 查看具体原因。
 
 
+### no persistent volumes available for this claim and no storage class is set
+describe pvc 发现报错：
+``` plain
+ Normal  FailedBinding  78s (×62 over 16m)  persistentvolume-controllor  no persistent volumes available for this claim and no storage class is set
+```
+请检查有无配置 `storageClass`：
+``` bash
+kubectl get sc
+```
+蓝鲸默认提供了 `localpv`:
+``` bash
+helmfile -f 00-localpv.yaml.gotmpl sync
+```
+
+
 ### 无法查看 SaaS 日志
 
 确认所使用的 k8s 集群，node 节点上，docker 的容器日志路径，和 values 中配置的是否相匹配。请参考前面文档。
