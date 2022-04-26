@@ -16,7 +16,7 @@
 
 {% video %}http://bkopen-10032816.file.myqcloud.com/grayscale_test/BkVideo/bk_AdVideo_cn.mp4{% endvideo %}
 
-- [完成蓝鲸的部署](5.1/部署维护/README.md)
+- [完成蓝鲸的部署](5.1/部署指南/README.md)
 
 ## 操作步骤
 

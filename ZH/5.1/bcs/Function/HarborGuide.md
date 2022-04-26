@@ -65,7 +65,7 @@ docker pull <Registry_URL>/<Project_ID>/nginx:1.17.0
 
 - 获取 Harbor 管理员账号
 
-在[部署 BCS 的文档](5.1/部署维护/增强包安装/机器评估/bcs_evaluate.md) 中有一个环境变量文件 `globals.env` ，其中可以找到 Harbor 的用户名（`HARBOR_SERVER_ADMIN_USER`）以及密码（`HARBOR_SERVER_ADMIN_PASS`）。
+在[部署 BCS 的文档](5.1/部署指南/增强包安装/机器评估/bcs_evaluate.md) 中有一个环境变量文件 `globals.env` ，其中可以找到 Harbor 的用户名（`HARBOR_SERVER_ADMIN_USER`）以及密码（`HARBOR_SERVER_ADMIN_PASS`）。
 
 ### 访问 Harbor Web 端
 
