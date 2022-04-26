@@ -737,11 +737,11 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": "5.1/部署维护/SUMMARY.md"
+			"summary": "5.1/部署指南/SUMMARY.md"
 		},
 		"index": 85,
 		"title": "快速部署",
-		"url": "5.1/部署维护/部署脚本/intro.md",
+		"url": "5.1/部署指南/部署脚本/intro.md",
 		"version": "5.1"
 	}],
 	"source": {
@@ -753,11 +753,11 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": "5.1/部署维护/SUMMARY.md"
+			"summary": "5.1/部署指南/SUMMARY.md"
 		},
 		"index": 84,
 		"title": "快速使用",
-		"url": "5.1/部署维护/基础包安装/快速使用/quick_use.md",
+		"url": "5.1/部署指南/基础包安装/快速使用/quick_use.md",
 		"version": "5.1"
 	}],
 	"source": {
@@ -945,11 +945,11 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": "5.1/部署维护/SUMMARY.md"
+			"summary": "5.1/部署指南/SUMMARY.md"
 		},
 		"index": 72,
 		"title": "部署方案",
-		"url": "5.1/部署维护/README.md",
+		"url": "5.1/部署指南/README.md",
 		"version": "5.1"
 	}],
 	"source": {
@@ -961,11 +961,11 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": "5.1/部署维护/SUMMARY.md"
+			"summary": "5.1/部署指南/SUMMARY.md"
 		},
 		"index": 71,
 		"title": "软件下载",
-		"url": "5.1/部署维护/基础包安装/软件下载/download.md",
+		"url": "5.1/部署指南/基础包安装/软件下载/download.md",
 		"version": "5.1"
 	}],
 	"source": {
@@ -977,11 +977,11 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": "5.1/部署维护/SUMMARY.md"
+			"summary": "5.1/部署指南/SUMMARY.md"
 		},
 		"index": 70,
 		"title": "基础包安装",
-		"url": "5.1/部署维护/基础包安装/机器评估/evaluate.md",
+		"url": "5.1/部署指南/基础包安装/机器评估/evaluate.md",
 		"version": "5.1"
 	}],
 	"source": {
@@ -993,11 +993,11 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": "5.1/部署维护/SUMMARY.md"
+			"summary": "5.1/部署指南/SUMMARY.md"
 		},
 		"index": 69,
 		"title": "增强包安装",
-		"url": "5.1/部署维护/增强包安装/机器评估/bcs_evaluate.md",
+		"url": "5.1/部署指南/增强包安装/机器评估/bcs_evaluate.md",
 		"version": "5.1"
 	}],
 	"source": {
@@ -1009,11 +1009,11 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": "5.1/部署维护/SUMMARY.md"
+			"summary": "5.1/部署指南/SUMMARY.md"
 		},
 		"index": 68,
 		"title": "SaaS部署",
-		"url": "5.1/部署维护/SaaS部署/通用部署/saasdeploy.md",
+		"url": "5.1/部署指南/SaaS部署/通用部署/saasdeploy.md",
 		"version": "5.1"
 	}],
 	"source": {
@@ -1025,11 +1025,11 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": "5.1/部署维护/SUMMARY.md"
+			"summary": "5.1/部署指南/SUMMARY.md"
 		},
 		"index": 67,
 		"title": "维护手册",
-		"url": "5.1/部署维护/维护手册/配置维护/configuration.md",
+		"url": "5.1/部署指南/维护手册/配置维护/configuration.md",
 		"version": "5.1"
 	}],
 	"source": {
@@ -1041,11 +1041,11 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": "5.1/部署维护/SUMMARY.md"
+			"summary": "5.1/部署指南/SUMMARY.md"
 		},
 		"index": 66,
 		"title": "升级指引",
-		"url": "5.1/部署维护/升级指引/updateV4.1/cev31_v41.md",
+		"url": "5.1/部署指南/升级指引/updateV4.1/cev31_v41.md",
 		"version": "5.1"
 	}],
 	"source": {

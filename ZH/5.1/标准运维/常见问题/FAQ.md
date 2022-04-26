@@ -10,4 +10,4 @@
 
 3.标准运维能执行任务，但是标准插件节点报错：`Trackback…TypeError:int() argument must be a string or a number,not ‘NoneType’`，可能是什么原因？
 
-标准运维任务流程的执行状态和标准插件输入、输出等信息缓存依赖 Redis 服务，所以首次部署请务必按照 [标准运维部署文档](5.1/部署维护/SaaS部署/标准运维/sops_install.md)，配置 Redis 环境变量后重新部署。
+标准运维任务流程的执行状态和标准插件输入、输出等信息缓存依赖 Redis 服务，所以首次部署请务必按照 [标准运维部署文档](5.1/部署指南/SaaS部署/标准运维/sops_install.md)，配置 Redis 环境变量后重新部署。

@@ -9,7 +9,7 @@
 ## 前提条件
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含  [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
 
-- [完成 BCS 部署](5.1/部署维护/增强包安装/机器评估/bcs_evaluate.md)
+- [完成 BCS 部署](5.1/部署指南/增强包安装/机器评估/bcs_evaluate.md)
 - 准备 2 台云主机：4 核 8 G，不低于 CentOS 7，K8s Master 和 Node 各 1 台
 - 完成上述 2 台云主机的 [Agent 安装](5.1/节点管理/快速入门/agent0.md) ，并分配至  [CMDB 业务下](5.1/配置平台/产品功能/Resource.md)
 
