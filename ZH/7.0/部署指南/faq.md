@@ -114,7 +114,12 @@ Events:
 ### node(s) didn't find available persistent volumes to bind
 describe pod 发现报错：
 ``` plain
-Warning FailedScheduling 3m10s default-scheduler 0/5 nodes are available: 1 node(s) had taint {node-role.kubernetes.io/master: }, that the pod didn't tolerate, 4 node(s) didn't find available persistent volumes to bind.
+Volumes:
+  storage:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  略
+略
+ Warning  FailedScheduling  3m  default-scheduler  0/5 nodes are available: 1 node(s) had taint {node-role.kubernetes.io/master: }, that the pod didn't tolerate, 4 node(s) didn't find available persistent volumes to bind.
 ```
 先检查状态异常的 pvc：
 ``` bash
@@ -125,6 +130,14 @@ kubectl get pvc -A | grep -vw Bound
 kubectl describe pvc -n 命名空间 pvc名称
 ```
 然后我们需要根据 pvc 的错误信息查找对应的错误案例。
+
+
+### unbound immediate PersistentVolumeClaims
+describe pod 发现报错：
+``` plain
+ Warning  FailedScheduling  3m  default-scheduler  0/5 nodes are available: 2 node(s) were unscheduledulable, 3 pod has unbound immediate PersistentVolumeClaims
+```
+需要 describe 异常 pvc 查看具体原因。
 
 
 ### 无法查看 SaaS 日志
