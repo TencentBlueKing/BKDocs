@@ -1406,11 +1406,11 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": ""
+				"summary": "6.0/持续集成平台/SUMMARY.md"
 			},
 			"index": 395,
 			"title": "蓝盾",
-			"url": "https://docs.bkci.net/",
+			"url": "6.0/持续集成平台/产品白皮书/产品简介/README.md",
 			"version": "6.0"
 		}],
 	"source": {
@@ -1695,11 +1695,11 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": ""
+				"summary": "6.0/持续集成平台/SUMMARY.md"
 			},
 			"index": 295,
 			"title": "持续集成平台",
-			"url": "https://docs.bkci.net/",
+			"url": "6.0/持续集成平台/产品白皮书/产品简介/README.md",
 			"version": "6.0"
 		}],
 	"source": {
@@ -1865,11 +1865,11 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": ""
+				"summary": "6.0/持续集成平台/SUMMARY.md"
 			},
 			"index": 94,
 			"title": "持续集成平台",
-			"url": "https://docs.bkci.net/",
+			"url": "6.0/持续集成平台/产品白皮书/产品简介/README.md",
 			"version": "6.0"
 		}],
 	"source": {
@@ -1967,11 +1967,11 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": ""
+				"summary": "6.0/持续集成平台/SUMMARY.md"
 			},
 			"index": 88,
 			"title": "蓝盾",
-			"url": "https://docs.bkci.net/",
+			"url": "6.0/持续集成平台/产品白皮书/产品简介/README.md",
 			"version": "6.0"
 		}],
 	"source": {
