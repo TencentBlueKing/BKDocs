@@ -71,7 +71,7 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 # 配置 DNS
 针对访问场景的不同，我们需要配置不同的 DNS 记录:
-* k8s pod 间解析蓝鲸域名，需要 [配置 coredns](#hosts-in-coredns)
+* k8s pod 内解析蓝鲸域名，需要 [配置 coredns](#hosts-in-coredns)
 * k8s node 从 bkrepo 拉取镜像，安装 GSE Agent，需要 [配置 k8s node 的 DNS](#hosts-in-k8s-node)
 * 中控机调用蓝鲸接口，需要 [配置中控机的 DNS](#hosts-in-bk-ctrl)
 * 您在电脑上访问蓝鲸，需要 [配置用户侧的 DNS](#hosts-in-user-pc)
@@ -81,44 +81,15 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 <a id="hosts-in-coredns"></a>
 
 ## 配置 coredns
->**提示**
->
->“一键部署” 脚本中自动完成了此步骤，可以跳过本章节。
-
-我们需要确保 k8s 集群的容器内能解析到 ingress controller。
+我们需要确保 k8s 集群的 pod 能解析到蓝鲸域名。
 
 >**注意**
 >
 >pod 删除重建后，clusterIP 会变动，需刷新 hosts 文件。
 
-因此需要注入 hosts 配置项到 `kube-system` namespace 下的 `coredns` 系列 pod，步骤如下：
+详细操作步骤见《[分步部署基础套餐后台](install-base-manually.md)》 文档的 “[配置 coredns](install-base-manually.md#hosts-in-coredns)” 章节。
 
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
-IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-./scripts/control_coredns.sh update "$IP1" bkrepo.$BK_DOMAIN docker.$BK_DOMAIN $BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN
-./scripts/control_coredns.sh update "$IP2" apps.$BK_DOMAIN
-```
-
-确认注入结果，执行如下命令：
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-./scripts/control_coredns.sh list
-```
-其输出如下：
-``` plain
-        10.244.0.4 apps.bkce7.bktencent.com
-        10.244.0.5 bkrepo.bkce7.bktencent.com
-        10.244.0.5 docker.bkce7.bktencent.com
-        10.244.0.5 bkce7.bktencent.com
-        10.244.0.5 bkapi.bkce7.bktencent.com
-        10.244.0.5 bkpaas.bkce7.bktencent.com
-        10.244.0.5 bkiam-api.bkce7.bktencent.com
-        10.244.0.5 bkiam.bkce7.bktencent.com
-        10.244.0.5 bcs.bkce7.bktencent.com
-```
+“一键部署” 脚本中自动完成了此步骤，无需重复操作。
 
 <a id="hosts-in-k8s-node"></a>
 
