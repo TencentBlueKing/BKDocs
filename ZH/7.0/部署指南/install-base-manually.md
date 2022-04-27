@@ -23,8 +23,10 @@ helm repo list
 
 # 配置
 ## 进入工作目录
-本文默认工作目录为 `~/bkhelmfile/blueking/`，另有注明除外。
-`
+>**提示**
+>
+>中控机默认工作目录为 `~/bkhelmfile/blueking/`，另有注明除外。
+
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 kubectl config set-context --current --namespace=blueking  # 设置k8s默认ns, 方便后续操作.

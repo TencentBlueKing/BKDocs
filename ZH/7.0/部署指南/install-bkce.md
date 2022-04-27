@@ -3,6 +3,11 @@
 
 # 准备工作
 ## 中控机安装工具
+>**提示**
+>
+>中控机默认工作目录为 `~/bkhelmfile/blueking/`，另有注明除外。
+
+
 `jq` 用于在中控机解析服务端 API 返回的 json 数据。
 
 在 **中控机** 执行如下命令：
@@ -55,7 +60,7 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 此脚本耗时 15 ~ 30 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。
 
->**提醒**
+>**注意**
 >
 >k8s 所有 `node` 机器均需保持网络畅通，可访问蓝鲸提供的镜像地址。
 
@@ -89,6 +94,7 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 因此需要注入 hosts 配置项到 `kube-system` namespace 下的 `coredns` 系列 pod，步骤如下：
 
 ``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
 IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
@@ -98,6 +104,7 @@ IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0
 
 确认注入结果，执行如下命令：
 ``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
 ./scripts/control_coredns.sh list
 ```
 其输出如下：
@@ -194,7 +201,7 @@ EOF
 
 在 **中控机** 执行如下命令即可获得 hosts 文件的参考内容（如果有新增 node，记得提前更新 ssh 免密）：
 ``` bash
-cd ~/bkhelmfile/blueking/  # 进入蓝鲸helmfile目录
+cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 默认从配置中提取, 也可自行赋值
 
 # 获取 ingress-controller pod所在机器的公网ip，记为$IP1
@@ -243,7 +250,7 @@ password=密码
 ## 浏览器访问
 在 **中控机** 执行如下命令获取访问地址：
 ``` bash
-cd ~/bkhelmfile/blueking/  # 进入蓝鲸helmfile目录
+cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(cat environments/default/{values,custom}.yaml 2>/dev/null | yq e '.domain.bkDomain' -)  # 读取默认或自定义域名
 echo "http://$BK_DOMAIN"
 ```
