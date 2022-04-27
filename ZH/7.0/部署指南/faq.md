@@ -1,10 +1,10 @@
-# 部署问题排查
+# 常见问题
 ## 常用排查命令（必知必会）
 请先阅读官方文档：[应用故障排查 | Kubernetes](https://kubernetes.io/zh/docs/tasks/debug-application-cluster/debug-application/)
 1. 切换当前 context 的 namespace 到 `blueking` 。切换后，后面排查需要指定 `-n blueking` 的命令就可以省略了。
-    ``` bash
-    kubectl config set-context --current --namespace=blueking
-    ```
+   ``` bash
+   kubectl config set-context --current --namespace=blueking
+   ```
 2. 部署过程中，查看 pod 的变化情况：
 	``` bash
 	kubectl get pods -w
@@ -13,8 +13,9 @@
 	``` bash
 	kubectl logs PODNAME -f --tail=20
 	```
-4. 查看 pod 状态不等于 `Running` 的：
+4. 删除 Completed 状态的 pod；然后查看 pod 状态不等于 `Running` 的：
 	``` bash
+   kubectl delete pod --field-selector=status.phase==Succeeded
 	kubectl get pods --field-selector 'status.phase!=Running'
 	```
 	注意 job 任务生成的 pod，没有自动删除的且执行完毕的 pod，处于 `Completed` 状态。
@@ -30,6 +31,52 @@
 	``` bash
 	source <(kubectl completion bash)
 	```
+
+## 调试及维护
+
+### 安装 metrics-server
+
+``` bash
+helmfile -f 00-metrics-server.yaml.gotmpl sync
+```
+
+### 使用 ksniff 抓包
+
+1. 安装 krew 插件包 https://krew.sigs.k8s.io/docs/user-guide/setup/install/
+2. 使用 krew 安装 sniff 插件包 `kubectl krew install sniff`
+3. 抓包。由于 apigateway 的 pod 默认没用开启特权模式，需要加上`-p`参数。
+    ``` bash
+    kubectl sniff -n blueking bk-apigateway-bk-esb-5655747b67-llnqj -p -f "port 80" -o esb.pcap
+    ```
+
+
+### 更改 BK_DOMAIN 后需要手动修改的地方
+
+paas3 中的资源分配的域名：http://bkpaas.$BK_DOMAIN/backend/admin42/platform/plans/manage 修改 bkrepo 对应的域名地址。
+
+
+### bkpaas3 里增加用户为管理员身份
+若接入了自定义登录后没有 admin 账号，可以进入 `bkpaas3-apiserver-web` pod 执行如下命令添加其他管理员账号：
+``` python
+from bkpaas_auth.constants import ProviderType
+from bkpaas_auth.models import user_id_encoder
+from paasng.accounts.models import UserProfile
+
+username="admin"
+user_id = user_id_encoder.encode(ProviderType.BK.value, username)
+UserProfile.objects.update_or_create(user=user_id, defaults={'role':4, 'enable_regions':'default'})
+```
+
+
+### bkpaas3 修改日志级别
+apiserver 和 engine 模块都支持通过环境变量设置日志级别。
+
+apiserver-main、apiserver-celery、engine-main、engine-celery ：编辑这些 Deployment，如：
+``` bash
+kubectl edit deployment apiserver-main
+```
+将 `DJANGO_LOG_LEVEL` 的值改为 `DEBUG`。
+
 
 ## 错误案例
 
@@ -63,6 +110,59 @@ Events:
 ```
 此处的报错是 `node-10-0-1-3` 解析 `docker.bkce7.bktencent.com` 失败。因此需要配置所用的 DNS 服务或者配置对应机器的 `/etc/hosts` 文件。
 
+
+### node(s) didn't find available persistent volumes to bind
+describe pod 发现报错：
+``` plain
+Volumes:
+  storage:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  略
+略
+ Warning  FailedScheduling  3m  default-scheduler  0/5 nodes are available: 1 node(s) had taint {node-role.kubernetes.io/master: }, that the pod didn't tolerate, 4 node(s) didn't find available persistent volumes to bind.
+```
+先检查状态异常的 pvc：
+``` bash
+kubectl get pvc -A | grep -vw Bound
+```
+然后 describe pvc 了解异常原因：
+``` bash
+kubectl describe pvc -n 命名空间 pvc名称
+```
+然后我们需要根据 pvc 的错误信息查找对应的错误案例。
+
+
+### waiting for pod to be scheduled
+describe pvc 发现报错：
+``` plain
+ Normal  WaitForPodScheduled  32s (×15 over 4m)  persistentvolume-controller  waiting for pod 名称略 to be scheduled
+```
+需要 describe pod 检查不调度的原因，一般为目的 node 的 CPU 或 内存 配额不足。
+
+
+### unbound immediate PersistentVolumeClaims
+describe pod 发现报错：
+``` plain
+ Warning  FailedScheduling  3m  default-scheduler  0/5 nodes are available: 2 node(s) were unscheduledulable, 3 pod has unbound immediate PersistentVolumeClaims
+```
+需要 describe 异常 pvc 查看具体原因。
+
+
+### no persistent volumes available for this claim and no storage class is set
+describe pvc 发现报错：
+``` plain
+ Normal  FailedBinding  78s (×62 over 16m)  persistentvolume-controllor  no persistent volumes available for this claim and no storage class is set
+```
+请检查有无配置 `storageClass`：
+``` bash
+kubectl get sc
+```
+蓝鲸默认提供了 `localpv`:
+``` bash
+helmfile -f 00-localpv.yaml.gotmpl sync
+```
+
+
 ### 无法查看 SaaS 日志
 
 确认所使用的 k8s 集群，node 节点上，docker 的容器日志路径，和 values 中配置的是否相匹配。请参考前面文档。
@@ -75,20 +175,6 @@ pod 无法启动，状态是 `ImagePullBackOff`，一般是 image 地址问题�
 helm get manifest release名 | grep image:
 ```
 
-### 安装 metrics-server
-
-``` bash
-helmfile -f 00-metrics-server.yaml.gotmpl sync
-```
-
-### 使用 ksniff 抓包
-
-1. 安装 krew 插件包 https://krew.sigs.k8s.io/docs/user-guide/setup/install/
-2. 使用 krew 安装 sniff 插件包 `kubectl krew install sniff`
-3. 抓包。由于 apigateway 的 pod 默认没用开启特权模式，需要加上`-p`参数。
-    ``` bash
-    kubectl sniff -n blueking bk-apigateway-bk-esb-5655747b67-llnqj -p -f "port 80" -o esb.pcap
-    ```
 
 ### 模板渲染问题
 
@@ -104,12 +190,6 @@ helmfile -f 00-metrics-server.yaml.gotmpl sync
    helm get manifest release名
    helm get hooks release名
    ```
-
-### 删除 Completed 状态的 pod
-
-``` bash
-kubectl delete pod --field-selector=status.phase==Succeeded
-```
 
 ### Delete 删除资源卡住无响应时
 
@@ -132,28 +212,3 @@ kubectl get pod PODNAME -o yaml
 ```bash
 curl http://$POD_IP:$containerPort/health_check_path
 ```
-
-### 更改 BK_DOMAIN 后需要手动修改的地方
-
-paas3 中的资源分配的域名：http://bkpaas.$BK_DOMAIN/backend/admin42/platform/plans/manage 修改 bkrepo 对应的域名地址。
-
-### bkpaas3 里增加用户为管理员身份
-若接入了自定义登录后没有 admin 账号，可以进入 `bkpaas3-apiserver-web` pod 执行如下命令添加其他管理员账号：
-``` python
-from bkpaas_auth.constants import ProviderType
-from bkpaas_auth.models import user_id_encoder
-from paasng.accounts.models import UserProfile
-
-username="admin"
-user_id = user_id_encoder.encode(ProviderType.BK.value, username)
-UserProfile.objects.update_or_create(user=user_id, defaults={'role':4, 'enable_regions':'default'})
-```
-
-### bkpaas3 修改日志级别
-apiserver 和 engine 模块都支持通过环境变量设置日志级别。
-
-apiserver-main、apiserver-celery、engine-main、engine-celery ：编辑这些 Deployment，如：
-``` bash
-kubectl edit deployment apiserver-main
-```
-将 `DJANGO_LOG_LEVEL` 的值改为 `DEBUG`。

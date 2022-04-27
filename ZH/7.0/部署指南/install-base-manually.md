@@ -23,8 +23,10 @@ helm repo list
 
 # 配置
 ## 进入工作目录
-本文默认工作目录为 `~/bkhelmfile/blueking/`，另有注明除外。
-`
+>**提示**
+>
+>中控机默认工作目录为 `~/bkhelmfile/blueking/`，另有注明除外。
+
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 kubectl config set-context --current --namespace=blueking  # 设置k8s默认ns, 方便后续操作.
@@ -62,11 +64,54 @@ EOF
 ```
 
 ## 安装 ingress controller
+部署默认的 ingress controller:
 ``` bash
 helmfile -f 00-ingress-nginx.yaml.gotmpl sync
+kubectl get pod -o wide -n blueking | grep ingress-nginx-controller  # 检查
+```
 
-# 获取ingress controller pod运行的节点信息
-kubectl get pod -o wide -n blueking | grep ingress-nginx-controller
+部署蓝鲸开发者中心专用的 ingress controller：
+``` bash
+helmfile -f 03-saas-cluster.yaml.gotmpl sync
+kubectl get pod -o wide -n blueking | grep bk-ingress-nginx  # 检查
+```
+
+<a id="hosts-in-coredns"></a>
+
+## 配置 coredns
+我们需要确保 k8s 集群的容器内能解析到蓝鲸域名。
+
+>**注意**
+>
+>pod 删除重建后，clusterIP 会变动，需刷新 hosts 文件。
+
+因此需要注入 hosts 配置项到 `kube-system` namespace 下的 `coredns` 系列 pod，步骤如下：
+
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
+IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+./scripts/control_coredns.sh update "$IP1" bkrepo.$BK_DOMAIN docker.$BK_DOMAIN $BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN
+./scripts/control_coredns.sh update "$IP2" apps.$BK_DOMAIN
+```
+
+确认注入结果，执行如下命令：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+./scripts/control_coredns.sh list
+```
+其输出如下：
+``` plain
+        10.244.0.4 apps.bkce7.bktencent.com
+        10.244.0.5 bkrepo.bkce7.bktencent.com
+        10.244.0.5 docker.bkce7.bktencent.com
+        10.244.0.5 bkce7.bktencent.com
+        10.244.0.5 bkapi.bkce7.bktencent.com
+        10.244.0.5 bkpaas.bkce7.bktencent.com
+        10.244.0.5 bkiam-api.bkce7.bktencent.com
+        10.244.0.5 bkiam.bkce7.bktencent.com
+        10.244.0.5 bcs.bkce7.bktencent.com
 ```
 
 # 部署基础套餐后台

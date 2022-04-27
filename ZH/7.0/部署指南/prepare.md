@@ -2,6 +2,7 @@
 1. 确认已经阅读过[K8S 新手必读](beginners_guide.md)
 
 # 资源准备
+
 ## 中控机
 您需要一台机器执行部署操作。我们沿用惯例称其为“中控机”。
 
@@ -12,6 +13,18 @@
 * `master` 负责 k8s 集群本身的管理调度，配置至少为 4 核心 8GB 内存 100GB 磁盘。
 * `node` 负责承载业务运行。建议每台机器配置至少为 8 核心 32GB 内存 100GB 磁盘。
 
+软件要求：
+| 需求项 | 具体要求 | 检查命令 |
+| -- | -- | -- |
+| 操作系统　| CentOS 7.9 | `cat /etc/centos-release` |
+| kernel | 3.10.0 及以上 | `uname -r` |
+| Swap | 关闭。防止 io 飙升影响 kubelet 进程。 | `free -m` Swap 这行值为 0 |
+| 防火墙 | 关闭 | `iptables -vnL` 无其他规则 |
+| SELinux | 关闭。k8s 官方要求。 | `getenforce` 的输出为 Disabled |
+| 时区 | 所有服务器时区应该统一，建议使用北京时间 | 使用 `timedatectl set-timezone Asia/Shanghai` 设置为北京时间。 |
+| 时间同步 | etcd 选举时要求节点间时间差小于 1s | 配置 `chronyd` 同步时间 |
+| docker 版本 | 19.03 及更高，最好卸载预装的 | `docker info` |
+
 ## 资源评估表
 我们整理了各套餐所需的 node 数量。如果您的 `node` 配置不同，请自行折算。
 
@@ -21,10 +34,15 @@
 |容器管理平台 | 容器管理后台及 SaaS | 0.7 台 node | 1 台 node | |
 |监控套餐 | 监控、日志服务及其 SaaS | 1 台 node | 2 台 node | |
 
+
 <a id="get-a-k8s-cluster"></a>
 
 # 准备 K8S 集群
-蓝鲸社区版 7.0 容器化部署方案预期运行于 Kubernetes 1.18 及以上版本。
+蓝鲸社区版 7.0 容器化部署方案预期运行于 Kubernetes 1.18 及 1.20 版本。
+
+>**提示**
+>
+>目前已有用户报告无法在 1.22 版本使用。
 
 我们适配了如下的场景：
 * 【推荐】[使用蓝鲸提供的 bcs.sh 脚本快速部署 k8s 集群](#deploy-k8s-using-bcs-sh)
@@ -32,6 +50,7 @@
 * [购买腾讯云 TKE 服务](#purchase-cloud-service-tke) （其他厂商提供 K8S 集群同理）
 
 请查阅如下章节获得对应场景的操作指引。
+
 
 <a id="deploy-k8s-using-bcs-sh" ></a>
 
@@ -51,6 +70,10 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 这表示您成功部署了一个 k8s 集群，此时您可以使用 `kubectl` 命令了。接下来开始添加节点吧。
 
 ### 添加 k8s-node
+>**提示**
+>
+>在部署蓝鲸基础后添加 node 时，要记得 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
+
 在 **部署初始 master** 章节，我们可以观察到脚本在结尾输出了 **扩容控制平面** （即 master） 及 **扩容节点** （即 node）的命令。
 
 如果当时没有保存扩容命令，可以在 **初始 master** 机器上执行如下命令重新获取：
@@ -97,15 +120,27 @@ grep bcs.local /etc/hosts || ssh "$master_ip" grep bcs.local /etc/hosts | tee -a
 scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进制到中控机使用
 ```
 
+
 <a id="using-existing-k8s" ></a>
 
 ## 使用已有的 k8s 集群
-如果能访问到 `master` 上的文件，可将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下。同时记得更新  **中控机** 的 `/etc/hosts` 文件确保可访问 config 文件中 k8s server。
+>**提示**
+>
+>在部署蓝鲸基础后添加 node 时，要记得 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
+
+如果能访问到 `master` 上的文件，可将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下。
+
+同时记得更新  **中控机** 的 `/etc/hosts` 文件确保可访问 config 文件中 k8s server。
 如果使用了 k8s 云服务，则厂商一般会提供 kubeconfig 导出功能，将其内容写入 **中控机** 的 `~/.kube/config` 路径下即可。
+
 
 <a id="purchase-cloud-service-tke" ></a>
 
 ## 购买腾讯云 TKE 服务
+>**提示**
+>
+>在部署蓝鲸基础后添加 node 时，要记得 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
+
 您可以腾讯云提供的 k8s 集群，具体操作请查阅文档： [腾讯云 TKE 集群搭建指引](tke_hosting.md){target=_blank}
 
 文末描述了导出 kubeconfig 的方法，将其内容写入  **中控机** 的  `~/.kube/config` 路径下即可：
