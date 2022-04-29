@@ -17,3 +17,4 @@
 | MySQL              | 5.6.28.0 | 263MB  | MySQL 安装包                             | [下载](https://bktencent-1252002024.file.myqcloud.com/mysql-installer-community-5.6.28.0.msi) |
 | 前端知识学习包      | 无       | 66M    | 前端基础知识学习包，包括一些教程             | [下载](https://bktencent-1252002024.file.myqcloud.com/前端知识学习包.zip) |
 | Python 知识学习包    | 无       | 87.4M  | Python 基础知识学习包，包括一些教程、安装包等 | [下载](https://bktencent-1252002024.file.myqcloud.com/python知识学习包.zip) |
+| curl.exe | 无 | 3.87 MB | 节点管理手动安装依赖工具 | [下载](https://bktencent-1252002024.file.myqcloud.com/curl.exe) |
