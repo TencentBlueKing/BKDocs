@@ -50,7 +50,7 @@ tar xf bkce_co_package-6.1.0.tgz
 
 ### 5. 将需要部署产品的标准运维流程模版导入至标准运维
 
-标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/063b4f2/bk_sops_co_package-6.1.0.dat)
+标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/1e13131/bk_sops_co_package-6.1.0.dat)
 
 **详细步骤：** `打开标准运维 -> 项目流程 -> 导入 -> 点击上传 -> 创建新流程`
 
