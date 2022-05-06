@@ -35,7 +35,7 @@
 |监控套餐 | 监控、日志服务及其 SaaS | 1 台 node | 2 台 node | |
 
 
-<a id="get-a-k8s-cluster"></a>
+<a id="get-a-k8s-cluster" name="get-a-k8s-cluster"></a>
 
 # 准备 K8S 集群
 蓝鲸社区版 7.0 容器化部署方案预期运行于 Kubernetes 1.18 及 1.20 版本。
@@ -52,7 +52,7 @@
 请查阅如下章节获得对应场景的操作指引。
 
 
-<a id="deploy-k8s-using-bcs-sh" ></a>
+<a id="deploy-k8s-using-bcs-sh" name="deploy-k8s-using-bcs-sh" ></a>
 
 ## 使用 bcs.sh 快速部署 k8s 集群
 ### 部署初始 master
@@ -121,7 +121,7 @@ scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进�
 ```
 
 
-<a id="using-existing-k8s" ></a>
+<a id="using-existing-k8s" name="using-existing-k8s" ></a>
 
 ## 使用已有的 k8s 集群
 >**提示**
@@ -134,7 +134,7 @@ scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进�
 如果使用了 k8s 云服务，则厂商一般会提供 kubeconfig 导出功能，将其内容写入 **中控机** 的 `~/.kube/config` 路径下即可。
 
 
-<a id="purchase-cloud-service-tke" ></a>
+<a id="purchase-cloud-service-tke" name="purchase-cloud-service-tke" ></a>
 
 ## 购买腾讯云 TKE 服务
 >**提示**

@@ -46,7 +46,7 @@ SaaS 应用采用 `S-Mart` 包分发，这里描述了通用的部署方法。
 先确认顶部的 「模块」 为需要部署的模块，然后切换下方面板到 「生产环境」，选择刚才上传的版本点击 「部署至生产环境」 按钮。此时开始显示部署进度。
 ![](assets/deploy-saas-on-appo.png)
 
-<a id="saas-res-download"></a>
+<a id="saas-res-download" name="saas-res-download"></a>
 
 ## 需要提前下载的资源
 我们汇总整理了接下来需要下载的文件。
@@ -141,7 +141,7 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 需要先部署 `default` ，然后部署 `backend` 模块。
 
 
-<a id="post-install-bk-saas"></a>
+<a id="post-install-bk-saas" name="post-install-bk-saas"></a>
 
 ## SaaS 部署后的设置
 >**提示**
@@ -149,7 +149,7 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 >一些 SaaS 在部署成功后，还需要做初始化设置。
 
 
-<a id="post-install-bk-lesscode"></a>
+<a id="post-install-bk-lesscode" name="post-install-bk-lesscode"></a>
 
 ### 蓝鲸可视化平台（bk_lesscode）部署后配置
 目前 bk_lesscode 只支持通过独立域名来访问。
@@ -162,11 +162,11 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 ![](assets/2022-03-09-10-45-29.png)
 
 
-<a id="post-install-bk-nodeman"></a>
+<a id="post-install-bk-nodeman" name="post-install-bk-nodeman"></a>
 
 ### 节点管理（bk_nodeman）部署后配置
 
-<a id="post-install-bk-nodeman-gse-env"></a>
+<a id="post-install-bk-nodeman-gse-env" name="post-install-bk-nodeman-gse-env"></a>
 
 #### 配置 GSE 环境管理
 点击全局配置->gse 环境管理->默认接入点->编辑，相关信息需要用以下命令行获取。
@@ -188,7 +188,7 @@ agent url: 一般无需修改，默认通过域名访问 bkrepo 下载安装包�
 回到查看界面后，请 **等待 1 ~ 2 分钟**，然后刷新此页面。如果 Btserver，dataserver，taskserver 的地址自动从 `127.0.0.1` 变更为 node 的内网 IP ，则说明读取 zookeeper 成功，否则需检查 zookeeper 的 IP、 端口以及账户密码是否正确。
 
 
-<a id="post-install-bk-nodeman-gse-plugin"></a>
+<a id="post-install-bk-nodeman-gse-plugin" name="post-install-bk-nodeman-gse-plugin"></a>
 
 #### 上传 gse 插件包
 打开 “工作台” —— “蓝鲸节点管理”。切换顶部导航到 “插件管理”，选择左侧菜单栏里的 “插件包”。
@@ -207,7 +207,7 @@ agent url: 一般无需修改，默认通过域名访问 bkrepo 下载安装包�
 | processbeat | 主机进程信息采集器 | 蓝鲸监控主机监控里面的进程信息. 首次使用插件管理进行操作前，先到蓝鲸监控进行设置插件的功能项 |
 
 
-<a id="post-install-bk-nodeman-gse-client"></a>
+<a id="post-install-bk-nodeman-gse-client" name="post-install-bk-nodeman-gse-client"></a>
 
 #### agent 资源上传
 >**提示**
