@@ -76,7 +76,7 @@ helmfile -f 03-saas-cluster.yaml.gotmpl sync
 kubectl get pod -o wide -n blueking | grep bk-ingress-nginx  # 检查
 ```
 
-<a id="hosts-in-coredns"></a>
+<a id="hosts-in-coredns" name="hosts-in-coredns"></a>
 
 ## 配置 coredns
 我们需要确保 k8s 集群的容器内能解析到蓝鲸域名。

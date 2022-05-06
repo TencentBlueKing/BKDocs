@@ -39,7 +39,7 @@ done
 
 如果您打算研究部署细节，则可以查阅 《[分步部署基础套餐后台](install-base-manually.md)》 文档。
 
-<a id="setup_bkce7-i-base"></a>
+<a id="setup_bkce7-i-base" name="setup_bkce7-i-base"></a>
 
 ## 一键部署基础套餐后台
 在 **中控机** 下载 “一键部署” 脚本并添加可执行权限：
@@ -78,7 +78,7 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 为了简化操作，这些步骤皆以 `hosts` 文件为例。
 
-<a id="hosts-in-coredns"></a>
+<a id="hosts-in-coredns" name="hosts-in-coredns"></a>
 
 ## 配置 coredns
 我们需要确保 k8s 集群的 pod 能解析到蓝鲸域名。
@@ -91,7 +91,7 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 “一键部署” 脚本中自动完成了此步骤，无需重复操作。
 
-<a id="hosts-in-k8s-node"></a>
+<a id="hosts-in-k8s-node" name="hosts-in-k8s-node"></a>
 
 ## 配置 k8s node 的 DNS
 k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
@@ -114,7 +114,7 @@ $IP2 apps.$BK_DOMAIN
 EOF
 ```
 
-<a id="hosts-in-bk-ctrl"></a>
+<a id="hosts-in-bk-ctrl" name="hosts-in-bk-ctrl"></a>
 
 ## 配置中控机的 DNS
 当中控机为 k8s 集群的成员时，可以参考 “配置 k8s node 的 DNS” 章节改为取 `clusterIP`。
@@ -161,7 +161,7 @@ $IP2 apps.$BK_DOMAIN
 EOF
 ```
 
-<a id="hosts-in-user-pc"></a>
+<a name="hosts-in-user-pc"></a>
 
 ## 配置用户侧的 DNS
 蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。
@@ -232,7 +232,7 @@ echo "http://$BK_DOMAIN"
 >
 >SaaS 部署时需要访问 bkrepo 提供的 docker 服务，请先完成 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 章节。
 
-<a id="k8s-node-docker-insecure-registries"></a>
+<a id="k8s-node-docker-insecure-registries" name="k8s-node-docker-insecure-registries"></a>
 
 ## 调整 node 上的 docker 服务
 PaaS 支持 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 提供的 docker registry 服务。
@@ -288,7 +288,7 @@ docker info
 
 为了方便您快速体验，我们扩展了 “一键部署” 脚本，现在可以支持 SaaS 的初次安装 以及部署前设置了。
 
-<a id="setup_bkce7-i-saas"></a>
+<a id="setup_bkce7-i-saas" name="setup_bkce7-i-saas"></a>
 
 ## 一键部署基础套餐 SaaS
 >**注意**
@@ -312,7 +312,7 @@ docker info
 如需了解 SaaS 部署细节，可查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
 
 
-<a id="k8s-node-install-gse-agent"></a>
+<a id="k8s-node-install-gse-agent" name="k8s-node-install-gse-agent"></a>
 
 # 给 node 安装 gse agent
 >**注意**
