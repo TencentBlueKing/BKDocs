@@ -49,20 +49,24 @@ SaaS 应用采用 `S-Mart` 包分发，这里描述了通用的部署方法。
 <a id="saas-res-download" name="saas-res-download"></a>
 
 ## 需要提前下载的资源
-我们汇总整理了接下来需要下载的文件。
+我们汇总整理了接下来需要您下载的文件。
 
-1. SaaS 集合包 文件名：ce7_saas.tgz （7.0.1 版本文件名不同，记得重命名为此名称。）
-    - MD5： 756a093bb030fc6902339623c1dfeac0
-    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/ce7.0.1_saas.tgz
-2. GSE Agent 集合包 文件名：gse_client_ce_3.6.16.zip
-    - MD5： 9a2d4f3d0034ea37a6c5cb8f7c4e399a
-    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip
-3. Python 3.6 文件名：py36.tgz
-    - MD5： 7f9217b406703e3e3ee88681dd903bd1
-    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz
-4. GSE 插件集合包 文件名：gse_plugins-20220507.tgz
+1. GSE 插件集合包，用于 [节点管理上传 gse 插件包](#post-install-bk-nodeman-gse-plugin)
     - MD5： 63f3e6c1c1b3e603d33ed2da95187a1f
     - 下载地址：https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gse_plugins-20220507.tgz
+
+如使用 “一键部署” 脚本部署 SaaS，则可跳过如下文件:
+1. SaaS 集合包，用于 [部署 SaaS](#deploy-bkce-saas)
+    - MD5： 756a093bb030fc6902339623c1dfeac0
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/ce7.0.1_saas.tgz
+2. GSE Agent 集合包，用于 [节点管理 agent 资源上传](#post-install-bk-nodeman-gse-client)
+    - MD5： 9a2d4f3d0034ea37a6c5cb8f7c4e399a
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip
+3. Python 3.6，用于 [节点管理 agent 资源上传](#post-install-bk-nodeman-gse-client)
+    - MD5： 7f9217b406703e3e3ee88681dd903bd1
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz
+
+<a id="deploy-bkce-saas" name="deploy-bkce-saas"></a>
 
 ## 各 SaaS 部署过程
 >**提示**
@@ -169,7 +173,11 @@ SaaS 包名：`bk_nodeman-V*.tar.gz`
 <a id="post-install-bk-nodeman-gse-env" name="post-install-bk-nodeman-gse-env"></a>
 
 #### 配置 GSE 环境管理
-点击全局配置->gse 环境管理->默认接入点->编辑，相关信息需要用以下命令行获取。
+进入 “全局配置”->“gse 环境管理” 界面。
+
+点击 “默认接入点” 右侧的 “编辑” 图标，进入 “编辑接入点” 界面。
+
+填写要求如下：
 
 zookeeper 集群地址填写 **任意 k8s node IP**，端口填写 `32181` （注意不是默认的 `2181`）。用户名和密码可执行如下命令获取 auth 字符串，其格式为 `用户名:密码`。
 ``` bash
@@ -194,7 +202,7 @@ agent url: 一般无需修改，默认通过域名访问 bkrepo 下载安装包�
 打开 “工作台” —— “蓝鲸节点管理”。切换顶部导航到 “插件管理”，选择左侧菜单栏里的 “插件包”。
 ![](assets/bk_nodeman-upload-gse-plugin.png)
 
-在用户 PC 上解压 [提前下载](#saas-res-download) 的插件集合包。
+在您的电脑上解压 [提前下载](#saas-res-download) 的 “GSE 插件集合包”。
 
 单独上传里面的子包。上传成功后，点击 “下一步” 进入 “插件包解析” 界面，全选后 “导入” 即可。
 >**提示**
@@ -227,9 +235,7 @@ agent url: 一般无需修改，默认通过域名访问 bkrepo 下载安装包�
 >
 >“一键部署” 脚本中自动完成了此步骤，可以跳过本章节。
 
-下载 agent 合集包：[https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip](https://bkopen-1252002024.file.myqcloud.com/ce7/gse_client_ce_3.6.16.zip)
-
-本机解压 zip 包后，分别上传 agent 包到 bkrepo 中（ `bkrepo.$BK_DOMAIN` 登陆账号密码可以通过： `helm status -n blueking bk-repo` 获取。先找到 `bksaas-addons` 项目，节点管理对应的目录（public-bkapp-bk_nod-x/data/bkee/public/bknodeman/download ），每次只能上传一个包，需要分多次上传。
+在您的电脑上解压 [提前下载](#saas-res-download) 的 “GSE Agent 集合包” 后，分别上传 agent 包到 bkrepo 中（ `bkrepo.$BK_DOMAIN` 登陆账号密码可以通过： `helm status -n blueking bk-repo` 获取。先找到 `bksaas-addons` 项目，节点管理对应的目录（public-bkapp-bk_nod-x/data/bkee/public/bknodeman/download ），每次只能上传一个包，需要分多次上传。
 ![](assets/2022-03-09-10-46-05.png)
 ![](assets/2022-03-09-10-46-13.png)
 
