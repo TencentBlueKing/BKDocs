@@ -60,9 +60,9 @@ SaaS 应用采用 `S-Mart` 包分发，这里描述了通用的部署方法。
 3. Python 3.6 文件名：py36.tgz
     - MD5： 7f9217b406703e3e3ee88681dd903bd1
     - 下载地址：https://bkopen-1252002024.file.myqcloud.com/common/py36.tgz
-4. GSE 插件集合包 文件名：gse_plugins.tgz
-    - MD5： d29be1a7e5b05c9aee54e9f0437b3f72
-    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gse_plugins.tgz
+4. GSE 插件集合包 文件名：gse_plugins-20220507.tgz
+    - MD5： 63f3e6c1c1b3e603d33ed2da95187a1f
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gse_plugins-20220507.tgz
 
 ## 各 SaaS 部署过程
 >**提示**
@@ -194,17 +194,30 @@ agent url: 一般无需修改，默认通过域名访问 bkrepo 下载安装包�
 打开 “工作台” —— “蓝鲸节点管理”。切换顶部导航到 “插件管理”，选择左侧菜单栏里的 “插件包”。
 ![](assets/bk_nodeman-upload-gse-plugin.png)
 
-在用户 PC 上解压 [提前下载](#saas-res-download) 的 `gse_plugins.tgz` ，单独上传里面的小包 `*.tgz`。
+在用户 PC 上解压 [提前下载](#saas-res-download) 的插件集合包。
 
-| 包名 | 用途 | 描述 |
+单独上传里面的子包。上传成功后，点击 “下一步” 进入 “插件包解析” 界面，全选后 “导入” 即可。
+>**提示**
+>
+>当前节点管理在插件包解析界面有 bug，“支持系统” 列只显示了架构，未显示操作系统。因此看起来插件有重复。请放心全选导入。
+
+插件集合包中各子包的用途：
+| 插件包名 | 用途 | 描述 |
 | -- | -- | -- |
-| basereport | 基础性能采集器 | 负责采集 CMDB 上的实时数据，蓝鲸监控里的主机监控，包含 CPU，内存，磁盘等 |
 | bkmonitorbeat | 蓝鲸监控指标采集器 | 蓝鲸监控拨测采集器 支持多协议多任务的采集，监控和可用率计算，提供多种运行模式和热加载机制 |
 | bkmonitorproxy | 自定义上报服务 | 自定义数据上报服务，用来收集用户自定义上报的时序数据，或事件数据。 |
 | bkunifylogbeat | 高性能日志采集 | 数据平台，蓝鲸监控，日志检索等和日志相关的数据. 首次使用插件管理进行操作前，先到日志检索/数据平台等进行设置插件的功能项 |
-| exceptionbeat | 系统事件采集器 | 系统事件采集器，用来收集系统事件如磁盘只读，corefile 产生等。 |
 | gsecmdline | 自定义上报命令行工具 | 蓝鲸监控脚本采集，自定义监控，数据平台自定义上报数据 |
-| processbeat | 主机进程信息采集器 | 蓝鲸监控主机监控里面的进程信息. 首次使用插件管理进行操作前，先到蓝鲸监控进行设置插件的功能项 |
+
+
+>**提示**
+>
+>`bkmonitorbeat-2.x` 完成了采集功能的统一，故新版插件集合包中移除了下列包：
+>| 包名 | 用途 | 描述 |
+>| -- | -- | -- |
+>| exceptionbeat | 系统事件采集器 | 系统事件采集器，用来收集系统事件如磁盘只读，corefile 产生等。 |
+>| basereport | 基础性能采集器 | 负责采集 CMDB 上的实时数据，蓝鲸监控里的主机监控，包含 CPU，内存，磁盘等 |
+>| processbeat | 主机进程信息采集器 | 蓝鲸监控主机监控里面的进程信息. 首次使用插件管理进行操作前，先到蓝鲸监控进行设置插件的功能项 |
 
 
 <a id="post-install-bk-nodeman-gse-client" name="post-install-bk-nodeman-gse-client"></a>
