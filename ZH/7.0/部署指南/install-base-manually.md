@@ -63,6 +63,15 @@ EOF
 ./scripts/create_k8s_cluster_admin_for_paas3.sh
 ```
 
+## 安装默认的storageClass，采取local pv provisioner的charts安装。由于bcs.sh脚本默认安装的环境以及自动做好了 /mnt/blueking 目录的挂载。直接用默认参数安装localpv即可。
+``` bash
+# 切换到~/bkhelmfile/blueking目录，以下如无指定绝对路径，都是相对于  ~/bkhelmfile/blueking  目录的。
+cd ~/bkhelmfile/blueking 
+helmfile -f 00-localpv.yaml.gotmpl sync
+# 确认
+kubectl get sc
+```
+
 ## 安装 ingress controller
 部署默认的 ingress controller:
 ``` bash
