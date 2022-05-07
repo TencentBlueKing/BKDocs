@@ -54,27 +54,6 @@ bash /data/install/configure_ssh_without_pass
 ./bk_install saas-o bk_user_manage
 ```
 
-## 部署 bkiam_search_engine
-
-1. 获取权限中心的 app_token，并将获取到的 app_token 做为 bkiam_search_engine 的 secret
-
-    ```bash
-   echo BK_IAM_SAAS_APP_SECRET=$(mysql --login-path=mysql-default -e "use open_paas; select * from paas_app where code='bk_iam'\G"| awk '/auth_token/{print $2}') >> /data/install/bin/03-userdef/bkiam_search_engine.env
-    ```
-
-2. 渲染 bkiam_search_engine 变量
-
-    ```bash
-   ./bkcli install bkenv
-   ./bkcli sync common
-    ```
-
-3. 开始部署
-
-    ```bash
-   ./bk_install bkiam_search_engine
-    ```
-
 ## 部署 CMDB
 
 ```bash
@@ -132,9 +111,51 @@ source ~/.bashrc
 
 ## 部署 lesscode (可选)
 
-```bash
-./bk_install lesscode
-```
+1. 添加 lesscode 模块分布
+
+    ```bash
+    cat << EOF >>/data/install/install.config
+    [lesscode]
+    10.0.0.1 lesscode
+    EOF
+    ```
+
+2. 开始部署
+
+    ```bash
+    ./bk_install lesscode
+    ```
+
+## 部署 bkiam_search_engine (可选)
+
+1. 添加 bkiam_search_engine 模块分布
+
+    ```bash
+    cat << EOF >>/data/install/install.config
+    [iam_search_engine]
+    10.0.0.1 es7
+    10.0.0.3 iam_search_engine
+    EOF
+    ```
+
+2. 获取权限中心的 app_token，并将获取到的 app_token 做为 bkiam_search_engine 的 secret
+
+    ```bash
+   echo BK_IAM_SAAS_APP_SECRET=$(mysql --login-path=mysql-default -e "use open_paas; select * from paas_app where code='bk_iam'\G"| awk '/auth_token/{print $2}') >> /data/install/bin/03-userdef/bkiam_search_engine.env
+    ```
+
+3. 渲染 bkiam_search_engine 变量
+
+    ```bash
+   ./bkcli install bkenv
+   ./bkcli sync common
+    ```
+
+4. 开始部署
+
+    ```bash
+   ./bk_install bkiam_search_engine
+    ```
 
 ## 检测相关服务状态
 
