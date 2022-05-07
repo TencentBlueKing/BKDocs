@@ -42,13 +42,13 @@ Kafka 官方文档关于扩容集群的说明见：https://kafka.apache.org/0100
 1. 如果是新机器，请先按照通用的扩容步骤，做好初始化。（详见：[组件扩容](./scale_node.md)）
 2. 通过 yum 安装 kafka：`yum -y install kafka` 应该会从 bk-custom 这个仓库中安装 kafka 0.10.2.0 版本
 3. 将原 kafka 机器的 /etc/kafka/server.properties 文件拷贝到新节点，并修改内网 ip 地址和 `broker.id` 的配置，id 在 kafka 集群中必须保持唯一。
-4. 创建必要数据目录：`install -d -o kafka -g kafka /data/bkce/public/kafka `
+4. 创建必要数据目录：`install -d -o kafka -g kafka /data/bkce/public/kafka`
 5. 启动 kafka：`systemctl enable --now kafka`
 6. 可以在 zk 的节点上(/brokers/ids)确认新扩容的 kafka 的 broker id 出现。
 
 扩容完成后，新的 broker，如果没有新的 Topic 创建，它不会承载任何数据，除非手动迁移老的数据到新的 broker。
 
-现在假设按整个 topic 迁移到新的 broker 上。待迁移的topic名字为 "0bkmonitor_5243810" 和 "0bkmonitor_5243810"，目标 broker 为 "4,5"
+现在假设按整个 topic 迁移到新的 broker 上。待迁移的 topic 名字为 "0bkmonitor_5243810" 和 "0bkmonitor_5243810"，目标 broker 为 "4,5"
 
 1. 编辑 ~/topic.json 
 

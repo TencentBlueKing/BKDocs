@@ -57,7 +57,7 @@ cd /data/src; grep . */*VERSION */*/VERSION
 
 4. 更新流程服务（ITSM）中间版本 (可选)
 
-    - 升级社区版 6.1 流程服务时，版本不能低于 2.6.0 版本，如果低于该版本，请先升级至 2.6.0 版本，升级请参考 [社区版6.0单产品更新公告- ITSM](https://bk.tencent.com/s-mart/community/question/5529)
+    - 升级社区版 6.1 流程服务时，版本不能低于 2.6.0 版本，如果低于该版本，请先升级至 2.6.0 版本，升级请参考 [社区版 6.0 单产品更新公告- ITSM](https://bk.tencent.com/s-mart/community/question/5529)
     - 如果已经通过单产品更新的用户请忽略该步骤，可直接进入 2.6.1 版本升级
 
 ## 数据备份
@@ -438,7 +438,7 @@ pcmd -m log "rmvirtualenv bklog-api"
 
 1. 执行相关兼容操作
 
-    详细升级指南请参考：[V2.6.0 -> V2.6.1升级指南](https://github.com/TencentBlueKing/bk-itsm/blob/v2.6.x_develop/docs/install/V2_6_0_to_V2_6_1_upgrade_guide.md)
+    详细升级指南请参考：[V2.6.0 -> V2.6.1 升级指南](https://github.com/TencentBlueKing/bk-itsm/blob/v2.6.x_develop/docs/install/V2_6_0_to_V2_6_1_upgrade_guide.md)
 
     ```bash
     # 网页端访问
