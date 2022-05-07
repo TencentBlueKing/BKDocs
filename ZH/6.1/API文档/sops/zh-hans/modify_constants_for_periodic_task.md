@@ -1,0 +1,115 @@
+
+### 请求方法
+
+POST
+
+
+### 请求地址
+
+/api/c/compapi/v2/sops/modify_constants_for_periodic_task/
+
+
+### 通用参数
+
+| 字段 | 类型 | 必选 |  描述 |
+|-----------|------------|--------|------------|
+| bk_app_code  |  string    | 是 | 应用 ID     |
+| bk_app_secret|  string    | 是 | 安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -> 点击应用 ID -> 基本信息 获取 |
+| bk_token     |  string    | 否 | 当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取 |
+| bk_username  |  string    | 否 | 当前用户用户名，应用免登录态验证白名单中的应用，用此字段指定当前用户 |
+
+
+### 功能描述
+
+修改周期任务的全局参数
+
+### 请求参数
+
+#### 接口参数
+
+| 字段          |  类型       | 必选   |  描述             |
+|---------------|------------|--------|------------------|
+|   task_id    |   string     |   是   |  周期任务 ID |
+|   bk_biz_id    |   string     |   是   |  模板所属业务 ID |
+|   constants    |   dict     |   否   | 任务全局参数，详细信息见下面说明 |
+| scope | string | 否 | bk_biz_id 检索的作用域。默认为 cmdb_biz，此时检索的是绑定的 CMDB 业务 ID 为 bk_biz_id 的项目；当值为 project 时则检索项目 ID 为 bk_biz_id 的项目|
+
+#### constants KEY
+
+变量 KEY，${key} 格式
+
+#### constants VALUE
+
+变量值
+
+### 请求参数示例
+
+```plain
+{
+    "bk_app_code": "esb_test",
+    "bk_app_secret": "xxx",
+    "bk_token": "xxx",
+    "bk_username": "xxx",
+    "bk_biz_id": "2",
+    "task_id": "8",
+    "constants": {
+        "${bk_timing}": "100"
+    },
+    "scope": "cmdb_biz"
+}
+```
+
+### 返回结果示例
+
+```plain
+{
+    "data": {
+        "${bk_timing}": {
+            "source_tag": "sleep_timer.bk_timing",
+            "source_info": {
+                "node76393dcfedcf73dbc726f1c4786d": [
+                    "bk_timing"
+                ]
+            },
+            "name": "定时时间",
+            "custom_type": "",
+            "index": 0,
+            "value": "15",
+            "show_type": "show",
+            "source_type": "component_inputs",
+            "key": "${bk_timing}",
+            "validation": "",
+            "desc": ""
+        }
+    },
+    "result": true,
+    "request_id": "xxx",
+    "trace_id": "xxx"
+}
+```
+
+### 返回结果参数说明
+
+|   名称   |  类型  |           说明             |
+| ------------ | ---------- | ------------------------------ |
+|  result      |    bool    |      true/false 操作是否成功     |
+|  data        |    dict      |      result=true 时成功数据，详细信息请见下面说明     |
+|  message        |    string      |      result=false 时错误信息     |
+|  request_id     |    string  |      esb 请求 id     |
+|  trace_id     |    string  |      open telemetry trace_id     |
+
+#### data KEY
+全局变量 KEY，${key} 格式
+
+#### data VALUE
+
+|   名称   |  类型  |           说明             |
+| ------------ | ---------- | ------------------------------ |
+|  key      |    string    |      同 KEY     |
+|  name      |    string    |      变量名字    |
+|  index      |    int    |      变量在模板中的显示顺序    |
+|  desc      |    string    |      变量说明   |
+|  source_type      |    string    |      变量来源, 取值范围 custom: 自定义变量，component_inputs: 从标准插件输入参数勾选，component_outputs：从标准插件输出结果中勾选   |
+|  custom_type      |    string    |      source_type=custom 时有效，自定义变量类型， 取值范围 input: 输入框，textarea: 文本框，datetime: 日期时间，int: 整数|
+|  source_tag      |    string    |      source_type=component_inputs/component_outputs 时有效，变量的来源标准插件   |
+|  source_info   |   dict  |  source_type=component_inputs/component_outputs 时有效，变量的来源节点信息 |

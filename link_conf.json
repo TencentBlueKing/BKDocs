@@ -2,12 +2,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/快速入门/SUMMARY.md"
+				"summary": "6.1/快速入门/SUMMARY.md"
 			},
 			"index": 500,
 			"title": "快速入门",
-			"url": "6.0/快速入门/quick-start-v6.0-info.md",
-			"version": "6.0"
+			"url": "6.1/快速入门/quick-start-v6.1-info.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "快速体验部署私有化版本&快速上手使用",
@@ -19,12 +19,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
+				"summary": "6.1/部署指南/SUMMARY.md"
 			},
 			"index": 499,
 			"title": "部署维护",
-			"url": "6.0/部署指南/产品白皮书/基础包安装/多机部署/quick_install.md",
-			"version": "6.0"
+			"url": "6.1/部署指南/产品白皮书/基础包安装/多机部署/quick_install.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "社区版版部署、维护、升级的详细指引",
@@ -36,12 +36,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/bk_solutions/SUMMARY.md"
+				"summary": "6.1/bk_solutions/SUMMARY.md"
 			},
 			"index": 498,
 			"title": "场景案例",
-			"url": "6.0/bk_solutions/CD/CMDB/CMDB_management_hosts.md",
-			"version": "6.0"
+			"url": "6.1/bk_solutions/CD/CMDB/CMDB_management_hosts.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "覆盖企业CI、CD、CO场景，从研发到运维、运营的实际案例",
@@ -53,12 +53,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 497,
 			"title": "开发指南",
-			"url": "6.0/开发指南/开发简介/README.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/开发简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "面向运维的SaaS开发指引，开源及API文档",
@@ -74,8 +74,8 @@
 			},
 			"index": 496,
 			"title": "视频教程",
-			"url": "video/6.0",
-			"version": "6.0"
+			"url": "https://bk.tencent.com/s-mart/video",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "蓝鲸智云品牌介绍、运维开发实战及历届沙龙视频",
@@ -87,12 +87,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/常见问题/SUMMARY.md"
+				"summary": "6.1/常见问题/SUMMARY.md"
 			},
 			"index": 495,
 			"title": "常见问题",
-			"url": "6.0/常见问题/README.md",
-			"version": "6.0"
+			"url": "6.1/常见问题/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "平台部署、日常维护与使用的常见问题",
@@ -104,12 +104,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/体系介绍/SUMMARY.md"
+				"summary": "6.1/体系介绍/SUMMARY.md"
 			},
 			"index": 450,
 			"title": "什么是蓝鲸",
-			"url": "6.0/体系介绍/产品白皮书/品牌简介/intro.md",
-			"version": "6.0"
+			"url": "6.1/体系介绍/产品白皮书/品牌简介/intro.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "了解蓝鲸智云的品牌价值和产品体系",
@@ -120,12 +120,12 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": "6.0/体系介绍/SUMMARY.md"
+			"summary": "6.1/体系介绍/SUMMARY.md"
 		},
 		"index": 449,
 		"title": "解决方案体系",
-		"url": "6.0/体系介绍/产品白皮书/解决方案/solution.md",
-		"version": "6.0"
+		"url": "6.1/体系介绍/产品白皮书/解决方案/solution.md",
+		"version": "6.1"
 	}],
 	"source": {
 		"describe": "了解蓝鲸智云的品牌价值和产品体系",
@@ -137,12 +137,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/用户管理/SUMMARY.md"
+				"summary": "6.1/用户管理/SUMMARY.md"
 			},
 			"index": 400,
 			"title": "用户管理",
-			"url": "6.0/用户管理/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/用户管理/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "内容丰富的SaaS产品，开箱即用",
@@ -154,12 +154,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/权限中心/SUMMARY.md"
+				"summary": "6.1/权限中心/SUMMARY.md"
 			},
 			"index": 399,
 			"title": "权限中心",
-			"url": "6.0/权限中心/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/权限中心/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "内容丰富的SaaS产品，开箱即用",
@@ -171,12 +171,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/节点管理/SUMMARY.md"
+				"summary": "6.1/节点管理/SUMMARY.md"
 			},
 			"index": 398,
 			"title": "节点管理",
-			"url": "6.0/节点管理/产品白皮书/Introduce/Overview.md",
-			"version": "6.0"
+			"url": "6.1/节点管理/产品白皮书/Introduce/Overview.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "内容丰富的SaaS产品，开箱即用",
@@ -188,12 +188,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/标准运维/SUMMARY.md"
+				"summary": "6.1/标准运维/SUMMARY.md"
 			},
 			"index": 397,
 			"title": "标准运维",
-			"url": "6.0/标准运维/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/标准运维/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "内容丰富的SaaS产品，开箱即用",
@@ -205,12 +205,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/流程服务/SUMMARY.md"
+				"summary": "6.1/流程服务/SUMMARY.md"
 			},
 			"index": 396,
 			"title": "流程服务",
-			"url": "6.0/流程服务/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/流程服务/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "内容丰富的SaaS产品，开箱即用",
@@ -222,12 +222,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/持续集成平台/SUMMARY.md"
+				"summary": "6.1/持续集成平台/SUMMARY.md"
 			},
 			"index": 395,
 			"title": "蓝盾",
-			"url": "6.0/持续集成平台/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/持续集成平台/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "内容丰富的SaaS产品，开箱即用",
@@ -239,12 +239,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/监控平台/SUMMARY.md"
+				"summary": "6.1/监控平台/SUMMARY.md"
 			},
 			"index": 394,
 			"title": "监控平台",
-			"url": "6.0/监控平台/产品白皮书/intro/README.md",
-			"version": "6.0"
+			"url": "6.1/监控平台/产品白皮书/intro/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "内容丰富的SaaS产品，开箱即用",
@@ -256,12 +256,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/日志平台/SUMMARY.md"
+				"summary": "6.1/日志平台/SUMMARY.md"
 			},
 			"index": 393,
 			"title": "日志平台",
-			"url": "6.0/日志平台/产品白皮书/intro/README.md",
-			"version": "6.0"
+			"url": "6.1/日志平台/产品白皮书/intro/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "内容丰富的SaaS产品，开箱即用",
@@ -273,12 +273,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/故障自愈/SUMMARY.md"
+				"summary": "6.1/故障自愈/SUMMARY.md"
 			},
 			"index": 392,
 			"title": "故障自愈",
-			"url": "6.0/故障自愈/产品白皮书/Intro/README.md",
-			"version": "6.0"
+			"url": "6.1/故障自愈/产品白皮书/Intro/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "内容丰富的SaaS产品，开箱即用",
@@ -290,29 +290,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/网络管理/SUMMARY.md"
-			},
-			"index": 392,
-			"title": "网络管理",
-			"url": "6.0/网络管理/产品简介/README.md",
-			"version": "6.0"
-		}],
-	"source": {
-		"describe": "内容丰富的SaaS产品，开箱即用",
-		"icon_url": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTRweCIgaGVpZ2h0PSIxNHB4IiB2aWV3Qm94PSIwIDAgMTQgMTQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU3LjEgKDgzMDg4KSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT7lvaLnirY8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZyBpZD0i6L+t5Luj5LiAIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iMDEwMS7mlofmoaPkuK3lv4PkuLvpobUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00MDEuMDAwMDAwLCAtMTE5Ny4wMDAwMDApIiBmaWxsPSIjNzk4MEI4IiBmaWxsLXJ1bGU9Im5vbnplcm8iPgogICAgICAgICAgICA8ZyBpZD0i57yW57uELTPlpIfku70iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM3MC4wMDAwMDAsIDExNjEuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNDQuNjk1NjUyMiwzNiBMMzguOTEzMDQzNSwzNiBDMzguNzQ1NjUyMiwzNiAzOC42MDg2OTU3LDM2LjEzNjk1NjUgMzguNjA4Njk1NywzNi4zMDQzNDc4IEwzOC42MDg2OTU3LDQyLjA4Njk1NjUgQzM4LjYwODY5NTcsNDIuMjU0MzQ3OCAzOC43NDU2NTIyLDQyLjM5MTMwNDMgMzguOTEzMDQzNSw0Mi4zOTEzMDQzIEw0NC42OTU2NTIyLDQyLjM5MTMwNDMgQzQ0Ljg2MzA0MzUsNDIuMzkxMzA0MyA0NSw0Mi4yNTQzNDc4IDQ1LDQyLjA4Njk1NjUgTDQ1LDM2LjMwNDM0NzggQzQ1LDM2LjEzNjk1NjUgNDQuODYzMDQzNSwzNiA0NC42OTU2NTIyLDM2IFogTTQ0LjY5NTY1MjIsNDMuNjA4Njk1NyBMMzguOTEzMDQzNSw0My42MDg2OTU3IEMzOC43NDU2NTIyLDQzLjYwODY5NTcgMzguNjA4Njk1Nyw0My43NDU2NTIyIDM4LjYwODY5NTcsNDMuOTEzMDQzNSBMMzguNjA4Njk1Nyw0OS42OTU2NTIyIEMzOC42MDg2OTU3LDQ5Ljg2MzA0MzUgMzguNzQ1NjUyMiw1MCAzOC45MTMwNDM1LDUwIEw0NC42OTU2NTIyLDUwIEM0NC44NjMwNDM1LDUwIDQ1LDQ5Ljg2MzA0MzUgNDUsNDkuNjk1NjUyMiBMNDUsNDMuOTEzMDQzNSBDNDUsNDMuNzQ1NjUyMiA0NC44NjMwNDM1LDQzLjYwODY5NTcgNDQuNjk1NjUyMiw0My42MDg2OTU3IFogTTM3LjA4Njk1NjUsMzYgTDMxLjMwNDM0NzgsMzYgQzMxLjEzNjk1NjUsMzYgMzEsMzYuMTM2OTU2NSAzMSwzNi4zMDQzNDc4IEwzMSw0Mi4wODY5NTY1IEMzMSw0Mi4yNTQzNDc4IDMxLjEzNjk1NjUsNDIuMzkxMzA0MyAzMS4zMDQzNDc4LDQyLjM5MTMwNDMgTDM3LjA4Njk1NjUsNDIuMzkxMzA0MyBDMzcuMjU0MzQ3OCw0Mi4zOTEzMDQzIDM3LjM5MTMwNDMsNDIuMjU0MzQ3OCAzNy4zOTEzMDQzLDQyLjA4Njk1NjUgTDM3LjM5MTMwNDMsMzYuMzA0MzQ3OCBDMzcuMzkxMzA0MywzNi4xMzY5NTY1IDM3LjI1NDM0NzgsMzYgMzcuMDg2OTU2NSwzNiBaIE0zNy4wODY5NTY1LDQzLjYwODY5NTcgTDMxLjMwNDM0NzgsNDMuNjA4Njk1NyBDMzEuMTM2OTU2NSw0My42MDg2OTU3IDMxLDQzLjc0NTY1MjIgMzEsNDMuOTEzMDQzNSBMMzEsNDkuNjk1NjUyMiBDMzEsNDkuODYzMDQzNSAzMS4xMzY5NTY1LDUwIDMxLjMwNDM0NzgsNTAgTDM3LjA4Njk1NjUsNTAgQzM3LjI1NDM0NzgsNTAgMzcuMzkxMzA0Myw0OS44NjMwNDM1IDM3LjM5MTMwNDMsNDkuNjk1NjUyMiBMMzcuMzkxMzA0Myw0My45MTMwNDM1IEMzNy4zOTEzMDQzLDQzLjc0NTY1MjIgMzcuMjU0MzQ3OCw0My42MDg2OTU3IDM3LjA4Njk1NjUsNDMuNjA4Njk1NyBaIiBpZD0i5b2i54q2Ij48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==",
-		"page": "home",
-		"type": "产品文档:Saas场景层"
-	}
-}, {
-	"link_conf": [
-		{
-			"extend": {
-				"summary": "6.0/PaaS平台/SUMMARY.md"
+				"summary": "6.1/PaaS平台/SUMMARY.md"
 			},
 			"index": 350,
 			"title": "开发者中心",
-			"url": "6.0/PaaS平台/产品白皮书/产品功能/开发者服务/DevServicesInfoEE.md",
-			"version": "6.0"
+			"url": "6.1/PaaS平台/产品白皮书/产品功能/开发者服务/DevServicesInfoEE.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "基于PaaS的开发者服务，助力运维开发低成本构建SaaS",
@@ -324,12 +307,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 349,
 			"title": "开发框架",
-			"url": "6.0/开发指南/SaaS开发/开发基础/README.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/SaaS开发/开发基础/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "基于PaaS的开发者服务，助力运维开发低成本构建SaaS",
@@ -341,12 +324,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 348,
 			"title": "前端工具集",
-			"url": "6.0/开发指南/SaaS开发/开发基础/MagicBox.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/SaaS开发/开发基础/MagicBox.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "基于PaaS的开发者服务，助力运维开发低成本构建SaaS",
@@ -358,12 +341,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 347,
 			"title": "API网关",
-			"url": "6.0/开发指南/扩展开发/API网关/README.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/扩展开发/API网关/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "基于PaaS的开发者服务，助力运维开发低成本构建SaaS",
@@ -375,12 +358,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 346,
 			"title": "开发规范",
-			"url": "6.0/开发指南/开发规范/前端开发规范/README.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/开发规范/前端开发规范/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "基于PaaS的开发者服务，助力运维开发低成本构建SaaS",
@@ -392,12 +375,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 345,
 			"title": "SaaS开发",
-			"url": "6.0/开发指南/开发简介/README.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/开发简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "基于PaaS的开发者服务，助力运维开发低成本构建SaaS",
@@ -409,12 +392,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/iam_dev_docs/SUMMARY.md"
+				"summary": "6.1/iam_dev_docs/SUMMARY.md"
 			},
 			"index": 344,
 			"title": "权限中心接入",
-			"url": "6.0/iam_dev_docs/HowTo/Guide.md",
-			"version": "6.0"
+			"url": "6.1/iam_dev_docs/HowTo/Guide.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "基于PaaS的开发者服务，助力运维开发低成本构建SaaS",
@@ -426,12 +409,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/可视化开发平台/SUMMARY.md"
+				"summary": "6.1/可视化开发平台/SUMMARY.md"
 			},
 			"index": 343,
 			"title": "可视化开发平台",
-			"url": "6.0/可视化开发平台/产品简介/readme.md",
-			"version": "6.0"
+			"url": "6.1/可视化开发平台/产品简介/readme.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "基于PaaS的开发者服务，助力运维开发低成本构建SaaS",
@@ -443,12 +426,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/管控平台/SUMMARY.md"
+				"summary": "6.1/管控平台/SUMMARY.md"
 			},
 			"index": 300,
 			"title": "管控平台",
-			"url": "6.0/管控平台/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/管控平台/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "聚焦原子平台核心功能，助力企业夯实底层平台能力",
@@ -460,12 +443,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/配置平台/SUMMARY.md"
+				"summary": "6.1/配置平台/SUMMARY.md"
 			},
 			"index": 299,
 			"title": "配置平台",
-			"url": "6.0/配置平台/产品白皮书/产品简介/Overview.md",
-			"version": "6.0"
+			"url": "6.1/配置平台/产品白皮书/产品简介/Overview.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "聚焦原子平台核心功能，助力企业夯实底层平台能力",
@@ -477,12 +460,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/作业平台/SUMMARY.md"
+				"summary": "6.1/作业平台/SUMMARY.md"
 			},
 			"index": 298,
 			"title": "作业平台",
-			"url": "6.0/作业平台/产品白皮书/Introduction/What-is-Job.md",
-			"version": "6.0"
+			"url": "6.1/作业平台/产品白皮书/Introduction/What-is-Job.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "聚焦原子平台核心功能，助力企业夯实底层平台能力",
@@ -494,12 +477,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/容器管理平台/SUMMARY.md"
+				"summary": "6.1/容器管理平台/SUMMARY.md"
 			},
 			"index": 297,
 			"title": "容器管理平台",
-			"url": "6.0/容器管理平台/产品白皮书/Introduction/README.md",
-			"version": "6.0"
+			"url": "6.1/容器管理平台/产品白皮书/Introduction/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "聚焦原子平台核心功能，助力企业夯实底层平台能力",
@@ -511,12 +494,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/持续集成平台/SUMMARY.md"
+				"summary": "6.1/持续集成平台/SUMMARY.md"
 			},
 			"index": 295,
 			"title": "持续集成平台",
-			"url": "6.0/持续集成平台/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/持续集成平台/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "聚焦原子平台核心功能，助力企业夯实底层平台能力",
@@ -533,7 +516,7 @@
 			"index": 294,
 			"title": "代码检查平台",
 			"url": "",
-			"version": "6.0"
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "聚焦原子平台核心功能，助力企业夯实底层平台能力",
@@ -550,7 +533,7 @@
 			"index": 293,
 			"title": "制品库平台",
 			"url": "",
-			"version": "6.0"
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "聚焦原子平台核心功能，助力企业夯实底层平台能力",
@@ -567,7 +550,7 @@
 			"index": 292,
 			"title": "编译加速平台",
 			"url": "",
-			"version": "6.0"
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "聚焦原子平台核心功能，助力企业夯实底层平台能力",
@@ -579,12 +562,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/体系介绍/SUMMARY.md"
+				"summary": "6.1/体系介绍/SUMMARY.md"
 			},
 			"index": 100,
 			"title": "蓝鲸体系",
-			"url": "6.0/体系介绍/产品白皮书/品牌简介/intro.md",
-			"version": "6.0"
+			"url": "6.1/体系介绍/产品白皮书/品牌简介/intro.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -596,12 +579,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/PaaS平台/SUMMARY.md"
+				"summary": "6.1/PaaS平台/SUMMARY.md"
 			},
 			"index": 99,
 			"title": "PaaS平台",
-			"url": "6.0/PaaS平台/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/PaaS平台/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -613,12 +596,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/配置平台/SUMMARY.md"
+				"summary": "6.1/配置平台/SUMMARY.md"
 			},
 			"index": 98,
 			"title": "配置平台",
-			"url": "6.0/配置平台/产品白皮书/产品简介/Overview.md",
-			"version": "6.0"
+			"url": "6.1/配置平台/产品白皮书/产品简介/Overview.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -630,12 +613,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/作业平台/SUMMARY.md"
+				"summary": "6.1/作业平台/SUMMARY.md"
 			},
 			"index": 97,
 			"title": "作业平台",
-			"url": "6.0/作业平台/产品白皮书/Introduction/What-is-Job.md",
-			"version": "6.0"
+			"url": "6.1/作业平台/产品白皮书/Introduction/What-is-Job.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -647,12 +630,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/管控平台/SUMMARY.md"
+				"summary": "6.1/管控平台/SUMMARY.md"
 			},
 			"index": 96,
 			"title": "管控平台",
-			"url": "6.0/管控平台/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/管控平台/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -664,12 +647,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/容器管理平台/SUMMARY.md"
+				"summary": "6.1/容器管理平台/SUMMARY.md"
 			},
 			"index": 95,
 			"title": "容器管理平台",
-			"url": "6.0/容器管理平台/产品白皮书/Introduction/README.md",
-			"version": "6.0"
+			"url": "6.1/容器管理平台/产品白皮书/Introduction/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -681,12 +664,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/持续集成平台/SUMMARY.md"
+				"summary": "6.1/持续集成平台/SUMMARY.md"
 			},
 			"index": 94,
 			"title": "持续集成平台",
-			"url": "6.0/持续集成平台/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/持续集成平台/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -698,12 +681,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/用户管理/SUMMARY.md"
+				"summary": "6.1/用户管理/SUMMARY.md"
 			},
 			"index": 93,
 			"title": "用户管理",
-			"url": "6.0/用户管理/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/用户管理/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -715,12 +698,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/权限中心/SUMMARY.md"
+				"summary": "6.1/权限中心/SUMMARY.md"
 			},
 			"index": 92,
 			"title": "权限中心",
-			"url": "6.0/权限中心/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/权限中心/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -732,12 +715,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/节点管理/SUMMARY.md"
+				"summary": "6.1/节点管理/SUMMARY.md"
 			},
 			"index": 91,
 			"title": "节点管理",
-			"url": "6.0/节点管理/产品白皮书/Introduce/Overview.md",
-			"version": "6.0"
+			"url": "6.1/节点管理/产品白皮书/Introduce/Overview.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -749,12 +732,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/标准运维/SUMMARY.md"
+				"summary": "6.1/标准运维/SUMMARY.md"
 			},
 			"index": 90,
 			"title": "标准运维",
-			"url": "6.0/标准运维/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/标准运维/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -766,12 +749,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/流程服务/SUMMARY.md"
+				"summary": "6.1/流程服务/SUMMARY.md"
 			},
 			"index": 89,
 			"title": "流程服务",
-			"url": "6.0/流程服务/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/流程服务/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -783,12 +766,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/持续集成平台/SUMMARY.md"
+				"summary": "6.1/持续集成平台/SUMMARY.md"
 			},
 			"index": 88,
 			"title": "蓝盾",
-			"url": "6.0/持续集成平台/产品白皮书/产品简介/README.md",
-			"version": "6.0"
+			"url": "6.1/持续集成平台/产品白皮书/产品简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -800,12 +783,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/监控平台/SUMMARY.md"
+				"summary": "6.1/监控平台/SUMMARY.md"
 			},
 			"index": 87,
 			"title": "监控平台",
-			"url": "6.0/监控平台/产品白皮书/intro/README.md",
-			"version": "6.0"
+			"url": "6.1/监控平台/产品白皮书/intro/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -817,12 +800,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/日志平台/SUMMARY.md"
+				"summary": "6.1/日志平台/SUMMARY.md"
 			},
 			"index": 86,
 			"title": "日志平台",
-			"url": "6.0/日志平台/产品白皮书/intro/README.md",
-			"version": "6.0"
+			"url": "6.1/日志平台/产品白皮书/intro/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -834,12 +817,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/故障自愈/SUMMARY.md"
+				"summary": "6.1/故障自愈/SUMMARY.md"
 			},
 			"index": 85,
 			"title": "故障自愈",
-			"url": "6.0/故障自愈/产品白皮书/Intro/README.md",
-			"version": "6.0"
+			"url": "6.1/故障自愈/产品白皮书/Intro/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -851,29 +834,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/网络管理/SUMMARY.md"
-			},
-			"index": 85,
-			"title": "网络管理",
-			"url": "6.0/网络管理/产品简介/README.md",
-			"version": "6.0"
-		}],
-	"source": {
-		"describe": "$$$",
-		"icon_url": "",
-		"page": "docs",
-		"type": "产品文档:SaaS场景层"
-	}
-}, {
-	"link_conf": [
-		{
-			"extend": {
-				"summary": "6.0/体系介绍/SUMMARY.md"
+				"summary": "6.1/体系介绍/SUMMARY.md"
 			},
 			"index": 80,
 			"title": "蓝鲸体系",
-			"url": "6.0/体系介绍/产品白皮书/品牌简介/intro.md",
-			"version": "6.0"
+			"url": "6.1/体系介绍/产品白皮书/品牌简介/intro.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -885,12 +851,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/快速入门/SUMMARY.md"
+				"summary": "6.1/快速入门/SUMMARY.md"
 			},
 			"index": 79,
 			"title": "快速使用",
-			"url": "6.0/快速入门/quick-start-v6.0-info.md",
-			"version": "6.0"
+			"url": "6.1/快速入门/quick-start-v6.1-info.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -902,12 +868,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/蓝鲸线上体验环境快速入门/SUMMARY.md"
+				"summary": "6.1/蓝鲸线上体验环境快速入门/SUMMARY.md"
 			},
 			"index": 78,
 			"title": "蓝鲸线上体验环境快速入门",
-			"url": "6.0/蓝鲸线上体验环境快速入门/README.md",
-			"version": "6.0"
+			"url": "6.1/蓝鲸线上体验环境快速入门/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -919,12 +885,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/bk_solutions/SUMMARY.md"
+				"summary": "6.1/bk_solutions/SUMMARY.md"
 			},
 			"index": 77,
 			"title": "CI持续集成",
-			"url": "6.0/bk_solutions/CI/Pipeline_git_commit_to_stag.md",
-			"version": "6.0"
+			"url": "6.1/bk_solutions/CI/Pipeline_git_commit_to_stag.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -936,12 +902,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/bk_solutions/SUMMARY.md"
+				"summary": "6.1/bk_solutions/SUMMARY.md"
 			},
 			"index": 76,
 			"title": "CD持续部署",
-			"url": "6.0/bk_solutions/CD/CMDB/Configuration_management_standardization.md",
-			"version": "6.0"
+			"url": "6.1/bk_solutions/CD/CMDB/Configuration_management_standardization.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -953,12 +919,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/bk_solutions/SUMMARY.md"
+				"summary": "6.1/bk_solutions/SUMMARY.md"
 			},
 			"index": 75,
 			"title": "CO持续运营",
-			"url": "6.0/bk_solutions/CO/Monitor_Base/Send_voice_msg.md",
-			"version": "6.0"
+			"url": "6.1/bk_solutions/CO/Monitor_Base/Send_voice_msg.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -970,12 +936,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 74,
 			"title": "SaaS开发",
-			"url": "6.0/开发指南/开发简介/README.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/开发简介/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -987,12 +953,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 73,
 			"title": "开发规范",
-			"url": "6.0/开发指南/开发规范/前端开发规范/README.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/开发规范/前端开发规范/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1004,12 +970,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 72,
 			"title": "前端工具集",
-			"url": "6.0/开发指南/SaaS开发/开发基础/MagicBox.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/SaaS开发/开发基础/MagicBox.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1021,12 +987,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 71,
 			"title": "移动端开发",
-			"url": "6.0/开发指南/SaaS开发/Mobile_development.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/SaaS开发/Mobile_development.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1038,12 +1004,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 70,
 			"title": "开源共建",
-			"url": "6.0/开发指南/开源共建/README.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/开源共建/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1055,12 +1021,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 69,
 			"title": "拓展开发",
-			"url": "6.0/开发指南/扩展开发/sops.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/扩展开发/sops.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1072,12 +1038,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/开发指南/SUMMARY.md"
+				"summary": "6.1/开发指南/SUMMARY.md"
 			},
 			"index": 68,
 			"title": "蓝鲸错误码",
-			"url": "6.0/开发指南/蓝鲸错误码/README.md",
-			"version": "6.0"
+			"url": "6.1/开发指南/蓝鲸错误码/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1089,12 +1055,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/API文档/SUMMARY.md"
+				"summary": "6.1/API文档/SUMMARY.md"
 			},
 			"index": 67,
 			"title": "API文档",
-			"url": "6.0/API文档/README.md",
-			"version": "6.0"
+			"url": "6.1/API文档/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1106,12 +1072,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/iam_dev_docs/SUMMARY.md"
+				"summary": "6.1/iam_dev_docs/SUMMARY.md"
 			},
 			"index": 66,
 			"title": "权限中心接入",
-			"url": "6.0/iam_dev_docs/HowTo/Guide.md",
-			"version": "6.0"
+			"url": "6.1/iam_dev_docs/HowTo/Guide.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1123,12 +1089,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
+				"summary": "6.1/部署指南/SUMMARY.md"
 			},
 			"index": 50,
 			"title": "基础包快速部署",
-			"url": "6.0/部署指南/产品白皮书/基础包安装/多机部署/quick_install.md",
-			"version": "6.0"
+			"url": "6.1/部署指南/产品白皮书/基础包安装/多机部署/quick_install.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1140,12 +1106,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
+				"summary": "6.1/部署指南/SUMMARY.md"
 			},
 			"index": 49,
 			"title": "蓝盾快速部署",
-			"url": "6.0/部署指南/产品白皮书/增强包安装/部署安装/CI-start.md",
-			"version": "6.0"
+			"url": "6.1/部署指南/产品白皮书/增强包安装/部署安装/CI-start.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1157,12 +1123,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
+				"summary": "6.1/部署指南/SUMMARY.md"
 			},
 			"index": 48,
 			"title": "BCS快速部署",
-			"url": "6.0/部署指南/产品白皮书/增强包安装/部署安装/BCS-start.md",
-			"version": "6.0"
+			"url": "6.1/部署指南/产品白皮书/增强包安装/部署安装/BCS-start.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1174,12 +1140,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
+				"summary": "6.1/部署指南/SUMMARY.md"
 			},
 			"index": 47,
 			"title": "基础包部署详解",
-			"url": "6.0/部署指南/产品白皮书/README.md",
-			"version": "6.0"
+			"url": "6.1/部署指南/产品白皮书/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1191,12 +1157,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
+				"summary": "6.1/部署指南/SUMMARY.md"
 			},
 			"index": 46,
 			"title": "蓝盾部署详解",
-			"url": "6.0/部署指南/产品白皮书/增强包安装/部署安装/CI-V2.md",
-			"version": "6.0"
+			"url": "6.1/部署指南/产品白皮书/增强包安装/部署安装/CI-V2.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1208,12 +1174,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
+				"summary": "6.1/部署指南/SUMMARY.md"
 			},
 			"index": 45,
 			"title": "BCS部署详解",
-			"url": "6.0/部署指南/产品白皮书/增强包安装/部署安装/BCS-V2.md",
-			"version": "6.0"
+			"url": "6.1/部署指南/产品白皮书/增强包安装/部署安装/BCS-V2.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1225,12 +1191,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
+				"summary": "6.1/部署指南/SUMMARY.md"
 			},
 			"index": 44,
 			"title": "基础包维护手册",
-			"url": "6.0/部署指南/产品白皮书/维护手册/日常维护/maintain.md",
-			"version": "6.0"
+			"url": "6.1/部署指南/产品白皮书/维护手册/日常维护/maintain.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1242,12 +1208,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
+				"summary": "6.1/部署指南/SUMMARY.md"
 			},
 			"index": 43,
 			"title": "增强包维护手册",
-			"url": "6.0/部署指南/产品白皮书/增强包维护/蓝盾/Term.md",
-			"version": "6.0"
+			"url": "6.1/部署指南/产品白皮书/增强包维护/蓝盾/Term.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1259,12 +1225,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
+				"summary": "6.1/部署指南/SUMMARY.md"
 			},
 			"index": 32,
 			"title": "升级指引",
 			"url": "",
-			"version": "6.0"
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1276,12 +1242,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/部署指南/SUMMARY.md"
+				"summary": "6.1/部署指南/SUMMARY.md"
 			},
 			"index": 31,
 			"title": "mini版部署",
 			"url": "",
-			"version": "6.0"
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1293,12 +1259,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/常见问题/SUMMARY.md"
+				"summary": "6.1/常见问题/SUMMARY.md"
 			},
 			"index": 30,
 			"title": "常见问题",
-			"url": "6.0/常见问题/README.md",
-			"version": "6.0"
+			"url": "6.1/常见问题/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1310,12 +1276,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/版本日志/SUMMARY.md"
+				"summary": "6.1/版本日志/SUMMARY.md"
 			},
 			"index": 29,
 			"title": "版本日志",
-			"url": "6.0/版本日志/v6005.md",
-			"version": "6.0"
+			"url": "6.1/版本日志/v6005.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1327,12 +1293,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "6.0/软件资源/SUMMARY.md"
+				"summary": "6.1/软件资源/SUMMARY.md"
 			},
 			"index": 28,
 			"title": "下载资源",
-			"url": "6.0/软件资源/README.md",
-			"version": "6.0"
+			"url": "6.1/软件资源/README.md",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1343,12 +1309,12 @@
 }, {
 	"link_conf": [{
 		"extend": {
-			"summary": "6.0/文档共建/SUMMARY.md"
+			"summary": "6.1/文档共建/SUMMARY.md"
 		},
 		"index": 27,
 		"title": "文档共建",
-		"url": "6.0/文档共建/README.md",
-		"version": "6.0"
+		"url": "6.1/文档共建/README.md",
+		"version": "6.1"
 	}],
 	"source": {
 		"describe": "",
@@ -1364,8 +1330,8 @@
 			},
 			"index": 26,
 			"title": "品牌视频",
-			"url": "/video/6.0#234",
-			"version": "6.0"
+			"url": "/video/6.1#234",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1381,8 +1347,8 @@
 			},
 			"index": 25,
 			"title": "开发课堂",
-			"url": "/video/6.0#235",
-			"version": "6.0"
+			"url": "/video/6.1#235",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1398,8 +1364,8 @@
 			},
 			"index": 24,
 			"title": "沙龙活动",
-			"url": "/video/6.0#236",
-			"version": "6.0"
+			"url": "/video/6.1#236",
+			"version": "6.1"
 		}],
 	"source": {
 		"describe": "$$$",
@@ -1483,7 +1449,7 @@
             },
             "index": 496,
             "title": "视频教程",
-            "url": "https://bk.tencent.com/docs/video/6.0",
+            "url": "https://bk.tencent.com/docs/video/6.1",
             "version": "7.0"
         }],
     "source": {
