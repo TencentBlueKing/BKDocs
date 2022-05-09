@@ -164,7 +164,7 @@ source ~/.bashrc
 1. 添加 lesscode 模块分布
 
     ```bash
-    cat << EOF >/data/install/install.config
+    cat << EOF >>/data/install/install.config
     [lesscode]
     10.0.0.1 lesscode
     EOF
@@ -181,7 +181,7 @@ source ~/.bashrc
 1. 添加 bkiam_search_engine 模块分布
 
     ```bash
-    cat << EOF >/data/install/install.config
+    cat << EOF >>/data/install/install.config
     [iam_search_engine]
     10.0.0.1 es7
     10.0.0.3 iam_search_engine
