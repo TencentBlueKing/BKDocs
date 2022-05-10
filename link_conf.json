@@ -3155,11 +3155,11 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": ""
+				"summary": "6.1/编译加速/SUMMARY.md"
 			},
 			"index": 292,
 			"title": "编译加速平台",
-			"url": "",
+			"url": "6.1/编译加速/产品白皮书/Intro/README.md",
 			"version": "6.1"
 		}],
 	"source": {
