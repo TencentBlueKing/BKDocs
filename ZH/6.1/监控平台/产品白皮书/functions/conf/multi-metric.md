@@ -1,9 +1,3 @@
-- [1.多指标计算](https://iwiki.woa.com/pages/viewpage.action?isEmbeded=true&pageId=957559726#id-多指标计算-1.多指标计算)
-- [2.策略配置-多指标计算](https://iwiki.woa.com/pages/viewpage.action?isEmbeded=true&pageId=957559726#id-多指标计算-2.策略配置-多指标计算)
-- [3.仪表盘-多指标计算](https://iwiki.woa.com/pages/viewpage.action?isEmbeded=true&pageId=957559726#id-多指标计算-3.仪表盘-多指标计算)
-
-
-
 # 1.多指标计算
 
 多指标计算，是指对不同的监控指标可以进行加减乘除等灵活的表达式支持，以满足不同的使用场景。
