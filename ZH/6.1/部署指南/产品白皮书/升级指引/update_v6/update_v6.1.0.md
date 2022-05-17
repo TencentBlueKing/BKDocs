@@ -310,9 +310,8 @@ pcmd -m usermgr "rmvirtualenv usermgr-api"
 
     ```bash
     pcmd -m gse " systemctl stop bk-gse-syncdata.service && systemctl disable bk-gse-syncdata.service"
-./bkcli check gse
+    ./bkcli check gse
     ```
-
 	
 ### 配置平台
 
@@ -331,34 +330,35 @@ mysql --login-path=mysql-default -e "use bk_iam; insert into authorization_autha
 
 #### 开始升级
 
-    ```bash
-    ./bkcli upgrade job
-    ./bkcli check job
-    ````
+```bash
+./bkcli upgrade job
+./bkcli check job
+````
 
 #### 升级后操作
 
-  详细请参考 [作业平台升级说明](/tencent/static/images/upload_fail.png)
+详细请参考 [作业平台升级说明](https://github.com/Tencent/bk-job/blob/master/UPGRADE.md)
 
-    ```bash
-    ssh $BK_JOB_IP
-    source /data/install/utils.fc
+```bash
+ssh $BK_JOB_IP
+source /data/install/utils.fc
 
-    # from_version 升级前 JOB 版本， to_version 需要的 JOB 版本，实际升级过程中请注意替换为实际的版本号
-    from_version=xxxx
-    to_version=xxxx
+# from_version 升级前 JOB 版本， to_version 需要的 JOB 版本，实际升级过程中请注意替换为实际的版本号
+from_version=xxxx
+to_version=xxxx
 
-    
-    /usr/bin/java -Dfile.encoding=utf8 -Djob.log.dir=$INSTALL_PATH/logs/job -Dconfig.file=$INSTALL_PATH/etc/job/upgrader/upgrader.properties -jar $INSTALL_PATH/job/backend/upgrader-$to_version.jar $from_version $to_version BEFORE_UPDATE_JOB
 
-   /usr/bin/java -Dfile.encoding=utf8 -Djob.log.dir=$INSTALL_PATH/logs/job -Dconfig.file=$INSTALL_PATH/etc/job/upgrader/upgrader.properties -Djob.manage.server.address=$BK_JOB_IP:10505 -jar $INSTALL_PATH/job/backend/upgrader-$to_version.jar $from_version $to_version AFTER_UPDATE_JOB
-    ```
+/usr/bin/java -Dfile.encoding=utf8 -Djob.log.dir=$INSTALL_PATH/logs/job -Dconfig.file=$INSTALL_PATH/etc/job/upgrader/upgrader.properties -jar $INSTALL_PATH/job/backend/upgrader-$to_version.jar $from_version $to_version BEFORE_UPDATE_JOB
+
+/usr/bin/java -Dfile.encoding=utf8 -Djob.log.dir=$INSTALL_PATH/logs/job -Dconfig.file=$INSTALL_PATH/etc/job/upgrader/upgrader.properties -Djob.manage.server.address=$BK_JOB_IP:10505 -jar $INSTALL_PATH/job/backend/upgrader-$to_version.jar $from_version $to_version AFTER_UPDATE_JOB
+```
 
 ##### 清理旧配置文件
 
-    ```bash
-    rm -fv /data/bkce/etc/job/job-*/*.properties
-    ```
+```bash
+rm -fv /data/bkce/etc/job/job-*/*.properties
+```
+
 ##### 迁移 CMDB 业务集
 
 1. 获取 changeBizSetId.js 文件，该文件在中控机的 /data/src/job/support-files/bk-cmdb/ 目录
@@ -399,7 +399,6 @@ mysql --login-path=mysql-default -e "use bk_iam; insert into authorization_autha
    /usr/bin/java -Dfile.encoding=utf8 -Djob.log.dir=$INSTALL_PATH//logs/job -Dconfig.file=$INSTALL_PATH/etc/job/upgrader/upgrader.properties -Dtarget.tasks=BizSetAuthMigrationTask -jar $INSTALL_PATH/job/backend/upgrader-$to_version.jar $from_version $to_version MAKE_UP
 
    ```
-
 
 ### 更新节点管理
 
