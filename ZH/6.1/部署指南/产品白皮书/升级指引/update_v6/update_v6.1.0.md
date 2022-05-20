@@ -445,7 +445,7 @@ pcmd -m nodeman "rsync -a --delete --exclude=media --exclude="environ.sh" /data/
 - 开始执行
 
   ```bash
-  export BK_FILE_PATH="/data/bkee/bknodeman/cert/saas_priv.txt"
+  export BK_FILE_PATH="/data/bkce/bknodeman/cert/saas_priv.txt"
   source bin/environ.sh
   ./bin/manage.sh migrate node_man
   ```
