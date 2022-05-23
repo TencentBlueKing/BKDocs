@@ -677,7 +677,10 @@ cd /data/install && echo bkssm bkiam usermgr paas cmdb gse job consul bklog bkmo
 
 ## 升级后操作
 
-- 升级完成后，请前往节点管理页面升级/重装 agent、Proxy以及采集器相关插件。
+- 升级完成后，请前往节点管理页面操作
+
+    1. 升级 agent、p-agent 以及采集器相关插件
+    2. 重装 Proxy （涉及 proxy 二进制改动，gse_data 将取代 gse_transit，gse_transit 也在 6.1 版本下线）
 
 - 如果之前有部署 bkci 以及 bcs 的用户，请按照该方式将相关包进行还原 (`没有部署请忽略该步骤`)
 
