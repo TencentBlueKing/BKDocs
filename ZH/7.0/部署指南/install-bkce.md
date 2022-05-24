@@ -252,7 +252,18 @@ cat /etc/docker/daemon.json | jq '.["insecure-registries"]+=["docker.'$BK_DOMAIN
 
 检查内容无误后，即可将上述内容写入此 node 上的 `/etc/docker/daemon.json`。如果这些 node 的配置文件相同，您可以在中控机生成新文件后批量替换。
 
-然后 reload docker 服务使之生效：
+在 node 上检查修改后的配置文件：
+``` bash
+jq -r  '."insecure-registries"' /etc/docker/daemon.json
+```
+预期显示如下（如果显示 `null` 或 `[]`，则说明未修改）：
+``` json
+[
+  "docker.bkce7.bktencent.com"
+]
+```
+
+然后在 node 上 reload docker 服务使修改生效：
 ``` bash
 systemctl reload docker
 ```
@@ -286,19 +297,16 @@ docker info
 
 其他社区版官方的 SaaS 应用，比如标准运维、节点管理、流程服务等需要通过开发者中心来部署。
 
-为了方便您快速体验，我们扩展了 “一键部署” 脚本，现在可以支持 SaaS 的初次安装 以及部署前设置了。
+为了方便您快速体验，我们扩展了 “一键部署” 脚本，实现了 SaaS 的 **全新安装** 以及 **部署前设置**。
 
 <a id="setup_bkce7-i-saas" name="setup_bkce7-i-saas"></a>
 
 ## 一键部署基础套餐 SaaS
->**注意**
+>**提示**
 >
->1. 先完成 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 章节。
->2. 然后完成 “[调整 node 上的 docker 服务](#k8s-node-docker-insecure-registries)” 章节。
->3. 如下操作未能在脚本中实现，请您查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档的“[SaaS 部署后的设置](install-saas-manually.md#post-install-bk-saas)”章节手动操作：
->    1. bk_lesscode 配置独立域名。
->    2. bk_nodeman 配置 GSE 环境管理；上传 gse 插件包。
->4. 如 SaaS 已安装会跳过，因此更新 SaaS 需查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档上传 `S-Mart` 包并选择新版本部署。
+>部署时 开发者中心 会基于 S-Mart 安装包制作该 SaaS 的 docker 镜像并上传到 bkrepo。<br/>
+>您刚才已经完成了 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 和 “[调整 node 上的 docker 服务](#k8s-node-docker-insecure-registries)” 章节。<br/>
+>如果在此期间您有新增 k8s node，则需在新 node 上完成上述章节的操作。
 
 在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境：
 ``` bash
@@ -306,6 +314,14 @@ docker info
 ```
 
 此步骤总耗时 18 ~ 27 分钟。每个 SaaS 部署不超过 10 分钟，如果超时请参考 《[FAQ](faq.md)》文档的 “[部署 SaaS 在“执行部署前置命令”阶段报错](faq.md#saas-deploy-prehook)” 章节排查。
+
+部分 SaaS 需要后续配置，暂时无法在脚本中实现，需您查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档的“[SaaS 部署后的设置](install-saas-manually.md#post-install-bk-saas)”章节手动操作：
+1. bk_lesscode 配置独立域名。
+2. bk_nodeman 配置 GSE 环境管理；上传 gse 插件包。
+
+>**注意**
+>
+>本脚本设计为全新安装 SaaS，如 SaaS 已安装会跳过，因此更新 SaaS 需查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档在 开发者中心 上传 `S-Mart` 包并选择新版本部署。重新安装 SaaS 亦需手动操作。
 
 
 ## 手动部署基础套餐 SaaS
