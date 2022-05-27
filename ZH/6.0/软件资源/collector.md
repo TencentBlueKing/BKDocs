@@ -5,9 +5,9 @@
 basereport | 10.12.x | [basereport-10.12.76.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/basereport-10.12.76.tgz)
 processbeat | 1.19.x | [processbeat-1.19.71.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/processbeat-1.19.71.tgz)
 exceptionbeat | 1.8.x | [exceptionbeat-1.8.44.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.8.44.tgz)
-bkmonitorbeat | 1.19.x | [bkmonitorbeat-1.19.123.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.19.123.tgz)
-bkmonitorproxy | 1.2.x | [bkmonitorproxy-1.2.43.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorproxy-1.2.43.tgz)
-bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.0.101.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.0.101.tgz)
+bkmonitorbeat | 1.19.x | [bkmonitorbeat-1.22.127.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.22.127.tgz)
+bkmonitorproxy | 1.2.x | [bkmonitorproxy-1.3.49.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorproxy-1.3.49.tgz)
+bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.0.104.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.0.104.tgz)
 gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gsecmdline-2.0.3.tgz)
 
 ## 采集器版本日志
@@ -89,6 +89,12 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 ### bkunifylogbeat
 
+- bkunifylogbeat-7.3.0.104.tgz
+
+【Feature】BCS配置独立目录
+【Fix】修复删除配置后，文件未立即释放问题
+【Fix】过滤功能支持下标为0的场景
+
 - bkunifylogbeat-7.3.0.101.tgz
 
 【Feature】新增支持TQOS数据上报协议
@@ -120,6 +126,10 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 【优化】采集器默认监听最近 7 天的变更的文件
 
 ### bkmonitorbeat
+
+- bkmonitorbeat-1.22.127.tgz
+
+【Fixed】prometheus 指标采集开启 HTTP KeepAlive  选项
 
 - bkmonitorbeat-1.19.123.tgz
 
@@ -161,6 +171,12 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 - bkmonitorbeat-1.13.95.tgz
 
 【优化】发送 event 信息时用"云区域 id:主机内网 IP"替换 node_id
+
+### bkmonitorproxy
+
+- bkmonitorproxy-1.3.49.tgz
+
+【Updated】自定义事件类型支持 target 字段校验
 
 - bkmonitorproxy-1.2.43.tgz
 
