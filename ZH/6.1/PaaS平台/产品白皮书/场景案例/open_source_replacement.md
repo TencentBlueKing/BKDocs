@@ -1,16 +1,16 @@
-# 社区版 6.x PaaS 替换 开源 PaaS
+# 蓝鲸 6.x PaaS 替换 开源 PaaS
 
-社区版 6.x 替换开源 PaaS 指引
+蓝鲸 6.x 替换开源 PaaS 指引
 
 ## 备份 open_paas 目录
 ```bash
 mv /data/src/open_paas /data/src/open_paas_bak
 ```
-## 替换蓝鲸社区版 open_paas
+## 替换蓝鲸 open_paas
 
-由于社区版 6.0 以及 6.1 使用的 python 版本存在差异，所以在替换时需要根据自身环境的版本来决定替换的分支。
+由于蓝鲸 6.0 以及 6.1 使用的 python 版本存在差异，所以在替换时需要根据自身环境的版本来决定替换的分支。
 
-### 社区版 6.0.x
+### 蓝鲸 6.0.x
 
 6.0.x 使用 [develop](https://github.com/Tencent/bk-PaaS/tree/develop) 分支 代码进行替换
 ```bash
@@ -23,7 +23,7 @@ vim /data/src/open_paas/paas/conf/default.py +32
 EDITION = os.environ.get("BK_PAAS_EDITION", "ce")
 ```
 
-### 社区版 6.1
+### 蓝鲸 6.1
 
 6.1 版本使用 [ft_upgrade_py3](https://github.com/Tencent/bk-PaaS/tree/ft_upgrade_py3) 分支 代码进行替换
 

@@ -11,7 +11,7 @@
 
 部署后台的时候没有执行初始化数据的步骤：
 
-`./bkcec initdata fta   //社区版`
+`./bkcec initdata fta`
 
 ![-w958](../assets/15675011237028.jpg)
 <center>图 2. 正式环境部署故障自愈 APP 失败</center>

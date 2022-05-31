@@ -32,7 +32,7 @@
 
 ```bash
 系统: xxxx
-环境: 上云版/企业版xx环境/社区版xx环境
+环境: xx环境
 
 现象描述: xxxxxxxxxxxx
 预期: xxxxxxxxxxx

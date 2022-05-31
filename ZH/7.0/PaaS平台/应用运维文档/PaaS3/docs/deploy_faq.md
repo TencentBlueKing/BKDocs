@@ -79,7 +79,7 @@ bk-npm-mgr upload --username ${bkrepoConfig.bkpaas3Username} --password ${bkrepo
 
 ### 访问地址拼接问题
 
-蓝鲸内部产品的访问地址大多通过 `sharedUrlEnvMap` 变量定义，遵循企业版部署的通用规则，由 `.Values.global.sharedDomain` 拼接而成，可以在 `paas-stack` 的子模块(apiserver/engine/webfe)的 Chart 中查看具体规则。
+蓝鲸内部产品的访问地址大多通过 `sharedUrlEnvMap` 变量定义，遵循蓝鲸部署的通用规则，由 `.Values.global.sharedDomain` 拼接而成，可以在 `paas-stack` 的子模块(apiserver/engine/webfe)的 Chart 中查看具体规则。
 
 如果遇到访问地址并未遵循通用的拼接规则，那么你可以在 `.Values.env` 中手动指定，将直接覆盖 `sharedUrlEnvMap` 中对应的环境变量。
 

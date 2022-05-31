@@ -441,7 +441,7 @@ python manage.py migrate_from_djcelery
 # 可选参数: -tz  指定之前celery运行的时区，不指定默认使用UTC时区 例如：-tz Asia/Shanghai
 ```
 
-**社区版和企业版用户注意**，请使用如下 migrations 文件在迁移线上数据库
+**用户注意**，请使用如下 migrations 文件在迁移线上数据库
 
 使用方法：
 
@@ -496,7 +496,7 @@ class Migration(migrations.Migration):
   >
   > 1. 这里`-A blueapps.core.celery`用于指定使用开发框架内部封装好的 celery app，可用于加载/conf/default.py 中的配置等功能，如果配置使用其他 app，会导致无法加载配置及 task 的自动发现
 
-  **社区版和企业版用户注意**，由于 PaaS 平台的限制，只能使用下面的启动方式
+  **用户注意**，由于 PaaS 平台的限制，只能使用下面的启动方式
 
   ```python
   # worker启动命令
