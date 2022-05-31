@@ -47,8 +47,8 @@ BK DataServer 可以单独为用户提供数据服务，而不需要其他服务
 <tr><td>2008</td></tr>
 <tr><td>2003</td></tr>
 <tr><td>Win 7</td></tr>
-<tr><td rowspan="2">AIX (企业版)</td><td>AIX 6</td></tr>
+<tr><td rowspan="2">AIX </td><td>AIX 6</td></tr>
 <tr><td>AIX 7</td></tr>
-<tr><td>linuxone (企业版)</td><td>IBM Linuxone 64 位 </td></tr>
-<tr><td>linux-arm (企业版)</td><td>华为arm服务器linux 64 位 </td></tr>
+<tr><td>linuxone</td><td>IBM Linuxone 64 位 </td></tr>
+<tr><td>linux-arm</td><td>华为arm服务器linux 64 位 </td></tr>
 </tbody></table>

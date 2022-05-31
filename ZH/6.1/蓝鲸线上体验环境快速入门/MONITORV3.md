@@ -56,5 +56,5 @@ demo 体验业务下有安装 agent 的主机，预设了一些监控视图
 
 - 您可能需要：
 
-    1. [立即下载社区版](https://bk.tencent.com/download/)
+    1. [立即下载蓝鲸](https://bk.tencent.com/download/)
     2. 了解更多企业定制化服务：[点击咨询](https://bk.tencent.com/applyinfo/ee/)

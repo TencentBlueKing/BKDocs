@@ -52,5 +52,5 @@ demo 体验业务下内置了多个业务场景流程，有的可以执行体验
 
 - 您可能需要：
 
-    1. [立即下载社区版](https://bk.tencent.com/download/)
+    1. [立即下载蓝鲸](https://bk.tencent.com/download/)
     2. 了解更多企业定制化服务：[点击咨询](https://bk.tencent.com/applyinfo/ee/)

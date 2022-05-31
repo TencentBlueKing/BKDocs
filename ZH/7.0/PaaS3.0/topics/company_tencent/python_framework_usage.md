@@ -14,7 +14,7 @@ Python 开发框架是集成了蓝鲸系统功能，方便开发者可以快速�
 - blueapps                    # Python开发框架模块
 - blueking                    # ESB调用模块
 - config                      # 应用配置目录
-  - __init__.py               # 应用 RUN_VER(社区版为open)、APP_CODE 和 SECRET_KEY 等配置
+  - __init__.py               # 应用 RUN_VER、APP_CODE 和 SECRET_KEY 等配置
   - dev.py                    # 本地开发配置(开发团队共享)
   - default.py                # 全局配置
   - prod.py                   # 生产环境配置

@@ -108,9 +108,9 @@ css 的处理引擎，目前仅支持 `postcss`。
 
 ### LOCAL_DEV_URL
 本地开发的地址，默认值为 `http://localhost`，如果需要自己设置，请输入绝对地址（本配置与线上部署无关）。
-> 我们推荐将 `LOCAL_DEV_URL` 设置为与您部署的蓝鲸社区版/企业版或非蓝鲸 SaaS 应用的线上域名一致，只是加上一个 `local-dev` 的子级前缀。
+> 我们推荐将 `LOCAL_DEV_URL` 设置为与您部署的蓝鲸或非蓝鲸 SaaS 应用的线上域名一致，只是加上一个 `local-dev` 的子级前缀。
 
-> 例如假设您部署的蓝鲸社区版/企业版对应域名是：`http://www.bking.com`，那么 `LOCAL_DEV_URL` 就设置为 `http://local-dev.bking.com`，然后配置 host，`127.0.0.1 local-dev.bking.com`，就可用 `http://local-dev.bking.com:${LOCAL_DOC_PORT}` 来进行本地开发了。
+> 例如假设您部署的蓝鲸对应域名是：`http://www.bking.com`，那么 `LOCAL_DEV_URL` 就设置为 `http://local-dev.bking.com`，然后配置 host，`127.0.0.1 local-dev.bking.com`，就可用 `http://local-dev.bking.com:${LOCAL_DOC_PORT}` 来进行本地开发了。
 
 ##### 如何修改本配置
 
@@ -293,7 +293,7 @@ ajax 请求地址前缀，我们通过这个配置来拼接出 ajax 请求的前
 
 ### index.html 配置说明
 
-蓝鲸前端开发脚手架是用来帮助我们构建蓝鲸社区版/企业版 SaaS 应用的，同时它也支持我们构建一般的 web 单页应用。
+蓝鲸前端开发脚手架是用来帮助我们构建蓝鲸 SaaS 应用的，同时它也支持我们构建一般的 web 单页应用。
 
 在初始化的工程里，有 `index-dev.html` 和 `index.html` 两个 html 文件。这两个 html 的差异点如下：
 
@@ -308,7 +308,7 @@ html 文件中有几个变量（`SITE_URL`, `BK_STATIC_URL`, `REMOTE_STATIC_URL`
 
 - 在蓝鲸 SaaS 应用和非蓝鲸 SaaS 应用中，SITE_URL 的作用均是**设置路由的根路径**。
 
-下面看一个简单的例子理解一下（**假设您部署的蓝鲸社区版/企业版对应域名是：http://www.bking.com ，本地开发的地址为 http://local-dev.bking.com**）：
+下面看一个简单的例子理解一下（**假设您部署的蓝鲸对应域名是：http://www.bking.com ，本地开发的地址为 http://local-dev.bking.com**）：
 
 |             | 生产环境 SITE_URL 配置（index.html）| 生产环境访问地址 | 本地开发 SITE_URL 配置（index-dev.html）| 本地开发访问地址 |
 |-------------|---------------|---------------|---------------|---------------|
@@ -325,7 +325,7 @@ html 文件中有几个变量（`SITE_URL`, `BK_STATIC_URL`, `REMOTE_STATIC_URL`
 
 前端需要根据这个值来确定静态资源的路径（包括默认写在 html 上的 lib.bundle.js 以及 webpack 动态 inject 的 js 和 css）
 
-还是看一个简单的例子（**假设您部署的蓝鲸社区版/企业版对应域名是：http://www.bking.com ，本地开发的地址为 http://local-dev.bking.com**）：
+还是看一个简单的例子（**假设您部署的蓝鲸对应域名是：http://www.bking.com ，本地开发的地址为 http://local-dev.bking.com**）：
 
 |             | 生产环境 BK_STATIC_URL 配置（index.html）| 生产环境加载静态资源的路径前缀 | 本地开发 BK_STATIC_URL 配置（index-dev.html）| 本地开发加载静态资源的路径前缀 |
 |-------------|---------------|---------------|---------------|---------------|
@@ -358,7 +358,7 @@ html 文件中有几个变量（`SITE_URL`, `BK_STATIC_URL`, `REMOTE_STATIC_URL`
 
 ### mock 的使用说明
 
-蓝鲸前端开发脚手架提供简单方便的异步请求 mock 功能，通过简单的配置（仅仅只需要添加 url 的参数）来模拟后端的数据返回，有助于前后端分离协作。简单的示例如下（**假设您部署的蓝鲸社区版/企业版对应域名是：http://www.bking.com ，线上 ajax 异步请求的根路径为: http://www.bking.com/api ，获取用户信息的请求为 http://www.bking.com/api/user**）：
+蓝鲸前端开发脚手架提供简单方便的异步请求 mock 功能，通过简单的配置（仅仅只需要添加 url 的参数）来模拟后端的数据返回，有助于前后端分离协作。简单的示例如下（**假设您部署的蓝鲸对应域名是：http://www.bking.com ，线上 ajax 异步请求的根路径为: http://www.bking.com/api ，获取用户信息的请求为 http://www.bking.com/api/user**）：
 
 - 命令行问答 `AJAX_MOCK_PARAM` 设置为默认值 `mock-file`，如果初始化工程后需要改动，修改 `${ROOT}/build/dev.env.js` 中的 `AJAX_MOCK_PARAM` 值即可
 - 同时在 `${ROOT}/mock/ajax` 目录下创建 app 文件夹，文件夹中创建 index 文件，参照文件中已存在内容的写法，判断 invoke 为 getUserInfo 时，返回对应的 mock 数据即可

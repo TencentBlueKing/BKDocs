@@ -22,7 +22,7 @@ system_id 是接入系统注册到权限中心的唯一标识;
 
 理论上, `system_id` 同 `app_code` 没有关系; **一定不要混用**
 
-- `在企业版/社区版, 限制了一个app_code只能创建一个system, 且该system的ID等于app_code`
+- `在蓝鲸, 限制了一个app_code只能创建一个system, 且该system的ID等于app_code`
 - 上云版, 关闭了这个限制; 所以会出现 app_code 不等于 system_id
 - 其他环境, 可以控制是否开启这个限制
 

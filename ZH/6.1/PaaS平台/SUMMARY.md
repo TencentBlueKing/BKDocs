@@ -17,7 +17,7 @@
         * [配置消息通知：邮件](产品白皮书/场景案例/send_mail.md)
         * [配置消息通知：短信](产品白皮书/场景案例/send_sms.md)
         * [配置消息通知：语音消息](产品白皮书/场景案例/send_voice_msg.md)
-        * [社区版 6.x PaaS 替换 开源 PaaS](产品白皮书/场景案例/open_source_replacement.md)
+        * [蓝鲸 6.x PaaS 替换 开源 PaaS](产品白皮书/场景案例/open_source_replacement.md)
     * [产品功能]()
         * [个人工作台](产品白皮书/产品功能/PersonalWorkbenchEE.md)
         * [应用市场](产品白皮书/产品功能/DockMarket.md)
