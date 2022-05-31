@@ -63,6 +63,35 @@ EOF
 ./scripts/create_k8s_cluster_admin_for_paas3.sh
 ```
 
+## 生成 localpv
+我们默认使用 local pv provisioner 提供存储。
+
+先确认当前的存储提供者。在 中控机 执行：
+``` bash
+kubectl get sc
+```
+预期输出一行，且 `NAME` 列的值为 `local-storage (default)`。
+
+如果 `default` 为其他名字，则说明有其他存储供应服务，无需执行此步骤。
+
+蓝鲸默认使用 `/mnt/blueking` 目录作为主目录，请勿修改。
+执行如下命令开始创建 pv：
+``` bash
+# 切换到工作目录
+cd ~/bkhelmfile/blueking
+helmfile -f 00-localpv.yaml.gotmpl sync
+```
+
+如果上面没有报错，则可以查看当前的 pv：
+``` bash
+kubectl get pv
+```
+预期可以看到很多行。参考输出如下：
+``` text
+NAME                CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS    REASON   AGE
+local-pv-18c3e0ef   98Gi       RWO            Delete           Available           local-storage            6d8h
+```
+
 ## 安装 ingress controller
 部署默认的 ingress controller:
 ``` bash
