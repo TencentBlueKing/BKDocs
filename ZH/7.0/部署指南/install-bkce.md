@@ -335,15 +335,15 @@ docker info
 >
 >使用 “一键脚本” 部署基础套餐 SaaS 时，无法自动 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env)，请务必手动配置。
 
-需要给集群的全部 node （包括 master ）机器安装 gse agent。
+需要给集群的 “全部 node”（包括 `master`） 安装 gse agent。
+
+用途：
+1. job 依赖 `node` 上的 gse agent 进行文件分发。节点管理安装插件时也是通过 job 分发。
+2. 容器监控需要通过 `node` 上的 gse agent 完成监控。
 
 >**提示**
 >
->如有添加新的 k8s node，需为其安装 gse agent。
-
-用途：
-1. job 依赖 node 上的 gse agent 进行文件分发。节点管理安装插件时也是通过 job 分发。
-2. 容器监控需要通过 node 上的 gse agent 完成监控。
+>如有添加新的 k8s `node` 或 `master`，需为其安装 gse agent。
 
 常见报错：
 1. `[script] agent(PID:NNN) is not connect to gse server`，请检查 “配置 GSE 环境管理” 章节的配置是否正确。

@@ -6,11 +6,18 @@
 ## 中控机
 您需要一台机器执行部署操作。我们沿用惯例称其为“中控机”。
 
-如果您的中控机同时作为 Kubenetes master node 存在，请确保配置至少为 4 核心 8GB 内存 100GB 磁盘。
+如果您的中控机同时作为 k8s `master` 存在，请确保配置至少为 4 核心 8GB 内存 100GB 磁盘。
 
 ## k8s 集群
+
+>**注意**
+>
+>k8s 官方现在统一称呼 `master` 和 `node` 为 “node”（节点）。
+>
+>除非另有说明，部署文档中的 `node` 一词默认不包含 `master`。当指代二者集合时，我们会使用 “全部 node” 的称呼。
+
 如果您选择自建 k8s 集群，则需根据类型准备合乎规格的机器（物理机或虚拟机均可）：
-* `master` 负责 k8s 集群本身的管理调度，配置至少为 4 核心 8GB 内存 100GB 磁盘。
+* `master`，也称为 `master-node`。 负责 k8s 集群本身的管理调度，配置至少为 4 核心 8GB 内存 100GB 磁盘。
 * `node` 负责承载业务运行。建议每台机器配置至少为 8 核心 32GB 内存 100GB 磁盘。
 
 软件要求：
@@ -23,10 +30,10 @@
 | SELinux | 关闭。k8s 官方要求。 | `getenforce` 的输出为 Disabled |
 | 时区 | 所有服务器时区应该统一，建议使用北京时间 | 使用 `timedatectl set-timezone Asia/Shanghai` 设置为北京时间。 |
 | 时间同步 | etcd 选举时要求节点间时间差小于 1s | 配置 `chronyd` 同步时间 |
-| docker 版本 | 19.03 及更高，最好卸载预装的 | `docker info` |
+| docker 版本 | 19.03 及更高 | `docker info` |
 
 ## 资源评估表
-我们整理了各套餐所需的 node 数量。如果您的 `node` 配置不同，请自行折算。
+我们整理了各套餐所需的 node 数量。如果您的硬件配置和推荐规格不同，请注意折算。
 
 |蓝鲸套餐 | 描述 | 最低配置 | 推荐配置 | 备注 |
 | -- | -- | -- | -- | -- |
@@ -42,7 +49,7 @@
 
 >**提示**
 >
-> 目前尚未对k8s 1.22 及以上版本的已弃用API做兼容，故无法在 1.22 及以上版本使用。兼容性修复在紧张进行中。
+>因 k8s API 被移除，蓝鲸无法在 1.22 及以上版本使用，开发正在兼容新版 API 。
 
 我们适配了如下的场景：
 * 【推荐】[使用蓝鲸提供的 bcs.sh 脚本快速部署 k8s 集群](#deploy-k8s-using-bcs-sh)
@@ -69,32 +76,22 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 
 这表示您成功部署了一个 k8s 集群，此时您可以使用 `kubectl` 命令了。接下来开始添加节点吧。
 
-### 添加 k8s-node
->**提示**
->
->在部署蓝鲸基础后添加 node 时，要记得 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
+### 扩容节点
 
-在 **部署初始 master** 章节，我们可以观察到脚本在结尾输出了 **扩容控制平面** （即 master） 及 **扩容节点** （即 node）的命令。
-
-如果当时没有保存扩容命令，可以在 **初始 master** 机器上执行如下命令重新获取：
+在 **初始 master** 机器上执行如下命令显示扩容命令：
 ``` bash
 curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -i k8sctrl
 ```
+![](assets/2022-03-09-10-34-11.png)
+
+* 如果要扩容 `master`，请复制 **扩容控制平面** 下的命令。
+* 如果要扩容 `node`，请复制 **扩容节点** 下的命令。
 
 >**注意**
 >
 >`master` 和 `node` 机器的扩容命令不同，请勿混用。而同一类型的机器扩容命令相同。
 
-登录到待扩容一批机器上粘贴对应的命令即可。假设我们要扩容 `node`，则需在 **待扩容机器** 上执行：
-```plain
-set -a
-cluster_env=略
-join_cmd_b64=略
-set +a
-curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh  | bash -s -- install k8s-node
-```
-
-扩容成功后, 会在结尾输出:
+在待扩容的机器上粘贴刚才复制的命令。扩容成功后, 会在结尾输出:
 ``` text
 This node has joined the cluster:
 * Certificate signing request was sent to apiserver and a response was received.
@@ -107,6 +104,10 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 [INFO]: LAN_IP: 10.0.0.5
   Welcome to BCS on qcloud
 ```
+
+>**提示**
+>
+>在部署蓝鲸后，如果扩容了 `master` 或者 `node` 时，都需要 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
 
 ### 复制 config 文件到中控机
 如果您的 **中控机** 同时兼任 `master`，则可 **跳过本章节**。
