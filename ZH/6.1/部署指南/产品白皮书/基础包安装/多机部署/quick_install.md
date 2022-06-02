@@ -96,7 +96,7 @@ bash /data/install/configure_ssh_without_pass
 ./bk_install paas
 ```
 
-PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域名未经解析，可参考 [三、访问蓝鲸](#三、访问蓝鲸) 。
+PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域名未经解析，可参考 [三、访问蓝鲸](./quick_install.md#三、访问蓝鲸) 。
 
 ### 部署 app_mgr
 
