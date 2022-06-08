@@ -57,14 +57,8 @@
 
 ## 免运维托管
 
-- 社区版
-
 该功能是 PaaS 模式最核心的功能，基于 Virtualenv 的应用部署模式，
 在 SaaS 部署时，平台为会它们创建独立的 Virtualenv，保证每个 SaaS 拥有一套“隔离”的 Python 运行环境。SaaS 的服务进程则是以 uWSGI 的 cheaper 模式托管，由于采用了 Busyness cheaper 算法，uWSGI 能够根据繁忙度，动态的调配 worker 个数，从而达到合理利用系统资源的目的
-
-- 企业版
-
-在 SaaS 应用部署时，平台为会它们创建独立的容器，保证每个应用拥有一套“隔离”的运行环境。SaaS 的服务进程则是以 uWSGI 的 cheaper 模式托管，由于采用了 Busyness cheaper 算法，uWSGI 能够根据繁忙度，动态的调配 worker 个数，从而达到合理利用系统资源的目的。
 
 ![-w2020](../../assets/trusteeship.png)
 

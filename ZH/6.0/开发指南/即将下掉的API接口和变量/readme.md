@@ -14,7 +14,7 @@
 | /api/User/getUserRoleApp                       | /api/c/compapi/cc/get_app_by_user_role/             | /api/c/compapi/v2/cc/search_business/                        |
 | /api/TopSetModule/getappsetmoduletreebyappid   | /api/c/compapi/cc/get_topo_tree_by_app_id/          | 查询业务下的主机          /v2/cc/list_biz_hosts/          在所有业务中主机查询          /v2/cc/list_hosts_without_biz/          获取主机与拓扑的关系          /v2/cc/find_host_topo_relation |
 | /api/app/addApp                                | /api/c/compapi/cc/add_app/                          | /api/c/compapi/v2/cc/create_business/                        |
-| /api/app/deleteApp                             | /api/c/compapi/cc/del_app/                          | /api/c/compapi/v2/cc/delete_business/                        |
+| /api/app/deleteApp                             | /api/c/compapi/cc/del_app/                          | /api/c/compapi/v2/cc/update_business_enable_status/                        |
 | /api/App/getHostAppByCompanyId                 | /api/c/compapi/cc/get_host_by_company_id/           | 查询业务下的主机          /v2/cc/list_biz_hosts/          在所有业务中主机查询          /v2/cc/list_hosts_without_biz/          获取主机与拓扑的关系          /v2/cc/find_host_topo_relation |
 | /api/app/editApp                               | /api/c/compapi/cc/edit_app/                         | /api/c/compapi/v2/cc/update_business/                        |
 | /api/Module/getmodules                         | /api/c/compapi/cc/get_modules/                      | /api/c/compapi/v2/cc/search_module/                          |

@@ -36,5 +36,5 @@ https://ce.bktencent.com/esb/api_docs/system/CC/search_business/ 这个接口
 
 - 您可能需要：
 
-    1. [立即下载社区版](https://bk.tencent.com/download/)
+    1. [立即下载蓝鲸](https://bk.tencent.com/download/)
     2. 了解更多企业定制化服务：[点击咨询](https://bk.tencent.com/applyinfo/ee/)

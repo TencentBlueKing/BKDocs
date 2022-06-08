@@ -70,7 +70,7 @@
 8. 配置开机启动，根据实际的操作系统，添加到合适的位置。以 centos7 为例，添加到 /etc/rc.d/rc.local，并给它添加可执行权限。
 
     ```bash
-    sed -i ',/usr/local/gse/agent/bin/gsectl,d' /etc/rc.d/rc.local
+    sed -i '\/usr\/local\/gse\/agent\/bin\/gsectl/d' /etc/rc.d/rc.local
     echo '[ -x /usr/local/gse/agent/bin/gsectl ] && /usr/local/gse/agent/bin/gsectl start' >> /etc/rc.d/rc.local
     chmod +x /etc/rc.d/rc.local
     ```
