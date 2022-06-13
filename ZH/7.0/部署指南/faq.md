@@ -31,6 +31,15 @@
 	``` bash
 	source <(kubectl completion bash)
 	```
+8. 列出 base.yaml.gotmpl 这个 helmfile 里定义的 release：
+   ``` bash
+   helmfile -f base.yaml.gotmpl list
+   ```
+9.  卸载 helmfile 里定义的全部 release：
+   ``` bash
+   helmfile -f 00-BK_TEST.yaml.gotmpl destroy
+   ```
+
 
 ## 调试及维护
 
@@ -83,23 +92,22 @@ kubectl edit deployment apiserver-main
 ### 调整 pod 的资源配额
 蓝鲸为所有 Pod 设置了资源配额（ 见 `kubectl get pod -n NS POD_NAME -o json` 的 `.spec.containers[].resources.limits` 字段）。
 
-这些配置项在腾讯云 `SA2.2XLARGE32` 实例上测试可用。当您的服务器 CPU 性能不足时，可能遇到无法启动的问题。
+这些配置项在腾讯云 `SA2.2XLARGE32` 实例上测试可用。当您的服务器 CPU 性能不足时，可能遇到无法启动的问题，此时需手动调整配额。
 
-资源不足会表现为 pod 一直重启（`RESTARTS` 列的计数大于 3 ），且 kubectl describe pod 显示的 Events 和 kubectl logs 均无报错，或显示 `readiness` 类的报错。
+修改方法概述（详细操作见下方排查示例）：
+1. 先找出疑似资源配额问题的 pod，规则为：kubectl get pod 显示的状态为 `Running` 但 `READY`列为 “0/N”，且 `RESTARTS` 列的值大于 3。
+2. 找到 pod 所在的 helmfile 编排文件，确定 `values 文件` 和 `custom-values 文件` 的路径。
+3. 基于 `values 文件` 中的模板，在 `custom-values 文件` 中覆盖 `.resources.limits` 的值。
+4. 使用 helmfile destroy 命令卸载 release，然后 helmfile sync 命令创建。
+5. 确认 pod 的资源配额已经生效： `kubectl get pod -n NS POD_NAME -o json | jq .spec.containers[].resources.limits`。如果 pod 依旧未能启动，可调整步骤 3 的值重试几次。
 
-修改方法：
-1. 先找出疑似资源配额问题的 pod，规则为 `kubectl get pod -n NS` 输出的 `READY`列为 0，且 `RESTARTS` 列大于 3。
-2. 查看默认的配额定义，文件路径为 `environments/default/标识名字-values.yaml.gotmpl`。
-3. 创建 custom-values 文件覆盖，文件路径为 `environments/default/标识名字-custom-values.yaml.gotmpl`。
-4. 使用 helmfile 删除 release: `helmfile -f 工作目录下的yaml.totmpl文件 destroy`。
-5. 重新创建 release: `helmfile -f 工作目录下的yaml.totmpl文件 sync`。
-6. 确认 pod 的资源配额已经生效： `kubectl get pod -n NS POD_NAME -o json | jq .spec.containers[].resources.limits`。
+具体排查过程示例
 
-示例，假设 es 无法启动，初步检查发现 coordinating 正常，master 和 data 未能 Ready 且一直重启：
+假设 es 无法启动，初步检查发现 coordinating、master 和 data 运行了一段时间却未能 Ready ，且已重启多次：
 ``` text
-bk-elastic-elasticsearch-coordinating-only-0               1/1     Running     0          4h56m
-bk-elastic-elasticsearch-data-0                            0/1     Running     4          4h56m
-bk-elastic-elasticsearch-master-0                          0/1     Running     4          4h56m
+bk-elastic-elasticsearch-coordinating-only-0       0/1  Running  4  4h56m
+bk-elastic-elasticsearch-data-0                    0/1  Running  4  4h56m
+bk-elastic-elasticsearch-master-0                  0/1  Running  4  4h56m
 ```
 首先找到这些 pod 所属的 helmfile，此处为 `00-storage-elasticsearch.yaml.gotmpl`：
 ``` yaml
@@ -135,7 +143,7 @@ coordinating:
       cpu: 1000m
       memory: 512Mi
 ```
-因为 coordinating 已经启动成功，故此处只对 master 和 data 的 limits 值翻倍，在 中控机 工作目录 执行如下命令创建 custom-values 文件(`environments/default/elasticsearch-custom-values.yaml.gotmpl`)：
+将对应 pod 的 limits 值翻倍，在 中控机 工作目录 执行如下命令创建 custom-values 文件(`environments/default/elasticsearch-custom-values.yaml.gotmpl`)：
 ``` bash
 cat > environments/default/elasticsearch-custom-values.yaml.gotmpl <<EOF
 master:
@@ -148,6 +156,11 @@ data:
     limits:
       cpu: 2000m
       memory: 4096Mi
+coordinating:
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 1024Mi
 EOF
 ```
 然后卸载 release：
@@ -192,13 +205,16 @@ COMBINED OUTPUT:
 ```
 这是因为 pod 启动超时。需要先在 中控机 执行如下命令查看哪些 pod 未能 Ready （取 `READY` 列含有 `0/`）：
 ``` bash
-kubectl get pod -Aw | grep -v Completed | grep -e "0/"
+kubectl get pod -A | grep -wv Completed | grep -e "0/"
 ```
 
 目前观察到如下类型的原因：
-* 资源配额不足。
-  * 表现：pod 一直重启（`RESTARTS` 列的计数大于 3 ），且 kubectl describe pod 显示的 Events 和 logs 均正常，helmfile destory 对应 release 后，再次 helmfile sync 问题依旧。
+* pod 启动超时。
+  * 表现：pod 为 `Running` 状态，但是 `RESTARTS` 列的计数大于 3 ，且 kubectl describe pod 显示的 Events 和 logs 均正常，helmfile destory 对应 release 后，再次 helmfile sync 问题依旧。
   * 解决办法： 手动修改 custom 文件，提高配额。详细步骤见 本文 “[调整 pod 的资源配额](#modify-pod-resources-limits)” 章节。
+* pod 等待调度。
+  * 表现：pod 一直为 `Pending` 状态。
+  * 解决办法：kubectl describe pod 查看阻塞原因，然后逐层 kubectl describe 导致阻塞的资源追溯拥有。常见情况为资源（CPU、内存及 pvc 等）不足，可以通过扩容 node 解决此类问题。
 * pod 启动失败。
   * 表现：pod 状态多次重启，状态为 `CrashLoopBackOff`。
   * 解决办法：一般为卸载不彻底，请参考 《[卸载](uninstall.md)》 文档操作。
