@@ -60,5 +60,5 @@
     * [常见问题]()
         * [常见 FAQ](产品白皮书/FAQS/FAQ.md)
         * [制品库FAQ]()
-          * [使用 Downlad artifacts 下载构件报错](./产品白皮书/FAQS/无法下载构建.md)
+            * [使用 Downlad artifacts 下载构件报错](产品白皮书/FAQS/无法下载构建.md)
         * [流水线预定义变量列表](产品白皮书/FAQS/Variables.md)
