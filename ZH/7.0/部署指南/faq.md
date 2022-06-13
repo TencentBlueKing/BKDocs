@@ -78,11 +78,141 @@ kubectl edit deployment apiserver-main
 将 `DJANGO_LOG_LEVEL` 的值改为 `DEBUG`。
 
 
+<a id="modify-pod-resources-limits" name="modify-pod-resources-limits" ></a>
+
+### 调整 pod 的资源配额
+蓝鲸为所有 Pod 设置了资源配额（ 见 `kubectl get pod -n NS POD_NAME -o json` 的 `.spec.containers[].resources.limits` 字段）。
+
+这些配置项在腾讯云 `SA2.2XLARGE32` 实例上测试可用。当您的服务器 CPU 性能不足时，可能遇到无法启动的问题。
+
+资源不足会表现为 pod 一直重启（`RESTARTS` 列的计数大于 3 ），且 kubectl describe pod 显示的 Events 和 kubectl logs 均无报错，或显示 `readiness` 类的报错。
+
+修改方法：
+1. 先找出疑似资源配额问题的 pod，规则为 `kubectl get pod -n NS` 输出的 `READY`列为 0，且 `RESTARTS` 列大于 3。
+2. 查看默认的配额定义，文件路径为 `environments/default/标识名字-values.yaml.gotmpl`。
+3. 创建 custom-values 文件覆盖，文件路径为 `environments/default/标识名字-custom-values.yaml.gotmpl`。
+4. 使用 helmfile 删除 release: `helmfile -f 工作目录下的yaml.totmpl文件 destroy`。
+5. 重新创建 release: `helmfile -f 工作目录下的yaml.totmpl文件 sync`。
+6. 确认 pod 的资源配额已经生效： `kubectl get pod -n NS POD_NAME -o json | jq .spec.containers[].resources.limits`。
+
+示例，假设 es 无法启动，初步检查发现 coordinating 正常，master 和 data 未能 Ready 且一直重启：
+``` text
+bk-elastic-elasticsearch-coordinating-only-0               1/1     Running     0          4h56m
+bk-elastic-elasticsearch-data-0                            0/1     Running     4          4h56m
+bk-elastic-elasticsearch-master-0                          0/1     Running     4          4h56m
+```
+首先找到这些 pod 所属的 helmfile，此处为 `00-storage-elasticsearch.yaml.gotmpl`：
+``` yaml
+releases:
+  - name: bk-elastic
+    namespace: {{ .Values.namespace }}
+    chart: ./charts/elasticsearch-{{ .Values.version.elasticsearch }}.tgz
+    missingFileHandler: Warn
+    version: {{ .Values.version.elasticsearch }}
+    values:
+    - ./environments/default/elasticsearch-values.yaml.gotmpl
+    - ./environments/default/elasticsearch-custom-values.yaml.gotmpl
+```
+可以看到 `.releases[].values` 里定义了 2 个文件，我们一般称为 `values 文件` 和 `custom-values 文件`。我们通过写入 custom-values 文件 实现对 values 的覆盖。
+
+先检查 values 文件（`environments/default/elasticsearch-values.yaml.gotmpl` ），可以发现如下的片段：
+``` yaml
+master:
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
+#其他内容略
+data:
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 2048Mi
+#其他内容略
+coordinating:
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 512Mi
+```
+因为 coordinating 已经启动成功，故此处只对 master 和 data 的 limits 值翻倍，在 中控机 工作目录 执行如下命令创建 custom-values 文件(`environments/default/elasticsearch-custom-values.yaml.gotmpl`)：
+``` bash
+cat > environments/default/elasticsearch-custom-values.yaml.gotmpl <<EOF
+master:
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 2048Mi
+data:
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 4096Mi
+EOF
+```
+然后卸载 release：
+``` bash
+helmfile -f 00-storage-elasticsearch.yaml.gotmpl destroy
+```
+然后重新创建：
+``` bash
+helmfile -f 00-storage-elasticsearch.yaml.gotmpl sync
+```
+检查 pod 是否生效：
+``` bash
+kubectl get pod -n blueking bk-elastic-elasticsearch-data-0 -o json | jq '.spec.containers[].resources.limits'
+```
+输出为下，与配置的值相符。
+``` json
+{
+  "cpu": "2",
+  "memory": "4Gi"
+}
+```
+说明配置成功且已经生效。此时 pod 也成功启动，说明此前为资源不足所致。如果依旧未能启动，可以尝试继续扩大配额。
+
+
 ## 错误案例
+
+### helmfile 报错 Error: timed out waiting for the condition
+在使用“一键脚本”或者 helmfile 命令时，出现报错：
+``` bash
+ERROR:
+  exit status 1
+
+EXIT STATUS
+  1
+
+STDERR:
+  Error: timed out waiting for the condition
+
+COMBINED OUTPUT:
+  Release "bk-elastic" does not exist. Installing it now.
+  Error: timed out waiting for the condition
+```
+这是因为 pod 启动超时。需要先在 中控机 执行如下命令查看哪些 pod 未能 Ready （取 `READY` 列含有 `0/`）：
+``` bash
+kubectl get pod -Aw | grep -v Completed | grep -e "0/"
+```
+
+目前观察到如下类型的原因：
+* 资源配额不足。
+  * 表现：pod 一直重启（`RESTARTS` 列的计数大于 3 ），且 kubectl describe pod 显示的 Events 和 logs 均正常，helmfile destory 对应 release 后，再次 helmfile sync 问题依旧。
+  * 解决办法： 手动修改 custom 文件，提高配额。详细步骤见 本文 “[调整 pod 的资源配额](#modify-pod-resources-limits)” 章节。
+* pod 启动失败。
+  * 表现：pod 状态多次重启，状态为 `CrashLoopBackOff`。
+  * 解决办法：一般为卸载不彻底，请参考 《[卸载](uninstall.md)》 文档操作。
+* 镜像拉取超时。
+  * 表现：在早期 kubectl describe pod 时可以看到 Events 显示 `Pulling image XXX`。如果发现较晚，则镜像可能拉取完毕，此时 kubectl get pod 无任何异常，且 pod 未曾重启过。
+  * 解决办法：目前镜像策略都是复用现存镜像，可改用其他网络下载所需的镜像，然后导出为 tar 包，在上述 pod 所在的 node 导入。
+* 拉取镜像失败。
+  * 表现：kubectl get pod 显示 `ImagePullBackOff` 状态。kubectl describe pod 时可以看到 Events 显示 `Failed to pull image "镜像路径": rpc error: code = Unknown desc = Error response from daemon: manifest for 镜像路径 not found: manifest unknown: manifest unknown`。
+  * 解决办法：此种情况请联系蓝鲸助手处理。
+
 
 ### 部署 SaaS 在“配置资源实例”阶段报错
 首先查看 `engine-main` 这个应用对应 pod 的日志。根据错误日志提示，判断定位方向：
-1. 检测 mysql，rabbitmq，redis 等「增强服务」的资源配置是否正确。`http://bkpaas.$BK_DOMAIN/backend/admin42/platform/plans/manage` 以及 `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
+1. 检测 mysql，rabbitmq，redis 等「增强服务」的资源配置是否正确。`http://bkpaas.$BK_DOMAIN/backend/admin42/platform/plans/manage` （先登录才能访问）以及 `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` （先登录才能访问）。
 2. 检查应用集群的 k8s 相关配置 token 是否正确。初次部署时会自动调用 `scripts/create_k8s_cluster_admin_for_paas3.sh` 脚本自动生成 token 等参数到 `./paas3_initial_cluster.yaml` 文件中。如果不正确，可以删除后这些账号和绑定后重建。
 
 <a id="saas-deploy-prehook" name="saas-deploy-prehook"></a>
