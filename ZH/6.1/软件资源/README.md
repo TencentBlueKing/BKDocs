@@ -4,7 +4,8 @@
 
 | 名字               | 版本号    | 大小   | 简介                                      | 操作                                                                       |
 | -------------------| -------- | ------ | ----------------------------------------| ---------------------------------------------------------------------------------------- |
-| Python 开发框架 V3   | 4.2.3.161 | 0.9M   | 蓝鲸 SaaS 统一 Python 开发框架 V3         | [下载](https://bktencent-1252002024.file.myqcloud.com/framework_4.2.3.161.tar.gz) |
+| Python 开发框架 V3   | 4.4.2.167 | 0.9M   | 蓝鲸 SaaS 统一 Python 开发框架 V3         | [下载](https://bktencent-1252002024.file.myqcloud.com/framework_4.4.2.167.tar.gz) |
+| Python 开发样例 V3   | 4.4.2.167 | 2.04 MB | 蓝鲸 SaaS 统一 Python 开发样例 V3         | [下载](https://bktencent-1252002024.file.myqcloud.com/fw_example_4.4.2.167.tar.gz) |
 | 组件模板            | 1.0.0    | 2KB    | 蓝鲸 ESB 服务编码模板                     | [下载](https://bktencent-1252002024.file.myqcloud.com/hcp.tar.gz) |
 | API 网关            | 1.0.0    | 90KB   | API 网关组件开发模板                      | [下载](https://bktencent-1252002024.file.myqcloud.com/api_dev_template.tar.gz) |
 | 微信公众号 H5        | 1.0.0    | 72KB   | 微信公众号 H5 模板                          | [下载](https://bktencent-1252002024.file.myqcloud.com/framework_weixin_package.tar.gz) |
