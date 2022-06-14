@@ -3,4 +3,4 @@
 ![](./media/001.png)
 
 **解决方案：**
-https://bk.tencent.com/s-mart/community/question/1782
+[https://bk.tencent.com/s-mart/community/question/1782](https://bk.tencent.com/s-mart/community/question/1782)
