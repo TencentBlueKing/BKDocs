@@ -18,7 +18,7 @@
     * [agent 问题]()
         * [手动卸载 Agent](产品白皮书/FAQ/agent问题/手动卸载Agent.md)
         * [安装 Agent 常见报错](产品白皮书/FAQ/agent问题/安装agent常见报错.md)
-        * [常见 FAQ ](产品白皮书/FAQ/agent问题/常见FAQ.md)
+        * [其它 FAQ ](产品白皮书/FAQ/agent问题/常见FAQ.md)
     * [插件问题]()
         * [安装 gsecmdline 插件](产品白皮书/FAQ/插件问题/安装gsecmdline插件报错.md)
     * [Porxy 问题]()
