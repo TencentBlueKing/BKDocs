@@ -130,7 +130,6 @@
 | list_set_template                          | 查询集群模板                                                                 |
 | list_set_template_related_service_template | 获取某集群模版下的服务模版列表                                               |
 | resource_watch                             | 监听资源变化事件                                                             |
-| search_hostidentifier                      | 根据条件查询主机身份                                                         |
 | search_related_inst_asso                   | 查询某实例所有的关联关系（包含其作为关联关系原模型和关联关系目标模型的情况） |
 | search_topo_tree                           | 搜索业务拓扑树                                                               |
 | sync_set_template_to_set                   | 集群模板同步                                                                 |
