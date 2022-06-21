@@ -158,7 +158,8 @@ source ~/.bashrc
 ```bash
 ./bkcli initdata topo
 ```
-
+### 安装 server 端 agent （优先安装 job 模块所在的 IP）
+登陆 paas 平台 > 打开节点管理 > 安装 agent 
 ### 部署 lesscode (可选)
 
 1. 添加 lesscode 模块分布
