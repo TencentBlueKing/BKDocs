@@ -315,14 +315,16 @@ pcmd -m usermgr "rmvirtualenv usermgr-api"
 	
 ### 配置平台
 
+详细请参考 [配置平台升级必看](https://github.com/Tencent/bk-cmdb/issues/5308)
+
 ```bash
 mysql --login-path=mysql-default -e "use bk_iam; insert into authorization_authapiallowlistconfig(creator, updater, created_time, updated_time, type, system_id, object_id) value('', '', now(), now(), 'authorization_instance', 'bk_cmdb', '*');"
 
 ./bkcli sync cmdb
 ./bkcli install cmdb
 ./bkcli restart cmdb
-./bkcli status cmdb
 ./bkcli initdata cmdb
+./bkcli status cmdb
 ./bkcli check cmdb
 ```
 
