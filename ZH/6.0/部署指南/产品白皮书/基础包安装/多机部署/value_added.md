@@ -101,6 +101,7 @@ hostname
 - 安装监控相关依赖、监控平台后台、监控平台 SaaS
 
 > 详细安装过程介绍，请查看[安装监控平台详解](../../基础包安装/安装详解/install_bkmonitorv3.md)。
+> 部署常见问题请查看：[监控套餐-部署常见问题](https://bk.tencent.com/s-mart/community/question/5795?type=answer)
 
 ### 日志平台
 
