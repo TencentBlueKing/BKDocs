@@ -39,13 +39,13 @@
 
 配置信息请参考：[如何配置初始化集群](../../PaaS平台/应用运维文档/PaaS3/docs/configure_initial_cluster.md)
 
-注意：在页面修改后，必须重启 engine 模块所有进程才能生效
+注意：在页面修改后，必须重启 workloads 模块所有进程才能生效
 
-2. 在 `paas-stack` helm release 中确认 `engine-generate-initial-cluster-state` pod 是否有执行成功
+2. 在 `paas-stack` helm release 中确认 `workloads-generate-initial-cluster-state` pod 是否有执行成功
 
 如果执行失败了，可 helm update 再重复执行
 
-3. 查看 `engine-celery` 模块日志，如有 `403 Forbidden` 报错，则参考 [为什么 engine 项目提示无权限获取到应用集群信息](../../PaaS平台/应用运维文档/PaaS3/docs/deploy_faq.md) 文档处理即可
+3. 查看 `workloads-celery` 模块日志，如有 `403 Forbidden` 报错，则参考 [为什么 workloads 项目提示无权限获取到应用集群信息](../../PaaS平台/应用运维文档/PaaS3/docs/deploy_faq.md) 文档处理即可
 
 ### 4313022 资源池为空
 

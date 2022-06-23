@@ -268,7 +268,7 @@ services:
 - `pre_release_hook`: (可选, string), 部署前执行的钩子脚本, 例如在 release 阶段前执行 migrate 操作。
 
 **注意**: 
-1.`pre_release_hook` 的指令具有一定的限制, 例如不能以 start 开头、只能是一条命令等, 详细的介绍请看 [部署(Release)阶段钩子](./release_hooks.md)。
+1.`pre_release_hook` 的指令具有一定的限制, 例如不能以 start 开头、只能是一条命令等, 详细的介绍请看 [部署(Release)阶段钩子](/topics/paas/release_hooks.md)。
 
 2.部署前置命令也可以在产品页面上定义，如果在页面上定义了将会覆盖 app_desc.yaml 文件中定义的内容，请知悉。
 
