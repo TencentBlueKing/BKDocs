@@ -583,7 +583,7 @@ pcmd -m log "rmvirtualenv bklog-api"
     详细升级指南请参考：[V2.6.0 -> V2.6.1升级指南](https://github.com/TencentBlueKing/bk-itsm/blob/v2.6.x_develop/docs/install/V2_6_0_to_V2_6_1_upgrade_guide.md)
 
     ```bash
-    # 网页端访问
+    # 网页端访问，使用 admin 登录
     http://$BK_DOMAIN/o/bk_itsm/helper/db_fix_for_blueapps_after_2_6_0/
     ```
 
