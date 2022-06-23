@@ -18,7 +18,7 @@
 不同开发环境下，设置环境变量的方法各不相同。常用的有：
 
 - [如何在 Mac 下设置环境变量](https://apple.stackexchange.com/questions/106778/how-do-i-set-environment-variables-on-os-x)
-- [如何在 Windows 下设置环境变量](https://zhuanlan.zhihu.com/p/67726501)
+- [如何在 Windows 下设置环境变量](https://stackoverflow.com/questions/32463212/how-to-set-environment-variables-from-windows?noredirect=1&lq=1)
 
 如果本地开发不同的 SaaS 需要配置多套环境变量，可以采用一些基于项目的环境变量设置方案。常用的有：
 

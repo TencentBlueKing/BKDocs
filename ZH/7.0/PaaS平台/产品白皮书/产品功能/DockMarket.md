@@ -2,4 +2,4 @@
 
 所有上线的平台/SaaS 应用，都会出现在应用市场，用户可以按分类检索，并设置不同的导航方式。
 
-![-w2020](../assets/S-mart.png)
+![-w2020](../assets/DockMarket.png)

@@ -26,7 +26,7 @@ DEFAULT_FILE_STORAGE = 'bkstorages.backends.rgw.RGWBoto3Storage'
 
 默认情况下，上传新文件会覆盖同名旧文件，你可以通过修改 [RGW_FILE_OVERWRITE](./ref_rgw.md#RGW_FILE_OVERWRITE) 配置项来关闭。
 
-关于 Django storage 的更多说明请参考： [Django document: File Storage](https://docs.djangoproject.com/en/2.2/topics/files/#file-storage)
+关于 Django storage 的更多说明请参考： [Django document: File Storage](https://docs.djangoproject.com/en/3.2/topics/files/#file-storage)
 
 ## 将静态文件托管到蓝鲸对象存储服务
 
@@ -146,4 +146,4 @@ storage.listdir('/test')
 storage.delete('/test/temp_file.txt')
 ```
 
-更多 API 说明请参考：[File storage API - Django documentation](https://docs.djangoproject.com/en/2.2/ref/files/storage/#the-storage-class)
+更多 API 说明请参考：[File storage API - Django documentation](https://docs.djangoproject.com/en/3.2/ref/files/storage/#the-storage-class)

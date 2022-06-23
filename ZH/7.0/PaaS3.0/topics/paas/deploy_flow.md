@@ -122,11 +122,11 @@ gunicorn wsgi -w 4 -b :5000
 
 
 **注意事项：**
-- [构建(Build)阶段钩子](./build_hooks.md)在每个构建工具执行后都会被触发。
+- [构建(Build)阶段钩子](/topics/paas/build_hooks.md)在每个构建工具执行后都会被触发。
 
 ## 使用（容器）镜像来部署蓝鲸应用
 
-除了基于源码的部署方式以外，蓝鲸 PaaS 平台还支持使用 Docker 镜像部署应用，详情请看[使用（容器）镜像来部署蓝鲸应用](./deploy_flow_image.md))
+除了基于源码的部署方式以外，蓝鲸 PaaS 平台还支持使用 Docker 镜像部署应用，详情请看[使用（容器）镜像来部署蓝鲸应用](/topics/paas/deploy_flow_image.md))
 
 ## 使用 Arm 架构的机器如何构建 x86 平台镜像
 
