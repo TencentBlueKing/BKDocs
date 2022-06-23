@@ -52,7 +52,7 @@ tar xf bkce_co_package-6.0.5.tgz
 
    标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/bk_sops_co_package-6.0.4.dat)
 
-   **详细步骤：** `打开标准运维 -> 项目流程 -> 导入 -> 点击上传 -> 创建新流程`
+   **详细步骤：** `打开标准运维 -> 选择蓝鲸业务 -> 项目流程 -> 导入 -> 点击上传 -> 创建新流程`
 
    ![sops](../../assets/sops.png)
 
