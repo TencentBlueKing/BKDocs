@@ -19,6 +19,6 @@ source utils.fc
 ssh $BK_JOB_IP
 # /data/install/bin/02-dynamic/hosts.env 文件通过解析 install.config ，生成了模块对应的 IP。
 # 所以，我们可以直接用 $BK_MODULE_IP 这样的方式来访问。
-# MODULE，用 install.config 里模块名的大写形式进行替换。例如 paas 所在机器 IP 为 $BK_PAAS_IP ，配置平台所机器 IP 为 $BK_CMDB_IP ，依此类推。
+# MODULE，用 install.config 里模块名的大写形式进行替换。例如 paas 所在机器 IP 为 $BK_PAAS_IP ，配置平台所在机器 IP 为 $BK_CMDB_IP ，依此类推。
 # 也可以输入 $ 符号后，用 $BK_<tab> 补全试试。
 ```
