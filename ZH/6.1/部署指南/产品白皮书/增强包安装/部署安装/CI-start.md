@@ -91,7 +91,7 @@ IP2 ci(dockerhost)
 从模板 “[蓝鲸持续集成][CI]部署或升级流水线” 新建任务。
 >直接点击下一步。（初次部署勾选全部步骤，后续按需取消。）
 >
->填写蓝鲸中控机 IP 及版本号。版本号建议填写蓝鲸增值套餐下载界面的推荐版本号。也可参考 [GitHub Release 页面](https://github.com/Tencent/bk-ci/releases) ，选择注明适配蓝鲸社区版 6.0 的版本。
+>填写蓝鲸中控机 IP 及版本号。版本号建议填写蓝鲸增值套餐下载界面的推荐版本号。也可参考 [GitHub Release 页面](https://github.com/Tencent/bk-ci/releases) ，选择注明适配蓝鲸社区版 6.1 的版本。
 >
 >流程中会自动下载重命名安装包，也可手动下载安装包，并传输到中控机上，确保文件路径为 /data/src/bkci-版本号.tar.gz，可自动跳过下载步骤。
 >
