@@ -28,7 +28,6 @@
             * [自定义 Python 版本](topics/paas/choose_python_version.md)
             * [自定义环境变量](topics/paas/custom_configvars.md)
             * [内置环境变量](topics/paas/builtin_configvars.md)
-            * [使用 access token 访问](topics/paas/access_token.md)
             * [应用访问入口配置](topics/paas/app_entry_intro.md)
             * [源码托管说明](topics/paas/source_ctl.md)
             * [应用描述文件](topics/paas/app_desc.md)
