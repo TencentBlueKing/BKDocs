@@ -7,7 +7,8 @@
 1. 获取 BK-Plugin  Framework
 
    ```bash
-   git clone https://xxx.com/datadog_plugin_framework.git
+   wget https://bktencent-1252002024.file.myqcloud.com/datadog_plugin_framework-master.tar.gz
+   tar xf datadog_plugin_framework-master.tar.gz  # 解压刚才下载的文件
    ```
 
 2. 获取   Integrations(6.15x 分支代码)
