@@ -75,7 +75,7 @@ cd /data/src; grep . */*VERSION */*/VERSION
 - 生成备份脚本
 
     ```bash
-	# MySQL 机器上执行
+    # MySQL 机器上执行
     source /data/install/utils.fc
 
     cat >dbbackup_mysql.sh <<\EOF
@@ -312,8 +312,46 @@ pcmd -m usermgr "rmvirtualenv usermgr-api"
     pcmd -m gse " systemctl stop bk-gse-syncdata.service && systemctl disable bk-gse-syncdata.service"
     ./bkcli check gse
     ```
-	
+
 ### 配置平台
+
+#### 升级前检查
+
+由于 v3.10 版本对模型实例与关系相关的的产品形态、功能管理、数据存储等进行了全面的梳理；并结合后续bk-cmdb对资源数据的管理需求增长的需求，对通用模型实例与关系管理的后台架构进行了调整，并对产品侧做了一些调整、优化。所以在升级之前，需要对低版本的数据进行检查。更多详情请参考 [
+v3.10版本升级指引](https://github.com/Tencent/bk-cmdb/issues/5308)
+
+- 对全部数据进行校验，包括唯一校验规则和无进程关系的进程数据的校验
+
+    ```bash
+    source /data/install/utils.fc
+    cd /data/src/cmdb/server/bin
+
+    ./tool_ctl  migrate-check --check-all=true  --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0" | grep ERROR
+    ```
+
+- 仅校验唯一校验规则，输出不符合规则的数据
+
+    ```bash
+    ./tool_ctl migrate-check unique --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0" | grep ERROR
+    ```
+
+    需要根据 ERROR 的提示清理对应唯一校验规则
+
+- 仅校验无进程关系的进程数据，输出不符合规则的数据
+
+    ```bash
+    ./tool_ctl migrate-check process --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0"
+    ```
+
+    如果校验无进程关系的进程数据全部都可以清理，可使用下述命令进行清理，如果不可以，则需要手动处理这些数据
+
+    ```bash
+    ./tool_ctl migrate-check process --clear-proc=true --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0"
+    ```
+
+注意：**当且仅当所有的校验都通过时** 才可以进行正常的升级流程。
+
+#### 开始升级
 
 ```bash
 mysql --login-path=mysql-default -e "use bk_iam; insert into authorization_authapiallowlistconfig(creator, updater, created_time, updated_time, type, system_id, object_id) value('', '', now(), now(), 'authorization_instance', 'bk_cmdb', '*');"
@@ -563,16 +601,19 @@ pcmd -m log "rmvirtualenv bklog-api"
 
 #### 中间版本升级（可选）
 
-  - 如果已经通过单产品更新的用户请忽略该步骤，可直接进入下述步骤 (2.6.1) 版本升级
-  - 下载 2.6.0 的 SaaS 包 [点击下载](https://bkopen-1252002024.file.myqcloud.com/ce/d64e32f/bk_itsm_V2.6.0.365-ce-bkofficial.tar.gz)
-  ```bash
-  cd /data/src/official_saas && wget https://bkopen-1252002024.file.myqcloud.com/ce/d64e32f/bk_itsm_V2.6.0.365-ce-bkofficial.tar.gz
-  ```
-  
-  - 开始更新
-  ```bash
-  cd /data/install && ./bkcli install saas-o bk_itsm=2.6.0.365
-  ```
+- 如果已经通过单产品更新的用户请忽略该步骤，可直接进入下述步骤 (2.6.1) 版本升级
+
+- 下载 2.6.0 的 SaaS 包 [点击下载](https://bkopen-1252002024.file.myqcloud.com/ce/d64e32f/bk_itsm_V2.6.0.365-ce-bkofficial.tar.gz)
+
+    ```bash
+    cd /data/src/official_saas && wget https://bkopen-1252002024.file.myqcloud.com/ce/d64e32f/bk_itsm_V2.6.0.365-ce-bkofficial.tar.gz
+    ```
+
+- 开始更新
+
+    ```bash
+    cd /data/install && ./bkcli install saas-o bk_itsm=2.6.0.365
+    ```
 
 #### 开始升级
 
@@ -615,7 +656,7 @@ pcmd -m log "rmvirtualenv bklog-api"
 
     上一步执行成功后，蓝鲸业务集群的节点信息中即可看到 `删除节点` 选项，请手动删除所有蓝鲸业务下的集群
 
-  ![delete_topo](../../assets/bk_topo.png)
+    ![delete_topo](../../assets/bk_topo.png)
 
 3. 删掉所有的蓝鲸集群模板与进程模板
 
