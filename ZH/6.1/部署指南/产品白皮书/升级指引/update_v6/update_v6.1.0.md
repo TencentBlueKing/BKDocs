@@ -75,7 +75,7 @@ cd /data/src; grep . */*VERSION */*/VERSION
 - 生成备份脚本
 
     ```bash
-	# MySQL 机器上执行
+    # MySQL 机器上执行
     source /data/install/utils.fc
 
     cat >dbbackup_mysql.sh <<\EOF
@@ -119,7 +119,7 @@ cd /data/src; grep . */*VERSION */*/VERSION
     ```bash
     # MongoDB 机器上执行
     source /data/install/utils.fc
-    
+
     mongodump --host $BK_MONGODB_IP -u $BK_MONGODB_ADMIN_USER -p $BK_MONGODB_ADMIN_PASSWORD --oplog --gzip --out /data/mongodb_bak
     ```
 
@@ -166,7 +166,7 @@ mv /data/src /data/src.bak
 
     ```bash
     source /data/install/utils.fc
-    
+
     # 新增变量值
     echo "BK_NODEMAN_REDIS_HOST=${BK_REDIS_IP0}" >> /data/install/bin/03-userdef/bknodeman.env
     echo "BK_BKLOG_REDIS_PASSWORD=${BK_REDIS_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/bklog.env
@@ -261,7 +261,7 @@ pcmd -m usermgr "rmvirtualenv usermgr-api"
 
 2. 迁移数据
 
-    >工具参数说明：
+    > 工具参数说明：
     >
     >--szkhost arg src zkhost dataid 源 zkhost
     >
@@ -273,13 +273,13 @@ pcmd -m usermgr "rmvirtualenv usermgr-api"
     >
     >--dataidfile arg data id file 可选参数，需要同步 dataid 的文件列表，不指定 默认源 zk 的全部文件
     >
-    >--dataidpath arg data id path dataid在源zk集群上的路径，企业版路径 (/gse/config/etc/dataserver/data)
+    >--dataidpath arg data id path dataid 在源 zk 集群上的路径，企业版路径 (/gse/config/etc/dataserver/data)
     >
-    >--storagepath arg storage id path kafka集群，redis 配置在 zk 上路径，企业版 (/gse/config/etc/dataserver/storage/all)
+    >--storagepath arg storage id path kafka 集群，redis 配置在 zk 上路径，企业版 (/gse/config/etc/dataserver/storage/all)
     >
-    >-h [ --help ] this message
+    >-h [--help] this message
     >
-    >-v [ --version ] get version info
+    >-v [--version] get version info
 
     ```bash
     source /data/install/utils.fc
@@ -309,11 +309,49 @@ pcmd -m usermgr "rmvirtualenv usermgr-api"
 4. 下线 gse_syncdata 服务
 
     ```bash
-    pcmd -m gse " systemctl stop bk-gse-syncdata.service && systemctl disable bk-gse-syncdata.service"
+    pcmd -m gse "systemctl stop bk-gse-syncdata.service && systemctl disable bk-gse-syncdata.service"
     ./bkcli check gse
     ```
-	
+
 ### 配置平台
+
+#### 升级前检查
+
+由于 v3.10 版本对模型实例与关系相关的的产品形态、功能管理、数据存储等进行了全面的梳理；并结合后续 bk-cmdb 对资源数据的管理需求增长的需求，对通用模型实例与关系管理的后台架构进行了调整，并对产品侧做了一些调整、优化。所以在升级之前，需要对低版本的数据进行检查。更多详情请参考 [
+v3.10 版本升级指引](https://github.com/Tencent/bk-cmdb/issues/5308)
+
+- 对全部数据进行校验，包括唯一校验规则和无进程关系的进程数据的校验
+
+    ```bash
+    source /data/install/utils.fc
+    cd /data/src/cmdb/server/bin
+
+    ./tool_ctl  migrate-check --check-all=true  --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0" | grep ERROR
+    ```
+
+- 仅校验唯一校验规则，输出不符合规则的数据
+
+    ```bash
+    ./tool_ctl migrate-check unique --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0" | grep ERROR
+    ```
+
+    需要根据 ERROR 的提示清理对应唯一校验规则
+
+- 仅校验无进程关系的进程数据，输出不符合规则的数据
+
+    ```bash
+    ./tool_ctl migrate-check process --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0"
+    ```
+
+    如果校验无进程关系的进程数据全部都可以清理，可使用下述命令进行清理，如果不可以，则需要手动处理这些数据
+
+    ```bash
+    ./tool_ctl migrate-check process --clear-proc=true --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0"
+    ```
+
+注意：** 当且仅当所有的校验都通过时 ** 才可以进行正常的升级流程。
+
+#### 开始升级
 
 ```bash
 mysql --login-path=mysql-default -e "use bk_iam; insert into authorization_authapiallowlistconfig(creator, updater, created_time, updated_time, type, system_id, object_id) value('', '', now(), now(), 'authorization_instance', 'bk_cmdb', '*');"
@@ -363,7 +401,7 @@ rm -fv /data/bkce/etc/job/job-*/*.properties
 
 1. 获取 changeBizSetId.js 文件，该文件在中控机的 /data/src/job/support-files/bk-cmdb/ 目录
 
-2. 在执行上述步骤的当前目录会生成 biz_set_list.json 文件，将其中的数据替换 changeBizSetId.js 脚本文件中的占位符${biz_set_list}
+2. 在执行上述步骤的当前目录会生成 biz_set_list.json 文件，将其中的数据替换 changeBizSetId.js 脚本文件中的占位符 ${biz_set_list}
 
 3. 将 changeBizSetId.js 同步至 MongoDB 的 /data 目录
 
@@ -381,7 +419,7 @@ rm -fv /data/bkce/etc/job/job-*/*.properties
    mongo cmdb -u $BK_CMDB_MONGODB_USERNAME -p $BK_CMDB_MONGODB_PASSWORD --host $BK_CMDB_MONGODB_HOST --port $BK_CMDB_MONGODB_PORT /data/changeBizSetId.js
    ```
 
-5. 确认需要迁移的业务集均已在CMDB存在且ID与原Job中ID一致
+5. 确认需要迁移的业务集均已在 CMDB 存在且 ID 与原 Job 中 ID 一致
 
     ```bash
     ssh $BK_JOB_IP
@@ -422,15 +460,15 @@ pcmd -m nodeman "rsync -a --delete --exclude=media --exclude="environ.sh" /data/
   ```bash
   source /data/install/utils.fc
   ssh $BK_NODEMAN_IP
-  
+
   LANG="zh_CN.UTF-8"
   rmvirtualenv bknodeman-nodeman
-  
+
   # 重建新版本虚拟环境
   /data/install/bin/install_py_venv_pkgs.sh -e -p "/opt/py36_e/bin/python3.6" -n "bknodeman-nodeman" -w "/data/bkce/.envs" -a "/data/bkce/bknodeman/nodeman" -r "/data/bkce/bknodeman/nodeman/requirements.txt" -s "/data/bkce/bknodeman/support-files/pkgs"
-  
+
   cp -a /opt/py36_e/bin/python3.6_e /data/bkce/.envs/bknodeman-nodeman/bin/python
-  
+
   workon bknodeman-nodeman
   ```
 
@@ -460,7 +498,7 @@ pcmd -m nodeman "rsync -a --delete --exclude=media --exclude="environ.sh" /data/
 - 升级周边系统关联订阅
 
   ```bash
-  # 查询 DB 中订阅 ID的最大值  `$SUB_MAX` ，并作为迁移脚本的输入参数
+  # 查询 DB 中订阅 ID 的最大值  `$SUB_MAX` ，并作为迁移脚本的输入参数
   # 切换至中控机执行查询
   mysql --login-path=mysql-default -D$BK_NODEMAN_MYSQL_NAME -P$BK_NODEMAN_MYSQL_PORT -N -s -e 'select max(id) from node_man_subscription;'
   ```
@@ -493,11 +531,11 @@ pcmd -m nodeman "rsync -a --delete --exclude=media --exclude="environ.sh" /data/
   ```bash
   # 进入脚本输出的日志所在目录，以实际的为主
   cd /tmp/node_man_upgrade_1_xx_xxxxxx_enable
-  
+
   # 查询执行进度
   grep -E '.*([[:digit:]]+[[:space:]]/[[:space:]][[:digit:]]+|total_cost)' *
-  
-  # 执行完成标志，该目录下的所有日志文件都匹配到total_cost
+
+  # 执行完成标志，该目录下的所有日志文件都匹配到 total_cost
   grep total_cost *
   ```
 
@@ -559,26 +597,29 @@ pcmd -m log "rmvirtualenv bklog-api"
 ### 流程服务
 
 > 升级流程服务时，当前版本不能低于 2.6.0 版本，如果低于该版本，请先升级至 2.6.0 版本
-查看当前 ITSM 版本：前往【PaaS平台】- 打开【开发者中心】-【S-mart 应用】
+查看当前 ITSM 版本：前往【PaaS 平台】- 打开【开发者中心】-【S-mart 应用】
 
 #### 中间版本升级（可选）
 
-  - 如果已经通过单产品更新的用户请忽略该步骤，可直接进入下述步骤 (2.6.1) 版本升级
-  - 下载 2.6.0 的 SaaS 包 [点击下载](https://bkopen-1252002024.file.myqcloud.com/ce/d64e32f/bk_itsm_V2.6.0.365-ce-bkofficial.tar.gz)
-  ```bash
-  cd /data/src/official_saas && wget https://bkopen-1252002024.file.myqcloud.com/ce/d64e32f/bk_itsm_V2.6.0.365-ce-bkofficial.tar.gz
-  ```
-  
-  - 开始更新
-  ```bash
-  cd /data/install && ./bkcli install saas-o bk_itsm=2.6.0.365
-  ```
+- 如果已经通过单产品更新的用户请忽略该步骤，可直接进入下述步骤 (2.6.1) 版本升级
+
+- 下载 2.6.0 的 SaaS 包 [点击下载](https://bkopen-1252002024.file.myqcloud.com/ce/d64e32f/bk_itsm_V2.6.0.365-ce-bkofficial.tar.gz)
+
+    ```bash
+    cd /data/src/official_saas && wget https://bkopen-1252002024.file.myqcloud.com/ce/d64e32f/bk_itsm_V2.6.0.365-ce-bkofficial.tar.gz
+    ```
+
+- 开始更新
+
+    ```bash
+    cd /data/install && ./bkcli install saas-o bk_itsm=2.6.0.365
+    ```
 
 #### 开始升级
 
 1. 执行相关兼容操作
 
-    详细升级指南请参考：[V2.6.0 -> V2.6.1升级指南](https://github.com/TencentBlueKing/bk-itsm/blob/v2.6.x_develop/docs/install/V2_6_0_to_V2_6_1_upgrade_guide.md)
+    详细升级指南请参考：[V2.6.0 -> V2.6.1 升级指南](https://github.com/TencentBlueKing/bk-itsm/blob/v2.6.x_develop/docs/install/V2_6_0_to_V2_6_1_upgrade_guide.md)
 
     ```bash
     # 网页端访问
@@ -613,9 +654,9 @@ pcmd -m log "rmvirtualenv bklog-api"
 
 2. 删除蓝鲸业务各个集群
 
-    上一步执行成功后，蓝鲸业务集群的节点信息中即可看到 `删除节点` 选项，请手动删除所有蓝鲸业务下的集群
+    上一步执行成功后，蓝鲸业务集群的节点信息中即可看到 ` 删除节点 ` 选项，请手动删除所有蓝鲸业务下的集群
 
-  ![delete_topo](../../assets/bk_topo.png)
+    ![delete_topo](../../assets/bk_topo.png)
 
 3. 删掉所有的蓝鲸集群模板与进程模板
 
@@ -650,7 +691,7 @@ cd /data/install && echo bkssm bkiam usermgr paas cmdb gse job consul bklog bkmo
 1. 添加 bkiam_search_engine 模块分布
 
     ```bash
-    cat << EOF >>/data/install/install.config
+    cat <<EOF>>/data/install/install.config
     [iam_search_engine]
     10.0.0.2 iam_search_engine
     EOF
@@ -682,7 +723,7 @@ cd /data/install && echo bkssm bkiam usermgr paas cmdb gse job consul bklog bkmo
     1. 升级 agent、p-agent 以及采集器相关插件
     2. 重装 Proxy （涉及 proxy 二进制改动，gse_data 将取代 gse_transit，gse_transit 也在 6.1 版本下线）
 
-- 如果之前有部署 bkci 以及 bcs 的用户，请按照该方式将相关包进行还原 (`没有部署请忽略该步骤`)
+- 如果之前有部署 bkci 以及 bcs 的用户，请按照该方式将相关包进行还原 (` 没有部署请忽略该步骤 `)
 
 ```bash
 # bkci
