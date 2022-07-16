@@ -6,4 +6,20 @@
 During handling of the above exception, another exception occurred:``'
 
 
-![](ZH/6./日志平台/产品白皮/media/faq-001.jpg)
+![](./media/faq-001.png)
+
+
+**解决方案：**
+[https://bk.tencent.com/s-mart/community/question/8545?type=answer](https://bk.tencent.com/s-mart/community/question/8545?type=answer)
+
+<br>
+
+### 常见问题二：日志平台数据查询报 User authentication failed
+
+``[log_search元数据-API]JUser authentication failed, please check if the bk_token isvalid path => /api/c/compapi/v2/bk_log/esquery_search/ (1306000)``
+
+![](./media/faq-002.png)
+
+
+**解决方案：**
+[https://bk.tencent.com/s-mart/community/question/8563?type=answer](https://bk.tencent.com/s-mart/community/question/8563?type=answer)
