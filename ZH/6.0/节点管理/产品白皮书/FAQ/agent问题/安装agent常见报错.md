@@ -13,3 +13,12 @@ During handling of the above exception, another exception occurred:
 
 **解决方案：** 
 [https://bk.tencent.com/s-mart/community/question/7033](https://bk.tencent.com/s-mart/community/question/7033)
+
+<br>
+
+## 常见报错二：双网卡主机，重载 agent 配置显示 can not find agent by src ip 192.168.xxx.xxx
+
+![](../assets/003.png)
+
+**解决方案：**
+[https://bk.tencent.com/docs/document/6.0/127/8940](https://bk.tencent.com/docs/document/6.0/127/8940)

@@ -52,6 +52,7 @@
             * [Zookeeper](产品白皮书/维护手册/日常维护/zookeeper.md)
             * [Kafka](产品白皮书/维护手册/日常维护/kafka.md)
             * [RabbitMQ](产品白皮书/维护手册/日常维护/rabbitmq.md)
+            * [其它](产品白皮书/维护手册/日常维护/其它.md)
         * [升级指引]()
             * [社区版 6.0.2 - 6.0.3 Patch 升级指引](产品白皮书/升级指引/update_of_the_6.0.3_patch.md)
             * [社区版 6.0.3 - 6.0.4 Patch 升级指引](产品白皮书/升级指引/update_of_the_6.0.4_patch.md)
