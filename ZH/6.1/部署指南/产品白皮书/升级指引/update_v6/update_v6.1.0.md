@@ -447,7 +447,7 @@ rm -fv /data/bkce/etc/job/job-*/*.properties
 ./bkcli sync bknodeman
 
 # 更新节点管理新版本文件至安装目录下
-pcmd -m nodeman "rsync -a --delete --exclude=media --exclude="environ.sh" /data/src/bknodeman/ /data/bkce/bknodeman/"
+pcmd -m nodeman "rsync -a --delete --exclude=deploy --exclude="environ.sh" /data/src/bknodeman/ /data/bkce/bknodeman/"
 
 # 渲染节点管理配置文件
 ./bkcli render bknodeman
