@@ -73,15 +73,15 @@
 ### 1.5 下载 BCS 安装包
 <a id="15"></a>
 
-- 下载安装包，[下载地址](https://bkopen-1252002024.file.myqcloud.com/bcs/bcs_ce-6.0.10.tgz)
+- 下载安装包，[下载地址](https://bkopen-1252002024.file.myqcloud.com/bcs/bcs_ce-6.0.12.tgz)
 - 上传安装包至中控机 /data
-- 容器管理平台扩展软件包：bcs_ce-6.0.10.tgz
+- 容器管理平台扩展软件包：bcs_ce-6.0.12.tgz
 
 ### 1.6 解压 BCS 安装包
 <a id="16"></a>
 
 ```bash
-tar xvf bcs_ce-6.0.10.tgz -C /data/
+tar xvf bcs_ce-6.0.12.tgz -C /data/
 ```
 
 ## 二、开始部署
@@ -89,8 +89,8 @@ tar xvf bcs_ce-6.0.10.tgz -C /data/
 ### 2.1 下载标准运维模版文件
 <a id="21"></a>
 
-- [下载模版文件](https://bkopen-1252002024.file.myqcloud.com/bcs/bk_sops_common_ce_2021_04_27-01.dat)至本地
-- 标准运维模版文件名：bk_sops_common_ce_2021_04_27-01.dat
+- [下载模版文件](https://bkopen-1252002024.file.myqcloud.com/bcs/bk_sops_common_20220516152054.dat)至本地
+- 标准运维模版文件名：bk_sops_common_20220516152054.dat
 
 ### 2.2 导入标准运维模版
 
