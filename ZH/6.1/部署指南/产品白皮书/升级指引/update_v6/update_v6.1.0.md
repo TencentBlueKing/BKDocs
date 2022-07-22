@@ -349,7 +349,7 @@ v3.10 版本升级指引](https://github.com/Tencent/bk-cmdb/issues/5308)
     ./tool_ctl migrate-check process --clear-proc=true --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0"
     ```
 
-注意：** 当且仅当所有的校验都通过时 ** 才可以进行正常的升级流程。
+注意：**当且仅当所有的校验都通过时** 才可以进行正常的升级流程。
 
 #### 开始升级
 
@@ -447,7 +447,7 @@ rm -fv /data/bkce/etc/job/job-*/*.properties
 ./bkcli sync bknodeman
 
 # 更新节点管理新版本文件至安装目录下
-pcmd -m nodeman "rsync -a --delete --exclude=media --exclude="environ.sh" /data/src/bknodeman/ /data/bkce/bknodeman/"
+pcmd -m nodeman "rsync -a --delete --exclude=deploy --exclude="environ.sh" /data/src/bknodeman/ /data/bkce/bknodeman/"
 
 # 渲染节点管理配置文件
 ./bkcli render bknodeman
@@ -654,7 +654,7 @@ pcmd -m log "rmvirtualenv bklog-api"
 
 2. 删除蓝鲸业务各个集群
 
-    上一步执行成功后，蓝鲸业务集群的节点信息中即可看到 ` 删除节点 ` 选项，请手动删除所有蓝鲸业务下的集群
+    上一步执行成功后，蓝鲸业务集群的节点信息中即可看到 `删除节点` 选项，请手动删除所有蓝鲸业务下的集群
 
     ![delete_topo](../../assets/bk_topo.png)
 
