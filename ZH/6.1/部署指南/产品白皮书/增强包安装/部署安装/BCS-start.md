@@ -89,7 +89,7 @@ tar xvf bcs_ce-6.0.12.tgz -C /data/
 ### 2.1 下载标准运维模版文件
 <a id="21"></a>
 
-- [下载模版文件](https://bkopen-1252002024.file.myqcloud.com/bcs/bk_sops_common_20220516152054.dat )至本地
+- [下载模版文件](https://bkopen-1252002024.file.myqcloud.com/bcs/bk_sops_common_20220516152054.dat)至本地
 - 标准运维模版文件名：bk_sops_common_20220516152054.dat
 
 ### 2.2 导入标准运维模版
