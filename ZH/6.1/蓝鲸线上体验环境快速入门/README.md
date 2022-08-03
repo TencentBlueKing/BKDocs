@@ -24,9 +24,9 @@
 |[监控平台](https://bk.tencent.com/docs/markdown/监控平台/产品白皮书/intro/README.md)        |提供丰富的数据采集能力、大规模的数据处理能力，致力于满足不同场景的监控需求|已上线|
 |[日志平台](https://bk.tencent.com/docs/markdown/日志平台/产品白皮书/intro/README.md)        |基于业界主流的全文检索引擎，提供多种场景化的采集、查询功能|已上线|
 |[管控平台](https://bk.tencent.com/docs/markdown/管控平台/产品白皮书/产品简介/README.md)        |蓝鲸体系的底层管控系统，是蓝鲸所有其他服务的基础（GseAgent）|已上线|
-|[故障自愈](https://bk.tencent.com/docs/markdown/故障自愈/产品白皮书/Intro/README.md)        |实时发现告警，预诊断分析，自动恢复故障，并打通周边系统实现整个流程的闭环|敬请期待|
-|[bkci（蓝盾）](https://bk.tencent.com/docs/markdown/持续集成平台/产品白皮书/产品简介/README.md)        |免费并开源的 CI 服务，助力自动化构建-测试-发布工作流，持续、快速、高质量地交付产品|敬请期待|
-|[BCS（容器管理平台）](https://bk.tencent.com/docs/markdown/容器管理平台/产品白皮书/Introduction/README.md)        |高度可扩展、灵活易用的容器管理服务平台，支持社区原生 Kubernetes 编排引擎|敬请期待|
+|[故障自愈](https://bk.tencent.com/docs/markdown/故障自愈/产品白皮书/Intro/README.md)        |实时发现告警，预诊断分析，自动恢复故障，并打通周边系统实现整个流程的闭环|已上线|
+|[bkci（蓝盾）](https://bk.tencent.com/docs/markdown/持续集成平台/产品白皮书/产品简介/README.md)        |免费并开源的 CI 服务，助力自动化构建-测试-发布工作流，持续、快速、高质量地交付产品|已上线|
+|[BCS（容器管理平台）](https://bk.tencent.com/docs/markdown/容器管理平台/产品白皮书/Introduction/README.md)        |高度可扩展、灵活易用的容器管理服务平台，支持社区原生 Kubernetes 编排引擎|已上线|
 |更多敬请期待|[更新公告](./CHANGE_LOG.md)||
 
 ## 线上环境可以体验哪些
