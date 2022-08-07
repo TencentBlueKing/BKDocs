@@ -16,7 +16,6 @@ tar xf ~/bkhelmfile/bin/helm-plugin-diff.tgz -C ~/
 
 ``` bash
 helm repo add blueking https://hub.bktencent.com/chartrepo/blueking
-helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
 helm repo list
 ```
