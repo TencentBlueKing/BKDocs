@@ -119,8 +119,9 @@ k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
 请在 **中控机** 执行如下脚本 **生成 hosts 内容**，然后将其追加到所有的 `node` 的 `/etc/hosts` 文件结尾（如 pod 经历删除重建，则需要更新 hosts 文件覆盖 pod 相应的域名）。
 
 ``` bash
-BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
-IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+IP1=$(kubectl -n ingress-nginx get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 cat <<EOF
 $IP1 $BK_DOMAIN
@@ -140,7 +141,7 @@ EOF
 
 获取 clusterIP：
 ``` bash
-IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+IP1=$(kubectl -n ingress-nginx get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 ```
 
@@ -151,13 +152,14 @@ IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0
 
 获取内网 IP：
 ``` bash
-IP1=$(kubectl -n blueking get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+IP1=$(kubectl -n ingress-nginx get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
 IP2=$(kubectl -n blueking get pods -l app=bk-ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
 ```
 
 请先根据中控机的角色选择合适的 IP。然后生成 hosts 内容并手动更新到 `/etc/hosts`：
 ``` bash
-BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 # 生成hosts内容
 cat <<EOF
 $IP1 $BK_DOMAIN
@@ -192,7 +194,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 
 # 获取 ingress-controller pod所在机器的公网ip，记为$IP1
-IP1=$(kubectl get pods -n blueking -l app.kubernetes.io/name=ingress-nginx \
+IP1=$(kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx \
   -o jsonpath='{.items[0].status.hostIP}')
 # 获取外网ip
 IP1=$(ssh $IP1 'curl -sSf ip.sb')
@@ -238,7 +240,7 @@ password=密码
 在 **中控机** 执行如下命令获取访问地址：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-BK_DOMAIN=$(cat environments/default/{values,custom}.yaml 2>/dev/null | yq e '.domain.bkDomain' -)  # 读取默认或自定义域名
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 echo "http://$BK_DOMAIN"
 ```
 浏览器访问上述地址即可。记得提前配置本地 DNS 服务器或修改本机的 hosts 文件。
@@ -262,7 +264,8 @@ PaaS 支持 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 
 ### 配置 docker 使用 http 访问 registry
 在 SaaS 专用 node （如未配置专用 node，则为全部 node ）上执行命令生成新的配置文件：
 ``` bash
-BK_DOMAIN="bkce7.bktencent.com"  # 请按需修改
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 cat /etc/docker/daemon.json | jq '.["insecure-registries"]+=["docker.'$BK_DOMAIN'"]'
 ```
 

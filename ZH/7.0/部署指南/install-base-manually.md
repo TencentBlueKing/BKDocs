@@ -39,9 +39,13 @@ kubectl config set-context --current --namespace=blueking  # 设置k8s默认ns, 
 
 例如，需要自定义域名 `bkce7.bktencent.com`，可以使用命令：
 ``` bash
-cat <<EOF >> environments/default/custom.yaml
+BK_DOMAIN=bkce7.bktencent.com  # 请修改为您分配给蓝鲸平台的主域名
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+# 可使用如下命令添加域名。如果文件已存在，请手动编辑。
+custom=environments/default/custom.yaml
+cat >> "$custom" <<EOF
 domain:
-  bkDomain: bkce7.bktencent.com
+  bkDomain: $BK_DOMAIN
 EOF
 ```
 
@@ -117,8 +121,8 @@ kubectl get pod -o wide -n blueking | grep bk-ingress-nginx  # 检查
 
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
-IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+IP1=$(kubectl -n ingress-nginx get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 ./scripts/control_coredns.sh update "$IP1" bkrepo.$BK_DOMAIN docker.$BK_DOMAIN $BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN
 ./scripts/control_coredns.sh update "$IP2" apps.$BK_DOMAIN
