@@ -27,7 +27,7 @@
 |[故障自愈](https://bk.tencent.com/docs/markdown/故障自愈/产品白皮书/Intro/README.md)        |实时发现告警，预诊断分析，自动恢复故障，并打通周边系统实现整个流程的闭环|已上线|
 |[bkci（蓝盾）](https://bk.tencent.com/docs/markdown/持续集成平台/产品白皮书/产品简介/README.md)        |免费并开源的 CI 服务，助力自动化构建-测试-发布工作流，持续、快速、高质量地交付产品|已上线|
 |[BCS（容器管理平台）](https://bk.tencent.com/docs/markdown/容器管理平台/产品白皮书/Introduction/README.md)        |高度可扩展、灵活易用的容器管理服务平台，支持社区原生 Kubernetes 编排引擎|已上线|
-|更多敬请期待|[更新公告](./CHANGE_LOG.md)||
+|更多敬请期待|[更新公告](https://docs.qq.com/doc/DSWViVEZvdW9LVE15)||
 
 ## 线上环境可以体验哪些
 ### 1、 通用 demo 体验

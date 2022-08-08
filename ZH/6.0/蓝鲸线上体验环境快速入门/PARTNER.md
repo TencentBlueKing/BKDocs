@@ -3,7 +3,6 @@
 ![](./assets/2022-02-21-18-28-47.png)
 
 
-
 线上体验环境除了官方的 SaaS，还将不断丰富合作伙伴或者社区用户提供的覆盖各种场景的优质 SaaS，首期上线了[嘉为蓝鲸](https://www.canway.net)贡献的【数字化运营中心】、【统一监控中心】等几个 SaaS，也内置了体验数据，如有私有化部署或更细化的需求，可以联系[嘉为蓝鲸](https://www.canway.net)获取详细的指引信息。
 
 ![](./assets/2022-02-21-18-28-56.png)
@@ -17,5 +16,5 @@
 
 - 您可能需要：
 
-    1. [立即下载社区版](https://bk.tencent.com/download/)
+    1. [立即下载蓝鲸](https://bk.tencent.com/download/)
     2. 了解更多企业定制化服务：[点击咨询](https://bk.tencent.com/applyinfo/ee/)
