@@ -34,35 +34,49 @@ done
 常见报错：
 1. `Host key verification failed.`，且开头提示 `REMOTE HOST IDENTIFICATION HAS CHANGED`: 检查目的主机是否重装过。如果确认没连错机器，可以参考提示（如 `Offending 类型 key in /root/.ssh/known_hosts:行号`）删除 `known_hosts` 文件里的对应行。
 
-# 部署基础套餐后台
-如果您希望尽快体验蓝鲸，我们提供了 “一键部署” 脚本供您选择。
+## 下载所需的资源文件
+鉴于目前容器化的软件包数量较多且变动频繁，我们提供了下载脚本。
 
-如果您打算研究部署细节，则可以查阅 《[分步部署基础套餐后台](install-base-manually.md)》 文档。
+请使用如下命令下载蓝鲸 `7.0.0-beta.3` 基础套餐所需的文件及体验证书。
+``` bash
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur 7.0.0-beta.3 bkce demo
+```
+
+网络策略要求：
+1. 中控机（部署前文件下载，以及部署开始时下载 charts）：
+   1. 需要能访问蓝鲸静态文件分发站点：`https://bkopen-1252002024.file.myqcloud.com`。
+   2. 需要能访问蓝鲸 Helm repo：`https://hub.bktencent.com/`。
+2. k8s node（部署期间需要联网下载容器镜像）：
+   1. 需要能访问 Docker Hub： `https://docker.io` 等。
+   2. 需要能访问蓝鲸 Docker registry： `https://hub.bktencent.com/`。
+
+
+# 部署基础套餐后台
+本章节包含了 2 种等价的操作。您可按需选择其中一种：
+* 如果您希望尽快体验蓝鲸，使用 “一键部署” 脚本填写域名即可开始部署，详见 [一键部署基础套餐后台](#setup_bkce7-i-base) 章节。
+* 如果您打算研究部署细节，期间需要手动执行 `helmfile` 命令及一些代码片段，请查阅 《[分步部署基础套餐后台](install-base-manually.md)》 文档。
+
 
 <a id="setup_bkce7-i-base" name="setup_bkce7-i-base"></a>
 
 ## 一键部署基础套餐后台
-在 **中控机** 下载 “一键部署” 脚本并添加可执行权限：
-``` bash
-curl -Lo ~/setup_bkce7.sh https://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.0.1.sh && \
-  chmod +x ~/setup_bkce7.sh
-```
-
 假设您用于部署蓝鲸的域名为 `bkce7.bktencent.com`，使用如下的命令开始部署:
 ``` bash
-BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
-~/setup_bkce7.sh -i base --domain "$BK_DOMAIN"
+BK_DOMAIN=bkce7.bktencent.com  # 请修改为您分配给蓝鲸平台的主域名
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+# 检查域名是否符合k8s域名规范，要全部内容匹配才执行脚本，否则提示域名不符合。
+if grep -P '[a-z0-9]([-a-z0-9]*[a-z0-9])(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*' <<< "$BK_DOMAIN"; then
+  scripts/setup_bkce7.sh -i base --domain "$BK_DOMAIN"
+else
+  echo "BK_DOMAIN is not a valid domain format。"
+fi
 ```
 
 `setup_bkce7.sh` 脚本的参数解析:
 1. `-i base`：指定要安装的模块。关键词 `base` 表示基础套餐的后台部分。
-2. `--domain BK_DOMAIN`：指定蓝鲸的基础域名（下文也会使用 `BK_DOMAIN` 指代）。<br/>k8s 要求域名中的字母为**小写字母**，可以使用如下命令校验（输出结果中会高亮显示符合规范的部分）：`echo "$BK_DOMAIN" | grep -P '[a-z0-9]([-a-z0-9]*[a-z0-9])(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*'` 。
+2. `--domain BK_DOMAIN`：指定蓝鲸的基础域名（下文也会使用 `BK_DOMAIN` 这个变量名指代）。
 
-此脚本耗时 15 ~ 30 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。
-
->**注意**
->
->k8s 所有 `node` 机器均需保持网络畅通，可访问蓝鲸提供的镜像地址。
+脚本耗时 8 ~ 16 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。如果部署期间出错，请先参考 [FAQ](faq.md) 文档排查。
 
 
 ## 分步部署基础套餐后台
@@ -70,7 +84,9 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 
 # 配置 DNS
-针对访问场景的不同，我们需要配置不同的 DNS 记录:
+k8s 具备比较复杂的网络拓扑，当您从不同的区域访问时，需要使用不同的入口地址。
+
+我们用到的访问场景如下:
 * k8s pod 内解析蓝鲸域名，需要 [配置 coredns](#hosts-in-coredns)
 * k8s node 从 bkrepo 拉取镜像，安装 GSE Agent，需要 [配置 k8s node 的 DNS](#hosts-in-k8s-node)
 * 中控机调用蓝鲸接口，需要 [配置中控机的 DNS](#hosts-in-bk-ctrl)
@@ -173,7 +189,7 @@ EOF
 在 **中控机** 执行如下命令即可获得 hosts 文件的参考内容（如果有新增 node，记得提前更新 ssh 免密）：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 默认从配置中提取, 也可自行赋值
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 
 # 获取 ingress-controller pod所在机器的公网ip，记为$IP1
 IP1=$(kubectl get pods -n blueking -l app.kubernetes.io/name=ingress-nginx \
