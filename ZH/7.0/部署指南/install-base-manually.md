@@ -1,24 +1,5 @@
 我们已经提供了“一键脚本”，可以完成本文档的全部内容，建议先阅读《[基础套餐部署](install-bkce.md)》文档。
 
-# 下载
-在 **中控机** 下载官方提供的  `bkce-helmfile`  包，它包含了  `helmfile`  的二进制（管理并渲染 helm 的 values 来进行轻编排的命令行工具）以及容器化蓝鲸社区版部署的相关 yaml 配置模板。
-
-``` bash
-wget -c -O ~/bkce-helmfile.tgz https://bkopen-1252002024.file.myqcloud.com/ce7/bkce-helmfile-7.0.1.tgz
-wget -O ~/example_bkce_cert.tgz https://bkopen-1252002024.file.myqcloud.com/ce7/example_bkce_cert.tgz
-mkdir -p ~/bkhelmfile && tar xf ~/bkce-helmfile.tgz -C ~/bkhelmfile
-tar xf ~/example_bkce_cert.tgz -C ~/bkhelmfile/blueking/environments/default/
-cp -a ~/bkhelmfile/bin/helmfile ~/bkhelmfile/bin/helm ~/bkhelmfile/bin/yq /usr/local/bin/ && chmod +x /usr/local/bin/helm* /usr/local/bin/yq
-tar xf ~/bkhelmfile/bin/helm-plugin-diff.tgz -C ~/
-```
-
-添加公网蓝鲸社区版的  `helm chart repo`  （存放蓝鲸社区版 7.0 的各  `charts`  包），假设 repo 名为 blueking，本文档后续内容均以 blueking repo 来指代；添加开源的 bitnami 的 charts 仓库，也可根据自己需要他添加其他公网的 charts 仓库。
-
-``` bash
-helm repo add blueking https://hub.bktencent.com/chartrepo/blueking
-helm repo update
-helm repo list
-```
 
 # 配置
 ## 进入工作目录
@@ -32,12 +13,13 @@ kubectl config set-context --current --namespace=blueking  # 设置k8s默认ns, 
 ```
 
 ## 配置访问域名
+蓝鲸平台均需通过域名访问，为了简化域名配置，我们提供了基础域名的配置项 `domain.bkDomain`（也可使用 `BK_DOMAIN` 这个变量名称呼它）。此配置项用于拼接蓝鲸其他系统的访问域名，也是蓝鲸统一登录所需的 cookie 域名。
 
-默认的域名在  `environments/default/values.yaml`  文件中，配置项 `domain.bkDomain` 默认值为 `paas.example.com`。它决定了访问蓝鲸平台的一系列子域名，建议修改为您自有的域名。
+而 `domain.bkMainSiteDomain` 则为蓝鲸的主站入口域名，一般配置为 `domain.bkDomain` 相同的值。
 
-如果需要自定义参数，需要新建文件  `environments/default/custom.yaml`  ，将需要自定义的配置项从 values.yaml 复制到该文件中，然后进行修改，它的优先级高于默认的 values.yaml。
+如果需要自定义参数，需要新建文件 `environments/default/custom.yaml` （下文简称为 `custom.yaml` 文件），此文件用于对 values.yaml 文件的内容进行覆盖。
 
-例如，需要自定义域名 `bkce7.bktencent.com`，可以使用命令：
+例如，需要自定义域名 `bkce7.bktencent.com`，可以使用如下命令生成 `custom.yaml` 文件：
 ``` bash
 BK_DOMAIN=bkce7.bktencent.com  # 请修改为您分配给蓝鲸平台的主域名
 cd ~/bkhelmfile/blueking/  # 进入工作目录
@@ -46,10 +28,36 @@ custom=environments/default/custom.yaml
 cat >> "$custom" <<EOF
 domain:
   bkDomain: $BK_DOMAIN
+  bkMainSiteDomain: $BK_DOMAIN
 EOF
 ```
 
-如果是在公有云服务上搭建的，配置的域名应为您已经在对应云服务商平台接入备案的域名。
+如果您在公有云上部署蓝鲸，请先完成域名备案，否则会被云服务商依法阻断访问请求。
+
+## 配置容器日志目录
+平台组件的后台日志采集用。
+
+请在所有 **k8s node** 上执行此命令，预期输出一致：
+``` bash
+docker info  | awk -F": " '/Docker Root Dir/{print $2"/containers"}'
+```
+当上述路径一致时，请编辑中控机的 `custom.yaml` 文件，添加如下配置项：
+``` bash
+apps:
+  bkappFilebeat.containersLogPath: "查询到的路径"
+```
+
+我们预期您的 k8s node 具备相同的 docker 配置。如果此路径不一致，请先完成 docker 标准化。
+
+## 添加 charts 仓库
+蓝鲸 7.0 软件产品通过 https://hub.bktencent.com/ 进行分发。
+
+请先在 helm 中添加名为 `blueking` 的 charts 仓库：
+``` bash
+helm repo add blueking https://hub.bktencent.com/chartrepo/blueking
+helm repo update
+helm repo list
+```
 
 ## 生成蓝鲸 app code 对应的 secret
 ``` bash
@@ -75,7 +83,7 @@ kubectl get sc
 ```
 预期输出一行，且 `NAME` 列的值为 `local-storage (default)`。
 
-如果 `default` 为其他名字，则说明有其他存储供应服务，无需执行此步骤。
+如果 `default` 为其他名字，则说明有其他存储供应服务。则无需使用 `localpv`，可跳过本小节。
 
 蓝鲸默认使用 `/mnt/blueking` 目录作为主目录，请勿修改。
 执行如下命令开始创建 pv：
@@ -123,9 +131,7 @@ kubectl get pod -o wide -n blueking | grep bk-ingress-nginx  # 检查
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 IP1=$(kubectl -n ingress-nginx get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-./scripts/control_coredns.sh update "$IP1" bkrepo.$BK_DOMAIN docker.$BK_DOMAIN $BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN
-./scripts/control_coredns.sh update "$IP2" apps.$BK_DOMAIN
+./scripts/control_coredns.sh update "$IP1" bkrepo.$BK_DOMAIN docker.$BK_DOMAIN $BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN apps.$BK_DOMAIN
 ```
 
 确认注入结果，执行如下命令：
@@ -133,9 +139,9 @@ IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 ./scripts/control_coredns.sh list
 ```
-其输出如下：
+参考输出如下：
 ``` plain
-        10.244.0.4 apps.bkce7.bktencent.com
+        10.244.0.5 apps.bkce7.bktencent.com
         10.244.0.5 bkrepo.bkce7.bktencent.com
         10.244.0.5 docker.bkce7.bktencent.com
         10.244.0.5 bkce7.bktencent.com

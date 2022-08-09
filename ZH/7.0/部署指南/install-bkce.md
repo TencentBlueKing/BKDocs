@@ -65,10 +65,11 @@ curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta
 BK_DOMAIN=bkce7.bktencent.com  # 请修改为您分配给蓝鲸平台的主域名
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 # 检查域名是否符合k8s域名规范，要全部内容匹配才执行脚本，否则提示域名不符合。
-if grep -P '[a-z0-9]([-a-z0-9]*[a-z0-9])(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*' <<< "$BK_DOMAIN"; then
+patt_domain='[a-z0-9]([-a-z0-9]*[a-z0-9])(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*'
+if grep -P "$patt_domain" <<< "$BK_DOMAIN"; then
   scripts/setup_bkce7.sh -i base --domain "$BK_DOMAIN"
 else
-  echo "BK_DOMAIN is not a valid domain format。"
+  echo "BK_DOMAIN($BK_DOMAIN) does not match pattern($patt_domain)."
 fi
 ```
 
