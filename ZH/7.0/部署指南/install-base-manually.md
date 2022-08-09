@@ -159,23 +159,10 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 helmfile -f base.yaml.gotmpl sync
 ```
 
-此时可以新开一个终端下，执行如下命令观察 pod 状态变化：
+此时可以新开一个终端，执行如下命令观察 pod 状态变化：
 ``` bash
 kubectl get pods -n blueking -w
 ```
 等待所有 pod 都变成 `Running` 或 `Completed` 状态。
 
-如果 pod 处于 `Pending` 超过 5 分钟或者处于其他异常状态, 可以先查看详情, 此处以 `bk-mongodb-0` 为例:
-``` bash
-kubectl describe pods -n blueking bk-mongodb-0
-```
-观察 `Events`下方的提示信息, 正常情况下为 `<none>`:
-``` text
-Events:          <none>
-```
-
-如果 pod `Crash` 或 `Error`, 建议查看 pod 下全部容器的日志(强烈建议先配置命令行补全, 这样能补齐 pod 里的 container 名).
-命令语法如下:
-``` bash
-kubectl logs -n blueking POD名(建议补全出来) container名(建议补全出来)
-```
+期间如果 helmfile 出现报错，请先参考 《[FAQ](faq.md)》 文档排查。
