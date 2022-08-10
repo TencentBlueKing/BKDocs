@@ -123,39 +123,33 @@ k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 IP1=$(kubectl -n ingress-nginx get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 cat <<EOF
 $IP1 $BK_DOMAIN
 $IP1 bkrepo.$BK_DOMAIN
 $IP1 docker.$BK_DOMAIN
-$IP2 apps.$BK_DOMAIN
+$IP1 bknodeman.$BK_DOMAIN
+$IP1 apps.$BK_DOMAIN
 EOF
 ```
 
 <a id="hosts-in-bk-ctrl" name="hosts-in-bk-ctrl"></a>
 
 ## 配置中控机的 DNS
-当中控机为 k8s 集群的成员时，可以参考 “配置 k8s node 的 DNS” 章节改为取 `clusterIP`。
->**注意**
->
->pod 删除重建后，clusterIP 会变动，则需刷新 hosts 文件。
-
-获取 clusterIP：
-``` bash
-IP1=$(kubectl -n ingress-nginx get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-```
-
-当中控机非 k8s 集群成员时，需要使用 node 的内网 IP (`hostIP`)。
->**注意**
->
->如果 Pod 重新调度，所在 node 发生了变动，则需刷新 hosts 文件。
-
-获取内网 IP：
-``` bash
-IP1=$(kubectl -n ingress-nginx get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
-IP2=$(kubectl -n blueking get pods -l app=bk-ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
-```
+中控机的 IP 取值有 2 种情况：
+* 当中控机独立于 k8s 集群外，需要使用 node 的内网 IP (`hostIP`)：
+  ``` bash
+  IP1=$(kubectl -n ingress-nginx get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+  ```
+  >**注意**
+  >
+  >如果 Pod 重新调度，所在 node 发生了变动，则需刷新 hosts 文件。
+* 当中控机为 k8s 的 master 或 node 时，需要取服务的 `clusterIP`：
+  ``` bash
+  IP1=$(kubectl -n ingress-nginx get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+  ```
+  >**注意**
+  >
+  >pod 删除重建后，clusterIP 会变动，则需刷新 hosts 文件。
 
 请先根据中控机的角色选择合适的 IP。然后生成 hosts 内容并手动更新到 `/etc/hosts`：
 ``` bash
@@ -176,34 +170,32 @@ $IP1 bkiam-api.$BK_DOMAIN
 $IP1 cmdb.$BK_DOMAIN
 $IP1 job.$BK_DOMAIN
 $IP1 jobapi.$BK_DOMAIN
-$IP2 apps.$BK_DOMAIN
+$IP1 apps.$BK_DOMAIN
 EOF
 ```
 
 <a name="hosts-in-user-pc"></a>
 
 ## 配置用户侧的 DNS
-蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。
+蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。然后才能在浏览器访问。
 
 >**注意**
 >
 >如 k8s 集群重启等原因重新调度，pod 所在 node 发生了变动，需刷新 hosts 文件。
 
-在 **中控机** 执行如下命令即可获得 hosts 文件的参考内容（如果有新增 node，记得提前更新 ssh 免密）：
+获取 ingress-nginx pod 所在机器的内网 IP，记为 IP1。在 **中控机** 执行如下命令可获取 IP1：
+``` bash
+IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx \
+  -o jsonpath='{.items[0].status.hostIP}')
+```
+如果您不是直接通过内网 IP 访问蓝鲸，则需调整 IP1 的赋值：
+* 如果需要使用公网 IP 访问，可手动赋值 `IP1=公网IP`，或者使用如下命令从中控机登录到 node 上查询公网 IP：`IP1=$(ssh "$IP1" 'curl -sSf ip.sb')`。
+* 如果使用了负载均衡，可手动赋值 `IP1=负载均衡IP`。
+
+在 **中控机** 执行如下命令生成 hosts 文件的内容：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-
-# 获取 ingress-controller pod所在机器的公网ip，记为$IP1
-IP1=$(kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx \
-  -o jsonpath='{.items[0].status.hostIP}')
-# 获取外网ip
-IP1=$(ssh $IP1 'curl -sSf ip.sb')
-# 获取 bk-ingress-controller pod所在机器的公网ip，记为$IP2，它负责SaaS应用的流量代理。
-IP2=$(kubectl get pods -n blueking -l app.kubernetes.io/name=bk-ingress-nginx \
-  -o jsonpath='{.items[0].status.hostIP}')
-# 获取外网ip
-IP2=$(ssh $IP2 'curl -sSf ip.sb')
 # 人工检查取值
 echo "BK_DOMAIN=$BK_DOMAIN IP1=$IP1 IP2=$IP2"
 # 输出hosts
@@ -220,7 +212,7 @@ $IP1 bkiam-api.$BK_DOMAIN
 $IP1 cmdb.$BK_DOMAIN
 $IP1 job.$BK_DOMAIN
 $IP1 jobapi.$BK_DOMAIN
-$IP2 apps.$BK_DOMAIN
+$IP1 apps.$BK_DOMAIN
 EOF
 ```
 
@@ -254,7 +246,7 @@ echo "http://$BK_DOMAIN"
 <a id="k8s-node-docker-insecure-registries" name="k8s-node-docker-insecure-registries"></a>
 
 ## 调整 node 上的 docker 服务
-PaaS 支持 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 提供的 docker registry 服务。
+PaaS v3 开始支持 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 提供的 docker registry 服务。
 
 因为 docker 默认使用 https 协议访问 registry，因此需要额外配置。一共有 2 种配置方案：
 1. 配置 docker 使用 http 访问 registry（推荐使用，步骤见下文）。
