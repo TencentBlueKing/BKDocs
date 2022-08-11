@@ -52,7 +52,7 @@ curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta
 
 
 # 部署基础套餐后台
-本章节包含了 2 种等价的操作。您可按需选择其中一种：
+本章节提供了 2 种等价的操作。您可按需选择其中一种：
 * 如果您希望尽快体验蓝鲸，使用 “一键部署” 脚本填写域名即可开始部署，详见 [一键部署基础套餐后台](#setup_bkce7-i-base) 章节。
 * 如果您打算研究部署细节，期间需要手动执行 `helmfile` 命令及一些代码片段，请查阅 《[分步部署基础套餐后台](install-base-manually.md)》 文档。
 
@@ -305,22 +305,23 @@ docker info
 在资源充足的情况下，建议单独给 SaaS 分配单独的 `node`。因为 SaaS 部署时，编译会产生高 IO 和高 CPU 消耗。原生 k8s 集群的 io 隔离暂无方案，这样会影响到所在 `node` 的其他 `pod`。
 
 # 部署基础套餐 SaaS
-在前面部署蓝鲸后台时包含了 PaaS（开发者中心）、配置平台、作业平台 等平台和用户管理、权限中心两个 SaaS。
-
-节点管理实现了 Charts 化改造，但是需要配置 DNS 后方可上传文件。
+在前面部署蓝鲸后台时包含了 开发者中心、配置平台、作业平台 等平台和用户管理、权限中心两个 SaaS。
 
 其他蓝鲸智云官方的 SaaS 应用，比如标准运维、流程服务等需要通过开发者中心来部署。
+节点管理虽然实现了 Charts 化改造，无需在开发者中心部署。但存在较多的配置操作，故而依旧放在 SaaS 章节。
 
-为了方便您快速体验，我们扩展了 “一键部署” 脚本，实现了 SaaS 的 **全新安装** 以及 **部署前设置**。
+>**提示**
+>
+>部署时 开发者中心 会基于 S-Mart 安装包制作该 SaaS 的 docker 镜像并上传到 bkrepo。<br/>
+>您刚才已经随着文档完成了 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 和 “[调整 node 上的 docker 服务](#k8s-node-docker-insecure-registries)” 章节。如果在此期间您有新增 k8s node，则需在新 node 上也做完这些的操作。
+
+如同刚才部署后台一般，本章节也提供了 2 种等价的操作。您可按需选择其中一种：
+* 为了快速体验，可以跟随下面的 “[一键部署基础套餐 SaaS](#setup_bkce7-i-saas)” 章节来完成 **全新安装** 以及 **部署前设置**。
+* 部分 SaaS 需要部署后手动配置，则需查阅信息全面的 《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
 
 <a id="setup_bkce7-i-saas" name="setup_bkce7-i-saas"></a>
 
 ## 一键部署基础套餐 SaaS
->**提示**
->
->部署时 开发者中心 会基于 S-Mart 安装包制作该 SaaS 的 docker 镜像并上传到 bkrepo。<br/>
->您刚才已经完成了 “[配置 k8s node 的 DNS](#hosts-in-k8s-node)” 和 “[调整 node 上的 docker 服务](#k8s-node-docker-insecure-registries)” 章节。<br/>
->如果在此期间您有新增 k8s node，则需在新 node 上完成上述章节的操作。
 
 在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境：
 ``` bash
@@ -341,7 +342,7 @@ scripts/setup_bkce7.sh -i saas
 
 
 ## 手动部署基础套餐 SaaS
-如需了解 SaaS 的完整部署步骤或配置节点管理托管的全部文件等，请查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
+因篇幅较大，此章节内容拆分到了《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
 
 
 <a id="k8s-node-install-gse-agent" name="k8s-node-install-gse-agent"></a>
