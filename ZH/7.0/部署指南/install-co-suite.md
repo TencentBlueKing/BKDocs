@@ -4,7 +4,8 @@
 在 中控机 执行
 ``` bash
 cd ~/bkhelmfile/blueking
-helmfile -f 04-bkmonitor.yaml.gotmpl sync
+helmfile -f monitor-storage.yaml.gotmpl sync  # 部署监控依赖的存储
+helmfile -f 04-bkmonitor.yaml.gotmpl sync  # 部署监控后台和saas以及监控数据链路组件
 ```
 约等待 5 ~ 10 分钟，期间 `bk-monitor-consul` pod 可能 `Error` 且自动重启。
 
