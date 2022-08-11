@@ -34,35 +34,50 @@ done
 常见报错：
 1. `Host key verification failed.`，且开头提示 `REMOTE HOST IDENTIFICATION HAS CHANGED`: 检查目的主机是否重装过。如果确认没连错机器，可以参考提示（如 `Offending 类型 key in /root/.ssh/known_hosts:行号`）删除 `known_hosts` 文件里的对应行。
 
-# 部署基础套餐后台
-如果您希望尽快体验蓝鲸，我们提供了 “一键部署” 脚本供您选择。
+## 下载所需的资源文件
+鉴于目前容器化的软件包数量较多且变动频繁，我们提供了下载脚本。
 
-如果您打算研究部署细节，则可以查阅 《[分步部署基础套餐后台](install-base-manually.md)》 文档。
+请使用如下命令下载蓝鲸 `7.0.0-beta.3` 基础套餐 helmfile 及体验证书。
+``` bash
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur 7.0.0-beta.3 base demo
+```
+
+网络策略要求：
+1. 中控机（部署前文件下载，以及部署开始时下载 charts）：
+   1. 需要能访问蓝鲸静态文件分发站点：`https://bkopen-1252002024.file.myqcloud.com`。
+   2. 需要能访问蓝鲸 Helm repo：`https://hub.bktencent.com/`。
+2. k8s node（部署期间需要联网下载容器镜像）：
+   1. 需要能访问 Docker Hub： `https://docker.io` 等。
+   2. 需要能访问蓝鲸 Docker registry： `https://hub.bktencent.com/`。
+
+
+# 部署基础套餐后台
+本章节包含了 2 种等价的操作。您可按需选择其中一种：
+* 如果您希望尽快体验蓝鲸，使用 “一键部署” 脚本填写域名即可开始部署，详见 [一键部署基础套餐后台](#setup_bkce7-i-base) 章节。
+* 如果您打算研究部署细节，期间需要手动执行 `helmfile` 命令及一些代码片段，请查阅 《[分步部署基础套餐后台](install-base-manually.md)》 文档。
+
 
 <a id="setup_bkce7-i-base" name="setup_bkce7-i-base"></a>
 
 ## 一键部署基础套餐后台
-在 **中控机** 下载 “一键部署” 脚本并添加可执行权限：
-``` bash
-curl -Lo ~/setup_bkce7.sh https://bkopen-1252002024.file.myqcloud.com/ce7/setup_bkce7.0.1.sh && \
-  chmod +x ~/setup_bkce7.sh
-```
-
 假设您用于部署蓝鲸的域名为 `bkce7.bktencent.com`，使用如下的命令开始部署:
 ``` bash
-BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
-~/setup_bkce7.sh -i base --domain "$BK_DOMAIN"
+BK_DOMAIN=bkce7.bktencent.com  # 请修改为您分配给蓝鲸平台的主域名
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+# 检查域名是否符合k8s域名规范，要全部内容匹配才执行脚本，否则提示域名不符合。
+patt_domain='[a-z0-9]([-a-z0-9]*[a-z0-9])(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*'
+if grep -P "$patt_domain" <<< "$BK_DOMAIN"; then
+  scripts/setup_bkce7.sh -i base --domain "$BK_DOMAIN"
+else
+  echo "BK_DOMAIN($BK_DOMAIN) does not match pattern($patt_domain)."
+fi
 ```
 
 `setup_bkce7.sh` 脚本的参数解析:
 1. `-i base`：指定要安装的模块。关键词 `base` 表示基础套餐的后台部分。
-2. `--domain BK_DOMAIN`：指定蓝鲸的基础域名（下文也会使用 `BK_DOMAIN` 指代）。<br/>k8s 要求域名中的字母为**小写字母**，可以使用如下命令校验（输出结果中会高亮显示符合规范的部分）：`echo "$BK_DOMAIN" | grep -P '[a-z0-9]([-a-z0-9]*[a-z0-9])(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*'` 。
+2. `--domain BK_DOMAIN`：指定蓝鲸的基础域名（下文也会使用 `BK_DOMAIN` 这个变量名指代）。
 
-此脚本耗时 15 ~ 30 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。
-
->**注意**
->
->k8s 所有 `node` 机器均需保持网络畅通，可访问蓝鲸提供的镜像地址。
+脚本耗时 8 ~ 16 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。如果部署期间出错，请先参考 [FAQ](faq.md) 文档排查。
 
 
 ## 分步部署基础套餐后台
@@ -70,7 +85,9 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为所需的域名
 
 
 # 配置 DNS
-针对访问场景的不同，我们需要配置不同的 DNS 记录:
+k8s 具备比较复杂的网络拓扑，当您从不同的区域访问时，需要使用不同的入口地址。
+
+我们用到的访问场景如下:
 * k8s pod 内解析蓝鲸域名，需要 [配置 coredns](#hosts-in-coredns)
 * k8s node 从 bkrepo 拉取镜像，安装 GSE Agent，需要 [配置 k8s node 的 DNS](#hosts-in-k8s-node)
 * 中控机调用蓝鲸接口，需要 [配置中控机的 DNS](#hosts-in-bk-ctrl)
@@ -103,45 +120,41 @@ k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
 请在 **中控机** 执行如下脚本 **生成 hosts 内容**，然后将其追加到所有的 `node` 的 `/etc/hosts` 文件结尾（如 pod 经历删除重建，则需要更新 hosts 文件覆盖 pod 相应的域名）。
 
 ``` bash
-BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
-IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+IP1=$(kubectl -n ingress-nginx get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 cat <<EOF
 $IP1 $BK_DOMAIN
 $IP1 bkrepo.$BK_DOMAIN
 $IP1 docker.$BK_DOMAIN
-$IP2 apps.$BK_DOMAIN
+$IP1 bknodeman.$BK_DOMAIN
+$IP1 apps.$BK_DOMAIN
 EOF
 ```
 
 <a id="hosts-in-bk-ctrl" name="hosts-in-bk-ctrl"></a>
 
 ## 配置中控机的 DNS
-当中控机为 k8s 集群的成员时，可以参考 “配置 k8s node 的 DNS” 章节改为取 `clusterIP`。
->**注意**
->
->pod 删除重建后，clusterIP 会变动，则需刷新 hosts 文件。
-
-获取 clusterIP：
-``` bash
-IP1=$(kubectl -n blueking get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-IP2=$(kubectl -n blueking get svc -l app=bk-ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-```
-
-当中控机非 k8s 集群成员时，需要使用 node 的内网 IP (`hostIP`)。
->**注意**
->
->如果 Pod 重新调度，所在 node 发生了变动，则需刷新 hosts 文件。
-
-获取内网 IP：
-``` bash
-IP1=$(kubectl -n blueking get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
-IP2=$(kubectl -n blueking get pods -l app=bk-ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
-```
+中控机的 IP 取值有 2 种情况：
+* 当中控机独立于 k8s 集群外，需要使用 node 的内网 IP (`hostIP`)：
+  ``` bash
+  IP1=$(kubectl -n ingress-nginx get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+  ```
+  >**注意**
+  >
+  >如果 Pod 重新调度，所在 node 发生了变动，则需刷新 hosts 文件。
+* 当中控机为 k8s 的 master 或 node 时，需要取服务的 `clusterIP`：
+  ``` bash
+  IP1=$(kubectl -n ingress-nginx get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+  ```
+  >**注意**
+  >
+  >pod 删除重建后，clusterIP 会变动，则需刷新 hosts 文件。
 
 请先根据中控机的角色选择合适的 IP。然后生成 hosts 内容并手动更新到 `/etc/hosts`：
 ``` bash
-BK_DOMAIN=bkce7.bktencent.com  # 请和 domain.bkDomain 保持一致.
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 # 生成hosts内容
 cat <<EOF
 $IP1 $BK_DOMAIN
@@ -157,34 +170,32 @@ $IP1 bkiam-api.$BK_DOMAIN
 $IP1 cmdb.$BK_DOMAIN
 $IP1 job.$BK_DOMAIN
 $IP1 jobapi.$BK_DOMAIN
-$IP2 apps.$BK_DOMAIN
+$IP1 apps.$BK_DOMAIN
 EOF
 ```
 
 <a name="hosts-in-user-pc"></a>
 
 ## 配置用户侧的 DNS
-蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。
+蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。然后才能在浏览器访问。
 
 >**注意**
 >
 >如 k8s 集群重启等原因重新调度，pod 所在 node 发生了变动，需刷新 hosts 文件。
 
-在 **中控机** 执行如下命令即可获得 hosts 文件的参考内容（如果有新增 node，记得提前更新 ssh 免密）：
+获取 ingress-nginx pod 所在机器的内网 IP，记为 IP1。在 **中控机** 执行如下命令可获取 IP1：
+``` bash
+IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx \
+  -o jsonpath='{.items[0].status.hostIP}')
+```
+如果您不是直接通过内网 IP 访问蓝鲸，则需调整 IP1 的赋值：
+* 如果需要使用公网 IP 访问，可手动赋值 `IP1=公网IP`，或者使用如下命令从中控机登录到 node 上查询公网 IP：`IP1=$(ssh "$IP1" 'curl -sSf ip.sb')`。
+* 如果使用了负载均衡，可手动赋值 `IP1=负载均衡IP`。
+
+在 **中控机** 执行如下命令生成 hosts 文件的内容：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 默认从配置中提取, 也可自行赋值
-
-# 获取 ingress-controller pod所在机器的公网ip，记为$IP1
-IP1=$(kubectl get pods -n blueking -l app.kubernetes.io/name=ingress-nginx \
-  -o jsonpath='{.items[0].status.hostIP}')
-# 获取外网ip
-IP1=$(ssh $IP1 'curl -sSf ip.sb')
-# 获取 bk-ingress-controller pod所在机器的公网ip，记为$IP2，它负责SaaS应用的流量代理。
-IP2=$(kubectl get pods -n blueking -l app.kubernetes.io/name=bk-ingress-nginx \
-  -o jsonpath='{.items[0].status.hostIP}')
-# 获取外网ip
-IP2=$(ssh $IP2 'curl -sSf ip.sb')
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 # 人工检查取值
 echo "BK_DOMAIN=$BK_DOMAIN IP1=$IP1 IP2=$IP2"
 # 输出hosts
@@ -201,7 +212,7 @@ $IP1 bkiam-api.$BK_DOMAIN
 $IP1 cmdb.$BK_DOMAIN
 $IP1 job.$BK_DOMAIN
 $IP1 jobapi.$BK_DOMAIN
-$IP2 apps.$BK_DOMAIN
+$IP1 apps.$BK_DOMAIN
 EOF
 ```
 
@@ -222,7 +233,7 @@ password=密码
 在 **中控机** 执行如下命令获取访问地址：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-BK_DOMAIN=$(cat environments/default/{values,custom}.yaml 2>/dev/null | yq e '.domain.bkDomain' -)  # 读取默认或自定义域名
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 echo "http://$BK_DOMAIN"
 ```
 浏览器访问上述地址即可。记得提前配置本地 DNS 服务器或修改本机的 hosts 文件。
@@ -235,7 +246,7 @@ echo "http://$BK_DOMAIN"
 <a id="k8s-node-docker-insecure-registries" name="k8s-node-docker-insecure-registries"></a>
 
 ## 调整 node 上的 docker 服务
-PaaS 支持 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 提供的 docker registry 服务。
+PaaS v3 开始支持 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 提供的 docker registry 服务。
 
 因为 docker 默认使用 https 协议访问 registry，因此需要额外配置。一共有 2 种配置方案：
 1. 配置 docker 使用 http 访问 registry（推荐使用，步骤见下文）。
@@ -246,7 +257,8 @@ PaaS 支持 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 
 ### 配置 docker 使用 http 访问 registry
 在 SaaS 专用 node （如未配置专用 node，则为全部 node ）上执行命令生成新的配置文件：
 ``` bash
-BK_DOMAIN="bkce7.bktencent.com"  # 请按需修改
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 cat /etc/docker/daemon.json | jq '.["insecure-registries"]+=["docker.'$BK_DOMAIN'"]'
 ```
 
@@ -295,7 +307,9 @@ docker info
 # 部署基础套餐 SaaS
 在前面部署蓝鲸后台时包含了 PaaS（开发者中心）、配置平台、作业平台 等平台和用户管理、权限中心两个 SaaS。
 
-其他社区版官方的 SaaS 应用，比如标准运维、节点管理、流程服务等需要通过开发者中心来部署。
+节点管理实现了 Charts 化改造，但是需要配置 DNS 后方可上传文件。
+
+其他社区版官方的 SaaS 应用，比如标准运维、流程服务等需要通过开发者中心来部署。
 
 为了方便您快速体验，我们扩展了 “一键部署” 脚本，实现了 SaaS 的 **全新安装** 以及 **部署前设置**。
 
@@ -310,14 +324,16 @@ docker info
 
 在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境：
 ``` bash
-~/setup_bkce7.sh -i saas
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur 7.0.0-beta.3 saas  # 下载SaaS安装包及节点管理托管的常用文件
+scripts/setup_bkce7.sh -i nodeman  # 节点管理charts化后使用单独的命令。可上传待托管文件。
+scripts/setup_bkce7.sh -i saas
 ```
 
 此步骤总耗时 18 ~ 27 分钟。每个 SaaS 部署不超过 10 分钟，如果超时请参考 《[FAQ](faq.md)》文档的 “[部署 SaaS 在“执行部署前置命令”阶段报错](faq.md#saas-deploy-prehook)” 章节排查。
 
 部分 SaaS 需要后续配置，暂时无法在脚本中实现，需您查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档的“[SaaS 部署后的设置](install-saas-manually.md#post-install-bk-saas)”章节手动操作：
 1. bk_lesscode 配置独立域名。
-2. bk_nodeman 配置 GSE 环境管理；上传 gse 插件包。
+2. bk_nodeman 配置 GSE 环境管理。
 
 >**注意**
 >
@@ -325,7 +341,7 @@ docker info
 
 
 ## 手动部署基础套餐 SaaS
-如需了解 SaaS 部署细节，可查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
+如需了解 SaaS 的完整部署步骤或配置节点管理托管的全部文件等，请查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
 
 
 <a id="k8s-node-install-gse-agent" name="k8s-node-install-gse-agent"></a>

@@ -4,7 +4,8 @@
 在 中控机 执行
 ``` bash
 cd ~/bkhelmfile/blueking
-helmfile -f 04-bkmonitor.yaml.gotmpl sync
+helmfile -f monitor-storage.yaml.gotmpl sync  # 部署监控依赖的存储
+helmfile -f 04-bkmonitor.yaml.gotmpl sync  # 部署监控后台和saas以及监控数据链路组件
 ```
 约等待 5 ~ 10 分钟，期间 `bk-monitor-consul` pod 可能 `Error` 且自动重启。
 
@@ -19,9 +20,9 @@ in ./04-bklog-search.yaml.gotmpl: failed processing release bk-logsearch: hook[.
 ## 访问监控平台
 配置本地 hosts 进行访问
 ``` bash
-# 请注意替换为实际的 BK_DOMAIN
-BK_DOMAIN=bkce7.bktencent.com
-IP1=$(kubectl get pods -n blueking -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+IP1=$(kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
 IP1=$(ssh "$IP1" 'curl ip.sb')
 echo $IP1 bkmonitor.$BK_DOMAIN
 ```
@@ -38,9 +39,9 @@ helmfile -f 04-bklog-search.yaml.gotmpl sync
 ## 访问日志平台
 配置本地 hosts 进行访问
 ``` bash
-# 请注意替换为实际的 BK_DOMAIN
-BK_DOMAIN=bkce7.bktencent.com
-IP1=$(kubectl get pods -n blueking -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+IP1=$(kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
 IP1=$(ssh "$IP1" 'curl ip.sb')
 echo $IP1 bklog.$BK_DOMAIN
 ```
