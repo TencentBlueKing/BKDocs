@@ -1,6 +1,6 @@
 ### 腾讯云 TKE 集群准备
 
-#### 购买容器化蓝鲸社区版 7.0 基础套餐部署所需 TKE 集群
+#### 购买基础套餐部署所需 TKE 集群
 https://console.cloud.tencent.com/tke2/cluster?rid=1
 #### 集群需求
 - 版本：1.18+
