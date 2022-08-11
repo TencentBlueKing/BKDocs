@@ -37,9 +37,9 @@ done
 ## 下载所需的资源文件
 鉴于目前容器化的软件包数量较多且变动频繁，我们提供了下载脚本。
 
-请使用如下命令下载蓝鲸 `7.0.0-beta.3` 基础套餐 helmfile 及体验证书。
+请使用如下命令下载蓝鲸基础套餐 helmfile 及体验证书。
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur 7.0.0-beta.3 base demo
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur latest base demo
 ```
 
 网络策略要求：
@@ -324,7 +324,7 @@ docker info
 
 在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境：
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur 7.0.0-beta.3 saas  # 下载SaaS安装包及节点管理托管的常用文件
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur latest saas  # 下载SaaS安装包及节点管理托管的常用文件
 scripts/setup_bkce7.sh -i nodeman  # 节点管理charts化后使用单独的命令。可上传待托管文件。
 scripts/setup_bkce7.sh -i saas
 ```
