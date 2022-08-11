@@ -16,7 +16,7 @@
 
 | 名字 | 版本号 | 下载链接 |
 |--|--|--|
-| 部署流程服务（bk_itsm） | 2.6.1.390 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.1.390.tar.gz |
+| 部署流程服务（bk_itsm） | 2.6.1.391 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.1.391.tar.gz |
 | 进程配置管理（bk_gsekit） | 1.0.13 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_gsekit/bk_gsekit-V1.0.13.tar.gz |
 | 标准运维（bk_sops） | 3.25.2 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.25.2.tar.gz |
 | 蓝鲸可视化平台（bk_lesscode） | 0.0.18 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_lesscode/bk_lesscode-V0.0.18.tar.gz |
