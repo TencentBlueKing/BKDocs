@@ -37,9 +37,9 @@ done
 ## 下载所需的资源文件
 鉴于目前容器化的软件包数量较多且变动频繁，我们提供了下载脚本。
 
-请使用如下命令下载蓝鲸 `7.0.0-beta.3` 基础套餐所需的文件及体验证书。
+请使用如下命令下载蓝鲸 `7.0.0-beta.3` 基础套餐 helmfile 及体验证书。
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur 7.0.0-beta.3 bkce demo
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur 7.0.0-beta.3 base demo
 ```
 
 网络策略要求：
@@ -307,7 +307,9 @@ docker info
 # 部署基础套餐 SaaS
 在前面部署蓝鲸后台时包含了 PaaS（开发者中心）、配置平台、作业平台 等平台和用户管理、权限中心两个 SaaS。
 
-其他社区版官方的 SaaS 应用，比如标准运维、节点管理、流程服务等需要通过开发者中心来部署。
+节点管理实现了 Charts 化改造，但是需要配置 DNS 后方可上传文件。
+
+其他社区版官方的 SaaS 应用，比如标准运维、流程服务等需要通过开发者中心来部署。
 
 为了方便您快速体验，我们扩展了 “一键部署” 脚本，实现了 SaaS 的 **全新安装** 以及 **部署前设置**。
 
@@ -322,14 +324,16 @@ docker info
 
 在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境：
 ``` bash
-~/setup_bkce7.sh -i saas
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur 7.0.0-beta.3 saas  # 下载SaaS安装包及节点管理托管的常用文件
+scripts/setup_bkce7.sh -i nodeman  # 节点管理charts化后使用单独的命令。可上传待托管文件。
+scripts/setup_bkce7.sh -i saas
 ```
 
 此步骤总耗时 18 ~ 27 分钟。每个 SaaS 部署不超过 10 分钟，如果超时请参考 《[FAQ](faq.md)》文档的 “[部署 SaaS 在“执行部署前置命令”阶段报错](faq.md#saas-deploy-prehook)” 章节排查。
 
 部分 SaaS 需要后续配置，暂时无法在脚本中实现，需您查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档的“[SaaS 部署后的设置](install-saas-manually.md#post-install-bk-saas)”章节手动操作：
 1. bk_lesscode 配置独立域名。
-2. bk_nodeman 配置 GSE 环境管理；上传 gse 插件包。
+2. bk_nodeman 配置 GSE 环境管理。
 
 >**注意**
 >
@@ -337,7 +341,7 @@ docker info
 
 
 ## 手动部署基础套餐 SaaS
-如需了解 SaaS 部署细节，可查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
+如需了解 SaaS 的完整部署步骤或配置节点管理托管的全部文件等，请查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
 
 
 <a id="k8s-node-install-gse-agent" name="k8s-node-install-gse-agent"></a>
