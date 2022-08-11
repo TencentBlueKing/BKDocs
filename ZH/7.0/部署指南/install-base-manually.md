@@ -10,6 +10,11 @@
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 kubectl config set-context --current --namespace=blueking  # 设置k8s默认ns, 方便后续操作.
+# 安装生成配置所需的命令
+cp -av ../bin/helmfile ../bin/helm ../bin/yq /usr/local/bin/
+tar xf ../bin/helm-plugin-diff.tgz -C ~/  # 安装helm-diff插件。
+# 检查helm diff
+helm plugin list  # 预期输出 diff 及其版本。
 ```
 
 ## 配置访问域名
@@ -104,16 +109,15 @@ local-pv-18c3e0ef   98Gi       RWO            Delete           Available        
 ```
 
 ## 安装 ingress controller
-部署默认的 ingress controller:
+先检查您的环境是否已经部署了 ingress controller:
 ``` bash
-helmfile -f 00-ingress-nginx.yaml.gotmpl sync
-kubectl get pod -o wide -n blueking | grep ingress-nginx-controller  # 检查
+kubectl get pod -o wide -A | grep ingress-nginx-controller
 ```
 
-部署蓝鲸开发者中心专用的 ingress controller：
+如果没有，则使用如下命令创建：
 ``` bash
-helmfile -f 03-saas-cluster.yaml.gotmpl sync
-kubectl get pod -o wide -n blueking | grep bk-ingress-nginx  # 检查
+helmfile -f 00-ingress-nginx.yaml.gotmpl sync
+kubectl get pod -o wide -n ingress-nginx | grep ingress-nginx-controller  # 检查
 ```
 
 <a id="hosts-in-coredns" name="hosts-in-coredns"></a>

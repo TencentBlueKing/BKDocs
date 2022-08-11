@@ -1,6 +1,6 @@
 # SUMMARY
 
-## 社区版 7.0 部署文档
+## 蓝鲸智云 7.0 部署文档
 
 * [K8S 新手必读](beginners_guide.md)
 * [部署前置工作](prepare.md)

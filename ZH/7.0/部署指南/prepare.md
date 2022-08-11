@@ -45,7 +45,7 @@
 <a id="get-a-k8s-cluster" name="get-a-k8s-cluster"></a>
 
 # 准备 K8S 集群
-蓝鲸社区版 7.0 容器化部署方案预期运行于 Kubernetes 1.18 及 1.20 版本。
+蓝鲸智云 7.0 容器化部署方案预期运行于 Kubernetes 1.18 及 1.20 版本。
 
 >**提示**
 >
