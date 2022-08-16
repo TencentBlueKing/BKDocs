@@ -134,7 +134,7 @@
 * [API 文档]()
     * [文档中心]()
         * [简介](6.0/API文档/bk_docs_center/README.md)
-        * [查询文档链接](6.0/API文档/bk_doce_center/zh-hans/get_doc_link_by_path.md)
+        * [查询文档链接](6.0/API文档/bk_docs_center/zh-hans/get_doc_link_by_path.md)
     * [蓝鲸统一登录]()
         * [简介](6.0/API文档/bk_login/README.md)
         * [获取用户信息](6.0/API文档/bk_login/zh-hans/get_user.md)
