@@ -122,7 +122,7 @@ k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-IP1=$(kubectl -n ingress-nginx get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+IP1=$(kubectl -A get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 cat <<EOF
 $IP1 $BK_DOMAIN
 $IP1 bkrepo.$BK_DOMAIN
@@ -138,14 +138,14 @@ EOF
 中控机的 IP 取值有 2 种情况：
 * 当中控机独立于 k8s 集群外，需要使用 node 的内网 IP (`hostIP`)：
   ``` bash
-  IP1=$(kubectl -n ingress-nginx get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+  IP1=$(kubectl -A get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
   ```
   >**注意**
   >
   >如果 Pod 重新调度，所在 node 发生了变动，则需刷新 hosts 文件。
 * 当中控机为 k8s 的 master 或 node 时，需要取服务的 `clusterIP`：
   ``` bash
-  IP1=$(kubectl -n ingress-nginx get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+  IP1=$(kubectl -A get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
   ```
   >**注意**
   >

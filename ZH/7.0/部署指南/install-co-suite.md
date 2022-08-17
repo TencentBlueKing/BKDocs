@@ -22,7 +22,7 @@ in ./04-bklog-search.yaml.gotmpl: failed processing release bk-logsearch: hook[.
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-IP1=$(kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
 IP1=$(ssh "$IP1" 'curl ip.sb')
 echo $IP1 bkmonitor.$BK_DOMAIN
 ```
@@ -41,7 +41,7 @@ helmfile -f 04-bklog-search.yaml.gotmpl sync
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-IP1=$(kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
 IP1=$(ssh "$IP1" 'curl ip.sb')
 echo $IP1 bklog.$BK_DOMAIN
 ```
