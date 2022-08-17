@@ -111,13 +111,13 @@ local-pv-18c3e0ef   98Gi       RWO            Delete           Available        
 ## 安装 ingress controller
 先检查您的环境是否已经部署了 ingress controller:
 ``` bash
-kubectl get pod -o wide -A | grep ingress-nginx-controller
+kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx
 ```
 
 如果没有，则使用如下命令创建：
 ``` bash
 helmfile -f 00-ingress-nginx.yaml.gotmpl sync
-kubectl get pod -o wide -n ingress-nginx | grep ingress-nginx-controller  # 检查
+kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx  # 查看创建的pod
 ```
 
 <a id="hosts-in-coredns" name="hosts-in-coredns"></a>
@@ -134,7 +134,7 @@ kubectl get pod -o wide -n ingress-nginx | grep ingress-nginx-controller  # 检�
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-IP1=$(kubectl -n ingress-nginx get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+IP1=$(kubectl -A get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 ./scripts/control_coredns.sh update "$IP1" bkrepo.$BK_DOMAIN docker.$BK_DOMAIN $BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN apps.$BK_DOMAIN
 ```
 
