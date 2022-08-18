@@ -14,9 +14,9 @@
 ### SaaS 安装包
 需要您在浏览器中下载，随后在开发者中心上传并部署。
 
-| 名字 | 版本号 | 下载链接 |
+| 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 部署流程服务（bk_itsm） | 2.6.1.391 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.1.391.tar.gz |
+| 流程服务（bk_itsm） | 2.6.1.391 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.1.391.tar.gz |
 | 进程配置管理（bk_gsekit） | 1.0.13 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_gsekit/bk_gsekit-V1.0.13.tar.gz |
 | 标准运维（bk_sops） | 3.25.2 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.25.2.tar.gz |
 | 蓝鲸可视化平台（bk_lesscode） | 0.0.18 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_lesscode/bk_lesscode-V0.0.18.tar.gz |
@@ -273,3 +273,31 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 
 脚本执行完成后，访问节点管理的 「插件管理」——「插件包」界面，可以看到上传成功的插件包：
 ![](asserts/../assets/bk_nodeman-plugin-list.png)
+
+
+### 为用户桌面添加应用
+>**提示**
+>
+>“一键部署” 脚本中在部署 SaaS 时会自动为 `admin` 添加应用。
+
+用户首次登录蓝鲸桌面时，此时桌面会自动展示 **默认应用**，其他应用需要用户手动添加。
+
+为了能自动添加应用到用户桌面，我们提供了如下 2 个脚本，可按需组合：
+* 使用 `set_desktop_default_app.sh` 将应用设置为 **默认应用**。<br/>
+  如果用户已经登录过桌面，则 **新增的** 默认应用不会添加到他的桌面。
+* 使用 `add_user_desktop_app.sh` 为 **已登录** 用户添加应用。<br/>
+  如果用户未曾登录，不应该使用此脚本，因为用户桌面非空时不会自动添加 **默认应用**。
+
+脚本用法如下：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+# 将 bk_itsm和bk_sops 设为默认应用。
+./scripts/set_desktop_default_app.sh -a "bk_itsm,bk_sops"
+# 为admin添加bk_itsm和bk_sops。
+./scripts/add_user_desktop_app.sh -u "admin" -a "bk_itsm,bk_sops"
+```
+
+脚本执行成功无输出；如果失败，会显示报错。
+
+常见报错：
+* app_code 有误，输出为 `App(app-code-not-exist) not exists`。

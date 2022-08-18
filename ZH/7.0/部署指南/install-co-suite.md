@@ -6,6 +6,8 @@
 cd ~/bkhelmfile/blueking
 helmfile -f monitor-storage.yaml.gotmpl sync  # 部署监控依赖的存储
 helmfile -f 04-bkmonitor.yaml.gotmpl sync  # 部署监控后台和saas以及监控数据链路组件
+# 在admin桌面添加应用，也可以登录后自行添加。
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_monitorv3"
 ```
 约等待 5 ~ 10 分钟，期间 `bk-monitor-consul` pod 可能 `Error` 且自动重启。
 
@@ -34,6 +36,8 @@ echo $IP1 bkmonitor.$BK_DOMAIN
 ``` bash
 cd ~/bkhelmfile/blueking
 helmfile -f 04-bklog-search.yaml.gotmpl sync
+# 在admin桌面添加应用，也可以登录后自行添加。
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_log_search"
 ```
 
 ## 访问日志平台
