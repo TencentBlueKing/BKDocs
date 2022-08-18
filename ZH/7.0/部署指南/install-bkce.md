@@ -122,7 +122,7 @@ k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-IP1=$(kubectl -A get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 cat <<EOF
 $IP1 $BK_DOMAIN
 $IP1 bkrepo.$BK_DOMAIN
