@@ -56,14 +56,12 @@
 
   ```shell
   helm repo add blueking https://hub.bktencent.com/chartrepo/blueking
-  helm repo add blueking-dev https://hub.bktencent.com/chartrepo/dev
-  ```
-
+  helm repo add blueking-dev https://hub.bktencent
 - 如果命名空间bcs-system不存在，则需要创建命名空间
 
   `kubectl create ns bcs-system`
 
-- bcs-gateway绑定hosts，解决bcs网关访问问题，可以把域名bcs-api-gateway绑定到集群“蓝鲸社区版7.0”任意一台node上，这个node最好是master角色
+- bcs-gateway绑定hosts，解决bcs网关访问问题，可以把域名bcs-api-gateway绑定到集群“蓝鲸蓝鲸7.0”任意一台node上，这个node最好是master角色
 
   `kubectl edit cm coredns -n kube-system`
 
@@ -74,10 +72,10 @@
             1.1.1.1 bcs-api-gateway
             fallthrough
           }
-          # 1.1.1.1 是集群“蓝鲸社区版7.0”任意一台node，最好是master
+          # 1.1.1.1 是集群“蓝鲸蓝鲸7.0”任意一台node，最好是master
   ```
 
-  ![](D:\社区版7.0文档\BKDocs\ZH\7.0\BCS\产品白皮书\assets\coredns_hosts.png)
+  ![](../assets/coredns_hosts.png)
 
 - 创建bcs-kube-agent所需证书
 
@@ -96,7 +94,7 @@
   type: kubernetes.io/tls
   ```
 
-  通过webconsole或ssh到集群“蓝鲸社区版7.0”
+  通过webconsole或ssh到集群“蓝鲸蓝鲸7.0”
 
   ![-w2020](../assets/webconsole_login.png)
 
@@ -134,7 +132,7 @@
   {BK_BCS_APIToken}替换为以下命名获取的字符串，获取方法如下
 
   ```
-  # 在集群 蓝鲸社区版7.0 上执行以下命令
+  # 在集群 蓝鲸蓝鲸7.0 上执行以下命令
   kubectl get secret bcs-password -n bcs-system -o yaml
   # 找到字段：gateway_token
   # base64解密：
@@ -175,7 +173,6 @@
 ![-w2020](../assets/cluster_add_node1.png)
 
 【节点管理】标签除了可以查看集群的所有节点外，还提供了一些集群日常管理的操作，如【停止调度】等，具体可以参考[K8S 官方介绍](https://kubernetes.io/zh/docs/concepts/architecture/nodes/)。
-
 
 
 

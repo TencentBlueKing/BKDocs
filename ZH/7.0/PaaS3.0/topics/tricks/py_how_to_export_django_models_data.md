@@ -7,7 +7,7 @@
 
 其他需要注意的：
 - 本方法只适用于**少量数据(<10MB)**导出，数据量大的请联系蓝鲸助手处理
-- 如果只需要导出某些 table 而非全库，请参考 [django dumpdata 文档](https://docs.djangoproject.com/en/2.2/ref/django-admin/#dumpdata-app-label-app-label-app-label-model) 添加参数
+- 如果只需要导出某些 table 而非全库，请参考 [django dumpdata 文档](https://docs.djangoproject.com/en/3.2/ref/django-admin/#dumpdata-app-label-app-label-app-label-model) 添加参数
 - 由于 `post_compile` 是在部署过程中执行，数据量将会影响部署的速度。在完成数据导出操作之后，请记得恢复 `post_compile` 文件。
 
 ## 具体步骤
@@ -23,7 +23,7 @@
 # export logic start
 
 # export via django commands
-# refer to https://docs.djangoproject.com/en/2.2/ref/django-admin/#dumpdata-app-label-app-label-app-label-model
+# refer to https://docs.djangoproject.com/en/3.2/ref/django-admin/#dumpdata-app-label-app-label-app-label-model
 python manage.py dumpdata > dumps.json
 
 # upload to s3

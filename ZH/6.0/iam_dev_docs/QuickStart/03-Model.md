@@ -86,7 +86,7 @@ curl -XPOST 'http://{IAM_HOST}/api/v1/model/systems/demo/instance-selections' \
 ]'
 ```
 
-## 3. 注册操作
+## 4. 注册操作
 
 [注册操作 API 文档](../Reference/API/02-Model/13-Action.md)
 
@@ -148,7 +148,7 @@ curl -XPOST 'http://{IAM_HOST}/api/v1/model/systems/demo/actions' \
 ]'
 ```
 
-## 4. 查看注册模型的展示
+## 5. 查看注册模型的展示
 
 注册成功后，打开 [权限中心]-[权限申请]-[申请自定义权限]，可以看到刚才注册的模型
 
@@ -164,6 +164,6 @@ curl -XPOST 'http://{IAM_HOST}/api/v1/model/systems/demo/actions' \
 
 实例选择是通过实例视图的配置展示的, 这里使用的实例视图是`app_view`(应用视图), 只配置了一级资源`system=demo, resource_type=app`, 所以回调接入系统拉取得到的是`应用列表`
 
-## 5. 扩展阅读
+## 6. 扩展阅读
 
 权限中心提供了另一种模型注册方式, 具体见 [权限模型自动初始化及更新 migration](../HowTo/Solutions/Migration.md)

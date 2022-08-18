@@ -27,7 +27,7 @@
     - 建议新增专用的插件调试项目，避免测试过程中影响到业务。
 3. 开发语言
     - 支持四种语言开发插件：
-        - Java
+        - Java（推荐）
         - Python
         - Golang
         - Nodejs
@@ -37,10 +37,10 @@
 > 初始化好插件之后，可以开始开发插件
 
 - 根据开发语言参考对应的开发指引
-  - [Java 插件开发指引](https://docs.bkci.net/store/plugins/create-plugin/plugin-dev-guide/java)
-  - [Python 插件开发指引](https://docs.bkci.net/store/plugins/create-plugin/plugin-dev-guide/python)
-  - [Golang 插件开发指引](https://docs.bkci.net/store/plugins/create-plugin/plugin-dev-guide/golang)
-  - [Nodejs 插件开发指引](https://docs.bkci.net/store/plugins/create-plugin/plugin-dev-guide/nodejs)
+  - [Java 插件开发指引](./plugins/plugin-dev-guide/java.md)
+  - [Python 插件开发指引](./plugins/plugin-dev-guide/python.md)
+  - [Golang 插件开发指引](./plugins/plugin-dev-guide/golang.md)
+  - [Nodejs 插件开发指引](./plugins/plugin-dev-guide/nodejs.md)
 
 ### 插件私有配置
 

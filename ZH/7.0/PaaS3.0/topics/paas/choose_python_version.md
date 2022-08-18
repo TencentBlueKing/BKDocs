@@ -4,7 +4,7 @@
 
 自从 Python 官方宣布 EOL 计划，Python2 的生命周期即将终结于 2020 年 1 月 1 日，意味着在 2020 年以后 Python2 将不会有官方的支持和修复。
 最近的几年里，Python 主流库都做了很多兼容的工作，以帮助我们从 Python2 迁移到 Python3，但是这类的兼容性代码会消耗相当大的人力和性能。
-事实上，这种兼容的工作已经在不同程度上停止了，比如 Django 2.0 已宣布不再支持 Python2，可以预见的是，2020 年之后，基本上不会有库再会处理兼容问题了，这个网站列出了部分库的支持时间表：[https://python3statement.org/](https://python3statement.org/ )。
+事实上，这种兼容的工作已经在不同程度上停止了，比如 Django 2.0 已宣布不再支持 Python2，可以预见的是，2020 年之后，基本上不会有库再会处理兼容问题了，这个网站列出了部分库的支持时间表：[https://python3statement.org/](https://python3statement.org/)。
 
 ## 如何选择 Python 版本
 

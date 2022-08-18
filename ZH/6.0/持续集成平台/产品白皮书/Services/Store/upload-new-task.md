@@ -59,5 +59,5 @@
 
 > 注意：当插件开发语言为Python、Nodejs时，对插件执行环境有一定要求
 >
-> - [Python 插件执行环境](prepare-python.md)
-> - [NodeJS 插件执行环境](prepare-node.md)
+> - [Python 插件执行环境](./prepare-python.md)
+> - [NodeJS 插件执行环境](./prepare-node.md)
