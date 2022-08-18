@@ -19,7 +19,6 @@
 - 添加chart包镜像仓库
 ```shell
 helm repo add blueking https://hub.bktencent.com/chartrepo/blueking
-helm repo add blueking-dev https://hub.bktencent.com/chartrepo/dev
 ```
 
 - 如果命名空间bcs-system不存在，则需要创建命名空间
@@ -42,9 +41,9 @@ helm repo add blueking-dev https://hub.bktencent.com/chartrepo/dev
 
   ![](../asset/coredns_hosts.png)
 
-- 创建bcs-kube-agent所需证书
+- 创建bcs-k8s-watch所需证书
 
-  把以下内容保存到上一步集群master服务器上，文件名为：bcs-client-bcs-k8s-watch.yaml
+  把以下内容保存到集群master服务器上，文件名为：bcs-client-bcs-k8s-watch.yaml
 
   ```
   apiVersion: v1
@@ -83,16 +82,16 @@ helm repo add blueking-dev https://hub.bktencent.com/chartrepo/dev
     env:
       BK_BCS_clusterId: {集群ID}
     telnet:
-      registry: "hub.bktencent.com/dev"
+      registry: "hub.bktencent.com"
       repository: blueking/bcs-telnet
       tag: "v1.21.1"
   storage:
     zookeeper:
-      endpoints: ["bcs-api-gateway:31713"]
+      endpoints: ["bcs-api-gateway:31746"]
   image:
-    registry: hub.bktencent.com/dev
+    registry: hub.bktencent.com
     repository: blueking/bcs-k8s-watch
-    tag: v1.25.0-alpha.6
+    tag: v1.26.0-alpha.1
   env:
     BK_BCS_customStorage: "https://bcs-api-gateway:31024"
   ```
@@ -101,7 +100,7 @@ helm repo add blueking-dev https://hub.bktencent.com/chartrepo/dev
 
   ```
   helm repo update
-  helm upgrade --install bcs-k8s-watch blueking-dev/bcs-k8s-watch -f ./bcs-k8s-watch-values.yaml -n bcs-system --devel
+  helm upgrade --install bcs-k8s-watch blueking/bcs-k8s-watch -f ./bcs-k8s-watch-values.yaml -n bcs-system --devel
   Release "bcs-k8s-watch" does not exist. Installing it now.
   NAME: bcs-k8s-watch
   LAST DEPLOYED: Thu Apr 14 18:58:24 2022
@@ -136,7 +135,7 @@ bkmonitor-operator使用helm chart安装，首先把以下内容保存为文件b
 bkmonitor-operator-charts:
   bkmonitor-operator:
     image:
-      registry: hub.bktencent.com/dev
+      registry: hub.bktencent.com
       repository: blueking/bkmonitor-operator
     targetNamespaces:
     - default
@@ -146,18 +145,18 @@ bkmonitor-operator-charts:
   bkmonitorbeat:
     bkmonitorbeatReloader:
       image:
-        registry: hub.bktencent.com/dev
+        registry: hub.bktencent.com
         repository: blueking/bkmonitorbeat-reloader
     image:
-      registry: hub.bktencent.com/dev
+      registry: hub.bktencent.com
       repository: blueking/bkmonitorbeat
   bkmonitorbeat-event:
     bkmonitorbeatReloader:
       image:
-        registry: hub.bktencent.com/dev
+        registry: hub.bktencent.com
         repository: blueking/bkmonitorbeat-reloader
     image:
-      registry: hub.bktencent.com/dev
+      registry: hub.bktencent.com
       repository: blueking/bkmonitorbeat
   enabled: true
 ```
@@ -169,7 +168,7 @@ bkmonitor-operator-charts:
 kubectl create ns bkmonitor-operator
 
 helm repo update
-helm upgrade --install bkmonitor-operator-stack blueking-dev/bkmonitor-operator-stack --version=3.5.71 -f ./bkmonitor-operator-values.yaml -n bkmonitor-operator
+helm upgrade --install bkmonitor-operator-stack blueking/bkmonitor-operator-stack --version=3.5.98 -f ./bkmonitor-operator-values.yaml -n bkmonitor-operator
 Release "bkmonitor-operator-stack" does not exist. Installing it now.
 NAME: bkmonitor-operator-stack
 LAST DEPLOYED: Thu Apr 14 20:18:00 2022
