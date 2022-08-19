@@ -161,6 +161,8 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 执行部署基础套餐命令（该步骤根据机器环境配置，大概需要 8 ~ 16 分钟）
 ``` bash
 helmfile -f base.yaml.gotmpl sync
+# 在admin桌面添加应用，也可以登录后自行添加。
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_cmdb,bk_job"
 ```
 
 此时可以新开一个终端，执行如下命令观察 pod 状态变化：

@@ -14,12 +14,10 @@
 ### SaaS 安装包
 需要您在浏览器中下载，随后在开发者中心上传并部署。
 
-| 名字 | 版本号 | 下载链接 |
+| 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 部署流程服务（bk_itsm） | 2.6.1.391 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.1.391.tar.gz |
-| 进程配置管理（bk_gsekit） | 1.0.13 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_gsekit/bk_gsekit-V1.0.13.tar.gz |
+| 流程服务（bk_itsm） | 2.6.1.391 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.1.391.tar.gz |
 | 标准运维（bk_sops） | 3.25.2 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.25.2.tar.gz |
-| 蓝鲸可视化平台（bk_lesscode） | 0.0.18 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_lesscode/bk_lesscode-V0.0.18.tar.gz |
 | 节点管理（bk_nodeman） | 2.2.20 | 使用 helmfile 部署时自动下载 Charts，此处无需下载 |
 
 ### 节点管理托管文件
@@ -92,63 +90,6 @@ SaaS 应用采用 `S-Mart` 包分发。
 步骤示例图：
 ![](assets/deploy-saas-on-appo.png)
 
-
-<a id="deploy-bkce-saas-gsekit" name="deploy-bkce-saas-gsekit
-"></a>
-
-### 部署进程配置管理（bk_gsekit）
-
-**无部署前配置**，只有 `default` 模块需要部署。
-
-具体步骤可参考 “[部署流程服务（bk_itsm）](#deploy-bkce-saas-itsm)” 章节。
-
-<a id="deploy-bkce-saas-sops" name="deploy-bkce-saas-sops"></a>
-
-### 部署标准运维（bk_sops）
-
-**无部署前配置**，共有 **四个模块** 需要部署：
-1. 需要先部署 `default` 模块。
-2. 照例选择 生产环境。
-3. 选择版本。
-4. 部署至生产环境。
-5. 等 `default`模块 **部署成功后**，回到步骤 1，开始部署 `api`、`pipeline`与`callback` 等 3 个模块（此时无次序要求，可同时部署）。
-
-步骤示例图：
-![](assets/deploy-saas-on-appo--sops.png)
-
-<a id="deploy-bkce-saas-lesscode" name="deploy-bkce-saas-lesscode"></a>
-
-### 部署蓝鲸可视化平台（bk_lesscode）
-
-**需要部署前配置**，然后部署 `default` 模块即可。
-
-部署前需要配置 **环境变量**：
-
-在您创建应用成功并跳转到「部署管理」界面后，先别急着部署。在左侧导航栏进入 「应用引擎」 - 「环境配置」页面。位置如图所示：
-![](assets/deploy-saas-sidebar-env.png)
-
-在「环境变量配置」下方填写环境变量:
-1. 参考下方的“变量列表”填写名称、取值及描述。
-2. 选择环境变量的作用范围，建议选择“所有环境”.
-3. 并点击「添加」按钮添加一条变量。
-4. 回到步骤 1 添加其他变量（最后一条也要记得点击“添加”按钮哦，全部变量添加完毕后，可以刷新页面确认是否遗漏。）。
-
-步骤示例图：
-![](assets/deploy-saas-env-of-lesscode.png)
-
-蓝鲸可视化平台（bk_lesscode）需要配置的变量列表：
-|环境变量名称 |VALUE |描述 |
-| -- | -- | -- |
-|`PRIVATE_NPM_REGISTRY` |按以下模板填写: `${bkrepoConfig.endpoint}/npm/bkpaas/npm/` , 其中 bkrepoConfig.endpoint 为 bkrepo 服务的网关地址,即http://bkrepo.$BK_DOMAIN |npm 镜像源地址 |
-|`PRIVATE_NPM_USERNAME` |填写部署 PaaS3.0 时配置的 `bkrepoConfig.lesscodeUsername` 默认值是 bklesscode |npm 账号用户名 |
-|`PRIVATE_NPM_PASSWORD` |填写部署 PaaS3.0 时配置的 `bkrepoConfig.lesscodePassword` 默认值是 blueking |npm 账号密码 |
-|`BKAPIGW_DOC_URL` |填写部署 API 网关时，生成的环境变量 APISUPPORT_FE_URL 的值 默认值是 `http://apigw.$BK_DOMAIN/docs` |云 API 文档地址 |
-
-变量添加后，回到 「部署管理」界面部署到生产环境。
-
->**提示**
->
->变量配置后需要重新部署才能生效。如果此前遗漏了变量，配置变量完成后重新部署一次即可。
 
 <a id="deploy-bkce-saas-nodeman" name="deploy-bkce-saas-nodeman"></a>
 
@@ -273,3 +214,31 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 
 脚本执行完成后，访问节点管理的 「插件管理」——「插件包」界面，可以看到上传成功的插件包：
 ![](asserts/../assets/bk_nodeman-plugin-list.png)
+
+
+### 为用户桌面添加应用
+>**提示**
+>
+>“一键部署” 脚本中在部署 SaaS 时会自动为 `admin` 添加应用。
+
+用户首次登录蓝鲸桌面时，此时桌面会自动展示 **默认应用**，其他应用需要用户手动添加。
+
+为了能自动添加应用到用户桌面，我们提供了如下 2 个脚本，可按需组合：
+* 使用 `set_desktop_default_app.sh` 将应用设置为 **默认应用**。<br/>
+  如果用户已经登录过桌面，则 **新增的** 默认应用不会添加到他的桌面。
+* 使用 `add_user_desktop_app.sh` 为 **已登录** 用户添加应用。<br/>
+  如果用户未曾登录，不应该使用此脚本，因为用户桌面非空时不会自动添加 **默认应用**。
+
+脚本用法如下：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+# 将 bk_itsm和bk_sops 设为默认应用。
+./scripts/set_desktop_default_app.sh -a "bk_itsm,bk_sops"
+# 为admin添加bk_itsm和bk_sops。
+./scripts/add_user_desktop_app.sh -u "admin" -a "bk_itsm,bk_sops"
+```
+
+脚本执行成功无输出；如果失败，会显示报错。
+
+常见报错：
+* app_code 有误，输出为 `App(app-code-not-exist) not exists`。

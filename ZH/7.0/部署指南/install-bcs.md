@@ -29,6 +29,8 @@ EOF
 ``` bash
 cd ~/bkhelmfile/blueking
 helmfile -f 03-bcs.yaml.gotmpl sync
+# 在admin桌面添加应用，也可以登录后自行添加。
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_bcs"
 ```
 耗时 3 ~ 7 分钟，此时可以另起一个终端观察相关 pod 的状态
 ``` bash

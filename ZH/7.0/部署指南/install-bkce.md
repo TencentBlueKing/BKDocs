@@ -174,7 +174,7 @@ $IP1 apps.$BK_DOMAIN
 EOF
 ```
 
-<a name="hosts-in-user-pc"></a>
+<a id="hosts-in-user-pc" name="hosts-in-user-pc"></a>
 
 ## 配置用户侧的 DNS
 蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。然后才能在浏览器访问。
@@ -213,6 +213,7 @@ $IP1 cmdb.$BK_DOMAIN
 $IP1 job.$BK_DOMAIN
 $IP1 jobapi.$BK_DOMAIN
 $IP1 apps.$BK_DOMAIN
+$IP1 devops.$BK_DOMAIN
 EOF
 ```
 
@@ -354,14 +355,19 @@ scripts/setup_bkce7.sh -i saas
 
 需要给集群的 “全部 node”（包括 `master`） 安装 gse agent。
 
-用途：
+agent 用途：
 1. job 依赖 `node` 上的 gse agent 进行文件分发。节点管理安装插件时也是通过 job 分发。
 2. 容器监控需要通过 `node` 上的 gse agent 完成监控。
 
->**提示**
+>**注意**
 >
->如有添加新的 k8s `node` 或 `master`，需为其安装 gse agent。
+>如计划添加新的 k8s `node` 或 `master`，需先为其安装 gse agent。请务必注意次序，不然 agent 会安装失败。此问题优化方案待定。
+
+因为蓝鲸智云 v6 和 v7 仅为部署形态差异，各产品软件版本会保持一致。故请参考 《[安装蓝鲸 Agent（直连区域）](../../6.1/节点管理/产品白皮书/QuickStart/DefaultAreaInstallAgent.md)》 文档安装 agent。
+
+当安装 agent 完成后，您可以参考 《[插件管理](../../6.1/节点管理/产品白皮书/Feature/Plugin.md)》 文档为所有 agent 批量安装 `bkmonitorbeat` 和 `bkunifylogbeat` 插件，以便使用监控及日志功能。
 
 常见报错：
 1. `[script] agent(PID:NNN) is not connect to gse server`，请检查 “配置 GSE 环境管理” 章节的配置是否正确。
 2. `命令返回非零值：exit_status -> 6, stdout -> , stderr -> curl: (6) Could not resolve host: bkrepo.$BK_DOMAIN; Unknown error`，请检查目标主机的 DNS 配置是否正确，也可临时添加 hosts 记录解决解析问题。或参考 “配置 GSE 环境管理” 章节配置 agent url 为 k8s node IP。
+3. `ERROR setup_agent FAILED process check: agentWorker not found (node type:agent)`，agent 启动失败。如果是先添加的 k8s node，然后安装 agent 会遇到此问题。可先行取消调度此 node，然后驱逐所有 pod，并删除主机的 `/var/run/ipc.state.report` 目录。然后先安装 agent，再将 node 加回集群。
