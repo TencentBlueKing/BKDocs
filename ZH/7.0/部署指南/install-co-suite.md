@@ -3,7 +3,7 @@
 ## 部署监控平台
 在 中控机 执行
 ``` bash
-cd ~/bkhelmfile/blueking
+cd ~/bkhelmfile/blueking/  # 进入工作目录
 helmfile -f monitor-storage.yaml.gotmpl sync  # 部署监控依赖的存储
 helmfile -f 04-bkmonitor.yaml.gotmpl sync  # 部署监控后台和saas以及监控数据链路组件
 # 在admin桌面添加应用，也可以登录后自行添加。
@@ -34,7 +34,7 @@ echo $IP1 bkmonitor.$BK_DOMAIN
 ## 部署日志平台
 在 中控机 执行
 ``` bash
-cd ~/bkhelmfile/blueking
+cd ~/bkhelmfile/blueking/  # 进入工作目录
 helmfile -f 04-bklog-search.yaml.gotmpl sync
 # 在admin桌面添加应用，也可以登录后自行添加。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_log_search"
@@ -62,7 +62,7 @@ echo $IP1 bklog.$BK_DOMAIN
 ### 调整 bkmonitor
 需要能读取 bcs 管理接口。
 ``` bash
-cd ~/bkhelmfile/blueking
+cd ~/bkhelmfile/blueking/  # 进入工作目录
 ./scripts/config_monitor_bcs_token.sh
 helmfile -f 04-bkmonitor.yaml.gotmpl apply   # apply 仅增量更新
 ```
@@ -71,7 +71,7 @@ helmfile -f 04-bkmonitor.yaml.gotmpl apply   # apply 仅增量更新
 部署日志采集器。
 
 ``` bash
-cd ~/bkhelmfile/blueking
+cd ~/bkhelmfile/blueking/  # 进入工作目录
 helmfile -f 04-bklog-collector.yaml.gotmpl sync
 # 等待1分钟，如果 pod 稳定状态为 Running ，则部署完成。
 timeout 60 kubectl get pods -n blueking -w | grep bklog-collector
@@ -95,7 +95,7 @@ kubectl delete pod -n blueking bklog-collector-bk-log-collector-补全时选择�
 ### 部署 bkmonitor-operator
 
 ``` bash
-cd ~/bkhelmfile/blueking
+cd ~/bkhelmfile/blueking/  # 进入工作目录
 helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
 ```
 

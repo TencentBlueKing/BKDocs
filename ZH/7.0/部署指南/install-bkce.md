@@ -174,7 +174,7 @@ $IP1 apps.$BK_DOMAIN
 EOF
 ```
 
-<a name="hosts-in-user-pc"></a>
+<a id="hosts-in-user-pc" name="hosts-in-user-pc"></a>
 
 ## 配置用户侧的 DNS
 蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。然后才能在浏览器访问。
@@ -213,6 +213,7 @@ $IP1 cmdb.$BK_DOMAIN
 $IP1 job.$BK_DOMAIN
 $IP1 jobapi.$BK_DOMAIN
 $IP1 apps.$BK_DOMAIN
+$IP1 devops.$BK_DOMAIN
 EOF
 ```
 
