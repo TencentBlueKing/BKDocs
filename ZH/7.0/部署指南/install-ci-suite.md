@@ -26,5 +26,3 @@ kubectl get pod -A | grep bk-ci
 然后您可以在桌面找到刚才添加的 “” 应用打开了。
 
 访问域名为 `devops.$BK_DOMAIN`，[《基础套餐部署》文档的“配置用户侧的 DNS”章节](install-bkce.md#hosts-in-user-pc) 中已经配置了此域名。如果您的浏览器提示无此域名，请检查更新本地 hosts 文件。
-
-
