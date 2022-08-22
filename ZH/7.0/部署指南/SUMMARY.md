@@ -7,6 +7,7 @@
 * [基础套餐部署](install-bkce.md)
 * [容器管理平台部署](install-bcs.md)
 * [监控日志套餐部署](install-co-suite.md)
+* [持续集成套餐部署](install-ci-suite.md)
 * [卸载](uninstall.md)
 * [FAQ](faq.md)
 * [附录]()

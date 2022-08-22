@@ -40,6 +40,7 @@
 |基础套餐 | 后台及 SaaS | 2 台 node | 2.5 台 node | |
 |容器管理平台 | 容器管理后台及 SaaS | 0.7 台 node | 1 台 node | |
 |监控套餐 | 监控、日志服务及其 SaaS | 1 台 node | 2 台 node | |
+|持续集成套餐 | 目前仅包含流水线 | 1 台 node | 2 台 node | 流水线任务较多时需扩容 node |
 
 
 <a id="get-a-k8s-cluster" name="get-a-k8s-cluster"></a>
