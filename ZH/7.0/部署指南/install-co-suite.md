@@ -20,7 +20,9 @@ in ./04-bklog-search.yaml.gotmpl: failed processing release bk-logsearch: hook[.
 请检查中控机解析到的 `bkrepo` 域名是否正确，以及 `scripts/add_bkrepo_bucket.sh` 脚本中的 `BKREPO_ADMIN_PASSWORD` 是否正确。
 
 ## 访问监控平台
-配置本地 hosts 进行访问
+在桌面可以看到刚才添加的 “监控平台” 应用，访问前需先行配置 `bkmonitor.$BK_DOMAIN` 域名的解析。
+
+在 **中控机** 执行如下命令生成 hosts 文件的内容：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
@@ -29,7 +31,7 @@ IP1=$(ssh "$IP1" 'curl ip.sb')
 echo $IP1 bkmonitor.$BK_DOMAIN
 ```
 
-此时访问 “观测场景” —— “Kubernetes” 界面会出现报错。为未启用容器监控所致，完成 “配置容器监控” 章节可正常使用。
+此时访问 “观测场景” —— “Kubernetes” 界面会出现报错。为未启用容器监控所致，完成本文 “配置容器监控” 章节即可正常使用。
 
 ## 部署日志平台
 在 中控机 执行
@@ -41,7 +43,9 @@ scripts/add_user_desktop_app.sh -u "admin" -a "bk_log_search"
 ```
 
 ## 访问日志平台
-配置本地 hosts 进行访问
+在桌面可以看到刚才添加的 “日志平台” 应用，访问前需先行配置 `bklog.$BK_DOMAIN` 域名的解析。
+
+在 **中控机** 执行如下命令生成 hosts 文件的内容：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
