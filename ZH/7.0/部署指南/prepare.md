@@ -77,6 +77,9 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 这表示您成功部署了一个 k8s 集群，此时您可以使用 `kubectl` 命令了。接下来开始添加节点吧。
 
 ### 扩容节点
+>**注意**
+>
+>部署了蓝鲸的监控或日志功能后，在扩容 `master` 或者 `node`前需要先 [给全部 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent)，不然会导致 agent 启动失败，此问题排期修复中。
 
 在 **初始 master** 机器上执行如下命令可显示扩容命令：
 ``` bash
@@ -107,10 +110,6 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
   Welcome to BCS on qcloud
 ```
 
->**提示**
->
->在部署蓝鲸后，如果扩容了 `master` 或者 `node` 时，都需要 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
-
 ### 复制 config 文件到中控机
 如果您的 **中控机** 同时兼任 `master`，则可 **跳过本章节**。
 
@@ -127,9 +126,9 @@ scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进�
 <a id="using-existing-k8s" name="using-existing-k8s" ></a>
 
 ## 使用已有的 k8s 集群
->**提示**
+>**注意**
 >
->在部署蓝鲸基础后添加 node 时，要记得 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
+>部署了蓝鲸的监控或日志功能后，在扩容 `master` 或者 `node`前需要先 [给全部 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent)，不然会导致 agent 启动失败，此问题排期修复中。
 
 如果能访问到 `master` 上的文件，可将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下。
 
