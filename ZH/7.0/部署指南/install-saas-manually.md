@@ -168,7 +168,7 @@ agent url: 一般无需修改，默认通过域名访问 bkrepo 下载安装包�
 >
 >“一键部署” 脚本中在部署 `nodeman` 时自动完成了此步骤，可以跳过本章节。
 
-在本文 [提前下载资源](#saas-res-download) 章节中，我们已经在中控机下载了所需的文件。
+在本文 [提前下载资源](install-saas-manually.md#saas-res-download) 章节中，我们已经在中控机下载了所需的文件。
 
 在 **中控机** 执行如下命令上传：
 ``` bash
@@ -204,7 +204,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 >
 >“一键部署” 脚本中在部署 `nodeman` 时自动完成了此步骤，可以跳过本章节。
 
-在本文 [提前下载资源](#saas-res-download) 章节中，我们已经在中控机下载了所需的文件。
+在本文 [提前下载资源](install-saas-manually.md#saas-res-download) 章节中，我们已经在中控机下载了所需的文件。
 
 在 **中控机** 执行如下命令上传：
 ``` bash
