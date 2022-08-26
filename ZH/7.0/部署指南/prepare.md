@@ -53,9 +53,9 @@
 >因 k8s API 被移除，蓝鲸无法在 1.22 及以上版本使用，开发正在兼容新版 API 。
 
 我们适配了如下的场景：
-* 【推荐】[使用蓝鲸提供的 bcs.sh 脚本快速部署 k8s 集群](#deploy-k8s-using-bcs-sh)
-* [使用现有的 k8s 集群](#using-existing-k8s)
-* [购买腾讯云 TKE 服务](#purchase-cloud-service-tke) （其他厂商提供 K8S 集群同理）
+* 【推荐】[使用蓝鲸提供的 bcs.sh 脚本快速部署 k8s 集群](prepare.md#deploy-k8s-using-bcs-sh)
+* [使用现有的 k8s 集群](prepare.md#using-existing-k8s)
+* [购买腾讯云 TKE 服务](prepare.md#purchase-cloud-service-tke) （其他厂商提供 K8S 集群同理）
 
 请查阅如下章节获得对应场景的操作指引。
 
@@ -143,7 +143,7 @@ scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进�
 >
 >在部署蓝鲸基础后添加 node 时，要记得 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
 
-您可以腾讯云提供的 k8s 集群，具体操作请查阅文档： [腾讯云 TKE 集群搭建指引](tke_hosting.md){target=_blank}
+您可以腾讯云提供的 k8s 集群，具体操作请查阅文档： [腾讯云 TKE 集群搭建指引](tke_hosting.md)
 
 文末描述了导出 kubeconfig 的方法，将其内容写入  **中控机** 的  `~/.kube/config` 路径下即可：
 ```bash
