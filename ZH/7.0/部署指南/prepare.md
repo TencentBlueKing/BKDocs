@@ -53,9 +53,9 @@
 >因 k8s API 被移除，蓝鲸无法在 1.22 及以上版本使用，开发正在兼容新版 API 。
 
 我们适配了如下的场景：
-* 【推荐】[使用蓝鲸提供的 bcs.sh 脚本快速部署 k8s 集群](#deploy-k8s-using-bcs-sh)
-* [使用现有的 k8s 集群](#using-existing-k8s)
-* [购买腾讯云 TKE 服务](#purchase-cloud-service-tke) （其他厂商提供 K8S 集群同理）
+* 【推荐】[使用蓝鲸提供的 bcs.sh 脚本快速部署 k8s 集群](prepare.md#deploy-k8s-using-bcs-sh)
+* [使用现有的 k8s 集群](prepare.md#using-existing-k8s)
+* [购买腾讯云 TKE 服务](prepare.md#purchase-cloud-service-tke) （其他厂商提供 K8S 集群同理）
 
 请查阅如下章节获得对应场景的操作指引。
 
