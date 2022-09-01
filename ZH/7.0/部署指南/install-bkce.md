@@ -328,7 +328,8 @@ docker info
 ``` bash
 curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur latest saas  # 下载SaaS安装包及节点管理托管的常用文件
 scripts/setup_bkce7.sh -i nodeman  # 节点管理charts化后使用单独的命令。可上传待托管文件。
-scripts/setup_bkce7.sh -i saas
+scripts/setup_bkce7.sh -i itsm  # 部署流程服务
+scripts/setup_bkce7.sh -i sops  # 部署标注运维
 ```
 
 此步骤总耗时 18 ~ 27 分钟。每个 SaaS 部署不超过 10 分钟，如果超时请参考 《[FAQ](faq.md)》文档的 “[部署 SaaS 在“执行部署前置命令”阶段报错](faq.md#saas-deploy-prehook)” 章节排查。
