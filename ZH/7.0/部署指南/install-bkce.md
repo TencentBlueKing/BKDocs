@@ -102,7 +102,7 @@ k8s 具备比较复杂的网络拓扑，当您从不同的区域访问时，需�
 
 >**注意**
 >
->pod 删除重建后，clusterIP 会变动，需刷新 hosts 文件。
+>当 service 被删除，重建后 clusterIP 会变动，此时需刷新 hosts 文件。
 
 详细操作步骤见《[分步部署基础套餐后台](install-base-manually.md)》 文档的 “[配置 coredns](install-base-manually.md#hosts-in-coredns)” 章节。
 
@@ -115,9 +115,9 @@ k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
 
 >**注意**
 >
->pod 删除重建后，clusterIP 会变动，需刷新 hosts 文件。
+>当 service 被删除，重建后 clusterIP 会变动，此时需刷新 hosts 文件。
 
-请在 **中控机** 执行如下脚本 **生成 hosts 内容**，然后将其追加到所有的 `node` 的 `/etc/hosts` 文件结尾（如 pod 经历删除重建，则需要更新 hosts 文件覆盖 pod 相应的域名）。
+请在 **中控机** 执行如下脚本 **生成 hosts 内容**，然后将其追加到所有的 `node` 的 `/etc/hosts` 文件结尾。
 
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
@@ -149,7 +149,7 @@ EOF
   ```
   >**注意**
   >
-  >pod 删除重建后，clusterIP 会变动，则需刷新 hosts 文件。
+  >当 service 被删除，重建后 clusterIP 会变动，此时需刷新 hosts 文件。
 
 请先根据中控机的角色选择合适的 IP。然后生成 hosts 内容并手动更新到 `/etc/hosts`：
 ``` bash

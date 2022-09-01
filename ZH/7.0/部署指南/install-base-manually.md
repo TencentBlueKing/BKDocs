@@ -127,7 +127,7 @@ kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx  # 查看创建的po
 
 >**注意**
 >
->pod 删除重建后，clusterIP 会变动，需刷新 hosts 文件。
+>当 service 被删除，重建后 clusterIP 会变动，此时需刷新 hosts 文件。
 
 因此需要注入 hosts 配置项到 `kube-system` namespace 下的 `coredns` 系列 pod，步骤如下：
 
