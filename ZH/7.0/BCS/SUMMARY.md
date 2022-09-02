@@ -32,6 +32,8 @@
         * [Service](产品白皮书/Function/k8s/network/Service.md)
         * [Ingress](产品白皮书/Function/k8s/network/Ingress.md)
         * [LoadBalancer](产品白皮书/Function/k8s/network/LoadBalancer.md)
+        * [Bcs-ingress-controller](产品白皮书/Function/bcs-ingress-controller.md)
+            * [TKE](产品白皮书/Function/bcs-ingress-controller-tke.md)
     * [配置]()
         * [ConfigMaps](产品白皮书/Function/k8s/configuration/ConfigMap.md)
         * [Secrets](产品白皮书/Function/k8s/configuration/Secret.md)
