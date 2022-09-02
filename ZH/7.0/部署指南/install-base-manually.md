@@ -82,16 +82,19 @@ helm repo list
 ## 生成 localpv
 我们默认使用 local pv provisioner 提供存储。
 
-先确认当前的存储提供者。在 中控机 执行：
+先检查当前的存储提供者。在 中控机 执行：
 ``` bash
 kubectl get sc
 ```
-预期输出一行，且 `NAME` 列的值为 `local-storage (default)`。
+如果上述命令只显示了标题，说明还没有配置存储类。
 
-如果 `default` 为其他名字，则说明有其他存储供应服务。则无需使用 `localpv`，可跳过本小节。
+您可以参考下述内容配置 `localpv`（输出结果中 `NAME` 列为 `local-storage` ），或者自行对接其他存储类并设置为默认存储类（输出结果中 `NAME` 列结尾使用 `(default)` 标注）。
 
-蓝鲸默认使用 `/mnt/blueking` 目录作为主目录，请勿修改。
-执行如下命令开始创建 pv：
+>**提示**
+>
+>蓝鲸默认会在 `/mnt/blueking` 目录下创建 pv，请确保各 `node` 中此目录所在文件系统具备 100GB 以上的可用空间。
+
+执行如下命令配置 localpv 存储类并创建一批 pv：
 ``` bash
 # 切换到工作目录
 cd ~/bkhelmfile/blueking
@@ -127,7 +130,7 @@ kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx  # 查看创建的po
 
 >**注意**
 >
->pod 删除重建后，clusterIP 会变动，需刷新 hosts 文件。
+>当 service 被删除，重建后 clusterIP 会变动，此时需刷新 hosts 文件。
 
 因此需要注入 hosts 配置项到 `kube-system` namespace 下的 `coredns` 系列 pod，步骤如下：
 

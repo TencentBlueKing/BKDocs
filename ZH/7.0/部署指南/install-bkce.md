@@ -53,7 +53,7 @@ curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta
 
 # 部署基础套餐后台
 本章节提供了 2 种等价的操作。您可按需选择其中一种：
-* 如果您希望尽快体验蓝鲸，使用 “一键部署” 脚本填写域名即可开始部署，详见 [一键部署基础套餐后台](install-bkce.md#setup_bkce7-i-base) 章节。
+* 如果您希望尽快体验蓝鲸，使用 “一键部署” 脚本填写域名即可开始部署，详见 <a href="#setup_bkce7-i-base">一键部署基础套餐后台</a> 章节。
 * 如果您打算研究部署细节，期间需要手动执行 `helmfile` 命令及一些代码片段，请查阅 《[分步部署基础套餐后台](install-base-manually.md)》 文档。
 
 
@@ -88,10 +88,10 @@ fi
 k8s 具备比较复杂的网络拓扑，当您从不同的区域访问时，需要使用不同的入口地址。
 
 我们用到的访问场景如下:
-* k8s pod 内解析蓝鲸域名，需要 [配置 coredns](install-bkce.md#hosts-in-coredns)
-* k8s node 从 bkrepo 拉取镜像，安装 GSE Agent，需要 [配置 k8s node 的 DNS](install-bkce.md#hosts-in-k8s-node)
-* 中控机调用蓝鲸接口，需要 [配置中控机的 DNS](install-bkce.md#hosts-in-bk-ctrl)
-* 您在电脑上访问蓝鲸，需要 [配置用户侧的 DNS](install-bkce.md#hosts-in-user-pc)
+* k8s pod 内解析蓝鲸域名，需要 <a href="#hosts-in-coredns">配置 coredns</a>
+* k8s node 从 bkrepo 拉取镜像，安装 GSE Agent，需要 <a href="#hosts-in-k8s-node">配置 k8s node 的 DNS</a>
+* 中控机调用蓝鲸接口，需要 <a href="#hosts-in-bk-ctrl">配置中控机的 DNS</a>
+* 您在电脑上访问蓝鲸，需要 <a href="#hosts-in-user-pc">配置用户侧的 DNS</a>
 
 为了简化操作，这些步骤皆以 `hosts` 文件为例。
 
@@ -102,7 +102,7 @@ k8s 具备比较复杂的网络拓扑，当您从不同的区域访问时，需�
 
 >**注意**
 >
->pod 删除重建后，clusterIP 会变动，需刷新 hosts 文件。
+>当 service 被删除，重建后 clusterIP 会变动，此时需刷新 hosts 文件。
 
 详细操作步骤见《[分步部署基础套餐后台](install-base-manually.md)》 文档的 “[配置 coredns](install-base-manually.md#hosts-in-coredns)” 章节。
 
@@ -115,9 +115,9 @@ k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
 
 >**注意**
 >
->pod 删除重建后，clusterIP 会变动，需刷新 hosts 文件。
+>当 service 被删除，重建后 clusterIP 会变动，此时需刷新 hosts 文件。
 
-请在 **中控机** 执行如下脚本 **生成 hosts 内容**，然后将其追加到所有的 `node` 的 `/etc/hosts` 文件结尾（如 pod 经历删除重建，则需要更新 hosts 文件覆盖 pod 相应的域名）。
+请在 **中控机** 执行如下脚本 **生成 hosts 内容**，然后将其追加到所有的 `node` 的 `/etc/hosts` 文件结尾。
 
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
@@ -149,7 +149,7 @@ EOF
   ```
   >**注意**
   >
-  >pod 删除重建后，clusterIP 会变动，则需刷新 hosts 文件。
+  >当 service 被删除，重建后 clusterIP 会变动，此时需刷新 hosts 文件。
 
 请先根据中控机的角色选择合适的 IP。然后生成 hosts 内容并手动更新到 `/etc/hosts`：
 ``` bash
@@ -242,7 +242,7 @@ echo "http://$BK_DOMAIN"
 # 准备 SaaS 运行环境
 >**注意**
 >
->SaaS 部署时需要访问 bkrepo 提供的 docker 服务，请先完成 “[配置 k8s node 的 DNS](install-bkce.md#hosts-in-k8s-node)” 章节。
+>SaaS 部署时需要访问 bkrepo 提供的 docker 服务，请先完成 “<a href="#hosts-in-k8s-node">配置 k8s node 的 DNS</a>” 章节。
 
 <a id="k8s-node-docker-insecure-registries" name="k8s-node-docker-insecure-registries"></a>
 
@@ -314,10 +314,10 @@ docker info
 >**提示**
 >
 >部署时 开发者中心 会基于 S-Mart 安装包制作该 SaaS 的 docker 镜像并上传到 bkrepo。<br/>
->您刚才已经随着文档完成了 “[配置 k8s node 的 DNS](install-bkce.md#hosts-in-k8s-node)” 和 “[调整 node 上的 docker 服务](install-bkce.md#k8s-node-docker-insecure-registries)” 章节。如果在此期间您有新增 k8s node，则需在新 node 上也做完这些的操作。
+>您刚才已经随着文档完成了 “<a href="#hosts-in-k8s-node">配置 k8s node 的 DNS</a>” 和 “<a href="#k8s-node-docker-insecure-registries">调整 node 上的 docker 服务</a>” 章节。如果在此期间您有新增 k8s node，则需在新 node 上也做完这些的操作。
 
 如同刚才部署后台一般，本章节也提供了 2 种等价的操作。您可按需选择其中一种：
-* 为了快速体验，可以跟随下面的 “[一键部署基础套餐 SaaS](install-bkce.md#setup_bkce7-i-saas)” 章节来完成 **全新安装** 以及 **部署前设置**。
+* 为了快速体验，可以跟随下面的 “<a href="#setup_bkce7-i-saas">一键部署基础套餐 SaaS</a>” 章节来完成 **全新安装** 以及 **部署前设置**。
 * 部分 SaaS 需要部署后手动配置，则需查阅信息全面的 《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
 
 <a id="setup_bkce7-i-saas" name="setup_bkce7-i-saas"></a>
@@ -328,7 +328,8 @@ docker info
 ``` bash
 curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur latest saas  # 下载SaaS安装包及节点管理托管的常用文件
 scripts/setup_bkce7.sh -i nodeman  # 节点管理charts化后使用单独的命令。可上传待托管文件。
-scripts/setup_bkce7.sh -i saas
+scripts/setup_bkce7.sh -i itsm  # 部署流程服务
+scripts/setup_bkce7.sh -i sops  # 部署标注运维
 ```
 
 此步骤总耗时 18 ~ 27 分钟。每个 SaaS 部署不超过 10 分钟，如果超时请参考 《[FAQ](faq.md)》文档的 “[部署 SaaS 在“执行部署前置命令”阶段报错](faq.md#saas-deploy-prehook)” 章节排查。
