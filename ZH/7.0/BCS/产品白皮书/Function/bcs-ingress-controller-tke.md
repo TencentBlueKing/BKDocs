@@ -1,4 +1,8 @@
 # bcs-ingress-controller TKE使用指南
+
+## bcs-ingress-controller介绍
+bcs-ingress-controller是蓝鲸容器服务扩展 Ingress，多云环境下为业务服务提供灵活的流量接入方式，目前支持的云服务商有Tencent TKE、Amazon EKS、Google GKE
+
 ## 特性支持
 - 支持HTTPS，HTTP，TCP，UDP协议
 - 支持腾讯云Clb健康检查等参数配置
@@ -266,7 +270,7 @@ spec:
   portMappings:
   - startPort: 30000
     protocol: UDP
-	    # [startIndex, endIndex)，左闭右开区间
+    # [startIndex, endIndex)，左闭右开区间
     startIndex: 0
     endIndex: 6
     segmentLength: 5
@@ -332,7 +336,7 @@ spec:
         app: nginx
       annotations:
         randhostport.webhook.bkbcs.tencent.com: "true"
-		# 可以是端口名字或者端口号
+        # 可以是端口名字或者端口号
         ports.randhostport.webhook.bkbcs.tencent.com: "8080,metric"
     spec:
       containers:
@@ -376,7 +380,7 @@ spec:
     - name: metric
       containerPort: 8081
       hostPort: 29323
-	    env:
+    env:
     - name: BCS_RANDHOSTPORT_FOR_CONTAINER_PORT_8080
       value: "29001"
     - name: BCS_RANDHOSTPORT_FOR_CONTAINER_PORT_8081
@@ -611,7 +615,7 @@ status:
     segmentLength: 0
     startPort: 31000
     endPort: 31100
-	# 此时表示端口池Item已初始化成功
+    # 此时表示端口池Item已初始化成功
     status: Ready
 ```
 
@@ -684,7 +688,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   annotations:
-	# 注入的端口端口
+    # 注入的端口端口
     poolbindings.portpool.networkextension.bkbcs.tencent.com: '[
     	{
         	"poolName":"test-pool1",
@@ -810,7 +814,7 @@ spec:
   poolItems:
   - itemName: item1
     loadBalancerIDs: ["lb-test1", "lb-test2"]
-	# 此处声明了1000个端口，每5个端口一个段，总共可以供200个Pod使用
+    # 此处声明了1000个端口，每5个端口一个段，总共可以供200个Pod使用
     startPort: 30000
     endPort: 31000
     segmentLength: 5
@@ -898,7 +902,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   annotations:
-	# 注入的端口端口
+  # 注入的端口端口
     poolbindings.portpool.networkextension.bkbcs.tencent.com: '[
     	{
         	"poolName":"test-pool1",
@@ -927,7 +931,7 @@ metadata:
     portpools.networkextension.bkbcs.tencent.com: "true"
     ports.portpools.networkextension.bkbcs.tencent.com: test-pool1 TCP 80
     status.portpools.networkextension.bkbcs.tencent.com: Ready
-	......
+    ......
 ```
 
 ##### 为Pod注入自定义字段
@@ -947,7 +951,7 @@ spec:
     protocol: "TCP" # 端口池的协议，不填则默认为 "TCP,UDP"
     startPort: 31000
     endPort: 31100
-	external: "test" #自定义字段
+    external: "test" #自定义字段
 ```
 自定义字段会被透传到绑定的pod上，用户可以通过监听文件来使用这个字段（见2.5）。
 ```yaml
@@ -955,7 +959,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   annotations:
-	# 注入的端口
+    # 注入的端口
     poolbindings.portpool.networkextension.bkbcs.tencent.com: '[
     	{
         	"poolName":"test-pool1",
