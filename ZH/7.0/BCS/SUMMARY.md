@@ -43,4 +43,5 @@
     * [Web-Console](产品白皮书/Function/web_console/Description.md)
     * [监控中心]()
         * [蓝鲸容器监控安装](产品白皮书/Function/container_monitor.md)
+    * [API密钥管理与使用](产品白皮书/Function/bcs-api-key.md)
 * [常见问题](产品白皮书/FAQ/faq.md)
