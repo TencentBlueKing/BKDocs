@@ -3,7 +3,7 @@
 ## 进程配置管理
 
 * [产品白皮书]()
-    * [什么是 GSEKit](产品白皮书/What_is_GSEKit.md)
+    * [什么是进程配置管理](产品白皮书/What_is_process-config-manager.md)
     * [快速入门]()
         * [配置文件使用指引](产品白皮书/Quick_start/Configuration_file_usage_guidelines.md)
         * [进程配置指引](产品白皮书/Quick_start/Process_configuration_guide.md)

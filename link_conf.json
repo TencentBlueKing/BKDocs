@@ -4174,12 +4174,12 @@
 	"link_conf": [
 		{
 			"extend": {
-				"summary": "7.0/Gsekit/SUMMARY.md"
+				"summary": "7.0/进程配置管理/SUMMARY.md"
 			},
 			"index": 485,
 			"title": "进程配置管理",
-			"url": "7.0/Gsekit/产品白皮书/What_is_Gsekit.md",
-			"version": "6.0"
+			"url": "7.0/进程配置管理/产品白皮书/What_is_process-config-manager.md",
+			"version": "7.0"
 		}],
 	"source": {
 		"describe": "内容丰富的SaaS产品，开箱即用",

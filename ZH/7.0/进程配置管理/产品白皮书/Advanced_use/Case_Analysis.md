@@ -1,4 +1,4 @@
-### GSEKit 中的配置模版长啥样
+### 进程配置管理 中的配置模版长啥样
  
 ```bash
 ###listen port
@@ -6,7 +6,7 @@ local_server_public_host=${ InnerIP }
 local_server_public_port=8803
 ```
 该配置文件中， local_server_public_host 的值需要填这个配置文件实例所在的主机的内网IP地址。在配置模版中可以通过全局配置变量 InnerIP 获取这个属性。（更多的全局变量可在模板编辑窗口内点击 “变量” 按钮获取）
-GSEKit 会在生成配置文件时，根据具体配置文件实例所在的主机，填充不同的 InnerIP 地址。
+进程配置管理 会在生成配置文件时，根据具体配置文件实例所在的主机，填充不同的 InnerIP 地址。
 
 ### 如何在配种模版中进行条件判断？
 
