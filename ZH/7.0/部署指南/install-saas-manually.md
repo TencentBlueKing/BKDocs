@@ -114,7 +114,7 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
 >
 >一些 SaaS 在部署成功后，还需要做初始化设置。
 
-
+<!--
 <a id="post-install-bk-lesscode" name="post-install-bk-lesscode"></a>
 
 ### 蓝鲸可视化平台（bk_lesscode）部署后配置
@@ -127,7 +127,7 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
 步骤示例图：
 ![](assets/2022-03-09-10-45-21.png)
 ![](assets/2022-03-09-10-45-29.png)
-
+-->
 
 <a id="post-install-bk-nodeman" name="post-install-bk-nodeman"></a>
 
