@@ -86,9 +86,9 @@ helm repo list
 ``` bash
 kubectl get sc
 ```
-如果上述命令只显示了标题，说明还没有配置存储类。
+如果上述命令提示 `No resources found`，说明还没有配置存储类。
 
-您可以参考下述内容配置 `localpv`（输出结果中 `NAME` 列为 `local-storage` ），或者自行对接其他存储类并设置为默认存储类（输出结果中 `NAME` 列结尾使用 `(default)` 标注）。
+您可以参考下述内容配置 `localpv`（输出结果中 `NAME` 列为 `local-storage` ），或者自行对接其他存储类并设置为默认存储类。
 
 >**提示**
 >
