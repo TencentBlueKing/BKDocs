@@ -14,6 +14,7 @@ bcs-ingress-controller是蓝鲸容器服务扩展 Ingress，多云环境下为�
 - 云接口的客户端限流与重试
 - 为任意Pod动态分配端口
 ## bcs-ingress-controller组件部署
+### 1. 腾讯云账户与权限
 部署bcs-ingress-controller组件的SecretID、SecretKey至少需要有如下权限：
 ["clb:Describe*",
 "clb:DescribeTargetHealth",
@@ -54,8 +55,20 @@ bcs-ingress-controller是蓝鲸容器服务扩展 Ingress，多云环境下为�
 "clb:DisassociateTargetGroups",
 "cvm:DescribeInstances"]
 
+#### 账户授权
+设置单独的权限需要添加自定义策略，参考 https://cloud.tencent.com/document/product/598/37739，然后给子账号授权该策略。
+
+为了方便，可以给直接子账号授权预设策略中 CLB 全部权限和 CVM 只读权限，这样可以不用创建自定义策略。如：
+![-w2020](../assets/bcs-ingress-controller_policy.png)
+
+#### 生成 Secret ID 和 Secret Key
+参考 https://cloud.tencent.com/document/product/598/37140 通过子账号生成 Secret ID 和 Secret Key
+
+### 2. 组件部署
+
 在组件库中找到“GameIngress-Controller”，点击“启用”按钮
 ![-w2020](../assets/bcs-ingress-controller_enable.png)
+
 配置TKE集群所在Region、SecretID、SecretKey参数后即可点击“启用”按钮部署bcs-ingress-controller组件，填入SecretID、SecretKey内容记得用base64加密
 
 ```bash
@@ -63,13 +76,253 @@ echo -n "<SecretID>" | base64
 echo -n "<SecretKey>" | base64
 ```
 
-
-
 ![-w2020](../assets/bcs-ingress-controller_tke_config.png)
 
 ![-w2020](../assets/bcs-ingress-controller_tke_success.png)
+## bcs-ingress-controller快速入门
+### 1. 创建 CLB
+参考 https://cloud.tencent.com/document/product/214/6149 创建腾讯云 CLB，地域和 VPC 需要和当前集群一致。实例类型选推荐类型，即【负载均衡（原“应用型负载均衡”）】。网络类型公网和内网都可以，IP 版本选 IPv4，其他默认即可。
+创建完成后，进入负载均衡控制台获取 CLB ID。如：
+### 2. 准备 workload
+为了验证 ingress 绑定 pod ip，需要提前准备好对应的 workload，保存下面内容为ingress-test.yaml
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ingress-test
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: ingress-test
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: ingress-test
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
+  type: NodePort
+```
+把以下内容保存为文件nginx-sts.yaml
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nginx-sts
+  namespace: ingress-test
+  labels:
+    app: nginx-sts
+spec:
+  replicas: 3
+  serviceName: nginx-sts
+  selector:
+    matchLabels:
+      app: nginx-sts
+  template:
+    metadata:
+      labels:
+        app: nginx-sts
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-sts
+  namespace: ingress-test
+spec:
+  selector:
+    app: nginx-sts
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
+  type: ClusterIP
+```
 
-## bcs-ingress-controller使用场景
+执行如下命令，创建workload
+```bash
+kubectl apply -f ingress-test.yaml
+kubectl apply -f nginx-sts.yaml
+```
+### 3. 安装组说明
+- CVM 安全组：控制 CLB 到 CVM 的流量，如果开启默认放通，则不用特地设置 CVM 安全组，否则需要放通 CLB 到 CVM 后端端口。如果是 Pod 直通，则已 Pod 端口为后端端口设置安全组。
+- CLB 安全组：控制客户端到 CLB 的流量，放通指定客户端即可
+![-w2020](../assets/bcs-ingress-controller_secgrp.png)
+
+### 4. 快速体验
+#### NodePort转发
+networkextension.bkbcs.tencent.com/lbids 替换为自己的 lb，
+创建完成后，查看腾讯云 CLB 监听器，看 38080 端口是否被创建，后端 ip port 是否正常，ip 应该为 pod 所在节点的 ip，port 为 service 的 nodeport
+```yaml
+apiVersion: networkextension.bkbcs.tencent.com/v1
+kind: Ingress
+metadata:
+  name: test1
+  namespace: ingress-test
+  annotations:
+    networkextension.bkbcs.tencent.com/lbids: lb-xxx
+spec:
+  rules:
+  - port: 38080
+    protocol: TCP
+    services:
+    - serviceName: nginx
+      serviceNamespace: ingress-test
+      servicePort: 8080
+```
+#### CLB直通Pod
+networkextension.bkbcs.tencent.com/lbids 替换为自己的 lb
+创建完成后，查看腾讯云 CLB 监听器，看 39090 端口是否被创建，后端 ip port 是否正常，ip 应该为 pod 的 ip，port 为 80
+```yaml
+apiVersion: networkextension.bkbcs.tencent.com/v1
+kind: Ingress
+metadata:
+  name: test2
+  namespace: ingress-test
+  annotations:
+    networkextension.bkbcs.tencent.com/lbids: lb-xxx
+spec:
+  rules:
+  - port: 39090
+    protocol: TCP
+    services:
+    - serviceName: nginx
+      serviceNamespace: ingress-test
+      servicePort: 8080
+      isDirectConnect: true
+```
+#### 端口段
+networkextension.bkbcs.tencent.com/lbids 替换为自己的 lb
+创建完成后，查看腾讯云 CLB 监听器，观察 30000-30001, 30002-30003, 30004-30005 三个端口段是否被创建，因为我们的验证Pod只监听一个80端口，所以只有vport映射的80端口是通的，30001映射的81，30002映射的82，30003映射的83，30004映射的84，30005映射的85都不可访问是正常现象，主要看CLB的规则是否创建正确即可
+
+```yaml
+apiVersion: networkextension.bkbcs.tencent.com/v1
+kind: Ingress
+metadata:
+  name: test3
+  namespace: ingress-test
+  annotations:
+    networkextension.bkbcs.tencent.com/lbids: lb-xxx
+spec:
+  portMappings:
+  - startPort: 30000
+    protocol: TCP
+    startIndex: 0
+    endIndex: 3
+    segmentLength: 2
+    workloadKind: StatefulSet
+    workloadName: nginx-sts
+    workloadNamespace: ingress-test
+    rsStartPort: 80
+```
+
+#### 端口池
+步骤一：创建端口池
+loadBalancerIDs 替换为自己的 lb
+
+```yaml
+apiVersion: networkextension.bkbcs.tencent.com/v1
+kind: PortPool
+metadata:
+  name: pool1
+  namespace: ingress-test
+spec:
+  poolItems:
+  - itemName: item1
+    loadBalancerIDs: ["lb-xxx"]
+    startPort: 31000
+    endPort: 31010
+```
+查看 Portpool 是否创建成功，status 为 ready 说明创建成功
+```
+kubectl describe portpool pool1 -n ingress-test
+```
+步骤二：声明命名空间使用端口池
+给 ingress-test 命名空间打上 label
+```bash
+kubectl label ns ingress-test bcs-ingress-controller-inject=true
+```
+步骤三：声明 pod 使用端口池
+给之前创建的 nginx deployment 打上 annotation，声明使用端口池。
+annotaions 内容：
+```
+portpools.networkextension.bkbcs.tencent.com: "true"
+ports.portpools.networkextension.bkbcs.tencent.com: "{端口池名称} {端口协议名称} {端口号}"
+```
+例如：
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-portpool
+  namespace: ingress-test
+  labels:
+    app: nginx-portpool
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-portpool
+  template:
+    metadata:
+      labels:
+        app: nginx-portpool
+      annotations:
+        portpools.networkextension.bkbcs.tencent.com: "true"
+        ports.portpools.networkextension.bkbcs.tencent.com: "pool1 TCP 80"
+    spec:
+      containers:
+      - name: nginx-portpool
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+```
+创建完成后，查看腾讯云 CLB 监听器，观察 31000 - 31009 端口是否被监听，创建完后31000映射的80端口是正常的，其它端口因为没有在容器中监听，所以没有绑定后端服务
+
+### 常用命令
+```bash
+# 查看 Ingress
+kubectl get ingress.networkextension.bkbcs.tencent.com -n namespace
+# 查看监听器
+kubectl get listener -n namespace
+# 查看端口池
+kubectl get portpool -n namespace
+# 查看端口池绑定 pod
+kubectl get portbinding -n namespace
+```
+
+
+## bcs-ingress-controller全部使用场景
 
 ### 1. CLB转到Service NodePort
 
@@ -1189,6 +1442,20 @@ spec:
 ```
 
 ## 常见问题
+如果遇到组件无法正常工作的情况下，通过如下方法来排查问题
+1. 查看gameingress-controller组件的状态
+    ```bash
+    # 查看组件运行状态是否异常
+    kubectl get pod -n bcs-system|grep 'gameingress-controller'
+    kubectl describe pod gameingress-controller-xxx -n bcs-system
+    ```
+
+2. 查看gameingress-controller组件日志，常见问题如下：
+
+    ```bash
+    # 确认是否存在错误日志
+    kubectl logs gameingress-controller-xxx -n bcs-system
+    ```
 
 - 日志显示 is not add to global route
   通常为 CLB 和集群不在一个 vpc，使用和集群相同 vpc 的 CLB 即可。
