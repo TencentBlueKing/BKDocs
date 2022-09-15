@@ -8,22 +8,19 @@ BCS API密钥是调用BCS API的身份凭证，主要有以下使用场景：
 ## BCS API密钥使用流程
 1. BCS平台创建API密钥
     通过菜单按钮或直接通过URL：http(s)://bcs.xxxxxx/project-en-name/api-key  进入到API密钥管理页面
-    ![-w2020](../assets/api_key_enter.png)
 
-    
+    ![-w2020](../assets/api_key_enter.png)
 
     点击“新建API密钥”按钮
 
     ![-w2020](../assets/api_key_create.png)
 
-    
-
     选择申请期限，如果长期使用选择“永久”，如果是临时使用选择您要使用的时间期限，到期提后则密钥无法使用
+
     ![-w2020](../assets/api_key_period.png)
 
-    
-
     密钥创建成功
+
     ![-w2020](../assets/api_key_success.png)
 
 2. 蓝鲸权限中心申请权限
@@ -66,7 +63,7 @@ BCS API密钥是调用BCS API的身份凭证，主要有以下使用场景：
     
 
 * 在中心服务器上创建kubeconfig文件，kubectl默认使用的kubeconfig文件为：在/root/.kube/config，也可以把kubeconfig文件内容存在某个文件，然后在使用kubectl命令时指定kubeconfig文件，例如，把kubeconfig内容存在文件/root/.kube/demo_config中，使用如下命令使用kubeconfig文件。注意，使用示例中kubeconfig内容时需要把里面的 `${cluste_id}` 变量替换为实际的集群ID，例如：BCS-K8S-40001，把`${API密钥}`替换为你刚刚创建的API密钥
-    
+  
     ```
     kubectl --kubeconfig=/root/.kube/demo_config get node
     ```
@@ -75,7 +72,7 @@ BCS API密钥是调用BCS API的身份凭证，主要有以下使用场景：
 
 
 5. K8S原生API使用流程
-  如果在一些应用中无法使用kubectl命令的时候，可以使用API密钥调用Kubernetes API，来完成对集群的管控，以下介绍下常用的使用场景：
+    如果在一些应用中无法使用kubectl命令的时候，可以使用API密钥调用Kubernetes API，来完成对集群的管控，以下介绍下常用的使用场景：
 
 * 获取kubelet版本号
   kubectl命令
