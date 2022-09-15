@@ -19,6 +19,8 @@
     * [项目管理](产品白皮书/Function/project_management.md)
     * [集群管理](产品白皮书/Function/cluster_management.md)
     * [节点管理](产品白皮书/Function/node_management.md)
+    * [节点自动扩缩容]()
+        * [TKE](产品白皮书/Function/auto_scaler-tke.md)
     * [命名空间](产品白皮书/Function/namespace.md)
     * [变量管理](产品白皮书/Function/variable_management.md)
     * [模板集](产品白皮书/Function/templatesets.md)
