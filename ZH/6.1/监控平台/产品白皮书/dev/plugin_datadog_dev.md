@@ -201,6 +201,6 @@ ddev test system_cpu
 
 参考文档：
 
-- [制作监控平台 DataDog 插件 (线上)](../guide/import_datadog_online.md)
+* [制作DataDog插件](产品白皮书/integrations-metric-plugins/import_datadog_online.md)
+* [如何线下制作 DataDog 插件](产品白皮书/dev/import_datadog_offline.md)
 
-- [制作监控平台 DataDog 插件 (线下)](../guide/import_datadog_offline.md)

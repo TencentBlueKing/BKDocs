@@ -17,36 +17,44 @@
 
 明白用户关心的数据分层，所有的实现手段都进行了解耦，简而言之所有的以下所有的方式都是为数据分层而服务。
 
-* **数据上报来源**：3 种
-    * **监控采集**
-        * 默认采集：操作系统 Basereport， 进程 Process 都是默认安装和下发的。系统事件也是默认采集的一种
+* **数据上报来源**：4 种
+    * **监控默认采集**
+        * 默认采集：监控的采集器只有bkmonitorbeat ,默认会采集主机操作系统、系统事件、进程指标、K8s数据
+    * **用户采集PULL**
         * 采集配置：通过采集配置下发的采集任务，如脚本，Exporter，DataDog，JMX，日志采集等
         * 拨测任务：拨测是一种特定的场景任务，其实也属于采集配置中的一类
-    * **自定义上报**：无需监控平台进行下发和管理的采集来源，只要符合监控平台的数据格式即可，包含自定义事件上报和自定义时序数据
-    * **数据平台**：是已经接入数据平台的[结果表]数据进行监控
+    * **自定义上报PUSH**：无需监控平台进行下发和管理的采集来源，只要符合监控平台的数据格式即可，包含自定义事件上报和自定义时序数据
+    * **计算平台**：是已经接入计算平台的[结果表]数据进行监控
 
 * **采集方式**： 8 种
     * Script 脚本插件采集：插件管理中维护，Linux 支持 Bash,Python; Windows 支持 Powershell、vbs、Python
     * Exporter 插件采集：支持[Prometheus](https://prometheus.io/docs/instrumenting/exporters/)的采集协议。可以很方便的将 Exporter 转为监控平台平台的插件
     * DataDog 插件采集：支持[DataDog](https://github.com/DataDog/datadog-agent)的采集。 可以很方便的将 DataDog 转为监控平台平台的插件
     * JMX 插件采集：采集任何开启了 JMX 服务端口的 Java 进程的服务状态。用户可在插件管理中定义
-    * basereport 基础采集器：默认安装的操作系统指标采集器
-    * processbeat 进程采集器：默认的进程采集器，进程的信息依据 CMDB 的进程管理
+    * SNMP 插件采集: 通过MIB库制作SNMP采集插件，远程实现硬件设备的采集。
+    * BK-Pull 插件采集： 通过远程获取metrics的URL进行采集。
+    * bkmonitorbeat 基础采集器：默认安装的操作系统指标采集器,默认的进程采集器，进程的信息依据 CMDB 的进程管理
     * bkunifylogbeat 日志采集器：蓝鲸默认的日志采集器，日志采集器支持 Linux 和 Windows
-    * bkmonitorbeat 采集器：支持拨测服务相关的数据采集，如 TCP,UDP,HTTP(s)，不仅是拨测还负责其他插件的管理工作
+    * bkmonitorbeat 采集器：支持拨测服务相关的数据采集，如 TCP,UDP,HTTP(s)，ICMP  不仅是拨测还负责其他插件的管理工作
 
 *  **数据目标范围**：
     * 基于 CMDB 的主机拓扑：监控最小粒度为主机 IP，依据 CMDB 的拓扑结构进行配置
     * 基于 CMDB 的服务拓扑：监控最小粒度为服务实例 instance，依据 CMDB 的拓扑结构进行配置
+    * 基于 CMDB 的服务模版
+    * 基于 CMDB 的集群模版
     * 数据的维度：通过自定义上报或者数据平台来源的数据无法区别 CMDB 的拓扑结构
 
-* **数据类型**： 3 种
-    * 时序数据：[time series](https://zh.wikipedia.org/wiki/%E6%99%82%E9%96%93%E5%BA%8F%E5%88%97)监控最重要的数据类型，通过时序数据可以发现大部分的问题。 最重要的三要素就是指标，维度，时间。 并且时间上是连续的
+* **数据类型**： 4 种
+    * 时序/指标数据：[time series](https://zh.wikipedia.org/wiki/%E6%99%82%E9%96%93%E5%BA%8F%E5%88%97)监控最重要的数据类型，通过时序数据可以发现大部分的问题。 最重要的三要素就是指标，维度，时间。 并且时间上是连续的
     * 事件数据：事件是已发生的一件事情记录，时间上连续，由多个连续异常点构成
     * 日志数据：日志数据是由系统，应用产生的文本记录。 是重要的监控定位信息之一
         * 日志的产生方式：文件日志(行日志，段日志) 系统日志(设备日志，Windows Event 日志)
         * 日志的内容格式：文本，json，二进制等
+    * Trace数据： 程序通过Opentracing、Opentelemetry标准输出的trace数据。
+    
+![](media/16612221352204.jpg)
 
+    
 ## 监控平台基本数据结构
 
 ### 自定义事件数据
@@ -118,5 +126,9 @@ http_request_total{status="404", method="POST", route="/user"} 94334
 * **metric**：指标的名称(metric name)可以反映被监控样本的含义(比如，http_request_total - 表示当前系统接收到的 HTTP 请求总量)。指标名称只能由 ASCII 字符、数字、下划线以及冒号组成并必须符合正则表达式`[a-zA-Z_:][a-zA-Z0-9_:]*`
 
 * **label**：标签(label)反映了当前样本的特征维度，通过这些维度 Prometheus 可以对样本数据进行过滤，聚合等。标签的名称只能由 ASCII 字符、数字以及下划线组成并满足正则表达式`[a-zA-Z_][a-zA-Z0-9_]*`。在监控平台平台中等同于 **dimension**
+
+## Trace 的数据结构
+
+支持Opentelemetry和OpenTracing
 
 
