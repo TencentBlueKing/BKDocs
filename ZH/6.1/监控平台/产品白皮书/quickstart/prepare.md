@@ -1,6 +1,6 @@
 # 准备工作
 
-在正式使用监控之前，我们需要一些准备工作。
+在正式使用监控之前有些准备工作做好了会事半功倍。
 
 ## 了解监控平台
 
@@ -31,22 +31,13 @@
  * [CMDB 如何管理进程](../../../配置平台/产品白皮书/场景案例/CMDB_management_process.md)
  * [CMDB 如何配置服务实例](../../../配置平台/产品白皮书/产品功能/Instance.md)
 
-## 监控的数据采集器安装
+## 监控的数据采集器插件安装
 
-监控功能的数据采集依赖于采集器，部分采集器为默认随 agent 安装自带，其他按需安装。 
+监控功能的数据采集依赖于插件，部分插件为默认开启，其他按需开启。 
 
-| 功能	 | 依赖插件 | 	安装情况 | 	操作方法 |
-|---|---|---|---|
-|监控采集器	| bkmonitorbeat	| 默认安装 |agent 安装时自带|
-|监控 HTTP 上报接收端	| bkmonitorproxy | 默认不安装 |节点管理手动安装|
-|日志采集器 | 	bkunifylogbeat	| 默认不安装 | 	节点管理手动安装|
-|自定义字符型 |	gsecmdline	| 默认安装 |agent 安装时自带|
+* bkmonitorbeat 监控指标、事件、拨测的采集器
+* bkunifylogbeat 日志采集器
+* bk-collecoter Push采集器，Prometheus SDK 、 Opentelemetry SDK的远程上报。 
 
-```text
-注:原basereport、exceptionbeat、processbeat、bkmonitorbeat采集器已合并到bkmonitorbeat(版本大于2.0)，减少采集器个数，使用更方便。
-```
-
-采集器安装，请到`节点管理->插件管理` 进程更新安装
-
-![image-20211111151005655](media/install-monitor-collect.png)
+节点管理 SaaS 安装插件界面
 
