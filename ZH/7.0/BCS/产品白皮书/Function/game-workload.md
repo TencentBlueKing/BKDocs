@@ -1,6 +1,8 @@
 # Game workload 使用指南
 ## 功能介绍
+
 GameDeployment 是针对游戏场景定制的面向无状态服务的增强版 Deployment
+
 GameStatefulSet 是针对游戏场景定制的面向有状态服务的增强版 StatefulSet
 
 ### GameDeployment
@@ -23,7 +25,7 @@ GameStatefulSet 是针对游戏场景定制的面向有状态服务的增强版 
 - 支持分步骤自动化灰度发布
 - 支持并行更新
 - 支持 maxSurge / maxUnavailable 字段
-- 支持 HPA/GPA
+- 支持 HPA
 - 支持防误删功能
 
 ## 组件安装
@@ -633,12 +635,17 @@ spec:
 
 #### 参数解读
 1. args
+
     配置 hook 需要的参数bcs 默认提供了以上4种参数，可只配置 key， value 则由创建 HookRun 时自动传入，preDeleteUpdateStrategy/preInplaceUpdateStrategy 情况下，默认支持以上四种参数
 
-  PodContainer 参数按 spec 中定义的容器顺序，以 PodContainer[0], PodContainer[1], ... 形式存储每个容器的名字信息
-  如果是 preInplace hookrun，还会有默认参数 ModifiedContainer，以 ModifiedContainer[0], ModifiedContainer[1], ... 的形式存储触发原地更新的容器名字（也即镜像发生改变的容器名字）
+    
 
-  args中预填的PodIP、PodName、PodNamespace、PodContainer 因为和Pod状态相关，所以只适用于 preDeleteUpdateStrategy/preInplaceUpdateStrategy/postInplaceUpdateStrategy 的Hook而 canary 中的 hook 面对的是整个应用，所以 args 字段 不适用于 canary.hook
+    PodContainer 参数按 spec 中定义的容器顺序，以 PodContainer[0], PodContainer[1], ... 形式存储每个容器的名字信息
+      如果是 preInplace hookrun，还会有默认参数 ModifiedContainer，以 ModifiedContainer[0], ModifiedContainer[1], ... 的形式存储触发原地更新的容器名字（也即镜像发生改变的容器名字）
+
+    
+
+    args中预填的PodIP、PodName、PodNamespace、PodContainer 因为和Pod状态相关，所以只适用于 preDeleteUpdateStrategy/preInplaceUpdateStrategy/postInplaceUpdateStrategy 的Hook而 canary 中的 hook 面对的是整个应用，所以 args 字段 不适用于 canary.hook
 
 2. metrics
 
@@ -680,15 +687,15 @@ spec:
 
 11. provider
 
-    hook 的类型，目前仅支持 webhook, prometheus 和 k8s
+     hook 的类型，目前仅支持 webhook, prometheus 和 k8s
 
-    以 webhook 类型为例，url 定义了 webhook 调用的地址，jsonPath 表示提取返回 json 中的某个字段，timeoutSeconds 指定超时时间（默认为 10s）
+     以 webhook 类型为例，url 定义了 webhook 调用的地址，jsonPath 表示提取返回 json 中的某个字段，timeoutSeconds 指定超时时间（默认为 10s）
 
-    url 中可以通过模板的形式配置，比如 http://{{ args.PodIP }}:9091，hookrun-controller 在进行 hook 调用时会通过 args 渲染出真实值
+     url 中可以通过模板的形式配置，比如 http://{{ args.PodIP }}:9091，hookrun-controller 在进行 hook 调用时会通过 args 渲染出真实值
 
-    **注意 args.PodIP 等参数与双括号之间有空格**
-    当前 webhook 类型只支持 GET 方式
-    注： 如果使用集群内prometheus作为provider，address填写为 [http://po-prometheus-operator-prometheus.thanos.svc.cluster.local:9090](http://po-prometheus-operator-prometheus.thanos.svc.cluster.local:9090/) 即可
+     **注意 args.PodIP 等参数与双括号之间有空格**
+     当前 webhook 类型只支持 GET 方式
+     注： 如果使用集群内prometheus作为provider，address填写为 [http://po-prometheus-operator-prometheus.thanos.svc.cluster.local:9090](http://po-prometheus-operator-prometheus.thanos.svc.cluster.local:9090/) 即可
 
 #### 其它参数
 1. 防误删功能
@@ -909,14 +916,14 @@ Partition 的语义是 保留旧版本 Pod 的数量或百分比，默认为 0�
 ### 滚动更新时最大不可用pod数
 
 涉及字段：updateStrategy.maxUnavailable
-指在更新过程中每批执行更新的实例数量，在更新过程中这批实例是不可用的。比如一共有 8 个实例，maxUnavailable 设置为 2 ，那么每批滚动或原地重启 2 个实例，等这 2 个实例更新完成后，再进行下一批更新。可设置为整数值或百分比，默认值为 25%
+指在更新过程中每批执行更新的实例数量，在更新过程中这批实例是不可用的比如一共有 8 个实例，maxUnavailable 设置为 2 ，那么每批滚动或原地重启 2 个实例，等这 2 个实例更新完成后，再进行下一批更新可设置为整数值或百分比，默认值为 25%
 
 
 
 ### 滚动更新前最多新建旧版本pod数量
 
 涉及字段：updateStrategy.maxSurge
-在滚动更新过程中，如果每批都是先删除 maxUnavailable 数量的旧版本 pod 数，再新建新版本的 pod 数，那么在整个更新过程中，总共只有 replicas - maxUnavailable 数量的实例数能够提供服务。在总实例数 replicas 数量比较小的情况下，会影响应用的服务能力。设置 maxSurge 后，会在滚动更新前先多创建 maxSurge 数量的 pod， 然后再逐批进行更新，更新完成后，最后再删掉 maxSurge 数量的 pod ，这样就能保证整个更新过程中可服务的总实例数量。 maxSurge 默认值为 25%
+在滚动更新过程中，如果每批都是先删除 maxUnavailable 数量的旧版本 pod 数，再新建新版本的 pod 数，那么在整个更新过程中，总共只有 replicas - maxUnavailable 数量的实例数能够提供服务在总实例数 replicas 数量比较小的情况下，会影响应用的服务能力设置 maxSurge 后，会在滚动更新前先多创建 maxSurge 数量的 pod， 然后再逐批进行更新，更新完成后，最后再删掉 maxSurge 数量的 pod ，这样就能保证整个更新过程中可服务的总实例数量 maxSurge 默认值为 25%
 
 
 
@@ -938,7 +945,7 @@ canary:
 - 步骤 1：暂停灰度发布，等待用户介入，用户需要手动将 updateStrategy.paused 的值改为 false，才能继续发布；
 - 步骤 2：partition 为 2，一共灰度 2 个实例；
 - 步骤 3：暂停灰度发布 60 秒，60 秒过后继续后续步骤；
-- 步骤 4：使用名为 test 的 HookTemplate 进行 hook 调用，如果返回的结果满足预期，则继续执行后续步骤，如果返回结果不满足预期，则暂停灰度，等待用户手动介入来决定是继续灰度发布还是进行回滚操作。
+- 步骤 4：使用名为 test 的 HookTemplate 进行 hook 调用，如果返回的结果满足预期，则继续执行后续步骤，如果返回结果不满足预期，则暂停灰度，等待用户手动介入来决定是继续灰度发布还是进行回滚操作
   如果不需要分步骤灰度发布，那么无需配置 spec.updateStrategy.canary
 
 
@@ -946,7 +953,7 @@ canary:
 ### 发布暂停
 
 涉及字段： updateStrategy.paused
-用户可以通过设置 paused 为 true 暂停发布。不过此字段只会影响更新过程，不会影响扩缩过程，也即如果 replicas 发生变动，pod 数量还是会发生相应变化
+用户可以通过设置 paused 为 true 暂停发布不过此字段只会影响更新过程，不会影响扩缩过程，也即如果 replicas 发生变动，pod 数量还是会发生相应变化
 
 
 
@@ -959,11 +966,11 @@ canary:
 ### 指定 Pod 缩容
 
 涉及字段：scaleStrategy.podsToDelete
-在Gamedeployment中使用，选填。如果 podsToDelete 列表里写了一些 Pod 名字，控制器会优先删除这些 Pod。 对于已经被删除的 Pod，控制器会自动从 podsToDelete 列表中清理掉。
+在Gamedeployment中使用，选填如果 podsToDelete 列表里写了一些 Pod 名字，控制器会优先删除这些 Pod 对于已经被删除的 Pod，控制器会自动从 podsToDelete 列表中清理掉
 注意：
 
 - 若只把 Pod 名字加到 podsToDelete，但没有修改 replicas 数量，那么控制器会先把指定的 Pod 删掉，然后再扩一个新的 Pod;
-- 若不指定 podsToDelete，控制器按照默认顺序来选择 Pod 删除：not-ready < ready, unscheduled < scheduled, and pending < running。若存在 PodDeletionCost，则还会再按 cost 值排序，然后选择 Pod 删除
+- 若不指定 podsToDelete，控制器按照默认顺序来选择 Pod 删除：not-ready < ready, unscheduled < scheduled, and pending < running若存在 PodDeletionCost，则还会再按 cost 值排序，然后选择 Pod 删除
 
 
 
@@ -986,8 +993,8 @@ metadata:
 
 ### 防误删功能
 
-在 K8S 机制中，如果删除 CRD，会导致所有 CR 一起被级联删除，因此如果手误删除了 GameStatefulset 的 CRD（比如误卸载组件），会导致集群中所有 GameDeployment 实例一起被删除，造成严重影响。同样的，如果手误删除一个 GameDeployment 实例，也会导致其所有对应的 Pod 一起被删除。
-为了防止误操作造成的影响，我们加了一个 Admission Webhook，对 GameDeployment 的 CRD 和 CR 的删除操作做验证，根据 CRD 和 CR 的 label 中对应标签值的不同，进行相应操作。
+在 K8S 机制中，如果删除 CRD，会导致所有 CR 一起被级联删除，因此如果手误删除了 GameStatefulset 的 CRD（比如误卸载组件），会导致集群中所有 GameDeployment 实例一起被删除，造成严重影响同样的，如果手误删除一个 GameDeployment 实例，也会导致其所有对应的 Pod 一起被删除
+为了防止误操作造成的影响，我们加了一个 Admission Webhook，对 GameDeployment 的 CRD 和 CR 的删除操作做验证，根据 CRD 和 CR 的 label 中对应标签值的不同，进行相应操作
 在 GameDeployment 的 CR 和 CRD 中，标签效果如下（默认为空，也即是不允许删除）
 
 | **key**                           | **value**    | **效果**                                                     |
@@ -997,7 +1004,7 @@ metadata:
 | 不添加labels                      | 不添加labels | 不允许删除                                                   |
 
 推荐删除 GameDeployment 时，设置 io.tencent.bcs.dev/deletion-allow=Cascading，然后缩容副本数为0，再删除对应 GameDeployment.
-如果确认要删除，则设置 io.tencent.bcs.dev/deletion-allow=Always，然后方可删除，如下所示。
+如果确认要删除，则设置 io.tencent.bcs.dev/deletion-allow=Always，然后方可删除，如下所示
 
 ```yaml
 apiVersion: tkex.tencent.com/v1alpha1
@@ -1007,7 +1014,7 @@ metadata:
   namespace: test
   labels:
     app: test-gamedeployment
-	io.tencent.bcs.dev/deletion-allow: Always
+    io.tencent.bcs.dev/deletion-allow: Always
 ```
 
 
@@ -1021,7 +1028,7 @@ readinessGates:
   - conditionType: InPlaceUpdateReady
 ```
 
-在 1.27.0 及以上版本中，此 readinessgate 改为可选项，可通过设置 spec.disableReadinessGate 值来控制是否加上此 readinessgate。若值为 false，则表示要给 pod 加上 readinessgate，若值为 true，则表示不要给 pod 加上 readinessgate
+在 1.27.0 及以上版本中，此 readinessgate 改为可选项，可通过设置 spec.disableReadinessGate 值来控制是否加上此 readinessgate若值为 false，则表示要给 pod 加上 readinessgate，若值为 true，则表示不要给 pod 加上 readinessgate
 
 ```yaml
 spec:
@@ -1116,12 +1123,12 @@ spec:
       templateName: test-post
 ```
 
-此字段表示在删除/更新应用实例前 调用定义的 Hook 以确认能否进行删除/更新操作，以及在原地更新之后，调用定义的 Hook 进行一些操作。该功能与 HookTemplate 及 HookRun 资源共同使用，在使用前，请确保 bcs-hook-operator 已部署、对应 HookTemplate 已定义
+此字段表示在删除/更新应用实例前 调用定义的 Hook 以确认能否进行删除/更新操作，以及在原地更新之后，调用定义的 Hook 进行一些操作该功能与 HookTemplate 及 HookRun 资源共同使用，在使用前，请确保 bcs-hook-operator 已部署、对应 HookTemplate 已定义
 
 在删除 Pod 时，会首先触发 preDeleteUpdateStrategy.hook.templateName 对应的 HookRun 对象创建，Hook-Operator 执行 metric 验证逻辑，以决定能否进行 Pod 的删除；
 在更新 Pod 时，会首先触发 preInplaceUpdateStrategy.hook.templateName 对应的 HookRun 对象创建，Hook-Operator 执行 metric 验证逻辑，以决定能否进行 Pod 的原地更新；
-（若只定义了 preDeleteUpdateStrategy，在更新策略是原地更新(InplaceUpdate)时会触发 preDeleteUpdateStrategy.hook.templateName 对应的规则，来确定能否进行 Pod 原地更新，建议2种场景定义各自的策略）。
-在原地更新 Pod 之后，触发 postInplaceUpdateStrategy.hook.templateName 对应的 HookRun 对象创建，Hook-Operator 执行 metric，进行原地更新后的一些操作。
+（若只定义了 preDeleteUpdateStrategy，在更新策略是原地更新(InplaceUpdate)时会触发 preDeleteUpdateStrategy.hook.templateName 对应的规则，来确定能否进行 Pod 原地更新，建议2种场景定义各自的策略）
+在原地更新 Pod 之后，触发 postInplaceUpdateStrategy.hook.templateName 对应的 HookRun 对象创建，Hook-Operator 执行 metric，进行原地更新后的一些操作
 注意：只支持控制器控制下的Pod删除/更新操作（缩容、滚动更新、原地更新），若用户手工删除Pod，则不会触发这些策略；
 
 
@@ -1129,14 +1136,14 @@ spec:
 ### 更新策略
 
 涉及字段：updateStrategy
-updateStrategy.type 支持 RollingUpdate, OnDelete, InplaceUpdate 三种更新方式，相比原生StatefulSet, 新增 InplaceUpdate 更新模式。
+updateStrategy.type 支持 RollingUpdate, OnDelete, InplaceUpdate 三种更新方式，相比原生StatefulSet, 新增 InplaceUpdate 更新模式
 
 每个模式后，有相应的策略供配置，比如 inPlaceUpdateStrategy.gracePeriodSeconds决定原地更新时优雅更新时间、rollingUpdate.partition来决定滚动更新时发布比例
 
 spec/updateStrategy/inPlaceUpdateStrategy/gracePeriodSeconds 原理及用法：
-gracePeriodSeconds 用来实现原地升级当中的流量服务的平滑切换。原地升级的更新策略下，可以配置 spec/updateStrategy/inPlaceUpdateStrategy/gracePeriodSeconds 参数，假设配置为 30 秒，那么 GameStatefulSet/GameDeployment 在原地更新一个 pod 前，会通过 ReadinessGate 先把这个 pod 设置为 unready 状态，30 秒过后才会真正去原地重启 pod 中的容器。这样，在这 30 秒的时间内因为 pod 变为 unready 状态，k8s 会把该 pod 实例从 service 的 endpoints 中剔除。等原地升级成功后，GameStatefulSet/GameDeployment 再把该 pod 设为 ready 状态，之后 k8s 才会重新把该 pod 实例加入到 service 的 endpoints 当中。通过这样的逻辑，在整个原地升级过程中，能保证服务流量的无损。gracePeriodSeconds 的默认值为 0 ，当为 0 时，GameStatefulSet/GameDeployment 会立刻原地升级 pod 中的容器，可能会导致服务流量的丢失 
+gracePeriodSeconds 用来实现原地升级当中的流量服务的平滑切换原地升级的更新策略下，可以配置 spec/updateStrategy/inPlaceUpdateStrategy/gracePeriodSeconds 参数，假设配置为 30 秒，那么 GameStatefulSet/GameDeployment 在原地更新一个 pod 前，会通过 ReadinessGate 先把这个 pod 设置为 unready 状态，30 秒过后才会真正去原地重启 pod 中的容器这样，在这 30 秒的时间内因为 pod 变为 unready 状态，k8s 会把该 pod 实例从 service 的 endpoints 中剔除等原地升级成功后，GameStatefulSet/GameDeployment 再把该 pod 设为 ready 状态，之后 k8s 才会重新把该 pod 实例加入到 service 的 endpoints 当中通过这样的逻辑，在整个原地升级过程中，能保证服务流量的无损gracePeriodSeconds 的默认值为 0 ，当为 0 时，GameStatefulSet/GameDeployment 会立刻原地升级 pod 中的容器，可能会导致服务流量的丢失 
 
-注意：InplaceUpdate，只支持以原地重启容器的方式更新 image 字段，以及以不重启不重建的方式更新 labels/annotations 字段。更改除此之外的其它字段，则此次原地更新会卡住！
+注意：InplaceUpdate，只支持以原地重启容器的方式更新 image 字段，以及以不重启不重建的方式更新 labels/annotations 字段更改除此之外的其它字段，则此次原地更新会卡住！
 
 下面是GameStatefulSet的workload类型参考配置
 
@@ -1156,7 +1163,7 @@ updateStrategy:
 
 涉及字段：updateStrategy.inplaceUpdateStrategy.policy
 可选值：DisOrdered（默认）, OrderedReady, OrderedUpdated
-在之前的原地更新中，容器更新顺序是不确定的，并且只有当一个容器更新完后，才会去更新下一个容器，这种方式对有容器依赖关系的 Pod 影响较大。
+在之前的原地更新中，容器更新顺序是不确定的，并且只有当一个容器更新完后，才会去更新下一个容器，这种方式对有容器依赖关系的 Pod 影响较大
 现支持指定策略去原地更新容器，分别有以下策略可指定：
 
 - DisOrdered：默认策略，不保证容器原地更新顺序；
@@ -1192,7 +1199,7 @@ canary:
 - 步骤 2：partition 为 2，灰度 2 个实例；
 - 步骤 3：暂停灰度发布 60 秒，60 秒过后继续后续步骤；
 - 步骤 4：使用名为 test 的 HookTemplate 进行 hook 调用，如果返回的结果满足预期，则继续执行后续步骤，如果返回结果不满足预期，则暂停灰度，等待
-  用户手动介入来决定是继续灰度发布还是进行回滚操作。
+  用户手动介入来决定是继续灰度发布还是进行回滚操作
   如果不需要分步骤灰度发布，那么无需配置 spec.updateStrategy.canary
 
 
@@ -1200,14 +1207,14 @@ canary:
 ### 发布暂停
 
 涉及字段： updateStrategy.paused
-用户可以通过设置 paused 为 true 暂停发布。不过此字段只会影响更新过程，不会影响扩缩过程，也即如果 replicas 发生变动，pod 数量还是会发生相应变化。
+用户可以通过设置 paused 为 true 暂停发布不过此字段只会影响更新过程，不会影响扩缩过程，也即如果 replicas 发生变动，pod 数量还是会发生相应变化
 
 
 
 ### 滚动/原地更新时灰度个数
 
 涉及字段：GamestatefulSet中的updateStrategy.rollingUpdate.partition
-Partition 的语义是 保留旧版本 Pod 的数量或百分比，默认为 0，用来控制灰度发布的个数。这里的 partition 不表示任何 order 序号。为了兼容，InplaceUpdate 的灰度发布个数也由这个参数配置。
+Partition 的语义是 保留旧版本 Pod 的数量或百分比，默认为 0，用来控制灰度发布的个数这里的 partition 不表示任何 order 序号为了兼容，InplaceUpdate 的灰度发布个数也由这个参数配置
 
 
 
@@ -1219,7 +1226,7 @@ Partition 的语义是 保留旧版本 Pod 的数量或百分比，默认为 0�
 podManagementPolicy: Parallel
 ```
 
-在GameStatefulSet中使用。 支持 "OrderedReady" 和 "Parallel" 两种方式，定义和 StatefulSet 一致，默认为 OrderedReady。与 StatefulSet 不同的是，如果配置为 Parallel， 那么不仅删除和创建 pod 实例是并行的，实例更新也是并行的，即自动并行更新。并行更新时会综合考虑 maxUnavailable 和 maxSurge 字段
+在GameStatefulSet中使用 支持 "OrderedReady" 和 "Parallel" 两种方式，定义和 StatefulSet 一致，默认为 OrderedReady与 StatefulSet 不同的是，如果配置为 Parallel， 那么不仅删除和创建 pod 实例是并行的，实例更新也是并行的，即自动并行更新并行更新时会综合考虑 maxUnavailable 和 maxSurge 字段
 
 
 
@@ -1227,11 +1234,14 @@ podManagementPolicy: Parallel
 
 1. 滚动/原地更新时支持最大不可用pod数（maxUnavailable）
    涉及字段：GamestatefulSet中 的 updateStrategy.rollingUpdate.maxUnavailable
-   指在更新过程中每批执行更新的实例数量，在更新过程中这批实例是不可用的。比如一共有 8 个实例，maxUnavailable 设置为 2 ，那么每批滚动或原地重启 2 个实例，等这 2 个实例更新完成后，再进行下一批更新。可设置为整数值或百分比，默认值为 25% 。
+   指在更新过程中每批执行更新的实例数量，在更新过程中这批实例是不可用的比如一共有 8 个实例，maxUnavailable 设置为 2 ，那么每批滚动或原地重启 2 个实例，等这 2 个实例更新完成后，再进行下一批更新可设置为整数值或百分比，默认值为 25% 
    **只有在 podManagementPolicy 为 Parallel 时才会生效，并且只有更新时才会生效**
+
+   
+
 2. 滚动/原地更新前支持最多新建新版本pod数量（maxSurge）
    涉及字段：GamestatefulSet中的updateStrategy.rollingUpdate.maxSurge
-   设置 maxSurge 后，会先多创建 maxSurge 数量的新版本 pod， 然后再逐批进行更新，更新完成后，最后再删掉 maxSurge 数量的 pod ，这样就能保证整个更新过程中可服务的总实例数量。比如一共有 8 个实例，maxSurge 设置为 2，那么在更新前会新建两个新版本的实例，然后再去处理旧版本实例，更新完成后再删除多出来的两个实例。 maxSurge 默认值为 0 。
+   设置 maxSurge 后，会先多创建 maxSurge 数量的新版本 pod， 然后再逐批进行更新，更新完成后，最后再删掉 maxSurge 数量的 pod ，这样就能保证整个更新过程中可服务的总实例数量比如一共有 8 个实例，maxSurge 设置为 2，那么在更新前会新建两个新版本的实例，然后再去处理旧版本实例，更新完成后再删除多出来的两个实例 maxSurge 默认值为 0 
    **只有在 podManagementPolicy 为 Parallel 时才会生效，并且只有更新时才会生效**
 
 
@@ -1245,14 +1255,14 @@ podManagementPolicy: Parallel
 ### 服务名称
 
 涉及字段：serviceName
-在GameStatefulSet中使用，必填。这个参数指的是控制此GamestatefulSet的service name。此service必须在Gamestatefulset创建前创建，负责对应pod的网络ID命名。如果你的 pod 之间是完全独立的（不需要服务发现），你可以随意指定一个 service（不需要提前创建，实际上就是为 pod 增加了一个 subdomin）。但是大多数应用都需要服务发现，这时创建 headless service 就显得非常必要，之后你可以通过 my-headless-service.my-namespace.svc.cluster.local 解析到所有 pod 的 ip，也可以通过 my-pod.my-headless-service.my-namespace.svc.cluster.local 解析到某个 pod 的 ip
+在GameStatefulSet中使用，必填这个参数指的是控制此GamestatefulSet的service name此service必须在Gamestatefulset创建前创建，负责对应pod的网络ID命名如果你的 pod 之间是完全独立的（不需要服务发现），你可以随意指定一个 service（不需要提前创建，实际上就是为 pod 增加了一个 subdomin）但是大多数应用都需要服务发现，这时创建 headless service 就显得非常必要，之后你可以通过 my-headless-service.my-namespace.svc.cluster.local 解析到所有 pod 的 ip，也可以通过 my-pod.my-headless-service.my-namespace.svc.cluster.local 解析到某个 pod 的 ip
 
 
 
 ### 防误删功能
 
-在 K8S 机制中，如果删除 CRD，会导致所有 CR 一起被级联删除，因此如果手误删除了 GameStatefulset 的 CRD（比如误卸载组件），会导致集群中所有 GameStatefulset 实例一起被删除，造成严重影响。同样的，如果手误删除一个 GameStatefulset 实例，也会导致其所有对应的 Pod 一起被删除。
-为了防止误操作造成的影响，我们加了一个 Admission Webhook，对 GameStatefulset 的 CRD 和 CR 的删除操作做验证，根据 CRD 和 CR 的 label 中对应标签值的不同，进行相应操作。
+在 K8S 机制中，如果删除 CRD，会导致所有 CR 一起被级联删除，因此如果手误删除了 GameStatefulset 的 CRD（比如误卸载组件），会导致集群中所有 GameStatefulset 实例一起被删除，造成严重影响同样的，如果手误删除一个 GameStatefulset 实例，也会导致其所有对应的 Pod 一起被删除
+为了防止误操作造成的影响，我们加了一个 Admission Webhook，对 GameStatefulset 的 CRD 和 CR 的删除操作做验证，根据 CRD 和 CR 的 label 中对应标签值的不同，进行相应操作
 在 GameStatefulset 的 CR 和 CRD 中标签效果如下（默认为空，也即是不允许删除）
 
 | **key**                           | **value**    | **效果**                                                     |
@@ -1286,7 +1296,7 @@ readinessGates:
   - conditionType: InPlaceUpdateReady
 ```
 
-在 1.27.0 及以上版本中，此 readinessgate 改为可选项，可通过设置 spec.disableReadinessGate 值来控制是否加上此 readinessgate。若值为 false，则表示要给 pod 加上 readinessgate，若值为 true，则表示不要给 pod 加上 readinessgate
+在 1.27.0 及以上版本中，此 readinessgate 改为可选项，可通过设置 spec.disableReadinessGate 值来控制是否加上此 readinessgate若值为 false，则表示要给 pod 加上 readinessgate，若值为 true，则表示不要给 pod 加上 readinessgate
 
 ```yaml
 spec:
@@ -1305,7 +1315,7 @@ spec:
 
 ### 自动扩缩容
 
-支持与原生HPA相结合进行服务的自动扩缩容。并且，可以配置相应的 Hook 发布控制，来保证优雅缩容避免在线业务被强杀。
+支持与原生HPA相结合进行服务的自动扩缩容并且，可以配置相应的 Hook 发布控制，来保证优雅缩容避免在线业务被强杀
 以下是针对GameDeployment的HPA配置示例：
 
 ```yaml
