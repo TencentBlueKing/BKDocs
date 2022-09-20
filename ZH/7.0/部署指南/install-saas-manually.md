@@ -106,6 +106,37 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
 ```
 
+<a id="bkconsole-add-app-saas" name="bkconsole-add-app-saas"></a>
+
+## 为用户桌面添加应用
+>**提示**
+>
+>使用“一键部署” 脚本部署 标准运维、流程服务及节点管理 时，会自动完成此步骤。
+
+用户初次登录蓝鲸桌面时，会在第一个桌面看到自动添加的 **默认应用**。当然也可由用户手动添加其他应用。
+
+在部署 SaaS 成功后，管理员可能希望让全部用户桌面直接出现这个应用。
+
+那么可以组合如下的脚本达成效果：
+* 使用 `set_desktop_default_app.sh` 将应用设置为 **默认应用**。<br/>
+  如果用户已经登录，则 **此后设置的默认应用** 不会添加到该用户的桌面。
+* 使用 `add_user_desktop_app.sh` 为 **已登录过桌面的用户** 添加应用到第一个桌面。<br/>
+  如果用户未曾登录过，不应该使用此脚本，因为这样做会导致为新用户桌面添加 **默认应用** 的逻辑失效。
+
+脚本用法如下：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+# 将 bk_itsm, bk_sops 和 bk_nodeman 设为默认应用。
+./scripts/set_desktop_default_app.sh -a "bk_itsm,bk_sops,bk_nodeman"
+# 在之前的步骤中，用户 admin 已经登录过桌面。默认应用对其无效，需要主动为其添加。
+./scripts/add_user_desktop_app.sh -u "admin" -a "bk_itsm,bk_sops,bk_nodeman"
+```
+
+脚本执行成功无输出；如果失败，会显示报错。
+
+常见报错：
+* app_code 有误，输出为 `App(app-code-not-exist) not exists`。
+
 
 <a id="post-install-bk-saas" name="post-install-bk-saas"></a>
 
@@ -132,11 +163,14 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
 <a id="post-install-bk-nodeman" name="post-install-bk-nodeman"></a>
 
 ### 节点管理（bk_nodeman）部署后配置
+>**提示**
+>
+>下面的 2 项配置需要访问“节点管理”系统完成。请先登录到桌面，然后打开“节点管理”应用。
 
 <a id="post-install-bk-nodeman-gse-env" name="post-install-bk-nodeman-gse-env"></a>
 
 #### 配置 GSE 环境管理
-进入 “全局配置”->“gse 环境管理” 界面。
+先访问“节点管理”系统，点击顶部导航栏 “全局配置”，会默认进入“gse 环境管理” 界面。
 
 点击 “默认接入点” 右侧的 “编辑” 图标，进入 “编辑接入点” 界面。
 
@@ -214,31 +248,3 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 
 脚本执行完成后，访问节点管理的 「插件管理」——「插件包」界面，可以看到上传成功的插件包：
 ![](asserts/../assets/bk_nodeman-plugin-list.png)
-
-
-### 为用户桌面添加应用
->**提示**
->
->“一键部署” 脚本中在部署 SaaS 时会自动为 `admin` 添加应用。
-
-用户首次登录蓝鲸桌面时，此时桌面会自动展示 **默认应用**，其他应用需要用户手动添加。
-
-为了能自动添加应用到用户桌面，我们提供了如下 2 个脚本，可按需组合：
-* 使用 `set_desktop_default_app.sh` 将应用设置为 **默认应用**。<br/>
-  如果用户已经登录过桌面，则 **新增的** 默认应用不会添加到他的桌面。
-* 使用 `add_user_desktop_app.sh` 为 **已登录** 用户添加应用。<br/>
-  如果用户未曾登录，不应该使用此脚本，因为用户桌面非空时不会自动添加 **默认应用**。
-
-脚本用法如下：
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-# 将 bk_itsm和bk_sops 设为默认应用。
-./scripts/set_desktop_default_app.sh -a "bk_itsm,bk_sops"
-# 为admin添加bk_itsm和bk_sops。
-./scripts/add_user_desktop_app.sh -u "admin" -a "bk_itsm,bk_sops"
-```
-
-脚本执行成功无输出；如果失败，会显示报错。
-
-常见报错：
-* app_code 有误，输出为 `App(app-code-not-exist) not exists`。
