@@ -256,16 +256,22 @@ PaaS v3 开始支持 `image` 格式的 `S-Mart` 包，部署过程中需要访�
    2. 用户自签的证书： 需要在 bkrepo 配置 docker 域名的证书，且在 node 添加自签证书到操作系统 CA 库并重启 docker 服务。
 
 ### 配置 docker 使用 http 访问 registry
-在 SaaS 专用 node （如未配置专用 node，则为全部 node ）上执行命令生成新的配置文件：
+
+我们预期所有 k8s node 的 `/etc/docker/daemon.json` 配置文件一样，如果不一样，请自行分批重复执行本步骤。
+
+如果中控机不是 k8s master，可以从 master 上获取 `/etc/docker/daemon.json`，并放在中控机的 `/etc/docker/daemon.json`。
+
+然后在中控机上执行命令生成新的配置文件：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-cat /etc/docker/daemon.json | jq '.["insecure-registries"]+=["docker.'$BK_DOMAIN'"]'
+cat /etc/docker/daemon.json | jq '.["insecure-registries"]+=["docker.'$BK_DOMAIN'"]' | tee /tmp/daemon.json
 ```
 
-检查内容无误后，即可将上述内容写入此 node 上的 `/etc/docker/daemon.json`。如果这些 node 的配置文件相同，您可以在中控机生成新文件后批量替换。
+检查内容无误后，即可将 `/tmp/daemon.json` 分发到全部 k8s node 上的 `/etc/docker/daemon.json`。
 
-在 node 上检查修改后的配置文件：
+
+在 node 上安装 jq 命令可以精确检查修改后的配置文件片段：
 ``` bash
 jq -r  '."insecure-registries"' /etc/docker/daemon.json
 ```
