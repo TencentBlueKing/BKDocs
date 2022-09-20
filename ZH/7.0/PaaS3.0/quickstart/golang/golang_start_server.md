@@ -33,7 +33,7 @@ Query OK, 1 row affected (0.01 sec)
 
 ### 初始化数据库
 
-bee 的数据库迁移命令如下：[bee migrate-命令](https://beego.me/docs/install/bee.md#migrate-%E5%91%BD%E4%BB%A4) 
+bee 的数据库迁移命令如下：[bee migrate-命令](https://beego.gocn.vip/beego/zh/developing/bee/#bee-%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3) 
 
 ```bash
 bee migrate [-driver=mysql] [-conn="root:@tcp(127.0.0.1:3306)/test"]
@@ -89,7 +89,7 @@ $ bee run
 
 接着在浏览器访问 http://dev.xxx.xxx:5000 就可以看到项目首页啦。
 
-您也可以在 `conf/app.conf` 下修改 dev 下的 `httpport` 来修改本地启动的端口。[beego 参数配置](https://beego.me/docs/mvc/controller/config.md#%E4%B8%8D%E5%90%8C%E7%BA%A7%E5%88%AB%E7%9A%84%E9%85%8D%E7%BD%AE)
+您也可以在 `conf/app.conf` 下修改 dev 下的 `httpport` 来修改本地启动的端口。[beego 参数配置](https://beego.gocn.vip/beego/zh/developing/)
 
 #### 使用 go 命令编译运行
 

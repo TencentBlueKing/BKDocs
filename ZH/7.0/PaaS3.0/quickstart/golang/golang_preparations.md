@@ -15,7 +15,7 @@
 蓝鲸 Golang 开发框架使用 beego 作为开发框架，集成蓝鲸统一登录和蓝鲸云 API。
 
 > Golang 新手？我们建议你先学习 Golang 的基础知识，了解一下 beego 开发框架，再进行应用开发。
-> [官方文档](https://golang.org/)、[Golang 语言教程](http://www.runoob.com/go/go-tutorial.html)、[beego 官方文档](https://beego.me/docs/intro/)
+> [官方文档](https://golang.org/)、[Golang 语言教程](http://www.runoob.com/go/go-tutorial.html)、[beego 官方文档](https://github.com/beego/beego)
 
 ## 准备工作
 
