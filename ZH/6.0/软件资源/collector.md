@@ -1,14 +1,14 @@
 ## 采集器版本及下载
 
-采集器 | 当前版本 | 包名
-----|------|---
-basereport | 10.12.x | [basereport-10.12.76.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/basereport-10.12.76.tgz)
-processbeat | 1.19.x | [processbeat-1.19.71.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/processbeat-1.19.71.tgz)
-exceptionbeat | 1.8.x | [exceptionbeat-1.8.44.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.8.44.tgz)
-bkmonitorbeat | 1.22.x | [bkmonitorbeat-1.22.127.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.22.127.tgz)
-bkmonitorproxy | 1.3.x | [bkmonitorproxy-1.3.49.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorproxy-1.3.49.tgz)
-bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.0.104.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.0.104.tgz)
-gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gsecmdline-2.0.3.tgz)
+采集器 | 当前版本 | 包名 | 版本情况
+----|------|------|---
+basereport | 10.12.x | [basereport-10.12.76.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/basereport-10.12.76.tgz) | 不再更新，换新版bkmonitorbeat
+processbeat | 1.19.x | [processbeat-1.19.71.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/processbeat-1.19.71.tgz) | 不再更新，换新版bkmonitorbeat
+exceptionbeat | 1.8.x | [exceptionbeat-1.8.44.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.8.44.tgz) | 不再更新，换新版bkmonitorbeat
+bkmonitorbeat | 1.24.x | [bkmonitorbeat-1.24.132.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.24.132.tgz) | 不再更新，换新版bkmonitorbeat
+bkmonitorproxy | 1.3.x | [bkmonitorproxy-1.3.49.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorproxy-1.3.49.tgz) |
+bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.0.104.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.0.104.tgz) |
+gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gsecmdline-2.0.3.tgz) |
 
 ## 采集器版本日志
 
@@ -165,6 +165,10 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 ---
 ### === bkmonitorbeat ===
+- `bkmonitorbeat-1.24.132.tgz`
+  
+  【更新】修复 http 拨测读取响应截取异常的问题
+
 
 - `bkmonitorbeat-1.22.127.tgz`
 
