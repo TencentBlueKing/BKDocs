@@ -34,7 +34,7 @@ GOROOT="/usr/local/Cellar/go/1.10.1/libexec"
 
 ### 2. 安装 beego bee 工具
 
-bee 工具是一个为了协助快速开发 beego 项目而创建的项目，通过 bee 您可以很容易的进行 beego 项目的创建、热编译、开发、测试、和部署。[bee 工具简介](https://beego.me/docs/install/bee.md)
+bee 工具是一个为了协助快速开发 beego 项目而创建的项目，通过 bee 您可以很容易的进行 beego 项目的创建、热编译、开发、测试、和部署。[bee 工具简介](https://beego.gocn.vip/beego/zh/developing/bee/)
 
 通过如下的方式安装 bee 工具：
 
