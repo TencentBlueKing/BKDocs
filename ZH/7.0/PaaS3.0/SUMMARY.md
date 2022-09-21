@@ -41,7 +41,7 @@
             * [部署目录](topics/paas/deployment_directory.md)
             * [钩子（Hooks）]()
                 * [构建（Build）阶段钩子](topics/paas/build_hooks.md)
-                * [部署（Release）阶段钩子](topics/paas/release_hooks.md)
+                * [部署（Release）阶段钩子](topics/paas/release_hooks.md
         * [增强服务]()
             * [简介](topics/paas/services/index.md)
             * [数据存储类]()
@@ -57,6 +57,7 @@
             * [应用进程与 Procfile](topics/paas/process_procfile.md)
             * [灵活使用 Procfile](topics/paas/how_to_use_procfile.md)
             * [进程服务说明](topics/paas/entry_proc_services.md)
+            * [访问控制台](topics/paas/webconsole.md)
         * [旧应用迁移]()
             * [简介](topics/paas/legacy_migration.md)
             * [从 PaaS2.0 到 PaaS3.0](topics/paas/v2_to_v3.md)
