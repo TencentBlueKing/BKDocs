@@ -10,7 +10,7 @@
 
     新增 API 之前，需要先接入系统。接入系统后，可以添加 API 至该系统下。
 
-![-w2021](../media/0ed24fa03b474f5ff8e2097d603d1f87.png)
+![-w2021](media/api接入.png)
 
 <center>API配置页面</center>
 
@@ -20,7 +20,7 @@
 
     在设计流程时，可以通过拖拽 API 节点来直接选择合适的 API。选定之后，通过相应的字段参数关联设置，在流程应用后，单据流转到该节点时，自动调用相应 API 进行处理及流转。
 
-![-w2021]../media/3e08ccb50a7441c31ec0df21ddf126c6.png)
+![-w2021](media/拖拽api节点.png)
 
 <center>添加API节点</center>
 
