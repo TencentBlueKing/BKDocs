@@ -163,14 +163,67 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 <a id="post-install-bk-nodeman" name="post-install-bk-nodeman"></a>
 
 ### 节点管理（bk_nodeman）部署后配置
+
+<a id="post-install-bk-nodeman-gse-client" name="post-install-bk-nodeman-gse-client"></a>
+
+#### agent 资源上传
 >**提示**
 >
->下面的 2 项配置需要访问“节点管理”系统完成。请先登录到桌面，然后打开“节点管理”应用。
+>如果您使用了“一键部署” 脚本部署 `nodeman` ，则自动完成了此步骤，可以跳过本章节。
+
+在前面的操作中，我们已经在中控机下载了所需的文件，如需更新文件，请查阅本文“提前下载资源”章节。
+
+在 **中控机** 执行如下命令同时上传 agent 资源及 gse 插件：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+./scripts/setup_bkce7.sh -u agent  # 更新节点管理托管的agent资源及gse插件。
+```
+
+
+<a id="post-install-bk-nodeman-gse-plugin" name="post-install-bk-nodeman-gse-plugin"></a>
+
+#### 上传 gse 插件包
+>**提示**
+>
+>* 如果您使用了“一键部署” 脚本部署 `nodeman` ，则自动完成了此步骤，可以跳过本章节。
+>* 如果您已经参考“agent 资源上传”章节在中控机执行了脚本，则也完成了此步骤，可以跳过本章节。
+
+在前面的操作中，我们已经在中控机下载了所需的文件，如需更新文件，请查阅本文“提前下载资源”章节。
+
+在 **中控机** 执行如下命令同时上传 agent 资源及 gse 插件：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+./scripts/setup_bkce7.sh -u agent  # 更新节点管理托管的agent资源及gse插件。
+```
+结尾提示 `[INFO] upload agent package success` （客户端及 proxy） 和 `[INFO] upload open tools success` （proxy 所需的 nginx 及 py36 等）即为上传成功。
+
+脚本执行完成后，访问节点管理的 「插件管理」——「插件包」界面，可以看到上传成功的插件包：
+![](asserts/../assets/bk_nodeman-plugin-list.png)
+
+插件集合包中各子包的用途：
+| 插件包名 | 用途 | 描述 |
+| -- | -- | -- |
+| bkmonitorbeat | 蓝鲸监控指标采集器 | 蓝鲸监控拨测采集器 支持多协议多任务的采集，监控和可用率计算，提供多种运行模式和热加载机制 |
+| bkmonitorproxy | 自定义上报服务 | 自定义数据上报服务，用来收集用户自定义上报的时序数据，或事件数据。 |
+| bkunifylogbeat | 高性能日志采集 | 数据平台，蓝鲸监控，日志检索等和日志相关的数据. 首次使用插件管理进行操作前，先到日志检索/数据平台等进行设置插件的功能项 |
+| gsecmdline | 自定义上报命令行工具 | 蓝鲸监控脚本采集，自定义监控等自定义上报数据 |
+| bk-collector | 多协议数据采集 | 蓝鲸监控，日志检索，应用性能监控使用的高性能 Trace、指标、日志接收端，支持 OT、Jaeger、Zipkin 等多种数据协议格式。 |
+
+
+>**提示**
+>
+>`bkmonitorbeat-2.x` 完成了采集功能的统一，故新版插件集合包中移除了下列包：
+>| 包名 | 用途 | 描述 |
+>| -- | -- | -- |
+>| exceptionbeat | 系统事件采集器 | 系统事件采集器，用来收集系统事件如磁盘只读，corefile 产生等。 |
+>| basereport | 基础性能采集器 | 负责采集 CMDB 上的实时数据，蓝鲸监控里的主机监控，包含 CPU，内存，磁盘等 |
+>| processbeat | 主机进程信息采集器 | 蓝鲸监控主机监控里面的进程信息. 首次使用插件管理进行操作前，先到蓝鲸监控进行设置插件的功能项 |
+
 
 <a id="post-install-bk-nodeman-gse-env" name="post-install-bk-nodeman-gse-env"></a>
 
 #### 配置 GSE 环境管理
-先访问“节点管理”系统，点击顶部导航栏 “全局配置”，会默认进入“gse 环境管理” 界面。
+请先登录到蓝鲸桌面，打开“节点管理”应用。然后点击顶部导航栏 “全局配置”，会默认进入“gse 环境管理” 界面。
 
 点击 “默认接入点” 右侧的 “编辑” 图标，进入 “编辑接入点” 界面。
 
@@ -193,58 +246,3 @@ agent url: 一般无需修改，默认通过域名访问 bkrepo 下载安装包�
 点击 “测试 Server 及 URL 可用性”，然后点击 “下一步”。在新的 agent 信息界面点击 “确认” 保存。
 
 回到查看界面后，请 **等待 1 ~ 2 分钟**，然后刷新此页面。如果 Btserver，dataserver，taskserver 的地址自动从 `127.0.0.1` 变更为 node 的内网 IP ，则说明读取 zookeeper 成功，否则需检查 zookeeper 的 IP、 端口以及账户密码是否正确。
-
-
-<a id="post-install-bk-nodeman-gse-plugin" name="post-install-bk-nodeman-gse-plugin"></a>
-
-#### 上传 gse 插件包
->**提示**
->
->“一键部署” 脚本中在部署 `nodeman` 时自动完成了此步骤，可以跳过本章节。
-
-在本文 <a href="#saas-res-download">提前下载资源</a> 章节中，我们已经在中控机下载了所需的文件。
-
-在 **中控机** 执行如下命令上传：
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-./scripts/setup_bkce7.sh -u agent
-```
-结尾提示 `[INFO] upload agent package success` （客户端及 proxy） 和 `[INFO] upload open tools success` （proxy 所需的 nginx 及 py36 等）即为上传成功。
-
-插件集合包中各子包的用途：
-| 插件包名 | 用途 | 描述 |
-| -- | -- | -- |
-| bkmonitorbeat | 蓝鲸监控指标采集器 | 蓝鲸监控拨测采集器 支持多协议多任务的采集，监控和可用率计算，提供多种运行模式和热加载机制 |
-| bkmonitorproxy | 自定义上报服务 | 自定义数据上报服务，用来收集用户自定义上报的时序数据，或事件数据。 |
-| bkunifylogbeat | 高性能日志采集 | 数据平台，蓝鲸监控，日志检索等和日志相关的数据. 首次使用插件管理进行操作前，先到日志检索/数据平台等进行设置插件的功能项 |
-| gsecmdline | 自定义上报命令行工具 | 蓝鲸监控脚本采集，自定义监控等自定义上报数据 |
-| bk-collector | 多协议数据采集 | 蓝鲸监控，日志检索，应用性能监控使用的高性能 Trace、指标、日志接收端，支持 OT、Jaeger、Zipkin 等多种数据协议格式。 |
-
-
->**提示**
->
->`bkmonitorbeat-2.x` 完成了采集功能的统一，故新版插件集合包中移除了下列包：
->| 包名 | 用途 | 描述 |
->| -- | -- | -- |
->| exceptionbeat | 系统事件采集器 | 系统事件采集器，用来收集系统事件如磁盘只读，corefile 产生等。 |
->| basereport | 基础性能采集器 | 负责采集 CMDB 上的实时数据，蓝鲸监控里的主机监控，包含 CPU，内存，磁盘等 |
->| processbeat | 主机进程信息采集器 | 蓝鲸监控主机监控里面的进程信息. 首次使用插件管理进行操作前，先到蓝鲸监控进行设置插件的功能项 |
-
-
-<a id="post-install-bk-nodeman-gse-client" name="post-install-bk-nodeman-gse-client"></a>
-
-#### agent 资源上传
->**提示**
->
->“一键部署” 脚本中在部署 `nodeman` 时自动完成了此步骤，可以跳过本章节。
-
-在本文 <a href="#saas-res-download">提前下载资源</a> 章节中，我们已经在中控机下载了所需的文件。
-
-在 **中控机** 执行如下命令上传：
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-./scripts/setup_bkce7.sh -u plugin
-```
-
-脚本执行完成后，访问节点管理的 「插件管理」——「插件包」界面，可以看到上传成功的插件包：
-![](asserts/../assets/bk_nodeman-plugin-list.png)
