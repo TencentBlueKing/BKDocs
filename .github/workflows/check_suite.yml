@@ -2,7 +2,7 @@ name: BKDocs check suite
 
 on:
   pull_request:
-    types: [opened, edited, reopened]
+    types: [opened, edited, reopened, synchronize]
     branches: "*"
     paths: 
       - "**.md"
