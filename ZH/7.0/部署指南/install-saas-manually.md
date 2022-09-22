@@ -106,6 +106,37 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
 ```
 
+<a id="bkconsole-add-app-saas" name="bkconsole-add-app-saas"></a>
+
+## 为用户桌面添加应用
+>**提示**
+>
+>使用“一键部署” 脚本部署 标准运维、流程服务及节点管理 时，会自动完成此步骤。
+
+用户初次登录蓝鲸桌面时，会在第一个桌面看到自动添加的 **默认应用**。当然也可由用户手动添加其他应用。
+
+在部署 SaaS 成功后，管理员可能希望让全部用户桌面直接出现这个应用。
+
+那么可以组合如下的脚本达成效果：
+* 使用 `set_desktop_default_app.sh` 将应用设置为 **默认应用**。<br/>
+  如果用户已经登录，则 **此后设置的默认应用** 不会添加到该用户的桌面。
+* 使用 `add_user_desktop_app.sh` 为 **已登录过桌面的用户** 添加应用到第一个桌面。<br/>
+  如果用户未曾登录过，不应该使用此脚本，因为这样做会导致为新用户桌面添加 **默认应用** 的逻辑失效。
+
+脚本用法如下：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+# 将 bk_itsm, bk_sops 和 bk_nodeman 设为默认应用。
+./scripts/set_desktop_default_app.sh -a "bk_itsm,bk_sops,bk_nodeman"
+# 在之前的步骤中，用户 admin 已经登录过桌面。默认应用对其无效，需要主动为其添加。
+./scripts/add_user_desktop_app.sh -u "admin" -a "bk_itsm,bk_sops,bk_nodeman"
+```
+
+脚本执行成功无输出；如果失败，会显示报错。
+
+常见报错：
+* app_code 有误，输出为 `App(app-code-not-exist) not exists`。
+
 
 <a id="post-install-bk-saas" name="post-install-bk-saas"></a>
 
@@ -114,7 +145,7 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
 >
 >一些 SaaS 在部署成功后，还需要做初始化设置。
 
-
+<!--
 <a id="post-install-bk-lesscode" name="post-install-bk-lesscode"></a>
 
 ### 蓝鲸可视化平台（bk_lesscode）部署后配置
@@ -127,16 +158,72 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
 步骤示例图：
 ![](assets/2022-03-09-10-45-21.png)
 ![](assets/2022-03-09-10-45-29.png)
-
+-->
 
 <a id="post-install-bk-nodeman" name="post-install-bk-nodeman"></a>
 
 ### 节点管理（bk_nodeman）部署后配置
 
+<a id="post-install-bk-nodeman-gse-client" name="post-install-bk-nodeman-gse-client"></a>
+
+#### agent 资源上传
+>**提示**
+>
+>如果您使用了“一键部署” 脚本部署 `nodeman` ，则自动完成了此步骤，可以跳过本章节。
+
+在前面的操作中，我们已经在中控机下载了所需的文件，如需更新文件，请查阅本文“提前下载资源”章节。
+
+在 **中控机** 执行如下命令同时上传 agent 资源及 gse 插件：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+./scripts/setup_bkce7.sh -u agent  # 更新节点管理托管的agent资源及gse插件。
+```
+
+
+<a id="post-install-bk-nodeman-gse-plugin" name="post-install-bk-nodeman-gse-plugin"></a>
+
+#### 上传 gse 插件包
+>**提示**
+>
+>* 如果您使用了“一键部署” 脚本部署 `nodeman` ，则自动完成了此步骤，可以跳过本章节。
+>* 如果您已经参考“agent 资源上传”章节在中控机执行了脚本，则也完成了此步骤，可以跳过本章节。
+
+在前面的操作中，我们已经在中控机下载了所需的文件，如需更新文件，请查阅本文“提前下载资源”章节。
+
+在 **中控机** 执行如下命令同时上传 agent 资源及 gse 插件：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+./scripts/setup_bkce7.sh -u agent  # 更新节点管理托管的agent资源及gse插件。
+```
+结尾提示 `[INFO] upload agent package success` （客户端及 proxy） 和 `[INFO] upload open tools success` （proxy 所需的 nginx 及 py36 等）即为上传成功。
+
+脚本执行完成后，访问节点管理的 「插件管理」——「插件包」界面，可以看到上传成功的插件包：
+![](asserts/../assets/bk_nodeman-plugin-list.png)
+
+插件集合包中各子包的用途：
+| 插件包名 | 用途 | 描述 |
+| -- | -- | -- |
+| bkmonitorbeat | 蓝鲸监控指标采集器 | 蓝鲸监控拨测采集器 支持多协议多任务的采集，监控和可用率计算，提供多种运行模式和热加载机制 |
+| bkmonitorproxy | 自定义上报服务 | 自定义数据上报服务，用来收集用户自定义上报的时序数据，或事件数据。 |
+| bkunifylogbeat | 高性能日志采集 | 数据平台，蓝鲸监控，日志检索等和日志相关的数据. 首次使用插件管理进行操作前，先到日志检索/数据平台等进行设置插件的功能项 |
+| gsecmdline | 自定义上报命令行工具 | 蓝鲸监控脚本采集，自定义监控等自定义上报数据 |
+| bk-collector | 多协议数据采集 | 蓝鲸监控，日志检索，应用性能监控使用的高性能 Trace、指标、日志接收端，支持 OT、Jaeger、Zipkin 等多种数据协议格式。 |
+
+
+>**提示**
+>
+>`bkmonitorbeat-2.x` 完成了采集功能的统一，故新版插件集合包中移除了下列包：
+>| 包名 | 用途 | 描述 |
+>| -- | -- | -- |
+>| exceptionbeat | 系统事件采集器 | 系统事件采集器，用来收集系统事件如磁盘只读，corefile 产生等。 |
+>| basereport | 基础性能采集器 | 负责采集 CMDB 上的实时数据，蓝鲸监控里的主机监控，包含 CPU，内存，磁盘等 |
+>| processbeat | 主机进程信息采集器 | 蓝鲸监控主机监控里面的进程信息. 首次使用插件管理进行操作前，先到蓝鲸监控进行设置插件的功能项 |
+
+
 <a id="post-install-bk-nodeman-gse-env" name="post-install-bk-nodeman-gse-env"></a>
 
 #### 配置 GSE 环境管理
-进入 “全局配置”->“gse 环境管理” 界面。
+请先登录到蓝鲸桌面，打开“节点管理”应用。然后点击顶部导航栏 “全局配置”，会默认进入“gse 环境管理” 界面。
 
 点击 “默认接入点” 右侧的 “编辑” 图标，进入 “编辑接入点” 界面。
 
@@ -159,86 +246,3 @@ agent url: 一般无需修改，默认通过域名访问 bkrepo 下载安装包�
 点击 “测试 Server 及 URL 可用性”，然后点击 “下一步”。在新的 agent 信息界面点击 “确认” 保存。
 
 回到查看界面后，请 **等待 1 ~ 2 分钟**，然后刷新此页面。如果 Btserver，dataserver，taskserver 的地址自动从 `127.0.0.1` 变更为 node 的内网 IP ，则说明读取 zookeeper 成功，否则需检查 zookeeper 的 IP、 端口以及账户密码是否正确。
-
-
-<a id="post-install-bk-nodeman-gse-plugin" name="post-install-bk-nodeman-gse-plugin"></a>
-
-#### 上传 gse 插件包
->**提示**
->
->“一键部署” 脚本中在部署 `nodeman` 时自动完成了此步骤，可以跳过本章节。
-
-在本文 <a href="#saas-res-download">提前下载资源</a> 章节中，我们已经在中控机下载了所需的文件。
-
-在 **中控机** 执行如下命令上传：
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-./scripts/setup_bkce7.sh -u agent
-```
-结尾提示 `[INFO] upload agent package success` （客户端及 proxy） 和 `[INFO] upload open tools success` （proxy 所需的 nginx 及 py36 等）即为上传成功。
-
-插件集合包中各子包的用途：
-| 插件包名 | 用途 | 描述 |
-| -- | -- | -- |
-| bkmonitorbeat | 蓝鲸监控指标采集器 | 蓝鲸监控拨测采集器 支持多协议多任务的采集，监控和可用率计算，提供多种运行模式和热加载机制 |
-| bkmonitorproxy | 自定义上报服务 | 自定义数据上报服务，用来收集用户自定义上报的时序数据，或事件数据。 |
-| bkunifylogbeat | 高性能日志采集 | 数据平台，蓝鲸监控，日志检索等和日志相关的数据. 首次使用插件管理进行操作前，先到日志检索/数据平台等进行设置插件的功能项 |
-| gsecmdline | 自定义上报命令行工具 | 蓝鲸监控脚本采集，自定义监控等自定义上报数据 |
-| bk-collector | 多协议数据采集 | 蓝鲸监控，日志检索，应用性能监控使用的高性能 Trace、指标、日志接收端，支持 OT、Jaeger、Zipkin 等多种数据协议格式。 |
-
-
->**提示**
->
->`bkmonitorbeat-2.x` 完成了采集功能的统一，故新版插件集合包中移除了下列包：
->| 包名 | 用途 | 描述 |
->| -- | -- | -- |
->| exceptionbeat | 系统事件采集器 | 系统事件采集器，用来收集系统事件如磁盘只读，corefile 产生等。 |
->| basereport | 基础性能采集器 | 负责采集 CMDB 上的实时数据，蓝鲸监控里的主机监控，包含 CPU，内存，磁盘等 |
->| processbeat | 主机进程信息采集器 | 蓝鲸监控主机监控里面的进程信息. 首次使用插件管理进行操作前，先到蓝鲸监控进行设置插件的功能项 |
-
-
-<a id="post-install-bk-nodeman-gse-client" name="post-install-bk-nodeman-gse-client"></a>
-
-#### agent 资源上传
->**提示**
->
->“一键部署” 脚本中在部署 `nodeman` 时自动完成了此步骤，可以跳过本章节。
-
-在本文 <a href="#saas-res-download">提前下载资源</a> 章节中，我们已经在中控机下载了所需的文件。
-
-在 **中控机** 执行如下命令上传：
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-./scripts/setup_bkce7.sh -u plugin
-```
-
-脚本执行完成后，访问节点管理的 「插件管理」——「插件包」界面，可以看到上传成功的插件包：
-![](asserts/../assets/bk_nodeman-plugin-list.png)
-
-
-### 为用户桌面添加应用
->**提示**
->
->“一键部署” 脚本中在部署 SaaS 时会自动为 `admin` 添加应用。
-
-用户首次登录蓝鲸桌面时，此时桌面会自动展示 **默认应用**，其他应用需要用户手动添加。
-
-为了能自动添加应用到用户桌面，我们提供了如下 2 个脚本，可按需组合：
-* 使用 `set_desktop_default_app.sh` 将应用设置为 **默认应用**。<br/>
-  如果用户已经登录过桌面，则 **新增的** 默认应用不会添加到他的桌面。
-* 使用 `add_user_desktop_app.sh` 为 **已登录** 用户添加应用。<br/>
-  如果用户未曾登录，不应该使用此脚本，因为用户桌面非空时不会自动添加 **默认应用**。
-
-脚本用法如下：
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-# 将 bk_itsm和bk_sops 设为默认应用。
-./scripts/set_desktop_default_app.sh -a "bk_itsm,bk_sops"
-# 为admin添加bk_itsm和bk_sops。
-./scripts/add_user_desktop_app.sh -u "admin" -a "bk_itsm,bk_sops"
-```
-
-脚本执行成功无输出；如果失败，会显示报错。
-
-常见报错：
-* app_code 有误，输出为 `App(app-code-not-exist) not exists`。
