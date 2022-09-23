@@ -32,6 +32,8 @@ GET
 |   keyword     |   string     |   否   |  根据任务名关键词过滤任务列表，默认不过滤 |
 |   is_started  |   bool       |   否   |  根据任务是否已开始过滤任务列表，默认不过滤 |
 |   is_finished |   bool       |   否   |  根据任务是否已结束过滤任务列表，默认不过滤 |
+| executor    | string |   否   |  根据任务执行人过滤任务列表，默认不过滤 |
+| expected_timezone | string |   否   |  任务时间相关字段期望返回的时区，形如Asia/Shanghai |
 |   limit       |   int        |   否   |  分页，返回任务列表任务数，默认为 100 |
 |   offset      |   int        |   否   |  分页，返回任务列表起始任务下标，默认为 0 |
 
