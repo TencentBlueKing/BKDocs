@@ -10,83 +10,69 @@
 
 ### 旧应用迁移所需的代码改动
 
-由于蓝鲸开发框架以及应用部署方式的变更，为了让旧应用能成功迁移，在执行旧应用迁移时, 平台提供了 [bkapp-migrate SDK](../../sdk/bkapp_migrate/index.md) 对应用的进行 patch 处理。
+1.删除您的代码仓库中的 `blueking`, `blueapps` 这两个文件夹
 
-平台对于应用代码的 patch 不会干涉用户代码里的业务逻辑, 仅对应用依赖、日志操作、运行时配置等文件进行兼容性处理。
+2.从官网下载最新的 [Python 开发框架 V3](https://bk.tencent.com/docs/document/6.0/149/6700) 的包
 
+3.将下载下来的 framework_*.tar.gz 开发框架包的的 `app_desc.yaml`，`runtime.txt` 文件，`blueking`  文件夹 放到您的代码的根目录中
 
-`patch` 指令是用于协助修改蓝鲸开发框架代码, 使其能在 PaaS 3.0 中正常运行。
-
+4.在项目的 `requirements.txt` 文件中新增
 ```
-Usage: bkapp-migrate patch [OPTIONS] SRC
-
-Options:
-  --version [django1.11|django1.8|django2.2]
-                                  [required]
-  --use-celery / --no-use-celery
-  --use-celery-beat / --no-use-celery-beat
-  --help                          Show this message and exit.
+blueapps==4.4.2
 ```
 
-例如, 如果需要 patch django1.11 版本的开发框架, 只需要执行以下指令: 
-```bash
-# 当安装该工具后, 会自动在当前的 python 环境下增加 `bkapp-migrate` 指令。
+5.将以下内容添加 `config/__init__.py` 文件中
+```
+def get_env_or_raise(key):
+    """Get an environment variable, if it does not exist, raise an exception"""
+    value = os.environ.get(key)
+    if not value:
+        raise RuntimeError(
+            (
+                'Environment variable "{}" not found, you must set this variable to run this application.'
+            ).format(key)
+        )
+    return value
 
-# patch django1.11 版本的框架, 且不使用 celery 和 celery beat
-bkapp-migrate patch --version=django1.11 ${YOUR_CODE_PATH}
-# patch django1.11 版本的框架, 使用 celery 但不使用 celery beat
-bkapp-migrate patch --version=django1.11 ${YOUR_CODE_PATH} --use-celery
-# patch django1.11 版本的框架, 使用 celery 和  celery beat
-bkapp-migrate patch --version=django1.11 ${YOUR_CODE_PATH} --use-celery --use-celery-beat
+# SaaS应用ID
+APP_CODE = os.getenv("BKPAAS_APP_ID")
+# SaaS安全密钥，注意请勿泄露该密钥
+SECRET_KEY = os.getenv("BKPAAS_APP_SECRET")
+# PAAS平台URL
+BK_URL = os.getenv("BKPAAS_URL")
+# ESB API 访问 URL
+BK_COMPONENT_API_URL = os.getenv("BK_COMPONENT_API_URL")
 ```
 
-- 对于 **django1.8** 版本的开发框架, 需要保证项目具有以下的目录结构:
-```bash
-.
-├── config
-│   ├── __init__.py
-│   └── ...
-└──  settings.py
+6. 在 config/stag.py  config/prod.py 文件中确认是否有定义 Mysql、Redis 等服务的值
+- DATABASES 的信息在开发框架中已经定义好了，可以直接把这两个文件中定义的 DATABASES 信息删除，或者改成以下环境变量
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': os.environ.get('MYSQL_NAME'),
+        'USER': os.environ.get('MYSQL_USER'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
+        'HOST': os.environ.get('MYSQL_HOST'), 
+        'PORT': os.environ.get('MYSQL_PORT'),
+    }
+}
+```
+- Redis 需要修改为通过以下环境变量
+```
+REDIS_HOST = os.environ.get('REDIS_HOST')
+REDIS_PORT = int(os.environ.get('REDIS_PORT'))
+REDIS_PASSWORD = os.environ.get('REDIS_PASSWORD')
 ```
 
-- 对于 **django1.11** 版本的开发框架, 需要保证项目具有以下的目录结构:
-```bash
-.
-├── blueapps
-│   ├── __init__.py
-│   ├── conf
-│   │   ├── __init__.py
-│   │   └── ...
-│   ├── patch
-│   │   ├── __init__.py
-│   │   └── ...
-│   └── ...
-├── config
-│   ├── __init__.py
-│   └── ...
-└──  settings.py
-```
+7. 全文搜索用到 BK_URL 的地方，如有用到，按以下情况修改
+
+- 用于调用 ESB 的 API，如  {BK_URL}/api/c/compapi ，则需要修改为使用 BK_COMPONENT_API_URL
+- 用于拼接登录地址，如 BK_URL + "/login/"，则替换为环境变量 BKPAAS_LOGIN_URL
+- 用于拼接桌面地址，如 BK_URL + "/console/"，则替换为环境变量 BKPAAS_CONSOLE_URL
 
 
-- 对于 **django2.2** 版本的开发框架, 需要保证项目具有以下的目录结构:
-```bash
-.
-├── blueapps
-│   ├── __init__.py
-│   ├── conf
-│   │   ├── __init__.py
-│   │   └── ...
-│   ├── patch
-│   │   ├── __init__.py
-│   │   └── ...
-│   └── ...
-├── config
-│   ├── __init__.py
-│   └── ...
-└──  settings.py
-```
-
-
+上述代码修改可参考：https://github.com/unixhot/opsany-bastion/pull/2/files
 
 ### 环境变量发生变更
 
@@ -98,13 +84,12 @@ bkapp-migrate patch --version=django1.11 ${YOUR_CODE_PATH} --use-celery --use-ce
 | -------------------- | ---------------------------------- |
 | BKPAAS_MAJOR_VERSION   | BKPAAS_MAJOR_VERSION=3 标识部署在 PaaS3.0 开发者中心     | 
 | BK_PAAS2_URL       | PaaS2.0 平台访问地址, 与 PaaS2.0 的 BK_PAAS_HOST 相同，PaaS2.0中 console、login、esb 的地址都由该值拼接    | 
-| BK_PAAS2_INNER_URL | PaaS2.0 平台内网访问地址, 与 PaaS2.0  的BK_PAAS_INNER_HOST相同     | 
 | BK_LOGIN_URL       | 统一登录服务访问地址，等价于 BK_PAAS_HOST + "/login/"     | 
-| BK_LOGIN_INNER_URL | 统一登录服务内网访问地址，等价于 BK_PAAS_INNER_HOST + "/login/"    | 
-| BK_CONSOLE_URL     | 蓝鲸桌面访问地址, 等价于 BK_PAAS_INNER_HOST + "/console/"    | 
-| BK_CLOUD_API_URL     | 蓝鲸桌面访问地址, 等价于 BK_PAAS_INNER_HOST + "/console/"    | 
+| BKPAAS_LOGIN_URL       | 统一登录服务访问地址，等价于 BK_PAAS_HOST + "/login/"     | 
+| BKPAAS_CONSOLE_URL     | 蓝鲸桌面访问地址, 等价于 BK_PAAS_INNER_HOST + "/console/"    | 
+| BK_COMPONENT_API_URL     | ESB API 访问 url   | 
 
-2. 以下环境变量的 value 有变化
+1. 以下环境变量的 value 有变化
 
 | 变量名               | PaaS2.0 开发者中心                   | PaaS3.0 开发者中心                                   | 说明         |
 | -------------------- | ---------------------------------- | --------------------------------------- | ------------------------------------------- |
@@ -113,12 +98,14 @@ bkapp-migrate patch --version=django1.11 ${YOUR_CODE_PATH} --use-celery --use-ce
 
 3. 以下环境变量的 key 有变化
 
+注意：PaaS2.0 中会使用 `BK_PAAS_HOST` 来作为 ESB API 的域名，在 PaaS3.0 中必须修改为：`BK_COMPONENT_API_URL`
+
 | PaaS2.0 开发者中心     | PaaS3.0 开发者中心                       | 说明         |
 | ---------------------| --------------------------------------- | -------------|
 | APP_ID               | BKPAAS_APP_ID                      | bk_app_code                   |
 | APP_TOKEN            | BKPAAS_APP_SECRET                  | bk_app_secret                 |
 | BK_PAAS_HOST         | BK_PAAS2_URL                   | PaaS2.0 平台访问地址，平台入口）  |
-| BK_PAAS_INNER_HOST   | BK_PAAS2_INNER_URL             | PaaS2.0 平台内网访问地址         |
+| BK_PAAS_INNER_HOST   | BK_PAAS2_URL                    | PaaS2.0 平台内网访问地址         |
 | DB_TYPE              | 无                                 |  数据库类型                      |
 | DB_HOST              | MYSQL_HOST                         |  数据库地址                |
 | DB_PORT              | MYSQL_PORT                         |  数据库端口                |

@@ -38,24 +38,24 @@
 ### 规则3：布尔查询 AND、OR
 
 ```
-      字段名：(关键字1 OR 关键字2)    #默认是OR，（）可以省略
-      字段名：(关键字1  关键字2)          #默认是OR
-      字段名：(关键字1  AND 关键字2)   #同时存在关键字1和关键字2 
-      字段名：(关键字1  AND 关键字2 AND NOT 关键字3)   #同时存在关键字1和关键字2，但不包含关键3
+ 字段名：(关键字1 OR 关键字2)    #默认是OR，（）可以省略
+ 字段名：(关键字1  关键字2)      #默认是OR
+ 字段名：(关键字1  AND 关键字2)  #同时存在关键字1和关键字2 
+ 字段名：(关键字1  AND 关键字2 AND NOT 关键字3)   #同时存在关键字1和关键字2，但不包含关键3
 ```
 
 `log: (ERROR OR INFO)`     #等同于  log: ERROR OR    log: INFO
-`log: (ERROR INFO)`            #等同于  log: ERROR OR    log: INFO
-`log: (ERROR AND INFO)`  #等同于 log: ERROR AND  log: INFO
-`log: (ERROR AND INFO  AND NOT panic)`  #等同于 log: ERROR AND  log: INFO NOT log: panic
+`log: (ERROR INFO)`        #等同于  log: ERROR OR    log: INFO
+`log: (ERROR AND INFO)`    #等同于 log: ERROR AND  log: INFO
+`log: (ERROR AND INFO  AND NOT panic)`  #等同于 `log: ERROR AND  log: INFO NOT log: panic`
 
 > 注意：AND可以写为 &&，OR也可以写为 ||，NOT可以写为 ! , `log: (ERROR && INFO && !panic)`
 
 ### 规则4：布尔查询 关键字存在+，不存在-
 
-`字段名：关键字1 关键字2 +关键字3 -关键字4`    #搜索关键字1 OR 关键字2其中一个存在，并且关键字3也同时存在，但关键字4不存在
+`字段名：关键字1 关键字2 +关键字3 -关键字4`    #搜索 `关键字1` OR `关键字2` 其中一个存在，并且`关键字3`也同时存在，但`关键字4`不存在
 
-等同于：(  (关键字1 AND 关键字3)   OR (关键字2 AND 关键字3)  OR 关键字3 ) AND NOT 关键字4
+等同于：`((关键字1 AND 关键字3) OR (关键字2 AND 关键字3)  OR 关键字3 ) AND NOT 关键字4`
 
 ### 规则5：字段有空格
 
@@ -68,7 +68,6 @@
 嵌套字段的搜索，可以使用*匹配，如msg.title，msg.content 或 msg.date中包含ERROR或者INFO，则可以如下写
 
 `msg.\*: (ERROR OR INFO)`
-
 
 ### 规则7：字段存在
 
@@ -181,7 +180,7 @@ blueking log search
 
 ### 规则12：范围查询
 
-范围查询是针对时间、数字和字符串类型的字段使用的。范围查询的操作符主要是 [] 和 {}，其中 [] 是闭合查询，{} 非闭合查询。
+范围查询是针对**时间**、**数字**和**字符串**类型的字段使用的。范围查询的操作符主要是 [] 和 {}，其中 [] 是闭合查询，{} 非闭合查询。
 
 查询code在200到600之间的数据
 
@@ -214,9 +213,9 @@ code: <= 500
 
 ### 规则13：条件分组
 
-使用()对查询语句进行分组，最外层括号的优先匹配
+使用`()`对查询语句进行分组，最外层括号的优先匹配
 
-`(  (关键字1 AND 关键字3)   OR (关键字2 AND 关键字3)  OR 关键字3 ) AND NOT 关键字4 `
+`((关键字1 AND 关键字3)  OR (关键字2 AND 关键字3) OR 关键字3 ) AND NOT 关键字4`
 
 ### 规则14：特殊符号
 
@@ -253,7 +252,7 @@ bar.com
 abc
 ```
 
-其中@ |  ]   [ &这几个特殊符号被忽略处理，也就是搜索的时候会不被匹配
+其中`@ |  ]   [ &`这几个特殊符号被忽略处理，也就是搜索的时候会不被匹配
 
 例如原始日志如下所示
 
@@ -267,7 +266,7 @@ abc
 error, 2022, 01, 05, 15, 04, 43, data, bkee, bknodeman, nodeman, apps, backend, subscription, tasks.py, 430, wrapper, 18302, 140333498185536, 3800009, 订, 阅, 任, 务, 实, 例, 为, 空, 不, 再, 创, 建, 订, 阅, 任, 务, traceback, most, recent, call, last, file, data, bkee, bknodeman, nodeman, apps, backend, subscription, tasks.py, line, 428, in, wrapper, func_result, func, subscription, subscription_task, args, kwargs, file, data, bkee, bknodeman, nodeman, apps, backend, subscription, tasks.py, line, 555, in, run_subscription_task_and_create_instance, subscription, subscription_task, instances, instance_actions, preview_only, preview_only, file, data, bkee, envs, bknodeman, nodeman, lib, python3.6, site, packages, celery, local.py, line, 191, in, __call__, return, self, _get_current_object, a, kw, file, data, bkee, envs, bknodeman, nodeman, lib, python3.6, site, packages, celery, app, trace.py, line, 705, in, __protected_call__, return, orig, self, args, kwargs, file, data, bkee, envs, bknodeman, nodeman, lib, python3.6, site, packages, celery, app, task.py, line, 393, in, __call__, return, self.run, args, kwargs, file, data, bkee, bknodeman, nodeman, apps, backend, subscription, tasks.py, line, 213, in, wrapper, raise, err, file, data, bkee, bknodeman, nodeman, apps, backend, subscription, tasks.py, line, 206, in, wrapper, func_return, create_task_func, subscription, subscription_task, args, kwargs, file, data, bkee, bknodeman, nodeman, apps, backend, subscription, tasks.py, line, 375, in, create_task, raise, subscriptioninstanceempty, apps.backend.subscription.errors.subscriptioninstanceempty, 3800009, 订, 阅, 任, 务, 实, 例, 为, 空, 不, 再, 创, 建, 订, 阅, 任, 务
 ```
 
-可以看到+ - = && || >< ! ( ) { } [ ] ^ " ~ * ? : \ / 特殊字符，是不会进行分词的，直接被standard分词器无视了，而不属于特殊字符的点(.) 下划线( _ ),则会当做词的一部分进行处理
+可以看到`+ - = && || >< ! ( ) { } [ ] ^ " ~ * ? : \ /` 特殊字符，是不会进行分词的，直接被standard分词器无视了，而不属于特殊字符的点`(.)`下划线`( _ )`,则会当做词的一部分进行处理
 
 搜索词
 
@@ -302,13 +301,12 @@ GET _analyze
 
 ### 如何判断是否被分词
 
-当类型为文本时，表示该字段经过了分词，需要按分词规则进行检索
-
+当类型为**文本**时，表示该字段经过了分词，需要按**分词规则**进行检索
 
 
 #### 文本搜索
 
-   文本，说明该字段是被分词过的，可以支持按词进行搜索，如遇到特殊符号，则无法匹配
+ **文本**，说明该字段是被分词过的，可以支持按词进行搜索，如遇到特殊符号，则无法匹配
 ![](media/16619453368450.jpg)
 
 点击鼠标到词上，如果该词可以高亮，则说明该词是可以用于关键词的搜索
@@ -351,13 +349,13 @@ GET _analyze
 
 ## 正则表达式语法
 
-正则表达式查询由 regexp 和 query_string 查询支持。 Lucene 正则表达式引擎不 Perl-兼容 ，但支持较小范围的运算符。
+正则表达式查询由 `regexp` 和 `query_string` 查询支持。 Lucene 正则表达式引擎不兼容 Perl ，但支持较小范围的运算符。
 
 ### 锚定
 
-大多数正则表达式引擎允许您匹配字符串的任何部分。如果你希望正则表达式模式从字符串的开头开始或者在字符串的结尾处结束，那么你必须具体地锚定它，使用 “^” 表示开头或使用 “$” 表示结束。
+大多数正则表达式引擎允许您匹配字符串的任何部分。如果你希望正则表达式模式从字符串的开头开始或者在字符串的结尾处结束，那么你必须具体地锚定它，使用 `^` 表示开头或使用 `$` 表示结束。
 
-Lucene 的模式总是锚定的。提供的模式必须匹配整个字符串。对于字符串 “abcde” ：
+`Lucene` 的模式总是锚定的。提供的模式必须匹配整个字符串。对于字符串 “abcde” ：
 
 ```
 ab.*     # 匹配
@@ -373,7 +371,8 @@ abcd     # 不匹配
 如果启用可选功能（见下文），则还可以保留这些字符：
 
 `# @ & < >  ~`
-任何保留字符都可以使用反斜杠 “\ *” 转义，其中包括一个字面反斜杠字符：“\”
+
+任何保留字符都可以使用反斜杠 `\ *` 转义，其中包括一个字面反斜杠字符：`\`
 
 此外，任何字符（双引号除外）在用双引号括起时，将被逐字解释：
 
@@ -381,7 +380,7 @@ abcd     # 不匹配
 
 ### 匹配任意字符
 
-字符 ”.” 可以用来表示任何字符。对于字符串 “abcde” ：
+字符 `.` 可以用来表示任何字符。对于字符串 “abcde” ：
 
 ```
 ab...   # 匹配
@@ -390,7 +389,7 @@ a.c.e   # 匹配
 
 ### 匹配一个或多个
 
-加号 “+” 可以用于重复小先前模型一次或多次。对于字符串 “aaabbb” ：
+加号 `+` 可以用于重复小先前模型一次或多次。对于字符串 “aaabbb” ：
 
 ```
 a+b+        # 匹配
@@ -401,7 +400,7 @@ aa+bbb+     # 匹配
 
 ### 匹配零个或多个
 
-星号“*” 可以用于匹配小先前模型零次或多次。对于字符串 “aaabbb” ：
+星号 `*` 可以用于匹配小先前模型零次或多次。对于字符串 “aaabbb” ：
 
 ```
 a*b*        # 匹配
@@ -412,7 +411,7 @@ aaa*bbb*    # 匹配
 
 ### 匹配零个或一个
 
-问号 “？” 使得先前模型是可选的。它匹配零或一次。对于字符串 “aaabbb” ：
+问号 `?` 使得先前模型是可选的。它匹配零或一次。对于字符串 “aaabbb” ：
 
 ```
 aaa?bbb?    # 匹配
@@ -423,7 +422,7 @@ aa?bb?      # 不匹配
 
 ### 最小最大匹配次数
 
-大括号 “{}” 可以用于指定前一先前模型可以重复的最小和最大（可选）次数。允许的形式是：
+大括号 `{}` 可以用于指定前一先前模型可以重复的最小和最大（可选）次数。允许的形式是：
 
 ```
 {5}     # 重复匹配5次。
@@ -445,7 +444,7 @@ a{4,}b{4,}      # 不匹配
 
 ### 分组
 
-括号 “（）” 可以用于形成子模型。上面列出的数量运算符以最短的先前模型操作，它可以是一个组。对于字符串 “ababab” ：
+括号 `()` 可以用于形成子模型。上面列出的数量运算符以最短的先前模型操作，它可以是一个组。对于字符串 “ababab” ：
 
 ```
 (ab)+       # 匹配
@@ -461,7 +460,7 @@ ab(ab)?     # 不匹配
 
 ### 交替
 
-管道符号 “|” 作为 OR 运算符。如果左侧或右侧的模式匹配，匹配将成功。交替适用于 longest pattern （最长的模型），而不是最短的。对于字符串 “aabb” ：
+管道符号 `|` 作为 `OR` 运算符。如果左侧或右侧的模式匹配，匹配将成功。交替适用于 longest pattern （最长的模型），而不是最短的。对于字符串 “aabb” ：
 
 ```
 aabb|bbaa   # 匹配
@@ -474,7 +473,7 @@ a+(b|c)+    # 匹配
 
 ### 字符类
 
-潜在字符的范围可以通过将它们包围在方括号 “[]” 中来表示为字符类。前导 “^” 排除字符类。允许的形式是：
+潜在字符的范围可以通过将它们包围在方括号 `[]` 中来表示为字符类。前导 `^` 排除字符类。允许的形式是：
 
 ```
 [abc]   # 'a' or 'b' or 'c'
