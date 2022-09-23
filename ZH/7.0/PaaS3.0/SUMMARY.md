@@ -41,7 +41,7 @@
             * [部署目录](topics/paas/deployment_directory.md)
             * [钩子（Hooks）]()
                 * [构建（Build）阶段钩子](topics/paas/build_hooks.md)
-                * [部署（Release）阶段钩子](topics/paas/release_hooks.md
+                * [部署（Release）阶段钩子](topics/paas/release_hooks.md)
         * [增强服务]()
             * [简介](topics/paas/services/index.md)
             * [数据存储类]()
