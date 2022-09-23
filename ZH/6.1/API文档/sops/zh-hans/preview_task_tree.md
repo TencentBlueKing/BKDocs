@@ -238,6 +238,8 @@ POST
 |  gateways      |    dict    |      网关节点（并行网关、分支网关和汇聚网关）信息    |
 |  flows      |    dict    |     顺序流（节点连线）信息    |
 |  constants      |    dict    |  全局变量信息，详情见下面    |
+| line        | list | 连线信息                       |
+| location    | list | 节点位置信息                     |
 |  outputs      |    list    |  模板输出信息，标记 constants 中的输出字段    |
 
 ###### data.pipeline_tree.constants.KEY
