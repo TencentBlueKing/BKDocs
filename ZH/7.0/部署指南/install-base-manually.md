@@ -86,9 +86,9 @@ helm repo list
 ``` bash
 kubectl get sc
 ```
-如果上述命令只显示了标题，说明还没有配置存储类。
+如果上述命令提示 `No resources found`，说明还没有配置存储类。
 
-您可以参考下述内容配置 `localpv`（输出结果中 `NAME` 列为 `local-storage` ），或者自行对接其他存储类并设置为默认存储类（输出结果中 `NAME` 列结尾使用 `(default)` 标注）。
+您可以参考下述内容配置 `localpv`（输出结果中 `NAME` 列为 `local-storage` ），或者自行对接其他存储类并设置为默认存储类。
 
 >**提示**
 >
@@ -137,7 +137,7 @@ kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx  # 查看创建的po
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-IP1=$(kubectl -A get svc -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 ./scripts/control_coredns.sh update "$IP1" bkrepo.$BK_DOMAIN docker.$BK_DOMAIN $BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN apps.$BK_DOMAIN
 ```
 

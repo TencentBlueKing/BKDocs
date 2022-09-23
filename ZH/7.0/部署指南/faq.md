@@ -211,7 +211,7 @@ kubectl get pod -A | grep -wv Completed | grep -e "0/"
 目前观察到如下类型的原因：
 * pod 启动超时。
   * 表现：pod 为 `Running` 状态，但是 `RESTARTS` 列的计数大于 3 ，且 kubectl describe pod 显示的 Events 和 logs 均正常，helmfile destory 对应 release 后，再次 helmfile sync 问题依旧。
-  * 解决办法： 手动修改 custom 文件，提高配额。详细步骤见 本文 “<a href="#modify-pod-resources-limits">调整 pod 的资源配额</a>” 章节。
+  * 解决办法： 手动修改 custom 文件，提高配额。详细步骤见本文“调整 pod 的资源配额”章节。
 * pod 等待调度。
   * 表现：pod 一直为 `Pending` 状态。
   * 解决办法：kubectl describe pod 查看阻塞原因，然后逐层 kubectl describe 导致阻塞的资源追溯拥有。常见情况为资源（CPU、内存及 pvc 等）不足，可以通过扩容 node 解决此类问题。
