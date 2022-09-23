@@ -1,4 +1,7 @@
-# 部署监控日志套餐
+蓝鲸监控日志套餐由监控平台及日志平台组成。
+
+
+# 监控平台
 
 ## 部署监控平台
 在 中控机 执行
@@ -33,6 +36,45 @@ echo $IP1 bkmonitor.$BK_DOMAIN
 
 此时访问 “观测场景” —— “Kubernetes” 界面会出现报错。为未启用容器监控所致，完成本文 “配置容器监控” 章节即可正常使用。
 
+## 配置容器监控
+
+### 前置检查
+容器监控功能需要在所有 k8s node （包括 master ）部署 gse-agent。请先在 “节点管理” 中完成 agent 安装。
+
+容器监控功能依赖 **容器管理平台** （BCS），请先完成 [容器管理平台部署](install-bcs.md) 。
+
+容器监控功能依赖 **监控平台** ，请先完成 “部署监控平台” 章节。
+
+### 调整 bkmonitor
+需要能读取 bcs 管理接口。
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+./scripts/config_monitor_bcs_token.sh
+helmfile -f 04-bkmonitor.yaml.gotmpl apply   # apply 仅增量更新
+```
+
+### 部署 bkmonitor-operator
+
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
+```
+
+然后在新窗口中检查 pod 稳定状态为 `Running` 即可：
+``` bash
+kubectl get pod -n bkmonitor-operator -w
+```
+
+未在 “节点管理” 中为所有 node 安装 agent 时，`bkmonitor-operator-bkmonitorbeat-daemonset` 系列 pod 的日志中会出现如下报错：
+``` plain
+Init filed with error: failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/ipc.state.report: connect: no such file or directory
+```
+
+在部署 gse agent 成功后，上述 pod 会逐步自动恢复。也可直接删除出错的 pod，会立刻重新创建。
+
+
+# 日志平台
+
 ## 部署日志平台
 在 中控机 执行
 ``` bash
@@ -54,22 +96,6 @@ IP1=$(ssh "$IP1" 'curl ip.sb')
 echo $IP1 bklog.$BK_DOMAIN
 ```
 
-## 配置容器监控
-
-### 前置检查
-容器监控功能需要在所有 k8s node （包括 master ）部署 gse-agent。请先在 “节点管理” 中完成 agent 安装。
-
-容器监控功能依赖 **容器管理平台** （BCS），请先完成 [容器管理平台部署](install-bcs.md) 。
-
-容器监控功能依赖 **监控平台** ，请先完成 “部署监控平台” 章节。
-
-### 调整 bkmonitor
-需要能读取 bcs 管理接口。
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-./scripts/config_monitor_bcs_token.sh
-helmfile -f 04-bkmonitor.yaml.gotmpl apply   # apply 仅增量更新
-```
 
 ### 部署 bklog-collector
 部署日志采集器。
@@ -91,21 +117,4 @@ kubectl logs -n blueking bklog-collector-bk-log-collector-补全名称 bkunifylo
 Init filed with error: failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/ipc.state.report: connect: no such file or directory
 ```
 
-此时部署 gse agent 成功后，pod 会逐步自动恢复。也可直接删除出错的 pod，会立刻重新创建：
-``` bash
-kubectl delete pod -n blueking bklog-collector-bk-log-collector-补全时选择非Running的pod
-```
-
-### 部署 bkmonitor-operator
-
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
-```
-
-然后在新窗口中检查 pod 稳定状态为 `Running` 即可：
-``` bash
-kubectl get pod -n bkmonitor-operator -w
-```
-
-未在 “节点管理” 中为所有 node 安装 agent 时，`bkmonitor-operator-bkmonitorbeat-daemonset` 系列 pod 的日志与 `bklog-collector` 相似，请参考 “部署 bklog-collector” 章节处理。
+在部署 gse agent 成功后，上述 pod 会逐步自动恢复。也可直接删除出错的 pod，会立刻重新创建。

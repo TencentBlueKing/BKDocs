@@ -53,7 +53,7 @@ curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta
 
 # 部署基础套餐后台
 本章节提供了 2 种等价的操作。您可按需选择其中一种：
-* 如果您希望尽快体验蓝鲸，使用 “一键部署” 脚本填写域名即可开始部署，详见 <a href="#setup_bkce7-i-base">一键部署基础套餐后台</a> 章节。
+* 如果您希望尽快体验蓝鲸，使用“一键部署”脚本填写域名即可开始部署，详见本文“一键部署基础套餐后台”章节。
 * 如果您打算研究部署细节，期间需要手动执行 `helmfile` 命令及一些代码片段，请查阅 《[分步部署基础套餐后台](install-base-manually.md)》 文档。
 
 
@@ -85,15 +85,15 @@ fi
 
 
 # 配置 DNS
-k8s 具备比较复杂的网络拓扑，当您从不同的区域访问时，需要使用不同的入口地址。
+k8s 的网络拓扑结构比较复杂，当您从不同的网络区域访问时，需要使用不同的入口地址。
 
-我们用到的访问场景如下:
-* k8s pod 内解析蓝鲸域名，需要 <a href="#hosts-in-coredns">配置 coredns</a>
-* k8s node 从 bkrepo 拉取镜像，安装 GSE Agent，需要 <a href="#hosts-in-k8s-node">配置 k8s node 的 DNS</a>
-* 中控机调用蓝鲸接口，需要 <a href="#hosts-in-bk-ctrl">配置中控机的 DNS</a>
-* 您在电脑上访问蓝鲸，需要 <a href="#hosts-in-user-pc">配置用户侧的 DNS</a>
+您需要完成如下全部场景的配置：
+* k8s pod 内访问蓝鲸，需要配置 coredns。
+* 在 k8s node 主机访问蓝鲸，需要配置 k8s node 的 DNS。
+* 中控机调用蓝鲸接口，需要配置中控机的 DNS。
+* 您在电脑上访问蓝鲸，需要配置用户侧的 DNS。
 
-为了简化操作，这些步骤皆以 `hosts` 文件为例。
+场景配置细节请查阅本章的各小节。
 
 <a id="hosts-in-coredns" name="hosts-in-coredns"></a>
 
@@ -242,7 +242,7 @@ echo "http://$BK_DOMAIN"
 # 准备 SaaS 运行环境
 >**注意**
 >
->SaaS 部署时需要访问 bkrepo 提供的 docker 服务，请先完成 “<a href="#hosts-in-k8s-node">配置 k8s node 的 DNS</a>” 章节。
+>SaaS 部署时需要 k8s node 能访问 bkrepo 提供的 docker 服务。您在前面的步骤中已经配置过 DNS，期间如有新增 node，可查阅本文“配置 k8s node 的 DNS”章节补齐操作。
 
 <a id="k8s-node-docker-insecure-registries" name="k8s-node-docker-insecure-registries"></a>
 
@@ -256,16 +256,22 @@ PaaS v3 开始支持 `image` 格式的 `S-Mart` 包，部署过程中需要访�
    2. 用户自签的证书： 需要在 bkrepo 配置 docker 域名的证书，且在 node 添加自签证书到操作系统 CA 库并重启 docker 服务。
 
 ### 配置 docker 使用 http 访问 registry
-在 SaaS 专用 node （如未配置专用 node，则为全部 node ）上执行命令生成新的配置文件：
+
+我们预期所有 k8s node 的 `/etc/docker/daemon.json` 配置文件一样，如果不一样，请自行分批重复执行本步骤。
+
+如果中控机不是 k8s master，可以从 master 上获取 `/etc/docker/daemon.json`，并放在中控机的 `/etc/docker/daemon.json`。
+
+然后在中控机上执行命令生成新的配置文件：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-cat /etc/docker/daemon.json | jq '.["insecure-registries"]+=["docker.'$BK_DOMAIN'"]'
+cat /etc/docker/daemon.json | jq '.["insecure-registries"]+=["docker.'$BK_DOMAIN'"]' | tee /tmp/daemon.json
 ```
 
-检查内容无误后，即可将上述内容写入此 node 上的 `/etc/docker/daemon.json`。如果这些 node 的配置文件相同，您可以在中控机生成新文件后批量替换。
+检查内容无误后，即可将 `/tmp/daemon.json` 分发到全部 k8s node 上的 `/etc/docker/daemon.json`。
 
-在 node 上检查修改后的配置文件：
+
+在 node 上安装 jq 命令可以精确检查修改后的配置文件片段：
 ``` bash
 jq -r  '."insecure-registries"' /etc/docker/daemon.json
 ```
@@ -314,11 +320,11 @@ docker info
 >**提示**
 >
 >部署时 开发者中心 会基于 S-Mart 安装包制作该 SaaS 的 docker 镜像并上传到 bkrepo。<br/>
->您刚才已经随着文档完成了 “<a href="#hosts-in-k8s-node">配置 k8s node 的 DNS</a>” 和 “<a href="#k8s-node-docker-insecure-registries">调整 node 上的 docker 服务</a>” 章节。如果在此期间您有新增 k8s node，则需在新 node 上也做完这些的操作。
+>您在前面的步骤中已经配置过 DNS 及 docker 服务，期间如有新增 node，可查阅本文 “配置 k8s node 的 DNS” 和 “调整 node 上的 docker 服务” 章节补齐操作。
 
 如同刚才部署后台一般，本章节也提供了 2 种等价的操作。您可按需选择其中一种：
-* 为了快速体验，可以跟随下面的 “<a href="#setup_bkce7-i-saas">一键部署基础套餐 SaaS</a>” 章节来完成 **全新安装** 以及 **部署前设置**。
-* 部分 SaaS 需要部署后手动配置，则需查阅信息全面的 《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
+* 我们提供的脚本可完成大部分操作，方便快捷，详见本文“一键部署基础套餐 SaaS” 章节。
+* 如需研究 SaaS 部署的细节，请查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档。
 
 <a id="setup_bkce7-i-saas" name="setup_bkce7-i-saas"></a>
 
@@ -327,16 +333,18 @@ docker info
 在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境：
 ``` bash
 curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur latest saas  # 下载SaaS安装包及节点管理托管的常用文件
-scripts/setup_bkce7.sh -i nodeman  # 节点管理charts化后使用单独的命令。可上传待托管文件。
+scripts/setup_bkce7.sh -i nodeman  # 部署节点管理。可顺带上传待托管文件。
 scripts/setup_bkce7.sh -i itsm  # 部署流程服务
 scripts/setup_bkce7.sh -i sops  # 部署标注运维
 ```
 
-此步骤总耗时 18 ~ 27 分钟。每个 SaaS 部署不超过 10 分钟，如果超时请参考 《[FAQ](faq.md)》文档的 “[部署 SaaS 在“执行部署前置命令”阶段报错](faq.md#saas-deploy-prehook)” 章节排查。
+此步骤总耗时 18 ~ 27 分钟。每个 SaaS 部署不超过 10 分钟，如果超时请参考 《[FAQ](faq.md)》文档的 “[部署 SaaS 在‘执行部署前置命令’阶段报错](faq.md#saas-deploy-prehook)” 章节排查。
 
 部分 SaaS 需要后续配置，暂时无法在脚本中实现，需您查阅《[手动部署基础套餐 SaaS](install-saas-manually.md)》文档的“[SaaS 部署后的设置](install-saas-manually.md#post-install-bk-saas)”章节手动操作：
+<!--
 1. bk_lesscode 配置独立域名。
-2. bk_nodeman 配置 GSE 环境管理。
+-->
+1. bk_nodeman 配置 GSE 环境管理。
 
 >**注意**
 >
