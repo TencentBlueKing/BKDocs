@@ -1,0 +1,23 @@
+# Summary
+
+## 蓝鲸体系
+* [品牌简介](产品白皮书/品牌简介/intro.md)
+* [核心优势](产品白皮书/核心优势/advantages.md)
+* [解决方案]()
+    * [体系架构](产品白皮书/解决方案/solution.md)
+    * [CI 领域](产品白皮书/解决方案/ci_intro.md)
+    * [CD 领域](产品白皮书/解决方案/cd_intro.md)
+    * [CO 领域](产品白皮书/解决方案/co_intro.md)
+* [软件信息]()
+    * [版本类别](产品白皮书/软件信息/版本类别/version_cate.md)
+    * [产品简介](产品白皮书/软件信息/版本类别/intro.md)
+    * [版本差异](产品白皮书/软件信息/版本差异/version_diff.md)
+* [技术支持](产品白皮书/技术支持/support.md)
+* [生态合作]()
+    * [能力认证](产品白皮书/生态合作/training_exam.md)
+    * [合作伙伴](产品白皮书/生态合作/cooperation_partner.md)
+* [企业专属]()
+    * [软件说明](产品白皮书/企业专属/software.md)
+    * [客户服务](产品白皮书/企业专属/itservices.md) 
+* [客户案例](产品白皮书/客户案例/client_case.md)
+* [结语](产品白皮书/结语/epilog.md)
