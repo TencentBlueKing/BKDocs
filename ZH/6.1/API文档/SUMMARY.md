@@ -250,6 +250,8 @@
     * [查询任务分类统计总数](sops/zh-hans/query_task_count.md)
     * [设置周期任务是否激活](sops/zh-hans/set_periodic_task_enabled.md)
     * [开始执行任务](sops/zh-hans/start_task.md)
+    * [创建计划任务](sops/zh-hans/create_clocked_task.md)
+    * [获取业务下的轻应用列表](sops/zh-hans/get_mini_app_list.md)
 * [日志平台]()
     * [简介](bk_log/README.md)
     * [日志查询接口](bk_log/zh-hans/esquery_search.md)
