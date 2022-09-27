@@ -41,7 +41,7 @@
     * [资源管理]()
         * [ES存储接入和管理](产品白皮书/resource-management/es_management.md)
         * [上报链路管理](产品白皮书/resource-management/data_link_management.md)
-* [应用运维]()
+<!-- * [应用运维]()
     * [编写目的](应用运维文档/编写目的/PurposeOfWriting.md)
     * [术语解释](应用运维文档/术语解释/TermsAndDefinitions.md)
     * [系统概述]()
@@ -69,6 +69,6 @@
         * [SaaS](开发架构文档/系统可用性/SaaS.md)
         * [后台](开发架构文档/系统可用性/Background.md)
     * [附录]()
-        * [常见问题解决办法](开发架构文档/附录/CommonProblemSolution.md)
+        * [常见问题解决办法](开发架构文档/附录/CommonProblemSolution.md) -->
 
 
