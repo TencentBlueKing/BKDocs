@@ -28,7 +28,7 @@
 * 含义： 监测 /proc/sys/kernel/core_pattern 中目录内文件的变化
 * 采集方法：Linux
      1. 查看corefile生成路径：`cat /proc/sys/kernel/core_pattern`，确保在某一个目录下，例如 `/data/corefile/core_%e_%t`
-     2. 依赖exceptionbeat采集器, 在节点管理安装,会自动根据core_pattern监听文件目录
+     2. 依赖bkmonitorbeat采集器, 在节点管理安装,会自动根据core_pattern监听文件目录
 
 ### Ping不可达
 

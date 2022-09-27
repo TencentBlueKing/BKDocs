@@ -4,7 +4,7 @@
 
 路径：管理  →  日志提取  →  新增
 
-![log_download_1.png](../media/log_download_1.png)
+![](media/16626039141420.jpg)
 
 点击“新增”后，按照提示完成权限设置：
 
@@ -16,6 +16,8 @@
 
 授权目录可以按照大区或模块选择：
 
-![log_download_1.png](../media/log_download_3.png)
+![log_download_1.png](media/log_download_3.jpg)
 
 新增完之后，可以在管理页面看到具体内容。
+
+
