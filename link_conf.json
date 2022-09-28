@@ -4926,7 +4926,7 @@
 				"extend": {
 					"summary": "7.0/持续集成平台/SUMMARY.md"
 				},
-				"index": 444,
+				"index": 443,
 				"title": "持续集成平台",
 				"url": "7.0/持续集成平台/产品白皮书/产品简介/README.md",
 				"version": "7.0"
@@ -4945,7 +4945,7 @@
 				"extend": {
 					"summary": "7.0/用户管理/SUMMARY.md"
 				},
-				"index": 443,
+				"index": 442,
 				"title": "用户管理",
 				"url": "7.0/用户管理/产品白皮书/产品简介/README.md",
 				"version": "7.0"
@@ -4964,7 +4964,7 @@
 				"extend": {
 					"summary": "7.0/权限中心/SUMMARY.md"
 				},
-				"index": 442,
+				"index": 441,
 				"title": "权限中心",
 				"url": "7.0/权限中心/产品白皮书/产品简介/README.md",
 				"version": "7.0"
@@ -4983,7 +4983,7 @@
 				"extend": {
 					"summary": "7.0/节点管理/SUMMARY.md"
 				},
-				"index": 441,
+				"index": 440,
 				"title": "节点管理",
 				"url": "7.0/节点管理/产品白皮书/Introduce/Overview.md",
 				"version": "7.0"
@@ -5002,7 +5002,7 @@
 				"extend": {
 					"summary": "7.0/标准运维/SUMMARY.md"
 				},
-				"index": 440,
+				"index": 439,
 				"title": "标准运维",
 				"url": "7.0/标准运维/产品白皮书/产品简介/README.md",
 				"version": "7.0"
@@ -5021,7 +5021,7 @@
 				"extend": {
 					"summary": "7.0/监控平台/SUMMARY.md"
 				},
-				"index": 439,
+				"index": 438,
 				"title": "监控平台",
 				"url": "7.0/监控平台/产品白皮书/intro/README.md",
 				"version": "7.0"
@@ -5040,7 +5040,7 @@
 				"extend": {
 					"summary": "7.0/日志平台/SUMMARY.md"
 				},
-				"index": 438,
+				"index": 437,
 				"title": "日志平台",
 				"url": "7.0/日志平台/产品白皮书/intro/README.md",
 				"version": "7.0"
@@ -5059,7 +5059,7 @@
 				"extend": {
 					"summary": "7.0/流程服务/SUMMARY.md"
 				},
-				"index": 437,
+				"index": 436,
 				"title": "流程服务",
 				"url": "7.0/流程服务/产品白皮书/产品简介/README.md",
 				"version": "7.0"
@@ -5070,6 +5070,462 @@
 			"icon_url": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTRweCIgaGVpZ2h0PSIxNHB4IiB2aWV3Qm94PSIwIDAgMTQgMTQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU3LjEgKDgzMDg4KSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT7lvaLnirY8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZyBpZD0i6L+t5Luj5LiAIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iMDEwMS7mlofmoaPkuK3lv4PkuLvpobUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00MDEuMDAwMDAwLCAtMTE5Ny4wMDAwMDApIiBmaWxsPSIjNzk4MEI4IiBmaWxsLXJ1bGU9Im5vbnplcm8iPgogICAgICAgICAgICA8ZyBpZD0i57yW57uELTPlpIfku70iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM3MC4wMDAwMDAsIDExNjEuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNDQuNjk1NjUyMiwzNiBMMzguOTEzMDQzNSwzNiBDMzguNzQ1NjUyMiwzNiAzOC42MDg2OTU3LDM2LjEzNjk1NjUgMzguNjA4Njk1NywzNi4zMDQzNDc4IEwzOC42MDg2OTU3LDQyLjA4Njk1NjUgQzM4LjYwODY5NTcsNDIuMjU0MzQ3OCAzOC43NDU2NTIyLDQyLjM5MTMwNDMgMzguOTEzMDQzNSw0Mi4zOTEzMDQzIEw0NC42OTU2NTIyLDQyLjM5MTMwNDMgQzQ0Ljg2MzA0MzUsNDIuMzkxMzA0MyA0NSw0Mi4yNTQzNDc4IDQ1LDQyLjA4Njk1NjUgTDQ1LDM2LjMwNDM0NzggQzQ1LDM2LjEzNjk1NjUgNDQuODYzMDQzNSwzNiA0NC42OTU2NTIyLDM2IFogTTQ0LjY5NTY1MjIsNDMuNjA4Njk1NyBMMzguOTEzMDQzNSw0My42MDg2OTU3IEMzOC43NDU2NTIyLDQzLjYwODY5NTcgMzguNjA4Njk1Nyw0My43NDU2NTIyIDM4LjYwODY5NTcsNDMuOTEzMDQzNSBMMzguNjA4Njk1Nyw0OS42OTU2NTIyIEMzOC42MDg2OTU3LDQ5Ljg2MzA0MzUgMzguNzQ1NjUyMiw1MCAzOC45MTMwNDM1LDUwIEw0NC42OTU2NTIyLDUwIEM0NC44NjMwNDM1LDUwIDQ1LDQ5Ljg2MzA0MzUgNDUsNDkuNjk1NjUyMiBMNDUsNDMuOTEzMDQzNSBDNDUsNDMuNzQ1NjUyMiA0NC44NjMwNDM1LDQzLjYwODY5NTcgNDQuNjk1NjUyMiw0My42MDg2OTU3IFogTTM3LjA4Njk1NjUsMzYgTDMxLjMwNDM0NzgsMzYgQzMxLjEzNjk1NjUsMzYgMzEsMzYuMTM2OTU2NSAzMSwzNi4zMDQzNDc4IEwzMSw0Mi4wODY5NTY1IEMzMSw0Mi4yNTQzNDc4IDMxLjEzNjk1NjUsNDIuMzkxMzA0MyAzMS4zMDQzNDc4LDQyLjM5MTMwNDMgTDM3LjA4Njk1NjUsNDIuMzkxMzA0MyBDMzcuMjU0MzQ3OCw0Mi4zOTEzMDQzIDM3LjM5MTMwNDMsNDIuMjU0MzQ3OCAzNy4zOTEzMDQzLDQyLjA4Njk1NjUgTDM3LjM5MTMwNDMsMzYuMzA0MzQ3OCBDMzcuMzkxMzA0MywzNi4xMzY5NTY1IDM3LjI1NDM0NzgsMzYgMzcuMDg2OTU2NSwzNiBaIE0zNy4wODY5NTY1LDQzLjYwODY5NTcgTDMxLjMwNDM0NzgsNDMuNjA4Njk1NyBDMzEuMTM2OTU2NSw0My42MDg2OTU3IDMxLDQzLjc0NTY1MjIgMzEsNDMuOTEzMDQzNSBMMzEsNDkuNjk1NjUyMiBDMzEsNDkuODYzMDQzNSAzMS4xMzY5NTY1LDUwIDMxLjMwNDM0NzgsNTAgTDM3LjA4Njk1NjUsNTAgQzM3LjI1NDM0NzgsNTAgMzcuMzkxMzA0Myw0OS44NjMwNDM1IDM3LjM5MTMwNDMsNDkuNjk1NjUyMiBMMzcuMzkxMzA0Myw0My45MTMwNDM1IEMzNy4zOTEzMDQzLDQzLjc0NTY1MjIgMzcuMjU0MzQ3OCw0My42MDg2OTU3IDM3LjA4Njk1NjUsNDMuNjA4Njk1NyBaIiBpZD0i5b2i54q2Ij48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==",
 			"page": "home",
 			"type": "产品文档:SaaS场景层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/体系介绍/SUMMARY.md"
+				},
+				"index": 100,
+				"title": "蓝鲸体系",
+				"url": "7.0/体系介绍/产品白皮书/品牌简介/intro.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:品牌理念"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "PaaS平台/SUMMARY.md"
+				},
+				"index": 99,
+				"title": "PaaS平台",
+				"url": "7.0/PaaS平台/产品白皮书/产品简介/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:原子平台层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/配置平台/SUMMARY.md"
+				},
+				"index": 98,
+				"title": "配置平台",
+				"url": "7.0/配置平台/产品白皮书/产品简介/Overview.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:原子平台层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/作业平台/SUMMARY.md"
+				},
+				"index": 97,
+				"title": "作业平台",
+				"url": "7.0/作业平台/产品白皮书/Introduction/What-is-Job.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:原子平台层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/管控平台/SUMMARY.md"
+				},
+				"index": 96,
+				"title": "管控平台",
+				"url": "7.0/管控平台/产品白皮书/产品简介/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:原子平台层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/BCS/SUMMARY.md"
+				},
+				"index": 95,
+				"title": "容器管理平台",
+				"url": "7.0/BCS/产品白皮书/Introduction/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:原子平台层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/用户管理/SUMMARY.md"
+				},
+				"index": 93,
+				"title": "用户管理",
+				"url": "7.0/用户管理/产品白皮书/产品简介/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:SaaS场景层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/权限中心/SUMMARY.md"
+				},
+				"index": 92,
+				"title": "权限中心",
+				"url": "7.0/权限中心/产品白皮书/产品简介/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:SaaS场景层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/节点管理/SUMMARY.md"
+				},
+				"index": 91,
+				"title": "节点管理",
+				"url": "7.0/节点管理/产品白皮书/Introduce/Overview.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:SaaS场景层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/标准运维/SUMMARY.md"
+				},
+				"index": 90,
+				"title": "标准运维",
+				"url": "7.0/标准运维/产品白皮书/产品简介/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:SaaS场景层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/流程服务/SUMMARY.md"
+				},
+				"index": 89,
+				"title": "流程服务",
+				"url": "7.0/流程服务/产品白皮书/产品简介/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:SaaS场景层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/监控平台/SUMMARY.md"
+				},
+				"index": 87,
+				"title": "监控平台",
+				"url": "7.0/监控平台/产品白皮书/intro/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:SaaS场景层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/日志平台/SUMMARY.md"
+				},
+				"index": 86,
+				"title": "日志平台",
+				"url": "7.0/日志平台/产品白皮书/intro/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "产品文档:SaaS场景层"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/快速入门/SUMMARY.md"
+				},
+				"index": 79,
+				"title": "快速使用",
+				"url": "7.0/快速入门/quick-start-v6.1-info.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag1:快速入门"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/蓝鲸线上体验环境快速入门/SUMMARY.md"
+				},
+				"index": 79,
+				"title": "蓝鲸线上体验环境快速入门",
+				"url": "7.0/蓝鲸线上体验环境快速入门/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag1:快速入门"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 50,
+				"title": "基础包快速部署",
+				"url": "7.0/部署指南/产品白皮书/基础包安装/多机部署/quick_install.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 49,
+				"title": "蓝盾快速部署",
+				"url": "7.0/部署指南/产品白皮书/增强包安装/部署安装/CI-start.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 48,
+				"title": "BCS快速部署",
+				"url": "7.0/部署指南/产品白皮书/增强包安装/部署安装/BCS-start.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 47,
+				"title": "基础包部署详解",
+				"url": "7.0/部署指南/产品白皮书/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 46,
+				"title": "蓝盾部署详解",
+				"url": "7.0/部署指南/产品白皮书/增强包安装/部署安装/CI-V2.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 45,
+				"title": "BCS部署详解",
+				"url": "7.0/部署指南/产品白皮书/增强包安装/部署安装/BCS-V2.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 44,
+				"title": "基础包维护手册",
+				"url": "7.0/部署指南/产品白皮书/维护手册/日常维护/maintain.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 43,
+				"title": "增强包维护手册",
+				"url": "7.0/部署指南/产品白皮书/增强包维护/蓝盾/Term.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/文档共建/SUMMARY.md"
+				},
+				"index": 27,
+				"title": "文档共建",
+				"url": "7.0/文档共建/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:常用信息"
 		}
 	}
 ]
