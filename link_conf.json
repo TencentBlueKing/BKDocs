@@ -4677,11 +4677,11 @@
 		"link_conf": [
 			{
 				"extend": {
-					"summary": ""
+					"summary": "7.0/持续集成平台/SUMMARY.md"
 				},
 				"index": 498,
 				"title": "场景案例",
-				"url": "",
+				"url": "7.0/持续集成平台/产品白皮书/产品简介/README.md",
 				"version": "7.0"
 			}
 		],
@@ -4696,11 +4696,11 @@
 		"link_conf": [
 			{
 				"extend": {
-					"summary": ""
+					"summary": "7.0/开发指南/SUMMARY.md"
 				},
 				"index": 497,
 				"title": "开发指南",
-				"url": "",
+				"url": "7.0/开发指南/开发简介/README.md",
 				"version": "7.0"
 			}
 		],
