@@ -16,8 +16,8 @@
 
 | 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 流程服务（bk_itsm） | 2.6.2 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.1.391.tar.gz |
-| 标准运维（bk_sops） | 3.25.12 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.25.2.tar.gz |
+| 流程服务（bk_itsm） | 2.6.2 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.2.tar.gz |
+| 标准运维（bk_sops） | 3.25.12 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.25.12.tar.gz |
 | 节点管理（bk_nodeman） | 2.2.27 | 使用 helmfile 部署时自动下载 Charts，此处无需下载 |
 
 ### 节点管理托管文件
