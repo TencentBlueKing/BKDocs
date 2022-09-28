@@ -45,6 +45,13 @@ bash /data/install/configure_ssh_without_pass
 
 > 详细安装过程介绍，请查看[安装 PaaS 平台详解](../../基础包安装/安装详解/install_paas.md)。
 
+
+## 部署 paas_plugin
+
+```bash
+./bk_install paas_plugin
+```
+
 ## 部署权限中心与用户管理
 
 ```bash
@@ -109,6 +116,13 @@ source ~/.bashrc
 ./bkcli initdata topo
 ```
 
+## 检测相关服务状态
+
+```bash
+cd /data/install/
+echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
+```
+
 ## 部署 lesscode (可选)
 
 1. 添加 lesscode 模块分布
@@ -156,13 +170,38 @@ source ~/.bashrc
     ```bash
    ./bk_install bkiam_search_engine
     ```
+## API 自动化测试 (可选)
 
-## 检测相关服务状态
+1. 同步 bkapi 文件到指定机器(默认是 nginx 模块所在的机器)
 
-```bash
-cd /data/install/
-echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
-```
+    ```bash
+    ./bkcli sync bkapi
+    ```
+
+2. 部署 API 自动化
+
+    ```bash
+    ./bkcli install bkapi
+    ```
+
+3. 检查 API 自动化
+
+    ```bash
+    # 如果不带<module>,默认检查所有模块的api
+    # 目前支持的模块 bk_cmdb, bk_job, bk_gse, bk_itsm, bk_monitorv3, bk_paas, bk_sops, bk_user_manage
+    # 因需要检查所有的 api，花费的时间较长，请耐心等待
+    ./bkcli check bkapi
+
+    # 单模块检查 ./bkcli check bkapi bk_job
+    ```
+
+4. 绑定本地 host
+
+    ```bash
+    # 请以实际的 IP 和域名为准
+    10.0.0.2 bkapi_check.bktencent.com
+    ```
+
 
 ## 访问蓝鲸开始使用
 

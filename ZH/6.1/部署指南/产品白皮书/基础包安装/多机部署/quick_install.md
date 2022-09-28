@@ -3,7 +3,6 @@
 > 阅读前请确认好您的部署目的
 > 该文档适用于生产环境多机器分模块部署场景，如仅需体验该套餐功能，可参考 [单机部署](../单机部署/install_on_single_host.md)
 
-
 基础套餐包含：PaaS 平台、配置平台、作业平台、权限中心、用户管理、节点管理、标准运维、流程服务
 
 ## 一、安装环境准备
@@ -13,7 +12,7 @@
 ### 1.1 准备机器
 
 1. 建议操作系统： CentOS 7.6
-2. 建议机器配置 
+2. 建议机器配置
    - 生产环境：建议 8 核 32 G，硬盘 100G 以上（可根据实际情况适当调整配置）
       - 机器数量：3 台（假设 ip 分别为：10.0.0.1，10.0.0.2，10.0.0.3）
 3. 选择一台为中控机（假设为 10.0.0.1）进行安装部署操作，使用 root 账号登录。
@@ -23,7 +22,7 @@
 - 通过 `ifconfig` 或者 `ip addr` 命令分别获取 3 台机器第一个内网网卡 MAC 地址
 - 前往蓝鲸官网证书生成页面（[https://bk.tencent.com/download_ssl/](https://bk.tencent.com/download_ssl/)），根据提示在输入框中填入英文分号分隔的三个 MAC 地址，生成并下载证书
 - 上传证书包至中控机 `/data`
-    - 证书包包名：ssl_certificates.tar.gz
+  - 证书包包名：ssl_certificates.tar.gz
 
 ### 1.3 下载安装包
 
@@ -35,7 +34,7 @@
 
    ```bash
    cd /data
-   tar xf bkce_basic_suite-6.1.0.tgz
+   tar xf bkce_basic_suite-6.1.1.tgz
    ```
 
 2. 解压各个产品软件包
@@ -64,9 +63,9 @@
 # 请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
 cat << EOF >/data/install/install.config
 [basic]
-10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul
-10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,zk(config)
-10.0.0.3 paas,cmdb,job,mysql,appt,consul,nodeman(nodeman)
+10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7
+10.0.0.2 paas,nginx,consul,mongodb,rabbitmq,appo,zk(config)
+10.0.0.3 cmdb,job,mysql,appt,consul,nodeman(nodeman)
 EOF
 ```
 
@@ -114,6 +113,12 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 ./bk_install saas-o bk_user_manage
 ```
 
+## 部署 paas_plugin
+
+```bash
+./bk_install paas_plugin
+```
+
 ### 部署 CMDB
 
 ```bash
@@ -135,7 +140,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 ./bk_install bknodeman
 ```
 
-### 部署标准运维及流程管理
+### 部署标准运维及流程服务
 
 依次执行下列命令部署相关 SaaS。
 
@@ -159,18 +164,34 @@ source ~/.bashrc
 ./bkcli initdata topo
 ```
 
+### 检测相关服务状态
+
+```bash
+cd /data/install/
+echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
+```
+
 ### 部署 lesscode (可选)
 
-1. 添加 lesscode 模块分布
+1. 前往 S-mart 市场下载 [可视化开发平台](https://bk.tencent.com/s-mart/application/276/detail)
+
+2. 将包放置中控的 `/data` 目录，并解压至 `/data/src` 目录
 
     ```bash
+    tar -xf /data/lesscode-ce-0.0.11.tar.gz -C /data/src
+    ```
+
+3. 添加 lesscode 模块分布
+
+    ```bash
+    # 请注意替换示例 IP 为实际部署的机器 IP
     cat << EOF >>/data/install/install.config
     [lesscode]
     10.0.0.1 lesscode
     EOF
     ```
 
-2. 开始部署
+4. 开始部署
 
     ```bash
     ./bk_install lesscode
@@ -181,9 +202,9 @@ source ~/.bashrc
 1. 添加 bkiam_search_engine 模块分布
 
     ```bash
+    # 请注意替换示例 IP 为实际部署的机器 IP
     cat << EOF >>/data/install/install.config
     [iam_search_engine]
-    10.0.0.1 es7
     10.0.0.3 iam_search_engine
     EOF
     ```
@@ -207,12 +228,37 @@ source ~/.bashrc
    ./bk_install bkiam_search_engine
     ```
 
-### 检测相关服务状态
+### API 自动化测试 (可选)
 
-```bash
-cd /data/install/
-echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
-```
+1. 同步 bkapi 文件到指定机器(默认是 nginx 模块所在的机器)
+
+    ```bash
+    ./bkcli sync bkapi
+    ```
+
+2. 部署 API 自动化
+
+    ```bash
+    ./bkcli install bkapi
+    ```
+
+3. 检查 API 自动化
+
+    ```bash
+    # 如果不带<module>,默认检查所有模块的api
+    # 目前支持的模块 bk_cmdb, bk_job, bk_gse, bk_itsm, bk_monitorv3, bk_paas, bk_sops, bk_user_manage
+    # 因需要检查所有的 api，花费的时间较长，请耐心等待
+    ./bkcli check bkapi
+
+    # 单模块检查 ./bkcli check bkapi bk_job
+    ```
+
+4. 绑定本地 host
+
+    ```bash
+    # 请以实际的 IP 和域名为准
+    10.0.0.2 bkapi_check.bktencent.com
+    ```
 
 ## 三、访问蓝鲸
 
@@ -229,7 +275,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
    将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 
    ```bash
-   10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
+   10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com bkapi_check.bktencent.com
    10.0.0.3 nodeman.bktencent.com
    ```
 
@@ -248,7 +294,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
    将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 
    ```bash
-   10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
+   10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com bkapi_check.bktencent.com
    10.0.0.3 nodeman.bktencent.com
    ```
 

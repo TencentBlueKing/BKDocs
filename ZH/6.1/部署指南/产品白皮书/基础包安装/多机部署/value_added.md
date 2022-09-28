@@ -1,14 +1,14 @@
 # 监控日志套餐部署
 
-> 该套餐属于蓝鲸社区版增值套餐，请确认基础套餐已经部署完成；如未部署请参考 [基础套餐部署](./detail_install.md)
+> 该套餐属于蓝鲸社区版增值套餐，请确认基础套餐已经部署完成；如未部署请参考[基础套餐部署](./detail_install.md)
 
-该套餐主要适用于监控告警、日志采集分析以及故障自愈的场景。
+该套餐主要适用于监控告警、日志采集的分析的场景。
 
-主要包含蓝鲸相关产品：监控平台、日志平台、故障自愈
+主要包含蓝鲸相关产品：监控平台、日志平台
 
 ## 前期准备
 
-> 说明：因模块间存在依赖关系，需要按照顺序依次部署： `监控平台 -> 日志平台 -> 故障自愈`。
+> 说明：因模块间存在依赖关系，需要按照顺序依次部署： `监控平台 -> 日志平台`。
 
 该套餐部署是通过标准运维流程实现，在部署前需要做如下准备：
 
@@ -18,8 +18,8 @@
 
 - 建议操作系统： CentOS 7.6
 - 建议机器配置
-  - 生产环境：建议 8 核 16 G，硬盘 100G 以上（可根据实际情况适当调整配置），机器数量：3 台
-  - 功能体验：建议 8 核 16 G，机器数量：1 台
+  - 生产环境：建议 8 核 16 G，硬盘 100G 以上（可根据实际情况适当调整配置），机器数量：2 台
+  - 功能体验：建议 8 核 16 G，机器数量：1台
 
 ### 2.实现免密
 
@@ -45,14 +45,14 @@ ssh-copy-id <ip>
 
 ```bash
 cd /data
-tar xf bkce_co_package-6.1.0.tgz
+tar xf bkce_co_package-6.1.1.tgz
 ```
 
 ### 5. 将需要部署产品的标准运维流程模版导入至标准运维
 
-标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/1e13131/bk_sops_co_package-6.1.0.dat)
+标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/54994a3/bk_sops_co_package-6.1.1.dat)
 
-**详细步骤：** `打开标准运维 -> 项目流程 -> 导入DAT文件 -> 点击上传 -> 创建新流程`
+**详细步骤：** `打开标准运维 -> 项目流程 -> 导入 -> 点击上传 -> 创建新流程`
 
 ![sops](../../assets/sops.png)
 
@@ -65,7 +65,7 @@ tar xf bkce_co_package-6.1.0.tgz
 检查 install.config 文件是否已经包含增强套餐的相关模块分布。如果有请先移除相关模块。
 
 ```bash
-value_modules=(monitorv3\(influxdb-proxy\) monitorv3\(monitor\) monitorv3\(grafana\) influxdb\(bkmonitorv3\) monitorv3\(transfer\) fta beanstalk log\(grafana\) log\(api\) kafka\(config\))
+value_modules=(monitorv3\(influxdb-proxy\) monitorv3\(monitor\) monitorv3\(grafana\) influxdb\(bkmonitorv3\) monitorv3\(transfer\) beanstalk log\(grafana\) log\(api\) kafka\(config\))
 
 for module in ${value_modules[@]}; do if grep ${module} /data/install/install.config >/dev/null; then echo -e "The \e[1;31m ${module} \e[0m module exists in install.config, please remove it before deploying."; fi; done
 ```
@@ -111,23 +111,3 @@ for module in ${value_modules[@]}; do if grep ${module} /data/install/install.co
 - 安装日志平台相关依赖、日志平台后台、日志平台 SaaS
 
 ![bklog_template](../../assets/bklog_template.png)
-
-### 故障自愈
-
-选择 `[ce][deploy][fta]` 流程模版进行新建任务，根据提示填写相关信息。确认填写信息无误后，开始执行任务。
-
-该部署流程主要相关操作：
-
-- `ctrl_ip`：基础环境的中控机 IP
-- `whole_pkg_path`：部署故障自愈安装包的绝对路径
-- `deply_iplist`：新增的机器 IP（如果基础环境的资源有富余，可以复用）
-
-主要会做相关操作：
-
-- 将故障自愈安装包放至指定目录
-- 生成故障自愈 install.config 配置
-- 初始化新增节点机器
-- 授权故障自愈所需的 MySQL 访问权限
-- 安装故障自愈相关依赖、故障自愈后台、故障自愈 SaaS
-
-![fta_template](../../assets/fta_template.png)
