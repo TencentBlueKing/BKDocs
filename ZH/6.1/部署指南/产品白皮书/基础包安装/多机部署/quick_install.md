@@ -310,6 +310,6 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 
 > 默认蓝鲸工作台入口：[http://paas.bktencent.com](http://paas.bktencent.com)
 
-- 可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
+- 可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.1-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
 
 - 进阶选项：[监控日志套餐部署](./value_added.md)
