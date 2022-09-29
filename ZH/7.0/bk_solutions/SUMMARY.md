@@ -22,7 +22,7 @@
     * [查看告警事件](7.0/监控平台/产品白皮书/alarm-analysis/alerts.md)
     * [单指标智能异常检测](7.0/监控平台/产品白皮书/aiops/aiops_metrics_intelligent_detect.md)
     * [什么是故障自愈](7.0/监控平台/产品白皮书/alarm-handling/what_fta.md)
-    * [开启容器监控](7.0/监控平台/产品白皮书/scene-k8s/k8s_metrics.md))
+    * [开启容器监控](7.0/监控平台/产品白皮书/scene-k8s/k8s_metrics.md)
     * [开启APM](7.0/监控平台/产品白皮书/scene-apm/apm_monitor_overview.md)
     * [日志检索](7.0/日志平台/产品白皮书/data-visualization/query_log.md)
     * [日志告警策略-监控ES存储的数据](7.0/监控平台/产品白皮书/alarm-configurations/log_monitor.md)
