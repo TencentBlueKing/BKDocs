@@ -13,7 +13,7 @@
 - 从 [官网下载](http://bk.tencent.com/download/) 基础套餐，并解压到 /data 下。实际版本请以蓝鲸官网下载为准。
 
     ```bash
-    tar xf bkce_basic_suite-6.1.0.tgz -C /data
+    tar xf bkce_basic_suite-6.1.1.tgz -C /data
     ```
 
   - 获取机器的 MAC 地址后，下载 [证书文件](https://bk.tencent.com/download_ssl/)，解压到 /data/src/cert 目录下
@@ -133,6 +133,6 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 
 ## 使用蓝鲸
 
-可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
+可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.1-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
 
 如需部署监控日志套餐，请参考 [监控日志套餐部署](../多机部署/value_added.md) 。
