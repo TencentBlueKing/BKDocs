@@ -16,9 +16,9 @@
 
 | 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 流程服务（bk_itsm） | 2.6.1.391 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.1.391.tar.gz |
-| 标准运维（bk_sops） | 3.25.2 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.25.2.tar.gz |
-| 节点管理（bk_nodeman） | 2.2.20 | 使用 helmfile 部署时自动下载 Charts，此处无需下载 |
+| 流程服务（bk_itsm） | 2.6.2 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.2.tar.gz |
+| 标准运维（bk_sops） | 3.25.12 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.25.12.tar.gz |
+| 节点管理（bk_nodeman） | 2.2.27 | 使用 helmfile 部署时自动下载 Charts，此处无需下载 |
 
 ### 节点管理托管文件
 
@@ -26,11 +26,11 @@
 
 * 一般情况下只需要下载节点管理托管的常用文件即可（包含 Linux 及 Windows 的 64 位 GSE 客户端及插件包）。
     ``` bash
-    curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur latest nm_gse_freq  # 下载节点管理托管的常用文件
+    curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest nm_gse_freq  # 下载节点管理托管的常用文件
     ```
 * 如果需要下载完整的托管文件（包含多云区域管理所需的 `gse_proxy`，以及其他不常用 CPU 及操作系统的客户端及插件包）：
     ``` bash
-    curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-beta/bkdl-7.0-beta.sh | bash -s -- -ur latest nm_gse_full
+    curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest nm_gse_full
     ```
 
 ## 在 PaaS 界面配置 Redis 资源池
@@ -232,7 +232,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 zookeeper 集群地址填写 **任意 k8s node IP**，端口填写 `32181` （注意不是默认的 `2181`）。用户名和密码可执行如下命令获取 auth 字符串，其格式为 `用户名:密码`。
 ``` bash
 kubectl get -n blueking cm bk-gse-task-config -o go-template --template '{{index .data "gse_task.conf" }}' | jq -r ".zookeeper.token"
-# 7.0.0-beta.2及更早版本使用如下命令
+# 蓝鲸bkhelmfile包7.0.0-beta.2及更早版本使用如下命令
 # kubectl get -n blueking cm bk-gse-ce-task-config -o go-template --template '{{index .data "task.conf" }}' | jq -r ".zkauth"
 ```
 

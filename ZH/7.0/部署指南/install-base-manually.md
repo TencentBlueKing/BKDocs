@@ -166,6 +166,8 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 helmfile -f base.yaml.gotmpl sync
 # 在admin桌面添加应用，也可以登录后自行添加。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_cmdb,bk_job"
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_usermgr"  # 添加用户管理。
+scripts/set_desktop_default_app.sh -a "bk_usermgr"  # 将用户管理设置为默认应用，新用户登录桌面就可以看到。
 ```
 
 此时可以新开一个终端，执行如下命令观察 pod 状态变化：
