@@ -21,7 +21,7 @@
     * [监控告警 打造功能完备的监控平台](6.1/监控平台/产品白皮书/quickstart/README.md)
     * [监控告警 五分钟快速接入业务监控](6.1/监控平台/产品白皮书/quickstart/best-practices.md)
     * [监控告警 自定义插件采集业务数据](6.1/监控平台/产品白皮书/functions/conf/plugins.md)
-    * [监控告警 构建业务数据可视化大屏](6.1/监控平台/产品白皮书/functions/report/new_dashboard.md)
+    * [监控告警 构建业务数据可视化大屏](6.1/监控平台/产品白皮书/data-visualization/dashboard.md)
     * [监控告警 如何对业务日志进行告警](6.1/监控平台/产品白皮书/guide/keywords_event.md)
     * [故障自愈 运维的智能贴身小助手](6.1/故障自愈/产品白皮书/concepts/fta_solutions.md)
     * [故障自愈 复杂场景下的故障处理](6.1/故障自愈/产品白皮书/guide/ping_Unreachable_fault_replacement_package.md)
