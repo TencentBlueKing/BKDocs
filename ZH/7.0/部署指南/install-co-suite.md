@@ -34,7 +34,8 @@ IP1=$(ssh "$IP1" 'curl ip.sb')
 echo $IP1 bkmonitor.$BK_DOMAIN
 ```
 
-此时访问 “观测场景” —— “Kubernetes” 界面会出现报错。为未启用容器监控所致，完成本文 “配置容器监控” 章节即可正常使用。
+此时访问 “观测场景” —— “Kubernetes” 界面会出现报错。为未启用容器监控所致，完成下文的 “配置容器监控” 章节即可正常使用。
+
 
 ## 配置容器监控
 
@@ -49,7 +50,7 @@ echo $IP1 bkmonitor.$BK_DOMAIN
 需要能读取 bcs 管理接口。
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-./scripts/config_monitor_bcs_token.sh
+./scripts/config_monitor_bcs_token.sh  # 获取bcs token，写入monitor及log的custom.yaml文件。
 helmfile -f 04-bkmonitor.yaml.gotmpl apply   # apply 仅增量更新
 ```
 
@@ -67,7 +68,7 @@ kubectl get pod -n bkmonitor-operator -w
 
 未在 “节点管理” 中为所有 node 安装 agent 时，`bkmonitor-operator-bkmonitorbeat-daemonset` 系列 pod 的日志中会出现如下报错：
 ``` plain
-Init filed with error: failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/ipc.state.report: connect: no such file or directory
+failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/ipc.state.report: connect: no such file or directory
 ```
 
 在部署 gse agent 成功后，上述 pod 会逐步自动恢复。也可直接删除出错的 pod，会立刻重新创建。
@@ -96,10 +97,45 @@ IP1=$(ssh "$IP1" 'curl ip.sb')
 echo $IP1 bklog.$BK_DOMAIN
 ```
 
+## 配置容器日志采集
+
+### 前置检查
+容器日志采集功能需要在所有 k8s node （包括 master ）部署 gse-agent。请先在 “节点管理” 中完成 agent 安装。
+
+容器日志采集功能依赖 **容器管理平台** （BCS），请先完成 [容器管理平台部署](install-bcs.md) 。
+
+容器日志采集功能依赖 **日志平台** ，请先完成 “部署日志平台” 章节。
+
+### 配置 bcs token
+>**提示**
+>
+>如果此前已经完成了“配置容器监控”章节，则可跳过本步骤。
+
+需要能读取 bcs 管理接口。
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+./scripts/config_monitor_bcs_token.sh  # 获取bcs token，写入monitor及log的custom.yaml文件。
+```
 
 ### 部署 bklog-collector
-部署日志采集器。
+修改全局配置文件，启用日志采集。
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+# 启用日志采集：
+bklogconfig_enabled="$(yq e '.bkLogConfig.enabled' environments/default/custom.yaml)"
+if [ "$bklogconfig_enabled" = null ]; then
+  tee -a environments/default/custom.yaml <<EOF
+bkLogConfig:
+  enabled: true
+EOF
+elif [ "$bklogconfig_enabled" = true ]; then
+  echo "environments/default/custom.yaml 中配置了 .bkLogConfig.enabled=true, 无需修改."
+else
+  echo "environments/default/custom.yaml 中配置了 .bkLogConfig.enabled=$bklogconfig_enabled, 请手动修改值为 true."
+fi
+```
 
+部署或重启日志采集器：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 helmfile -f 04-bklog-collector.yaml.gotmpl sync
@@ -114,7 +150,30 @@ kubectl logs -n blueking bklog-collector-bk-log-collector-补全名称 bkunifylo
 
 未在 “节点管理” 中为所有 node 安装 agent 时，`bklog-collector-bk-log-collector` 系列 pod 的日志中会出现如下报错：
 ``` plain
-Init filed with error: failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/ipc.state.report: connect: no such file or directory
+failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/ipc.state.report: connect: no such file or directory
 ```
 
 在部署 gse agent 成功后，上述 pod 会逐步自动恢复。也可直接删除出错的 pod，会立刻重新创建。
+
+### 重启日志平台
+1. 为了显示 “检索” -- “数据查询” 里的索引集。
+2. 为了实现上述索引集里的 bklogsearch 采集项上报。
+
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+helmfile -f 04-bklog-search.yaml.gotmpl apply
+```
+
+### 重启待采集日志的平台
+为了实现采集项上报，需要调整对应平台的 helm release。
+
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+helmfile -f base-blueking.yaml.gotmpl apply  # 变更蓝鲸基础套餐
+helmfile -f 03-bcs.yaml.gotmpl apply  # 变更容器管理平台
+helmfile -f 04-bkmonitor.yaml.gotmpl apply  # 变更监控平台
+```
+
+注：
+1. 如需重启蓝鲸基础套餐的指定 helm release，请使用此命令： `helmfile -f base-blueking.yaml.gotmpl -l name=release名字 sync`。
+2. bk-ci 的日志采集还在调试中，暂未预置采集项。
