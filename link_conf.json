@@ -4719,7 +4719,7 @@
 				},
 				"index": 452,
 				"title": "什么是蓝鲸",
-				"url": "7.0/体系介绍/品牌简介/intro.md",
+				"url": "7.0/体系介绍/产品白皮书/品牌简介/intro.md",
 				"version": "7.0"
 			}
 		],
@@ -4738,7 +4738,7 @@
 				},
 				"index": 451,
 				"title": "解决方案体系",
-				"url": "7.0/体系介绍/解决方案/solution.md",
+				"url": "7.0/体系介绍/产品白皮书/解决方案/solution.md",
 				"version": "7.0"
 			}
 		],
@@ -5173,7 +5173,7 @@
 				"extend": {
 					"summary": "7.0/体系介绍/SUMMARY.md"
 				},
-				"index": 100,
+				"index": 500,
 				"title": "蓝鲸体系",
 				"url": "7.0/体系介绍/产品白皮书/品牌简介/intro.md",
 				"version": "7.0"
@@ -5192,7 +5192,7 @@
 				"extend": {
 					"summary": "PaaS平台/SUMMARY.md"
 				},
-				"index": 99,
+				"index": 499,
 				"title": "PaaS平台",
 				"url": "7.0/PaaS平台/产品白皮书/产品简介/README.md",
 				"version": "7.0"
@@ -5211,7 +5211,7 @@
 				"extend": {
 					"summary": "7.0/配置平台/SUMMARY.md"
 				},
-				"index": 98,
+				"index": 498,
 				"title": "配置平台",
 				"url": "7.0/配置平台/产品白皮书/产品简介/Overview.md",
 				"version": "7.0"
@@ -5230,7 +5230,7 @@
 				"extend": {
 					"summary": "7.0/作业平台/SUMMARY.md"
 				},
-				"index": 97,
+				"index": 497,
 				"title": "作业平台",
 				"url": "7.0/作业平台/产品白皮书/Introduction/What-is-Job.md",
 				"version": "7.0"
@@ -5249,7 +5249,7 @@
 				"extend": {
 					"summary": "7.0/管控平台/SUMMARY.md"
 				},
-				"index": 96,
+				"index": 496,
 				"title": "管控平台",
 				"url": "7.0/管控平台/产品白皮书/产品简介/README.md",
 				"version": "7.0"
@@ -5268,7 +5268,7 @@
 				"extend": {
 					"summary": "7.0/BCS/SUMMARY.md"
 				},
-				"index": 95,
+				"index": 495,
 				"title": "容器管理平台",
 				"url": "7.0/BCS/产品白皮书/Introduction/README.md",
 				"version": "7.0"
@@ -5287,7 +5287,7 @@
 				"extend": {
 					"summary": "7.0/用户管理/SUMMARY.md"
 				},
-				"index": 93,
+				"index": 493,
 				"title": "用户管理",
 				"url": "7.0/用户管理/产品白皮书/产品简介/README.md",
 				"version": "7.0"
@@ -5306,7 +5306,7 @@
 				"extend": {
 					"summary": "7.0/权限中心/SUMMARY.md"
 				},
-				"index": 92,
+				"index": 492,
 				"title": "权限中心",
 				"url": "7.0/权限中心/产品白皮书/产品简介/README.md",
 				"version": "7.0"
@@ -5325,7 +5325,7 @@
 				"extend": {
 					"summary": "7.0/节点管理/SUMMARY.md"
 				},
-				"index": 91,
+				"index": 491,
 				"title": "节点管理",
 				"url": "7.0/节点管理/产品白皮书/Introduce/Overview.md",
 				"version": "7.0"
@@ -5344,7 +5344,7 @@
 				"extend": {
 					"summary": "7.0/标准运维/SUMMARY.md"
 				},
-				"index": 90,
+				"index": 490,
 				"title": "标准运维",
 				"url": "7.0/标准运维/产品白皮书/产品简介/README.md",
 				"version": "7.0"
@@ -5363,7 +5363,7 @@
 				"extend": {
 					"summary": "7.0/流程服务/SUMMARY.md"
 				},
-				"index": 89,
+				"index": 489,
 				"title": "流程服务",
 				"url": "7.0/流程服务/产品白皮书/产品简介/README.md",
 				"version": "7.0"
@@ -5382,7 +5382,7 @@
 				"extend": {
 					"summary": "7.0/监控平台/SUMMARY.md"
 				},
-				"index": 87,
+				"index": 487,
 				"title": "监控平台",
 				"url": "7.0/监控平台/产品白皮书/intro/README.md",
 				"version": "7.0"
@@ -5401,7 +5401,7 @@
 				"extend": {
 					"summary": "7.0/日志平台/SUMMARY.md"
 				},
-				"index": 86,
+				"index": 486,
 				"title": "日志平台",
 				"url": "7.0/日志平台/产品白皮书/intro/README.md",
 				"version": "7.0"
@@ -5420,9 +5420,9 @@
 				"extend": {
 					"summary": "7.0/快速入门/SUMMARY.md"
 				},
-				"index": 79,
+				"index": 400,
 				"title": "快速使用",
-				"url": "7.0/快速入门/quick-start-v6.1-info.md",
+				"url": "7.0/快速入门/quick-start-v7.0-info.md",
 				"version": "7.0"
 			}
 		],
@@ -5439,7 +5439,7 @@
 				"extend": {
 					"summary": "7.0/蓝鲸线上体验环境快速入门/SUMMARY.md"
 				},
-				"index": 79,
+				"index": 399,
 				"title": "蓝鲸线上体验环境快速入门",
 				"url": "7.0/蓝鲸线上体验环境快速入门/README.md",
 				"version": "7.0"
@@ -5456,11 +5456,11 @@
 		"link_conf": [
 			{
 				"extend": {
-					"summary": "7.0/部署指南/SUMMARY.md"
+					"summary": "7.0/bk_solutions/SUMMARY.md"
 				},
-				"index": 50,
-				"title": "基础包快速部署",
-				"url": "7.0/部署指南/产品白皮书/基础包安装/多机部署/quick_install.md",
+				"index": 380,
+				"title": "CI持续集成",
+				"url": "7.0/bk_solutions/CI/Pipeline_git_commit_to_stag.md",
 				"version": "7.0"
 			}
 		],
@@ -5468,18 +5468,18 @@
 			"describe": "$$$",
 			"icon_url": "",
 			"page": "docs",
-			"type": "tag2:部署维护"
+			"type": "tag1:场景案例"
 		}
 	},
 	{
 		"link_conf": [
 			{
 				"extend": {
-					"summary": "7.0/部署指南/SUMMARY.md"
+					"summary": "7.0/bk_solutions/SUMMARY.md"
 				},
-				"index": 49,
-				"title": "蓝盾快速部署",
-				"url": "7.0/部署指南/产品白皮书/增强包安装/部署安装/CI-start.md",
+				"index": 379,
+				"title": "CD持续部署",
+				"url": "7.0/bk_solutions/CD/CMDB/Configuration_management_standardization.md",
 				"version": "7.0"
 			}
 		],
@@ -5487,18 +5487,18 @@
 			"describe": "$$$",
 			"icon_url": "",
 			"page": "docs",
-			"type": "tag2:部署维护"
+			"type": "tag1:场景案例"
 		}
 	},
 	{
 		"link_conf": [
 			{
 				"extend": {
-					"summary": "7.0/部署指南/SUMMARY.md"
+					"summary": "7.0/bk_solutions/SUMMARY.md"
 				},
-				"index": 48,
-				"title": "BCS快速部署",
-				"url": "7.0/部署指南/产品白皮书/增强包安装/部署安装/BCS-start.md",
+				"index": 376,
+				"title": "CO持续运营",
+				"url": "7.0/bk_solutions/CO/Monitor_Base/Send_voice_msg.md",
 				"version": "7.0"
 			}
 		],
@@ -5506,121 +5506,7 @@
 			"describe": "$$$",
 			"icon_url": "",
 			"page": "docs",
-			"type": "tag2:部署维护"
-		}
-	},
-	{
-		"link_conf": [
-			{
-				"extend": {
-					"summary": "7.0/部署指南/SUMMARY.md"
-				},
-				"index": 47,
-				"title": "基础包部署详解",
-				"url": "7.0/部署指南/产品白皮书/README.md",
-				"version": "7.0"
-			}
-		],
-		"source": {
-			"describe": "$$$",
-			"icon_url": "",
-			"page": "docs",
-			"type": "tag2:部署维护"
-		}
-	},
-	{
-		"link_conf": [
-			{
-				"extend": {
-					"summary": "7.0/部署指南/SUMMARY.md"
-				},
-				"index": 46,
-				"title": "蓝盾部署详解",
-				"url": "7.0/部署指南/产品白皮书/增强包安装/部署安装/CI-V2.md",
-				"version": "7.0"
-			}
-		],
-		"source": {
-			"describe": "$$$",
-			"icon_url": "",
-			"page": "docs",
-			"type": "tag2:部署维护"
-		}
-	},
-	{
-		"link_conf": [
-			{
-				"extend": {
-					"summary": "7.0/部署指南/SUMMARY.md"
-				},
-				"index": 45,
-				"title": "BCS部署详解",
-				"url": "7.0/部署指南/产品白皮书/增强包安装/部署安装/BCS-V2.md",
-				"version": "7.0"
-			}
-		],
-		"source": {
-			"describe": "$$$",
-			"icon_url": "",
-			"page": "docs",
-			"type": "tag2:部署维护"
-		}
-	},
-	{
-		"link_conf": [
-			{
-				"extend": {
-					"summary": "7.0/部署指南/SUMMARY.md"
-				},
-				"index": 44,
-				"title": "基础包维护手册",
-				"url": "7.0/部署指南/产品白皮书/维护手册/日常维护/maintain.md",
-				"version": "7.0"
-			}
-		],
-		"source": {
-			"describe": "$$$",
-			"icon_url": "",
-			"page": "docs",
-			"type": "tag2:部署维护"
-		}
-	},
-	{
-		"link_conf": [
-			{
-				"extend": {
-					"summary": "7.0/部署指南/SUMMARY.md"
-				},
-				"index": 43,
-				"title": "增强包维护手册",
-				"url": "7.0/部署指南/产品白皮书/增强包维护/蓝盾/Term.md",
-				"version": "7.0"
-			}
-		],
-		"source": {
-			"describe": "$$$",
-			"icon_url": "",
-			"page": "docs",
-			"type": "tag2:部署维护"
-		}
-	},
-	{
-		"link_conf": [
-			{
-				"extend": {
-					"summary": "7.0/文档共建/SUMMARY.md"
-				},
-				"index": 27,
-				"title": "文档共建",
-				"url": "7.0/文档共建/README.md",
-				"version": "7.0"
-			}
-		],
-		"source": {
-			"describe": "",
-			"icon_url": "",
-			"page": "docs",
-			"type": "tag2:常用信息"
+			"type": "tag1:场景案例"
 		}
 	},
 	{
@@ -5629,7 +5515,7 @@
 				"extend": {
 					"summary": "7.0/开发指南/SUMMARY.md"
 				},
-				"index": 74,
+				"index": 350,
 				"title": "SaaS开发",
 				"url": "7.0/开发指南/开发简介/README.md",
 				"version": "7.0"
@@ -5648,7 +5534,7 @@
 				"extend": {
 					"summary": "7.0/开发指南/SUMMARY.md"
 				},
-				"index": 73,
+				"index": 349,
 				"title": "开发规范",
 				"url": "7.0/开发指南/开发规范/前端开发规范/README.md",
 				"version": "7.0"
@@ -5667,7 +5553,7 @@
 				"extend": {
 					"summary": "7.0/开发指南/SUMMARY.md"
 				},
-				"index": 72,
+				"index": 348,
 				"title": "前端工具集",
 				"url": "7.0/开发指南/SaaS开发/开发基础/MagicBox.md",
 				"version": "7.0"
@@ -5686,9 +5572,9 @@
 				"extend": {
 					"summary": "7.0/开发指南/SUMMARY.md"
 				},
-				"index": 71,
+				"index": 347,
 				"title": "移动端开发",
-				"url": "7.0/开发指南/SaaS开发/Mobile_development.md",
+				"url": "7.0/开发指南/SaaS开发/移动端开发/Mobile_development.md",
 				"version": "7.0"
 			}
 		],
@@ -5705,7 +5591,7 @@
 				"extend": {
 					"summary": "7.0/开发指南/SUMMARY.md"
 				},
-				"index": 70,
+				"index": 346,
 				"title": "开源共建",
 				"url": "7.0/开发指南/开源共建/README.md",
 				"version": "7.0"
@@ -5724,7 +5610,7 @@
 				"extend": {
 					"summary": "7.0/开发指南/SUMMARY.md"
 				},
-				"index": 69,
+				"index": 345,
 				"title": "拓展开发",
 				"url": "7.0/开发指南/扩展开发/sops.md",
 				"version": "7.0"
@@ -5743,7 +5629,7 @@
 				"extend": {
 					"summary": "7.0/开发指南/SUMMARY.md"
 				},
-				"index": 68,
+				"index": 344,
 				"title": "蓝鲸错误码",
 				"url": "7.0/开发指南/蓝鲸错误码/README.md",
 				"version": "7.0"
@@ -5762,7 +5648,7 @@
 				"extend": {
 					"summary": "7.0/API文档/SUMMARY.md"
 				},
-				"index": 67,
+				"index": 343,
 				"title": "API文档",
 				"url": "7.0/API文档/README.md",
 				"version": "7.0"
@@ -5781,7 +5667,7 @@
 				"extend": {
 					"summary": "7.0/iam_dev_docs/SUMMARY.md"
 				},
-				"index": 66,
+				"index": 342,
 				"title": "权限中心接入",
 				"url": "7.0/iam_dev_docs/HowTo/Guide.md",
 				"version": "7.0"
@@ -5792,6 +5678,253 @@
 			"icon_url": "",
 			"page": "docs",
 			"type": "tag1:开发指南"
+		}
+	}
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 100,
+				"title": "K8S 新手必读",
+				"url": "7.0/部署指南/beginners_guide.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 99,
+				"title": "部署前置工作",
+				"url": "7.0/部署指南/prepare.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 98,
+				"title": "基础套餐部署",
+				"url": "7.0/部署指南/install-bkce.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 97,
+				"title": "容器管理平台部署",
+				"url": "7.0/部署指南/install-bcs.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 96,
+				"title": "监控日志套餐部署",
+				"url": "7.0/部署指南/install-co-suite.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 95,
+				"title": "持续集成套餐部署",
+				"url": "7.0/部署指南/install-ci-suite.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 94,
+				"title": "腾讯云 TKE 集群准备",
+				"url": "7.0/部署指南/tke_hosting.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 93,
+				"title": "分步部署基础套餐后台",
+				"url": "7.0/部署指南/install-base-manually.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 92,
+				"title": "部署基础套餐 SaaS",
+				"url": "7.0/部署指南/install-saas-manually.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 91,
+				"title": "配置 SaaS 专用 node",
+				"url": "7.0/部署指南/saas-dedicated-node.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 90,
+				"title": "卸载",
+				"url": "7.0/部署指南/uninstall.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/部署指南/SUMMARY.md"
+				},
+				"index": 89,
+				"title": "FAQ",
+				"url": "7.0/部署指南/faq.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/文档共建/SUMMARY.md"
+				},
+				"index": 80,
+				"title": "文档共建",
+				"url": "7.0/文档共建/README.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:常用信息"
 		}
 	}
 ]
