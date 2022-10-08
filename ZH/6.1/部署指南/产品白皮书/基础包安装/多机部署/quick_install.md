@@ -1,13 +1,13 @@
 # 基础套餐
 
-> 阅读前请确认好您的部署目的
-> 该文档适用于生产环境多机器分模块部署场景，如仅需体验该套餐功能，可参考 [单机部署](../单机部署/install_on_single_host.md)
+> 1. 阅读前请确认好您的部署目的
+> 2. 该文档适用于生产环境多机器分模块部署场景，如仅需体验该套餐功能，可参考 [单机部署](../单机部署/install_on_single_host.md)
 
 基础套餐包含：PaaS 平台、配置平台、作业平台、权限中心、用户管理、节点管理、标准运维、流程服务
 
 ## 一、安装环境准备
 
-在开始安装前，请参照 [环境准备文档](../环境准备/get_ready.md)，准备安装介质，配置系统环境。
+在开始安装前，请参照 [环境准备文档](../环境准备/get_ready.md)，准备安装介质、配置系统环境。
 
 ### 1.1 准备机器
 
@@ -26,14 +26,15 @@
 
 ### 1.3 下载安装包
 
-请前往 [蓝鲸官网下载页](https://bk.tencent.com/download/) 下载基础套餐包。
+请前往 [蓝鲸官网下载页](https://bk.tencent.com/download_version_list/) 下载基础套餐包。
 
 ### 1.4 解压相关资源包
 
-1. 解压套餐包（包含蓝鲸相关产品，如 PaaS、CMDB、JOB 等；蓝鲸依赖的 rpm 包，SaaS 镜像，定制 Python 解释器；部署脚本）
+1. 解压套餐包（包含蓝鲸相关产品，如 PaaS 平台、配置平台、作业平台等、蓝鲸依赖的公共组件（MySQL、Redis等）、蓝鲸部署脚本）
 
    ```bash
    cd /data
+   # 包名请根据实际情况填写
    tar xf bkce_basic_suite-6.1.1.tgz
    ```
 
@@ -51,7 +52,7 @@
    chmod 644 /data/src/cert/*
     ```
 
-4. 拷贝 rpm 包文件夹到/opt/目录
+4. 拷贝 rpm 包文件夹到 /opt/ 目录
 
     ```bash
     cp -a /data/src/yum /opt
@@ -81,7 +82,7 @@ bash /data/install/configure_ssh_without_pass
 ### 初始化并检查环境
 
 ```bash
-# 初始化环境
+# 执行初始化环境操作
 ./bk_install common
 
 # 校验环境和部署的配置
@@ -91,7 +92,7 @@ bash /data/install/configure_ssh_without_pass
 ### 部署 PaaS 平台
 
 ```bash
-# 安装 PaaS 平台及其依赖服务
+# 部署 PaaS 平台及其依赖服务
 ./bk_install paas
 ```
 
@@ -100,43 +101,37 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 ### 部署 app_mgr
 
 ```bash
-# 部署 SaaS 运行环境，正式环境及测试环境
+# 部署 SaaS 运行环境
 ./bk_install app_mgr
 ```
 
 ### 部署权限中心与用户管理
 
 ```bash
-# 权限中心
+# 部署权限中心 SaaS
 ./bk_install saas-o bk_iam
-# 用户管理
+# 部署用户管理 SaaS
 ./bk_install saas-o bk_user_manage
-```
-
-## 部署 paas_plugin
-
-```bash
-./bk_install paas_plugin
 ```
 
 ### 部署 CMDB
 
 ```bash
-# 安装配置平台及其依赖服务
+# 部署配置平台及其依赖服务
 ./bk_install cmdb
 ```
 
 ### 部署 JOB
 
 ```bash
-# 安装作业平台后台模块及其依赖组件
+# 部署作业平台后台模块及其依赖组件
 ./bk_install job
 ```
 
 ### 部署 bknodeman
 
 ```bash
-# 安装节点管理后台模块、节点管理 SaaS 及其依赖组件
+# 部署节点管理后台模块、节点管理 SaaS 及其依赖组件
 ./bk_install bknodeman
 ```
 
@@ -145,10 +140,10 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 依次执行下列命令部署相关 SaaS。
 
 ```bash
-# 标准运维
+# 部署标准运维 SaaS
 ./bk_install saas-o bk_sops
 
-# 流程管理
+# 部署流程管理 SaaS
 ./bk_install saas-o bk_itsm
 ```
 
@@ -228,36 +223,47 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
    ./bk_install bkiam_search_engine
     ```
 
-### API 自动化测试 (可选)
+### 部署 paas_plugin（可选）
 
-1. 同步 bkapi 文件到指定机器(默认是 nginx 模块所在的机器)
+> 1. beta 版本暂不包含
+> 2. paas_plugin 需依赖 elasticsearch
+
+```bash
+# 增加 es7 模块
+# 请注意替换示例 IP 为实际部署的机器 IP
+cat  << EOF >>/data/install/install.config
+10.0.0.3 es7
+EOF
+
+./bk_install paas_plugin
+```
+
+### 部署 API 自动化测试工具 (可选)
+
+> beta 版本暂不包含
+
+1. 同步安装目录文件到指定机器（默认是 nginx 模块所在的机器）
 
     ```bash
     ./bkcli sync bkapi
     ```
 
-2. 部署 API 自动化
+2. 部署 API 自动化测试工具
 
     ```bash
     ./bkcli install bkapi
     ```
 
-3. 检查 API 自动化
+3. 运行 API 自动化测试工具
 
     ```bash
     # 如果不带<module>,默认检查所有模块的api
-    # 目前支持的模块 bk_cmdb, bk_job, bk_gse, bk_itsm, bk_monitorv3, bk_paas, bk_sops, bk_user_manage
-    # 因需要检查所有的 api，花费的时间较长，请耐心等待
     ./bkcli check bkapi
 
-    # 单模块检查 ./bkcli check bkapi bk_job
-    ```
-
-4. 绑定本地 host
-
-    ```bash
-    # 请以实际的 IP 和域名为准
-    10.0.0.2 bkapi_check.bktencent.com
+    # 单模块检查
+    ## 目前支持的模块 bk_cmdb, bk_job, bk_gse, bk_itsm, bk_monitorv3, bk_paas, bk_sops, bk_user_manage
+    ## 因需要检查所有的 api，花费的时间较长，请耐心等待
+    ./bkcli check bkapi bk_job
     ```
 
 ## 三、访问蓝鲸
