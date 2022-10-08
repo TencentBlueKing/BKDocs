@@ -22,8 +22,6 @@
     * [节点自动扩缩容]()
         * [TKE](产品白皮书/Function/auto_scaler-tke.md)
     * [命名空间](产品白皮书/Function/namespace.md)
-    * [变量管理](产品白皮书/Function/variable_management.md)
-    * [模板集](产品白皮书/Function/templatesets.md)
     * [Helm]()
         * [业务接入 Helm](产品白皮书/Function/helm/ServiceAccess.md)
         * [使用 Helm 发布应用](产品白皮书/Function/helm/Release.md)
