@@ -50,7 +50,7 @@ tar xf bkce_co_package-6.1.1.tgz
 
 ### 5. 将需要部署产品的标准运维流程模版导入至标准运维
 
-标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/54994a3/bk_sops_co_package-6.1.1.dat)
+标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/0c364fe/bk_sops_co_package-6.1.1.dat)
 
 **详细步骤：** `打开标准运维 -> 项目流程 -> 导入 -> 点击上传 -> 创建新流程`
 
@@ -65,7 +65,7 @@ tar xf bkce_co_package-6.1.1.tgz
 检查 install.config 文件是否已经包含增强套餐的相关模块分布。如果有请先移除相关模块。
 
 ```bash
-value_modules=(monitorv3\(influxdb-proxy\) monitorv3\(monitor\) monitorv3\(grafana\) influxdb\(bkmonitorv3\) monitorv3\(transfer\) beanstalk log\(grafana\) log\(api\) kafka\(config\))
+value_modules=(monitorv3\(influxdb-proxy\) monitorv3\(monitor\) monitorv3\(grafana\) influxdb\(bkmonitorv3\) monitorv3\(transfer\) beanstalk log\(grafana\) log\(api\) kafka\(config\) monitorv3\(unify-query\) monitorv3\(ingester\))
 
 for module in ${value_modules[@]}; do if grep ${module} /data/install/install.config >/dev/null; then echo -e "The \e[1;31m ${module} \e[0m module exists in install.config, please remove it before deploying."; fi; done
 ```
