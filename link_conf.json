@@ -5479,7 +5479,7 @@
 				},
 				"index": 379,
 				"title": "CD持续部署",
-				"url": "7.0/bk_solutions/CD/CMDB/Configuration_management_standardization.md",
+				"url": "7.0/bk_solutions/CD/CMDB/CMDB_management_hosts.md",
 				"version": "7.0"
 			}
 		],
@@ -5498,7 +5498,7 @@
 				},
 				"index": 376,
 				"title": "CO持续运营",
-				"url": "7.0/bk_solutions/CO/Monitor_Base/Send_voice_msg.md",
+				"url": "7.0/监控平台/产品白皮书/alarm-handling/what_fta.md",
 				"version": "7.0"
 			}
 		],
