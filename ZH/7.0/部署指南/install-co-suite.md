@@ -122,17 +122,17 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
 # 启用日志采集：
-bklogconfig_enabled="$(yq e '.bkLogConfig.enabled' environments/default/custom.yaml)"
-if [ "$bklogconfig_enabled" = null ]; then
-  tee -a environments/default/custom.yaml <<EOF
-bkLogConfig:
-  enabled: true
-EOF
-elif [ "$bklogconfig_enabled" = true ]; then
-  echo "environments/default/custom.yaml 中配置了 .bkLogConfig.enabled=true, 无需修改."
-else
-  echo "environments/default/custom.yaml 中配置了 .bkLogConfig.enabled=$bklogconfig_enabled, 请手动修改值为 true."
-fi
+case $(yq e '.bkLogConfig.enabled' environments/default/custom.yaml) in
+  null)
+    tee -a environments/default/custom.yaml <<< $'bkLogConfig:\n  enabled: true'
+  ;;
+  true)
+    echo "environments/default/custom.yaml 中配置了 .bkLogConfig.enabled=true, 无需修改."
+  ;;
+  *)
+    echo "environments/default/custom.yaml 中配置了 .bkLogConfig.enabled 为其他值, 请手动修改值为 true."
+  ;;
+esac
 ```
 
 部署或重启日志采集器：
