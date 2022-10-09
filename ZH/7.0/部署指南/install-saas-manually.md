@@ -229,6 +229,8 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 
 填写要求如下：
 
+请勿修改默认的区域及城市。
+
 zookeeper 集群地址填写 **任意 k8s node IP**，端口填写 `32181` （注意不是默认的 `2181`）。用户名和密码可执行如下命令获取 auth 字符串，其格式为 `用户名:密码`。
 ``` bash
 kubectl get -n blueking cm bk-gse-task-config -o go-template --template '{{index .data "gse_task.conf" }}' | jq -r ".zookeeper.token"
