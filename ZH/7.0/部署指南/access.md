@@ -58,6 +58,11 @@ kubectl get secrets -n blueking bk-rabbitmq -o go-template='{{index .data "rabbi
 
 ## Zookeeper
 获取 auth 字符串，格式为 `用户名:密码`。
+
+``` bash
+kubectl get -n blueking cm bk-gse-task-config -o go-template --template '{{index .data "gse_task.conf" }}' | jq -r ".zookeeper.token"
+```
+如果提示 configmap not found，可尝试下旧版本的路径：
 ``` bash
 kubectl get -n blueking cm bk-gse-ce-task-config -o go-template --template '{{index .data "task.conf" }}' | jq -r ".zkauth"
 ```
@@ -79,7 +84,12 @@ kubectl exec -it -n blueking bk-zookeeper-0 -- zkCli.sh
 ```
 
 # 一些配置项
-## gse 默认地区名和城市名
+## gse 默认接入点的区域和城市
+用于 节点管理 —— 全局配置 中的 `GSE默认接入点`：
+``` bash
+kubectl get -n blueking cm bk-gse-cluster-config -o go-template --template '{{index .data "gse_cluster.conf" }}' | jq '. | {default_region: .zone_id, default_city: .city_id}'
+```
+如果提示 configmap not found，可尝试下旧版本的路径：
 ``` bash
 kubectl get -n blueking cm bk-gse-ce-task-config -o  go-template --template '{{ index (.data) "task.conf" }}' |  jq '. | {default_region: ."dftregid", default_city: ."dftcityid"}'
 ```
