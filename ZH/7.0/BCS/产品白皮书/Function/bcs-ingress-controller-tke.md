@@ -66,7 +66,7 @@ bcs-ingress-controller是蓝鲸容器服务扩展 Ingress，多云环境下为�
 
 ### 2. 组件部署
 
-在组件库中找到“GameIngress-Controller”，点击“启用”按钮
+在组件库中找到“BcsIngressController”，点击“启用”按钮
 ![-w2020](../assets/bcs-ingress-controller_enable.png)
 
 配置TKE集群所在Region、SecretID、SecretKey参数后即可点击“启用”按钮部署bcs-ingress-controller组件，填入SecretID、SecretKey内容记得用base64加密
