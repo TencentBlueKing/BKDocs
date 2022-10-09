@@ -2,10 +2,10 @@
 
 采集器 | 当前版本 | 包名 | 版本情况
 ----|------|------|---
-basereport | 10.12.x | [basereport-10.12.76.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/basereport-10.12.76.tgz) | 不再更新，换新版bkmonitorbeat
-processbeat | 1.19.x | [processbeat-1.19.71.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/processbeat-1.19.71.tgz) | 不再更新，换新版bkmonitorbeat
-exceptionbeat | 1.8.x | [exceptionbeat-1.8.44.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.8.44.tgz) | 不再更新，换新版bkmonitorbeat
-bkmonitorbeat | 1.24.x | [bkmonitorbeat-1.24.132.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.24.132.tgz) | 不再更新，换新版bkmonitorbeat
+basereport | 10.12.x | [basereport-10.12.76.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/basereport-10.12.76.tgz) | 不再更新，换新版 bkmonitorbeat
+processbeat | 1.19.x | [processbeat-1.19.71.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/processbeat-1.19.71.tgz) | 不再更新，换新版 bkmonitorbeat
+exceptionbeat | 1.8.x | [exceptionbeat-1.8.44.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.8.44.tgz) | 不再更新，换新版 bkmonitorbeat
+bkmonitorbeat | 1.24.x | [bkmonitorbeat-1.24.132.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.24.132.tgz) | 不再更新，换新版  bkmonitorbeat
 bkmonitorproxy | 1.3.x | [bkmonitorproxy-1.3.49.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorproxy-1.3.49.tgz) |
 bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.0.104.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.0.104.tgz) |
 gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gsecmdline-2.0.3.tgz) |
@@ -112,7 +112,7 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 - `bkunifylogbeat-7.3.0.104.tgz`
 
-  【特性】 BCS配置独立目录
+  【特性】 BCS 配置独立目录
 
   【修复】 修复删除配置后，文件未立即释放问题
   
@@ -121,9 +121,9 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 - `bkunifylogbeat-7.3.0.101.tgz`
 
-  【特性】新增支持TQOS数据上报协议
+  【特性】新增支持 TQOS 数据上报协议
 
-  【修复】修复在lxcfs系统下读取uptime文件，会导致系统卡主问题
+  【修复】修复在 lxcfs 系统下读取 uptime 文件，会导致系统卡主问题
 
 - `bkunifylogbeat-7.3.0.100.tgz`
 
@@ -223,7 +223,7 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 - `bkmonitorbeat-1.13.95.tgz`
 
-  【优化】发送 event 信息时用"云区域 id:主机内网 IP"替换 node_id
+  【优化】发送 event 信息时用 "云区域 id:主机内网 IP" 替换 node_id
 
 
 ---
