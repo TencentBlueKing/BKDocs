@@ -12,7 +12,7 @@
 ### 补充软件包
 #### jre.zip
 中控机 `/data/src/bkci-agent-package-patch/jre` 下需要放置 Linux / Windows / MacOS 对应的 jre.zip 文件。
-一般使用 JDK8 的 tgz 安装包为基础， jre.zip 中应当存在 `bin/java` ，并预打包 `lib/ext/bcprov-jdk16-1.46.jar` 到 jre.zip 里。
+请务必使用 JDK8 的 tgz 安装包为基础，**注意，是JDK，不是jre， 只是打包后命名为jre.zip**
 
 参考制作命令：
 ``` bash
@@ -21,16 +21,6 @@ jdk_windows="/data/src/jdk-windos.zip"  # 请自行修改路径
 mkdir -p /data/src/bkci-agent-package-patch/jre/macos /data/src/bkci-agent-package-patch/jre/windows
 /data/src/ci/scripts/bk-ci-gen-jrezip.sh macos "$jdk_macos" /data/src/bkci-agent-package-patch/jre/macos/jre.zip
 /data/src/ci/scripts/bk-ci-gen-jrezip.sh windows "$jdk_windows" /data/src/bkci-agent-package-patch/jre/windows/jre.zip
-```
-
-各 jre.zip 里的 `bcprov.jar` 放置路径：
-```text
-jre/linux/jre.zip
-  1876535  05-23-2018 20:18   lib/ext/bcprov-jdk16-1.46.jar
-jre/macos/jre.zip
-  1876535  05-23-2018 20:24   Contents/Home/lib/ext/bcprov-jdk16-1.46.jar
-jre/windows/jre.zip
-  1876535  05-23-2018 20:20   lib/ext/bcprov-jdk16-1.46.jar
 ```
 
 #### unzip.exe

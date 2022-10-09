@@ -22,5 +22,5 @@
 | bkplugin_tomcat-1.5-official.tgz           | 661K | [下载](https://bktencent-1252002024.file.myqcloud.com/bkplugin_tomcat-1.5-official.tgz) |   
 | bkplugin_weblogic-1.4-official.tgz         | 437K | [下载](https://bktencent-1252002024.file.myqcloud.com/bkplugin_weblogic-1.4-official.tgz) |     
 | bkplugin_zookeeper-1.4-official.tgz        | 2.6M | [下载](https://bktencent-1252002024.file.myqcloud.com/bkplugin_zookeeper-1.4-official.tgz) |      
-
+| datadog_plugin_framework-master.tar.gz     | 152K | [下载](https://bktencent-1252002024.file.myqcloud.com/datadog_plugin_framework-master.tar.gz) |
 

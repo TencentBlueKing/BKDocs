@@ -1,8 +1,10 @@
 # 基础套餐单机部署
 
+> 单机部署仅作为部署体验用，建议管控主机 10 台以内
+
 ## 环境准备
 
-- 准备一台 CentOS 7.6 及以上操作系统的机器 (物理机和虚拟机均可)。
+- 准备一台 CentOS 7.6 及以上操作系统的机器 (物理机和虚拟机均可，建议配置 8C 16G 100G 硬盘)。
 
 - 按照安装 [环境准备](../../基础包安装/环境准备/get_ready.md) 章节中，主机和系统环境的要求做好相应设置。
 
@@ -51,6 +53,7 @@
 cd /data/install
 ./install_minibk -y
 ```
+[单机部署常见报错](https://bk.tencent.com/s-mart/community/question/5658?type=answer)
 
 安装过程中遇到失败的情况，请先定位排查解决后，再重新运行失败时的安装指令。
 
@@ -72,7 +75,7 @@ source ~/.bashrc
 ```bash
 ./bkcli initdata topo
 ```
-
+[初始业务拓扑常见报错](https://bk.tencent.com/s-mart/community/question/5417?type=answer)
 ## 访问蓝鲸
 
 > 下面介绍的操作均可能覆盖现有 hosts ，进行操作前请先确认是否需要备份。

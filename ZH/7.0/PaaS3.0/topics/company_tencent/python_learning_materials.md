@@ -13,5 +13,5 @@
 
 ## 进阶
 
-- **通过 [官方文档](https://docs.djangoproject.com/en/2.2/) 学习 Django 框架**：先跟着 Tutorial 走一遍，然后选择性深入学习
+- **通过 [官方文档](https://docs.djangoproject.com/en/3.2/) 学习 Django 框架**：先跟着 Tutorial 走一遍，然后选择性深入学习
 - **学习 [mako](http://docs.makotemplates.org/en/latest/index.html) 模板语言（可选）**：，如果不学习使用 django 自带模板引擎也可

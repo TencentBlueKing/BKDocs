@@ -137,7 +137,7 @@ Hello world
 
 ### 5.1 Beego 开发教程
 
-详细：[https://beego.me/docs/intro/](https://beego.me/docs/intro/)
+详细：[https://beego.gocn.vip/beego/zh/developing/](https://beego.gocn.vip/beego/zh/developing/)
 
 ### 5.2 应用配置
 

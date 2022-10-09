@@ -84,7 +84,7 @@ yum -y install pssh
 ## 安装 jq 命令
 ```bash
 # 检查是否有 jq 命令，如果有返回 jq 路径，可以跳过后面的命令
-
+which jq
 # 安装 jq 
 yum -y install jq
 ```

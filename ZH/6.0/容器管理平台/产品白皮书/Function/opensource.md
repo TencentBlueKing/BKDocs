@@ -1,6 +1,6 @@
 # 产品开源
 
-BCS 团队对容器管理平台进行开源，希望将我们的技术和沉淀反馈给社区，期望能帮助更多的人解决问题；同时也邀请容器技术爱好者一起参与建设，让产品变更更加强大和易用，构建生态活跃的技术社区。
+BCS 团队对容器管理平台进行开源，希望将我们的技术和沉淀反馈给社区，期望能帮助更多的人解决问题；同时也邀请容器技术爱好者一起参与建设，让产品变得更加强大和易用，构建生态活跃的技术社区。
 
 开源地址：[https://github.com/Tencent/bk-bcs](https://github.com/Tencent/bk-bcs)、 [https://github.com/Tencent/bk-bcs-saas](https://github.com/Tencent/bk-bcs-saas)
 
