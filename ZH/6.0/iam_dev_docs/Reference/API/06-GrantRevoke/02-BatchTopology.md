@@ -31,6 +31,7 @@
 | actions |  数组[对象]   | 是   | 操作 |
 | subject |  字符串   | 是   | 授权对象 |
 | resources |  数组[对象]   | 是   | 资源拓扑, 资源类型的顺序必须操作注册时的顺序一致|
+| expired_at |  int   | 否   | 过期时间戳(单位秒)，即用户或用户组在expired_at后将不具有该用户组的相关权限，其中值为4102444800表示永久 |
 
 actions
 
@@ -42,7 +43,7 @@ subject
 
 | 字段 |  类型 |是否必须  | 描述  |
 |:---|:---|:---|:---|
-| type    |  字符串  | 是   | 授权对象类型, 当前只支持 user |
+| type    |  字符串  | 是   | 授权对象类型, user或group |
 | id    |  字符串  | 是   | 授权对象 ID |
 
 resources
@@ -93,6 +94,32 @@ resources.paths
           }
         ]
       ]
+    }
+  ]
+}
+```
+
+如需授权实例为任意的权限, `resources.paths` 可以留空:
+
+```json
+{
+  "asynchronous": false,
+  "operate": "grant",
+  "system": "bk_cmdb",
+  "actions": [  # 批量的操作
+    {
+      "id": "edit_host"
+    }
+  ],
+  "subject": {
+    "type": "user",
+    "id": "admin"
+  },
+  "resources": [
+    {  # 操作关联的资源类型, 必须与所有的actions都匹配, 资源类型的顺序必须操作注册时的顺序一致
+      "system": "bk_cmdb",
+      "type": "host",
+      "paths": [] # 留空表示任意实例权限, 即拥有所有实例的操作权限
     }
   ]
 }

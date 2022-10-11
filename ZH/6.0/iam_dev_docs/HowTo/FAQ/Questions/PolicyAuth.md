@@ -57,7 +57,7 @@ admin 是超级管理员, 默认有所有权限, 所以鉴权/策略查询得到
 POST /api/v1/policy/query_by_actions
 {
     "code": 1901500,
-    "message": "system error[request_id=6741e5d31fe24841b8b55b1fc807a34e]: [Handler:BatchQueryByActions] systemID=`bk-xxxx`, request.Action.ID=`app_create`, body=`{baseRequest:{System:bk-xxxx Subject:{Type:user ID:kelseywang}} Resources:[] Actions:[{ID:app_create}]}` =\u003e [PDP:Query] queryAndPartialEvalConditions fail%!!(MISSING)(EXTRA types.Action={app_create 0xc003559f60}) =\u003e [PDP:queryAndPartialEvalConditions] ValidateActionResource systemID=`bk-bscp`, actionID=`%!!(MISSING)d(string=app_create)`, resources=`[]` fail, request resources not match action =\u003e [Raw:Error] validateActionResource fail",
+    "message": "system error[request_id=6741e5d31fe24841b8b55b1fc807a34e]: [Handler:BatchQueryByActions] systemID=`bk-xxxx`, request.Action.ID=`app_create`, body=`{baseRequest:{System:bk-xxxx Subject:{Type:user ID:tom}} Resources:[] Actions:[{ID:app_create}]}` =\u003e [PDP:Query] queryAndPartialEvalConditions fail%!!(MISSING)(EXTRA types.Action={app_create 0xc003559f60}) =\u003e [PDP:queryAndPartialEvalConditions] ValidateActionResource systemID=`bk-bscp`, actionID=`%!!(MISSING)d(string=app_create)`, resources=`[]` fail, request resources not match action =\u003e [Raw:Error] validateActionResource fail",
     "data": {}
 }
 ```

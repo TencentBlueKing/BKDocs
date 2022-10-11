@@ -30,6 +30,7 @@
 | page | integer |  否| query |页码, 不传默认为`1` |
 | page_size | integer |  否| query |单页大小,不传默认`100`, 限制单页最大`500`|
 | timestamp | integer |  否| query |查询时间戳, 锚点 |
+| type | string | 否 |query | 授权类型，枚举值包括`abac\rbac` 不填默认为`abac` |
 
 示例: `action_id=edit_host&page=1&page_size=100&timestamp=1592899208`
 

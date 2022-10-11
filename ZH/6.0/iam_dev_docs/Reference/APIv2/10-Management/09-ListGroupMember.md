@@ -1,12 +1,12 @@
-# 接入系统管理类 API
+# 接入系统管理类 API v2
 ### 查询用户组成员列表
 
 -------
 
 #### URL
 
-> GET /api/c/compapi/v2/iam/management/groups/{group_id}/members/
-> `特别说明:该 API 为ESB API` [ESB API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
+> GET /api/v2/open/management/systems/{system_id}/groups/{group_id}/members/
+> > `特别说明:该 API 为APIGateway API` [APIGateway API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
 
 
 #### Parameters
@@ -15,22 +15,22 @@
 
 | 字段 |  类型 |是否必须  | 描述  |
 |--------|--------|--------|--------|
-|bk_app_code|string|是|应用 ID|
-|bk_app_secret|string|是|安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -> 点击应用 ID -> 基本信息 获取|
-|bk_token|string|否|当前用户登录态，bk_token 与 bk_username 必须一个有效，bk_token 可以通过 Cookie 获取|
-|bk_username|string|否|当前用户用户名，仅仅在 ESB 里配置免登录态验证白名单中的应用，才可以用此字段指定当前用户|
+|bk_app_code|string|否|应用 ID|
+|bk_app_secret|string|否|安全密钥(应用 TOKEN)，可以通过 蓝鲸智云开发者中心 -> 点击应用 ID -> 基本信息 获取|
+|access_token|string|否|用户或应用 access_token|
 
 * 接口参数
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
+| system_id | string | path | 是 | 接入系统唯一标识 |
 | group_id | int | 是 | path | 用户组 ID |
 | page_size |  int  | 是| query | 分页查询参数之一，page_size 表示查询数量，`最大值为100` |
 | page  | int | 是| query | 分页查询参数之一，page 表示从第几页开始查询，page 从 0 开始计算 |
 
 #### Request
 ```bash
-Get /api/c/compapi/v2/iam/management/groups/1/members/?page=0&page_size=10
+Get /api/v2/open/management/systems/{system_id}/groups/1/members/?page=0&page_size=10
 ```
 
 #### Response

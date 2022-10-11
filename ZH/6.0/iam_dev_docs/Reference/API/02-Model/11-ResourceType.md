@@ -7,8 +7,8 @@
 | id | string | 是 | 资源类型 id, 系统下唯一, 只允许小写字母开头、包含小写字母、数字、下划线(_)和连接符(-),最长 32 个字符. |
 | name |string | 是 | 资源类型名称，系统下唯一 |
 | name_en | string | 是 | 资源类型英文名，国际化时切换到英文版本显示 |
-| description |string | 否 | 资源类型名称，系统下唯一 |
-| description_en | string | 否 | 资源类型英文名，国际化时切换到英文版本显示 |
+| description |string | 否 | 资源描述 |
+| description_en | string | 否 | 资源描述英文，国际化时切换到英文版本显示 |
 | parents | Array[Object] | 否 | 资源类型的直接上级，可多个直接上级，可以是自身系统的资源类型或其他系统的资源类型, 可为空列表，不允许重复，数据仅用于权限中心产品上显示|
 | provider_config | Object | 是 | 权限中心调用查询资源实例接口的配置文件，与 system.provider_config.host 配合使用 [更多概念说明](./00-Concepts.md) |
 | version | int | 否 |  版本号，允许为空，仅仅作为在权限中心上进行 New 的更新提醒  [更多概念说明](./00-Concepts.md)  |

@@ -9,6 +9,7 @@
 | name_en | string | 是 | 操作英文名，国际化时切换到英文版本显示，参考[命名规范](../../NamingRules.md) |
 | description  |string | 否 | 操作描述 |
 | description_en | string | 否 | 操作描述英文，国际化时切换到英文版本显示 |
+| auth_type | string | 否 | 操作授权类型，枚举值包括`abac\rbac` 不填默认为`abac`, [更多概念说明](./00-Concepts.md)  |
 | type | string | 否 | 操作的类型，枚举值包括`create\delete\view\edit\list\manage\execute\use` 比如创建类操作需要标识为"create"，无法分类可为空字符串  |
 | related_resource_types | Array(Object) | 否 | 操作的对象，资源类型列表，列表顺序与`产品展示`、`鉴权校验` 顺序 必须保持一致。`如果操作无需关联资源实例，这里为空即可。`  **注意这是一个有序的列表!**:  |
 | related_actions | Array(string) | 否 | 操作的依赖操作, 由操作 ID 组成的字符串列表, 用于在申请权限时同时创建依赖权限  [更多概念说明](./00-Concepts.md)  |
@@ -65,6 +66,7 @@ related_instance_selections 里的元素
         "name_en": "biz_create",
         "description": "业务创建是...",
         "description_en": "biz_create is...",
+        "auth_type": "abac",
         "type": "create",
         "related_resource_types": [],
         "version": 1
@@ -73,6 +75,7 @@ related_instance_selections 里的元素
         "id": "host_edit",
         "name": "主机编辑",
         "name_en": "host_edit",
+        "auth_type": "",
         "type": "",
         "related_resource_types": [
             {

@@ -1,10 +1,10 @@
 # 接入系统管理类 API
-### 创建分级管理员
+### 更新分级管理员
 -------
 
 #### URL
 
-> POST /api/c/compapi/v2/iam/management/grade_managers/
+> PUT /api/c/compapi/v2/iam/management/grade_managers/{grade_manager_id}/
 > `特别说明:该 API 为ESB API` [ESB API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
 
 
@@ -23,10 +23,8 @@
 
 | 字段      |  类型      | 必选   | 位置 |描述      |
 |-----------|------------|--------|------------|------------|
-| system |  string  | 是   | body |系统 id |
 | name  | string| 是 | body |分级管理员名称, 权限中心里全局唯一 |
 | description | string | 是 | body |分级管理员描述，可为空字符串 | 
-| members | array[string] | 是 | body | 分级管理员成员列表 |
 | authorization_scopes | array[object] | 是 |  body |分级管理员可授权范围 |
 | subject_scopes | array[object] | 是 | body |分级管理员可授权的人员范围 |
 
@@ -36,8 +34,6 @@ subject_scopes
 |-----------|------------|--------|------------|------------|
 | type    |  string  | 是   | body | 授权对象类型, 当前只支持 user 和 department |
 | id    |  string  | 是   | body | 授权对象 ID，即用户名或部门 ID |
-
-说明: 如需设置`全员`授权范围, type = *, id = *
 
 authorization_scopes
 
@@ -76,12 +72,8 @@ paths
 #### Request
 ```json
 {
-  "system": "bk_cmdb",
   "name": "分级管理员1",
   "description": "",
-  "members": [
-    "admin"
-  ],
   "authorization_scopes": [
     {
       "system": "bk_cmdb",
@@ -125,19 +117,12 @@ paths
 
 #### Response
 
-| 字段      | 类型      | 描述      |
-|-----------|-----------|-----------|
-| id   | int     | 分级管理员 id |
-
-
 > Status: 200 OK
 
 ```json
 {
   "code": 0,
   "message": "ok",
-  "data": {
-    "id": 1
-  }
+  "data": {}
 }
 ```

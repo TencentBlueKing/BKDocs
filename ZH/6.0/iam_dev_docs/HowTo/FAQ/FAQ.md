@@ -48,9 +48,15 @@
 - [1. 怎么实现批量鉴权, 一个用户是否有查看 1000 台主机的权限?](./Questions/Usage.md)
 - [2. 配置权限的时候, 怎么控制只能选择实例, 不需要配置属性](./Questions/Usage.md)
 
-      
-      
-      
+## 申请与审批
 
+- [1. 权限中心创建申请单报错中存在ITSM相关的关键词?](./Questions/itsm.md)
+- [2. 权限中心配置用户组加入,自定义权限申请的审批流程报错中存在ITSM关键词?](./Questions/itsm.md)
+- [3. 权限中心申请单中详情调整ITSM审批页面地址有误?](./Questions/itsm.md)
 
+## 分级管理员与用户组
 
+- [1. 分级管理员是什么?](./Questions/GradeManager.md)
+- [2. 分级管理员与用户组的关系?](./Questions/GradeManager.md)
+- [3. 用户组与RBAC?](./Questions/GradeManager.md)
+- [4. 通过Open API创建分级管理员?](./Questions/GradeManager.md)

@@ -46,6 +46,7 @@
 - name_en:  操作英文名，国际化时切换到英文版本显示
 - description: 操作描述
 - description_en: 描述英文, 国际化切换到英文版本展示
+- auth_type: 操作的授权类型，枚举值包括`abac\rbac`, 当前操作默认的操作类型为`abac`, 操作的鉴权方式走`abac`表达式计算, 如需使用`rbac`接入方式, 这里需要填写`rbac`, [具体参考](../../../Explanation/10-ActionAuthType.md)
 - type: 操作的类型，枚举值包括`create\delete\view\edit\list\manage\execute` 比如创建类操作需要标识为"create"，无法分类可为空字符串，目前权限中心仅仅对创建类操作有相关处理
 - related_actions: related_actions: 操作的依赖操作，当用户申请的操作权限必须依赖其他操作权限（暂不支持跨系统操作关联）时，比如用户申请 作业编辑，必须依赖 作业查看 的操作权限，作业查看 就是 作业编辑 的依赖操作。在产品层表现就是：当用户勾选 作业编辑 时，系统在创建申请单时，会自动申请 作业查看 权限。 
 - related_resource_types： 操作的对象资源类型列表，列表顺序与产品展示、鉴权校验 顺序 必须保持一致 [产品说明: 依赖资源](../../../../权限中心/产品白皮书/术语解释/Trem.md#依赖资源)

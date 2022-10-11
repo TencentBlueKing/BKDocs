@@ -77,3 +77,22 @@ action_id 是唯一标识, 对于一个系统来说是枚举的, 32 位理论上
 ## 9. 系统 ID 必须同app_code一致吗?
 
 是的, 具体见 [说明: AppCode 和 SystemID](../../../Explanation/05-AppcodeAndSystemID.md)
+
+## 10. 如何配置跨系统资源依赖
+
+场景: 自己的操作, 依赖于cmdb的业务, 需要怎么配置?
+
+确认如下信息:
+1. cmdb是否提供了`业务`对应的实例视图, 并且实例视图是否满足自己的需求
+2. cmdb的系统id(system_id)和`业务`对应的资源类型(resource_type)
+
+如果1确定并满足, 可以使用 [操作 Action API](https://bk.tencent.com/docs/document/6.0/160/8440) 注册操作的时候
+
+```
+related_resource_types
+   system_id: bk_cmdb
+   id: business
+   related_instance_selections: [{system_id:bk_cmdb, id:business_view_id }]
+```
+
+也可以注册自己的实例视图, 实例视图中关联bk_cmdb系统的资源类型

@@ -23,8 +23,8 @@
 
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
-| limit |  int  | 是   | query |分页查询参数之一，limit 表示查询数量，`最大值为100` |
-| offset  | int | 是 | query | 分页查询参数之一，offset 表示从第几个开始查询，offset 从 0 开始计算 |
+| page_size |  int  | 是| query | 分页查询参数之一，page_size 表示查询数量，`最大值为100` |
+| page  | int | 是| query | 分页查询参数之一，page 表示从第几页开始查询，page 从 0 开始计算 |
 | id | int | 否 | query | 过滤的用户组 ID | 
 | name | string | 否 | query | 用于搜索的用户组名称 |
 | description | string | 否 | query | 用于搜索的用户组描述 |
@@ -33,7 +33,7 @@
 
 #### Request
 ```bash
-Get /api/c/compapi/v2/iam/admin/groups/?offset=0&limit=10
+Get /api/c/compapi/v2/iam/admin/groups/?page=0&page_size=10
 ```
 
 #### Response
