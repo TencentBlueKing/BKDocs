@@ -73,7 +73,7 @@ data 字段，类型为 Array
 `特殊属性`:
 
 - [说明: 资源拓扑`_bk_iam_path_`](../../../Explanation/04-BkIAMPath.md)
-- [说明: 资源审批人`_bk_iam_approver_`](../../../Explanation/08-BkIAMApprover.md)
+- [说明: 资源审批人`_bk_iam_approver_`](../../../Explanation/09-BkIAMApprover.md)
 
 ```json
 {

@@ -268,6 +268,11 @@ xxx 这个 app_code 不允许调用系统 yyy 的资源, 需要将 xxx 加入到
 
 需要找系统权限模型的维护者, 在模型注册阶段, 将`app_code`加入到其系统合法`clients`列表中
 
+> role[1] can not be operated by app_code[xxxxx], since role source not exists
+
+角色 1 不是app_code xxxxx 创建的, 没有权限通过接口操作`role[1]`
+
+
 ### 1902400 1902412 1902414 1902415 1902416
 
 描述: 用户的请求数据错误

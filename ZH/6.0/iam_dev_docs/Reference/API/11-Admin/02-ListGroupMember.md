@@ -27,12 +27,12 @@
 | 字段 |  类型 |是否必须  | 位置 |描述  |
 |--------|--------|--------|--------|--------|
 | group_id |int | 是 | path | 用户组 ID |
-| limit |  int  | 是   | query |分页查询参数之一，limit 表示查询数量，`最大值为100` |
-| offset  | int | 是 | query | 分页查询参数之一，offset 表示从第几个开始查询，offset 从 0 开始计算 |
+| page_size |  int  | 是| query | 分页查询参数之一，page_size 表示查询数量，`最大值为100` |
+| page  | int | 是| query | 分页查询参数之一，page 表示从第几页开始查询，page 从 0 开始计算 |
 
 #### Request
 ```bash
-Get /api/c/compapi/v2/iam/admin/groups/1/members/?offset=0&limit=10
+Get /api/c/compapi/v2/iam/admin/groups/1/members/?page=0&page_size=10
 ```
 
 #### Response
