@@ -22,11 +22,13 @@
 
 ### 节点管理托管文件
 
-鉴于需要下载上传的文件众多，浏览量下载上传会非常繁琐。因此我们推荐使用下载脚本处理，请在 **中控机** 下载所需的文件，然后使用脚本上传。
+鉴于需要下载上传的文件众多，浏览量下载上传会非常繁琐，因此我们推荐使用下载脚本处理。
 
-* 一般情况下只需要下载节点管理托管的常用文件即可（包含 Linux 及 Windows 的 64 位 GSE 客户端及插件包）。
+请在 **中控机** 下载所需的文件，后续步骤中会在中控机调用脚本上传。
+
+*  一般只需下载节点管理托管的常用文件（包含 Linux 及 Windows 的 64 位 GSE 客户端及插件包，“一键脚本”默认会下载这些）：
     ``` bash
-    curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest nm_gse_freq  # 下载节点管理托管的常用文件
+    curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest nodeman  # 下载节点管理托管的常用文件
     ```
 * 如果需要下载完整的托管文件（包含多云区域管理所需的 `gse_proxy`，以及其他不常用 CPU 及操作系统的客户端及插件包）：
     ``` bash
@@ -89,6 +91,31 @@ SaaS 应用采用 `S-Mart` 包分发。
 
 步骤示例图：
 ![](assets/deploy-saas-on-appo.png)
+
+<!--
+<a id="deploy-bkce-saas-gsekit" name="deploy-bkce-saas-gsekit
+"></a>
+
+### 部署进程配置管理（bk_gsekit）
+
+**无部署前配置**，只有 `default` 模块需要部署。
+
+具体步骤可参考 “[部署流程服务（bk_itsm）](#deploy-bkce-saas-itsm)” 章节。
+-->
+
+<a id="deploy-bkce-saas-sops" name="deploy-bkce-saas-sops"></a>
+
+### 部署标准运维（bk_sops）
+
+**无部署前配置**，共有 **四个模块** 需要部署：
+1. 需要先部署 `default` 模块。
+2. 照例选择 生产环境。
+3. 选择版本。
+4. 部署至生产环境。
+5. 等 `default`模块 **部署成功后**，回到步骤 1，开始部署 `api`、`pipeline`与`callback` 等 3 个模块（此时无次序要求，可同时部署）。
+
+步骤示例图：
+![](assets/deploy-saas-on-appo--sops.png)
 
 
 <a id="deploy-bkce-saas-nodeman" name="deploy-bkce-saas-nodeman"></a>
@@ -169,14 +196,15 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 #### agent 资源上传
 >**提示**
 >
->如果您使用了“一键部署” 脚本部署 `nodeman` ，则自动完成了此步骤，可以跳过本章节。
+>* “一键部署” 脚本部署节点管理（ `-i nodeman`）时 ，已经上传过一次 agent 及插件。
+>* 当您需要更新客户端或者加装云区域代理时，可以在下载后使用此命令重新上传。
 
 在前面的操作中，我们已经在中控机下载了所需的文件，如需更新文件，请查阅本文“提前下载资源”章节。
 
 在 **中控机** 执行如下命令同时上传 agent 资源及 gse 插件：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-./scripts/setup_bkce7.sh -u agent  # 更新节点管理托管的agent资源及gse插件。
+./scripts/setup_bkce7.sh -u agent  # 更新节点管理托管的agent资源。
 ```
 
 
@@ -185,15 +213,15 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 #### 上传 gse 插件包
 >**提示**
 >
->* 如果您使用了“一键部署” 脚本部署 `nodeman` ，则自动完成了此步骤，可以跳过本章节。
->* 如果您已经参考“agent 资源上传”章节在中控机执行了脚本，则也完成了此步骤，可以跳过本章节。
+>* “一键部署” 脚本部署节点管理（ `-i nodeman`）时 ，已经上传过一次 agent 及插件。
+>* 当您需要更新插件时，可以在下载后使用此命令重新上传。
 
 在前面的操作中，我们已经在中控机下载了所需的文件，如需更新文件，请查阅本文“提前下载资源”章节。
 
 在 **中控机** 执行如下命令同时上传 agent 资源及 gse 插件：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-./scripts/setup_bkce7.sh -u agent  # 更新节点管理托管的agent资源及gse插件。
+./scripts/setup_bkce7.sh -u plugin  # 更新节点管理托管的gse插件。
 ```
 结尾提示 `[INFO] upload agent package success` （客户端及 proxy） 和 `[INFO] upload open tools success` （proxy 所需的 nginx 及 py36 等）即为上传成功。
 
