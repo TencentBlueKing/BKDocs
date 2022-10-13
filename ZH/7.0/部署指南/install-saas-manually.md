@@ -26,7 +26,7 @@
 
 请在 **中控机** 下载所需的文件，后续步骤中会在中控机调用脚本上传。
 
-*  一般只需下载节点管理托管的常用文件（包含 Linux 及 Windows 的 64 位 GSE 客户端及插件包，“一键脚本”默认会下载这些）：
+*  一般只需下载节点管理托管的常用文件（包含 Linux 及 Windows 的 64 位 GSE 客户端及插件包）：
     ``` bash
     curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest nodeman  # 下载节点管理托管的常用文件
     ```
