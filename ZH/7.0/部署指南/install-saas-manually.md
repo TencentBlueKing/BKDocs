@@ -90,6 +90,31 @@ SaaS 应用采用 `S-Mart` 包分发。
 步骤示例图：
 ![](assets/deploy-saas-on-appo.png)
 
+<!--
+<a id="deploy-bkce-saas-gsekit" name="deploy-bkce-saas-gsekit
+"></a>
+
+### 部署进程配置管理（bk_gsekit）
+
+**无部署前配置**，只有 `default` 模块需要部署。
+
+具体步骤可参考 “[部署流程服务（bk_itsm）](#deploy-bkce-saas-itsm)” 章节。
+-->
+
+<a id="deploy-bkce-saas-sops" name="deploy-bkce-saas-sops"></a>
+
+### 部署标准运维（bk_sops）
+
+**无部署前配置**，共有 **四个模块** 需要部署：
+1. 需要先部署 `default` 模块。
+2. 照例选择 生产环境。
+3. 选择版本。
+4. 部署至生产环境。
+5. 等 `default`模块 **部署成功后**，回到步骤 1，开始部署 `api`、`pipeline`与`callback` 等 3 个模块（此时无次序要求，可同时部署）。
+
+步骤示例图：
+![](assets/deploy-saas-on-appo--sops.png)
+
 
 <a id="deploy-bkce-saas-nodeman" name="deploy-bkce-saas-nodeman"></a>
 
