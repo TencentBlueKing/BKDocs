@@ -201,7 +201,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 在 **中控机** 执行如下命令同时上传 agent 资源及 gse 插件：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-./scripts/setup_bkce7.sh -u agent  # 更新节点管理托管的agent资源及gse插件。
+./scripts/setup_bkce7.sh -u agent  # 更新节点管理托管的agent资源。
 ```
 
 
@@ -218,7 +218,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 在 **中控机** 执行如下命令同时上传 agent 资源及 gse 插件：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-./scripts/setup_bkce7.sh -u agent  # 更新节点管理托管的agent资源及gse插件。
+./scripts/setup_bkce7.sh -u plugin  # 更新节点管理托管的gse插件。
 ```
 结尾提示 `[INFO] upload agent package success` （客户端及 proxy） 和 `[INFO] upload open tools success` （proxy 所需的 nginx 及 py36 等）即为上传成功。
 
