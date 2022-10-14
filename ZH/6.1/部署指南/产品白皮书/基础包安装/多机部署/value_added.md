@@ -45,12 +45,12 @@ ssh-copy-id <ip>
 
 ```bash
 cd /data
-tar xf bkce_co_package-6.1.1.tgz
+tar xf bkce_co_package-6.1.2.tgz
 ```
 
 ### 5. 将需要部署产品的标准运维流程模版导入至标准运维
 
-标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/0c364fe/bk_sops_co_package-6.1.1.dat)
+标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/0c364fe/bk_sops_co_package-6.1.2.dat)
 
 **详细步骤：** `打开标准运维 -> 项目流程 -> 导入 -> 点击上传 -> 创建新流程`
 
