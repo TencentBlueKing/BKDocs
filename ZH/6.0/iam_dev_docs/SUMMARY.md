@@ -68,6 +68,7 @@
     * [说明: 权限中心限制](Explanation/07-Limit.md)
     * [说明: 资源审批人`_bk_iam_approver_`说明](Explanation/09-BkIAMApprover.md)
     * [说明: 操作授权类型](Explanation/10-ActionAuthType.md)
+    * [说明: ABAC与RBAC区别](Explanation/11-ABACAndRBAC.md)
 * [Reference]()
     * [规范及说明]()
         * [系统注册名词规范](Reference/NamingRules.md)
