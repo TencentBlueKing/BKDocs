@@ -346,7 +346,7 @@ v3.10 版本升级指引](https://github.com/Tencent/bk-cmdb/issues/5308)
     ./tool_ctl migrate-check --check-all=true --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0"
     ```
 
-- 仅校验 ` 唯一校验规则 `，输出不符合规则的数据
+- 仅校验 `唯一校验规则`，输出不符合规则的数据
 
     ```bash
     # 关注 ERROR 级别的错误
@@ -704,11 +704,11 @@ pcmd -m nodeman "rsync -a --delete --exclude=deploy --exclude="environ.sh" /data
 1. 迁移需要配置  `BKAPP_NEED_MIGRATE_FTA = True` 环境变量。步骤：访问 【PaaS 平台】 - 【开发者中心】 - 选择【监控平台】- 添加 【环境变量】
 2. 迁移是通过直连故障自愈的 DB 进行数据迁移，故障自愈 DB 如果在默认的 MySQL 服务器上，则不需要配置 DB 信息，如果自愈为独立 DB，则需要配置以下几个环境变量
 
-    - BKAPP_FTA_DB_NAME： DB名称
+    - BKAPP_FTA_DB_NAME： DB 名称
     - BKAPP_FTA_DB_USERNAME： 用户名
     - BKAPP_FTA_DB_PASSWORD： 密码
-    - BKAPP_FTA_DB_HOST： 服务器IP或域名
-    - BKAPP_FTA_DB_PORT： DB端口
+    - BKAPP_FTA_DB_HOST： 服务器 IP 或域名
+    - BKAPP_FTA_DB_PORT： DB 端口
 
 ```bash
 # 更新监控平台 SaaS
@@ -735,7 +735,7 @@ source /data/install/utils.fc
 ssh $BK_APPO_IP
 
 # 请注意替换 <bk_biz_id> 为实际的业务 ID
-docker exec -i $(docker ps | grep "bk_monitorv3" | awk '{print $1}')  bash <<EOF
+docker exec -i $(docker ps -aqf "name=^bk_monitorv3-")  bash <<EOF
 export BK_FILE_PATH=/data/app/code/conf/saas_priv.txt
 cd /data/app/code/
 /cache/.bk/env/bin/python manage.py migrate_fta_strategy <bk_biz_id>
@@ -814,7 +814,7 @@ pcmd -m log "rmvirtualenv bklog-api"
 
 2. 删除蓝鲸业务各个集群
 
-    上一步执行成功后，蓝鲸业务集群的节点信息中即可看到 ` 删除节点 ` 选项，请手动删除所有蓝鲸业务下的集群
+    上一步执行成功后，蓝鲸业务集群的节点信息中即可看到 `删除节点` 选项，请手动删除所有蓝鲸业务下的集群
 
     ![delete_topo](../../assets/bk_topo.png)
 
@@ -911,7 +911,7 @@ sed -i 's/fta,//g' /data/install/install.config
 mysql --login-path=mysql-default -e "delete from bksuite_common.production_info where code='fta';"
 ```
 
-2. 前往【PaaS平台】-【开发者中心】-【S-mart应用】 下架故障自愈。
+2. 前往【PaaS 平台】-【开发者中心】-【S-mart 应用】 下架故障自愈。
 
 ### 还原 bkci 以及 bcs 软件包
 
