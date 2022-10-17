@@ -735,7 +735,11 @@ source /data/install/utils.fc
 ssh $BK_APPO_IP
 
 # 请注意替换 <bk_biz_id> 为实际的业务 ID
-docker exec -it $(docker ps | grep "bk_monitorv3" | awk '{print $1}')  bash -c "cd /data/app/code/ ; /cache/.bk/env/bin/python manage.py migrate_fta_strategy <bk_biz_id>"
+docker exec -i $(docker ps | grep "bk_monitorv3" | awk '{print $1}')  bash <<EOF
+export BK_FILE_PATH=/data/app/code/conf/saas_priv.txt
+cd /data/app/code/
+/cache/.bk/env/bin/python manage.py migrate_fta_strategy <bk_biz_id>
+EOF
 ```
 
 ### 日志平台
