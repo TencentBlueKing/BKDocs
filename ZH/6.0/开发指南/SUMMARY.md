@@ -312,7 +312,7 @@
         * [处理单据](6.0/API文档/itsm/zh-hans/operate_ticket.md)
     * [作业平台]()
         * [简介](6.0/API文档/jobv3/README.md)
-        * [启动作业](6.0/API文档/jobv3/zh-hans/execute_job.md)
+        * [启动作业](6.0/API文档/jobv3/zh-hans/execute_job_plan.md)
         * [快速执行脚本](6.0/API文档/jobv3/zh-hans/fast_execute_script.md)
         * [快速执行 SQL](6.0/API文档/jobv3/zh-hans/fast_execute_sql.md)
         * [快速分发文件](6.0/API文档/jobv3/zh-hans/fast_push_file.md)

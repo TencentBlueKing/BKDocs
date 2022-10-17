@@ -92,8 +92,12 @@
     - [policy get 获取某条策略详情](../Reference/API/08-Query/01-PolicyGet.md)
     - [policy list 拉取系统下某个操作的策略列表(翻页)](../Reference/API/08-Query/02-PolicyList.md)
     - [policy subjects 根据策略 ID 拉群策略对应的用户信息](../Reference/API/08-Query/03-PolicySubjects.md)
+3. RBAC
+    - [操作 Action API](../Reference/API/02-Model/13-Action.md)
+    - [说明: 操作授权类型](../Explanation/10-ActionAuthType.md)
+    - [说明: ABAC与RBAC区别](../Explanation/11-ABACAndRBAC.md)
 
-3. LBAC
+4. LBAC
 
     注意, 这个方案是为了满足一些特殊场景而设计的, 本身的实现成本非常高, 如无相应的需求, 不需要关注
 

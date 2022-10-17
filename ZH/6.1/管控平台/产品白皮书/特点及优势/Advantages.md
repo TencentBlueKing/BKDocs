@@ -22,33 +22,63 @@
 
 BK DataServer 可以单独为用户提供数据服务，而不需要其他服务端程序配合。
 
-## 支持 OS 类型
+## Gse Agent 操作系统支持列表
 
-<table><tbody>
-<tr><th>OS 类型 </th><th>主要 OS 版本</th></tr>
-<tr><td rowspan="5">CentOS</td></tr>
-<tr><td>5.8 32/64 位 </td></tr>
-<tr><td>5.11 32/64 位 </td></tr>
-<tr><td>6.x 32/64 位 </td></tr>
-<tr><td>7.x 32/64 位 </td></tr>
-<tr><td rowspan="4">Redhat</td>
-<td>5.3 32/64 位 </td></tr>
-<tr><td>5.5 64 位 </td></tr>
-<tr><td>6.x 32/64 位 </td></tr>
-<tr><td>7.x 32/64 位 </td></tr>
-<tr><td>Debian</td><td>7.4  64 位 </td></tr>
-<tr><td>SUSE</td><td>10  64 位 </td></tr>
-<tr><td rowspan="4">Ubuntu</td><td>14.04  32/64 位 </td></tr>
-<tr><td>10.04  32/64 位 </td></tr>
-<tr><td>12.04  64 位 </td></tr>
-<tr><td>12.04  docker 64 位 </td></tr>
-<tr><td rowspan="5">Windows Server</td><td>2016</td></tr>
-<tr><td>2012</td></tr>
-<tr><td>2008</td></tr>
-<tr><td>2003</td></tr>
-<tr><td>Win 7</td></tr>
-<tr><td rowspan="2">AIX </td><td>AIX 6</td></tr>
-<tr><td>AIX 7</td></tr>
-<tr><td>linuxone</td><td>IBM Linuxone 64 位 </td></tr>
-<tr><td>linux-arm</td><td>华为arm服务器linux 64 位 </td></tr>
-</tbody></table>
+### 官方支持的操作系统
+
+- **Linux 系统：**
+
+| OS 及版本 | OS 内核版本 | CPU 架构 | glibc 版本 |
+|  ----  | ----  | ----  | ----  |
+| TencentOS Server 3.1 (TK4) | 5.4.119-19-0008 | x86_64 | glibc 2.28 |
+| TencentOS Server 2.2 (Final) | 3.10.107-1-tlinux2_kvm_guest-0055 | x86_64 | glibc 2.17 |
+| TencentOS Server 1.2 (tkernel2) | 3.10.107-1-tlinux2_kvm_guest-0053 | x86_64 | glibc 2.12 |
+| TencentOS Server 2.6 for ARM64(TK4) | 5.4.119-19-0007 | aarch64 | glibc 2.17 |
+
+- **Windows 系统：**
+
+| OS 及版本 | 
+|  ----  |
+| Windows Server 2016 For Tencent |
+| Windows Server 2012 R2 For Tencent |
+| Windows Server 2008 for Tencent |
+
+
+### 社区适配后支持的操作系统
+
+- **Linux 系统：**
+
+| OS 及版本 | OS 内核版本 | CPU 架构 | glibc 版本 |
+|  ----  | ----  | ----  | ----  |
+| CentOS 8.2 ARM64 | 4.18.0-240.10.1.el8_3.aarch64 | aarch64 | glibc 2.28 |
+| CentOS 8.0 64 位 | 4.18.0-305.10.2.el8_4.x86_64 | x86_64 | glibc 2.28 |
+| CentOS 7.9 ARM64 | 4.18.0-193.28.1.el7.aarch64 | aarch64 | glibc 2.17 |
+| CentOS 7.9 64 位 | 3.10.0-1160.45.1.el7.x86_64 | x86_64 | glibc 2.17 |
+| CentOS 7.2 64 位 | 3.10.0-1127.19.1.el7.x86_64 | x86_64 | glibc 2.17 |
+| CentOS 6.9 32 位 | 2.6.32-696.el6.i686 | i686 | glibc 2.12 |
+| CentOS 6.8 64 位 | 2.6.32-642.6.2.el6.x86_64 | x86_64 | glibc 2.12 |
+| Ubuntu Server 20.04 LTS 64 位 | 5.4.0-80-generic | aarch64 | glibc 2.31 |
+| Ubuntu Server 20.04 LTS 64 位 | 5.4.0-90-generic | x86_64 | glibc 2.31 |
+| Ubuntu Server 16.04.1 LTS 64 位 | 4.15.0-142-generic | x86_64 | glibc 2.23 |
+| Ubuntu Server 16.04.1 LTS 32 位 | 4.4.0-92-generic 115-Ubuntu | i686 | glibc 2.23 |
+| Ubuntu Server 14.04.1 LTS 64 位 | 3.13.0-128-generic 177-Ubuntu | x86_64 | glibc 2.19 |
+| Ubuntu Server 14.04.1 LTS 32 位 | 3.13.0-128-generic | i686 | glibc 2.19 |
+| Debian 10.2 64 位 | 4.19.0-18-amd64 | x86_64 | glibc 2.28 |
+| Debian 9.13 64 位 | 4.9.0-13-amd64 | x86_64 | glibc 2.24 |
+| Debian 8.2 64 位 | 3.16.0-6-amd64 | x86_64 | glibc 2.19 |
+| Debian 8.2 32 位 | 3.16.0-4-686-pae | i686 | glibc 2.19 |
+| Debian 7.4 64 位 | 3.2.0-4-amd64 | x86_64 | glibc 2.13 |
+| FreeBSD 11.1 64 位 | 3.10.0-1062.18.1.el7.x86_64 | x86_64 | glibc 2.17 |
+
+- **Windows 系统：**
+
+| OS 及版本 | 
+|  ----  
+| Windows Server 2019 数据中心版 64 位 中文版 |
+| Windows Server 2016 数据中心版 64 位中文版 |
+| Windows Server 2012 R2 数据中心版 64 位中文版 |
+| Windows Server 2003 企业版 SP2 32 位 |
+
+- **其他系统：**
+
+AIX
