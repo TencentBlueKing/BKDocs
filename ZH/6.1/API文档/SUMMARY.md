@@ -12,7 +12,7 @@
     * [简介](bk_paas/README.md)
     * [获取应用信息](bk_paas/zh-hans/get_app_info.md)
 * [消息管理]()
-* [简介](cmsi/README.md)
+    * [简介](cmsi/README.md)
     * [查询消息发送类型](cmsi/zh-hans/get_msg_type.md)
     * [发送邮件](cmsi/zh-hans/send_mail.md)
     * [通用消息发送](cmsi/zh-hans/send_msg.md)
