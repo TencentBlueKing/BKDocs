@@ -332,10 +332,17 @@ docker info
 <a id="setup_bkce7-i-saas" name="setup_bkce7-i-saas"></a>
 
 ## 一键部署基础套餐 SaaS
+在 **中控机** 下载所需的文件。
+``` bash
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest saas  # 下载SaaS安装包及节点管理托管的常用文件
+```
+如果你计划管控多个云区域的主机，或者管控 32 位操作系统主机，请补充下载完整的待托管文件：
+``` bash
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest nm_gse_full  # 节点管理托管的全部文件
+```
 
 在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境：
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest saas  # 下载SaaS安装包及节点管理托管的常用文件
 scripts/setup_bkce7.sh -i nodeman  # 部署节点管理。可顺带上传待托管文件。
 scripts/setup_bkce7.sh -i itsm  # 部署流程服务
 scripts/setup_bkce7.sh -i sops  # 部署标注运维
