@@ -45,16 +45,15 @@
 | 时区 | 所有服务器时区应该统一，建议使用北京时间 | 使用 `timedatectl set-timezone Asia/Shanghai` 设置为北京时间。 |
 | 时间同步 | etcd 选举时要求节点间时间差小于 1s | 配置 `chronyd` 同步时间 |
 | docker 版本 | 19.03 及更高 | `docker info` |
+| kubenetes 版本 | 限 1.18 或 1.20，其他版本未经测试，用户报告 1.22 以上版本不兼容 | `kubectl info` |
 
 
 <a id="get-a-k8s-cluster" name="get-a-k8s-cluster"></a>
 
 # 准备 K8S 集群
-蓝鲸智云 7.0 容器化部署方案预期运行于 Kubernetes 1.18 及 1.20 版本。
-
 >**提示**
 >
->因 k8s API 被移除，蓝鲸无法在 1.22 及以上版本使用，开发正在兼容新版 API 。
+>因 k8s API 被移除，蓝鲸无法在 kubenetes 1.22 及以上版本使用，开发正在兼容新版 API 。
 
 我们适配了如下的场景：
 * 【推荐】使用蓝鲸提供的 bcs.sh 脚本快速部署 k8s 集群
