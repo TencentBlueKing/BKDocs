@@ -228,8 +228,9 @@ kubectl get pod -A | grep -wv Completed | grep -e "0/"
 
 ### 部署 SaaS 在“配置资源实例”阶段报错
 首先查看 `engine-main` 这个应用对应 pod 的日志。根据错误日志提示，判断定位方向：
-1. 检测 mysql，rabbitmq，redis 等「增强服务」的资源配置是否正确。`http://bkpaas.$BK_DOMAIN/backend/admin42/platform/plans/manage` （先登录才能访问）以及 `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` （先登录才能访问）。
-2. 检查应用集群的 k8s 相关配置 token 是否正确。初次部署时会自动调用 `scripts/create_k8s_cluster_admin_for_paas3.sh` 脚本自动生成 token 等参数到 `./paas3_initial_cluster.yaml` 文件中。如果不正确，可以删除后这些账号和绑定后重建。
+1. 如报错 `DeployError: 部署失败, 配置资源实例异常: unable to provision instance for services<redis>`，则为没有配置 redis 资源所致。在中控机工作目录执行 `./scripts/setup_bkce7.sh -u redis`。
+2. 检测 mysql、rabbitmq 等「增强服务」的资源配置是否正确。`http://bkpaas.$BK_DOMAIN/backend/admin42/platform/plans/manage` （先登录才能访问）以及 `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` （先登录才能访问）。
+3. 检查应用集群的 k8s 相关配置 token 是否正确。初次部署时会自动调用 `scripts/create_k8s_cluster_admin_for_paas3.sh` 脚本自动生成 token 等参数到 `./paas3_initial_cluster.yaml` 文件中。如果不正确，可以删除后这些账号和绑定后重建。
 
 <a id="saas-deploy-prehook" name="saas-deploy-prehook"></a>
 
