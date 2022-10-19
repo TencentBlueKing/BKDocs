@@ -1,19 +1,12 @@
 # 开启Kubernetes监控
 
-
-
 ## 一、相关名词解释
 
 * Kubernetes: 容器管理调度平台，参考什么是kubernetes。
-
 * BCS：蓝鲸容器服务平台（BCS，Blueking Container Service），是高度可扩展、灵活易用的容器管理服务平台。参考BCS使用文档。
-
 * gse_agent: 运行在主机（如CVM、物理机等）上的蓝鲸agent, 是监控数据上报的通道。
-
 * bkmonitorbeat: 指标采集器，用于采集指标数据。bkmonitorbeat 部署会依赖 gse_agent，如主机上未安装 gse agent 会导致 bkmonitorbeat 启动失败（pod 处于 init 状态）。
-
 * bkmonitor-operator：用于监听 serviceMonitor、podMonitor、probeMonitor 等配置，并负责刷新各个 bkmonitorbeat 配置文件。
-
 * dataid: 在监控平台内部用于标识数据的id。
 
 ## 二、什么是容器监控
@@ -32,24 +25,22 @@
 容器监控的核心诉求,主要分为4类：
 
 1. 集群本身的运行状态监控，监控的目的是随时关注容量、及时发现异常，让集群的运维者能够快速修复集群问题。
-    * 对kubernetes集群状态的监控，如master集群的etcd,kube-api, kube-scheduler,kube-proxy,kubelet等核心服务的监控。
-    * 对node节点状态的监控，如CPU,内存，网卡等监控。
-    * 对资源的统计需求，如cluster，NameSpace, node，pod数量的统计。
-    * 对workload、service、pod、container运行指标和状态监控。
 
+   * 对kubernetes集群状态的监控，如master集群的etcd,kube-api, kube-scheduler,kube-proxy,kubelet等核心服务的监控。
+   * 对node节点状态的监控，如CPU,内存，网卡等监控。
+   * 对资源的统计需求，如cluster，NameSpace, node，pod数量的统计。
+   * 对workload、service、pod、container运行指标和状态监控。
 2. 容器内的事件、日志的监控。
 
-    容器的日志和事件采集，并能够配置告警。
-
+   容器的日志和事件采集，并能够配置告警。
 3. 自定义指标的监控，运行在容器中的服务，自身提供的服务指标是否正常，因为大多数情况下，运行环境的指标正常，并不等于服务本身就是正常的，所以需要上报服务本身的指标。
 
-    服务的指标，如接口的成功，失败，饱和度，错误率等，通常这类指标对应用开发来说，更具有实际参考价值，更能够对业务有帮助。
-
+   服务的指标，如接口的成功，失败，饱和度，错误率等，通常这类指标对应用开发来说，更具有实际参考价值，更能够对业务有帮助。
 4. HPA功能，对pod数量动态扩缩容。
 
-    基于关键指标，对容器的pod数量进行增减，达到资源的有效利用。
-    
-    在云原生社区中，kubernetes各种监控方案尝试中，几乎都是推荐prometheus。原生的prometheus，在数据维度组合较小情况下，能够很好的工作，满足日常的使用需求，但在数据维度较多的情况下，即使用了thanos方案，依然效果不理想。具体表现是，在指标和维度组合数较大的情况下，占用内存比较高，查询速度会变慢，遇到服务重启，恢复时间较长，监控的稳定性受到极大挑战。
+   基于关键指标，对容器的pod数量进行增减，达到资源的有效利用。
+      
+       在云原生社区中，kubernetes各种监控方案尝试中，几乎都是推荐prometheus。原生的prometheus，在数据维度组合较小情况下，能够很好的工作，满足日常的使用需求，但在数据维度较多的情况下，即使用了thanos方案，依然效果不理想。具体表现是，在指标和维度组合数较大的情况下，占用内存比较高，查询速度会变慢，遇到服务重启，恢复时间较长，监控的稳定性受到极大挑战。
 
 ## 三、容器监控的方案
 
@@ -59,7 +50,6 @@
 * 无需每个kubernetes集群独立部署prometheus。
 * 解决容器监控和业务监控割裂使用的问题，集中式查看监控、告警，让监控数据在统一的地方消费使用，无需同时维护多套监控系统。
 
-
 ### 数据采集流程
 
 ![](media/16618488813136.jpg)
@@ -67,8 +57,6 @@
     整个架构对比 prometheus-operator 来讲，我们少了 prometheus 组件，多了 bkmonitorbeat daemonset，因为我们的 bkmonitorbeat 可以替代 prometheus 的采集能力，而通过 gse 管道能力我们可以使用蓝鲸监控的存储和查询能力，也就是说，用户不需要在集群中部署Prometheus相关组件和prometheus-operator 。
 
     得益于蓝鲸监控中心化存储，bkmonitor-operator 较 prometheus-operator 方案，对集群内资源消耗更低。
-
-
 
 ### 数据采集流程说明
 
@@ -85,18 +73,19 @@
 3. 集群中的数据，由kube-state-metrics， prometheus-node-exporter，kubelet原生提供，由本node的bkmonitorbeat采集
 4. 支持多集群的采集，多个集群可以共用一套蓝鲸监控
 
-
-
 ## 四、如何接入容器监控
 
-具体的接入流程，请参考 [BCS容器监控接入]()
+接入容器监控的集群，分2种情况
+
+- 在BCS集群中已经接入的k8s集群, 则可以直接在BCS的集群组件中安装bkmonitorbeat operator
+- 集群未被BCS纳管，则需要将k8s集群托管，请参考 [集群管理](https://bk.tencent.com/docs/document/7.0/173/14092)，然后再安装bkmonitorbeat operator
+
+接入的过程，请参考[蓝鲸容器监控安装](https://bk.tencent.com/docs/document/7.0/173/14601)
 
 ## 五、如何查看容器监控数据
 
 观测场景 -> kubernetes
 ![](media/16618490905946.jpg)
-
-
 
 ## 六、如何配置容器监控告警
 
@@ -116,13 +105,14 @@
 #查看bkmonitor-operator
  kubectl get pods -n bkmonitor-operator -o wide
 ```
-![](media/16618492474662.jpg)
 
+![](media/16618492474662.jpg)
 
 ```
 #查看daemonset的配置
 kubectl get ds -n bkmonitor-operator  bkmonitor-operator-stack-bkmonitorbeat-daemonset -oyaml
 ```
+
 ![](media/16618492531658.jpg)
 
 最高使用CPU1核，内存1G，如果需要采集的数据多，可以调整此配置。
@@ -132,5 +122,3 @@ kubectl get ds -n bkmonitor-operator  bkmonitor-operator-stack-bkmonitorbeat-dae
 容器的监控指标，可以在仪表盘中进行展示和分析，可以自定义视图查看
 
 ![](media/16618492623861.jpg)
-
-
