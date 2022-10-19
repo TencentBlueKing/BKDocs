@@ -74,6 +74,82 @@ failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/
 在部署 gse agent 成功后，上述 pod 会逐步自动恢复。也可直接删除出错的 pod，会立刻重新创建。
 
 
+## 启用蓝鲸 SLI 仪表盘
+在配置了容器监控后，我们可以看到各 node 及各 pod 的一些基础监控属性。
+
+您可能期望或者一些更详细的数据，则可以考虑启用 SLI Metrics。
+
+>**提示**
+>
+>启用 SLI 后，会大幅提高 influxdb 及 elasticsearch 的磁盘及内存开销。建议额外准备 300G 磁盘及 4GB 内存余量。
+
+### 检查 servicemonitor 资源
+在 **中控机** 执行如下命令，预期看到 `bkmonitor-operator` 命名空间下的多个资源：
+``` bash
+kubectl get servicemonitors.monitoring.coreos.com -A
+```
+如果没有输出，请先配置容器监控。
+
+
+### 配置指标上报
+
+修改全局配置文件，启用指标上报。
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+# 启用指标上报：
+case $(yq e '.serviceMonitor.enabled' environments/default/custom.yaml) in
+  null)
+    tee -a environments/default/custom.yaml <<< $'serviceMonitor:\n  enabled: true'
+  ;;
+  true)
+    echo "environments/default/custom.yaml 中配置了 .serviceMonitor.enabled=true, 无需修改."
+  ;;
+  *)
+    echo "environments/default/custom.yaml 中配置了 .serviceMonitor.enabled 为其他值, 请手动修改值为 true."
+  ;;
+esac
+```
+
+### 重启待上报指标的平台
+为了实现指标上报，需要调整对应平台的 helm release。
+
+在 中控机 执行如下命令：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+helmfile -f base-blueking.yaml.gotmpl apply  # 变更蓝鲸基础套餐
+helmfile -f 03-bcs.yaml.gotmpl apply  # 变更容器管理平台
+helmfile -f 04-bkmonitor.yaml.gotmpl apply  # 变更监控平台
+helmfile -f 04-bklog-search.yaml.gotmpl apply  # 变更日志平台
+```
+
+如果看到如下报错，说明没有正确配置容器监控功能，请重新配置。
+``` plain
+Error: unable to build kubernetes objects from release manifest: unable to recognize "": no matches for kind "ServiceMonitor" in version "monitoring.coreos.com/v1"
+```
+
+### 导入仪表盘
+登录监控平台，并切换到“仪表盘”界面。
+
+点击左侧导航栏的“批量导出和导入”菜单，点击“点击导入”按钮，进入导入界面。
+
+请下载我们如下文件导入:
+* [bk_monitor-dashboards-sli-20221008.tar.gz](https://bkopen-1252002024.file.myqcloud.com/ce7/files/bk_monitor-dashboards-sli-20221008.tar.gz)
+
+导入成功后，无需配置监控目标，点击完成结束整个导入流程。
+
+然后请回到“仪表盘”界面，找到并进入 “[BlueKing] 各产品看板入口” 仪表盘。您可以从这里快速访问蓝鲸各平台的仪表盘。
+
+>**提示**
+>
+>您可以收藏此仪表盘。刷新页面后，即可在左侧导航栏看到。
+
+### 已知问题
+目前部分 panel 加载时可能出现报错，请等待我们后续优化。
+``` plain
+请求系统'unify-query'错误，返回消息: {"error":"expanding series: db: process, err:[get cluster failed]"}，请求URL: http://bk-monitor-unify-query-http:10205/query/ts
+```
+
+
 # 日志平台
 
 ## 部署日志平台
