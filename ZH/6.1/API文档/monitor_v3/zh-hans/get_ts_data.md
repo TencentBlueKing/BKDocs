@@ -44,7 +44,7 @@ POST
     "bk_app_secret": "xxxxx",
     "bk_token": "xxxx",
     "bk_username":"admin",
-    "sql":"select max(in_use) as _in_use from 3_system_disk where time >= \"1m\" group by ip, bk_cloud_id, bk_supplier_id, device_name, minute1 order by time desc limit 1"
+    "sql":"select max(in_use) as _in_use from 3_system.disk where time >= \"1m\" group by ip, bk_cloud_id, bk_supplier_id, device_name, minute1 order by time desc limit 1"
 }
 ```
 
@@ -53,11 +53,11 @@ POST
 >Biz_id：业务 id  
 >Db_name: 数据库名  
 >Table_name: 数据表名  
->例：2_system_cpu_detail：业务 2 下的 system 库的 cpu_detail 表  
+>例：2_system.cpu_detail：业务 2 下的 system 库的 cpu_detail 表  
 >查询一个小时内的单核 cpu 的使用率的 sql 语句：  
->Select Mean(usage) as usage from 2_system_detail where time > '1h' group by ip,device_name,minute1 limit 10  
+>Select Mean(usage) as usage from 2_system.cpu_detail where time > '1h' group by ip,device_name,minute1 limit 10  
 
->上面请求实例中结果表 3_system_disk 表示：业务 3 下的 system 库中的 disk 表  
+>上面请求实例中结果表 3_system.disk 表示：业务 3 下的 system 库中的 disk 表  
 
 >注意：上述的库和表并非和时序存储中的实际物理库、表对应。而是指'源数据管理模块'的库表
 
