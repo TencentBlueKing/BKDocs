@@ -77,7 +77,9 @@ fi
 1. `-i base`：指定要安装的模块。关键词 `base` 表示基础套餐的后台部分。
 2. `--domain BK_DOMAIN`：指定蓝鲸的基础域名（下文也会使用 `BK_DOMAIN` 这个变量名指代）。
 
-脚本耗时 8 ~ 16 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。如果部署期间出错，请先参考 [FAQ](faq.md) 文档排查。
+脚本耗时 8 ~ 16 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。
+
+**如果部署期间出错，请先参考 [FAQ](faq.md) 文档排查。** 问题解决后，请重新执行上面的命令。
 
 
 ## 分步部署基础套餐后台
