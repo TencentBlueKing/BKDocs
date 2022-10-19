@@ -37,6 +37,15 @@ scripts/add_user_desktop_app.sh -u "admin" -a "bk_bcs"
 kubectl get pod -n bcs-system -w
 ```
 
+>**提示**
+>
+>目前 03-bcs.yaml.gotmpl 只能 sync 一次，后续 sync 或 apply 时会报错 MySQL 密码错误。请在中控机执行如下命令临时打补丁：
+>``` bash
+>scripts/get_bcs_passwd.sh | tee environments/default/bcs/secrets.yaml
+>if grep -nFC 1 /secrets.yaml 03-bcs.yaml.gotmpl ; then echo patched; else sed -i '/resources[.]yaml[.]gotmpl/a\    - environments/default/bcs/secrets.yaml' 03-bcs.yaml.gotmpl && echo patch applied || echo failed to patch ; fi
+>```
+
+
 ### 浏览器访问
 配置本地 hosts 进行访问
 ``` bash
