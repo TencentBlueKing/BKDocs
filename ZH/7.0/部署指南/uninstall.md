@@ -58,10 +58,10 @@ helm list -n blueking -a | grep bk-paas # 会看到failed的一个release。
    done
    ```
 10. 检查确保无残留：
-   ``` bash
-   kubectl get deploy,sts,cronjob,job,pod,svc,ingress,secret,cm,sa,role,rolebinding,pvc -n blueking
-   ```
+    ``` bash
+    kubectl get deploy,sts,cronjob,job,pod,svc,ingress,secret,cm,sa,role,rolebinding,pvc -n blueking
+    ```
 11. 重命名工作目录（部署时会写入一些文件到这里，一段时间后确认不需要时可删除）：
-   ``` bash
-   mv ~/bkhelmfile ~/bkhelmfile.bak-$(date +%Y%m%d)
-   ```
+    ``` bash
+    mv ~/bkhelmfile ~/bkhelmfile.bak-$(date +%Y%m%d)
+    ```
