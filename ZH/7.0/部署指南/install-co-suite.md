@@ -1,7 +1,7 @@
 蓝鲸监控日志套餐由监控平台及日志平台组成。
 
 
-# 监控平台
+# 部署与访问
 
 ## 部署监控平台
 在 中控机 执行
@@ -37,7 +37,40 @@ echo $IP1 bkmonitor.$BK_DOMAIN
 此时访问 “观测场景” —— “Kubernetes” 界面会出现报错。为未启用容器监控所致，完成下文的 “配置容器监控” 章节即可正常使用。
 
 
-## 配置容器监控
+## 部署日志平台
+在 中控机 执行
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+helmfile -f 04-bklog-search.yaml.gotmpl sync
+# 在admin桌面添加应用，也可以登录后自行添加。
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_log_search"
+```
+
+## 访问日志平台
+在桌面可以看到刚才添加的 “日志平台” 应用，访问前需先行配置 `bklog.$BK_DOMAIN` 域名的解析。
+
+在 **中控机** 执行如下命令生成 hosts 文件的内容：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
+IP1=$(ssh "$IP1" 'curl ip.sb')
+echo $IP1 bklog.$BK_DOMAIN
+```
+
+
+# 配置可选功能
+在完成了平台部署后，如下功能还需要额外配置才能使用：
+* 监控平台
+  * 容器监控
+  * 蓝鲸服务 SLI 看板
+  * 应用监控（APM）
+* 日志平台
+  * 容器日志采集
+
+请阅读下方对应章节进行操作。
+
+## 容器监控
 
 ### 前置检查
 容器监控功能需要在所有 k8s node （包括 master ）部署 gse-agent。请先在 “节点管理” 中完成 agent 安装。
@@ -74,7 +107,7 @@ failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/
 在部署 gse agent 成功后，上述 pod 会逐步自动恢复。也可直接删除出错的 pod，会立刻重新创建。
 
 
-## 启用蓝鲸 SLI 仪表盘
+## 蓝鲸服务 SLI 看板
 在配置了容器监控后，我们可以看到各 node 及各 pod 的一些基础监控属性。
 
 您可能期望或者一些更详细的数据，则可以考虑启用 SLI Metrics。
@@ -132,7 +165,7 @@ Error: unable to build kubernetes objects from release manifest: unable to recog
 
 点击左侧导航栏的“批量导出和导入”菜单，点击“点击导入”按钮，进入导入界面。
 
-请下载我们如下文件导入:
+请下载如下文件导入:
 * [bk_monitor-dashboards-sli-20221008.tar.gz](https://bkopen-1252002024.file.myqcloud.com/ce7/files/bk_monitor-dashboards-sli-20221008.tar.gz)
 
 导入成功后，无需配置监控目标，点击完成结束整个导入流程。
@@ -149,31 +182,10 @@ Error: unable to build kubernetes objects from release manifest: unable to recog
 请求系统'unify-query'错误，返回消息: {"error":"expanding series: db: process, err:[get cluster failed]"}，请求URL: http://bk-monitor-unify-query-http:10205/query/ts
 ```
 
+## 应用监控（APM）
 
-# 日志平台
 
-## 部署日志平台
-在 中控机 执行
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-helmfile -f 04-bklog-search.yaml.gotmpl sync
-# 在admin桌面添加应用，也可以登录后自行添加。
-scripts/add_user_desktop_app.sh -u "admin" -a "bk_log_search"
-```
-
-## 访问日志平台
-在桌面可以看到刚才添加的 “日志平台” 应用，访问前需先行配置 `bklog.$BK_DOMAIN` 域名的解析。
-
-在 **中控机** 执行如下命令生成 hosts 文件的内容：
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
-IP1=$(ssh "$IP1" 'curl ip.sb')
-echo $IP1 bklog.$BK_DOMAIN
-```
-
-## 配置容器日志采集
+## 容器日志采集
 
 ### 前置检查
 容器日志采集功能需要在所有 k8s node （包括 master ）部署 gse-agent。请先在 “节点管理” 中完成 agent 安装。
