@@ -19,7 +19,7 @@
 
 如图设置了两个 redis 服务实例，端口分别是 6379 和 6380(标识 3)。服务实例的概念具体查看[术语解释](../concepts/glossary.md)。
 
-并且设置了`标签`功能(标识 4)，因为两个 redis 实例的密码不一样。标签： `redis_password`。
+并且设置了 `标签`功能(标识 4)，因为两个 redis 实例的密码不一样。标签： `redis_password`。
 
 > **注意**： 从安全性的解决来说，一般是不建议密码存储在标签中的。
 
@@ -27,16 +27,16 @@
 
 ![-w2021](media/15782891786421.jpg)
 
-* 标识 1：运行参数填写的变量可查看`点击查看推荐变量`
-* 标识 2：选择不同的绑定 ip 和端口。 
-  
-  `{{target.process["redis-server"].bind_ip}}`    
-  `{{target.process["redis-server"].port}}`
+* 标识 1：运行参数填写的变量可查看 `点击查看推荐变量`
+* 标识 2：选择不同的绑定 ip 和端口。
 
-> 注意：redis-server 是进程名称。
+  `{{target.process["redis-server"].bind_ip}}`
+  `{{target.process["redis-server"].bind_info[0].port}}`  #该服务实例的第一个端口
 
-* 标识 3：获取对应的密码，使用标签的功能 
- `{{target.service.labels['redis_password']}}`
+> 注意：`redis-server` 是进程名称，插件的分类必须是 `服务实例` 的类型
+
+* 标识 3：获取对应的密码，使用标签的功能
+  `{{target.service.labels['redis_password']}}`
 
 更多的变量列表查看[变量列表](../integrations-metrics/variables.md)。
 
@@ -45,5 +45,3 @@
 采集的目标选择动态的方式，基于某个服务模块甚至是任意的节点。
 
 监控的目标也选择动态的方式。
-
-
