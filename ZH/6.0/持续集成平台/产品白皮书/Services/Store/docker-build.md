@@ -19,7 +19,7 @@ bk-ci 提供了默认的 Ubuntu 镜像，但不一定能满足所有编译场景
 ```CMD
 FROM bkci/ci:latest
 
-RUN yum install -y mysql-devel
+RUN apt install -y git
 ```
 
 - **Dockerfile 示例2（不以bkci默认镜像为基础镜像时，镜像环境基本要求如下）：**
