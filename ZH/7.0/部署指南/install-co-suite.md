@@ -64,7 +64,8 @@ echo $IP1 bklog.$BK_DOMAIN
 * 监控平台
   * 容器监控
   * 蓝鲸服务 SLI 看板
-  * 蓝鲸 SaaS 应用监控（APM）
+  * 应用监控（APM）
+  * 蓝鲸 SaaS 接入应用监控
 * 日志平台
   * 容器日志采集
 
@@ -181,10 +182,8 @@ Error: unable to build kubernetes objects from release manifest: unable to recog
 请求系统'unify-query'错误，返回消息: {"error":"expanding series: db: process, err:[get cluster failed]"}，请求URL: http://bk-monitor-unify-query-http:10205/query/ts
 ```
 
-## 蓝鲸 SaaS 应用监控（APM）
-应用监控支持 OpenTelemetry 标准。您可以参考使用文档接入自己的应用。
-
-蓝鲸的 流程服务 和 标准运维 已经完成了适配，完成如下配置即可上报 Trace 数据。
+## 应用监控（APM）
+应用监控支持 OpenTelemetry 标准。蓝鲸提供部署 OTel 服务器的方案，以便与监控平台集成。
 
 ### 启动 OTel 服务
 通过蓝鲸 “节点管理” 系统部署 OTel 服务端。
@@ -203,8 +202,22 @@ Error: unable to build kubernetes objects from release manifest: unable to recog
 在 “全局设置” 界面，找到配置项 “自定义上报默认服务器”，填写刚才部署的 OTel 服务端 IP。如果有多个 IP，需要逐个 IP 填写。填写完毕后点击页脚 “提交” 按钮保存配置。
 ![](assets/monitor-global-config-custom-report-proxy.png)
 
+### 接入应用监控
+您可以参考使用文档接入自己的应用。
+
+蓝鲸已有部分 SaaS 接入了应用监控，请参考 “蓝鲸 SaaS 接入应用监控” 章节进行配置。
+
+蓝鲸其他产品还在陆续接入中，敬请期待。
+
+
+## 蓝鲸 SaaS 接入应用监控
+蓝鲸的 “流程服务” 和 “标准运维” 适配了应用监控，完成如下配置即可上报 Trace 数据。
+
+### 前置检查
+请先参考 “应用监控（APM）” 章节完成配置。
+
 ### 调整 PaaS 启用 OTel
-PaaS 启用 OTel 相关配置后，会为声明依赖 `otel` 服务的 SaaS 提供环境变量。
+PaaS 启用 OTel 相关配置后，如 SaaS 有声明依赖 `otel` 服务，则会为其提供相关环境变量。
 
 操作步骤如下：
 
@@ -265,10 +278,11 @@ kubectl exec -i -n blueking bkpaas3-apiserver-web- -- python manage.py shell <<<
 >**提示**
 >
 >如果您的 OTel 配置发生了变动，但是 SaaS “增强服务”——“健康检测” 里显示的配置信息依旧为旧版本，可以访问后台管理界面手动删除：
->1. 在登录状态下访问 `http://bkpaas.替换为BK_DOMAIN/backend/admin42/applications/` 进入应用列表管理界面.
+>1. 在登录状态下访问 `http://bkpaas.替换为BK_DOMAIN/backend/admin42/applications/` 进入 “蓝鲸 PaaS Admin” 的 “应用列表” 界面.
 >2. 点击对应的 SaaS 名称进入管理页。
->3. 在左侧导航点击 “增强服务”，在新界面列表中找到 “蓝鲸 APM” 所在的行，点击 “删除实例”。然后重新部署 SaaS 即可。
->![](assets/paas-admin-apps-service-apm.png)
+>3. 在左侧导航点击 “增强服务”，进入 “实例详情” 列表。找到使用环境对应的 “蓝鲸 APM” 服务，点击 “删除实例”。然后重新部署对应环境的 SaaS 即可。
+>   ![](assets/paas-admin-apps-service-apm.png)
+
 
 ### 访问蓝鲸 APM
 通过 “蓝鲸桌面” 打开 “监控平台”，在顶部导航栏选择 “观测场景”，然后侧栏选择 “APM”。
