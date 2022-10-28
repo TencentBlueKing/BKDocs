@@ -44,9 +44,9 @@ cd /data/src; grep . */*VERSION */*/VERSION
     for i in *.tgz; do tar xf $i; done
     # 解压后会有各产品的目录，包含各产品的后台包以及 SaaS 包，需要将其拷贝 /data/tmp/src 目录下
     # 拷贝各产品后台包
-    for pkg in $(find bklog bkmonitorv3 -name "bk*.tgz"); do cp -a $pkg /data/src; done
+    for pkg in $(find bklog bkmonitorv3 -name "bk*.tgz"); do cp -a $pkg /data/tmp/src; done
     # 拷贝各产品 SaaS 包
-    for pkg in $(find bklog bkmonitorv3 -name "bk_*.tar.gz"); do cp -a $pkg /data/src/official_saas/; done
+    for pkg in $(find bklog bkmonitorv3 -name "bk_*.tar.gz"); do cp -a $pkg /data/tmp/src/official_saas/; done
     ```
 
 ## 数据备份
