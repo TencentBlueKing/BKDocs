@@ -60,6 +60,12 @@
 
 ### 1.5 配置 install.config
 
+**说明：**
+
+- gse 与 redis 需要部署在同一台机器上。
+- 当含多个内网 IP 时，默认使用  /sbin/ifconfig 输出中的第一个内网 IP。
+- 部署需要使用标准私有地址，若企业环境使用非标准私有地址，请参考 [环境准备-非标准私有地址处理方法](../环境准备/get_ready.md#非标准私有地址处理方法)
+
 ```bash
 # 请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
 cat << EOF >/data/install/install.config
