@@ -152,11 +152,7 @@ mv /data/src /data/src.bak
     echo "BK_MONITOR_TRANSFER_REDIS_PASSWORD=${BK_REDIS_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/bkmonitorv3.env
     echo "BK_MONITOR_ALERT_ES7_PASSWORD=${BK_ES7_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/bkmonitorv3.env
     ```
-4. 同步部署脚本
-    ```bash
-    ./bkcli install bkenv
-    ./bkcli sync common
-    ```
+
 
 ### 开始更新
 
