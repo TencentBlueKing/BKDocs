@@ -376,3 +376,56 @@ EOF
 ## 因需要检查所有的 api，花费的时间较长，请耐心等待
 ./bkcli check bkapi bk_job
 ```
+
+## 升级后操作
+### 升级 agent 以及相关插件
+- 升级完成后，请前往节点管理页面操作
+    1. 升级 agent、p-agent 以及采集器相关插件
+    2. 重装 Proxy （涉及 proxy 二进制改动，gse_data 将取代 gse_transit，gse_transit 也在 6.1 版本下线）
+    3. 由于在 6.1.2 及后续版本中，basereport、processbeat 合入了 bkmonitorbeat，所以升级后需要将所有的机器安装 bkmonitorbeat 插件
+    ![install_bkmonitorbeat](../../assets/install_bkmonitorbeat.png)
+    1. 停止所有机器上的 basereport、processbeat 插件（该步骤需要在步骤 3 操作完后方可操作）
+    ![stop_bp](../../assets/stop_bp.png)
+    1. 停用 basereport、processbeat 插件（该步骤需要在步骤 4 操作完后方可操作）
+    ![disable_bp](../../assets/disable_bp.png)
+### 下架故障自愈
+1. 确保故障自愈再升级迁移数据无问题后再进行操作
+```bash
+pcmd -m fta "systemctl disable --now bk-fta.service"
+sed -i 's/fta,//g' /data/install/install.config
+./bkcli sync common
+# 清理 fta 版本信息
+mysql --login-path=mysql-default -e "delete from bksuite_common.production_info where code='fta';"
+```
+2. 前往【PaaS 平台】-【开发者中心】-【S-mart 应用】 下架故障自愈。
+### 还原 bkci 以及 bcs 软件包
+如果之前有部署 bkci 以及 bcs 的用户，请按照该方式将相关包进行还原 `没有部署请忽略该步骤`
+```bash
+# bkci
+mv /data/src.bak/ci/ /data/src/
+# bcs
+mv /data/src.bak/public-images-community.tar.gz /data/src/
+mv /data/src.bak/bcs_cc-ce-1.0.28.tar.gz /data/src/
+mv /data/src.bak/python.tar.gz /data/src/
+mv /data/src.bak/docker-18.09.5.tgz /data/src/
+mv /data/src.bak/etcd-v3.3.12-linux-amd64.tar.gz /data/src/
+mv /data/src.bak/mongodb-linux-x86_64-2.4.10.tgz /data/src/
+mv /data/src.bak/jdk8.tar.gz /data/src/
+mv /data/src.bak/bk_bcs_app_V1.3.21.tar.gz /data/src/
+mv /data/src.bak/bcs-prom-k8s-ce-1.1.1.tar.gz /data/src/
+mv /data/src.bak/harbor_api_ce-1.1.1.tgz /data/src/
+mv /data/src.bak/docker-compose /data/src/
+mv /data/src.bak/kubeops-ce_v1.tar.gz /data/src/
+mv /data/src.bak/cryptools /data/src/
+mv /data/src.bak/etcd-v3.4.13-linux-amd64.tar.gz /data/src/
+mv /data/src.bak/harbor_charts-1.0.6.tar.gz /data/src/
+mv /data/src.bak/bcs-service.ce.1.18.10-20.11.05.2011052349.tar.gz /data/src/
+mv /data/src.bak/harbor_server-v1.7.6.tar.gz /data/src/
+mv /data/src.bak/bk_bcs_monitor_V1.5.4.tar.gz /data/src/
+mv /data/src.bak/devops-ce-1.0.29.11.tgz /data/src/
+mv /data/src.bak/bcs_web_console-ce-V1.3.21.tar.gz /data/src/
+mv /data/src.bak/java8.tgz /data/src/
+mv /data/src.bak/bcs-monitor-ce-1.2.12-1.el7.x86_64.rpm /data/src/
+mv /data/src.bak/bcs-thanos-ce-1.2.12-1.el7.x86_64.rpm /data/src/
+```
+如更新过程有任何疑问及问题，请前往蓝鲸社区群 (495299374) 联系值班蓝鲸助手获取技术支持。
