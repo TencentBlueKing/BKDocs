@@ -35,7 +35,7 @@
    ```bash
    cd /data
    # 包名请根据实际情况填写
-   tar xf bkce_basic_suite-6.1.1.tgz
+   tar xf bkce_basic_suite-6.1.2.tgz
    ```
 
 2. 解压各个产品软件包

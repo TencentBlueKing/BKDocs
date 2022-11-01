@@ -1,6 +1,6 @@
 ## 适用范围
 
-6.0.5 升级至 6.1.0
+6.0.5 升级至 6.1.2
 
 ## 说明
 
@@ -11,7 +11,7 @@
 
 ## 获取更新产品信息
 
-本次社区版 6.1.0 更新涉及产品，请查看 [版本日志](https://bk.tencent.com/docs/document/6.0/156/11922)。
+本次社区版 6.1.2 更新涉及产品，请查看 [版本日志](https://bk.tencent.com/docs/document/6.0/156/11922)。
 
 获取目前自身环境下的版本，以避免升级过程带来的问题：
 
@@ -27,8 +27,8 @@ cd /data/src; grep . */*VERSION */*/VERSION
 
 1. 下载相关产品包。请前往 [蓝鲸下载页](https://bk.tencent.com/download/) 下载。
 
-   - 基础套餐包 (bkce_basic_suite-6.1.1-beta1.tgz)
-   - 监控告警及日志服务套餐包 (bkce_co_package-6.1.0.tgz)
+   - 基础套餐包 (bkce_basic_suite-6.1.2.tgz)
+   - 监控告警及日志服务套餐包 (bkce_co_package-6.1.2.tgz)
 
 2. 将相关产品包上传至服务器 /data 目录。
 
@@ -39,19 +39,19 @@ cd /data/src; grep . */*VERSION */*/VERSION
     mkdir /data/tmp
 
     #将基础套餐包、监控告警及日志服务套餐包解压至临时存放目录
-    tar xf bkce_basic_suite-6.1.1-beta1.tgz -C /data/tmp/
-    tar xf bkce_co_package-6.1.0.tgz -C /data/tmp/
+    tar xf bkce_basic_suite-6.1.2.tgz -C /data/tmp/
+    tar xf bkce_co_package-6.1.2.tgz -C /data/tmp/
 
-    # 解压增强包监控平台、日志平台、故障自愈整包
+    # 解压增强包监控平台、日志平台整包
     cd /data/tmp/
     for i in *.tgz; do tar xf $i; done
 
     # 解压后会有各产品的目录，包含各产品的后台包以及 SaaS 包，需要将其拷贝 /data/tmp/src 目录下
     # 拷贝各产品后台包
-    for pkg in $(find bklog bkmonitorv3 fta -name "bk*.tgz" -o -name "fta*.tar.gz"); do cp -a $pkg src; done
+    for pkg in $(find bklog bkmonitorv3 -name "bk*.tgz"); do cp -a $pkg src; done
 
     # 拷贝各产品 SaaS 包
-    for pkg in $(find bklog bkmonitorv3 fta -name "bk_*.tar.gz"); do cp -a $pkg src/official_saas/; done
+    for pkg in $(find bklog bkmonitorv3 -name "bk_*.tar.gz"); do cp -a $pkg src/official_saas/; done
     ```
 
 ## 数据备份
@@ -83,7 +83,7 @@ cd /data/src; grep . */*VERSION */*/VERSION
 
     ignoredblist='information_schema|mysql|test|db_infobase|performance_schema|sys'
 
-    dblist="$(mysql --login-path=default-root -Nse "show databases;"|grep -Ewv "$ignoredblist"|xargs echo)"
+    dblist="$(mysql --login-path=default-root -Nse"show databases;"|grep -Ewv "$ignoredblist" | xargs echo)"
 
     mysqldump --login-path=default-root --skip-opt --create-options --default-character-set=utf8mb4 -R  -E -q -e --single-transaction --no-autocommit --master-data=2 --max-allowed-packet=1G  --hex-blob  -B  $dblist > /data/dbbak/bk_mysql_alldata.sql
 
@@ -154,10 +154,10 @@ mv /data/src /data/src.bak
 
 2. 配置 install.config
 
-    本次升级，新增了监控的 monitorv3(unify-query) 模块，请合理评估机器资源后，将其分布在 install.config 文件中。可参考下述默认的模块分布。
+    本次升级，新增了监控的 monitorv3(unify-query)，monitorv3(ingester) 模块，请合理评估机器资源后，将其分布在 install.config 文件中。可参考下述默认的模块分布。
 
     ```config
-    10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana)
+    10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana),monitorv3(ingester)
     10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk,monitorv3(unify-query)
     10.0.0.3 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman),log(grafana)
     ```
@@ -172,6 +172,9 @@ mv /data/src /data/src.bak
     echo "BK_BKLOG_REDIS_PASSWORD=${BK_REDIS_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/bklog.env
     echo "BK_JOB_ENCRYPT_PASSWORD=$(rndpw 16)" >> /data/install/bin/03-userdef/job.env
     echo "BK_JOB_MANAGE_SERVER_HOST0=${BK_JOB_IP0}" >> /data/install/bin/03-userdef/job.env
+    echo "BK_USERMGR_REDIS_PASSWORD=${BK_REDIS_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/usermgr.env
+    echo "BK_MONITOR_TRANSFER_REDIS_PASSWORD=${BK_REDIS_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/bkmonitorv3.env
+    echo "BK_MONITOR_ALERT_ES7_PASSWORD=${BK_ES7_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/bkmonitorv3.env
     ```
 
 4. 同步部署脚本
@@ -198,7 +201,7 @@ mv /data/src /data/src.bak
 
 ```bash
 # 清理 paas 虚拟环境
-for module in open_paas-apigw open_paas-appengine open_paas-console open_paas-esb open_paas-login open_paas-paas; do pcmd -m paas "rmvirtualenv $module"; done
+for module in open_paas-apigw open_paas-appengine open_paas-esb open_paas-login open_paas-paas; do pcmd -m paas "rmvirtualenv $module"; done
 
 # 开始更新
 ./bkcli sync paas
@@ -213,17 +216,30 @@ source tools.sh
 add_saas_environment
 ```
 
+### 同步 console nginx 配置文件
+
+```bash
+pcmd -m nginx "rsync -av --delete /data/install/support-files/templates/nginx/*.conf /etc/consul-template/templates"
+pcmd -m nginx "systemctl  reload consul-template.service"
+```
+
+### 部署 paas_plugins
+
+```bash
+./bk_install paas_plugin
+```
+
 ### 更新 PaaS-Agent
 
-1. 更新 appo 以及 appt 环境
+更新 appo 以及 appt 环境
 
-    ```bash
-    ./bkcli sync appo
-    ./bkcli sync appt
+```bash
+./bkcli sync appo
+./bkcli sync appt
 
-    ./bkcli upgrade appo
-    ./bkcli upgrade appt
-    ```
+./bkcli upgrade appo
+./bkcli upgrade appt
+```
 
 ### 权限中心
 
@@ -253,9 +269,7 @@ pcmd -m usermgr "rmvirtualenv usermgr-api"
 
     ```bash
     # 新增 gse_config 服务，需要走部署逻辑
-    ./bkcli sync gse
-    ./bkcli install gse
-    ./bkcli restart gse
+    ./bkcli upgrade gse
     ./bkcli status gse
     ```
 
@@ -320,30 +334,32 @@ pcmd -m usermgr "rmvirtualenv usermgr-api"
 由于 v3.10 版本对模型实例与关系相关的的产品形态、功能管理、数据存储等进行了全面的梳理；并结合后续 bk-cmdb 对资源数据的管理需求增长的需求，对通用模型实例与关系管理的后台架构进行了调整，并对产品侧做了一些调整、优化。所以在升级之前，需要对低版本的数据进行检查。更多详情请参考 [
 v3.10 版本升级指引](https://github.com/Tencent/bk-cmdb/issues/5308)
 
-- 对全部数据进行校验，包括唯一校验规则和无进程关系的进程数据的校验
+`注意：` 不符合唯一校验规则的数据，需要根据 ERROR 提示清理对应的唯一校验规则。如未进行清理，请勿继续升级，否则在升级完成后相关的功能会存在问题。
+
+- 对全部数据进行校验，包括 `唯一校验规则` 和 `无进程关系` 的进程数据的校验
 
     ```bash
     source /data/install/utils.fc
     cd /data/src/cmdb/server/bin
 
-    ./tool_ctl  migrate-check --check-all=true  --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0" | grep ERROR
+    # 关注 ERROR 级别的错误
+    ./tool_ctl migrate-check --check-all=true --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0"
     ```
 
-- 仅校验唯一校验规则，输出不符合规则的数据
+- 仅校验 `唯一校验规则`，输出不符合规则的数据
 
     ```bash
-    ./tool_ctl migrate-check unique --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0" | grep ERROR
+    # 关注 ERROR 级别的错误
+    ./tool_ctl migrate-check unique --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0"
     ```
 
-    需要根据 ERROR 的提示清理对应唯一校验规则
-
-- 仅校验无进程关系的进程数据，输出不符合规则的数据
+- 仅校验 `无进程关系` 的进程数据，输出不符合规则的数据
 
     ```bash
     ./tool_ctl migrate-check process --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0"
     ```
 
-    如果校验无进程关系的进程数据全部都可以清理，可使用下述命令进行清理，如果不可以，则需要手动处理这些数据
+    `注意：` 请确认上述命令输出 ERROR 不符合规则的数据是否可以清理。如果校验 `无进程关系` 的进程数据全部都可以清理，可使用下述命令进行清理，如果不可以，则需要手动确认处理这些数据。如未进行清理，请勿继续升级，否则在升级完成后相关的功能会存在问题。
 
     ```bash
     ./tool_ctl migrate-check process --clear-proc=true --mongo-uri="mongodb://$BK_CMDB_MONGODB_USERNAME:$BK_CMDB_MONGODB_PASSWORD@mongodb.service.consul:27017/cmdb" --mongo-rs-name="rs0"
@@ -354,12 +370,12 @@ v3.10 版本升级指引](https://github.com/Tencent/bk-cmdb/issues/5308)
 #### 开始升级
 
 ```bash
-mysql --login-path=mysql-default -e "use bk_iam; insert into authorization_authapiallowlistconfig(creator, updater, created_time, updated_time, type, system_id, object_id) value('', '', now(), now(), 'authorization_instance', 'bk_cmdb', '*');"
+mysql --login-path=mysql-default -e "use bk_iam; insert into authorization_authapiallowlistconfig(creator, updater, created_time, updated_time, type, system_id, object_id) value('', '', now(), now(),'authorization_instance','bk_cmdb','*');"
 
 ./bkcli sync cmdb
 ./bkcli install cmdb
 ./bkcli restart cmdb
-./bkcli status cmdb
+./bkcli status cmdb  # 主要关注 bk-cmdb-admin.service 是否为 active 即可
 ./bkcli initdata cmdb
 ./bkcli check cmdb
 ```
@@ -369,6 +385,7 @@ mysql --login-path=mysql-default -e "use bk_iam; insert into authorization_autha
 #### 开始升级
 
 ```bash
+# upgrade 需要较长的时间，请耐心等待
 ./bkcli upgrade job
 ./bkcli check job
 ````
@@ -381,11 +398,13 @@ mysql --login-path=mysql-default -e "use bk_iam; insert into authorization_autha
 ssh $BK_JOB_IP
 source /data/install/utils.fc
 
-# from_version 升级前 JOB 版本， to_version 需要的 JOB 版本，实际升级过程中请注意替换为实际的版本号
+# from_version 为升级前的 JOB 版本， to_version 为需要升级的 JOB 版本，实际升级过程中请注意替换为实际的版本号
+# from_version 可在中控机使用该命令查询：cat /data/src.bak/job/VERSION
+# to_version 可在中控机使用该命令查询：cat /data/src/job/VERSION
 from_version=xxxx
 to_version=xxxx
 
-
+# 执行完两个命令后，会在执行命令的当前目录生成 biz_set_list.json 文件
 /usr/bin/java -Dfile.encoding=utf8 -Djob.log.dir=$INSTALL_PATH/logs/job -Dconfig.file=$INSTALL_PATH/etc/job/upgrader/upgrader.properties -jar $INSTALL_PATH/job/backend/upgrader-$to_version.jar $from_version $to_version BEFORE_UPDATE_JOB
 
 /usr/bin/java -Dfile.encoding=utf8 -Djob.log.dir=$INSTALL_PATH/logs/job -Dconfig.file=$INSTALL_PATH/etc/job/upgrader/upgrader.properties -Djob.manage.server.address=$BK_JOB_IP:10505 -jar $INSTALL_PATH/job/backend/upgrader-$to_version.jar $from_version $to_version AFTER_UPDATE_JOB
@@ -399,50 +418,88 @@ rm -fv /data/bkce/etc/job/job-*/*.properties
 
 ##### 迁移 CMDB 业务集
 
-1. 获取 changeBizSetId.js 文件，该文件在中控机的 /data/src/job/support-files/bk-cmdb/ 目录
+1. 在执行完上述两个 `/usr/bin/java` 命令的当前目录会生成 biz_set_list.json 文件，并使用 `biz_set_list.json` 中的数据替换 changeBizSetId.js 脚本文件中的占位符 ${biz_set_list}，该文件位于中控机的 /data/src/job/support-files/bk-cmdb/ 目录下。
 
-2. 在执行上述步骤的当前目录会生成 biz_set_list.json 文件，将其中的数据替换 changeBizSetId.js 脚本文件中的占位符 ${biz_set_list}
+    ```bash
+    # 中控机操作
+    vim /data/src/job/support-files/bk-cmdb/changeBizSetId.js
 
-3. 将 changeBizSetId.js 同步至 MongoDB 的 /data 目录
+    # 替换前
+    var jsonVal=${biz_set_list};
+
+    # 替换后，请以实际生成 biz_set_list.json 中的数据为准
+    var jsonVal=[{"biz_set_id":9991001,"biz_set_name":"BlueKing"}]
+    ```
+
+2. 将 changeBizSetId.js 同步至 MongoDB 的 /data 目录
 
    ```bash
    source /data/install/utils.fc
    rsync -avgz /data/src/job/support-files/bk-cmdb/changeBizSetId.js root@$BK_MONGODB_IP:/data
    ```
 
-4. 执行完成 CMDB 中的业务集 ID 更改命令
+
+3. 执行完成 CMDB 中的业务集 ID 更改命令
 
    ```bash
    ssh $BK_MONGODB_IP
    source /data/install/utils.fc
 
    mongo cmdb -u $BK_CMDB_MONGODB_USERNAME -p $BK_CMDB_MONGODB_PASSWORD --host $BK_CMDB_MONGODB_HOST --port $BK_CMDB_MONGODB_PORT /data/changeBizSetId.js
+
+   #如果输出内容如下则表示正常
+   MongoDB shell version v4.2.3
+   connecting to: mongodb://mongodb.service.consul:27017/cmdb?compressors=disabled&gssapiServiceName=mongodb
+   Implicit session: session {"id" : UUID("xxx-xxx-xxx-xxxx-xxxx") }
+   MongoDB server version: 4.2.3
    ```
 
-5. 确认需要迁移的业务集均已在 CMDB 存在且 ID 与原 Job 中 ID 一致
+4. 确认需要迁移的业务集均已在 CMDB 存在且 ID 与原 Job 中 ID 一致
 
     ```bash
     ssh $BK_JOB_IP
     source /data/install/utils.fc
 
-    # from_version 升级前 JOB 版本， to_version 需要升级的 JOB 版本，实际升级过程中请注意替换为实际的版本号
+    # from_version 为升级前的 JOB 版本， to_version 为需要升级的 JOB 版本，实际升级过程中请注意替换为实际的版本号
+    # from_version 可在中控机使用该命令查询：cat /data/src.bak/job/VERSION
+    # to_version 可在中控机使用该命令查询：cat /data/src/job/VERSION
     from_version=xxx
     to_version=xxxx
     /usr/bin/java -Dfile.encoding=utf8 -Djob.log.dir=$INSTALL_PATH/logs/job -Dconfig.file=$INSTALL_PATH/etc/job/upgrader/upgrader.properties -Dtarget.tasks=BizSetMigrationStatusUpdateTask -jar $INSTALL_PATH/job/backend/upgrader-$to_version.jar $from_version $to_version MAKE_UP true
     ```
 
-6. 对迁移后的业务集进行授权 (权限有效期为一年，过期后需要重新申请)
+5. 对迁移后的业务集进行授权 (权限有效期为一年，过期后需要重新申请)
 
    ```bash
    /usr/bin/java -Dfile.encoding=utf8 -Djob.log.dir=$INSTALL_PATH//logs/job -Dconfig.file=$INSTALL_PATH/etc/job/upgrader/upgrader.properties -Dtarget.tasks=BizSetAuthMigrationTask -jar $INSTALL_PATH/job/backend/upgrader-$to_version.jar $from_version $to_version MAKE_UP
-
    ```
 
 ### 更新节点管理
 
-```bash
-./bkcli stop bknodeman
+#### 备份节点管理
 
+为了避免在升级节点管理出现失败，建议单独备份节点管理数据库。
+
+```bash
+# 中控机执行
+pcmd -m nodeman "systemctl stop bk-nodeman.service"
+./bkcli stop saas-o bk_nodeman
+
+# 登陆至 mysql 机器开始备份
+ssh $BK_MYSQL_IP
+mysqldump --login-path=default-root \
+    --skip-opt --create-options \
+    --default-character-set=utf8mb4 -R \
+    -E -q -e --single-transaction \
+    --no-autocommit --master-data=2 \
+    --max-allowed-packet=1G --hex-blob \
+    -B "bk_nodeman" > /data/dbbak/bk_nodeman-$(date +%Y%m%d%H%M%S).sql
+```
+
+
+#### 更新节点管理后台代码
+
+```bash
 # 同步新版本文件至节点管理机器
 ./bkcli sync bknodeman
 
@@ -480,7 +537,9 @@ pcmd -m nodeman "rsync -a --delete --exclude=deploy --exclude="environ.sh" /data
   systemctl status bk-nodeman.service
   ```
 
-- 开始执行
+
+##### 方案一
+>调整原来的升级过程，将表结构变更过程交由后台执行
 
   ```bash
   export BK_FILE_PATH="/data/bkce/bknodeman/cert/saas_priv.txt"
@@ -488,25 +547,60 @@ pcmd -m nodeman "rsync -a --delete --exclude=deploy --exclude="environ.sh" /data
   ./bin/manage.sh migrate node_man
   ```
 
-- 更新数据
+##### 方案二
+
+> 提前执行原生的变更 SQL，在不调整升级顺序的情况下完成大数据表变更，防止 SaaS 安装超时
+
+1. 获取当前时间
+   
+   ```bash
+   date +%F" "%T:%S
+   ```
+
+2. 登录数据库
+   
+   ```bash
+   mysql --login-path=mysql-nodeman
+   use bk_nodeman;
+   ```
+
+3. 执行数据变更`sql`
+   
+   ```sql
+   ALTER TABLE `node_man_host` ADD COLUMN `bk_host_name` varchar(128) DEFAULT '' NULL;
+   ALTER TABLE `node_man_host` ALTER COLUMN `bk_host_name` SET DEFAULT NULL;
+   ALTER TABLE `node_man_subscriptioninstancerecord` MODIFY `instance_id` varchar(128) NOT NULL;
+   CREATE INDEX `node_man_host_bk_host_name_0931be75` ON `node_man_host` (`bk_host_name`);
+   ALTER TABLE `node_man_subscriptionstep` DROP INDEX `node_man_subscriptionstep_subscription_id_index_7a8cc815_uniq`;
+   ```
+
+4. 插入`migrate`标记记录，需要替换以下`sql`内的时间字段为当前时间
+   
+   ```sql
+   INSERT INTO `django_migrations` (`app`, `name`, `applied`) VALUES ("node_man", "0064_auto_20220721_1557", "2022-09-26 12:08:45");
+   INSERT INTO `django_migrations` (`app`, `name`, `applied`) VALUES ("node_man", "0065_alter_subscriptionstep_unique_together", "2022-09-26 12:08:45");
+    ```
+
+#### 更新数据
 
   ```bash
   # 大约需要 10s，执行失败会 cat 日志
   ./bin/manage.sh upgrade_old_data >> /tmp/nodeman_upgrade_old_data.log || cat /tmp/nodeman_upgrade_old_data.log
   ```
 
-- 升级周边系统关联订阅
+#### 升级周边系统关联订阅
 
   ```bash
   # 查询 DB 中订阅 ID 的最大值  `$SUB_MAX` ，并作为迁移脚本的输入参数
-  # 切换至中控机执行查询
-  mysql --login-path=mysql-default -D$BK_NODEMAN_MYSQL_NAME -P$BK_NODEMAN_MYSQL_PORT -N -s -e 'select max(id) from node_man_subscription;'
+  # 切换至中控机执行查询，或者对应机器安装 mysql 命令：yum -y install mysql-community-client.x86_64
+  source /data/install/utils.fc
+  SUB_MAX=$(mysql -h$BK_MYSQL_IP -u$BK_MYSQL_ADMIN_USER -p$BK_MYSQL_ADMIN_PASSWORD -N -s -e 'select max(id) from bk_nodeman.node_man_subscription;')
   ```
 
-- 开始升级
+- 开始升级周边系统关联订阅
 
   ```bash
-  # $SUB_MAX 为上述数据查询的最大订阅值，请注意替换
+  # 执行前请确认 SUB_MAX 已渲染为数据库中查询的值
   ./upgrade/2.0to2.1/batch_transfer_old_sub.sh --help
   ./upgrade/2.0to2.1/batch_transfer_old_sub.sh -b 1 -e $SUB_MAX -E -s 3
   ```
@@ -521,9 +615,9 @@ pcmd -m nodeman "rsync -a --delete --exclude=deploy --exclude="environ.sh" /data
 - 分片执行任务预览
 
   ```bash
-  [1]   Running               nohup ./bin/manage.sh transfer_old_sub 1 635 >> xxx 2>&1  &
-  [2]-  Running               nohup ./bin/manage.sh transfer_old_sub 636 1270 >> xxx 2>&1  &
-  [3]+  Running               nohup ./bin/manage.sh transfer_old_sub 1271 1905 >> xxx 2>&1 &
+    [1]-  Running                 nohup ./bin/manage.sh transfer_old_sub 1 3 --enable >> /tmp/node_man_upgrade_1_5_20220819-101928_enable/transfer_old_sub_1_3.log 2>&;1 &;
+    [2]+  Running                 nohup ./bin/manage.sh transfer_old_sub 4 6 --enable >> /tmp/node_man_upgrade_1_5_20220819-101928_enable/transfer_old_sub_4_6.log 2>&;1 &;
+    check_command -> grep -E '.*([[:digit:]]+[[:space:]]/[[:space:]][[:digit:]]+|total_cost)' /tmp/node_man_upgrade_1_5_20220819-101928_enable/transfer_old_sub_*
   ```
 
 - 查询数据升级进度
@@ -532,7 +626,7 @@ pcmd -m nodeman "rsync -a --delete --exclude=deploy --exclude="environ.sh" /data
   # 进入脚本输出的日志所在目录，以实际的为主
   cd /tmp/node_man_upgrade_1_xx_xxxxxx_enable
 
-  # 查询执行进度
+  # 查询执行进度，
   grep -E '.*([[:digit:]]+[[:space:]]/[[:space:]][[:digit:]]+|total_cost)' *
 
   # 执行完成标志，该目录下的所有日志文件都匹配到 total_cost
@@ -553,7 +647,68 @@ pcmd -m nodeman "rsync -a --delete --exclude=deploy --exclude="environ.sh" /data
 ./bkcli initdata nodeman
 ```
 
-### 监控平台
+### 标准运维
+
+```bash
+./bk_install saas-o bk_sops
+```
+
+### 监控平台、故障自愈
+
+由于在 6.1 的版本里，故障自愈合入了监控平台，所以本次升级将监控平台以及故障自愈一起说明。
+
+#### 重要说明
+
+##### 迁移影响
+
+由于故障自愈产品形态后台架构完全不同，因此本次迁移仅作数据迁移，以下几点需要在迁移之后进行人工确认
+
+1. 告警源： 由于监控告警源对接为新模块，其中 rest 推送和 zabbix 告警源在迁移之后，需要根据新版本的说明重新进行推送事件的配置才能生效。原有的监控 3.2 对接不再支持
+2. 部分组合套餐包含了内置套餐（进程 CPU 和 MEM TOP10 发送, 磁盘清理）和 使用了标准运维套餐为节点的，由于迁移不支持子流程迁移， 需要用户手动配置确认
+3. 所有的自愈接入策略迁移之后，将会关闭原有自愈接入，新版本默认为不开启状态，需要用户确认
+4. 原对接监控平台的自愈接入，如果设置了监控目标，请注意检查原策略是否设置了有设置监控目标，如果无， 请设置为全业务，否则小目标范围优先生效的规则将不生效。
+
+##### 迁移内容
+
+1. 内置处理套餐的迁移
+
+    包括以下五项，均通过调用标准运维流程实现， 其中原有的磁盘清理迁移之后为标准运维磁盘清理流程，可通过选择标准运维类型套餐来进行内置磁盘清理配置
+    - 【快捷套餐】微信发送内存使用率 Top 10 进程
+    - 【快捷套餐】微信发送 CPU 使用率 Top 10 进程
+    - 【快捷套餐】转移主机至故障机模块
+    - 【快捷套餐】转移主机至空闲机模块
+    - 【自愈套餐】磁盘清理 (适用于 Linux)
+
+2. 普通套餐的迁移
+
+    - 原有的作业平台和标准运维套餐保持类型不变
+    - 原有的 http 回调调整为 webhook 回调
+    - 原有的通知不做迁移，默认使用监控的通知
+    - 原有的组合套餐迁移采用标准运维流程实现，现有自愈不再支持组合套餐功能
+
+3. 告警源的迁移， 目前支持以下四个告警源
+
+    - rest 拉取
+    - rest 推送
+    - zabbix
+    - 原有的监控平台对接直接接入新版监控策略
+
+4. 自愈接入的迁移
+
+    - 所有自愈接入的内容，将会在监控策略对应业务下创建对应的策略
+    - 原有自愈接入的通知方式和人员信息，将以告警组的方式进行迁移
+    - 原有的全局防御，目前迁移为同策略下的告警防御策略，见策略详情告警处理部分
+
+#### 开始升级
+
+1. 迁移需要配置  `BKAPP_NEED_MIGRATE_FTA = True` 环境变量。步骤：访问 【PaaS 平台】 - 【开发者中心】 - 选择【监控平台】- 添加 【环境变量】
+2. 迁移是通过直连故障自愈的 DB 进行数据迁移，故障自愈 DB 如果在默认的 MySQL 服务器上，则不需要配置 DB 信息，如果自愈为独立 DB，则需要配置以下几个环境变量
+
+    - BKAPP_FTA_DB_NAME： DB 名称
+    - BKAPP_FTA_DB_USERNAME： 用户名
+    - BKAPP_FTA_DB_PASSWORD： 密码
+    - BKAPP_FTA_DB_HOST： 服务器 IP 或域名
+    - BKAPP_FTA_DB_PORT： DB 端口
 
 ```bash
 # 更新监控平台 SaaS
@@ -566,8 +721,25 @@ pcmd -m monitorv3 "rmvirtualenv bkmonitorv3-monitor"
 ./bkcli restart bkmonitorv3
 ./bkcli status bkmonitorv3
 
-# 建议等待 10s 后再 check
-sleep 10 && ./bkcli check bkmonitorv3
+./bkcli check bkmonitorv3
+```
+
+#### 检查数据迁移情况
+
+访问 PaaS 平台，打开【监控平台】-【配置】- 【处理套餐】查看数据是否迁移过来。
+
+如果自动迁移失败，需要手动尝试，可通过在 APPO 的机器上手动执行：bk_biz_id 为对应的业务 ID，多个以逗号分隔
+
+```bash
+source /data/install/utils.fc
+ssh $BK_APPO_IP
+
+# 请注意替换 <bk_biz_id> 为实际的业务 ID
+docker exec -i $(docker ps -aqf "name=^bk_monitorv3-")  bash <<EOF
+export BK_FILE_PATH=/data/app/code/conf/saas_priv.txt
+cd /data/app/code/
+/cache/.bk/env/bin/python manage.py migrate_fta_strategy <bk_biz_id>
+EOF
 ```
 
 ### 日志平台
@@ -582,18 +754,6 @@ pcmd -m log "rmvirtualenv bklog-api"
 ./bkcli status bklog
 ```
 
-### 故障自愈
-
-```bash
-./bkcli install saas-o bk_fta_solutions
-```
-
-### 标准运维
-
-```bash
-./bk_install saas-o bk_sops
-```
-
 ### 流程服务
 
 > 升级流程服务时，当前版本不能低于 2.6.0 版本，如果低于该版本，请先升级至 2.6.0 版本
@@ -603,7 +763,7 @@ pcmd -m log "rmvirtualenv bklog-api"
 
 - 如果已经通过单产品更新的用户请忽略该步骤，可直接进入下述步骤 (2.6.1) 版本升级
 
-- 下载 2.6.0 的 SaaS 包 [点击下载](https://bkopen-1252002024.file.myqcloud.com/ce/d64e32f/bk_itsm_V2.6.0.365-ce-bkofficial.tar.gz)
+- 下载 2.6.0 的 SaaS 包
 
     ```bash
     cd /data/src/official_saas && wget https://bkopen-1252002024.file.myqcloud.com/ce/d64e32f/bk_itsm_V2.6.0.365-ce-bkofficial.tar.gz
@@ -629,7 +789,7 @@ pcmd -m log "rmvirtualenv bklog-api"
 2. 开始升级
 
     ```bash
-    ./bk_install saas-o bk_itsm=2.6.1.385
+    ./bk_install saas-o bk_itsm=2.6.2
     ```
 
 ### 升级拓扑
@@ -668,6 +828,8 @@ pcmd -m log "rmvirtualenv bklog-api"
 
 ```bash
 # 中控机执行
+# 去除 fta 安装标记
+pcmd -m fta "sed -i '/fta/d' /data/bkce/.installed_module"
 ./bkcli initdata topo
 ```
 
@@ -718,12 +880,42 @@ cd /data/install && echo bkssm bkiam usermgr paas cmdb gse job consul bklog bkmo
 
 ## 升级后操作
 
+### 升级 agent 以及相关插件
+
 - 升级完成后，请前往节点管理页面操作
 
     1. 升级 agent、p-agent 以及采集器相关插件
     2. 重装 Proxy （涉及 proxy 二进制改动，gse_data 将取代 gse_transit，gse_transit 也在 6.1 版本下线）
+    3. 由于在 6.1.2 及后续版本中，basereport、processbeat 合入了 bkmonitorbeat，所以升级后需要将所有的机器安装 bkmonitorbeat 插件
 
-- 如果之前有部署 bkci 以及 bcs 的用户，请按照该方式将相关包进行还原 (` 没有部署请忽略该步骤 `)
+    ![install_bkmonitorbeat](../../assets/install_bkmonitorbeat.png)
+
+    1. 停止所有机器上的 basereport、processbeat 插件（该步骤需要在步骤 3 操作完后方可操作）
+
+    ![stop_bp](../../assets/stop_bp.png)
+
+    1. 停用 basereport、processbeat 插件（该步骤需要在步骤 4 操作完后方可操作）
+
+    ![disable_bp](../../assets/disable_bp.png)
+
+### 下架故障自愈
+
+1. 确保故障自愈再升级迁移数据无问题后再进行操作
+
+```bash
+pcmd -m fta "systemctl disable --now bk-fta.service"
+sed -i 's/fta,//g' /data/install/install.config
+./bkcli sync common
+
+# 清理 fta 版本信息
+mysql --login-path=mysql-default -e "delete from bksuite_common.production_info where code='fta';"
+```
+
+2. 前往【PaaS 平台】-【开发者中心】-【S-mart 应用】 下架故障自愈。
+
+### 还原 bkci 以及 bcs 软件包
+
+如果之前有部署 bkci 以及 bcs 的用户，请按照该方式将相关包进行还原 `没有部署请忽略该步骤`
 
 ```bash
 # bkci
@@ -755,4 +947,4 @@ mv /data/src.bak/bcs-monitor-ce-1.2.12-1.el7.x86_64.rpm /data/src/
 mv /data/src.bak/bcs-thanos-ce-1.2.12-1.el7.x86_64.rpm /data/src/
 ```
 
-如更新过程有任何疑问及问题，请前往蓝鲸社区群 (495299374) 联系值班蓝鲸助手获取技术支持，或者在本帖进行回复。
+如更新过程有任何疑问及问题，请前往蓝鲸社区群 (495299374) 联系值班蓝鲸助手获取技术支持。
