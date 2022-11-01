@@ -7,8 +7,15 @@
 
 #### URL
 
+ESB API
+
 > GET /api/c/compapi/v2/iam/admin/groups/{group_id}/members/
-> `特别说明:该 API 为ESB API` [ESB API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
+
+APIGateway2.0 API
+
+> GET /api/v1/open/admin/groups/{group_id}/members/
+
+> `特别说明: [ESB API 与 APIGateway2.0 API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
 
 
 #### Parameters

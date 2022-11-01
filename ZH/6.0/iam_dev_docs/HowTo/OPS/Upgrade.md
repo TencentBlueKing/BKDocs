@@ -59,7 +59,11 @@ curl http://{IAM_HOST}/version 确认版本号
 pip3 install PyMySQL
 ```
 
-2. 使用迁移脚本执行数据迁移
+2. 下载数据迁移脚本
+
+[migrate_subject_system_group.py](https://raw.githubusercontent.com/TencentBlueKing/bk-iam/master/build/support-files/migrate_subject_system_group.py)
+
+3. 使用迁移脚本执行数据迁移
 
 ```bash
 python3 migrate_subject_system_group.py -H {db_host} -P 3306 -u {db_user} -p {db_password} -D {db_name} migrate
@@ -72,7 +76,7 @@ python3 migrate_subject_system_group.py -H {db_host} -P 3306 -u {db_user} -p {db
 - db_password: 权限中心后台数据库 密码
 - db_name: 权限中心后台数据库 db库名
 
-3. 检查数据迁移结果
+4. 检查数据迁移结果
 
 ```bash
 python3 migrate_subject_system_group.py -H {db_host} -P 3306 -u {db_user} -p {db_password} -D {db_name} check
@@ -81,7 +85,7 @@ python3 migrate_subject_system_group.py -H {db_host} -P 3306 -u {db_user} -p {db
 说明:
 - 数据迁移过程中不要在权限中心SaaS做用户组授权相关的操作
 
-4. 升级权限中心后台
+5. 升级权限中心后台
 
 ### 2.2 异常处理
 
