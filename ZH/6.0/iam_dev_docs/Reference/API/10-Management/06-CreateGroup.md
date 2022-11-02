@@ -5,8 +5,15 @@
 
 #### URL
 
+ESB API
+
 > POST /api/c/compapi/v2/iam/management/grade_managers/{grade_manager_id}/groups/
-> `特别说明:该 API 为ESB API` [ESB API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
+
+APIGateway2.0 API
+
+> POST /api/v1/open/management/grade_managers/{grade_manager_id}/groups/
+
+> `特别说明: [ESB API 与 APIGateway2.0 API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
 
 
 #### Parameters
@@ -32,7 +39,11 @@ groups
 |--------|--------|--------|--------|--------|
 | name |  string  | 是   | body |用户组名称，至少 5 个字符，同一个分级管理员下唯一 |
 | description | string | 是 | body | 用户组描述，至少 10 个字符 |
-| readonly | bool | 否 | body |可选参数，默认为 false, 用户组仅仅可读，true 时，则无法用户组在权限中心产品上将无法删除 |
+| readonly | bool | 否 | body |可选参数，默认为 false, 用户组仅仅可读 |
+
+说明:
+
+readonly: True 时创建的用户组只能通过管理类api做管理, 在权限中心SaaS上该用户组只能查看, 不能做管理操作, 比如: 添加权限/添加成员/删除
 
 #### Request
 ```json
