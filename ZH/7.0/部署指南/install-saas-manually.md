@@ -94,11 +94,11 @@ SaaS 应用采用 `S-Mart` 包分发。
 <a id="deploy-bkce-saas-nodeman" name="deploy-bkce-saas-nodeman"></a>
 
 ### 部署节点管理（bk_nodeman）
-目前节点管理已经改为了 Charts 形态，通过 helmfile 进行部署。
+目前节点管理已经改为了 Charts 形态，通过 `helmfile` 命令进行部署。
 
 >**注意**
 >
->如果已经部署了 S-Mart 应用格式的节点管理，则无法直接升级。灰度期间建议卸载蓝鲸，重新部署。因为应用「基本信息」界面的“删除应用”按钮无法彻底删除。
+>如果已经部署了 S-Mart 应用格式的节点管理，则无法直接升级，需要清除数据库记录。因为应用「基本信息」界面的“删除应用”按钮仅为标记删除。
 
 安装节点管理之前，保障中控机上能解析 `bkrepo.$BK_DOMAIN` 的域名，因为安装时会自动调用脚本在 bkrepo 中创建 bucket。
 ``` bash
