@@ -4491,7 +4491,7 @@
 				},
 				"index": 29,
 				"title": "版本日志",
-				"url": "6.1/版本日志/v6005.md",
+				"url": "6.1/版本日志/v611.md",
 				"version": "6.1"
 			}
 		],
@@ -5922,6 +5922,25 @@
 		],
 		"source": {
 			"describe": "",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:常用信息"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
+					"summary": "7.0/版本日志/SUMMARY.md"
+				},
+				"index": 76,
+				"title": "版本日志",
+				"url": "7.0/版本日志/v700.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
 			"icon_url": "",
 			"page": "docs",
 			"type": "tag2:常用信息"
