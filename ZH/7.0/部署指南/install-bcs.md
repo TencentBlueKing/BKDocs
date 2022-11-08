@@ -41,6 +41,26 @@ kubectl get pod -n bcs-system -w
 >if grep -nFC 1 /secrets.yaml 03-bcs.yaml.gotmpl ; then echo patched; else sed -i '/resources[.]yaml[.]gotmpl/a\    - environments/default/bcs/secrets.yaml' 03-bcs.yaml.gotmpl && echo patch applied || echo failed to patch ; fi
 >```
 
+### 导入标准运维流程
+
+容器管理平台有 2 种方式新建集群：
+* 自建集群：由容器管理平台调用 标准运维 在指定主机上安装 k8s，这些主机需要提前安装蓝鲸 GSE Agent。
+* 导入集群：在容器管理平台中管理已有的 k8s 集群，你需要提供 kubeconfig 文件或者填写腾讯云访问凭据。
+
+如果你需要 “自建集群” 功能，则请完成本章节；如果仅使用 “导入集群” 功能，则可跳过本章节。
+
+
+使用 admin 账户登录 “蓝鲸桌面”，打开 “标准运维”。进入 “公共流程管理” 界面，展开 “导入” 按钮，选择 “导入 DAT 文件”。
+
+在新出现的 “导入 DAT” 窗口中，上传如下文件：
+* [自建集群所需的标准运维流程模板](https://bkopen-1252002024.file.myqcloud.com/ce7/files/bk7_bcs_sops_common_20221107.dat)
+
+上传成功后会显示导入列表，点击 “覆盖 ID 相同的流程” 按钮完成导入。如果此前有导入过流程，则导入列表下方会高亮提示 `其中4条流程与项目已有流程ID存在冲突`，请点击 “覆盖冲突项，并提交” 按钮。
+![](assets/bk_sops-common-import-bcs.png)
+
+>**提示**
+>
+>如果没有导入流程，或者流程 ID 不正确，则新建集群时会报错 “创建失败，请重试”。“查看日志” 里的 “标准运维任务” 步骤日志为 `running failed. CreateBkOpsTask err: Object not found: CommonTemplate(id=10001) does not exist.`
 
 ### 浏览器访问
 配置本地 hosts 进行访问
