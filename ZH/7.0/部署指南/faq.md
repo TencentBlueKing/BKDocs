@@ -1,6 +1,10 @@
 # 常见问题
-## 常用排查命令（必知必会）
-请先阅读官方文档：[应用故障排查 | Kubernetes](https://kubernetes.io/zh/docs/tasks/debug-application-cluster/debug-application/)
+## 问题排查
+请务必先查看 k8s 官方文档：
+* [集群故障排查](https://kubernetes.io/zh-cn/docs/tasks/debug/debug-cluster/) | 英文版：[Troubleshooting Clusters](https://kubernetes.io/docs/tasks/debug/debug-cluster/)
+* [应用故障排查](https://kubernetes.io/zh-cn/docs/tasks/debug/debug-application/) | 英文版：[Troubleshooting Applications](https://kubernetes.io/docs/tasks/debug/debug-application/)
+
+常用排查命令：
 1. 切换当前 context 的 namespace 到 `blueking` 。切换后，后面排查需要指定 `-n blueking` 的命令就可以省略了。
    ``` bash
    kubectl config set-context --current --namespace=blueking
