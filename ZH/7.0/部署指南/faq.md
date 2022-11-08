@@ -221,7 +221,7 @@ kubectl get pod -A | grep -wv Completed | grep -e "0/"
   * 解决办法：kubectl describe pod 查看阻塞原因，然后逐层 kubectl describe 导致阻塞的资源追溯拥有。常见情况为资源（CPU、内存及 pvc 等）不足，可以通过扩容 node 解决此类问题。
 * pod 启动失败。
   * 表现：pod 状态多次重启，状态为 `CrashLoopBackOff`。
-  * 解决办法：一般为卸载不彻底，请参考 《[卸载](uninstall.md)》 文档操作。
+  * 解决办法：请先找到 pod 的报错，并在本文搜索报错的核心关键词。如果本文没有处理案例，可咨询客服，或参考 《[卸载](uninstall.md)》 文档卸载后重新部署。
 * 镜像拉取超时。
   * 表现：在早期 kubectl describe pod 时可以看到 Events 显示 `Pulling image XXX`。如果发现较晚，则镜像可能拉取完毕，此时 kubectl get pod 无任何异常，且 pod 未曾重启过。
   * 解决办法：目前镜像策略都是复用现存镜像，可改用其他网络下载所需的镜像，然后导出为 tar 包，在上述 pod 所在的 node 导入。
@@ -312,6 +312,26 @@ kubectl get sc
 ``` bash
 helmfile -f 00-localpv.yaml.gotmpl sync
 ```
+
+### Service call failed
+基础套餐部署到 `bk-paas` 时超时，检查 `bkpaas3-apiserver-migrate-db` pod 的状态为 `CrashLoopBackoff` ，检查发现 `apiserver-bkrepo-init` 容器内出现日志：
+``` plain
+blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
+```
+因为日志上方提示请求 bkrepo 创建项目，故先检查 bkrepo-repository 的日志：
+``` plain
+2022-10-29 02:01:14.887 ERROR 9 --- [  XNIO-1 task-1] ExceptionLogger                          [TID: N/A] : User[anonymous] GET [/service/project/info/bkpaas] from [Api] failed[SystemErrorException]: [250115]Service unauthenticated, reason: Expired token
+```
+而 bkrepo-auth 中此 url 的最早日志为：
+``` plain
+2022-10-28 18:02:16.723 ERROR 9 --- [  XNIO-1 task-2] ExceptionLogger                          [TID: N/A] : User[admin] POST [/api/user/create/project] from [Api] failed[NoFallbackAvailableException]: No fallback available. Cause: [500 Internal Server Error] during [GET] to [http://bk-repo-bkrepo-repository/service/project/info/bkpaas] [ProjectClient#getProjectInfo(String)]: [{
+  "code" : 250115,
+  "message" : "Service unauthenticated, reason: Expired token",
+  "data" : null,
+  "traceId" : ""
+}]
+```
+排除时区干扰，时间相差 62s，为时间同步问题所致。启用 NTP 服务，各 node 时间一致后，请求恢复正常。
 
 
 ### 无法查看 SaaS 日志
