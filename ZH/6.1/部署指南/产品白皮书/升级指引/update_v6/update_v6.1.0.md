@@ -175,6 +175,7 @@ mv /data/src /data/src.bak
     echo "BK_USERMGR_REDIS_PASSWORD=${BK_REDIS_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/usermgr.env
     echo "BK_MONITOR_TRANSFER_REDIS_PASSWORD=${BK_REDIS_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/bkmonitorv3.env
     echo "BK_MONITOR_ALERT_ES7_PASSWORD=${BK_ES7_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/bkmonitorv3.env
+    echo "BK_PAAS_ES7_ADDR=elastic:${BK_ES7_ADMIN_PASSWORD}@es7.service.consul:9200" >> /data/install/bin/03-userdef/paas.env
     ```
 
 4. 同步部署脚本
@@ -269,7 +270,9 @@ pcmd -m usermgr "rmvirtualenv usermgr-api"
 
     ```bash
     # 新增 gse_config 服务，需要走部署逻辑
-    ./bkcli upgrade gse
+    ./bkcli sync gse
+    ./bkcli install gse
+    ./bkcli restart gse
     ./bkcli status gse
     ```
 
