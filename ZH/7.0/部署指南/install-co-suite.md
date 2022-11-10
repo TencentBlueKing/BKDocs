@@ -11,6 +11,8 @@ helmfile -f monitor-storage.yaml.gotmpl sync  # 部署监控依赖的存储
 helmfile -f 04-bkmonitor.yaml.gotmpl sync  # 部署监控后台和saas以及监控数据链路组件
 # 在admin桌面添加应用，也可以登录后自行添加。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_monitorv3"
+# 设为默认应用。
+scripts/set_desktop_default_app.sh -u "admin" -a "bk_monitorv3"
 ```
 约等待 5 ~ 10 分钟，期间 `bk-monitor-consul` pod 可能 `Error` 且自动重启。
 
@@ -23,16 +25,9 @@ in ./04-bklog-search.yaml.gotmpl: failed processing release bk-logsearch: hook[.
 请检查中控机解析到的 `bkrepo` 域名是否正确，以及 `scripts/add_bkrepo_bucket.sh` 脚本中的 `BKREPO_ADMIN_PASSWORD` 是否正确。
 
 ## 访问监控平台
-在桌面可以看到刚才添加的 “监控平台” 应用，访问前需先行配置 `bkmonitor.$BK_DOMAIN` 域名的解析。
+需要配置域名 `bkmonitor.$BK_DOMAIN`，操作步骤已经并入《基础套餐部署》文档的 “[配置用户侧的 DNS](install-bkce.md#hosts-in-user-pc)” 章节。
 
-在 **中控机** 执行如下命令生成 hosts 文件的内容：
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
-IP1=$(ssh "$IP1" 'curl ip.sb')
-echo $IP1 bkmonitor.$BK_DOMAIN
-```
+配置成功后，即可在桌面打开 “监控平台” 应用了。
 
 此时访问 “观测场景” —— “Kubernetes” 界面会出现报错。为未启用容器监控所致，完成下文的 “配置容器监控” 章节即可正常使用。
 
@@ -44,19 +39,14 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 helmfile -f 04-bklog-search.yaml.gotmpl sync
 # 在admin桌面添加应用，也可以登录后自行添加。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_log_search"
+# 设为默认应用。
+scripts/set_desktop_default_app.sh -u "admin" -a "bk_log_search"
 ```
 
 ## 访问日志平台
-在桌面可以看到刚才添加的 “日志平台” 应用，访问前需先行配置 `bklog.$BK_DOMAIN` 域名的解析。
+需要配置域名 `bklog.$BK_DOMAIN`，操作步骤已经并入《基础套餐部署》文档的 “[配置用户侧的 DNS](install-bkce.md#hosts-in-user-pc)” 章节。
 
-在 **中控机** 执行如下命令生成 hosts 文件的内容：
-``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
-BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}')
-IP1=$(ssh "$IP1" 'curl ip.sb')
-echo $IP1 bklog.$BK_DOMAIN
-```
+配置成功后，即可在桌面打开 “日志平台” 应用了。
 
 
 # 配置可选功能
