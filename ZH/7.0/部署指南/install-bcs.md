@@ -20,6 +20,18 @@ bcs:
 EOF
 ```
 
+### 配置 coredns
+容器管理平台 会在 pod 内请求 蓝鲸制品库 提供的 helm 及 docker 仓库，需确保 coredns 配置正确。
+
+在 **中控机** 执行：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+./scripts/control_coredns.sh update "$IP1" bcs.$BK_DOMAIN bcs-api.$BK_DOMAIN docker.$BK_DOMAIN helm.$BK_DOMAIN
+./scripts/control_coredns.sh list  # 检查添加的记录。
+```
+
 ### 开始部署
 在 中控机 执行：
 ``` bash
