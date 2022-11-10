@@ -104,7 +104,7 @@ k8s 的网络拓扑结构比较复杂，当您从不同的网络区域访问时�
 
 >**注意**
 >
->当 service 被删除，重建后 clusterIP 会变动，此时需刷新 hosts 文件。
+>当 service 被删除，重建后 clusterIP 会变动，此时需更新 hosts 文件。
 
 详细操作步骤见《[分步部署基础套餐后台](install-base-manually.md)》 文档的 “[配置 coredns](install-base-manually.md#hosts-in-coredns)” 章节。
 
@@ -117,7 +117,7 @@ k8s node 需要能从 bkrepo 中拉取镜像。因此需要配置 DNS 。
 
 >**注意**
 >
->当 service 被删除，重建后 clusterIP 会变动，此时需刷新 hosts 文件。
+>当 service 被删除，重建后 clusterIP 会变动，此时需更新 hosts 文件。
 
 请在 **中控机** 执行如下脚本 **生成 hosts 内容**，然后将其追加到所有的 `node` 的 `/etc/hosts` 文件结尾。
 
@@ -144,14 +144,14 @@ EOF
   ```
   >**注意**
   >
-  >如果 Pod 重新调度，所在 node 发生了变动，则需刷新 hosts 文件。
+  >如果 Pod 重新调度，所在 node 发生了变动，则需更新 hosts 文件。
 * 当中控机为 k8s 的 master 或 node 时，需要取服务的 `clusterIP`：
   ``` bash
   IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
   ```
   >**注意**
   >
-  >当 service 被删除，重建后 clusterIP 会变动，此时需刷新 hosts 文件。
+  >当 service 被删除，重建后 clusterIP 会变动，此时需更新 hosts 文件。
 
 请先根据中控机的角色选择合适的 IP。然后生成 hosts 内容并手动更新到 `/etc/hosts`：
 ``` bash
@@ -184,7 +184,7 @@ EOF
 
 >**注意**
 >
->如 k8s 集群重启等原因重新调度，pod 所在 node 发生了变动，需刷新 hosts 文件。
+>如 k8s 集群重启等原因重新调度，pod 所在 node 发生了变动，需更新 hosts 文件。
 
 获取 ingress-nginx pod 所在机器的内网 IP，记为 IP1。在 **中控机** 执行如下命令可获取 IP1：
 ``` bash
@@ -201,24 +201,26 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 # 人工检查取值
 echo "BK_DOMAIN=$BK_DOMAIN IP1=$IP1 IP2=$IP2"
-# 输出hosts
+# 输出所有平台的hosts配置项。
 cat <<EOF
-$IP1 $BK_DOMAIN
-$IP1 bkrepo.$BK_DOMAIN
-$IP1 bkpaas.$BK_DOMAIN
-$IP1 bkuser.$BK_DOMAIN
-$IP1 bkuser-api.$BK_DOMAIN
-$IP1 bkapi.$BK_DOMAIN
-$IP1 apigw.$BK_DOMAIN
-$IP1 bkiam.$BK_DOMAIN
-$IP1 bkiam-api.$BK_DOMAIN
-$IP1 cmdb.$BK_DOMAIN
-$IP1 job.$BK_DOMAIN
-$IP1 jobapi.$BK_DOMAIN
-$IP1 bknodeman.$BK_DOMAIN
-$IP1 apps.$BK_DOMAIN
-$IP1 devops.$BK_DOMAIN
-$IP1 codecc.$BK_DOMAIN
+$IP1 $BK_DOMAIN  # 蓝鲸桌面
+$IP1 bkrepo.$BK_DOMAIN  # 蓝鲸制品库
+$IP1 bkpaas.$BK_DOMAIN  # 开发者中心
+$IP1 bkuser.$BK_DOMAIN  # 用户管理
+$IP1 bkuser-api.$BK_DOMAIN  # 用户管理
+$IP1 bkapi.$BK_DOMAIN  # 开发者中心 API 网关
+$IP1 apigw.$BK_DOMAIN  # 开发者中心 API 管理
+$IP1 bkiam.$BK_DOMAIN  # 权限中心
+$IP1 bkiam-api.$BK_DOMAIN  # 权限中心
+$IP1 cmdb.$BK_DOMAIN  # 配置平台
+$IP1 job.$BK_DOMAIN  # 作业平台
+$IP1 jobapi.$BK_DOMAIN  # 作业平台
+$IP1 bknodeman.$BK_DOMAIN  # 节点管理
+$IP1 apps.$BK_DOMAIN  # SaaS 入口：标准运维、流程服务等
+$IP1 bcs.$BK_DOMAIN  # 容器管理平台
+$IP1 bklog.$BK_DOMAIN  # 日志平台
+$IP1 bkmonitor.$BK_DOMAIN  # 监控平台
+$IP1 devops.$BK_DOMAIN  # 持续集成平台-蓝盾
 EOF
 ```
 
