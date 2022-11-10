@@ -28,6 +28,8 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 helmfile -f 03-bkci.yaml.gotmpl sync  # 部署流水线。
 # 在admin桌面添加应用，也可以登录后自行添加。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_ci"
+# 设为默认应用。
+scripts/set_desktop_default_app.sh -u "admin" -a "bk_ci"
 ```
 部署需 5 ~ 10 分钟。上述命令结束后，可在中控机检查所有 Pod 是否正常：
 ``` bash
