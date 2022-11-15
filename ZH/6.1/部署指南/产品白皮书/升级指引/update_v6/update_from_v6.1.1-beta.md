@@ -314,13 +314,37 @@ pcmd -m log "rmvirtualenv bklog-api"
 ./bkcli status bklog
 ```
 
-### 升级收尾
+### 删除原有 topo 结构
+#### 蓝鲸后台服务器请求 CMDB 接口，开放页面修改蓝鲸业务拓扑限制
 ```bash
-## 刷新版本信息
+source /data/install/utils.fc
+curl -H 'BK_USER:admin' -H 'BK_SUPPLIER_ID:0' -H 'HTTP_BLUEKING_SUPPLIER_ID:0' -X POST $BK_CMDB_IP0:9000/migrate/v3/migrate/system/user_config/blueking_modify/true
+```
+
+#### 上一步执行成功后，蓝鲸业务集群的节点信息中即可看到 删除节点 选项，请手动删除所有蓝鲸业务下的集群
+![image](https://user-images.githubusercontent.com/97874241/201875124-53de6cbb-e1d5-41bb-a031-c805f699c0bc.png)
+
+#### 删掉所有的蓝鲸集群模板与进程模板
+```bash
+/opt/py36/bin/python ${CTRL_DIR}/bin/create_blueking_set.py -c ${BK_PAAS_APP_CODE}  -t ${BK_PAAS_APP_SECRET} --delete
+```
+
+#### 重建蓝鲸业务拓扑
+```bash
+## 中控机执行
+## 去除 fta 安装标记
+pcmd -m fta "sed -i '/fta/d' /data/bkce/.installed_module"
+./bkcli initdata topo
+```
+
+### 刷新版本信息
+```bash
 source /data/install/tools.sh
 _update_common_info
+```
 
-## 检查服务状态
+### 检查服务状态
+```bash
 cd /data/install; echo bkssm bkiam usermgr paas cmdb gse job consul bklog bkmonitorv3 | xargs -n1 ./bkcli check
 ```
 
@@ -397,24 +421,6 @@ sed -i 's/fta,//g' /data/install/install.config
 mysql --login-path=mysql-default -e "delete from bksuite_common.production_info where code='fta';"
 ```
 2. 前往【PaaS 平台】-【开发者中心】-【S-mart 应用】 下架故障自愈。
-
-3. 删除监控中关于 fta 的告警配置，防止误告警
-```bash
-删除 fta 拓扑结构
-cmdb 服务器请求 CMDB 接口，开放页面修改蓝鲸业务拓扑限制，然后在 cmdb 页面删除故障自愈的相关拓扑即可
-
-source /data/install/utils.fc
-curl -H 'BK_USER:admin' -H 'BK_SUPPLIER_ID:0' -H 'HTTP_BLUEKING_SUPPLIER_ID:0' -X POST $BK_CMDB_IP0:9000/migrate/v3/migrate/system/user_config/blueking_modify/true
-
-## 预期返回内容
-{
-"result": true,
-"bk_error_code": 0,
-"bk_error_msg": "success",
-"permission": null,
-"data": "modify system user config success"
-}
-```
 
 ### 还原 bkci 以及 bcs 软件包
 如果之前有部署 bkci 以及 bcs 的用户，请按照该方式将相关包进行还原 `没有部署请忽略该步骤`
