@@ -249,6 +249,7 @@ pcmd -m usermgr "rmvirtualenv usermgr-api"
 2. 部分组合套餐包含了内置套餐（进程 CPU 和 MEM TOP10 发送, 磁盘清理）和 使用了标准运维套餐为节点的，由于迁移不支持子流程迁移， 需要用户手动配置确认
 3. 所有的自愈接入策略迁移之后，将会关闭原有自愈接入，新版本默认为不开启状态，需要用户确认
 4. 原对接监控平台的自愈接入，如果设置了监控目标，请注意检查原策略是否设置了有设置监控目标，如果无， 请设置为全业务，否则小目标范围优先生效的规则将不生效。
+5. 升级后监控平台之前触发的告警数据只存在数据库中，页面只会展示新生成的告警事件。
 ##### 迁移内容
 1. 内置处理套餐的迁移
     包括以下五项，均通过调用标准运维流程实现， 其中原有的磁盘清理迁移之后为标准运维磁盘清理流程，可通过选择标准运维类型套餐来进行内置磁盘清理配置
@@ -321,8 +322,6 @@ _update_common_info
 
 ## 检查服务状态
 cd /data/install; echo bkssm bkiam usermgr paas cmdb gse job consul bklog bkmonitorv3 | xargs -n1 ./bkcli check
-
-请前往节点管理重新部署 agent 及其插件
 ```
 
 ### 新增可选模块
@@ -398,6 +397,25 @@ sed -i 's/fta,//g' /data/install/install.config
 mysql --login-path=mysql-default -e "delete from bksuite_common.production_info where code='fta';"
 ```
 2. 前往【PaaS 平台】-【开发者中心】-【S-mart 应用】 下架故障自愈。
+
+3. 删除监控中关于 fta 的告警配置，防止误告警
+```bash
+删除 fta 拓扑结构
+cmdb 服务器请求 CMDB 接口，开放页面修改蓝鲸业务拓扑限制，然后在 cmdb 页面删除故障自愈的相关拓扑即可
+
+source /data/install/utils.fc
+curl -H 'BK_USER:admin' -H 'BK_SUPPLIER_ID:0' -H 'HTTP_BLUEKING_SUPPLIER_ID:0' -X POST $BK_CMDB_IP0:9000/migrate/v3/migrate/system/user_config/blueking_modify/true
+
+## 预期返回内容
+{
+"result": true,
+"bk_error_code": 0,
+"bk_error_msg": "success",
+"permission": null,
+"data": "modify system user config success"
+}
+```
+
 ### 还原 bkci 以及 bcs 软件包
 如果之前有部署 bkci 以及 bcs 的用户，请按照该方式将相关包进行还原 `没有部署请忽略该步骤`
 ```bash
