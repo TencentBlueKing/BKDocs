@@ -151,6 +151,7 @@ mv /data/src /data/src.bak
     echo "BK_USERMGR_REDIS_PASSWORD=${BK_REDIS_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/usermgr.env
     echo "BK_MONITOR_TRANSFER_REDIS_PASSWORD=${BK_REDIS_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/bkmonitorv3.env
     echo "BK_MONITOR_ALERT_ES7_PASSWORD=${BK_ES7_ADMIN_PASSWORD}" >> /data/install/bin/03-userdef/bkmonitorv3.env
+    echo "BK_PAAS_ES7_ADDR=elastic:${BK_ES7_ADMIN_PASSWORD}@es7.service.consul:9200" >> /data/install/bin/03-userdef/paas.env
     ```
 
 
@@ -249,6 +250,7 @@ pcmd -m usermgr "rmvirtualenv usermgr-api"
 2. 部分组合套餐包含了内置套餐（进程 CPU 和 MEM TOP10 发送, 磁盘清理）和 使用了标准运维套餐为节点的，由于迁移不支持子流程迁移， 需要用户手动配置确认
 3. 所有的自愈接入策略迁移之后，将会关闭原有自愈接入，新版本默认为不开启状态，需要用户确认
 4. 原对接监控平台的自愈接入，如果设置了监控目标，请注意检查原策略是否设置了有设置监控目标，如果无， 请设置为全业务，否则小目标范围优先生效的规则将不生效。
+5. 升级后监控平台之前触发的告警数据只存在数据库中，页面只会展示新生成的告警事件。
 ##### 迁移内容
 1. 内置处理套餐的迁移
     包括以下五项，均通过调用标准运维流程实现， 其中原有的磁盘清理迁移之后为标准运维磁盘清理流程，可通过选择标准运维类型套餐来进行内置磁盘清理配置
@@ -313,16 +315,38 @@ pcmd -m log "rmvirtualenv bklog-api"
 ./bkcli status bklog
 ```
 
-### 升级收尾
+### 删除原有 topo 结构
+#### 蓝鲸后台服务器请求 CMDB 接口，开放页面修改蓝鲸业务拓扑限制
 ```bash
-## 刷新版本信息
+source /data/install/utils.fc
+curl -H 'BK_USER:admin' -H 'BK_SUPPLIER_ID:0' -H 'HTTP_BLUEKING_SUPPLIER_ID:0' -X POST $BK_CMDB_IP0:9000/migrate/v3/migrate/system/user_config/blueking_modify/true
+```
+
+#### 上一步执行成功后，蓝鲸业务集群的节点信息中即可看到 删除节点 选项，请手动删除所有蓝鲸业务下的集群
+![image](https://user-images.githubusercontent.com/97874241/201875124-53de6cbb-e1d5-41bb-a031-c805f699c0bc.png)
+
+#### 删掉所有的蓝鲸集群模板与进程模板
+```bash
+/opt/py36/bin/python ${CTRL_DIR}/bin/create_blueking_set.py -c ${BK_PAAS_APP_CODE}  -t ${BK_PAAS_APP_SECRET} --delete
+```
+
+#### 重建蓝鲸业务拓扑
+```bash
+## 中控机执行
+## 去除 fta 安装标记
+pcmd -m fta "sed -i '/fta/d' /data/bkce/.installed_module"
+./bkcli initdata topo
+```
+
+### 刷新版本信息
+```bash
 source /data/install/tools.sh
 _update_common_info
+```
 
-## 检查服务状态
+### 检查服务状态
+```bash
 cd /data/install; echo bkssm bkiam usermgr paas cmdb gse job consul bklog bkmonitorv3 | xargs -n1 ./bkcli check
-
-请前往节点管理重新部署 agent 及其插件
 ```
 
 ### 新增可选模块
@@ -398,6 +422,7 @@ sed -i 's/fta,//g' /data/install/install.config
 mysql --login-path=mysql-default -e "delete from bksuite_common.production_info where code='fta';"
 ```
 2. 前往【PaaS 平台】-【开发者中心】-【S-mart 应用】 下架故障自愈。
+
 ### 还原 bkci 以及 bcs 软件包
 如果之前有部署 bkci 以及 bcs 的用户，请按照该方式将相关包进行还原 `没有部署请忽略该步骤`
 ```bash
