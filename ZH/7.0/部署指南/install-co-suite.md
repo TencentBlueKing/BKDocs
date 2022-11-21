@@ -12,7 +12,7 @@ helmfile -f 04-bkmonitor.yaml.gotmpl sync  # 部署监控后台和saas以及监�
 # 在admin桌面添加应用，也可以登录后自行添加。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_monitorv3"
 # 设为默认应用。
-scripts/set_desktop_default_app.sh -u "admin" -a "bk_monitorv3"
+scripts/set_desktop_default_app.sh -a "bk_monitorv3"
 ```
 约等待 5 ~ 10 分钟，期间 `bk-monitor-consul` pod 可能 `Error` 且自动重启。
 
@@ -40,7 +40,7 @@ helmfile -f 04-bklog-search.yaml.gotmpl sync
 # 在admin桌面添加应用，也可以登录后自行添加。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_log_search"
 # 设为默认应用。
-scripts/set_desktop_default_app.sh -u "admin" -a "bk_log_search"
+scripts/set_desktop_default_app.sh -a "bk_log_search"
 ```
 
 ## 访问日志平台
