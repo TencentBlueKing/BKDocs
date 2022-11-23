@@ -29,15 +29,15 @@
 
 |蓝鲸套餐 | 描述 | 最低配置 | 推荐配置 | 备注 |
 | -- | -- | -- | -- | -- |
-|基础套餐 | 后台及 SaaS | 2 台 node | 2.5 台 node | |
+|基础套餐 | 后台及 SaaS | 2.5 台 node | 3 台 node | |
 |容器管理平台 | 容器管理后台及 SaaS | 0.7 台 node | 1 台 node | |
-|监控套餐 | 监控、日志服务及其 SaaS | 1.2 台 node | 2 台 node | 如启用容器监控，k8s 集群存储应大于 500G |
-|持续集成套餐 | 目前仅包含流水线 | 2 台 node | 4 台 node | 流水线任务较多时需扩容 node |
+|监控套餐 | 监控、日志服务及其 SaaS | 1.5 台 node | 2 台 node | 如启用容器监控，k8s 集群存储应大于 500G |
+|持续集成套餐 | 目前仅包含流水线 | 2 台 node | 5 台 node | 流水线任务较多时需扩容 node |
 
 ### 软件要求
 | 需求项 | 具体要求 | 检查命令 |
 | -- | -- | -- |
-| 操作系统　| CentOS 7.9 | `cat /etc/centos-release` |
+| 操作系统　| CentOS 7.9 64 位 | `cat /etc/centos-release` |
 | kernel | 3.10.0 及以上 | `uname -r` |
 | Swap | 关闭。防止 io 飙升影响 kubelet 进程。 | `free -m` Swap 这行值为 0 |
 | 防火墙 | 关闭 | `iptables -vnL` 无其他规则 |
