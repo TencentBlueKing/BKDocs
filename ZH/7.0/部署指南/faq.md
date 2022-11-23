@@ -113,14 +113,22 @@ bk-elastic-elasticsearch-coordinating-only-0       0/1  Running  4  4h56m
 bk-elastic-elasticsearch-data-0                    0/1  Running  4  4h56m
 bk-elastic-elasticsearch-master-0                  0/1  Running  4  4h56m
 ```
-首先找到这些 pod 所属的 helmfile，此处为 `00-storage-elasticsearch.yaml.gotmpl`：
+首先找到这些 pod 所属的 release（此处为 `bk-elastic`），然后在工作目录搜索 release 所在的 helmfile：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+grep *.yaml.gotmpl -we bk-elastic
+```
+
+可以发现在 `base-storage.yaml.gotmpl` 中定义的：
 ``` yaml
 releases:
+略
   - name: bk-elastic
     namespace: {{ .Values.namespace }}
     chart: ./charts/elasticsearch-{{ .Values.version.elasticsearch }}.tgz
     missingFileHandler: Warn
     version: {{ .Values.version.elasticsearch }}
+    condition: bitnamiElasticsearch.enabled
     values:
     - ./environments/default/elasticsearch-values.yaml.gotmpl
     - ./environments/default/elasticsearch-custom-values.yaml.gotmpl
