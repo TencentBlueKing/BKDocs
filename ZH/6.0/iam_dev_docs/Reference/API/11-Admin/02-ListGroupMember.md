@@ -15,7 +15,7 @@ APIGateway2.0 API
 
 > GET /api/v1/open/admin/groups/{group_id}/members/
 
-> `特别说明: [ESB API 与 APIGateway2.0 API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
+> `特别说明`: [ESB API 与 APIGateway2.0 API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
 
 
 #### Parameters

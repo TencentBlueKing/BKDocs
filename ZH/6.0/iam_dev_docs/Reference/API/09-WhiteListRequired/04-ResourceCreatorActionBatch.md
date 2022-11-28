@@ -31,7 +31,7 @@ APIGateway2.0 API
 
 > POST /api/v1/open/authorization/batch_resource_creator_action/
 
-> `特别说明: [ESB API 与 APIGateway2.0 API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
+> `特别说明`: [ESB API 与 APIGateway2.0 API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
 
 #### Parameters
 
