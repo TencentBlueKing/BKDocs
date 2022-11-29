@@ -204,7 +204,7 @@ echo "BK_DOMAIN=$BK_DOMAIN IP1=$IP1 IP2=$IP2"
 if [ -z "$BK_DOMAIN" ] || [ -z "$IP1" ]; then
   echo "请先赋值 BK_DOMAIN 及 IP1."
 else
-  echo "# bkce7 hosts配置项"
+  echo "# bkce7 hosts配置项，ingress-nginx pod所在的主机变动后需更新。"
   cat <<EOF | sed 's/ *#.*//'
 $IP1 $BK_DOMAIN  # 蓝鲸桌面
 $IP1 bkrepo.$BK_DOMAIN  # 蓝鲸制品库
