@@ -119,7 +119,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 grep *.yaml.gotmpl -we bk-elastic
 ```
 
-可以发现在 `base-storage.yaml.gotmpl` 中定义的：
+可以发现是在 `base-storage.yaml.gotmpl` 中定义的：
 ``` yaml
 releases:
 略
@@ -175,13 +175,13 @@ coordinating:
       memory: 1024Mi
 EOF
 ```
-然后卸载 release：
+然后卸载 release（此处以 `bk-elastic` 所在的 `base-storage.yaml.gotmpl` 文件为例）：
 ``` bash
-helmfile -f 00-storage-elasticsearch.yaml.gotmpl destroy
+helmfile -f base-storage.yaml.gotmpl destroy
 ```
-然后重新创建：
+然后重新创建（此处以 `bk-elastic` 所在的 `base-storage.yaml.gotmpl` 文件为例）：
 ``` bash
-helmfile -f 00-storage-elasticsearch.yaml.gotmpl sync
+helmfile -f base-storage.yaml.gotmpl sync
 ```
 检查 pod 是否生效：
 ``` bash
