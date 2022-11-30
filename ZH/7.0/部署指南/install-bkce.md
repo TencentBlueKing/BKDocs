@@ -201,8 +201,11 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 # 人工检查取值
 echo "BK_DOMAIN=$BK_DOMAIN IP1=$IP1 IP2=$IP2"
-# 输出所有平台的hosts配置项。
-cat <<EOF
+if [ -z "$BK_DOMAIN" ] || [ -z "$IP1" ]; then
+  echo "请先赋值 BK_DOMAIN 及 IP1."
+else
+  echo "# bkce7 hosts配置项，ingress-nginx pod所在的主机变动后需更新。"
+  cat <<EOF | sed 's/ *#.*//'
 $IP1 $BK_DOMAIN  # 蓝鲸桌面
 $IP1 bkrepo.$BK_DOMAIN  # 蓝鲸制品库
 $IP1 bkpaas.$BK_DOMAIN  # 开发者中心
@@ -222,6 +225,7 @@ $IP1 bklog.$BK_DOMAIN  # 日志平台
 $IP1 bkmonitor.$BK_DOMAIN  # 监控平台
 $IP1 devops.$BK_DOMAIN  # 持续集成平台-蓝盾
 EOF
+fi
 ```
 
 # 访问蓝鲸
