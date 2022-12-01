@@ -12,6 +12,7 @@ options = {
     'margin-bottom': '0.85in',
     'margin-left': '0.85in',
     'encoding': "UTF-8",
+    #'enable-local-file-access': None  如果有301报错加上此配置
 }
 
 

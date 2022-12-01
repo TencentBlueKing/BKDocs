@@ -7,7 +7,7 @@
     "op": "OR",
     "content": [
         {
-            "op": "OR",
+            "op": "eq",
             "field": "job.id",
             "value": ["1", "2"]
         },

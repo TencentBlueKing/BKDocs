@@ -17,6 +17,7 @@
 | :--- | :--- | :--- |:--- |:--- |
 | system_id | string | 是 | path | 系统 ID |
 | policy_id | integer | 是 | path | 策略 ID |
+| type | string | 否 |query | 授权类型，枚举值包括`abac\rbac` 不填默认为`abac` |
 
 #### Response
 

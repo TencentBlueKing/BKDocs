@@ -57,6 +57,10 @@
 }
 ```
 
+`subject.type`的说明
+
+当`subject.type` == "group"时对用户组授权, 授权的操作以及资源topology需要满足用户组所在的分级管理员的可授权操作实例范围
+
 ### 资源拓扑授权/回收
 
 对单个资源拓扑, 单个操作的授权与回收接口
@@ -70,8 +74,15 @@
 
 #### URL
 
+ESB API
+
 > POST /api/c/compapi/v2/iam/authorization/path/
-> `特别说明:该 API 为ESB API` [ESB API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
+
+APIGateway2.0 API
+
+> POST /api/v1/open/authorization/path/
+
+> `特别说明`: [ESB API 与 APIGateway2.0 API 说明](../01-Overview/01-BackendAPIvsESBAPI.md)
 
 #### 通用参数
 
@@ -93,6 +104,7 @@
 | action |  字符串   | 是   | 操作 |
 | subject |  字符串   | 是   | 授权对象 |
 | resources |  数组[对象]   | 是   | 资源拓扑, 资源类型的顺序必须操作注册时的顺序一致 |
+| expired_at |  int   | 否   | 过期时间戳(单位秒)，即用户或用户组在expired_at后将不具有该用户组的相关权限，其中值为4102444800表示永久 |
 
 action
 
@@ -104,7 +116,7 @@ subject
 
 | 字段 |  类型 |是否必须  | 描述  |
 |:---|:---|:---|:---|
-| type    |  字符串  | 是   | 授权对象类型, 当前只支持 user |
+| type    |  字符串  | 是   | 授权对象类型, user或group |
 | id    |  字符串  | 是   | 授权对象 ID |
 
 resources
@@ -152,7 +164,8 @@ resources.path
         }
       ]
     }
-  ]
+  ],
+  "expired_at": 1671227398 # 可以不填, 默认1年, 单位时间戳秒
 }
 ```
 
@@ -162,7 +175,6 @@ resources.path
 | 字段 |  类型 |是否必须  | 描述  |
 |:---|:---|:---|:---|
 | policy_id   | 数值     | 权限策略 id |
-| expression   | 对象     | 权限表达式 |
 
 
 > Status: 200 OK
@@ -172,27 +184,7 @@ resources.path
   "code": 0,
   "message": "ok",
   "data": {
-    "policy_id": 1,
-    "expression": {  # 表达式是整个action的所有条件的组合, 包括用户已有的权限与新增的path授权的条件
-      "op": "OR",
-      "content": [
-        {  # 表达式中新增的路径授权
-          "field": "host._bk_iam_path_",
-          "op": "starts_with",
-          "value": [
-            "/biz,1/set,*/"
-          ]
-        },
-        {
-          "field": "host.id",
-          "op": "in",
-          "value": [
-            "host1",
-            "host2"
-          ]
-        }
-      ]
-    }
+    "policy_id": 1
   }
 }
 ```

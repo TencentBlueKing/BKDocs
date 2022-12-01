@@ -44,4 +44,4 @@
 ```
 
 ## 3. 特殊属性：路径(path)属性说明
-[资源拓扑 Path 说明](../../ResourceTopology.md)
+[说明: 资源拓扑`_bk_iam_path_`](../../../Explanation/04-BkIAMPath.md)

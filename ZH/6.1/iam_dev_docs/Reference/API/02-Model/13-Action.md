@@ -9,10 +9,10 @@
 | name_en | string | 是 | 操作英文名，国际化时切换到英文版本显示，参考[命名规范](../../NamingRules.md) |
 | description  |string | 否 | 操作描述 |
 | description_en | string | 否 | 操作描述英文，国际化时切换到英文版本显示 |
+| auth_type | string | 否 | 操作授权类型，枚举值包括`abac\rbac` 不填默认为`abac`, [更多概念说明](./00-Concepts.md)  |
 | type | string | 否 | 操作的类型，枚举值包括`create\delete\view\edit\list\manage\execute\use` 比如创建类操作需要标识为"create"，无法分类可为空字符串  |
 | related_resource_types | Array(Object) | 否 | 操作的对象，资源类型列表，列表顺序与`产品展示`、`鉴权校验` 顺序 必须保持一致。`如果操作无需关联资源实例，这里为空即可。`  **注意这是一个有序的列表!**:  |
 | related_actions | Array(string) | 否 | 操作的依赖操作, 由操作 ID 组成的字符串列表, 用于在申请权限时同时创建依赖权限  [更多概念说明](./00-Concepts.md)  |
-| related_environments | Array(Object) | 否 | 操作依赖的环境属性，由固定枚举类型的组成，用于开启授权时追加环境相关生效限制  [更多概念说明](./00-Concepts.md)  |
 | version | int | 否 |  版本号，允许为空，仅仅作为在权限中心上进行 New 的更新提醒 [更多概念说明](./00-Concepts.md)  |
 
 related_resource_types 里的元素
@@ -33,12 +33,6 @@ related_instance_selections 里的元素
 | system_id | string | 是 | 实例视图的来源系统 ID |
 | id |string | 是 | 实例视图 ID |
 |  ignore_iam_path | bool | 否 | 是否配置的权限忽略路径，`默认为false`，[更多概念说明](./00-Concepts.md)  |
-
-related_environments 里的元素 
-
-| 字段 |  类型 |是否必须  | 描述  |
-|:---|:---|:---|:---|
-| type | string | 是 | 环境属性的类型，当前只支持`period_daily` [更多概念说明](./00-Concepts.md) |
 
 注册后，IAM 配置权限时拉取资源的逻辑，请查看[资源拉取接口协议](../03-Callback/01-API.md)
 
@@ -72,6 +66,7 @@ related_environments 里的元素
         "name_en": "biz_create",
         "description": "业务创建是...",
         "description_en": "biz_create is...",
+        "auth_type": "abac",
         "type": "create",
         "related_resource_types": [],
         "version": 1
@@ -80,6 +75,7 @@ related_environments 里的元素
         "id": "host_edit",
         "name": "主机编辑",
         "name_en": "host_edit",
+        "auth_type": "",
         "type": "",
         "related_resource_types": [
             {
@@ -182,7 +178,15 @@ related_environments 里的元素
 ### 3. 删除 action
 
 说明：
-- 删除 Action 成功后，将会删除该 Action 相关权限，该删除操作不可逆，请谨慎调用
+- 如果action没有配置相关的操作分组/常用操作/新建关联, 并且没有配置过权限, 可以直接删除;
+- 如果配置过, 需要先删除操作分组/常用操作/新建关联的引用及用户配置的权限, 之后完全删除action;
+
+删除action步骤：
+1. [调用更新操作分组API](./14-ActionGroup.md) - 将要删除的Action从操作分组里删除
+2. [调用更新常用操作配置API](./17-CommonActions.md) - 将要删除的Action从常用操作配置里移除
+3. [调用更新新建关联配置API](./19-ResourceCreatorAction.md) - 将要删除的Action从新建关联配置里移除
+4. [调用异步删除Action配置的权限策略API](./20-ActionPolicy.md) - 将所有涉及要删除的Action的权限都删除
+5. 调用以下接口完成Action的删除
 
 #### URL
 

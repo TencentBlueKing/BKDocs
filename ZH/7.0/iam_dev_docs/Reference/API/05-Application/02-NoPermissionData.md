@@ -16,7 +16,7 @@ http status_code = `200`
   "message": "",
   "data": null,
   "permission": {
-    "system_id": "bk_job",
+    "system": "bk_job",
     "system_name": "作业平台",
     "actions": [
       {
@@ -24,7 +24,7 @@ http status_code = `200`
         "name": "执行作业",
         "related_resource_types": [
           {
-            "system_id": "bk_job",
+            "system": "bk_job",
             "system_name": "作业平台",
             "type": "job",
             "type_name": "作业",
@@ -40,7 +40,7 @@ http status_code = `200`
             ]
           },
           {
-            "system_id": "bk_cmdb",
+            "system": "bk_cmdb",
             "system_name": "配置平台",
             "type": "host",
             "type_name": "主机",

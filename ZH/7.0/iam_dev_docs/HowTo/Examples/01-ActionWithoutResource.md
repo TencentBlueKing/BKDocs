@@ -112,7 +112,7 @@ curl -XPOST 'http://{IAM_HOST}/api/v1/policy/auth' \
 
 接入系统需要提前将相关数据到权限中心生成一个`权限申请URL`, 引导用户跳转过去申请对应权限. [生成无权限申请 URL](../../Reference/API/05-Application/01-GenerateURL.md)
 
-具体的 [无权限交互方案](../NoPermissionApply.md)
+具体的 [无权限交互方案](../Solutions/NoPermissionApply.md)
 
 
 ![-w2021](../../assets/HowTo/Examples/01_02.jpg)

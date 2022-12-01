@@ -16,3 +16,7 @@
 - 基础模型中, 如果操作不关联任何资源, 那么不需要注册资源类型及实例视图
 
 ![flow_03](../assets/HowTo/flow_03.png)
+
+### 无权限申请流程
+
+![flow_04](../assets/HowTo/flow_04.png)
