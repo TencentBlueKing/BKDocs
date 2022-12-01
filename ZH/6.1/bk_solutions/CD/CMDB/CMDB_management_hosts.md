@@ -93,7 +93,7 @@
 
 通过一个简单的场景，体验 [作业平台](../../../作业平台/产品白皮书/Introduction/What-is-Job.md) 如何消费主机实例。
 
-{% video %}media/cmdb_job_consume.mp4{% endvideo %}
+{% video %}../../../../6.0/bk_solutions/CD/CMDB/media/cmdb_job_consume.mp4{% endvideo %}
 
 ## 扩展阅读
 
