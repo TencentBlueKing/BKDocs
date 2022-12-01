@@ -69,6 +69,7 @@ def md_to_html(md_url_list):
             md = replace_img_path(md, path)
 
             ret += markdown.markdown(md, extensions=exts)
+            #ret += markdown.markdown(md) 如果有参数报错请用此配置
 
     return html.format(os.getcwd(), ret)
 

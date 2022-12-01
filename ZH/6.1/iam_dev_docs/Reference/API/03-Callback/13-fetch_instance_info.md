@@ -70,7 +70,10 @@ data 字段，类型为 Array
 | id | string | 是 | 资源实例的唯一标识 |
 | `<attr>` | string/int/bool 或 array(string/int/bool) | 是 | 根据查询条件中的 attrs 返回，无 attrs 参数则返回所有属性 |
 
-`特殊属性`:  [path 属性说明](../../ResourceTopology.md)
+`特殊属性`:
+
+- [说明: 资源拓扑`_bk_iam_path_`](../../../Explanation/04-BkIAMPath.md)
+- [说明: 资源审批人`_bk_iam_approver_`](../../../Explanation/09-BkIAMApprover.md)
 
 ```json
 {

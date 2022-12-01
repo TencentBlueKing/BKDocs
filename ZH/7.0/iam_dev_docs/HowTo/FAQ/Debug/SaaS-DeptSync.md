@@ -2,8 +2,18 @@
 
 ## 1. 背景
 
-权限中心支持权限授权给组织架构和用户，而在组织架构和用户相关信息都是同步来着用户管理的，其中包括：每天凌晨全量同步、新用户自动 1 分钟内同步
+权限中心支持权限授权给组织架构和用户. 
+
+组织架构和用户信息从用户管理同步过来:
+- 每天凌晨全量同步
+- 新用户自动 1 分钟内同步
+
 由于用户管理接口和网络等问题导致同步组织架构失败，进而可能出现用户不存在或新用户无法同步过来等问题，所以需要根据错误码和日志进行排查解决
+
+相关[错误码](../ErrorCode.md):
+- 19023xx：通过 ESB 请求用户管理错误
+- 19020xx：调用 ESB 等第三方请求的通用错误，比如网络不通等
+- 19021xx：IAM 后台请求错误
 
 ## 2. 组织架构同步依赖服务
 
@@ -13,28 +23,31 @@
 4. IAM Backend，同步时需要变更 IAM 后台相关用户信息
 5. Component - UserManager, 通过 ESB 调用用户管理提供的 API 进行组织架构同步
 
-## 3. 错误码
+## 3. 问题排查
 
-1. 19023xx：通过 ESB 请求用户管理错误
-2. 19020xx：调用 ESB 等第三方请求的通用错误，比如网络不通等
-3. 19021xx：IAM 后台请求错误
+注意, 如果需要相关开发协助排查问题, 请按下面步骤先获取报错日志再进行咨询.
 
-详细错误码可以点击查询[错误码](../ErrorCode.md)
+### 3.1 有超级管理员权限
 
-## 4. 通用排查步骤
-### 4.1 healthz 接口查询
+如果有`超级管理员`权限, 可以使用超级管理员登录后, 到权限中心首页, 直接通过页面查看同步记录/报错日志
 
-1. 确认 SaaS 服务健康`curl -vv http://{PAAS_HOST}/o/bk_iam/healthz`, 正常应该返回`ok`
-2. healthz 接口检测包括：MySQL、Redis、Celery、IAM 后台、用户管理 ESB 接口
+路径: `切换角色为超级管理员 - 用户 - 组织架构`
 
-### 4.2 错误码与日志结合排查
+![-w2021](../../../assets/HowTo/FAQ/Debug/DeptSync_00.jpg)
 
-1. 首先确认错误码，若有错误码，则根据错误码类型进行 [查询](../ErrorCode.md)
-2. 若是后台异步任务等失败，可以依次查询权限中心 SaaS 日志 celery.log / component.log / bk_iam.log，根据查询到的日志信息进行错误分析即可
+点击`同步`按钮旁边的`历史记录`, 可以查看到历史同步的记录, 如果状态是`失败`, 点击`日志详情`可以看到详细报错日志
 
-## 5. 常见同步异常场景
+### 3.2 无超级管理员权限
 
-### 5.1 部门查询不到
+需要结合错误码与日志排查
+
+1. 确认 SaaS 服务健康`curl -vv http://{PAAS_HOST}/o/bk_iam/healthz`, 正常应该返回`ok` (MySQL、Redis、Celery、IAM 后台、用户管理 ESB 接口)
+2. 确认错误码，若有错误码，则根据错误码类型进行 [查询](../ErrorCode.md)
+3. 若是后台异步任务等失败，可以依次查询权限中心 SaaS 日志 `celery.log / component.log / bk_iam.log`，根据查询到的日志信息进行错误分析即可
+
+## 4. 常见同步异常场景
+
+### 4.1 部门查询不到
 
 ![-w2021](../../../assets/HowTo/FAQ/Debug/DeptSync_01.jpg)
 
@@ -85,7 +98,7 @@ print(not_exist_parent)
 若存在，则需要让用户管理排查是否usermgr.list_department有问题，导致没有返回对应部门
 ```
 
-### 5.2 节点无法指定自己成为子节点的子节点
+### 4.2 节点无法指定自己成为子节点的子节点
 
 ![-w2021](../../../assets/HowTo/FAQ/Debug/DeptSync_02.jpg)
 
@@ -107,7 +120,7 @@ from backend.apps.organization.models import Department
 Department.tree_objects.rebuild()
 ```
 
-### 5.3 存在用户与部门关系，但是其用户不存在
+### 4.3 存在用户与部门关系，但是其用户不存在
 
 ![-w2021](../../../assets/HowTo/FAQ/Debug/DeptSync_03.jpg)
 
@@ -116,7 +129,7 @@ Department.tree_objects.rebuild()
   
 * 解决方式
 
-```text
+```bash
 1. 确认用户id=xxxx是否被删除
 进入“用户管理”DB，查询profile_profiles表，查询id为xxxx的用户
 用户表是软删除的，得看是否被标记为删除
