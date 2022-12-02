@@ -251,7 +251,7 @@ kubectl exec -i -n blueking bk-redis-master-0 -- redis-cli -h bk-redis-master -p
 
 然后重建缓存：
 ``` bash
-kubectl exec -i -n blueking bkpaas3-apiserver-web- -- python manage.py shell <<< 'from paasng.platform.scheduler.jobs import update_remote_services; update_remote_services()'  # 重建缓存，此命令无输出。
+kubectl exec -i -n blueking deploy/bkpaas3-apiserver-web -- python manage.py shell <<< 'from paasng.platform.scheduler.jobs import update_remote_services; update_remote_services()'  # 重建缓存，此命令无输出。
 ```
 如果重建缓存时抛出异常 `ValueError: Service uuid=a31e476d-5ec0-29b0-564e-5f81b5a5ef32 with a different source already exists`，说明旧缓存没有删除掉，请先重试删除缓存的命令。
 
