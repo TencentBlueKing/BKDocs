@@ -44,8 +44,8 @@
 | SELinux | 关闭。k8s 官方要求。 | `getenforce` 的输出为 Disabled |
 | 时区 | 所有服务器时区应该统一，建议使用北京时间 | 使用 `timedatectl set-timezone Asia/Shanghai` 设置为北京时间。 |
 | 时间同步 | etcd 选举时要求节点间时间差小于 1s | 配置 `chronyd` 同步时间 |
-| docker 版本 | 19.03 及更高 | `docker info` |
-| kubenetes 版本 | 限 1.18 或 1.20，其他版本未经测试，用户报告 1.22 以上版本不兼容 | `kubectl info` |
+| docker 版本 | 19.03 及更高 | `docker version` |
+| kubenetes 版本 | 限 1.18 或 1.20，其他版本未经测试。用户报告 1.22 以上版本不兼容，1.17 版本部署 bcs 会失败。 | `kubectl version` |
 
 
 <a id="get-a-k8s-cluster" name="get-a-k8s-cluster"></a>
@@ -131,7 +131,7 @@ scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进�
 ## 使用已有的 k8s 集群
 >**注意**
 >
->部署了蓝鲸的监控或日志功能后，在扩容 `master` 或者 `node`前需要先 [给全部 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent)，不然会导致 agent 启动失败，此问题排期修复中。
+>限 1.18 或 1.20，其他版本未经测试。用户报告 1.22 以上版本不兼容，1.17 版本部署 bcs 会失败。
 
 如果能访问到 `master` 上的文件，可将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下。
 
