@@ -80,9 +80,6 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 这表示您成功部署了一个 k8s 集群，此时您可以使用 `kubectl` 命令了。接下来开始添加节点吧。
 
 ### 扩容节点
->**注意**
->
->部署了蓝鲸的监控或日志功能后，在扩容 `master` 或者 `node`前需要先 [给全部 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent)，不然会导致 agent 启动失败，此问题排期修复中。
 
 在 **初始 master** 机器上执行如下命令可显示扩容命令：
 ``` bash
@@ -147,9 +144,6 @@ scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进�
 <a id="purchase-cloud-service-tke" name="purchase-cloud-service-tke" ></a>
 
 ## 购买腾讯云 TKE 服务
->**提示**
->
->在部署蓝鲸基础后添加 node 时，要记得 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
 
 您可以腾讯云提供的 k8s 集群，具体操作请查阅文档： [腾讯云 TKE 集群搭建指引](tke_hosting.md)
 

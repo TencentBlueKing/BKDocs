@@ -373,17 +373,19 @@ scripts/setup_bkce7.sh -i sops  # 部署标准运维
 >
 >使用 “一键脚本” 部署基础套餐 SaaS 时，无法自动 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env)，请务必手动配置。
 
-需要给集群的 “全部 node”（包括 `master`） 安装 gse agent。
+需要给集群的 “全部 node”（包括 `master`） 安装 gse agent，并放入《蓝鲸》业务。
 
 agent 用途：
 1. job 依赖 `node` 上的 gse agent 进行文件分发。节点管理安装插件时也是通过 job 分发。
 2. 容器监控需要通过 `node` 上的 gse agent 完成监控。
 
->**注意**
->
->如计划添加新的 k8s `node` 或 `master`，需先为其安装 gse agent。请务必注意次序，不然 agent 会安装失败。此问题优化方案待定。
-
 因为蓝鲸智云 v6 和 v7 仅为部署形态差异，各产品软件版本会保持一致。故请参考 《[安装蓝鲸 Agent（直连区域）](../../6.1/节点管理/产品白皮书/QuickStart/DefaultAreaInstallAgent.md)》 文档安装 agent。
+
+在节点管理的 “普通安装” 界面，选择 **业务为《蓝鲸》**，云区域为 “直连区域”，安装通道及接入点均使用默认值。
+>**提示**
+>
+>如果误选了《资源池》业务，可等待 agent 安装完毕。然后回到蓝鲸桌面，访问 “配置平台”，进入 “资源” —— “主机” 界面。<br />
+>全选刚才新安装的主机，点击 “分配到” 按钮，选择 “业务空闲机池”。在弹窗中选择 《蓝鲸》 业务，点击 “确定” 按钮。完成后可点击顶部导航进入 “业务” 界面，左上角切换业务为 《蓝鲸》，即可看到这批主机。
 
 当安装 agent 完成后，您可以参考 《[插件管理](../../6.1/节点管理/产品白皮书/Feature/Plugin.md)》 文档为所有 agent 批量安装 `bkmonitorbeat` 和 `bkunifylogbeat` 插件，以便使用监控及日志功能。
 
