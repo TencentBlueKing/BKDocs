@@ -5779,6 +5779,25 @@
 		"link_conf": [
 			{
 				"extend": {
+					"summary": "7.0/lesscode/SUMMARY.md"
+				},
+				"index": 95,
+				"title": "可视化平台安装指引",
+				"url": "7.0/lesscode/intro.md",
+				"version": "7.0"
+			}
+		],
+		"source": {
+			"describe": "$$$",
+			"icon_url": "",
+			"page": "docs",
+			"type": "tag2:部署维护"
+		}
+	},
+	{
+		"link_conf": [
+			{
+				"extend": {
 					"summary": "7.0/部署指南/SUMMARY.md"
 				},
 				"index": 94,
