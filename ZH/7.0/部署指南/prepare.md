@@ -89,7 +89,7 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -i k8sctrl
 ```
 上述命令的输出如下图所示，不同类型的节点扩容命令不同，请按需选择：
-* 如果要扩容 `master`，请复制 **扩容控制平面** 下方的全部命令（已用红框标出）。
+* 如果要扩容 `master`，请复制 **扩容控制平面** 下方的全部命令（已用红框标出）。注意 master **总数量** 应该为 **奇数**，一般为 1、3、5，如需更多 master，请根据集群规模谨慎评估。
 * 如果要扩容 `node`，请复制 **扩容节点** 下方的全部命令（已用红框标出）。
 
 ![](assets/bcssh-k8sctrl-add-node-cmds.png)
