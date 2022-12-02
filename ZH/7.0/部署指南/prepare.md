@@ -44,8 +44,8 @@
 | SELinux | 关闭。k8s 官方要求。 | `getenforce` 的输出为 Disabled |
 | 时区 | 所有服务器时区应该统一，建议使用北京时间 | 使用 `timedatectl set-timezone Asia/Shanghai` 设置为北京时间。 |
 | 时间同步 | etcd 选举时要求节点间时间差小于 1s | 配置 `chronyd` 同步时间 |
-| docker 版本 | 19.03 及更高 | `docker info` |
-| kubenetes 版本 | 限 1.18 或 1.20，其他版本未经测试，用户报告 1.22 以上版本不兼容 | `kubectl info` |
+| docker 版本 | 19.03 及更高 | `docker version` |
+| kubenetes 版本 | 限 1.18 或 1.20，其他版本未经测试。用户报告 1.22 以上版本不兼容，1.17 版本部署 bcs 会失败。 | `kubectl version` |
 
 
 <a id="get-a-k8s-cluster" name="get-a-k8s-cluster"></a>
@@ -80,16 +80,13 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 这表示您成功部署了一个 k8s 集群，此时您可以使用 `kubectl` 命令了。接下来开始添加节点吧。
 
 ### 扩容节点
->**注意**
->
->部署了蓝鲸的监控或日志功能后，在扩容 `master` 或者 `node`前需要先 [给全部 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent)，不然会导致 agent 启动失败，此问题排期修复中。
 
 在 **初始 master** 机器上执行如下命令可显示扩容命令：
 ``` bash
 curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -i k8sctrl
 ```
 上述命令的输出如下图所示，不同类型的节点扩容命令不同，请按需选择：
-* 如果要扩容 `master`，请复制 **扩容控制平面** 下方的全部命令（已用红框标出）。
+* 如果要扩容 `master`，请复制 **扩容控制平面** 下方的全部命令（已用红框标出）。注意 master **总数量** 应该为 **奇数**，一般为 1、3、5，如需更多 master，请根据集群规模谨慎评估。
 * 如果要扩容 `node`，请复制 **扩容节点** 下方的全部命令（已用红框标出）。
 
 ![](assets/bcssh-k8sctrl-add-node-cmds.png)
@@ -131,20 +128,22 @@ scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进�
 ## 使用已有的 k8s 集群
 >**注意**
 >
->部署了蓝鲸的监控或日志功能后，在扩容 `master` 或者 `node`前需要先 [给全部 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent)，不然会导致 agent 启动失败，此问题排期修复中。
+>限 1.18 或 1.20，其他版本未经测试。用户报告 1.22 以上版本不兼容，1.17 版本部署 bcs 会失败。
 
-如果能访问到 `master` 上的文件，可将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下。
-
-同时记得更新  **中控机** 的 `/etc/hosts` 文件确保可访问 config 文件中 k8s server。
-如果使用了 k8s 云服务，则厂商一般会提供 kubeconfig 导出功能，将其内容写入 **中控机** 的 `~/.kube/config` 路径下即可。
+1. 取得 kubeconfig 文件：`~/.kube/config`。
+   * 如果能访问到 `master` 上的文件，可将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下。
+   * 如果使用了 k8s 云服务，则厂商一般会提供 kubeconfig 导出功能，复制内容并写入 **中控机** 的 `~/.kube/config` 路径下即可。
+   * 其他情况请自行解决。
+2. 配置中控机 `/etc/hosts` 文件。
+   同时记得更新  **中控机** 的 `/etc/hosts` 文件确保可访问 config 文件中 k8s server。
+3. 在中控机安装 `kubectl` 命令。
+   * 如果能访问到 `master` 上的文件，可将 `master` 上的 `/usr/bin/kubectl` 复制到 **中控机** 的 `/usr/bin/` 路径下。
+   * 其他情况可参考本文下面的 “在中控机安装 kubectl” 章节操作。
 
 
 <a id="purchase-cloud-service-tke" name="purchase-cloud-service-tke" ></a>
 
 ## 购买腾讯云 TKE 服务
->**提示**
->
->在部署蓝鲸基础后添加 node 时，要记得 [给 node 安装 gse agent](install-bkce.md#k8s-node-install-gse-agent) 。
 
 您可以腾讯云提供的 k8s 集群，具体操作请查阅文档： [腾讯云 TKE 集群搭建指引](tke_hosting.md)
 
@@ -160,6 +159,7 @@ EOF
 ## 在中控机安装 kubectl
 当 **中控机** 并非 k8s `master` 时，是不存在 `kubectl`命令的。CentOS 7 可直接使用如下的命令安装：
 ``` bash
+k8s_version=1.20.11  # 推荐安装和服务端相同版本的客户端，如为其他版本，请重新赋值
 if ! command -v kubectl; then
   cat > /etc/yum.repos.d/kubernetes.repo <<EOF
 [kubernetes]
@@ -169,7 +169,7 @@ enabled=1
 gpgcheck=0
 EOF
   yum makecache fast
-  yum install -y kubectl
+  yum install -y kubectl-$k8s_version
 fi
 ```
 
