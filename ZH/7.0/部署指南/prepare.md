@@ -133,10 +133,15 @@ scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进�
 >
 >限 1.18 或 1.20，其他版本未经测试。用户报告 1.22 以上版本不兼容，1.17 版本部署 bcs 会失败。
 
-如果能访问到 `master` 上的文件，可将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下。
-
-同时记得更新  **中控机** 的 `/etc/hosts` 文件确保可访问 config 文件中 k8s server。
-如果使用了 k8s 云服务，则厂商一般会提供 kubeconfig 导出功能，将其内容写入 **中控机** 的 `~/.kube/config` 路径下即可。
+1. 取得 kubeconfig 文件：`~/.kube/config`。
+   * 如果能访问到 `master` 上的文件，可将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下。
+   * 如果使用了 k8s 云服务，则厂商一般会提供 kubeconfig 导出功能，复制内容并写入 **中控机** 的 `~/.kube/config` 路径下即可。
+   * 其他情况请自行解决。
+2. 配置中控机 `/etc/hosts` 文件。
+   同时记得更新  **中控机** 的 `/etc/hosts` 文件确保可访问 config 文件中 k8s server。
+3. 在中控机安装 `kubectl` 命令。
+   * 如果能访问到 `master` 上的文件，可将 `master` 上的 `/usr/bin/kubectl` 复制到 **中控机** 的 `/usr/bin/` 路径下。
+   * 其他情况可参考本文下面的 “在中控机安装 kubectl” 章节操作。
 
 
 <a id="purchase-cloud-service-tke" name="purchase-cloud-service-tke" ></a>
@@ -160,6 +165,7 @@ EOF
 ## 在中控机安装 kubectl
 当 **中控机** 并非 k8s `master` 时，是不存在 `kubectl`命令的。CentOS 7 可直接使用如下的命令安装：
 ``` bash
+k8s_version=1.20.11  # 推荐安装和服务端相同版本的客户端，如为其他版本，请重新赋值
 if ! command -v kubectl; then
   cat > /etc/yum.repos.d/kubernetes.repo <<EOF
 [kubernetes]
@@ -169,7 +175,7 @@ enabled=1
 gpgcheck=0
 EOF
   yum makecache fast
-  yum install -y kubectl
+  yum install -y kubectl-$k8s_version
 fi
 ```
 
