@@ -63,7 +63,7 @@
 
 使用作业平台`执行脚本`和`分发文件`做测试。
 
-{% video %}media/bk_nodeman.mp4{% endvideo %}
+{% video %}https://bkdocs-1252002024.file.myqcloud.com/ZH/6.0/bk_solutions/CD/Automation/media/bk_nodeman.mp4{% endvideo %}
 
 ## 扩展阅读
 

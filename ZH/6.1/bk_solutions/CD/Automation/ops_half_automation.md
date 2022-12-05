@@ -51,7 +51,7 @@
 
 可以看到任务执行的状态
 
-{% video %}media/stag_delivery.mp4{% endvideo %}
+{% video %}https://bkdocs-1252002024.file.myqcloud.com/ZH/6.0/bk_solutions/CD/Automation/media/stag_delivery.mp4{% endvideo %}
 
 在`职能化中心`可以看到任务已经执行完成。
 

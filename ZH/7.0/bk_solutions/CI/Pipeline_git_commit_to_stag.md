@@ -23,4 +23,4 @@
 
 下面为一次自动更新记录，从 **提交代码到更新测试环境**，**不到 1 分钟**。
 
-{% video %}assets/bk-ci-demo-HD.mp4{% endvideo %}
+{% video %}https://bkdocs-1252002024.file.myqcloud.com/ZH/6.0/bk_solutions/CI/assets/bk-ci-demo-HD.mp4{% endvideo %}
