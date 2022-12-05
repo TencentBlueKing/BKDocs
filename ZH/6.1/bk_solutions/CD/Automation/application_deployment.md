@@ -76,7 +76,7 @@
 
 点击执行任务流程
 
-{% video %}media/sops_execution.mp4{% endvideo %}
+{% video %}https://bkdocs-1252002024.file.myqcloud.com/ZH/6.0/bk_solutions/CD/Automation/media/sops_execution.mp4{% endvideo %}
 
 ## 扩展阅读
 
