@@ -18,8 +18,8 @@
 ```json
 {
   "filter": {
-    "start_time": 1654012800,
-    "end_time": 1654099199
+    "start_time": 1654012800000,
+    "end_time": 1654099199000
   }
 }
 ```
@@ -38,8 +38,8 @@ filter 字段
 
 | 字段 |  类型 |是否必须  | 描述  |
 |:---|:---|:---|:---|
-| start_time | int | 是 | 资源实例变更时间的开始时间（包含start_time） |
-| end_time | int | 是 |  资源实例变更时间的结束时间（包含end_time） | 
+| start_time | long | 是 | 资源实例变更时间的开始时间（毫秒，包含start_time） |
+| end_time | long | 是 |  资源实例变更时间的结束时间（毫秒，包含end_time） | 
 
 
 * 搜索查询
@@ -49,8 +49,8 @@ filter 字段
     "type": "host",
     "method": "fetch_instance_list",
     "filter": {
-        "start_time": 1654012800,
-        "end_time": 1654099199
+        "start_time": 1654012800000,
+        "end_time": 1654099199000
     },
     "page": {
         "offset": 0,
@@ -78,10 +78,11 @@ results 字段 ，类型 Array
 | id | string | 是 | 资源实例的唯一标识 |
 | display_name | string | 是 | 资源实例的展示名称 |
 | creator | string | 是 | 创建人 |
-| created_at | int | 是 | 创建时间 |
+| created_at | long | 是 | 创建时间(ms) |
 | updater | string | 是 | 变更人 |
-| updated_at | int | 是 | 变更时间 |
-| data | object | 是 | 资源实例详情，键值对需要与[实例schema定义](./17-fetch_resource_type_schema.md)保持一致 |
+| updated_at | long | 是 | 变更时间(ms) |
+| \_bk_iam_path_ | array | 否 | [资源拓扑](../../../Explanation/04-BkIAMPath.md) |
+| data | object | 是 | 资源实例详情，键值对需要与[实例schema定义](./17-fetch_resource_type_schema.md)保持一致；如果实例使用范围授权，`data`应该包含`attribute`内容 |
 
 * 正常查询返回
 
@@ -96,9 +97,10 @@ results 字段 ，类型 Array
               "id": "h1", 
               "display_name": "192.168.1.1", 
               "creator": "admin",
-              "created_at": 1654012800,
+              "created_at": 1654012800000,
               "updater": "admin",
-              "updated_at": 1654012800,
+              "updated_at": 1654012800000,
+              "_bk_iam_path_": ["/bk_cmdb,set,1/bk_cmdb,host,2/"],
               "data": {
                 "k1":  "v1", 
                 "k2":  "v2"
@@ -108,9 +110,10 @@ results 字段 ，类型 Array
               "id": "h2", 
               "display_name": "192.168.1.2", 
               "creator": "admin",
-              "created_at": 1654012800,
+              "created_at": 1654012800000,
               "updater": "admin",
-              "updated_at": 1654012800,
+              "updated_at": 1654012800000,
+              "_bk_iam_path_": ["/bk_cmdb,set,1/bk_cmdb,host,2/"],
               "data": {
                 "k1":  "v1", 
                 "k2":  "v2"
@@ -120,9 +123,10 @@ results 字段 ，类型 Array
               "id": "h3", 
               "display_name": "192.168.1.3", 
               "creator": "admin",
-              "created_at": 1654012800,
+              "created_at": 1654012800000,
               "updater": "admin",
-              "updated_at": 1654012800,
+              "updated_at": 1654012800000,
+              "_bk_iam_path_": ["/bk_cmdb,set,1/bk_cmdb,host,2/"],
               "data": {
                 "k1":  "v1", 
                 "k2":  "v2"
