@@ -11,8 +11,9 @@
 ## 部署基础套餐时的报错
 
 ### 一键脚本 在显示 generate custom.yaml 后报错 timed out waiting for the condition
+**表现**
 
-在你运行“一键脚本”安装基础套餐（ `./scripts/setup_bkce7.sh -i base --domain 你配置的域名` ）时，屏幕输出如下：
+在运行“一键脚本”安装基础套餐（ `./scripts/setup_bkce7.sh -i base --domain 你配置的域名` ）时，屏幕输出如下：
 ``` bash
 时间略 [INFO] multinode mode deploy
 时间略 [INFO] INSTALL:base
@@ -20,6 +21,12 @@
 时间略 [INFO] create pod to get path of Docker Root Dir
 error: timed out waiting for the condition
 ```
+
+**结论**
+
+目前常见为网络限制或异常导致镜像拉取失败，解决网络问题即可。
+
+**问题分析**
 
 这是来自 `kubectl` 命令的报错，意为等待超时。
 
@@ -31,7 +38,34 @@ blueking    nsenter-随机字符串   0/1  ErrImagePull   0  6s
 
 如为其他情况，请联系助手排查。
 
+### 一键脚本报错 helmfile command not found
+**表现**
+
+在运行“一键脚本”安装基础套餐时，出现报错：
+``` bash
+时间略 [INFO] multinode mode deploy
+时间略 [INFO] INSTALL:base
+略
+时间略 [INFO] installing localpv
+scripts/setup_bkce7.sh: line 568: helmfile: command not found
+时间略 [ERROR] fail to install local-pv
+```
+
+**结论**
+
+用户 `PATH` 中丢失了 `/usr/local/bin/`，补回后解决。
+
+**问题分析**
+
+检查脚本逻辑发现会把 `helmfile` 安装到 `/usr/local/bin/`。
+使用 `file` 命令检查文件 ABI 正常。测试文件执行权限也通过。
+
+发现安装逻辑在显示帮助信息时也能触发，故告知用户执行 `bash -x scripts/setup_bkce7.sh -h`，发现 `command -v helmfile` 不通过，然后成功触发了文件复制。
+
+故检查 `PATH` 变量，发现存在 `/usr/local/sbin/`，但是没有 `/usr/local/bin/`，判定为用户修改错误所致，补回后问题解决。
+
 ### 一键脚本 或 helmfile 输出大段报错 timed out waiting for the condition
+**表现**
 
 在使用“一键脚本”安装任意套餐，或者直接执行 helmfile 命令时，出现大段报错，其输入如下
 ``` bash
@@ -49,7 +83,13 @@ COMBINED OUTPUT:
   Error: timed out waiting for the condition
 ```
 
-因为这是一个笼统的报错，因此我们需要检查出问题的 `release名字` 对应的 pod，然后才能排查出问题所在。
+**结论**
+
+因为这是一个笼统的报错，请先参考问题分析做初筛，然后检查对应的案例或联系助手。
+
+**问题分析**
+
+我们需要检查出问题的 `release名字` 对应的 pod，然后才能排查出问题所在。
 
 ``` bash
 kubectl get pod -A | grep -wv Completed | grep -e "0/"
@@ -74,6 +114,8 @@ kubectl get pod -A | grep -wv Completed | grep -e "0/"
 
 
 ### Service call failed
+**表现**
+
 基础套餐部署到 `bk-paas` 时超时，检查 `bkpaas3-apiserver-migrate-db` pod 的状态为 `CrashLoopBackoff` ，检查发现 `apiserver-bkrepo-init` 容器内出现日志：
 ``` plain
 blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
