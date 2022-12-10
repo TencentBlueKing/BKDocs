@@ -153,11 +153,11 @@ kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
 ### 配置平台循环登录
 **表现**
 
-当访问 配置平台（CMDB）时，一直不断提示登录。但是其他系统均正常访问（最多仅提示登录一次），且隐私窗口中只需登录一次即可访问配置平台。
+当访问 配置平台（CMDB）时，登录成功后依旧不断提示登录。但是登录成功后访问其他系统均访问，且隐私窗口中只需登录一次即可访问配置平台。
 
 **结论**
 
-此问题为用户同时存在多套蓝鲸环境且域名后缀相同所致，最终清空浏览器 cookie 解决。
+用户同时存在多套蓝鲸环境且域名后缀相同，最终清空浏览器 cookie 解决。
 
 使用其他浏览器（或同浏览器登录其他账户）也可临时解决问题。
 
@@ -177,16 +177,16 @@ kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
 **结论**
 
 分为 2 种情况：
-1. 如果是未曾 [配置容器监控](install-co-suite.md#bkmonitor-install-operator)，请先完成。
-2. 如果已经配置过，需要核对 bcs token 是否正确。在工作目录执行 `bash -x scripts/config_monitor_bcs_token.sh`，检查输出的 `GATEWAY_TOKEN` 和 `./environments/default/bkmonitor-custom-values.yaml.gotmpl` 内容是否一致。
-   1. 如果不一致，请替换文件内容，并部署一次监控平台：`helmfile -f 04-bkmonitor.yaml.gotmpl sync`。
-   2. 如果一致，也请 **先尝试部署一次监控平台**。如果问题依旧，请联系助手排查。
+1. 遗漏步骤 [配置容器监控](install-co-suite.md#bkmonitor-install-operator)。
+2. bcs 实际 token 变动，更新 token 配置后重启监控平台解决。
 
 **问题分析**
 
-对应情况的分析：
-1. 用户漏看了“部署监控平台”章节末尾的提示。
-2. 用户曾经卸载过蓝鲸，但是没有严格参考卸载文档操作，导致配置文件残留。
+“部署监控平台”章节末尾有提示配置容器监控，但是用户可能遗漏，需要先询问确认。
+
+如果已经配置过，需要核对 bcs token 是否正确。在工作目录执行 `bash -x scripts/config_monitor_bcs_token.sh`，检查输出的 `GATEWAY_TOKEN` 和 `./environments/default/bkmonitor-custom-values.yaml.gotmpl` 内容是否一致。
+   * 如果不一致，请替换文件内容，并部署一次监控平台：`helmfile -f 04-bkmonitor.yaml.gotmpl sync`。
+   * 如果一致，也请 **先尝试部署一次监控平台**。如果问题依旧，请联系助手排查。
 
 ## 安装 agent 时的报错
 ### 执行日志里显示 curl 下载 setup_agent.sh 报错 404 not found
