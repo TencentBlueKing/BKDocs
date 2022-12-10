@@ -169,6 +169,15 @@ Events:
 此处的报错是 `node-10-0-1-3` 解析 `docker.bkce7.bktencent.com` 失败。因此需要配置所用的 DNS 服务或者配置对应机器的 `/etc/hosts` 文件。
 
 
+## 部署持续集成套餐的问题
+### 部署时遇到 timed out waiting for the condition
+**表现**
+
+目前因为 `bk-ci-init-turbo` pod 启动失败，可能导致整个 release 超时。
+
+**结论**
+`bk-ci` 默认配置项有误，请参考 《[部署持续集成平台-蓝盾](install-ci-suite.md#install-ci)》文档重新部署。
+
 ## 使用问题
 ### 蓝鲸桌面点击图标后提示 应用已经下载，正在为您卸载该应用
 **表现**
@@ -229,6 +238,36 @@ kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
 如果已经配置过，需要核对 bcs token 是否正确。在工作目录执行 `bash -x scripts/config_monitor_bcs_token.sh`，检查输出的 `GATEWAY_TOKEN` 和 `./environments/default/bkmonitor-custom-values.yaml.gotmpl` 内容是否一致。
    * 如果不一致，请替换文件内容，并部署一次监控平台：`helmfile -f 04-bkmonitor.yaml.gotmpl sync`。
    * 如果一致，也请 **先尝试部署一次监控平台**。如果问题依旧，请联系助手排查。
+
+
+### 蓝盾流水线上传构件失败
+**表现**
+流水线插件 “upload artifact”报错：
+``` plain
+1 file match:
+  /data/devops/workspace/文件名
+prepare to upload 大小 B
+Error: Process completed with exit code 2189503: com.tencent.devops.common.api.exception.RemoteServiceException: 上传流水线文件失败.
+2189503
+Please contact platform.
+```
+
+**结论**
+`bk-ci` 默认配置项有误，请参考 《[部署持续集成平台-蓝盾](install-ci-suite.md#install-ci)》文档重新部署。
+
+**问题分析**
+根据文件名确认 ci-artifactory 日志，为相同报错。故进入 `ci-gateway` pod，检查 nginx access.log 和 error.log，发现为请求 `repo.bk.com` 域名返回了 413。因此导致异常。
+
+进一步联系开发确认为 charts 默认值有误所致，需要调整 custom values 文件：`environments/default/bkci/bkci-custom-values.yaml.gotmpl`：
+``` yaml
+config:
+  bkRepoFqdn: bkrepo.{{ .Values.domain.bkDomain }}
+```
+随后重启 ci 解决：
+``` bash
+helmfile -f 03-bkci.yaml.gotmpl destroy
+helmfile -f 03-bkci.yaml.gotmpl sync
+```
 
 ## 安装 agent 时的报错
 ### 执行日志里显示 curl 下载 setup_agent.sh 报错 404 not found

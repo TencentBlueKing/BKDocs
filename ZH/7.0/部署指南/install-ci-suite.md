@@ -5,10 +5,13 @@
 >
 >欢迎先体验“流水线”平台，其他平台陆续接入中。
 
-## 部署流水线平台（蓝盾）
+
+<a id="install-ci" name="install-ci"></a>
+
+## 部署持续集成平台-蓝盾
 >**提示**
 >
->当前“流水线”平台仅供预览，不建议用于生产环境。
+>当前“持续集成平台”因为固定了 构建 Pod 规格为 `1 核 1G 内存 1G 磁盘`，故不建议用于生产环境。
 
 ### 配置 coredns
 
@@ -19,6 +22,34 @@ BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自�
 IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 ./scripts/control_coredns.sh update "$IP1" devops.$BK_DOMAIN codecc.$BK_DOMAIN bktbs.$BK_DOMAIN
 ./scripts/control_coredns.sh list  # 检查添加的记录。
+```
+
+### 修改 custom values
+* 目前 编译加速平台（turbo）暂未适配完成，需要临时禁用初始化。
+* 需要更新 bkrepo 的配置项，不然上传构件会失败。
+* 需要调高部分 pod 的 limit，初次启动很容易超时。（如果你的资源充足，可以调整更多 Pod）
+
+修改 `environments/default/bkci/bkci-custom-values.yaml.gotmpl`：
+``` yaml
+init:
+  turbo: false
+config:
+  bkRepoFqdn: bkrepo.{{ .Values.domain.bkDomain }}
+auth:
+  resources:
+    limits:
+      cpu: 1500m
+      memory: 1500Mi
+store:
+  resources:
+    limits:
+      cpu: 1500m
+      memory: 1500Mi
+openapi:
+  resources:
+    limits:
+      cpu: 1500m
+      memory: 1500Mi
 ```
 
 ### 部署 ci
