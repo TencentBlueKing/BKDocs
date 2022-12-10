@@ -242,6 +242,7 @@ kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
 
 ### 蓝盾流水线上传构件失败
 **表现**
+
 流水线插件 “upload artifact”报错：
 ``` plain
 1 file match:
@@ -268,6 +269,24 @@ config:
 helmfile -f 03-bkci.yaml.gotmpl destroy
 helmfile -f 03-bkci.yaml.gotmpl sync
 ```
+
+### 蓝盾流水线配置 GitLab 触发后项目设置里没有 webhook 配置项
+**表现**
+
+流水线触发器添加了 GitLab，并正确配置了触发事件，但是 commit 时无法触发。检查 GitLab 项目配置没有 webhook url。
+
+**结论**
+
+用户没有仓库的 master 权限，添加权限后重新保存流水线，即可正常触发。
+
+**问题分析**
+
+添加触发器后，流水线保存时会异步触发 webhook 注册逻辑。
+
+检查 ci-process 日志发现报错：`com.tencent.devops.common.api.exception.RemoteServiceException: Webhook添加失败，请确保该代码库的凭据关联的用户对代码库有master权限`。
+
+添加 master 权限后，重新保存流水线，发现 GitLab 项目中已经出现 webhook url，点击 Test 可以成功触发流水线运行。
+
 
 ## 安装 agent 时的报错
 ### 执行日志里显示 curl 下载 setup_agent.sh 报错 404 not found
