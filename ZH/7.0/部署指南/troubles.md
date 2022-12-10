@@ -139,7 +139,7 @@ kubectl logs -n blueking bkpaas3-apiserver-migrate-db-补全名字
 kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
 ```
 
-问题原因：点击桌面的 “添加” 按钮，发现应用商店中只有 “配置平台”、“作业平台” 和 新安装的 SaaS，并没有 “权限中心”、“用户管理” 等应用。怀疑为 PaaS 初始化数据库异常，用户暂未提供日志，无法找到初始化失败的原因。
+问题分析：点击桌面的 “添加” 按钮，发现应用商店中只有 “配置平台”、“作业平台” 和 新安装的 SaaS，并没有 “权限中心”、“用户管理” 等应用。怀疑为 PaaS 初始化数据库异常，用户暂未提供日志，无法找到初始化失败的原因。
 
 
 ### 配置平台循环登录
@@ -147,7 +147,7 @@ kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
 
 结论：此问题为用户同时存在多套蓝鲸环境且域名后缀相同所致，可以临时清空浏览器 cookie 解决。
 
-问题原因：蓝鲸 V6 的默认部署域名为 `bktencent.com`，而蓝鲸 V7 的默认域名为 `bkce7.bktencent.com`。当用户已经成功登录 V6 环境后，则会在浏览器存储 `bk_token`，此时访问 V7 环境，因为域名后缀相同，则 `bktencent.com` 域名里的 `bk_token` cookie 也会发给 V7 环境，导致登录校验失败。此问题涉及同名 cookie 读取逻辑调整，待配置平台评估解决方案。
+问题分析：蓝鲸 V6 的默认部署域名为 `bktencent.com`，而蓝鲸 V7 的默认域名为 `bkce7.bktencent.com`。当用户已经成功登录 V6 环境后，则会在浏览器存储 `bk_token`，此时访问 V7 环境，因为域名后缀相同，则 `bktencent.com` 域名里的 `bk_token` cookie 也会发给 V7 环境，导致登录校验失败。此问题涉及同名 cookie 读取逻辑调整，待配置平台评估解决方案。
 
 ### 监控平台 观测场景 kubernetes 访问报错 resource is unauthorized
 表现：访问 “监控平台” —— “观测场景” —— “kubernetes” 界面。页面提示 报错 “resource is unauthorized”。
@@ -158,12 +158,34 @@ kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
    1. 如果不一致，请替换文件内容，并部署一次监控平台：`helmfile -f 04-bkmonitor.yaml.gotmpl sync`。
    2. 如果一致，也请 **先尝试部署一次监控平台**。如果问题依旧，请联系助手排查。
 
-问题原因：
+问题分析：
 1. 用户漏看了“部署监控平台”章节末尾的提示。
 2. 用户曾经卸载过蓝鲸，但是没有严格参考卸载文档操作，导致配置文件残留。
 
 ## 安装 agent 时的报错
-### 执行日志里显示 
+### 执行日志里显示 curl 下载 setup_agent.sh 报错 404 not found
+**表现**
+
+执行日志显示：
+``` plain
+[时间略 INFO] [script] curl http://服务端地址略/generic/blueking/bknodeman/data/bkee/public/bknodeman/download/setup_agent.sh -o /tmp/setup_agent.sh --connect-timeout 5 -sSfg
+[时间略 ERROR] [3803009] 目录返回非零值: exit_status -> 22, stdout -> , stderr -> curl: (22) The requested URL returned error: 404 not found
+```
+
+**结论**
+
+用户 bkrepo 曾卸载，因此导致历史文件丢失。因为暂无工具检查数据不一致的情况，故推荐完整卸载蓝鲸重新部署。
+
+**问题分析**
+
+在节点管理报错 404 后，登录制品库管理界面，发现文件存在，点击文件详情，取得 sha256。
+
+然后找到了 `bk-repo-bkrepo-storage` pvc 所对应的 pv，检查发现此 pv 中确实没有 `pv目录前缀/store/sha256的2层前缀目录/文件sha256`这个文件。
+
+询问用户得知有卸载 bkrepo，故断定为卸载导致了历史文件丢失。
+
+经 bkrepo 开发确认暂无此场景的修复工具，且重装 `nodeman` 时因为存在数据库记录无法自动重新上传，推测 PaaS 相关文件上传也会如此，故推荐用户卸载整个蓝鲸。
+
 
 ### 执行日志里显示 agent is not connect to gse server
 执行日志显示：
