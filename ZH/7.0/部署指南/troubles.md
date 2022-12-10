@@ -135,6 +135,19 @@ Events:
 
 问题原因：蓝鲸 V6 的默认部署域名为 `bktencent.com`，而蓝鲸 V7 的默认域名为 `bkce7.bktencent.com`。当用户已经成功登录 V6 环境后，则会在浏览器存储 `bk_token`，此时访问 V7 环境，因为域名后缀相同，则 `bktencent.com` 域名里的 `bk_token` cookie 也会发给 V7 环境，导致登录校验失败。此问题涉及同名 cookie 读取逻辑调整，待配置平台评估解决方案。
 
+### 监控平台 观测场景 kubernetes 访问报错 resource is unauthorized
+表现：访问 “监控平台” —— “观测场景” —— “kubernetes” 界面。页面提示 报错 “resource is unauthorized”。
+
+结论：
+1. 如果是未曾 [配置容器监控](install-co-suite.md#bkmonitor-install-operator)，请先完成。
+2. 如果已经配置过，需要核对 bcs token 是否正确。在工作目录执行 `bash -x scripts/config_monitor_bcs_token.sh`，检查输出的 `GATEWAY_TOKEN` 和 `./environments/default/bkmonitor-custom-values.yaml.gotmpl` 内容是否一致。
+   1. 如果不一致，请替换文件内容，并部署一次监控平台：`helmfile -f 04-bkmonitor.yaml.gotmpl sync`。
+   2. 如果一致，也请 **先尝试部署一次监控平台**。如果问题依旧，请联系助手排查。
+
+问题原因：
+1. 用户漏看了“部署监控平台”章节末尾的提示。
+2. 用户曾经卸载过蓝鲸，但是没有严格参考卸载文档操作，导致配置文件残留。
+
 ## 安装 agent 时的报错
 ### 执行日志里显示 
 
