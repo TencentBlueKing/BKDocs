@@ -129,9 +129,13 @@ Events:
 
 ## 使用问题
 ### 蓝鲸桌面点击图标后提示 应用已经下载，正在为您卸载该应用
-表现：在蓝鲸桌面点击应用图标，结果提示 ”应用已经下载，正在为您卸载该应用……”。
+**表现**
 
-结论：PaaS 初始化异常，具体原因待查，推荐先行卸载重装 PaaS。
+在蓝鲸桌面点击应用图标，结果提示 ”应用已经下载，正在为您卸载该应用……”。
+
+**结论**
+
+PaaS 初始化异常，具体原因待查，推荐先行卸载重装 PaaS。
 
 后续用户如有遇到，请收集 `bkpaas3-apiserver-migrate-db` Pod 的 2 次日志供助手排查：
 ``` bash
@@ -139,26 +143,48 @@ kubectl logs -n blueking bkpaas3-apiserver-migrate-db-补全名字
 kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
 ```
 
-问题分析：点击桌面的 “添加” 按钮，发现应用商店中只有 “配置平台”、“作业平台” 和 新安装的 SaaS，并没有 “权限中心”、“用户管理” 等应用。怀疑为 PaaS 初始化数据库异常，用户暂未提供日志，无法找到初始化失败的原因。
+**问题分析**
+
+点击桌面的 “添加” 按钮，发现应用商店中只有 “配置平台”、“作业平台” 和 新安装的 SaaS，并没有 “权限中心”、“用户管理” 等应用。
+
+怀疑为 PaaS 初始化数据库异常，用户暂未提供日志，无法找到初始化失败的原因。
 
 
 ### 配置平台循环登录
-表现：当访问 配置平台（CMDB）时，一直不断提示登录。但是其他系统均正常访问（最多仅提示登录一次），且隐私窗口中只需登录一次即可访问配置平台。
+**表现**
 
-结论：此问题为用户同时存在多套蓝鲸环境且域名后缀相同所致，可以临时清空浏览器 cookie 解决。
+当访问 配置平台（CMDB）时，一直不断提示登录。但是其他系统均正常访问（最多仅提示登录一次），且隐私窗口中只需登录一次即可访问配置平台。
 
-问题分析：蓝鲸 V6 的默认部署域名为 `bktencent.com`，而蓝鲸 V7 的默认域名为 `bkce7.bktencent.com`。当用户已经成功登录 V6 环境后，则会在浏览器存储 `bk_token`，此时访问 V7 环境，因为域名后缀相同，则 `bktencent.com` 域名里的 `bk_token` cookie 也会发给 V7 环境，导致登录校验失败。此问题涉及同名 cookie 读取逻辑调整，待配置平台评估解决方案。
+**结论**
+
+此问题为用户同时存在多套蓝鲸环境且域名后缀相同所致，最终清空浏览器 cookie 解决。
+
+使用其他浏览器（或同浏览器登录其他账户）也可临时解决问题。
+
+建议用户尝试使用其他域名。
+
+**问题分析**
+
+蓝鲸 V6 的默认部署域名为 `bktencent.com`，而蓝鲸 V7 的默认域名为 `bkce7.bktencent.com`。当用户已经成功登录 V6 环境后，则会在浏览器存储 `bk_token`，此时访问 V7 环境，因为域名后缀相同，则 `bktencent.com` 域名里的 `bk_token` cookie 也会发给 V7 环境，导致登录校验失败。
+
+此问题涉及同名 cookie 读取逻辑调整，待配置平台评估正式解决方案。
 
 ### 监控平台 观测场景 kubernetes 访问报错 resource is unauthorized
-表现：访问 “监控平台” —— “观测场景” —— “kubernetes” 界面。页面提示 报错 “resource is unauthorized”。
+**表现**
 
-结论：
+访问 “监控平台” —— “观测场景” —— “kubernetes” 界面。页面提示 报错 “resource is unauthorized”。
+
+**结论**
+
+分为 2 种情况：
 1. 如果是未曾 [配置容器监控](install-co-suite.md#bkmonitor-install-operator)，请先完成。
 2. 如果已经配置过，需要核对 bcs token 是否正确。在工作目录执行 `bash -x scripts/config_monitor_bcs_token.sh`，检查输出的 `GATEWAY_TOKEN` 和 `./environments/default/bkmonitor-custom-values.yaml.gotmpl` 内容是否一致。
    1. 如果不一致，请替换文件内容，并部署一次监控平台：`helmfile -f 04-bkmonitor.yaml.gotmpl sync`。
    2. 如果一致，也请 **先尝试部署一次监控平台**。如果问题依旧，请联系助手排查。
 
-问题分析：
+**问题分析**
+
+对应情况的分析：
 1. 用户漏看了“部署监控平台”章节末尾的提示。
 2. 用户曾经卸载过蓝鲸，但是没有严格参考卸载文档操作，导致配置文件残留。
 
@@ -188,6 +214,8 @@ kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
 
 
 ### 执行日志里显示 agent is not connect to gse server
+**表现**
+
 执行日志显示：
 ``` plain
 [时间略 INFO] [script] setup agent. (extract, render config)
@@ -196,15 +224,24 @@ kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
 [时间略 ERROR] agent(PID: 略) is not connect to gse server
 ```
 
+**结论**
+
+具体排查过程见问题分析，有如下情况：
+1. 用户遗漏了 “节点管理”——“全局配置” 中 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) 步骤。
+
+**问题分析**
+
+此问题需进一步排查。
+
 请选择其中一台安装失败的机器。登录到此机器，检查 agent 日志文件： `/var/log/gse/agent-err.log`。
 
-如果日志中大量提示：
-``` plain
-时间略 (略):ZOO_ERROR@getaddrs@599: getaddrinfo: No such file or directory
-```
-此报错为无法解析 zk 服务器地址所致，需检查配置文件：`/usr/local/gse/agent/etc/gse_agent.conf`。
-* 如果配置文件中 `.zkhost` 的值是 `"bk-zookeeper:2181"`，说明你遗漏了部署步骤，请在 “节点管理”——“全局配置” 中 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) 。
-* 如果为其他域名，则请自行解决 DNS 解析问题，建议使用 IP。
+发现日志中大量提示：
+   ``` plain
+   时间略 (略):ZOO_ERROR@getaddrs@599: getaddrinfo: No such file or directory
+   ```
+   此报错为无法解析 zk 服务器地址所致，需检查配置文件：`/usr/local/gse/agent/etc/agent.conf`。
+   * 如果配置文件中 `.zkhost` 的值是 `"bk-zookeeper:2181"`，说明你遗漏了部署步骤，请在 “节点管理”——“全局配置” 中 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) 。
+   * 如果为其他域名，则请自行解决 DNS 解析问题，建议使用 IP。
 
 如有其他情况，请联系助手排查。
 
