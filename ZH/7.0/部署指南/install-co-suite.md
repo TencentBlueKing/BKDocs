@@ -61,6 +61,9 @@ scripts/set_desktop_default_app.sh -a "bk_log_search"
 
 请阅读下方对应章节进行操作。
 
+
+<a id="bkmonitor-install-operator" name="bkmonitor-install-operator"></a>
+
 ## 容器监控
 在配置了容器监控后，我们可以访问 “监控平台” 的 “观测场景” —— “Kubenetes” 界面了。
 
