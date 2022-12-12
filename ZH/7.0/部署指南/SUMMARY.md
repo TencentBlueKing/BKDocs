@@ -10,6 +10,7 @@
 * [持续集成套餐部署](install-ci-suite.md)
 * [可视化开发平台安装指引](LesscodeDeployment.md)
 * [卸载](uninstall.md)
+* [问题案例](troubles.md)
 * [FAQ](faq.md)
 * [附录]()
     * [腾讯云 TKE 集群准备](tke_hosting.md)
