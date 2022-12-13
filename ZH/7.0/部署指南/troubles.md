@@ -390,6 +390,27 @@ Error response from daemon: Get https://registry-1.docker.io/v2/: net/http: requ
 
 ## k8s 问题案例
 
+### kubectl logs 报错 dial tcp IP:10250 connect 失败
+**表现**
+
+在终端运行 `kubectl logs` 命令时，提示无法连接到服务器。报错如下：
+``` plain
+Error from server: Get "https://IP:10250/containerLogs/命名空间/POD名/容器名": dial tcp IP:10250: connect: no route to host
+```
+或者为：
+``` plain
+Error from server: Get "https://IP:10250/containerLogs/命名空间/POD名/容器名": dial tcp IP:10250: connect: connection refused
+```
+
+**结论**
+
+用户对应的节点网络异常（掉线，或者防火墙拦截）导致无法访问。
+
+**问题分析**
+
+在 master 上测试访问该端口确实不通，检查发下目标机器存在防火墙。关闭防火墙后操作恢复正常。
+
+
 ### node(s) didn't find available persistent volumes to bind
 describe pod 发现报错：
 ``` plain
