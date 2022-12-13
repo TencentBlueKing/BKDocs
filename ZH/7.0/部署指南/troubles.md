@@ -139,9 +139,28 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 ## 部署 SaaS 时的报错
 ### 部署 SaaS 在“配置资源实例”阶段报错
 首先查看 `engine-main` 这个应用对应 pod 的日志。根据错误日志提示，判断定位方向：
-1. 如报错 `DeployError: 部署失败, 配置资源实例异常: unable to provision instance for services<redis>`，则为没有配置 redis 资源所致。在中控机工作目录执行 `./scripts/setup_bkce7.sh -u redis`。
-2. 检测 mysql、rabbitmq 等「增强服务」的资源配置是否正确。`http://bkpaas.$BK_DOMAIN/backend/admin42/platform/plans/manage` （先登录才能访问）以及 `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` （先登录才能访问）。
-3. 检查应用集群的 k8s 相关配置 token 是否正确。初次部署时会自动调用 `scripts/create_k8s_cluster_admin_for_paas3.sh` 脚本自动生成 token 等参数到 `./paas3_initial_cluster.yaml` 文件中。如果不正确，可以删除后这些账号和绑定后重建。
+1. 检测 mysql、rabbitmq 等「增强服务」的资源配置是否正确。`http://bkpaas.$BK_DOMAIN/backend/admin42/platform/plans/manage` （先登录才能访问）以及 `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` （先登录才能访问）。
+2. 检查应用集群的 k8s 相关配置 token 是否正确。初次部署时会自动调用 `scripts/create_k8s_cluster_admin_for_paas3.sh` 脚本自动生成 token 等参数到 `./paas3_initial_cluster.yaml` 文件中。如果不正确，可以删除后这些账号和绑定后重建。
+
+
+### 部署 SaaS 时报错 配置资源实例异常: unable to provision instance for services redis
+**表现**
+
+当使用“一键脚本”部署 SaaS 时，终端出现报错：
+``` plain
+时间略 [INFO] uploading 工作目录/scripts/../../saas/bk_itsm.tgz
+时间略 [INFO] installing bk_itsm-default-image-2.6.2
+DeployError: 部署失败, 配置资源实例异常: unable to provision instance for services<redis>❌
+```
+或者在浏览器里访问开发者中心部署时，在 “准备阶段” —— “配置资源实例” 阶段的日志中出现报错：
+> 配置资源实例异常: unable to provision instance for services<redis>
+
+**结论**
+未配置 redis 实例所致。请在中控机工作目录执行 `./scripts/setup_bkce7.sh -u redis`。
+
+**问题分析**
+* 一键部署脚本：用户在卸载后未曾参照文档重命名 bkhelmfile 目录，导致自动跳过了此步骤。
+* 手动部署：遗漏了 “[在 PaaS 界面配置 Redis 资源池](install-saas-manually.md#paas-svc-redis)” 步骤。
 
 <a id="saas-deploy-prehook" name="saas-deploy-prehook"></a>
 

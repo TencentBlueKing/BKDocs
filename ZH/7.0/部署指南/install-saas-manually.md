@@ -33,6 +33,8 @@
     curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest nm_gse_full
     ```
 
+<a id="paas-svc-redis" name="paas-svc-redis"></a>
+
 ## 在 PaaS 界面配置 Redis 资源池
 添加 SaaS 使用的 Redis 资源池。如果部署 SaaS 时提示 “分配不到 redis”，则需补充资源实例。
 
