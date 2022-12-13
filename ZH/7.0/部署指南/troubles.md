@@ -153,7 +153,7 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 DeployError: 部署失败, 配置资源实例异常: unable to provision instance for services<redis>❌
 ```
 或者在浏览器里访问开发者中心部署时，在 “准备阶段” —— “配置资源实例” 阶段的日志中出现报错：
-> 配置资源实例异常: unable to provision instance for services<redis>
+> 配置资源实例异常: unable to provision instance for services`<redis>`
 
 **结论**
 未配置 redis 实例所致。请在中控机工作目录执行 `./scripts/setup_bkce7.sh -u redis`。
