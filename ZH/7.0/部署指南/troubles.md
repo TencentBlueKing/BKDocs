@@ -113,6 +113,72 @@ kubectl get pod -A | grep -wv Completed | grep -e "0/"
   * 解决办法：此种情况请联系蓝鲸助手处理。
 
 
+### elasticsearch 及 redis-cluster 部署超时
+**表现**
+
+使用一键脚本部署时，报错 bk-elastic 部署超时：
+``` plain
+STDERR:
+  Error: timed out waiting for the condition
+
+COMBINED OUTPUT:
+  Release "bk-elastic" does not exist. Installing it now.
+  Error: timed out waiting for the condition
+```
+
+检查 pod 状态，发现 elastic 和 redis-cluster pod 出现 crash：
+``` plain
+blueking  bk-elastic-elasticsearch-coordinating-only-0  0/1  Running           3  12m
+blueking  bk-elastic-elasticsearch-data-0               0/1  CrashLoopBackOff  2  11m
+blueking  bk-elastic-elasticsearch-master-0             1/1  Running           0  11m
+blueking  bk-redis-cluster-0                            0/1  CrashLoopBackOff  3  11m
+blueking  bk-redis-cluster-1                            0/1  CrashLoopBackOff  4  11m
+blueking  bk-redis-cluster-2                            0/1  Running           0  11m
+blueking  bk-redis-master-0                             1/1  Running           0  11m
+```
+
+**结论**
+
+网络限制导致虚拟网络不通，解除限制后 bk-elastic 自动恢复正常。
+
+bk-redis-cluster 在删除 pvc 后重新部署，恢复正常：
+``` bash
+kubectl delete pvc -n blueking -l app.kubernetes.io/instance=bk-redis-cluster  # 删除磁盘数据
+helmfile -f base-storage.yaml.gotmpl -l name=bk-redis-cluster sync  # 重新部署
+```
+
+**问题分析**
+
+首先检查 elasticsearch-coordinating pod 的日志：
+``` plain
+[时间略][WARN ][o.e.d.SeedHostsResolver  ] [bk-elastic-elasticsearch-coordinating-only-0] failed to resolve host [bk-elastic-elasticsearch-master.blueking.svc.cluster.local]
+java.net.UnknownHostException: bk-elastic-elasticsearch-master.blueking.svc.cluster.local
+```
+发现为无法解析服务域名。检查 elasticsearch-data pod 的日志，为相同原因。
+
+因为 elasticsearch-master 为 Ready，故先检查服务注册状态：
+``` bash
+kubectl get svc -A |grep bk-elastic
+```
+可以发现存在 bk-elastic-elasticsearch-master，故服务注册正常。
+
+检查 DNS 服务：
+``` bash
+kubectl get svc -A |grep dns
+```
+仅有 kube-dns，地址为 `10.96.0.10`。
+
+然后在 master 及 各 node 测试能否访问 `10.96.0.10` 解析：
+``` bash
+nslookup bk-elastic-elasticsearch-master.blueking.svc.cluster.local 10.96.0.10
+```
+测试发现 master 能正常解析，全部 node 解析超时。
+
+推测为网络策略限制，导致虚拟网络不通。
+
+用户解除网络策略后，发现 elastic 可以自动恢复，但是 redis-cluster 依旧未能自动恢复。尝试清除数据，可以正常启动了。
+
+
 ### Service call failed
 **表现**
 
