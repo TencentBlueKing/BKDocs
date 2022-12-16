@@ -1,6 +1,7 @@
 # Summary
 
 ## 配置平台
+
 * [产品简介](产品白皮书/产品简介/Overview.md)
 * [术语解释](产品白皮书/术语解释/Term.md)
 * [产品架构](产品白皮书/产品架构/Architecture.md)
