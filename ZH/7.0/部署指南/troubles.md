@@ -179,6 +179,35 @@ nslookup bk-elastic-elasticsearch-master.blueking.svc.cluster.local 10.96.0.10
 用户解除网络策略后，发现 elastic 可以自动恢复，但是 redis-cluster 依旧未能自动恢复。尝试清除数据，可以正常启动了。
 
 
+### bk-repo 部署超时，bk-repo-gateway 日志显示 Address family not supported by protocol
+**表现**
+
+使用一键脚本部署时，报错 bk-repo 部署超时：
+``` plain
+STDERR:
+  Error: timed out waiting for the condition
+
+COMBINED OUTPUT:
+  Release "bk-repo" does not exist. Installing it now.
+  Error: timed out waiting for the condition
+```
+检查 pod 状态，发现 `bk-repo-bkrepo-gateway` pod 在状态为 `CrashLoopBackOff`，且 `RESTART` 计数持续增长，检查上次日志 `kubectl logs -p` 发现报错： 
+``` plain
+nginx: [emerg] socket() [::]:80 failed (97: Address family not supported by protocol)
+```
+
+**结论**
+
+1. 用户内核未启用 IPv6，启用后恢复。
+2. bk-repo 不应该强制监听 IPv6 地址，已经向开发提单： https://github.com/TencentBlueKing/bk-repo/issues/119
+
+**问题分析**
+
+检查 nginx 报错，为系统不支持 IPv6 所致。
+
+检查配置文件发现硬编码了 IPv6 地址监听，故只能推动用户启用系统 IPv6 功能，同时提单给开发避免此类硬编码。
+
+
 ### Service call failed
 **表现**
 
