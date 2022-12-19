@@ -6,7 +6,25 @@
 >
 >请直接搜索错误关键词或短句，不要整行粘贴，这样可能匹配不到。
 
+本文按部署节奏组织内容：
+* 部署前的报错
+* 部署基础套餐时的报错
+* 部署 SaaS 时的报错
+* 安装 agent 时的报错
+* 部署容器管理平台时的报错
+* 部署监控日志套餐时的报错
+* 部署持续集成套餐时的报错
+
+也收集了一些使用问题：
+* 浏览器访问时的报错 （主要为界面访问的报错）
+* 蓝盾使用问题 （主要为插件报错等）
+
+并在末尾提供了一些基础软件的问题案例：
+* docker 问题案例
+* k8s 问题案例
+
 ## 部署前的报错
+待用户反馈。
 
 ## 部署基础套餐时的报错
 
@@ -34,7 +52,7 @@ error: timed out waiting for the condition
 ``` bash
 blueking    nsenter-随机字符串   0/1  ErrImagePull   0  6s
 ```
-当 `nsenter` pod 状态为 `ErrImagePull`，说明无法正常拉取镜像，你需要使用 `kubectl describe pod -n blueking nsenter-补全名字` 查看镜像拉取失败的具体原因。一般为你的网络环境有限制所致，请解决网络问题后重试。
+当 `nsenter` pod 的状态为 `ErrImagePull`，说明无法正常拉取镜像，你需要使用 `kubectl describe pod -n blueking nsenter-补全名字` 查看镜像拉取失败的具体原因。一般为你的网络环境有限制所致，请解决网络问题后重试。
 
 如为其他情况，请联系助手排查。
 
@@ -85,7 +103,13 @@ COMBINED OUTPUT:
 
 **结论**
 
-因为这是一个笼统的报错，请先参考问题分析做初筛，然后检查对应的案例或联系助手。
+这是一个笼统的报错，请先参考本章节的**问题分析**做初筛，然后根据关键词搜索本文的已知案例。
+
+如果没有找到案例，请提交如下信息给助手：
+1. 全部 Pod 的概况： `kubectl get pod -A`。
+2. 全部 Pod 的详情： `kubectl describe pod -A`。
+3. 提交异常 Pod 的日志： `kubectl logs -n 命名空间 POD名`。
+4. 如果 Pod 概况中 `RESTART` 列的值大于 3，需要额外提交上次日志： `kubectl logs -p -n 命名空间 POD名`。
 
 **问题分析**
 
@@ -108,9 +132,9 @@ kubectl get pod -A | grep -wv Completed | grep -e "0/"
 * 镜像拉取超时。
   * 表现：在早期 kubectl describe pod 时可以看到 Events 显示 `Pulling image XXX`。如果发现较晚，则镜像可能拉取完毕，此时 kubectl get pod 无任何异常，且 pod 未曾重启过。
   * 解决办法：目前镜像策略都是复用现存镜像，可改用其他网络下载所需的镜像，然后导出为 tar 包，在上述 pod 所在的 node 导入。
-* 拉取镜像失败。
+* 镜像不存在。
   * 表现：kubectl get pod 显示 `ImagePullBackOff` 状态。kubectl describe pod 时可以看到 Events 显示 `Failed to pull image "镜像路径": rpc error: code = Unknown desc = Error response from daemon: manifest for 镜像路径 not found: manifest unknown: manifest unknown`。
-  * 解决办法：此种情况请联系蓝鲸助手处理。
+  * 解决办法：请联系蓝鲸助手处理。
 
 
 ### elasticsearch 及 redis-cluster 部署超时
@@ -191,7 +215,7 @@ COMBINED OUTPUT:
   Release "bk-repo" does not exist. Installing it now.
   Error: timed out waiting for the condition
 ```
-检查 pod 状态，发现 `bk-repo-bkrepo-gateway` pod 在状态为 `CrashLoopBackOff`，且 `RESTART` 计数持续增长，检查上次日志 `kubectl logs -p` 发现报错： 
+检查 pod 状态，发现 `bk-repo-bkrepo-gateway` pod 的状态为 `CrashLoopBackOff`，且 `RESTART` 计数持续增长，检查上次日志 `kubectl logs -p` 发现报错：
 ``` plain
 nginx: [emerg] socket() [::]:80 failed (97: Address family not supported by protocol)
 ```
@@ -215,20 +239,22 @@ nginx: [emerg] socket() [::]:80 failed (97: Address family not supported by prot
 ``` plain
 blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 ```
-因为日志上方提示请求 bkrepo 创建项目，故先检查 bkrepo-repository 的日志：
+因为日志上方提示请求 bkrepo 创建项目，故先检查 `bkrepo-repository` pod 的日志：
 ``` plain
-2022-10-29 02:01:14.887 ERROR 9 --- [  XNIO-1 task-1] ExceptionLogger                          [TID: N/A] : User[anonymous] GET [/service/project/info/bkpaas] from [Api] failed[SystemErrorException]: [250115]Service unauthenticated, reason: Expired token
+时间略 ERROR 9 --- [  XNIO-1 task-1] ExceptionLogger                          [TID: N/A] : User[anonymous] GET [/service/project/info/bkpaas] from [Api] failed[SystemErrorException]: [250115]Service unauthenticated, reason: Expired token
 ```
-而 bkrepo-auth 中此 url 的最早日志为：
+而 `bkrepo-auth` pod 中此 url 的最早日志为：
 ``` plain
-2022-10-28 18:02:16.723 ERROR 9 --- [  XNIO-1 task-2] ExceptionLogger                          [TID: N/A] : User[admin] POST [/api/user/create/project] from [Api] failed[NoFallbackAvailableException]: No fallback available. Cause: [500 Internal Server Error] during [GET] to [http://bk-repo-bkrepo-repository/service/project/info/bkpaas] [ProjectClient#getProjectInfo(String)]: [{
+时间略 ERROR 9 --- [  XNIO-1 task-2] ExceptionLogger                          [TID: N/A] : User[admin] POST [/api/user/create/project] from [Api] failed[NoFallbackAvailableException]: No fallback available. Cause: [500 Internal Server Error] during [GET] to [http://bk-repo-bkrepo-repository/service/project/info/bkpaas] [ProjectClient#getProjectInfo(String)]: [{
   "code" : 250115,
   "message" : "Service unauthenticated, reason: Expired token",
   "data" : null,
   "traceId" : ""
 }]
 ```
-排除时区干扰，时间相差 62s，为时间同步问题所致。启用 NTP 服务，各 node 时间一致后，请求恢复正常。
+忽略时区干扰，算得时间相差 62s。经开发确认 token 容忍的时间差异为 60s，故判断为时间同步问题所致。
+
+启用 NTP 服务，待各 node 时间一致后，请求恢复正常。
 
 
 ## 部署 SaaS 时的报错
@@ -251,9 +277,11 @@ DeployError: 部署失败, 配置资源实例异常: unable to provision instanc
 > 配置资源实例异常: unable to provision instance for services`<redis>`
 
 **结论**
+
 未配置 redis 实例所致。请在中控机工作目录执行 `./scripts/setup_bkce7.sh -u redis`。
 
 **问题分析**
+
 * 一键部署脚本：用户在卸载后未曾参照文档重命名 bkhelmfile 目录，导致自动跳过了此步骤。
 * 手动部署：遗漏了 “[在 PaaS 界面配置 Redis 资源池](install-saas-manually.md#paas-svc-redis)” 步骤。
 
@@ -283,16 +311,84 @@ Events:
 此处的报错是 `node-10-0-1-3` 解析 `docker.bkce7.bktencent.com` 失败。因此需要配置所用的 DNS 服务或者配置对应机器的 `/etc/hosts` 文件。
 
 
-## 部署持续集成套餐的问题
-### 部署时遇到 timed out waiting for the condition
+## 安装 agent 时的报错
+### 执行日志里显示 curl 下载 setup_agent.sh 报错 404 not found
+**表现**
+
+执行日志显示：
+``` plain
+[时间略 INFO] [script] curl http://服务端地址略/generic/blueking/bknodeman/data/bkee/public/bknodeman/download/setup_agent.sh -o /tmp/setup_agent.sh --connect-timeout 5 -sSfg
+[时间略 ERROR] [3803009] 目录返回非零值: exit_status -> 22, stdout -> , stderr -> curl: (22) The requested URL returned error: 404 not found
+```
+
+**结论**
+
+用户 bkrepo 曾卸载，因此导致历史文件丢失。因为暂无工具检查数据不一致的情况，故推荐完整卸载蓝鲸重新部署。
+
+**问题分析**
+
+在节点管理报错 404 后，登录制品库管理界面，发现文件存在，点击文件详情，取得 sha256。
+
+然后找到了 `bk-repo-bkrepo-storage` pvc 所对应的 pv，检查发现此 pv 中确实没有 `pv目录前缀/store/sha256的2层前缀目录/文件sha256`这个文件。
+
+询问用户得知有卸载 bkrepo，故断定为卸载导致了历史文件丢失。
+
+经 bkrepo 开发确认暂无此场景的修复工具，且重装 `nodeman` 时因为存在数据库记录无法自动重新上传，推测 PaaS 相关文件上传也会如此，故推荐用户卸载整个蓝鲸。
+
+
+### 执行日志里显示 agent is not connect to gse server
+**表现**
+
+执行日志显示：
+``` plain
+[时间略 INFO] [script] setup agent. (extract, render config)
+[script] request agent config file(s)
+[script] gse agent is setup successfully.
+[时间略 ERROR] agent(PID: 略) is not connect to gse server
+```
+
+**结论**
+
+具体排查过程见问题分析，有如下情况：
+1. 用户遗漏了 “节点管理”——“全局配置” 中 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) 步骤。
+
+**问题分析**
+
+此问题需进一步排查。
+
+请选择其中一台安装失败的机器。登录到此机器，检查 agent 日志文件： `/var/log/gse/agent-err.log`。
+
+发现日志中大量提示：
+   ``` plain
+   时间略 (略):ZOO_ERROR@getaddrs@599: getaddrinfo: No such file or directory
+   ```
+   此报错为无法解析 zk 服务器地址所致，需检查配置文件：`/usr/local/gse/agent/etc/agent.conf`。
+   * 如果配置文件中 `.zkhost` 的值是 `"bk-zookeeper:2181"`，说明你遗漏了部署步骤，请在 “节点管理”——“全局配置” 中 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) 。
+   * 如果为其他域名，则请自行解决 DNS 解析问题，建议使用 IP。
+
+如有其他情况，请联系助手排查。
+
+
+## 部署容器管理平台时的报错
+待用户反馈。
+
+
+## 部署监控日志套餐时的报错
+待用户反馈。
+
+
+## 部署持续集成套餐时的报错
+### 部署 bk-ci 时 timed out waiting for the condition
 **表现**
 
 目前因为 `bk-ci-init-turbo` pod 启动失败，可能导致整个 release 超时。
 
 **结论**
-`bk-ci` 默认配置项有误，请参考 《[部署持续集成平台-蓝盾](install-ci-suite.md#install-ci)》文档重新部署。
 
-## 使用问题
+`bk-ci` 默认配置项有误，请参考 《[部署持续集成平台-蓝盾](install-ci-suite.md#install-ci)》文档配置 custom values 后重新部署。
+
+
+## 浏览器访问时的报错
 ### 蓝鲸桌面点击图标后提示 应用已经下载，正在为您卸载该应用
 **表现**
 
@@ -354,7 +450,9 @@ kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
    * 如果一致，也请 **先尝试部署一次监控平台**。如果问题依旧，请联系助手排查。
 
 
-### 蓝盾流水线上传构件失败
+## 蓝盾使用问题
+
+### 流水线上传构件失败
 **表现**
 
 流水线插件 “upload artifact”报错：
@@ -368,10 +466,19 @@ Please contact platform.
 ```
 
 **结论**
+
 `bk-ci` 默认配置项有误，请参考 《[部署持续集成平台-蓝盾](install-ci-suite.md#install-ci)》文档重新部署。
 
 **问题分析**
-根据文件名确认 ci-artifactory 日志，为相同报错。故进入 `ci-gateway` pod，检查 nginx access.log 和 error.log，发现为请求 `repo.bk.com` 域名返回了 413。因此导致异常。
+
+根据文件名确认 `ci-artifactory` Pod 日志，为相同报错，无法直观看到原因。
+
+故启动 `ci-gateway` Pod 的交互 shell：
+``` bash
+kubectl exec -it -n blueking deploy/bk-ci-bk-ci-gateway -- bash
+```
+
+进入 shell 后，检查 nginx 日志目录 `/data/logs/nginx/` 下的 `站点名.access.时间.log` 和 `站点名.error.log`，发现为 `devops.error.log` 中记录了请求 `repo.bk.com` 域名返回了 413，从时间上能和 `ci-artifactory` 日志中的异常对应，因此判断为异常原因。
 
 进一步联系开发确认为 charts 默认值有误所致，需要调整 custom values 文件：`environments/default/bkci/bkci-custom-values.yaml.gotmpl`：
 ``` yaml
@@ -384,10 +491,10 @@ helmfile -f 03-bkci.yaml.gotmpl destroy
 helmfile -f 03-bkci.yaml.gotmpl sync
 ```
 
-### 蓝盾流水线配置 GitLab 触发后项目设置里没有 webhook 配置项
+### 流水线配置 GitLab 触发后项目设置里没有 webhook 配置项
 **表现**
 
-流水线触发器添加了 GitLab，并正确配置了触发事件，但是 commit 时无法触发。检查 GitLab 项目配置没有 webhook url。
+流水线触发器添加了 GitLab，并正确配置了触发事件，但是 git commit 时无法触发。检查 GitLab 项目的配置（settings），也没有设置 webhook url。
 
 **结论**
 
@@ -402,63 +509,6 @@ helmfile -f 03-bkci.yaml.gotmpl sync
 添加 master 权限后，重新保存流水线，发现 GitLab 项目中已经出现 webhook url，点击 Test 可以成功触发流水线运行。
 
 
-## 安装 agent 时的报错
-### 执行日志里显示 curl 下载 setup_agent.sh 报错 404 not found
-**表现**
-
-执行日志显示：
-``` plain
-[时间略 INFO] [script] curl http://服务端地址略/generic/blueking/bknodeman/data/bkee/public/bknodeman/download/setup_agent.sh -o /tmp/setup_agent.sh --connect-timeout 5 -sSfg
-[时间略 ERROR] [3803009] 目录返回非零值: exit_status -> 22, stdout -> , stderr -> curl: (22) The requested URL returned error: 404 not found
-```
-
-**结论**
-
-用户 bkrepo 曾卸载，因此导致历史文件丢失。因为暂无工具检查数据不一致的情况，故推荐完整卸载蓝鲸重新部署。
-
-**问题分析**
-
-在节点管理报错 404 后，登录制品库管理界面，发现文件存在，点击文件详情，取得 sha256。
-
-然后找到了 `bk-repo-bkrepo-storage` pvc 所对应的 pv，检查发现此 pv 中确实没有 `pv目录前缀/store/sha256的2层前缀目录/文件sha256`这个文件。
-
-询问用户得知有卸载 bkrepo，故断定为卸载导致了历史文件丢失。
-
-经 bkrepo 开发确认暂无此场景的修复工具，且重装 `nodeman` 时因为存在数据库记录无法自动重新上传，推测 PaaS 相关文件上传也会如此，故推荐用户卸载整个蓝鲸。
-
-
-### 执行日志里显示 agent is not connect to gse server
-**表现**
-
-执行日志显示：
-``` plain
-[时间略 INFO] [script] setup agent. (extract, render config)
-[script] request agent config file(s)
-[script] gse agent is setup successfully.
-[时间略 ERROR] agent(PID: 略) is not connect to gse server
-```
-
-**结论**
-
-具体排查过程见问题分析，有如下情况：
-1. 用户遗漏了 “节点管理”——“全局配置” 中 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) 步骤。
-
-**问题分析**
-
-此问题需进一步排查。
-
-请选择其中一台安装失败的机器。登录到此机器，检查 agent 日志文件： `/var/log/gse/agent-err.log`。
-
-发现日志中大量提示：
-   ``` plain
-   时间略 (略):ZOO_ERROR@getaddrs@599: getaddrinfo: No such file or directory
-   ```
-   此报错为无法解析 zk 服务器地址所致，需检查配置文件：`/usr/local/gse/agent/etc/agent.conf`。
-   * 如果配置文件中 `.zkhost` 的值是 `"bk-zookeeper:2181"`，说明你遗漏了部署步骤，请在 “节点管理”——“全局配置” 中 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) 。
-   * 如果为其他域名，则请自行解决 DNS 解析问题，建议使用 IP。
-
-如有其他情况，请联系助手排查。
-
 ## docker 问题案例
 ### 配置的 docker registry-mirrors 没有生效
 **表现**
@@ -471,9 +521,11 @@ Error response from daemon: Get https://registry-1.docker.io/v2/: net/http: requ
 随后配置了 registry-mirrors 为国内源，并 reload dockerd，使用 `docker info` 命令检查配置已经生效，但报错依旧。
 
 **结论**
+
 用户配置的源均已失效，因此回退到了 Docker Hub 拉取。改用 `hub-mirror.c.163.com` 解决。
 
 **问题分析**
+
 使用 `skopeo` 命令检查 registry 情况。发现：
 * `skopeo --debug inspect docker://docker.mirrors.ustc.edu.cn/library/busybox` 服务端返回 403。
 * `skopeo --debug inspect docker://registry.docker-cn.com/library/busybox` 连接超时。
