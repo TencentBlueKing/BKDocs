@@ -6,7 +6,25 @@
 >
 >请直接搜索错误关键词或短句，不要整行粘贴，这样可能匹配不到。
 
+本文按部署节奏组织内容：
+* 部署前的报错
+* 部署基础套餐时的报错
+* 部署 SaaS 时的报错
+* 安装 agent 时的报错
+* 部署容器管理平台时的报错
+* 部署监控日志套餐时的报错
+* 部署持续集成套餐时的报错
+
+也收集了一些使用问题：
+* 浏览器访问时的报错 （主要为界面访问的报错）
+* 蓝盾使用问题 （主要为插件报错等）
+
+并在末尾提供了一些基础软件的问题案例：
+* docker 问题案例
+* k8s 问题案例
+
 ## 部署前的报错
+待用户反馈。
 
 ## 部署基础套餐时的报错
 
@@ -293,17 +311,84 @@ Events:
 此处的报错是 `node-10-0-1-3` 解析 `docker.bkce7.bktencent.com` 失败。因此需要配置所用的 DNS 服务或者配置对应机器的 `/etc/hosts` 文件。
 
 
-## 部署持续集成套餐的问题
-### 部署时遇到 timed out waiting for the condition
+## 安装 agent 时的报错
+### 执行日志里显示 curl 下载 setup_agent.sh 报错 404 not found
+**表现**
+
+执行日志显示：
+``` plain
+[时间略 INFO] [script] curl http://服务端地址略/generic/blueking/bknodeman/data/bkee/public/bknodeman/download/setup_agent.sh -o /tmp/setup_agent.sh --connect-timeout 5 -sSfg
+[时间略 ERROR] [3803009] 目录返回非零值: exit_status -> 22, stdout -> , stderr -> curl: (22) The requested URL returned error: 404 not found
+```
+
+**结论**
+
+用户 bkrepo 曾卸载，因此导致历史文件丢失。因为暂无工具检查数据不一致的情况，故推荐完整卸载蓝鲸重新部署。
+
+**问题分析**
+
+在节点管理报错 404 后，登录制品库管理界面，发现文件存在，点击文件详情，取得 sha256。
+
+然后找到了 `bk-repo-bkrepo-storage` pvc 所对应的 pv，检查发现此 pv 中确实没有 `pv目录前缀/store/sha256的2层前缀目录/文件sha256`这个文件。
+
+询问用户得知有卸载 bkrepo，故断定为卸载导致了历史文件丢失。
+
+经 bkrepo 开发确认暂无此场景的修复工具，且重装 `nodeman` 时因为存在数据库记录无法自动重新上传，推测 PaaS 相关文件上传也会如此，故推荐用户卸载整个蓝鲸。
+
+
+### 执行日志里显示 agent is not connect to gse server
+**表现**
+
+执行日志显示：
+``` plain
+[时间略 INFO] [script] setup agent. (extract, render config)
+[script] request agent config file(s)
+[script] gse agent is setup successfully.
+[时间略 ERROR] agent(PID: 略) is not connect to gse server
+```
+
+**结论**
+
+具体排查过程见问题分析，有如下情况：
+1. 用户遗漏了 “节点管理”——“全局配置” 中 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) 步骤。
+
+**问题分析**
+
+此问题需进一步排查。
+
+请选择其中一台安装失败的机器。登录到此机器，检查 agent 日志文件： `/var/log/gse/agent-err.log`。
+
+发现日志中大量提示：
+   ``` plain
+   时间略 (略):ZOO_ERROR@getaddrs@599: getaddrinfo: No such file or directory
+   ```
+   此报错为无法解析 zk 服务器地址所致，需检查配置文件：`/usr/local/gse/agent/etc/agent.conf`。
+   * 如果配置文件中 `.zkhost` 的值是 `"bk-zookeeper:2181"`，说明你遗漏了部署步骤，请在 “节点管理”——“全局配置” 中 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) 。
+   * 如果为其他域名，则请自行解决 DNS 解析问题，建议使用 IP。
+
+如有其他情况，请联系助手排查。
+
+
+## 部署容器管理平台时的报错
+待用户反馈。
+
+
+## 部署监控日志套餐时的报错
+待用户反馈。
+
+
+## 部署持续集成套餐时的报错
+### 部署 bk-ci 时 timed out waiting for the condition
 **表现**
 
 目前因为 `bk-ci-init-turbo` pod 启动失败，可能导致整个 release 超时。
 
 **结论**
 
-`bk-ci` 默认配置项有误，请参考 《[部署持续集成平台-蓝盾](install-ci-suite.md#install-ci)》文档重新部署。
+`bk-ci` 默认配置项有误，请参考 《[部署持续集成平台-蓝盾](install-ci-suite.md#install-ci)》文档配置 custom values 后重新部署。
 
-## 使用问题
+
+## 浏览器访问时的报错
 ### 蓝鲸桌面点击图标后提示 应用已经下载，正在为您卸载该应用
 **表现**
 
@@ -365,7 +450,9 @@ kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
    * 如果一致，也请 **先尝试部署一次监控平台**。如果问题依旧，请联系助手排查。
 
 
-### 蓝盾流水线上传构件失败
+## 蓝盾使用问题
+
+### 流水线上传构件失败
 **表现**
 
 流水线插件 “upload artifact”报错：
@@ -404,7 +491,7 @@ helmfile -f 03-bkci.yaml.gotmpl destroy
 helmfile -f 03-bkci.yaml.gotmpl sync
 ```
 
-### 蓝盾流水线配置 GitLab 触发后项目设置里没有 webhook 配置项
+### 流水线配置 GitLab 触发后项目设置里没有 webhook 配置项
 **表现**
 
 流水线触发器添加了 GitLab，并正确配置了触发事件，但是 git commit 时无法触发。检查 GitLab 项目的配置（settings），也没有设置 webhook url。
@@ -421,63 +508,6 @@ helmfile -f 03-bkci.yaml.gotmpl sync
 
 添加 master 权限后，重新保存流水线，发现 GitLab 项目中已经出现 webhook url，点击 Test 可以成功触发流水线运行。
 
-
-## 安装 agent 时的报错
-### 执行日志里显示 curl 下载 setup_agent.sh 报错 404 not found
-**表现**
-
-执行日志显示：
-``` plain
-[时间略 INFO] [script] curl http://服务端地址略/generic/blueking/bknodeman/data/bkee/public/bknodeman/download/setup_agent.sh -o /tmp/setup_agent.sh --connect-timeout 5 -sSfg
-[时间略 ERROR] [3803009] 目录返回非零值: exit_status -> 22, stdout -> , stderr -> curl: (22) The requested URL returned error: 404 not found
-```
-
-**结论**
-
-用户 bkrepo 曾卸载，因此导致历史文件丢失。因为暂无工具检查数据不一致的情况，故推荐完整卸载蓝鲸重新部署。
-
-**问题分析**
-
-在节点管理报错 404 后，登录制品库管理界面，发现文件存在，点击文件详情，取得 sha256。
-
-然后找到了 `bk-repo-bkrepo-storage` pvc 所对应的 pv，检查发现此 pv 中确实没有 `pv目录前缀/store/sha256的2层前缀目录/文件sha256`这个文件。
-
-询问用户得知有卸载 bkrepo，故断定为卸载导致了历史文件丢失。
-
-经 bkrepo 开发确认暂无此场景的修复工具，且重装 `nodeman` 时因为存在数据库记录无法自动重新上传，推测 PaaS 相关文件上传也会如此，故推荐用户卸载整个蓝鲸。
-
-
-### 执行日志里显示 agent is not connect to gse server
-**表现**
-
-执行日志显示：
-``` plain
-[时间略 INFO] [script] setup agent. (extract, render config)
-[script] request agent config file(s)
-[script] gse agent is setup successfully.
-[时间略 ERROR] agent(PID: 略) is not connect to gse server
-```
-
-**结论**
-
-具体排查过程见问题分析，有如下情况：
-1. 用户遗漏了 “节点管理”——“全局配置” 中 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) 步骤。
-
-**问题分析**
-
-此问题需进一步排查。
-
-请选择其中一台安装失败的机器。登录到此机器，检查 agent 日志文件： `/var/log/gse/agent-err.log`。
-
-发现日志中大量提示：
-   ``` plain
-   时间略 (略):ZOO_ERROR@getaddrs@599: getaddrinfo: No such file or directory
-   ```
-   此报错为无法解析 zk 服务器地址所致，需检查配置文件：`/usr/local/gse/agent/etc/agent.conf`。
-   * 如果配置文件中 `.zkhost` 的值是 `"bk-zookeeper:2181"`，说明你遗漏了部署步骤，请在 “节点管理”——“全局配置” 中 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) 。
-   * 如果为其他域名，则请自行解决 DNS 解析问题，建议使用 IP。
-
-如有其他情况，请联系助手排查。
 
 ## docker 问题案例
 ### 配置的 docker registry-mirrors 没有生效
