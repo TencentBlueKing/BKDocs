@@ -251,9 +251,11 @@ DeployError: 部署失败, 配置资源实例异常: unable to provision instanc
 > 配置资源实例异常: unable to provision instance for services`<redis>`
 
 **结论**
+
 未配置 redis 实例所致。请在中控机工作目录执行 `./scripts/setup_bkce7.sh -u redis`。
 
 **问题分析**
+
 * 一键部署脚本：用户在卸载后未曾参照文档重命名 bkhelmfile 目录，导致自动跳过了此步骤。
 * 手动部署：遗漏了 “[在 PaaS 界面配置 Redis 资源池](install-saas-manually.md#paas-svc-redis)” 步骤。
 
@@ -290,6 +292,7 @@ Events:
 目前因为 `bk-ci-init-turbo` pod 启动失败，可能导致整个 release 超时。
 
 **结论**
+
 `bk-ci` 默认配置项有误，请参考 《[部署持续集成平台-蓝盾](install-ci-suite.md#install-ci)》文档重新部署。
 
 ## 使用问题
@@ -368,9 +371,11 @@ Please contact platform.
 ```
 
 **结论**
+
 `bk-ci` 默认配置项有误，请参考 《[部署持续集成平台-蓝盾](install-ci-suite.md#install-ci)》文档重新部署。
 
 **问题分析**
+
 根据文件名确认 ci-artifactory 日志，为相同报错。故进入 `ci-gateway` pod，检查 nginx access.log 和 error.log，发现为请求 `repo.bk.com` 域名返回了 413。因此导致异常。
 
 进一步联系开发确认为 charts 默认值有误所致，需要调整 custom values 文件：`environments/default/bkci/bkci-custom-values.yaml.gotmpl`：
@@ -471,9 +476,11 @@ Error response from daemon: Get https://registry-1.docker.io/v2/: net/http: requ
 随后配置了 registry-mirrors 为国内源，并 reload dockerd，使用 `docker info` 命令检查配置已经生效，但报错依旧。
 
 **结论**
+
 用户配置的源均已失效，因此回退到了 Docker Hub 拉取。改用 `hub-mirror.c.163.com` 解决。
 
 **问题分析**
+
 使用 `skopeo` 命令检查 registry 情况。发现：
 * `skopeo --debug inspect docker://docker.mirrors.ustc.edu.cn/library/busybox` 服务端返回 403。
 * `skopeo --debug inspect docker://registry.docker-cn.com/library/busybox` 连接超时。
