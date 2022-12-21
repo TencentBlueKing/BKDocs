@@ -1,6 +1,6 @@
 # 问题案例
 
-本文仅用于汇总用户反馈的问题，并提供解决方案。如需学习问题排查思路，或者一些调试方法，可以参考 《[FAQ](faq.md)》 文档。
+本文仅用于汇总用户反馈的问题，并提供相关的排查确认操作及解决方案。如需学习问题排查思路，或者一些调试方法，可以参考 《[FAQ](faq.md)》 文档。
 
 >**提示**
 >
@@ -232,6 +232,42 @@ nginx: [emerg] socket() [::]:80 failed (97: Address family not supported by prot
 检查配置文件发现硬编码了 IPv6 地址监听，故只能推动用户启用系统 IPv6 功能，同时提单给开发避免此类硬编码。
 
 
+### bk-apigateway 部署报错 Snippet directives are disabled by the Ingress administrator
+**表现**
+
+使用一键脚本部署时，部署到 bk-apigateway 时报错：
+``` plain
+ERROR:
+  exit status 1
+略
+
+COMBINED OUTPUT:
+  Release "bk-apigateway" does not exist. Installing it now.
+  Error: admission webhook "validate.nginx.ingress.kubernetes.io" denied the request: nginx.ingress.kubernetes.io/configuration-snippet annotation cannot be used. Snippet directives are disabled by the Ingress administrator
+```
+
+**结论**
+
+ingress-nginx 在 0.49.1 启用的安全策略。临时解决方案：
+1. 编辑 configmap： `kubectl edit configmap -n ingress-nginx ingress-nginx-controller`。
+2. 在编辑界面中修改 `allow-snippet-annotations` 为 `"true"`。
+3. 重新开始部署操作。
+4. 部署完成蓝鲸后，记得恢复配置项为默认的 `"false"`。
+
+此问题已经反馈到了 bk-apigateway 开发，请先参考临时方案处理。
+
+**问题分析**
+
+根据报错搜索到了官方的 issue： https://github.com/kubernetes/ingress-nginx/issues/7837
+
+检查 ingress-nginx 版本为 0.49.3，符合文中描述。进一步检查文中提到的 `ingress-nginx-controller` configmap，发现存在配置项：
+``` yaml
+data:
+  allow-snippet-annotations: "false"
+```
+
+尝试修改为 `"true"`，重试部署发现可以继续进行。
+
 ### Service call failed
 **表现**
 
@@ -258,10 +294,35 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 
 
 ## 部署 SaaS 时的报错
-### 部署 SaaS 在“配置资源实例”阶段报错
-首先查看 `engine-main` 这个应用对应 pod 的日志。根据错误日志提示，判断定位方向：
-1. 检测 mysql、rabbitmq 等「增强服务」的资源配置是否正确。`http://bkpaas.$BK_DOMAIN/backend/admin42/platform/plans/manage` （先登录才能访问）以及 `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` （先登录才能访问）。
-2. 检查应用集群的 k8s 相关配置 token 是否正确。初次部署时会自动调用 `scripts/create_k8s_cluster_admin_for_paas3.sh` 脚本自动生成 token 等参数到 `./paas3_initial_cluster.yaml` 文件中。如果不正确，可以删除后这些账号和绑定后重建。
+
+### 部署 SaaS 时报错 配置资源实例异常: unable to provision instance for services mysql
+**表现**
+
+当使用“一键脚本”部署 SaaS 时，终端出现报错：
+``` plain
+时间略 [INFO] uploading 工作目录/scripts/../../saas/bk_itsm.tgz
+时间略 [INFO] installing bk_itsm-default-image-2.6.2
+DeployError: 部署失败, 配置资源实例异常: unable to provision instance for services<mysql>❌
+```
+或者在浏览器里访问开发者中心部署时，在 “准备阶段” —— “配置资源实例” 阶段的日志中出现报错：
+> 配置资源实例异常: unable to provision instance for services`<mysql>`
+
+**结论**
+
+kubernetes token 有误。
+
+先刷新 PaaS 中存储的 token：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+rm -f environments/default/paas3_initial_cluster.yaml  # 删除配置文件
+./scripts/create_k8s_cluster_admin_for_paas3.sh  # 重新生成
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-paas sync  # 重启paas
+```
+然后重新部署 SaaS。
+
+**问题分析**
+
+用户在卸载后未曾参照文档重命名 bkhelmfile 目录，导致在 k8s 中创建了新的 token ，但是配置文件没有更新。
 
 
 ### 部署 SaaS 时报错 配置资源实例异常: unable to provision instance for services redis
@@ -285,7 +346,7 @@ DeployError: 部署失败, 配置资源实例异常: unable to provision instanc
 * 一键部署脚本：用户在卸载后未曾参照文档重命名 bkhelmfile 目录，导致自动跳过了此步骤。
 * 手动部署：遗漏了 “[在 PaaS 界面配置 Redis 资源池](install-saas-manually.md#paas-svc-redis)” 步骤。
 
-<a id="saas-deploy-prehook" name="saas-deploy-prehook"></a>
+
 
 ### 部署 SaaS 在“执行部署前置命令”阶段报错
 检查对应 `app_code` 的日志。“执行部署前置命令” 对应着 `pre-release-hook` 容器。（如果容器不存在，则说明已经被自动清理，需重新开始部署才会出现。）
@@ -374,8 +435,23 @@ Events:
 
 
 ## 部署监控日志套餐时的报错
-待用户反馈。
+### bkmonitor-operator 部署超时，日志显示 dial unix /data/ipc/ipc.state.report: connect: no such file or directory
+**表现**
 
+部署 bkmonitor-operator 时超时；或者虽然 `helmfile` 提示部署成功，但是 `bkmonitor-operator-bkmonitorbeat-daemonset` 系列 pod 的状态稳定为 `CrashLoopBackOff`。
+
+检查 pod 日志发现如下报错：
+``` plain
+failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/ipc.state.report: connect: no such file or directory
+```
+
+**结论**
+
+在 “节点管理” 中安装 gse agent 成功后，异常 pod 会逐步自动恢复。也可直接删除出错的 pod，会立刻重新创建。
+
+**问题分析**
+
+未安装 agent，导致主机不存在 gse socket 文件，因此容器内报错无此文件。
 
 ## 部署持续集成套餐时的报错
 ### 部署 bk-ci 时 timed out waiting for the condition
