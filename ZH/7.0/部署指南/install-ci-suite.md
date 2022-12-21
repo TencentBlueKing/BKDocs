@@ -27,7 +27,7 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ### 修改 custom values
 * 目前 编译加速平台（turbo）暂未适配完成，需要临时禁用初始化。
 * 需要更新 bkrepo 的配置项，不然上传构件会失败。
-* 需要调高部分 pod 的 limit，初次启动很容易超时。（如果你的资源充足，可以调整更多 Pod）
+* 需要调高部分 pod 的 limit，初次启动很容易超时。（如果你的资源充足，可以调整更多 Pod）。
 
 修改 `environments/default/bkci/bkci-custom-values.yaml.gotmpl`：
 ``` yaml
@@ -52,11 +52,11 @@ openapi:
       memory: 1500Mi
 ```
 
-### 部署 ci
+### 部署 bk-ci
 在 **中控机** 执行：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-helmfile -f 03-bkci.yaml.gotmpl sync  # 部署流水线。
+helmfile -f 03-bkci.yaml.gotmpl sync  # 部署
 # 在admin桌面添加应用，也可以登录后自行添加。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_ci"
 # 设为默认应用。
@@ -66,6 +66,13 @@ scripts/set_desktop_default_app.sh -a "bk_ci"
 ``` bash
 kubectl get pod -A | grep bk-ci
 ```
+
+>**提示**
+>
+>**如果部署期间出错，请先查阅 《[问题案例](troubles.md)》文档。**
+>
+>问题解决后，可重新执行 `helmfile` 命令。
+
 
 ### 浏览器访问
 
