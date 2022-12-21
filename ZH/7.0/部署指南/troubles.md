@@ -1,6 +1,6 @@
 # 问题案例
 
-本文仅用于汇总用户反馈的问题，并提供解决方案。如需学习问题排查思路，或者一些调试方法，可以参考 《[FAQ](faq.md)》 文档。
+本文仅用于汇总用户反馈的问题，并提供相关的排查确认操作及解决方案。如需学习问题排查思路，或者一些调试方法，可以参考 《[FAQ](faq.md)》 文档。
 
 >**提示**
 >
@@ -346,7 +346,7 @@ DeployError: 部署失败, 配置资源实例异常: unable to provision instanc
 * 一键部署脚本：用户在卸载后未曾参照文档重命名 bkhelmfile 目录，导致自动跳过了此步骤。
 * 手动部署：遗漏了 “[在 PaaS 界面配置 Redis 资源池](install-saas-manually.md#paas-svc-redis)” 步骤。
 
-<a id="saas-deploy-prehook" name="saas-deploy-prehook"></a>
+
 
 ### 部署 SaaS 在“执行部署前置命令”阶段报错
 检查对应 `app_code` 的日志。“执行部署前置命令” 对应着 `pre-release-hook` 容器。（如果容器不存在，则说明已经被自动清理，需重新开始部署才会出现。）

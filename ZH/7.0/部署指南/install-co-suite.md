@@ -36,12 +36,19 @@ in ./04-bklog-search.yaml.gotmpl: failed processing release bk-logsearch: hook[.
 在 中控机 执行
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-helmfile -f 04-bklog-search.yaml.gotmpl sync
+helmfile -f 04-bklog-search.yaml.gotmpl sync  # 部署
 # 在admin桌面添加应用，也可以登录后自行添加。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_log_search"
 # 设为默认应用。
 scripts/set_desktop_default_app.sh -a "bk_log_search"
 ```
+
+>**提示**
+>
+>**如果部署期间出错，请先查阅 《[问题案例](troubles.md)》文档。**
+>
+>问题解决后，可重新执行 `helmfile` 命令。
+
 
 ## 访问日志平台
 需要配置域名 `bklog.$BK_DOMAIN`，操作步骤已经并入《基础套餐部署》文档的 “[配置用户侧的 DNS](install-bkce.md#hosts-in-user-pc)” 章节。
@@ -86,13 +93,20 @@ helmfile -f 04-bkmonitor.yaml.gotmpl apply   # apply 仅增量更新
 
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
+helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync  # 部署
 ```
 
 然后在新窗口中检查 pod 稳定状态为 `Running` 即可：
 ``` bash
 kubectl get pod -n bkmonitor-operator -w
 ```
+
+>**提示**
+>
+>**如果部署期间出错，请先查阅 《[问题案例](troubles.md)》文档。**
+>
+>问题解决后，可重新执行 `helmfile` 命令。
+
 
 未在 “节点管理” 中为所有 node 安装 agent 时，`bkmonitor-operator-bkmonitorbeat-daemonset` 系列 pod 的日志中会出现如下报错：
 ``` plain
