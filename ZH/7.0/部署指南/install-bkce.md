@@ -60,6 +60,17 @@ curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-st
 <a id="setup_bkce7-i-base" name="setup_bkce7-i-base"></a>
 
 ## 一键部署基础套餐后台
+
+下文中会使用 “一键脚本” 来称呼 `setup_bkce7.sh`，本次用到的参数如下：
+1. `-i base`：指定要安装的模块。关键词 `base` 表示基础套餐的后台部分。
+2. `--domain BK_DOMAIN`：指定蓝鲸的基础域名（下文也会使用 `BK_DOMAIN` 这个变量名指代）。
+
+>**提示**
+>
+>当你的内网存在蓝鲸 V6 或更早版本的环境时，请勿复用基础域名。以免 Cookie 冲突，导致频繁提示登录，甚至循环提示登录。
+>
+>示例：当 V6 环境使用了 `bktencent.com` 时，其访问地址为 `paas.bktencent.com`。V7 环境不能使用 `bkce7.bktencent.com`、 `bktencent.com` 或者 `xx.bkce7.bktencent.com` 作为基础域名。
+
 假设您用于部署蓝鲸的域名为 `bkce7.bktencent.com`，使用如下的命令开始部署:
 ``` bash
 BK_DOMAIN=bkce7.bktencent.com  # 请修改为您分配给蓝鲸平台的主域名
@@ -72,10 +83,6 @@ else
   echo "BK_DOMAIN($BK_DOMAIN) does not match pattern($patt_domain)."
 fi
 ```
-
-`setup_bkce7.sh` 脚本的参数解析:
-1. `-i base`：指定要安装的模块。关键词 `base` 表示基础套餐的后台部分。
-2. `--domain BK_DOMAIN`：指定蓝鲸的基础域名（下文也会使用 `BK_DOMAIN` 这个变量名指代）。
 
 脚本耗时 8 ~ 16 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。
 
