@@ -176,4 +176,4 @@ kubectl get pods -n blueking -w
 ```
 等待所有 pod 都变成 `Running` 或 `Completed` 状态。
 
-期间如果 helmfile 出现报错，请先参考 《[FAQ](faq.md)》 文档排查。
+**如果部署期间出错，请先查阅 《[问题案例](troubles.md)》文档。**
