@@ -232,6 +232,42 @@ nginx: [emerg] socket() [::]:80 failed (97: Address family not supported by prot
 检查配置文件发现硬编码了 IPv6 地址监听，故只能推动用户启用系统 IPv6 功能，同时提单给开发避免此类硬编码。
 
 
+### bk-apigateway 部署报错 Snippet directives are disabled by the Ingress administrator
+**表现**
+
+使用一键脚本部署时，部署到 bk-apigateway 时报错：
+``` plain
+ERROR:
+  exit status 1
+略
+
+COMBINED OUTPUT:
+  Release "bk-apigateway" does not exist. Installing it now.
+  Error: admission webhook "validate.nginx.ingress.kubernetes.io" denied the request: nginx.ingress.kubernetes.io/configuration-snippet annotation cannot be used. Snippet directives are disabled by the Ingress administrator
+```
+
+**结论**
+
+ingress-nginx 在 0.49.1 启用的安全策略。临时解决方案：
+1. 编辑 configmap： `kubectl edit configmap -n ingress-nginx ingress-nginx-controller`。
+2. 在编辑界面中修改 `allow-snippet-annotations` 为 `"true"`。
+3. 重新开始部署操作。
+4. 部署完成蓝鲸后，记得恢复配置项为默认的 `"false"`。
+
+此问题已经反馈到了 bk-apigateway 开发，请先参考临时方案处理。
+
+**问题分析**
+
+根据报错搜索到了官方的 issue： https://github.com/kubernetes/ingress-nginx/issues/7837
+
+检查 ingress-nginx 版本为 0.49.3，符合文中描述。进一步检查文中提到的 `ingress-nginx-controller` configmap，发现存在配置项：
+``` yaml
+data:
+  allow-snippet-annotations: "false"
+```
+
+尝试修改为 `"true"`，重试部署发现可以继续进行。
+
 ### Service call failed
 **表现**
 
