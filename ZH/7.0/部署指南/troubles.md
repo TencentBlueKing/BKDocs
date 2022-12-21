@@ -294,10 +294,35 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 
 
 ## 部署 SaaS 时的报错
-### 部署 SaaS 在“配置资源实例”阶段报错
-首先查看 `engine-main` 这个应用对应 pod 的日志。根据错误日志提示，判断定位方向：
-1. 检测 mysql、rabbitmq 等「增强服务」的资源配置是否正确。`http://bkpaas.$BK_DOMAIN/backend/admin42/platform/plans/manage` （先登录才能访问）以及 `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` （先登录才能访问）。
-2. 检查应用集群的 k8s 相关配置 token 是否正确。初次部署时会自动调用 `scripts/create_k8s_cluster_admin_for_paas3.sh` 脚本自动生成 token 等参数到 `./paas3_initial_cluster.yaml` 文件中。如果不正确，可以删除后这些账号和绑定后重建。
+
+### 部署 SaaS 时报错 配置资源实例异常: unable to provision instance for services mysql
+**表现**
+
+当使用“一键脚本”部署 SaaS 时，终端出现报错：
+``` plain
+时间略 [INFO] uploading 工作目录/scripts/../../saas/bk_itsm.tgz
+时间略 [INFO] installing bk_itsm-default-image-2.6.2
+DeployError: 部署失败, 配置资源实例异常: unable to provision instance for services<mysql>❌
+```
+或者在浏览器里访问开发者中心部署时，在 “准备阶段” —— “配置资源实例” 阶段的日志中出现报错：
+> 配置资源实例异常: unable to provision instance for services`<mysql>`
+
+**结论**
+
+kubernetes token 有误。
+
+先刷新 PaaS 中存储的 token：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+rm -f environments/default/paas3_initial_cluster.yaml  # 删除配置文件
+./scripts/create_k8s_cluster_admin_for_paas3.sh  # 重新生成
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-paas sync  # 重启paas
+```
+然后重新部署 SaaS。
+
+**问题分析**
+
+用户在卸载后未曾参照文档重命名 bkhelmfile 目录，导致在 k8s 中创建了新的 token ，但是配置文件没有更新。
 
 
 ### 部署 SaaS 时报错 配置资源实例异常: unable to provision instance for services redis
