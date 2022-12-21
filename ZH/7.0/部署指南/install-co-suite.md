@@ -108,14 +108,6 @@ kubectl get pod -n bkmonitor-operator -w
 >问题解决后，可重新执行 `helmfile` 命令。
 
 
-未在 “节点管理” 中为所有 node 安装 agent 时，`bkmonitor-operator-bkmonitorbeat-daemonset` 系列 pod 的日志中会出现如下报错：
-``` plain
-failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/ipc.state.report: connect: no such file or directory
-```
-
-在部署 gse agent 成功后，上述 pod 会逐步自动恢复。也可直接删除出错的 pod，会立刻重新创建。
-
-
 ## 蓝鲸服务 SLI 看板
 启用 SLI Metrics 后，可以在 “监控平台” —— “仪表盘” 里查看详细的蓝鲸服务报表。
 

@@ -435,8 +435,23 @@ Events:
 
 
 ## 部署监控日志套餐时的报错
-待用户反馈。
+### bkmonitor-operator 部署超时，日志显示 dial unix /data/ipc/ipc.state.report: connect: no such file or directory
+**表现**
 
+部署 bkmonitor-operator 时超时；或者虽然 `helmfile` 提示部署成功，但是 `bkmonitor-operator-bkmonitorbeat-daemonset` 系列 pod 的状态稳定为 `CrashLoopBackOff`。
+
+检查 pod 日志发现如下报错：
+``` plain
+failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/ipc.state.report: connect: no such file or directory
+```
+
+**结论**
+
+在 “节点管理” 中安装 gse agent 成功后，异常 pod 会逐步自动恢复。也可直接删除出错的 pod，会立刻重新创建。
+
+**问题分析**
+
+未安装 agent，导致主机不存在 gse socket 文件，因此容器内报错无此文件。
 
 ## 部署持续集成套餐时的报错
 ### 部署 bk-ci 时 timed out waiting for the condition
