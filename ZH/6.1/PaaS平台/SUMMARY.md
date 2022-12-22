@@ -31,7 +31,6 @@
         * [系统维护](产品白皮书/产品功能/系统管理/SysOps.md)
     * [统计](产品白皮书/产品功能/DockStatistics.md)
     * [权限中心](产品白皮书/产品功能/DockIAM.md)
-    * [用户管理](产品白皮书/产品功能/DockUserManage.md)
     * [其他功能](产品白皮书/产品功能/AdvancedFeature.md)
 * [API 文档]()
     * [蓝鲸统一登录]()
