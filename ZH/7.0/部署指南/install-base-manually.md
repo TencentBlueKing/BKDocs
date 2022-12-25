@@ -161,19 +161,122 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 
 # 部署基础套餐后台
 
-执行部署基础套餐命令（该步骤根据机器环境配置，大概需要 8 ~ 16 分钟）
+## 安装全部 release
+为了方便维护，我们整合了 helmfile 模板到 `base.yaml.gotmpl` 文件，用于按次序操作多个 release。
+如需了解控制单个 release，可以见本文下方的 “如何控制单个 release” 章节。
+
+直接开始安装基础套餐的全部 release：
 ``` bash
 helmfile -f base.yaml.gotmpl sync
-# 在admin桌面添加应用，也可以登录后自行添加。
-scripts/add_user_desktop_app.sh -u "admin" -a "bk_cmdb,bk_job"
-scripts/add_user_desktop_app.sh -u "admin" -a "bk_usermgr"  # 添加用户管理。
-scripts/set_desktop_default_app.sh -a "bk_usermgr"  # 将用户管理设置为默认应用，新用户登录桌面就可以看到。
 ```
 
-此时可以新开一个终端，执行如下命令观察 pod 状态变化：
+该步骤根据机器环境配置，大概需要 8 ~ 16 分钟。此时可以新开一个终端，执行如下命令观察 pod 状态变化：
 ``` bash
 kubectl get pods -n blueking -w
 ```
 等待所有 pod 都变成 `Running` 或 `Completed` 状态。
 
 **如果部署期间出错，请先查阅 《[问题案例](troubles.md)》文档。**
+
+
+## 添加桌面应用
+使用脚本在 admin 用户的桌面添加应用，也可以登录后自行在桌面添加。
+``` bash
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_cmdb,bk_job"
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_usermgr"  # 添加用户管理。
+scripts/set_desktop_default_app.sh -a "bk_usermgr"  # 将用户管理设置为默认应用，新用户登录桌面就可以看到。
+```
+
+
+# 如何控制单个 release
+
+## helmfile 模板解析
+
+首先查看 `base.yaml.gotmpl` 文件，其内容如下：
+``` yaml
+bases:
+  - env.yaml
+---
+bases:
+  - defaults.yaml
+---
+helmfiles:
+  - path: ./base-storage.yaml.gotmpl
+  - path: ./base-blueking.yaml.gotmpl
+    selectors:
+    - seq=first
+  - path: ./base-blueking.yaml.gotmpl
+    selectors:
+    - seq=second
+  - path: ./base-blueking.yaml.gotmpl
+    selectors:
+    - seq=third
+  - path: ./base-blueking.yaml.gotmpl
+    selectors:
+    - seq=fourth
+```
+
+可以看到引用了 2 个文件：
+* `base-storage.yaml.gotmpl` 中声明了 存储服务 的 release。
+* `base-blueking.yaml.gotmpl` 中声明了 蓝鲸后台服务 的 release，且使用了 `seq` 标签来控制启动次序。
+
+>附 `bk-repo` release 的定义：
+>``` yaml
+>releases:
+>  - name: bk-repo
+>    namespace: {{ .Values.namespace }}
+>    chart: blueking/bkrepo
+>    version: {{ index .Values.version "bkrepo" }}
+>    missingFileHandler: Warn
+>    labels:
+>      seq: first
+>    values:
+>    - ./environments/default/bkrepo-values.yaml.gotmpl
+>    - ./environments/default/bkrepo-custom-values.yaml.gotmpl
+>```
+
+我们可以使用如下的命令分析 `base-blueking.yaml.gotmpl` 中定义的 `seq`，看看每个 `seq` 组的成员：
+``` bash
+yq e '[.releases[] | { "seq": .labels.seq, "name": .name}] | group_by(.seq) | .[] | [(.[0].seq, [.[].name] | join(","))] | @tsv' base-blueking.yaml.gotmpl
+```
+其输出如下（第一列为 `seq` 标签的值，第二列为 release 的 `name`，使用逗号分隔）：
+``` plain
+first	bk-repo,bk-auth,bk-apigateway
+second	bk-iam,bk-ssm,bk-console
+third	bk-user,bk-iam-saas,bk-iam-search-engine,bk-gse,bk-cmdb,bk-paas,bk-applog,bk-ingress-nginx,bk-ingress-rule
+fourth	bk-job
+fifth	bk-nodeman
+```
+
+## 使用 seq 标签操作一组 release
+
+参考上述的输出，你可以使用 seq 来按组控制 release。
+
+如下命令启动了 `seq=first` 的多个 release（`bk-repo`、`bk-auth`及`bk-apigateway`）：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l seq=first sync  # 安装 seq 标签值为 first 的 release
+```
+
+## 使用 name 标签操作单个 release
+也可使用 `name` 来控制模板文件中的单个 release。
+
+如下即为 `base-blueking.yaml.gotmpl` 中声明的全部 release（和 `helmfile -f base-blueking.yaml.gotmpl sync` 命令的效果一样）：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-repo sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-auth sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-apigateway sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-iam sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-ssm sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-console sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-user sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-iam-saas sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-iam-search-engine sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-gse sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-cmdb sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-paas sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-applog sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-ingress-nginx sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-ingress-rule sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-job sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
+```
