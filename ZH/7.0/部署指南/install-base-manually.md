@@ -250,11 +250,13 @@ fifth	bk-nodeman
 
 ## 使用 seq 标签操作一组 release
 
-参考上述的输出，你可以使用 seq 来按组控制 release。
-
-如下命令启动了 `seq=first` 的多个 release（`bk-repo`、`bk-auth`及`bk-apigateway`）：
+参考上述的输出，你可以使用 seq 来按组 **并行** 控制 release：
 ``` bash
-helmfile -f base-blueking.yaml.gotmpl -l seq=first sync  # 安装 seq 标签值为 first 的 release
+helmfile -f base-blueking.yaml.gotmpl -l seq=first sync  # 并行安装 seq 标签值为 first 的 3个 release：bk-repo,bk-auth,bk-apigateway
+helmfile -f base-blueking.yaml.gotmpl -l seq=second sync  # 并行安装 bk-iam,bk-ssm,bk-console
+helmfile -f base-blueking.yaml.gotmpl -l seq=third sync  # 并行安装 bk-user,bk-iam-saas,bk-iam-search-engine,bk-gse,bk-cmdb,bk-paas,bk-applog,bk-ingress-nginx,bk-ingress-rule
+helmfile -f base-blueking.yaml.gotmpl -l seq=fourth sync  # 安装 bk-job
+helmfile -f base-blueking.yaml.gotmpl -l seq=fifth sync  # 安装 bk-nodeman
 ```
 
 ## 使用 name 标签操作单个 release
