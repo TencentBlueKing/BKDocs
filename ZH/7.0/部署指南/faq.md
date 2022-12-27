@@ -63,6 +63,8 @@ helmfile -f 00-metrics-server.yaml.gotmpl sync
     ```
 
 
+<a id="change-bk-domain" name="change-bk-domain" ></a>
+
 ### 更改访问域名
 
 修改配置文件 `environments/default/custom.yaml`：
