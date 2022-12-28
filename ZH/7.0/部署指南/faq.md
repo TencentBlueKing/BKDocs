@@ -95,18 +95,30 @@ domain:
 
 1. 修改权限中心的回调 url：
    ``` sql
-   USE bkiam;
    SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名。
    SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 你将使用的新域名
+   -- 如下内容可直接复制粘贴
+   USE bkiam;
    UPDATE saas_system_info SET provider_config = REPLACE(provider_config, @BK_DOMAIN_OLD, @BK_DOMAIN) WHERE provider_config LIKE CONCAT('%', @BK_DOMAIN_OLD, '%');
    ```
 2. 变更桌面中的应用访问地址及图标：
    ``` sql
-   USE open_paas;
+   -- 如果没有退出过mysql shell，可以跳过变量赋值
    SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名。
    SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 你将使用的新域名
+   -- 如下内容可直接复制粘贴
+   USE open_paas;
    UPDATE paas_app SET external_url = REPLACE(external_url, @BK_DOMAIN_OLD, @BK_DOMAIN) WHERE external_url LIKE CONCAT('%', @BK_DOMAIN_OLD, '%');
    UPDATE paas_app SET logo = REPLACE(logo, @BK_DOMAIN_OLD, @BK_DOMAIN) WHERE logo LIKE CONCAT('%', @BK_DOMAIN_OLD, '%');
+   ```
+3. 修改 API 网关中记录的 SDK 下载地址：
+   ``` sql
+   -- 如果没有退出过mysql shell，可以跳过变量赋值
+   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名。
+   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 你将使用的新域名
+   -- 如下内容可直接复制粘贴
+   USE bk_apigateway;
+   UPDATE support_api_sdk SET url = REPLACE(url, @BK_DOMAIN_OLD, @BK_DOMAIN) WHERE url LIKE CONCAT('%', @BK_DOMAIN_OLD, '%');
    ```
 
 按批次重启蓝鲸基础套餐。
@@ -114,12 +126,17 @@ domain:
    ``` bash
    helmfile -f base-blueking.yaml.gotmpl -l seq=first sync
    kubectl delete pod -n blueking -l 'app.kubernetes.io/instance=bk-repo,bk.repo.scope=backend'  # bkrepo 部分 pod 不会重启，主动删除等重建
+   kubectl delete pod -n blueking -l 'app.kubernetes.io/instance=bk-apigateway,app.kubernetes.io/component in (api-support-fe, dashboard-fe)'  # bk-apigateway 部分 pod 不会重启，主动删除等重建
    ```
 2. 重启第二批：
    ``` bash
    helmfile -f base-blueking.yaml.gotmpl -l seq=second sync
    ```
-3. 重启第三批：
+3. 持续观察等 bk-repo-repository pod 全部 `Ready`：
+   ``` bash
+   kubectl get pod -n blueking -l 'app.kubernetes.io/instance=bk-repo,app.kubernetes.io/component=repository' -w
+   ```
+   然后重启第三批：
    ``` bash
    helmfile -f base-blueking.yaml.gotmpl -l seq=third sync
    kubectl delete pod -n blueking -l 'app.kubernetes.io/instance=bk-paas,app.kubernetes.io/name=webfe'  # bk-paas-webfe-web pod 不会重启，主动删除等重建
@@ -142,10 +159,14 @@ domain:
 
 
 重新部署 SaaS。
-1. 访问蓝鲸桌面，打开 “开发者中心”。如果页面提示 “服务异常”，说明未能成功重启 `bkpaas3-webfe` pod，请再重启一次试试。
-2. 在首页选择 “标准运维” 进入 “应用概览” 界面。
-3. 在左侧选择 “应用引擎” —— “部署管理”。使用相同版本部署 “生产环境”。如有用到“预发布环境”，可一并部署。如果未重新部署，则更新入口后，访问应用会报错 “404 Not Found”。
-4. 在左上角切换应用为 “流程服务”，重复步骤 3。其他 SaaS 依此类推。
+1. 调整 **全部 node** 上的 docker 配置，更新 insecure registry 数组里的域名： `docker.$BK_DOMAIN` 。并 reload dockerd，并检查配置是否生效。具体操作见 [调整 node 上的 docker 服务](install-bkce.md#k8s-node-docker-insecure-registries)。
+2. 访问蓝鲸桌面，打开 “开发者中心”。如果页面提示 “服务异常”，说明未能成功重启 `bkpaas3-webfe` pod，请再重启一次试试。
+3. 在首页选择 SaaS （如“标准运维”），进入 “应用概览” 界面。
+4. 如果 SaaS 有配置 “环境变量” 或 “访问入口”，需检查配置项中域名进行更新。“标准运维” 默认无相关配置，可忽略本步骤。
+5. 在左侧选择 “应用引擎” —— “部署管理”。切换到 “生产环境” tab，点击“部署至生产环境”。在弹窗中勾选 “总在创建进程实例前拉取镜像”，点击“确定”开始部署。如果未重新部署，则更新入口后，访问应用会报错 “404 Not Found”。
+6. 部署 SaaS 的其他模块。点击顶部 “模块” 进行切换，然后重复步骤 5。“标准运维” 还有 3 个模块需要部署。如果未重新部署模块，会导致 SaaS 工作异常。
+7. 如有用到“预发布环境”，可一并部署。
+8. 在左上角切换应用为 “流程服务”，重复步骤 4-7。其他 SaaS 依此类推。
 
 配置变更：
 1. 节点管理全局配置中，接入点可能配置了域名，请检查替换为新域名，或者改用 IP 端口访问。
@@ -153,13 +174,14 @@ domain:
    * 编辑 `default-bk-repo` 服务，更新 **方案配置** 字段中 `endpoint_url` 地址中的域名。然后点“确定”保存。
 
 最终检查。通过后则通知用户访问入口发生变更。
-1. 使用新域名访问蓝鲸桌面，预期所有应用的图标可正常显示，点击应用也会是新域名的地址。
-2. 检查 “权限中心” 能否打开。如果地址栏显示为旧域名，可能遗漏了重启 `bkpaas3-webfe` pod 操作。
-3. 检查 “配置平台” 能否打开。如果地址栏显示为旧域名，可能没有变更 `open_paas` 数据库且重启 console pod。
-4. 检查 “作业平台” 能否打开，以及历史任务查看有无异常。如果提示 `jobapi.新域名` 访问异常（HTTP 403），可能没有变更 `bkiam` 数据库并重启 job pod。
-5. 检查“节点管理”能否正常安装 agent。
-6. 检查“标准运维”及“流程服务”能否正常执行任务。
-7. 抽检其他平台访问是否正常。
+1. 检查 k8s ingress 注册的域名： `kubectl get ingress -A | grep -F 旧域名`，预期结果为空。
+2. 使用新域名访问蓝鲸桌面，预期所有应用的图标可正常显示，点击应用也会是新域名的地址。
+3. 检查 “权限中心” 能否打开。如果地址栏显示为旧域名，可能遗漏了重启 `bkpaas3-webfe` pod 操作。
+4. 检查 “配置平台” 能否打开。如果地址栏显示为旧域名，可能没有变更 `open_paas` 数据库且重启 console pod。
+5. 检查 “作业平台” 能否打开，以及历史任务查看有无异常。如果提示 `jobapi.新域名` 访问异常（HTTP 403），可能没有变更 `bkiam` 数据库并重启 job pod。
+6. 检查“节点管理”能否正常安装 agent。
+7. 检查“标准运维”及“流程服务”能否正常执行任务。
+8. 检查其他平台访问是否正常。如果依旧存在旧域名，请在社区反馈。
 
 
 ### bkpaas3 里增加用户为管理员身份
