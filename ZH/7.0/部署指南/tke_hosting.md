@@ -47,6 +47,8 @@ proxy_send_timeout 600s;
 在 TKE 页面的基本信息里可以有具体的指引，参考配置即可
 ![](assets/2022-03-09-10-39-43.png)
 
- `kubectl get node -o wide` 
+使用 `kubectl get node -o wide` 命令检查集群节点，能正常显示则说明已经连上了集群。
+
 ![](assets/2022-03-09-10-39-54.png)
-则说明已经连上了集群
+
+然后回到 《[部署前置工作](prepare.md#purchase-cloud-service-tke)》 文档继续操作。

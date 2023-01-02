@@ -53,6 +53,7 @@
 在 「`0shared`」这行点击 「添加实例」，重复添加 5 - 10 次（蓝鲸基础套餐会占用 4 个实例，余量可供后续安装的 SaaS 使用）。如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。
 
 ![](assets/2022-03-09-10-43-11.png)
+
 启用 “可回收复用” 开关，并在 “实例配置” 贴入配置代码，在 **中控机** 执行如下命令生成：
 ``` bash
 redis_json_tpl='{"host":"%s","port": %d,"password":"%s"}'
@@ -62,9 +63,13 @@ redis_pass=$(kubectl get secret --namespace blueking bk-redis \
   -o jsonpath="{.data.redis-password}" | base64 --decode)  # 读取默认redis的密码，按需修改赋值语句
 printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # 格式化以确保json格式正确
 ```
+
 命令输出如下图所示：
+
 ![](assets/2022-03-09-10-44-00.png)
+
 浏览器界面如下图所示：
+
 ![](assets/2022-03-09-10-43-19.png)
 
 
@@ -81,8 +86,11 @@ SaaS 应用采用 `S-Mart` 包分发。
 登录 「蓝鲸桌面」，在侧栏导航里打开 「开发者中心」 。
 
 点击 「创建应用」，选择 「S-mart 应用」 ，上传提前下载好的安装包。
+
 ![](assets/2022-03-09-10-44-26.png)
+
 上传成功后，界面会显示解析到信息，点击 「确认并创建应用」。稍等片刻后提示“应用‘流程服务’创建成功”，此时可点击下方的 「部署应用」链接进入「部署管理」界面。
+
 ![](assets/smart-package-upload-success.png)
 
 流程服务（bk_itsm） **无部署前配置**，所以可以直接在 「部署管理」 界面开始部署：
@@ -92,6 +100,7 @@ SaaS 应用采用 `S-Mart` 包分发。
 4. 点击 「部署至生产环境」 按钮。此时开始显示部署进度。
 
 步骤示例图：
+
 ![](assets/deploy-saas-on-appo.png)
 
 <!--
@@ -117,6 +126,7 @@ SaaS 应用采用 `S-Mart` 包分发。
 5. 等 `default`模块 **部署成功后**，回到步骤 1，开始部署 `api`、`pipeline`与`callback` 等 3 个模块（此时无次序要求，可同时部署）。
 
 步骤示例图：
+
 ![](assets/deploy-saas-on-appo--sops.png)
 
 
@@ -185,6 +195,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 2. 在应用推广-发布管理中，将应用市场的访问地址类型设置为：主模块生产环境独立域名
 
 步骤示例图：
+
 ![](assets/2022-03-09-10-45-21.png)
 ![](assets/2022-03-09-10-45-29.png)
 -->
@@ -228,6 +239,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 结尾提示 `[INFO] upload agent package success` （客户端及 proxy） 和 `[INFO] upload open tools success` （proxy 所需的 nginx 及 py36 等）即为上传成功。
 
 脚本执行完成后，访问节点管理的 「插件管理」——「插件包」界面，可以看到上传成功的插件包：
+
 ![](asserts/../assets/bk_nodeman-plugin-list.png)
 
 插件集合包中各子包的用途：
@@ -286,6 +298,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 9. 在新的 “Agent 信息” 及 “Proxy 信息” 确认界面点击 “确认” 按钮即完成。
 
 操作步骤如下图所示：
+
 ![](assets/bk_nodeman-conf-gse-env.png)
 
 
