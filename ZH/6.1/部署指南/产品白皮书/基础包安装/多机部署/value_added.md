@@ -111,3 +111,34 @@ for module in ${value_modules[@]}; do if grep ${module} /data/install/install.co
 - 安装日志平台相关依赖、日志平台后台、日志平台 SaaS
 
 ![bklog_template](../../assets/bklog_template.png)
+
+# 配置可选功能
+
+## 应用监控（APM）
+应用监控支持 OpenTelemetry 标准。蓝鲸提供部署 OTel 服务器的方案，以便与监控平台集成。
+
+### 启动 OTel 服务
+通过蓝鲸 “节点管理” 系统部署 OTel 服务端。
+
+请通过蓝鲸桌面访问 “节点管理” 系统，在 “插件状态” 界面选择至少 1 台服务器。
+
+然后点击 “安装/更新” 按钮，在弹框中选择 `bk-collector` 插件。连续点击 “下一步” 确认版本后，点击 “立即执行” 开始部署。
+
+当插件安装成功后，我们得到了一批 OTel 服务端。
+
+如果在弹框中未找到 `bk-collector` 插件，请下载 `bk-collector` 插件包，在 “插件包” 界面选择 “导入插件”，选择文件 “bk-collector-0.5.2.66.tgz”，连续点击 “下一步” 导入插件，再次重新执行上述操作。
+```
+# bk-collector-0.5.2.66.tgz 下载地址
+https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bk-collector-0.5.2.66.tgz 
+```
+
+### 调整蓝鲸监控配置
+让蓝鲸 “监控平台” 知晓我们部署的 OTel 服务端 IP，以便推送配置信息。
+
+请通过蓝鲸桌面访问 “监控平台” 系统，点击顶部导航右侧的齿轮图标，在弹出菜单中选择 “全局设置”。
+
+在 “全局设置” 界面，找到配置项 “自定义上报默认服务器”，填写刚才部署的 OTel 服务端 IP。如果有多个 IP，需要逐个 IP 填写。填写完毕后点击页脚 “提交” 按钮保存配置。
+![](../../assets/monitor-global-config-custom-report-proxy.png)
+
+### 接入应用监控
+您可以参考使用文档接入自己的应用。
