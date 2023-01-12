@@ -9,7 +9,7 @@ bkmonitorbeat | 1.24.x | [bkmonitorbeat-1.24.132.tgz](https://bkopen-1252002024.
 bkmonitorproxy | 1.3.x | [bkmonitorproxy-1.3.49.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorproxy-1.3.49.tgz) |
 bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.1.rc119.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.1.rc119.tgz) |
 gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gsecmdline-2.0.3.tgz) |
-bkmonitorbeat | 2.9.x | [bkmonitorbeat-2.9.6.229.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-2.9.6.229.tgz) | 新版
+bkmonitorbeat | 2.9.x | [bkmonitorbeat-2.9.6.229.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-2.9.6.229.tgz) | 新版 bkmonitorbeat
 pluginscripts | 1.0.x | [pluginscripts-1.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/pluginscripts-1.0.3.tgz) | 暂无版本日志
 bk-collector | 0.5.x | [bk-collector-0.5.2.66.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bk-collector-0.5.2.66.tgz) |
 gse_plugins |  | [gse_plugins.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gse_plugins.tgz) | 插件整包
