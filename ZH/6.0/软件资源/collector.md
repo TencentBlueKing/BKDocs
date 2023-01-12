@@ -4,13 +4,25 @@
 ----|------|------|---
 basereport | 10.12.x | [basereport-10.12.76.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/basereport-10.12.76.tgz) | 不再更新，换新版 bkmonitorbeat
 processbeat | 1.19.x | [processbeat-1.19.71.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/processbeat-1.19.71.tgz) | 不再更新，换新版 bkmonitorbeat
-exceptionbeat | 1.8.x | [exceptionbeat-1.8.44.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.8.44.tgz) | 不再更新，换新版 bkmonitorbeat
+exceptionbeat | 1.8.x | [exceptionbeat-1.8.44.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.8.44.tgz)
 bkmonitorbeat | 1.24.x | [bkmonitorbeat-1.24.132.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.24.132.tgz) | 不再更新，换新版  bkmonitorbeat
 bkmonitorproxy | 1.3.x | [bkmonitorproxy-1.3.49.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorproxy-1.3.49.tgz) |
-bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.0.104.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.0.104.tgz) |
+bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.1.rc119.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.1.rc119.tgz) |
 gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gsecmdline-2.0.3.tgz) |
+bkmonitorbeat | 2.9.x | [bkmonitorbeat-2.9.6.229.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-2.9.6.229.tgz) | 新版 bkmonitorbeat
+pluginscripts | 1.0.x | [pluginscripts-1.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/pluginscripts-1.0.3.tgz) | 暂无版本日志
+bk-collector | 0.5.x | [bk-collector-0.5.2.66.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bk-collector-0.5.2.66.tgz) |
+gse_plugins |  | [gse_plugins.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gse_plugins.tgz) | 插件整包
 
 ## 采集器版本日志
+
+### === bk-collector ===
+
+- `bk-collector-0.5.2.66.tgz`
+
+  【Added】自监控上报新增 bk_component label
+  【Fixed】修复 historgram / summary  类型 labels 复制问题
+
 
 ### === basereport ===
 
@@ -111,6 +123,11 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 ---
 ### === bkunifylogbeat ===
 
+- `bkunifylogbeat-7.3.1.rc119.tgz`
+
+  【修复】单行文本超过指定大小后，部分场景下会导致重复读取问题
+  
+
 - `bkunifylogbeat-7.3.0.104.tgz`
 
   【特性】 BCS 配置独立目录
@@ -166,6 +183,16 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 ---
 ### === bkmonitorbeat ===
+#### 新版日志
+- `bkmonitorbeat-2.9.6.229.tgz`
+
+  【Updated】k8s 事件采集新增 type 维度
+  
+  【Updated】metricbeat 支持 proxy_url 代理方案
+
+
+
+#### 旧版日志
 - `bkmonitorbeat-1.24.132.tgz`
   
   【更新】修复 http 拨测读取响应截取异常的问题
