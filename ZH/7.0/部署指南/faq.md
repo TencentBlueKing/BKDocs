@@ -184,18 +184,29 @@ domain:
 8. 检查其他平台访问是否正常。如果依旧存在旧域名，请在社区反馈。
 
 
-### bkpaas3 里增加用户为管理员身份
-若接入了自定义登录后没有 admin 账号，可以进入 `bkpaas3-apiserver-web` pod 执行如下命令添加其他管理员账号：
+### 添加用户为 PaaS Admin 角色
+若接入了自定义登录后没有 admin 账号，或者禁用了内置的 `admin` 账户。导致访问 PaaS Admin 界面（地址以 http://bkpaas.$BK_DOMAIN/backend/admin42/ 开头）时浏览器显示 403 Forbidden。
+
+此时可以将其他用户设置为 PaaS 的 admin 角色。
+
+在 中控机 执行如下命令进入 `paas-apiserver` 组件的 Django shell：
+``` bash
+kubectl exec -it -n blueking deploy/bkpaas3-apiserver-web web -- python manage.py shell
+```
+成功后会显示 `(InteractiveConsole)`，并出现 `>>>` 提示开始输入内容。
+
+请分段粘贴如下代码，回车执行：
 ``` python
-from bkpaas_auth.constants import ProviderType
-from bkpaas_auth.models import user_id_encoder
+username="admin"  # 请先设置为要添加 paas admin 权限的用户名
+
+from bkpaas_auth.core.constants import ProviderType
+from bkpaas_auth.core.encoder import user_id_encoder
 from paasng.accounts.models import UserProfile
 
-username="admin"
 user_id = user_id_encoder.encode(ProviderType.BK.value, username)
 UserProfile.objects.update_or_create(user=user_id, defaults={'role':4, 'enable_regions':'default'})
 ```
-
+最终显示 `(<UserProfile: 刚才填写的用户名-4>, True 或者 False)`，即为变更成功。如果抛出异常，可临时新建其他用户重试，或联系助手排查。
 
 ### bkpaas3 修改日志级别
 apiserver 和 engine 模块都支持通过环境变量设置日志级别。
