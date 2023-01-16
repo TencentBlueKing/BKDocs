@@ -298,12 +298,12 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 ### 创建 SaaS 时报错 仅支持 .tar 或 tar.gz 格式的文件
 **表现**
 
-当使用浏览器部署 SaaS 时，在 PaaS 开发者中心 的 “创建应用” 界面上传 SaaS 安装包文件后，在页面顶部出现报错：
+使用浏览器访问 开发者中心，在 “创建应用” 界面上传 SaaS 安装包文件后，页面顶部出现报错：
 >仅支持蓝鲸 S-mart 包，可以从“蓝鲸 S-mart”获取，上传成功后即可进行应用部署 仅支持 .tar 或 tar.gz 格式的文件。
 
 **结论**
 
-已知 Windows 11 用户使用 Chrome 浏览器可触发此问题。
+已知 Windows 10 和 11 用户使用 Chrome 浏览器可触发此问题。
 
 可按需选择临时解决方案：
 * 如果要部署 流程服务（ITSM）及 标准运维（SOPS），可参考 《[基础套餐部署](install-bkce.md#setup_bkce7-i-saas)》 文档在 中控机 使用 “一键脚本” 部署 SaaS。
@@ -313,7 +313,7 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 
 文件上传界面限制了文件的 MIME 类型为 `application/x-tar,application/x-gzip`。如果不匹配，则会出现上述报错。
 
-已知 Windows 11 更新了数据，`.gz` 文件的 MIME 类型变为了 `application/gzip`。
+已知 Windows 10 系统更新后，`.gz` 文件的 MIME 类型变为了 `application/gzip`。
 
 
 ### 部署 SaaS 时报错 配置资源实例异常: unable to provision instance for services mysql
