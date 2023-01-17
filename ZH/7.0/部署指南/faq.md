@@ -302,13 +302,10 @@ coordinating:
       memory: 1024Mi
 EOF
 ```
-然后卸载 release（此处以 `bk-elastic` 所在的 `base-storage.yaml.gotmpl` 文件为例）：
-``` bash
-helmfile -f base-storage.yaml.gotmpl destroy
-```
+
 然后重新创建（此处以 `bk-elastic` 所在的 `base-storage.yaml.gotmpl` 文件为例）：
 ``` bash
-helmfile -f base-storage.yaml.gotmpl sync
+helmfile -f base-storage.yaml.gotmpl -l name=bk-elastic sync
 ```
 检查 pod 是否生效：
 ``` bash
