@@ -370,28 +370,59 @@ DeployError: 部署失败, 配置资源实例异常: unable to provision instanc
 
 
 ### 部署 SaaS 在“执行部署前置命令”阶段报错
-检查对应 `app_code` 的日志。“执行部署前置命令” 对应着 `pre-release-hook` 容器。（如果容器不存在，则说明已经被自动清理，需重新开始部署才会出现。）
+**表现**
 
-如下以 `bk_itsm` 为例：
-``` bash
-# kubectl logs -n bkapp-bk0us0itsm-prod pre-release-hook
-Error from server (BadRequest): container "pre-release-hook" in pod "pre-release-hook" is waiting to start: trying and failing to pull image
+当使用“一键脚本”部署 SaaS 时，终端出现报错：
+``` plain
+时间略 [INFO] installing bk_itsm-default-image-2.6.2
+DeployError: 部署失败, Pre-Release-Hook failed, please check logs for more details❌
+command terminated with exit code 1
 ```
-可以看到失败原因是无法拉取镜像，然后我们可以检查容器：
+或者在“开发者中心”部署 SaaS 时失败，页面显示在 部署阶段 的 “执行部署前置命令” 步骤失败。
+
+**结论**
+
+目前用户报告的案例中，均为拉取镜像失败所致。又可细分为以下 2 种情况：
+1. 遗漏了 “[配置 k8s node 的 DNS](install-bkce.md#hosts-in-k8s-node)” 步骤，导致无法解析 bkrepo docker registry 的域名。
+2. 遗漏了 “[调整 node 上的 docker 服务](install-bkce.md#k8s-node-docker-insecure-registries)” 步骤，导致 https 连接失败。
+
+请先检查 **全部 node**，补齐这些操作，然后重试。如未解决，可参考问题分析排查。
+
+**问题分析**
+
+“执行部署前置命令” 对应着 `pre-release-hook` pod。如果报错 `pod not found`，则说明已经被自动清理，可点击 “重新部署” 按钮或者重试“一键脚本”，即出现此 pod。
+
+我们先检查 pod 事件，以 `bk_itsm` 为例：
 ``` bash
-# kubectl describe pod -n bkapp-bk0us0itsm-prod pre-release-hook
+kubectl describe pod -n bkapp-bk0us0itsm-prod pre-release-hook
+```
+>**提示**
+>
+>其他 SaaS 需调整 `namespace`。前缀保持不变，app_code 部分需替换 `_` 为 `0us0`，后缀用于区分环境： `prod`（生产环境）或 `stag`（预发布环境）。
+
+该命令输出如下：
+``` plain
 Events:
   Type     Reason     Age                    From               Message
   ----     ------     ----                   ----               -------
   Normal   Scheduled  3m56s                  default-scheduler  Successfully assigned bkapp-bk0us0itsm-prod/pre-release-hook to node-10-0-1-3
-  Normal   Pulling    2m24s (x4 over 3m56s)  kubelet            Pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.0-rc.399"
-  Warning  Failed     2m24s (x4 over 3m55s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.0-rc.399": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: dial tcp: lookup docker.bkce7.bktencent.com on 10.0.1.1:53: no such host
+  Normal   Pulling    2m24s (x4 over 3m56s)  kubelet            Pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2"
+  Warning  Failed     2m24s (x4 over 3m55s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: dial tcp: lookup docker.bkce7.bktencent.com on 10.0.1.1:53: no such host
   Warning  Failed     2m24s (x4 over 3m55s)  ku：wqbelet            Error: ErrImagePull
-  Normal   BackOff    2m10s (x6 over 3m55s)  kubelet            Back-off pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.0-rc.399"
+  Normal   BackOff    2m10s (x6 over 3m55s)  kubelet            Back-off pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2"
   Warning  Failed     119s (x7 over 3m55s)   kubelet            Error: ImagePullBackOff
 ```
-此处的报错是 `node-10-0-1-3` 解析 `docker.bkce7.bktencent.com` 失败。因此需要配置所用的 DNS 服务或者配置对应机器的 `/etc/hosts` 文件。
+此处的报错是 `node-10-0-1-3` 无法解析 `docker.bkce7.bktencent.com`，请参考 [配置 k8s node 的 DNS](install-bkce.md#hosts-in-k8s-node) 文档操作。
 
+其中 `Error response from daemon:` 为 dockerd 返回的报错，也可能是其他情况。
+
+如：
+``` plain
+  Warning  Failed     85s (x4 over 2m43s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: x509: certificate is valid for ingress.local, not docker.bkce7.bktencent.com
+```
+此报错则是 HTTPS 证书问题，请参考 [调整 node 上的 docker 服务](install-bkce.md#k8s-node-docker-insecure-registries) 文档操作。
+
+其他报错可自行处理，或提供上述 kubectl describe pod 命令的完整输出联系蓝鲸助手。
 
 ## 安装 agent 时的报错
 ### 执行日志里显示 curl 下载 setup_agent.sh 报错 404 not found
