@@ -558,6 +558,52 @@ kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
 
 此问题涉及同名 cookie 读取逻辑调整，待配置平台评估正式解决方案。
 
+
+### 登录界面样式丢失
+**表现**
+
+当提示登录时，登录界面只能看到文字，且排版错乱。
+
+**结论**
+
+bk-login-pod 启动异常，在中控机执行如下命令重启：
+``` bash
+kubectl rollout restart deployment -n blueking bk-login-web
+```
+观察新 pod Ready 后，然后刷新页面即可。
+
+**问题分析**
+
+打开浏览器开发者工具，切换到 network 栏刷新，发现请求静态资源（图片、js 及 css）时响应为 404 Not Found。
+
+首先检查 `ingress-nginx` 的日志，得到请求的上游地址。
+
+检查 endpoint：
+``` bash
+kubectl get endpoints -A
+```
+
+发现确实是 `bk-login-web` pod。
+
+检查 pod 日志：
+``` bash
+kubectl logs -n blueking deploy/bk-login-web
+```
+
+发现对应资源确实是 bk-login-web 响应的 404，且上一行伴有异常：
+``` plain
+[Errno 2] No such file or directory: '/app/staticfiles//js/login.js'
+::ffff:10.244.0.1 - - [时间略] "GET /static/js/login.js HTTP/1.1" 404 13 "http://bkce7.bktencent.com/login/?c_url=/" "UA略" in 0.000382 seconds
+```
+
+比对正常环境日志，发现启动时少了一行输出：
+``` plain
+55 static files copied to '/app/staticfiles'.
+```
+
+怀疑是 pod 启动阶段遇到异常，导致 Django collectstatic 因为异常退出，无法复制所需的静态文件。待开发修复。
+
+
 ### 监控平台 观测场景 kubernetes 访问报错 resource is unauthorized
 **表现**
 
