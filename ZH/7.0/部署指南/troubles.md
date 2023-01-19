@@ -425,6 +425,51 @@ Events:
 其他报错可自行处理，或提供上述 kubectl describe pod 命令的完整输出联系蓝鲸助手。
 
 ## 安装 agent 时的报错
+
+### 执行日志里显示 curl 下载 setup_agent.sh 报错 Connection timed out
+**表现**
+
+执行日志显示：
+``` plain
+[时间略 INFO] [script] curl http://服务端地址略/generic/blueking/bknodeman/data/bkee/public/bknodeman/download/setup_agent.sh -o /tmp/setup_agent.sh --connect-timeout 5 -sSfg
+[时间略 ERROR] [3803009] 目录返回非零值: exit_status -> 28, stdout -> , stderr -> curl: (28) Connection timed out after 5000 milliseconds
+```
+
+**结论**
+
+从节点管理能 SSH 访问到目的主机，但是目的主机无法访问 bkrepo 下载脚本。
+
+请参考下面的 问题分析 章节排查。
+
+**问题分析**
+
+前往目的主机测试访问服务端地址。
+
+>**提示**
+>
+>可以参考上述日志中提示的 curl 命令添加 `-v` 参数： `curl -v 其他参数保持不变`。
+
+如果测试结果依旧为连接超时，可参考如下步骤排查：
+1. 检查服务端是否正常：
+   1. 当服务端地址填写域名时，需要检查 ingress-nginx：
+      1. 核对目的主机上解析域名得到的 IP 是否为当前 ingress-nginx pod 所在 node 的 IP。
+      2. 如果是云服务，检查安全组是否放行了 `80` 端口，以及是否限制了入站 IP。
+      3. 检查 `ingress-nginx` pod 所在 node 的软件防火墙是否有限制 `80` 端口的入站流量。
+      4. 在集群内的其他 node 测试访问 `ingress-nginx` service（`80` 端口），如果超时，可能是 k8s 虚拟网络故障。
+   2. 当服务端地址填写 IP 时，需要检查 bkrepo-gateway：
+      1. 核对该 IP 是否为 k8s 集群中某个 node 的 IP。
+      2. 如果是云服务，检查安全组是否放行了 `30025` 端口，以及是否限制了入站 IP。
+      3. 检查 服务端 IP 对应主机上的软件防火墙是否有限制 `30025` 端口的入站流量。
+      4. 在集群内的其他 node 测试访问 `bk-repo-bkrepo-gateway` service （`30025` 端口），如果超时，可能是 k8s 虚拟网络故障。
+2. 检查目的主机的出站限制：
+   1. 检查路由表，可能因网段冲突或路由策略导致出口网卡及源 IP 地址不正确。
+   2. 如果是云服务，检查安全组是否有出站限制。
+   3. 检查软件防火墙是否有出站限制。
+3. 当以上检查均未发现问题，需要检查网络：
+   1. 网络路由是否互通。
+   2. 中途路由器是否存在 访问控制规则。
+   3. 硬件防火墙 是否有拦截策略。
+
 ### 执行日志里显示 curl 下载 setup_agent.sh 报错 404 not found
 **表现**
 
