@@ -426,13 +426,36 @@ Events:
 
 ## 安装 agent 时的报错
 
+### 执行日志里显示 curl 下载 setup_agent.sh 报错 could not resolv host
+**表现**
+
+执行日志显示：
+``` plain
+[时间略 INFO] [script] curl http://bkrepo.bkce7.bktencent.com/generic/blueking/bknodeman/data/bkee/public/bknodeman/download/setup_agent.sh -o /tmp/setup_agent.sh --connect-timeout 5 -sSfg
+[时间略 ERROR] [3803009] 命令返回非零值: exit_status -> 6, stdout -> , stderr -> curl: (6) Could not resolve host: bkrepo.bkce7.bktencent.com; Unknown error
+```
+
+**结论**
+
+目的主机无法解析 bkrepo 域名。请任选一种方案处理：
+* 配置目的主机的 hosts（操作文档见 [配置中控机的 DNS](install-bkce.md#hosts-in-bk-ctrl)），然后**重试出错的任务**。
+* 让节点管理今后使用 IP 下载文件（操作文档见 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) ），然后**创建新任务**。
+
+
+**问题分析**
+
+此问题无分析过程。
+
+如果你使用了 DNS 提供 bkrepo 域名的解析，可以自行逐级排查 DNS 配置问题。
+
+
 ### 执行日志里显示 curl 下载 setup_agent.sh 报错 Connection timed out
 **表现**
 
 执行日志显示：
 ``` plain
 [时间略 INFO] [script] curl http://服务端地址略/generic/blueking/bknodeman/data/bkee/public/bknodeman/download/setup_agent.sh -o /tmp/setup_agent.sh --connect-timeout 5 -sSfg
-[时间略 ERROR] [3803009] 目录返回非零值: exit_status -> 28, stdout -> , stderr -> curl: (28) Connection timed out after 5000 milliseconds
+[时间略 ERROR] [3803009] 命令返回非零值: exit_status -> 28, stdout -> , stderr -> curl: (28) Connection timed out after 5000 milliseconds
 ```
 
 **结论**
@@ -476,7 +499,7 @@ Events:
 执行日志显示：
 ``` plain
 [时间略 INFO] [script] curl http://服务端地址略/generic/blueking/bknodeman/data/bkee/public/bknodeman/download/setup_agent.sh -o /tmp/setup_agent.sh --connect-timeout 5 -sSfg
-[时间略 ERROR] [3803009] 目录返回非零值: exit_status -> 22, stdout -> , stderr -> curl: (22) The requested URL returned error: 404 not found
+[时间略 ERROR] [3803009] 命令返回非零值: exit_status -> 22, stdout -> , stderr -> curl: (22) The requested URL returned error: 404 not found
 ```
 
 **结论**
