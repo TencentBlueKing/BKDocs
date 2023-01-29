@@ -10,31 +10,31 @@
    kubectl config set-context --current --namespace=blueking
    ```
 2. 部署过程中，查看 pod 的变化情况：
-	``` bash
-	kubectl get pods -w
+   ``` bash
+   kubectl get pods -w
    ```
 3. 查看 pod `PODNAME` 的日志：（如果 pod 日志非常多，加上 `--tail=行数` 防止刷屏）
-	``` bash
-	kubectl logs PODNAME -f --tail=20
-	```
+   ``` bash
+   kubectl logs PODNAME -f --tail=20
+   ```
 4. 删除 Completed 状态的 pod；然后查看 pod 状态不等于 `Running` 的：
-	``` bash
+   ``` bash
    kubectl delete pod --field-selector=status.phase==Succeeded
-	kubectl get pods --field-selector 'status.phase!=Running'
-	```
-	注意 job 任务生成的 pod，没有自动删除的且执行完毕的 pod，处于 `Completed` 状态。
+   kubectl get pods --field-selector 'status.phase!=Running'
+   ```
+   注意 job 任务生成的 pod，没有自动删除的且执行完毕的 pod，处于 `Completed` 状态。
 5. pod 状态不是 `Running`，需要了解原因：
-	``` bash
-	kubectl describe pod PODNAME
-	```
+   ``` bash
+   kubectl describe pod PODNAME
+   ```
 6. 有些 pod 的日志没有打印到 stdout，需要进入容器查看：
-	``` bash
-	kubectl exec -it PODNAME -- bash
-	```
+   ``` bash
+   kubectl exec -it PODNAME -- bash
+   ```
 7. 为当前 bash 会话临时开启 `kubectl` 命令行补全：（标准配置方法请查阅 《[部署前置工作](prepare.md)》 里的 “配置 kubectl 命令行补全” 章节）
-	``` bash
-	source <(kubectl completion bash)
-	```
+   ``` bash
+   source <(kubectl completion bash)
+   ```
 8. 列出 base.yaml.gotmpl 这个 helmfile 里定义的 release：
    ``` bash
    helmfile -f base.yaml.gotmpl list
