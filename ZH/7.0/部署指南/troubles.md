@@ -85,7 +85,7 @@ scripts/setup_bkce7.sh: line 568: helmfile: command not found
 ### 一键脚本 或 helmfile 输出大段报错 timed out waiting for the condition
 **表现**
 
-在使用“一键脚本”安装任意套餐，或者直接执行 helmfile 命令时，出现大段报错，其输入如下
+在使用 “一键脚本” 安装任意套餐，或者直接执行 `helmfile` 命令时，出现大段报错，内容如下：
 ``` bash
 ERROR:
   exit status 1

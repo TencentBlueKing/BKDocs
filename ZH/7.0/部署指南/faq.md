@@ -39,7 +39,7 @@
    ``` bash
    helmfile -f base.yaml.gotmpl list
    ```
-9.  卸载 helmfile 里定义的全部 release：
+9. 卸载 helmfile 里定义的全部 release：
    ``` bash
    helmfile -f 00-BK_TEST.yaml.gotmpl destroy
    ```
@@ -95,8 +95,8 @@ domain:
 
 1. 修改权限中心的回调 url：
    ``` sql
-   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名。
-   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 你将使用的新域名
+   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名
+   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 将使用的新域名
    -- 如下内容可直接复制粘贴
    USE bkiam;
    UPDATE saas_system_info SET provider_config = REPLACE(provider_config, @BK_DOMAIN_OLD, @BK_DOMAIN) WHERE provider_config LIKE CONCAT('%', @BK_DOMAIN_OLD, '%');
@@ -104,8 +104,8 @@ domain:
 2. 变更桌面中的应用访问地址及图标：
    ``` sql
    -- 如果没有退出过mysql shell，可以跳过变量赋值
-   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名。
-   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 你将使用的新域名
+   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名
+   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 将使用的新域名
    -- 如下内容可直接复制粘贴
    USE open_paas;
    UPDATE paas_app SET external_url = REPLACE(external_url, @BK_DOMAIN_OLD, @BK_DOMAIN) WHERE external_url LIKE CONCAT('%', @BK_DOMAIN_OLD, '%');
@@ -114,8 +114,8 @@ domain:
 3. 修改 API 网关中记录的 SDK 下载地址：
    ``` sql
    -- 如果没有退出过mysql shell，可以跳过变量赋值
-   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名。
-   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 你将使用的新域名
+   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名
+   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 将使用的新域名
    -- 如下内容可直接复制粘贴
    USE bk_apigateway;
    UPDATE support_api_sdk SET url = REPLACE(url, @BK_DOMAIN_OLD, @BK_DOMAIN) WHERE url LIKE CONCAT('%', @BK_DOMAIN_OLD, '%');
@@ -331,7 +331,7 @@ kubectl get pod -n blueking bk-elastic-elasticsearch-data-0 -o json | jq '.spec.
    ``` bash
    helmfile -f 03-bkjob.yaml.gotmpl write-values --output-file-template bkjob-values.yaml
    ```
-2. helmfile 安装时增加 `--debug` 参数
+2. helmfile 安装时增加 `--debug` 参数。
 3. 查看已经部署的 release 的渲染结果：
    ``` bash
    helm get manifest release名
