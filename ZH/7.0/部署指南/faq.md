@@ -10,36 +10,36 @@
    kubectl config set-context --current --namespace=blueking
    ```
 2. 部署过程中，查看 pod 的变化情况：
-	``` bash
-	kubectl get pods -w
+   ``` bash
+   kubectl get pods -w
    ```
 3. 查看 pod `PODNAME` 的日志：（如果 pod 日志非常多，加上 `--tail=行数` 防止刷屏）
-	``` bash
-	kubectl logs PODNAME -f --tail=20
-	```
+   ``` bash
+   kubectl logs PODNAME -f --tail=20
+   ```
 4. 删除 Completed 状态的 pod；然后查看 pod 状态不等于 `Running` 的：
-	``` bash
+   ``` bash
    kubectl delete pod --field-selector=status.phase==Succeeded
-	kubectl get pods --field-selector 'status.phase!=Running'
-	```
-	注意 job 任务生成的 pod，没有自动删除的且执行完毕的 pod，处于 `Completed` 状态。
+   kubectl get pods --field-selector 'status.phase!=Running'
+   ```
+   注意 job 任务生成的 pod，没有自动删除的且执行完毕的 pod，处于 `Completed` 状态。
 5. pod 状态不是 `Running`，需要了解原因：
-	``` bash
-	kubectl describe pod PODNAME
-	```
+   ``` bash
+   kubectl describe pod PODNAME
+   ```
 6. 有些 pod 的日志没有打印到 stdout，需要进入容器查看：
-	``` bash
-	kubectl exec -it PODNAME -- bash
-	```
+   ``` bash
+   kubectl exec -it PODNAME -- bash
+   ```
 7. 为当前 bash 会话临时开启 `kubectl` 命令行补全：（标准配置方法请查阅 《[部署前置工作](prepare.md)》 里的 “配置 kubectl 命令行补全” 章节）
-	``` bash
-	source <(kubectl completion bash)
-	```
+   ``` bash
+   source <(kubectl completion bash)
+   ```
 8. 列出 base.yaml.gotmpl 这个 helmfile 里定义的 release：
    ``` bash
    helmfile -f base.yaml.gotmpl list
    ```
-9.  卸载 helmfile 里定义的全部 release：
+9. 卸载 helmfile 里定义的全部 release：
    ``` bash
    helmfile -f 00-BK_TEST.yaml.gotmpl destroy
    ```
@@ -95,8 +95,8 @@ domain:
 
 1. 修改权限中心的回调 url：
    ``` sql
-   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名。
-   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 你将使用的新域名
+   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名
+   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 将使用的新域名
    -- 如下内容可直接复制粘贴
    USE bkiam;
    UPDATE saas_system_info SET provider_config = REPLACE(provider_config, @BK_DOMAIN_OLD, @BK_DOMAIN) WHERE provider_config LIKE CONCAT('%', @BK_DOMAIN_OLD, '%');
@@ -104,8 +104,8 @@ domain:
 2. 变更桌面中的应用访问地址及图标：
    ``` sql
    -- 如果没有退出过mysql shell，可以跳过变量赋值
-   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名。
-   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 你将使用的新域名
+   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名
+   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 将使用的新域名
    -- 如下内容可直接复制粘贴
    USE open_paas;
    UPDATE paas_app SET external_url = REPLACE(external_url, @BK_DOMAIN_OLD, @BK_DOMAIN) WHERE external_url LIKE CONCAT('%', @BK_DOMAIN_OLD, '%');
@@ -114,8 +114,8 @@ domain:
 3. 修改 API 网关中记录的 SDK 下载地址：
    ``` sql
    -- 如果没有退出过mysql shell，可以跳过变量赋值
-   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名。
-   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 你将使用的新域名
+   SET @BK_DOMAIN_OLD='bkce7.bktencent.com';  -- 当前的域名
+   SET @BK_DOMAIN='new-bk7.bktencent.com';  -- 将使用的新域名
    -- 如下内容可直接复制粘贴
    USE bk_apigateway;
    UPDATE support_api_sdk SET url = REPLACE(url, @BK_DOMAIN_OLD, @BK_DOMAIN) WHERE url LIKE CONCAT('%', @BK_DOMAIN_OLD, '%');
@@ -184,18 +184,29 @@ domain:
 8. 检查其他平台访问是否正常。如果依旧存在旧域名，请在社区反馈。
 
 
-### bkpaas3 里增加用户为管理员身份
-若接入了自定义登录后没有 admin 账号，可以进入 `bkpaas3-apiserver-web` pod 执行如下命令添加其他管理员账号：
+### 添加用户为 PaaS Admin 角色
+若接入了自定义登录后没有 admin 账号，或者禁用了内置的 `admin` 账户。导致访问 PaaS Admin 界面（地址以 `http://bkpaas.$BK_DOMAIN/backend/admin42/` 开头）时浏览器显示 403 Forbidden。
+
+此时可以将其他用户设置为 PaaS 的 admin 角色。
+
+在 中控机 执行如下命令进入 `paas-apiserver` 组件的 Django shell：
+``` bash
+kubectl exec -it -n blueking deploy/bkpaas3-apiserver-web web -- python manage.py shell
+```
+成功后会显示 `(InteractiveConsole)`，并出现 `>>>` 提示开始输入内容。
+
+请分段粘贴如下代码，回车执行：
 ``` python
-from bkpaas_auth.constants import ProviderType
-from bkpaas_auth.models import user_id_encoder
+username="admin"  # 请先设置为要添加 paas admin 权限的用户名
+
+from bkpaas_auth.core.constants import ProviderType
+from bkpaas_auth.core.encoder import user_id_encoder
 from paasng.accounts.models import UserProfile
 
-username="admin"
 user_id = user_id_encoder.encode(ProviderType.BK.value, username)
 UserProfile.objects.update_or_create(user=user_id, defaults={'role':4, 'enable_regions':'default'})
 ```
-
+最终显示 `(<UserProfile: 刚才填写的用户名-4>, True 或者 False)`，即为变更成功。如果抛出异常，可临时新建其他用户重试，或联系助手排查。
 
 ### bkpaas3 修改日志级别
 apiserver 和 engine 模块都支持通过环境变量设置日志级别。
@@ -291,13 +302,10 @@ coordinating:
       memory: 1024Mi
 EOF
 ```
-然后卸载 release（此处以 `bk-elastic` 所在的 `base-storage.yaml.gotmpl` 文件为例）：
-``` bash
-helmfile -f base-storage.yaml.gotmpl destroy
-```
+
 然后重新创建（此处以 `bk-elastic` 所在的 `base-storage.yaml.gotmpl` 文件为例）：
 ``` bash
-helmfile -f base-storage.yaml.gotmpl sync
+helmfile -f base-storage.yaml.gotmpl -l name=bk-elastic sync
 ```
 检查 pod 是否生效：
 ``` bash
@@ -323,7 +331,7 @@ kubectl get pod -n blueking bk-elastic-elasticsearch-data-0 -o json | jq '.spec.
    ``` bash
    helmfile -f 03-bkjob.yaml.gotmpl write-values --output-file-template bkjob-values.yaml
    ```
-2. helmfile 安装时增加 `--debug` 参数
+2. helmfile 安装时增加 `--debug` 参数。
 3. 查看已经部署的 release 的渲染结果：
    ``` bash
    helm get manifest release名
