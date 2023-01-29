@@ -185,7 +185,7 @@ domain:
 
 
 ### 添加用户为 PaaS Admin 角色
-若接入了自定义登录后没有 admin 账号，或者禁用了内置的 `admin` 账户。导致访问 PaaS Admin 界面（地址以 http://bkpaas.$BK_DOMAIN/backend/admin42/ 开头）时浏览器显示 403 Forbidden。
+若接入了自定义登录后没有 admin 账号，或者禁用了内置的 `admin` 账户。导致访问 PaaS Admin 界面（地址以 `http://bkpaas.$BK_DOMAIN/backend/admin42/` 开头）时浏览器显示 403 Forbidden。
 
 此时可以将其他用户设置为 PaaS 的 admin 角色。
 
