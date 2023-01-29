@@ -85,7 +85,7 @@ scripts/setup_bkce7.sh: line 568: helmfile: command not found
 ### 一键脚本 或 helmfile 输出大段报错 timed out waiting for the condition
 **表现**
 
-在使用“一键脚本”安装任意套餐，或者直接执行 helmfile 命令时，出现大段报错，其输入如下
+在使用 “一键脚本” 安装任意套餐，或者直接执行 `helmfile` 命令时，出现大段报错，内容如下：
 ``` bash
 ERROR:
   exit status 1
@@ -295,6 +295,27 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 
 ## 部署 SaaS 时的报错
 
+### 创建 SaaS 时报错 仅支持 .tar 或 tar.gz 格式的文件
+**表现**
+
+使用浏览器访问 开发者中心，在 “创建应用” 界面上传 SaaS 安装包文件后，页面顶部出现报错：
+>仅支持蓝鲸 S-mart 包，可以从“蓝鲸 S-mart”获取，上传成功后即可进行应用部署 仅支持 .tar 或 tar.gz 格式的文件。
+
+**结论**
+
+已知 Windows 10 和 11 用户使用 Chrome 浏览器可触发此问题。
+
+可按需选择临时解决方案：
+* 如果要部署 流程服务（ITSM）及 标准运维（SOPS），可参考 《[基础套餐部署](install-bkce.md#setup_bkce7-i-saas)》 文档在 中控机 使用 “一键脚本” 部署 SaaS。
+* 如果是其他 SaaS，或者不便使用一键脚本，可将 `.tar.gz` 安装包解压为 `.tar` 格式进行上传（推荐使用 7-zip 软件操作，**切勿解压为目录后重新打包**为 `.tar` 文件，重新打包过的文件可能无法安装）。
+
+**问题分析**
+
+文件上传界面限制了文件的 MIME 类型为 `application/x-tar,application/x-gzip`。如果不匹配，则会出现上述报错。
+
+已知 Windows 10 系统更新后，`.gz` 文件的 MIME 类型变为了 `application/gzip`。
+
+
 ### 部署 SaaS 时报错 配置资源实例异常: unable to provision instance for services mysql
 **表现**
 
@@ -349,37 +370,136 @@ DeployError: 部署失败, 配置资源实例异常: unable to provision instanc
 
 
 ### 部署 SaaS 在“执行部署前置命令”阶段报错
-检查对应 `app_code` 的日志。“执行部署前置命令” 对应着 `pre-release-hook` 容器。（如果容器不存在，则说明已经被自动清理，需重新开始部署才会出现。）
+**表现**
 
-如下以 `bk_itsm` 为例：
-``` bash
-# kubectl logs -n bkapp-bk0us0itsm-prod pre-release-hook
-Error from server (BadRequest): container "pre-release-hook" in pod "pre-release-hook" is waiting to start: trying and failing to pull image
+当使用“一键脚本”部署 SaaS 时，终端出现报错：
+``` plain
+时间略 [INFO] installing bk_itsm-default-image-2.6.2
+DeployError: 部署失败, Pre-Release-Hook failed, please check logs for more details❌
+command terminated with exit code 1
 ```
-可以看到失败原因是无法拉取镜像，然后我们可以检查容器：
+或者在“开发者中心”部署 SaaS 时失败，页面显示在 部署阶段 的 “执行部署前置命令” 步骤失败。
+
+**结论**
+
+目前用户报告的案例中，均为拉取镜像失败所致。又可细分为以下 2 种情况：
+1. 遗漏了 “[配置 k8s node 的 DNS](install-bkce.md#hosts-in-k8s-node)” 步骤，导致无法解析 bkrepo docker registry 的域名。
+2. 遗漏了 “[调整 node 上的 docker 服务](install-bkce.md#k8s-node-docker-insecure-registries)” 步骤，导致 https 连接失败。
+
+请先检查 **全部 node**，补齐这些操作，然后重试。如未解决，可参考问题分析排查。
+
+**问题分析**
+
+“执行部署前置命令” 对应着 `pre-release-hook` pod。如果报错 `pod not found`，则说明已经被自动清理，可点击 “重新部署” 按钮或者重试“一键脚本”，即出现此 pod。
+
+我们先检查 pod 事件，以 `bk_itsm` 为例：
 ``` bash
-# kubectl describe pod -n bkapp-bk0us0itsm-prod pre-release-hook
+kubectl describe pod -n bkapp-bk0us0itsm-prod pre-release-hook
+```
+>**提示**
+>
+>其他 SaaS 需调整 `namespace`。前缀保持不变，app_code 部分需替换 `_` 为 `0us0`，后缀用于区分环境： `prod`（生产环境）或 `stag`（预发布环境）。
+
+该命令输出如下：
+``` plain
 Events:
   Type     Reason     Age                    From               Message
   ----     ------     ----                   ----               -------
   Normal   Scheduled  3m56s                  default-scheduler  Successfully assigned bkapp-bk0us0itsm-prod/pre-release-hook to node-10-0-1-3
-  Normal   Pulling    2m24s (x4 over 3m56s)  kubelet            Pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.0-rc.399"
-  Warning  Failed     2m24s (x4 over 3m55s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.0-rc.399": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: dial tcp: lookup docker.bkce7.bktencent.com on 10.0.1.1:53: no such host
+  Normal   Pulling    2m24s (x4 over 3m56s)  kubelet            Pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2"
+  Warning  Failed     2m24s (x4 over 3m55s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: dial tcp: lookup docker.bkce7.bktencent.com on 10.0.1.1:53: no such host
   Warning  Failed     2m24s (x4 over 3m55s)  ku：wqbelet            Error: ErrImagePull
-  Normal   BackOff    2m10s (x6 over 3m55s)  kubelet            Back-off pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.0-rc.399"
+  Normal   BackOff    2m10s (x6 over 3m55s)  kubelet            Back-off pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2"
   Warning  Failed     119s (x7 over 3m55s)   kubelet            Error: ImagePullBackOff
 ```
-此处的报错是 `node-10-0-1-3` 解析 `docker.bkce7.bktencent.com` 失败。因此需要配置所用的 DNS 服务或者配置对应机器的 `/etc/hosts` 文件。
+此处的报错是 `node-10-0-1-3` 无法解析 `docker.bkce7.bktencent.com`，请参考 [配置 k8s node 的 DNS](install-bkce.md#hosts-in-k8s-node) 文档操作。
 
+其中 `Error response from daemon:` 为 dockerd 返回的报错，也可能是其他情况。
+
+如：
+``` plain
+  Warning  Failed     85s (x4 over 2m43s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: x509: certificate is valid for ingress.local, not docker.bkce7.bktencent.com
+```
+此报错则是 HTTPS 证书问题，请参考 [调整 node 上的 docker 服务](install-bkce.md#k8s-node-docker-insecure-registries) 文档操作。
+
+其他报错可自行处理，或提供上述 kubectl describe pod 命令的完整输出联系蓝鲸助手。
 
 ## 安装 agent 时的报错
+
+### 执行日志里显示 curl 下载 setup_agent.sh 报错 could not resolv host
+**表现**
+
+执行日志显示：
+``` plain
+[时间略 INFO] [script] curl http://bkrepo.bkce7.bktencent.com/generic/blueking/bknodeman/data/bkee/public/bknodeman/download/setup_agent.sh -o /tmp/setup_agent.sh --connect-timeout 5 -sSfg
+[时间略 ERROR] [3803009] 命令返回非零值: exit_status -> 6, stdout -> , stderr -> curl: (6) Could not resolve host: bkrepo.bkce7.bktencent.com; Unknown error
+```
+
+**结论**
+
+目的主机无法解析 bkrepo 域名。请任选一种方案处理：
+* 配置目的主机的 hosts（操作文档见 [配置中控机的 DNS](install-bkce.md#hosts-in-bk-ctrl)），然后**重试出错的任务**。
+* 让节点管理今后使用 IP 下载文件（操作文档见 [配置 GSE 环境管理](install-saas-manually.md#post-install-bk-nodeman-gse-env) ），然后**创建新任务**。
+
+
+**问题分析**
+
+此问题无分析过程。
+
+如果你使用了 DNS 提供 bkrepo 域名的解析，可以自行逐级排查 DNS 配置问题。
+
+
+### 执行日志里显示 curl 下载 setup_agent.sh 报错 Connection timed out
+**表现**
+
+执行日志显示：
+``` plain
+[时间略 INFO] [script] curl http://服务端地址略/generic/blueking/bknodeman/data/bkee/public/bknodeman/download/setup_agent.sh -o /tmp/setup_agent.sh --connect-timeout 5 -sSfg
+[时间略 ERROR] [3803009] 命令返回非零值: exit_status -> 28, stdout -> , stderr -> curl: (28) Connection timed out after 5000 milliseconds
+```
+
+**结论**
+
+从节点管理能 SSH 访问到目的主机，但是目的主机无法访问 bkrepo 下载脚本。
+
+请参考下面的 问题分析 章节排查。
+
+**问题分析**
+
+前往目的主机测试访问服务端地址。
+
+>**提示**
+>
+>可以参考上述日志中提示的 curl 命令添加 `-v` 参数： `curl -v 其他参数保持不变`。
+
+如果测试结果依旧为连接超时，可参考如下步骤排查：
+1. 检查服务端是否正常：
+   1. 当服务端地址填写域名时，需要检查 ingress-nginx：
+      1. 核对目的主机上解析域名得到的 IP 是否为当前 ingress-nginx pod 所在 node 的 IP。
+      2. 如果是云服务，检查安全组是否放行了 `80` 端口，以及是否限制了入站 IP。
+      3. 检查 `ingress-nginx` pod 所在 node 的软件防火墙是否有限制 `80` 端口的入站流量。
+      4. 在集群内的其他 node 测试访问 `ingress-nginx` service（`80` 端口），如果超时，可能是 k8s 虚拟网络故障。
+   2. 当服务端地址填写 IP 时，需要检查 bkrepo-gateway：
+      1. 核对该 IP 是否为 k8s 集群中某个 node 的 IP。
+      2. 如果是云服务，检查安全组是否放行了 `30025` 端口，以及是否限制了入站 IP。
+      3. 检查 服务端 IP 对应主机上的软件防火墙是否有限制 `30025` 端口的入站流量。
+      4. 在集群内的其他 node 测试访问 `bk-repo-bkrepo-gateway` service （`30025` 端口），如果超时，可能是 k8s 虚拟网络故障。
+2. 检查目的主机的出站限制：
+   1. 检查路由表，可能因网段冲突或路由策略导致出口网卡及源 IP 地址不正确。
+   2. 如果是云服务，检查安全组是否有出站限制。
+   3. 检查软件防火墙是否有出站限制。
+3. 当以上检查均未发现问题，需要检查网络：
+   1. 网络路由是否互通。
+   2. 中途路由器是否存在 访问控制规则。
+   3. 硬件防火墙 是否有拦截策略。
+
 ### 执行日志里显示 curl 下载 setup_agent.sh 报错 404 not found
 **表现**
 
 执行日志显示：
 ``` plain
 [时间略 INFO] [script] curl http://服务端地址略/generic/blueking/bknodeman/data/bkee/public/bknodeman/download/setup_agent.sh -o /tmp/setup_agent.sh --connect-timeout 5 -sSfg
-[时间略 ERROR] [3803009] 目录返回非零值: exit_status -> 22, stdout -> , stderr -> curl: (22) The requested URL returned error: 404 not found
+[时间略 ERROR] [3803009] 命令返回非零值: exit_status -> 22, stdout -> , stderr -> curl: (22) The requested URL returned error: 404 not found
 ```
 
 **结论**
@@ -505,6 +625,52 @@ kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
 蓝鲸 V6 的默认部署域名为 `bktencent.com`，而蓝鲸 V7 的默认域名为 `bkce7.bktencent.com`。当用户已经成功登录 V6 环境后，则会在浏览器存储 `bk_token`，此时访问 V7 环境，因为域名后缀相同，则 `bktencent.com` 域名里的 `bk_token` cookie 也会发给 V7 环境，导致登录校验失败。
 
 此问题涉及同名 cookie 读取逻辑调整，待配置平台评估正式解决方案。
+
+
+### 登录界面样式丢失
+**表现**
+
+当提示登录时，登录界面只能看到文字，且排版错乱。
+
+**结论**
+
+bk-login-pod 启动异常，在中控机执行如下命令重启：
+``` bash
+kubectl rollout restart deployment -n blueking bk-login-web
+```
+观察新 pod Ready 后，然后刷新页面即可。
+
+**问题分析**
+
+打开浏览器开发者工具，切换到 network 栏刷新，发现请求静态资源（图片、js 及 css）时响应为 404 Not Found。
+
+首先检查 `ingress-nginx` 的日志，得到请求的上游地址。
+
+检查 endpoint：
+``` bash
+kubectl get endpoints -A
+```
+
+发现确实是 `bk-login-web` pod。
+
+检查 pod 日志：
+``` bash
+kubectl logs -n blueking deploy/bk-login-web
+```
+
+发现对应资源确实是 bk-login-web 响应的 404，且上一行伴有异常：
+``` plain
+[Errno 2] No such file or directory: '/app/staticfiles//js/login.js'
+::ffff:10.244.0.1 - - [时间略] "GET /static/js/login.js HTTP/1.1" 404 13 "http://bkce7.bktencent.com/login/?c_url=/" "UA略" in 0.000382 seconds
+```
+
+比对正常环境日志，发现启动时少了一行输出：
+``` plain
+55 static files copied to '/app/staticfiles'.
+```
+
+怀疑是 pod 启动阶段遇到异常，导致 Django collectstatic 因为异常退出，无法复制所需的静态文件。待开发修复。
+
 
 ### 监控平台 观测场景 kubernetes 访问报错 resource is unauthorized
 **表现**
