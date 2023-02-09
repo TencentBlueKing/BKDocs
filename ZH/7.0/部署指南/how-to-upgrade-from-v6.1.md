@@ -84,7 +84,9 @@ curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-st
 
 ### 安装 helm helmfile
 
-由于蓝鲸容器化部署依赖 helm、helmfile、yq，所以请确保 Kubernets Master 机器上是否具备需要的依赖，如已存在请忽略该步骤，但请注意其对应版本。
+由于蓝鲸容器化部署依赖 helm、helmfile、yq，所以请确保 Kubernets master 机器上是否具备需要的依赖，如已存在请忽略该步骤，但请注意其对应版本。
+
+工具版本列表请参考上述 [工具版本](#工具版本)，如版本不一致，请确认获取的部署脚本是否为最新的。
 
 ```bash
 cp -a ~/bkhelmfile/bin/helmfile ~/bkhelmfile/bin/helm ~/bkhelmfile/bin/yq /usr/local/bin/ && chmod +x /usr/local/bin/helm*
@@ -137,7 +139,7 @@ tar xf ~/bkhelmfile/bin/helm-plugin-diff.tgz -C ~/
 
 #### 转移主机
 
-将蓝鲸业务下的所有机器转移至【空闲机池】
+将蓝鲸业务下的所以机器转移至【空闲机池】
 
 #### 删除原蓝鲸业务拓扑
 
@@ -149,7 +151,7 @@ tar xf ~/bkhelmfile/bin/helm-plugin-diff.tgz -C ~/
     curl -H 'BK_USER:admin' -H 'BK_SUPPLIER_ID:0' -H 'HTTP_BLUEKING_SUPPLIER_ID:0' -X POST $BK_CMDB_IP0:9000/migrate/v3/migrate/system/user_config/blueking_modify/true
     ```
 
-2. 配置平台 Web 页面删除蓝鲸业务拓扑
+2. 前往 Web 页面删除蓝鲸业务拓扑
 
     ![topo](./assets/topo.png)
 
@@ -175,7 +177,7 @@ echo paas cmdb job appo appt bknodeman bkmonitorv3 bkssm bkiam usermgr bklog gse
 echo paas cmdb job appo appt bknodeman bkmonitorv3 bkssm bkiam usermgr bklog gse paas_plugins | xargs -n1 ./bkcli status
 ```
 
-## 备份
+## 备份数据
 
 下述备份方式仅供参考，备份均在二进制环境操作。
 
@@ -299,7 +301,7 @@ echo paas cmdb job appo appt bknodeman bkmonitorv3 bkssm bkiam usermgr bklog gse
 
 7. 修改数据库上 SaaS 的 MySQL 地址
 
-    由于原 SaaS 的记录是 mysql-default.service.consul ，迁移至容器化时会导致无法解析 consul，所以将其更改为 IP 的连接方式以确保更改后，容器化环境也是可以正常连接数据库。
+    由于原 SaaS 的记录是 mysql-default.service.consul ，迁移至容器化时会导致无法解析 consul，所以将其更改为 IP 的连接方式以确保更改后，容器化环境也可以正常连接数据库。
 
     ```bash
     # 查看涉及的记录
@@ -353,7 +355,7 @@ echo paas cmdb job appo appt bknodeman bkmonitorv3 bkssm bkiam usermgr bklog gse
 - 同步 JOB 机器上的证书
 
 ```bash
-# 中控机执行
+# 二进制环境中控机执行
 for c in gse_job_api_client.keystore gse_job_api_client.truststore job_server.truststore job_server.p12; do rsync -avgz root@$BK_JOB_IP:/data/bkce/cert/$c /data/src/cert/; done
 ```
 
@@ -364,7 +366,7 @@ for c in gse_job_api_client.keystore gse_job_api_client.truststore job_server.tr
 KUBERNETES_MASTER_IP=<127.0.0.1>
 rsync -avgz /data/src/cert root@$KUBERNETES_MASTER_IP:~/bkhelmfile/blueking/environments/default/
 
-# 容器化中控机确认
+#  容器化 Master 机器确认与二进制的证书数量一致
 ls ~/bkhelmfile/blueking/environments/default/cert/
 ```
 
@@ -589,7 +591,7 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-ingress-rule sync
 
 ##### 上传资源包至 bkrepo 仓库
 
-- 根据  `helm status bk-paas -n blueking`  提示的  `kubectl run`  命令运行。注意，该命令运行的对应主机，必须能解析 bkrepo 的域名。如果没有，则需要配置 hosts 文件。
+- 根据  `helm status bk-paas -n blueking` 的提示运行 `kubectl run` 命令。注意，该命令运行的对应主机，必须能解析 bkrepo 的域名。如果没有，则需要配置本地 hosts。
 
 ```bash
 helm status bk-paas -n blueking
@@ -597,7 +599,7 @@ helm status bk-paas -n blueking
 
 ##### 配置 PaaS V3 资源池
 
-- 需要添加 SaaS 使用的 redis 资源池，共享资源池和独占资源池，各添加 10 个(复用，所以 json 是一样的)
+- 需要添加 SaaS 使用的 redis 资源池，共享资源池和独占资源池，各添加 10 个(复用 json 内容)
 - 蓝鲸 PaaS Admin:  `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage`  。
 
     ```bash
@@ -621,7 +623,7 @@ mysql --login-path=mysql-default
 # 查询原数据内容
 select provider_config from bkiam.saas_system_info where id='bk_paas';
 
-# 请注意替换变量为实际的值
+# set 的内容为上述步骤查询的内容，请注意替换。并将域名变量替换为实际的值，其余字段 (auth, healthz, token) 不需要变更，以实际查询得到的为准。
 update bkiam.saas_system_info set provider_config='{"host":"http://$BK_DOMAIN","auth":"XXXXX","healthz":"","token":"XXXXXXXXXX"}' where id='bk_paas';
 ```
 
@@ -646,7 +648,7 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-cmdb sync
 3. 相关迁移文件，将迁移工具同步至 JOB 机器上的 /data 目录
 
     ```bash
-    # 上传 upgrader-3.5.0.12.jar  upgrader.properties 到二进制环境中控机 /data 目录
+    # 二进制环境中控机执行
     
     source /data/install/utils.fc
     rsync -avgz /data/upgrader.properties /data/upgrader-3.5.0.12.jar root@$BK_JOB_IP:/data/
@@ -679,20 +681,20 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-cmdb sync
     ssh $BK_JOB_IP
     source /data/install/utils.fc
     
-    /data/install/bin/render_tpl -p /data/bkce/etc/job/ -m upgrader -e /data/install/bin/04-final/job.env /data/upgrader.properties > /tmp/bk_job_upgrader.log
-    
-    # 查看是否存在迁移失败的文件，如果存在迁移失败的文件，需要处理后才能往下进行。
-    grep "Fail to upload" bk_job_upgrader.log
-
-    # 如果文件最后出现 All x upgradeTasks finished successfully 字样，且不存在上述 "Fail to upload" 的记录，则代表整个文件迁移是成功的。
-    tail -n 5 bk_job_upgrader.log
+    # 如果 bkrepo 的地址未解析，请先进行本地 hosts 解析
+    /data/install/bin/render_tpl -p /data/bkce/etc/job/ -m upgrader -e /data/install/bin/04-final/job.env /data/upgrader.properties
     ```
 
 6. 开始迁移
 
     ```bash
-    # 如果 bkrepo 的地址未解析，需要绑定 /etc/hosts
-    java -Dfile.encoding=utf8 -Djob.log.dir=$INSTALL_PATH/logs/job -Dconfig.file=$INSTALL_PATH/etc/job/upgrader/upgrader.properties -Dtarget.tasks=LocalUploadFileToBkRepoMigrationTask -jar /data/upgrader-3.5.0.12.jar 3.4.2.0 3.4.2.1 MAKE_UP
+    java -Dfile.encoding=utf8 -Djob.log.dir=$INSTALL_PATH/logs/job -Dconfig.file=$INSTALL_PATH/etc/job/upgrader/upgrader.properties -Dtarget.tasks=LocalUploadFileToBkRepoMigrationTask -jar /data/upgrader-3.5.0.12.jar 3.4.2.0 3.4.2.1 MAKE_UP > /tmp/bk_job_upgrader.log
+    
+    # 查看是否存在迁移失败的文件，如果存在迁移失败的文件，需要处理后才能往下进行。
+    grep "Fail to upload" /tmp/bk_job_upgrader.log
+
+    # 如果文件最后出现 All x upgradeTasks finished successfully 字样，且不存在上述 "Fail to upload" 的记录，则代表整个文件迁移是成功的。
+    tail -n 5 /tmp/bk_job_upgrader.log
     ```
 
 7. 等待文件迁移完成，核查迁移日志确认文件迁移成功
@@ -803,12 +805,12 @@ export BK_FILE_PATH=$INSTALL_PATH/bknodeman/cert/saas_priv.txt
 
 ### 节点管理
 
-- 进入 PaaS 后台，切换节点管理  `http://$BK_DOMAIN/admin/app/app/`
+- 进入 PaaS 后台 `http://$BK_DOMAIN/admin/app/app/`，选择节点管理
 - 勾选是否已经提测、是否已经上线、是否为第三方应用，开发者选项至少需要选中一个用户。
-- 填写第三方应用 URL： `http://bknodeman.$BK_DOMAIN` 
+- 填写第三方应用 URL： `http://bknodeman.$BK_DOMAIN`
 - 前往开发者中心，选择【一键迁移】将节点管理【迁移到新版开发者中心】，勾选全部选项，开启迁移，最后确认迁移
-- 返回开发者中心首页，选择【用户管理】-【应用推广】-【应用市场】，开启【未发布到应用市场】，最后保存即可
-- 打开节点管理，点击全局配置 -> gse 环境管理 -> 默认接入点 -> 编辑，相关信息需要用以下命令行获取
+- 返回开发者中心首页，选择【节点管理】-【应用推广】-【应用市场】，开启【未发布到应用市场】，最后保存即可
+- 打开节点管理，【全局配置】-【GSE 环境管理】-【默认接入点】-点击【编辑】图标，相关信息需要用以下命令行获取
 
 - 配置 GSE 地址
 
@@ -828,7 +830,7 @@ export BK_FILE_PATH=$INSTALL_PATH/bknodeman/cert/saas_priv.txt
 
     ```bash
     # 内网：node所在节点机器的内网 ip
-    # 可使用还命令获取：kubectl get pods -n blueking -l app.kubernetes.io/component=bk-nodeman-backend-api -o jsonpath='{.items[0].status.hostIP}'
+    # 可使用该命令获取：kubectl get pods -n blueking -l app.kubernetes.io/component=bk-nodeman-backend-api -o jsonpath='{.items[0].status.hostIP}'
     http://<$NODE_IP>:30300/backend
 
     # 外网：node所在节点机器的外网 ip
@@ -838,7 +840,7 @@ export BK_FILE_PATH=$INSTALL_PATH/bknodeman/cert/saas_priv.txt
 - 配置 Agent 包 URL
 
     ```bash
-    # 两个地址均一致
+    # 两个 URL 均保持一致
     http://bkrepo.$BK_DOMAIN/generic/blueking/bknodeman/data/bkee/public/bknodeman/download
     ```
 
@@ -861,18 +863,18 @@ export BK_FILE_PATH=$INSTALL_PATH/bknodeman/cert/saas_priv.txt
     # 查询原数据内容
     select provider_config from bkiam.saas_system_info where id='bk_nodeman';
     
-    # 更新数据
+    # set 的内容为上述步骤查询的内容，请注意替换。并将域名变量替换为实际的值，其余字段 (auth, healthz, token) 不需要变更，以实际查询得到的为准。
     update bkiam.saas_system_info set provider_config='{"host":"http://bknodeman.$BK_DOMAIN","auth":"XXXXX","healthz":"","token":"XXXXXXXXXX"}' where id='bk_nodeman';
     ```
 
 - 重新安装 Agent 和 Proxy
 
-    重新安装原二进制环境的机器 Agent 前，请先将 Kubernetes 集群的节点机器安装好 Agent，否则将会影响作业下发。
+    重新安装原二进制环境的机器 Agent 前，请先将 Kubernetes 集群各节点机器安装好 Agent，否则将会影响作业下发。
 
 ### 标准运维
 
 - 前往开发者迁移标准运维应用：【开发者中心】-【一键迁移】-选择标准运维【迁移到新版开发者中心】，勾选全部选项，开启迁移，最后确认迁移
-- 返回开发者中心首页，打开【标准运维】，选择【应用引擎】-【环境配置】，去掉下面三个环境变量：
+- 返回开发者中心首页，选择标准运维，打开【应用引擎】-【环境配置】，去掉下面三个环境变量：
   - BKAPP_FILE_MANAGER_TYPE
   - BKAPP_NFS_HOST_ROOT
   - BKAPP_NFS_CONTAINER_ROOT
@@ -906,7 +908,7 @@ mysql --login-path=mysql-default
 # 查询原数据内容
 select provider_config from bkiam.saas_system_info where id='bk_sops';
 
-# 请注意替换变量为实际的值
+# set 的内容为上述步骤查询的内容，请注意替换。并将域名变量替换为实际的值，其余字段 (auth, healthz, token) 不需要变更，以实际查询得到的为准。
 update bkiam.saas_system_info set provider_config='{"host":"http://apps.$BK_DOMAIN/bk--sops","auth":"XXXXX","healthz":"","token":"XXXXXXXXXX"}' where id='bk_sops';
 ```
 
@@ -994,6 +996,7 @@ update bkiam.saas_system_info set provider_config='{"host":"http://apps.$BK_DOMA
     ```bash
     vim /etc/sysconfig/consul
     # 注释原有的配置项目开启 -client=0.0.0.0
+    # 直接使用下述内容替换原来的内容
     CMD_OPTS="agent -config-dir=/etc/consul.d -config-dir=/etc/consul.d/service -data-dir=/var/lib/consul -client=0.0.0.0"
     
     systemctl restart consul.service
@@ -1010,14 +1013,14 @@ update bkiam.saas_system_info set provider_config='{"host":"http://apps.$BK_DOMA
     将下述内容追加至 coredns
 
     ```yaml
-        rewrite stop {
-            name regex influxdb-proxy\.bkmonitorv3\.service\.consul\.$ bk-monitor-influxdb-proxy-http.blueking.svc.cluster.local
-            answer name bk-monitor-influxdb-proxy-http\.blueking\.svc\.cluster\.local\.$ influxdb-proxy.bkmonitorv3.service.consul
-        }
-        rewrite stop {
-            name regex unify-query\.bkmonitorv3\.service\.consul\.$ bk-monitor-unify-query-http.blueking.svc.cluster.local
-            answer name bk-monitor-unify-query-http\.blueking\.svc\.cluster\.local\.$ unify-query.bkmonitorv3.service.consul
-        }
+            rewrite stop {
+                name regex influxdb-proxy\.bkmonitorv3\.service\.consul\.$ bk-monitor-influxdb-proxy-http.blueking.svc.cluster.local
+                answer name bk-monitor-influxdb-proxy-http\.blueking\.svc\.cluster\.local\.$ influxdb-proxy.bkmonitorv3.service.consul
+            }
+            rewrite stop {
+                name regex unify-query\.bkmonitorv3\.service\.consul\.$ bk-monitor-unify-query-http.blueking.svc.cluster.local
+                answer name bk-monitor-unify-query-http\.blueking\.svc\.cluster\.local\.$ unify-query.bkmonitorv3.service.consul
+            }
     ```
 
 - kafka 、es7、redis 也都需要保持原域名，如果有多个 es 集群，需要确认各个 es 集群是否都是用的 consul 域名
@@ -1039,7 +1042,7 @@ update bkiam.saas_system_info set provider_config='{"host":"http://apps.$BK_DOMA
 ```bash
 helmfile -f 04-bkmonitor.yaml.gotmpl sync
 
-# 请确认集群的机器是否都已安装 Agent
+# 请确认集群的机器都已安装 Agent
 helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
 ```
 
@@ -1108,7 +1111,7 @@ mysql --login-path=mysql-default
 # 查询原数据内容
 select provider_config from bkiam.saas_system_info where id='bk_monitorv3';
 
-# 请注意替换变量为实际的值
+# set 的内容为上述步骤查询的内容，请注意替换。并将域名变量替换为实际的值，其余字段 (auth, healthz, token) 不需要变更，以实际查询得到的为准。
 update bkiam.saas_system_info set provider_config='{"host":"http://bkmonitor.$BK_DOMAIN","auth":"XXXXX","healthz":"","token":"XXXXXXXXXX"}' where id='bk_monitorv3';
 ```
 
@@ -1153,7 +1156,7 @@ mysql --login-path=mysql-default
 # 查询原数据内容
 select provider_config from bkiam.saas_system_info where id='bk_log_search';
 
-# 请注意替换变量为实际的值
+# set 的内容为上述步骤查询的内容，请注意替换。并将域名变量替换为实际的值，其余字段 (auth, healthz, token) 不需要变更，以实际查询得到的为准。
 update bkiam.saas_system_info set provider_config='{"host":"http://bklog.$BK_DOMAIN","auth":"XXXXX","healthz":"","token":"XXXXXXXXXX"}' where id='bk_log_search';
 ```
 
