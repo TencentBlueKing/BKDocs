@@ -84,7 +84,7 @@ curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-st
 
 ### 安装 helm helmfile
 
-由于蓝鲸容器化部署依赖 helm、helmfile、yq，所以请确保 Kubernets master 机器上是否具备需要的依赖，如已存在请忽略该步骤，但请注意其对应版本。
+由于蓝鲸容器化部署依赖 helm、helmfile、yq，所以请确保 Kubernets Master 机器上是否具备需要的依赖，如已存在请忽略该步骤，但请注意其对应版本。
 
 ```bash
 cp -a ~/bkhelmfile/bin/helmfile ~/bkhelmfile/bin/helm ~/bkhelmfile/bin/yq /usr/local/bin/ && chmod +x /usr/local/bin/helm*
@@ -137,7 +137,7 @@ tar xf ~/bkhelmfile/bin/helm-plugin-diff.tgz -C ~/
 
 #### 转移主机
 
-将蓝鲸业务下的所以机器转移至【空闲机池】
+将蓝鲸业务下的所有机器转移至【空闲机池】
 
 #### 删除原蓝鲸业务拓扑
 
@@ -149,7 +149,7 @@ tar xf ~/bkhelmfile/bin/helm-plugin-diff.tgz -C ~/
     curl -H 'BK_USER:admin' -H 'BK_SUPPLIER_ID:0' -H 'HTTP_BLUEKING_SUPPLIER_ID:0' -X POST $BK_CMDB_IP0:9000/migrate/v3/migrate/system/user_config/blueking_modify/true
     ```
 
-2. Web 页面删除蓝鲸业务拓扑
+2. 配置平台 Web 页面删除蓝鲸业务拓扑
 
     ![topo](./assets/topo.png)
 
@@ -207,7 +207,7 @@ echo paas cmdb job appo appt bknodeman bkmonitorv3 bkssm bkiam usermgr bklog gse
     mysqldump --login-path=default-root --skip-opt --create-options --default-character-set=utf8mb4 -R  -E -q -e --single-transaction --no-autocommit --master-data=2 --max-allowed-packet=1G  --hex-blob  -B  $dblist > /data/dbbak/bk_mysql_alldata.sql
     EOF
     ```
-    
+
 - 开始备份
 
     ```bash
@@ -678,8 +678,14 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-cmdb sync
     ```bash
     ssh $BK_JOB_IP
     source /data/install/utils.fc
+    
+    /data/install/bin/render_tpl -p /data/bkce/etc/job/ -m upgrader -e /data/install/bin/04-final/job.env /data/upgrader.properties > /tmp/bk_job_upgrader.log
+    
+    # 查看是否存在迁移失败的文件，如果存在迁移失败的文件，需要处理后才能往下进行。
+    grep "Fail to upload" bk_job_upgrader.log
 
-    /data/install/bin/render_tpl -p /data/bkce/etc/job/ -m upgrader -e /data/install/bin/04-final/job.env /data/upgrader.properties
+    # 如果文件最后出现 All x upgradeTasks finished successfully 字样，且不存在上述 "Fail to upload" 的记录，则代表整个文件迁移是成功的。
+    tail -n 5 bk_job_upgrader.log
     ```
 
 6. 开始迁移
@@ -866,7 +872,7 @@ export BK_FILE_PATH=$INSTALL_PATH/bknodeman/cert/saas_priv.txt
 ### 标准运维
 
 - 前往开发者迁移标准运维应用：【开发者中心】-【一键迁移】-选择标准运维【迁移到新版开发者中心】，勾选全部选项，开启迁移，最后确认迁移
-- 打开【应用引擎】-【环境配置】，去掉下面三个环境变量：
+- 返回开发者中心首页，打开【标准运维】，选择【应用引擎】-【环境配置】，去掉下面三个环境变量：
   - BKAPP_FILE_MANAGER_TYPE
   - BKAPP_NFS_HOST_ROOT
   - BKAPP_NFS_CONTAINER_ROOT
@@ -876,7 +882,7 @@ export BK_FILE_PATH=$INSTALL_PATH/bknodeman/cert/saas_priv.txt
     ./scripts/setup_bkce7.sh -i sops
     ```
 
-- 上述操作完成后返回迁移列表页面点击确认迁移
+- 上述操作完成后，返回【一键迁移】迁移列表页面点击确认迁移
 - 返回开发者中心首页，选择【标准运维】-【应用推广】-【应用市场】-【查看风险】-【确认风险】，开启【未发布到应用市场】，最后保存即可
 
 #### 处理轻应用 URL
@@ -887,6 +893,9 @@ mysql --login-path=mysql-default
 # 把 "paas_app" 表里的 "external_url" 字段里的 "$BK_DOMAIN:80/o/bk_sops"全部替换成 "apps.$BK_DOMAIN/bk--sops"，请注意替换变量为实际的值
 # 命令仅供参考,请根据实际的数据库信息修改
 update open_paas.paas_app set external_url=REPLACE(external_url,'http://$BK_DOMAIN:80/o/bk_sops','http://apps.$BK_DOMAIN/bk--sops') where external_url like '%appmaker%';
+
+# 修改标准运维自身存储的轻应用链接
+update bk_sops.appmaker_appmaker set link=REPLACE(link,'http://$BK_DOMAIN:80/o/bk_sops','http://apps.$BK_DOMAIN/bk--sops') where link like '%appmaker%';
 ```
 
 #### 修改标准运维回调地址
@@ -916,7 +925,7 @@ update bkiam.saas_system_info set provider_config='{"host":"http://apps.$BK_DOMA
     ./scripts/setup_bkce7.sh -i itsm
     ```
 
-- 上述操作完成后返回迁移列表页面点击确认迁移
+- 上述操作完成后，返回【一键迁移】迁移列表页面点击确认迁移
 - 返回开发者中心首页，选择【流程服务】-【应用推广】-【应用市场】-【查看风险】-【确认风险】，开启【未发布到应用市场】，最后保存即
 - 修改回调地址
 
@@ -1151,6 +1160,3 @@ update bkiam.saas_system_info set provider_config='{"host":"http://bklog.$BK_DOM
 ### 升级后操作
 
 1. 重装所有机器的 Agent、Proxy、插件。
-
-
-##
