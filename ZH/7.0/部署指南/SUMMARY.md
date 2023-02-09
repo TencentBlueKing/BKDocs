@@ -19,3 +19,4 @@
     * [访问入口及账户密码汇总](access.md)
     * [上传 PaaS runtimes 到 bkrepo](paas-upload-runtimes.md)
     * [配置 SaaS 专用 node](saas-dedicated-node.md)
+* [ 6.1.2-7.0 升级指引(预览版本，请勿用于生产环境)](how-to-upgrade-from-v6.1.md)
