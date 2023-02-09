@@ -5,13 +5,15 @@
 
 ## 更新资源文档
 
-在网关的管理页，展开左侧菜单**基本设置**，点击**资源管理**，在资源操作中点击**文档**，右侧弹出资源文档管理页。
+在网关的管理页，展开左侧菜单**基本设置**，点击**资源管理**，在资源列表列“文档”下，点击添加文档，右侧弹出资源文档管理页。
 
 ![](../../assets/apigateway/howto/resource-doc-action.png)
 
-点击**修改**，编辑资源文档，并**保存**。资源文档为 markdown 格式，更多详情可参考[资源文档规范](../reference/api-doc-specification.md)
+选择对应的文档语言，点击**立即创建**，编辑文档内容并**提交**。资源文档为 markdown 格式，更多详情可参考[资源文档规范](../reference/api-doc-specification.md)
 
-![](../../assets/apigateway/howto/resource-doc-update.png)
+![](../../assets/apigateway/howto/resource-doc-detail.png)
+
+![](../../assets/apigateway/howto/resource-doc-create.png)
 
 ## 生成和发布版本
 

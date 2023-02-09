@@ -5646,11 +5646,11 @@
 		"link_conf": [
 			{
 				"extend": {
-					"summary": "7.0/API文档/SUMMARY.md"
+					"summary": "7.0/APIGateway/SUMMARY.md"
 				},
 				"index": 343,
-				"title": "API文档",
-				"url": "7.0/API文档/README.md",
+				"title": "APIGateway",
+				"url": "7.0/APIGateway/README.md",
 				"version": "7.0"
 			}
 		],

@@ -24,11 +24,11 @@ table {width: 50%}
 蓝鲸应用 | app_code
 客户端IP | client_ip
 请求方法 | method
-请求域名 | host
-请求路径 | path
+请求域名 | http_host
+请求路径 | http_path
 后端请求方法 | backend_method 
 后端Scheme | backend_scheme
 后端域名 | backend_host
 后端路径 | backend_path
 状态码 | status
-请求后端耗时 | proxy_time
+请求后端耗时 | backend_duration

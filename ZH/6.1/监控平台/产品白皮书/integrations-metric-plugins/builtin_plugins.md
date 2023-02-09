@@ -137,6 +137,8 @@
 | mysql.performance.threads_connected | connections | 当前打开的连接的数量 |
 | mysql.performance.threads_running | threads | 正在运行的线程数 |
 | mysql.performance.user_time | percent | MySQL 在用户空间中花费的 CPU 时间占比 |
+| mysql.replication.seconds_behind_master | seconds | 主服务器(master)和从服务器(slave)之间的滞后时间 |
+| mysql.replication.slave_running |  | 一个布尔值，判断该服务器是否为连接到主服务器(master)的从服务器(slave) |
 
 ### Redis 插件
 

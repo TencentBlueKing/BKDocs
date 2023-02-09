@@ -9,41 +9,45 @@
 ## Go	
 
 * OTel SDK  https://github.com/open-telemetry/opentelemetry-go
-* https://github.com/prometheus/client_golang
+* Prometheus SDK https://github.com/prometheus/client_golang
 
+使用说明
 
-* OpenTelemetry SDK(golang) 使用说明
-* Prometheus SDK(golang) 使用说明	mandochen
+* [Prometheus SDK Golang 使用说明](../integrations-metrics/prom_sdk_golang.md)
+* [Opentelemetry SDK Golang 使用说明](../integrations-traces/otel_sdk_golang.md)
+
 ## Cpp	
 
 * OTel SDK https://github.com/open-telemetry/opentelemetry-cpp
 * Prometheus SDK(C++) https://github.com/jupp0r/prometheus-cpp
 
-* OpenTelemetry SDK(c++) Oteam 使用说明 
-* Prometheus SDK(c++) 使用说明
+使用说明
+
+* [Prometheus SDK C++ 使用说明](../integrations-metrics/prom_sdk_cpp.md)
+* [Opentelemetry SDK C++ 使用说明](../integrations-traces/otel_sdk_cpp.md)
+
 
 ## Java	
 
 * OTel SDK https://github.com/open-telemetry/opentelemetry-java
 * Prometheus SDK(Java) https://github.com/prometheus/client_java
 
-* OpenTelemetry SDK(Java) 使用说明·1852244526
-* 	Prometheus SDK(Java) 使用文档	
+使用说明
+
+* [Opentelemetry SDK Java 使用说明](../integrations-traces/otel_sdk_java.md)
+* [Prometheus SDK Java 使用说明](../integrations-metrics/prom_sdk_java.md)
+        
 ## python	
 
 * OTel SDk https://github.com/open-telemetry/opentelemetry-python
-* Prometheus SDK(python) https://github.com/prometheus/client_python	
-* OpenTelemetry SDK(python) 使用说明
-* Prometheus SDK(python) 使用文档	
+* Prometheus SDK(python) https://github.com/prometheus/client_python
 
-## Web JS	
+使用说明
 
-
-## lua
-
-
+* [Opentelemetry SDK Python 使用说明](../integrations-traces/otel_sdk_python.md)
+* [Prometheus SDK Python 使用说明](../integrations-metrics/prom_sdk_python.md)	
 ## 蓝鲸SaaS框架
+       
+* [Opentelemetry SDK 蓝鲸SaaS框架使用说明](../integrations-traces/otel_sdk_bksaas.md)
 
-* 蓝鲸SaaS框架 待补充
-* OpenTelemetry SDK(python 蓝鲸SaaS框架集成)使用说明 等补充
 
