@@ -59,7 +59,6 @@
 * [集成-监控源接入]()
     * [监控源接入说明](产品白皮书/integrations-alerts/custom_alerts_source.md)
     * [监控源插件制作](产品白皮书/integrations-alerts/plugin_alerts.md)
-    * [告警源插件](产品白皮书/alarm-handling/intergrations.md)
 * [数据查询-可视化]()
     * [数据可视化介绍](产品白皮书/data-visualization/data_view_intro.md) 
     * [首页数据介绍](产品白皮书/data-visualization/home.md)    
