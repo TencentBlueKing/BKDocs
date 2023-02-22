@@ -579,6 +579,8 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-iam-search-engine sync
 
 ### 部署 PaaS 平台相关组件
 
+由于 bkpaas 之前版本存在升级问题，故在升级前请先替换其版本 `sed -i "/bkpaas3/s/0.1.3/0.1.4-beta2/g" ~/bkhelmfile/blueking/environments/default/version.yaml`
+
 ```bash
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-console sync
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-paas sync
