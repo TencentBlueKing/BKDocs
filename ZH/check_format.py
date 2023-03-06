@@ -20,7 +20,7 @@ def get_all_summary():
 
 def get_catalog_list(summary_list):
     """
-    读取所有 SUMMARY.md 文件的内容，获取所有非空白行1
+    读取所有 SUMMARY.md 文件的内容，获取所有非空白行
     :param summary_list: list <- 由 get_all_summary 返回
     :return: catalog_list: list <- 由多个 dict 组成
         每个 dict:
