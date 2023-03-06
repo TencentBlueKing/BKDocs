@@ -15,6 +15,6 @@
 ## 接下来你可能需要
 
 * [bk-ci 导航条](../Console.md)
-* [创建/编辑流水线](pipeline-edit.md)
+* [创建/编辑流水线](./pipeline-edit-guide/README.md)
 * [流水线执行历史](pipeline-history.md)
 * [流水线任务详情页](pipeline-detail.md)
