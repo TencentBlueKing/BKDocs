@@ -15,3 +15,4 @@
 ## 接下来你可能需要
 
 - [bk-ci 导航条](../Console.md)
+- [创建你的第一条流水线](../tutorials/create-first-pipeline.md)

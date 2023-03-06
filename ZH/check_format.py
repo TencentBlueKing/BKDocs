@@ -6,7 +6,7 @@ import yaml
 
 
 def get_all_summary():
-    """
+    """ 
     遍历所有SUMMARY文件，将其目录添加到一个数组中
     :return: summary_list:  list <- 由所有SUMMARY文件的目录地址组成
     """
@@ -25,7 +25,7 @@ def get_catalog_list(summary_list):
     :return: catalog_list: list <- 由多个 dict 组成
         每个 dict:
             name: SUMMARY 文件所在目录名字
-            catalog: 由 SUMMARY 文件的每一行组成的数组
+            catalog: 由 SUMMARY 文件的每一行组成的数组1
     """
     catalog_list = []
     for summary in summary_list:

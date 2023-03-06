@@ -31,6 +31,36 @@
 }
 ```
 
+task.json示例:
+```text
+{
+    "atomCode": "demo",
+    "execution": {
+        "language": "python",
+        "packagePath": "demo-1.1.0.tar.gz",             # 发布包中插件安装包的相对路径
+        "demands": [
+            "pip install demo-1.1.0.tar.gz --upgrade"   # 执行 target 命令前需进行的操作，如安装依赖等
+        ],
+        "target": "demo"
+    },
+    "input": {
+        "inputDemo":{
+            "label": "输入示例",  
+            "type": "vuex-input",
+            "placeholder": "输入示例",
+            "desc": "输入示例"
+        }
+    },
+    "output": {
+        "outputDemo": {
+            "description": "输出示例",
+            "type": "string",
+            "isSensitive": false
+        }
+    }
+}
+```
+
 ### 各配置项详解
 
 #### atomCode

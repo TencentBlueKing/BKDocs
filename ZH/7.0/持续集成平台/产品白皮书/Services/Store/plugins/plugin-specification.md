@@ -13,14 +13,16 @@
 ## 插件开发规范
 
 * 插件封装为命令行可执行命令：
-  * 调起命令由 task.json 的 `execution.target` 字段指定
+  * 调起命令由task.json的 `execution.target` 字段指定
     * execution.target 格式为字符串
+    * 调起命令中可以使用 ${var\_name} 的方式获取变量
   * 若调起执行前需安装依赖，安装命令由 task.json 的 `execution.demands` 字段指定
     * execution.demands 为列表，可配置多个安装命令
+    * 安装命令可以使用 ${var\_name} 的方式获取变量
 * 插件输入字段值，从指定的输入文件中获取
   * 输入信息文件名，由环境变量 `bk_data_input` 指定
   * 输入信息文件存放路径，由环境变量 `bk_data_dir` 指定
-  * 输入信息文件内容为 json，示例如下：
+  * 输入信息文件内容为json，示例如下：
 
     ```text
     {

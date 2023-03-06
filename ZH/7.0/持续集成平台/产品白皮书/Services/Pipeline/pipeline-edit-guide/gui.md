@@ -10,9 +10,9 @@
 
 在编辑流水线时，对已有的某个 Stage 左上角的闪电 ICON 点击进入 Stage 准入属性面板
 
-![](../../../.gitbook/assets/image%20%2850%29.png)
+![](../../../assets/image%20(50).png)
 
-![](../../../.gitbook/assets/image%20%2849%29.png)
+![](../../../assets/image%20(49).png)
 
 #### 开启后的效果
 
