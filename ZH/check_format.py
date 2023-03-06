@@ -25,7 +25,7 @@ def get_catalog_list(summary_list):
     :return: catalog_list: list <- 由多个 dict 组成
         每个 dict:
             name: SUMMARY 文件所在目录名字
-            catalog: 由 SUMMARY 文件的每一行组成的数组1
+            catalog: 由 SUMMARY 文件的每一行组成的数组
     """
     catalog_list = []
     for summary in summary_list:
