@@ -4,6 +4,7 @@
 
 * [产品简介](产品白皮书/产品简介/README.md)
 * [核心优势](产品白皮书/产品简介/Advantages.md)
+* [产品架构](产品白皮书/产品简介/Architecture.md)
 * [术语解释]()
     * [5 分钟读懂 bk-ci 流水线](产品白皮书/Concepts/Learn-pipeline-in-5min.md)
     * [Task](产品白皮书/Concepts/Task.md)
@@ -14,7 +15,7 @@
     * [构建资源]()
         * [bk-ci 云托管](产品白皮书/Concepts/Resources_hosted.md)
         * [私有构建资源](产品白皮书/Concepts/Resources_self.md)
-* [产品架构](产品白皮书/产品简介/Architecture.md)
+
 * [快速入门]()
     * [创建你的第一条流水线](产品白皮书/Quickstarts/Create-your-first-pipeline.md)
     * [关联你的第一个代码库](产品白皮书/Quickstarts/Link-your-first-repo.md)

@@ -21,7 +21,7 @@ bk-ci 支持多种方式触发流水线：
 代码库 HOOK 触发|WEB_HOOK
 API 触发|SERVICE
 
-![Triggers](../assets/triggers_1.png)
+![Triggers](../../assets/triggers_1.png)
 
 ## github事件触发
 
