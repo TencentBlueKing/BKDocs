@@ -5,11 +5,11 @@ Job，可以运行在一个构建环境里，比如运行在 macOS；也可以�
 - 由多个 Tasks(插件)组成；
 - 一个 Task 失败，则该 Job 失败，其余 Task 将不会运行；
 
-![Job](../assets/job.png)
+![Job](../../assets/job.png)
 
 > bk-ci 内置了 Linux Docker 公共构建机（如果该选项无法选中，请联系您的 CI 平台管理员），同时也支持业务自己管理的 Windows、macOS、Linux 构建机。
 >
-> ![Job Resources](../assets/job_resource.png)
+> ![Job Resources](../../assets/job_resource.png)
 
 ## WORKSPACE
 
@@ -35,13 +35,13 @@ Job，可以运行在一个构建环境里，比如运行在 macOS；也可以�
 
 通过高级流程控制，可以定义 Job 的运行逻辑。
 
-![Job Control](../assets/job_control.png)
+![Job Control](../../assets/job_control.png)
 
 ### 互斥组
 
 互斥组是为了解决并发构建使用同一构建机时的资源冲突问题而设计的，对不同流水线的不同 Job 设置同一个互斥组。
 
-![Job mutex group](../assets/job_mutex_group%20.png)
+![Job mutex group](../../assets/job_mutex_group%20.png)
 
 ## 接下来你可能需要
 

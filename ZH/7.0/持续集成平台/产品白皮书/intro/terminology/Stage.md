@@ -6,7 +6,7 @@
 - 同一个 Stage 下的 Job 执行方式为并行，由于 Job 之间是相互独立的，某个 Job 失败后，其它的 Job 会被运行到完成；
 - 一个 Job 失败，则该 Stage 失败。
 
-![Stage](../assets/stage.png)
+![Stage](../../assets/stage.png)
 
 ## Stage准入
 
@@ -16,15 +16,15 @@
 
 - 点击Stage左侧的闪电ICON
 
-![](../assets/stage-checkin-1.png)
+![](../../assets/stage-checkin-1.png)
 
 - 在弹出框里将准入规则改为“人工审核”（默认是自动，即不审核）
 
-![](../assets/stage-checkin-2.png)
+![](../../assets/stage-checkin-2.png)
 
 - 设置对应的审批流（每个审批流可包含多个审批环节，如果一个审批环节中涉及多人时，任意一人审批即可进入下一审批环节）
 
-![](../assets/stage-checkin-3.png)
+![](../../assets/stage-checkin-3.png)
 
 ### 高级玩法
 
@@ -43,7 +43,7 @@
 
 通过高级流程控制，可以定义 Job 的运行逻辑。
 
-![Stage Detail](../assets/stage_detail.png)
+![Stage Detail](../../assets/stage_detail.png)
 
 ## 接下来你可能需要
 

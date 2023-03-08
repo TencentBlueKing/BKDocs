@@ -133,10 +133,7 @@
         * [CI 镜像]()
             * [构建并托管一个 CI 镜像](产品白皮书/Services/Store/ci-images/docker-build.md)
             * [发布 CI 镜像到商店](产品白皮书/Services/Store/ci-images/release-new-image.md)
-    * [环境管理]()
-        * [将你的构建机托管至 bk-ci](产品白皮书/Services/Resource/bkci-hosted.md)
-        * [导入windows构建机](产品白皮书/Services/Resource/bkci-hosted-windows-agent.md)
-        * [构建机详情查看](产品白皮书/Services/Resource/host-detail.md)
+
     * [编译加速]()
         * [Linux C/C++ 编译加速](产品白皮书/Services/Turbo/linux_c_c%2B%2B/use_in_linux.md)
         * [定制Linux C/C++加速方案](产品白皮书/Services/Turbo/linux_c_c%2B%2B/new_plan.md)
@@ -144,6 +141,10 @@
         * [在私有构建机上使用加速](产品白皮书/Services/Turbo/linux_c_c%2B%2B/use_in_local.md)
     * [构建资源]()
         * [什么是构建资源](产品白皮书/Services/Pools/build-source.md)
+        * [环境管理]()
+            * [将你的构建机托管至 bk-ci](产品白皮书/Services/Pools/env-manage/bkci-hosted.md)
+            * [导入windows构建机](产品白皮书/Services/Pools/env-manage/bkci-hosted-windows-agent.md)
+            * [构建机详情查看](产品白皮书/Services/Pools/env-manage/host-detail.md)
         * [构建机托管]()
             * [将你的构建机托管至 BKCI](产品白皮书/Services/Pools/self-hosted-agents/deposit.md)
             * [第三方构建机环境准备](产品白皮书/Services/Pools/self-hosted-agents/prepara-agent.md)
@@ -156,21 +157,7 @@
         * [移动端版本体验使用指南](产品白皮书/Services/Client-experience/client-experience-usage.md)
     * [bkchat机器人]()
         * [简介](产品白皮书/Services/Bkchat/intro.md)
-        * [bkchat使用说明](产品白皮书/Services/Bkchat/bkchatbot-usage.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+        * [bkchat使用说明](产品白皮书/Services/Bkchat/bkchatbot-usage.md)        
 * [常见问题]()
     * [常见 FAQ](产品白皮书/FAQS/FAQ.md)
     * [流水线预定义变量列表](产品白皮书/FAQS/Variables.md)
