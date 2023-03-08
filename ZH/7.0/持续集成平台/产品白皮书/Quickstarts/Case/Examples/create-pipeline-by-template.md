@@ -7,11 +7,11 @@
 ## 入口
 
 流水线服务下，创建流水线->从模板创建
-![png](../assets/pipeline-create-by-template.png)
+![png](../../assets/pipeline-create-by-template.png)
 
 ## 从模板创建流水线
 
-![png](../assets/pipeline-create-by-template-1.png)
+![png](../../assets/pipeline-create-by-template-1.png)
 
 1. 流水线名称
 2. 实例和模板的关系：
@@ -21,7 +21,7 @@
 
 ## 创建约束模式流水线
 
-![png](../assets/pipeline_constraint_create.png)
+![png](../../assets/pipeline_constraint_create.png)
 
 1. 模板版本
 2. 约束模式流水线名称，可批量创建
@@ -32,7 +32,7 @@
 ## 通过模板一键升级约束模式流水线
 
 当模板升级后，可以一键升级约束模式的实例：
-![png](../assets/pipeline_instances_list.png)
+![png](../../assets/pipeline_instances_list.png)
 
 1. 选择多个实例后，批量更新
 2. 差异对比，可查看升级前后的差异

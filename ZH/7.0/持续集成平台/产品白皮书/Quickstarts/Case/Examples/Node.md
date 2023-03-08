@@ -12,10 +12,10 @@
 1. 将准备好的 gitlab 代码库关联至 bk-ci，[请参考](../Quickstarts/Link-your-first-repo.md)
 2. 创建一条空白流水线
 3. 将 Linux 构建环境添加到 Job2-1，镜像地址填写：bkci/ci:latest
-   ![pic](../assets/examples_java_1.png)
+   ![pic](../../../assets/examples_java_1.png)
 4. 依次添加如下 3 个插件：
    1. Checkout Gitlab
-      ![pic](../assets/quickstart_4.png)
+      ![pic](../../../assets/quickstart_4.png)
    2. Shell Scripts
 
       ```bash
@@ -24,7 +24,7 @@
       ```
 
    3. Upload artifacts
-      ![pic](../assets/examples_node_1.png)
+      ![pic](../../../assets/examples_node_1.png)
 
 5. 运行流水线，观察结果
-![pic](../assets/examples_node_2.png)
+![pic](../../../assets/examples_node_2.png)

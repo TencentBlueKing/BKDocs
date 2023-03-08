@@ -1,6 +1,6 @@
 # **呦尔哈--通过蓝盾提升CI/CD效率**
 
-![](../../assets/image-yorha-logo.png) 
+![](../../../assets/image-yorha-logo.png) 
 
 ||
 |:-|

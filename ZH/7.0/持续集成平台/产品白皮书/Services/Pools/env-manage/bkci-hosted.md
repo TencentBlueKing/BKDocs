@@ -5,7 +5,7 @@
 
 导入方法：服务-环境管理-节点页面，点击右上角的导入第三方构建机：
 
-![Resource](../assets/../../assets/resource_2.png)
+![Resource](../../../assets/resource_2.png)
 
 根据弹窗：
 

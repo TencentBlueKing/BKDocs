@@ -5,11 +5,11 @@
 ### 入口
 
 流水线列表->更多->模板管理
-![png](../../assets/template_entry.png)
+![png](../../../assets/template_entry.png)
 
 ### 模板列表
 
-![png](../../assets/template_list.png)
+![png](../../../assets/template_list.png)
 
 1. 新增模板
 2. 模板详情入口
@@ -21,7 +21,7 @@
 
 ### 模板编辑
 
-![png](../../assets/template_edit.png)
+![png](../../../assets/template_edit.png)
 
 1. 全局参数入口：
     - 点击后打开模板常量、流水线变量管理界面

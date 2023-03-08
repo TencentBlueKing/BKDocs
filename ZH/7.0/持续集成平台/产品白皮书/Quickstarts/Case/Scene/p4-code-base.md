@@ -17,10 +17,10 @@ Perforce是一款非常优秀的商业化版本管理工具，特别是对美术
 
 部分使用P4作为代码仓库的业务，希望能在某些P4事件产生的时候能够触发蓝盾流水线的自动执行，当前蓝盾支持“P4事件触发”，能够捕获“change commit”、“change content”、“change submit”、"shelve commit"、“shelve submit”5个事件；
 
-![&#x56FE;1](../../assets/scene-p4-code-base-a.png)
+![&#x56FE;1](../../../assets/scene-p4-code-base-a.png)
 
 代码拉取： 
 
 事件代码的自动拉取，本插件同时支持Stream和Manual类型的仓库；
 
-![&#x56FE;1](../../assets/scene-p4-code-base-b.png)
+![&#x56FE;1](../../../assets/scene-p4-code-base-b.png)

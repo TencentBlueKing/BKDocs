@@ -2,35 +2,35 @@
 
 * 点击代码库，（代码库介绍详情见【代码库】目录）
 
-![](../assets/image-20211212214606792.png)
+![](../../../assets/image-20211212214606792.png)
 
 * 选择关联Gitlab代码库
 
-![](../assets/image-20211205163725597.png)
+![](../../../assets/image-20211205163725597.png)
 
 * 点击新增，会自动跳转到凭证管理--新增凭据，获取gitlab上的AccessToken进行填写，点击确定&#x20;
 
-![](../assets/image-20211205164052362.png)
+![](../../../assets/image-20211205164052362.png)
 
 * 回到代码库，访问凭据上选择凭据【demo】，确定
 
-![](../assets/image-20211205164627965.png)
+![](../../../assets/image-20211205164627965.png)
 
 * 创建流水线
 
-![](../assets/image-20211213100550657.png)
+![](../../../assets/image-20211213100550657.png)
 
 添加新的stage
 
-![](../assets/image-20211213100650213.png)
+![](../../../assets/image-20211213100650213.png)
 
 添加checkout gitlab插件，关联创建好的代码库，按分支拉取
 
-![](../assets/image-20211205170423284.png)
+![](../../../assets/image-20211205170423284.png)
 
 添加shell插件，查看当前工作空间，以及拉取的代码目录，对代码进行打包
 
-![](../assets/image-20211209202103728.png)
+![](../../../assets/image-20211209202103728.png)
 
 把当前工作空间的ShortUrl.zip文件保存下来放到制品库，可以使用upload artifacts插件
 
@@ -38,14 +38,14 @@
 
 * 添加upload artifacts插件
 
-![](../assets/image-20211209202425994.png)
+![](../../../assets/image-20211209202425994.png)
 
 *   download artifacts插件---从制品库上下载文件到当前Job下的工作空间
 
     添加新stage
 
-![](../assets/image-20211209202505648.png)
+![](../../../assets/image-20211209202505648.png)
 
 添加Download artifacts插件，会根据填写好的内容自动找到制品库的源路径，然后下载到当前工作空间
 
-![](../assets/image-20211209203143751.png)
+![](../../../assets/image-20211209203143751.png)

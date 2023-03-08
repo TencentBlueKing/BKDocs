@@ -16,17 +16,17 @@
 
 步骤1:开发人员配置流水线，重点在定义&设置环境变量、设置代码拉取策略
 
-![&#x56FE;1](../../assets/scene-client-multi-Consistent-a.png)
+![&#x56FE;1](../../../assets/scene-client-multi-Consistent-a.png)
 
 定义环境变量，假设我们构建涉及engine、content和client三个仓库，那么我们设置三个环境变量来对应三个仓库。
 
-![&#x56FE;1](../../assets/scene-client-multi-Consistent-b.png)
+![&#x56FE;1](../../../assets/scene-client-multi-Consistent-b.png)
 
 
 通过环境变量设置拉取代码策略，这里使用前面设置的环境变量来拉取指定版本代码信息
 
-![&#x56FE;1](../../assets/scene-client-multi-Consistent-c.png)
+![&#x56FE;1](../../../assets/scene-client-multi-Consistent-c.png)
 
 步骤2:填写流水线执行参数，点击“执行”；等待执行完成。
 
-![&#x56FE;1](../../assets/scene-client-multi-Consistent-d.png)
+![&#x56FE;1](../../../assets/scene-client-multi-Consistent-d.png)

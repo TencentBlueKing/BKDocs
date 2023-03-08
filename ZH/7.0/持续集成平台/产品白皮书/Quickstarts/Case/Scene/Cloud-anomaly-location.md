@@ -31,7 +31,7 @@ file_list=`find /data/corefile  -mmin -3 -name  "core_*"`
 
 ● 开发人员自助登录调试pod，排查问题
 
-![&#x56FE;1](../../assets/scene-Cloud-anomaly-location-a.png)
+![&#x56FE;1](../../../assets/scene-Cloud-anomaly-location-a.png)
 
 2、蓝盾流水线配置
 
@@ -49,6 +49,6 @@ file_list=`find /data/corefile  -mmin -3 -name  "core_*"`
 
 kubectl -n NAMESPACE logs POD_NAME -c corefile-debug
 
-![&#x56FE;1](../../assets/scene-Cloud-anomaly-location-b.png)
+![&#x56FE;1](../../../assets/scene-Cloud-anomaly-location-b.png)
 
 

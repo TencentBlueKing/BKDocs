@@ -15,18 +15,18 @@
 
 1、打开蓝盾，选择”环境管理”
 
-![&#x56FE;1](../../assets/scene-Build-private-clusters-a.png)
+![&#x56FE;1](../../../assets/scene-Build-private-clusters-a.png)
 
 2、“新增”环境，选取构建节点
 
-![&#x56FE;1](../../assets/scene-Build-private-clusters-b.png)
+![&#x56FE;1](../../../assets/scene-Build-private-clusters-b.png)
 
-![&#x56FE;1](../../assets/scene-Build-private-clusters-c.png)
+![&#x56FE;1](../../../assets/scene-Build-private-clusters-c.png)
 
 3、 流水线Stage 配置中，选择“私有：构建集群”使用
 
-![&#x56FE;1](../../assets/scene-Build-private-clusters-d.png)
+![&#x56FE;1](../../../assets/scene-Build-private-clusters-d.png)
 
 组建为构建集群后，Job寻找构建节点的算法如下：
 
-![&#x56FE;1](../../assets/scene-Build-private-clusters-e.png)
+![&#x56FE;1](../../../assets/scene-Build-private-clusters-e.png)

@@ -9,17 +9,17 @@
 
 需要同时支持企业微信消息、邮件、群机器人这三种消息发送方式，并且需要这三者都是可选的，可以选择复选框。
 
-![](../../../../assets/image-plugin-casestudy-sendmsg0.png)
+![](../../../../../assets/image-plugin-casestudy-sendmsg0.png)
 
 其他输入项，比如发送目标，消息标题、消息内容等需要用户输入的内容，会在用户勾选消息发送方式的时候，显示出来。比如当勾选「企业微信」发送方式，就会出现「发送目标」「消息标题」「消息内容」的输入框。邮件和企业微信共用「发送目标」、「消息标题」、「消息内容」这三个输入框，所以选中「企业微信」「邮件」这两个选项中的任何一个，都会显示这些输入框。
 
-![](../../../../assets/image-plugin-casestudy-sendmsg1.png)
+![](../../../../../assets/image-plugin-casestudy-sendmsg1.png)
 
 
 
 选中「发送至企业微信群机器人」，会出现以下配置项，其中「@群成员」只有在用户选中消息类型为「text」时才会出现
 
-![](../../../../assets/image-plugin-casestudy-sendmsg2.png)
+![](../../../../../assets/image-plugin-casestudy-sendmsg2.png)
 
 ## 后端设计
 
@@ -129,7 +129,7 @@ task.json主要包含以下字段：
 
 可在蓝盾「研发商店」-「控制台」-「调试task.json」查看task.json可视化结果
 
-![](../../../../assets/image-plugin-casestudy-sendmsg3.png)
+![](../../../../../assets/image-plugin-casestudy-sendmsg3.png)
 
 
 
@@ -199,7 +199,7 @@ task.json主要包含以下字段：
 
 可视化结果：
 
-![](../../../../assets/image-plugin-casestudy-sendmsg4.png)
+![](../../../../../assets/image-plugin-casestudy-sendmsg4.png)
 
 
 
@@ -299,9 +299,9 @@ task.json主要包含以下字段：
 
 可视化结果：
 
-![](../../../../assets/image-plugin-casestudy-sendmsg5.png)
+![](../../../../../assets/image-plugin-casestudy-sendmsg5.png)
 
-![](../../../../assets/image-plugin-casestudy-sendmsg6.png)
+![](../../../../../assets/image-plugin-casestudy-sendmsg6.png)
 
 
 
@@ -321,7 +321,7 @@ task.json主要包含以下字段：
 
 可视化结果：
 
-![](../../../../assets/image-plugin-casestudy-sendmsg7.png)
+![](../../../../../assets/image-plugin-casestudy-sendmsg7.png)
 
 ### sdk
 

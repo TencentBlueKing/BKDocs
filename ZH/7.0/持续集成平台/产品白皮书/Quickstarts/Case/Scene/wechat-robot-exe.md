@@ -15,10 +15,10 @@
 
 1、 直接打开已配置的应用号，输入“1”或者 “help” ， 点击消息右上角，会弹出对应的操作，可进行业务的绑定
 
-![&#x56FE;1](../../assets/scene-wechat-robot-exe-a.png)
+![&#x56FE;1](../../../assets/scene-wechat-robot-exe-a.png)
 
 2、 蓝盾CI执行， 点击 “CI” ， 弹出选择“蓝盾项目”，选择后继续选择蓝盾的”流水线“，到最终的执行
 
-![&#x56FE;1](../../assets/scene-wechat-robot-exe-b.png)
+![&#x56FE;1](../../../assets/scene-wechat-robot-exe-b.png)
 
-![&#x56FE;1](../../assets/scene-wechat-robot-exe-c.png)
+![&#x56FE;1](../../../assets/scene-wechat-robot-exe-c.png)

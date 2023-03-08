@@ -15,19 +15,19 @@
 ## 解决方案 <a id="&#x51C6;&#x5907;&#x4E8B;&#x9879;"></a>
 
 
-![&#x56FE;1](../../assets/scene-UE4-compilation-acceleration-a.png)
+![&#x56FE;1](../../../assets/scene-UE4-compilation-acceleration-a.png)
 
 
-![&#x56FE;1](../../assets/scene-UE4-compilation-acceleration-b.png)
+![&#x56FE;1](../../../assets/scene-UE4-compilation-acceleration-b.png)
 
 
-![&#x56FE;1](../../assets/scene-UE4-compilation-acceleration-c.png)
+![&#x56FE;1](../../../assets/scene-UE4-compilation-acceleration-c.png)
 
 
-![&#x56FE;1](../../assets/scene-UE4-compilation-acceleration-d.png)
+![&#x56FE;1](../../../assets/scene-UE4-compilation-acceleration-d.png)
 
 
-![&#x56FE;1](../../assets/scene-UE4-compilation-acceleration-e.png)
+![&#x56FE;1](../../../assets/scene-UE4-compilation-acceleration-e.png)
 
 
-![&#x56FE;1](../../assets/scene-UE4-compilation-acceleration-f.png)
+![&#x56FE;1](../../../assets/scene-UE4-compilation-acceleration-f.png)

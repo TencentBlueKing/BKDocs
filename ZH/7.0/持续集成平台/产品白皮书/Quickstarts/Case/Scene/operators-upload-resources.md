@@ -16,13 +16,13 @@
 
 首先，开发人员帮游戏运营配置流水线，可以分三个阶段：流水线触发、编译构建、分发部署
 
-![&#x56FE;1](../../assets/scene-operators-upload-resources-a.png)
+![&#x56FE;1](../../../assets/scene-operators-upload-resources-a.png)
 
 游戏运营人员通过GIT上传美术素材、配置文件至版本库
 
-![&#x56FE;1](../../assets/scene-operators-upload-resources-b.png)
+![&#x56FE;1](../../../assets/scene-operators-upload-resources-b.png)
 
 
 游戏运营人员打开蓝盾，点击“执行”，等待执行结束
 
-![&#x56FE;1](../../assets/scene-operators-upload-resources-c.png)
+![&#x56FE;1](../../../assets/scene-operators-upload-resources-c.png)

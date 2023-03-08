@@ -15,6 +15,6 @@
 
 1、 请参考下图，在两条不同的流水线设置中，勾选“设置互斥组”，互斥组名称相同即可。
 
-![&#x56FE;1](../../assets/scene-Pipeline-exclusion-queue-a.png)
+![&#x56FE;1](../../../assets/scene-Pipeline-exclusion-queue-a.png)
 
-![&#x56FE;1](../../assets/scene-Pipeline-exclusion-queue-b.png)
+![&#x56FE;1](../../../assets/scene-Pipeline-exclusion-queue-b.png)

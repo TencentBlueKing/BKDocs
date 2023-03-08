@@ -15,16 +15,16 @@
 
 首先，开发人员配置流水线，主要Job有：流水线触发、服务器更新、美术测试机更新
 
-![&#x56FE;1](../../assets/scene-arts-upload-resources-a.png)
+![&#x56FE;1](../../../assets/scene-arts-upload-resources-a.png)
 
 美术人员访问上述流水线，只需“填参数”、“选择自己的测试机”，点击“执行”，即可完成整个资源更新操作；
 
-![&#x56FE;1](../../assets/scene-arts-upload-resources-b.png)
+![&#x56FE;1](../../../assets/scene-arts-upload-resources-b.png)
 
 
 如果有新人或新美术机加入，只需复制现有job即可；流水线变动少，维护简单；
 
-![&#x56FE;1](../../assets/scene-arts-upload-resources-c.png)
+![&#x56FE;1](../../../assets/scene-arts-upload-resources-c.png)
 
 
 

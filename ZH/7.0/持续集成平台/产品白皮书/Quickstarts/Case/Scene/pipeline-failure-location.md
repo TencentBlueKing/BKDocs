@@ -15,8 +15,8 @@
 
 如果编译失败，只需检查执行状态显示“红色”标识的Task，不用检查全部编译过程；
 
-![&#x56FE;1](../../assets/scene-pipeline-failure-location-a.png)
+![&#x56FE;1](../../../assets/scene-pipeline-failure-location-a.png)
 
 点击“红色”区域后，进入日志详情页，查看错误日志。
 
-![&#x56FE;1](../../assets/scene-pipeline-failure-location-b.png)
+![&#x56FE;1](../../../assets/scene-pipeline-failure-location-b.png)

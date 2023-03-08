@@ -36,7 +36,7 @@
 
 1、配置蓝盾流水线
 
-![&#x56FE;1](../../assets/scene-version-release-management-a.png)
+![&#x56FE;1](../../../assets/scene-version-release-management-a.png)
 
 配置ipa/apk安装包
 
@@ -82,10 +82,10 @@
 
 
 
-![&#x56FE;1](../../assets/scene-version-release-management-b.png)
+![&#x56FE;1](../../../assets/scene-version-release-management-b.png)
 
 3、选择需要体验的应用，点击「下载」可快速下载应用，ipa会提示跳转safari进行下载
 
 
 
-![&#x56FE;1](../../assets/scene-version-release-management-c.png)
+![&#x56FE;1](../../../assets/scene-version-release-management-c.png)

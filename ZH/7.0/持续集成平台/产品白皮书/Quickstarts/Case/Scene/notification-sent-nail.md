@@ -15,23 +15,23 @@
 
 1、 在钉钉群管理页面，增加自定义机器人。
 
-![&#x56FE;1](../../assets/scene-notification-sent-nail-a.png)
+![&#x56FE;1](../../../assets/scene-notification-sent-nail-a.png)
 
 2、 推荐使用“加签”的安全设置，完成设置后记录机器人Webhook和加签信息。
 
-![&#x56FE;1](../../assets/scene-notification-sent-nail-b.png)
+![&#x56FE;1](../../../assets/scene-notification-sent-nail-b.png)
 
 3、 在蓝盾流水线编排中，增加“钉钉消息通知”插件，若没有请在蓝盾应用市场中添加。
 
-![&#x56FE;1](../../assets/scene-notification-sent-nail-c.png)
+![&#x56FE;1](../../../assets/scene-notification-sent-nail-c.png)
 
 4、 配置插件信息，如下所示：
 
-![&#x56FE;1](../../assets/scene-notification-sent-nail-d.png)
+![&#x56FE;1](../../../assets/scene-notification-sent-nail-d.png)
 
 5、流水线执行可在群里看到消息和
 
-![&#x56FE;1](../../assets/scene-notification-sent-nail-e.png)
+![&#x56FE;1](../../../assets/scene-notification-sent-nail-e.png)
 
 注：
 

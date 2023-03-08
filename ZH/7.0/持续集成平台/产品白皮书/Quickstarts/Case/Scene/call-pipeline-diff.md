@@ -20,7 +20,7 @@
 选择call pipeline插件，同时还分同步和异步调用执行，填写子流水线的变量参数
 
 
-![&#x56FE;1](../../assets/scene-call-pipeline-diff-a.png)
+![&#x56FE;1](../../../assets/scene-call-pipeline-diff-a.png)
 
 同时还分同步和异步调用执行
 

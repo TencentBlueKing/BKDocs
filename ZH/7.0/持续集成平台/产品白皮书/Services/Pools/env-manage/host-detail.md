@@ -4,13 +4,13 @@
 
 ## 构建机列表
 
-![png](../../assets/service_env_list.png)
+![png](../../../assets/service_env_list.png)
 
 - 在列表中，可以查阅构建机的基本信息，点击别名进入构建机详情。
 
 ## 构建机详情
 
-![png](../../assets/service_env_detail.png)
+![png](../../../assets/service_env_detail.png)
 
 构建机详情页共有 6 个功能区，对应功能如下：
 

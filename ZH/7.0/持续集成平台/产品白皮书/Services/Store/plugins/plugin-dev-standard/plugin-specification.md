@@ -92,7 +92,7 @@
 
 ### 插件状态流转图
 
-![png](../../../assets/store_plugin_status.png)
+![png](../../../../assets/store_plugin_status.png)
 
 ### 流程描述
 

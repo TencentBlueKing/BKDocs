@@ -4,7 +4,7 @@
 
 ## 功能区介绍
 
-![png](../assets/service_console.png)
+![png](../../assets/service_console.png)
 
 1. 切换项目
 2. 切换服务

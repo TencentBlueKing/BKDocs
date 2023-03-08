@@ -9,11 +9,11 @@
 ### 入口
 
 工作台->容器镜像->关联镜像
-![png](../../assets/store-image-entry.png)
+![png](../../../assets/store-image-entry.png)
 
 ### 关联镜像
 
-![png](../../assets/store_image_relate.png)
+![png](../../../assets/store_image_relate.png)
 
 1. 镜像在研发商店中的唯一标识，不重名即可
 2. 镜像发布过程中，可以在此调试项目下，验证镜像功能是否正常。建议使用专用的测试项目验证
@@ -23,12 +23,12 @@
 
 #### 入口如下
 
-![png](../../assets/store_image_upgrade_entry.png)
+![png](../../../assets/store_image_upgrade_entry.png)
 
 #### 填写基本信息
 
-![png](../../assets/store_image_upgrade_1.png)
-![png](../../assets/store_image_upgrade_2.png)
+![png](../../../assets/store_image_upgrade_1.png)
+![png](../../../assets/store_image_upgrade_2.png)
 
 1. 镜像库 host
     - 若为 docker hub 镜像，可以不填，或者填 docker.io
@@ -38,7 +38,7 @@
 5. Dockerfile：将展示在研发商店中，供用户了解镜像细节
 
 当升级镜像时，有三种升级模式：
-![png](../../assets/store_image_upgrade_3.png)
+![png](../../../assets/store_image_upgrade_3.png)
 
 1. 非兼容式升级：
     - 镜像功能逻辑发生重大变更，和老版本不兼容时使用
@@ -56,7 +56,7 @@
 #### 验证镜像
 
 提交发布后，可以在调试项目下验证镜像功能是否满足预期
-![png](../../assets/store_image_release_info.png)
+![png](../../../assets/store_image_release_info.png)
 
 1. 测试：点击后跳转到调试项目的流水线服务下，可以使用此镜像执行流水线 Job，验证功能是否满足预期
 2. 若发现问题，重新推送镜像后，重新验证并测试

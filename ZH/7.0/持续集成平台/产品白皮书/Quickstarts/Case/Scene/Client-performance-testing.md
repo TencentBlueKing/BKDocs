@@ -29,4 +29,4 @@ PerfDogService使用说明：https://bbs.perfdog.qq.com/article-detail.html?id=5
 结合蓝盾流水线以及wetest云真机进行自动化搭建，完成数据自动化采集。
 
 
-![&#x56FE;1](../../assets/scene-Client-performance-testing-a.png)
+![&#x56FE;1](../../../assets/scene-Client-performance-testing-a.png)

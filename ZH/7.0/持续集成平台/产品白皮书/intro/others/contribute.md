@@ -22,9 +22,9 @@
 
 首先得拥有github账号，并登录，访问https://github.com/ci-plugins/document，fork到自己的github账号下
 
-![image-contributing-fork-repo](../assets/image-contributing-fork-repo.png)
+![image-contributing-fork-repo](../../assets/image-contributing-fork-repo.png)
 
-![image-contributing-fork-success](../assets/image-contributing-fork-success.png)
+![image-contributing-fork-success](../../assets/image-contributing-fork-success.png)
 
 ### 2. Clone  
 
@@ -46,11 +46,11 @@ git commit -m "add xxx"
 
 在将commit提交到自己的仓库前，查看自己fork出来的代码是否落后于源仓库代码，如果落后，先操作`Fetch upstream`，将源仓库代码的更新下同步到自己仓库。`compare`查看代码差异，`Fetch and merge`将源仓库代码合并到自己仓库
 
-![image-contributing-fetch-upstream](../assets/image-contributing-fetch-upstream.png)
+![image-contributing-fetch-upstream](../../assets/image-contributing-fetch-upstream.png)
 
-![image-contributing-fetch-merge](../assets/image-contributing-fetch-merge.png)
+![image-contributing-fetch-merge](../../assets/image-contributing-fetch-merge.png)
 
-![image-contributing-merge-upstream-success](../assets/image-contributing-merge-upstream-success.png)
+![image-contributing-merge-upstream-success](../../assets/image-contributing-merge-upstream-success.png)
 
 
 ### 5. Git pull
@@ -72,8 +72,8 @@ git push -u origin master
 
 发起PR，请求合并到源仓库dev分支，等待管理员审核通过
 
-![image-contributing-view-pr](../assets/image-contributing-view-pr.png)
+![image-contributing-view-pr](../../assets/image-contributing-view-pr.png)
 
-![image-contributing-new-pr](../assets/image-contributing-new-pr.png)
+![image-contributing-new-pr](../../assets/image-contributing-new-pr.png)
 
-![image-contributing-create-pr](../assets/image-contributing-create-pr.png)
+![image-contributing-create-pr](../../assets/image-contributing-create-pr.png)

@@ -17,31 +17,31 @@
 1、 新建一条转测试流水线，包含了编译、单元测试、代码检查、作业平台-构件分发等原子。作业平台-构件分发是测试环境部署的关键，需要在这里创建质量红线。
 
 
-![&#x56FE;1](../../assets/scene-release-quality-redline-a.png)
-![&#x56FE;1](../../assets/scene-release-quality-redline-b.png)
+![&#x56FE;1](../../../assets/scene-release-quality-redline-a.png)
+![&#x56FE;1](../../../assets/scene-release-quality-redline-b.png)
 
 2、 在质量红线中选择相应的代码检查指标，比如可以选择Coverity告警数清零、Klocwork告警数清零。
 
 
-![&#x56FE;1](../../assets/scene-release-quality-redline-c.png)
+![&#x56FE;1](../../../assets/scene-release-quality-redline-c.png)
 
 
 3、 对于单元测试代码覆盖率，目前没有现成的指标，可以自定义一个指标。例如下面定义了一个叫做CodeCoverage的float型指标。
 
-![&#x56FE;1](../../assets/scene-release-quality-redline-d.png)
+![&#x56FE;1](../../../assets/scene-release-quality-redline-d.png)
 
 4、 此时就能在质量红线创建过程中选择到这个指标了。因此在补充其他信息后，可以完成质量红线的创建。
 
-![&#x56FE;1](../../assets/scene-release-quality-redline-e.png)
+![&#x56FE;1](../../../assets/scene-release-quality-redline-e.png)
 
 在流水线也能够看到具体的质量红线要求
 
-![&#x56FE;1](../../assets/scene-release-quality-redline-f.png)
+![&#x56FE;1](../../../assets/scene-release-quality-redline-f.png)
 
 5、 由于脚本任务指标需要用户自己来上报数值，因此需要在流水线中相应的脚本任务中增加一行代码，用来上报定义的CodeCoverage的数值。如下图所示：
 
-![&#x56FE;1](../../assets/scene-release-quality-redline-g.png)
+![&#x56FE;1](../../../assets/scene-release-quality-redline-g.png)
 
 6、 最后执行流水线，就能查看红线效果了。如果代码不符合要求，就无法被发布到测试环境。点击“质量红线”，可以查看具体是什么方面不符合要求。
 
-![&#x56FE;1](../../assets/scene-release-quality-redline-h.png)
+![&#x56FE;1](../../../assets/scene-release-quality-redline-h.png)

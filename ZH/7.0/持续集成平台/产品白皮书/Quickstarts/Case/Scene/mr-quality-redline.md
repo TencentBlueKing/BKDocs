@@ -24,22 +24,22 @@
 
 1、创建一条流水线，并添加“Git事件触发”。其中Git事件类型选择Merge Request Hook，并勾选“同时提交锁定”。
 
-![&#x56FE;1](../../assets/scene-mr-quality-redline-a.png)
+![&#x56FE;1](../../../assets/scene-mr-quality-redline-a.png)
 
-![&#x56FE;1](../../assets/scene-mr-quality-redline-b.png)
+![&#x56FE;1](../../../assets/scene-mr-quality-redline-b.png)
 
 2、在CodeCC等可配为质量红线控制点的原子会有一个快捷入口，用于快速创建一条质量红线规则。
 
-![&#x56FE;1](../../assets/scene-mr-quality-redline-c.png)
+![&#x56FE;1](../../../assets/scene-mr-quality-redline-c.png)
 
 点击“返回”后进入创建质量红线的界面，此时控制点和生效范围都已经自动选择好。
 
-![&#x56FE;1](../../assets/scene-mr-quality-redline-d.png)
+![&#x56FE;1](../../../assets/scene-mr-quality-redline-d.png)
 
 选择需要的指标，例如可以选择腾讯对外开源规范的指标集，能够确保合入的代码符合腾讯对外开源代码规范。
 
-![&#x56FE;1](../../assets/scene-mr-quality-redline-e.png)
+![&#x56FE;1](../../../assets/scene-mr-quality-redline-e.png)
 
 此时发起MR和代码检视，将会触发流水线扫描，如果代码不符合质量红线的要求，将会显示流水线执行失败，可以点击详情前往查看具体原因。
 
-![&#x56FE;1](../../assets/scene-mr-quality-redline-f.png)
+![&#x56FE;1](../../../assets/scene-mr-quality-redline-f.png)
