@@ -40,7 +40,7 @@
 |bk-log-search        |bk-log-search-4.3.5        |4.3.5||
 |bk-monitor           |bk-monitor-3.6.76          |3.6.3062||
 |bk-nodeman           |bk-nodeman-2.2.27          |2.2.27||
-|bk-paas              |bkpaas3-0.1.4-beta2        |0.1.4-beta1||
+|bk-paas              |bkpaas3-0.1.4-beta2.1        |0.1.4-beta1||
 |bk-rabbitmq          |rabbitmq-8.24.12           |3.9.11||
 |bk-redis             |redis-15.3.3               |6.2.5||
 |bk-redis-cluster     |redis-cluster-7.4.6        |6.2.6||
@@ -579,7 +579,7 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-iam-search-engine sync
 
 ### 部署 PaaS 平台相关组件
 
-由于 bkpaas 之前版本存在升级问题，故在升级前请先替换其版本 `sed -i "/bkpaas3/s/0.1.3/0.1.4-beta2/g" ~/bkhelmfile/blueking/environments/default/version.yaml`
+由于 bkpaas 之前版本存在升级问题，故在升级前请先替换其版本 `sed -i "/bkpaas3/s/0.1.3/0.1.4-beta2.1/g" ~/bkhelmfile/blueking/environments/default/version.yaml`
 
 ```bash
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-console sync
