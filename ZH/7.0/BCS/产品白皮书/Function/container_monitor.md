@@ -2,7 +2,7 @@
 
 ## 概述
 
-社区版7.0的容器监控已从prometheus切换到了蓝鲸容器监控
+蓝鲸7.0的容器监控已从prometheus切换到了蓝鲸容器监控
 
 ![](../assets/container_monitor_import.png)
 
@@ -25,7 +25,7 @@ helm repo add blueking https://hub.bktencent.com/chartrepo/blueking
 
   `kubectl create ns bcs-system`
 
-- bcs-gateway绑定hosts，解决bcs网关访问问题，可以把域名bcs-api-gateway绑定到集群“蓝鲸社区版7.0”任意一台node上，这个node最好是master角色
+- bcs-gateway绑定hosts，解决bcs网关访问问题，可以把域名bcs-api-gateway绑定到集群“蓝鲸7.0”任意一台node上，这个node最好是master角色
 
   `kubectl edit cm coredns -n kube-system`
 
@@ -36,10 +36,10 @@ helm repo add blueking https://hub.bktencent.com/chartrepo/blueking
             1.1.1.1 bcs-api-gateway
             fallthrough
           }
-          # 1.1.1.1 是集群“蓝鲸社区版7.0”任意一台node，最好是master
+          # 1.1.1.1 是集群“蓝鲸蓝鲸7.0”任意一台node，最好是master
   ```
 
-  ![](D:\社区版7.0文档\BKDocs\ZH\7.0\BCS\产品白皮书\assets\coredns_hosts.png)
+  ![](../asset/coredns_hosts.png)
 
 - 创建bcs-k8s-watch所需证书
 
@@ -58,7 +58,7 @@ helm repo add blueking https://hub.bktencent.com/chartrepo/blueking
   type: kubernetes.io/tls
   ```
 
-  通过webconsole或ssh到集群“蓝鲸社区版7.0”
+  通过webconsole或ssh到集群“蓝鲸7.0”
 
   ![-w2020](../assets/webconsole_login.png)
 

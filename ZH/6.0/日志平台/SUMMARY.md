@@ -29,3 +29,7 @@
         * [query string](产品白皮书/functions/addenda/query_string.md)
         * [字段提取正则参考](产品白皮书/functions/addenda/regex_example.md)
         * [通配符说明](产品白皮书/functions/addenda/wildcard.md)
+* [API 文档]()
+    * [简介](6.0/API文档/bk_log/README.md)
+    * [日志查询接口](6.0/API文档/bk_log/zh-hans/esquery_search.md)
+* [常见问题](产品白皮书/faq/FAQ.md)

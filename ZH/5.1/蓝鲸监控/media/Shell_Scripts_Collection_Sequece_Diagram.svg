@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-457.8032 -616 1222.4097 477" width="1222.4097pt" height="477pt" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata> Produced by OmniGraffle 7.5 
+    <dc:date>2018-01-04 11:43:27 +0000</dc:date>
+  </metadata>
+  <defs>
+    <font-face font-family="PingFang SC" font-size="16" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="500">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" viewBox="-1 -6 14 12" markerWidth="14" markerHeight="12" color="black">
+      <g>
+        <path d="M 11.428568 0 L 0 -4.285713 L 0 4.285713 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="PingFang SC" font-size="12" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="500">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" viewBox="-8 -4 9 8" markerWidth="9" markerHeight="8" color="black">
+      <g>
+        <path d="M -6.857143 0 L 0 2.5714288 L 0 -2.5714288 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="StickArrow_Marker" viewBox="-1 -6 14 12" markerWidth="14" markerHeight="12" color="black">
+      <g>
+        <path d="M 11.428568 0 L 0 0 M 0 -4.285713 L 11.428568 0 L 0 4.285713" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_3" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>脚本采集 时序图</title>
+    <rect fill="white" width="1222.4097" height="477"/>
+    <g>
+      <title>图层 1</title>
+      <rect x="131.36881" y="-615.5" width="108" height="23" fill="white"/>
+      <rect x="131.36881" y="-615.5" width="108" height="23" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(136.36881 -615)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="15.296" y="17" textLength="67.408">Shell脚本</tspan>
+      </text>
+      <line x1="185.36881" y1="-592" x2="185.36881" y2="-202.66667" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="-82" y1="-560" x2="166.64132" y2="-560" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-47.37905 -579.4091)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="0" y="13" textLength="112.92">2. 周期调度Shell脚本</tspan>
+      </text>
+      <rect x="-140" y="-615.5" width="117" height="23" fill="white"/>
+      <rect x="-140" y="-615.5" width="117" height="23" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-135 -615)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="15.764" y="17" textLength="75.472">蓝鲸Agent</tspan>
+      </text>
+      <line x1="-81.5598" y1="-592" x2="-83.5" y2="-202.66667" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <rect x="393.73763" y="-615.5" width="108" height="23" fill="white"/>
+      <rect x="393.73763" y="-615.5" width="108" height="23" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(398.73763 -615)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="17.632" y="17" textLength="62.736">DataBus</tspan>
+      </text>
+      <path d="M 447.7247 -592 L 447.69466 -564.08594 L 447.69466 -202.66667" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <rect x="179.96989" y="-542.70455" width="17" height="51.5" fill="white"/>
+      <rect x="179.96989" y="-542.70455" width="17" height="51.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 206.0921 -520.4018 C 214.62123 -521.6818 224.0292 -522.9092 223.9699 -524.70455 C 223.88848 -527.1689 201.46944 -532.2047 196.9699 -533.70455 L 196.9699 -533.70455" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="229.23763" y="-542.70455" width="164.5" height="24" fill="white"/>
+      <text transform="translate(234.23763 -539.20455)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="0" y="13" textLength="62.364">3. 采集数据</tspan>
+      </text>
+      <line x1="193.33333" y1="-382" x2="437.67143" y2="-382" marker-end="url(#StickArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(237.59087 -401.4091)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="0" y="13" textLength="62.364">5. 上报数据</tspan>
+      </text>
+      <rect x="656.10644" y="-615.5" width="108" height="23" fill="white"/>
+      <rect x="656.10644" y="-615.5" width="108" height="23" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(661.10644 -615)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="19.84" y="17" textLength="22.464">Infl</tspan>
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="42.304" y="17" textLength="35.856">uxdb</tspan>
+      </text>
+      <path d="M 710.0935 -592 L 710.0635 -564.08594 L 710.0635 -202.66667" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <path d="M 451 -276 L 598.5625 -276 L 685.6714 -275.99548" marker-end="url(#StickArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(501.28785 -295.4091)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="0" y="13" textLength="61.728">7. 数据入库</tspan>
+      </text>
+      <rect x="440" y="-359.5" width="17" height="51.5" fill="white"/>
+      <rect x="440" y="-359.5" width="17" height="51.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 466.1222 -337.19727 C 474.65134 -338.47726 484.0593 -339.70467 484 -341.5 C 483.9186 -343.96437 461.49955 -349.00015 457 -350.5 L 457 -350.5" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="493.3032" y="-368" width="114.5" height="30" fill="white"/>
+      <text transform="translate(498.3032 -361.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="0" y="13" textLength="38.364">6. 清洗</tspan>
+      </text>
+      <text transform="translate(110.36881 -166.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x=".336" y="17" textLength="149.328">脚本采集 简易时序图</tspan>
+      </text>
+      <rect x="177.30322" y="-469.70455" width="17" height="51.5" fill="white"/>
+      <rect x="177.30322" y="-469.70455" width="17" height="51.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 203.42543 -447.4018 C 211.95457 -448.6818 221.36253 -449.9092 221.30322 -451.70455 C 221.22181 -454.1689 198.84004 -459.2792 194.30322 -460.70455 C 189.7664 -462.12987 194.15414 -460.4064 194.07962 -460.25733" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="226.57096" y="-478.20455" width="164.5" height="24" fill="white"/>
+      <text transform="translate(231.57096 -474.70455)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="0" y="13" textLength="110.7">4. 调用数据上报SDK</tspan>
+      </text>
+      <rect x="-457.3032" y="-615.5" width="117" height="23" fill="white"/>
+      <rect x="-457.3032" y="-615.5" width="117" height="23" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-452.3032 -615)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="25.212" y="17" textLength="56.576">采集API</tspan>
+      </text>
+      <line x1="-398.863" y1="-592" x2="-400.8032" y2="-202.66667" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <path d="M -398 -578 L -398 -579.16406 L -240 -579.16406 L -91.83133 -579.16406" marker-end="url(#FilledArrow_Marker_3)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-306 -602.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="500" x="0" y="13" textLength="110.532">1. 首次下发Shell脚本</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

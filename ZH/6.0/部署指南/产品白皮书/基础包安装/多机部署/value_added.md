@@ -52,7 +52,7 @@ tar xf bkce_co_package-6.0.5.tgz
 
    标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/bk_sops_co_package-6.0.4.dat)
 
-   **详细步骤：** `打开标准运维 -> 项目流程 -> 导入 -> 点击上传 -> 创建新流程`
+   **详细步骤：** `打开标准运维 -> 选择蓝鲸业务 -> 项目流程 -> 导入 -> 点击上传 -> 创建新流程`
 
    ![sops](../../assets/sops.png)
 
@@ -101,6 +101,7 @@ hostname
 - 安装监控相关依赖、监控平台后台、监控平台 SaaS
 
 > 详细安装过程介绍，请查看[安装监控平台详解](../../基础包安装/安装详解/install_bkmonitorv3.md)。
+> 部署常见问题请查看：[监控套餐-部署常见问题](https://bk.tencent.com/s-mart/community/question/5795?type=answer)
 
 ### 日志平台
 
@@ -122,7 +123,7 @@ hostname
 - 授权日志平台所需的 MySQL 访问权限
 - 安装日志平台相关依赖、日志平台后台、日志平台 SaaS
 
-> 详细安装过程介绍，请查看 [安装日志平台详解](../../基础包安装/安装详解/install_bkmonitorv3.md)。
+> 详细安装过程介绍，请查看 [安装日志平台详解](../../基础包安装/安装详解/install_bklog.md)。
 
 ### 故障自愈
 

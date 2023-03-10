@@ -2,7 +2,7 @@
 
 ### 应用部署报错：解析应用进程信息出错了，原因：the file "Procfile" does not exists
 
-请检查源码目录下是否有 Procfile 文件，如果文件不存在，请手动添加 Procfile ，可以参考相关指引: [应用进程与Procfile](../topics/paas/process_procfile.md)
+请检查源码目录下是否有 Procfile 或 app_desc.yaml 文件，如果文件不存在，请手动添加 ，可以参考相关指引: [应用进程与Procfile](../topics/paas/process_procfile.md)
 
 ### 为什么我的 Python 应用在装包的时候卡死了？
 
@@ -39,9 +39,9 @@ setuptools_scm.version.SetuptoolsOutdatedWarning: your setuptools is too old (<1
 ## 常见部署错误修复指南
 ### 修复 Procfile 报错（fix-procfile）
 
-Procfile 文件是用来定义应用进程的配置文件，它位于应用的根目录中。如果你在部署时碰到 ”Procfile error: “ 相关的错误，请检查在应用根目录是否存在有效的 Procfile 文件。假如应用根目录没有该文件，请创建 Procfile 文件并提交到源码仓库中。
+Procfile 或 app_desc.yaml  文件是用来定义应用进程的配置文件，它位于应用的根目录中。如果你在部署时碰到 ”Procfile error: “ 相关的错误，请检查在应用根目录是否存在有效的 Procfile 或 app_desc.yaml  文件。假如应用根目录没有该文件，请创建 Procfile 或 app_desc.yaml  文件并提交到源码仓库中。
 
-Procfile 文件使用 YAML 格式，内容如下：
+1. Procfile 文件使用 YAML 格式，内容如下：
 ```yaml
 {type_1}: {command}
 {type_2}: {command2}
@@ -52,7 +52,20 @@ web: gunicorn wsgi -w 4 -b :$PORT --access-logfile - --error-logfile - --access-
 celery: celery worker
 ```
 
-[查看更多与 Procfile 相关的内容](../topics/paas/process_procfile.md)
+2. app_desc.yaml 中定义进程的格式如下：
+```yaml
+module:
+  language: Python
+  processes:
+    web:
+      command: gunicorn bluesapps.wsgi -b :$PORT --log-file -
+    worker:
+      command: python manage.py celery worker -l info
+    beat:
+      command: python manage.py celery beat -l info
+```
+
+[查看更多与应用进程相关的内容](../topics/paas/process_procfile.md)
 
 ### 修复 python mysql 模块安装时报错（fix-pkg-install-mysql-python）
 

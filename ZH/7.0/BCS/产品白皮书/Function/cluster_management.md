@@ -149,14 +149,28 @@ kubectl logs bcs-kube-agent-685b985f94-rg5sg --tail=10 -n bcs-system
   ```shell
   helm repo add blueking https://hub.bktencent.com/chartrepo/blueking
   ```
-  
 - 如果命名空间bcs-system不存在，则需要创建命名空间
 
   `kubectl create ns bcs-system`
 
 - bcs-kube-agent需要访问容器平台服务bcs-api-gateway，具体配置方法请参考 “前置条件中的蓝鲸容器服务出口暴露章节”
 
+- 如果bcs-api-gateway没有创建ingress，也没有提前解析好ingress里的域名就需要给bcs-gateway绑定hosts，解决bcs网关访问问题，否则这一步可以忽略
+  把域名bcs-api-gateway绑定到集群“蓝鲸蓝鲸7.0”任意一台node上，这个node最好是master角色
+
   `kubectl edit cm coredns -n kube-system`
+
+  添加以下内容：
+
+  ```
+          hosts {
+            1.1.1.1 bcs-api-gateway
+            fallthrough
+          }
+          # 1.1.1.1 是集群“蓝鲸蓝鲸7.0”任意一台node，最好是master
+  ```
+
+  ![](../assets/coredns_hosts.png)
 
 - 创建bcs-kube-agent所需证书
 
@@ -175,7 +189,7 @@ kubectl logs bcs-kube-agent-685b985f94-rg5sg --tail=10 -n bcs-system
   type: kubernetes.io/tls
   ```
 
-  通过webconsole或ssh到集群“蓝鲸社区版7.0”
+  通过webconsole或ssh到集群“蓝鲸蓝鲸7.0”
 
   ![-w2020](../assets/webconsole_login.png)
 
@@ -211,7 +225,6 @@ kubectl logs bcs-kube-agent-685b985f94-rg5sg --tail=10 -n bcs-system
   把 {集群ID} 替换为目前你操作的集群ID，例如：BCS-K8S-40000
 
   {BK_BCS_APIToken}替换为以下命名获取的字符串，获取方法如下
-
   ```bash
   # 在 “蓝鲸” 项目下的 “蓝鲸社区版7.0”集群下使用web-console，执行以下命名获取
   kubectl get secret bcs-password -n bcs-system -o yaml
@@ -223,7 +236,7 @@ kubectl logs bcs-kube-agent-685b985f94-rg5sg --tail=10 -n bcs-system
   把{BK_BCS_API_GATEWAY}替换为bcs-api-gateway的访问域名，域名如何获取已在 “蓝鲸容器服务出口暴露” 一节中说明，这里不再重复说明，例如：https://bcs-api.xxxx.com
 
   执行以下命令安装bcs-kube-agent
-  
+
   ```
   helm repo update
   helm upgrade --install bcs-kube-agent blueking-dev/bcs-kube-agent -f ./bcs-kube-agent-values.yaml -n bcs-system --devel
@@ -246,7 +259,7 @@ kubectl logs bcs-kube-agent-685b985f94-rg5sg --tail=10 -n bcs-system
   I0413 12:15:23.841994       1 report.go:74] apiserver addresses: https://1.1.1.1:6443,https://1.1.1.2:6443,https://1.1.1.3:6443
   I0413 12:15:23.842031       1 report.go:77] bke-server url：https://bcs-api-gateway:31443/bcsapi/v4/clustermanager/v1/clustercredential/BCS-K8S-40000
   ```
-  
+
   
 
 ####  添加集群 Node 节点
@@ -259,8 +272,10 @@ kubectl logs bcs-kube-agent-685b985f94-rg5sg --tail=10 -n bcs-system
 
 
 
+<<<<<<< HEAD
 
-## 四. 导入集群
+## 四. 导入已有集群
+
 除了可以新建集群，容器服务也支持用户导入已有的集群。导入集群有两种方式：
 
 - 通过集群的kubeconfig来达到BCS纳管的目的，这种导入方式优点是兼容各种各样的K8S集群，缺点是BCS只能控制K8S集群里的资源，而不能对云上其它资源进行管控，例如集群管理，节点添加，负载均衡等控制

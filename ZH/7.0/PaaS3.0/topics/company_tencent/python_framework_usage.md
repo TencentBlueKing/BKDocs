@@ -87,7 +87,7 @@ Python 开发框架是集成了蓝鲸系统功能，方便开发者可以快速�
 
 ## 日志使用
 
-- 日志相关配置方式复用 Django 的配置方式：[官方文档](https://docs.djangoproject.com/en/2.2/topics/logging/#using-logging)
+- 日志相关配置方式复用 Django 的配置方式：[官方文档](https://docs.djangoproject.com/en/3.2/topics/logging/#using-logging)
 
 ```python
 import logging

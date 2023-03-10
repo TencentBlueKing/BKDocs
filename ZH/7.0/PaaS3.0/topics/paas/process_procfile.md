@@ -28,13 +28,18 @@
 
 说到这里，你一定充满了好奇，该怎样定义和创建这些应用进程呢？
 
-这就轮到***Procfile***登场了。
+目前可通过 **Procfile** 或者 **app_desc.yaml** 来定义
 
-## 什么是 Procfile
 
-Procfile，即 Process File，顾名思义，是用来定义应用进程的文件入口。每一个蓝鲸应用都需要在根目录下，放置一个 Procfile 文件。
+## 如何定义应用进程
 
-让我们看看`blueapps`的 Procfile：
+目前蓝鲸平台支持以下 2 种方式定义进程：
+
+### 1. Procfile
+
+Procfile，即 Process File，顾名思义，是用来定义应用进程的文件入口，放在蓝鲸应用的根目录下。
+
+让我们看看`blueapps`的 Procfile 的示例：
 
 ```yaml
 web: gunicorn bluesapps.wsgi -b :$PORT --log-file -
@@ -44,7 +49,23 @@ web: gunicorn bluesapps.wsgi -b :$PORT --log-file -
 
 如果 `blueapps` 应用之前有过部署，可以跳转到‘应用引擎-进程管理’页面，查看和管理这两个进程的运行情况。
 
-### 创建新的应用进程
+### 2. app_desc.yaml
+
+app_desc.yaml 是一种用来描述蓝鲸应用的配置文件。目前最新版的 Python 开发框架已经采用 app_desc.yaml 来定义进程。
+
+我看下如何在 app_desc.yaml 文件中定义进程：
+```yaml
+module:
+  language: Python
+  processes:
+    web:
+      command: gunicorn bluesapps.wsgi -b :$PORT --log-file -
+```
+
+app_desc.yaml 的更多配置信息可参考：[应用描述文件](./app_desc)。
+
+
+## 创建新的应用进程
 
 还是这个 `blueapps` 应用，倘若现在需求变得复杂，单纯的 Web 已经不能满足，你需要添加 Celery 来完成后台任务。
 
@@ -53,6 +74,20 @@ web: gunicorn bluesapps.wsgi -b :$PORT --log-file -
 ```yaml
 worker: python manage.py celery worker -l info
 beat: python manage.py celery beat -l info
+```
+
+
+或在 app_desc.yaml 中添加如下内容：
+```yaml
+module:
+  language: Python
+  processes:
+    web:
+      command: gunicorn bluesapps.wsgi -b :$PORT --log-file -
+    worker:
+      command: python manage.py celery worker -l info
+    beat:
+      command: python manage.py celery beat -l info
 ```
 
 这里我们使用的是
@@ -67,9 +102,9 @@ beat: python manage.py celery beat -l info
 
 ### 删除进程
 
-删除进程非常容易，和上面添加的操作一样，只需要在 Procfile 中删掉对应的那一行，然后 重新提交 & 部署 即可。
+删除进程非常容易，和上面添加的操作一样，只需要在 Procfile 或 app_desc.yaml 中删掉对应的那一行，然后 重新提交 & 部署 即可。
 
-### 扩容进程
+## 扩容进程
 
 随着应用访问量或者任务量逐渐增大，你会发现原来的进程无法负载更多了，这时你就会想到扩容进程。
 
@@ -89,6 +124,6 @@ beat: python manage.py celery beat -l info
 
 ### web 的含义
 
-平台会读取 Procfile 中定义的所有进程，而 `process_type` 值为 `web` 的进程，会被默认设置为应用的“访问主入口”，提供对外访问的能力。
+平台会读取 Procfile 或 app_desc.yaml 中定义的所有进程，而 `process_type` 值为 `web` 的进程，会被默认设置为应用的“访问主入口”，提供对外访问的能力。
 
 如果你想修改这个默认行为，可以阅读 [进程服务说明](./entry_proc_services.md) 了解更多。
