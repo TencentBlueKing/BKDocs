@@ -1,269 +1,192 @@
-# Prometheus SDK （python）使用说明
+# Prometheus SDK （Python）使用说明
 
 ## 写在前面
 
-Prometheus官方提供了上报 metric 的[Golang SDK](https://github.com/prometheus/client_golang), 用户可以自定义metric，然后采用 push 或 pull 的方式上报 metric 数据。
+Prometheus官方提供了上报 metric 的[Python SDK](https://github.com/prometheus/client_python), 用户可以自定义 metric，然后采用 push 或 pull 的方式上报 metric 数据。
 
 下面介绍下这两个方式的使用说明。
+
 
 ## 使用示例
 
 #### 数据埋点示例
+
 ##### Counter类型
 ```
-// 创建 counter 对象
-counter = prometheus.NewCounter(prometheus.CounterOpts{
-    Name: "api_called_total",
-    Help: "How many is the api called",
-})
+Registry = CollectorRegistry()
 
-// 注册
-registry := prometheus.NewRegistry()
-registry.MustRegister(counter)
+# counter 类型对象, 可以添加 label
+counter = Counter("api_called_total", "How many is the api called", ["inner_ip"], registry=Registry)
 
-// 计算 counter
-counter.Inc()
+# 计算 counter
+counter.inc(1)
 ```
 
 ##### Gauge 类型
 ```
-// 创建 gauge 对象
-gauge = prometheus.NewGauge(prometheus.GaugeOpts{
-    Name: "cpu_usage",
-    Help: "simulate the cpu usage metric",
-})
+Registry = CollectorRegistry()
 
-// 注册
-registry := prometheus.NewRegistry()
-registry.MustRegister(gauge)
+# gauge 类型对象
+gauge = Gauge("cpu_usage", "simulate the cpu usage metric", ["inner_ip"], registry=Registry)
 
-// 设置 gauge
-gauge.Set(rand.Float64() / 100)
+# 设置 gauge
+gauge.set(random.random())
 ```
 
 ##### Histogram 类型
 ```
-// 创建 histogram 对象
-histogram = prometheus.NewHistogram(prometheus.HistogramOpts{
-    Name:    "task_time_histogram",
-    Help:    "analyze the time of task with histogram",
-    Buckets: []float64{1, 2, 3, 4, 5},
-})
+Registry = CollectorRegistry()
 
-// 注册
-registry := prometheus.NewRegistry()
-registry.MustRegister(histogram)
+# histogram 类型对象
+histogram = Histogram(
+    "task_time_histogram",
+    "analyze the time of task with histogram",
+    registry=Registry,
+    buckets=(1, 2, 3, 4, 5, float("inf")),
+)
 
-// 观测histogram
-histogram.Observe(3)
+// 观测 histogram
+histogram.observe(3)
 ```
 
 ##### Summary 类型
 ```
-// 创建 summary 对象
-summary = prometheus.NewSummary(prometheus.SummaryOpts{
-    Name: "task_time_summary",
-    Help: "analyze the time of task with summary",
-    Objectives: map[float64]float64{
-        0.5:  0.05,
-        0.9:  0.01,
-        0.99: 0.001,
-    },
-})
+Registry = CollectorRegistry()
 
-// 注册
-registry := prometheus.NewRegistry()
-registry.MustRegister(histogram)
+# summary 类型对象
+summary = Summary(
+    "task_time_summary", "analyze the time of task with summary", registry=Registry
+)
 
 // 观测 summary
-summary.Observe(rand.Float64())
+summary.Observe(random.randint(1, 100))
 ```
 
 #### PUSH 上报方式
 metric 服务主动上报到端点。
 
 ##### 注意事项
-- 补充 headers，用于携带 token 信息。定义 Client 行为，由于 prometheus sdk 没有提供新增或者修改 Headers 的方法，所以需要实现 Client interface。
-- 填写上报端点，在 push.New("$endpoint", name) 里指定。然后需要将自定义的 client 传入到 pusher.Client($bkClient{}) 里面。
+- 补充 headers，用于携带 token 信息。实现一个自定义的 handler。
+- 填写上报端点，在 push_to_gateway("$endpoint", ...) 里指定。然后将自定义的 handler 传入到函数里。
 - 建议上报时 Grouping 指定 instance labels，这样页面上能够以 target 维度归组。
 
 ##### 示例代码
-
 ```
-package main
+# -*- coding: utf-8 -*-
+import time
+import random
 
-import (
-    "fmt"
-    "log"
-    "math/rand"
-    "net/http"
-    "time"
+from prometheus_client.exposition import default_handler
+from prometheus_client import CollectorRegistry, Counter, Gauge, Summary, Histogram, push_to_gateway
 
-    "github.com/prometheus/client_golang/prometheus"
-    "github.com/prometheus/client_golang/prometheus/push"
+# 需要变动的内容
+JOBNAME = ""
+TOKEN = ""
+ADDR = ""  # host:port
+
+Registry = CollectorRegistry()
+
+# metric 定义
+# counter 类型
+counter = Counter("api_called_total", "How many is the api called", registry=Registry)
+
+# gauge 类型
+gauge = Gauge("cpu_usage", "simulate the cpu usage metric", registry=Registry)
+
+# histogram 类型
+histogram = Histogram(
+    "task_time_histogram",
+    "analyze the time of task with histogram",
+    registry=Registry,
+    buckets=(1, 2, 3, 4, 5, float("inf")),
 )
 
-// 需要更改的内容
-var (
-    name = "demo"
-    // TOKEN 即在 saas 侧申请的 Token
-    token = ""
-    // 注意和所属服务部署的云区域一致
-    host = ""
+# summary 类型
+summary = Summary(
+    "task_time_summary", "analyze the time of task with summary", registry=Registry
 )
 
-type bkClient struct{}
+# 定义基于监控 token 的上报 handler 方法
+def bk_handler(url, method, timeout, headers, data):
+    def handle():
+        headers.append(("X-BK-TOKEN", TOKEN))
+        print(headers)
+        default_handler(url, method, timeout, headers, data)()
 
-// Do 用于指定 header 的 token
-func (c *bkClient) Do(r *http.Request) (*http.Response, error) {
-    r.Header.Set("X-BK-TOKEN", token)
-    return http.DefaultClient.Do(r)
-}
+    return handle
 
-// 创建自定义的 metric
-var (
-    // counter
-    counter = prometheus.NewCounter(prometheus.CounterOpts{
-        Name: "api_called_total",
-        Help: "How many is the api called",
-    })
-    // gauge
-    gauge = prometheus.NewGauge(prometheus.GaugeOpts{
-        Name: "cpu_usage",
-        Help: "simulate the cpu usage metric",
-    })
-    // histogram
-    histogram = prometheus.NewHistogram(prometheus.HistogramOpts{
-        Name:    "task_time_histogram",
-        Help:    "analyze the time of task with histogram",
-        Buckets: []float64{1, 2, 3, 4, 5},
-    })
-    // summary
-    summary = prometheus.NewSummary(prometheus.SummaryOpts{
-        Name: "task_time_summary",
-        Help: "analyze the time of task with summary",
-        Objectives: map[float64]float64{
-            0.5:  0.05,
-            0.9:  0.01,
-            0.99: 0.001,
-        },
-    })
-)
 
-func main() {
-    // 创建一个pusher, 并指定 grouping instance labels
-    pusher := push.New(fmt.Sprintf("%s:4318", host), name).Grouping("instance", "my.host.ip")
+# 推送到端点
+def push_demo():
+    while True:
+        # 根据实际需求，设置不同类型 metric 的值
+        counter.inc(1)
+        gauge.set(random.random())
+        histogram.observe(3)
+        summary.observe(random.randint(1, 100))
 
-    // 创建自定义register，并注册多个meterics
-    registry := prometheus.NewRegistry()
-    registry.MustRegister(counter, gauge, histogram, summary)
-
-    // 添加registry
-    pusher.Gatherer(registry)
-
-    // 传入自定义 Client
-    pusher.Client(&amp;bkClient{})
-
-    ticker := time.Tick(10 * time.Second)
-    for {
-        <-ticker
-
-        // 添加 metric 对应的值
-        counter.Inc()
-        gauge.Set(rand.Float64() / 100)
-		// 直方图 bucket 中小于3时，过滤到的数值为0
-        histogram.Observe(3)
-        summary.Observe(rand.Float64())
-
-        // 推送数据
-        if err := pusher.Push(); err != nil {
-            log.Println("failed to push records to the server, error:", err)
-            continue
-        }
-        log.Println("push records to the server successfully")
-    }
-}
+        push_to_gateway(
+            ADDR,
+            job=JOBNAME,
+            registry=Registry,
+            grouping_key={"instance": "my.host.ip"},
+            handler=bk_handler,
+        )
+        time.sleep(10)
 ```
 
 
 #### PULL 上报方式
 通过接口获取自定义的 metric 信息。
 
-
 ##### 示例代码
 ```
-package main
+# -*- coding: utf-8 -*-
+import random
+import time
 
-import (
-    "math/rand"
-    "net/http"
-    "time"
+from prometheus_client import start_http_server, CollectorRegistry, counter, gauge, histogram, summary
 
-    "github.com/prometheus/client_golang/prometheus"
-    "github.com/prometheus/client_golang/prometheus/promhttp"
+PORT = 8080
+HOST = "127.0.0.1"
+
+Registry = CollectorRegistry()
+
+# metric 定义
+# counter 类型
+counter = Counter("api_called_total", "How many is the api called", registry=Registry)
+
+# gauge 类型
+gauge = Gauge("cpu_usage", "simulate the cpu usage metric", registry=Registry)
+
+# histogram 类型
+histogram = Histogram(
+    "task_time_histogram",
+    "analyze the time of task with histogram",
+    registry=Registry,
+    buckets=(1, 2, 3, 4, 5, float("inf")),
 )
 
-var metricAddr = ":8080"
-
-// 创建自定义的 metric
-var (
-    // counter
-    counter = prometheus.NewCounter(prometheus.CounterOpts{
-        Name: "api_called_total",
-        Help: "How many is the api called",
-    })
-    // gauge
-    gauge = prometheus.NewGauge(prometheus.GaugeOpts{
-        Name: "cpu_usage",
-        Help: "simulate the cpu usage metric",
-    })
-    // histogram
-    histogram = prometheus.NewHistogram(prometheus.HistogramOpts{
-        Name:    "task_time_histogram",
-        Help:    "analyze the time of task with histogram",
-        Buckets: []float64{1, 2, 3, 4, 5},
-    })
-    // summary
-    summary = prometheus.NewSummary(prometheus.SummaryOpts{
-        Name: "task_time_summary",
-        Help: "analyze the time of task with summary",
-        Objectives: map[float64]float64{
-            0.5:  0.05,
-            0.9:  0.01,
-            0.99: 0.001,
-        },
-    })
+# summary 类型
+summary = Summary(
+    "task_time_summary", "analyze the time of task with summary", registry=Registry
 )
 
-func main() {
-    registry := prometheus.NewRegistry()
-    registry.MustRegister(counter, gauge, histogram, summary)
+def pull_demo():
+    # 如果使用 web 框架，可以根据实际使用进行调整
+    # 比如使用 django，可以参考[2]
+    start_http_server(PORT, HOST, Registry)
 
-    addValues()
-
-    // gin 等 web 框架中可以参考对应框架加载示例
-    http.Handle("/metrics", promhttp.HandlerFor(registry, promhttp.HandlerOpts{EnableOpenMetrics: true})) 
-    http.ListenAndServe(metricAddr, nil)
-}
-
-// 设置不同 metric 需要的值
-func addValues() {
-    go func() {
-        ticker := time.Tick(10 * time.Second)
-        for {
-            <-ticker
-            // 添加 metric 对应的值
-            counter.Inc()
-            gauge.Set(rand.Float64() / 100)
-			// 直方图 bucket 中小于3时，过滤到的数值为0
-            histogram.Observe(3)
-            summary.Observe(rand.Float64())
-        }
-    }()
-}
+    while True:
+        # 根据实际需求，设置不同类型 metric 的值
+        counter.inc(1)
+        gauge.set(random.random())
+        histogram.observe(3)
+        summary.observe(random.randint(1, 100))
+        time.sleep(10)
 ```
 
 ## 参考
-
-1. [prometheus golang sdk](https://github.com/prometheus/client_golang)
+1. [prometheus python sdk](https://github.com/prometheus/client_python)
+2. [django prometheus](https://github.com/korfuri/django-prometheus)
 
