@@ -301,7 +301,7 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 
 ## 部署 SaaS 时的报错
 
-### 创建 SaaS 时报错 仅支持 .tar 或 tar.gz 格式的文件
+### 创建应用时选择安装包后报错 仅支持 .tar 或 tar.gz 格式的文件
 **表现**
 
 使用浏览器访问 开发者中心，在 “创建应用” 界面上传 SaaS 安装包文件后，页面顶部出现报错：
@@ -320,6 +320,20 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 文件上传界面限制了文件的 MIME 类型为 `application/x-tar,application/x-gzip`。如果不匹配，则会出现上述报错。
 
 已知 Windows 10 系统更新后，`.gz` 文件的 MIME 类型变为了 `application/gzip`。
+
+
+### 创建应用时选择安装包后报错 应用 ID: 某名称 的应用已存在
+**表现**
+
+使用浏览器访问 开发者中心，在 “创建应用” 界面上传 SaaS 安装包文件后，文件名下方出现报错：`应用 ID: 某名称 的应用已存在！`
+
+**结论**
+
+应用已经创建后，如果需要更新软件包，请参考 [SaaS 部署文档中上传 SaaS 安装包章节](install-saas-manually.md#upload-bkce-saas) 操作。
+
+**问题分析**
+
+无。
 
 
 ### 部署 SaaS 时报错 配置资源实例异常: unable to provision instance for services mysql
