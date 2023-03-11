@@ -329,7 +329,7 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 
 **结论**
 
-应用已经创建后，如果需要更新软件包，请参考 [SaaS 部署文档中上传 SaaS 安装包章节](install-saas-manually.md#upload-bkce-saas) 操作。
+应用已经创建后，如果需要更新软件包，请参考 [《SaaS 部署文档》中的“上传安装包——更新安装包”章节](install-saas-manually.md#upload-bkce-saas) 操作。
 
 **问题分析**
 
