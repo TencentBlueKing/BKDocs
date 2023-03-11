@@ -573,6 +573,32 @@ Events:
 如有其他情况，请联系助手排查。
 
 
+### 安装插件时下发安装包失败，执行日志显示作业平台 API 请求异常 HTTP 状态码 401
+**表现**
+
+安装插件时在“下发安装包”步骤失败，执行日志显示：
+``` plain
+[ERROR] [ 1306201][作业平台]API请求异常:(Component request third-party system [JOB3] interface [fast_transfer_file] error: Status Code: 401,Error Message: third-party system interface response status code is not 200,please try again later or contact component developer to handle this) path => api/c/compapi/v2 jobv3/fast_transfer_file)
+```
+
+**结论**
+
+临时解决办法：重启一次 `bk-job-gateway` pod 即可。在中控机执行如下命令：
+``` bash
+kubectl rollout restart deployment -n blueking bk-job-gateway
+```
+
+**问题分析**
+
+检查发现 `bk-job-gateway-` 开头的 pod 日志中出现异常：
+``` plain
+时间略 ERROR [,,] 14 --- [           main] c.t.b.j.g.s.impl.EsbJwtServiceImpl       : Build esb jwt public key caught error!
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://bkapi.域名略/api/c/compapi/v2/esb/get_api_public_key": Connect to bkapi.域名略:80 [bkapi.域名略/IP略] failed: connect timed out; nested exception is org.apache.http.conn.ConnectTimeoutException: Connect to bkapi.域名略:80 [bkapi.域名略/IP略] failed: connect timed out
+```
+
+待开发排查原因。可能是用户虚拟网络不稳定导致 job 误判或缓存了错误结果。
+
+
 <a id="install-bcs" name="install-bcs"></a>
 
 ## 部署容器管理平台时的报错
