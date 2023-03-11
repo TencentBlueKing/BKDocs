@@ -23,8 +23,12 @@
 * docker 问题案例
 * k8s 问题案例
 
+<a id="prepare" name="prepare"></a>
+
 ## 部署前的报错
 待用户反馈。
+
+<a id="install-bkce" name="install-bkce"></a>
 
 ## 部署基础套餐时的报错
 
@@ -293,6 +297,8 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 启用 NTP 服务，待各 node 时间一致后，请求恢复正常。
 
 
+<a id="install-saas" name="install-saas"></a>
+
 ## 部署 SaaS 时的报错
 
 ### 创建 SaaS 时报错 仅支持 .tar 或 tar.gz 格式的文件
@@ -424,6 +430,9 @@ Events:
 
 其他报错可自行处理，或提供上述 kubectl describe pod 命令的完整输出联系蓝鲸助手。
 
+
+<a id="install-agent" name="install-agent"></a>
+
 ## 安装 agent 时的报错
 
 ### 执行日志里显示 curl 下载 setup_agent.sh 报错 could not resolv host
@@ -550,9 +559,13 @@ Events:
 如有其他情况，请联系助手排查。
 
 
+<a id="install-bcs" name="install-bcs"></a>
+
 ## 部署容器管理平台时的报错
 待用户反馈。
 
+
+<a id="install-co" name="install-co"></a>
 
 ## 部署监控日志套餐时的报错
 ### bkmonitor-operator 部署超时，日志显示 dial unix /data/ipc/ipc.state.report: connect: no such file or directory
@@ -573,6 +586,9 @@ failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/
 
 未安装 agent，导致主机不存在 gse socket 文件，因此容器内报错无此文件。
 
+
+<a id="install-ci" name="install-ci"></a>
+
 ## 部署持续集成套餐时的报错
 ### 部署 bk-ci 时 timed out waiting for the condition
 **表现**
@@ -583,6 +599,8 @@ failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/
 
 `bk-ci` 默认配置项有误，请参考 《[部署持续集成平台-蓝盾](install-ci-suite.md#install-ci)》文档配置 custom values 后重新部署。
 
+
+<a id="browser" name="browser"></a>
 
 ## 浏览器访问时的报错
 ### 蓝鲸桌面点击图标后提示 应用已经下架，正在为您卸载该应用
@@ -693,6 +711,8 @@ kubectl logs -n blueking deploy/bk-login-web
    * 如果一致，也请 **先尝试部署一次监控平台**。如果问题依旧，请联系助手排查。
 
 
+<a id="use-pipeline" name="use-pipeline"></a>
+
 ## 蓝盾使用问题
 
 ### 流水线上传构件失败
@@ -752,6 +772,8 @@ helmfile -f 03-bkci.yaml.gotmpl sync
 添加 master 权限后，重新保存流水线，发现 GitLab 项目中已经出现 webhook url，点击 Test 可以成功触发流水线运行。
 
 
+<a id="use-docker" name="use-docker"></a>
+
 ## docker 问题案例
 ### 配置的 docker registry-mirrors 没有生效
 **表现**
@@ -777,6 +799,8 @@ Error response from daemon: Get https://registry-1.docker.io/v2/: net/http: requ
 
 测试发现 `hub-mirror.c.163.com` 可用，问题解决。
 
+
+<a id="use-k8s" name="use-k8s"></a>
 
 ## k8s 问题案例
 
