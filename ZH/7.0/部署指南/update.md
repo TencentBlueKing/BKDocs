@@ -3,16 +3,16 @@
 
 ## 更新 bk-job
 
-|  | 7.0.0 中的版本 | 本次更新的版本 |
+|  | chart version | app version |
 |--|--|--|
-| charts version | 0.2.6 | 0.3.2-rc.3 |
-| app version | 3.5.1 | 3.6.2-rc.3 |
+| 7.0.0 中的版本 | 0.2.6 | 3.5.1 |
+| 本次更新的版本 | 0.3.2-rc.3 | 3.6.2-rc.3 |
 
 登录到 **中控机**，先更新 helm 仓库：
 ``` bash
 helm repo update
 ```
-使用 `helm search repo bk-job -l --devel` 命令确认已经存在 `bk-job` charts 的 `0.3.2-rc.3` 版本：
+使用 `helm search repo bk-job -l --devel` 命令确认版本信息，预期输出含有如下的行：
 ``` plain
 NAME           	CHART VERSION	APP VERSION 	DESCRIPTION
 blueking/bk-job	0.3.2-rc.3   	3.6.2-rc.3  	略
@@ -48,7 +48,7 @@ bk-job   blueking/bk-job   0.3.2-rc.3
 
 
 ## 更新标准运维
-下载适用于蓝鲸 7.0.0 的安装包：
+下载适用于蓝鲸 7.0 的安装包：
 * [bk_sops-V3.26.6.tar.gz](https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.26.6.tar.gz)
 
 参考 《[部署标准运维（bk_sops）](install-saas-manually.md#deploy-bkce-saas-sops)》 文档上传安装包，并部署到生产环境。
