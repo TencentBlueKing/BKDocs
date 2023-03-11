@@ -177,10 +177,6 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 ### 部署节点管理（bk_nodeman）
 目前节点管理已经改为了 Charts 形态，通过 `helmfile` 命令进行部署。
 
->**注意**
->
->如果已经部署了 S-Mart 应用格式的节点管理，则无法直接升级，需要清除数据库记录。因为应用「基本信息」界面的“删除应用”按钮仅为标记删除。
-
 安装节点管理之前，保障中控机上能解析 `bkrepo.$BK_DOMAIN` 的域名，因为安装时会自动调用脚本在 bkrepo 中创建 bucket。
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
