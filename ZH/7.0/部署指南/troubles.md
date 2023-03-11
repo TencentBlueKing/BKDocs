@@ -10,7 +10,7 @@
 * 部署前的报错
 * 部署基础套餐时的报错
 * 部署 SaaS 时的报错
-* 安装 agent 时的报错
+* 安装 agent 及插件时的报错
 * 部署容器管理平台时的报错
 * 部署监控日志套餐时的报错
 * 部署持续集成套餐时的报错
@@ -447,7 +447,7 @@ Events:
 
 <a id="install-agent" name="install-agent"></a>
 
-## 安装 agent 时的报错
+## 安装 agent 及插件时的报错
 
 ### 执行日志里显示 curl 下载 setup_agent.sh 报错 could not resolv host
 **表现**
