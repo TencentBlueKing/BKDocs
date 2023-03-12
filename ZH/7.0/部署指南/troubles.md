@@ -578,7 +578,7 @@ Events:
 
 安装插件时在“下发安装包”步骤失败，执行日志显示：
 ``` plain
-[ERROR] [ 1306201][作业平台]API请求异常:(Component request third-party system [JOB3] interface [fast_transfer_file] error: Status Code: 401,Error Message: third-party system interface response status code is not 200,please try again later or contact component developer to handle this) path => api/c/compapi/v2 jobv3/fast_transfer_file)
+时间略 [ERROR] [1306201] [作业平台]API请求异常:(Component request third-party system [JOBV3] interface [fast_transfer_file] error: Status Code: 401, Error Message: third-party system interface response status code is not 200, please try again later or contact component developer to handle this) path => /api/c/compapi/v2/jobv3/fast_transfer_file/
 ```
 
 **结论**
