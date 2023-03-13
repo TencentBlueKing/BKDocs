@@ -6,11 +6,11 @@ description: 常见问题集锦
 
 ## 蓝盾功能使用指引
 
-* 蓝盾产品功能介绍：[产品功能](../..//services/console.md)
+* 蓝盾产品功能介绍：[产品功能](../../Services/Console/Console.md)
 
-* 蓝盾流水线功能使用示例：[示例](../..//tutorials/examples)
+* 蓝盾流水线功能使用示例：[示例](../../Quickstarts/Case/Examples/pull-upload-download.md)
 
-* 蓝盾流水线常见场景案例：[场景实践](../..//tutorials/scene)
+* 蓝盾流水线常见场景案例：[场景实践](../../Quickstarts/Case/Scene/Arts-upload-resources.md)
 
 ---
 
@@ -25,3 +25,7 @@ description: 常见问题集锦
    1.3  提供构建日志   (获取方式参照 [基本概念](user-guide.md))
 
    1.4  提供服务日志   （可选）
+
+## 更多 FAQ
+
+我们有统一的问答社区，访问[蓝鲸社区](https://bk.tencent.com/s-mart/community)获取最全的 FAQ 文档。
