@@ -1,4 +1,4 @@
-# <span id = "intro">产品简介 </span>
+# 产品简介
 
 蓝鲸持续集成平台（代号 bk-ci）是一个免费并开源的 CI 服务，可助你自动化构建-测试-发布工作流，持续、快速、高质量地交付你的产品。
 
@@ -26,7 +26,7 @@ bk-ci 提供了流水线、代码检查、代码库、凭证管理、环境管�
 
 | 🐤 了解基本概念 | 👉 使用 BKCI | 🚀 部署 BKCI |
 | :--- | :--- | :--- |
-| [BKCI 是什么？](#intro) | [创建你的第一条流水线](../Quickstarts/Create-your-first-pipeline.md) | [BKCI 硬件规格指南](../Setup/system-requirements/hardware.md) |
+| [BKCI 是什么？](./README.md) | [创建你的第一条流水线](../Quickstarts/Create-your-first-pipeline.md) | [BKCI 硬件规格指南](../Setup/system-requirements/hardware.md) |
 | [BKCI 组件](./terminology/components.md) | [关联你的第一个代码库](../Quickstarts/Link-your-first-repo.md) | [BKCI 系统要求](../Setup/system-requirements/README.md)  |
 | [快速熟悉流水线](./terminology/Learn-pipeline-in-5min.md) | [为你的Git工程开启CI](../Quickstarts/Enable-ci.md) | |
 | [术语解释](./terminology/Stage.md) | [示例](../Quickstarts/Case/Examples/create-pipeline-by-template.md) |  |
