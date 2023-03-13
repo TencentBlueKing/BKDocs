@@ -40,5 +40,6 @@ bk-ci 提供了流水线、代码检查、代码库、凭证管理、环境管�
 
 ## 文档共建
 
-* [CONTRIBUTING](/%E6%96%B0%E6%96%87%E6%A1%A3%E4%B8%AD%E5%BF%83%E6%A0%BC%E5%BC%8F%E8%A6%81%E6%B1%82/%E6%96%87%E6%A1%A3%E6%9B%B4%E6%96%B0%E6%8C%87%E5%BC%95.md)
+[CONTRIBUTING](https://github.com/TencentBlueKing/BKDocs/blob/master/新文档中心格式要求/文档更新指引.md)
+
 
