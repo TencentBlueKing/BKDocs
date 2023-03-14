@@ -26,7 +26,6 @@
         * [业务接入 Helm](产品白皮书/Function/helm/ServiceAccess.md)
         * [使用 Helm 发布应用](产品白皮书/Function/helm/Release.md)
         * [Helm 使用技巧](产品白皮书/Function/helm/Skills.md)
-        * [如何编写 Helm questions.yaml](产品白皮书/Function/helm/WriteQuestionsYaml.md)
     * [应用](产品白皮书/Function/k8s/Application.md)
     * [GameWorkload](产品白皮书/Function/game-workload.md)
     * [网络]()

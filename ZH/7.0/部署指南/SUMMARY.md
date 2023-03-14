@@ -12,6 +12,7 @@
 * [卸载](uninstall.md)
 * [问题案例](troubles.md)
 * [FAQ](faq.md)
+* [单产品更新](update.md)
 * [附录]()
     * [腾讯云 TKE 集群准备](tke_hosting.md)
     * [分步部署基础套餐后台](install-base-manually.md)

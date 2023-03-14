@@ -585,20 +585,21 @@ failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/
 
 
 ## 浏览器访问时的报错
-### 蓝鲸桌面点击图标后提示 应用已经下载，正在为您卸载该应用
+### 蓝鲸桌面点击图标后提示 应用已经下架，正在为您卸载该应用
 **表现**
 
-在蓝鲸桌面点击应用图标，结果提示 ”应用已经下载，正在为您卸载该应用……”。
+在蓝鲸桌面点击应用图标，结果提示 ”应用已经下架，正在为您卸载该应用……”。
 
 **结论**
 
-PaaS 初始化异常，具体原因待查，推荐先行卸载重装 PaaS。
+PaaS 初始化异常。
 
-后续用户如有遇到，请收集 `bkpaas3-apiserver-migrate-db` Pod 的 2 次日志供助手排查：
+我们正在排查此问题出现的原因，请在 **中控机** 执行如下命令取得数据库转储文件：
 ``` bash
-kubectl logs -n blueking bkpaas3-apiserver-migrate-db-补全名字
-kubectl logs -p -n blueking bkpaas3-apiserver-migrate-db-补全名字
+kubectl exec -it -n blueking bk-mysql-mysql-master-0 -- mysqldump -uroot -pblueking --databases open_paas bkpaas3_apiserver | gzip -c > bk-paas3-dump.sql.gz
 ```
+然后将生成的 `bk-paas3-dump.sql.gz` 文件发送给蓝鲸助手。
+
 
 **问题分析**
 
