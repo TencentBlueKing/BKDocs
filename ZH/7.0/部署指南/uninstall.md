@@ -327,7 +327,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 #### 卸载 bk-monitor-operator
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-NAMESPACE="bkmonitor-operator" ./scripts/uninstall.sh -y bk-monitor-operator
+NAMESPACE="bkmonitor-operator" ./scripts/uninstall.sh -y bkmonitor-operator
 ```
 #### 卸载 bk-log-search
 ``` bash
