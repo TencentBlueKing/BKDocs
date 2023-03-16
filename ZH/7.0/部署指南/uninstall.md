@@ -356,59 +356,70 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 
 如果想完全卸载蓝鲸，请按以下步骤操作：
 
-1. 浏览器访问节点管理，卸载全部节点的 gse_agent。
-2. 根据安装顺序反过来依次卸载，先卸载监控日志套餐（如有安装）：
-   ``` bash
-   helmfile -f 04-bklog-collector.yaml.gotmpl destroy
-   helmfile -f 04-bkmonitor-operator.yaml.gotmpl destroy
-   helmfile -f 04-bklog-search.yaml.gotmpl destroy
-   helmfile -f 04-bkmonitor.yaml.gotmpl destroy
-3. 等待上面的的 Pod 都彻底删除干净后，开始卸载监控日志的存储服务：
-   ``` bash
-   helmfile -f monitor-storage.yaml.gotmpl destroy
-   ```
-4. 卸载 BCS 及蓝鲸基础套餐：
-   ``` bash
-   helmfile -f 03-bcs.yaml.gotmpl destroy
-   helmfile -f base-blueking.yaml.gotmpl destroy
-   ```
-5. 删除蓝鲸基础套餐的存储服务：
-   ``` bash
-   helmfile -f base-storage.yaml.gotmpl destroy
-   ```
-6. 删除其他资源：
-   ``` bash
-   # 删除给paas3创建的账号
-   kubectl delete clusterrolebinding bk-paasengine; kubectl -n blueking delete sa bk-paasengine;
-   # 删除crd：
-   kubectl get crd | grep tencent.com | xargs --no-run-if-empty kubectl delete crd
-   # 删除pvc：
-   kubectl delete pvc --all -n blueking; kubectl delete pvc --all -n bcs-system
-   ```
-7. 删除部署 SaaS 创建的 namespace：
-   ``` bash
-   kubectl get ns | awk '/^bkapp-bk/ { print $1 }' | xargs --no-run-if-empty kubectl delete ns
-   ```
-8. 删除残留资源：
-   ``` bash
-   # 删除已知的 hooks 生成的资源残留
-   kubectl delete secret,configmap,job -n blueking -l 'app.kubernetes.io/instance in (bk-job,bk-repo,bk-paas)'
-   # 删除已知的无label的残留资源：
-   kubectl delete secret bkpaas3-engine-bkrepo-envs bkpaas3-workloads-bkrepo-envs -n blueking ; kubectl delete configmap bk-log-search-builtin-collect-configmap bk-log-search-grafana-ini bkpaas3-apiserver-3rd-apps -n blueking
-   ```
-9. 如果是用 `bcs.sh` 创建的 k8s 集群，那么检查下 localpv 的目录是否有残留文件：
-   ``` bash
-   for ip in node_ips; do
-     ssh $ip 'echo $HOSTNAME; find /mnt/blueking/ -type f';
-   done
-   ```
-10. 检查确保无残留：
+1.  浏览器访问节点管理，卸载全部节点的 GSE Agent。如有部署 Proxy，卸载 Agent 完毕后请一并卸载。
+2.  根据安装顺序反过来依次卸载，先卸载监控日志套餐（如有安装）：
+    ``` bash
+    cd ~/bkhelmfile/blueking/  # 进入工作目录
+    ./scripts/uninstall.sh -y bklog-collector
+    NAMESPACE="bkmonitor-operator" ./scripts/uninstall.sh -y bkmonitor-operator
+    ./scripts/uninstall.sh -y bk-log-search
+    ./scripts/uninstall.sh -y bk-monitor
+    ```
+3.  等待上面的的 Pod 都彻底删除干净后，开始卸载监控日志的存储服务：
+    ``` bash
+    helmfile -f monitor-storage.yaml.gotmpl destroy
+    ```
+4.  删除部署 SaaS 创建的 namespace：
+    ``` bash
+    kubectl get ns | awk '/^bkapp-bk/ { print $1 }' | xargs --no-run-if-empty kubectl delete ns
+    ```
+5.  卸载 BCS 、蓝盾及蓝鲸基础套餐：
+    ``` bash
+    NAMESPACE="bcs-system" ./scripts/uninstall.sh -y bcs-services-stack
+    ./scripts/uninstall.sh -y  # 无参数表示删除blueking namespace下的所有release，包括蓝盾
+    ```
+6.  删除其他资源：
+    ``` bash
+    # 删除给paas3创建的账号
+    kubectl delete clusterrolebinding bk-paasengine;
+    kubectl -n blueking delete sa bk-paasengine;
+    # 删除crd：
+    kubectl get crd | grep tencent.com | xargs --no-run-if-empty kubectl delete crd
+    # 删除pvc：
+    kubectl delete pvc --all -n blueking; kubectl delete pvc --all -n bcs-system
+    # 删除已知的 hooks 生成的资源残留
+    kubectl delete secret,configmap,job -n blueking -l 'app.kubernetes.io/instance in (bk-job,bk-repo,bk-paas)'
+    # 删除已知的无label的残留资源：
+    kubectl delete secret bkpaas3-engine-bkrepo-envs bkpaas3-workloads-bkrepo-envs -n blueking
+    kubectl delete configmap bk-log-search-builtin-collect-configmap bk-log-search-grafana-ini bkpaas3-apiserver-3rd-apps -n blueking
+    ```
+7.  如果是用 `bcs.sh` 创建的 k8s 集群，那么检查下 localpv 的目录是否有残留文件：
+    ``` bash
+    nodes_ips=$(kubectl get nodes -o json |jq -r '.items[].status.addresses[] | select(.type=="InternalIP") | .address')
+    for ip in $node_ips; do
+      ssh $ip 'echo $HOSTNAME; find /mnt/blueking/ -type f';
+    done
+    ```
+8.  检查残留资源：
     ``` bash
     kubectl get deploy,sts,cronjob,job,pod,svc,ingress,secret,cm,sa,role,rolebinding,pvc -n blueking
+    kubectl get deploy,sts,cronjob,job,pod,svc,ingress,secret,cm,sa,role,rolebinding,pvc -n bcs-system
+    kubectl get deploy,sts,cronjob,job,pod,svc,ingress,secret,cm,sa,role,rolebinding,pvc -n bkmonitor-operator
     ```
-11. 重命名工作目录（部署时会写入一些文件到这里，一段时间后确认不需要时可删除）：
+    可能残留一些公共资源，为正常情况。参考输出：
+    ``` plain
+    NAME                     TYPE  其他字段略
+    secret/default-token-略  kubernetes.io/service-account-token  其他字段略
+    
+    NAME  其他字段略
+    configmap/kube-root-ca.crt  其他字段略
+    
+    NAME  其他字段略
+    serviceaccount/default  其他字段略
+    ```
+9.  重命名工作目录（部署时会写入一些文件到这里，一段时间后确认不需要时可删除）：
     ``` bash
-    mv ~/bkhelmfile ~/bkhelmfile.bak-$(date +%Y%m%d)
+    mv ~/bkhelmfile ~/bkhelmfile.bak-$(date +%Y%m%d-%H%M%S)
     ```
 
 接下来跟随 《[基础套餐部署](install-bkce.md)》 文档开始全新部署吧！
