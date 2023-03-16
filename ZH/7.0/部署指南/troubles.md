@@ -388,8 +388,55 @@ DeployError: 部署失败, 配置资源实例异常: unable to provision instanc
 * 手动部署：遗漏了 “[在 PaaS 界面配置 Redis 资源池](install-saas-manually.md#paas-svc-redis)” 步骤。
 
 
+### 部署 SaaS 在构建应用步骤出错
+**表现**
 
-### 部署 SaaS 在“执行部署前置命令”阶段报错
+在“开发者中心”部署 SaaS 时失败，页面显示在 构建阶段 的 “构建应用” 步骤失败。
+
+**结论**
+
+需要根据右侧日志查阅下面的案例，未记录的问题请提供日志截图联系客服或在社区发帖。
+
+**问题分析**
+
+无
+
+
+### 部署 SaaS 在构建应用步骤报错 code command not found
+**表现**
+
+在“开发者中心”部署 SaaS 时失败，页面显示在 构建阶段 的 “构建应用” 步骤失败。
+
+右侧部署日志显示：
+``` plain
+/tmp/stdlib.sh: line 2: code: command not found
+/tmp/stdlib.sh: line 2: code: command not found
+略
+    !! command failed (build: file /buildpack/bk-buildpack-python/bin/compile, line 0, code 127: operation failed)
+failed with exit code 1
+Building failed, please check logs for more details
+```
+
+**结论**
+
+未安装 PaaS runtimes 所致，请先完成 《[上传 PaaS runtimes 到 bkrepo](paas-upload-runtimes.md)》 文档。
+
+**问题分析**
+
+部署文档中提示了此步骤可选，并描述了使用场景。用户可能遗漏了文档步骤。
+
+出现这个报错的原因是：PaaS 在部署 `package` 格式的 SaaS 时，会直接 `curl bkrepo-url | bash` 下载构建脚本。
+
+当 runtimes 尚未上传到 bkrepo 时，bkrepo 响应的 json 内容为：
+``` json
+{
+  "code" : 错误码,
+...
+```
+这个 json 被 shell 解释为了 `"code"` 命令和 2 个参数 `:`、 `错误码,`，所以显示出报错 `line 2: code: command not found`。
+
+
+### 部署 SaaS 在执行部署前置命令步骤出错
 **表现**
 
 当使用“一键脚本”部署 SaaS 时，终端出现报错：
