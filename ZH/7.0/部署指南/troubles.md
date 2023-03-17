@@ -475,7 +475,7 @@ Events:
   Normal   Scheduled  3m56s                  default-scheduler  Successfully assigned bkapp-bk0us0itsm-prod/pre-release-hook to node-10-0-1-3
   Normal   Pulling    2m24s (x4 over 3m56s)  kubelet            Pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2"
   Warning  Failed     2m24s (x4 over 3m55s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: dial tcp: lookup docker.bkce7.bktencent.com on 10.0.1.1:53: no such host
-  Warning  Failed     2m24s (x4 over 3m55s)  ku：wqbelet            Error: ErrImagePull
+  Warning  Failed     2m24s (x4 over 3m55s)  kubelet            Error: ErrImagePull
   Normal   BackOff    2m10s (x6 over 3m55s)  kubelet            Back-off pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2"
   Warning  Failed     119s (x7 over 3m55s)   kubelet            Error: ImagePullBackOff
 ```
