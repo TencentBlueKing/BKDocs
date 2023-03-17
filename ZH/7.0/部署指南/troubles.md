@@ -297,11 +297,13 @@ data:
 
 尝试修改为 `"true"`，重试部署发现可以继续进行。
 
-### 重新部署 bk-paas 报错 UPGRADE FAILED: "bk-paas" has no deployed releases
+### 重新部署 bk-paas 报错 UPGRADE FAILED bk-paas has no deployed releases
 **表现**
+
 在初次部署 bk-paas 时失败，重新部署 bk-paas 会遇到报错：
 ``` plain
-Error: UPGRADE FAILED: "bk-paas" has no deployed releases
+Error:
+  UPGRADE FAILED: "bk-paas" has no deployed releases
 ```
 
 **结论**
@@ -314,7 +316,39 @@ Error: UPGRADE FAILED: "bk-paas" has no deployed releases
 
 当已经存在 release 部署记录时，重新执行 `helmfile sync` 会被解释为 `helm upgrade` 执行升级流程。
 
-自 2.7.1 版本起，Helm 使用最新的成功部署作为升级的基准。如果一直未曾成功部署，则重试时会直接报错 “ helm has no deployed releases ”。
+Helm 自 2.7.1 版本起，使用最新的成功部署作为升级的基准。如果某个 release 一直未曾成功部署，则重试时会直接报错 “has no deployed releases”。
+
+### 重新部署 bk-paas 报错 UPGRADE FAILED another operation is in progress
+**表现**
+
+在初次部署 bk-paas 时失败，重新部署 bk-paas 会遇到报错：
+``` plain
+Error:
+  UPGRADE FAILED: another operation (install/upgrade/rollback) is in progress
+```
+
+**结论**
+
+常见于部署过程中操作被意外中断。
+
+先查看异常的 release：
+``` bash
+helm list -aA
+```
+
+然后查看出错历史版本。以 `bk-paas` 为例，命令为 `helm history -n blueking bk-paas`。
+
+根据上一步的结果，有如下选择：
+* 如果有已经成功的历史版本，可以回滚：`helm rollback -n blueking bk-paas 成功的revision`。
+* 如果没有，可以卸载：`helm uninstall -n blueking bk-paas`。
+
+完成后重新部署即可。
+
+**问题分析**
+
+使用 helm install 或者 helm upgrade 的时候，helm 命令被中断，所以 release 状态未能更新。
+
+这些关键操作有保护避免重复执行，所以不能直接重试。需要先回滚到历史成功版本或者卸载，然后才能继续安装操作。
 
 
 ### Service call failed
