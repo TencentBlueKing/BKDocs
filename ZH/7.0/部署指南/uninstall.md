@@ -365,7 +365,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
     ./scripts/uninstall.sh -y bk-log-search
     ./scripts/uninstall.sh -y bk-monitor
     ```
-3.  等待上面的的 Pod 都彻底删除干净后，开始卸载监控日志的存储服务：
+3.  如果有执行步骤 2，等待命令执行完毕后，开始卸载监控日志的存储服务：
     ``` bash
     helmfile -f monitor-storage.yaml.gotmpl destroy
     ```
@@ -395,7 +395,8 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
     ```
 7.  如果是用 `bcs.sh` 创建的 k8s 集群，那么检查下 localpv 的目录是否有残留文件：
     ``` bash
-    nodes_ips=$(kubectl get nodes -o json |jq -r '.items[].status.addresses[] | select(.type=="InternalIP") | .address')
+    node_ips=$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}')
+    echo "node_ips=$node_ips."
     for ip in $node_ips; do
       ssh $ip 'echo $HOSTNAME; find /mnt/blueking/ -type f';
     done
