@@ -23,16 +23,16 @@ yum install -y jq unzip uuid
 
 在 **中控机** 执行如下命令：
 ``` bash
-k8s_nodes_ips=$(kubectl get nodes -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
+node_ips=$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}')
 test -f /root/.ssh/id_rsa || ssh-keygen -N '' -t rsa -f /root/.ssh/id_rsa  # 如果不存在rsa key则创建一个。
 # 开始给发现的ip添加ssh key，期间需要您输入各节点的密码。
-for ip in $k8s_nodes_ips; do
+for ip in $node_ips; do
   ssh-copy-id "$ip" || { echo "failed on $ip."; break; }  # 如果执行失败，则退出
 done
 ```
 
 常见报错：
-1. `Host key verification failed.`，且开头提示 `REMOTE HOST IDENTIFICATION HAS CHANGED`: 检查目的主机是否重装过。如果确认没连错机器，可以参考提示（如 `Offending 类型 key in /root/.ssh/known_hosts:行号`）删除 `known_hosts` 文件里的对应行。
+1. `Host key verification failed.`，且开头提示 `REMOTE HOST IDENTIFICATION HAS CHANGED`: 检查目的主机是否重装过。如果确认没连错机器，可以使用 `ssh-keygen -R IP地址` 命令删除 `known_hosts` 文件里的记录。
 
 ## 下载所需的资源文件
 鉴于目前容器化的软件包数量较多且变动频繁，我们提供了下载脚本。
@@ -117,9 +117,18 @@ k8s 的网络拓扑结构比较复杂，当您从不同的网络区域访问时�
 >
 >当 service 被删除，重建后 clusterIP 会变动，此时需更新 hosts 文件。
 
-详细操作步骤见《[分步部署基础套餐后台](install-base-manually.md)》 文档的 “[配置 coredns](install-base-manually.md#hosts-in-coredns)” 章节。
+请继续补充配置如下域名，方便后续使用：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+./scripts/control_coredns.sh update "$IP1" bknodeman.$BK_DOMAIN jobapi.$BK_DOMAIN $BK_DOMAIN
+```
 
-“一键部署” 脚本中自动完成了此步骤，无需重复操作。
+>**提示**
+>
+>“一键部署” 脚本中自动完成了部署时所需的域名，《[分步部署基础套餐后台](install-base-manually.md)》 文档的 “[配置 coredns](install-base-manually.md#hosts-in-coredns)” 章节亦然。
+
 
 <a id="hosts-in-k8s-node" name="hosts-in-k8s-node"></a>
 
