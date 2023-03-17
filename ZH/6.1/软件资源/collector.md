@@ -5,7 +5,7 @@
 basereport | 10.12.x | [basereport-10.12.76.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/basereport-10.12.76.tgz) | 不再更新，换新版 bkmonitorbeat
 processbeat | 1.19.x | [processbeat-1.19.71.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/processbeat-1.19.71.tgz) | 不再更新，换新版 bkmonitorbeat
 exceptionbeat | 1.8.x | [exceptionbeat-1.8.44.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/exceptionbeat-1.8.44.tgz) | 不再更新，换新版 bkmonitorbeat
-bkmonitorbeat | 1.24.x | [bkmonitorbeat-1.24.132.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorbeat-1.24.132.tgz) | 不再更新，换新版  bkmonitorbeat
+bkmonitorbeat | 2.13.x | [bkmonitorbeat-2.13.1.269.tgz](https://bkopen-1252002024.file.myqcloud.com/gse/plugins/bkmonitorbeat/bkmonitorbeat-2.13.1.269.tgz) | 不再更新，换新版  bkmonitorbeat
 bkmonitorproxy | 1.3.x | [bkmonitorproxy-1.3.49.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkmonitorproxy-1.3.49.tgz) |
 bkunifylogbeat | 7.3.x | [bkunifylogbeat-7.3.0.104.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/bkunifylogbeat-7.3.0.104.tgz) |
 gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcloud.com/gse_plugins/gsecmdline-2.0.3.tgz) |
