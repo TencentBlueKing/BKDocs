@@ -655,6 +655,28 @@ org.springframework.web.client.ResourceAccessException: I/O error on GET request
 <a id="install-co" name="install-co"></a>
 
 ## 部署监控日志套餐时的报错
+### bk-consul 报错 No private IPv4 address found
+**表现**
+
+bk-consul-* 系列 pod 的状态维持在 `CrashLoopBackOff`。检查日志发现：
+``` plain
+consul 时间略 INFO ==> ** Starting Consul **
+==> No private IPv4 address found
+```
+
+**结论**
+
+用户分配给 kubelet 的网段不正确，误用了公网网段。私有网段范围如下：
+* A 类： `10.0.0.0/8`，地址范围为 10.0.0.0 - 10.255.255.255。
+* B 类： `172.16.0.0/12`，地址范围为 172.16.0.0 - 172.31.255.255。
+* C 类： `192.168.0.0/16`，地址范围为 192.168.0.0 - 192.168.255.255。
+
+正确配置后重启所有的 kubelet 进程，并重新部署旧的 pod，问题解决。
+
+**问题分析**
+
+检查 Pod IP，确认为公网网段。进一步排查 kubelet 的启动参数，发现分配了公网网段。
+
 ### bkmonitor-operator 部署超时，日志显示 dial unix /data/ipc/ipc.state.report: connect: no such file or directory
 **表现**
 
