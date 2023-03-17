@@ -979,6 +979,7 @@ kubectl describe pvc -n 命名空间 pvc名称
 ```
 然后我们需要根据 pvc 的错误信息查找对应的错误案例。
 
+一般为 localpv 剩余空间不足所致。例如 mysql 需要 50 GB，bkrepo 需要 90 GB。因此需要某个 node 上的 localpv hostdir 所在的文件系统具备足额的磁盘空间。
 
 ### waiting for pod to be scheduled
 describe pvc 发现报错：
@@ -994,6 +995,7 @@ describe pod 发现报错：
  Warning  FailedScheduling  3m  default-scheduler  0/5 nodes are available: 2 node(s) were unscheduledulable, 3 pod has unbound immediate PersistentVolumeClaims
 ```
 需要 describe 异常 pvc 查看具体原因。
+
 
 
 ### no persistent volumes available for this claim and no storage class is set
