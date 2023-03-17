@@ -297,6 +297,26 @@ data:
 
 尝试修改为 `"true"`，重试部署发现可以继续进行。
 
+### 重新部署 bk-paas 报错 UPGRADE FAILED: "bk-paas" has no deployed releases
+**表现**
+在初次部署 bk-paas 时失败，重新部署 bk-paas 会遇到报错：
+``` plain
+Error: UPGRADE FAILED: "bk-paas" has no deployed releases
+```
+
+**结论**
+
+先卸载：`helm uninstall -n blueking bk-paas`。
+
+然后重新部署即可恢复。
+
+**问题分析**
+
+当已经存在 release 部署记录时，重新执行 `helmfile sync` 会被解释为 `helm upgrade` 执行升级流程。
+
+自 2.7.1 版本起，Helm 使用最新的成功部署作为升级的基准。如果一直未曾成功部署，则重试时会直接报错 “ helm has no deployed releases ”。
+
+
 ### Service call failed
 **表现**
 
@@ -995,7 +1015,6 @@ describe pod 发现报错：
  Warning  FailedScheduling  3m  default-scheduler  0/5 nodes are available: 2 node(s) were unscheduledulable, 3 pod has unbound immediate PersistentVolumeClaims
 ```
 需要 describe 异常 pvc 查看具体原因。
-
 
 
 ### no persistent volumes available for this claim and no storage class is set
