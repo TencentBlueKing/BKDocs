@@ -86,6 +86,31 @@ scripts/setup_bkce7.sh: line 568: helmfile: command not found
 
 故检查 `PATH` 变量，发现存在 `/usr/local/sbin/`，但是没有 `/usr/local/bin/`，判定为用户修改错误所致，补回后问题解决。
 
+### 一键脚本 或 helmfile 输出大段报错 failed to download at version
+**表现**
+
+在使用 “一键脚本” 安装任意套餐，或者直接执行 `helmfile` 命令时，出现大段报错，内容如下：
+``` bash
+STDERR:
+  Error: failed to download "名称" at version "版本号"
+```
+
+**结论**
+
+检查 `hub.bktencent.com` 解析到的 IP 是否正确。
+
+可以临时修改中控机的 hosts 文件解决：
+``` plain
+49.234.165.79 hub.bktencent.com
+```
+
+如果后续拉取镜像失败，同理修改 node 的 hosts 文件。
+
+**问题分析**
+
+海外用户会解析到我们的新加坡节点。目前镜像同步有些问题，待解决。请临时配置 hosts 使用上海节点。
+
+
 ### 一键脚本 或 helmfile 输出大段报错 timed out waiting for the condition
 **表现**
 
