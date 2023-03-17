@@ -10,7 +10,7 @@
 * 部署前的报错
 * 部署基础套餐时的报错
 * 部署 SaaS 时的报错
-* 安装 agent 时的报错
+* 安装 agent 及插件时的报错
 * 部署容器管理平台时的报错
 * 部署监控日志套餐时的报错
 * 部署持续集成套餐时的报错
@@ -23,8 +23,12 @@
 * docker 问题案例
 * k8s 问题案例
 
+<a id="prepare" name="prepare"></a>
+
 ## 部署前的报错
 待用户反馈。
+
+<a id="install-bkce" name="install-bkce"></a>
 
 ## 部署基础套餐时的报错
 
@@ -81,6 +85,31 @@ scripts/setup_bkce7.sh: line 568: helmfile: command not found
 发现安装逻辑在显示帮助信息时也能触发，故告知用户执行 `bash -x scripts/setup_bkce7.sh -h`，发现 `command -v helmfile` 不通过，然后成功触发了文件复制。
 
 故检查 `PATH` 变量，发现存在 `/usr/local/sbin/`，但是没有 `/usr/local/bin/`，判定为用户修改错误所致，补回后问题解决。
+
+### 一键脚本 或 helmfile 输出大段报错 failed to download at version
+**表现**
+
+在使用 “一键脚本” 安装任意套餐，或者直接执行 `helmfile` 命令时，出现大段报错，内容如下：
+``` bash
+STDERR:
+  Error: failed to download "名称" at version "版本号"
+```
+
+**结论**
+
+检查 `hub.bktencent.com` 解析到的 IP 是否正确。
+
+可以临时修改中控机的 hosts 文件解决：
+``` plain
+49.234.165.79 hub.bktencent.com
+```
+
+如果后续拉取镜像失败，同理修改 node 的 hosts 文件。
+
+**问题分析**
+
+海外用户会解析到我们的新加坡节点。目前镜像同步有些问题，待解决。请临时配置 hosts 使用上海节点。
+
 
 ### 一键脚本 或 helmfile 输出大段报错 timed out waiting for the condition
 **表现**
@@ -268,6 +297,60 @@ data:
 
 尝试修改为 `"true"`，重试部署发现可以继续进行。
 
+### 重新部署 bk-paas 报错 UPGRADE FAILED bk-paas has no deployed releases
+**表现**
+
+在初次部署 bk-paas 时失败，重新部署 bk-paas 会遇到报错：
+``` plain
+Error:
+  UPGRADE FAILED: "bk-paas" has no deployed releases
+```
+
+**结论**
+
+先卸载：`helm uninstall -n blueking bk-paas`。
+
+然后重新部署即可恢复。
+
+**问题分析**
+
+当已经存在 release 部署记录时，重新执行 `helmfile sync` 会被解释为 `helm upgrade` 执行升级流程。
+
+Helm 自 2.7.1 版本起，使用最新的成功部署作为升级的基准。如果某个 release 一直未曾成功部署，则重试时会直接报错 “has no deployed releases”。
+
+### 重新部署 bk-paas 报错 UPGRADE FAILED another operation is in progress
+**表现**
+
+在初次部署 bk-paas 时失败，重新部署 bk-paas 会遇到报错：
+``` plain
+Error:
+  UPGRADE FAILED: another operation (install/upgrade/rollback) is in progress
+```
+
+**结论**
+
+常见于部署过程中操作被意外中断。
+
+先查看异常的 release：
+``` bash
+helm list -aA
+```
+
+然后查看出错历史版本。以 `bk-paas` 为例，命令为 `helm history -n blueking bk-paas`。
+
+根据上一步的结果，有如下选择：
+* 如果有已经成功的历史版本，可以回滚：`helm rollback -n blueking bk-paas 成功的revision`。
+* 如果没有，可以卸载：`helm uninstall -n blueking bk-paas`。
+
+完成后重新部署即可。
+
+**问题分析**
+
+使用 helm install 或者 helm upgrade 的时候，helm 命令被中断，所以 release 状态未能更新。
+
+这些关键操作有保护避免重复执行，所以不能直接重试。需要先回滚到历史成功版本或者卸载，然后才能继续安装操作。
+
+
 ### Service call failed
 **表现**
 
@@ -293,9 +376,11 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 启用 NTP 服务，待各 node 时间一致后，请求恢复正常。
 
 
+<a id="install-saas" name="install-saas"></a>
+
 ## 部署 SaaS 时的报错
 
-### 创建 SaaS 时报错 仅支持 .tar 或 tar.gz 格式的文件
+### 创建应用时选择安装包后报错 仅支持 .tar 或 tar.gz 格式的文件
 **表现**
 
 使用浏览器访问 开发者中心，在 “创建应用” 界面上传 SaaS 安装包文件后，页面顶部出现报错：
@@ -314,6 +399,20 @@ blue_krill.storages.blobstore.exceptions.RequestError: Service call failed
 文件上传界面限制了文件的 MIME 类型为 `application/x-tar,application/x-gzip`。如果不匹配，则会出现上述报错。
 
 已知 Windows 10 系统更新后，`.gz` 文件的 MIME 类型变为了 `application/gzip`。
+
+
+### 创建应用时选择安装包后报错 应用 ID: 某名称 的应用已存在
+**表现**
+
+使用浏览器访问 开发者中心，在 “创建应用” 界面上传 SaaS 安装包文件后，文件名下方出现报错：`应用 ID: 某名称 的应用已存在！`
+
+**结论**
+
+应用已经创建后，如果需要更新软件包，请参考 [《SaaS 部署文档》中的“上传安装包——更新安装包”章节](install-saas-manually.md#upload-bkce-saas) 操作。
+
+**问题分析**
+
+无。
 
 
 ### 部署 SaaS 时报错 配置资源实例异常: unable to provision instance for services mysql
@@ -368,8 +467,55 @@ DeployError: 部署失败, 配置资源实例异常: unable to provision instanc
 * 手动部署：遗漏了 “[在 PaaS 界面配置 Redis 资源池](install-saas-manually.md#paas-svc-redis)” 步骤。
 
 
+### 部署 SaaS 在构建应用步骤出错
+**表现**
 
-### 部署 SaaS 在“执行部署前置命令”阶段报错
+在“开发者中心”部署 SaaS 时失败，页面显示在 构建阶段 的 “构建应用” 步骤失败。
+
+**结论**
+
+需要根据右侧日志查阅下面的案例，未记录的问题请提供日志截图联系客服或在社区发帖。
+
+**问题分析**
+
+无
+
+
+### 部署 SaaS 在构建应用步骤报错 code command not found
+**表现**
+
+在“开发者中心”部署 SaaS 时失败，页面显示在 构建阶段 的 “构建应用” 步骤失败。
+
+右侧部署日志显示：
+``` plain
+/tmp/stdlib.sh: line 2: code: command not found
+/tmp/stdlib.sh: line 2: code: command not found
+略
+    !! command failed (build: file /buildpack/bk-buildpack-python/bin/compile, line 0, code 127: operation failed)
+failed with exit code 1
+Building failed, please check logs for more details
+```
+
+**结论**
+
+未安装 PaaS runtimes 所致，请先完成 《[上传 PaaS runtimes 到 bkrepo](paas-upload-runtimes.md)》 文档。
+
+**问题分析**
+
+部署文档中提示了此步骤可选，并描述了使用场景。用户可能遗漏了文档步骤。
+
+出现这个报错的原因是：PaaS 在部署 `package` 格式的 SaaS 时，会直接 `curl bkrepo-url | bash` 下载构建脚本。
+
+当 runtimes 尚未上传到 bkrepo 时，bkrepo 响应的 json 内容为：
+``` json
+{
+  "code" : 错误码,
+...
+```
+这个 json 被 shell 解释为了 `"code"` 命令和 2 个参数 `:`、 `错误码,`，所以显示出报错 `line 2: code: command not found`。
+
+
+### 部署 SaaS 在执行部署前置命令步骤出错
 **表现**
 
 当使用“一键脚本”部署 SaaS 时，终端出现报错：
@@ -408,7 +554,7 @@ Events:
   Normal   Scheduled  3m56s                  default-scheduler  Successfully assigned bkapp-bk0us0itsm-prod/pre-release-hook to node-10-0-1-3
   Normal   Pulling    2m24s (x4 over 3m56s)  kubelet            Pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2"
   Warning  Failed     2m24s (x4 over 3m55s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: dial tcp: lookup docker.bkce7.bktencent.com on 10.0.1.1:53: no such host
-  Warning  Failed     2m24s (x4 over 3m55s)  ku：wqbelet            Error: ErrImagePull
+  Warning  Failed     2m24s (x4 over 3m55s)  kubelet            Error: ErrImagePull
   Normal   BackOff    2m10s (x6 over 3m55s)  kubelet            Back-off pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2"
   Warning  Failed     119s (x7 over 3m55s)   kubelet            Error: ImagePullBackOff
 ```
@@ -424,7 +570,10 @@ Events:
 
 其他报错可自行处理，或提供上述 kubectl describe pod 命令的完整输出联系蓝鲸助手。
 
-## 安装 agent 时的报错
+
+<a id="install-agent" name="install-agent"></a>
+
+## 安装 agent 及插件时的报错
 
 ### 执行日志里显示 curl 下载 setup_agent.sh 报错 could not resolv host
 **表现**
@@ -550,11 +699,63 @@ Events:
 如有其他情况，请联系助手排查。
 
 
+### 安装插件时下发安装包失败，执行日志显示作业平台 API 请求异常 HTTP 状态码 401
+**表现**
+
+安装插件时在“下发安装包”步骤失败，执行日志显示：
+``` plain
+时间略 [ERROR] [1306201] [作业平台]API请求异常:(Component request third-party system [JOBV3] interface [fast_transfer_file] error: Status Code: 401, Error Message: third-party system interface response status code is not 200, please try again later or contact component developer to handle this) path => /api/c/compapi/v2/jobv3/fast_transfer_file/
+```
+
+**结论**
+
+临时解决办法：重启一次 `bk-job-gateway` pod 即可。在中控机执行如下命令：
+``` bash
+kubectl rollout restart deployment -n blueking bk-job-gateway
+```
+
+**问题分析**
+
+检查发现 `bk-job-gateway-` 开头的 pod 日志中出现异常：
+``` plain
+时间略 ERROR [,,] 14 --- [           main] c.t.b.j.g.s.impl.EsbJwtServiceImpl       : Build esb jwt public key caught error!
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://bkapi.域名略/api/c/compapi/v2/esb/get_api_public_key": Connect to bkapi.域名略:80 [bkapi.域名略/IP略] failed: connect timed out; nested exception is org.apache.http.conn.ConnectTimeoutException: Connect to bkapi.域名略:80 [bkapi.域名略/IP略] failed: connect timed out
+```
+
+待开发排查原因。可能是用户虚拟网络不稳定导致 job 误判或缓存了错误结果。
+
+
+<a id="install-bcs" name="install-bcs"></a>
+
 ## 部署容器管理平台时的报错
 待用户反馈。
 
 
+<a id="install-co" name="install-co"></a>
+
 ## 部署监控日志套餐时的报错
+### bk-consul 报错 No private IPv4 address found
+**表现**
+
+bk-consul-* 系列 pod 的状态维持在 `CrashLoopBackOff`。检查日志发现：
+``` plain
+consul 时间略 INFO ==> ** Starting Consul **
+==> No private IPv4 address found
+```
+
+**结论**
+
+用户分配给 kubelet 的网段不正确，误用了公网网段。私有网段范围如下：
+* A 类： `10.0.0.0/8`，地址范围为 10.0.0.0 - 10.255.255.255。
+* B 类： `172.16.0.0/12`，地址范围为 172.16.0.0 - 172.31.255.255。
+* C 类： `192.168.0.0/16`，地址范围为 192.168.0.0 - 192.168.255.255。
+
+正确配置后重启所有的 kubelet 进程，并重新部署旧的 pod，问题解决。
+
+**问题分析**
+
+检查 Pod IP，确认为公网网段。进一步排查 kubelet 的启动参数，发现分配了公网网段。
+
 ### bkmonitor-operator 部署超时，日志显示 dial unix /data/ipc/ipc.state.report: connect: no such file or directory
 **表现**
 
@@ -573,6 +774,9 @@ failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/
 
 未安装 agent，导致主机不存在 gse socket 文件，因此容器内报错无此文件。
 
+
+<a id="install-ci" name="install-ci"></a>
+
 ## 部署持续集成套餐时的报错
 ### 部署 bk-ci 时 timed out waiting for the condition
 **表现**
@@ -583,6 +787,8 @@ failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/
 
 `bk-ci` 默认配置项有误，请参考 《[部署持续集成平台-蓝盾](install-ci-suite.md#install-ci)》文档配置 custom values 后重新部署。
 
+
+<a id="browser" name="browser"></a>
 
 ## 浏览器访问时的报错
 ### 蓝鲸桌面点击图标后提示 应用已经下架，正在为您卸载该应用
@@ -692,6 +898,34 @@ kubectl logs -n blueking deploy/bk-login-web
    * 如果不一致，请替换文件内容，并部署一次监控平台：`helmfile -f 04-bkmonitor.yaml.gotmpl sync`。
    * 如果一致，也请 **先尝试部署一次监控平台**。如果问题依旧，请联系助手排查。
 
+### 权限中心中申请节点管理及作业平台系统的权限时报错
+**表现**
+
+在权限中心申请自定义权限，切换到节点管理系统后，点击选择资源实例时，浏览器顶部会出现报错：
+``` plain
+接入系统资源接口请求失败: bk_nodeman's API unreachable! call bk_nodeman's API fail! you should check: 1.the network is ok 2.bk_nodeman is available 3.get details from bk_nodeman's log. [POST /api/iam/v1/cloud body.data.method=list_instance](system_id=bk_nodeman, resource_type_id=cloud) request_id=d840e70027cbcd7075bba0f0de3d03cb. Exception HTTPConnectionPool(host='bknodeman.bkce7.bktencent.com', port=80): Max retries exceeded with url: /api/iam/v1/cloud (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f57e8ff8668>: Failed to establish a new connection: [Errno -2] Name or service not known',)) (RESOURCE_PROVIDER_ERROR)
+```
+
+申请作业平台权限时也会出现相同的报错。
+
+**结论**
+
+蓝鲸部署 bug，需要补充注册下 coredns，在中控机执行如下脚本：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+./scripts/control_coredns.sh update "$IP1" bknodeman.$BK_DOMAIN jobapi.$BK_DOMAIN $BK_DOMAIN
+```
+
+**问题分析**
+
+目前节点管理及作业平台对接权限中心使用了 `$BK_DOMAIN` 后缀的域名，所以需要配置解析。
+
+后续会评估能否切换为 k8s 服务发现域名。请临时配置 coredns 解决此问题。
+
+
+<a id="use-pipeline" name="use-pipeline"></a>
 
 ## 蓝盾使用问题
 
@@ -752,6 +986,8 @@ helmfile -f 03-bkci.yaml.gotmpl sync
 添加 master 权限后，重新保存流水线，发现 GitLab 项目中已经出现 webhook url，点击 Test 可以成功触发流水线运行。
 
 
+<a id="use-docker" name="use-docker"></a>
+
 ## docker 问题案例
 ### 配置的 docker registry-mirrors 没有生效
 **表现**
@@ -777,6 +1013,8 @@ Error response from daemon: Get https://registry-1.docker.io/v2/: net/http: requ
 
 测试发现 `hub-mirror.c.163.com` 可用，问题解决。
 
+
+<a id="use-k8s" name="use-k8s"></a>
 
 ## k8s 问题案例
 
@@ -821,6 +1059,7 @@ kubectl describe pvc -n 命名空间 pvc名称
 ```
 然后我们需要根据 pvc 的错误信息查找对应的错误案例。
 
+一般为 localpv 剩余空间不足所致。例如 mysql 需要 50 GB，bkrepo 需要 90 GB。因此需要某个 node 上的 localpv hostdir 所在的文件系统具备足额的磁盘空间。
 
 ### waiting for pod to be scheduled
 describe pvc 发现报错：
