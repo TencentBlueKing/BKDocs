@@ -23,16 +23,16 @@ yum install -y jq unzip uuid
 
 在 **中控机** 执行如下命令：
 ``` bash
-k8s_nodes_ips=$(kubectl get nodes -o jsonpath='{$.items[*].status.addresses[?(@.type=="InternalIP")].address}')
+node_ips=$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}')
 test -f /root/.ssh/id_rsa || ssh-keygen -N '' -t rsa -f /root/.ssh/id_rsa  # 如果不存在rsa key则创建一个。
 # 开始给发现的ip添加ssh key，期间需要您输入各节点的密码。
-for ip in $k8s_nodes_ips; do
+for ip in $node_ips; do
   ssh-copy-id "$ip" || { echo "failed on $ip."; break; }  # 如果执行失败，则退出
 done
 ```
 
 常见报错：
-1. `Host key verification failed.`，且开头提示 `REMOTE HOST IDENTIFICATION HAS CHANGED`: 检查目的主机是否重装过。如果确认没连错机器，可以参考提示（如 `Offending 类型 key in /root/.ssh/known_hosts:行号`）删除 `known_hosts` 文件里的对应行。
+1. `Host key verification failed.`，且开头提示 `REMOTE HOST IDENTIFICATION HAS CHANGED`: 检查目的主机是否重装过。如果确认没连错机器，可以使用 `ssh-keygen -R IP地址` 命令删除 `known_hosts` 文件里的记录。
 
 ## 下载所需的资源文件
 鉴于目前容器化的软件包数量较多且变动频繁，我们提供了下载脚本。
