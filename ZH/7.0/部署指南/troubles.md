@@ -898,6 +898,32 @@ kubectl logs -n blueking deploy/bk-login-web
    * 如果不一致，请替换文件内容，并部署一次监控平台：`helmfile -f 04-bkmonitor.yaml.gotmpl sync`。
    * 如果一致，也请 **先尝试部署一次监控平台**。如果问题依旧，请联系助手排查。
 
+### 权限中心中申请节点管理及作业平台系统的权限时报错
+**表现**
+
+在权限中心申请自定义权限，切换到节点管理系统后，点击选择资源实例时，浏览器顶部会出现报错：
+``` plain
+接入系统资源接口请求失败: bk_nodeman's API unreachable! call bk_nodeman's API fail! you should check: 1.the network is ok 2.bk_nodeman is available 3.get details from bk_nodeman's log. [POST /api/iam/v1/cloud body.data.method=list_instance](system_id=bk_nodeman, resource_type_id=cloud) request_id=d840e70027cbcd7075bba0f0de3d03cb. Exception HTTPConnectionPool(host='bknodeman.bkce7.bktencent.com', port=80): Max retries exceeded with url: /api/iam/v1/cloud (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f57e8ff8668>: Failed to establish a new connection: [Errno -2] Name or service not known',)) (RESOURCE_PROVIDER_ERROR)
+```
+
+申请作业平台权限时也会出现相同的报错。
+
+**结论**
+
+蓝鲸部署 bug，需要补充注册下 coredns，在中控机执行如下脚本：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+./scripts/control_coredns.sh update "$IP1" bknodeman.$BK_DOMAIN jobapi.$BK_DOMAIN $BK_DOMAIN
+```
+
+**问题分析**
+
+目前节点管理及作业平台对接权限中心使用了 `$BK_DOMAIN` 后缀的域名，所以需要配置解析。
+
+后续会评估能否切换为 k8s 服务发现域名。请临时配置 coredns 解决此问题。
+
 
 <a id="use-pipeline" name="use-pipeline"></a>
 

@@ -117,9 +117,18 @@ k8s 的网络拓扑结构比较复杂，当您从不同的网络区域访问时�
 >
 >当 service 被删除，重建后 clusterIP 会变动，此时需更新 hosts 文件。
 
-详细操作步骤见《[分步部署基础套餐后台](install-base-manually.md)》 文档的 “[配置 coredns](install-base-manually.md#hosts-in-coredns)” 章节。
+请继续补充配置如下域名，方便后续使用：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+./scripts/control_coredns.sh update "$IP1" bknodeman.$BK_DOMAIN jobapi.$BK_DOMAIN $BK_DOMAIN
+```
 
-“一键部署” 脚本中自动完成了此步骤，无需重复操作。
+>**提示**
+>
+>“一键部署” 脚本中自动完成了部署时所需的域名，《[分步部署基础套餐后台](install-base-manually.md)》 文档的 “[配置 coredns](install-base-manually.md#hosts-in-coredns)” 章节亦然。
+
 
 <a id="hosts-in-k8s-node" name="hosts-in-k8s-node"></a>
 
