@@ -102,7 +102,7 @@
         * [元数据规范](产品白皮书/Services/Artifactory/meta.md)
     * [代码库]()
         * [代码库管理](产品白皮书/Services/Coderepo/repos-link.md)
-    * [代码检查]
+    * [代码检查]()
         * [CodeCC简介](产品白皮书/Services/Codecc/codecc-intro.md)
         * [代码检查配置](产品白皮书/Services/Codecc/codecc-config.md)
         * [代码检查结果](产品白皮书/Services/Codecc/codecc-result.md)
