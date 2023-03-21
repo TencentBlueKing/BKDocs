@@ -2,7 +2,7 @@
 
 ## 功能区介绍
 
-![png](../../assets/service_pipeline_detail.png)
+![png](../../../assets/service_pipeline_detail.png)
 
 1. 任务详情页标签区：由**执行详情、查看构件、代码变更记录、产出物报告**4 个标签页组成
    - 执行详情：通过可视化编排展示流水线任务执行结果
