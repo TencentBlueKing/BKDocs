@@ -9,9 +9,8 @@ BKCI第三方构建机 windows agent 默认以系统服务的方式启动，通�
 1. 如果agent已经安装成系统服务，执行 uninstall.bat 卸载agent服务
 2. 双击  devopsDaemon.exe 启动agent，注意不要关掉弹出窗口
 
-{% hint style="info" %}
+
 这种方式启动的agent没有开机启动功能。
 
 agent执行完构建任务后，会自动停止所有由agent启动的子进程，如果不需要结束子进程，可以在启动进程前设置环境变量：set DEVOPS\_DONT\_KILL\_PROCESS\_TREE=true
-{% endhint %}
 

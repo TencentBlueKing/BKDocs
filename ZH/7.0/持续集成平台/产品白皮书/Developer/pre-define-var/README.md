@@ -44,6 +44,5 @@
 | BK_CI_ATOM_NAME| 当前插件名称| |
 | | | | 
 
-{% page-ref page="git.md" %}
-{% page-ref page="github.md" %}
-
+[git常量合集](./git.md)
+[github常量合集](./github.md)

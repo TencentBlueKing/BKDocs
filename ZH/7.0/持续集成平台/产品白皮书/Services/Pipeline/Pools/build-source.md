@@ -6,7 +6,7 @@
 
 1. 下载mac和windows的jdk8，将jdk包上传到中控机/data/src下，下载链接：https://adoptium.net/temurin/releases/?version=8
    
-   ![image-jdk8-download](../../assets/image-jdk8-download.png)
+   ![image-jdk8-download](../../../assets/image-jdk8-download.png)
 
 2. 打包，中控机上执行
     ```bash
@@ -26,7 +26,7 @@
     ```
 3. 下载unzip二进制包并解压，将bin/unzip.exe上传到中控机/data/src/bkci-agent-package-patch/packages/windows/目录下，unzip包下载链接参考：http://gnuwin32.sourceforge.net/packages/unzip.htm
    
-    ![image-unzip-download](../../assets/image-unzip-download.png)
+    ![image-unzip-download](../../../assets/image-unzip-download.png)
 
 4. 然后重新部署蓝盾，从标准运维模板 “蓝鲸持续集成部署或升级流水线” 新建任务并执行，版本号和上次部署一样
 5. 机器安装蓝盾agent，添加为私有构建机

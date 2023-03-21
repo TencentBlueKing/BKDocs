@@ -1,7 +1,3 @@
----
-coverY: 0
----
-
 # 流水线FAQ
 
 ## GitLab FAQ
@@ -72,9 +68,9 @@ systemctl restart bk-ci-repository.service
 
 ### Q4: 蓝盾有哪些全局变量？
 
-{% content-ref url="../pre-define-var/" %}
-[pre-define-var](../pre-define-var/)
-{% endcontent-ref %}
+
+-  [预定义变量列表](../../pre-define-var/README.md)
+
 
 ### Q5: 如何获取流水线id？
 

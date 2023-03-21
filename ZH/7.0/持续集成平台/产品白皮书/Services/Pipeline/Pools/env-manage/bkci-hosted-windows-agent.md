@@ -18,11 +18,11 @@ new-item C:\data\landun -itemtype directory
 
 将下载好的Agent包解压至上一步创建的文件夹下
 
-![bkci-hosted-windows-agent-1](../../../assets/bkci-hosted-windows-agent-1.png)
+![bkci-hosted-windows-agent-1](../../../../assets/bkci-hosted-windows-agent-1.png)
 
 以管理员身份运行 install.bat
 
-![bkci-hosted-windows-agent-2](../../../assets/bkci-hosted-windows-agent-2.png)
+![bkci-hosted-windows-agent-2](../../../../assets/bkci-hosted-windows-agent-2.png)
 
 ## 切换agent服务启动用户
 
@@ -36,11 +36,11 @@ new-item C:\data\landun -itemtype directory
 
 输入密码后，点击`确认`按钮
 
-![bkci-hosted-windows-agent-3](../../../assets/bkci-hosted-windows-agent-3.png)
+![bkci-hosted-windows-agent-3](../../../../assets/bkci-hosted-windows-agent-3.png)
 
 右键-&gt;重新启动，重启服务
 
-![bkci-hosted-windows-agent-4](../../../assets/bkci-hosted-windows-agent-4.png)
+![bkci-hosted-windows-agent-4](../../../../assets/bkci-hosted-windows-agent-4.png)
 
 ## 检查状态
 

@@ -1,12 +1,9 @@
 # BKCI 规格要求
 
-{% tabs %}
-{% tab title="First Tab" %}
 
-{% endtab %}
+- First Tab
 
-{% tab title="Second Tab" %}
 
-{% endtab %}
-{% endtabs %}
+
+- Second Tab
 
