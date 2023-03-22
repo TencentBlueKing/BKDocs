@@ -194,11 +194,11 @@ gse_plugins |  | [gse_plugins.tgz](https://bkopen-1252002024.file.myqcloud.com/g
 #### 新版日志
 - `bkmonitorbeat-3.0.0.271.tgz`
 
-  【Added】IPv6兼容，拨测增加ip类型配置项
+  【Added】IPv6 兼容，拨测增加 ip 类型配置项
 
-  【Added】增加上报host id
+  【Added】增加上报 hostid
 
-  【Added】支持动态IP类型不上报IP
+  【Added】支持动态 IP 类型不上报 IP
 
 
 - `bkmonitorbeat-2.9.6.229.tgz`
@@ -252,6 +252,7 @@ gse_plugins |  | [gse_plugins.tgz](https://bkopen-1252002024.file.myqcloud.com/g
 
   【优化】优化 prometheus 抓取大量数据而造成数据截断的问题
 
+
 - `bkmonitorbeat-1.13.98.tgz`
 
   【优化】日志关键字采集增加 labels 字段的上报
@@ -274,7 +275,7 @@ gse_plugins |  | [gse_plugins.tgz](https://bkopen-1252002024.file.myqcloud.com/g
 
 - `bkmonitorproxy-1.3.51.tgz`
 
-  【优化】在reload配置文件的时候会导致丢失一分钟数据
+  【优化】在 reload 配置文件的时候会导致丢失一分钟数据
 
 
 - `bkmonitorproxy-1.3.49.tgz`
