@@ -7,7 +7,7 @@
 如没有，请参考 [关联你的第一个代码库](Link-your-first-repo.md)
 
 - 一个 bk-ci 项目
-- 了解 [流水线基本概念和使用](../Concepts/Learn-pipeline-in-5min.md)
+- 了解 [流水线基本概念和使用](../intro/terminology/Learn-pipeline-in-5min.md)
 
 ## 通过 BK-CI 监听代码库 push 事件
 

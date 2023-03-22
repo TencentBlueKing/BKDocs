@@ -29,7 +29,7 @@
 * 规范：
   * [插件开发规范](../plugin-specification.md)
   * [插件配置规范](../plugin-config.md)
-    * 插件前端不仅可以通过 task.json 进行标准化配置，也可以自定义开发：[自定义插件 UI 交互指引](../plugin-custom-ui.md)
+* 插件前端不仅可以通过 task.json 进行标准化配置，也可以自定义开发：[自定义插件 UI 交互指引](../plugin-custom-ui.md)
   * [插件输出规范](../plugin-output.md)
   * [插件错误码规范](../plugin-error-code.md)
   * [插件发布包规范](../release.md)
