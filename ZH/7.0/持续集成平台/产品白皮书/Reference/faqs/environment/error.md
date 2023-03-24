@@ -65,7 +65,7 @@
 
      示例：
 
-     1. Failed to connect to xx.oa.com port XX: Connection refused
+     1. Failed to connect to xx.xx.com port XX: Connection refused
 
      2. 机器无法访问内网
 

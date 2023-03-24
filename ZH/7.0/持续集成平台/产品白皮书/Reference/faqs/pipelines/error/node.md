@@ -74,7 +74,7 @@ no available Docker VM
 
 4. 如果查看构建日志发现如下报错：
 
-   UnknownHostException|request(Request{method=PUT,url=http://devgw.xxxx.xxx.com/ms/process/api/build/builds/started,tag=null}),error is :java.net.UnknownHostException: devgw.devops.oa.com: nodename nor servname provided, or not known, try to retry 5
+   UnknownHostException|request(Request{method=PUT,url=http://devxx.xxxx.xxx.com/ms/process/api/build/builds/started,tag=null}),error is :java.net.UnknownHostException: xxx.xxx.xx.com: nodename nor servname provided, or not known, try to retry 5
 
    ![](../../../../assets/start_agent_fail.png)
 
