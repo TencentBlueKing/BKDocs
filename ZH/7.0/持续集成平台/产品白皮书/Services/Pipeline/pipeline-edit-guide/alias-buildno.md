@@ -30,12 +30,13 @@ ${{DATE:"yyMMdd"}}.${{BUILD_NO_OF_DAY}}
 | DATE:"yyMMdd hh:MM" | 20201028 10:08 |
 | SECOND | 59 |
 
+{% hint style="info" %}
 * 新增的字段对应变量：${BK\_CI\_BUILD\_NUM\_ALIAS}
 * 该字符长度最长 256 字符
 * 该字符所能生成的真实字符串长度最长 256 字符
 * 配置自定义构建号处需强提醒：超出长度限制的部分会被截断
 * 构建号超长不影响流水线的构建
-
+{% endhint %}
 
 ### 允许的字符
 

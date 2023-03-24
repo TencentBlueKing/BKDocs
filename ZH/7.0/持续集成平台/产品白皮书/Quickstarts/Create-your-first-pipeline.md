@@ -6,7 +6,7 @@
 
 - 一个 git 工程，可参考 [关联你的第一个代码库](Link-your-first-repo.md)
 - 一个 bk-ci 项目
-- 熟悉 [编辑流水线](../Services/Pipeline/pipeline-edit-guide/pipeline-edit.md)页面相关操作
+- 熟悉 [编辑流水线](../Services/Pipeline/pipeline-edit.md)页面相关操作
 
 ## 运行你的第一次构建
 
@@ -23,4 +23,4 @@
 
 接下来你可能需要对流水线有更深一步的了解：
 
-- [5 分钟读懂 bk-ci 流水线](../intro/terminology/Learn-pipeline-in-5min.md)
+- [5 分钟读懂 bk-ci 流水线](../Concepts/Learn-pipeline-in-5min.md)
