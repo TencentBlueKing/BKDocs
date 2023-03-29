@@ -530,7 +530,7 @@ import python_atom_sdk as sdk
 import json
 
 receiver = sdk.get_input().get("receiver")  # 字符串
-receiver_list= json.loads(receiver)  # 转换成列表 [ "ponyma", "jackma" ]
+receiver_list= json.loads(receiver)  # 转换成列表 [ "people1", "people2" ]
 ```
 **组件可视化效果：**
 
