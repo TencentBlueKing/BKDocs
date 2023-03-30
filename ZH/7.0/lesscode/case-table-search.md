@@ -39,7 +39,7 @@
 
 - 表格数据更新函数 updateTableData
 
-<img src="./images/case-table10.png" alt="grid" width="640" class="help-img">
+<img src="./images/case-table11.png" alt="grid" width="640" class="help-img">
 
 - 配置“enter”事件函数，触发查询
 
