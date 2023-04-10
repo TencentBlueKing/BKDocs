@@ -1,6 +1,54 @@
 # 单产品更新
 我们在推出 7.0.0 版本后，对其中部分平台进行了更新。
 
+
+## 更新 bk-apigateway
+|  | chart version | app version |
+|--|--|--|
+| 7.0.0 | 0.4.48 | 1.1.32 |
+| 本次更新 | 0.4.48-patch.1 | 1.1.32-patch.1 |
+
+本版本为 **安全** 补丁更新，基于原代码修复，不涉及功能新增。我们希望用户尽快更新。
+
+登录到 **中控机**，先更新 helm 仓库：
+``` bash
+helm repo update
+```
+使用 `helm search repo bk-apigateway -l --devel` 命令确认版本信息，预期输出含有如下的行：
+``` plain
+NAME                  	CHART VERSION 	APP VERSION   	DESCRIPTION
+blueking/bk-apigateway	0.4.48-patch.1	1.1.32-patch.1	A full stack chart for Apigateway Enterprise pr...
+```
+
+接下来开始升级了。
+
+先进入工作目录：
+``` bash
+cd ~/bkhelmfile/blueking  # 默认路径，按实际情况修改。
+```
+
+修改 `environments/default/version.yaml` 文件，配置 bk-apigateway charts version 为 `0.4.48-patch.1`：
+``` bash
+sed -i 's/bk-apigateway:.*/bk-apigateway: "0.4.48-patch.1"/' environments/default/version.yaml
+```
+检查修改结果： `grep bk-apigateway environments/default/version.yaml`，预期输出：
+``` yaml
+  bk-apigateway: "0.4.48-patch.1"
+```
+
+更新 bk-apigateway:
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-apigateway apply
+```
+
+等待命令执行完毕，结尾输出如下即为更新成功：
+``` plain
+UPDATED RELEASES:
+NAME            CHART                           VERSION
+bk-apigateway   blueking/bk-apigateway   0.4.48-patch.1
+```
+
+
 ## 更新 bk-monitor
 |  | chart version | app version |
 |--|--|--|
