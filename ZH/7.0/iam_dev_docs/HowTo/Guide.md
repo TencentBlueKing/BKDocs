@@ -79,7 +79,7 @@
     - [样例 6: 配置常用操作优化权限申请](Examples/06-CommonActions.md)
 5. 依赖环境属性
     接入系统对于权限的生效条件的需求，除了权限本身的过期时间外，可能还需要关注权限生效的环境属性条件，比如可以控制权限只在 `星期一`的`00:00:00-06:00:00` 这个时间段生效，在这个时间段的鉴权请求都是`pass`, 时间段外的鉴权都是`not allowed`，这就需要接入系统在注册操作的时候同时提供是否能配置相关环境属性的信息
-    - [依赖环境属性方案](RelatedEnvironments.md)
+    - [依赖环境属性方案](./Solutions/RelatedEnvironments.md)
     - [操作(Action)](../Reference/API/02-Model/13-Action.md)
 
 # 高级接入

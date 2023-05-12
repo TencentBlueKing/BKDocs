@@ -13,7 +13,7 @@
 | system |string | 是 | 系统唯一标识  |
 | subject_type | string | 是 | user/group/all |
 | action | object | 是 | 操作 |
-| resources | Array(resource_node) | 是 | 资源实例, 资源类型的顺序必须操作注册时的顺序一致 |
+| resource | Array(resource_node) | 是 | 资源实例, 资源类型的顺序必须操作注册时的顺序一致 |
 | limit | int | 是 | 最大返回subject数量 |
 
 action
@@ -42,7 +42,7 @@ resource_node
 	"action": {
 		"id": "execute"
 	},
-	"resources": [{   // 资源类型的顺序必须操作注册时的顺序一致, 否则会导致鉴权失败!
+	"resource": [{   // 资源类型的顺序必须操作注册时的顺序一致, 否则会导致鉴权失败!
 		"system": "bk_job",
 		"type": "job",
 		"id": "ping",

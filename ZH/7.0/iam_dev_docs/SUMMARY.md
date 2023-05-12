@@ -43,7 +43,7 @@
             * [模型注册](HowTo/FAQ/Questions/Model.md)
             * [资源反向拉取](HowTo/FAQ/Questions/Callback.md)
             * [鉴权及策略查询](HowTo/FAQ/Questions/PolicyAuth.md)
-            * [环境属性](HowTo/FAQ/Questions/Environment.md)
+            * [环境相关](HowTo/FAQ/Questions/Environment.md)
             * [SDK](HowTo/FAQ/Questions/SDK.md)
             * [模型注册 do_migrate](HowTo/FAQ/Questions/Migration.md)
             * [使用场景](HowTo/FAQ/Questions/Usage.md)

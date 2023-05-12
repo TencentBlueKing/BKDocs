@@ -33,10 +33,21 @@ APIGateway2.0 API
 | grade_manager_id | int | 是 | path | 分级管理员 ID |
 | members |  string  | 是   | query |要删除的用户名，多个用户则使用英文逗号分隔 |
 
-
-#### Request
+#### ESB API Request
 ```bash
-Delete /api/c/compapi/v2/iam/management/grade_managers/1/members/?members=admin,test1,test2
+Delete /api/c/compapi/v2/iam/management/grade_managers/1/members/
+```
+
+```json
+{
+  "members": "admin,test1,test2"
+}
+```
+
+#### APIGateway2.0 API Request
+
+```bash
+Delete /api/v1/open/management/grade_managers/1/members/?members=admin,test1,test2
 ```
 
 #### Response

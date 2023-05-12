@@ -83,6 +83,31 @@ kubectl exec -it -n blueking bk-mongodb-0 -- mongo
 kubectl exec -it -n blueking bk-zookeeper-0 -- zkCli.sh
 ```
 
+# bcs 自带的存储服务
+
+bcs 使用了自带的 mysql 和 mongodb pod。
+
+查询 mysql 的 root 密码：
+``` bash
+kubectl get secrets -n bcs-system bcs-user-manager-mysql-password -o go-template='{{index .data "mysql-root-password" | base64decode}}{{"\n"}}'
+```
+
+查询 mongodb root 密码：
+``` bash
+kubectl get secrets -n bcs-system bcs-password -o go-template='{{index .data "mongodb-root-password" | base64decode}}{{"\n"}}'
+```
+
+连接 mysql：
+``` bash
+kubectl exec -it -n bcs-system bcs-mysql-0 -- mysql -uroot -p密码
+```
+
+连接 mongodb：
+``` bash
+kubectl exec -it -n bcs-system deploy/bcs-mongodb -- mongo mongodb://root:密码@/bcs-mongodb服务地址?authSource=admin
+
+```
+
 # 一些配置项
 ## gse 默认接入点的区域和城市
 用于 节点管理 —— 全局配置 中的 `GSE默认接入点`：

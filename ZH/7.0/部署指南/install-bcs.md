@@ -47,13 +47,7 @@ scripts/set_desktop_default_app.sh -a "bk_bcs"
 kubectl get pod -n bcs-system -w
 ```
 
->**提示**
->
->目前 03-bcs.yaml.gotmpl 只能 sync 一次，后续 sync 或 apply 时会报错 MySQL 密码错误。请在中控机执行如下命令临时打补丁：
->``` bash
->scripts/get_bcs_passwd.sh | tee environments/default/bcs/secrets.yaml
->if grep -nFC 1 /secrets.yaml 03-bcs.yaml.gotmpl ; then echo patched; else sed -i '/resources[.]yaml[.]gotmpl/a\    - environments/default/bcs/secrets.yaml' 03-bcs.yaml.gotmpl && echo patch applied || echo failed to patch ; fi
->```
+如果部署失败请先查阅 《[问题案例](troubles.md#install-bcs)》文档。
 
 ### 导入标准运维流程
 
@@ -77,6 +71,10 @@ kubectl get pod -n bcs-system -w
 >如果没有导入流程，或者流程 ID 不正确，则新建集群时会报错 “创建失败，请重试”。“查看日志” 里的 “标准运维任务” 步骤日志为 `running failed. CreateBkOpsTask err: Object not found: CommonTemplate(id=10001) does not exist.`
 
 ### 浏览器访问
-需要配置域名 `bcs.$BK_DOMAIN`，操作步骤已经并入《基础套餐部署》文档的 “[配置用户侧的 DNS](install-bkce.md#hosts-in-user-pc)” 章节。
+>**提示**
+>
+>我们在 20230511 发布的 bcs-1.28 包括了安全更新，请务必查阅 《[单产品更新](update.md)》 文档升级。
+
+需要配置域名 `bcs.$BK_DOMAIN`（bcs-1.28 新增了 `bcs-api.$BK_DOMAIN`），操作步骤已经并入《基础套餐部署》文档的 “[配置用户侧的 DNS](install-bkce.md#hosts-in-user-pc)” 章节。
 
 配置成功后，即可在桌面打开 “容器管理平台” 应用了。

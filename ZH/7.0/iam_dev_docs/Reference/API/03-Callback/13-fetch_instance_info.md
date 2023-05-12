@@ -35,6 +35,7 @@ filter 字段:
 | ids | array(string) | 是 | 需要查询的资源实例的唯一标识列表, `最多1000个` |
 | attrs | array(string) | 否 |  需要查询的资源属性列表，比如["_bk_iam_path_", "os"]，空列表或无该参数则表示查询所有属性 |
 
+**重要**: 权限中心为了校验用户提交的资源实例名称是否正确, 会调用`fetch_instance_info`查询实例的`display_name`属性, 该接口必须实现`display_name`属性的查询
 
 * 无查询条件，表示查询资源的所有属性
 

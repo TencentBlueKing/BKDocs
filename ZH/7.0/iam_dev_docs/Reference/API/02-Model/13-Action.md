@@ -14,6 +14,7 @@
 | related_resource_types | Array(Object) | 否 | 操作的对象，资源类型列表，列表顺序与`产品展示`、`鉴权校验` 顺序 必须保持一致。`如果操作无需关联资源实例，这里为空即可。`  **注意这是一个有序的列表!**:  |
 | related_actions | Array(string) | 否 | 操作的依赖操作, 由操作 ID 组成的字符串列表, 用于在申请权限时同时创建依赖权限  [更多概念说明](./00-Concepts.md)  |
 | version | int | 否 |  版本号，允许为空，仅仅作为在权限中心上进行 New 的更新提醒 [更多概念说明](./00-Concepts.md)  |
+| related_environments | Array(Object) | 否 |  操作可配置的环境属性列表，允许为空 [更多概念说明](./00-Concepts.md)  |
 
 related_resource_types 里的元素
 
@@ -35,6 +36,12 @@ related_instance_selections 里的元素
 |  ignore_iam_path | bool | 否 | 是否配置的权限忽略路径，`默认为false`，[更多概念说明](./00-Concepts.md)  |
 
 注册后，IAM 配置权限时拉取资源的逻辑，请查看[资源拉取接口协议](../03-Callback/01-API.md)
+
+related_environments 里的元素
+
+| 字段 |  类型 |是否必须  | 描述  |
+|:---|:---|:---|:---|
+| type | string | 是 | 环境属性类型, 单前只支持`period_daily |
 
 **重要说明：** 
 - Action 关联的资源类型必须在权限中心已经注册的，否则 Action 将注册失败

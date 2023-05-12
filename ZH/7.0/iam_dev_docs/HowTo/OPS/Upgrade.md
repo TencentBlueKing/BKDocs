@@ -90,3 +90,96 @@ python3 migrate_subject_system_group.py -H {db_host} -P 3306 -u {db_user} -p {db
 ### 2.2 异常处理
 
 以上迁移与检查脚本都是可重入的, 如出现异常, 可尝试重试以上步骤
+
+
+## 3. 权限中心后台二进制版本升级到蓝鲸社区版7.0容器化版本权限中心
+
+由于容器化版本的权限中心后台的migrate sql逻辑执行的变化, 在二进制版本升级到容器化之时, 需要先执行ignore migrate sql, 以避免升级过程中migrate执行失败带来的问题.
+
+> 以下步骤在全新部署容器化版本权限中心时不需要执行, 只针对二进制版本更新到容器化版本的使用场景
+
+### 3.1 确认二进制权限中心后台版本号
+
+查看当前二进制版本权限中心后台部署的版本, 获取对应的后台包, 比如权限中后台包: bkiam_ee-1.12.5.tgz
+
+解压后台包后, 查看`support-files/sql`目录, 有以下文件:
+
+```
+0001_iam_20200327-1442_mysql.sql
+0002_iam_20200512-1957_mysql.sql
+0003_iam_20200525-1940_mysql.sql
+0004_iam_20200624-1429_mysql.sql
+0005_iam_20200702-1525_mysql.sql
+0006_iam_20200803-1132_mysql.sql
+0007_iam_20200904-1832_mysql.sql
+0008_iam_20200915-1506_mysql.sql
+0009_iam_20210304-1706_mysql.sql
+0010_iam_20210330-1808_mysql.sql
+0011_iam_20210421-1050_mysql.sql
+0012_iam_20210618-1730_mysql.sql
+0013_iam_20210624-1530_mysql.sql
+0014_iam_20210823-1525_mysql.sql
+0015_iam_20210909-1800_mysql.sql
+0016_iam_20211209-1708_mysql.sql
+0017_iam_20211116-1713_mysql.sql
+0018_iam_20220111-1708_mysql.sql
+0019_iam_20220217-1423_mysql.sql
+0020_iam_20220424-1622_mysql.sql
+0021_iam_20220425-1050_mysql.sql
+0022_iam_20220517-1502_mysql.sql
+0023_iam_20220518-1519_mysql.sql
+0024_iam_20220523-0740_mysql.sql
+0025_iam_20220601-1635_mysql.sql
+0026_iam_20220718-1535_mysql.sql
+0027_iam_20220914-1502_mysql.sql
+0028_iam_20220921-1645_mysql.sql
+```
+
+### 3.2 生成ignore migrate sql
+
+```sql
+DROP TABLE IF EXISTS `gorp_migrations`;
+CREATE TABLE `gorp_migrations` (
+  `id` varchar(255) NOT NULL,
+  `applied_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `gorp_migrations` VALUES 
+('0001_iam_20200327-1442_mysql.sql',now()),
+('0002_iam_20200512-1957_mysql.sql',now()),
+('0003_iam_20200525-1940_mysql.sql',now()),
+('0004_iam_20200624-1429_mysql.sql',now()),
+('0005_iam_20200702-1525_mysql.sql',now()),
+('0006_iam_20200803-1132_mysql.sql',now()),
+('0007_iam_20200904-1832_mysql.sql',now()),
+('0008_iam_20200915-1506_mysql.sql',now()),
+('0009_iam_20210304-1706_mysql.sql',now()),
+('0010_iam_20210330-1808_mysql.sql',now()),
+('0011_iam_20210421-1050_mysql.sql',now()),
+('0012_iam_20210618-1730_mysql.sql',now()),
+('0013_iam_20210624-1530_mysql.sql',now()),
+('0014_iam_20210823-1525_mysql.sql',now()),
+('0015_iam_20210909-1800_mysql.sql',now()),
+('0016_iam_20211209-1708_mysql.sql',now()),
+('0017_iam_20211116-1713_mysql.sql',now()),
+('0018_iam_20220111-1708_mysql.sql',now()),
+('0019_iam_20220217-1423_mysql.sql',now()),
+('0020_iam_20220424-1622_mysql.sql',now()),
+('0021_iam_20220425-1050_mysql.sql',now()),
+('0022_iam_20220517-1502_mysql.sql',now()),
+('0023_iam_20220518-1519_mysql.sql',now()),
+('0024_iam_20220523-0740_mysql.sql',now()),
+('0025_iam_20220601-1635_mysql.sql',now()),
+('0026_iam_20220718-1535_mysql.sql',now()),
+('0027_iam_20220914-1502_mysql.sql',now()),
+('0028_iam_20220921-1645_mysql.sql',now());
+```
+
+注意以上sql中的INSERT语句, 在3.1步骤中查询到多少sql文件, 这里就要插入多少行数据, 插入的行数必须与3.1步骤文件个数一致, 如您使用的二进制版本中的sql文件少于以上文件, 请删除多余的插入数据, 如您的二进制版本sql数量比以上文件多, 请在INSERT语句中补充缺失的sql文件
+
+### 3.3 执行ignore migrate sql
+
+在权限中心后台数据库中执行步骤3.2生成的sql语句
+
+> **注意**: 只需要在二进制升级到容器化版本前执行, 后续容器化版本的升级不需要再次执行

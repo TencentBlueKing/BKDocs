@@ -127,7 +127,7 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 
 >**提示**
 >
->“一键部署” 脚本中自动完成了部署时所需的域名，《[分步部署基础套餐后台](install-base-manually.md)》 文档的 “[配置 coredns](install-base-manually.md#hosts-in-coredns)” 章节亦然。
+>“一键部署” 脚本中自动完成了部署时所需的部分域名，《[分步部署基础套餐后台](install-base-manually.md)》 文档的 “[配置 coredns](install-base-manually.md#hosts-in-coredns)” 章节保持和脚本一致。
 
 
 <a id="hosts-in-k8s-node" name="hosts-in-k8s-node"></a>
@@ -241,6 +241,7 @@ $IP1 jobapi.$BK_DOMAIN  # 作业平台
 $IP1 bknodeman.$BK_DOMAIN  # 节点管理
 $IP1 apps.$BK_DOMAIN  # SaaS 入口：标准运维、流程服务等
 $IP1 bcs.$BK_DOMAIN  # 容器管理平台
+$IP1 bcs-api.$BK_DOMAIN  # 容器管理平台
 $IP1 bklog.$BK_DOMAIN  # 日志平台
 $IP1 bkmonitor.$BK_DOMAIN  # 监控平台
 $IP1 devops.$BK_DOMAIN  # 持续集成平台-蓝盾
@@ -271,64 +272,117 @@ echo "http://$BK_DOMAIN"
 浏览器访问上述地址即可。记得提前配置本地 DNS 服务器或修改本机的 hosts 文件。
 
 # 准备 SaaS 运行环境
->**注意**
->
->SaaS 部署时需要 k8s node 能访问 bkrepo 提供的 docker 服务。您在前面的步骤中已经配置过 DNS，期间如有新增 node，可查阅本文“配置 k8s node 的 DNS”章节补齐操作。
+
+一共需要准备 3 项：
+1. 确保 node 能拉取 SaaS 镜像
+2. 可选：上传 PaaS runtimes 到 bkrepo
+3. 可选：配置 SaaS 专用 node
+
+如需快速体验，可以先跳过可选步骤。对应章节的导语中有简介及使用场景，请按需部署。
 
 <a id="k8s-node-docker-insecure-registries" name="k8s-node-docker-insecure-registries"></a>
 
-## 调整 node 上的 docker 服务
-PaaS v3 开始支持 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 提供的 docker registry 服务。
+## 确保 node 能拉取 SaaS 镜像
 
-因为 docker 默认使用 https 协议访问 registry，因此需要额外配置。一共有 2 种配置方案：
-1. 配置 docker 使用 http 访问 registry（推荐使用，步骤见下文）。
-2. 配置 docker 使用 https 访问 registry（暂无文档，请根据如下提示自行研究）：
-   1. 用户购买了商业证书： 仅在 bkrepo 配置 docker 域名的证书即可。
-   2. 用户自签的证书： 需要在 bkrepo 配置 docker 域名的证书，且在 node 添加自签证书到操作系统 CA 库并重启 docker 服务。
+从蓝鲸 7.0 开始，PaaS 默认使用 `image` 格式的 `S-Mart` 包，部署过程中需要访问 bkrepo 提供的 docker registry 服务（入口域名为前面章节中配置的 `docker.$BK_DOMAIN`）。
 
-### 配置 docker 使用 http 访问 registry
+k8s 运行时默认使用 https 协议拉取镜像，所以需要额外操作确保正常拉取镜像。
 
-我们预期所有 k8s node 的 `/etc/docker/daemon.json` 配置文件一样，如果不一样，请自行分批重复执行本步骤。
+如果你的运行时为 `dockerd`，请根据你预期的场景选择对应章节：
+* 场景一：调整 dockerd 使用 http 协议访问 registry（推荐做法，步骤见下）
+* 场景二：配合 dockerd 默认行为（不提供操作步骤，请阅读对应章节获取提示）
+>**注意**
+>
+>如果你的运行时为 `containerd`，不能直接照搬下面的命令，需自行研究。注意二者配置文件格式不同。
 
-如果中控机不是 k8s master，可以从 master 上获取 `/etc/docker/daemon.json`，并放在中控机的 `/etc/docker/daemon.json`。
+### 场景一：调整 dockerd 使用 http 协议访问 registry
 
-然后在中控机上执行命令生成新的配置文件：
+docker 服务端支持使用 http 协议拉取镜像，但需要调整配置项。
+
+本章节命在 **中控机** 执行，请先进入工作目录：
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
-BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-cat /etc/docker/daemon.json | jq '.["insecure-registries"]+=["docker.'$BK_DOMAIN'"]' | tee /tmp/daemon.json
 ```
 
-检查内容无误后，即可将 `/tmp/daemon.json` 分发到全部 k8s node 上的 `/etc/docker/daemon.json`。
+然后按步骤操作：
+>**注意**
+>
+>下面的步骤均使用 docker 默认的配置文件路径： `/etc/docker/daemon.json` 。如果你的 k8s dockerd 配置文件路径不同，请注意修改。
 
+1.  获取当前配置文件作为模板。接下来会使用此文件模板覆盖全部 node 上的对应路径，如果各 node 配置文件内容不同，请自行分批获取模板。
+    * 如果中控机不是 k8s master，建议从 master 上获取：
+      ``` bash
+      # 取第一台master的ip
+      first_master=$(kubectl get nodes -l node-role.kubernetes.io/master -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}')
+      scp "$first_master":/etc/docker/daemon.json daemon.json.orig
+      ```
+    * 如果中控机是 master：
+      ``` bash
+      cp /etc/docker/daemon.json daemon.json.orig
+      ```
+2.  生成新的配置文件：
+    ``` bash
+    BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+    jq --arg k "insecure-registries" --arg v "docker.$BK_DOMAIN" 'if .[$k]|index($v) then . else .[$k]+=[$v] end' daemon.json.orig | tee daemon.json
+    ```
+3.  检查内容无误后，即可将 `daemon.json` 分发到全部 k8s node 上的 `/etc/docker/daemon.json`（如果各 node 配置文件路径不同，请自行分批操作。）：
+    ``` bash
+    # 取全部 node 的ip，包括master
+    all_nodes="$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}')"
+    now=$(date +%Y%m%d-%H%M%S)
+    for ip in $all_nodes; do
+      ssh "$ip" "cp /etc/docker/daemon.json /etc/docker/daemon.json.bak-$now"
+      scp daemon.json "$ip":/etc/docker/daemon.json
+      ssh "$ip" "diff /etc/docker/daemon.json /etc/docker/daemon.json.bak-$now"
+    done
+    ```
+4.  然后通知 docker 服务重载配置文件。在中控机执行如下命令可以通知全部 node 上的 docker 服务：
+    ``` bash
+    # 取全部 node 的ip，包括master
+    all_nodes="$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}')"
+    for ip in $all_nodes; do
+      ssh "$ip" "systemctl reload dockerd.service || systemctl reload docker.service"
+    done
+    ```
+    视 docker 部署方式差异，docker 服务名有 `docker.service` 和 `dockerd.service` 两种情况。
+    当下一步检查发现未生效时，可能是配置文件异常，可以登录到 node 上检查服务的 journal：`journalctl -xeu docker服务的名字`。
+5.  检查确认已经生效：
+    ``` bash
+    # 取全部 node 的ip，包括master
+    all_nodes="$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}')"
+    for ip in $all_nodes; do
+      echo "=== config in $ip: ==="
+      ssh "$ip" "docker info | sed -n '/Insecure Registries:/,/^ [^ ]/p'"
+    done
+    ```
+    预期输出如下所示，可看到新添加的 `docker.$BK_DOMAIN` ：
+    ``` yaml
+     Insecure Registries:
+      docker.bkce7.bktencent.com
+      127.0.0.0/8
+     Registry Mirrors:
+    ```
 
-在 node 上安装 jq 命令可以精确检查修改后的配置文件片段：
-``` bash
-jq -r  '."insecure-registries"' /etc/docker/daemon.json
-```
-预期显示如下（如果显示 `null` 或 `[]`，则说明未修改）：
-``` json
-[
-  "docker.bkce7.bktencent.com"
-]
-```
+全部 node 配置成功后，即可继续部署。如果检查发现部分 node 没有生效，请登录到对应 node 逐步操作排查原因。
 
-然后在 node 上 reload docker 服务使修改生效：
-``` bash
-systemctl reload docker
-```
+### 场景二：配合 docker 服务默认行为
+如果希望使用 https 协议访问 registry。则需要变更 ingress-nginx，并更新各 node 证书库。确保 node 和 registry 间能成功建立 SSL 连接。
 
-检查确认已经生效：
-``` bash
-docker info
-```
+>**提示**
+>
+>此场景未经完整测试，仅简述技术要点，具体步骤请自行研究。欢迎你在社区分享经验。
 
-预期可看到新添加的 `docker.$BK_DOMAIN` ，如果没有，请检查 docker 服务是否成功 reload：
-``` yaml
- Insecure Registries:
-  docker.bkce7.bktencent.com
-  127.0.0.0/8
-```
+第一步需要调整 ingress-nginx，为 `docker.$BK_DOMAIN` 域名启用 SSL 并配置证书。
+
+然后根据你的证书情况检查全部 node（包括 master）：
+* 如果你为 `docker.$BK_DOMAIN` 域名购买了商业证书，则系统预置了 root CA，无需额外操作。如果依旧提示证书不可信，可以先尝试更新 node 所在系统的根证书包（CentOS 7 使用 `yum install ca-certificates` 命令更新）。
+* 如使用了自签的证书，则：
+  1. 为 node 添加自签证书（PEM 格式）的 root CA 到此路径：`/etc/docker/cert./docker.$BK_DOMAIN/ca.crt`。（建议一并更新操作系统 root CA 数据库。）
+  2. 重启 node 上的 docker 服务。
+
+>**提示**
+>
+>docker ssl 的更多配置可以参考 [docker 官方文档](https://docs.docker.com/engine/security/certificates/)。
 
 ## 可选：上传 PaaS runtimes 到 bkrepo
 具体操作请查阅《[上传 PaaS runtimes 到 bkrepo](paas-upload-runtimes.md)》文档。
@@ -369,11 +423,18 @@ curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-st
 curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest nm_gse_full  # 节点管理托管的全部文件
 ```
 
-在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境：
+在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境。
+部署节点管理。可顺带上传待托管文件：
 ``` bash
-scripts/setup_bkce7.sh -i nodeman  # 部署节点管理。可顺带上传待托管文件。
-scripts/setup_bkce7.sh -i itsm  # 部署流程服务
-scripts/setup_bkce7.sh -i sops  # 部署标准运维
+scripts/setup_bkce7.sh -i nodeman
+```
+部署流程服务：
+``` bash
+scripts/setup_bkce7.sh -i itsm
+```
+部署标准运维：
+``` bash
+scripts/setup_bkce7.sh -i sops
 ```
 
 此步骤总耗时 18 ~ 27 分钟。每个 SaaS 部署不超过 10 分钟，如果遇到问题请先查阅 《[问题案例](troubles.md)》文档。
