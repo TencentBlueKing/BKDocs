@@ -21,3 +21,17 @@
 5. 确认后台服务依赖的 `Redis`/`MySQL` 可达/正常; 查看后台日志 `iam_sql.log`是否有大量 SQL 慢请求日志
 6. 确认第三方服务是否正常, 查看`iam_component.log`确认是否有异常信息(error)
 
+# 2. 容器化部署相关问题
+
+## 2.1 部署后Pod一直处于Init状态
+
+权限中心容器化版本在worker Pod开始启动前会通过Init Containers执行以下2个检查步骤
+
+1. 检查migrate job是否执行完成
+2. 检查依赖的redis是否能正常连接
+
+所以如发现worker Pod一直处于Init状态, 不能正常进入Running, 请先检查migrate job日志是否正常执行完成, 然后检查redis配置的地址是否可达
+
+## 2.2 部署后Pod处于Running状态, 但是服务未滚动Ready
+
+权限中心的Pod配置了readinessProbe, 检查服务是否可用, 如发现有未滚动Ready的现象, 可以通过 `curl -vv http://{pod_id}:5000/healthz` 查看外部依赖是否正常运行

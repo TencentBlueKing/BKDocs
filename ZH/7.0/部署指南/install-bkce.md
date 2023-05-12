@@ -127,7 +127,7 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 
 >**提示**
 >
->“一键部署” 脚本中自动完成了部署时所需的域名，《[分步部署基础套餐后台](install-base-manually.md)》 文档的 “[配置 coredns](install-base-manually.md#hosts-in-coredns)” 章节亦然。
+>“一键部署” 脚本中自动完成了部署时所需的部分域名，《[分步部署基础套餐后台](install-base-manually.md)》 文档的 “[配置 coredns](install-base-manually.md#hosts-in-coredns)” 章节保持和脚本一致。
 
 
 <a id="hosts-in-k8s-node" name="hosts-in-k8s-node"></a>
@@ -241,6 +241,7 @@ $IP1 jobapi.$BK_DOMAIN  # 作业平台
 $IP1 bknodeman.$BK_DOMAIN  # 节点管理
 $IP1 apps.$BK_DOMAIN  # SaaS 入口：标准运维、流程服务等
 $IP1 bcs.$BK_DOMAIN  # 容器管理平台
+$IP1 bcs-api.$BK_DOMAIN  # 容器管理平台
 $IP1 bklog.$BK_DOMAIN  # 日志平台
 $IP1 bkmonitor.$BK_DOMAIN  # 监控平台
 $IP1 devops.$BK_DOMAIN  # 持续集成平台-蓝盾
@@ -422,11 +423,18 @@ curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-st
 curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest nm_gse_full  # 节点管理托管的全部文件
 ```
 
-在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境：
+在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境。
+部署节点管理。可顺带上传待托管文件：
 ``` bash
-scripts/setup_bkce7.sh -i nodeman  # 部署节点管理。可顺带上传待托管文件。
-scripts/setup_bkce7.sh -i itsm  # 部署流程服务
-scripts/setup_bkce7.sh -i sops  # 部署标准运维
+scripts/setup_bkce7.sh -i nodeman
+```
+部署流程服务：
+``` bash
+scripts/setup_bkce7.sh -i itsm
+```
+部署标准运维：
+``` bash
+scripts/setup_bkce7.sh -i sops
 ```
 
 此步骤总耗时 18 ~ 27 分钟。每个 SaaS 部署不超过 10 分钟，如果遇到问题请先查阅 《[问题案例](troubles.md)》文档。

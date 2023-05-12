@@ -728,8 +728,49 @@ org.springframework.web.client.ResourceAccessException: I/O error on GET request
 <a id="install-bcs" name="install-bcs"></a>
 
 ## 部署容器管理平台时的报错
-待用户反馈。
 
+### PASSWORDS ERROR You must provide your current passwords when upgrading the release
+**表现**
+
+执行 `helmfile -f 03-bcs.yaml.gotmpl sync` 命令时出现报错：
+``` plain
+STDERR:
+  Error: UPGRADE FAILED: execution error at (bcs-services-stack/charts/bcs-certs/templates/NOTES.txt:6:4):
+  PASSWORDS ERROR: You must provide your current passwords when upgrading the release.
+```
+
+**结论**
+
+可参考本文档重新运行一键部署脚本，升级到 7.0.1 ，即可解决此问题。
+
+或在中控机执行如下命令临时打补丁：
+>``` bash
+>scripts/get_bcs_passwd.sh | tee environments/default/bcs/auto-generated-secrets.yaml
+>if grep -nFC 1 /auto-generated-secrets.yaml 03-bcs.yaml.gotmpl ; then echo patched; else sed -i '/resources[.]yaml[.]gotmpl/a\    - environments/default/bcs/auto-generated-secrets.yaml' 03-bcs.yaml.gotmpl && echo patch applied || echo failed to patch ; fi
+>```
+
+**问题分析**
+
+7.0.0 版本中默认未在 values 中保存密码，导致 03-bcs.yaml.gotmpl 只能 sync 一次，后续 sync 或 apply 时会报错 MySQL 密码错误。
+
+补充生成 values 文件即可。7.0.1 版本中已经调整为了部署后自动生成文件。
+
+### no matches for kind BkGatewayPluginMetadata in version gateway.bk.tencent.com/v1beta1
+**表现**
+
+升级 BCS 时出现如下报错：
+``` plain
+STDERR:
+  Error: UPGRADE FAILED: [unable to recognize "": no matches for kind "BkGatewayPluginMetadata" in version "gateway.bk.tencent.com/v1beta1", error validating "": error validating data: [ValidationError(BkGatewayResource.spec):略]]
+```
+
+**结论**
+
+请认真阅读升级文档，需要先升级 `bk-apigateway` 版本 `>=0.4.57`。
+
+**问题分析**
+
+无
 
 <a id="install-co" name="install-co"></a>
 

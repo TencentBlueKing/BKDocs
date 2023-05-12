@@ -35,9 +35,22 @@ APIGateway2.0 API
 | type | string | 是 | query | 成员类型，user 表示用户，department 表示部门 |
 | ids |  string  | 是   | query | 成员 ID 列表，多个以英文逗号分隔, 对于 type=user，则 ID 为用户名，对于 type=department，则为部门 ID |
 
-#### Request
+#### ESB API Request
 ```bash
-Delete /api/c/compapi/v2/iam/management/groups/1/members/?type=user&ids=admin,test1,test2
+Delete /api/c/compapi/v2/iam/management/groups/1/members/
+```
+
+```json
+{
+  "type": "user",
+  "ids": "admin,test1,test2"
+}
+```
+
+#### APIGateway2.0 API Request
+
+```bash
+Delete /api/v1/open/management/groups/1/members/?type=user&ids=admin,test1,test2
 ```
 
 #### Response

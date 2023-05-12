@@ -31,10 +31,16 @@
 #### Request
 
 ```json
-GET /api/v2/open/management/systems/demo/departments/1/groups/belong/?groups=1,2,3,4
+GET /api/v2/open/management/systems/demo/departments/1/groups/belong/?group_ids=1,2,3,4
 ```
 
 #### Response
+
+| 字段 | 类型 | 描述 |
+|---|---|---|
+| belong| bool | 是否属于用户组 | 
+| expired_at| int | 过期时间戳 |
+| created_at | string | 创建时间, UTC时间 |
 
 > Status: 200 OK
 
@@ -43,10 +49,26 @@ GET /api/v2/open/management/systems/demo/departments/1/groups/belong/?groups=1,2
   "code": 0,
   "message": "ok",
   "data": {
-    1: true,
-    2: false,
-    3: false,
-    4: true
+    1: {
+	  "belong": true,
+	  "expired_at": 1667806640,
+	  "created_at": "2022-09-13T13:22:30Z"
+	},
+    2: {
+	  "belong": false,
+	  "expired_at": 0,
+	  "created_at": ""
+	},
+    3: {
+	  "belong": false,
+	  "expired_at": 0,
+	  "created_at": ""
+	},
+    4: {
+	  "belong": true,
+	  "expired_at": 1667806640,
+	  "created_at": "2022-09-13T13:22:30Z"
+	}
   }
 }
 ```

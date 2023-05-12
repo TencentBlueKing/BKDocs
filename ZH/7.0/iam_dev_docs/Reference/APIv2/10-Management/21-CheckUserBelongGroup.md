@@ -26,16 +26,20 @@
 | system_id | string | path | 是 | 接入系统唯一标识 |
 | user_id | string | 用户 ID |
 | group_ids | string | body | 是 | 用户组ID 列表，多个以英文逗号分隔 |
-| inherit | bool | body | 否 | 对于用户，是否会包括其继承来着部门的，默认为false，即默认只查询直接关联的，不会包括继承的 |
-
 
 #### Request
 
 ```json
-GET /api/v2/open/management/systems/demo/users/test_user1/groups/belong/?groups=1,2,3,4&inherit=false
+GET /api/v2/open/management/systems/demo/users/test_user1/groups/belong/?group_ids=1,2,3,4
 ```
 
 #### Response
+
+| 字段 | 类型 | 描述 |
+|---|---|---|
+| belong| bool | 是否属于用户组 | 
+| expired_at| int | 过期时间戳 |
+| created_at | string | 创建时间, UTC时间 |
 
 > Status: 200 OK
 
@@ -44,10 +48,26 @@ GET /api/v2/open/management/systems/demo/users/test_user1/groups/belong/?groups=
   "code": 0,
   "message": "ok",
   "data": {
-    1: true,
-    2: false,
-    3: false,
-    4: true
+    1: {
+	  "belong": true,
+	  "expired_at": 1667806640,
+	  "created_at": "2022-09-13T13:22:30Z"
+	},
+    2: {
+	  "belong": false,
+	  "expired_at": 0,
+	  "created_at": ""
+	},
+    3: {
+	  "belong": false,
+	  "expired_at": 0,
+	  "created_at": ""
+	},
+    4: {
+	  "belong": true,
+	  "expired_at": 1667806640,
+	  "created_at": "2022-09-13T13:22:30Z"
+	}
   }
 }
 ```
