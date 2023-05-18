@@ -1,6 +1,6 @@
 # 配置消息通知：邮件
 
-配置地址：以“admin”的角色进入“开发者中心” -> “API 网关” -> “通道管理” -> 选择系统 “[CMSI] 蓝鲸消息管理” -> 选择 “[CMSI] 发送邮件”
+配置地址：以“admin”的角色进入“开发者中心” -> “云 API” -> “网关管理” -> “组件管理” -> 选择系统 “[CMSI] 蓝鲸消息管理” -> 选择 “[CMSI] send_mail”
 
 ## 组件配置
 
@@ -9,8 +9,8 @@
 - smtp_port: SMTP 服务器端口 (注意区分企业邮箱还是个人邮箱)
 - smtp_user: SMTP 服务器帐号
 - smtp_pwd: SMTP 服务器帐号密码 (一般为授权码)
-- smtp_usessl: 默认为 False
-- smtp_usetls: 默认为 False
+- smtp_usessl: 是否启用 SSL 加密连接
+- smtp_usetls: 是否启用 TLS 加密连接
 - mail_sender: 默认的邮件发送者 (smtp_user 相同)
 
 ## 组件示例
@@ -32,27 +32,26 @@ QQ 邮箱的 SMTP 服务，默认是关闭的。
 
 ### 2、找到 SMTP 配置
 
-[QQ 邮箱 SMTP 默认配置](https://service.mail.qq.com/cgi-bin/help?subtype=1&&id=20010&&no=1000557)：
-
 ```bash
 smtp_host ：smtp.qq.com
-smtp_port ：465
+smtp_port ：465 (如果启用 SSL 加密连接 smtp_usessl，那么需要填入对应端口号默认为 465)
 smtp_user ：demo@qq.com （个人QQ邮箱地址）
 smtp_pwd ：授权码
-smtp_usessl ：True
+smtp_usessl ：勾选启用 SSL 加密连接
+mail_sender: demo@qq.com (默认的邮件发送者可与 smtp_user 相同)
 ```
 
 ![-w2020](../assets/noticeWay02.png)
 <center>填写变量值</center>
 
-填写完成后提交修改
+填写完成后保存
 
 ### 3、测试接口
 
 使用 Postman 工具请求为例
 
 ```bash
-http://{PaaS_URL}/api/c/compapi/cmsi/send_mail/
+http://bkapi.bkce7.bktencent.com/api/c/compapi/cmsi/send_mail/
 ```
 
 ```json
@@ -73,11 +72,7 @@ http://{PaaS_URL}/api/c/compapi/cmsi/send_mail/
 
 ### 4、排查接口问题
 
-1. 相关日志信息，登录 PaaS 机器查看
-
-```bash
-tail -f /data/bkce/logs/open_paas/esb.log
-```
+1. 可根据 api 请求返回的 message 信息定位失败原因
 
 2. 请检查是否将端口打开
 
