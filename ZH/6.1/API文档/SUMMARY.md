@@ -314,7 +314,7 @@
     * [查询单个用户信息（v2）](usermanage/zh-hans/retrieve_user.md)
 * [权限中心]()
     * [概览]()
-        * [后台 API 和 esb API 说明](6.1/iam_dev_docs/Reference/API/01-Overview/01-BackendAPIvsesbAPI.md)
+        * [后台 API 和 esb API 说明](6.1/iam_dev_docs/Reference/API/01-Overview/01-BackendAPIvsESBAPI.md)
         * [接口协议前置说明](6.1/iam_dev_docs/Reference/API/01-Overview/02-APIBasicInfo.md)
         * [系统间接口鉴权](6.1/iam_dev_docs/Reference/API/01-Overview/03-APIAuth.md)
     * [模型注册]()
