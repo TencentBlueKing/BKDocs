@@ -94,6 +94,9 @@ bash /data/install/configure_ssh_without_pass
 # 校验环境和部署的配置
 ./health_check/check_bk_controller.sh
 ```
+[初始化环境-常见报错](https://bk.tencent.com/s-mart/community/question/5540?type=answer)
+
+[校验环境和部署的配置-常见报错](https://bk.tencent.com/s-mart/community/question/5668?type=answer)
 
 ### 部署 PaaS 平台
 
@@ -102,7 +105,9 @@ bash /data/install/configure_ssh_without_pass
 ./bk_install paas
 ```
 
-PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域名未经解析，可参考 [三、访问蓝鲸](./quick_install.md#三、访问蓝鲸) 。
+PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域名未经解析，可参考 [三、访问蓝鲸](./quick_install.md#三、访问蓝鲸) 
+
+[部署 paas-常见报错](https://bk.tencent.com/s-mart/community/question/5559?type=answer)
 
 ### 部署 app_mgr
 
@@ -110,6 +115,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 # 部署 SaaS 运行环境
 ./bk_install app_mgr
 ```
+[部署 app_mgr-常见报错](https://bk.tencent.com/s-mart/community/question/5713?type=answer)
 
 ### 部署权限中心与用户管理
 
@@ -119,7 +125,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 # 部署用户管理 SaaS
 ./bk_install saas-o bk_user_manage
 ```
-
+[部署 saas-常见报错](https://bk.tencent.com/s-mart/community/question/5669?type=answer)
 ### 部署 CMDB
 
 ```bash
@@ -133,6 +139,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 # 部署作业平台后台模块及其依赖组件
 ./bk_install job
 ```
+[部署 job-常见报错](https://bk.tencent.com/s-mart/community/question/5538?type=answer)
 
 ### 部署 bknodeman
 
@@ -140,6 +147,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 # 部署节点管理后台模块、节点管理 SaaS 及其依赖组件
 ./bk_install bknodeman
 ```
+[部署 saas-常见报错](https://bk.tencent.com/s-mart/community/question/5669?type=answer)
 
 ### 部署标准运维及流程服务
 
@@ -152,6 +160,7 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 # 部署流程管理 SaaS
 ./bk_install saas-o bk_itsm
 ```
+[部署 saas-常见报错](https://bk.tencent.com/s-mart/community/question/5669?type=answer)
 
 ### 加载蓝鲸相关维护命令
 
@@ -164,6 +173,7 @@ source ~/.bashrc
 ```bash
 ./bkcli initdata topo
 ```
+[初始化拓扑-常见报错](https://bk.tencent.com/s-mart/community/question/5417?type=answer)
 
 ### 检测相关服务状态
 
@@ -197,6 +207,8 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
     ```bash
     ./bk_install lesscode
     ```
+    
+    [部署 lesscode-常见报错](https://bk.tencent.com/s-mart/community/question/6238?type=answer)
 
 ### 部署 bkiam_search_engine (可选)
 
