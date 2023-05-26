@@ -24,6 +24,9 @@ bash /data/install/configure_ssh_without_pass
 # 校验环境和部署的配置
 ./health_check/check_bk_controller.sh
 ```
+[初始化环境-常见报错](https://bk.tencent.com/s-mart/community/question/5540?type=answer)
+
+[校验环境和部署的配置-常见报错](https://bk.tencent.com/s-mart/community/question/5668?type=answer)
 
 > 详细安装过程介绍，请查看[初始化并检查环境详解](../../基础包安装/安装详解/install_common.md)。
 
@@ -34,6 +37,8 @@ bash /data/install/configure_ssh_without_pass
 ./bk_install paas
 ```
 
+[部署 paas-常见报错](https://bk.tencent.com/s-mart/community/question/5559?type=answer)
+
 > 详细安装过程介绍，请查看[安装 PaaS 平台详解](../../基础包安装/安装详解/install_paas.md)。
 
 ## 部署 app_mgr
@@ -42,6 +47,7 @@ bash /data/install/configure_ssh_without_pass
 # 部署 SaaS 运行环境，正式环境及测试环境
 ./bk_install app_mgr
 ```
+[部署 app_mgr-常见报错](https://bk.tencent.com/s-mart/community/question/5713?type=answer)
 
 > 详细安装过程介绍，请查看[安装 PaaS 平台详解](../../基础包安装/安装详解/install_paas.md)。
 
@@ -60,6 +66,7 @@ bash /data/install/configure_ssh_without_pass
 # 用户管理
 ./bk_install saas-o bk_user_manage
 ```
+[部署 saas-常见报错](https://bk.tencent.com/s-mart/community/question/5669?type=answer)
 
 ## 部署 CMDB
 
@@ -77,6 +84,8 @@ bash /data/install/configure_ssh_without_pass
 ./bk_install job
 ```
 
+[部署 job-常见报错](https://bk.tencent.com/s-mart/community/question/5538?type=answer)
+
 > 详细安装过程介绍，请查看[安装管控平台详解](../../基础包安装/安装详解/install_gse.md)和[安装作业平台详解](../../基础包安装/安装详解/install_job.md)。
 
 ## 部署 bknodeman
@@ -89,6 +98,7 @@ bash /data/install/configure_ssh_without_pass
 # 安装节点管理后台模块、节点管理 SaaS 及其依赖组件
 ./bk_install bknodeman
 ```
+[部署 saas-常见报错](https://bk.tencent.com/s-mart/community/question/5669?type=answer)
 
 > 详细安装过程介绍，请查看[安装节点管理详解](../../基础包安装/安装详解/install_nodeman.md)。
 
@@ -103,6 +113,7 @@ bash /data/install/configure_ssh_without_pass
 # 流程管理
 ./bk_install saas-o bk_itsm
 ```
+[部署 saas-常见报错](https://bk.tencent.com/s-mart/community/question/5669?type=answer)
 
 ## 加载蓝鲸相关维护命令
 
@@ -115,6 +126,8 @@ source ~/.bashrc
 ```bash
 ./bkcli initdata topo
 ```
+
+[初始化拓扑-常见报错](https://bk.tencent.com/s-mart/community/question/5417?type=answer)
 
 ## 检测相关服务状态
 
@@ -205,6 +218,6 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 
 ## 访问蓝鲸开始使用
 
-可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.0-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/) 。
+可参考蓝鲸 [快速入门](../../../../../QuickStart/6.0/quick-start-v6.0-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/) 。
 
 如需部署监控日志套餐，请参考 [监控日志套餐部署](./value_added.md) 。
