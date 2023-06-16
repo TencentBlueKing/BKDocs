@@ -37,4 +37,4 @@
   * [蓝盾 编译 Maven 工程](7.0/持续集成平台/产品白皮书/Examples/Java-Maven.md)
   * [蓝盾 编译 NodeJS 工程](7.0/持续集成平台/产品白皮书/Examples/Node.md)
   * [蓝盾 流水线实现测试环境自动更新](CI/Pipeline_git_commit_to_stag.md)
-- [查看更多实操案例](https://bk.tencent.com/s-mart/community/question/9761)
+* [查看更多实操案例](https://bk.tencent.com/s-mart/community/question/9761)
