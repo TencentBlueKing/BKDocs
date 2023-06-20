@@ -11,7 +11,7 @@
 
 3、停进程
 ```bash
- /usr/local/gse/agp
+/usr/local/gse/agent/bin/gsectl stop
 ```
 4、删目录
 ```bash
