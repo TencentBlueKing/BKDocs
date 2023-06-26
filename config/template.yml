@@ -1,0 +1,327 @@
+{% autoescape off %} 
+-
+  name: {{ Index }}
+  children:
+    - 
+      name: {{ IndexCoDocument }}
+      children:
+        -
+          name: {{ IndexQuickStart }}
+        - 
+          name: {{ IndexDeploymtGuides }}
+        -
+          name: {{ IndexBestPractices }}
+        -
+          name: {{ IndexDevelopGuide }}
+        -
+          name: {{ IndexVideo }}
+        -
+          name: {{ IndexFAQ }}
+    -
+      name: {{ IndexProdDocument }}
+      children:
+        - 
+          name: {{ IndexIntro }}
+          children:
+            - 
+              name: {{ IndexWhatBlueking }}
+            - 
+              name: {{ IndexOnlineGuide }}
+            - 
+              name: {{ IndexBKNews }}
+            - 
+              name: {{ IndexVersionLog }}
+            - 
+              name: {{ IndexDownloads }}
+            - 
+              name: {{ IndexDocumentationContributorGuide }}
+            - 
+              name: {{ IndexSolution }}
+        - 
+          name: {{ IndexSaaSService }}
+          children:
+            - 
+              name: {{ IndexUserManage }}
+            -
+              name: {{ IndexIAM }}
+            -  
+              name: {{ IndexNodeMan }}
+            - 
+              name: {{ IndexSOPS }}
+            - 
+              name: {{ IndexMonitor }}
+            - 
+              name: {{ IndexLogSearch }}
+            - 
+              name: {{ IndexITSM }}
+            - 
+              name: {{ IndexAuditCenter }}
+            - 
+              name: {{ IndexDBManage }}
+            - 
+              name: {{ IndexChartPlatform }}
+            -
+              name: {{ IndexHaiLei }}
+            - 
+              name: {{ IndexFTA }}
+            - 
+              name: {{ IndexGSEKit }}
+            - 
+              name: {{ IndexBKCI }}
+            -
+              name: {{ IndexNetworkManagement }}
+        - 
+          name: {{ IndexPaaSService }}
+          children:
+            - 
+              name: {{ IndexPaaS }}
+            - 
+              name: {{ IndexAPIGateway }}
+            - 
+              name: {{ IndexSaaSDevelopmentDatabase }}
+            - 
+              name: {{ IndexMagicBox }}
+            - 
+              name: {{ IndexLessCode }}
+            -
+              name: {{ IndexIntegrateGuide }}
+            - 
+              name: {{ IndexDevelopmentDatabase }}
+            - 
+              name: {{ IndexDeveloperCenter }}
+            - 
+              name: {{ IndexFrameWork }}
+            - 
+              name: {{ IndexFrontTools }}
+            - 
+              name: {{ IndexAPIDocument }}
+            - 
+              name: {{ IndexSaaSDevelopment }}
+            - 
+              name: {{ IndexDevelopStandard }}
+            - 
+              name: {{ IndexIAMAccess }}
+        - 
+          name: {{ IndexAtomService }}
+          children:
+            - 
+              name: {{ IndexCMDB }}
+            - 
+              name: {{ IndexGSE }}
+            - 
+              name: {{ IndexJOB }}
+            - 
+              name: {{ IndexBCS }}
+            - 
+              name: {{ IndexDevops }}
+            - 
+              name: {{ IndexTurbo }}
+            - 
+              name: {{ IndexQualityGate }}
+            - 
+              name: {{ IndexCodeReview }}
+            - 
+              name: {{ IndexArtifactory }}
+            - 
+              name: {{ IndexBKBase }}
+-
+  name: {{ Doc }}
+  children:
+    -
+      name: {{ DocProdDocument }}
+      children:
+        - 
+          name: {{ DocBrandConcept }}
+          children:
+            - 
+              name: {{ DocBlueKingFamily }}
+        - 
+          name: {{ DocAtomService }}
+          children:
+            - 
+              name: {{ DocPaaS }}
+            - 
+              name: {{ DocCMDB }}
+            - 
+              name: {{ DocJOB }}
+            - 
+              name: {{ DocGSE }}
+            - 
+              name: {{ DocBCS }}
+            - 
+              name: {{ DocDevops }}
+            - 
+              name: {{ DocBKBase }}
+            -         
+              name: {{ DocAPIGateway }}
+            - 
+              name: {{ DocLessCode }}
+            - 
+              name: {{ DocQualityGate }}
+        - 
+          name: {{ DocSaaSService }}
+          children:
+            - 
+              name: {{ DocUserManage }}
+            - 
+              name: {{ DocIAM }}
+            - 
+              name: {{ DocNodeMan }}
+            - 
+              name: {{ DocSOPS }}
+            - 
+              name: {{ DocMonitor }}
+            - 
+              name: {{ DocLogSearch }}
+            - 
+              name: {{ DocITSM }}
+            - 
+              name: {{ DocAuditCenter }}
+            - 
+              name: {{ DocDBManage }}
+            - 
+              name: {{ DocChartPlatform }}
+            -
+              name: {{ DocHaiLei }} 
+            - 
+              name: {{ DocGSEKit }}
+            -
+              name: {{ DocFTA }}
+            - 
+              name: {{ DocNetworkManagement }}
+            - 
+              name: {{ DocCICDKit }}
+            - 
+              name: {{ DocDevops }}
+    -
+      name: {{ DocQuickUse }}
+      children:
+        - name: {{ DocBlueKingFamily }}
+        - 
+          name: {{ DocQuickStart }}
+        - 
+          name: {{ DocOnlineGuide }}
+        -
+          name: {{ DocQuickDeploy }}
+    -
+      name: {{  DocSceneCase  }}
+      children:
+        - 
+          name: {{ DocCIIntegration }}
+        - 
+          name: {{ DocCDDeploy }}
+        - 
+          name: {{ DocCOOperate }}
+    -
+      name: {{ DocDevelopGuide }}
+      children:
+        - 
+          name: {{ DocDevelopStandard }}
+        - 
+          name: {{ DocSaaSDeveloperDatabase }}
+        - 
+          name: {{ DocFrontTools }}
+        -
+          name: {{ DocIntegrateGuide }}
+        - 
+          name: {{ DocErrorCode }}
+        - 
+          name: {{ DocAPIDocument }}
+        - 
+          name: {{ DocSaaSDevelopment }}
+        - 
+          name: {{ DocMobileDevelopment }}
+        - 
+          name: {{ DocExpandDevelopment}}
+        - 
+          name: {{ DocIAMAccess }}
+        - 
+          name: {{ DocOSContributorGuide }}
+    -
+      name: {{ DocDeploymentMaint }}
+      children:
+        - 
+          name: {{ DocDeploymentPlan }}
+        - 
+          name: {{ DocSoftwareDownload }}
+        - 
+          name: {{ DocBasicPkgDeploy }}
+        - 
+          name: {{ DocExpandPkgDeploy }}
+        - 
+          name: {{ DocSaaSDeploy }}
+        - 
+          name: {{ DocMaintManual }}
+        - 
+          name: {{ DocUpgradeGuide }}
+        - 
+          name: {{ DocMiniDeployment }}
+        - 
+          name: {{ DocBasicPkgQuickDeploy }}
+        - 
+          name: {{ DocDevopsQuickDeploy }}  
+        - 
+          name: {{ DocBCSQuickDeploy }}
+        - 
+          name: {{ DocBasicPkgDeployDetails }}
+        - 
+          name: {{ DocDevopsPkgDeployDetails }}
+        - 
+          name: {{ DocBCSPkgDeployDetails }}
+        - 
+          name: {{ DocBasicPkgMaintManual }}  
+        - 
+          name: {{ DocExpandPkgMaintManual }} 
+        - 
+          name: {{ DocUnUpgradeGuide }}
+        - 
+          name: {{ DocUnMiniDeployment }}
+        - 
+          name: {{ DocK8SBeRead }}
+        - 
+          name: {{ DocDeployPreWork }}
+        - 
+          name: {{ DocBasicMenuDeployment }}
+        - 
+          name: {{ DocBCSDeploy }}
+        - 
+          name: {{ DocMonitorDeploy }}
+        - 
+          name: {{ DocDevopsDeploy }}
+        - 
+          name: {{ DocLessCodeDeploy }}
+        - 
+          name: {{ DocTKEClusterPrepar }}
+        -
+          name: {{ DocBasicByStepDeploy }}
+        - 
+          name: {{ DocSaaSBasicDeploy }}
+        - 
+          name: {{ DocConfSaaSNode }}
+        - 
+          name: {{ DocUninstall }}
+        - 
+          name: {{ DocFAQ }}
+    -
+      name: {{ DocCommonInformation }}
+      children:
+        - 
+          name: {{ DocNews }}
+        - 
+          name: {{ DocVersionLog }}
+        - 
+          name: {{ DocCommonIssue  }}
+        - 
+          name: {{ DocDownloadResources }}
+        -
+          name: {{ DocDocumentationContributorGuide }}
+    - 
+      name: {{ DocVideoTutorials }}
+      children:
+        -
+          name: {{ DocBrandVideo }}
+        - 
+          name: {{ DocDevelopCourse }}
+        - 
+          name: {{ DocSalon }}
+{% endautoescape %}

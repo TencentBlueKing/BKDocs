@@ -18,4 +18,4 @@
 2. 加入腾讯蓝鲸社区交流群，与运维大佬们一起研究交流技术干货--腾讯蓝鲸社区交流群：495299374
 3. 给我们写邮件：contactus_bk@tencent.com
 
-具体教程：[文档更新指引](./新文档中心格式要求/文档更新指引.md)
+具体教程：[文档更新指引](./ZH/DocumentationContributorGuide/7.0/collaborateguide.md)
