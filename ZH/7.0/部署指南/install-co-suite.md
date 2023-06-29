@@ -72,7 +72,7 @@ scripts/set_desktop_default_app.sh -a "bk_log_search"
 <a id="bkmonitor-install-operator" name="bkmonitor-install-operator"></a>
 
 ## 容器监控
-在配置了容器监控后，我们可以访问 “监控平台” 的 “观测场景” —— “Kubenetes” 界面了。
+在配置了容器管理平台后，我们可以访问 “监控平台” 的 “观测场景” —— “Kubenetes” 界面了。
 
 ### 前置检查
 容器监控功能需要在所有 k8s node （包括 master ）部署 gse-agent。请先在 “节点管理” 中完成 agent 安装。
