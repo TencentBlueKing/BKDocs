@@ -2,12 +2,14 @@
 
 ## 7.1 部署文档
 * [简介](index.md)
-* [准备资源及环境](prepare.md)
+* [准备资源及环境]()
+    * [准备资源及环境](prepare.md)
     * [准备 k8s —— 使用 bcs.sh 自建集群](get-k8s-create-bcssh.md)
     * [准备 k8s —— 使用已有的集群](get-k8s-import-kubeconfig.md)
     * [准备 k8s —— 购买腾讯云 TKE 服务](get-k8s-purchase-tke.md)
     * [准备中控机](prepare-bkctrl.md)
-* [部署基础套餐](install-bkce.md)
+* [部署基础套餐]()
+    * [部署基础套餐](install-bkce.md)
     * [部署步骤详解 —— 后台](manual-install-bkce.md)
     * [可选：上传 PaaS runtimes 到 bkrepo](paas-upload-runtimes.md)
     * [可选：配置 SaaS 专用 node](saas-dedicated-node.md)
