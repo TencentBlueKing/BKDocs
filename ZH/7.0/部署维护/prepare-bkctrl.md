@@ -2,7 +2,7 @@
 
 # 检查 k8s 集群
 ## 在中控机安装 kubectl
-当 **中控机** 并非 k8s `master` 时，是不存在 `kubectl`命令的。CentOS 7 可直接使用如下的命令安装：
+当 **中控机** 为 k8s `master` 时，已经存在 `kubectl` 命令，可以跳过本章节。
 ``` bash
 k8s_version=1.20.11  # 推荐安装和服务端相同版本的客户端，如为其他版本，请重新赋值
 if ! command -v kubectl; then
@@ -18,10 +18,12 @@ EOF
 fi
 ```
 
-如为其他系统，您可以参考 k8s 官方文档安装： https://kubernetes.io/zh/docs/tasks/tools/install-kubectl-linux/
+如为其他系统，你可以参考 k8s 官方文档： https://kubernetes.io/zh/docs/tasks/tools/install-kubectl-linux/
 
 ## 配置 kubectl 命令行补全
-`kubectl` 命令参数十分复杂，且 pod 名称多含有随机的标识。因此命令行补全功能十分重要。
+在部署和日常维护时，启用补全会方便我们在命令行操作。因为 `kubectl` 命令参数十分复杂，且 pod 名称可能随机。
+
+在 **中控机** 上执行如下命令：
 ``` bash
 yum install -y bash-completion
 mkdir -p /etc/bash_completion.d/
@@ -45,19 +47,15 @@ kubectl get nodes -o wide
 kubectl describe nodes NAME  # NAME参数为 kubectl get nodes输出的 NAME 列
 ```
 
-## kubectl 的常见报错
+### kubectl 的常见报错
 1. `Unable to connect to the server: dial tcp: lookup k8s-api.bcs.local: no such host`，请确保 **中控机** 能正常解析  `~/.kube/config` 文件中的 `cluster.server` 配置项中的域名。
 2. `The connection to the server k8s-api.bcs.local:6443 was refused - did you specify the right host or port?`，请确保 **中控机** 到 `k8s-api.bcs.local` （提示的域名）的 6443 端口。一般需要检查目的服务器的防火墙，云服务器需额外检查安全组。
 3. `Unable to connect to the server: dial tcp 10.0.0.254:6443: i/o timeout`，请确保 **中控机** 到 `k8s-api.bcs.local` （提示的域名）的网络可互通，以及目的服务器的防火墙，云服务器需额外检查安全组。
 
 
 # 安装部署所需的工具
->**提示**
->
->中控机默认工作目录为 `~/bkce7.1/blueking/`，另有注明除外。
 
-
-`jq` 用于在中控机解析服务端 API 返回的 json 数据。
+部署脚本会调用 `jq` 命令，用于在中控机解析服务端 API 返回的 json 数据。
 
 在 **中控机** 执行如下命令：
 ``` bash
@@ -70,7 +68,7 @@ yum install -y jq unzip uuid
 # 可选：配置 ssh 免密登录
 >**提示**
 >
->部署脚本没有要求配置 ssh 免密。如果你所在的公司有安全限制，可以跳过此步骤。
+>部署脚本没有要求配置 ssh 免密。如果你所在的公司有安全规范禁止直接添加公钥授权，可以跳过此步骤。
 
 本文档中会提供命令片段方便您快速使用。其中部分脚本可能会从直接中控机上调用 `ssh` 在 k8s node 上执行远程命令，所以需提前配置免密登录。
 

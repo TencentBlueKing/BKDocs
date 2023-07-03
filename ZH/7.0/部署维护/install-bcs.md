@@ -13,7 +13,7 @@ local-storage (default)   kubernetes.io/no-provisioner   Delete          WaitFor
 ```
 如果输出的名称不是 `local-storage`，则需通过创建 `custom.yaml` 实现修改：
 ``` bash
-cd ~/bkhelmfile/blueking/
+cd ~/bkce7.1-install/blueking/
 cat <<EOF >> environments/default/custom.yaml
 bcs:
   storageClass: 填写上面的查询到的名称
@@ -25,7 +25,7 @@ EOF
 
 在 **中控机** 执行：
 ``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 ./scripts/control_coredns.sh update "$IP1" bcs.$BK_DOMAIN bcs-api.$BK_DOMAIN docker.$BK_DOMAIN helm.$BK_DOMAIN
@@ -35,7 +35,7 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ### 开始部署
 在 中控机 执行：
 ``` bash
-cd ~/bkhelmfile/blueking
+cd ~/bkce7.1-install/blueking/
 helmfile -f 03-bcs.yaml.gotmpl sync
 # 在admin桌面添加应用，也可以登录后自行添加。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_bcs"
