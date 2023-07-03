@@ -1,6 +1,6 @@
 # SUMMARY
 
-## 蓝鲸智云 7.1 部署文档
+## 7.1 部署文档
 * [简介](index.md)
 * [准备资源及环境](prepare.md)
   * [准备 k8s —— 使用 bcs.sh 自建集群](get-k8s-create-bcssh.md)
