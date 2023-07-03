@@ -9,7 +9,7 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 ```
 
 安装成功后输出如下图所示（红框内的命令会在扩容章节里说明获取方法，此时无需保存）:
-![](../7.0/assets/bcssh-k8sctrl-add-node-cmds.png)
+![](./assets/bcssh-k8sctrl-add-node-cmds.png)
 
 这表示您成功部署了一个 k8s 集群，此时您可以使用 `kubectl` 命令了。接下来开始添加节点吧。
 
@@ -23,7 +23,7 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 * 如果要扩容 `master`，请复制 **扩容控制平面** 下方的全部命令（已用红框标出）。注意 master **总数量** 应该为 **奇数**，一般为 1、3、5，如需更多 master，请根据集群规模谨慎评估。
 * 如果要扩容 `node`，请复制 **扩容节点** 下方的全部命令（已用红框标出）。
 
-![](../7.0/assets/bcssh-k8sctrl-add-node-cmds.png)
+![](./assets/bcssh-k8sctrl-add-node-cmds.png)
 
 
 >**提示**

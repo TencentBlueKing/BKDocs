@@ -30,7 +30,7 @@ kubectl taint nodes node-1 dedicated=bkSaas:NoSchedule
 
 最终配置效果如下图所示，确认无误后点击保存按钮。
 
-![](../7.0/assets/2022-03-09-10-44-14.png)
+![](./assets/2022-03-09-10-44-14.png)
 
 ## SaaS 专用 node 问题排查
 如果发现 SaaS 的 Pod 调度到了其他 `node`，请检查 PaaS 页面的配置是否正确。

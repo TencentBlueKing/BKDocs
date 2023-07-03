@@ -64,7 +64,7 @@ kubectl get pod -n bcs-system -w
 * [自建集群所需的标准运维流程模板](https://bkopen-1252002024.file.myqcloud.com/ce7/files/bk7_bcs_sops_common_20221107.dat)
 
 上传成功后会显示导入列表，点击 “覆盖 ID 相同的流程” 按钮完成导入。如果此前有导入过流程，则导入列表下方会高亮提示 `其中4条流程与项目已有流程ID存在冲突`，请点击 “覆盖冲突项，并提交” 按钮。
-![](../7.0/assets/bk_sops-common-import-bcs.png)
+![](./assets/bk_sops-common-import-bcs.png)
 
 >**提示**
 >
@@ -79,4 +79,4 @@ kubectl get pod -n bcs-system -w
 
 或回到《[部署基础套餐](install-bkce.md#next)》文档看看其他操作。
 
-或开始 [了解容器管理平台](../../BCS/1.28/UserGuide/Introduction/README.md)。
+或开始 [了解容器管理平台](../BCS/产品白皮书/Introduction/README.md)。

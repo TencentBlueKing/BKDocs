@@ -22,7 +22,7 @@
 helm status bk-paas -n blueking
 ```
 其输出如图所示：
-![](../7.0/assets/2022-03-09-10-42-53.png)
+![](./assets/2022-03-09-10-42-53.png)
 
 在 **中控机** 执行 `helm status` 显示的命令：
 ``` bash

@@ -36,7 +36,7 @@ kubectl get nodes -o wide
 ```
 其输出如下图所示：
 
-![](../7.0/assets/2022-03-09-10-34-42.png)
+![](./assets/2022-03-09-10-34-42.png)
 
 当  `STATUS`  列的值为  `Ready` ，即表示此 `node` 已经成功加入集群且工作正常。
 
