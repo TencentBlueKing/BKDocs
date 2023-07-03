@@ -20,3 +20,5 @@
 * [卸载](uninstall.md)
 * [问题案例](troubles.md)
 * [FAQ](faq.md)
+* [附录]()
+    * [访问入口及账户密码汇总](access.md)
