@@ -4,15 +4,14 @@
 # 下载所需的资源文件
 鉴于目前容器化的软件包数量较多且变动频繁，我们提供了下载脚本。
 
-请使用如下命令下载蓝鲸基础套餐 helmfile 及公共证书。
+请在 **中控机** 使用如下命令下载蓝鲸 helmfile 包及公共证书。
 ``` bash
 curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-beta/bkdl-7.1-beta.sh | bash -s -- -ur latest base cert
 ```
 
-# 部署基础套餐后台
-您可按需选择部署方式：
-* 如果您希望尽快体验蓝鲸，使用“一键部署”脚本填写域名即可开始部署，请继续往下阅读。
-* 如果您打算研究部署细节，请查阅 《[部署步骤详解 —— 后台](manual-install-bkce.md)》 文档。期间需要手动执行 `helmfile` 命令及一些代码片段。
+你可按需选择部署方式：
+* 如果你希望尽快体验蓝鲸，使用“一键部署”脚本填写域名即可开始部署，请继续往下阅读。
+* 如果你打算研究部署细节，请查阅 《[部署步骤详解 —— 后台](manual-install-bkce.md)》 文档。期间需要手动执行 `helmfile` 命令及一些代码片段。
 
 <a id="setup_bkce7-i-base" name="setup_bkce7-i-base"></a>
 

@@ -14,8 +14,8 @@ curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-beta/bkdl-7.1-beta
 ```
 安装：
 ``` bash
-nodeman_backend_api_pod=填写POD名
-namespace=blueking  # 一般未变动
+nodeman_backend_api_pod=$(kubectl get pod -A -l app.kubernetes.io/component=bk-nodeman-backend-api -o jsonpath='{.items[0].metadata.name}')
+namespace=$(kubectl get pod -A -l app.kubernetes.io/component=bk-nodeman-backend-api -o jsonpath='{.items[0].metadata.namespace}')
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 # 删除缓存的旧安装包
 kubectl exec -n "$namespace" "$nodeman_backend_api_pod" -- sh -c 'rm -f /app/official_plugin/gse_agent/* && rm -f /app/official_plugin/gse_proxy/*'
