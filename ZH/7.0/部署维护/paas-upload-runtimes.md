@@ -7,7 +7,7 @@
 
 # 上传 PaaS runtimes 到 bkrepo
 
-我们提供了 `paas3-buildpack-toolkit` 镜像辅助您完成上传操作。
+我们提供了 `paas3-buildpack-toolkit` 镜像辅助你完成上传操作。
 
 镜像中的 `runtimes-download.sh` 脚本会从蓝鲸官网下载，并上传到你私有化部署环境中。
 
@@ -22,7 +22,7 @@
 helm status bk-paas -n blueking
 ```
 其输出如图所示：
-![](./assets/2022-03-09-10-42-53.png)
+![](../7.0/assets/2022-03-09-10-42-53.png)
 
 在 **中控机** 执行 `helm status` 显示的命令：
 ``` bash

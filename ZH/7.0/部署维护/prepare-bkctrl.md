@@ -1,8 +1,14 @@
 整个安装过程都在中控机上进行，我们需要准备好部署脚本所需的环境。
 
 # 检查 k8s 集群
+在前面的章节中，你已经选择了适合的 k8s 集群，现在需要在中控机管理。
+
 ## 在中控机安装 kubectl
 当 **中控机** 为 k8s `master` 时，已经存在 `kubectl` 命令，可以跳过本章节。
+
+如果已经存在 `kubectl` 命令，请先检查版本，如果和服务端版本不一致，建议重新安装。
+
+如果 **中控机** 为 CentOS 7 系统，可直接使用如下的命令安装：
 ``` bash
 k8s_version=1.20.11  # 推荐安装和服务端相同版本的客户端，如为其他版本，请重新赋值
 if ! command -v kubectl; then
@@ -38,7 +44,7 @@ kubectl get nodes -o wide
 ```
 其输出如下图所示：
 
-![](./assets/2022-03-09-10-34-42.png)
+![](../7.0/assets/2022-03-09-10-34-42.png)
 
 当  `STATUS`  列的值为  `Ready` ，即表示此 `node` 已经成功加入集群且工作正常。
 
@@ -54,7 +60,6 @@ kubectl describe nodes NAME  # NAME参数为 kubectl get nodes输出的 NAME 列
 
 
 # 安装部署所需的工具
-
 部署脚本会调用 `jq` 命令，用于在中控机解析服务端 API 返回的 json 数据。
 
 在 **中控机** 执行如下命令：
@@ -70,13 +75,13 @@ yum install -y jq unzip uuid
 >
 >部署脚本没有要求配置 ssh 免密。如果你所在的公司有安全规范禁止直接添加公钥授权，可以跳过此步骤。
 
-本文档中会提供命令片段方便您快速使用。其中部分脚本可能会从直接中控机上调用 `ssh` 在 k8s node 上执行远程命令，所以需提前配置免密登录。
+本文档中会提供命令片段方便你快速使用。其中部分脚本可能会从直接中控机上调用 `ssh` 在 k8s node 上执行远程命令，所以需提前配置免密登录。
 
 在 **中控机** 执行如下命令：
 ``` bash
 node_ips=$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}')
 test -f /root/.ssh/id_rsa || ssh-keygen -N '' -t rsa -f /root/.ssh/id_rsa  # 如果不存在rsa key则创建一个。
-# 开始给发现的ip添加ssh key，期间需要您输入各节点的密码。
+# 开始给发现的ip添加ssh key，期间需要你输入各节点的密码。
 for ip in $node_ips; do
   ssh-copy-id "$ip" || { echo "failed on $ip."; break; }  # 如果执行失败，则退出
 done
