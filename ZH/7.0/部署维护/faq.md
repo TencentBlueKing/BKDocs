@@ -223,7 +223,7 @@ kubectl edit deployment apiserver-main
 ### 调整 pod 的资源配额
 蓝鲸为所有 Pod 设置了资源配额（ 见 `kubectl get pod -n NS POD_NAME -o json` 的 `.spec.containers[].resources.limits` 字段）。
 
-这些配置项在腾讯云 `SA2.2XLARGE32` 实例上测试可用。当您的服务器 CPU 性能不足时，可能遇到无法启动的问题，此时需手动调整配额。
+这些配置项在腾讯云 `SA2.2XLARGE32` 实例上测试可用。当你的服务器 CPU 性能不足时，可能遇到无法启动的问题，此时需手动调整配额。
 
 修改方法概述（详细操作见下方排查示例）：
 1. 先找出疑似资源配额问题的 pod，规则为：kubectl get pod 显示的状态为 `Running` 但 `READY`列为 “0/N”，且 `RESTARTS` 列的值大于 3。

@@ -26,7 +26,7 @@ helm plugin list  # 预期输出 diff 及其版本。
 
 例如，需要自定义域名 `bkce7.bktencent.com`，可以使用如下命令生成 `custom.yaml` 文件：
 ``` bash
-BK_DOMAIN=bkce7.bktencent.com  # 请修改为您分配给蓝鲸平台的主域名
+BK_DOMAIN=bkce7.bktencent.com  # 请修改为你分配给蓝鲸平台的主域名
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 # 可使用如下命令添加域名。如果文件已存在，请手动编辑。
 custom=environments/default/custom.yaml
@@ -37,7 +37,7 @@ domain:
 EOF
 ```
 
-如果您在公有云上部署蓝鲸，请先完成域名备案，否则会被云服务商依法阻断访问请求。
+如果你在公有云上部署蓝鲸，请先完成域名备案，否则会被云服务商依法阻断访问请求。
 
 ## 配置容器日志目录
 平台组件的后台日志采集用。
@@ -52,7 +52,7 @@ apps:
   bkappFilebeat.containersLogPath: "查询到的路径"
 ```
 
-我们预期您的 k8s node 具备相同的 docker 配置。如果此路径不一致，请先完成 docker 标准化。
+我们预期你的 k8s node 具备相同的 docker 配置。如果此路径不一致，请先完成 docker 标准化。
 
 ## 添加 charts 仓库
 蓝鲸 7.0 软件产品通过 https://hub.bktencent.com/ 进行分发。
@@ -88,7 +88,7 @@ kubectl get sc
 ```
 如果上述命令提示 `No resources found`，说明还没有配置存储类。
 
-您可以参考下述内容配置 `localpv`（输出结果中 `NAME` 列为 `local-storage` ），或者自行对接其他存储类并设置为默认存储类。
+你可以参考下述内容配置 `localpv`（输出结果中 `NAME` 列为 `local-storage` ），或者自行对接其他存储类并设置为默认存储类。
 
 >**提示**
 >
@@ -112,7 +112,7 @@ local-pv-18c3e0ef   98Gi       RWO            Delete           Available        
 ```
 
 ## 安装 ingress controller
-先检查您的环境是否已经部署了 ingress controller:
+先检查你的环境是否已经部署了 ingress controller:
 ``` bash
 kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx
 ```

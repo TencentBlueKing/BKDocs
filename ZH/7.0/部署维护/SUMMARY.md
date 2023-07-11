@@ -16,7 +16,7 @@
     * [部署步骤详解 —— SaaS](manual-install-saas.md)
     * [配置节点管理及安装 Agent](config-nodeman.md)
 * [部署容器管理平台](install-bcs.md)
-* [【待开放】部署监控日志套餐](install-co-suite.md)
+* [部署监控日志套餐](install-co-suite.md)
 * [【待开放】部署持续集成套餐](install-ci-suite.md)
 * [【待开放】部署可视化开发平台](install-lesscode.md)
 * [卸载](uninstall.md)

@@ -29,7 +29,7 @@ NAMESPACE="ingress-nginx" ./scripts/uninstall.sh -y ingress-nginx
 ``` bash
 helmfile -f 00-ingress-nginx.yaml.gotmpl sync
 ```
-当 `ingress-nginx` 重装后，请参考《[基础套餐部署](install-bkce.md)》文档刷新各场景下除 `apps.$BK_DOMAIN` 外其他域名的解析记录。
+当 `ingress-nginx` 重装后，请参考《[部署基础套餐](install-bkce.md)》文档刷新各场景下除 `apps.$BK_DOMAIN` 外其他域名的解析记录。
 
 
 #### 卸载 bk-mysql
@@ -258,7 +258,7 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 ``` bash
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-ingress-nginx sync
 ```
-当 `bk-ingress-nginx` 重装后，请参考《[基础套餐部署](install-bkce.md)》文档刷新各场景下 `apps.$BK_DOMAIN` 域名的解析记录。
+当 `bk-ingress-nginx` 重装后，请参考《[部署基础套餐](install-bkce.md)》文档刷新各场景下 `apps.$BK_DOMAIN` 域名的解析记录。
 
 #### 卸载 bk-ingress-rule
 ``` bash
@@ -289,7 +289,7 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 ``` bash
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
 ```
-节点管理在部署后需要配置，请参考《[基础套餐部署](install-bkce.md)》文档补齐相关操作。
+节点管理在部署后需要配置，请参考《[部署基础套餐](install-bkce.md)》文档补齐相关操作。
 
 ### 卸载 容器管理套餐
 ``` bash
@@ -312,11 +312,11 @@ NAME  其他字段略
 serviceaccount/default  其他字段略
 ```
 
-重新安装方法见《[容器管理平台部署](install-bcs.md)》 文档。
+重新安装方法见《[部署容器管理平台](install-bcs.md)》 文档。
 
 
 ### 卸载 监控日志套餐
-重新安装方法见 《[监控日志套餐部署](install-co-suite.md)》 文档对应章节。
+重新安装方法见 《[部署监控日志套餐](install-co-suite.md)》 文档对应章节。
 
 #### 卸载 bk-monitor
 ``` bash
@@ -342,7 +342,7 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 
 
 ### 卸载 持续集成套餐
-重新安装方法见 《[持续集成套餐部署](install-ci-suite.md)》 文档对应章节。
+重新安装方法见 《[部署持续集成套餐](install-ci-suite.md)》 文档对应章节。
 
 #### 卸载 bk-ci
 ``` bash
@@ -423,4 +423,4 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
     mv ~/bkce7.1-install ~/bkce7.1-install.bak-$(date +%Y%m%d-%H%M%S)
     ```
 
-接下来跟随 《[基础套餐部署](install-bkce.md)》 文档开始全新部署吧！
+接下来跟随 《[部署基础套餐](install-bkce.md)》 文档开始全新部署吧！

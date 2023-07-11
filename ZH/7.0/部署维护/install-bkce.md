@@ -2,13 +2,21 @@
 蓝鲸基础套餐的部署主要分为两个部分：先在中控机部署后台；然后部署流程服务和标准运维 2 个应用。
 
 # 下载所需的资源文件
+
+>**注意**
+>
+>在部署前，请确保完成了《[准备中控机](prepare-bkctrl.md)》文档。
+
 鉴于目前容器化的软件包数量较多且变动频繁，我们提供了下载脚本。
 
 请在 **中控机** 使用如下命令下载蓝鲸 helmfile 包及公共证书。
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-beta/bkdl-7.1-beta.sh | bash -s -- -ur latest base cert
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-beta/bkdl-7.1-beta.sh | bash -s -- -ur latest base demo
 ```
 
+这些文件默认放在了 `~/bkce7.1/` 目录，接下来的部署过程中，默认工作目录为 `~/bkce7.1-install/blueking/`。
+
+# 部署基础套餐后台
 你可按需选择部署方式：
 * 如果你希望尽快体验蓝鲸，使用“一键部署”脚本填写域名即可开始部署，请继续往下阅读。
 * 如果你打算研究部署细节，请查阅 《[部署步骤详解 —— 后台](manual-install-bkce.md)》 文档。期间需要手动执行 `helmfile` 命令及一些代码片段。
@@ -27,9 +35,9 @@ curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-beta/bkdl-7.1-beta
 >
 >示例：当 V6 环境使用了 `bktencent.com` 时，其访问地址为 `paas.bktencent.com`。V7 环境不能使用 `bkce7.bktencent.com`、 `bktencent.com` 或者 `xx.bkce7.bktencent.com` 作为基础域名。
 
-假设您用于部署蓝鲸的域名为 `bkce7.bktencent.com`，使用如下的命令开始部署:
+假设你用于部署蓝鲸的域名为 `bkce7.bktencent.com`，使用如下的命令开始部署:
 ``` bash
-BK_DOMAIN=bkce7.bktencent.com  # 请修改为您分配给蓝鲸平台的主域名
+BK_DOMAIN=bkce7.bktencent.com  # 请修改为你分配给蓝鲸平台的主域名
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 # 检查域名是否符合k8s域名规范，要全部内容匹配才执行脚本，否则提示域名不符合。
 patt_domain='[a-z0-9]([-a-z0-9]*[a-z0-9])(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*'
@@ -40,7 +48,13 @@ else
 fi
 ```
 
-脚本耗时 8 ~ 16 分钟，请耐心等待。部署成功会高亮提示 `install finished，clean pods in completed status`。
+视 CPU 性能及磁盘 IO 性能差异，脚本耗时 15 ~ 35 分钟，请耐心等待。部署成功会高亮提示如下：
+``` plain
+时间略 [INFO] finish install blueking base-backend
+时间略 [INFO] SHOW BKPANEL & BKREPO INITIAL PASSWORD
+ helm status -n blueking bk-user
+ helm status -n blueking bk-repo
+```
 
 >**提示**
 >
@@ -59,13 +73,13 @@ fi
 <a id="config-dns" name="config-dns"></a>
 
 # 配置 DNS
-k8s 的网络拓扑结构比较复杂，当您从不同的网络区域访问时，需要使用不同的入口地址。
+k8s 的网络拓扑结构比较复杂，当你从不同的网络区域访问时，需要使用不同的入口地址。
 
-您需要完成如下全部场景的配置：
+你需要完成如下全部场景的配置：
 * k8s pod 内访问蓝鲸，需要配置 coredns。
 * 在 k8s node 主机访问蓝鲸，需要配置 k8s node 的 DNS。
 * 中控机调用蓝鲸接口，需要配置中控机的 DNS。
-* 您在电脑上访问蓝鲸，需要配置用户侧的 DNS。
+* 你在电脑上访问蓝鲸，需要配置用户侧的 DNS。
 
 场景配置细节请查阅本章的各小节。
 
@@ -161,7 +175,7 @@ EOF
 <a id="hosts-in-user-pc" name="hosts-in-user-pc"></a>
 
 ## 配置用户侧的 DNS
-蓝鲸设计为需要通过域名访问使用。所以您需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。然后才能在浏览器访问。
+蓝鲸设计为需要通过域名访问使用。所以你需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。然后才能在浏览器访问。
 
 >**注意**
 >
@@ -172,7 +186,7 @@ EOF
 IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx \
   -o jsonpath='{.items[0].status.hostIP}')
 ```
-如果您不是直接通过内网 IP 访问蓝鲸，则需调整 IP1 的赋值：
+如果你不是直接通过内网 IP 访问蓝鲸，则需调整 IP1 的赋值：
 * 如果需要使用公网 IP 访问，可手动赋值 `IP1=公网IP`，或者使用如下命令从中控机登录到 node 上查询公网 IP：`IP1=$(ssh "$IP1" 'curl -sSf ip.sb')`。
 * 如果使用了负载均衡，可手动赋值 `IP1=负载均衡IP`。
 
@@ -374,9 +388,9 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 >**提示**
 >
 >部署时 开发者中心 会基于 S-Mart 安装包制作该 SaaS 的 docker 镜像并上传到 bkrepo。<br/>
->您在前面的步骤中已经配置过 DNS 及 docker 服务，期间如有新增 node，可查阅本文 “配置 k8s node 的 DNS” 和 “调整 node 上的 docker 服务” 章节补齐操作。
+>你在前面的步骤中已经配置过 DNS 及 docker 服务，期间如有新增 node，可查阅本文 “配置 k8s node 的 DNS” 和 “调整 node 上的 docker 服务” 章节补齐操作。
 
-如同刚才部署后台一般，本章节也提供了 2 种等价的操作。您可按需选择其中一种：
+如同刚才部署后台一般，本章节也提供了 2 种等价的操作。你可按需选择其中一种：
 * 我们提供的脚本可完成大部分操作，方便快捷，详见本文“一键部署基础套餐 SaaS” 章节。
 * 如需研究 SaaS 部署的细节，请查阅《[部署步骤详解 —— SaaS](manual-install-saas.md)》文档。
 

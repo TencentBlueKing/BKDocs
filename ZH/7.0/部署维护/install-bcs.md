@@ -11,6 +11,10 @@ kubectl get sc
 NAME                      PROVISIONER                    RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
 local-storage (default)   kubernetes.io/no-provisioner   Delete          WaitForFirstConsumer   false                  3d21h
 ```
+``` bash
+NAME                      PROVISIONER                    RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+local-storage (default)   kubernetes.io/no-provisioner   Delete          WaitForFirstConsumer   false                  3d21h
+```
 如果输出的名称不是 `local-storage`，则需通过创建 `custom.yaml` 实现修改：
 ``` bash
 cd ~/bkce7.1-install/blueking/
@@ -35,7 +39,7 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ### 开始部署
 在 中控机 执行：
 ``` bash
-cd ~/bkce7.1-install/blueking/
+cd ~/bkce7.1-install/blueking
 helmfile -f 03-bcs.yaml.gotmpl sync
 # 在admin桌面添加应用，也可以登录后自行添加。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_bcs"
@@ -47,7 +51,7 @@ scripts/set_desktop_default_app.sh -a "bk_bcs"
 kubectl get pod -n bcs-system -w
 ```
 
-如果部署失败请先查阅 《[问题案例](troubles.md#install-bcs)》文档。
+如果部署失败请先查阅 《[问题案例](troubles.md)》文档。
 
 ### 导入标准运维流程
 
@@ -64,7 +68,7 @@ kubectl get pod -n bcs-system -w
 * [自建集群所需的标准运维流程模板](https://bkopen-1252002024.file.myqcloud.com/ce7/files/bk7_bcs_sops_common_20221107.dat)
 
 上传成功后会显示导入列表，点击 “覆盖 ID 相同的流程” 按钮完成导入。如果此前有导入过流程，则导入列表下方会高亮提示 `其中4条流程与项目已有流程ID存在冲突`，请点击 “覆盖冲突项，并提交” 按钮。
-![](./assets/bk_sops-common-import-bcs.png)
+![](../7.0/assets/bk_sops-common-import-bcs.png)
 
 >**提示**
 >
@@ -74,9 +78,18 @@ kubectl get pod -n bcs-system -w
 
 配置成功后，即可在桌面打开 “容器管理平台” 应用了。
 
+>**提示**
+>
+>“Helm” — “Chart 仓库” 界面初次访问会提示 Record not found，需要点击一次“创建”按钮。即可看到公共仓库的 Chart 列表。
+
+>**提示**
+>
+>灰度期间，因为没有部署蓝鲸监控，会导致“集群”界面的 “总览” 和 “节点管理” 监控数据为 0 。
+
+
 # 下一步
-前往《[【待开放】部署监控日志套餐](install-co-suite.md)》文档。
+前往《[部署监控日志套餐](install-co-suite.md)》文档。
 
-或回到《[部署基础套餐](install-bkce.md#next)》文档看看其他操作。
+或回到《[部署基础套餐](install-bkce.md)》文档看看其他操作。
 
-或开始 [了解容器管理平台](../BCS/产品白皮书/Introduction/README.md)。
+或开始 [了解容器管理平台](../../BCS/1.28/UserGuide/Introduction/README.md)。
