@@ -80,6 +80,10 @@
             - 
               name: {{ IndexSaaSDevelopmentDatabase }}
             - 
+              name: {{ IndexUserManage }}
+            -
+              name: {{ IndexIAM }}
+            - 
               name: {{ IndexMagicBox }}
             - 
               name: {{ IndexLessCode }}
@@ -145,6 +149,10 @@
             - 
               name: {{ DocJOB }}
             - 
+              name: {{ DocUserManage }}
+            - 
+              name: {{ DocIAM }}
+            - 
               name: {{ DocGSE }}
             - 
               name: {{ DocBCS }}
@@ -161,10 +169,6 @@
         - 
           name: {{ DocSaaSService }}
           children:
-            - 
-              name: {{ DocUserManage }}
-            - 
-              name: {{ DocIAM }}
             - 
               name: {{ DocNodeMan }}
             - 

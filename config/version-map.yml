@@ -28,6 +28,7 @@
     BKnetwork: 6.1
     OnlineGuide: "7.0"
 6.1:
+    APIGateway: "1.10"
     BCS: 6.1
     BestPractices: "7.0"
     BlueKingFamily: "7.0"
@@ -55,6 +56,7 @@
     BKnetwork: 6.1
     OnlineGuide: "7.0"
 6.2:
+    APIGateway: "1.10"
     BCS: 1.28
     BestPractices: "7.0"
     BlueKingFamily: "7.0"
@@ -74,7 +76,7 @@
     PaaS: 2.14
     QuickStart: "7.0"
     ReleaseNotes: "7.0"
-    SOPS: 3.25
+    SOPS: 3.28
     UserManage: 2.5
     VersionLog: 6.2
     VideoTutorial: "7.0"
