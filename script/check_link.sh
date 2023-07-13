@@ -23,3 +23,4 @@ for i in $(find . -type  f -name "*.md")
 do
 markdown-link-check  $i   >>  $DIR/script/EN.log
 done
+
