@@ -9,7 +9,7 @@
 ## 前提条件
 
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含  [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
-- [完成 BCS 部署](../../../部署指南/产品白皮书/增强包安装/部署安装/BCS-V2.md)
+- [完成 BCS 部署](../../../../DeploymentGuides/7.0/install-bcs.md)
 - 准备 2 台云主机：4 核 8 G，不低于 CentOS 7，K8s Master 和 Node 各 1 台
 - 完成上述 2 台云主机的 Agent 安装 ，并分配至 CMDB 业务下
 
@@ -75,7 +75,7 @@
 
 #### 新建模板集
 
-模板集，可以类比为 K8S 中 **[Helm](https://helm.sh/)** 的`Charts`，在 K8S 编排中，是 K8S 对象的集合：`Deployment（无状态）`、`StatefulSet（有状态）`、`DaemonSet（守护进程集）`、`Job（定时任务）`、`Configmap（配置项）`、`Secret（保密字典）`，具体参见 [模板集使用介绍](../../../容器管理平台/产品白皮书/Function/templatesets.md) 。
+模板集，可以类比为 K8S 中 **[Helm](https://helm.sh/)** 的`Charts`，在 K8S 编排中，是 K8S 对象的集合：`Deployment（无状态）`、`StatefulSet（有状态）`、`DaemonSet（守护进程集）`、`Job（定时任务）`、`Configmap（配置项）`、`Secret（保密字典）`，具体参见 [模板集使用介绍](../../../../BCS/1.28/UserGuide/Function/templatesets.md) 。
 
 打开菜单 `[模板集]`，新建模板集 `web-nginx`。
 

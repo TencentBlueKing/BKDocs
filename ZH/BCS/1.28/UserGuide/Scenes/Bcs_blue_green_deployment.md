@@ -9,7 +9,7 @@
 
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含 [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)；本节教程新增概念：[ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)、[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)、[Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。
 
-- [完成 BCS 部署]
+- [完成 BCS 部署](../../../../DeploymentGuides/7.1/install-bcs.md)
 
 ## 操作步骤
 

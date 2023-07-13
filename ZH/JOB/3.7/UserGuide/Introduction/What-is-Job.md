@@ -33,3 +33,7 @@
 <tr><td style="vertical-align:middle;">	检测记录</td><td>	提供高危语句的检测记录查看功能，为安全职能团队治理运营安全问题提供举证。</td></tr>
 <tr><td rowspan="1" style="vertical-align:middle;">	视图</td><td style="vertical-align:middle;">	服务状态</td><td>	显示作业平台后台所有微服务模块的相关信息，包括名称、版本号和状态等信息，提供平台管理员排查服务运行情况能力。</td></tr>
 </tbody></table>
+
+## 视频指引
+
+▶️[作业平台如何实现运维基础操作](https://www.bilibili.com/video/BV1bb4y1v7SE/)

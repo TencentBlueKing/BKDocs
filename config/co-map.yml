@@ -1,4 +1,21 @@
-id_docs_map:
+id_docs_map:  #https://bk.tencent.com/docs/document/7.0/233/32616
+#id首页
+  /document/7.0/245/39686: ZH/CMDB/3.10/UserGuide/Introduce/Overview.md
+  /document/7.0/246/39935: ZH/JOB/3.7/UserGuide/Introduction/What-is-Job.md
+  /document/7.0/239/39469: ZH/GSE/2.0/UserGuide/Introduce.md
+  /document/7.0/173/14075: ZH/BCS/1.28/UserGuide/Introduction/README.md
+  /document/7.0/249/66393: ZH/Devops/2.0/UserGuide/intro/README.md
+  /document/7.0/247/39740: ZH/UserManage/2.5/UserGuide/Introduce/README.md
+  /document/7.0/234/39434: ZH/IAM/1.12/UserGuide/Introduce/README.md
+  /document/7.0/235/39703: ZH/NodeMan/2.2/UserGuide/Introduce/Overview.md
+  /document/7.0/237/39492: ZH/SOPS/3.25/UserGuide/Overview/README.md
+  /document/7.0/248/40001: ZH/Monitor/3.6/UserGuide/Overview/README.md
+  /document/7.0/238/39826: ZH/LogSearch/4.6/UserGuide/Intro/README.md
+  /document/7.0/244/39675: ZH/ITSM/2.6/UserGuide/Introduce/README.md
+  /document/6.0/133/7369: ZH/FTA/5.2/产品白皮书/Intro/README.md
+  /document/7.0/252/55904: ZH/LessCode/1.0/UserGuide/intro.md
+  /document/7.0/168/13781: ZH/PaaS/1.0/UserGuide/Overview/README.md
+#id非首页
   /document/7.0/233/32616: ZH/QuickStart/7.0/quick-start-v7.0-info.md
   /document/7.0/172/14038: ZH/DeploymentGuides/7.0/beginners_guide.md
   /document/7.0/241/39804: ZH/BestPractices/7.0/CD/CMDB/CMDB_management_hosts.md
@@ -6,24 +23,62 @@ id_docs_map:
   /document/7.0/172/14037: ZH/DeploymentGuides/7.0/faq.md
   /document/7.0/243/39948: ZH/BlueKingFamily/7.0/产品白皮书/品牌简介/intro.md
   /document/7.0/243/39895: ZH/BlueKingFamily/7.0/产品白皮书/解决方案/solution.md
-  /document/7.0/247/39740: ZH/UserManage/2.4/产品白皮书/产品简介/README.md
-  /document/7.0/234/39434: ZH/IAM/1.8/产品白皮书/产品简介/README.md
-  /document/7.0/235/39703: ZH/NodeMan/2.2/产品白皮书/Introduce/Overview.md
-  /document/7.0/237/39492: ZH/SOPS/3.25/产品白皮书/产品简介/README.md
-  /document/7.0/248/40001: ZH/Monitor/3.6/产品白皮书/intro/README.md
-  /document/7.0/238/39826: ZH/LogSearch/4.3/产品白皮书/intro/README.md
-  /document/7.0/244/39675: ZH/ITSM/2.7/产品白皮书/产品简介/README.md
-  /document/7.0/168/13781: ZH/PaaS/1.0/UserGuide/产品简介/README.md
   /document/7.0/171/13973: ZH/APIGateway/0.6/UserGuide/README.md
-  /document/7.0/252/55904: ZH/LessCode/1.0/UserGuide/intro.md
-  /document/7.0/245/39686: ZH/CMDB/3.11/UserGuide/产品简介/Overview.md
-  /document/7.0/246/39935: ZH/JOB/0.2/产品白皮书/Introduction/What-is-Job.md
-  /document/7.0/239/39469: ZH/GSE/2.0/产品白皮书/产品简介.md
-  /document/7.0/173/14075: ZH/BCS/1.28/产品白皮书/Introduction/README.md
-  /document/7.0/249/66393: ZH/Devops/1.8/产品白皮书/intro/README.md
-feature_path_map:
+  /document/7.0/232/30348: ZH/GSEKit/1.0/UserGuide/What_is_process-config-manager.md
+  /document/6.0/145/6600: ZH/ITSM/2.5/产品白皮书/产品功能/流程管理/Process_Design.md
+  /document/6.0/145/6608: ZH/ITSM/2.5/产品白皮书/产品功能/服务管理/Service_catalog.md
+  /document/6.0/145/6603: ZH/ITSM/2.5/产品白皮书/产品功能/流程管理/Public_trigger.md
+  /document/6.0/145/6592: ZH/ITSM/2.5/产品白皮书/产品功能/模块说明/Module_description.md
+  /document/6.0/145/6594: ZH/ITSM/2.5/产品白皮书/产品功能/SLA管理/Service_Agreement_Management.md
+  /document/6.0/145/6596: ZH/ITSM/2.5/产品白皮书/产品功能/SLA管理/Service_model.md
+  /document/6.0/145/6623: ZH/ITSM/2.5/产品白皮书/产品简介/README.md
+# 各产品任意文档跳到产品首页
+  /document/7.0/168/: ZH/PaaS/1.0/UserGuide/Overview/README.md
+  /document/7.0/170/: ZH/PaaS/1.0/UserGuide/Overview/README.md
+  /document/7.0/171/: ZH/APIGateway/1.10/UserGuide/README.md
+  /document/7.0/172/: ZH/DeploymentGuides/7.0/beginners_guide.md
+  /document/7.0/173/: ZH/BCS/1.28/UserGuide/Introduction/README.md
+  /document/7.0/231/: ZH/GSEKit/1.0/UserGuide/What_is_process-config-manager.md
+  /document/7.0/233/: ZH/QuickStart/7.0/quick-start-v7.0-base.md
+  /document/7.0/234/: ZH/IAM/1.12/UserGuide/Introduce/README.md
+  /document/7.0/235/: ZH/NodeMan/2.2/UserGuide/Introduce/Overview.md
+  /document/7.0/236/: ZH/IAM/IntegrateGuide/HowTo/Guide.md
+  /document/7.0/237/: ZH/SOPS/3.25/UserGuide/Overview/README.md
+  /document/7.0/238/: ZH/LogSearch/4.6/UserGuide/Intro/README.md
+  /document/7.0/239/: ZH/GSE/2.0/UserGuide/Introduce.md
+  /document/7.0/240/: ZH/DocumentationContributorGuide/7.0/overwrite.md
+  /document/7.0/241/: ZH/BestPractices/readme.md
+  /document/7.0/242/: ZH/OnlineGuide/7.0/CMDB.md
+  /document/7.0/243/: ZH/BlueKingFamily/7.0/UserGuide/intro.md
+  /document/7.0/244/: ZH/ITSM/2.6/UserGuide/Introduce/README.md
+  /document/7.0/245/: ZH/CMDB/3.10/UserGuide/Introduce/Overview.md
+  /document/7.0/246/: ZH/JOB/3.7/UserGuide/Introduction/What-is-Job.md
+  /document/7.0/247/: ZH/UserManage/2.5/UserGuide/Introduce/README.md
+  /document/7.0/248/: ZH/Monitor/3.6/UserGuide/Overview/README.md
+  /document/7.0/249/: ZH/Devops/2.0/UserGuide/intro/README.md
+  /document/7.0/250/: ZH/DevelopGuide/7.0/ENTRY-Guide.md
+  /document/7.0/251/: ZH/VersionLog/7.0/intro.md
+  /document/7.0/252/: ZH/LessCode/1.0/UserGuide/intro.md
 
+feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品白皮书/产品简介/README.md
+#路径首页
+  配置平台/产品白皮书/产品简介/Overview.md: ZH/CMDB/3.10/UserGuide/Introduce/Overview.md
+  作业平台/产品白皮书/Introduction/What-is-Job.md: ZH/JOB/3.7/UserGuide/Introduction/What-is-Job.md
+  管控平台/产品白皮书/产品简介/README.md: ZH/GSE/2.0/UserGuide/Introduce.md
+  BCS/产品白皮书/Introduction/README.md: ZH/BCS/1.28/UserGuide/Introduction/README.md
   持续集成平台/产品白皮书/产品简介/README.md: ZH/Devops/2.0/UserGuide/intro/README.md
+  用户管理/产品白皮书/产品简介/README.md: ZH/UserManage/2.5/UserGuide/Introduce/README.md
+  权限中心/产品白皮书/产品简介/README.md: ZH/IAM/1.12/UserGuide/Introduce/README.md
+  节点管理/产品白皮书/Introduce/Overview.md: ZH/NodeMan/2.2/UserGuide/Introduce/Overview.md
+  标准运维/产品白皮书/产品简介/README.md: ZH/SOPS/3.25/UserGuide/Overview/README.md
+  监控平台/产品白皮书/intro/README.md: ZH/Monitor/3.6/UserGuide/Overview/README.md
+  日志平台/产品白皮书/intro/README.md: ZH/LogSearch/4.6/UserGuide/Intro/README.md
+  流程服务/产品白皮书/产品简介/README.md: ZH/ITSM/2.6/UserGuide/Introduce/README.md
+  故障自愈/产品白皮书/Intro/README.md: ZH/FTA/5.2/产品白皮书/Intro/README.md
+  lesscode/intro.md: ZH/LessCode/1.0/UserGuide/intro.md
+  PaaS平台/产品白皮书/产品简介/README.md: ZH/PaaS/1.0/UserGuide/Overview/README.md
+# 产品统计
+#devops
   持续集成平台/产品白皮书/Services/Store/start-new-task.md: ZH/Devops/2.0/UserGuide/Services/Store/start-new-task.md
   持续集成平台/产品白皮书/Services/Store/plugins/plugin-specification.md: ZH/Devops/2.0/UserGuide/Developer/plugins/plugin-dev-standard/plugin-specification.md
   持续集成平台/产品白皮书/Services/Store/plugins/plugin-error-code.md: ZH/Devops/2.0/UserGuide/Developer/plugins/plugin-dev-standard/plugin-error-code.md
@@ -32,14 +87,25 @@ feature_path_map:
   编译加速/产品白皮书/Quickstart/linux_c_cpp.md: ZH/Devops/2.0/UserGuide/Services/Turbo/linux-tubo-speed/use_in_linux.md
   持续集成平台/产品白皮书/Services/Pipeline/pipeline-edit-guide/alias-buildno.md: ZH/Devops/2.0/UserGuide/Services/Pipeline/pipeline-edit-guide/alias-buildno.md
   持续集成平台/产品白皮书/Services/Ticket/ticket-add.md: ZH/Devops/2.0/UserGuide/Services/Ticket/ticket-add.md
-  质量红线/产品白皮书/Intro/README.md: 
-  持续集成平台/产品白皮书/Services/Resource/bkci-hosted-windows-agent.md: 
+  质量红线/产品白皮书/Intro/README.md: ZH/Devops/2.0/UserGuide/intro/README.md
+  持续集成平台/产品白皮书/Services/Resource/bkci-hosted-windows-agent.md: ZH/Devops/1.7/产品白皮书/Services/Resource/bkci-hosted-windows-agent.md
+#job
   作业平台/产品白皮书/Best-Practices/Use-built-in-functions-to-make-exec-result-grouping.md: ZH/JOB/3.7/UserGuide/Best-Practices/Use-built-in-functions-to-make-exec-result-grouping.md
   作业平台/产品白皮书/Best-Practices/How-to-make-same-host-have-its-own-namespace.md: ZH/JOB/3.7/UserGuide/Best-Practices/How-to-make-same-host-have-its-own-namespace.md
   作业平台/产品白皮书/Best-Practices/How-to-stop-the-spread-of-the-problem-script-immediately.md: ZH/JOB/3.7/UserGuide/Best-Practices/How-to-stop-the-spread-of-the-problem-script-immediately.md
-  PaaS3.0/topics/company_tencent/python_framework_usage#python: 
-
-
+#cmdb
+  配置平台/产品白皮书/产品功能/CustomQuery.md: ZH/CMDB/3.10/UserGuide/Feature/CustomQuery.md
+  配置平台/产品白皮书/产品功能/ModelRelationType.md: ZH/CMDB/3.10/UserGuide/Feature/ModelRelationType.md
+  配置平台/产品白皮书/产品功能/Model.md: ZH/CMDB/3.10/UserGuide/Feature/Model.md
+#paas
+  开发指南/SaaS开发/开发进阶/bkui/bkui.md: ZH/PaaS/DevelopTools/DevGuideV2/SaaS_Guide/DevAdvanced/bkui/bkui.md
+  APIGateway/apigateway/use-api/use-apigw-api.md: ZH/APIGateway/1.10/UserGuide/apigateway/use-api/use-apigw-api.md
+  APIGateway/apigateway/quickstart/create-api-with-http-backend.md: ZH/APIGateway/1.10/UserGuide/apigateway/quickstart/create-api-with-http-backend.md
+  APIGateway/apigateway/faq/use-apigw-api.md: ZH/APIGateway/1.10/UserGuide/apigateway/faq/use-apigw-api.md
+  开发指南/开发规范/后台开发规范/README.md: ZH/DevelopGuide/DevSpecification/BackendDevStandards/README.md
+  开发指南/开发规范/前端开发规范/README.md: ZH/DevelopGuide/DevSpecification/FrontendDevSpec/README.md
+  faq/saas_dev.md: ZH/PaaS/DevelopTools/DevGuideV3/BaseGuide/faq/saas_dev.md
+#monitor
   监控平台/产品白皮书/scene-process/process_monitor_overview.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-process/process_monitor_overview.md
   监控平台/产品白皮书/alarm-configurations/notify_case.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/notify_case.md
   监控平台/产品白皮书/alarm-configurations/notify_setting.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/notify_setting.md
@@ -51,22 +117,59 @@ feature_path_map:
   监控平台/产品白皮书/integrations-metrics/custom_metrics_http.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/integrations-metrics/custom_metrics_http.md
   监控平台/产品白皮书/scene-synthetic/synthetic_monitor.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-synthetic/synthetic_monitor.md
   监控平台/产品白皮书/quickstart/best_practices.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/quickstart/best_practices.md
-  监控平台/产品白皮书/scene-process/process_monitor_overview.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-process/process_monitor_overview.md
-  监控平台/产品白皮书/integrations-metric-plugins/script_collect.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/integrations-metric-plugins/script_collect.md
   监控平台/产品白皮书/integrations-metrics/multi_instance_monitor.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/integrations-metrics/multi_instance_monitor.md
   监控平台/产品白皮书/integrations-metrics/component_monitor.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/integrations-metrics/component_monitor.md
   监控平台/应用运维文档/安装指南/monitor_update.md: ZH/Monitor/3.6/Operation/InstallationGuide/monitor_update.md
-  监控平台/产品白皮书/intro/README.md: ZH/Monitor/3.6/UserGuide/Overview/README.md
   监控平台/产品白皮书/alarm-handling/solutions_http_callback.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-handling/solutions_http_callback.md
   监控平台/产品白皮书/alarm-configurations/bigdata_monitor.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/bigdata_monitor.md
   监控平台/产品白皮书/alarm-configurations/log_monitor.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/log_monitor.md
-  监控平台/产品白皮书/integrations-metrics/custom_metrics_http.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/integrations-metrics/custom_metrics_http.md
   监控平台/产品白皮书/integrations-metrics/collect_tasks.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/integrations-metrics/collect_tasks.md
   监控平台/产品白皮书/scene-k8s/k8s_monitor_overview.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-k8s/k8s_monitor_overview.md
   监控平台/产品白皮书/scene-apm/apm_monitor_overview.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-apm/apm_monitor_overview.md
   监控平台/产品白皮书/scene-apm/apm_metrics.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-apm/apm_metrics.md
   监控平台/产品白皮书/scene-apm/apm_default_rules.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-apm/apm_default_rules.md
   日志平台/产品白皮书/data-visualization/query_string.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/data-visualization/data_view_intro.md
+  监控平台/产品白皮书/alarm-configurations/rules.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/rules.md
+  监控平台/产品白皮书/alarm-configurations/events_monitor.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/events_monitor.md
+  监控平台/产品白皮书/alarm-configurations/composite_monitor.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/composite_monitor.md
+  监控平台/产品白皮书/scene-host/host_monitor.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-host/host_monitor.md
+  监控平台/产品白皮书/scene-host/host_metrics.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-host/host_metrics.md
+  监控平台/产品白皮书/scene-process/process_metrics.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-process/process_metrics.md
+  监控平台/产品白皮书/scene-host/host_events.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-host/host_events.md
+  监控平台/产品白皮书/scene-synthetic/synthetic_metrics.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-synthetic/synthetic_monitor.md
+  监控平台/产品白皮书/scene-synthetic/synthetic_default_rules.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-synthetic/synthetic_monitor.md
+  监控平台/产品白皮书/scene-k8s/k8s_metrics.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-k8s/k8s_metrics.md
+  监控平台/产品白皮书/scene-k8s/k8s_default_rules.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-k8s/k8s_default_rules.md
+  监控平台/产品白皮书/integrations-metrics/what_metrics.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/integrations-metrics/what_metrics.md
+  监控平台/产品白皮书/integrations-metric-plugins/plugins.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/integrations-metric-plugins/plugins.md
+#itsm
+  流程服务/产品白皮书/产品简介/README.md: ZH/ITSM/UserGuide/Introduce/README.md
+#日志平台
+  日志平台/产品白皮书/integrations-logs/log_simple_format.md: ZH/LogSearch/4.3/UserGuide/ProductFeatures/integrations-logs/log_simple_format.md
+  日志平台/产品白皮书/tools/log_archive.md: ZH/LogSearch/4.3/UserGuide/ProductFeatures/tools/log_archive.md
+  日志平台/产品白皮书/integrations-logs/logs_overview.md: ZH/LogSearch/4.3/UserGuide/ProductFeatures/integrations-logs/logs_overview.md
+  基础计算平台/产品白皮书/intro/intro.md: ZH/BK-Base/3.10/UserGuide/Introduction/intro.md
+  日志平台/产品白皮书/data-visualization/query_string.md: ZH/LogSearch/4.3/UserGuide/ProductFeatures/data-visualization/query_string.md
+  产品白皮书/integrations-logs/log_simple_format.md: ZH/LogSearch/4.3/UserGuide/ProductFeatures/integrations-logs/log_simple_format.md
+  产品白皮书/tools/log_archive.md: ZH/LogSearch/4.3/UserGuide/ProductFeatures/tools/log_archive.md
+  产品白皮书/integrations-logs/logs_overview.md: ZH/LogSearch/4.3/UserGuide/ProductFeatures/integrations-logs/logs_overview.md
+  基础计算平台/产品白皮书/intro/intro.md: ZH/BK-Base/3.10/UserGuide/Introduction/intro.md
+  产品白皮书/data-visualization/query_string.md: ZH/LogSearch/4.3/UserGuide/ProductFeatures/data-visualization/query_string.md
+#计算平台
+  产品白皮书/intro/intro.md: ZH/BK-Base/3.10/UserGuide/Introduction/intro.md
+  产品白皮书/user-guide/datahub/data-clean.md: ZH/BK-Base/3.10/UserGuide/user-guide/datahub/data-clean.md
+  产品白皮书/user-guide/datalab/es-query/full-text-retrieval.md: ZH/BK-Base/3.10/UserGuide/user-guide/datalab/es-query/full-text-retrieval.md
+  产品白皮书/user-guide/dataflow/bksql-function/stream-processing.md: ZH/BK-Base/3.10/UserGuide/user-guide/dataflow/bksql-function/stream-processing.md
+  产品白皮书/user-guide/dataflow/bksql-function/batch-processing.md: ZH/BK-Base/3.10/UserGuide/user-guide/dataflow/bksql-function/batch-processing.md
+  产品白皮书/user-guide/datalab/sql-query/concepts.md: ZH/BK-Base/3.10/UserGuide/user-guide/datalab/bksql/concepts.md
+  产品白皮书/user-guide/datahub/data-access/custom/gsecmdline.md: ZH/BK-Base/3.10/UserGuide/user-guide/datahub/data-access/custom/gsecmdline.md
+  产品白皮书/user-guide/auth-management/permission.md: ZH/BK-Base/3.10/UserGuide/user-guide/auth-management/permission.md
+  产品白皮书/user-guide/datahub/data-access/log/concepts.md: ZH/BK-Base/3.10/UserGuide/user-guide/datahub/data-access/log/concepts.md
+  产品白皮书/user-guide/user-center/projects.md: ZH/BK-Base/3.10/UserGuide/user-guide/user-center/projects.md
+  产品白皮书/user-guide/user-center/tasks.md: ZH/BK-Base/3.10/UserGuide/user-guide/user-center/tasks.md
+
+
+
 
 
 

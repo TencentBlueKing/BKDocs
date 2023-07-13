@@ -109,4 +109,4 @@ tail -f /data/bkce/logs/open_paas/esb.log
 
 ## 各产品配置
 
-[各产品语音消息配置](../../../常见问题/通知/语音通知.md)
+[各产品语音消息配置](./send_voice_msg.md#7faq)

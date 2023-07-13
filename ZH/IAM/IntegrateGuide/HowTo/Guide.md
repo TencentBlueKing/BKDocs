@@ -3,7 +3,7 @@
 ## 基本接入
 
 1. 阅读 产品介绍及接入流程 (10 分钟)
-    - [产品说明](../../权限中心/产品白皮书/产品简介/README.md)
+    - [产品说明](../../1.12/UserGuide/Introduce/README.md)
     - [接入流程](GuideFlow.md)
 2. 阅读 快速开始(30 分钟)
     - [简介](../QuickStart/01-Begin.md)
@@ -111,7 +111,7 @@
     - [常见: SaaS 回调接入系统失败](FAQ/Debug/SaaS-Callback.md)
     - [常见: SaaS 组织架构同步异常](FAQ/Debug/SaaS-DeptSync.md)
     - [常见: 为什么有权限/无权限](FAQ/Debug/PolicyAPIDebug.md)
-    - [产品相关](../../权限中心/产品白皮书/常见问题/Diffv2v3.md)
+    - [产品相关](../../1.12/UserGuide/FAQ/Diffv2v3.md)
 2. API
     - [后台 API 和 ESB API 说明](../Reference/API/01-Overview/01-BackendAPIvsESBAPI.md)
     - [接口协议前置说明](../Reference/API/01-Overview/02-APIBasicInfo.md)

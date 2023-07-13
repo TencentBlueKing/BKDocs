@@ -39,7 +39,7 @@ helm repo add blueking https://hub.bktencent.com/chartrepo/blueking
           # 1.1.1.1 是集群“蓝鲸蓝鲸7.0”任意一台node，最好是master
   ```
 
-  ![](../asset/coredns_hosts.png)
+  ![](../assets/coredns_hosts.pn)
 
 - 创建bcs-k8s-watch所需证书
 

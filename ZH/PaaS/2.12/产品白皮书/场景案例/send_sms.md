@@ -114,4 +114,5 @@ tail -f /data/bkce/logs/open_paas/esb.log
 
 ## 各产品配置
 
-[各产品短信配置](../../../常见问题/通知/短信通知.md)
+[各产品短信配置](./send_sms.md#7faq)
+

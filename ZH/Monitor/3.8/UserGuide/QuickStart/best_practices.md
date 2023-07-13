@@ -11,8 +11,6 @@
 
 ## DEMO站点：了解网站架构及确定监控点
 
-![](media/16625241026648.jpg)
-
 
 | 用途         | IP          | 进程              | 说明              |
 | ------------ | ----------- | ----------------- | ----------------- |
@@ -36,12 +34,12 @@
 
 ## 准备工作： CMDB 配置和准备工作
 
-* [创建业务](../../../配置平台/产品白皮书/产品功能/BusinessManagement.md)
-* [创建集群](../../../配置平台/产品白皮书/产品功能/SetTemp.md)
-* [创建模块](../../../配置平台/产品白皮书/产品功能/Model.md)
+* [创建业务](../../../../CMDB/3.10/UserGuide/Feature/BusinessManagement.md)
+* [创建集群](../../../../CMDB/3.10/UserGuide/Feature/SetTemp.md)
+* [创建模块](../../../../CMDB/3.10/UserGuide/Feature/Model.md)
 
     > 如果进程配置在每台上面是一样的，是建议使用集群模版和服务模版的功能
-    > 如果进程配置在每台上面不一样的，建议查看 [如何实现多实例监控](../integrations-metrics/multi_instance_monitor.md)
+    > 如果进程配置在每台上面不一样的，建议查看 [如何实现多实例监控](../ProductFeatures/integrations-metrics/multi_instance_monitor.md)
 
 更多请查看 [准备工作](./prepare.md)
 
@@ -61,15 +59,15 @@ mysql 配置
 
 ![-w2021](media/15809625239667.jpg)
 
-平台自带默认的策略详细查看[内置策略](../scene-host/builtin_host_rules.md)，当内置策略不满足需求的时候可以增加监控策略。
+平台自带默认的策略详细查看[内置策略](../ProductFeatures/scene-host/builtin_host_rules.md)，当内置策略不满足需求的时候可以增加监控策略。
 
 配置进程端口监控：导航  →  监控配置  →  策略  →  新建
 在事件中心查看告警信息：导航  →  事件中心
 
 更多请查看场：
 
-* [开启主机监控](../scene-host/host_monitor.md)
-* [开启进程监控](../scene-process/process_monitor_overview.md)
+* [开启主机监控](../ProductFeatures/scene-host/host_monitor.md)
+* [开启进程监控](../ProductFeatures/scene-process/process_monitor_overview.md)
 
 ## 演示二： 快速完成业务监控
 
@@ -106,6 +104,6 @@ mysql 配置
 ![](media/16612236871158.jpg)
 
 
-具体查看[自定义上报功能](../integrations-metrics/custom_metrics_http.md)
+具体查看[自定义上报功能](../ProductFeatures/integrations-metrics/custom_metrics_http.md)
 
 

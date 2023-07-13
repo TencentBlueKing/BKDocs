@@ -81,6 +81,9 @@ results 字段 ，类型 Array
 | created_at | long | 是 | 创建时间(ms) |
 | updater | string | 是 | 变更人 |
 | updated_at | long | 是 | 变更时间(ms) |
+| operator | string | 否 | 责任人，多个以半角逗号或半角分号分隔 |
+| bk_bak_operator | string | 否 | 备份责任人，多个以半角逗号或半角分号分隔 |
+| is_deleted | bool | 是 | 软删除的标记 |
 | \_bk_iam_path_ | array | 否 | [资源拓扑](../../../Explanation/04-BkIAMPath.md) |
 | data | object | 是 | 资源实例详情，键值对需要与[实例schema定义](./17-fetch_resource_type_schema.md)保持一致；如果实例使用范围授权，`data`应该包含`attribute`内容 |
 
@@ -94,44 +97,59 @@ results 字段 ，类型 Array
         "count": 100,
         "results": [
             {
-              "id": "h1", 
-              "display_name": "192.168.1.1", 
-              "creator": "admin",
-              "created_at": 1654012800000,
-              "updater": "admin",
-              "updated_at": 1654012800000,
-              "_bk_iam_path_": ["/bk_cmdb,set,1/bk_cmdb,host,2/"],
-              "data": {
-                "k1":  "v1", 
-                "k2":  "v2"
-              }
+                "id": "h1",
+                "display_name": "192.168.1.1",
+                "creator": "admin",
+                "created_at": 1654012800000,
+                "updater": "admin",
+                "updated_at": 1654012800000,
+                "operator": "admin",
+                "bk_bak_operator": "admin",
+                "is_deleted": false,
+                "_bk_iam_path_": [
+                    "/bk_cmdb,set,1/bk_cmdb,host,2/"
+                ],
+                "data": {
+                    "k1": "v1",
+                    "k2": "v2"
+                }
             },
             {
-              "id": "h2", 
-              "display_name": "192.168.1.2", 
-              "creator": "admin",
-              "created_at": 1654012800000,
-              "updater": "admin",
-              "updated_at": 1654012800000,
-              "_bk_iam_path_": ["/bk_cmdb,set,1/bk_cmdb,host,2/"],
-              "data": {
-                "k1":  "v1", 
-                "k2":  "v2"
-              }
+                "id": "h2",
+                "display_name": "192.168.1.2",
+                "creator": "admin",
+                "created_at": 1654012800000,
+                "updater": "admin",
+                "updated_at": 1654012800000,
+                "operator": "admin",
+                "bk_bak_operator": "admin",
+                "is_deleted": false,
+                "_bk_iam_path_": [
+                    "/bk_cmdb,set,1/bk_cmdb,host,2/"
+                ],
+                "data": {
+                    "k1": "v1",
+                    "k2": "v2"
+                }
             },
             {
-              "id": "h3", 
-              "display_name": "192.168.1.3", 
-              "creator": "admin",
-              "created_at": 1654012800000,
-              "updater": "admin",
-              "updated_at": 1654012800000,
-              "_bk_iam_path_": ["/bk_cmdb,set,1/bk_cmdb,host,2/"],
-              "data": {
-                "k1":  "v1", 
-                "k2":  "v2"
-              }
-            }          
+                "id": "h3",
+                "display_name": "192.168.1.3",
+                "creator": "admin",
+                "created_at": 1654012800000,
+                "updater": "admin",
+                "updated_at": 1654012800000,
+                "operator": "admin",
+                "bk_bak_operator": "admin",
+                "is_deleted": true,
+                "_bk_iam_path_": [
+                    "/bk_cmdb,set,1/bk_cmdb,host,2/"
+                ],
+                "data": {
+                    "k1": "v1",
+                    "k2": "v2"
+                }
+            }
         ]
     }
 }

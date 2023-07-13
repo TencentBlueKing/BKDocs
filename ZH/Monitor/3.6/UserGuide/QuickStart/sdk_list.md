@@ -3,8 +3,8 @@
 蓝鲸监控平台完全遵循OpenTelemetry Oteam 和Prometheus 标准
 
 
-* [Prometheus SDK上报](../integrations-metrics/custom_sdk_push.md)
-* [Opentelemetry SDK上报](../integrations-metrics/opentelemetry_overview.md)
+* [Prometheus SDK上报](../ProductFeatures/integrations-metrics/custom_sdk_push.md)
+* [Opentelemetry SDK上报](../ProductFeatures/integrations-traces/opentelemetry_overview.md)
 
 ## Go	
 

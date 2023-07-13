@@ -9,9 +9,9 @@
 
 - [K8S 基本概念](https://kubernetes.io/zh/docs/concepts/)，包含  [Deployment](https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/)、[Services](https://kubernetes.io/docs/concepts/services-networking/service/)。
 
-- [完成 BCS 部署](../../../部署指南/产品白皮书/增强包安装/机器评估/bcs_evaluate.md)
+- [完成 BCS 部署](../../../../DeploymentGuides/6.0/产品白皮书/增强包安装/机器评估/bcs_evaluate.md)
 - 准备 2 台云主机：4 核 8 G，不低于 CentOS 7，K8s Master 和 Node 各 1 台
-- 完成上述 2 台云主机的 [Agent 安装](../../../节点管理/产品白皮书/产品功能/Agent安装.md) ，并分配至 [CMDB 业务下](../../../配置平台/产品白皮书/产品功能/ResourcePool.md)
+- 完成上述 2 台云主机的 [Agent 安装](../../../../NodeMan/2.0/产品白皮书/Feature/Agent.md) ，并分配至 [CMDB 业务下](../../../../CMDB/3.9/UserGuide/产品功能/ResourcePool.md)
 
 ## 操作步骤
 
@@ -40,7 +40,7 @@
 
 ![-w1368](../assets/15648366557109.jpg)
 
-> 容器服务的集群划分和 [传统单体应用在 CMDB 中的集群划分](../../../配置平台/产品白皮书/场景案例/CMDB_management_hosts.md) 很类似，可以按照`地域（如华北区）`或者`完全独立的应用集合（微信区）`来划分。
+> 容器服务的集群划分和 [传统单体应用在 CMDB 中的集群划分](../../../../CMDB/3.9/UserGuide/场景案例/CMDB_management_hosts.md) 很类似，可以按照`地域（如华北区）`或者`完全独立的应用集合（微信区）`来划分。
 
 选择 1 台云主机作为 Master。
 

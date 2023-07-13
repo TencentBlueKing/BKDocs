@@ -84,7 +84,7 @@
 
 - 文档分为中文和英文，每个产品有三篇文章，分别为产品白皮书（UserGuide），开发架构文档（Architecture），应用运维文档（Operation），目前需要更新的是中文和英文的部分。
 
-- 文档为 MD 格式，经过渲染后效果参考当前[新社区版文档中心](https://bk.tencent.com/docs)
+- 文档为 MD 格式，经过渲染后效果参考当前[官网文档中心](https://bk.tencent.com/docs)
 
 `其中 EN 下为英文文档，ZH 下为中文文档`
 
@@ -117,7 +117,42 @@
 
 #### 开发架构文档和应用运维文档
 
-- 其目录请参考 [开发架构文档和应用运维文档目录](https://docs.qq.com/sheet/DS0pQbHpxQU9zcmVz?preview_token=&t=1565163497869&tab=5nlu5k&c=G30A0G0)
+- 开发架构目录请参考 
+
+| 中文               | 英文    |
+| -------------------| -------- | 
+| 编写目的 |Purpose|
+| 术语解释  |Term |
+| 系统概述 |Overview|
+| 系统设计 |Design |
+| 功能描述/子系统结构与功能 |Function |
+| 业务流程 |UserCase |
+| 系统性能 |Performance |
+| 系统可用性/可持续性 |Reliability|
+| 常见问题 |FAQ |
+| 附录 |Appendix|
+
+- 应用运维录请参考
+
+| 中文               | 英文    |
+| -------------------| -------- | 
+| 编写目的 |Purpose|
+| 术语解释  |Term |
+| 系统概述 |Overview|
+| 系统设计 |Design |
+|安装指南|InstallationGuide|
+| 目录信息 |DirectoryGuide |
+| 常见问题 |FAQ|
+| 附录 |Appendix |
+| 部署结构图 |DeploymentDiagram|
+|文档介绍|Introduce|
+
+## 特殊符号
+#### {{ }} / {% %}
+
+上述两个标记为特殊标记符号，在文档中用于环境变量赋值，实现路径补充，请慎重使用
+<br/>
+{{ BK_DOCS_MD_URL }} + ZH/xxx/xxx.md：在本文档中可跳转访问其他产品对应的文件
 
 ## 特殊文件
 在产品版本中，可以使用SUMMARY.md来定位文档的菜单，控制了左边菜单栏的显示内容。它通过 Markdown 中的列表语法来表示文件的父子关系。
@@ -162,6 +197,3 @@
 
 它代表了 PaaS 平台白皮书渲染后的目录， `[]` 后是目录的文字 ， `()` 内则是该章节对应的内容的 MD 文件了。
 
-#### ENTRY.md文件
-
-该文件适用于不需要左边菜单栏，直接展示ENTRY.md文档内容的情况，示例：[开发指南](../../DevelopGuide/7.0/ENTRY.md)

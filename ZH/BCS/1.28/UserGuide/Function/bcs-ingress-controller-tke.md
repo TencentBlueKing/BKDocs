@@ -56,7 +56,7 @@ bcs-ingress-controller是蓝鲸容器服务扩展 Ingress，多云环境下为�
 "cvm:DescribeInstances"]
 
 #### 账户授权
-设置单独的权限需要添加自定义策略，参考 https://cloud.tencent.com/document/product/598/37739，然后给子账号授权该策略。
+设置单独的权限需要添加自定义策略，参考 https://cloud.tencent.com/document/product/598/37739 ，然后给子账号授权该策略。
 
 为了方便，可以给直接子账号授权预设策略中 CLB 全部权限和 CVM 只读权限，这样可以不用创建自定义策略。如：
 ![-w2020](../assets/bcs-ingress-controller_policy.png)

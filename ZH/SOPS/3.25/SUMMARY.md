@@ -40,6 +40,4 @@
         * [标准插件测试](UserGuide/Appendix/test.md)
         * [提交代码](UserGuide/Appendix/submit.md)
         * [标准插件开发规范](UserGuide/Appendix/specification.md)
-* [开源共建](https://https://github.com/TencentBlueKing/bk-sops)
-* [开发架构文档](Architecture/SUMMARY.md) 
-* [应用运维文档](Operation/SUMMARY.md)
+* [开源共建](https://github.com/TencentBlueKing/bk-sops)

@@ -2,4 +2,4 @@
 
 | 资源名称 | 资源描述 |
 |---|---|
-| [esquery_search](./zh-hans/zh-hans/esquery_search.md)	| 日志查询接口 |
+| [esquery_search](./zh-hans/esquery_search.md)	| 日志查询接口 |

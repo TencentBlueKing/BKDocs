@@ -49,15 +49,15 @@
 - auth_type: 操作的授权类型，枚举值包括`abac\rbac`, 当前操作默认的操作类型为`abac`, 操作的鉴权方式走`abac`表达式计算, 如需使用`rbac`接入方式, 这里需要填写`rbac`, [具体参考](../../../Explanation/10-ActionAuthType.md)
 - type: 操作的类型，枚举值包括`create\delete\view\edit\list\manage\execute` 比如创建类操作需要标识为"create"，无法分类可为空字符串，目前权限中心仅仅对创建类操作有相关处理
 - related_actions: related_actions: 操作的依赖操作，当用户申请的操作权限必须依赖其他操作权限（暂不支持跨系统操作关联）时，比如用户申请 作业编辑，必须依赖 作业查看 的操作权限，作业查看 就是 作业编辑 的依赖操作。在产品层表现就是：当用户勾选 作业编辑 时，系统在创建申请单时，会自动申请 作业查看 权限。 
-- related_resource_types： 操作的对象资源类型列表，列表顺序与产品展示、鉴权校验 顺序 必须保持一致 [产品说明: 依赖资源](../../../../权限中心/产品白皮书/术语解释/Trem.md#依赖资源)
+- related_resource_types： 操作的对象资源类型列表，列表顺序与产品展示、鉴权校验 顺序 必须保持一致 [产品说明: 依赖资源](../../../../1.8/UserGuide/Term/Trem.md#依赖资源)
     - system_id： 资源类型的来源系统，可以是自身系统或其他系统
-    - scope：限制该操作对该资源的选择范围，条件表达式协议: [协议详情](../..//Expression/01-Schema.md) [产品说明: 资源范围](../../../../权限中心/产品白皮书/术语解释/Trem.md#资源范围)
+    - scope：限制该操作对该资源的选择范围，条件表达式协议: [协议详情](../../Expression/01-Schema.md) [产品说明: 资源范围](../../../../1.8/UserGuide/Term/Trem.md#资源范围)
     - selection_mode: 选择类型, 即资源在权限中心产品上配置权限时的作用范围
         - 等于`instance`, 仅可选择实例, `默认值`
         - 等于`attribute`, 仅可配置属性, 此时`instance_selections`配置不生效
         - 等于`all`, 可以同时选择实例和配置属性
-    - related_instance_selections：关联的实例视图，可以关联本系统定义的实例视图, 也可以配置其他系统定义的(如果`selection_mode=attribute`不用配置该字段). 该字段的功能表现在权限中心产品上配置权限时的实例选择方式 [产品说明: 实例选择视图](../../../../权限中心/产品白皮书/术语解释/Trem.md#实例视图)
-        - system_id：实例视图的系统
+    - related_instance_selections：关联的实例视图，可以关联本系统定义的实例视图, 也可以配置其他系统定义的(如果`selection_mode=attribute`不用配置该字段). 该字段的功能表现在权限中心产品上配置权限时的实例选择方式 [产品说明: 实例选择视图](../../../../1.8/UserGuide/Term/Trem.md#实例视图)
+        - system_id：实例视图的系统  
         - id：实例视图的 ID
         - ignore_iam_path：是否忽略路径，`默认为false`，在 IAM 产品上选择实例视图配置权限的资源时，**如果选到 Action 关联的资源类型实例，而不是上级或祖先（选择了中间节点，ignore_iam_path 是不起作用的）**，那么对于`ignore_iam_path=true`时权限保存类似：`id=192.168.1.1`，若`ignore_iam_path=false`时则权限保存类似：`id=192.168.1.1 AND _bk_iam_path_= /biz,1/set,2/module,3/`
             - ignore_iam_path 由 false 变更为 true 时，已配置的权限（类似：`id=192.168.1.1 AND _bk_iam_path_= /biz,1/set,2/module,3/`）将无法通过 id 直接通过鉴权
@@ -67,6 +67,6 @@
 
 ## 5.版本号 version
 
-- 仅仅作为在权限中心产品上进行 New 的更新提醒。[产品说明：版本号](../../../../权限中心/产品白皮书/术语解释/Trem.md#版本)
+- 仅仅作为在权限中心产品上进行 New 的更新提醒。[产品说明：版本号](../../../../1.8/UserGuide/Term/Trem.md#版本)
 - 对于 ResourceType，对比该系统的所有 ResourceType 的 Version，最大的 version 将在产品上显示 New 的提示
 - 对于 Action，对比该系统的所有 Action 的 Version，最大的 version 将在产品上显示 New 的提示

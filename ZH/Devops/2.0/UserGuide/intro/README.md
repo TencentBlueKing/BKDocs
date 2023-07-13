@@ -2,26 +2,25 @@
 
 蓝鲸持续集成平台（代号 BKCI）是一个免费并开源的 CI 服务，可助你自动化构建-测试-发布工作流，持续、快速、高质量地交付你的产品。
 
-使用 BKCI 屏蔽掉所有研发流程中的繁琐环节，让你聚焦于编码。它通常被用于：
+## 导航
+| 🐤 了解基本概念 | 👉 使用 BKCI | 🚀 部署 BKCI |
+| :--- | :--- | :--- |
+| [BKCI 是什么？](./bkci.md) | [创建你的第一条流水线](../Quickstarts/Create-your-first-pipeline.md) | [BKCI 硬件规格指南](../Setup/system-requirements/hardware.md) |
+| [BKCI 组件](./terminology/components.md) | [关联你的第一个代码库](../Quickstarts/Link-your-first-repo.md) | [BKCI 系统要求](../Setup/system-requirements/system.md)  |
+| [快速熟悉流水线](./terminology/Learn-pipeline-in-5min.md) | [为你的Git工程开启CI](../Quickstarts/Enable-ci.md) | |
+| [术语解释](./terminology/term.md) | [示例](../Quickstarts/Case/Examples/vars-usage.md) |  |
 
-- 工程编译
-- 静态代码检查
-- 运行测试用例，及时发现 BUG
-- 部署与发布
+| 📔 产品功能 | 🏪 研发商店 | 🤝 一起共建 BKCI |
+| :--- | :--- | :--- |
+| [流水线](../Services/Pipeline/pipeline-list.md) | [浏览研发商店](../Services/Store/home.md) |  |
+| [控制台](../Services/Console/Console.md) | [开发一个流水线插件](../Services/Store/start-new-task.md) |  |
+| [凭证管理](../Services/Ticket/ticket.md) | [在 BKCI 里使用商店插件](../Services/Store/upload-new-task.md) |  |
+| [构建资源](../Services/Pools/host-to-bkci.md) |  |  |
 
-BKCI 提供了流水线、代码检查、代码库、凭证管理、环境管理、研发商店、编译加速 7 大核心服务，多重组合，满足企业不同场景的需求：
+## 共建
 
-- **流水线**：将团队现有的研发流程以可视化方式呈现出来，编译、测试、部署，一条流水线搞定
-- **代码检查**：提供专业的代码检查解决方案，检查缺陷、安全漏洞、规范等多种维度代码问题，为产品质量保驾护航。
-- **代码库**：将企业内已有的代码托管服务关联至 BKCI
-- **凭证管理**：为代码库、流水线等服务提供不同类型的凭据、证书管理功能
-- **环境管理**：可以将企业内部的开发编译机托管至 BKCI
-- **研发商店**：由流水线插件和流水线模板组成，插件用于对接企业内部的各种第三方服务，模板助力企业内部的研发流程规范化
-- **编译加速**：基于蓝鲸自研加速引擎，支持 C/C++ 编译、UE4 代码编译、UE4 Shader 编译等多场景下的加速，让构建任务飞起来
+BK-CI 已开源，诚邀大家参与共建。
 
-目前，BKCI 已正式对外开源，GitHub 地址：[https://github.com/Tencent/BKCI](https://github.com/Tencent/BKCI) ，欢迎共建。
-
-
-
-
-
+* 关于 BK-CI 分支管理、issue 以及 pr 规范，请阅读 [Contributing](CONTRIBUTING.md)
+* [腾讯开源激励计划](https://opensource.tencent.com/contribution) 鼓励开发者的参与和贡献，期待你的加入
+* [DOCUMENT CONTRIBUTING](https://github.com/TencentBlueKing/BKDocs/blob/master/新文档中心格式要求/文档更新指引.md)

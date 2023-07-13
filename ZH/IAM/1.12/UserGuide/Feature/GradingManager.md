@@ -10,3 +10,7 @@
 ![image-20220921151127544](GradingManager/image-20220921151127544.png)
 
 分级管理员可以由[超级管理员创建](./ManagerCreate.md)或者[普通用户申请创建](./UserApply.md)。
+
+视频指引
+
+▶️[权限中心如何创建分级管理员](https://www.bilibili.com/video/BV1iS4y1D7Bq/)

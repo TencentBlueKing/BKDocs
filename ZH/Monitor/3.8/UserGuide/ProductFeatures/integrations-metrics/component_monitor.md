@@ -22,10 +22,10 @@
 
 ### 方法三：使用开源的 Exporter 在线定义插件
 
-具体查看[如何使用开源的 Exporter](import_exporter.md)。
+具体查看[如何使用开源的 Exporter](../../Other/guide/import_exporter.md)。
 
 ### 方法四：开发 Exporter 采集插件
 
-当市面上没有开源的，或者不满足需求是。开发一个 Exporter 也是非常简单的事件。具体查看[如何开发一个 Exporter 采集插件](../dev/plugin_exporter_dev.md)。
+当市面上没有开源的，或者不满足需求是。开发一个 Exporter 也是非常简单的事件。具体查看[如何开发一个 Exporter 采集插件](../../Dev/plugin_exporter_dev.md)。
 
 

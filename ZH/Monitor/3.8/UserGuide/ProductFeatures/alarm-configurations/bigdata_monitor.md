@@ -171,7 +171,7 @@ GROUP BY SetID, AppID, ZoneID, iIP, Pid
 
 更多操作查看[策略配置功能介绍](./rules.md)
 
-配置好告警策略，告警计算符合策略后会产生告警事件，更多查看[事件中心功能介绍](../alarm-analysis/event.md)
+配置好告警策略，告警计算符合策略后会产生告警事件，更多查看[事件中心功能介绍](../../Other/functions/analyze/event.md)
 
 产生告警消息：
 

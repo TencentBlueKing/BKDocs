@@ -191,8 +191,6 @@
               name: {{ DocNetworkManagement }}
             - 
               name: {{ DocCICDKit }}
-            - 
-              name: {{ DocDevops }}
     -
       name: {{ DocQuickUse }}
       children:

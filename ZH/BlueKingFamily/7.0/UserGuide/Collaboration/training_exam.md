@@ -33,7 +33,7 @@ Tencent BlueKing Development Specialist（BKDS）
 
 ## 报考途径
 
-在[蓝鲸智云认证系统](https://bk.tencent.com/exam-v2/#/) 进行报名，考生按照指引报名即可。
+在蓝鲸智云认证系统进行报名，考生按照指引报名即可。
 
 ## 其他信息
 

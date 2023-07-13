@@ -59,6 +59,6 @@
 
 ![-w2020](media/16049175632146.jpg)
 
-更多方法查看[日志汇聚告警](../../../监控平台/产品白皮书/guide/log_monitor.md)
+更多方法查看[日志汇聚告警](../../../../Monitor/3.3/%E4%BA%A7%E5%93%81%E7%99%BD%E7%9A%AE%E4%B9%A6/guide/log_monitor.md)
 
 

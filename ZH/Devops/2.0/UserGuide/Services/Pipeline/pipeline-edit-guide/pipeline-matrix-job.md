@@ -104,7 +104,7 @@ Matrix 配置生成的 job 可能比较多，这些 job 同时并发可能会导
 
 比如，在本 job 内定义了 step-id 为 “build” 的步骤，该步骤输出变量 a，后续步骤可以通过 ${{ steps.build.outputs.a }} 来访问
 
-[在bash插件里设置输出变量](../../../Concepts/Variables.md)
+[在bash插件里设置输出变量](../../../intro/terminology/Variables.md)
 
 
 

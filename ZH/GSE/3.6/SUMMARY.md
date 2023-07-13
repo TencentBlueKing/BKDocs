@@ -11,7 +11,7 @@
     * [数据采集与传输](产品白皮书/产品功能/DataCollect.md)
     * [集群管理](产品白皮书/产品功能/ClusterManage.md)
 * [API 文档]()
-    * [简介](APIDocs/gse/zh-hans/README.md)
+    * [简介](APIDocs/gse/README.md)
     * [Agent 心跳信息查询](APIDocs/gse/zh-hans/get_agent_info.md)
     * [Agent 在线状态查询](APIDocs/gse/zh-hans/get_agent_status.md)
 * [常见问题](产品白皮书/常见问题/FAQ.md)

@@ -64,5 +64,8 @@
 
    ![image-20201110181919833](AddLocalUsers/image-20201110181919833.png)
 
+## 视频指引
+
+▶️[如何在默认目录下新增用户](https://www.bilibili.com/video/BV1vQ4y1e7g6/)
 
 

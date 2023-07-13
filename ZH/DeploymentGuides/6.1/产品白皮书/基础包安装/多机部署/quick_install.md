@@ -26,7 +26,7 @@
 
 ### 1.3 下载安装包
 
-请前往 [蓝鲸官网下载页](https://bk.tencent.com/download_version_list/) 下载基础套餐包。
+请前往 [蓝鲸官网下载页](https://bk.tencent.com/s-mart/downloads?type=versionList&version=binary) 下载基础套餐包。
 
 ### 1.4 解压相关资源包
 

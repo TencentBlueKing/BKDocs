@@ -33,7 +33,7 @@
 
 ### 注册镜像仓库账号
 
-在 [部署 BCS](../../../部署指南/产品白皮书/增强包安装/机器评估/bcs_evaluate.md) 的中控机上获取镜像仓库的访问地址。
+在 [部署 BCS](../../../../DeploymentGuides/6.0/产品白皮书/增强包安装/机器评估/bcs_evaluate.md) 的中控机上获取镜像仓库的访问地址。
 
 ```bash
 # source /data/install/utils.fc && echo ${HARBOR_SERVER_FQDN}:${HARBOR_SERVER_HTTPS_PORT}

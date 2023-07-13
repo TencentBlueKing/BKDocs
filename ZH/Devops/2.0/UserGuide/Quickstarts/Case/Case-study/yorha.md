@@ -5,7 +5,7 @@
 ||
 |:-|
 |**涉及产品：** BKCI流水线；移动端版本体验；蓝鲸容器服务|
-|**场景标签：** [Pipeline失败的问题定位](../../tutorials/scene/pipeline-failure-location.md)；[移动端内测版本发布管理](../../tutorials/scene/version-release-management.md)；物理机架构向云原生迁移改造|
+|**场景标签：** [Pipeline失败的问题定位](../../Case/Scene/pipeline-failure-location.md)；[移动端内测版本发布管理](../../Case/Scene/version-release-management.md)；物理机架构向云原生迁移改造|
 |**解决的问题：**  问题排查耗人耗时；客户端版本测试缺少统一渠道；游戏业务的云原生|
  <br /> 
 

@@ -1,7 +1,6 @@
 # SUMMARY
 
 ## 可视化开发平台
-
 * [产品公告](https://bk.tencent.com/s-mart/application/289/histroy)
 * [产品简介](UserGuide/intro.md)
 * [快速入门](UserGuide/start.md)
@@ -20,6 +19,5 @@
     * [应用模板的使用指引](UserGuide/template-project.md)
 * [课程实战文档和视频](UserGuide/courses.md)
 * [开源共建](https://github.com/TencentBlueKing/bk-lesscode)
-  
 * [开发架构文档](Architecture/readme.md)
 * [应用运维指南](Operation/readme.md)

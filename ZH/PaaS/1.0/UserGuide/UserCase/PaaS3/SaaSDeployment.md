@@ -14,3 +14,7 @@
 6\. 应用创建成功后，在「应用引擎」-「部署管理」页面部署应用
 
 ![-w2020](../../assets/paas3/saas_deploy.png)
+
+## 视频指引
+
+▶️[如何部署 S-mart 应用](https://www.bilibili.com/video/BV1q341147bi/)

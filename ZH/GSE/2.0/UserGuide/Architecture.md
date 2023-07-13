@@ -2,7 +2,7 @@
 
 ![product](./assets/product.png)
 
-如图所示为蓝鲸管控平台（Blueking General Service Engine）内部整体架构简图，API层面基于蓝鲸网关服务对外提供接口服务，内部支持HTTP、TCP私有协议、GRPC等多种协议族通讯。后台模块主要由任务服务（GSE Task）、进程管理服务（GSE Proc）、文件服务（GSE File）、数据服务（GSE Data）、基础平台服务（GSE Cluster）组成，其中基础平台服务（GSE Cluster）与管控节点的Agent配合，负责完成内部信令消息的上行下达。在管控节点层面，Agent负责完成任务执行、文件传输、数据传输、进程操作等工作，其针对主流操作系统发行版本进行了兼容适配，可以在混合环境中实现管控。
+如图所示为蓝鲸管控平台（GSE-BlueKing General Service Engine）内部整体架构简图，API层面基于蓝鲸网关服务对外提供接口服务，内部支持HTTP、TCP私有协议、GRPC等多种协议族通讯。后台模块主要由任务服务（GSE Task）、进程管理服务（GSE Proc）、文件服务（GSE File）、数据服务（GSE Data）、基础平台服务（GSE Cluster）组成，其中基础平台服务（GSE Cluster）与管控节点的Agent配合，负责完成内部信令消息的上行下达。在管控节点层面，Agent负责完成任务执行、文件传输、数据传输、进程操作等工作，其针对主流操作系统发行版本进行了兼容适配，可以在混合环境中实现管控。
 
 ## 模块介绍
 

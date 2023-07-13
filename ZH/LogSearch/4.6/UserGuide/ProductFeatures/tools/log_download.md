@@ -2,11 +2,11 @@
 
 在“日志提取”菜单页面中新建下载任务。
 
-![log_download_1.png](../media/log_download_5.png)
+![log_download_1.png](media/log_download_5.png)
 
 根据提示输入内容，输入过程请详细阅读提示内容：
 
-![log_download_1.png](../media/log_download_6.png)
+![log_download_1.png](media/log_download_6.png)
 
 - 目录支持通配符，以“/”结尾则查看子目录，否则直接查询目录下的所有文件
 - 单台服务器，单次最多下载 100 个文件，考虑到效率问题，建议最小范围选择需要下载的内容

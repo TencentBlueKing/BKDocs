@@ -25,7 +25,7 @@
 
 ## 日志采集&字段提取
 
-具体查看日志平台[采集接入](../../../日志平台/产品白皮书/functions/manager/collect_log.md)
+具体查看日志平台[采集接入](../../../../LogSearch/4.2/%E4%BA%A7%E5%93%81%E7%99%BD%E7%9A%AE%E4%B9%A6/functions/manager/collect_log.md)
 
 ## 日志监控策略
 
@@ -36,7 +36,7 @@
 
 ### 日志关键字监控
 
-> 注意：当前的日志检索语句是基于 ES 的分词语法。具体查看[query string](../../../日志平台/产品白皮书/functions/addenda/query_string.md)。
+> 注意：当前的日志检索语句是基于 ES 的分词语法。具体查看[query string](../../../../LogSearch/4.2/%E4%BA%A7%E5%93%81%E7%99%BD%E7%9A%AE%E4%B9%A6/functions/addenda/query_string.md)。
 
 ### 日志时序数据监控
 

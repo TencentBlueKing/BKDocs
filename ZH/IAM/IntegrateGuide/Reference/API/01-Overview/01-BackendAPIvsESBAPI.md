@@ -47,4 +47,4 @@ ESB 调用地址:
 
 APIGateway 文档
 
-- [调用网关 API](../../../../../4.0/APIGateway/component/use-api/use-component-api.md)
+- [调用网关 API](../../../../../APIGateway/1.10/UserGuide/component/use-api/use-component-api.md)

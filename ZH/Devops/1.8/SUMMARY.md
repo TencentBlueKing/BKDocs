@@ -1,7 +1,6 @@
 # Summary
 
 ## 持续集成平台
-
 * [产品简介]()
     * [简介](产品白皮书/intro/README.md)
     * [首页](产品白皮书/intro/Hpage.md)

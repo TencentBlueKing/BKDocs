@@ -8,7 +8,7 @@
 
 ## 前提条件
 
-- 准备故障提报流程中 [多个角色](../../../PaaS平台/产品白皮书/产品功能/系统管理/UserManageEE.md) 的账号，包含`运维`、`QC`、`产品`，以及流程设计的`管理员`。
+- 准备故障提报流程中 [多个角色](../../../../PaaS/1.0/UserGuide/ProductFeatures/SystemManagement/UserManageEE.md)) 的账号，包含`运维`、`QC`、`产品`，以及流程设计的`管理员`。
 
 ## 操作步骤
 

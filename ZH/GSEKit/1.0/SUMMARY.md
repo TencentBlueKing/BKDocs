@@ -1,7 +1,6 @@
 # Summary
 
 ## 进程配置管理
-
 * [什么是进程配置管理](UserGuide/What_is_process-config-manager.md)
 * [快速入门]()
     * [配置文件使用指引](UserGuide/Quick_start/Configuration_file_usage_guidelines.md)
@@ -14,4 +13,3 @@
 * [常见问题]()
     * [启动进程报错「后置检查检查状态为未运行」](UserGuide/FAQ/start_process_error.md)
     * [进程停止后被异常拉起](UserGuide/FAQ/abnormally_after_stopping.md)
-* [错误码](ErrorCode/readme.md)

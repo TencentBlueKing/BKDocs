@@ -168,3 +168,7 @@
 
 ![image-20210601210545543](media/image-20210601210545543.png)
 
+
+## 视频指引
+
+▶️[节点管理如何管控插件](https://www.bilibili.com/video/BV1tL4y1H7Zk/)

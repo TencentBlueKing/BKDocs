@@ -1,10 +1,10 @@
 # 检索语法指南
 
-在日志检索当中，使用了标准的 Elasticsearch QueryString，基本支持所有语法。下面是基础的语法介绍。
+在日志检索当中，使用了标准的 Elasticsearch Query String，基本支持所有语法。下面是基础的语法介绍。
 
-## QueryString 简介
+## Query String 简介
 
-查询语句，使用的是ES QueryString语法，查询时候，可以按照一定的规则进行查询，如查询log字段包含2189988 of user的日志关键字，则可以使用查询语句为 log: "2189988 of user"，其中log表示日志中存在一个字段叫log，冒号是查询的语法，双引号里面的字符是待查询的关键词。
+查询语句，使用的是ES Query String语法，查询时候，可以按照一定的规则进行查询，如查询log字段包含2189988 of user的日志关键字，则可以使用查询语句为 log: "2189988 of user"，其中log表示日志中存在一个字段叫log，冒号是查询的语法，双引号里面的字符是待查询的关键词。
 
 ![](media/16619446106736.jpg)
 
@@ -14,7 +14,7 @@
 日志检索使用的是elasticsearch默认分词器(Standard Analyzer)，按空格对词切分，小写处理，对于特殊符号，如+ - = && || >< ! ( ) { } [ ] ^ " ~ * ? : \ / 等特殊符号（见后文详说），将不能被匹配搜索
 ```
 
-### QueryString 语法 
+### Query String 语法 
 
 
 ```

@@ -1,6 +1,5 @@
 # Summary
 
-
 ## API 网关
 * [产品公告](https://bk.tencent.com/s-mart/community/question/10915)
 * [产品简介]()
@@ -46,10 +45,16 @@
     * [参考指南]()
         * [CMSI 消息组件](UserGuide/component/reference/cmsi-components.md)
         * [发送微信组件](UserGuide/component/reference/send-weixin.md)
-* [视频教程](../Vedios.md)
+* [集成开发]()
+    * [接入概述](../DevelopTools/README.md)
+    * [微信组件自定义接入](../DevelopTools/WeChat.md)
+    * [消息组件自定义接入](../DevelopTools/CMSI.md)
+    * [API 网关自助接入](../DevelopTools/access.md)
+    * [API 调用说明](../DevelopTools/APIspecification.md)
+    * [组件编码](../DevelopTools/chapter1.md)
+    * [自定义配置管理](../DevelopTools/custom.md)
 * [API 文档](./APIDocs/README.md)
-* [错误码](../ErrorCode/readme.md)
 * [开源共建](https://github.com/TencentBlueKing/blueking-apigateway)
 * [资源下载](../downloads/DevTools.md)
-* [开发架构文档](OperationGuide/README.md)
-* [应用运维文档](ArchitectureGuide/README.md)
+* [开发架构文档](Operation/README.md)
+* [应用运维文档](Architecture/README.md)

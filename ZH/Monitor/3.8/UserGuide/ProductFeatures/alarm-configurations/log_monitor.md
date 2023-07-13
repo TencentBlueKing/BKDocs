@@ -25,7 +25,7 @@
 
 ## 日志采集&字段提取
 
-具体查看日志平台[采集接入](../../../日志平台/产品白皮书/integrations-logs/logs_overview.md)
+具体查看日志平台[采集接入](../../../../../LogSearch/4.6/UserGuide/ProductFeatures/integrations-logs/logs_overview.md)
 
 ## 日志监控策略
 
@@ -47,8 +47,7 @@
 
 所使用的查询语句都是一样的
 
-> 注意：当前的日志检索语句是基于 ES 的分词语法。具体查看[query string](../../../日志平台/产品白皮书/data-visualization/query_string.md)。
-
+> 注意：当前的日志检索语句是基于 ES 的分词语法。具体查看[query string](../../../../../LogSearch/4.6/UserGuide/ProductFeatures/data-visualization/query_string.md)。
 
 
 ### 日志转指标时序数据监控

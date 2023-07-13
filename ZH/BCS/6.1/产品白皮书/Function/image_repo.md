@@ -13,7 +13,7 @@ Harbor 项目类型分为公共仓库和私有仓库两种类型，其中
 - 公共仓库：任何使用者都可以获取这个仓库中的镜像。
 - 私有仓库：只有被授予权限的用户可以获取这个仓库中的镜像。
 
-更多关于 Harbor 项目和用户的使用指引，请参考 [Harbor 的用户手册](https://github.com/goharbor/harbor/blob/master/docs/user_guide.md)。
+更多关于 Harbor 项目和用户的使用指引，请参考 [Harbor 的用户手册](https://github.com/goharbor/harbor/blob/main/docs/README.md)。
 
 ## 容器服务中的 Harbor 仓库
 ### 获取项目仓库账号

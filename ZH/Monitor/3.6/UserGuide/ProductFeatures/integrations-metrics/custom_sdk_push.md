@@ -30,8 +30,7 @@
 
 ## 各类SDK接入
 
-[SDK接入说明](../quickstart/sdk_list.md)
-
+[SDK接入说明](../../QuickStart/sdk_list.md)
 
 
 

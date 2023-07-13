@@ -33,7 +33,7 @@
 
 ### 注册镜像仓库账号
 
-在 [部署 BCS](../../../部署指南/产品白皮书/增强包安装/机器评估/bcs_evaluate.md) 的中控机上获取镜像仓库的访问地址。
+在 [部署 BCS](../../../../DeploymentGuides/7.1/install-bcs.md) 的中控机上获取镜像仓库的访问地址。
 
 ```bash
 # source /data/install/utils.fc && echo ${HARBOR_SERVER_FQDN}:${HARBOR_SERVER_HTTPS_PORT}
@@ -138,7 +138,8 @@ Date: Thu, 08 Aug 2019 09:11:42 GMT
 以下是更新前后的对比
 
 ```bash
-root:~$ kubectl get pods -n dev -o wideNAME                         READY   STATUS    RESTARTS   AGE    IP            NODE                           NOMINATED NODE
+root:~$ kubectl get pods -n dev -o wide
+NAME                         READY   STATUS    RESTARTS   AGE    IP            NODE                           NOMINATED NODE
 web-nginx-678bb9c4fb-m8cf4   1/1     Running   0          134m   172.32.1.18   ip-10-0-5-94-n-bcs-k8s-40015   <none>
 web-nginx-678bb9c4fb-nxwf4   1/1     Running   0          134m   172.32.1.17   ip-10-0-5-94-n-bcs-k8s-40015   <none>
 

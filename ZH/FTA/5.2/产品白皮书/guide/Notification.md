@@ -14,7 +14,7 @@
 
 更多细节，请参考以下 2 篇文档：
 
-- [如何配置通知渠道，如邮件、微信、短信等?](../../../PaaS平台/产品白皮书/场景案例/noticeWay.md)
+- [如何配置通知渠道，如邮件、微信、短信等?](../../../../PaaS/2.12/%E4%BA%A7%E5%93%81%E7%99%BD%E7%9A%AE%E4%B9%A6/%E5%9C%BA%E6%99%AF%E6%A1%88%E4%BE%8B/noticeWay.md)
 
 - [经验分享：测试邮件服务是否正常](http://bk.tencent.com/s-mart/community/question/95#/)
 

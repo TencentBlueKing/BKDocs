@@ -10,7 +10,8 @@
 
 - **维度：** 行业里一般称为 Dimension，区分指标的条件，比如 IP、主机名或平台(IOS、Andriod)，在 SQL 语句中一般是 `Group by 维度`
 
-[更多查看](../integrations-metrics/what_metrics.md)
+# 什么是指标和维度
+[更多查看](../ProductFeatures/integrations-metrics/what_metrics.md)
 
 ### 监控/采集目标
 
@@ -27,7 +28,7 @@
     - **服务**： 指的是运行在服务器操作系统之上的服务模块。管理的最小粒度为服务实例， 如 数据库， 进程等。 对应 CMDB-服务拓扑
     - **主机**： 指的主机系统和硬件的层面。 管理的最小粒度为主机 IP，如 CPU MEM 服务器硬件故障等。 对应 CMDB-主机拓扑
     - **数据中心**： 指的是和数据中心相关的网络和设备相关内容。 对应 CMDB-设备管理
-    - 更多查看[数据模型](./datamodule.md)
+    - 更多查看[数据模型](../Architecture/datamodule.md)
 
 ### 告警级别
 
@@ -64,9 +65,9 @@
 
 ### 服务实例 instance
 
-- **服务实例：** 服务模块的最小粒度，选择`服务`监控对象时最小粒度即为服务实例，而非 IP。 更多查看[设计理念](./README.md)
+- **服务实例：** 服务模块的最小粒度，选择`服务`监控对象时最小粒度即为服务实例，而非 IP。 更多查看[设计理念](../Overview/README.md)
 
-![-w2021](media/15744838270079.jpg)
+![-w2021](../Architecture/media/15744838270079.jpg)
 
 ### 服务分类
 

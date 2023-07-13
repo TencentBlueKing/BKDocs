@@ -13,7 +13,7 @@ Harbor 项目类型分为公共仓库和私有仓库两种类型，其中
 - 公共仓库：任何使用者都可以获取这个仓库中的镜像。
 - 私有仓库：只有被授予权限的用户可以获取这个仓库中的镜像。
 
-更多关于 Harbor 项目和用户的使用指引，请参考 [Harbor 的用户手册](https://github.com/goharbor/harbor/blob/master/docs/user_guide.md)。
+更多关于 Harbor 项目和用户的使用指引，请参考 [Harbor 的用户手册](https://github.com/goharbor/harbor/blob/main/docs/README.md)。
 
 ## BCS 中的 Harbor 仓库
 ### 获取项目仓库账号
@@ -65,7 +65,7 @@ docker pull <Registry_URL>/<Project_ID>/nginx:1.17.0
 
 - 获取 Harbor 管理员账号
 
-在[部署 BCS 的文档](../../../部署指南/产品白皮书/增强包安装/机器评估/bcs_evaluate.md) 中有一个环境变量文件 `globals.env` ，其中可以找到 Harbor 的用户名（`HARBOR_SERVER_ADMIN_USER`）以及密码（`HARBOR_SERVER_ADMIN_PASS`）。
+在[部署 BCS 的文档](../../../../DeploymentGuides/7.1/install-bcs.md) 中有一个环境变量文件 `globals.env` ，其中可以找到 Harbor 的用户名（`HARBOR_SERVER_ADMIN_USER`）以及密码（`HARBOR_SERVER_ADMIN_PASS`）。
 
 ### 访问 Harbor Web 端
 

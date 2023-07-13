@@ -78,3 +78,8 @@ kubectl logs -n blueking -f bk-apigateway-bk-esb-xxxx
 ```
 2. 请检查是否将端口打开
   - 入站流量放开 465 端口
+
+
+## 视频指引
+
+▶️[如何配置邮件消息管道](https://www.bilibili.com/video/BV1NS4y1q7aT/)

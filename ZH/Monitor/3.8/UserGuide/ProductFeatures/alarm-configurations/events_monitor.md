@@ -2,7 +2,7 @@
 
 事件数据是重要的信息来源之一，是监控中不可缺少的一种数据种类。
 
-具体事件种类查看[数据模型-事件数据](../concepts/datamodule.md)
+具体事件种类查看[数据模型-事件数据](../../Architecture/datamodule.md)
 
 ## 事件数据与其他数据的区别
 
@@ -13,7 +13,7 @@
 ## 事件数据的来源
 
 1. 通过[自定义事件上报](../integrations-events/custom_events_http.md)
-2. 内置的事件插件：日志关键字事件插件、SNMP Trap插件  可以通过[数据采集](../integrations-metrics/collect-tasks.md)
+2. 内置的事件插件：日志关键字事件插件、SNMP Trap插件  可以通过[数据采集](../../ProductFeatures/integrations-metrics/collect_tasks.md)
 3. 系统事件：由bkmonitorbeat默认采集。
 4. K8s事件：由bkmonitorbeat-operator进行采集。
 

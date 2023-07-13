@@ -62,7 +62,7 @@ sample_metric2{partition="c:"} 0.44
 
     一个 Exporter 只需要一个文件即可；新建一个 test_Exporter 目录和一个 test_Exporter.go 文件：
 
-![e1](../media/e1-1.png)
+![e1](../Other/media/e1-1.png)
 
 * (2)导入依赖模块
 
@@ -216,7 +216,7 @@ sample_metric2{partition="c:"} 0.44
 
 * (12)cmd/shell 中运行即可，访问 `http://127.0.0.1:9601/metrics` 即可验证
 
-    ![e2](../media/e2-1.png)
+    ![e2](../Other/media/e2-1.png)
 
 至此 Exporter 开发完成，其中 8，9 两步中的函数是重点，目前仅仅写了一些数据进行示例，其中的监控指标获取数据就是该部分的主要功能，需要编写对应逻辑获取指标的值。
 
@@ -246,7 +246,7 @@ sample_metric2{partition="c:"} 0.44
 
 - 调试，验证插件的正确性
 
-具体参考 [如何在线制作 Exporter 插件](../integrations-metric-plugins/import_exporter.md)。
+具体参考 [如何在线制作 Exporter 插件](../ProductFeatures/integrations-metric-plugins/import_exporter.md)。
 
 还可以线下制作 Exporter 插件包，具体查看 [插件配置文件说明](./plugins_explain.md)。
 

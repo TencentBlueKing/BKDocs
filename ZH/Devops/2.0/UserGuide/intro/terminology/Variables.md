@@ -8,6 +8,6 @@
 
 - [预定义常量/变量列表](./pre-define-var/README.md)
 - [变量的基本使用](../../Services/Pipeline/pipeline-edit-guide/pipeline-variables//pipeline-variables-shell-batch.md)
-- [使用变量控制流水线流程](../../Services/Pipeline/pipeline-edit-guide/pipeline-variables//pipeline-variables-flow-control.md)
-- [凭证变量](../../Services/Pipeline/pipeline-edit-guide/pipeline-variables//pipeline-variables-ticket.md)
-- [使用备注变量](../../Services/Pipeline/pipeline-edit-guide/pipeline-variables//pipeline-variables-remark.md)
+- [使用变量控制流水线流程](../../Services/Pipeline/pipeline-edit-guide/pipeline-variables/pipeline-variables-flow-control.md)
+- [凭证变量](../../Services/Pipeline/pipeline-edit-guide/pipeline-variables/pipeline-variables-ticket.md)
+- [使用备注变量](../../Services/Pipeline/pipeline-edit-guide/pipeline-variables/pipeline-variables-remark.md)

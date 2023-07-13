@@ -4,4 +4,4 @@
 
 ![-w2020](../assets/dock_usermanage.png)
 
-关于该产品的详细使用，见《[蓝鲸产品体系用户管理白皮书](../../../用户管理/产品白皮书/产品介绍/Whatisbkuser.md)》。
+关于该产品的详细使用，见《[蓝鲸产品体系用户管理白皮书](../../../../UserManage/2.4/UserGuide/Introduce/README.md)》。

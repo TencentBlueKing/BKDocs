@@ -7,10 +7,10 @@
 如果使用描述不清或者错误，或者有需求可以反馈给官方。
 
 > **注意**：其实基于监控平台的插件定义可以非常方便的扩展监控能力，可以不用完全依赖官方的插件。具体查看
-       * [制作Script插件(多种插件类型)](产品白皮书/integrations-metric-plugins/script_collect.md)
-        * [制作Exporter插件(复用Prometheus插件)](产品白皮书/integrations-metric-plugins/import_exporter.md)
-        * [制作BK-Pull插件(拉取Prometheus数据)](产品白皮书/integrations-metric-plugins/howto_bk-pull.md)
-        * [制作DataDog插件](产品白皮书/integrations-metric-plugins/import_datadog_online.md)
+       * [制作Script插件(多种插件类型)](script_collect.md)
+        * [制作Exporter插件(复用Prometheus插件)](import_exporter.md)
+        * [制作BK-Pull插件(拉取Prometheus数据)](howto_bk-pull.md)
+        * [制作DataDog插件](import_datadog_online.md)
 
 ## Exporter 插件
 

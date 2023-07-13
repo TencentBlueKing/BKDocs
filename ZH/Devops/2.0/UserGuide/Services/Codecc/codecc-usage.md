@@ -20,7 +20,7 @@
 
 ![](../../assets/image-20211130150820135.png)
 
-**其他类型代码库的使用请参考：**[代码库](../repo.md)
+**其他类型代码库的使用请参考：**[代码库](../Coderepo/repos-link.md)
 
 **关联gitlab代码库有几个条件：**
 
@@ -45,7 +45,7 @@ gitlab accesstoken创建请参考：[创建accesstoken](https://docs.gitlab.com/
 
 ![](<../../assets/image-20220301101202-KMSOc (1).png>)
 
-**其他类型凭证使用请参考：**[凭证管理](../ticket.md)
+**其他类型凭证使用请参考：**[凭证管理](../Ticket/ticket.md)
 
 ### 创建流水线
 

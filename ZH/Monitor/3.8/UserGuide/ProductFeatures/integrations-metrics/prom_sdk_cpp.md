@@ -346,7 +346,7 @@ exposer.RegisterCollectable(registry, "/metrics");
 
 - 2、申请接入
 
-   具体详见文档[指标采集](./collect-tasks.md)
+   具体详见文档[指标采集](./../../Other/functions/conf/collect-tasks.md)
 	
   `代码样例：`
 

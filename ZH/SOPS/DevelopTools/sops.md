@@ -377,7 +377,7 @@ class TestCustomComponent(Component):
 
 另外，测试文件名应该为 `test_{code}.py`，`{code}` 为插件的唯一编码。
 
-单元测试编写指引请参考：[标准插件单元测试编写](https://github.com/Tencent/bk-sops/blob/master/pipeline/docs/user_guide_component_unit_test.md)。
+单元测试编写指引请参考：[标准插件单元测试编写](https://github.com/TencentBlueKing/bk-sops/blob/master/docs/develop/dev_plugin_best_practices.md)。
 
 ### 标准插件功能测试
 

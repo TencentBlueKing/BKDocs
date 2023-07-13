@@ -34,7 +34,7 @@ UserProfile.objects.update_or_create(user=user_id, defaults={'role':4, 'enable_r
 
 这里可以修改应用集群配置，并添加新的应用集群，配置修改后重新部署应用即可生效
 
-详细的参数说明，请参考[初始化集群配置 ](../../../../应用运维文档/PaaS3/docs/configure_initial_cluster.md)
+详细的参数说明，请参考[初始化集群配置 ](../../../../Operation/PaaS3/docs/configure_initial_cluster.md)
 
 
 ### 应用资源管理

@@ -4,7 +4,7 @@
 
 告警规则模板基于 go template 开发，基本使用语法和一致， 如 {{ $labels }}  替换变量等。
 
-模板规则在 Prometheus Template 基础上，新增了变量和函数，如果不满足需求，请联系[蓝鲸客服](https://bk.tencent.com/)。
+模板规则在 Prometheus Template 基础上，新增了变量和函数，如果不满足需求，请联系[蓝鲸客服](https://wpa1.qq.com/KziXGWJs?_type=wpa&qidian=true)。
 
 ## 模板变量
 

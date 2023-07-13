@@ -6,7 +6,7 @@
 
 ## 前提条件
 
-在配置平台中[新建业务](./case1.md) 及业务拓扑。
+在配置平台中[新建业务](../QuickStart/case1.md) 及业务拓扑。
 
 ## 步骤
 
@@ -59,7 +59,7 @@ tcp        0      0 10.0.4.29:3306          0.0.0.0:*               LISTEN      
 
 ### 监控系统自动实现进程端口监控
 
-等候一分钟，在蓝鲸自带的监控系统 [监控平台](../../../监控平台/产品白皮书/intro/README.md) 中可以看到 [进程的运行情况](../../../监控平台/产品白皮书/guide/process_monitor.md)。
+等候一分钟，在蓝鲸自带的监控系统 [监控平台](../../../../Monitor/3.8/UserGuide/Overview/README.md) 中可以看到 [进程的运行情况](../../../../Monitor/3.8/UserGuide/Other/guide/process_monitor.mdd)。
 
 ![-w1570](../media/15632804527438.jpg)
 

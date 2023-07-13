@@ -6,12 +6,12 @@
 
 ## 在通知 ESB 组件中配置通知渠道
 
-![-w2021](../media/15366583245319.jpg)
+![-w2021](../../Other/media/15366583245319.jpg)
 <center>蓝鲸集成平台（PaaS）的消息管理通知设置</center>
 
 详细设置请访问蓝鲸 PaaS 提供的设置文档
 
-- [如何配置通知渠道，如邮件、微信、短信等?](../../../PaaS平台/产品白皮书/场景案例/noticeWay.md)
+- [如何配置通知渠道，如邮件、微信、短信等?](../../../../../PaaS/1.0/UserGuide/UserCase/noticeWay.md)
 - [经验分享-测试邮件服务是否正常](http://bk.tencent.com/s-mart/community/question/95#/)
 
 ## 在全局配置中确定通知方法

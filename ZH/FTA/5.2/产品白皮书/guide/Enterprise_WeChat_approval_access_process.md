@@ -3,7 +3,7 @@
 需要提前准备：
 
 1. 需要先配置企业微信，注册链接：https://work.weixin.qq.com/ ，注意：开启微信端口 80443
-2. 蓝鲸故障自愈 APP 已经正常运行 创建故障自愈 APP 请参照[微信审批接入流程](https://docs.bk.tencent.com/product_white_paper/fta/Advanced_Features/WeChat_approval_access_process.html)。
+2. 蓝鲸故障自愈 APP 已经正常运行 创建故障自愈 APP 请参照[微信审批接入流程](./WeChat_approval_access_process.md)。
 
 微信审批分两种，一种是回复指令审批，适合组合套装中的【通知或审批】套餐，还有一种需要在微信页面审批(通过菜单进入)，适合告警收敛的【异常防御需审批】。这些都需要一个应用为载体，下面以故障自愈应用为例，指引接入审批流程，相关参数可按照配置自行修改。
 
@@ -40,7 +40,8 @@
 
 1.2	触发告警
 
-完整流程请参照[REST API 推送](https://docs.bk.tencent.com/product_white_paper/fta/functions/Integrated_RestAPI_Push.html)。
+完整流程请参照[REST API 推送](../functions/Integrated_RestAPI_Push.md)。
+
 
 2， 审批套餐执行详情
 

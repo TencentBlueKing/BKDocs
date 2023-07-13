@@ -10,8 +10,6 @@
 
     新增 API 之前，需要先接入系统。接入系统后，可以添加 API 至该系统下。
 
-![-w2021](../../media/0ed24fa03b474f5ff8e2097d603d1f87.png)
-
 <center>API配置页面</center>
 
 2.  API 使用

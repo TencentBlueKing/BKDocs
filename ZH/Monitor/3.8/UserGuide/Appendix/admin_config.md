@@ -18,7 +18,7 @@
 
 #### 告警通知渠道
 
-通知渠道是来自 ESB 中的通知方式，[ESB 的通知方式添加](../alarm-configurations/notify_setting.md)
+通知渠道是来自 ESB 中的通知方式，[ESB 的通知方式添加](../ProductFeatures/alarm-configurations/notify_setting.md)
 
 配置告警组页面上允许选择的通知方式，但不影响已配置的告警组。["\__all__"] 代表全部，sms 短信，weixin 微信，voice 电话，mail 邮件。
 

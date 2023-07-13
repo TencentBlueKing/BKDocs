@@ -1,24 +1,5 @@
 # 容器管理套餐安装指引
 
-## 安装概览
-
-【准备阶段】
-
-- [准备蓝鲸基础环境](./BCS-start.md#一、安装环境准备)
-- [服务器资源准备](./BCS-start.md#12)
-
-【安装阶段】
-
-- [安装 GSE Agent](./BCS-start.md#14)
-- [下载安装包和标准运维模板文件](./BCS-start.md#15)
-- [解压安装包](./BCS-start.md#16)
-- [导入标准运维模板](./BCS-start.md#21)
-
-【使用阶段】
-
-- [执行部署作业](./BCS-start.md#23)
-- [访问容器管理平台](./BCS-start.md#三、访问容器管理平台)
-
 ## 一、安装环境准备
 
 ### 1.1 基础环境依赖
@@ -67,7 +48,7 @@
 ### 1.4 安装 BCS 部署机器的 GSE Agent
 <a id="14"></a>
 
-- 安装方法，请参考[【节点管理】Agent 安装](../../../../节点管理/产品白皮书/QuickStart/DefaultAreaInstallAgent.md)
+- 安装方法，请参考[【节点管理】Agent 安装](../../../../../NodeMan/2.2/UserGuide/QuickStart/DefaultAreaInstallAgent.md)
 - 安装时业务请选择“蓝鲸”
 
 ### 1.5 下载 BCS 安装包

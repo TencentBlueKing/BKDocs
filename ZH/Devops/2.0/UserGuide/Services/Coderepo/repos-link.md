@@ -14,5 +14,5 @@
 
 ## 接下来你可能需要
 
-- [BKCI 导航条](../Console.md)
-- [创建你的第一条流水线](../tutorials/create-first-pipeline.md)
+- [控制台](../Console/Console.md)
+- [创建你的第一条流水线](../../Quickstarts/Create-your-first-pipeline.md)

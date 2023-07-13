@@ -12,7 +12,7 @@
 2. 流水线编辑标签，可以在流水线编排页、基础设置之间互相切换：
    - 流水线编排区：参考第 3 点
    - 流水线基础设置：
-3. 流水线编排区：遵守 [流水线核心理念](../../Concepts/Learn-pipeline-in-5min.md)的可视化编排区域
+3. 流水线编排区：遵守 [流水线核心理念](../../../intro/terminology/Learn-pipeline-in-5min.md)的可视化编排区域
 4. 流水线操作区，包含如下常用操作集合：
    - 保存：每点一次保存，会生成一个从 1 开始自增的编排版本号，可用于回滚
    - 执行：基于当前的编排版本号，生成一个快照流水线任务
@@ -27,20 +27,20 @@
 
 * 编排流水线
    * 基本操作
-      * [Stage 准入](pipeline-edit-guide/gui.md)
-      * [为流水线开启自定义构建号](pipeline-edit-guide/alias-buildno.md)
-      * [锁定流水线](pipeline-edit-guide/disable-pipeline.md)
+      * [Stage 准入](../pipeline-edit-guide/gui.md)
+      * [为流水线开启自定义构建号](../pipeline-edit-guide/alias-buildno.md)
+      * [锁定流水线](../pipeline-edit-guide/disable-pipeline.md)
    * 触发器
-      * [gitlab 触发](pipeline-triggers/pipeline-trigger-gitlab.md)
-      * [手动触发](pipeline-triggers/pipeline-trigger-manual.md)
-      * [定时触发](pipeline-triggers/pipeline-trigger-timer.md)
-      * [远程触发](/pipeline-triggers/pipeline-trigger-remote.md)
+      * [gitlab 触发](../pipeline-triggers/pipeline-trigger-gitlab.md)
+      * [手动触发](../pipeline-triggers/pipeline-trigger-manual.md)
+      * [定时触发](../pipeline-triggers/pipeline-trigger-timer.md)
+      * [远程触发](../pipeline-triggers/pipeline-trigger-remote.md)
    * 流水线变量
-      * [变量的基本使用](pipeline-variables/pipeline-variables-shell-batch.md)
-      * [使用变量控制流水线流程](pipeline-variables/pipeline-variables-flow-control.md)
-      * [使用备注变量](pipeline-variables/pipeline-variables-remark.md)
-      * [凭证变量](pipeline-variables/pipeline-variables-ticket.md)
-* [BKCI 导航条](../Console.md)
-* [流水线列表页](pipeline-list.md)
-* [流水线任务历史](pipeline-history.md)
-* [流水线任务详情页](../pipeline-build-detail/pipeline-detail.md)
+      * [变量的基本使用](../pipeline-edit-guide/pipeline-variables/pipeline-variables-shell-batch.md)
+      * [使用变量控制流水线流程](../pipeline-edit-guide/pipeline-variables/pipeline-variables-flow-control.md)
+      * [使用备注变量](../pipeline-edit-guide/pipeline-variables/pipeline-variables-remark.md)
+      * [凭证变量](../pipeline-edit-guide/pipeline-variables/pipeline-variables-ticket.md)
+* [BKCI 导航条](.././../Console/Console.md)
+* [流水线列表页](../pipeline-list.md)
+* [创建/编辑流水线](../pipeline-edit-guide/pipeline-edit.md)
+* [流水线任务历史](../pipeline-history.md)

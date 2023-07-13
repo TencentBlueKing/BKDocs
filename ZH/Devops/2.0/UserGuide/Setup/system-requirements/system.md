@@ -1,6 +1,6 @@
 # BKCI 系统要求
 
-我们提供了以最小化硬件成本搭建起 BKCI 的最低要求。如果你正尝试将 BKCI 投入生产环境，请仔细阅读：[BKCI 硬件规格指南](hardware-specifications.md)
+我们提供了以最小化硬件成本搭建起 BKCI 的最低要求。如果你正尝试将 BKCI 投入生产环境，请仔细阅读：[BKCI 硬件规格指南](hardware.md)
 
 
 ## Web客户端要求

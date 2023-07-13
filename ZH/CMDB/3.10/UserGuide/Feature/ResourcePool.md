@@ -32,7 +32,7 @@
 
 ### 在节点管理安装 Agent 后，会自动将主机同步到配置平台
 
-节点管理的 Agent 安装流程详见：[Agent 安装](../../../节点管理/产品白皮书/Feature/Agent.md)
+节点管理的 Agent 安装流程详见：[Agent 安装](../../../../NodeMan/2.2/UserGuide/Feature/Agent.md)
 
 ## 资源分配到业务
 

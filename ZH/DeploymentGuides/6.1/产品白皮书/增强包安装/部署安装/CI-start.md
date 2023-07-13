@@ -108,8 +108,8 @@ IP2 ci(dockerhost)
 ![CI_home.png](../../assets/CI_home.png)
 
 相关链接：
-* [快速入门](../../../../持续集成平台/产品白皮书/Quickstarts/Create-your-first-pipeline.md)
-* [产品白皮书](../../../../持续集成平台/产品白皮书/产品简介/README.md)
+* [快速入门](../../../../../Devops/1.7/产品白皮书/Quickstarts/Link-your-first-repo.md)
+* [产品白皮书](../../../../../Devops/产品白皮书/产品简介/README.md)
 * [BKCI Docs](https://docs.bkci.net/)
 * [常见问题](../../增强包维护/蓝盾/FAQ.md)
 * [部署详解](./CI-V2.md)

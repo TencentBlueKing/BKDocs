@@ -7,6 +7,4 @@
 
 第二种： 基于日志关键字进行计数的监控
 
-
-具体查看监控平台文档[如何监控日志平台的数据](../../../监控平台/产品白皮书/alarm-configurations/log_monitor.md)
-
+具体查看监控平台文档[如何监控日志平台的数据](../../../../../Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/log_monitor.md)

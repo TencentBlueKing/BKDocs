@@ -133,6 +133,6 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 
 ## 使用蓝鲸
 
-可参考蓝鲸 [快速入门](../../../../快速入门/quick-start-v6.1-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
+可参考蓝鲸 [快速入门](../../../../../QuickStart/7.0/quick-start-v7.0-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
 
 如需部署监控日志套餐，请参考 [监控日志套餐部署](../多机部署/value_added.md) 。

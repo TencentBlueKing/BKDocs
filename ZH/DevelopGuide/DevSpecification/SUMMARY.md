@@ -2,7 +2,7 @@
 
 ## 开发规范
 * [前端开发规范]()
-    * [序言](FrontendDevSpec//README.md)
+    * [序言](FrontendDevSpec/README.md)
     * [HTML 规范]()
         * [基础结构](FrontendDevSpec/HTMLSpec/BasicBoilerplate.md)
         * [标签语义化](FrontendDevSpec/HTMLSpec/Tag.md)
@@ -20,7 +20,7 @@
         * [注释规范](FrontendDevSpec/JSSpec/Comment.md)
         * [文件引用规范](FrontendDevSpec/JSSpec/FileRefer.md)
     * [Vuejs 规范]()
-        * [编码规范](FrontendDevSpec/VueJSSpec/Coding.md)
+        * [编码规范](FrontendDevSpec/VuejsSpec/Coding.md)
     * [PerformanceOpti]()
         * [基本原则](FrontendDevSpec/PerformanceOpti/Principles.md)
         * [编码建议](FrontendDevSpec/PerformanceOpti/Coding.md)

@@ -65,7 +65,7 @@
     * [单据日志查询](APIDocs/itsm/zh-hans/get_ticket_logs.md)
     * [单据状态查询](APIDocs/itsm/zh-hans/get_ticket_status.md)
     * [获取单据列表](APIDocs/itsm/zh-hans/get_tickets.md)
-    * [获取指定用户和工单类型的单据列表](APIDocs/itsm/zh-hans/get_tickets_by_user.md)
+    * [获取指定用户和工单类型的单据列表](APIDocs/itsm/zh-hans/get_tickets.md)
     * [服务流程详情查询](APIDocs/itsm/zh-hans/get_workflow_detail.md)
     * [处理单据节点](APIDocs/itsm/zh-hans/operate_node.md)
     * [处理单据](APIDocs/itsm/zh-hans/operate_ticket.md)

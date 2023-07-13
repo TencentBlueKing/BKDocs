@@ -7,7 +7,7 @@
 > 注意：对于 Linux 和 Windows 都默认只支持 64 位的操作系统。如果需要支持 32 位的操作系统，需要进行订制。
 
 插件输出格式说明：
-详细查看 [数据模型](../concepts/datamodule.md#Promtheus的数据结构)之 『监控平台支持 Promtheus 的数据结构』。
+详细查看 [数据模型](../../Architecture//datamodule.md)之 『监控平台支持 Promtheus 的数据结构』。
 
 **工作原理**：
 
@@ -18,7 +18,7 @@
 * **采集器**： Monitor Collector 监控内置的采集器，像  bkmonitorbeat 管理采集插件。
 * **采集插件**： 用户自定义的采集插件，可以基于标准要求进行无限扩展。
 
-> 两者的区别，更多请查看[术语解释](../concepts/glossary.md)
+> 两者的区别，更多请查看[术语解释](../../Term/glossary.md)
 
 ## 主功能一览
 
@@ -39,8 +39,8 @@
 1. 在线定义，直接在 web 界面定义，比如：[如何使用开源的 Exporter](../integrations-metric-plugins/import_exporter.md)
 2. 线下定义，线下将插件包制作好，直接导入，比如：[如何线下定义 DataDog 插件](../dev/import_datadog_offline.md)
 3. 采集程序本身的开发，比如：
-    * [Exporter 插件开发](../dev/plugin_exporter_dev.md)
-    * [DataDog 插件开发](../dev/plugin_datadog_dev.md)
+    * [Exporter 插件开发](../../Dev/plugin_exporter_dev.md)
+    * [DataDog 插件开发](../../Dev/plugin_datadog_dev.md)
 
 ### 插件导入和导出
 
@@ -214,8 +214,8 @@ BK-Pull 主要是解决那些只暴露了端口服务的数据源。通过 pull 
 
 插件完全也可以通过线下制作直接进入导入，线下插件制作主要清楚各种插件的配置内容及关系。
 
-* [如何线下制作 DataDog 插件](../dev/import_datadog_offline.md)
-* [插件包配置文件说明](../dev/plugins_explain.md)
+* [如何线下制作 DataDog 插件](../../Dev/import_datadog_offline.md)
+* [插件包配置文件说明](../../Dev/plugins_explain.md)
 
 ### 升级插件
 
