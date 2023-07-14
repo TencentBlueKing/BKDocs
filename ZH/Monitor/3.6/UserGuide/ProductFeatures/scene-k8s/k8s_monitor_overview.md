@@ -78,9 +78,9 @@
 接入容器监控的集群，分2种情况
 
 - 在BCS集群中已经接入的k8s集群, 则可以直接在BCS的集群组件中安装bkmonitorbeat operator
-- 集群未被BCS纳管，则需要将k8s集群托管，请参考 [集群管理](https://bk.tencent.com/docs/document/7.0/173/14092)，然后再安装bkmonitorbeat operator
+- 集群未被BCS纳管，则需要将k8s集群托管，请参考 [集群管理](../../../../..//BCS/1.28/UserGuide/Function/cluster_management.md)，然后再安装bkmonitorbeat operator
 
-接入的过程，请参考[蓝鲸容器监控安装](https://bk.tencent.com/docs/document/7.0/173/14601)
+接入的过程，请参考[蓝鲸容器监控安装](../../../../../BCS/1.28/UserGuide/Function/container_monitor.md)
 
 ## 五、如何查看容器监控数据
 

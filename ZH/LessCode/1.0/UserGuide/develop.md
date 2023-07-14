@@ -1,7 +1,7 @@
 ## 应用二次开发指引
 
 ## 方式一：下载整个应用源码包进行二次开发
-下载应用源码，平台将会把应用的所有页面源码及页面路由配置集成到[蓝鲸前端开发框架（BKUI-CLI）](https://bk.tencent.com/docs/document/5.1/19/583)中，作为应用整个源码包下载下来。
+下载应用源码，平台将会把应用的所有页面源码及页面路由配置集成到[蓝鲸前端开发框架（BKUI-CLI）]([BKUI-CLI](../../../PaaS/DevelopTools/SaaSGuide/DevAdvanced/bkui/bkui.md))中，作为应用整个源码包下载下来。
 
 <img src="./images/page5.png" alt="grid" width="800px" class="help-img">
 

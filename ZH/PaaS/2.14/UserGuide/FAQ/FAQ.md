@@ -12,4 +12,4 @@
 
 ## 如何将蓝鲸体系的用户体系对接到企业内已有的 OA 系统
 
-答：蓝鲸提供了登录 API 接口，可以对接普通的账户 Vs 密码形式的 OA 账号，可参考 [企业内部登录对接蓝鲸智云统一登录指南](https://bk.tencent.com/docs/document/6.0/130/5923) 完成对接，更多对接的功能在持续开发中。
+答：蓝鲸提供了登录 API 接口，可以对接普通的账户 Vs 密码形式的 OA 账号，可参考 [用户管理-企业内部登录对接蓝鲸智云统一登录指南](../../../../UserManage/IntegrateGuide/Docking_enterprise_login_system/flow_chart.md) 完成对接，更多对接的功能在持续开发中。

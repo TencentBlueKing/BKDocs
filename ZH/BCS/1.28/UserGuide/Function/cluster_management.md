@@ -79,10 +79,9 @@ stack-bcs-api-gateway-http   nginx   bcs-api.xxx.xxx.com   172.17.247.1   80    
 - 节点自动扩缩容自定义流程功能，它使用 gse_agent 执行 job 平台与标准运维任务
 - 自建集群使用标准运维安装 kubernetes 组件，它使用 gse_agent 执行标准运维任务
 
-gse_agent 安装详情请参考：https://bk.tencent.com/docs/document/7.0/235/39703
+gse_agent 安装详情请参考：[安装蓝鲸 Agent（直连区域）](../../../../NodeMan/2.2/UserGuide/QuickStart/DefaultAreaInstallAgent.md)
 
-非直连网络环境安装 gse_agent 请参考：https://bk.tencent.com/docs/document/7.0/235/39787
-
+非直连网络环境安装 gse_agent 请参考：[安装蓝鲸 Agent（自定义云区域）](../../../../NodeMan/2.2/UserGuide/QuickStart/CustomCloudAreaInstallAgent.md)
 ## 三. 创建集群
 
 集群作为容器调度的基础，启用完容器服务后，首先需要创建集群。平台提供了两种创建集群的方式，一种是新建集群，另一种是导入已有集群。

@@ -1,6 +1,6 @@
 # x.0或者x.10以0结尾的需要加上引号如"x.0"
-6.0:
-    BCS: "6.0"
+6.0:  # 文档中心大版本
+    BCS: "6.0"   # 产品版本
     BestPractices: "7.0"
     BlueKingFamily: "7.0"
     CMDB: 3.9

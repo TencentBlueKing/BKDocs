@@ -23,7 +23,7 @@
 
 ![](./assets/2022-02-18-17-48-24.png)
 
-更多作业平台的产品功能，可见[作业平台白皮书](https://bk.tencent.com/docs/document/6.0/125/5748)
+更多作业平台的产品功能，可见[作业平台白皮书](../../JOB/3.7/UserGuide/Introduction/What-is-Job.md)
 
 ---
 

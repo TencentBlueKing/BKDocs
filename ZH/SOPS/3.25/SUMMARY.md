@@ -26,6 +26,7 @@
     * [FAQ](UserGuide/FAQ/FAQ.md)
     * [如何利用分支网关实现循环](UserGuide/FAQ/loop.md)
     * [如何实现在不同步骤间传递参数](UserGuide/FAQ/pass-variables.md)
+* [集成开发](../DevelopTools/sops.md)
 * [附录]()
     * [附录 1：分支表达式]()
         * [定义](UserGuide/Appendix/define.md)

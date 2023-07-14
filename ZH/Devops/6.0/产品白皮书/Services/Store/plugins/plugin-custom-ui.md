@@ -20,7 +20,7 @@
 其下代码结构如下： ![png](../../../assets/store_plugin_customui_folder.png)
 
 ## 开发步骤
-
+[bneir ](../../../../../../)
 * 1、研发商店在新增件时，自定义插件前端部分选项选择“是”
 * 2、运行：
   * 代码根目录下创建 bk-frontend 目录

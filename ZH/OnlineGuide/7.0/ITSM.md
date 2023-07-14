@@ -18,7 +18,7 @@
 
 ![](./assets/2022-02-18-17-52-17.png)
 
-更多流程服务的产品功能，可见[流程服务白皮书](https://bk.tencent.com/docs/document/6.0/145/6623)
+更多流程服务的产品功能，可见[流程服务白皮书](../../ITSM/2.6/UserGuide/Introduce/README.md)
 
 ---
 

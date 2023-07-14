@@ -6,7 +6,7 @@
 
 ![](./assets/2022-02-18-17-50-02.png)
 
-更多节点管理的产品功能，可见[节点管理白皮书](https://bk.tencent.com/docs/document/6.0/157/7017)
+更多节点管理的产品功能，可见[节点管理白皮书](../../NodeMan/2.2/UserGuide/Introduce/Overview.md)
 
 ---
 

@@ -86,7 +86,7 @@ action_id 是唯一标识, 对于一个系统来说是枚举的, 32 位理论上
 1. cmdb是否提供了`业务`对应的实例视图, 并且实例视图是否满足自己的需求
 2. cmdb的系统id(system_id)和`业务`对应的资源类型(resource_type)
 
-如果1确定并满足, 可以使用 [操作 Action API](https://bk.tencent.com/docs/document/6.0/160/8440) 注册操作的时候
+如果1确定并满足, 可以使用 [操作 Action API](../../../Reference/API/02-Model/13-Action.md) 注册操作的时候
 
 ```
 related_resource_types

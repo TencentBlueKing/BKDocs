@@ -226,9 +226,9 @@ admin 进入到【权限中心】配置**权限模板**及创建**用户组**，
 
 关于权限管理的更多场景参考：
 
-[如何设置其他管理员？](https://bk.tencent.com/docs/document/6.0/131/7109)
+[如何设置其他管理员？](../../IAM/1.12/UserGuide/Feature/InnerRoles.md)
 
-[如何给组织授权？](https://bk.tencent.com/docs/document/6.0/131/8385)
+[如何给组织授权？](../../IAM/1.12/UserGuide/FAQ/Orggrants.md)
 
-[企业权限管理的最佳实践是怎样的？](https://bk.tencent.com/docs/document/6.0/131/7975)
+[企业权限管理的最佳实践是怎样的？](../../IAM/1.12/UserGuide/UserCase/GradingManager.md)
 

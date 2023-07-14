@@ -21,4 +21,4 @@ During handling of the above exception, another exception occurred:
 ![](../assets/003.png)
 
 **解决方案：**
-[https://bk.tencent.com/docs/document/6.0/127/8940](https://bk.tencent.com/docs/document/6.0/127/8940)
+[作业平台日常维护](../../../../../DeploymentGuides/6.0/产品白皮书/维护手册/日常维护/job.md)

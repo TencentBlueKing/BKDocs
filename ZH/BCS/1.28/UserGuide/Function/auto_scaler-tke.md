@@ -10,7 +10,7 @@
 
   ![-w2020](../assets/pre_ca_import_by_cloud.png)
 
-  详情请参考 [集群管理的导入已有集群](https://bk.tencent.com/docs/document/7.0/173/14092)
+  详情请参考 [集群管理的导入已有集群](cluster_management.md)
 
 - 云凭证必须有以下权限
     ```json

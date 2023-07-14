@@ -12,7 +12,7 @@
 
 ![](./assets/2022-02-18-17-47-31.png)
 
-更多配置平台的产品功能，可见[配置平台白皮书](https://bk.tencent.com/docs/document/6.0/152/6962)
+更多配置平台的产品功能，可见[配置平台白皮书](../../CMDB/3.10/UserGuide/Introduce/Overview.md)
 
 ---
 

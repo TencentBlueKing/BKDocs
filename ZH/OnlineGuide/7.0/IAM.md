@@ -7,7 +7,7 @@
 
 核心用户专用权限分配了更高级别的权限组，是核心用户专享权益，可以点击查看[如何成为蓝鲸社区核心用户](https://bk.tencent.com/s-mart/community/question/5570)
 
-更多权限中心的的产品功能，可见[权限中心白皮书](https://bk.tencent.com/docs/document/6.0/131/7337)
+更多权限中心的的产品功能，可见[权限中心白皮书](../..//IAM/1.12/UserGuide/Introduce/README.md)
 
 ---
 
