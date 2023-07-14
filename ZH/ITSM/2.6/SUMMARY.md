@@ -4,7 +4,7 @@
 ## 流程服务
 * [产品简介](UserGuide/Introduce/README.md)
 * [术语解释](UserGuide/Term/Term.md)
-* [产品架构](UserGuide/Architecture/Architecture.md)
+* [产品架构](UserGuide/ProductArchitecture/Architecture.md)
 * [特点及优势](UserGuide/Advantage/Features.md)
 * [快速入门]()
     * [【服务提供方】如何构建服务]()

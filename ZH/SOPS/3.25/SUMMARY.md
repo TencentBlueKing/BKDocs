@@ -4,7 +4,7 @@
 * [产品公告](https://bk.tencent.com/s-mart/community/question/4058?type=answer)
 * [产品功能](UserGuide/Overview/README.md)
 * [术语解释](UserGuide/Term/glossary.md)
-* [产品架构图](UserGuide/Architecture/framework.md)
+* [产品架构图](UserGuide/ProductArchitecture/framework.md)
 * [快速入门]()
     * [第一个流程](UserGuide/QuickStart/job_flow.md)
 * [产品功能]()

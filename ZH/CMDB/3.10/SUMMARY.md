@@ -3,7 +3,7 @@
 ## 配置平台
 * [产品简介](UserGuide/Introduce/Overview.md)
 * [术语解释](UserGuide/Term/Term.md)
-* [产品架构](UserGuide/Architecture/Architecture.md)
+* [产品架构](UserGuide/ProductArchitecture/Architecture.md)
 * [特点及优势](UserGuide/Advantage/Advantages.md)
 * [快速入门]()
     * [如何创建业务并导入主机到业务中](UserGuide/QuickStart/case1.md)

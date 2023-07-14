@@ -7,7 +7,7 @@
     * [产品特性](产品白皮书/Function/features.md)
     * [产品优势](产品白皮书/Function/superiority.md)
     * [产品开源](产品白皮书/Function/opensource.md)
-    * [产品架构图](产品白皮书/Architecture/Architecture.md)
+    * [产品架构图](产品白皮书/ProductArchitecture/Architecture.md)
     * [快速入门](产品白皮书/QuickStart/QuickStart.md)
     * [场景案例]()
         * [快速构建 Nginx 集群](产品白皮书/Scenes/Bcs_deploy_nginx_cluster.md)

@@ -4,7 +4,7 @@
 * [产品公告](https://bk.tencent.com/s-mart/community/question/8716)
 * [产品简介](UserGuide/Introduction/README.md)
 * [术语解释](UserGuide/Concepts/Concepts_Terminology.md)
-* [产品架构](UserGuide/Architecture/Architecture.md)
+* [产品架构](UserGuide/ProductArchitecture/Architecture.md)
 * [特点及优势]()
     * [产品特点](UserGuide/Introduction/features.md)
     * [产品优势](UserGuide/Introduction/superiority.md)

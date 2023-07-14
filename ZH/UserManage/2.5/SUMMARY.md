@@ -3,7 +3,7 @@
 ## 用户管理
 * [产品简介](UserGuide/Introduce/README.md)
 * [术语解释](UserGuide/Term/Term.md)
-* [产品架构](UserGuide/Architecture/Architecture.md)
+* [产品架构](UserGuide/ProductArchitecture/Architecture.md)
 * [特点及优势](UserGuide/Advantage/Feature.md)
 * [快速入门]()
     * [如何新增本地用户](UserGuide/QuickStart/AddLocalUsers.md)

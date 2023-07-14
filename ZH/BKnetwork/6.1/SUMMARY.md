@@ -3,7 +3,7 @@
 ## 网络管理
 * [产品简介](Introduction/README.md)
 * [术语解释](Term/basic.md)
-* [产品架构](Architecture/arch.md)
+* [产品架构](ProductArchitecture/arch.md)
 * [核心优势](Advantage/advantage.md)
 * [产品功能](Function/Introduction.md)
 * [部署指南](Deployment/deploy.md)

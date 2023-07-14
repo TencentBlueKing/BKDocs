@@ -8,7 +8,7 @@
     * [工作原理](UserGuide/Introduce/Principle.md)
     * [使用限制](UserGuide/Introduce/UseLimit.md)
 * [术语解释](UserGuide/Term/Trem.md)
-* [产品架构](UserGuide/Architecture/Architecture.md)
+* [产品架构](UserGuide/ProductArchitecture/Architecture.md)
 * [特点及优势](UserGuide/Advantage/Feature.md)
 * [快速入门]()
     * [管理员如何分配权限]()
