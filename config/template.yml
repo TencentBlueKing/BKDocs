@@ -40,10 +40,6 @@
         - 
           name: {{ IndexSaaSService }}
           children:
-            - 
-              name: {{ IndexUserManage }}
-            -
-              name: {{ IndexIAM }}
             -  
               name: {{ IndexNodeMan }}
             - 
