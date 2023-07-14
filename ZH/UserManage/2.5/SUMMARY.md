@@ -15,6 +15,7 @@
     * [用户目录](UserGuide/Feature/Directorys.md)
     * [审计](UserGuide/Feature/Audits.md)
     * [字段管理](UserGuide/Feature/Fields.md)
+    * [回收站](UserGuide/Feature/Recycle.md)
 * [集成开发]()
     * [登录流程图](../IntegrateGuide/Docking_enterprise_login_system/flow_chart.md)
     * [MockBackend 接入示例](../IntegrateGuide/Docking_enterprise_login_system/login_with_usermgr.md)

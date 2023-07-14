@@ -10,9 +10,13 @@
 
 ## 操作步骤
 
-1. 点击`用户目录 -> 新建目录`，选择`Microsoft Active Directory`目录类型进行目录创建并进入下一步。
+1. 点击`组织架构 -> 新建目录`，选择`Microsoft Active Directory`目录类型进行目录创建并进入下一步。
 
-   ![image-20201110173821167](AddMADDirectory/image-20201110173821167.png)
+   ![image-20230714164412600](AddMADDirectory/image-20230714164412600.png)
+
+   
+
+   ![image-20230714164346723](AddMADDirectory/image-20230714164346723.png)
 
 2. 在`基本设置`页面，填写基本信息。
 
@@ -33,19 +37,19 @@
 
    填写完后，点击`测试连接`如果正常会提示成功信息，如有错误，请查看用户管理后台日志信息。
 
-   ![image-20201110174120747](AddMADDirectory/image-20201110174120747.png)
+   ![image-20230714164504877](AddMADDirectory/image-20230714164504877.png)
 
 4. 在`字段配置`页面，主要配置拉取字段的信息，只需要填写用户基础字段信息，其他字段信息可以保持默认，具体字段值参考如下图。
 
-   ![image-20201110174231102](AddMADDirectory/image-20201110174231102.png)
+   ![image-20230714164546820](AddMADDirectory/image-20230714164546820.png)
 
 5. 上述所有信息填写确认后，点击`提交`即完成 MAD 用户目录的创建，创建完成，可以立即进行用户信息同步。
 
-   ![image-20201110174344369](AddMADDirectory/image-20201110174344369.png)
+   ![image-20230714164629213](AddMADDirectory/image-20230714164629213.png)
 
 6. 同步完用户信息，在组织架构页面可以查看同步过来的组织架构数据。
 
-   ![image-20201110174508332](AddMADDirectory/image-20201110174508332.png)
+   ![image-20230714164710216](AddMADDirectory/image-20230714164710216.png)
 
 7. 尝试用 MAD 的用户直接登录蓝鲸。
 

@@ -14,19 +14,19 @@
 
 1. 点击**权限申请**菜单，进入权限申请页面。
 
-   ![image-20220921142123449](ApplyToCustomPermissions/image-20220921142123449.png)
+   ![image-20230713213342267](ApplyToCustomPermissions/image-20230713213342267.png)
 
 2. 点击**申请自定义权限-立即申请**按钮，进入自定义权限申请页面，依次选择**系统、操作、资源实例**，保存。
 
-   ![image-20201113141632048](ApplyToCustomPermissions/image-20201113141632048.png)
+   ![image-20230713213912969](ApplyToCustomPermissions/image-20230713213912969.png)
 
-3. 点击**提交**，提交后等待审批人审批，审批通过后，在**我的权限**页面可以查看刚才申请的自定义权限。
+3. 点击**提交**，提交后等待审批人审批，在**我的申请**页面可以查看审批进度。
 
-   ![image-20201113112504194](ApplyToCustomPermissions/image-20201113112504194.png)
-   
-4. 打开**作业平台**，切换到**脚本执行**页面，选择刚才申请的主机，点击`执行`按钮，因为申请了权限，所以这里可以执行成功。
+   ![image-20230713214125834](ApplyToCustomPermissions/image-20230713214125834.png)
 
-   ![image-20201113141734175](ApplyToCustomPermissions/image-20201113141734175.png)
+4. 审批通过后，在**我的权限**页面可以查看刚才申请的自定义权限。
+
+   ![image-20230713214305525](ApplyToCustomPermissions/image-20230713214305525.png)
 
 ## 从接入系统侧无权限跳转
 
@@ -38,7 +38,7 @@
 
 2. 点击**去申请**自动跳转到权限中心，跳转时会自动带上用户需要的操作和实例权限，用户直接点击提交即可完成权限申请。
 
-   ![image-20200921220101732](ApplyToCustomPermissions/image-20200921220101732.png)
+   ![image-20230713214849435](ApplyToCustomPermissions/image-20230713214849435.png)
 
 
 
