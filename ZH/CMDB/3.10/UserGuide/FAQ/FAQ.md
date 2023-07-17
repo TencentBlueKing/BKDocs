@@ -2,7 +2,7 @@
 
 ## CMDB 无快照数据
 
-> 此文档描述 4.0 及以上的企业版的问题排查
+> 此文档描述 4.0 及以上的问题排查
 >
 > Windows 主机暂不支持快照数据
 
@@ -135,6 +135,6 @@ Copy
 
 **思路办法**
 
-原因 1：参考 GSE 数据初始化失败解决方法，需要更新 GSE 版本中的初始化程序文件 on_migrate 和 parse_bizid，路径`/data/bkee/gse/server/bin`
+原因 1：参考 GSE 数据初始化失败解决方法，需要更新 GSE 版本中的初始化程序文件 on_migrate 和 parse_bizid，路径`{BK_PATH}/gse/server/bin`(BK_PATH为蓝鲸的安装路径，二进制版本中一般为`/data/bkce`或`/data/bkee`)
 
 原因 2：重装 gse_agent
