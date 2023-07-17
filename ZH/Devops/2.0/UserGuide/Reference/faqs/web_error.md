@@ -6,7 +6,7 @@
 
 中控机执行 ``` /data/install/bkcli start saas-o```
 
-其他机器重启的需要的操作，请查看 [机器重启](https://bk.tencent.com/docs/document/6.0/127/7582)
+其他机器重启的需要的操作，请查看  [机器重启](../../../../../DeploymentGuides/6.1/产品白皮书/维护手册/日常维护/host_reboot.md) 
 
 
 

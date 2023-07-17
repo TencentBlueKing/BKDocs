@@ -30,4 +30,4 @@
 
 服务之间有依赖关系，比如蓝鲸的一些服务依赖于mysql，如果这些服务先于mysql启动，那就会出现启动失败的情况。
 
-参照 [机器重启](https://bk.tencent.com/docs/document/6.0/127/7582) 进行检查和恢复
+参照 [机器重启](../../../../../DeploymentGuides/6.1/产品白皮书/维护手册/日常维护/host_reboot.md) 进行检查和恢复

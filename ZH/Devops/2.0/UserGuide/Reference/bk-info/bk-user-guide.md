@@ -16,7 +16,7 @@
 ![](../../assets/image-reference-bkuserguide-4.png)
 
 相关学习资料：
-- 文档：https://bk.tencent.com/docs/document/6.0/146/7330（该文档为社区版，与企业版功能基本一致）
+- [文档](../../../../../UserManage/2.5/UserGuide/Introduce/README.md)（该文档为社区版，与企业版功能基本一致）
 
 - 视频：https://ke.qq.com/course/3101748?taid=10600778153546804
 

@@ -35,7 +35,7 @@
 
 SaaS 开发是“运维开发”的基础技能，是[“腾讯蓝鲸智云-运维开发工程师”](https://bk.tencent.com/training_exam/)认证考试的核心技能。基于 PaaS 平台“开发者中心”的服务，帮助运维同学低成本构建运营系统/工具。
 
-一个 SaaS 的研发由两部分组成，一部分是前端，蓝鲸提供了可拖拽的[前端魔盒 MagicBox](https:/magicbox.bk.tencent.com/)，可以生成前端的 UI 组件和代码；另一部分是后台，蓝鲸提供了[“开发框架”](.../../../../PaaS/DevelopTools/SaaSGuide/DevBasics/framework2.md)，集成了公共的后台模块，如登录、API 调用等。
+一个 SaaS 的研发由两部分组成，一部分是前端，蓝鲸提供了可拖拽的[前端魔盒 MagicBox](https://magicbox.bk.tencent.com/)，可以生成前端的 UI 组件和代码；另一部分是后台，蓝鲸提供了[“开发框架”](.../../../../PaaS/DevelopTools/SaaSGuide/DevBasics/framework2.md)，集成了公共的后台模块，如登录、API 调用等。
 
 点击这里，下载 “[SaaS 开发工具](../../DevelopGuide/7.0/DevTools.md)” ，提供了 SaaS 开发必备的 IDE 、开发框架等。
 

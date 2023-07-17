@@ -961,7 +961,7 @@ TGit对接的是腾讯的工蜂代码库，无法使用gitlab代码库
 
 ### Q: bkci的镜像有基于Ubuntu系统的吗
 
-没有现成的基于Ubuntu的bkci镜像，用户可以根据指引来打包自己的镜像：[https://bk.tencent.com/docs/document/6.0/129/7518](https://bk.tencent.com/docs/document/6.0/129/7518)
+没有现成的基于Ubuntu的bkci镜像，用户可以根据指引来打包自己的镜像：[构建并托管一个CI镜像](../../../../../../Devops/2.0/UserGuide/Services/Store/ci-images/docker-build.md)
 
 ### Q: 如果我有多个公共构建机，公共构建机的调度算法是什么样的，什么情况任务会调度到另一台构建机上执行？
 

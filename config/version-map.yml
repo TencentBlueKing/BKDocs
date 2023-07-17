@@ -58,7 +58,7 @@
 6.2:
     APIGateway: "1.10"
     BCS: 1.28
-    BestPractices: "7.0"
+    BestPractices: 7.1
     BlueKingFamily: "7.0"
     CMDB: "3.10"
     DeploymentGuides: 6.2
@@ -115,7 +115,7 @@
     APIGateway: "1.10"
     BCS: 1.28
     BK-Base: "3.10"
-    BestPractices: "7.0"
+    BestPractices: 7.1
     BlueKingFamily: "7.0"
     CMDB: "3.10"
     DeploymentGuides: 7.1
