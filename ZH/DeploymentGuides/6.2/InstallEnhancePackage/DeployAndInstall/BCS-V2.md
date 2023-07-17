@@ -76,7 +76,7 @@
 
 使用节点管理 SaaS 导入服务器信息到配置平台与安装 GSEAgent
 
-- 节点管理使用方法请参考文档：[节点管理-产品白皮书](https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Overview.md)
+- 节点管理使用方法请参考文档：[节点管理-产品白皮书](../../../../../NodeMan/2.2/UserGuide/Introduce/Overview.md)
 - 容器管理平台后台、K8S 集群服务器都需要导入服务器信息到配置平台与安装 GSE Agent，请把容器管理平台后台、K8S 集群服务器与安装蓝鲸社区版基础包的服务器放在同一业务下
 
 ## 下载、解压安装包

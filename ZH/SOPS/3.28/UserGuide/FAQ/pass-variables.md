@@ -1,60 +1,114 @@
-# 如何实现在步骤间传递自定义内容
+>当流程有多个步骤时，经常需要把前面某个个步骤处理的结果传递给下一个或后面的步骤使用（输出作为输入），这就是跨步骤传参的场景，标准运维通过特有的标记符号"<SOPS_VAR>key:value</SOPS_VAR> "来实现。
 
-当我们的流程有多个步骤时，经常需要自定义一些内容，然后传递后面的步骤使用。
-这里详细介绍利用作业平台插件配合标准运维的标准运维的标记符号实现此功能
+# 理解标记符号"<SOPS_VAR>key:value</SOPS_VAR>"
 
-### 1. 使用作业平台(JOB)的插件“快速执行脚本”或“执行作业”
+使用场景就是在脚本里使用标准运维的标记符号"<SOPS_VAR></SOPS_VAR>"，将要传递的数据以key/value对的形式包含在标记符号中，并使用echo/print等打印到作业平台的日志中，shell和Python都可以。
 
-在脚本里使用标准运维的标记符号 ` <SOPS_VAR> </SOPS_VAR>` ，将要传递的数据以 key : value 的形式包含在标记符号中，并使用 echo 、 print 等打印到作业平台(JOB)的日志中
-
-下面示例中，利用 BASH 的 echo 打印了`<SOPS_VAR>message:$message</SOPS_VAR>` ，其中 key 为 message，value 为 “hello world”
-
-```bash
-message="hello world"
-echo "<SOPS_VAR>message:$message</SOPS_VAR>"
+shell：
+```
+echo "<SOPS_VAR>key:val</SOPS_VAR>"
 ```
 
-标准运维执行到该节点时，会匹配标记符号，提取作业平台(JOB)日志，并存储到标准运维的输出参数 ${log_outputs} 中
+Python：
+```
+print("<SOPS_VAR>key:val</SOPS_VAR>")
+```
 
-![脚本打印变量](../assets/image-20220920211357646.png)
+例：
+```
+message="hello blueking"
+echo "<SOPS_VAR>message:$message</SOPS_VAR>"
+key "message"对应的value是"hello blueking"
+```
 
-### 2. 将输出参数“JOB 全局变量”设置为变量，后续步骤才能使用
+# 实操演示
 
-![设置输出为变量](../assets/image-20220920211053691-1663754936964.png)
+例：标准运维流程有两个步骤，第一个步骤使用作业平台插件执行脚本输出的"hello blueking"内容想要给第二个步骤使用
 
-### 3. 和访问 dict 类似，使用 $\{log_outputs[key]} 访问自定义的数据
+## 1、步骤一使用脚本执行模拟输出"hello blueking"
+![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112437/20044/20230506112437/--ef78dd3a4f939ca6d2779e8b96ec4adb.png)
 
-![引用](../assets/image-20220920212428667.png)
+```
+message="hello blueking"
+echo "<SOPS_VAR>message:$message</SOPS_VAR>
+```
+（示例代码）
 
-### 4. 一点限制和技巧
+输出日志中提取的全局变量，日志中形如 <SOPS_VAR>key:val</SOPS_VAR> 的变量会被提取到 log_outputs['key'] 中，值为 val。
 
-```markdown
-标记符号为：<SOPS_VAR>key:value</SOPS_VAR>
+## 2、步骤二通过变量的方式引用第一步的输出
+![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112516/20044/20230506112516/--fff18f4f03b77e07c3348515ab80a298.png)
+```
+echo ${log_outputs["message"]}
+```
+（示例代码）
 
-value 目前暂不支持换行（\n）。如 value 需存储多行数据，可以使用其它符合代替，在后续变量引用中，再使用 python 的替换语法使用。
+## 3、执行效果
+![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112538/20044/20230506112538/--03ed4d0c6956b24b4d18fc1c2f957ee2.png)
 
-例 1：
-输出为： <SOPS_VAR>message:123|456|789</SOPS_VAR>
+（步骤一)
 
-引用时用 \n 替换 | ：
+![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112552/20044/20230506112552/--5fcf6b13ba18e81cc0cddedd854410d4.png)
+
+（步骤二)
+
+也可以点击作业平台执行任务详情链接查看执行结果
+![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112602/20044/20230506112602/--260010e6630f55dbaa3a6c00e1d4687b.png)
+
+不同步骤传参的实现核心要素就是标准运维特有的标记符号“<SOPS_VAR>key:val</SOPS_VAR>”，以及要把log_outputs勾选为变量。
+
+## 扩展高级使用
+
+- 多个步骤需要跨步骤传参
+
+如果多个步骤都需要使用到步骤传参（如步骤一的输出要给步骤二作为输入，步骤二的输出又需要给步骤三作为输入），那么输出参数里的KEY可以命名为log_outputs_xxx，避免重名。
+
+如：
+
+![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112626/20044/20230506112626/--03f94ac7acfdc5c191746bb1e04746fa.png)
+
+![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112631/20044/20230506112631/--77cdf3c8765fd7c078c5c4e66fe0c9dd.png)
+
+![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112636/20044/20230506112636/--542100799e58185d687d4d2da62c94c2.png)
+
+![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112641/20044/20230506112641/--cfdbe08d91088ddac6c7df95ca16e815.png)
+
+- 一个步骤有多个变量需要被其他步骤引用
+
+多个变量，只要key不同，只需要使用<SOPS_VAR>key:val</SOPS_VAR>的语法，就可以定义多个。
+
+如：
+```
+echo "<SOPS_VAR>message1:123</SOPS_VAR>"
+echo "<SOPS_VAR>message2:456</SOPS_VAR>"
+那么使用
+${log_outputs['message1']}获取到123
+${log_outputs['message2']}获取到456
+```
+
+- 使用Python语法处理value，比如指定换行分隔符
+
+```
+举例1：
+原始变量为： <SOPS_VAR>message:123|456|789</SOPS_VAR>
+
+引用时用换行替换竖线：
 ${'\n'.join(log_outputs_xxxx['message'].split('|'))}
 
 变量执行时，值为：
-
 123
-
 456
-
 789
 
-例 2：
-变量为：<SOPS_VAR>message:1.1.1.1@name1|2.2.2.2@name2|3.3.3.3@name3</SOPS_VAR>
+举例2：
+原始变量为：<SOPS_VAR>message:1.1.1.1@name1|2.2.2.2@name2|3.3.3.3@name3</SOPS_VAR>
 
 引用时，先用空格替换@，再用换行替换竖线：${'\n'.join(' '.join(log_outputs_xxxx['message'].split('@')).split('|'))}
 
 变量执行时，值为：
-
 1.1.1.1 name1
 2.2.2.2 name2
 3.3.3.3 name3
 ```
+
+  

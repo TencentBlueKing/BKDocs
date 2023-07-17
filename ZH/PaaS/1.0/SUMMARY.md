@@ -4,7 +4,7 @@
 * [产品公告](../ReleaseNotes/ReleaseNotes.md)
 * [产品简介](UserGuide/Overview/README.md)
 * [术语解释](UserGuide/Term/Term.md)
-* [产品架构](UserGuide/Architecture/Architecture.md)
+* [产品架构](UserGuide/ProductArchitecture/Architecture.md)
 * [快速入门]()
     * [使用蓝鲸的某个 SaaS](UserGuide/QuickStart/UsingSaaS.md)
     * [开发一个 SaaS](UserGuide/QuickStart/PaaS3DevelopAPP.md)

@@ -9,4 +9,4 @@
     * [创建你的第一条流水线](../../Devops/2.0/UserGuide/Quickstarts/Create-your-first-pipeline.md)
     * [关联你的第一个代码库](../../Devops/2.0/UserGuide/Quickstarts/Link-your-first-repo.md)
     * [为你的 Git 工程开启 CI](../../Devops/2.0/UserGuide/Quickstarts/Enable-ci.md)
-    * [更多信息](./moreinfo.md)
+* [更多信息](./moreinfo.md)

@@ -15,4 +15,4 @@
 
 ## 帮助文档
 
-[容器管理平台文档](https://bk.tencent.com/docs/document/6.0/144/6523)
+[容器管理平台文档](../../../../../BCS/6.0/产品白皮书/Introduction/README.md)

@@ -51,7 +51,7 @@ demo 体验业务下有安装 agent 的主机，预设了一些监控视图
 
 ![](./assets/2022-02-18-17-53-40.png)
 
-更多监控平台的功能探索，可参考[监控平台产品白皮书](https://bk.tencent.com/docs/markdown/%E7%9B%91%E6%8E%A7%E5%B9%B3%E5%8F%B0/%E4%BA%A7%E5%93%81%E7%99%BD%E7%9A%AE%E4%B9%A6/intro/README.md)
+更多监控平台的功能探索，可参考[监控平台产品白皮书](../../Monitor/3.8/UserGuide/Overview/README.md)
 
 ---
 

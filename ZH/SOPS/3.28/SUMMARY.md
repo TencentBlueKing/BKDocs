@@ -23,7 +23,7 @@
     * [管理员入口](UserGuide/ProductFeatures/administrator_portal.md)
 * [场景案例]()
     * [快速编辑流程的一些技巧](UserGuide/FAQ/flow-tips.md)
-    * [如何正确的使用分支表达式](UserGuide/FAQ/flow-tips.md)
+    * [如何正确的使用分支表达式](UserGuide/FAQ/condition-grammar.md)
     * [如何利用分支网关实现循环](UserGuide/FAQ/loop.md)
     * [如何实现在不同步骤间传递参数](UserGuide/FAQ/pass-variables.md)
 * [集成开发](../DevelopTools/sops.md)

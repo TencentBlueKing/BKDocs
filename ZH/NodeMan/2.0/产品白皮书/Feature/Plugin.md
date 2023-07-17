@@ -42,7 +42,7 @@
 
 您可以通过以下途径获取到插件包：
 
-1. 下载资源 > [采集器下载](https://bk.tencent.com/docs/markdown/软件资源/collector.md)
+1. 下载资源 > [采集器下载](../../../../downloads/7.0/Index.md)
 2. 通过插件开发框架自定义开发的插件
 
 **第二步：上传插件包**

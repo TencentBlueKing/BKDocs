@@ -12,21 +12,20 @@
 
 ## 线上环境产品简介
 
-| 产品 | 功能简述 | 是否上线 |
-| ---- | -------- | -------- |
-|[用户管理](https://bk.tencent.com/docs/markdown/用户管理/产品白皮书/产品简介/README.md)        |蓝鲸提供的企业组织架构、多用户目录等集中的用户管理解决方案|已上线|
-|[权限中心](https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/产品简介/README.md)        |蓝鲸体系集中权限管理服务，细化到资源实例级别的访问权限控制|已上线|
-|[CMDB（配置平台）](https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品简介/Overview.md)        |提供主机、进程、模型等各种运维场景的配置数据服务管理，是蓝鲸体系的基石|已上线|
-|[节点管理](https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Overview.md)        |批量快速地部署蓝鲸 Agent，覆盖 Linux、Windows 操作系统|已上线|
-|[作业平台](https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Introduction/What-is-Job.md)        |提供批量脚本执行、文件分发、文件拉取、定时任务等基础操作的原子平台|已上线|
-|[标准运维](https://bk.tencent.com/docs/markdown/标准运维/产品白皮书/产品简介/README.md)        |可视化的图形界面流程编排、跨系统调度利器|已上线|
-|[流程服务](https://bk.tencent.com/docs/markdown/流程服务/产品白皮书/产品简介/README.md)        |灵活自定义设计流程模块，覆盖 IT 服务中的不同管理流程或应用场景|已上线|
-|[监控平台](https://bk.tencent.com/docs/markdown/监控平台/产品白皮书/intro/README.md)        |提供丰富的数据采集能力、大规模的数据处理能力，致力于满足不同场景的监控需求|已上线|
-|[日志平台](https://bk.tencent.com/docs/markdown/日志平台/产品白皮书/intro/README.md)        |基于业界主流的全文检索引擎，提供多种场景化的采集、查询功能|已上线|
-|[管控平台](https://bk.tencent.com/docs/markdown/管控平台/产品白皮书/产品简介/README.md)        |蓝鲸体系的底层管控系统，是蓝鲸所有其他服务的基础（GseAgent）|已上线|
-|[故障自愈](https://bk.tencent.com/docs/markdown/故障自愈/产品白皮书/Intro/README.md)        |实时发现告警，预诊断分析，自动恢复故障，并打通周边系统实现整个流程的闭环|已上线|
-|[64.BK-CI（蓝盾）](https://bk.tencent.com/docs/markdown/持续集成平台/产品白皮书/产品简介/README.md)        |免费并开源的 CI 服务，助力自动化构建-测试-发布工作流，持续、快速、高质量地交付产品|已上线|
-|[BCS（容器管理平台）](https://bk.tencent.com/docs/markdown/容器管理平台/产品白皮书/Introduction/README.md)        |高度可扩展、灵活易用的容器管理服务平台，支持社区原生 Kubernetes 编排引擎|已上线|
+|产品|功能简述|
+|---|------------------------------------------------------------|
+|[用户管理](../../UserManage/2.5/UserGuide/Introduce/README.md)|蓝鲸提供的企业组织架构、多用户目录等集中的用户管理解决方案|
+|[权限中心](../../IAM/1.12/UserGuide/Introduce/README.md)|蓝鲸体系集中权限管理服务，细化到资源实例级别的访问权限控制|
+|[配置平台](../../CMDB/3.10/UserGuide/Introduce/Overview.md)|提供主机、进程、模型等各种运维场景的配置数据服务管理，是蓝鲸体系的基石|
+|[节点管理](../../NodeMan/2.2/UserGuide/Introduce/Overview.md)|批量快速地部署蓝鲸 Agent，覆盖 Linux、Windows 操作系统|
+|[作业平台](../../JOB/3.7/UserGuide/Introduction/What-is-Job.md)|提供批量脚本执行、文件分发、文件拉取、定时任务等基础操作的原子平台|
+|[标准运维](../../SOPS/3.28/UserGuide/Overview/README.md)|可视化的图形界面流程编排、跨系统调度利器|
+|[监控平台](../../Monitor/3.8/UserGuide/Overview/README.md)|提供丰富的数据采集能力、大规模的数据处理能力，致力于满足不同场景的监控需求|
+|[日志平台](../../LogSearch/4.6/UserGuide/Intro/README.md)|基于业界主流的全文检索引擎，提供多种场景化的采集、查询功能|
+|[流程服务](../../ITSM/2.6/UserGuide/Introduce/README.md)|灵活自定义设计流程模块，覆盖 IT 服务中的不同管理流程或应用场景|
+|[管控平台](../../GSE/2.0/UserGuide/Introduce.md)|蓝鲸体系的底层管控系统，是蓝鲸所有其他服务的基础（GseAgent）|
+|[K-CI（蓝盾）](../../Devops/2.0/UserGuide/intro/README.md)|免费并开源的 CI 服务，助力自动化构建-测试-发布工作流，持续、快速、高质量地交付产品|
+|[BCS（容器管理平台）](../../BCS/1.28/UserGuide/Introduction/README.md)|可扩展、灵活易用的容器管理服务平台，支持社区原生 Kubernetes 编排引擎|
 |更多敬请期待|[更新公告](https://docs.qq.com/doc/DSWViVEZvdW9LVE15)||
 
 ## 线上环境可以体验哪些

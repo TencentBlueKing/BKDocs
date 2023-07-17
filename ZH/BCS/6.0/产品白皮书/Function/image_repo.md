@@ -65,7 +65,7 @@ docker pull <registry_url>/<project_code>/nginx:1.18.0
 
 - 获取 Harbor 管理员账号
 
-在[常用环境变量](https://bk.tencent.com/docs/markdown/部署指南/产品白皮书/增强包维护/BCS/Env_variable.md) 中可以找到 Harbor 的用户名`HARBOR_SERVER_ADMIN_USER`以及密码`HARBOR_SERVER_ADMIN_PASS`。
+在[常用环境变量](../../../../DeploymentGuides/6.0/产品白皮书/增强包维护/BCS/Env_variable.md) 中可以找到 Harbor 的用户名`HARBOR_SERVER_ADMIN_USER`以及密码`HARBOR_SERVER_ADMIN_PASS`。
 
 ### 访问 Harbor Web 端
 

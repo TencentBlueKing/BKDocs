@@ -58,7 +58,7 @@
 
 ### Kubernetes 集群准备
 
-请按照蓝鲸官网文档中心的部署前置工作，准备 Kubernetes 集群环境 [https://bk.tencent.com/docs/document/7.0/172/14033](https://bk.tencent.com/docs/document/7.0/172/14033)。如已有集群，请忽略该步骤。
+请按照蓝鲸官网文档中心的部署前置工作，准备 [Kubernetes 集群环境](../7.0/prepare.md)。如已有集群，请忽略该步骤。
 
 ### 准备部署升级文件
 

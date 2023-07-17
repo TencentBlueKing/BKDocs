@@ -20,7 +20,7 @@
 
 ### 获取 framework_weixin_package.tar.gz
 
-* 蓝鲸文档中心 > 下载资源 > [工具下载](https://bk.tencent.com/docs/markdown/软件资源/README.md)
+* 蓝鲸文档中心 > 下载资源 > [工具下载](../../../downloads/7.0/Index.md)
 
 > framework_weixin_package.tar.gz 解压
 

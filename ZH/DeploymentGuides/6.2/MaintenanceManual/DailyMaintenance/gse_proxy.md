@@ -17,7 +17,7 @@
 
 1. 确认接入点配置、访问策略
     - 接入点请在节点管理页面配置: http://paas.bktencent.com/o/bk_nodeman/#/global-config/gse-config
-    - 访问策略参考: https://bk.tencent.com/docs/document/5.1/21/686
+    - 访问策略参考: [开通端口](../../../../NodeMan/2.0/产品白皮书/FAQ/Proxy问题/安装Proxy需要开通哪些端口.md)
 2. 创建云区域
     - 云区域请在节点管理页面创建：http://paas.bktencent.com/o/bk_nodeman/#/cloud-manager
 3. 导入主机至 cmdb
@@ -26,8 +26,8 @@
     - 导入方案：从节点管理中使用安装 proxy，导入 cmdb 后终止任务的方式达到导入的效果
     - 不导入的影响：无法安装 pagent、管理插件
 4. 获取对应的业务 ID、云区域 ID
-5. 启用 proxy 
-    - 可参考 https://bk.tencent.com/docs/document/6.0/127/7917
+5. 启用 proxy
+    - 可参考 [开启 Proxy](../DailyMaintenance/open_proxy.md)
 
 ## 安装
 

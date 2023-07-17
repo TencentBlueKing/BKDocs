@@ -4,4 +4,4 @@
 
 新版蓝鲸配置平台已正式对外开源。
 
-GitHub 地址： [https://github.com/Tencent/bk-cmdb](https://github.com/Tencent/bk-cmdb)
+GitHub 地址： [https://github.com/TencentBlueKing/bk-cmdb](https://github.com/TencentBlueKing/bk-cmdb)

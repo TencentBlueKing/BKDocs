@@ -1,8 +1,8 @@
 # 基础套餐快速入门
 
-> 如还未部署蓝鲸【基础套餐】，请参考[基础套餐部署指引](https://bk.tencent.com/docs/markdown/部署指南/产品白皮书/基础包安装/多机部署/quick_install.md)
+> 如还未部署蓝鲸【基础套餐】，请参考[基础套餐部署指引](../../DeploymentGuides/7.1/install-bkce.md)
 
-## 一分钟感性认识7.0
+## 一分钟感性认识蓝鲸基础套餐
 
 - 登录界面
 
@@ -48,9 +48,9 @@
 
 > 蓝鲸部署完成之后只有一个系统默认内置的 admin 账号，也即管理员账号，拥有蓝鲸体系所有产品的权限。
 
-如果需要不同角色人员来使用蓝鲸体系产品，则到【用户管理】添加用户即可。详见：[用户管理产品白皮书：新增本地用户目录](https://bk.tencent.com/docs/markdown/用户管理/产品白皮书/快速入门/AddLocalDirectory.md)
+如果需要不同角色人员来使用蓝鲸体系产品，则到【用户管理】添加用户即可。详见：[用户管理产品白皮书：新增本地用户目录](../../UserManage/2.4/UserGuide/QuickStart/AddLocalDirectory.md)
 
-Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三方的组织架构以及鉴权体系，详情可以参考：[蓝鲸登录接入企业内部登录](https://bk.tencent.com/docs/markdown/开发指南/扩展开发/对接企业登录体系/login_with_usermgr.md)
+Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三方的组织架构以及鉴权体系，详情可以参考：[蓝鲸登录接入企业内部登录](../../UserManage/IntegrateGuide/Docking_enterprise_login_system/use_bk_login.md)
 
 ### 二、【配置平台】创建业务
 
@@ -72,31 +72,31 @@ Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三
 
 业务创建成功后在`业务`菜单中，可以看到下拉列表有了刚刚新增的业务，默认有一个`空闲机池`的 set 和三个模块，如下：
 
-![image-20220922151529993](img/业务 拓扑-image-20220922151529993.png)
+![image-20220922151529993](./img/业务 拓扑-image-20220922151529993.png)
 
 点击拓扑顶点的业务，新建集群
 
 ![image-20201105201737192](./img/新建集群.png)
 
-有两种方式创建集群，这里以直接创建为例（同下面创建模块），从集群模板创建详见：[集群模板](https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品功能/SetTemp.md)
+有两种方式创建集群，这里以直接创建为例（同下面创建模块），从集群模板创建详见：[集群模板](../../CMDB/3.10/UserGuide/Feature/SetTemp.md)
 
 ![image-20201105201829608](./img/直接创建集群.png)
 
 ![image-20201105202450791](./img/创建模块.png)
 
-从模板新建模块和服务分类的详细说明，可详见：[服务模板](https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品功能/ServiceTemp.md)  [服务分类](https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品功能/ServiceType.md)
+从模板新建模块和服务分类的详细说明，可详见：[服务模板](../../CMDB/3.10/UserGuide/Feature/ServiceTemp.md)  [服务分类](../../CMDB/3.10/UserGuide/Feature/ServiceType.md)
 
 至此，业务拓扑即创建完毕。
 
 ![image-20201105203423835](./img/集群模块.png)
 
-*Ps:业务拓扑默认三层，业务-->集群-->模块；如果实际应用场景不满足，可以新增自定义层级（最多支持 7 层），详见：[模型关系](https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品功能/ModelRelation.md)*
+*Ps:业务拓扑默认三层，业务-->集群-->模块；如果实际应用场景不满足，可以新增自定义层级（最多支持 7 层），详见：[模型关系](../../CMDB/3.10/UserGuide/Feature/ModelRelation.md)*
 
 #### 3、导入主机
 
-> 主机是配置平台管控最常见的资源，也是运维日常主要的管控对象；更多 CMDB 配置模型管理见：[模型管理](https://bk.tencent.com/docs/markdown/配置平台/产品白皮书/产品功能/Model.md)
+> 主机是配置平台管控最常见的资源，也是运维日常主要的管控对象；更多 CMDB 配置模型管理见：[模型管理](../../CMDB/3.10/UserGuide/Feature/Model.md)
 
-（1）方式一：手动导入，`资源`-->`主机`-->`导入主机`，批量从 Excel 导入（注意：批量导入只能导入直连区的主机，跨云区域的需要通过 Agent 安装导入，云区域说明详见：[基本概念：云区域](https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Terms.md)）
+（1）方式一：手动导入，`资源`-->`主机`-->`导入主机`，批量从 Excel 导入（注意：批量导入只能导入直连区的主机，跨云区域的需要通过 Agent 安装导入，云区域说明详见：[基本概念：云区域](../../NodeMan/2.2/UserGuide/Introduce/Terms.md)）
 
 ![image-20201105205112867](./img/导入主机excel.png)
 
@@ -112,7 +112,7 @@ Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三
 
 安装工具：**[节点管理](https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/Introduce/Overview.md)**（批量快速地部署蓝鲸 Agent，覆盖 Linux、Windows）
 
-以安装直连区域为例（非直连安装可详见：[安装蓝鲸 Agent（自定义云区域）](https://bk.tencent.com/docs/markdown/节点管理/产品白皮书/QuickStart/CustomCloudAreaInstallAgent.md)）
+以安装直连区域为例（非直连安装可详见：[安装蓝鲸 Agent（自定义云区域）](../../NodeMan/2.2/UserGuide/QuickStart/CustomCloudAreaInstallAgent.md)）
 
 打开【节点管理】，选择`Agent管理`菜单，点击安装 Agent-->普通安装
 
@@ -132,11 +132,11 @@ Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三
 
 ### 四、【作业平台】作业执行&文件分发
 
-> Agent 安装完之后，即可用[作业平台](https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Introduction/What-is-Job.md)进行批量脚本执行、文件分发、文件拉取、定时任务等基础运维操作
+> Agent 安装完之后，即可用[作业平台](../../JOB/3.6/UserGuide/Introduction/What-is-Job.md)进行批量脚本执行、文件分发、文件拉取、定时任务等基础运维操作
 
 #### 1、快速脚本执行
 
-打开[作业平台](https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Introduction/What-is-Job.md)，选择左边菜单栏的`脚本执行`
+打开[作业平台](../../JOB/3.6/UserGuide/Introduction/What-is-Job.md)，选择左边菜单栏的`脚本执行`
 
 ![image-20220922160746622](img/脚本执行=image-20220922160746622.png)
 
@@ -144,11 +144,11 @@ Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三
 
 #### 2、快速文件分发
 
-打开[作业平台](https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Introduction/What-is-Job.md)，选择左边菜单栏的`文件分发`
+打开[作业平台](../../JOB/3.6/UserGuide/Introduction/What-is-Job.md)，选择左边菜单栏的`文件分发`
 
 ![image-20220922161538917](img/文件分发-image-20220922161538917.png)
 
-至此，我们完成了作业平台的两大核心功能`脚本执行`和`文件分发`的操作；通常情况，我们往往是需要组合这两个操作原子，并进行编排，比如版本包分发到服务器之后，需要解压，然后需要修改配置并拉起进程，这种场景我们可以通过作业平台的`作业`功能来实现，可详见：[作业管理](https://bk.tencent.com/docs/markdown/作业平台/产品白皮书/Features/Jobs.md) 。
+至此，我们完成了作业平台的两大核心功能`脚本执行`和`文件分发`的操作；通常情况，我们往往是需要组合这两个操作原子，并进行编排，比如版本包分发到服务器之后，需要解压，然后需要修改配置并拉起进程，这种场景我们可以通过作业平台的`作业`功能来实现，可详见：[作业管理](../../JOB/3.6/UserGuide/Features/Jobs.md) 。
 
 ### 五、【标准运维】任务流程编排
 
@@ -188,7 +188,7 @@ Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三
 
 ![image-20220922162910922](img/点击节点重选-image-20220922162910922.png)
 
-（4）点击`发动通知`节点，页面右侧弹出`节点配置`页面，在其中配置通知方式、通知人员、主题、内容等信息。填写好参数后，点击“保存”按钮。**该步骤将蓝鲸 PaaS 平台的`发送通知`的功能，编排入本流程中。**（如果需要真实的发送通知，详见：[如何配置通知渠道，如邮件、微信、短信等？](https://bk.tencent.com/docs/markdown/PaaS平台/产品白皮书/场景案例/noticeWay.md)）
+（4）点击`发动通知`节点，页面右侧弹出`节点配置`页面，在其中配置通知方式、通知人员、主题、内容等信息。填写好参数后，点击“保存”按钮。**该步骤将蓝鲸 PaaS 平台的`发送通知`的功能，编排入本流程中。**（如果需要真实的发送通知，详见：[如何配置通知渠道，如邮件、微信、短信等？](../../PaaS/1.0/UserGuide/UserCase/noticeWay.md)）
 
 ![image-20220922163348968](img/消息通知-image-20220922163348968.png)
 
@@ -210,7 +210,7 @@ Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三
 
 （3）第 3 步：确认节点、参数，无误后，点击右上角的`执行`按钮，基于该流程的一条新任务实例开始执行。
 
-![image-20220922164403923](D:/蓝鲸运营2022/社区文档/BKDocs/ZH/7.0/快速入门/img/点击执行-image-20220922164403923.png)
+![image-20220922164403923](./img/点击执行-image-20220922164403923.png)
 
 （4）在执行页面，可以直观看到每个节点的执行状态。
 
@@ -224,7 +224,7 @@ Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三
 
 ![image-20220922170150218](img/执行成功-image-20220922170150218.png)
 
-这样我们就完成了使用标准运维编排出了多系统调度的自动化流程，并且成功的一键式触发了执行。抛砖引玉，我们可以根据自己的业务场景来编排不同的任务流程。更多标准运维场景使用见：[标准运维产品白皮书](https://bk.tencent.com/docs/markdown/标准运维/产品白皮书/产品简介/README.md)。
+这样我们就完成了使用标准运维编排出了多系统调度的自动化流程，并且成功的一键式触发了执行。抛砖引玉，我们可以根据自己的业务场景来编排不同的任务流程。更多标准运维场景使用见：[标准运维产品白皮书](../../SOPS/3.25/UserGuide/Overview/README.md)。
 
 ### 六、【权限中心】权限管理
 
@@ -236,7 +236,7 @@ Ps：如果要在蓝鲸自带的用户鉴权体系上扩展，可以接入第三
 
 蓝鲸部署后，admin 是默认的超级管理员，可以配置权限。
 
-admin 进入到【权限中心】配置**权限模板**及创建**用户组**，比如步骤二里创建的业务`测试专用`，建一个[测试专用业务运维用户组]，该用户组包含了设定的各个系统相关的运维权限，创建好对应的用户组，就可以给用户授权，详细操作见：[权限中心产品白皮书：创建权限模板](https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/快速入门/CreatePremissionTemplates.md)、[创建用户组](https://bk.tencent.com/docs/markdown/权限中心/产品白皮书/快速入门/CreateGroups.md)。
+admin 进入到【权限中心】配置**权限模板**及创建**用户组**，比如步骤二里创建的业务`测试专用`，建一个[测试专用业务运维用户组]，该用户组包含了设定的各个系统相关的运维权限，创建好对应的用户组，就可以给用户授权，详细操作见：[权限中心产品白皮书：创建权限模板](../../IAM/1.8/UserGuide/QuickStart/CreatePremissionTemplates.md)、[创建用户组](../../IAM/1.8/UserGuide/QuickStart/CreateGroups.md)。
 
 #### 2、admin 可以主动授权或者普通用户申请权限
 
