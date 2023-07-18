@@ -183,7 +183,7 @@ echo paas cmdb job appo appt bknodeman bkmonitorv3 bkssm bkiam usermgr bklog gse
 
 ### 备份 MySQL
 
-- 登陆至 MySQL 机器，创建备份目录
+- 登录至 MySQL 机器，创建备份目录
 
     ```bash
     source /data/install/utils.fc
@@ -219,7 +219,7 @@ echo paas cmdb job appo appt bknodeman bkmonitorv3 bkssm bkiam usermgr bklog gse
 
 ### 备份 MongoDB
 
-- 登陆至 MongoDB 机器
+- 登录至 MongoDB 机器
 
     ```bash
     source /data/install/utils.fc

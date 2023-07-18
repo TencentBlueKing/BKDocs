@@ -78,7 +78,7 @@
 
 ![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20221222162332/20044/20221222162332/--078d835dcfda02e84fed2fd3b2133c60.png)
 
-登陆到proxy机器查看proxy相关进程
+登录到proxy机器查看proxy相关进程
 
 ![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20221222162342/20044/20221222162342/--3cb109d1dd582e9e1de7c8cdaccfc0ef.png)
 

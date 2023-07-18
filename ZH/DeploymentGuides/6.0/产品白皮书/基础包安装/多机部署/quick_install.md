@@ -219,7 +219,7 @@ C:\Windows\System32\drivers\etc\hosts
 grep -E "nginx|nodeman" /data/install/install.config
 ```
 
-> 注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -> “安全”，然后选择你登陆的用户名，最后点击编辑，勾选“写入”即可。
+> 注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -> “安全”，然后选择你登录的用户名，最后点击编辑，勾选“写入”即可。
 
 2. Linux / Mac OS 配置
 

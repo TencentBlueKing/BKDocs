@@ -103,7 +103,7 @@ GET
 | alias                 | string    | 账号别名 |
 | category              | int       | 账号用途（1：系统账号，2：DB账号） |
 | type                  | int       | 账号类型（1：Linux，2：Windows，9：MySQL，10：Oracle，11：DB2）|
-| db_system_account_id  | long      | 账号用途为DB账号时该字段生效，表示DB帐号对应的系统账号ID |
+| db_system_account_id  | long      | 账号用途为DB账号时该字段生效，表示DB账号对应的系统账号ID |
 | os                    | string    | 账号用途为系统账号时该字段生效，账号对应的OS |
 | creator               | string    | 创建人 |
 | create_time           | long      | 创建时间Unix时间戳（ms） |

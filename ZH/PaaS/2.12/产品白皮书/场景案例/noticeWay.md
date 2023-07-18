@@ -31,9 +31,9 @@
 
 - smtp_port: SMTP 服务器端口 (注意区分企业邮箱还是个人邮箱)
 
-- smtp_user: SMTP 服务器帐号 (mail_sender 相同)
+- smtp_user: SMTP 服务器账号 (mail_sender 相同)
 
-- smtp_pwd:  SMTP 服务器帐号密码 (一般为授权码)
+- smtp_pwd:  SMTP 服务器账号密码 (一般为授权码)
 
 - smtp_usessl: (默认为 1)
 

@@ -8,7 +8,7 @@
 
 - **入口：[https://ce.bktencent.com](https://ce.bktencent.com)**
 
-如还未申请体验账号，可以根据[【蓝鲸线上体验交流专区】](https://bk.tencent.com/s-mart/community/question/5612)的指引申请，也可以直接在登陆页面点击体验账号申请。
+如还未申请体验账号，可以根据[【蓝鲸线上体验交流专区】](https://bk.tencent.com/s-mart/community/question/5612)的指引申请，也可以直接在登录页面点击体验账号申请。
 
 ## 线上环境产品简介
 

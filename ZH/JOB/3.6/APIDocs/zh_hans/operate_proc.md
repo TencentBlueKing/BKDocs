@@ -22,7 +22,7 @@
 | setup_path    |  string    | 是     | 进程路径，例如/usr/local/gse/gseagent/plugins/unifyTlogc/sbin |
 | proc_name     |  string    | 是     | 进程名称，例如bk_gse_unifyTlogc |
 | pid_path      |  string    | 是     | 进程的pid文件所在路径, 例如/usr/local/gse/gseagent/plugins/unifyTlogc/log/bk_gse_unifyTlogc.pid |
-| account       |  string    | 否     | 系统帐号，默认不传为root |
+| account       |  string    | 否     | 系统账号，默认不传为root |
 | cmd_shell_ext |  string    | 否     | 进程操作控制脚本的扩展名: sh:默认值shell适于Linux或cygwin,bat:windows的dos脚本,ps1:windows的Powershell脚本;注意：这个是针对ip_list参数下所有IP统一配置，所以确保接口传递的ip_list参数下所有IP都能支持指定的脚本。 |
 | cpu_lmt       |  int       | 否     | 进程使用cpu限制，超过限制agent会根据配置的cmd_shell_ext调用相应类型的stopCmd停止进程。 |
 | mem_lmt       |  int       | 否     | 进程使用mem限制，超过限制agent会根据配置的cmd_shell_ext调用相应类型的stopCmd停止进程。 |

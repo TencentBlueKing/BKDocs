@@ -6,7 +6,7 @@
 
 ## 部署前
 
-- 登陆节点管理机器，将 nodeman 模块所在机器的外网 IP 写入指定文件。
+- 登录节点管理机器，将 nodeman 模块所在机器的外网 IP 写入指定文件。
 
 ```bash
 # 中控机执行
@@ -36,7 +36,7 @@ sed -i '/filesvrthriftip/s/__LAN_IP__/0.0.0.0/' /data/src/gse/support-files/temp
 
 ## 部署后
 
-- 登陆节点管理机器，将 nodeman 模块所在机器的外网 IP 写入指定文件。
+- 登录节点管理机器，将 nodeman 模块所在机器的外网 IP 写入指定文件。
 
 ```bash
 # 中控机执行

@@ -100,7 +100,7 @@
 - install/status.sh
 - install/check.sh
 
-分别使用 `./bkcli status <模块>` 和 `./bkcli check <模块>` 来调用，根据传入的模块名，ssh 登陆到模块所在的 IP，然后在该 IP 上，运行 bks.sh 和 check_consul_svc_health.sh 的脚本。
+分别使用 `./bkcli status <模块>` 和 `./bkcli check <模块>` 来调用，根据传入的模块名，ssh 登录到模块所在的 IP，然后在该 IP 上，运行 bks.sh 和 check_consul_svc_health.sh 的脚本。
 
 ### 启动失败定位
 

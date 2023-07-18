@@ -49,7 +49,7 @@ bkssm 的安装和 bkiam 的完全一样，不再赘述。
 PaaS 后台由五个 Python 工程组成（paas、appengine、esb、login、apigw）按次顺序，依次部署启动。
 
 PaaS 的环境变量配置中（./bin/04-final/paas.env），需要格外注意的是域名和 URL 相关的，请仔细确认是否符合预期。
-BK_DOMAIN 变量的设置也影响到 PaaS 用户登陆后 cookies 生效的域。
+BK_DOMAIN 变量的设置也影响到 PaaS 用户登录后 cookies 生效的域。
 
 ```bash
 ./bkcli sync paas

@@ -182,9 +182,9 @@ def your_view_func(request):
 |  ------ |  ----  |  -----------  |  ----------  |  --------  |
 | ParamValidationError | 参数验证失败 | 400 | 40000 | 期待为整形的参数，用户提供了一个字符参数 |
 | ParamRequired | 请求参数缺失 | 400 | 40001 | 期待的参数找不到 |
-| RioVerifyError | 登陆请求经智能网关检测失败 | 401 | 40101 | 用户登录验证 |
-| BkJwtVerifyError | 登陆请求经 JWT 检测失败 | 401 | 40102 | 用户登录验证 |
-| AccessForbidden | 登陆失败 | 403 | 40301 | 用户身份验证失败 |
+| RioVerifyError | 登录请求经智能网关检测失败 | 401 | 40101 | 用户登录验证 |
+| BkJwtVerifyError | 登录请求经 JWT 检测失败 | 401 | 40102 | 用户登录验证 |
+| AccessForbidden | 登录失败 | 403 | 40301 | 用户身份验证失败 |
 | RequestForbidden | 请求拒绝 | 403 | 40320 | 用户企图操作没有权限的任务 |
 | ResourceLock | 请求资源被锁定 | 403 | 40330 | 用户企图操作一个已经锁定的任务 |
 | ResourceNotFound | 找不到请求的资源 | 404 | 40400 | 找不到用户请求的某个指定 ID 的 model |

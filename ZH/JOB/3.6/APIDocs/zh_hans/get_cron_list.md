@@ -16,10 +16,10 @@
 | name                   |  string    | 否     | 定时作业名称 |
 | id                     |  long      | 否     | 定时任务 ID，如果存在则忽略其他筛选条件，只查询这个指定的作业信息 |
 | status                 |  int       | 否     | 定时作业状态：1.已启动、2.已暂停 |
-| creator                |  string    | 否     | 定时作业创建人帐号 |
+| creator                |  string    | 否     | 定时作业创建人账号 |
 | create_time_start      |  long      | 否     | 创建起始时间，Unix 时间戳(s) |
 | create_time_end        |  long      | 否     | 创建结束时间，Unix 时间戳(s) |
-| last_modify_user       |  string    | 否     | 作业修改人帐号 |
+| last_modify_user       |  string    | 否     | 作业修改人账号 |
 | last_modify_time_start |  long      | 否     | 最后修改起始时间，Unix 时间戳(s) |
 | last_modify_time_end   |  long      | 否     | 最后修改结束时间，Unix 时间戳(s) |
 | start                  |  int       | 否     | 默认 0 表示从第 1 条记录开始返回 |
@@ -97,7 +97,7 @@
 | name             | string    | 定时作业名称 |
 | status           | int       | 定时作业状态：1.已启动、2.已暂停 |
 | expression       | string    | 定时任务crontab的定时规则，新建时必填，修改时选填。各字段含义为：分 时 日 月 周，如: 0/5 * * * ? 表示每5分钟执行一次 |
-| creator          | string    | 作业创建人帐号 |
+| creator          | string    | 作业创建人账号 |
 | create_time      | long      | 创建时间，Unix 时间戳(s) |
-| last_modify_user | string    | 作业修改人帐号 |
+| last_modify_user | string    | 作业修改人账号 |
 | last_modify_time | long      | 最后修改时间，Unix 时间戳(s) |

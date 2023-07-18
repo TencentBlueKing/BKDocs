@@ -11,7 +11,7 @@
 ![1589787054331](../media/1589787054331.png)
 
 全文检索的开启方式：
-登陆至 CMDB 机器
+登录至 CMDB 机器
 ```bash
 source /data/install/load_env.sh
 ssh $BK_CMDB_IP

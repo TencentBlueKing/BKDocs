@@ -36,7 +36,7 @@
 - 本升级方案不负责迁移 5.1 中的监控数据，包括开源组件中 influxdb 和 es 的数据，监控数据将会丢失，请知悉。
 - 本次升级方案为停服更新，包含多个开源组件版本、官方组件版本的升级，升级时间较长，请避开业务繁忙时期进行升级。
 - 本次升级相关产品有新增进程等，请在升级前先对原主机资源(内存、CPU 等)进行评估是否足够，可参考官网给出的 [机器配置](https://bk.tencent.com/download/) 进行评估。
-- 本升级方案仅适用于未做过任何改造的用户，若有定制化调整（如接入企业登陆，新增 API 以及接入其他企业内部系统），或部分产品为开源产品不适用本升级指引，需自行维护特殊化部分功能。
+- 本升级方案仅适用于未做过任何改造的用户，若有定制化调整（如接入企业登录，新增 API 以及接入其他企业内部系统），或部分产品为开源产品不适用本升级指引，需自行维护特殊化部分功能。
 
 ## 重点提前知
 
@@ -120,7 +120,7 @@ echo fta bkdata appo appt gse job cmdb paas redis nginx license kafka es beansta
 **备份前，请确认使用到 MySQL 的相关服务已停止，避免出现数据不一致的问题。**
 该备份方式仅供参考，可自行选择备份方式。
 
-- 登陆至 MySQL 机器，创建备份目录
+- 登录至 MySQL 机器，创建备份目录
 
 ```bash
 source /data/install/utils.fc
@@ -179,7 +179,7 @@ rcmd "root@$MYSQL_IP" "ps -ef | grep mysql"
 
 该备份方式仅供参考，可自行选择备份方式。
 
-- 登陆至 MongoDB 机器，创建备份目录
+- 登录至 MongoDB 机器，创建备份目录
 
 ```bash
 source /data/install/utils.fc
@@ -476,7 +476,7 @@ source /data/install/utils.fc
 > 验证：执行完下述命令后，打开用户管理 -> 组织架构 -> 默认目录 -> 总公司。检查原 5.1 上的用户是否存在。
 
 ```bash
-# 登陆 usermgr 服务器，执行脚本
+# 登录 usermgr 服务器，执行脚本
 source /data/install/utils.fc
 ssh $BK_USERMGR_IP
 
@@ -585,7 +585,7 @@ mysql --login-path=mysql-default -e "select * from bk_iam.authorization_authapia
 	./job-migration-ce
 	```
 
-#### JOB 帐号迁移
+#### JOB 账号迁移
 
 下载迁移工具：job-account-perm-migration_v0.0.0-next_Linux_x86_64.tar.gz
 
@@ -723,7 +723,7 @@ python upgrade.py -a $NODEMAN_APP_CODE  -s $NODEMAN_APP_SECRET -t $BK_MYSQL_IP0 
 - 迁移 SaaS 数据：
 
 ```bash
-# 登陆至 APPO 机器
+# 登录至 APPO 机器
 source /data/install/utils.fc
 ssh $BK_APPO_IP
 
@@ -852,7 +852,7 @@ cd /data/app/code && python manage.py task_model_migrate
 > 依赖 IAM V3 后台服务、IAM V3 SaaS、用户管理 和 PaaS（ESB）、必须保证需要迁移权限的系统，对应权限模型已注册
 
 ```bash
-# 登陆至 APPO 机器
+# 登录至 APPO 机器
 source /data/install/utils.fc
 ssh $BK_APPO_IP
 
@@ -915,11 +915,11 @@ bash ./edition/mysqldump_bk_sops_data.sh -d bk_sops -p $BK_MYSQL_ADMIN_PASSWORD 
 **配置平台空闲机目录 ID 查询方式：**
 
 ```bash
-# 登陆至 mongodb 机器
+# 登录至 mongodb 机器
 source /data/install/utils.fc
 ssh $BK_MONGODB_IP
 
-# 登陆 MongoDB 查询
+# 登录 MongoDB 查询
 source /data/install/utils.fc
 mongo -u $BK_MONGODB_ADMIN_USER -p $BK_MONGODB_ADMIN_PASSWORD mongodb://$BK_MONGODB_IP:27017/admin?replicaSet=rs0
 

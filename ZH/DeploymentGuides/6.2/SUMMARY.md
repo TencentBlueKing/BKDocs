@@ -16,7 +16,7 @@
     * [基础套餐及监控日志套餐]()
         * [日常维护]()
             * [统一术语](MaintenanceManual/DailyMaintenance/maintain.md)
-            * [登陆指定服务器](MaintenanceManual/DailyMaintenance/login_srv.md)
+            * [登录指定服务器](MaintenanceManual/DailyMaintenance/login_srv.md)
             * [查看日志](MaintenanceManual/DailyMaintenance/logs.md)
             * [变更域名](MaintenanceManual/DailyMaintenance/change_domain.md)
             * [修改访问端口](MaintenanceManual/DailyMaintenance/change_http_port.md)

@@ -45,7 +45,7 @@ Windows(cygwin): cd /cygdrive/c/gse/plugins/bin/ && ./basereport -c ../etc/baser
 Windows(无cygwin) : cd C:/gse/plugins/bin/ && start.bat basereport
 
 # 检查数据上报连接，有正常 ESTABLISHED 的链接则 ok
-# 若存在 proxy，登陆 proxy 机器：检测 58625 端口同上
+# 若存在 proxy，登录 proxy 机器：检测 58625 端口同上
 Linux netstat -antp | grep 58625 | grep ESTABLISHED
 Windows netstat -ano | grep 58625
 Copy
@@ -54,7 +54,7 @@ Copy
 - **GSE 服务端排查**
 
 ```bash
-# 登陆 GSE 后台服务器，检测 gse_data 是否连上 9092 端口:
+# 登录 GSE 后台服务器，检测 gse_data 是否连上 9092 端口:
 Linux: lsof -nP -c dataWorker | grep :9092
 Windows: netstat -ano | grep 9092
 
@@ -65,7 +65,7 @@ Copy
 ```
 
 - 检查 kafka
-  - 登陆任意 KAFKA 机器：查看 KAFKA 最新数据，等待 1 分钟查看是否有数据。 如果有数据，在最后一行命令后加上`| grep $ip` $ip 用无快照数据的 ip 替换， 再次查看是否有数据
+  - 登录任意 KAFKA 机器：查看 KAFKA 最新数据，等待 1 分钟查看是否有数据。 如果有数据，在最后一行命令后加上`| grep $ip` $ip 用无快照数据的 ip 替换， 再次查看是否有数据
 
 ```bash
 # 登录到 kafka 所在的机器上

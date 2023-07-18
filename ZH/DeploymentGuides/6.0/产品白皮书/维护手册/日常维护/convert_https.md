@@ -82,7 +82,7 @@
 
    - 新增 https 相关内容 (后续版本修复)
    
-        登陆至 nginx 所在机器，在 /etc/consul-template/templates/lesscode.conf 文件 server 内新增如下内容：
+        登录至 nginx 所在机器，在 /etc/consul-template/templates/lesscode.conf 文件 server 内新增如下内容：
 
         ```bash
         {{ if key "bkcfg/global/bk_http_schema" | regexMatch "^https$" }}

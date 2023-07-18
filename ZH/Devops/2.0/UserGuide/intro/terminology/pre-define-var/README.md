@@ -39,7 +39,7 @@
 | BK\_CI\_PARENT\_PIPELINE\_ID | 获取启动当前流水线的父流水线 ID，仅当作为子流水线并被父流水线触发时才有效 |  |
 | BK\_CI\_PARENT\_BUILD\_ID | 获取启动当前流水线的父流水线的构建 ID，仅当作为子流水线并被父流水线触发时才有效 |  |
 | BK\_CI\_START\_PIPELINE\_USER\_ID | 获取启动当前流水线的父流水线启动人，仅当作为子流水线并被父流水线触发时才有效 |  |
-| BK\_CI\_START\_WEBHOOK\_USER\_ID | 获取启动当前流水线的触发 Webhook 帐号，仅当被 webhook 触发时才有效，该值将会展示在执行历史中，但实际执行人不是他，而是最后流水线修改人 |  |
+| BK\_CI\_START\_WEBHOOK\_USER\_ID | 获取启动当前流水线的触发 Webhook 账号，仅当被 webhook 触发时才有效，该值将会展示在执行历史中，但实际执行人不是他，而是最后流水线修改人 |  |
 | BK\_CI\_RETRY\_COUNT | 重试的次数，默认不存在， 当出现失败重试/rebuild 时， 该变量才会出现，并且+1 |  
 | BK_CI_ATOM_VERSION| 当前插件版本号，如 1.0.1 | |  
 | BK_CI_ATOM_CODE| 当前插件标识| |

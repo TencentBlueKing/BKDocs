@@ -217,7 +217,7 @@ cat << EOF >/data/install/install.config
 EOF
 ```
 
-## 自定义域名、安装目录以及登陆密码
+## 自定义域名、安装目录以及登录密码
 
 以下操作只需要在中控机上执行
 
@@ -233,7 +233,7 @@ EOF
     ./configure -d $BK_DOMAIN -p $INSTALL_PATH
     ```
 
-- 部署前自定义 admin  登陆密码
+- 部署前自定义 admin  登录密码
 
     **请使用实际的自定义密码替换 BlueKing，以及使用实际的部署脚本路径替换默认的脚本路径 `/data/install`。**
 

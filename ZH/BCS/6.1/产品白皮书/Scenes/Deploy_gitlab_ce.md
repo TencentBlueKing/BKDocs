@@ -128,9 +128,9 @@ ingress:
 
 ## 访问测试
 
-修改域名解析或 PC 上 hosts 文件（Mac 下路径为 /etc/hosts），将 Ingress 中配置的主机名指向到 LoadBalancer 中节点的外网 IP，然后打开浏览器访问，可以看到 GitLab 首次登陆密码设置界面。
+修改域名解析或 PC 上 hosts 文件（Mac 下路径为 /etc/hosts），将 Ingress 中配置的主机名指向到 LoadBalancer 中节点的外网 IP，然后打开浏览器访问，可以看到 GitLab 首次登录密码设置界面。
 
-管理员用户名为 root，登陆后界面如下：
+管理员用户名为 root，登录后界面如下：
 
 ![-w1678](../assets/15683762619925.jpg)
 

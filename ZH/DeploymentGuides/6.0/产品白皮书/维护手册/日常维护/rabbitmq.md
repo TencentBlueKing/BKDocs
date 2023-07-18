@@ -442,7 +442,7 @@ rabbitmqadmin 这个脚本通过 http api 和集群交互，可以做一些日�
 
 这时，先确认两台是否已经脱离集群模式，分别在两台机器上运行 `rabbitmqctl cluster_status` 会发现各自的 running nodes 都只是自身。
 
-这时，选择一台作为 master，另外一台则为 slave。譬如我们选 rbtnode1 为 master，那么现在登陆到 rbtnode2，运行以下命令：
+这时，选择一台作为 master，另外一台则为 slave。譬如我们选 rbtnode1 为 master，那么现在登录到 rbtnode2，运行以下命令：
 
 ```bash
 # 停app

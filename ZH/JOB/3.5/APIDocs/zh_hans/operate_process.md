@@ -39,7 +39,7 @@
 | start_check_begin_time |int| 否     | 进程启动后开始检查时间 |
 | start_check_end_time   |int| 否     | 进程启动后结束检查时间 |
 | op_timeout    |int         | 否     | 进程操作超时时间 |
-| account       |  string    | 否     | 系统帐号，默认不传为root |
+| account       |  string    | 否     | 系统账号，默认不传为root |
 | cpu_lmt       |  int       | 否     | 进程使用cpu限制，超过限制agent会根据配置的cmd_shell_ext调用相应类型的stopCmd停止进程。 |
 | mem_lmt       |  int       | 否     | 进程使用mem限制，超过限制agent会根据配置的cmd_shell_ext调用相应类型的stopCmd停止进程。 |
 | ip_list       |  array     | 是     | IP对象数组，见下面ip_list结构定义 |

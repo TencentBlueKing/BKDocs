@@ -76,7 +76,7 @@ nohup bash /data/src/backup/dbbak/dbbackup_mysql.sh /data/src/backup/dbbak/dbbac
 - 全备恢复（在 MySQL 主机上执行）
 
    ```bash
-   # 登陆至 MySQL 机器
+   # 登录至 MySQL 机器
    source /data/install/utils.fc
    ssh $BK_MYSQL_IP
 

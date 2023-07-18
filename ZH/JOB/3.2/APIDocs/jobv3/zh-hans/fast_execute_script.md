@@ -38,7 +38,7 @@ POST
 | task_name      |  string    | 否     | 自定义作业名称 |
 | script_param   |  string    | 否     | 脚本参数Base64。注意：如果有多个参数，比如&#34;param1 param2&#34;这种，需要对&#34;param1 param2&#34;整体进行base64编码，而不是对每个参数进行base64编码再拼接起来 |
 | timeout |  long       | 否     | 脚本执行超时时间，秒。默认7200，取值范围1-86400 |
-| account_alias |  string    | 否    | 执行帐号别名。与account_id必须存在一个。当同时存在account_alias和account_id时，account_id优先。 |
+| account_alias |  string    | 否    | 执行账号别名。与account_id必须存在一个。当同时存在account_alias和account_id时，account_id优先。 |
 | account_id | long | 否 | 执行账号ID。与account_alias必须存在一个。当同时存在account_alias和account_id时，account_id优先。 |
 | is_param_sensitive |  int   | 否     | 敏感参数将会在执行详情页面上隐藏, 0:不是（默认），1:是 |
 | script_language |  int       | 否     | 脚本语言：1 - shell, 2 - bat, 3 - perl, 4 - python, 5 - powershell。当使用script_content传入自定义脚本的时候，需要指定script_language |

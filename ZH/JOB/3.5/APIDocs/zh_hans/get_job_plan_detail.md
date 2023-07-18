@@ -205,9 +205,9 @@
 | bk_scope_id   | string | 资源范围ID, 与bk_scope_type对应, 表示业务ID或者业务集ID |
 | job_plan_id      | long       | 执行方案 ID |
 | name             | string    | 作业名称 |
-| creator          | string    | 作业创建人帐号 |
+| creator          | string    | 作业创建人账号 |
 | create_time      | long      | 创建时间，Unix 时间戳 |
-| last_modify_user | string    | 作业修改人帐号 |
+| last_modify_user | string    | 作业修改人账号 |
 | last_modify_time | long      | 最后修改时间，Unix 时间戳 |
 | step_list        | array     | 步骤对象 |
 | global_var_list  | array     | 全局变量信息 |
@@ -233,7 +233,7 @@
 | script_param       | string    | 脚本参数 |
 | script_timeout     | int       | 脚本超时时间，秒。默认3600，取值范围60-86400 |
 | is_param_sensitive | int       | 是否敏感参数, 0.不是（默认），1.是。|
-| account            | object    | 执行帐号名/别名 |
+| account            | object    | 执行账号名/别名 |
 
 ##### file_info
 | 字段                  | 类型   | 描述      |
@@ -292,7 +292,7 @@
 | 字段            | 类型     | 描述      |
 |-----------------|---------|-----------|
 | file_list       | array   | 源文件的绝对路径数组，支持多个文件 |
-| account         | object  | 执行帐号名/别名 |
+| account         | object  | 执行账号名/别名 |
 | server          | object  | 目标服务器 |
 | file_type        | int     | 文件源类型，1：服务器文件，2：本地文件，3：第三方文件源文件 |
 | file_source_id  | int     | 文件源类型为第三方文件源文件时的第三方文件源Id |
@@ -301,5 +301,5 @@
 | 字段            | 类型     | 描述      |
 |-----------------|---------|-----------|
 | path            | string  | 目标文件存放的路径 |
-| account         | object  | 执行帐号名/别名|
+| account         | object  | 执行账号名/别名|
 | server          | object  | 目标服务器 |

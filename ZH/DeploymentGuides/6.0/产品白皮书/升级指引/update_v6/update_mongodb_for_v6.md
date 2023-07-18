@@ -4,7 +4,7 @@
 
 ### 准备 mongo 相关 rpm 包
 
-- 登陆 mongodb 所在机器
+- 登录 mongodb 所在机器
 
 ```bash
 source /data/install/utils.fc

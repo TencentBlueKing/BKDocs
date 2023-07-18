@@ -10,7 +10,7 @@
     * [常见问题](DevBeginner/faq.md)
 * [开发基础]()
     * [开发框架简介](DevBasics/README.md)
-    * [应用内登陆弹窗适配方案](DevBasics/LOGIN_PLAIN_USAGE.md)
+    * [应用内登录弹窗适配方案](DevBasics/LOGIN_PLAIN_USAGE.md)
     * [开发框架使用说明](DevBasics/framework2.md)
     * [开发框架常见问题](DevBasics/faq.md)
     * [创建 SaaS 管理员方法](DevBasics/SAAS_ADMIN.md)

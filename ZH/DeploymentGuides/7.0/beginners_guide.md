@@ -155,7 +155,7 @@ BK-CMDB 由 15 个服务组成
 | pod | 描述 |
 | -- | -- |
 | bk-cmdb-synchronizeserver-* | 数据同步功能服务 |
-| bk-cmdb-webserver-* | Web 服务管理，用户登陆管理等 |
+| bk-cmdb-webserver-* | Web 服务管理，用户登录管理等 |
 | bk-cmdb-apiserver-* | API 网关；负责 API 路由，用户鉴权等 |
 | bk-cmdb-taskserver-* | 所有异步任务管理，包括执行、状态管理等 |
 | bk-cmdb-operationserver-* | 运营统计功能管理：数据统计，图表管理等 |

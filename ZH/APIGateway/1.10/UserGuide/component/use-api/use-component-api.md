@@ -16,7 +16,7 @@
 
 ![](../../assets/component/use-api/api-doc.png)
 
-## 申请蓝鲸应用帐号
+## 申请蓝鲸应用账号
 
 访问组件 API，需要一个蓝鲸应用账号，可使用已有的应用账号，或创建一个新的应用，获取`bk_app_code`和`bk_app_secret`，作为应用账号信息。
 

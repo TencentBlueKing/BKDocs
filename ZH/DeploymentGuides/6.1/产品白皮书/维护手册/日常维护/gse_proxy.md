@@ -35,7 +35,7 @@
     - proxy 仅可安装在 liunx 操作系统下
     - 此处准备了一台 centos7.6 机器
 1. 同步 proxy 安装包
-    - 登陆节点管理后台
+    - 登录节点管理后台
         ```bash
         source /data/install/utils.fc
         ssh $BK_NODEMAN_IP

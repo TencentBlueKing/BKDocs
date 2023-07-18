@@ -55,7 +55,7 @@ cd /data/src; grep . */*VERSION */*/VERSION
 
 该备份方式仅供参考，可自行选择备份方式。
 
-- 登陆至 MySQL 机器，创建备份目录
+- 登录至 MySQL 机器，创建备份目录
 
     ```bash
     source /data/install/utils.fc
@@ -98,7 +98,7 @@ cd /data/src; grep . */*VERSION */*/VERSION
     ```
 ### 备份 MongoDB
 该备份方式仅供参考，可自行选择备份方式。
-- 登陆至 MongoDB 机器，创建备份目录
+- 登录至 MongoDB 机器，创建备份目录
     ```bash
     source /data/install/utils.fc
     ssh $BK_MONGODB_IP

@@ -26,7 +26,7 @@
 
 
 - 请前往 [蓝鲸官网下载页](https://bk.tencent.com/download/) 下载基础套餐包。
-- 登陆中控机 
+- 登录中控机 
 
 ```bash
 cd /data
@@ -207,7 +207,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 grep -E "nginx|nodeman" /data/install/install.config
 ```
 
-> 注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -> “安全”，然后选择你登陆的用户名，最后点击编辑，勾选“写入”即可。
+> 注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -> “安全”，然后选择你登录的用户名，最后点击编辑，勾选“写入”即可。
 
 2. Linux / Mac OS 配置
 
@@ -231,7 +231,7 @@ grep -E "BK_PAAS_ADMIN_USERNAME|BK_PAAS_ADMIN_PASSWORD" /data/install/bin/04-fin
 
 ![-w2021](../../assets/login.png)
 
-登陆成功后即可看到 PaaS 平台应用列表页面。
+登录成功后即可看到 PaaS 平台应用列表页面。
 
 ![-w2021](../../assets/paas_home.png)
 

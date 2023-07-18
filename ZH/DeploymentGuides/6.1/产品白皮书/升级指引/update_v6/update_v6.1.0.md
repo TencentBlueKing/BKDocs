@@ -60,7 +60,7 @@ cd /data/src; grep . */*VERSION */*/VERSION
 
 该备份方式仅供参考，可自行选择备份方式。
 
-- 登陆至 MySQL 机器，创建备份目录
+- 登录至 MySQL 机器，创建备份目录
 
     ```bash
     source /data/install/utils.fc
@@ -104,7 +104,7 @@ cd /data/src; grep . */*VERSION */*/VERSION
 
 该备份方式仅供参考，可自行选择备份方式。
 
-- 登陆至 MongoDB 机器，创建备份目录
+- 登录至 MongoDB 机器，创建备份目录
 
     ```bash
     source /data/install/utils.fc
@@ -488,7 +488,7 @@ rm -fv /data/bkce/etc/job/job-*/*.properties
 pcmd -m nodeman "systemctl stop bk-nodeman.service"
 ./bkcli stop saas-o bk_nodeman
 
-# 登陆至 mysql 机器开始备份
+# 登录至 mysql 机器开始备份
 ssh $BK_MYSQL_IP
 mysqldump --login-path=default-root \
     --skip-opt --create-options \
@@ -515,7 +515,7 @@ pcmd -m nodeman "rsync -a --delete --exclude=deploy --exclude="environ.sh" /data
 
 #### 特殊操作
 
-- 登陆至节点管理
+- 登录至节点管理
 
   ```bash
   source /data/install/utils.fc

@@ -73,7 +73,7 @@ source /data/install/utils.fc
 pcmd -m lesscode "bash /data/install/bin/init_new_node.sh"
 ```
 
-## 生成 MySQL 登陆信息
+## 生成 MySQL 登录信息
 
 ```bash
 ./bkcli install mysql

@@ -14,11 +14,11 @@
 | bk_scope_id | string | 是 | 资源范围ID, 与bk_scope_type对应, 表示业务ID或者业务集ID |
 | bk_biz_id        |  long       | 是     | *已弃用*。业务ID。此字段已被弃用并由字段bk_scope_type+bk_scope_id替换 |
 | job_template_id        |  long      | 否     | 作业模版 ID |
-| creator                |  string    | 否     | 作业执行方案创建人帐号 |
+| creator                |  string    | 否     | 作业执行方案创建人账号 |
 | name                   |  string    | 否     | 作业执行方案名称，模糊匹配 |
 | create_time_start      |  long      | 否     | 创建起始时间，Unix 时间戳 |
 | create_time_end        |  long      | 否     | 创建结束时间，Unix 时间戳 |
-| last_modify_user       |  string    | 否     | 作业执行方案修改人帐号 |
+| last_modify_user       |  string    | 否     | 作业执行方案修改人账号 |
 | last_modify_time_start |  long      | 否     | 最后修改起始时间，Unix 时间戳 |
 | last_modify_time_end   |  long      | 否     | 最后修改结束时间，Unix 时间戳 |
 | start                  |  int       | 否     | 默认0表示从第1条记录开始返回 |
@@ -93,7 +93,7 @@
 | id               | long      | 执行方案 ID |
 | job_template_id  | long      | 作业模版 ID |
 | name             | string    | 执行方案名称 |
-| creator          | string    | 创建人帐号 |
+| creator          | string    | 创建人账号 |
 | create_time      | long      | 创建时间，Unix 时间戳 |
-| last_modify_user | string    | 修改人帐号 |
+| last_modify_user | string    | 修改人账号 |
 | last_modify_time | long      | 最后修改时间，Unix 时间戳 |

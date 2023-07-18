@@ -7,8 +7,8 @@
 - dest_url: 若用户不擅长用 Python，可以提供一个其他语言的接口，填到 dest_url，ESB 仅作请求转发即可打通邮件配置
 - smtp_host: SMTP 服务器地址 (注意区分企业邮箱还是个人邮箱)
 - smtp_port: SMTP 服务器端口 (注意区分企业邮箱还是个人邮箱)
-- smtp_user: SMTP 服务器帐号
-- smtp_pwd: SMTP 服务器帐号密码 (一般为授权码)
+- smtp_user: SMTP 服务器账号
+- smtp_pwd: SMTP 服务器账号密码 (一般为授权码)
 - smtp_usessl: 默认为 False
 - smtp_usetls: 默认为 False
 - mail_sender: 默认的邮件发送者 (smtp_user 相同)
@@ -21,7 +21,7 @@
 
 QQ 邮箱的 SMTP 服务，默认是关闭的。
 
-登陆 QQ 邮箱，点击顶部导航栏的 “设置” -> 账户 -> 找到“POP3/SMTP 服务”和“IMAP/SMTP 服务”项，点“开启”。
+登录 QQ 邮箱，点击顶部导航栏的 “设置” -> 账户 -> 找到“POP3/SMTP 服务”和“IMAP/SMTP 服务”项，点“开启”。
 
 ![-w2020](../assets/noticeWay01.png)
 <center>开启服务</center>

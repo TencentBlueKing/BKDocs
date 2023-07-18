@@ -10,8 +10,8 @@
 | bk_scope_type | string | 是     | 资源范围类型。可选值: biz - 业务，biz_set - 业务集 |
 | bk_scope_id | string | 是 | 资源范围ID, 与bk_scope_type对应, 表示业务ID或者业务集ID |
 | bk_biz_id        |  long       | 是     | *已弃用*。业务ID。此字段已被弃用并由字段bk_scope_type+bk_scope_id替换 |
-| account_alias    |  string    | 否    | 目标执行帐号别名，可从账号页面获取，推荐使用。与account_id必须存在一个。当同时存在account_alias和account_id时，account_id优先。 |
-| account_id | long | 否 | 目标执行帐号ID，可从get_account_list接口获取。与account_alias必须存在一个。当同时存在account_alias和account_id时，account_id优先。 |
+| account_alias    |  string    | 否    | 目标执行账号别名，可从账号页面获取，推荐使用。与account_id必须存在一个。当同时存在account_alias和account_id时，account_id优先。 |
+| account_id | long | 否 | 目标执行账号ID，可从get_account_list接口获取。与account_alias必须存在一个。当同时存在account_alias和account_id时，account_id优先。 |
 | file_target_path |  string    | 是     | 文件传输目标路径 |
 | file_source_list |  array     | 是     | 源文件对象数组，见下面file_source定义 |
 | timeout          |  int    | 否     | 任务超时时间，秒，默认值为7200。取值范围1-86400。|
@@ -35,8 +35,8 @@
 
 | 字段  | 类型   | 必选 | 描述                                                         |
 | ----- | ------ | ---- | ------------------------------------------------------------ |
-| id    | long   | 否   | 源执行帐号ID，可从get_account_list接口获取。与alias必须存在一个。当同时存在alias和id时，id优先。 |
-| alias | string | 否   | 源执行帐号别名，可从账号页面获取，推荐使用。与alias必须存在一个。当同时存在alias和id时，id优先。 |
+| id    | long   | 否   | 源执行账号ID，可从get_account_list接口获取。与alias必须存在一个。当同时存在alias和id时，id优先。 |
+| alias | string | 否   | 源执行账号别名，可从账号页面获取，推荐使用。与alias必须存在一个。当同时存在alias和id时，id优先。 |
 
 ##### server
 

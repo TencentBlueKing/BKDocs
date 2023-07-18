@@ -6,7 +6,7 @@ bkeec status rabbitmq
 
 ## 判断 rabbitmq 是否没有添加 bk_monitor 账户信息
 
-1. 登陆 rabbitmq 机器，运行`rabbitmqctl list_vhosts | grep monitor`
+1. 登录 rabbitmq 机器，运行`rabbitmqctl list_vhosts | grep monitor`
 2. 运行`rabbitmqctl list_users |grep monitor`
 
 若账号均没有，解决方法如下：

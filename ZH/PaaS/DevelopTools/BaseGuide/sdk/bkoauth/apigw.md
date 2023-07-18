@@ -42,7 +42,7 @@ def api_debug(request):
     request.jwt.app.app_code  # 获取app_code
     request.jwt.user.username  # 获取用户
 ```
-添加 login_except 免登陆验证， 因为 API Gateway 都是不带登录态信息的
+添加 login_except 免登录验证， 因为 API Gateway 都是不带登录态信息的
 
 添加 apigw_required，如果验证通过是 API Gateway 合法的请求，request 对象有添加一个 jwt 对象
 

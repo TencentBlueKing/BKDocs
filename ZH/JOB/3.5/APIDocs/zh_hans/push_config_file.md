@@ -14,7 +14,7 @@
 | bk_scope_id | string | 是 | 资源范围ID, 与bk_scope_type对应, 表示业务ID或者业务集ID |
 | bk_biz_id        |  long       | 是     | *已弃用*。业务ID。此字段已被弃用并由字段bk_scope_type+bk_scope_id替换 |
 | task_name        |  string     | 否     | 自定义作业名称 |
-| account_alias  |  string    | 是     | 执行帐号别名 |
+| account_alias  |  string    | 是     | 执行账号别名 |
 | file_target_path |  string    | 是     | 文件传输目标路径 |
 | file_list        |  array     | 是     | 源文件对象数组，见下面file定义 |
 | target_server |  object  | 是 | 目标服务器，见server定义       |

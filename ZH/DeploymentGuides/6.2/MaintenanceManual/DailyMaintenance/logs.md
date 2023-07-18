@@ -34,7 +34,7 @@
 1. 修改监控的 supervisor 配置文件
 
    ```bash
-   # 登陆至监控模块所在的机器
+   # 登录至监控模块所在的机器
    source /data/install/utils.fc
    ssh $BK_MONITORV3_IP0
 
@@ -65,7 +65,7 @@
 假设需要查看作业平台 (job) 的 job-execute 进程的日志：
 
 ```bash
-# 登陆至 JOB 模块所在的机器
+# 登录至 JOB 模块所在的机器
 source /data/install/utils.fc
 ssh $BK_JOB_IP0
 
