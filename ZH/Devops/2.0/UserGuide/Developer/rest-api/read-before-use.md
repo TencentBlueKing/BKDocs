@@ -13,7 +13,7 @@
 | `405 Method Not Allowed` | 没有该接口 |
 | `409 Conflict` | 与已存在的对象/内容冲突或者操作行为与规则相冲突 |
 | `422 Unprocessable` | 操作不能进行 |
-| `423 Locked` | 账号被锁定，或api请求频率超限 |
+| `423 Locked` | 账号被锁定，或 api 请求频率超限 |
 | `429 Too Many Requests` | 请求被限流 |
 | `500 Server Error` | 服务器出错 |
 
@@ -23,13 +23,13 @@
 
 注：使用 API 并不是一定要开启 acces_token 认证。该认证是一种保证安全性的措施，建议开启。如不开启，可不携带 access_token 进行 API 请求。
 
-开启认证，需要先修改配置文件，开启access_Token认证后才可以获取到口令，登录CI服务器，编辑配置文件 /data/bkce/etc/ci/common.yml 的 auth 段下的 accessToken 段的内容。
+开启认证，需要先修改配置文件，开启 access_Token 认证后才可以获取到口令，登录 CI 服务器，编辑配置文件 /data/bkce/etc/ci/common.yml 的 auth 段下的 accessToken 段的内容。
 
-将enabled设为true，secret设为任意字符串string，expirationTime过期时间（毫秒）。
+将 enabled 设为 true，secret 设为任意字符串 string，expirationTime 过期时间（毫秒）。
 
 示例如下
 
-```
+```yaml
   accessToken:
     enabled: true
     secret: ea0950b9-79e3-4193-8bf3-1f22856ca075
@@ -44,7 +44,7 @@
 
 修改后，需要重启相应的服务
 
-```
+```shell
 systemctl restart BKCI-auth.service
 systemctl restart BKCI-openapi.service
 ```
@@ -55,7 +55,7 @@ systemctl restart BKCI-openapi.service
 
 ## **认证方式**
 
-每个API调用都需要认证，请在query参数中携带access_Token，access_Token通过调用/ms/auth/api/user/token/get接口获取
+每个 API 调用都需要认证，请在 query 参数中携带 access_Token，access_Token 通过调用/ms/auth/api/user/token/get 接口获取
 
 
 
@@ -79,7 +79,7 @@ systemctl restart BKCI-openapi.service
 
 
 
-**API请求示例**
+**API 请求示例**
 
 需添加 header 信息 X-DEVOPS-UID：用户名
 

@@ -23,7 +23,7 @@
 | BK\_CI\_BUILD\_START\_TIME | 流水线启动时间， 毫秒数 |  |
 | BK\_CI\_BUILD\_END\_TIME | 流水线结束时间， 毫秒数 |  |
 | BK\_CI\_BUILD\_TOTAL\_TIME | 流水线执行耗时 |  |
-| BK\_CI\_BUILD\_FAIL\_TASKS | 流水线执行失败的所有 TASK，内容格式：1、格式：\[STAGE 别名\]\[JOB别名\]TASK 别名 2、若有多个并发 JOB 失败，使用换行\n 分隔 | 可用于构建失败通知，或流水线执行过程中的插件中 |
+| BK\_CI\_BUILD\_FAIL\_TASKS | 流水线执行失败的所有 TASK，内容格式：1、格式：\[STAGE 别名\]\[JOB 别名\]TASK 别名 2、若有多个并发 JOB 失败，使用换行\n 分隔 | 可用于构建失败通知，或流水线执行过程中的插件中 |
 | BK\_CI\_BUILD\_FAIL\_TASKNAMES | 流水线执行失败的所有 TASK，内容格式：TASK 别名,TASK 别名,TASK 别名 | 可用于构建失败通知，或流水线执行过程中的插件中 |
 | BK\_CI\_TURBO\_ID | 编译加速任务 ID，只有启用了编译加速才有该变量 |  |
 | BK\_CI\_MAJOR\_VERSION | 流水线里唯一，主版本号，开启“推荐版本号”功能后出现 |  |
@@ -50,8 +50,8 @@
 
 除了上述表格中的常量，还有与代码库相关的常量：
 
-- [git常量合集](./git.md)
-- [github常量合集](./github.md)
+- [git 常量合集](./git.md)
+- [github 常量合集](./github.md)
 
 
 ## 预定义变量
