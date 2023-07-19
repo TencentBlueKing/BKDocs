@@ -18,6 +18,3 @@
 
    ![image-20230713215336146](ApplyToGroups/image-20230713215336146.png)
 
-## 视频指引
-
-▶️[普通用户如何获得权限](https://www.bilibili.com/video/BV1Wq4y1m7UD/)

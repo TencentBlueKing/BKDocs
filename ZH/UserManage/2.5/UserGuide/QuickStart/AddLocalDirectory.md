@@ -10,7 +10,7 @@
 
 1. 点击`组织架构 -> 新建目录`，选择`本地用户`目录类型进行目录创建进入下一步。
 
-   ![image-20230714160932473](AddLocalDirectory/image-20230714160932473.png)
+   ![image-20230718175831213](AddLocalDirectory/image-20230718175831213.png)
 
    ![image-20230714160811519](AddLocalDirectory/image-20230714160811519.png)
 
@@ -39,7 +39,7 @@
 
 5. 设置完成，点击`提交`创建本地用户目录，目录创建完成后可以继续`导入`用户和组织。
 
-   ![image-20230714162023227](AddLocalDirectory/image-20230714162023227.png)
+   ![image-20230718180104995](AddLocalDirectory/image-20230718180104995.png)
 
 6. 尝试用户直接登录蓝鲸。
 

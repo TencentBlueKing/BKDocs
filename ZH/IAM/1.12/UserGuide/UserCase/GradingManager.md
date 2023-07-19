@@ -14,7 +14,7 @@
 
   ![image-20230714072717297](GradingManager/image-20230714072717297.png)
 
-  ![image-20230714072542440](GradingManager/image-20230714072542440.png)
+  ![image-20230718181458320](GradingManager/image-20230718181458320.png)
 
 - 创建好管理空间后，通过导航菜单切换到对应管理空间下进行权限管理。
 

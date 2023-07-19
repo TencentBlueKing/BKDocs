@@ -12,7 +12,7 @@
 
 1. 点击`组织架构 -> 新建目录`，选择`OpenLDAP`目录类型进行目录创建并进入下一步。
 
-   ![image-20230714160858637](AddLdapDirectory/image-20230714160858637.png)
+   ![image-20230718175831213](AddLdapDirectory/image-20230718175831213.png)
 
    ![image-20230714160134236](AddLdapDirectory/image-20230714160134236.png)
 

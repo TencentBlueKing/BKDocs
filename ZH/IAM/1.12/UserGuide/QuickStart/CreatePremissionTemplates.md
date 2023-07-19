@@ -22,9 +22,7 @@
 
 3. 权限模板保存后，如需要可以再次进行[权限模板编辑](../Feature/PermissionTemplates.md)。
 
-## 视频指引
 
-▶️[管理员如何授权](https://www.bilibili.com/video/BV1tQ4y1e7b8/)
 
    
 
