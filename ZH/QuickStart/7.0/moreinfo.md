@@ -8,4 +8,4 @@
 
 - 开发指南：软件支持私有化部署，提供的是通用的服务，若需要进行定制化服务，提供了[二次开发](../../DevelopGuide/7.0/DevelopGuide.md)的教程。
 
-- 常见问题：提供了丰富的[问题库](../../FAQs/6.1/README.md)。
+- 常见问题：提供了丰富的[问题库](https://bk.tencent.com/s-mart/community/question/2194%3Ftype=answer)。

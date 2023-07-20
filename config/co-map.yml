@@ -19,10 +19,10 @@ id_docs_map:  #https://bk.tencent.com/docs/document/7.0/233/32616
   /document/7.0/233/32616: ZH/QuickStart/7.0/quick-start-v7.0-info.md
   /document/7.0/172/14038: ZH/DeploymentGuides/7.0/beginners_guide.md
   /document/7.0/241/39804: ZH/BestPractices/7.0/CD/CMDB/CMDB_management_hosts.md
-  /document/7.0/250/46221: ZH/DevelopGuide/7.0/开发简介/README.md
+  /document/7.0/250/46221: ZH/DevelopGuide/7.0/DevelopGuide.md
   /document/7.0/172/14037: ZH/DeploymentGuides/7.0/faq.md
-  /document/7.0/243/39948: ZH/BlueKingFamily/7.0/产品白皮书/品牌简介/intro.md
-  /document/7.0/243/39895: ZH/BlueKingFamily/7.0/产品白皮书/解决方案/solution.md
+  /document/7.0/243/39948: ZH/BlueKingFamily/7.0/UserGuide/intro.md
+  /document/7.0/243/39895: ZH/BlueKingFamily/7.0/UserGuide/Solution/solution.md
   /document/7.0/171/13973: ZH/APIGateway/0.6/UserGuide/README.md
   /document/7.0/232/30348: ZH/GSEKit/1.0/UserGuide/What_is_process-config-manager.md
   /document/6.0/145/6600: ZH/ITSM/2.5/产品白皮书/产品功能/流程管理/Process_Design.md
@@ -86,6 +86,7 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   故障自愈/产品白皮书/Intro/README.md: ZH/FTA/5.2/产品白皮书/Intro/README.md
   lesscode/intro.md: ZH/LessCode/1.0/UserGuide/intro.md
   PaaS平台/产品白皮书/产品简介/README.md: ZH/PaaS/1.0/UserGuide/Overview/README.md
+  产品白皮书/intro/README.md: ZH/LogSearch/4.6/UserGuide/Intro/README.md
 # 产品统计
 #devops
   持续集成平台/产品白皮书/Services/Store/start-new-task.md: ZH/Devops/2.0/UserGuide/Services/Store/start-new-task.md
@@ -97,7 +98,7 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   持续集成平台/产品白皮书/Services/Pipeline/pipeline-edit-guide/alias-buildno.md: ZH/Devops/2.0/UserGuide/Services/Pipeline/pipeline-edit-guide/alias-buildno.md
   持续集成平台/产品白皮书/Services/Ticket/ticket-add.md: ZH/Devops/2.0/UserGuide/Services/Ticket/ticket-add.md
   质量红线/产品白皮书/Intro/README.md: ZH/Devops/2.0/UserGuide/intro/README.md
-  持续集成平台/产品白皮书/Services/Resource/bkci-hosted-windows-agent.md: ZH/Devops/1.7/产品白皮书/Services/Resource/bkci-hosted-windows-agent.md
+  持续集成平台/产品白皮书/Services/Resource/bkci-hosted-windows-agent.md: ZH/Devops/2.0/UserGuide/Services/Pools/self-hosted-agents/windows-agent.md
 #job
   作业平台/产品白皮书/Best-Practices/Use-built-in-functions-to-make-exec-result-grouping.md: ZH/JOB/3.7/UserGuide/Best-Practices/Use-built-in-functions-to-make-exec-result-grouping.md
   作业平台/产品白皮书/Best-Practices/How-to-make-same-host-have-its-own-namespace.md: ZH/JOB/3.7/UserGuide/Best-Practices/How-to-make-same-host-have-its-own-namespace.md

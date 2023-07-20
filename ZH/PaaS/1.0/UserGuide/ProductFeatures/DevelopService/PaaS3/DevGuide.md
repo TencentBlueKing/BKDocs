@@ -1,1 +1,1 @@
-请参考：[PaaS3.0 开发指南](../../../../../DevelopTools/DevGuideV3/BaseGuide/topics/paas/app_intro.md)
+请参考：[PaaS3.0 开发指南](../../../../../DevelopTools/BaseGuide/topics/paas/app_intro.md)
