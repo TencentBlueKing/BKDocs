@@ -61,6 +61,11 @@ id_docs_map:  #https://bk.tencent.com/docs/document/7.0/233/32616
   /document/7.0/252/: ZH/LessCode/1.0/UserGuide/intro.md
 
 feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品白皮书/产品简介/README.md
+#官网首页
+  快速入门/quick-start-v7.0-info.md: ZH/QuickStart/7.0/quick-start-v7.0-info.md
+  部署指南/beginners_guide.md: ZH/DeploymentGuides/7.0/beginners_guide.md
+  开发指南/开发简介/README.md: ZH/BestPractices/7.0/CD/CMDB/CMDB_management_hosts.md
+  bk_solutions/CD/CMDB/CMDB_management_hosts.md: ZH/DevelopGuide/7.0/DevelopGuide.md
 #路径首页
   配置平台/产品白皮书/产品简介/Overview.md: ZH/CMDB/3.10/UserGuide/Introduce/Overview.md
   作业平台/产品白皮书/Introduction/What-is-Job.md: ZH/JOB/3.7/UserGuide/Introduction/What-is-Job.md
