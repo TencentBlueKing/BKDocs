@@ -59,16 +59,10 @@
 
 <a id="get-a-k8s-cluster" name="get-a-k8s-cluster"></a>
 
-# 准备 K8S 集群
->**提示**
->
->因 k8s API 被移除，蓝鲸无法在 kubenetes 1.22 及以上版本使用，开发正在兼容新版 API 。
+# 下一步
+准备 K8S 集群。
 
-我们适配了如下的场景，请点击前往对应章节获得对应场景的操作指引。
+我们适配了如下的场景，请点击前往章节获得对应场景的操作指引：
 * [使用蓝鲸提供的 bcs.sh 脚本快速部署 k8s 集群](get-k8s-create-bcssh.md)
 * [使用现有的 k8s 集群](get-k8s-import-kubeconfig.md)
 * [购买腾讯云 TKE 服务](get-k8s-purchase-tke.md)（其他厂商提供 K8S 集群同理）
-
-
-# 下一步
-前往《[准备中控机](prepare-bkctrl.md)》文档。

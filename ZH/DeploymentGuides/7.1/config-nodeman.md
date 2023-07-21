@@ -3,6 +3,9 @@
 <a id="post-install-bk-nodeman-gse-client" name="post-install-bk-nodeman-gse-client"></a>
 
 # 上传 GSE agent
+>**提示**
+>
+>* 在之前使用 `./scripts/setup_bkce7.sh -i nodeman` 时，已经完成了此步骤，可以跳过。
 
 >**提示**
 >
@@ -10,42 +13,29 @@
 
 在 **中控机** 执行如下命令下载文件：
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-beta/bkdl-7.1-beta.sh | bash -s -- -ur latest gsec
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur latest gsec
 ```
 上传 Agent 到 节点管理：
 ``` bash
-nodeman_backend_api_pod=$(kubectl get pod -A -l app.kubernetes.io/component=bk-nodeman-backend-api -o jsonpath='{.items[0].metadata.name}')
-namespace=$(kubectl get pod -A -l app.kubernetes.io/component=bk-nodeman-backend-api -o jsonpath='{.items[0].metadata.namespace}')
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
-# 删除缓存的旧安装包
-kubectl exec -n "$namespace" "$nodeman_backend_api_pod" -- sh -c 'rm -f /app/official_plugin/gse_agent/* && rm -f /app/official_plugin/gse_proxy/*'
-# 复制文件到容器内
-kubectl cp ../gse2/agents/gse_clients.tgz -n "$namespace" "$nodeman_backend_api_pod:/app/official_plugin/gse_agent/"
-# 处理上传的包，并标记为 stable。
-kubectl exec -n "$namespace" "$nodeman_backend_api_pod" -- python manage.py init_agents -o stable
+./scripts/setup_bkce7.sh -u agent
 ```
 
 <a id="post-install-bk-nodeman-gse-plugin" name="post-install-bk-nodeman-gse-plugin"></a>
 
 # 上传 gse 插件包
+>**提示**
+>
+>* 在之前使用 `./scripts/setup_bkce7.sh -i nodeman` 时，已经完成了此步骤，可以跳过。
 
 在 **中控机** 执行如下命令下载文件：
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-beta/bkdl-7.1-beta.sh | bash -s -- -ur latest gse_plugins_freq
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur latest gse_plugins_freq
 ```
 上传 插件包 到 节点管理：
 ``` bash
-# 如果还没退出上一个 shell 会话，可以跳过下面缩进的行
-  nodeman_backend_api_pod=$(kubectl get pod -A -l app.kubernetes.io/component=bk-nodeman-backend-api -o jsonpath='{.items[0].metadata.name}')
-  namespace=$(kubectl get pod -A -l app.kubernetes.io/component=bk-nodeman-backend-api -o jsonpath='{.items[0].metadata.namespace}')
-  cd ~/bkce7.1-install/blueking/  # 进入工作目录
-
-# 删除缓存的旧插件包
-kubectl exec -n "$namespace" "$nodeman_backend_api_pod" -- sh -c 'rm -f /app/official_plugin/*.tgz'
-# 复制文件到容器内
-kubectl cp ../gse2/plugins/gse_plugins_freq.tgz  -n "$namespace" "$nodeman_backend_api_pod:/app/official_plugin/"
-# 处理插件包
-kubectl exec -n "$namespace" "$nodeman_backend_api_pod" -- python manage.py init_official_plugins
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+./scripts/setup_bkce7.sh -u plugin
 ```
 
 结尾最后一段 JSON 显示 `"message": "略 | all package under path->[/app/official_plugin] is import success, file_count->[1] package_count->[7]"` 即为上传成功。
@@ -57,9 +47,25 @@ kubectl exec -n "$namespace" "$nodeman_backend_api_pod" -- python manage.py init
 插件集合包中各子包的用途：
 | 插件包名 | 用途 | 描述 |
 | -- | -- | -- |
-| bkmonitorbeat | 蓝鲸监控指标采集器 | 蓝鲸监控拨测采集器 支持多协议多任务的采集，监控和可用率计算，提供多种运行模式和热加载机制 |
-| bkunifylogbeat | 高性能日志采集 | 数据平台，蓝鲸监控，日志检索等和日志相关的数据. 首次使用插件管理进行操作前，先到日志检索/数据平台等进行设置插件的功能项 |
-| bk-collector | 多协议数据采集 | 蓝鲸监控，日志检索，应用性能监控使用的高性能 Trace、指标、日志接收端，支持 OT、Jaeger、Zipkin 等多种数据协议格式。替代了之前的 bkmonitorproxy。 |
+| bkmonitorbeat | 蓝鲸监控指标采集器 | 支持多协议多任务的采集、监控和可用率计算，提供多种运行模式和热加载机制 |
+| bkunifylogbeat | 高性能日志采集 | 日志相关的采集 |
+| bk-collector | 多协议数据采集 | 高性能 Trace、指标、日志接收端，支持 OT、Jaeger、Zipkin 等多种数据协议格式。替代了之前的 bkmonitorproxy。 |
+
+# 上传 GSE Proxy
+>**提示**
+>
+>* 当你需要更新客户端或者加装云区域代理时，可以在下载后使用此命令重新上传。
+
+在 **中控机** 执行如下命令下载文件：
+``` bash
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur latest gsep
+```
+上传 Proxy 到 节点管理：
+``` bash
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+./scripts/setup_bkce7.sh -u proxy
+./scripts/setup_bkce7.sh -u opentools  # 上传proxy所需的开源工具
+```
 
 
 <a id="post-install-bk-nodeman-gse-env" name="post-install-bk-nodeman-gse-env"></a>
@@ -109,7 +115,7 @@ $task_server
 外网回调地址 和 内网回调地址 一样： 
 http://$bknodeman_bapi_host:30300/backend
 
-Agent包服务器命令: 保持为空
+Agent包服务器目录: 保持为空
 Agent包URL  : 2 个输入框均改为下面的内容：
 http://$bkrepo_gw_host:30025/generic/blueking/bknodeman/data/bkee/public/bknodeman/download
 EOF
@@ -152,7 +158,7 @@ $task_server
 外网回调地址 和 内网回调地址 一样：
 http://bknodeman.$BK_DOMAIN/backend
 
-Agent包服务器命令: 保持为空
+Agent包服务器目录: 保持为空
 Agent包URL  : 2 个输入框均改为下面的内容：
 http://bkrepo.$BK_DOMAIN/generic/blueking/bknodeman/data/bkee/public/bknodeman/download
 
@@ -182,25 +188,32 @@ TODO 详细操作
 ## 配置细节说明
 不建议编辑默认接入点的名字及说明。
 
-**切勿修改区域及城市**。此配置和 GSE 集群配置相关，如果和 GSE 配置不一致则会禁止安装。
+* 区域及城市 <br/>
+  填写 GSE 集群配置的值，如果和 GSE 配置不一致则会禁止安装。在默认接入点中，区域及城市均为 `test`。
+* zk 配置 <br/>
+  节点管理通过 zk 读取 GSE 服务端的数据。请按需修改，如果使用蓝鲸内置的服务，请参考上面的场景文档填写。
+* GSE 服务端系列配置 <br/>
+  部署后会填写当前的 IP，可暂不修改。<br />
+  今后如需更新某个字段（`BtfileServer`、`DataServer` 或 `TaskServer` ），请将该字段的**内网 IP**改为 `127.0.0.1`，以指示节点管理自动修改。 <br/>
+  自动修改仅进行一次，会使用 zookeeper 中的服务发现地址填充**内网 IP**及**外网 IP**。
+* 节点管理回调地址 <br/>
+  用于安装日志上报等。需配置为节点管理 `bk-nodeman-backend-api` 服务的 NodePort 地址：`IP:30300`。
+  * **外网回调地址**：和内网回调地址保持一致。
+  * **内网回调地址**：填写 `http://任意Node的IP:30300/backend` （注意结尾没有斜杠）。
+* 部署文件下载地址。 <br/>
+  用于下载安装脚本、安装文件及用户自定义的监控插件等。
+  * **Agent 包服务器目录**：请保持为空。
+  * **agent 包 URL**： <br/>
+    需配置为制品库 `bk-repo-bkrepo-gateway` 服务入口。可以是域名 `bkrepo.$BK_DOMAIN` 或者 NodePort 地址： `IP:30025`。
+    * **内网下载 URL**：第一个输入框。填写 `http://任意Node的IP:30025/generic/blueking/bknodeman/data/bkee/public/bknodeman/download`。
+    * **外网下载 URL**：第二个输入框。内容同**内网地址**。
 
+点击“下一步”进入第二页时的配置项：
+* 大部分字段均可保持默认值。
+* **dataipc** 填写 `47000`。
+* **Proxy 上的安装包** 后续会调整。可以临时填写 `gse_client-linux-x86_64.tgz`。
 
-GSE 服务端系列配置：
-
-部署后会填写当前的 IP，可暂不修改。<br />今后如需更新某个字段（`BtfileServer`、`DataServer` 或 `TaskServer` ），请将该字段的**内网 IP**改为 `127.0.0.1`，以指示节点管理自动修改。自动修改仅进行一次，会使用 zookeeper 中的服务发现地址填充**内网 IP**及**外网 IP**。
-
-节点管理回调地址：
-
-用于安装日志上报等。需配置为节点管理 `bk-nodeman-backend-api` 服务的 NodePort 地址：`IP:30300`。
-   * **外网回调地址**：和内网回调地址保持一致。
-   * **内网回调地址**：填写 `http://任意Node的IP:30300/backend` （注意结尾没有斜杠）。
-
-
-部署文件下载地址。用于下载安装脚本、安装文件及用户自定义的监控插件等。
-   * **Agent 包服务器目录**：请保持为空。
-   * **agent 包 URL**：需配置为制品库 `bk-repo-bkrepo-gateway` 服务的 NodePort 地址： `IP:30025`。
-     * **内网下载 URL**：第一个输入框。填写 `http://任意Node的IP:30025/generic/blueking/bknodeman/data/bkee/public/bknodeman/download`。
-     * **外网下载 URL**：第二个输入框。内容同**内网地址**。
+配置完成，点击 “确认” 即可创建接入点。
 
 
 <a id="k8s-node-install-gse-agent" name="k8s-node-install-gse-agent"></a>

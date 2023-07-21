@@ -92,4 +92,4 @@ done
 
 
 # 下一步
-前往《[部署基础套餐](install-bkce.md)》文档。
+继续 [部署基础套餐](install-bkce.md)

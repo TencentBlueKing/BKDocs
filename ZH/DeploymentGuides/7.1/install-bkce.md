@@ -11,7 +11,7 @@
 
 请在 **中控机** 使用如下命令下载蓝鲸 helmfile 包及公共证书。
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-beta/bkdl-7.1-beta.sh | bash -s -- -ur latest base demo
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur latest base demo
 ```
 
 这些文件默认放在了 `~/bkce7.1/` 目录，接下来的部署过程中，默认工作目录为 `~/bkce7.1-install/blueking/`。
@@ -181,14 +181,29 @@ EOF
 >
 >如 k8s 集群重启等原因重新调度，pod 所在 node 发生了变动，需更新 hosts 文件。
 
-获取 ingress-nginx pod 所在机器的内网 IP，记为 IP1。在 **中控机** 执行如下命令可获取 IP1：
-``` bash
-IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx \
-  -o jsonpath='{.items[0].status.hostIP}')
-```
-如果你不是直接通过内网 IP 访问蓝鲸，则需调整 IP1 的赋值：
-* 如果需要使用公网 IP 访问，可手动赋值 `IP1=公网IP`，或者使用如下命令从中控机登录到 node 上查询公网 IP：`IP1=$(ssh "$IP1" 'curl -sSf ip.sb')`。
-* 如果使用了负载均衡，可手动赋值 `IP1=负载均衡IP`。
+你如何访问蓝鲸集群呢？请根据你的场景选择对应的命令获取 IP：
+* 你和蓝鲸集群在同一个内网，使用 内网 IP 访问蓝鲸。
+  1.  获取 ingress-nginx pod 所在机器的内网 IP，记为 IP1。在 **中控机** 执行如下命令可获取 IP1：
+      ``` bash
+      IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx \
+        -o jsonpath='{.items[0].status.hostIP}')
+      ```
+* 蓝鲸集群部署在公网，使用 ingress-nginx pod 所在机器的 公网 IP 访问蓝鲸。
+  1.  先在 **中控机** 执行如下命令获取 内网 IP：
+      ``` bash
+      IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx \
+        -o jsonpath='{.items[0].status.hostIP}')
+      ```
+  2.  从中控机登录到 node 上查询公网 IP：
+      ``` bash
+      IP1=$(ssh "$IP1" 'curl -sSf ip.sb')
+      ```
+* 蓝鲸集群使用了负载均衡器（包括公网负载均衡）
+  1.  需要手动指定负载均衡 IP：
+      ``` bash
+      IP1=负载均衡IP
+      ```
+  2.  在负载均衡器配置后端为 ingress-nginx pod 所在机器的内网 IP，端口为 80。
 
 在 **中控机** 执行如下命令生成 hosts 文件的内容：
 ``` bash
@@ -274,7 +289,7 @@ k8s 运行时默认使用 https 协议拉取镜像，所以需要额外操作确
 
 docker 服务端支持使用 http 协议拉取镜像，但需要调整配置项。
 
-本章节命在 **中控机** 执行，请先进入工作目录：
+本章节命令在 **中控机** 执行，请先进入工作目录：
 ``` bash
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 ```
@@ -300,7 +315,7 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
     BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
     jq --arg k "insecure-registries" --arg v "docker.$BK_DOMAIN" 'if .[$k]|index($v) then . else .[$k]+=[$v] end' daemon.json.orig | tee daemon.json
     ```
-3.  检查内容无误后，即可将 `daemon.json` 分发到全部 k8s node 上的 `/etc/docker/daemon.json`（如果各 node 配置文件路径不同，请自行分批操作。）：
+3.  将新生成的 `daemon.json` 分发到全部 k8s node 上的 `/etc/docker/daemon.json`（如果各 node 配置文件路径不同，请自行分批操作。）：
     ``` bash
     # 取全部 node 的ip，包括master
     all_nodes="$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}')"
@@ -399,11 +414,11 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 ## 一键部署基础套餐 SaaS
 在 **中控机** 下载所需的文件。
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-beta/bkdl-7.1-beta.sh | bash -s -- -ur latest saas  # 下载SaaS安装包及节点管理托管的常用文件
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur latest saas  # 下载SaaS安装包及节点管理托管的常用文件
 ```
 如果你计划管控多个云区域的主机，或者管控 32 位操作系统主机，请补充下载完整的待托管文件：
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-beta/bkdl-7.1-beta.sh | bash -s -- -ur latest nm_gse_full  # 节点管理托管的全部文件
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur latest nm_gse_full  # 节点管理托管的全部文件
 ```
 
 在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境。
@@ -435,9 +450,8 @@ scripts/setup_bkce7.sh -i sops
 <a id="next" name="next"></a>
 
 # 下一步
-前往《[配置节点管理及安装 Agent](config-nodeman.md)》文档。
+继续部署：
+* [配置节点管理及安装 Agent](config-nodeman.md)
+* 此时可以同时开始 [部署容器管理平台](install-bcs.md)
 
-也可以同时开始 [部署容器管理平台](install-bcs.md)。
-
-或者开始了解蓝鲸的各个平台吧：
-* TODO 待收集链接
+在部署期间，可以在文档中心查看产品文档。

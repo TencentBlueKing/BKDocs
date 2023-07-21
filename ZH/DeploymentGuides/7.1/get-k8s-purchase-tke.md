@@ -10,7 +10,7 @@
 ### 购买基础套餐部署所需 TKE 集群
 https://console.cloud.tencent.com/tke2/cluster?rid=1
 ### 集群需求
-- 版本：1.18+
+- 版本：1.20
 - 运行时组件：docker
 - 容器网络插件：Global Router
 - 容器网络：CIDR 自定义，不跟集群所在 VPC 网络冲突即可；建议：1024 个 Service/集群、128 个 Pod/节点、504 个节点/集群

@@ -12,9 +12,9 @@
 
 | 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 流程服务（bk_itsm） | 2.6.6-beta.1 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.6-beta.1.tar.gz |
+| 流程服务（bk_itsm） | 2.6.6 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.6.tar.gz |
 | 标准运维（bk_sops） | 3.28.13 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.28.13.tar.gz |
-| 节点管理（bk_nodeman） | 2.3.2-alpha.652 | 使用 helmfile 部署时自动下载 Charts，此处无需下载 |
+| 节点管理（bk_nodeman） | 2.3.2 | 使用 helmfile 部署时自动下载 Charts，此处无需下载 |
 
 
 <a id="paas-svc-redis" name="paas-svc-redis"></a>
@@ -90,15 +90,12 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 ![](../7.0/assets/smart-package-upload-success.png)
 
 ### 更新安装包
-登录 “蓝鲸桌面”，在侧栏导航里打开 “开发者中心”。
-
-从顶部导航栏进入“应用开发”界面。
-
-点击名称进入应用概览界面，在左侧展开 “应用引擎”目录，点击 “包版本管理”。
-
-在包版本管理界面，点击“上传新版本”按钮，会弹出上传窗口。后续流程和上文 创建应用 类似，此处不再赘述。
-
-新版本上传成功后，在页面左侧导航栏展开 “应用引擎”目录，点击 “部署管理” 开始部署。
+创建应用后，如果需要更新安装包版本。需使用如下步骤：
+1. 使用有权限管理开发者中心的账户（如 admin ）登录到桌面，在左侧打开 “开发者中心” 应用。
+2. 点击导航栏的 “应用开发”。选择要更新的应用（如“流程服务”），会进入“应用概览”。
+3. 此时在左侧展开“应用引擎”，点击“包版本管理”。
+4. 在包版本管理界面，点击“上传新版本”按钮，会弹出上传窗口。后续流程和上文 创建应用 类似，此处不再赘述。
+5. 新版本上传成功后，在页面左侧导航栏展开 “应用引擎”目录，点击 “部署管理” 开始部署，细节见下文。
 
 
 <a id="deploy-bkce-saas" name="deploy-bkce-saas"></a>
@@ -222,6 +219,6 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 
 
 # 下一步
-前往《[配置节点管理及安装 Agent](config-nodeman.md)》文档。
+继续部署，[配置节点管理及安装 Agent](config-nodeman.md)。
 
 或者回到《[部署基础套餐](install-bkce.md#next)》文档看看其他操作。

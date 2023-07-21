@@ -11,10 +11,7 @@ kubectl get sc
 NAME                      PROVISIONER                    RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
 local-storage (default)   kubernetes.io/no-provisioner   Delete          WaitForFirstConsumer   false                  3d21h
 ```
-``` bash
-NAME                      PROVISIONER                    RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
-local-storage (default)   kubernetes.io/no-provisioner   Delete          WaitForFirstConsumer   false                  3d21h
-```
+
 如果输出的名称不是 `local-storage`，则需通过创建 `custom.yaml` 实现修改：
 ``` bash
 cd ~/bkce7.1-install/blueking/
@@ -65,7 +62,7 @@ kubectl get pod -n bcs-system -w
 使用 admin 账户登录 “蓝鲸桌面”，打开 “标准运维”。进入 “公共流程管理” 界面，展开 “导入” 按钮，选择 “导入 DAT 文件”。
 
 在新出现的 “导入 DAT” 窗口中，上传如下文件：
-* [自建集群所需的标准运维流程模板](https://bkopen-1252002024.file.myqcloud.com/ce7/files/bk7_bcs_sops_common_20221107.dat)
+* [自建集群所需的标准运维流程模板（20230719 版本）](https://bkopen-1252002024.file.myqcloud.com/ce7/files/bcs-deploy-k8s-bk_sops_common_20230719.dat)
 
 上传成功后会显示导入列表，点击 “覆盖 ID 相同的流程” 按钮完成导入。如果此前有导入过流程，则导入列表下方会高亮提示 `其中4条流程与项目已有流程ID存在冲突`，请点击 “覆盖冲突项，并提交” 按钮。
 ![](../7.0/assets/bk_sops-common-import-bcs.png)
@@ -80,16 +77,14 @@ kubectl get pod -n bcs-system -w
 
 >**提示**
 >
->“Helm” — “Chart 仓库” 界面初次访问会提示 Record not found，需要点击一次“创建”按钮。即可看到公共仓库的 Chart 列表。
+>“Helm” — “Chart 仓库” 界面初次访问会提示 `Record not found`，需要点击一次“创建”按钮，即可看到公共仓库的 Chart 列表。项目仓库此时为空，请参考[产品使用文档的“推送业务 Helm Chart 到仓库”章节](../../BCS/1.28/UserGuide/Function/helm/ServiceAccess.md)自行上传。
 
 >**提示**
 >
->灰度期间，因为没有部署蓝鲸监控，会导致“集群”界面的 “总览” 和 “节点管理” 监控数据为 0 。
+>在部署蓝鲸监控并完成“容器监控数据上报”后，“集群”界面的 “总览” 和 “节点管理” 的监控图表才有数据。
 
 
 # 下一步
-前往《[部署监控日志套餐](install-co-suite.md)》文档。
-
-或回到《[部署基础套餐](install-bkce.md)》文档看看其他操作。
-
-或开始 [了解容器管理平台](../../BCS/1.28/UserGuide/Introduction/README.md)。
+* 继续 [部署监控日志套餐](install-co-suite.md)
+* 或回到《[部署基础套餐](install-bkce.md#next)》文档看看其他操作
+* 或开始 [了解容器管理平台](../../BCS/1.28/UserGuide/Introduction/README.md)
