@@ -8,7 +8,7 @@
 
 ## 前提条件
 
-- [部署蓝盾（BK-CI）](../../部署指南/产品白皮书/增强包安装/部署安装/CI-V2.md)
+- [部署蓝盾（BK-CI）](../../../DeploymentGuides/7.1/install-ci-suite.md)
 
 ## 操作步骤
 

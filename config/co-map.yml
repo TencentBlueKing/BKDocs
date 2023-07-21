@@ -104,6 +104,7 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   作业平台/产品白皮书/Best-Practices/How-to-make-same-host-have-its-own-namespace.md: ZH/JOB/3.7/UserGuide/Best-Practices/How-to-make-same-host-have-its-own-namespace.md
   作业平台/产品白皮书/Best-Practices/How-to-stop-the-spread-of-the-problem-script-immediately.md: ZH/JOB/3.7/UserGuide/Best-Practices/How-to-stop-the-spread-of-the-problem-script-immediately.md
 #cmdb
+  product_white_paper/cmdb/: ZH/CMDB/3.10/UserGuide/Introduce/Overview.md
   配置平台/产品白皮书/产品功能/CustomQuery.md: ZH/CMDB/3.10/UserGuide/Feature/CustomQuery.md
   配置平台/产品白皮书/产品功能/ModelRelationType.md: ZH/CMDB/3.10/UserGuide/Feature/ModelRelationType.md
   配置平台/产品白皮书/产品功能/Model.md: ZH/CMDB/3.10/UserGuide/Feature/Model.md
@@ -177,9 +178,6 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   产品白皮书/user-guide/datahub/data-access/log/concepts.md: ZH/BK-Base/3.10/UserGuide/user-guide/datahub/data-access/log/concepts.md
   产品白皮书/user-guide/user-center/projects.md: ZH/BK-Base/3.10/UserGuide/user-guide/user-center/projects.md
   产品白皮书/user-guide/user-center/tasks.md: ZH/BK-Base/3.10/UserGuide/user-guide/user-center/tasks.md
-
-
-
 
 
 

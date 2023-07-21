@@ -23,7 +23,7 @@
 * [开发指南]()
     * [基础概念]()
         * [蓝鲸应用]()
-            * [简介](topics/paas/app_intro.md)
+            * [简介](../../DevelopTools/BaseGuide/topics/paas/app_intro.md)
             * [自定义 Python 版本](topics/paas/choose_python_version.md)
             * [自定义环境变量](topics/paas/custom_configvars.md)
             * [内置环境变量](topics/paas/builtin_configvars.md)
