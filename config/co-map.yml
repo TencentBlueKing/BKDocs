@@ -32,6 +32,7 @@ id_docs_map:  #https://bk.tencent.com/docs/document/7.0/233/32616
   /document/6.0/145/6594: ZH/ITSM/2.5/产品白皮书/产品功能/SLA管理/Service_Agreement_Management.md
   /document/6.0/145/6596: ZH/ITSM/2.5/产品白皮书/产品功能/SLA管理/Service_model.md
   /document/6.0/145/6623: ZH/ITSM/2.5/产品白皮书/产品简介/README.md
+  /document/7.0/250/46230: ZH/UserManage/IntegrateGuide/Docking_enterprise_login_system/use_bk_login.md
 # 各产品任意文档跳到产品首页
   /document/7.0/168/: ZH/PaaS/1.0/UserGuide/Overview/README.md
   /document/7.0/170/: ZH/PaaS/1.0/UserGuide/Overview/README.md
@@ -56,7 +57,7 @@ id_docs_map:  #https://bk.tencent.com/docs/document/7.0/233/32616
   /document/7.0/247/: ZH/UserManage/2.5/UserGuide/Introduce/README.md
   /document/7.0/248/: ZH/Monitor/3.6/UserGuide/Overview/README.md
   /document/7.0/249/: ZH/Devops/2.0/UserGuide/intro/README.md
-  /document/7.0/250/: ZH/DevelopGuide/7.0/ENTRY-Guide.md
+  /document/7.0/250/: ZH/DevelopGuide/7.0/DevelopGuide.md
   /document/7.0/251/: ZH/VersionLog/7.0/intro.md
   /document/7.0/252/: ZH/LessCode/1.0/UserGuide/intro.md
 
