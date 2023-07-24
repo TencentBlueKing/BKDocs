@@ -1,5 +1,6 @@
-# 接入系统管理类 API
+# Summary
 
+## 权限中心接入
 * [概览](00-API.md)
 * [名词及概念](./00-Concepts.md)
 * [创建分级管理员](./01-CreateGradeManager.md)
