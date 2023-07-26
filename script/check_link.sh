@@ -17,10 +17,23 @@ DIR=$(cd `dirname $(readlink -f $0)` && cd ../${language} && pwd)
 # done
 
 # #检测EN目录所有文件路径并把结果写入 support-docs/script/EN.log ,用完log记得删除掉
+# cd $DIR/EN
+# [ -f  $DIR/script/EN.log ] && rm -rf $DIR/script/EN.log
+# for i in $(find . -type  f -name "*.md") 
+# do
+# markdown-link-check  $i   >>  $DIR/script/EN.log
+# done
+
 cd $DIR/EN
-[ -f  $DIR/script/EN.log ] && rm -rf $DIR/script/EN.log
-for i in $(find . -type  f -name "*.md") 
+
+for i in  NodeMan/2.2 PaaS/1.0
 do
-markdown-link-check  $i   >>  $DIR/script/EN.log
+    cd  $i
+    echo "------------------------------------$i-------------------------------" >> $DIR/script/EN.log
+    for j in $(find . -type  f -name "*.md") 
+        do
+            markdown-link-check  $j   >>  $DIR/script/EN.log
+        done
+    cd ../..
 done
 

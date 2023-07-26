@@ -1,0 +1,674 @@
+------------------------------------NodeMan/2.2-------------------------------
+
+FILE: ./APIDocs/biz_proxies_host.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/create_subscription.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/delete_subscription.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/details_job.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/info_subscription.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/install_job.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/instance_info_subscription.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/instance_status_subscription.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/list_cloud.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/log_job.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/operate_job.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/proxies_host.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/retry_subscription.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/revoke_subscription.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/run_subscription.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/search_host.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/search_plugin.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/swith_subscription.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/task_result_subscription.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./APIDocs/update_subscription.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./SUMMARY.md
+  [✓] UserGuide/Introduce/Overview.md
+  [✓] UserGuide/Introduce/Terms.md
+  [✓] UserGuide/Introduce/Architecture.md
+  [✓] UserGuide/Introduce/Advantage.md
+  [✓] UserGuide/QuickStart/DefaultAreaInstallAgent.md
+  [✓] UserGuide/QuickStart/CustomCloudAreaInstallAgent.md
+  [✓] UserGuide/Feature/Agent.md
+  [✓] UserGuide/Feature/Plugin.md
+  [✓] UserGuide/Feature/CloudArea.md
+  [✓] UserGuide/Feature/History.md
+  [✓] UserGuide/Feature/Globe.md
+  [✓] UserGuide/FAQ/AgentIssues/ManualUninstallAgent.md
+  [✓] UserGuide/FAQ/AgentIssues/CommonErrorsInInstallAgent.md
+  [✓] UserGuide/FAQ/ProxyIssues/WhichPortNeedToBeOpenedToInstallProxy.md
+
+  14 links checked.
+
+FILE: ./UserGuide/FAQ/AgentIssues/CommonErrorsInInstallAgent.md
+  [✓] https://bk.tencent.com/s-mart/community/question/7033
+  [✓] https://bk.tencent.com/s-mart/community/question/8142
+  [✓] ../assets/002.png
+  [✓] ../assets/003.png
+
+  4 links checked.
+
+FILE: ./UserGuide/FAQ/AgentIssues/FAQ.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./UserGuide/FAQ/AgentIssues/ManualUninstallAgent.md
+  [✓] ../assets/001.png
+  [✓] ../assets/16530466032174.png
+  [✓] ../assets/1653046582122.png
+
+  3 links checked.
+
+FILE: ./UserGuide/FAQ/ProxyIssues/WhichPortNeedToBeOpenedToInstallProxy.md
+  [✓] ../assets/7FC62AFC-1EFF-4B13-9A8B-B4CE572783F7.png
+
+  1 links checked.
+
+FILE: ./UserGuide/Feature/Agent.md
+  [✓] assets/16896684799942.jpg
+  [✓] assets/16896685429293.jpg
+  [✓] assets/16896686968472.jpg
+  [✓] assets/16896687243683.jpg
+  [✓] assets/16896688342206.jpg
+  [✓] assets/16896688691787.jpg
+  [✓] assets/16896689679952.jpg
+  [✓] assets/16896798193003.jpg
+
+  8 links checked.
+
+FILE: ./UserGuide/Feature/CloudArea.md
+  [✓] assets/16896701899232.jpg
+  [✓] assets/16896702340291.jpg
+  [✓] assets/16896702791137.jpg
+  [✓] assets/16896703111353.jpg
+  [✓] assets/16896704371081.jpg
+  [✓] assets/16896704758555.jpg
+
+  6 links checked.
+
+FILE: ./UserGuide/Feature/Globe.md
+  [✓] assets/16896706616007.jpg
+  [✓] assets/16896707705402.jpg
+
+  2 links checked.
+
+FILE: ./UserGuide/Feature/History.md
+  [✓] assets/16896705114334.jpg
+  [✓] assets/16896705347085.jpg
+  [✓] assets/16896706176766.jpg
+
+  3 links checked.
+
+FILE: ./UserGuide/Feature/Plugin.md
+  [✓] https://bk.tencent.com/s-mart/
+  [✓] assets/16896693012845.jpg
+  [✓] assets/16896697395219.jpg
+  [✓] assets/16896697846476.jpg
+  [✓] assets/16896698731276.jpg
+  [✓] assets/16896699205351.jpg
+  [✓] assets/16896700503490.jpg
+  [✓] assets/16896700824068.jpg
+
+  8 links checked.
+
+FILE: ./UserGuide/Introduce/Advantage.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./UserGuide/Introduce/Architecture.md
+  [✓] ./media/a219aaeefb7408dd1e4b45c7c942f767.png
+
+  1 links checked.
+
+FILE: ./UserGuide/Introduce/Overview.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./UserGuide/Introduce/QA.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./UserGuide/Introduce/Terms.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./UserGuide/QuickStart/CustomCloudAreaInstallAgent.md
+  [✓] assets/16896678700711.jpg
+  [✓] assets/16896679570824.jpg
+  [✓] assets/16896680008209.jpg
+  [✓] assets/16896680458203.jpg
+  [✓] assets/16896680704424.jpg
+  [✓] assets/16896682817036.jpg
+  [✓] assets/16896683357322.jpg
+
+  7 links checked.
+
+FILE: ./UserGuide/QuickStart/DefaultAreaInstallAgent.md
+  [✓] assets/16896675075963.jpg
+  [✓] assets/16896676323972.jpg
+  [✓] assets/16896677281779.jpg
+  [✓] assets/16896677982203.jpg
+
+  4 links checked.
+
+FILE: ./应用运维文档/安装指南/安装包.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./应用运维文档/安装指南/安装方案.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./应用运维文档/安装指南/安装环境.md
+  [✖] ../../../PaaS%E5%B9%B3%E5%8F%B0/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4%E6%96%87%E6%A1%A3/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97.md
+
+  1 links checked.
+  [✖] ../../../PaaS%E5%B9%B3%E5%8F%B0/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4%E6%96%87%E6%A1%A3/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97.md → Status: 400
+
+FILE: ./应用运维文档/术语解释/术语和定义.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./应用运维文档/系统概述/系统功能.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./应用运维文档/系统概述/运营环境.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./应用运维文档/编写目的/编写目的.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./应用运维文档/部署架构图/系统外部接口.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./应用运维文档/部署架构图/系统逻辑架构.md
+  [✓] media/%E8%8A%82%E7%82%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png
+
+  1 links checked.
+
+FILE: ./应用运维文档/部署架构图/系统部署架构.md
+  [✓] media/%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2%E6%9E%B6%E6%9E%84.png
+
+  1 links checked.
+
+FILE: ./应用运维文档/附录/参考文档.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./开发架构文档/子系统结构和功能/安装AGENT.md
+  [✓] media/%E5%AE%89%E8%A3%85AGENT%E6%B5%81%E7%A8%8B.png
+
+  1 links checked.
+
+FILE: ./开发架构文档/子系统结构和功能/安装P-AGENT.md
+  [✓] media/%E5%AE%89%E8%A3%85P-AGENT%E6%B5%81%E7%A8%8B.png
+
+  1 links checked.
+
+FILE: ./开发架构文档/子系统结构和功能/安装PROXY.md
+  [✓] media/%E5%AE%89%E8%A3%85PROXY%E6%B5%81%E7%A8%8B.png
+
+  1 links checked.
+
+FILE: ./开发架构文档/常见问题/FAQ.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./开发架构文档/术语解释/TermsAndDefinitions.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./开发架构文档/系统可用性/BackgroundNodeMan.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./开发架构文档/系统可用性/SaaSNodeMan.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./开发架构文档/系统性能/SystemPerformance.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./开发架构文档/系统概述/OperatingEnvironment.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./开发架构文档/系统概述/SystemFunctions.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./开发架构文档/系统设计/InstallProxy.md
+  [✓] media/%E5%AE%89%E8%A3%85Proxy-Pipeline%E7%BC%96%E6%8E%92.png
+
+  1 links checked.
+
+FILE: ./开发架构文档/系统设计/SystemDesign.md
+  [✓] media/%E8%8A%82%E7%82%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png
+
+  1 links checked.
+
+FILE: ./开发架构文档/编写目的/PurposeOfWriting.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./开发架构文档/附录/参考文档.md
+  No hyperlinks found!
+
+  0 links checked.
+------------------------------------PaaS/1.0-------------------------------
+
+FILE: ./Architecture/PaaS3/Availability.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./Architecture/PaaS3/FAQ.md
+  [✓] ../../../DevelopTools/DevGuideV3/BaseGuide/topics/paas/legacy_migration.md
+
+  1 links checked.
+
+FILE: ./Architecture/PaaS3/Overview.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./Architecture/PaaS3/Performance.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./Architecture/PaaS3/Subsystem.md
+  [✓] media/webfe.png
+  [✓] media/apiserver.png
+  [✓] media/service.png
+
+  3 links checked.
+
+FILE: ./Architecture/PaaS3/SystemDesign.md
+  [✓] media/architecture.png
+
+  1 links checked.
+
+FILE: ./Architecture/PaaS3/Term.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./Architecture/PurposeOfWriting/PurposeOfWriting.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./Operation/PaaS3/Appendix.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./Operation/PaaS3/DeployGuide.md
+
+FILE: ./Operation/PaaS3/docs/configure_ingress_front_ip.md
+  [✓] https://cloud.tencent.com/product/clb
+  [✓] ./_images/nginx-ingress-controller.png
+  [✓] ./_images/clb-as-proxy.png
+
+  3 links checked.
+
+FILE: ./Operation/PaaS3/docs/configure_initial_cluster.md
+  [✓] ./configure_ingress_front_ip.md
+  [✓] ./deploy_faq.md
+  [✖] ../cores/paas-stack/README.md
+
+  3 links checked.
+  [✖] ../cores/paas-stack/README.md → Status: 400
+
+FILE: ./Operation/PaaS3/docs/deploy_faq.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./Operation/PaaS3/Overview.md
+  [✓] media/arch.png
+
+  1 links checked.
+
+FILE: ./Operation/PaaS3/Term.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./Operation/PurposeOfWriting/PurposeOfWriting.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./SUMMARY.md
+  [✓] UserGuide/Overview/README.md
+  [✓] UserGuide/Term/Term.md
+  [✓] UserGuide/Architecture/Architecture.md
+  [✓] UserGuide/QuickStart/UsingSaaS.md
+  [✓] UserGuide/QuickStart/PaaS3DevelopAPP.md
+  [✓] UserGuide/UserCase/PaaS3/SaaSDeployment.md
+  [✓] UserGuide/UserCase/PaaS3/LesscodeDeployment.md
+  [✓] UserGuide/UserCase/PaaS3/ThirdParty.md
+  [✓] UserGuide/UserCase/PaaS3/White.md
+  [✓] UserGuide/UserCase/MagicBox.md
+  [✓] UserGuide/UserCase/send_mail.md
+  [✓] UserGuide/UserCase/send_sms.md
+  [✓] UserGuide/UserCase/send_voice_msg.md
+  [✓] UserGuide/ProductFeatures/PersonalWorkbenchEE.md
+  [✓] UserGuide/ProductFeatures/DockMarket.md
+  [✓] UserGuide/ProductFeatures/DockPersonalCenter.md
+  [✓] UserGuide/ProductFeatures/DevelopService/DevServicesInfoEE.md
+  [✓] UserGuide/ProductFeatures/DevelopService/PaaS3/DevGuide.md
+  [✖] UserGuide/ProductFeatures/SystemManagement/UserManageEE.md
+  [✓] UserGuide/ProductFeatures/SystemManagement/PaaS3/SaaSManage.md
+  [✓] UserGuide/ProductFeatures/SystemManagement/PaaS3/SysOps.md
+  [✓] UserGuide/ProductFeatures/DockStatistics.md
+  [✓] UserGuide/ProductFeatures/DockIAM.md
+  [✓] UserGuide/ProductFeatures/DockUserManage.md
+  [✓] UserGuide/ProductFeatures/AdvancedFeature.md
+  [✓] UserGuide/FAQ/FAQ.md
+  [✖] OperationGuide/PurposeOfWriting/PurposeOfWriting.md
+  [✖] OperationGuide/PaaS3/Term.md
+  [✖] OperationGuide/PaaS3/Overview.md
+  [✖] OperationGuide/PaaS3/docs/DeployGuide.md
+  [✖] OperationGuide/PaaS3/docs/deploy_faq.md
+  [✖] OperationGuide/PaaS3/docs/configure_ingress_front_ip.md
+  [✖] OperationGuide/PaaS3/docs/configure_initial_cluster.md
+  [✖] ArchitectureGuide/PurposeOfWriting/PurposeOfWriting.md
+  [✖] ArchitectureGuide/PaaS3/Term.md
+  [✖] ArchitectureGuide/PaaS3/Overview.md
+  [✖] ArchitectureGuide/PaaS3/SystemDesign.md
+  [✖] ArchitectureGuide/PaaS3/Subsystem.md
+  [✖] ArchitectureGuide/PaaS3/FAQ.md
+
+  39 links checked.
+  [✖] UserGuide/ProductFeatures/SystemManagement/UserManageEE.md → Status: 400
+  [✖] OperationGuide/PurposeOfWriting/PurposeOfWriting.md → Status: 400
+  [✖] OperationGuide/PaaS3/Term.md → Status: 400
+  [✖] OperationGuide/PaaS3/Overview.md → Status: 400
+  [✖] OperationGuide/PaaS3/docs/DeployGuide.md → Status: 400
+  [✖] OperationGuide/PaaS3/docs/deploy_faq.md → Status: 400
+  [✖] OperationGuide/PaaS3/docs/configure_ingress_front_ip.md → Status: 400
+  [✖] OperationGuide/PaaS3/docs/configure_initial_cluster.md → Status: 400
+  [✖] ArchitectureGuide/PurposeOfWriting/PurposeOfWriting.md → Status: 400
+  [✖] ArchitectureGuide/PaaS3/Term.md → Status: 400
+  [✖] ArchitectureGuide/PaaS3/Overview.md → Status: 400
+  [✖] ArchitectureGuide/PaaS3/SystemDesign.md → Status: 400
+  [✖] ArchitectureGuide/PaaS3/Subsystem.md → Status: 400
+  [✖] ArchitectureGuide/PaaS3/FAQ.md → Status: 400
+
+FILE: ./UserGuide/Architecture/Architecture.md
+  [✓] ../assets/Architecturev2.png
+
+  1 links checked.
+
+FILE: ./UserGuide/FAQ/FAQ.md
+  [✓] https://ke.qq.com/course/3030664
+  [✓] http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDgwMjAwMV80NDMwOTZfODAwODAyMDAxXzJf
+  [✓] https://jq.qq.com/?_wv=1027&k=4BcXfIr
+  [✓] https://bk.tencent.com/docs/document/6.0/130/5923
+
+  4 links checked.
+
+FILE: ./UserGuide/Overview/README.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./UserGuide/ProductFeatures/AdvancedFeature.md
+  [✓] ../assets/%E5%9B%BE%E7%89%8745.png
+
+  1 links checked.
+
+FILE: ./UserGuide/ProductFeatures/DevelopService/DevServicesInfoEE.md
+  [✓] ../../assets/dev_all.png
+  [✓] ../../assets/dev_mode.png
+
+  2 links checked.
+
+FILE: ./UserGuide/ProductFeatures/DevelopService/PaaS3/DevGuide.md
+  [✓] ../../../../../DevelopTools/DevGuideV3/BaseGuide/topics/paas/app_intro.md
+
+  1 links checked.
+
+FILE: ./UserGuide/ProductFeatures/DockIAM.md
+  [✖] ../../../IAM/UserGuide/Overview/README.md
+
+  1 links checked.
+  [✖] ../../../IAM/UserGuide/Overview/README.md → Status: 400
+
+FILE: ./UserGuide/ProductFeatures/DockMarket.md
+  [✓] ../assets/DockMarket.png
+
+  1 links checked.
+
+FILE: ./UserGuide/ProductFeatures/DockPersonalCenter.md
+  [✓] ../assets/personcenter_all.png
+
+  1 links checked.
+
+FILE: ./UserGuide/ProductFeatures/DockStatistics.md
+  [✓] ../assets/dock_tongji.png
+
+  1 links checked.
+
+FILE: ./UserGuide/ProductFeatures/DockUserManage.md
+  [✖] ../../../UserManage/UserGuide/Overview/Whatisbkuser.md
+  [✓] ../assets/dock_usermanage.png
+
+  2 links checked.
+  [✖] ../../../UserManage/UserGuide/Overview/Whatisbkuser.md → Status: 400
+
+FILE: ./UserGuide/ProductFeatures/PersonalWorkbenchEE.md
+  [✓] ../assets/login_ee.png
+  [✓] ../assets/desk_fenbu.png
+
+  2 links checked.
+
+FILE: ./UserGuide/ProductFeatures/SystemManagement/PaaS3/SaaSManage.md
+  [✓] ../../../assets/smartsaas.png
+  [✓] ../../../assets/paas3/saas_create.png
+  [✓] ../../../assets/paas3/app_create.png
+
+  3 links checked.
+
+FILE: ./UserGuide/ProductFeatures/SystemManagement/PaaS3/SysOps.md
+  [✖] ../../../../OperationGuide/PaaS3/docs/configure_initial_cluster.md
+
+  1 links checked.
+  [✖] ../../../../OperationGuide/PaaS3/docs/configure_initial_cluster.md → Status: 400
+
+FILE: ./UserGuide/QuickStart/PaaS3DevelopAPP.md
+  [✓] ../assets/paas3/quick_start.png
+
+  1 links checked.
+
+FILE: ./UserGuide/QuickStart/UsingSaaS.md
+  [✓] ../assets/UsingSaaS.png
+
+  1 links checked.
+
+FILE: ./UserGuide/Term/Term.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./UserGuide/UserCase/MagicBox.md
+  [✓] http://magicbox.bk.tencent.com/
+  [✓] ../assets/image063.png
+  [✓] ../assets/image064.png
+
+  3 links checked.
+
+FILE: ./UserGuide/UserCase/noticeWay.md
+  [✓] https://weixin.qq.com/
+  [✓] ../assets/17401.png
+  [✓] ../assets/17402.png
+  [✓] ../assets/17403.png
+  [✓] ../assets/17404.png
+
+  5 links checked.
+
+FILE: ./UserGuide/UserCase/PaaS3/LesscodeDeployment.md
+  [✓] ../../assets/paas3/bk_lesscoe_upload.png
+  [✓] ../../assets/paas3/bk_lesscode_info.png
+  [✓] ../../assets/paas3/bk_lesscode_vars.png
+
+  3 links checked.
+
+FILE: ./UserGuide/UserCase/PaaS3/SaaSDeployment.md
+  [✓] ../../assets/paas3/saas_create.png
+  [✓] ../../assets/paas3/saas_deploy.png
+
+  2 links checked.
+
+FILE: ./UserGuide/UserCase/PaaS3/ThirdParty.md
+  [✓] ../../assets/paas3/third_app_create.png
+  [✓] ../../assets/paas3/third_app_deploy.png
+
+  2 links checked.
+
+FILE: ./UserGuide/UserCase/PaaS3/White.md
+  No hyperlinks found!
+
+  0 links checked.
+
+FILE: ./UserGuide/UserCase/send_mail.md
+  [✓] https://service.mail.qq.com/cgi-bin/help?subtype=1&&id=20010&&no=1000557
+  [✓] ../assets/noticeWay01.png
+  [✓] ../assets/noticeWay02.png
+  [✓] ../assets/noticeWay03.png
+
+  4 links checked.
+
+FILE: ./UserGuide/UserCase/send_sms.md
+  [✓] ../assets/markdown-img-paste-20200403173430929.png
+  [✓] ../assets/noticeWay06.png
+  [✓] ../assets/noticeWay07.png
+  [✓] ../assets/markdown-img-paste-20200403173623741.png
+  [✓] ../assets/markdown-img-paste-20200403173813685.png
+  [✓] ../assets/markdown-img-paste-20200403172817676.png
+  [✓] ../assets/noticeWay04.png
+  [✓] ../assets/noticeWay05.png
+
+  8 links checked.
+
+FILE: ./UserGuide/UserCase/send_voice_msg.md
+  [✓] ../assets/markdown-img-paste-20200403173430929.png
+  [✓] ../assets/markdown-img-paste-20200407195612299.png
+  [✓] ../assets/markdown-img-paste-20200407203051995.png
+  [✓] ../assets/2020040720315877.png
+  [✓] ../assets/send_voice_msg03.png
+
+  5 links checked.
+
+FILE: ./UserGuide/UserCase/send_weixin.md
+  [✓] ../assets/2020040720315877.png
+  [✓] ../assets/send_voice_msg03.png
+
+  2 links checked.

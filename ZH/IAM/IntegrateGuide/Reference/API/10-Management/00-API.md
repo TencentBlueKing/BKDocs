@@ -19,4 +19,4 @@
 - [用户组按操作回收权限](19-RevokActionPolicyToGroup.md)
 - [查询用户的分级管理员列表](13-ListUserJoinGradeManager.md)
 - [查询用户在某个分级管理员下的加入的用户组列表](14-ListUserJoinGroupInGradeManager.md)
-- [创建用户组申请单据](15-CreateGroupApplication.md)
+- [创建用户组申请单据](./15-CreateGroupApplication.md)
