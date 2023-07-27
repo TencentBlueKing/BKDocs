@@ -70,6 +70,15 @@ yum install -y jq unzip uuid
 >
 >CentOS 7 在 **`epel`源** 提供了 `jq-1.6`。如果提示 `No package jq available.`，请先确保 **`epel`源** 可用。
 
+
+# 安装下载脚本
+CentOS 支持在当前用户的 `bin` 目录下安装命令：
+``` bash
+mkdir ~/bin/
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh -o ~/bin/bkdl-7.1-stable.sh
+chmod +x ~/bin/bkdl-7.1-stable.sh
+```
+
 # 可选：配置 ssh 免密登录
 >**提示**
 >

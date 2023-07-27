@@ -222,7 +222,7 @@ kubectl exec -i -n blueking deploy/bkpaas3-apiserver-web -- python manage.py she
 
 >**提示**
 >
->如果启用 SLI，会大幅提高 `influxdb` 及 `elasticsearch` 的磁盘及内存开销。建议额外准备 300G 磁盘及 4GB 内存余量。
+>如果启用 SLI，会大幅提高 `influxdb` 及 `elasticsearch` 的磁盘及内存开销。建议额外准备 300G 磁盘及 4GB 内存余量。同时磁盘 IO 压力大增，强烈建议使用 SSD 存储。
 
 ### 检查 servicemonitor 资源
 请先完成 “容器监控数据上报”，并确保 “观测场景” —— “Kubernetes” 界面有监控数据。
@@ -270,6 +270,14 @@ helmfile -f 04-bklog-search.yaml.gotmpl apply  # 变更日志平台
 ``` plain
 Error: unable to build kubernetes objects from release manifest: unable to recognize "": no matches for kind "ServiceMonitor" in version "monitoring.coreos.com/v1"
 ```
+
+### 关闭指标上报
+如果启用 SLI Metrics 后，导致环境不稳定，可以关闭 SLI Metrics 上报。
+
+先修改全局配置文件：`environments/default/custom.yaml`，将 `.serviceMonitor.enabled` 改为 `false`，或者将配置项删掉。
+
+然后参考上面的 “重启待上报指标的平台” 章节变更各 release。待重启完毕即会停止上报。
+
 
 ### 导入仪表盘
 登录监控平台，并切换到“仪表盘”界面。

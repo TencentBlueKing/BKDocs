@@ -13,7 +13,7 @@
 
 在 **中控机** 执行如下命令下载文件：
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur latest gsec
+bkdl-7.1-stable.sh -ur latest gsec
 ```
 上传 Agent 到 节点管理：
 ``` bash
@@ -30,7 +30,7 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 
 在 **中控机** 执行如下命令下载文件：
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur latest gse_plugins_freq
+bkdl-7.1-stable.sh -ur latest gse_plugins_freq
 ```
 上传 插件包 到 节点管理：
 ``` bash
@@ -58,7 +58,7 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 
 在 **中控机** 执行如下命令下载文件：
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur latest gsep
+bkdl-7.1-stable.sh -ur latest gsep
 ```
 上传 Proxy 到 节点管理：
 ``` bash

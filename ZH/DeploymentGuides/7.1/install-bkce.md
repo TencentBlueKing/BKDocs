@@ -11,7 +11,7 @@
 
 请在 **中控机** 使用如下命令下载蓝鲸 helmfile 包及公共证书。
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur latest base demo
+bkdl-7.1-stable.sh -ur latest base demo
 ```
 
 这些文件默认放在了 `~/bkce7.1/` 目录，接下来的部署过程中，默认工作目录为 `~/bkce7.1-install/blueking/`。
@@ -414,11 +414,11 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 ## 一键部署基础套餐 SaaS
 在 **中控机** 下载所需的文件。
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur latest saas  # 下载SaaS安装包及节点管理托管的常用文件
+bkdl-7.1-stable.sh -ur latest saas  # 下载SaaS安装包及节点管理托管的常用文件
 ```
 如果你计划管控多个云区域的主机，或者管控 32 位操作系统主机，请补充下载完整的待托管文件：
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur latest nm_gse_full  # 节点管理托管的全部文件
+bkdl-7.1-stable.sh -ur latest nm_gse_full  # 节点管理托管的全部文件
 ```
 
 在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境。

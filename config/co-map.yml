@@ -127,55 +127,67 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   PaaS3.0/faq/deploy#Python 安装依赖时提示缺少 setuptools_rust 模块: ZH/PaaS/DevelopTools/BaseGuide/faq/deploy.md
   PaaS3.0/faq/frame_node#npm安装依赖包提示找不到匹配的版本: ZH/PaaS/DevelopTools/BaseGuide/faq/frame_node.md
   PaaS3.0/faq/platform#为什么有的进程无法使用访问控制台功能: ZH/PaaS/DevelopTools/BaseGuide/faq/platform.md
-  # DOCS_URL_PREFIX': 'https://bk.tencent.com/docs' 无markdown/
-  quickstart/: markdown/ZH/PaaS/DevelopTools/BaseGuide/quickstart/python/python_preparations.md
-  topics/: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/app_intro.md
-  sdk/: markdown/ZH/PaaS/DevelopTools/BaseGuide/sdk/index.md
-  quickstart/python/python_hello_world: markdown/ZH/PaaS/DevelopTools/BaseGuide/quickstart/python/python_hello_world.md
-  quickstart/python/python_setup_dev: markdown/ZH/PaaS/DevelopTools/BaseGuide/quickstart/python/python_setup_dev.md
-  topics/paas/deploy_intro: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/deploy_intro.md
-  topics/company_tencent/python_framework_usage: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/company_tencent/python_framework_usage.md
-  quickstart/python/python_api_example: markdown/ZH/PaaS/DevelopTools/BaseGuide/quickstart/python/python_api_example.md
-  topics/paas/app_entry_intro#section-3: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/app_entry_intro.md
-  quickstart/golang/golang_preparations: markdown/ZH/PaaS/DevelopTools/BaseGuide/quickstart/golang/golang_preparations.md
-  topics/paas/multi_modules_intro: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/multi_modules_intro.md
-  topics/paas/tc_git_oauth: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/tc_git_oauth.md
-  topics/paas/access_control/user: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/access_control/user.md
-  topics/paas/multi_modules_intro#%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%BB%E6%A8%A1%E5%9D%97: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/multi_modules_intro.md
-  topics/paas/pa_custom_intro: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/pa_custom_intro.md
-  topics/paas/pa_introduction: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/pa_introduction.md
-  topics/paas/pa_ingress_intro: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/pa_ingress_intro.md
-  topics/paas/pa_ingress_intro#%E8%AE%BF%E9%97%AE%E6%97%A5%E5%BF%97%E7%BB%9F%E8%AE%A1%E7%9A%84-uv-%E6%98%AF%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E7%9A%84: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/pa_ingress_intro.md
-  topics/paas/ci: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/services/svc_otel.md
-  topics/paas/process_procfile#%E4%BB%80%E4%B9%88%E6%98%AFprocfile: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/process_procfile.md
-  topics/paas/process_procfile#section: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/process_procfile.md
-  topics/paas/entry_proc_services#%E8%BF%9B%E7%A8%8B%E9%97%B4%E5%A6%82%E4%BD%95%E9%80%9A%E4%BF%A1: markdown/H/PaaS/DevelopTools/BaseGuide/topics/paas/entry_proc_services.md
-  topics/paas/app_entry_intro#section-1: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/app_entry_intro.md
-  topics/paas/entry_proc_services: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/entry_proc_services.md
-  topics/paas/builtin_configvars#%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/builtin_configvars.md
-  topics/paas/log_query_syntax: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_query_syntax.md
-  topics/paas/log_empty: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_empty.md
-  topics/paas/log_intro#%E5%A6%82%E4%BD%95%E6%9F%A5%E8%AF%A2%E5%BA%94%E7%94%A8%E6%97%A5%E5%BF%97: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_intro.md
-  topics/paas/monitoring/intro: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_intro.md
-  topics/paas/legacy_migration: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/legacy_migration.md
-  topics/paas/services/index:  markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/services/index.md
-  quickstart/node/node_preparations: markdown/ZH/PaaS/DevelopTools/BaseGuide/quickstart/node/node_preparations.md
-  topics/bkui/with-python: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/bkui/with-python.md
-  topics/paas/deployment_directory: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/deployment_directory.md
-  topics/paas/process_procfile: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/process_procfile.md
-  topics/paas/app_desc: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/app_desc.md
-  topics/paas/monitoring/handle_slow_query_alerts#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E6%85%A2%E6%9F%A5%E8%AF%A2%E7%9A%84-sql-%E8%AF%AD%E5%8F%A5: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/monitoring/handle_slow_query_alerts.md
-  topics/paas/deploy_flow#%E4%BD%BF%E7%94%A8-arm-%E6%9E%B6%E6%9E%84%E7%9A%84%E6%9C%BA%E5%99%A8%E5%A6%82%E4%BD%95%E6%9E%84%E5%BB%BA-x86-%E5%B9%B3%E5%8F%B0%E9%95%9C%E5%83%8F: 
-  topics/paas/app_desc#%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AEsvc_discovery: markdown/ZH/PaaS/DevelopTools/BaseGuide/topics/paas/app_desc.md
-  quickstart/docker/docker_hello_world: markdown/ZH/PaaS/DevelopTools/BaseGuide/quickstart/docker/docker_hello_world.md
+  APIGateway: ZH/APIGateway/1.10/UserGuide/README.md
+  APIGateway/apigateway/reference/log-search-specification.md: ZH/APIGateway/1.10/UserGuide/apigateway/reference/log-search-specification.md
+  APIGateway/apigateway/use-api/bk-user.md: ZH/APIGateway/1.10/UserGuide/apigateway/use-api/bk-user.md
+  APIGateway/apigateway/reference/template-vars.md: ZH/APIGateway/1.10/UserGuide/apigateway/reference/template-vars.md
+  APIGateway/apigateway/reference/authorization.md: ZH/APIGateway/1.10/UserGuide/apigateway/reference/authorization.md
+  APIGateway/apigateway/reference/swagger.md: ZH/APIGateway/1.10/UserGuide/apigateway/reference/swagger.md
+  APIGateway/apigateway/plugins/cors.md: ZH/APIGateway/1.10/UserGuide/README.md
+  APIGateway/apigateway/plugins/circuit-breaker.md: ZH/APIGateway/1.10/UserGuide/README.md
+  APIGateway/apigateway/plugins/rate-limit.md: ZH/APIGateway/1.10/UserGuide/README.md
+  APIGateway/apigateway/reference/authorization.md: ZH/APIGateway/1.10/UserGuide/apigateway/reference/authorization.md
+  APIGateway/apigateway/reference/user-type.md: ZH/APIGateway/1.10/UserGuide/apigateway/reference/user-type.md
+  APIGateway/apigateway/faq/error-codes.md: ZH/APIGateway/1.10/UserGuide/apigateway/faq/error-codes.md
 
-  开发指南/SaaS开发/开发进阶/bkui/bkui.md: markdown/ZH/PaaS/DevelopTools/DevGuideV2/SaaS_Guide/DevAdvanced/bkui/bkui.md
-  APIGateway/apigateway/use-api/use-apigw-api.md: markdown/ZH/APIGateway/1.10/UserGuide/apigateway/use-api/use-apigw-api.md
-  APIGateway/apigateway/quickstart/create-api-with-http-backend.md: markdown/ZH/APIGateway/1.10/UserGuide/apigateway/quickstart/create-api-with-http-backend.md
-  APIGateway/apigateway/faq/use-apigw-api.md: markdown/ZH/APIGateway/1.10/UserGuide/apigateway/faq/use-apigw-api.md
-  开发指南/开发规范/后台开发规范/README.md: markdown/ZH/DevelopGuide/DevSpecification/BackendDevStandards/README.md
-  开发指南/开发规范/前端开发规范/README.md: markdown/ZH/DevelopGuide/DevSpecification/FrontendDevSpec/README.md
-  faq/saas_dev.md: markdown/ZH/PaaS/DevelopTools/DevGuideV3/BaseGuide/faq/saas_dev.md
+  # DOCS_URL_PREFIX': 'https://bk.tencent.com/docs' 无markdown/
+  quickstart/: ZH/PaaS/DevelopTools/BaseGuide/quickstart/python/python_preparations.md
+  topics/: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/app_intro.md
+  sdk/: ZH/PaaS/DevelopTools/BaseGuide/sdk/index.md
+  quickstart/python/python_hello_world: ZH/PaaS/DevelopTools/BaseGuide/quickstart/python/python_hello_world.md
+  quickstart/python/python_setup_dev: ZH/PaaS/DevelopTools/BaseGuide/quickstart/python/python_setup_dev.md
+  topics/paas/deploy_intro: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/deploy_intro.md
+  topics/company_tencent/python_framework_usage: ZH/PaaS/DevelopTools/BaseGuide/topics/company_tencent/python_framework_usage.md
+  quickstart/python/python_api_example: ZH/PaaS/DevelopTools/BaseGuide/quickstart/python/python_api_example.md
+  topics/paas/app_entry_intro#section-3: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/app_entry_intro.md
+  quickstart/golang/golang_preparations: ZH/PaaS/DevelopTools/BaseGuide/quickstart/golang/golang_preparations.md
+  topics/paas/multi_modules_intro: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/multi_modules_intro.md
+  topics/paas/tc_git_oauth: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/tc_git_oauth.md
+  topics/paas/access_control/user: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/access_control/user.md
+  topics/paas/multi_modules_intro#%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%BB%E6%A8%A1%E5%9D%97: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/multi_modules_intro.md
+  topics/paas/pa_custom_intro: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/pa_custom_intro.md
+  topics/paas/pa_introduction: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/pa_introduction.md
+  topics/paas/pa_ingress_intro: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/pa_ingress_intro.md
+  topics/paas/pa_ingress_intro#%E8%AE%BF%E9%97%AE%E6%97%A5%E5%BF%97%E7%BB%9F%E8%AE%A1%E7%9A%84-uv-%E6%98%AF%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E7%9A%84: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/pa_ingress_intro.md
+  topics/paas/ci: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/services/svc_otel.md
+  topics/paas/process_procfile#%E4%BB%80%E4%B9%88%E6%98%AFprocfile: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/process_procfile.md
+  topics/paas/process_procfile#section: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/process_procfile.md
+  topics/paas/entry_proc_services#%E8%BF%9B%E7%A8%8B%E9%97%B4%E5%A6%82%E4%BD%95%E9%80%9A%E4%BF%A1: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/entry_proc_services.md
+  topics/paas/app_entry_intro#section-1: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/app_entry_intro.md
+  topics/paas/entry_proc_services: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/entry_proc_services.md
+  topics/paas/builtin_configvars#%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/builtin_configvars.md
+  topics/paas/log_query_syntax: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_query_syntax.md
+  topics/paas/log_empty: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_empty.md
+  topics/paas/log_intro#%E5%A6%82%E4%BD%95%E6%9F%A5%E8%AF%A2%E5%BA%94%E7%94%A8%E6%97%A5%E5%BF%97: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_intro.md
+  topics/paas/monitoring/intro: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_intro.md
+  topics/paas/legacy_migration: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/legacy_migration.md
+  topics/paas/services/index:  ZH/PaaS/DevelopTools/BaseGuide/topics/paas/services/index.md
+  quickstart/node/node_preparations: ZH/PaaS/DevelopTools/BaseGuide/quickstart/node/node_preparations.md
+  topics/bkui/with-python: ZH/PaaS/DevelopTools/BaseGuide/topics/bkui/with-python.md
+  topics/paas/deployment_directory: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/deployment_directory.md
+  topics/paas/process_procfile: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/process_procfile.md
+  topics/paas/app_desc: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/app_desc.md
+  topics/paas/monitoring/handle_slow_query_alerts#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E6%85%A2%E6%9F%A5%E8%AF%A2%E7%9A%84-sql-%E8%AF%AD%E5%8F%A5: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/monitoring/handle_slow_query_alerts.md
+  # topics/paas/deploy_flow#%E4%BD%BF%E7%94%A8-arm-%E6%9E%B6%E6%9E%84%E7%9A%84%E6%9C%BA%E5%99%A8%E5%A6%82%E4%BD%95%E6%9E%84%E5%BB%BA-x86-%E5%B9%B3%E5%8F%B0%E9%95%9C%E5%83%8F: 
+  topics/paas/app_desc#%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AEsvc_discovery: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/app_desc.md
+  quickstart/docker/docker_hello_world: ZH/PaaS/DevelopTools/BaseGuide/quickstart/docker/docker_hello_world.md
+  开发指南/SaaS开发/开发进阶/bkui/bkui.md: ZH/PaaS/DevelopTools/DevGuideV2/SaaS_Guide/DevAdvanced/bkui/bkui.md
+  APIGateway/apigateway/use-api/use-apigw-api.md: ZH/APIGateway/1.10/UserGuide/apigateway/use-api/use-apigw-api.md
+  APIGateway/apigateway/quickstart/create-api-with-http-backend.md: ZH/APIGateway/1.10/UserGuide/apigateway/quickstart/create-api-with-http-backend.md
+  APIGateway/apigateway/faq/use-apigw-api.md: ZH/APIGateway/1.10/UserGuide/apigateway/faq/use-apigw-api.md
+  开发指南/开发规范/后台开发规范/README.md: ZH/DevelopGuide/DevSpecification/BackendDevStandards/README.md
+  开发指南/开发规范/前端开发规范/README.md: ZH/DevelopGuide/DevSpecification/FrontendDevSpec/README.md
+  faq/saas_dev.md: ZH/PaaS/DevelopTools/DevGuideV3/BaseGuide/faq/saas_dev.md
 #monitor
   监控平台/产品白皮书/scene-process/process_monitor_overview.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-process/process_monitor_overview.md
   监控平台/产品白皮书/alarm-configurations/notify_case.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/notify_case.md
@@ -213,6 +225,10 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   监控平台/产品白皮书/scene-k8s/k8s_default_rules.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-k8s/k8s_default_rules.md
   监控平台/产品白皮书/integrations-metrics/what_metrics.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/integrations-metrics/what_metrics.md
   监控平台/产品白皮书/integrations-metric-plugins/plugins.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/integrations-metric-plugins/plugins.md
+  产品白皮书/scene-synthetic/synthetic_monitor.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-synthetic/synthetic_monitor.md
+  产品白皮书/scene-synthetic/synthetic_default_rules.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-synthetic/synthetic_monitor.md
+  产品白皮书/scene-synthetic/synthetic_metrics.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-synthetic/synthetic_monitor.md
+
 #itsm
   流程服务/产品白皮书/产品简介/README.md: ZH/ITSM/UserGuide/Introduce/README.md
 #日志平台

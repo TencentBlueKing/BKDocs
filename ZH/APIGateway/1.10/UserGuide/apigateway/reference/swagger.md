@@ -1,4 +1,4 @@
-# Swagger 说明文档
+1.10/UserGuide/apigateway/reference/swagger.md# Swagger 说明文档
 
 Swagger 是一种 API 协议描述的规范，被广泛用于描述 API 接口的定义。蓝鲸 API 网关采用 Swagger 2.0 协议管理网关资源导入、导出的配置文件。
 
