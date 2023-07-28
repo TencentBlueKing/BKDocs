@@ -128,3 +128,5 @@
 * [产品运行异常维护]()
     * [自监控服务异常](产品白皮书/运行异常维护FAQ/自监控异常.md) 
 * [结语](产品白皮书/conclusion/conclusion.md)
+* [监控采集器框架下载](../../Monitor/downloads/collector.md)
+* [监控采集器插件下载](../../Monitor/downloads/gse_plugins.md)

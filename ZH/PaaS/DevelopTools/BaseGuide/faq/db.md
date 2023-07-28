@@ -12,11 +12,3 @@
 
 [如何导出数据](../topics/tricks/py_how_to_export_django_models_data.md)
 
-### 使用蓝鲸对象存储服务，在 devnet 上面手动上传文件失败
-
-devnet 机器可以使用 s3cmd 访问, 请参考: [使用 s3cmd 访问 蓝鲸对象存储服务](../sdk/bkstorages/index.md)
-
-### 使用 ceph 存储后，访问提示 NoSuchKey ，测试环境正常，正式环境异常。
-
-NoSuckKey 是文件不存在。可能是正式环境存储容量已满，而导致文件没有传上去，可以自主扩容下。
-

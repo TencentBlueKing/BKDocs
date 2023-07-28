@@ -4,7 +4,8 @@
 
 | 名字               | 版本号    | 大小   | 简介                                      | 操作                                                                       |
 | -------------------| -------- | ------ | ----------------------------------------| ---------------------------------------------------------------------------------------- |
-| Python 开发框架 V3   | 4.4.2.167 | 0.9M   | 蓝鲸 SaaS 统一 Python 开发框架 V3       | [下载](https://bktencent-1252002024.file.myqcloud.com/framework_4.4.2.167.tar.gz) |
+| Python 开发框架 V3   | 参考根目录下的 VERSION 文件 | 0.9M   | Python + Django3.x，集成用户鉴权、日志处理等基础功能模块      | [下载](https://bkpaas-runtimes-1252002024.cos.ap-shanghai.myqcloud.com/bk-app-framework/open/dj_auth_template_blueapps_dj2.tar.gz) |
+| 蓝鲸应用前端开发框架   | 参考根目录下的 VERSION 文件 | 66KB   | Node10.x + Express4.x + Vue2.0，集成蓝鲸Vue组件库、Mock服务、统一登录       | [下载](https://bkpaas-runtimes-1252002024.cos.ap-shanghai.myqcloud.com/bk-app-framework/open/node-js-bk-magic-vue-spa.tar.gz) |
 | Python 开发样例 V3   | 4.4.2.167 | 2.04 MB | 蓝鲸 SaaS 统一 Python 开发样例 V3      | [下载](https://bktencent-1252002024.file.myqcloud.com/fw_example_4.4.2.167.tar.gz) |
 | 微信公众号 H5        | 1.0.0    | 72KB   | 微信公众号 H5 模板                       | [下载](https://bktencent-1252002024.file.myqcloud.com/framework_weixin_package.tar.gz) |
 | 微信小程序          | 1.0.0    | 340KB  | 微信小程序模板                            | [下载](https://bktencent-1252002024.file.myqcloud.com/framework_miniweixin_package.tar.gz) |

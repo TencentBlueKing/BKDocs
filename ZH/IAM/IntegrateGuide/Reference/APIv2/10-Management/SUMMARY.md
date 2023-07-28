@@ -1,6 +1,6 @@
 # Summary
 
-## 权限中心接入
+## 接入系统管理类
 * [概览](00-API.md)
 * [名词及概念](./00-Concepts.md)
 * [创建用户组](./06-CreateGroup.md)

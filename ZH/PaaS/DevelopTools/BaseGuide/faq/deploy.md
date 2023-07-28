@@ -154,3 +154,15 @@ PIP_VERSION=21.0
 ```
 
 重新部署即可。
+
+
+### Python 安装 greenlet 包时报错：error: command 'gcc' failed with exit status 1
+
+Python 开发框架老版的 requirements.txt 中添加了 `eventlet==0.31.0`，在安装 eventlet 包时会依赖安装 greenlet，greenlet 新的 2.0.x 的版本在平台安装会报错。
+
+解决方案：在 requirements.txt 中添加：
+```
+greenlet==1.1.3 
+```
+
+如上述方法不能解决，也可参考文档 [如何安装 apt 包](../topics/tricks/py_how_to_install_apt_packages.md) 通过 apt 来安装依赖的软件。

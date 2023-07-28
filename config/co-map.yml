@@ -34,6 +34,12 @@ id_docs_map:  #https://bk.tencent.com/docs/document/7.0/233/32616
   /document/6.0/145/6623: ZH/ITSM/2.5/产品白皮书/产品简介/README.md
   /document/7.0/250/46230: ZH/UserManage/IntegrateGuide/Docking_enterprise_login_system/use_bk_login.md
   /document/6.1/192/22891: ZH/downloads/7.0/Index.md
+  /document/7.0/253/69753: ZH/DeploymentGuides/7.1/index.md
+  /document/7.0/253/69752: ZH/DeploymentGuides/7.1/prepare.md
+  /document/7.0/253/69756: ZH/DeploymentGuides/7.1/get-k8s-create-bcssh.md
+  /document/7.0/253/69739: ZH/DeploymentGuides/7.1/prepare-bkctrl.md
+  /document/7.0/253/69744: ZH/DeploymentGuides/7.1/install-bkce.md
+
 # 各产品任意文档跳到产品首页
   /document/7.0/168/: ZH/PaaS/1.0/UserGuide/Overview/README.md
   /document/7.0/170/: ZH/PaaS/1.0/UserGuide/Overview/README.md
@@ -189,6 +195,7 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   开发指南/开发规范/前端开发规范/README.md: ZH/DevelopGuide/DevSpecification/FrontendDevSpec/README.md
   faq/saas_dev.md: ZH/PaaS/DevelopTools/DevGuideV3/BaseGuide/faq/saas_dev.md
 #monitor
+  监控平台/产品白皮书/data-visualization/dashboard.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/data-visualization/dashboard.md
   监控平台/产品白皮书/scene-process/process_monitor_overview.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-process/process_monitor_overview.md
   监控平台/产品白皮书/alarm-configurations/notify_case.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/notify_case.md
   监控平台/产品白皮书/alarm-configurations/notify_setting.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/notify_setting.md
@@ -228,7 +235,9 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   产品白皮书/scene-synthetic/synthetic_monitor.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-synthetic/synthetic_monitor.md
   产品白皮书/scene-synthetic/synthetic_default_rules.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-synthetic/synthetic_monitor.md
   产品白皮书/scene-synthetic/synthetic_metrics.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-synthetic/synthetic_monitor.md
-
+  产品白皮书/scene-apm/apm_monitor_overview.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-apm/apm_monitor_overview.md
+  产品白皮书/scene-apm/apm_metrics.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-apm/apm_metrics.md
+  产品白皮书/scene-apm/apm_default_rules.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-apm/apm_default_rules.md
 #itsm
   流程服务/产品白皮书/产品简介/README.md: ZH/ITSM/UserGuide/Introduce/README.md
 #日志平台

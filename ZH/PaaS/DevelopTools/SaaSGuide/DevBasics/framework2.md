@@ -66,7 +66,7 @@
 
 - 日志级别和路径
 
-开发框架默认配置的日志级别是 INFO，你可以在 config/default.py 修改 LOG_LEVEL 变量，会对所有运行环境生效，你也可以单独修改 config/dev.py、config/stag.py、config/prod.py 文件，详情请参考“[日志使用](./framework2.md#日志使用)”。
+开发框架默认配置的日志级别是 INFO，你可以在 config/default.py 修改 LOG_LEVEL 变量，会对所有运行环境生效，你也可以单独修改 config/dev.py、config/stag.py、config/prod.py 文件，详情请参考“[日志使用](framework2.md#日志使用)”。
 
 你不需要关心线上运行环境的日志路径，这些开发框架已经自动帮你配置了；
 
@@ -346,7 +346,7 @@ python manage.py celery beat -l info
 
 ### 调整 celery worker 并发数
 
-- CELERYD_CONCURRENCY 参数官方说明：[官方文档](http://docs.celeryproject.org/en/v2.2.4/configuration.html#celeryd-prefetch-multiplier)
+- CELERYD_CONCURRENCY 参数官方说明：[官方文档](https://docs.celeryq.dev/en/stable/userguide/configuration.html#std-setting-worker_concurrency)
 
 - 目前开发框架设置的 celery 并发数是 2，如需调整，有 2 种方法：
 

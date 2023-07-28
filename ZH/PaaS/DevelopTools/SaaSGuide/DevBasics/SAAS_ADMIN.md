@@ -6,7 +6,7 @@
 
 2. 环境准备
 
-   - Python 开发框架: 版本 >= 3.1.0.75 [点我下载](../../../../../DevelopGuide/7.0/DevTools.md)
+   - Python 开发框架: 版本 >= 3.1.0.75 [点我下载](../../../../DevelopGuide/7.0/DevTools.md)
 
    - 将开发框架 blueapps 模块替换已有 SaaS 的 blueapps 模块
 

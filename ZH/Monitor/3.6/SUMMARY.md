@@ -215,4 +215,6 @@
     * [启停告警策略](APIDocs/zh-hans/switch_alarm_strategy.md)
     * [批量更新策略局部配置](APIDocs/zh-hans/update_partial_strategy_v2.md)
 * [错误码](../ErrorCode/monitor.md)
+* [监控采集器框架下载](../../Monitor/downloads/collector.md)
+* [监控采集器插件下载](../../Monitor/downloads/gse_plugins.md)
 
