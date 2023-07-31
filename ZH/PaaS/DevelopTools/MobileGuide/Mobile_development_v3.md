@@ -20,7 +20,7 @@
 
 ### 获取 framework_weixin_package.tar.gz
 
-* 蓝鲸文档中心 > 下载资源 > [工具下载](../../../../downloads/7.0/Index.md)
+* 蓝鲸文档中心 > 下载资源 > [工具下载](../../../downloads/7.0/Index.md)
 
 > framework_weixin_package.tar.gz 解压
 
