@@ -3540,6 +3540,7 @@ id_docs_map:  #https://bk.tencent.com/docs/document/7.0/233/32616
   /document/7.0/246/39409: ZH/JOB/3.6/UserGuide/Quick-Starts/6.Try-to-run-the-Job-plan.md
   /document/6.0/125/10590: ZH/IAM/IntegrateGuide/Reference/API/10-Management/13-ListUserJoinGradeManager.md
 # 各产品任意文档跳到产品首页
+  /document/7.0/125/: ZH/PaaS/1.0/UserGuide/Overview/README.md
   /document/7.0/168/: ZH/PaaS/1.0/UserGuide/Overview/README.md
   /document/7.0/170/: ZH/PaaS/1.0/UserGuide/Overview/README.md
   /document/7.0/171/: ZH/APIGateway/1.10/UserGuide/README.md
@@ -3567,6 +3568,70 @@ id_docs_map:  #https://bk.tencent.com/docs/document/7.0/233/32616
   /document/7.0/251/: ZH/VersionLog/7.0/intro.md
   /document/7.0/252/: ZH/LessCode/1.0/UserGuide/intro.md
   /document/7.0/253/: ZH/DeploymentGuides/7.1/index.md
+  /document/6.1/125/: ZH/PaaS/1.0/UserGuide/Overview/README.md
+  /document/6.1/174/: ZH/PaaS/2.14/UserGuide/Overview/README.md
+  /document/6.1/175/: ZH/JOB/3.5/产品白皮书/Introduction/What-is-Job.md
+  /document/6.1/177/: ZH/BestPractices/7.0/readme.md
+  /document/6.1/178/: ZH/ITSM/2.6/UserGuide/Introduce/README.md
+  /document/6.1/179/: ZH/APIGateway/1.10/UserGuide/README.md
+  /document/6.1/181/: ZH/DocumentationContributorGuide/7.0/overwrite.md
+  /document/6.1/182/: ZH/QuickStart/7.0/quick-start-v7.0-base.md
+  /document/6.1/183/: ZH/Devops/2.0/UserGuide/intro/README.md
+  /document/6.1/184/: ZH/DeploymentGuides/6.1/产品白皮书/部署方案/README.md
+  /document/6.1/185/: ZH/VersionLog/6.1/v612.md
+  /document/6.1/186/: ZH/SOPS/3.25/UserGuide/Overview/README.md
+  /document/6.1/187/: ZH/Devops/2.0/UserGuide/intro/README.md
+  /document/6.1/188/: ZH/Monitor/3.6/UserGuide/Overview/README.md
+  /document/6.1/189/: ZH/BCS/6.1/产品白皮书/Introduction/README.md
+  /document/6.1/190/: ZH/DevelopGuide/7.0/DevelopGuide.md
+  /document/6.1/191/: ZH/IAM/1.8/UserGuide/Introduce/README.md
+  /document/6.1/192/: ZH/downloads/7.0/Index.md
+  /document/6.1/193/: ZH/GSE/3.6/README.md
+  /document/6.1/194/: ZH/LogSearch/4.3/UserGuide/Intro/README.md
+  /document/6.1/195/: ZH/OnlineGuide/7.0/README.md
+  /document/6.1/198/: ZH/FTA/5.2/产品白皮书/Intro/README.md
+  /document/6.1/199/: ZH/LessCode/1.0/UserGuide/intro.md
+  /document/6.1/200/: ZH/UserManage/2.4/UserGuide/Introduce/README.md
+  /document/6.1/201/: ZH/FAQs/6.1/README.md
+  /document/6.1/202/: ZH/Devops/2.0/UserGuide/intro/README.md
+  /document/6.1/229/: ZH/IAM/IntegrateGuide/HowTo/Guide.md
+  /document/6.1/230/: ZH/Devops/2.0/UserGuide/intro/README.md
+  /document/6.1/254/: ZH/DeploymentGuides/6.2/quick_install_v6.2.0.md
+  /document/6.0/125/: ZH/PaaS/1.0/UserGuide/Overview/README.md
+  /document/6.0/126/: ZH/LogSearch/4.2/产品白皮书/intro/README.md
+  /document/6.0/127/: ZH/DeploymentGuides/6.0/产品白皮书/quick_install_v6.0.2.md
+  /document/6.0/128/: ZH/BestPractices/7.0/readme.md
+  /document/6.0/129/: ZH/Devops/6.0/产品白皮书/产品简介/README.md
+  /document/6.0/131/: ZH/IAM/1.4/产品白皮书/产品简介/README.md
+  /document/6.0/132/: ZH/IAM/1.4/产品白皮书/产品简介/README.md
+  /document/6.0/133/: ZH/FTA/5.2/产品白皮书/Intro/README.md
+  /document/6.0/134/: ZH/Monitor/3.3/产品白皮书/intro/README.md
+  /document/6.0/135/: ZH/Monitor/3.3/产品白皮书/intro/README.md
+  /document/6.0/136/: ZH/Monitor/3.3/产品白皮书/intro/README.md
+  /document/6.0/138/: ZH/DocumentationContributorGuide/7.0/overwrite.md
+  /document/6.0/140/: ZH/SOPS/3.6/产品白皮书/产品简介/README.md
+  /document/6.0/142/: ZH/QuickStart/6.0/quick-start-v6.0-base.md
+  /document/6.0/143/: ZH/GSE/3.5/产品白皮书/产品简介/README.md
+  /document/6.0/144/: ZH/BCS/6.0/产品白皮书/Introduction/README.md
+  /document/6.0/145/: ZH/ITSM/2.5/产品白皮书/产品简介/README.md
+  /document/6.0/146/: ZH/UserManage/2.2/产品白皮书/产品简介/README.md
+  /document/6.0/147/: ZH/UserManage/2.2/产品白皮书/产品简介/README.md
+  /document/6.0/148/: ZH/PaaS/2.12/产品白皮书/产品简介/README.md
+  /document/6.0/149/: ZH/downloads/7.0/Index.md
+  /document/6.0/151/: ZH/FAQs/6.0/README.md
+  /document/6.0/152/: ZH/CMDB/3.9/产品白皮书/产品简介/Overview.md
+  /document/6.0/153/: ZH/CMDB/3.9/产品白皮书/产品简介/Overview.md
+  /document/6.0/154/: ZH/CMDB/3.9/产品白皮书/产品简介/Overview.md
+  /document/6.0/156/: ZH/VersionLog/6.0/v6005.md
+  /document/6.0/157/: ZH/NodeMan/2.0/产品白皮书/Introduce/Overview.md
+  /document/6.0/160/: ZH/IAM/IntegrateGuide/QuickStart/01-Begin.md
+  /document/6.0/162/: ZH/LessCode/1.0/UserGuide/intro.md
+  /document/6.0/163/: ZH/Devops/6.0/产品白皮书/产品简介/README.md
+  /document/6.0/164/: ZH/Devops/6.0/产品白皮书/产品简介/README.md
+  /document/6.0/165/: ZH/OnlineGuide/7.0/README.md
+  /document/6.0/166/: ZH/OnlineGuide/7.0/README.md
+  /document/6.0/167/: ZH/APIGateway/1.10/APIDocs/README.md
+
 feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品白皮书/产品简介/README.md
 #官网首页
   快速入门/quick-start-v7.0-info.md: ZH/QuickStart/7.0/quick-start-v7.0-info.md
@@ -3697,7 +3762,7 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   开发指南/开发规范/前端开发规范/README.md: ZH/DevelopGuide/DevSpecification/FrontendDevSpec/README.md
   faq/saas_dev.md: ZH/PaaS/DevelopTools/DevGuideV3/BaseGuide/faq/saas_dev.md
 #monitor
-  监控平台/产品白皮书/data-visualization/dashboard.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/data-visualization/dashboard.md
+  # 监控平台/产品白皮书/data-visualization/dashboard.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/data-visualization/dashboard.md
   监控平台/产品白皮书/scene-process/process_monitor_overview.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/scene-process/process_monitor_overview.md
   监控平台/产品白皮书/alarm-configurations/notify_case.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/notify_case.md
   监控平台/产品白皮书/alarm-configurations/notify_setting.md: ZH/Monitor/3.6/UserGuide/ProductFeatures/alarm-configurations/notify_setting.md
