@@ -45,6 +45,8 @@
     * [参考指南]()
         * [CMSI 消息组件](UserGuide/component/reference/cmsi-components.md)
         * [发送微信组件](UserGuide/component/reference/send-weixin.md)
+    * [其他]()
+        * [创建组件 API](UserGuide/component/quickstart/create-api.md)
 * [集成开发]()
     * [接入概述](../DevelopTools/README.md)
     * [微信组件自定义接入](../DevelopTools/WeChat.md)
