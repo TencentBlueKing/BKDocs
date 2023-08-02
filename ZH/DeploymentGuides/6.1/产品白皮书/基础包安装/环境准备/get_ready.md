@@ -229,7 +229,7 @@ EOF
     \$INSTALL_PATH：自定义安装目录。
 
     ```bash
-    # 执行前请使用实际的顶级域名 (如：bktencent.com) 和安装目录进行替换
+    # 执行前请使用实际的二级域名 (如：bktencent.com) 和安装目录进行替换
     cd /data/install 
     ./configure -d $BK_DOMAIN -p $INSTALL_PATH
     ```
