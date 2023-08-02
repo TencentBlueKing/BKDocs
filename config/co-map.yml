@@ -3657,7 +3657,7 @@ id_docs_map:  #https://bk.tencent.com/docs/document/7.0/233/32616
   /document/6.1/254/: ZH/DeploymentGuides/6.2/quick_install_v6.2.0.md
   /document/6.0/125/: ZH/PaaS/1.0/UserGuide/Overview/README.md
   /document/6.0/126/: ZH/LogSearch/4.2/产品白皮书/intro/README.md
-  /document/6.0/127/: ZH/DeploymentGuides/6.0/产品白皮书/quick_install_v6.0.2.md
+  /document/6.0/127/: ZH/DeploymentGuides/6.0/产品白皮书/基础包安装/多机部署/quick_install.md
   /document/6.0/128/: ZH/BestPractices/7.0/readme.md
   /document/6.0/129/: ZH/Devops/6.0/产品白皮书/产品简介/README.md
   /document/6.0/131/: ZH/IAM/1.4/产品白皮书/产品简介/README.md
