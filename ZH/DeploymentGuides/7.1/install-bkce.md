@@ -235,6 +235,7 @@ $IP1 bcs-api.$BK_DOMAIN  # 容器管理平台
 $IP1 bklog.$BK_DOMAIN  # 日志平台
 $IP1 bkmonitor.$BK_DOMAIN  # 监控平台
 $IP1 devops.$BK_DOMAIN  # 持续集成平台-蓝盾
+$IP1 lesscode.$BK_DOMAIN  # 可视化开发平台
 EOF
 fi
 ```
@@ -376,8 +377,8 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 
 <a id="paas-runtimes" name="paas-runtimes"></a>
 
-## 可选：上传 PaaS runtimes 到 bkrepo
-具体操作请查阅《[上传 PaaS runtimes 到 bkrepo](paas-upload-runtimes.md)》文档。
+## 推荐：上传 PaaS runtimes 到制品库
+具体操作请查阅《[上传 PaaS runtimes 到制品库](paas-upload-runtimes.md)》文档。
 
 在如下场景下用到：
 1. 目前蓝鲸官方 SaaS 包格式为 `image`，如需部署 `package` 格式的 `S-Mart` 包，需要使用到编译工具。

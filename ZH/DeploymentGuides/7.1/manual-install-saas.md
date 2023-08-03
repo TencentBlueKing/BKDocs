@@ -66,7 +66,7 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 >
 >请选择适配蓝鲸 7.0 的应用，未适配版本可能无法正常运行。
 >
->旧版包的安装过程需要构建工具，默认没有安装，请完成《[上传 PaaS runtimes 到 bkrepo](paas-upload-runtimes.md)》文档。
+>旧版包的安装过程需要构建工具，默认没有安装，请完成《[上传 PaaS runtimes 到制品库](paas-upload-runtimes.md)》文档。
 
 ### 创建应用
 登录 “蓝鲸桌面”，在侧栏导航里打开 “开发者中心”。
@@ -112,7 +112,7 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 共有 **一个模块** 需要部署，详细步骤如下：
 1. 顶部的“模块”可以选择要部署的模块。流程服务（bk_itsm）只有 `default` 模块，故无需切换。
 2. 然后切换下方面板到 “生产环境”。
-3. 展开“选择部署分支”下拉框，在 `image` 分组下选择刚才上传的版本（如果计划部署 `package` 分组下的版本，需要先完成《[上传 PaaS runtimes 到 bkrepo](paas-upload-runtimes.md)》文档）。
+3. 展开“选择部署分支”下拉框，在 `image` 分组下选择刚才上传的版本（如果计划部署 `package` 分组下的版本，需要先完成《[上传 PaaS runtimes 到制品库](paas-upload-runtimes.md)》文档）。
 4. 点击右侧的“部署至生产环境”按钮。部署期间会显示进度及日志。
 
 >**提示**

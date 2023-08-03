@@ -376,6 +376,7 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 5.  卸载 BCS 、蓝盾及蓝鲸基础套餐：
     ``` bash
     NAMESPACE="bcs-system" ./scripts/uninstall.sh -y bcs-services-stack
+    NAMESPACE="bkpaas-app-operator-system" ./scripts/uninstall.sh -y bkpaas-app-operator
     ./scripts/uninstall.sh -y  # 无参数表示删除blueking namespace下的所有release，包括蓝盾
     ```
 6.  删除其他资源：

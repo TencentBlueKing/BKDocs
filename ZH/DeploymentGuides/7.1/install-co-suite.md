@@ -260,10 +260,11 @@ esac
 请在 **中控机** 执行：
 ``` bash
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
-helmfile -f base-blueking.yaml.gotmpl apply  # 变更蓝鲸基础套餐
-helmfile -f 03-bcs.yaml.gotmpl apply  # 变更容器管理平台
-helmfile -f 04-bkmonitor.yaml.gotmpl apply  # 变更监控平台
-helmfile -f 04-bklog-search.yaml.gotmpl apply  # 变更日志平台
+# 变更对应的release
+helmfile -f base-blueking.yaml.gotmpl apply
+helmfile -f 03-bcs.yaml.gotmpl apply
+helmfile -f 04-bkmonitor.yaml.gotmpl apply
+helmfile -f 04-bklog-search.yaml.gotmpl apply
 ```
 
 如果看到如下报错，说明没有正确配置容器监控功能，请重新配置。
@@ -348,7 +349,13 @@ Error: unable to build kubernetes objects from release manifest: unable to recog
 ### 前置检查
 容器日志采集功能需要在所有 k8s node （包括 master ）部署 gse-agent。请先在 “节点管理” 中完成 agent 安装。
 
-完成 “部署容器日志采集器” 章节。
+完成 “部署容器日志采集器” 章节后，可在 **中控机** 检查：
+``` bash
+kubectl get crd bklogconfigs.bk.tencent.com
+```
+预期看到一条记录。
+
+如果显示 `Error from server (NotFound): customresourcedefinitions.apiextensions.k8s.io "bklogconfigs.bk.tencent.com" not found`，请先确保采集器启动成功。
 
 ### 启用日志上报
 修改配置文件，全局启用日志上报功能。
@@ -377,6 +384,7 @@ esac
 
 ``` bash
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
+# 先变更日志平台
 helmfile -f 04-bklog-search.yaml.gotmpl apply
 ```
 
@@ -388,9 +396,10 @@ helmfile -f 04-bklog-search.yaml.gotmpl apply
 请在 **中控机** 执行：
 ``` bash
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
-helmfile -f base-blueking.yaml.gotmpl apply  # 变更蓝鲸基础套餐
-helmfile -f 03-bcs.yaml.gotmpl apply  # 变更容器管理平台
-helmfile -f 04-bkmonitor.yaml.gotmpl apply  # 变更监控平台
+# 然后变更其他平台
+helmfile -f base-blueking.yaml.gotmpl apply
+helmfile -f 03-bcs.yaml.gotmpl apply
+helmfile -f 04-bkmonitor.yaml.gotmpl apply
 ```
 
 注：

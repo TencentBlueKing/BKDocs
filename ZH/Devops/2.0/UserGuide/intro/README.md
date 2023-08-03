@@ -8,7 +8,7 @@
 | [BKCI 是什么？](./bkci.md) | [创建你的第一条流水线](../Quickstarts/Create-your-first-pipeline.md) | [BKCI 硬件规格指南](../Setup/system-requirements/hardware.md) |
 | [BKCI 组件](./terminology/components.md) | [关联你的第一个代码库](../Quickstarts/Link-your-first-repo.md) | [BKCI 系统要求](../Setup/system-requirements/system.md)  |
 | [快速熟悉流水线](./terminology/Learn-pipeline-in-5min.md) | [为你的Git工程开启CI](../Quickstarts/Enable-ci.md) | |
-| [术语解释](./terminology/term.md) | [示例](../Quickstarts/Case/Examples/vars-usage.md) |  |
+| [术语解释](./terminology/Learn-pipeline-in-5min.md) | [示例](../Quickstarts/Case/Examples/vars-usage.md) |  |
 
 | 📔 产品功能 | 🏪 研发商店 | 🤝 一起共建 BKCI |
 | :--- | :--- | :--- |
