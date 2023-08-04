@@ -26,3 +26,4 @@ for ext in "${image_extensions[@]}"; do
 done
 
 echo "文件和图片已成功移动！"
+echo 1 
