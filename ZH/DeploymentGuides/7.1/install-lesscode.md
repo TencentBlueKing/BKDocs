@@ -13,6 +13,8 @@ bkdl-7.1-stable.sh -ur latest lesscode
 ``` bash
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 scripts/setup_bkce7.sh -i lesscode
+# 目前lesscode首次部署会超时，需重新部署一次。此问题修复中。
+scripts/setup_bkce7.sh -i lesscode -f　
 ```
 
 部署完成后，需要配置访问地址，请查阅 “配置访问地址” 章节。
@@ -56,6 +58,7 @@ scripts/setup_bkce7.sh -i lesscode
 1. 切换下方面板到 “生产环境”。
 2. 展开“选择部署分支”下拉框，在 `image` 分组下选择刚才上传的版本。
 3. 点击右侧的“部署至生产环境”按钮。部署期间会显示进度及日志。
+4. 目前 lesscode 首次部署会超时，需 **重新部署** 一次。此问题修复中。
 
 在部署完成后，需要配置访问地址，请继续阅读。
 

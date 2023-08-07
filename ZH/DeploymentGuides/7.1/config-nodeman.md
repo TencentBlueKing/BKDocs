@@ -244,3 +244,5 @@ agent 用途：
 
 # 下一步
 回到《[部署基础套餐](install-bkce.md#next)》文档看看其他操作。
+
+或者[启动蓝鲸 API 测试工具](run-apicheck.md)。

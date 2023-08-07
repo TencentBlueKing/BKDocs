@@ -236,6 +236,7 @@ $IP1 bklog.$BK_DOMAIN  # 日志平台
 $IP1 bkmonitor.$BK_DOMAIN  # 监控平台
 $IP1 devops.$BK_DOMAIN  # 持续集成平台-蓝盾
 $IP1 lesscode.$BK_DOMAIN  # 可视化开发平台
+$IP1 bk-apicheck.$BK_DOMAIN  # apicheck 测试工具
 EOF
 fi
 ```
@@ -454,5 +455,7 @@ scripts/setup_bkce7.sh -i sops
 继续部署：
 * [配置节点管理及安装 Agent](config-nodeman.md)
 * 此时可以同时开始 [部署容器管理平台](install-bcs.md)
+
+安装 Agent 后，可以 [启动蓝鲸 API 测试工具](run-apicheck.md)。
 
 在部署期间，可以在文档中心查看产品文档。
