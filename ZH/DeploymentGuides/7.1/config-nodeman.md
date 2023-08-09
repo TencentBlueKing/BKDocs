@@ -5,15 +5,16 @@
 # 上传 GSE agent
 >**提示**
 >
->* 在之前使用 `./scripts/setup_bkce7.sh -i nodeman` 时，已经完成了此步骤，可以跳过。
+>在之前使用 `./scripts/setup_bkce7.sh -i nodeman` 时，已经完成了此步骤，可以跳过。
 
 >**提示**
 >
 >* 当你需要更新客户端或者加装云区域代理时，可以在下载后使用此命令重新上传。
+>* 我们在 2023-08-08 更新了 2.1.3-beta.3，已经同步更新了下面的下载命令。
 
 在 **中控机** 执行如下命令下载文件：
 ``` bash
-bkdl-7.1-stable.sh -ur latest gsec
+bkdl-7.1-stable.sh -ur latest gsec=2.1.3-beta.3
 ```
 上传 Agent 到 节点管理：
 ``` bash
@@ -26,7 +27,7 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 # 上传 gse 插件包
 >**提示**
 >
->* 在之前使用 `./scripts/setup_bkce7.sh -i nodeman` 时，已经完成了此步骤，可以跳过。
+>在之前使用 `./scripts/setup_bkce7.sh -i nodeman` 时，已经完成了此步骤，可以跳过。
 
 在 **中控机** 执行如下命令下载文件：
 ``` bash

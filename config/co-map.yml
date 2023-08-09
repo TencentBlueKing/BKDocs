@@ -5638,7 +5638,6 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   bk_solutions/CD/BCS/Bcs_app_Rolling_Update_Deployment.md: ZH/BestPractices/CD/BCS/Bcs_app_Rolling_Update_Deployment.md
   bk_solutions/CD/BCS/Bcs_blue_green_deployment.md: ZH/BestPractices/CD/BCS/Bcs_blue_green_deployment.md
   bk_solutions/CD/BCS/Bcs_deploy_nginx_cluster.md: ZH/BestPractices/CD/BCS/Bcs_deploy_nginx_cluster.md
-  持续集成平台/产品白皮书/产品简介/README.md: ZH/ITSM/产品白皮书/产品简介/README.md
   开发指南/开发规范/前端开发规范/JS规范/命名规范.md: ZH/DevelopGuide/DevSpecification/FrontendDevSpec/JSSpec/Naming.md
   开发指南/开发规范/前端开发规范/其它/开源协议简介.md: ZH/DevelopGuide/DevSpecification/FrontendDevSpec/Other/OpenSourceProtocols.md
   开发指南/扩展开发/monitor.md: ZH/Monitor/DevelopTools/monitor.md
@@ -5803,7 +5802,6 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   标准运维/产品白皮书/产品功能/flow.md: ZH/SOPS/产品白皮书/产品功能/flow.md
   标准运维/产品白皮书/产品功能/use.md: ZH/SOPS/产品白皮书/产品功能/use.md
   标准运维/产品白皮书/产品功能/record.md: ZH/SOPS/产品白皮书/产品功能/record.md
-  标准运维/产品白皮书/产品简介/README.md: ZH/ITSM/产品白皮书/产品简介/README.md
   标准运维/产品白皮书/快速入门/Guide1.md: ZH/SOPS/产品白皮书/快速入门/Guide1.md
   标准运维/产品白皮书/快速入门/Guide2.md: ZH/SOPS/产品白皮书/快速入门/Guide2.md
   标准运维/产品白皮书/常见问题/FAQ.md: ZH/SOPS/UserGuide/FAQ/FAQ.md
@@ -5814,7 +5812,6 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   管控平台/产品白皮书/产品功能/DataCollect.md: ZH/GSE/产品白皮书/产品功能/DataCollect.md
   管控平台/产品白皮书/产品功能/FileTrans.md: ZH/GSE/产品白皮书/产品功能/FileTrans.md
   管控平台/产品白皮书/产品功能/ClusterManage.md: ZH/GSE/产品白皮书/产品功能/ClusterManage.md
-  管控平台/产品白皮书/产品简介/README.md: ZH/ITSM/产品白皮书/产品简介/README.md
   管控平台/产品白皮书/特点及优势/Advantages.md: ZH/GSE/产品白皮书/特点及优势/Advantages.md
   管控平台/产品白皮书/结语/Conclusion.md: ZH/GSE/产品白皮书/结语/Conclusion.md
   管控平台/产品白皮书/常见问题/FAQ.md: ZH/GSE/产品白皮书/常见问题/FAQ.md
@@ -5911,7 +5908,6 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   PaaS平台/产品白皮书/产品功能/系统管理/UserManageEE.md: ZH/PaaS/产品白皮书/产品功能/系统管理/UserManageEE.md
   PaaS平台/产品白皮书/产品功能/开发者服务/DevServicesInfoEE.md: ZH/PaaS/UserGuide/ProductFeatures/DevelopService/DevServicesInfoEE.md
   PaaS平台/产品白皮书/产品功能/开发者服务/DevServicesBaseEE.md: ZH/PaaS/产品白皮书/产品功能/开发者服务/DevServicesBaseEE.md
-  PaaS平台/产品白皮书/产品简介/README.md: ZH/ITSM/产品白皮书/产品简介/README.md
   PaaS平台/产品白皮书/快速入门/DevelopAPP.md: ZH/PaaS/产品白皮书/快速入门/DevelopAPP.md
   PaaS平台/产品白皮书/快速入门/UsingSaaS.md: ZH/PaaS/产品白皮书/快速入门/UsingSaaS.md
   PaaS平台/产品白皮书/常见问题/FAQ.md: ZH/PaaS/产品白皮书/常见问题/FAQ.md
@@ -6000,14 +5996,14 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   流程服务/产品白皮书/快速入门/admin_step4.md: ZH/ITSM/产品白皮书/快速入门/admin_step4.md
   流程服务/产品白皮书/产品功能/流程管理/Data_Dictionary.md: ZH/ITSM/产品白皮书/产品功能/流程管理/Data_Dictionary.md
   标准运维/产品白皮书/产品功能/administrator_portal.md: ZH/SOPS/产品白皮书/产品功能/administrator_portal.md
-  用户管理/产品白皮书/产品简介/README.md: ZH/ITSM/产品白皮书/产品简介/README.md
+  用户管理/产品白皮书/产品简介/README.md: ZH/UserManage/2.5/UserGuide/Introduce/README.md
   用户管理/产品白皮书/快速入门/AddMADDirectory.md: ZH/UserManage/产品白皮书/快速入门/AddMADDirectory.md
   用户管理/产品白皮书/快速入门/AddLocalUsers.md: ZH/UserManage/产品白皮书/快速入门/AddLocalUsers.md
   用户管理/产品白皮书/产品架构/Architecture.md: ZH/UserManage/产品白皮书/产品架构/Architecture.md
   用户管理/产品白皮书/核心优势/Feature.md: ZH/UserManage/产品白皮书/核心优势/Feature.md
   用户管理/产品白皮书/产品功能/Directorys.md: ZH/UserManage/产品白皮书/产品功能/Directorys.md
   用户管理/产品白皮书/术语解释/Term.md: ZH/UserManage/产品白皮书/术语解释/Term.md
-  权限中心/产品白皮书/产品简介/README.md: ZH/ITSM/产品白皮书/产品简介/README.md
+  权限中心/产品白皮书/产品简介/README.md: ZH/IAM/1.12/UserGuide/Introduce/README.md
   权限中心/产品白皮书/产品架构/Architecture.md: ZH/UserManage/产品白皮书/产品架构/Architecture.md
   权限中心/产品白皮书/核心优势/Feature.md: ZH/IAM/UserGuide/Advantage/Feature.md
   权限中心/产品白皮书/产品功能/MyApproval.md: ZH/IAM/产品白皮书/产品功能/MyApproval.md
