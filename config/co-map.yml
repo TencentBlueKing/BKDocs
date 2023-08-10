@@ -5725,7 +5725,6 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   监控平台/产品白皮书/faq/Component_Fail_to_Restart_Process.md: ZH/Monitor/产品白皮书/faq/Component_Fail_to_Restart_Process.md
   监控平台/产品白皮书/intro/versions.md: ZH/Monitor/产品白皮书/intro/versions.md
   监控平台/产品白皮书/intro/doc-desc.md: ZH/Monitor/产品白皮书/intro/doc-desc.md
-  监控平台/产品白皮书/intro/README.md: ZH/LogSearch/产品白皮书/intro/README.md
   监控平台/产品白皮书/quickstart/prepare.md: ZH/Monitor/产品白皮书/quickstart/prepare.md
   监控平台/产品白皮书/quickstart/README.md: ZH/LogSearch/产品白皮书/quickstart/README.md
   监控平台/产品白皮书/quickstart/best-practices.md: ZH/Monitor/产品白皮书/quickstart/best-practices.md
@@ -6351,7 +6350,7 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   可视化开发平台/产品功能/custom-compent.md: ZH/LessCode/UserGuide/custom.md
   可视化开发平台/产品功能/variable.md: ZH/LessCode/UserGuide/variable.md
   iam_dev_docs/HowTo/Migration.md: ZH/IAM/IntegrateGuide/HowTo/Solutions/Migration.md
-  代码检查/产品白皮书/Intro/README.md: ZH/FTA/产品白皮书/Intro/README.md
+  代码检查/产品白皮书/Intro/README.md: ZH/Devops/2.0/UserGuide/intro/README.md
   部署指南/产品白皮书/基础包安装/多机部署/install_lesscode.md: ZH/DeploymentGuides/产品白皮书/基础包安装/多机部署/install_lesscode.md
   部署指南/产品白皮书/升级指引/update_of_the_6.0.3_patch.md: ZH/DeploymentGuides/产品白皮书/升级指引/update_of_the_6.0.3_patch.md
   部署指南/产品白皮书/升级指引/update_of_the_6.0.4_patch.md: ZH/DeploymentGuides/产品白皮书/升级指引/update_of_the_6.0.4_patch.md
@@ -6360,7 +6359,7 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   iam_dev_docs/Explanation/03-AuthModelRegister.md: ZH/IAM/IntegrateGuide/Explanation/03-AuthModelRegister.md
   iam_dev_docs/Explanation/04-BkIAMPath.md: ZH/IAM/IntegrateGuide/Explanation/04-BkIAMPath.md
   iam_dev_docs/Explanation/05-AppcodeAndSystemID.md: ZH/IAM/IntegrateGuide/Explanation/05-AppcodeAndSystemID.md
-  编译加速/产品白皮书/Intro/README.md: ZH/FTA/产品白皮书/Intro/README.md
+  编译加速/产品白皮书/Intro/README.md: ZH/Devops/2.0/UserGuide/intro/README.md
   网络管理/日常维护/change_domain.md: ZH/BKnetwork/Operation/change_domain.md
   iam_dev_docs/Reference/API/11-Admin/03-ListGroupOfSubjectJoined.md: ZH/IAM/IntegrateGuide/Reference/API/11-Admin/03-ListGroupOfSubjectJoined.md
   iam_dev_docs/Reference/API/11-Admin/01-ListGlobalGroup.md: ZH/IAM/IntegrateGuide/Reference/API/11-Admin/01-ListGlobalGroup.md
