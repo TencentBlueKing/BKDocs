@@ -14,7 +14,7 @@ bkdl-7.1-stable.sh -ur latest lesscode
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 scripts/setup_bkce7.sh -i lesscode
 # 目前lesscode首次部署会超时，需重新部署一次。此问题修复中。
-scripts/setup_bkce7.sh -i lesscode -f　
+scripts/setup_bkce7.sh -i lesscode -f
 ```
 
 部署完成后，需要配置访问地址，请查阅 “配置访问地址” 章节。

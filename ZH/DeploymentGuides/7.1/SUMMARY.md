@@ -21,6 +21,7 @@
 * [【待开放】部署持续集成套餐](install-ci-suite.md)
 * [部署可视化开发平台](install-lesscode.md)
 * [卸载](uninstall.md)
+* [单产品更新](update.md)
 * [问题案例](troubles.md)
 * [FAQ](faq.md)
 * [附录]()

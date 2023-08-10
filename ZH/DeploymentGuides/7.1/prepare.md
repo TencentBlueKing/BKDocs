@@ -46,7 +46,7 @@
 ### 软件要求
 | 需求项 | 具体要求 | 检查命令 |
 | -- | -- | -- |
-| 操作系统　| CentOS 7.9 64 位 | `cat /etc/centos-release` |
+| 操作系统 | CentOS 7.9 64 位 | `cat /etc/centos-release` |
 | kernel | 3.10.0 及以上 | `uname -r` |
 | Swap | 关闭。防止 io 飙升影响 kubelet 进程。 | `free -m` Swap 这行值为 0 |
 | 防火墙 | 关闭 | `iptables -vnL` 无其他规则 |

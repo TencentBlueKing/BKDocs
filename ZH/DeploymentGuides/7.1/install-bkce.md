@@ -14,7 +14,7 @@
 bkdl-7.1-stable.sh -ur latest base demo
 ```
 
-这些文件默认放在了 `~/bkce7.1/` 目录，接下来的部署过程中，默认工作目录为 `~/bkce7.1-install/blueking/`。
+这些文件默认放在了 `~/bkce7.1-install/` 目录，接下来的部署过程中，默认工作目录为 `~/bkce7.1-install/blueking/`。
 
 # 部署基础套餐后台
 你可按需选择部署方式：
