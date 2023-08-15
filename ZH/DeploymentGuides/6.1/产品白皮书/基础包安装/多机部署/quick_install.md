@@ -249,12 +249,6 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 > 2. paas_plugin 需依赖 elasticsearch
 
 ```bash
-# 增加 es7 模块
-# 请注意替换示例 IP 为实际部署的机器 IP
-cat  << EOF >>/data/install/install.config
-10.0.0.3 es7
-EOF
-
 ./bk_install paas_plugin
 ```
 

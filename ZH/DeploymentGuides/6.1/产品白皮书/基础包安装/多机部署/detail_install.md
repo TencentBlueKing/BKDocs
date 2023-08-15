@@ -160,7 +160,6 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
     ```bash
     cat << EOF >>/data/install/install.config
     [iam_search_engine]
-    10.0.0.1 es7
     10.0.0.3 iam_search_engine
     EOF
     ```
