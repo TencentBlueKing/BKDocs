@@ -1,14 +1,12 @@
 # 开启APM监控
 
-观测场景-应用监控
-
-
-
 ## 什么是APM
 
-APM（Application Performance Monitoring）即应用性能监控 ， 通过应用软件之间的服务调用来分析软件的问题，可以更细粒度的监控和满足用户更好的体验。APM具体要解决三方面的问题
 
-![](media/16618503644108.jpg)
+![](media/16916522683038.jpg)
+
+APM（Application Performance Monitoring）即应用性能监控 ， 通过应用软件之间的服务调用来分析软件的问题，可以更细粒度的监控和满足用户更好的体验。APM具体要解决三方面的问题。
+
 
 ### 用户排障流程
 

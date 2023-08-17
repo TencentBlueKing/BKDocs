@@ -18,7 +18,7 @@
 
 ### PromQL
 
-支持原生的PromQL语法 ， 可以直接切换成source的模式
+支持原生的PromQL语法 ， 可以直接切换成PromQL的模式
 
 ![](media/16614142376385.jpg)
 

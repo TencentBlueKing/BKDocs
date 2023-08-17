@@ -15,7 +15,7 @@
 1. 指标 Metrics
 2. 事件 Events
 3. 日志 Logs
-4. Traces
+4. 调用链 Traces
 5. 告警 Alerts 
 
 ## 可视化之间的转换关系

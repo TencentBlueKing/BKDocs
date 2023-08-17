@@ -74,7 +74,7 @@ yum install -y jq unzip uuid
 # 安装下载脚本
 CentOS 支持在当前用户的 `bin` 目录下安装命令：
 ``` bash
-mkdir ~/bin/
+mkdir -p ~/bin/
 curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh -o ~/bin/bkdl-7.1-stable.sh
 chmod +x ~/bin/bkdl-7.1-stable.sh
 ```

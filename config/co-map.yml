@@ -9115,6 +9115,10 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   部署指南/附录/开源组件版本/version.md: ZH/DeploymentGuides/index.md
 
 
+  ZH/Devops/UserGuide/Services/Store/plugins/plugin-error-code.md: ZH/Devops/UserGuide/Developer/plugins/plugin-dev-standard/plugin-error-code.md
+  ZH/Devops/UserGuide/Services/Store/plugins/plugin-specification.md: ZH/Devops/UserGuide/Developer/plugins/plugin-dev-standard/plugin-specification.md
+
+
 
 
 

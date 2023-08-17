@@ -1,49 +1,65 @@
 # SDK支持的列表
 
-蓝鲸监控平台完全遵循OpenTelemetry Oteam 和Prometheus 标准
+蓝鲸监控平台完全遵循OpenTelemetry 和 Prometheus 标准
 
 
 * [Prometheus SDK上报](../ProductFeatures/integrations-metrics/custom_sdk_push.md)
-* [Opentelemetry SDK上报](../ProductFeatures/integrations-traces/opentelemetry_overview.md)
+* [OpenTelemetry SDK上报](../ProductFeatures/integrations-traces/opentelemetry_overview.md)
 
 ## Go	
 
-* OTel SDK  https://github.com/open-telemetry/opentelemetry-go
+* https://github.com/open-telemetry/opentelemetry-go
 * https://github.com/prometheus/client_golang
 
+使用说明 
 
-* OpenTelemetry SDK(golang) 使用说明
-* Prometheus SDK(golang) 使用说明	mandochen
+* [OTel SDK golang 使用说明]()
+* [Prometheus SDK golang 使用说明]()
+
 ## Cpp	
 
-* OTel SDK https://github.com/open-telemetry/opentelemetry-cpp
-* Prometheus SDK(C++) https://github.com/jupp0r/prometheus-cpp
 
-* OpenTelemetry SDK(c++) Oteam 使用说明 
-* Prometheus SDK(c++) 使用说明
+* OTel https://github.com/open-telemetry/opentelemetry-cpp
+* Prometheus https://github.com/jupp0r/prometheus-cpp
+
+使用说明
+
+* [OTel SDK Cpp 使用说明]()
+* [Prometheus SDK Cpp 使用说明]()
+
 
 ## Java	
 
-* OTel SDK https://github.com/open-telemetry/opentelemetry-java
-* Prometheus SDK(Java) https://github.com/prometheus/client_java
+* OTel https://github.com/open-telemetry/opentelemetry-java
+* Prometheus https://github.com/prometheus/client_java
 
-* OpenTelemetry SDK(Java) 使用说明·1852244526
-* 	Prometheus SDK(Java) 使用文档	
-## python	
+使用说明
 
-* OTel SDk https://github.com/open-telemetry/opentelemetry-python
-* Prometheus SDK(python) https://github.com/prometheus/client_python	
-* OpenTelemetry SDK(python) 使用说明
-* Prometheus SDK(python) 使用文档	
+* [OTel SDK Java 使用说明]()
+* [Prometheus SDK Java 使用说明]()
 
-## Web JS	
+## Python	
+
+* OTel https://github.com/open-telemetry/opentelemetry-python
+* Prometheus https://github.com/prometheus/client_python
+
+使用说明
+
+* [OTel SDK Python 使用说明]()
+* [Prometheus SDK Python 使用说明]()
 
 
-## lua
+## Web
+
+
+* https://github.com/open-telemetry/opentelemetry-js
+
 
 
 ## 蓝鲸SaaS框架
 
-* 蓝鲸SaaS框架 待补充
-* OpenTelemetry SDK(python 蓝鲸SaaS框架集成)使用说明 等补充
+* 蓝鲸SaaS框架 
+* OpenTelemetry SDK(python 蓝鲸SaaS框架集成)使用说明 
+
+
 

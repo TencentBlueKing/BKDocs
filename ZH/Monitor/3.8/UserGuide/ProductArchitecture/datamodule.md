@@ -2,7 +2,7 @@
 
 数据模型主要是介绍监控的数据上报格式、存储格式和监控管理运作的关系。
 
-### 用户关心的数据分层
+### 数据分层
 
 不管是以什么方式进行数据的采集，上报；不论数据是从哪上报上来；不论是时序数据，事件数据还是日志数据都是为用户关心的数据分层而服务。
 
@@ -55,7 +55,7 @@
 ![](media/16612221352204.jpg)
 
     
-## 监控平台基本数据结构
+## 数据结构
 
 ### 自定义事件数据
 
@@ -85,7 +85,7 @@
 }
 ```
 
-### 时序数据结构
+### 自定义时序数据结构
 
 ```json
 {
@@ -129,6 +129,8 @@ http_request_total{status="404", method="POST", route="/user"} 94334
 
 ## Trace 的数据结构
 
-支持Opentelemetry和OpenTracing
+支持OpenTelemetry和OpenTracing
+
+[OpenTelemetry介绍](integrations-traces/opentelemetry_overview.md)
 
 

@@ -1,7 +1,6 @@
 # Opentelemetry 介绍 
 
 
-
 |标准 |概述 |Traces |Metrics |Logs |状态 |
 |---|---|---|---|---|---|
 |OpenTracing |2015年底发起，2016年被批准为CNCF第三个项目 |✓ | | |停止更新 |

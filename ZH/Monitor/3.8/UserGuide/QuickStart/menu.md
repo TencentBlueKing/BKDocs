@@ -2,9 +2,9 @@
 
 简单了解下导航的功能说明，能够快速的了解监控平台的功能分布。
 
-![](media/16611817843294.jpg)
+![](media/16906159613257.jpg)
 
-![](media/16612243844773.jpg)
+![](media/16906158541474.jpg)
 
 
 ## 首页
@@ -34,8 +34,8 @@
 
 * [主机监控](../ProductFeatures/scene-host/host_monitor.md)：查看主机和进程相关信息的场景
 * [综合拨测](../ProductFeatures/scene-synthetic/synthetic_monitor.md)：通过远程拨测服务判断服务是否正常。提供在这个场景在的各种视角和信息
-* [容器监控](../ProductFeatures/scene-k8s/k8s_monitor_overview.md)：提供k8s云原生的监控解决方案。
-* [应用监控](../ProductFeatures/scene-apm/apm_monitor_overview.md)：提供基于Opentelemetry的应用性能监控。
+* [K8s监控](../ProductFeatures/scene-k8s/k8s_monitor_overview.md)：提供k8s云原生的监控解决方案。
+* [APM](../ProductFeatures/scene-apm/apm_monitor_overview.md)：提供基于OpenTelemetry的应用性能监控。
 * 自定义场景：基于数据源进行场景呈现，如同一个监控插件的数据源，跨多个数据采集任务，同时进行观测。也可以满足个性化的可视化图表配置。 
 
 ## 监控配置
@@ -46,6 +46,7 @@
 * [告警组](../ProductFeatures/alarm-configurations/alarm_group.md)：设置常用的一组人和通知方式
 * [告警屏蔽](../ProductFeatures/alarm-handling/block.md)：屏蔽告警通知， 有基于范围屏蔽，基于策略，基于事件屏蔽
 * [处理套餐](../ProductFeatures/alarm-handling/what_fta.md)： 可以通过设置处理套餐，联动JOB、标准运维、ITSM、HTTP回调等周边服务。
+* [告警分派](../ProductFeatures/alarm-configurations/alarm_routing.md)：通过告警数据的维度进行路由分派提供告警升级等能力。 
 
 ## 集成
 

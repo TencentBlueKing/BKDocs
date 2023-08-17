@@ -47,7 +47,7 @@
      * [告警屏蔽](../ProductFeatures/alarm-handling/block.md)
 * 仪表盘：提供不同的图表配置，支持日志数据、数据平台数据、监控采集的指标数据画图需求
      * [仪盘表](../ProductFeatures/data-visualization/data_view_intro.md)
-* 服务拨测：提供模拟用户请求的监控需求。 
+* 综合拨测：提供模拟用户请求的监控需求。 
      * [服务拨测](../ProductFeatures/scene-synthetic/synthetic_monitor.md)
 * 日志采集和监控
     * 通过日志平台可以进行日志采集和字段提取

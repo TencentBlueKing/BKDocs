@@ -2,15 +2,15 @@
 
 内置官方插件是由蓝鲸官方维护的插件，主要是满足监控平台开箱即用的一个需求。
 
-注意： 虽然是内置的官方插件，也会有一定的依赖和功能局限性。因为只测试过已有的版本，尤其是新出现的版本内置的插件不一定能满足。
+> 注意： 
+1. 虽然是内置的官方插件，也会有一定的依赖和功能局限性。因为只测试过已有的版本，尤其是新出现的版本内置的插件不一定能满足。
+2. 如果使用描述不清或者错误，或者有需求可以反馈给官方。
+3. 基于监控平台的插件定义可以非常方便的扩展监控能力，可以不用完全依赖官方的插件。
 
-如果使用描述不清或者错误，或者有需求可以反馈给官方。
-
-> **注意**：其实基于监控平台的插件定义可以非常方便的扩展监控能力，可以不用完全依赖官方的插件。具体查看
-       * [制作Script插件(多种插件类型)](script_collect.md)
-        * [制作Exporter插件(复用Prometheus插件)](import_exporter.md)
-        * [制作BK-Pull插件(拉取Prometheus数据)](howto_bk-pull.md)
-        * [制作DataDog插件](import_datadog_online.md)
+* [制作插件 Script](script_collect.md)
+* [制作插件 Exporter](import_exporter.md)
+* [制作插件 BK-Pull](howto_bk-pull.md)
+* [制作插件 DataDog](import_datadog_online.md)
 
 ## Exporter 插件
 

@@ -30,3 +30,40 @@ Apdex 定义了应用响应时间的最优门槛为 T（即 Apdex 阈值，T 由
 
 接口在服务的运行过程中的调用次数。
 
+### 黄金指标
+
+指标选择器中的指标
+
+* 耗时 bk_apm_duration	
+* 调用次数 bk_apm_count	
+    * 统计方法：count
+* 最大耗时 bk_apm_max_duration   
+    * 统计方法：max
+* 总耗时 bk_apm_sum_duration  
+    * 统计方法：sum
+* 错误数量 bk_apm_error_count 
+    * 维度：span_name,service_name,kind,resource.bk.instance.id,attributes.peer.service,bk_app_name,bk_biz_id
+    * 条件：kind == 2  status.code = 2  
+    * 统计方法：count
+* 慢查询数 bk_apm_frustrated_count 
+    * 维度：span_name,service_name,kind,resource.bk.instance.id,attributes.peer.service,bk_app_name,bk_biz_id
+    * 条件：apdex_type==frustrated
+    * 统计方法：count 
+* 正常查询数 bk_apm_satisfied_count 
+    * 维度：span_name,service_name,kind,resource.bk.instance.id,attributes.peer.service,bk_app_name,bk_biz_id 
+    * 条件：	apdex_type==satisfied 
+    * 统计方法：count
+* 可容忍查询数 bk_apm_tolerating_count
+    * 维度：span_name,service_name,kind,resource.bk.instance.id,attributes.peer.service,bk_app_name,bk_biz_id 
+    * 条件：apdex_type==tolerating
+    * 统计方法：count 
+* 被调数 bk_apm_call_count	 
+    * 维度： span_name,service_name,kind,resource.bk.instance.id,attributes.peer.service,bk_app_name,bk_biz_id
+    * 条件： kind == 2|4	
+    * 统计方法：count
+* 主调数 bk_apm_request_count 
+    * 维度：span_name,service_name,kind,resource.bk.instance.id,attributes.peer.service,bk_app_name,bk_biz_id 
+    * 条件 kind == 3|5	 
+    * 统计方法：count 
+
+
