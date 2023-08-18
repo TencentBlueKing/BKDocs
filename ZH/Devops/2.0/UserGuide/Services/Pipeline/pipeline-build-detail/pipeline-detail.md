@@ -188,11 +188,3 @@
 
 流水线启动时的变量和对应的值列表
 
-
-
-## 接下来你可能需要
-
-* [BKCI 导航条](.././../Console/Console.md)
-* [流水线列表页](../pipeline-list.md)
-* [创建/编辑流水线](../pipeline-edit-guide/pipeline-edit.md)
-* [流水线任务历史](../pipeline-history.md)

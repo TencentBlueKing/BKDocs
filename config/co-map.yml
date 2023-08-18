@@ -6073,34 +6073,34 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   故障自愈/产品白皮书/guide/Community_users_share_cases.md: ZH/FTA/产品白皮书/guide/Community_users_share_cases.md
   故障自愈/产品白皮书/guide/Notification.md: ZH/FTA/产品白皮书/guide/Notification.md
   故障自愈/产品白皮书/guide/Enterprise_WeChat_approval_access_process.md: ZH/FTA/产品白皮书/guide/Enterprise_WeChat_approval_access_process.md
-  持续集成平台/产品白皮书/Concepts/Learn-pipeline-in-5min.md: ZH/Devops/产品白皮书/Concepts/Learn-pipeline-in-5min.md
-  持续集成平台/产品白皮书/Concepts/Resources_hosted.md: ZH/Devops/产品白皮书/Concepts/Resources_hosted.md
-  持续集成平台/产品白皮书/Concepts/Job.md: ZH/Devops/产品白皮书/Concepts/Job.md
-  持续集成平台/产品白皮书/Concepts/Variables.md: ZH/Devops/产品白皮书/Concepts/Variables.md
-  持续集成平台/产品白皮书/Concepts/Resources_self.md: ZH/Devops/产品白皮书/Concepts/Resources_self.md
-  持续集成平台/产品白皮书/Concepts/Stage.md: ZH/Devops/产品白皮书/Concepts/Stage.md
-  持续集成平台/产品白皮书/Concepts/Triggers.md: ZH/Devops/产品白皮书/Concepts/Triggers.md
-  持续集成平台/产品白皮书/Concepts/Task.md: ZH/Devops/产品白皮书/Concepts/Task.md
-  持续集成平台/产品白皮书/Services/Store/prepare-python.md: ZH/Devops/产品白皮书/Services/Store/prepare-python.md
-  持续集成平台/产品白皮书/Services/Store/start-new-task.md: ZH/Devops/产品白皮书/Services/Store/start-new-task.md
-  持续集成平台/产品白皮书/Services/Store/prepare-node.md: ZH/Devops/产品白皮书/Services/Store/prepare-node.md
-  持续集成平台/产品白皮书/Services/Store/upload-new-task.md: ZH/Devops/产品白皮书/Services/Store/upload-new-task.md
-  持续集成平台/产品白皮书/Services/Store/docker-build.md: ZH/Devops/产品白皮书/Services/Store/docker-build.md
-  持续集成平台/产品白皮书/Services/Resource/bkci-hosted.md: ZH/Devops/产品白皮书/Services/Resource/bkci-hosted.md
-  持续集成平台/产品白皮书/Services/Resource/prepare-your-host.md: ZH/Devops/产品白皮书/Services/Resource/prepare-your-host.md
-  持续集成平台/产品白皮书/Services/Resource/host-detail.md: ZH/Devops/产品白皮书/Services/Resource/host-detail.md
-  持续集成平台/产品白皮书/Services/Ticket/ticket-add.md: ZH/Devops/产品白皮书/Services/Ticket/ticket-add.md
+  持续集成平台/产品白皮书/Concepts/Learn-pipeline-in-5min.md: ZH/Devops/UserGuide/intro/terminology/Learn-pipeline-in-5min.md
+  持续集成平台/产品白皮书/Concepts/Resources_hosted.md: ZH/Devops/UserGuide/intro/terminology/Resources_hosted.md
+  持续集成平台/产品白皮书/Concepts/Job.md: ZH/Devops/UserGuide/intro/terminology/Job.md
+  持续集成平台/产品白皮书/Concepts/Variables.md: ZH/Devops/UserGuide/intro/terminology/Variables.md
+  持续集成平台/产品白皮书/Concepts/Resources_self.md: ZH/Devops/UserGuide/intro/terminology/Resources_self.md
+  持续集成平台/产品白皮书/Concepts/Stage.md: ZH/Devops/UserGuide/intro/terminology/Stage.md
+  持续集成平台/产品白皮书/Concepts/Triggers.md: ZH/Devops/UserGuide/intro/terminology/Triggers.md
+  持续集成平台/产品白皮书/Concepts/Task.md: ZH/Devops/UserGuide/intro/terminology/Task.md
+  持续集成平台/产品白皮书/Services/Store/prepare-python.md: ZH/Devops/UserGuide/Developer/plugins/plugin-dev-env/prepare-python.md
+  持续集成平台/产品白皮书/Services/Store/start-new-task.md: ZH/Devops/UserGuide/Services/Store/start-new-task.md
+  持续集成平台/产品白皮书/Services/Store/prepare-node.md: ZH/Devops/UserGuide/Developer/plugins/plugin-dev-env/prepare-node.md
+  持续集成平台/产品白皮书/Services/Store/upload-new-task.md: ZH/Devops/UserGuide/Services/Store/upload-new-task.md
+  持续集成平台/产品白皮书/Services/Store/docker-build.md: ZH/Devops/UserGuide/Services/Store/ci-images/docker-build.md
+  持续集成平台/产品白皮书/Services/Resource/bkci-hosted.md: ZH/Devops/6.0/产品白皮书/Services/Resource/bkci-hosted.md
+  持续集成平台/产品白皮书/Services/Resource/prepare-your-host.md: ZH/Devops/6.0/产品白皮书/Services/Resource/prepare-your-host.md
+  持续集成平台/产品白皮书/Services/Resource/host-detail.md: ZH/Devops/6.0/产品白皮书/Services/Resource/host-detail.md
+  持续集成平台/产品白皮书/Services/Ticket/ticket-add.md: ZH/Devops/UserGuide/Services/Ticket/ticket-add.md
   持续集成平台/产品白皮书/Services/Ticket/ticket-list.md: ZH/Devops/UserGuide/Services/Ticket/ticket-list.md
-  持续集成平台/产品白皮书/Services/Pipeline/pipeline-list.md: ZH/Devops/产品白皮书/Services/Pipeline/pipeline-list.md
-  持续集成平台/产品白皮书/Services/Pipeline/pipeline-edit.md: ZH/Devops/产品白皮书/Services/Pipeline/pipeline-edit.md
-  持续集成平台/产品白皮书/Services/Pipeline/pipeline-detail.md: ZH/Devops/产品白皮书/Services/Pipeline/pipeline-detail.md
-  持续集成平台/产品白皮书/FAQS/Variables.md: ZH/Devops/产品白皮书/FAQS/Variables.md
-  持续集成平台/产品白皮书/FAQS/FAQ.md: ZH/Devops/产品白皮书/FAQS/FAQ.md
-  持续集成平台/产品白皮书/Quickstarts/Link-your-first-repo.md: ZH/Devops/产品白皮书/Quickstarts/Link-your-first-repo.md
-  持续集成平台/产品白皮书/Quickstarts/Create-your-first-pipeline.md: ZH/Devops/产品白皮书/Quickstarts/Create-your-first-pipeline.md
-  持续集成平台/产品白皮书/Quickstarts/Enable-ci.md: ZH/Devops/产品白皮书/Quickstarts/Enable-ci.md
-  持续集成平台/产品白皮书/Examples/Java-Maven.md: ZH/Devops/产品白皮书/Examples/Java-Maven.md
-  持续集成平台/产品白皮书/Examples/Node.md: ZH/Devops/产品白皮书/Examples/Node.md
+  持续集成平台/产品白皮书/Services/Pipeline/pipeline-list.md: ZH/Devops/UserGuide/Services/Pipeline/pipeline-list.md
+  持续集成平台/产品白皮书/Services/Pipeline/pipeline-edit.md: ZH/Devops/UserGuide/Services/Pipeline/pipeline-edit-guide/pipeline-edit.md
+  持续集成平台/产品白皮书/Services/Pipeline/pipeline-detail.md: ZH/Devops/UserGuide/Services/Pipeline/pipeline-build-detail/pipeline-detail.md
+  持续集成平台/产品白皮书/FAQS/Variables.md: ZH/Devops/2.0/UserGuide/intro/terminology/Variables.md
+  持续集成平台/产品白皮书/FAQS/FAQ.md: ZH/Devops/6.0/产品白皮书/FAQS/FAQ.md
+  持续集成平台/产品白皮书/Quickstarts/Link-your-first-repo.md: ZH/Devops/UserGuide/Quickstarts/Link-your-first-repo.md
+  持续集成平台/产品白皮书/Quickstarts/Create-your-first-pipeline.md: ZH/Devops/UserGuide/Quickstarts/Create-your-first-pipeline.md
+  持续集成平台/产品白皮书/Quickstarts/Enable-ci.md: ZH/Devops/UserGuide/Quickstarts/Enable-ci.md
+  持续集成平台/产品白皮书/Examples/Java-Maven.md: ZH/Devops/UserGuide/Quickstarts/Case/Examples/Java-Maven.md
+  持续集成平台/产品白皮书/Examples/Node.md: ZH/Devops/UserGuide/Quickstarts/Case/Examples/Node.md
   部署指南/产品白皮书/增强包安装/机器评估/bcs_evaluate.md: ZH/DeploymentGuides/产品白皮书/增强包安装/机器评估/bcs_evaluate.md
   部署指南/产品白皮书/增强包安装/部署安装/BCS-V2.md: ZH/DeploymentGuides/产品白皮书/增强包安装/部署安装/BCS-V2.md
   部署指南/产品白皮书/增强包安装/部署安装/CI-start.md: ZH/DeploymentGuides/产品白皮书/增强包安装/部署安装/CI-start.md
@@ -7011,7 +7011,7 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   hippogriff/functions/addenda/wildcard.md: ZH/LogSearch/产品白皮书/functions/addenda/wildcard.md
   hippogriff/functions/addenda/query_string.md: ZH/LogSearch/产品白皮书/functions/addenda/query_string.md
   配置平台/术语解释/glossary.md: ZH/CMDB/UserGuide/Term/Term.md
-  持续集成平台/产品白皮书/Services/Store/plugins/plugin-specification.md: ZH/Devops/UserGuide/Services/Store/plugins/plugin-specification.md
+  持续集成平台/产品白皮书/Services/Store/plugins/plugin-specification.md: ZH/Devops/UserGuide/Developer/plugins/plugin-dev-standard/plugin-specification.md
   持续集成平台/产品白皮书/Services/Store/plugins/plugin-config.md: ZH/Devops/UserGuide/Services/Store/plugins/plugin-config.md
   持续集成平台/产品白皮书/Services/Store/plugins/plugin-output.md: ZH/Devops/UserGuide/Services/Store/plugins/plugin-output.md
   持续集成平台/产品白皮书/Services/Store/plugins/plugin-error-code.md: ZH/Devops/UserGuide/Services/Store/plugins/plugin-error-code.md
@@ -9114,10 +9114,10 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   部署指南/卸载指引/uninstall.md: ZH/DeploymentGuides/index.md
   部署指南/附录/开源组件版本/version.md: ZH/DeploymentGuides/index.md
 
-
+# 修改结构/文件名添加映射
   ZH/Devops/UserGuide/Services/Store/plugins/plugin-error-code.md: ZH/Devops/UserGuide/Developer/plugins/plugin-dev-standard/plugin-error-code.md
   ZH/Devops/UserGuide/Services/Store/plugins/plugin-specification.md: ZH/Devops/UserGuide/Developer/plugins/plugin-dev-standard/plugin-specification.md
-
+  ZH/PaaS/DevelopTools/SaaSGuide/DevAdvanced/Django+Vue.js.md: ZH/PaaS/DevelopTools/SaaSGuide/DevAdvanced/Django+Vue.md
 
 
 

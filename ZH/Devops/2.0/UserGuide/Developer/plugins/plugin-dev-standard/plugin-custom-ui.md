@@ -86,11 +86,11 @@ package.json 提供了两个打包命令
 1、框架内置的 bkci 组件库和 magixbox 组件库怎么使用？
 
 * bkci 组件库： task.json 可以配的组件也都可以直接以组件的形式使用，组件的属性即为 task.json 可配置的属性（[点击查看](plugin-config.md)），bkci 组件库的值变更事件统一封装为 :handle-change="functionxxx", 其中 functionxxx 有两个参数，一个是组件的 name，一个是组件的新 value
-* 蓝鲸 magixbox 组件库种类丰富，基本能覆盖日常开发所需的组件类型，框架内可以直接使用 magixbox 组件库进行开发，具体使用请查看[官方文档](https:/magicbox.bk.tencent.com/)
+* 蓝鲸 magixbox 组件库种类丰富，基本能覆盖日常开发所需的组件类型，框架内可以直接使用 magixbox 组件库进行开发，具体使用请查看[官方文档](https://magicbox.bk.tencent.com/static_api/v3/main/index.html)
 
 2、本地调试时，我需要结合某个具体项目，如使用 selector 组件拉取某某项目的代码库列表、凭证列表，怎么把项目信息带过来？
 
-* 在访问的 url 后面通过 query 方式传递 projectId=${projectId} 即可，如 [http://local.XX.com:8001?projectId=abc](http://local.xx.com:8001/?projectId=abc), bkci 内置的 selector/select-input 组件会自动解析 url 里面的 projectId 参数作为请求的参数
+* 在访问的 url 后面通过 query 方式传递 projectId=${projectId} 即可，如 (http://local.xx.com:8001/?projectId=abc), bkci 内置的 selector/select-input 组件会自动解析 url 里面的 projectId 参数作为请求的参数
 
 3、使用自定义插件框架开发后，task.json 还有用吗？两者关系是什么？
 

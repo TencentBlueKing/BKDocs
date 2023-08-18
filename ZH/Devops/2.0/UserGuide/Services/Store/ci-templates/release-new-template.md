@@ -28,4 +28,4 @@
 
 ## 接下来你可能需要
 
-* [使用模板创建流水线](../../../Quickstarts/case/Examples/create-pipeline-by-template.md)
+* [使用模板创建流水线](../../../Quickstarts/Case/Examples/create-pipeline-by-template.md)

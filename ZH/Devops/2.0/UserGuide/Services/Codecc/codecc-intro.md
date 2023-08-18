@@ -34,7 +34,7 @@ CodeCC（代码检查中心）提供专业的代码检查解决方案，检查�
 
 **如果您想要直接部署使用：**
 
-CodeCC部署需要额外的[硬件资源](../../services/codecc/codecc-cost.md)。在资源准备就绪后，我们会立即启动CodeCC落地相关的事宜。
+CodeCC部署需要额外的[硬件资源](../../Services/Codecc/codecc-cost.md)。在资源准备就绪后，我们会立即启动CodeCC落地相关的事宜。
 
 # **FAQ**
 **Q：我可以使用Coverity的能力吗？**

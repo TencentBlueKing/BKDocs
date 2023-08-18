@@ -1,8 +1,8 @@
-npm i -g markdown-link-check 
-if  [ $? -ne 0 ];then
-    echo "nmp安装插件失败"
-    exit 1
-fi
+# npm i -g markdown-link-check 
+# if  [ $? -ne 0 ];then
+#     echo "nmp安装插件失败"
+#     exit 1
+# fi
 
 
 DIR=$(cd `dirname $(readlink -f $0)` && cd ../${language} && pwd)
@@ -24,15 +24,28 @@ DIR=$(cd `dirname $(readlink -f $0)` && cd ../${language} && pwd)
 # markdown-link-check  $i   >>  $DIR/script/EN.log
 # done
 
-cd $DIR/EN
+# cd $DIR/EN
 
-for i in  NodeMan/2.2 PaaS/1.0
+# for i in  NodeMan/2.2 PaaS/1.0
+# do
+#     cd  $i
+#     echo "------------------------------------$i-------------------------------" >> $DIR/script/EN.log
+#     for j in $(find . -type  f -name "*.md") 
+#         do
+#             markdown-link-check  $j   >>  $DIR/script/EN.log
+#         done
+#     cd ../..
+# done
+
+cd $DIR/ZH
+
+for i in  Devops/2.0 
 do
     cd  $i
-    echo "------------------------------------$i-------------------------------" >> $DIR/script/EN.log
+    echo "------------------------------------$i-------------------------------" >> $DIR/script/zh.log
     for j in $(find . -type  f -name "*.md") 
         do
-            markdown-link-check  $j   >>  $DIR/script/EN.log
+            markdown-link-check  $j   >>  $DIR/script/zh.log
         done
     cd ../..
 done

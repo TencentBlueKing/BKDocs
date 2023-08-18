@@ -9,7 +9,7 @@
 
 ## 详细步骤
 
-1. 将准备好的 gitlab 代码库关联至 BKCI，[请参考](../Quickstarts/Link-your-first-repo.md)
+1. 将准备好的 gitlab 代码库关联至 BKCI，[请参考](../../../Quickstarts/Link-your-first-repo.md)
 2. 创建一条空白流水线
 3. 将 Linux 构建环境添加到 Job2-1，镜像地址填写：bkci/ci:latest
    ![pic](../../../assets/examples_java_1.png)

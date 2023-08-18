@@ -17,8 +17,8 @@
 
 ## 自定义变量
 
-- [自定义流水线变量](./variables-custom.md)
-- [在流水线中引用变量](./variables-custom-use.md)
+- [自定义流水线变量](../pipeline-variables/variables-custom.md)
+- [在流水线中引用变量](../pipeline-variables/variables-custom-use.md)
 
 
 ## 还可以查阅一下更多变量用法：

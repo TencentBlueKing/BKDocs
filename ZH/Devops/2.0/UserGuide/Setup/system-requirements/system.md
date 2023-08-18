@@ -37,5 +37,5 @@ BKCI 支持如下主流的浏览器：
 
 - **附加要求**
 
-    - [私有构建机环境准备](../../Services/Pipeline/Pools/self-hosted-agents/prepara-agent.md)
+    - [私有构建机环境准备](../../Services/Pools/prepara-agent.md)
 

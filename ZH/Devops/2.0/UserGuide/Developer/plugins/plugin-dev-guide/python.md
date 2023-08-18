@@ -235,6 +235,7 @@ def main():
 ```
 
 执行结果：
+
 ![输入](../../../assets/image-demo-plugin-input.png)
 ![执行](../../../assets/image-demo-plugin-exec.png)
 

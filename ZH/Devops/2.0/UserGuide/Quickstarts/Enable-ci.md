@@ -4,7 +4,7 @@
 
 - 一个 gitlab 工程
 
-如没有，请参考 [关联你的第一个代码库](Link-your-first-repo.md)
+如没有，请参考 [关联你的第一个代码库](../Quickstarts/Link-your-first-repo.md)
 
 - 一个 BKCI 项目
 - 了解 [流水线基本概念和使用](../intro/terminology/Learn-pipeline-in-5min.md)

@@ -25,7 +25,3 @@
 
 ![下载构件2](../../assets/artifactory_7.png)
 
-## 接下来你可能需要
-
-* [制品库](Artifactory.md)
-* [归档制品](archive.md)
