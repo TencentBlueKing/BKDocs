@@ -1,6 +1,37 @@
 # 部署可视化开发平台
 支持 2 种部署方式，请按需查阅对应章节。
 
+## 配置 coredns
+可视化平台支持调试 API ，会在 pod 内构造并发起 HTTP 请求。此时域名解析由 coredns 负责，请尽量配置上游 DNS 实现解析，如果无法实现，可参考本章节添加 hosts 记录应急。
+
+### 添加蓝鲸域名
+如果你使用了可视化开发平台的 “数据源管理” 功能，则请求的域名为 `lesscode.$BK_DOMAIN`，请参考如下步骤进行配置。
+
+在 **中控机** 执行：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
+./scripts/control_coredns.sh update "$IP1" lesscode.$BK_DOMAIN
+./scripts/control_coredns.sh list  # 检查添加的记录。
+```
+其他蓝鲸域名同理，此处不再赘述。
+
+### 可选：添加其他域名
+如果你的其他服务端暂时无法通过 DNS 实现解析，可以单独配置。
+
+>**注意**
+>
+>此配置对整个集群生效，集群中所有 pod 在解析配置的域名时，都会变为此处指定 IP。请谨慎操作并及时更新。
+
+在 **中控机** 执行：
+``` bash
+cd ~/bkhelmfile/blueking/  # 进入工作目录
+./scripts/control_coredns.sh update "域名解析的IP" "自定义域名"
+./scripts/control_coredns.sh list  # 检查添加的记录。
+```
+如果有多条记录，请自行封装脚本实现批量处理。
+
 ## 在中控机使用脚本部署
 ### 下载安装包
 在 **中控机** 运行：

@@ -3,6 +3,182 @@
 
 在 2023 年 4 月 11 日，我们发布了蓝鲸 7.0.1 版本，仅包含补丁级更新。
 
+## 更新 bk-nodeman
+|  | chart 版本号 | 软件版本号 |
+|--|--|--|
+| 7.0.0 发布 | 2.2.27 | 2.2.27 |
+| 20230822 补丁更新 | 2.2.33 | 2.2.33 |
+
+### 20230822 补丁更新
+本版本仅为 **补丁** 更新，修复了一些问题。具体变动见 https://github.com/TencentBlueKing/bk-nodeman/releases/tag/v2.2.33 。
+
+登录到 **中控机**，先更新 helm 仓库缓存：
+``` bash
+helm repo update
+```
+检查仓库里的版本：
+``` bash
+helm search repo bk-nodeman --version 2.2.33
+```
+预期输出如下所示：
+>``` plain
+>NAME               	CHART VERSION	APP VERSION	DESCRIPTION
+>blueking/bk-nodeman	2.2.33       	2.2.33     	NodeMan is an application that helps operation ...
+>```
+
+接下来开始升级了。
+
+先进入工作目录：
+``` bash
+cd ~/bkhelmfile/blueking  # 默认路径，按实际情况修改。
+```
+
+修改 `environments/default/version.yaml` 文件，配置 bk-nodeman charts version 为 `2.2.33`：
+``` bash
+sed -i 's/bk-nodeman:.*/bk-nodeman: "2.2.33"/' environments/default/version.yaml
+grep bk-nodeman environments/default/version.yaml  # 检查修改结果
+```
+预期输出：
+>``` yaml
+>  bk-nodeman: "2.2.33"
+>```
+
+更新 bk-nodeman:
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman apply
+```
+
+等待命令执行完毕，结尾输出如下即为更新成功：
+>``` plain
+>UPDATED RELEASES:
+>NAME         CHART                 VERSION
+>bk-nodeman   blueking/bk-nodeman   2.2.33
+>```
+
+
+## 更新 bk-console
+|  | chart 版本号 | 软件版本号 |
+|--|--|--|
+| 7.0.0 发布 | 0.1.0 | 0.1.0 |
+| 20230822 补丁更新 | 0.1.1-beta.3 | 0.1.1 |
+
+### 20230822 补丁更新
+本版本仅为 **补丁** 更新，修复了一些问题。
+
+登录到 **中控机**，先更新 helm 仓库缓存：
+``` bash
+helm repo update
+```
+检查仓库里的版本：
+``` bash
+helm search repo bk-console --version 0.1.1-beta.3
+```
+预期输出如下所示：
+>``` plain
+>NAME               	CHART VERSION	APP VERSION	DESCRIPTION
+>blueking/bk-console	0.1.1-beta.3 	0.1.1      	A Helm chart for Kubernetes
+>```
+
+接下来开始升级了。
+
+先进入工作目录：
+``` bash
+cd ~/bkhelmfile/blueking  # 默认路径，按实际情况修改。
+```
+
+修改 `environments/default/version.yaml` 文件，配置 bk-console charts version 为 `0.1.1-beta.3`：
+``` bash
+sed -i 's/bk-console:.*/bk-console: "0.1.1-beta.3"/' environments/default/version.yaml
+grep bk-console environments/default/version.yaml  # 检查修改结果
+```
+预期输出：
+>``` yaml
+>  bk-console: "0.1.1-beta.3"
+>```
+
+更新 bk-console:
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-console apply
+```
+
+等待命令执行完毕，结尾输出如下即为更新成功：
+>``` plain
+>UPDATED RELEASES:
+>NAME         CHART                 VERSION
+>bk-console   blueking/bk-console   0.1.1-beta.3
+>```
+
+
+
+## 更新流程服务
+|  | 软件版本号 |
+|--|--|
+| 7.0.0 发布 | 2.6.2 |
+| 20230822 功能更新 | 2.6.7 |
+
+### 20230822 补丁更新
+本更新为 **补丁** 更新，包含问题修复和逻辑优化。具体变动见 https://github.com/TencentBlueKing/bk-itsm/blob/master/docs/RELEASE.md 。
+
+下载适用于蓝鲸 7.x 的安装包：
+* [bk_itsm-V2.6.7.tar.gz](https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.7.tar.gz)
+
+参考 《[部署流程服务（bk_itsm）](install-saas-manually.md#deploy-bkce-saas-itsm)》 文档上传安装包，并部署到生产环境。
+
+部署成功后，即可在桌面访问了。
+
+
+## 更新 bk-cmdb
+|  | chart 版本号 | 软件版本号 |
+|--|--|--|
+| 7.0.0 发布 | 3.11.17 | 3.10.21 |
+| 20230822 补丁更新 | 3.11.42 | 3.10.41 |
+
+### 20230822 补丁更新
+本版本仅为 **补丁** 更新。主要修复了一些导入问题及界面问题，并对一些逻辑进行了优化。具体变动见 https://github.com/TencentBlueKing/bk-cmdb/blob/v3.10.x/docs/support-file/changelog/release.md 。
+
+登录到 **中控机**，先更新 helm 仓库缓存：
+``` bash
+helm repo update
+```
+检查仓库里的版本：
+``` bash
+helm search repo bk-cmdb --version 3.11.42
+```
+预期输出如下所示：
+>``` plain
+>NAME            	CHART VERSION	APP VERSION	DESCRIPTION
+>blueking/bk-cmdb	3.11.42      	3.10.41    	BlueKing Configuration Management DataBase (bk-...
+>```
+
+接下来开始升级了。
+
+先进入工作目录：
+``` bash
+cd ~/bkhelmfile/blueking  # 默认路径，按实际情况修改。
+```
+
+修改 `environments/default/version.yaml` 文件，配置 bk-cmdb charts version 为 `3.11.42`：
+``` bash
+sed -i 's/bk-cmdb:.*/bk-cmdb: "3.11.42"/' environments/default/version.yaml
+grep bk-cmdb environments/default/version.yaml  # 检查修改结果
+```
+预期输出：
+>``` yaml
+>  bk-cmdb: "3.11.42"
+>```
+
+更新 bk-cmdb:
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-cmdb apply
+```
+
+等待命令执行完毕，结尾输出如下即为更新成功：
+>``` plain
+>UPDATED RELEASES:
+>NAME      CHART              VERSION
+>bk-cmdb   blueking/bk-cmdb   3.11.42
+>```
+
 
 ## 更新 bcs-services-stack
 |  | chart 版本号 | 软件版本号 |
