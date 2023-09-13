@@ -127,7 +127,7 @@ task.json主要包含以下字段：
 }
 ```
 
-可在BKCI「研发商店」-「控制台」-「调试task.json」查看task.json可视化结果
+可在BK-CI「研发商店」-「控制台」-「调试task.json」查看task.json可视化结果
 
 ![](../../../../assets/image-plugin-casestudy-sendmsg3.png)
 

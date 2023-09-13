@@ -12,10 +12,10 @@
 
 ## Q2: 变量的定义及获取
 
-问题一：如何在程序中使用BKCI的变量
+问题一：如何在程序中使用 BK-CI 的变量
 
 ```
-# 单行python例子，var为用户在本步骤或者其他步骤定义的变量名，BK_CI_START_USER_NAME是BKCI的全局变量
+# 单行python例子，var为用户在本步骤或者其他步骤定义的变量名，BK_CI_START_USER_NAME是BK-CI的全局变量
 python -c "import os; print(os.environ.get('var'))"
 python -c "import os; print(os.environ.get('BK_CI_START_USER_NAME'))"
 
@@ -27,14 +27,14 @@ EOF
 python test.py
 ```
 
-问题二：如何将变量回写到BKCI
+问题二：如何将变量回写到BK-CI
 
 ```
-# 如果是常量，shell可以使用setEnv，bat可以使用call:setEnv来将变量回写到BKCI
+# 如果是常量，shell可以使用setEnv，bat可以使用call:setEnv来将变量回写到 BK-CI
 setEnv "var_name" "var_value" # shell
 call:setEnv "var_name" "var_value"  # bat
 
-# 将python脚本输出结果写回BKCI
+# 将python脚本输出结果写回 BK-CI
 var_value=`python script.py` # script.py里需要有print输出，如print("test")
 setEnv "var_name" "${var_value}" # var_name="test"
 
@@ -44,7 +44,7 @@ source env.sh
 setEnv "var_name" "${file_name}"
 ```
 
-问题三：bat 脚本中调用 python ，将 python 输出回写到BKCI
+问题三：bat 脚本中调用 python ，将 python 输出回写到 BK-CI
 
 ````
 for /F %%i in('python3 D:\mytest.py') do (set res=%%i)
@@ -56,11 +56,11 @@ call:setEnv "var_name" %res%
 
 ## Q3：在插件中使用构建机系统变量
 
-在 batch、shell 中可以直接获取到构建机的系统变量。但其他插件无法直接读取系统变量，因此需要将系统变量转换为BKCI自定义变量，然后在插件中使用BKCI变量。
+在 batch、shell 中可以直接获取到构建机的系统变量。但其他插件无法直接读取系统变量，因此需要将系统变量转换为 BK-CI 自定义变量，然后在插件中使用 BK-CI 变量。
 
 windows 示例：
 
-① 先使用  batch 插件，将系统变量 cs_test 赋值给BKCI变量
+① 先使用  batch 插件，将系统变量 cs_test 赋值给 BK-CI 变量
 
 ```
 call:setEnv "cs_test" "%cs_test%"
@@ -88,12 +88,12 @@ call:setEnv "cs_test" "%cs_test%"
 
 # python
 
-## Q1:python如何设置BKCI变量
+## Q1:python如何设置BK-CI变量
 
-python 插件无法直接设置BKCI变量。只可通过调用shell 或 bat 的方式写入变量。
+python 插件无法直接设置BK-CI变量。只可通过调用shell 或 bat 的方式写入变量。
 
 ```
-# 将python脚本输出结果写回BKCI
+# 将python脚本输出结果写回BK-CI
 var_value=`python script.py` # script.py里需要有print输出，如print("test")
 setEnv "var_name" "${var_value}" # var_name="test"
 
@@ -109,17 +109,17 @@ setEnv "var_name" "${file_name}"
 
 ## Q1、upload后文件去哪了？
 
-upload 后，文件上传到了BKCI服务器当中。
+upload 后，文件上传到了BK-CI服务器当中。
 
 ## Q2、Artifacts 是什么？
 
-Artifacts 是BKCI服务器的路径。
+Artifacts 是BK-CI服务器的路径。
 
  /data/bkce/public/ci/artifactory/bk-archive/${项目名称}
 
 ## Q3、制品 upload 的绝对路径是什么？
 
-比如项目名称是vincotest，114514.txt实际存放路径就是BKCI机器上：
+比如项目名称是vincotest，114514.txt实际存放路径就是 BK-CI 机器上：
 
 /data/bkce/public/ci/artifactory/bk-archive/vincotest/${流水线id}/${构建id}/114514.txt
 
@@ -133,7 +133,7 @@ Artifacts 是BKCI服务器的路径。
 
 # batchscript
 
-## Q1：bat 脚本中调用 python ，将 python 输出回写到BKCI
+## Q1：bat 脚本中调用 python ，将 python 输出回写到 BK-CI
 
 ````
 for /F %%i in('python3 D:\mytest.py') do (set res=%%i)
@@ -147,7 +147,7 @@ call:setEnv "var_name" %res%
 
 ## Q1：插件中 echo $HOME 为空
 
-1. 重启一下BKCI的agent，这个跟系统的启动顺序有关。
+1. 重启一下 BK-CI 的agent，这个跟系统的启动顺序有关。
 
 2. 也可以临时在环境管理中写入这个环境变量。
 

@@ -10,7 +10,7 @@
 
 ## Q2：是否可以修改调度策略的阈值？
 
-目前只支持调整内存阈值，默认是80%，即当公共构建机的内存使用率达到80%时，如果其他构建机还有空闲资源，任务会被调度到其他构建机，这个阈值是可以修改的，修改方法如下，登录到BKCIdispatch-docker服务的机器上， 执行：
+目前只支持调整内存阈值，默认是80%，即当公共构建机的内存使用率达到80%时，如果其他构建机还有空闲资源，任务会被调度到其他构建机，这个阈值是可以修改的，修改方法如下，登录到 BK-CI dispatch-docker服务的机器上， 执行：
 
 ```
  # threshold的值即为阈值百分比，这里以将内存阈值调整为70%为例 curl -H 'Accept:application/json;charset="utf-8"' -H 'Content-Type:application/json;charset="utf-8"' -H "X-DEVOPS-UID: admin" -X POST --data '{"threshold":"70"}' http://127.0.0.1:21938/api/op/dispatchDocker/docker/threshold/update
@@ -48,7 +48,7 @@
 
 ## Q6: 如何删除公共构建机
 
-登录到BKCIdispatch-docker服务的机器上，执行`/data/src/ci/scripts/bkci-op.sh list`获取所有的公共构建机，执行`/data/src/ci/scripts/bkci-op.sh del`操作
+登录到BK-CIdispatch-docker服务的机器上，执行`/data/src/ci/scripts/bkci-op.sh list`获取所有的公共构建机，执行`/data/src/ci/scripts/bkci-op.sh del`操作
 
 ---
 
@@ -56,7 +56,7 @@
 
 ## Q1：私有构建集群的调度策略是什么？
 
-如果有多台私有构建机，可以构成私有构建集群，选择这个集群后，BKCI流水线按照一定的算法选择其中一台进行构建：
+如果有多台私有构建机，可以构成私有构建集群，选择这个集群后，BK-CI流水线按照一定的算法选择其中一台进行构建：
 
 **算法如下：**
 
@@ -84,11 +84,11 @@
 
 ---
 
-## Q2: BKCI脚本启动gradle daemon进程，每次构建完会关闭，是由devops agent管控的吗？
+## Q2: BK-CI 脚本启动gradle daemon进程，每次构建完会关闭，是由devops agent管控的吗？
 
 ![](../../../../assets/wecom-temp-d4178631b527e498ee7d8a0778c1fb09.png)
 
-是的。BKCIagent执行完构建任务后，会自动停止所有由agent启动的子进程，如果不需要结束子进程，可以在启动进程前设置环境变量：set DEVOPS\_DONT\_KILL\_PROCESS\_TREE=true，在bash脚本里设置`setEnv "DEVOPS_DONT_KILL_PROCESS_TREE" "true"`
+是的。BK-CI agent执行完构建任务后，会自动停止所有由agent启动的子进程，如果不需要结束子进程，可以在启动进程前设置环境变量：set DEVOPS\_DONT\_KILL\_PROCESS\_TREE=true，在bash脚本里设置`setEnv "DEVOPS_DONT_KILL_PROCESS_TREE" "true"`
 
 ---
 
@@ -102,5 +102,5 @@
 
 建议使用私有构建机, 公共构建机DinD方案存在安全隐患, 所以需要私有构建机制作镜像.
 
-如果BKCI使用者是受信任的话，可以使用我们交付团队的DinD**方案**
+如果 BK-CI 使用者是受信任的话，可以使用我们交付团队的DinD**方案**
 

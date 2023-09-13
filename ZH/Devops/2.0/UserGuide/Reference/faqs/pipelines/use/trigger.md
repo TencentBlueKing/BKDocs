@@ -12,7 +12,7 @@ Merge Request Accept Hook会在源分支**成功merge到目标分支时触发**
 
 ## Q2: gitlab触发器在哪里配置webhook地址
 
-不需要配置这个hook，BKCI是会自己注册webhook，选择事件类型后保存，就会自动注册webhook
+不需要配置这个hook，BK-CI 是会自己注册webhook，选择事件类型后保存，就会自动注册webhook
 
 ![](../../../../assets/wecom-temp-d5c48ee99a96d373426491d14d56e404.png)
 
@@ -53,8 +53,8 @@ Merge Request Accept Hook会在源分支**成功merge到目标分支时触发**
 
 ## Q7:配置了监听路径，但生成的 trigger 为监听根目录
 
-符合预期。服务端是监听根目录的，但是BKCI会根据这个路径来做过滤。
+符合预期。服务端是监听根目录的，但是 BK-CI 会根据这个路径来做过滤。
 
-这个触发器是针对的BKCI，BKCI也会根据配置的监听路径做过滤，决定是否触发流水线。
+这个触发器是针对的 BK-CI，BK-CI 也会根据配置的监听路径做过滤，决定是否触发流水线。
 
 如果是只想局限到某个路径下的话，需要手动改一下。

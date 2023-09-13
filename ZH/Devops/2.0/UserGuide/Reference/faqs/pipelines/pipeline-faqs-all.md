@@ -33,9 +33,9 @@
 
 https://docs.gitlab.com/ee/api/branches.html
 
-4、如果GitLab为https访问。请确认代码库是否有做 http-->https 跳转。BKCI默认以 http 方式进行代码库访问。
+4、如果GitLab为https访问。请确认代码库是否有做 http-->https 跳转。BK-CI默认以 http 方式进行代码库访问。
 
-若未做跳转，请按此临时方案，修改BKCI文件：
+若未做跳转，请按此临时方案，修改BK-CI文件：
 
 ```bash
 vim /data/bkce/etc/ci/application-repository.yml
@@ -46,9 +46,9 @@ gitlab:
 apiUrl: https://devops.bktencent.com/api/v4
 ```
 
-重启 BKCI-repository.service 服务
+重启 bkci-repository.service 服务
 
-systemctl restart BKCI-repository.service
+systemctl restart bkci-repository.service
 
 ## 流水线信息 FAQ
 
@@ -58,15 +58,15 @@ systemctl restart BKCI-repository.service
 
 ![](../../../assets/image-20220301101202-uphlD.png)
 
-### Q2: BKCI流水线进度条是如何计算的？
+### Q2: BK-CI流水线进度条是如何计算的？
 
-进度条是BKCI前端根据流水线相关的数据做出的预估。此进度不是准确的时间，仅供参考。
+进度条是BK-CI前端根据流水线相关的数据做出的预估。此进度不是准确的时间，仅供参考。
 
 ![](../../../assets/进度条.png)
 
 
 
-### Q4: BKCI有哪些全局变量？
+### Q4: BK-CI有哪些全局变量？
 
 
 -  [预定义常量/变量](../../../intro/terminology/pre-define-var/README.md)
@@ -80,7 +80,7 @@ systemctl restart BKCI-repository.service
 
 只有最新一次的构建可以重试。
 
-### Q7: BKCI流水线中的视图管理、标签管理有什么用？
+### Q7: BK-CI流水线中的视图管理、标签管理有什么用？
 
 对流水线进行分类，当流水线数量较多时，标签、视图会有更大作用。
 
@@ -96,7 +96,7 @@ systemctl restart BKCI-repository.service
 
 建议使用私有构建机, 公共构建机DinD方案存在安全隐患, 所以需要私有构建机制作镜像.
 
-如果BKCI使用者是受信任的话，可以使用我们交付团队的DinD**方案**
+如果BK-CI使用者是受信任的话，可以使用我们交付团队的DinD**方案**
 
 ### Q2: 一台mac只能装一个agent吗
 
@@ -122,7 +122,7 @@ systemctl restart BKCI-repository.service
 
 2\. 如果依旧无法调度, 需要检查ci-dispatch的日志有无异常. 或者涉及dockerhost ip的日志.
 
-原因是当时部署BKCI的时候因为服务器资源有限，把构建机 微服务 网关都放到一台机器上 导致构建机内存使用率过高，构建环境的时候找不到可用构建机，现在把构建机单独部署到别的机器上 之前的那些报错就都没了。
+原因是当时部署BK-CI的时候因为服务器资源有限，把构建机 微服务 网关都放到一台机器上 导致构建机内存使用率过高，构建环境的时候找不到可用构建机，现在把构建机单独部署到别的机器上 之前的那些报错就都没了。
 
 3、主机资源不足时也会导致启动失败。请确认 DISK_LOAD<95%，CPU_LOAD<100%，MEM_LOAD <80%
 
@@ -130,7 +130,7 @@ systemctl restart BKCI-repository.service
 
 ## 还没想好要怎么归类 FAQ
 
-### Q1: BKCI流水线构建出的产物如何支持服务器分发限速配置?
+### Q1: BK-CI 流水线构建出的产物如何支持服务器分发限速配置?
 
 调整分发源的限速，如下图。 对于已经安装agent的机器，可以先移除，再安装。 分发源机器IP: 192.168.5.134
 
@@ -148,7 +148,7 @@ systemctl restart BKCI-repository.service
 
 
 
-### Q3: 如何通过BKCI将构建产物自动分发到指定服务器？
+### Q3: 如何通过 BK-CI 将构建产物自动分发到指定服务器？
 
 有了部署机器，我们可以将构件分发至测试机上了。首先添加一个无编译环境Job 3-1，添加插件作业平台-构件分发并完成配置。
 
@@ -156,11 +156,11 @@ systemctl restart BKCI-repository.service
 
 ### Q4: python的环境变量添加后，在job执行的时候未生效。（job报错“系统找不到指定的文件”）
 
-因为BKCIagent和蓝鲸agent使用的账户是system，所以加到administrator的环境变量不生效 需要把python.exe和pip3.exe pip.exe加入到系统环境变量里，再重启操作系统
+因为BK-CIagent和蓝鲸agent使用的账户是system，所以加到administrator的环境变量不生效 需要把python.exe和pip3.exe pip.exe加入到系统环境变量里，再重启操作系统
 
-### Q5: 可以通过BKCI流水线上传构建产物到指定私有GitLab仓库吗？
+### Q5: 可以通过 BK-CI 流水线上传构建产物到指定私有GitLab仓库吗？
 
-BKCIgit插件暂无push功能。用户可将ssh私钥放置构建机上，在Batch Script插件或者Bash插件里使用git命令push产物达到临时解决方案。
+BK-CIgit插件暂无push功能。用户可将ssh私钥放置构建机上，在Batch Script插件或者Bash插件里使用git命令push产物达到临时解决方案。
 
 ### Q6: 节点机器，显示正常，为什么监控网络io没有数据？
 
@@ -180,7 +180,7 @@ BKCIgit插件暂无push功能。用户可将ssh私钥放置构建机上，在Bat
 
 ### Q7:构建里面如何使用docker build 打包镜像，然后推送镜像到harbor，我的是dockerbuild环境 里面没有docker命令
 
-可以使用私有构建机. 容器内是没有dockerd的, 出于安全考虑, 容器内是不能操作主机的dockerd的，或者如果BKCI使用者是受信任的话，可以使用我们交付团队的DinD**方案**
+可以使用私有构建机. 容器内是没有dockerd的, 出于安全考虑, 容器内是不能操作主机的dockerd的，或者如果BK-CI使用者是受信任的话，可以使用我们交付团队的DinD**方案**
 
 ---
 
@@ -196,7 +196,7 @@ BKCIgit插件暂无push功能。用户可将ssh私钥放置构建机上，在Bat
 
 ### Q1: 如何在bash插件之间传递变量，上一个bash插件输出变量，下一个bash插件能引用到？
 
-BKCI为bash插件提供了 setEnv 命令来设置BKCI的全局变量, `setEnv '变量名' '变量值'` 如：
+BK-CI为bash插件提供了 setEnv 命令来设置 BK-CI 的全局变量, `setEnv '变量名' '变量值'` 如：
 
 `setEnv 'cmdb' '3.2.16'`
 
@@ -206,7 +206,7 @@ setEnv 设置的是当前bash的输出参数，在下游才会生效，当前的
 
 ## 蓝鲸相关
 
-### Q1: 有方法可以从标准运维调用BKCI吗？
+### Q1: 有方法可以从标准运维调用 BK-CI 吗？
 
 流水线stage-1 trigger选择remote. 然后标准运维调用job快速执行脚本, 调用remote插件里提示的url.
 
@@ -287,7 +287,7 @@ echo "##[endgroup]"
 
 docker默认是https的, 这个要改服务端的docker. 需要在dockerhost机器的/etc/docker/daemon.json添加insecure-registry.
 
-BKCI这边推送镜像默认都走https，如果要走http需要把仓库域名配置进insecure
+BK-CI 这边推送镜像默认都走https，如果要走http需要把仓库域名配置进insecure
 
 走https的话如果仓库域名不是docker客户端开始装的时候对应的那个证书的话，需要在构建机导入这个域名对应的证书
 
@@ -324,7 +324,7 @@ docker run -it --rm centos
 WARNING: IPv4 forwarding is disabled. Networking will not work.
 容器内执行命令, 等待后会看到提示超时:
 curl -m 3 -v paas.service.consul
-然后执行 systemctl restart BKCI-docker-dns-redirect
+然后执行 systemctl restart bkci-docker-dns-redirect
 单独启动一个测试容器:
 docker run -it --rm centos 
 容器内执行命令, 可以看到网络恢复:
@@ -379,7 +379,7 @@ curl -v paas.service.consul
 
 然后检查artifactory日志文件, 看看报错.
 
-### Q: BKCI添加节点的时候报错 bkiam v3 failed
+### Q: BK-CI 添加节点的时候报错 bkiam v3 failed
 
 ![](../../../assets/image-20220301101202-MyIAk.png)
 
@@ -512,7 +512,7 @@ Merge Request Accept Hook会在源分支**成功merge到目标分支时触发**
 
 ### Q: gitlab触发器在哪里配置webhook地址，jenkins是需要手动配置一个url的
 
-不需要配置这个hook，蓝BKCI是会自己注册webhook，选择事件类型后保存，就会自动注册webhook
+不需要配置这个hook，蓝BK-CI是会自己注册webhook，选择事件类型后保存，就会自动注册webhook
 
 ![](../../../assets/wecom-temp-d5c48ee99a96d373426491d14d56e404.png)
 
@@ -542,7 +542,7 @@ Merge Request Accept Hook会在源分支**成功merge到目标分支时触发**
     1.  点击对应webhook的Edit，查看webhook的发送详情，查看View detail
 
         <img src="../../../assets/image-gitlab-webhook-viewdetail.png" alt="" data-size="original">
-    2.  查看发送的错误详情，检查gitlab到BKCI机器的网络是否可达，如gitlab服务器是否能解析BKCI域名
+    2.  查看发送的错误详情，检查gitlab到BK-CI机器的网络是否可达，如gitlab服务器是否能解析BK-CI域名
 
         <img src="../../../assets/image-gitlab-webhook-request-detail.png" alt="" data-size="original">
 5.  如果上面都没问题，在process服务部署的机器上，执行grep "Trigger gitlab build" $BK\_HOME/logs/ci/process/process-devops.log 搜索日志，查找触发的入口日志。查看gitlab push过来的请求体，对比请求体中的`http_url`字段和代码库里代码仓库的地址是否**完全**匹配，如果一个是域名形式的url，另一个是ip形式的url，则不匹配，如下所示：
@@ -593,7 +593,7 @@ curl -X GET [https://devops.bktencent.com/prod/v3/apigw-app/projects/](https://d
 
 使用全局变量`${BK_CI_PROJECT_NAME}`
 
-### Q: 在浏览器里完成了BKCI登录，在同一浏览器不同tab访问BKCI，还需要再次登录
+### Q: 在浏览器里完成了 BK-CI 登录，在同一浏览器不同tab访问 BK-CI，还需要再次登录
 
 这种情况是登录cookie过期了，现在默认应该是两小时，过期时间可调
 
@@ -607,11 +607,11 @@ curl -X GET [https://devops.bktencent.com/prod/v3/apigw-app/projects/](https://d
 
 ![](../../../assets/wecom-temp-0427b67401a386578f79c2495a2009f8.png)
 
-### Q: BKCI脚本里会起一个gradle daemon进程。最近发现，构建完就关闭。怀疑是不是devops agent处理的？
+### Q: BK-CI脚本里会起一个gradle daemon进程。最近发现，构建完就关闭。怀疑是不是devops agent处理的？
 
 ![](../../../assets/wecom-temp-d4178631b527e498ee7d8a0778c1fb09.png)
 
-BKCIagent执行完构建任务后，会自动停止所有由agent启动的子进程，如果不需要结束子进程，可以在启动进程前设置环境变量：set DEVOPS\_DONT\_KILL\_PROCESS\_TREE=true，在bash脚本里设置`setEnv "DEVOPS_DONT_KILL_PROCESS_TREE" "true"`
+BK-CIagent执行完构建任务后，会自动停止所有由agent启动的子进程，如果不需要结束子进程，可以在启动进程前设置环境变量：set DEVOPS\_DONT\_KILL\_PROCESS\_TREE=true，在bash脚本里设置`setEnv "DEVOPS_DONT_KILL_PROCESS_TREE" "true"`
 
 ### Q: 可以设置 一个变量值, 根据这个变量, 判断是否运行某个 插件 吗
 
@@ -711,7 +711,7 @@ BKCIagent执行完构建任务后，会自动停止所有由agent启动的子进
 
 ![](../../../assets/wecom-temp-ef4f873c64f962cc9582479c26442f2f.png)
 
-### Q: 让BKCI的日志窗口保留颜色吗？想让失败的案例更明显点
+### Q: 让BK-CI的日志窗口保留颜色吗？想让失败的案例更明显点
 
 参考[https://docs.bkci.net/reference/faqs/log-colors](https://docs.bkci.net/reference/faqs/log-colors)
 
@@ -733,12 +733,12 @@ BKCIagent执行完构建任务后，会自动停止所有由agent启动的子进
 
 ![](../../../assets/image-20220210194135210.png)
 
-### Q: 如果我想通过shell或者bat执行一个python任务，那BKCI的变量我只有通过python命令行透传进去嘛,而且无法将变量回写到BKCI？
+### Q: 如果我想通过shell或者bat执行一个python任务，那BK-CI的变量我只有通过python命令行透传进去嘛,而且无法将变量回写到BK-CI？
 
-问题一：可以通过获取环境变量的方式来获取BKCI的变量
+问题一：可以通过获取环境变量的方式来获取BK-CI的变量
 
 ```
-# 单行python例子，var为用户在本步骤或者其他步骤定义的变量名，BK_CI_START_USER_NAME是BKCI的全局变量
+# 单行python例子，var为用户在本步骤或者其他步骤定义的变量名，BK_CI_START_USER_NAME是BK-CI的全局变量
 python -c "import os; print(os.environ.get('var'))"
 python -c "import os; print(os.environ.get('BK_CI_START_USER_NAME'))"
 
@@ -750,14 +750,14 @@ EOF
 python test.py
 ```
 
-问题二：如何将变量回写到BKCI
+问题二：如何将变量回写到BK-CI
 
 ```
-# 如果是常量，shell可以使用setEnv，bat可以使用call:setEnv来将变量回写到BKCI
+# 如果是常量，shell可以使用setEnv，bat可以使用call:setEnv来将变量回写到BK-CI
 setEnv "var_name" "var_value" # shell
 call:setEnv "var_name" "var_value"  # bat
 
-# 将python脚本输出结果写回BKCI
+# 将python脚本输出结果写回 BK-CI
 var_value=`python script.py` # script.py里需要有print输出，如print("test")
 setEnv "var_name" "${var_value}" # var_name="test"
 
@@ -767,7 +767,7 @@ source env.sh
 setEnv "var_name" "${file_name}"
 ```
 
-问题三：bat 脚本中调用 python ，将 python 输出回写到BKCI
+问题三：bat 脚本中调用 python ，将 python 输出回写到 BK-CI
 
 ````
 for /F %%i in('python3 D:\mytest.py') do (set res=%%i)
@@ -830,9 +830,9 @@ call:setEnv "var_name" %res%
 
 支持，参考[https://docs.bkci.net/store/ci-images](https://docs.bkci.net/store/ci-images)
 
-### Q: BKCI支持私有构建集群里选一台空闲的机器运行流水线吗，比如我们编译打包服务器，可能同时会有多个人操作不同分支的打包。
+### Q: BK-CI 支持私有构建集群里选一台空闲的机器运行流水线吗，比如我们编译打包服务器，可能同时会有多个人操作不同分支的打包。
 
-如果有多台私有构建机，可以构成私有构建集群，选择这个集群后，BKCI流水线按照一定的算法选择其中一台进行构建：
+如果有多台私有构建机，可以构成私有构建集群，选择这个集群后，BK-CI流水线按照一定的算法选择其中一台进行构建：
 
 **算法如下：**
 
@@ -888,13 +888,13 @@ call:setEnv "var_name" %res%
 
 ### Q: 有支持git push的插件吗，想push一些东西到代码仓库上
 
-可以试着用账密的方式push： git push [http://username:passwd@xxx](http://username:passwd@xxx)，username和passwd可以使用凭证管理起来，username和passwd不允许有特殊字符，BKCI在渲染变量的时候，不会转义特殊字符
+可以试着用账密的方式push： git push [http://username:passwd@xxx](http://username:passwd@xxx)，username和passwd可以使用凭证管理起来，username和passwd不允许有特殊字符，BK-CI在渲染变量的时候，不会转义特殊字符
 
-### Q: 如何重启私有构建上的BKCIagent
+### Q: 如何重启私有构建上的 BK-CI agent
 
-可以到BKCIagent的安装目录下，先执行stop.sh脚本（在windows上是stop.bat批处理文件），再执行start.sh（在windows上时start.bat文件）
+可以到BK-CIagent的安装目录下，先执行stop.sh脚本（在windows上是stop.bat批处理文件），再执行start.sh（在windows上时start.bat文件）
 
-### Q: 私有构建机如何重装BKCIagent
+### Q: 私有构建机如何重装 BK-CI agent
 
 1. 在linux/Mac上，可以支持重新执行安装命令，如果之前遇到安装错误，建议先uninstall，然后删除干净安装目录，重新跑安装命令
 2. windows上需要先uninstall，然后删除安装目录，重新下载安装包，重复安装过程即可
@@ -915,7 +915,7 @@ TGit对接的是腾讯的工蜂代码库，无法使用gitlab代码库
 
 ![](../../../assets/wecom-temp-26d5087b12647b6801f5d8471eeb3ee6.png)
 
-请检查BKCI服务器的时间是否正常
+请检查 BK-CI 服务器的时间是否正常
 
 ### Q:流水线的历史页面，能显示自定义内容吗，比如同一条流水线，有时候是打包安卓，有时候是打包ios，单看历史页面，无法分辨出来构建内容
 
@@ -927,13 +927,13 @@ TGit对接的是腾讯的工蜂代码库，无法使用gitlab代码库
 
 ![](../../../assets/wecom-temp-9418a7960b89c65268c6947f46d95f72.png)
 
-### Q: windows构建机上安装BKCIagent失败，子目录或文件已经存在，拒绝访问
+### Q: windows构建机上安装 BK-CI agent失败，子目录或文件已经存在，拒绝访问
 
 ![](../../../assets/企业微信截图\_16393825053890-3096967.png)
 
-这种情况一般是由于用户重复安装BKCIagent导致，可以先执行uninstall脚本，卸载当前agent，然后删除该agent的安装目录，然后重新下载agent包，再次安装
+这种情况一般是由于用户重复安装BK-CIagent导致，可以先执行uninstall脚本，卸载当前agent，然后删除该agent的安装目录，然后重新下载agent包，再次安装
 
-### Q: BKCI的执行历史有设置上限的地方，我这个定时流水线可能1分钟一次，数据会浪费磁盘
+### Q: BK-CI 的执行历史有设置上限的地方，我这个定时流水线可能1分钟一次，数据会浪费磁盘
 
 频率高的定时任务，建议使用蓝鲸的作业平台
 
@@ -973,7 +973,7 @@ TGit对接的是腾讯的工蜂代码库，无法使用gitlab代码库
 
 ### Q: 如何调整调度算法中的资源阈值
 
-目前只支持调整内存阈值，默认是80%，即当公共构建机的内存使用率达到80%时，如果其他构建机还有空闲资源，任务会被调度到其他构建机，这个阈值是可以修改的，修改方法如下，登录到BKCIdispatch-docker服务的机器上， 执行：
+目前只支持调整内存阈值，默认是80%，即当公共构建机的内存使用率达到80%时，如果其他构建机还有空闲资源，任务会被调度到其他构建机，这个阈值是可以修改的，修改方法如下，登录到BK-CIdispatch-docker服务的机器上， 执行：
 
 ```
  # threshold的值即为阈值百分比，这里以将内存阈值调整为70%为例 curl -H 'Accept:application/json;charset="utf-8"' -H 'Content-Type:application/json;charset="utf-8"' -H "X-DEVOPS-UID: admin" -X POST --data '{"threshold":"70"}' http://127.0.0.1:21938/api/op/dispatchDocker/docker/threshold/update
@@ -981,23 +981,23 @@ TGit对接的是腾讯的工蜂代码库，无法使用gitlab代码库
 
 ### Q: 偶现启动构建机启动失败，Get credential failed
 
-已知问题，将dispatch-docker/lib/bcprov-jdk15on-1.64.jar删除，这是个软链，删除即可，然后重启dispatch-docker服务`systemctl restart BKCI-dispatch-docker.service`
+已知问题，将dispatch-docker/lib/bcprov-jdk15on-1.64.jar删除，这是个软链，删除即可，然后重启dispatch-docker服务`systemctl restart BK-CI-dispatch-docker.service`
 
 ### Q: 如何删除公共构建机
 
-登录到BKCIdispatch-docker服务的机器上，执行`/data/src/ci/scripts/bkci-op.sh list`获取所有的公共构建机，执行`/data/src/ci/scripts/bkci-op.sh del`操作
+登录到 BK-CI dispatch-docker服务的机器上，执行`/data/src/ci/scripts/bkci-op.sh list`获取所有的公共构建机，执行`/data/src/ci/scripts/bkci-op.sh del`操作
 
 ### Q: 构建步骤卡在准备构建环境这一环
 
 ![](../../../assets/企业微信截图\_16419529383724.png)
 
-如果是公共构建机，优先考虑公共构建机BKCI-dockerhost.service服务是否正常
+如果是公共构建机，优先考虑公共构建机 bkci-dockerhost.service服务是否正常
 
 这种情况多见于私有构建机，多为agent安装异常导致，这里列举一些已知的原因：
 
-1. 网络原因，如无法解析BKCI域名、BKCI服务不可达等
-2. agent版本安装错误，如在mac上安装linux的agent包，这种情况，将BKCIagent安装包删除，重新安装对应版本agent即可
-3. 在BKCIagent安装目录的logs下的agentDaemon.log日志里可见`too many open files`,在机器上执行`ulimit -n`结果显示，可打开的文件数值太小，默认为1024，将其数值调大，重新安装BKCIagent即可
+1. 网络原因，如无法解析BK-CI域名、BK-CI服务不可达等
+2. agent版本安装错误，如在mac上安装linux的agent包，这种情况，将BK-CI agent安装包删除，重新安装对应版本agent即可
+3. 在BK-CI agent安装目录的logs下的agentDaemon.log日志里可见`too many open files`,在机器上执行`ulimit -n`结果显示，可打开的文件数值太小，默认为1024，将其数值调大，重新安装BK-CI agent即可
 
 ![](../../../assets/wecom-temp-2cf366a83acf24ef09ae7dff30c47354.png)
 
@@ -1033,17 +1033,17 @@ download 的时候只需要填写 test.txt 即可。
 
 **1、upload后文件去哪了？**
 
-upload 后，文件上传到了BKCI服务器当中。
+upload 后，文件上传到了BK-CI服务器当中。
 
 **2、Artifacts 是什么？**
 
-Artifacts 是BKCI服务器的路径。
+Artifacts 是BK-CI服务器的路径。
 
  /data/bkce/public/ci/artifactory/bk-archive/${项目名称}
 
 **3、制品 upload 的绝对路径是什么？**
 
-比如项目名称是vincotest，114514.txt实际存放路径就是BKCI机器上：
+比如项目名称是vincotest，114514.txt实际存放路径就是BK-CI机器上：
 
 /data/bkce/public/ci/artifactory/bk-archive/vincotest/${流水线id}/${构建id}/114514.txt
 
@@ -1067,7 +1067,7 @@ Artifacts 是BKCI服务器的路径。
 
 原因：没有匹配到对应的文件
 
-常见于文件路径问题导致的报错。upload时默认从BKCI的 ${WORKSPACE} 开始以相对路径匹配制品。
+常见于文件路径问题导致的报错。upload时默认从BK-CI的 ${WORKSPACE} 开始以相对路径匹配制品。
 
 因此如果对应的制品在${WORKSPACE}的更下一级目录时，需要填写 路径/文件
 
@@ -1087,7 +1087,7 @@ upload 时会使用到 /tmp 目录，因此 /tmp 也需要保持足够的空间�
 
 构建机使用的是Ugit
 
-BKCI需要使用原生的 git 拉取代码。如果构建机使用了 Ugit 则会导致BKCI checkout 失败。需要重新安装一次原生 git 。
+BK-CI 需要使用原生的 git 拉取代码。如果构建机使用了 Ugit 则会导致 BK-CI checkout 失败。需要重新安装一次原生 git 。
 
 **2、"git拉取代码" 这个插件的时候，报这个错是啥原因呀。使用的是ssh私钥**
 
@@ -1101,13 +1101,13 @@ BKCI需要使用原生的 git 拉取代码。如果构建机使用了 Ugit 则�
 
 ①此为旧版插件的问题，现已修复。
 
-②如果仍有报错，一般是由于BKCI服务器和构建机上 bcprov-jdk 版本不一致导致的问题。
+②如果仍有报错，一般是由于 BK-CI 服务器和构建机上 bcprov-jdk 版本不一致导致的问题。
 
 请检查版本是否一致：
 
 构建机：agent目录\jre\lib\ext
 
-BKCI服务器：/data/bkce/ci/ticket/lib/
+BK-CI 服务器：/data/bkce/ci/ticket/lib/
 
 如不一致，进行重装构建机agent重装即可解决。
 

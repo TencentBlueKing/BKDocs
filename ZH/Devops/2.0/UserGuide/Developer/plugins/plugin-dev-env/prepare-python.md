@@ -18,9 +18,9 @@
     ```
 
   - 配置步骤（以 Linux 为例）
-    - 以安装 BKCI Agent 的用户身份登录机器
-      > 配置 pip 的用户，和启动 BKCI Agent 的用户需一致，否则配置不生效。
-      > 执行 ps -ef |grep devops 命令确认启动 BKCI Agent 的用户
+    - 以安装 BK-CI Agent 的用户身份登录机器
+      > 配置 pip 的用户，和启动 BK-CI Agent 的用户需一致，否则配置不生效。
+      > 执行 ps -ef |grep devops 命令确认启动 BK-CI Agent 的用户
     - vi ~/.pip/pip.conf，将上述配置添加进去，注意换行符不能是\r\n
     - 保存配置
-    - 重启 BKCI Agent
+    - 重启 BK-CI Agent

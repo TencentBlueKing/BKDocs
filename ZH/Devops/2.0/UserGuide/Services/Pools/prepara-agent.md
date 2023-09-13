@@ -1,6 +1,6 @@
 # 私有构建机环境准备
 
-BKCI 流水线的插件，是由官方或第三方开发者提供。插件开发语言支持 Java、Python、NodeJs 或 Golang，执行时对环境有所依赖。 私有构建机导入 BKCI 作为流水线执行机之前，需先准备好环境，以免流水线执行失败。
+BK-CI 流水线的插件，是由官方或第三方开发者提供。插件开发语言支持 Java、Python、NodeJs 或 Golang，执行时对环境有所依赖。 私有构建机导入 BK-CI 作为流水线执行机之前，需先准备好环境，以免流水线执行失败。
 
 ## 准备 Python 插件执行环境
 研发商店支持开发 python 插件，如果想在你的构建机上能正常运行 python 插件，需要进行如下设置：
@@ -21,12 +21,12 @@ BKCI 流水线的插件，是由官方或第三方开发者提供。插件开发
     ```
 
     * 配置步骤（以 Linux 为例）
-      *   以安装 BKCI Agent 的用户身份登录机器
+      *   以安装 BK-CI Agent 的用户身份登录机器
 
-          > 配置 pip 的用户，和启动 BKCI Agent 的用户需一致，否则配置不生效。 执行 ps -ef |grep devops 命令确认启动 BKCI Agent 的用户
+          > 配置 pip 的用户，和启动 BK-CI Agent 的用户需一致，否则配置不生效。 执行 ps -ef |grep devops 命令确认启动 BK-CI Agent 的用户
       * vi \~/.pip/pip.conf，将上述配置添加进去，注意换行符不能是\r
       * 保存配置
-      * 重启 BKCI Agent
+      * 重启 BK-CI Agent
 
 ## 准备 Nodejs 插件执行环境
 研发商店支持开发 NodeJS 插件，如果想在你的构建机上能正常运行 NodeJS 插件，需要进行如下设置：

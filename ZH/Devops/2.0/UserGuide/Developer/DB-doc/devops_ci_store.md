@@ -483,7 +483,7 @@
 |  3  |      IMAGE\_CODE      |  varchar |   64  |  0  |   N  |  N  |                    |                 镜像代码                 |
 |  4  |      CLASSIFY\_ID     |  varchar |   32  |  0  |   N  |  N  |                    |                所属分类ID                |
 |  5  |        VERSION        |  varchar |   20  |  0  |   N  |  N  |                    |                  版本号                 |
-|  6  |  IMAGE\_SOURCE\_TYPE  |  varchar |   20  |  0  |   N  |  N  |      bkdevops      |      镜像来源，bkdevops：BKCI源third：第三方源     |
+|  6  |  IMAGE\_SOURCE\_TYPE  |  varchar |   20  |  0  |   N  |  N  |      bkdevops      |      镜像来源，bkdevops：BK-CI源third：第三方源     |
 |  7  |    IMAGE\_REPO\_URL   |  varchar |  256  |  0  |   Y  |  N  |                    |                镜像仓库地址                |
 |  8  |   IMAGE\_REPO\_NAME   |  varchar |  256  |  0  |   N  |  N  |                    |                镜像在仓库名称               |
 |  9  |       TICKET\_ID      |  varchar |  256  |  0  |   Y  |  N  |                    |              ticket身份ID              |

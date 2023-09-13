@@ -12,9 +12,9 @@
 
 https://docs.gitlab.com/ee/api/branches.html
 
-4、如果GitLab为https访问。请确认代码库是否有做 http-->https 跳转。BKCI默认以 http 方式进行代码库访问。
+4、如果GitLab为https访问。请确认代码库是否有做 http-->https 跳转。BK-CI默认以 http 方式进行代码库访问。
 
-若未做跳转，请按此临时方案，修改BKCI文件：
+若未做跳转，请按此临时方案，修改BK-CI文件：
 
 ```bash
 vim /data/bkce/etc/ci/application-repository.yml
@@ -25,9 +25,9 @@ gitlab:
 apiUrl: https://devops.bktencent.com/api/v4
 ```
 
-重启 BKCI-repository.service 服务
+重启 bkci-repository.service 服务
 
-```systemctl restart BKCI-repository.service```
+```systemctl restart bkci-repository.service```
 
 
 
@@ -35,7 +35,7 @@ apiUrl: https://devops.bktencent.com/api/v4
 
 ![](../../assets/QQ截图20221228181708.png)
 
-该版本的 SSH 协议BKCI无法解析。若碰到此错误建议使用 HTTP 方式进行关联。
+该版本的 SSH 协议BK-CI无法解析。若碰到此错误建议使用 HTTP 方式进行关联。
 
 
 
@@ -43,7 +43,7 @@ apiUrl: https://devops.bktencent.com/api/v4
 
 ## Q2:无法关联 GitHub 代码库
 
-目前BKCI与 GItHub 的对接还存在一些问题。如果一定要使用 GitHub 代码库，请按照此方法进行配
+目前BK-CI与 GItHub 的对接还存在一些问题。如果一定要使用 GitHub 代码库，请按照此方法进行配
 [如何关联 GitHub 代码库](https://bk.tencent.com/s-mart/community/question/3184?type=article)
 
 

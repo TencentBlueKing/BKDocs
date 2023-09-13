@@ -1,6 +1,6 @@
 # 常用插件安装
 
-本篇文章将指导你如何在 BKCI 中安装插件。
+本篇文章将指导你如何在 BK-CI 中安装插件。
 
 ## 常用插件下载地址
 
@@ -96,7 +96,7 @@ https://github.com/wenchao-h/bkci-plugin-sendmsg
 
 路径：
 
-BKCI----->研发商店---->工作台
+BK-CI----->研发商店---->工作台
 
 ![](../../assets/toworktable.png)
 

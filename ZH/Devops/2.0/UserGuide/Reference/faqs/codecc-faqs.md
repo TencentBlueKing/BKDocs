@@ -93,7 +93,7 @@ codecc 检查的代码，必须使用 checkout 插件进行拉取。
 
 
 
-蓝鲸BKCI和 codecc 的服务对解析都有依赖，如果 resolv.conf 这个文件会因为重启等原因经常被还原的话，建议加锁
+BK-CI 和 codecc 的服务对解析都有依赖，如果 resolv.conf 这个文件会因为重启等原因经常被还原的话，建议加锁
 加锁命令：
 sed -i "/\[main\]/a\dns=none" /etc/NetworkManager/NetworkManager.conf
 

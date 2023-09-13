@@ -1,10 +1,10 @@
 # 服务对应功能
 
-BKCI的各个微服务对应各个功能，当有功能进行异常时，可以优先考虑排查对应的服务日志。服务日志路径参考[基本概念](./user-guide.md)
+BK-CI 的各个微服务对应各个功能，当有功能进行异常时，可以优先考虑排查对应的服务日志。服务日志路径参考[基本概念](./user-guide.md)
 
 | 微服务          | 功能                             |
 | --------------- | -------------------------------- |
-| gateway         | BKCI网关                         |
+| gateway         | BK-CI 网关                         |
 | artifactory     | 制品构件服务，默认的构件仓库     |
 | dockerhost      | 公共构建机                       |
 | environment     | 私有构建机服务。导入、管理构建机 |
@@ -20,8 +20,8 @@ BKCI的各个微服务对应各个功能，当有功能进行异常时，可以�
 | agentless       | 无编译环境                       |
 | auth            | 鉴权认证                         |
 | log             | 构建日志                         |
-| notify          | BKCI内置通知服务                 |
-| openapi         | BKCIAPI服务                      |
+| notify          | BK-CI 内置通知服务                 |
+| openapi         | BK-CI API 服务                      |
 
 详细的组件描述及关联请参考[bkci组件](https://docs.bkci.net/overview/components)
 

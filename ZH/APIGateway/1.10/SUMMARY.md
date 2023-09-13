@@ -58,5 +58,3 @@
 * [API 文档](./APIDocs/README.md)
 * [开源共建](https://github.com/TencentBlueKing/blueking-apigateway)
 * [资源下载](../downloads/DevTools.md)
-* [开发架构文档](Operation/README.md)
-* [应用运维文档](Architecture/README.md)

@@ -9,7 +9,7 @@
 |                     表名                    |        说明        |
 | :---------------------------------------: | :--------------: |
 |  [T\_APP\_CODE\_GROUP](broken-reference)  | app\_code对应的组织架构 |
-| [T\_APP\_CODE\_PROJECT](broken-reference) | app\_code对应的BKCI项目 |
+| [T\_APP\_CODE\_PROJECT](broken-reference) | app\_code对应的BK-CI项目 |
 |   [T\_APP\_USER\_INFO](broken-reference)  |  app\_code对应的管理员 |
 
 **表名：** T\_APP\_CODE\_GROUP
@@ -35,7 +35,7 @@
 
 **表名：** T\_APP\_CODE\_PROJECT
 
-**说明：** app\_code对应的BKCI项目
+**说明：** app\_code对应的BK-CI项目
 
 **数据列：**
 

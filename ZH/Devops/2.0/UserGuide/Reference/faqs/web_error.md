@@ -32,7 +32,7 @@
 
 
 
-## Q4: BKCI添加节点的时候报错 bkiam v3 failed（环境管理）（构建机）
+## Q4: BK-CI添加节点的时候报错 bkiam v3 failed（环境管理）（构建机）
 
 ![](../../assets/image-20220301101202-MyIAk.png)
 
@@ -103,4 +103,4 @@ update devops_process.T_PIPELINE_SETTING set MAX_CON_RUNNING_QUEUE_SIZE=100 wher
 
 ![](../../assets/var_error_2102004.png)
 
-上传时需要给变量填写包含文件名的完整的路径。该功能依赖于BKCI制品库。
+上传时需要给变量填写包含文件名的完整的路径。该功能依赖于BK-CI制品库。

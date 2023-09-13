@@ -19,7 +19,7 @@
 
 已知问题，**影响版本<=1.5.23**
 
-把ticket/lib/bcprov-jdk15on-1.64.jar这个包删除，然后重启ticket服务`systemctl restart BKCI-ticket.service`
+把ticket/lib/bcprov-jdk15on-1.64.jar这个包删除，然后重启ticket服务`systemctl restart bkci-ticket.service`
 
 **Q: 我想把单元测试报告作为产出物报告，上传成功。但是打开报告，无法正常显示，报错「This request有 哈哈是beenblocked； the content must be served over https」**
 
@@ -45,13 +45,13 @@
 
 已知问题，影响范围：**版本1.5.x**
 
-**Q: BKCI输出的日志先后顺序混乱**
+**Q: BK-CI输出的日志先后顺序混乱**
 
 ![](../../assets/企业微信截图_16316936739387.png)
 
 已知问题，影响范围：**版本1.5.x**
 
-**Q: BKCI流水线申请权限的时候，点了去申请，页面没有跳转到权限中心，F12查看响应有bkiam v3 failed报错**
+**Q: BK-CI流水线申请权限的时候，点了去申请，页面没有跳转到权限中心，F12查看响应有bkiam v3 failed报错**
 
 ![](../../assets/企业微信截图_16384143961812.png)
 

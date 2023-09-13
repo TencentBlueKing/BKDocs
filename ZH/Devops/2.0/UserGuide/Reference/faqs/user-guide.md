@@ -1,6 +1,6 @@
 # 中控机
-中控机相当于蓝鲸、BKCI的控制台。 bkcli 命令只可以在中控机上执行。
-任意蓝鲸/BKCI机器执行 ```cat /data/install/.controller_ip ```  可以获取中控机的IP
+中控机相当于蓝鲸、BK-CI的控制台。 bkcli 命令只可以在中控机上执行。
+任意蓝鲸/BK-CI机器执行 ```cat /data/install/.controller_ip ```  可以获取中控机的IP
 
 ---
 
@@ -22,7 +22,7 @@
 
 **私有构建机中，agent安装目录怎么看**：
 
-BKCI---环境管理---节点---{对应使用的构建机}---安装路径
+BK-CI---环境管理---节点---{对应使用的构建机}---安装路径
 
 ![agent安装目录](../../assets/build_log_url.png)
 
@@ -34,7 +34,7 @@ BKCI---环境管理---节点---{对应使用的构建机}---安装路径
 
 # 服务日志
 
-BKCI的日志分服务进行存储。
+BK-CI的日志分服务进行存储。
 
 日志存放路径为：/data/bkce/logs/ci/
 
@@ -44,7 +44,7 @@ BKCI的日志分服务进行存储。
 
 ### 获取全部服务日志：
 
-进入BKCI后台服务机器
+进入BK-CI后台服务机器
 
 ```find /data/bkce/logs/ci/ -name \*-devops.log -o -name \*-devops-error.log |xargs tar zcvf /root/bkci-log.tar.gz```
 

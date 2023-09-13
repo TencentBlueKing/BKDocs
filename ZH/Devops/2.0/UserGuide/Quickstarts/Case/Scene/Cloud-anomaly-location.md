@@ -7,9 +7,9 @@
 
 服务上云后，游戏进程发生core，由于pod节点漂移等原因，找到corefile并断点调试比较困难。
 
-## BKCI优势
+## BK-CI 优势
 
-通过BKCI自动拉起调试节点，并邮件输出coredump内容给后台开发，如果有断点需求，可以在集群master节点登录调试pod，进行调试定位。
+通过BK-CI自动拉起调试节点，并邮件输出coredump内容给后台开发，如果有断点需求，可以在集群master节点登录调试pod，进行调试定位。
 
 ## 解决方案
 
@@ -17,13 +17,13 @@
 
 ● node机监控是否产生corefile
 
-思路：编写corefile文件监控脚本，利用蓝鲸“作业平台”-定时任务功能，当有corefile新增时，远程触发BKCI流水线。
+思路：编写corefile文件监控脚本，利用蓝鲸“作业平台”-定时任务功能，当有corefile新增时，远程触发BK-CI流水线。
 
 脚本核心部分样例，仅供参考
 
 file_list=`find /data/corefile  -mmin -3 -name  "core_*"`
 
-● 远程触发BKCI流水线后，根据node ip和镜像版本号等信息，部署调试pod
+● 远程触发 BK-CI 流水线后，根据node ip和镜像版本号等信息，部署调试pod
 
 ● 调试pod启动后，通过kubectl命令，获取coredump内容
 
@@ -33,7 +33,7 @@ file_list=`find /data/corefile  -mmin -3 -name  "core_*"`
 
 ![&#x56FE;1](../../../assets/scene-Cloud-anomaly-location-a.png)
 
-2、BKCI流水线配置
+2、BK-CI 流水线配置
 
 ● 解析文件名
 

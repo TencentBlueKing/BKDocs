@@ -1,6 +1,6 @@
 # 构建并托管一个 CI 镜像
 
-BKCI 提供了默认的 Ubuntu 镜像，但不一定能满足所有编译场景，你可以通过这篇文章基于默认镜像制作自定义镜像。
+BK-CI 提供了默认的 Ubuntu 镜像，但不一定能满足所有编译场景，你可以通过这篇文章基于默认镜像制作自定义镜像。
 
 - 默认镜像： [bkci/ci:latest](https://github.com/TencentBlueKing/ci-base-images/blob/master/ci-build/Dockerfile)
 

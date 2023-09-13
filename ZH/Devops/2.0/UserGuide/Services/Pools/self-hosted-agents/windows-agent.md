@@ -4,9 +4,9 @@
 > 2. **如果您的windows构建需要在流水线中启动UI程序**（比如打开浏览器做自动化测试），请参阅[windows agent启动界面程序的解决办法](./windows-agent-run-ui.md)）
 > 3. agent资源是按项目隔离的，如果多个项目导入私有构建机，需要在不同的项目下各自导入agent，安装在不同的目录下。（每个agent的安装包/安装脚本是不一样的）
 
-## 在BKCI获取Agent包
+## 在 BK-CI 获取 Agent 包
 
-根据[将你的构建机托管至 BKCI](../host-to-bkci.md) 指引，选择Windows，下载Agent包
+根据[将你的构建机托管至 BK-CI](../host-to-bkci.md) 指引，选择Windows，下载Agent包
 
 ## 在Windows构建机上创建agent安装目录
 
@@ -52,7 +52,7 @@ new-item C:\data\landun -itemtype directory
 
 ## windows agent启动界面程序的解决办法
 
-BKCI私有构建机 windows agent 默认以系统服务的方式启动，通过agent启动带界面UI的程序时会报错或者碰到界面被不可见的问题
+BK-CI私有构建机 windows agent 默认以系统服务的方式启动，通过agent启动带界面UI的程序时会报错或者碰到界面被不可见的问题
 
 原因：Windows Service启动的进程都运行在Session0内，Session0限制了不能向桌面用户弹出信息窗口、UI 窗口等信息。
 

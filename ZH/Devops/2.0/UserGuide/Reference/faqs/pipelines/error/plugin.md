@@ -59,7 +59,7 @@ docker run -it --rm centos
 WARNING: IPv4 forwarding is disabled. Networking will not work.
 容器内执行命令, 等待后会看到提示超时:
 curl -m 3 -v paas.service.consul
-然后执行 systemctl restart BKCI-docker-dns-redirect
+然后执行 systemctl restart bkci-docker-dns-redirect
 单独启动一个测试容器:
 docker run -it --rm centos 
 容器内执行命令, 可以看到网络恢复:
@@ -72,7 +72,7 @@ curl -v paas.service.consul
 
 构建机使用的是Ugit
 
-BKCI需要使用原生的 git 拉取代码。如果构建机使用了 Ugit 则会导致BKCI checkout 失败。需要重新安装一次原生 git 。
+BK-CI 需要使用原生的 git 拉取代码。如果构建机使用了 Ugit 则会导致BK-CI checkout 失败。需要重新安装一次原生 git 。
 
 ## Q3: 获取凭证失败
 
@@ -88,13 +88,13 @@ Such issues can arise if a bad key is used during decryption.
 
 ①此为旧版checkout插件的问题，现已修复。
 
-②如果仍有报错，一般是由于BKCI服务器和构建机上 bcprov-jdk 版本不一致导致的问题。
+②如果仍有报错，一般是由于 BK-CI 服务器和构建机上 bcprov-jdk 版本不一致导致的问题。
 
 请检查版本是否一致：
 
 构建机：agent目录\jre\lib\ext
 
-BKCI服务器：/data/bkce/ci/ticket/lib/
+BK-CI 服务器：/data/bkce/ci/ticket/lib/
 
 如不一致，进行重装构建机agent重装即可解决。
 
@@ -106,7 +106,7 @@ BKCI服务器：/data/bkce/ci/ticket/lib/
 
 原因：没有匹配到对应的文件
 
-常见于文件路径问题导致的报错。upload时默认从BKCI的 ${WORKSPACE} 开始以相对路径匹配制品。
+常见于文件路径问题导致的报错。upload时默认从 BK-CI 的 ${WORKSPACE} 开始以相对路径匹配制品。
 
 因此如果对应的制品在${WORKSPACE}的更下一级目录时，需要填写 路径/文件
 
@@ -126,7 +126,7 @@ Q2:构建列表不显示产物
 
 ## Q1: python的环境变量添加后，在job执行的时候未生效。（job报错“系统找不到指定的文件”）
 
-因为BKCIagent和蓝鲸agent使用的账户是system，所以加到administrator的环境变量不生效 需要把python.exe和pip3.exe pip.exe加入到系统环境变量里，再重启操作系统
+因为 BK-CI agent和蓝鲸agent使用的账户是system，所以加到administrator的环境变量不生效 需要把python.exe和pip3.exe pip.exe加入到系统环境变量里，再重启操作系统
 
 ## Q2: windows构建机 流水线执行用python去打开exe 失败
 
@@ -210,13 +210,13 @@ sender需要在插件的「私有配置」里设置，独立于ESB的mail\_sende
 
 可以将有空格的命令用引号""括起来
 
-## Q3：构建机本地执行 Unity bat 脚本时成功，BKCI执行报错
+## Q3：构建机本地执行 Unity bat 脚本时成功，BK-CI执行报错
 
-查看**脚本执行日志**后发现，本地执行时开启了88个线程的UnityShaderCompiler，但是BKCI执行时，有些UnityShaderCompiler就吊起失败了。
+查看**脚本执行日志**后发现，本地执行时开启了88个线程的UnityShaderCompiler，但是 BK-CI 执行时，有些UnityShaderCompiler就吊起失败了。
 
 报错：Failed to get ipc connection from UnityShaderCompiler.exe shader compiler!
 
-原因：BKCI需要为用到的exe开启进程，来收集错误和日志，创建的进程数超出了限制，会导致进程开启失败，导致流程失败。
+原因：BK-CI 需要为用到的exe开启进程，来收集错误和日志，创建的进程数超出了限制，会导致进程开启失败，导致流程失败。
 
 解决办法：需增加系统可开启的进程数。
 
@@ -224,11 +224,11 @@ sender需要在插件的「私有配置」里设置，独立于ESB的mail\_sende
 
 ## Q4：无法执行带UI界面的程序
 
-具体表现：同样的脚本在目标机器执行bat脚本没问题， 在BKCI或者job平台不能执行
+具体表现：同样的脚本在目标机器执行bat脚本没问题， 在 BK-CI 或者job平台不能执行
 
-BKCI开发团队给出的解释：
+BK-CI 开发团队给出的解释：
 
-BKCI私有构建机windows agent默认以系统服务的方式启动，通过agent启动带界面UI的程序时会报错或者碰到界面被不可见的问题
+BK-CI 私有构建机windows agent默认以系统服务的方式启动，通过agent启动带界面UI的程序时会报错或者碰到界面被不可见的问题
 
 原因：Windows Service启动的进程都运行在Session0内，Session0限制了不能向桌面用户弹出信息窗口、UI 窗口等信息。
 
@@ -244,7 +244,7 @@ BKCI私有构建机windows agent默认以系统服务的方式启动，通过age
 
 **注1：这种方式启动的agent没有开机启动功能。**
 
-**注2：BKCIagent执行完构建任务后，会自动停止所有由agent启动的子进程，如果不需要结束子进程，可以在启动进程前设置环境变量：set DEVOPS_DONT_KILL_PROCESS_TREE=true**
+**注2：BK-CIagent执行完构建任务后，会自动停止所有由agent启动的子进程，如果不需要结束子进程，可以在启动进程前设置环境变量：set DEVOPS_DONT_KILL_PROCESS_TREE=true**
 
 **目前只有这种临时解决方式， 因为agent最开始设计就是如此**
 
@@ -252,7 +252,7 @@ BKCI私有构建机windows agent默认以系统服务的方式启动，通过age
 
 ## Q5:batch插件，无法识别带回车的文本框变量
 
-BKCI是通过一种提前渲染的方式进行变量渲染。已经把变量渲染好，替换插件中内容。
+BK-CI 是通过一种提前渲染的方式进行变量渲染。已经把变量渲染好，替换插件中内容。
 
 batch 插件模拟命令行执行，碰到了带回车的文本框时，就会识别为执行。
 

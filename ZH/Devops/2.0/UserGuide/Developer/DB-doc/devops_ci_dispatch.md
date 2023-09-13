@@ -367,7 +367,7 @@
 |  序号 |                    名称                   |   数据类型   |  长度 | 小数位 | 允许空值 |  主键 | 默认值 |         说明        |
 | :-: | :-------------------------------------: | :------: | :-: | :-: | :--: | :-: | :-: | :---------------: |
 |  1  |                 VM\_TYPE                |  varchar | 128 |  0  |   N  |  Y  |     |       构建机类型       |
-|  2  |        RUNNING\_JOBS\_MAX\_SYSTEM       |    int   |  10 |  0  |   N  |  N  |     |    BKCI系统最大并发JOB数   |
+|  2  |        RUNNING\_JOBS\_MAX\_SYSTEM       |    int   |  10 |  0  |   N  |  N  |     |    BK-CI系统最大并发JOB数   |
 |  3  |       RUNNING\_JOBS\_MAX\_PROJECT       |    int   |  10 |  0  |   N  |  N  |     |   单项目默认最大并发JOB数   |
 |  4  |         RUNNING\_TIME\_JOB\_MAX         |    int   |  10 |  0  |   N  |  N  |     | 系统默认所有单个JOB最大执行时间 |
 |  5  |     RUNNING\_TIME\_JOB\_MAX\_PROJECT    |    int   |  10 |  0  |   N  |  N  |     |  默认单项目所有JOB最大执行时间 |

@@ -41,11 +41,11 @@ curl -s -u elastic:$BK_ES7_ADMIN_PASSWORD -X DELETE http://$BK_ES7_IP:9200/index
 
 插件默认的超时时间为 900min，若超过超时时间仍未终止，通常是 process 或 project 服务出现了异常。
 
-需进入BKCI机器，重启服务 
+需进入BK-CI机器，重启服务 
 
-```systemctl status BKCI-project.service ```
+```systemctl status bkci-project.service ```
 
-```systemctl status BKCI-process.service``` 
+```systemctl status bkci-process.service``` 
 
 ---
 
@@ -53,9 +53,9 @@ curl -s -u elastic:$BK_ES7_ADMIN_PASSWORD -X DELETE http://$BK_ES7_IP:9200/index
 
 常见的原因有：
 
-1. BKCI版本更新后，如客户端 Agent 版本未进行相应更新。可能会导致此问题。
+1. BK-CI版本更新后，如客户端 Agent 版本未进行相应更新。可能会导致此问题。
 2. 确认机器中是否添加了变量 DEVOPS_DONT_KILL_PROCESS_TREE。
-3. 如是偶现问题，可能是资源占用过高等原因导致BKCI的 process 进程偶现故障。可以尝试重启 process 进程。
+3. 如是偶现问题，可能是资源占用过高等原因导致BK-CI的 process 进程偶现故障。可以尝试重启 process 进程。
 4. 构建机因网络、资源等问题，导致接收进程终止信号缓慢。可检查构建机资源及网络。
 
 

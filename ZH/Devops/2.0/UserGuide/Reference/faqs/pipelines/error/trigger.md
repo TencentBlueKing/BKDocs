@@ -18,7 +18,7 @@
 
    2. 如果gitlab中有注册的url，url是 [http://域名/external/scm/codegit/commit](http://xn--eqrt2g/external/scm/codegit/commit) 然后点击编辑，查看View detail，如图2
 
-   3. 查看发送的错误详情，如图3。检查gitlab到BKCI机器的网络是否可达，如gitlab服务器是否能解析BKCI域名。
+   3. 查看发送的错误详情，如图3。检查gitlab到 BK-CI 机器的网络是否可达，如gitlab服务器是否能解析 BK-CI 域名。
 
 5. 如果上面都没问题，在process服务部署的机器上，执行grep "Trigger gitlab build" $BK\_HOME/logs/ci/process/process-devops.log 搜索日志，查找触发的入口日志，查看gitlab push过来的请求体。
 
@@ -48,7 +48,7 @@
 
 URL '[**http://devops.bktencent.com/ms/process/api/external/scm/gitlab/commit**](http://devops.bktencent.com/ms/process/api/external/scm/gitlab/commit)' is blocked: Host cannot be resolved or invalid
 
-gitlab 无法解析BKCI的域名。
+gitlab 无法解析 BK-CI 的域名。
 
 需要在gitlab的机器上配置devops.bktencent.com的hosts解析
 
@@ -72,4 +72,4 @@ update devops_process.T_PIPELINE_SETTING set MAX_CON_RUNNING_QUEUE_SIZE=100 wher
 
 ## Q5: 定时触发的流水线，时间显示不对，触发时间也不对
 
-![](../../../../assets/wecom-temp-26d5087b12647b6801f5d8471eeb3ee6.png)请检查BKCI服务器的时间是否正常
+![](../../../../assets/wecom-temp-26d5087b12647b6801f5d8471eeb3ee6.png)请检查 BK-CI 服务器的时间是否正常

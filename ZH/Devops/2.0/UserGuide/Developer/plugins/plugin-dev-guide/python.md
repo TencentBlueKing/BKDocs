@@ -101,7 +101,7 @@
 插件的逻辑代码主要在command_line.py里，以下demo示例，演示了一个简单的插件，从输入框input_demo获取用户输入值，将用户输入内容打印到日志中，并输出到插件结果中。
 1. `sdk.input().get("key")`是python_atom_sdk提供的获取插件输入的方法，key是输入组件的名称，在task.json里的input定义，在本例中输入组件为input_demo
 2. output_demo是输出组件，作为插件输出结果，流水线后续JOB可以引用output_demo的值
-3. task.json里input代表UI输入组件，所有和用户交互的输入UI组件都要放在input里，组件名称需唯一，在BKCI「研发商店」-「控制台」-「调试task.json」可以查看task.json可视化结果
+3. task.json里input代表UI输入组件，所有和用户交互的输入UI组件都要放在input里，组件名称需唯一，在BK-CI「研发商店」-「控制台」-「调试task.json」可以查看task.json可视化结果
 
 更多sdk接口，请参考：[python_atom_sdk接口示例](../plugin-sdk/python-atom-sdk.md)
 更多task.json配置信息，请参考：[插件配置规范](../plugin-dev-standard/plugin-config.md)

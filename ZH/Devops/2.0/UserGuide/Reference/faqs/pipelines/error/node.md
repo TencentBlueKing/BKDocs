@@ -10,7 +10,7 @@ no available Docker VM
 
 2\. 如果依旧无法调度, 需要检查ci-dispatch的日志有无异常. 或者涉及dockerhost ip的日志.
 
-原因是当时部署BKCI的时候因为服务器资源有限，把构建机 微服务 网关都放到一台机器上 导致构建机内存使用率过高，构建环境的时候找不到可用构建机，现在把构建机单独部署到别的机器上 之前的那些报错就都没了。
+原因是当时部署 BK-CI 的时候因为服务器资源有限，把构建机 微服务 网关都放到一台机器上 导致构建机内存使用率过高，构建环境的时候找不到可用构建机，现在把构建机单独部署到别的机器上 之前的那些报错就都没了。
 
 3、主机资源不足时也会导致启动失败。请确认公共构建机节点 DISK_LOAD<95%，CPU_LOAD<100%，MEM_LOAD <80%
 
@@ -20,7 +20,7 @@ no available Docker VM
 
 **Get credential failed**
 
-已知问题，将dispatch-docker/lib/bcprov-jdk15on-1.64.jar删除，这是个软链，删除即可，然后重启dispatch-docker服务`systemctl restart BKCI-dispatch-docker.service`
+已知问题，将dispatch-docker/lib/bcprov-jdk15on-1.64.jar删除，这是个软链，删除即可，然后重启dispatch-docker服务`systemctl restart bkci-dispatch-docker.service`
 
 ---
 
@@ -34,9 +34,9 @@ no available Docker VM
 
 **原因②**：CI 机器负载过高，导致服务响应超时或服务异常
 
-BKCI页面变的卡顿。在流水线执行时，到 CI 机器使用 top 查看机器负载非常高。
+BK-CI页面变的卡顿。在流水线执行时，到 CI 机器使用 top 查看机器负载非常高。
 
-当 upload 的文件包体过大时常发此问题。上传包体可以承受的大小受BKCI机器的配置及IO、网络影响，通常不建议上传单体超过8G的包体。
+当 upload 的文件包体过大时常发此问题。上传包体可以承受的大小受BK-CI机器的配置及IO、网络影响，通常不建议上传单体超过8G的包体。
 
 ---
 
@@ -58,13 +58,13 @@ BKCI页面变的卡顿。在流水线执行时，到 CI 机器使用 top 查看�
 
 ![](../../../../assets/企业微信截图_16419529383724.png)
 
-如果是**公共构建机**，优先考虑公共构建机BKCI-dockerhost.service服务是否正常
+如果是**公共构建机**，优先考虑公共构建机 bkci-dockerhost.service服务是否正常
 
 这种情况多见于**私有构建机**，多为agent安装异常导致，这里列举一些已知的原因：
 
-1. 网络原因，如无法解析BKCI域名、BKCI服务不可达等
-2. agent版本安装错误，如在mac上安装linux的agent包，这种情况，将BKCIagent安装包删除，重新安装对应版本agent即可
-3. 在BKCIagent安装目录的logs下的agentDaemon.log日志里可见`too many open files`,在机器上执行`ulimit -n`结果显示，可打开的文件数值太小，默认为1024，将其数值调大，重新安装BKCIagent即可
+1. 网络原因，如无法解析 BK-CI 域名、BK-CI 服务不可达等
+2. agent版本安装错误，如在mac上安装linux的agent包，这种情况，将BK-CI agent安装包删除，重新安装对应版本agent即可
+3. 在 BK-CI agent安装目录的logs下的agentDaemon.log日志里可见`too many open files`,在机器上执行`ulimit -n`结果显示，可打开的文件数值太小，默认为1024，将其数值调大，重新安装 BK-CI agent即可
 
 ![](../../../../assets/wecom-temp-2cf366a83acf24ef09ae7dff30c47354.png)
 

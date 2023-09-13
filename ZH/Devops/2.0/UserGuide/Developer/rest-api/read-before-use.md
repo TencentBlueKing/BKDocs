@@ -44,9 +44,15 @@
 
 修改后，需要重启相应的服务
 
+<<<<<<< HEAD:ZH/Devops/2.0/产品白皮书/Developer/rest-api/read-before-use.md
+```
+systemctl restart bkci-auth.service
+systemctl restart bkci-openapi.service
+=======
 ```shell
 systemctl restart BKCI-auth.service
 systemctl restart BKCI-openapi.service
+>>>>>>> 51c64cbe653ce5ff064de8dea6a0592fab08002d:ZH/Devops/2.0/UserGuide/Developer/rest-api/read-before-use.md
 ```
 
 
@@ -74,7 +80,7 @@ systemctl restart BKCI-openapi.service
 
 若出现：
 {"status": 401,"data": "","result":true,"message": "用户权限验证失败。"}
-请先网页登录BKCI
+请先网页登录BK-CI
 ```
 
 

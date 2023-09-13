@@ -1,7 +1,7 @@
 # **移动端版本体验使用指南**
 
 ## **版本体验接入**
-### **配置BKCI流水线**
+### **配置 BK-CI 流水线**
 ![image-client-experience-gettingstarted.png](../../assets/image-client-experience-gettingstarted.png)
 
 #### **配置ipa/apk安装包**

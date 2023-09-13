@@ -1,9 +1,9 @@
-# BKCI 规格要求
+# BK-CI 规格要求
 
-我们提供了以最小化硬件成本搭建起 BKCI 的最低要求。如果你正尝试将 BKCI 投入生产环境，请仔细阅读：[BKCI 硬件规格指南](bkci-ying-jian-gui-ge-zhi-nan.md)
+我们提供了以最小化硬件成本搭建起 BK-CI 的最低要求。如果你正尝试将 BK-CI 投入生产环境，请仔细阅读：[BK-CI 硬件规格指南](bkci-ying-jian-gui-ge-zhi-nan.md)
 
 ## Web客户端要求
-BKCI 支持如下主流的浏览器：
+BK-CI 支持如下主流的浏览器：
 
 * Google Chrome
 * Microsoft Edge

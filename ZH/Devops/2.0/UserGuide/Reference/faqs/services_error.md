@@ -30,11 +30,11 @@
 
 可以通过重启 project 服务进行恢复。
 
-systemctl restart BKCI-project.service
+systemctl restart bkci-project.service
 
 
 
-## Q4：BKCICI机器，空间占用过高
+## Q4：BK-CI CI机器，空间占用过高
 
 可以具体检查是什么文件占用了空间。
 
@@ -42,10 +42,10 @@ systemctl restart BKCI-project.service
 
 
 
-## Q5：BKCI机器和蓝鲸MySQL之间带宽占用非常大
+## Q5：BK-CI 机器和蓝鲸MySQL之间带宽占用非常大
 
-查看后主要是 BKCI-misc.service 进程在收发流量。
+查看后主要是 bkci-misc.service 进程在收发流量。
 
-这是BKCI的定时任务，间隔12秒会去做一次扫描清理。流量高的原因主要是跑数据清理的逻辑。
+这是 BK-CI 的定时任务，间隔12秒会去做一次扫描清理。流量高的原因主要是跑数据清理的逻辑。
 
 如果带宽占用过大影响使用，可以通过build.data.clear.maxThreadHandleProjectNum这个配置把清理线程数调小一点来减少mysql的操作。

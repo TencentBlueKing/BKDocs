@@ -1,6 +1,6 @@
 # 启用 Matrix Job(构建矩阵)
 
-在BKCI流水线编排界面，添加一个 job 后，可以编辑 job 属性，启用 Matrix，启用界面如下图所示：
+在 BK-CI 流水线编排界面，添加一个 job 后，可以编辑 job 属性，启用 Matrix，启用界面如下图所示：
 
 ![](../../../assets/pipeline-matrix-job-1.png)
 
@@ -100,7 +100,7 @@ Matrix 配置生成的 job 可能比较多，这些 job 同时并发可能会导
 
 ## 在 Matrix Job 内访问上游步骤的输出变量
 
-通过 Matrix 生成的多个 job ，编排是一致的，插件输出的变量名也是一样的，不能通过BKCI原来的访问变量方式来访问，应通过 steps 上下文来访问当前 job 下生成的局部变量。
+通过 Matrix 生成的多个 job ，编排是一致的，插件输出的变量名也是一样的，不能通过BK-CI原来的访问变量方式来访问，应通过 steps 上下文来访问当前 job 下生成的局部变量。
 
 比如，在本 job 内定义了 step-id 为 “build” 的步骤，该步骤输出变量 a，后续步骤可以通过 ${{ steps.build.outputs.a }} 来访问
 
@@ -149,5 +149,5 @@ file_list: ${{ fromJSON(variables.file_list) }} b: [1,2]
 
 
 
-**注：fromJSON 为BKCI内置函数，目前仅支持在matrix参数矩阵配置时使用**
+**注：fromJSON 为 BK-CI 内置函数，目前仅支持在 matrix 参数矩阵配置时使用**
 

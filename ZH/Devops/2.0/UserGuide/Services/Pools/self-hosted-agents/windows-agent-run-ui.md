@@ -1,6 +1,6 @@
 # windows agent启动界面程序的解决办法
 
-BKCI第三方构建机 windows agent 默认以系统服务的方式启动，通过agent启动带界面UI的程序时会报错或者碰到界面被不可见的问题
+BK-CI 第三方构建机 windows agent 默认以系统服务的方式启动，通过agent启动带界面UI的程序时会报错或者碰到界面被不可见的问题
 
 原因：Windows Service启动的进程都运行在Session0内，Session0限制了不能向桌面用户弹出信息窗口、UI 窗口等信息。
 

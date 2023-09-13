@@ -1,6 +1,6 @@
 ## Q1：如何卸载 agent
 
-目前BKCI agent 没有限定安装目录，在 windows 系统上，agent安装包解压目录即为 agent 安装目录；在 linux 和 mac 系统上，执行 agent 安装脚本的目录即为agent安装目录。
+目前 BK-CI agent 没有限定安装目录，在 windows 系统上，agent安装包解压目录即为 agent 安装目录；在 linux 和 mac 系统上，执行 agent 安装脚本的目录即为agent安装目录。
 
 因为没有限定安装目录，在执行agent卸载脚本（windows为 uninstall.bat, linux 和 mac 为 uninstall.sh）后，为防止误删除重要的系统文件，卸载脚本没有删除agent相关程序文件，需要用户自行清理。
 
@@ -83,7 +83,7 @@ RM -RF WORKSPACE```
 
 ## Q3：如何重启构建机agent
 
-可以到BKCIagent的安装目录下，先执行stop.sh脚本（在windows上是stop.bat批处理文件），再执行start.sh（在windows上时start.bat文件）
+可以到 BK-CI agent的安装目录下，先执行stop.sh脚本（在windows上是stop.bat批处理文件），再执行start.sh（在windows上时start.bat文件）
 
 
 
