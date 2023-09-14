@@ -9118,7 +9118,8 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   ZH/Devops/UserGuide/Services/Store/plugins/plugin-error-code.md: ZH/Devops/UserGuide/Developer/plugins/plugin-dev-standard/plugin-error-code.md
   ZH/Devops/UserGuide/Services/Store/plugins/plugin-specification.md: ZH/Devops/UserGuide/Developer/plugins/plugin-dev-standard/plugin-specification.md
   ZH/PaaS/DevelopTools/SaaSGuide/DevAdvanced/Django+Vue.js.md: ZH/PaaS/DevelopTools/SaaSGuide/DevAdvanced/Django+Vue.md
-
+  ZH/PaaS/DevelopTools/BaseGuide/topics/company_tencent/node_framework_usage.md: ZH/PaaS/DevelopTools/SaaSGuide/DevAdvanced/bkui/bkui.md
+  ZH/PaaS/DevelopTools/BaseGuide/topics/company_tencent/vue_framework_usage.md: ZH/PaaS/DevelopTools/SaaSGuide/DevAdvanced/bkui/bkui.md
 
 
 

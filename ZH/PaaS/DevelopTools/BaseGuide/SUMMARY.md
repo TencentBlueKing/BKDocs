@@ -67,8 +67,6 @@
         * [Python]()
             * [Python 开发框架简介](topics/company_tencent/python_framework_usage.md)
             * [Python 开发框架结合 BKUI-CLI 使用指南](topics/bkui/with-python.md)
-        * [NodeJS]()
-            * [蓝鲸应用前端开发框架](topics/company_tencent/vue_framework_usage.md)
     * [应用开发技巧集]()
         * [如何安装 apt 包](topics/tricks/py_how_to_install_apt_packages.md)
         * [Gunicorn 配置与最佳实践](topics/tricks/py_how_to_improve_gunicorn_perf.md)
