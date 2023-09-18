@@ -708,6 +708,7 @@ Events:
 ```
 
 **结论**
+正式解决办法，请升级到 job-3.6.2 版本。参考 [更新 bk-job](update.md#更新%20bk-job) 操作。
 
 临时解决办法：重启一次 `bk-job-gateway` pod 即可。在中控机执行如下命令：
 ``` bash

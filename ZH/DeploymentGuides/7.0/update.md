@@ -3,6 +3,59 @@
 
 在 2023 年 4 月 11 日，我们发布了蓝鲸 7.0.1 版本，仅包含补丁级更新。
 
+## 更新 bk-applog
+|  | chart 版本号 | 软件版本号 |
+|--|--|--|
+| 7.0.0 发布 | 1.1.2 | 1.1.0 |
+| 20230914 补丁更新 | 1.1.10 | 1.1.0 |
+
+### 20230914 补丁更新
+本版本仅为 **补丁** 更新，修复了一些问题。
+
+登录到 **中控机**，先更新 helm 仓库缓存：
+``` bash
+helm repo update
+```
+检查仓库里的版本：
+``` bash
+helm search repo bkapp-log-collection --version 1.1.10
+```
+预期输出如下所示：
+>``` plain
+>NAME                         	CHART VERSION	APP VERSION	DESCRIPTION
+>blueking/bkapp-log-collection	1.1.10       	1.1.0      	略
+>```
+
+接下来开始升级了。
+
+先进入工作目录：
+``` bash
+cd ~/bkhelmfile/blueking  # 默认路径，按实际情况修改。
+```
+
+修改 `environments/default/version.yaml` 文件，配置 bk-nodeman charts version 为 `2.2.33`：
+``` bash
+sed -i 's/bkapp-log-collection:.*/bkapp-log-collection: "1.1.10"/' environments/default/version.yaml
+grep bkapp-log-collection environments/default/version.yaml  # 检查修改结果
+```
+预期输出：
+>``` yaml
+>  bkapp-log-collection: "1.1.10"
+>```
+
+更新 bk-applog:
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-applog apply
+```
+
+等待命令执行完毕，结尾输出如下即为更新成功：
+>``` plain
+>UPDATED RELEASES:
+>NAME        CHART                VERSION
+>bk-applog   blueking/bk-applog   1.1.10
+>```
+
+
 ## 更新 bk-nodeman
 |  | chart 版本号 | 软件版本号 |
 |--|--|--|
