@@ -27,8 +27,7 @@
 
 ### 1.3 下载安装包
 
-- 下载链接：[bkce-src-6.2.0.tgz](https://bkopen-1252002024.file.myqcloud.com/ce/bkce-src-6.2.0.tgz)
-- 包 MD5值：eb878f41b7d1aa2cabe32c3d28f9eb6f
+- 下载链接：请前往官网下载 [bkce-src-6.2.0.tgz](https://bk.tencent.com/s-mart/downloads?type=versionList&version=binary) 软件包
 
 ### 1.4 解压相关资源包
 
@@ -91,15 +90,18 @@ bash /data/install/configure_ssh_without_pass
 
 - 部署前自定义域名以及安装目录
 
-    \$BK_DOMAIN：需要更新的根域名。
+   \$BK_DOMAIN：需要更新的根域名。
 
-    \$INSTALL_PATH：自定义安装目录。
+   \$INSTALL_PATH：自定义安装目录。
 
-    ```bash
-    # 执行前请使用实际的二级域名 (如：bktencent.com) 和安装目录进行替换
-    cd /data/install 
-    ./configure -d $BK_DOMAIN -p $INSTALL_PATH
-    ```
+   ```bash
+   # 执行前请使用实际的二级域名 (如：bktencent.com) 和安装目录进行替换
+   BK_DOMAIN=bktencent.com
+   INSTALL_PATH=/data/bkce
+
+   cd /data/install 
+   ./configure -d $BK_DOMAIN -p $INSTALL_PATH
+   ```
 
 - 部署前自定义 admin  登录密码
 
@@ -262,4 +264,6 @@ source ~/.bashrc
 
 > 默认蓝鲸工作台入口：[http://paas.bktencent.com](http://paas.bktencent.com)
 
-- 可参考蓝鲸 [快速入门](../../../../../QuickStart/6.0/quick-start-v6.0-info.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
+- 可参考蓝鲸 [快速入门](../../../../QuickStart/6.0/quick-start-v6.0-base.md) 以及相关 [产品白皮书](https://bk.tencent.com/docs/)
+
+- 进阶选项：[监控日志套餐部署](./value_added.md)
