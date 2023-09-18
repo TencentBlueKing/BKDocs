@@ -40,7 +40,7 @@ helmfile -f 05-bkapicheck.yaml.gotmpl sync
 
 # 使用 bk-apicheck
 ## 访问地址
-目前预置的域名为 `bk-apicheck.$BK_DOMAIN`。操作步骤已经并入《基础套餐部署》文档的 “[配置用户侧的 DNS](install-bkce.md#hosts-in-user-pc)” 章节。
+目前预置的域名为 `bk-apicheck.$BK_DOMAIN`。操作步骤已经并入 《部署步骤详解 —— 后台》 文档 的 “[配置用户侧的 DNS](manual-install-bkce.md#hosts-in-user-pc)” 章节。
 
 配置 DNS 或 hosts 成功后，需要在浏览器输入域名访问。暂时无法在蓝鲸桌面打开。
 

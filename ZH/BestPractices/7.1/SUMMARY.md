@@ -2,6 +2,8 @@
 
 ## 场景实操案例
 * [简介](readme.md)
+* [部署维护]()
+    * [使用腾讯云云服务部署蓝鲸7.1](Deploy/Deploy-BlueKing-7-1-using-Tencent-Cloud-s-services.md)
 * [基础套餐]()
     * [CMDB 如何创建业务及拓扑](BASIC/CMDB-HowToCreateTopo.md)
     * [CMDB 如何纳管主机](BASIC/CMDB-HowToManageHost.md)

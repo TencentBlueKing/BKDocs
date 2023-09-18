@@ -1,6 +1,6 @@
 # 软件包简介
 
-解压 `bkce_basic_suite-6.1.1.tgz` 安装包后，`src` 即为软件包目录，存放了蓝鲸基础平台、官方 SaaS 包、开源组件等内容，`install` 则为蓝鲸部署脚本。
+解压 `bkce-src-6.2.0.tgz` 安装包后，`src` 即为软件包目录，存放了蓝鲸基础平台、官方 SaaS 包、开源组件等内容，`install` 则为蓝鲸部署脚本。
 
 ## 软件包目录结构
 
@@ -13,45 +13,37 @@
 /data/src
 [root@VM-0-1 src]# tree -F -L 1
 .
-
-├── bkiam_ce-1.11.9.tgz
-├── bkiam_search_engine-1.0.6.tgz
-├── bknodeman_ee-2.2.26-bkofficial.tgz
-├── bkssm_ce-1.0.8.tgz
-├── cmdb_ce-3.10.19.tgz
-├── gse_agent_ce-3.6.21.tgz
-├── gse_ce-3.6.21.tgz
-├── gse_plugins/
-├── image/
-├── java11.tgz
-├── java8.tgz
-├── job_ce-3.5.1.tgz
-├── license_ce-3.1.5.tgz
-├── node-v14.17.0-linux-x64.tar.gz
-├── official_saas/
-├── open_paas_ce-2.14.33-bkofficial.tgz
-├── paas_agent_ce-3.2.4.tgz
-├── paas_plugins_ee-2.5.4.tgz
-├── python/
-├── usermgr_ce-2.4.2-bkofficial.tar.gz
-├── VERSION
-└── yum/
-
-
-```
-
-### 增强套餐
-
-解压 bkce_co_package-6.1.1.tgz 安装包后，包含的是各产品的监控平台、日志平台和故障自愈的整包
-
-### 增强软件包目录结构
-
-`*.tgz` 为产品安装包。包含了自身产品的 **后台包** 以及 **SaaS 包**。
-
-```bash
-[root@VM-1-1-centos ~]# tar tf bkce_co_package-6.1.1.tgz
-bklog_package-4.3.5.tgz
-bkmonitorv3_package-3.6.3070.tgz
+|-- bkapi_check-1.1.19.tgz
+|-- bk_apigateway_ee-1.11.3.tgz
+|-- bkauth_ce-0.0.13.tgz
+|-- bkiam_ce-v1.12.6.tgz
+|-- bkiam_search_engine-1.1.2.tgz
+|-- bklog_ce-4.6.4.tgz
+|-- bkmonitorv3_ce-3.8.2.tgz
+|-- bknodeman_ee-2.4.1.tgz
+|-- bkssm_ce-1.0.12.tgz
+|-- blueking.env
+|-- cmdb_ce-3.10.28.tgz
+|-- COMMON_MD5
+|-- COMMON_VERSION
+|-- etcd-v3.5.4-linux-amd64.tar.gz
+|-- gse_agent_ce-v2.1.2-beta.20.tgz
+|-- gse_ce-v2.1.2-beta.20.tgz
+|-- gse_plugins/
+|-- image/
+|-- java11.tgz
+|-- java8.tgz
+|-- job_ce-3.8.1-beta.5.tgz
+|-- MD5
+|-- node-v14.17.0-linux-x64.tar.gz
+|-- official_saas/
+|-- open_paas_ce-2.14.57.tgz
+|-- paas_agent_ce-3.2.4.tgz
+|-- paas_plugins_ee-2.5.7.tgz
+|-- python/
+|-- usermgr_ce-2.5.4-beta.8.tar.gz
+|-- VERSION
+`-- yum/
 ```
 
 这里重点说明各产品下的 `support-files/` 目录，以权限中心的为例：
@@ -88,3 +80,4 @@ bkmonitorv3_package-3.6.3070.tgz
 - **usermgr：** 用户管理后台
 - **VERSION：** 社区版版本号
 - **yum：** 开源组件 RPM 包目录
+- **bk_apigateway：** 蓝鲸 API 网关

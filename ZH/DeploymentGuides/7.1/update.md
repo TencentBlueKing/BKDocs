@@ -64,14 +64,14 @@ helm search repo bk-user --version 1.4.14-beta.7
 预期输出如下所示：
 >``` plain
 >NAME            	CHART VERSION	APP VERSION 	DESCRIPTION
->blueking/bk-user	1.4.14-beta.7   	3.6.2-rc.3  	略
+>blueking/bk-user	1.4.14-beta.7	v2.5.4-beta.7  	略
 >```
 
 接下来开始升级了。
 
 先进入工作目录：
 ``` bash
-cd ~/bkhelmfile/blueking  # 默认路径，按实际情况修改。
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
 ```
 
 修改 `environments/default/version.yaml` 文件，配置 bk-user charts version 为 `1.4.14-beta.7`：

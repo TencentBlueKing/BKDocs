@@ -71,7 +71,7 @@ kubectl get pod -n bcs-system -w
 >
 >如果没有导入流程，或者流程 ID 不正确，则新建集群时会报错 “创建失败，请重试”。“查看日志” 里的 “标准运维任务” 步骤日志为 `running failed. CreateBkOpsTask err: Object not found: CommonTemplate(id=10001) does not exist.`
 
-需要配置域名 `bcs.$BK_DOMAIN` 和 `bcs-api.$BK_DOMAIN`，操作步骤已经并入《基础套餐部署》文档的 “[配置用户侧的 DNS](install-bkce.md#hosts-in-user-pc)” 章节。
+需要配置域名 `bcs.$BK_DOMAIN` 和 `bcs-api.$BK_DOMAIN`，操作步骤已经并入 《部署步骤详解 —— 后台》 文档 的 “[配置用户侧的 DNS](manual-install-bkce.md#hosts-in-user-pc)” 章节。
 
 配置成功后，即可在桌面打开 “容器管理平台” 应用了。
 

@@ -41,4 +41,7 @@ kubectl taint nodes node-1 dedicated=bkSaas:NoSchedule
 
 
 # 下一步
-回到《[部署基础套餐](install-bkce.md#saas-node)》文档继续阅读。
+直接开始部署 SaaS：
+* [部署步骤详解 —— SaaS](manual-install-saas.md)
+
+如果是从快速部署文档跳转过来，可以 [回到快速部署文档继续阅读](install-bkce.md#saas-node)。

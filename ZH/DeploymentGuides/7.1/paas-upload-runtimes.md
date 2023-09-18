@@ -33,7 +33,6 @@ done
 for v in 21.3.1 22.0.4 22.1.2 22.2.2 22.3.1 23.0.1; do
   bkdl-7.1-stable.sh -C ce7/paas-runtimes -r paas3-1.1 pip-whl=$v
 done
-bkdl-7.1-stable.sh -C ce7/paas-runtimes -ur paas3-1.1 pysdk  # 下载python开发框架模板
 ```
 
 ### 下载 nodejs 环境
@@ -42,7 +41,6 @@ bkdl-7.1-stable.sh -C ce7/paas-runtimes -ur paas3-1.1 pysdk  # 下载python开�
 for v in 12.16.3 14.16.1 10.10.0; do
   bkdl-7.1-stable.sh -C ce7/paas-runtimes -r paas3-1.1 node=$v
 done
-bkdl-7.1-stable.sh -C ce7/paas-runtimes -ur paas3-1.1 nodesdk  # 下载node开发框架模板
 ```
 
 ### 下载 golang 环境
@@ -52,22 +50,29 @@ for v in 1.19.1 1.18.6 1.17.10 1.12.17; do
   bkdl-7.1-stable.sh -C ce7/paas-runtimes -ur paas3-1.1 go=$v
 done
 ```
-golang 没有提供开发框架模板。
+
+### 下载开发框架模板
+``` bash
+# 下载python开发框架模板
+bkdl-7.1-stable.sh -C ce7/paas-runtimes -ur paas3-1.1 pysdk
+# 下载node开发框架模板
+bkdl-7.1-stable.sh -C ce7/paas-runtimes -ur paas3-1.1 nodesdk
+# golang 没有提供开发框架模板
+```
 
 ## 上传文件
 在 **中控机** 执行如下命令上传文件到制品库 `bkpaas` 项目下。
 ``` bash
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
-BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-user=admin
-password=blueking  # 如果有修改密码，请调整赋值
+# 从 bk-repo secret中的 BLOBSTORE_BKREPO_CONFIG 变量读取账户信息并设置变量 PROJECT ENDPOINT USERNAME PASSWORD
+source <(kubectl get secret -n blueking bkpaas3-apiserver-bkrepo-envs -o json | jq -r '.data.BLOBSTORE_BKREPO_CONFIG|@base64d|gsub(", ";"\n")|gsub("[{}]";"")')
 # 搜索文件列表上传
 while read filepath; do
   bucket="${filepath#../paas-runtimes/}"
   bucket="${bucket%%/*}"
   remote="/${filepath#../paas-runtimes/*/}"
   remote="${remote%/*}/"
-  scripts/bkrepo_tool.sh -u "$user" -p "$password" -P bkpaas -i http://bkrepo.$BK_DOMAIN/generic -n "$bucket" -X PUT -O -R "$remote" -T "$filepath"
+  scripts/bkrepo_tool.sh -u "$USERNAME" -p "$PASSWORD" -P "$PROJECT" -i "$ENDPOINT/generic" -n "$bucket" -X PUT -O -R "$remote" -T "$filepath"
   sleep 1
 done < <(find ../paas-runtimes/ -mindepth 2 -type f)
 ```
@@ -105,4 +110,10 @@ kubectl logs -n blueking deploy/bk-repo-bkrepo-generic generic | awk '/ \/bkpaas
 下载完成后参考 “上传文件” 章节重新上传一次即可。如果下载脚本提示文件 404，可以联系蓝鲸助手排查原因。
 
 # 下一步
-回到《[部署基础套餐](install-bkce.md#paas-runtimes)》文档继续阅读。
+继续完善 SaaS 运行环境：
+* [可选：配置 SaaS 专用 node](saas-dedicated-node.md)
+
+也可以直接开始部署 SaaS：
+* [部署步骤详解 —— SaaS](manual-install-saas.md)
+
+如果是从快速部署文档跳转过来，可以 [回到快速部署文档继续阅读](install-bkce.md#paas-runtimes)。

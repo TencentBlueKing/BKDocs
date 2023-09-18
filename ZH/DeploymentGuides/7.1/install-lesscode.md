@@ -9,7 +9,7 @@
 
 在 **中控机** 执行：
 ``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 ./scripts/control_coredns.sh update "$IP1" lesscode.$BK_DOMAIN
@@ -26,7 +26,7 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 
 在 **中控机** 执行：
 ``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
 ./scripts/control_coredns.sh update "域名解析的IP" "自定义域名"
 ./scripts/control_coredns.sh list  # 检查添加的记录。
 ```
@@ -102,7 +102,7 @@ scripts/setup_bkce7.sh -i lesscode -f
 3. 在弹框中选择 “生产环境”，输入地址： `lesscode.${BK_DOMAIN}`（请替换 `${BK_DOMAIN}` 为你的域名）。保持路径为 `/` 不变，绑定到 `default` 模块。点击 “确定” 按钮即可。
 4. 展开侧栏 “应用推广”，点击进入 “应用市场” 界面。
 5. 默认在 “发布管理” Tab 下，切换访问地址类型为 “主模块生产环境独立域名”，点击 “更改访问地址” 按钮。
-6. 配置 DNS 解析，将 `lesscode.${BK_DOMAIN}` 指向 `apps.${BK_DOMAIN}` 一致的 IP。操作步骤已经并入《基础套餐部署》文档的 “[配置用户侧的 DNS](install-bkce.md#hosts-in-user-pc)” 章节。
+6. 配置 DNS 解析，将 `lesscode.${BK_DOMAIN}` 指向 `apps.${BK_DOMAIN}` 一致的 IP。操作步骤已经并入 《部署步骤详解 —— 后台》 文档 的 “[配置用户侧的 DNS](manual-install-bkce.md#hosts-in-user-pc)” 章节。
 7. 在浏览器输入域名访问。
 
 

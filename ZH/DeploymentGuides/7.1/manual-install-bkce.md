@@ -1,287 +1,257 @@
-我们在《[部署基础套餐](install-bkce.md#setup_bkce7-i-base)》文档中使用了“一键脚本”部署后台，脚本逻辑可以等价于下面的操作。
+本文包含蓝鲸各组件的部署方法，部署成功后，即可在浏览器访问蓝鲸了。
+
+# 前置步骤
+需要先完成：
+* [自定义配置](custom-values.md)
+* [部署或对接存储服务](storage-services.md)
 
 
-# 配置
-## 进入工作目录
->**提示**
->
->中控机默认工作目录为 `~/bkce7.1-install/blueking/`，另有注明除外。
+# 部署蓝鲸
+为了并行部署节约时间，我们提前将这些 release 分为了 5 层，依次部署。
 
-``` bash
-cd ~/bkce7.1-install/blueking/  # 进入工作目录
-kubectl config set-context --current --namespace=blueking  # 设置k8s默认ns, 方便后续操作.
-# 安装生成配置所需的命令
-cp -av ../bin/helmfile ../bin/helm ../bin/yq /usr/local/bin/
-tar xf ../bin/helm-plugin-diff.tgz -C ~/  # 安装helm-diff插件。
-# 检查helm diff
-helm plugin list  # 预期输出 diff 及其版本。
-```
-
-## 配置访问域名
-蓝鲸平台均需通过域名访问，为了简化域名配置，我们提供了基础域名的配置项 `domain.bkDomain`（也可使用 `BK_DOMAIN` 这个变量名称呼它）。此配置项用于拼接蓝鲸其他系统的访问域名，也是蓝鲸统一登录所需的 cookie 域名。
-
-而 `domain.bkMainSiteDomain` 则为蓝鲸的主站入口域名，一般配置为 `domain.bkDomain` 相同的值。
-
-如果需要自定义参数，需要新建文件 `environments/default/custom.yaml` （下文简称为 `custom.yaml` 文件），此文件用于对 values.yaml 文件的内容进行覆盖。
-
-例如，需要自定义域名 `bkce7.bktencent.com`，可以使用如下命令生成 `custom.yaml` 文件：
-``` bash
-BK_DOMAIN=bkce7.bktencent.com  # 请修改为你分配给蓝鲸平台的主域名
-cd ~/bkce7.1-install/blueking/  # 进入工作目录
-# 可使用如下命令添加域名。如果文件已存在，请手动编辑。
-custom=environments/default/custom.yaml
-cat >> "$custom" <<EOF
-domain:
-  bkDomain: $BK_DOMAIN
-  bkMainSiteDomain: $BK_DOMAIN
-EOF
-```
-
-如果你在公有云上部署蓝鲸，请先完成域名备案，否则会被云服务商依法阻断访问请求。
-
-## 配置容器日志目录
-平台组件的后台日志采集用。
-
-请在所有 **k8s node** 上执行此命令，预期输出一致：
-``` bash
-docker info  | awk -F": " '/Docker Root Dir/{print $2"/containers"}'
-```
-当上述路径一致时，请编辑中控机的 `custom.yaml` 文件，添加如下配置项：
-``` bash
-apps:
-  bkappFilebeat.containersLogPath: "查询到的路径"
-```
-
-我们预期你的 k8s node 具备相同的 docker 配置。如果此路径不一致，请先完成 docker 标准化。
-
-## 添加 charts 仓库
-蓝鲸 7.0 软件产品通过 https://hub.bktencent.com/ 进行分发。
-
-请先在 helm 中添加名为 `blueking` 的 charts 仓库：
-``` bash
-helm repo add blueking https://hub.bktencent.com/chartrepo/blueking
-helm repo update
-helm repo list
-```
-
-## 生成蓝鲸 app code 对应的 secret
-``` bash
-./scripts/generate_app_secret.sh ./environments/default/app_secret.yaml
-```
-
-## 生成 apigw 所需的 keypair
-``` bash
-./scripts/generate_rsa_keypair.sh ./environments/default/bkapigateway_builtin_keypair.yaml
-```
-
-## 生成 paas 所需的 clusterAdmin
-``` bash
-./scripts/create_k8s_cluster_admin_for_paas3.sh
-```
-
-## 生成 localpv
-我们默认使用 local pv provisioner 提供存储。
-
-先检查当前的存储提供者。在 中控机 执行：
-``` bash
-kubectl get sc
-```
-如果上述命令提示 `No resources found`，说明还没有配置存储类。
-
-你可以参考下述内容配置 `localpv`（输出结果中 `NAME` 列为 `local-storage` ），或者自行对接其他存储类并设置为默认存储类。
-
->**提示**
->
->蓝鲸默认会在 `/mnt/blueking` 目录下创建 pv，请确保各 `node` 中此目录所在文件系统具备 100GB 以上的可用空间。
-
-执行如下命令配置 localpv 存储类并创建一批 pv：
-``` bash
-# 切换到工作目录
-cd ~/bkce7.1-install/blueking
-helmfile -f 00-localpv.yaml.gotmpl sync
-```
-
-如果上面没有报错，则可以查看当前的 pv：
-``` bash
-kubectl get pv
-```
-预期可以看到很多行。参考输出如下：
-``` text
-NAME                CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS    REASON   AGE
-local-pv-18c3e0ef   98Gi       RWO            Delete           Available           local-storage            6d8h
-```
-
-## 安装 ingress controller
-先检查你的环境是否已经部署了 ingress controller:
-``` bash
-kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx
-```
-
-如果没有，则使用如下命令创建：
-``` bash
-helmfile -f 00-ingress-nginx.yaml.gotmpl sync
-kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx  # 查看创建的pod
-```
-
-<a id="hosts-in-coredns" name="hosts-in-coredns"></a>
-
-## 配置 coredns
-我们需要确保 k8s 集群的容器内能解析到蓝鲸域名。
-
->**注意**
->
->当 service 被删除，重建后 clusterIP 会变动，此时需刷新 hosts 文件。
-
-因此需要注入 hosts 配置项到 `kube-system` namespace 下的 `coredns` 系列 pod，步骤如下：
-
-``` bash
-cd ~/bkce7.1-install/blueking/  # 进入工作目录
-BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-./scripts/control_coredns.sh update "$IP1" bkrepo.$BK_DOMAIN docker.$BK_DOMAIN $BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN apps.$BK_DOMAIN
-```
-
-确认注入结果，执行如下命令：
-``` bash
-cd ~/bkce7.1-install/blueking/  # 进入工作目录
-./scripts/control_coredns.sh list
-```
-参考输出如下：
-``` plain
-        10.244.0.5 apps.bkce7.bktencent.com
-        10.244.0.5 bkrepo.bkce7.bktencent.com
-        10.244.0.5 docker.bkce7.bktencent.com
-        10.244.0.5 bkce7.bktencent.com
-        10.244.0.5 bkapi.bkce7.bktencent.com
-        10.244.0.5 bkpaas.bkce7.bktencent.com
-        10.244.0.5 bkiam-api.bkce7.bktencent.com
-        10.244.0.5 bkiam.bkce7.bktencent.com
-        10.244.0.5 bcs.bkce7.bktencent.com
-```
-
-# 部署基础套餐后台
-
-## 安装全部 release
-为了方便维护，我们整合了 helmfile 模板到 `base.yaml.gotmpl` 文件，用于按次序操作多个 release。
-如需了解控制单个 release，可以见本文下方的 “如何控制单个 release” 章节。
-
-直接开始安装基础套餐的全部 release：
-``` bash
-helmfile -f base.yaml.gotmpl sync
-```
-
-该步骤根据机器环境配置，大概需要 8 ~ 16 分钟。此时可以新开一个终端，执行如下命令观察 pod 状态变化：
-``` bash
-kubectl get pods -n blueking -w
-```
-等待所有 pod 都变成 `Running` 或 `Completed` 状态。
+接下来会逐层逐 release 讲述部署过程。
 
 **如果部署期间出错，请先查阅 《[问题案例](troubles.md)》文档。**
 
+## 部署 seq=first 的 release
+第 1 层包含了 `bk-repo,bk-auth,bk-apigateway` 等 release。
+>**提示**
+>
+>在中控机执行 `helmfile -f base.yaml.gotmpl -l seq=first sync` 即可并行部署这些 release。
+
+### 部署 bk-apigateway
+蓝鲸 API 网关是蓝鲸各组件互通的枢纽。
+
+在中控机工作目录下执行：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-apigateway sync
+```
+
+### 部署 bk-auth
+认证服务。
+
+在中控机工作目录下执行：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-auth sync
+```
+
+### 部署 bk-repo
+蓝鲸制品库提供了文件和镜像存储等服务。
+
+在中控机工作目录下执行：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-repo sync
+```
+
+## 部署 seq=second 的 release
+第 2 层包含了 `bk-iam,bk-ssm,bk-console` 等 release。
+>**提示**
+>
+>在中控机执行 `helmfile -f base.yaml.gotmpl -l seq=second sync` 即可并行部署这些 release。
+
+### 部署权限中心后台
+先部署权限中心后台 API。
+
+在中控机工作目录下执行：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-iam -l name=bk-ssm sync
+```
+
+### 部署 bk-console
+蓝鲸桌面。
+
+在中控机工作目录下执行：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-console sync
+```
+
+## 部署 seq=third 的 release
+第 3 层包含了 `bk-user,bk-iam-saas,bk-iam-search-engine,bk-gse,bk-cmdb,bk-paas,bk-applog,bk-ingress-nginx,bk-ingress-rule` 等 release。
+>**提示**
+>
+>在中控机执行 `helmfile -f base.yaml.gotmpl -l seq=third sync` 即可并行部署这些 release。
+
+### 部署 bk-user
+蓝鲸用户管理。
+
+在中控机工作目录下执行：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-user sync
+```
+
+### 部署权限中心应用
+等权限中心后台启动成功后，可以部署应用来管理权限。
+
+在中控机工作目录下执行：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-iam-saas -l name=bk-iam-search-engine sync
+```
+
+### 部署 bk-gse
+蓝鲸管控平台。
+
+在中控机工作目录下执行：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-gse sync
+```
+
+### 部署 bk-cmdb
+蓝鲸配置平台。
+
+在中控机工作目录下执行：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-cmdb sync
+```
+
+### 部署 PaaS 平台
+在中控机工作目录下执行：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-ingress-nginx -l name=bk-ingress-rule sync
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-paas -l name=bkpaas-app-operator -l name=bk-applog sync
+```
+
+## 部署 seq=fourth 的 release
+第 4 层只包含了 `bk-job` 1 个 release。
+>**提示**
+>
+>在中控机执行 `helmfile -f base.yaml.gotmpl -l seq=fourth sync` 即可并行部署这些 release。
+
+### 部署 bk-job
+作业平台。
+
+在中控机工作目录下执行：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-job sync
+```
+
+## 部署 seq=fifth 的 release
+第 5 层只包含了 `bk-nodeman` 1 个 release。
+>**提示**
+>
+>在中控机执行 `helmfile -f base.yaml.gotmpl -l seq=fifth sync` 即可并行部署这些 release。
+
+### 部署 bk-nodeman
+节点管理。
+
+在中控机工作目录下执行：
+``` bash
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
+```
+
+# 访问蓝鲸桌面
+
+<a id="hosts-in-user-pc" name="hosts-in-user-pc"></a>
+
+## 配置用户侧的 DNS
+蓝鲸设计为需要通过域名访问使用。所以你需先配置所在内网的 DNS 系统，或修改本机 hosts 文件。然后才能在浏览器访问。
+
+>**注意**
+>
+>如 k8s 集群重启等原因重新调度，pod 所在 node 发生了变动，需更新 hosts 文件。
+
+你如何访问蓝鲸集群呢？请根据你的场景选择对应的命令获取 IP：
+* 你和蓝鲸集群在同一个内网，使用 内网 IP 访问蓝鲸。
+  1.  获取 ingress-nginx pod 所在机器的内网 IP，记为 IP1。在 **中控机** 执行如下命令可获取 IP1：
+      ``` bash
+      IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx \
+        -o jsonpath='{.items[0].status.hostIP}')
+      ```
+* 蓝鲸集群部署在公网，使用 ingress-nginx pod 所在机器的 公网 IP 访问蓝鲸。
+  1.  先在 **中控机** 执行如下命令获取 内网 IP：
+      ``` bash
+      IP1=$(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx \
+        -o jsonpath='{.items[0].status.hostIP}')
+      ```
+  2.  从中控机登录到 node 上查询公网 IP：
+      ``` bash
+      IP1=$(ssh "$IP1" 'curl -sSf ip.sb')
+      ```
+* 蓝鲸集群使用了负载均衡器（包括公网负载均衡）
+  1.  需要手动指定负载均衡 IP：
+      ``` bash
+      IP1=负载均衡IP
+      ```
+  2.  在负载均衡器配置后端为 ingress-nginx pod 所在机器的内网 IP，端口为 80。
+
+在 **中控机** 执行如下命令生成 hosts 文件的内容：
+``` bash
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+# 人工检查取值
+echo "BK_DOMAIN=$BK_DOMAIN IP1=$IP1 IP2=$IP2"
+if [ -z "$BK_DOMAIN" ] || [ -z "$IP1" ]; then
+  echo "请先赋值 BK_DOMAIN 及 IP1."
+else
+  echo "# bkce7 hosts配置项，ingress-nginx pod所在的主机变动后需更新。"
+  cat <<EOF | sed 's/ *#.*//' | scripts/update-hosts-file.sh /etc/hosts /etc/hosts
+$IP1 $BK_DOMAIN  # 蓝鲸桌面
+$IP1 bkrepo.$BK_DOMAIN  # 蓝鲸制品库
+$IP1 docker.$BK_DOMAIN  # 蓝鲸制品库
+$IP1 helm.$BK_DOMAIN  # 蓝鲸制品库
+$IP1 bkpaas.$BK_DOMAIN  # 开发者中心
+$IP1 bkuser.$BK_DOMAIN  # 用户管理
+$IP1 bkuser-api.$BK_DOMAIN  # 用户管理
+$IP1 bkapi.$BK_DOMAIN  # 开发者中心 API 网关
+$IP1 apigw.$BK_DOMAIN  # 开发者中心 API 管理
+$IP1 bkiam.$BK_DOMAIN  # 权限中心
+$IP1 bkiam-api.$BK_DOMAIN  # 权限中心
+$IP1 cmdb.$BK_DOMAIN  # 配置平台
+$IP1 job.$BK_DOMAIN  # 作业平台
+$IP1 jobapi.$BK_DOMAIN  # 作业平台
+$IP1 bknodeman.$BK_DOMAIN  # 节点管理
+$IP1 apps.$BK_DOMAIN  # SaaS 入口：标准运维、流程服务等
+$IP1 bcs.$BK_DOMAIN  # 容器管理平台
+$IP1 bcs-api.$BK_DOMAIN  # 容器管理平台
+$IP1 bklog.$BK_DOMAIN  # 日志平台
+$IP1 bkmonitor.$BK_DOMAIN  # 监控平台
+$IP1 devops.$BK_DOMAIN  # 持续集成平台-蓝盾
+$IP1 lesscode.$BK_DOMAIN  # 可视化开发平台
+$IP1 bk-apicheck.$BK_DOMAIN  # apicheck 测试工具
+EOF
+fi
+```
 
 ## 添加桌面应用
 使用脚本在 admin 用户的桌面添加应用，也可以登录后自行在桌面添加。
 ``` bash
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_cmdb,bk_job"
-scripts/add_user_desktop_app.sh -u "admin" -a "bk_usermgr"  # 添加用户管理。
-scripts/set_desktop_default_app.sh -a "bk_usermgr"  # 将用户管理设置为默认应用，新用户登录桌面就可以看到。
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_usermgr"
 ```
+如果提示 `user(admin) not exists`，说明用户尚未登录，可以忽略此报错。
 
-
-# 如何控制单个 release
-
-## helmfile 模板解析
-
-首先查看 `base.yaml.gotmpl` 文件，其内容如下：
-``` yaml
-bases:
-  - env.yaml
----
-bases:
-  - defaults.yaml
----
-helmfiles:
-  - path: ./base-storage.yaml.gotmpl
-  - path: ./base-blueking.yaml.gotmpl
-    selectors:
-    - seq=first
-  - path: ./base-blueking.yaml.gotmpl
-    selectors:
-    - seq=second
-  - path: ./base-blueking.yaml.gotmpl
-    selectors:
-    - seq=third
-  - path: ./base-blueking.yaml.gotmpl
-    selectors:
-    - seq=fourth
-```
-
-可以看到引用了 2 个文件：
-* `base-storage.yaml.gotmpl` 中声明了 存储服务 的 release。
-* `base-blueking.yaml.gotmpl` 中声明了 蓝鲸后台服务 的 release，且使用了 `seq` 标签来控制启动次序。
-
->附 `bk-repo` release 的定义：
->``` yaml
->releases:
->  - name: bk-repo
->    namespace: {{ .Values.namespace }}
->    chart: blueking/bkrepo
->    version: {{ index .Values.version "bkrepo" }}
->    missingFileHandler: Warn
->    labels:
->      seq: first
->    values:
->    - ./environments/default/bkrepo-values.yaml.gotmpl
->    - ./environments/default/bkrepo-custom-values.yaml.gotmpl
->```
-
-我们可以使用如下的命令分析 `base-blueking.yaml.gotmpl` 中定义的 `seq`，看看每个 `seq` 组的成员：
+将用户管理设置为默认应用，新用户登录桌面就可以看到。
 ``` bash
-yq e '[.releases[] | { "seq": .labels.seq, "name": .name}] | group_by(.seq) | .[] | [(.[0].seq, [.[].name] | join(","))] | @tsv' base-blueking.yaml.gotmpl
+scripts/set_desktop_default_app.sh -a "bk_usermgr"
 ```
-其输出如下（第一列为 `seq` 标签的值，第二列为 release 的 `name`，使用逗号分隔）：
+
+## 获取 PaaS 登录账户及密码
+在 **中控机** 执行如下命令获取登录账户:
+
+``` bash
+kubectl get cm -n blueking bk-user-api-general-envs -o go-template='user={{.data.INITIAL_ADMIN_USERNAME}}{{"\n"}}password={{ .data.INITIAL_ADMIN_PASSWORD }}{{"\n"}}'
+```
+其输出如下：
 ``` plain
-first	bk-repo,bk-auth,bk-apigateway
-second	bk-iam,bk-ssm,bk-console
-third	bk-user,bk-iam-saas,bk-iam-search-engine,bk-gse,bk-cmdb,bk-paas,bk-applog,bk-ingress-nginx,bk-ingress-rule
-fourth	bk-job
-fifth	bk-nodeman
+user=用户名
+password=密码
 ```
 
-## 使用 seq 标签操作一组 release
-
-参考上述的输出，你可以使用 seq 来按组 **并行** 控制 release：
+## 浏览器访问
+在 **中控机** 执行如下命令获取访问地址：
 ``` bash
-helmfile -f base-blueking.yaml.gotmpl -l seq=first sync  # 并行安装 seq 标签值为 first 的 3个 release：bk-repo,bk-auth,bk-apigateway
-helmfile -f base-blueking.yaml.gotmpl -l seq=second sync  # 并行安装 bk-iam,bk-ssm,bk-console
-helmfile -f base-blueking.yaml.gotmpl -l seq=third sync  # 并行安装 bk-user,bk-iam-saas,bk-iam-search-engine,bk-gse,bk-cmdb,bk-paas,bk-applog,bk-ingress-nginx,bk-ingress-rule
-helmfile -f base-blueking.yaml.gotmpl -l seq=fourth sync  # 安装 bk-job
-helmfile -f base-blueking.yaml.gotmpl -l seq=fifth sync  # 安装 bk-nodeman
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+echo "http://$BK_DOMAIN"
 ```
+浏览器访问上述地址即可。记得提前配置本地 DNS 服务器或修改本机的 hosts 文件。
 
-## 使用 name 标签操作单个 release
-也可使用 `name` 来控制模板文件中的单个 release。
 
-如下即为 `base-blueking.yaml.gotmpl` 中声明的全部 release（和 `helmfile -f base-blueking.yaml.gotmpl sync` 命令的效果一样）：
-``` bash
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-repo sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-auth sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-apigateway sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-iam sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-ssm sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-console sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-user sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-iam-saas sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-iam-search-engine sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-gse sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-cmdb sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-paas sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-applog sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-ingress-nginx sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-ingress-rule sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-job sync
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
-```
+<a id="next" name="next"></a>
 
 # 下一步
-回到《[部署基础套餐](install-bkce.md#manual-install-bkce)》文档继续阅读。
+准备 SaaS 运行环境。
+
+一共需要准备 3 项：
+* [确保 node 能拉取 SaaS 镜像](saas-node-pull-images.md)
+* [推荐：上传 PaaS runtimes 到制品库](paas-upload-runtimes.md)
+* [可选：配置 SaaS 专用 node](saas-dedicated-node.md)

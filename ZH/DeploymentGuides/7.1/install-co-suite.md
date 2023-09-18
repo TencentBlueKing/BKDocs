@@ -3,14 +3,32 @@
 
 >**提示**
 >
->本次发布的 `7.1.0` 版本有更新监控版本，但尚未成为稳定版，请期待后续发布的蓝鲸 `7.1.1` 版本。
+>此前发布的 `7.1.0` 版本有提供监控 3.8 版本，但尚未成为稳定版。请先升级到 7.1.1 版本继续部署监控。
 
-# 检查 GSE 版本
+# 检查依赖
+## 蓝鲸版本
+监控升级了 values 文件，并依赖新版本 apigw 平台。请确保蓝鲸版本为 7.1.1。
+
+在中控机执行如下命令确认蓝鲸版本：
+``` bash
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+cat VERSION
+```
+
+## GSE 版本
 登录到 **中控机**，先检查 bk-gse 的版本：
 ``` bash
 helm list -A -l name=bk-gse
 ```
 查看 `CHART` 列里的版本号，预期大于等于 `2.1.2-beta.20`，如果版本较旧，可不卸载，直接重新执行一次部署基础套餐的命令。
+
+## APIGateway 版本
+登录到 **中控机**，先检查 bk-apigateway 的版本：
+``` bash
+helm list -A -l name=bk-apigateway
+```
+查看 `CHART` 列里的版本号，预期大于等于 `1.11.3`，如果版本较旧，可不卸载，直接重新执行一次部署基础套餐的命令。
+
 
 # 部署与访问
 >**提示**
@@ -55,7 +73,7 @@ helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync  # 部署 k8s operator 提供
 ```
 
 ### 访问监控平台
-需要配置域名 `bkmonitor.$BK_DOMAIN`，操作步骤已经并入[《基础套餐部署》文档的 “配置用户侧的 DNS](install-bkce.md#hosts-in-user-pc)” 章节。
+需要配置域名 `bkmonitor.$BK_DOMAIN`，操作步骤已经并入 《部署步骤详解 —— 后台》 文档 的 “[配置用户侧的 DNS](manual-install-bkce.md#hosts-in-user-pc)” 章节。
 
 配置成功后，即可在桌面打开 “监控平台” 应用了。
 >**提示**
@@ -173,7 +191,7 @@ helmfile -f 04-bkmonitor.yaml.gotmpl apply
 
 
 ### 访问日志平台
-需要配置域名 `bklog.$BK_DOMAIN`，操作步骤已经并入《基础套餐部署》文档的 “[配置用户侧的 DNS](install-bkce.md#hosts-in-user-pc)” 章节。
+需要配置域名 `bklog.$BK_DOMAIN`，操作步骤已经并入 《部署步骤详解 —— 后台》 文档 的 “[配置用户侧的 DNS](manual-install-bkce.md#hosts-in-user-pc)” 章节。
 
 配置成功后，即可在桌面打开 “日志平台” 应用了。
 
@@ -190,7 +208,7 @@ helmfile -f 04-bkmonitor.yaml.gotmpl apply
     1. 完成 “部署容器日志采集器” 章节。
     2. 在日志平台的 “管理” —— “日志采集” 界面添加采集项。
   * 其他集群
-    1. TODO
+    1. TODO 其他集群容器日志采集步骤。
 
 
 # 可选功能

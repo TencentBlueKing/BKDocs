@@ -1,9 +1,10 @@
 # 基础套餐
 
 > 阅读前请确认好您的部署目的
+>
 > 该文档适用于生产环境多机器分模块部署场景
 
-基础套餐包含：PaaS 平台、配置平台、作业平台、权限中心、用户管理、节点管理、标准运维、流程服务
+基础套餐包含：PaaS 平台、配置平台、作业平台、权限中心、用户管理、节点管理、标准运维、流程服务、管控平台
 
 ## 一、安装环境准备
 
@@ -26,8 +27,8 @@
 
 ### 1.3 下载安装包
 
-- 下载链接：[bkce_basic_suite-6.2.0-alpha.1.tgz](https://bkopen-1252002024.file.myqcloud.com/ce/bkce_basic_suite-6.2.0-alpha.1.tgz)
-- 包 MD5值：681153002f8011283eac392d9794465e
+- 下载链接：[bkce-src-6.2.0.tgz](https://bkopen-1252002024.file.myqcloud.com/ce/bkce-src-6.2.0.tgz)
+- 包 MD5值：eb878f41b7d1aa2cabe32c3d28f9eb6f
 
 ### 1.4 解压相关资源包
 
@@ -35,7 +36,7 @@
 
    ```bash
    cd /data
-   tar xf bkce_basic_suite-6.2.0-alpha.1.tgz
+   tar xf bkce-src-6.2.0.tgz
    ```
 
 2. 解压各个产品软件包
@@ -71,9 +72,9 @@
 # 请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
 cat << EOF >/data/install/install.config
 [basic]
-10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana),monitorv3(ingester),apigw
-10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),beanstalk,monitorv3(unify-query),paas,iam_search_engine
-10.0.0.3 cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman),log(grafana),auth,redis_cluster,etcd
+10.0.0.1 iam,ssm,usermgr,gse,redis,consul,es7,apigw
+10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,paas,iam_search_engine,redis_cluster
+10.0.0.3 cmdb,job,mysql,zk(config),appt,consul,nodeman(nodeman),auth,etcd
 EOF
 ```
 
@@ -83,6 +84,33 @@ EOF
 cd /data/install
 bash /data/install/configure_ssh_without_pass
 ```
+
+### 1.7 自定义配置（可选）
+
+以下操作只需要在中控机上执行
+
+- 部署前自定义域名以及安装目录
+
+    \$BK_DOMAIN：需要更新的根域名。
+
+    \$INSTALL_PATH：自定义安装目录。
+
+    ```bash
+    # 执行前请使用实际的二级域名 (如：bktencent.com) 和安装目录进行替换
+    cd /data/install 
+    ./configure -d $BK_DOMAIN -p $INSTALL_PATH
+    ```
+
+- 部署前自定义 admin  登录密码
+
+    **请使用实际的自定义密码替换 BlueKing，以及使用实际的部署脚本路径替换默认的脚本路径 `/data/install`。**
+
+    ```bash
+    cat > /data/install/bin/03-userdef/usermgr.env << EOF
+    BK_PAAS_ADMIN_PASSWORD=BlueKing@2023
+    EOF
+    ```
+
 
 ## 开始部署
 
@@ -129,24 +157,9 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 
 ### 部署 bkiam_search_engine
 
-1. 获取权限中心的 app_token，并将获取到的 app_token 做为 bkiam_search_engine 的 secret
-
-    ```bash
-   echo BK_IAM_SAAS_APP_SECRET=$(mysql --login-path=mysql-default -e "use open_paas; select * from paas_app where code='bk_iam'\G"| awk '/auth_token/{print $2}') >> /data/install/bin/03-userdef/bkiam_search_engine.env
-   ```
-
-2. 渲染 bkiam_search_engine 变量
-
-    ```bash
-   ./bkcli install bkenv
-   ./bkcli sync common
-   ```
-
-3. 开始部署
-
-    ```bash
-   ./bk_install bkiam_search_engine
-   ```
+```bash
+./bk_install bkiam_search_engine
+```
 
 ### 部署 paas_plugin
 
@@ -173,12 +186,6 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 ```bash
 # 安装节点管理后台模块、节点管理 SaaS 及其依赖组件
 ./bk_install bknodeman
-```
-
-为了不影响p-agent的安装，请执行下述命令（已知问题，下个版本修复）
-
-```bash
-mysql --login-path=mysql-default -e "update bk_nodeman.node_man_accesspoint set proxy_package='[\"gse_agent-stable.tgz\", \"gse_proxy-stable.tgz\"]' where ap_type='system';"
 ```
 
 ### 部署标准运维及流程服务
@@ -224,7 +231,7 @@ source ~/.bashrc
    10.0.0.3 nodeman.bktencent.com
    ```
 
-   **注意：** 10.0.0.2 为 nginx 模块所在的机器，10.0.0.3 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。
+   **注意：** 10.0.0.2 为 nginx 模块所在的机器，10.0.0.3 为 nodeman 模块所在的机器。文档描述的均为主机对应的内网 IP，故内网 IP 需更换为本机浏览器可以访问的 公网 IP 进行 Host 绑定。
 
    查询模块所分布在机器的方式：
 

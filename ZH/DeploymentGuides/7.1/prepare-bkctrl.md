@@ -59,24 +59,79 @@ kubectl describe nodes NAME  # NAME参数为 kubectl get nodes输出的 NAME 列
 3. `Unable to connect to the server: dial tcp 10.0.0.254:6443: i/o timeout`，请确保 **中控机** 到 `k8s-api.bcs.local` （提示的域名）的网络可互通，以及目的服务器的防火墙，云服务器需额外检查安全组。
 
 
-# 安装部署所需的工具
-部署脚本会调用 `jq` 命令，用于在中控机解析服务端 API 返回的 json 数据。
+# 在中控机安装工具
 
-在 **中控机** 执行如下命令：
-``` bash
-yum install -y jq unzip uuid
-```
->**注意**
->
->CentOS 7 在 **`epel`源** 提供了 `jq-1.6`。如果提示 `No package jq available.`，请先确保 **`epel`源** 可用。
+<a id="install-bkdl" name="install-bkdl"></a>
 
+## 安装蓝鲸下载脚本
+鉴于目前容器化的软件包数量较多，我们提供了下载脚本帮助你下载文件并制备安装目录。
 
-# 安装下载脚本
-CentOS 支持在当前用户的 `bin` 目录下安装命令：
+此脚本无需提供给所有用户，所以我们把它安装到 `~/bin` 目录下：
 ``` bash
 mkdir -p ~/bin/
 curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh -o ~/bin/bkdl-7.1-stable.sh
 chmod +x ~/bin/bkdl-7.1-stable.sh
+```
+
+接下来直接执行：
+``` bash
+bkdl-7.1-stable.sh
+```
+即可看到命令的用法提示信息。
+
+在 `7.1` 版本，下载脚本的默认输出目录变为了 `$HOME/bkce7.1-install/`。
+
+>**提示**
+>
+>如果提示 `command not found`，请修正你的 `PATH` 环境变量，确保包含 `$HOME/bin` 目录。
+
+## 补齐系统命令
+如下命令在部署或者下载脚本中会用到。
+
+请在 **中控机** 执行如下命令安装：
+``` bash
+yum install -y unzip uuid
+```
+
+## 安装部署所需的工具
+中控机需要安装如下命令。
+* `jq`：部署脚本会调用 `jq` 命令，用于在中控机解析服务端 API 返回的 JSON 响应。
+* `yq`：用于解析 helmfile 模板以及 values 文件（YAML 格式）。
+* `helm`：蓝鲸使用 helm 进行编排。
+* `helm-diff`：用于比较 helm release 差异。方便增量更新。
+* `helmfile`：鉴于 helm release 数量较多，我们使用 helmfile 来控制流程和管理配置。
+
+使用下载脚本下载 `tools`：
+``` bash
+bkdl-7.1-stable.sh -r latest tools
+```
+
+将下载好的命令复制到系统 PATH 路径下：
+``` bash
+# 下载好的文件默认放置在 `$HOME/bkce7.1-install/` 下，如有修改，请调整此变量。
+INSTALL_DIR=$HOME/bkce7.1-install/
+# 安装生成配置所需的命令
+for _cmd in helmfile helm yq jq; do
+  cp -v "${INSTALL_DIR:-INSTALL_DIR-not-set}/bin/$_cmd" /usr/local/bin/
+done
+# 安装helm-diff插件
+tar xf ../bin/helm-plugin-diff.tgz -C ~/
+```
+
+检查 helm diff 插件：
+``` bash
+helm plugin list
+```
+预期输出 diff 及其版本：
+``` plain
+NAME	VERSION	DESCRIPTION
+diff	3.1.3  	Preview helm upgrade changes as a diff
+```
+
+## 配置默认命名空间
+设置 k8s 默认 ns, 方便后续操作.
+``` bash
+kubectl config set-context --current --namespace=blueking
 ```
 
 # 可选：配置 ssh 免密登录
