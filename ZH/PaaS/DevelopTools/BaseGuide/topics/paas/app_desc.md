@@ -273,7 +273,7 @@ services:
 }
 ```
 
-说明： probes: （可选）应用的健康探针配置，针对每个进程名称单独配置。与 k8s 健康探针相对应，分别有 liveness、readiness、
+说明： probes: （可选）应用的健康探针配置，针对每个进程单独配置。与 k8s 健康探针相对应，分别有 liveness、readiness、
 startup 三种探针类型。具体的探针参数如下:
 - `http_get`: HTTP GET 请求检测机制（可选）
   - `host`：连接使用的主机名，默认是 Pod 的 IP（可选）
@@ -296,24 +296,6 @@ startup 三种探针类型。具体的探针参数如下:
 - `period_seconds`：探针执行间隔时间，默认为 10 秒（可选）
 - `success_threshold`：连续几次检测成功后，判定容器为健康，默认为 1（可选）
 - `failure_threshold`：连续几次检测失败后，判定容器为不健康，默认为 3（可选）
-
-
-参考配置如下：
-```yml
-processes:
-    web: 
-        probes:             
-            liveness:       
-                exec:
-                    command:
-                        - cat
-                initial_delay_seconds: 10
-            readiness:
-                http_get:
-                    path: /healthz
-                    port: 80
-                
-```
 
 ### 额外脚本（scripts）
 （可选）字典类型, 内容为模块构建、部署阶段需要执行的额外脚本。
