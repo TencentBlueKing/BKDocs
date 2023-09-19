@@ -108,13 +108,13 @@ IP2 ci(dockerhost)
 ![CI_home.png](../../assets/CI_home.png)
 
 相关链接：
-* [快速入门](../../../../../Devops/1.7/产品白皮书/Quickstarts/Link-your-first-repo.md)
-* [产品白皮书](../../../../../Devops/产品白皮书/产品简介/README.md)
+* [快速入门](../../../../../ZH/Devops/2.0/UserGuide/Quickstarts/Link-your-first-repo.md)
+* [产品白皮书](../../../../../ZH/Devops/2.0/UserGuide/intro/README.md)
 * [BKCI Docs](https://docs.bkci.net/)
-* [常见问题](../../增强包维护/蓝盾/FAQ.md)
+* [常见问题](../../../../../ZH/Devops/2.0/UserGuide/Reference/faqs/README.md)
 * [部署详解](./CI-V2.md)
-* [日常维护](../../增强包维护/蓝盾/Maintenance.md)
-* [私有构建机方案](../../增强包维护/蓝盾/Private-build-setup.md)
+* [日常维护](../../../../../ZH/DeploymentGuides/6.2/EnhancePackageMaintenance/BKCI/Maintenance.md)
+* [私有构建机方案](../../../../../ZH/DeploymentGuides/6.2/EnhancePackageMaintenance/BKCI/Private-build-setup.md)
 
 
 ## 代码检查（CodeCC） （即将推出，敬请期待）
