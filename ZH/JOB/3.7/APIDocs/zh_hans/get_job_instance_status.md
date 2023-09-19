@@ -6,15 +6,14 @@
 
 {{ common_args_desc }}
 
-#### Body参数
+#### 接口参数
 
 | 字段             |  类型      | 必选   |  描述      |
 |------------------|------------|--------|------------|
 | bk_scope_type | string | 是     | 资源范围类型。可选值: biz - 业务，biz_set - 业务集 |
 | bk_scope_id | string | 是 | 资源范围ID, 与bk_scope_type对应, 表示业务ID或者业务集ID |
-| bk_biz_id        |  long       | 是     | *已弃用*。业务ID。此字段已被弃用并由字段bk_scope_type+bk_scope_id替换 |
 | job_instance_id  |  long       | 是     | 作业实例ID |
-| return_ip_result | boolean | 否 | 是否返回每个ip上的任务详情，对应返回结果中的step_ip_result_list。默认值为false。 |
+| return_ip_result | boolean | 否 | 是否返回每个主机上的任务详情，对应返回结果中的step_ip_result_list。默认值为false。 |
 
 ### 请求参数示例
 
@@ -62,6 +61,7 @@
                 "start_time": 1605064271000,
                 "step_ip_result_list": [
                     {
+                        "bk_host_id": 101,
                         "ip": "10.0.0.1",
                         "bk_cloud_id": 0,
                         "status": 9,
@@ -80,6 +80,7 @@
 ```
 ### 返回结果参数说明
 
+#### response
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result       | bool   | 请求成功与否。true:请求成功；false请求失败 |
@@ -88,7 +89,7 @@
 | data         | object | 请求返回的数据|
 | permission   | object | 权限信息|
 
-##### data
+#### data
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
@@ -96,7 +97,7 @@
 | job_instance   | object       | 作业实例基本信息。见job_instance定义 |
 | step_instance_list | array      | 作业步骤列表。见step_instance定义 |
 
-##### job_instance
+#### job_instance
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
@@ -110,7 +111,7 @@
 | bk_scope_id   | string | 资源范围ID, 与bk_scope_type对应, 表示业务ID或者业务集ID |
 | job_instance_id    | long    | 作业实例ID |
 
-##### step_instance
+#### step_instance
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
@@ -126,12 +127,13 @@
 | step_ip_result_list | array     | 每个主机的任务执行结果，定义见step_ip_result |
 
 
-##### step_ip_result
+#### step_ip_result
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
+| bk_host_id | long | 主机ID |
 | ip          | string    | IP |
-| bk_cloud_id | long       | 云区域ID |
+| bk_cloud_id | long       | 管控区域ID |
 | status      | int       | 作业执行状态:1.Agent异常; 5.等待执行; 7.正在执行; 9.执行成功; 11.执行失败; 12.任务下发失败; 403.任务强制终止成功; 404.任务强制终止失败 |
 | tag | string | 用户通过job_success/job_fail函数模板自定义输出的结果。仅脚本任务存在该参数 |
 | exit_code | int | 脚本任务exit code |

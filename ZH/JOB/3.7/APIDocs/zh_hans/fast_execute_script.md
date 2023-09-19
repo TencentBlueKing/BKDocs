@@ -6,13 +6,12 @@
 
 {{ common_args_desc }}
 
-#### Body参数
+#### 接口参数
 
 | 字段          |  类型      | 必选   |  描述      |
 |---------------|------------|--------|------------|
 | bk_scope_type | string | 是     | 资源范围类型。可选值: biz - 业务，biz_set - 业务集 |
 | bk_scope_id | string | 是 | 资源范围ID, 与bk_scope_type对应, 表示业务ID或者业务集ID |
-| bk_biz_id        |  long       | 是     | *已弃用*。业务ID。此字段已被弃用并由字段bk_scope_type+bk_scope_id替换 |
 | script_version_id |  long       | 否     | 脚本版本ID。当script_version_id不为空的时候，使用script_version_id对应的脚本版本 |
 | script_id | string | 否 | 脚本ID。当传入script_id，且script_version_id为空的时候，使用脚本的上线版本 |
 | script_content | string | 否 | 脚本内容Base64。如果不存在script_version_id和script_id,那么使用script_content。优先级：script_version_id>script_id>script_content |
@@ -25,43 +24,35 @@
 | script_language |  int       | 否     | 脚本语言：1 - shell, 2 - bat, 3 - perl, 4 - python, 5 - powershell。当使用script_content传入自定义脚本的时候，需要指定script_language |
 | target_server    | object | 否     | 目标服务器，见server定义 |
 | callback_url |  string   | 否     | 回调URL，当任务执行完成后，JOB会调用该URL告知任务执行结果。回调协议参考callback_protocol组件文档 |
-| rolling_config    | object | 否     | 滚动配置，见rolling_config定义 |
 
-##### server
-| 字段               | 类型  | 必选 | 描述                                |
-| ------------------ | ----- | ---- | ----------------------------------- |
-| ip_list            | array | 否   | 静态 IP 列表，定义见ip              |
-| dynamic_group_list | array | 否   | 动态分组列表，定义见dynamic_group   |
-| topo_node_list     | array | 否   | 动态 topo 节点列表，定义见topo_node |
+#### server
 
-##### ip
+| 字段               | 类型  | 必选 | 描述                                                         |
+| ------------------ | ----- | ---- | ------------------------------------------------------------ |
+| host_id_list       | array | 否   | 主机ID列表                                                   |
+| ip_list            | array | 否   | ***不推荐使用，建议使用host_id_list参数***。主机IP 列表，定义见ip |
+| dynamic_group_list | array | 否   | 动态分组列表，定义见dynamic_group                            |
+| topo_node_list     | array | 否   | 动态 topo 节点列表，定义见topo_node                          |
 
-| 字段      |  类型      | 必选   |  描述      |
-|-----------|------------|--------|------------|
-| bk_cloud_id |  long    | 是     | 云区域ID |
-| ip          |  string | 是     | IP地址 |
+#### ip
 
-##### dynamic_group
+| 字段        | 类型   | 必选 | 描述     |
+| ----------- | ------ | ---- | -------- |
+| bk_cloud_id | long   | 是   | 管控区域ID |
+| ip          | string | 是   | IP地址   |
+
+#### dynamic_group
 
 | 字段 | 类型   | 必选 | 描述           |
 | ---- | ------ | ---- | -------------- |
 | id   | string | 是   | CMDB动态分组ID |
 
-##### topo_node_list
+#### topo_node_list
 
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
 | id               | long   | 是     | 动态topo节点ID，对应CMDB API 中的 bk_inst_id |
 | node_type        | string | 是     | 动态topo节点类型，对应CMDB API 中的 bk_obj_id,比如"module","set"|
-
-##### rolling_config
-
-| 字段 | 类型   | 必选 | 描述           |
-| ---- | ------ | ---- | -------------- |
-| expression   | string | 是   | 滚动策略表达式 |
-| mode   | int | 是   | 滚动机制,1-执行失败则暂停；2-忽略失败，自动滚动下一批；3-人工确认 |
-
-
 
 ### 请求参数示例
 
@@ -85,15 +76,9 @@
                 "id": "blo8gojho0skft7pr5q0"
             }
         ],
-        "ip_list": [
-            {
-                "bk_cloud_id": 0,
-                "ip": "10.0.0.1"
-            },
-            {
-                "bk_cloud_id": 0,
-                "ip": "10.0.0.2"
-            }
+        "host_id_list": [
+            101,
+            102
         ],
         "topo_node_list": [
             {
@@ -122,6 +107,7 @@
 
 ### 返回结果参数说明
 
+#### response
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result       | bool   | 请求成功与否。true:请求成功；false请求失败 |
@@ -130,7 +116,7 @@
 | data         | object | 请求返回的数据|
 | permission   | object | 权限信息|
 
-##### data
+#### data
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|

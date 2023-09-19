@@ -6,13 +6,12 @@
 
 {{ common_args_desc }}
 
-#### Body参数
+#### 接口参数
 
 | 字段       |  类型      | 必选   |  描述      |
 |----------------------|------------|--------|------------|
 | bk_scope_type | string | 是     | 资源范围类型。可选值: biz - 业务，biz_set - 业务集 |
 | bk_scope_id | string | 是 | 资源范围ID, 与bk_scope_type对应, 表示业务ID或者业务集ID |
-| bk_biz_id        |  long       | 是     | *已弃用*。业务ID。此字段已被弃用并由字段bk_scope_type+bk_scope_id替换 |
 | name                   |  string    | 否     | 脚本名称，支持模糊查询 |
 | script_language    |  int       | 否     | 脚本语言。0：所有脚本类型，1：shell，2：bat，3：perl，4：python，5：powershell，6：sql。默认值为0 |
 | start                  |  int       | 否     | 分页记录起始位置，不传默认为0 |
@@ -65,6 +64,7 @@
 
 ### 返回结果参数说明
 
+#### response
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result       | bool   | 请求成功与否。true:请求成功；false请求失败 |
@@ -73,7 +73,8 @@
 | data         | object | 请求返回的数据|
 | permission   | object | 权限信息|
 
-##### data
+
+#### data
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|

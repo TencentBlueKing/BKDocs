@@ -6,13 +6,12 @@
 
 {{ common_args_desc }}
 
-#### Body参数
+#### 接口参数
 
 | 字段        |  类型        | 必选   |  描述         |
 |-------------|-------------|--------|--------------|
 | bk_scope_type | string | 是     | 资源范围类型。可选值: biz - 业务，biz_set - 业务集 |
 | bk_scope_id | string | 是 | 资源范围ID, 与bk_scope_type对应, 表示业务ID或者业务集ID |
-| bk_biz_id        |  long       | 是     | *已弃用*。业务ID。此字段已被弃用并由字段bk_scope_type+bk_scope_id替换 |
 | job_plan_id |  long       | 是     | 作业执行方案 ID |
 
 ### 请求参数示例
@@ -69,10 +68,12 @@
                     ],
                     "ip_list": [
                         {
+                            "bk_host_id": 101,
                             "bk_cloud_id": 0,
                             "ip": "10.0.0.1"
                         },
                         {
+                            "bk_host_id": 102,
                             "bk_cloud_id": 0,
                             "ip": "10.0.0.2"
                         }
@@ -159,10 +160,12 @@
                             ],
                             "ip_list": [
                                 {
+                                    "bk_host_id": 103,
                                     "bk_cloud_id": 0,
                                     "ip": "10.0.0.3"
                                 },
                                 {
+                                    "bk_host_id": 104,
                                     "bk_cloud_id": 0,
                                     "ip": "10.0.0.4"
                                 }
@@ -189,6 +192,7 @@
 
 ### 返回结果参数说明
 
+#### response
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result       | bool   | 请求成功与否。true:请求成功；false请求失败 |
@@ -197,7 +201,7 @@
 | data         | object | 请求返回的数据|
 | permission   | object | 权限信息|
 
-##### data
+#### data
 
 | 字段             | 类型      | 描述      |
 |------------------|-----------|-----------|
@@ -212,7 +216,7 @@
 | step_list        | array     | 步骤对象 |
 | global_var_list  | array     | 全局变量信息 |
 
-##### step
+#### step
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
@@ -222,7 +226,7 @@
 | script_info        | object    | 脚本信息。当 type=1 时才有这个字段。 |
 | file_info          | object    | 文件传输步骤信息。当 type=2 时才有这个字段 |
 
-##### script_info
+#### script_info
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | script_type        | int       | 脚本类型：1 本地脚本 2 引用脚本 3 公共脚本 |
@@ -235,7 +239,7 @@
 | is_param_sensitive | int       | 是否敏感参数, 0.不是（默认），1.是。|
 | account            | object    | 执行账号名/别名 |
 
-##### file_info
+#### file_info
 | 字段                  | 类型   | 描述      |
 |----------------------|--------|-----------|
 | file_source_list     | array  | 源文件信息 |
@@ -245,7 +249,7 @@
 | upload_speed_limit   | int    | 上传限速 |
 | download_speed_limit | int    | 下载限速 |
 
-##### global_var
+#### global_var
 
 | 字段         |  类型     |  描述      |
 |-------------|-----------|------------|
@@ -257,7 +261,7 @@
 | value       |  string   | 字符、密码、数组类型的全局变量的值 |
 | server      |  object   | 主机类型全局变量的值 |
 
-##### server
+#### server
 | 字段                   |  类型 |  描述      |
 |-----------------------|-------|------------|
 | variable              | string | 引用的变量名 |
@@ -265,30 +269,31 @@
 | dynamic_group_list    | array  | 动态分组 ID 列表 |
 | topo_node_list        | array  | 动态 topo 节点列表 |
 
-##### ip
+#### ip
 | 字段         |  类型   | 描述   |
 |-------------|---------|---------|
-| bk_cloud_id |  int    | 云区域ID |
+| bk_host_id |  long    | 主机ID |
+| bk_cloud_id |  int    | 管控区域ID |
 | ip          |  string | IP地址 |
 
-##### dynamic_group
+#### dynamic_group
 | 字段 |  类型   | 描述        |
 |-----|---------|------------|
 | id  |  string | 动态分组 ID |
 
-##### topo_node
+#### topo_node
 | 字段              |  类型  |  描述      |
 |------------------|--------|------------|
 | id               | long   | 动态topo节点ID，对应CMDB API 中的 bk_inst_id |
 | node_type        | string | 动态topo节点类型，对应CMDB API 中的 bk_obj_id,比如"module","set"|
 
-##### account
+#### account
 | 字段   |  类型  | 必选   |  描述      |
 |-------|--------|--------|------------|
 | id    | long   | 否     | 账号 ID |
 | name  | string | 否     | 账号名  |
 
-##### file_source
+#### file_source
 | 字段            | 类型     | 描述      |
 |-----------------|---------|-----------|
 | file_list       | array   | 源文件的绝对路径数组，支持多个文件 |
@@ -297,7 +302,7 @@
 | file_type        | int     | 文件源类型，1：服务器文件，2：本地文件，3：第三方文件源文件 |
 | file_source_id  | int     | 文件源类型为第三方文件源文件时的第三方文件源Id |
 
-##### file_destination
+#### file_destination
 | 字段            | 类型     | 描述      |
 |-----------------|---------|-----------|
 | path            | string  | 目标文件存放的路径 |

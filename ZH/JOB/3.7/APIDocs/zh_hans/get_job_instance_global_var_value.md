@@ -6,13 +6,12 @@
 
 {{ common_args_desc }}
 
-#### Body参数
+#### 接口参数
 
 | 字段      |  类型      | 必选   |  描述      |
 |-----------|------------|--------|------------|
 | bk_scope_type | string | 是     | 资源范围类型。可选值: biz - 业务，biz_set - 业务集 |
 | bk_scope_id | string | 是 | 资源范围ID, 与bk_scope_type对应, 表示业务ID或者业务集ID |
-| bk_biz_id        |  long       | 是     | *已弃用*。业务ID。此字段已被弃用并由字段bk_scope_type+bk_scope_id替换 |
 | job_instance_id |  long    | 是     | 作业实例ID |
 
 ### 请求参数示例
@@ -75,6 +74,7 @@
 
 ### 返回结果参数说明
 
+#### response
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | result       | bool   | 请求成功与否。true:请求成功；false请求失败 |
@@ -83,21 +83,21 @@
 | data         | object | 请求返回的数据|
 | permission   | object | 权限信息|
 
-##### data
+#### data
 
 | 字段      | 类型      | 描述      |
 |-----------|-----------|-----------|
 | job_instance_id  | long       | 作业实例ID |
 | step_instance_var_list | array   | 作业步骤实例全局变量值。定义见step_instance_var |
 
-##### step_instance_var
+#### step_instance_var
 
 | 字段             | 类型  | 描述                             |
 | ---------------- | ----- | -------------------------------- |
 | step_instance_id | long  | 步骤实例ID                       |
 | global_var_list  | array | 全局变量值列表，定义见global_var |
 
-##### global_var
+#### global_var
 
 | 字段   | 类型   | 必选 | 描述                                                       |
 | ------ | ------ | ---- | ---------------------------------------------------------- |
@@ -106,7 +106,7 @@
 | value  | string | 否   | 字符、密码、数组类型的全局变量的值                         |
 | server | object   | 否   | 主机类型全局变量的值，见server定义                         |
 
-##### server
+#### server
 
 | 字段               | 类型  | 必选 | 描述                                |
 | ------------------ | ----- | ---- | ----------------------------------- |
@@ -114,20 +114,21 @@
 | dynamic_group_list | array | 否   | 动态分组列表，定义见dynamic_group   |
 | topo_node_list     | array | 否   | 动态 topo 节点列表，定义见topo_node |
 
-##### ip
+#### ip
 
 | 字段        | 类型   | 必选 | 描述     |
 | ----------- | ------ | ---- | -------- |
-| bk_cloud_id | int    | 是   | 云区域ID |
+| bk_host_id |  long    | 主机ID |
+| bk_cloud_id | int    | 是   | 管控区域ID |
 | ip          | string | 是   | IP地址   |
 
-##### dynamic_group
+#### dynamic_group
 
 | 字段 | 类型   | 必选 | 描述           |
 | ---- | ------ | ---- | -------------- |
 | id   | string | 是   | CMDB动态分组ID |
 
-##### topo_node
+#### topo_node
 
 | 字段      | 类型   | 必选 | 描述                                                         |
 | --------- | ------ | ---- | ------------------------------------------------------------ |
