@@ -27,7 +27,7 @@
         * [可选：配置 SaaS 专用 node](saas-dedicated-node.md)
     * [部署步骤详解 —— SaaS](manual-install-saas.md)
 * [单产品更新](update.md)
-* [7.0-7.1升级文档](./v70-upgrade-to-v71.md)
+* [7.0 - 7.1升级文档](v70-upgrade-to-v71.md)
 * [问题案例](troubles.md)
 * [FAQ](faq.md)
 * [附录]()

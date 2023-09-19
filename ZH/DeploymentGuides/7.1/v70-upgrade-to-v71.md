@@ -10,7 +10,7 @@
 
 ### 下载新版本
 
-参考全新部署文档：https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.1/install-bkce.md?catalog_id=841
+参考[全新部署文档](./prepare-bkctrl.md)
 
 ```bash
 # 下载成功后，最新的 helmfile 和默认配置在 ~/bkce7.1-install/blueking 目录下，SaaS 包在 ~/bkce7.1-install/saas 目录下
@@ -205,7 +205,7 @@ helmfile -f base-blueking.yaml.gotmpl -l seq=second sync
 
 #### 权限中心升级操作
 
-由于权限中心在本次版本中新增了 RBAC 相关的接入功能, 对用户组鉴权数据做了较大的变更 所以升级前，需要使用数据迁移。详细请阅 [权限中心 V3 后台 从 <1.11.9 升级到 >=1.12.x](https://bk.tencent.com/docs/markdown/ZH/IAM/IntegrateGuide/HowTo/OPS/Upgrade.md)，升级步骤已整理放置下述命令中，描述中的链接仅供参考，请知悉。
+由于权限中心在本次版本中新增了 RBAC 相关的接入功能, 对用户组鉴权数据做了较大的变更 所以升级前，需要使用数据迁移。详细请阅 [权限中心 V3 后台 从 <1.11.9 升级到 >=1.12.x](../../IAM/IntegrateGuide/HowTo/OPS/Upgrade.md)，升级步骤已整理放置下述命令中，描述中的链接仅供参考，请知悉。
 
 - 下载迁移脚本
 
@@ -214,7 +214,7 @@ helmfile -f base-blueking.yaml.gotmpl -l seq=second sync
 
     chmod +x /data/migrate_subject_system_group.py
 
-    bkiam_saas_podname=$(kubectl get pod -n blueking -l app.kubernetes.io/instance=bk-iam-saas,app.kubernetes.io/name=bkiam-saas,appModule=api  -o jsonpath='{.items[*].metadata.name}')
+    bkiam_saas_podname=$(kubectl get pod -n blueking -l app.kubernetes.io/instance=bk-iam-saas,app.kubernetes.io/name=bkiam-saas,appModule=api  -o jsonpath='{.items[0].metadata.name}')
     kubectl cp /data/migrate_subject_system_group.py -n blueking $bkiam_saas_podname:/app/
     ```
 
