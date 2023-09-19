@@ -275,24 +275,27 @@ services:
 
 说明： probes: （可选）应用的健康探针配置，针对每个进程名称单独配置。与 k8s 健康探针相对应，分别有 liveness、readiness、
 startup 三种探针类型。具体的探针参数如下:
-- `http_get`: HTTP GET 请求检测机制
-  - `host`：连接使用的主机名，默认是 Pod 的 IP
-  - `path`：请求路径
-  - `port`：请求端口号
-  - `http_headers`：HTTP 头部列表，可选
-  - `scheme`：请求方式，默认为 "HTTP"
+- `http_get`: HTTP GET 请求检测机制（可选）
+  - `host`：连接使用的主机名，默认是 Pod 的 IP（可选）
+  - `path`：请求路径（可选）
+  - `port`：请求端口号（必需）
+  - `scheme`：请求方式，默认为 "HTTP"（可选）
+  - `http_headers`：HTTP 头部列表（可选）
+    - `name`：HTTP 头部域名称（必需）
+    - `value`：HTTP 头部域值（必需）
 
-- `tcp_socket`: TCP 请求检测机制
-  - `port`：请求端口号,可使用占位符 ${PORT} 替代平台配置的容器监听地址
+- `tcp_socket`: TCP 请求检测机制（可选）
+  - `port`：请求端口号（必需）,可使用占位符 ${PORT} 替代平台配置的容器监听地址
+  - `host`：请求路径（可选）
 
-- `exec`: 命令行检测机制
-  - `command`：要执行的命令列表
+- `exec`: 命令行检测机制（可选）
+  - `command`：要执行的命令列表（可选）
 
-- `initial_delay_seconds`：容器启动后等待时间，默认为 0 秒
-- `timeout_seconds`：探针执行超时时间，默认为 1 秒
-- `period_seconds`：探针执行间隔时间，默认为 10 秒
-- `success_threshold`：连续几次检测成功后，判定容器为健康，默认为 1
-- `failure_threshold`：连续几次检测失败后，判定容器为不健康，默认为 3
+- `initial_delay_seconds`：容器启动后等待时间，默认为 0 秒（可选）
+- `timeout_seconds`：探针执行超时时间，默认为 1 秒（可选）
+- `period_seconds`：探针执行间隔时间，默认为 10 秒（可选）
+- `success_threshold`：连续几次检测成功后，判定容器为健康，默认为 1（可选）
+- `failure_threshold`：连续几次检测失败后，判定容器为不健康，默认为 3（可选）
 
 
 参考配置如下：
