@@ -41,6 +41,15 @@ modules:
                 command: npm run server
                 plan: 4C1G5R
                 replicas: 2            # 副本数不能超过 plan 中定义的值
+                probes:
+                    liveness:
+                        exec:
+                            command:
+                                - cat
+                    readiness:
+                        http_get:
+                            path: /healthz
+                            port: 80
         scripts:
             pre_release_hook: bin/pre-release.sh  
         svc_discovery:
@@ -231,7 +240,8 @@ services:
 - `command`: (string), 部署进程的启动命令, 进程将以该指令启动。
 - `plan`: (可选, string), 进程的资源配额
 - `replicas`: (可选, int) 进程的副本数, 默认值为 1, 副本数不能超过 plan 中定义的值。
-
+- `probes`: (可选, dict) 进程健康探针
+- 
 说明： plan: （可选）应用使用的资源配置类型，可单独针对每个进程名称配置
 资源套餐的具体含义如下：
 ```json
@@ -262,6 +272,30 @@ services:
     }
 }
 ```
+
+说明： probes: （可选）应用的健康探针配置，针对每个进程单独配置。与 k8s 健康探针相对应，分别有 liveness、readiness、
+startup 三种探针类型。具体的探针参数如下:
+- `http_get`: HTTP GET 请求检测机制（可选, dict）
+  - `host`：连接使用的主机名，默认是 Pod 的 IP（可选, string）
+  - `path`：请求路径（可选, string）
+  - `port`：请求端口号（必需, int）
+  - `scheme`：请求方式，默认为 "HTTP"（可选, string）
+  - `http_headers`：HTTP 头部列表（可选, list）
+    - `name`：HTTP 头部域名称（必需, string）
+    - `value`：HTTP 头部域值（必需, string）
+
+- `tcp_socket`: TCP 请求检测机制（可选, dict）
+  - `port`：请求端口号（必需, int）,可使用占位符 ${PORT} 替代平台配置的容器监听地址
+  - `host`：请求路径（可选, string）
+
+- `exec`: 命令行检测机制（可选, dict）
+  - `command`：要执行的命令列表（可选, list）
+
+- `initial_delay_seconds`：容器启动后等待时间，默认为 0 秒（可选, int）
+- `timeout_seconds`：探针执行超时时间，默认为 1 秒（可选, int）
+- `period_seconds`：探针执行间隔时间，默认为 10 秒（可选, int）
+- `success_threshold`：连续几次检测成功后，判定容器为健康，默认为 1（可选, int）
+- `failure_threshold`：连续几次检测失败后，判定容器为不健康，默认为 3（可选, int）
 
 ### 额外脚本（scripts）
 （可选）字典类型, 内容为模块构建、部署阶段需要执行的额外脚本。

@@ -3,6 +3,7 @@
 ## 部署维护
 * [基础套餐安装指引](BasicInstall/MultiDeploy/quick_install.md)
 * [监控日志套餐安装指引](BasicInstall/MultiDeploy/value_added.md)
+* [持续集成套餐安装指引](InstallEnhancePackage/DeployAndInstall/CI-start.md)
 * [升级指引：6.1.1 > 6.2.0](UpgradeGuide/6.1-to-6.2.0.md)
 * [部署详解]()
     * [基础套餐及监控日志套餐]()
