@@ -288,7 +288,7 @@ startup 三种探针类型。具体的探针参数如下:
 - `exec`: 命令行检测机制
   - `command`：要执行的命令列表
 
-- `initial_delayseconds`：容器启动后等待时间，默认为 0 秒
+- `initial_delay_seconds`：容器启动后等待时间，默认为 0 秒
 - `timeout_seconds`：探针执行超时时间，默认为 1 秒
 - `period_seconds`：探针执行间隔时间，默认为 10 秒
 - `success_threshold`：连续几次检测成功后，判定容器为健康，默认为 1
