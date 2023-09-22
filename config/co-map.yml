@@ -9120,7 +9120,7 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   ZH/PaaS/DevelopTools/SaaSGuide/DevAdvanced/Django+Vue.js.md: ZH/PaaS/DevelopTools/SaaSGuide/DevAdvanced/Django+Vue.md
   ZH/PaaS/DevelopTools/BaseGuide/topics/company_tencent/node_framework_usage.md: ZH/PaaS/DevelopTools/SaaSGuide/DevAdvanced/bkui/bkui.md
   ZH/PaaS/DevelopTools/BaseGuide/topics/company_tencent/vue_framework_usage.md: ZH/PaaS/DevelopTools/SaaSGuide/DevAdvanced/bkui/bkui.md
-
-
+  BK-Base//UserGuide/Introduction/intro.md: ZH/BK-Base/3.10/UserGuide/Introduction/intro.md
+  BK-Base//UserGuide/user-guide/auth-management/permission.md: ZH/BK-Base/3.10/UserGuide/user-guide/auth-management/permission.md
 
 
