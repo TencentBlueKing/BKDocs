@@ -280,12 +280,39 @@ kubectl exec -it -n blueking $bkiam_saas_podname -- python3 /app/migrate_subject
 
 ### 更新第四层-作业平台
 
-新增自定义配置，先关闭作业平台对接V2的功能开关：
+- 新增自定义配置，先关闭作业平台对接V2的功能开关：
 
-```bash
-yq -n '.job.features.gseV2.enabled = false' >> ./environments/default/bkjob-custom-values.yaml.gotmpl
-helmfile -f base-blueking.yaml.gotmpl -l seq=fourth sync
-```
+    ```bash
+    yq -n '.job.features.gseV2.enabled = false' >> ./environments/default/bkjob-custom-values.yaml.gotmpl
+    helmfile -f base-blueking.yaml.gotmpl -l seq=fourth sync
+    ```
+
+- 跑升级后置命令（作业平台 3.5->3.7，需要运行）
+
+   作业平台详细升级说明可查看 [作业平台升级说明](https://github.com/TencentBlueKing/bk-job/blob/master/UPGRADE.md)，相关命令请以下述为主，文档仅提供参考，请知悉。
+
+    ```bash
+    cd ~/bkhelmfile/blueking
+
+    # 运行upgrader的pod
+    kubectl run -n blueking --image-pull-policy=Always --image="hub.bktencent.com/blueking/job-migration:3.7.6-beta.2" bk-job-upgrader  -- sleep infinity
+
+    # 确认pod变成Running状态
+    kubectl wait -n blueking --for=condition=ready pod bk-job-upgrader
+
+    # 生成升级所需的配置文件
+    kubectl exec -n blueking bk-job-upgrader -- cat ./upgrader.properties.tpl  | bash ./scripts/get_job_upgrade_env.sh |  kubectl exec -i -n blueking bk-job-upgrader -- /bin/bash -c 'cat > ./upgrader.properties'
+
+    # 确认下生成的配置文件内容合乎预期
+    kubectl exec -n blueking bk-job-upgrader -- cat ./upgrader.properties
+
+    # 执行升级作业
+    # 执行完成命令后，终端输出的日志种的最末端有 "All xx upgradeTasks finished successfully" 字样则表示升级成功
+    kubectl exec -n blueking -i bk-job-upgrader -- ./runUpgrader.sh 3.5.1 3.7.6-beta.2
+
+    # 升级完成后，删除pod
+    kubectl delete -n blueking pod bk-job-upgrader
+    ```
 
 ### 更新第五层-节点管理
 
