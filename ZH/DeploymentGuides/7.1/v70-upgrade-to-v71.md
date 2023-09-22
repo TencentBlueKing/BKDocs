@@ -290,8 +290,6 @@ helmfile -f base-blueking.yaml.gotmpl -l seq=fourth sync
 ### 更新第五层-节点管理
 
 ```bash
-yq -n '.config.gseVersion = V1' >> ./environments/default/bknodeman-custom-values.yaml.gotmpl
-
 helmfile -f base-blueking.yaml.gotmpl -l seq=fifth sync
 ```
 
