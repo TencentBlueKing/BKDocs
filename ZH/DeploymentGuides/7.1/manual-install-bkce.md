@@ -17,7 +17,7 @@
 第 1 层包含了 `bk-repo,bk-auth,bk-apigateway` 等 release。
 >**提示**
 >
->在中控机执行 `helmfile -f base.yaml.gotmpl -l seq=first sync` 即可并行部署这些 release。
+>在中控机执行 `helmfile -f base-blueking.yaml.gotmpl -l seq=first sync` 即可并行部署这些 release。
 
 ### 部署 bk-apigateway
 蓝鲸 API 网关是蓝鲸各组件互通的枢纽。
@@ -47,7 +47,7 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-repo sync
 第 2 层包含了 `bk-iam,bk-ssm,bk-console` 等 release。
 >**提示**
 >
->在中控机执行 `helmfile -f base.yaml.gotmpl -l seq=second sync` 即可并行部署这些 release。
+>在中控机执行 `helmfile -f base-blueking.yaml.gotmpl -l seq=second sync` 即可并行部署这些 release。
 
 ### 部署权限中心后台
 先部署权限中心后台 API。
@@ -69,7 +69,7 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-console sync
 第 3 层包含了 `bk-user,bk-iam-saas,bk-iam-search-engine,bk-gse,bk-cmdb,bk-paas,bk-applog,bk-ingress-nginx,bk-ingress-rule` 等 release。
 >**提示**
 >
->在中控机执行 `helmfile -f base.yaml.gotmpl -l seq=third sync` 即可并行部署这些 release。
+>在中控机执行 `helmfile -f base-blueking.yaml.gotmpl -l seq=third sync` 即可并行部署这些 release。
 
 ### 部署 bk-user
 蓝鲸用户管理。
@@ -114,7 +114,7 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-paas -l name=bkpaas-app-operato
 第 4 层只包含了 `bk-job` 1 个 release。
 >**提示**
 >
->在中控机执行 `helmfile -f base.yaml.gotmpl -l seq=fourth sync` 即可并行部署这些 release。
+>在中控机执行 `helmfile -f base-blueking.yaml.gotmpl -l seq=fourth sync` 即可并行部署这些 release。
 
 ### 部署 bk-job
 作业平台。
@@ -128,7 +128,7 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-job sync
 第 5 层只包含了 `bk-nodeman` 1 个 release。
 >**提示**
 >
->在中控机执行 `helmfile -f base.yaml.gotmpl -l seq=fifth sync` 即可并行部署这些 release。
+>在中控机执行 `helmfile -f base-blueking.yaml.gotmpl -l seq=fifth sync` 即可并行部署这些 release。
 
 ### 部署 bk-nodeman
 节点管理。

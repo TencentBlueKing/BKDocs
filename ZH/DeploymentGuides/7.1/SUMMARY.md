@@ -1,9 +1,10 @@
 # SUMMARY
 
-## 7.1 部署文档
+## 部署维护
 * [简介](index.md)
 * [准备工作]()
     * [资源及环境要求](prepare.md)
+    * [推荐：缓存 Docker 镜像](docker-registry-cache.md)
     * [准备一个 k8s 集群]()
         * [导入已有的集群](get-k8s-import-kubeconfig.md)
         * [使用 bcs.sh 自建集群](get-k8s-create-bcssh.md)
@@ -28,7 +29,9 @@
     * [部署步骤详解 —— SaaS](manual-install-saas.md)
 * [单产品更新](update.md)
 * [7.0 - 7.1升级文档](v70-upgrade-to-v71.md)
-* [问题案例](troubles.md)
-* [FAQ](faq.md)
+* [问题案例及维护手册]()
+    * [问题案例概述](troubles.md)
+    * [产品使用问题](troubles-prod.md)
+* [常见问题](faq.md)
 * [附录]()
     * [访问入口及账户密码汇总](access.md)

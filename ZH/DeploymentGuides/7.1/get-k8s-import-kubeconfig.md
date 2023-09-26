@@ -12,6 +12,7 @@
 3. 在中控机安装 `kubectl` 命令。
    * 如果能访问到 `master` 上的文件，可将 `master` 上的 `/usr/bin/kubectl` 复制到 **中控机** 的 `/usr/bin/` 路径下。
    * 其他情况可参考本文下面的 “在中控机安装 kubectl” 章节操作。
+4. 如果有配置内网 registry，请在 **全部 k8s node** 上为 dockerd 配置 TLS 证书或者 `insecure-registries` 选项。
 
 # 下一步
 前往《[准备中控机](prepare-bkctrl.md)》文档。

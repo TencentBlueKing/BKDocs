@@ -1,13 +1,15 @@
 
 蓝鲸监控日志套餐由监控平台及日志平台组成。二者均借助 容器管理平台（BCS） 实现对容器环境的支持。
 
+早期的 “故障自愈” 独立 SaaS 也整合到了监控平台中。
+
 >**提示**
 >
->此前发布的 `7.1.0` 版本有提供监控 3.8 版本，但尚未成为稳定版。请先升级到 7.1.1 版本继续部署监控。
+>此前发布的 `7.1.0` 版本有提供监控 3.8 版本，但尚未成为稳定版。请先升级到 7.1.2 版本继续部署监控。
 
 # 检查依赖
 ## 蓝鲸版本
-监控升级了 values 文件，并依赖新版本 apigw 平台。请确保蓝鲸版本为 7.1.1。
+监控升级了 values 文件，并依赖新版本 apigw 平台。请确保蓝鲸版本为 7.1.2。
 
 在中控机执行如下命令确认蓝鲸版本：
 ``` bash
@@ -53,15 +55,28 @@ helmfile -f monitor-storage.yaml.gotmpl sync  # 部署监控依赖的存储
 ./scripts/config_monitor_bcs_token.sh  # 获取bcs token，写入监控和日志的 custom-values 文件。
 ```
 
-### 部署监控并添加桌面图标
+### 部署监控
+部署监控后台和 saas 以及监控数据链路组件：
 ``` bash
-helmfile -f 04-bkmonitor.yaml.gotmpl sync  # 部署监控后台和saas以及监控数据链路组件
-# 在admin桌面添加应用，也可以登录后自行添加。
-scripts/add_user_desktop_app.sh -u "admin" -a "bk_monitorv3"
-# 设为默认应用。
-scripts/set_desktop_default_app.sh -a "bk_monitorv3"
+helmfile -f 04-bkmonitor.yaml.gotmpl sync
 ```
+
 约等待 5 ~ 10 分钟，期间 `bk-monitor-consul` pod 可能 `Error` 且自动重启。
+
+### 添加桌面图标
+>**提示**
+>
+>目前 “故障自愈” 已经整合到了监控平台，如果需要访问，可以一并添加桌面图标。
+
+在 admin 桌面添加应用，也可以登录后自行添加。同时设置为默认应用，所有新登录的用户都会自动添加此应用到桌面。
+``` bash
+# 监控
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_monitorv3"
+scripts/set_desktop_default_app.sh -a "bk_monitorv3"
+# 故障自愈
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_fta_solution"
+scripts/set_desktop_default_app.sh -a "bk_fta_solution"
+```
 
 <a id="bkmonitor-install-operator" name="bkmonitor-install-operator"></a>
 

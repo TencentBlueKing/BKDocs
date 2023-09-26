@@ -14,7 +14,7 @@
 
 ```bash
 # 下载成功后，最新的 helmfile 和默认配置在 ~/bkce7.1-install/blueking 目录下，SaaS 包在 ~/bkce7.1-install/saas 目录下
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur 7.1.1 bkce demo
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur 7.1.2 bkce demo
 ```
 
 ## 数据备份
@@ -55,7 +55,7 @@ cp -a -r ~/bkhelmfile ~/bkhelmfile_$(date +%Y%m%d%H%M)
 3. 升级 yq 二进制版本，确保版本号为 v4.30.6
 
     ```bash
-    curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur 7.1.1 yq_cmd
+    curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh | bash -s -- -ur 7.1.2 yq_cmd
 
     cp -a /usr/local/bin/yq /usr/local/bin/yq.bak
     cp -f ~/bkce7.1-install/bin/yq /usr/local/bin/

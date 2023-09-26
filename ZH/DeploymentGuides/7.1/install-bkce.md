@@ -28,6 +28,15 @@ bkdl-7.1-stable.sh -ur latest base demo nm_gse_full saas scripts
 这些文件默认放在了 `~/bkce7.1-install/` 目录，接下来的部署过程中，默认工作目录为 `~/bkce7.1-install/blueking/`。
 
 # 快速部署蓝鲸基础套餐
+## 可选：配置 docker registry 地址
+如果你在内网提供了 registry，可以提前配置环境变量，指示部署脚本使用。
+
+在中控机执行：
+``` bash
+export REGISTRY=代理IP:端口
+```
+
+注意：请提前在 **全部 k8s node** 上为 dockerd 配置 TLS 证书或者 `insecure-registries` 选项。
 
 <a id="setup_bkce7-i-base" name="setup_bkce7-i-base"></a>
 

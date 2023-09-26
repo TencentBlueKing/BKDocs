@@ -1,6 +1,6 @@
 
-## 使用 bcs.sh 快速部署 k8s 集群
-### 部署初始 master
+# 使用 bcs.sh 快速部署 k8s 集群
+## 部署初始 master
 欢迎使用蓝鲸提供的 `bcs.sh` 脚本快速部署 k8s 集群。
 
 请在 **第一台 `master` 机器**（下文称为 **初始 master**，新手用户建议复用 **中控机**）上执行此命令：
@@ -13,8 +13,8 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 
 这表示你成功部署了一个 k8s 集群，此时你可以使用 `kubectl` 命令了。接下来开始添加节点吧。
 
-### 扩容节点
-
+## 扩容节点
+### 获取扩容命令
 在 **初始 master** 机器上执行如下命令可显示扩容命令：
 ``` bash
 curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -i k8sctrl
@@ -25,7 +25,7 @@ curl -fsSL https://bkopen-1252002024.file.myqcloud.com/ce7/bcs.sh | bash -s -- -
 
 ![](../7.0/assets/bcssh-k8sctrl-add-node-cmds.png)
 
-
+### 执行扩容
 >**提示**
 >
 >同一类型的机器扩容命令相同。
@@ -44,7 +44,12 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
   Welcome to BCS on qcloud
 ```
 
-### 复制 config 文件到中控机
+### 可选：扩容后调整 dockerd
+当你计划使用内网 docker registry 加速部署时，请根据你的 registry 情况配置 dockerd：
+* 如果使用 HTTP 协议，请配置 `insecure-registries` 选项。
+* 如果使用 HTTPS 协议，请在 `/etc/docker/certs.d/服务器地址:服务器端口/ca.crt` 路径放置证书。
+
+## 复制 config 文件到中控机
 如果你的 **中控机** 同时兼任 `master`，则可 **跳过本章节**。
 
 否则需要将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下，命令如下（请替换 `k8s-master`为具体的主机名或 IP）：
