@@ -21,6 +21,5 @@
 
 BK-CI 已开源，诚邀大家参与共建。
 
-* 关于 BK-CI 分支管理、issue 以及 pr 规范，请阅读 [Contributing](../../../..//DocumentationContributorGuide/7.0/collaborateguide.md)
-* [腾讯开源激励计划](https://opensource.tencent.com/contribution) 鼓励开发者的参与和贡献，期待你的加入
-* [DOCUMENT CONTRIBUTING](https://github.com/TencentBlueKing/BKDocs/blob/master/新文档中心格式要求/文档更新指引.md)
+* 关于 BK-CI 分支管理、issue 以及 pr 规范，请参阅： [Contributing](https://github.com/TencentBlueKing/bk-ci/blob/master/CONTRIBUTING.md)
+* 文档共建请参阅：[DOCUMENT CONTRIBUTING](https://github.com/TencentBlueKing/BKDocs/blob/master/新文档中心格式要求/文档更新指引.md)

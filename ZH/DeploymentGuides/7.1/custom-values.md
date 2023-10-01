@@ -135,8 +135,16 @@ helm repo update
 helm repo list
 ```
 
-## 修改各 node 的 docker registry
-TODO 如果启用了镜像缓存，需要配置。
+## 可选：配置 docker registry 地址
+如果你在内网提供了 registry，可以提前配置环境变量，指示部署脚本使用。
+
+在中控机执行：
+``` bash
+export REGISTRY=代理IP:端口
+```
+
+注意：请提前在 **全部 k8s node** 上为 dockerd 配置 TLS 证书或者 `insecure-registries` 选项。
+
 
 # 配置全局 custom-values
 
@@ -163,6 +171,7 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 # 可使用如下命令添加域名。如果文件已存在，请手动编辑。
 custom=environments/default/custom.yaml
 cat >> "$custom" <<EOF
+imageRegistry: ${REGISTRY:-hub.bktencent.com}
 domain:
   bkDomain: $BK_DOMAIN
   bkMainSiteDomain: $BK_DOMAIN
@@ -176,7 +185,7 @@ EOF
 
 请在所有 **k8s node** 上执行此命令，预期输出一致：
 ``` bash
-docker info  | awk -F": " '/Docker Root Dir/{print $2"/containers"}'
+docker info | awk -F": " '/Docker Root Dir/{print $2"/containers"}'
 ```
 当上述路径一致时，请编辑中控机的 `custom.yaml` 文件，添加如下配置项：
 ``` bash

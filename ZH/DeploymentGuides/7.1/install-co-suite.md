@@ -16,20 +16,21 @@
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 cat VERSION
 ```
+如果版本较旧，请直接重新执行一次部署基础套餐的命令。
 
 ## GSE 版本
 登录到 **中控机**，先检查 bk-gse 的版本：
 ``` bash
 helm list -A -l name=bk-gse
 ```
-查看 `CHART` 列里的版本号，预期大于等于 `2.1.2-beta.20`，如果版本较旧，可不卸载，直接重新执行一次部署基础套餐的命令。
+查看 `CHART` 列里的版本号，预期大于等于 `2.1.2-beta.20`，如果版本较旧，请升级蓝鲸。
 
 ## APIGateway 版本
 登录到 **中控机**，先检查 bk-apigateway 的版本：
 ``` bash
 helm list -A -l name=bk-apigateway
 ```
-查看 `CHART` 列里的版本号，预期大于等于 `1.11.3`，如果版本较旧，可不卸载，直接重新执行一次部署基础套餐的命令。
+查看 `CHART` 列里的版本号，预期大于等于 `1.11.3`，如果版本较旧，请升级蓝鲸。
 
 
 # 部署与访问
@@ -133,27 +134,7 @@ kubectl exec -it -n blueking bk-elastic-elasticsearch-master-0 -- curl -X PUT -u
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 yq e '.configs.bcsApiGatewayToken' environments/default/bklog-search-custom-values.yaml.gotmpl
 ```
-如果显示 `null`，请先部署监控并启用容器监控。
-
-### 推荐：启用蓝鲸各服务的日志上报
-我们预置了蓝鲸各服务的容器日志采集，如需启用，可以提前修改配置文件。
-
-请在 **中控机** 执行：
-``` bash
-cd ~/bkce7.1-install/blueking/  # 进入工作目录
-# 蓝鲸服务启用日志上报：
-case $(yq e '.bkLogConfig.enabled' environments/default/custom.yaml 2>/dev/null) in
-  null)
-    tee -a environments/default/custom.yaml <<< $'bkLogConfig:\n  enabled: true'
-  ;;
-  true)
-    echo "environments/default/custom.yaml 中配置了 .bkLogConfig.enabled=true, 无需修改."
-  ;;
-  *)
-    echo "environments/default/custom.yaml 中配置了 .bkLogConfig.enabled 为其他值, 请手动修改值为 true."
-  ;;
-esac
-```
+如果显示 `null`，请先 **部署监控平台** 并 **启用容器监控**。
 
 ### 部署日志采集器
 `bklog-collector` release 定义了 CR： `bklogconfigs.bk.tencent.com`，并提供了 daemonset 工作负载，在所有 k8s node （包括 master ）运行。日志上报经由这些主机的 gse-agent 传递，故请先在 “节点管理” 中完成 agent 安装并确保状态正常。
@@ -164,6 +145,10 @@ helmfile -f 04-bklog-collector.yaml.gotmpl sync
 如果启动失败，请在节点管理中检查 k8s 各 node 上的 GSE Agent 状态是否正常。
 
 ### 部署日志平台
+>**提示**
+>
+>请先确保 **监控平台** 正常运行，才能继续部署日志平台。
+
 请在 **中控机** 执行：
 ``` bash
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
@@ -174,37 +159,6 @@ scripts/add_user_desktop_app.sh -u "admin" -a "bk_log_search"
 scripts/set_desktop_default_app.sh -a "bk_log_search"
 ```
 
-### 推荐：变更其他蓝鲸服务以上报日志
-当你完成了 “启用蓝鲸各服务的日志上报” 章节后，此时日志平台已经通知监控平台预创建索引。
-
-先在 **中控机** 检查：
-``` bash
-kubectl get crd bklogconfigs.bk.tencent.com
-```
-预期看到一条记录。
-
-如果显示 `Error from server (NotFound): customresourcedefinitions.apiextensions.k8s.io "bklogconfigs.bk.tencent.com" not found`，请先确保日志采集器启动成功。
-
-目前蓝鲸所有平台默认读取全局日志上报设置，如需覆盖平台配置，请自行新增或修改对应的 custom-values 文件。
-
-为了实现采集项上报，需要重启一次采集项对应的 helm release。请在 **中控机** 执行：
-``` bash
-cd ~/bkce7.1-install/blueking/  # 进入工作目录
-# 然后变更其他平台
-helmfile -f base-blueking.yaml.gotmpl apply
-helmfile -f 03-bcs.yaml.gotmpl apply
-helmfile -f 04-bkmonitor.yaml.gotmpl apply
-```
-
-注：
-1. 如需重启蓝鲸基础套餐的指定 helm release，请使用此命令： `helmfile -f base-blueking.yaml.gotmpl -l name=release名字 sync`。
-2. bk-ci 的日志采集还在调试中，暂未预置采集项。
-
-重启完毕后，大概等 10 分钟，回到“日志平台”——“检索”。展开“索引集”下拉框，即可看到采集项右侧的“无数据”标签消失，可以搜索日志了。
-
-如果超过 20 分钟无数据，请步骤是否错漏，以及日志平台是否正常。TODO 排查指引
-
-
 ### 访问日志平台
 需要配置域名 `bklog.$BK_DOMAIN`，操作步骤已经并入 《部署步骤详解 —— 后台》 文档 的 “[配置用户侧的 DNS](manual-install-bkce.md#hosts-in-user-pc)” 章节。
 
@@ -212,9 +166,7 @@ helmfile -f 04-bkmonitor.yaml.gotmpl apply
 
 此时位于 “检索” 界面，如果左上角 “索引集” 下拉列表为空。可以：
 * 启用蓝鲸各平台预置的日志采集项
-  1. 完成前面推荐的 “部署容器日志采集器” 章节。
-  2. 完成前面推荐的 “蓝鲸各平台容器日志上报” 章节。
-  3. 完成前面推荐的 “变更其他蓝鲸服务以上报日志” 章节。
+  1. 完成下文的 “蓝鲸各平台容器日志上报” 章节。
 * 采集主机日志
   1. 在节点管理中，为待采集主机安装 `bkunifylogbeat` 插件。
   2. 在日志平台的 “管理” —— “日志采集” 界面添加采集项。
@@ -348,6 +300,8 @@ kubectl exec -i -n blueking deploy/bkpaas3-apiserver-web -- python manage.py she
 * 监控平台
   * 蓝鲸服务 SLI 看板
   * 【暂无】蓝鲸 SaaS 接入应用监控
+* 日志平台
+  * 蓝鲸各平台容器日志上报
 
 请阅读下方对应章节进行操作。
 
@@ -479,6 +433,78 @@ Error: unable to build kubernetes objects from release manifest: unable to recog
 
 如果提示 “无数据”，请耐心等待 10 分钟左右。如果超过 20 分钟没有数据，请检查步骤是否错漏，以及监控平台是否正常。TODO 排查指引
 -->
+
+## 蓝鲸各平台容器日志上报
+>**提示**
+>
+>如果上报蓝鲸的执行日志，会：
+>1. 大幅提高 `elasticsearch` 的磁盘及内存开销建议额外准备 300G 磁盘及 4GB 内存余量。同时磁盘 IO 压力大增，强烈建议使用 SSD 存储。
+>2. 会显著提升 监控平台 `transfer` 模块的 CPU 开销，请注意观察资源用量提升对应 pod 的 `resources.limits`。
+
+### 前置检查
+容器日志采集功能需要在所有 k8s node （包括 master ）部署 gse-agent。请先在 “节点管理” 中完成 agent 安装。
+
+完成 “部署容器日志采集器” 章节后，可在 **中控机** 检查：
+``` bash
+kubectl get crd bklogconfigs.bk.tencent.com
+```
+预期看到一条记录。
+
+如果显示 `Error from server (NotFound): customresourcedefinitions.apiextensions.k8s.io "bklogconfigs.bk.tencent.com" not found`，请先确保采集器启动成功。
+
+### 启用日志上报
+修改配置文件，全局启用日志上报功能。
+
+请在 **中控机** 执行：
+``` bash
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+# 启用日志采集：
+case $(yq e '.bkLogConfig.enabled' environments/default/custom.yaml) in
+  null)
+    tee -a environments/default/custom.yaml <<< $'bkLogConfig:\n  enabled: true'
+  ;;
+  true)
+    echo "environments/default/custom.yaml 中配置了 .bkLogConfig.enabled=true, 无需修改."
+  ;;
+  *)
+    echo "environments/default/custom.yaml 中配置了 .bkLogConfig.enabled 为其他值, 请手动修改值为 true."
+  ;;
+esac
+```
+
+### 重启日志平台
+有 2 个用途：
+1. 显示 “检索” -- “数据查询” 里的预置的蓝鲸各平台的日志采集索引。
+2. 上报数据至上述索引里的 `[采集项]bklogsearch`。
+
+``` bash
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+# 先变更日志平台
+helmfile -f 04-bklog-search.yaml.gotmpl apply
+```
+
+### 重启其他平台
+目前蓝鲸所有平台默认读取全局日志上报设置，如需覆盖，请自行新增或修改对应的 custom-values 文件。
+
+为了实现采集项上报，需要重启一次采集项对应的 helm release。
+
+请在 **中控机** 执行：
+``` bash
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+# 然后变更其他平台
+helmfile -f base-blueking.yaml.gotmpl apply
+helmfile -f 03-bcs.yaml.gotmpl apply
+helmfile -f 04-bkmonitor.yaml.gotmpl apply
+```
+
+注：
+1. 如需重启蓝鲸基础套餐的指定 helm release，请使用此命令： `helmfile -f base-blueking.yaml.gotmpl -l name=release名字 sync`。
+2. bk-ci 的日志采集还在调试中，暂未预置采集项。
+
+重启完毕后，大概等 10 分钟，回到“日志平台”——“检索”。展开“索引集”下拉框，即可看到采集项右侧的“无数据”标签消失，可以搜索日志了。
+
+如果超过 20 分钟无数据，请步骤是否错漏，以及日志平台是否正常。TODO 排查指引
+
 
 # 下一步
 回到《[部署基础套餐](install-bkce.md#next)》文档看看其他操作。

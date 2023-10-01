@@ -205,6 +205,7 @@ $IP1 bcs-api.$BK_DOMAIN  # 容器管理平台
 $IP1 bklog.$BK_DOMAIN  # 日志平台
 $IP1 bkmonitor.$BK_DOMAIN  # 监控平台
 $IP1 devops.$BK_DOMAIN  # 持续集成平台-蓝盾
+$IP1 codecc.$BK_DOMAIN  # 持续集成平台-代码检查
 $IP1 lesscode.$BK_DOMAIN  # 可视化开发平台
 $IP1 bk-apicheck.$BK_DOMAIN  # apicheck 测试工具
 EOF
