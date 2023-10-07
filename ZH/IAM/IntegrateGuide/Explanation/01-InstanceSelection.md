@@ -306,7 +306,7 @@ task._bk_iam_path_ starts_with /project,蓝鲸ProjectID/task,*/
 {
     "system": "bk_cmdb",
     "type": "host",
-    "id": "192.168.1.1",
+    "id": "10.0.0.1",
     "attribute": {
         "_bk_iam_path_": [
             "/cluster,c1/",  

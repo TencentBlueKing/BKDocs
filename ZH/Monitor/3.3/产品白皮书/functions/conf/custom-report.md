@@ -63,7 +63,7 @@
        "access_token": "2e5a9c5c05394df2a6d0c0347f1d7c77",
        "data": [{
            "event_name": "login_failed",
-           "target": "0:192.168.0.1",
+           "target": "0:10.0.0.1",
            "event": {
                "content": "user->[user00] login failed"
            },
@@ -94,7 +94,7 @@ PROXY_IP='X.X.X.X'  #直连区域可填此IP
 PROXY_URL='http://%s:10205/v2/push/'%(PROXY_IP)
  
 #data_id
-DATA_ID=00000000    #修改为自己的data_id
+DATA_ID=10.0.0.10    #修改为自己的data_id
 #access_token
 ACCESS_TOKEN="XXXXX" #修改为自己的access_token
  
@@ -107,7 +107,7 @@ result = requests.post(PROXY_URL, data=json.dumps({
                   "content": "user->[root] login failedt" #事件内容数据类型是字符串
          },
  
-    "target": "0:192.168.0.1", #修改为自己的设备IP
+    "target": "0:10.0.0.1", #修改为自己的设备IP
     "dimension": {
         "module": "db",         #维度必须为字符串
         "location": "guangdong" #维度必须为字符串
@@ -157,7 +157,7 @@ result = requests.post(PROXY_URL, data=json.dumps({
             "cpu_load": random.random(),  #指标值必须为数值类型
             "mem_usage":random.random()   #指标值必须为数值类型
         },
-        "target": "0:192.168.0.1", #修改为自己的设备IP
+        "target": "0:10.0.0.1", #修改为自己的设备IP
         "dimension": {
             "module": "db",          #维度必须为字符串
             "location": "guangdong"  #维度必须为字符串

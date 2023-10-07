@@ -18,7 +18,7 @@
 
 在**业务 -> 服务模板 -> 新建或选择模板**中**新建进程**
 
-![-w1300](../assets/20210408102939.png)
+![-w1300](../assets/20210.0.0.1939.png)
 
 - 进程名称：程序的二进制名称：**mysqld**；
 - 进程别名：对外显示的服务名：**MariaDB**；
@@ -39,7 +39,7 @@ mysql     7980  7800  0 7月08 ?       00:01:55 /usr/libexec/mysqld --basedir=/u
 
 ```bash
 $ netstat -antp | grep mysqld
-tcp        0      0 10.0.4.29:3306          0.0.0.0:*               LISTEN      7980/mysqld
+tcp        0      0 10.0.0.1:3306          10.0.0.1:*               LISTEN      7980/mysqld
 ```
 
 - IP：MariaDB 为存储层，一般绑定内网 IP，故选择**第一内网 IP**。
@@ -63,7 +63,7 @@ tcp        0      0 10.0.4.29:3306          0.0.0.0:*               LISTEN      
 
 给模块 [分配主机](../../../../CMDB/3.10/UserGuide/QuickStart/case1.md)
 
-![-w1541](../assets/20210408110332.png)
+![-w1541](../assets/20210.0.0.1332.png)
 
 等候一分钟，在蓝鲸自带的监控系统 [监控平台](../../../../Monitor/3.6/UserGuide/Overview/README.md) 中可以看到进程的运行情况
 
@@ -109,7 +109,7 @@ processbeat.processes:
   ports:
   - 3306
   paramregex: ""
-  bindip: 10.0.4.29
+  bindip: 10.0.0.1
 ```
 
 ### 二进制名称均为 java，该如何配置

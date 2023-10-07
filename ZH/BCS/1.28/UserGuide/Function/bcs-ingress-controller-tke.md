@@ -860,7 +860,7 @@ status:
     message: Ready
     poolItemLoadBalancers:
     - ips:
-      - 1.1.1.1
+      - 10.0.0.1
       loadbalancerID: lb-00001
       loadbalancerName: test-nj-loadtest-public1
       region: ap-nanjing
@@ -956,7 +956,7 @@ metadata:
        	        	"region":"ap-nanjing",
         	        "type":"OPEN",
                 	"ips":[
-                  		"1.1.1.1"
+                  		"10.0.0.1"
                 	]
             }
         	],
@@ -978,7 +978,7 @@ spec:
   containers:
   - env:
     - name: BCS_PORTPOOL_PORT_VIPLIST_TCP_80
-      value: 1.1.1.1:31000
+      value: 10.0.0.1:31000
     image: nginx:1.15
     imagePullPolicy: IfNotPresent
     name: nginx
@@ -1008,7 +1008,7 @@ kubectl exec -it nginx-d47f57c99-6wrzn -n test -- /bin/sh
 # cat /etc/podinfo/annotations
 kubernetes.io/config.seen="2021-07-27T10:15:00.995308727+08:00"
 kubernetes.io/config.source="api"
-poolbindings.portpool.networkextension.bkbcs.tencent.com="[{\"poolName\":\"test-pool1\",\"poolNamespace\":\"test\",\"loadBalancerIDs\":[\"lb-00001\"],\"poolItemLoadBalancers\":[{\"loadbalancerName\":\"test-nj-loadtest-public1\",\"loadbalancerID\":\"lb-00001\",\"region\":\"ap-nanjing\",\"type\":\"OPEN\",\"ips\":[\"1.1.1.1\"]}],\"poolItemName\":\"item1\",\"protocol\":\"TCP\",\"startPort\":31001,\"endPort\":0,\"rsStartPort\":80}]"
+poolbindings.portpool.networkextension.bkbcs.tencent.com="[{\"poolName\":\"test-pool1\",\"poolNamespace\":\"test\",\"loadBalancerIDs\":[\"lb-00001\"],\"poolItemLoadBalancers\":[{\"loadbalancerName\":\"test-nj-loadtest-public1\",\"loadbalancerID\":\"lb-00001\",\"region\":\"ap-nanjing\",\"type\":\"OPEN\",\"ips\":[\"10.0.0.1\"]}],\"poolItemName\":\"item1\",\"protocol\":\"TCP\",\"startPort\":31001,\"endPort\":0,\"rsStartPort\":80}]"
 portpools.networkextension.bkbcs.tencent.com="true"
 ports.portpools.networkextension.bkbcs.tencent.com="test-pool1 TCP 80"
 status.portpools.networkextension.bkbcs.tencent.com="Ready"
@@ -1170,7 +1170,7 @@ metadata:
        	        	"region":"ap-nanjing",
         	        "type":"OPEN",
                 	"ips":[
-                  		"1.1.1.1"
+                  		"10.0.0.1"
                 	]
             }
         	],
@@ -1227,7 +1227,7 @@ metadata:
        	        	"region":"ap-nanjing",
         	        "type":"OPEN",
                 	"ips":[
-                  		"1.1.1.1"
+                  		"10.0.0.1"
                 	]
             }
         	],
@@ -1250,7 +1250,7 @@ spec:
   containers:
   - env:
     - name: BCS_PORTPOOL_PORT_VIPLIST_TCP_80
-      value: 1.1.1.1:31000
+      value: 10.0.0.1:31000
     image: nginx:1.15
     imagePullPolicy: IfNotPresent
     name: nginx

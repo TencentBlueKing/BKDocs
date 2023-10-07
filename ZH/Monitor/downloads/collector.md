@@ -68,7 +68,7 @@ gsecmdline | 2.0.x | [gsecmdline-2.0.3.tgz](https://bkopen-1252002024.file.myqcl
 
 - `processbeat-1.18.69.tgz`
 
-  【修复】当监听 IPv6 的 0.0.0.0 时，不能正确匹配的问题
+  【修复】当监听 IPv6 的 10.0.0.1 时，不能正确匹配的问题
 
 
 - `processbeat-1.17.68.tgz`

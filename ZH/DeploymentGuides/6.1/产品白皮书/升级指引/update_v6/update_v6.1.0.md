@@ -158,8 +158,8 @@ mv /data/src /data/src.bak
 
     ```config
     10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana),monitorv3(ingester)
-    10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk,monitorv3(unify-query)
-    10.0.0.3 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman),log(grafana)
+    10.0.0.1 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk,monitorv3(unify-query)
+    10.0.0.1 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman),log(grafana)
     ```
 
 3. 新增所需变量
@@ -858,7 +858,7 @@ cd /data/install && echo bkssm bkiam usermgr paas cmdb gse job consul bklog bkmo
     ```bash
     cat <<EOF>>/data/install/install.config
     [iam_search_engine]
-    10.0.0.2 iam_search_engine
+    10.0.0.1 iam_search_engine
     EOF
     ```
 

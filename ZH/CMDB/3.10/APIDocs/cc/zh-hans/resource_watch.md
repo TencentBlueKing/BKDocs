@@ -196,7 +196,7 @@ POST
 	"operator" : "user",
 	"bk_cpu" : null,
 	"bk_mac" : "",
-	"bk_host_innerip" : "192.168.1.1",	
+	"bk_host_innerip" : "10.0.0.1",	
         "bk_supplier_account" : "0",
 	....
 }

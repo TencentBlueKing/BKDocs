@@ -33,22 +33,22 @@
     {
       "bk_cloud_id": 0,
       "bk_addressing": "0",
-      "inner_ip": "127.0.0.1",
+      "inner_ip": "10.0.0.1",
       "inner_ipv6": "",
       "outer_ip": "",
       "outer_ipv6": "",
-      "login_ip": "127.0.0.2",
+      "login_ip": "10.0.0.1",
       "data_ip": "",
       "bk_biz_id": 1
     },
     {
       "bk_cloud_id": 0,
       "bk_addressing": "0",
-      "inner_ip": "127.0.0.3",
+      "inner_ip": "10.0.0.1",
       "inner_ipv6": "",
       "outer_ip": "",
       "outer_ipv6": "",
-      "login_ip": "127.0.0.4",
+      "login_ip": "10.0.0.1",
       "data_ip": "",
       "bk_biz_id": 1
     }

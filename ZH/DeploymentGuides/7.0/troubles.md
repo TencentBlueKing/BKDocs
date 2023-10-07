@@ -219,11 +219,11 @@ kubectl get svc -A |grep bk-elastic
 ``` bash
 kubectl get svc -A |grep dns
 ```
-仅有 kube-dns，地址为 `10.96.0.10`。
+仅有 kube-dns，地址为 `10.0.0.1`。
 
-然后在 master 及 各 node 测试能否访问 `10.96.0.10` 解析：
+然后在 master 及 各 node 测试能否访问 `10.0.0.1` 解析：
 ``` bash
-nslookup bk-elastic-elasticsearch-master.blueking.svc.cluster.local 10.96.0.10
+nslookup bk-elastic-elasticsearch-master.blueking.svc.cluster.local 10.0.0.1
 ```
 测试发现 master 能正常解析，全部 node 解析超时。
 
@@ -553,7 +553,7 @@ Events:
   ----     ------     ----                   ----               -------
   Normal   Scheduled  3m56s                  default-scheduler  Successfully assigned bkapp-bk0us0itsm-prod/pre-release-hook to node-10-0-1-3
   Normal   Pulling    2m24s (x4 over 3m56s)  kubelet            Pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2"
-  Warning  Failed     2m24s (x4 over 3m55s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: dial tcp: lookup docker.bkce7.bktencent.com on 10.0.1.1:53: no such host
+  Warning  Failed     2m24s (x4 over 3m55s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: dial tcp: lookup docker.bkce7.bktencent.com on 10.0.0.1:53: no such host
   Warning  Failed     2m24s (x4 over 3m55s)  kubelet            Error: ErrImagePull
   Normal   BackOff    2m10s (x6 over 3m55s)  kubelet            Back-off pulling image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2"
   Warning  Failed     119s (x7 over 3m55s)   kubelet            Error: ImagePullBackOff
@@ -788,9 +788,9 @@ consul 时间略 INFO ==> ** Starting Consul **
 **结论**
 
 用户分配给 kubelet 的网段不正确，误用了公网网段。私有网段范围如下：
-* A 类： `10.0.0.0/8`，地址范围为 10.0.0.0 - 10.255.255.255。
-* B 类： `172.16.0.0/12`，地址范围为 172.16.0.0 - 172.31.255.255。
-* C 类： `192.168.0.0/16`，地址范围为 192.168.0.0 - 192.168.255.255。
+* A 类： `110.0.0.1/8`，地址范围为 110.0.0.1 - 10.255.255.255。
+* B 类： `10.0.0.1/12`，地址范围为 10.0.0.1 - 172.31.255.255。
+* C 类： `10.0.0.1/16`，地址范围为 10.0.0.1 - 192.168.255.255。
 
 正确配置后重启所有的 kubelet 进程，并重新部署旧的 pod，问题解决。
 
@@ -910,7 +910,7 @@ kubectl logs -n blueking deploy/bk-login-web
 发现对应资源确实是 bk-login-web 响应的 404，且上一行伴有异常：
 ``` plain
 [Errno 2] No such file or directory: '/app/staticfiles//js/login.js'
-::ffff:10.244.0.1 - - [时间略] "GET /static/js/login.js HTTP/1.1" 404 13 "http://bkce7.bktencent.com/login/?c_url=/" "UA略" in 0.000382 seconds
+::ffff:10.0.0.1 - - [时间略] "GET /static/js/login.js HTTP/1.1" 404 13 "http://bkce7.bktencent.com/login/?c_url=/" "UA略" in 0.000382 seconds
 ```
 
 比对正常环境日志，发现启动时少了一行输出：

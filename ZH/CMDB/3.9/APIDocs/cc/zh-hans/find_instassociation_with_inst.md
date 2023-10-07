@@ -168,13 +168,13 @@ POST
         ],
         "dst": [
             {
-                "bk_host_innerip": "10.11.11.1"
+                "bk_host_innerip": "10.0.0.1"
             },
             {
-                "bk_host_innerip": "10.11.11.2"
+                "bk_host_innerip": "10.0.0.1"
             },
             {
-                "bk_host_innerip": "10.11.11.3"
+                "bk_host_innerip": "10.0.0.1"
             }
         ]
     }

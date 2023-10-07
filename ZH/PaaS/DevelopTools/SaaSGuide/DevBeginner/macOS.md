@@ -124,7 +124,7 @@ python manage.py migrate
 
 - 先修改本地 hosts
 
-```127.0.0.1 appdev.{PAAS_URL}```
+```10.0.0.1 appdev.{PAAS_URL}```
 
 - 启动项目
 

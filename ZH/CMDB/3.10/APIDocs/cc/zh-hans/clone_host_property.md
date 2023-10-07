@@ -50,8 +50,8 @@ POST
     "bk_username": "xxx",
     "bk_token": "xxx",
     "bk_biz_id":2,
-    "bk_org_ip":"127.0.0.1",
-    "bk_dst_ip":"127.0.0.2",
+    "bk_org_ip":"10.0.0.1",
+    "bk_dst_ip":"10.0.0.1",
     "bk_cloud_id":0
 }
 ```

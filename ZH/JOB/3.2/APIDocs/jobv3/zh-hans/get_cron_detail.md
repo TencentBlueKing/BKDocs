@@ -80,7 +80,7 @@ GET
                         },
                         {
                             "bk_cloud_id": 0,
-                            "ip": "10.0.0.2"
+                            "ip": "10.0.0.1"
                         }
                     ],
                     "topo_node_list": [

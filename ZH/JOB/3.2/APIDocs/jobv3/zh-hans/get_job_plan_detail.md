@@ -91,7 +91,7 @@ GET
                         },
                         {
                             "bk_cloud_id": 0,
-                            "ip": "10.0.0.2"
+                            "ip": "10.0.0.1"
                         }
                     ],
                     "topo_node_list": [
@@ -177,11 +177,11 @@ GET
                             "ip_list": [
                                 {
                                     "bk_cloud_id": 0,
-                                    "ip": "10.0.0.3"
+                                    "ip": "10.0.0.1"
                                 },
                                 {
                                     "bk_cloud_id": 0,
-                                    "ip": "10.0.0.4"
+                                    "ip": "10.0.0.1"
                                 }
                             ],
                             "topo_node_list": [

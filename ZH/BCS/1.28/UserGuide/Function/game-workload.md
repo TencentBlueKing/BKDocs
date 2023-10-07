@@ -741,7 +741,7 @@ spec:
     provider:
       web:
         jsonPath: '{$.age}'
-        url: http://1.1.1.1:9091
+        url: http://10.0.0.1:9091
     successCondition: asInt(result) < 30
   terminate: true
 status:

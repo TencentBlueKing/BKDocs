@@ -141,8 +141,8 @@ mv /data/src /data/src.bak
     本次升级，新增了监控的 monitorv3(unify-query)，monitorv3(ingester) 模块，请合理评估机器资源后，将其分布在 install.config 文件中。可参考下述默认的模块分布。
     ```config
     10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana),monitorv3(ingester)
-    10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk,monitorv3(unify-query)
-    10.0.0.3 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman),log(grafana)
+    10.0.0.1 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk,monitorv3(unify-query)
+    10.0.0.1 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman),log(grafana)
     ```
 3. 新增所需变量
     ```bash
@@ -356,7 +356,7 @@ cd /data/install; echo bkssm bkiam usermgr paas cmdb gse job consul bklog bkmoni
 ## 添加 bkiam_search_engine 模块分布，请注意替换示例 IP 为实际部署的机器 IP
 cat << EOF >>/data/install/install.config
 [iam_search_engine]
-10.0.0.3 iam_search_engine
+10.0.0.1 iam_search_engine
 EOF
 
 ## 获取权限中心的 app_token，并将获取到的 app_token 做为 bkiam_search_engine 的 secret
@@ -375,7 +375,7 @@ echo BK_IAM_SAAS_APP_SECRET=$(mysql --login-path=mysql-default -e "use open_paas
 ## 增加 es7 模块
 ## 请注意替换示例 IP 为实际部署的机器 IP，如 es7 模块已存在则不需要再次部署
 cat  << EOF >>/data/install/install.config
-10.0.0.3 es7
+10.0.0.1 es7
 EOF
 
 ## 开始部署

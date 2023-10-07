@@ -115,7 +115,7 @@
 通过访问 `Node+NodePort`，可以查看刚刚部署 Nginx 集群的版本号。
 
 ```bash
-[root@ip-10-0-5-94-n-bcs-k8s-40015 ~]# curl 10.0.5.94:30008 -I
+[root@ip-10.0.0.1-n-bcs-k8s-40015 ~]# curl 10.0.0.1:30008 -I
 HTTP/1.1 200 OK
 Server: nginx/1.12.2
 Date: Thu, 08 Aug 2019 09:11:42 GMT
@@ -124,7 +124,7 @@ Date: Thu, 08 Aug 2019 09:11:42 GMT
 通过访问`Service IP + Port`，也可以查看刚部署 Nginx 的版本号。
 
 ```bash
-[root@ip-10-0-5-94-n-bcs-k8s-40015 ~]# curl 10.254.11.4:8088 -I
+[root@ip-10.0.0.1-n-bcs-k8s-40015 ~]# curl 10.0.0.1:8088 -I
 HTTP/1.1 200 OK
 Server: nginx/1.12.2
 Date: Thu, 08 Aug 2019 09:12:33 GMT

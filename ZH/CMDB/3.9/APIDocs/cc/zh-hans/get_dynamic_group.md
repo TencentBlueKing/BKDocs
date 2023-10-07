@@ -89,7 +89,7 @@ POST
     					{
     						"field":"bk_host_innerip",
     						"operator":"$eq",
-    						"value":"127.0.0.1"
+    						"value":"10.0.0.1"
     					}
     				]
     			}

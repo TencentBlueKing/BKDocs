@@ -71,7 +71,7 @@ crontab -e
 # 修改 mongod.conf 的配置项
 
 source /data/install/utils.fc
-sed -i "/bindIp/s/127.0.0.1/127.0.0.1, $LAN_IP/" /etc/mongod.conf
+sed -i "/bindIp/s/10.0.0.1/10.0.0.1, $LAN_IP/" /etc/mongod.conf
 sed -i "/  dbPath/s,/var/lib/mongo,${INSTALL_PATH}/public/mongodb," /etc/mongod.conf
 sed -i "/  path:/s,/var/log/mongodb,${INSTALL_PATH}/logs/mongodb," /etc/mongod.conf
 

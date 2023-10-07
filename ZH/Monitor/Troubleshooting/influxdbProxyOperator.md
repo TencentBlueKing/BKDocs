@@ -147,23 +147,23 @@ curl $INFLUXDB_PROXY_HOST:8080/print
 # output:
 # 主机信息
 influxdb_backend[INFLUXDB_IP0:10.0.0.1:80]
-influxdb_backend[INFLUXDB_IP1:10.0.0.2:80]
+influxdb_backend[INFLUXDB_IP1:10.0.0.1:80]
 # 集群信息及维度路由信息
-influxdb_cluster:[cluster1],backend_list:[influxdb_backend[INFLUXDB_IP0:10.0.0.1:80] influxdb_backend[INFLUXDB_IP1:10.0.0.2:80]],unreadable_host:map[],tags:
+influxdb_cluster:[cluster1],backend_list:[influxdb_backend[INFLUXDB_IP0:10.0.0.1:80] influxdb_backend[INFLUXDB_IP1:10.0.0.1:80]],unreadable_host:map[],tags:
 read tags:
     __default__/__default__/__default__==__default__
             influxdb_backend[INFLUXDB_IP0:10.0.0.1:80]
-            influxdb_backend[INFLUXDB_IP1:10.0.0.2:80]
+            influxdb_backend[INFLUXDB_IP1:10.0.0.1:80]
     system/cpu_detail/bk_biz_id==3
             influxdb_backend[INFLUXDB_IP0:10.0.0.1:80]
-            influxdb_backend[INFLUXDB_IP1:10.0.0.2:80]
+            influxdb_backend[INFLUXDB_IP1:10.0.0.1:80]
 write tags:
     __default__/__default__/__default__==__default__
             influxdb_backend[INFLUXDB_IP0:10.0.0.1:80]
-            influxdb_backend[INFLUXDB_IP1:10.0.0.2:80]
+            influxdb_backend[INFLUXDB_IP1:10.0.0.1:80]
     system/cpu_detail/bk_biz_id==3
             influxdb_backend[INFLUXDB_IP0:10.0.0.1:80]
-            influxdb_backend[INFLUXDB_IP1:10.0.0.2:80]
+            influxdb_backend[INFLUXDB_IP1:10.0.0.1:80]
 # 结果表的路由信息
 route:system.cpu_summary,cluster:cluster_cpu_summary
 ```
@@ -178,8 +178,8 @@ route:system.cpu_summary,cluster:cluster_cpu_summary
 
 ## 案例说明
 1. 主机故障替换
-    环境中，原有两台influxdb，分别为`INFLUXDB_IP1(10.0.0.1)`与`INFLUXDB_IP2(10.0.0.2)`。此时收到通知，`10.0.0.1`机器发生磁盘故障，需要下架替换为`10.0.0.3`。以下是操作说明：
-    - 更新host_info信息，将`INFLUXDB_IP1`的domain_name，由`10.0.0.1`更新为`10.0.0.3`。host_info.yaml样例配置如下:
+    环境中，原有两台influxdb，分别为`INFLUXDB_IP1(10.0.0.1)`与`INFLUXDB_IP2(10.0.0.1)`。此时收到通知，`10.0.0.1`机器发生磁盘故障，需要下架替换为`10.0.0.1`。以下是操作说明：
+    - 更新host_info信息，将`INFLUXDB_IP1`的domain_name，由`10.0.0.1`更新为`10.0.0.1`。host_info.yaml样例配置如下:
     ```yaml
     # 更新前
     host_info:
@@ -194,7 +194,7 @@ route:system.cpu_summary,cluster:cluster_cpu_summary
     host_info:
     ....
       - description: INFLUXDB_IP1
-        domain_name: 10.0.0.3
+        domain_name: 10.0.0.1
         host_name: INFLUXDB_IP1
         password: password
         port: 8080
@@ -235,7 +235,7 @@ route:system.cpu_summary,cluster:cluster_cpu_summary
     > **注意**：新机器在积累半小时数据后，就可以考虑改为可读模式，通常不会对监控后台判断造成太大影响
 
 1. 数据迁移替换
-    环境中，原有一台influxdb承载结果表`system.cpu_summary`，机器实例为`INFLUXDB_IP1(10.0.0.1)`。此时发现，`10.0.0.1`机器承载达到上限，需要替换配置更优的`10.0.0.2`。以下是操作说明：
+    环境中，原有一台influxdb承载结果表`system.cpu_summary`，机器实例为`INFLUXDB_IP1(10.0.0.1)`。此时发现，`10.0.0.1`机器承载达到上限，需要替换配置更优的`10.0.0.1`。以下是操作说明：
     - 增加host_info信息。host_info.yaml样例配置如下:
     ```yaml
     # 更新前
@@ -257,7 +257,7 @@ route:system.cpu_summary,cluster:cluster_cpu_summary
         port: 8080
         username: user
       - description: INFLUXDB_IP1_NEW
-        domain_name: 10.0.0.2
+        domain_name: 10.0.0.1
         host_name: INFLUXDB_IP1_NEW
         password: password
         port: 8080

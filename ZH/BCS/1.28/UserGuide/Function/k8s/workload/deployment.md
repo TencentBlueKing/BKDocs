@@ -187,7 +187,7 @@ spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       hostAliases:
-      - ip: 127.0.0.1
+      - ip: 10.0.0.1
         hostnames:
         - "game2-got.o.qcloud.com"
       containers:
@@ -244,7 +244,7 @@ spec:
 `DNS policies`:  一般情况下，Pod 访问集群内 dns 是不需要额外配置的，`dnsPolicy`的默认值为`ClusterFirst`，但由于 Pod 绑定了主机网络`hostNetwork: true`,因此如果需要访问集群内网络，必须设置成`ClusterFirstWithHostNet`。
 
 `hostAliases`:  通过`hostAliases`向 hosts 文件添加额外的条目, 即本例中的
-```127.0.0.1   game2-got.o.qcloud.com```
+```10.0.0.1   game2-got.o.qcloud.com```
 
 ## 4. BCS 模板集操作
 

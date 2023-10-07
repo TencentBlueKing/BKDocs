@@ -156,7 +156,7 @@ getent hosts dispatch-devops.service.consul  # 会输出DNS解析结果, 格式�
 java 微服务提供了 health 接口，可以输出服务状态。
 ```bash
 API_PORT=  # 填写对应微服务的API PORT。可以查看 /data/bkce/ci/微服务/start.env 文件获取。
-curl -m 1 -sf "http://127.0.0.1:$API_PORT/management/health"
+curl -m 1 -sf "http://10.0.0.1:$API_PORT/management/health"
 ```
 
 ## 检查日志

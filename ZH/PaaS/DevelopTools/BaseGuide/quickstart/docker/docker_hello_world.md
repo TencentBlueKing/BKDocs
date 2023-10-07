@@ -53,7 +53,7 @@ RUN pip install "django<4,>=3.2" uvicorn
 COPY ./app.py /app/app.py
 
 ENTRYPOINT ["env"]
-CMD ["bash", "-c", "python -m uvicorn app:application --host 0.0.0.0 --port ${PORT:-5000}"]
+CMD ["bash", "-c", "python -m uvicorn app:application --host 10.0.0.1 --port ${PORT:-5000}"]
 ```
 
 ### 3. 构建镜像
@@ -77,4 +77,4 @@ bk-helloworld   latest    31893e2d2755   2 seconds ago   240MB
 docker run --rm -p 8888:5000 bk-helloworld 
 ```
 
-容器启动成功后, 接着在浏览器访问 http://127.0.0.1:8888 就可以验证服务是否可用啦
+容器启动成功后, 接着在浏览器访问 http://10.0.0.1:8888 就可以验证服务是否可用啦

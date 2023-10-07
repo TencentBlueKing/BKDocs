@@ -51,7 +51,7 @@
 ```
 ci初始化
 reg ci-auth callback.
-[1] 19:29:00 [SUCCESS] 172.16.1.49
+[1] 19:29:00 [SUCCESS] 10.0.0.1
 {
   "timestamp" : 1626291190535,
   "status" : 500,

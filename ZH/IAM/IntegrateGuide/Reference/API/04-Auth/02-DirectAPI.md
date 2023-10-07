@@ -70,7 +70,7 @@ resource_node
 	}, {
 		"system": "bk_cmdb",
 		"type": "host",
-		"id": "192.168.1.1",
+		"id": "10.0.0.1",
 		"attribute": {} // 外部资源的属性由iam负责查询属性, 接入方不需要传入
 	}]
 }
@@ -162,7 +162,7 @@ resource_node
 		}, {
 			"system": "bk_cmdb",
 			"type": "host",
-			"id": "192.168.1.1",
+			"id": "10.0.0.1",
 			"attribute": {}
 		}],
 		[{    // 第二个资源
@@ -178,7 +178,7 @@ resource_node
 		}, {
 			"system": "bk_cmdb",
 			"type": "host2",
-			"id": "192.168.2.2",
+			"id": "10.0.0.1",
 			"attribute": {}
 		}]
 	]
@@ -196,8 +196,8 @@ Response 字段说明, 表格
     "code": 0,
     "message": "ok",
     "data": {
-        "bk_job,job,ping/bk_cmdb,host,192.168.1.1": false,
-        "bk_job,job,ping2/bk_cmdb,host2,192.168.2.2": false
+        "bk_job,job,ping/bk_cmdb,host,10.0.0.1": false,
+        "bk_job,job,ping2/bk_cmdb,host2,10.0.0.1": false
     }
 }
 ```
@@ -267,7 +267,7 @@ resource_node
 	}, {
 		"system": "bk_cmdb",
 		"type": "host",
-		"id": "192.168.1.1",
+		"id": "10.0.0.1",
 		"attribute": {}  // 外部资源的属性由iam负责查询属性, 接入方不需要传入
 	}]
 }

@@ -36,7 +36,7 @@ wget https://nodejs.org/download/release/v14.17.0/node-v14.17.0-linux-x64.tar.gz
 # 请以实际分布的 IP 为准
 {
 echo ""
-echo "10.0.0.6 lesscode" 
+echo "10.0.0.1 lesscode" 
 } >> /data/install/install.config
 ```
 
@@ -91,7 +91,7 @@ pcmd -m lesscode "bash /data/install/bin/init_new_node.sh"
 
 ```bash
 # 映射的 IP 为 nginx 所在机器的外网 IP
-10.0.0.2 lesscode.bktencent.com
+10.0.0.1 lesscode.bktencent.com
 ```
 
 完成 hosts 配置后，访问蓝鲸 PaaS 工作台即可看到【可视化开发平台】。

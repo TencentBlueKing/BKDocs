@@ -27,7 +27,7 @@
 
 ### 1.3 下载安装包
 
-- 下载链接：请前往官网下载 [bkce-src-6.2.0.tgz](https://bk.tencent.com/s-mart/downloads?type=versionList&version=binary) 软件包
+- 下载链接：请前往官网下载 [bkce-src-6.2.1.tgz](https://bk.tencent.com/s-mart/downloads?type=versionList&version=binary) 软件包
 
 ### 1.4 解压相关资源包
 
@@ -35,7 +35,7 @@
 
    ```bash
    cd /data
-   tar xf bkce-src-6.2.0.tgz
+   tar xf bkce-src-6.2.1.tgz
    ```
 
 2. 解压各个产品软件包
@@ -72,8 +72,8 @@
 cat << EOF >/data/install/install.config
 [basic]
 10.0.0.1 iam,ssm,usermgr,gse,redis,consul,es7,apigw
-10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,paas,iam_search_engine,redis_cluster
-10.0.0.3 cmdb,job,mysql,zk(config),appt,consul,nodeman(nodeman),auth,etcd
+10.0.0.2 consul,mongodb,rabbitmq,appo,iam_search_engine,redis_cluster
+10.0.0.3 paas,cmdb,job,mysql,nginx,zk(config),appt,consul,nodeman(nodeman),auth,etcd
 EOF
 ```
 
@@ -214,11 +214,49 @@ source ~/.bashrc
 ./bkcli initdata topo
 ```
 
+### 部署 API 自动化测试工具 (可选)
+
+1. 同步安装目录文件到指定机器
+
+   ```bash
+   ./bkcli sync bkapi
+   ```
+
+2. 部署 API 自动化测试工具
+
+   ```bash
+   ./bkcli install bkapi
+   ```
+
+3. 运行 API 自动化测试工具
+
+   ```bash
+   # 默认检查所有模块的 API
+   ./bkcli check bkapi
+   ```
+
+4. 如何检查单模块 API
+
+    目前支持的模块 bk_cmdb, bk_job, bk_gse, bk_itsm, bk_monitorv3, bk_paas, bk_sops, bk_user_manage
+
+    ```bash
+    # 以 JOB 为例
+    # 执行完成后，如果需要查看单模块的 API 报告，可以在主域名后面加上模块名称，如 bkapi_check.bktencent.com/bk_job
+    ./bkcli check bkapi bk_job
+    ```
+
 ## 三、访问蓝鲸
 
 ### 3.1 配置本地 hosts
 
 > 下面介绍的操作均可能覆盖现有 hosts ，进行操作前请先确认是否需要备份。
+
+查询模块所分布在机器的方式：
+
+```bash
+# 如果 nginx/nodeman 不在同一机器上，请将 nodeman 的域名单独解析至对应的机器上
+grep -E "nginx|nodeman" /data/install/install.config
+```
 
 1. Windows 配置
 
@@ -228,28 +266,20 @@ source ~/.bashrc
 
    将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 
-   ```bash
-   10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com bkapi_check.bktencent.com apigw.bktencent.com bkapi.bktencent.com
-   10.0.0.3 nodeman.bktencent.com
-   ```
-
-   **注意：** 10.0.0.2 为 nginx 模块所在的机器，10.0.0.3 为 nodeman 模块所在的机器。文档描述的均为主机对应的内网 IP，故内网 IP 需更换为本机浏览器可以访问的 公网 IP 进行 Host 绑定。
-
-   查询模块所分布在机器的方式：
+   **注意：** 文档描述的均为主机对应的内网 IP，故需将内网 IP 更换为本机浏览器可以访问的公网 IP 进行 Host 绑定。
 
    ```bash
-   grep -E "nginx|nodeman" /data/install/install.config
+   10.0.0.3 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com bkapi_check.bktencent.com apigw.bktencent.com bkapi.bktencent.com nodeman.bktencent.com
    ```
 
    > 注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -> “安全”，然后选择你登录的用户名，最后点击编辑，勾选“写入”即可。
 
 2. Linux / Mac OS 配置
 
-   将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
+   将以下内容复制到 `/etc/hosts` 中，并将以下 IP 更换为本机浏览器可以访问的公网 IP 进行 Host 绑定，然后保存。
 
    ```bash
-   10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com bkapi_check.bktencent.com apigw.bktencent.com bkapi.bktencent.com
-   10.0.0.3 nodeman.bktencent.com
+   10.0.0.3 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com bkapi_check.bktencent.com apigw.bktencent.com bkapi.bktencent.com nodeman.bktencent.com
    ```
 
 ### 3.2 获取管理员账户名密码

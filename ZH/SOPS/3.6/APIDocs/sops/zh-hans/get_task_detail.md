@@ -61,7 +61,7 @@ GET
                 "name": "脚本类型"
             },
             {
-                "value": "127.0.0.1",
+                "value": "10.0.0.1",
                 "key": "${IP}",
                 "name": "IP"
             },
@@ -84,7 +84,7 @@ GET
                 "index": 2,
                 "custom_type": "ip",
                 "value": {
-                    "var_ip_custom_value": "127.0.0.1",
+                    "var_ip_custom_value": "10.0.0.1",
                     "var_ip_method": "custom",
                     "var_ip_tree": []
                 },

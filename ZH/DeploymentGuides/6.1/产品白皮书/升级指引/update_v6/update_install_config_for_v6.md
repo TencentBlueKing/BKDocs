@@ -12,16 +12,16 @@
 ```bash
 [bkce-basic]
 10.0.0.1 nginx,rabbitmq,kafka(config),zk(config),es,appt,fta,consul,bkdata(databus)
-10.0.0.2 mongodb,appo,kafka(config),zk(config),es,mysql,consul,bkdata(dataapi),beanstalk
-10.0.0.3 paas,cmdb,job,gse,license,kafka(config),zk(config),es,redis,influxdb,consul,bkdata(monitor)
+10.0.0.1 mongodb,appo,kafka(config),zk(config),es,mysql,consul,bkdata(dataapi),beanstalk
+10.0.0.1 paas,cmdb,job,gse,license,kafka(config),zk(config),es,redis,influxdb,consul,bkdata(monitor)
 ```
 
 **现 6.0 install.config 模板文件**
 
 ```bash
 10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana)
-10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk
-10.0.0.3 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman),log(grafana)
+10.0.0.1 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk
+10.0.0.1 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman),log(grafana)
 ```
 
 ### 详细操作
@@ -57,8 +57,8 @@
 ```bash
 [bkce-basic]
 10.0.0.1 nginx,rabbitmq,zk(config),appt,consul
-10.0.0.2 mongodb,appo,mysql,consul
-10.0.0.3 paas,cmdb,job,gse,license,redis,consul
+10.0.0.1 mongodb,appo,mysql,consul
+10.0.0.1 paas,cmdb,job,gse,license,redis,consul
 ```
 
 2. 将 `iam`、`ssm`、`usermgr`、`nodeman(nodeman)`模块合理的分布在原机器环境上。
@@ -72,11 +72,11 @@
 ```bash
 [bkce-basic]
 10.0.0.1 nginx,rabbitmq,zk(config),appt,consul
-10.0.0.2 mongodb,appo,mysql,consul
-10.0.0.3 paas,cmdb,job,gse,license,redis,consul
+10.0.0.1 mongodb,appo,mysql,consul
+10.0.0.1 paas,cmdb,job,gse,license,redis,consul
 
-10.0.0.4 consul,kafka(config),influxdb(bkmonitorv3),es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana),monitorv3(transfer)
-10.0.0.5 consul,log(api),log(grafana),fta,beanstalk
+10.0.0.1 consul,kafka(config),influxdb(bkmonitorv3),es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana),monitorv3(transfer)
+10.0.0.1 consul,log(api),log(grafana),fta,beanstalk
 ```
 
 模块分配完成后，请返回升级指引继续后续升级操作。

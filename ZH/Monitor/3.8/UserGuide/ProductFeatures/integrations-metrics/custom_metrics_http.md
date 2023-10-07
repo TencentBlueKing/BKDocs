@@ -36,7 +36,7 @@
             "cpu_load": 10
         },
             # 来源标识如IP，必需项
-            "target": "127.0.0.1",
+            "target": "10.0.0.1",
             # 自定义维度，非必需项
             "dimension": {
                 "module": "db",
@@ -82,7 +82,7 @@ result = requests.post(PROXY_URL, data=json.dumps({
             "cpu_load": random.random(),  #指标值必须为数值类型
             "mem_usage":random.random()   #指标值必须为数值类型
         },
-        "target": "0:192.168.0.1", #修改为自己的设备IP
+        "target": "0:10.0.0.1", #修改为自己的设备IP
         "dimension": {
             "module": "db",          #维度必须为字符串
             "location": "guangdong"  #维度必须为字符串

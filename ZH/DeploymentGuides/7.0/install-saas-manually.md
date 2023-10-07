@@ -322,7 +322,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
       # kubectl get -n blueking cm bk-gse-ce-task-config -o go-template --template '{{index .data "task.conf" }}' | jq -r ".zkauth"
       ```
    * 集群地址填写 **任意 k8s node IP**，端口填写 `bk-zookeeper` 服务的 NodePort： `32181` （注意不是默认的 `2181`）。
-4. GSE 服务端系列配置：部署后会填写当前的 IP，可暂不修改。<br />今后如需更新某个字段（`BtfileServer`、`DataServer` 或 `TaskServer` ），请将该字段的**内网 IP**改为 `127.0.0.1`，以指示节点管理自动修改。自动修改仅进行一次，会使用 zookeeper 中的服务发现地址填充**内网 IP**及**外网 IP**。
+4. GSE 服务端系列配置：部署后会填写当前的 IP，可暂不修改。<br />今后如需更新某个字段（`BtfileServer`、`DataServer` 或 `TaskServer` ），请将该字段的**内网 IP**改为 `10.0.0.1`，以指示节点管理自动修改。自动修改仅进行一次，会使用 zookeeper 中的服务发现地址填充**内网 IP**及**外网 IP**。
 5. 节点管理回调地址：用于安装日志上报等。需配置为节点管理 `bk-nodeman-backend-api` 服务的 NodePort 地址：`IP:30300`。
    * **外网回调地址**：和内网回调地址保持一致。
    * **内网回调地址**：填写 `http://任意Node的IP:30300/backend` （注意结尾没有斜杠）。
@@ -340,7 +340,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 ![](assets/bk_nodeman-conf-gse-env.png)
 
 
-如果在步骤 4 中将 **内网 IP** 改为 `127.0.0.1`，则回到查看界面后，请 **等待 1 ~ 2 分钟**，然后刷新页面。如果 `BtfileServer`、`DataServer` 或 `TaskServer` 字段的地址有从 `127.0.0.1` 变更为 node 的内网 IP ，则说明读取 zookeeper 成功，否则需检查 zookeeper 的 IP、 端口以及用户名密码是否正确。
+如果在步骤 4 中将 **内网 IP** 改为 `10.0.0.1`，则回到查看界面后，请 **等待 1 ~ 2 分钟**，然后刷新页面。如果 `BtfileServer`、`DataServer` 或 `TaskServer` 字段的地址有从 `10.0.0.1` 变更为 node 的内网 IP ，则说明读取 zookeeper 成功，否则需检查 zookeeper 的 IP、 端口以及用户名密码是否正确。
 
 #### 内网环境使用域名访问节点管理及制品库
 >**提示**

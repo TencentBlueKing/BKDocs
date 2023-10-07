@@ -132,7 +132,7 @@ systemctl restart bkci-repository.service
 
 ### Q1: BK-CI 流水线构建出的产物如何支持服务器分发限速配置?
 
-调整分发源的限速，如下图。 对于已经安装agent的机器，可以先移除，再安装。 分发源机器IP: 192.168.5.134
+调整分发源的限速，如下图。 对于已经安装agent的机器，可以先移除，再安装。 分发源机器IP: 10.0.0.1
 
 ![](../../../assets/image-20220301101202-PluSB.png)
 
@@ -398,7 +398,7 @@ curl -v paas.service.consul
 ```
 ci初始化
 reg ci-auth callback.
-[1] 19:29:00 [SUCCESS] 172.16.1.49
+[1] 19:29:00 [SUCCESS] 10.0.0.1
 {
   "timestamp" : 1626291190535,
   "status" : 500,
@@ -976,7 +976,7 @@ TGit对接的是腾讯的工蜂代码库，无法使用gitlab代码库
 目前只支持调整内存阈值，默认是80%，即当公共构建机的内存使用率达到80%时，如果其他构建机还有空闲资源，任务会被调度到其他构建机，这个阈值是可以修改的，修改方法如下，登录到BK-CIdispatch-docker服务的机器上， 执行：
 
 ```
- # threshold的值即为阈值百分比，这里以将内存阈值调整为70%为例 curl -H 'Accept:application/json;charset="utf-8"' -H 'Content-Type:application/json;charset="utf-8"' -H "X-DEVOPS-UID: admin" -X POST --data '{"threshold":"70"}' http://127.0.0.1:21938/api/op/dispatchDocker/docker/threshold/update
+ # threshold的值即为阈值百分比，这里以将内存阈值调整为70%为例 curl -H 'Accept:application/json;charset="utf-8"' -H 'Content-Type:application/json;charset="utf-8"' -H "X-DEVOPS-UID: admin" -X POST --data '{"threshold":"70"}' http://10.0.0.1:21938/api/op/dispatchDocker/docker/threshold/update
 ```
 
 ### Q: 偶现启动构建机启动失败，Get credential failed

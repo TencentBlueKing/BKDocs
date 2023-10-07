@@ -14,7 +14,7 @@
 1. 建议操作系统： CentOS 7.6
 2. 建议机器配置
    - 生产环境：建议 8 核 32 G，硬盘 100G 以上（可根据实际情况适当调整配置）
-      - 机器数量：3 台（假设 ip 分别为：10.0.0.1，10.0.0.2，10.0.0.3）
+      - 机器数量：3 台（假设 ip 分别为：10.0.0.1，10.0.0.1，10.0.0.1）
 3. 选择一台为中控机（假设为 10.0.0.1）进行安装部署操作，使用 root 账号登录。
 
 ### 1.2 获取证书
@@ -71,8 +71,8 @@
 cat << EOF >/data/install/install.config
 [basic]
 10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7
-10.0.0.2 paas,nginx,consul,mongodb,rabbitmq,appo,zk(config)
-10.0.0.3 cmdb,job,mysql,appt,consul,nodeman(nodeman)
+10.0.0.1 paas,nginx,consul,mongodb,rabbitmq,appo,zk(config)
+10.0.0.1 cmdb,job,mysql,appt,consul,nodeman(nodeman)
 EOF
 ```
 
@@ -220,7 +220,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
     # 请注意替换示例 IP 为实际部署的机器 IP
     cat << EOF >>/data/install/install.config
     [iam_search_engine]
-    10.0.0.3 iam_search_engine
+    10.0.0.1 iam_search_engine
     EOF
     ```
 
@@ -295,11 +295,11 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
    将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 
    ```bash
-   10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com bkapi_check.bktencent.com
-   10.0.0.3 nodeman.bktencent.com
+   10.0.0.1 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com bkapi_check.bktencent.com
+   10.0.0.1 nodeman.bktencent.com
    ```
 
-   **注意：** 10.0.0.2 为 nginx 模块所在的机器，10.0.0.3 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。
+   **注意：** 10.0.0.1 为 nginx 模块所在的机器，10.0.0.1 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。
 
    查询模块所分布在机器的方式：
 
@@ -314,8 +314,8 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
    将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 
    ```bash
-   10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com bkapi_check.bktencent.com
-   10.0.0.3 nodeman.bktencent.com
+   10.0.0.1 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com bkapi_check.bktencent.com
+   10.0.0.1 nodeman.bktencent.com
    ```
 
 ### 3.2 获取管理员账户名密码

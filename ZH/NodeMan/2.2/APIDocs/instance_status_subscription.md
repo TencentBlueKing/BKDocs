@@ -56,7 +56,7 @@
                             "bk_cloud_id": 0,
                             "bk_host_name": "",
                             "bk_cloud_name": "直连区域",
-                            "bk_host_innerip": "127.0.0.1",
+                            "bk_host_innerip": "10.0.0.1",
                             "bk_supplier_account": "0"
                         },
                         "service": {
@@ -83,7 +83,7 @@
                                 "finish_time": "2020-12-28 08:50:09",
                                 "target_hosts": [
                                     {
-                                        "node_name": "[exceptionbeat] 部署插件程序 0:127.0.0.1",
+                                        "node_name": "[exceptionbeat] 部署插件程序 0:10.0.0.1",
                                         "pipeline_id": "5b702f51a5944d519f4abcc2678f0ed3",
                                         "status": "SUCCESS",
                                         "start_time": "2020-12-28 08:48:13",
@@ -136,13 +136,13 @@
                                                             "bk_cloud_name": "直连区域",
                                                             "bk_cpu_module": "",
                                                             "bk_bak_operator": "admin",
-                                                            "bk_host_innerip": "127.0.0.1",
+                                                            "bk_host_innerip": "10.0.0.1",
                                                             "bk_host_outerip": "",
                                                             "bk_supplier_account": "0"
                                                         },
                                                         "scope": [
                                                             {
-                                                                "ip": "127.0.0.1",
+                                                                "ip": "10.0.0.1",
                                                                 "bk_cloud_id": 0,
                                                                 "bk_supplier_id": 0
                                                             }

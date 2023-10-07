@@ -51,7 +51,7 @@ config_params:
   name: 请求url
   is_required: true
   is_sensitive: false
-  default_value: "http://127.0.0.1:8000"
+  default_value: "http://10.0.0.1:8000"
 
 # 接入配置，必填
 ingest_config:
@@ -128,7 +128,7 @@ ingest_config:
   # 拉取请求方法，可选 GET, POST, PUT, 默认为 GET
   method: GET
   # 拉取请求URL
-  url: http://10.10.10.10:18888/
+  url: http://10.0.0.10:18888/
   
   # 请求头配置，可选
   headers:
@@ -255,7 +255,7 @@ normalization_config:
             "event": {
                 "content": "user xxx login failed"
             },
-            "target": "127.0.0.1",
+            "target": "10.0.0.1",
             "dimension": {
                 "module": "db",
                 "location": "guangdong"

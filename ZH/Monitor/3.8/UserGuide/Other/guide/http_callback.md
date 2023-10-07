@@ -55,7 +55,7 @@ POST 消息
           "bk_topo_node":[
             "module|6"
           ],
-          "bk_target_ip":"10.0.1.10",
+          "bk_target_ip":"10.0.0.1",
           "bk_target_cloud_id":"0"
         },
         "value":46.17,	# 指标值

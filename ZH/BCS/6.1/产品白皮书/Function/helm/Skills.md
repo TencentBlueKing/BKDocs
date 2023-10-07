@@ -17,7 +17,7 @@
 #### 方式 1 ：直接在 Chart 中使用
 
 ```bash
-{{ default "127.0.0.1" $.Values.global.__BCS__.SYS_JFROG_DOMAIN }}
+{{ default "10.0.0.1" $.Values.global.__BCS__.SYS_JFROG_DOMAIN }}
 ```
 
 #### 方式 2 ：通过模板的方式使用
@@ -27,7 +27,7 @@
 domain template
 */}}
 {{- define "bcsDomain" -}}
-    {{- $default := "127.0.0.1" -}}
+    {{- $default := "10.0.0.1" -}}
     {{- $values := .Values }}
     {{- if $values -}}
 

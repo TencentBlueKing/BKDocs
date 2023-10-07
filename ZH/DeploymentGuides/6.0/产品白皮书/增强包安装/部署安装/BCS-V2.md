@@ -68,7 +68,7 @@
 # Linux、Mac：/etc/hosts，Windows：C:\Windows\System32\drivers\etc\hosts
 # BCS导航页组件IP地址（客户端浏览器可访问的地址） BCS导航页域名（BCS导航页域名前缀.蓝鲸基础域名） BCS导航页API域名（api-BCS导航页域名前缀.蓝鲸基础域名）
 # 例如：
-110.111.112.113 bcs.bktencent.com api-bcs.bktencent.com
+10.0.0.1 bcs.bktencent.com api-bcs.bktencent.com
 ```
 
 

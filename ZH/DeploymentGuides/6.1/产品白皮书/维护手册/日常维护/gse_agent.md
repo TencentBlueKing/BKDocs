@@ -37,8 +37,8 @@
     - 本机网卡地址($agent_ip)：通过 `ip addr` 命令能看到的 ip 地址
 
     ```bash
-    display_ip=10.0.0.2 # 请根据实际情况写命令自动获取
-    agent_ip=10.0.0.2   # 请根据实际情况写命令自动获取
+    display_ip=10.0.0.1 # 请根据实际情况写命令自动获取
+    agent_ip=10.0.0.1   # 请根据实际情况写命令自动获取
     sed -i '/"identityip"/c\    "identityip": "'$display_ip'",' /usr/local/gse/agent/etc/agent.conf
     sed -i '/"agentip"/c\    "agentip": "'$agent_ip'",' /usr/local/gse/agent/etc/agent.conf
     ```
@@ -127,8 +127,8 @@
 以 api 注册为例，用部署脚本的 `esb_api_test.sh` 做导入测试，具体参数请参考 esb api 文档。
 
 ```bash
-# 导入 10.0.0.2 操作系统（bk_os_type为1，linux），云区域id为0（直连区域），导入方式为api导入(3)，导入的目标业务为《蓝鲸》（bk_biz_id为2）
-/data/install/bin/esb_api_test.sh post /api/c/compapi/v2/cc/add_host_to_resource/ '"bk_biz_id":2,"host_info":{"0":{"bk_host_innerip":"10.0.0.2","import_from":"3","bk_cloud_id":0,"bk_os_type":"1"}}'
+# 导入 10.0.0.1 操作系统（bk_os_type为1，linux），云区域id为0（直连区域），导入方式为api导入(3)，导入的目标业务为《蓝鲸》（bk_biz_id为2）
+/data/install/bin/esb_api_test.sh post /api/c/compapi/v2/cc/add_host_to_resource/ '"bk_biz_id":2,"host_info":{"0":{"bk_host_innerip":"10.0.0.1","import_from":"3","bk_cloud_id":0,"bk_os_type":"1"}}'
 ```
 
 ## 节点管理启动插件

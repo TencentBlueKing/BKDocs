@@ -87,7 +87,7 @@ codecc 检查的代码，必须使用 checkout 插件进行拉取。
 
 ![](../../assets/codecc_post_error.png)
 
-排查日志后发现如上图的错误。原因是 codecc 机器 /etc/resolv.conf 文件中没有写入对应的 127.0.0.1 解析。
+排查日志后发现如上图的错误。原因是 codecc 机器 /etc/resolv.conf 文件中没有写入对应的 10.0.0.1 解析。
 
 加入解析后即可恢复正常。
 

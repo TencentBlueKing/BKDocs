@@ -28,7 +28,7 @@ spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       hostAliases:
-      - ip: 127.0.0.1
+      - ip: 10.0.0.1
         hostnames:
         - "game2-got.o.qcloud.com"
       containers:

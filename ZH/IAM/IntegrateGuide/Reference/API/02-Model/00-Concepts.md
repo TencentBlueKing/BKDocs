@@ -59,9 +59,9 @@
     - related_instance_selections：关联的实例视图，可以关联本系统定义的实例视图, 也可以配置其他系统定义的(如果`selection_mode=attribute`不用配置该字段). 该字段的功能表现在权限中心产品上配置权限时的实例选择方式 [产品说明: 实例选择视图](../../../../1.8/UserGuide/Term/Trem.md#实例视图)
         - system_id：实例视图的系统  
         - id：实例视图的 ID
-        - ignore_iam_path：是否忽略路径，`默认为false`，在 IAM 产品上选择实例视图配置权限的资源时，**如果选到 Action 关联的资源类型实例，而不是上级或祖先（选择了中间节点，ignore_iam_path 是不起作用的）**，那么对于`ignore_iam_path=true`时权限保存类似：`id=192.168.1.1`，若`ignore_iam_path=false`时则权限保存类似：`id=192.168.1.1 AND _bk_iam_path_= /biz,1/set,2/module,3/`
-            - ignore_iam_path 由 false 变更为 true 时，已配置的权限（类似：`id=192.168.1.1 AND _bk_iam_path_= /biz,1/set,2/module,3/`）将无法通过 id 直接通过鉴权
-            - ignore_iam_path 由 true 变更为 false 时，已配置的权限（类似：`id=192.168.1.1`）无论任何路径都可以通过鉴权
+        - ignore_iam_path：是否忽略路径，`默认为false`，在 IAM 产品上选择实例视图配置权限的资源时，**如果选到 Action 关联的资源类型实例，而不是上级或祖先（选择了中间节点，ignore_iam_path 是不起作用的）**，那么对于`ignore_iam_path=true`时权限保存类似：`id=10.0.0.1`，若`ignore_iam_path=false`时则权限保存类似：`id=10.0.0.1 AND _bk_iam_path_= /biz,1/set,2/module,3/`
+            - ignore_iam_path 由 false 变更为 true 时，已配置的权限（类似：`id=10.0.0.1 AND _bk_iam_path_= /biz,1/set,2/module,3/`）将无法通过 id 直接通过鉴权
+            - ignore_iam_path 由 true 变更为 false 时，已配置的权限（类似：`id=10.0.0.1`）无论任何路径都可以通过鉴权
 
 ---
 

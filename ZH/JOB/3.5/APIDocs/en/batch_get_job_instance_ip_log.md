@@ -41,7 +41,7 @@ Bulk query of job execution logs by ip list
         },
         {
             "bk_cloud_id": 0,
-            "ip": "10.0.0.2"
+            "ip": "10.0.0.1"
         }
     ]
 }
@@ -68,7 +68,7 @@ Bulk query of job execution logs by ip list
                         "mode": 1,
                         "src_ip": {
                             "bk_cloud_id": 0,
-                            "ip": "10.0.0.2"
+                            "ip": "10.0.0.1"
                         },
                         "src_path": "/data/1.log",
                         "dest_ip": {
@@ -82,14 +82,14 @@ Bulk query of job execution logs by ip list
                 ]
             },
             {
-                "ip": "10.0.0.2",
+                "ip": "10.0.0.1",
                 "bk_cloud_id": 0,
                 "file_logs": [
                     {
                         "mode": 0,
                         "src_ip": {
                             "bk_cloud_id": 0,
-                            "ip": "10.0.0.2"
+                            "ip": "10.0.0.1"
                         },
                         "src_path": "/data/1.log",
                         "status": 4,

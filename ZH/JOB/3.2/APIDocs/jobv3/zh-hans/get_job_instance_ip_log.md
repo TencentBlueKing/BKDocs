@@ -85,7 +85,7 @@ GET
                 "mode": 1,
                 "src_ip": {
                     "bk_cloud_id": 0,
-                    "ip": "10.0.0.2"
+                    "ip": "10.0.0.1"
                 },
                 "src_path": "/data/1.log",
                 "dest_ip": {
@@ -100,7 +100,7 @@ GET
                 "mode": 0,
                 "src_ip": {
                     "bk_cloud_id": 0,
-                    "ip": "10.0.0.2"
+                    "ip": "10.0.0.1"
                 },
                 "src_path": "/data/1.log",
                 "status": 4,

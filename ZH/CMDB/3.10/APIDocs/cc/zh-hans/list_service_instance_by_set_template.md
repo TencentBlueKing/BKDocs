@@ -88,7 +88,7 @@ POST
             {
                 "bk_biz_id": 3,
                 "id": 3,
-                "name": "127.0.122.2_lgh-process-1",
+                "name": "10.0.0.1_lgh-process-1",
                 "labels": null,
                 "service_template_id": 50,
                 "bk_host_id": 3,

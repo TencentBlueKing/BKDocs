@@ -321,7 +321,7 @@ HTTPServer server = new HTTPServer.Builder()
 启动Pushgateway
 
 ```
-PushGateway pushGateway = new PushGateway("127.0.0.1:9091"); // 蓝鲸监控的push url
+PushGateway pushGateway = new PushGateway("10.0.0.1:9091"); // 蓝鲸监控的push url
 pushGateway.setConnectionFactory(new BkConnectionFactory("${token}")); // 蓝鲸监控的Token
 pushGateway.pushAdd(CollectorRegistry.defaultRegistry , "my-job"); // 该方法调用一次就会push一次,需要自己实现触发方式,比如使用ScheduledExecutorService定时触发
 ```

@@ -46,7 +46,7 @@ ssh-copy-id <ip>
 
 ### 5. 将需要部署产品的标准运维流程模版导入至标准运维
 
-标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/b9db211/bk_sops_co_package-v6.2.0.dat)
+标准运维流程模版 [下载](https://bkopen-1252002024.file.myqcloud.com/ce/1bba77a/bk_sops_co_package-v6.2.1.dat)
 
 **详细步骤：** `打开标准运维 -> 项目流程 -> 导入 -> 点击上传 -> 创建新流程`
 

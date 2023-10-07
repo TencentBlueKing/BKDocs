@@ -97,10 +97,10 @@ C:\Windows\System32\drivers\etc\hosts
 
 将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 
-**说明：** 10.0.0.2 为蓝鲸的 nginx 模块所在机器的外网 IP
+**说明：** 10.0.0.1 为蓝鲸的 nginx 模块所在机器的外网 IP
 
 ```bash
-10.0.0.2 bknetwork.bktencent.com
+10.0.0.1 bknetwork.bktencent.com
 ```
 
 > 注意：如果遇到无法保存，请右键文件 hosts 并找到“属性” -> “安全”，然后选择你登录的用户名，最后点击编辑，勾选“写入”即可。
@@ -110,7 +110,7 @@ C:\Windows\System32\drivers\etc\hosts
 将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 
 ```bash
-10.0.0.2 bknetwork.bktencent.com
+10.0.0.1 bknetwork.bktencent.com
 ```
 
 ## 访问网络管理

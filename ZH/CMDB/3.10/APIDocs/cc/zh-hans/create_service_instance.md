@@ -105,7 +105,7 @@ POST
             "bind_info": [
               {
                   "enable": false,
-                  "ip": "127.0.0.1",
+                  "ip": "10.0.0.1",
                   "port": "80",
                   "protocol": "1",
                   "template_row_id": 1234

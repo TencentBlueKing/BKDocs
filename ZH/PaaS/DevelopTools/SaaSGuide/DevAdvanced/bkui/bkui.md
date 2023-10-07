@@ -51,7 +51,7 @@ $ bkui --help
 ### 本地开发
 1. 新建 `${ROOT}/.bk.local.env`文件
 2. 填写 BK_LOGIN_URL = '填写登录地址'
-3. 填写 BK_APP_HOST = '127.0.0.0'，注意登录后 cookie 写入的域名
+3. 填写 BK_APP_HOST = '10.0.0.1'，注意登录后 cookie 写入的域名
 4. 根目录执行 `npm run dev`
 5. 配置 host，打开 BK_APP_HOST 配置了域名的地址
 
@@ -150,7 +150,7 @@ html 文件中有几个变量（`SITE_URL`, `BK_STATIC_URL`），配置说明如
   outputAssetsDirName: 'static',
   outputDir: 'dist',
   publicPath: '/',
-  host: '127.0.0.1',
+  host: '10.0.0.1',
   port: 8080,
   filenameHashing: true,
   cache: true,

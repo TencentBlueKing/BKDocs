@@ -119,7 +119,7 @@ POST
             {
                 "field": "bk_host_innerip",
                 "operator": "equal",
-                "value": "127.0.0.1"
+                "value": "10.0.0.1"
             },
             {
                 "condition": "OR",
@@ -158,14 +158,14 @@ POST
       {
         "bk_cloud_id": 0,
         "bk_host_id": 1,
-        "bk_host_innerip": "192.168.15.18",
+        "bk_host_innerip": "10.0.0.1",
         "bk_mac": "",
         "bk_os_type": null
       },
       {
         "bk_cloud_id": 0,
         "bk_host_id": 2,
-        "bk_host_innerip": "192.168.15.4",
+        "bk_host_innerip": "10.0.0.1",
         "bk_mac": "",
         "bk_os_type": null
       }

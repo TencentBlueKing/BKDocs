@@ -148,15 +148,15 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 ```
 参考输出如下：
 ``` plain
-        10.244.0.5 apps.bkce7.bktencent.com
-        10.244.0.5 bkrepo.bkce7.bktencent.com
-        10.244.0.5 docker.bkce7.bktencent.com
-        10.244.0.5 bkce7.bktencent.com
-        10.244.0.5 bkapi.bkce7.bktencent.com
-        10.244.0.5 bkpaas.bkce7.bktencent.com
-        10.244.0.5 bkiam-api.bkce7.bktencent.com
-        10.244.0.5 bkiam.bkce7.bktencent.com
-        10.244.0.5 bcs.bkce7.bktencent.com
+        10.0.0.1 apps.bkce7.bktencent.com
+        10.0.0.1 bkrepo.bkce7.bktencent.com
+        10.0.0.1 docker.bkce7.bktencent.com
+        10.0.0.1 bkce7.bktencent.com
+        10.0.0.1 bkapi.bkce7.bktencent.com
+        10.0.0.1 bkpaas.bkce7.bktencent.com
+        10.0.0.1 bkiam-api.bkce7.bktencent.com
+        10.0.0.1 bkiam.bkce7.bktencent.com
+        10.0.0.1 bcs.bkce7.bktencent.com
 ```
 
 # 部署基础套餐后台

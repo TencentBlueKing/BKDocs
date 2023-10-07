@@ -7,7 +7,7 @@
 采集下发查看更新详情发现类似如下报错：
 
 ```bash
-[2020-03-18 20:32:07 ERROR] GSE restart process failed. task_id->[GSETASK:20200318203203:57196] task_result->[{"failed": [{"content": "{\n   \"value\" : [\n      {\n         \"funcID\" : \"\",\n         \"instanceID\" : \"\",\n         \"procName\" : \"bkmonitorbeat\",\n         \"result\" : \"Script exit code non-zero. Error msessage: []\",\n         \"setupPath\" : \"/usr/local/gse/plugins/bin\"\n      }\n   ]\n}\n", "bk_supplier_id": "0", "ip": "10.21.64.14", "error_code": 65535, "error_msg": "Script exit code non-zero. Error msessage: []", "bk_cloud_id": "415"}], "pending": [], "success": []}]
+[2020-03-18 20:32:07 ERROR] GSE restart process failed. task_id->[GSETASK:20200318203203:57196] task_result->[{"failed": [{"content": "{\n   \"value\" : [\n      {\n         \"funcID\" : \"\",\n         \"instanceID\" : \"\",\n         \"procName\" : \"bkmonitorbeat\",\n         \"result\" : \"Script exit code non-zero. Error msessage: []\",\n         \"setupPath\" : \"/usr/local/gse/plugins/bin\"\n      }\n   ]\n}\n", "bk_supplier_id": "0", "ip": "10.0.0.1", "error_code": 65535, "error_msg": "Script exit code non-zero. Error msessage: []", "bk_cloud_id": "415"}], "pending": [], "success": []}]
 ```
 
 排除方法： 

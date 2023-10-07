@@ -106,7 +106,7 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 
 [INFO]: 添加Kubernetes节点成功
 
-[INFO]: LAN_IP: 10.0.0.5
+[INFO]: LAN_IP: 10.0.0.1
   Welcome to BCS on qcloud
 ```
 
@@ -115,7 +115,7 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 
 否则需要将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下，命令如下（请替换 `k8s-master`为具体的主机名或 IP）：
 ```bash
-master_ip=10.0.0.2  # 请自行修改为bcs.sh所部署的master ip，建议配置好中控机免密登录。
+master_ip=10.0.0.1  # 请自行修改为bcs.sh所部署的master ip，建议配置好中控机免密登录。
 mkdir -p ~/.kube
 scp "$master_ip":.kube/config ~/.kube/config  # 复制kubeconfig，如未配置免密登录请输入master的密码
 grep bcs.local /etc/hosts || ssh "$master_ip" grep bcs.local /etc/hosts | tee -a /etc/hosts  # 导出master上的bcs hosts配置到中控机，如未配置免密登录请输入master的密码
@@ -203,4 +203,4 @@ kubectl describe nodes NAME  # NAME参数为 kubectl get nodes输出的 NAME 列
 ## kubectl 的常见报错
 1. `Unable to connect to the server: dial tcp: lookup k8s-api.bcs.local: no such host`，请确保 **中控机** 能正常解析  `~/.kube/config` 文件中的 `cluster.server` 配置项中的域名。
 2. `The connection to the server k8s-api.bcs.local:6443 was refused - did you specify the right host or port?`，请确保 **中控机** 到 `k8s-api.bcs.local` （提示的域名）的 6443 端口。一般需要检查目的服务器的防火墙，云服务器需额外检查安全组。
-3. `Unable to connect to the server: dial tcp 10.0.0.254:6443: i/o timeout`，请确保 **中控机** 到 `k8s-api.bcs.local` （提示的域名）的网络可互通，以及目的服务器的防火墙，云服务器需额外检查安全组。
+3. `Unable to connect to the server: dial tcp 10.0.0.154:6443: i/o timeout`，请确保 **中控机** 到 `k8s-api.bcs.local` （提示的域名）的网络可互通，以及目的服务器的防火墙，云服务器需额外检查安全组。

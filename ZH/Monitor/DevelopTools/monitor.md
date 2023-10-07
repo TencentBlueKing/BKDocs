@@ -241,7 +241,7 @@ go build test_exporter.go
 ./test_exporter
 ```
 
-12. 运⾏起来后，访问 http://127.0.0.1:9601/metrics 即可验证
+12. 运⾏起来后，访问 http://10.0.0.1:9601/metrics 即可验证
 
   ⾄此 Exporter 开发完成，其中 8，9 两步中的函数是重点，⽬前仅仅写了⼀些数据进⾏示例，其中的监控指标获取数据就是该部分的主要功能，需要编写对应逻辑获取指标的值。
 
@@ -402,7 +402,7 @@ go build -o ./exporter-linux test_exporter
 
 - 重要提示:
 
-    - 配置文件中，必须提供 `_exporter_url_` 参数。该参数为获取 metric 的完整 url。且该参数必须设置默认值。出于安全考虑，监听地址的 IP 只能设置为 `127.0.0.1` 或 `localhost`，配置方式参见上述样例。
+    - 配置文件中，必须提供 `_exporter_url_` 参数。该参数为获取 metric 的完整 url。且该参数必须设置默认值。出于安全考虑，监听地址的 IP 只能设置为 `10.0.0.1` 或 `localhost`，配置方式参见上述样例。
 
 #### logo
 

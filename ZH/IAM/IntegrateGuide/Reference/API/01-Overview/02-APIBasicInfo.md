@@ -55,7 +55,7 @@ Request 的 json body 中`resources`
     {
         "system": "bk_cmdb",
         "type": "host",
-        "id": "192.168.1.1"
+        "id": "10.0.0.1"
     }]
 ```
 

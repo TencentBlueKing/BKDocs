@@ -46,7 +46,7 @@
         {
             "annotations": {
                 "comment": "测试",
-                "message": "服务器 192.168.1.1:9100, 当前CPU使用率 0.59%, 已持续5分钟超过设定阈值90%, 请尽快处理"
+                "message": "服务器 10.0.0.1:9100, 当前CPU使用率 0.59%, 已持续5分钟超过设定阈值90%, 请尽快处理"
             },
             "endsAt": "0001-01-01T00:00:00Z",
             "fingerprint": "33e5e99cde6f03ea",
@@ -55,7 +55,7 @@
                 "alertname": "测试",
                 "cc_biz_id": "10000",
                 "cluster_id": "BCS-K8S-15091",
-                "instance": "192.168.1.1:9100",
+                "instance": "10.0.0.1:9100",
                 "project_id": "b37778ec757544868a01e1f01f07037f",
                 "rule_id": "1",
                 "source_type": "BCS_ALERTING_RULE"
@@ -66,7 +66,7 @@
         {
             "annotations": {
                 "comment": "测试",
-                "message": "服务器 192.168.1.1:9100, 当前CPU使用率 0.33%, 已持续5分钟超过设定阈值90%, 请尽快处理"
+                "message": "服务器 10.0.0.1:9100, 当前CPU使用率 0.33%, 已持续5分钟超过设定阈值90%, 请尽快处理"
             },
             "endsAt": "0001-01-01T00:00:00Z",
             "fingerprint": "ccdf584208098e7d",
@@ -75,7 +75,7 @@
                 "alertname": "测试",
                 "cc_biz_id": "10000",
                 "cluster_id": "BCS-K8S-15091",
-                "instance": "192.168.1.1:9100",
+                "instance": "10.0.0.1:9100",
                 "project_id": "b37778ec757544868a01e1f01f07037f",
                 "rule_id": "1",
                 "source_type": "BCS_ALERTING_RULE"

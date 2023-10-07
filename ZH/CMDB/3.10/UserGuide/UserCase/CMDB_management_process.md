@@ -50,7 +50,7 @@ mysql     7980  7800  0 7月08 ?       00:01:55 /usr/libexec/mysqld --basedir=/u
 
 ```bash
 $ netstat -antp | grep mysqld
-tcp        0      0 10.0.4.29:3306          0.0.0.0:*               LISTEN      7980/mysqld
+tcp        0      0 10.0.0.1:3306          10.0.0.1:*               LISTEN      7980/mysqld
 ```
 
 - 绑定 IP：MariaDB 为存储层，一般绑定内网 IP，故选择`第一内网 IP`。
@@ -103,7 +103,7 @@ processbeat.processes:
   ports:
   - 3306
   paramregex: ""
-  bindip: 10.0.4.29
+  bindip: 10.0.0.1
 ```
 
 ### 二进制名称均为 java，该如何配置

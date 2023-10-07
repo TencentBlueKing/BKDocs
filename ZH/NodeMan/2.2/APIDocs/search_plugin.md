@@ -24,7 +24,7 @@
 
 ##### conditions
 
-由指定关键词key和value组成的字典 示例：{"key": "inner_ip", "value": ["127.0.0.1"]}
+由指定关键词key和value组成的字典 示例：{"key": "inner_ip", "value": ["10.0.0.1"]}
 
 | key                   | 类型     | value描述                                                    |
 |-----------------------|--------|------------------------------------------------------------|
@@ -77,7 +77,7 @@
                 "bk_cloud_id": 0,
                 "bk_host_name": "",
                 "bk_addressing": "0",
-                "inner_ip": "127.0.0.1",
+                "inner_ip": "10.0.0.1",
                 "inner_ipv6": "",
                 "os_type": "LINUX",
                 "cpu_arch": "x86_64",
@@ -193,7 +193,7 @@
 
 ###### instance_id
 
- 由scope内的主机实例信息转换而来，由以下字段拼接，规则：{object_type}|{node_type}|{type}|{id}，示例：1: host|instance|host|1, 2: host|instance|host|127.0.0.1-1-0
+ 由scope内的主机实例信息转换而来，由以下字段拼接，规则：{object_type}|{node_type}|{type}|{id}，示例：1: host|instance|host|1, 2: host|instance|host|10.0.0.1-1-0
 
 | 字段          | 类型     | <div style="width: 50pt">必选</div> | 描述                                                                                  |
 | ----------- | ------ | --------------------------------- | ----------------------------------------------------------------------------------- |

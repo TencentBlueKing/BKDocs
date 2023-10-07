@@ -89,7 +89,7 @@ POST
         "info": [
             {
                 "bk_inst_id": 1,
-                "bk_inst_name": "127.0.0.3"
+                "bk_inst_name": "10.0.0.1"
             }
         ]
     }

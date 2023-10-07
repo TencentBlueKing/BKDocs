@@ -40,7 +40,7 @@ DATABASES = {
         'NAME': APP_CODE,
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'HOST': '10.0.0.1',
         'PORT': '3306',
     },
 }
@@ -83,7 +83,7 @@ Running migrations:
 首先，本地需要配置 hosts 文件，添加如下内容：
 
 ```bash
-127.0.0.1 dev.xxx.xxx（注意：必须与PaaS平台主站在同一个一级域名)
+10.0.0.1 dev.xxx.xxx（注意：必须与PaaS平台主站在同一个一级域名)
 ```
 
 ### 本地启动项目
@@ -91,7 +91,7 @@ Running migrations:
 在项目根目录下执行如下命令：
 
 ```python
-python manage.py runserver 127.0.0.1:8000
+python manage.py runserver 10.0.0.1:8000
 ```
 
 接着在浏览器访问 http://dev.xxx.xxx:8000/ 就可以看到项目首页啦。

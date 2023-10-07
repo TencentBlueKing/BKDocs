@@ -21,7 +21,7 @@ Jinja2 是一个现代的，设计者友好的，仿照 Django 模板的 Python 
 
 | 变量                   | 名称             | 示例                |
 | ---------------------- | ---------------- | -------------------|
-| alarm.target_string    | 告警目标         | 10.0.1.10,10.0.1.11 |
+| alarm.target_string    | 告警目标         | 10.0.0.1,10.0.0.11 |
 | alarm.dimension_string | 告警维度(除目标) | 磁盘=C，主机名=xxx   |
 | alarm.collect_count    | 汇总事件数量     | 10                  |
 | alarm.notice_from      | 消息来源         | 监控平台            |
@@ -95,7 +95,7 @@ CMDB 变量在采集的参数中也是可以使用的。
 | target.host.bk_cloud_id            | 云区域 ID              | 0           |
 | target.host.bk_cloud_name          | 云区域名称            | 默认区域    |
 | target.host.bk_host_innerip        | 内网 IP                | 10.0.0.1    |
-| target.host.bk_host_outerip        | 外网 IP                | 10.0.1.11   |
+| target.host.bk_host_outerip        | 外网 IP                | 10.0.0.11   |
 | target.host.bk_host_name           | 主机名                |             |
 | target.host.bk_os_name             | 操作系统名称          | Linux       |
 | target.host.bk_os_type             | 操作系统类型(枚举数值) | 1           |
@@ -110,7 +110,7 @@ CMDB 变量在采集的参数中也是可以使用的。
 | target.process.["process_name"].bk_process_id       | 进程 ID       | 1            |
 | target.process.["process_name"].bk_process_name     | 进程名称     | 进程 1        |
 | target.process.["process_name"].bk_func_name        | 进程功能名称 | java         |
-| target.process.["process_name"].bind_ip             | 绑定 IP       | 10.0.1.10    |
+| target.process.["process_name"].bind_ip             | 绑定 IP       | 10.0.0.1    |
 | target.process.["process_name"].port                | 绑定端口     | 1,2,3-5,7-10 |
 | target.process.["process_name"].process_template_id | 进程模板 ID   | 1            |
 | target.process.["process_name"].service_instance_id | 服务实例 ID   | 1            |
@@ -122,7 +122,7 @@ CMDB 变量在采集的参数中也是可以使用的。
 | 变量                                        | 名称       | 示例          |
 | ------------------------------------------- | ----------| ------------- |
 | target.service_instance.service_instance_id | 服务实例 ID | !             |
-| target.service_instance.name                | 服务实例名 | xxx_10.0.1.11 |
+| target.service_instance.name                | 服务实例名 | xxx_10.0.0.11 |
 | target.service_instance.bk_host_id          | 主机 ID     | 1             |
 | target.service_instance.bk_module_id        | 模块 ID     | 1             |
 | target.service_instance.service_category_id | 服务分类 id | 1             |

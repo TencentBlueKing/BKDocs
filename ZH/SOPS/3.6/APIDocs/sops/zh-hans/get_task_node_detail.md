@@ -64,7 +64,7 @@ GET
             "job_script_type": "1",
             "job_script_param": "",
             "job_script_list_general": "",
-            "job_ip_list": "127.0.0.1"
+            "job_ip_list": "10.0.0.1"
         },
         "retry": 0,
         "name": "<class "pipeline.core.flow.activity.ServiceActivity">",

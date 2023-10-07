@@ -64,13 +64,3 @@
     ```bash
     echo bklog bkmonitorv3 | xargs -n 1 ./bkcli check
     ```
-
-## 增强套餐前台验证
-
-- 打开蓝鲸监控平台，查看蓝鲸的数据链路是否正常
-
-  如果只有 bk_data \<社区版不含计算平台\> 为红色则正常 。否则需要针对显红的地方进行排查直至显绿。
-
-![bkmonitorv3](../../assets/bkmonitorv3_status.png)
-
-最后在蓝鲸工作台打开各个 SaaS 验证各产品功能是否能运行正常。

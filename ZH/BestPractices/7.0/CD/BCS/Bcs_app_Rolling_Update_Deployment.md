@@ -95,7 +95,7 @@ cf5b3c6798f7: Pushed
 确认当前版本号为`nginx/1.12.2`
 
 ```bash
-[root@ip-10-0-5-94-n-bcs-k8s-40015 ~]# curl 10.0.5.94:30008 -I
+[root@ip-10.0.0.1-n-bcs-k8s-40015 ~]# curl 10.0.0.1:30008 -I
 HTTP/1.1 200 OK
 Server: nginx/1.12.2
 Date: Thu, 08 Aug 2019 09:11:42 GMT
@@ -137,19 +137,19 @@ Date: Thu, 08 Aug 2019 09:11:42 GMT
 
 ```bash
 root:~$ kubectl get pods -n dev -o wideNAME                         READY   STATUS    RESTARTS   AGE    IP            NODE                           NOMINATED NODE
-web-nginx-678bb9c4fb-m8cf4   1/1     Running   0          134m   172.32.1.18   ip-10-0-5-94-n-bcs-k8s-40015   <none>
-web-nginx-678bb9c4fb-nxwf4   1/1     Running   0          134m   172.32.1.17   ip-10-0-5-94-n-bcs-k8s-40015   <none>
+web-nginx-678bb9c4fb-m8cf4   1/1     Running   0          134m   10.0.0.1   ip-10.0.0.1-n-bcs-k8s-40015   <none>
+web-nginx-678bb9c4fb-nxwf4   1/1     Running   0          134m   10.0.0.1   ip-10.0.0.1-n-bcs-k8s-40015   <none>
 
 root:~$ kubectl get pods -n dev -o wide
 NAME                        READY   STATUS    RESTARTS   AGE   IP            NODE                           NOMINATED NODE
-web-nginx-f95ffc78d-cxhrq   1/1     Running   0          21s   172.32.1.20   ip-10-0-5-94-n-bcs-k8s-40015   <none>
-web-nginx-f95ffc78d-pqtcj   1/1     Running   0          14s   172.32.1.21   ip-10-0-5-94-n-bcs-k8s-40015   <none>
+web-nginx-f95ffc78d-cxhrq   1/1     Running   0          21s   10.0.0.1   ip-10.0.0.1-n-bcs-k8s-40015   <none>
+web-nginx-f95ffc78d-pqtcj   1/1     Running   0          14s   10.0.0.1   ip-10.0.0.1-n-bcs-k8s-40015   <none>
 ```
 
 可以看到`Nginx`版本已经从`1.12.2`更新为`1.17.0`
 
 ```bash
-[root@ip-10-0-5-94-n-bcs-k8s-40015 ~]# curl 10.0.5.94:30008 -I
+[root@ip-10.0.0.1-n-bcs-k8s-40015 ~]# curl 10.0.0.1:30008 -I
 HTTP/1.1 200 OK
 Server: nginx/1.17.0
 ```
