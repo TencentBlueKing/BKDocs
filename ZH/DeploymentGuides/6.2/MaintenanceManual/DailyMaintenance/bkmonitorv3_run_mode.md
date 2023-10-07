@@ -1,6 +1,6 @@
 # 监控平台运行模式切换
 
-> 该文档适用于社区版 6.2.0 监控平台运行模式的切换
+> 该文档适用于社区版 6.2.1 监控平台运行模式的切换
 
 ## 确认运行模式
 
@@ -18,7 +18,7 @@ echo $BK_MONITOR_RUN_MODE
 ### 修改运行标识
 
 ```bash
-if  [[-f "$CTRL_DIR/bin/03-userdef/bkmonitorv3.env"]];then
+if  [[ -f "$CTRL_DIR/bin/03-userdef/bkmonitorv3.env" ]];then
     if grep -q "BK_MONITOR_RUN_MODE" "$CTRL_DIR/bin/03-userdef/bkmonitorv3.env"; then
         sed -i "s#BK_MONITOR_RUN_MODE=.*#BK_MONITOR_RUN_MODE=stable#g" "$CTRL_DIR/bin/03-userdef/bkmonitorv3.env"
     else
@@ -53,7 +53,7 @@ fi
 ### 修改运行标识
 
 ```bash
-if  [[-f "$CTRL_DIR/bin/03-userdef/bkmonitorv3.env"]];then
+if  [[ -f "$CTRL_DIR/bin/03-userdef/bkmonitorv3.env" ]];then
     if grep -q "BK_MONITOR_RUN_MODE" "$CTRL_DIR/bin/03-userdef/bkmonitorv3.env"; then
         sed -i "s#BK_MONITOR_RUN_MODE=.*#BK_MONITOR_RUN_MODE=lite#g" "$CTRL_DIR/bin/03-userdef/bkmonitorv3.env"
     else

@@ -1,6 +1,6 @@
 # 作业平台运行模式切换
 
-> 该文档适用于社区版 6.2.0 作业平台运行模式的切换
+> 该文档适用于社区版 6.2.1 作业平台运行模式的切换
 
 ## 确认运行模式
 
@@ -18,7 +18,7 @@ echo $BK_JOB_RUN_MODE
 ### 修改运行标识
 
 ```bash
-if  [[-f "$CTRL_DIR/bin/03-userdef/job.env"]];then
+if  [[ -f "$CTRL_DIR/bin/03-userdef/job.env" ]];then
     if grep -q "BK_JOB_RUN_MODE" "$CTRL_DIR/bin/03-userdef/job.env"; then
         sed -i "s#BK_JOB_RUN_MODE=.*#BK_JOB_RUN_MODE=stable#g" "$CTRL_DIR/bin/03-userdef/job.env"
     else
@@ -74,15 +74,15 @@ fi
 
 ```bash
 source $CTRL_DIR/utils.fc
-curl -H 'BK_USER:admin' -H 'BK_SUPPLIER_ID:0' -H 'HTTP_BLUEKING_SUPPLIER_ID:0' -X POST $BK_CMDB_IP0:9000/migrate/v3/migrate/system/user_config/blueking_modify/true
+curl -H 'BK_USER:admin' -H 'BK_SUPPLIER_ID:0' -H 'HTTP_BLUEKING_SUPPLIER_ID:0' -X POST $BK_CMDB_IP0:9000/migrate/v3/migrate/system/user_config/blueking_modify/true 
 
 # 预期返回内容
 {
-    "result": true,
-    "bk_error_code": 0,
-    "bk_error_msg": "success",
-    "permission": null,
-    "data": "modify system user config success"
+     "result": true,
+     "bk_error_code": 0,
+     "bk_error_msg": "success",
+     "permission": null,
+     "data": "modify system user config success"
 }
 ```
 
@@ -99,7 +99,7 @@ source $CTRL_DIR/utils.fc && /opt/py36/bin/python ${CTRL_DIR}/bin/create_bluekin
 #### 替换进程模版主机与服务的关联
 
 ```bash
-sed -i 's/"job": \[.*\]/"job": \["job-config","job-crontab","job-execute","job-gateway","job-logsvr","job-manage","job-backup","job-analysis"\]/' $CTRL_DIR/bin/create_blueking_set.py
+sed -i 's/"job": \[.*\]/"job": \["job-config", "job-crontab", "job-execute", "job-gateway", "job-logsvr", "job-manage", "job-backup", "job-analysis"\]/' $CTRL_DIR/bin/create_blueking_set.py
 ```
 
 #### 重建拓扑
@@ -113,7 +113,7 @@ sed -i 's/"job": \[.*\]/"job": \["job-config","job-crontab","job-execute","job-g
 ### 修改运行标识
 
 ```bash
-if  [[-f "$CTRL_DIR/bin/03-userdef/job.env"]];then
+if  [[ -f "$CTRL_DIR/bin/03-userdef/job.env" ]];then
     if grep -q "BK_JOB_RUN_MODE" "$CTRL_DIR/bin/03-userdef/job.env"; then
         sed -i "s#BK_JOB_RUN_MODE=.*#BK_JOB_RUN_MODE=lite#g" "$CTRL_DIR/bin/03-userdef/job.env"
     else
@@ -167,15 +167,15 @@ fi
 
 ```bash
 source $CTRL_DIR/utils.fc
-curl -H 'BK_USER:admin' -H 'BK_SUPPLIER_ID:0' -H 'HTTP_BLUEKING_SUPPLIER_ID:0' -X POST $BK_CMDB_IP0:9000/migrate/v3/migrate/system/user_config/blueking_modify/true
+curl -H 'BK_USER:admin' -H 'BK_SUPPLIER_ID:0' -H 'HTTP_BLUEKING_SUPPLIER_ID:0' -X POST $BK_CMDB_IP0:9000/migrate/v3/migrate/system/user_config/blueking_modify/true 
 
 # 预期返回内容
 {
-    "result": true,
-    "bk_error_code": 0,
-    "bk_error_msg": "success",
-    "permission": null,
-    "data": "modify system user config success"
+     "result": true,
+     "bk_error_code": 0,
+     "bk_error_msg": "success",
+     "permission": null,
+     "data": "modify system user config success"
 }
 ```
 
@@ -191,8 +191,14 @@ source $CTRL_DIR/utils.fc && /opt/py36/bin/python ${CTRL_DIR}/bin/create_bluekin
 
 #### 替换进程模版主机与服务的关联
 
-主要是为了解决在服务切换后，避免产生主机服务进程的告警 (如果有部署监控平台)
+主要是为了解决在服务切换后，避免产生主机服务进程的告警 (`如果有部署监控平台`)
 
 ```bash
-sed -i 's/"job": \[.*\]/"job": \["job-gateway","job-assemble"\]/' $CTRL_DIR/bin/create_blueking_set.py
+sed -i 's/"job": \[.*\]/"job": \["job-gateway", "job-assemble"\]/' $CTRL_DIR/bin/create_blueking_set.py
+```
+
+#### 重建拓扑
+
+```bash
+./bkcli initdata topo
 ```
