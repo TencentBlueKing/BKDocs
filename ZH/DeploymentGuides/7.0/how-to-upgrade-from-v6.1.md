@@ -77,7 +77,7 @@ curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-st
 
 | 文件名                     | 下载地址                                                 | MD5  | 备注                           |
 | -------------------------- | -------------------------------------------------------- | ---- | ------------------------------ |
-| generate_bk_custom_yaml.sh |https://bkopen-1252002024.file.myqcloud.com/ce/6e3d7f4/generate_bk_custom_yaml.sh|6e3d7f4bbd29b067ba477273e53e516a| 升级容器化自定义 yaml 生成脚本 |
+| generate_bk_custom_yaml.sh |https://bkopen-1252002024.file.myqcloud.com/ce/5e0571b/generate_bk_custom_yaml.sh|5e0571bf0822c0248d6bda107ea638d| 升级容器化自定义 yaml 生成脚本 |
 | iam_ignore_migrate.sql     |https://bkopen-1252002024.file.myqcloud.com/ce7/0605ba0/iam_ignore_migrate.sql|0605ba0d42bc8a5b0d752ead89156af9| 权限中心 SQL 标记文件          |
 | upgrader.properties        |https://bkopen-1252002024.file.myqcloud.com/ce7/cff7d89/upgrader.properties|cff7d899b853c9027e2d9030ed229503| 作业平台迁移模板文件           |
 | upgrader-3.5.0.12.jar      |https://bkopen-1252002024.file.myqcloud.com/ce7/feb8de8/upgrader-3.5.0.12.jar|feb8de8fcf7bb07645ba7c299633c707| 作业平台迁移 jar 包            |
