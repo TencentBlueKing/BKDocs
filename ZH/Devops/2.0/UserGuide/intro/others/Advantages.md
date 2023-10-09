@@ -1,10 +1,6 @@
 # 核心优势
 
-<<<<<<< HEAD:ZH/Devops/2.0/产品白皮书/intro/others/Advantages.md
 BK-CI 在腾讯内部支撑了整个腾讯所有 BG 的日常 CI/CD 工作，已经经过了大规模业务场景的反复锤炼。它具备以下特点：
-=======
-BKCI 在腾讯内部支撑了几万用户日常 CI/CD 工作，经过了大规模业务场景的反复锤炼。它具备以下特点：
->>>>>>> 51c64cbe653ce5ff064de8dea6a0592fab08002d:ZH/Devops/2.0/UserGuide/intro/others/Advantages.md
 
 ## 持续集成和持续交付
 
