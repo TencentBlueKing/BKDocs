@@ -70,6 +70,8 @@ for module in ${value_modules[@]}; do if grep ${module} /data/install/install.co
 
 ### 监控平台
 
+**注意：** 社区版 6.2 后的版本全新部署默认是轻量化版本，如需在生产环境下使用，请切换成完整版进行部署或者在部署完成后按照 [监控平台运行模式切换](../../MaintenanceManual/DailyMaintenance/bkmonitorv3_run_mode.md) 进行切换。
+
 选择 `[ce][deploy][bkmonitorv3]` 流程模版进行新建任务，根据提示填写相关信息。确认填写信息无误后，开始执行任务。
 
 填写信息包括：

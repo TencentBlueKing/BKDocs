@@ -178,6 +178,8 @@ PaaS 平台部署完成后，可以访问蓝鲸的 PaaS 平台。如部署时域
 
 ### 部署 JOB
 
+**注意：** 社区版 6.2.x 后的版本全新部署默认为轻量化版本，如需在生产环境下使用，请切换成完整版进行部署或者在部署完成后按照 [作业平台运行模式切换](../../MaintenanceManual/DailyMaintenance/job_run_mode.md) 进行切换。
+
 ```bash
 # 安装作业平台后台模块及其依赖组件
 ./bk_install job
