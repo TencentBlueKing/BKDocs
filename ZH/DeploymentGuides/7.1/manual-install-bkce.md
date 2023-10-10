@@ -22,6 +22,10 @@
 ### 部署 bk-apigateway
 蓝鲸 API 网关是蓝鲸各组件互通的枢纽。
 
+>**提示**
+>
+>bk-apigateway-1.12.1 版本支持使用 RabbitMQ 作为 celery 的 broker，推荐在生产环境使用。详细信息见 https://github.com/TencentBlueKing/blueking-apigateway/issues/275
+
 在中控机工作目录下执行：
 ``` bash
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-apigateway sync
