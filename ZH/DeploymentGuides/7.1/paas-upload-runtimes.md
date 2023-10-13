@@ -1,8 +1,8 @@
 开发者中心预置了一批编译环境，被称为 `runtimes`。
 
-目前蓝鲸 V7 提供了优化后的 SaaS 包（格式为 `image`），无需 `runtimes`。
+目前蓝鲸 V7 提供了预编译的 SaaS 包（开发者中心部署应用时，“选择部署分支” 下拉框中标题格式为 `image`），故无需 `runtimes`。
 
-当你使用 PaaS 开发应用，或者试图安装未适配 V7 的 S-Mart 源码包（格式为 `package`）时，需要进行编译操作。
+当你基于 PaaS 自行开发应用，或者安装适配 V6 的 S-Mart 源码包（格式为 `package`）时，需要进行编译操作。
 
 
 # 上传 PaaS runtimes 到制品库

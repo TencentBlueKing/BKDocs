@@ -54,7 +54,7 @@
 | 时区 | 所有服务器时区应该统一，建议使用北京时间 | 使用 `timedatectl set-timezone Asia/Shanghai` 设置为北京时间。 |
 | 时间同步 | etcd 选举时要求节点间时间差小于 1s | 配置 `chronyd` 同步时间 |
 | docker 版本 | 19.03 及更高 | `docker version` |
-| kubenetes 版本 | 限 1.20，其他版本未经测试。用户报告 1.22 以上版本不兼容，1.17 版本部署 bcs 会失败。 | `kubectl version` |
+| kubenetes 版本 | 在 1.20 与 1.23 版本测试过，其他版本未经测试。1.24 版本暂不支持 containerd，1.17 版本部署 bcs 会失败。 | `kubectl version` |
 
 
 <a id="get-a-k8s-cluster" name="get-a-k8s-cluster"></a>

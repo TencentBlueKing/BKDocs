@@ -366,7 +366,7 @@ kubectl get pod -A | grep bk-codecc
 目前 CodeCCCheckAtom 插件需要配置后方可使用。
 
 进入配置界面：
-* 你可以修改如下链接中的域名部分，快速直达： http://devops.bkce7.bktencent.com/console/store/manage/atom/CodeCCCheckAtom/setting/private
+* 你可以修改如下链接中的域名部分，快速直达： `http://devops.bkce7.bktencent.com/console/store/manage/atom/CodeCCCheckAtom/setting/private`
 * 或者从蓝鲸桌面打开 “蓝盾” 应用，进入“研发商店” —— “工作台” 界面。在流水线插件列表中找到 CodeCC 代码检查（或英文版的 “CodeCC Code Check”），点击名称进入插件信息概览界面，切换到 “基本设置”，然后切换为 “私有配置”。
 
 在 “私有配置” 界面，点击 “新增配置” 按钮新增如下四个配置项：

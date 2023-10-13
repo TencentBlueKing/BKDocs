@@ -87,6 +87,9 @@ libssl-dev
 default-libmysqlclient-dev
 ```
 ### 应用无法开始构建（fix-unable-select-buildpack）
+如果你使用了蓝鲸 V7 ，请先确认是否完成了 “上传 PaaS runtimes 到制品库” 步骤，请点击版本号查看对应的文档：
+* [7.0 环境](../../../../DeploymentGuides/7.0/paas-upload-runtimes.md)
+* [7.1 环境](../../../../DeploymentGuides/7.1/paas-upload-runtimes.md)
 
 应用项目结构不符合所选的构建工具，请检查和修复项目结构：
 
@@ -108,6 +111,10 @@ STATIC_ROOT = '/tmp'
 除此之外，你也可以在“环境配置”新增一个 DISABLE_COLLECTSTATIC = 1 的环境变量，这样做可以跳过整个 collectstatic 阶段。除非确实需要，否则不建议使用这种方式解决报错问题。
 
 ### 修复 Python 应用 runtime 报错问题（fix-py-runtime-error）
+如果你使用了蓝鲸 V7 ，请先确认是否完成了 “上传 PaaS runtimes 到制品库” 步骤，请点击版本号查看对应的文档：
+* [7.0 环境](../../../../DeploymentGuides/7.0/paas-upload-runtimes.md)
+* [7.1 环境](../../../../DeploymentGuides/7.1/paas-upload-runtimes.md)
+
 出现这个问题的原因是应用指定的 Python 版本和 Stack（镜像）不兼容。请先打开“环境管理”，检查应用当前的 Stack 版本，比如 heroku-18 或者 blueking-18。
 
 然后访问 [自定义 Python 版本 文档](../topics/paas/choose_python_version.md)，挑选你需要的版本号。然后参考文档指引修复该问题。
