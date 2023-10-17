@@ -27,56 +27,144 @@
 - 文档包： 仓库为 https://github.com/TencentBlueKing/support-docs/tree/prod-sg, 该文档包随时下载可用。
 
 - 外网请准备github地址，如内网请准备gitlab地址。
-
-### SaaS部署指引
-
-文档SaaS部署大致部署可以分为以下三个步骤：
-
-1. 进入开发者中心，创建应用
-2. 创建S-mart应用
-3. 上传saas包
-4. 部署saas
-5. 验收
+- 注意：所选用的 git 必须和 saas 所在服务器直接要网络相通
 
 
-具体细节操作步骤如下：
-
-1. 进入开发者中心 
-![2023-10-11-16-55-01](assets/2023-10-11-16-55-01.png)
-
-2. 创建文档中心新应用
-![2023-10-11-16-56-30](assets/2023-10-11-16-56-30.png)
-
-3. 将下载好的文档saas包上传至开发者中心后台，应用就自动创建好了（注意包要下载tar.gz的格式）
-![2023-10-11-16-57-17](assets/2023-10-11-16-57-17.png)
-
-4. 确认创建应用
-![2023-10-11-17-21-28](assets/2023-10-11-17-21-28.png)
-
-5. 找到部署点击部署
-![2023-10-12-11-28-42](assets/2023-10-12-11-28-42.png)
-
-6. 选择正式环境(这里是验收环境，直接一步到位，如有特殊情况可以先部署预发布)
-![2023-10-12-11-33-28](assets/2023-10-12-11-33-28.png)
-
-
-最后我们进入到访问链接点击访问，能看到正常访问就是完成了。
-附截图
-
-### 文档包部署指引及SaaS基本配置
+### 文档包部署指引
 
 #### 能通外网
 
-- github部署
+- **github 部署**
 
-    准备好gitlabxxx
+
+1. 新建 github 项目
+    
+    ![2023-10-16-09-53-45](assets/2023-10-16-09-53-45.png)
+    ![2023-10-16-09-55-35](assets/2023-10-16-09-55-35.png)
+
+2. 本地创建目录并解压文档包
+    ```
+    mkdir support-docs-test && tar xf support-docs-tar.gz -C support-docs-test/
+    cd support-docs-test/
+    ```
+
+3. 本地 git 初始化并推送至远程仓库
+
+    ```
+    # git 初始化
+    git config --global user.name "bkuser"
+    git config --global user.email "bkuser@test.com"
+    git init
+
+    # 推送至远程仓库
+    git add .
+    git commit -m "upload the document package"
+    git branch -M main
+    git remote add origin https://github.com/bkuser/support-docs-test.git
+    git push -u origin main
+    ```
 
 
 #### 不能通外网
 
 - gitlab 
 
--  离线方案(暂时未开放)
+1. 新建 gitlab 项目
+    
+    ![2023-10-17-10-58-09](assets/2023-10-17-10-58-09.png)
+    ![2023-10-17-10-58-10](assets/2023-10-17-10-58-10.png)
+    ![2023-10-17-10-58-11](assets/2023-10-17-10-58-11.png)
+
+2. 本地创建目录并解压文档包
+    ```
+    mkdir support-docs-test && tar xf support-docs-tar.gz -C support-docs-test/
+    cd support-docs-test/
+    ```
+
+3. 本地 git 初始化并推送至远程仓库
+
+    ```
+    # git 初始化
+    git config --global user.name "bkuser"
+    git config --global user.email "bkuser@test.com"
+    git init
+
+    # 推送至远程仓库
+    git remote add origin http://gitlab.bktest.com/bkuser/support-docs-test.git
+    git add .
+    git commit -m "upload the document package"
+    git push -u origin master
+    ```
+
+### SaaS部署指引
+
+文档SaaS部署大致部署可以分为以下六个步骤：
+
+1. 进入开发者中心，创建应用
+2. 创建S-mart应用
+3. 上传saas包
+4. 配置环境变量
+5. 部署saas
+6. 验收
+
+
+具体细节操作步骤如下：
+
+1. 进入开发者中心 
+
+    ![2023-10-11-16-55-01](assets/2023-10-11-16-55-01.png)
+
+2. 创建文档中心新应用
+
+    ![2023-10-11-16-56-30](assets/2023-10-11-16-56-30.png)
+
+3. 将下载好的文档saas包上传至开发者中心后台，应用就自动创建好了（注意包要下载tar.gz的格式）
+
+    ![2023-10-11-16-57-17](assets/2023-10-11-16-57-17.png)
+
+4. 确认创建应用
+
+    ![2023-10-11-17-21-28](assets/2023-10-11-17-21-28.png)
+
+5. saas部署前配置环境变量（Github）
+
+- 进入环境变量配置页面
+    
+    路径：以“admin”的角色进入“开发者中心” -> 应用开发 -> 文档中心 -> 应用引擎 -> 环境配置 -> 选择 “批量导入/导出” 导入文件
+
+    ![2023-10-12-11-28-42](assets/2023-10-12-11-28-42.png)
+    ![2023-10-17-11-21-29](assets/2023-10-17-11-21-29.png)
+
+- 环境变量文件需要修改的地方
+
+    | 环境变量Key        | 环境变量value           | 参考值 |
+    | :----             | :----                  | :---- |
+    | BK_DOMAIN         | 域名                    | bk.bktencent.com |
+    | DOCS_EDIT_URL     | 仓库url                 | https://github.com/bkuser/support-docs-test/tree/main| 
+    | GIT_REPO_PATH     | 仓库路径                | bkuser/support-docs-test |
+    | GIT_REPO_BRANCH   | 仓库分支                | main |
+    | GIT_USER          | Git用户名               | bkuser |
+    | GIT_ACCESS_TOKEN  | Git用户token        | ghp_************* |
+    | GIT_PROVIDER_ADDR | Git服务地址   | github.com |
+    | GIT_RAW_FILE_ADDR | Git原始文件地址   | github.com |
+
+- 导入环境变量
+    
+    ![2023-10-17-11-21-30](assets/2023-10-17-11-21-30.png)
+
+- 导入成功
+
+    ![2023-10-17-11-21-31](assets/2023-10-17-11-21-31.png)
+
+
+6. 选择正式环境(这里是验收环境，直接一步到位，如有特殊情况可以先部署预发布)
+    ![2023-10-12-11-33-28](assets/2023-10-12-11-33-28.png)
+
+
+7. 最后我们进入到访问链接点击访问，能看到正常访问就是完成了。
+    ![2023-10-17-10-16-56](assets/2023-10-17-10-16-56.png)
+
+
 
 ## 维护指引
 
