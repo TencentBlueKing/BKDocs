@@ -22,22 +22,29 @@
     - 部署权限
     本文档是按admin权限进行实践的，如普通用户遇到权限不足请联系环境负责人或者[参考文档](../7.0/../../IAM/1.12/UserGuide/Feature/PermissionsApply.md)申请权限。
 
-- saas包： 该包有文档的发行版,可用在github进行下载最新的稳定版本进行操作: https://github.com/TencentBlueKing/blueking-docs/releases
+### 文档包和SaaS包交付
 
+因暂未开源,目前文档包交付形式是在群内交包,如有需要进群请联系 xx
+后续开源后可以自行去仓库进行下载：
+
+- saas包： 该包有文档的发行版,可用在github进行下载最新的稳定版本进行操作: https://github.com/TencentBlueKing/blueking-docs/releases
 - 文档包： 仓库为 https://github.com/TencentBlueKing/support-docs/tree/prod-sg, 该文档包随时下载可用。
 
-- 外网请准备github地址，如内网请准备gitlab地址。
-- 注意：所选用的 <font color="red">git 必须和 saas 所在服务器直接要网络相通</font>
+### 部署前详解
 
-
-
+文档中心部署分为两个板块，一个是文档包，一个是文档中心SaaS。由于最终部署后，需要把文档包传入SaaS项目中，所以目前采用的有两种方案：
+1. 后台上传
+2. 将文档内容传至git，在SaaS配置好git的对应变量，启动saas后自动去git拉取文档
+下面我们继续介绍部署过程指引
 
 ### 文档包部署指引
+
+- 外网请准备github地址，如内网请准备gitlab地址。
+- 注意：所选用的 <font color="red">git 必须和 SaaS 所在服务器直接要网络相通</font>
 
 #### 能通外网
 
 - **github 部署**
-
 
 1. 新建 github 项目
     
@@ -98,6 +105,8 @@
     git commit -m "upload the document package"
     git push -u origin master
     ```
+
+- 离线方案(待开放)
 
 ### 文档包部署指引及SaaS基本配置
 
@@ -167,6 +176,7 @@
 7. 最后我们进入到访问链接点击访问，能看到正常访问就是完成了。
     ![2023-10-17-10-16-56](assets/2023-10-17-10-16-56.png)
 
+***<font color="red">附件</font>：[bk_docs_center_default_env_vars.yaml](xx)***
 
 
 ## 维护指引
@@ -226,7 +236,7 @@
 
 #### 配置文件详解
 
-##### <span id="jump1">**SUMMARY.md**</span>
+##### <span id="jump1">**SUMMARY.md文件简介**</span>
 
 SUMMARY.md标准写法案例(后续路径改为英文,标题可以继续用中文)，该文件对应官网参考https://bk.tencent.com/docs/markdown/ZH/CMDB/3.11/UserGuide/Introduce/Overview.md
 
