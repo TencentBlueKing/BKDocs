@@ -24,7 +24,7 @@
 
 ### 文档包和SaaS包交付
 
-因暂未开源,目前文档包交付形式是在群内交包,如有需要进群请联系 xx
+因暂未开源,目前文档包交付形式是在企业v群内交包,如有需要进群请联系 seingan
 后续开源后可以自行去仓库进行下载：
 
 - saas包： 该包有文档的发行版,可用在github进行下载最新的稳定版本进行操作: https://github.com/TencentBlueKing/blueking-docs/releases
@@ -140,7 +140,10 @@
 
 5. saas部署前配置环境变量（Github）
 
+    ***<font color="red">附件</font>：[bk_docs_center_default_env_vars.yaml](http://bktencent-1252002024.file.myqcloud.com/bk_docs_center_default_env_vars.yaml)***
+    
 - 进入环境变量配置页面
+
     
     路径：以“admin”的角色进入“开发者中心” -> 应用开发 -> 文档中心 -> 应用引擎 -> 环境配置 -> 选择 “批量导入/导出” 导入文件
 
@@ -172,11 +175,13 @@
 6. 选择正式环境(这里是验收环境，直接一步到位，如有特殊情况可以先部署预发布)
     ![2023-10-12-11-33-28](assets/2023-10-12-11-33-28.png)
 
+    注意：如遇到部署失败的情况，只要看到进程状态正常就没问题
+    ![2023-10-17-16-06-36](assets/2023-10-17-16-06-36.png)
 
 7. 最后我们进入到访问链接点击访问，能看到正常访问就是完成了。
     ![2023-10-17-10-16-56](assets/2023-10-17-10-16-56.png)
 
-***<font color="red">附件</font>：[bk_docs_center_default_env_vars.yaml](xx)***
+
 
 
 ## 维护指引
