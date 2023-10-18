@@ -156,7 +156,7 @@
 
 ## 特殊文件
 在产品版本中，可以使用SUMMARY.md来定位文档的菜单，控制了左边菜单栏的显示内容。它通过 Markdown 中的列表语法来表示文件的父子关系。
-#### 整体 SUMMARY.md 模版
+#### 整体SUMMARY.md模版
 
 以 节点管理 的 整体 SUMMARY.md 文件为例(<font color=red>注意：需要确保路径为英文路径</font>)：
 此模板可以结合https://bk.tencent.com/docs/markdown/ZH/NodeMan/2.2/UserGuide/Introduce/Overview.md左边目录进行参照

@@ -110,7 +110,7 @@
 
 - **离线方案(待开放)**
 
-### 文档包部署指引及SaaS基本配置
+### SaaS部署指引及基本配置
 
 文档SaaS部署大致部署可以分为以下六个步骤：
 
@@ -142,8 +142,8 @@
 
 5. saas部署前配置环境变量（Github）
 
-    ***<font color="red">附件</font>：[bk_docs_center_default_env_vars.yaml](http://bktencent-1252002024.file.myqcloud.com/bk_docs_center_default_env_vars.yaml)***
-    [bk_docs_center_default_env_vars.yaml](http://bktencent-1252002024.file.myqcloud.com/bk_docs_center_default_env_vars.yaml)
+    ***<font color="red">附件</font>：[bk_docs_center_default_env_vars.yaml](https://bktencent-1252002024.file.myqcloud.com/bk_docs_center_default_env_vars.yaml)***
+
     
 - 进入环境变量配置页面
 
@@ -202,7 +202,7 @@ SaaS环境变量汇总请[参考文档](https://github.com/TencentBlueKing/bluek
 
 ##### <span id="jump1">**SUMMARY.md文件简介**</span>
 
-请参考文档的[整体 SUMMARY.md 模版](./collaborateguide.md#整体-summarymd-模版)
+请参考文档的[整体 SUMMARY.md 模版](./collaborateguide.md#整体SUMMARY.md模版)
 
 ##### CONFIG目录
 
