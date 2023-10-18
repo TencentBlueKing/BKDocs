@@ -143,6 +143,7 @@
 5. saas部署前配置环境变量（Github）
 
     ***<font color="red">附件</font>：[bk_docs_center_default_env_vars.yaml](http://bktencent-1252002024.file.myqcloud.com/bk_docs_center_default_env_vars.yaml)***
+    [bk_docs_center_default_env_vars.yaml](http://bktencent-1252002024.file.myqcloud.com/bk_docs_center_default_env_vars.yaml)
     
 - 进入环境变量配置页面
 
