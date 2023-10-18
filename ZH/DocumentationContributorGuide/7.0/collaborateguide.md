@@ -159,6 +159,7 @@
 #### 整体 SUMMARY.md 模版
 
 以 节点管理 的 整体 SUMMARY.md 文件为例(<font color=red>注意：需要确保路径为英文路径</font>)：
+此模板可以结合https://bk.tencent.com/docs/markdown/ZH/NodeMan/2.2/UserGuide/Introduce/Overview.md左边目录进行参照
 
 ```bash
 # Summary
