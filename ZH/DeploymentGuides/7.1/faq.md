@@ -320,6 +320,71 @@ kubectl get pod -n blueking bk-elastic-elasticsearch-data-0 -o json | jq '.spec.
 ```
 说明配置成功且已经生效。此时 pod 也成功启动，说明此前为资源不足所致。如果依旧未能启动，可以尝试继续扩大配额。
 
+### 彻底删除 SaaS 应用
+如果在 SaaS 界面删除了应用，是无法重新创建出同 App_code 的应用的，此时可以强制删除。
+
+在中控机执行如下命令：
+``` bash
+PAAS3_API_Pod=$(kubectl get pods -n blueking | awk /bkpaas3-apiserver-web-/'{print $1}')
+kubectl exec -n blueking -i "$PAAS3_API_Pod" -c web -- python manage.py force_del_app -key="应用的APPCODE"
+```
+>如果上面的命令出错，可以尝试下：
+>``` bash
+>kubectl exec -n blueking -i "$PAAS3_API_Pod" -c web -- python manage.py manage.py shell
+>```
+>然后在新出现的 Django shell 里执行：
+>``` python
+>from paasng.platform.applications.models import Application
+>Application.default_objects.filter(code='应用的APPCODE').delete()
+>```
+
+### 如何在脚本中调用 API
+蓝鲸提供了 网关 API 和 组件 API （对应 6.x 中的 ESB）。访问域名为 `bkapi.$BK_DOMAIN`。
+
+为了调用这些 API，你应该创建一个新的 SaaS，然后以此 SaaS 的身份（ `bk_app_code` 和 `bk_app_secret` ）调用 API。
+
+基于安全考虑，API 都需要校验用户名及用户登录态（`bk_token` 或者 `access_token`）。
+
+在开发 SaaS 应用时，可以通过浏览器 Cookie 取得这些内容。
+
+如果希望在脚本中调用，则无法直接取得。有 2 个解决办法：
+1. 推荐：使用下方脚本模拟登录，将 cookie 写入文件，后续脚本加载 cookie 文件获取 `bk_username` 和 `bk_token` 完成校验。当登录过期后，重新调用一次登录脚本。
+2. 不推荐：将你的 SaaS 加入免认证名单，将不检查登录态，无条件信任提供的 `bk_username`。方法可以参考社区分享： https://bk.tencent.com/s-mart/community/question/11125 。
+
+模拟登录脚本参考：
+
+将一些公共变量写入配置文件，如 `$HOME/.config/bk-login.rc`：
+``` bash
+BK_DOMAIN=bkce7.bktencent.com
+entry_url="http://$BK_DOMAIN"
+username=admin
+password=略
+# 修改为你希望保存cookie的位置，你的脚本需要读取并解析此cookie文件。
+cookie_jar=/dev/shm/bk-login-cookie.txt
+```
+
+编写登录脚本 `bk-login.sh`：
+``` bash
+#!/bin/bash
+# 加载刚才定义的配置文件
+source "$HOME/.config/bk-login.rc"
+
+bk_login(){
+  local login_url response csrf_token
+  login_url="$entry_url/login/?c_url=/"
+  # 先请求一次获取csrf token
+  response=$(curl -sSL -c "$cookie_jar" "$login_url")
+  csrf_token=$(grep -oP 'bklogin_csrftoken\t\K[^\t]+' "$cookie_jar" 2>/dev/null)
+  echo >&2 "csrf_token=$csrf_token"
+  # 使用提取到的CSRF令牌和登录凭据进行登录
+  curl -v \
+    -b "$cookie_jar" -c "$cookie_jar" \
+    -d "username=$username&password=$password&csrfmiddlewaretoken=$csrf_token&next=&app_id=" \
+    "$login_url"
+}
+
+bk_login
+```
 
 ## 排查思路
 

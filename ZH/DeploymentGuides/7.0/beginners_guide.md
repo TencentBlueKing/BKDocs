@@ -1,3 +1,8 @@
+>**提示**
+>
+>蓝鲸 7.0 版本于 2023 年 10 月底停止标准维护，不提供单产品更新及补丁修复。于 2024 年 10 月底停止安全修复。<br />
+>新用户请直接 [部署 7.1 版本](../7.1/index.md)，存量用户可以 [升级到 7.1 版本](../7.1/v70-upgrade-to-v71.md)。
+
 
 >本文简单介绍了容器化版相关说明，同时详细介绍了容器化版蓝鲸各产品、组件和 release、charts 包的说明，以及各个服务对应 pod 的主要功能，建议在部署容器化版前，阅读此篇文章，对容器化版蓝鲸有大致的了解，以便理解容器化整体的形态及部署过程遇到某个流程异常的排查。
 
@@ -42,7 +47,7 @@
 
 ## 开源组件部分说明
 
-从开源的 bitnami 仓库拿 charts 包 https://charts.bitnami.com/bitnami 以及本地的 charts 包 `~/bkhelmfile/blueking/charts`：
+从开源的 bitnami 仓库拿 charts 包 `https://charts.bitnami.com/bitnami` 以及本地的 charts 包 `~/bkhelmfile/blueking/charts`：
 
 ``` plain
 00-storage-mysql.yaml.gotmpl
@@ -54,7 +59,7 @@
 
 
 ## 蓝鲸自研产品模块说明
-从蓝鲸的 bkrepo 仓库 https://hub.bktencent.com/chartrepo/blueking 以及本地的 charts 包 /bkhelmfile/blueking/charts
+从蓝鲸的 bkrepo 仓库 `https://hub.bktencent.com/chartrepo/blueking` 以及本地的 charts 包 /bkhelmfile/blueking/charts
 
 ### PaaS 平台
 

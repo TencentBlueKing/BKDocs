@@ -1,7 +1,20 @@
 
 蓝鲸基础套餐的部署主要分为两个部分：先在中控机部署后台；然后在浏览器安装并配置 SaaS 。
 
+>**提示**
+>
+>蓝鲸 7.0 版本于 2023 年 10 月底停止标准维护，不提供单产品更新及补丁修复。于 2024 年 10 月底停止安全修复。<br />
+>新用户请直接 [部署 7.1 版本](../7.1/index.md)，存量用户可以 [升级到 7.1 版本](../7.1/v70-upgrade-to-v71.md)。
+
 # 准备工作
+## 安装下载脚本
+CentOS 支持在当前用户的 `bin` 目录下安装命令：
+``` bash
+mkdir -p ~/bin/
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh -o ~/bin/bkdl-7.0-stable.sh
+chmod +x ~/bin/bkdl-7.0-stable.sh
+```
+
 ## 中控机安装工具
 >**提示**
 >
@@ -39,7 +52,7 @@ done
 
 请使用如下命令下载蓝鲸基础套餐 helmfile 及公共证书。
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest base cert
+bkdl-7.0-stable.sh -ur latest base cert
 ```
 
 网络策略要求：
@@ -416,11 +429,11 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
 ## 一键部署基础套餐 SaaS
 在 **中控机** 下载所需的文件。
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest saas  # 下载SaaS安装包及节点管理托管的常用文件
+bkdl-7.0-stable.sh -ur latest saas  # 下载SaaS安装包及节点管理托管的常用文件
 ```
 如果你计划管控多个云区域的主机，或者管控 32 位操作系统主机，请补充下载完整的待托管文件：
 ``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest nm_gse_full  # 节点管理托管的全部文件
+bkdl-7.0-stable.sh -ur latest nm_gse_full  # 节点管理托管的全部文件
 ```
 
 在 **中控机** 使用 “一键部署” 脚本部署基础套餐 SaaS 到生产环境。
