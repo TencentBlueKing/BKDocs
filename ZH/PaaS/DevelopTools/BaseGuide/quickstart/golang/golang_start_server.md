@@ -18,7 +18,7 @@ logdir = logs/
 dbname = 应用ID
 dbuser = root
 dbpasswd = ""
-dbhost = 10.0.0.1
+dbhost = 127.0.0.1
 dbport = 3306
 ```
 
@@ -36,17 +36,17 @@ Query OK, 1 row affected (0.01 sec)
 bee 的数据库迁移命令如下：[bee migrate-命令](https://beego.gocn.vip/beego/zh/developing/bee/#bee-%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3) 
 
 ```bash
-bee migrate [-driver=mysql] [-conn="root:@tcp(10.0.0.1:3306)/test"]
+bee migrate [-driver=mysql] [-conn="root:@tcp(127.0.0.1:3306)/test"]
     run all outstanding migrations
     -driver: [mysql | postgresql | sqlite], the default is mysql
-    -conn:   the connection string used by the driver, the default is root:@tcp(10.0.0.1:3306)/test
+    -conn:   the connection string used by the driver, the default is root:@tcp(127.0.0.1:3306)/test
 ```
 
 例如 mysql 运行在本地，端口为 3306，dbuser 为 root，dbpasswd 为空，APP_ID 为 go-guide，使用以下命令来完成 migration。
 
 ```bash
 $ cd $GOPATH/src/{APP_ID}
-$ bee migrate -conn="root:@tcp(10.0.0.1:3306)/go-guide"
+$ bee migrate -conn="root:@tcp(127.0.0.1:3306)/go-guide"
 ______
 | ___ \
 | |_/ /  ___   ___
@@ -54,7 +54,7 @@ ______
 | |_/ /|  __/|  __/
 \____/  \___| \___| v1.10.0
 2020/06/05 11:49:40 INFO     ▶ 0001 Using 'mysql' as 'driver'
-2020/06/05 11:49:40 INFO     ▶ 0002 Using 'root:@tcp(10.0.0.1:3306)/go-guide' as 'conn'
+2020/06/05 11:49:40 INFO     ▶ 0002 Using 'root:@tcp(127.0.0.1:3306)/go-guide' as 'conn'
 2020/06/05 11:49:40 INFO     ▶ 0003 Running all outstanding migrations
 2020/06/05 11:49:43 INFO     ▶ 0004 |> 2020/06/05 11:49:41.058 [I]  total success upgrade: 0  migration
 2020/06/05 11:49:43 SUCCESS  ▶ 0005 Migration successful!
@@ -71,7 +71,7 @@ ______
 
 ```bash
 # 内部版应用
-10.0.0.1 dev.xxx.xxx（注意：必须与PaaS平台主站在同一个一级域名)
+127.0.0.1 dev.xxx.xxx（注意：必须与PaaS平台主站在同一个一级域名)
 ```
 
 ### 本地启动项目

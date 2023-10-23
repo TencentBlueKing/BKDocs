@@ -33,10 +33,10 @@ helm repo add blueking https://hub.bktencent.com/chartrepo/blueking
 
   ```
           hosts {
-            10.0.0.1 bcs-api-gateway
+            1.1.1.1 bcs-api-gateway
             fallthrough
           }
-          # 10.0.0.1 是集群“蓝鲸蓝鲸7.0”任意一台node，最好是master
+          # 1.1.1.1 是集群“蓝鲸蓝鲸7.0”任意一台node，最好是master
   ```
 
   ![](../assets/coredns_hosts.pn)

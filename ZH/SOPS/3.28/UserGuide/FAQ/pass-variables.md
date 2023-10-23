@@ -101,14 +101,14 @@ ${'\n'.join(log_outputs_xxxx['message'].split('|'))}
 789
 
 举例2：
-原始变量为：<SOPS_VAR>message:10.0.0.1@name1|10.0.0.1@name2|10.0.0.1@name3</SOPS_VAR>
+原始变量为：<SOPS_VAR>message:1.1.1.1@name1|2.2.2.2@name2|3.3.3.3@name3</SOPS_VAR>
 
 引用时，先用空格替换@，再用换行替换竖线：${'\n'.join(' '.join(log_outputs_xxxx['message'].split('@')).split('|'))}
 
 变量执行时，值为：
-10.0.0.1 name1
-10.0.0.1 name2
-10.0.0.1 name3
+1.1.1.1 name1
+2.2.2.2 name2
+3.3.3.3 name3
 ```
 
   

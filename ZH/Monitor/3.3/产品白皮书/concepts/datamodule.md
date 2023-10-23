@@ -54,9 +54,9 @@
 ```json
 {
     # 数据通道标识，必需项
-    "data_id": 10.0.0.14,
+    "data_id": 11223344,
     # 数据通道标识验证码，必需项
-    "access_token": "d9007a0d10.0.0.10.0.0.18693c1a",
+    "access_token": "d9007a0d11111111111118693c1a",
     "data": [{
         # 事件标识名，最大长度128
                 "event_name": "input_your_event_name",
@@ -65,7 +65,7 @@
                     "content": "user xxx login failed"
                 },
         # 来源标识如IP，必需项
-        "target": "10.0.0.1",
+        "target": "127.0.0.1",
         # 自定义维度，非必需项
         "dimension": {
             "module": "db",
@@ -82,16 +82,16 @@
 ```json
 {
     # 数据通道标识，必需项
-    "data_id": 10.0.0.14,
+    "data_id": 11223344,
     # 数据通道标识验证码，必需项
-    "access_token": "d9007a0d10.0.0.10.0.0.18693c1a",
+    "access_token": "d9007a0d11111111111118693c1a",
     "data": [{
         # 指标，必需项
         "metrics": {
             "http_request_total": 10
         },
         # 来源标识如IP，必需项
-        "target": "10.0.0.1",
+        "target": "127.0.0.1",
         # 自定义维度，非必需项
         "dimension": {
             "module": "db",

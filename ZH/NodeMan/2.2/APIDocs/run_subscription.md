@@ -101,12 +101,12 @@ Plugin
                 "bk_obj_id": "module"
             },
             {
-                "ip": "10.0.0.1",
+                "ip": "127.0.0.1",
                 "bk_cloud_id": 0,
                 "bk_supplier_id": 0
             },
             {
-                "ip": "10.0.0.1",
+                "ip": "127.0.0.1",
                 "bk_cloud_id": 1,
                 "instance_info": {
                     "key": "",
@@ -114,7 +114,7 @@ Plugin
                     "ap_id": 1,
                     "account": "root",
                     "os_type": "LINUX",
-                    "login_ip": "10.0.0.1",
+                    "login_ip": "127.0.0.1",
                     "password": "Qk=",
                     "username": "admin",
                     "auth_type": "PASSWORD",
@@ -128,8 +128,8 @@ Plugin
                     "bk_cloud_name": "xxxx",
                     "bt_speed_limit": null,
                     "host_node_type": "PROXY",
-                    "bk_host_innerip": "10.0.0.1",
-                    "bk_host_outerip": "10.0.0.1",
+                    "bk_host_innerip": "127.0.0.1",
+                    "bk_host_outerip": "127.0.0.1",
                     "install_channel_id": null,
                     "bk_supplier_account": "0",
                     "peer_exchange_switch_for_agent": 1

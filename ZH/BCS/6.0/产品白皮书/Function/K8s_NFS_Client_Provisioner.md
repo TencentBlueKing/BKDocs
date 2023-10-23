@@ -31,19 +31,19 @@ systemctl start rpcbind
 systemctl start nfs
 ```
 
-设置 `/nfs` 目录为挂载目录，对 `110.0.0.1/16` 网段开放。
+设置 `/nfs` 目录为挂载目录，对 `10.0.0.0/16` 网段开放。
 
 ```bash
 # mkdir /nfs
 
 # vim /etc/exports
-/nfs    110.0.0.1/16(rw,sync,no_root_squash,no_all_squash)
+/nfs    10.0.0.0/16(rw,sync,no_root_squash,no_all_squash)
 
 # systemctl restart nfs
 
 # showmount -e localhost
 Export list for localhost:
-/nfs 110.0.0.1/16
+/nfs 10.0.0.0/16
 ```
 
 本地挂载测试，验证 NFS 部署是否成功。

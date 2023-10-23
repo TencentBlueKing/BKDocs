@@ -116,7 +116,7 @@ tar xf ~/bkhelmfile/bin/helm-plugin-diff.tgz -C ~/
     ./custom.yaml
     
     # 推送文件到 kubernetes master 机器上，请注意替换 kubernetes_master_host 为实际的机器IP
-    kubernetes_master_host=<10.0.0.1>
+    kubernetes_master_host=<127.0.0.1>
     rsync -avgz /data/custom_yaml.tgz root@$kubernetes_master_host:/data/
     ```
 
@@ -363,7 +363,7 @@ for c in gse_job_api_client.keystore gse_job_api_client.truststore job_server.tr
 
 ```bash
 # 同步至容器化 master 机器，请注意替换为实际的IP
-KUBERNETES_MASTER_IP=<10.0.0.1>
+KUBERNETES_MASTER_IP=<127.0.0.1>
 rsync -avgz /data/src/cert root@$KUBERNETES_MASTER_IP:~/bkhelmfile/blueking/environments/default/
 
 #  容器化 Master 机器确认与二进制的证书数量一致
@@ -997,9 +997,9 @@ update bkiam.saas_system_info set provider_config='{"host":"http://apps.$BK_DOMA
 
     ```bash
     vim /etc/sysconfig/consul
-    # 注释原有的配置项目开启 -client=10.0.0.1
+    # 注释原有的配置项目开启 -client=0.0.0.0
     # 直接使用下述内容替换原来的内容
-    CMD_OPTS="agent -config-dir=/etc/consul.d -config-dir=/etc/consul.d/service -data-dir=/var/lib/consul -client=10.0.0.1"
+    CMD_OPTS="agent -config-dir=/etc/consul.d -config-dir=/etc/consul.d/service -data-dir=/var/lib/consul -client=0.0.0.0"
     
     systemctl restart consul.service
     ```

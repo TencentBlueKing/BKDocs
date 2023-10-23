@@ -160,7 +160,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
     ```bash
     cat << EOF >>/data/install/install.config
     [iam_search_engine]
-    10.0.0.1 iam_search_engine
+    10.0.0.3 iam_search_engine
     EOF
     ```
 
@@ -211,7 +211,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 
     ```bash
     # 请以实际的 IP 和域名为准
-    10.0.0.1 bkapi_check.bktencent.com
+    10.0.0.2 bkapi_check.bktencent.com
     ```
 
 

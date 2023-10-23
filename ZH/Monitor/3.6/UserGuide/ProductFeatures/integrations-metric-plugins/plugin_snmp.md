@@ -70,7 +70,7 @@ modules:
     walk:       # List of OIDs to walk. Can also be SNMP object names or specific instances.
       - 1.3.6.1.2.1.2              # Same as "interfaces"
       - sysUpTime                  # Same as "1.3.6.1.2.1.1.3"
-      - 1.3.6.1.2.1.310.0.0.1.6.40  # Instance of "ifHCInOctets" with index "40"
+      - 1.3.6.1.2.1.31.1.1.1.6.40  # Instance of "ifHCInOctets" with index "40"
 ```
 
 generator执行命令，其中generator.yml放置在generator相同目录下，所以这里不用在参数指定
@@ -90,7 +90,7 @@ if_mib:
   - 1.3.6.1.2.1.2
   get:
   - 1.3.6.1.2.1.1.3.0
-  - 1.3.6.1.2.1.310.0.0.1.6.40
+  - 1.3.6.1.2.1.31.1.1.1.6.40
   metrics:
   - name: sysUpTime
     oid: 1.3.6.1.2.1.1.3
@@ -502,9 +502,9 @@ if_mib:
     - labelname: ifIndex
       type: gauge
   - name: ifHCInOctets
-    oid: 1.3.6.1.2.1.310.0.0.1.6
+    oid: 1.3.6.1.2.1.31.1.1.1.6
     type: counter
-    help: The total number of octets received on the interface, including framing characters - 1.3.6.1.2.1.310.0.0.1.6
+    help: The total number of octets received on the interface, including framing characters - 1.3.6.1.2.1.31.1.1.1.6
     indexes:
     - labelname: ifIndex
       type: gauge
@@ -587,7 +587,7 @@ modules:
     walk:       # List of OIDs to walk. Can also be SNMP object names or specific instances.
       - 1.3.6.1.2.1.2              # Same as "interfaces"
       - sysUpTime                  # Same as "1.3.6.1.2.1.1.3"
-      - 1.3.6.1.2.1.310.0.0.1.6.40  # Instance of "ifHCInOctets" with index "40"
+      - 1.3.6.1.2.1.31.1.1.1.6.40  # Instance of "ifHCInOctets" with index "40"
 ```
 
 使用命令，注意这里使用的命令与主动采集的不同点
@@ -670,7 +670,7 @@ asic_name:
     type: COUNTER
     help: ""
   - name: tunnelConfigRemoteAddress
-    oid: 1.3.6.1.2.1.10.10.0.0.1.2.1.2
+    oid: 1.3.6.1.2.1.10.131.1.1.2.1.2
     type: IPADDR
     help: ""
   - name: sctpStatsGroup
@@ -882,7 +882,7 @@ asic_name:
     type: NOTIFTYPE
     help: ""
   - name: tunnelInetConfigStatus
-    oid: 1.3.6.1.2.1.10.10.0.0.1.3.1.7
+    oid: 1.3.6.1.2.1.10.131.1.1.3.1.7
     type: INTEGER
     help: ""
   - name: nsCacheEnabled
@@ -914,7 +914,7 @@ asic_name:
     type: UNSIGNED32
     help: ""
   - name: tunnelMIBInetGroup
-    oid: 1.3.6.1.2.1.10.0.0.1.2.2
+    oid: 1.3.6.1.2.1.10.131.2.2.2
     type: OBJGROUP
     help: ""
   - name: physicalInterfaceSpeed
@@ -958,7 +958,7 @@ asic_name:
     type: OTHER
     help: ""
   - name: ifHCOutMulticastPkts
-    oid: 1.3.6.1.2.1.310.0.0.1.12
+    oid: 1.3.6.1.2.1.31.1.1.1.12
     type: COUNTER64
     help: ""
   - name: memTotalSwap
@@ -986,7 +986,7 @@ asic_name:
     type: INTEGER
     help: ""
   - name: tunnelConfigTable
-    oid: 1.3.6.1.2.1.10.10.0.0.1.2
+    oid: 1.3.6.1.2.1.10.131.1.1.2
     type: OTHER
     help: ""
   - name: alarmSampleType
@@ -1114,7 +1114,7 @@ asic_name:
     type: OBJID
     help: ""
   - name: tunnelInetConfigIfIndex
-    oid: 1.3.6.1.2.1.10.10.0.0.1.3.1.6
+    oid: 1.3.6.1.2.1.10.131.1.1.3.1.6
     type: INTEGER32
     help: ""
   - name: logMatchName
@@ -1162,7 +1162,7 @@ asic_name:
     type: OTHER
     help: ""
   - name: ipSystemStatsInDelivers
-    oid: 1.3.6.1.2.1.4.310.0.0.18
+    oid: 1.3.6.1.2.1.4.31.1.1.18
     type: COUNTER
     help: ""
   - name: udpLocalPort
@@ -1182,7 +1182,7 @@ asic_name:
     type: COUNTER
     help: ""
   - name: tunnelIfEntry
-    oid: 1.3.6.1.2.1.10.10.0.0.1.1.1
+    oid: 1.3.6.1.2.1.10.131.1.1.1.1
     type: OTHER
     help: ""
   - name: snmpNotifyGroups
@@ -1206,7 +1206,7 @@ asic_name:
     type: OBJGROUP
     help: ""
   - name: tunnelConfigStatus
-    oid: 1.3.6.1.2.1.10.10.0.0.1.2.1.6
+    oid: 1.3.6.1.2.1.10.131.1.1.2.1.6
     type: INTEGER
     help: ""
   - name: hrSWOSIndex
@@ -1238,7 +1238,7 @@ asic_name:
     type: DisplayString
     help: ""
   - name: ipFwAccNrSrcPorts
-    oid: 1.3.6.1.4.1.2021.13.10.0.0.13
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.13
     type: INTEGER32
     help: ""
   - name: icmpStatsInMsgs
@@ -1330,7 +1330,7 @@ asic_name:
     type: INTEGER32
     help: ""
   - name: ifLinkUpDownTrapEnable
-    oid: 1.3.6.1.2.1.310.0.0.1.14
+    oid: 1.3.6.1.2.1.31.1.1.1.14
     type: INTEGER
     help: ""
   - name: netbsd1

@@ -161,7 +161,7 @@ cd /usr/local/gse_bkte/agent/bin 
 
 ```
 #windows多IP配置调整，解决采集器无法上报数据情况
-IP=$(ipconfig|grep "IPv4 Address"|grep -v "10.0.0.1"|awk '{print $NF}'|grep -E "(^9.|^11.)"|sed "s/\r//g")  #如果IP不是9和11开头的请自行调整
+IP=$(ipconfig|grep "IPv4 Address"|grep -v "169.254.68.1"|awk '{print $NF}'|grep -E "(^9.|^11.)"|sed "s/\r//g")  #如果IP不是9和11开头的请自行调整
 echo $IP
 grep "\"agentip\":\"$IP\","  /cygdrive/c/gse/gseagentw/conf/gse.conf || sed -i "/{/a\"agentip\":\"$IP\","  /cygdrive/c/gse/gseagentw/conf/gse.conf 
 cat /cygdrive/c/gse/gseagentw/conf/gse.conf || exit 1

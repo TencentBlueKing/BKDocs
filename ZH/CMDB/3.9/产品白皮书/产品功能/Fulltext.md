@@ -39,9 +39,9 @@ install.config 新增 es7 模块
 [root@node01 install]# cat install.config
 # 单点部署蓝鲸基础版
 [basic]
-10.0.0.180 consul,nginx,mongodb,mysql,zk(config),rabbitmq
-10.0.0.180 paas,usermgr,iam,ssm,cmdb,job,nodeman(nodeman)
-10.0.0.180 license,appo,gse,redis,es7
+192.168.0.180 consul,nginx,mongodb,mysql,zk(config),rabbitmq
+192.168.0.180 paas,usermgr,iam,ssm,cmdb,job,nodeman(nodeman)
+192.168.0.180 license,appo,gse,redis,es7
 
 
 ./bkcli install es7 # 安装 es7

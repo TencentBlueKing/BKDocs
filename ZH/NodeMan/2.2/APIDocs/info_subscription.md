@@ -55,7 +55,7 @@
 
                     },
                     {
-                        "ip": "10.0.0.1",
+                        "ip": "127.0.0.1",
                         "bk_cloud_id": 0,
                         "bk_supplier_id": 0
                     }
@@ -64,7 +64,7 @@
             "pid": 1,
             "target_hosts": [
                 {
-                    "ip": "10.0.0.1",
+                    "ip": "127.0.0.1",
                     "bk_cloud_id": 0,
                     "bk_supplier_id": 0
                 }
@@ -96,7 +96,7 @@
                     "params": {
                         "port_range": "9102,10000-10005,20103,30000-30100",
                         "context": {
-                            "--web.listen-host": "10.0.0.1",
+                            "--web.listen-host": "127.0.0.1",
                             "--web.listen-port": "{{ control_info.port }}"
                         }
                     }

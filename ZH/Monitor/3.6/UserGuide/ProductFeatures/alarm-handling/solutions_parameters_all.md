@@ -31,8 +31,8 @@ target.host.set_string | 集群名 | set1,set2
 target.host.bk_host_id | 主机ID | 1
 target.host.bk_cloud_id | 云区域ID | 0
 target.host.bk_cloud_name | 云区域名称 | 默认区域
-target.host.bk_host_innerip | 内网IP | 10.0.0.1
-target.host.bk_host_outerip | 外网IP | 10.0.0.1
+target.host.bk_host_innerip | 内网IP | 127.0.0.1
+target.host.bk_host_outerip | 外网IP | 127.0.1.11
 target.host.bk_host_name | 主机名 |
 target.host.bk_os_name | 操作系统名称 | linux
 target.host.bk_os_type | 操作系统类型(枚举数值) | 1
@@ -40,16 +40,16 @@ target.host.operator_string | 负责人 | admin,user1
 target.host.bk_bak_operator_string | 备份负责人 | admin,user1
 target.host.bk_comment | 备注信息 | comment
 target.hosts.bk_host_name | 主机名 | VM_1,VM_2
-target.hosts.bk_host_innerip | 内网IP | 10.0.0.1,10.0.0.1
+target.hosts.bk_host_innerip | 内网IP | 127.0.0.1,127.0.0.2
 target.service_instance.service_instance_id | 服务实例ID | 1
-target.service_instance.name | 服务实例名 | xxx_10.0.0.1
+target.service_instance.name | 服务实例名 | xxx_127.0.1.11
 target.service_instances.service_instance_id | 服务实例ID | 1,2
-target.service_instances.name | 服务实例名 | xxx_10.0.0.1,xxx_127.0.1.12
+target.service_instances.name | 服务实例名 | xxx_127.0.1.11,xxx_127.0.1.12
 target.processes[0].port | 第i个进程的端口 | 80
 target.process["process_name"].bk_process_id | 进程ID | 1
 target.process["process_name"].bk_process_name | 进程名称 | 进程1
 target.process["process_name"].bk_func_name | 进程功能名称 | java
-target.process["process_name"].bind_ip | 绑定IP | 10.0.0.1
+target.process["process_name"].bind_ip | 绑定IP | 127.0.1.10
 target.process["process_name"].port | 绑定端口 | 1,2,3-5,7-10
 
 
@@ -62,12 +62,12 @@ target.process["process_name"].port | 绑定端口 | 1,2,3-5,7-10
  --- | --- | ---- 
 alarm.name | 告警名称 | CPU总使用率告警
 alarm.dimensions["dimension_name"].display_name | 维度名 | 目标IP
-alarm.dimensions["dimension_name"].display_value | 维度值 | 10.0.0.1
+alarm.dimensions["dimension_name"].display_value | 维度值 | 127.0.0.1
 alarm.level | 告警级别 | 1
 alarm.level_name | 告警级别名称 | 致命
 alarm.duration | 告警持续时间（秒） | 130
 alarm.duration_string | 告警持续时间字符串 | 2m 10s
-alarm.target_string | 告警目标 | 10.0.0.1,10.0.0.1
+alarm.target_string | 告警目标 | 127.0.1.10,127.0.1.11
 alarm.dimension_string | 告警维度(除目标) | 磁盘=C,主机名=xxx
 alarm.collect_count | 汇总事件数量 | 10
 alarm.notice_from | 消息来源 | 蓝鲸监控
@@ -103,7 +103,7 @@ alarm.callback_message | 回调数据 | 见下示例
           "bk_topo_node":[
             "module|6"
           ],
-          "bk_target_ip":"10.0.0.1",
+          "bk_target_ip":"10.0.1.10",
           "bk_target_cloud_id":"0"
         },
         "value":46.17,    // 指标值
@@ -166,7 +166,7 @@ strategy.item.agg_method | 聚合方法 | AVG
 action_instance.name | 套餐名称 | 机器重启
 action_instance.plugin_type_name | 套餐类型 | 作业平台
 action_instance.assignees | 负责人 | admin,tony
-action_instance.operate_target_string | 执行对象 | 10.0.0.1
+action_instance.operate_target_string | 执行对象 | 127.0.0.1
 action_instance.bk_biz_id | 业务ID | 2
 action_instance.start_time | 开始时间 | 1970-08-01 10:00:00+08:00
 action_instance.duration | 执行耗时(秒) | 130

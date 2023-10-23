@@ -118,7 +118,7 @@ helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync  # 部署 k8s operator 提供
 
 可以在 **中控机** 执行如下命令配置蓝鲸预置 es 服务：
 ``` bash
-kubectl exec -it -n blueking bk-elastic-elasticsearch-master-0 -- curl -X PUT -u elastic:blueking http://10.0.0.1:9200/_cluster/settings -H 'Content-Type: application/json' -d '{"persistent":{"action":{"auto_create_index":"-write_*,*"}}}'
+kubectl exec -it -n blueking bk-elastic-elasticsearch-master-0 -- curl -X PUT -u elastic:blueking http://127.0.0.1:9200/_cluster/settings -H 'Content-Type: application/json' -d '{"persistent":{"action":{"auto_create_index":"-write_*,*"}}}'
 ```
 
 >**提示**
@@ -246,7 +246,7 @@ PaaS 启用 OTel 相关配置后，如 SaaS 支持并声明了需要 `otel` 服�
 请在 **中控机** 执行：
 ``` bash
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
-BK_OTEL_IP=10.0.0.1    # 请修改为前面步骤中部署的 OTel 服务端 IP
+BK_OTEL_IP=127.0.0.1    # 请修改为前面步骤中部署的 OTel 服务端 IP
 # 启用 OTel：
 case $(yq e '.global.bkOtel.enabled' environments/default/bkpaas3-custom-values.yaml.gotmpl 2>/dev/null) in
   null|"")

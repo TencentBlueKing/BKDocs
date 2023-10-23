@@ -58,7 +58,7 @@ GET
         "category": "Other",
         "edit_time": "2018-04-27 16:24:24 +0800",
         "create_time": "2018-04-16 21:43:15 +0800",
-        "name": "new20180410.0.0.14",
+        "name": "new20180416213944",
         "bk_biz_id": "2",
         "creator": "admin",
         "pipeline_tree": {
@@ -77,7 +77,7 @@ GET
                             },
                             "ip_list": {
                                 "hook": false,
-                                "value": "10.0.0.1"
+                                "value": "127.0.0.1"
                             },
                             "script_timeout": {
                                 "hook": true,

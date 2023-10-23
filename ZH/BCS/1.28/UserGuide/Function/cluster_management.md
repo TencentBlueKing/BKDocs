@@ -42,7 +42,7 @@
 ```bash
 # 在蓝鲸集群（蓝鲸社区版7.0(BCS-K8S-00000）中执行命令获取ingress域名
 kubectl get ingress stack-bcs-api-gateway-http -n bcs-system
-stack-bcs-api-gateway-http   nginx   bcs-api.xxx.xxx.com   10.0.0.1   80      24d
+stack-bcs-api-gateway-http   nginx   bcs-api.xxx.xxx.com   172.17.247.1   80      24d
 ```
 
 先检查域名是否已经解析，如果没有解析可以参考以下域名解析方法
@@ -57,8 +57,8 @@ stack-bcs-api-gateway-http   nginx   bcs-api.xxx.xxx.com   10.0.0.1   80      24
   ```bash
   # 在蓝鲸集群（蓝鲸社区版7.0(BCS-K8S-00000）中执行命令获取bcs-api-gateway、bcs-storage NodePort信息
   kubectl get svc -n bcs-system|grep -E 'bcs-storage|bcs-api-gateway'
-  bcs-api-gateway  NodePort  10.0.0.1  8081:31595/TCP,80:31000/TCP,443:31443/TCP,9091:30868/TCP
-  bcs-storage  NodePort  10.0.0.1  50024:31024/TCP,50025:31025/TCP
+  bcs-api-gateway  NodePort  172.18.254.206  8081:31595/TCP,80:31000/TCP,443:31443/TCP,9091:30868/TCP
+  bcs-storage  NodePort  172.18.252.140  50024:31024/TCP,50025:31025/TCP
   ```
 
 - 如果业务集群与蓝鲸部署集群（蓝鲸社区版 7.0(BCS-K8S-00000）不能直通，则需要在 NodePort 前加一层负载均衡（如 CLB）做高可用，需要配置两条规则
@@ -99,8 +99,8 @@ gse_agent 安装详情请参考：[安装蓝鲸 Agent（直连区域）](../../.
 | DOCKER_VERSION | Docker 版本                                              | 19.03.9               |
 | KUBELET_LIB    | kubelet 数据目录                                         | /data/bcs/lib/kubelet |
 | K8S_VER        | 集群版本                                                | 1.20.11               |
-| K8S_SVC_CIDR   | 集群 Service 网段                                         | 10.0.0.1/12          |
-| K8S_POD_CIDR   | 集群 Pod 网段                                             | 10.0.0.1/16         |
+| K8S_SVC_CIDR   | 集群 Service 网段                                         | 10.96.0.0/12          |
+| K8S_POD_CIDR   | 集群 Pod 网段                                             | 10.244.0.0/16         |
 | bcs_ws_used    | 使用 websocket 模式，适用于集群与蓝鲸服务集群不在同一内网 | false                 |
 
 如果需创建集群节点的网络与蓝鲸服务集群（蓝鲸项目下的集群蓝鲸社区版 7.0 BCS-K8S-00000）不在同一内网的情况下，需要开启 websocket 模式，在附加参数中填入“bcs_ws_used = true”
@@ -163,10 +163,10 @@ kubectl logs bcs-kube-agent-685b985f94-rg5sg --tail=10 -n bcs-system
 
   ```plain
           hosts {
-            10.0.0.1 bcs-api-gateway
+            1.1.1.1 bcs-api-gateway
             fallthrough
           }
-          # 10.0.0.1 是集群“蓝鲸蓝鲸7.0”任意一台node，最好是master
+          # 1.1.1.1 是集群“蓝鲸蓝鲸7.0”任意一台node，最好是master
   ```
 
   ![](../assets/coredns_hosts.png)
@@ -255,7 +255,7 @@ kubectl logs bcs-kube-agent-685b985f94-rg5sg --tail=10 -n bcs-system
   # pod日志没有错误就代表bcs-kube-agent安装成功
   kubectl logs bcs-kube-agent-749d58b65-x7qkk -n bcs-system
   W0413 12:15:23.805420       1 client_config.go:552] Neither --kubeconfig nor --master was specified.  Using the inClusterConfig.  This might not work.
-  I0413 12:15:23.841994       1 report.go:74] apiserver addresses: https://10.0.0.1:6443,https://1.1.1.2:6443,https://1.1.1.3:6443
+  I0413 12:15:23.841994       1 report.go:74] apiserver addresses: https://1.1.1.1:6443,https://1.1.1.2:6443,https://1.1.1.3:6443
   I0413 12:15:23.842031       1 report.go:77] bke-server url：https://bcs-api-gateway:31443/bcsapi/v4/clustermanager/v1/clustercredential/BCS-K8S-40000
   ```
 
@@ -501,10 +501,10 @@ bcs-k8s-watch 组件用于集群内资源事件，导入已有集群时会自动
 
     ```
             hosts {
-              10.0.0.1 bcs-api-gateway
+              1.1.1.1 bcs-api-gateway
               fallthrough
             }
-            # 10.0.0.1 是集群“蓝鲸蓝鲸7.0”任意一台node ip，最好是master
+            # 1.1.1.1 是集群“蓝鲸蓝鲸7.0”任意一台node ip，最好是master
     ```
 
       ![](../assets/coredns_hosts.png)

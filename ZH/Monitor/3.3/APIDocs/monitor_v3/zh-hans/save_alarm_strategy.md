@@ -250,7 +250,7 @@ host_set_template
                         "method":"eq",
                         "value":[
                             {
-                                "ip":"10.0.0.1",
+                                "ip":"127.0.0.1",
                                 "bk_cloud_id":0
                             }
                         ]

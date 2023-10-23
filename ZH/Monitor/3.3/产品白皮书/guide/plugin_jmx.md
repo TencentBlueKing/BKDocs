@@ -232,7 +232,7 @@ export JMX_PORT=9999
 
 例如，需要采集 `kafka.server` ，`type=BrokerTopicMetrics`的 MBean。如下图。具体 MBean 的含义信息可以查看 kafka 组件文档： [JMX 指标信息](http://kafka.apache.org/documentation/#remote_jmx)。
 
-![image-20200210.0.0.12180](media/image-20200210.0.0.12180.png)
+![image-20200210141212180](media/image-20200210141212180.png)
 
 ### 查看 MBean 详情
 
@@ -412,7 +412,7 @@ rules:
 
 ```java
 CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote"
-CATALINA_OPTS="$CATALINA_OPTS -Djava.rmi.server.hostname=10.0.0.1"
+CATALINA_OPTS="$CATALINA_OPTS -Djava.rmi.server.hostname=127.0.0.1"
 CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote.port=9011"
 CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote.ssl=false"
 CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote.authenticate=false"

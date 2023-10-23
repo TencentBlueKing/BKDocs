@@ -69,7 +69,7 @@
                 "src_ip": {
                     "host_id": 102,
                     "bk_cloud_id": 0,
-                    "ip": "10.0.0.1"
+                    "ip": "10.0.0.2"
                 },
                 "src_path": "/data/1.log",
                 "dest_ip": {
@@ -86,7 +86,7 @@
                 "src_ip": {
                     "bk_host_id": 102,
                     "bk_cloud_id": 0,
-                    "ip": "10.0.0.1"
+                    "ip": "10.0.0.2"
                 },
                 "src_path": "/data/1.log",
                 "status": 4,

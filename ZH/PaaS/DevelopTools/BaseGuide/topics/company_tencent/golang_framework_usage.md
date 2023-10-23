@@ -50,7 +50,7 @@
 ### 2.2 配置 hosts
 
 ```bash
-10.0.0.1 dev.xxx.xxx（注意：必须与PaaS平台主站在同一个一级域名)
+127.0.0.1 dev.xxx.xxx（注意：必须与PaaS平台主站在同一个一级域名)
 ```
 
 ### 2.3 配置数据库
@@ -77,7 +77,7 @@ dep ensure -update
 初始化数据库：
 
 ```shell
-bee migrate -conn='root:@tcp(10.0.0.1:3306)/{APP_CODE}'
+bee migrate -conn='root:@tcp(127.0.0.1:3306)/{APP_CODE}'
 ```
 
 启动调试服务器：

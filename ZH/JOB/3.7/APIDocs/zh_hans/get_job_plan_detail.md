@@ -75,7 +75,7 @@
                         {
                             "bk_host_id": 102,
                             "bk_cloud_id": 0,
-                            "ip": "10.0.0.1"
+                            "ip": "10.0.0.2"
                         }
                     ],
                     "topo_node_list": [
@@ -162,12 +162,12 @@
                                 {
                                     "bk_host_id": 103,
                                     "bk_cloud_id": 0,
-                                    "ip": "10.0.0.1"
+                                    "ip": "10.0.0.3"
                                 },
                                 {
                                     "bk_host_id": 104,
                                     "bk_cloud_id": 0,
-                                    "ip": "10.0.0.1"
+                                    "ip": "10.0.0.4"
                                 }
                             ],
                             "topo_node_list": [

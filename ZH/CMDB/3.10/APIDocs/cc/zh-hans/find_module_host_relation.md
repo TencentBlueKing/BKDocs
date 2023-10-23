@@ -90,7 +90,7 @@ POST
       {
         "host": {
           "bk_host_id": 1,
-          "bk_host_innerip": "10.0.0.1",
+          "bk_host_innerip": "127.0.0.1",
         },
         "modules": [
           {
@@ -106,7 +106,7 @@ POST
       {
         "host": {
           "bk_host_id": 2,
-          "bk_host_innerip": "10.0.0.1",
+          "bk_host_innerip": "127.0.0.2",
         },
         "modules": [
           {

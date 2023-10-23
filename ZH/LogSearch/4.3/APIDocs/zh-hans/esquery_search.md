@@ -146,7 +146,7 @@ POST
                         "iterationIndex": 9,
                         "log": "i am log message",
                         "path": "/host/path/log/type.log",
-                        "serverIp": "10.0.0.1",
+                        "serverIp": "127.0.0.1",
                         "time": "1647254492000"
                     },
                 }

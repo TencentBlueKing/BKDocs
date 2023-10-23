@@ -45,7 +45,7 @@ $ ./bin/install_consul.sh
             [ -r, --role            [可选] "部署的consul角色，取值server或client，默认为client" ]
             [ --dns-port            [可选] "部署的consul dns 端口号，默认为8600" ]
             [ --http-port           [可选] "部署的consul http 端口号，默认为8500" ]
-            [ -b, --bind            [可选] "监听的网卡地址,默认为10.0.0.1" ]
+            [ -b, --bind            [可选] "监听的网卡地址,默认为127.0.0.1" ]
             [ -n, --server-number   [可选] "如果是server模式，配置集群中的server数量" ]
             [ --node                [可选] "node_name，配置consul节点名，默认为hostname" ]
             [ -v, --version         [可选] "查看脚本版本号" ]
@@ -56,12 +56,12 @@ $ ./bin/install_consul.sh
 - `-e, --encrypt-key`: 它是蓝鲸部署准备阶段 `./bkcli install bkenv` 的时候，自动通过 `consul keygen`生成，并保存到 `./bin/01-generate/dbadmin.env` 中的 `BK_CONSUL_KEYSTR_32BYTES`
 - `-r, --role`: 决定安装的是 consul server 还是 consul client。 consul server 是 `install.config` 中配置了 `consul` 模块的机器（$BK_CONSUL_IP[@]}）。其余的机器为 consul client
 - `-j, --join`: consul 启动的时候，自动加入的集群 ip 列表。
-- `-b, --bind`: consul 的 dns 和 http 协议端口监听的网卡地址，默认是 10.0.0.1。
+- `-b, --bind`: consul 的 dns 和 http 协议端口监听的网卡地址，默认是 127.0.0.1。
 
 安装并启动成功后，脚本会修改 `/etc/resolv.conf`
 
-1. 添加 `nameserver 10.0.0.1` 配置项，并保证它位于第一行
-2. 如果存在 option 的配置，且包含了 `rotate`，则删除该选项，防止轮询。因为蓝鲸依赖 consul 监听的 10.0.0.1:53 做解析。
+1. 添加 `nameserver 127.0.0.1` 配置项，并保证它位于第一行
+2. 如果存在 option 的配置，且包含了 `rotate`，则删除该选项，防止轮询。因为蓝鲸依赖 consul 监听的 127.0.0.1:53 做解析。
 3. 添加 `search node.consul`，因为 consul 默认会注册本机的 `<node_name>.node.consul` 这样长主机名，一些 java 应用读取本机的$HOSTNAME 后反向解析 ip 的时候，会用到。
 
 然后停掉 `nscd` 的缓存服务。
@@ -222,7 +222,7 @@ mysql-default.service.consul.	0	IN	A	10.0.0.1
 
 可以看到，consul 返回了一个 A 记录，A 记录包含一个 IP 地址，而这个 IP 地址是对应的 mysql-default 服务所在节点的 IP 地址。
 
-该节点返回的 IP 地址为什么恰好是 10.0.0.1，而不是 10.0.0.1，或者那台主机上其他网卡的地址（如果存在多网卡私有 IP）呢？
+该节点返回的 IP 地址为什么恰好是 10.0.0.1，而不是 127.0.0.1，或者那台主机上其他网卡的地址（如果存在多网卡私有 IP）呢？
 
 这是由 consul 启动时的 `-advertise` 参数，或者配置文件的 `address` 参数指定的。consul 启动时，可以通过观察标准输出的 "Cluster Addr: " 来确定这个信息。
 
@@ -260,10 +260,10 @@ SRV 记录的 ANSWER SECTION 字段含义从左到右依次为：
 除了 DNS API，也可以使用 HTTP API 来查询服务：
 
 ```bash
-curl -s http://10.0.0.1:8500/v1/catalog/service/mysql-default | jq 
+curl -s http://127.0.0.1:8500/v1/catalog/service/mysql-default | jq 
 ```
 
-8500 端口是 consul 监听的 http-port，处于安全考虑，默认只监听本机的回环地址（10.0.0.1）。
+8500 端口是 consul 监听的 http-port，处于安全考虑，默认只监听本机的回环地址（127.0.0.1）。
 
 catalog API 是列出所有提供该服务名称的的节点。
 
@@ -272,7 +272,7 @@ catalog API 是列出所有提供该服务名称的的节点。
 对于 DNS API 来说，查询健康的节点是默认的行为。而 HTTP 则需要加上参数：
 
 ```bash
-curl -s http://10.0.0.1:8500/v1/health/service/mysql-default?passing | jq
+curl -s http://127.0.0.1:8500/v1/health/service/mysql-default?passing | jq
 ```
 
 ### 更新服务
@@ -295,7 +295,7 @@ $ ./bin/reg_consul_svc
             [ -p, --port        [必选] "注册到consul的服务端口" ]
             [ -a, --address     [必选] "注册到consul的服务地址，一般与服务的bindip一致" ]
             [ -t, --tag         [可选] "注册到consul的服务的tag" ]
-            [ -i, --url         [可选] "consul的api地址，默认为：http://10.0.0.1:8500" ]
+            [ -i, --url         [可选] "consul的api地址，默认为：http://127.0.0.1:8500" ]
             [ -D, --dry-run     [可选] "打印出生成的consul服务定义文件到标准输出" ]
             [ -v, --version     [可选] 查看脚本版本号 ]
 
@@ -318,7 +318,7 @@ $ ./bin/reg_consul_svc
 - 更新键值
 
     ```bash
-    consul kv put bkapps/upstreams/prod/bk_sops '["10.0.0.1","10.0.0.1"]'
+    consul kv put bkapps/upstreams/prod/bk_sops '["10.0.0.1","10.0.0.2"]'
     ```
 
 - 查询键值
@@ -376,8 +376,8 @@ consul snapshot restore backup.snap
 
 1. 选择部署 nginx 的服务器，修改 consul 的启动命令行参数 （/etc/sysconfig/consul），在 `CMD_OPTS` 中追加命令行参数 `-ui`
 2. 重启 consul: `systemctl restart consul`
-3. 验证是否生效：`curl -sL http://10.0.0.1:8500/ | grep CONSUL_VERSION` 如果有返回说明 webUI 正常开启
-4. 配置 nginx 将请求代理转发给本机 10.0.0.1:8500，这样能方便通过浏览器访问，假设我们使用 `consul.bktencent.com` 这个域名来访问。添加以下 nginx 配置，并重新加载生效。
+3. 验证是否生效：`curl -sL http://127.0.0.1:8500/ | grep CONSUL_VERSION` 如果有返回说明 webUI 正常开启
+4. 配置 nginx 将请求代理转发给本机 127.0.0.1:8500，这样能方便通过浏览器访问，假设我们使用 `consul.bktencent.com` 这个域名来访问。添加以下 nginx 配置，并重新加载生效。
 
     ```bash
     source ./load_env.sh
@@ -389,32 +389,32 @@ consul snapshot restore backup.snap
         access_log $BK_HOME/logs/nginx/consul_ui_access.log main;
 
         location / {
-            proxy_pass http://10.0.0.1:8500;
+            proxy_pass http://127.0.0.1:8500;
         }
     }
     EOF
     systemctl reload openresty
     ```
 
-5. 在本机配置 hosts 文件，添加域名解析，假设 nginx 所在服务器对应的外网 ip 是 10.0.0.1
+5. 在本机配置 hosts 文件，添加域名解析，假设 nginx 所在服务器对应的外网 ip 是 100.0.0.1
 
     ```bash
-    10.0.0.1 consul.bktencent.com
+    100.0.0.1 consul.bktencent.com
     ```
 
 6. 浏览器输入 `http://consul.bktencent.com` 来访问 Consul 的 WebUI
 
 ## 常用操作
 
-- 查询 leader：`curl -s http://10.0.0.1:8500/v1/status/leader`
+- 查询 leader：`curl -s http://127.0.0.1:8500/v1/status/leader`
 - 查询集群节点：`consul members [-detailed]`
 - 查看当前日志：`consul monitor [-log-level debug]`
 - 查看当前节点运行信息：`consul info`
 - 查看 leader 和 follower：`consul operator raft list-peers`
-- 查看当前节点注册的服务：`curl -s http://10.0.0.1:8500/v1/agent/services`
+- 查看当前节点注册的服务：`curl -s http://127.0.0.1:8500/v1/agent/services`
 - 取消当前节点注册的服务：
   - 1.0 以上的版本使用命令行：`consul services deregister <my-service-id>`
-  - 1.0 以下的使用 httpapi：`curl --request PUT http://10.0.0.1:8500/v1/agent/service/deregister/<my-service-id>`
+  - 1.0 以下的使用 httpapi：`curl --request PUT http://127.0.0.1:8500/v1/agent/service/deregister/<my-service-id>`
 
 ## 常见问题
 
@@ -422,7 +422,7 @@ consul snapshot restore backup.snap
 
 **表象**：
 
-在部署和使用时，如果遇到类似这样的日志信息："xx.service.consul Name or service not known" 
+在部署和使用时，如果遇到类似这样的日志信息："xx.service.consul Name or service not known"
 
 意味着域名无法解析的问题。consul 域名，指的是蓝鲸集群模块之间使用 consul 模块注册的以".service.consul"结尾 的域名。它由每台机器上运行的 consul 进程监听的 53 端口提供解析服务
 
@@ -439,11 +439,11 @@ consul snapshot restore backup.snap
     - check_consul_listen_tcp_8500: 检查 consul 服务是否监听了 tcp 8500
     - check_consul_warning_svc: 检查 consul 服务有哪些状态为 warnning 的
     - check_consul_critical_svc: 检查 consul 服务有哪些状态为 critical 的
-    - check_resolv_conf_10.0.0.1: 检查 consul 节点上/etc/resolv.conf 中 nameserver 配置不正确的
+    - check_resolv_conf_127.0.0.1: 检查 consul 节点上/etc/resolv.conf 中 nameserver 配置不正确的
 
 2. 一般情况下，check_consul_critical_svc 会列出故障的服务名。
 3. 根据服务名需要确认对应的进程是否正常启动并成功监听了指定的端口（结合本文档中，注册服务章节的知识）
 4. 重新启动对应服务模块的进程，等待 10s 后再次运行 `./bkcli check consul` 来判断服务是否健康
-5. 对于 check_resolv_conf_10.0.0.1 失败的节点。请配置好 /etc/resolv.conf 并持久化它。
+5. 对于 check_resolv_conf_127.0.0.1 失败的节点。请配置好 /etc/resolv.conf 并持久化它。
 
 ### 持久化/etc/resolv.conf

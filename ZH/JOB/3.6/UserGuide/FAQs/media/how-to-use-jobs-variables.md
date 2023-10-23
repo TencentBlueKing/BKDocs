@@ -5,7 +5,7 @@
 ```bash
 function GetHostByAttr() {
     local str="nekzhang"
-    local target="10.0.0.1"
+    local target="1.1.1.1"
     
     echo $str
 }

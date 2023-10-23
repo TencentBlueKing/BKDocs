@@ -107,7 +107,7 @@ GitHub 下载地址： [https://github.com/Tencent/bk-ci/releases](https://githu
 最小化单点方案
 ```bash
 # 内存建议 32G ，至少 16G。CPU 建议8核。
-10.0.0.1 ci(gateway),ci(dockerhost),ci(artifactory),ci(auth),ci(dispatch),ci(environment),ci(image),ci(log),ci(misc),ci(notify),ci(openapi),ci(plugin),ci(process),ci(project),ci(quality),ci(repository),ci(store),ci(ticket),ci(websocket)
+10.0.1.1 ci(gateway),ci(dockerhost),ci(artifactory),ci(auth),ci(dispatch),ci(environment),ci(image),ci(log),ci(misc),ci(notify),ci(openapi),ci(plugin),ci(process),ci(project),ci(quality),ci(repository),ci(store),ci(ticket),ci(websocket)
 ```
 > **注意**
 > 
@@ -120,11 +120,11 @@ GitHub 下载地址： [https://github.com/Tencent/bk-ci/releases](https://githu
 常规单点方案
 ```bash
 # gateway选择4G内存即可.
-10.0.0.1 ci(gateway)
+10.0.1.1 ci(gateway)
 # 微服务总内存32G, 如果为多台机器组成, 请随意组合, 但是需要确保在同一个子网内. 其中, agentless为无编译环境, 一般和微服务放在一起.
-10.0.0.1 ci(agentless),ci(artifactory),ci(auth),ci(dispatch),ci(environment),ci(image),ci(log),ci(misc),ci(notify),ci(openapi),ci(plugin),ci(process),ci(project),ci(quality),ci(repository),ci(store),ci(ticket),ci(websocket)
+10.0.1.2 ci(agentless),ci(artifactory),ci(auth),ci(dispatch),ci(environment),ci(image),ci(log),ci(misc),ci(notify),ci(openapi),ci(plugin),ci(process),ci(project),ci(quality),ci(repository),ci(store),ci(ticket),ci(websocket)
 # 公共构建机也尽量放在同一子网. 建议内存8G起步. 数量视任务量而定, 如果任务量较多且耗时较长, 建议增加dockerhost节点的数量, 并升级磁盘性能.
-10.0.0.1 ci(dockerhost)
+10.0.1.2 ci(dockerhost)
 ```
 
 # 三、手动安装
@@ -445,8 +445,8 @@ dig +short ci-auth.service.consul
 排查：
 
 如果上述解析失败。请先检查本机：
-1. 本机 `/etc/resolv.conf`里第一个 nameserver 是否为 `10.0.0.1`。
-2. 本机是否存在 Consul agent ，是否监听了 10.0.0.1:53 端口提供 DNS 服务。
+1. 本机 `/etc/resolv.conf`里第一个 nameserver 是否为 `127.0.0.1`。
+2. 本机是否存在 Consul agent ，是否监听了 127.0.0.1:53 端口提供 DNS 服务。
 3. Consul 加入的集群是否正确。
 
 如果本机正常，则需要前往对应的节点（ ci_gateway 或 ci_auth ）检查：

@@ -98,7 +98,7 @@ resource_node
     {
         "system": "bk_cmdb",
         "type": "host",
-        "id": "10.0.0.1"
+        "id": "192.168.1.1"
     }]
 }
 ```
@@ -213,7 +213,7 @@ resource_node
     {
         "system": "bk_cmdb",
         "type": "host",
-        "id": "10.0.0.1"
+        "id": "192.168.1.1"
     }]
 }
 ```

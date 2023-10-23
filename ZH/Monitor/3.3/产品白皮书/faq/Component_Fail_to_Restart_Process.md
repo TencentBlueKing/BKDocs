@@ -16,11 +16,11 @@
 
 3.使用 job 或登录目标机器，执行脚本
 
-假设组件名称为`oracle_exporter`，脚本参数为`--port=1521 --host=10.0.0.1`
+假设组件名称为`oracle_exporter`，脚本参数为`--port=1521 --host=127.0.0.1`
 
 ```bash
 cd /usr/local/gse/external_collector/oracle_exporter
-./oracle_exporter --port=1521 --host=10.0.0.1
+./oracle_exporter --port=1521 --host=127.0.0.1
 ```
 
 然后根据具体的错误信息解决问题

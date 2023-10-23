@@ -134,7 +134,7 @@ Note: 参数`bk_host_list`和`bk_host_id`只能有一个生效，`bk_host_id`不
               "bind_info": [
                 {
                     "enable": true,
-                    "ip": "10.0.0.1",
+                    "ip": "127.0.0.1",
                     "port": "80",
                     "protocol": "1",
                     "template_row_id": 1234

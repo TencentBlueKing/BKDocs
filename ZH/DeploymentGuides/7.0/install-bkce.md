@@ -372,7 +372,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
     ``` yaml
      Insecure Registries:
       docker.bkce7.bktencent.com
-      10.0.0.1/8
+      127.0.0.0/8
      Registry Mirrors:
     ```
 

@@ -148,7 +148,7 @@ import time
 from prometheus_client import start_http_server, CollectorRegistry, counter, gauge, histogram, summary
 
 PORT = 8080
-HOST = "10.0.0.1"
+HOST = "127.0.0.1"
 
 Registry = CollectorRegistry()
 

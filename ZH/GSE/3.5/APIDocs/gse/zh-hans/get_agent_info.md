@@ -70,7 +70,7 @@ POST
             "ip": "10.0.0.1",
             "version": "V0.01R060D38",
             "bk_cloud_id": 0,
-            "parent_ip": "10.0.0.1",
+            "parent_ip": "10.0.0.2",
             "parent_port": 50000
         }
     }

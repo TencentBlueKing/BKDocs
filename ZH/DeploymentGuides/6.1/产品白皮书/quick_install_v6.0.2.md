@@ -12,7 +12,7 @@
 2. 建议机器配置
    - 体验功能：建议 4 核 16 G，硬盘 50G 以上
    - 生产环境：建议 8 核 32 G，硬盘 100G 以上（可根据实际情况适当调整配置）
-3. 机器数量：3 台（假设 ip 分别为：10.0.0.1，10.0.0.1，10.0.0.1）
+3. 机器数量：3 台（假设 ip 分别为：10.0.0.1，10.0.0.2，10.0.0.3）
 4. 选择一台为中控机（假设为 10.0.0.1）进行安装部署操作，使用 root 账号登录。
 
 ### 1.2 获取证书
@@ -70,8 +70,8 @@ cd /data
    # 请根据实际机器的 IP 进行替换第一列的示例 IP 地址，确保三个 IP 之间能互相通信
    cat << EOF >/data/install/install.config
    10.0.0.1 iam,ssm,usermgr,gse,license,redis,consul,es7,monitorv3(influxdb-proxy),monitorv3(monitor),monitorv3(grafana)
-   10.0.0.1 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk
-   10.0.0.1 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman)
+   10.0.0.2 nginx,consul,mongodb,rabbitmq,appo,influxdb(bkmonitorv3),monitorv3(transfer),fta,beanstalk
+   10.0.0.3 paas,cmdb,job,mysql,zk(config),kafka(config),appt,consul,log(api),nodeman(nodeman)
    EOF
    ```
 
@@ -196,10 +196,10 @@ echo bkssm bkiam usermgr paas cmdb gse job consul bklog | xargs -n 1 ./bkcli che
 
 将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 ```bash
-10.0.0.1 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
-10.0.0.1 nodeman.bktencent.com
+10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
+10.0.0.3 nodeman.bktencent.com
 ```
-**注意：** 10.0.0.1 为 nginx 模块所在的机器，10.0.0.1 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。
+**注意：** 10.0.0.2 为 nginx 模块所在的机器，10.0.0.3 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。
 
 查询模块所分布在机器的方式：
 
@@ -213,8 +213,8 @@ grep -E "nginx|nodeman" /data/install/install.config
 
 将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 ```bash
-10.0.0.1 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
-10.0.0.1 nodeman.bktencent.com
+10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
+10.0.0.3 nodeman.bktencent.com
 ```
 
 ### 3.2 获取管理员账户名密码

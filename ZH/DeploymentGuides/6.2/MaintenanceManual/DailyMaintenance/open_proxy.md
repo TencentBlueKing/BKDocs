@@ -27,11 +27,11 @@ ssh $BK_GSE_IP
 echo BK_GSE_WAN_IP_LIST=$(curl -s icanhazip.com) >> /etc/blueking/env/local.env
 ```
 
-- 将 gse 的 bt 模块监听 10.0.0.1 (6.0.4 之前版本需要此步骤)
+- 将 gse 的 bt 模块监听 0.0.0.0 (6.0.4 之前版本需要此步骤)
 
 ```bash
 # 中控机执行
-sed -i '/filesvrthriftip/s/__LAN_IP__/10.0.0.1/' /data/src/gse/support-files/templates/#etc#gse#btsvr.conf
+sed -i '/filesvrthriftip/s/__LAN_IP__/0.0.0.0/' /data/src/gse/support-files/templates/#etc#gse#btsvr.conf
 ```
 
 ## 部署后

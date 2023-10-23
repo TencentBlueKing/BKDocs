@@ -96,11 +96,11 @@ source ~/.bashrc
     将以下内容复制到上述文件内，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 
     ```bash
-    10.0.0.1 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
-    10.0.0.1 nodeman.bktencent.com
+    10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
+    10.0.0.3 nodeman.bktencent.com
     ```
 
-    **注意：** 10.0.0.1 为 nginx 模块所在的机器，10.0.0.1 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。
+    **注意：** 10.0.0.2 为 nginx 模块所在的机器，10.0.0.3 为 nodeman 模块所在的机器。IP 需更换为本机浏览器可以访问的 IP。
 
     查询模块所分布在机器的方式：
 
@@ -115,8 +115,8 @@ source ~/.bashrc
     将以下内容复制到 `/etc/hosts` 中，并将以下 IP 需更换为本机浏览器可以访问的 IP，然后保存。
 
     ```bash
-    10.0.0.1 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
-    10.0.0.1 nodeman.bktencent.com
+    10.0.0.2 paas.bktencent.com cmdb.bktencent.com job.bktencent.com jobapi.bktencent.com
+    10.0.0.3 nodeman.bktencent.com
     ```
 
 ### 获取管理员账户名密码

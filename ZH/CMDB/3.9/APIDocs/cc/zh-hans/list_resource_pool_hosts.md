@@ -92,7 +92,7 @@ POST
         {
             "field": "bk_host_outerip",
             "operator": "equal",
-            "value": "10.0.0.1"
+            "value": "127.0.0.1"
         }, {
             "condition": "OR",
             "rules": [{
@@ -124,7 +124,7 @@ POST
       {
         "bk_cloud_id": "0",
         "bk_host_id": 17,
-        "bk_host_innerip": "10.0.0.1",
+        "bk_host_innerip": "192.168.1.1",
         "bk_mac": "",
         "bk_os_type": "1"
       }

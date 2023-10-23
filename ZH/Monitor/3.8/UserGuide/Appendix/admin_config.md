@@ -34,7 +34,7 @@
 
 配置方法： `"redis://:${password}@${host}:${port}/${db}"`
 
-如： `"redis://:ycm%2C2rRn4A@10.0.0.1:6379/15/bk_monitor_queue"`
+如： `"redis://:ycm%2C2rRn4A@10.0.1.10:6379/15/bk_monitor_queue"`
 
 ### 更多 admin 配置方法
 

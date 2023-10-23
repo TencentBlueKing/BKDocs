@@ -49,7 +49,7 @@ POST
   "bk_token": "xxx",
   "subscription_name":"mysubscribe",
   "system_name":"SystemName",
-  "callback_url":"http://10.0.0.1:8080/callback",
+  "callback_url":"http://127.0.0.1:8080/callback",
   "confirm_mode":"httpstatus",
   "confirm_pattern":"200",
   "subscription_form":"hostcreate",

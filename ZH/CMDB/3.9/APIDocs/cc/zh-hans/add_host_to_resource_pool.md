@@ -53,14 +53,14 @@ POST
     "bk_token": "xxx",
     "host_info": [
         {
-            "bk_host_innerip": "10.0.0.1",
+            "bk_host_innerip": "127.0.0.1",
             "bk_host_name": "host1",
             "bk_cloud_id": 0,
             "operator": "admin",
             "bk_comment": "comment"
         },
         {
-            "bk_host_innerip": "10.0.0.1",
+            "bk_host_innerip": "127.0.0.2",
             "bk_host_name": "host2",
             "bk_cloud_id": 0,
             "operator": "admin",

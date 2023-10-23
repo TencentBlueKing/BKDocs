@@ -133,7 +133,7 @@ BROKER_URL = 'redis://localhost:6379/0'
 > **注意**： domain_name 应该修改为 PaaS 平台的域名
 
 ```bash
-10.0.0.1 appdev.`{domain_name}`
+127.0.0.1 appdev.`{domain_name}`
 ```
 
 ### 配置本地数据库

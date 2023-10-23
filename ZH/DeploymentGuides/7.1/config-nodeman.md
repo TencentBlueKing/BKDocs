@@ -194,7 +194,7 @@ TODO 详细操作
   节点管理通过 zk 读取 GSE 服务端的数据。请按需修改，如果使用蓝鲸内置的服务，请参考上面的场景文档填写。
 * GSE 服务端系列配置 <br/>
   部署后会填写当前的 IP，可暂不修改。<br />
-  今后如需更新某个字段（`BtfileServer`、`DataServer` 或 `TaskServer` ），请将该字段的**内网 IP**改为 `10.0.0.1`，以指示节点管理自动修改。 <br/>
+  今后如需更新某个字段（`BtfileServer`、`DataServer` 或 `TaskServer` ），请将该字段的**内网 IP**改为 `127.0.0.1`，以指示节点管理自动修改。 <br/>
   自动修改仅进行一次，会使用 zookeeper 中的服务发现地址填充**内网 IP**及**外网 IP**。
 * 节点管理回调地址 <br/>
   用于安装日志上报等。需配置为节点管理 `bk-nodeman-backend-api` 服务的 NodePort 地址：`IP:30300`。

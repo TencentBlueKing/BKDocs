@@ -40,7 +40,7 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 
 [INFO]: 添加Kubernetes节点成功
 
-[INFO]: LAN_IP: 10.0.0.1
+[INFO]: LAN_IP: 10.0.0.5
   Welcome to BCS on qcloud
 ```
 
@@ -54,7 +54,7 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 
 否则需要将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下，命令如下（请替换 `k8s-master`为具体的主机名或 IP）：
 ```bash
-master_ip=10.0.0.1  # 请自行修改为bcs.sh所部署的master ip，建议配置好中控机免密登录。
+master_ip=10.0.0.2  # 请自行修改为bcs.sh所部署的master ip，建议配置好中控机免密登录。
 mkdir -p ~/.kube
 scp "$master_ip":.kube/config ~/.kube/config  # 复制kubeconfig，如未配置免密登录请输入master的密码
 grep bcs.local /etc/hosts || ssh "$master_ip" grep bcs.local /etc/hosts | tee -a /etc/hosts  # 导出master上的bcs hosts配置到中控机，如未配置免密登录请输入master的密码

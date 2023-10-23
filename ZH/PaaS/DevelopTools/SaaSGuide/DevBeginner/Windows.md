@@ -68,9 +68,9 @@ Sourcetree、GitHub Desktop、Fork、TortoiseGit、开发工具 Git 插件 等
 
 - 先修改本地 hosts
 
-```10.0.0.1 dev.{PAAS_URL}```
+```127.0.0.1 dev.{PAAS_URL}```
 
-例：`10.0.0.1 dev.paas.bktencent.com`
+例：`127.0.0.1 dev.paas.bktencent.com`
 
 > 启动开发框架，需要使用 域名
 > 

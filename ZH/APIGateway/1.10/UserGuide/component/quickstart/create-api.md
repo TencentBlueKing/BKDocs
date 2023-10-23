@@ -171,11 +171,11 @@ class GetHostList(Component):
 
 启动本地服务，并用 curl 测试编写的组件代码
 ```
-# 启动本地服务，服务默认地址为：http://10.0.0.1:8000
+# 启动本地服务，服务默认地址为：http://127.0.0.1:8000
 python manage.py runserver
 
 # 使用 curl 测试组件 API，组件请求路径中，/api/c/compapi/ 为统一前缀，hcp 为系统英文名小写，get_host_list 为组件英文名
-curl "http://10.0.0.1:8000/api/c/compapi/hcp/get_host_list/" \
+curl "http://127.0.0.1:8000/api/c/compapi/hcp/get_host_list/" \
     -d '{"bk_biz_id": 1, "ip_list": ["10.0.0.1"]}'
 ```
 

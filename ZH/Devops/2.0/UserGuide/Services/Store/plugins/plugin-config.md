@@ -375,7 +375,7 @@
               "type": "input",          # 可选值:["input", "select"], 如使用"input", 则"options"不填写
               "placeholder": "IP",
               "desc": "IP信息",
-              "default": "10.0.0.1"
+              "default": "8.8.8.8"
             },
             {
               "id": "protocol_port",

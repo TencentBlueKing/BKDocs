@@ -17,7 +17,7 @@
 
 ##### instance_id_list
 
-由scope内的主机实例信息转换而来，由以下字段拼接，，可通过接口`task_result_subscription`查询，规则：{object_type}|{node_type}|{type}|{id}，示例：1: host|instance|host|1, 2: host|instance|host|10.0.0.1-1-0
+由scope内的主机实例信息转换而来，由以下字段拼接，，可通过接口`task_result_subscription`查询，规则：{object_type}|{node_type}|{type}|{id}，示例：1: host|instance|host|1, 2: host|instance|host|127.0.0.1-1-0
 
 | 字段          | 类型     | <div style="width: 50pt">必选</div> | 描述                                                                                  |
 | ----------- | ------ | --------------------------------- | ----------------------------------------------------------------------------------- |
@@ -99,7 +99,7 @@ Plugin
     "bk_app_secret": "xxx",
     "bk_username": "admin",
     "bk_token": "xxx",
-    "subscription_id": 1, 
+    "subscription_id": 1,
     "instance_id_list": ["host|instance|host|1"],
     "task_id_list": [1],
     "actions": {"agent": "INSTALL_AGENT"}

@@ -62,9 +62,9 @@ POST
     "bk_username": "xxx",
     "bk_token": "xxx",
     "condition": {
-        "bk_obj_id":"bk_switch", 
-		"bk_inst_id":12, 
-		"association_obj_id":"host", 
+        "bk_obj_id":"bk_switch",
+		"bk_inst_id":12,
+		"association_obj_id":"host",
 		"is_target_object":true 
     },
     "page": {
@@ -89,7 +89,7 @@ POST
         "info": [
             {
                 "bk_inst_id": 1,
-                "bk_inst_name": "10.0.0.1"
+                "bk_inst_name": "127.0.0.3"
             }
         ]
     }

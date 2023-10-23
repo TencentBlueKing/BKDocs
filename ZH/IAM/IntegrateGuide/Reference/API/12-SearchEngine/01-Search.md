@@ -55,7 +55,7 @@ resource_node
 	}, {
 		"system": "bk_cmdb",
 		"type": "host",
-		"id": "10.0.0.1",
+		"id": "192.168.1.1",
 		"attribute": {} // 外部资源的属性由iam负责查询属性, 接入方不需要传入
 	}],
 	"limit": 1000  // 最多返回的subject数量

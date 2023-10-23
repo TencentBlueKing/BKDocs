@@ -45,7 +45,7 @@
         {
             "task_id": 1,
             "record_id": 1,
-            "instance_id": "host|instance|host|10.0.0.1-0-0",
+            "instance_id": "host|instance|host|127.0.0.1-0-0",
             "create_time": "2020-12-23 16:46:01",
             "pipeline_id": "149cb17976da4040b75523d495886b3d",
             "start_time": "2020-12-23 16:46:01",
@@ -57,7 +57,7 @@
                     "bk_biz_name": "测试业务",
                     "bk_cloud_id": 0,
                     "bk_cloud_name": "直连区域",
-                    "bk_host_innerip": "10.0.0.1",
+                    "bk_host_innerip": "127.0.0.1",
                     "bk_supplier_account": "0"
                 },
                 "service": {
@@ -83,7 +83,7 @@
                     "target_hosts": [
                         {
                             "pipeline_id": "d7e4d0e1235941609b4367114dcfe029",
-                            "node_name": "[INSTALL_AGENT] 安装 0:10.0.0.1",
+                            "node_name": "[INSTALL_AGENT] 安装 0:127.0.0.1",
                             "sub_steps": [
                                 {
                                     "pipeline_id": "913dc70fd5844639b8d72c9d3d7717fc",

@@ -214,7 +214,7 @@ sample_metric2{partition="c:"} 0.44
     go build test_Exporter.go
     ```
 
-* (12)cmd/shell 中运行即可，访问 `http://10.0.0.1:9601/metrics` 即可验证
+* (12)cmd/shell 中运行即可，访问 `http://127.0.0.1:9601/metrics` 即可验证
 
     ![e2](../Other/media/e2-1.png)
 

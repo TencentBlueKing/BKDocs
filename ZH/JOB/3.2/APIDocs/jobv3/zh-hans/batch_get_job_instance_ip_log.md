@@ -60,7 +60,7 @@ POST
         },
         {
             "bk_cloud_id": 0,
-            "ip": "10.0.0.1"
+            "ip": "10.0.0.2"
         }
     ]
 }
@@ -87,7 +87,7 @@ POST
                         "mode": 1,
                         "src_ip": {
                             "bk_cloud_id": 0,
-                            "ip": "10.0.0.1"
+                            "ip": "10.0.0.2"
                         },
                         "src_path": "/data/1.log",
                         "dest_ip": {
@@ -101,14 +101,14 @@ POST
                 ]
             },
             {
-                "ip": "10.0.0.1",
+                "ip": "10.0.0.2",
                 "bk_cloud_id": 0,
                 "file_logs": [
                     {
                         "mode": 0,
                         "src_ip": {
                             "bk_cloud_id": 0,
-                            "ip": "10.0.0.1"
+                            "ip": "10.0.0.2"
                         },
                         "src_path": "/data/1.log",
                         "status": 4,

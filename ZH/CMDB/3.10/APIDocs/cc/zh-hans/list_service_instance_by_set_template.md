@@ -49,7 +49,7 @@ POST
   "bk_app_code": "esb_test",
   "bk_app_secret": "xxx",
   "bk_username": "xxx",
-  "bk_token": "xxx",  
+  "bk_token": "xxx",
   "bk_biz_id": 1,
   "set_template_id":1,
   "page": {
@@ -88,7 +88,7 @@ POST
             {
                 "bk_biz_id": 3,
                 "id": 3,
-                "name": "10.0.0.1_lgh-process-1",
+                "name": "127.0.122.2_lgh-process-1",
                 "labels": null,
                 "service_template_id": 50,
                 "bk_host_id": 3,

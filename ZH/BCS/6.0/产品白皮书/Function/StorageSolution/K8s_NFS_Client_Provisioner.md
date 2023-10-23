@@ -21,7 +21,7 @@
 
 > 以下为测试环境在 CentOS 7 下搭建 NFS 的示例，生产环境请咨询公司系统管理员。
 
-安装 NFS Server 端（IP:10.0.0.1），并启动以及设置开机自启动。
+安装 NFS Server 端（IP:10.0.5.85），并启动以及设置开机自启动。
 
 ```bash
 # yum -y install nfs-utils
@@ -31,19 +31,19 @@ systemctl start rpcbind
 systemctl start nfs
 ```
 
-设置 `/nfs` 目录为挂载目录，对 `110.0.0.1/16` 网段开放。
+设置 `/nfs` 目录为挂载目录，对 `10.0.0.0/16` 网段开放。
 
 ```bash
 # mkdir /nfs
 
 # vim /etc/exports
-/nfs    110.0.0.1/16(rw,sync,no_root_squash,no_all_squash)
+/nfs    10.0.0.0/16(rw,sync,no_root_squash,no_all_squash)
 
 # systemctl restart nfs
 
 # showmount -e localhost
 Export list for localhost:
-/nfs 110.0.0.1/16
+/nfs 10.0.0.0/16
 ```
 
 本地挂载测试，验证 NFS 部署是否成功。

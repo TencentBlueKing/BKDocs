@@ -24,7 +24,7 @@
 
 ##### conditions
 
-由指定关键词key和value组成的字典 示例：{"key": "inner_ip", "value": ["10.0.0.1"]}
+由指定关键词key和value组成的字典 示例：{"key": "inner_ip", "value": ["127.0.0.1"]}
 
 | key                   | 类型     | value描述                                                     |
 | --------------------- | ------ | ----------------------------------------------------------- |
@@ -62,7 +62,7 @@
     "conditions": [
          {
              "key": "inner_ip",
-             "value": ["10.0.0.1"]
+             "value": ["127.0.0.1"]
          }
      ],
     "extra_data": [
@@ -92,7 +92,7 @@
         "bk_host_name": "",
         "bk_addressing": "0",
         "os_type": "LINUX",
-        "inner_ip": "10.0.0.1",
+        "inner_ip": "127.0.0.1",
         "inner_ipv6": "",
         "outer_ip": "",
         "outer_ipv6": "",
