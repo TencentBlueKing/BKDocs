@@ -5,8 +5,8 @@
 - 如无特殊说明，所述操作均在中控机执行。
 - 文档只含模块升级，不含 GSE Agent 升级指引。
 
-# 环境检查
-
+# 准备工作
+## 环境检查
 升级前，确认当前的 7.0 环境蓝鲸组件运行正常，通过 kubectl 查看是否有非 Running 状态的 Pod。
 
 ```bash
@@ -15,12 +15,75 @@ kubectl get pods --all-namespaces | awk '$4!="Running"&& $4!="Completed"&& NR>1'
 
 如果环境存在异常，请先解决问题，不要升级。
 
+## 备份部署脚本
+备份当前的 bkhelmfile 目录
+```bash
+cp -a -r ~/bkhelmfile ~/bkhelmfile-$(date +%Y%m%d-%H%M%S).bak
+```
+
+## 安装蓝鲸下载脚本
+鉴于目前容器化的软件包数量较多，我们提供了下载脚本帮助你下载文件并制备安装目录。
+
+此脚本无需提供给所有用户，所以我们把它安装到 `~/bin` 目录下：
+``` bash
+mkdir -p ~/bin/
+curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh -o ~/bin/bkdl-7.1-stable.sh
+chmod +x ~/bin/bkdl-7.1-stable.sh
+```
+
+## 配置安装目录变量
+在接下来的操作中，我们都会读取这些变量。
+
+升级文档假设 7.0 的 bkhelmfile 目录在 `~/bkhelmfile/`，7.1 的 bkhelmfile 目录在 `~/bkce7.1-install`。
+
+``` bash
+INSTALL_DIR=$HOME/bkce7.1-install/
+OLD_INSTALL_DIR=$HOME/bkhelmfile/
+```
+
+## 下载新的 bkhelmfile 包
+在 7.1 版本中，默认安装目录更换为了 ` ~/bkce7.1-install`，当然你也可以使用 `-i` 参数或者环境变量 `INSTALL_DIR` 来修改。
+
+我们先在 **中控机** 下载新的 bkhelmfile 包及公共证书：
+```bash
+# 下载成功后，最新的 helmfile 和默认配置在 ~/bkce7.1-install/blueking 目录下，SaaS 包在 ~/bkce7.1-install/saas 目录下
+bkdl-7.1-stable.sh -r latest bkce
+```
+
+## 更新 helm repo 缓存
+新版本的 chart 都有升级，更新缓存后才能下载到。
+```bash
+cd ~/bkhelmfile/blueking
+helm repo update blueking
+```
+
+## 升级 yq 命令
+我们在 7.1 升级了 yq 的版本，本文用到的 yq 命令也会基于新版本，请务必升级。
+
+先检查 `yq` 版本：
+``` bash
+yq --version
+```
+如果输出为：
+>``` plain
+>yq (https://github.com/mikefarah/yq/) version v4.30.6
+>```
+
+说明已经是最新版本，可以跳过本章节。如果版本较低，请继续操作。
+
+因为前面 `bkdl-7.1-stable.sh bkce` 时已经连带下载了 `yq_cmd`，故此时可以直接复制文件：
+``` bash
+command cp -v "${INSTALL_DIR:-INSTALL_DIR-not-set}/bin/yq" /usr/local/bin/
+```
+
+复制完成后你可以再次检查 `yq` 命令的版本。
+
 # 数据备份
 目前提供了 MySQL 及 MongoDB 数据库的备份方法。
 
 # 数据库备份
 ## 备份蓝鲸公共 MySQL
-目前蓝鲸公共 mysql 尚未开启 binlog，你可以直接备份。但是建议变更启用 binlog 后备份。
+目前蓝鲸公共 MySQL 尚未开启 binlog，你可以直接备份。但是建议变更启用 binlog 后备份。
 
 ### 未开启 binlog 备份 MySQL（不推荐）
 
@@ -164,69 +227,8 @@ blueking bk-mongodb-0
 blueking bk-mysql-mysql-master-0
 ```
 
-# 前置准备
-## 备份部署脚本
-备份当前的 bkhelmfile 目录
-```bash
-cp -a -r ~/bkhelmfile ~/bkhelmfile-$(date +%Y%m%d-%H%M%S).bak
-```
-
-## 安装蓝鲸下载脚本
-鉴于目前容器化的软件包数量较多，我们提供了下载脚本帮助你下载文件并制备安装目录。
-
-此脚本无需提供给所有用户，所以我们把它安装到 `~/bin` 目录下：
-``` bash
-mkdir -p ~/bin/
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.1-stable/bkdl-7.1-stable.sh -o ~/bin/bkdl-7.1-stable.sh
-chmod +x ~/bin/bkdl-7.1-stable.sh
-```
-
-## 配置安装目录变量
-在接下来的操作中，我们都会读取这些变量。
-
-升级文档假设 7.0 的 bkhelmfile 目录在 `~/bkhelmfile/`，7.1 的 bkhelmfile 目录在 `~/bkce7.1-install`。
-
-``` bash
-INSTALL_DIR=$HOME/bkce7.1-install/
-OLD_INSTALL_DIR=$HOME/bkhelmfile/
-```
-
-## 下载新的 bkhelmfile 包
-在 7.1 版本中，默认安装目录更换为了 ` ~/bkce7.1-install`，当然你也可以使用 `-i` 参数或者环境变量 `INSTALL_DIR` 来修改。
-
-我们先在 **中控机** 下载新的 bkhelmfile 包及公共证书：
-```bash
-# 下载成功后，最新的 helmfile 和默认配置在 ~/bkce7.1-install/blueking 目录下，SaaS 包在 ~/bkce7.1-install/saas 目录下
-bkdl-7.1-stable.sh -r latest bkce
-```
-
-## 更新 helm repo 缓存
-
-```bash
-cd ~/bkhelmfile/blueking
-helm repo update blueking
-```
-
-## 升级 yq 命令
-我们在 7.1 升级了 yq 的版本，请重新安装。
-
-先检查 `yq` 版本：
-``` bash
-yq --version
-```
-如果输出为：
->``` plain
->yq (https://github.com/mikefarah/yq/) version v4.30.6
->```
-
-说明已经是最新版本，可以跳过本章节。如果版本较低，请继续操作。
-
-因为前面 `bkdl-7.1-stable.sh bkce` 时已经连带下载了 `yq_cmd`，故此时可以直接复制文件：
-``` bash
-command cp -v "${INSTALL_DIR:-INSTALL_DIR-not-set}/bin/yq" /usr/local/bin/
-```
-
-复制完成后你可以再次检查 `yq` 命令的版本。
+# 配置
+先从旧的安装目录迁移所需的文件到新安装目录，然后调整配置项适配新版本。
 
 ## 从旧 bkhelmfile 目录迁移文件
 我们推荐你修改 custom-values 文件来实现自定义配置。如果你直接修改了预置的 values 文件，请自行迁移变动内容到新安装目录下的 custom-values 文件，**切勿直接覆盖** 新 values 文件。
@@ -255,12 +257,17 @@ cp -v "${OLD_INSTALL_DIR:-OLD_INSTALL_DIR-not-set}/blueking/environments/default
 ```
 
 ### 复制其他的 custom-values 文件
-我们找到以 `custom-values.yaml.gotmpl` 结尾的文件进行复制：
+在 7.0 的 安装目录找到以 `custom-values.yaml.gotmpl` 结尾的文件，并复制到 7.1 安装目录下：
 ``` bash
 find ${OLD_INSTALL_DIR:-OLD_INSTALL_DIR-not-set}/blueking/environments/default/ -name "*custom-values.yaml.gotmpl" -printf "cp -v ${OLD_INSTALL_DIR:-OLD_INSTALL_DIR-not-set}/blueking/environments/default/%P ${INSTALL_DIR:-INSTALL_DIR-not-set}/blueking/environments/default/%P\n" | bash
 ```
 
 ### 手动迁移 ingress-nginx 的 custom-values 文件
+>**提示**
+>
+>* 如果你使用的不是蓝鲸预置的 `ingress-nginx`，请自行调整配置文件。
+>* 如果你使用了蓝鲸预置的 `ingress-nginx`，但是没有配置过 custom-values，可以跳过本章节。
+
 在 7.0 版本中，你需要直接编辑 `$OLD_INSTALL_DIR/blueking/00-ingress-nginx.yaml.gotmpl` 文件来自定义 `ingress-nginx`，现在我们提供了独立的 custom-values 文件。
 
 请手动迁移自定义配置到 `$INSTALL_DIR/blueking/environments/default/ingress-nginx-custom-values.yaml.gotmpl`。
@@ -285,16 +292,19 @@ yq -i '.gse.version = "v1"' environments/default/custom.yaml
 ### 推荐：固定 ingress-nginx 的节点
 >**提示**
 >
->如果你使用了蓝鲸提供的 `ingress-nginx`，则稍后升级时，可能导致节点变动，引发配置的 hosts 无效。
+>* 如果你使用的不是蓝鲸预置的 `ingress-nginx`，请自行调整配置文件。
+
+ingress-nginx 升级时，可能导致节点变动，引发配置的 hosts 无效。所以配置 custom-values，确保依旧分配到之前的 node 上。
 
 先检查确认只有一个 `ingress-nginx`：
 ``` bash
 kubectl get pod -Al app.kubernetes.io/name=ingress-nginx
 ```
 
-获取之前的 nodeName：
+获取之前的 nodeName，并在 custom-values 文件里写入 nodeAffinity 规则：
 ``` bash
 ingress_nginx_nodename=$(kubectl get pod -Al app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].spec.nodeName}')
+touch environments/default/ingress-nginx-custom-values.yaml.gotmpl
 yq -i ".affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0] = {\"key\": \"kubernetes.io/hostname\", \"operator\": \"In\", \"values\": [\"$ingress_nginx_nodename\"]}" environments/default/ingress-nginx-custom-values.yaml.gotmpl
 ```
 检查生成的配置文件格式是否正确：
@@ -308,14 +318,22 @@ command cp -v "${OLD_INSTALL_DIR:-OLD_INSTALL_DIR-not-set}/saas/saas_install_ste
 ```
 
 # 开始升级
-接下来的升级操作都在新的 bkhelmfile 目录下进行：
+>**提示**
+>
+>接下来的升级操作都在 **新安装目录** 下进行。
+
+## 进入新的工作目录
 ``` bash
 # 进入新的工作目录
 cd "${INSTALL_DIR:-INSTALL_DIR-not-set}/blueking/"
 ```
 
 ## ingress-nginx
-推荐完成“固定 ingress-nginx 的节点”章节，可以保持节点 IP 不变。
+>**提示**
+>
+>如果你使用的不是蓝鲸预置的 `ingress-nginx`，可以跳过本章节。
+
+推荐先完成“固定 ingress-nginx 的节点”章节，可以保持节点 IP 不变，无需重新各处的 DNS 解析或 hosts 文件。
 
 ```bash
 helmfile -f 00-ingress-nginx.yaml.gotmpl sync
@@ -340,7 +358,7 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-auth -l name=bk-repo sync
 
 ### 升级 bkapigateway
 
-详细细节请参考 [API网关：如何从 chart 0.4.x 迁移到 1.10.x](https://github.com/TencentBlueKing/blueking-apigateway/issues/189)
+详细细节请参考 [API 网关：如何从 chart 0.4.x 迁移到 1.10.x](https://github.com/TencentBlueKing/blueking-apigateway/issues/189)
 
 1. 准备金丝雀发布的 /tmp/bkapigateway-values-canary.yaml
 
@@ -539,13 +557,13 @@ helmfile -f base-blueking.yaml.gotmpl -l seq=fourth sync
 # 获取更新后的 job appVersion
 JOB_NEW_VERSION=$(helm ls -n blueking -o json | jq -r '.[] | select(.name=="bk-job") | .app_version')
 
-# 执行前，请确保下述两个变量的值为非空
+# 执行前，请确保下述两个变量的值为非空。如果你没有单独更新过job，OLD_VERSION 一般为 3.5.x
 echo $JOB_OLD_VERSION $JOB_NEW_VERSION
 
 # 运行 upgrader 的 pod
-kubectl run -n blueking --image-pull-policy=Always --image="hub.bktencent.com/blueking/job-migration:$JOB_NEW_VERSION" bk-job-upgrade　-- sleep infinity
+kubectl run -n blueking --image-pull-policy=Always --image="hub.bktencent.com/blueking/job-migration:$JOB_NEW_VERSION" bk-job-upgrader -- sleep infinity
 
-# 确认 pod 变成 Running 状态
+# 等待 pod 启动完成（ready），会输出pod/bk-job-upgrader condition met
 kubectl wait -n blueking --for=condition=ready pod bk-job-upgrader
 
 # 生成升级所需的配置文件
