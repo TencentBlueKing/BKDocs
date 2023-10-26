@@ -43,16 +43,16 @@ CodeCC（代码检查中心）提供专业的代码检查解决方案，检查�
 
 **如果您想要直接部署使用：**
 
-CodeCC部署需要额外的[硬件资源](../../Services/Codecc/codecc-cost.md)。在资源准备就绪后，我们会立即启动CodeCC落地相关的事宜。
+CodeCC采用容器化部署，建议如下[硬件资源](../../Services/Codecc/codecc-cost.md)。
 
 # **FAQ**
-**Q：我可以使用Coverity的能力吗？**
+**Q：我可以使用Coverity/Checkmarx的能力吗？**
 
-A：Coverity需要您自行进行License采买。采买完成后，可以直接通过CodeCC插件调用Coverity对您的代码进行扫描。其他商业的代码扫描工具同理。
+A：Coverity/Checkmarx需要您自行进行License采买。采买完成后，可以联系蓝鲸服务商例如嘉为科技等进行集成。后续就可以直接通过CodeCC插件调用Coverity/Checkmarx对您的代码进行扫描了。其他商业的代码扫描工具同理。
 
 **Q：我可以把我使用的，但是不包含在现有工具集中的工具接入CodeCC使用吗？**
 
-A：我们将在22年下半年提供“自定义上架工具”满足该需求。
+A：我们将在24年下半年提供“自定义上架工具”满足该需求。
 
 **Q：我可以对工具中涵盖的规则集进行自定义的调整从而满足我们的使用需求吗？**
 
