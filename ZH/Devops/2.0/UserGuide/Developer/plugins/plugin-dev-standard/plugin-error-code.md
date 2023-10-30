@@ -30,3 +30,16 @@
 
 > 注：插件错误码有助于开发者定义完整的、成体系的错误信息，方便问题定位和报表生成
 
+### 3 插件自定义的错误码（errorCode）在插件代码库中申明
+
+需在代码库根目录下增加 errorCodes.json 文件，申明插件自定义错误码
+
+以 Java 插件为例：
+
+errorCode 在 errorCodes.json 文件中申明：
+
+![png](../../../assets/I18nConfig-java-3.png)
+
+对应的错误码常量：
+
+![png](../../../assets/I18nConfig-java-2.png)
