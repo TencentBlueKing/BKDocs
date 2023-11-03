@@ -178,9 +178,11 @@ scripts/set_desktop_default_app.sh -a "bk_log_search"
     1. TODO 其他集群容器日志采集步骤。
 
 
-# 可选功能
+# 更多功能
 ## 自定义上报服务器
-蓝鲸 bk-collector 是高性能 的 Trace、指标、日志接收端，支持 OT、Jaeger 等多种数据协议格式。
+在蓝鲸监控 “观测场景” 中，“综合拨测”、“APM” 及 “自定义场景”（数据采集、自定义事件、自定义指标）都需要通过 “自定义上报服务器” 来完成。
+
+“自定义上报服务器” 如今由 bk-collector 担当。它是高性能的 Trace、指标、日志接收端，支持 OT、Jaeger 等多种数据协议格式。以 GSE Agent 插件的形式托管在节点管理中。
 
 ### 安装 bk-collector
 通过蓝鲸 “节点管理” 系统部署 bk-collector。

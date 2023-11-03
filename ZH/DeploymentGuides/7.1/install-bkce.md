@@ -38,6 +38,18 @@ export REGISTRY=代理IP:端口
 
 注意：请提前在 **全部 k8s node** 上为 dockerd 配置 TLS 证书或者 `insecure-registries` 选项。
 
+## 检查存储供应
+先检查当前的存储提供者。在 中控机 执行：
+``` bash
+kubectl get sc
+```
+* 如果 `NAME` 列存在带 ` (default)` 后缀的条目（且只能存在一条），说明已经配置了默认存储类，检查 **通过**。
+* 如果上述命令提示 `No resources found`，说明还没有配置存储类，请根据你的 k8s 来源选择。
+  * 由 `bcs.sh` 创建的 k8s 集群，默认会制备 localpv 目录，稍后会自动安装。检查 **通过**。
+  * 其他方式获取的 k8s 集群，大概率没有制备 localpv 目录，检查 **不通过**。请参考如下方式处理后 **重新检查存储供应**：
+    * 如果希望由 node 提供存储，可参考部署详解 [直接创建 localpv](./storage-services.md#localpv)
+    * 自行配置其他 sc，并设置为默认。
+
 <a id="setup_bkce7-i-base" name="setup_bkce7-i-base"></a>
 
 ## 部署基础套餐后台

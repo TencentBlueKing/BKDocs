@@ -1,11 +1,13 @@
 存储服务涉及到存储卷以及各类数据库服务。
 
 # 供应存储卷
-蓝鲸预期使用默认存储卷创建卷。为了方便演示，且充分利用磁盘性能，所以选择了 `localpv` 存储类型。
+蓝鲸预期使用默认存储卷创建卷。
 
-但是如果 pod 有使用到 pv，则 `localpv` 会限制 pod 的迁移。你可能需要配置一些网络存储，例如 `nfs`。
+为了方便快速部署，且充分利用磁盘性能，本文选择了 `localpv` 存储类型。
 
-TODO 其他 sc 的配置
+但是如果 pod 有使用到 pv，则 `localpv` 会限制 pod 的迁移。为了解决 node 绑定的问题，你可以配置网络类型的存储类，例如 `nfs`。
+
+你参考 k8s 文档配置其他存储类后，需将其设置为 **默认**，且确保 `kubectl get sc` 输出结果中，只有一个默认（`(default)`后缀）的存储类。
 
 ## localpv
 蓝鲸默认使用 local pv provisioner 提供存储。
@@ -21,7 +23,7 @@ kubectl get sc
 * 如果 `NAME` 列存在 `xxx (default)` 的条目，说明已经配置了默认存储类，可以跳过本章节。
 
 ### 检查磁盘空间
-请确保各 `node` 中为 `localpv` 目录预留至少 100GB 的可用空间。
+请确保各 `node` 中为 `localpv` 源目录预留至少 100GB 的可用空间。
 
 ### 制备 pv 目录
 >**提示**
@@ -38,9 +40,9 @@ kubectl get sc
 
 因为 bcs.sh 没有为 master 提供 pv 目录，所以接下来以此为例，描述如何制备 pv 目录：
 ``` bash
-# 源目录可以自定义，此处为了和 bcs.sh 保持一致，使用 /data/bcs/localpv/
+# 源目录可以自定义，需要目录所在磁盘有 100GB 以上的空间。此处为了和 bcs.sh 保持一致，使用 /data/bcs/localpv/
 src_dir=/data/bcs/localpv/
-# pv目录需要和 Values.localpv.hostDir 保持一致
+# pv目录需要和全局 Values 中的 .localpv.hostDir 保持一致
 pv_host_dir=/mnt/blueking/
 # 创建 20 个pv所需的目录。
 for i in {01..20}; do
@@ -54,7 +56,7 @@ for i in {01..20}; do
     echo "$vol_src $vol_dir none defaults,bind 0 0" | tee -a /etc/fstab
   fi
 done
-# 在目录制备完成后，需要mount才行。
+# 在目录制备完成后，需要mount才能被 localpv provisioner 认可。
 mount -va
 ```
 
@@ -144,7 +146,54 @@ helmfile -f base-storage.yaml.gotmpl -l name=bk-etcd sync
 ```
 
 ## 对接已有的存储服务
-TODO 禁用蓝鲸内置服务，配置使用已有服务
+禁用蓝鲸内置服务，配置使用已有服务。
+
+请参考 helmfile 定义及 values 文件自行研究。
+
+### 示例：自定义 mysql
+参考 `base-storage.yaml.gotmpl` 中的 `bk-mysql` 定义：
+``` yaml
+  - name: bk-mysql
+    namespace: {{ .Values.namespace }}
+    # Mysql chart files/create_database.sql contains CREATE DATABASE for all blueking databases
+    chart: ./charts/mysql-{{ .Values.version.mysql }}.tgz
+    missingFileHandler: Warn
+    version: {{ .Values.version.mysql }}
+    condition: bitnamiMysql.enabled
+    values:
+    - ./environments/default/mysql-values.yaml.gotmpl
+    - ./environments/default/mysql-custom-values.yaml.gotmpl
+```
+
+condition 决定 release 是否启用。这是在全局 values（`environments/default/values.yaml`）中定义的：
+``` yaml
+bitnamiMysql:
+  enabled: true
+```
+
+而调用 MySQL 的服务，则需要修改他们各自的 values 文件。我们已经提前在这些 values 文件中引用了全局 values：
+``` yaml
+mysql:
+  # 处于同一集群可以使用k8s service 名
+  host: "bk-mysql-mysql"
+  port: 3306
+  rootPassword: blueking
+```
+
+现在需要覆盖上述的 values，因为此处涉及的 values 都在全局 values 文件，所以修改全局 custom values 文件（`environments/default/custom.yaml`）：
+``` yaml
+bitnamiMysql:
+  enabled: false
+mysql:
+  host: "填写服务端 IP"
+  port: 3306
+  rootPassword: "填写服务端root密码"
+```
+
+### 其他文件的修改
+请自行研究 `全局 values` 文件（`environments/default/values.yaml`）。
+
+如需覆盖，写入全局 custom values 文件（`environments/default/custom.yaml`）。
 
 <a id="next" name="next"></a>
 

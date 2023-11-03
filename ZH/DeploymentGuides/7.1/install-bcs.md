@@ -21,6 +21,21 @@ bcs:
 EOF
 ```
 
+### 禁用消息队列
+bcs-services-stack-1.28.2 及以下版本需要调整配置。不然 bcs-storage CPU 使用率会异常偏高。
+
+创建或者编辑 bcs custom values 文件（`./environments/default/bcs-custom-values.yaml.gotmpl`）：
+``` yaml
+bcs-storage:
+  storage:
+    messageQueue:
+      enabled: false
+global:
+  storage:
+    messageQueue:
+      enabled: false
+```
+
 ### 配置 coredns
 容器管理平台 会在 pod 内请求 蓝鲸制品库 提供的 helm 及 docker 仓库，需确保 coredns 配置正确。
 
