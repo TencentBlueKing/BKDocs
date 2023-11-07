@@ -390,6 +390,17 @@ svc_discovery:
 - `bk_app_code`：（string）代表蓝鲸 SaaS 应用 Code
 - `module_name`：（string）模块名称，可选。不提供时，表示使用应用的“主模块”
 
+> 常见问题：**不提供 module_name 和设置 module_name 为 “default” 有何区别？**
+> 
+> 如果想获取某个应用的“主模块”的访问地址，有两种的不同配置形式：不指定 module_name 字段，和显式指定 module_name 为 “default”（应用默认的“主模块”名）。
+> 
+> 这两种形式看似一样，但最终获取到的访问地址会有所区别：
+> 
+> - **不指定**：访问地址是一个灵活的短地址，它总是指向到目标应用当前的“主模块”（虽默认为“default”，但也有可能是其他模块），示例地址格式为：`http://example.com/app-code/`（生产环境），其中不包含具体模块名
+> - **显式指定 default**：访问地址是一个完整地址，它明确指向到名为 default 的模块，一个示例地址为：`http://example.com/prod--default--app-code/`（生产环境）
+> 
+> 如果你只想获取应用的主要访问地址，不关注具体模块，建议不要指定 module_name 字段。
+
 应用在部署后，可通过名为 `BKPAAS_SERVICE_ADDRESSES_BKSAAS` 的环境变量读取到 `bk-iam` 的“主模块”与 `bk-user` 应用的 api 模块的访问地址。
 
 该环境变量值是一个经过 base64 编码过的 Json 对象，对象格式为：

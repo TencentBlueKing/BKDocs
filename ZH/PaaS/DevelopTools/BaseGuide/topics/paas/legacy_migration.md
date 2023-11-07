@@ -9,7 +9,7 @@
 
 ## 旧应用迁移所需的代码改动
 
-### blueapps 修改
+### 一、blueapps 修改
 
 首先确认应用使用的 Django 版本，可在代码仓库中的 `requirements.txt` 文件中查看，请按 Django 版本对照指引操作：
 
@@ -58,30 +58,19 @@ gunicorn==19.6.0
 python-2.7.18
 ```
 
-### blueking 修改
+### 二、blueking 修改
 
 1. 删除您的代码仓库中的 `blueking` 文件夹
 
-2. 从官网下载最新的 [Python 开发框架](../../../SaaSGuide/term.md) 的包
+2. 从官网下载最新的 [Python 开发框架](../../../DevelopGuide/7.0/DevTools.md) 的包
 
 3. 将下载下来的 framework_*.tar.gz 开发框架包的的 `app_desc.yaml` 文件，`blueking`  文件夹 放到您的代码的根目录中
 
 
-### 配置修改
+### 三、配置修改
 
 1. 将以下内容添加 `config/__init__.py` 文件中
 ```
-def get_env_or_raise(key):
-    """Get an environment variable, if it does not exist, raise an exception"""
-    value = os.environ.get(key)
-    if not value:
-        raise RuntimeError(
-            (
-                'Environment variable "{}" not found, you must set this variable to run this application.'
-            ).format(key)
-        )
-    return value
-
 # SaaS应用ID
 APP_CODE = os.getenv("BKPAAS_APP_ID")
 # SaaS安全密钥，注意请勿泄露该密钥

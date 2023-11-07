@@ -4542,7 +4542,7 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   权限中心/产品白皮书/产品简介/README.md: ZH/IAM/1.12/UserGuide/Introduce/README.md
   节点管理/产品白皮书/Introduce/Overview.md: ZH/NodeMan/2.2/UserGuide/Introduce/Overview.md
   标准运维/产品白皮书/产品简介/README.md: ZH/SOPS/3.25/UserGuide/Overview/README.md
-  监控平台/产品白皮书/intro/README.md: ZH/Monitor/3.6/UserGuide/Overview/README.md
+  监控平台/产品白皮书/intro/README.md: ZH/Monitor/3.8/UserGuide/Overview/README.md
   日志平台/产品白皮书/intro/README.md: ZH/LogSearch/4.6/UserGuide/Intro/README.md
   流程服务/产品白皮书/产品简介/README.md: ZH/ITSM/2.6/UserGuide/Introduce/README.md
   故障自愈/产品白皮书/Intro/README.md: ZH/FTA/5.2/产品白皮书/Intro/README.md

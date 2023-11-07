@@ -8,12 +8,12 @@
 
 当我们在本地开发应用时，为了尽量模拟与平台一样的运行环境，至少需要设置以下这些环境变量：
 
-- `BKPAAS_APP_ID`: bk_app_code，应用 ID，创建应用时填写的值
+- `BKPAAS_APP_ID`: bk_app_code，应用 ID，在应用的 “基本信息” 页面查看
 - `BKPAAS_APP_SECRET`: bk_app_secret，在应用的 “基本信息” 页面查看
 - `BKPAAS_MAJOR_VERSION`: "3", 表示部署在 PaaS3.0 开发者中心
-- `BK_PAAS2_URL`: 蓝鲸桌面的地址，用于拼接登录链接，注意不要带 console 路径，形如: http://paas.example.com
-- `BK_COMPONENT_API_URL`: 蓝鲸 ESB API 地址，形如: http://bkapi.example.com
-- `BKPAAS_LOGIN_URL`: 蓝鲸登录链接，形如: http://paas.example.com/login
+- `BK_PAAS2_URL`: 蓝鲸桌面的地址，在环境变量页面，点击`查看内置环境变量`查看
+- `BK_COMPONENT_API_URL`: 蓝鲸 ESB API 地址，在环境变量页面，点击`查看内置环境变量`查看
+- `BKPAAS_LOGIN_URL`: 蓝鲸登录服务地址，在环境变量页面，点击`查看内置环境变量`查看
 
 不同开发环境下，设置环境变量的方法各不相同。常用的有：
 

@@ -374,9 +374,9 @@ Global Flags:
 
 bkpaas-cli 将提供适用于 Linux，MacOS，Windows 等多种系统 / 架构的二进制可执行文件。
 
-你可以在 [Release 页面](https://github.com/TencentBlueKing/blueking-paas/releases) 下载适用于你的系统 / 架构的最新版本的
+你可以在 [Release 页面](https://github.com/TencentBlueKing/blueking-paas/releases?q=bkpaas-cli&expanded=true) 下载适用于你的系统 / 架构的最新版本的
 bkpaas-cli。
 
 ## 参考文档
 
-- [bkpaas-cli Readme 文档](https://github.com/TencentBlueKing/blueking-paas/blob/main/bkpaas-cli/Readme.md)
+- [bkpaas-cli README 文档](https://github.com/TencentBlueKing/blueking-paas/blob/main/bkpaas-cli/Readme.md)
