@@ -62,7 +62,7 @@ python-2.7.18
 
 1. 删除您的代码仓库中的 `blueking` 文件夹
 
-2. 从官网下载最新的 [Python 开发框架](../../../DevelopGuide/7.0/DevTools.md) 的包
+2. 从官网下载最新的 [Python 开发框架](../../../../../DevelopGuide/7.0/DevTools.md) 的包
 
 3. 将下载下来的 framework_*.tar.gz 开发框架包的的 `app_desc.yaml` 文件，`blueking`  文件夹 放到您的代码的根目录中
 
