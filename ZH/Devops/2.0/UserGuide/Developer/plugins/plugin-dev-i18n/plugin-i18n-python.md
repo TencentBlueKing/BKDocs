@@ -2,13 +2,11 @@
 
 ## 1、国际化使用的插件 SDK 要求
 
-SDK 要求：>= v1.2.17
+SDK 要求：>= v1.0.1
 
 ## 2、国际化配置文件管理方式
 
 国际化配置文件，统一放到插件工程 i18n 目录下的资源文件中进行管理。如下图所示：
-
-> i18n 目录下需创建 __init__.py，否则 i18n 不能被打包成模块并安装，会导致获取不到国际化配置文件
 
 ![png](../../../assets/I18nConfig-python-1.png)
 
@@ -74,10 +72,16 @@ task.json 支持新增 defaultLocaleLanguage 字段，缺省为简体中文 zh_C
 
 ![png](../../../assets/I18nConfig-java-7.png)
 
-## 4、运行时可通过当前项目的模块安装目录 site-packages\i18n 获取到国际化配置文件
-![png](../../../assets/I18nConfig-python-3.png)
+## 4、i18n 环境配置
+- 1、确认项目根目录下存在 i18n 目录并且配置了国际化配置文件
+- 2、在 setup.py 中调用 setup 之前调用 python_atom_sdk.prepare_i18n_environment({包名称})
+- 3、在 package_data 中配置路径 f'i18n/*.properties'
+  ![png](../../../assets/I18nConfig-python-8.png)
+    
 
 ## 5、插件通过 SDK 工具类根据运行时语言去资源文件读取指定内容
+- 运行时可通过当前项目的模块安装目录 site-packages\\{模块名称}\i18n 获取到国际化配置文件
+  - ![png](../../../assets/I18nConfig-python-3.png)
 - 通过 SDK 提供的 get_language 方法获取运行时语言环境信息
 - 通过 SDK 提供的 get_message_by_locale 方法获取对应的国际化信息和错误码信息
 

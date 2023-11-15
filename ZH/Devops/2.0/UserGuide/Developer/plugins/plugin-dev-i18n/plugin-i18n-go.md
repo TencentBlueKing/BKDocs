@@ -82,9 +82,7 @@ task.json 支持新增 defaultLocaleLanguage 字段，缺省为简体中文 zh_C
 
 ``` bash
 # 安装代码生成工具
-
-待补充 -- todo
-
+go install github.com/ci-plugins/golang-plugin-sdk/cmd/i18ngenerator@latest
 # 生成代码
 go generate .
 ```

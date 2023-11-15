@@ -173,6 +173,9 @@ kubectl exec -it -n blueking bk-ci-mysql-0 -- /bin/bash -c 'MYSQL_PWD="$MYSQL_RO
     curl -vs http://bk-ci-bk-ci-store.blueking.svc.cluster.local/api/op/market/image/init -X POST \
       -H 'X-DEVOPS-UID: admin' -H 'Content-type: application/json' -d '{"imageCode":"bkci","imageName":"bkci","imageRepo":"hub.bktencent.com/bkci/ci","projectCode":"demo","userId":"admin"}' | jq .
   ```
+  >**提示**
+  >
+  >当你单独卸载蓝盾重装后，可能出现查询镜像为空，但是新增镜像时报错 `{ status: 400, message: "权限中心创建项目失败" }` 的情况。这是因为权限中心存在蓝盾 `demo` 项目的数据所致，我们后续会优化蓝盾单独卸载的文档。请先手动新建项目，并修改上述代码中 `projectCode` 字段的值。
 
 ## 对接制品库
 蓝盾依靠蓝鲸制品库来提供流水线仓库和自定义仓库，需要调整制品库的认证模式。
