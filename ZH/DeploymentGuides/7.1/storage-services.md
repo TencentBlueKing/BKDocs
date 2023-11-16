@@ -151,6 +151,7 @@ helmfile -f base-storage.yaml.gotmpl -l name=bk-etcd sync
 请参考 helmfile 定义及 values 文件自行研究。
 
 ### 示例：自定义 mysql
+#### 修改配置文件
 参考 `base-storage.yaml.gotmpl` 中的 `bk-mysql` 定义：
 ``` yaml
   - name: bk-mysql
@@ -188,6 +189,55 @@ mysql:
   host: "填写服务端 IP"
   port: 3306
   rootPassword: "填写服务端root密码"
+```
+
+#### 确保 root 账户能创建数据库并授权
+PaaS 在部署 SaaS 时，会调用 root 账户为 SaaS 创建数据库，并使用 `GRANT` 语句授予权限。
+
+请检查你的 root 账户是否具备授权能力：
+``` sql
+SHOW GRANTS FOR root@'%';
+```
+
+如果没有显示 `GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION`，请添加完整权限：
+``` sql
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+```
+
+#### 提前创建数据库
+蓝鲸 `bk-mysql` release 在启动时会自动创建所需的数据库。
+
+你的自建 MySQL 需要提前创建这些数据库：
+``` sql
+CREATE DATABASE IF NOT EXISTS open_paas DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_login DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bkauth DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bkiam DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bkiam_saas DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bkssm DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_apigateway DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_esb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_user_api DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_user_saas DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bkpaas3_engine DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bkpaas3_apiserver DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bkpaas3_svc_mysql DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bkpaas3_svc_bkrepo DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bkpaas3_svc_rabbitmq DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bkpaas3_svc_otel DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_monitor DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_monitor_grafana DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_log_search DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bklog_grafana DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_nodeman DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_grafana DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_dbconfig DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_dbpriv DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_dbpartition DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_dbsimulation DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_dns DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_hadb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 ```
 
 ### 其他文件的修改
