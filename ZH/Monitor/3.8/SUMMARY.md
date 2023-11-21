@@ -58,7 +58,6 @@
         * [事件上报-HTTP JSON](UserGuide/ProductFeatures/integrations-events/custom_events_http.md)
         * [事件上报-命令行工具](UserGuide/ProductFeatures/integrations-events/custom_report_tools.md)
         * [SNMP Trap 采集插件](UserGuide/ProductFeatures/integrations-events/snmp_trap.md)
-        * [字符型上报工具-gsecmdline](UserGuide/ProductFeatures/integrations-events/custom_events_gsecmdline.md)
     * [集成-告警源]()
         * [告警源接入说明](UserGuide/ProductFeatures/integrations-alerts/custom_alerts_source.md)
         * [告警源插件制作](UserGuide/ProductFeatures/integrations-alerts/plugin_alerts.md)
