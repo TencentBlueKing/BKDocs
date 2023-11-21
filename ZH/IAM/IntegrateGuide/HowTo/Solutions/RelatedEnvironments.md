@@ -14,6 +14,6 @@
 
 在产品上可对操作配置时间周期相关的属性：
 
-![related_environments_1](../assets/HowTo/related_environments_1.png)
+![related_environments_1](../../assets/HowTo/related_environments_1.png)
 
-![related_environments_2](../assets/HowTo/related_environments_2.png)
+![related_environments_2](../../assets/HowTo/related_environments_2.png)

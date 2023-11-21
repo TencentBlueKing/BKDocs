@@ -12,15 +12,9 @@
 
 ## 接下来你可能需要
 
-<<<<<<< HEAD:ZH/Devops/2.0/产品白皮书/Services/Pipeline/pipeline-history.md
-* [BK-CI 导航条](../Console.md)
-* [流水线列表页](pipeline-list.md)
-* [创建/编辑流水线](pipeline-edit.md)
-* [流水线任务详情页](./pipeline-build-detail/pipeline-detail.md)
-=======
 * [BKCI 导航条](../Console/Console.md)
 * [流水线列表页](../Pipeline/pipeline-list.md)
 * [创建/编辑流水线](../Pipeline/pipeline-edit-guide/pipeline-edit.md)
 * [流水线任务历史](../Pipeline/pipeline-history.md)
 
->>>>>>> 51c64cbe653ce5ff064de8dea6a0592fab08002d:ZH/Devops/2.0/UserGuide/Services/Pipeline/pipeline-history.md
+

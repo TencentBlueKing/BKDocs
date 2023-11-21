@@ -23,27 +23,4 @@
    - 另存为模板：将当前流水线的编排保存为流水线模板
    - 删除：软删除，将放入流水线回收站
 
-<<<<<<< HEAD:ZH/Devops/2.0/产品白皮书/Services/Pipeline/pipeline-edit-guide/pipeline-edit.md
-## 接下来你可能需要
 
-* 编排流水线
-   * 基本操作
-      * [Stage 准入](pipeline-edit-guide/gui.md)
-      * [为流水线开启自定义构建号](pipeline-edit-guide/alias-buildno.md)
-      * [锁定流水线](pipeline-edit-guide/disable-pipeline.md)
-   * 触发器
-      * [gitlab 触发](pipeline-triggers/pipeline-trigger-gitlab.md)
-      * [手动触发](pipeline-triggers/pipeline-trigger-manual.md)
-      * [定时触发](pipeline-triggers/pipeline-trigger-timer.md)
-      * [远程触发](/pipeline-triggers/pipeline-trigger-remote.md)
-   * 流水线变量
-      * [变量的基本使用](pipeline-variables/pipeline-variables-shell-batch.md)
-      * [使用变量控制流水线流程](pipeline-variables/pipeline-variables-flow-control.md)
-      * [使用备注变量](pipeline-variables/pipeline-variables-remark.md)
-      * [凭证变量](pipeline-variables/pipeline-variables-ticket.md)
-* [BK-CI 导航条](../Console.md)
-* [流水线列表页](pipeline-list.md)
-* [流水线任务历史](pipeline-history.md)
-* [流水线任务详情页](../pipeline-build-detail/pipeline-detail.md)
-=======
->>>>>>> 51c64cbe653ce5ff064de8dea6a0592fab08002d:ZH/Devops/2.0/UserGuide/Services/Pipeline/pipeline-edit-guide/pipeline-edit.md
