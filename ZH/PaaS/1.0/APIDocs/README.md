@@ -1,3 +1,3 @@
-## 蓝鲸 APIGateway API 
+## BlueKing APIGateway API
 
-详情见“PaaS 平台-开发者中心” -> “API 网关” -> “网关 API 文档” -> “bkpaas3” 的内容，域名参考 “apigw.{domain}/docs/apigw-api”。
+For details, see the contents of "PaaS Platform - Developer Center" -> "API Gateway" -> "Gateway API Documentation" -> "bkpaas3", and the domain name refers to "apigw.{domain}/docs/apigw-api".

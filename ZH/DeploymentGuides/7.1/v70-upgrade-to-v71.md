@@ -635,3 +635,12 @@ kubectl exec -it $pod_name -n blueking -- python manage.py iam_upgrade_action_v2
 ```bash
 helmfile -f 04-bklog-search.yaml.gotmpl sync
 ```
+
+### 更新监控日志采集器
+
+更新蓝鲸所在k8s集群的监控和日志采集器：
+
+```bash
+helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
+helmfile -f 04-bklog-collector.yaml.gotmpl sync
+```
