@@ -1,6 +1,6 @@
 # SUMMARY
 
-## 可视化开发平台
+## 运维开发平台
 * [产品公告](https://bk.tencent.com/s-mart/application/289/histroy)
 * [产品简介](UserGuide/intro.md)
 * [快速入门](UserGuide/start.md)
