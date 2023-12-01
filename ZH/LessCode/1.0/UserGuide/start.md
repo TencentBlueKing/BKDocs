@@ -2,7 +2,7 @@
 
 ## 1. 创建应用
 
-进入蓝鲸可视化开发平台后，你可以“创建应用”开始在线一站式研发。
+进入蓝鲸运维开发平台后，你可以“创建应用”开始在线一站式研发。
 
 
 <img src="./images/create-proj.png" alt="grid" width="540" class="help-img">
