@@ -111,7 +111,7 @@
     OnlineGuide: "7.0"
 7.1:
     APIGateway: "1.10"
-    BCS: 1.28
+    BCS: 1.29
     BK-Base: "3.10"
     BestPractices: 7.1
     BlueKingFamily: "7.0"
