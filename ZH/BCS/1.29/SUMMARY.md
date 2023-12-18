@@ -7,7 +7,7 @@
 * [产品特性](UserGuide/Function/features.md)
 * [产品优势](UserGuide/Function/superiority.md)
 * [产品开源](UserGuide/Function/opensource.md)
-* [产品架构图](UserGuide/Architecture/Architecture.md)
+* [产品架构图](UserGuide/ProductArchitecture/Architecture.md)
 * [快速入门](UserGuide/QuickStart/QuickStart.md)
 * [场景案例]()
     * [快速构建 Nginx 集群](UserGuide/Scenes/Bcs_deploy_nginx_cluster.md)
