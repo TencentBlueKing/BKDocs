@@ -626,7 +626,7 @@ helmfile -f 04-bkmonitor.yaml.gotmpl sync
 
 ```bash
 pod_name=$(kubectl get pod -n blueking -l process=api,app.kubernetes.io/instance=bk-monitor -o name | head -1)
-kubectl exec -it $pod_name -n blueking -- python manage.py iam_upgrade_action_v2
+kubectl exec -it $pod_name -n blueking -- /app/venv/bin/python manage.py iam_upgrade_action_v2
 ```
 成功后会输出以下字样：`Congratulations! IAM upgrade successfully!!!`。
 
@@ -644,3 +644,11 @@ helmfile -f 04-bklog-search.yaml.gotmpl sync
 helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
 helmfile -f 04-bklog-collector.yaml.gotmpl sync
 ```
+
+升级后操作
+
+```bash
+pod_name=$(kubectl get pod -n blueking -l process=api,app.kubernetes.io/instance=bk-log-search -o name | head -1)
+kubectl exec -it $pod_name -n blueking -- /app/venv/bin/python manage.py iam_upgrade_action_v2
+```
+成功后会输出以下字样：`Congratulations! IAM upgrade successfully!!!`。
