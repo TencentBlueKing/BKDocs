@@ -94,7 +94,7 @@ PaaS部署时，Node构建工具在安装完依赖后会检测package.json的scr
 
 ##  如何配置独立域名及域名申请的ip地址
 
-应用IP查询：选择『应用引擎-访问入口』页面，查看IP 信息
+应用IP查询：选择『访问管理』页面，查看IP 信息
 
 详情查看文档：[应用访问入口配置](../topics/paas/app_entry_intro.md)
 
