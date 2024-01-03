@@ -1,6 +1,22 @@
 # 单产品更新
 我们在蓝鲸 7.1.0 版本发布后，为部分产品提供了新版本，详见各项目下的更新信息表格。
 
+## 更新蓝鲸运维开发平台（可视化开发平台）
+|  | 软件版本号 |
+|--|--|--|
+| 7.1.2 发布 | 1.0.11 |
+| 20231227 安全更新 | 1.0.14-beta.1 |
+
+本更新为 **安全** 更新，包含安全问题及普通问题修复，我们希望用户尽快更新。
+
+下载适用于蓝鲸 7.x 的安装包：
+* [bk_lesscode-V1.0.14-beta.1.tar.gz](https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_lesscode/bk_lesscode-V1.0.14-beta.1.tar.gz)
+
+参考 《[更新安装包](manual-install-saas.md#更新安装包)》文档上传安装包，无需调整环境变量，直接选择新版本部署到生产环境。
+
+部署成功后，即可在桌面访问了。
+
+
 ## 更新 bk-apigateway
 |  | chart 版本号 | 软件版本号 |
 |--|--|--|
@@ -156,6 +172,18 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 |--|--|
 | 7.1.0 发布 | 2.6.6 |
 | 20230822 补丁更新 | 2.6.7 |
+| 7.1.2 发布 | 2.6.7 |
+| 20231227 安全更新 | 2.6.8 |
+
+### 20231227 安全更新
+本更新为 **安全** 更新，包含安全问题及普通问题修复，我们希望用户尽快更新。具体变动见 https://github.com/TencentBlueKing/bk-itsm/blob/master/docs/RELEASE.md 。
+
+下载适用于蓝鲸 7.x 的安装包：
+* [bk_itsm-V2.6.8.tar.gz](https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.8.tar.gz)
+
+参考 《[部署流程服务（bk_itsm）](manual-install-saas.md#deploy-bkce-saas-itsm)》 文档上传安装包，并部署到生产环境。
+
+部署成功后，即可在桌面访问了。
 
 ### 20230822 补丁更新
 本更新为 **补丁** 更新，包含问题修复和逻辑优化。具体变动见 https://github.com/TencentBlueKing/bk-itsm/blob/master/docs/RELEASE.md 。
@@ -163,7 +191,7 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 下载适用于蓝鲸 7.x 的安装包：
 * [bk_itsm-V2.6.7.tar.gz](https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.7.tar.gz)
 
-参考 《[部署流程服务（bk_itsm）](install-saas-manually.md#deploy-bkce-saas-itsm)》 文档上传安装包，并部署到生产环境。
+参考 《[部署流程服务（bk_itsm）](manual-install-saas.md#deploy-bkce-saas-itsm)》 文档上传安装包，并部署到生产环境。
 
 部署成功后，即可在桌面访问了。
 
