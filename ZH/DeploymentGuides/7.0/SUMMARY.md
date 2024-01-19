@@ -8,6 +8,7 @@
 * [监控日志套餐部署](install-co-suite.md)
 * [持续集成套餐部署](install-ci-suite.md)
 * [6.1-7.0升级指引](how-to-upgrade-from-v6.1.md)
+* [蓝盾二进制升级容器化指引](ci_update_to_container.md)
 * [可视化开发平台安装指引](LesscodeDeployment.md)
 * [卸载](uninstall.md)
 * [问题案例](troubles.md)
