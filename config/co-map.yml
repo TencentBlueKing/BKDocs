@@ -9383,3 +9383,15 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   BK-Base/ErrorCode/readme.md: ZH/BK-Base/ErrorCode/readme.md
   BK-Base/GithubContributorGuide.md: ZH/BK-Base/GithubContributorGuide.md
   BK-Base/ReleaseNotes/ReleaseNotes.md: ZH/BK-Base/ReleaseNotes/ReleaseNotes.md
+  ZH/APIGateway/Vedios.md: ZH/APIGateway/Video.md
+  ZH/CMDB/Vedios.md: ZH/CMDB/Video.md
+  ZH/DBM/Vedios.md: ZH/DBM/Video.md
+  ZH/IAM/Vedios.md: ZH/IAM/Video.md
+  ZH/JOB/Vedios.md: ZH/JOB/Video.md
+  ZH/NodeMan/Vedios.md: ZH/NodeMan/Video.md
+  ZH/PaaS/Vedios.md: ZH/PaaS/Video.md
+  ZH/SOPS/3.28/Vedios.md: ZH/SOPS/3.28/Video.md
+  ZH/UserManage/Vedios.md: ZH/UserManage/Video.md
+  EN/CMDB/Vedios.md: EN/CMDB/Video.md
+  EN/PaaS/Vedios.md: EN/PaaS/Video.md
+  EN/SOPS/3.28/Vedios.md: EN/SOPS/3.28/Video.md
