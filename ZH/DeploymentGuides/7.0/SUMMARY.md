@@ -7,7 +7,7 @@
 * [容器管理平台部署](install-bcs.md)
 * [监控日志套餐部署](install-co-suite.md)
 * [持续集成套餐部署](install-ci-suite.md)
-* [升级]
+* [升级]()
     * [6.1-7.0升级指引](how-to-upgrade-from-v6.1.md)
     * [蓝盾二进制升级容器化指引](ci_update_to_container.md)
 * [可视化开发平台安装指引](LesscodeDeployment.md)
