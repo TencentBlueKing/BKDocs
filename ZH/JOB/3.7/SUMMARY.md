@@ -63,7 +63,7 @@
     * [API 概览](APIDocs/README.md)
     * [根据 ip 列表批量查询作业执行日志](APIDocs/zh_hans/batch_get_job_instance_ip_log.md)
     * [回调](APIDocs/zh_hans/callback_protocol.md)
-    * [启动作业执行方案](APIDocs/zh_hans/execute_job_plan.m
+    * [启动作业执行方案](APIDocs/zh_hans/execute_job_plan.md)
     * [快速执行脚本](APIDocs/zh_hans/fast_execute_script.md)
     * [快速执行 SQL](APIDocs/zh_hans/fast_execute_sql.md)
     * [快速分发文件](APIDocs/zh_hans/fast_transfer_file.md)
