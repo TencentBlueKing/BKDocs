@@ -11,6 +11,12 @@
   * 预期放置路径： `/data/src/bkci-v2.0.0-beta.40-slim.tar.gz`
   * 参考下载地址（蓝鲸官网）： https://bkopen-1252002024.file.myqcloud.com/bkci/bkci-v2.0.0-beta.40-slim.tar.gz
   * 参考下载地址（GitHub）： https://github.com/TencentBlueKing/bk-ci/releases/download/v2.0.0-beta.40/bkci-slim.tar.gz （注意修改为预期放置路径的文件名）
+  
+升级前注意事项：
+
+1. 权限中心确保用户组织架构已同步，用户组织架构目录下应该出现admin用户
+
+![iam_organization_structure.png](../assets/iam_organization_structure.png)
 
 ## 一、快速部署
 
@@ -31,7 +37,7 @@
 ## 二、访问蓝盾
 
 请配置 DNS 系统或本地 hosts 文件。将 `BK_CI_FQDN` 解析到 `ci（gateway）` 所在的 IP。
-我们在部署结果中提示了访问链接及参考的 hosts 内容。请查看部署流程中 “集群初始配置” 步骤中的“job 任务链接”，在 console 输出的末尾显示访问的域名及 IP。
+我们在部署结果中提示了访问链接及参考的 hosts 内容。请查看部署流程中 “集群初始配置” 步骤中的“ job 任务链接”，在 console 输出的末尾显示访问的域名及 IP。
 完成域名解析后，即可在蓝鲸工作台打开“蓝盾”。
 
 ![CI_home_v2.png](../assets/CI_home_v2.png)
