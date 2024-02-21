@@ -105,8 +105,10 @@ kubectl exec -it -n bcs-system bcs-mysql-0 -- mysql -uroot -p密码
 连接 mongodb：
 ``` bash
 kubectl exec -it -n bcs-system deploy/bcs-mongodb -- mongo mongodb://root:密码@/bcs-mongodb服务地址?authSource=admin
-
 ```
+
+# ci 自带的存储服务
+
 
 # 一些配置项
 ## gse 默认接入点的区域和城市
