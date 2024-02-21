@@ -1,11 +1,11 @@
-# 部署可视化开发平台
+# 部署运维开发平台
 支持 2 种部署方式，请按需查阅对应章节。
 
 ## 配置 coredns
 可视化平台支持调试 API ，会在 pod 内构造并发起 HTTP 请求。此时域名解析由 coredns 负责，请尽量配置上游 DNS 实现解析，如果无法实现，可参考本章节添加 hosts 记录应急。
 
 ### 添加蓝鲸域名
-如果你使用了可视化开发平台的 “数据源管理” 功能，则请求的域名为 `lesscode.$BK_DOMAIN`，请参考如下步骤进行配置。
+如果你使用了运维开发平台的 “数据源管理” 功能，则请求的域名为 `lesscode.$BK_DOMAIN`，请参考如下步骤进行配置。
 
 在 **中控机** 执行：
 ``` bash
@@ -55,7 +55,7 @@ scripts/setup_bkce7.sh -i lesscode -f
 当浏览器访问“开发者中心”进行部署时，需要提前在浏览器里下载安装包：
 | 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 可视化开发平台（bk_lesscode） | 1.0.10 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_lesscode/bk_lesscode-V1.0.10.tar.gz |
+| 运维开发平台（bk_lesscode） | 1.0.10 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_lesscode/bk_lesscode-V1.0.10.tar.gz |
 
 
 ### 创建应用
@@ -95,7 +95,7 @@ scripts/setup_bkce7.sh -i lesscode -f
 
 
 # 配置访问地址
-可视化开发平台预期使用独立域名访问。
+运维开发平台预期使用独立域名访问。
 
 1. 展开侧栏 “应用引擎”，点击进入 “访问入口” 界面。
 2. 切换顶部 Tab 到 “独立域名”。在 “域名管理” 下，点击 “添加域名” 按钮。
@@ -140,6 +140,6 @@ helm get values -n blueking bk-paas | yq e '.apiserver.npmRegistry' -
 ```
 
 # 下一步
-开始了解 [可视化开发平台](../../LessCode/1.0/UserGuide/intro.md)
+开始了解 [运维开发平台](../../LessCode/1.0/UserGuide/intro.md)
 
 或者回到《[部署基础套餐](install-bkce.md#next)》文档看看其他操作。

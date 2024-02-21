@@ -34,8 +34,8 @@
 |[开发框架](https://github.com/TencentBlueKing/blueapps) |Public |
 |[开发框架日志模板](https://github.com/TencentBlueKing/django-versionlog) |Public |
 |[API网关](https://github.com/TencentBlueKing/blueking-apigateway) |开源准备中 |
-|[可视化开发平台(S-marker)](https://github.com/TencentBlueKing/bk-nocode) |Public，停止更新 |
-|[可视化开发平台(LessCode)](https://github.com/TencentBlueKing/bk-lesscode) |Public |
+|[运维开发平台(S-marker)](https://github.com/TencentBlueKing/bk-nocode) |Public，停止更新 |
+|[运维开发平台(LessCode)](https://github.com/TencentBlueKing/bk-lesscode) |Public |
 |[前端组件库](https://github.com/TencentBlueKing/bkui-vue2 ) |Public |
 |[Vue3组件库3.0](https://github.com/TencentBlueKing/bkui-vue3) |Public |
 |[Vue2组件库2.0](https://github.com/TencentBlueKing/bkui-vue2) |Public |

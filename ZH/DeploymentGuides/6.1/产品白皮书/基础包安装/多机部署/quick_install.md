@@ -187,7 +187,7 @@ echo bkssm bkiam usermgr paas cmdb gse job consul | xargs -n 1 ./bkcli check
 
 ### 部署 lesscode (可选)
 
-1. 前往 S-mart 市场下载 [可视化开发平台](https://bk.tencent.com/s-mart/application/276/detail)
+1. 前往 S-mart 市场下载 [运维开发平台](https://bk.tencent.com/s-mart/application/276/detail)
 
 2. 将包放置中控的 `/data` 目录，并解压至 `/data/src` 目录
 

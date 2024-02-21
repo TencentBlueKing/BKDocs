@@ -1,4 +1,4 @@
-# 可视化开发平台（lesscode）安装指引
+# 运维开发平台（lesscode）安装指引
 
 ## 使用范围
 
@@ -7,7 +7,7 @@
 ## 说明
 
 - 下述操作均在中控机操作，且所述路径均为蓝鲸默认路径，实际操作过程中，请以实际为准。
-- 如果使用的是新机器进行部署可视化开发平台，请先根据 [新机器初始化](../../MaintenanceManual/DailyMaintenance/scale_node.md) 进行操作。
+- 如果使用的是新机器进行部署运维开发平台，请先根据 [新机器初始化](../../MaintenanceManual/DailyMaintenance/scale_node.md) 进行操作。
 
 ## 下载软件包
 
@@ -94,4 +94,4 @@ pcmd -m lesscode "bash /data/install/bin/init_new_node.sh"
 10.0.0.2 lesscode.bktencent.com
 ```
 
-完成 hosts 配置后，访问蓝鲸 PaaS 工作台即可看到【可视化开发平台】。
+完成 hosts 配置后，访问蓝鲸 PaaS 工作台即可看到【运维开发平台】。
