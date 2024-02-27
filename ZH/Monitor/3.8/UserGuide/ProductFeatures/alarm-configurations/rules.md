@@ -75,7 +75,7 @@
 
 ![](media/16914113186152.jpg)
 
-具体算法的说明查看附录 [算法说明](../../Other/functions/addenda/algorithms.md)
+具体算法的说明查看附录 [算法说明](./algorithms.md)
 
 
 ### 判断条件
