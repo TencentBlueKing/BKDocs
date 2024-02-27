@@ -15,7 +15,6 @@
 - [了解 helmfile](https://cloud.tencent.com/developer/article/1766822)
 - [kubectl 命令](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
 - [Docker 官方文档](https://docs.docker.com/get-started/)
-- [chart 仓库介绍](http://www.coderdocument.com/docs/helm/v2/charts/intro_to_charts.html)
 - K8S 基本概念快速预览
 	- **Master**: k8s 的主控组件，对应的对象是 node。
 	- **Node**: 是 k8s 集群的机器节点，相当于 master-node。一个 node 就对应一个具体的物理机或者虚拟机。

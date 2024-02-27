@@ -22,7 +22,7 @@
 
 注：可以支持的系统类型有Windows、Linux、AIX，系统架构x86,x86_64,arm32,arm64等
 
-采集器默认安装的路径在/usr/local/ges/plugins/bin
+采集器默认安装的路径在/usr/local/gse/plugins/bin
 ![](media/16612270124093.jpg)
 
 

@@ -67,7 +67,7 @@
 
 - **服务实例：** 服务模块的最小粒度，选择`服务`监控对象时最小粒度即为服务实例，而非 IP。 更多查看[设计理念](../Overview/README.md)
 
-![-w2021](../Architecture/media/15744838270079.jpg)
+![-w2021](../ProductArchitecture/media/15744838270079.jpg)
 
 ### 服务分类
 
