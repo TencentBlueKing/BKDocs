@@ -16,7 +16,7 @@
 #!/usr/bin/env bash
 # echo "::set-variable name=<var_name>::<value>"
 # eg:
-# echo "::set-variable name=fooBarVarName:fooBarVarValue"
+# echo "::set-variable name=fooBarVarName::fooBarVarValue"
 ```
 
 ![Var](../../../../assets/variables_6.png)
@@ -37,7 +37,7 @@
 #!/usr/bin/env bash
 # echo "::set-output name=<output_name>::<value>"
 # eg:
-# echo "::set-output name=outputVarName:outputVarValue"
+# echo "::set-output name=outputVarName::outputVarValue"
 ```
 
 通过此方法设置的输出变量，不会被任何步骤的同名输出覆盖。
