@@ -125,7 +125,7 @@
             - 
               name: {{ IndexBKBase }}
             - 
-              name: {{ IndexBCSP }}
+              name: {{ IndexBSCP }}
 -
   name: {{ Doc }}
   children:
