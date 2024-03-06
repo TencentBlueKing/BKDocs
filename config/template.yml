@@ -124,6 +124,8 @@
               name: {{ IndexArtifactory }}
             - 
               name: {{ IndexBKBase }}
+            - 
+              name: {{ IndexBKBCSP }}
 -
   name: {{ Doc }}
   children:
