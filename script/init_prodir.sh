@@ -1,4 +1,4 @@
-product=BSCP #产品目录名
+product=BCSP #产品目录名
 language=ZH   #中文目录
 version=1.29  #创建的版本号目录
 

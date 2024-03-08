@@ -133,5 +133,5 @@ Job 是前后端分离的部署架构，前后端分开更新，分别使用 `bi
 1. 上传到中控机 src/gse_plugins/ 下
 2. 刷新插件包到节点管理中
 ```bash
-./bkcli initdata bknodeman
+./bkcli initdata nodeman
 ```
