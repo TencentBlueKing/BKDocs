@@ -112,7 +112,7 @@ fi
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-./scripts/control_coredns.sh update "$IP1" bknodeman.$BK_DOMAIN jobapi.$BK_DOMAIN
+./scripts/control_coredns.sh update "$IP1" bknodeman.$BK_DOMAIN job.$BK_DOMAIN jobapi.$BK_DOMAIN
 ```
 
 <a id="hosts-in-bk-ctrl" name="hosts-in-bk-ctrl"></a>

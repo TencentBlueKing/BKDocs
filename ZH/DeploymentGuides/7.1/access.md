@@ -70,7 +70,7 @@ kubectl get -n blueking cm bk-gse-ce-task-config -o go-template --template '{{in
 # 访问存储服务
 访问公共 mysql：
 ``` bash
-kubectl exec -it -n blueking bk-mysql-mysql-master-0 -- mysql -uroot -p密码
+kubectl exec -it -n blueking bk-mysql-mysql-master-0 -- /bin/bash -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysql -u root'
 ```
 
 访问公共 mongodb:

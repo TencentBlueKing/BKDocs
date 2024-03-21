@@ -241,7 +241,7 @@ kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx  # 查看创建的po
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-./scripts/control_coredns.sh update "$IP1" $BK_DOMAIN bkrepo.$BK_DOMAIN docker.$BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN apps.$BK_DOMAIN bknodeman.$BK_DOMAIN jobapi.$BK_DOMAIN
+./scripts/control_coredns.sh update "$IP1" $BK_DOMAIN bkrepo.$BK_DOMAIN docker.$BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN apps.$BK_DOMAIN bknodeman.$BK_DOMAIN job.$BK_DOMAIN jobapi.$BK_DOMAIN
 ```
 
 确认注入结果，执行如下命令：
@@ -261,6 +261,7 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
         10.244.0.5 bkiam.bkce7.bktencent.com
         10.244.0.5 bcs.bkce7.bktencent.com
         10.244.0.5 bknodeman.bkce7.bktencent.com
+        10.244.0.5 job.bkce7.bktencent.com
         10.244.0.5 jobapi.bkce7.bktencent.com
 ```
 
