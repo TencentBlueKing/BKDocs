@@ -26,7 +26,7 @@ bash /data/install/configure_ssh_without_pass
 ./health_check/check_bk_controller.sh
 ```
 
-> 详细安装过程介绍，请查看[初始化并检查环境详解](../../基础包安装/安装详解/install_common.md)。
+> 详细安装过程介绍，请查看 [初始化并检查环境详解](../../基础包安装/安装详解/install_common.md)。
 
 ## 部署 PaaS 平台
 
@@ -35,7 +35,7 @@ bash /data/install/configure_ssh_without_pass
 ./bk_install paas
 ```
 
-> 详细安装过程介绍，请查看[安装 PaaS 平台详解](../../基础包安装/安装详解/install_paas.md)。
+> 详细安装过程介绍，请查看 [安装 PaaS 平台详解](../../基础包安装/安装详解/install_paas.md)。
 
 ## 部署 app_mgr
 
@@ -44,7 +44,7 @@ bash /data/install/configure_ssh_without_pass
 ./bk_install app_mgr
 ```
 
-> 详细安装过程介绍，请查看[安装 PaaS 平台详解](../../基础包安装/安装详解/install_paas.md)。
+> 详细安装过程介绍，请查看 [安装 PaaS 平台详解](../../基础包安装/安装详解/install_paas.md)。
 
 ## 部署权限中心与用户管理
 
@@ -62,7 +62,7 @@ bash /data/install/configure_ssh_without_pass
 ./bk_install cmdb
 ```
 
-> 详细安装过程介绍，请查看[安装配置平台详解](../../基础包安装/安装详解/install_cmdb.md)。
+> 详细安装过程介绍，请查看 [安装配置平台详解](../../基础包安装/安装详解/install_cmdb.md)。
 
 ## 部署 JOB
 
@@ -71,7 +71,7 @@ bash /data/install/configure_ssh_without_pass
 ./bk_install job
 ```
 
-> 详细安装过程介绍，请查看[安装管控平台详解](../../基础包安装/安装详解/install_gse.md)和[安装作业平台详解](../../基础包安装/安装详解/install_job.md)。
+> 详细安装过程介绍，请查看 [安装管控平台详解](../../基础包安装/安装详解/install_gse.md)和 [安装作业平台详解](../../基础包安装/安装详解/install_job.md)。
 
 ## 部署 bknodeman
 
@@ -84,7 +84,7 @@ bash /data/install/configure_ssh_without_pass
 ./bk_install bknodeman
 ```
 
-> 详细安装过程介绍，请查看[安装节点管理详解](../../基础包安装/安装详解/install_nodeman.md)。
+> 详细安装过程介绍，请查看 [安装节点管理详解](../../基础包安装/安装详解/install_nodeman.md)。
 
 ## 部署标准运维及流程管理
 
