@@ -128,20 +128,6 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-paas -l name=bkpaas-app-operato
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-job sync
 ```
 
-## 部署 seq=fifth 的 release
-第 5 层只包含了 `bk-nodeman` 1 个 release。
->**提示**
->
->在中控机执行 `helmfile -f base-blueking.yaml.gotmpl -l seq=fifth sync` 即可并行部署这些 release。
-
-### 部署 bk-nodeman
-节点管理。
-
-在中控机工作目录下执行：
-``` bash
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
-```
-
 # 访问蓝鲸桌面
 
 <a id="hosts-in-user-pc" name="hosts-in-user-pc"></a>
