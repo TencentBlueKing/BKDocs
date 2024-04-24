@@ -434,6 +434,53 @@ helmfile -f 03-bkci.yaml.gotmpl sync
 |--|--|--|
 | 7.1.2 发布 | 3.8.2 | 3.8.2 |
 | 20240320 补丁更新 | 3.8.4 | 3.8.4 |
+| 20240423 补丁更新 | 3.8.7 | 3.8.7 |
+
+### 20240423 补丁更新
+本更新为 **补丁** 更新，包含一些问题修复。
+
+登录到 **中控机**，先更新 helm 仓库缓存：
+``` bash
+helm repo update
+```
+检查仓库里的版本：
+``` bash
+helm search repo bk-monitor --version 3.8.7
+```
+预期输出如下所示：
+>``` plain
+>NAME                 CHART VERSION  APP VERSION  DESCRIPTION
+>blueking/bk-monitor  3.8.7          3.8.7        略
+>```
+
+接下来开始升级了。
+
+先进入工作目录：
+``` bash
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+```
+
+修改 `environments/default/version.yaml` 文件，配置 bk-monitor charts version 为 `3.8.7`：
+``` bash
+sed -i 's/bk-monitor:.*/bk-monitor: "3.8.7"/' environments/default/version.yaml
+grep bk-monitor environments/default/version.yaml  # 检查修改结果
+```
+预期输出：
+>``` yaml
+>  bk-monitor: "3.8.7"
+>```
+
+更新 bk-monitor：
+``` bash
+helmfile -f 04-bkmonitor.yaml.gotmpl sync
+```
+
+等待命令执行完毕，结尾输出如下即为更新成功：
+>``` plain
+>UPDATED RELEASES:
+>NAME      CHART                VERSION
+>blueking  blueking/bk-monitor  3.8.7
+>```
 
 ### 20240320 补丁更新
 本更新为 **补丁** 更新，包含一些问题修复。
