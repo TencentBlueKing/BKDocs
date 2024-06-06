@@ -4,24 +4,32 @@
 
 **注意：所有待安装蓝鲸的机器均需要按以下清单检查和操作。**
 
+## 操作系统要求
+
+**系统版本：** 推荐 CentOS-7.6。
+
 ## YUM 源配置
 
 在所有蓝鲸服务器上配置好 YUM 源，要求该 YUM 源包含 EPEL。
 
 不能连外网 YUM 源的环境，可以配置一个内部的 YUM 源 或者本地 YUM 源。
 
-### 在线配置
+- 建议使用腾讯云 CentOS 源
+```bash
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos7_base.repo
+mv /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.backup
+wget -O /etc/yum.repos.d/epel.repo http://mirrors.cloud.tencent.com/repo/epel-7.repo
 
-- [腾讯云 CentOS](https://mirrors.cloud.tencent.com/help/centos.html)
-- [腾讯云 EPEL](https://mirrors.cloud.tencent.com/help/epel.html)
+yum clean all
+yum makecache
+```
 
 ## CentOS 系统设置
 
 准备好硬件，安装完原生 CentOS 系统后。需要对初始系统做一些配置，保证后续安装过程的顺畅和蓝鲸平台的运行。
 
-**系统版本：** 推荐 CentOS-7.6。
-
-## 关闭 SELinux
+### 关闭 SELinux
 
 ```bash
 # 检查 SELinux 的状态，如果它已经禁用，可以跳过后面的命令
@@ -44,7 +52,7 @@ sed -i 's/^SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 reboot
 ```
 
-## 关闭默认防火墙(firewalld)
+### 关闭默认防火墙(firewalld)
 
 安装和运行蓝鲸时，模块之间互相访问的端口策略较多，建议对蓝鲸后台服务器之间关闭防火墙。
 
@@ -60,7 +68,7 @@ systemctl stop firewalld    # 停止 firewalld
 systemctl disable firewalld # 禁用 firewall 开机启动
 ```
 
-## 安装 rsync 命令
+### 安装 rsync 命令
 
 安装脚本依赖 rsync 分发同步文件。
 
@@ -72,7 +80,7 @@ which rsync
 yum -y install rsync
 ```
 
-## 安装 pssh 命令
+### 安装 pssh 命令
 
 ```bash
 # 检查是否有 pssh 命令，如果有返回 pssh 路径，可以跳过后面的命令
@@ -82,7 +90,7 @@ which pssh
 yum -y install pssh
 ```
 
-## 安装 jq 命令
+### 安装 jq 命令
 
 ```bash
 # 检查是否有 jq 命令，如果有返回 jq 路径，可以跳过后面的命令
@@ -91,7 +99,7 @@ yum -y install pssh
 yum -y install jq
 ```
 
-## 调整最大文件打开数
+### 调整最大文件打开数
 
 ```bash
 # 检查当前 root 账号下的 max open files 值
@@ -113,7 +121,7 @@ EOF
 
 修改后，重新使用 root 登录检查是否生效。
 
-## 确认服务器时间同步
+### 确认服务器时间同步
 
 服务器后台时间不同步会对时间敏感的服务带来不可预见的后果。务必在安装和使用蓝鲸时保证时间同步。
 
@@ -135,7 +143,7 @@ ntpdate cn.pool.ntp.org
 更可靠的方式包括通过运行 ntpd 或者 chrony 等服务在后台保持时间同步。
 具体请参考官方文档 [使用 ntpd 配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd) 或 [使用 chrony 配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-Configuring_NTP_Using_the_chrony_Suite)。
 
-## 检查是否存在全局 HTTP 代理
+### 检查是否存在全局 HTTP 代理
 
 蓝鲸服务器之间会有的 HTTP 请求，如果存在 HTTP 代理，且未能正确代理这些请求，会发生不可预见的错误。
 
@@ -147,7 +155,7 @@ echo "$http_proxy" "$https_proxy"
 对于本机配置 http_proxy 变量的方式，请依次查找文件 /etc/profile、/etc/bashrc、$HOME/.bashrc 等是否有设置。
 或者咨询网络管理员/IT 部门协助处理。
 
-## 检查部署机器的主机名
+### 检查部署机器的主机名
 
 请检查准备用于部署蓝鲸的 3 台机器的主机名是否相同。如果存在同名请进行修改。
 
@@ -158,7 +166,7 @@ hostnamectl set-hostname <新主机名>
 hostname
 ```
 
-## 检查 DNS 配置文件
+### 检查 DNS 配置文件
 
 检查 DNS 配置文件 /etc/resolv.conf 是否被加锁，如有请临时解锁。
 
