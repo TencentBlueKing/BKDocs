@@ -57,7 +57,6 @@
         * [通用查询 Common Query](../IntegrateGuide/Reference/API/02-Model/15-CommonQuery.md)
         * [系统 token 查询](../IntegrateGuide/Reference/API/02-Model/16-Token.md)
         * [常用操作配置 CommonActions](../IntegrateGuide/Reference/API/02-Model/17-CommonActions.md)
-        * [功能开关配置 FeatureShieldRules](../IntegrateGuide/Reference/API/02-Model/18-FeatureShieldRules.md)
         * [新建关联配置 ResourceCreatorAction](../IntegrateGuide/Reference/API/02-Model/19-ResourceCreatorAction.md)
     * [资源反向拉取]()
         * [名词及概念说明](../IntegrateGuide/Reference/API/03-Callback/00-Concepts.md)
