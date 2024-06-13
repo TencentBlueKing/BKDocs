@@ -14,7 +14,7 @@
 
 方法：
 
-1. 在 GitHub 上提 Issue 或 Pull Request，地址为: https://github.com/TencentBlueKing/BKDocs
+1. 在 GitHub 上提 Issue 或 Pull Request，地址为: https://github.com/TencentBlueKing/support-docs
 2. 加入腾讯蓝鲸社区交流群，与运维大佬们一起研究交流技术干货--腾讯蓝鲸社区交流群：495299374
 3. 给我们写邮件：contactus_bk@tencent.com
 
