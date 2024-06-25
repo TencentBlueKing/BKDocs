@@ -96,7 +96,6 @@ json 文件格式
 | upsert_action_groups          |   `array[map]` [格式](../../Reference/API/02-Model/14-ActionGroup.md)  | 新增或更新操作组         |    **推荐** |
 | upsert_resource_creator_actions |  `Map`, [格式](../../Reference/API/02-Model/19-ResourceCreatorAction.md)  | 新增或更新新建关联配置  |    **推荐**  |
 | upsert_common_actions|  `array[map]`, [格式](../../Reference/API/02-Model/17-CommonActions.md)  | 新增或更新常用操作配置  |    **推荐**  |
-| upsert_feature_shield_rules |  `array[map]`, [格式](../../Reference/API/02-Model/18-FeatureShieldRules.md)  | 新增或更新功能开关配置  |    **推荐**  |
 
 **建议:**: 如果 migration 中存在多个操作, `新增`建议使用`upsert`来实现, 而不是`add_`来实现, `add_`将会导致, 同一个 migration 只能执行一次; 重复执行会报错(资源已存在)
 
