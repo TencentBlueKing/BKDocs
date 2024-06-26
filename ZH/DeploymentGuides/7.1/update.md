@@ -2,6 +2,58 @@
 我们在蓝鲸 7.1.0 版本发布后，为部分产品提供了新版本，详见各项目下的更新信息表格。
 
 
+## 更新日志平台
+|  | chart 版本号 | 软件版本号 |
+|--|--|--|
+| 20240626 安全更新 | 4.6.6 | 4.6.6 |
+
+### 20240626 安全更新
+本更新为 **安全** 更新，包含安全问题及普通问题修复，我们希望用户尽快更新。
+
+登录到 **中控机**，先更新 helm 仓库缓存：
+``` bash
+helm repo update
+```
+检查仓库里的版本：
+``` bash
+helm search repo bk-log-search --version 4.6.6
+```
+预期输出如下所示：
+>``` plain
+>NAME                 CHART VERSION  APP VERSION  DESCRIPTION
+>blueking/bk-log-search  4.6.6          4.6.6        略
+>```
+
+接下来开始升级了。
+
+先进入工作目录：
+``` bash
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+```
+
+修改 `environments/default/version.yaml` 文件，配置 bk-log-search charts version 为 `4.6.6`：
+``` bash
+sed -i 's/bk-log-search:.*/bk-log-search: "4.6.6"/' environments/default/version.yaml
+grep bk-log-search environments/default/version.yaml  # 检查修改结果
+```
+预期输出：
+>``` yaml
+>  bk-log-search: "4.6.6"
+>```
+
+更新 bk-log-search：
+``` bash
+helmfile -f 04-bklog-search.yaml.gotmpl sync
+```
+
+等待命令执行完毕，结尾输出如下即为更新成功：
+>``` plain
+>UPDATED RELEASES:
+>NAME      CHART                VERSION
+>blueking  blueking/bk-log-search  4.6.6
+>```
+
+
 ## 更新节点管理
 |  | chart 版本号 | 软件版本号 |
 |--|--|--|
@@ -626,6 +678,53 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-apigateway apply
 | 7.1.2 发布 | 3.6.84 | 3.14.1190 |
 | 20231031 补丁更新 | 3.6.92 | 3.20.1261 |
 | 20240307 功能更新 | 3.6.104 | 3.28.1542 |
+| 20240625 功能更新 | 3.6.113 | 3.34.1831 |
+
+### 20240625 功能更新
+本更新为 **功能** 更新，并包含问题修复和逻辑优化。
+
+登录到 **中控机**，先更新 helm 仓库缓存：
+``` bash
+helm repo update
+```
+检查仓库里的版本：
+``` bash
+helm search repo bkmonitor-operator-stack --version 3.6.113
+```
+预期输出如下所示：
+>``` plain
+>NAME                            	CHART VERSION	APP VERSION 	DESCRIPTION
+>blueking/bkmonitor-operator-stack	3.6.113  	3.6.0    	略
+>```
+
+接下来开始升级了。
+
+先进入工作目录：
+``` bash
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+```
+
+修改 `environments/default/version.yaml` 文件，配置 bkmonitor-operator-stack charts version 为 `3.6.113`：
+``` bash
+sed -i 's/bkmonitor-operator-stack:.*/bkmonitor-operator-stack: "3.6.113"/' environments/default/version.yaml
+grep bkmonitor-operator-stack environments/default/version.yaml  # 检查修改结果
+```
+预期输出：
+>``` yaml
+>  bkmonitor-operator-stack: "3.6.113"
+>```
+
+更新 bkmonitor-operator-stack：
+``` bash
+helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync
+```
+
+等待命令执行完毕，结尾输出如下即为更新成功：
+>``` plain
+>UPDATED RELEASES:
+>NAME                      CHART                              VERSION
+>bkmonitor-operator-stack  blueking/bkmonitor-operator-stack  3.6.113
+>```
 
 ### 20240307 功能更新
 本更新为 **功能** 更新，并包含问题修复和逻辑优化。
@@ -727,6 +826,7 @@ bkmonitorbeat（请留意一并升级 bkmonitor-operator release）：
 | 7.1.2 发布 | 3.14.1190 |
 | 20231031 补丁更新 | 3.20.1261 |
 | 20240307 功能更新 | 3.28.1542 |
+| 20240625 功能更新 | 3.34.1831 |
 
 bk-collector:
 |  | 软件版本号 |
@@ -734,6 +834,29 @@ bk-collector:
 | 7.1.2 发布 | 0.30.1193 |
 | 20231031 补丁更新 | 0.34.1292 |
 | 20240307 功能更新 | 0.42.1516 |
+
+
+### 20240307 功能更新
+本更新为 **功能** 更新，并包含了问题修复和代码优化。
+
+在中控机下载插件包：
+``` bash
+bkdl-7.1-stable.sh -ur latest bkmonitorbeat=3.34.1831
+```
+并上传到节点管理：
+``` bash
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+./scripts/setup_bkce7.sh -u plugin
+```
+
+在蓝鲸桌面打开 节点管理 应用，默认位于 “节点管理” 界面，侧栏选择 “插件包”。点击插件名字，即可看到新的版本号。
+
+升级 bkmonitorbeat：
+1. 确认“插件包”展示的版本正确。
+2. 进入“插件状态”界面，选择运行旧插件的 Agent。点击 “安装/更新” 按钮，选择插件为 bkmonitorbeat，开始升级。
+
+当然，也可以参考节点管理产品文档了解 “插件部署” 功能，实现自动升级。
+
 
 ### 20240307 功能更新
 本更新为 **功能** 更新，并包含了问题修复和代码优化。
