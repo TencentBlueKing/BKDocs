@@ -34,7 +34,7 @@
 
 ### 1.3 下载安装包
 
-- 下载链接：请前往官网下载 [bkce-src-6.2.1.tgz](https://bk.tencent.com/s-mart/downloads?type=versionList&version=binary) 软件包
+- 下载链接：请前往官网下载 [bkce-src-6.2.2.tgz](https://bk.tencent.com/s-mart/downloads?type=versionList&version=binary) 软件包
 
 ### 1.4 解压相关资源包
 
@@ -42,7 +42,7 @@
 
    ```bash
    cd /data
-   tar xf bkce-src-6.2.1.tgz
+   tar xf bkce-src-6.2.2.tgz
    ```
 
 2. 解压各个产品软件包
