@@ -3,6 +3,58 @@
 
 在 2023 年 4 月 11 日，我们发布了蓝鲸 7.0.1 版本，仅包含补丁级更新。
 
+## 更新日志平台
+|  | chart 版本号 | 软件版本号 |
+|--|--|--|
+| 20240627 安全更新 | 4.3.7 | 4.3.7 |
+
+### 20240627 安全更新
+本更新为 **安全** 更新，包含安全问题及普通问题修复，我们希望用户尽快更新。
+
+登录到 **中控机**，先更新 helm 仓库缓存：
+``` bash
+helm repo update
+```
+检查仓库里的版本：
+``` bash
+helm search repo bk-log-search --version 4.3.7
+```
+预期输出如下所示：
+>``` plain
+>NAME                 CHART VERSION  APP VERSION  DESCRIPTION
+>blueking/bk-log-search  4.3.7          4.3.7        略
+>```
+
+接下来开始升级了。
+
+先进入工作目录：
+``` bash
+cd ~/bkce7.1-install/blueking/  # 进入工作目录
+```
+
+修改 `environments/default/version.yaml` 文件，配置 bk-log-search charts version 为 `4.3.7`：
+``` bash
+sed -i 's/bk-log-search:.*/bk-log-search: "4.3.7"/' environments/default/version.yaml
+grep bk-log-search environments/default/version.yaml  # 检查修改结果
+```
+预期输出：
+>``` yaml
+>  bk-log-search: "4.3.7"
+>```
+
+更新 bk-log-search：
+``` bash
+helmfile -f 04-bklog-search.yaml.gotmpl sync
+```
+
+等待命令执行完毕，结尾输出如下即为更新成功：
+>``` plain
+>UPDATED RELEASES:
+>NAME      CHART                VERSION
+>blueking  blueking/bk-log-search  4.3.7
+>```
+
+
 ## 更新 bk-applog
 |  | chart 版本号 | 软件版本号 |
 |--|--|--|
@@ -424,12 +476,10 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-apigateway apply
 ## 更新 bk-monitor
 |  | chart 版本号 | 软件版本号 |
 |--|--|--|
-| 7.0.0 发布 | 3.6.76 | 3.6.3062 |
-| 20230316 补丁更新 | 3.6.79 | 3.6.3522 |
-| 7.0.1 发布 | 3.6.79 | 3.6.3522 |
+| 20240627 安全更新 | 3.6.82 | 3.6.3690 |
 
-### 20230316 补丁更新
-本版本为补丁更新，主要解决已知问题，增加稳定性及兼容性，不涉及功能新增。
+### 20240627 安全更新
+本更新为 **安全** 更新，包含安全问题及普通问题修复，我们希望用户尽快更新。
 
 登录到 **中控机**，先更新 helm 仓库缓存：
 ``` bash
@@ -437,12 +487,12 @@ helm repo update
 ```
 检查仓库里的版本：
 ``` bash
-helm search repo bk-monitor --version 3.6.79
+helm search repo bk-monitor --version 3.6.82
 ```
 预期输出如下所示：
 >``` plain
 >NAME                 CHART VERSION  APP VERSION  DESCRIPTION
->blueking/bk-monitor  3.6.79         3.6.3522     略
+>blueking/bk-monitor  3.6.82         3.6.3690     略
 >```
 
 接下来开始升级了。
@@ -452,14 +502,14 @@ helm search repo bk-monitor --version 3.6.79
 cd ~/bkhelmfile/blueking  # 默认路径，按实际情况修改。
 ```
 
-修改 `environments/default/version.yaml` 文件，配置 bk-monitor charts version 为 `3.6.79`：
+修改 `environments/default/version.yaml` 文件，配置 bk-monitor charts version 为 `3.6.82`：
 ``` bash
-sed -i 's/bk-monitor:.*/bk-monitor: "3.6.79"/' environments/default/version.yaml
+sed -i 's/bk-monitor:.*/bk-monitor: "3.6.82"/' environments/default/version.yaml
 grep bk-monitor environments/default/version.yaml  # 检查修改结果
 ```
 预期输出：
 >``` yaml
->  bk-monitor: "3.6.79"
+>  bk-monitor: "3.6.82"
 >```
 
 更新 bk-monitor:
@@ -471,15 +521,8 @@ helmfile -f 04-bkmonitor.yaml.gotmpl apply
 >``` plain
 >UPDATED RELEASES:
 >NAME            CHART                   VERSION
->bk-bkmonitor    blueking/bk-bkmonitor   3.6.79
+>bk-bkmonitor    blueking/bk-bkmonitor   3.6.82
 >```
-
-接下来开始更新 `bkmonitorbeat` 插件：
-``` bash
-curl -sSf https://bkopen-1252002024.file.myqcloud.com/ce7/7.0-stable/bkdl-7.0-stable.sh | bash -s -- -ur latest bkmonitorbeat=2.13.1.269
-./scripts/setup_bkce7.sh -u plugin
-```
-最后在节点管理中更新所有 Agent 的插件到 `2.13.1.269` 版本即可。
 
 
 ## 更新 bk-job

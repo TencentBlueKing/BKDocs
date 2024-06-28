@@ -7,6 +7,8 @@
 在 中控机 执行
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
+# 修改版本号为 3.6.82
+sed -i 's/bk-monitor:.*/bk-monitor: "3.6.82"/' environments/default/version.yaml
 helmfile -f monitor-storage.yaml.gotmpl sync  # 部署监控依赖的存储
 helmfile -f 04-bkmonitor.yaml.gotmpl sync  # 部署监控后台和saas以及监控数据链路组件
 # 在admin桌面添加应用，也可以登录后自行添加。
@@ -36,6 +38,8 @@ in ./04-bklog-search.yaml.gotmpl: failed processing release bk-logsearch: hook[.
 在 中控机 执行
 ``` bash
 cd ~/bkhelmfile/blueking/  # 进入工作目录
+# 修改版本号为 4.3.7。
+sed -i 's/bk-log-search:.*/bk-log-search: "4.3.7"/' environments/default/version.yaml
 helmfile -f 04-bklog-search.yaml.gotmpl sync  # 部署
 # 在admin桌面添加应用，也可以登录后自行添加。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_log_search"
