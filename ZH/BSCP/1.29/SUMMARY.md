@@ -16,5 +16,5 @@
     * [配置模版与变量](UserGuide/Function/configuration_templates_and_variables.md)
     * [权限配置](UserGuide/Function/rights_management.md)
     * [SDK依赖说明](UserGuide/Function/rights_management.md)
-        * [Python SDK依赖说明 ](UserGuide/Function/python_sdk_dependency.md)
+    * [Python SDK依赖说明 ](UserGuide/Function/python_sdk_dependency.md)
 * [常见问题](UserGuide/FAQ/faq.md)
