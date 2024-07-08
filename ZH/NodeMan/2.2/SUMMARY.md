@@ -14,7 +14,6 @@
     * [云区域管理](UserGuide/Feature/CloudArea.md)
     * [任务历史](UserGuide/Feature/History.md)
     * [全局配置](UserGuide/Feature/Globe.md)
-* [场景实践]()
 * [常见问题]()
     * [agent 问题]()
         * [手动卸载 Agent](UserGuide/FAQ/AgentIssue/ManuallyUninstallAgent.md)

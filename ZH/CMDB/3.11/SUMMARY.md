@@ -42,7 +42,7 @@
     * [CMDB 如何管理进程](UserGuide/UserCase/CMDB_management_process.md)
     * [CMDB 案例-主机同步对接](UserGuide/UserCase/CMDB_integration.md)
 * [常见问题](UserGuide/FAQ/FAQ.md)
-* [视频教程](../Vedios.md)
+* [视频教程](../Video.md)
 * [API 文档]()
     * [API 概览](APIDocs/cc/README.md)
     * [新加主机锁](APIDocs/cc/zh-hans/add_host_lock.md)

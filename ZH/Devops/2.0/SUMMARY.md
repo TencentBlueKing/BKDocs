@@ -322,7 +322,6 @@
         * [devops_ci_openapi](UserGuide/Developer/DB-doc/devops_ci_openapi.md)
         * [devops_ci_ticket](UserGuide/Developer/DB-doc/devops_ci_ticket.md)
         * [devops_ci_process](UserGuide/Developer/DB-doc/devops_ci_process.md)
-        * [devops_ci_measure](UserGuide/Developer/DB-doc/devops_ci_measure.md)
 * [常见问题]()
     * [常见问题集锦](UserGuide/Reference/faqs/README.md)
     * [基本概念](UserGuide/Reference/faqs/user-guide.md)

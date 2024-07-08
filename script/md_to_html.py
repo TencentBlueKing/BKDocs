@@ -109,8 +109,8 @@ if __name__ == '__main__':
             file_path = os.path.join(home, filename)
             catalog = get_catalog(file_path)
             md_list = get_md_list(catalog)
-            print(md_list)
             html = md_to_html(md_list)
+            # print('./HTML/{}.html'.format(file_path.split('\\')[-1].split('.')[0]))
             # href_patten = r'<a href="(.*?)">'
             # hrefs = re.compile(href_patten).findall(html)
             # print(hrefs)
@@ -120,7 +120,7 @@ if __name__ == '__main__':
             #         if href.endswith('md'):
             #             html.replace(href,'')
             with open(
-                './HTML/{}.html'.format(file_path.split('\\')[-1].split('.')[0]),
+                './html/{}.html'.format(file_path.split('/')[-1].split('.')[0]),
                 'w',
                 encoding='utf-8'
             ) as f:

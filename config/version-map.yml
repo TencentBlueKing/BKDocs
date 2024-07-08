@@ -27,7 +27,7 @@
     downloads: "7.0"
     BKnetwork: 6.1
     OnlineGuide: "7.0"
-6.1:
+6.1:  
     APIGateway: "1.10"
     BCS: 6.1
     BestPractices: "7.0"
