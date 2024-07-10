@@ -1,32 +1,3 @@
-# x.0或者x.10以0结尾的需要加上引号如"x.0"
-# 6.0:  # 文档中心大版本
-#     BCS: "6.0"   # 产品版本
-#     BestPractices: "7.0"
-#     BlueKingFamily: "7.0"
-#     CMDB: 3.9
-#     DeploymentGuides: "6.0"
-#     DevelopGuide: "7.0"
-#     Devops: "6.0"
-#     DocumentationContributorGuide: "7.0"
-#     FAQs: "6.0"
-#     FTA: 5.2
-#     GSE: 3.5
-#     IAM: 1.4
-#     ITSM: 2.5
-#     JOB: 3.2
-#     LogSearch: 4.2
-#     Monitor: 3.3
-#     NodeMan: "2.0"
-#     PaaS: 2.12
-#     QuickStart: "6.0"
-#     ReleaseNotes: "7.0"
-#     SOPS: 3.6
-#     UserManage: 2.2
-#     VersionLog: "6.0"
-#     VideoTutorial: "7.0"
-#     downloads: "7.0"
-#     BKnetwork: 6.1
-#     OnlineGuide: "7.0"
 6.1:  
     APIGateway: "1.10"
     BCS: 6.1

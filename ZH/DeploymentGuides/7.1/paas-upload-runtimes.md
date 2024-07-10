@@ -36,9 +36,9 @@ done
 ```
 
 ### 下载 nodejs 环境
-常见 3 个版本，一共 80MB。
+常见 4 个版本，一共 100MB。
 ``` bash
-for v in 12.16.3 14.16.1 10.10.0; do
+for v in 12.16.3 14.16.1 10.10.0 16.16.0; do
   bkdl-7.1-stable.sh -C ce7/paas-runtimes -r paas3-1.1 node=$v
 done
 ```

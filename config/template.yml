@@ -40,10 +40,10 @@
         - 
           name: {{ IndexSaaSService }}
           children:
-            -  
-              name: {{ IndexNodeMan }}
             - 
               name: {{ IndexSOPS }}
+            -  
+              name: {{ IndexNodeMan }}
             - 
               name: {{ IndexMonitor }}
             - 
