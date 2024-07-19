@@ -17,4 +17,5 @@
     * [权限配置](UserGuide/Function/rights_management.md)
     * [SDK依赖说明]()
         * [Python SDK依赖说明 ](UserGuide/Function/python_sdk_dependency.md)
+    * [P2P网络加速](UserGuide/Function/p2p_network_acceleration.md)
 * [常见问题](UserGuide/FAQ/faq.md)
