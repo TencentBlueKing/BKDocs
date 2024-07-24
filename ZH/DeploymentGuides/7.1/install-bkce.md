@@ -248,3 +248,5 @@ kubectl get cm -n blueking bk-user-api-general-envs -o go-template='用户： {{
 安装 Agent 后，可以 [启动蓝鲸 API 测试工具](run-apicheck.md)。
 
 在部署期间，可以在文档中心查看产品文档。
+
+后续我们会根据用户诉求，对单个产品发布更新，请关注 [单产品更新-索引](update.md)。

@@ -1,0 +1,6 @@
+20240320	bk-job	chart	0.5.8-rc.1	3.8.8-rc.1	功能体验：JOB 长期支持版
+20240320	bk-apigateway	chart	1.12.16	1.12.16	功能体验：GSE-DS
+20240320	bk-gse-ce	chart	2.1.5-beta.7	2.1.5-beta.7	功能体验：GSE-DS
+20240320	bk-nodeman	chart	2.4.4	2.4.4	功能体验：GSE-DS
+20240320	gse_agent	file	2.1.5-beta.7	--	功能体验：GSE-DS
+20240320	gse_proxy	file	2.1.5-beta.7	--	功能体验：GSE-DS
