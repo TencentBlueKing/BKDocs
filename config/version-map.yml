@@ -2,7 +2,7 @@
     APIGateway: "1.10"
     BCS: 6.1
     BestPractices: "7.0"
-    BlueKingFamily: "7.0"
+    BlueKingFamily: 6.1
     CMDB: "3.10"
     DeploymentGuides: 6.1
     DevelopGuide: "7.0"

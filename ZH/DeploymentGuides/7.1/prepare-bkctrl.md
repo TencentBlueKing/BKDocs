@@ -110,6 +110,16 @@ bkdl-7.1-stable.sh -r latest tools
 ``` bash
 # 下载好的文件默认放置在 `$HOME/bkce7.1-install/` 下，如有修改，请调整此变量。
 INSTALL_DIR=$HOME/bkce7.1-install/
+# 把上述环境变量写入 bashrc
+if grep -q "^export INSTALL_DIR=" ~/.bashrc; then
+  source ~/.bashrc
+  echo >&2 "load from bashrc: INSTALL_DIR=$INSTALL_DIR."
+else
+  tee -a ~/.bashrc <<EOF
+# 蓝鲸部署目录
+export INSTALL_DIR="$INSTALL_DIR"
+EOF
+fi
 # 安装生成配置所需的命令
 for _cmd in helmfile helm yq jq; do
   cp -v "${INSTALL_DIR:-INSTALL_DIR-not-set}/bin/$_cmd" /usr/local/bin/

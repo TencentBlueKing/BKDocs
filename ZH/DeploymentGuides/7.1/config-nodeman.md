@@ -11,15 +11,20 @@
 >
 >* 当你需要更新客户端或者加装云区域代理时，可以在下载后使用此命令重新上传。
 
-在 **中控机** 执行如下命令下载文件：
+在 **中控机** 执行如下命令下载 Agent（linux-x86_64、linux-aarch64、windows-x86_64）：
 ``` bash
-bkdl-7.1-stable.sh -ur latest gsec
+bkdl-7.1-stable.sh -ur latest gse_agent
 ```
 上传 Agent 到 节点管理：
 ``` bash
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 ./scripts/setup_bkce7.sh -u agent
 ```
+
+>**提示**
+>
+>其他系统及架构的 GSE Agent 由蓝鲸服务商适配，蓝鲸不提供下载及技术支持。
+
 
 <a id="post-install-bk-nodeman-gse-plugin" name="post-install-bk-nodeman-gse-plugin"></a>
 
@@ -28,11 +33,12 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 >
 >在之前使用 `./scripts/setup_bkce7.sh -i nodeman` 时，已经完成了此步骤，可以跳过。
 
-在 **中控机** 执行如下命令下载文件：
+在 **中控机** 执行如下命令下载插件合辑，包含常用系统及架构（linux 及 windows 的 x86-64、linux arm64）：
 ``` bash
 bkdl-7.1-stable.sh -ur latest gse_plugins_freq
 ```
-上传 插件包 到 节点管理：
+
+将下载的插件包上传到 节点管理：
 ``` bash
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 ./scripts/setup_bkce7.sh -u plugin
@@ -44,19 +50,25 @@ cd ~/bkce7.1-install/blueking/  # 进入工作目录
 
 ![](assets/bk_nodeman-plugin-list.png)
 
-插件集合包中各子包的用途：
+插件合辑中各子包的用途：
 | 插件包名 | 用途 | 描述 |
 | -- | -- | -- |
 | bkmonitorbeat | 蓝鲸监控指标采集器 | 支持多协议多任务的采集、监控和可用率计算，提供多种运行模式和热加载机制 |
 | bkunifylogbeat | 高性能日志采集 | 日志相关的采集 |
 | bk-collector | 多协议数据采集 | 高性能 Trace、指标、日志接收端，支持 OT、Jaeger、Zipkin 等多种数据协议格式。替代了之前的 bkmonitorproxy。 |
 
+>**提示**
+>
+>* 单独下载子包默认版本： `bkdl-7.1-stable.sh -ur latest 插件包名`
+>* 指定版本： `bkdl-7.1-stable.sh -ur latest 插件包名=版本号`
+>* 下载到中控机后，上传到节点管理： `./scripts/setup_bkce7.sh -u plugin`
+
 # 上传 GSE Proxy
 >**提示**
 >
 >* 当你需要更新客户端或者加装云区域代理时，可以在下载后使用此命令重新上传。
 
-在 **中控机** 执行如下命令下载文件：
+在 **中控机** 执行如下命令下载 Proxy （仅 linux-x86_64，不支持其他系统及架构）：
 ``` bash
 bkdl-7.1-stable.sh -ur latest gse_proxy
 ```

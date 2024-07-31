@@ -87,6 +87,6 @@
     * [步骤实例操作](APIDocs/zh_hans/operate_step_instance.md)
     * [新建或保存定时作业](APIDocs/zh_hans/save_cron.md)
     * [更新定时作业状态](APIDocs/zh_hans/update_cron_status.md)
-* [错误码](../ErrorCode/job.md)
+* [错误码](ErrorCode/job_error_code.md)
 * [开源共建](https://github.com/TencentBlueKing/bk-job)
 

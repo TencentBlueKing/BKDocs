@@ -59,6 +59,10 @@
     * [为什么脚本只允许存在一个线上版本？](UserGuide/FAQs/why-script-only-allow-one-online-version.md)
     * [脚本的版本被下线后是否会影响引用方的使用？](UserGuide/FAQs/will-script-ver-offline-affect-the-use-of-reference-plan.md)
     * [任务、步骤和执行耗时，有何不同？](UserGuide/FAQs/Whats-the-difference-of-duration-between-task-step-and-execution.md)
+* [API 文档](APIDocs/api_docs.md)
 * [错误码](ErrorCode/job_error_code.md)
 * [开源共建](https://github.com/TencentBlueKing/bk-job)
+* [开发架构文档](DevelopmentArchitecture/SUMMARY.md) 
+* [应用运维文档](Operation/operation.md)
+* [问题排查与处理文档](TroubleShooting/trouble_shooting.md)
 
