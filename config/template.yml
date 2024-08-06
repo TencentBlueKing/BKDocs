@@ -101,6 +101,16 @@
               name: {{ IndexDevelopStandard }}
             - 
               name: {{ IndexIAMAccess }}
+            - 
+              name: {{ IndexBKFLOW }}
+            - 
+              name: {{ IndexBKVision }}
+            - 
+              name: {{ IndexBKNotice }}
+            - 
+              name: {{ IndexBKAudit }}
+            - 
+              name: {{ IndexDBM }}
         - 
           name: {{ IndexAtomService }}
           children:
@@ -177,12 +187,16 @@
               name: {{ DocLogSearch }}
             - 
               name: {{ DocITSM }}
+            -
+              name: {{ DocBKFLOW }}
             - 
-              name: {{ DocAuditCenter }}
+              name: {{ DocBKVision }}
             - 
-              name: {{ DocDBManage }}
+              name: {{ DocBKNotice }}
             - 
-              name: {{ DocChartPlatform }}
+              name: {{ DocBKAudit }}
+            - 
+              name: {{ DocDBM }}
             -
               name: {{ DocHaiLei }} 
             - 

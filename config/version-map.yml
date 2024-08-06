@@ -109,3 +109,32 @@
     downloads: "7.0"
     OnlineGuide: "7.0"
     BSCP: 1.29
+7.2:
+    APIGateway: 1.13
+    BCS: 1.29
+    BK-Base: "3.10"
+    BestPractices: 7.1
+    BlueKingFamily: "7.0"
+    CMDB: "3.11"
+    DeploymentGuides: 7.1
+    DevelopGuide: 7.2
+    Devops: "2.0"
+    DocumentationContributorGuide: "7.0"
+    GSE: "2.0"
+    IAM: 1.12
+    ITSM: 2.6
+    JOB: 3.9
+    LessCode: "1.0"
+    LogSearch: 4.6
+    Monitor: 3.8
+    NodeMan: 2.4
+    PaaS: "1.0"
+    QuickStart: "7.0"
+    ReleaseNotes: "7.0"
+    SOPS: 3.28
+    UserManage: 2.5
+    VersionLog: 7.1
+    VideoTutorial: "7.0"
+    downloads: "7.0"
+    OnlineGuide: "7.0"
+    BSCP: 1.29

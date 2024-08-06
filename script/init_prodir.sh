@@ -1,6 +1,6 @@
-product=BCSP #产品目录名
+product=a #产品目录名
 language=ZH   #中文目录
-version=1.29  #创建的版本号目录
+version=1.1  #创建的版本号目录
 
 
 [[ -z ${product} || -z ${version} || -z ${language} ]]  && echo "请设定配置" && exit 1
@@ -8,7 +8,7 @@ version=1.29  #创建的版本号目录
 product_dir="${version} ErrorCode ReleaseNotes"
 product_file="Vedios.md GithubContributorGuide.md"
 version_dir="APIDocs Architecture Operation UserGuide"
-userguide_dir="Advantage Architecture Conclusion FAQ Feature Introduce QuickStart UserCase assert"
+userguide_dir="Advantage ProductArchitecture Conclusion FAQ Feature Introduce QuickStart UserCase assert"
 summary="# Summary \n\n## $product"
 DIR=$(cd `dirname $(readlink -f $0)` && cd ../${language} && pwd)
 
