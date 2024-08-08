@@ -1181,7 +1181,7 @@
 
 | 序号 | 名称 | 数据类型 |  长度  | 小数位 | 允许空值 | 主键 | 默认值 | 说明 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-|  1   | PROJECT_ID |   varchar   | 64 |   0    |    N     |  Y   |       | 蓝盾项目 ID  |
+|  1   | PROJECT_ID |   varchar   | 64 |   0    |    N     |  Y   |       | BK-CI项目 ID  |
 |  2   | REPO_HASH_ID |   varchar   | 64 |   0    |    N     |  Y   |       | 代码库 HASHID  |
 |  3   | FILE_PATH |   varchar   | 512 |   0    |    N     |  Y   |       | 文件路径  |
 |  4   | DIRECTORY |   varchar   | 512 |   0    |    N     |  N   |   .ci    | yaml 文件目录  |
@@ -1220,7 +1220,7 @@
 | 序号 | 名称 | 数据类型 |  长度  | 小数位 | 允许空值 | 主键 | 默认值 | 说明 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 |  1   | ID |   bigint   | 20 |   0    |    N     |  Y   |       | 主键 ID  |
-|  2   | PROJECT_ID |   varchar   | 64 |   0    |    N     |  N   |       | 蓝盾项目 ID  |
+|  2   | PROJECT_ID |   varchar   | 64 |   0    |    N     |  N   |       | BK-CI项目 ID  |
 |  3   | REPO_HASH_ID |   varchar   | 64 |   0    |    N     |  N   |       | 代码库 HASHID  |
 |  4   | FILE_PATH |   varchar   | 512 |   0    |    N     |  N   |       | 文件路径  |
 |  5   | REF |   varchar   | 512 |   0    |    Y     |  N   |       | 来源分支/tag  |

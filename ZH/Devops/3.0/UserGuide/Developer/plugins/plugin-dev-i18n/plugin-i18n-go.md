@@ -68,7 +68,7 @@ task.json 支持新增 defaultLocaleLanguage 字段，缺省为简体中文 zh_C
 
 可选值为国际化支持的语言，若为简体中文则值为：zh_CN
 
-该配置指定插件默认支持的语言，对应语言无需在国际化资源文件中重复定义。若 defaultLocaleLanguage 值与当前环境蓝盾系统的默认语言一致，则以 task.json 中的配置为准
+该配置指定插件默认支持的语言，对应语言无需在国际化资源文件中重复定义。若 defaultLocaleLanguage 值与当前环境BK-CI系统的默认语言一致，则以 task.json 中的配置为准
 
 ![png](../../../assets/I18nConfig-java-7.png)
 
@@ -94,3 +94,12 @@ go generate .
 ## 6、自定义 UI 的插件前端国际化
 
 见 [自定义 UI 的插件前端国际化](./plugin-i18n-custom-ui.md)
+
+## 7、国际化配置文件支持引入文件
+
+- 支持使用表达式${{indexFile("文件路径")}}引入文件
+    - 需要插件项目跟路径增加 file 目录，表达式以这个目录为根目录
+    - ![png](../../../assets/I18nConfig-file-3.png)
+- 引入的文件格式支持文档文件及静态文件(jpg、jpeg、png、gif)
+- 引入的文档文件中也支持使用表达式引入静态文件，不支持引入文档文件
+- ![png](../../../assets/I18nConfig-file-2.png)

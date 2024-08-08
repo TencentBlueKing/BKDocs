@@ -377,7 +377,7 @@
 | 序号 | 名称 | 数据类型 |  长度  | 小数位 | 允许空值 | 主键 | 默认值 | 说明 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 |  1   | VM_TYPE |   varchar   | 128 |   0    |    N     |  Y   |       | 构建机类型  |
-|  2   | RUNNING_JOBS_MAX_SYSTEM |   int   | 10 |   0    |    N     |  N   |       | 蓝盾系统最大并发 JOB 数  |
+|  2   | RUNNING_JOBS_MAX_SYSTEM |   int   | 10 |   0    |    N     |  N   |       | BK-CI 系统最大并发 JOB 数  |
 |  3   | RUNNING_JOBS_MAX_PROJECT |   int   | 10 |   0    |    N     |  N   |       | 单项目默认最大并发 JOB 数  |
 |  4   | RUNNING_TIME_JOB_MAX |   int   | 10 |   0    |    N     |  N   |       | 系统默认所有单个 JOB 最大执行时间  |
 |  5   | RUNNING_TIME_JOB_MAX_PROJECT |   int   | 10 |   0    |    N     |  N   |       | 默认单项目所有 JOB 最大执行时间  |

@@ -17,7 +17,7 @@
 |[日志平台](../../../../../LogSearch/4.6/UserGuide/Intro/README.md)|基于业界主流的全文检索引擎，提供多种场景化的采集、查询功能|
 |[流程服务](../../../../../ITSM/2.6/UserGuide/Introduce/README.md)|灵活自定义设计流程模块，覆盖 IT 服务中的不同管理流程或应用场景|
 |[管控平台](../../../../../GSE/2.0/UserGuide/Introduce.md)|蓝鲸体系的底层管控系统，是蓝鲸所有其他服务的基础（GseAgent）|
-|[K-CI（蓝盾）](../../../../../Devops/2.0/UserGuide/intro/README.md)|免费并开源的 CI 服务，助力自动化构建-测试-发布工作流，持续、快速、高质量地交付产品|
+|[K-CI（BK-CI）](../../../../../Devops/2.0/UserGuide/intro/README.md)|免费并开源的 CI 服务，助力自动化构建-测试-发布工作流，持续、快速、高质量地交付产品|
 |[BCS（容器管理平台）](../../../../../BCS/1.28/UserGuide/Introduction/README.md)|可扩展、灵活易用的容器管理服务平台，支持社区原生 Kubernetes 编排引擎|
 
 **其他材料：**

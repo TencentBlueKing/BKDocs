@@ -64,5 +64,27 @@ apigateway 初始化数据有误，请参考问题分析进行修复。
     稍等 5 分钟左右，等缓存刷新，重新执行步骤 1 的检查，可以看到 `is_active` 显示为 `true`。即可继续操作。
 3. 重新部署流程服务。步骤可参考 [部署文档](manual-install-saas.md#部署流程服务bk_itsm)（此时无需重新上传包）。
 
+## 节点管理
+### 安装 proxy 时报错 data access endpoint IP:28625 is not reachable
+#### 表现
+新部署的 7.1.3 版本，在节点管理中 安装 Proxy 时，在 “安装” 步骤失败：“[时间 ERROR] [script] [healthz_check] gse healthz check failed”。
 
+此行报错上方日志为：
+`"data": "data access endpoint(IP:28625) is not reachable"`。
 
+#### 结论
+需要升级节点管理到 2.4.4 版本。
+
+1.  更新节点管理，请参考 [更新 bk-nodeman-2.4.4](updates/202403.md#bk-nodeman-2.4.4) 章节操作。
+2.  在 **中控机** 重新上传 Agent 和 Proxy：
+    ``` bash
+    # 下载7.1.3的agent及proxy包
+    bkdl-7.1-stable.sh -ur 7.1.3 gse_agent gse_proxy
+    # 重新上传一次，触发新的解析策略。
+    ./scripts/setup_bkce7.sh -u agent
+    ./scripts/setup_bkce7.sh -u proxy
+    ```
+3.  在节点管理中勾选 Proxy 主机，批量重新安装即可。（或在历史任务详情里点击“失败重试”按钮。）
+
+#### 问题分析
+gse proxy 在 2.1.5-beta.7 版本的配置发生变动，依赖节点管理 `>=2.4.1` 版本。7.1.3 发版时仅升级了 gse 版本，未升级节点管理。属于发版失误，特此表示歉意。

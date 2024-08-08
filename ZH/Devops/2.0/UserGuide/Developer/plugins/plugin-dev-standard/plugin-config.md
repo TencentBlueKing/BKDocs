@@ -70,16 +70,74 @@ task.json示例:
 
 #### execution
 
-* 执行命令入口相关配置
-* 值格式为对象
-* 值对象包括如下属性：
+- 执行命令入口相关配置
+- 值格式为对象
+- 值对象包括如下属性：
 
-| 属性名 | 属性说明 | 格式 | 备注 |
-| :--- | :--- | :--- | :--- |
-| packagePath | 发布包中插件执行包的相对路径 | 字符串 | 必填，包括执行包包名，执行时，下载发布包解压后，将根据此项配置找到执行包 |
-| language | 开发语言 | 字符串 | 必填，如 python、java 等，和插件初始化时指定的语言一致 |
-| demands | 执行依赖 | 数组 | 非必填 |
-| target | 执行入口 | 字符串 | 必填，一般为一个命令行可执行的命令 |
+| **属性名**     | **属性说明**         | **格式** | **备注**                                                     |
+| :------------- | :------------------- | :------- | :----------------------------------------------------------- |
+| language       | 开发语言             | 字符串   | 必填，如python、java等，和插件初始化时指定的语言一致         |
+| demands        | 执行依赖             | 数组     | 非必填，运行插件前执行的前置命令                             |
+| target         | 执行入口             | 字符串   | 必填，一般为一个命令行可执行的命令                           |
+| finishKillFlag | 杀插件进程标志       | 布尔     | 非必填，true:插件运行结束后立即杀掉其进程, false:插件运行结束后不杀掉其进程 |
+| runtimeVersion | 运行时版本           | 字符串   | 非必填，运行时版本（各语言对应值不一样，详见说明）           |
+| os             | 与操作系统有关的配置 | map      | 非必填，如果配置了os，那么demands和target这二个操作系统相关的字段不要在最外层配置，需配置在os节点里面(os如何配置详见下述说明) |
+
+- runtimeVersion各语言配置值说明：
+
+| **语言** | **配置值** | **备注**                                           |
+| :------- | :--------- | :------------------------------------------------- |
+| python   | python2    | 插件运行时使用python2环境运行（不填默认为python2） |
+| python   | python3    | 插件运行时使用python3环境运行                      |
+| nodejs   | 10.*       | 插件打包和运行都使用node10环境（不填默认为10.*）   |
+| nodejs   | 11.*       | 插件打包和运行都使用node11环境                     |
+| nodejs   | 12.*       | 插件打包和运行都使用node12环境                     |
+| nodejs   | 13.*       | 插件打包和运行都使用node13环境                     |
+| nodejs   | 14.*       | 插件打包和运行都使用node14环境                     |
+| nodejs   | 15.*       | 插件打包和运行都使用node15环境                     |
+| nodejs   | 16.*       | 插件打包和运行都使用node16环境                     |
+| nodejs   | 17.*       | 插件打包和运行都使用node17环境                     |
+| nodejs   | 18.*       | 插件打包和运行都使用node18环境                     |
+
+ 
+
+- os配置值说明：
+
+整体结构：
+
+```
+"os" : [
+  {
+    "osName":"linux", # 支持的操作系统名称【必填】
+    "osArch":"amd64", # 支持的操作系统CPU架构【非必填】
+    "target" : "./app", # 执行命令入口相关【必填】
+    "demands" : ["echo hello"], # 执行前置命令【非必填】
+    "defaultFlag": true # 是否为默认环境信息（每种操作系统默认环境配置有且只有1个,没有匹配的操作系统名称和cpu架构就使用该默认环境配置）【必填】
+  }
+] 
+```
+
+
+
+osName和osArch各语言配置规则:
+
+| **语言** | **osName(支持的操作系统名称)** | **osArch(支持的操作系统CPU架构)** | **备注**                                  |
+| :------- | :----------------------------- | :-------------------------------- | :---------------------------------------- |
+| java     | windows                        |                                   | windows环境下java只需关注到操作系统级别   |
+| java     | linux                          |                                   | linux环境下java只需关注到操作系统级别     |
+| java     | darwin                         |                                   | mac环境下java只需关注到操作系统级别       |
+| python   | windows                        |                                   | windows环境下python只需关注到操作系统级别 |
+| python   | linux                          |                                   | linux环境下python只需关注到操作系统级别   |
+| python   | darwin                         |                                   | mac环境下python只需关注到操作系统级别     |
+| nodejs   | win                            |                                   | windows环境下nodejs只需关注到操作系统级别 |
+| nodejs   | linux                          |                                   | linux环境下nodejs只需关注到操作系统级别   |
+| nodejs   | darwin                         |                                   | mac环境下nodejs只需关注到操作系统级别     |
+| golang   | windows                        | 386                               | windows环境下golang关于操作系统和cpu配置  |
+| golang   | linux                          | amd64                             | linux环境下golang关于操作系统和cpu配置    |
+| golang   | linux                          | arm64                             | linux环境下golang关于操作系统和cpu配置    |
+| golang   | linux                          | mips64                            | linux环境下golang关于操作系统和cpu配置    |
+| golang   | darwin                         | amd64                             | mac环境下golang关于操作系统和cpu配置      |
+| golang   | darwin                         | arm64                             | mac环境下golang关于操作系统和cpu配置      |
 
 #### inputGroups
 

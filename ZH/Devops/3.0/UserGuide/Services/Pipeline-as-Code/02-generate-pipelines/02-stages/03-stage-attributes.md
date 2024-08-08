@@ -88,14 +88,8 @@ stages:
 
 值格式为：Object
 stage 准入，在 stage 开始时判定
-支持人工审核，详见 [ stage 准入 ](https://iwiki.woa.com/p/4010639866)
+支持人工审核，详见 [stage 准入](./04-stage-check-in.md)
 
- 
-## check-out -- `尚未实施`
-
-值格式为：Object
-stage 准出，在stage 结束时判定
-支持 质量红线自动判定。详见 [Stage 准入/准出：人工审核和质量红线 ](https://iwiki.woa.com/p/833350128)
  
 
 ## jobs
@@ -105,10 +99,10 @@ stage 准出，在stage 结束时判定
 key 命名规范：
 - template 为保留关键字，不能作为自定义 job id
 
-每个 job 定义详见 [ 在 YAML 中添加作业 Job](https://iwiki.woa.com/p/4010289724)
+每个 job 定义详见 [在 YAML 中添加作业 Job](../03-jobs/01-add-job.md)
  
  
 ## fast-kill
 
-是否有 job失败时立即结束当前 stage
+是否有 job 失败时立即结束当前 stage
 值格式为：Boolean，缺省值为 false

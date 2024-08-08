@@ -513,7 +513,7 @@
 |  3   | IMAGE_CODE |   varchar   | 64 |   0    |    N     |  N   |       | 镜像代码  |
 |  4   | CLASSIFY_ID |   varchar   | 32 |   0    |    N     |  N   |       | 所属分类 ID  |
 |  5   | VERSION |   varchar   | 20 |   0    |    N     |  N   |       | 版本号  |
-|  6   | IMAGE_SOURCE_TYPE |   varchar   | 20 |   0    |    N     |  N   |   bkdevops    | 镜像来源，bkdevops：蓝盾源 third：第三方源  |
+|  6   | IMAGE_SOURCE_TYPE |   varchar   | 20 |   0    |    N     |  N   |   bkdevops    | 镜像来源，bkdevops：BK-CI源 third：第三方源  |
 |  7   | IMAGE_REPO_URL |   varchar   | 256 |   0    |    Y     |  N   |       | 镜像仓库地址  |
 |  8   | IMAGE_REPO_NAME |   varchar   | 256 |   0    |    N     |  N   |       | 镜像在仓库名称  |
 |  9   | TICKET_ID |   varchar   | 256 |   0    |    Y     |  N   |       | ticket 身份 ID  |

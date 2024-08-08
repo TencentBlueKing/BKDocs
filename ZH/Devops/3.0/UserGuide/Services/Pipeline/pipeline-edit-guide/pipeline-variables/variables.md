@@ -31,5 +31,7 @@
 
 - [使用备注变量](./pipeline-variables-remark.md)
 
+- [流水线命令字](./pipeline-command.md)
+
 
 

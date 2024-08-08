@@ -1,10 +1,10 @@
 # 监听外网版工蜂代码库事件
 
-外网工蜂代码库事件的**on.type**字段取值为**tgit**，暂不支持CR事件，其余事件配置请参考[监听非YAML所在工蜂代码库的事件](https://iwiki.woa.com/p/4010642723)
+外网工蜂代码库事件的**on.type**字段取值为**tgit**，暂不支持 CR 事件，其余事件配置请参考[监听非 YAML 所在工蜂代码库的事件](./05-tgit.md)
 
- ```
+```yml
 on:
-  # 关联到蓝盾代码库服务下的代码库别名
+  # 关联到BK-CI代码库服务下的代码库别名
   repo-name: mingshewhe/webhook_test3
   # 合作版/社区版工蜂都填tgit
   type: tgit

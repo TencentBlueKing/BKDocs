@@ -84,3 +84,12 @@ task.json 支持新增 defaultLocaleLanguage 字段，缺省为简体中文 zh_C
 
 见 [自定义 UI 的插件前端国际化](./plugin-i18n-custom-ui.md)
 
+## 6、国际化配置文件支持引入文件
+
+- 支持使用表达式${{indexFile("文件路径")}}引入文件
+  - 需要插件项目跟路径增加file目录，表达式以这个目录为根目录
+  - ![png](../../../assets/I18nConfig-file-1.png)
+- 引入的文件格式支持文档文件及静态文件(jpg、jpeg、png、gif)
+- 引入的文档文件中也支持使用表达式引入静态文件，不支持引入文档文件
+- ![png](../../../assets/I18nConfig-file-2.png)
+

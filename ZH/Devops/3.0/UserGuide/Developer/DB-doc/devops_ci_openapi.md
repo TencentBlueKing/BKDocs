@@ -8,7 +8,7 @@
 | 表名                  | 说明       |
 | :---: | :---: |
 | T_APP_CODE_GROUP | app_code 对应的组织架构 |
-| T_APP_CODE_PROJECT | app_code 对应的蓝盾项目 |
+| T_APP_CODE_PROJECT | app_code 对应的BK-CI项目 |
 | T_APP_USER_INFO | app_code 对应的管理员 |
 | T_OPENAPI_METRICS_FOR_API | 接口维度度量表 |
 | T_OPENAPI_METRICS_FOR_PROJECT | 项目维度度量表 |
@@ -36,7 +36,7 @@
 
 **表名：** <a>T_APP_CODE_PROJECT</a>
 
-**说明：** app_code 对应的蓝盾项目
+**说明：** app_code 对应的BK-CI项目
 
 **数据列：**
 

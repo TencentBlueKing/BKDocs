@@ -3,7 +3,7 @@
 
  ```
 on:
-  # 关联到蓝盾代码库服务下的代码库别名
+  # 关联到BK-CI代码库服务下的代码库别名
   repo-name: isd/isd_autotest_rep/att_proj
   type: svn
   push:
@@ -22,4 +22,4 @@ on:
   manual: enabled
 ```
 
-repo-name：关联到蓝盾代码库服务下的代码库别名
+repo-name：关联到BK-CI代码库服务下的代码库别名

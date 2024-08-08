@@ -4,20 +4,20 @@
  
 ## name
 
-job名称，缺省值为 job-<jobNum>
+job 名称，缺省值为 job-<jobNum>
 值格式为：String
 	
 ## if
 
 值格式为：String
 满足条件时才执行当前 job，不满足时跳过不执行
-支持条件表达式，详见 [条件执行](https://iwiki.woa.com/p/4009967248)
+支持条件表达式，详见 [条件执行](../09-conditional-execution/01-control-point.md)
   
 ## steps
 
-定义一个或多个step
+定义一个或多个 step
 值格式为：Array<Step>
-每个 step 如何设置详见 [在 YAML 中添加步骤 Task/Step ](https://iwiki.woa.com/p/4010307333)
+每个 step 如何设置详见 [在 YAML 中添加步骤 Task/Step](../04-steps/)
  
  
 ## timeout-minutes
@@ -40,7 +40,7 @@ job名称，缺省值为 job-<jobNum>
 | |
 |:--|
 |**受限项** |**限制规则** |
-|环境变量个数 |不超过** 20** 个 |
+|环境变量个数 |不超过**20** 个 |
 |单变量 key 长度 |不超过 **128** 字符 |
 |单变量值长度 |不超过 **4k** 字符 |
 
@@ -48,7 +48,7 @@ job名称，缺省值为 job-<jobNum>
 
 示例：
 
- ```
+```yml
 env:
   ENV_A: 这是环境变量A
 ```

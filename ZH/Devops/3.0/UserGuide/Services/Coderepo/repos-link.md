@@ -12,10 +12,7 @@
 2. 别名：关联后在 BK-CI 里显示的名字，这个别名会在流水线中关联代码库时显示，整个项目下唯一；
 3. 访问凭证：点击右侧**新增**按钮可跳转到凭证管理中添加凭证。
 
-<<<<<<< HEAD:ZH/Devops/2.0/产品白皮书/Services/Coderepo/repos-link.md
 ## 接下来你可能需要
 
 - [BK-CI 导航条](../Console.md)
 - [创建你的第一条流水线](../tutorials/create-first-pipeline.md)
-=======
->>>>>>> 51c64cbe653ce5ff064de8dea6a0592fab08002d:ZH/Devops/2.0/UserGuide/Services/Coderepo/repos-link.md

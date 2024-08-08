@@ -10,18 +10,18 @@
 
 
 `注意事项`：
-- 在脚本中进行环境变量操作时，注意变量命名，不要和流水线全局变量同名。避免脚本执行前${xxx} （`蓝盾旧的变量引用方式，已不推荐使用`）被替换为全局变量。
+- 在脚本中进行环境变量操作时，注意变量命名，不要和流水线全局变量同名。避免脚本执行前${xxx} （`BK-CI旧的变量引用方式，已不推荐使用`）被替换为全局变量。
 
 
 ### 如何设置输出参数
 
-在 run 插件中，使用 echo ::set-output name=<my_var_1>::<my_var_value_1> 的方式设置输出变量，详见 [流水线命令字 ](https://iwiki.woa.com/p/4010630977)
+在 run 插件中，使用 echo ::set-output name=<my_var_1>::<my_var_value_1> 的方式设置输出变量，详见 [流水线命令字](../../../Pipeline/pipeline-edit-guide/pipeline-variables/pipeline-command.md)
  
 `注意：run 插件中设置输出，不会在当前步骤生效，在当前步骤结束后的下游步骤（后续step或stage）中，才能生效。`
 
 示例
 
- ```
+```yml
 version: v3.0
 
 steps:
@@ -40,7 +40,7 @@ steps:
 
 支持 python、bash、batch、powershell 四种脚本语法
 
- ```
+```yml
 version: v3.0
 jobs:
   job1:

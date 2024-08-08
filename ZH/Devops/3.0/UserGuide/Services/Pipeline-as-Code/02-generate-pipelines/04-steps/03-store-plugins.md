@@ -4,17 +4,16 @@
 ​
 指定当前 step 使用的流水线插件标识和版本
 值格式为：<atomCode>@<atomVersion>
-<atomCode> 为插件标识，<atomVersion> 为插件对应的版本，支持设置始终使用指定大版本下的最新版本，如1.*
+<atomCode> 为插件标识，<atomVersion> 为插件对应的版本，支持设置始终使用指定大版本下的最新版本，如 1.*
 支持的插件有：
-- 从[蓝盾研发商店](http://devops.oa.com/console/store/market/home?pipeType=atom)上架的插件
-- 不包括：
-    - 蓝盾很早以前的旧版插件，这些插件目前已设置为不推荐使用
+- BK-CI 研发商店上架的插件
+
 ​
  
-可以在[蓝盾研发商店](https://devops.woa.com/console/store/market/list)中查看每个插件的 YAML 片段示例
+可以在 BK-CI 研发商店中查看每个插件的 YAML 片段示例
 示例：
 
- ```
+```yml
 - uses: UploadArtifactory@4.*
   name: 归档构件
   with:

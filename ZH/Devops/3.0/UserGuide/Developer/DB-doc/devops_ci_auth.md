@@ -14,12 +14,12 @@
 | T_AUTH_IAM_CALLBACK | IAM 回调地址 |
 | T_AUTH_ITSM_CALLBACK | 权限 itsm 回调表 |
 | T_AUTH_MANAGER | 管理员策略表 |
-| T_AUTH_MANAGER_APPROVAL | 蓝盾超级管理员权限续期审核表 |
+| T_AUTH_MANAGER_APPROVAL | BK-CI 超级管理员权限续期审核表 |
 | T_AUTH_MANAGER_USER | 管理员用户表(只存有效期内的用户) |
 | T_AUTH_MANAGER_USER_HISTORY | 管理员用户历史表 |
 | T_AUTH_MANAGER_WHITELIST | 管理员自助申请表名单表 |
 | T_AUTH_MIGRATION | 权限迁移 |
-| T_AUTH_MONITOR_SPACE | 蓝盾监控空间权限表 |
+| T_AUTH_MONITOR_SPACE | BK-CI 监控空间权限表 |
 | T_AUTH_OAUTH2_ACCESS_TOKEN | ACCESS_TOKEN 表 |
 | T_AUTH_OAUTH2_CLIENT_DETAILS | 客户端信息表 |
 | T_AUTH_OAUTH2_CODE | 授权码表 |
@@ -44,7 +44,7 @@
 | 序号 | 名称 | 数据类型 |  长度  | 小数位 | 允许空值 | 主键 | 默认值 | 说明 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 |  1   | ACTION |   varchar   | 64 |   0    |    N     |  Y   |       | 操作 ID  |
-|  2   | RESOURCE_TYPE |   varchar   | 64 |   0    |    N     |  N   |       | 蓝盾-关联资源类型  |
+|  2   | RESOURCE_TYPE |   varchar   | 64 |   0    |    N     |  N   |       | BK-CI-关联资源类型  |
 |  3   | RELATED_RESOURCE_TYPE |   varchar   | 64 |   0    |    N     |  N   |       | IAM-关联资源类型  |
 |  4   | ACTION_NAME |   varchar   | 64 |   0    |    N     |  N   |       | 操作名称  |
 |  5   | ENGLISH_NAME |   varchar   | 64 |   0    |    Y     |  N   |       | 动作英文名称  |
@@ -160,7 +160,7 @@
 
 **表名：** <a>T_AUTH_MANAGER_APPROVAL</a>
 
-**说明：** 蓝盾超级管理员权限续期审核表
+**说明：** BK-CI 超级管理员权限续期审核表
 
 **数据列：**
 
@@ -247,7 +247,7 @@
 
 **表名：** <a>T_AUTH_MONITOR_SPACE</a>
 
-**说明：** 蓝盾监控空间权限表
+**说明：** BK-CI 监控空间权限表
 
 **数据列：**
 

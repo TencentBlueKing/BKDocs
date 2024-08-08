@@ -1,4 +1,4 @@
-# 在YAML文件中添加触发器
+# 在 YAML 文件中添加触发器
 
 通过顶级关键子 on 定义触发器
 
@@ -7,7 +7,7 @@
 触发器设置，监听工蜂事件或定时任务等，满足条件时执行流水线
 当不配置任何触发器时，等同于：
 
- ```
+```yml
 version: v3.0
 
 on:
@@ -173,11 +173,10 @@ tag 触发时，YAML 配置以当前 tag 为准：
 |report-commit-check |Bool |值为 true 时，上报 commit check 信息到工蜂<br>缺省值为 true | |
 |block-mr |Bool |report-commit-check=`true 时生效`<br>值为 true 时，若流水线运行中或运行失败，block mr，不允许合并 | |
 
-git事件参见：https://git.woa.com/help/menu/manual/webhooks.html 
 	
 #### 监听 MR 事件实例
 
- ```
+```yml
 version: v3.0
 
 # 可以简写为

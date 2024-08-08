@@ -125,6 +125,14 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ```
 
 ## 部署节点管理
+### 修改 nodeman 版本
+7.1.3 中升级了 bk-gse-ce-2.1.5-beta.7 存在 Proxy 配置变动，需要 `bk-nodeman>=2.4.1`才能正常渲染。
+
+修改版本号使用 2.4.4 版本：
+``` bash
+sed -i 's/bk-nodeman: "2.3.5"/bk-nodeman: "2.4.4"/' environments/default/version.yaml
+grep bk-nodeman environments/default/version.yaml  # 检查修改结果，预期输出2.4.4
+```
 
 ### 部署 nodeman
 执行如下命令部署 bk-nodeman release，给 admin 桌面添加应用，并上传 Agent 和插件包：

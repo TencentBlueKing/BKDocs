@@ -1,12 +1,12 @@
 # 使用 UI 辅助编排 YAML 文件
 
-## 从蓝盾创建 PAC 流水线
+## 从 BK-CI 创建 PAC 流水线
 
-可以直接在蓝盾上通过 UI 编排的方式创建一个 PAC 流水线，自动生成流水线对应的 YAML 文件，无需手动写 YAML。
+可以直接在 BK-CI 上通过 UI 编排的方式创建一个 PAC 流水线，自动生成流水线对应的 YAML 文件，无需手动写 YAML。
 
-## Step1: 进入蓝盾流水线服务
+## Step1: 进入 BK-CI 流水线服务
 
-[devops.woa.com](http://devops.woa.com/)
+登录 BK-CI
 
 ## Step2: 点击「新增流水线」，从模版新建，选择合适的模版生成流水线
 

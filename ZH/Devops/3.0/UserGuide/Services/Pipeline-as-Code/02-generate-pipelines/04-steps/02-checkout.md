@@ -32,7 +32,7 @@ checkout: self | repo url
 |username |否 | |当 authType=USERNAME_PASSWORD 时有效，拉代码使用的用户名 |
 |password |否 | |当 authType=USERNAME_PASSWORD 时有效，拉代码使用的账户密码 |
 |ticketId |否 | |当 authType=TICKET 时有效，凭据服务中创建的凭据ID |
-|personalAccessToken |否 | |当 authType=PERSONAL_ACCESS_TOKEN 时有效，拉代码使用的工蜂个人token [personal access token](https://git.woa.com/help/menu/instruction/product-docs/profile.html#%E4%B8%AA%E4%BA%BA%E8%AE%BF%E9%97%AE%E5%87%AD%E6%8D%AE-personal-access-token) |
+|personalAccessToken |否 | |当 authType=PERSONAL_ACCESS_TOKEN 时有效 |
 
 
 ### 拉取事件触发时对应的代码，使用默认配置
@@ -91,7 +91,7 @@ on:
   push: [ "*", "dev/*" ]
 
 steps:
-- checkout: https://git.woa.com/XXX/XXX.git
+- checkout: https://git.xxx.com/XXX/XXX.git
   name: checkout another repo or github repo or gitlab repo
   with:
     pullType: BRANCH
@@ -99,16 +99,16 @@ steps:
     localPath: XXX/  
 ```
 
-#### 指定凭证ID拉取代码：
+#### 指定凭证 ID 拉取代码：
 
- ```
+```yml
 version: v3.0
 
 on:
   push: [ "*", "dev/*" ]
 
 steps:
-- checkout: https://git.woa.com/XXX/XXX.git
+- checkout: https://git.xxx.com/XXX/XXX.git
   name: checkout another repo or github repo or gitlab repo
   with:
     authType: TICKET
@@ -127,7 +127,7 @@ on:
   push: [ "*", "dev/*" ]
 
 steps:
-- checkout: https://git.woa.com/XXX/XXX.git
+- checkout: https://git.xxx.com/XXX/XXX.git
   name: checkout another repo or github repo or gitlab repo
   with:
     authType: PERSONAL_ACCESS_TOKEN
