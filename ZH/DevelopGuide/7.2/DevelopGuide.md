@@ -22,10 +22,10 @@
 |移动端开发指南|PaaS 平台-开发者中心 |“PaaS 平台-开发者中心” 可以进行移动端的系统研发，如 H5 、小程序等，该教程提供移动端的开发指南。请根据自己的 PaaS 平台版本，学习对应的教程。 |[开始学习](../../PaaS/DevelopTools/MobileGuide/Mobile_development_v2.md) |
 |标准运维插件开发 |标准运维 |标准运维插件是标准运维任务执行的最小单元，通过将 API 参数前端表单化，参数校验、逻辑封装等功能，以图形化的方式提供给用户使用。学习后，可以将第三方系统功能，封装成标准运维插件，完成更调度编排的任务。 |[开始学习](../../SOPS/DevelopTools/sops.md) |
 |监控平台采集器开发 |监控平台 |监控采集器可以满足用户自定义数据上报到蓝鲸监控平台的场景。 |[开始学习](../../Monitor/3.8/UserGuide/Dev/plugin_exporter_dev.md) |
-|蓝盾插件开发 |持续集成平台（蓝盾） |持续集成平台插件是流水线执行任务环节的最小单元，通过学习，可以为研发在 CI 过程中提供任何有价值的工具。 |[开始学习](../../Devops/2.0/UserGuide/intro/README.md) |
+|蓝盾插件开发 |持续集成平台（蓝盾） |持续集成平台插件是流水线执行任务环节的最小单元，通过学习，可以为研发在 CI 过程中提供任何有价值的工具。 |[开始学习](../../Devops/3.0/UserGuide/intro/README.md) |
 |权限中心接入 |权限中心 |该教程将帮助你将企业内已有的系统权限体系接入“蓝鲸智云权限中心”，实现企业内系统权限的统一管理。 |[开始学习](../../IAM/IntegrateGuide/HowTo/Guide.md) |
-|开源共建 |公共基础 |蓝鲸智云的各产品陆续在 GitHub 的 [TencentBlueKing](https:/github.com/tencentblueking) 组织下开源，可以搜索对应的项目，学习如何参与蓝鲸智云的开源项目。 |[开始学习](../../DevelopGuide/7.0/GithubContributorGuide.md) |
-|蓝鲸错误码 |公共基础 |学习各产品遵循的错误码规则，查找产品错误码对应的处理方案。 |[开始学习](../../DevelopGuide/7.0/ErrorCodeIndex.md) |
+|开源共建 |公共基础 |蓝鲸智云的各产品陆续在 GitHub 的 [TencentBlueKing](https:/github.com/tencentblueking) 组织下开源，可以搜索对应的项目，学习如何参与蓝鲸智云的开源项目。 |[开始学习](../../DevelopGuide/7.2/GithubContributorGuide.md) |
+|蓝鲸错误码 |公共基础 |学习各产品遵循的错误码规则，查找产品错误码对应的处理方案。 |[开始学习](../../DevelopGuide/7.2/ErrorCodeIndex.md) |
 |蓝鲸 API |公共基础 |所有 API 遵循 Restful 风格，查找各产品提供的 API 能力。 |[开始学习](../../DevelopGuide/7.0/APIIndex.md) |
 
 <!--|计算平台插件开发 |计算平台 |该教程帮你将已经存储在计算平台的数据进行“可视化展示”、“自定义分析”等。 |[开始学习](../../BK-Base/3.10/UserGuide/Introduction/intro.md) |-->

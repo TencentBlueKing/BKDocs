@@ -34,6 +34,8 @@
             - 
               name: {{ IndexDownloads }}
             - 
+              name: {{ IndexDocumentationContributorGuide }}
+            - 
               name: {{ IndexSolution }}
         - 
           name: {{ IndexSaaSService }}
@@ -49,15 +51,19 @@
             - 
               name: {{ IndexITSM }}
             - 
-              name: {{ IndexBKFLOW }}
+              name: {{ IndexAuditCenter }}
             - 
-              name: {{ IndexBKVision }}
+              name: {{ IndexDBManage }}
             - 
-              name: {{ IndexBKNotice }}
+              name: {{ IndexChartPlatform }}
+            -
+              name: {{ IndexHaiLei }}
             - 
-              name: {{ IndexBKAudit }}
+              name: {{ IndexFTA }}
             - 
-              name: {{ IndexDBM }}
+              name: {{ IndexGSEKit }}
+            - 
+              name: {{ IndexBKCI }}
             -
               name: {{ IndexNetworkManagement }}
         - 
@@ -77,6 +83,10 @@
               name: {{ IndexMagicBox }}
             - 
               name: {{ IndexLessCode }}
+            -
+              name: {{ IndexIntegrateGuide }}
+            - 
+              name: {{ IndexDevelopmentDatabase }}
             - 
               name: {{ IndexDeveloperCenter }}
             - 
@@ -105,9 +115,17 @@
             - 
               name: {{ IndexDevops }}
             - 
-              name: {{ IndexBSCP }}
+              name: {{ IndexTurbo }}
+            - 
+              name: {{ IndexQualityGate }}
+            - 
+              name: {{ IndexCodeReview }}
+            - 
+              name: {{ IndexArtifactory }}
             - 
               name: {{ IndexBKBase }}
+            - 
+              name: {{ IndexBSCP }}
 -
   name: {{ Doc }}
   children:
@@ -138,10 +156,14 @@
               name: {{ DocBCS }}
             - 
               name: {{ DocDevops }}
+            - 
+              name: {{ DocBKBase }}
             -         
               name: {{ DocAPIGateway }}
             - 
               name: {{ DocLessCode }}
+            - 
+              name: {{ DocQualityGate }}
         - 
           name: {{ DocSaaSService }}
           children:
@@ -155,25 +177,32 @@
               name: {{ DocLogSearch }}
             - 
               name: {{ DocITSM }}
+            - 
+              name: {{ DocAuditCenter }}
+            - 
+              name: {{ DocDBManage }}
+            - 
+              name: {{ DocChartPlatform }}
             -
-              name: {{ DocBKFLOW }}
+              name: {{ DocHaiLei }} 
             - 
-              name: {{ DocBKVision }}
-            - 
-              name: {{ DocBKNotice }}
-            - 
-              name: {{ DocBKAudit }}
-            - 
-              name: {{ DocDBM }}
+              name: {{ DocGSEKit }}
+            -
+              name: {{ DocFTA }}
             - 
               name: {{ DocNetworkManagement }}
+            - 
+              name: {{ DocCICDKit }}
     -
       name: {{ DocQuickUse }}
       children:
+        - name: {{ DocBlueKingFamily }}
         - 
           name: {{ DocQuickStart }}
         - 
           name: {{ DocOnlineGuide }}
+        -
+          name: {{ DocQuickDeploy }}
     -
       name: {{  DocSceneCase  }}
       children:
@@ -192,12 +221,16 @@
           name: {{ DocSaaSDeveloperDatabase }}
         - 
           name: {{ DocFrontTools }}
+        -
+          name: {{ DocIntegrateGuide }}
         - 
           name: {{ DocErrorCode }}
         - 
           name: {{ DocAPIDocument }}
         - 
           name: {{ DocSaaSDevelopment }}
+        - 
+          name: {{ DocMobileDevelopment }}
         - 
           name: {{ DocExpandDevelopment}}
         - 
@@ -207,6 +240,22 @@
     -
       name: {{ DocDeploymentMaint }}
       children:
+        - 
+          name: {{ DocDeploymentPlan }}
+        - 
+          name: {{ DocSoftwareDownload }}
+        - 
+          name: {{ DocBasicPkgDeploy }}
+        - 
+          name: {{ DocExpandPkgDeploy }}
+        - 
+          name: {{ DocSaaSDeploy }}
+        - 
+          name: {{ DocMaintManual }}
+        - 
+          name: {{ DocUpgradeGuide }}
+        - 
+          name: {{ DocMiniDeployment }}
         - 
           name: {{ DocBasicPkgQuickDeploy }}
         - 
@@ -223,6 +272,12 @@
           name: {{ DocBasicPkgMaintManual }}  
         - 
           name: {{ DocExpandPkgMaintManual }} 
+        - 
+          name: {{ DocUnUpgradeGuide }}
+        - 
+          name: {{ DocUnMiniDeployment }}
+        - 
+          name: {{ DocK8SBeRead }}
         - 
           name: {{ DocDeployPreWork }}
         - 
