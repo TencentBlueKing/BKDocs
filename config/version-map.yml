@@ -114,14 +114,14 @@
     BCS: 1.29
     BestPractices: 7.1
     BK-Base: "3.10"
-    BKAudit: 7.2
+    BKAudit: 1.14
     BKFLOW: 1.7
     BKNotice: "1.0"
     BKVision: 7.2
     BlueKingFamily: "7.0"
     BSCP: 1.29
     CMDB: 3.11
-    DBM: 7.1
+    DBM: 1.5
     DeploymentGuides: 7.1
     DevelopGuide: 7.2
     Devops: "3.0"
@@ -136,7 +136,7 @@
     Monitor: 3.8
     NodeMan: 2.4
     OnlineGuide: "7.0"
-    PaaS: "1.0"
+    PaaS: 1.5
     QuickStart: "7.0"
     ReleaseNotes: "7.0"
     SOPS: 3.28

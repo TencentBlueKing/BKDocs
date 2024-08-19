@@ -1,6 +1,6 @@
-product=a #产品目录名
-language=ZH   #中文目录
-version=1.1  #创建的版本号目录
+product=DBM #产品目录名
+language=EN   #中文目录
+version=7.2  #创建的版本号目录
 
 
 [[ -z ${product} || -z ${version} || -z ${language} ]]  && echo "请设定配置" && exit 1

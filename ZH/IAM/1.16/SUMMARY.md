@@ -40,7 +40,7 @@
         * [管理员](UserGuide/Feature/Manager.md)
         * [审批流程](UserGuide/Feature/Approval.md)
         * [续期通知](Userguide/Feature/RenewalNotice.md)
-    * [审计](Userguide/Feature/Audit.md)
+    * [审计](UserGuide/Feature/Audit.md)
 * [场景实践]()
     * [二级权限管理](UserGuide/UserCase/GradingManager.md)
 * [权限中心接入](../IntegrateGuide/SUMMARY.md)

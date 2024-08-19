@@ -64,7 +64,6 @@
 * [API 文档](APIDocs/api_docs.md)
 * [错误码](ErrorCode/job_error_code.md)
 * [开源共建](https://github.com/TencentBlueKing/bk-job)
-* [开发架构文档](DevelopmentArchitecture/SUMMARY.md) 
 * [应用运维文档](Operation/operation.md)
 * [问题排查与处理文档](TroubleShooting/trouble_shooting.md)
 
