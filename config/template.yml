@@ -43,19 +43,19 @@
             -  
               name: {{ IndexNodeMan }}
             - 
+              name: {{ IndexITSM }}
+            - 
               name: {{ IndexMonitor }}
             - 
               name: {{ IndexLogSearch }}
             - 
-              name: {{ IndexITSM }}
-            - 
-              name: {{ IndexBKFLOW }}
-            - 
-              name: {{ IndexBKVision }}
+              name: {{ IndexBSCP }}
             - 
               name: {{ IndexBKNotice }}
             - 
               name: {{ IndexBKAudit }}
+            - 
+              name: {{ IndexBKVision }}
             - 
               name: {{ IndexDBM }}
             -
@@ -70,13 +70,15 @@
             - 
               name: {{ IndexSaaSDevelopmentDatabase }}
             - 
+              name: {{ IndexMagicBox }}
+            - 
+              name: {{ IndexLessCode }}
+            - 
               name: {{ IndexUserManage }}
             -
               name: {{ IndexIAM }}
             - 
-              name: {{ IndexMagicBox }}
-            - 
-              name: {{ IndexLessCode }}
+              name: {{ IndexBKFLOW }}
             - 
               name: {{ IndexDeveloperCenter }}
             - 
@@ -97,15 +99,13 @@
             - 
               name: {{ IndexCMDB }}
             - 
-              name: {{ IndexGSE }}
-            - 
               name: {{ IndexJOB }}
+            - 
+              name: {{ IndexGSE }}
             - 
               name: {{ IndexBCS }}
             - 
               name: {{ IndexDevops }}
-            - 
-              name: {{ IndexBSCP }}
             - 
               name: {{ IndexBKBase }}
 -
@@ -120,53 +120,78 @@
             - 
               name: {{ DocBlueKingFamily }}
         - 
-          name: {{ DocAtomService }}
+          name: {{ DocSaaSService }}
+          children:
+            - 
+              name: {{ DocSOPS }}
+            -  
+              name: {{ DocNodeMan }}
+            - 
+              name: {{ DocITSM }}
+            - 
+              name: {{ DocMonitor }}
+            - 
+              name: {{ DocLogSearch }}
+            - 
+              name: {{ DocBSCP }}
+            - 
+              name: {{ DocBKNotice }}
+            - 
+              name: {{ DocBKAudit }}
+            - 
+              name: {{ DocBKVision }}
+            - 
+              name: {{ DocDBM }}
+            -
+              name: {{ DocNetworkManagement }}
+        - 
+          name: {{ DocPaaSService }}
           children:
             - 
               name: {{ DocPaaS }}
             - 
+              name: {{ DocAPIGateway }}
+            - 
+              name: {{ DocSaaSDevelopmentDatabase }}
+            - 
+              name: {{ DocMagicBox }}
+            - 
+              name: {{ DocLessCode }}
+            - 
+              name: {{ DocUserManage }}
+            -
+              name: {{ DocIAM }}
+            - 
+              name: {{ DocBKFLOW }}
+            - 
+              name: {{ DocDeveloperCenter }}
+            - 
+              name: {{ DocFrameWork }}
+            - 
+              name: {{ DocFrontTools }}
+            - 
+              name: {{ DocAPIDocument }}
+            - 
+              name: {{ DocSaaSDevelopment }}
+            - 
+              name: {{ DocDevelopStandard }}
+            - 
+              name: {{ DocIAMAccess }}
+        - 
+          name: {{ DocAtomService }}
+          children:
+            - 
               name: {{ DocCMDB }}
             - 
               name: {{ DocJOB }}
-            - 
-              name: {{ DocUserManage }}
-            - 
-              name: {{ DocIAM }}
             - 
               name: {{ DocGSE }}
             - 
               name: {{ DocBCS }}
             - 
               name: {{ DocDevops }}
-            -         
-              name: {{ DocAPIGateway }}
             - 
-              name: {{ DocLessCode }}
-        - 
-          name: {{ DocSaaSService }}
-          children:
-            - 
-              name: {{ DocNodeMan }}
-            - 
-              name: {{ DocSOPS }}
-            - 
-              name: {{ DocMonitor }}
-            - 
-              name: {{ DocLogSearch }}
-            - 
-              name: {{ DocITSM }}
-            -
-              name: {{ DocBKFLOW }}
-            - 
-              name: {{ DocBKVision }}
-            - 
-              name: {{ DocBKNotice }}
-            - 
-              name: {{ DocBKAudit }}
-            - 
-              name: {{ DocDBM }}
-            - 
-              name: {{ DocNetworkManagement }}
+              name: {{ DocBKBase }}
     -
       name: {{ DocQuickUse }}
       children:
