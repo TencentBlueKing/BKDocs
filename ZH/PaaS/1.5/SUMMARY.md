@@ -10,7 +10,7 @@
     * [开发一个 SaaS](UserGuide/QuickStart/PaaS3DevelopAPP.md)
 * [场景案例]()
     * [如何将蓝鲸 S-mart 上的 SaaS 部署起来？](UserGuide/UserCase/PaaS3/SaaSDeployment.md)
-    * [如何将蓝鲸可视化开发平台部署起来？](UserGuide/UserCase/PaaS3/LesscodeDeployment.md)
+    * [如何将蓝鲸运维开发平台部署起来？](UserGuide/UserCase/PaaS3/LesscodeDeployment.md)
     * [如何将第三方系统放在蓝鲸桌面/工作台中使用？](UserGuide/UserCase/PaaS3/ThirdParty.md)
     * [如何使用蓝鲸 MagicBox 拖拽一个前端界面？](UserGuide/UserCase/MagicBox.md)
     * [配置消息通知：邮件](UserGuide/UserCase/send_mail.md)

@@ -1,6 +1,6 @@
 # Summary
 
-## 消息通知中心)
+## 消息通知中心
 
 * [产品简介](UserGuide/Introduction/What-is-BKNotice.md)
 * [术语解释](UserGuide/Introduction/Terms.md)

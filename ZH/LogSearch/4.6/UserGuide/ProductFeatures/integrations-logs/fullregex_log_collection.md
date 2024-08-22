@@ -1,8 +1,8 @@
 # 段日志采集
 
-日志采集，我们希望日志都是规则的，可是在实际情况中，我们的日志格式可能是千奇百怪的，如一行是字符，一行是json,而且json是分行的，不是存储到一行的，如下所示
+日志采集，我们希望日志都是规则的，可是在实际情况中，我们的日志格式可能是千奇百怪的，如一行是字符，一行是 json,而且 json 是分行的，不是存储到一行的，如下所示
 
-```
+```go
 Nov  6 12:06:34 VM_193_66_centos systemd: Starting Cleanup of Temporary Directories...
 Nov  6 12:06:34 VM_193_66_centos systemd: Started Cleanup of Temporary Directories.
 Nov  6 12:06:34 VM_193_66_centos systemd: Started Cleanup of Temporary Directories.
@@ -51,7 +51,11 @@ Nov  6 12:06:34 VM_193_66_centos systemd: Started Cleanup of Temporary Directori
 ```
 
 ## 段日志配置
+对于这样的日志，我们可以使用段日志功能。输入日志样例、行首正则表达式后点击匹配验证。验证通过即可完成行首配置；
 
-![](media/16619344864271.jpg)
+![Alt text](media/2024-07-16-11-43.png)
+
+行首配置之后，每一个以行首开头的日志将会被视为一条日志。比较经典的段日志场景如： Java 堆栈日志。从行首开始计算，直到下一次出现行首时，中间的日志都会被视为同一条日志。可通过**最大匹配行数**控制段日志长度，默认为 50 行，避免出现因正则错误而导致日志无线累加。
+![Alt text](media/2024-07-16-11-56.png)
 
 
