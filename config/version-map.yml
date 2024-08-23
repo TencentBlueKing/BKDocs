@@ -115,9 +115,9 @@
     BestPractices: 7.1
     BK-Base: "3.10"
     BKAudit: 1.14
-    BKFLOW: 1.7
+    BKFlow: 1.8
     BKNotice: "1.0"
-    BKVision: 7.2
+    BKVision: "1.0"
     BlueKingFamily: "7.0"
     BSCP: 1.29
     CMDB: 3.11

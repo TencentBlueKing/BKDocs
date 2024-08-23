@@ -78,7 +78,7 @@
             -
               name: {{ IndexIAM }}
             - 
-              name: {{ IndexBKFLOW }}
+              name: {{ IndexBKFlow }}
             - 
               name: {{ IndexDeveloperCenter }}
             - 
@@ -162,7 +162,7 @@
             -
               name: {{ DocIAM }}
             - 
-              name: {{ DocBKFLOW }}
+              name: {{ DocBKFlow }}
             - 
               name: {{ DocDeveloperCenter }}
             - 
