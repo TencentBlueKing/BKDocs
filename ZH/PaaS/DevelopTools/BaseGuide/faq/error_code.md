@@ -46,7 +46,7 @@
 
 如果执行失败了，可 helm update 再重复执行
 
-3. 查看 `workloads-celery` 模块日志，如有 `403 Forbidden` 报错，则参考 [为什么 workloads 项目提示无权限获取到应用集群信息](../../../../1.0/Operation/PaaS3/docs/deploy_faq.md) 文档处理即可
+3. 查看 `workloads-celery` 模块日志，如有 `403 Forbidden` 报错，则参考 [为什么 workloads 项目提示无权限获取到应用集群信息](../../../1.0/Operation/PaaS3/docs/deploy_faq.md) 文档处理即可
 
 ### 4313022 资源池为空
 

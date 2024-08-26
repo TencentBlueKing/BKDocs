@@ -85,6 +85,10 @@ scripts/set_desktop_default_app.sh -a "bk_fta_solution"
 容器监控数据由 `bkmonitor-operator` release 采集，它提供了 daemonset 工作负载，在所有 k8s node （包括 master ）运行。数据上报由这些主机的 gse-agent 完成，故请先在 “节点管理” 中完成 agent 安装并确保状态正常。
 
 ``` bash
+# 修改配置文件
+touch environments/default/bkmonitor-operator-custom-values.yaml.gotmpl
+yq -i '.bkmonitor-operator-charts.bkmonitor-operator.builtinLabels = ["instance"]'  environments/default/bkmonitor-operator-custom-values.yaml.gotmpl
+
 helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync  # 部署 k8s operator 提供容器监控数据
 ```
 

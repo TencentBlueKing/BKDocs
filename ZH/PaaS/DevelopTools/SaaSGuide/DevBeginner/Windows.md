@@ -52,7 +52,7 @@ Sourcetree、GitHub Desktop、Fork、TortoiseGit、开发工具 Git 插件 等
 
 ### 下载开发框架至本地
 
-进入 [蓝鲸工具下载](../../../../../downloads/7.0/Index.md)，下载最新的开发框架至本地，并解压
+进入 [蓝鲸工具下载](../../../../downloads/7.0/Index.md)，下载最新的开发框架至本地，并解压
 
 ## 初始化开发框架
 

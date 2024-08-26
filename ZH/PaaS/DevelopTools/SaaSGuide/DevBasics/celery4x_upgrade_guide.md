@@ -2,7 +2,7 @@
 
 - 去除 blueapps 包中的 celery 中的依赖
 - 由于 djcelery 仅支持到 celery3x 版本，升级 celery4x 版本，使用 django-celery-beat 和 django-celery-result 包代替 djcelery 功能
-- 升级主要存在的问题在于 celery4x 的时间流转与 celery3x 的不同，导致定时任务和异步任务执行异常，后续章节会详细介绍，[老用户升级](#老用户升级注意事项)和[新用户的使用注意事项](#新用户使用注意事项)
+- 升级主要存在的问题在于 celery4x 的时间流转与 celery3x 的不同，导致定时任务和异步任务执行异常，后续章节会详细介绍，可参考本文的【老用户升级】和【新用户的使用注意事项】章节
 - celery4x 解决了与 async 关键字的冲突，升级后可以使用 python3.7 及以上版本（目前仅测试到 3.7.4）
 
 ## 升级后配置文件更改
@@ -431,7 +431,7 @@ if IS_USE_CELERY:
   - djcelery 包中 WorkerState 表用于记录 celery worker 状态，在 django-celery-beat 包中被移除
 - 迁移命令的执行时机应该在 celery4，django-celery-beat，django-celery-results 包安装并配置好，并且执行 migrate 命令之后，例如，配置到 bin/postcompile 中
 - 迁移前会检查目标数据库是否为空，不为空则迁移失败
-- 如果是带时区迁移，旧的 crontab 配置依然为无时区时间，如`crontab(minute="57", hour="10")`，beat 重启后会以`CELERY_TIMEZONE`配置的时区刷新 crontab 表中的 timezone，可能会导致定时任务时区执行问题，因此需要修改 crontab 为 TzAwareCrontab，示例代码[见定时任务配置小节](#定时任务配置)
+- 如果是带时区迁移，旧的 crontab 配置依然为无时区时间，如`crontab(minute="57", hour="10")`，beat 重启后会以`CELERY_TIMEZONE`配置的时区刷新 crontab 表中的 timezone，可能会导致定时任务时区执行问题，因此需要修改 crontab 为 TzAwareCrontab，示例代码见本文【定时任务配置】章节
 
 
 迁移命令

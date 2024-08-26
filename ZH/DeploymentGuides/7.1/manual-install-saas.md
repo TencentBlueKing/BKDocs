@@ -156,7 +156,15 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 ### 部署节点管理（bk_nodeman）
 目前节点管理已经改为了 Charts 形态，通过 `helmfile` 命令进行部署。
 
-安装节点管理之前，保障中控机上能解析 `bkrepo.$BK_DOMAIN` 的域名，因为安装时会自动调用脚本在 bkrepo 中创建 bucket。
+7.1.3 中升级了 bk-gse-ce-2.1.5-beta.7 存在 Proxy 配置变动，需要 `bk-nodeman>=2.4.1`才能正常渲染。
+
+修改版本号使用 2.4.4 版本：
+``` bash
+sed -i 's/bk-nodeman: "2.3.5"/bk-nodeman: "2.4.4"/' environments/default/version.yaml
+grep bk-nodeman environments/default/version.yaml  # 检查修改结果，预期输出2.4.4
+```
+
+安装节点管理之前，请确保中控机上能解析 `bkrepo.$BK_DOMAIN` 的域名，因为安装过程中脚本会请求 bkrepo 创建所需的 对象存储 bucket。
 ``` bash
 cd ~/bkce7.1-install/blueking/  # 进入工作目录
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
