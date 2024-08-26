@@ -59,7 +59,7 @@ tcp        0      0 10.0.4.29:3306          0.0.0.0:*               LISTEN      
 
 ### 监控系统自动实现进程端口监控
 
-等候一分钟，在蓝鲸自带的监控系统 [监控平台](../../../../Monitor/3.8/UserGuide/Overview/README.md) 中可以看到 [进程的运行情况](../../../../Monitor/3.8/UserGuide/Other/guide/process_monitor.mdd)。
+等候一分钟，在蓝鲸自带的监控系统 [监控平台](../../../../Monitor/3.8/UserGuide/Overview/README.md) 中可以看到 [进程的运行情况](../../../../Monitor/3.8/UserGuide/Other/guide/process_monitor.md)。
 
 ![-w1570](../media/15632804527438.jpg)
 
