@@ -6,7 +6,6 @@
 * [产品简介]()
     * [产品概述](UserGuide/README.md)
     * [产品功能](UserGuide/features.md)
-* [架构文档](./Architecture/README.md)
 * [使用手册]()
     * [操作指南]()
         * [调用网关 API](./UserGuide/HowTo/call-gateway-api.md)

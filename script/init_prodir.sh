@@ -1,6 +1,6 @@
-product=DBM #产品目录名
-language=EN   #中文目录
-version=7.2  #创建的版本号目录
+product= #产品目录名
+language=   #中文目录
+version=  #创建的版本号目录
 
 
 [[ -z ${product} || -z ${version} || -z ${language} ]]  && echo "请设定配置" && exit 1
@@ -28,7 +28,7 @@ function init(){
             elif [[ $i == "ErrorCode" ]];then
                 echo "待补充" >> ${product}/${i}/${product}.md
             elif [[ $i == ${version} ]];then
-            cat >> ${product}/${version}/SUMMARY.md  <<EOF
+            cat >> ${product}/${version}/SUMMARY.md <<-EOF
 $(echo -e ${summary})
 EOF
                 for j in ${version_dir}
@@ -41,6 +41,16 @@ EOF
                                      echo "待补充" >> ${product}/${version}/${j}/${k}/README.md
                                 done
                         else
+                            if [[ $j == "Architecture" ]];then
+                            cat >> ${product}/${version}/${j}/SUMMARY.md <<-EOF
+$(echo -e "# Summary \n\n## $j")
+EOF
+                            fi
+                            if [[ $j == "Operation" ]];then
+                                cat >> ${product}/${version}/${j}/SUMMARY.md <<-EOF 
+$(echo -e "# Summary \n\n## $j")
+EOF
+                            fi
                             echo "待补充" >> ${product}/${version}/${j}/README.md
                         fi
                     done
