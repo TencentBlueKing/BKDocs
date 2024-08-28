@@ -203,11 +203,19 @@
       name: {{  DocSceneCase  }}
       children:
         - 
+          name: {{ DocBasicManage }}
+        - 
+          name: {{ DocProcessChoreography }}
+        - 
           name: {{ DocCIIntegration }}
         - 
-          name: {{ DocCDDeploy }}
+          name: {{ DocBasicPlan }}
         - 
-          name: {{ DocCOOperate }}
+          name: {{ DocMBPlan }}
+        - 
+          name: {{ DocBCSPlan }}
+        - 
+          name: {{ DocCIPlan }}
     -
       name: {{ DocDevelopGuide }}
       children:
