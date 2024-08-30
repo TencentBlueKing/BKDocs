@@ -24,27 +24,8 @@ detail meta api 用于获取具体接口的元数据，通过插件表单。
 ![uniform_apis](assets/uniform_apis.png)
 
 当用户打开插件的配置面版时，交互顺序如下:
-``` mermaid
-sequenceDiagram 
-    actor user1
-    participant b as BKFlow
-    participant a as META APIS
-    
-    user1->>+b: open the config panel of uniform api plugin
-    b->>+a: call category api
-    a->>-b: return category list
-    b->>-user1: show category list
-    user1->>+b: select a category
-    b->>+a: call list meta api with selected category
-    a->>-b: return api list
-    b->>-user1: show api list
-    user1->>+b: select an api
-    b->>+a: call detail meta api with selected api
-    a->>-b: return api detail meta
-    b->>-user1: render the form with api detail meta
-    
-    Note over user1, a: A user configs uniform api plugin
-```
+
+![uniform_api_inter](assets/uniform_api_inter.png)
 
 下面，我们分别来介绍上述三种接口的协议。
 
@@ -304,26 +285,7 @@ sequenceDiagram
 
 这里以一个接入方 (Access Platform) 提供 API 接口并调用 Job 平台任务为例：
 
-``` mermaid
-sequenceDiagram 
-    participant a as BKFlow
-    participant b as Access Platform
-    participant c as Job
-    
-    Note over a, c: request API to trigger job task execution
-    a->>b: trigger a task (request url in meta api)
-    b->>c: create and start a task in job
-    c->>b: task_tag
-    b->>a: task_tag
-    
-    Note over a, c: request polling API for task status
-    a->>b: request polling url with task_tag
-    b->>c: request job task status with task_tag
-    c->>b: job task status
-    b->>b: mapping job task status to node status
-    b->>a: node status
-    a->>a: check if next polling is needed with node status tags in meta
-```
+![uniform_api_polling](assets/uniform_api_polling.png)
 
 **操作**
 
@@ -371,20 +333,7 @@ sequenceDiagram
 
 这里以一个接入系统 (Access Platform) 提供 API 接口并调用 Job 平台任务为例：
 
-``` mermaid
-sequenceDiagram 
-    participant a as BKFlow
-    participant b as Access Platform
-    participant c as Job
-    
-    Note over a, c: request API to trigger job task execution
-    a->>b: trigger a task (request url in meta api) with node_id
-    b->>c: create and start a task in job
-    
-    Note over a, c: callback when job finished
-    c->>b: job task finished callback
-    b->>a: node_callback with node_id and data
-```
+![uniform_api_callback](assets/uniform_api_callback.png)
 
 **操作**
 
