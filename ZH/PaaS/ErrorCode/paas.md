@@ -1,6 +1,6 @@
 # PaaS3.0 平台错误码
 
-请参考：[PaaS3.0 平台错误码](../DevelopTools/DevGuideV3/BaseGuide/faq/error_code.md)
+请参考：[PaaS3.0 平台错误码](../1.0/BaseGuide/faq/error_code.md)
 
 # PaaS2.0 平台错误码
 

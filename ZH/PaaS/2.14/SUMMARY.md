@@ -36,7 +36,7 @@
     * [其他功能](UserGuide/ProductFeatures/AdvancedFeature.md)
 * [常见问题](UserGuide/FAQ/FAQ.md)
 * [Python 开发框架](../DevelopTools/SaaSGuide/SUMMARY.md)
-* [开发者资料库](../DevelopTools/BaseGuide/SUMMARY.md)
+* [开发者资料库](../1.0/BaseGuide/SUMMARY.md)
 * [移动端开发]()
     * [PaaS 3.0](../DevelopTools/MobileGuide/Mobile_development_v3.md)
     * [PaaS 2.0](../DevelopTools/MobileGuide/Mobile_development_v2.md)

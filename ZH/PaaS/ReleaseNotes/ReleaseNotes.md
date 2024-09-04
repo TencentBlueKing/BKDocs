@@ -22,7 +22,7 @@
 
 >**V6.0及以前研发的SaaS，如何迁移到V7.0呢？**
 
-PaaS平台的“开发者中心”提供“一键迁移”功能，仅支持将蓝鲸官方“Python开发框架”研发的SaaS，详见开发者资料库 [从 PaaS2.0 到 PaaS3.0 你不得不注意的一些事项](../DevelopTools/BaseGuide/topics/paas/legacy_migration.md)。 
+PaaS平台的“开发者中心”提供“一键迁移”功能，仅支持将蓝鲸官方“Python开发框架”研发的SaaS，详见开发者资料库 [从 PaaS2.0 到 PaaS3.0 你不得不注意的一些事项](../1.0/BaseGuide/topics/paas/legacy_migration.md)。
 
 <br>
 
