@@ -28,11 +28,11 @@ BKFlow 提供了两种不同的接入方式，您可以根据自己的需求选�
 
 BKFlow 的所有 API 通过蓝鲸 APIGW 进行注册并发布，接入系统可以通过申请调用权限并调用 API 完成接入。
 
-1. 创建空间: [create_space api]() 或 Admin 管理端
-2. 进行空间配置: [renew_space_config api]() 或 Admin 管理端
-3. 创建流程: [create_template api]() 或 Admin 管理端
-4. 创建任务: [create_task api]() 或 Admin 管理端
-5. 执行任务: [operate_task api]() 或 Admin 管理端
+1. 创建空间: [create_space api](https://github.com/TencentBlueKing/BKFlow/blob/master/bkflow/apigw/docs/zh/create_space.md) 或 Admin 管理端
+2. 进行空间配置: [renew_space_config api](https://github.com/TencentBlueKing/BKFlow/blob/master/bkflow/apigw/docs/zh/renew_space_config.md) 或 Admin 管理端
+3. 创建流程: [create_template api](https://github.com/TencentBlueKing/BKFlow/blob/master/bkflow/apigw/docs/zh/create_template.md) 或 Admin 管理端
+4. 创建任务: [create_task api](https://github.com/TencentBlueKing/BKFlow/blob/master/bkflow/apigw/docs/zh/create_task.md) 或 Admin 管理端
+5. 执行任务: [operate_task api](https://github.com/TencentBlueKing/BKFlow/blob/master/bkflow/apigw/docs/zh/operate_task.md) 或 Admin 管理端
 
 至此，就完成了最基础的平台接入和流程执行。
 
@@ -42,7 +42,7 @@ BKFlow 的所有 API 通过蓝鲸 APIGW 进行注册并发布，接入系统可�
 
 1. 蓝鲸插件开发：[开发文档](https://github.com/TencentBlueKing/bk-plugin-framework-python)
 2. API 插件开发：[API 插件开发](api_plugin.md)
-3. Webhook 订阅：通过调用 [apply_webhook_configs api]()，可以对事件进行订阅。当对应的事件触发时，BKFlow 会自动进行回调，接入系统可以对回调请求进行自定义处理。
+3. Webhook 订阅：通过调用 [apply_webhook_configs api](https://github.com/TencentBlueKing/BKFlow/blob/master/bkflow/apigw/docs/zh/apply_webhook_configs.md)，可以对事件进行订阅。当对应的事件触发时，BKFlow 会自动进行回调，接入系统可以对回调请求进行自定义处理。
 
 ## 资源隔离
 

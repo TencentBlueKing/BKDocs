@@ -1,0 +1,12 @@
+# Collector overview
+
+Different collectors have different usage scenarios.
+
+| Collector | Collection range | Application scenarios |
+| ----- | -------- | --------------- |
+| Bkmonitorbeat (plug-in collector) | Host operating system monitoring, plug-in data collection, service dial testing, log keywords, supports collection from a variety of raw data | 1. Plug-in collection, such as Exporter, DataDog, Script, JMX, etc. 2. Service dialing and testing. Users can regularly dial and test designated services through TCP, UDP, HTTP, ICMP and other protocols. 3. Log keyword events. 4.CMDB host data reporting |
+| Exporter (plug-in) | Hosted on Bkmonitorbeat, the built-in Exporter integrates the mature collector ecosystem of Prometheus. It does not require complex configuration like a custom Exporter, and its scalability and maintainability are better than the default components, allowing users to quickly Use the powerful collection capabilities of Prometheus Exporter. | Built-in Exporter collector support: Nginx, HAproxy, SQL Server, Oracle, Weglogic, RabbitMQ, ZooKeeper, etc., used in monitoring platform-component monitoring |
+| DataDog (plug-in) | Hosted on Bkmonitorbeat, in order to further enhance the collection capabilities of the monitoring platform, DataDog's collection method is expanded based on the existing component monitoring collection architecture. By encapsulating a layer of DataDog Http Server based on DataDog Agent Integrations, a passive collection method similar to Prometheus Exporter is achieved. | Built-in DataDog collector support: Kafka, Microsoft AD, Ceph, Consul, Elasticsearch, Exchange_Server_2010, Microsoft IIS, MongoDB, etc., applied to monitoring platform-component monitoring |
+| BK-Pull (remote pull collector) | Such as tomcat, pull data remotely through JMX | Application scenarios that require remote pull |
+| Bkunifylogbeat (log collector) | Log files selected by the user in the host | Filter, collect and report user-specific log files, find problems from the logs, and apply them to the monitoring platform - customized monitoring/dashboard view |
+| Gsecmdline (customized reporting command line tool) | Collect specified data based on scripts issued by users | For data that cannot be covered by other collectors or user-developed services, users can write their own scripts to collect data and report it through Gsecmdline, application monitoring platform -Customized monitoring/dashboard view |

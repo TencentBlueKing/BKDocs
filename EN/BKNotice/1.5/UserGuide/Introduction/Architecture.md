@@ -1,0 +1,3 @@
+# Product architecture
+
+None

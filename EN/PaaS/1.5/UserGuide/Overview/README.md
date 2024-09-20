@@ -1,0 +1,9 @@
+# Product Overview
+
+BlueKing PaaS platform is an open platform, also known as BlueKing PaaS. This product plays three important roles within the BlueKing ecosystem:
+
+1. For general users, it is the first product to enter the BlueKing system, providing common basic services such as login authentication, message notifications, quick access to other products (workbench), and an application market to obtain more products.
+
+2. For developers, it offers a variety of "SaaS developer services" that allow developers to create, deploy, and manage applications simply and quickly. It provides comprehensive front-end and back-end development frameworks, API gateways (ESB), scheduling engines, public components, and other modules, helping developers build support tools and operational systems quickly, cost-effectively, and without the need for operations and maintenance. The PaaS platform offers complete self-service and automation services for an application from creation to deployment and subsequent maintenance management, such as log querying, monitoring alarms, operational data, etc., enabling developers to focus all their energy on application development. Key features include: multi-language development frameworks/samples, maintenance-free hosting, SaaS operational data visualization, enterprise service bus (API gateway), draggable front-end services (MagicBox), etc.
+
+3. For system maintenance personnel (system administrators), it provides user management (including role management), basic server information maintenance, third-party service visual management, API permission control, and other functions to better maintain and manage the platform's availability.

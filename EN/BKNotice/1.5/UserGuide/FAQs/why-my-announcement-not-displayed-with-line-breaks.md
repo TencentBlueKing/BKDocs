@@ -1,0 +1,3 @@
+# Why can't the platform announcement I posted wrap normally?
+
+Since the "**Platform Announcement**" type of messages are displayed at the top of the page in the form of a ticker, in order to highlight the importance of the information while not affecting the beauty and readability of the page, we only allow single-line display, so wrapping is not supported; at the same time, when publishing this type of (platform announcement) message, we hope that users can express the important part of the content as concisely as possible so that users can quickly get the core content.

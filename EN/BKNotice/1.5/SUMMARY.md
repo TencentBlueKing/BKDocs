@@ -1,0 +1,25 @@
+# Summary
+
+## Message Notification Center
+
+* [Product Introduction](UserGuide/Introduction/What-is-BKNotice.md)
+* [Terms Explanation](UserGuide/Introduction/Terms.md)
+* [Product Architecture](UserGuide/Introduction/Architecture.md)
+* [Features and Benefits](UserGuide/Introduction/Benefits.md)
+* [Quick Start]()
+    * [1. Integrated Message Notification Center](UserGuide/Quick-Starts/1.front-end-integrated.md)
+    * [2. Publish a Message Notification](UserGuide/Quick-Starts/2.publish-announcement.md)
+    * [3. Check Announcement Message](UserGuide/Quick-Starts/3.check-announcement-on-3rd-app.md)
+* [Product Features]()
+    * [Publish a new announcement](UserGuide/Features/new-announcement.md)
+    * [Historical announcements](UserGuide/Features/histories.md)
+* [Scenario examples]()
+* [FAQs]()
+    * [Why can't I close the marquee of platform announcements permanently? ](UserGuide/FAQs/why-cant-i-close-the-marquee-permanently.md)
+    * [Why can't the platform announcements I published wrap normally? ](UserGuide/FAQs/why-my-announcement-not-displayed-with-line-breaks.md)
+* [API documentation](APIDocs/api_docs.md)
+* [Error code](ErrorCode/job_error_code.md)
+* [Open source co-construction](https://github.com/TencentBlueKing/bk-job)
+* [Development architecture documentation](DevelopmentArchitecture/SUMMARY.md)
+* [Application operation and maintenance documentation](Operation/operation.md)
+* [Troubleshooting and handling documentation](TroubleShooting/trouble_shooting.md)
