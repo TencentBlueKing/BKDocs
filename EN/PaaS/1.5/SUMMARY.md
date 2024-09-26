@@ -33,7 +33,7 @@
     * [Other Features](UserGuide/ProductFeatures/AdvancedFeature.md)
 * [FAQ](UserGuide/FAQ/FAQ.md)
 * [Python Development Framework](../DevelopTools/SaaSGuide/SUMMARY.md)
-* [Developer Resource Library](../DevelopTools/BaseGuide/SUMMARY.md)
+* [Developer Resource Library](BaseGuide/SUMMARY.md)
 * [Mobile Development]()
     * [PaaS 3.0](../DevelopTools/MobileGuide/Mobile_development_v3.md)
     * [PaaS 2.0](../DevelopTools/MobileGuide/Mobile_development_v2.md)
