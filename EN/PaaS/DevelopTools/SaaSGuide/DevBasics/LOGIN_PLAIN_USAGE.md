@@ -1,29 +1,29 @@
-# 应用内登录弹窗适配方案
-## 整体实现思路
+# In-app login pop-up window adaptation solution
+## Overall implementation idea
 
-方案主要解决在登录态失效时，ajax 请求不会触发页面整体刷新，而是在页面内弹出登录小窗，使得用户可以保留当前页面的未保存内容。主要流程如下：
+The solution mainly solves the problem that when the login state is invalid, the ajax request will not trigger the overall page refresh, but a small login window will pop up in the page, so that users can retain the unsaved content of the current page. The main process is as follows:
 ![login_plain_usage.png](../assets/LOGIN_PLAIN_USAGE.png)
 
-## 样例代码(Python 项目为例)
+## Sample code (Python project as an example)
 
 - login.js
-- 用途：在 ajax 请求返回 401 时，可以识别请求返回的内容并打开弹窗
+- Purpose: When the ajax request returns 401, the content returned by the request can be identified and a pop-up window can be opened
 
 ```javascript
 /**
-* 登录相关 JS，其中 remote_static_url & static_url 来源于全局变量
+* Login-related JS, where remote_static_url & static_url come from global variables
 */
 
 document.write(" <script lanague=\"javascript\" src=\""+remote_static_url+"artdialog/jquery.artDialog.js?skin=simple\"> <\/script>");
 
 /**
-* 对 AJAX 请求做一些统一公共处理，目前主要是对登录页面做处理
+* Do some unified public processing for AJAX requests, currently mainly processing the login page
 */
 $.ajaxSetup({
     statusCode: {
         401: function(xhr) {
             var response = JSON.parse(xhr.responseText);
-             // 确认当前版本是否支持 Iframe 登录方式
+             // Confirm whether the current version supports Iframe login
             if (!response.has_plain) {
                 window.location.reload();
             }
@@ -39,7 +39,7 @@ $.ajaxSetup({
 });
 
 /**
-* 打开登录窗口
+* Open the login window
 */
 function open_login_dialog(src, width, height){
     var login_html = '<div class="mod_login" id="loginbox" style="padding: 0px 0px; visibility: visible;" align="center">' +
@@ -56,7 +56,7 @@ function open_login_dialog(src, width, height){
 }
 
 /**
-* 关闭登录框
+* Close the login box
 */
 function close_login_dialog(){
     art.dialog({id: '401_dialog'}).close();
@@ -68,13 +68,13 @@ function close_login_dialog(){
 ```
 
 - Login_success.html
-- 用途：在用户登录成功后，触发关闭登录弹窗
+- Purpose: After the user successfully logs in, trigger the closing of the login pop-up window
 
 ```html
 <!DOCTYPE html>
 <html>
     <head>
-        <title>登录成功</title>
+        <title>Login successful</title>
         <script src="{{ REMOTE_STATIC_URL }}jquery/jquery-1.7.2.min.js"></script>
         <script src="{{ REMOTE_STATIC_URL }}jquery/jquery.json-2.3.min.js"></script>
         <link href="{{ REMOTE_STATIC_URL }}bk/bk.css" rel="stylesheet" type="text/css"/>
@@ -83,13 +83,13 @@ function close_login_dialog(){
         <div class="errors-login-failure-wrap box">
             <div class="errors-login-fialure-con clearfix" style="border: none;">
                 <img src="{{ REMOTE_STATIC_URL }}bk/style_custom/images/expre_login.jpg" width="183" height="112" />
-                <h1>登录成功</h1>
+                <h1>Login successful</h1>
             </div>
         </div>
     </body>
     <script type="text/javascript">
         $(document).ready(function () {
-            // 关闭登录弹出框
+            // Close the login popup
             try{
                 window.top.BLUEKING.corefunc.close_login_dialog();
             }catch(err){
@@ -102,8 +102,8 @@ function close_login_dialog(){
 </html>
 ```
 
-- 登录失效 401 返回格式
-- 用途：告知浏览器登录弹窗需要打开的 URL 以及弹窗大小
+- Login failure 401 return format
+- Purpose: Tell the browser the URL to open the login pop-up window and the pop-up window size
 
 ```json
 {
@@ -113,13 +113,12 @@ function close_login_dialog(){
   "has_plain": true
 }
 ```
+> **Note**: c_url tells the platform which page to redirect the user to after a successful login. Here, we redirect the user's browser to login_success.html above to close the pop-up window
 
-> **注意**：其中，c_url 是告知平台登录成功后，应该让用户重定向到何页面。此处，我们让用户浏览器重定向到上方的 login_success.html 关闭弹窗
+## Notes
 
-## 注意事项
+- For developers using the Python development framework, you can update to the latest development framework and change the `IS_AJAX_PLAIN_MODE` configuration to `True` to complete the adaptation
 
-   - 对于使用 Python 开发框架的开发者，可以更新至最新的开发框架，并将`IS_AJAX_PLAIN_MODE`配置改为`True`即可以完成适配
+- The above js sample is a configuration sample sent using jquery according to ajax, and each project should be adjusted as needed
 
-   - 上述的 js 样例是按照 ajax 使用 jquery 发送的配置样例，各项目应该按需调整
-
-   - 注意测试需要在同样的域名或有允许跨域头的情况下进行操作，否则关闭弹窗时会有跨域的问题
+- Note that the test needs to be performed on the same domain name or with a cross-domain header, otherwise there will be cross-domain problems when closing the pop-up window

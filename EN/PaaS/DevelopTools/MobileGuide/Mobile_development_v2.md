@@ -1,54 +1,53 @@
-# PaaS 2.0 移动端开发
+# PaaS 2.0 mobile development
 
-## 预先准备
+## Pre-preparation
 
-1. 申请微信公众号
-    - 公众号 AppID/AppSecret, 【“微信公众号 → 开发 → 基本配置 → 公众号开发信息”】
-    - 测试可先申请微信公众号测试号：[https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo](https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo)
-2. 申请应用外网域名
-    - 建议同时申请 https 证书，后续需配置为 https
-3. 配置公众号
-    - 网页授权域名配置为应用外网域名【“微信公众号 → 设置 → 公众号设置 → 功能设置”】
-    - JS 接口安全域名添加应用外网域名【“微信公众号 → 设置 → 公众号设置 → 功能设置”】
+1. Apply for WeChat official account
+- Official account AppID/AppSecret, [“WeChat official account → Development → Basic configuration → Official account development information”]
+- For testing, you can first apply for WeChat official account test account: [https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo](https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo)
+2. Apply for application external network domain name
+- It is recommended to apply for https certificate at the same time, and it needs to be configured as https later
+3. Configure official account
+- Configure the web page authorization domain name as the application external network domain name [“WeChat official account → Settings → Official account settings → Function settings”]
+- JS interface security domain name adds the application external network domain name [“WeChat official account → Settings → Official account settings → Function settings”]
 
+## Create BlueKing application
 
-## 创建蓝鲸应用
+* For basic configuration, please refer to "BlueKing Zhiyun Developer Center ——》Beginner's Guide"
 
-* 基本配置请参考 “蓝鲸智云开发者中心——》新手指南”
+## Development Configuration
 
-## 开发配置
+### Get framework_weixin_package.tar.gz
 
-### 获取 framework_weixin_package.tar.gz
+* BlueKing Document Center > Download Resources > [Tool Download](../../../downloads/7.0/Index.md)
 
-* 蓝鲸文档中心 > 下载资源 > [工具下载](../../../downloads/7.0/Index.md)
+> Unzip framework_weixin_package.tar.gz
 
-> framework_weixin_package.tar.gz 解压
+* Ensure that the development framework version is 1.1.0 and above
+    - Copy the weixin directory to the project directory
+    - Copy the weixin directory in static/weixin to the project static directory
+    - Copy the weixin directory in templates/weixin to the project templates directory
+* Modify the project /weixin/core/settings.py configuration
+    - USE_WEIXIN is True
+    - WEIXIN_APP_ID is the AppID of the applied WeChat public account
+    - WEIXIN_APP_SECRET is the AppSecret of the applied public account
+    - WEIXIN_APP_EXTERNAL_HOST is the applied application external network domain name
 
-* 确保开发框架版本为 1.1.0 及以上
-    - 将 weixin 目录复制于工程目录下
-    - 将 static/weixin 的 weixin 目录复制到工程 static 目录下
-    - 将 templates/weixin 的 weixin 目录复制到工程 templates 目录下
-* 修改工程 /weixin/core/settings.py 配置
-    - USE_WEIXIN 为 True
-    - WEIXIN_APP_ID 为申请的微信公众号的 AppID
-    - WEIXIN_APP_SECRET 为申请的公众号的 AppSecret
-    - WEIXIN_APP_EXTERNAL_HOST 为 申请的应用外网域名
+### Modify the project configuration file
 
-### 修改工程配置文件
-
-* 修改 conf/default.py 文件
+* Modify the conf/default.py file
 
 ```python
-# 中间件 （MIDDLEWARE_CLASSES变量）添加
-    # 添加到最前面
+# Middleware (MIDDLEWARE_CLASSES variable) added
+    # Add to front
     'weixin.core.middlewares.WeixinProxyPatchMiddleware',
-    # 正常追加到后面即可
+    # Just append it normally
     'weixin.core.middlewares.WeixinAuthenticationMiddleware',
     'weixin.core.middlewares.WeixinLoginMiddleware',
-# INSTALLED_APPS 添加
+# INSTALLED_APPS add
     'weixin.core',
     'weixin',
-# TEMPLATES （OPTIONS.context_processors）添加 'weixin.core.context_processors.basic'
+# TEMPLATES （OPTIONS.context_processors）add 'weixin.core.context_processors.basic'
     TEMPLATES = [
         {
             ...
@@ -57,7 +56,7 @@
                     # the context to the templates
                     'django.contrib.auth.context_processors.auth',
                     ...
-                    # => 微信端可用的mako上下文变量
+                    # => Mako context variables available on WeChat
                     'weixin.core.context_processors.basic'
                 ],
             },
@@ -66,46 +65,46 @@
 
 ```
 
-* 修改 urls.py 文件
+* Modify the urls.py file
 
 ```python
-# urlpatterns 添加
+# urlpatterns add
     url(r'^weixin/login/', include('weixin.core.urls')),
     url(r'^weixin/', include('weixin.urls')),
 ```
 
-## 蓝鲸应用
+## BlueKing Application
 
-* 部署蓝鲸应用
+* Deploy BlueKing Application
 
-## 运维配置
+## Operation and Maintenance Configuration
 
-* 需要确保应用服务器能访问到微信 API （可以只设置微信 API 的代理）
-    - 微信提供的 API 协议均为 https
-    - 域名为 api.weixin.qq.com
-* 反向代理，将应用外网域名的部分路径指向内网蓝鲸应用
-    - 为了保证安全，必须只反方向代理部分路径
-    - 应用正式环境反向代理：/o/{bk_app_id}/weixin/和/o/{bk_app_id}/static/weixin/
-    - 应用测试环境反向代理：/t/{bk_app_id}/weixin/和/t/{bk_app_id}/static/weixin/
-    - header 必需配置 X-Forwarded-Weixin-Host 为应用外网域名，Host 为蓝鲸内网域名
-    - nginx 反向代理示例：
+* You need to ensure that the application server can access the WeChat API (you can only set up a proxy for the WeChat API)
+    - The API protocol provided by WeChat is https
+    - The domain name is api.weixin.qq.com
+* Reverse proxy, point part of the path of the application's external domain name to the internal BlueKing application
+    - To ensure security, only part of the path must be proxyed in the reverse direction
+    - Reverse proxy for the application's formal environment: /o/{bk_app_id}/weixin/ and /o/{bk_app_id}/static/weixin/
+    - Reverse proxy for the application's test environment: /t/{bk_app_id}/weixin/ and /t/{bk_app_id}/static/weixin/
+    - The header must be configured with X-Forwarded-Weixin-Host as the application's external domain name, and Host as the BlueKing internal domain name
+    - Nginx reverse proxy example:
 
 ```json
 server {
         listen              443；
-        server_name        paas.external.bking.com; # 填写应用外网域名
+        server_name        paas.external.bking.com;# Fill in the application external domain name
 
         # https相关配置
         ssl                 on;
-        ssl_certificate     demo.crt; # 配置对应crt
-        ssl_certificate_key demo.key; # 配置对应key
+        ssl_certificate     demo.crt; #Configure the corresponding crt
+        ssl_certificate_key demo.key; #Configure the corresponding key
         ssl_session_timeout  10m;
         ssl_session_cache shared:SSL:1m;
-        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置
-        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #Configure according to this protocol
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#Configure according to this suite
         ssl_prefer_server_ciphers on;
 
-        # 假设bk_app_id = test_app，且配置应用的正式环境
+        # Assume that bk_app_id = test_app and configure the formal environment of the application
         location ^~ /o/test_app/weixin/ {
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header X-Real-IP $remote_addr;
@@ -126,39 +125,40 @@ server {
             proxy_read_timeout 180;
             proxy_pass http://paas.bking.com;
         }
-        # 其他不做任何代理，直接返回404即可
+        # Otherwise, no proxy is used and 404 is returned directly.
         location / {
             return 404;
         }
 }
 ```
-## 测试是否 OK
+## Test if it is OK
 
-* 直接手机微信访问  `https://外网域名/o/{bk_app_id}/weixin/`
+* Directly access `https://external domain name/o/{bk_app_id}/weixin/` with WeChat on your mobile phone
 
-## 基于微信公众号的移动端开发说明
+## Mobile development instructions based on WeChat official account
 
-> 测试 OK 后，接下来的开发与 PC 端的开发基本一致
+> After the test is OK, the subsequent development is basically the same as the development on the PC side
 
-* 微信端 CGI 请求都得以 `/o/{bk_app_id}/weixin/`（测试环境为：/o/{bk_app_id}/weixin/），若 Mako 模板渲染的页面，可直接使用 ${WEIXIN_SITE_URL}
-* 微信端本地静态文件请求都得以 `/o/{bk_app_id}/static/weixin/`（测试环境为：/o/{bk_app_id}/static/weixin/），若 Mako 模板渲染的页面，可直接使用 ${WEIXIN_STATIC_URL}
-* 若对于不需要微信登录认证的请求，可直接在对应的 View 函数添加装饰器 weixin_login_exempt（from weixin.core.decorators import weixin_login_exempt）
-* 微信公众号登录的用户都存储在 BkWeixinUser 模型（from weixin.core.models import BkWeixinUser）中，即数据库表 bk_weixin_user
-* 集成的微信登录默认是静默登录，只能获取用户 openid，其他信息需要设置为授权登录，可配置 weixin/core/settings.py 文件中的 WEIXIN_SCOPE 为 snsapi_userinfo
-* view 函数中获取登录的用户方式：request.weixin_user 即为登录的用户的 BkWeixinUser 对象，具体 weixin_user 的属性等的可以查看 weixin/core/models.py 中的 BkWeixinUser
+* WeChat CGI requests can be `/o/{bk_app_id}/weixin/` (test environment: /o/{bk_app_id}/weixin/), if the page is rendered by Mako template, you can directly use ${WEIXIN_SITE_URL}
+* WeChat local static file requests can be `/o/{bk_app_id}/static/weixin/` (test environment: /o/{bk_app_id}/static/weixin/), if the page is rendered by Mako template, you can directly use ${WEIXIN_STATIC_URL}
+* If the request does not require WeChat login authentication, you can directly add a decorator to the corresponding View function weixin_login_exempt（from weixin.core.decorators import weixin_login_exempt）
+* Users logged in to WeChat official accounts are stored in the BkWeixinUser model（from weixin.core.models import BkWeixinUser）, that is, the database table bk_weixin_user
+* The integrated WeChat login is silent login by default, and can only obtain the user openid. Other information needs to be set to authorized login. You can configure WEIXIN_SCOPE in the weixin/core/settings.py file to snsapi_userinfo
+* How to get the logged-in user in the view function: request.weixin_user is the BkWeixinUser object of the logged-in user. The specific properties of weixin_user can be viewed in BkWeixinUser in weixin/core/models.py
 
-## 开箱即用的蓝鲸 MagicBox 组件（移动端版本）
+## Out-of-the-box BlueKing MagicBox component (mobile version)
 
-* [Magic Box 移动端组件库](https://magicbox.bk.tencent.com/#mobile/show)
+* [Magic Box Mobile component library](https://magicbox.bk.tencent.com/#mobile/show)
 
-## 小程序开发入门
+## Getting started with mini program development
 
-* 教程地址：[https://developers.weixin.qq.com/miniprogram/dev/index.html](https://developers.weixin.qq.com/miniprogram/dev/index.html)
-* 测试号： [https://developers.weixin.qq.com/weloginpage](https://developers.weixin.qq.com/weloginpage)
+* Tutorial address: [https://developers.weixin.qq.com/miniprogram/dev/index.html](https://developers.weixin.qq.com/miniprogram/dev/index.html)
 
-## 小程序开发
+* Test number: [https://developers.weixin.qq.com/weloginpage](https://developers.weixin.qq.com/weloginpage)
 
-* 一行代码制作将 H5 变为小程序
+## Mini program development
+
+* One line of code to turn H5 into a mini program
 
 ```html
 <view>

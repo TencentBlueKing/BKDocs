@@ -1,149 +1,148 @@
-# 蓝鲸前端开发脚手架（BKUI-CLI）简介
+# Introduction to BlueKing Front-end Development Scaffolding (BKUI-CLI)
 
-欢迎使用蓝鲸前端开发脚手架 [BKUI-CLI](https://www.npmjs.com/package/@blueking/cli)，它是基于 [Vue.js](https://vuejs.org/) 研发的一键构建蓝鲸体系前端工程的脚手架工具，包括了基础工程化能力（技术选型、结构搭建、逻辑划分、构建性能优化）、基础 mock 服务、蓝鲸前端/设计规范（代码管理、风格统一）、[bk-magic-vue 组件库](https://magicbox.bk.tencent.com/components_vue/2.0/example/index.html#/)、蓝鲸前端通用逻辑、最佳实践以及开发示例等等，可以帮助您基于前后端分离协作的模式更方便、更快速的构建蓝鲸 SaaS。
+Welcome to use BlueKing Front-end Development Scaffolding [BKUI-CLI](https://www.npmjs.com/package/@blueking/cli), which is a scaffolding tool for building BlueKing system front-end engineering with one click based on [Vue.js](https://vuejs.org/), including basic engineering capabilities (technology selection, structure construction, logic division, construction performance optimization), basic mock services, BlueKing front-end/design specifications (code management, style unification), [bk-magic-vue component library](https://magicbox.bk.tencent.com/components_vue/2.0/example/index.html#/), BlueKing front-end general logic, best practices and development examples, etc., which can help you build BlueKing SaaS more conveniently and quickly based on the front-end and back-end separation and collaboration model.
 
-在使用蓝鲸前端开发脚手架初始化的工程中，结合了目前最新的技术，[Vue.js 2.x](https://cn.vuejs.org/)、[Vue Router 3.x](https://router.vuejs.org/zh/)、[Vuex 3.x](https://vuex.vuejs.org/zh/guide/)、[webpack 4.32.x](https://webpack.js.org/)、[@babel 7.4.x](https://babeljs.io/) 等等，同时也集成了我们日常开发过程中的最佳实践，包括基本的构建性能优化、mock 请求、常用组件、代码规范、ajax 封装等等，旨在让使用者能够专心致志的开发业务逻辑，无需为工程上其他的事情分心。
+In the project initialized with the BlueKing front-end development scaffolding, the latest technologies are combined, including [Vue.js 2.x](https://cn.vuejs.org/), [Vue Router 3.x](https://router.vuejs.org/zh/), [Vuex 3.x](https://vuex.vuejs.org/zh/guide/), [webpack 4.32.x](https://webpack.js.org/), [@babel 7.4.x](https://babeljs.io/), etc. At the same time, the best practices in our daily development process are integrated, including basic build performance optimization, mock requests, common components, code specifications, ajax encapsulation, etc., aiming to allow users to concentrate on developing business logic without being distracted by other things in the project.
 
-与蓝鲸 SaaS 开发框架结合使用，请参阅 [结合 BKUI 使用指南](../BKUI.md)。
+For use in conjunction with the BlueKing SaaS development framework, please refer to the [Guide to Use with BKUI](../BKUI.md).
 
-## 安装与使用
+## Installation and Usage
 
-### 安装
+### Installation
 
-`BKUI-CLI` 已发布至 [npm](https://www.npmjs.com/package/@blueking/cli)，只需要在任意目录下执行以下命令便可以安装 `BKUI-CLI`。
+`BKUI-CLI` has been published to [npm](https://www.npmjs.com/package/@blueking/cli). You can install `BKUI-CLI` by executing the following command in any directory.
 
 ```bash
 npm install -g @blueking/cli
 ```
 
-### 使用
+### Usage
 
-`BKUI-CLI` 全局安装完毕后，即可输入 `bkui` 全局命令。
+After `BKUI-CLI` is installed globally, you can enter the `bkui` global command.
 
 ```bash
 bkui init test
 ```
 
-### 帮助
+### Help
 
-在 `BKUI-CLI` 的每条命令 `<command>` 后面加上 `-h` 或者 `--help` 参数 `[options]`，会显示当前命令的帮助。
+Add `-h` or `--help` parameter `[options]` after each command `<command>` of `BKUI-CLI` to display the help of the current command.
 
-**接下来我们详细介绍 `BKUI-CLI` 的每条命令以及参数**。
+**Next, we will introduce each command and parameter of `BKUI-CLI` in detail**
 
-## bkui -h 命令
+## bkui -h command
 
-命令行输入 `bkui -h` 或者 `bkui --help` 均会输出 `BKUI-CLI` 的帮助信息。
+Input `bkui -h` or `bkui --help` in the command line will output the help information of `BKUI-CLI`.
 
 ```bash
 $ bkui -h
 $ bkui --help
 ```
 
-## bkui init 命令
+## bkui init command
 
-`bkui init` 是 `BKUI-CLI` 的重要命令之一。通过前面的章节我们知道，任何命令带 `-h` 或 `--help` 参数时，都会输出当前命令的帮助信息。
+`bkui init` is one of the important commands of `BKUI-CLI`. From the previous chapters, we know that any command with `-h` or `--help` parameters will output the help information of the current command.
 
-命令行输入 bkui init <projectName> 会执行生成项目的逻辑
+Entering bkui init <projectName> in the command line will execute the logic of generating the project
 
-`bkui init` 命令执行过程中，会采用交互问答的形式向使用者提出几个问题，获取答案作为初始化项目的参数，最后生成前端项目
+During the execution of the `bkui init` command, several questions will be asked to the user in the form of interactive questions and answers, and the answers will be obtained as parameters for initializing the project, and finally the front-end project will be generated
 
-## 前端本地开发与生产构建
-### 本地开发
-1. 新建 `${ROOT}/.bk.local.env`文件
-2. 填写 BK_LOGIN_URL = '填写登录地址'
-3. 填写 BK_APP_HOST = '127.0.0.0'，注意登录后 cookie 写入的域名
-4. 根目录执行 `npm run dev`
-5. 配置 host，打开 BK_APP_HOST 配置了域名的地址
+## Front-end local development and production build
+### Local development
+1. Create a new `${ROOT}/.bk.local.env` file
+2. Fill in BK_LOGIN_URL = 'Fill in the login address'
+3. Fill in BK_APP_HOST = '127.0.0.0', pay attention to the domain name written to the cookie after login
+4. Execute `npm run dev` in the root directory
+5. Configure the host and open the address where the domain name is configured in BK_APP_HOST
 
-### 生产构建
-根目录执行`npm run build`
+### Production build
+Execute `npm run build` in the root directory
 
-## 前端项目工程介绍
+## Front-end project engineering introduction
 
-### bin 目录
-bin 目录下有 2 个钩子文件，可以在项目在开发者中心构建前后执行
+### bin directory
+There are 2 hook files in the bin directory, which can be executed before and after the project is built in the developer center
 
-### mock-server 目录
-前端框架提供了 mock 服务，可以在 mock-server 编写 mock 服务。
+### mock-server Directory
+The front-end framework provides mock services, which can be written in mock-server.
 
-### paas-server 目录
-该目录使用 express 启动 web 服务。在开发者中心部署后，会使用 paas-server 启动 web 服务。该服务会处理统一登录的逻辑，详见 paas-server -> middleware -> user.js 文件
+### paas-server directory
+This directory uses express to start the web service. After deployment in the developer center, paas-server will be used to start the web service. This service will handle the logic of unified login, see paas-server -> middleware -> user.js file for details
 
-### src 目录
-该目录编写 vue 相关代码，包含了 vue、vue-router、vue-store、pinia、api 等能力，详细编写语法可以参阅官方文档
+### src directory
+This directory writes vue-related code, including vue, vue-router, vue-store, pinia, api and other capabilities. For detailed writing syntax, please refer to the official document
 
-### static 目录
-如果项目中有些资源不参与打包构建，可以放到这个文件下。在项目中使用该文件的时候，使用 `/文件名` 这样的形式。
+### static directory
+If some resources in the project are not involved in the package build, they can be placed in this file. When using this file in the project, use the format of `/file name`.
 
-### types 目录
-ts 项目会有这个目录，这里存放全局相关的 ts 文件
+### types directory
+The ts project will have this directory, where global ts files are stored
 
-### .babelrc 文件
-这里编写 babel 相关配置，一般可以不改动
+### .babelrc file
+Write babel related configuration here, generally do not need to be changed
 
 ### .bk.local.env
-这里编写 dev 模式下的变量，dev 模式下优先级最高。
+Write variables in dev mode here, which has the highest priority in dev mode.
 
 ### .bk.development.env
-这里编写 dev 模式下的变量，优先级仅次于 .bk.local.env 
+Write variables in dev mode here, with priority second only to .bk.local.env
 
 ### .bk.env
-这里编写变量，在所有模式下生效，优先级最低
+Write variables here, which are effective in all modes, with the lowest priority
 
 ### .bk.production.env
-这里编写 production 模式下的变量，优先级高于 .bk.env
+Write variables in production mode here, with priority higher than .bk.env
 
 ### .bk.stag.env
-这里编写 production 模式下的变量，且只在开发者中心的预发布环境有效，优先级高于 .bk.env 和 .bk.production.env
+Write variables in production mode here, and only valid in the pre-release environment of the developer center, with priority higher than .bk.env and .bk.production.env
 
+## Configuration instructions
+Configuration files are written uniformly in the .env file.
+1. The variable name needs to start with `BK_`, and the value in the environment variable can be used in the form of `BK_XXX = $XXX`
+2. Defined variables can be used in the front-end project using `process.env.BK_XXX`
 
-## 配置说明
-配置文件统一在 .env 文件中进行编写。
-1. 变量名需要是`BK_`开头，可以使用 `BK_XXX = $XXX` 的形式使用环境变量中的值
-2. 定义好的变量，就可以在前端工程中使用 `process.env.BK_XXX` 来使用
+### index.html Configuration instructions
 
-### index.html 配置说明
+The BlueKing front-end development scaffolding is used to help us build BlueKing SaaS applications, and it also supports us to build general web single-page applications.
 
-蓝鲸前端开发脚手架是用来帮助我们构建蓝鲸 SaaS 应用的，同时它也支持我们构建一般的 web 单页应用。
-
-html 文件中有几个变量（`SITE_URL`, `BK_STATIC_URL`），配置说明如下：
+There are several variables in the html file (`SITE_URL`, `BK_STATIC_URL`), and the configuration instructions are as follows:
 
 #### SITE_URL
 
-前端使用的 router mode 是 `history`，因此前端路由需要根据这个变量的值来设置**路由的根路径**以及 **ajax 异步请求地址前缀**。
+The router mode used in the front-end is `history`, so the front-end routing needs to set the **root path of the routing** and the **ajax asynchronous request address prefix** according to the value of this variable.
 
-- 在蓝鲸 SaaS 应用和非蓝鲸 SaaS 应用中，SITE_URL 的作用均是**设置路由的根路径**。
+- In both BlueKing SaaS applications and non-BlueKing SaaS applications, the role of SITE_URL is **to set the root path of the routing**.
 
-下面看一个简单的例子理解一下（**假设您部署的蓝鲸对应域名是：http://www.bking.com ，本地开发的地址为 http://local-dev.bking.com**）：
+Let's take a look at a simple example to understand (**Assume that the domain name of the BlueKing you deployed is: http://www.bking.com, and the local development address is http://local-dev.bking.com**):
 
-|             | 生产环境 SITE_URL 配置（index.html）| 生产环境访问地址 | 本地开发 SITE_URL 配置（index-dev.html）| 本地开发访问地址 |
+| | Production environment SITE_URL configuration (index.html) | Production environment access address | Local development SITE_URL configuration (index-dev.html) | Local development access address |
 |-------------|---------------|---------------|---------------|---------------|
-| 蓝鲸 SaaS 应用 | /t/open-v214/（由后端服务注入页面）| http://www.bking.com/t/open-v214/ | /（默认值为：/）| http://local-dev.bking.com |
-| 非蓝鲸 SaaS 应用 | /（蓝鲸前端开发脚手架直接生成，非蓝鲸 SaaS 应用通常不会由后端服务注入页面）| http://www.bking.com | /（默认值为：/）|  http://local-dev.bking.com |
+| BlueKing SaaS application | /t/open-v214/ (page injected by backend service) | http://www.bking.com/t/open-v214/ | / (default value: /) | http://local-dev.bking.com |
+| Non-BlueKing SaaS application | / (BlueKing front-end development scaffolding is directly generated, non-BlueKing SaaS applications are usually not injected by backend services) | http://www.bking.com | / (Default value: /) | http://local-dev.bking.com |
 
-**蓝鲸 SaaS 应用中，我们建议不要修改 `${ROOT}/index.html` 中 `SITE_URL` 的值，生产环境应该由后端注入到页面中。**
+**In BlueKing SaaS applications, we recommend not to modify the value of `SITE_URL` in `${ROOT}/index.html`. The production environment should be injected into the page by the backend. **
 
 #### BK_STATIC_URL
 
-前端需要根据这个值来确定静态资源的路径（包括默认写在 html 上的 lib.bundle.js 以及 webpack 动态 inject 的 js 和 css）
+The front end needs to determine the path of static resources based on this value (including lib.bundle.js written on HTML by default and js and css dynamically injected by webpack)
 
-还是看一个简单的例子（**假设您部署的蓝鲸对应域名是：http://www.bking.com ，本地开发的地址为 http://local-dev.bking.com**）：
+Let's take a look at a simple example (**assuming that the domain name of the BlueKing you deployed is: http://www.bking.com, and the address for local development is http://local-dev.bking.com**):
 
-|             | 生产环境 BK_STATIC_URL 配置（index.html）| 生产环境加载静态资源的路径前缀 | 本地开发 BK_STATIC_URL 配置（index-dev.html）| 本地开发加载静态资源的路径前缀 |
+| | Production environment BK_STATIC_URL configuration (index.html) | Path prefix for loading static resources in the production environment | Local development BK_STATIC_URL configuration (index-dev.html) | Path prefix for loading static resources in local development |
 |-------------|---------------|---------------|---------------|---------------|
-| 蓝鲸 SaaS 应用 | /t/open-v214/static/dist/（由后端服务注入页面）| http://www.bking.com/t/open-v214/static/dist/ | /（默认值为：/）| http://local-dev.bking.com/ |
-| 非蓝鲸 SaaS 应用 | /（蓝鲸前端开发脚手架直接生成，非蓝鲸 SaaS 应用通常不会由后端服务注入页面）| http://www.bking.com/ | / （默认值为：/）| http://local-dev.bking.com/|
+| BlueKing SaaS application | /t/open-v214/static/dist/ (injected into the page by the backend service)| http://www.bking.com/t/open-v214/static/dist/ | / (Default value: /) | http://local-dev.bking.com/ |
+| Non-BlueKing SaaS applications | / (BlueKing front-end development scaffolding is directly generated, non-BlueKing SaaS applications are usually not injected into the page by the backend service) | http://www.bking.com/ | / (Default value: /) | http://local-dev.bking.com/|
 
-**蓝鲸 SaaS 应用中，我们建议不要修改 `${ROOT}/index.html` 中 `BK_STATIC_URL` 的值，生产环境应该由后端注入到页面中。**
+**In BlueKing SaaS applications, we recommend not to modify the value of `BK_STATIC_URL` in `${ROOT}/index.html`. The production environment should be injected into the page by the backend. **
 
-### 组件库按需和全量加载的切换
+### Switch between on-demand and full loading of component libraries
 
-蓝鲸前端开发脚手架集成了我们的 [bk-magic-vue](https://magicbox.bk.tencent.com/components_vue/2.0/example/index.html#/) 组件库。组件库支持按需加载和全量加载，两种方式的写法不同，参见 `${ROOT}/src/common/demand-import.js`（按需加载）和 `${ROOT}/src/common/fully-import.js`（全量加载）。
+The BlueKing front-end development scaffolding integrates our [bk-magic-vue](https://magicbox.bk.tencent.com/components_vue/2.0/example/index.html#/) component library. The component library supports on-demand loading and full loading. The two methods are written differently. See `${ROOT}/src/common/demand-import.js` (on-demand loading) and `${ROOT}/src/common/fully-import.js` (full loading).
 
-我们是在 `${ROOT}/src/common/bkmagic.js` 中切换的，需要全量加载，就引入 `fully-import`，需要按需加载就引入 `demand-import`。
+We switch in `${ROOT}/src/common/bkmagic.js`. If you need full loading, introduce `fully-import`, and if you need on-demand loading, introduce `demand-import`.
 
-## 前端构建配置说明
-可以在 `${ROOT}/bk.config.js` 中编写构建相关的配置，完整配置如下：
+## Front-end build configuration instructions
+You can write build-related configurations in `${ROOT}/bk.config.js`. The complete configuration is as follows:
 ```js
 {
   assetsDir: 'static',
@@ -189,85 +188,85 @@ html 文件中有几个变量（`SITE_URL`, `BK_STATIC_URL`），配置说明如
 }
 ```
 ### assetsDir
-项目使用的静态资源目录名
+The name of the static resource directory used by the project
 
 ### outputAssetsDirName
-构建完输出的静态资源目录名
+The name of the static resource directory output after building
 
 ### outputDir
-构建输出目录
+Build output directory
 
 ### publicPath
-webpack 的 publicPath 配置
+webpack's publicPath configuration
 
 ### host
-本地开发使用的 host
+The host used for local development
 
 ### port
-本地开发使用的 port
+The port used for local development
 
 ### filenameHashing
-构建完的文件是否使用 hash
+Whether to use hash for the built file
 
 ### cache
-是否使用缓存，推荐开启，可极大提升开发效率
+Whether to use cache, it is recommended to enable it, which can greatly improve development efficiency
 
 ### https
-是否启用 https。开启后本地开发可以使用 https，无需额外配置证书
+Whether to enable https. After opening, local development can use https, without additional certificate configuration
 
 ### open
-启动本地开发的时候，是否自动打开浏览器
+When starting local development, whether to automatically open the browser
 
 ### typescript
-是否是 ts 项目
+Is it a ts project
 
 ### tsconfig
-tsconfig 地址
+tsconfig address
 
 ### forkTsChecker
-是否启用独立进程处理类型检查
+Whether to enable independent process type checking
 
 ### bundleAnalysis
-是否对构建文件进行分析
+Whether to analyze the build file
 
 ### parseNodeModules
-是否对 node_modules 里面的文件进行构建
+Whether to build the files in node_modules
 
 ### replaceStatic
-是否替换静态资源地址
+Whether to replace the static resource address
 
 ### parallel
-是否启用多进程构建，可以填 bool 或者 number
+Whether to enable multi-process building, you can fill in bool or number
 
 ### customEnv
-自定义变量文件地址，可以加载自定义变量
+Custom variable file address, you can load custom variables
 
 ### target
-可以填 web、library
+You can fill in web, library
 
 ### libraryTarget
-webpack 的 libraryTarget
+webpack libraryTarget
 
 ### libraryName
-构建 library 的名称
+Build library name
 
 ### splitChunk
-是否自动拆分构建文件
+Whether to automatically split the build file
 
 ### splitCss
-是否将 css 构建到一个独立的文件中
+Whether to build css into a separate file
 
 ### clean
-每次构建前，是否清除目录
+Whether to clear the directory before each build
 
 ### copy
-复制文件配置
+Copy file configuration
 
 ### resource
-html 和 entry 挂载的配置
+Configuration for html and entry mounting
 
 ### configureWebpack
-可以是函数或者对象。这里可以编写除了 loader 或者 plugin 之外的所有配置
+Can be a function or an object. All configurations except loader or plugin can be written here
 
 ### chainWebpack
-这里编写函数，参数是 chain，需要返回修改后的 chain。使用 chain 的形式，修改 webpack 的所有配置
+Write a function here, the parameter is chain, and the modified chain needs to be returned. Use the form of chain to modify all configurations of webpack

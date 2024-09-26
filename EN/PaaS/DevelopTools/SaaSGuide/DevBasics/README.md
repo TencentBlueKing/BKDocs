@@ -1,7 +1,7 @@
-# Python 开发框架简介
+# Introduction to Python Development Framework
 
-Python 开发框架是集成了蓝鲸系统功能，方便开发者可以快速在蓝鲸 PaaS 平台上开发 SaaS 的 Python 框架。
+The Python development framework is a Python framework that integrates the functions of the BlueKing system, allowing developers to quickly develop SaaS on the BlueKing PaaS platform.
 
-该开发框架基于 Django 框架架构，并在此基础上进行扩展，增加蓝鲸系统的特有功能，
+The development framework is based on the Django framework architecture and is extended on this basis to add the unique functions of the BlueKing system,
 
-例如：身份验证、ESB 调用及模板渲染等功能，以便开发者可以更专注于 SaaS 的逻辑开发。
+such as: authentication, ESB calls, and template rendering, so that developers can focus more on the logic development of SaaS.

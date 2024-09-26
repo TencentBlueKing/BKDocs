@@ -36,10 +36,8 @@
 安装完成后，在命令行输入 **python3** 命令验证安装：
 
 ```bash
-Python 3.6.8 (default, Jan  8 2020, 18:10:42)
-[GCC X]
+Python 3.10.5 (main, May 27 2024, 12:04:02) [Clang 15.0.0 (clang-1500.3.9.4)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
->>>
 ```
 
 如果你需要同时开发多个 Python 项目，我们推荐使用 [virtualenv](https://virtualenv.pypa.io/en/stable/) 来进行环境管理。

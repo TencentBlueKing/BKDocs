@@ -1,81 +1,80 @@
-### 方案总体介绍
+### Overall introduction of the solution
 
-为了方便开发者使用利用已有的环境配置，下面的方案利用了 Python 的 virtualenv 模块可以创建多个独立 Python 环境的能力，解决了 Python2 与 Python3 开发环境之间的相互独立的问题。
+In order to facilitate developers to use existing environment configurations, the following solution uses the ability of Python's virtualenv module to create multiple independent Python environments, solving the problem of mutual independence between Python2 and Python3 development environments.
 
-同时，为了降低我们使用 virtualenv 的门槛，方案中也使用了 virtualenvwrapper 模块，方便我们创建、复制和删除各个虚拟环境。
+At the same time, in order to lower the threshold for using virtualenv, the solution also uses the virtualenvwrapper module to facilitate us to create, copy and delete various virtual environments.
 
 ![1543555724_8_w844_h418.png](../assets/python2_3-struct.png)
 
-当然，Python 生态中也有其他的解决方案，各位开发者可以参考使用：
+Of course, there are other solutions in the Python ecosystem, which developers can refer to:
 
 - [pyenv](https://github.com/pyenv/pyenv)
 
 - [pipenv](https://github.com/pypa/pipenv)
 
-### 安装 Python3 & virtualenvwrapper
+### Install Python3 & virtualenvwrapper
 
-- 【MacOS 环境】
+- [MacOS environment]
 
-首先，我们去到 Python 官网下载最新的 Python 安装包：[Python 下载地址](https://www.python.org/downloads/)。
+First, we go to the Python official website to download the latest Python installation package: [Python download address](https://www.python.org/downloads/).
 
-这里强烈建议大家使用安装器(Installer)的方式安装。因为如果使用源码安装时，会遇到 openssl 开发依赖环境及 macOS 系统限制，给你带来各种麻烦。
+It is strongly recommended that you use the installer (Installer) to install. Because if you use the source code to install, you will encounter the openssl development dependency environment and macOS system restrictions, which will bring you various troubles.
 
-- 【Linux 环境】
+- [Linux environment]
 
-建议大家可以使用 Python 的源码包进行安装，这样的好处在于我们可以指定 Python 的安装路径，确保新安装的 Python3 不会影响已有的系统工具，例如 yum 等。
+It is recommended that you use the Python source package for installation. The advantage of this is that we can specify the Python installation path to ensure that the newly installed Python3 will not affect existing system tools, such as yum.
 
-这里，建议各位读者使用 Python 3.6.3 的源码安装，原因是 Python3.7 后对 openssl 的版本会有要求限制，但是公司内网 yum 源提供的 openssl 版本并不能满足要求，会导致安装 Python3.7 时 openssl 模块缺失，从而影响 pip 的使用。
+Here, it is recommended that readers use the Python 3.6.3 source code installation because Python3.7 and later have restrictions on the openssl version, but the openssl version provided by the company's intranet yum source cannot meet the requirements, which will cause the openssl module to be missing when installing Python3.7, thus affecting the use of pip.
 
-源码安装命令如下:
+The source code installation command is as follows:
 
 ```bash
 tar -zxf Python-3.6.3.tgz
 cd Python-3.6.3
-# 自定义配置安装路径为/opt/python36
+# Customize the installation path to /opt/python36
 ./configure --prefix=/opt/python36
-# 编译并安装
+# Compile and install
 make -j 4
 make install
 export PATH=/opt/python36/bin:$PATH
 ```
 
-- 【Windows 环境】
+- 【Windows environment】
 
-Windows 安装的时候需要注意使用自定义的安装路径，可以参考以下视频：[windows 安装说明](https://www.youtube.com/watch?v=V_ACbv4329E)。
+When installing on Windows, you need to use a custom installation path. You can refer to the following video: [Windows installation instructions](https://www.youtube.com/watch?v=V_ACbv4329E).
 
-> 各位读者需要注意，安装后需要修改 PATH 环境变量。
+> Readers should note that you need to modify the PATH environment variable after installation.
 
-- 【virtualevnwrapper 安装】
+- 【virtualevnwrapper installation】
 
-安装完成后，大家可以发现自己本地新增了一个【python3】的命令。当然，不用担心系统自身的 Python2 环境丢掉了，安装器会将这个 Python2 的保留下来。如下图所示：
+After the installation is complete, you can find that a new [python3] command has been added locally. Of course, don't worry about losing the system's own Python2 environment, the installer will keep this Python2. As shown below:
 
 ![1543556228_89_w1440_h628.png](../assets/python2_3-which.png)
 
-接下来，我们需要安装 virtualenvwrapper 来协助我们创建独立的虚拟环境。Windows 用户需要注意安装的是 virtualenvwrapper-win。
+Next, we need to install virtualenvwrapper to help us create an independent virtual environment. Windows users need to note that virtualenvwrapper-win is installed.
 
 ```bash
-# 安装virtualenvwrapper
-# windows用户注意，安装 virtualwrapper-win
+# Install virtualenvwrapper
+# Windows users, install virtualwrapper-win
 $ sudo pip install virtualenvwrapper
 ...
-# 指定虚拟环境放置的目录，可以按需调整
+# Specify the directory where the virtual environment is placed, which can be adjusted as needed
 $ export WORKON_HOME=~/Envs
-# 创建好路径
+# Create a good path
 $ mkdir -p $WORKON_HOME
-# 添加virtualenvwrapper命令及环境准备，建议这个命令可以放置到~/.bash_profile中
+# Add the virtualenvwrapper command and environment preparation. It is recommended that this command be placed in ~/.bash_profile
 $ source /usr/local/bin/virtualenvwrapper.sh
 ```
 
-### 分割环境
+### Split environment
 
-安装后，我们可以先看一下 virtualenv 的帮助菜单，如下图所示：
+After installation, we can first take a look at the help menu of virtualenv, as shown below:
 
 ![1543626174_42_w1780_h1820.png](../assets/python2_3-option.png)
 
--p 这个参数是整个方案实施的关键。我们可以通过这个参数，来指定虚拟环境使用的 Python 解释器路径，而默认情况下，参数使用的是 /usr/bin/python 这个解释器。
+-p This parameter is the key to the implementation of the entire solution. We can use this parameter to specify the Python interpreter path used by the virtual environment. By default, the parameter uses the interpreter /usr/bin/python.
 
-因此，我们可以指定不同的解释器路径，创建 Py2 和 Py3 不同的虚拟环境。操作如下：
-
+Therefore, we can specify different interpreter paths to create different virtual environments for Py2 and Py3. The operation is as follows:
 ```bash
 $ mkvirtualenv test_python2_env
 New python executable in /Users/.virtualenvs/test_python2_env/bin/python
@@ -107,13 +106,12 @@ Python 3.6.6 (v3.6.6:4cf1f54eb7, Jun 26 2018, 19:50:54)
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
+In the above operation, we first created a virtual environment using the default Python interpreter.
 
-上面的操作中，我们首先创建了一个使用默认 Python 解释器的虚拟环境。
+After the creation is complete, we enter Python and observe that the corresponding version is 2.7.x.
 
-创建完成后，我们进入 Python 可以观察到，对应的版本是 2.7.x。
+Next, the author created another virtual environment using the specified Python interpreter path. After the creation is complete, we enter Python and observe that the corresponding version is 3.6.x.
 
-紧接着，笔者再创建了一个使用指定 Python 解释器路径的虚拟环境，创建完成后我们进入 Python 可以观察到，对应的版本是 3.6.x。
+At this point, two independent and non-interfering Py2 and Py3 environments have been created.
 
-至此，两个独立、互不干扰的 Py2 和 Py3 环境创建完成。
-
-如果需要不同的环境切换，使用 workon 命令切换即可。
+If you need to switch between different environments, use the workon command to switch.

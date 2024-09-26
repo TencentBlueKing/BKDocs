@@ -1,21 +1,21 @@
-## 升级总体方案
+## Overall upgrade plan
 
-- 去除 blueapps 包中的 celery 中的依赖
-- 由于 djcelery 仅支持到 celery3x 版本，升级 celery4x 版本，使用 django-celery-beat 和 django-celery-result 包代替 djcelery 功能
-- 升级主要存在的问题在于 celery4x 的时间流转与 celery3x 的不同，导致定时任务和异步任务执行异常，后续章节会详细介绍，[老用户升级](#老用户升级注意事项)和[新用户的使用注意事项](#新用户使用注意事项)
-- celery4x 解决了与 async 关键字的冲突，升级后可以使用 python3.7 及以上版本（目前仅测试到 3.7.4）
+- Remove the dependency of celery in the blueapps package
+- Since djcelery only supports celery3x, upgrade celery4x version and use django-celery-beat and django-celery-result packages to replace djcelery functions
+- The main problem with the upgrade is that the time flow of celery4x is different from that of celery3x, which leads to abnormal execution of scheduled tasks and asynchronous tasks. The subsequent chapters will introduce it in detail. Please refer to the [Old User Upgrade] and [New User Usage Notes] chapters of this article
+- celery4x solves the conflict with the async keyword. After upgrading, you can use python3.7 and above (currently only tested to 3.7.4)
 
-## 升级后配置文件更改
+## Changes to configuration files after upgrade
 
-- 升级后默认`USE_TZ=True`
-- 替换 djcelery 依赖为 django_celery_beat 和 django_celery_results
+- After upgrading, the default `USE_TZ=True`
+- Replace djcelery dependencies with django_celery_beat and django_celery_results
 
-升级前：conf/default.py
+Before upgrading: conf/default.py
 
 ```python 
 
 ...
-# 国际化配置
+# Internationalization Configuration
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)  # noqa
 
 TIME_ZONE = 'Asia/Shanghai'
@@ -39,7 +39,7 @@ if IS_USE_CELERY:
 ```python
 
 ...
-# 国际化配置
+# Internationalization Configuration
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)  # noqa
 
 USE_TZ = True
@@ -58,99 +58,99 @@ if IS_USE_CELERY:
 
 ```
 
-## celery4 新特性
+## New features of celery4
 
-### 系统级别的更新
+### System-level updates
 
-1. 不再对 windows 平台提供支持。windows 平台目前主要发现两个主要的问题，其他的基本功能都是正常的。
+1. No longer support for Windows platform. There are currently two main problems with the Windows platform, and other basic functions are normal.
 
-   - 一个是需要加入 eventlet 才可以使用。
-   - windows 平台下无法同时启动多个 worker，主要原因是启动多个 worker 依赖 resource 这个库，这个库只支持 linux 和 unix 平台。
+- One is that you need to join eventlet to use it.
+- Multiple workers cannot be started at the same time on the Windows platform. The main reason is that starting multiple workers depends on the resource library, which only supports Linux and Unix platforms.
 
-2. 不再支持 Python 2.6 以及 python 3.3
+2. No longer support Python 2.6 and Python 3.3
 
-3. 不再支持 Jpython。
+3. No longer support Jpython.
 
-4. **celery4.x 支持的最低 Django 版本为 1.8,官方建议从 1.9 开始。**
+4. **The minimum Django version supported by celery4.x is 1.8, and the official recommendation is to start from 1.9. **
 
-5. celery4 将会是最后一个支持 python2 的版本，celery5 最低支持的 python 版本为 python3.5
+5. celery4 will be the last version to support python2, and the minimum supported python version of celery5 is python3.5
 
-   ### 功能级别的更新
+### Functional level update
 
-6. 使用了全新的设置名
+6. New setting names are used
 
-   ，具体表现在 celery4.x 版本的配置缩写全都为小写，但是为了考虑到对于 celery3.x 版本的支持，所以大写的配置名仍然是可以使用的.例如:
+Specifically, the configuration abbreviations of celery4.x are all lowercase, but in order to consider the support for celery3.x, the uppercase configuration names can still be used. For example:
 
-   ```bash
-   CELERY_TIMEZONE = 'Asia/Shanghai' # 默认时区是UTC 旧
-   timezone = 'Asia/Shanghai' #默认时区是UTC 新
-   ```
+```bash
+CELERY_TIMEZONE = 'Asia/Shanghai' # The default time zone is UTC old
+timezone = 'Asia/Shanghai' # The default time zone is UTC new
+```
 
-   关于 celery 大小写的升级，celery 提供了全新的命令来批量去迁移配置：
+Regarding the upgrade of celery uppercase and lowercase, celery provides a new command to batch migrate configurations:
 
-   ```bash
-   celery upgrade settings [filename]
-   ```
+```bash
+celery upgrade settings [filename]
+```
 
-   具体的映射内容官方文档中有说明：
-   https://docs.celeryproject.org/en/4.0/userguide/configuration.html#conf-old-settings-map
+The specific mapping content is described in the official document:
+https://docs.celeryproject.org/en/4.0/userguide/configuration.html#conf-old-settings-map
 
-7. json 现在作为默认的序列化器。
+7. json is now the default serializer.
 
-   日常使用会出现使用 json 无法序列化的情况，如果仍然需要使用 pickle 作为序列化器，需要增加如下配置:
+In daily use, json may not be serialized. If you still need to use pickle as a serializer, you need to add the following configuration:
 
-   ```python
-   task_serializer = 'pickle'
-   result_serializer = 'pickle'
-   accept_content = {'pickle'}
-   ```
+```python
+task_serializer = 'pickle'
+result_serializer = 'pickle'
+accept_content = {'pickle'}
+```
 
-8. 使用 Task 作为基类的任务不会被自动注册了
+8. Tasks using Task as the base class will not be automatically registered
 
-   ，新版本的 celery4.x 需要使用装饰器装饰 Task 才会被自动注册。
+. The new version of celery4.x needs to use a decorator to decorate Task before it will be automatically registered.
 
-   ```python
-   # 创建普通任务
-   @app.task()
-   def add(x, y):
-       print("计算2个值的和: %s %s" % (x, y))
-       return x + y
-   ```
+```python
+# Create a normal task
+@app.task()
+def add(x, y):
+print("Calculate the sum of 2 values: %s %s" % (x, y))
+return x + y
+```
 
-9. **优先级发生了改变，现在优先级的顺序为 0-9 依次升高**。主要是为了与 AMQP 中的工作方式保持一致。
+9. **Priorities have changed, now the order of priorities is 0-9 in ascending order**. Mainly to be consistent with the way things work in AMQP.
 
-10. **命令行参数发生了改变**。celeryd -> celery worker , celerybeat-> celery beat,celeryd-multi-> celery multi
+10. **Command line parameters have changed**. celeryd -> celery worker, celerybeat-> celery beat, celeryd-multi-> celery multi
 
-11. Auto-discover 目前支持 Django app 配置
+11. Auto-discover now supports Django app configuration
 
-12. 支持 RabbitMQ 优先级.
+12. Support for RabbitMQ priorities.
 
-13. 新增了 broker_read_url 和 broker_write_url 设置选项，这样就可以为用于消费/发布的连接提供单独的代理 url。
+13. Added broker_read_url and broker_write_url settings so that separate broker urls can be provided for connections used for consumption/publishing.
 
-14. 增加了对 RabbitMQ 扩展的支持.
+14. Added support for RabbitMQ extensions.
 
-    ```python
-    # 以浮动秒为单位设置队列过期时间。
-    Queue(expires=20.0)
-    # 设置队列消息实时浮动秒。
-    Queue(message_ttl=30.0)
-    # 将队列最大长度（消息数）设置为 int。
-    Queue(max_length=1000)
-    # 将队列最大长度（消息大小总计（以字节为单位）设置为 int。
-    Queue(max_length_bytes=1000)
-    # 将队列声明为基于消息字段路由消息的优先级队列。priority
-    Queue(max_priority=10)
-    ```
+```python
+# Set the queue expiration time in floating seconds.
+Queue(expires=20.0)
+# Set the queue message real-time floating seconds.
+Queue(message_ttl=30.0)
+# Set the queue maximum length (number of messages) to int.
+Queue(max_length=1000)
+# Set the queue maximum length (total message size in bytes) to int.
+Queue(max_length_bytes=1000)
+# Declare the queue as a priority queue that routes messages based on message fields. priority
+Queue(max_priority=10)
+```
 
-15. 对`Amazon SQS transport` `Apache QPid transport` 提供了支持。
+15. Support for `Amazon SQS transport` `Apache QPid transport`.
 
-16. 对 redis 哨兵提供了支持。
+16. Support for redis sentinel.
 
-    ```bash
-    sentinel://0.0.0.0:26379;sentinel://0.0.0.0:26380/...
-    ```
+```bash
+sentinel://0.0.0.0:26379;sentinel://0.0.0.0:26380/...
+```
 
-17. 新的定时任务写法。
+17. New way to write scheduled tasks.
 
     ```python
     from blueapps.core.celery.celery import app
@@ -176,7 +176,7 @@ if IS_USE_CELERY:
         print(arg)
     ```
 
-18. AsyncResult 新增回调方法 then ，需要结合 gevent 模块使用。
+18. AsyncResult adds a new callback method then, which needs to be used in conjunction with the gevent module.
 
     ```python
     import gevent.monkey
@@ -196,115 +196,114 @@ if IS_USE_CELERY:
     
     time.sleep(3)  # run gevent event loop for a while.
     ```
+19. Support redis ssl connection method
 
-19. 支持 redis ssl 链接方式
+### No longer supported parts
 
-### 不再支持的部分
+1. Removed celery.task.http, emails.app.mail_admins and celery.contrib.batches
 
-1. 移除了 celery.task.http，emails.app.mail_admins 和 celery.contrib.batches
-2. 不再支持使用 Django ORM, SQLAlchemy, CouchDB, IronMQ, Beanstalk 作为 broker。
-3. **不再支持 rabbitMQ 作为 backend 储存结果。**
+2. No longer support using Django ORM, SQLAlchemy, CouchDB, IronMQ, Beanstalk as broker.
 
-## 老用户升级注意事项
+3. **No longer support rabbitMQ as backend to store results. **
 
-- `USE_TZ=False`的老用户升级后，使用 MysSQL backend 时，会存在 DB 中无法写入带有时区的配置内容，具体报错为`ValueError: MySQL backend does not support timezone-aware datetimes when USE_TZ is False`
+## Notes for old users to upgrade
 
-  解决方案：
+- After upgrading, old users with `USE_TZ=False` will not be able to write configuration content with time zone in DB when using MysSQL backend. The specific error is `ValueError: MySQL backend does not support timezone-aware datetimes when USE_TZ is False`
 
-  - 方案 1（推荐）：在 config/default.py 文件中添加`USE_TZ = True`开启 django 时区
-  - 方案 2：在 config/default.py 中添加`DJANGO_CELERY_BEAT_TZ_AWARE = False`关闭 celery 时区感知
+Solution:
 
-- Windows 老用户来说，celery4.4 已经不支持 Windows 平台，无法启动多 worker，只能通过`-p eventlet`启动单 worker，evenlet 包需通过 pip 安装后使用
+- Solution 1 (recommended): Add `USE_TZ = True` to the config/default.py file to enable Django time zone
 
-  ```python
-  # eventlet安装命令
-  pip install eventlet==0.26.1
-  # windows用户启动worker命令
-  celery -A blueapps.core.celery worker -l info -P eventlet
-  ```
+- Solution 2: Add `DJANGO_CELERY_BEAT_TZ_AWARE = ​​False` to config/default.py to disable Celery time zone awareness
 
-- djcelery 不支持 celery4.4，升级后通过 django-celery-beat 和 django-celery-result 代替 djcelery 的功能，因此 djcelery 提供的 celery 启动命令已经不支持，新的 beat，worker 启动命令为
+- For old Windows users, Celery 4.4 no longer supports Windows platform and cannot start multiple workers. You can only start a single worker through `-p eventlet`. The evenlet package needs to be installed through pip before use
 
-  ```python
-  # beat启动命令
-  celery -A blueapps.core.celery beat -l info
-  # worker启动命令，windows用户请加上 -P eventlet参数
-  celery -A blueapps.core.celery worker -l info 
-  ```
-  
-  > 注意：这里`-A blueapps.core.celery`用于指定使用开发框架内部封装好的 celery app，可用于加载/conf/default.py 中的配置等功能，如果配置使用其他 app，会导致无法加载配置及 task 的自动发现
+```python
+# eventlet installation command
+pip install eventlet==0.26.1
+# Windows user start worker command
+celery -A blueapps.core.celery worker -l info -P eventlet
+```
 
-### 升级后异步任务需要修改的配置
+- djcelery does not support celery4.4. After upgrading, django-celery-beat and django-celery-result are used to replace the functions of djcelery. Therefore, the celery startup command provided by djcelery is no longer supported. The new beat and worker startup commands are
 
-- `T.delay(arg, kwarg=value)`配置：升级后无影响
+```python
+# beat startup command
+celery -A blueapps.core.celery beat -l info
+# worker startup command. Windows users should add the -P eventlet parameter
+celery -A blueapps.core.celery worker -l info
+```
 
-- `apply_async`中的`eta`参数中使用`datetime.datetime.now()`配置的异步任务，由于没有时区在新版本中会视作 UTC 时间执行，同理`datetime()`生成的时间对象如果没有时区信息，也会被当作 UTC 时间执行
+> Note: Here `-A blueapps.core.celery` is used to specify the use of the celery app encapsulated inside the development framework. It can be used to load the configuration in /conf/default.py and other functions. If other apps are used in the configuration, the configuration cannot be loaded and the task cannot be automatically discovered
 
-  例如，所在时区为 Asia/Shanghai，当前时间为 12:00+0800，会被当作成 12:00+00:00 执行，即延迟 8 小时候执行
-  解决方案：
+### Configurations that need to be modified for asynchronous tasks after upgrading
 
-  - 使用`django.utils.timezone.now()`代替`datetime.datetime.now()`获取当前时间
+- `T.delay(arg, kwarg=value)` configuration: no impact after upgrading
 
-  - 使用`django.utils.timezone.make_aware()`使得`datetime`生成时间对象携带时区信息
+- Asynchronous tasks configured with `datetime.datetime.now()` in the `eta` parameter in `apply_async` will be treated as UTC time in the new version because there is no time zone. Similarly, if the time object generated by `datetime()` has no time zone information, it will also be treated as UTC time
 
-  ```python
-  # 配置用户当前时间12:00+08:00，延迟当前时间2s执行，
-  # 错误配置：由于没有时区，使用UTC时区，实际会到12:00+00：00，延迟2s执行
-  T.apply_async(eta=datetime.datetime.now() + timedelta(seconds=2))
-  # 正确配置：
-  T.apply_async(eta=django.utils.timezone.now() + timedelta(seconds=2))
-  
-  
-  # 配置用户2020年9月21日12:02+08:00执行
-  # 错误配置：由于没有时区，使用UTC时区，实际会在2020年9月21日12:02+00:00执行
-  T.apply_async(eta=datetime.datetime(2020, 9, 21, 12, 0) + timedelta(seconds=2))
-  # 正确配置：
-  T.apply_async(eta=django.utils.timezone.make_aware(datetime.datetime(2020, 9, 16, 17, 38)) + timedelta(seconds=2))
-  ```
+For example, if the time zone is Asia/Shanghai and the current time is 12:00+0800, it will be treated as 12:00+00:00, that is, delayed by 8 hours
+Solution:
 
-### 定时任务配置
+- Use `django.utils.timezone.now()` instead of `datetime.datetime.now()` to get the current time
 
-- 使用`crontab`配置的定时任务，由于没有时区，会按照`CELERY_TIMEZONE`配置的时区（默认配置 UTC）指定定时任务，
+- Use `django.utils.timezone.make_aware()` to make the time object generated by `datetime` carry the time zone information
 
-  解决方案：使用`TzAwareCrontab`配置，添加`tz=timezone.get_current_timezone()`参数，即可以用户所在时区执行定时任务
+```python
+# Configure the user's current time to 12:00+08:00, delay the current time by 2s,
+# Wrong configuration: Since there is no time zone, use the UTC time zone, the actual time will be 12:00+00:00, and the execution will be delayed by 2s
+T.apply_async(eta=datetime.datetime.now() + timedelta(seconds=2))
+# Correct configuration:
+T.apply_async(eta=django.utils.timezone.now() + timedelta(seconds=2))
 
-  ```python
-  from celery.task import periodic_task
-  from django.utils import timezone
-  from celery.schedules import crontab
-  from django_celery_beat.tzcrontab import TzAwareCrontab
-  
-  # 配置用户所在时区每天10:00执行定时任务
-  # 错误配置：由于没有配置定时任务时区，使用UTC时区，实际会在10:00+00:00执行
-  @periodic_task(run_every=celery.schedule.crontab(minute="0", hour="10",tz=timezone.get_current_timezone()))
-  def crontab_timezone():
-      logger.info("test timezone")
-      return True
-  
-  # 正确配置
-  @periodic_task(run_every=django_celery_beat.tzcrontab.TzAwareCrontab(minute="0", hour="10",tz=timezone.get_current_timezone()))
-  def crontab_timezone():
-      logger.info("test timezone")
-      return True
-  ```
+# Configure the user to execute at 12:02+08:00 on September 21, 2020
+# Wrong configuration: Since there is no time zone, use the UTC time zone, the actual execution will be at 12:02+00:00 on September 21, 2020
+T.apply_async(eta=datetime.datetime(2020, 9, 21, 12, 0) + timedelta(seconds=2))
+# Correct configuration:
+T.apply_async(eta=django.utils.timezone.make_aware(datetime.datetime(2020, 9, 16, 17, 38)) + timedelta(seconds=2))
+```
 
-- 升级后定时任务`CrontabSchedule`表新增`timezone`字段，创建定时任务时，可以通过指定`timezone`字段的时区来配置定时任务执行所在的时区
+### Scheduled task configuration
 
-  
-  示例代码：home_application/celery_utils.py
-  
-  ```python
-  from django.utils import timezone
-  from django_celery_beat.models import CrontabSchedule, PeriodicTask
-  # 用户实时添加定时任务
+- Scheduled tasks configured using `crontab`, since there is no time zone, will be specified according to the time zone configured by `CELERY_TIMEZONE` (default configuration UTC),
+
+Solution: Use `TzAwareCrontab` configuration, add the `tz=timezone.get_current_timezone()` parameter, that is, the scheduled task can be executed in the user's time zone
+
+```python
+from celery.task import periodic_task
+from django.utils import timezone
+from celery.schedules import crontab
+from django_celery_beat.tzcrontab import TzAwareCrontab
+
+# Configure the user's time zone to execute the scheduled task at 10:00 every day
+# Wrong configuration: Since the scheduled task time zone is not configured, the UTC time zone is used, and it will actually be executed at 10:00+00:00
+@periodic_task(run_every=celery.schedule.crontab(minute="0", hour="10",tz=timezone.get_current_timezone()))
+def crontab_timezone():
+logger.info("test timezone")
+return True
+
+# Correct configuration
+@periodic_task(run_every=django_celery_beat.tzcrontab.TzAwareCrontab(minute="0", hour="10",tz=timezone.get_current_timezone()))
+def crontab_timezone():
+logger.info("test timezone")
+return True
+```
+- After the upgrade, the `CrontabSchedule` table of scheduled tasks adds a `timezone` field. When creating a scheduled task, you can configure the time zone where the scheduled task is executed by specifying the time zone of the `timezone` field
+
+Sample code: home_application/celery_utils.py
+
+```python
+from django.utils import timezone
+from django_celery_beat.models import CrontabSchedule, PeriodicTask
+# Users add scheduled tasks in real time
   def add_period_task(task, name=None, minute='*', hour='*',
                       day_of_week='*', day_of_month='*',
                       month_of_year='*', args="[]", kwargs="{}", tz=None):
       """
-      @summary: 添加一个周期任务
-      @param task: 该task任务的模块路径名, 例如celery_sample.crontab_task
-      @param name: 用户定义的任务名称, 具有唯一性
-      @note: PeriodicTask有很多参数可以设置，这里只提供简单常用的
+      @summary: Add a periodic task
+      @param task: The module path name of the task, for example, celery_sample.crontab_task
+      @param name: User-defined task name, unique
+      @note: PeriodicTask has many parameters that can be set. Here we only provide simple and commonly used
       """
       cron_param = {
           'minute': minute,
@@ -334,13 +333,13 @@ if IS_USE_CELERY:
       else:
           return True, ''
   
-  # 用户通过定时任务id编辑定时任务
+  # Users edit scheduled tasks by scheduled task ID
   def edit_period_task_by_id(task_id, minute='*', hour='*',
                              day_of_week='*', day_of_month='*',
                              month_of_year='*', args="[]", kwargs="{}", tz=None):
       """
-      @summary: 更新一个周期任务
-      @param name: 用户定义的任务名称, 具有唯一性
+      @summary:Update a periodic task
+      @param name: User-defined task name, unique
       """
       try:
           period_task = PeriodicTask.objects.get(id=task_id)
@@ -372,7 +371,7 @@ if IS_USE_CELERY:
   
   def save_task(request):
       """
-      创建/编辑周期性任务 并 运行
+      Create/Edit a periodic task and run it
       """
       tz = request.POST.get('tz')
       if tz:
@@ -420,116 +419,113 @@ if IS_USE_CELERY:
       return JsonResponse({'result': res, 'message': msg})
   
   ```
+### DB data migration
 
-### DB 数据迁移
+Note:
 
-注意：
+- Since djcelery is deprecated after the upgrade and replaced by django-celery-beat and django-celery-results, data table migration is required
+- Tables that cannot be migrated after the upgrade
+- The TaskState table in the djcelery package is only used to record the task status of tasks and does not affect the execution of tasks. Since the table structure in the django-celery-beat package has changed too much, it cannot be migrated
+- The WorkerState table in the djcelery package is used to record the celery worker status and is removed in the django-celery-beat package
+- The migration command should be executed after the celery4, django-celery-beat, and django-celery-results packages are installed and configured, and the migrate command is executed, for example, configured in bin/postcompile
+- Before migration, the target database will be checked to see if it is empty. If it is not empty, the migration fails
+- If it is a migration with time zone, the old The crontab configuration is still time without time zone, such as `crontab(minute="57", hour="10")`. After the beat is restarted, the timezone in the crontab table will be refreshed with the time zone configured by `CELERY_TIMEZONE`, which may cause time zone execution problems for scheduled tasks. Therefore, crontab needs to be modified to TzAwareCrontab. For example, see the [Scheduled Task Configuration] section of this article for sample code
 
-- 由于升级后 djcelery 被废弃，使用 django-celery-beat 和 django-celery-results 代替，因此需要数据表迁移
-- 升级后无法迁移的表说明
-  - djcelery 包中 TaskState 表仅用于记录 tasks 任务状态的，不影响 task 任务的执行，由于 django-celery-beat 包中该表结构变动过大，因此无法迁移
-  - djcelery 包中 WorkerState 表用于记录 celery worker 状态，在 django-celery-beat 包中被移除
-- 迁移命令的执行时机应该在 celery4，django-celery-beat，django-celery-results 包安装并配置好，并且执行 migrate 命令之后，例如，配置到 bin/postcompile 中
-- 迁移前会检查目标数据库是否为空，不为空则迁移失败
-- 如果是带时区迁移，旧的 crontab 配置依然为无时区时间，如`crontab(minute="57", hour="10")`，beat 重启后会以`CELERY_TIMEZONE`配置的时区刷新 crontab 表中的 timezone，可能会导致定时任务时区执行问题，因此需要修改 crontab 为 TzAwareCrontab，示例代码[见定时任务配置小节](#定时任务配置)
-
-
-迁移命令
+Migration command
 
 ```python
-python manage.py migrate_from_djcelery 
-# 可选参数: -tz  指定之前celery运行的时区，不指定默认使用UTC时区 例如：-tz Asia/Shanghai
+python manage.py migrate_from_djcelery
+# Optional parameter: -tz specifies the time zone of the previous celery operation. If it is not specified, the UTC time zone is used by default. For example: -tz Asia/Shanghai
 ```
 
-**用户注意**，请使用如下 migrations 文件在迁移线上数据库
+**User Note**, please use the following migrations file to migrate the online database
 
-使用方法：
+How to use:
 
-1. 将下面文件放到任意 app 的 migrations 文件夹下，如：home_application/migrations/
-2. 迁移命令：执行`python manage.py migrate`应用该 migration 文件即可
-3. 通过第 11 行 handle 函数的 tz 参数指定指定之前 celery 运行的时区
+1. Put the following file in the migrations folder of any app, such as: home_application/migrations/
+
+2. Migration command: execute `python manage.py migrate` to apply the migration file
+
+3. Use tz in the handle function on line 11 Parameter specifies the time zone of the previous celery run
 
 ```python
-# migrations文件
+# migrations file
 # -*- coding: utf-8 -*-
 from django.db import migrations
 
 from blueapps.contrib.bk_commands.management.commands import migrate_from_djcelery
 
-
 def migrate_db_from_djcelery(*arg, **kwargs):
-    migrate_command = migrate_from_djcelery.Command()
-    #修改tz指定时区参数
-    migrate_command.handle(tz='Asia/Shanghai')
-
+migrate_command = migrate_from_djcelery.Command()
+#Modify the tz parameter to specify the time zone
+migrate_command.handle(tz='Asia/Shanghai')
 
 class Migration(migrations.Migration):
-    # dependencies中填写最后一个执行的migrations
-    dependencies = []
+# Fill in the last executed migrations in dependencies
+dependencies = []
 
-    operations = [
-        migrations.RunPython(migrate_db_from_djcelery),
-    ]
+operations = [
+migrations.RunPython(migrate_db_from_djcelery),
+]
 ```
 
-## 新用户使用注意事项
+## Notes for new users
 
-- 默认的时区配置
+- Default time zone configuration
 
-  ```python
-  # default.py
-  TIME_ZONE = 'Asia/Shanghai'
-  USE_TZ=True
-  CELERY_ENABLE_UTC = False
-  ```
+```python
+# default.py
+TIME_ZONE = 'Asia/Shanghai'
+USE_TZ=True
+CELERY_ENABLE_UTC = False
+```
 
-- beat 和 worker 启动命令
+- Beat and worker startup commands
 
-  ```python
-  # beat启动命令
-  celery -A blueapps.core.celery beat -l info
-  # worker启动命令，windows用户请加上 -P eventlet参数
-  celery -A blueapps.core.celery worker -l info
-  ```
+```python
+# Beat startup command
+celery -A blueapps.core.celery beat -l info
+# Worker startup command, Windows users please add -P eventlet parameter
+celery -A blueapps.core.celery worker -l info
+```
 
-  > 注意：
-  >
-  > 1. 这里`-A blueapps.core.celery`用于指定使用开发框架内部封装好的 celery app，可用于加载/conf/default.py 中的配置等功能，如果配置使用其他 app，会导致无法加载配置及 task 的自动发现
+> Note:
+>
+> 1. Here `-A blueapps.core.celery` is used to specify the use of the celery app encapsulated inside the development framework, which can be used to load the configuration in /conf/default.py and other functions. If other apps are configured, it will cause the configuration to be unable to load and the automatic discovery of tasks
 
-  **用户注意**，由于 PaaS 平台的限制，只能使用下面的启动方式
+**User note**, due to the limitations of the PaaS platform, only the following startup methods can be used
 
-  ```python
-  # worker启动命令
-  python manage.py celery worker -l info
-  # worker启动命令
-  python manage.py celery beat -l info
-  ```
+```python
+# Worker startup command
+python manage.py celery worker -l info
+# Worker startup command
+python manage.py celery beat -l info
+```
 
-  > 注意：
-  >
-  > 1. 这种启动命令是从 djcelery 中迁移过来，
-  > 2. 由于 django orm 只能允许单线程操作数据库句柄，通过`python manage.py`启动的 worker 与 django 不是同一线程因此无法修改
-  > 3. 使用了`patch_thread_ident`的猴子补丁，用于 patch 掉 django 校验 orm 多线程操作数据的逻辑，会将 worker 的线程 ID
-  
-- 异步任务配置
+> Note:
+>
+> 1. This startup command is migrated from djcelery,
+> 2. Since Django orm can only allow single-threaded operation of database handles, the worker started by `python manage.py` is not the same thread as Django and cannot be modified
+> 3. The monkey patch of `patch_thread_ident` is used to patch out the logic of Django verifying orm multi-threaded operation data, which will change the thread ID of the worker
 
-  ```python
-  # 配置用户当前时间12:00+08:00，延迟当前时间2s执行，
-  T.apply_async(eta=django.utils.timezone.now() + timedelta(seconds=2))
-  
-  
-  # 配置用户2020年9月21日12:02+08:00执行
-  T.apply_async(eta=django.utils.timezone.make_aware(datetime.datetime(2020, 9, 16, 17, 38)) + timedelta(seconds=2))
-  ```
+- Asynchronous task configuration
 
-- 定时任务配置
+```python
+# Configure the user's current time to 12:00+08:00, delay the current time by 2s,
+T.apply_async(eta=django.utils.timezone.now() + timedelta(seconds=2))
 
-  ```python
-  from celery.task import periodic_task
-  from django.utils import timezone
-  from django_celery_beat.tzcrontab import TzAwareCrontab
-  
-  # 配置用户所在时区每天10:00执行定时任务
+# Configure the user to execute at 12:02+08:00 on September 21, 2020
+T.apply_async(eta=django.utils.timezone.make_aware(datetime.datetime(2020, 9, 16, 17, 38)) + timedelta(seconds=2))
+```
+
+- Scheduled task configuration
+
+```python
+from celery.task import periodic_task
+from django.utils import timezone
+from django_celery_beat.tzcrontab import TzAwareCrontab
+
+# Configure the user's time zone to execute the scheduled task at 10:00 every day
   @periodic_task(run_every=django_celery_beat.tzcrontab.TzAwareCrontab(minute="0", hour="10",tz=timezone.get_current_timezone()))
 def crontab_timezone():
       logger.info("test timezone")

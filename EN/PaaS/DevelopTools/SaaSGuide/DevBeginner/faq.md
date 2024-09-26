@@ -1,32 +1,32 @@
-# 常见问题
-## IDE 有哪些推荐
+# FAQ
+## What are the recommended IDEs
 
-比如 `Visio Studio Code`
+For example, `Visio Studio Code`
 ![Visio_Studio_Code](../assets/Visio_Studio_Code.png)
 
-- 语言设置为中文
-    - macOS: `Command+Shift+P` 选择 `Configure Display Language`
-    - Windows: `Ctrl+Shift+P` 选择 `Configure Display Language`
+- Set the language to Chinese
+- macOS: `Command+Shift+P` Select `Configure Display Language`
+- Windows: `Ctrl+Shift+P` Select `Configure Display Language`
 
-- 记住 git 账号
+- Remember the git account
 
 ```bash
 git config --global credential.helper store
 ```
 
-## 如何隔离多套开发环境
+## How to isolate multiple development environments
 
-通过[pipenv](https://zhuanlan.zhihu.com/p/37581807)，在本地隔离多套开发环境
+Use [pipenv](https://zhuanlan.zhihu.com/p/37581807) to isolate multiple development environments locally
 ![pipenv](../assets/pipenv.png)
 
-- 进入 `pipenv` 环境没有加载用户环境变量如何处理？
+- What to do if the user environment variables are not loaded when entering the `pipenv` environment?
 
-    可以修改通过 `pipenv shell` 进入虚拟环境时提示的 `activate` 文件，在该文件中追加对应的命令即可
+You can modify the `activate` file that is prompted when entering the virtual environment through `pipenv shell`, and append the corresponding command to the file.
 
-    例如新增如下一行，可以使用 `ll` 查看文件列表.
+For example, add the following line, and use `ll` to view the file list.
 
-    ```bash
-    alias ll="ls -lh"
-    ```
+```bash
+alias ll="ls -lh"
+```
 
-详细方案可参考[python 多环境开发方案](../DevBasics/PYTHON2_3.md)。
+For detailed solutions, please refer to [python multi-environment development solution](../DevBasics/PYTHON2_3.md).

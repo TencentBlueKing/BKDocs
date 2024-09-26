@@ -1,20 +1,20 @@
-# 部署 SaaS 到测试/正式环境
+# Deploy SaaS to test/official environment
 
-## 创建测试环境和正式环境数据库
+## Create test environment and official environment database
 
-准备 MySQL Server，创建测试环境和正式环境数据库，确保 `install.config` 中配置的 `appt` 和 `appt` 服务器可访问该 DB
+Prepare MySQL Server, create test environment and official environment database, and ensure that the `appt` and `appt` servers configured in `install.config` can access the DB
 
-并修改 `config/prod.py` 和 `stag.py`
+And modify `config/prod.py` and `stag.py`
 
-## 提交代码到仓库
+## Submit code to the repository
 
-- 安装 [Git](https://www.git-scm.com/download/win)
+- Install [Git](https://www.git-scm.com/download/win)
 
-- 使用 `Git Bash` 右键打开项目根目录
+- Use `Git Bash` to right-click and open the project root directory
 
-    ![使用git打开目录](../assets/%E4%BD%BF%E7%94%A8git%E6%89%93%E5%BC%80%E7%9B%AE%E5%BD%95.png)
+![Open directory with git](../assets/%E4%BD%BF%E7%94%A8git%E6%89%93%E5%BC%80%E7%9B%AE%E5%BD%95.png)
 
-- 提交项目到仓库
+- Submit the project to the repository
 
 ```bash
 git init
@@ -24,12 +24,12 @@ git commit -m "add blueking framework2.0"
 git push -u origin master
 ```
 
-## 在开发者中心部署至测试环境和正式环境
+## Deploy to the test environment and the official environment in the developer center
 
-- 测试环境部署
+- Deployment in the test environment
 
-  `开发者中心` - `我的应用` - `部署` - `测试环境一键部署`
+`Developer Center` - `My Application` - `Deployment` - `One-click deployment in the test environment`
 
-- 正式环境部署
+- Deployment in the official environment
 
-   `开发者中心` - `我的应用` - `部署` - `正式环境一键部署`
+`Developer Center` - `My Application` - `Deployment` - `One-click deployment in the official environment`

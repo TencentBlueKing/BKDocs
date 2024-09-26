@@ -1,9 +1,9 @@
-# 术语解释
+# Terminology
 
-- [**蓝鲸开发框架 2.0**](./DevBasics/README.md) : 快速在蓝鲸 PaaS 平台上开发 SaaS 的 `Python 框架` 。该开发框架基于 `Django 框架` 架构，并在此基础上进行扩展，增加蓝鲸系统的特有功能，例如：`身份验证`、`ESB 调用` 及 `模板渲染` 等功能，以便开发者可以更专注于 SaaS 的 `逻辑开发` 。
+- [**BlueKing Development Framework 2.0**](./DevBasics/README.md) : A `Python framework` for quickly developing SaaS on the BlueKing PaaS platform. This development framework is based on the `Django framework` architecture and is extended on this basis to add unique features of the BlueKing system, such as: `Authentication`, `ESB call` and `Template rendering`, so that developers can focus more on the `Logical development` of SaaS.
 
-- **蓝鲸 PaaS 访问地址** : 例如 `paas.blueking.com`，部署蓝鲸私有化版本成功后的访问蓝鲸的地址
+- **BlueKing PaaS Access Address** : For example, `paas.blueking.com`, the access address of BlueKing after successfully deploying the private version of BlueKing
 
-- **应用 ID** : {APP_CODE} , 在蓝鲸开发者中心（ `蓝鲸 PaaS 访问地址` 中可找到）创建应用后生成的`唯一 ID`
+- **Application ID** : {APP_CODE}, the `Unique ID` generated after creating an application in the BlueKing Developer Center (found in `BlueKing PaaS Access Address`)
 
-- **应用 TOKEN** : {SECRET_KEY} , 在蓝鲸开发者中心创建应用后生成和 `应用 ID` 匹配的 `安全秘钥`
+- **Application TOKEN** : {SECRET_KEY}, the `Secrecy Key` matching the `Application ID` generated after creating an application in the BlueKing Developer Center

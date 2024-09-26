@@ -1,126 +1,126 @@
-# Python 开发框架结合 BKUI-CLI 使用指南
+# Python Development Framework Combined with BKUI-CLI Usage Guide
 
-## 整体说明
+## Overall Description
 
-蓝鲸 Python 开发框架 2.0 可以支持在简单的配置调整后，便可以实现前后端分离开发。本文将会分为两部分，带领读者进行相关的修改。
+BlueKing Python Development Framework 2.0 can support front-end and back-end separation development after simple configuration adjustment. This article will be divided into two parts to guide readers to make relevant modifications.
 
-- 第一部分主要说明前后端分离后，后端同学应如何配置后台，实现前端同学方便的本地调用后台测试环境接口验证。
+- The first part mainly explains how back-end students should configure the back-end after the front-end and back-end are separated, so that front-end students can conveniently call the back-end test environment interface verification locally.
 
-- 第二部分主要说明如何合并前后端代码，将代码统一到一个项目仓库下并部署到线上运行。
+- The second part mainly explains how to merge the front-end and back-end codes, unify the codes into a project repository and deploy them to online operation.
 
-## 前端本地开发联调
+## Front-end local development joint debugging
 
-   在前端开发脚手架（BKUI-CLI）的 [说明文档](./bkui/bkui.md) 中，我们已经可以运行一个独立的前端的工程，这里我们会说明如何对前端工程进行调整，打通前端工程及后台接口。
+In the [Description Document](./bkui/bkui.md) of the front-end development scaffold (BKUI-CLI), we can already run an independent front-end project. Here we will explain how to adjust the front-end project and connect the front-end project and back-end interface.
 
-### 后台修改
+### Back-end modification
 
-   由于前后端分离后，我们希望前端开发在本地运行一个测试服务，然后请求测试环境的接口获取数据进行调试。但由于本地服务的域名与测试环境域名不一致，部分浏览器会有阻止跨域访问的特性，导致请求失败。因此需要修改后台配置，运行跨域访问。
+Since the front-end and back-end are separated, we hope that the front-end development will run a test service locally, and then request the test environment interface to obtain data for debugging. However, since the domain name of the local service is inconsistent with the domain name of the test environment, some browsers have the feature of blocking cross-domain access, resulting in request failure. Therefore, it is necessary to modify the background configuration to run cross-domain access.
 
-   1. 增加 CORS 依赖
+1. Add CORS dependency
 
-      requirements.txt 文件中，增加新的组件依赖 `django-cors-headers==3.0.2` (具体版本，可以按照实际修改)
+In the requirements.txt file, add a new component dependency `django-cors-headers==3.0.2` (the specific version can be modified according to the actual situation)
 
-   2. 增加 CORS 配置
+2. Add CORS configuration
 
-      1. 增加中间件配置
+1. Add middleware configuration
 
-         在 config/default.py 文件中，在 54 行左右的位置，增加中间件的配置:
+In the config/default.py file, add the middleware configuration around line 54:
 
-         ```python
-         # 自定义中间件
-         MIDDLEWARE = ('corsheaders.middleware.CorsMiddleware', ) + MIDDLEWARE
-         ```
+```python
+# Custom middleware
+MIDDLEWARE = ​​('corsheaders.middleware.CorsMiddleware', ) + MIDDLEWARE
+```
 
-      2. 增加测试环境配置
+2. Add test environment configuration
 
-         在 config/stag.py 文件中，追加下列的配置
+In the config/stag.py file, append the following configuration
 
-         ```python
-         # 白名单, 域名请按照前段实际配置修改
-         CORS_ORIGIN_WHITELIST = [
-             'http://localhost:8080',
-         ]
-         # 允许跨域使用 cookie
-         CORS_ALLOW_CREDENTIALS = True
-         ```
+```python
+# Whitelist, please modify the domain name according to the actual configuration in the previous section
+CORS_ORIGIN_WHITELIST = [
+'http://localhost:8080',
+]
+# Allow cross-domain use of cookies
+CORS_ALLOW_CREDENTIALS = True
+```
 
-         > 注意：强烈建议【不要】在 config/prod.py 文件中增加上述的配置。因为正式环境不应该作为联调测试环境，添加 CORS 配置很可能会引起不必要的安全风险。
+> Note: It is strongly recommended not to add the above configuration in the config/prod.py file. Because the official environment should not be used as a joint debugging test environment, adding CORS configuration is likely to cause unnecessary security risks.
 
-   完成上述的修改后，本地的前端服务就可以正常的访问后台接口。
+After completing the above modifications, the local front-end service can access the back-end interface normally.
 
-## 代码合并上线
+## Code merging and launching
 
-   在前后端分别开发完成后，需要将两边的代码合并并部署到线上环境。在部署前，我们需要对框架中的部分内容进行修改。
+After the front-end and back-end are developed separately, the codes on both sides need to be merged and deployed to the online environment. Before deployment, we need to modify some content in the framework.
 
-### 增加首页搜索范围
+### Increase the homepage search range
 
-   在 config/default.py 文件中，追加下列配置
+In the config/default.py file, add the following configuration
 
-   ```python
-   TEMPLATES[0]['DIRS'] += (
-       os.path.join(BASE_DIR, 'static', 'dist'),
-   )
-   ```
+```python
+TEMPLATES[0]['DIRS'] += (
+os.path.join(BASE_DIR, 'static', 'dist'),
+)
+```
 
-   > 注意：
-   >
-   > 1. 此处讨论是未对 TEMPLATES 做修改的情况，如果有对 TEMPLATES 变量有调整会替换，请按照实际情况修改
-   > 2. 此处预计前端打包文件输出路径为 {root_path}/static/dist，如果有变化请按照实际情况配置。但文件输出必须在 {root_path}/static/ 路径下，否则会导致线上环境找不到静态资源
+> Note:
+>
+> 1. The discussion here is the case where TEMPLATES is not modified. If there is any adjustment to the TEMPLATES variable, please modify it according to the actual situation
+> 2. Here, the output path of the front-end package file is expected to be {root_path}/static/dist. If there is any change, please configure it according to the actual situation. But the file output must be in the {root_path}/static/ path, otherwise the online environment will not be able to find static resources
 
-### 修改首页返回
+### Modify the home page return
 
-   在 home_application/views.py 文件中，修改 home 函数为
+In the home_application/views.py file, modify the home function to
 
-   ```python
-   def home(request):
-       """
-       首页
-       """
-       return render(request, 'index.html')
-   ```
+```python
+def home(request):
+"""
+Home page
+"""
+return render(request, 'index.html')
+```
 
-### 增加前端静态 URL 配置
+### Add front-end static URL configuration
 
-   在 config/prod.py、config/stag.py、config/dev.py 文件中，增加以下配置
+In the config/prod.py, config/stag.py, and config/dev.py files, add the following configuration
 
-   ```python
-   BK_STATIC_URL = STATIC_URL + 'dist'
-   ```
+```python
+BK_STATIC_URL = STATIC_URL + 'dist'
+```
 
-   > 注意：此处预计前端打包文件输出路径为 {root_path}/static/dist，如果有变化请按照实际情况配置。
+> Note: The expected output path of the front-end packaged file is {root_path}/static/dist. If there is a change, please configure it according to the actual situation.
 
-   在 blueapps/template/context_processors.py 文件中，第 57 行附近，对 context 变量追加一个键值对
+In the blueapps/template/context_processors.py file, around line 57, add a key-value pair to the context variable
 
-   ```python
-   # 前后端分离的静态 URL 配置
-   'BK_STATIC_URL': settings.BK_STATIC_URL
-   ```
+```python
+# Static URL configuration for front-end and back-end separation
+'BK_STATIC_URL': settings.BK_STATIC_URL
+```
 
-完成上述的修改后，就可在本地及线上环境合并部署前后端代码。
+After completing the above modifications, you can merge and deploy the front-end and back-end codes in the local and online environments.
 
 ## FAQ
 
-1. 为什么 getUser 接口失效？
+1. Why is the getUser interface invalid?
 
-   A：请检查开发框架版本，该接口是在 2.2.0.x 以后的版本加入。但该接口只是作为简单的连通性验证，并不影响功能。
+A: Please check the development framework version. This interface was added in versions after 2.2.0.x. However, this interface is only used as a simple connectivity verification and does not affect the function.
 
-2. 如果前端使用了 history 模式，刷新页面返回 404 怎么办？
+2. If the front-end uses history mode, what should I do if the refresh page returns 404?
 
-   A：开发框架为此准备了一个中间件及相关配置，只需打开中间件（默认关闭）及打开配置开关即可
+A: The development framework has prepared a middleware and related configuration for this purpose. You only need to turn on the middleware (off by default) and turn on the configuration switch.
 
-   1. 在 config/default.py 文件中，增加以下代码
+1. In the config/default.py file, add the following code
 
-      ```python
-      MIDDLEWARE += ('blueapps.middleware.bkui.middlewares.BkuiPageMiddleware', )
-      ```
+```python
+MIDDLEWARE += ('blueapps.middleware.bkui.middlewares.BkuiPageMiddleware', )
+```
 
-   2. 在 config/default.py 文件中，打开适配开关
+2. In the config/default.py file, turn on the adaptation switch
 
-      ```python
-      IS_BKUI_HISTORY_MODE = True
-      ```
+```python
+IS_BKUI_HISTORY_MODE = True
+```
 
-   > 注意：
-   >
-   > 1. 在这种模式下，后台将会将所有 404 的返回统一改为返回首页('/' 路径)内容
-   > 2. 404 页面内容，应该统一在前端处理
+> Note:
+>
+> 1. In this mode, the backend will uniformly change all 404 returns to return the home page ('/' path) content
+> 2. 404 page content should be uniformly processed on the front end

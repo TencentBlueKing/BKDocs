@@ -27,3 +27,6 @@ BK_APP_OTEL_INSTRUMENT_DB_API = True # 是否开启 DB 访问 trace（开启后 
 
 - OpenTelemetry SDK(golang) : https://opentelemetry.io/docs/instrumentation/go/
 - OpenTelemetry SDK(Java) : https://github.com/open-telemetry/opentelemetry-java
+
+
+**说明**： 该功能默认未启用，如需启用请参考[部署文档](../../../../../../DeploymentGuides/7.2/manual-install-bkce.md#paas-app-apm)
