@@ -1,6 +1,6 @@
 # Summary
 
-## 节点管理
+## NodeMan
 * [Overview](UserGuide/Introduce/Overview.md)
 * [Terms](UserGuide/Term/Term.md)
 * [Architecture](UserGuide/ProductArchitecture/Architecture.md)
