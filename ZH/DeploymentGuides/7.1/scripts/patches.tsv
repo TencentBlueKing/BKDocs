@@ -24,3 +24,5 @@
 20240625	bkmonitorbeat	file	3.34.1831	--
 20240626	bk-log-search	chart	4.6.6	4.6.6	安全更新
 20240717	bk-ci	chart	3.0.10-beta.4	2.1.0-rc.2
+20240901	bk_lesscode	saas	1.0.17	--
+20240924	bk-monitor	chart	3.8.12	3.8.12

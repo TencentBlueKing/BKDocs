@@ -125,7 +125,7 @@ for _cmd in helmfile helm yq jq; do
   cp -v "${INSTALL_DIR:-INSTALL_DIR-not-set}/bin/$_cmd" /usr/local/bin/
 done
 # 安装helm-diff插件
-tar xf ../bin/helm-plugin-diff.tgz -C ~/
+tar xf "${INSTALL_DIR:-INSTALL_DIR-not-set}/bin/helm-plugin-diff.tgz" -C ~/
 ```
 
 检查 helm diff 插件：

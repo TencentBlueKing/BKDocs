@@ -1,11 +1,11 @@
 # Summary
 
-## 审计中心
-* [产品简介](UserGuide/Introduce/README.md)
-* [核心优势](UserGuide/Advantage/README.md)
-* [名词解释](UserGuide/assert/README.md)
-* [产品架构](UserGuide/Architecture/README.md)
-* [快速入门](UserGuide/QuickStart/README.md)
-* [场景案例](UserGuide/UserCase/README.md)
-* [产品功能](UserGuide/Feature/README.md)
-* [常见问题](UserGuide/FAQ/README.md)
+## Audit Center
+* [Product Introduction](UserGuide/Introduce/README.md)
+* [Advantages](UserGuide/Advantage/README.md)
+* [Term Explanation](UserGuide/assert/README.md)
+* [Product Architecture](UserGuide/Architecture/README.md)
+* [Quick Start](UserGuide/QuickStart/README.md)
+* [Scenario Case](UserGuide/UserCase/README.md)
+* [Product Features](UserGuide/Feature/README.md)
+* [Frequently Asked Questions](UserGuide/FAQ/README.md)
