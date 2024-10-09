@@ -36,7 +36,7 @@
     Devops: "2.0"
     DocumentationContributorGuide: "7.0"
     GSE: "2.0"
-    IAM: 1.12
+    IAM: 1.9
     ITSM: 2.6
     JOB: 3.7
     LogSearch: 4.6
@@ -64,7 +64,7 @@
     Devops: "2.0"
     DocumentationContributorGuide: "7.0"
     GSE: "2.0"
-    IAM: 1.12
+    IAM: 1.8
     ITSM: 2.6
     JOB: 3.6
     LessCode: "1.0"
@@ -92,7 +92,7 @@
     Devops: "2.0"
     DocumentationContributorGuide: "7.0"
     GSE: "2.0"
-    IAM: 1.12
+    IAM: 1.9
     ITSM: 2.6
     JOB: 3.7
     LessCode: "1.0"
@@ -109,3 +109,38 @@
     downloads: "7.0"
     OnlineGuide: "7.0"
     BSCP: 1.29
+7.2:
+    APIGateway: 1.13
+    BCS: 1.29
+    BestPractices: 7.1
+    BK-Base: "3.10"
+    BKAudit: 1.14
+    BKFlow: 1.8
+    BKNotice: "1.0"
+    BKVision: "1.0"
+    BlueKingFamily: 7.2
+    BSCP: 1.29
+    CMDB: 3.14
+    DBM: 1.5
+    DeploymentGuides: 7.1
+    DevelopGuide: 7.2
+    Devops: "3.0"
+    DocumentationContributorGuide: "7.0"
+    downloads: 7.2
+    GSE: 2.1
+    IAM: "1.10"
+    ITSM: 2.6
+    JOB: 3.9
+    LessCode: 1.1
+    LogSearch: 4.6
+    Monitor: 3.9
+    NodeMan: 2.4
+    OnlineGuide: "7.0"
+    PaaS: 1.5
+    QuickStart: "7.0"
+    ReleaseNotes: "7.0"
+    SOPS: 3.33
+    UserManage: 2.5
+    VersionLog: 7.1
+    VideoTutorial: "7.0"
+
