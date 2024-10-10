@@ -39,6 +39,7 @@
 * [问题案例及维护手册]()
     * [问题案例概述](troubles.md)
     * [产品使用问题](troubles-prod.md)
+    * [备份当前环境](backup.md)
     * [访问入口及账户密码汇总](access.md)
 * [发行版升级]()
     * [7.0 - 7.1 升级文档](v70-upgrade-to-v71.md)

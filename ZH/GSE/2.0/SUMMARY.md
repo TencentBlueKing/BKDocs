@@ -12,4 +12,3 @@
     * [查询 agent 心跳详细信息](APIDocs/zh-hans/get_agent_info.md)
     * [查询 agent 实时在线状态](APIDocs/zh-hans/get_agent_status.md)
 * [错误码](../ErrorCode/control.md)
-* [开发架构文档](Architecture/Description.md)
