@@ -129,10 +129,10 @@
     downloads: 7.2
     GSE: 2.1
     IAM: "1.10"
-    ITSM: 2.6
+    ITSM: 2.7
     JOB: 3.9
     LessCode: 1.1
-    LogSearch: 4.6
+    LogSearch: 4.7
     Monitor: 3.9
     NodeMan: 2.4
     OnlineGuide: "7.0"

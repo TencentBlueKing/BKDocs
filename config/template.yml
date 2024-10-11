@@ -49,8 +49,6 @@
             - 
               name: {{ IndexLogSearch }}
             - 
-              name: {{ IndexBSCP }}
-            - 
               name: {{ IndexBKNotice }}
             - 
               name: {{ IndexBKAudit }}
@@ -108,6 +106,8 @@
               name: {{ IndexDevops }}
             - 
               name: {{ IndexBKBase }}
+            - 
+              name: {{ IndexBSCP }}
 -
   name: {{ Doc }}
   children:
