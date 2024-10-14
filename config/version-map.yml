@@ -108,7 +108,6 @@
     VideoTutorial: "7.0"
     downloads: "7.0"
     OnlineGuide: "7.0"
-    BSCP: 1.29
 7.2:
     APIGateway: 1.13
     BCS: 1.29
