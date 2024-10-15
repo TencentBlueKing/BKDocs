@@ -1,3 +1,8 @@
+本文档仅为 helm 部署时的问题。如果其他场景，请查看对应文档：
+* [SaaS 部署问题案例](deploy-saas.md)：部署 SaaS (蓝鲸官方或自行开发等）时遇到的问题。
+* [产品界面使用问题案例](bk-web.md)：部署过程中，需要进入界面变更时遇到的问题。
+
+
 ## helm 及 helmfile 报错
 
 ### 一键脚本 在显示 generate custom.yaml 后报错 timed out waiting for the condition

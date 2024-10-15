@@ -11,7 +11,7 @@
 
 接下来会逐层逐 release 讲述部署过程。
 
-**如果部署期间出错，请先查阅 《[问题案例](troubles.md)》文档。**
+**如果部署期间出错，请先查阅 《[部署问题排查](troubles/deploy-helm.md)》文档。**
 
 ## 部署 seq=first 的 release
 第 1 层包含了 `bk-repo,bk-auth,bk-apigateway` 等 release。
@@ -198,22 +198,25 @@ $IP1 devops.$BK_DOMAIN  # 持续集成平台-蓝盾
 $IP1 codecc.$BK_DOMAIN  # 持续集成平台-代码检查
 $IP1 lesscode.$BK_DOMAIN  # 运维开发平台
 $IP1 bk-apicheck.$BK_DOMAIN  # apicheck 测试工具
+$IP1 bscp.$BK_DOMAIN  # 服务配置中心
+$IP1 bscp-api.$BK_DOMAIN  # 服务配置中心
 EOF
 fi
 ```
 
 ## 添加桌面应用
-使用脚本在 admin 用户的桌面添加应用，也可以登录后自行在桌面添加。
+使用脚本在 admin 用户的“桌面 1”添加应用。如果希望在其他桌面添加，可以进入桌面后手动操作。
+
 ``` bash
-scripts/add_user_desktop_app.sh -u "admin" -a "bk_cmdb,bk_job"
-scripts/add_user_desktop_app.sh -u "admin" -a "bk_usermgr"
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_job,bk_usermgr"
 ```
-如果提示 `user(admin) not exists`，说明用户尚未登录，可以忽略此报错。
+如果提示 `user(admin) not exists`，说明 `admin` 用户尚未打开过桌面，可以忽略此操作。下面设置默认应用后，也能看到。
 
 将用户管理设置为默认应用，新用户登录桌面就可以看到。
 ``` bash
-scripts/set_desktop_default_app.sh -a "bk_usermgr"
+scripts/set_desktop_default_app.sh -a "bk_job"
 ```
+用户管理一般只有管理员才需要访问，故不设置为“默认应用”。
 
 ## 获取 PaaS 登录账户及密码
 在 **中控机** 执行如下命令获取登录账户:
@@ -235,6 +238,10 @@ BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自�
 echo "http://$BK_DOMAIN"
 ```
 浏览器访问上述地址即可。记得提前配置本地 DNS 服务器或修改本机的 hosts 文件。
+
+>**提示**
+>
+>浏览器中遇到的报错或者异常，可先查阅 《[产品界面使用问题案例](troubles/bk-web.md)》文档。
 
 
 <a id="next" name="next"></a>

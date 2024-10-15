@@ -25,7 +25,7 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ``` bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 helmfile -f 03-bkci.yaml.gotmpl sync  # 部署
-# 在admin桌面添加应用，也可以登录后自行添加。
+# 在admin桌面添加应用，也可以登录后手动添加。如果未曾打开过桌面，则会提示 user(admin) not exists，可忽略。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_ci"
 # 设为默认应用。
 scripts/set_desktop_default_app.sh -a "bk_ci"
@@ -37,7 +37,7 @@ kubectl get pod -A | grep bk-ci
 
 >**提示**
 >
->**如果部署期间出错，请先查阅 《[问题案例](troubles.md)》文档。**
+>**如果部署期间出错，请先查阅 《[部署问题排查](troubles/deploy-helm.md)》文档。**
 >
 >问题解决后，可重新执行 `helmfile` 命令。
 
@@ -173,6 +173,12 @@ done
 
 项目创建成功后，同步权限缓存需等待 10 秒，如果进入流水线界面后，在项目选择框看不到刚创建的项目，请等待后再刷新页面，然后选择项目。
 
+>**提示**
+>
+>浏览器中遇到的报错或者异常，可先查阅 《[产品界面使用问题案例](troubles/bk-web.md)》文档。
+>
+>如果流水线中的插件执行失败或出现异常，可以查阅 《[蓝盾流水线插件问题案例](troubles/ci-dev.md)》文档。
+
 
 # 部署代码检查系统
 
@@ -200,7 +206,7 @@ kubectl get pod -A | grep bk-codecc
 
 >**提示**
 >
->**如果部署期间出错，请先查阅 《[问题案例](troubles.md)》文档。**
+>**如果部署期间出错，请先查阅 《[部署问题排查](troubles/deploy-helm.md)》文档。**
 >
 >问题解决后，可重新执行 `helmfile` 命令。
 
@@ -231,6 +237,10 @@ kubectl get pod -A | grep bk-codecc
 需要配置域名 `codecc.$BK_DOMAIN`，操作步骤已经并入《部署步骤详解 —— 后台》 文档 的 “[配置用户侧的 DNS](manual-install-bkce.md#hosts-in-user-pc)” 章节。
 
 域名配置成功后，先在桌面打开 “持续集成平台-蓝盾” 应用。然后展开顶部导航栏的 “服务” 菜单，在 “开发” 分组中找到 “代码检查” 链接打开。
+
+>**提示**
+>
+>浏览器中遇到的报错或者异常，可先查阅 《[产品界面使用问题案例](troubles/bk-web.md)》文档。
 
 
 # 蓝盾优化项

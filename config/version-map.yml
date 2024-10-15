@@ -109,7 +109,7 @@
     downloads: "7.0"
     OnlineGuide: "7.0"
 7.2:
-    APIGateway: 1.13
+    APIGateway: 1.14
     BCS: 1.29
     BestPractices: 7.1
     BK-Base: "3.10"

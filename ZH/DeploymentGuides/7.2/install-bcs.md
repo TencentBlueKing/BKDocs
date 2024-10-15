@@ -21,21 +21,6 @@ bcs:
 EOF
 ```
 
-### 禁用消息队列
-bcs-services-stack-1.28.2 及以下版本需要调整配置。不然 bcs-storage CPU 使用率会异常偏高。
-
-创建或者编辑 bcs custom values 文件（`./environments/default/bcs-custom-values.yaml.gotmpl`）：
-``` yaml
-bcs-storage:
-  storage:
-    messageQueue:
-      enabled: false
-global:
-  storage:
-    messageQueue:
-      enabled: false
-```
-
 ### 配置 coredns
 容器管理平台 会在 pod 内请求 蓝鲸制品库 提供的 helm 及 docker 仓库，需确保 coredns 配置正确。
 
@@ -53,38 +38,29 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ``` bash
 cd $INSTALL_DIR/blueking
 helmfile -f 03-bcs.yaml.gotmpl sync
-# 在admin桌面添加应用，也可以登录后自行添加。
+# 在admin桌面添加应用，也可以登录后手动添加。如果未曾打开过桌面，则会提示 user(admin) not exists，可忽略。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_bcs"
 # 设为默认应用。
 scripts/set_desktop_default_app.sh -a "bk_bcs"
 ```
-耗时 3 ~ 7 分钟，此时可以另起一个终端观察相关 pod 的状态
+耗时 3 ~ 7 分钟，此时可以另起一个终端观察相关 pod 的状态：
 ``` bash
 kubectl get pod -n bcs-system -w
 ```
 
-如果部署失败请先查阅 《[问题案例](troubles.md)》文档。
+如果部署失败请先查阅 《[部署问题排查](troubles/deploy-helm.md)》文档。
 
 ### 导入标准运维流程
-
-容器管理平台有 2 种方式新建集群：
-* 自建集群：由容器管理平台调用 标准运维 在指定主机上安装 k8s，这些主机需要提前安装蓝鲸 GSE Agent。
-* 导入集群：在容器管理平台中管理已有的 k8s 集群，你需要提供 kubeconfig 文件或者填写腾讯云访问凭据。
-
-如果你需要 “自建集群” 功能，则请完成本章节；如果仅使用 “导入集群” 功能，则可跳过本章节。
-
-
-使用 admin 账户登录 “蓝鲸桌面”，打开 “标准运维”。进入 “公共流程管理” 界面，展开 “导入” 按钮，选择 “导入 DAT 文件”。
-
-在新出现的 “导入 DAT” 窗口中，上传如下文件：
-* [自建集群所需的标准运维流程模板（20230719 版本）](https://bkopen-1252002024.file.myqcloud.com/ce7/files/bcs-deploy-k8s-bk_sops_common_20230719.dat)
-
-上传成功后会显示导入列表，点击 “覆盖 ID 相同的流程” 按钮完成导入。如果此前有导入过流程，则导入列表下方会高亮提示 `其中4条流程与项目已有流程ID存在冲突`，请点击 “覆盖冲突项，并提交” 按钮。
-![](../7.0/assets/bk_sops-common-import-bcs.png)
-
 >**提示**
 >
->如果没有导入流程，或者流程 ID 不正确，则新建集群时会报错 “创建失败，请重试”。“查看日志” 里的 “标准运维任务” 步骤日志为 `running failed. CreateBkOpsTask err: Object not found: CommonTemplate(id=10001) does not exist.`
+>当前章节可跳过。目前 helm 在部署时会自动触发调用 `scripts/import_bcs_flow.sh` 脚本完成流程导入。
+
+容器管理平台有 2 种方式新建集群：
+* 自建集群：由容器管理平台调用 **标准运维** 在指定主机上安装 k8s，这些主机需要提前安装蓝鲸 GSE Agent。
+* 导入集群：在容器管理平台中管理已有的 k8s 集群，你需要提供 kubeconfig 文件或者填写腾讯云访问凭据。
+
+
+## 访问容器管理平台
 
 需要配置域名 `bcs.$BK_DOMAIN` 和 `bcs-api.$BK_DOMAIN`，操作步骤已经并入 《部署步骤详解 —— 后台》 文档 的 “[配置用户侧的 DNS](manual-install-bkce.md#hosts-in-user-pc)” 章节。
 

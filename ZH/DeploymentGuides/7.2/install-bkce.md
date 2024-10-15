@@ -4,7 +4,7 @@
 2. 部署存储服务
 3. 部署后台服务
 4. 完善 SaaS 运行环境
-5. 部署 SaaS：流程服务和标准运维
+5. 部署 SaaS：流程服务、标准运维和蓝鲸配置平台
 
 完成后就可以安装 GSE agent 开始使用了。
 
@@ -93,7 +93,7 @@ fi
 
 >**提示**
 >
->**如果部署期间出错，请先查阅 《[问题案例](troubles.md)》文档。**
+>**如果部署期间出错，请先查阅 《[部署问题排查](troubles/deploy-helm.md)》文档。**
 >
 >问题解决后，可重新执行上面的命令。
 
@@ -123,15 +123,6 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ``` bash
 ./scripts/dns-helper.sh lan | ./scripts/update-hosts-file.sh /etc/hosts /etc/hosts
 ```
-
-## 部署节点管理
-
-### 部署 nodeman
-执行如下命令部署 bk-nodeman release，给 admin 桌面添加应用，并上传 Agent 和插件包：
-``` bash
-scripts/setup_bkce7.sh -i nodeman
-```
-整个过程耗时 5 ~ 10 分钟。
 
 ## 准备 SaaS 运行环境
 
@@ -176,34 +167,41 @@ scripts/docker-insecure.sh
 <a id="setup_bkce7-i-saas" name="setup_bkce7-i-saas"></a>
 
 ## 部署基础套餐 SaaS
-部署蓝鲸智云官方的 SaaS 应用：流程服务 和 标准运维。
 
 >**提示**
 >
 >你也可以跟随 《[部署步骤详解 —— SaaS](manual-install-saas.md)》文档，在浏览器中访问开发者中心部署这些 SaaS。
 
-每个 SaaS 部署不超过 10 分钟，如果遇到问题请先查阅 《[问题案例](troubles.md)》文档。
+每个 SaaS 部署不超过 10 分钟，如果遇到问题请先查阅 《[SaaS 部署问题案例](troubles/deploy-saas.md)》文档。
 
 >**注意**
 >
 >本脚本设计为全新安装 SaaS，如 SaaS 已安装，会自动跳过。你可以给脚本加上 `-f` 参数强制重新安装，例如重新安装流程服务： `scripts/setup_bkce7.sh -i itsm -f`。
 
-### 部署流程服务
+### 部署流程服务（bk_itsm）
 执行如下命令即可：
 ``` bash
 scripts/setup_bkce7.sh -i itsm
 ```
-### 部署标准运维
+### 部署标准运维（bk_sops）
 执行如下命令即可：
 ``` bash
 scripts/setup_bkce7.sh -i sops
 ```
 
-### 部署配置平台 SaaS
+### 部署配置平台 SaaS（bk_cmdb_saas）
 执行如下命令即可：
 ``` bash
 scripts/setup_bkce7.sh -i bk_cmdb_saas
 ```
+
+### 部署节点管理（bk_nodeman）
+执行如下命令部署 bk-nodeman release，给 admin 桌面添加应用，并上传 Agent 和插件包：
+``` bash
+scripts/setup_bkce7.sh -i nodeman
+```
+整个过程耗时 5 ~ 10 分钟。
+
 
 # 访问蓝鲸
 
@@ -243,15 +241,25 @@ kubectl get cm -n blueking bk-user-api-general-envs -o go-template='用户： {{
 ```
 浏览器访问上述地址即可。
 
+>**提示**
+>
+>浏览器中遇到的报错或者异常，可先查阅 《[产品界面使用问题案例](troubles/bk-web.md)》文档。
+
 
 <a id="next" name="next"></a>
 
 # 下一步
 继续部署：
 * [配置节点管理及安装 Agent](config-nodeman.md)
-* 此时可以同时开始 [部署容器管理平台](install-bcs.md)
+* [部署容器管理平台](install-bcs.md)
+* [部署监控日志套餐](install-co-suite.md)
+* [部署持续集成套餐](install-ci-suite.md)
+* [部署运维开发平台](install-lesscode.md)
+* 如有需要，可部署基础套餐的这些系统：
+  * [部署蓝鲸通知中心](install-notice.md)
+  * [部署服务配置中心](install-bscp.md)
 
-安装 Agent 后，可以 [启动蓝鲸 API 测试工具](run-apicheck.md)。
+等监控平台部署完毕后，可以 [启动蓝鲸 API 测试工具](run-apicheck.md)。
 
 在部署期间，可以在文档中心查看产品文档。
 

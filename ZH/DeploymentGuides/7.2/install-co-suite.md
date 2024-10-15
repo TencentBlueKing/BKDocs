@@ -7,7 +7,7 @@
 # 部署与访问
 >**提示**
 >
->**如果部署期间出错，请先查阅 《[问题案例](troubles.md)》文档。**
+>**如果部署期间出错，请先查阅 《[部署问题排查](troubles/deploy-helm.md)》文档。**
 >
 >问题解决后，可重新执行 `helmfile` 命令。
 
@@ -43,10 +43,15 @@ helmfile -f 04-bkmonitor.yaml.gotmpl sync
 在 admin 桌面添加应用，也可以登录后自行添加。同时设置为默认应用，所有新登录的用户都会自动添加此应用到桌面。
 ``` bash
 # 监控
+# 在admin桌面添加应用，也可以登录后手动添加。如果未曾打开过桌面，则会提示 user(admin) not exists，可忽略。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_monitorv3"
+# 设为默认应用。
 scripts/set_desktop_default_app.sh -a "bk_monitorv3"
+
 # 故障自愈
+# 在admin桌面添加应用，也可以登录后手动添加。如果未曾打开过桌面，则会提示 user(admin) not exists，可忽略。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_fta_solution"
+# 设为默认应用。
 scripts/set_desktop_default_app.sh -a "bk_fta_solution"
 ```
 
@@ -66,6 +71,9 @@ helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync  # 部署 k8s operator 提供
 >**提示**
 >
 >刚部署完成时，访问监控如果出现 HTTP 503 报错，请耐心等待界面准备完成。在后台初始化任务完成前，首页可能出现报错。
+>
+>后续浏览器中遇到的报错或者异常，可先查阅 《[产品界面使用问题案例](troubles/bk-web.md)》文档。
+
 
 主机基础监控数据上报由 `bkmonitorbeat` 插件提供，之前安装 agent 时会默认安装。
 
@@ -124,7 +132,7 @@ helmfile -f 04-bklog-collector.yaml.gotmpl sync
 ``` bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 helmfile -f 04-bklog-search.yaml.gotmpl sync  # 部署
-# 在admin桌面添加应用，也可以登录后自行添加。
+# 在admin桌面添加应用，也可以登录后手动添加。如果未曾打开过桌面，则会提示 user(admin) not exists，可忽略。
 scripts/add_user_desktop_app.sh -u "admin" -a "bk_log_search"
 # 设为默认应用。
 scripts/set_desktop_default_app.sh -a "bk_log_search"
@@ -147,6 +155,10 @@ scripts/set_desktop_default_app.sh -a "bk_log_search"
     2. 在日志平台的 “管理” —— “日志采集” 界面添加采集项。
   * 其他集群
     1. TODO 其他集群容器日志采集步骤。
+
+>**提示**
+>
+>浏览器中遇到的报错或者异常，可先查阅 《[产品界面使用问题案例](troubles/bk-web.md)》文档。
 
 
 # 更多功能

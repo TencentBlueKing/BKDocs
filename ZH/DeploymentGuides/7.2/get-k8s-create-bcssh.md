@@ -1,5 +1,7 @@
 
 # 使用 bcs.sh 快速部署 k8s 集群
+bcs.sh 是蓝鲸容器管理平台 **早期** 的 k8s 新建集群方案。仅支持 k8s v1.20 版本，使用 docker 作为运行时。
+
 ## 部署初始 master
 欢迎使用蓝鲸提供的 `bcs.sh` 脚本快速部署 k8s 集群。
 
@@ -49,17 +51,96 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 * 如果使用 HTTP 协议，请配置 `insecure-registries` 选项。
 * 如果使用 HTTPS 协议，请在 `/etc/docker/certs.d/服务器地址:服务器端口/ca.crt` 路径放置证书。
 
-## 复制 config 文件到中控机
+# 在中控机管理集群
+
+## 在中控机安装 kubectl
+
 如果你的 **中控机** 同时兼任 `master`，则可 **跳过本章节**。
 
-否则需要将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下，命令如下（请替换 `k8s-master`为具体的主机名或 IP）：
+本文预期 **中控机** 和 `master` 的操作系统相同，故直接复制二进制到中控机使用。如为其他系统，你可以参考 k8s 官方文档安装： https://kubernetes.io/zh/docs/tasks/tools/install-kubectl-linux/
+
+在 **中控机** 上执行如下命令（请赋值 `master_ip`为 master 的 IP）：
+```bash
+master_ip=10.0.0.2  # 请自行修改为bcs.sh所部署的master ip，建议配置好中控机免密登录。
+scp "$master_ip":/usr/bin/kubectl /usr/bin/
+```
+
+### 配置 kubectl 命令行补全
+鉴于 `kubectl` 命令参数复杂，且部分资源实例名称随机。日常进行命令行操作时，启用命令补全功能会大幅提升效率。
+
+在 **中控机** 上执行如下命令：
+``` bash
+yum install -y bash-completion
+mkdir -p /etc/bash_completion.d/
+# 写入默认的命令行补全配置文件。
+kubectl completion bash > /etc/bash_completion.d/kubectl
+# 补全会在下次登录时加载。如需在当前会话补全，主动加载之。
+source /etc/bash_completion.d/kubectl
+```
+
+## 配置 kubectl 连接集群
+
+如果你的 **中控机** 同时兼任 `master`，则可 **跳过本章节**。
+
+需要将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下。
+
+在 **中控机** 上执行如下命令（请替换 `k8s-master`为具体的主机名或 IP）：
 ```bash
 master_ip=10.0.0.2  # 请自行修改为bcs.sh所部署的master ip，建议配置好中控机免密登录。
 mkdir -p ~/.kube
-scp "$master_ip":.kube/config ~/.kube/config  # 复制kubeconfig，如未配置免密登录请输入master的密码
-grep bcs.local /etc/hosts || ssh "$master_ip" grep bcs.local /etc/hosts | tee -a /etc/hosts  # 导出master上的bcs hosts配置到中控机，如未配置免密登录请输入master的密码
-scp "$master_ip":/usr/bin/kubectl /usr/bin/  # 从master上复制kubectl二进制到中控机使用
+# 复制kubeconfig，如未配置免密登录请输入master的密码
+scp "$master_ip":.kube/config ~/.kube/config
+# 导出master上的bcs hosts配置到中控机，如未配置免密登录请输入master的密码
+grep bcs.local /etc/hosts || ssh "$master_ip" grep bcs.local /etc/hosts | tee -a /etc/hosts
 ```
 
+## 检查 k8s 集群节点
+在 **中控机** 上执行如下命令：
+```bash
+kubectl get nodes -o wide
+```
+其输出如下图所示：<br/>
+![](../7.0/assets/2022-03-09-10-34-42.png)
+
+当  `STATUS`  列的值为  `Ready` ，即表示此 `node` 已经成功加入集群且工作正常。
+
+如需了解对应  `node`  的详情，可使用命令：
+```bash
+kubectl describe nodes NAME  # NAME参数为 kubectl get nodes输出的 NAME 列
+```
+
+# 部署蓝鲸所需的调整项
+
+## 配置默认命名空间
+设置 k8s 默认 ns, 方便后续操作。在中控机执行：
+``` bash
+kubectl config set-context --current --namespace=blueking
+```
+
+## 可选：配置 ssh 免密登录
+部署脚本中不会登录到其他节点，本文档中为了方便你快速上手，一些命令片段会从直接中控机上调用 `ssh` 登录 k8s node（包括 master） 执行命令。
+
+如果你提前配置免密登录，则可直接复制这些命令使用。
+
+>**提示**
+>
+>如果你所在的公司有安全规范禁止直接添加公钥授权，可跳过此章节，到时手动 ssh 到对应机器操作即可。
+
+在 **中控机** 执行如下命令：
+``` bash
+# 集群所有机器的IP
+node_ips=$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}')
+test -f /root/.ssh/id_rsa || ssh-keygen -N '' -t rsa -f /root/.ssh/id_rsa  # 如果不存在rsa key则创建一个。
+# 开始给发现的ip添加ssh key，期间需要你输入各节点的密码。
+for ip in $node_ips; do
+  ssh-copy-id "$ip" || { echo "failed on $ip."; break; }  # 如果执行失败，则退出
+done
+```
+
+常见报错：
+1. `Host key verification failed.`，且开头提示 `REMOTE HOST IDENTIFICATION HAS CHANGED`: 检查目的主机是否重装过。如果确认没连错机器，可以使用 `ssh-keygen -R IP地址` 命令删除 `known_hosts` 文件里的记录。
+
+
 # 下一步
-前往《[准备中控机](prepare-bkctrl.md)》文档。
+
+[部署基础套餐](install-bkce.md)

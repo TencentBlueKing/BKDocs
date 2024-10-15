@@ -1,8 +1,12 @@
 欢迎体验蓝鲸自动化 API 测试工具。
 
-# 部署 bk-apicheck
+# 须知
+1. 在执行测试任务时，bk-apicheck 会调用对应平台的 API 创建并删除数据。鉴于平台大都实现为了软删除（标记删除，但记录保留），因此你开始使用时，新增资源的自增 ID 不是从 1 开始。
+2. 部署完成后，会自动开始第一轮全量测试。
+3. 全量测试包括“监控平台”。如果第一轮全量测试时尚未部署，会导致测试结果为 “failed”。后续可以在界面上单独对其测试。
 
-更新 bk-apicheck:
+# 部署 bk-apicheck
+部署 bk-apicheck:
 ``` bash
 helmfile -f 05-bkapicheck.yaml.gotmpl sync
 ```
@@ -11,8 +15,9 @@ helmfile -f 05-bkapicheck.yaml.gotmpl sync
 >``` plain
 >UPDATED RELEASES:
 >NAME          CHART                  VERSION
->bk-apicheck   blueking/bk-apicheck   TODO
+>bk-apicheck   blueking/bk-apicheck   2.1.6
 >```
+
 
 # 使用 bk-apicheck
 ## 访问地址
@@ -24,15 +29,10 @@ helmfile -f 05-bkapicheck.yaml.gotmpl sync
 ![apicheck-landing-page.png](../7.1/assets/apicheck-landing-page.png)
 
 ## 界面用法
->**注意**
->
->在执行任务时，bk-apicheck 会调用对应平台的 API 创建并删除数据。鉴于平台大都实现为了软删除（标记删除，但记录保留），因此会导致你新增资源的自增 ID 不是从 1 开始。
 
-我们提供了 “全量 API” 模式和一些系统的单项测试，都是独立测试和报告的。所以全量执行后，不会出现单项的报告。
+我们提供了 “全量 API” 模式和一些系统的单项测试，二者是独立的。所以执行“全量 API”任务后，不会出现单项的报告。
 
->**提示**
->
->如果在执行 “全量 API” 测试时，尚未部署 监控平台。可以在部署完成后在 “监控平台 API” 卡片里点击 “执行” 进行单独测试。
+初次部署会自动进行一次“全量 API”测试，请耐心等待任务完成，期间无法重复发起任务。
 
 点击每个卡片里的 “执行” 按钮，即会发起测试任务。测试完毕后会自动跳转到报告页。全量测试耗时 8-15 分钟，其余单平台测试每个 1-3 分钟。
 
