@@ -1,3 +1,0 @@
-# Other
-
-To be added

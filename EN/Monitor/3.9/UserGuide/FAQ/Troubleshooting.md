@@ -1,3 +1,0 @@
-# Troubleshooting common problems
-
-TroubleShooting

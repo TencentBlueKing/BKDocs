@@ -1,1 +1,0 @@
- # Deploy BK-CI in BlueKing Community Edition 
