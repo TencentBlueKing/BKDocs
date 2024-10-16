@@ -150,6 +150,7 @@
         * [其他小功能](UserGuide/Appendix/tricks.md)  
         * [全局配置](UserGuide/Appendix/admin_config.md)
         * [自监控](UserGuide/Appendix/self_monitor.md)
+        * [Grafana 升级10.x差异说明](UserGuide/Appendix/grafana10.md)
 * [二次开发]()
     * [Exporter 插件开发](UserGuide/Dev/plugin_exporter_dev.md)
     * [DataDog 插件开发](UserGuide/Dev/plugin_datadog_dev.md)
