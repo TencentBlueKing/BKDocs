@@ -15,9 +15,12 @@ TODO 补充文档
 ## 复制 bcs-ops 到 k8s master
 将 bcs-ops 脚本包传输到 k8s master 上的 `/root` 目录（可自定义）。在中控机执行：
 ``` bash
-k8s_master_ip=xxx
-rsync -ra "$INSTALL_DIR/bcs-ops" "$k8s_master_ip":/root/
+master_ip=xxx
+rsync -ra "$INSTALL_DIR/bcs-ops" "$master_ip":/root/
 ```
+>**注意**
+>
+>即便是 中控机 复用 master，也需要复制 bcs-ops 目录。`$INSTALL_DIR/bcs-ops` 作为模板存在，以便后续维护。
 
 ## 部署初始 master
 
@@ -91,13 +94,16 @@ cd /root/bcs-ops
 ```
 
 ### 执行扩容
->**提示**
->
->同一类型的机器扩容命令相同。
 
 在 **待扩容的机器** 上粘贴刚才复制的命令。扩容成功后, 会在结尾输出:
 ``` plain
-TODO
+This node has joined the cluster:
+* Certificate signing request was sent to apiserver and a response was received.
+* The Kubelet was informed of the new secure connection details.
+
+Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
+
+Created symlink /etc/systemd/system/multi-user.target.wants/kubelet.service → /usr/lib/systemd/system/kubelet.service.
 ```
 
 # 在中控机管理集群
@@ -110,7 +116,7 @@ TODO
 
 在 **中控机** 上执行如下命令（请赋值 `master_ip`为 master 的 IP）：
 ```bash
-master_ip=10.0.0.2  # 请自行修改为bcs.sh所部署的master ip，建议配置好中控机免密登录。
+master_ip=10.0.0.2  # 请自行修改为master ip，建议配置好中控机免密登录。
 scp "$master_ip":/usr/bin/kubectl /usr/bin/
 ```
 
@@ -135,7 +141,6 @@ source /etc/bash_completion.d/kubectl
 
 在 **中控机** 上执行如下命令（请替换 `k8s-master`为具体的主机名或 IP）：
 ```bash
-master_ip=10.0.0.2  # 请自行修改为bcs.sh所部署的master ip，建议配置好中控机免密登录。
 mkdir -p ~/.kube
 # 复制kubeconfig，如未配置免密登录请输入master的密码
 scp "$master_ip":.kube/config ~/.kube/config
@@ -146,10 +151,19 @@ grep bcs.local /etc/hosts || ssh "$master_ip" grep bcs.local /etc/hosts | tee -a
 ## 检查 k8s 集群节点
 在 **中控机** 上执行如下命令：
 ```bash
-kubectl get nodes -o wide
+kubectl get nodes
 ```
-其输出如下图所示：<br/>
-![](../7.0/assets/2022-03-09-10-34-42.png)
+其输出如下所示：
+``` plain
+# kubectl get nodes
+NAME             STATUS   ROLES           AGE   VERSION
+master-10-0-0-1  Ready    control-plane   14h   v1.24.15
+node-10-0-0-2    Ready    <none>          13h   v1.24.15
+node-10-0-0-3    Ready    <none>          13h   v1.24.15
+node-10-0-0-4    Ready    <none>          13h   v1.24.15
+node-10-0-0-5    Ready    <none>          13h   v1.24.15
+node-10-0-0-6    Ready    <none>          13h   v1.24.15
+```
 
 当  `STATUS`  列的值为  `Ready` ，即表示此 `node` 已经成功加入集群且工作正常。
 
@@ -174,6 +188,8 @@ bcs-ops 适配多种存储类，故不再制备 pv 目录。
 需要登录到各 node 上操作（如果希望让 master 能提供 pv，则也需操作）：
 ``` bash
 cd /root/bcs-ops/
+# 设置localpv的目录和数量。注意LOCALPV_DST_DIR需要和 values 里的 `localpv.hostDir` 一致
+export LOCALPV_DIR=/data/bcs/localpv LOCALPV_DST_DIR=/mnt/blueking LOCALPV_COUNT=20
 ./system/mount_localpv
 ```
 如果有扩容新机器，记得在新机器上执行。

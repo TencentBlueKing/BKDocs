@@ -54,30 +54,30 @@ source /etc/bash_completion.d/kubectl
 ## 检查 k8s 集群节点
 在 **中控机** 上执行如下命令：
 ```bash
-kubectl get nodes -o wide
+kubectl get nodes
 ```
-其输出如下图所示：<br/>
-![](../7.0/assets/2022-03-09-10-34-42.png)
+其输出如下所示：
+``` plain
+# kubectl get nodes
+NAME             STATUS   ROLES           AGE   VERSION
+master-10-0-0-1  Ready    control-plane   14h   v1.24.15
+node-10-0-0-2    Ready    <none>          13h   v1.24.15
+node-10-0-0-3    Ready    <none>          13h   v1.24.15
+node-10-0-0-4    Ready    <none>          13h   v1.24.15
+node-10-0-0-5    Ready    <none>          13h   v1.24.15
+node-10-0-0-6    Ready    <none>          13h   v1.24.15
+```
+
+如需了解对应  `node`  的详情，可使用命令：
+```bash
+kubectl describe nodes NAME  # NAME参数为 kubectl get nodes输出的 NAME 列
+```
 
 ### kubectl 的常见报错
 1. `Unable to connect to the server: dial tcp: lookup k8s-api.bcs.local: no such host`，请确保 **中控机** 能正常解析  `~/.kube/config` 文件中的 `cluster.server` 配置项中的域名。
 2. `The connection to the server k8s-api.bcs.local:6443 was refused - did you specify the right host or port?`，请确保 **中控机** 到 `k8s-api.bcs.local` （提示的域名）的 6443 端口。一般需要检查目的服务器的防火墙，云服务器需额外检查安全组。
 3. `Unable to connect to the server: dial tcp 10.0.0.254:6443: i/o timeout`，请确保 **中控机** 到 `k8s-api.bcs.local` （提示的域名）的网络可互通，以及目的服务器的防火墙，云服务器需额外检查安全组。
 
-## 检查 k8s 集群节点
-在 **中控机** 上执行如下命令：
-```bash
-kubectl get nodes -o wide
-```
-其输出如下图所示：<br/>
-![](../7.0/assets/2022-03-09-10-34-42.png)
-
-当  `STATUS`  列的值为  `Ready` ，即表示此 `node` 已经成功加入集群且工作正常。
-
-如需了解对应  `node`  的详情，可使用命令：
-```bash
-kubectl describe nodes NAME  # NAME参数为 kubectl get nodes输出的 NAME 列
-```
 
 # 部署蓝鲸所需的调整项
 

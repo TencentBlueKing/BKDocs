@@ -8,15 +8,24 @@
 BEGIN{
   stderr="/dev/stderr"
 
+  cnt_ignore=0
+  cnt_images=0
+  cnt_same=0
   while((getline < "scripts/chart-appversion.tsv")>0){
     for(i=2;i<=NF;i++){
       tpl_chart_image[$1][$i]=1
       #print "DEBUG loaded", $1, $i > stderr
-      cnt_images++
+      if($i=="IGNORE"){
+        cnt_ignore++
+      } else if($i=="--"){
+        cnt_same++
+      } else {
+        cnt_images++
+      }
     }
     cnt_chart++
   }
-  print "DEBUG: cnt_chart, cnt_images", cnt_chart, cnt_images > stderr
+  printf "DEBUG: cnt_chart=%d, cnt_images=%d, cnt_same=%d, cnt_ignore=%d\n", cnt_chart, cnt_images, cnt_same, cnt_ignore > stderr
 }
 BEGINFILE{
   delete m_chart_image_version
@@ -32,7 +41,9 @@ BEGINFILE{
   }
   # 提取检查
   if(chart in tpl_chart_image){
-    if("--" in tpl_chart_image[chart]){
+    if("IGNORE" in tpl_chart_image[chart]){
+      next
+    } else if("--" in tpl_chart_image[chart]){
       appversion=version
     } else {
       appversion=""
@@ -45,7 +56,7 @@ BEGINFILE{
         else error=error" "image":"image_tag
       }
       if(error){
-        print "ERROR: version mismatch:", error > stderr
+        print "ERROR: version mismatch: in chart " chart"-"version ": appversion="appversion" but images are" error > stderr
         next
       }
     }

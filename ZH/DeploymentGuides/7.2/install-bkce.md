@@ -14,8 +14,8 @@
 
 高可用的资源开销及运维成本都很高，有丰富的容器化环境高可用实践经验者，可以自行研究高可用部署。要点在于：
 1. 公共存储高可用：请遵循对应软件的官方文档实施。
-2. ingress-nginx 高可用：蓝鲸默认使用 ingress-nginx 作为入口，请遵循官方文档实施。
-3. 蓝鲸系统高可用：需调整资源配额、副本数、反亲和调度、域名解析等，可与 ingress 配合实现高可用。其中 bk-repo 文件存储目录应该挂载可多节点共享的文件系统，如 NFS。
+2. ingress 高可用：蓝鲸默认使用 ingress-nginx 作为入口，请遵循官方文档实施。
+3. 蓝鲸系统高可用：需调整资源配额、副本数、反亲和调度、域名解析等，可与 ingress 配合实现高可用。其中 蓝鲸制品库 的文件存储目录应该挂载可多节点共享的文件系统，如 NFS。
 
 # 下载所需的资源文件
 
@@ -41,7 +41,7 @@ bkdl-7.2-stable.sh -ur latest base demo nm_gse_full saas scripts
 export REGISTRY=代理IP:端口
 ```
 
-注意：请提前在 **全部 k8s node** 上为 dockerd 配置 TLS 证书或者 `insecure-registries` 选项。
+注意：请提前在 **全部 k8s node** 上为 containerd 处理 SSL 证书问题，可以参考 《[调整 node 上的容器运行时](install-bkce.md#k8s-node-cri-insecure-registries)》文档。
 
 ## 检查存储供应
 先检查当前的存储提供者。在 中控机 执行：
@@ -49,11 +49,9 @@ export REGISTRY=代理IP:端口
 kubectl get sc
 ```
 * 如果 `NAME` 列存在带 ` (default)` 后缀的条目（且只能存在一条），说明已经配置了默认存储类，检查 **通过**。
-* 如果上述命令提示 `No resources found`，说明还没有配置存储类，请根据你的 k8s 来源选择。
-  * 由 `bcs.sh` 创建的 k8s 集群，默认会制备 localpv 目录，稍后会自动安装。检查 **通过**。
-  * 其他方式获取的 k8s 集群，大概率没有制备 localpv 目录，检查 **不通过**。请参考如下方式处理后 **重新检查存储供应**：
-    * 如果希望由 node 提供存储，可参考部署详解 [直接创建 localpv](./storage-services.md#localpv)
-    * 自行配置其他 sc，并设置为默认。
+* 如果上述命令提示 `No resources found`，说明还没有配置存储类。请参考如下方式处理后 **重新检查存储供应**：
+  * 如果希望由 node 提供存储，可参考部署详解 [直接创建 localpv](./storage-services.md#localpv)
+  * 自行配置其他 sc，并设置为默认。
 
 <a id="setup_bkce7-i-base" name="setup_bkce7-i-base"></a>
 
@@ -131,19 +129,12 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 2. 推荐：上传 PaaS runtimes 到 bkrepo
 3. 可选：配置 SaaS 专用 node
 
-<a id="k8s-node-docker-insecure-registries" name="k8s-node-docker-insecure-registries"></a>
+<a id="k8s-node-cri-insecure-registries" name="k8s-node-cri-insecure-registries"></a>
 
 ### 确保 node 能拉取 SaaS 镜像
-在快速部署环节，我们假设全部 node 都可能用作 SaaS 运行环境。且默认使用 http 访问 bkrepo docker。
+具体操作请查阅 《[确保 node 能拉取 SaaS 镜像](saas-node-pull-images.md)》 文档。
 
-请提前在中控机配置 ssh 免密登录，然后执行如下脚本自动修改 dockerd 配置，添加制品库 docker 服务的域名解析及 insecure-registries 配置项：
-``` bash
-scripts/docker-insecure.sh
-```
-
->**提示**
->
->如果希望了解具体的配置步骤，请查阅部署详解里的 《[确保 node 能拉取 SaaS 镜像](saas-node-pull-images.md)》 文档。
+完成后，回到本文档继续操作。
 
 <a id="paas-runtimes" name="paas-runtimes"></a>
 

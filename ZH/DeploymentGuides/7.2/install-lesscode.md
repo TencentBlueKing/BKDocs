@@ -29,7 +29,7 @@ scripts/setup_bkce7.sh -i lesscode
 当浏览器访问“开发者中心”进行部署时，需要提前在浏览器里下载安装包：
 | 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 运维开发平台（bk_lesscode） | 1.1.0-beta.15 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_lesscode/bk_lesscode-V1.1.0-beta.15.tar.gz |
+| 运维开发平台（bk_lesscode） | 1.1.0-beta.17 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_lesscode/bk_lesscode-V1.1.0-beta.17.tar.gz |
 
 
 ### 创建应用
@@ -48,10 +48,10 @@ scripts/setup_bkce7.sh -i lesscode
 
 | KEY | 建议取值 | 描述 | 取值说明 |
 | -- | -- | -- | -- |
-| `PREVIEW_DB_HOST` | `bk-mysql-mysql.blueking` | 预览环境数据库主机 | 此处取 `bk-mysql-mysql` 服务的域名 |
-| `PREVIEW_DB_PORT` | `3306` | 预览环境数据库端口 | 蓝鲸 `bk-mysql-mysql` 服务默认端口 |
-| `PREVIEW_DB_USERNAME` | `root` | 预览环境数据库登录用户名, 需要有创建数据库的权限，一般为 root | 蓝鲸 `bk-mysql-mysql` 服务默认用户名 |
-| `PREVIEW_DB_PASSWORD` | `blueking` | 预览环境数据库登录密码 | 蓝鲸 `bk-mysql-mysql` 服务默认密码 |
+| `PREVIEW_DB_HOST` | `bk-mysql8.blueking` | 预览环境数据库主机 | 此处取 `bk-mysql8` 服务的域名 |
+| `PREVIEW_DB_PORT` | `3306` | 预览环境数据库端口 | 蓝鲸 `bk-mysql8` 服务默认端口 |
+| `PREVIEW_DB_USERNAME` | `root` | 预览环境数据库登录用户名, 需要有创建数据库的权限，一般为 root | 蓝鲸 `bk-mysql8` 服务默认用户名 |
+| `PREVIEW_DB_PASSWORD` | `blueking` | 预览环境数据库登录密码 | 蓝鲸 `bk-mysql8` 服务默认密码 |
 | `PRIVATE_NPM_REGISTRY` | `http://bkrepo.${BK_DOMAIN}/npm/bkpaas/npm` | npm 镜像源地址 | 蓝鲸制品库 bkpaas 项目的 npm 仓库地址，请替换 `${BK_DOMAIN}` 为你的域名 |
 | `PRIVATE_NPM_USERNAME` | `bklesscode` | npm 账号用户名 | PaaS values `global.bkrepoConfig.lesscodeUsername` |
 | `PRIVATE_NPM_PASSWORD` | `blueking` | npm 账号密码 | PaaS values `global.bkrepoConfig.lesscodePassword` |
@@ -60,10 +60,12 @@ scripts/setup_bkce7.sh -i lesscode
 
 ### 部署到生产环境
 在 “部署管理” 界面开始部署，详细步骤如下：
-1. 切换下方面板到 “生产环境”。
-2. 展开“选择部署分支”下拉框，在 `image` 分组下选择刚才上传的版本。
-3. 点击右侧的“部署至生产环境”按钮。部署期间会显示进度及日志。
-4. 目前 lesscode 首次部署会超时，需 **重新部署** 一次。此问题修复中。
+共有 **一个模块** 需要部署，步骤为：
+1. 切换面板到 “生产环境”。
+2. 只有 `default` 模块，点击“部署”按钮。
+3. 弹出的“选择部署分支”下拉框，会展示最新版本，请注意确认。“镜像拉取策略”选择“`IfNotPresent`”即可。
+4. 点击“部署至生产环境”按钮。开始部署，期间会显示进度及日志。
+5. 部署成功后，即可点击“访问”按钮了。如果访问出错或者白屏，可能是服务尚未启动完毕，稍等 1 分钟后重试。
 
 在部署完成后，需要配置访问地址，请继续阅读。
 

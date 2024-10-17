@@ -144,7 +144,7 @@ helm repo list
 export REGISTRY=代理IP:端口
 ```
 
-注意：请提前在 **全部 k8s node** 上为 dockerd 配置 TLS 证书或者 `insecure-registries` 选项。
+注意：请提前在 **全部 k8s node** 上为 containerd 处理 SSL 证书问题，可以参考 《[调整 node 上的容器运行时](install-bkce.md#k8s-node-cri-insecure-registries)》文档。
 
 
 # 配置全局 custom-values
@@ -171,11 +171,15 @@ BK_DOMAIN=bkce7.bktencent.com  # 请修改为你分配给蓝鲸平台的主域�
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 # 可使用如下命令添加域名。如果文件已存在，请手动编辑。
 custom=environments/default/custom.yaml
+# 获取容器日志目录路径
+cri_root_dir=$(./scripts/get_cri_root_dir.sh)
 cat >> "$custom" <<EOF
 imageRegistry: ${REGISTRY:-hub.bktencent.com}
 domain:
   bkDomain: $BK_DOMAIN
   bkMainSiteDomain: $BK_DOMAIN
+apps:
+  bkappFilebeat.containersLogPath: $cri_root_dir
 EOF
 ```
 
@@ -184,17 +188,16 @@ EOF
 ## 配置容器日志目录
 平台组件的后台日志采集用。
 
-请在所有 **k8s node** 上执行此命令，预期输出一致：
+在 **中控机** 上执行：
 ``` bash
-docker info | awk -F": " '/Docker Root Dir/{print $2"/containers"}'
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+# 可使用如下命令添加域名。如果文件已存在，请手动编辑。
+custom=environments/default/custom.yaml
+# 获取容器日志目录路径
+cri_root_dir=$(./scripts/get_cri_root_dir.sh)
+# 添加如下配置项
+yq -i e '.apps."bkappFilebeat.containersLogPath"="'"$cri_root_dir\"" "$custom"
 ```
-当上述路径一致时，请编辑中控机的 `custom.yaml` 文件，添加如下配置项：
-``` bash
-apps:
-  bkappFilebeat.containersLogPath: "查询到的路径"
-```
-
-我们预期你的 k8s node 具备相同的 docker 配置。如果此路径不一致，请先完成 docker 标准化。
 
 # 生成 values 文件
 还有一些 values 文件随着部署环境的不同而变化，所以我们提供了脚本快速生成。

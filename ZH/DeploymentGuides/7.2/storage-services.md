@@ -28,42 +28,22 @@ kubectl get sc
 ### 制备 pv 目录
 >**提示**
 >
->当你使用 `bcs.sh` 部署 k8s 集群时，会默认为 node 节点制备 pv 目录，可以跳过本章节。如果希望让 master 提供 pv，可以参考本章节手动操作。
+>使用 `bcs-ops` 部署 k8s 集群时，不再默认制备 pv 目录。
 
-本章节内容需要在 node 上操作。
-
-当使用 `localpv` 时，要求每个 pv 目录都是一个挂载点。
+`localpv` 要求每个 pv 目录都是一个挂载点。
 
 如果没有足够的磁盘，可以使用 `mount --bind` 来实现相同的效果。源目录可以自定义，但是目的目录需要和 values 保持一致。
 
 我们在 全局 values 文件里的 `localpv.hostDir` 定义了 pv 目录，默认值为 `/mnt/blueking/`。如需修改，请在 全局 custom-values 中进行覆盖。
 
-因为 bcs.sh 没有为 master 提供 pv 目录，所以接下来以此为例，描述如何制备 pv 目录：
+需要登录到各 node 上操作（如果希望让 master 能提供 pv，则也需操作）：
 ``` bash
-# 源目录可以自定义，需要目录所在磁盘有 100GB 以上的空间。此处为了和 bcs.sh 保持一致，使用 /data/bcs/localpv/
-src_dir=/data/bcs/localpv/
-# pv目录需要和全局 Values 中的 .localpv.hostDir 保持一致
-pv_host_dir=/mnt/blueking/
-# 创建 20 个pv所需的目录。
-for i in {01..20}; do
-  vol="vol$i"
-  vol_dir="${pv_host_dir%/}/$vol"
-  vol_src="${src_dir%/}/$vol"
-  mkdir -p "$vol_dir" "$vol_src";
-  if grep -w "$vol_dir" /etc/fstab; then
-    echo >&2 "TIP: vol $vol exist in /etc/fstab."
-  else
-    echo "$vol_src $vol_dir none defaults,bind 0 0" | tee -a /etc/fstab
-  fi
-done
-# 在目录制备完成后，需要mount才能被 localpv provisioner 认可。
-mount -va
+cd /root/bcs-ops/
+# 设置localpv的目录和数量。注意LOCALPV_DST_DIR需要和 values 里的 `localpv.hostDir` 一致
+export LOCALPV_DIR=/data/bcs/localpv LOCALPV_DST_DIR=/mnt/blueking LOCALPV_COUNT=20
+./system/mount_localpv
 ```
-
-检查各 node 的 fstab 和 mount 结果：
-``` bash
-grep -w vol[0-9][0-9] /etc/fstab /proc/self/mounts
-```
+如果有扩容新机器，记得在新机器上执行。
 
 ### 创建 pv
 执行如下命令配置 localpv 存储类并创建一批 pv：
@@ -86,7 +66,7 @@ local-pv-18c3e0ef   98Gi       RWO            Delete           Available        
 
 # 存储服务
 蓝鲸预置了如下的 release 供快速体验：
-* bk-mysql
+* bk-mysql8
 * bk-rabbitmq
 * bk-redis
 * bk-redis-cluster
@@ -102,10 +82,10 @@ local-pv-18c3e0ef   98Gi       RWO            Delete           Available        
 >
 >在中控机执行 `helmfile -f base-storage.yaml.gotmpl sync` 即可并行部署这些 release。
 
-### 部署 bk-mysql
+### 部署 bk-mysql8
 在中控机工作目录下执行：
 ``` bash
-helmfile -f base-storage.yaml.gotmpl -l name=bk-mysql sync
+helmfile -f base-storage.yaml.gotmpl -l name=bk-mysql8 sync
 ```
 
 ### 部署 bk-rabbitmq
@@ -152,23 +132,23 @@ helmfile -f base-storage.yaml.gotmpl -l name=bk-etcd sync
 
 ### 示例：自定义 mysql
 #### 修改配置文件
-参考 `base-storage.yaml.gotmpl` 中的 `bk-mysql` 定义：
+参考 `base-storage.yaml.gotmpl` 中的 `bk-mysql8` 定义：
 ``` yaml
-  - name: bk-mysql
+  - name: bk-mysql8
     namespace: {{ .Values.namespace }}
     # Mysql chart files/create_database.sql contains CREATE DATABASE for all blueking databases
-    chart: ./charts/mysql-{{ .Values.version.mysql }}.tgz
+    chart: ./charts/mysql-{{ .Values.version.mysql8 }}.tgz
     missingFileHandler: Warn
-    version: {{ .Values.version.mysql }}
-    condition: bitnamiMysql.enabled
+    version: {{ .Values.version.mysql8 }}
+    condition: bitnamiMysql8.enabled
     values:
-    - ./environments/default/mysql-values.yaml.gotmpl
-    - ./environments/default/mysql-custom-values.yaml.gotmpl
+    - ./environments/default/mysql8-values.yaml.gotmpl
+    - ./environments/default/mysql8-custom-values.yaml.gotmpl
 ```
 
 condition 决定 release 是否启用。这是在全局 values（`environments/default/values.yaml`）中定义的：
 ``` yaml
-bitnamiMysql:
+bitnamiMysql8:
   enabled: true
 ```
 
@@ -176,14 +156,14 @@ bitnamiMysql:
 ``` yaml
 mysql:
   # 处于同一集群可以使用k8s service 名
-  host: "bk-mysql-mysql"
+  host: "bk-mysql8"
   port: 3306
   rootPassword: blueking
 ```
 
 现在需要覆盖上述的 values，因为此处涉及的 values 都在全局 values 文件，所以修改全局 custom values 文件（`environments/default/custom.yaml`）：
 ``` yaml
-bitnamiMysql:
+bitnamiMysql8:
   enabled: false
 mysql:
   host: "填写服务端 IP"
@@ -231,13 +211,20 @@ CREATE DATABASE IF NOT EXISTS bk_log_search DEFAULT CHARACTER SET utf8 COLLATE u
 CREATE DATABASE IF NOT EXISTS bklog_grafana DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE DATABASE IF NOT EXISTS bk_nodeman DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE DATABASE IF NOT EXISTS bk_dbm DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-CREATE DATABASE IF NOT EXISTS bk_dbm_grafana DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_backup_server DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_db_celery_service DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE DATABASE IF NOT EXISTS bk_dbm_dbconfig DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-CREATE DATABASE IF NOT EXISTS bk_dbm_dbpriv DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE DATABASE IF NOT EXISTS bk_dbm_dbpartition DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_dbpriv DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_dbresource DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE DATABASE IF NOT EXISTS bk_dbm_dbsimulation DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE DATABASE IF NOT EXISTS bk_dbm_dns DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_grafana DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE DATABASE IF NOT EXISTS bk_dbm_hadb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bk_dbm_report DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS bcs DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `bcs-cc` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `bcs-app` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 ```
 
 ### 其他文件的修改

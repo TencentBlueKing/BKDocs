@@ -12,10 +12,10 @@
 
 | 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 流程服务（bk_itsm） | 2.6.30 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.6.30.tar.gz |
-| 标准运维（bk_sops） | 3.33.4 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.33.4.tar.gz |
-| 配置平台 SaaS（bk_cmdb_saas） | TODO | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_cmdb_saas/bk_cmdb_saas-V????.tar.gz |
-| 节点管理（bk_nodeman） | 2.4.7-beta.1394 | 在中控机部署，期间会自动下载。无需在浏览器里单独下载。 |
+| 流程服务（bk_itsm） | 2.7.0 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.7.0.tar.gz |
+| 标准运维（bk_sops） | 3.33.8 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.33.8.tar.gz |
+| 配置平台 SaaS（bk_cmdb_saas） | 3.14.1-beta1 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_cmdb_saas/bk_cmdb_saas-V3.14.1-beta1.tar.gz |
+| 节点管理（bk_nodeman） | 2.4.7-rc.1418 | 在中控机部署，期间会自动下载。无需在浏览器里单独下载。 |
 
 
 <a id="paas-svc-redis" name="paas-svc-redis"></a>
@@ -33,27 +33,38 @@
 
 访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
 
-在 「`0shared`」这行点击 「添加实例」，重复添加 5 - 10 次（蓝鲸基础套餐会占用 4 个实例，余量可供后续安装的 SaaS 使用）。如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。
+点击 “`0shared`” 这行的 “添加实例” 按钮。
+![paas-admin-redis-pool.png](assets/paas-admin-redis-pool.png)
 
-![](../7.0/assets/2022-03-09-10-43-11.png)
+在弹出的“添加实例”窗口中，启用 “可回收复用” 开关，并在 “实例配置” 贴入配置代码。
+![paas-admin-redis-add.png](assets/paas-admin-redis-add.png)
 
-启用 “可回收复用” 开关，并在 “实例配置” 贴入配置代码，在 **中控机** 执行如下命令生成：
-``` bash
-redis_json_tpl='{"host":"%s","port": %d,"password":"%s"}'
-redis_host="bk-redis-master.blueking.svc.cluster.local"  # 默认用蓝鲸默认的redis，可自行修改
-redis_port=6379  # 按需修改
-redis_pass=$(kubectl get secret --namespace blueking bk-redis \
-  -o jsonpath="{.data.redis-password}" | base64 --decode)  # 读取默认redis的密码，按需修改赋值语句
-printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # 格式化以确保json格式正确
-```
+>**提示**
+>
+>如需复用蓝鲸公共 Redis，可在 **中控机** 生成配置代码：
+>``` bash
+>redis_json_tpl='{"host":"%s","port": %d,"password":"%s"}'
+>redis_host="bk-redis-master.blueking.svc.cluster.local"  # 默认用蓝鲸默认的redis，可自行修改
+>redis_port=6379  # 按需修改
+>redis_pass=$(kubectl get secret --namespace blueking bk-redis \
+>  -o jsonpath="{.data.redis-password}" | base64 --decode)  # 读取默认redis的密码，按需修改赋值语句
+>printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # 格式化以确保json格式正确
+>```
 
-命令输出如下图所示：
+>**提示**
+>
+>如需保障 SaaS 性能，可使用自建的 Redis 服务（需确保 k8s node 可访问）。配置模板如下：
+>``` json
+>{
+>  "host":"Redis 服务域名",
+>  "port": 端口号（数字）,
+>  "password":"密码"
+>}
+>```
 
-![](../7.0/assets/2022-03-09-10-44-00.png)
+点击 “确定” 按钮，即可添加 1 个实例。回到列表页继续点击 “添加实例” 按钮，添加更多实例（配置可相同）。
 
-浏览器界面如下图所示：
-
-![](../7.0/assets/2022-03-09-10-43-19.png)
+蓝鲸基础套餐会占用 6 个实例，建议添加 10 个实例（余量可供后续安装的 SaaS 使用）。
 
 
 <a id="upload-bkce-saas" name="upload-bkce-saas"></a>
@@ -72,11 +83,11 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 ### 创建应用
 登录 “蓝鲸桌面”，在侧栏导航里打开 “开发者中心”。
 
-点击右上角的 “创建应用” 按钮，进入“创建应用”界面。
+此时位于“首页”，点击右上角的 “创建应用” 按钮，进入“创建应用”界面。
 
-选择 “S-mart 应用”，点击上传区域，选择提前下载的 SaaS 安装包。操作步骤如下图所示：
+选择 “云原生应用”——“S-mart 应用”，点击上传区域，选择提前下载的 SaaS 安装包。操作步骤如下图所示：
 
-![](../7.0/assets/2022-03-09-10-44-26.png)
+![paas-smart-create.png](assets/paas-smart-create.png)
 
 文件选择成功后，后台会开始检查安装包。并显示解析到的包信息，点击 “确认并创建应用” 按钮开始创建。
 
@@ -86,17 +97,29 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 >
 >其他异常请查阅《[SaaS 部署问题案例](troubles/deploy-saas.md)》文档。
 
-稍等片刻后，会显示成功页面：`恭喜，应用 "应用名称" 创建成功`。此时可点击提示下方常用操作里的 “部署应用” 链接，进入“部署管理”界面开始部署。
+稍等片刻后，会显示成功页面：`恭喜，应用 "应用名称" 创建成功`。此时可点击提示下方的 “部署应用” 链接，进入“部署管理”界面开始部署。
 
-![](../7.0/assets/smart-package-upload-success.png)
+![paas-smart-create-result.png](assets/paas-smart-create-result.png)
 
 ### 更新安装包
+全新安装的开发者中心默认使用云原生应用，操作路径有变。
+
 创建应用后，如果需要更新安装包版本。需使用如下步骤：
 1. 使用有权限管理开发者中心的账户（如 admin ）登录到桌面，在左侧打开 “开发者中心” 应用。
 2. 点击导航栏的 “应用开发”。选择要更新的应用（如“流程服务”），会进入“应用概览”。
-3. 此时在左侧展开“应用引擎”，点击“包版本管理”。
-4. 在包版本管理界面，点击“上传新版本”按钮，会弹出上传窗口。后续流程和上文 创建应用 类似，此处不再赘述。
-5. 新版本上传成功后，在页面左侧导航栏展开 “应用引擎”目录，点击 “部署管理” 开始部署，细节见下文。
+3. 在左侧展开“应用配置”——“模块配置”。进入“构建配置”，点击“上传新版本”按钮。（SMart 应用只需在任意模块下上传 1 次。）
+  ![paas-smart-upload-version.png](assets/paas-smart-upload-version.png)
+4. 弹出上传窗口的操作流程和上文 创建应用 类似，此处不再赘述。
+5. 新版本上传成功后，在页面左侧导航栏点击 “部署管理” 开始部署，后续操作见对应应用的部署章节。
+
+>**提示**
+>
+>普通应用使用如下步骤：
+>1. 使用有权限管理开发者中心的账户（如 admin ）登录到桌面，在左侧打开 “开发者中心” 应用。
+>2. 点击导航栏的 “应用开发”。选择要更新的应用（如“流程服务”），会进入“应用概览”。
+>3. 此时在左侧展开“应用引擎”，点击“包版本管理”。
+>4. 在包版本管理界面，点击“上传新版本”按钮，会弹出上传窗口。后续流程和上文 创建应用 类似，此处不再赘述。
+>5. 新版本上传成功后，在页面左侧导航栏展开 “应用引擎”目录，点击 “部署管理” 开始部署，后续操作见对应应用的部署章节。
 
 
 <a id="deploy-bkce-saas" name="deploy-bkce-saas"></a>
@@ -111,18 +134,19 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 流程服务（bk_itsm） **无需额外配置**，所以可以直接在 “部署管理” 界面开始部署。
 
 共有 **一个模块** 需要部署，详细步骤如下：
-1. 顶部的“模块”可以选择要部署的模块。流程服务（bk_itsm）只有 `default` 模块，故无需切换。
-2. 然后切换下方面板到 “生产环境”。
-3. 展开“选择部署分支”下拉框，在 `image` 分组下选择刚才上传的版本（如果计划部署 `package` 分组下的版本，需要先完成《[上传 PaaS runtimes 到制品库](paas-upload-runtimes.md)》文档）。
-4. 点击右侧的“部署至生产环境”按钮。部署期间会显示进度及日志。
+1. 切换面板到 “生产环境”。
+2. 流程服务（bk_itsm）只有 `default` 模块，点击“部署”按钮。
+   ![itsm-deploy-prod.png](assets/itsm-deploy-prod.png)
+3. 弹出的“选择部署分支”下拉框，会展示最新版本，请注意确认。“镜像拉取策略”选择“`IfNotPresent`”即可。
+   ![itsm-deploy-prod-version.png](assets/itsm-deploy-prod-version.png)
+4. 点击“部署至生产环境”按钮。开始部署，期间会显示进度及日志。
+   ![itsm-deploy-prod-log.png](assets/itsm-deploy-prod-log.png)
+5. 部署成功后，即可点击“访问”按钮了。如果访问出错或者白屏，可能是服务尚未启动完毕，稍等 1 分钟后重试。
 
 >**提示**
 >
 >部署如有异常，请先查阅《[SaaS 部署问题案例](troubles/deploy-saas.md)》文档。
 
-步骤示例图：
-
-![](../7.0/assets/deploy-saas-on-appo.png)
 
 <!--
 <a id="deploy-bkce-saas-gsekit" name="deploy-bkce-saas-gsekit
@@ -141,15 +165,12 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 请参考上文 上传安装包 章节完成应用创建或者安装包更新。
 
 标准运维（bk_sops）**无需额外配置**，共有 **四个模块** 需要部署，详细操作可参考 流程服务，此处仅为概述：
-1. 选择部署模块，需要先部署 `default` 模块。
-2. 选择 生产环境。
-3. 选择版本。
-4. 点击 “部署至生产环境” 按钮。
-5. 等 `default`模块 **部署成功后**，开始部署 `api`、`pipeline`与`callback` 等 3 个模块（无次序要求，可同时部署）。重复步骤 1-4，每轮操作注意**切换模块**。
-
-模块位置及点击次序见图：
-
-![](../7.0/assets/deploy-saas-on-appo--sops.png)
+1. 切换面板到 “生产环境”。
+2. 标准运维（bk_sops）先部署 `default` 模块，点击“部署”按钮。
+   ![sops-deploy-prod.png](assets/sops-deploy-prod.png)
+3. 弹出的“选择部署分支”下拉框，会展示最新版本，请注意确认。“镜像拉取策略”选择“`IfNotPresent`”即可。
+4. 点击“部署至生产环境”按钮。开始部署，期间会显示进度及日志。
+5. 等 `default`模块 **部署成功后**，开始部署 `api`、`pipeline`与`callback` 等 3 个模块（无次序要求，可同时部署），重复步骤 2-4 即可。
 
 
 <a id="deploy-bkce-saas-bk_cmdb_saas" name="deploy-bkce-saas-bk_cmdb_saas"></a>
@@ -159,6 +180,10 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 
 #### 配置环境变量
 需要配置 **环境变量**，SaaS 才能正常工作。
+
+在左侧展开“应用配置”——“模块配置”。位于 “web” 模块下，点击 “环境变量” Tab。
+
+在环境变量列表界面，可以点击底部的“新增环境变量”按钮逐条新增，也可以导出一个模板后，自行处理如下表格，生成配置文件导入。
 
 | KEY | 建议取值 | 描述 | 取值说明 |
 | -- | -- | -- | -- |
@@ -190,11 +215,16 @@ printf "$redis_json_tpl\n" "$redis_host" "$redis_port" "$redis_pass" | jq .  # �
 | BK_CMDB_REDIS_MAX_OPEN_CONNS | 3000 | cmdb redis 最大连接数 |  |
 
 #### 部署
-共有 **一个模块** 需要部署，详细操作可参考 流程服务，此处仅为概述：
-1. 选择部署模块，需要先部署 `web` 模块。
-2. 选择 生产环境。
-3. 选择版本。
-4. 点击 “部署至生产环境” 按钮。
+环境变量配置完成后，即可回到“部署管理”界面开始部署。
+
+共有 **一个模块** 需要部署，步骤为：
+1. 切换面板到 “生产环境”。
+2. 配置平台 SaaS（bk_cmdb_saas）只有 `web` 模块，点击“部署”按钮。
+3. 弹出的“选择部署分支”下拉框，会展示最新版本，请注意确认。“镜像拉取策略”选择“`IfNotPresent`”即可。
+4. 点击“部署至生产环境”按钮。开始部署，期间会显示进度及日志。
+5. 部署成功后，即可点击“访问”按钮了。如果访问出错或者白屏，可能是服务尚未启动完毕，稍等 1 分钟后重试。
+
+如果部署失败，请先检查环境变量是否正确。
 
 #### 配置访问地址
 在部署完成后，需要配置访问地址为 `cmdb.$BK_DOMAIN`。在 **中控机** 执行：
@@ -252,30 +282,6 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 
 常见报错：
 * app_code 有误，输出为 `App(app-code-not-exist) not exists`。
-
-
-<a id="post-install-bk-saas" name="post-install-bk-saas"></a>
-
-## SaaS 部署后的设置
->**提示**
->
->一些 SaaS 在部署成功后，还需要做初始化设置。
-
-<!--
-<a id="post-install-bk-lesscode" name="post-install-bk-lesscode"></a>
-
-### 蓝鲸可视化平台（bk_lesscode）部署后配置
-目前 bk_lesscode 只支持通过独立域名来访问。我们约定使用了 `lesscode` 作为前缀，暂时不能自定义其他名称。
-
-操作步骤：
-1. 在 bk_lesscode 应用页中, 点击 「应用引擎」-「访问入口」中配置独立域名并保存。
-2. 在应用推广-发布管理中，将应用市场的访问地址类型设置为：主模块生产环境独立域名
-
-步骤示例图：
-
-![](../7.0/assets/2022-03-09-10-45-21.png)
-![](../7.0/assets/2022-03-09-10-45-29.png)
--->
 
 
 # 下一步

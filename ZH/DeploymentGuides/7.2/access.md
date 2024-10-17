@@ -31,7 +31,7 @@ echo "http://$BK_DOMAIN"
 ## MySQL
 获取 root 密码：
 ``` bash
-kubectl get secrets -n blueking bk-mysql-mysql -o go-template='{{index .data "mysql-root-password" | base64decode}}{{"\n"}}'
+kubectl get secrets -n blueking bk-mysql8 -o go-template='{{index .data "mysql-root-password" | base64decode}}{{"\n"}}'
 ```
 
 ## MongoDB
@@ -70,7 +70,7 @@ kubectl get -n blueking cm bk-gse-ce-task-config -o go-template --template '{{in
 # 访问存储服务
 访问公共 mysql：
 ``` bash
-kubectl exec -it -n blueking bk-mysql-mysql-master-0 -- /bin/bash -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysql -u root'
+kubectl exec -it -n blueking bk-mysql8-0 -- /bin/bash -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysql -u root'
 ```
 
 访问公共 mongodb:

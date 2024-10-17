@@ -21,6 +21,15 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 ./scripts/setup_bkce7.sh -u agent
 ```
 
+参考输出：
+``` plain
+时间略 [INFO] upload: agent
+……
+{"levelname": "INFO", "asctime": "时间略", "pathname": "/app/apps/backend/agent/artifact_builder/base.py", "lineno": 466, "funcName": "update_or_create_tag", "process": 271, "thread": 略, "message": "[publish_tag_version] tag -> stable, target_version -> v2.1.6-rc.30 success"}
+……（几行提示信息，略去）
+时间略 [INFO] uploaded new gse_agent
+```
+
 >**提示**
 >
 >其他系统及架构的 GSE Agent 由蓝鲸服务商适配，蓝鲸不提供下载及技术支持。
@@ -44,7 +53,14 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 ./scripts/setup_bkce7.sh -u plugin
 ```
 
-结尾最后一段 JSON 显示 `"message": "略 | all package under path->[/app/official_plugin] is import success, file_count->[1] package_count->[7]"` 即为上传成功。
+参考输出：
+``` plain
+时间略 [INFO] upload: plugin
+……
+{"levelname": "INFO", "asctime": "时间略", "pathname": "/app/common/log.py", "lineno": 58, "funcName": "info", "process": 465, "thread": 略, "message": "UUID略 | all package under path->[/app/official_plugin] is import success, file_count->[1] package_count->[7]"}
+时间略 [INFO] uploaded new gse_plugin
+```
+提示：`file_count` 为 `../gse2/plugins/`目录下的插件包数量，`package_count`为上述文件中提取到的插件数量。
 
 脚本执行完成后，访问节点管理的 「插件管理」——「插件包」界面，可以看到上传成功的插件包：
 
@@ -75,8 +91,20 @@ bkdl-7.2-stable.sh -ur latest gse_proxy
 上传 Proxy 到 节点管理：
 ``` bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
+# 上传proxy所需的开源工具
+./scripts/setup_bkce7.sh -u opentools
+# 上传gse proxy
 ./scripts/setup_bkce7.sh -u proxy
-./scripts/setup_bkce7.sh -u opentools  # 上传proxy所需的开源工具
+```
+参考输出：
+``` plain
+时间略 [INFO] upload: opentools
+upload /root/bkce7.2-install/blueking/scripts/../../gse2/nginx-portable.tgz to ./data/bkee/public/bknodeman/download succeed
+upload /root/bkce7.2-install/blueking/scripts/../../gse2/py36.tgz to ./data/bkee/public/bknodeman/download succeed
+时间略 [INFO] uploaded open tools
+时间略 [INFO] upload: proxy
+{"levelname": "INFO", "asctime": "时间略", "pathname": "/app/apps/backend/agent/artifact_builder/base.py", "lineno": 466, "funcName": "update_or_create_tag", "process": 415, "thread": 略, "message": "[publish_tag_version] tag -> stable, target_version -> v2.1.6-rc.30 success"}
+时间略 [INFO] uploaded new gse_proxy
 ```
 
 

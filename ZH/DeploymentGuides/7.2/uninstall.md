@@ -394,7 +394,7 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
     kubectl delete secret bkpaas3-engine-bkrepo-envs bkpaas3-workloads-bkrepo-envs -n blueking
     kubectl delete configmap bk-log-search-builtin-collect-configmap bk-log-search-grafana-ini bkpaas3-apiserver-3rd-apps -n blueking
     ```
-7.  如果是用 `bcs.sh` 创建的 k8s 集群，那么检查下 localpv 的目录是否有残留文件：
+7.  如果是用 `bcs-ops` 创建的 k8s 集群，且使用了 localpv，那么检查下 localpv 的目录是否有残留文件：
     ``` bash
     node_ips=$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}')
     echo "node_ips=$node_ips."

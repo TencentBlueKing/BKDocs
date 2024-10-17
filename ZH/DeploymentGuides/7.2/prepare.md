@@ -78,8 +78,8 @@
 | SELinux | 关闭。k8s 官方要求。 | `getenforce` 的输出为 Disabled |
 | 时区 | 所有服务器时区应该统一，建议使用北京时间 | 使用 `timedatectl set-timezone Asia/Shanghai` 设置为北京时间。 |
 | 时间同步 | etcd 选举时要求 node 间时间差小于 1s | 配置 `chronyd` 同步时间 |
-| docker 版本 | 19.03 及更高 | `docker version` |
-| kubenetes 版本 | 在 1.20 与 1.23 版本测试过，其他版本未经测试。1.24 版本暂不支持 containerd，1.17 版本部署 bcs 会失败。 | `kubectl version` |
+| containerd 版本 | 1.6 及更高 | `crictl version` |
+| kubenetes 版本 | 推荐 1.24 版本。也在 1.20 版本测试部署通过。 | `kubectl version` |
 
 
 # 下一步

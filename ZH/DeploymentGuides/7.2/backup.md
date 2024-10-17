@@ -12,7 +12,7 @@ cp -a -r ${$INSTALL_DIR%/}{,$(date +%Y%m%d-%H%M%S).bak}
 
 ## MySQL
 
-### 蓝鲸公共实例 bk-mysql
+### 蓝鲸公共实例 bk-mysql8
 
 
 ### 蓝鲸其他 MySQL 实例

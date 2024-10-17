@@ -90,6 +90,5 @@ diff	3.1.3  	Preview helm upgrade changes as a diff
 
 我们适配了如下的场景，请点击前往章节获得对应场景的操作指引：
 * [新建 k8s 集群，使用蓝鲸 bcs-ops 脚本](get-k8s-create-bcsops.md) （v1.24 及以上版本，支持 containerd）
-* [新建 k8s 集群，使用蓝鲸 bcs.sh 脚本](get-k8s-create-bcssh.md) （不推荐，v1.20 + docker）
 * [导入现有的 k8s 集群](get-k8s-import-kubeconfig.md)
 * [购买腾讯云 TKE 服务](get-k8s-purchase-tke.md) （其他厂商提供 K8S 集群同理）

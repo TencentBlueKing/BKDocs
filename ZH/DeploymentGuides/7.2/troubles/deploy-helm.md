@@ -168,30 +168,19 @@ Error: template: bcs-services-stack/charts/bcs-project-manager/templates/variabl
 helm 版本低于 3.12，参考部署文档升级后即可。
 
 
-## docker 问题案例
+## containerd 问题案例
 ### 配置的 docker registry-mirrors 没有生效
 #### 表现
 
-部署蓝鲸时，容器镜像拉取失败。报错为 `
-Error response from daemon: Get https://registry-1.docker.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)`。
-
-使用 `docker pull` 命令测试拉取，报错依旧。
-
-随后配置了 registry-mirrors 为国内源，并 reload dockerd，使用 `docker info` 命令检查配置已经生效，但报错依旧。
+无
 
 #### 排查处理
 
-使用 `skopeo` 命令检查 registry 情况。发现：
-* `skopeo --debug inspect docker://docker.mirrors.ustc.edu.cn/library/busybox` 服务端返回 403。
-* `skopeo --debug inspect docker://registry.docker-cn.com/library/busybox` 连接超时。
-
-因此配置的 2 个 mirror 均无效，导致 dockerd 使用了默认的 Docker hub。
-
-测试发现 `hub-mirror.c.163.com` 可用，问题解决。
+无
 
 #### 总结
 
-用户配置的源均已失效，因此回退到了 Docker Hub 拉取。改用 `hub-mirror.c.163.com` 解决。
+TODO 待用户反馈并整理文档。
 
 
 <a id="use-k8s" name="use-k8s"></a>

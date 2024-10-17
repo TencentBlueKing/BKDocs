@@ -9,7 +9,6 @@
     * [准备一个 k8s 集群]()
         * [导入现有的 k8s 集群](get-k8s-import-kubeconfig.md)
         * [新建 k8s 集群（bcs-ops）](get-k8s-create-bcsops.md)
-        * [新建 k8s 集群（bcs.sh）](get-k8s-create-bcssh.md)
         * [购买腾讯云 TKE 服务](get-k8s-purchase-tke.md)
 * [部署基础套餐]()
     * [选项 1：快速部署基础套餐](install-bkce.md)

@@ -176,19 +176,19 @@ Events:
 ```
 此处的报错是 `node-10-0-1-3` 无法解析 `docker.bkce7.bktencent.com`，请参考 [配置 k8s node 的 DNS](../install-bkce.md#hosts-in-k8s-node) 文档操作。
 
-其中 `Error response from daemon:` 为 dockerd 返回的报错，也可能是其他情况。
+其中 `Error response from daemon:` 为 containerd 返回的报错。
 
 如：
 ``` plain
   Warning  Failed     85s (x4 over 2m43s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: x509: certificate is valid for ingress.local, not docker.bkce7.bktencent.com
 ```
-此报错则是 HTTPS 证书问题，请参考 [调整 node 上的 docker 服务](../install-bkce.md#k8s-node-docker-insecure-registries) 文档操作。
+此报错则是 HTTPS 证书问题，请参考 [调整 node 上的容器运行时](../install-bkce.md#k8s-node-cri-insecure-registries) 文档操作。
 
 #### 总结
 
 目前用户报告的案例中，均为拉取镜像失败所致。又可细分为以下 2 种情况：
 1. 遗漏了 “[配置 k8s node 的 DNS](../install-bkce.md#hosts-in-k8s-node)” 步骤，导致无法解析 bkrepo docker registry 的域名。
-2. 遗漏了 “[调整 node 上的 docker 服务](../install-bkce.md#k8s-node-docker-insecure-registries)” 步骤，导致 https 连接失败。
+2. 遗漏了 “[调整 node 上的容器运行时](../install-bkce.md#k8s-node-cri-insecure-registries)” 步骤，导致 https 连接失败。
 
 请先检查 **全部 node**，补齐这些操作，然后重试。如未解决，可参考问题分析排查。
 

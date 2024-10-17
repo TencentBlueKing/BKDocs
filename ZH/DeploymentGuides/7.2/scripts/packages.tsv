@@ -11,11 +11,13 @@ API 网关	bk-apigateway	chart
 管控平台	bk-gse-ce	chart
 管控平台	gse_agent	安装包
 管控平台	gse_proxy	安装包
-PaaS平台3.0	bkpaas3	chart
-PaaS平台3.0	bkpaas-app-operator	chart
-PaaS平台3.0	bkapp-log-collection	chart
-PaaS平台3.0	bk-ingress-nginx	chart
+PaaS 3.0	bkpaas3	chart
+PaaS 3.0	bkpaas-app-operator	chart
+PaaS 3.0	bkapp-log-collection	chart
+PaaS 3.0	bk-ingress-nginx	chart
 配置平台	bk-cmdb	chart
+配置平台	bk_cmdb_saas	SaaS
+通知中心	bk_notice	SaaS
 作业平台	bk-job	chart
 节点管理	bk-nodeman	chart
 标准运维	bk_sops	SaaS
@@ -30,5 +32,6 @@ PaaS平台3.0	bk-ingress-nginx	chart
 日志平台	bkunifylogbeat	采集器
 持续集成平台	bk-ci	chart
 代码分析	bk-codecc	chart
-API自动化测试	bk-apicheck	chart
+API 自动化测试	bk-apicheck	chart
 运维开发平台	bk_lesscode	SaaS
+服务配置中心	bk-bscp-stack	chart

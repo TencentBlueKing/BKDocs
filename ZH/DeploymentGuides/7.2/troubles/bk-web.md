@@ -50,26 +50,6 @@ kubectl rollout restart deployment -n blueking bk-login-web
 
 
 ## 蓝鲸桌面
-### 蓝鲸桌面点击图标后提示 应用已经下架，正在为您卸载该应用
-#### 表现
-
-在蓝鲸桌面点击应用图标，结果提示 ”应用已经下架，正在为您卸载该应用……”。
-
-#### 排查处理
-
-点击桌面的 “添加” 按钮，发现应用商店中只有 “配置平台”、“作业平台” 和 新安装的 SaaS，并没有 “权限中心”、“用户管理” 等应用。
-
-怀疑为 PaaS 初始化数据库异常，用户暂未提供日志，无法找到初始化失败的原因。
-
-#### 总结
-
-PaaS 初始化异常。
-
-我们正在排查此问题出现的原因，请在 **中控机** 执行如下命令取得数据库转储文件：
-``` bash
-kubectl exec -it -n blueking bk-mysql-mysql-master-0 -- mysqldump -uroot -pblueking --databases open_paas bkpaas3_apiserver | gzip -c > bk-paas3-dump.sql.gz
-```
-然后将生成的 `bk-paas3-dump.sql.gz` 文件发送给蓝鲸助手。
 
 
 ## 用户管理
