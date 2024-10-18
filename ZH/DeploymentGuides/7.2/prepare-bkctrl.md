@@ -41,15 +41,17 @@ bkdl-7.2-stable.sh
 # 下载好的文件默认放置在 `$HOME/bkce7.2-install/` 下，如有修改，请调整此变量。
 INSTALL_DIR=$HOME/bkce7.2-install/
 # 把上述环境变量写入 bashrc
-if grep -q "^export INSTALL_DIR=" ~/.bashrc; then
-  source ~/.bashrc
-  echo >&2 "load from bashrc: INSTALL_DIR=$INSTALL_DIR."
+bashrc=$HOME/.bashrc
+if grep -qxF "export INSTALL_DIR=\"${INSTALL_DIR%/}\"" "$bashrc"; then
+  echo "$bashrc is up-to-date."
+elif grep -qE "^export INSTALL_DIR=" "$bashrc"; then
+  sed -ri 's|export INSTALL_DIR=.*|export INSTALL_DIR="'"${INSTALL_DIR%/}"'"|' "$bashrc"
 else
-  tee -a ~/.bashrc <<EOF
-# 蓝鲸部署目录
-export INSTALL_DIR="$INSTALL_DIR"
-EOF
+  tee -a "$bashrc" <<<"export INSTALL_DIR=\"${INSTALL_DIR%/}\""
 fi
+# 重新加载变量
+source "$bashrc"
+echo "INSTALL_DIR=\"$INSTALL_DIR\"".
 ```
 
 ## 安装部署所需的工具

@@ -1,6 +1,4 @@
-# 部署蓝鲸通知中心
-
-TODO 规范出包
+# 部署消息通知中心
 
 ## 在中控机使用脚本部署
 ### 下载安装包
@@ -24,7 +22,7 @@ scripts/setup_bkce7.sh -i notice
 当浏览器访问“开发者中心”进行部署时，需要提前在浏览器里下载安装包：
 | 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 蓝鲸通知中心（bk_notice） | 1.5.10 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_notice/bk_notice-V1.5.10.tar.gz |
+| 消息通知中心（bk_notice） | 1.5.10 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_notice/bk_notice-V1.5.10.tar.gz |
 
 
 ### 创建应用
@@ -35,10 +33,10 @@ scripts/setup_bkce7.sh -i notice
 
 <a id="deploy-bkce-saas-notice" name="deploy-bkce-saas-notice"></a>
 
-### 部署蓝鲸通知中心（bk_notice）
+### 部署消息通知中心（bk_notice）
 请参考上文 上传安装包 章节完成应用创建或者安装包更新。
 
-蓝鲸通知中心（bk_notice） **无需额外配置**，所以可以直接在 “部署管理” 界面开始部署。
+消息通知中心（bk_notice） **无需额外配置**，所以可以直接在 “部署管理” 界面开始部署。
 
 共有 **一个模块** 需要部署，详细步骤如下：
 1. 切换面板到 “生产环境”。
@@ -54,6 +52,13 @@ scripts/setup_bkce7.sh -i notice
 
 # 开启消息通知功能
 蓝鲸部分产品已经适配了消息通知功能，但是默认并未开启。请按需配置。
+
+默认开启的产品：
+* 标准运维
+* 容器管理平台
+<!--
+* 蓝鲸流程引擎服务
+-->
 
 目前暂不支持开启的产品：
 * 制品库
@@ -99,7 +104,7 @@ apply
 
 在 中控机 执行：
 ``` bash
-kubectl -n bkapp-bk0us0itsm-prod exec -it deploy/bkapp-bk0us0itsm-prod--web -- python manage.py register_notice
+kubectl -n bkapp-bk0us0itsm-prod exec deploy/bkapp-bk0us0itsm-prod--web -- /app/.heroku/python/bin/python manage.py register_notice
 ```
 
 执行注册命令，提示 “成功注册平台” 即开启成功。
@@ -133,14 +138,7 @@ kubectl -n bkapp-bk0us0itsm-prod exec -it deploy/bkapp-bk0us0itsm-prod--web -- p
 4. 点击 “部署至生产环境” 按钮。
 
 
-## 容器管理平台开启通知功能
-
-TODO
-
-
 ## 监控平台开启通知功能
-
-TODO 确认：不需要 sync 生效 values 吗？
 
 ``` bash
 kubectl -nblueking get pods | awk '/bk-monitor-web-[0-9]/{print $1}' | xargs -i kubectl exec {} -- bash -c 'python manage.py register_application'

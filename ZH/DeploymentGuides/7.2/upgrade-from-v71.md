@@ -83,7 +83,17 @@ chmod +x ~/bin/bkdl-7.2-stable.sh
 INSTALL_DIR=$HOME/bkce7.2-install
 OLD_INSTALL_DIR=$HOME/bkce7.1-install
 # 修改 .bashrc
-# TODO 增改变量赋值行
+bashrc=$HOME/.bashrc
+if grep -qxF "export INSTALL_DIR=\"${INSTALL_DIR%/}\"" "$bashrc"; then
+  echo "$bashrc is up-to-date."
+elif grep -qE "^export INSTALL_DIR=" "$bashrc"; then
+  sed -ri 's|export INSTALL_DIR=.*|export INSTALL_DIR="'"${INSTALL_DIR%/}"'"|' "$bashrc"
+else
+  tee -a "$bashrc" <<<"export INSTALL_DIR=\"${INSTALL_DIR%/}\""
+fi
+# 重新加载变量
+source "$bashrc"
+echo "INSTALL_DIR=\"$INSTALL_DIR\"".
 ```
 
 ## 下载新的 bkhelmfile 包
@@ -167,12 +177,32 @@ yq -i '.apps.mysql.host = "bk-mysql-mysql.blueking.svc.cluster.local"' environme
 ./scripts/generate_rsa_keypair.sh environments/default/bkapigateway_builtin_keypair.yaml
 ```
 
-### 绑定 gse 所在主机
-升级期间可能导致 Pod 漂移到其他主机，引发 Agent 失联。为了规避此情况，可以绑定 pod 到当前主机，确保不会调度到其他 node 上。
+## 绑定主机
+这些关键服务需要绑定主机，以降低配置变更的成本。
 
 你可以选择主机绑定的方法，此处以 nodeSelector 为例。
 
-gse 的 custom-values 文件位于 `environments/default/bkgse-ce-custom-values.yaml.gotmpl`。
+### 绑定 bk-zookeeper 所在主机
+GSE v1 Agent 需要访问 zk，为了避免 IP 变动导致 Agent 失联，需要绑定主机。虽然 7.1 全新安装使用了 GSE V2 agent，建议也顺便绑定下。
+
+``` bash
+touch ./environments/default/zookeeper-custom-values.yaml.gotmpl
+node_zookeeper=$(kubectl -n blueking get pods -l app.kubernetes.io/instance=bk-zookeeper -o jsonpath='{.items[0].spec.nodeName}')
+yq -i ".nodeSelector = {\"kubernetes.io/hostname\":\"$node_zookeeper\"}" environments/default/bkgse-ce-custom-values.yaml.gotmpl
+```
+
+### 绑定 ingress-nginx 所在主机
+跨版本升级可能引入新的域名，建议浏览器访问前检查 《部署步骤详解 —— 后台》 文档 的 “[配置用户侧的 DNS](manual-install-bkce.md#hosts-in-user-pc)” 章节。
+
+``` bash
+touch ./environments/default/ingress-nginx-custom-values.yaml.gotmpl
+node_ingress=$(kubectl -n ingress-nginx get pods -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.nodeName}')
+yq -i ".controller.nodeSelector = {\"kubernetes.io/hostname\":\"$node_ingress\"}" environments/default/ingress-nginx-custom-values.yaml.gotmpl
+```
+
+### 绑定 bk-gse 所在主机
+升级期间可能导致 Pod 漂移到其他主机，引发 Agent 失联。为了规避此情况，可以绑定 pod 到当前主机，确保不会调度到其他 node 上。
+
 ``` bash
 node_gse_data=$(kubectl get pod -A -l app=gse-data -o jsonpath='{.items[0].spec.nodeName}')
 node_gse_file=$(kubectl get pod -A -l app=gse-file -o jsonpath='{.items[0].spec.nodeName}')
@@ -183,11 +213,6 @@ yq -i ".nodeSelector = {\"kubernetes.io/os\":\"linux\"} |
 .gseData.nodeSelector = {\"kubernetes.io/hostname\": \"$node_gse_data\"} |
 .gseFile.nodeSelector = {\"kubernetes.io/hostname\": \"$node_gse_file\"} |
 .gseCluster.nodeSelector = {\"kubernetes.io/hostname\": \"$node_gse_task\"}" environments/default/bkgse-ce-custom-values.yaml.gotmpl
-```
-
-检查文件内容：
-``` bash
-cat environments/default/bkgse-ce-custom-values.yaml.gotmpl
 ```
 
 # 蓝鲸 7.1 产品的升级
@@ -206,12 +231,6 @@ cd "${INSTALL_DIR:-INSTALL_DIR-not-set}/blueking/"
 ## 更新 helm repo 缓存
 
 新版本的 chart 都有升级，更新缓存后才能下载到。
-``` bash
-# 先暂时用dev仓库，后续删掉该部分
-helm repo remove blueking
-helm repo add blueking https://hub.bktencent.com/chartrepo/dev
-````
-
 ``` bash
 helm repo update blueking
 ```
@@ -289,11 +308,11 @@ helmfile -f base-blueking.yaml.gotmpl -l seq=fourth sync
 ```
 
 #### 作业平台迁移数据
-执行一次升级工具，会生成平台信息全局配置文件： base.js。
+执行升级工具后，会生成平台信息全局配置文件： base.js。
 ``` bash
 # 获取更新后的 job appVersion
 JOB_NEW_VERSION=$(helm ls -n blueking -o json | jq -r '.[] | select(.name=="bk-job") | .app_version')
-# 执行前，请确保下述两个变量的值为非空。如果你没有单独更新过job，OLD_VERSION 一般为 3.5.x
+# 执行前，请确保下述两个变量的值为非空。如果你没有单独更新过job，OLD_VERSION 一般为 3.7.x
 echo $JOB_OLD_VERSION $JOB_NEW_VERSION
 # 运行 upgrader 的 pod
 kubectl run -n blueking --image-pull-policy=Always --image="hub.bktencent.com/dev/blueking/job-migration:$JOB_NEW_VERSION" bk-job-upgrader -- sleep infinity
@@ -323,7 +342,7 @@ kubectl delete -n blueking pod bk-job-upgrader
 
 下载新的 paas runtimes
 ``` bash
-bkdl-7.1-stable.sh -ur paas3-1.1 -C ce7/paas-runtimes node=16.16.0
+bkdl-7.2-stable.sh -ur paas3-1.1 -C ce7/paas-runtimes node=16.16.0
 ```
 
 上传 paas runtimes
@@ -483,9 +502,11 @@ kubectl -n blueking scale --replicas=0 deployment bk-codecc-codeccjob
 # 蓝鲸 7.2 新产品的安装
 在 7.2 中，我们引入了一些新的产品。
 
-## 部署通知中心
-请阅读文档 《[部署蓝鲸通知中心](install-notice.md)》。
+## 部署消息通知中心
+请阅读文档 《[部署消息通知中心](install-notice.md)》。
 
+## 部署服务配置中心
+请阅读文档 《[部署服务配置中心](install-bscp.md)》。
 
 # 蓝鲸 7.1 所用存储服务的升级
 ## 升级公共组件

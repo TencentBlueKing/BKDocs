@@ -252,3 +252,17 @@ BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自�
 IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
 ./scripts/control_coredns.sh update "$IP1" bknodeman.$BK_DOMAIN jobapi.$BK_DOMAIN $BK_DOMAIN
 ```
+
+## 蓝盾
+### 流水线启动构建机失败
+#### 表现
+
+报错：启动构建机失败- `"创建构建机失败，错误信息:Unrecognized token 'bkci': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')`
+
+#### 排查处理
+检查发现构建机类型为 “公共构建机”。
+
+容器化部署的蓝盾，不再提供 “公共构建机”，需要进入流水线重新选择构建机类型。
+
+#### 总结
+无

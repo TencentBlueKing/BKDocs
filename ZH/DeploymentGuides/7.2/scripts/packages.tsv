@@ -17,7 +17,7 @@ PaaS 3.0	bkapp-log-collection	chart
 PaaS 3.0	bk-ingress-nginx	chart
 配置平台	bk-cmdb	chart
 配置平台	bk_cmdb_saas	SaaS
-通知中心	bk_notice	SaaS
+消息通知中心	bk_notice	SaaS
 作业平台	bk-job	chart
 节点管理	bk-nodeman	chart
 标准运维	bk_sops	SaaS

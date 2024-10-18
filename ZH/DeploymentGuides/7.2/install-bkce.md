@@ -53,6 +53,14 @@ kubectl get sc
   * 如果希望由 node 提供存储，可参考部署详解 [直接创建 localpv](./storage-services.md#localpv)
   * 自行配置其他 sc，并设置为默认。
 
+## 版本补丁
+
+修改 job 版本号为 `0.6.6-beta.6`。
+``` bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+sed -i 's/bk-job:.*/bk-job: "0.6.6-beta.6"/' environments/default/version.yaml
+```
+
 <a id="setup_bkce7-i-base" name="setup_bkce7-i-base"></a>
 
 ## 部署基础套餐后台
@@ -247,7 +255,7 @@ kubectl get cm -n blueking bk-user-api-general-envs -o go-template='用户： {{
 * [部署持续集成套餐](install-ci-suite.md)
 * [部署运维开发平台](install-lesscode.md)
 * 如有需要，可部署基础套餐的这些系统：
-  * [部署蓝鲸通知中心](install-notice.md)
+  * [部署消息通知中心](install-notice.md)
   * [部署服务配置中心](install-bscp.md)
 
 等监控平台部署完毕后，可以 [启动蓝鲸 API 测试工具](run-apicheck.md)。

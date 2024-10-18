@@ -15,7 +15,7 @@ helmfile -f 05-bkapicheck.yaml.gotmpl sync
 >``` plain
 >UPDATED RELEASES:
 >NAME          CHART                  VERSION
->bk-apicheck   blueking/bk-apicheck   2.1.6
+>bk-apicheck   blueking/bk-apicheck   2.1.2
 >```
 
 
