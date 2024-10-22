@@ -123,6 +123,12 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-paas -l name=bkpaas-app-operato
 ### 部署 bk-job
 作业平台。
 
+7.2.0 引用的 bk-job-0.6.6-beta.5 存在 bug，需要修改版本号为 `0.6.6-beta.6`。
+``` bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+sed -i 's/bk-job:.*/bk-job: "0.6.6-beta.6"/' environments/default/version.yaml
+```
+
 在中控机工作目录下执行：
 ``` bash
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-job sync
