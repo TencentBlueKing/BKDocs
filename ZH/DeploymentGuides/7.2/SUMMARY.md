@@ -29,6 +29,7 @@
 * [部署监控日志套餐](install-co-suite.md)
 * [部署持续集成套餐](install-ci-suite.md)
 * [部署运维开发平台](install-lesscode.md)
+* [部署流程引擎服务](install-flowengine.md)
 * [卸载](uninstall.md)
 * [单产品更新]()
     * [单产品更新-索引](update.md)

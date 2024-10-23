@@ -35,6 +35,7 @@ bk_itsm	2.7.0	--
 bk_sops	3.33.8	--
 bk_lesscode	1.1.0-beta.17	--
 bk_notice	1.5.10	--
+bk_flow_engine	1.8.1	--
 bk-config-combo	20241009	--
 gse_agent	2.1.6-rc.30	--
 gse_proxy	2.1.6-rc.30	--
@@ -43,6 +44,7 @@ gse_plugins_extra	20240920	--
 bkmonitorbeat	3.38.1948	--
 bkunifylogbeat	7.7.1-rc.17	--
 bk-collector	0.55.1830	--
+bcs-ops	0.0.2	--
 uploadArtifact	2.0.4	--
 uploadReport	1.0.4	--
 downloadArtifact	1.0.5	--
@@ -53,3 +55,4 @@ SubPipelineExec	1.0.12	--
 AcrossProjectDistribution	1.1.4	--
 PerforceSync	1.0.23	--
 CodeCCCheckAtom	0.1.2	--
+chart-images	7.2.0	--

@@ -143,7 +143,7 @@ kubectl -n bkapp-bk0us0itsm-prod exec deploy/bkapp-bk0us0itsm-prod--web -- /app/
 ## 监控平台开启通知功能
 
 ``` bash
-kubectl -nblueking get pods | awk '/bk-monitor-web-[0-9]/{print $1}' | xargs -i kubectl exec {} -- bash -c 'python manage.py register_application'
+kubectl -n blueking exec $(kubectl -n blueking get pods -l processType=web,app.kubernetes.io/instance=bk-monitor -o name) -- bash -c '/app/venv/bin/python manage.py register_application'
 ```
 提示 “成功注册平台” 即开启成功。
 
