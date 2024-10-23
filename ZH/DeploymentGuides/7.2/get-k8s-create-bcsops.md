@@ -28,6 +28,7 @@ rsync -ra "$INSTALL_DIR/bcs-ops" "$master_ip":/root/
 
 请登录到 **第一台 `master` 机器**（下文称为 **初始 master**）上执行此命令：
 ``` bash
+# 注意这是 node 上的 bcs-ops 目录，不是中控机的。
 cd /root/bcs-ops
 # 使用变量决定 k8s 版本及 cri 类型
 K8S_VER="1.24.15" CRI_TYPE="containerd" ./bcs-ops -i master
@@ -75,6 +76,7 @@ done
 ### 获取扩容命令
 在 **初始 master** 上执行如下命令可显示扩容命令：
 ``` bash
+# 注意这是 node 上的 bcs-ops 目录，不是中控机的。
 cd /root/bcs-ops
 ./bcs-ops -r joincmd
 ```
@@ -89,6 +91,7 @@ cd /root/bcs-ops
 
 在 **待扩容的机器** 上执行：
 ``` bash
+# 注意这是 node 上的 bcs-ops 目录，不是中控机的。
 cd /root/bcs-ops
 ./k8s/insecure_registry.sh -c containerd -a 容器镜像仓库域名
 ```
@@ -185,8 +188,13 @@ bcs-ops 适配多种存储类，故不再制备 pv 目录。
 
 如果你决意使用 localpv，请继续操作。
 
+>**注意**
+>
+>node 需要先加入集群，然后才能执行此命令。
+
 需要登录到各 node 上操作（如果希望让 master 能提供 pv，则也需操作）：
 ``` bash
+# 注意这是 node 上的 bcs-ops 目录，不是中控机的。
 cd /root/bcs-ops/
 # 设置localpv的目录和数量。注意LOCALPV_DST_DIR需要和 values 里的 `localpv.hostDir` 一致
 export LOCALPV_DIR=/data/bcs/localpv LOCALPV_DST_DIR=/mnt/blueking LOCALPV_COUNT=20

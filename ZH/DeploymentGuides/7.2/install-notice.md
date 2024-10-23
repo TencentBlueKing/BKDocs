@@ -116,12 +116,13 @@ kubectl -n bkapp-bk0us0itsm-prod exec deploy/bkapp-bk0us0itsm-prod--web -- /app/
 1. 展开侧栏 “应用引擎”，点击进入 “环境配置” 界面。
 2. 新增环境变量，对应的配置项为 `ENABLE_NOTICE_CENTER`: `true` ，生效环境为所有环境，点击“添加”按钮即可。
 
-环境变量需要部署后生效，共有 **四个模块** 需要部署，详细操作可参考 流程服务，此处仅为概述：
-1. 选择部署模块，需要先部署 `default` 模块。
-2. 选择 生产环境。
-3. 选择版本。
-4. 点击 “部署至生产环境” 按钮。
-5. 等 `default`模块 **部署成功后**，开始部署 `api`、`pipeline`与`callback` 等 3 个模块（无次序要求，可同时部署）。重复步骤 1-4，每轮操作注意**切换模块**。
+环境变量需要部署后生效，共有 **四个模块** 需要部署，操作步骤为：
+1. 切换面板到 “生产环境”。
+2. 标准运维（bk_sops）先部署 `default` 模块，点击“部署”按钮。
+   ![sops-deploy-prod.png](assets/sops-deploy-prod.png)
+3. 弹出的“选择部署分支”下拉框，会展示最新版本，请注意确认。“镜像拉取策略”选择“`IfNotPresent`”即可。
+4. 点击“部署至生产环境”按钮。开始部署，期间会显示进度及日志。
+5. 等 `default`模块 **部署成功后**，开始部署 `api`、`pipeline`与`callback` 等 3 个模块（无次序要求，可同时部署），重复步骤 2-4 即可。
 
 
 ### 配置蓝鲸配置平台（bk_cmdb_saas）
@@ -131,17 +132,18 @@ kubectl -n bkapp-bk0us0itsm-prod exec deploy/bkapp-bk0us0itsm-prod--web -- /app/
 1. 展开侧栏 “应用引擎”，点击进入 “环境配置” 界面。
 2. 新增环境变量，对应的配置项为 `BK_CMDB_ENABLE_BK_NOTICE`: `true` ，生效环境为所有环境，点击“添加”按钮即可。
 
-环境变量需要部署后生效，共有 **一个模块** 需要部署，详细操作可参考 流程服务，此处仅为概述：
-1. 选择部署模块，需要先部署 `web` 模块。
-2. 选择 生产环境。
-3. 选择版本。
-4. 点击 “部署至生产环境” 按钮。
+环境变量需要部署后生效，共有 **一个模块** 需要部署，步骤为：
+1. 切换面板到 “生产环境”。
+2. 配置平台 SaaS（bk_cmdb_saas）只有 `web` 模块，点击“部署”按钮。
+3. 弹出的“选择部署分支”下拉框，会展示最新版本，请注意确认。“镜像拉取策略”选择“`IfNotPresent`”即可。
+4. 点击“部署至生产环境”按钮。开始部署，期间会显示进度及日志。
+5. 部署成功后，即可点击“访问”按钮了。如果访问出错或者白屏，可能是服务尚未启动完毕，稍等 1 分钟后重试。
 
 
 ## 监控平台开启通知功能
 
 ``` bash
-kubectl -nblueking get pods | awk '/bk-monitor-web-[0-9]/{print $1}' | xargs -i kubectl exec {} -- bash -c 'python manage.py register_application'
+kubectl -n blueking exec $(kubectl -n blueking get pods -l processType=web,app.kubernetes.io/instance=bk-monitor -o name) -- bash -c '/app/venv/bin/python manage.py register_application'
 ```
 提示 “成功注册平台” 即开启成功。
 
@@ -159,11 +161,12 @@ helmfile -f 04-bklog-search.yaml.gotmpl apply
 1. 展开侧栏 “应用引擎”，点击进入 “环境配置” 界面。
 2. 新增环境变量，对应的配置项为 `NOTICE_CENTER_ENABLE`: `true` ，生效环境为所有环境，点击“添加”按钮即可。
 
-环境变量需要部署后生效，共有 **一个模块** 需要部署，详细操作可参考 流程服务，此处仅为概述：
-1. 选择部署模块，需要先部署 `default` 模块。
-2. 选择 生产环境。
-3. 选择版本。
-4. 点击 “部署至生产环境” 按钮。
+环境变量需要部署后生效，共有 **一个模块** 需要部署，步骤为：
+1. 切换面板到 “生产环境”。
+2. 只有 `default` 模块，点击“部署”按钮。
+3. 弹出的“选择部署分支”下拉框，会展示最新版本，请注意确认。“镜像拉取策略”选择“`IfNotPresent`”即可。
+4. 点击“部署至生产环境”按钮。开始部署，期间会显示进度及日志。
+5. 部署成功后，即可点击“访问”按钮了。如果访问出错或者白屏，可能是服务尚未启动完毕，稍等 1 分钟后重试。
 
 
 # 使用

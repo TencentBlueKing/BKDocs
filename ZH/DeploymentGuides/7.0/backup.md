@@ -6,7 +6,7 @@
 
 备份当前的 部署 目录
 ```bash
-cp -a -r ~/bkce7.1-install{,$(date +%Y%m%d-%H%M%S).bak}
+cp -a -r ~/bkhelmfile{,$(date +%Y%m%d-%H%M%S).bak}
 ```
 
 # 备份数据库
@@ -22,7 +22,7 @@ cp -a -r ~/bkce7.1-install{,$(date +%Y%m%d-%H%M%S).bak}
 #### 启用 binlog
 配置：
 ```bash
-cd ~/bkce7.1-install/blueking
+cd ~/bkhelmfile/blueking
 # 开启 bin-log，请注意在[mysqld]中配置
 yq '.master.config' environments/default/mysql-values.yaml.gotmpl  > /tmp/mysql_master_config.txt
 sed -i '/\[mysqld\]/a\server-id=1\n\log_bin=/bitnami/mysql/binlog.bin' /tmp/mysql_master_config.txt
@@ -73,7 +73,7 @@ EOF
 ```
 3. 替换脚本中的密码
 ``` bash
-mysql_passwd=$(yq ea '. as $item ireduce ({}; . * $item )' ~/bkce7.1-install/blueking/environments/default/{values,custom}.yaml | yq ea '.mysql.rootPassword')
+mysql_passwd=$(yq ea '. as $item ireduce ({}; . * $item )' ~/bkhelmfile/blueking/environments/default/{values,custom}.yaml | yq ea '.mysql.rootPassword')
 sed -i "s#MYSQL_PASSWD=.*#MYSQL_PASSWD=\"${mysql_passwd}\"#" /data/dbbackup_mysql.sh
 ```
 4. 将备份脚本 cp 到 pod 内执行
@@ -110,8 +110,8 @@ blueking bk-mysql-mysql-master-0
 ``` bash
 install -dv mongodb_bak
 
-mongodb_user=$(yq ea '. as $item ireduce ({}; . * $item )' ~/bkce7.1-install/blueking/environments/default/{values,custom}.yaml | yq ea '.mongodb.rootUsername')
-mongodb_password=$(yq ea '. as $item ireduce ({}; . * $item )' ~/bkce7.1-install/blueking/environments/default/{values,custom}.yaml | yq ea '.mongodb.rootPassword')
+mongodb_user=$(yq ea '. as $item ireduce ({}; . * $item )' ~/bkhelmfile/blueking/environments/default/{values,custom}.yaml | yq ea '.mongodb.rootUsername')
+mongodb_password=$(yq ea '. as $item ireduce ({}; . * $item )' ~/bkhelmfile/blueking/environments/default/{values,custom}.yaml | yq ea '.mongodb.rootPassword')
 
 kubectl exec -it -n blueking bk-mongodb-0 -- mongodump -u $mongodb_user -p $mongodb_password --oplog --gzip --out /tmp/mongodb_bak
 kubectl cp -n blueking bk-mongodb-0:/tmp/mongodb_bak /data/mongodb_bak

@@ -36,14 +36,29 @@ kubectl get sc
 
 我们在 全局 values 文件里的 `localpv.hostDir` 定义了 pv 目录，默认值为 `/mnt/blueking/`。如需修改，请在 全局 custom-values 中进行覆盖。
 
-需要登录到各 node 上操作（如果希望让 master 能提供 pv，则也需操作）：
+需要 **登录到各 node** 上操作（如果希望让 master 能提供 pv，则也需操作）：
 ``` bash
-cd /root/bcs-ops/
-# 设置localpv的目录和数量。注意LOCALPV_DST_DIR需要和 values 里的 `localpv.hostDir` 一致
-export LOCALPV_DIR=/data/bcs/localpv LOCALPV_DST_DIR=/mnt/blueking LOCALPV_COUNT=20
-./system/mount_localpv
+# 源目录可以自定义，需要目录所在磁盘有 100GB 以上的空间。此处为了和 bcs.sh 保持一致，使用 /data/bcs/localpv/
+src_dir=/data/bcs/localpv/
+# pv目录需要和全局 Values 中的 .localpv.hostDir 保持一致
+pv_host_dir=/mnt/blueking/
+# 创建 20 个pv所需的目录。
+for i in {01..20}; do
+  vol="vol$i"
+  vol_dir="${pv_host_dir%/}/$vol"
+  vol_src="${src_dir%/}/$vol"
+  mkdir -p "$vol_dir" "$vol_src";
+  if grep -w "$vol_dir" /etc/fstab; then
+    echo >&2 "TIP: vol $vol exist in /etc/fstab."
+  else
+    echo "$vol_src $vol_dir none defaults,bind 0 0" | tee -a /etc/fstab
+  fi
+done
+# 在目录制备完成后，需要mount才能被 localpv provisioner 认可。
+mount -va
+# 检查 fstab 和 mount 结果
+grep -w vol[0-9][0-9] /etc/fstab /proc/self/mounts
 ```
-如果有扩容新机器，记得在新机器上执行。
 
 ### 创建 pv
 执行如下命令配置 localpv 存储类并创建一批 pv：

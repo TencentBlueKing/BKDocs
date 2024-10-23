@@ -209,7 +209,7 @@ GSE v1 Agent 需要访问 zk，为了避免 IP 变动导致 Agent 失联，需�
 ``` bash
 touch ./environments/default/zookeeper-custom-values.yaml.gotmpl
 node_zookeeper=$(kubectl -n blueking get pods -l app.kubernetes.io/instance=bk-zookeeper -o jsonpath='{.items[0].spec.nodeName}')
-yq -i ".nodeSelector = {\"kubernetes.io/hostname\":\"$node_zookeeper\"}" environments/default/bkgse-ce-custom-values.yaml.gotmpl
+yq -i ".nodeSelector = {\"kubernetes.io/hostname\":\"$node_zookeeper\"}" ./environments/default/zookeeper-custom-values.yaml.gotmpl
 ```
 
 ### 绑定 ingress-nginx 所在主机
@@ -553,12 +553,17 @@ kubectl exec bk-mysql-mysql-master-0 -- bash -c "mysql -uroot -p$mysql_passwd -e
 
 安装新的蓝鲸配置平台 SaaS：
 ``` bash
-# 部署 cmdb SaaS（后续去掉wget部分）
-wget bk_cmdb_saas.tgz # 重命名放置在 ../saas/bk_cmdb_saas.tgz
 ./scripts/setup_bkce7.sh -i bk_cmdb_saas
 ```
 
 ### 升级第四层-作业平台
+
+7.2.0 引用的 bk-job-0.6.6-beta.5 存在 bug，需要修改版本号为 `0.6.6-beta.6`。
+``` bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+sed -i 's/bk-job:.*/bk-job: "0.6.6-beta.6"/' environments/default/version.yaml
+```
+
 作业平台 3.9.3 版本默认使用基于蓝鲸制品库的 **全局配置** 方案，升级后将展示默认界面。
 
 用户此前通过页面【平台管理-全局设置-平台信息】配置的数据（title/footer/助手链接等）需要 **迁移数据** 且启用 **全局配置** 功能，方可恢复显示。
@@ -594,7 +599,7 @@ JOB_NEW_VERSION=$(helm ls -n blueking -o json | jq -r '.[] | select(.name=="bk-j
 # 执行前，请确保下述两个变量的值为非空。如果你没有单独更新过job，OLD_VERSION 一般为 3.5.x
 echo $JOB_OLD_VERSION $JOB_NEW_VERSION
 # 运行 upgrader 的 pod
-kubectl run -n blueking --image-pull-policy=Always --image="hub.bktencent.com/dev/blueking/job-migration:$JOB_NEW_VERSION" bk-job-upgrader -- sleep infinity
+kubectl run -n blueking --image-pull-policy=Always --image="hub.bktencent.com/blueking/job-migration:$JOB_NEW_VERSION" bk-job-upgrader -- sleep infinity
 # 等待 pod 启动完成（ready），会输出pod/bk-job-upgrader condition met
 kubectl wait -n blueking --for=condition=ready pod bk-job-upgrader
 # 生成升级所需的配置文件。新版蓝鲸默认部署的是轻量化作业平台，需要将配置文件对应的 job-manage 与 job-crontab 的 host 进行修改
@@ -640,7 +645,11 @@ done < <(find ../paas-runtimes/ -mindepth 2 -type f)
 
 ### 升级 SaaS
 
-先将新包放在 `/root/bkce7.2-install/saas` 目录上（后续删掉该部分）
+下载安装包
+在 **中控机** 运行：
+``` bash
+bkdl-7.2-stable.sh -ur latest saas lesscode
+```
 
 更新标准运维：
 ``` bash
@@ -734,18 +743,25 @@ helmfile -f 04-bklog-collector.yaml.gotmpl sync
 此次升级包括产品自带公共组件（mysql、rabbitmq、redis）升级
 
 ### 升级蓝盾
->**注意**
->
->蓝盾从 1.7 升级到 3.0，可能存在风险。待重新验证后，更新本章节。
+蓝盾从 1.9 升级到 3.0，需要执行 2 次升级：
+1. 蓝盾 1.9 - 2.0，并迁移数据。
+2. 蓝盾 2.0 - 3.0，无需迁移。
 
-升级持续集成平台
+#### 蓝盾 1.9 升级到 2.0
+蓝盾早期的 chart 版本和软件版本不同，需修改 bk-ci chart 的版本号为 `3.0.10-beta.4`：
+``` bash
+sed -i 's/bk-ci:.*/bk-ci: "3.0.10-beta.4"/' environments/default/version.yaml
+grep bk-ci environments/default/version.yaml  # 检查修改结果
+```
+
+升级持续集成平台：
 ```bash
 helmfile -f 03-bkci.yaml.gotmpl sync
 ```
 
-#### 数据迁移
+##### 数据迁移
 
->3.0 相对于 1.x 的版本，权限从对接权限中心 v3 升级到对接权限中心 rbac，对鉴权数据做了较大的变更。所以升级后, 需要迁移权限。
+>2.0 版本相对于 1.x 的版本，权限从对接权限中心 v3 升级到对接权限中心 rbac，对鉴权数据做了较大的变更。所以升级后, 需要迁移权限。
 
 蓝盾 MySQL 执行：
 ```bash
@@ -777,7 +793,23 @@ select * from devops_ci_auth.T_AUTH_MIGRATION\G
 
 迁移后可以登录至蓝盾页面检查老项目权限是否正常。
 
+#### 蓝盾 2.0 升级到 3.0
+蓝盾自 3.0.11 开始统一 chart 和软件版本。
+
+需修改 bk-ci chart 的版本号为 `3.0.11-beta.3`：
+``` bash
+sed -i 's/bk-ci:.*/bk-ci: "3.0.11-beta.3"/' environments/default/version.yaml
+grep bk-ci environments/default/version.yaml  # 检查修改结果
+```
+
+升级持续集成平台：
+```bash
+helmfile -f 03-bkci.yaml.gotmpl sync
+```
+
 #### 蓝盾优化项
+完成 2 次升级后，还需要注册默认构建镜像、对接制品库和上传插件。
+
 请阅读文档 《[部署持续集成套餐](install-ci-suite.md)》。
 
 

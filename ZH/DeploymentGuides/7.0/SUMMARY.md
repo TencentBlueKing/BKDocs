@@ -22,3 +22,4 @@
     * [访问入口及账户密码汇总](access.md)
     * [上传 PaaS runtimes 到 bkrepo](paas-upload-runtimes.md)
     * [配置 SaaS 专用 node](saas-dedicated-node.md)
+    * [备份当前环境](backup.md)

@@ -35,3 +35,4 @@ PaaS 3.0	bk-ingress-nginx	chart
 API 自动化测试	bk-apicheck	chart
 运维开发平台	bk_lesscode	SaaS
 服务配置中心	bk-bscp-stack	chart
+流程引擎服务	bk_flow_engine	SaaS

@@ -1,4 +1,4 @@
-bcs-services-stack bcs-app
+bcs-services-stack bcs-ui
 bk-bscp-stack	bk-bscp-hyper
 bk-apicheck bk-apicheck
 bk-apigateway apigateway-dashboard-fe apigateway-dashboard
