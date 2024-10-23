@@ -359,7 +359,7 @@ Error: unable to build kubernetes objects from release manifest: unable to recog
 点击左侧导航栏的“批量导出和导入”菜单，点击“点击导入”按钮，进入导入界面。
 
 请下载如下文件导入:
-* [bk_monitor-dashboards-sli-20221008.tar.gz](https://bkopen-1252002024.file.myqcloud.com/ce7/files/bk_monitor-dashboards-sli-20221008.tar.gz)
+* [bk_monitor-dashboards-sli-20241022.tar.gz](https://bkopen-1252002024.file.myqcloud.com/ce7/files/bk_monitor-dashboards-sli-20241022.tar.gz)
 
 导入成功后，无需配置监控目标，点击完成结束整个导入流程。
 
