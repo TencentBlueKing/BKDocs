@@ -73,18 +73,21 @@ curl -sS -u "$ADMIN_BKREPO_USERNAME:$ADMIN_BKREPO_PASSWORD" "$bkrepo_api_url/rep
 ```bash
 # 进入目录
 cd bk-config/
-TODO
+TODO 编写脚本修改base.js，支持修改scheme、origin、prefix、检查base.js引用的url（适配bkrepo和自定义url前缀）
 ```
 
 ### 将目录上传至制品库
 
 ``` bash
+# 获取 bkrepo admin账户名密码
+source <(kubectl get secret -n blueking bkpaas3-apiserver-bkrepo-envs -o go-template='{{range $k,$v := .data}}{{$k}}={{$v|base64decode}}{{"\n"}}{{end}}'] | grep -e ^ADMIN_ -e ^BLOBSTORE_BKREPO_ENDPOINT)
+# bucket 需要和 base.js 里引用的路径一致。
 bucket=bk-config
 n=0
 while read filepath; do
   remote="/${filepath#../bk-config/}"
   remote="${remote%/*}/"
-  echo scripts/bkrepo_tool.sh -u "$USERNAME" -p "$PASSWORD" -P "$PROJECT" -i "$ENDPOINT/generic" -n "$bucket" -X PUT -O -R "$remote" -T "$filepath"
+  echo scripts/bkrepo_tool.sh -u "$ADMIN_BKREPO_USERNAME" -p "$ADMIN_BKREPO_PASSWORD" -P blueking -i "$BLOBSTORE_BKREPO_ENDPOINT/generic" -n "$bucket" -X PUT -O -R "$remote" -T "$filepath"
   # 流控，每上传5个文件，sleep 1s。
   let ++n%5 || sleep 1
 done < <(find ../bk-config/ -mindepth 2 -type f)

@@ -29,6 +29,10 @@
 >- `0shared`：共享实例。池内实例允许重复以供多个 SaaS 复用。由 SaaS 自主规避 `key` 冲突。
 >- `1exclusive`：独占实例。池内实例不应该重复，否则可能因为 `key` 冲突而影响 SaaS 运行。
 
+>**提示**
+>
+>如果使用蓝鲸预置的 Redis，可在中控机执行 `./scripts/setup_bkce7.sh -u redis`，每次可添加 10 个共享实例。
+
 先登录「开发者中心」。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为你配置的蓝鲸基础域名。）
 
 访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/pre-created-instances/manage` 。
@@ -66,6 +70,7 @@
 
 蓝鲸基础套餐会占用 6 个实例，建议添加 10 个实例（余量可供后续安装的 SaaS 使用）。
 
+点击方案左侧的箭头，即展开实例列表。可看到实例配置及分配情况。如果“已分配”为“否”的行较少，建议及时添加实例备用。
 
 <a id="upload-bkce-saas" name="upload-bkce-saas"></a>
 

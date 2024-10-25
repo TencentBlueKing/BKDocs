@@ -41,7 +41,7 @@ source /etc/bash_completion.d/kubectl
 ## 从 master 取得 kubeconfig
 
 登录到 master，确认存在 `~/.kube/config`。
-   * 如果能访问到 `master` 上的文件，可将 `master` 上的 `~/.kube/config` 复制到 **中控机** 的 `~/.kube/config` 路径下。
+   * 如果能访问到 `master` 上的文件，可将 `master` 上的 `~/.kube/config`（或 `/etc/kubenetes/admin.conf`）复制到 **中控机** 的 `~/.kube/config` 路径下。
    * 如果使用了 k8s 云服务，则厂商一般会提供 kubeconfig 导出功能，复制内容并写入 **中控机** 的 `~/.kube/config` 路径下即可。
    * 其他情况请自行解决。
 

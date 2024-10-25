@@ -5,7 +5,7 @@
 ### 下载安装包
 在 **中控机** 运行：
 ``` bash
-bkdl-7.2-stable.sh -ur latest lesscode
+bkdl-7.2-stable.sh -ur latest bk_lesscode=1.1.0-beta.18
 ```
 
 ### 使用脚本部署
@@ -29,7 +29,7 @@ scripts/setup_bkce7.sh -i lesscode
 当浏览器访问“开发者中心”进行部署时，需要提前在浏览器里下载安装包：
 | 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 运维开发平台（bk_lesscode） | 1.1.0-beta.17 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_lesscode/bk_lesscode-V1.1.0-beta.17.tar.gz |
+| 运维开发平台（bk_lesscode） | 1.1.0-beta.18 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_lesscode/bk_lesscode-V1.1.0-beta.18.tar.gz |
 
 
 ### 创建应用

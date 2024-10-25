@@ -17,7 +17,7 @@
 ``` bash
 kubectl -n blueking get cm bkauth-config -ojsonpath='{.data.config\.yaml}' | yq .accessKeys.bk_bscp
 ```
-如有显示引号包裹的字符串，可以跳过本章节。如果输出为 `null`，则需要继续操作。
+如果输出为 `null`，则继续操作。显示其他内容则跳过本章节。
 
 在中控机创建 app secret，并重启 bk-auth release 使之生效。
 ``` bash
