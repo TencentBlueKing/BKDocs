@@ -5,7 +5,7 @@
 * [产品简介](UserGuide/Overview.md)
 * [术语解释](UserGuide/Term.md)
 * [产品架构](UserGuide/Architecture.md)
-* [快速入门](UserGuide/QuickStart.md)
+<!-- * [快速入门](UserGuide/QuickStart.md) -->
 * [产品功能]()
     * [项目管理]()
         * [概述](UserGuide/ProductFeatures/ProjectManager/ProjectManager.md)
@@ -47,11 +47,11 @@
         * [WebConsole](UserGuide/ProductFeatures/Others/Webconsole.md)
         * [API 密钥管理与使用](UserGuide/ProductFeatures/Others/APIKeys.md)
         * [权限管理指南]()
-* [场景案例]()
+<!-- * [场景案例]()
     * [小游戏部署](UserGuide/UserCase/MiniGame.md)
     * [容器日志管理](UserGuide/UserCase/Logging.md)
     * [容器监控管理](UserGuide/UserCase/Monitoring.md)
     * [弹性资源管理](UserGuide/UserCase/Autoscaler.md)
     * [工作负载管理](UserGuide/UserCase/Workload.md)
-    * [容器网络管理](UserGuide/UserCase/Networking.md)
+    * [容器网络管理](UserGuide/UserCase/Networking.md) -->
 * [开源共建](https://github.com/TencentBlueking/bk-bcs)
