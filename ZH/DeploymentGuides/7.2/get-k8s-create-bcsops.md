@@ -72,11 +72,14 @@ for k8s_ip in $k8s_ips; do
   rsync -ra "$INSTALL_DIR/bcs-ops" "$k8s_ip":/root/
 done
 ```
+>**注意**
+>
+>请务必从 **中控机** 的模板目录 `$INSTALL_DIR/bcs-ops` 复制。从集群其他节点复制的安装目录会携带对应节点的信息，引发集群混乱。
 
 ### 获取扩容命令
 在 **初始 master** 上执行如下命令可显示扩容命令：
 ``` bash
-# 注意这是 node 上的 bcs-ops 目录，不是中控机的。
+# 注意这是 master node 上的 bcs-ops 目录，不是中控机的。
 cd /root/bcs-ops
 ./bcs-ops -r joincmd
 ```
@@ -98,7 +101,17 @@ cd /root/bcs-ops
 
 ### 执行扩容
 
-在 **待扩容的机器** 上粘贴刚才复制的命令。扩容成功后, 会在结尾输出:
+在 **待扩容的机器** 上，先进入 `/root/bcs-ops`目录，然后粘贴刚才复制的命令：
+``` bash
+# 注意这是 node 上的 bcs-ops 目录，不是中控机的。
+cd /root/bcs-ops
+# 粘贴刚才复制的扩容命令并执行：
+#set -a
+#...
+#./bcs-ops -i ...
+```
+
+扩容成功后, 会在结尾输出:
 ``` plain
 This node has joined the cluster:
 * Certificate signing request was sent to apiserver and a response was received.

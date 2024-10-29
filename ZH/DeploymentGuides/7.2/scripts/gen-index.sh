@@ -32,6 +32,8 @@ cat <<EOF | gawk -f scripts/tagged-table.awk scripts/release-7.2.*.tsv - > "$fil
 >* 点击包版本号查阅具体的升级文档。
 >* Helm chart 的包版本号可能和软件版本号不同，其他类型制品的包版本号即软件版本号。
 >* 已经发布的版本后续会收录到发行版中，会在标签列中显示蓝鲸版本号。
+>* 标签列显示“安全更新”，说明此补丁修复安全问题，需要尽快安排更新。
+>* 标签列显示“重要补丁”，说明此补丁修复了一些重要问题，强烈建议更新。
 
 $(gawk -f scripts/patches.awk scripts/patches.tsv)
 
