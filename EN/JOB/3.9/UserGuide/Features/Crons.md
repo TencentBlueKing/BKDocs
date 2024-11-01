@@ -2,7 +2,7 @@
 
 In addition to direct execution, the job also supports scheduled execution. The scheduled task function is used to manage scheduled job tasks. In addition, due to the particularity of the scheduled scenario, the execution result feedback cannot be obtained immediately, so the `period success rate is introduced. ` The statistical method helps users to confirm which tasks fail to execute during the loop execution process.
 
-![image-20211009174841530](media/image-20211009174841530.png)
+![image-20241029170356165](media/image-20241029170356165.png)
 
 ## Timing task list
 
@@ -32,7 +32,7 @@ In addition to direct execution, the job also supports scheduled execution. The 
 
 - cycle success rate
 
-   ![image-20200424104633465](media/image-20200424104633465.png)
+   ![image-20241029170430720](media/image-20241029170430720.png)
 
    - The periodic execution success rate of the scheduled task enables users to see the latest execution status of the scheduled task more intuitively. If the success rate is not 100%, the failed task information will be displayed after the mouse hovers; due to the difference in the length of the execution cycle, Single/multiple times, so the calculation formula of the success rate will be matched with different types of expressions defined by the user. The rules are as follows:
 
@@ -68,7 +68,7 @@ In addition to direct execution, the job also supports scheduled execution. The 
 
 Click the "**New**" button in the upper left corner of the list page to create a new scheduled task
 
-![image-20211009175259494](media/image-20211009175259494.png)
+![image-20241029170559994](media/image-20241029170559994.png)
 
 - mission name
 

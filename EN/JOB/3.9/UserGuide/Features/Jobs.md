@@ -4,13 +4,13 @@
 
 ## Job list
 
-![image-20211019151331130](media/image-20211019151331130.png)
+![image-20241029180746000](media/image-20241029180746000.png)
 
 The job list page supports classification management by `tag`, so that the job templates of different scenarios can be well stored and easy to find; the management of tags supports adding/editing directly in the form, which is very convenient! In addition, you can also add personal favorites to the job templates you care about, and you can quickly and easily access them from the home page.
 
 ## Create job template
 
-![image-20211019151444681](media/image-20211019151444681.png)
+![image-20241029180828289](media/image-20241029180828289.png)
 
 The job template consists of 3 parts: "basic information/global variables/job steps":
 
@@ -30,7 +30,7 @@ The job template consists of 3 parts: "basic information/global variables/job st
 
 2. Global variables
 
-    ![image-20211019151539393](media/image-20211019151539393.png)
+    ![image-20241029180900250](media/image-20241029180900250.png)
 
     - variable type
 
@@ -49,7 +49,7 @@ The job template consists of 3 parts: "basic information/global variables/job st
       - ciphertext
 
         The product layer of the operation platform encrypts ciphertext variables to protect their privacy and will not be displayed in plaintext
-       
+      
       - array
 
         Array structures dedicated to shell scripts, including `associative arrays` and `indexed arrays`
@@ -78,7 +78,7 @@ The job template consists of 3 parts: "basic information/global variables/job st
 
 3. Job steps
 
-    ![image-20211019152053468](media/image-20211019152053468.png)
+    ![image-20241029180938296](media/image-20241029180938296.png)
 
     - step type
 
@@ -94,7 +94,7 @@ The job template consists of 3 parts: "basic information/global variables/job st
 
       The step type of `manual confirmation` is unique to the job, so let’s explain it in detail:
 
-      ![image-20200416215621771](media/image-20200416215621771.png)
+      ![image-20241029181006280](media/image-20241029181006280.png)
 
       - Confirmor
 
@@ -109,14 +109,14 @@ The job template consists of 3 parts: "basic information/global variables/job st
         Remark some items that need to be checked by the confirmer in the current execution scenario, and clearly describe the points that need to be confirmed.
 
     - error handling
-   
+     
       When the step execution fails, if `Auto Ignore Error` is checked, the process will ignore the failure and continue to execute
 
 
 
 ## Template debugging
 
-![image-20211019152301371](media/image-20211019152301371.png)
+![image-20241029181115822](media/image-20241029181115822.png)
 
 The "**debug**" function of the job template is specially designed for the template owner who needs to debug after changing the template logic. The job content in the debugging mode will be completely consistent with the job template, without the need to Synchronize to get the latest status.
 
@@ -124,7 +124,7 @@ The "**debug**" function of the job template is specially designed for the templ
 
 ## Generate execution plan
 
-![image-20211019152502394](media/image-20211019152502394.png)
+![image-20241029181207287](media/image-20241029181207287.png)
 
 After the job template is created, one or more "**Execution Plans**" customized according to the scenario requirements can be created from the template; each execution plan can check the steps it needs from the template and modify the global variables variable value.
 
@@ -134,27 +134,27 @@ After the job template is created, one or more "**Execution Plans**" customized 
 
 ## Run the execution plan
 
-![image-20211019152637323](media/image-20211019152637323.png)
+![image-20241029181313400](media/image-20241029181313400.png)
 
 Select the execution plan you need, click "**Execute**" to go to the execution page; for the execution plan with global variables set, you will first enter the global variable confirmation page, in this page, users can follow their own needs Modify the scene and fill in the corresponding variable value, confirm and then click Execute.
 
-![image-20211019154110989](media/image-20211019154110989.png)
+![image-20241029181711532](media/image-20241029181711532.png)
 
 After the execution starts, you can see the overall execution status of the task, including the current progress, time-consuming, status and other information of the task; click on a step to enter and view the execution details of the step:
 
-![image-20211019154211812](media/image-20211019154211812.png)
+![image-20241029181747019](media/image-20241029181747019.png)
 
 On the step execution details page, you can view information such as the execution time, return code, and result log of each target server; in addition, some auxiliary functions are provided to help users view configurations related to this step, Step information, including operation records.
 
 ## Import and Export
 
-![image-20211019155312414](media/image-20211019155312414.png)
+![image-20241029181905507](media/image-20241029181905507.png)
 
 Check the job templates that need to be exported from the list, and click the `Export` button to export them.
 
 ### Export process
 
-![image-20200814115437296](media/image-20200814115437296.png?lastModify=1604498806)
+![image-20241029182011116](media/image-20241029182011116.png)
 
 The process is as follows: `User Notice` -> `Export Content Confirmation` -> `Export Settings` -> `Start Export`
 
@@ -164,13 +164,13 @@ The process is as follows: `User Notice` -> `Export Content Confirmation` -> `Ex
 
 2. Export content confirmation
 
-    ![image-20200814115852221](media/image-20200814115852221.png?lastModify=1604498806)
+    ![image-20241029182044653](media/image-20241029182044653.png)
 
     In this step, users can customize and select the job execution schemes that need to be exported, without exporting all of them.
 
 3. Export settings
 
-    ![image-20200814115930036](media/image-20200814115930036.png?lastModify=1604498806)
+    ![image-20241029182132549](media/image-20241029182132549.png)
 
     Mainly some general basics and security settings for the exported compressed package;
 
@@ -192,13 +192,13 @@ The process is as follows: `User Notice` -> `Export Content Confirmation` -> `Ex
 
 4. Start the export
 
-    ![image-20200814120230138](media/image-20200814120230138.png?lastModify=1604498806)
+    ![image-20241029182157573](media/image-20241029182157573.png)
 
     This step will officially start the job export action. After the export task is completed, a pop-up window will automatically pop up to save the file locally. If you lose it, you can click `Re-download file` to download it again.
 
 ### Import process
 
-![image-20200814120411092](media/image-20200814120411092.png?lastModify=1604498806)
+![image-20241029182334883](media/image-20241029182334883.png)
 
 The process is as follows: `User Notice` -> `File Package Upload` -> `Import Content Confirmation` -> `Import Settings` -> `Start Import`
 
@@ -208,19 +208,19 @@ The process is as follows: `User Notice` -> `File Package Upload` -> `Import Con
 
 2. File package upload
 
-    ![image-20200814120535291](media/image-20200814120535291.png?lastModify=1604498806)
+    ![image-20241029182403778](media/image-20241029182403778.png)
 
     After clicking Upload file compression package, if the background detects that the file is encrypted, a password input box will pop up automatically, and the correct password must be filled in to continue importing
 
 3. Import content confirmation
 
-    ![image-20200814120853617](media/image-20200814120853617.png?lastModify=1604498806)
+    ![image-20241029182545173](media/image-20241029182545173.png)
 
     In this step, users can select the job templates or execution plans to be imported as needed, without importing all of them.
 
 4. Import settings
 
-    ![image-20200814120943052](media/image-20200814120943052.png?lastModify=1604498806)
+    ![image-20241029182608670](media/image-20241029182608670.png)
 
     - duplicate name suffix
 
@@ -232,7 +232,7 @@ The process is as follows: `User Notice` -> `File Package Upload` -> `Import Con
 
 5. Start the import
 
-    ![image-20200814121110012](media/image-20200814121110012.png?lastModify=1604498806)
+    ![image-20241029182630019](media/image-20241029182630019.png)
 
     This step will officially start the job import task. During the import process, you can click the link in the log to view the job information that has been successfully imported in time.
 

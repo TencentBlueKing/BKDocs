@@ -2,7 +2,7 @@
 
 Provides a management view of business resources (jobs and scripts) from the perspective of "tags", helping the business operation and maintenance team to work together to classify and manage resources.
 
-![image-20220923174624550](media/image-20220923174624550.png)
+![image-20241029173147556](media/image-20241029173147556.png)
 
 - label name
    - the name of the label
@@ -32,7 +32,7 @@ Provides a management view of business resources (jobs and scripts) from the per
 
 Click the "**New**" button above the table to create a new tab:
 
-![image-20211019204310929](media/image-20211019204310929.png)
+![image-20241029173238625](media/image-20241029173238625.png)
 
 - label name
 

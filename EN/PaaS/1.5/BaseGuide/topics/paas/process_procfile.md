@@ -110,7 +110,7 @@ In the BlueKing Developer Center, we provide a simple scaling method.
 
 Operation entry:
 
-- Cloud Native Applications: 'Deployment Management' - 'Show Instance Details'
+- Cloud Native Applications: 'Deployment Management' - 'Expand Instance Details'
 - General Applications: 'APP Engine' - 'Process Management'
 
 ![Scaling](../../assets/images/scale_process.png)

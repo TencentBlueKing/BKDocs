@@ -2,7 +2,7 @@
 
 The usage scenario provided by the quick execution script is for one-time tasks that need to be executed quickly, and the script logic may be repeatedly adjusted to execute to obtain the results that the user wants to know, similar to the effect of executing on the console of the terminal springboard.
 
-![image-20211019161411552](media/image-20211019161411552.png)
+![image-20241029175930094](media/image-20241029175930094.png)
 
 - mission name
 
@@ -41,4 +41,4 @@ The usage scenario provided by the quick execution script is for one-time tasks 
 
 In order to meet the usage scenarios that require repeated parameter adjustment and execution, the page also provides a quick view of the last 5 execution records:
 
-![image-20211019161512654](media/image-20211019161512654.png)
+![image-20241029180120371](media/image-20241029180120371.png)

@@ -2,19 +2,19 @@
 
 "Script Management" provides functions for business management and maintenance of scripts, including script reference relationships, version logs, version log-off/comparison, etc.; this chapter introduces the relevant functions and logical relationships of script management.
 
-![image-20211019161750678](media/image-20211019161750678.png)
+![image-20241029173612872](media/image-20241029173612872.png)
 
 ## Reference relationship maintenance
 
 You can choose to reference business scripts in the steps of the job template, so the referenced relationship of each script can be displayed in the "Referenced" column in the script list.
 
-![image-20211019161829479](media/image-20211019161829479.png)
+![image-20241029173711922](media/image-20241029173711922.png)
 
 ## New script
 
 Enter the script creation page from the "New" button on the list page:
 
-![image-20211019162153552](media/image-20211019162153552.png)
+![image-20241029173840298](media/image-20241029173840298.png)
 
 - script name
 
@@ -38,7 +38,7 @@ Enter the script creation page from the "New" button on the list page:
 
 After filling in the necessary parameters as required, click Submit to complete the creation of the new script:
 
-![image-20211019162245258](media/image-20211019162245258.png)
+![image-20241029174107689](media/image-20241029174107689.png)
 
 
 
@@ -46,7 +46,7 @@ After filling in the necessary parameters as required, click Submit to complete 
 
 Version management provides functions such as creating/editing, going online/offline, disabling, code comparison and other functions to help users maintain many versions of scripts in an orderly manner.
 
-![image-20211019162315409](media/image-20211019162315409.png)
+![image-20241029175317772](media/image-20241029175317772.png)
 
 - the status of the version
 

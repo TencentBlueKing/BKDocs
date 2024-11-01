@@ -2,7 +2,7 @@
 
 Since the business in the job platform is logically isolated, that is, users can only execute scripts/jobs or hosts associated with the specified business, resources or targets are not allowed to be cross-business; but when the user is in the platform business maintenance scenario, it is required To transfer files/execute tasks across businesses, this is achieved by adding hosts outside the business to the IP whitelist. (This function will be provided by configuring the "business set" of the platform in the future. At that time, the IP whitelist function will be removed after migration)
 
-![image-20211019145440672](media/image-20211019145440672.png)
+![image-20241029172326971](media/image-20241029172326971.png)
 
 ## New IP whitelist
 
@@ -14,7 +14,7 @@ Since the business in the job platform is logically isolated, that is, users can
 
    Select the corresponding cloud region
 
--IP
+- IP
 
    Enter a list of IPs for the whitelist
 
@@ -26,4 +26,4 @@ Since the business in the job platform is logically isolated, that is, users can
 
    Select the effective scope of the operation of this record, that is, the atomic capabilities of the operating platform: `script execution` and `file distribution`
 
-![image-20211019145613262](media/image-20211019145613262.png)
+![image-20241029172351480](media/image-20241029172351480.png)

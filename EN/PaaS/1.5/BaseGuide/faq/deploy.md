@@ -67,7 +67,7 @@ module:
 Some Python MySQL-related libraries are wrapped based on the C version of the development library, so it is necessary to install the relevant system packages for support. To install system packages, update the runtime configuration:
 
 1. Access the Developer Center and enter the application details page.
-2. Click on the left menu: "Application Engine" - "Environment Configuration".
+2. Click on the left menu: "App Settings" - "Mudule Settings" - "Build Config".
 3. Bind multiple build tool base images Ubuntu18 (BlueKing version) and the corresponding build tools to install system packages.
 
 The build tools will be built one by one, so pay attention to the order in which the build tools are selected. For example, to use apt to install some system dependencies during the Python build, the installation of system packages must be placed before the Python environment:

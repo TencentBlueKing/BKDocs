@@ -2,7 +2,7 @@
 
 ### High-risk statement rule configuration
 
-![image-20211019164229870](media/image-20211019164229870.png)
+![image-20241029171141056](media/image-20241029171141056.png)
 
 In order to avoid operation and maintenance operators mistakenly write some high-risk commands in the script, such as `rm -rf /`, which is a serious mistake to delete the root directory of the server! We provide a custom configuration function for high-risk statements. Enterprises can configure according to different script types in a regular way according to their own scenario needs;
 
@@ -18,7 +18,7 @@ Also, it is supported to configure detection actions (`intercept` or `scan`):
 
 ### High-risk statement detection record
 
-![image-20211019164836088](media/image-20211019164836088.png)
+![image-20241029171331087](media/image-20241029171331087.png)
 
 Provides to view the log records of all high-risk statement scanning and interception in history
 
@@ -26,19 +26,15 @@ Provides to view the log records of all high-risk statement scanning and interce
 - "Scan" level
   
    - Editor hints
-  
-     ![image-20220923180328813](media/image-20220923180328813.png)
-  
+    
+     ![image-20241029171605049](media/image-20241029171605049.png)
+    
    - Execution prompt
-  
-     ![image-20220923180344593](media/image-20220923180344593.png)
+    
+     ![image-20241029171643272](media/image-20241029171643272.png)
   
 - "Intercept" level
 
-   - Editor hints
-
-     ![image-20220923180416444](media/image-20220923180416444.png)
-
    - Execution prompt
 
-     ![image-20220923180500448](media/image-20220923180500448.png)
+     ![image-20241029171920711](media/image-20241029171920711.png)

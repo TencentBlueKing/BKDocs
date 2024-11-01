@@ -2,7 +2,7 @@
 
 When we have a task that needs to be executed on many servers (hundreds or even thousands, tens of thousands), in order to avoid the impact on the service due to excessive concurrency, or to gradually observe the effect after execution, we can use This function performs rolling execution in batches;
 
-![image-20230327114524491](media/image-20230327114524491.png)
+![image-20241029175624092](media/image-20241029175624092.png)
 
 - rolling strategy
 
@@ -40,4 +40,4 @@ I have 100 hosts that need to be processed, but I want to execute them in batche
 20 +10
 ```
 
-![image-20230327115715266](media/image-20230327115715266.png)
+![image-20241029175701829](media/image-20241029175701829.png)

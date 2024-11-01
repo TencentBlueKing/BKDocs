@@ -2,7 +2,7 @@
 
 The execution history page displays all historical execution tasks under the corresponding business, including tasks triggered through channels such as page execution, scheduled execution, and API calls; it also provides a convenient entry for "**redo**" on historical tasks to meet The user wants to repeat the execution of a historical task.
 
-![image-20211009175410471](media/image-20211009175410471.png)
+![image-20241029172025337](media/image-20241029172025337.png)
 
 - Task ID
 

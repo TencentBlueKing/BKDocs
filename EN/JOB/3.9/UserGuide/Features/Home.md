@@ -2,7 +2,7 @@
 
 As the home page of job management, it provides an overview of data statistics from the perspective of a single business; it is mainly divided into four parts, data analysis, data statistics, favorite jobs and recent execution history; the core is to allow users to access the job platform more comprehensively Master the usage of the business, and find what the user needs in this scenario faster!
 
-![image-20211009180008544](media/image-20211009180008544.png)
+![image-20241029172220299](media/image-20241029172220299.png)
 
 
 1. Level 1 Navigation

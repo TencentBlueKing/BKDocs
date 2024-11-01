@@ -2,7 +2,7 @@
 
 The message notification setting function helps users to grasp the execution status of tasks in a more timely manner, and supports selecting different notification methods for specific objects according to different task types.
 
-![image-20211019155422080](media/image-20211019155422080.png)
+![image-20241029180228360](media/image-20241029180228360.png)
 
 - There are three operation channels: `page execution`, `API call`, `scheduled task`
 - Configuration of notifications is saved per individual dimension

@@ -25,8 +25,6 @@ If the application cluster is on a BCS cluster, and the Kubernetes provider is T
    - Click on Clusters on the left, enter the cluster details page according to the cluster ID
    - Click on Storage on the left, add StorageClass, fill in the form with the previously created subnet, permissions, etc., and it is recommended to set the StorageClass name to cfs
 
-![CFS Configuration](../../assets/images/cfs.png)
-
 ## Configure the Developer Center
 
 Configure `DEFAULT_PERSISTENT_STORAGE_CLASS_NAME = your_storage_class_name` in the Developer Center (the default value is cfs). If your StorageClass name is cfs, you can skip this configuration.

@@ -2,7 +2,7 @@
 
 The function of the public script is exactly the same as the script management under the business. The difference is that the public script is oriented to the platform as a whole, while the business script is oriented to a single business. The object dimensions of the two are different.
 
-![image-20211019161644711](media/image-20211019161644711.png)
+![image-20241029175749975](media/image-20241029175749975.png)
 
 For function introduction, please refer to [Script Management](./Scripts.md)
 

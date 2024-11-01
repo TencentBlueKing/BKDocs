@@ -2,7 +2,7 @@
 
 Same as the usage scenario provided by the "Quickly Execute Script" function, the purpose of quickly distributing files is also to allow users who need to transfer files at one time to quickly execute and get results here.
 
-![image-20211019155650914](media/image-20211019155650914.png)
+![image-20241029180411040](media/image-20241029180411040.png)
 
 - mission name
 
@@ -24,7 +24,7 @@ Same as the usage scenario provided by the "Quickly Execute Script" function, th
 
    The absolute path address of the file distribution to the target server, providing 2 built-in variables available:
 
-   <img src="media/image-20211019160623890.png" alt="image-20211019160623890" style="zoom:50%;" />
+   ![image-20241029180505573](media/image-20241029180505573.png)
 
 - transfer mode
 
@@ -42,4 +42,4 @@ Same as the usage scenario provided by the "Quickly Execute Script" function, th
 
 Similarly, in order to meet the usage scenarios where files need to be transferred repeatedly, the page provides the function of quickly viewing the last 5 file distribution records:
 
-![image-20211019160808702](media/image-20211019160808702.png)
+![image-20241029180613367](media/image-20241029180613367.png)

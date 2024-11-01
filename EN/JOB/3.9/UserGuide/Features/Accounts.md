@@ -2,13 +2,13 @@
 
 The account management function allows users to store and manage different types of OS execution accounts according to different businesses; of course, if there is a corresponding "account management system" (such as the Iron General system) within the enterprise, then the account here needs to be configured by the user according to the actual situation Use; because the operating platform itself is not directly related to the account authentication module on the server operating system, only account configuration maintenance management is provided here.
 
-![image-20211009174612946](media/image-20211009174612946.png)
+![image-20241029165801858](media/image-20241029165801858.png)
 
 ## Create an account
 
 Click the "**New**" button above the form to create a new server account:
 
-![image-20211009174702681](media/image-20211009174702681.png)
+![image-20241029170011868](media/image-20241029170011868.png)
 
 - purpose
 
