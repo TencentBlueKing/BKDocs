@@ -128,6 +128,9 @@ kubectl get pod -A | grep -wv Completed | grep -e "0/"
 * 镜像拉取超时。
   * 表现：在早期 kubectl describe pod 时可以看到 Events 显示 `Pulling image XXX`。如果发现较晚，则镜像可能拉取完毕，此时 kubectl get pod 无任何异常，且 pod 未曾重启过。
   * 解决办法：目前镜像策略都是复用现存镜像，可改用其他网络下载所需的镜像，然后导出为 tar 包，在上述 pod 所在的 node 导入。
+* 镜像站 mirror.ccs.tencentyun.com 无法解析。
+  * 表现：kubectl get pod 显示 `ImagePullBackOff` 状态。kubectl describe pod 时可以看到 Events 显示 `Failed to pull image "镜像名": rpc error: code = Unknown desc = failed to pull and unpack image "docker.io/镜像路径": 中间略: dial tcp: lookup mirror.ccs.tencentyun.com on DNS_IP:53: no such host`。
+  * 解决办法：在各 node 修改 docker.io 镜像站为蓝鲸镜像站（请注意我们仅提供蓝鲸部署所需的镜像）： `sed -i 's/mirror.ccs.tencentyun.com/hub.bktencent.com/' /etc/containerd/certs.d/docker.io/hosts.toml`。
 * 镜像不存在。
   * 表现：kubectl get pod 显示 `ImagePullBackOff` 状态。kubectl describe pod 时可以看到 Events 显示 `Failed to pull image "镜像路径": rpc error: code = Unknown desc = Error response from daemon: manifest for 镜像路径 not found: manifest unknown: manifest unknown`。
   * 解决办法：请联系蓝鲸助手处理。

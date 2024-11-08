@@ -30,6 +30,8 @@ rsync -ra "$INSTALL_DIR/bcs-ops" "$master_ip":/root/
 ``` bash
 # 注意这是 node 上的 bcs-ops 目录，不是中控机的。
 cd /root/bcs-ops
+# 如果不是腾讯云机器，则配置docker.io镜像为蓝鲸镜像站，请注意我们仅提供蓝鲸部署所需的镜像。
+if ! grep -qF TencentCloud /etc/cloud/cloud.cfg 2>/dev/null; then export REPO_MIRRORS=https://hub.bktencent.com; fi
 # 使用变量决定 k8s 版本及 cri 类型
 K8S_VER="1.24.15" CRI_TYPE="containerd" ./bcs-ops -i master
 ```
@@ -105,6 +107,8 @@ cd /root/bcs-ops
 ``` bash
 # 注意这是 node 上的 bcs-ops 目录，不是中控机的。
 cd /root/bcs-ops
+# 如果不是腾讯云机器，则配置docker.io镜像为蓝鲸镜像站，请注意我们仅提供蓝鲸部署所需的镜像。
+if ! grep -qF TencentCloud /etc/cloud/cloud.cfg 2>/dev/null; then export REPO_MIRRORS=https://hub.bktencent.com; fi
 # 粘贴刚才复制的扩容命令并执行：
 #set -a
 #...
