@@ -7,6 +7,7 @@
 如果在迁移过程中遇到任何步骤执行失败且无法自行解决的情况，请及时收集相关异常日志和截图，并联系蓝鲸助手寻求帮助。
 
 - 操作路径
+
 ![0x10.png](./assets/0x10.png)
 
 - 注意事项：
@@ -17,11 +18,11 @@
 
 ### 2.1. 资源及环境要求
 
-参考：https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/prepare.md
+参考：[https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/prepare.md](https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/prepare.md)
 
 ### 2.2. 准备中控机
 
-参考：https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/prepare-bkctrl.md
+参考：[https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/prepare-bkctrl.md](https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/prepare-bkctrl.md)
 
 ### 2.3. 下载所需的资源文件
 
@@ -36,10 +37,10 @@ bkdl-7.2-stable.sh -ur latest base demo nm_gse_full saas scripts
 Kubenetes 版本支持：1.20、1.24，**建议使用 1.24**
 
 - 自建集群
-  - 参考：https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/get-k8s-create-bcsops.md
-    - 注意 storageclass 的准备：如若使用 localpv，请务必提前制备：参考：https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/storage-services.md#localpv
+  - 参考：[https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/get-k8s-create-bcsops.md](https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/get-k8s-create-bcsops.md)
+    - 注意 storageclass 的准备：如若使用 localpv，请务必提前制备：参考：[https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/storage-services.md#localpv](https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/storage-services.md#localpv)
 - 购买云服务，如 TKE
-  - 参考：https://cloud.tencent.com/document/product/457/54231
+  - 参考：[https://cloud.tencent.com/document/product/457/54231](https://cloud.tencent.com/document/product/457/54231)
   
 ## 3. 老蓝鲸：数据导出和处理
 
