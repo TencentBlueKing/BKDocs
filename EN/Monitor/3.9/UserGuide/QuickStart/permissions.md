@@ -10,9 +10,9 @@ The permission assignment function allows users to assign two different levels o
 
 ## Function Description
 
-By default, monitoring will synchronize four roles: operation and maintenance, developers, product personnel, and testers. Therefore, if you need to add people, you can go to CMDB to add them. Viewing or editing permissions can be set in monitoring. This means that developers who want to have editing permissions for monitoring can also be set.
+By default, monitoring will synchronize four roles: operation and maintenance, developers, productors, and testers. Therefore, if you need to add people, you can go to CMDB to add them. Viewing or editing permissions can be set in monitoring. This means that developers who want to have editing permissions for monitoring can also be set.
 
-![-w2021](media/15754477019854.jpg)
+![image-20241031210010632](permissions/image-20241031210010632.png)
 
 > **Note: Business roles and corresponding personnel lists are all obtained from the BlueKing configuration platform.**
 

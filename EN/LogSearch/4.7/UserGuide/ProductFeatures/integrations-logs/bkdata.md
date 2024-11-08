@@ -10,7 +10,7 @@ Quickly access BKLog by accessing the data platform. (Enterprise version only)
 
 Navigation path: Computing Platform → Data Integration → New Access Data Source
 
-![-w2020](media/16049162018738.jpg)
+![image-20241031210945243](bkdata/image-20241031210945243.png)
 
 ### Computing platform data cleaning
 

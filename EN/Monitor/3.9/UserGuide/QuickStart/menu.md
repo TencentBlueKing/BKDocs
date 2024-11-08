@@ -2,9 +2,9 @@
 
 A brief understanding of the navigation function description can help you quickly understand the function distribution of the monitoring platform.
 
-![](media/16906159613257.jpg)
+![image-20241031203930266](menu/image-20241031203930266.png)
 
-![](media/16906158541474.jpg)
+![image-20241031204851309](menu/image-20241031204851309.png)
 
 
 ## front page

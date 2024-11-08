@@ -1,6 +1,6 @@
-# How to Deploy the BlueKing Visual Development Platform
+# How to Deploy the BlueKing Lesscode Development Platform
 
-The BlueKing Visual Development Platform is deployed on the PaaS3.0 Developer Center as an S-mart APP, with the APP ID being: bk_lesscode.
+The BlueKing Lesscode Development Platform is deployed on the PaaS3.0 Developer Center as an S-mart APP, with the APP ID being: bk_lesscode.
 
 ### Create an Application
 
