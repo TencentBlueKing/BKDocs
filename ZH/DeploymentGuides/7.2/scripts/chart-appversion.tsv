@@ -2,7 +2,7 @@ bcs-services-stack bcs-ui
 bk-bscp-stack	bk-bscp-hyper
 bk-apicheck bk-apicheck
 bk-apigateway apigateway-dashboard-fe apigateway-dashboard
-bk-ci bkci-backend bkci-frontend
+bk-ci --
 bk-cmdb cmdb_adminserver cmdb_apiserver
 bk-codecc codecc-defect codecc-report codecc-task
 bk-console bk-console-v1

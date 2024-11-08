@@ -46,6 +46,10 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ``` bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 helmfile -f 06-bkbscp.yaml.gotmpl sync
+# 在admin桌面添加应用，也可以登录后手动添加。如果未曾打开过桌面，则会提示 user(admin) not exists，可忽略。
+scripts/add_user_desktop_app.sh -u "admin" -a "bk_bscp"
+# 设为默认应用。
+scripts/set_desktop_default_app.sh -a "bk_bscp"
 ```
 
 # 访问
