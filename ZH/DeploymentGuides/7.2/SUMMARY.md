@@ -51,4 +51,5 @@
 * [发行版升级]()
     * [从 7.1 升级](upgrade-from-v71.md)
     * [从 7.0 升级](upgrade-from-v70.md)
+    * [从 6.1 迁移](migrating-from-v61.md)
 * [常见问题](faq.md)
