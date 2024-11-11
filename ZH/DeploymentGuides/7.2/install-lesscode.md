@@ -5,7 +5,7 @@
 ### 下载安装包
 在 **中控机** 运行：
 ``` bash
-bkdl-7.2-stable.sh -ur latest bk_lesscode=1.1.0-beta.18
+bkdl-7.2-stable.sh -ur latest bk_lesscode
 ```
 
 ### 使用脚本部署

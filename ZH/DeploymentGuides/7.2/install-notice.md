@@ -22,7 +22,7 @@ scripts/setup_bkce7.sh -i notice
 当浏览器访问“开发者中心”进行部署时，需要提前在浏览器里下载安装包：
 | 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 消息通知中心（bk_notice） | 1.5.10 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_notice/bk_notice-V1.5.10.tar.gz |
+| 消息通知中心（bk_notice） | 1.5.11 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_notice/bk_notice-V1.5.11.tar.gz |
 
 
 ### 创建应用

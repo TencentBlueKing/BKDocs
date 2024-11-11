@@ -81,6 +81,8 @@ helmfiles:
 
 03-bkci.yaml.gotmpl  # 部署文件：蓝盾流水线平台
 
+03-bkcodecc.yaml.gotmpl # 部署文件：代码检查平台
+
 monitor.yaml.gotmpl  # 蓝鲸监控日志套餐，一般调用下面的独立文件。
   monitor-storage.yaml.gotmpl  # 监控专用的存储服务
   04-bkmonitor.yaml.gotmpl  # 监控后台
@@ -89,6 +91,8 @@ monitor.yaml.gotmpl  # 蓝鲸监控日志套餐，一般调用下面的独立文
   04-bklog-collector.yaml.gotmpl  # 日志采集器
 
 05-bkapicheck.yaml.gotmpl  # 部署文件：api测试工具
+
+06-bkbscp.yaml.gotmpl # 部署文件：服务配置中心
 ```
 
 ### values 文件
@@ -127,7 +131,7 @@ releases:
 
 # 配置 helm 及 docker 仓库
 ## 添加 charts 仓库
-蓝鲸 7.0 软件产品通过 https://hub.bktencent.com/ 进行分发。
+蓝鲸 V7 软件产品通过 https://hub.bktencent.com/ 进行分发。
 
 请先在 helm 中添加名为 `blueking` 的 charts 仓库：
 ``` bash

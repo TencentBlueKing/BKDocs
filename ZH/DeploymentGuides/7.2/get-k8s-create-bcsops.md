@@ -242,6 +242,15 @@ done
 常见报错：
 1. `Host key verification failed.`，且开头提示 `REMOTE HOST IDENTIFICATION HAS CHANGED`: 检查目的主机是否重装过。如果确认没连错机器，可以使用 `ssh-keygen -R IP地址` 命令删除 `known_hosts` 文件里的记录。
 
+# 配置所需的内核模块
+
+请在中控机执行如下命令：
+```bash
+node_ips=$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}')
+for ip in $node_ips; do
+  ssh "$ip" 'echo "br_netfilter"' > /etc/modules-load.d/br_netfilter.conf && modprobe br_netfilter
+done
+```
 
 # 下一步
 

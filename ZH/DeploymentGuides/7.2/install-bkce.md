@@ -53,13 +53,6 @@ kubectl get sc
   * 如果希望由 node 提供存储，可参考部署详解 [直接创建 localpv](./storage-services.md#localpv)
   * 自行配置其他 sc，并设置为默认。
 
-## 版本补丁
-
-修改 job 版本号为 `0.6.6-beta.6`。
-``` bash
-cd $INSTALL_DIR/blueking/  # 进入工作目录
-sed -i 's/bk-job:.*/bk-job: "0.6.6-beta.6"/' environments/default/version.yaml
-```
 
 <a id="setup_bkce7-i-base" name="setup_bkce7-i-base"></a>
 
