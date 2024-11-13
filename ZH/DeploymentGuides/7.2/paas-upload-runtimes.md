@@ -10,12 +10,12 @@
 ## 下载文件
 >**提示**
 >
->本章节默认适配 paas3 `1.1.0-beta.43` 及以后的版本。如果为早期版本，请修改下载脚本的参数为 `-r paas3-1.0`。
+>本章节内容已于 2024-11-13 更新了 Go SDK 相关内容，请按需更新。
 
 ### 下载基础文件
 一些公共的脚本及资源文件，大约 12MB。
 ``` bash
-bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.1 common
+bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 common
 ```
 
 ### 下载 python 环境
@@ -23,41 +23,42 @@ bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.1 common
 ``` bash
 # 下载python
 for v in 2.7.18 3.6.8 3.6.12 3.10.5; do
-  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.1 python=$v
+  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 python=$v
 done
 # 这些pip同时提供py2和py3版本。
 for v in 9.0.2 19.1.1 20.0.2 20.1.1 20.2.3 20.2.4 20.3.4; do
-  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.1 pip-whl-py23=$v
+  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 pip-whl-py23=$v
 done
 # 这些pip仅提供py3版本。
 for v in 21.3.1 22.0.4 22.1.2 22.2.2 22.3.1 23.0.1; do
-  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.1 pip-whl=$v
+  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 pip-whl=$v
 done
 ```
 
 ### 下载 nodejs 环境
 常见 4 个版本，一共 100MB。
 ``` bash
-for v in 12.16.3 14.16.1 10.10.0 16.16.0; do
-  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.1 node=$v
+for v in 10.10.0 12.16.3 14.16.1 16.16.0; do
+  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 node=$v
 done
 ```
 
 ### 下载 golang 环境
-每个版本约 130M，可以下载所需的版本。
+每个版本约 130M，可以仅下载所需的版本。
 ``` bash
-for v in 1.19.1 1.18.6 1.17.10 1.12.17; do
-  bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.1 go=$v
+for v in 1.12.17 1.17.10 1.18.6 1.19.1 1.20.14 1.22.3; do
+  bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 go=$v
 done
 ```
 
 ### 下载开发框架模板
 ``` bash
 # 下载python开发框架模板
-bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.1 pysdk
+bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 pysdk
 # 下载node开发框架模板
-bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.1 nodesdk
-# golang 没有提供开发框架模板
+bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 nodesdk
+# 下载golang开发框架模板
+bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 gosdk
 ```
 
 ## 上传文件
@@ -105,7 +106,7 @@ kubectl logs -n blueking deploy/bk-repo-bkrepo-generic generic | awk '/ \/bkpaas
 ```
 默认仅展示最后 10 条记录，可以检查部署时间后的文件名。例如显示的文件名为 `node-v14.16.1-linux-x64.tar.gz`，表示需要 node ，版本为 `14.16.1`。
 
-然后使用下载脚本下载指定版本：`bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.1 node=14.16.1`。
+然后使用下载脚本下载指定版本：`bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 node=14.16.1`。
 
 下载完成后参考 “上传文件” 章节重新上传一次即可。如果下载脚本提示文件 404，可以联系蓝鲸助手排查原因。
 
