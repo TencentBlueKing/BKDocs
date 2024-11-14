@@ -74,16 +74,16 @@ IP2 ci(dockerhost)
 资源列表如下：
 1. CI 安装包（以 `v2.0.4` 为例，其他版本请自行替换版本号）：
   * 预期放置路径： `/data/src/bkci-v2.0.4-slim.tar.gz`
-  * 参考下载地址（蓝鲸官网）： [bkci-v2.0.4-slim.tar.gz](https://bkopen-1252002024.file.myqcloud.com/bkci/bkci-v2.0.4-slim.tar.gz)，此文件的 MD5 值为：`ca1dbb2bbe493ca640969c39424ca4b6`
-  * 参考下载地址（GitHub）： [bkci-v2.0.4-slim.tar.gz](https://github.com/TencentBlueKing/bk-ci/releases/download/v2.0.4/bkci-slim.tar.gz) （注意修改为预期放置路径的文件名）
+  * 参考下载地址（蓝鲸官网）： https://bkopen-1252002024.file.myqcloud.com/bkci/bkci-v2.0.4-slim.tar.gz ，此文件的 MD5 值为：`ca1dbb2bbe493ca640969c39424ca4b6`
+  * 参考下载地址（GitHub）： https://github.com/TencentBlueKing/bk-ci/releases/download/v2.0.4/bkci-slim.tar.gz （注意修改为预期放置路径的文件名）
 2. rabbitmq_delayed_message_exchange 插件 （版本固定，不能修改）：
  * 预期放置路径: `/data/src/rabbitmq_delayed_message_exchange-3.8.0.ez`
- * 参考下载地址： [rabbitmq_delayed_message_exchange-3.8.0.ez](https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.8.0/rabbitmq_delayed_message_exchange-3.8.0.ez)
+ * 参考下载地址： https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.8.0/rabbitmq_delayed_message_exchange-3.8.0.ez
 
-### 快速部署 BKCI
+### 快速部署 CI
 1. **导入标准运维流程模板**
 
-进入“标准运维”，选择《`蓝鲸`》业务，导入 [部署流程模板](https://bkopen-1252002024.file.myqcloud.com/bkci/bkci-deploy-202411111447.dat) 。
+进入“标准运维”，选择《`蓝鲸`》业务，导入 [部署流程模板](https://bkopen-1252002024.file.myqcloud.com/bkci/bk-ci-deploy-202411130927.dat) 。
 2. **执行部署**
 
 
@@ -113,7 +113,13 @@ IP2 ci(dockerhost)
 
 ## 蓝盾制品库 Repo 部署指南
 
-本章节适用于在蓝鲸社区版（二进制方式部署）6.2版本 基础套餐中加装蓝鲸持续集成-制品库（Repo）服务
+本章节适用于在蓝鲸社区版（二进制方式部署）6.2版本 基础套餐中加装蓝鲸持续集成-制品库（Repo）服务。
+
+>请在部署制品库之前先创建一个蓝盾项目（如果已有项目可以跳过）
+> - 创建入口 `devops.${BK_DOMAIN}/console/pipeline` 
+> - 创建如下图所示：
+><img src="../../assets/CI_create_project.png" width = "400" height = "200" alt="蓝盾创建项目" align=center />
+
 
 ### 资源准备
 
@@ -158,13 +164,13 @@ IP4 repo(auth),repo(generic),repo(repository),repo(replication),repo(job)
 资源列表如下：
 1. Repo 安装包（蓝盾6.2版本，对应制品库需使用 `v1.3.24-rc.2` 版本）：
     - 预期放置路径： `/data/src/bkrepo_ce-v1.3.24-rc.2.tar.gz`
-    - 下载地址：[bkrepo_ce-v1.3.24-rc.2.tar.gz](https://bkopen-1252002024.file.myqcloud.com/bkrepo/bkrepo_ce-v1.3.24-rc.2.tar.gz)
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/bkrepo/bkrepo_ce-v1.3.24-rc.2.tar.gz
     - 请提前下载这个包到中控机/data/src目录下
 
-### 快速部署
+### 快速部署 Repo
 
 1. 导入标准运维流程模板
-    - 进入“标准运维”，选择《`蓝鲸`》业务，下载并导入 [部署流程模板文件](https://bkopen-1252002024.file.myqcloud.com/bkrepo/bkrepo-deploy-20241108150307.dat)，此文件 MD5 值为：`689b667d835e8f1326268a8a9ac97dea` 
+    - 进入“标准运维”，选择《`蓝鲸`》业务，下载并导入 [部署流程模板文件](https://bkopen-1252002024.file.myqcloud.com/bkrepo/bkrepo_deploy_sops_1_202411131655.dat)，此文件 MD5 值为：`1beb7e687fe37ac122f669772947945c` 
 
 2. 执行部署
     - 从模板 “[蓝鲸持续集成][REPO]部署制品库” 新建任务
@@ -259,15 +265,15 @@ IP6 codecc(quartz),codecc(report),codecc(schedule),codecc(task)
 部署流程中，需要提前下载资源，下载完毕后传输到中控机指定路径。
 
 资源列表如下：
-1. Repo 安装包（蓝盾6.2版本，对应制品库需使用 `v2.1.1` 版本）：
+1. CodeCC 安装包（蓝盾6.2版本，对应代码分析需使用 `v2.1.1` 版本）：
     - 预期放置路径： `/data/src/bkcodecc-v2.1.1-slim.tar.gz`
-    - 下载地址：[bkcodecc-v2.1.1-slim.tar.gz](https://bkopen-1252002024.file.myqcloud.com/bkcodecc/bkcodecc-v2.1.1-slim.tar.gz)，此文件 MD5 值为：`8abd8f3cb22594d0297dfceb81fd9203`
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/bkcodecc/bkcodecc-v2.1.1-slim.tar.gz ，此文件 MD5 值为：`8abd8f3cb22594d0297dfceb81fd9203`
     - 请提前下载这个包到中控机/data/src目录下
 
-### 快速部署
+### 快速部署 CodeCC
 
 1. 导入标准运维流程模板
-    - 进入“标准运维”，选择《`蓝鲸`》业务，下载并导入 [部署流程模板文件](https://bkopen-1252002024.file.myqcloud.com/bkcodecc/bkcodecc-deploy-20240417101432.dat)，此文件 MD5 值为：`3a40cbce0932e455e7a602abb1f8f437`
+    - 进入“标准运维”，选择《`蓝鲸`》业务，下载并导入 [部署流程模板文件](https://bkopen-1252002024.file.myqcloud.com/bkcodecc/bkcodecc-deploy-202411121530.dat)，此文件 MD5 值为：`336768fac1cd8b61b4ad5b90caedd02d`
 
 2. 执行部署
     - 从模板`[蓝鲸持续集成][CodeCC]部署或升级代码检查`新建任务
@@ -283,3 +289,18 @@ IP6 codecc(quartz),codecc(report),codecc(schedule),codecc(task)
 
 - 请配置 DNS 系统或本地 hosts 文件。将 `$BK_CODECC_FQDN` 解析到 `codecc(gateway)` 所在的 IP。如配置 `$BK_CODECC_GATEWAY_IP0` `$BK_CODECC_FQDN` 到本机 hosts 文件
 - 域名解析后，即可在蓝盾主页的服务中，打开代码检查（CodeCC）服务
+
+### 配置插件 CodeCCCheckAtom
+目前 CodeCCCheckAtom 插件需要配置后方可使用。
+
+进入配置界面：
+* 你可以修改如下链接中的域名部分，快速直达： `http://devops.${BK_DOMAIN}/console/store/manage/atom/CodeCCCheckAtom/setting/private`
+* 或者从蓝鲸桌面打开 “蓝盾” 应用，进入“研发商店” —— “工作台” 界面。在流水线插件列表中找到 CodeCC 代码检查（或英文版的 “CodeCC Code Check”），点击名称进入插件信息概览界面，切换到 “基本设置”，然后切换为 “私有配置”。
+
+在 “私有配置” 界面，点击 “新增配置” 按钮新增如下四个配置项：
+
+| 字段名 | 字段值及取值说明 | 适用范围 | 描述 |
+|--|--|--|--|
+| `BK_CODECC_PRIVATE_URL` | `http://bk-codecc.service.consul`  | 全部 | |
+| `BK_CODECC_PUBLIC_URL` | `http://bk-codecc.service.consul`  | 全部 | |
+| `BK_CI_PUBLIC_URL` | `http://bk-ci.service.consul`  | 全部 | |
