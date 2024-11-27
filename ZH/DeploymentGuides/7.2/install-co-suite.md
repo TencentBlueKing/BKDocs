@@ -207,12 +207,12 @@ bk-collector 在启动后，会监听如下的端口：
 请完成前面的“自定义上报服务器”章节，即可获得 OTel 服务端。
 
 ### 接入应用监控
-你可以参考 [产品文档](../../Monitor/3.8/UserGuide/ProductFeatures/scene-apm/apm_monitor_overview.md)，或者直接开始接入 SDK：
-* [SDK FAQ](../../Monitor/3.8/UserGuide/ProductFeatures/integrations-traces/otel_sdk_faq.md)
-* [Go](../../Monitor/3.8/UserGuide/ProductFeatures/integrations-traces/otel_sdk_golang.md)
-* [Python3](../../Monitor/3.8/UserGuide/ProductFeatures/integrations-traces/otel_sdk_python.md)
-* [C++](../../Monitor/3.8/UserGuide/ProductFeatures/integrations-traces/otel_sdk_cpp.md)
-* [Java](../../Monitor/3.8/UserGuide/ProductFeatures/integrations-traces/otel_sdk_java.md)
+你可以参考 [产品文档](../../Monitor/3.9/UserGuide/ProductFeatures/scene-apm/apm_monitor_overview.md)，或者直接开始接入 SDK：
+* [SDK FAQ](../../Monitor/3.9/UserGuide/ProductFeatures/integrations-traces/otel_sdk_faq.md)
+* [Go](../../Monitor/3.9/UserGuide/ProductFeatures/integrations-traces/otel_sdk_golang.md)
+* [Python3](../../Monitor/3.9/UserGuide/ProductFeatures/integrations-traces/otel_sdk_python.md)
+* [C++](../../Monitor/3.9/UserGuide/ProductFeatures/integrations-traces/otel_sdk_cpp.md)
+* [Java](../../Monitor/3.9/UserGuide/ProductFeatures/integrations-traces/otel_sdk_java.md)
 
 <!--
 蓝鲸已有部分 SaaS 接入了应用监控，请参考下面的 “蓝鲸 SaaS 接入应用监控” 章节进行配置。

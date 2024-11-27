@@ -68,7 +68,7 @@ kubectl get pod -n bcs-system -w
 
 >**提示**
 >
->“Helm” — “Chart 仓库” 界面初次访问会提示 `Record not found`，需要点击一次“创建”按钮，即可看到公共仓库的 Chart 列表。项目仓库此时为空，请参考[产品使用文档的“推送业务 Helm Chart 到仓库”章节](../../BCS/1.28/UserGuide/Function/helm/ServiceAccess.md)自行上传。
+>“Helm” — “Chart 仓库” 界面初次访问会提示 `Record not found`，需要点击一次“创建”按钮，即可看到公共仓库的 Chart 列表。项目仓库此时为空，请参考[产品使用文档的“推送业务 Helm Chart 到仓库”章节](../../BCS/1.29/UserGuide/ProductFeatures/DeployManager/HelmCharts.md)自行上传。
 
 >**提示**
 >
@@ -78,4 +78,4 @@ kubectl get pod -n bcs-system -w
 # 下一步
 * 继续 [部署监控日志套餐](install-co-suite.md)
 * 或回到《[部署基础套餐](install-bkce.md#next)》文档看看其他操作
-* 或开始 [了解容器管理平台](../../BCS/1.28/UserGuide/Introduction/README.md)
+* 或开始 [了解容器管理平台](../../BCS/1.29/UserGuide/Overview.md)

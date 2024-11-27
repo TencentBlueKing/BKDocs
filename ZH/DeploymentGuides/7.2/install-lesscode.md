@@ -184,6 +184,6 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 
 
 # 下一步
-开始了解 [运维开发平台](../../LessCode/1.0/UserGuide/intro.md)。
+开始了解 [运维开发平台](../../LessCode/1.1/UserGuide/intro.md)。
 
 或者回到《[部署基础套餐](install-bkce.md#next)》文档看看其他操作。

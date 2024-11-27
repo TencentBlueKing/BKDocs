@@ -57,11 +57,6 @@ The login status information of BlueKing users is as follows:
 Using the user login status, calling the bkoauth interface can exchange for user access_token + refresh_token;
 The access_token is valid for **180** days and can be refreshed with refresh_token.
 
-You can directly generate it in the developer center
-![image.png](./media/call-gateway-api-03.png)
-
-You can use the api, see [access_token](../Explanation/access-token.md) for details
-
 ## 3. Apply for the corresponding gateway API call permission
 
 This section will guide you to apply for gateway API access rights for the BlueKing application.
@@ -135,8 +130,6 @@ Visit API Help Center - Gateway API SDK
 
 - On the **SDK List** page, you can search for the gateway SDK. If the gateway does not provide an SDK, you can contact the gateway administrator to generate a gateway SDK.
 - On the **SDK Description** page, you can see how to use the gateway SDK
-
-![image.png](./media/call-gateway-api-06.png)
 
 Note that you need to use the **BlueKing Development Framework** + **BlueKing Developer Center** to inject `BK_API_URL_TMPL` at runtime to call it
 

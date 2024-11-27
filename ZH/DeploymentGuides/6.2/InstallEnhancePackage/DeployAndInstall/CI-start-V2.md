@@ -265,9 +265,9 @@ IP6 codecc(quartz),codecc(report),codecc(schedule),codecc(task)
 部署流程中，需要提前下载资源，下载完毕后传输到中控机指定路径。
 
 资源列表如下：
-1. CodeCC 安装包（蓝盾6.2版本，对应代码分析需使用 `v2.1.1` 版本）：
-    - 预期放置路径： `/data/src/bkcodecc-v2.1.1-slim.tar.gz`
-    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/bkcodecc/bkcodecc-v2.1.1-slim.tar.gz ，此文件 MD5 值为：`8abd8f3cb22594d0297dfceb81fd9203`
+1. CodeCC 安装包（蓝盾6.2版本，对应代码分析需使用 `v2.1.2` 版本）：
+    - 预期放置路径： `/data/src/bkcodecc-v2.1.2-slim.tar.gz`
+    - 下载地址：https://bkopen-1252002024.file.myqcloud.com/bkcodecc/bkcodecc-v2.1.2-slim.tar.gz ，此文件 MD5 值为：`73ddd618d0afa3d6f387037102a061fe`
     - 请提前下载这个包到中控机/data/src目录下
 
 ### 快速部署 CodeCC
@@ -279,7 +279,7 @@ IP6 codecc(quartz),codecc(report),codecc(schedule),codecc(task)
     - 从模板`[蓝鲸持续集成][CodeCC]部署或升级代码检查`新建任务
     - 直接点击下一步。（初次部署勾选全部步骤，后续按需取消）
     - 填写 `蓝鲸中控机 IP (${bk_controller_ip})` 中控机IP
-    - 填写 `CodeCC 版本号 (${TARGET_CODECC_VERSION})`，值为：`v2.1.1`
+    - 填写 `CodeCC 版本号 (${TARGET_CODECC_VERSION})`，值为：`v2.1.2`
     - 填写 `安装模式 (${INSTALL_MODE})`，使用默认值，`分批滚动更新（多实例时服务不中断）`
     - 填写 `下载链接模板 (${CODECC_DOWNLOAD_URL_FMT})`，保持值不变
     - 填写 `CTRL_DIR (${CTRL_DIR})`，保持值不变

@@ -495,8 +495,8 @@ helmfile -f 04-bklog-collector.yaml.gotmpl sync
 ## 升级持续集成套餐
 
 ### 升级蓝盾
-
-新版本需要先改下部署 values 配置：
+基于 7.1.0 版本升级时，需要进行以下调整：（不存在该内容或者文件可忽略跳过此章节）
+新版本需要先修改部署 values 配置：
 ``` bash
 sed -ri.bak '/kubernetes-manager/,/kaniko-project/d' environments/default/bkci/bkci-custom-values.yaml.gotmpl
 ```
