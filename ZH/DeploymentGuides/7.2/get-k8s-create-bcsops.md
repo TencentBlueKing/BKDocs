@@ -16,7 +16,7 @@ TODO 补充文档
 将 bcs-ops 脚本包传输到 k8s master 上的 `/root` 目录（可自定义）。在中控机执行：
 ``` bash
 master_ip=xxx
-rsync -ra "$INSTALL_DIR/bcs-ops" "$master_ip":/root/
+rsync -ra "$INSTALL_DIR/bcs-ops" root@"$master_ip":/root/
 ```
 >**注意**
 >
@@ -71,7 +71,7 @@ Kubernetes Control Plane is running
 ``` bash
 k8s_ips="IP1 IP2..."
 for k8s_ip in $k8s_ips; do
-  rsync -ra "$INSTALL_DIR/bcs-ops" "$k8s_ip":/root/
+  rsync -ra "$INSTALL_DIR/bcs-ops" root@"$k8s_ip":/root/
 done
 ```
 >**注意**
@@ -137,7 +137,7 @@ Created symlink /etc/systemd/system/multi-user.target.wants/kubelet.service → 
 在 **中控机** 上执行如下命令（请赋值 `master_ip`为 master 的 IP）：
 ```bash
 master_ip=10.0.0.2  # 请自行修改为master ip，建议配置好中控机免密登录。
-scp "$master_ip":/usr/bin/kubectl /usr/bin/
+scp root@"$master_ip":/usr/bin/kubectl /usr/bin/
 ```
 
 ### 配置 kubectl 命令行补全
@@ -163,7 +163,7 @@ source /etc/bash_completion.d/kubectl
 ```bash
 mkdir -p ~/.kube
 # 复制kubeconfig，如未配置免密登录请输入master的密码
-scp "$master_ip":.kube/config ~/.kube/config
+scp root@"$master_ip":.kube/config ~/.kube/config
 # 导出master上的bcs hosts配置到中控机，如未配置免密登录请输入master的密码
 grep bcs.local /etc/hosts || ssh "$master_ip" grep bcs.local /etc/hosts | tee -a /etc/hosts
 ```

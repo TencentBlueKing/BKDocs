@@ -13,7 +13,7 @@
 
 6. After the APP is successfully created, deploy it on the "Deploy" page
 
-![-w2020](../../assets/paass3/saas_deploy.png)
+![-w2020](../../assets/paas3/saas_deploy.png)
 
 ## Video Guide
 

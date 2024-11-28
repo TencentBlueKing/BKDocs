@@ -8,13 +8,13 @@ S-mart applications are used by following the steps: "Download SaaS package -> U
 
 ![-w2020](../../../assets/smartsaas.png)
 
-![-w2020](../../../assets/paas3/saas_create.png)
+![-w2020](../../../assets/paas3/smart_create.png)
 
 ### Second Type: Applications Developed Based on Code Repositories
 
 SaaS applications developed by developers/users themselves, with code hosted in a code repository. The development process follows the steps: "Create application -> Develop -> Deploy to staging environment -> Deploy to production environment."
 
-![-w2020](../../../assets/paass3/app_create.png)
+![-w2020](../../../assets/paas3/app_create.png)
 
 ### Third Type: Applications Deployed via Images
 

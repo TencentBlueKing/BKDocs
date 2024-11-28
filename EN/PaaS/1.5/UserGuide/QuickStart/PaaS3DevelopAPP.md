@@ -4,4 +4,4 @@
 
 2. Follow the "Getting Started" guide to complete the development of your first SaaS.
 
-![-w2020](../assets/paass3/quick_start.png)
+![-w2020](../assets/paas3/quick_start.png)

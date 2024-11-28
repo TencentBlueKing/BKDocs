@@ -20,7 +20,7 @@ First, go to Tencent Cloud Cloud Products -> Voice Messages
 
 Application Management -> Application List -> Create Application
 
-![-w2021](../assets/markfig-img-paste-20200407195612299.png)
+![-w2021](../assets/markdown-img-paste-20200407195612299.png)
 
 Click on the application name -> Obtain SDK AppID, App Key
 

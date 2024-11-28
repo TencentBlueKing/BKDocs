@@ -90,7 +90,7 @@ echo -e "\n备份文件为：\n $(ls -lrt ${backup_dir%/*}/mongodb-backup-*tgz |
 # 数据导出
 cd /data/install && source utils.fc
 backup_dir=/data/backup
-rsync -av $BK_ZK_IP0:/var/lib/zookeeper ${backup_dir}
+rsync -av root@$BK_ZK_IP0:/var/lib/zookeeper ${backup_dir}
 #/usr/bin/java -cp /opt/zookeeper/zookeeper-3.4.14.jar:/opt/zookeeper/lib/slf4j-api-1.7.25.jar:/opt/zookeeper/lib/slf4j-log4j12-1.7.25.jar:/opt/zookeeper/lib/log4j-1.2.17.jar org.apache.zookeeper.server.PurgeTxnLog /var/lib/zookeeper /var/lib/zookeeper -n 3
 
 # 打包备份目录
@@ -225,7 +225,7 @@ yq -i ".externalDatabase.grafana.name = \"bk_monitorv3_grafana\" | \
 
 ### 4.3. 数据导入
 
-####  4.3.1. MySQL 数据导入
+#### 4.3.1. MySQL 数据导入
 
 1. 启动服务
   
@@ -414,7 +414,7 @@ kubectl scale statefulset -n blueking bk-zookeeper --replicas=0
 ```bash
 cd /data/backup
 zk_backup_tgz=$(ls -t zk-backup-*tgz | head -n1)
-rsync -av ${zk_backup_tgz} ${node_ip}:/data
+rsync -av ${zk_backup_tgz} root@${node_ip}:/data
 
 ssh ${node_ip} <<EOF
 cd /data
@@ -654,7 +654,7 @@ pcmd -m job 'du -sh ${INSTALL_PATH}/public/job/localupload/; df -Th'
 # 打包并拷贝到中控机
 JOB_LOCALFILE_BACKUP="job-localfile-backup-$(date +%F-%H-%M-%S).tgz"
 pcmd -m job "cd $INSTALL_PATH/public; tar --exclude='job/backup' -czf $JOB_LOCALFILE_BACKUP job; ls -lrt $INSTALL_PATH/public/$JOB_LOCALFILE_BACKUP"
-rsync -av $BK_JOB_IP:$INSTALL_PATH/public/$JOB_LOCALFILE_BACKUP /data/backup/
+rsync -av root@$BK_JOB_IP:$INSTALL_PATH/public/$JOB_LOCALFILE_BACKUP /data/backup/
 ```
 - 复制 `job-localfile-backup-*tgz` 至新蓝鲸中控机 `/data/backup` 下
 - 迁移作业平台本地文件至 bkrepo
@@ -690,7 +690,7 @@ pcmd -m nodeman 'du -sh ${INSTALL_PATH}/public/bknodeman/; df -Th'
 # 打包并拷贝到中控机
 BKNODEMAN_LOCALFILE_BACKUP="bknodeman-localfile-backup-$(date +%F-%H-%M-%S).tgz"
 pcmd -m nodeman "cd $INSTALL_PATH/public; tar -czf $BKNODEMAN_LOCALFILE_BACKUP bknodeman; ls -lrt $INSTALL_PATH/public/$BKNODEMAN_LOCALFILE_BACKUP"
-rsync -av $BK_NODEMAN_IP:$INSTALL_PATH/public/$BKNODEMAN_LOCALFILE_BACKUP /data/backup/
+rsync -av root@$BK_NODEMAN_IP:$INSTALL_PATH/public/$BKNODEMAN_LOCALFILE_BACKUP /data/backup/
 ```
 - 复制 `bknodeman-localfile-backup-*tgz` 至新蓝鲸中控机 `/data/backup` 下
 - 迁移至 bkrepo

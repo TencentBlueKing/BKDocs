@@ -159,8 +159,6 @@ For example, some backend services directly return a json, But the error code do
 
 - `415 Unsupported media type in request`
 
-![image.png](./media/gateway-error-or-backend-error-05.png)
-
 Returning status code 415 means that the backend does not support the corresponding `content-type`, and the client needs to specify the correct `content-type` when initiating the request. For example, if the server requires the use of json, then the header `content-type: application/json` needs to be added to the request when calling
 
 ### 4. The backend returns status code 308
