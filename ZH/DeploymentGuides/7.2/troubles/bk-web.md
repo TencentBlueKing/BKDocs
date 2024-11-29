@@ -73,10 +73,24 @@ kubectl rollout restart deployment -n blueking bk-login-web
 #### 排查处理
 基于蓝鲸 7.2.0-7.2.1 部署的制品库都会出现该问题，对应制品库 chart 版本为 `1.5.2-rc.1`
 
-暂时忽略该异常，不影响功能使用，待后续出包修复
+检查 pod 日志：
+```bash
+kubectl -n blueking exec deploy/bk-repo-bkrepo-replication -- grep 'edge' logs/replication.log
+```
+
+对应日志异常内容为 `ping cluster [edge] failed, reason: Empty key`
+
+暂时忽略该异常，不影响功能使用，以下提供临时解决方案将该节点删除
+
+请在中控机上执行该命令：
+```bash
+kubectl -n blueking exec  bk-mongodb-0 -- bash -c 'mongo mongodb://bkrepo:bkrepo@bk-mongodb-headless:27017/bkrepo?replicaSet=rs0 --eval "db.cluster_node.deleteOne({name: \"edge\"})"'
+```
+
+命令执行成功后返回内容为 `{ "acknowledged" : true, "deletedCount" : 1 }`
 
 #### 总结
-此功能尚未适配完成，后续版本会隐藏入口，待适配完成后开放。
+此功能尚未适配完成，忽略即可。
 
 
 ## 配置平台
