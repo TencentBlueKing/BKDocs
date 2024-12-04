@@ -26,7 +26,7 @@
  Example: The Standard OPS Flow has two Step. The One step uses the Job System Plugin to execute the Script the Output "hello blueking" content is intended for the Two step. 
 
  ## 1. step One Use a Script execute simulate the Output of "hello blueking" 
- ![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112437/20044/20230506112437/--ef78dd3a4f939ca6d2779e8b96ec4adb.png) 
+ ![image.png](image/pass-variables/1.png) 
 
  ``` 
  message="hello blueking" 
@@ -37,23 +37,23 @@
  Output the Global Variables extracted from the Log. Variables in the log such as<SOPS_VAR>key:val</SOPS_VAR> will be extracted into log_outputs ['key '] with the value val. 
 
  ## 2. step Two approve var to reference the Output of Step One 
- ![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112516/20044/20230506112516/--fff18f4f03b77e07c3348515ab80a298.png) 
+ ![image.png](image/pass-variables/2.png) 
  ``` 
  echo ${log_outputs["message"]} 
  ``` 
  (example Code) 
 
  ## 3. execute Effect 
- ![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112538/20044/20230506112538/--03ed4d0c6956b24b4d18fc1c2f957ee2.png) 
+ ![image.png](image/pass-variables/3.png) 
 
  (step One) 
 
- ![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112552/20044/20230506112552/--5fcf6b13ba18e81cc0cddedd854410d4.png) 
+ ![image.png](image/pass-variables/4.png) 
 
  (step Two) 
 
  You can also click the Job System execute Task Details link to Check the execution result 
- ![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112602/20044/20230506112602/--260010e6630f55dbaa3a6c00e1d4687b.png) 
+ ![image.png](image/pass-variables/5.png) 
 
  The core elements of parameter transfer in different step are the Standard OPS unique marker "<SOPS_VAR>key:val</SOPS_VAR>" and the variable log_outputs. 
 
@@ -65,13 +65,13 @@
 
  For example: 
 
- ![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112626/20044/20230506112626/--03f94ac7acfdc5c191746bb1e04746fa.png) 
+ ![image.png](image/pass-variables/6.png) 
 
- ![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112631/20044/20230506112631/--77cdf3c8765fd7c078c5c4e66fe0c9dd.png) 
+ ![image.png](image/pass-variables/7.png) 
 
- ![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112636/20044/20230506112636/--542100799e58185d687d4d2da62c94c2.png) 
+ ![image.png](image/pass-variables/8.png) 
 
- ![image.png](https://smartpublic-10032816.file.myqcloud.com/custom/20230506112641/20044/20230506112641/--cfdbe08d91088ddac6c7df95ca16e815.png) 
+ ![image.png](image/pass-variables/9.png) 
 
  - One Step has multiple var that need to be referenced by Other steps 
 

@@ -4,7 +4,7 @@
 
  > User users with the "view Helper Team Center" auth can Enter the Functional Center page 
 
- ![Helper Team](.../assets/image-20220915161532331.png) 
+ ![Helper Team](../assets/image-20220915161532331.png) 
 
  ### How to Created Helper Team Task 
 

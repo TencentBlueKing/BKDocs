@@ -15,7 +15,7 @@
 
  Here you can view the Scheduled Task under all project from the Administrator perspective 
 
- ![Scheduled Task](.../assets/image-20220921143111837.png) 
+ ![Scheduled Task](../assets/image-20220921143111837.png) 
 
  ### Remote Plugin Package Source Manage 
 

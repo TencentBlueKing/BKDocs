@@ -20,4 +20,3 @@
 
  One-Time Scheduled Task execute always Create Task with The latest version of Flow, so noNeedToUpdate. 
  ![1689057591313](image/scheduled_task/1689057591313.png)
- ![1689057598018](image/scheduled_task/1689057598018.png) 
