@@ -87,7 +87,7 @@ username="admin"  # 请先设置为要添加 paas admin 权限的用户名
 
 from bkpaas_auth.core.constants import ProviderType
 from bkpaas_auth.core.encoder import user_id_encoder
-from paasng.accounts.models import UserProfile
+from paasng.infras.accounts.models import UserProfile
 
 user_id = user_id_encoder.encode(ProviderType.BK.value, username)
 UserProfile.objects.update_or_create(user=user_id, defaults={'role':4, 'enable_regions':'default'})

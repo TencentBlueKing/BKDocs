@@ -184,6 +184,11 @@ mysql:
   host: "填写服务端 IP"
   port: 3306
   rootPassword: "填写服务端root密码"
+apps:
+  # 配置SaaS需要连接的mysql，如果和平台复用，注意这里所填地址的连通性
+  mysql:
+    host: "填写服务端 IP"
+    rootPassword: "填写服务端root密码"
 ```
 
 #### 确保 root 账户能创建数据库并授权
