@@ -55,7 +55,7 @@ install -dv /data/bkmysql_bak
 ```
 2. 生成备份脚本
 ``` bash
-cat >/data/dbbackup_mysql.sh <<EOF
+cat >/data/dbbackup_mysql.sh <<'EOF'
 #!/bin/bash
 MYSQL_USER=root
 MYSQL_HOST=127.0.0.1

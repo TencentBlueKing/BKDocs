@@ -83,7 +83,7 @@ IP2 ci(dockerhost)
 ### 快速部署 CI
 1. **导入标准运维流程模板**
 
-进入“标准运维”，选择《`蓝鲸`》业务，导入 [部署流程模板](https://bkopen-1252002024.file.myqcloud.com/bkci/bk-ci-deploy-202411130927.dat) 。
+进入“标准运维”，选择《`蓝鲸`》业务，导入 [部署流程模板](https://bkopen-1252002024.file.myqcloud.com/bkci/bkci-deploy-202411130927.dat) 。
 2. **执行部署**
 
 
