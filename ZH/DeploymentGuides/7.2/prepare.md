@@ -79,7 +79,7 @@
 | 时区 | 所有服务器时区应该统一，建议使用北京时间 | 使用 `timedatectl set-timezone Asia/Shanghai` 设置为北京时间。 |
 | 时间同步 | etcd 选举时要求 node 间时间差小于 1s | 配置 `chronyd` 同步时间 |
 | containerd 版本 | 1.6 及更高 | `crictl version` |
-| kubenetes 版本 | 推荐 1.24 版本。也在 1.20 版本测试部署通过。 | `kubectl version` |
+| kubenetes 版本 | 推荐 1.24 版本。也在 1.20 与 1.23 版本测试部署通过。 | `kubectl version` |
 
 
 # 下一步

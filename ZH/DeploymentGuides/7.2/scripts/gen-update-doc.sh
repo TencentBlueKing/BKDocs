@@ -41,6 +41,7 @@ gen_doc (){
       SaaS) cmd_gen_doc=scripts/update-doc-saas.sh;;
       agent) cmd_gen_doc=scripts/update-doc-agent.sh;;
       proxy) cmd_gen_doc=scripts/update-doc-proxy.sh;;
+      采集器) cmd_gen_doc=scripts/update-doc-plugin.sh;;
       *) echo >&2 "ERROR: no render for $PTYPE"; exit 5;;
     esac
   fi
