@@ -17,7 +17,7 @@
 |消息组件自定义接入 |APIGateway |通过该教程可以添加软件的消息通知渠道。 |[开始学习](../../APIGateway/DevelopTools/CMSI.md) |
 |微信组件自定义接入 |APIGateway |通过该教程可以添加软件的微信通知渠道。 |[开始学习](../../APIGateway/DevelopTools/WeChat.md) |
 |Python 开发框架|PaaS 平台-开发者中心 |快速在蓝鲸 PaaS 平台上开发 SaaS 的 `Python 框架` 。该开发框架基于 `Django 框架` 架构，并在此基础上进行扩展，增加蓝鲸系统的特有功能，例如：`身份验证`、`ESB 调用` 及 `模板渲染` 等功能，以便开发者可以更专注于 SaaS 的 `逻辑开发` 。|[开始学习](../../PaaS/DevelopTools/SaaSGuide/DevBasics/README.md)|
-|SaaS 开发者资料库|PaaS 平台-开发者中心 |学习“PaaS 平台-开发者中心”的功能，使用 Django、NodeJS、Docker 等方式开发 SaaS ，结合已有的前端公共组件，掌握快速开发一个 SaaS 工具的技能，提升企业的办公效率。 |[开始学习](../../PaaS/1.5/BaseGuide/SUMMARY.md)|
+|SaaS 开发者资料库|PaaS 平台-开发者中心 |学习“PaaS 平台-开发者中心”的功能，使用 Django、NodeJS、Docker 等方式开发 SaaS ，结合已有的前端公共组件，掌握快速开发一个 SaaS 工具的技能，提升企业的办公效率。 |[开始学习](../../PaaS/1.5/BaseGuide/quickstart/python/python_hello_world.md)|
 |移动端开发指南|PaaS 平台-开发者中心 |“PaaS 平台-开发者中心” 可以进行移动端的系统研发，如 H5 、小程序等，该教程提供移动端的开发指南。请根据自己的 PaaS 平台版本，学习对应的教程。 |[开始学习](../../PaaS/DevelopTools/MobileGuide/Mobile_development_v2.md) |
 |标准运维插件开发 |标准运维 |标准运维插件是标准运维任务执行的最小单元，通过将 API 参数前端表单化，参数校验、逻辑封装等功能，以图形化的方式提供给用户使用。学习后，可以将第三方系统功能，封装成标准运维插件，完成更调度编排的任务。 |[开始学习](https://github.com/TencentBlueKing/bk-plugin-framework-python) |
 |监控平台采集器开发 |监控平台 |监控采集器可以满足用户自定义数据上报到蓝鲸监控平台的场景。 |[开始学习](../../Monitor/3.8/UserGuide/Dev/plugin_exporter_dev.md) |
