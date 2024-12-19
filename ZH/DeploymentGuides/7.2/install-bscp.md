@@ -1,3 +1,11 @@
+# 介绍
+
+蓝鲸服务配置中心为业务提供全面的服务配置管理功能，支持文件型和键值（KV）型配置。通过集中化的配置管理，减少手动配置的工作量，提升配置管理的效率。
+
+>**提示**
+>
+>* 在部署前，请根据实际业务需求评估其适用性。如果业务不需要复杂的配置管理功能，可以选择不部署此系统。
+>* 部署该服务需提前确保蓝鲸集群内每个节点都已安装 Agent，以及提供 [容器监控数据上报](install-co-suite.md#推荐：容器监控数据上报)
 
 # 前置检查
 
@@ -29,6 +37,17 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-auth sync
 ```
 
 # 部署
+
+## 检查 crd
+
+检查命令如下：
+```bash
+kubectl get crd podmonitors.monitoring.coreos.com -o name
+```
+>参考输出为：`customresourcedefinition.apiextensions.k8s.io/podmonitors.monitoring.coreos.com`
+
+如果显示 `"podmonitors.monitoring.coreos.com" not found` ，请先完成 [容器监控数据上报](install-co-suite.md#推荐：容器监控数据上报) 文档。
+
 ## 配置 coredns
 需要在 coredns 注册新的域名，方便其他服务调用。
 

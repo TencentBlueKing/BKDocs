@@ -168,7 +168,8 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 
 >**注意**
 >
->本脚本设计为全新安装 SaaS，如 SaaS 已安装，会自动跳过。你可以给脚本加上 `-f` 参数强制重新安装，例如重新安装流程服务： `scripts/setup_bkce7.sh -i itsm -f`。
+>* 本脚本设计为全新安装 SaaS，如 SaaS 已安装，会自动跳过。你可以给脚本加上 `-f` 参数强制重新安装，例如重新安装流程服务： `scripts/setup_bkce7.sh -i itsm -f`。
+>* 脚本部署时默认的镜像拉取策略为 `IfNotPresent` ，如需部署调整过内容的相同版本的 SaaS 包，请前往开发者中心页面部署
 
 ### 部署流程服务（bk_itsm）
 执行如下命令即可：
@@ -241,15 +242,15 @@ kubectl get cm -n blueking bk-user-api-general-envs -o go-template='用户： {{
 <a id="next" name="next"></a>
 
 # 下一步
-继续部署：
+继续部署（可并行）：
 * [配置节点管理及安装 Agent](config-nodeman.md)
 * [部署容器管理平台](install-bcs.md)
-* [部署监控日志套餐](install-co-suite.md)
+* [部署监控日志套餐](install-co-suite.md)（建议先部署容器管理平台）
 * [部署持续集成套餐](install-ci-suite.md)
 * [部署运维开发平台](install-lesscode.md)
 * 如有需要，可部署基础套餐的这些系统：
   * [部署消息通知中心](install-notice.md)
-  * [部署服务配置中心](install-bscp.md)
+  * [部署服务配置中心](install-bscp.md)（依赖容器监控数据上报）
 
 等监控平台部署完毕后，可以 [启动蓝鲸 API 测试工具](run-apicheck.md)。
 
