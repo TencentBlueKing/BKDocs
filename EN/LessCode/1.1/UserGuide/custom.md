@@ -16,7 +16,8 @@ In addition to the basic components provided by the platform, the LessCode platf
 
 ### Custom Component Project File Structure [Repository Link](https://github.com/TencentBlueKing/lesscode-custom-components)
 
-Download Development Framework: [Vue2](./static/bk-lesscode-component-vue2.zip) [Vue3](./static/bk-lesscode-component-vue3.zip)
+Download Development Framework: [Vue2](https://bk.tencent.com/docs/static/EN/LessCode/1.1/UserGuide/static/bk-lesscode-component-vue2.zip) [Vue3](https://bk.tencent.com/docs/static/EN/LessCode/1.1/UserGuide/static/bk-lesscode-component-vue3.zip)
+
 
 ```bash
 |-- ROOT                    # Root directory of the custom component

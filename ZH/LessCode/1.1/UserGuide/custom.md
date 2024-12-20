@@ -14,7 +14,7 @@
 
 ### 自定义组件工程文件结构 [代码库地址](https://github.com/TencentBlueKing/lesscode-custom-components)
 
-下载开发框架: [Vue2](./static/bk-lesscode-component-vue2.zip) [Vue3](./static/bk-lesscode-component-vue3.zip)
+下载开发框架: [Vue2](https://bk.tencent.com/docs/static/ZH/LessCode/1.1/UserGuide/static/bk-lesscode-component-vue2.zip) [Vue3](https://bk.tencent.com/docs/static/ZH/LessCode/1.1/UserGuide/static/bk-lesscode-component-vue3.zip)
 
 ```bash
 |-- ROOT                    # 自定义组件根目录
