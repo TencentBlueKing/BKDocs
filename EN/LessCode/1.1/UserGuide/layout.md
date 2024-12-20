@@ -1,64 +1,50 @@
-## Navigation Layout Usage Guidelines
+# Navigation Layout Management
 
-### 1. Concept
+Navigation layout is a way to group pages with the same layout (navigation) together, allowing pages to reuse the same layout. Additionally, the layout's route becomes the common parent route for the pages.
 
-Navigation layout is a way to group pages with the same layout (navigation) together, so that the same layout can be reused between pages, and the route of the layout will also become the common parent route of the page.
+## Navigation Layout Categories
 
-### 2. Add navigation layout
+The platform currently offers six types of layouts:
 
-:::info There are 2 ways to add a layout to the application
-The system currently provides a total of 5 layouts, namely "blank layout", "side navigation layout", "horizontal navigation layout", "composite navigation layout", and "mobile bottom navigation layout".
-:::
+- Blank Layout
+- Side Navigation Layout
+- Horizontal Navigation Layout
+- Composite Navigation Layout
+- Mobile Bottom Navigation Layout
+- Mobile Side Navigation Layout
 
-#### 2.1 Add when creating a new application
+## Navigation Layout Management
 
-<img src="./images/layout-guide-1.png" width="640" alt="layout-guide" class="help-img">
+### 1. Add Navigation Layout When Creating a New APP
 
-- Among them, "Blank Layout" is the system default layout, which is automatically checked and cannot be canceled.
-- If no other navigation layout is selected when adding, you can add it in the "Navigation Layout Management" function page after creating the application.
+<img src="./images/layout-add1.png" width="80%" alt="layout-guide" class="help-img">
 
+- The "Blank Layout" is the system default layout, automatically selected and cannot be deselected.
+- If no other navigation layout is selected during addition, you can add it in the "Resource Management --> Navigation Layout Management" module after creating the APP.
 
-#### 2.2 Add in navigation layout management
+### 2. Add Navigation Layout in Resource Management --> Navigation Layout Management
 
-<img src="./images/layout-guide-3.png" width="640" alt="layout-guide" class="help-img">
+<img src="./images/layout-add2.png" width="80%" alt="layout-guide" class="help-img">
 
-- Enter the "Navigation Layout Management" page and create a new navigation layout
-:::tip
-Routing: The final page access route of the layout is "layout routing/page routing"
-:::
+### 3. Modify Navigation Layout Configuration in Resource Management --> Navigation Layout Management
 
-<img src="./images/layout-guide-2.png" width="640" alt="layout-guide" class="help-img">
+In the navigation layout management module, you can see all the navigation layouts added under the current APP. You can also edit and delete navigation layout information and set the default navigation layout for PC and mobile pages.
 
-- After the creation is successful, you can see all the navigation layouts in the application.
+### 4. Use Navigation Layout on a Page
 
-### 3. Apply navigation layout
+When creating a new page, you can select the navigation layout for the page type under the APP and enter the page route. The final access route for the page under the layout is **"layout route/page route"**.
 
-:::info After adding the navigation layout, you can apply the added navigation layout to the page when adding the page.
-Using the same layout on multiple pages can achieve the effect of reusing the layout. The layout configuration takes effect across all pages, and the pages have a common parent route, which is the route of the layout.
-:::
+<img src="./images/layout-use.png" width="80%" alt="layout-guide" class="help-img">
 
-<img src="./images/layout-guide-4.png" width="640" alt="layout-guide" class="help-img">
+### 5. Modify Navigation Layout on a Page
 
-- Select the navigation layout when creating a new page. The selectable templates are all templates added in the application.
+After selecting a navigation layout for a page, you enter the page editing view where the navigation layout content is visible in the canvas. By clicking on the corresponding area, you can modify the relevant configurations. Currently, available modifications include: site name, logo, navigation menu, theme configuration (vue2), etc.
 
-### 4. Configure navigation layout
+<img src="./images/layout-modify-con.png" width="80%" alt="layout-guide" class="help-img">
 
-After applying the template to the :::info page, enter the page editing page. You can see the template content in the canvas and set the provided configuration items.
-If you use a blank layout, no template content is visible, and what is visible in the canvas is the page content. Currently available configurations include: site name, logo and navigation.
-:::
+- The example image uses the "Side Navigation Layout" and is setting up the layout navigation. The middle area is the page content editing area.
+- If using the blank layout, no navigation layout template content is visible, and the visible area in the canvas is the page content.
 
-<img src="./images/layout-guide-5.png" width="640" alt="layout-guide" width="960" class="help-img">
+<img src="./images/layout-change.png" width="80%" alt="layout-guide" class="help-img">
 
-- The example image uses "Side Navigation Layout", and the layout navigation is being entered into settings. Among them, the middle area is the page content editing area.
-
-### 5. More
-
-#### 5.1 Modify page navigation layout
-
-- Enter the page editing page and make modifications in "Page Configuration"
-
-#### 5.2 Modify navigation layout instance name and ID
-
-- Enter the "Navigation Layout Management" page to find the template that needs to be modified.
-
-<img src="./images/layout-guide-6.png" width="640" alt="layout-guide" class="help-img">
+You can modify the navigation layout corresponding to the page in the route configuration section of the page configuration.

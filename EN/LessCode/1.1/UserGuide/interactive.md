@@ -1,63 +1,59 @@
-## Guidelines for using interactive components
+# Guide to Using Interactive Components
 
-### What is an interactive component?
+## What are Interactive Components?
 
-Different from conventional `button`, `text` and other components, interactive components allow users to control the component to open or close in a certain state through variables. The component has a strong binding relationship with specific conditions. For example, the `dialog component' is generally not a component that will stay and be displayed for a long time. Instead, it will be displayed only after being triggered under certain circumstances (such as form submission, announcement display). This type of component is called **interaction. Type components**
+Unlike regular components such as `button` and `text`, interactive components allow users to control the component's visibility based on certain conditions using variables. These components are strongly bound to specific conditions. For example, a `dialog` component is not permanently displayed but appears only under certain circumstances, such as after a form submission or for displaying announcements. These components are known as **interactive components**.
 
-The interactive components available on the current platform include `dialog` and `sidebar`.
+Currently available interactive components on the platform include `Dialog` and `Sidebar`.
 
-### Use of interactive components
+## Using Interactive Components
 
-Like regular components, drag it into the canvas from the component library on the left and configure its properties through the right panel; the content area of the interactive component is the `Layout` slot, and you can drag other components in its content area to customize the interaction. The content of the component.
+As with regular components, drag them from the left component library onto the canvas and configure their properties via the right panel. Interactive components have a `Layout` slot in their content area, allowing you to drag other components into this area to customize the content of the interactive component.
 
-<img src="./images/interactive-1.png" alt="grid" height="500" class="help-img">
+<img src="./images/interactive-1.png" alt="grid" width="80%" class="help-img">
 
-:::info
-When activated, the interactive component will occupy the screen and canvas, so only one interactive component can be edited in the canvas editing area at the same time.
+> When activated, interactive components will occupy the entire screen and canvas, so only one interactive component can be edited at a time on the canvas.
+>
+> To switch components, you can toggle the left panel to the component tree and click on a component in the tree to activate the one you want to edit.
+>
+> The eye icon on the right of the interactive component allows you to toggle the display state of the current interactive component.
 
-If you need to switch components, switch the left panel to the component tree and click on the component in the component tree to activate the component you want to edit.
+<img src="./images/interactive-7.png" alt="grid" width="80%" class="help-img">
 
-The eye chart on the right side of the interactive component can be clicked to close or open the display state of the current interactive component.
-:::
+## Considerations for Interactive Components
 
-<img src="./images/interactive-7.png" alt="grid" height="500" class="help-img">
+### State Binding
 
-### Notes on interactive components
-
-#### Status binding
-::: warning
-In any case, interactive components should be bound to a variable to determine whether to display or not. Static values will prevent normal interaction.
-
-Here we will give a detailed explanation of the state binding of the two components `Dialog` and `Sidebar`.
-:::
+> Interactive components should always be bound to a variable to determine their visibility. Static values will prevent them from interacting properly.
+>
+> Here, we will explain the state binding for the `Dialog` and `Sidebar` components in detail.
 
 ---
 
-The dialog component binds its state through `v-model` (that is, `value`) to control whether it is displayed or not. By default, it is a value type, which is a static type. In this state, the interactive component will not work properly in the real environment, so it needs to bind variables or expressions to it.
+The dialog component binds its state through `v-model` (or `value`), controlling whether it is shown. By default, this is set to a static value type. In this state, the interactive component will not function properly in a real environment, so it needs to be bound to a variable or expression.
 
-<img src="./images/interactive-2.png" alt="grid" height="500" class="help-img">
+<img src="./images/interactive-2.png" alt="grid" width="80%" class="help-img">
 
-Select the variable in the upper right corner of the value attribute and create a new variable in the drop-down menu
+Select the variable at the top right of the value property and create a new variable in the dropdown.
 
-<img src="./images/interactive-3.png" alt="grid" height="300" class="help-img">
+<img src="./images/interactive-3.png" alt="grid" width="80%" class="help-img">
 
-Add a new variable, pay attention to select `Boolean` as the initial type, and set its default value according to the actual situation (generally the default value is `false`, which needs to be triggered by certain conditions)
+When adding a new variable, make sure to choose `Boolean` as the initial type and set its default value based on the actual situation (typically `false`, and it should be triggered under certain conditions).
 
-<img src="./images/interactive-4.png" alt="grid" width="500" class="help-img">
+<img src="./images/interactive-4.png" alt="grid" width="80%" class="help-img">
 
-After creation, in the drop-down list of variables, select the variable you just created.
+After creating it, select the newly created variable from the dropdown.
 
-<img src="./images/interactive-5.png" alt="grid" height="300" class="help-img">
+<img src="./images/interactive-5.png" alt="grid" width="80%" class="help-img">
 
-Finally, just change the variable to `true` when you need it to appear.
+Finally, to display the component, simply set the variable to `true`.
 
-In order to simulate here, create a `switcher` component and bind the same variables, so that when the `switcher` is opened, the pop-up box will appear, otherwise it will disappear.
+To simulate this, create a `switcher` component and bind the same variable. When the `switcher` is turned on, the dialog will appear, and when turned off, it will disappear.
 
-<img src="./images/interactive-6.png" alt="grid" height="500" class="help-img">
-
+<img src="./images/interactive-6.png" alt="grid" width="80%" class="help-img">
 
 ---
 
-The state binding attribute of the `Sidebar` component is `is-show`, and its configuration method is consistent with the `Dialog`. Please refer to the above configuration steps.
+The state binding property for the `Sidebar` component is `is-show`, and its configuration method is the same as for the `Dialog`. Please refer to the steps outlined above.
 
-<img src="./images/interactive-8.png" alt="grid" height="500" class="help-img">
+<img src="./images/interactive-8.png" alt="grid" width="80%" class="help-img">

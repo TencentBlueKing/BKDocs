@@ -1,65 +1,45 @@
-## How to develop a form query page
-### Step 1: Drag and drop the "query selection", "table" and "pagination" components to the canvas
+# How to Develop a Table Query Page
 
-<img src="./images/case-table1.png" alt="grid" width="640" class="help-img">
+### Step 1: Drag and Drop the "Input Box" and "Table" Components onto the Canvas
 
-### Step 2: Configure component instructions
+<img src="./images/case-table1.png" alt="grid" width="80%" class="help-img">
 
-- Configure the "table" component attribute instruction "v-bind:data" for setting table data
+### Step 2: Configure Component Properties and Directives
 
-- Configure the "query selection" component attribute instruction "v-model" to obtain query input keywords
+- **Set the Table Data Source**: Create a new variable "tableData", configure the "Table" component property "data", and bind it to the custom variable "tableData".
+- **Retrieve the Keyword from the Input Box**: Create a new variable "keyWords" and bind the input box component property directive "v-model" to the variable "keyWords".
+- **Configure Table Pagination**: Select "remote pagination" for the pagination property.
+  - Create a new variable "count" and bind the pagination "count" property to the variable "count".
+  - Create a new variable "pageSize" and bind the pagination "limit" property to the variable "pageSize".
 
-- Configure the "paging" component attribute instruction "v-bind:count" to set the total amount of paging data
+### Step 3: Create the Function "getTableData" to Query and Retrieve Table Data
 
-- Configure the "paging" component attribute instruction "v-bind:current.sync" to obtain the current page
+<img src="./images/case-table2.png" alt="grid" width="80%" class="help-img">
 
+**Note:**
 
-**Notice:**
+When editing the function:
 
-When editing a function
+1. You can use `lesscode.directiveValue`, ensuring you select the corresponding attribute directive value using the editor's auto-completion feature to get or modify component property values configured with directives on the current page.
+2. You can use `lesscode.functionName`, ensuring you select the function you need to call using the editor's auto-completion feature.
 
-1. You can use the lesscode.command value, and you must select the corresponding attribute command value through the editor's automatic completion function to obtain or modify the component attribute value configured with the command in the current page.
+<img src="./images/case-table3.png" alt="grid" width="80%" class="help-img">
 
-2. You can use lesscode. function name, and you must use the editor's auto-complete function to select the function you need to call.
+### Step 4: Configure the "Table" Component "data" Property and Events
 
-<img src="./images/case-table3.png" alt="grid" width="640" class="help-img">
+1. Set the initial data source of the table "data" property to a function and bind it to the function "getTableData".
+2. Click "Refresh Header".
 
+### Step 5: Bind the Input Box "enter" Event to the Table Query Function "getTableData"
 
-### Step 3: "Table" component properties and event configuration
+<img src="./images/case-table5.png" alt="grid" width="80%" class="help-img">
 
-- Configure the table data source initial loading function getTableData
+### Step 6: Bind Table Pagination Events to Event Functions
 
-<img src="./images/case-table2.png" alt="grid" width="640" class="help-img">
+Bind the "page-change" and "page-limit-change" events to the table query function "getTableData", and configure the corresponding function call parameters.
 
-- Return field configuration header based on data source
+<img src="./images/case-table7.png" alt="grid" width="80%" class="help-img">
 
-<img src="./images/case-table4.png" alt="grid" width="640" class="help-img">
+### Step 7: Preview the Effect
 
-### Step 4: "Query Selection" component event configuration
-
-- Table data update function updateTableData
-
-<img src="./images/case-table10.png" alt="grid" width="640" class="help-img">
-
-- Configure the "enter" event function to trigger the query
-
-<img src="./images/case-table5.png" alt="grid" width="640" class="help-img">
-
-Event function selectData
-
-<img src="./images/case-table6.png" alt="grid" width="640" class="help-img">
-
-
-### Step 5: "Paging" component event configuration
-
-- Configure the "click" event function to trigger paging query operations
-
-<img src="./images/case-table7.png" alt="grid" width="640" class="help-img">
-
-Event function selectData2
-
-<img src="./images/case-table8.png" alt="grid" width="640" class="help-img">
-
-### Step 6: Preview the effect
-
-<img src="./images/case-table9.png" alt="grid" width="640" class="help-img">
+<img src="./images/case-table9.png" alt="grid" width="80%" class="help-img">

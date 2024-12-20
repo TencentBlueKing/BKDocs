@@ -1,9 +1,9 @@
-## 应用二次开发指引
+# 应用二次开发指引
 
 ## 方式一：下载整个应用源码包进行二次开发
-下载应用源码，平台将会把应用的所有页面源码及页面路由配置集成到[蓝鲸前端开发框架（BKUI-CLI）](../../../PaaS/DevelopTools/SaaSGuide/DevAdvanced/bkui/bkui.md)中，作为应用整个源码包下载下来。
+下载应用源码，平台将会把应用的所有页面源码及页面路由配置集成到[蓝鲸前端开发框架（BKUI-CLI）](https://bk.tencent.com/docs/document/5.1/19/583)中，作为应用整个源码包下载下来。
 
-<img src="./images/page5.png" alt="grid" width="800px" class="help-img">
+<img src="./images/page5.png" alt="grid" width="80%" class="help-img">
 
 下载后你可以通过下边几个步骤进行二次开发和部署：
 
@@ -60,17 +60,17 @@
 ├── package.json            # 应用描述文件
 ```
 
-2. 在蓝鲸PaaS平台里创建应用模块。
+2. 在蓝鲸PaaS平台 -》开发者中心里创建应用模块。
 
     注意：
     - 应用模块源码管理选择“代码库”，并绑定第一步创建的代码仓库。
     - 开发语言及初始模板选择“Nodejs ->蓝鲸应用前端开发框架”。
 
-        <img src="./images/develop2.png" alt="grid" width="800px" class="help-img">
+        <img src="./images/develop2.png" alt="grid" width="80%" class="help-img">
 
 3. 二次开发提交代码到仓库，进入蓝鲸PaaS平台应用模块部署页面，部署即可。
 
 ## 方式二：下载应用单个页面源码进行二次开发
 如果开发场景是在已有应用里新增功能页面，那你可以拖拽布局单独页面后，直接下载独立页面源码，集成到已有应用工程里。
 
-<img src="./images/page6.png" alt="grid" width="800px" class="help-img">
+<img src="./images/page6.png" alt="grid" width="80%" class="help-img">

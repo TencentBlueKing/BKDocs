@@ -1,16 +1,16 @@
 ## 课程实战文档和视频
 
-### 基于 LessCode 进行 SaaS 开发
+### 基于蓝鲸运维开发平台(LessCode)进行 SaaS 开发
 #### 内容大纲：
 ``` js
-1. LessCode 理论
-2. LessCode 实战，开发一个 LessCode 应用
+1. 蓝鲸运维开发平台(LessCode)理论
+2. 蓝鲸运维开发平台(LessCode)实战，开发一个应用
 ```
-#### PPT下载：[下载地址](https://staticfile.qq.com/lesscode/p9508f3d3cfba4809b2e1a3cba58cdd20/template-imgs/latest/Lesscode-1.pptx)
+#### PPT下载：[下载地址](https://staticfile.qq.com/lesscode/p9508f3d3cfba4809b2e1a3cba58cdd20/template-imgs/latest/LessCode-1.pptx)
 #### 观看视频：[视频地址](https://www.bilibili.com/video/BV1RG4y147ey)
 ---
 
-### 基于 LessCode 进行二次开发和构建部署
+### 基于蓝鲸运维开发平台(LessCode)进行二次开发和构建部署
 #### 内容大纲：
 ```js
 1. LessCode 下载源码结构讲解

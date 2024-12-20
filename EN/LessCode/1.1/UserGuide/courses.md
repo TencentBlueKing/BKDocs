@@ -1,33 +1,48 @@
-## Course practical documents and videos
+## Course Practical Documents and Videos
 
-### SaaS development based on LessCode
-#### Content outline:
-``` js
-1. LessCode theory
-2. LessCode practice, developing a LessCode application
+### SaaS Development Using the LessCode Platform
+
+#### Content Outline:
+
+```js
+Theory of the LessCode Platform
+Practical APP Development with LessCode
 ```
-#### PPT download: [Download address](https://staticfile.qq.com/lesscode/p9508f3d3cfba4809b2e1a3cba58cdd20/template-imgs/latest/Lesscode-1.pptx)
-#### Watch the video: [Video address](https://www.bilibili.com/video/BV1RG4y147ey)
+
+#### PPT Download: [Download Link](https://staticfile.qq.com/lesscode/p9508f3d3cfba4809b2e1a3cba58cdd20/template-imgs/latest/LessCode-1.pptx)
+
+#### Watch Video: [Video Link](https://www.bilibili.com/video/BV1RG4y147ey)
+
 ---
 
-### Secondary development and build deployment based on LessCode
-#### Content outline:
+### Secondary Development and Deployment with the LessCode Platform
+
+#### Content Outline:
+
 ```js
-1. LessCode download source code structure explanation
-2. Page development based on LessCode source code
-3. Construction and deployment of LessCode application
+1. Explanation of LessCode Source Code Structure
+2. Page Development Based on LessCode Source Code
+3. Building and Deploying LessCode APPs
 ```
-#### PPT download: [Download address](https://staticfile.qq.com/lesscode/p9508f3d3cfba4809b2e1a3cba58cdd20/template-imgs/latest/LessCode-2.pptx)
-#### Watch the video: [Video address](https://www.bilibili.com/video/BV1ie4y1a79h)
+
+#### PPT Download: [Download Link](https://staticfile.qq.com/lesscode/p9508f3d3cfba4809b2e1a3cba58cdd20/template-imgs/latest/LessCode-2.pptx)
+
+#### Watch Video: [Video Link](https://www.bilibili.com/video/BV1ie4y1a79h)
+
 ---
 
-### Advanced front-end development
-#### Content outline:
+### Advanced Front-End Development
+
+#### Content Outline:
+
 ```js
-1. Getting started with the BlueKing BKUI-CLI framework and project initialization
-2. Use of Bk-MagicBox UI component library
-3. LessCode custom component development
+1. Introduction to BlueKing BKUI-CLI Framework and Project Initialization
+2. Usage of Bk-MagicBox UI Component Library
+3. Development of Custom Components in LessCode
 ```
-#### PPT download: [Download address](https://staticfile.qq.com/lesscode/p9508f3d3cfba4809b2e1a3cba58cdd20/template-imgs/latest/LessCode-3.pptx)
-#### Watch the video: [Video address](https://www.bilibili.com/video/BV1684y1v7WV)
+
+#### PPT Download: [Download Link](https://staticfile.qq.com/lesscode/p9508f3d3cfba4809b2e1a3cba58cdd20/template-imgs/latest/LessCode-3.pptx)
+
+#### Watch Video: [Video Link](https://www.bilibili.com/video/BV1684y1v7WV)
+
 ---

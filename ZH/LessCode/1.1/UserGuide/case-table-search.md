@@ -1,18 +1,21 @@
-## 如何开发一个表格查询页面
-### 第一步：拖拽“查询选择”、“表格”、“分页”组件到画布
+# 如何开发一个表格查询页面
+### 第一步：拖拽“输入框”、“表格”组件到画布
 
-<img src="./images/case-table1.png" alt="grid" width="640" class="help-img">
+<img src="./images/case-table1.png" alt="grid" width="80%" class="help-img">
 
-### 第二步：配置组件指令
+### 第二步：配置组件属性和指令
 
-- 配置“表格”组件属性指令“v-bind:data”，用于设置表格数据
+- 设置表格数据来源：新建变量 “tableData”，配置 “表格” 组件属性 “data”，绑定自定义变量 “tableData”
 
-- 配置“查询选择”组件属性指令"v-model"，用于获取查询输入关键字
+- 获取输入框关键字：新建变量 “keyWords”，“输入框”组件属性指令 “v-model” 绑定变量 “keyWords”
+- 设置表格分页：属性 pagination 选择“远程分页”
+    
+    1. 新建变量 “count”，分页 ”count“ 属性绑定变量 “count”
+    2. 新建变量 “pageSize”，分页 ”limit“ 属性绑定变量 “pageSize”
 
-- 配置“分页”组件属性指令“v-bind:count”，用于设置分页数据总量
+### 第三步：新建函数 “getTableData” 查询并获取表格数据
 
-- 配置“分页”组件属性指令“v-bind:current.sync”，用于获取当前页
-
+<img src="./images/case-table2.png" alt="grid" width="80%" class="help-img">
 
 **注意：**
 
@@ -22,44 +25,25 @@
 
 2、可以使用 lesscode.函数名，必须通过编辑器自动补全功能选择需要调用的函数。
 
-<img src="./images/case-table3.png" alt="grid" width="640" class="help-img">
+<img src="./images/case-table3.png" alt="grid" width="80%" class="help-img">
+
+### 第四步：“表格”组件 “data” 属性及事件配置
+
+1、 配置表格 “data” 属性数据初始值来源为函数，并绑定函数 “getTableData”
+
+2、 点击”刷新表头“
+
+### 第五步：输入框 “enter” 事件绑定表格查询函数 “getTableData”
+
+<img src="./images/case-table5.png" alt="grid" width="80%" class="help-img">
+
+### 第六步：表格分页事件绑定事件函数
+
+分别给 “page-change” 和 “page-limit-change” 事件绑定表格查询函数 “getTableData”，并配置对应函数调用参数。
+
+<img src="./images/case-table7.png" alt="grid" width="80%" class="help-img">
 
 
-### 第三步：“表格”组件属性及事件配置
+### 第七步：预览效果
 
-- 配置表格数据源初始加载函数 getTableData
-
-<img src="./images/case-table2.png" alt="grid" width="640" class="help-img">
-
-- 根据数据源返回字段配置表头
-
-<img src="./images/case-table4.png" alt="grid" width="640" class="help-img">
-
-### 第四步：“查询选择”组件事件配置
-
-- 表格数据更新函数 updateTableData
-
-<img src="./images/case-table10.png" alt="grid" width="640" class="help-img">
-
-- 配置“enter”事件函数，触发查询
-
-<img src="./images/case-table5.png" alt="grid" width="640" class="help-img">
-
-事件函数 selectData
-
-<img src="./images/case-table6.png" alt="grid" width="640" class="help-img">
-
-
-### 第五步：“分页”组件事件配置
-
-- 配置“click”事件函数，触发分页查询操作
-
-<img src="./images/case-table7.png" alt="grid" width="640" class="help-img">
-
-事件函数 selectData2
-
-<img src="./images/case-table8.png" alt="grid" width="640" class="help-img">
-
-### 第六步：预览效果
-
-<img src="./images/case-table9.png" alt="grid" width="640" class="help-img">
+<img src="./images/case-table9.png" alt="grid" width="80%" class="help-img">
