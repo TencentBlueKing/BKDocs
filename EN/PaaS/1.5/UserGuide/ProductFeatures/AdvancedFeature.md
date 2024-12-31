@@ -19,5 +19,3 @@ BlueKing Cloud products not only provide general product services but also offer
 (5) Version Information
 
 Provides a unified interface for viewing version information, facilitating the alignment of backend version information.
-
-![-w2020](../assets/image45.png)

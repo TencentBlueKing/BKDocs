@@ -16,7 +16,7 @@ Download and install [Python 3.6.X](https://www.python.org/downloads/)
 
 ### Deploy MySQL
 
-- [Download MySQL from the official website](https://dev.mysql.com/downloads/mysql/)
+- Download MySQL from the official website
 
 - Modify user environment variables and MySQL password
 
@@ -51,7 +51,7 @@ trusted-host = pypi.tuna.tsinghua.edu.cn
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple/
 ```
 
-- Install [pipenv](https://zhuanlan.zhihu.com/p/37581807)
+- Install pipenv
 
 ```bash
 pip3 install pipenv
@@ -135,8 +135,6 @@ python manage.py runserver appdev.{PAAS_URL}:8000
 - Local access
 
 Use a browser to access `http://appdev.{PAAS_URL}:8000`, and you can see the development framework
-
-![Development framework homepage](../assets/usage-index.png)
 
 ## Hello, World
 

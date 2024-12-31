@@ -17,11 +17,7 @@ This example uses Tencent Cloud SMS as an example.
 
 First, go to Tencent Cloud Cloud Products -> SMS
 
-![-w2021](../assets/markdown-img-paste-20200403173430929.png)
-
 Domestic SMS -> Signature Management -> Create Signature
-
-![-w2021](../assets/noticeWay06.png)
 
 > Note: Domestic SMS consists of signature + body text, and the signature symbol is 【】 (Note: full-width). The signature must be included when sending SMS content;
 
@@ -33,19 +29,13 @@ Template Example: {1} is your login verification code, please fill it in within 
 
 > Note: The SMS template content cannot contain 【】 symbols
 
-![-w2021](../assets/noticeWay07.png)
-
 Template Instance: "BlueKing Operation Platform" notification {1}. If you did not subscribe to this information, please ignore this SMS.
 
 ### 3. Create an Application
 
 Application Management -> Application List -> Create Application
 
-![-w2021](../assets/markdown-img-paste-20200403173623741.png)
-
 Click on the application name -> Obtain SDK AppID, App Key
-
-![-w2021](../assets/markdown-img-paste-20200403173813685.png)
 
 ### 4. Configure Channel
 
@@ -61,7 +51,7 @@ Is it enabled: Yes
 
 Submit changes
 
-![-w2021](../assets/markdown-img-paste-20200403172817676.png)
+![-w2021](../assets/apigw_cmsi_send_sms.png)
 
 Submit changes after filling in
 
@@ -85,9 +75,6 @@ http://{PaaS_URL}/api/c/compapi/cmsi/send_sms/
 
 ![-w2020](../assets/noticeWay04.png)
 <center>Test Interface</center>
-
-![-w2020](../assets/noticeWay05.png)
-<center>Successfully received on mobile phone</center>
 
 ### 6. Troubleshoot Interface Issues
 

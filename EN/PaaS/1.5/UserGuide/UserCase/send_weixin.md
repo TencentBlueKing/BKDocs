@@ -30,7 +30,6 @@ Enable: Yes
 
 Submit Changes
 
-![-w2021](../assets/2020040720315877.png)
 
 Submit changes after filling in the information
 

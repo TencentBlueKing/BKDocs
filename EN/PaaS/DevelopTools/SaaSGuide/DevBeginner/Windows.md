@@ -26,7 +26,7 @@ The installation package will automatically install `pip`
 
 ### Install MySQL 5.X
 
-- [Download MySQL from the official website](https://dev.mysql.com/downloads/mysql/), select the `.msi` file to download, and follow the prompts to install.
+- Download MySQL from the official website, select the `.msi` file to download, and follow the prompts to install.
 
 - Database management tools
 
@@ -34,7 +34,7 @@ Navicat Premium, phpMyAdmin, DBeaver, MySQL Workbench, etc.
 
 ### Install git
 
-- [Download git from the official website](https://git-scm.com/download/win), download the `Git-xxx-64-bit.exe` file, and follow the prompts to install. Please refer to [Official Installation Document](https://git-scm.com/book/zh/v2/Start-Installation-Git)
+- [Download git from the official website](https://git-scm.com/download/win), download the `Git-xxx-64-bit.exe` file, and follow the prompts to install.
 
 - git management tools
 
@@ -54,7 +54,7 @@ Enter `BlueKing PaaS Platform` -> `Developer Center` -> `Application Creation`, 
 
 ### Download the development framework to local
 
-Go to [BlueKing Tool Download](../../../../downloads/7.0/Index.md), download the latest development framework to local, and unzip it
+After creating the application, a link to the development framework will be displayed. Download it to your local system.
 
 ## Initialize the development framework
 
@@ -97,7 +97,7 @@ trusted-host = pypi.tuna.tsinghua.edu.cn
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple/
 ```
 
-- Install [pipenv](https://zhuanlan.zhihu.com/p/37581807) or virtualenv (recommended)
+- Install [pipenv](https://pipenv.pypa.io/en/latest/) or virtualenv (recommended)
 
 ```bash
 pip3 install pipenv
@@ -179,8 +179,6 @@ python manage.py runserver dev.{PAAS_URL}:8000
 - Local access
 
 Use a browser to access ```http://dev.{PAAS_URL}:8000``` , and you can see the development framework
-
-![Development framework homepage](../assets/usage-index.png)
 
 ## Hello,World
 

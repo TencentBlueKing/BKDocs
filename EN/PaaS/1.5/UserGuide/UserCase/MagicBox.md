@@ -6,10 +6,10 @@
 
 3. Taking the PC side as an example: select the website "Layout" structure
 
-![-w2020](../assets/image063.png)
+![-w2020](../assets/lesscode_page_dev.png)
 
 4. Choose the required frontend elements from the left navigation and drag them into the layout on the right; double-click the elements to edit the content
 
-![-w2020](../assets/image064.png)
+![-w2020](../assets/lesscode_page_custom.png)
 
 5. Finally, click "Save"/"Download" above to obtain the complete frontend interface code.

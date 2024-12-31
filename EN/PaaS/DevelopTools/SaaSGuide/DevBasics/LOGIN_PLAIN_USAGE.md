@@ -1,8 +1,7 @@
 # In-app login pop-up window adaptation solution
 ## Overall implementation idea
 
-The solution mainly solves the problem that when the login state is invalid, the ajax request will not trigger the overall page refresh, but a small login window will pop up in the page, so that users can retain the unsaved content of the current page. The main process is as follows:
-![login_plain_usage.png](../assets/LOGIN_PLAIN_USAGE.png)
+The solution mainly solves the problem that when the login state is invalid, the ajax request will not trigger the overall page refresh, but a small login window will pop up in the page, so that users can retain the unsaved content of the current page. 
 
 ## Sample code (Python project as an example)
 

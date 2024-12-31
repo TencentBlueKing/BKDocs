@@ -3,7 +3,7 @@
 1. Open `http://apigw.${BKDOMAIN}/components/access`
 2. Find the system: CMSI
 3. Find the component: send_mail, click "Edit" on the right side.
-![](../assets/20230516195212.png)
+![](../assets/apigateway_send_mail.png)
 4. Click "Edit" to edit the component configuration.
 
 ## Component Configuration
@@ -44,7 +44,7 @@ smtp_pwd: Authorization Code
 smtp_usessl: True
 ```
 - Detailed configuration method is as follows:
-![](../assets/20230516195123.png)
+![](../assets/apigateway_cmsi_config.png)
 
 ### 3. Test the Interface
 

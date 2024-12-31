@@ -16,7 +16,7 @@ git config --global credential.helper store
 
 ## How to isolate multiple development environments
 
-Use [pipenv](https://zhuanlan.zhihu.com/p/37581807) to isolate multiple development environments locally
+Use [pipenv](https://pipenv.pypa.io/en/latest/) to isolate multiple development environments locally
 ![pipenv](../assets/pipenv.png)
 
 - What to do if the user environment variables are not loaded when entering the `pipenv` environment?

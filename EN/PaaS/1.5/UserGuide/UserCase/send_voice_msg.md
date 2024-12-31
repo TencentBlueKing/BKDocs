@@ -16,27 +16,17 @@ This example uses Tencent Cloud VMS as an example.
 
 First, go to Tencent Cloud Cloud Products -> Voice Messages
 
-![-w2021](../assets/markdown-img-paste-20200403173430929.png)
-
 Application Management -> Application List -> Create Application
 
-![-w2021](../assets/markdown-img-paste-20200407195612299.png)
-
 Click on the application name -> Obtain SDK AppID, App Key
-
-![-w2021](../assets/markdown-img-paste-20200407203051995.png)
 
 ### 2. Apply for a Number
 
 Application Management -> Voice Numbers -> Select the corresponding application -> Apply for a number
 
-![-w2021](../assets/send_voice_msg01.png)
-
 ### 3. Create a Voice Template
 
 Application Management -> Voice Templates -> Select the corresponding application -> Create a voice template
-
-![-w2021](../assets/send_voice_msg02.png)
 
 Template Example: BlueKing Monitoring Notification {1}
 
@@ -53,7 +43,7 @@ Enable: Yes
 
 Submit changes
 
-![-w2021](../assets/2020040720315877.png)
+![-w2021](../assets/apigw_cmsi_send_voice_msg.png)
 
 Submit changes after filling in the information
 

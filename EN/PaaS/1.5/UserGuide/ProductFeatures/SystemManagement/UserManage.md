@@ -2,7 +2,7 @@
 
 To ensure that all users of the BlueKing products are trustworthy, the PaaS platform provides a "Unified Login" module for the entire BlueKing ecosystem, which includes a basic account system. Once the BlueKing ecosystem products are deployed, a URL will be provided for users to access.
 
-![-w2020](../../assets/image003.png)
+![-w2020](../../assets/login_ce7.0.png)
 
 The Community Edition offers two roles:
 
@@ -14,9 +14,7 @@ The Community Edition offers two roles:
 
 Administrators can manage user information, including assigning user roles and permissions.
 
-![-w2020](../../assets/userenter.png)
-
-![-w2020](../../assets/image005.png)
+![-w2020](../../assets/dock_usermanage.png)
 
 The following operations are supported:
 

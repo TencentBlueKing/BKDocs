@@ -2,7 +2,7 @@
 
 To ensure that users of the BlueKing products are trustworthy, the PaaS platform provides a "Unified Login" module for the entire BlueKing ecosystem, which includes a basic account system. Once the BlueKing ecosystem products are set up and deployed, a URL will be provided for users to access.
 
-![-w2020](../../assets/login_ee.png)
+![-w2020](../../assets/login_ce7.0.png)
 
 The basic information such as user accounts and passwords is managed through the "User Management" SaaS. Whether a user has certain permissions within the PaaS platform or other systems is applied for and obtained through the "Permission Center" SaaS.
 

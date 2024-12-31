@@ -10,10 +10,6 @@ And modify `config/prod.py` and `stag.py`
 
 - Install [Git](https://www.git-scm.com/download/win)
 
-- Use `Git Bash` to right-click and open the project root directory
-
-![Open directory with git](../assets/%E4%BD%BF%E7%94%A8git%E6%89%93%E5%BC%80%E7%9B%AE%E5%BD%95.png)
-
 - Submit the project to the repository
 
 ```bash
