@@ -145,8 +145,6 @@ python manage.py runserver
 
 Then visit appdev.`{domain_name}` in the browser to access the project homepage.
 
-![image-20190505204958140](../assets/usage-index.png)
-
 ## Create a new application
 ### Execute django-admin startapp yourappname in the root directory
 ### Enter the yourappname directory and add urls.py

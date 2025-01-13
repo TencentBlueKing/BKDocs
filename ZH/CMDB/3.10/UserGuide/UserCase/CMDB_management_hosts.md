@@ -74,11 +74,6 @@
 
 ![image-20201105112952109](../media/CMDB_management_hosts/image-20201105112952109.png)
 
-### 使用场景：在作业平台中查询接入层的磁盘使用率
-
-通过一个简单的场景，体验 [作业平台](../../../../JOB/3.7/UserGuide/Introduction/What-is-Job.md) 如何消费主机实例。
-
-{% video %}media/cmdb_job_consume.mp4{% endvideo %}
 
 ## 扩展阅读
 

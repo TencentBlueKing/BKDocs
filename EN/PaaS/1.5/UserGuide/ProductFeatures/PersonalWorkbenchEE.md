@@ -2,7 +2,7 @@
 
 BlueKing provides many out-of-the-box SaaS products, which are uniformly displayed in the user's "Personal Workspace," also known as the "Desktop."
 
-![-w2020](../assets/login_ee.png)
+![-w2020](../assets/login_ce7.0.png)
 
 On the login screen, there are quick access entries such as "View User Agreement," "Forgot Password," and "Switch between Chinese and English."
 
