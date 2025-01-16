@@ -19,3 +19,5 @@
 20241212	bkmonitor-operator-stack	__TYPE__	3.6.148	3.6.0	
 20241212	bkmonitorbeat	__TYPE__	3.53.2568	--	
 20241217	bk_itsm	__TYPE__	2.7.3	--	
+20250116	bkmonitor-operator-stack	__TYPE__	3.6.151	3.6.0
+20250116	bk-collector	__TYPE__	0.76.2732	--	
