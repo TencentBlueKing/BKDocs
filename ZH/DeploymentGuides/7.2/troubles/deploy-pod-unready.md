@@ -289,3 +289,38 @@ failed to initialize libbeat: error initializing publisher: dial unix /data/ipc/
 #### 总结
 
 操作不当。
+
+## 部署持续集成套餐时的报错
+### bk-ci-auth 启动报错 Unsatisfied dependency expressed through field 'expirationTime' nested exception is java.lang.NumberFormatException: For input string: "8.64e+07"
+#### 表现
+
+部署持续集成平台超时报错，`bk-ci-auth` pod 运行 `Running` 一段时间后状态变为 `CrashLoopBackOff` 。
+
+检查对应 `bk-ci-auth` pod 日志发现：
+``` plain
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userTokenResourceImpl' defined in URL [jar:file:/data/workspace/jars-private/biz-auth-1.*--20789afd0b6dedc45f719129dc24dda9.jar!/com/tencent/devops/auth/resources/UserTokenResourceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiAccessTokenService': Unsatisfied dependency expressed through field 'expirationTime'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; nested exception is java.lang.NumberFormatException: For input string: "8.64e+07"                                                               
+```
+
+#### 排查处理
+
+检查日志报错关键信息 `field 'expirationTime' nested exception is java.lang.NumberFormatException: For input string: "8.64e+07"` 是 `bkCiApiTokenExpiredMillisecond` 开关导致的。
+
+检查蓝盾部署 values 相关的文件：
+```
+grep bkCiApiTokenExpiredMillisecond environments/default/bkci/* environments/default/{custom.yaml,values.yaml}
+```
+
+输出为 `bkCiApiTokenExpiredMillisecond: 86400000`。
+
+尝试修改 values 文件 `$INSTALL_DIR/blueking/environments/default/bkci/bkci-custom-values.yaml.gotmpl` （不存在则手动新建），将值加上双引号，示例如下：
+```yaml
+config:
+  bkCiApiTokenExpiredMillisecond: "86400000"
+```
+
+重新部署蓝盾成功。
+
+
+#### 总结
+
+values 配置项的值类型为整数时，渲染 configmap 内容异常。先临时调整配置值类型为字符串，后续发版兼容整数类型。

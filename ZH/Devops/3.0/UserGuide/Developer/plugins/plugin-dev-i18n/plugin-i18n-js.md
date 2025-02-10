@@ -1,14 +1,14 @@
-# Golang 插件国际化
+# nodeJS 插件国际化
 
 ## 1、国际化使用的插件 SDK 要求
 
-SDK 要求：>= v1.2.5
+SDK 要求：>= v2.0.13
 
 ## 2、国际化配置文件管理方式
 
 国际化配置文件，统一放到插件工程 i18n 目录下的资源文件中进行管理。如下图所示：
 
-![png](../../../assets/I18nConfig-go-1.png)
+![png](../../../assets/I18nConfig-js-1.png)
 
 **资源文件命名规范：** message_$language.properties
 
@@ -70,38 +70,16 @@ task.json 支持新增 defaultLocaleLanguage 字段，缺省为简体中文 zh_C
 
 可选值为国际化支持的语言，若为简体中文则值为：zh_CN
 
-该配置指定插件默认支持的语言，对应语言无需在国际化资源文件中重复定义。若 defaultLocaleLanguage 值与当前环境蓝盾系统的默认语言一致，则以 task.json 中的配置为准
+该配置指定插件默认支持的语言，对应语言无需在国际化资源文件中重复定义。若 defaultLocaleLanguage 值与当前环境BK-CI系统的默认语言一致，则以 task.json 中的配置为准
 
 ![png](../../../assets/I18nConfig-java-7.png)
 
-## 4、通过 go generate 工具解析 i18n 文件生成代码
+## 4、把错误码信息配置在ErrorCodeConstants.js(方便统一做错误码规范管理)。
+![png](../../../assets/I18nConfig-js-2.png)
+### 4.1、通过调用SDK提供的 generateLocaleUtil 方法使用生成翻译方法
 
-### 4.1、在代码文件中配置 go generate 信息即 //go:generate i18ngenerator 国际化文件夹路径 生成的代码文件路径
-
-![png](../../../assets/I18nConfig-go-3.png)
-
-### 4.2、在项目根目录下安装生成代码的 i18ngenerator 以及进行代码生成
-
-``` bash
-# 安装代码生成工具
-go install github.com/ci-plugins/golang-plugin-sdk/cmd/i18ngenerator@latest
-# 生成代码
-go generate .
-```
-
-## 5、通过调用 SDK 提供的 InitI18n 方法使用生成好的国际化代码，同时获取并使用运行时的语言信息进行初始化并且通过 Localize 使用
-
-![png](../../../assets/I18nConfig-go-4.png)
+![png](../../../assets/I18nConfig-js-3.png)
 
 ## 6、自定义 UI 的插件前端国际化
 
 见 [自定义 UI 的插件前端国际化](./plugin-i18n-custom-ui.md)
-
-## 7、国际化配置文件支持引入文件
-
-- 支持使用表达式${{indexFile("文件路径")}}引入文件
-    - 需要插件项目跟路径增加file目录，表达式以这个目录为根目录
-    - ![png](../../../assets/I18nConfig-file-3.png)
-- 引入的文件格式支持文档文件及静态文件(jpg、jpeg、png、gif)
-- 引入的文档文件中也支持使用表达式引入静态文件，不支持引入文档文件
-- ![png](../../../assets/I18nConfig-file-2.png)

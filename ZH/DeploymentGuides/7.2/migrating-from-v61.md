@@ -593,7 +593,7 @@ MYSQL_USER=root
 MYSQL_PORT=3306
 MYSQL_PWD=$(kubectl get secret --namespace blueking bk-mysql8 -o jsonpath="{.data.mysql-root-password}" | base64 -d)
 
-kubectl run bk-mysql8-client --rm --tty -i --restart='Never' --image hub.bktencent.com/dev/bitnami/mysql:8.0.37-debian-12-r2 \
+kubectl run bk-mysql8-client --rm --tty -i --restart='Never' --image hub.bktencent.com/bitnami/mysql:8.0.37-debian-12-r2 \
   --namespace blueking --env ZK_HOST=$ZK_HOST --env BKREPO_ADDR=$BKREPO_ADDR \
   --env BKNODEMAN_API_ADDR=$BKNODEMAN_API_ADDR --env GSE_ALIAS=$GSE_ALIAS \
   --env MYSQL_HOST=$MYSQL_HOST --env MYSQL_USER=$MYSQL_USER --env MYSQL_PORT=$MYSQL_PORT \
@@ -784,7 +784,7 @@ MYSQL_USER=root
 MYSQL_PORT=3306
 MYSQL_PWD=$(kubectl get secret --namespace blueking bk-mysql8 -o jsonpath="{.data.mysql-root-password}" | base64 -d)
 
-kubectl run bk-mysql8-client --rm --tty -i --restart='Never' --image hub.bktencent.com/dev/bitnami/mysql:8.0.37-debian-12-r2 \
+kubectl run bk-mysql8-client --rm --tty -i --restart='Never' --image hub.bktencent.com/bitnami/mysql:8.0.37-debian-12-r2 \
   --namespace blueking --env MYSQL_HOST=$MYSQL_HOST --env MYSQL_USER=$MYSQL_USER --env MYSQL_PORT=$MYSQL_PORT \
   --env MYSQL_PWD=$MYSQL_PWD --command -- bash
 

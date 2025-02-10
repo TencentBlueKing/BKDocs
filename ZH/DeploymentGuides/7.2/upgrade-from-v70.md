@@ -534,7 +534,10 @@ kubectl logs -n blueking -l job-name=bkpaas3-apiserver-init-data-1 -f
 
 ### 升级第三层的其他组件
 
-更新第三层的组件其他
+>提示
+>- 如果升级之前使用的是蓝鲸默认的 admin 密码 `Blueking@2022`，升级之后蓝鲸登录密码将自动改为 `Blueking@2024`
+>- 如需保持原来的登录密码，可执行命令 `yq -i '.bkuser.initialAdminPassword="Blueking@2022"' environments/default/custom.yaml`
+
 ```bash
 helmfile -f base-blueking.yaml.gotmpl -l seq=third,name!=bk-paas,name!=bkpaas-app-operator,name!=bk-gse sync
 ```
@@ -557,12 +560,6 @@ kubectl exec bk-mysql-mysql-master-0 -- bash -c "mysql -uroot -p$mysql_passwd -e
 ```
 
 ### 升级第四层-作业平台
-
-7.2.0 引用的 bk-job-0.6.6-beta.5 存在 bug，需要修改版本号为 `0.6.6-beta.6`。
-``` bash
-cd $INSTALL_DIR/blueking/  # 进入工作目录
-sed -i 's/bk-job:.*/bk-job: "0.6.6-beta.6"/' environments/default/version.yaml
-```
 
 作业平台 3.9.3 版本默认使用基于蓝鲸制品库的 **全局配置** 方案，升级后将展示默认界面。
 
@@ -743,23 +740,13 @@ helmfile -f 04-bklog-collector.yaml.gotmpl sync
 此次升级包括产品自带公共组件（mysql、rabbitmq、redis）升级
 
 ### 升级蓝盾
-蓝盾从 1.9 升级到 3.0，需要执行 2 次升级：
-1. 蓝盾 1.9 - 2.0，并迁移数据。
-2. 蓝盾 2.0 - 3.0，无需迁移。
-
-#### 蓝盾 1.9 升级到 2.0
-蓝盾早期的 chart 版本和软件版本不同，需修改 bk-ci chart 的版本号为 `3.0.10-beta.4`：
-``` bash
-sed -i 's/bk-ci:.*/bk-ci: "3.0.10-beta.4"/' environments/default/version.yaml
-grep bk-ci environments/default/version.yaml  # 检查修改结果
-```
 
 升级持续集成平台：
 ```bash
 helmfile -f 03-bkci.yaml.gotmpl sync
 ```
 
-##### 数据迁移
+#### 数据迁移
 
 >2.0 版本相对于 1.x 的版本，权限从对接权限中心 v3 升级到对接权限中心 rbac，对鉴权数据做了较大的变更。所以升级后, 需要迁移权限。
 
@@ -793,22 +780,9 @@ select * from devops_ci_auth.T_AUTH_MIGRATION\G
 
 迁移后可以登录至蓝盾页面检查老项目权限是否正常。
 
-#### 蓝盾 2.0 升级到 3.0
-蓝盾自 3.0.11 开始统一 chart 和软件版本。
-
-需修改 bk-ci chart 的版本号为 `3.0.11-beta.3`：
-``` bash
-sed -i 's/bk-ci:.*/bk-ci: "3.0.11-beta.3"/' environments/default/version.yaml
-grep bk-ci environments/default/version.yaml  # 检查修改结果
-```
-
-升级持续集成平台：
-```bash
-helmfile -f 03-bkci.yaml.gotmpl sync
-```
 
 #### 蓝盾优化项
-完成 2 次升级后，还需要注册默认构建镜像、对接制品库和上传插件。
+完成升级后，还需要注册默认构建镜像、对接制品库和上传插件。
 
 请阅读文档 《[部署持续集成套餐](install-ci-suite.md)》。
 
@@ -818,12 +792,12 @@ helmfile -f 03-bkci.yaml.gotmpl sync
 请阅读文档 《[部署持续集成套餐](install-ci-suite.md)》。
 
 # 蓝鲸 7.2 新产品的安装
-在 7.2 中，我们引入了一些新的产品。
+在 7.2 中，我们引入了一些新的产品，可根据自身需求部署以下产品。
 
-## 部署消息通知中心
+## 【可选】部署消息通知中心
 请阅读文档 《[部署消息通知中心](install-notice.md)》。
 
-## 部署服务配置中心
+## 【可选】部署服务配置中心
 请阅读文档 《[部署服务配置中心](install-bscp.md)》。
 
 

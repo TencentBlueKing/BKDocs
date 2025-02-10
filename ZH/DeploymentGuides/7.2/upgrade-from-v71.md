@@ -303,12 +303,6 @@ kubectl exec bk-mysql-mysql-master-0 -- bash -c "mysql -uroot -p$mysql_passwd -e
 
 ### 升级第四层-作业平台
 
-7.2.0 引用的 bk-job-0.6.6-beta.5 存在 bug，需要修改版本号为 `0.6.6-beta.6`。
-``` bash
-cd $INSTALL_DIR/blueking/  # 进入工作目录
-sed -i 's/bk-job:.*/bk-job: "0.6.6-beta.6"/' environments/default/version.yaml
-```
-
 作业平台 3.9.3 版本默认使用基于蓝鲸制品库的 **全局配置** 方案，升级后将展示默认界面。
 
 用户此前通过页面【平台管理-全局设置-平台信息】配置的数据（title/footer/助手链接等）需要 **迁移数据** 且启用 **全局配置** 功能，方可恢复显示。

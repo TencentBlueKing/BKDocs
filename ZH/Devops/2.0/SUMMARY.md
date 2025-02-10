@@ -181,6 +181,8 @@
             * [Java 插件国际化](UserGuide/Developer/plugins/plugin-dev-i18n/plugin-i18n-java.md)
             * [Python 插件国际化](UserGuide/Developer/plugins/plugin-dev-i18n/plugin-i18n-python.md)
             * [Go 插件国际化](UserGuide/Developer/plugins/plugin-dev-i18n/plugin-i18n-go.md)
+            * [NodeJS 插件国际化](UserGuide/Developer/plugins/plugin-dev-i18n/plugin-i18n-js.md)
+            * [插件自定义 UI 前端国际化](UserGuide/Developer/plugins/plugin-dev-i18n/plugin-i18n-custom-ui.md)
         * [插件开发案例]()
             * [sendmsg-通用消息发送插件](UserGuide/Developer/plugins/plugin-dev-guide/case-stduy/sendmsg.md)
     * [REST API]()

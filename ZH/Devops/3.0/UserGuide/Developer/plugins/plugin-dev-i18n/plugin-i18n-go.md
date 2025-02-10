@@ -35,8 +35,10 @@ SDK 要求：>= v1.2.5
 每个错误码都需要有对应的错误描述，错误码定义规范见 [插件错误码规范](../plugin-dev-standard/plugin-error-code.md)
 
 ### 初始化数据
+![png](../../../assets/I18nConfig-init.png)
 
 ### 打印的日志
+![png](../../../assets/I18nConfig-log.png)
 
 ### 插件上架时，填写的基本信息
 
