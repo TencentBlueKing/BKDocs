@@ -580,7 +580,6 @@ bkdl-7.2-stable.sh -ur latest gse_plugins_freq
 ```
 - 接入点配置
 
-> :heavy_exclamation_mark::heavy_exclamation_mark::heavy_exclamation_mark:
 > 如果有需要自定义配置，请执行执行 sql 变更后在节点管理页面修改。
 
 ```bash
@@ -636,7 +635,6 @@ exit
 
 - 导出“作业平台的本地文件”
 
-> :heavy_exclamation_mark::heavy_exclamation_mark::heavy_exclamation_mark: 
 > 在老蓝鲸上操作
 
 > 若老蓝鲸可以访问新蓝鲸 bkrepo (域名：bkrepo.${BK_DOMAN})，亦可直接在老蓝鲸 job 的机器上执行，具体指令参考下一节 **“迁移作业平台本地文件至 bkrepo”**
@@ -680,7 +678,6 @@ done < <(find ./localupload/ -type f)
 
 - 用户自定义插件导出
 
-> :heavy_exclamation_mark::heavy_exclamation_mark::heavy_exclamation_mark: 
 > 在老蓝鲸上操作
 
 ```bash
@@ -750,8 +747,6 @@ done < <(find ./download -type f \( -path './download/linux/*' -o -path './downl
 
 ## 6. 新蓝鲸：部署容器管理平台
 
-> :heavy_exclamation_mark::heavy_exclamation_mark::heavy_exclamation_mark: 
-> 
 > 不支持二进制版本数据迁移至新平台，此处为全新部署 “容器管理平台”
 
 请参考文档进行部署：[部署容器管理套餐](https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/install-bcs.md)
@@ -773,8 +768,6 @@ yq -i ".configs.bcsApiGatewayToken = \"${GATEWAY_TOKEN}\"" environments/default/
 
 ### 7.2. 数据修正
 
-> :heavy_exclamation_mark::heavy_exclamation_mark::heavy_exclamation_mark: 
-> 
 > 以下命令仅适用使用默认值进行部署、未曾对集群配置信息进行过变更的用户
 > 如果曾经增删过集群信息，请阅读以下 SQL 命令，按实际情况进行更新，请勿直接操作
 

@@ -22,7 +22,7 @@ bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 common
 我们推荐下载一些常用的 python 版本及 pip 版本，共约 130 MB。
 ``` bash
 # 下载python
-for v in 2.7.18 3.6.8 3.6.12 3.10.5; do
+for v in 2.7.18 3.6.8 3.6.12 3.10.5 3.11.10; do
   bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 python=$v
 done
 # 这些pip同时提供py2和py3版本。

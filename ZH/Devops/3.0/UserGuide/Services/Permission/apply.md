@@ -8,13 +8,13 @@
 
 从导航右上角、用户信息下拉菜单中的“我的权限”入口进入，点击 “申请权限”，如下图所示：
 
-![](../../assets/permission/apply.png)
+![](../../assets/permission/persional-permission-apply.png)
 
 1. 项目：申请的目标项目。除了保密项目，其他项目都可以申请
 2. 选择用户组：可以通过条件查询目标用户组
     - 若已加入项目，可以通过项目下的资源(如流水线、凭据、环境、节点等)进行查询
     - 若尚未加入项目，不能通过项目下的资源查询，只能搜索项目级别的用户组
-    ![](../../assets/permission/apply_new_proj.png)
+    ![](../../assets/permission/persional-permission-apply1.png)
 3. 可以选择申请的期限，最长 1 年。到期后可以续期
 4. 申请理由：说明清楚申请的理由，关于审批人进行评估
 
@@ -24,7 +24,7 @@
 
 提单后，可以在“我的申请”查看申请单进度：
 
-![](../../assets/permission/my_apply.png)
+![](../../assets/permission/persional-permission-apply2.png)
 
 申请单审批通过之后，申请人获得对应的权限。
 
@@ -41,8 +41,8 @@
 
 选择用户组后，进入申请权限页面，默认选中对应的用户组：
 
-![](../../assets/permission/apply_resource_entry2.png)
+![](../../assets/permission/persional-permission-apply3.png)
 
 提单后，可以在“我的申请”查看申请单进度：
 
-![](../../assets/permission/my_apply.png)
+![](../../assets/permission/persional-permission-apply4.png)
