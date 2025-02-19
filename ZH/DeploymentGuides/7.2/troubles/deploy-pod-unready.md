@@ -303,6 +303,10 @@ Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Err
 
 #### 排查处理
 
+已于 chart [3.0.13](../updates/202502.md#bk-ci-3.0.13) 版本修复兼容数字格式。也可参考 《[单产品更新](../update.md)》 文档更新 bk-ci 版本： >=3.0.13。
+
+如不方便更新，可以临时调整配置，如下：
+
 检查日志报错关键信息 `field 'expirationTime' nested exception is java.lang.NumberFormatException: For input string: "8.64e+07"` 是 `bkCiApiTokenExpiredMillisecond` 开关导致的。
 
 检查蓝盾部署 values 相关的文件：
@@ -319,7 +323,6 @@ config:
 ```
 
 重新部署蓝盾成功。
-
 
 #### 总结
 
