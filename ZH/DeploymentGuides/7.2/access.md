@@ -22,7 +22,7 @@ kubectl get secret -n blueking bkpaas3-apiserver-bkrepo-envs -o go-template='{{r
 
 在 中控机 执行如下命令获取访问入口：
 ``` bash
-cd ~/bkce7.1-install/blueking/  # 进入工作目录
+cd ~/bkce7.2-install/blueking/  # 进入工作目录
 BK_DOMAIN=$(grep -h "" environments/default/{values,custom}.yaml 2>/dev/null | yq e '.domain.bkDomain' -)  # 读取默认或自定义域名
 echo "http://$BK_DOMAIN"
 ```

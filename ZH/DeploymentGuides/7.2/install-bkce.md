@@ -41,7 +41,7 @@ bkdl-7.2-stable.sh -ur latest base demo nm_gse_full saas scripts
 export REGISTRY=代理IP:端口
 ```
 
-注意：请提前在 **全部 k8s node** 上为 containerd 处理 SSL 证书问题，可以参考 《[调整 node 上的容器运行时](install-bkce.md#k8s-node-cri-insecure-registries)》文档。
+注意：请提前在 **全部 k8s node** 上为 containerd 处理 SSL 证书问题，可以参考下面章节 《确保 node 能拉取 SaaS 镜像》 。
 
 ## 检查存储供应
 先检查当前的存储提供者。在 中控机 执行：
