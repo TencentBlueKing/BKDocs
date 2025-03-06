@@ -182,13 +182,13 @@ Events:
 ``` plain
   Warning  Failed     85s (x4 over 2m43s)  kubelet            Failed to pull image "docker.bkce7.bktencent.com/bkpaas/docker/bk_itsm/default:2.6.2": rpc error: code = Unknown desc = Error response from daemon: Get https://docker.bkce7.bktencent.com/v2/: x509: certificate is valid for ingress.local, not docker.bkce7.bktencent.com
 ```
-此报错则是 HTTPS 证书问题，请参考 [调整 node 上的容器运行时](../install-bkce.md#k8s-node-cri-insecure-registries) 文档操作。
+此报错则是 HTTPS 证书问题，请参考 [确保 node 能拉取 SaaS 镜像](../install-bkce.md#k8s-node-cri-insecure-registries) 文档操作。
 
 #### 总结
 
 目前用户报告的案例中，均为拉取镜像失败所致。又可细分为以下 2 种情况：
 1. 遗漏了 “[配置 k8s node 的 DNS](../install-bkce.md#hosts-in-k8s-node)” 步骤，导致无法解析 bkrepo docker registry 的域名。
-2. 遗漏了 “[调整 node 上的容器运行时](../install-bkce.md#k8s-node-cri-insecure-registries)” 步骤，导致 https 连接失败。
+2. 遗漏了 “[确保 node 能拉取 SaaS 镜像](../install-bkce.md#k8s-node-cri-insecure-registries)” 步骤，导致 https 连接失败。
 
 请先检查 **全部 node**，补齐这些操作，然后重试。如未解决，可参考问题分析排查。
 

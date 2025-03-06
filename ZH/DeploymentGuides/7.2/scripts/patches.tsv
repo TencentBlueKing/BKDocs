@@ -22,3 +22,6 @@
 20250116	bkmonitor-operator-stack	__TYPE__	3.6.151	3.6.0
 20250116	bk-collector	__TYPE__	0.76.2732	--	
 20250213	bk-ci	__TYPE__	3.0.13	3.0.13	
+20250306	bkmonitor-operator-stack	__TYPE__	3.6.152	3.6.0
+20250306	bkmonitorbeat	__TYPE__	3.57.2872	--	
+20250306	bk-collector	__TYPE__	0.77.2871	--	
