@@ -51,7 +51,7 @@ curl -v docker.bkce7.bktencent.com/v2/
 
 >**注意**
 >
->如果你的运行时为 `containerd`，不能直接照搬下面的命令，需自行研究。注意二者配置文件格式不同。
+>如果你的运行时为 `dockerd`，不能直接照搬下面的命令，需自行研究。注意二者配置文件格式不同。
 
 ### 场景一：忽略 containerd 的 https 证书检查
 
