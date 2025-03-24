@@ -211,7 +211,7 @@ scripts/setup_bkce7.sh -i nodeman
 ```
 * 当你从公网访问，或者办公区到机房有统一的访问网关时，需要指定 IP：
 ``` bash
-./scripts/dns-helper.sh ingress-nginx的公网IP或者代理IP
+./scripts/dns-helper.sh  #ingress-nginx的公网IP或者代理IP
 ```
 
 ### 在 pc 上修改 hosts 文件
