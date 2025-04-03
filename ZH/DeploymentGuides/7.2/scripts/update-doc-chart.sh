@@ -22,7 +22,7 @@ helm search repo $CHART_NAME --version $VERSION
 >\`\`\` plain
 $(column -ts $'\t' <<EOT
 >NAME	CHART VERSION	APP VERSION	DESCRIPTION
->$CHART_REPO/$CHART_NAME	$VERSION	$APP_VERSION	略
+>$CHART_REPO/$CHART_NAME	$VERSION	略	略
 EOT
 )
 >\`\`\`

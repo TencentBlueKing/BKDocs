@@ -384,7 +384,7 @@ cd ~/bkhelmfile/blueking/  # 进入工作目录
     kubectl delete clusterrolebinding bk-paasengine;
     kubectl -n blueking delete sa bk-paasengine;
     # 删除crd：
-    kubectl get crd | grep tencent.com | xargs --no-run-if-empty kubectl delete crd
+    kubectl get crd | grep bk.tencent.com | xargs --no-run-if-empty kubectl delete crd
     # 删除pvc：
     kubectl delete pvc --all -n blueking; kubectl delete pvc --all -n bcs-system
     # 删除已知的 hooks 生成的资源残留
