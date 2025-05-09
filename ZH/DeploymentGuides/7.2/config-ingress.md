@@ -113,6 +113,7 @@ BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)
 # 创建 BK_DOMAIN 对应的 证书，为了方便维护，secret 名字保持一致
 kubectl create secret tls "$BK_DOMAIN" --namespace ingress-nginx --key ./server.key --cert ./fullchain.pem
 # 修改 ingress 配置，使用刚才的 证书。
+touch ./environments/default/ingress-nginx-custom-values.yaml.gotmpl
 yq -i '.controller.extraArgs.default-ssl-certificate|= "ingress-nginx/'"$BK_DOMAIN"'"' ./environments/default/ingress-nginx-custom-values.yaml.gotmpl
 # 使配置生效
 helmfile -f 00-ingress-nginx.yaml.gotmpl apply
@@ -133,6 +134,8 @@ TODO 待用户要求后，补充 clb 采购流程及配置项
 
 ``` bash
 yq -i '.bkDomainScheme = "https"' environments/default/custom.yaml
+
+touch environments/default/bkci/{bkci-custom-values.yaml.gotmpl,bkcodecc-custom-values.yaml.gotmpl}
 yq -i '.config.bkHttpSchema = "https"' environments/default/bkci/bkci-custom-values.yaml.gotmpl
 yq -i '.config.bkCiPublicSchema = "https" | .config.bkCodeccPublicSchema = "https"' environments/default/bkci/bkcodecc-custom-values.yaml.gotmpl
 ```
@@ -142,6 +145,9 @@ yq -i '.config.bkCiPublicSchema = "https" | .config.bkCodeccPublicSchema = "http
 
 重启第一批：
 ``` bash
+# 先删除 API 网关旧 job
+kubectl -n blueking delete job bk-apigateway-wait-storages
+
 helmfile -f base-blueking.yaml.gotmpl -l seq=first sync
 kubectl delete pod -n blueking -l 'app.kubernetes.io/instance=bk-repo,bk.repo.scope=backend'  # bkrepo 部分 pod 不会重启，主动删除等重建
 kubectl delete pod -n blueking -l 'app.kubernetes.io/instance=bk-apigateway,app.kubernetes.io/component in (api-support-fe, dashboard-fe)'  # bk-apigateway 部分 pod 不会重启，主动删除等重建
@@ -150,7 +156,6 @@ kubectl delete pod -n blueking -l 'app.kubernetes.io/instance=bk-apigateway,app.
 ``` bash
 helmfile -f base-blueking.yaml.gotmpl -l seq=second sync
 # 持续观察等 bk-repo-repository pod 全部Ready
-
 kubectl get pod -n blueking -l 'app.kubernetes.io/instance=bk-repo,app.kubernetes.io/component=repository' -w
 ```
 然后重启第三批：
@@ -168,7 +173,7 @@ kubectl delete pod -n blueking -l 'app.kubernetes.io/instance=bk-job,app.kuberne
 #### 重启蓝鲸监控日志套餐
 ``` bash
 helmfile -f 04-bkmonitor.yaml.gotmpl sync
-helmfile -f 04-bklog-search.yaml.gotmpl
+helmfile -f 04-bklog-search.yaml.gotmpl sync
 ```
 
 #### 重启蓝鲸容器管理平台
@@ -206,6 +211,9 @@ domain:
 按批次重启蓝鲸基础套餐。
 1. 重启第一批：
    ``` bash
+   # 先删除 API 网关旧 job
+   kubectl -n blueking delete job bk-apigateway-wait-storages
+
    helmfile -f base-blueking.yaml.gotmpl -l seq=first sync
    kubectl delete pod -n blueking -l 'app.kubernetes.io/instance=bk-repo,bk.repo.scope=backend'  # bkrepo 部分 pod 不会重启，主动删除等重建
    kubectl delete pod -n blueking -l 'app.kubernetes.io/instance=bk-apigateway,app.kubernetes.io/component in (api-support-fe, dashboard-fe)'  # bk-apigateway 部分 pod 不会重启，主动删除等重建
