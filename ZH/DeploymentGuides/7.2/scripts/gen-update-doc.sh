@@ -9,7 +9,7 @@ doc_main (){
   h3="### $PACKAGE-$VERSION"
   # 如果没有h1及h2，则补齐。
   if ! grep -qxF "$h1" "$update_doc_file"; then echo $'\n'"$h1"$'\n'; fi
-  if ! grep -qxF "$h2" "$update_doc_file"; then echo "$h2"$'\n'; fi
+  if [ "$(grep -xF -e "$h1" -e "$h2" "$update_doc_file" | tail -1)" = "$h1" ]; then echo "$h2"$'\n'; fi
   # 如果存在h3，则跳过生成文档。
   if grep -HnxF "$h3" "$update_doc_file" >&2; then
     echo >&2 "  SKIP: will NOT gen doc due to h3 exist: $h3."; return; fi
@@ -39,8 +39,6 @@ gen_doc (){
     case $PTYPE in
       chart) cmd_gen_doc=scripts/update-doc-chart.sh;;
       SaaS) cmd_gen_doc=scripts/update-doc-saas.sh;;
-      agent) cmd_gen_doc=scripts/update-doc-agent.sh;;
-      proxy) cmd_gen_doc=scripts/update-doc-proxy.sh;;
       采集器) cmd_gen_doc=scripts/update-doc-plugin.sh;;
       *) echo >&2 "ERROR: no render for $PTYPE"; exit 5;;
     esac

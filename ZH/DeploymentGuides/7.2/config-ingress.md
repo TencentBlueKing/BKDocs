@@ -107,7 +107,7 @@ ingress-nginx 基于 nginx，要求证书文件提供完整的证书链。需要
 
 在中控机执行：
 ``` bash
-cd ~/bkhelmfile/blueking/  # 进入工作目录
+cd $INSTALL_DIR/blueking/  # 进入工作目录
 # 从自定义配置中提取, 也可自行赋值
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)
 # 创建 BK_DOMAIN 对应的 证书，为了方便维护，secret 名字保持一致
@@ -141,6 +141,14 @@ yq -i '.config.bkCiPublicSchema = "https" | .config.bkCodeccPublicSchema = "http
 ```
 
 ### 重启服务使 https 生效
+
+#### 修改配置
+```bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+touch ./environments/default/bkrepo-custom-values.yaml.gotmpl
+yq -i '.forceHttps = true' ./environments/default/bkrepo-custom-values.yaml.gotmpl
+```
+
 #### 重启蓝鲸基础套餐
 
 重启第一批：
