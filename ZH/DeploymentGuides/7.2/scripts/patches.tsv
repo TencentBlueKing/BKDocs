@@ -32,6 +32,7 @@
 20250605	bk-nodeman	__TYPE__	2.4.8	2.4.8	
 20250703	bk-monitor	__TYPE__	3.9.0-beta.19	3.9.0-beta.10	安全更新
 20250704	bk-log-collector	__TYPE__	0.4.4	7.7.2-rc.107
+20250704	bkunifylogbeat	__TYPE__	7.7.2-rc.107	--
 20250704	bk-nodeman	__TYPE__	2.4.10	2.4.10
 20250704	bkmonitor-operator-stack	__TYPE__	3.6.158	3.62.3267
 20250704	bkmonitorbeat	__TYPE__	3.62.3267	--

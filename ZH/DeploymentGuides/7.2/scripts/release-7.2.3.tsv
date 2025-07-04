@@ -38,10 +38,10 @@ bk_flow_engine	1.9.0	--
 bk-config-combo	20241009	--
 gse_agent	2.1.6-beta.31	--
 gse_proxy	2.1.6-beta.31	--
-gse_plugins_freq	20240920	--
-gse_plugins_extra	20240920	--
+gse_plugins_freq	20250704	--
+gse_plugins_extra	20250704	--
 bkmonitorbeat	3.62.3267	--
-bkunifylogbeat	7.7.1-rc.17	--
+bkunifylogbeat	7.7.2-rc.107	--
 bk-collector	0.77.2871	--
 bcs-ops	0.0.5	--
 uploadArtifact	2.0.4	--
