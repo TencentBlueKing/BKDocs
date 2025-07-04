@@ -1,6 +1,10 @@
 # 使用 bcs-ops 脚本快速部署 k8s 集群
 bcs-ops 是蓝鲸容器管理平台 **当前维护** 的 k8s 新建集群方案。支持多种 k8s 版本，cri 则支持 docker 和 containerd。
 
+>**提示**
+>
+>我们在 20250704 更新了 bcs-ops-0.0.5，支持部署 k8s-1.30。
+
 ## 下载 bcs-ops
 我们在中控机下载 bcs-ops 脚本包：
 ``` bash
