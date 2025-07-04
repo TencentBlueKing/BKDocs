@@ -10,9 +10,9 @@ bk-gse-ce	2.1.6-beta.31	2.1.6-beta.31
 bk-ingress-nginx	1.3.5	1.3.1-patch.1
 bk-job	0.6.6-beta.8	3.9.6-beta.8
 bk-log-collector	0.4.4	7.7.2-rc.107
-bk-log-search	4.7.4-beta.7	4.7.4-beta.7
+bk-log-search	4.7.4-beta.9	4.7.4-beta.9
 bk-monitor	3.9.0-beta.19	3.9.0-beta.10
-bk-nodeman	2.4.10	2.4.10
+bk-nodeman	2.4.11	2.4.11
 bk-user	1.4.14-beta.25	2.5.4-beta.25
 bkapp-log-collection	1.1.16	1.1.16
 bkauth	1.0.2	1.0.2
@@ -24,7 +24,7 @@ bkpaas-app-operator	1.5.0-beta.14	1.5.0-beta.14
 bkpaas3	1.5.0-beta.14	1.5.0-beta.14
 bkrepo	1.5.2-rc.1	1.5.2-rc.1
 bkssm	1.0.9	1.0.12
-bkhelmfile	7.2.3	--
+bkhelmfile	7.2.4	--
 helm_cmd	3.12.3	--
 jq_cmd	1.6	--
 yq_cmd	4.30.6	--
@@ -54,4 +54,4 @@ SubPipelineExec	1.0.12	--
 AcrossProjectDistribution	1.1.4	--
 PerforceSync	1.0.23	--
 CodeCCCheckAtom	0.1.4	--
-chart-images	7.2.3	--
+chart-images	7.2.4	--

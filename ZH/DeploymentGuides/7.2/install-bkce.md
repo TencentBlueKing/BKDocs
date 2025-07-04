@@ -256,4 +256,4 @@ kubectl get cm -n blueking bk-user-api-general-envs -o go-template='用户： {{
 
 在部署期间，可以在文档中心查看产品文档。
 
-后续我们会根据用户诉求，对单个产品发布更新，请关注 [单产品更新-索引](update.md)。
+注：此套餐内包含的各子系统版本可能存在一定延后，如需部署 **官网最新版本**，请访问 [单产品更新-索引](update.md) 获取并安装。
