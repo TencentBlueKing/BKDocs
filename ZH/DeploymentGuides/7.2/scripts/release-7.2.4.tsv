@@ -31,10 +31,10 @@ yq_cmd	4.30.6	--
 helmfile_cmd	0.142.0	--
 helm_diff	3.1.3	--
 bk_cmdb_saas	3.14.1-beta1	--
-bk_itsm	2.7.6	--
+bk_itsm	2.7.7	--
 bk_sops	3.33.12	--
 bk_notice	1.5.11	--
-bk_flow_engine	1.9.0	--
+bk_flow_engine	1.9.4	--
 bk-config-combo	20241009	--
 gse_agent	2.1.6-beta.31	--
 gse_proxy	2.1.6-beta.31	--

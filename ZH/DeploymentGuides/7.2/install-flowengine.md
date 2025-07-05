@@ -22,7 +22,7 @@ scripts/setup_bkce7.sh -i flow_engine
 当浏览器访问“开发者中心”进行部署时，需要提前在浏览器里下载安装包：
 | 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 流程引擎服务（bk_flow_engine） | 1.8.1 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_flow_engine/bk_flow_engine-V1.8.1.tar.gz |
+| 流程引擎服务（bk_flow_engine） | 1.9.4 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_flow_engine/bk_flow_engine-V1.9.4.tar.gz |
 
 
 ### 创建应用
