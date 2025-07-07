@@ -12,10 +12,10 @@
 
 | 名字及 app_code | 版本号 | 下载链接 |
 |--|--|--|
-| 流程服务（bk_itsm） | 2.7.7 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.7.7.tar.gz |
-| 标准运维（bk_sops） | 3.33.13 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.33.13.tar.gz |
+| 流程服务（bk_itsm） | 2.7.8 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_itsm/bk_itsm-V2.7.8.tar.gz |
+| 标准运维（bk_sops） | 3.33.14 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_sops/bk_sops-V3.33.14.tar.gz |
 | 配置平台 SaaS（bk_cmdb_saas） | 3.14.1-beta1 | https://bkopen-1252002024.file.myqcloud.com/saas-paas3/bk_cmdb_saas/bk_cmdb_saas-V3.14.1-beta1.tar.gz |
-| 节点管理（bk_nodeman） | 2.4.7 | 在中控机部署，期间会自动下载。无需在浏览器里单独下载。 |
+| 节点管理（bk_nodeman） | -- | 在中控机部署，期间会自动下载。无需在浏览器里单独下载。 |
 
 
 <a id="paas-svc-redis" name="paas-svc-redis"></a>
