@@ -31,7 +31,7 @@ BEGINFILE{
   delete m_chart_image_version
 }
 {
-  chart=$1;version=$2;
+  chart=$1;version=$2;sub(/^[vV]/,"",version)
   # 处理待检数据
   for(i=3;i<=NF;i++){
     match($i, /([^/]+):v?([^:]+)$/, am)
@@ -45,18 +45,19 @@ BEGINFILE{
       next
     } else if("--" in tpl_chart_image[chart]){
       appversion=version
+      print "same version",chart,version > stderr
     } else {
       appversion=""
       error=""
       n_image_in_chart=length(tpl_chart_image[chart])
       for(image in tpl_chart_image[chart]){
         image_tag=pending_chart_image[chart][image]
-        if(!appversion)appversion=image_tag
+        if(!appversion)appversion=image_tag;
         else if(appversion==image_tag) continue
         else error=error" "image":"image_tag
       }
       if(error){
-        print "ERROR: version mismatch: in chart " chart"-"version ": appversion="appversion" but images are" error > stderr
+        print "ERROR: version mismatch: chart " chart"-"version ": but images are" error > stderr
         next
       }
     }
