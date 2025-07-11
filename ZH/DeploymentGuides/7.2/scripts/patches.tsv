@@ -63,3 +63,5 @@
 20250711	bk-job	__TYPE__	0.7.3-beta.3	3.10.3-beta.3	安全更新
 20250711	bk_itsm	__TYPE__	2.7.10	--	安全更新
 20250711	bk-ci	__TYPE__	3.0.14-alpha.1	3.0.14-alpha.1	安全更新
+20250711	bkpaas-app-operator	__TYPE__	1.6.0-beta.22	1.6.0-beta.22	安全更新
+20250711	bkpaas3	__TYPE__	1.6.0-beta.22	1.6.0-beta.22	安全更新
