@@ -251,7 +251,7 @@ domain:
 
 
 ### 重新部署 SaaS
-1. 完成《[调整 node 上的容器运行时](install-bkce.md#k8s-node-cri-insecure-registries)》文档。
+1. 完成《[确保 node 能拉取 SaaS 镜像](saas-node-pull-images.md)》文档，配置 containerd 忽略新域名的 https 证书检查。
 2. 访问蓝鲸桌面，打开 “开发者中心”。如果页面提示 “服务异常”，说明未能成功重启 `bkpaas3-webfe` pod，请再重启一次试试。
 3. 在首页选择 SaaS （如“标准运维”），进入 “应用概览” 界面。
 4. 如果 SaaS 有配置 “环境变量” 或 “访问入口”，需检查配置项中域名进行更新。“标准运维” 默认无相关配置，可忽略本步骤。
