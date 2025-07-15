@@ -69,3 +69,5 @@
 20250714	bk-monitor	__TYPE__	3.9.0-beta.26	3.9.0-beta.18	安全更新
 20250714	bcs-services-stack	__TYPE__	1.29.6	1.29.6	安全更新
 20250715	bk-job	__TYPE__	0.7.3-beta.4	3.10.3-beta.4	安全更新
+20250715	bk-cmdb	__TYPE__	3.15.6	3.14.6	重要补丁
+20250715	bk_cmdb_saas	__TYPE__	3.14.6	--	重要补丁
