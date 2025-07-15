@@ -7,7 +7,7 @@
 
 # 上传 PaaS runtimes 到制品库
 
-## 下载文件
+## 下载默认开发环境
 >**提示**
 >
 >本章节内容已于 2024-11-13 更新了 Go SDK 相关内容，请按需更新。
@@ -18,18 +18,38 @@
 bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 common
 ```
 
+### 下载开发框架模板
+>**提示**
+>
+>已于 2025-6-18 更新了 Go SDK ，请重新下载并上传。
+>
+
+不同 sdk 对应的语言版本
+
+``` bash
+# 下载 python 开发框架模板(支持 3.6.12 3.10.5 3.11.10 版本，默认下载 3.6.12 版本)
+bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 pysdk
+# 下载 node 开发框架模板(默认下载 12.16.3 版本)
+bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 nodesdk
+# 下载 golang 开发框架模板(支持 1.22.12 1.23.8 1.24.2 版本，默认下载 1.22.12 版本)
+bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 gosdk
+```
+
+## 扩展下载
+如果默认语言版本不满足需求，可以下载其他版本。如下示例包含了我们提供的常见版本，未收录版本可以联系蓝鲸助手添加。
+
 ### 下载 python 环境
 我们推荐下载一些常用的 python 版本及 pip 版本，共约 130 MB。
 ``` bash
-# 下载python
+# 下载 python
 for v in 2.7.18 3.6.8 3.6.12 3.10.5 3.11.10; do
   bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 python=$v
 done
-# 这些pip同时提供py2和py3版本。
+# 这些 pip 同时提供 py2 和 py3 版本。
 for v in 9.0.2 19.1.1 20.0.2 20.1.1 20.2.3 20.2.4 20.3.4; do
   bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 pip-whl-py23=$v
 done
-# 这些pip仅提供py3版本。
+# 这些 pip 仅提供 py3 版本。
 for v in 21.3.1 22.0.4 22.1.2 22.2.2 22.3.1 23.0.1; do
   bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 pip-whl=$v
 done
@@ -46,19 +66,9 @@ done
 ### 下载 golang 环境
 每个版本约 130M，可以仅下载所需的版本。
 ``` bash
-for v in 1.12.17 1.17.10 1.18.6 1.19.1 1.20.14 1.22.3; do
+for v in 1.12.17 1.17.10 1.18.6 1.19.1 1.20.14 1.22.3 1.22.12 1.23.8 1.24.2; do
   bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 go=$v
 done
-```
-
-### 下载开发框架模板
-``` bash
-# 下载python开发框架模板
-bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 pysdk
-# 下载node开发框架模板
-bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 nodesdk
-# 下载golang开发框架模板
-bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 gosdk
 ```
 
 ## 上传文件

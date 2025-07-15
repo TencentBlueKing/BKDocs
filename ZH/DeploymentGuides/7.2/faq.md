@@ -86,7 +86,7 @@ kubectl exec -it -n blueking deploy/bkpaas3-apiserver-web web -- python manage.p
 username="admin"  # 请先设置为要添加 paas admin 权限的用户名
 
 from bkpaas_auth.core.constants import ProviderType
-from bkpaas_auth.core.encoder import user_id_encoder
+from bkpaas_auth.models import user_id_encoder
 from paasng.infras.accounts.models import UserProfile
 
 user_id = user_id_encoder.encode(ProviderType.BK.value, username)

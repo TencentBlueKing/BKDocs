@@ -1,4 +1,17 @@
-部分用户有着自定义产品界面的需求。此前只能逐个产品手动调整，维护不便。现在启用“全局配置”后，就可以统一维护了。
+传统产品界面定制需逐个修改，维护成本高。全局配置方案通过统一管理 `base.js` 配置文件，实现：
+- 集中维护所有产品界面配置
+- 一键部署更新
+- 标准化配置格式
+
+配置流程可以分为以下几个阶段：
+
+1. 下载配置文件包
+2. 修改配置信息
+3. 上传配置文件（这里可选
+
+
+
+# 支持产品列表
 
 这是一个新的方案，部分产品还在陆续接入中。目前支持全局配置的产品如下：
 * 基础套餐
@@ -19,16 +32,12 @@
 # 下载配置文件包
 启用全局配置功能后，浏览器界面的默认资源均从指定的 url 下载。故需要将默认配置文件放在指定路径。
 
-## 默认配置文件包
 中控机下载，放入 `$INSTALL_DIR/bk-config` 目录：
 ``` bash
 bkdl-7.2-stable.sh -ur latest bk-config
 ```
 
-## 单产品配置文件包
-
-后续随着产品发布进度更新此章节，提供对应下载命令。
-
+蓝鲸 7.2.3 及以上的版本 也提供了一个便捷的工具脚本 `bk-config-tool.sh`，用于批量编辑和上传 `base.js` 配置文件。
 
 # 上传配置文件模板
 
@@ -37,60 +46,181 @@ bkdl-7.2-stable.sh -ur latest bk-config
 ## 上传到蓝鲸制品库
 蓝鲸制品库可以提供 Web 服务。在上传配置文件包到制品库前，需要提前修改 base.js 里的 url。
 
-### 创建 bk-config 仓库
-基于习惯，可以在 `blueking` 项目下创建名为 `bk-config` 仓库，允许 **匿名访问**。
-
-``` bash
-cd $INSTALL_DIR/blueking
-BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)
-# 获取 bkrepo admin账户名密码
-source <(kubectl get secret -n blueking bkpaas3-apiserver-bkrepo-envs -o go-template='{{range $k,$v := .data}}{{$k}}={{$v|base64decode}}{{"\n"}}{{end}}'] | grep ^ADMIN_)
-# 创建仓库。
-bkrepo_api_url=http://bkrepo.$BK_DOMAIN/repository/api
-req_body='{"projectId": "blueking","type": "GENERIC","category": "LOCAL","public": true,"name": "bk-config", "description": "blueking global config"}'
-curl -sS -u "$ADMIN_BKREPO_USERNAME:$ADMIN_BKREPO_PASSWORD" "$bkrepo_api_url/repo/create"  -H 'Content-Type: application/json' -d "$req_body"
-```
-请求成功后，响应如下：
-``` json
-{
-  "code" : 0,
-  "message" : null,
-  "data" : {
-    "projectId" : "blueking",
-    "name" : "bk-config",
-    "type" : "GENERIC",
-    "category" : "LOCAL",
-    "public" : true,
-    ...
-  }
-}
-```
-
-最终 bk-config 仓库的访问地址为 `bkrepo.$BK_DOMAIN/generic/blueking/bk-config/`。
-
 ### 修改 base.js 里的 url
 
 ```bash
 # 进入目录
-cd bk-config/
-TODO 编写脚本修改base.js，支持修改scheme、origin、prefix、检查base.js引用的url（适配bkrepo和自定义url前缀）
+cd $INSTALL_DIR/blueking/
+# 设置全量 base.js 文件对应的图片 URL 前缀，默认为制品库域名 `bkrepo.$BK_DOMAIN/generic/blueking/bk-config`
+./scripts/bk-config-tool.sh prefix bkrepo all
 ```
 
-### 将目录上传至制品库
+配置成功后参考输出如下：
+```
+Updated $INSTALL_DIR/bk-config/bk_apigateway/base.js
+Updated $INSTALL_DIR/bk-config/bk_bcs/base.js
+Updated $INSTALL_DIR/bk-config/bk_ci/base.js
+Updated $INSTALL_DIR/bk-config/bk_cmdb/base.js
+...
+```
+
+### 上传至制品库
+
+将全局配置文件上传至制品库
+
+> 默认上传路径： `"http://bkrepo.$BK_DOMAIN/generic/blueking/bk-config/`
 
 ``` bash
-# 获取 bkrepo admin账户名密码
-source <(kubectl get secret -n blueking bkpaas3-apiserver-bkrepo-envs -o go-template='{{range $k,$v := .data}}{{$k}}={{$v|base64decode}}{{"\n"}}{{end}}'] | grep -e ^ADMIN_ -e ^BLOBSTORE_BKREPO_ENDPOINT)
-# bucket 需要和 base.js 里引用的路径一致。
-bucket=bk-config
-n=0
-while read filepath; do
-  remote="/${filepath#../bk-config/}"
-  remote="${remote%/*}/"
-  echo scripts/bkrepo_tool.sh -u "$ADMIN_BKREPO_USERNAME" -p "$ADMIN_BKREPO_PASSWORD" -P blueking -i "$BLOBSTORE_BKREPO_ENDPOINT/generic" -n "$bucket" -X PUT -O -R "$remote" -T "$filepath"
-  # 流控，每上传5个文件，sleep 1s。
-  let ++n%5 || sleep 1
-done < <(find ../bk-config/ -mindepth 2 -type f)
+./scripts/bk-config-tool.sh bkrepo all
+```
+
+上传成功后参考输出如下：
+```
+upload $INSTALL_DIR/bk-config/bk_apigateway/base.js to /bk_apigateway/ succeed
+upload $INSTALL_DIR/bk-config/bk_apigateway/logo.png to /bk_apigateway/ succeed
+upload $INSTALL_DIR/bk-config/bk_apigateway/favicon.png to /bk_apigateway/ succeed
+...
+```
+
+### 查看上传结果
+
+脚本提供命令用于收集 base.js 中的图片URL并生成curl测试命令，也可手动进入制品库页面 `bkrepo.$BK_DOMAIN/generic/blueking/bk-config/` 查看
+
+```bash
+./scripts/bk-config-tool.sh remote all
+```
+
+## 上传至个人 web 服务器
+
+使用自建 Web 服务器而非蓝鲸制品库托管配置文件时，可参考此方案进行上传。
+
+### 前置准备
+1. 确保已安装 Web 服务器
+2. 服务器已配置域名解析（可选）
+3. 已获取配置文件包（位于`$INSTALL_DIR/bk-config`）
+
+下面提供一个 k8s 启动 web 服务并上传全局配置文件的案例
+
+```yaml
+# Kubernetes 临时测试用 Nginx 文件服务器部署方案
+
+# nginx-temp-server.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: temp-file-server
+  namespace: blueking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: temp-file-server
+  template:
+    metadata:
+      labels:
+        app: temp-file-server
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d
+          name: nginx-config
+        - mountPath: /var/www/uploads
+          name: upload-dir
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-config
+      - name: upload-dir
+        emptyDir: {}
+      - name: auth-file
+        secret:
+          secretName: basic-auth
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: temp-file-server
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30080
+  selector:
+    app: temp-file-server
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  bk-config.conf: |
+    server {
+        listen 80;
+        server_name _;
+        
+        location /upload {
+            limit_except GET POST PUT DELETE {
+                deny all;
+            }
+            dav_methods PUT DELETE;
+            create_full_put_path on;
+            client_max_body_size 100M;
+            alias /var/www/uploads;
+        }
+    }
+
+---
+```
+
+### 启动 web 服务
+```bash
+kubectl apply -f nginx.yaml 
+```
+
+### 修改 basejs 里的 url
+
+```bash
+./scripts/bk-config-tools.sh prefix http://${node_ip}:30080/upload all
+```
+
+配置成功后参考输出如下：
+```
+Updated $INSTALL_DIR/bk-config/bk_apigateway/base.js
+Updated $INSTALL_DIR/bk-config/bk_bcs/base.js
+Updated $INSTALL_DIR/bk-config/bk_ci/base.js
+Updated $INSTALL_DIR/bk-config/bk_cmdb/base.js
+...
+```
+
+### 上传至 web 服务器
+
+将全局配置文件上传至个人 web 服务器
+
+```bash
+./scripts/bk-config-tools.sh upload http://${node_ip}:30080/upload all
+```
+
+上传成功后参考输出如下：
+```
+upload $INSTALL_DIR/bk-config/bk_apigateway/base.js to /bk_apigateway/ succeed
+upload $INSTALL_DIR/bk-config/bk_apigateway/logo.png to /bk_apigateway/ succeed
+upload $INSTALL_DIR/bk-config/bk_apigateway/favicon.png to /bk_apigateway/ succeed
+...
+```
+
+### 查看上传结果
+
+脚本提供命令用于收集 base.js 中的图片URL并生成curl测试命令，也可手动进入制品库页面 `bkrepo.$BK_DOMAIN/generic/blueking/bk-config/` 查看
+
+```bash
+./scripts/bk-config-tool.sh remote all
 ```
 
 # 启用全局配置功能
@@ -98,18 +228,30 @@ done < <(find ../bk-config/ -mindepth 2 -type f)
 
 ```bash
 # 进入部署目录
-cd ~/bkce7.2-install/blueking/
-# 修改全局 values 配置
-yq -i '.domain.bkSharedResUrl="http://bkrepo.bkce.bktencent.com/generic/blueking/bk-config/bk-config"' environments/default/custom.yaml
+cd $INSTALL_DIR/blueking/
+# 修改全局 values 配置，自行替换制品库域名
+yq -i '.domain.bkSharedResUrl="http://bkrepo.bkce7.bktencent.com/generic/blueking/bk-config"' environments/default/custom.yaml
 ```
 
 
 ## 重新部署对应产品
 ```bash
-helmfile -f base-blueking.yaml.gotmpl -l name=bk-paas apply
+helmfile -f base-blueking.yaml.gotmpl \       # 更新基础套餐
+  -l name=bk-apigateway \
+  -l name=bk-console \
+  -l name=bk-paas \
+  -l name=bk-iam-saas \
+  -l name=bk-job apply
+
+helmfile -f 03-bcs.yaml.gotmpl apply          # 更新容器管理平台
+helmfile -f 04-bkmonitor.yaml.gotmpl apply    # 更新监控平台
+helmfile -f 04-bklog-search.yaml.gotmpl apply # 更新日志平台
 ```
 
 ## 登录页面验证
 
-访问 `base.js?callback` 开头的接口正常完成配置
+在各个产品页面检查浏览器是否访问 `base.js?callback` 开头的接口则正常完成配置
 
+# 常见问题
+
+TODO

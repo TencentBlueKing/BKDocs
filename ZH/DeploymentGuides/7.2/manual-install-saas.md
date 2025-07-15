@@ -146,7 +146,6 @@
    ![itsm-deploy-prod-version.png](assets/itsm-deploy-prod-version.png)
 4. 点击“部署至生产环境”按钮。开始部署，期间会显示进度及日志。
    ![itsm-deploy-prod-log.png](assets/itsm-deploy-prod-log.png)
-5. 部署成功后，即可点击“访问”按钮了。如果访问出错或者白屏，可能是服务尚未启动完毕，稍等 1 分钟后重试。
 
 >**提示**
 >
@@ -227,7 +226,6 @@
 2. 配置平台 SaaS（bk_cmdb_saas）只有 `web` 模块，点击“部署”按钮。
 3. 弹出的“选择部署分支”下拉框，会展示最新版本，请注意确认。“镜像拉取策略”选择“`IfNotPresent`”即可。
 4. 点击“部署至生产环境”按钮。开始部署，期间会显示进度及日志。
-5. 部署成功后，即可点击“访问”按钮了。如果访问出错或者白屏，可能是服务尚未启动完毕，稍等 1 分钟后重试。
 
 如果部署失败，请先检查环境变量是否正确。
 
@@ -288,6 +286,41 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 常见报错：
 * app_code 有误，输出为 `App(app-code-not-exist) not exists`。
 
+# 访问
+
+部署成功后，即可点击“访问”按钮了。如果访问出错或者白屏，可能是服务尚未启动完毕，稍等 1 分钟后重试。
+
+>**提示**
+>
+>蓝鲸配置平台与运维开发平台需要通过独立域名(例如 `cmdb.$BK_DOMAIN` )来访问。
+
+
+## 异常排查
+
+### 访问链路
+
+- **saas 访问链路**: `http://apps.$BK_DOMAIN/sub-path`
+  
+  客户端 -> 网关 -> ingress-nginx -> bk-ingress -> service
+- **独立域名 saas 访问链路:** `http://*.$BK_DOMAIN`
+  
+  客户端 -> 网关 -> ingress-nginx -> service
+
+### 404
+
+如果访问 saas 首页返回 404 状态码，可按以下思路排查：
+1. 检查开发者中心对应的 saas 是否已部署至生产环境
+2. 检查后端 `ingress-nginx` 命名空间下的 `ingress-nginx-controller` pod 标准输出日志是否有访问日志
+3. 检查是否按照规范配置独立域名(`*.$BK_DOMAIN`)
+4. 检查对应 saas 命名空间下的 ingress 资源对象是否生成且 `annotations` 配置为 `kubernetes.io/ingress.class: bk-ingress-nginx`(独立域名为 `nginx`)
+5. TODO
+
+### 502
+
+如果访问 saas 首页返回 502 状态码，可按以下思路排查：
+1. 检查对应 saas 命名空间下的 ingress 资源对象是否生成且 `annotations` 配置为 `kubernetes.io/ingress.class: bk-ingress-nginx`(独立域名为 `nginx`)
+2. 检查后端 pod 里面进程是否已经正常启动
+3. 检查 ingress 访问日志
 
 # 下一步
 继续部署，[配置节点管理及安装 Agent](config-nodeman.md)。
