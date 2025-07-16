@@ -1,0 +1,16 @@
+digraph G {
+  "paas/login" -> "license"
+  "cmdb" -> "paas/login"
+  "cmdb" -> "gse"
+  "job" -> "license"
+  "job" -> "paas/login"
+  "job" -> "gse"
+  "bkdata/dataapi" -> "cmdb"
+  "bkdata/dataapi" -> "paas/esb"
+  "bkdata/dataapi" -> "job"
+  "bkdata/databus" -> "license"
+  "bkdata/monitor" -> "cmdb"
+  "bkdata/monitor" -> "bkdata/dataapi"
+  "bkdata/monitor" -> "job"
+  "bkdata/monitor" -> "paas/esb"
+}
