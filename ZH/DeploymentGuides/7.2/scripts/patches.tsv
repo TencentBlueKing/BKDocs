@@ -79,3 +79,4 @@
 20250724	bk-monitor	__TYPE__	3.9.0-beta.27	3.9.0-beta.20	安全更新
 20250725	bcs-services-stack	__TYPE__	1.29.8	1.29.8	安全更新
 20250728	bcs-services-stack	__TYPE__	1.29.9	1.29.9	安全更新
+20250728	bk_sops	__TYPE__	3.33.16	--	
