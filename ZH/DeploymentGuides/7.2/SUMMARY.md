@@ -47,6 +47,7 @@
     * [启用蓝鲸全局配置](config-bk-config.md)
     * [变更 ingress（域名及 HTTPS）](config-ingress.md)
     * [访问入口及账户密码汇总](access.md)
+    * [开启 bk-esb 接口权限检验](bk-esb-enable-permission-verification.md)
 * [问题案例]()
     * [问题案例概述](troubles.md)
     * [部署问题排查](troubles/deploy-helm.md)
