@@ -80,3 +80,5 @@
 20250725	bcs-services-stack	__TYPE__	1.29.8	1.29.8	安全更新
 20250728	bcs-services-stack	__TYPE__	1.29.9	1.29.9	安全更新
 20250728	bk_sops	__TYPE__	3.33.16	--	
+20250728	bkpaas-app-operator	__TYPE__	1.6.0-beta.24	1.6.0-beta.24	安全更新
+20250728	bkpaas3	__TYPE__	1.6.0-beta.24	1.6.0-beta.24	安全更新
