@@ -564,7 +564,6 @@ kubectl exec -n blueking deploy/bkiam-saas-web bkiam-saas -- python manage.py sy
 ./scripts/bk-tenant-admin.sh su ${userid} paas # 授权开发者中心管理员
 ./scripts/bk-tenant-admin.sh su ${userid} bkrepo # 授权制品库，该步骤需要用户登录过制品库才行
 ./scripts/bk-tenant-admin.sh grant ${userid} gw ALL # 授权 API 网关
-./scripts/bk-tenant-admin.sh su ${userid} console # 授权桌面
 ```
 
 ## 上传 PaaS runtimes 到制品库
@@ -757,7 +756,7 @@ cd $INSTALL_DIR/blueking
 
 ```bash
 userid='' # 用户管理页面查询对应管理员用户的id
-echo 'bk_cmdb_saas bk_sops bk_cmsi cw_aitsm bk_notice' | xargs -n1 ./scripts/bk-tenant-admin.sh grant "$userid" bkapp  
+./scripts/bk-tenant-admin.sh grant "$userid" bkapp bk_cmdb_saas bk_sops bk_cmsi cw_aitsm bk_notice
 ```
 也可以进入页面  `https://bkpaas.${BK_DOMAIN}/backend/admin42/applications/` ， 手动授权
 
