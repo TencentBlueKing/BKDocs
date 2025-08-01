@@ -63,12 +63,12 @@
 | bk-ingress-nginx            | 1.3.5                                  | 1.3.1   |
 | bk-ingress-rule             | 0.0.4                                  | 0.0.4           |
 | bk-job                      | 0.9.0-alpha.205                        | 3.12.0-alpha.205           |
-| bk-nodeman                  | 2.4.8-pre-alpha.1908                  | 2.4.8-pre-alpha.1908           |
-| bk-sops                     |                    |   3.35.1-alpha.0-2045         |
+| bk-nodeman                  | 2.4.8-pre-alpha.1911                  | 2.4.8-pre-alpha.1911           |
+| bk-sops                     |                    |   3.35.1-alpha.0-2054         |
 | cw-aitsm                    |                    | 4.5.203-rc.546           |
 | bk-cmsi                     |                    |   1.1.4         |
-| bk-notice                   |                    |  1.6.1          |
-| bcs-services-stack          | 1.31.0-alpha.3-tenant                  | v1.31.0-alpha.3-tenant           |
+| bk-notice                   |                    |  1.6.1.321          |
+| bcs-services-stack          | 1.31.0-alpha.5-tenant                  | v1.31.0-alpha.5-tenant           |
 
 # 可选：配置 ssh 免密登录
 

@@ -20,6 +20,53 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ./scripts/control_coredns.sh list  # 检查添加的记录。
 ```
 
+## 启用 JWT
+>**注意**
+>
+>本功能在 `bk-ci-3.0.15-alpha.1` 引入，并随 `7.2.12` 发布 `3.0.15-alpha.4`。可查阅 [单产品更新索引](update.md) 获取最新版本号。
+
+对蓝盾网关及所有微服务启用 JWT 认证，可以避免来自构建机或者内网其他来源的攻击。
+
+请在 **中控机** 执行：
+``` bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+bkci_custom_values=./environments/default/bkci/bkci-custom-values.yaml.gotmpl
+touch "$bkci_custom_values"
+yq -i '.config.bkCiJwtEnable=True' "$bkci_custom_values"
+# 如果没有配置rsa private key，则重新生成覆盖。
+if [ null = "$(yq e '.config.bkCiJwtRsaPrivateKey' "$bkci_custom_values")" ]; then
+  # 原始的RSA私钥，需要为PKCS#8封装。基于私钥生成公钥。
+  rsa_private_key=$(openssl genrsa 2048 | openssl pkcs8 -nocrypt -topk8)
+  rsa_public_key=$(openssl rsa -pubout <<< "$rsa_private_key")
+  # 提取key正文并移除换行。
+  rsa_pri_cc=$(awk -v ORS="" '!/^-/' <<< "$rsa_private_key")
+  rsa_pub_cc=$(awk -v ORS="" '!/^-/' <<< "$rsa_public_key")
+  # yq修改配置文件。
+  yq -i ".config.bkCiJwtRsaPrivateKey=\"$rsa_pri_cc\"|.config.bkCiJwtRsaPublicKey=\"$rsa_pub_cc\"" "$bkci_custom_values"
+else echo "SKIP: .config.bkCiJwtRsaPrivateKey exist, will not overwrite."
+fi
+```
+
+## 隔离构建容器
+默认情况下，蓝盾构建 Pod 位于 bk-ci release 所在的 namespace。
+
+通过 Kubernetes 的 **命名空间（Namespace）**机制，可在同一集群内实现构建机与蓝盾服务之间的基础隔离。
+
+如果资源足够，也可以考虑文末 “蓝盾优化项” 中的 “使用独立的构建集群” 方案。
+
+请在 **中控机** 执行：
+``` bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+# 提前创建namespace
+kubectl create namespace bkci-build
+bkci_custom_values=./environments/default/bkci/bkci-custom-values.yaml.gotmpl
+yq -i '.kubernetes-manager.kubernetesManager.builderNamespace="bkci-build"' "$bkci_custom_values"
+```
+
+>**提醒**
+>
+>如需清理以前放在 `blueking` ns 下的构建容器，可以执行如下命令查看： `kubectl get deployments -n blueking -l "bkci.dispatch.kubenetes/core,bkci.dispatch.kubenetes/watch-task"`。确认可清理后，把 `get` 替换为 `delete` 即可。
+
 ## 部署蓝盾
 请在 **中控机** 执行：
 ``` bash
