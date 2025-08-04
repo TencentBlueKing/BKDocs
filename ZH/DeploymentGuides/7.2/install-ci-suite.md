@@ -67,6 +67,17 @@ yq -i '.kubernetes-manager.kubernetesManager.builderNamespace="bkci-build"' "$bk
 >
 >如需清理以前放在 `blueking` ns 下的构建容器，可以执行如下命令查看： `kubectl get deployments -n blueking -l "bkci.dispatch.kubenetes/core,bkci.dispatch.kubenetes/watch-task"`。确认可清理后，把 `get` 替换为 `delete` 即可。
 
+## 禁用编译加速
+
+编译加速暂未开放，禁用相关对接功能。
+
+请在 **中控机** 执行：
+```bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+bkci_custom_values=./environments/default/bkci/bkci-custom-values.yaml.gotmpl
+yq -i '.turbo.enabled=false | .init.turbo=false | .init.plugin.enabled=false' "$bkci_custom_values"
+```
+
 ## 部署蓝盾
 请在 **中控机** 执行：
 ``` bash

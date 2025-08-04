@@ -49,7 +49,7 @@
 | bk-repo                     | 2.2.5-beta.1                           | v2.2.5-beta.1      |
 | bk-auth                     | 1.1.0-alpha.3                          | 1.1.0-alpha.3           |
 | bk-apigateway               | 1.17.0-beta.1                        | 1.17.0-beta.1          |
-| bk-user                     | 3.0.1-alpha.51                         | v3.0.1-alpha.51          |
+| bk-user                     | 3.0.1-alpha.53                         | v3.0.1-alpha.53          |
 | bk-iam                      | 1.14.0-alpha.5                     | v1.14.0-alpha.5        |
 | bk-ssm                      | 1.1.0-alpha.2                          | 1.1.0-alpha.2          |
 | bk-console                  | 0.3.0-beta.3                           | v0.3.0-beta.3           |
@@ -67,7 +67,7 @@
 | bk-sops                     |                    |   3.35.1-alpha.0-2054         |
 | cw-aitsm                    |                    | 4.5.203-rc.546           |
 | bk-cmsi                     |                    |   1.1.4         |
-| bk-notice                   |                    |  1.6.1.321          |
+| bk-notice                   |                    |  1.6.1.322          |
 | bcs-services-stack          | 1.31.0-alpha.5-tenant                  | v1.31.0-alpha.5-tenant           |
 
 # 可选：配置 ssh 免密登录
@@ -658,7 +658,7 @@ kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i s
 
 ### 部署蓝鲸配置平台
 
-> 这里需要提前将 `V3.15.1-feature-tenant15` 版本的包放置部署 saas 目录(`$INSTALL_DIR/saas`)并命名为 `bk_cmdb_saas.tgz`
+> 这里需要提前将 `bk_cmdb_saas` 的包放置部署 saas 目录(`$INSTALL_DIR/saas`)并命名为 `bk_cmdb_saas.tgz`
 
 ```bash
 mkdir -v $INSTALL_DIR/saas # 创建目录
@@ -671,7 +671,7 @@ cd $INSTALL_DIR/blueking
 
 ### 标准运维
 
-> 这里需要提前将 ` bk_sops-V3.35.1-alpha.0.2045-ee_paas3.tar.gz` 版本的包放置部署saas目录并改名为 `bk_sops.tgz`
+> 这里需要提前将 ` bk_sops` 的包放置部署 saas 目录并改名为 `bk_sops.tgz`
 
 ```bash
 cd $INSTALL_DIR/blueking
@@ -680,7 +680,7 @@ cd $INSTALL_DIR/blueking
 
 ### CMSI
 
-> 这里需要提前将 `bk_cmsi-V1.1.5_paas3.tar.gz` 版本的包放置部署saas目录并改名为 `bk_cmsi.tgz`
+> 这里需要提前将 `bk_cmsi` 的包放置部署 saas 目录并改名为 `bk_cmsi.tgz`
 
 部署
 ```bash
@@ -706,7 +706,7 @@ cd $INSTALL_DIR/blueking
 
 ### 流程服务
 
-> 这里需要提前将 `cw_aitsm-V4.5.203-rc.546-ce_paas3.tar.gz` 版本的包放置部署saas目录并改名为 `cw_aitsm.tgz`
+> 这里需要提前将 `cw_aitsm` 的包放置部署 saas 目录并改名为 `cw_aitsm.tgz`
 
 部署
 ```bash
