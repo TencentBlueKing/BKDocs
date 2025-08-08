@@ -32,6 +32,7 @@
     * [Resource template variables](./UserGuide/Explanation/template-var.md)
     * [API permissions vs data permissions](./UserGuide/Explanation/api-permission-and-data-permission.md)
     * [Application state interface vs User-state interface](./UserGuide/Explanation/app-and-user-state-api.md)
+    * [MCP Server Permission Application Guide](./UserGuide/HowTo/apply-mcp-server-permission.md)
   * [FAQ]()
       * [Gateway error response description](./UserGuide/FAQ/error-response.md)
       * [How to confirm whether the error response is returned by the gateway or the backend service? ](./UserGuide/FAQ/gateway-error-or-backend-error.md)
