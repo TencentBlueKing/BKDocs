@@ -460,6 +460,22 @@ helmfile -f base-storage.yaml.gotmpl sync
 
 ```bash
 helmfile -f base-blueking.yaml.gotmpl  -l seq=first sync
+```
+
+bkiam-saas 生成32位随机字符串作为 ITSM 系统的 token（首次部署后不可修改）
+
+```bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+bkItsmSystemToken=$(tr -cd '0-9a-zA-Z!@#$%^&*'< /dev/urandom|head -c 32;echo)
+touch ./environments/default/bkiam-saas-custom-values.yaml.gotmpl
+yq -i ".bkItsmSystemToken=${bkItsmSystemToken}" ./environments/default/bkiam-saas-custom-values.yaml.gotmpl
+
+# 检查输出
+yq ".bkItsmSystemToken" ./environments/default/bkiam-saas-custom-values.yaml.gotmpl
+```
+
+继续部署
+```bash
 helmfile -f base-blueking.yaml.gotmpl  -l seq=second sync
 ```
 
@@ -467,13 +483,6 @@ helmfile -f base-blueking.yaml.gotmpl  -l seq=second sync
 ```bash
 ./scripts/bk-tenant-admin.sh vuser system set bk_admin bk_admin
 # 预期出现 "Successfully upserted virtual user: bk_admin"
-```
-
-【临时】调整 cmdb values
-```bash
-cd $INSTALL/blueking
-touch ./environments/default/bkcmdb-custom-values.yaml.gotmpl
-yq -i '.apigatewaySync.sopsAppCode="bk_sops"' ./environments/default/bkcmdb-custom-values.yaml.gotmpl
 ```
 
 继续部署
@@ -541,7 +550,7 @@ cd ${INSTALL_DIR:-~/bkce7.3-install}/blueking && ./scripts/dns-helper.sh $(ssh $
 
 ![bkuser-init-3](./assets/bkuser-init-3.png)
 
-配置租户管理员为 `yanshou` 账号（只能用于用户管理本身的租户数据管理）
+配置租户管理员账号，用户名自行定义，该账号仅用于用户管理本身的租户数据管理
 
 ![bkuser-init-4](./assets/bkuser-init-4.png)
 
