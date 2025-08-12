@@ -1,4 +1,4 @@
-本文主要为节点管理安装 agent 及插件、主机上 agent 及其插件异常的排查。
+本文主要为节点管理安装 agent 及插件、proxy、主机上 agent 及其插件异常的排查。
 
 ## 安装 agent 及插件时的报错
 
@@ -156,4 +156,35 @@ org.springframework.web.client.ResourceAccessException: I/O error on GET request
 临时解决办法：重启一次 `bk-job-gateway` pod 即可。在中控机执行如下命令：
 ``` bash
 kubectl rollout restart deployment -n blueking bk-job-gateway
+```
+
+## 节点管理安装 proxy 异常
+
+### 表现
+节点管理报错：
+
+>  检测 BT 分发策略（下发Py36包） 失败，请先尝试查看日志并处理，若无法解决，请联系管理员处理。
+
+### 排查处理
+节点管理点击跳转到 [**作业平台**] 查看对应的任务，上传源信息进度为 0 ：
+
+```
+节点管理[9991001]蓝鲸制品库文件源/blueking/bknodeman/data/bkee/public/bknodeman/download/py36-x86_64.tgz FileSize: 0.00B Speed: 0 KB/s Progress: 0% Detail: Pulling OSS file...
+节点管理[9991001]蓝鲸制品库文件源/blueking/bknodeman/data/bkee/public/bknodeman/download/py36-x86_64.tgz FileSize: -- Speed: 0 KB/s Progress: 0% Detail: Start pulling
+节点管理[9991001]蓝鲸制品库文件源/blueking/bknodeman/data/bkee/public/bknodeman/download/py36-x86_64.tgz FileSize: 0.00B Speed: 0 KB/s Progress: 0% Detail: ARTIFACTORY API returned data exception
+节点管理[9991001]蓝鲸制品库文件源/blueking/bknodeman/data/bkee/public/bknodeman/download/py36-x86_64.tgz FileSize: -- Speed: -- Progress: 0% Detail: Pulling failed
+```
+
+进入制品库页面 `http://bkrepo.${BK_DOMAIN}`，选择 `blueking` 项目。
+
+查找对应的路径`/data/bkee/public/bknodeman/download/`下没有 `py36-x86_64.tgz` 文件。
+
+### 总结
+
+bk-nodeman-2.4.8 调整了 py36.tgz 和 nginx-portable.tgz 的文件名。
+
+请在中控机执行如下命令重新下载并上传文件：
+
+```bash
+bkdl-7.2-stable.sh -ur latest gse_proxy && cd $INSTALL_DIR/blueking && ./scripts/setup_bkce7.sh -u opentools
 ```
