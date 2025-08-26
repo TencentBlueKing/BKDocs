@@ -54,9 +54,6 @@
 利用用户登录态，调用 bkoauth 接口，可以换取用户 access_token + refresh_token；
 该 access_token 有效期 **180** 天，可以使用 refresh_token 进行刷新。
 
-可以在开发者中心直接生成
-![image.png](./media/call-gateway-api-03.png)
-
 可以使用 api, 具体见 [access_token](../Explanation/access-token.md)
 
 ## 3. 申请对应网关 API 调用权限

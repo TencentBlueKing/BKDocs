@@ -49,7 +49,7 @@
 | bk-repo                     | 2.2.5-beta.1                           | v2.2.5-beta.1      |
 | bk-auth                     | 1.1.0-alpha.3                          | 1.1.0-alpha.3           |
 | bk-apigateway               | 1.17.0-beta.1                        | 1.17.0-beta.1          |
-| bk-user                     | 3.0.1-alpha.53                         | v3.0.1-alpha.53          |
+| bk-user                     | 3.0.1-alpha.60                         | v3.0.1-alpha.60          |
 | bk-iam                      | 1.14.0-alpha.5                     | v1.14.0-alpha.5        |
 | bk-ssm                      | 1.1.0-alpha.2                          | 1.1.0-alpha.2          |
 | bk-console                  | 0.3.0-beta.3                           | v0.3.0-beta.3           |
@@ -57,18 +57,18 @@
 | bk-iam-search-engine        | 0.1.4                                  | v1.1.4        |
 | bk-gse                      | v2.1.6-beta.59                         | v2.1.6-beta.59           |
 | bk-cmdb                     | 3.16.1-feature-tenant-alpha15          | 3.15.1-feature-tenant-alpha15          |
-| bkpaas-app-operator         | 1.7.0-alpha.35                         | 1.7.0-alpha.35          |
-| bk-paas                     | 1.7.0-alpha.35                         | 1.7.0-alpha.35         |
+| bkpaas-app-operator         | 1.7.0-alpha.38                         | 1.7.0-alpha.38          |
+| bk-paas                     | 1.7.0-alpha.38                         | 1.7.0-alpha.38         |
 | bk-applog                   | 1.1.16                                 | 1.1.16          |
 | bk-ingress-nginx            | 1.3.5                                  | 1.3.1   |
 | bk-ingress-rule             | 0.0.4                                  | 0.0.4           |
-| bk-job                      | 0.9.0-alpha.205                        | 3.12.0-alpha.205           |
-| bk-nodeman                  | 2.4.8-pre-alpha.1911                  | 2.4.8-pre-alpha.1911           |
-| bk-sops                     |                    |   3.35.1-alpha.0-2054         |
-| cw-aitsm                    |                    | 4.5.203-rc.546           |
-| bk-cmsi                     |                    |   1.1.4         |
+| bk-job                      | 0.9.0-alpha.221                        | 3.12.0-alpha.221           |
+| bk-nodeman                  | 2.4.8-pre-alpha.1927                  | 2.4.8-pre-alpha.1927           |
+| bk-sops                     |                    |   3.35.1-alpha.0-2075         |
+| cw-aitsm                    |                    | 4.5.203-rc.549           |
+| bk-cmsi                     |                    |   1.1.5         |
 | bk-notice                   |                    |  1.6.1.322          |
-| bcs-services-stack          | 1.31.0-alpha.5-tenant                  | v1.31.0-alpha.5-tenant           |
+| bcs-services-stack          | 1.31.0-alpha.8-tenant                  | v1.31.0-alpha.8-tenant           |
 
 # 可选：配置 ssh 免密登录
 
@@ -425,7 +425,7 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ```
 
 确认注入结果，执行如下命令：
-```
+```bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 ./scripts/control_coredns.sh list
 ```
@@ -579,7 +579,7 @@ kubectl exec -n blueking deploy/bkiam-saas-web bkiam-saas -- python manage.py sy
 
 ### 下载基础文件
 
-```
+```bash
 bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 common
 
 for v in 2.7.18 3.6.8 3.6.12 3.10.5 3.11.10; do
@@ -695,6 +695,12 @@ cd $INSTALL_DIR/blueking
 ```bash
 cd $INSTALL_DIR/blueking
 ./scripts/setup_bkce7.sh -i cmsi
+```
+
+#### 关闭应用市场
+
+```bash
+kubectl exec deploy/bkpaas3-apiserver-web -- python manage.py disable_market --app-code bk_cmsi
 ```
 
 #### 初始化通知渠道（可选）
