@@ -180,12 +180,6 @@ support-docs
   9.整体绝对路径为ZH或者EN为起点
 
 
-## 示例
-
-*本示例仅供参考此规范中部分条款的使用说明，不保证其对客观事实的描述正确性。* 
-
-![img](https://raw.githubusercontent.com/shpdnkti/bkFramework/master/example.png)
-
 ## 注意事项
 
 1. 内容编辑/审核请遵循 [文档编辑规范](#文档编辑规范) 及 [语法](http://markdown.p2hp.com/basic-syntax/)

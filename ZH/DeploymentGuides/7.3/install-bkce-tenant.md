@@ -17,7 +17,7 @@
 配置参考 [环境要求](https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/prepare.md)
 
 本文使用：
-- k8s master 8C32G TencentOS 3.2 * 1 （没有去除污点）
+- k8s master 8C32G TencentOS 3.2 * 1
 - k8s node 8C32G TencentOS 3.2 * 4
 
 # 版本列表
@@ -189,7 +189,7 @@ K8S_VER="1.30.11" CRI_TYPE="containerd" ./bcs-ops -i master
 ```
 安装成功后输出如下图所示
 
-![image.png#1160px #641px](/tencent/api/attachments/s3/url?attachmentid=33542487)
+![k8s-installed](./assets/k8s-installed.png)
 
 这表示你成功部署了一个 k8s 集群，此时你可以使用 `kubectl` 命令了。接下来开始添加节点吧。
 
@@ -343,7 +343,7 @@ export LOCALPV_DIR=/data/bcs/localpv LOCALPV_DST_DIR=/mnt/blueking LOCALPV_COUNT
 
 请在 **中控机** 使用如下命令下载文件到 `$INSTALL_DIR` 目录。
 ```bash
-bkdl-7-devel.sh -ur "7.3.0-tenant-alpha.7" bkhelmfile demo scripts # 这里bkhelmfile用新包来覆盖
+bkdl-7-devel.sh -ur "latest" bkhelmfile demo scripts # 这里bkhelmfile用新包来覆盖
 ```
 
 ## 配置 helm 仓库
@@ -359,6 +359,7 @@ helm repo add blueking https://hub.bktencent.com/chartrepo/dev && helm repo upda
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 BK_DOMAIN=bkce7-tenant.bktencent.com # 自行更改域名
 BK_ADMIN_PASSWD=$(tr -cd '0-9a-zA-Z!@#$%'< /dev/urandom|head -c 24;echo) # 生成默认租户账号超管登录密码
+bkApigwToBkUserInnerBearerToken=$(tr -cd '0-9a-zA-Z'< /dev/urandom|head -c 32;echo) # 生成网关调用登录或用户管理内部 api token
 
 cat >> ./environments/default/custom.yaml << EOF
 imageRegistry: hub.bktencent.com/dev
@@ -369,7 +370,7 @@ domain:
 bkuser:
   ## 默认租户初始超级管理员密码，注意：该配置仅首次部署初始化默认租户时候生效
   initialAdminPassword: "${BK_ADMIN_PASSWD}"
-
+  bkApigwToBkUserInnerBearerToken: "${bkApigwToBkUserInnerBearerToken}"
 apps:
   bkappFilebeat:
     containersLogPath: $(./scripts/get_cri_root_dir.sh) # 到 node 上 containerd config dump
@@ -421,7 +422,7 @@ kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx  # 查看创建的po
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-./scripts/control_coredns.sh update "$IP1" $BK_DOMAIN bkrepo.$BK_DOMAIN docker.$BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN apps.$BK_DOMAIN bknodeman.$BK_DOMAIN job.$BK_DOMAIN jobapi.$BK_DOMAIN
+./scripts/control_coredns.sh update "$IP1" $BK_DOMAIN bkrepo.$BK_DOMAIN docker.$BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN apps.$BK_DOMAIN bknodeman.$BK_DOMAIN job.$BK_DOMAIN jobapi.$BK_DOMAIN cmdb.$BK_DOMAIN apigw.$BK_DOMAIN bkuser.$BK_DOMAIN
 ```
 
 确认注入结果，执行如下命令：
@@ -442,6 +443,9 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
         10.244.0.5 bknodeman.bkce7-tenant.bktencent.com
         10.244.0.5 job.bkce7-tenant.bktencent.com
         10.244.0.5 jobapi.bkce7-tenant.bktencent.com
+        10.244.0.5 cmdb.bkce7-tenant.bktencent.com
+        10.244.0.5 apigw.bkce7-tenant.bktencent.com
+        10.244.0.5 bkuser.bkce7-tenant.bktencent.com
 ```
 
 # 部署蓝鲸存储服务
@@ -468,7 +472,7 @@ bkiam-saas 生成32位随机字符串作为 ITSM 系统的 token（首次部署�
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 bkItsmSystemToken=$(tr -cd '0-9a-zA-Z!@#$%^&*'< /dev/urandom|head -c 32;echo)
 touch ./environments/default/bkiam-saas-custom-values.yaml.gotmpl
-yq -i ".bkItsmSystemToken=${bkItsmSystemToken}" ./environments/default/bkiam-saas-custom-values.yaml.gotmpl
+yq -i ".bkItsmSystemToken=\"${bkItsmSystemToken}"" ./environments/default/bkiam-saas-custom-values.yaml.gotmpl
 
 # 检查输出
 yq ".bkItsmSystemToken" ./environments/default/bkiam-saas-custom-values.yaml.gotmpl
@@ -562,17 +566,39 @@ kubectl exec -n blueking deploy/bkiam-saas-web bkiam-saas -- python manage.py sy
 # 预期出现 "tenant(system) sync organization successfully"
 ```
 
-## 给租户下的管理员用户授权
+## 配置 .bashrc 文件固定 userid 变量
+
+请根据自己环境修改管理员用户名，在用户管理界面点击查看用户详情也可以查到 “`userid`”
 
 假设这里管理员用户为 `yanshou` ，这里管理员指的是所有产品的管理员而不是租户数据管理
 
- ```bash
- userid=***   # 用户管理查看用户详情可以查到userid
- 
-./scripts/bk-tenant-admin.sh grant ${userid} iam ALL # 授权权限中心管理员
-./scripts/bk-tenant-admin.sh su ${userid} paas # 授权开发者中心管理员
-./scripts/bk-tenant-admin.sh su ${userid} bkrepo # 授权制品库，该步骤需要用户登录过制品库才行
-./scripts/bk-tenant-admin.sh grant ${userid} gw ALL # 授权 API 网关
+```bash
+# 这里管理员用户请根据自己环境修改
+tenant_supermanager_userid=$(kubectl -n blueking exec bk-mysql8-0 -- mysql -uroot -pblueking bkuser -NsBe 'select tenant_user_id from tenant_tenantuseridrecord where code="yanshou" and tenant_id="system";')
+
+# 把上述环境变量写入 bashrc
+bashrc=$HOME/.bashrc
+if grep -qxF "export tenant_supermanager_userid=\"${tenant_supermanager_userid}\"" "$bashrc"; then
+  echo "$bashrc is up-to-date."
+elif grep -qE "^export tenant_supermanager_userid=" "$bashrc"; then
+  sed -ri 's|export tenant_supermanager_userid=.*|export tenant_supermanager_userid="'"${tenant_supermanager_userid}"'"|' "$bashrc"
+else
+  tee -a "$bashrc" <<<"export tenant_supermanager_userid=\"${tenant_supermanager_userid}\""
+fi
+# 重新加载变量
+source "$bashrc"
+echo "tenant_supermanager_userid=\"$tenant_supermanager_userid\"".
+```
+
+## 给租户下的管理员用户授权
+
+管理员用户请根据自己环境修改
+
+```bash
+./scripts/bk-tenant-admin.sh grant ${tenant_supermanager_userid} iam ALL # 授权权限中心管理员
+./scripts/bk-tenant-admin.sh su ${tenant_supermanager_userid} paas # 授权开发者中心管理员
+./scripts/bk-tenant-admin.sh su ${tenant_supermanager_userid} bkrepo # 授权制品库，该步骤需要用户登录访问过制品库页面才行
+./scripts/bk-tenant-admin.sh grant ${tenant_supermanager_userid} gw ALL # 授权 API 网关
 ```
 
 ## 上传 PaaS runtimes 到制品库
@@ -648,7 +674,7 @@ kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i s
 >** 如果环境为 https，可忽略该步骤**
 
 在 **中控机** 执行：
-```
+```bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 # 取全部 node 的ip，包括master
 all_nodes="$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}')"
@@ -665,7 +691,31 @@ kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i s
 kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i ssh {} 'systemctl restart containerd'
 ```
 
-### 部署蓝鲸配置平台
+### 消息通知中心
+
+> 这里需要提前将 `bk_notice-V1.6.1.315_paas3.tar.gz` 版本的包放置部署saas目录并改名为 `bk_notice.tgz`
+
+```bash
+cd $INSTALL_DIR/blueking
+./scripts/setup_bkce7.sh  -i notice
+```
+
+#### 配置跨域插件
+
+授权网关给当前管理员用户
+```bash
+./scripts/bk-tenant-admin.sh grant  "$tenant_supermanager_userid" gw ALL # 也可将ALL 改为 bk-notice
+```
+
+进入API网关页面找到 `bk-notice` 网关配置插件 `http://apigw.bkce7-tenant.bktencent.com/`
+
+![bk-notice-gw-cors-1](./assets/bk-notice-gw-cors-1.png)
+
+配置后按照页面提示重新发布网关
+
+![bk-notice-gw-cors-2](./assets/bk-notice-gw-cors-2.png)
+
+### 蓝鲸配置平台
 
 > 这里需要提前将 `bk_cmdb_saas` 的包放置部署 saas 目录(`$INSTALL_DIR/saas`)并命名为 `bk_cmdb_saas.tgz`
 
@@ -741,44 +791,17 @@ from bk_itsm.core.services.usermanager.tasks import refresh_organization_and_use
 refresh_organization_and_user("system")
 ```
 
-
-### 消息通知中心
-
-> 这里需要提前将 `bk_notice-V1.6.1.315_paas3.tar.gz` 版本的包放置部署saas目录并改名为 `bk_notice.tgz`
-
-```bash
-cd $INSTALL_DIR/blueking
-./scripts/setup_bkce7.sh  -i notice
-```
-
-#### 配置跨域插件
-
-授权网关给当前管理员用户
-```bash
- userid=***   # 用户管理查看用户详情可以查到userid
- ./scripts/bk-tenant-admin.sh grant  "$userid" gw ALL # 也可将ALL 改为 bk-notice
-```
-
-进入API网关页面找到 `bk-notice` 网关配置插件 `http://apigw.bkce7-tenant.bktencent.com/`
-
-![bk-notice-gw-cors-1](./assets/bk-notice-gw-cors-1.png)
-
-配置后按照页面提示重新发布网关
-
-![bk-notice-gw-cors-2](./assets/bk-notice-gw-cors-2.png)
-
 ### 授权 saas 管理员权限
 
 ```bash
-userid='' # 用户管理页面查询对应管理员用户的id
-./scripts/bk-tenant-admin.sh grant "$userid" bkapp bk_cmdb_saas bk_sops bk_cmsi cw_aitsm bk_notice
+./scripts/bk-tenant-admin.sh grant "$tenant_supermanager_userid" bkapp bk_cmdb_saas bk_sops bk_cmsi cw_aitsm bk_notice
 ```
 也可以进入页面  `https://bkpaas.${BK_DOMAIN}/backend/admin42/applications/` ， 手动授权
 
 ### 配置桌面应用
 
 ```bash
-./scripts/add_user_desktop_app.sh -u $userid -a 'bk_sops,cw_aitsm,bk_cmdb_saas,bk_notice' # 现有用户添加桌面应用
+./scripts/add_user_desktop_app.sh -u $tenant_supermanager_userid -a 'bk_sops,cw_aitsm,bk_cmdb_saas,bk_notice' # 现有用户添加桌面应用
 ./scripts/set_desktop_default_app.sh -a 'bk_sops,cw_aitsm,bk_cmdb_saas,bk_notice' # 默认应用
 ```
 
@@ -788,7 +811,7 @@ userid='' # 用户管理页面查询对应管理员用户的id
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-nodeman sync
 
 userid='' # 用户管理页面查询对应管理员用户的id
-./scripts/add_user_desktop_app.sh -u $userid -a 'bk_job,bk_nodeman'  # 现有用户添加桌面应用
+./scripts/add_user_desktop_app.sh -u $tenant_supermanager_userid -a 'bk_job,bk_nodeman'  # 现有用户添加桌面应用
 ./scripts/set_desktop_default_app.sh -a 'bk_job,bk_nodeman'# 添加默认图标
 ```
 
@@ -796,11 +819,11 @@ userid='' # 用户管理页面查询对应管理员用户的id
 
 ```bash
 bkdl-7.2-stable.sh -ur latest gse_agent=2.1.6-beta.59 # 下载最新版 gse_agent 包
-bkdl-7.2-stable.sh -ur latest gse_proxy=2.1.6-beta.59
+bkdl-7-devel.sh -ur latest gse_proxy=2.1.6-beta.59
 
 
 # 下载采集插件
-bkdl-7.2-stable.sh -ur latest bkmonitorbeat=3.62.3267
+bkdl-7.2-stable.sh -ur latest bkmonitorbeat=3.71.3653
 bkdl-7.2-stable.sh -ur latest bkunifylogbeat=7.7.2-rc.107
 bkdl-7.2-stable.sh -ur latest bk-collector=0.83.3261
 
@@ -808,15 +831,14 @@ bkdl-7.2-stable.sh -ur latest bk-collector=0.83.3261
 ./scripts/setup_bkce7.sh  -u proxy # 上传到制品库
 ./scripts/setup_bkce7.sh  -u plugin # 上传到制品库
 
-curl -sS https://bkopen-1252002024.file.myqcloud.com/gse/py311-x86_64-3.11.10.tgz -o $INSTALL_DIR/gse2/py311.tgz # 临时下载，后续加到 opentools
-curl -sS  https://bkopen-1252002024.file.myqcloud.com/gse/nginx-portable-x86_64-1.20.0.tgz -o $INSTALL_DIR/gse2/nginx-portable-1.20.tgz # 临时下载，后续加到 opentools
-
 ./scripts/setup_bkce7.sh -u opentools # 上传到制品库
 ```
 
 ### 配置接入点
 
 参考 `https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/config-nodeman.md`
+
+注意：多租户环境制品库的项目需要加上租户前缀，例如`system.blueking`。
 
 ### 安装 Agent
 
@@ -877,7 +899,7 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ```bash
 helmfile -f 03-bcs.yaml.gotmpl sync
 
-./scripts/add_user_desktop_app.sh -u $userid -a 'bk_bcs' # 现有用户添加桌面应用
+./scripts/add_user_desktop_app.sh -u $tenant_supermanager_userid -a 'bk_bcs' # 现有用户添加桌面应用
 ./scripts/set_desktop_default_app.sh -a 'bk_bcs' # 默认应用
 ```
 
@@ -893,5 +915,5 @@ kubectl -n bcs-system rollout restart deployment bcs-monitor-api # 重启服务
 ## 授权网关权限
 
 ```bash
-./scripts/bk-tenant-admin.sh grant ${userid} gw ALL # 授权 API 网关
+./scripts/bk-tenant-admin.sh grant ${tenant_supermanager_userid} gw ALL # 授权 API 网关
 ```
