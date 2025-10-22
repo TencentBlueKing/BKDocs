@@ -1,8 +1,8 @@
 # 容器管理套餐快速入门
 
-![-w1997](../assets/15290519660825.jpg)
+![-w1997](./assets/15290519660825.jpg)
 
-此外，场景案例中的 [如何构建 Nginx 集群](../Scenes/Bcs_deploy_nginx_cluster.md) 也可以实现快速上手 BCS。
+此外，场景案例中的 [如何构建 Nginx 集群](../../1.28/UserGuide/Scenes/Bcs_deploy_nginx_cluster.md) 也可以实现快速上手 BCS。
 
 ## 登录蓝鲸容器服务控制台
 
@@ -10,7 +10,7 @@
 
 ## 创建项目（也可选择已有项目）
 
-![-w2020](../assets/project_home.png)
+![-w2020](./assets/project_home.png)
 
 - 创建新项目：进入项目管理页面，点击【新建项目】按钮，完成项目创建操作
 - 获取已有项目权限：进入蓝鲸权限中心，【申请加入】已有项目来获取项目使用权限
@@ -63,14 +63,14 @@
 
 《吃豆小游戏》已经部署完成，您可以在容器服务左侧导航中点击【应用】，查看小游戏服务应用实例。
 
-![-w2020](../assets/nginx_app.jpg)
+![-w2020](./assets/nginx_app.jpg)
 
 接下来，您可以体验吃豆小游戏：
 
 - 在`deploy-nginx`应用详情页面查看`Host IP`，也就是接入层的 IP
 - 将链接 `http://HOST_IP/rumpetroll/?openid=is__superuser&token=tPp5GwAmMPIrzXhyyA8X` 中的 `HOST_IP`替换为接入层 IP(如下图红框部分)，访问即可体验
 
-![-w2020](../assets/game_app.jpg)
+![-w2020](./assets/game_app.jpg)
 
 您可以尝试：
 - 在线滚动升级小游戏

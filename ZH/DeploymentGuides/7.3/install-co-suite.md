@@ -69,7 +69,6 @@ paasUrl: bkapi.$BK_DOMAIN
 
 # image registry
 registry: "hub.bktencent.com/dev"
-# charts namespace
 
 # tenant
 tenant:
@@ -162,6 +161,13 @@ DD result: {"metrics":[{"name":"test_metric","update_time":1757924293771,"dimens
 Done
 ```
 
+## 授权网关权限
+
+```bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+./scripts/bk-tenant-admin.sh grant $tenant_supermanager_userid gw bk-base
+```
+
 # 部署监控日志套餐
 
 ## 监控平台
@@ -227,6 +233,13 @@ yq ".monitor.config.gseSlotId,.monitor.config.gseSlotToken" environments/default
 helmfile -f 04-bkmonitor.yaml.gotmpl sync
 ```
 
+### 授权网关权限
+
+```bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+./scripts/bk-tenant-admin.sh grant $tenant_supermanager_userid gw bk-monitor
+```
+
 ### 添加桌面图标
 
 在  桌面添加应用，也可以登录后自行添加。同时设置为默认应用，所有新登录的用户都会自动添加此应用到桌面。
@@ -278,20 +291,6 @@ helmfile -f 04-bklog-collector.yaml.gotmpl sync
 ```
 如果启动失败，请在节点管理中检查 k8s 各 node 上的 GSE Agent 状态是否正常。
 
-### 修改 ES 分片数量（可选）
-
-默认的 es 主分片数量为 `1` ，副本分片数量为 `0` （适用于单 es 实例环境），如果有更改数据，请参考以下配置：
-- BKAPP_ES_REPLICAS：副本分片数量
-- BKAPP_ES_SHARDS：主分片数量
-
-```bash
-cd $INSTALL_DIR/blueking/  # 进入工作目录
-yq -i '.extraEnvVars = [{"name": "BKAPP_ES_REPLICAS", "value": "0"},{"name": "BKAPP_ES_SHARDS", "value": "1"}]' environments/default/bklog-search-custom-values.yaml.gotmpl
-yq e '.extraEnvVars' environments/default/bklog-search-custom-values.yaml.gotmpl # 查看配置是否生效
-```
-
-注意：该操作只对初次部署生效，后续无法修改
-
 ### 部署日志平台
 
 >**提示**
@@ -303,6 +302,13 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 helmfile -f 04-bklog-search.yaml.gotmpl sync  # 部署
 ./scripts/add_user_desktop_app.sh -u $tenant_supermanager_userid -a 'bk_log_search' # 现有用户添加桌面应用
 ./scripts/set_desktop_default_app.sh -a 'bk_log_search' # 默认应用
+```
+
+### 授权网关权限
+
+```bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+./scripts/bk-tenant-admin.sh grant $tenant_supermanager_userid gw bk-log-search
 ```
 
 ### 访问日志平台

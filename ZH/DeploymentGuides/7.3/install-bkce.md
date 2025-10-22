@@ -22,55 +22,6 @@
 - k8s master 8C32G TencentOS 3.2 * 1 （没有去除污点）
 - k8s node 8C32G TencentOS 3.2 * 4
 
-# 版本列表
-
-## 公共组件
-
-| NAME              | VERSION |
-|-------------------|------------|
-| kubernetes    | 1.30     |
-| containerd     | 1.6.9 | 
-| bk-mysql8         | 8.0.37     |
-| bk-rabbitmq       | 3.10.8     |
-| bk-redis          | 6.2.7      |
-| bk-redis-cluster  | 6.2.7      |
-| bk-mongodb        | 7.0.12     |
-| bk-elastic        | 7.16.2     |
-| bk-zookeeper      | 3.8.0      |
-| bk-etcd           | 3.5.4      |
-| ingress-nginx  | 1.3.1    |
-| provisioner       | 2.4.0   |
-| bk-kafka           | 3.4.0   |
-| bk-consul         |  1.12.2 |
-| bk-influxdb       | 1.8.6   |
-
-## 蓝鲸
-
-| NAME                        | CHART VERSION                                | APP VERSION      |
-|-----------------------------|----------------------------------------|-----------------|
-| bk-repo                     | 2.2.5-beta.1                           | v2.2.5-beta.1      |
-| bk-auth                     | 1.1.0-alpha.3                          | 1.1.0-alpha.3           |
-| bk-apigateway               | 1.17.0-beta.1                        | 1.17.0-beta.1          |
-| bk-user                     | 3.0.1-alpha.55                         | v3.0.1-alpha.55          |
-| bk-iam                      | 1.14.0-alpha.5                     | v1.14.0-alpha.5        |
-| bk-ssm                      | 1.1.0-alpha.2                          | 1.1.0-alpha.2          |
-| bk-console                  | 0.3.0-beta.3                           | v0.3.0-beta.3           |
-| bk-iam-saas                 | 1.12.0-alpha.23                        | 1.12.0-alpha.23        |
-| bk-iam-search-engine        | 0.1.4                                  | v1.1.4        |
-| bk-gse                      | v2.1.6-beta.59                         | v2.1.6-beta.59           |
-| bk-cmdb                     | 3.16.1-feature-tenant-alpha16          | 3.15.1-feature-tenant-alpha16          |
-| bkpaas-app-operator         | 1.7.0-alpha.35                         | 1.7.0-alpha.35          |
-| bk-paas                     | 1.7.0-alpha.35                         | 1.7.0-alpha.35         |
-| bk-applog                   | 1.1.16                                 | 1.1.16          |
-| bk-ingress-nginx            | 1.3.5                                  | 1.3.1   |
-| bk-ingress-rule             | 0.0.4                                  | 0.0.4           |
-| bk-job                      | 0.9.0-alpha.221                        | 3.12.0-alpha.221           |
-| bk-nodeman                  | 2.4.8-pre-alpha.1921                  | 2.4.8-pre-alpha.1921           |
-| bk-sops                  |                    |   3.35.1-alpha.0-2045         |
-| cw-aitsm                  |                    | 4.5.203-rc.546           |
-| bk-cmsi                  |                    |   1.1.4         |
-| bk-notice                  |                    |  1.6.1          |
-
 # 可选：配置 ssh 免密登录
 
 在 **中控机** 执行如下命令：
@@ -344,7 +295,7 @@ export LOCALPV_DIR=/data/bcs/localpv LOCALPV_DST_DIR=/mnt/blueking LOCALPV_COUNT
 
 请在 **中控机** 使用如下命令下载文件到 `$INSTALL_DIR` 目录。
 ```bash
-bkdl-7-devel.sh -ur "7.3.0-tenant-alpha.*" bkhelmfile demo scripts # 版本号待更新
+bkdl-7-devel.sh -ur latest bkhelmfile demo scripts
 ```
 
 ## 配置 helm 仓库
@@ -538,8 +489,7 @@ helm -n blueking get values bk-user -a | yq -o json | jq -r '"username: \(.bkuse
 ## 权限中心同步租户
 
 ```bash
-kubectl exec -n blueking deploy/bkiam-saas-web bkiam-saas -- python manage.py sync_organization --tenant_id=default
-# 预期出现 "tenant(default) sync organization successfully"
+kubectl exec -n blueking deploy/bkiam-saas-web bkiam-saas -- python manage.py sync_organization
 ```
 
 ## 配置 .bashrc 文件固定 userid 变量
@@ -570,24 +520,20 @@ echo "supermanager_userid=\"$supermanager_userid\"".
 
 ---
 临时授权权限中心管理员命令
-进入pod
 ```bash
-kubectl exec -it -n blueking deploy/bkiam-saas-web bkiam-saas -- python manage.py shell
-```
-
-```bash
-username = "" # 自行替换为 supermanager_userid
-
+kubectl exec -it -n blueking deploy/bkiam-saas-web bkiam-saas -- python manage.py shell <<EOF
 from backend.biz.role import RoleBiz
-RoleBiz().add_super_manager_member(username, False)
+RoleBiz().add_super_manager_member("$supermanager_userid", False)
+EOF
 ```
+
 ---
 
 ```bash
-./scripts/bk-tenant-admin.sh grant ${supermanager_userid} iam # 授权权限中心管理员
-./scripts/bk-tenant-admin.sh su ${supermanager_userid} paas # 授权开发者中心管理员
-./scripts/bk-tenant-admin.sh su ${supermanager_userid} bkrepo # 授权制品库，该步骤需要用户登录过制品库才行
-./scripts/bk-tenant-admin.sh grant ${supermanager_userid} gw ALL # 授权 API 网关
+./scripts/bk-admin.sh grant ${supermanager_userid} iam # 授权权限中心管理员
+./scripts/bk-admin.sh su ${supermanager_userid} paas # 授权开发者中心管理员
+./scripts/bk-admin.sh su ${supermanager_userid} bkrepo # 授权制品库，该步骤需要用户登录过制品库才行
+./scripts/bk-admin.sh grant ${supermanager_userid} gw ALL # 授权 API 网关
 ```
 
 结论：封装成一个 专门给 7.3 社区版用的 grant 脚本
@@ -699,12 +645,6 @@ cd $INSTALL_DIR/blueking
 ./scripts/setup_bkce7.sh -i bk_cmdb_saas
 ```
 
----
-
-临时：需要配置 1exclusive 对应的 redis 资源池 
-
----
-
 ### 标准运维
 
 > 这里需要提前将 ` bk_sops-V3.35.1-alpha.0.2096-ee_paas3.tar.gz` 版本的包放置部署saas目录并改名为 `bk_sops.tgz`
@@ -726,67 +666,37 @@ cd $INSTALL_DIR/blueking
 
 #### 关闭应用市场
 
-```
-kubectl exec deploy/bkpaas3-apiserver-web -- python manage.py disable_market --app-code bk_cmsi
+```bash
+kubectl -n blueking exec deploy/bkpaas3-apiserver-web -- python manage.py disable_market --app-code bk_cmsi
 ```
 
 #### 初始化通知渠道（可选）
 
 - cmsi 部署后需要初始化四个通知渠道：`mail, sms, voice, weixin`
 
-**初始化命令参考如下：**
-
-先进入 django 命令行
+初始化命令参考如下：
 ```bash
-kubectl -n bkapp-bk0us0cmsi-prod exec -it deploy/bk0us0cmsi-m-backend--web -- bash
-python manage.py shell
-```
-
-```python
-from channel.models import TenantChannel
-
-# 邮件
-a = TenantChannel.objects.filter(tenant_id="default", channel_type__type="mail").first()
-a.settings = {"smtp_host": "smtp.exmail.qq.com", "smtp_port": 465, "smtp_user": "bk_sender@xxxxx.com", "smtp_pwd": "aaaaaa", "smtp_usessl": True, "smtp_usetls": "", "mail_sender": "bk_sender@xxxxx.com"}
-a.save()
-
-# 短信
-b = TenantChannel.objects.filter(tenant_id="default", channel_type__type="sms").first()
-b.settings={"qcloud_app_id": "111111", "qcloud_app_key": "aaaaaaa", "qcloud_sms_sign": "【腾讯蓝鲸】"}
-b.save()
-
 # 语音
-c = TenantChannel.objects.filter(tenant_id="default", channel_type__type="voice").first()
-c.settings = {"qcloud_app_id": "111111", "qcloud_app_key": "aaaaaaa"}
-c.save()
-
-# 企微
-d = TenantChannel.objects.filter(tenant_id="default", channel_type__type="weixin").first()
-d.settings = {"wx_type": "qy", "wx_app_id": "", "wx_secret": "", "wx_token": "", "wx_template_id": "", "corp_id": "wxaaaaaaaa", "corp_secret": "aaaaaaaaa", "agent_id": "4", "to_user": ""}
-d.save()
-
-
-import json
-json.dumps({a.channel_type.type: a.settings for a in TenantChannel.objects.all()})
-'{"mail": {}, "sms": {}, "voice": {}, "weixin": {}}'
+./scripts/bk-admin.sh cmsi system voice '{"qcloud_app_id": "sss", "qcloud_app_key": "ssss"}'
+# 企业微信
+./scripts/bk-admin.sh cmsi system weixin '{"corp_id": "sss", "to_user": "", "wx_type": "qy", "agent_id": "4", "wx_token": "", "wx_app_id": "", "wx_secret": "", "corp_secret": "sss", "wx_template_id": ""}'
+# 短信
+./scripts/bk-admin.sh cmsi system sms '{"qcloud_app_id": "ss", "qcloud_app_key": "ss", "qcloud_sms_sign": "【腾讯蓝鲸】"}'
+# 邮件
+./scripts/bk-admin.sh cmsi system mail '{"smtp_pwd": "ss", "smtp_host": "smtp.exmail.qq.com", "smtp_port": 465, "smtp_user": "bk_sender@bktencent.com", "mail_sender": "bk_sender@bktencent.com", "smtp_usessl": True, "smtp_usetls": ""}'
 ```
 
-### 流程服务v3
+### 流程服务 v3
 
 > 这里需要提前将 `bk_itsm-V2.7.12-rc.649-ce_paas3.tar.gz` 版本的包放置部署saas目录并改名为 `bk_itsm.tgz`
 
 部署
 ```bash
 cd $INSTALL_DIR/blueking
-./scripts/setup_bkce7.sh -i itsm
+./scripts/setup_bkce7.sh -i bk_itsm
 ```
 
-进入pod
-```bash
-kubectl -n bkapp-cw0us0aitsm-prod exec -it deploy/cw0us0aitsm--web -- /app/.heroku/python/bin/python manage.py shell
-```
-
-### 流程服务v4
+### 流程服务 v4
 
 > 这里需要提前将 `cw_aitsm-V4.5.203-rc.560-ce_paas3.tar.gz` 版本的包放置部署saas目录并改名为 `cw_aitsm.tgz`
 
@@ -805,7 +715,7 @@ kubectl -n bkapp-cw0us0aitsm-prod exec -it deploy/cw0us0aitsm--web -- /app/.hero
 ```bash
 # 同步运营租户用户数据
 from bk_itsm.core.services.usermanager.tasks import refresh_organization_and_user
-refresh_organization_and_user()
+refresh_organization_and_user("default")
 ```
 
 ### 消息通知中心
@@ -821,7 +731,7 @@ cd $INSTALL_DIR/blueking
 
 授权网关给当前管理员用户
 ```bash
-./scripts/bk-tenant-admin.sh grant ${supermanager_userid} gw ALL
+./scripts/bk-admin.sh grant ${supermanager_userid} gw ALL
 ```
 
 进入API网关页面找到 `bk-notice` 网关配置插件 `http://apigw.bkce7-tenant.bktencent.com/`
@@ -835,7 +745,7 @@ cd $INSTALL_DIR/blueking
 ### 授权 saas 管理员权限
 
 ```bash
-echo 'bk_itsm bk_cmdb_saas bk_sops bk_cmsi cw_aitsm bk_notice' | xargs -n1 ./scripts/bk-tenant-admin.sh grant "$supermanager_userid" bkapp  
+./scripts/bk-admin.sh grant "$supermanager_userid" bkapp bk_cmdb_saas bk_sops bk_cmsi cw_aitsm bk_notice
 ```
 也可以进入页面  `https://bkpaas.${BK_DOMAIN}/backend/admin42/applications/` ， 手动授权
 
@@ -927,15 +837,6 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ./scripts/control_coredns.sh list  # 检查添加的记录。
 ```
 
-前面在部署完 cmdb_saas 后已经设置好业务公共变量（BCS依赖）
-```bash
-# 检查
-./scripts/bk-tenant-admin.sh var system json
-# 确保输出为如下：
-{
-  "default_bk_biz_id": "1"
-}
-```
 ## 部署
 ```bash
 helmfile -f 03-bcs.yaml.gotmpl sync
@@ -963,6 +864,6 @@ kubectl -n bcs-system rollout restart deployment bcs-monitor-api # 重启服务
 ## 授权网关权限
 
 ```bash
-./scripts/bk-tenant-admin.sh grant ${supermanager_userid} gw ALL # 授权 API 网关
+./scripts/bk-admin.sh grant ${supermanager_userid} gw ALL # 授权 API 网关
 ```
 

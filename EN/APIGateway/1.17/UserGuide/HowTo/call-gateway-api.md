@@ -24,7 +24,7 @@ Go to BlueKing Developer Center - Application Development, search for applicatio
 
 On the application management page, expand the left menu **Application Configuration** and click **Basic Information**.
 
-The `bk_app_code` and `bk_app_secret` in the authentication information on the right page are the BlueKing application accounts required to access the cloud API.
+The `bk_app_code` and `bk_app_secret` in the secret information on the right page are the BlueKing application accounts required to access the cloud API.
 
 ![image.png](./media/call-gateway-api-02.png)
 
