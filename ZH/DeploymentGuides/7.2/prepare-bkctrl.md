@@ -88,6 +88,9 @@ diff	3.1.3  	Preview helm upgrade changes as a diff
 ```
 
 # 准备 k8s 集群
+
+在部署k8s期间，及后续部署蓝鲸时，拉取容器镜像会产生大量公网带宽开销。如需在内网建设镜像缓存服务，可以参考 《[缓存容器镜像](docker-registry-cache.md)》 文档。
+
 请准备好一个 k8s 集群，并确保可以在中控机调用 kubectl 管理该集群。
 
 我们适配了如下的场景，请点击前往章节获得对应场景的操作指引：

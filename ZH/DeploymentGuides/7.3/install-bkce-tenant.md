@@ -79,7 +79,7 @@ k8s_ips=""
 test -f /root/.ssh/id_rsa || ssh-keygen -N '' -t rsa -f /root/.ssh/id_rsa  # 如果不存在rsa key则创建一个。
 # 开始给发现的ip添加ssh key，期间需要你输入各节点的密码。
 for ip in $k8s_ips; do
-  ssh-copy-id "$ip" || { echo "failed on $ip."; break; }  # 如果执行失败，则退出
+  ssh-copy-id -o StrictHostKeyChecking=no "$ip" || { echo "failed on $ip."; break; }  # 如果执行失败，则退出
 done
 ```
 
@@ -595,9 +595,9 @@ echo "tenant_supermanager_userid=\"$tenant_supermanager_userid\"".
 管理员用户请根据自己环境修改
 
 ```bash
-./scripts/bk-tenant-admin.sh grant ${tenant_supermanager_userid} iam ALL # 授权权限中心管理员
+./scripts/bk-tenant-admin.sh grant ${tenant_supermanager_userid} iam # 授权权限中心管理员
 ./scripts/bk-tenant-admin.sh su ${tenant_supermanager_userid} paas # 授权开发者中心管理员
-./scripts/bk-tenant-admin.sh su ${tenant_supermanager_userid} bkrepo # 授权制品库，该步骤需要用户登录访问过制品库页面才行
+./scripts/bk-tenant-admin.sh su ${tenant_supermanager_userid} bkrepo # 授权制品库
 ./scripts/bk-tenant-admin.sh grant ${tenant_supermanager_userid} gw ALL # 授权 API 网关
 ```
 

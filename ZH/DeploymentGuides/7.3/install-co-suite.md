@@ -27,9 +27,9 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-auth sync
 配置 appSecret
 ```bash
 bkbase_token=$(yq '.appSecret.bk_bkdata' $INSTALL_DIR/blueking/environments/default/app_secret.yaml)
-yq -i ".appToken=\"$bkbase_token\"" $INSTALL_DIR/bkbase-helmfile/environments/default/keys.yaml
+yq -i ".appToken=\"$bkbase_token\"" $INSTALL_DIR/bkbase-helmfile/environments/custom/keys.yaml
 # 验证
-yq ".appToken" $INSTALL_DIR/bkbase-helmfile/environments/default/keys.yaml
+yq ".appToken" $INSTALL_DIR/bkbase-helmfile/environments/custom/keys.yaml
 ```
 
 ### 配置 apigw 所需的 keypair
@@ -51,9 +51,9 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-apigateway sync
 配置公钥
 ```bash
 jwtPubKeyB64=$(yq '.builtinGateway.bk-base.publicKeyBase64' $INSTALL_DIR/blueking/environments/default/bkapigateway_builtin_keypair.yaml)
-yq -i ".jwtPubKeyB64=\"$jwtPubKeyB64\"" $INSTALL_DIR/bkbase-helmfile/environments/default/keys.yaml
+yq -i ".jwtPubKeyB64=\"$jwtPubKeyB64\"" $INSTALL_DIR/bkbase-helmfile/environments/custom/keys.yaml
 # 验证
-yq ".jwtPubKeyB64" $INSTALL_DIR/bkbase-helmfile/environments/default/keys.yaml
+yq ".jwtPubKeyB64" $INSTALL_DIR/bkbase-helmfile/environments/custom/keys.yaml
 ```
 
 ### 自定义配置
@@ -70,7 +70,7 @@ paasUrl: bkapi.$BK_DOMAIN
 # image registry
 registry: "hub.bktencent.com/dev"
 
-# tenant
+# tenant，单租户可以把下面的 tenant 配置都注释掉
 tenant:
   enabled: true
   default: "system"
@@ -226,6 +226,21 @@ yq -i "
 yq ".monitor.config.gseSlotId,.monitor.config.gseSlotToken" environments/default/bkmonitor-custom-values.yaml.gotmpl
 ```
 
+获取基础计算平台 redis 信息
+```bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+
+# 提取配置
+HOST=$(yq '.ddRedis.host' ../bkbase-helmfile/environments/custom/values.yaml)
+PORT=$(yq '.ddRedis.port' ../bkbase-helmfile/environments/custom/values.yaml)
+PASSWORD=$(yq '.ddRedis.password' ../bkbase-helmfile/environments/custom/values.yaml)
+
+# 监控 values 配置
+yq -i ".config.bkBaseRedisHost = \"$HOST\"" environments/default/bkmonitor-custom-values.yaml.gotmpl
+yq -i ".config.bkBaseRedisPort = $PORT" environments/default/bkmonitor-custom-values.yaml.gotmpl
+yq -i ".config.bkBaseRedisPassword = \"$PASSWORD\"" environments/default/bkmonitor-custom-values.yaml.gotmpl
+```
+
 ### 部署监控
 
 部署监控后台和 saas 以及监控数据链路组件：
@@ -291,6 +306,24 @@ helmfile -f 04-bklog-collector.yaml.gotmpl sync
 ```
 如果启动失败，请在节点管理中检查 k8s 各 node 上的 GSE Agent 状态是否正常。
 
+### 部署前配置
+
+请根据自己环境 ES 副本数来修改采集项默认分片数和副本分片数（可选）
+
+如果使用的是蓝鲸部署自带的 Elasticsearch 则可以忽略以下配置：
+```bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+touch environments/default/bklog-search-custom-values.yaml.gotmpl
+
+BKAPP_ES_SHARDS=1 # 分片数
+BKAPP_ES_REPLICAS=0 # 副本分片数
+
+yq e '.extraEnvVars = [
+  {"name": "BKAPP_ES_REPLICAS", "value": "'${BKAPP_ES_REPLICAS}'"},
+  {"name": "BKAPP_ES_SHARDS", "value": "'${BKAPP_ES_SHARDS}'"}
+]' -i environments/default/bklog-search-custom-values.yaml.gotmpl
+```
+
 ### 部署日志平台
 
 >**提示**
@@ -323,8 +356,22 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 		2. 在日志平台的 “管理” —— “日志采集” 界面添加采集项。
 	- 其他集群1. TODO 其他集群容器日志采集步骤。
 
+
+### 日志提取链路
+
+开启步骤：
+1. 通过脚本授权为 `django admin`。
+```bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+./scripts/bk-tenant-admin.sh su $tenant_supermanager_userid log
+```
+2. 访问日志平台主页 `bklog.${BK_DOMAIN}/`，点击管理即可看到 `提取链路管理` 选项。
+3. 新增提取链路。
+
+### 日志归档
+
+参考文档 [日志归档](https://bk.tencent.com/docs/markdown/ZH/LogSearch/4.7/UserGuide/ProductFeatures/tools/log_archive.md)
+
 ### 更多功能
 
 参考文档 https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/install-co-suite.md
-
-### 问题

@@ -727,6 +727,8 @@ cd $INSTALL_DIR/blueking
 ./scripts/setup_bkce7.sh  -i notice
 ```
 
+注意：如果为 https 环境，则需要到开发者中心页面修改消息通知中心环境变量 `BKAPP_APIGW_API_HOST` 以及 `BKAPP_CSRF_TRUSTED_ORIGINS` 的 scheme。
+
 #### 配置跨域插件
 
 授权网关给当前管理员用户

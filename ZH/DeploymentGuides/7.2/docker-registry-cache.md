@@ -1,6 +1,4 @@
-TODO 待改写，去掉 docker
-
-# 缓存 Docker 镜像
+# 缓存容器镜像
 
 在部署过程中，需要联网拉取镜像。如果公网带宽过低，则拉取镜像会消耗更多时间，甚至导致部署超时。
 
@@ -84,9 +82,22 @@ time docker pull 127.0.0.1:5500/blueking/slug-app:v1.1.0-beta.27
 可以观察到，第二次拉取耗时比第一次低，因为此时镜像已经缓存到了 registry 的本地磁盘。
 
 ## 方案 2：提前下载镜像并导入
-### 下载镜像到本地目录
 
-TODO 下载脚本 输出到 oci 目录
+### 获取镜像列表
+
+您可以根据需要获取不同范围的镜像列表：
+
+获取当前部署所需的镜像列表（依赖现有 values 配置）
+```bash
+bkdl-7.2-stable.sh -ur latest bkhelmfile -i $HOME # 获取部署脚本
+cd $INSTALL_DIR/blueking
+scripts/list_all_image.sh helmfile # 获取部署所需镜像文件
+```
+
+获取全量镜像列表（可选）
+```bash
+awk '{for(i=3;i<=NF;++i) printf $i" "; print ""}' $(bkdl-7.2-stable.sh -r latest chart-images |& awk '/chart-images.txt/{path=$NF; sub(/\.$/, "", path); print path}')
+```
 
 ### 导入镜像到内网 registry
 如果你的内网已经存在 docker registry，可以提前下载镜像并推送到 registry 上。后续即可在内网部署了。
@@ -94,5 +105,3 @@ TODO 下载脚本 输出到 oci 目录
 >**注意**
 >
 >不建议导入镜像到 k8s node，因为 pod 可能迁移，因此无法预测 node 上的镜像。如果全量镜像都导入，会占用大量磁盘空间。内网传输已经足够大了，所以使用内网 registry 是一个方便维护的选择。
-
-TODO 镜像导入脚本，参考部署次序串行下载镜像。
