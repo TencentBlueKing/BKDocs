@@ -112,7 +112,7 @@ apply
 
 在 中控机 执行：
 ``` bash
-kubectl -n bkapp-bk0us0itsm-prod exec deploy/bkapp-bk0us0itsm-prod--web -- /app/.heroku/python/bin/python manage.py register_notice
+kubectl -n bkapp-bk0us0itsm-prod exec deploy/bk0us0itsm--web -- /app/.heroku/python/bin/python manage.py register_notice
 ```
 
 执行注册命令，提示 “成功注册平台” 即开启成功。
