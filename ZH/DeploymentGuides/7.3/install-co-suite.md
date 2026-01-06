@@ -1,3 +1,5 @@
+单租户部署蓝鲸监控日志套餐。
+
 # 部署 bkbase-v4
 
 ## 前置配置
@@ -70,11 +72,6 @@ paasUrl: bkapi.$BK_DOMAIN
 # image registry
 registry: "hub.bktencent.com/dev"
 
-# tenant，单租户可以把下面的 tenant 配置都注释掉
-tenant:
-  enabled: true
-  default: "system"
-
 # 配置库地址
 configDb:
   host: "bk-mysql8.blueking.svc.cluster.local"
@@ -110,6 +107,28 @@ EOF
 检查配置
 ```bash
 yq . $INSTALL_DIR/bkbase-helmfile/environments/custom/values.yaml
+```
+
+### 确认 storageClass
+
+在 中控机 检查当前 k8s 集群所使用的存储：
+```bash
+kubectl get sc
+```
+
+预期输出为：
+```
+NAME                      PROVISIONER                    RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+local-storage (default)   kubernetes.io/no-provisioner   Delete          WaitForFirstConsumer   false                  3d21h
+```
+
+如果输出的名称不是 local-storage，则需通过创建 custom.yaml 实现修改：
+```bash
+storageClassName="" # 填写上面的查询到的名称
+
+cd $INSTALL_DIR/bkbase-helmfile
+touch ./environments/custom/vm-values.yaml.gotmpl
+yq -i ".vmstorage.persistentVolume.storageClass=\"$storageClassName\"" ./environments/custom/vm-values.yaml.gotmpl
 ```
 
 ## 部署
@@ -165,7 +184,7 @@ Done
 
 ```bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
-./scripts/bk-tenant-admin.sh grant $tenant_supermanager_userid gw bk-base
+./scripts/bk-admin.sh grant $supermanager_userid gw bk-base
 ```
 
 # 部署监控日志套餐
@@ -252,14 +271,14 @@ helmfile -f 04-bkmonitor.yaml.gotmpl sync
 
 ```bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
-./scripts/bk-tenant-admin.sh grant $tenant_supermanager_userid gw bk-monitor
+./scripts/bk-admin.sh grant $supermanager_userid gw bk-monitor
 ```
 
 ### 添加桌面图标
 
 在  桌面添加应用，也可以登录后自行添加。同时设置为默认应用，所有新登录的用户都会自动添加此应用到桌面。
 ```bash
-./scripts/add_user_desktop_app.sh -u $tenant_supermanager_userid -a 'bk_monitorv3,bk_fta_solution' # 现有用户添加桌面应用
+./scripts/add_user_desktop_app.sh -u $supermanager_userid -a 'bk_monitorv3,bk_fta_solution' # 现有用户添加桌面应用
 ./scripts/set_desktop_default_app.sh -a 'bk_monitorv3,bk_fta_solution' # 默认应用
 ```
 ### 推荐：容器监控数据上报
@@ -271,7 +290,7 @@ helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync  # 部署 k8s operator 提供
 
 ## 日志平台
 
-注：多租户版本日志强依赖 elasticsearch 的状态为 `green`。否则会导致索引轮转失败
+注：新版本日志强依赖 elasticsearch 的状态为 `green`。否则会导致索引轮转失败。
 
 ### 配置 ElasticSearch
 
@@ -333,7 +352,7 @@ yq e '.extraEnvVars = [
 ```bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 helmfile -f 04-bklog-search.yaml.gotmpl sync  # 部署
-./scripts/add_user_desktop_app.sh -u $tenant_supermanager_userid -a 'bk_log_search' # 现有用户添加桌面应用
+./scripts/add_user_desktop_app.sh -u $supermanager_userid -a 'bk_log_search' # 现有用户添加桌面应用
 ./scripts/set_desktop_default_app.sh -a 'bk_log_search' # 默认应用
 ```
 
@@ -341,7 +360,7 @@ helmfile -f 04-bklog-search.yaml.gotmpl sync  # 部署
 
 ```bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
-./scripts/bk-tenant-admin.sh grant $tenant_supermanager_userid gw bk-log-search
+./scripts/bk-admin.sh grant $supermanager_userid gw bk-log-search
 ```
 
 ### 访问日志平台
@@ -363,7 +382,7 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 1. 通过脚本授权为 `django admin`。
 ```bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
-./scripts/bk-tenant-admin.sh su $tenant_supermanager_userid log
+./scripts/bk-admin.sh su $supermanager_userid log
 ```
 2. 访问日志平台主页 `bklog.${BK_DOMAIN}/`，点击管理即可看到 `提取链路管理` 选项。
 3. 新增提取链路。

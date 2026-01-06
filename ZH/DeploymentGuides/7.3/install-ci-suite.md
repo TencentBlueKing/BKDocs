@@ -78,12 +78,21 @@ bkci_custom_values=./environments/default/bkci/bkci-custom-values.yaml.gotmpl
 yq -i '.turbo.enabled=false | .init.turbo=false | .init.plugin.enabled=false' "$bkci_custom_values"
 ```
 
+## 配置平台管理员
+
+请在 **中控机** 执行：
+```bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+bkci_custom_values=./environments/default/bkci/bkci-custom-values.yaml.gotmpl
+yq -i ".config.bkCiPlatformManager=\"${supermanager_userid}\"" "$bkci_custom_values"
+```
+
 ## 部署蓝盾
 请在 **中控机** 执行：
 ``` bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 helmfile -f 03-bkci.yaml.gotmpl sync  # 部署
-./scripts/add_user_desktop_app.sh -u $tenant_supermanager_userid -a 'bk_ci' # 现有用户添加桌面应用
+./scripts/add_user_desktop_app.sh -u $supermanager_userid -a 'bk_ci' # 现有用户添加桌面应用
 ./scripts/set_desktop_default_app.sh -a 'bk_ci' # 默认应用
 ```
 部署需 5 ~ 10 分钟。上述命令结束后，可在中控机检查所有 Pod 是否正常：
@@ -107,14 +116,14 @@ kubectl exec -it -n blueking bk-ci-mysql-0 -- /bin/bash -c 'MYSQL_PWD="$MYSQL_RO
 请根据结果进行操作：
 * 如果有显示镜像数据，可以修改镜像地址为蓝鲸国内仓库，也可改为你已经缓存在内网的镜像：
   ``` bash
-  kubectl exec -it -n blueking bk-ci-mysql-0 -- /bin/bash -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysql -u root -e "USE devops_ci_store; UPDATE  T_IMAGE SET IMAGE_REPO_NAME=\"hub.bktencent.com/bkci/ci\" WHERE IMAGE_CODE = \"bkci\" ;"'
+  kubectl exec -it -n blueking bk-ci-mysql-0 -- /bin/bash -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysql -u root -e "USE devops_ci_store; UPDATE  T_IMAGE SET IMAGE_REPO_NAME=\"hub.bktencent.com/blueking/ci\" WHERE IMAGE_CODE = \"bkci\" ;"'
   ```
   然后重新查询数据库，可以看到 `IMAGE_REPO_NAME` 列已经更新。
 * 如果没有镜像，可以新增：
   ``` bash
   kubectl exec -n blueking deploy/bk-ci-bk-ci-store -- \
     curl -vs http://bk-ci-bk-ci-store.blueking.svc.cluster.local/api/op/market/image/init -X POST \
-      -H 'X-DEVOPS-UID: admin' -H 'Content-type: application/json' -d '{"imageCode":"bkci","imageName":"bkci","imageRepo":"hub.bktencent.com/bkci/ci","projectCode":"demo","userId":"admin"}' | jq .
+      -H 'X-DEVOPS-UID: bk_admin' -H 'Content-type: application/json' -d '{"imageCode":"bkci","imageName":"bkci","imageRepo":"hub.bktencent.com/blueking/ci","projectCode":"demo","userId":"admin"}' | jq .
   ```
   >**提示**
   >
@@ -169,7 +178,7 @@ kubectl rollout restart deployment -n blueking bk-repo-bkrepo-auth
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 # 向project微服务注册制品库
-kubectl exec -i -n blueking deploy/bk-ci-bk-ci-project -- curl -sS -X PUT -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'X-DEVOPS-UID: admin' -d "{\"showProjectList\":true,\"showNav\":true,\"status\":\"ok\",\"deleted\":false,\"iframeUrl\":\"//bkrepo.$BK_DOMAIN/ui/\"}" "http://bk-ci-bk-ci-project.blueking.svc.cluster.local/api/op/services/update/Repo"
+kubectl exec -i -n blueking deploy/bk-ci-bk-ci-project -c project -- curl -sS -X PUT -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'X-DEVOPS-UID: bk_admin' -d "{\"showProjectList\":true,\"showNav\":true,\"status\":\"ok\",\"deleted\":false,\"iframeUrl\":\"//bkrepo.$BK_DOMAIN/ui/\"}" "http://127.0.0.1/api/op/services/update/Repo"
 ```
 
 ## 流水线插件
@@ -210,13 +219,12 @@ for f in ../ci-plugins/*.zip; do
   filename="${atom}.zip"
   echo >&2 "upload $atom from $f"
   kubectl exec -i -n blueking deploy/bk-ci-bk-ci-store -- \
-    curl -s \
-      http://bk-ci-bk-ci-store.blueking.svc.cluster.local/api/op/pipeline/atom/deploy/"?publisher=admin" \
-      -H 'X-DEVOPS-UID: admin' -H "X-TENANT-ID: system" -F atomCode=$atom -F "file=@-;filename=$filename" < "$f" | jq .
+    curl -s http://127.0.0.1/api/op/pipeline/atom/deploy/"?publisher=bk_admin" \
+      -H 'X-DEVOPS-UID: bk_admin' -H "X-TENANT-ID: default" -F atomCode=$atom -F "file=@-;filename=$filename" < "$f" | jq .
   # 设置为默认插件，全部项目可见。如果需要给某个用户权限，改下 X-DEVOPS-UID 为对应的 userid 即可
   kubectl exec -n blueking deploy/bk-ci-bk-ci-store -- \
-    curl -s http://bk-ci-bk-ci-store.blueking.svc.cluster.local/api/op/pipeline/atom/default/atomCodes/$atom \
-      -H "X-DEVOPS-UID: $tenant_supermanager_userid"  -H "X-TENANT-ID: system" -X POST | jq .
+    curl -s http://127.0.0.1/api/op/pipeline/atom/default/atomCodes/$atom \
+      -H "X-DEVOPS-UID: $userid"  -H "X-TENANT-ID: default" -X POST | jq .
 done
 ```
 
