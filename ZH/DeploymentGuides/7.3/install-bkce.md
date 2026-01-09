@@ -854,14 +854,6 @@ helmfile -f 03-bcs.yaml.gotmpl sync
 
 注：如果没有出现容器管理平台，等待 5~10分钟再刷新看看
 
-## 关闭容器监控
-
-由于监控还未适配多租户，先将容器监控开关关掉
-
-```bash
-kubectl -n bcs-system edit cm bcs-monitor # 设置base_conf.service_enable: false
-kubectl -n bcs-system rollout restart deployment bcs-monitor-api # 重启服务
-```
 
 ## 授权网关权限
 
@@ -869,3 +861,11 @@ kubectl -n bcs-system rollout restart deployment bcs-monitor-api # 重启服务
 ./scripts/bk-admin.sh grant ${supermanager_userid} gw ALL # 授权 API 网关
 ```
 
+# 下一步
+
+继续部署（可并行）：
+- [部署监控日志套餐](./install-co-suite.md)（建议先部署容器管理平台）
+- [部署持续集成套餐](./install-ci-suite.md)
+
+等监控平台部署完毕后，可以 [启动蓝鲸 API 测试工具](helloworld)。
+在部署期间，可以在文档中心查看产品文档。

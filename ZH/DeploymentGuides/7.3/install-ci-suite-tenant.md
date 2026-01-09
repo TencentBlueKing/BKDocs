@@ -221,9 +221,9 @@ for f in ../ci-plugins/*.zip; do
   kubectl exec -i -n blueking deploy/bk-ci-bk-ci-store -c store -- \
     curl -s \
       http://127.0.0.1/api/op/pipeline/atom/deploy/"?publisher=admin" \
-      -H 'X-DEVOPS-UID: admin' -H "X-TENANT-ID: system" -F atomCode=$atom -F "file=@-;filename=$filename" < "$f" | jq .
+      -H "X-DEVOPS-UID: $tenant_supermanager_userid" -H "X-TENANT-ID: system" -F atomCode=$atom -F "file=@-;filename=$filename" < "$f" | jq .
   # 设置为默认插件，全部项目可见。如果需要给某个用户权限，改下 X-DEVOPS-UID 为对应的 userid 即可
-  kubectl exec -n blueking deploy/bk-ci-bk-ci-store -- \
+  kubectl exec -n blueking deploy/bk-ci-bk-ci-store -c store -- \
     curl -s http://127.0.0.1/api/op/pipeline/atom/default/atomCodes/$atom \
       -H "X-DEVOPS-UID: $tenant_supermanager_userid"  -H "X-TENANT-ID: system" -X POST | jq .
 done
