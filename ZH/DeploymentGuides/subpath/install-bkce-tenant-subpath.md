@@ -26,8 +26,8 @@
 
 | NAME              | VERSION |
 |-------------------|------------|
-| kubernetes    | 1.30     |
-| containerd     | 1.6.9 | 
+| kubernetes    | v1.30.11     |
+| containerd     | 1.6.32 | 
 | bk-mysql8         | 8.0.37     |
 | bk-rabbitmq       | 3.10.8     |
 | bk-redis          | 6.2.7      |
@@ -39,36 +39,35 @@
 | ingress-nginx  | 1.3.1    |
 | provisioner       | 2.4.0   |
 | bk-kafka           | 3.4.0   |
-| bk-consul         |  1.12.2 |
-| bk-influxdb       | 1.8.6   |
+| bk-consul         |  1.20.1 |
 
 ## 蓝鲸
 
 | NAME                        | CHART VERSION                                | APP VERSION      |
 |-----------------------------|----------------------------------------|-----------------|
-| bk-repo                     | 2.2.5-beta.1                           | v2.2.5-beta.1      |
+| bk-repo                     | 3.2.2-beta.1                           | v3.2.2-beta.1      |
 | bk-auth                     | 1.1.0-alpha.3                          | 1.1.0-alpha.3           |
-| bk-apigateway               | 1.17.0-beta.1                        | 1.17.0-beta.1          |
-| bk-user                     | 3.0.1-alpha.60                         | v3.0.1-alpha.60          |
-| bk-iam                      | 1.14.0-alpha.5                     | v1.14.0-alpha.5        |
-| bk-ssm                      | 1.1.0-alpha.2                          | 1.1.0-alpha.2          |
+| bk-apigateway               | 1.20.0-beta.1                        | 1.20.0-beta.1          |
+| bk-user                     | 3.0.1-alpha.90                         | 3.0.1-alpha.90          |
+| bk-iam                      | 1.14.0-alpha.6                     | v1.14.0-alpha.6        |
+| bk-ssm                      | 1.1.0-alpha.4                          | 1.1.0-alpha.4          |
 | bk-console                  | 0.3.0-beta.3                           | v0.3.0-beta.3           |
-| bk-iam-saas                 | 1.12.0-alpha.22                        | 1.12.0-alpha.22        |
-| bk-iam-search-engine        | 0.1.4                                  | v1.1.4        |
-| bk-gse                      | v2.1.6-beta.59                         | v2.1.6-beta.59           |
-| bk-cmdb                     | 3.16.1-feature-tenant-alpha15          | 3.15.1-feature-tenant-alpha15          |
-| bkpaas-app-operator         | 1.7.0-alpha.38                         | 1.7.0-alpha.38          |
-| bk-paas                     | 1.7.0-alpha.38                         | 1.7.0-alpha.38         |
-| bk-applog                   | 1.1.16                                 | 1.1.16          |
+| bk-iam-saas                 | 1.12.0-alpha.35                        | v1.12.0-alpha.35        |
+| bk-iam-search-engine        | 0.1.5                                  | v1.1.5        |
+| bk-gse                      | v2.1.6-beta.63                         | v2.1.6-beta.63           |
+| bk-cmdb                     | 3.16.1-feature-tenant-alpha24          | 3.15.1-feature-tenant-alpha24          |
+| bkpaas-app-operator         | 1.7.0-alpha.58                         | v1.7.0-alpha.58          |
+| bk-paas                     | 1.7.0-alpha.58                         | v1.7.0-alpha.58         |
+| bk-applog                   | 1.1.17                                 | 1.1.17          |
 | bk-ingress-nginx            | 1.3.5                                  | 1.3.1   |
 | bk-ingress-rule             | 0.0.4                                  | 0.0.4           |
-| bk-job                      | 0.9.0-alpha.221                        | 3.12.0-alpha.221           |
-| bk-nodeman                  | 2.4.8-pre-alpha.1927                  | 2.4.8-pre-alpha.1927           |
+| bk-job                      | 0.9.1-alpha.288                        | 3.12.1-alpha.288           |
+| bk-nodeman                  | 2.4.8-pre-alpha.2086                  | 2.4.8-pre-alpha.2086           |
 | bk-sops                     |                    |   3.35.1-alpha.0-2075         |
 | cw-aitsm                    |                    | 4.5.203-rc.549           |
 | bk-cmsi                     |                    |   1.1.5         |
 | bk-notice                   |                    |  1.6.1.322          |
-| bcs-services-stack          | 1.31.0-alpha.8-tenant                  | v1.31.0-alpha.8-tenant           |
+| bcs-services-stack          | 1.31.0-alpha.18-tenant                  | v1.31.0-alpha.18-tenant           |
 
 # 可选：配置 ssh 免密登录
 
@@ -189,7 +188,7 @@ K8S_VER="1.30.11" CRI_TYPE="containerd" ./bcs-ops -i master
 ```
 安装成功后输出如下图所示
 
-![k8s-installed](./assets/k8s-installed.png)
+![k8s-installed](../7.3/assets/k8s-installed.png)
 
 这表示你成功部署了一个 k8s 集群，此时你可以使用 `kubectl` 命令了。接下来开始添加节点吧。
 
@@ -366,6 +365,9 @@ imageRegistry: hub.bktencent.com/dev
 domain:
   bkDomain: $BK_DOMAIN
   bkMainSiteDomain: $BK_DOMAIN
+bkWebSiteAccess:
+  # 可选值：subdomain（子域名）、subpath（子路径）
+  mode: "subpath"
 
 bkuser:
   ## 默认租户初始超级管理员密码，注意：该配置仅首次部署初始化默认租户时候生效
@@ -422,7 +424,7 @@ kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx  # 查看创建的po
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-./scripts/control_coredns.sh update "$IP1" $BK_DOMAIN bkrepo.$BK_DOMAIN docker.$BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN apps.$BK_DOMAIN bknodeman.$BK_DOMAIN job.$BK_DOMAIN jobapi.$BK_DOMAIN cmdb.$BK_DOMAIN apigw.$BK_DOMAIN bkuser.$BK_DOMAIN
+./scripts/control_coredns.sh update "$IP1" $BK_DOMAIN docker.$BK_DOMAIN helm.$BK_DOMAIN
 ```
 
 确认注入结果，执行如下命令：
@@ -433,19 +435,8 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 参考输出如下：
 ```
         10.244.0.5 bkce7-tenant.bktencent.com
-        10.244.0.5 bkrepo.bkce7-tenant.bktencent.com
         10.244.0.5 docker.bkce7-tenant.bktencent.com
-        10.244.0.5 bkapi.bkce7-tenant.bktencent.com
-        10.244.0.5 bkpaas.bkce7-tenant.bktencent.com
-        10.244.0.5 bkiam-api.bkce7-tenant.bktencent.com
-        10.244.0.5 bkiam.bkce7-tenant.bktencent.com
-        10.244.0.5 apps.bkce7-tenant.bktencent.com
-        10.244.0.5 bknodeman.bkce7-tenant.bktencent.com
-        10.244.0.5 job.bkce7-tenant.bktencent.com
-        10.244.0.5 jobapi.bkce7-tenant.bktencent.com
-        10.244.0.5 cmdb.bkce7-tenant.bktencent.com
-        10.244.0.5 apigw.bkce7-tenant.bktencent.com
-        10.244.0.5 bkuser.bkce7-tenant.bktencent.com
+        10.244.0.5 helm.bkce7-tenant.bktencent.com
 ```
 
 # 部署蓝鲸存储服务
@@ -530,7 +521,10 @@ helmfile -f base-blueking.yaml.gotmpl  -l seq=fourth sync
 注：中控机也需要配置
 
 ```bash
-cd ${INSTALL_DIR:-~/bkce7.3-install}/blueking && ./scripts/dns-helper.sh $(ssh $(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}') 'curl -s ip.sb')
+IP1=$(ssh $(kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].status.hostIP}') 'curl -s ip.sb')
+BK_DOMAIN=$(yq e '.domain.bkDomain' $INSTALL_DIR/blueking/environments/default/custom.yaml)
+
+echo $IP1 $BK_DOMAIN
 ```
 
 ## 运营租户配置数据源
@@ -544,19 +538,19 @@ cd ${INSTALL_DIR:-~/bkce7.3-install}/blueking && ./scripts/dns-helper.sh $(ssh $
 
 **配置本地数据源**
 
-![bkuser-init-1](./assets/bkuser-init-1.png)
+![bkuser-init-1](../7.3/assets/bkuser-init-1.png)
 
 **登录设置**
 
-![bkuser-init-2](./assets/bkuser-init-2.png)
+![bkuser-init-2](../7.3/assets/bkuser-init-2.png)
 
 建议将密码生成方式配置为固定，该租户下新增用户的密码固定为 `Bluking@2025`
 
-![bkuser-init-3](./assets/bkuser-init-3.png)
+![bkuser-init-3](../7.3/assets/bkuser-init-3.png)
 
 配置租户管理员账号，用户名自行定义，该账号仅用于用户管理本身的租户数据管理
 
-![bkuser-init-4](./assets/bkuser-init-4.png)
+![bkuser-init-4](../7.3/assets/bkuser-init-4.png)
 
 
 ## 权限中心同步租户
@@ -666,7 +660,7 @@ done < <(find ../paas-runtimes/ -mindepth 2 -type f)
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i ssh {} "echo -e \"$IP1 docker.$BK_DOMAIN\n$IP1 bkrepo.$BK_DOMAIN\" >> /etc/hosts"
+kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i ssh {} "echo -e \"$IP1 docker.$BK_DOMAIN\n$IP1 bkrepo.$BK_DOMAIN\n$IP1 $BK_DOMAIN\" >> /etc/hosts"
 ```
 
 ### 可选：忽略 containerd 的 https 证书检查
@@ -696,6 +690,8 @@ kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i s
 > 这里需要提前将 `bk_notice-V1.6.1.315_paas3.tar.gz` 版本的包放置部署saas目录并改名为 `bk_notice.tgz`
 
 ```bash
+mkdir -v $INSTALL_DIR/saas # 创建目录
+
 cd $INSTALL_DIR/blueking
 ./scripts/setup_bkce7.sh  -i notice
 ```
@@ -709,23 +705,34 @@ cd $INSTALL_DIR/blueking
 
 进入API网关页面找到 `bk-notice` 网关配置插件 `http://apigw.bkce7-tenant.bktencent.com/`
 
-![bk-notice-gw-cors-1](./assets/bk-notice-gw-cors-1.png)
+![bk-notice-gw-cors-1](../7.3/assets/bk-notice-gw-cors-1.png)
 
 配置后按照页面提示重新发布网关
 
-![bk-notice-gw-cors-2](./assets/bk-notice-gw-cors-2.png)
+![bk-notice-gw-cors-2](../7.3/assets/bk-notice-gw-cors-2.png)
 
 ### 蓝鲸配置平台
 
+部署前访问 `http://${BK_DOMAIN}/bkpaas/plat-mgt/env-var` 添加以下两个自定义变量
+```
+BKPAAS_CC_URL: http://${BK_DOMAIN}/cmdb/
+BK_CC_HOST: http://${BK_DOMAIN}/cmdb/
+```
+![paas-cutom-env](./assets/paas-cutom-env.png)
+
+
 > 这里需要提前将 `bk_cmdb_saas` 的包放置部署 saas 目录(`$INSTALL_DIR/saas`)并命名为 `bk_cmdb_saas.tgz`
 
-```bash
-mkdir -v $INSTALL_DIR/saas # 创建目录
-```
+
 部署
 ```bash
 cd $INSTALL_DIR/blueking
 ./scripts/setup_bkce7.sh -i bk_cmdb_saas
+
+# 部署完后，还需要执行以下命令后
+# 监控平台 跳转到 配置平台 需要添加这个访问路径
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)
+kubectl exec -n blueking deployments/bkpaas3-apiserver-web -- bash -c "python manage.py upsert_custom_domain --app_code bk_cmdb_saas --app_module web --app_env prod --domain_name ${BK_DOMAIN} --path_prefix /cmdb --publish_app"
 ```
 
 ### 标准运维
@@ -789,7 +796,7 @@ cd $INSTALL_DIR/blueking
 ```bash
 ./scripts/bk-tenant-admin.sh grant "$tenant_supermanager_userid" bkapp bk_cmdb_saas bk_sops bk_cmsi cw_aitsm bk_notice
 ```
-也可以进入页面  `https://bkpaas.${BK_DOMAIN}/backend/admin42/applications/` ， 手动授权
+也可以进入页面  `http://${BK_DOMAIN}/bkpaas/backend/admin42/applications/` ， 手动授权
 
 ### 配置桌面应用
 
@@ -823,15 +830,15 @@ bkdl-7-devel.sh -ur 7.3.0-alpha nm_gse_full # 下载最新版 gse 以及插件�
 
 **同步组织架构**
 
-- 进入页面：`http://bkiam.${BK_DOMAIN}/user` ，即权限中心-平台管理-用户，参考如下：
+- 进入页面：`http://${BK_DOMAIN}/bkiam/user` ，即权限中心-平台管理-用户，参考如下：
 
-![bkiam-sync-organization](./assets/bkiam-sync-organization.png)
+![bkiam-sync-organization](../7.3/assets/bkiam-sync-organization.png)
 
 **授权管理员**
 
-- 进入页面：`http://bkiam.${BK_DOMAIN}/administrator` ，即权限中心-平台管理-管理员-系统管理员。该页面显示需要先手动授权权限中心管理员，参考给管理员用户授权。
+- 进入页面：`http://${BK_DOMAIN}/bkiam/administrator` ，即权限中心-平台管理-管理员-系统管理员。该页面显示需要先手动授权权限中心管理员，参考给管理员用户授权。
 
-![bkiam-grant-admin.png](./assets/bkiam-grant-admin.png)
+![bkiam-grant-admin.png](../7.3/assets/bkiam-grant-admin.png)
 
 ### 配置接入点
 
@@ -881,7 +888,7 @@ EOF
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-./scripts/control_coredns.sh update "$IP1" bcs.$BK_DOMAIN bcs-api.$BK_DOMAIN docker.$BK_DOMAIN helm.$BK_DOMAIN
+./scripts/control_coredns.sh update "$IP1" docker.$BK_DOMAIN helm.$BK_DOMAIN
 ./scripts/control_coredns.sh list  # 检查添加的记录。
 ```
 

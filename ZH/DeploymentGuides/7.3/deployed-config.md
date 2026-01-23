@@ -225,6 +225,12 @@ kubectl exec -i -n blueking deploy/bkpaas3-apiserver-web -- python manage.py she
 
 `注意`：请在删除前，仔细确认需要删除的是预发布还是正式环境。
 
+#### 等待数据上报
+
+前往监控平台-观测场景，左侧导航栏搜索 `sops/itsm`，数据已经归纳至对应的空间项目下。
+
+如果 10 分钟左右还是无数据上报，需要登陆到对应的 pod，看下渲染 OTEL 环境变量与 bkpaas 分配的是否一致。
+
 ## 日志平台
 
 ### 日志提取链路
@@ -235,12 +241,6 @@ kubectl exec -i -n blueking deploy/bkpaas3-apiserver-web -- python manage.py she
 ```
 
 授权后，日志平台管理页面会出现日志提取链路管理。也可通过 url 访问 `bklog.${BK_DOMAIN}/#/manage/extract-link-manage/` 。
-
-#### 等待数据上报
-
-前往监控平台-观测场景，左侧导航栏搜索 `sops/itsm`，数据已经归纳至对应的空间项目下。
-
-如果 10 分钟左右还是无数据上报，需要登陆到对应的 pod，看下渲染 OTEL 环境变量与 bkpaas 分配的是否一致。
 
 # 持续集成套餐
 
