@@ -2,7 +2,7 @@
 
 **数据库名：** devops_ci_process
 
-**文档版本：** 1.0.17
+**文档版本：** 1.0.18
 
 **文档描述：** devops_ci_process 的数据库文档
 | 表名                  | 说明       |
@@ -601,6 +601,7 @@
 |  5   | PIPELINE_ID |   varchar   | 64 |   0    |    Y     |  N   |       | 流水线 ID  |
 |  6   | VAR_TYPE |   varchar   | 64 |   0    |    Y     |  N   |       | 变量类型  |
 |  7   | READ_ONLY |   bit   | 1 |   0    |    Y     |  N   |       | 是否只读  |
+|  8   | SENSITIVE |   bit   | 1 |   0    |    Y     |  N   |       | 是否敏感  |
 
 **表名：** <a>T_PIPELINE_CALLBACK</a>
 
@@ -1071,8 +1072,9 @@
 |  6   | END_TIME |   datetime   | 19 |   0    |    Y     |  N   |       | 结束时间  |
 |  7   | TOTAL_TIME |   bigint   | 20 |   0    |    Y     |  N   |       | 总耗时  |
 |  8   | ERROR_MESSAGE |   text   | 65535 |   0    |    Y     |  N   |       | 错误信息  |
-|  9   | CREATE_TIME |   datetime   | 19 |   0    |    N     |  N   |   CURRENT_TIMESTAMP    | 创建时间  |
-|  10   | UPDATE_TIME |   datetime   | 19 |   0    |    N     |  N   |   CURRENT_TIMESTAMP    | 更新时间  |
+|  9   | VALIDATION_DISCREPANCIES |   mediumtext   | 16777215 |   0    |    Y     |  N   |       | 验证差异详情(JSON)  |
+|  10   | CREATE_TIME |   datetime   | 19 |   0    |    N     |  N   |   CURRENT_TIMESTAMP    | 创建时间  |
+|  11   | UPDATE_TIME |   datetime   | 19 |   0    |    N     |  N   |   CURRENT_TIMESTAMP    | 更新时间  |
 
 **表名：** <a>T_PIPELINE_TEMPLATE_RESOURCE_VERSION</a>
 

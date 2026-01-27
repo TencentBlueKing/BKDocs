@@ -5,7 +5,6 @@
 创建自定义配置文件
 ```bash
 install -d -m 0755 -v $INSTALL_DIR/bkbase-helmfile/environments/custom
-install -d -m 0755 -v $INSTALL_DIR/bkbase-helmfile/environments/subpath
 touch $INSTALL_DIR/bkbase-helmfile/environments/custom/{keys.yaml,values.yaml}
 ```
 
@@ -114,77 +113,6 @@ EOF
 检查配置
 ```bash
 yq . $INSTALL_DIR/bkbase-helmfile/environments/custom/values.yaml
-```
-
-#### bkbase-v4-migration-apigw
-```bash
-cat >> $INSTALL_DIR/bkbase-helmfile/environments/subpath/migration-apigw-values.yaml.gotmpl <<EOF
-apigatewaySync:
-  extraEnvVars:
-    - name: BK_APIGW_NAME
-      value: "bk-base"
-    - name: BK_APP_CODE
-      value: "{{ .Values.appCode }}"
-    - name: BK_APP_SECRET
-      value: "{{ .Values.appToken }}"
-    - name: BK_API_URL_TMPL
-      value: "http://{{ .Values.paasUrl }}/bkapi/api/{api_name}"
-    - name: BKBASE_API_DOMAIN
-      value: "http://{{ .Values.bkbaseApiDomain }}"
-    - name: BKBASE_QUERY_API_DOMAIN
-      value: "http://{{ .Values.bkbaseQueryApiDomain }}"
-    - name: BK_APP_TENANT_ID
-      value: "{{ .Values.tenant.default }}"
-EOF
-```
-
-#### bkbase-v4-server
-```bash
-cat >> $INSTALL_DIR/bkbase-helmfile/environments/subpath/server-values.yaml.gotmpl <<EOF
-gseBaseUrl: http://{{ .Values.paasUrl }}/bkapi/api/bk-gse/prod/
-bkmonitorBaseUrl: http://{{ .Values.paasUrl }}/bkapi/api/bkmonitorv3/prod/
-v3BaseUrl: http://bkbase-api/
-cmdbBaseUrl: http://{{ .Values.paasUrl }}/bkapi/api/bk-cmdb/prod/
-
-cliEnv:
-  - name: BKBASE_V3_API_URL
-    value: "http://{{ .Values.paasUrl }}/bkapi/api/bk-base/prod/"
-  - name: BASE_URL
-    value: "http://{{ .Values.bkbaseApiDomain }}/v4/"
-  - name: GSE_API_URL
-    value: "http://{{ .Values.paasUrl }}/bkapi/api/bk-gse/prod/"
-  - name: BKMONITOR_API_URL
-    value: "http://{{ .Values.paasUrl }}/bkapi/api/bkmonitorv3/prod/"
-  - name: DATAHUB_CONFIG_DB_HOST
-    value: "{{ .Values.configDb.host }}"
-  - name: DATAHUB_CONFIG_DB_PORT
-    value: "{{ .Values.configDb.port }}"
-  - name: DATAHUB_CONFIG_DB_USER
-    value: "{{ .Values.configDb.user }}"
-  - name: DATAHUB_CONFIG_DB_PASSWORD
-    value: "{{ .Values.configDb.password }}"
-  - name: DATAFLOW_CONFIG_DB_HOST
-    value: "{{ .Values.configDb.host }}"
-  - name: DATAFLOW_CONFIG_DB_PORT
-    value: "{{ .Values.configDb.port }}"
-  - name: DATAFLOW_CONFIG_DB_USER
-    value: "{{ .Values.configDb.user }}"
-  - name: DATAFLOW_CONFIG_DB_PASSWORD
-    value: "{{ .Values.configDb.password }}"
-  - name: APP_CODE
-    value: "{{ .Values.appCode }}"
-  - name: APP_SECRET
-    value: "{{ .Values.appToken }}"
-  - name: BKMONITOR_REDIS_URL
-    value: "redis://{{ .Values.ddRedis.user }}:{{ .Values.ddRedis.password }}@{{ .Values.ddRedis.host }}:{{ .Values.ddRedis.port }}"
-EOF
-```
-
-#### bkbase-v4-init
-```bash
-cat >> $INSTALL_DIR/bkbase-helmfile/environments/subpath/init-values.yaml.gotmpl <<EOF
-cmdbBaseUrl: http://{{ .Values.paasUrl }}/bkapi/api/bk-cmdb/prod/
-EOF
 ```
 
 ### 确认 storageClass

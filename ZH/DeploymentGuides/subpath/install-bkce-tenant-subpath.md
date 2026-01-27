@@ -45,29 +45,29 @@
 
 | NAME                        | CHART VERSION                                | APP VERSION      |
 |-----------------------------|----------------------------------------|-----------------|
-| bk-repo                     | 3.2.2-beta.1                           | v3.2.2-beta.1      |
+| bk-repo                     | 3.2.3-beta.1                           | v3.2.3-beta.1      |
 | bk-auth                     | 1.1.0-alpha.3                          | 1.1.0-alpha.3           |
 | bk-apigateway               | 1.20.0-beta.1                        | 1.20.0-beta.1          |
-| bk-user                     | 3.0.1-alpha.90                         | 3.0.1-alpha.90          |
+| bk-user                     | 3.0.1-alpha.93                         | 3.0.1-alpha.93          |
 | bk-iam                      | 1.14.0-alpha.6                     | v1.14.0-alpha.6        |
 | bk-ssm                      | 1.1.0-alpha.4                          | 1.1.0-alpha.4          |
-| bk-console                  | 0.3.0-beta.3                           | v0.3.0-beta.3           |
-| bk-iam-saas                 | 1.12.0-alpha.35                        | v1.12.0-alpha.35        |
+| bk-console                  | 0.3.0-beta.9                           | v0.3.0-beta.9           |
+| bk-iam-saas                 | 1.12.0-alpha.36                        | v1.12.0-alpha.36        |
 | bk-iam-search-engine        | 0.1.5                                  | v1.1.5        |
 | bk-gse                      | v2.1.6-beta.63                         | v2.1.6-beta.63           |
-| bk-cmdb                     | 3.16.1-feature-tenant-alpha24          | 3.15.1-feature-tenant-alpha24          |
-| bkpaas-app-operator         | 1.7.0-alpha.58                         | v1.7.0-alpha.58          |
-| bk-paas                     | 1.7.0-alpha.58                         | v1.7.0-alpha.58         |
+| bk-cmdb                     | 3.16.1-feature-tenant-alpha25          | 3.15.1-feature-tenant-alpha25          |
+| bkpaas-app-operator         | 1.7.0-alpha.63                         | v1.7.0-alpha.63          |
+| bk-paas                     | 1.7.0-alpha.63                         | v1.7.0-alpha.63         |
 | bk-applog                   | 1.1.17                                 | 1.1.17          |
 | bk-ingress-nginx            | 1.3.5                                  | 1.3.1   |
 | bk-ingress-rule             | 0.0.4                                  | 0.0.4           |
-| bk-job                      | 0.9.1-alpha.288                        | 3.12.1-alpha.288           |
-| bk-nodeman                  | 2.4.8-pre-alpha.2086                  | 2.4.8-pre-alpha.2086           |
-| bk-sops                     |                    |   3.35.1-alpha.0-2075         |
-| cw-aitsm                    |                    | 4.5.203-rc.549           |
-| bk-cmsi                     |                    |   1.1.5         |
-| bk-notice                   |                    |  1.6.1.322          |
-| bcs-services-stack          | 1.31.0-alpha.18-tenant                  | v1.31.0-alpha.18-tenant           |
+| bk-job                      | 9.9.9-codev.6                        | 9.9.9-codev.6           |
+| bk-nodeman                  | 2.4.8-pre-alpha.2087                  | 2.4.8-pre-alpha.2087           |
+| bk-sops                     |                    |   3.35.1-alpha.1.2129         |
+| cw-aitsm                    |                    | 4.8.103-rc.421           |
+| bk-cmsi                     |                    |   1.1.7         |
+| bk-notice                   |                    |  1.6.1-alpha.9.353          |
+| bcs-services-stack          | 1.31.0-alpha.20-tenant                  | v1.31.0-alpha.20-tenant           |
 
 # 可选：配置 ssh 免密登录
 
