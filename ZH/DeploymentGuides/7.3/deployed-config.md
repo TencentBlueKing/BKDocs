@@ -56,6 +56,8 @@ API网关部署后，需要运维提前配置的：
 【必须】
 - 网关 sdk
 - 可编程网关跳转 paas 地址
+- 展示运营状态和健康检查
+- 启用 MCP Prompt 功能以及 Mock 模式
 
 【可选】
 - 流水日志 （依赖日志平台部署+配置采集+配置日志清洗）
@@ -69,7 +71,7 @@ API网关部署后，需要运维提前配置的：
 网关 sdk 生成时，需要提前配置好上传 sdk 包所需的路径以及账号信息，配置如下：
 
 
-```bash
+```yaml
 bkrepoConfig:
   genericBucket: generic
   mavenRepositoryID: system.bkpaas-maven
@@ -111,6 +113,34 @@ bkPaas3Url: {{ .Values.bkDomainScheme }}://bkpaas.{{ .Values.domain.bkDomain }}
 ### 仪表盘与统计报表
 
 依赖监控平台 + 配置 servicemonitor 采集，参考 [蓝鲸服务 SLI 看板](https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/install-co-suite.md#%E8%93%9D%E9%B2%B8%E6%9C%8D%E5%8A%A1%20SLI%20%E7%9C%8B%E6%9D%BF)
+
+### 展示运营状态和健康检查
+
+```yaml
+dashboard:
+  extraEnvVars:
+    - name: FEATURE_FLAG_ENABLE_GATEWAY_OPERATION_STATUS
+      value: "true"
+    - name: FEATURE_FLAG_ENABLE_HEALTH_CHECK
+      value: "true"
+```
+
+### 启用 MCP Prompt 功能以及 Mock 模式
+
+```yaml
+dashboard:
+  extraEnvVars:
+    - name: FEATURE_FLAG_ENABLE_MCP_SERVER_PROMPT
+      value: "true"
+    - name: BKAIDEV_USE_MOCK
+      value: "true"
+```
+
+### 汇总
+
+```yaml
+
+```
 
 ## 开发者中心
 

@@ -59,16 +59,19 @@ yq ".jwtPubKeyB64" $INSTALL_DIR/bkbase-helmfile/environments/custom/keys.yaml
 ### 自定义配置
 
 请根据自身环境信息修改对应的配置
-
+#### values.yaml
 ```bash
 BK_DOMAIN=$(yq e '.domain.bkDomain' $INSTALL_DIR/blueking/environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 
 cat >> $INSTALL_DIR/bkbase-helmfile/environments/custom/values.yaml <<EOF
 # paas url
-paasUrl: bkapi.$BK_DOMAIN
+paasUrl: $BK_DOMAIN
 
 # image registry
 registry: "hub.bktencent.com/dev"
+
+# cmdb sync username。单租户为admin，多租户为bk_admin
+cmdbUsername: "bk_admin"
 
 # tenant，单租户可以把下面的 tenant 配置都注释掉
 tenant:
@@ -127,7 +130,7 @@ local-storage (default)   kubernetes.io/no-provisioner   Delete          WaitFor
 
 如果输出的名称不是 local-storage，则需通过创建 custom.yaml 实现修改：
 ```bash
-storageClassName="$(kubectl get sc -o jsonpath='{.items[?(@.metadata.annotations.storageclass\.kubernetes\.io/is-default-class=="true")].metadata.name}')" # 填写上面的查询到的名称
+storageClassName="" # 填写上面的查询到的名称
 
 cd $INSTALL_DIR/bkbase-helmfile
 touch ./environments/custom/vm-values.yaml.gotmpl
@@ -146,6 +149,12 @@ helmfile -f monitor-storage.yaml.gotmpl -l name=bk-kafka sync
 ```bash
 cd $INSTALL_DIR/bkbase-helmfile  # 进入 bkbase 部署目录
 helmfile -f helmfile.yaml sync # 部署
+```
+
+## 租户初始化
+```bash
+cd $INSTALL_DIR/blueking
+./scripts/bk-tenant-admin.sh init bkbase4 system
 ```
 
 ## 授权网关权限
@@ -242,6 +251,11 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 ./scripts/bk-tenant-admin.sh grant $tenant_supermanager_userid gw bk-monitor
 ```
 
+### 再次执行租户权限初始化动作
+```bash
+./scripts/bk-tenant-admin.sh init monitor system 
+```
+
 ### 添加桌面图标
 
 在  桌面添加应用，也可以登录后自行添加。同时设置为默认应用，所有新登录的用户都会自动添加此应用到桌面。
@@ -255,18 +269,6 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 ```bash
 helmfile -f 04-bkmonitor-operator.yaml.gotmpl sync  # 部署 k8s operator 提供容器监控数据
 ```
-
-### 租户初始化
-
-这里主要初始化 bkbase 以及监控平台。也可以单独跑 init 命令初始化。
-
-```bash
-./scripts/bk-tenant-admin.sh create system Bluking@2025 # 密码随意指定
-```
-
-### 权限中心授权管理员
-
-参考 [权限中心授权管理员](./install-bkce.md#权限中心授权管理员)
 
 ## 日志平台
 
@@ -323,8 +325,6 @@ yq e '.extraEnvVars = [
 ]' -i environments/default/bklog-search-custom-values.yaml.gotmpl
 ```
 
-注意：上面 extraEnvVars 列表会覆盖默认的 values 配置，需要将其他的环境变量同时加进去。
-
 ### 部署日志平台
 
 >**提示**
@@ -345,22 +345,17 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 ./scripts/bk-tenant-admin.sh grant $tenant_supermanager_userid gw bk-log-search
 ```
 
-### 权限中心授权管理员
-
-参考 [权限中心授权管理员](#权限中心授权管理员)
-
 ### 访问日志平台
 
-需要配置域名 `bklog.$BK_DOMAIN`，操作步骤已经并入《部署步骤详解 —— 后台》 文档 的 “[配置用户侧的 DNS](https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/manual-install-bkce.md#hosts-in-user-pc)” 章节。
-配置成功后，即可在桌面打开 “日志平台” 应用了。
-此时位于 “检索” 界面，如果左上角 “索引集” 下拉列表为空。可以：
-- 启用蓝鲸各平台预置的日志采集项1. 完成下文的 “蓝鲸各平台容器日志上报” 章节。
-- 采集主机日志1. 在节点管理中，为待采集主机安装 `bkunifylogbeat` 插件。
-	2. 在日志平台的 “管理” —— “日志采集” 界面添加采集项。
-- 采集容器环境日志 （需要完成 “对接容器管理平台” 章节）- 蓝鲸集群（BCS-K8S-00000）1. 完成 “部署容器日志采集器” 章节。
-		2. 在日志平台的 “管理” —— “日志采集” 界面添加采集项。
-	- 其他集群1. TODO 其他集群容器日志采集步骤。
+可以在桌面打开 “日志平台” 应用，此时位于 “检索” 界面，如果左上角 “索引集” 下拉列表为空。可以：
+- 启用蓝鲸各平台预置的日志采集项
 
+访问该链接 [蓝鲸各平台容器日志上报](https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/install-co-suite.md) 
+，完成 “蓝鲸各平台容器日志上报” 章节。
+
+- 采集日志
+
+访问该链接 [日志平台](https://bk.tencent.com/docs/markdown/ZH/LogSearch/4.7/UserGuide/ProductFeatures/integrations-logs/logs_overview.md) , 查看 “日志数据接入概述” 章节
 
 ### 日志提取链路
 
@@ -370,7 +365,7 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 ./scripts/bk-tenant-admin.sh su $tenant_supermanager_userid log
 ```
-2. 访问日志平台主页 `bklog.${BK_DOMAIN}/`，点击管理即可看到 `提取链路管理` 选项。
+2. 访问日志平台主页 `${BK_DOMAIN}/bklog`，点击管理即可看到 `提取链路管理` 选项。
 3. 新增提取链路。
 
 ### 日志归档

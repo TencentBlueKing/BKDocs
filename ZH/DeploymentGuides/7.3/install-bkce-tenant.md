@@ -360,7 +360,7 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 BK_DOMAIN=bkce7-tenant.bktencent.com # 自行更改域名
 BK_ADMIN_PASSWD=$(tr -cd '0-9a-zA-Z'< /dev/urandom|head -c 24;echo) # 生成默认租户账号超管登录密码
 bkApigwToBkUserInnerBearerToken=$(tr -cd '0-9a-zA-Z'< /dev/urandom|head -c 32;echo) # 生成网关调用登录或用户管理内部 api token
-
+containersLogPath=$(./scripts/get_cri_root_dir.sh)
 cat >> ./environments/default/custom.yaml << EOF
 imageRegistry: hub.bktencent.com/dev
 domain:
@@ -373,7 +373,7 @@ bkuser:
   bkApigwToBkUserInnerBearerToken: "${bkApigwToBkUserInnerBearerToken}"
 apps:
   bkappFilebeat:
-    containersLogPath: $(./scripts/get_cri_root_dir.sh) # 到 node 上 containerd config dump
+    containersLogPath: "${containersLogPath}" # 也到 node 上 containerd config dump
 
 EOF
 ```
@@ -521,6 +521,15 @@ helmfile -f base-blueking.yaml.gotmpl  -l name=bk-gse apply
 
 ## 部署作业平台
 
+### 配置账密传输使用国密加密（可选）
+
+**生成国密公私钥**
+
+参考 [生成SM2加解密所需的秘钥对](https://github.com/TencentBlueKing/bk-job/tree/master/op-tools#5%E7%94%9F%E6%88%90sm2%E5%8A%A0%E8%A7%A3%E5%AF%86%E6%89%80%E9%9C%80%E7%9A%84%E7%A7%98%E9%92%A5%E5%AF%B9) 
+
+
+部署
+
 ```bash
 helmfile -f base-blueking.yaml.gotmpl  -l seq=fourth sync
 ```
@@ -666,7 +675,7 @@ done < <(find ../paas-runtimes/ -mindepth 2 -type f)
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i ssh {} "echo -e \"$IP1 docker.$BK_DOMAIN\n$IP1 bkrepo.$BK_DOMAIN\" >> /etc/hosts"
+kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i ssh {} "echo -e \"$IP1 docker.$BK_DOMAIN\n$IP1 bkrepo.$BK_DOMAIN\n$IP1 bknodeman.$BK_DOMAIN\" >> /etc/hosts"
 ```
 
 ### 可选：忽略 containerd 的 https 证书检查
@@ -690,6 +699,11 @@ done
 kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i ssh {} 'systemctl daemon-reload'
 kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i ssh {} 'systemctl restart containerd'
 ```
+
+```bash
+mkdir -v $INSTALL_DIR/saas # 创建目录
+```
+
 
 ### 消息通知中心
 
@@ -719,9 +733,6 @@ cd $INSTALL_DIR/blueking
 
 > 这里需要提前将 `bk_cmdb_saas` 的包放置部署 saas 目录(`$INSTALL_DIR/saas`)并命名为 `bk_cmdb_saas.tgz`
 
-```bash
-mkdir -v $INSTALL_DIR/saas # 创建目录
-```
 部署
 ```bash
 cd $INSTALL_DIR/blueking
@@ -745,12 +756,6 @@ cd $INSTALL_DIR/blueking
 ```bash
 cd $INSTALL_DIR/blueking
 ./scripts/setup_bkce7.sh -i cmsi
-```
-
-#### 关闭应用市场
-
-```bash
-kubectl -n blueking exec deploy/bkpaas3-apiserver-web -- python manage.py disable_market --app-code bk_cmsi
 ```
 
 #### 初始化通知渠道（可选）
@@ -842,6 +847,8 @@ bkdl-7-devel.sh -ur 7.3.0-alpha nm_gse_full # 下载最新版 gse 以及插件�
 ### 安装 Agent
 
 参考 `https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/config-nodeman.md`
+
+注意：安装 agent 会同步安装 bkmonitorbeat 插件，插件状态安装 agent 后等待半小时至一小时会显示。
 
 ## 租户初始化
 
