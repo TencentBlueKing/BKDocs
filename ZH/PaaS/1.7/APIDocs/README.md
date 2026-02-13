@@ -1,0 +1,3 @@
+## 蓝鲸 APIGateway API 
+
+详情见“PaaS 平台-开发者中心” -> “API 网关” -> “网关 API 文档” -> “bkpaas3” 的内容，域名参考 “apigw.{domain}/docs/apigw-api”。
