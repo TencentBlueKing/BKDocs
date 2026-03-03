@@ -698,7 +698,7 @@ done < <(find ./download -type f \( -path './download/linux/*' -o -path './downl
   - [部署蓝鲸通知中心](https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/install-notice.md)
   - [部署服务配置中心](https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/install-bscp.md)
 - 用户自定义内容迁移
-  - [如何迁移（导入）自定义 ESB 组件](https://iwiki.woa.com/p/4012699590)
+  - [如何迁移（导入）自定义 ESB 组件](#101-如何迁移导入自定义-esb-组件)
   - 自定义登陆 ee_login 适配
   - 用户 SaaS 迁移
 - 下一步：[部署容器管理平台、监控日志套餐等](.)
