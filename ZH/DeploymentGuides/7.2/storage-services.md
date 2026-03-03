@@ -29,6 +29,8 @@ kubectl get sc
 >**提示**
 >
 >使用 `bcs-ops` 部署 k8s 集群时，不再默认制备 pv 目录。
+>
+>如果已经操作过 [可选：适配 localpv](./get-k8s-create-bcsops.md#可选适配-localpv) 步骤，此章节可以跳过。
 
 `localpv` 要求每个 pv 目录都是一个挂载点。
 
