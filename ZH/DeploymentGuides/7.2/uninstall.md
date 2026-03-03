@@ -419,6 +419,12 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
     NAME  其他字段略
     serviceaccount/default  其他字段略
     ```
+
+    ``` bash
+    kubect get crd | grep paas.bk.tencent.com # 如果有残留资源，请执行以下命令强制删除
+    kubectl patch crd/domaingroupmappings.paas.bk.tencent.com -p '{"metadata":{"finalizers":[]}}' --type=merge
+    kubectl patch crd/bkapps.paas.bk.tencent.com -p '{"metadata":{"finalizers":[]}}' --type=merge
+    ```
 9.  重命名工作目录（部署时会写入一些文件到这里，一段时间后确认不需要时可删除）：
     ``` bash
     mv -v ${INSTALL_DIR%/}{,.bak-$(date +%Y%m%d-%H%M%S)}

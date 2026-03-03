@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="102 200 618 291" width="618" height="291">
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="14" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Source Han Sans CN" font-size="14" panose-1="2 11 8 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-125" underline-thickness="50" slope="0" x-height="543" cap-height="733" ascent="880.0018" descent="-120.00024" font-weight="700">
+      <font-face-src>
+        <font-face-name name="SourceHanSansCN-Bold"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="Helvetica Neue" font-size="12" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Source Han Sans CN" font-size="12" panose-1="2 11 5 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-125" underline-thickness="50" slope="0" x-height="543" cap-height="733" ascent="880.0018" descent="-120.00024" font-weight="400">
+      <font-face-src>
+        <font-face-name name="SourceHanSansCN-Regular"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.9.1 
+    <dc:date>2019-09-05 08:24:24 +0000</dc:date>
+  </metadata>
+  <g id="Canvas_1" stroke-dasharray="none" stroke="none" fill-opacity="1" stroke-opacity="1" fill="none">
+    <title>Canvas 1</title>
+    <rect fill="white" x="102" y="200" width="618" height="291"/>
+    <g id="Canvas_1: Layer 1">
+      <title>Layer 1</title>
+      <g id="Graphic_23">
+        <path d="M 436 270 L 715 270 C 717.2091 270 719 271.79086 719 274 L 719 486 C 719 488.20914 717.2091 490 715 490 L 436 490 C 433.79086 490 432 488.20914 432 486 L 432 274 C 432 271.79086 433.79086 270 436 270 Z" fill="white"/>
+        <path d="M 436 270 L 715 270 C 717.2091 270 719 271.79086 719 274 L 719 486 C 719 488.20914 717.2091 490 715 490 L 436 490 C 433.79086 490 432 488.20914 432 486 L 432 274 C 432 271.79086 433.79086 270 436 270 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8.0,5.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_21">
+        <path d="M 107 351 L 254 351 C 256.20914 351 258 352.79086 258 355 L 258 472 C 258 474.20914 256.20914 476 254 476 L 107 476 C 104.79086 476 103 474.20914 103 472 L 103 355 C 103 352.79086 104.79086 351 107 351 Z" fill="white"/>
+        <path d="M 107 351 L 254 351 C 256.20914 351 258 352.79086 258 355 L 258 472 C 258 474.20914 256.20914 476 254 476 L 107 476 C 104.79086 476 103 474.20914 103 472 L 103 355 C 103 352.79086 104.79086 351 107 351 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8.0,5.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_13">
+        <path d="M 451 316 L 697 316 C 700.3137 316 703 318.6863 703 322 L 703 465 C 703 468.3137 700.3137 471 697 471 L 451 471 C 447.6863 471 445 468.3137 445 465 L 445 322 C 445 318.6863 447.6863 316 451 316 Z" fill="white"/>
+        <path d="M 451 316 L 697 316 C 700.3137 316 703 318.6863 703 322 L 703 465 C 703 468.3137 700.3137 471 697 471 L 451 471 C 447.6863 471 445 468.3137 445 465 L 445 322 C 445 318.6863 447.6863 316 451 316 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(450 321)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="black" x="102.608" y="13">default</tspan>
+        </text>
+      </g>
+      <g id="Graphic_12">
+        <text transform="translate(450 281.5)" fill="black">
+          <tspan font-family="Source Han Sans CN" font-size="14" font-weight="700" fill="black" x="0" y="12">蓝鲸应用</tspan>
+        </text>
+      </g>
+      <g id="Line_10">
+        <line x1="574" y1="203" x2="574" y2="306.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_9">
+        <path d="M 120 391 L 242 391 C 245.3137 391 248 393.6863 248 397 L 248 414 C 248 417.3137 245.3137 420 242 420 L 120 420 C 116.68629 420 114 417.3137 114 414 L 114 397 C 114 393.6863 116.68629 391 120 391 Z" fill="white"/>
+        <path d="M 120 391 L 242 391 C 245.3137 391 248 393.6863 248 397 L 248 414 C 248 417.3137 245.3137 420 242 420 L 120 420 C 116.68629 420 114 417.3137 114 414 L 114 397 C 114 393.6863 116.68629 391 120 391 Z" stroke="#9e9e9e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(119 398.332)" fill="#6f6f6f">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="#6f6f6f" x="45.998" y="11">Vue.js</tspan>
+        </text>
+      </g>
+      <g id="Graphic_8">
+        <path d="M 120 431 L 242 431 C 245.3137 431 248 433.6863 248 437 L 248 454 C 248 457.3137 245.3137 460 242 460 L 120 460 C 116.68629 460 114 457.3137 114 454 L 114 437 C 114 433.6863 116.68629 431 120 431 Z" fill="white"/>
+        <path d="M 120 431 L 242 431 C 245.3137 431 248 433.6863 248 437 L 248 454 C 248 457.3137 245.3137 460 242 460 L 120 460 C 116.68629 460 114 457.3137 114 454 L 114 437 C 114 433.6863 116.68629 431 120 431 Z" stroke="#9e9e9e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(119 438.332)" fill="#6f6f6f">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="#6f6f6f" x="36.89" y="11">Webpack</tspan>
+        </text>
+      </g>
+      <g id="Graphic_2">
+        <text transform="translate(593 205.5)" fill="black">
+          <tspan font-family="Source Han Sans CN" font-size="12" font-weight="400" fill="black" x="0" y="11">用户请求</tspan>
+        </text>
+      </g>
+      <g id="Line_15">
+        <line x1="260" y1="444" x2="454.1" y2="443.6419" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_16">
+        <text transform="translate(278 404.5)" fill="black">
+          <tspan font-family="Source Han Sans CN" font-size="12" font-weight="400" fill="black" x="0" y="11">线下编译打包后，作为源</tspan>
+          <tspan font-family="Source Han Sans CN" font-size="12" font-weight="400" fill="black" x="0" y="29.000012">码提交进 Django 项目中</tspan>
+        </text>
+      </g>
+      <g id="Graphic_17">
+        <path d="M 470 429 L 592 429 C 595.3137 429 598 431.6863 598 435 L 598 452 C 598 455.3137 595.3137 458 592 458 L 470 458 C 466.6863 458 464 455.3137 464 452 L 464 435 C 464 431.6863 466.6863 429 470 429 Z" fill="white"/>
+        <path d="M 470 429 L 592 429 C 595.3137 429 598 431.6863 598 435 L 598 452 C 598 455.3137 595.3137 458 592 458 L 470 458 C 466.6863 458 464 455.3137 464 452 L 464 435 C 464 431.6863 466.6863 429 470 429 Z" stroke="#9e9e9e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(469 436.332)" fill="#6f6f6f">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="#6f6f6f" x="15.884" y="11">HTML / CSS / JS</tspan>
+        </text>
+      </g>
+      <g id="Graphic_18">
+        <path d="M 471 390 L 684 390 C 687.3137 390 690 392.6863 690 396 L 690 413 C 690 416.3137 687.3137 419 684 419 L 471 419 C 467.6863 419 465 416.3137 465 413 L 465 396 C 465 392.6863 467.6863 390 471 390 Z" fill="white"/>
+        <path d="M 471 390 L 684 390 C 687.3137 390 690 392.6863 690 396 L 690 413 C 690 416.3137 687.3137 419 684 419 L 471 419 C 467.6863 419 465 416.3137 465 413 L 465 396 C 465 392.6863 467.6863 390 471 390 Z" stroke="#9e9e9e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(470 397.332)" fill="#6f6f6f">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="#6f6f6f" x="88.498" y="11">Django</tspan>
+        </text>
+      </g>
+      <g id="Graphic_19">
+        <path d="M 620 429 L 684 429 C 687.3137 429 690 431.6863 690 435 L 690 452 C 690 455.3137 687.3137 458 684 458 L 620 458 C 616.6863 458 614 455.3137 614 452 L 614 435 C 614 431.6863 616.6863 429 620 429 Z" fill="white"/>
+        <path d="M 620 429 L 684 429 C 687.3137 429 690 431.6863 690 435 L 690 452 C 690 455.3137 687.3137 458 684 458 L 620 458 C 616.6863 458 614 455.3137 614 452 L 614 435 C 614 431.6863 616.6863 429 620 429 Z" stroke="#9e9e9e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(619 436.332)" fill="#6f6f6f">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="#6f6f6f" x="6.894" y="11">REST API</tspan>
+        </text>
+      </g>
+      <g id="Graphic_20">
+        <path d="M 471 351 L 684 351 C 687.3137 351 690 353.6863 690 357 L 690 374 C 690 377.3137 687.3137 380 684 380 L 471 380 C 467.6863 380 465 377.3137 465 374 L 465 357 C 465 353.6863 467.6863 351 471 351 Z" fill="white"/>
+        <path d="M 471 351 L 684 351 C 687.3137 351 690 353.6863 690 357 L 690 374 C 690 377.3137 687.3137 380 684 380 L 471 380 C 467.6863 380 465 377.3137 465 374 L 465 357 C 465 353.6863 467.6863 351 471 351 Z" stroke="#9e9e9e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(470 358.332)" fill="#6f6f6f">
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="#6f6f6f" x="82.834" y="11">Gunicorn</tspan>
+        </text>
+      </g>
+      <g id="Graphic_22">
+        <text transform="translate(119 361.5)" fill="black">
+          <tspan font-family="Source Han Sans CN" font-size="14" font-weight="700" fill="black" x="0" y="12">前端部分</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
