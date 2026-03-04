@@ -150,6 +150,8 @@ kubectl -n bkapp-bk0us0itsm-prod exec deploy/bkapp-bk0us0itsm-prod--web -- /app/
 
 ## 监控平台开启通知功能
 
+> **注意**：配置前需确保已成功完成 [监控平台](./install-co-suite.md#监控平台) 的部署。
+
 ``` bash
 kubectl -n blueking exec $(kubectl -n blueking get pods -l processType=web,app.kubernetes.io/instance=bk-monitor -o name) -- bash -c '/app/venv/bin/python manage.py register_application'
 ```
@@ -157,12 +159,16 @@ kubectl -n blueking exec $(kubectl -n blueking get pods -l processType=web,app.k
 
 ## 日志平台开启通知功能
 
+> **注意**：配置前需确保已成功完成 [日志平台](./install-co-suite.md#日志平台) 的部署。
+
 前面调整 values 成功后，重新 apply：
 ``` bash
 helmfile -f 04-bklog-search.yaml.gotmpl apply
 ```
 
 ## 运维开发平台开启通知功能
+
+> **注意**：配置前需确保已成功完成 [运维开发平台](./install-lesscode.md) 的部署。
 
 请登录蓝鲸桌面，打开 “开发者中心”应用，点击应用开发进入 “运维开发平台” 后，开始配置：
 

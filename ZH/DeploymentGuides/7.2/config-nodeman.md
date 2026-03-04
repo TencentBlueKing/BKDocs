@@ -111,11 +111,13 @@ upload /root/bkce7.2-install/blueking/scripts/../../gse2/py36.tgz to ./data/bkee
 <a id="post-install-bk-nodeman-gse-env" name="post-install-bk-nodeman-gse-env"></a>
 
 # 配置 GSE 环境管理
-请先登录到蓝鲸桌面，打开“节点管理”应用。然后点击顶部导航栏 “全局配置”，会默认进入“gse 环境管理” 界面。
+请先登录到蓝鲸桌面，打开 “节点管理” 应用。然后点击顶部导航栏 “全局配置”，会默认进入 “gse 环境管理” 界面。
 
 点击 “默认接入点” 右侧的 “编辑” 图标，进入 “编辑接入点” 界面。如下图所示：
 
-![](../7.0/assets/bk_nodeman-conf-gse-env.png)
+第1步到第2步保持默认值，第3步到第6步 **看下文 “按场景快速配置” 输出对应的信息后再回来填写。**
+
+![](./assets/bk_nodeman-conf-gse-env.png)
 
 ## 按场景快速配置
 
