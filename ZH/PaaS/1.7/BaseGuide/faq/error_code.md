@@ -41,7 +41,7 @@
 
 获取集群信息失败，排查步骤如下：
 
-1. 在管理后台（{PaaS3.0 开发者中心访问地址}/backend/admin42/platform/clusters/manage/）确认应用集群配置中证书或者 Token 信息填写是否正确。
+1. 在管理后台（{PaaS3.0 开发者中心访问地址}//plat-mgt/app-cluster/）确认应用集群配置中证书或者 Token 信息填写是否正确。
 
 平台对 K8S 集群进行管理，包括不限于：创建或删除命名空间、创建或删除蓝鲸应用( `Deployment` / `Service` / `Ingress` 等)。
 
@@ -62,6 +62,6 @@
 
 资源池为空，排查步骤如下：
 
-1. 在管理后台（{PaaS3.0 开发者中心访问地址}/backend/admin42/platform/pre-created-instances/manage）确认对应的增强服务方案的资源池是否有可用的服务实例。
+1. 在管理后台（{PaaS3.0 开发者中心访问地址}/plat-mgt/add-ons）确认对应的增强服务方案的资源池是否有可用的服务实例。
 
 2. 如资源池中无可用实例, 则添加对应的服务实例后即可。

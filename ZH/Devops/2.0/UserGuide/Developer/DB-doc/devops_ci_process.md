@@ -2,7 +2,7 @@
 
 **数据库名：** devops_ci_process
 
-**文档版本：** 1.0.18
+**文档版本：** 1.0.19
 
 **文档描述：** devops_ci_process 的数据库文档
 | 表名                  | 说明       |
@@ -1650,10 +1650,14 @@
 |  11   | TRIGGER_CONFIGS |   mediumtext   | 16777215 |   0    |    Y     |  N   |       | 触发器配置  |
 |  12   | OVERRIDE_TEMPLATE_FIELD |   mediumtext   | 16777215 |   0    |    Y     |  N   |       | 覆盖模版字段  |
 |  13   | RESET_BUILD_NO |   bit   | 1 |   0    |    Y     |  N   |   b'0'    | 重置实例推荐版本为基准值  |
-|  14   | CREATOR |   varchar   | 50 |   0    |    N     |  N   |   system    | 创建者  |
-|  15   | MODIFIER |   varchar   | 50 |   0    |    N     |  N   |   system    | 修改者  |
-|  16   | UPDATE_TIME |   datetime   | 23 |   0    |    N     |  N   |   CURRENT_TIMESTAMP(3)    | 修改时间  |
-|  17   | CREATE_TIME |   datetime   | 23 |   0    |    N     |  N   |   CURRENT_TIMESTAMP(3)    | 创建时间  |
+|  14   | BEFORE_PIPELINE_VERSION |   int   | 10 |   0    |    Y     |  N   |       | 更新前流水线版本  |
+|  15   | AFTER_PIPELINE_VERSION |   int   | 10 |   0    |    Y     |  N   |       | 更新后流水线版本  |
+|  16   | BEFORE_TEMPLATE_VERSION |   bigint   | 20 |   0    |    Y     |  N   |       | 更新前模板版本  |
+|  17   | AFTER_TEMPLATE_VERSION |   bigint   | 20 |   0    |    Y     |  N   |       | 更新后模板版本  |
+|  18   | CREATOR |   varchar   | 50 |   0    |    N     |  N   |   system    | 创建者  |
+|  19   | MODIFIER |   varchar   | 50 |   0    |    N     |  N   |   system    | 修改者  |
+|  20   | UPDATE_TIME |   datetime   | 23 |   0    |    N     |  N   |   CURRENT_TIMESTAMP(3)    | 修改时间  |
+|  21   | CREATE_TIME |   datetime   | 23 |   0    |    N     |  N   |   CURRENT_TIMESTAMP(3)    | 创建时间  |
 
 **表名：** <a>T_TEMPLATE_PIPELINE</a>
 
