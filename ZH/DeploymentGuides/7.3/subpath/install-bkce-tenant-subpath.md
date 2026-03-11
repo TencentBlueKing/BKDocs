@@ -687,7 +687,7 @@ kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i s
 
 ### 消息通知中心
 
-> 这里需要提前将 `bk_notice` 的包放置部署 saas 目录(`$INSTALL_DIR/saas`)并改名为 `bk_notice.tgz`
+> 这里需要提前将 `bk_notice-V1.6.1-alpha.9.353_paas3.tar.gz` 版本的包放置部署saas目录并改名为 `bk_notice.tgz`
 
 ```bash
 mkdir -v $INSTALL_DIR/saas # 创建目录

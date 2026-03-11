@@ -1,48 +1,84 @@
+在资源充足的情况下，可以为 SaaS/应用分配专用的 Kubernetes Node，避免构建与运行阶段的高 IO/高 CPU 波动影响同节点上的其他业务 Pod。通过 Kubernetes 污点（taint）与容忍度（toleration）配合节点标签（label），可以实现“专机专用”。
 
-在资源充足的情况下，可以单独给 SaaS 分配单独的 `node`。
+## 版本信息
+PaaS：1.7.0-alpha.53以上（支持云原生应用）
 
-普通 SaaS 在部署时，会临时编译，会产生高 IO 和高 CPU 消耗。原生 k8s 集群的 io 隔离暂无方案，这样会影响到所在 `node` 的其他 `pod`。
+## 前置条件：准备节点
 
-蓝鲸官方发行的 SaaS 安装包针对 V7 进行了优化，使用了预编译的镜像文件，无上述负担。
+先在 Kubernetes 集群中为目标 Node 添加 label 与 taint（以下示例将专用池命名为 bkSaaS）：
 
-# 配置 SaaS 专用 node
-我们通过 k8s 的污点（`taint`）来实现专机专用。
-
-## 配置 node 污点
-假设该节点名为 `node-1`，给该 node 配置 label 和污点，确保 `pod` 默认不会分配到这些 `node`。
-``` bash
-kubectl label nodes node-1 dedicated=bkSaas
-kubectl taint nodes node-1 dedicated=bkSaas:NoSchedule
+```bash
+kubectl label nodes <node-name> dedicated=bkSaaS
+kubectl taint nodes <node-name> dedicated=bkSaaS:NoSchedule
 ```
-## 在 PaaS 页面配置污点容忍
-1. 先登录。访问 `http://bkpaas.$BK_DOMAIN` （需替换 `$BK_DOMAIN` 为你配置的蓝鲸基础域名。）
-2. 访问蓝鲸 PaaS Admin（如果未登录则无法访问）： `http://bkpaas.$BK_DOMAIN/backend/admin42/platform/clusters/manage/` 。
-3. 点击集群 最右侧的编辑按钮。
-   ![paas-admin-clusters.png](assets/paas-admin-clusters.png)
-4. 在 **集群出口 IP** 栏填写 `bk-ingress-nginx` pod 所在 **k8s node** 的 IP。
-5. 在 **默认 nodeSelector** 栏填写：
-    ``` json
-    {"dedicated": "bkSaas"}
-    ```
-6. 在 **默认 tolerations** 栏填写：
-    ``` json
-    [{"key":"dedicated","operator":"Equal","value":"bkSaas","effect":"NoSchedule"}]
-    ```
 
-最终配置效果如下图所示，确认无误后点击“确定”按钮。
+说明：
+*   label 用于 `nodeSelector` 匹配。
+*   taint 用于阻止未容忍该污点的 Pod 调度到专用节点。
 
-![paas-admin-clusters-nodeselector.png](assets/paas-admin-clusters-nodeselector.png)
+## 配置项说明
 
-## SaaS 专用 node 问题排查
-如果发现 SaaS 的 Pod 调度到了其他 `node`，请检查 PaaS 页面的配置是否正确。
+*   **节点选择器（nodeSelector）**: JSON 对象，键值均为字符串，用于作为 Pod 的 `nodeSelector`。
+*   **污点容忍度（tolerations）**: JSON 数组，每个元素为一个 Kubernetes `toleration` 条目。
 
-如果因为资源不足导致 SaaS 运行异常，请先参考 **添加 k8s-node** 完成 k8s 扩容，然后参考 **配置 node 污点** 完成专机配置。
+用途：让“部署到本集群的应用”默认调度到匹配标签的节点，或允许其调度到带有指定污点（taint）的节点。
 
-如果保存时报错 `engine 服务错误: ingress_config: frontend_ingress_ip`，请填写 **集群出口 IP** 。
+## 方法一：在页面配置（推荐）
 
+入口：平台管理 -> 应用集群 -> 新增/编辑集群 -> 第四步「集群特性」-> 「高级设置」。
 
-# 下一步
-直接开始部署 SaaS：
-* [部署步骤详解 —— SaaS](manual-install-saas.md)
+   ![node-selector-config.png](assets/node-selector-config.png)
 
-如果是从快速部署文档跳转过来，可以 [回到快速部署文档继续阅读](install-bkce.md#saas-node)。
+### 节点选择器示例
+
+```json
+{"dedicated": "bkSaaS"}
+```
+
+### 污点容忍度示例
+
+```json
+[
+  {
+    "key": "dedicated",
+    "operator": "Equal",
+    "value": "bkSaaS",
+    "effect": "NoSchedule"
+  }
+]
+```
+
+规则说明：
+*   `operator` 支持 `Equal` / `Exists`。
+    *   当为 `Equal` 时必须提供 `value`。
+    *   当为 `Exists` 时不应提供 `value`。
+*   `effect` 支持 `NoSchedule` / `PreferNoSchedule` / `NoExecute`。
+    *   仅当 `effect` 为 `NoExecute` 时才允许配置 `tolerationSeconds`。
+
+## 方法二：通过 Chart 环境变量注入（用于初始化默认集群）
+
+当使用 Chart/初始化 Job 创建默认集群时，可通过环境变量注入同样的默认调度配置：
+
+```bash
+PAAS_WL_CLUSTER_NODE_SELECTOR='{"dedicated":"bkSaaS"}'
+PAAS_WL_CLUSTER_TOLERATIONS='[{"key":"dedicated","operator":"Equal","value":"bkSaaS","effect":"NoSchedule"}]'
+```
+
+说明：
+*   以上环境变量会在初始化默认集群时写入集群的默认调度配置。
+*   JSON 字符串需保证可被解析（注意引号与转义）。
+
+## 验证
+*   部署到该集群的应用默认调度到带有 `dedicated=bkSaaS` 标签的节点。
+*   应用yaml配置文件有相应的nodeSelector和tolerations配置。
+![node-selector-config-pod.png](assets/node-selector-config-pod.png)
+
+## 问题排查
+
+*   Pod 调度到其他节点：
+    *   检查 Node 是否已正确设置 label/taint，且 key/value 与平台配置保持一致。
+    *   检查集群「高级设置」中 nodeSelector/tolerations 是否保存成功并已对目标集群生效。
+    *   检查专用节点资源是否充足；资源不足时调度可能失败并触发回退/重调度。
+*   保存集群配置时报错 “ingress_config: frontend_ingress_ip”：
+    *   填写集群的“集群出口 IP/访问入口 IP（frontend_ingress_ip）”后再保存。
+

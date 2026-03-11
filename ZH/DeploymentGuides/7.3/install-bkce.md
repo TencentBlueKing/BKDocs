@@ -742,7 +742,7 @@ refresh_organization_and_user("default")
 ### 授权 saas 管理员权限
 
 ```bash
-./scripts/bk-admin.sh grant "$supermanager_userid" bkapp bk_cmdb_saas bk_sops bk_cmsi cw_aitsm bk_notice
+./scripts/bk-admin.sh grant "$supermanager_userid" bkapp bk_cmdb_saas bk_sops bk_cmsi cw_aitsm bk_notice bk_itsm
 ```
 也可以进入页面  `https://bkpaas.${BK_DOMAIN}/backend/admin42/applications/` ， 手动授权
 
