@@ -1,0 +1,27 @@
+# Summary 
+
+## BK-Aidev
+
+* [产品公告](https://bk.tencent.com/s-mart/community/question)
+* [产品简介](UserGuide/Introduce/README.md)
+* [产品架构图](UserGuide/ProductArchitecture/README.md)
+* [快速入门]()
+    * [xxxx](UserGuide/QuickStart/README.md)
+* [产品功能]()
+    * [凭证管理](UserGuide/Feature/Credential_Management.md)
+    * [MCP管理](UserGuide/Feature/MCP_Management.md)
+    * [其他功能](UserGuide/Feature/Other_Functions.md)
+    * [提示词管理](UserGuide/Feature/Prompt_Word_Management.md)
+    * [角色管理](UserGuide/Feature/Role_Management.md)
+    * [服务市场](UserGuide/Feature/Service_Marketplace.md)
+    * [Skill管理](UserGuide/Feature/Skill_Management.md)
+    * [空间管理](UserGuide/Feature/Space_Management.md)
+    * [工具管理](UserGuide/Feature/Tool_Management.md)
+    * [智能体无码开发](UserGuide/Feature/Agent_No-Code_Development.md)
+    * [构建知识库](UserGuide/Feature/Build_Knowledge_Base.md)
+* [场景案例]()
+    * [AIDEV知识库索引设置最佳实践](UserGuide/UserCase/Knowledge_Base_Index_Settings.md)
+    * [流程类智能体最佳实践](UserGuide/UserCase/Process_Agent_Best_Practices.md)
+* [常见问题](UserGuide/FAQ/FAQ.md)
+* [结语](UserGuide/Conclusion/README.md)
+* [开源共建](https://github.com/TencentBlueKing/bk-sops)
