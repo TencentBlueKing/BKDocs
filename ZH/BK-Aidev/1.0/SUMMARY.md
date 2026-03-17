@@ -4,7 +4,7 @@
 
 * [产品公告](https://bk.tencent.com/s-mart/community/question)
 * [产品简介](UserGuide/Introduce/README.md)
-* [术语解释](UserGuide/Introduce/README.md)
+* [术语解释](UserGuide/Term/README.md)
 * [产品架构](UserGuide/ProductArchitecture/README.md)
 * [产品优势](UserGuide/Advantage/README.md)
 * [快速入门]()
