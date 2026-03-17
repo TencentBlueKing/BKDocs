@@ -8,7 +8,7 @@ version=$3  #创建的版本号目录
 product_dir="${version} ErrorCode ReleaseNotes"
 product_file="Vedios.md GithubContributorGuide.md"
 version_dir="APIDocs Architecture Operation UserGuide"
-userguide_dir="Advantage ProductArchitecture Conclusion FAQ Feature Introduce QuickStart UserCase asserts"
+userguide_dir="Advantage ProductArchitecture Conclusion FAQ Feature Introduce QuickStart UserCase asserts Term"
 summary="# Summary \n\n## $product"
 DIR=$(cd `dirname $(readlink -f $0)` && cd ../${language} && pwd)
 
