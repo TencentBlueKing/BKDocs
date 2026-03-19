@@ -114,9 +114,12 @@ kubectl exec -it -n blueking bk-ci-mysql-0 -- /bin/bash -c 'MYSQL_PWD="$MYSQL_RO
   然后重新查询数据库，可以看到 `IMAGE_REPO_NAME` 列已经更新。
 * 如果没有镜像，可以新增：
   ``` bash
+  cd $INSTALL_DIR/blueking/
+  bkCiJwtRsaPrivateKey=$(yq .config.bkCiJwtRsaPrivateKey environments/default/bkci/bkci-custom-values.yaml.gotmpl)
+  JWT_TOKEN=$(kubectl -n blueking exec deploy/bk-ci-bk-ci-auth -c auth -- bash /data/workspace/scripts/bk-ci-gen-jwt-token.sh $bkCiJwtRsaPrivateKey 'init-iam')
   kubectl exec -n blueking deploy/bk-ci-bk-ci-store -- \
     curl -vs http://bk-ci-bk-ci-store.blueking.svc.cluster.local/api/op/market/image/init -X POST \
-      -H 'X-DEVOPS-UID: admin' -H 'Content-type: application/json' -d '{"imageCode":"bkci","imageName":"bkci","imageRepo":"hub.bktencent.com/bkci/ci","projectCode":"demo","userId":"admin"}' | jq .
+      -H "X-DEVOPS-JWT-TOKEN: $JWT_TOKEN" -H 'X-DEVOPS-UID: admin' -H 'Content-type: application/json' -d '{"imageCode":"bkci","imageName":"bkci","imageRepo":"hub.bktencent.com/bkci/ci","projectCode":"demo","userId":"admin"}' | jq .
   ```
   >**提示**
   >
@@ -170,8 +173,9 @@ kubectl rollout restart deployment -n blueking bk-repo-bkrepo-auth
 ``` bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+JWT_TOKEN=$(kubectl -n blueking exec deploy/bk-ci-bk-ci-auth -c auth -- bash /data/workspace/scripts/bk-ci-gen-jwt-token.sh $bkCiJwtRsaPrivateKey 'init-iam')
 # 向project微服务注册制品库
-kubectl exec -i -n blueking deploy/bk-ci-bk-ci-project -- curl -sS -X PUT -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'X-DEVOPS-UID: admin' -d "{\"showProjectList\":true,\"showNav\":true,\"status\":\"ok\",\"deleted\":false,\"iframeUrl\":\"//bkrepo.$BK_DOMAIN/ui/\"}" "http://bk-ci-bk-ci-project.blueking.svc.cluster.local/api/op/services/update/Repo"
+kubectl exec -i -n blueking deploy/bk-ci-bk-ci-project -- curl -sS -X PUT -H 'Content-Type: application/json' -H "X-DEVOPS-JWT-TOKEN: $JWT_TOKEN" -H 'Accept: application/json' -H 'X-DEVOPS-UID: admin' -d "{\"showProjectList\":true,\"showNav\":true,\"status\":\"ok\",\"deleted\":false,\"iframeUrl\":\"//bkrepo.$BK_DOMAIN/ui/\"}" "http://bk-ci-bk-ci-project.blueking.svc.cluster.local/api/op/services/update/Repo"
 ```
 
 ## 流水线插件
@@ -206,6 +210,8 @@ bkdl-7.2-stable.sh -ur latest ci-plugins
 请在 **中控机** 执行：
 ``` bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
+BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
+JWT_TOKEN=$(kubectl -n blueking exec deploy/bk-ci-bk-ci-auth -c auth -- bash /data/workspace/scripts/bk-ci-gen-jwt-token.sh $bkCiJwtRsaPrivateKey 'init-iam')
 for f in ../ci-plugins/*.zip; do
   atom="${f##*/}"
   atom=${atom%.zip}
@@ -213,12 +219,13 @@ for f in ../ci-plugins/*.zip; do
   kubectl exec -i -n blueking deploy/bk-ci-bk-ci-store -- \
     curl -s \
       http://bk-ci-bk-ci-store.blueking.svc.cluster.local/api/op/pipeline/atom/deploy/"?publisher=admin" \
-      -H 'X-DEVOPS-UID: admin' -F atomCode=$atom -F file=@- < "$f" | jq .
+      -H "X-DEVOPS-JWT-TOKEN: $JWT_TOKEN" -H 'X-DEVOPS-UID: admin' -F atomCode=$atom -F file=@- < "$f" | jq .
   # 设置为默认插件，全部项目可见。
   kubectl exec -n blueking deploy/bk-ci-bk-ci-store -- \
     curl -s http://bk-ci-bk-ci-store.blueking.svc.cluster.local/api/op/pipeline/atom/default/atomCodes/$atom \
-      -H 'X-DEVOPS-UID: admin' -X POST | jq .
+      -H "X-DEVOPS-JWT-TOKEN: $JWT_TOKEN" -H 'X-DEVOPS-UID: admin' -X POST | jq .
 done
+
 ```
 
 ## 浏览器访问

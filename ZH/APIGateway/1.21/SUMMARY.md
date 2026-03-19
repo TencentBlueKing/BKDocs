@@ -9,6 +9,7 @@
 * [使用手册]()
     * [操作指南]()
         * [调用网关 API](./UserGuide/HowTo/call-gateway-api.md)
+        
         * [网关插件使用]()
             * [支持跨域 CORS](./UserGuide/HowTo/Plugins/bk-cors.md)
             * [开启 IP 访问控制](./UserGuide/HowTo/Plugins/bk-ip-restriction.md)
@@ -26,7 +27,9 @@
             * [用户限制](./UserGuide/HowTo/Plugins/bk-user-restriction.md)
             * [代理缓存](./UserGuide/HowTo/Plugins/proxy-cache.md)
             * [URI 拦截](./UserGuide/HowTo/Plugins/uri-blocker.md)
+            
         * [调用 ESB API](./UserGuide/HowTo/call-esb-api.md)
+        
         * [接入网关]()
             * [接入网关](./UserGuide/HowTo/Connect/connect-gateway.md)
             * [自动化接入](./UserGuide/HowTo/Connect/auto-connect-gateway.md)
@@ -35,7 +38,20 @@
             * [如何同时接入 ESB 和 网关](./UserGuide/HowTo/Connect/connect-esb-and-gateway.md)
             * [Swagger 配置说明](./UserGuide/HowTo/Connect/swagger-explain.md)
             * [MCP Server 权限申请指引](./UserGuide/HowTo/apply-mcp-server-permission.md)
+            
+        * [支持 MCP Server]()
+        
+            * [接入]()
+                * [普通网关 API to MCP Server](./UserGuide/HowTo/MCPServer/Connect/normal-gateway-api-to-mcp-server.md)
+                * [可编程网关使用 MCP Server](./UserGuide/HowTo/MCPServer/Connect/program-gateway-mcp-server.md)
+                * [原生的 MCP Server 接入网关](./UserGuide/HowTo/MCPServer/Connect/native-mcp-server-to-gateway.md)
+        
+            * [使用]()
+                * [MCP Server 配置使用指南](./UserGuide/HowTo/MCPServer/Apply/apply-mcp-server-config.md)
+                * [MCP Server 权限申请指引](./UserGuide/HowTo/MCPServer/Apply/apply-mcp-server-permission.md)
+            * [MCP Server FAQ](./UserGuide/HowTo/MCPServer/mcp-server-FAQ.md)
     * [概念说明]()
+      
         * [认证](./UserGuide/Explanation/authorization.md)
         * [X-Bkapi-JWT](./UserGuide/Explanation/jwt.md)
         * [X-Bkapi-Request-ID](./UserGuide/Explanation/request-id.md)
