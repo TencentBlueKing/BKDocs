@@ -9,6 +9,7 @@
 * [产品优势](UserGuide/Advantage/README.md)
 * [快速入门]()
     * [快速创建智能体](UserGuide/QuickStart/Quick_Creation_of_Agent.md)
+    * [快速创建企业微信智能机器人](UserGuide/QuickStart/Quick_Creation_of_WeCom_Intelligent_Robot.md)
 * [产品功能]()
     * [智能体开发]()
         * [智能体无码开发](UserGuide/Feature/Agent_No-Code_Development.md)
