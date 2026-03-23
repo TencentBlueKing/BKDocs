@@ -26,6 +26,7 @@
             * [请求体大小限制](./UserGuide/HowTo/Plugins/bk-request-body-limit.md)
             * [用户限制](./UserGuide/HowTo/Plugins/bk-user-restriction.md)
             * [代理缓存](./UserGuide/HowTo/Plugins/proxy-cache.md)
+            * [流量染色](./UserGuide/HowTo/Plugins/traffic-label.md)
             * [URI 拦截](./UserGuide/HowTo/Plugins/uri-blocker.md)
             
         * [调用 ESB API](./UserGuide/HowTo/call-esb-api.md)
@@ -36,20 +37,21 @@
             * [如何导入导出资源](./UserGuide/HowTo/Connect/import-and-export.md)
             * [如何维护网关文档](./UserGuide/HowTo/Connect/manage-document.md)
             * [如何同时接入 ESB 和 网关](./UserGuide/HowTo/Connect/connect-esb-and-gateway.md)
+            * [迁移：规范使用应用态接口以及用户态接口](./UserGuide/HowTo/Connect/standardized-use-app-and-user-state-api.md)
+            * [支持 WebSocket](./UserGuide/HowTo/Connect/support-websocket.md)
             * [Swagger 配置说明](./UserGuide/HowTo/Connect/swagger-explain.md)
             * [MCP Server 权限申请指引](./UserGuide/HowTo/apply-mcp-server-permission.md)
             
         * [支持 MCP Server]()
-        
             * [接入]()
                 * [普通网关 API to MCP Server](./UserGuide/HowTo/MCPServer/Connect/normal-gateway-api-to-mcp-server.md)
                 * [可编程网关使用 MCP Server](./UserGuide/HowTo/MCPServer/Connect/program-gateway-mcp-server.md)
                 * [原生的 MCP Server 接入网关](./UserGuide/HowTo/MCPServer/Connect/native-mcp-server-to-gateway.md)
-        
             * [使用]()
                 * [MCP Server 配置使用指南](./UserGuide/HowTo/MCPServer/Apply/apply-mcp-server-config.md)
                 * [MCP Server 权限申请指引](./UserGuide/HowTo/MCPServer/Apply/apply-mcp-server-permission.md)
             * [MCP Server FAQ](./UserGuide/HowTo/MCPServer/mcp-server-FAQ.md)
+
     * [概念说明]()
       
         * [认证](./UserGuide/Explanation/authorization.md)
