@@ -8,7 +8,7 @@ bk-apigateway >= 1.16.x
 
 某些场景，接口已下线或迁移，需要配置存量接口重定向到新接口。
 
-建议查看 apisix 插件 [plugin: redirect](https://apache-apisix.netlify.app/zh/docs/apisix/3.2/plugins/redirect/) 官方文档了解更多配置说明。（仅开放了部分字段配置）
+建议查看 apisix 插件 [plugin: redirect](https://apisix.apache.org/docs/apisix/3.13/plugins/redirect/) 官方文档了解更多配置说明。（仅开放了部分字段配置）
 
 ## 步骤
 

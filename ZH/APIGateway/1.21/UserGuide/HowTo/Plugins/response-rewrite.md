@@ -8,7 +8,7 @@ bk-apigateway >= 1.16.x
 
 某些场景下需要修改响应体。
 
-建议查看 apisix 插件 [plugin: response-rewrite](https://apache-apisix.netlify.app/zh/docs/apisix/3.2/plugins/response-rewrite/) 官方文档了解更多配置说明。（仅开放了部分字段配置）
+建议查看 apisix 插件 [plugin: response-rewrite](https://apisix.apache.org/docs/apisix/3.13/plugins/response-rewrite/) 官方文档了解更多配置说明。（仅开放了部分字段配置）
 
 ## 步骤
 

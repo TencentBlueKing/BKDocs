@@ -8,7 +8,7 @@ bk-apigateway >= 1.15.x
 
 某些情况下，需要做故障注入，符合某些条件时，返回特定响应体，或者延迟特定时间再响应，以测试调用方是否处理对应的响应。
 
-建议查看 apisix 插件 [plugin: fault-injection](https://apache-apisix.netlify.app/docs/apisix/3.2/plugins/fault-injection/) 官方文档了解更多配置说明。
+建议查看 apisix 插件 [plugin: fault-injection](https://apisix.apache.org/docs/apisix/3.13/plugins/fault-injection/) 官方文档了解更多配置说明。
 
 ## 步骤
 
