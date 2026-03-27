@@ -2,7 +2,7 @@
 
 **数据库名：** devops_ci_process
 
-**文档版本：** 1.0.19
+**文档版本：** 1.0.20
 
 **文档描述：** devops_ci_process 的数据库文档
 | 表名                  | 说明       |
@@ -1051,10 +1051,11 @@
 |  19   | SRC_TEMPLATE_PROJECT_ID |   varchar   | 64 |   0    |    Y     |  N   |       | 模版的来源项目 ID  |
 |  20   | DEBUG_PIPELINE_COUNT |   int   | 10 |   0    |    N     |  N   |   0    | 调试流水线数  |
 |  21   | INSTANCE_PIPELINE_COUNT |   int   | 10 |   0    |    N     |  N   |   0    | 实例流水线数  |
-|  22   | CREATOR |   varchar   | 64 |   0    |    N     |  N   |       | 创建者  |
-|  23   | UPDATER |   varchar   | 64 |   0    |    Y     |  N   |       | 修改人  |
-|  24   | CREATED_TIME |   datetime   | 19 |   0    |    N     |  N   |   CURRENT_TIMESTAMP    | 创建时间  |
-|  25   | UPDATE_TIME |   datetime   | 19 |   0    |    N     |  N   |   CURRENT_TIMESTAMP    | 更新时间  |
+|  22   | CHANNEL |   varchar   | 32 |   0    |    Y     |  N   |   BS    | 来源渠道  |
+|  23   | CREATOR |   varchar   | 64 |   0    |    N     |  N   |       | 创建者  |
+|  24   | UPDATER |   varchar   | 64 |   0    |    Y     |  N   |       | 修改人  |
+|  25   | CREATED_TIME |   datetime   | 19 |   0    |    N     |  N   |   CURRENT_TIMESTAMP    | 创建时间  |
+|  26   | UPDATE_TIME |   datetime   | 19 |   0    |    N     |  N   |   CURRENT_TIMESTAMP    | 更新时间  |
 
 **表名：** <a>T_PIPELINE_TEMPLATE_MIGRATION</a>
 

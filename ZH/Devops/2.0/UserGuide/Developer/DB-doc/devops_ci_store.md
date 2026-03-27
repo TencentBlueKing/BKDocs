@@ -2,7 +2,7 @@
 
 **数据库名：** devops_ci_store
 
-**文档版本：** 1.0.19
+**文档版本：** 1.0.20
 
 **文档描述：** devops_ci_store 的数据库文档
 | 表名                  | 说明       |
@@ -10,7 +10,7 @@
 | T_APPS | 编译环境信息表 |
 | T_APP_ENV | 编译环境变量表 |
 | T_APP_VERSION | 编译环境版本信息表 |
-| T_ATOM | 流水线原子表 |
+| T_ATOM | 流水线插件表 |
 | T_ATOM_APPROVE_REL | 插件审核关联关系表 |
 | T_ATOM_BUILD_APP_REL | 流水线原子构建与编译环境关联关系表 |
 | T_ATOM_BUILD_INFO | 流水线原子构建信息表 |
@@ -128,7 +128,7 @@
 
 **表名：** <a>T_ATOM</a>
 
-**说明：** 流水线原子表
+**说明：** 流水线插件表
 
 **数据列：**
 
@@ -144,7 +144,7 @@
 |  8   | CLASSIFY_ID |   varchar   | 32 |   0    |    N     |  N   |       | 所属分类 ID  |
 |  9   | DOCS_LINK |   varchar   | 256 |   0    |    Y     |  N   |       | 文档跳转链接  |
 |  10   | ATOM_TYPE |   tinyint   | 4 |   0    |    N     |  N   |   1    | 原子类型  |
-|  11   | ATOM_STATUS |   tinyint   | 4 |   0    |    N     |  N   |       | 原子状态  |
+|  11   | ATOM_STATUS |   tinyint   | 4 |   0    |    N     |  N   |       | 插件状态  |
 |  12   | ATOM_STATUS_MSG |   varchar   | 1024 |   0    |    Y     |  N   |       | 插件状态信息  |
 |  13   | SUMMARY |   varchar   | 256 |   0    |    Y     |  N   |       | 简介  |
 |  14   | DESCRIPTION |   text   | 65535 |   0    |    Y     |  N   |       | 描述  |
@@ -174,6 +174,7 @@
 |  38   | BRANCH |   varchar   | 128 |   0    |    Y     |  N   |   master    | 代码库分支  |
 |  39   | BRANCH_TEST_FLAG |   bit   | 1 |   0    |    Y     |  N   |   b'0'    | 是否是分支测试版本  |
 |  40   | LATEST_TEST_FLAG |   bit   | 1 |   0    |    Y     |  N   |   b'0'    | 是否为最新测试版本原子，TRUE：最新 FALSE：非最新  |
+|  41   | CLASSIFY_ID_MAP |   text   | 65535 |   0    |    Y     |  N   |       | 多服务范围分类映射，JSON 格式：{"PIPELINE":"classifyId1","CREATIVE_STREAM":"classifyId2"}  |
 
 **表名：** <a>T_ATOM_APPROVE_REL</a>
 
@@ -464,6 +465,7 @@
 |  7   | CREATE_TIME |   datetime   | 19 |   0    |    N     |  N   |   CURRENT_TIMESTAMP    | 创建时间  |
 |  8   | UPDATE_TIME |   datetime   | 19 |   0    |    N     |  N   |   CURRENT_TIMESTAMP    | 更新时间  |
 |  9   | TYPE |   tinyint   | 4 |   0    |    N     |  N   |   0    | 类型  |
+|  10   | SERVICE_SCOPE |   varchar   | 64 |   0    |    Y     |  N   |       | 服务范围，PIPELINE：流水线 CREATIVE_STREAM：创作流  |
 
 **表名：** <a>T_CONTAINER</a>
 
@@ -637,6 +639,7 @@
 |  6   | CREATE_TIME |   datetime   | 19 |   0    |    N     |  N   |   CURRENT_TIMESTAMP    | 创建时间  |
 |  7   | UPDATE_TIME |   datetime   | 19 |   0    |    N     |  N   |   CURRENT_TIMESTAMP    | 更新时间  |
 |  8   | TYPE |   tinyint   | 4 |   0    |    N     |  N   |   0    | 类型  |
+|  9   | SERVICE_SCOPE |   varchar   | 64 |   0    |    Y     |  N   |       | 服务范围，PIPELINE：流水线 CREATIVE_STREAM：创作流  |
 
 **表名：** <a>T_LOGO</a>
 
