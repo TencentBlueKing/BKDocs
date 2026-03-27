@@ -79,7 +79,6 @@
 20250724	bk-monitor	__TYPE__	3.9.0-beta.27	3.9.0-beta.20	安全更新
 20250725	bcs-services-stack	__TYPE__	1.29.8	1.29.8	安全更新
 20250728	bcs-services-stack	__TYPE__	1.29.9	1.29.9	安全更新
-20250728	bk_sops	__TYPE__	3.33.16	--	
 20250728	bkpaas-app-operator	__TYPE__	1.6.0-beta.24	1.6.0-beta.24	安全更新
 20250728	bkpaas3	__TYPE__	1.6.0-beta.24	1.6.0-beta.24	安全更新
 20250729	bk-user	__TYPE__	1.4.14-beta.30	2.5.4-beta.30	安全更新
@@ -87,3 +86,5 @@
 20250801	bk-ci	__TYPE__	3.0.15-alpha.4	3.0.15-alpha.4	安全更新
 20250804	bk-ci	__TYPE__	3.0.15-alpha.6	3.0.15-alpha.6	安全更新
 20260210	bk-monitor	__TYPE__	3.9.0-beta.28	3.9.0-beta.21	
+20260327	bcs-services-stack	__TYPE__	1.29.11	1.29.11	
+20260327	bk-ci	__TYPE__	3.0.15-alpha.10	3.0.15-alpha.10	重要补丁

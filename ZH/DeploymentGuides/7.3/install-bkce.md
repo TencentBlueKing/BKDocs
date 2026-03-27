@@ -733,7 +733,7 @@ kubectl -n bkapp-cw0us0aitsm-prod exec -it deploy/cw0us0aitsm--web -- /app/.hero
 
 执行
 ```bash
-# 同步运营租户用户数据
+# 同步用户数据
 from bk_itsm.core.services.usermanager.tasks import refresh_organization_and_user
 refresh_organization_and_user("default")
 ```
