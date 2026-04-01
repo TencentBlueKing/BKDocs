@@ -295,7 +295,7 @@ export LOCALPV_DIR=/data/bcs/localpv LOCALPV_DST_DIR=/mnt/blueking LOCALPV_COUNT
 
 请在 **中控机** 使用如下命令下载文件到 `$INSTALL_DIR` 目录。
 ```bash
-bkdl-7-devel.sh -ur latest bkhelmfile demo scripts
+bkdl-7-devel.sh -ur latest bkhelmfile-st-subdomain demo scripts
 ```
 
 ## 配置 helm 仓库
@@ -405,15 +405,6 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
 
 ```bash
 helmfile -f base-storage.yaml.gotmpl sync
-```
-
-# 删除多租户配置（临时）
-
-```bash
-cd $INSTALL_DIR/blueking/  # 进入工作目录
-rm -f environments/default/tenant/*
-rm -f environments/default/tenant.yaml
-rm -f environments/default/version-tenant.yaml
 ```
 
 # 部署基础套餐
@@ -660,7 +651,7 @@ cd $INSTALL_DIR/blueking
 
 ### 部署蓝鲸配置平台
 
-> 这里需要提前将 `V3.15.1-feature-tenant18` 版本的包放置部署 saas 目录(`$INSTALL_DIR/saas`)并命名为 `bk_cmdb_saas.tgz`
+> 这里需要提前将包放置部署 saas 目录(`$INSTALL_DIR/saas`)并命名为 `bk_cmdb_saas.tgz`
 
 ```bash
 mkdir -v $INSTALL_DIR/saas # 创建目录
@@ -673,7 +664,7 @@ cd $INSTALL_DIR/blueking
 
 ### 标准运维
 
-> 这里需要提前将 ` bk_sops` 的包放置部署 saas 目录(`$INSTALL_DIR/saas`)并改名为 `bk_sops.tgz`
+> 这里需要提前将包放置部署 saas 目录(`$INSTALL_DIR/saas`)并改名为 `bk_sops.tgz`
 
 ```bash
 cd $INSTALL_DIR/blueking
@@ -682,7 +673,7 @@ cd $INSTALL_DIR/blueking
 
 ### CMSI
 
-> 这里需要提前将 `bk_cmsi` 的包放置部署 saas 目录并改名为 `bk_cmsi.tgz`
+> 这里需要提前将包放置部署 saas 目录并改名为 `bk_cmsi.tgz`
 
 部署
 ```bash
@@ -708,7 +699,7 @@ cd $INSTALL_DIR/blueking
 
 ### 流程服务 v3
 
-> 这里需要提前将 `bk_itsm-V2.7.12-rc.649-ce_paas3.tar.gz` 版本的包放置部署saas目录并改名为 `bk_itsm.tgz`
+> 这里需要提前将包放置部署 saas 目录并改名为 `bk_itsm.tgz`
 
 部署
 ```bash
@@ -718,7 +709,29 @@ cd $INSTALL_DIR/blueking
 
 ### 流程服务 v4
 
-> 这里需要提前将 `cw_aitsm-V4.5.203-rc.560-ce_paas3.tar.gz` 版本的包放置部署saas目录并改名为 `cw_aitsm.tgz`
+#### 临时操作
+```bash
+# 添加 actions 限额
+cd $INSTALL_DIR/blueking
+touch $INSTALL_DIR/blueking/environments/default/bkiam-custom-values.yaml.gotmpl
+helm get values bk-iam -a | yq e '{"customQuotas": .customQuotas}' | yq '
+  .customQuotas += [{
+    "id": "cw_aitsm",
+    "quota": {
+      "model": {
+        "max_actions_limit": 500,
+        "max_instance_selections_limit": 500,
+        "max_resource_types_limit": 500
+      }
+    }
+  }]
+' | tee environments/default/bkiam-custom-values.yaml.gotmpl
+
+# 重启iam
+helmfile -f base-blueking.yaml.gotmpl -l name=bk-iam sync
+```
+
+> 这里需要提前将包放置部署 saas 目录并改名为 `cw_aitsm.tgz`
 
 部署
 ```bash
@@ -735,7 +748,7 @@ kubectl -n bkapp-cw0us0aitsm-prod exec -it deploy/cw0us0aitsm--web -- /app/.hero
 ```bash
 # 同步用户数据
 from bk_itsm.core.services.usermanager.tasks import refresh_organization_and_user
-refresh_organization_and_user("default")
+refresh_organization_and_user()
 ```
 
 
@@ -839,7 +852,7 @@ helmfile -f 03-bcs.yaml.gotmpl sync
 参考 [权限中心授权管理员](#权限中心授权管理员)
 
 
-注：如果没有出现容器管理平台，等待 5~10分钟再刷新看看
+注：如果没有出现容器管理平台，等待 5~10 分钟再刷新看看
 
 
 ## 授权网关权限
@@ -854,5 +867,5 @@ helmfile -f 03-bcs.yaml.gotmpl sync
 - [部署监控日志套餐](./install-co-suite.md)（建议先部署容器管理平台）
 - [部署持续集成套餐](./install-ci-suite.md)
 
-等监控平台部署完毕后，可以 [启动蓝鲸 API 测试工具](helloworld)。
+等监控平台部署完毕后，可以 [启动蓝鲸 API 测试工具](helloworld)。（TODO）
 在部署期间，可以在文档中心查看产品文档。

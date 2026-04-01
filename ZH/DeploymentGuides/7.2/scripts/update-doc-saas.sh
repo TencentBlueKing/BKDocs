@@ -4,8 +4,8 @@ set -eu
 # 因为是SaaS，所以需要根据包名查询出所属的文档地址。
 case $PACKAGE in
   bk_itsm) DEPLOY_DOC="[部署流程服务（bk_itsm）](../manual-install-saas.md#部署流程服务（bk_itsm）)";;
-  bk_sops) DEPLOY_DOC="[部署流程服务（bk_sops）](../manual-install-saas.md#部署流程服务（bk_sops）)";;
-  bk_cmdb_saas) DEPLOY_DOC="[部署流程服务（bk_cmdb_saas）](../manual-install-saas.md#部署流程服务（bk_cmdb_saas）)";;
+  bk_sops) DEPLOY_DOC="[部署标准运维（bk_sops）](../manual-install-saas.md#部署标准运维（bk_sops）)";;
+  bk_cmdb_saas) DEPLOY_DOC="[部署配置平台 SaaS（bk_cmdb_saas）](../manual-install-saas.md#部署配置平台 SaaS（bk_cmdb_saas）)";;
   bk_lesscode) DEPLOY_DOC="[部署运维开发平台](../install-lesscode.md)";;
   bk_flow_engine) DEPLOY_DOC="[部署流程引擎服务](../install-flowengine.md)";;
   bk_notice) DEPLOY_DOC="[部署消息通知中心](../install-notice.md)";;

@@ -342,7 +342,7 @@ export LOCALPV_DIR=/data/bcs/localpv LOCALPV_DST_DIR=/mnt/blueking LOCALPV_COUNT
 
 请在 **中控机** 使用如下命令下载文件到 `$INSTALL_DIR` 目录。
 ```bash
-bkdl-7-devel.sh -ur "latest" bkhelmfile demo scripts # 这里bkhelmfile用新包来覆盖
+bkdl-7-devel.sh -ur "latest" bkhelmfile-st-subpath demo scripts
 ```
 
 ## 配置 helm 仓库
@@ -512,19 +512,19 @@ helm -n blueking get values bk-user -a | yq -o json | jq -r '"username: \(.bkuse
 
 **配置本地数据源**
 
-![bkuser-init-1](./assets/bkuser-init-1.png)
+![bkuser-init-1](../assets/bkuser-init-1.png)
 
 **登录设置**
 
-![bkuser-init-2](./assets/bkuser-init-2.png)
+![bkuser-init-2](../assets/bkuser-init-2.png)
 
 建议将密码生成方式配置为固定，该租户下新增用户的密码固定为 `Bluking@2025`
 
-![bkuser-init-3](./assets/bkuser-init-3.png)
+![bkuser-init-3](../assets/bkuser-init-3.png)
 
 配置租户管理员账号，用户名自行定义，该账号仅用于用户管理本身的租户数据管理
 
-![bkuser-init-4](./assets/bkuser-init-4.png)
+![bkuser-init-4](../assets/bkuser-init-4.png)
 
 ## 权限中心同步租户
 
@@ -660,7 +660,7 @@ kubectl get nodes -o=yaml | yq .items[].status.addresses[0].address | xargs -i s
 
 ### 消息通知中心
 
-> 这里需要提前将 `bk_notice` 的包放置部署 saas 目录(`$INSTALL_DIR/saas`)并改名为 `bk_notice.tgz`
+> 这里需要提前将包放置部署 saas 目录(`$INSTALL_DIR/saas`)并改名为 `bk_notice.tgz`
 
 ```bash
 mkdir -v $INSTALL_DIR/saas # 创建目录
@@ -686,7 +686,7 @@ cd $INSTALL_DIR/blueking
 
 ### 蓝鲸配置平台
 
-> 这里需要提前将 `bk_cmdb_saas` 包放置部署 saas 目录(`$INSTALL_DIR/saas`)并命名为 `bk_cmdb_saas.tgz`
+> 这里需要提前将包放置部署 saas 目录(`$INSTALL_DIR/saas`)并命名为 `bk_cmdb_saas.tgz`
 
 部署
 ```bash
@@ -696,7 +696,7 @@ cd $INSTALL_DIR/blueking
 
 ### 标准运维
 
-> 这里需要提前将 ` bk_sops` 包放置部署 saas 目录(`$INSTALL_DIR/saas`)并改名为 `bk_sops.tgz`
+> 这里需要提前将包放置部署 saas 目录(`$INSTALL_DIR/saas`)并改名为 `bk_sops.tgz`
 
 ```bash
 cd $INSTALL_DIR/blueking
@@ -705,7 +705,7 @@ cd $INSTALL_DIR/blueking
 
 ### CMSI
 
-> 这里需要提前将 `bk_cmsi` 包放置部署 saas 目录(`$INSTALL_DIR/saas`)并改名为 `bk_cmsi.tgz`
+> 这里需要提前将包放置部署 saas 目录(`$INSTALL_DIR/saas`)并改名为 `bk_cmsi.tgz`
 
 部署
 ```bash
@@ -731,7 +731,7 @@ cd $INSTALL_DIR/blueking
 
 ### 流程服务 v3
 
-> 这里需要提前将 `bk_itsm` 包放置部署 saas 目录(`$INSTALL_DIR/saas`)并改名为 `bk_itsm.tgz`
+> 这里需要提前将包放置部署 saas 目录(`$INSTALL_DIR/saas`)并改名为 `bk_itsm.tgz`
 
 部署
 ```bash
@@ -763,7 +763,7 @@ helm get values bk-iam -a | yq e '{"customQuotas": .customQuotas}' | yq '
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-iam sync
 ```
 
-> 这里需要提前将 `cw_aitsm` 的包放置部署 saas 目录并改名为 `cw_aitsm.tgz`
+> 这里需要提前将包放置部署 saas 目录并改名为 `cw_aitsm.tgz`
 
 部署
 ```bash
@@ -780,7 +780,7 @@ kubectl -n bkapp-cw0us0aitsm-prod exec -it deploy/cw0us0aitsm--web -- /app/.hero
 ```bash
 # 同步用户数据
 from bk_itsm.core.services.usermanager.tasks import refresh_organization_and_user
-refresh_organization_and_user("default")
+refresh_organization_and_user()
 ```
 
 同步运营租户用户数据
