@@ -2,17 +2,17 @@
 
 【智能体开发】-》【智能体】tab 下可以查看 “全部智能体/当前空间/我的智能体”，可以进行插件开发、调试、源码包下载。
 
-智能体是基于 LLM Agent Framework 二次开发的场景智能体 ，智能体源码可在蓝鲸 PaaS 平台进行部署，提供独立的场景智能体服务。
+智能体是基于 LLM Agent Framework 二次开发的场景智能体，智能体源码可在蓝鲸 PaaS 平台进行部署，提供独立的场景智能体服务。
 
 ![2026-03-13-15-50-43.png](../assets/2026-03-13-15-50-43.png)
 
 通过小鲸组件在线调试已开发的智能体。
 
-![2026-03-13-15-51-01.png](../assets/2026-03-13-15-51-01.png)
+![Agent_No-Code_Development_20260423185538.png](../assets/Agent_No-Code_Development_20260423185538.png))
 
 下载源码后，可以继续进行二次开发并部署，详见后续章节 基于LLM Agent Framework开发。
 
-![2026-03-13-15-51-12.png](../assets/2026-03-13-15-51-12.png)
+![Agent_No-Code_Development_20260423185739.png](../assets/Agent_No-Code_Development_20260423185739.png))
 
 ## 配置智能体 - 单智能体
 
@@ -28,67 +28,57 @@
 
 ### 配置智能体
 
-支持关联已配置的角色，可以快速复用该角色的提示词。
+支持自定义prompt或引用已配置的角色，或使用AI生成提示词，或从模板导入提示词。
 
-另外需要再选择智能体所使用的大模型，用于会话和检索（检索场景建议使用非深度思考模型，速度更快）。
+![Agent_No-Code_Development_20260423193215.png](../assets/Agent_No-Code_Development_20260423193215.png)
 
-![2026-03-13-15-51-58.png](../assets/2026-03-13-15-51-58.png)
+如果角色定义了变量，可以进行配置，点击角标可以快速定位。
 
-如果角色定义了变量，可以进行配置。
+![Agent_No-Code_Development_20260423193542.png](../assets/Agent_No-Code_Development_20260423193542.png)
 
-![2026-03-13-15-52-13.png](../assets/2026-03-13-15-52-13.png)
+选择智能体所使用的大模型，用于会话和检索（检索场景建议使用非深度思考模型，速度更快）。
 
-点击角标可以快速定位。
-
-![2026-03-13-15-52-23.png](../assets/2026-03-13-15-52-23.png)
+![Agent_No-Code_Development_20260423193358.png](../assets/Agent_No-Code_Development_20260423193358.png)
 
 按需填写开场白和预设的常用提示词。
-
-![2026-03-13-15-52-33.png](../assets/2026-03-13-15-52-33.png)
-
-可以定义当前智能体所支持的快捷指令（及其对应的输入），可以规范特定问答场景的输入。关联的外部智能体，也会以快捷指令的形式在此处展示。
-
-![2026-03-13-15-52-48.png](../assets/2026-03-13-15-52-48.png)
-
-以翻译场景为例，可定义下列输入和指令：
-
-![2026-03-13-15-52-59.png](../assets/2026-03-13-15-52-59.png)
+![Agent_No-Code_Development_20260423193913.png](../assets/Agent_No-Code_Development_20260423193913.png)
 
 按需选择需要关联的外部智能体，并勾选需要使用的快捷指令。可以通过快捷指令的方式实现多智能体之间的切换调用。
+![Agent_No-Code_Development_20260423194506.png](../assets/Agent_No-Code_Development_20260423194506.png)
 
-![2026-03-13-15-53-10.png](../assets/2026-03-13-15-53-10.png)
+可以定义当前智能体所支持的快捷指令（及其对应的输入），用于规范特定问答场景的输入。关联的外部智能体，也会以快捷指令的形式在此处展示。
+![Agent_No-Code_Development_20260423194019.png](../assets/Agent_No-Code_Development_20260423194019.png)
+
+以翻译场景为例，可定义下列输入和指令：
+![Agent_No-Code_Development_20260423194246.png](../assets/Agent_No-Code_Development_20260423194246.png)
 
 按需选择需要关联的知识库和检索方式。
 
 检索方式：语义检索适合 文本理解 的检索场景；混合检索适合 文本理解、数值、固定文案 多种混合的检索场景。
 
-![2026-03-13-15-55-00.png](../assets/2026-03-13-15-55-00.png)
+![Agent_No-Code_Development_20260423194601.png](../assets/Agent_No-Code_Development_20260423194601.png)
 
-修改检索参数以调整召回结果，具体参数的调试可以在 知识库 的 检索测试 功能中进行。
+修改检索参数以调整召回结果，具体参数的调试可以在 检索测试 功能中进行。
+![Agent_No-Code_Development_20260423194640.png](../assets/Agent_No-Code_Development_20260423194640.png)
+![Agent_No-Code_Development_20260423194736.png](../assets/Agent_No-Code_Development_20260423194736.png)
 
-![2026-03-13-15-55-10.png](../assets/2026-03-13-15-55-10.png)
-
-![2026-03-13-15-55-20.png](../assets/2026-03-13-15-55-20.png)
+按需选择需要关联的skill。
+![Agent_No-Code_Development_20260424102440.png](../assets/Agent_No-Code_Development_20260424102440.png)
 
 按需选择需要关联的工具或MCP。
+![Agent_No-Code_Development_20260423194832.png](../assets/Agent_No-Code_Development_20260423194832.png)
 
-![2026-03-13-15-55-31.png](../assets/2026-03-13-15-55-31.png)
-
-可以按空间选择当前空间有使用权限的工具或MCP。
-
-![2026-03-13-15-56-25.png](../assets/2026-03-13-15-56-25.png)
-
-若无使用权限，可以点击【去申请】前往【空间管理】申请。
-
-![2026-03-13-15-56-35.png](../assets/2026-03-13-15-56-35.png)
+如需申请其他空间的资源（MCP、工具、智能体、skill等），可以点击【去申请】前往【空间管理】申请。
+![Agent_No-Code_Development_20260423194958.png](../assets/Agent_No-Code_Development_20260423194958.png)
 
 在MCP的【全部】中，可以选择 蓝鲸API网关 来源的MCP，若无使用权限，勾选后将会自动提单，可联系相应审批人进行审批。
+![Agent_No-Code_Development_20260423195201.png](../assets/Agent_No-Code_Development_20260423195201.png)
 
-![2026-03-13-15-56-47.png](../assets/2026-03-13-15-56-47.png)
+如果MCP或工具需要凭证，在调试时输入凭证即可。
+![Agent_No-Code_Development_20260423195403.png](../assets/Agent_No-Code_Development_20260423195403.png)
 
 调试无误之后，即可进行发布。
-
-![2026-03-13-15-56-58.png](../assets/2026-03-13-15-56-58.png)
+![Agent_No-Code_Development_20260423195243.png](../assets/Agent_No-Code_Development_20260423195243.png)
 
 ## 配置智能体 - 流程类智能体
 
@@ -106,36 +96,29 @@
 
 通过编辑画布，配置流程类智能体的业务逻辑。
 
-注意：流程类智能体的部分功能（关联智能体、对话设置、快捷指令、小鲸组件、网页聊天窗、企微机器人）还在开发中，目前仅支持 API渠道 调用流程类智能体。
+![Agent_No-Code_Development_20260423195551.png](../assets/Agent_No-Code_Development_20260423195551.png)
 
-![2026-03-13-16-06-38.png](../assets/2026-03-13-16-06-38.png)
-
-在画布中按需编排所需节点，目前支持 模型、智能体、插件 三类功能节点。
-
-![2026-03-13-16-06-49.png](../assets/2026-03-13-16-06-49.png)
+在画布中按需编排所需节点，目前支持 模型、智能体、知识库、插件 功能节点。
+![Agent_No-Code_Development_20260423195708.png](../assets/Agent_No-Code_Development_20260423195708.png)
 
 - 模型
-
-![2026-03-13-16-06-59.png](../assets/2026-03-13-16-06-59.png)
-  
+![Agent_No-Code_Development_20260423195749.png](../assets/Agent_No-Code_Development_20260423195749.png)
   示例如下
-
   ![2026-03-13-16-07-07.png](../assets/2026-03-13-16-07-07.png)
 
 - 智能体
-
-![2026-03-13-16-07-17.png](../assets/2026-03-13-16-07-17.png)
-  
+![Agent_No-Code_Development_20260423195821.png](../assets/Agent_No-Code_Development_20260423195821.png)  
   示例如下
-
   ![2026-03-13-16-07-26.png](../assets/2026-03-13-16-07-26.png)
 
-- 插件
-
-![2026-03-13-16-07-34.png](../assets/2026-03-13-16-07-34.png)
-  
+- 知识库
+![Agent_No-Code_Development_20260423200029.png](../assets/Agent_No-Code_Development_20260423200029.png)
   示例如下
+  ![Agent_No-Code_Development_20260423200149.png](../assets/Agent_No-Code_Development_20260423200149.png)
 
+- 插件
+![Agent_No-Code_Development_20260423195901.png](../assets/Agent_No-Code_Development_20260423195901.png)  
+  示例如下
   ![2026-03-13-16-07-45.png](../assets/2026-03-13-16-07-45.png)
 
 ### 变量管理
@@ -194,18 +177,14 @@
 目前提供五种使用渠道。
 
 页面聊天窗 可以直接访问或者进行分享。
-
-![2026-03-13-16-14-57.png](../assets/2026-03-13-16-14-57.png)
+![Agent_No-Code_Development_20260423200333.png](../assets/Agent_No-Code_Development_20260423200333.png)
 
 API调用 和 小鲸聊天窗 可以直接查看使用文档。
-
-![2026-03-13-16-15-04.png](../assets/2026-03-13-16-15-04.png)
+![Agent_No-Code_Development_20260423200400.png](../assets/Agent_No-Code_Development_20260423200400.png)
 
 如需使用 企微智能机器人 功能，只需打开开关，并按使用文档申请权限即可。
 
-推荐使用BKChat 企微智能机器人，无需审批，一键开启。
-
-![2026-03-13-16-15-14.png](../assets/2026-03-13-16-15-14.png)
+![Agent_No-Code_Development_20260423200514.png](../assets/Agent_No-Code_Development_20260423200514.png)
 
 如需对小鲸聊天窗提供【转人工】服务，可将客服号绑定到当前Agent，操作如下：
 
@@ -234,19 +213,14 @@ API调用 和 小鲸聊天窗 可以直接查看使用文档。
 ## 使用文档
 
 编辑使用文档，供用户使用时查看。
-
-![2026-03-13-16-16-52.png](../assets/2026-03-13-16-16-52.png)
-
-![2026-03-13-16-17-01.png](../assets/2026-03-13-16-17-01.png)
+![Agent_No-Code_Development_20260423200620.png](../assets/Agent_No-Code_Development_20260423200620.png)
+![Agent_No-Code_Development_20260423200703.png](../assets/Agent_No-Code_Development_20260423200703.png)
 
 ## 使用权限
 
 控制智能体对外使用渠道（小鲸组件、页面聊天窗）的人员使用权限，默认全开放。
-
-![2026-03-13-16-17-10.png](../assets/2026-03-13-16-17-10.png)
+![Agent_No-Code_Development_20260423200733.png](../assets/Agent_No-Code_Development_20260423200733.png)
 
 ## 运营管理
-
 可以查看智能体各个渠道的所有使用记录，包括 调试/测试、正式 的调用。
-
 ![2026-03-13-16-17-20.png](../assets/2026-03-13-16-17-20.png)
