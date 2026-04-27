@@ -59,7 +59,7 @@
             -
               name: {{ IndexNetworkManagement }}
             - 
-              name: {{ IndexBkaidev }}
+              name: {{ IndexBkAidev }}
         - 
           name: {{ IndexPaaSService }}
           children:
@@ -147,7 +147,7 @@
             -
               name: {{ DocNetworkManagement }}
             -
-              name: {{ DocBkaidev }}
+              name: {{ DocBkAidev }}
         - 
           name: {{ DocPaaSService }}
           children:
