@@ -1,7 +1,5 @@
 # 常见问题
 
-## 智能体开发常见问题
-
 Q： 本地开发报错日志没法显示
 
 A： 可以尝试配置以下local_settings.py，这个文件会覆盖默认的django settings
@@ -42,8 +40,6 @@ from langchain.globals import set_debug, set_verbose
 set_verbose(True)
 set_debug(True)
 ```
-
-## 环境变量相关问题
 
 Q：智能体相关环境变量有哪些
 

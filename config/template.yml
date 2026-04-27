@@ -58,6 +58,8 @@
               name: {{ IndexDBM }}
             -
               name: {{ IndexNetworkManagement }}
+            - 
+              name: {{ IndexBkaidev }}
         - 
           name: {{ IndexPaaSService }}
           children:
@@ -144,6 +146,8 @@
               name: {{ DocDBM }}
             -
               name: {{ DocNetworkManagement }}
+            -
+              name: {{ DocBkaidev }}
         - 
           name: {{ DocPaaSService }}
           children:

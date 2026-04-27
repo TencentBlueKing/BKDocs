@@ -2,6 +2,14 @@
 # -*- coding: utf-8 -*-
 """扫描图片目录（assets、img、images 等），并统计在产品目录中的引用情况。"""
 
+# 执行：
+# 1. 全量扫描：在 support-docs 目录下运行，自动扫描 ZH 下每个产品的 assets 目录
+#   python3 script/find_unused_assets.py
+#
+# 2. 扫描特定目录：指定某一个产品版本目录执行，会扫除当前产品的当前版本的所有未引用图片
+#   python3 script/find_unused_assets.py --assets-dir ZH/产品A/assets
+
+
 import argparse
 from pathlib import Path
 import re
@@ -56,13 +64,14 @@ def collect_references(product_dir):
                 candidate = candidate.replace('\\', '/')
                 # 去掉可能的查询参数或锚点
                 candidate = re.split('[#?]', candidate, 1)[0]
-                refs.add(candidate)
+                refs.add(candidate.lower())
 
         # 兼容直接引用文件名的情况（图片名相同）
         for ext in IMAGE_EXTS:
             # 语法上很容易误判，但仅作为补充
             pattern = rf"\\b[^\\s\"'()]*{re.escape(ext)}\\b"
             for token in re.findall(pattern, text, flags=re.IGNORECASE):
+                token = token.lower()
                 if 'assets/' in token:
                     token = token.split('assets/')[-1]
                     refs.add('assets/' + token)
@@ -71,14 +80,14 @@ def collect_references(product_dir):
 
 
 def image_used_in_refs(img_path, refs, assets_dir):
-    img_rel = str(img_path.relative_to(assets_dir)).replace('\\', '/')
+    img_rel = str(img_path.relative_to(assets_dir)).replace('\\', '/').lower()
     img_name = img_path.name.lower()
     
     # 生成可能的引用前缀（assets/、img/、images/ 等）
     possible_keys = [f"{dir_name}/{img_rel}" for dir_name in IMAGE_DIRS]
 
     for r in refs:
-        r_norm = r.strip().replace('\\', '/')
+        r_norm = r.strip().replace('\\', '/').lower()
         # 检查是否匹配任何可能的目录前缀
         if any(r_norm.endswith(key) for key in possible_keys) or r_norm.endswith(img_rel) or r_norm.endswith(img_name):
             return True
@@ -121,7 +130,7 @@ def scan_specific_assets(assets_dir):
 
         for img_path in images:
             if not image_used_in_refs(img_path, refs, assets_dir):
-                unused.append(img_path.relative_to(Path.cwd()))
+                unused.append(img_path.relative_to(zh_root))
 
         # 统一输出格式，无论有没有未引用图片
         print(f"\n产品：{product_dir.name}，图片目录位置：{assets_dir.relative_to(zh_root)}")
@@ -134,11 +143,23 @@ def scan_specific_assets(assets_dir):
     return 0
 
 
+def find_zh_root():
+    """从当前目录向上查找 ZH 目录"""
+    current = Path.cwd()
+    for parent in [current] + list(current.parents):
+        if parent.name.upper() == 'ZH':
+            return parent
+        zh_candidate = parent / 'ZH'
+        if zh_candidate.exists() and zh_candidate.is_dir():
+            return zh_candidate
+    return None
+
+
 def scan_all_products():
     """全量扫描：遍历 ZH 下的每个产品，找出该产品的 assets 目录并扫描"""
-    zh_root = Path('ZH').expanduser().resolve()
-    if not zh_root.exists() or not zh_root.is_dir():
-        print(f"ZH 目录不存在：{zh_root}")
+    zh_root = find_zh_root()
+    if not zh_root:
+        print("无法找到 ZH 目录，请确保在 support-docs 目录或其子目录下运行")
         return 1
 
     products = sorted([p for p in zh_root.iterdir() if p.is_dir()])
