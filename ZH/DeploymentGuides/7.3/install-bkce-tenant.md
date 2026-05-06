@@ -8,12 +8,6 @@
 5. 部署基础套餐
 6. 部署容器管理套餐
 
-
-# 需要提供的包
-
-- 部署 helmfile 包
-- saas 包
-
 # 机器信息
 
 配置参考 [环境要求](https://bk.tencent.com/docs/markdown/ZH/DeploymentGuides/7.2/prepare.md)

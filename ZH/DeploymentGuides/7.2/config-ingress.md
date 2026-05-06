@@ -173,9 +173,10 @@ kubectl delete pod -n blueking -l 'app.kubernetes.io/instance=bk-paas,app.kubern
 ```
 重启第四、五批：
 ``` bash
-helmfile -f base-blueking.yaml.gotmpl -l seq=fourth,fifth sync
+helmfile -f base-blueking.yaml.gotmpl -l seq=fourth sync
  # 如果bk-job sync报错，则把bk-job的migrate job删除后再重新sync
 kubectl delete pod -n blueking -l 'app.kubernetes.io/instance=bk-job,app.kubernetes.io/component in (job-file-worker, job-frontend, job-gateway, job-logsvr)'  # bk-job 多个 pod 不会重启，主动删除等重建
+helmfile -f base-blueking.yaml.gotmpl -l seq=fifth sync
 ```
 
 #### 重启蓝鲸监控日志套餐
