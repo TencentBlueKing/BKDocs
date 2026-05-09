@@ -258,6 +258,18 @@ IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath
 ./scripts/control_coredns.sh list  # 检查添加的记录。
 ```
 
+## 配置 JWT
+
+在 **中控机** 执行：
+```bash
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+bkCiJwtRsaPrivateKey=$(yq '.config.bkCiJwtRsaPrivateKey' ./environments/default/bkci/bkci-custom-values.yaml.gotmpl)
+touch ./environments/default/bkci/bkcodecc-custom-values.yaml.gotmpl
+yq -i ".config.bkCiJwtRsaPrivateKey=\"$bkCiJwtRsaPrivateKey\"" ./environments/default/bkci/bkcodecc-custom-values.yaml.gotmpl
+# 检查是否生效
+yq ".config.bkCiJwtRsaPrivateKey" ./environments/default/bkci/bkcodecc-custom-values.yaml.gotmpl
+```
+
 ## 部署
 请在 **中控机** 执行：
 ``` bash
