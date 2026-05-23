@@ -123,10 +123,63 @@ helmfile -f base-blueking.yaml.gotmpl -l name=bk-paas -l name=bkpaas-app-operato
 ### 部署 bk-job
 作业平台。
 
-在中控机工作目录下执行：
+#### 配置加密
+
+> 注意：只有 `job.encrypt.password` 这个涉及到持久化的数据，修改后能够兼容读取老数据，但是如果需要彻底更新掉默认的旧密码加密的数据的话，需要手动改配置触发下存量数据迁移。
+> 
+
+```bash
+jobEncryptPassword=$(openssl rand -base64 12 | tr '+/' '_-' | cut -c1-16)
+jobArtifactoryPassword=$(openssl rand -base64 12 | tr '+/' '_-' | cut -c1-16)
+jobActuatorUserPassword=$(openssl rand -base64 12 | tr '+/' '_-' | cut -c1-16)
+read -r jobSm2PrivateKey jobSm2PublicKey < <(
+  kubectl -n blueking run bk-job-keypair --rm -i --image hub.bktencent.com/dev/blueking/bk-job-keypair:0.0.1 -- python sm2_keypair/generate_sm2_keypair.py 2>/dev/null | 
+  awk '
+    /原始私钥:/ {getline; priv=$1} 
+    /原始公钥:/ {getline; pub=$1} 
+    END {print priv, pub}
+  '
+)
+read -r jobPrivateKeyBase64 jobPublicKeyBase64 < <(
+  kubectl -n blueking run bk-job-keypair --rm -i --quiet --restart=Never --image hub.bktencent.com/dev/blueking/bk-job-keypair:0.0.1 -- python service-rsa-keypair/generate_service_rsa_keys.py 2>/dev/null | \
+  jq -r '."job.security.privateKeyBase64" + " " + ."job.security.publicKeyBase64"'
+)
+
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+touch ./environments/default/bkjob-custom-values.yaml.gotmpl
+
+yq -i "
+  .job.encrypt.password = \"$jobEncryptPassword\" |
+  .job.encrypt.sm2PublicKey = \"$jobSm2PublicKey\" |
+  .job.encrypt.sm2PrivateKey = \"$jobSm2PrivateKey\" |
+  .job.security.actuator.user.password = \"$jobActuatorUserPassword\" |
+  .job.security.privateKeyBase64 = \"$jobPrivateKeyBase64\" |
+  .job.security.publicKeyBase64 = \"$jobPublicKeyBase64\" |
+  .artifactory.job.password = \"$jobArtifactoryPassword\"
+" ./environments/default/bkjob-custom-values.yaml.gotmpl
+```
+
+检查输出，如果校验不通过，请根据空字段重新执行上述生成密钥命令后写入文件。
+```bash
+yq -e '
+  (.job.encrypt.password            | length > 0) and
+  (.job.encrypt.sm2PublicKey        | length > 0) and
+  (.job.encrypt.sm2PrivateKey       | length > 0) and
+  (.job.security.actuator.user.password | length > 0) and
+  (.job.security.privateKeyBase64   | length > 0) and
+  (.job.security.publicKeyBase64    | length > 0) and
+  (.artifactory.job.password        | length > 0)
+' "$TARGET_FILE" >/dev/null \
+  && echo "INFO: 校验通过" \
+  || { echo "ERROR: 存在空字段,请检查 ./environments/default/bkjob-custom-values.yaml.gotmpl" >&2; }
+```
+
+在中控机工作目录下执行部署：
 ``` bash
 helmfile -f base-blueking.yaml.gotmpl -l name=bk-job sync
 ```
+
+如果部署后作业平台页面打开返回 500 报错，后端 bk-job-gateway 日志提示 `Unable to calculate signature using RSA PrivateKey. Could not sign data`，请检查或重新生成密钥后重新部署作业平台。
 
 # 访问蓝鲸桌面
 
@@ -196,7 +249,6 @@ $IP1 bklog.$BK_DOMAIN  # 日志平台
 $IP1 bkmonitor.$BK_DOMAIN  # 监控平台
 $IP1 devops.$BK_DOMAIN  # 持续集成平台-蓝盾
 $IP1 codecc.$BK_DOMAIN  # 持续集成平台-代码检查
-$IP1 lesscode.$BK_DOMAIN  # 运维开发平台
 $IP1 bk-apicheck.$BK_DOMAIN  # apicheck 测试工具
 $IP1 bscp.$BK_DOMAIN  # 服务配置中心
 $IP1 bscp-api.$BK_DOMAIN  # 服务配置中心

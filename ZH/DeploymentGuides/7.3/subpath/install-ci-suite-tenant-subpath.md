@@ -9,21 +9,7 @@
 ### 流程服务
 新的 RBAC 权限方案由 **权限中心** 提供能力支撑，会调用 **流程服务** 处理权限单据，请提前安装。
 
-## 配置 coredns
-
-在 **中控机** 执行：
-``` bash
-cd $INSTALL_DIR/blueking/  # 进入工作目录
-BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
-IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-./scripts/control_coredns.sh update "$IP1" devops.$BK_DOMAIN
-./scripts/control_coredns.sh list  # 检查添加的记录。
-```
-
 ## 启用 JWT
->**注意**
->
->本功能在 `bk-ci-3.0.15-alpha.1` 引入，并随 `7.2.12` 发布 `3.0.15-alpha.4`。可查阅 [单产品更新索引](update.md) 获取最新版本号。
 
 对蓝盾网关及所有微服务启用 JWT 认证，可以避免来自构建机或者内网其他来源的攻击。
 
@@ -121,9 +107,12 @@ kubectl exec -it -n blueking bk-ci-mysql-0 -- /bin/bash -c 'MYSQL_PWD="$MYSQL_RO
   然后重新查询数据库，可以看到 `IMAGE_REPO_NAME` 列已经更新。
 * 如果没有镜像，可以新增：
   ``` bash
+  cd $INSTALL_DIR/blueking/
+  bkCiJwtRsaPrivateKey=$(yq .config.bkCiJwtRsaPrivateKey environments/default/bkci/bkci-custom-values.yaml.gotmpl)
+  JWT_TOKEN=$(kubectl -n blueking exec deploy/bk-ci-bk-ci-auth -c auth -- bash /data/workspace/scripts/bk-ci-gen-jwt-token.sh $bkCiJwtRsaPrivateKey 'init-iam')
   kubectl exec -n blueking deploy/bk-ci-bk-ci-store -- \
     curl -vs http://bk-ci-bk-ci-store.blueking.svc.cluster.local/api/op/market/image/init -X POST \
-      -H 'X-DEVOPS-UID: bk_admin' -H 'Content-type: application/json' -d '{"imageCode":"bkci","imageName":"bkci","imageRepo":"hub.bktencent.com/blueking/ci","projectCode":"demo","userId":"admin"}' | jq .
+      -H "X-DEVOPS-JWT-TOKEN: $JWT_TOKEN" -H 'X-DEVOPS-UID: bk_admin' -H 'Content-type: application/json' -d '{"imageCode":"bkci","imageName":"bkci","imageRepo":"hub.bktencent.com/blueking/ci","projectCode":"demo","userId":"bk_admin"}' | jq .
   ```
   >**提示**
   >

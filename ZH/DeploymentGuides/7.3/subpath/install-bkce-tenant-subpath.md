@@ -506,6 +506,58 @@ helmfile -f base-blueking.yaml.gotmpl  -l name=bk-gse apply
 
 ## 部署作业平台
 
+### 配置加密
+
+> 注意：只有 `job.encrypt.password` 这个涉及到持久化的数据，修改后能够兼容读取老数据，但是如果需要彻底更新掉默认的旧密码加密的数据的话，需要手动改配置触发下存量数据迁移。
+> 
+
+```bash
+jobEncryptPassword=$(openssl rand -base64 12 | tr '+/' '_-' | cut -c1-16)
+jobArtifactoryPassword=$(openssl rand -base64 12 | tr '+/' '_-' | cut -c1-16)
+jobActuatorUserPassword=$(openssl rand -base64 12 | tr '+/' '_-' | cut -c1-16)
+read -r jobSm2PrivateKey jobSm2PublicKey < <(
+  kubectl -n blueking run bk-job-keypair --rm -i --image hub.bktencent.com/dev/blueking/bk-job-keypair:0.0.1 -- python sm2_keypair/generate_sm2_keypair.py 2>/dev/null | 
+  awk '
+    /原始私钥:/ {getline; priv=$1} 
+    /原始公钥:/ {getline; pub=$1} 
+    END {print priv, pub}
+  '
+)
+read -r jobPrivateKeyBase64 jobPublicKeyBase64 < <(
+  kubectl -n blueking run bk-job-keypair --rm -i --quiet --restart=Never --image hub.bktencent.com/dev/blueking/bk-job-keypair:0.0.1 -- python service-rsa-keypair/generate_service_rsa_keys.py 2>/dev/null | \
+  jq -r '."job.security.privateKeyBase64" + " " + ."job.security.publicKeyBase64"'
+)
+
+cd $INSTALL_DIR/blueking/  # 进入工作目录
+touch ./environments/default/bkjob-custom-values.yaml.gotmpl
+
+yq -i "
+  .job.encrypt.password = \"$jobEncryptPassword\" |
+  .job.encrypt.sm2PublicKey = \"$jobSm2PublicKey\" |
+  .job.encrypt.sm2PrivateKey = \"$jobSm2PrivateKey\" |
+  .job.security.actuator.user.password = \"$jobActuatorUserPassword\" |
+  .job.security.privateKeyBase64 = \"$jobPrivateKeyBase64\" |
+  .job.security.publicKeyBase64 = \"$jobPublicKeyBase64\" |
+  .artifactory.job.password = \"$jobArtifactoryPassword\"
+" ./environments/default/bkjob-custom-values.yaml.gotmpl
+```
+
+检查输出，如果校验不通过，请重新执行上述生成密钥命令后写入文件。
+```bash
+yq -e '
+  (.job.encrypt.password            | length > 0) and
+  (.job.encrypt.sm2PublicKey        | length > 0) and
+  (.job.encrypt.sm2PrivateKey       | length > 0) and
+  (.job.security.actuator.user.password | length > 0) and
+  (.job.security.privateKeyBase64   | length > 0) and
+  (.job.security.publicKeyBase64    | length > 0) and
+  (.artifactory.job.password        | length > 0)
+' "$TARGET_FILE" >/dev/null \
+  && echo "INFO: 校验通过" \
+  || { echo "ERROR: 存在空字段,请检查 ./environments/default/bkjob-custom-values.yaml.gotmpl" >&2; }
+```
+
+部署
 ```bash
 helmfile -f base-blueking.yaml.gotmpl  -l seq=fourth sync
 ```
@@ -594,34 +646,37 @@ echo "tenant_supermanager_userid=\"$tenant_supermanager_userid\"".
 ### 下载基础文件
 
 ```bash
-bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 common
+bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.6 common
 
 for v in 2.7.18 3.6.8 3.6.12 3.10.5 3.11.10; do
-  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 python=$v
+  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.6 python=$v
+done
+for v in 3.11.14 3.12.12 3.13.11 3.14.2;do
+  bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.6 python-heroku24=$v
 done
 # 这些pip同时提供py2和py3版本。
 for v in 9.0.2 19.1.1 20.0.2 20.1.1 20.2.3 20.2.4 20.3.4; do
-  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 pip-whl-py23=$v
+  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.6 pip-whl-py23=$v
 done
 # 这些pip仅提供py3版本。
 for v in 21.3.1 22.0.4 22.1.2 22.2.2 22.3.1 23.0.1; do
-  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 pip-whl=$v
+  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.6 pip-whl=$v
 done
 
 for v in 10.10.0 12.16.3 14.16.1 16.16.0; do
-  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.5 node=$v
+  bkdl-7.2-stable.sh -C ce7/paas-runtimes -r paas3-1.6 node=$v
 done
 
-for v in 1.12.17 1.17.10 1.18.6 1.19.1 1.20.14 1.22.3; do
-  bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 go=$v
+for v in 1.12.17 1.17.10 1.18.6 1.19.1 1.20.14 1.22.3 1.22.12 1.23.8 1.23.12 1.24.2 1.24.10 1.25.4; do
+  bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.6 go=$v
 done
 
 # 下载python开发框架模板
-bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 pysdk
+bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.6 pysdk
 # 下载node开发框架模板
-bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 nodesdk
+bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.6 nodesdk
 # 下载golang开发框架模板
-bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.5 gosdk
+bkdl-7.2-stable.sh -C ce7/paas-runtimes -ur paas3-1.6 gosdk
 ```
 
 ### 上传文件
