@@ -114,3 +114,5 @@
 20260523	bk_itsm	__TYPE__	2.8.0-rc.705	--	安全更新
 20260523	bk-ci	__TYPE__	3.0.15-beta.13	3.0.15-beta.13	安全更新
 20260525	bk_itsm	__TYPE__	2.8.0-rc.706	--	安全更新
+20260526	bk-console	__TYPE__	0.1.5-beta.8	0.1.5-beta.8	安全更新
+20260526	bk-monitor	__TYPE__	3.9.0-beta.31	3.9.0-beta.31	安全更新
