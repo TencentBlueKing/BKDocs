@@ -807,6 +807,12 @@ cd $INSTALL_DIR/blueking
 ./scripts/bk-tenant-admin.sh flush system user
 ```
 
+#### API 网关初始化 ITSM 资源
+
+```bash
+kubectl -n blueking exec deploy/bk-apigateway-dashboard -c bk-apigateway-dashboard -- python manage.py register_to_itsm
+```
+
 ### 授权 saas 管理员权限
 
 ```bash

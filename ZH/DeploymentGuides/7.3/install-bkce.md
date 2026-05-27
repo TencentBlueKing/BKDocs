@@ -800,6 +800,11 @@ from bk_itsm.core.services.usermanager.tasks import refresh_organization_and_use
 refresh_organization_and_user()
 ```
 
+#### API 网关初始化 ITSM 资源
+
+```bash
+kubectl -n blueking exec deploy/bk-apigateway-dashboard -c bk-apigateway-dashboard -- python manage.py register_to_itsm
+```
 
 ### 授权 saas 管理员权限
 
