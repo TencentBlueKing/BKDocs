@@ -68,7 +68,7 @@ jobEncryptPassword=$(openssl rand -base64 12 | tr '+/' '_-' | cut -c1-16)
 jobArtifactoryPassword=$(openssl rand -base64 12 | tr '+/' '_-' | cut -c1-16)
 jobActuatorUserPassword=$(openssl rand -base64 12 | tr '+/' '_-' | cut -c1-16)
 read -r jobSm2PrivateKey jobSm2PublicKey < <(
-  kubectl -n blueking run bk-job-keypair --rm -i --image hub.bktencent.com/dev/blueking/bk-job-keypair:0.0.1 -- python sm2_keypair/generate_sm2_keypair.py 2>/dev/null | 
+  kubectl -n blueking run bk-job-keypair --rm -i --image hub.bktencent.com/blueking/bk-job-keypair:0.0.1 -- python sm2_keypair/generate_sm2_keypair.py 2>/dev/null | 
   awk '
     /原始私钥:/ {getline; priv=$1} 
     /原始公钥:/ {getline; pub=$1} 
@@ -76,7 +76,7 @@ read -r jobSm2PrivateKey jobSm2PublicKey < <(
   '
 )
 read -r jobPrivateKeyBase64 jobPublicKeyBase64 < <(
-  kubectl -n blueking run bk-job-keypair --rm -i --quiet --restart=Never --image hub.bktencent.com/dev/blueking/bk-job-keypair:0.0.1 -- python service-rsa-keypair/generate_service_rsa_keys.py 2>/dev/null | \
+  kubectl -n blueking run bk-job-keypair --rm -i --quiet --restart=Never --image hub.bktencent.com/blueking/bk-job-keypair:0.0.1 -- python service-rsa-keypair/generate_service_rsa_keys.py 2>/dev/null | \
   jq -r '."job.security.privateKeyBase64" + " " + ."job.security.publicKeyBase64"'
 )
 
@@ -104,7 +104,7 @@ yq -e '
   (.job.security.privateKeyBase64   | length > 0) and
   (.job.security.publicKeyBase64    | length > 0) and
   (.artifactory.job.password        | length > 0)
-' "$TARGET_FILE" >/dev/null \
+' ./environments/default/bkjob-custom-values.yaml.gotmpl >/dev/null \
   && echo "INFO: 校验通过" \
   || { echo "ERROR: 存在空字段,请检查 ./environments/default/bkjob-custom-values.yaml.gotmpl" >&2; }
 ```
