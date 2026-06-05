@@ -125,7 +125,9 @@ dashboard:
       value: "true"
 ```
 
-### 启用 MCP Prompt 功能以及 Mock 模式
+### MCP 相关配置
+
+启用 MCP Prompt 功能以及 Mock 模式
 
 ```yaml
 dashboard:
@@ -136,10 +138,30 @@ dashboard:
       value: "true"
 ```
 
+
 ### 汇总
 
 ```yaml
-
+dashboard:
+  extraEnvVars:
+    - name: FEATURE_FLAG_ENABLE_MCP_SERVER_PROMPT
+      value: "true"
+    - name: BKAIDEV_USE_MOCK
+      value: "true"
+    - name: FEATURE_FLAG_ENABLE_GATEWAY_OPERATION_STATUS
+      value: "true"
+    - name: FEATURE_FLAG_ENABLE_HEALTH_CHECK
+      value: "true"
+bkrepoConfig:
+  genericBucket: generic
+  mavenRepositoryID: system.bkpaas-maven
+  mavenRepositoryPassword: "" # 制品库创建个人令牌
+  mavenRepositoryURL: "{{ .Values.bkDomainScheme }}://bkrepo.{{ .Values.domain.bkDomain }}/maven/system.bkpaas/maven/"
+  mavenRepositoryUsername: "" # 创建个人令牌的用户
+  apigatewayPassword: blueking
+  apigatewayProject: system.bkpaas
+  apigatewayUsername: bkpaas3
+bkPaas3Url: {{ .Values.bkDomainScheme }}://bkpaas.{{ .Values.domain.bkDomain }}
 ```
 
 ## 开发者中心

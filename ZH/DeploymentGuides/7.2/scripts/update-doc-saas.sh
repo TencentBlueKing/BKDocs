@@ -49,3 +49,9 @@ cat <<EOF
 
 部署成功后，即可在桌面访问了。
 EOF
+
+# 替换 manual-install-saas.md 版本号
+cur_ver=$(awk -F"|" -v pkg="$PACKAGE" '/bkopen-1252002024.file.myqcloud.com.*\.tar\.gz/ && $0 ~ pkg {gsub(/^[ \t]+|[ \t]+$/, "", $3); print $3}' manual-install-saas.md)
+if [[ -n "$cur_ver" ]];then
+  sed -ri "/$PACKAGE.*bkopen-1252002024.file.myqcloud.com.*\.tar\.gz/s|$cur_ver|$VERSION|g" manual-install-saas.md
+fi

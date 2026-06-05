@@ -94,6 +94,42 @@ def image_used_in_refs(img_path, refs, assets_dir):
     return False
 
 
+def search_image_name_outside_asset_dirs(product_dir, image_name):
+    product_dir = Path(product_dir).expanduser().resolve()
+    image_name = image_name.lower()
+    hits = []
+    for p in product_dir.rglob('*'):
+        if not p.is_file():
+            continue
+        if p.suffix.lower() not in SCAN_FILE_EXTS:
+            continue
+        if any(part.lower() in IMAGE_DIRS for part in p.parts):
+            continue
+        try:
+            text = p.read_text(encoding='utf-8', errors='ignore')
+        except Exception:
+            continue
+        for line_no, line in enumerate(text.splitlines(), 1):
+            if image_name in line.lower():
+                snippet = line.strip()
+                if len(snippet) > 200:
+                    snippet = snippet[:200] + '...'
+                hits.append((p.relative_to(product_dir), line_no, snippet))
+    return hits
+
+
+def find_zh_root():
+    """从当前目录向上查找 ZH 目录"""
+    current = Path.cwd()
+    for parent in [current] + list(current.parents):
+        if parent.name.upper() == 'ZH':
+            return parent
+        zh_candidate = parent / 'ZH'
+        if zh_candidate.exists() and zh_candidate.is_dir():
+            return zh_candidate
+    return None
+
+
 def scan_specific_assets(assets_dir):
     """扫描特定的图片目录"""
     assets_dir = Path(assets_dir).expanduser().resolve()
@@ -123,7 +159,7 @@ def scan_specific_assets(assets_dir):
 
     products = [auto_product_candidate]
 
-    total_unused = 0
+    total_abnormal = 0
     for product_dir in products:
         refs = collect_references(product_dir)
         unused = []
@@ -137,22 +173,25 @@ def scan_specific_assets(assets_dir):
         print(f"图片数量：{len(images)}，未引用图片数：{len(unused)}")
         for u in unused:
             print(u)
-        total_unused += len(unused)
 
-    print(f"\n扫描完成。产品数量：{len(products)}，图片数量：{len(images)}，未引用图片总数：{total_unused}")
-    return 0
+        if unused:
+            print("\n对未引用图片进行grep检测（排除图片目录后全文搜索）：")
+            for img_path in images:
+                if not image_used_in_refs(img_path, refs, assets_dir):
+                    search_hits = search_image_name_outside_asset_dirs(product_dir, img_path.name)
+                    img_rel = img_path.relative_to(zh_root)
+                    if search_hits:
+                        total_abnormal += 1
+                        print(f"  {img_rel}：检测到有图片被误输出，请联系管理员（找到 {len(search_hits)} 处）")
+                        for found_in, line_no, snippet in search_hits[:3]:
+                            print(f"    文件：{found_in} 行：{line_no} 内容：{snippet}")
+                        if len(search_hits) > 3:
+                            print(f"    ... 还有 {len(search_hits) - 3} 处")
+                    else:
+                        print(f"  {img_rel}：检测确实无图片，可以对上述删除")
 
-
-def find_zh_root():
-    """从当前目录向上查找 ZH 目录"""
-    current = Path.cwd()
-    for parent in [current] + list(current.parents):
-        if parent.name.upper() == 'ZH':
-            return parent
-        zh_candidate = parent / 'ZH'
-        if zh_candidate.exists() and zh_candidate.is_dir():
-            return zh_candidate
-    return None
+    print(f"\n扫描完成。产品数量：{len(products)}，图片数量：{len(images)}，扫描异常总数：{total_abnormal}")
+    return 500 if total_abnormal else 0
 
 
 def scan_all_products():
@@ -167,7 +206,7 @@ def scan_all_products():
         print(f"未找到产品子目录：{zh_root}")
         return 1
 
-    total_unused = 0
+    total_abnormal = 0
     global_image_count = 0
 
     for product_dir in products:
@@ -203,10 +242,25 @@ def scan_all_products():
             print(f"图片数量：{len(images)}，未引用图片数：{len(unused)}")
             for u in unused:
                 print(u)
-            total_unused += len(unused)
 
-    print(f"\n扫描完成。产品数量：{len(products)}，图片总数：{global_image_count}，未引用图片总数：{total_unused}")
-    return 0
+            if unused:
+                print("\n对未引用图片进行grep检测（排除图片目录后全文搜索）：")
+                for img_path in images:
+                    if not image_used_in_refs(img_path, refs, assets_dir):
+                        search_hits = search_image_name_outside_asset_dirs(product_dir, img_path.name)
+                        img_rel = img_path.relative_to(Path.cwd())
+                        if search_hits:
+                            total_abnormal += 1
+                            print(f"  {img_rel}：检测到有图片被误输出，请联系管理员（找到 {len(search_hits)} 处）")
+                            for found_in, line_no, snippet in search_hits[:3]:
+                                print(f"    文件：{found_in} 行：{line_no} 内容：{snippet}")
+                            if len(search_hits) > 3:
+                                print(f"    ... 还有 {len(search_hits) - 3} 处")
+                        else:
+                            print(f"  {img_rel}：检测确实无图片，可以对上述删除")
+
+    print(f"\n扫描完成。产品数量：{len(products)}，图片总数：{global_image_count}，扫描异常总数：{total_abnormal}")
+    return 500 if total_abnormal else 0
 
 
 def scan(assets_dir=None):
