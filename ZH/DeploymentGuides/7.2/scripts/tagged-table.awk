@@ -7,6 +7,23 @@ BEGIN{
   if(length(enable_empty_leading)==0)enable_empty_leading=1
 }
 
+# 定义一个高阶的版本号比较函数
+function cmp_version(i1, v1, i2, v2,    l1, l2, n1, n2, i) {
+    # 将两个 key (版本号) 按小数点切开
+    n1 = split(i1, l1, ".")
+    n2 = split(i2, l2, ".")
+    
+    # 逐段比较数字大小
+    for (i = 1; i <= (n1 > n2 ? n1 : n2); i++) {
+        # 如果某一段为空，则补0 (例如比较 7.2 和 7.2.1 时)
+        v1 = (i <= n1) ? l1[i]+0 : 0
+        v2 = (i <= n2) ? l2[i]+0 : 0
+        if (v1 < v2) return -1
+        if (v1 > v2) return 1
+    }
+    return 0
+}
+
 BEGINFILE{
   if(FILENAME~/\/release-/){
     is_release_file=1;
@@ -52,7 +69,6 @@ is_release_file{
     } else { table_state["last1"]=$1; table_state["last2"]=$2; }
   }
   # 处理标签，先按空格分词。
-  # if($NF)$NF="<code>"gensub(/( |、)+/, "</code>&nbsp;<code>", "g", $NF)"</code>"
   patsplit($NF, as, /[^ ]+/)
   new_tags=""
   delete tag_state
@@ -65,6 +81,7 @@ is_release_file{
   }
   # 追加发行版标签。一个版本可能在多个发行版出现。
   if(isarray(release_tags[pname,version])){
+    PROCINFO["sorted_in"] = "cmp_version"
     for(release in release_tags[pname,version]){
       new_tags=new_tags" `"release"`"
     }
@@ -74,6 +91,5 @@ is_release_file{
   # 处理包版本号字段的超链接
   version_url=sprintf("updates/%s.md#%s-%s", substr(date, 1, 6), pname, version)
   $fnversion="["version"]("version_url")"
-  # printf " %s | %s |\n", date, comments
   print "| "gensub("\t", " | ", "g", $0)" |"
 }
