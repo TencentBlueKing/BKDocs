@@ -41,15 +41,19 @@
 ![Agent_No-Code_Development_20260423193358.png](../assets/Agent_No-Code_Development_20260423193358.png)
 
 按需填写开场白和预设的常用提示词。
+
 ![Agent_No-Code_Development_20260423193913.png](../assets/Agent_No-Code_Development_20260423193913.png)
 
 按需选择需要关联的外部智能体，并勾选需要使用的快捷指令。可以通过快捷指令的方式实现多智能体之间的切换调用。
+
 ![Agent_No-Code_Development_20260423194506.png](../assets/Agent_No-Code_Development_20260423194506.png)
 
 可以定义当前智能体所支持的快捷指令（及其对应的输入），用于规范特定问答场景的输入。关联的外部智能体，也会以快捷指令的形式在此处展示。
+
 ![Agent_No-Code_Development_20260423194019.png](../assets/Agent_No-Code_Development_20260423194019.png)
 
 以翻译场景为例，可定义下列输入和指令：
+
 ![Agent_No-Code_Development_20260423194246.png](../assets/Agent_No-Code_Development_20260423194246.png)
 
 按需选择需要关联的知识库和检索方式。
@@ -59,25 +63,33 @@
 ![Agent_No-Code_Development_20260423194601.png](../assets/Agent_No-Code_Development_20260423194601.png)
 
 修改检索参数以调整召回结果，具体参数的调试可以在 检索测试 功能中进行。
+
 ![Agent_No-Code_Development_20260423194640.png](../assets/Agent_No-Code_Development_20260423194640.png)
+
 ![Agent_No-Code_Development_20260423194736.png](../assets/Agent_No-Code_Development_20260423194736.png)
 
 按需选择需要关联的skill。
+
 ![Agent_No-Code_Development_20260424102440.png](../assets/Agent_No-Code_Development_20260424102440.png)
 
 按需选择需要关联的工具或MCP。
+
 ![Agent_No-Code_Development_20260423194832.png](../assets/Agent_No-Code_Development_20260423194832.png)
 
 如需申请其他空间的资源（MCP、工具、智能体、skill等），可以点击【去申请】前往【空间管理】申请。
+
 ![Agent_No-Code_Development_20260423194958.png](../assets/Agent_No-Code_Development_20260423194958.png)
 
 在MCP的【全部】中，可以选择 蓝鲸API网关 来源的MCP，若无使用权限，勾选后将会自动提单，可联系相应审批人进行审批。
+
 ![Agent_No-Code_Development_20260423195201.png](../assets/Agent_No-Code_Development_20260423195201.png)
 
 如果MCP或工具需要凭证，在调试时输入凭证即可。
+
 ![Agent_No-Code_Development_20260423195403.png](../assets/Agent_No-Code_Development_20260423195403.png)
 
 调试无误之后，即可进行发布。
+
 ![Agent_No-Code_Development_20260423195243.png](../assets/Agent_No-Code_Development_20260423195243.png)
 
 ## 配置智能体 - 流程类智能体
@@ -99,25 +111,37 @@
 ![Agent_No-Code_Development_20260423195551.png](../assets/Agent_No-Code_Development_20260423195551.png)
 
 在画布中按需编排所需节点，目前支持 模型、智能体、知识库、插件 功能节点。
+
 ![Agent_No-Code_Development_20260423195708.png](../assets/Agent_No-Code_Development_20260423195708.png)
 
 - 模型
+
 ![Agent_No-Code_Development_20260423195749.png](../assets/Agent_No-Code_Development_20260423195749.png)
+
   示例如下
+
   ![2026-03-13-16-07-07.png](../assets/2026-03-13-16-07-07.png)
 
 - 智能体
+
 ![Agent_No-Code_Development_20260423195821.png](../assets/Agent_No-Code_Development_20260423195821.png)  
+
   示例如下
+
   ![2026-03-13-16-07-26.png](../assets/2026-03-13-16-07-26.png)
 
 - 知识库
+
 ![Agent_No-Code_Development_20260423200029.png](../assets/Agent_No-Code_Development_20260423200029.png)
+
   示例如下
+
   ![Agent_No-Code_Development_20260423200149.png](../assets/Agent_No-Code_Development_20260423200149.png)
 
 - 插件
+
 ![Agent_No-Code_Development_20260423195901.png](../assets/Agent_No-Code_Development_20260423195901.png)  
+
   示例如下
   ![2026-03-13-16-07-45.png](../assets/2026-03-13-16-07-45.png)
 
@@ -177,9 +201,11 @@
 目前提供五种使用渠道。
 
 页面聊天窗 可以直接访问或者进行分享。
+
 ![Agent_No-Code_Development_20260423200333.png](../assets/Agent_No-Code_Development_20260423200333.png)
 
 API调用 和 小鲸聊天窗 可以直接查看使用文档。
+
 ![Agent_No-Code_Development_20260423200400.png](../assets/Agent_No-Code_Development_20260423200400.png)
 
 如需使用 企微智能机器人 功能，只需打开开关，并按使用文档申请权限即可。
@@ -213,14 +239,19 @@ API调用 和 小鲸聊天窗 可以直接查看使用文档。
 ## 使用文档
 
 编辑使用文档，供用户使用时查看。
+
 ![Agent_No-Code_Development_20260423200620.png](../assets/Agent_No-Code_Development_20260423200620.png)
+
 ![Agent_No-Code_Development_20260423200703.png](../assets/Agent_No-Code_Development_20260423200703.png)
 
 ## 使用权限
 
 控制智能体对外使用渠道（小鲸组件、页面聊天窗）的人员使用权限，默认全开放。
+
 ![Agent_No-Code_Development_20260423200733.png](../assets/Agent_No-Code_Development_20260423200733.png)
 
 ## 运营管理
+
 可以查看智能体各个渠道的所有使用记录，包括 调试/测试、正式 的调用。
+
 ![2026-03-13-16-17-20.png](../assets/2026-03-13-16-17-20.png)
