@@ -368,11 +368,11 @@ kubectl get pods -A -l app.kubernetes.io/name=ingress-nginx  # 查看创建的po
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 BK_DOMAIN=$(yq e '.domain.bkDomain' environments/default/custom.yaml)  # 从自定义配置中提取, 也可自行赋值
 IP1=$(kubectl get svc -A -l app.kubernetes.io/instance=ingress-nginx -o jsonpath='{.items[0].spec.clusterIP}')
-./scripts/control_coredns.sh update "$IP1" $BK_DOMAIN bkrepo.$BK_DOMAIN docker.$BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN apps.$BK_DOMAIN bknodeman.$BK_DOMAIN job.$BK_DOMAIN jobapi.$BK_DOMAIN cmdb.$BK_DOMAIN apigw.$BK_DOMAIN bkuser.$$BK_DOMAIN
+./scripts/control_coredns.sh update "$IP1" $BK_DOMAIN bkrepo.$BK_DOMAIN docker.$BK_DOMAIN bkapi.$BK_DOMAIN bkpaas.$BK_DOMAIN bkiam-api.$BK_DOMAIN bkiam.$BK_DOMAIN apps.$BK_DOMAIN bknodeman.$BK_DOMAIN job.$BK_DOMAIN jobapi.$BK_DOMAIN cmdb.$BK_DOMAIN apigw.$BK_DOMAIN bkuser.$BK_DOMAIN bkmonitor.$BK_DOMAIN
 ```
 
 确认注入结果，执行如下命令：
-```
+```bash
 cd $INSTALL_DIR/blueking/  # 进入工作目录
 ./scripts/control_coredns.sh list
 ```
@@ -391,6 +391,8 @@ cd $INSTALL_DIR/blueking/  # 进入工作目录
         10.244.0.5 jobapi.bkce7-tenant.bktencent.com
         10.244.0.5 cmdb.bkce7-tenant.bktencent.com
         10.244.0.5 apigw.bkce7-tenant.bktencent.com
+        10.244.0.5 bkuser.bkce7-tenant.bktencent.com
+        10.244.0.5 bkmonitor.bkce7-tenant.bktencent.com
 ```
 
 # 部署蓝鲸存储服务
@@ -442,15 +444,11 @@ jobEncryptPassword=$(openssl rand -base64 12 | tr '+/' '_-' | cut -c1-16)
 jobArtifactoryPassword=$(openssl rand -base64 12 | tr '+/' '_-' | cut -c1-16)
 jobActuatorUserPassword=$(openssl rand -base64 12 | tr '+/' '_-' | cut -c1-16)
 read -r jobSm2PrivateKey jobSm2PublicKey < <(
-  kubectl -n blueking run bk-job-keypair --rm -i --image hub.bktencent.com/dev/blueking/bk-job-keypair:0.0.1 -- python sm2_keypair/generate_sm2_keypair.py 2>/dev/null | 
-  awk '
-    /原始私钥:/ {getline; priv=$1} 
-    /原始公钥:/ {getline; pub=$1} 
-    END {print priv, pub}
-  '
+  kubectl -n default run bk-job-keypair --rm -i --quiet --restart=Never --image hub.bktencent.com/blueking/bk-job-keypair -- python sm2_keypair/generate_sm2_keypair.py 2>/dev/null | \
+   jq -r '."job.encrypt.sm2PrivateKey" + " " + ."job.encrypt.sm2PublicKey"'
 )
 read -r jobPrivateKeyBase64 jobPublicKeyBase64 < <(
-  kubectl -n blueking run bk-job-keypair --rm -i --quiet --restart=Never --image hub.bktencent.com/dev/blueking/bk-job-keypair:0.0.1 -- python service-rsa-keypair/generate_service_rsa_keys.py 2>/dev/null | \
+  kubectl -n blueking run bk-job-keypair --rm -i --quiet --restart=Never --image hub.bktencent.com/dev/blueking/bk-job-keypair -- python service-rsa-keypair/generate_service_rsa_keys.py 2>/dev/null | \
   jq -r '."job.security.privateKeyBase64" + " " + ."job.security.publicKeyBase64"'
 )
 
