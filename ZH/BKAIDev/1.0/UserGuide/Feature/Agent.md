@@ -4,7 +4,7 @@
 
 智能体是基于 LLM Agent Framework 二次开发的场景智能体，智能体源码可在蓝鲸 PaaS 平台进行部署，提供独立的场景智能体服务。
 
-![2026-03-13-15-50-43.png](../assets/2026-03-13-15-50-43.png)
+![Agent_No-Code_Development_20260423185538.png](../assets/Agent_No-Code_Development_20260423185538.png)
 
 通过小鲸组件在线调试已开发的智能体。
 
