@@ -49,6 +49,7 @@
     * [单产品更新-202604](updates/202604.md)
     * [单产品更新-202605](updates/202605.md)
     * [单产品更新-202606](updates/202606.md)
+    * [单产品更新-202607](updates/202607.md)
 * [维护手册]()
     * [启用蓝鲸全局配置](config-bk-config.md)
     * [变更 ingress（域名及 HTTPS）](config-ingress.md)

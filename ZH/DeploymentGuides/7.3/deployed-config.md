@@ -129,6 +129,25 @@ dashboard:
 
 启用 MCP Prompt 功能以及 Mock 模式
 
+#### bkauth 依赖
+
+1. 要给 bk_auth 这个AppCode 初始化 Secert
+2. bkauth-values 新配置项：
+```yaml
+appCode: bk_auth
+appSecret: {{ .Values.appSecret.bk_auth }}
+bkAuthUrl: "{{ .Values.bkDomainScheme }}://bkauth.{{ .Values.domain.bkDomain }}"
+bkApiUrlTmpl: "{{ .Values.bkDomainScheme }}://bkapi.{{ .Values.domain.bkDomain }}/api/{api_name}"
+bkLoginUrl: "{{ .Values.bkDomainScheme }}://{{ .Values.domain.bkDomain }}/login/"
+bkLoginApiViaGateway: true
+oauth:
+  # 开启 MCP 功能，内网服务开启，外网要做好安全措施
+  dcrEnabled: true
+```
+
+3. 登录 API 是否通过网关调用：false（默认，直连登录服务）或 true（通过 API 网关）
+4. 多租户必须为 true，即只能用网关
+5. API 网关 values 配置项：
 ```yaml
 dashboard:
   extraEnvVars:
@@ -136,8 +155,9 @@ dashboard:
       value: "true"
     - name: BKAIDEV_USE_MOCK
       value: "true"
+    - name: FEATURE_FLAG_ENABLE_MCP_SERVER_OBSERVABILITY
+      value: "true"
 ```
-
 
 ### 汇总
 
