@@ -448,7 +448,7 @@ read -r jobSm2PrivateKey jobSm2PublicKey < <(
    jq -r '."job.encrypt.sm2PrivateKey" + " " + ."job.encrypt.sm2PublicKey"'
 )
 read -r jobPrivateKeyBase64 jobPublicKeyBase64 < <(
-  kubectl -n blueking run bk-job-keypair --rm -i --quiet --restart=Never --image hub.bktencent.com/dev/blueking/bk-job-keypair -- python service-rsa-keypair/generate_service_rsa_keys.py 2>/dev/null | \
+  kubectl -n blueking run bk-job-keypair --rm -i --quiet --restart=Never --image hub.bktencent.com/blueking/bk-job-keypair -- python service-rsa-keypair/generate_service_rsa_keys.py 2>/dev/null | \
   jq -r '."job.security.privateKeyBase64" + " " + ."job.security.publicKeyBase64"'
 )
 
@@ -476,7 +476,7 @@ yq -e '
   (.job.security.privateKeyBase64   | length > 0) and
   (.job.security.publicKeyBase64    | length > 0) and
   (.artifactory.job.password        | length > 0)
-' "$TARGET_FILE" >/dev/null \
+' ./environments/default/bkjob-custom-values.yaml.gotmpl >/dev/null \
   && echo "INFO: 校验通过" \
   || { echo "ERROR: 存在空字段,请检查 ./environments/default/bkjob-custom-values.yaml.gotmpl" >&2; }
 ```

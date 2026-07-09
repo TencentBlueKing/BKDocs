@@ -2,7 +2,7 @@
 
 **数据库名：** devops_ci_store
 
-**文档版本：** 1.0.22
+**文档版本：** 1.0.23
 
 **文档描述：** devops_ci_store 的数据库文档
 | 表名                  | 说明       |
@@ -174,7 +174,10 @@
 |  38   | BRANCH |   varchar   | 128 |   0    |    Y     |  N   |   master    | 代码库分支  |
 |  39   | BRANCH_TEST_FLAG |   bit   | 1 |   0    |    Y     |  N   |   b'0'    | 是否是分支测试版本  |
 |  40   | LATEST_TEST_FLAG |   bit   | 1 |   0    |    Y     |  N   |   b'0'    | 是否为最新测试版本原子，TRUE：最新 FALSE：非最新  |
-|  41   | CLASSIFY_ID_MAP |   text   | 65535 |   0    |    Y     |  N   |       | 多服务范围分类映射，JSON 格式：{"PIPELINE":"classifyId1","CREATIVE_STREAM":"classifyId2"}  |
+|  41   | JOB_TYPE_MAP |   text   | 65535 |   0    |    Y     |  N   |       | 多服务范围 Job 类型映射，JSON 格式：{"PIPELINE":["AGENT"],"CREATIVE_STREAM":["CREATIVE_STREAM","CLOUD_TASK"]}  |
+|  42   | CLASSIFY_ID_MAP |   text   | 65535 |   0    |    Y     |  N   |       | 多服务范围分类映射，JSON 格式：{"PIPELINE":"classifyId1","CREATIVE_STREAM":"classifyId2"}  |
+|  43   | OS_MAP |   text   | 65535 |   0    |    Y     |  N   |       | 多 JobType 操作系统映射，JSON 格式：{"AGENT":["WINDOWS","LINUX","MACOS"],"CREATIVE_STREAM":["WINDOWS"]}  |
+|  44   | OWNER_STORE_CODE |   varchar   | 64 |   0    |    Y     |  N   |       | 归属应用标识  |
 
 **表名：** <a>T_ATOM_APPROVE_REL</a>
 
@@ -746,6 +749,7 @@
 |  18   | MODIFIER |   varchar   | 50 |   0    |    N     |  N   |   system    | 最近修改人  |
 |  19   | UPDATE_TIME |   datetime   | 23 |   0    |    N     |  N   |   CURRENT_TIMESTAMP(3)    | 修改时间  |
 |  20   | CREATE_TIME |   datetime   | 23 |   0    |    N     |  N   |   CURRENT_TIMESTAMP(3)    | 创建时间  |
+|  21   | OWNER_STORE_CODE |   varchar   | 64 |   0    |    Y     |  N   |       | 归属应用标识  |
 
 **表名：** <a>T_STORE_BASE_ENV</a>
 

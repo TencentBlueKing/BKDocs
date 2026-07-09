@@ -80,7 +80,7 @@
 
 按需选择需要关联的工具或MCP。
 
-![Agent_No-Code_Development_20260423194832.png](../assets/Agent_No-Code_Development_20260423194832.png)
+![Agent_20260709112004.png](../assets/Agent_20260709112004.png)
 
 如需申请其他空间的资源（MCP、工具、智能体、skill等），可以点击【去申请】前往【空间管理】申请。
 
@@ -88,11 +88,23 @@
 
 在MCP的【全部】中，可以选择 蓝鲸API网关 来源的MCP，若无使用权限，勾选后将会自动提单，可联系相应审批人进行审批。
 
-![Agent_No-Code_Development_20260423195201.png](../assets/Agent_No-Code_Development_20260423195201.png)
+![Agent_20260709112127.png](../assets/Agent_20260709112127.png)
+
+工具和MCP均支持配置审批策略。
+
+![Agent_20260709112219.png](../assets/Agent_20260709112219.png)
+
+当智能体调用该工具或MCP时，会触发审批流程。
+
+![Agent_20260709112716.png](../assets/Agent_20260709112716.png)
+
+如需自定义审批策略，可在此处管理。
+
+![Agent_20260709112339.png](../assets/Agent_20260709112339.png)
 
 调试无误之后，即可进行发布。
 
-![Agent_No-Code_Development_20260423195243.png](../assets/Agent_No-Code_Development_20260423195243.png)
+![Agent_20260709112855.png](../assets/Agent_20260709112855.png)
 
 ## 配置智能体 - 流程类智能体
 
