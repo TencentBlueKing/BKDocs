@@ -60,6 +60,8 @@
               name: {{ IndexNetworkManagement }}
             - 
               name: {{ IndexBkAidev }}
+            - 
+              name: {{ IndexBKFara }}
         - 
           name: {{ IndexPaaSService }}
           children:
@@ -148,6 +150,8 @@
               name: {{ DocNetworkManagement }}
             -
               name: {{ DocBkAidev }}
+            - 
+              name: {{ DocBKFara }}
         - 
           name: {{ DocPaaSService }}
           children:
