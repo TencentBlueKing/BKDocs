@@ -41,6 +41,15 @@ scripts/setup_bkce7.sh -i notice
 
 <a id="deploy-bkce-saas-notice" name="deploy-bkce-saas-notice"></a>
 
+### 配置环境变量
+在左侧展开“应用配置”——“模块配置”。位于 “default” 模块下，点击 “环境变量” Tab。
+
+在环境变量列表界面，可以点击底部的“新增环境变量”按钮逐条新增，也可以导出一个模板后，自行处理如下表格，生成配置文件导入。
+
+| KEY | 建议取值 | 描述 | 取值说明 |
+| -- | -- | -- | -- |
+| BKAPP_CSRF_TRUSTED_ORIGINS | http://*.bkce7.bktencent.com,https://*.bkce7.bktencent.com | 域名白名单列表,允许白名单中的域名发起跨域请求 | `${HTTP_SCHEMA}://*.${BK_DOMAIN},http://*.${BK_DOMAIN}` |
+
 ### 部署消息通知中心（bk_notice）
 请参考上文 上传安装包 章节完成应用创建或者安装包更新。
 
