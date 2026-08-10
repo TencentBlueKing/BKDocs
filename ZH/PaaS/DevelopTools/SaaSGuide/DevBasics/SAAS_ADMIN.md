@@ -8,7 +8,7 @@
 
 2. 环境准备
 
-   - Python 开发框架: 版本 >= 3.1.0.75 [点我下载](../../../../DevelopGuide/7.0/DevTools.md)
+   - Python 开发框架
 
    - 将开发框架 blueapps 模块替换已有 SaaS 的 blueapps 模块
 
@@ -55,7 +55,7 @@
      
      
      
-   -  通过 views 实现，同上面一样先修改INIT_SUPERUSER 配置，接着在你的 APP 目录的 views 文件中，添加如下代码：
+   -  通过 views 实现，同上面一样先修改 INIT_SUPERUSER 配置，接着在你的 APP 目录的 views 文件中，添加如下代码：
    
         ```python
         from django.conf import settings
@@ -74,4 +74,4 @@
             return HttpResponse('Success')
         ```
 
-  		然后配置一条 URL 路由规则到该 view，提测、上线后访问对应 URL 就可以初始化管理员了。
+然后配置一条 URL 路由规则到该 view，提测、上线后访问对应 URL 就可以初始化管理员了。

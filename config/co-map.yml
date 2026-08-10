@@ -1835,9 +1835,7 @@ id_docs_map:  #https://bk.tencent.com/docs/document/7.0/233/32616
   /document/6.0/167/13387: ZH/CMDB/3.9/APIDocs/cc/zh-hans/create_set_template.md
   /document/6.0/167/13388: ZH/CMDB/3.9/APIDocs/cc/zh-hans/find_host_relations_with_topo.md
   /document/6.0/167/13389: ZH/CMDB/3.9/APIDocs/cc/zh-hans/delete_dynamic_group.md
-  /document/7.0/170/13930: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/legacy_migration.md
   /document/6.0/129/24554: ZH/Devops/6.0/产品白皮书/FAQS/无法下载构建.md
-  /document/7.0/170/13931: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/v2_to_v3.md
   /document/7.0/170/13932: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/how_to_use_procfile.md
   /document/7.0/170/13933: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/multi_modules_intro.md
   /document/6.1/195/22520: ZH/OnlineGuide/7.0/API_GUIDE.md
@@ -4633,7 +4631,6 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   topics/paas/log_empty: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_empty.md
   topics/paas/log_intro#%E5%A6%82%E4%BD%95%E6%9F%A5%E8%AF%A2%E5%BA%94%E7%94%A8%E6%97%A5%E5%BF%97: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_intro.md
   topics/paas/monitoring/intro: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_intro.md
-  topics/paas/legacy_migration: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/legacy_migration.md
   topics/paas/services/index:  ZH/PaaS/DevelopTools/BaseGuide/topics/paas/services/index.md
   quickstart/node/node_preparations: ZH/PaaS/DevelopTools/BaseGuide/quickstart/node/node_preparations.md
   topics/bkui/with-python: ZH/PaaS/DevelopTools/BaseGuide/topics/bkui/with-python.md
@@ -6752,8 +6749,6 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   PaaS3.0/topics/company_tencent/python_learning_materials.md: ZH/PaaS/DevelopTools/BaseGuide/topics/company_tencent/python_learning_materials.md
   PaaS3.0/topics/paas/builtin_configvars.md: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/builtin_configvars.md
   PaaS3.0/topics/paas/log_intro.md: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_intro.md
-  PaaS3.0/topics/paas/legacy_migration.md: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/legacy_migration.md
-  PaaS3.0/topics/paas/v2_to_v3.md: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/v2_to_v3.md
   PaaS3.0/topics/paas/how_to_use_procfile.md: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/how_to_use_procfile.md
   PaaS3.0/topics/paas/multi_modules_intro.md: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/multi_modules_intro.md
   PaaS3.0/topics/paas/process_procfile.md: ZH/PaaS/DevelopTools/BaseGuide/topics/paas/process_procfile.md
@@ -9425,7 +9420,6 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   ZH/PaaS/DevelopTools/BaseGuide/topics/paas/entry_proc_services.md: ZH/PaaS/1.5/BaseGuide/topics/paas/entry_proc_services.md
   ZH/PaaS/DevelopTools/BaseGuide/topics/paas/gitee_oauth.md: ZH/PaaS/1.5/BaseGuide/topics/paas/gitee_oauth.md
   ZH/PaaS/DevelopTools/BaseGuide/topics/paas/github_oauth.md: ZH/PaaS/1.5/BaseGuide/topics/paas/github_oauth.md
-  ZH/PaaS/DevelopTools/BaseGuide/topics/paas/legacy_migration.md: ZH/PaaS/1.5/BaseGuide/topics/paas/legacy_migration.md
   ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_advance.md: ZH/PaaS/1.5/BaseGuide/topics/paas/log_advance.md
   ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_empty.md: ZH/PaaS/1.5/BaseGuide/topics/paas/log_empty.md
   ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_intro.md: ZH/PaaS/1.5/BaseGuide/topics/paas/log_intro.md
@@ -9485,7 +9479,6 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   ZH/PaaS/DevelopTools/BaseGuide/topics/paas/entry_proc_services: ZH/PaaS/1.5/BaseGuide/topics/paas/entry_proc_services.md
   ZH/PaaS/DevelopTools/BaseGuide/topics/paas/gitee_oauth: ZH/PaaS/1.5/BaseGuide/topics/paas/gitee_oauth.md
   ZH/PaaS/DevelopTools/BaseGuide/topics/paas/github_oauth: ZH/PaaS/1.5/BaseGuide/topics/paas/github_oauth.md
-  ZH/PaaS/DevelopTools/BaseGuide/topics/paas/legacy_migration: ZH/PaaS/1.5/BaseGuide/topics/paas/legacy_migration.md
   ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_advance: ZH/PaaS/1.5/BaseGuide/topics/paas/log_advance.md
   ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_empty: ZH/PaaS/1.5/BaseGuide/topics/paas/log_empty.md
   ZH/PaaS/DevelopTools/BaseGuide/topics/paas/log_intro: ZH/PaaS/1.5/BaseGuide/topics/paas/log_intro.md
@@ -9547,7 +9540,6 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   ZH/PaaS/1.5/BaseGuide/topics/paas/entry_proc_services: ZH/PaaS/1.5/BaseGuide/topics/paas/entry_proc_services.md
   ZH/PaaS/1.5/BaseGuide/topics/paas/gitee_oauth: ZH/PaaS/1.5/BaseGuide/topics/paas/gitee_oauth.md
   ZH/PaaS/1.5/BaseGuide/topics/paas/github_oauth: ZH/PaaS/1.5/BaseGuide/topics/paas/github_oauth.md
-  ZH/PaaS/1.5/BaseGuide/topics/paas/legacy_migration: ZH/PaaS/1.5/BaseGuide/topics/paas/legacy_migration.md
   ZH/PaaS/1.5/BaseGuide/topics/paas/log_advance: ZH/PaaS/1.5/BaseGuide/topics/paas/log_advance.md
   ZH/PaaS/1.5/BaseGuide/topics/paas/log_empty: ZH/PaaS/1.5/BaseGuide/topics/paas/log_empty.md
   ZH/PaaS/1.5/BaseGuide/topics/paas/log_intro: ZH/PaaS/1.5/BaseGuide/topics/paas/log_intro.md
@@ -9607,7 +9599,6 @@ feature_path_map:  #https://bk.tencent.com/docs/markdown/ + 流程服务/产品�
   ZH/PaaS/1.5/BaseGuide/topics/paas/entry_proc_services: ZH/PaaS/1.5/BaseGuide/topics/paas/entry_proc_services.md
   ZH/PaaS/1.5/BaseGuide/topics/paas/gitee_oauth: ZH/PaaS/1.5/BaseGuide/topics/paas/gitee_oauth.md
   ZH/PaaS/1.5/BaseGuide/topics/paas/github_oauth: ZH/PaaS/1.5/BaseGuide/topics/paas/github_oauth.md
-  ZH/PaaS/1.5/BaseGuide/topics/paas/legacy_migration: ZH/PaaS/1.5/BaseGuide/topics/paas/legacy_migration.md
   ZH/PaaS/1.5/BaseGuide/topics/paas/log_advance: ZH/PaaS/1.5/BaseGuide/topics/paas/log_advance.md
   ZH/PaaS/1.5/BaseGuide/topics/paas/log_empty: ZH/PaaS/1.5/BaseGuide/topics/paas/log_empty.md
   ZH/PaaS/1.5/BaseGuide/topics/paas/log_intro: ZH/PaaS/1.5/BaseGuide/topics/paas/log_intro.md

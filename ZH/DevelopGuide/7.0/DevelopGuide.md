@@ -16,7 +16,7 @@
 |对接企业登录 |用户管理 | 该教程将指导开发者如何将企业内已有的用户信息和登录方式对接到蓝鲸体系。|[开始学习](../../UserManage/IntegrateGuide/Docking_enterprise_login_system/use_bk_login.md) |
 |消息组件自定义接入 |APIGateway |通过该教程可以添加软件的消息通知渠道。 |[开始学习](../../APIGateway/DevelopTools/CMSI.md) |
 |微信组件自定义接入 |APIGateway |通过该教程可以添加软件的微信通知渠道。 |[开始学习](../../APIGateway/DevelopTools/WeChat.md) |
-|API网关自助接入 |APIGateway |通过该教程可以可以将企业内已有系统的 API ，或者第三方系统的API接入到蓝鲸智云的 APIGateway ，实现 API 的统一管理。 |[开始学习](../../APIGateway/DevelopTools/README.md) |
+|API 网关自助接入 |APIGateway |通过该教程可以可以将企业内已有系统的 API ，或者第三方系统的 API 接入到蓝鲸智云的 APIGateway ，实现 API 的统一管理。 |[开始学习](../../APIGateway/DevelopTools/README.md) |
 |Python 开发框架|PaaS 平台-开发者中心 |快速在蓝鲸 PaaS 平台上开发 SaaS 的 `Python 框架` 。该开发框架基于 `Django 框架` 架构，并在此基础上进行扩展，增加蓝鲸系统的特有功能，例如：`身份验证`、`ESB 调用` 及 `模板渲染` 等功能，以便开发者可以更专注于 SaaS 的 `逻辑开发` 。|[开始学习](../../PaaS/DevelopTools/SaaSGuide/DevBasics/README.md)|
 |SaaS 开发者资料库|PaaS 平台-开发者中心 |学习“PaaS 平台-开发者中心”的功能，使用 Django、NodeJS、Docker 等方式开发 SaaS ，结合已有的前端公共组件，掌握快速开发一个 SaaS 工具的技能，提升企业的办公效率。 |[开始学习](../../PaaS/DevelopTools/BaseGuide/quickstart/python/python_preparations.md)|
 |移动端开发指南|PaaS 平台-开发者中心 |“PaaS 平台-开发者中心” 可以进行移动端的系统研发，如 H5 、小程序等，该教程提供移动端的开发指南。请根据自己的 PaaS 平台版本，学习对应的教程。 |[开始学习](../../PaaS/DevelopTools/MobileGuide/Mobile_development_v2.md) |
@@ -36,8 +36,6 @@
 SaaS 开发是“运维开发”的基础技能，是[“腾讯蓝鲸智云-运维开发工程师”](https://bk.tencent.com/training_exam/)认证考试的核心技能。基于 PaaS 平台“开发者中心”的服务，帮助运维同学低成本构建运营系统/工具。
 
 一个 SaaS 的研发由两部分组成，一部分是前端，蓝鲸提供了可拖拽的[前端魔盒 MagicBox](https://magicbox.bk.tencent.com/)，可以生成前端的 UI 组件和代码；另一部分是后台，蓝鲸提供了[“开发框架”](.../../../../PaaS/DevelopTools/SaaSGuide/DevBasics/framework2.md)，集成了公共的后台模块，如登录、API 调用等。
-
-点击这里，下载 “[SaaS 开发工具](../../DevelopGuide/7.0/DevTools.md)” ，提供了 SaaS 开发必备的 IDE 、开发框架等。
 
 2、 APIGateway
 

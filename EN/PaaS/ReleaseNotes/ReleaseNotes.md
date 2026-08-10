@@ -20,12 +20,6 @@
 
 <br>
 
->**How to migrate SaaS developed before V6.0 to V7.0?**
-
-The PaaS platform's "Developer Center" provides a "one-click migration" feature, which only supports SaaS developed using Blueking's official "Python development framework". See developer documentation [Things You Must Pay Attention to When Migrating from PaaS2.0 to PaaS3.0](../DevelopTools/BaseGuide/topics/paas/legacy_migration.md).
-
-<br>
-
 >**What are the functional differences between PaaS platform versions?**
 
 |Feature |PaaS2.0 |PaaS3.0 |

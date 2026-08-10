@@ -36,8 +36,6 @@ SaaS 开发是“运维开发”的基础技能，是[“腾讯蓝鲸智云-运�
 
 一个 SaaS 的研发由两部分组成，一部分是前端，蓝鲸提供了可拖拽的[前端魔盒 MagicBox](https://magicbox.bk.tencent.com/)，可以生成前端的 UI 组件和代码；另一部分是后台，蓝鲸提供了[“开发框架”](.../../../../PaaS/DevelopTools/SaaSGuide/DevBasics/framework2.md)，集成了公共的后台模块，如登录、API 调用等。
 
-点击这里，下载 “[SaaS 开发工具](../../DevelopGuide/7.0/DevTools.md)” ，提供了 SaaS 开发必备的 IDE 、开发框架等。
-
 2、 APIGateway
 
 蓝鲸 API 网关（API Gateway），是一种高性能、高可用的 API 托管服务，可以帮助开发者创建、发布、维护、监控和保护 API， 以快速、低成本、低风险地对外开放蓝鲸应用或其他系统的数据或服务。
