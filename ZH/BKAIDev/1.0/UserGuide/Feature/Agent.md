@@ -1,18 +1,12 @@
 # 智能体
 
-【智能体开发】-》【智能体】tab 下可以查看 “全部智能体/当前空间/我的智能体”，可以进行插件开发、调试、源码包下载。
+【智能体开发】-》【智能体】tab下可以查看 “全部/我创建的/已归档的 智能体”，可以进行智能体的开发、调试、源码包下载。
 
-智能体是基于 LLM Agent Framework 二次开发的场景智能体，智能体源码可在蓝鲸 PaaS 平台进行部署，提供独立的场景智能体服务。
+![Agent_20260820161754.png](../assets/Agent_20260820161754.png)
 
-![2026-03-13-15-50-43.png](../assets/2026-03-13-15-50-43.png)
+下载源码后，可以继续进行二次开发并部署，详见[AIDev 智能体插件开发指南](https://github.com/TencentBlueKing/bk-aidev-agent/tree/develop/docs/agent)开发。
 
-通过小鲸组件在线调试已开发的智能体。
-
-![Agent_No-Code_Development_20260423185538.png](../assets/Agent_No-Code_Development_20260423185538.png)
-
-下载源码后，可以继续进行二次开发并部署，详见后续章节 基于LLM Agent Framework开发。
-
-![Agent_No-Code_Development_20260423185739.png](../assets/Agent_No-Code_Development_20260423185739.png)
+![Agent_20260820161842.png](../assets/Agent_20260820161842.png)
 
 ## 配置智能体 - 单智能体
 
