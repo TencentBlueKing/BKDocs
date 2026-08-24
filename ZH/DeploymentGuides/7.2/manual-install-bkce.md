@@ -137,7 +137,7 @@ read -r jobSm2PrivateKey jobSm2PublicKey < <(
    jq -r '."job.encrypt.sm2PrivateKey" + " " + ."job.encrypt.sm2PublicKey"'
 )
 read -r jobPrivateKeyBase64 jobPublicKeyBase64 < <(
-  kubectl -n blueking run bk-job-keypair --rm -i --quiet --restart=Never --image hub.bktencent.com/blueking/bk-job-keypair -- python service-rsa-keypair/generate_service_rsa_keys.py 2>/dev/null | \
+  kubectl -n default run bk-job-keypair-2 --rm -i --quiet --restart=Never --image hub.bktencent.com/blueking/bk-job-keypair -- python service-rsa-keypair/generate_service_rsa_keys.py 2>/dev/null | \
   jq -r '."job.security.privateKeyBase64" + " " + ."job.security.publicKeyBase64"'
 )
 

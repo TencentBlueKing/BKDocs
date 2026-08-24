@@ -221,6 +221,22 @@ yq -i e '.apps."bkappFilebeat.containersLogPath"="'"$cri_root_dir\"" "$custom"
 ./scripts/create_k8s_cluster_admin_for_paas3.sh
 ```
 
+# 生成加密配置
+
+> **提示**
+> 
+> 生成后，需要检查下文件配置是否已写入。
+
+## 生成制品库所需的 HMAC JWT 密钥
+```bash
+secret_key=$(openssl rand -hex 32)
+export secret_key
+
+touch environments/default/bkrepo-custom-values.yaml.gotmpl
+
+yq -i '.common.config.security.auth.jwt.secretKey = strenv(secret_key)' environments/default/bkrepo-custom-values.yaml.gotmpl
+```
+
 # 安装入口网关
 ## 安装 ingress controller
 先检查你的环境是否已经部署了 ingress controller:
