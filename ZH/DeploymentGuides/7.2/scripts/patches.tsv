@@ -134,3 +134,5 @@
 20260728	bk_itsm	__TYPE__	2.8.0	--	
 20260824	bkrepo	__TYPE__	配置更新0824	--	安全更新
 20260825	bk-monitor	__TYPE__	3.9.0-beta.36	3.9.0-beta.36	
+20260831	bk-monitor	__TYPE__	3.9.0-beta.37	3.9.0-beta.37	安全更新
+20260831	bkrepo	__TYPE__	3.7.4-beta.1	3.7.4-beta.1	安全更新
