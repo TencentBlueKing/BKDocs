@@ -14,6 +14,7 @@ cat <<EOF
 >
 >我们在 bk-job-0.7.4-beta.4 新增了配置加密步骤，如未配置，请参考文档[配置加密](./202605.md#bk-job-0.7.4-beta.4)。<br />
 >如未配置并更新至新版本，服务会出现 “Unable to calculate signature using RSA PrivateKey. Could not sign data” 报错日志。
+>我们在 bk-job-0.7.5-beta.3 新增了配置证书步骤，如未配置，请参考文档[生成作业平台所需的证书配置](./202609.md#bk-job-0.7.5-beta.3)
 
 登录到 **中控机**，先更新 helm 仓库缓存：
 \`\`\` bash

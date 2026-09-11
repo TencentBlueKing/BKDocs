@@ -237,6 +237,13 @@ touch environments/default/bkrepo-custom-values.yaml.gotmpl
 yq -i '.common.config.security.auth.jwt.secretKey = strenv(secret_key)' environments/default/bkrepo-custom-values.yaml.gotmpl
 ```
 
+## 生成作业平台所需的证书配置
+
+```bash
+touch ./environments/default/bkjob-custom-values.yaml.gotmpl
+./scripts/generate_jobGateway_tls_cert.sh --san JOB_SERVER --days 18250 -f ./environments/default/bkjob-custom-values.yaml.gotmpl
+```
+
 # 安装入口网关
 ## 安装 ingress controller
 先检查你的环境是否已经部署了 ingress controller:
