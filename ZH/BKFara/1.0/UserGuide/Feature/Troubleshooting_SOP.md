@@ -2,13 +2,15 @@
 
 ## 手动编排
 
-对于同类告警事件的分析处置逻辑，用户可编排自定义的流程，以便快速复用。在告警策略上挂载该流程，即可在产生告警时自动触发。
+### 项目流程
+
+对于项目内同类告警事件的分析处置逻辑，用户可编排自定义的流程，以便快速复用。在告警策略上挂载该流程，即可在产生告警时自动触发。
 
 ![Troubleshooting_SOP_20260722105020.png](../assets/Troubleshooting_SOP_20260722105020.png)
 
 ![Troubleshooting_SOP_20260722105813.png](../assets/Troubleshooting_SOP_20260722105813.png)
 
-手动编排流程支持下列节点：
+支持下列节点：
 
 - 数据
 
@@ -36,7 +38,7 @@
 
 ![Troubleshooting_SOP_20260722105622.png](../assets/Troubleshooting_SOP_20260722105622.png)
 
-### 全局变量
+#### 全局变量
 
 可以在任何节点的输入参数中使用全局变量。
 
@@ -53,6 +55,22 @@
 ![Troubleshooting_SOP_20260722110105.png](../assets/Troubleshooting_SOP_20260722110105.png)
 
 ![Troubleshooting_SOP_20260722110045.png](../assets/Troubleshooting_SOP_20260722110045.png)
+
+### 公共流程
+
+平台提供了一些公共流程，用户可复用这些流程，快速处理告警。
+
+![Troubleshooting_SOP_20260917153357.png](../assets/Troubleshooting_SOP_20260917153357.png)
+
+可以直接预览并试用公共流程。
+
+![Troubleshooting_SOP_20260917153459.png](../assets/Troubleshooting_SOP_20260917153459.png)
+
+![Troubleshooting_SOP_20260917153321.png](../assets/Troubleshooting_SOP_20260917153321.png)
+
+将公共流程复制到项目流程后，即可按项目流程相同的方式使用。
+
+![Troubleshooting_SOP_20260917151649.png](../assets/Troubleshooting_SOP_20260917151649.png)
 
 ## 自动编排
 
