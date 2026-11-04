@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1090" viewBox="0 0 1600 1090">
+<rect width="100%" height="100%" fill="#f4f7fc"/>
+<text x="58" y="73.2" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="40" fill="#102a4d">BKVision 产品能力架构</text>
+<text x="60" y="112.24" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="23" fill="#55667e">从数据接入与建模，到分析展示与业务触达</text>
+<rect x="1310" y="43" width="234" height="44" rx="12" fill="#e8eef9" stroke="#e8eef9" stroke-width="2"/>
+<text x="1338" y="72.48" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="21" fill="#38639a">数据驱动业务</text>
+<rect x="48" y="142" width="1182" height="157" rx="12" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+<text x="70" y="178.24" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="23" fill="#1f4c87">01  数据来源</text>
+<text x="290" y="176.84" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="18" fill="#738098">支持类型以当前环境的数据源配置页面为准</text>
+<rect x="72" y="197" width="360" height="80" rx="12" fill="#ffffff" stroke="#dce4ef" stroke-width="2"/>
+<text x="92" y="236.0" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="25" fill="#123667">数据库</text>
+<text x="92" y="268.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">例如 MySQL</text>
+<rect x="452" y="197" width="360" height="80" rx="12" fill="#ffffff" stroke="#dce4ef" stroke-width="2"/>
+<text x="472" y="236.0" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="25" fill="#123667">API 数据</text>
+<text x="472" y="268.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">业务接口数据</text>
+<rect x="832" y="197" width="372" height="80" rx="12" fill="#ffffff" stroke="#dce4ef" stroke-width="2"/>
+<text x="852" y="236.0" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="25" fill="#123667">数据平台</text>
+<text x="852" y="268.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">环境支持的数据平台</text>
+<polyline points="638,299 638,328" fill="none" stroke="#8394ae" stroke-width="2"/>
+<polyline points="632,318 638,328 644,318" fill="none" stroke="#8394ae" stroke-width="2"/>
+<rect x="48" y="333" width="1182" height="158" rx="12" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+<text x="70" y="369.24" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="23" fill="#1f4c87">02  数据建模</text>
+<text x="290" y="367.84" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="18" fill="#738098">管理连接与逻辑数据定义</text>
+<rect x="72" y="390" width="430" height="80" rx="12" fill="#ffffff" stroke="#dce4ef" stroke-width="2"/>
+<text x="92" y="429.0" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="25" fill="#123667">数据源</text>
+<text x="92" y="461.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">连接信息 / 接口配置</text>
+<rect x="630" y="390" width="574" height="80" rx="12" fill="#ffffff" stroke="#dce4ef" stroke-width="2"/>
+<text x="650" y="429.0" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="25" fill="#123667">数据集</text>
+<text x="650" y="461.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">物理表映射 / 字段定义 / 同类型数据源联表</text>
+<polyline points="502,430 626,430" fill="none" stroke="#8394ae" stroke-width="2"/>
+<polyline points="616,424 626,430 616,436" fill="none" stroke="#8394ae" stroke-width="2"/>
+<polyline points="916,491 916,508 638,508 638,531" fill="none" stroke="#8394ae" stroke-width="2"/>
+<polyline points="632,521 638,531 644,521" fill="none" stroke="#8394ae" stroke-width="2"/>
+<rect x="48" y="536" width="1182" height="215" rx="12" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+<text x="70" y="572.24" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="23" fill="#1f4c87">03  分析与展示</text>
+<text x="290" y="570.84" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="18" fill="#738098">按任务选择分析入口</text>
+<rect x="72" y="594" width="360" height="133" rx="12" fill="#ffffff" stroke="#dce4ef" stroke-width="2"/>
+<text x="92" y="633.0" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="25" fill="#123667">快速分析</text>
+<text x="92" y="665.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">一次性查询与结果查看</text>
+<text x="92" y="692.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">简易 / SQL / API</text>
+<rect x="452" y="594" width="360" height="133" rx="12" fill="#ffffff" stroke="#dce4ef" stroke-width="2"/>
+<text x="472" y="633.0" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="25" fill="#123667">仪表盘</text>
+<text x="472" y="665.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">图表 / 拖拽布局 / AI 生成</text>
+<text x="472" y="692.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">联动 / 变量 / 关联视图</text>
+<text x="472" y="719.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">版本 / 主题 / 高阶配置</text>
+<rect x="832" y="594" width="372" height="133" rx="12" fill="#ffffff" stroke="#dce4ef" stroke-width="2"/>
+<text x="852" y="633.0" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="25" fill="#123667">AI 报告</text>
+<text x="852" y="665.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">选择数据集 + 自然语言</text>
+<text x="852" y="692.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">BKAIDev 的 LLM 能力</text>
+<text x="852" y="719.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">生成 HTML 分析报告</text>
+<rect x="48" y="802" width="1182" height="170" rx="12" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+<text x="70" y="838.24" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="23" fill="#1f4c87">04  分发与集成</text>
+<text x="290" y="836.84" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="18" fill="#738098">将分析结果带入业务工作入口</text>
+<rect x="72" y="861" width="270" height="88" rx="12" fill="#ffffff" stroke="#dce4ef" stroke-width="2"/>
+<text x="92" y="900.0" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="25" fill="#123667">查询结果</text>
+<text x="92" y="932.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">查看一次性分析结果</text>
+<rect x="359" y="861" width="270" height="88" rx="12" fill="#ffffff" stroke="#dce4ef" stroke-width="2"/>
+<text x="379" y="900.0" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="25" fill="#123667">仪表盘展示</text>
+<text x="379" y="932.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">浏览与交互分析</text>
+<rect x="646" y="861" width="270" height="88" rx="12" fill="#ffffff" stroke="#dce4ef" stroke-width="2"/>
+<text x="666" y="900.0" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="25" fill="#123667">订阅 / 嵌入</text>
+<text x="666" y="932.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">图片推送 / SaaS 集成</text>
+<rect x="933" y="861" width="271" height="88" rx="12" fill="#ffffff" stroke="#dce4ef" stroke-width="2"/>
+<text x="953" y="900.0" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="25" fill="#123667">HTML 报告</text>
+<text x="953" y="932.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">查看分析报告</text>
+<polyline points="252,751 252,777 207,777 207,797" fill="none" stroke="#8394ae" stroke-width="2"/>
+<polyline points="201,787 207,797 213,787" fill="none" stroke="#8394ae" stroke-width="2"/>
+<polyline points="632,751 632,779 494,779 494,797" fill="none" stroke="#8394ae" stroke-width="2"/>
+<polyline points="488,787 494,797 500,787" fill="none" stroke="#8394ae" stroke-width="2"/>
+<polyline points="632,779 781,779 781,797" fill="none" stroke="#8394ae" stroke-width="2"/>
+<polyline points="775,787 781,797 787,787" fill="none" stroke="#8394ae" stroke-width="2"/>
+<polyline points="1018,751 1018,777 1068,777 1068,797" fill="none" stroke="#8394ae" stroke-width="2"/>
+<polyline points="1062,787 1068,797 1074,787" fill="none" stroke="#8394ae" stroke-width="2"/>
+<rect x="1254" y="142" width="298" height="830" rx="12" fill="#eaf0fa" stroke="#eaf0fa" stroke-width="2"/>
+<text x="1277" y="186.88" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="26" fill="#244a7c">共享资源与管理</text>
+<rect x="1274" y="226" width="258" height="126" rx="12" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+<text x="1290" y="265.48" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="21" fill="#123667">空间</text>
+<text x="1290" y="307.84" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="18" fill="#52647b">组织资源与协作入口</text>
+<rect x="1274" y="388" width="258" height="126" rx="12" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+<text x="1290" y="427.48" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="21" fill="#123667">字典</text>
+<text x="1290" y="469.84" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="18" fill="#52647b">维度值翻译</text>
+<rect x="1274" y="550" width="258" height="126" rx="12" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+<text x="1290" y="589.48" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="21" fill="#123667">全局变量与交互组件</text>
+<text x="1290" y="631.84" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="18" fill="#52647b">空间内复用定义</text>
+<rect x="1274" y="736" width="258" height="126" rx="12" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+<text x="1290" y="775.48" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="21" fill="#123667">水印策略</text>
+<text x="1290" y="817.84" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="18" fill="#52647b">仪表盘水印与作用范围</text>
+<text x="1278" y="931.96" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="17" fill="#697d98">在相关功能中配置和使用</text>
+<text x="60" y="1016.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">箭头表示能力间的数据使用或结果消费关系；具体可用方式以页面配置为准。</text>
+<text x="60" y="1051.72" font-family="PingFang SC,Heiti SC,Microsoft YaHei,sans-serif" font-size="19" fill="#52647b">本图是产品能力示意，不表示后台服务部署或指定示例资源的实际血缘。</text>
+</svg>

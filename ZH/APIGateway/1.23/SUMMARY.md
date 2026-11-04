@@ -19,6 +19,7 @@
             * [API 熔断](./UserGuide/HowTo/Plugins/api-breaker.md)
             * [请求校验](./UserGuide/HowTo/Plugins/request-validation.md)
             * [故障注入](./UserGuide/HowTo/Plugins/fault-injection.md)
+            * [Query 参数转换](./UserGuide/HowTo/Plugins/query-string-rewrite.md)
             * [响应重写](./UserGuide/HowTo/Plugins/response-rewrite.md)
             * [重定向](./UserGuide/HowTo/Plugins/redirect.md)
             * [Access token 来源](./UserGuide/HowTo/Plugins/bk-access-token-source.md)
@@ -34,12 +35,14 @@
         * [接入网关]()
             * [接入网关](./UserGuide/HowTo/Connect/connect-gateway.md)
             * [自动化接入](./UserGuide/HowTo/Connect/auto-connect-gateway.md)
+            * [健康检查](./UserGuide/HowTo/Connect/health-check.md)
             * [如何导入导出资源](./UserGuide/HowTo/Connect/import-and-export.md)
             * [如何维护网关文档](./UserGuide/HowTo/Connect/manage-document.md)
             * [如何同时接入 ESB 和 网关](./UserGuide/HowTo/Connect/connect-esb-and-gateway.md)
             * [迁移：规范使用应用态接口以及用户态接口](./UserGuide/HowTo/Connect/standardized-use-app-and-user-state-api.md)
             * [支持 WebSocket](./UserGuide/HowTo/Connect/support-websocket.md)
             * [Swagger 配置说明](./UserGuide/HowTo/Connect/swagger-explain.md)
+            * [网关 API 支持个人 token](./UserGuide/HowTo/Connect/gateway-api-personal-token.md)
             * [MCP Server 权限申请指引](./UserGuide/HowTo/apply-mcp-server-permission.md)
             
         * [支持 MCP Server]()
@@ -47,11 +50,12 @@
                 * [普通网关 API to MCP Server](./UserGuide/HowTo/MCPServer/Connect/normal-gateway-api-to-mcp-server.md)
                 * [可编程网关使用 MCP Server](./UserGuide/HowTo/MCPServer/Connect/program-gateway-mcp-server.md)
                 * [原生的 MCP Server 接入网关](./UserGuide/HowTo/MCPServer/Connect/native-mcp-server-to-gateway.md)
-            * [使用]()
+                * [MCP Server 支持个人 token](./UserGuide/HowTo/MCPServer/Connect/mcp-server-personal-token.md)
+    * [使用]()
                 * [MCP Server 配置使用指南](./UserGuide/HowTo/MCPServer/Apply/apply-mcp-server-config.md)
                 * [MCP Server 权限申请指引](./UserGuide/HowTo/MCPServer/Apply/apply-mcp-server-permission.md)
             * [MCP Server FAQ](./UserGuide/HowTo/MCPServer/mcp-server-FAQ.md)
-
+        
     * [概念说明]()
       
         * [认证](./UserGuide/Explanation/authorization.md)

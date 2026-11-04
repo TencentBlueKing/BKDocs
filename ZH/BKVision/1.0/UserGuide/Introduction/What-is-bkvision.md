@@ -1,55 +1,28 @@
-# 产品介绍
+# 什么是 BKVision
 
-欢迎体验蓝鲸智云的图表平台！
+蓝鲸图表平台（BKVision）是一款数据可视化工具。连接业务数据后，您可以通过表单、SQL 或 API 配置图表，在画布上自由排布组件，或使用 AI 辅助生成仪表盘与分析报告。
 
-## 产品概述
+![仪表盘示例](../Media/Dashboard/Dashboard-Light-PC-01-overview.png)
 
-蓝鲸图表平台（bkvision）是一款强大的数据可视化工具，支持多种数据源接入，提供丰富的图表组件和自由式拖拽布局；其SQL分析模式、实时数据更新及个性化定制功能，助力用户高效构建理想图表和仪表盘；同时平台兼容蓝鲸SaaS的图表分享和嵌入，降低开发成本，提升业务数据研发效率和数据治理水平；通过简洁交互和低学习成本，实现数据全渠道触达，为业务提供高效决策支持；
+## 可以完成哪些工作
 
-## 功能特性
+| 需求 | 功能入口 | 输出 |
+| --- | --- | --- |
+| 快速验证一个数据问题 | 快速分析 | 查询结果与图表 |
+| 持续跟踪业务指标 | 仪表盘 | 可交互的业务看板 |
+| 通过自然语言分析数据 | AI 报告 | HTML 分析报告 |
+| 定时发送业务看板 | 订阅推送 | 仪表盘图片 |
+| 将看板集成到业务系统 | 嵌入管理 | 面向指定 SaaS 的嵌入配置 |
+| 统一管理可复用对象 | 数据管理、全局资源 | 数据集、字典、变量、组件与水印策略 |
 
-<table border="1">
-    <tr>
-        <th class="center-text" style="width: 100px;">一级导航</th>
-        <th style="width: 150px;" class="center-text">二级导航</th>
-        <th class="center-text">功能说明</th>
-    </tr>
-    <tr>
-        <td class="center-text" style="width: 100px;" rowspan="2">仪表盘</td>
-        <td style="width: 150px;">目录</td>
-        <td>帮助用户快速定位并访问目标仪表盘。此外，用户还可以在该功能下新建目录及仪表盘，实现仪表盘的有序管理和分类展示。</td>
-    </tr>
-    <tr>
-        <td style="width: 150px;">仪表盘页面</td>
-        <td>用户可浏览选定的仪表盘。</td>
-    </tr>
-    <tr>
-        <td class="center-text" style="width: 100px;" rowspan="2">订阅推送</td> <!-- 合并中间两行 -->
-        <td style="width: 150px;">订阅配置</td>
-        <td>用户根据预先配置的仪表盘设置订阅条件然后发送订阅通知。</td>
-    </tr>
-    <tr>
-        <td style="width: 150px;">推送记录</td>
-        <td>用户的订阅历史，包括推送的时间、内容等信息，方便用户随时查看和追踪订阅状态。</td>
-    </tr>
-    <tr>
-        <td class="center-text" style="width: 100px;">嵌入管理</td>
-        <td style="width: 150px;">仪表盘嵌入管理</td>
-        <td>支持用户将仪表盘嵌入到其他平台或应用中，实现数据的跨平台展示和分析。</td>
-    </tr>
-    <tr>
-        <td class="center-text" style="width: 100px;" rowspan="3">数据管理</td> <!-- 合并最后三行 -->
-        <td style="width: 150px;">数据集</td>
-        <td>支持用户创建和管理数据集，并支持多种数据来源类型，方便用户根据实际需求进行选择和导入，实现数据的集中存储和有序管理。</td>
-    </tr>
-    <tr>
-        <td style="width: 150px;">数据源</td>
-        <td>支持用户创建、选择和配置各种数据源，如蓝鲸生态数据源(蓝鲸计算平台、可视化开发平台)、动态数据源(MySQL、Web API)。</td>
-    </tr>
-    <tr>
-        <td style="width: 150px;">数据字典</td>
-        <td>支持用户自定义一组相关的数据值，并在仪表盘中使用这些值。不仅简化数据输入过程，还提高数据的一致性和可维护性。
-</td>
-    </tr>
-</table>
+![一次性探索的快速分析](../Media/Quick-analysis/Payment-path-01-simple.png)
 
+![HTML 分析报告示例](../Media/AI-report/Report-Nexus-01-view.png)
+
+## 开始使用
+
+先选择空间，再按“数据源 → 数据集 → 图表 → 仪表盘 → 分发”的顺序完成接入。已有连接和数据集可直接复用。
+
+- [快速入门](../Quick-Starts/1.Create-Space.md)
+- [产品架构](Architecture.md)
+- [术语解释](Terms.md)

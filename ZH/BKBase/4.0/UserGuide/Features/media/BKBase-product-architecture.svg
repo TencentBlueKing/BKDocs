@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1496" height="967" viewBox="0 0 1496 967" role="img" aria-labelledby="title desc">
+  <title id="title">BKBase 产品架构</title>
+  <desc id="desc">从数据来源经过数据接入与清洗、数据开发、数据存储，到日志检索、运营分析、指标观测、数据可视化和规划中的数据服务 AI，并由治理能力横向支撑。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F7FAFF"/>
+      <stop offset="1" stop-color="#EEF4FF"/>
+    </linearGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1768E5"/>
+      <stop offset="1" stop-color="#4A8CFF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#244A7C" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#8AA7CF"/>
+    </marker>
+    <style>
+      .font { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", Arial, sans-serif; }
+      .layer-title { font-size: 22px; font-weight: 700; fill: #17345D; }
+      .item { font-size: 16px; fill: #48617E; }
+      .small { font-size: 14px; fill: #6B82A0; }
+      .gov-title { font-size: 18px; font-weight: 700; fill: #DCEAFF; }
+      .gov-item { font-size: 15px; font-weight: 600; fill: #FFFFFF; }
+    </style>
+  </defs>
+  <rect width="1496" height="967" fill="url(#bg)"/>
+  <circle cx="1330" cy="90" r="170" fill="#DCE9FF" opacity="0.45"/>
+  <circle cx="92" cy="835" r="210" fill="#E5F1FF" opacity="0.6"/>
+
+  <g class="font">
+    <text x="72" y="80" font-size="36" font-weight="800" fill="#132F55">BKBase 产品架构</text>
+    <text x="72" y="116" font-size="17" fill="#657D99">统一接入、清洗、开发、存储与消费的数据计算平台</text>
+
+    <g filter="url(#shadow)">
+      <rect x="58" y="172" width="242" height="518" rx="18" fill="#FFFFFF" stroke="#D7E3F4"/>
+      <rect x="330" y="172" width="270" height="518" rx="18" fill="#FFFFFF" stroke="#D7E3F4"/>
+      <rect x="630" y="172" width="244" height="518" rx="18" fill="#FFFFFF" stroke="#D7E3F4"/>
+      <rect x="904" y="172" width="244" height="518" rx="18" fill="#FFFFFF" stroke="#D7E3F4"/>
+      <rect x="1178" y="172" width="260" height="518" rx="18" fill="#FFFFFF" stroke="#D7E3F4"/>
+    </g>
+
+    <g>
+      <rect x="58" y="172" width="242" height="76" rx="18" fill="#E9F2FF"/>
+      <rect x="58" y="226" width="242" height="22" fill="#E9F2FF"/>
+      <text x="179" y="218" text-anchor="middle" class="layer-title">数据来源</text>
+
+      <rect x="330" y="172" width="270" height="76" rx="18" fill="#E7F8F5"/>
+      <rect x="330" y="226" width="270" height="22" fill="#E7F8F5"/>
+      <text x="465" y="218" text-anchor="middle" class="layer-title">数据接入与清洗</text>
+
+      <rect x="630" y="172" width="244" height="76" rx="18" fill="#F1ECFF"/>
+      <rect x="630" y="226" width="244" height="22" fill="#F1ECFF"/>
+      <text x="752" y="218" text-anchor="middle" class="layer-title">数据开发</text>
+
+      <rect x="904" y="172" width="244" height="76" rx="18" fill="#FFF4E5"/>
+      <rect x="904" y="226" width="244" height="22" fill="#FFF4E5"/>
+      <text x="1026" y="218" text-anchor="middle" class="layer-title">数据存储</text>
+
+      <rect x="1178" y="172" width="260" height="76" rx="18" fill="#EAF0FF"/>
+      <rect x="1178" y="226" width="260" height="22" fill="#EAF0FF"/>
+      <text x="1308" y="218" text-anchor="middle" class="layer-title">消费场景</text>
+    </g>
+
+    <g fill="none" stroke="#8AA7CF" stroke-width="3" marker-end="url(#arrow)">
+      <path d="M300 430 H322"/>
+      <path d="M600 430 H622"/>
+      <path d="M874 430 H896"/>
+      <path d="M1148 430 H1170"/>
+    </g>
+
+    <g>
+      <rect x="82" y="280" width="194" height="54" rx="10" fill="#F5F9FF"/><text x="179" y="314" text-anchor="middle" class="item">游戏与业务系统</text>
+      <rect x="82" y="350" width="194" height="54" rx="10" fill="#F5F9FF"/><text x="179" y="384" text-anchor="middle" class="item">客户端 / 服务端日志</text>
+      <rect x="82" y="420" width="194" height="54" rx="10" fill="#F5F9FF"/><text x="179" y="454" text-anchor="middle" class="item">数据库</text>
+      <rect x="82" y="490" width="194" height="54" rx="10" fill="#F5F9FF"/><text x="179" y="524" text-anchor="middle" class="item">消息队列</text>
+      <rect x="82" y="560" width="194" height="54" rx="10" fill="#F5F9FF"/><text x="179" y="594" text-anchor="middle" class="item">REST API / 内置来源</text>
+
+      <rect x="356" y="280" width="218" height="54" rx="10" fill="#F1FBF8"/><text x="465" y="314" text-anchor="middle" class="item">数据连接与数据源</text>
+      <rect x="356" y="350" width="218" height="54" rx="10" fill="#F1FBF8"/><text x="465" y="384" text-anchor="middle" class="item">采集状态与原始样例</text>
+      <rect x="356" y="420" width="218" height="54" rx="10" fill="#F1FBF8"/><text x="465" y="454" text-anchor="middle" class="item">可视化清洗算子</text>
+      <rect x="356" y="490" width="218" height="54" rx="10" fill="#F1FBF8"/><text x="465" y="524" text-anchor="middle" class="item">调试与异常处理</text>
+      <rect x="356" y="560" width="218" height="54" rx="10" fill="#F1FBF8"/><text x="465" y="594" text-anchor="middle" class="item">输出 Schema</text>
+
+      <rect x="654" y="280" width="196" height="54" rx="10" fill="#F7F3FF"/><text x="752" y="314" text-anchor="middle" class="item">Dataflow 画布</text>
+      <rect x="654" y="350" width="196" height="54" rx="10" fill="#F7F3FF"/><text x="752" y="384" text-anchor="middle" class="item">实时 / 离线计算</text>
+      <rect x="654" y="420" width="196" height="54" rx="10" fill="#F7F3FF"/><text x="752" y="454" text-anchor="middle" class="item">分流 / 合流</text>
+      <rect x="654" y="490" width="196" height="54" rx="10" fill="#F7F3FF"/><text x="752" y="524" text-anchor="middle" class="item">指标计算</text>
+      <rect x="654" y="560" width="196" height="54" rx="10" fill="#F7F3FF"/><text x="752" y="594" text-anchor="middle" class="item">UDF / UDAF / UDTF</text>
+
+      <rect x="928" y="280" width="196" height="54" rx="10" fill="#FFF8EF"/><text x="1026" y="314" text-anchor="middle" class="item">ES / Doris</text>
+      <rect x="928" y="350" width="196" height="54" rx="10" fill="#FFF8EF"/><text x="1026" y="384" text-anchor="middle" class="item">HDFS / MySQL</text>
+      <rect x="928" y="420" width="196" height="54" rx="10" fill="#FFF8EF"/><text x="1026" y="454" text-anchor="middle" class="item">VictoriaMetric</text>
+      <rect x="928" y="490" width="196" height="54" rx="10" fill="#FFF8EF"/><text x="1026" y="524" text-anchor="middle" class="item">Redis / Queue</text>
+      <rect x="928" y="560" width="196" height="54" rx="10" fill="#FFF8EF"/><text x="1026" y="594" text-anchor="middle" class="item">保留周期与字段配置</text>
+
+      <rect x="1202" y="280" width="212" height="54" rx="10" fill="#F4F7FF"/><text x="1308" y="314" text-anchor="middle" class="item">日志检索</text>
+      <rect x="1202" y="350" width="212" height="54" rx="10" fill="#F4F7FF"/><text x="1308" y="384" text-anchor="middle" class="item">运营分析</text>
+      <rect x="1202" y="420" width="212" height="54" rx="10" fill="#F4F7FF"/><text x="1308" y="454" text-anchor="middle" class="item">指标观测</text>
+      <rect x="1202" y="490" width="212" height="54" rx="10" fill="#F4F7FF"/><text x="1308" y="524" text-anchor="middle" class="item">数据可视化 / 下游应用</text>
+      <rect x="1202" y="560" width="212" height="70" rx="12" fill="#F8FAFF" stroke="#6F8FD8" stroke-width="2" stroke-dasharray="8 6"/>
+      <text x="1308" y="591" text-anchor="middle" font-size="17" font-weight="700" fill="#4166B2">数据服务 AI</text>
+      <text x="1308" y="614" text-anchor="middle" class="small">规划能力</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="58" y="742" width="1380" height="150" rx="20" fill="url(#head)"/>
+    </g>
+    <text x="92" y="786" class="gov-title">横向治理与运行保障</text>
+    <g>
+      <rect x="92" y="811" width="232" height="48" rx="12" fill="#FFFFFF" opacity="0.15"/>
+      <text x="208" y="842" text-anchor="middle" class="gov-item">项目与权限</text>
+      <rect x="346" y="811" width="232" height="48" rx="12" fill="#FFFFFF" opacity="0.15"/>
+      <text x="462" y="842" text-anchor="middle" class="gov-item">计算与存储资源</text>
+      <rect x="600" y="811" width="232" height="48" rx="12" fill="#FFFFFF" opacity="0.15"/>
+      <text x="716" y="842" text-anchor="middle" class="gov-item">数据血缘与关联关系</text>
+      <rect x="854" y="811" width="232" height="48" rx="12" fill="#FFFFFF" opacity="0.15"/>
+      <text x="970" y="842" text-anchor="middle" class="gov-item">告警与通知</text>
+      <rect x="1108" y="811" width="296" height="48" rx="12" fill="#FFFFFF" opacity="0.15"/>
+      <text x="1256" y="842" text-anchor="middle" class="gov-item">日志、版本与操作记录</text>
+    </g>
+  </g>
+</svg>

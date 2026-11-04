@@ -2,6 +2,14 @@
 
 【智能体开发】-》【知识库】tab下可以查看 “全部/我创建的 知识库”，可以进行知识的管理、预览。
 
+## 添加知识库
+
+AIDEV的知识库支持结构化和非结构化的知识混合录入，更方便管理项目知识而不受知识形式影响。
+
+![Build_Knowledge_Base-20261103170117.png](../assets/Build_Knowledge_Base-20261103170117.png)
+
+PDF、Word、Markdown、HTML、PPT 与 Excel、CSV 放在同一棵目录里，各走自己的导入链路。正在导入的条目按入队时的链路走完，列表标出该重洗的。错误码走标量，语义走向量，两类都要时再融合排序。
+
 ## 添加知识
 
 【添加知识】入口
@@ -16,7 +24,9 @@
   
   - 非结构化文件
 
-  ![Build_Knowledge_Base_20260820162951.png](../assets/Build_Knowledge_Base_20260820162951.png)
+  如果上传zip格式文件，将按照zip包建立知识库文件夹结构，后续上传同名zip，会更新该结构（不支持在页面上修改结构或内部文件）。
+
+  ![Build_Knowledge_Base-20261103171137.png](../assets/Build_Knowledge_Base-20261103171137.png)
 
   - 结构化文件
   
@@ -28,9 +38,9 @@
 
   ![2026-03-13-15-33-33.png](../assets/2026-03-13-15-33-33.png)
 
-- 网页知识：填写知识地址，会拉取知识以供预览，可以指定刷新频率
+- 网页知识：填写知识地址，会拉取知识（含结构）以供预览，可以指定刷新频率
 
-  ![Build_Knowledge_Base_20260820163617.png](../assets/Build_Knowledge_Base_20260820163617.png)
+  ![Build_Knowledge_Base-20261103170624.png](../assets/Build_Knowledge_Base-20261103170624.png)
   
   以iwiki为例，初次绑定时会提示没有权限，点击预览后填写授权页面，待审批通过即可
 
