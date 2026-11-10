@@ -16,12 +16,8 @@
 
 可以在项目内创建会话。
 
-![Workstation_20260820184402.png](../assets/Workstation_20260820184402.png)
+![Workstation_20261109165423.png](../assets/Workstation_20261109165423.png)
 
 可以在右侧查看会话中的产物。
 
-![Workstation_20260820184435.png](../assets/Workstation_20260820184435.png)
-
-如果在会话中发生了工具或MCP调用，会在右侧按session聚合，方便快速查看并跳转定位。
-
-![Workstation_20260820184529.png](../assets/Workstation_20260820184529.png)
+![Workstation_20261109165259.png](../assets/Workstation_20261109165259.png)

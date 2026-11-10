@@ -8,8 +8,6 @@ AIDEV的知识库支持结构化和非结构化的知识混合录入，更方便
 
 ![Build_Knowledge_Base-20261103170117.png](../assets/Build_Knowledge_Base-20261103170117.png)
 
-PDF、Word、Markdown、HTML、PPT 与 Excel、CSV 放在同一棵目录里，各走自己的导入链路。正在导入的条目按入队时的链路走完，列表标出该重洗的。错误码走标量，语义走向量，两类都要时再融合排序。
-
 ## 添加知识
 
 【添加知识】入口
