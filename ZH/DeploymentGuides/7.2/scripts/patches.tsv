@@ -143,3 +143,7 @@
 20261103	bk-monitor	__TYPE__	3.9.0-beta.39	3.9.0-beta.39	安全更新
 20261105	bk-monitor	__TYPE__	3.9.0-beta.42	3.9.0-beta.42	安全更新
 20261106	bcs-services-stack	__TYPE__	1.29.16	1.29.16	安全更新
+20261117	bcs-services-stack	__TYPE__	1.29.17	1.29.17	安全更新
+20261117	bk-monitor	__TYPE__	3.9.1-beta.1	3.9.1-beta.1	安全更新
+20261117	bkpaas3	__TYPE__	1.6.0-beta.33	1.6.0-beta.33	安全更新
+20261117	bkpaas-app-operator	__TYPE__	1.6.0-beta.33	1.6.0-beta.33	安全更新
