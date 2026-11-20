@@ -69,6 +69,7 @@
         * [API 权限 vs 数据权限](./UserGuide/Explanation/api-permission-and-data-permission.md)
         * [应用态接口 vs 用户态接口](./UserGuide/Explanation/app-and-user-state-api.md)
         * [负载均衡](./UserGuide/Explanation/loadbalance.md)
+        * [路由匹配规则](./UserGuide/Explanation/route-matching.md)
     * [常见问题]()
         * [网关错误响应说明](./UserGuide/FAQ/error-response.md)
         * [如何确认错误的 response 是网关还是后端服务返回的？](./UserGuide/FAQ/gateway-error-or-backend-error.md)

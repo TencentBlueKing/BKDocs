@@ -13,11 +13,13 @@ BK-CI 通过[用户组](user-group.md)的方式管理权限：
 - [通过流水线组管理一批流水线的权限](pipeline-group.md)
 - [审批权限申请单](approval.md)
 - [项目成员管理（批量续期/移交/移出)](project-member.md)
+- [敏感权限用户组管理须知](sensitive-permission-group.md)
 
 如果你是资源拥有者，可能需要了解：
 - [如何添加用户到资源级别的用户组](add-user-to-item-group.md)
 - [审批权限申请单](approval.md)
 - [授权管理](authorize.md)
+- [敏感权限用户组管理须知](sensitive-permission-group.md)
 
 如果你是用户，可能需要了解：
 - [如何申请权限](apply.md)

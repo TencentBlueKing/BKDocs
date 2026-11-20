@@ -154,6 +154,7 @@
         * [在私有构建机上使用加速](UserGuide/Services/Turbo/linux-tubo-speed/use_in_local.md)
     * [权限管理]()
         * [权限简介](UserGuide/Services/Permission/permission.md)
+        * [敏感权限用户组管理须知](UserGuide/Services/Permission/sensitive-permission-group.md)
         * [用户组](UserGuide/Services/Permission/user-group.md)
         * [如何自定义项目级别的用户组](UserGuide/Services/Permission/custom-group.md)
         * [通过流水线组管理一批流水线的权限](UserGuide/Services/Permission/pipeline-group.md)
